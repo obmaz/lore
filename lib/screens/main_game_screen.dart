@@ -19,7 +19,12 @@ enum GameScreenMode {
 
 /// 4:3 레트로 콘솔 레이아웃 통합 메인 게임 화면
 class MainGameScreen extends StatefulWidget {
-  const MainGameScreen({super.key});
+  final List<PartyMember>? initialParty;
+
+  const MainGameScreen({
+    super.key,
+    this.initialParty,
+  });
 
   @override
   State<MainGameScreen> createState() => _MainGameScreenState();
@@ -45,25 +50,30 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   void _initParty() {
-    _party = [
-      PartyMember.createPreset(1), // Hercules (기사)
-      PartyMember.createPreset(3), // Merlin (마법사)
-      PartyMember.createPreset(5), // Genius Kie (전사)
-      PartyMember.createPreset(6), // Bellatrix (전사)
-      PartyMember.createPreset(7), // Regulus (전투승)
-    ];
+    _party = widget.initialParty ??
+        [
+          PartyMember.createPreset(1), // Hercules (기사)
+          PartyMember.createPreset(3), // Merlin (마법사)
+          PartyMember.createPreset(5), // Genius Kie (전사)
+          PartyMember.createPreset(6), // Bellatrix (전사)
+          PartyMember.createPreset(7), // Regulus (전투승)
+        ];
   }
 
   void _initGame() {
     _logs.clear();
     _addLog('또 다른 지식의 성전 제 1 부 (1993 - 2026 Flutter Engine)');
+    _addLog('성전 마을 CASTLE LORE 성내 광장 (51, 31)에 도착했습니다.');
     _addLog('키보드 방향키 또는 화면 우측 하단의 D-Pad로 이동하십시오.');
-    _addLog('벽(1)은 통과할 수 없으며, 걷다 보면 적과 마주칩니다.');
+    _addLog('단단한 성벽은 통과할 수 없으며, 주민(NPC)과 대화하거나 상점을 이용할 수 있습니다.');
 
     _game = LoreGame(
       onLog: (msg) => _addLog(msg),
       onEncounter: () => _startBattle(),
       onTownEntered: () => _openTownDialog(),
+      onNpcTalk: (name, talk) {
+        _addLog('[$name]: "$talk"');
+      },
     );
   }
 

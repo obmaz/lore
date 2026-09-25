@@ -3,34 +3,27 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../theme/retro_theme.dart';
+import 'lore_map_manager.dart';
 
-/// 10x10 격자 기반 맵 및 플레이어 이동을 담당하는 Flame 2D 게임엔진 클래스
+/// 1993년 원작의 실제 100x100 바이너리 맵(TOWN1.MAP, GROUND1.MAP 등)과
+/// 플레이어 중심 카메라 스크롤을 지원하는 Flame 2D 엔진
 class LoreGame extends FlameGame {
-  static const int mapWidth = 10;
-  static const int mapHeight = 10;
-  static const double tileSize = 32.0;
+  static const int viewTilesX = 11;
+  static const int viewTilesY = 11;
+  static const double tileSize = 28.0;
 
-  // 1단계 테스트 10x10 맵 (0: 평지/바닥, 1: 성벽/바위산, 2: 마을 입구)
-  final List<List<int>> mapGrid = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 2, 1],
-    [1, 0, 1, 1, 0, 0, 1, 0, 0, 1],
-    [1, 0, 1, 0, 0, 0, 1, 0, 0, 1],
-    [1, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 1, 0, 0, 1, 0, 1],
-    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-    [1, 0, 1, 1, 0, 1, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 1, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  ];
+  LoreMapData? currentMap;
+  String currentMapName = 'TOWN1'; // 1993년 원작 시작 맵: CASTLE LORE 성내 마을
 
-  int playerX = 1;
-  int playerY = 1;
+  // 원작 LORECRET.PAS 및 LOREMAIN.PAS 기준 초기 시작 좌표: (51, 31)
+  int playerX = 51;
+  int playerY = 31;
   int playerDirection = 0; // 0: 남, 1: 북, 2: 동, 3: 서
 
   final void Function(String message)? onLog;
   final void Function()? onEncounter;
   final void Function()? onTownEntered;
+  final void Function(String npcName, String dialogue)? onNpcTalk;
   final void Function(int x, int y)? onPositionChanged;
   final Random _random = Random();
 
@@ -38,13 +31,35 @@ class LoreGame extends FlameGame {
     this.onLog,
     this.onEncounter,
     this.onTownEntered,
+    this.onNpcTalk,
     this.onPositionChanged,
   });
 
   @override
   Color backgroundColor() => RetroTheme.viewportBg;
 
-  /// 플레이어 이동 처리 (D-Pad 및 키보드 공용)
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+    await loadMap('TOWN1');
+  }
+
+  Future<void> loadMap(String mapName, {int? startX, int? startY}) async {
+    try {
+      currentMap = await LoreMapData.loadFromAsset(mapName);
+      currentMapName = mapName;
+      if (startX != null && startY != null) {
+        playerX = startX;
+        playerY = startY;
+      }
+      onLog?.call('지도 [$mapName] 로드 완료 (크기: ${currentMap!.xmax}x${currentMap!.ymax})');
+    } catch (e) {
+      // 에셋 로드 실패 시 안전 fallback
+      onLog?.call('지도 파일 로드 실패: $e');
+    }
+  }
+
+  /// 플레이어 이동 처리
   bool tryMove(int dx, int dy) {
     if (dx == 0 && dy == 1) playerDirection = 0; // 남
     if (dx == 0 && dy == -1) playerDirection = 1; // 북
@@ -54,130 +69,212 @@ class LoreGame extends FlameGame {
     final targetX = playerX + dx;
     final targetY = playerY + dy;
 
+    if (currentMap == null) return false;
+
     // 맵 경계 체크
-    if (targetX < 0 || targetX >= mapWidth || targetY < 0 || targetY >= mapHeight) {
+    if (targetX < 1 || targetX > currentMap!.xmax || targetY < 1 || targetY > currentMap!.ymax) {
       onLog?.call('더 이상 나아갈 수 없는 경계 지역입니다.');
       return false;
     }
 
-    final tile = mapGrid[targetY][targetX];
+    final tileVal = currentMap!.getTile(targetX, targetY);
+    final cat = currentMap!.getCategory(tileVal);
 
-    // 벽(1) 충돌 처리
-    if (tile == 1) {
-      onLog?.call('벽이 가로막고 있어 통과할 수 없습니다.');
+    // 1. 벽 충돌 (1..21)
+    if (cat == TileCategory.wall) {
+      onLog?.call('단단한 성벽과 바위가 가로막아 지나갈 수 없습니다.');
       return false;
     }
 
-    // 이동 성공
+    // 2. 주민/NPC 상호작용 (48+)
+    if (cat == TileCategory.npc) {
+      _handleNpcInteraction(tileVal, targetX, targetY);
+      return false;
+    }
+
+    // 3. 성문/포털 이동 (22)
+    if (cat == TileCategory.portal) {
+      _handlePortal();
+      return true;
+    }
+
+    // 4. 이동 성공
     playerX = targetX;
     playerY = targetY;
     onPositionChanged?.call(playerX, playerY);
 
-    if (tile == 2) {
-      onLog?.call('마을 입구에 도착했습니다. (CASTLE LORE)');
-      onTownEntered?.call();
-    } else {
-      onLog?.call('일행은 ($playerX, $playerY) 좌표로 이동했습니다.');
+    // 특수 타일 효과
+    if (cat == TileCategory.swamp) {
+      onLog?.call('독이 있는 늪지에 발을 디뎠습니다! 주의하십시오.');
+    } else if (cat == TileCategory.lava) {
+      onLog?.call('뜨거운 용암 지대에 접근했습니다!');
     }
 
-    // 약 10% 확률로 몬스터 인카운터 발생
-    if (_random.nextInt(10) == 0) {
-      onLog?.call('!! 적의 기척이 느껴집니다! 전투 모드로 돌입합니다!');
-      onEncounter?.call();
+    // 필드(GROUND1)일 때 약 10% 확률로 몬스터 인카운터 발생
+    if (currentMapName.startsWith('GROUND') || currentMapName.startsWith('DEN')) {
+      if (_random.nextInt(10) == 0) {
+        onLog?.call('!! 적의 기척이 느껴집니다! 전투 모드로 돌입합니다!');
+        onEncounter?.call();
+      }
     }
 
     return true;
+  }
+
+  void _handleNpcInteraction(int tileVal, int tx, int ty) {
+    if (currentMapName == 'TOWN1') {
+      if (tx == 9 && ty == 64) {
+        onNpcTalk?.call('경비병', '모험을 시작한다면 많은 괴물을 만날 것이오. Serpent와 Python은 맹독이 있으니 주의하시오.');
+      } else if (tx == 72 && ty == 73) {
+        onNpcTalk?.call('마을 주민', 'Orc는 가장 하급 괴물이오.');
+      } else if (tx == 19 && ty == 53) {
+        onNpcTalk?.call('성전의 석판', '이 세계의 창시자는 안영기 님이시며, 그는 위대한 프로그래머입니다.');
+      } else {
+        onNpcTalk?.call('마을 주민', '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.');
+      }
+      onTownEntered?.call();
+    }
+  }
+
+  void _handlePortal() {
+    if (currentMapName == 'TOWN1') {
+      // 성 밖 대륙 필드로 나가기
+      loadMap('GROUND1', startX: 20, startY: 12);
+      onLog?.call('성문을 나와 광활한 LORE 대륙 필드(GROUND1)로 나섰습니다.');
+    } else {
+      // 마을로 귀환
+      loadMap('TOWN1', startX: 51, startY: 95);
+      onLog?.call('성전 마을 CASTLE LORE 성내로 귀환했습니다.');
+    }
   }
 
   @override
   void render(Canvas canvas) {
     super.render(canvas);
 
-    final offsetX = (size.x - (mapWidth * tileSize)) / 2;
-    final offsetY = (size.y - (mapHeight * tileSize)) / 2;
+    if (currentMap == null) return;
 
-    // 1. 타일맵 렌더링
-    for (int y = 0; y < mapHeight; y++) {
-      for (int x = 0; x < mapWidth; x++) {
-        final tileType = mapGrid[y][x];
+    final halfX = viewTilesX ~/ 2;
+    final halfY = viewTilesY ~/ 2;
+
+    final offsetX = (size.x - (viewTilesX * tileSize)) / 2;
+    final offsetY = (size.y - (viewTilesY * tileSize)) / 2;
+
+    // 1. 플레이어 중심 11x11 뷰포트 렌더링
+    for (int vy = 0; vy < viewTilesY; vy++) {
+      for (int vx = 0; vx < viewTilesX; vx++) {
+        final worldX = playerX - halfX + vx;
+        final worldY = playerY - halfY + vy;
+
         final rect = Rect.fromLTWH(
-          offsetX + x * tileSize,
-          offsetY + y * tileSize,
+          offsetX + vx * tileSize,
+          offsetY + vy * tileSize,
           tileSize,
           tileSize,
         );
 
+        final tileVal = currentMap!.getTile(worldX, worldY);
+        final cat = currentMap!.getCategory(tileVal);
+
         final paint = Paint();
-        if (tileType == 1) {
-          // 벽 (어두운 회색/청색 벽돌)
-          paint.color = const Color(0xFF222244);
-          canvas.drawRect(rect, paint);
-          // 벽돌 격자선
-          final borderPaint = Paint()
-            ..color = const Color(0xFF444477)
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 1.0;
-          canvas.drawRect(rect, borderPaint);
-        } else if (tileType == 2) {
-          // 마을 (금색/황토색)
-          paint.color = const Color(0xFF886622);
-          canvas.drawRect(rect, paint);
-          final starPaint = Paint()
-            ..color = RetroTheme.yellow
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = 2.0;
-          canvas.drawCircle(rect.center, tileSize * 0.25, starPaint);
-        } else {
-          // 바닥 (어두운 녹색/흙길)
-          paint.color = const Color(0xFF0F2515);
-          canvas.drawRect(rect, paint);
-          final dotPaint = Paint()..color = const Color(0xFF1B4024);
-          canvas.drawCircle(Offset(rect.left + 8, rect.top + 8), 1.5, dotPaint);
-          canvas.drawCircle(Offset(rect.right - 8, rect.bottom - 8), 1.5, dotPaint);
+        switch (cat) {
+          case TileCategory.wall:
+            // 석조 성벽 (도스 청회색/벽돌)
+            paint.color = const Color(0xFF1E284A);
+            canvas.drawRect(rect, paint);
+            final brickPaint = Paint()
+              ..color = const Color(0xFF384B78)
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 1.0;
+            canvas.drawRect(rect, brickPaint);
+            break;
+
+          case TileCategory.portal:
+            // 성문 / 포털
+            paint.color = const Color(0xFF886622);
+            canvas.drawRect(rect, paint);
+            final gatePaint = Paint()
+              ..color = RetroTheme.yellow
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 2.0;
+            canvas.drawCircle(rect.center, tileSize * 0.35, gatePaint);
+            break;
+
+          case TileCategory.npc:
+            // NPC 타일
+            paint.color = const Color(0xFF152A18);
+            canvas.drawRect(rect, paint);
+            final npcPaint = Paint()..color = RetroTheme.lightCyan;
+            canvas.drawCircle(rect.center, tileSize * 0.28, npcPaint);
+            break;
+
+          case TileCategory.water:
+            paint.color = const Color(0xFF0A2555);
+            canvas.drawRect(rect, paint);
+            break;
+
+          case TileCategory.swamp:
+            paint.color = const Color(0xFF253B15);
+            canvas.drawRect(rect, paint);
+            break;
+
+          case TileCategory.lava:
+            paint.color = const Color(0xFF551100);
+            canvas.drawRect(rect, paint);
+            break;
+
+          case TileCategory.walkable:
+          default:
+            // 평지 길 / 보도블록
+            paint.color = const Color(0xFF101B12);
+            canvas.drawRect(rect, paint);
+            final dotPaint = Paint()..color = const Color(0xFF1E3523);
+            canvas.drawCircle(Offset(rect.left + 5, rect.top + 5), 1.0, dotPaint);
+            canvas.drawCircle(Offset(rect.right - 5, rect.bottom - 5), 1.0, dotPaint);
+            break;
         }
       }
     }
 
-    // 2. 플레이어 캐릭터 렌더링 (도스 감성의 황금 기사 마크)
-    final playerRect = Rect.fromLTWH(
-      offsetX + playerX * tileSize + 4,
-      offsetY + playerY * tileSize + 4,
-      tileSize - 8,
-      tileSize - 8,
+    // 2. 뷰포트 정중앙에 위치한 플레이어 캐릭터 렌더링
+    final centerRect = Rect.fromLTWH(
+      offsetX + halfX * tileSize + 3,
+      offsetY + halfY * tileSize + 3,
+      tileSize - 6,
+      tileSize - 6,
     );
 
-    // 캐릭터 본체
+    // 플레이어 외형 (황금빛 용사 아이콘)
     final playerPaint = Paint()..color = RetroTheme.yellow;
     canvas.drawRRect(
-      RRect.fromRectAndRadius(playerRect, const Radius.circular(4)),
+      RRect.fromRectAndRadius(centerRect, const Radius.circular(4)),
       playerPaint,
     );
 
-    // 캐릭터 테두리
     final playerBorder = Paint()
       ..color = RetroTheme.white
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
     canvas.drawRRect(
-      RRect.fromRectAndRadius(playerRect, const Radius.circular(4)),
+      RRect.fromRectAndRadius(centerRect, const Radius.circular(4)),
       playerBorder,
     );
 
-    // 바라보는 방향 표시 점
+    // 바라보는 방향 표시
     final eyePaint = Paint()..color = RetroTheme.red;
     Offset eyeOffset;
     switch (playerDirection) {
       case 0: // 남
-        eyeOffset = Offset(playerRect.center.dx, playerRect.bottom - 4);
+        eyeOffset = Offset(centerRect.center.dx, centerRect.bottom - 4);
         break;
       case 1: // 북
-        eyeOffset = Offset(playerRect.center.dx, playerRect.top + 4);
+        eyeOffset = Offset(centerRect.center.dx, centerRect.top + 4);
         break;
       case 2: // 동
-        eyeOffset = Offset(playerRect.right - 4, playerRect.center.dy);
+        eyeOffset = Offset(centerRect.right - 4, centerRect.center.dy);
         break;
       default: // 서
-        eyeOffset = Offset(playerRect.left + 4, playerRect.center.dy);
+        eyeOffset = Offset(centerRect.left + 4, centerRect.center.dy);
         break;
     }
     canvas.drawCircle(eyeOffset, 2.5, eyePaint);
