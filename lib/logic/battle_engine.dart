@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import '../models/party_member.dart';
 import '../models/monster.dart';
 import '../models/spell.dart';
@@ -60,7 +61,8 @@ class BattleEngine {
       return AttackResult(
         outcome: AttackOutcome.killed,
         expGained: exp,
-        message: '${attacker.name}의 치명적인 일격! ${target.name}의 숨통을 완전히 끊었다! (EXP +$exp)',
+        message:
+            '${attacker.name}의 치명적인 일격! ${target.name}의 숨통을 완전히 끊었다! (EXP +$exp)',
       );
     }
 
@@ -74,7 +76,8 @@ class BattleEngine {
 
     // 3. 기초 대미지 계산 및 50% 난수 변동
     // i := round(strength * wea_power * level[1] div 20);
-    int baseDmg = (attacker.strength * attacker.weaPower * attacker.battleLevel) ~/ 20;
+    int baseDmg =
+        (attacker.strength * attacker.weaPower * attacker.battleLevel) ~/ 20;
     // i := i - i * random(50) div 100;
     baseDmg = baseDmg - (baseDmg * _rand(50)) ~/ 100;
 
@@ -161,7 +164,8 @@ class BattleEngine {
       return AttackResult(
         outcome: AttackOutcome.killed,
         expGained: exp,
-        message: '${attacker.name}의 마법은 ${target.name}의 시체 위에서 작열하여 소멸시켰다! (EXP +$exp)',
+        message:
+            '${attacker.name}의 마법은 ${target.name}의 시체 위에서 작열하여 소멸시켰다! (EXP +$exp)',
       );
     }
 
@@ -205,7 +209,8 @@ class BattleEngine {
         outcome: AttackOutcome.unconscious,
         damage: finalDmg,
         expGained: exp,
-        message: '${target.name}은(는) \'${spell.name}\'에 의해 의식불명이 되었다! (EXP +$exp)',
+        message:
+            '${target.name}은(는) \'${spell.name}\'에 의해 의식불명이 되었다! (EXP +$exp)',
       );
     }
 
@@ -233,7 +238,7 @@ class BattleEngine {
         const AttackResult(
           outcome: AttackOutcome.outOfSp,
           message: '마법 지수(SP)가 부족합니다!',
-        )
+        ),
       ];
     }
     attacker.sp -= reqSp;
@@ -249,41 +254,51 @@ class BattleEngine {
         target.isDead = true;
         final exp = calculateExperience(target);
         attacker.experience += exp;
-        results.add(AttackResult(
-          outcome: AttackOutcome.killed,
-          expGained: exp,
-          message: '${target.name}의 시체 위에서 \'${spell.name}\'이 작열했다! (EXP +$exp)',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.killed,
+            expGained: exp,
+            message:
+                '${target.name}의 시체 위에서 \'${spell.name}\'이 작열했다! (EXP +$exp)',
+          ),
+        );
         continue;
       }
 
       // 명중 판정
       if (_rand(20) >= attacker.accMagic) {
-        results.add(AttackResult(
-          outcome: AttackOutcome.miss,
-          message: '${target.name}에게는 마법이 빗나갔다.',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.miss,
+            message: '${target.name}에게는 마법이 빗나갔다.',
+          ),
+        );
         continue;
       }
 
       // 저항 판정
       if (_rand(100) < target.resistance) {
-        results.add(AttackResult(
-          outcome: AttackOutcome.resisted,
-          message: '${target.name}은(는) 마법을 저지했다!',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.resisted,
+            message: '${target.name}은(는) 마법을 저지했다!',
+          ),
+        );
         continue;
       }
 
       final baseDmg = j * j * attacker.magicLevel * 2;
-      final defReduce = (target.ac * target.level * (_rand(10) + 1) / 10).round();
+      final defReduce = (target.ac * target.level * (_rand(10) + 1) / 10)
+          .round();
       final finalDmg = baseDmg - defReduce;
 
       if (finalDmg <= 0) {
-        results.add(AttackResult(
-          outcome: AttackOutcome.blocked,
-          message: '${target.name}은(는) 마법을 막아냈다!',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.blocked,
+            message: '${target.name}은(는) 마법을 막아냈다!',
+          ),
+        );
         continue;
       }
 
@@ -293,18 +308,22 @@ class BattleEngine {
         target.isUnconscious = true;
         final exp = calculateExperience(target);
         attacker.experience += exp;
-        results.add(AttackResult(
-          outcome: AttackOutcome.unconscious,
-          damage: finalDmg,
-          expGained: exp,
-          message: '${target.name}은(는) $finalDmg의 피해를 입고 쓰러졌다! (EXP +$exp)',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.unconscious,
+            damage: finalDmg,
+            expGained: exp,
+            message: '${target.name}은(는) $finalDmg의 피해를 입고 쓰러졌다! (EXP +$exp)',
+          ),
+        );
       } else {
-        results.add(AttackResult(
-          outcome: AttackOutcome.hit,
-          damage: finalDmg,
-          message: '${target.name}은(는) $finalDmg의 피해를 입었다.',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.hit,
+            damage: finalDmg,
+            message: '${target.name}은(는) $finalDmg의 피해를 입었다.',
+          ),
+        );
       }
     }
 
@@ -341,56 +360,98 @@ class BattleEngine {
     switch (debuffIndex) {
       case 13: // 독 (SP 10)
         if (_rand(100) < target.resistance) {
-          return AttackResult(outcome: AttackOutcome.resisted, message: '${target.name}은(는) 독 공격을 저지했다!');
+          return AttackResult(
+            outcome: AttackOutcome.resisted,
+            message: '${target.name}은(는) 독 공격을 저지했다!',
+          );
         }
         if (_rand(40) > attacker.accMagic) {
-          return AttackResult(outcome: AttackOutcome.miss, message: '독 공격은 빗나갔다.');
+          return AttackResult(
+            outcome: AttackOutcome.miss,
+            message: '독 공격은 빗나갔다.',
+          );
         }
         target.isPoisoned = true;
-        return AttackResult(outcome: AttackOutcome.debuffed, message: '★ ${target.name}은(는) 중독되었다!');
+        return AttackResult(
+          outcome: AttackOutcome.debuffed,
+          message: '★ ${target.name}은(는) 중독되었다!',
+        );
 
       case 14: // 기술 무력화 (SP 30)
         if (_rand(100) < target.resistance) {
-          return AttackResult(outcome: AttackOutcome.resisted, message: '기술 무력화 공격은 저지당했다!');
+          return AttackResult(
+            outcome: AttackOutcome.resisted,
+            message: '기술 무력화 공격은 저지당했다!',
+          );
         }
         if (_rand(60) > attacker.accMagic) {
-          return AttackResult(outcome: AttackOutcome.miss, message: '기술 무력화 공격은 빗나갔다.');
+          return AttackResult(
+            outcome: AttackOutcome.miss,
+            message: '기술 무력화 공격은 빗나갔다.',
+          );
         }
         target.special = 0;
-        return AttackResult(outcome: AttackOutcome.debuffed, message: '★ ${target.name}의 특수 공격 능력이 완전히 제거되었다!');
+        return AttackResult(
+          outcome: AttackOutcome.debuffed,
+          message: '★ ${target.name}의 특수 공격 능력이 완전히 제거되었다!',
+        );
 
       case 15: // 방어 무력화 (SP 15)
         if (_rand(100) < target.resistance) {
-          return AttackResult(outcome: AttackOutcome.resisted, message: '방어 무력화 공격은 저지당했다!');
+          return AttackResult(
+            outcome: AttackOutcome.resisted,
+            message: '방어 무력화 공격은 저지당했다!',
+          );
         }
         final check = target.ac < 5 ? 40 : 25;
         if (_rand(check) > attacker.accMagic) {
-          return AttackResult(outcome: AttackOutcome.miss, message: '방어 무력화 공격은 빗나갔다.');
+          return AttackResult(
+            outcome: AttackOutcome.miss,
+            message: '방어 무력화 공격은 빗나갔다.',
+          );
         }
         if (target.resistance < 31 || _rand(2) == 0) {
           if (target.ac > 0) target.ac--;
         } else {
           target.resistance = max(0, target.resistance - 10);
         }
-        return AttackResult(outcome: AttackOutcome.debuffed, message: '★ ${target.name}의 방어 능력이 저하되었다!');
+        return AttackResult(
+          outcome: AttackOutcome.debuffed,
+          message: '★ ${target.name}의 방어 능력이 저하되었다!',
+        );
 
       case 16: // 능력 저하 (SP 20)
         if (_rand(200) < target.resistance) {
-          return AttackResult(outcome: AttackOutcome.resisted, message: '능력 저하 공격은 저지당했다!');
+          return AttackResult(
+            outcome: AttackOutcome.resisted,
+            message: '능력 저하 공격은 저지당했다!',
+          );
         }
         if (_rand(30) > attacker.accMagic) {
-          return AttackResult(outcome: AttackOutcome.miss, message: '능력 저하 공격은 빗나갔다.');
+          return AttackResult(
+            outcome: AttackOutcome.miss,
+            message: '능력 저하 공격은 빗나갔다.',
+          );
         }
         if (target.level > 1) target.level--;
         target.resistance = max(0, target.resistance - 10);
-        return AttackResult(outcome: AttackOutcome.debuffed, message: '★ ${target.name}의 전체적인 능력(Lv/저항)이 저하되었다!');
+        return AttackResult(
+          outcome: AttackOutcome.debuffed,
+          message: '★ ${target.name}의 전체적인 능력(Lv/저항)이 저하되었다!',
+        );
 
       case 17: // 마법 불능 (SP 15)
         if (_rand(100) < target.resistance) {
-          return AttackResult(outcome: AttackOutcome.resisted, message: '마법 불능 공격은 저지당했다!');
+          return AttackResult(
+            outcome: AttackOutcome.resisted,
+            message: '마법 불능 공격은 저지당했다!',
+          );
         }
         if (_rand(100) > attacker.accMagic) {
-          return AttackResult(outcome: AttackOutcome.miss, message: '마법 불능 공격은 빗나갔다.');
+          return AttackResult(
+            outcome: AttackOutcome.miss,
+            message: '마법 불능 공격은 빗나갔다.',
+          );
         }
         if (target.castLevel > 0) target.castLevel--;
         return AttackResult(
@@ -402,10 +463,16 @@ class BattleEngine {
 
       case 18: // 탈 초인화 (SP 20)
         if (_rand(100) < target.resistance) {
-          return AttackResult(outcome: AttackOutcome.resisted, message: '탈 초인화 공격은 저지당했다!');
+          return AttackResult(
+            outcome: AttackOutcome.resisted,
+            message: '탈 초인화 공격은 저지당했다!',
+          );
         }
         if (_rand(100) > attacker.accMagic) {
-          return AttackResult(outcome: AttackOutcome.miss, message: '탈 초인화 공격은 빗나갔다.');
+          return AttackResult(
+            outcome: AttackOutcome.miss,
+            message: '탈 초인화 공격은 빗나갔다.',
+          );
         }
         if (target.specialCastLevel > 0) target.specialCastLevel--;
         return AttackResult(
@@ -416,7 +483,10 @@ class BattleEngine {
         );
 
       default:
-        return const AttackResult(outcome: AttackOutcome.failed, message: '알 수 없는 특수 마법입니다.');
+        return const AttackResult(
+          outcome: AttackOutcome.failed,
+          message: '알 수 없는 특수 마법입니다.',
+        );
     }
   }
 
@@ -424,12 +494,19 @@ class BattleEngine {
   // 5. 플레이어 일행 치료 마법 (CureSpell - LOREMENU.PAS:43..230)
   // 단일: 19..25, 전체: 26..32
   // ==========================================
-  AttackResult executePlayerCure(PartyMember caster, PartyMember target, int spellId) {
+  AttackResult executePlayerCure(
+    PartyMember caster,
+    PartyMember target,
+    int spellId,
+  ) {
     final spell = Spell.getById(spellId);
     final reqSp = spell.calculateSpCost(caster.magicLevel);
 
     if (caster.sp < reqSp) {
-      return const AttackResult(outcome: AttackOutcome.outOfSp, message: '마법 지수(SP)가 부족합니다!');
+      return const AttackResult(
+        outcome: AttackOutcome.outOfSp,
+        message: '마법 지수(SP)가 부족합니다!',
+      );
     }
     caster.sp -= reqSp;
 
@@ -446,7 +523,12 @@ class BattleEngine {
     }
 
     // 의식 돌림 처리 (22, 24, 25, 29, 30, 32)
-    if (spellId == 22 || spellId == 24 || spellId == 25 || spellId == 29 || spellId == 30 || spellId == 32) {
+    if (spellId == 22 ||
+        spellId == 24 ||
+        spellId == 25 ||
+        spellId == 29 ||
+        spellId == 30 ||
+        spellId == 32) {
       if (target.isUnconscious && !target.isDead) {
         target.unconscious = 0;
         if (target.hp <= 0) target.hp = 1;
@@ -455,8 +537,14 @@ class BattleEngine {
     }
 
     // 독 제거 처리 (20, 21, 24, 25, 27, 28, 30, 32)
-    if (spellId == 20 || spellId == 21 || spellId == 24 || spellId == 25 ||
-        spellId == 27 || spellId == 28 || spellId == 30 || spellId == 32) {
+    if (spellId == 20 ||
+        spellId == 21 ||
+        spellId == 24 ||
+        spellId == 25 ||
+        spellId == 27 ||
+        spellId == 28 ||
+        spellId == 30 ||
+        spellId == 32) {
       if (target.poison > 0) {
         target.poison = 0;
         logs.add('${target.name}의 독이 깨끗이 제거되었습니다!');
@@ -464,8 +552,14 @@ class BattleEngine {
     }
 
     // HP 회복 처리 (19, 21, 24, 25, 26, 28, 30, 32)
-    if (spellId == 19 || spellId == 21 || spellId == 24 || spellId == 25 ||
-        spellId == 26 || spellId == 28 || spellId == 30 || spellId == 32) {
+    if (spellId == 19 ||
+        spellId == 21 ||
+        spellId == 24 ||
+        spellId == 25 ||
+        spellId == 26 ||
+        spellId == 28 ||
+        spellId == 30 ||
+        spellId == 32) {
       if (!target.isDead && !target.isUnconscious) {
         final healAmount = 3 * caster.magicLevel;
         target.hp = min(target.maxHp, target.hp + healAmount);
@@ -480,10 +574,7 @@ class BattleEngine {
       );
     }
 
-    return AttackResult(
-      outcome: AttackOutcome.cured,
-      message: logs.join(' '),
-    );
+    return AttackResult(outcome: AttackOutcome.cured, message: logs.join(' '));
   }
 
   // ==========================================
@@ -566,7 +657,10 @@ class BattleEngine {
       // 공포심 주입 -> 도망/즉사
       if (_rand(40) < target.resistance) {
         target.resistance = max(0, target.resistance - 5);
-        return AttackResult(outcome: AttackOutcome.resisted, message: '${target.name}은(는) 공포를 견뎌냈다.');
+        return AttackResult(
+          outcome: AttackOutcome.resisted,
+          message: '${target.name}은(는) 공포를 견뎌냈다.',
+        );
       }
       target.isDead = true;
       target.hp = 0;
@@ -613,20 +707,24 @@ class BattleEngine {
     if (monster.isPoisoned) {
       if (monster.isUnconscious) {
         monster.isDead = true;
-        results.add(AttackResult(
-          outcome: AttackOutcome.killed,
-          message: '${monster.name}은(는) 체내의 독에 의해 완전히 숨을 거두었다.',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.killed,
+            message: '${monster.name}은(는) 체내의 독에 의해 완전히 숨을 거두었다.',
+          ),
+        );
         return results;
       } else {
         monster.hp--;
         if (monster.hp <= 0) {
           monster.hp = 0;
           monster.isUnconscious = true;
-          results.add(AttackResult(
-            outcome: AttackOutcome.unconscious,
-            message: '${monster.name}은(는) 독의 고통을 버티지 못하고 의식불명이 되었다!',
-          ));
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.unconscious,
+              message: '${monster.name}은(는) 독의 고통을 버티지 못하고 의식불명이 되었다!',
+            ),
+          );
           return results;
         }
       }
@@ -644,10 +742,12 @@ class BattleEngine {
         if (_rand(60) <= monster.agility && _rand(20) >= p.luck) {
           p.dead = 1;
           p.hp = 0;
-          results.add(AttackResult(
-            outcome: AttackOutcome.killed,
-            message: '☠ ${monster.name}의 죽음의 저주! ${p.name}은(는) 목숨을 잃었다!',
-          ));
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.killed,
+              message: '☠ ${monster.name}의 죽음의 저주! ${p.name}은(는) 목숨을 잃었다!',
+            ),
+          );
         }
       }
       if (results.isNotEmpty) return results;
@@ -661,10 +761,12 @@ class BattleEngine {
         // 독 공격
         if (_rand(40) <= monster.agility && _rand(20) >= target.luck) {
           target.poison = 1;
-          results.add(AttackResult(
-            outcome: AttackOutcome.debuffed,
-            message: '☠ ${monster.name}의 독 공격! ${target.name}은(는) 중독되었다!!',
-          ));
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.debuffed,
+              message: '☠ ${monster.name}의 독 공격! ${target.name}은(는) 중독되었다!!',
+            ),
+          );
           return results;
         }
       } else if (monster.special == 2) {
@@ -672,10 +774,13 @@ class BattleEngine {
         if (_rand(50) <= monster.agility && _rand(20) >= target.luck) {
           target.unconscious = 1;
           target.hp = 0;
-          results.add(AttackResult(
-            outcome: AttackOutcome.unconscious,
-            message: '💥 ${monster.name}의 치명타! ${target.name}은(는) 쓰러져 의식불명이 되었다!!',
-          ));
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.unconscious,
+              message:
+                  '💥 ${monster.name}의 치명타! ${target.name}은(는) 쓰러져 의식불명이 되었다!!',
+            ),
+          );
           return results;
         }
       } else if (monster.special == 3) {
@@ -683,28 +788,37 @@ class BattleEngine {
         if (_rand(60) <= monster.agility && _rand(20) >= target.luck) {
           target.dead = 1;
           target.hp = 0;
-          results.add(AttackResult(
-            outcome: AttackOutcome.killed,
-            message: '☠ ${monster.name}의 죽음의 일격! ${target.name}은(는) 숨을 거두었다!!',
-          ));
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.killed,
+              message:
+                  '☠ ${monster.name}의 죽음의 일격! ${target.name}은(는) 숨을 거두었다!!',
+            ),
+          );
           return results;
         }
       }
     }
 
     // 4. 마법 vs 물리 공격 판정 (LOREBATT.PAS:968)
-    final useMagic = monster.castLevel > 0 &&
-        (_rand(monster.accArms * 1000 + 1) <= _rand(monster.accMagic * 1000 + 1));
+    final useMagic =
+        monster.castLevel > 0 &&
+        (_rand(monster.accArms * 1000 + 1) <=
+            _rand(monster.accMagic * 1000 + 1));
 
     if (useMagic) {
       // 아군 회복 마법 (castlevel 4..5 & 체력 저하 시)
-      if (monster.castLevel >= 4 && (monster.hp < monster.maxHp ~/ 3) && _rand(2) == 0) {
+      if (monster.castLevel >= 4 &&
+          (monster.hp < monster.maxHp ~/ 3) &&
+          _rand(2) == 0) {
         final heal = monster.level * monster.mentality ~/ 6 + 5;
         monster.hp = min(monster.maxHp, monster.hp + heal);
-        results.add(AttackResult(
-          outcome: AttackOutcome.cured,
-          message: '${monster.name}은(는) 치유 마법으로 자신의 체력을 $heal 회복했다!',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.cured,
+            message: '${monster.name}은(는) 치유 마법으로 자신의 체력을 $heal 회복했다!',
+          ),
+        );
         return results;
       }
 
@@ -715,10 +829,12 @@ class BattleEngine {
         final spellName = magicNames[mIdx];
         final pwr = (mIdx + 1) * monster.level;
 
-        results.add(AttackResult(
-          outcome: AttackOutcome.hit,
-          message: '${monster.name}은(는) 일행 모두에게 \'$spellName\' 마법을 작열시켰다!',
-        ));
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.hit,
+            message: '${monster.name}은(는) 일행 모두에게 \'$spellName\' 마법을 작열시켰다!',
+          ),
+        );
 
         for (final p in livingParty) {
           final res = _applyEnemyMagicDamage(monster, p, spellName, pwr);
@@ -734,10 +850,13 @@ class BattleEngine {
       final pwr = (mIdx + 1) * monster.level;
       final target = livingParty[_rand(livingParty.length)];
 
-      results.add(AttackResult(
-        outcome: AttackOutcome.hit,
-        message: '${monster.name}은(는) ${target.name}에게 \'$spellName\' 마법을 시전했다!',
-      ));
+      results.add(
+        AttackResult(
+          outcome: AttackOutcome.hit,
+          message:
+              '${monster.name}은(는) ${target.name}에게 \'$spellName\' 마법을 시전했다!',
+        ),
+      );
       results.add(_applyEnemyMagicDamage(monster, target, spellName, pwr));
       return results;
     }
@@ -748,19 +867,33 @@ class BattleEngine {
     return results;
   }
 
-  AttackResult _applyEnemyMagicDamage(Monster attacker, PartyMember target, String spellName, int basePower) {
+  AttackResult _applyEnemyMagicDamage(
+    Monster attacker,
+    PartyMember target,
+    String spellName,
+    int basePower,
+  ) {
     if (_rand(20) >= attacker.accMagic) {
-      return AttackResult(outcome: AttackOutcome.miss, message: '${target.name}에게 마법이 빗나갔다.');
+      return AttackResult(
+        outcome: AttackOutcome.miss,
+        message: '${target.name}에게 마법이 빗나갔다.',
+      );
     }
     if (_rand(50) < target.resistance) {
-      return AttackResult(outcome: AttackOutcome.resisted, message: '${target.name}은(는) 마법을 저지했다!');
+      return AttackResult(
+        outcome: AttackOutcome.resisted,
+        message: '${target.name}은(는) 마법을 저지했다!',
+      );
     }
     int power = basePower - _rand(max(1, basePower ~/ 2));
     final defReduce = (target.ac * target.battleLevel * (_rand(10) + 1)) ~/ 10;
     power -= defReduce;
 
     if (power <= 0) {
-      return AttackResult(outcome: AttackOutcome.blocked, message: '${target.name}은(는) 마법을 방어했다!');
+      return AttackResult(
+        outcome: AttackOutcome.blocked,
+        message: '${target.name}은(는) 마법을 방어했다!',
+      );
     }
 
     target.hp -= power;
@@ -791,7 +924,8 @@ class BattleEngine {
       );
     }
 
-    final baseDmg = (attacker.strength * attacker.level * (_rand(10) + 1)) ~/ 10;
+    final baseDmg =
+        (attacker.strength * attacker.level * (_rand(10) + 1)) ~/ 10;
 
     if (_rand(50) < target.resistance) {
       return AttackResult(

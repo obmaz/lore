@@ -22,6 +22,7 @@ import '../widgets/esp_dialog.dart';
 import '../game/lore_map_manager.dart';
 import '../services/save_manager.dart';
 import '../game/lore_dialogue_manager.dart';
+import '../game/lore_dungeon_event_manager.dart';
 
 enum GameScreenMode { field, battle, gameOver }
 
@@ -54,6 +55,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
+  String? _currentBossName;
 
   final FocusNode _focusNode = FocusNode();
 
@@ -226,6 +228,27 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
       }
     }
+
+    // 던전 및 필드 특수 이벤트 감지 (LORESPEC.PAS)
+    final dEvent = LoreDungeonEventManager.instance.checkEvent(
+      _game.currentMapId,
+      _game.playerX,
+      _game.playerY,
+      _party,
+    );
+    if (dEvent != null) {
+      _addLog('★ [이벤트: ${dEvent.title}] ★');
+      _addLog(dEvent.message);
+      if (dEvent.foodGained > 0) {
+        setState(() => _partyFood += dEvent.foodGained);
+      }
+      if (dEvent.goldGained > 0) {
+        setState(() => _partyGold += dEvent.goldGained);
+      }
+      if (dEvent.bossEnemies != null && dEvent.bossEnemies!.isNotEmpty) {
+        _startBossBattle(dEvent.bossEnemies!);
+      }
+    }
   }
 
   void _openQuickViewDialog() {
@@ -328,6 +351,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       builder: (ctx) => TownDialog(
         party: _party,
         gold: _partyGold,
+        mapId: _game.currentMapId,
         onGoldChanged: (newGold) => setState(() => _partyGold = newGold),
         onLog: (msg) => _addLog(msg),
       ),
@@ -374,12 +398,44 @@ class _MainGameScreenState extends State<MainGameScreen> {
     });
   }
 
+  /// 보스전 시작
+  void _startBossBattle(List<Monster> bossEnemies) {
+    setState(() {
+      _currentMode = GameScreenMode.battle;
+      _currentBossName = bossEnemies.first.name;
+      _battleEnemies = bossEnemies;
+
+      _addLog('⚔⚔⚔ 강력한 보스 출현! ⚔⚔⚔');
+      for (final e in _battleEnemies) {
+        _addLog('▶ ${e.name} (Lv.${e.level}, HP:${e.hp}) 결전 시작!');
+      }
+    });
+  }
+
   /// 전투 승리 -> 필드로 복귀
   void _onBattleVictory(int goldEarned) {
     setState(() {
       _partyGold += goldEarned;
       _currentMode = GameScreenMode.field;
       _addLog('전투 종료. 일행은 필드로 복귀합니다. 보유 금화: $_partyGold');
+
+      // 보스 격퇴 플래그 갱신
+      if (_currentBossName != null) {
+        if (_currentBossName == 'Major Mummy') {
+          LoreDialogueManager.instance.bossMajorMummyDefeated = true;
+          _addLog('★ Major Mummy를 물리쳤습니다! LASTDITCH 성주에게 승전보를 전하십시오!');
+        } else if (_currentBossName == 'ArchiGagoyle') {
+          LoreDialogueManager.instance.bossArchiGagoyleDefeated = true;
+          _addLog('★ ArchiGagoyle을 물리쳤습니다! GAIA TERRA 성주에게 승전보를 전하십시오!');
+        } else if (_currentBossName?.startsWith('Hidra') ?? false) {
+          LoreDialogueManager.instance.bossHidraDefeated = true;
+          _addLog('★ 삼두룡 Hidra를 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
+        } else if (_currentBossName == 'Huge Dragon') {
+          LoreDialogueManager.instance.bossHugeDragonDefeated = true;
+          _addLog('★ Huge Dragon을 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
+        }
+        _currentBossName = null;
+      }
     });
     _focusNode.requestFocus();
   }

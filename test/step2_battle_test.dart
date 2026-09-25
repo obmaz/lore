@@ -76,13 +76,27 @@ void main() {
       expect(Spell.allSpells.length, 45);
 
       // 카테고리별 개수 검증
-      final singleAttacks = Spell.allSpells.where((s) => s.category == SpellCategory.singleAttack).toList();
-      final allAttacks = Spell.allSpells.where((s) => s.category == SpellCategory.allAttack).toList();
-      final debuffs = Spell.allSpells.where((s) => s.category == SpellCategory.specialDebuff).toList();
-      final singleCures = Spell.allSpells.where((s) => s.category == SpellCategory.singleCure).toList();
-      final allCures = Spell.allSpells.where((s) => s.category == SpellCategory.allCure).toList();
-      final fields = Spell.allSpells.where((s) => s.category == SpellCategory.field).toList();
-      final esps = Spell.allSpells.where((s) => s.category == SpellCategory.esp).toList();
+      final singleAttacks = Spell.allSpells
+          .where((s) => s.category == SpellCategory.singleAttack)
+          .toList();
+      final allAttacks = Spell.allSpells
+          .where((s) => s.category == SpellCategory.allAttack)
+          .toList();
+      final debuffs = Spell.allSpells
+          .where((s) => s.category == SpellCategory.specialDebuff)
+          .toList();
+      final singleCures = Spell.allSpells
+          .where((s) => s.category == SpellCategory.singleCure)
+          .toList();
+      final allCures = Spell.allSpells
+          .where((s) => s.category == SpellCategory.allCure)
+          .toList();
+      final fields = Spell.allSpells
+          .where((s) => s.category == SpellCategory.field)
+          .toList();
+      final esps = Spell.allSpells
+          .where((s) => s.category == SpellCategory.esp)
+          .toList();
 
       expect(singleAttacks.length, 6);
       expect(allAttacks.length, 6);
@@ -117,12 +131,21 @@ void main() {
       ];
 
       mage.sp = 100;
-      final results = engine.executePlayerAllMagicAttack(mage, enemies, 7); // 7: 공기 폭풍
+      final results = engine.executePlayerAllMagicAttack(
+        mage,
+        enemies,
+        7,
+      ); // 7: 공기 폭풍
       expect(results.length, 3);
       expect(mage.sp < 100, isTrue); // SP 소모 확인
 
       // 전체 마법으로 최소 1명 이상 피해를 입었거나 처치되었는지 확인
-      final damaged = results.any((r) => r.damage > 0 || r.outcome == AttackOutcome.killed || r.outcome == AttackOutcome.unconscious);
+      final damaged = results.any(
+        (r) =>
+            r.damage > 0 ||
+            r.outcome == AttackOutcome.killed ||
+            r.outcome == AttackOutcome.unconscious,
+      );
       expect(damaged, isTrue);
     });
 
@@ -181,18 +204,32 @@ void main() {
 
       // 43: 독심술 테스트 (10번 Goblin: 원작 포섭 대상)
       final goblin = Monster.create(10);
-      final resEspJoin = engine.executePlayerESP(esper, goblin, 43, [hero, mage, esper]);
-      expect(resEspJoin.outcome == AttackOutcome.joined || resEspJoin.outcome == AttackOutcome.failed, isTrue);
+      final resEspJoin = engine.executePlayerESP(esper, goblin, 43, [
+        hero,
+        mage,
+        esper,
+      ]);
+      expect(
+        resEspJoin.outcome == AttackOutcome.joined ||
+            resEspJoin.outcome == AttackOutcome.failed,
+        isTrue,
+      );
 
       // 45: 염력 공격 테스트 (1번 Orc)
       final orc = Monster.create(1);
-      final resPfk = engine.executePlayerESP(esper, orc, 45, [hero, mage, esper]);
+      final resPfk = engine.executePlayerESP(esper, orc, 45, [
+        hero,
+        mage,
+        esper,
+      ]);
       expect(esper.esp < 100, isTrue); // ESP 소모
       expect(resPfk.outcome != AttackOutcome.outOfSp, isTrue);
     });
 
     test('6. 몬스터 턴 AI 풀 구현 검증 (독 진행, 마법/특수공격 시전)', () {
-      final monster = Monster.create(3); // Serpent: poison=1, castLevel=1, special=1
+      final monster = Monster.create(
+        3,
+      ); // Serpent: poison=1, castLevel=1, special=1
       monster.isPoisoned = true;
       final initialHp = monster.hp;
 

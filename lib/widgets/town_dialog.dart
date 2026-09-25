@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 import '../models/item.dart';
+import '../game/lore_dialogue_manager.dart';
 
-/// 마을 (CASTLE LORE) 상점 및 NPC 상호작용 모달 다이얼로그
+/// 1993년 원작 LORECITY 및 LORETALK 기반 4대 성/마을 상점 및 NPC 상호작용 모달 다이얼로그
 class TownDialog extends StatefulWidget {
   final List<PartyMember> party;
   final int gold;
+  final int mapId; // 6: CASTLE LORE, 7: LASTDITCH, 9: GAIA TERRA, 10: WATER FIELD
   final void Function(int newGold) onGoldChanged;
   final void Function(String message) onLog;
 
@@ -15,6 +17,7 @@ class TownDialog extends StatefulWidget {
     super.key,
     required this.party,
     required this.gold,
+    this.mapId = 6,
     required this.onGoldChanged,
     required this.onLog,
   });
@@ -26,6 +29,16 @@ class TownDialog extends StatefulWidget {
 class _TownDialogState extends State<TownDialog> {
   int _currentTab = 0; // 0: 마을 메인, 1: 무기 상점, 2: 신전/병원, 3: NPC 대화
   late int _gold;
+
+  String get townName {
+    switch (widget.mapId) {
+      case 6: return '성전의 도읍 : CASTLE LORE';
+      case 7: return '결사항전의 요새 : LASTDITCH';
+      case 9: return '영광의 성채 : GAIA TERRA (VALIANT PEOPLES)';
+      case 10: return '수몰 대륙의 마지막 왕국 : WATER FIELD';
+      default: return '미지의 성채';
+    }
+  }
 
   @override
   void initState() {
@@ -54,7 +67,7 @@ class _TownDialogState extends State<TownDialog> {
   }
 
   void _healAllParty() {
-    const cost = 50;
+    final cost = widget.mapId == 10 ? 100 : (widget.mapId == 9 ? 80 : 50);
     if (_gold < cost) {
       widget.onLog('치료비($cost G)가 부족합니다.');
       return;
@@ -73,6 +86,53 @@ class _TownDialogState extends State<TownDialog> {
     widget.onLog('성소의 축복으로 모든 파티원의 체력, 마력 및 상태이상이 완전히 회복되었습니다!');
   }
 
+  List<Item> _getTownWeapons() {
+    // 마을 티어에 맞는 무기 목록
+    if (widget.mapId == 7) {
+      return Item.weapons.skip(3).take(5).toList();
+    } else if (widget.mapId == 9) {
+      return Item.weapons.skip(5).take(5).toList();
+    } else if (widget.mapId == 10) {
+      return Item.weapons.skip(7).take(5).toList();
+    }
+    return Item.weapons.skip(1).take(5).toList();
+  }
+
+  List<Map<String, String>> _getTownNpcTalks() {
+    final dialogue = LoreDialogueManager.instance;
+    switch (widget.mapId) {
+      case 7:
+        return [
+          {'name': 'LASTDITCH 성주', 'talk': dialogue.lastditchQuestStep >= 2 ? 'Major Mummy를 처치하셨군요! 북동쪽 GROUND GATE를 통해 다음 대륙으로 나아가시오!' : '북쪽 동굴 PYRAMID의 보스 Major Mummy를 처단해 주시오!'},
+          {'name': '전사 Polaris', 'talk': '나의 이름은 Polaris요. 당신들과 같이 전장에 서고 싶소!'},
+          {'name': '노병', 'talk': 'Major Mummy와 두 마리의 Sphinx의 공격은 가히 치명적이오. 단단히 대비하시오.'},
+          {'name': '탐험가', 'talk': 'GROUND GATE는 여기로부터 서쪽에 나타나며, 다른 대륙으로 인도해 줍니다.'},
+        ];
+      case 9:
+        return [
+          {'name': 'GAIA TERRA 성주', 'talk': dialogue.gaiaQuestStep >= 3 ? 'ArchiGagoyle을 물리치셨군요! Water Key로 WIVERN 동굴을 열어 다음 대륙으로 가시오!' : (dialogue.gaiaQuestStep >= 1 ? '지하의 EVIL SEAL로 가서 황금의 봉인을 찾으시오!' : 'VALIANT PEOPLES 성을 파괴한 적들의 음모를 저지해 주시오!')},
+          {'name': '사냥꾼', 'talk': '최대의 사냥꾼 Rigel은 성을 파괴시킨 적들을 물리치기 위해 EVIL SEAL로 들어갔습니다.'},
+          {'name': '경비병', 'talk': 'SWAMP 대륙으로 통하는 문에는 불멸에 가까운 고르곤 세자매가 살고 있습니다.'},
+          {'name': '학자', 'talk': '황금의 갑옷이 QUAKE 동굴 안에 숨겨져 있다는 소문이 있습니다.'},
+        ];
+      case 10:
+        return [
+          {'name': 'WATER FIELD 성주', 'talk': dialogue.waterFieldQuestStep >= 3 ? 'Huge Dragon을 처단하고 Swamp Key를 얻으셨군요! 늪의 대륙으로 진격하시오!' : 'NOTICE 동굴의 Hidra와 LOCKUP 동굴의 거룡 Huge Dragon을 처단해 주시오!'},
+          {'name': '특공대장 Lore Hunter', 'talk': '나는 LORE 특공대장 Lore Hunter요! 새로운 영웅들과 함께 Necromancer의 목을 베러 가겠소!'},
+          {'name': '탐험가', 'talk': 'NOTICE 동굴은 혼란스러운 미로이며 삼두룡 Hidra가 도사리고 있습니다.'},
+          {'name': '노인', 'talk': 'LOCKUP의 Huge Dragon은 거대한 불꽃과 꼬리로 침입자를 짓밟습니다.'},
+        ];
+      default: // 6: CASTLE LORE
+        return [
+          {'name': '성주 Lord Ahn', 'talk': dialogue.castleGateOpen ? '남쪽 성문을 개방했으니 광활한 LORE 대륙으로 나아가 Necromancer를 응징해주게!' : '용사들이여, 그대들의 결의를 보았다. 대륙의 평화를 위해 싸워주게!'},
+          {'name': 'Jr. Antares의 영혼', 'talk': '나의 아버지는 최강의 마법사 Red Antares였소! 동굴로 은신한 아버지를 찾아 동료로 삼으시오!'},
+          {'name': '현자', 'talk': 'Necromancer에 대항하고자 한다면 바로 위의 피라밋에 가보시오. 또 다른 지식의 성전이기 때문이오.'},
+          {'name': '경비병', 'talk': '모험 중 마주칠 Serpent와 Insects와 Python은 치명적인 맹독을 품고 있으니 주의하시오.'},
+          {'name': '성전 기록관', 'talk': '이 세계의 창시자는 문동욱 님이시며, 그는 위대한 1993년의 프로그래머입니다.'},
+        ];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -82,8 +142,8 @@ class _TownDialogState extends State<TownDialog> {
         borderRadius: BorderRadius.circular(4),
       ),
       child: Container(
-        width: 480,
-        height: 320,
+        width: 500,
+        height: 330,
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
@@ -92,45 +152,37 @@ class _TownDialogState extends State<TownDialog> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '◆ 성전 마을 : CASTLE LORE ◆',
-                  style: RetroTheme.headerFont.copyWith(fontSize: 14),
+                  '◆ $townName ◆',
+                  style: RetroTheme.headerFont.copyWith(fontSize: 13),
                 ),
                 Text(
                   '금화: $_gold G',
-                  style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.yellow,
-                    fontSize: 13,
-                  ),
+                  style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow),
                 ),
               ],
             ),
-            const Divider(color: RetroTheme.borderColor, thickness: 1.5),
+            const Divider(color: RetroTheme.borderColor, height: 16),
 
-            // 내용 영역
-            Expanded(child: _buildContent()),
+            // 메인 컨텐츠 영역
+            Expanded(child: _buildCurrentTabContent()),
 
-            // 하단 닫기/뒤로가기 버튼
+            // 하단 탭 버튼
+            const SizedBox(height: 8),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                if (_currentTab != 0)
-                  TextButton(
-                    onPressed: () => setState(() => _currentTab = 0),
-                    child: Text(
-                      '◀ 메인으로',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.lightCyan,
-                      ),
+                _buildTabButton(0, '마을 광장'),
+                _buildTabButton(1, '무기 상점'),
+                _buildTabButton(2, '성소/치료소'),
+                _buildTabButton(3, '주민 대화'),
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(
+                    '나가기 [ESC]',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.lightRed,
                     ),
                   ),
-                const SizedBox(width: 8),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: RetroTheme.blue,
-                    foregroundColor: RetroTheme.white,
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text('성 밖으로 나가기', style: RetroTheme.dosFont),
                 ),
               ],
             ),
@@ -140,17 +192,18 @@ class _TownDialogState extends State<TownDialog> {
     );
   }
 
-  Widget _buildContent() {
+  Widget _buildCurrentTabContent() {
     switch (_currentTab) {
       case 1: // 무기 상점
+        final weapons = _getTownWeapons();
         return ListView(
           children: [
             Text(
-              '구매할 무기와 장착할 파티원을 선택하십시오:',
+              '무기를 선택하고 장착할 파티원을 지정하십시오.',
               style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGray),
             ),
             const SizedBox(height: 6),
-            ...Item.weapons.skip(1).take(5).map((w) {
+            ...weapons.map((w) {
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 2),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -204,6 +257,7 @@ class _TownDialogState extends State<TownDialog> {
         );
 
       case 2: // 신전/병원
+        final cost = widget.mapId == 10 ? 100 : (widget.mapId == 9 ? 80 : 50);
         return Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -220,7 +274,7 @@ class _TownDialogState extends State<TownDialog> {
               ),
               const SizedBox(height: 6),
               Text(
-                '일행 전원의 부상과 중독을 치유합니다. (비용: 50 G)',
+                '일행 전원의 부상과 중독을 치유합니다. (비용: $cost G)',
                 style: RetroTheme.dosFont.copyWith(
                   color: RetroTheme.lightGray,
                   fontSize: 12,
@@ -239,24 +293,14 @@ class _TownDialogState extends State<TownDialog> {
         );
 
       case 3: // NPC 대화
+        final npcTalks = _getTownNpcTalks();
         return ListView(
-          children: [
-            _buildNpcTalk(
-              '수호 기사',
-              'Orc는 가장 하급 괴물이오. 하지만 Serpent와 Insects는 맹독을 품고 있으니 조심하시오.',
-            ),
-            _buildNpcTalk(
-              '학자 Draconian',
-              '시그너스 X1과 같은 블랙홀의 물리학적 파라독스에 의해 Necromancer가 생겨난 것이오.',
-            ),
-            _buildNpcTalk(
-              '성전의 기록관',
-              '이 세계의 창시자는 문동욱 님이시며, 그는 위대한 1993년의 프로그래머입니다.',
-            ),
-          ],
+          children: npcTalks.map((n) {
+            return _buildNpcTalk(n['name']!, n['talk']!);
+          }).toList(),
         );
 
-      default: // 마을 메인 메뉴
+      default: // 0: 마을 메인 허브
         return Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -296,17 +340,15 @@ class _TownDialogState extends State<TownDialog> {
       onTap: onTap,
       child: Container(
         width: 130,
-        height: 150,
-        padding: const EdgeInsets.all(8),
+        height: 140,
         decoration: BoxDecoration(
           color: RetroTheme.background,
-          border: Border.all(color: RetroTheme.borderColor),
-          borderRadius: BorderRadius.circular(4),
+          border: Border.all(color: RetroTheme.borderColor, width: 1),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(icon, size: 36, color: RetroTheme.lightBlue),
+            Icon(icon, size: 36, color: RetroTheme.yellow),
             const SizedBox(height: 10),
             Text(title, style: RetroTheme.headerFont.copyWith(fontSize: 13)),
             const SizedBox(height: 4),
@@ -330,13 +372,13 @@ class _TownDialogState extends State<TownDialog> {
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: RetroTheme.background,
-        border: Border.all(color: RetroTheme.darkGray),
+        border: Border.all(color: RetroTheme.darkGray, width: 0.5),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '[NPC $name]',
+            '[$name]',
             style: RetroTheme.headerFont.copyWith(
               fontSize: 12,
               color: RetroTheme.lightCyan,
@@ -346,11 +388,27 @@ class _TownDialogState extends State<TownDialog> {
           Text(
             dialogue,
             style: RetroTheme.dosFont.copyWith(
-              fontSize: 12,
+              fontSize: 11,
               color: RetroTheme.white,
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildTabButton(int index, String label) {
+    final isSelected = _currentTab == index;
+    return TextButton(
+      style: TextButton.styleFrom(
+        foregroundColor: isSelected ? RetroTheme.yellow : RetroTheme.lightGray,
+      ),
+      onPressed: () => setState(() => _currentTab = index),
+      child: Text(
+        label,
+        style: RetroTheme.dosFont.copyWith(
+          fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+        ),
       ),
     );
   }
