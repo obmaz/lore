@@ -69,5 +69,34 @@ void main() {
       expect(hitWall, isFalse);
       expect(game.playerX, equals(2)); // 원래 위치 유지
     });
+
+    test('3. 카메라 연출(원작 scroll(FALSE)) 상태 검증', () {
+      final grid = List.generate(
+        10,
+        (y) => List.generate(10, (x) => 42),
+      );
+      final mapData = LoreMapData(name: 'TEST', xmax: 10, ymax: 10, grid: grid);
+      final game = LoreGame(initialMapId: 4, initialPlayerX: 3, initialPlayerY: 3)
+        ..currentMap = mapData;
+
+      // 연출 전: 시야는 파티 위치
+      expect(game.isPeeking, isFalse);
+      expect(game.viewCenterX, 3);
+      expect(game.viewCenterY, 3);
+
+      // 원작 `x := 48; y := 57; scroll(FALSE);` - 파티는 그대로, 시야만 이동
+      game.peekAt(48, 57);
+      expect(game.isPeeking, isTrue);
+      expect(game.viewCenterX, 48);
+      expect(game.viewCenterY, 57);
+      expect(game.playerX, 3, reason: '연출 중에도 파티 좌표는 변하지 않는다');
+      expect(game.playerY, 3);
+
+      // 원작 `scroll(TRUE)` - 시야 복귀
+      game.clearPeek();
+      expect(game.isPeeking, isFalse);
+      expect(game.viewCenterX, 3);
+      expect(game.viewCenterY, 3);
+    });
   });
 }

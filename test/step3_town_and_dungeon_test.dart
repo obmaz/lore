@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_dungeon_event_manager.dart';
 import 'package:lore/logic/lore_join.dart';
@@ -6,6 +7,9 @@ import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
 
 void main() {
+  // JSON 스크립트(scripts.json) 로드를 위해 필요하다.
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   group('LORE 1993 [3단계] 4대 마을 고유 NPC 대화 & 던전 특수 이벤트 단위 테스트', () {
     late LoreDialogueManager dialogue;
     late LoreDungeonEventManager dungeonEvents;
@@ -132,8 +136,8 @@ void main() {
       },
     );
 
-    test('5. 던전 및 필드 특수 이벤트 (식량 나무, Draconian, 황금봉인, 보스전) 검증', () {
-      // 1) 맵 1 식량 나무 (94, 68)
+    test('5. 던전 및 필드 특수 이벤트 (식량 나무 / JSON 스크립트 이관분) 검증', () async {
+      // 1) 맵 1 식량 나무 (94, 68) - 원작 on-enter 이벤트라 Dart가 담당
       final treeEvent = dungeonEvents.checkEvent(1, 94, 68, [hero]);
       expect(treeEvent, isNotNull);
       expect(treeEvent!.type, DungeonEventType.foodGain);
@@ -144,34 +148,37 @@ void main() {
       expect(treeAgain!.type, DungeonEventType.dialogueOnly);
       expect(treeAgain.foodGained, 0);
 
-      // 2) 맵 4 Draconian 피라미드 (26, 16)
-      final dracEvent = dungeonEvents.checkEvent(4, 26, 16, [hero]);
-      expect(dracEvent, isNotNull);
-      expect(dracEvent!.type, DungeonEventType.knowledgeGained);
-      expect(dracEvent.message, contains('시그너스 X-1 블랙홀'));
+      // 2) 나머지 좌표 이벤트는 모두 JSON 스크립트가 담당한다.
+      //    (근사 좌표로 만들어 두었던 Dart 이벤트는 제거했다.)
+      await LoreScriptEngine.instance.load();
+      expect(
+        LoreScriptEngine.instance.usingJson,
+        isTrue,
+        reason: 'JSON 스크립트 로드 실패: ${LoreScriptEngine.instance.loadError}',
+      );
+      expect(
+        dungeonEvents.checkEvent(11, 30, 30, [hero]),
+        isNull,
+        reason: '임의 좌표 근사 보스전은 더 이상 없어야 한다',
+      );
 
-      // 3) 맵 11 PYRAMID 보스전 (Major Mummy)
-      final mummyEvent = dungeonEvents.checkEvent(11, 30, 30, [hero]);
-      expect(mummyEvent, isNotNull);
-      expect(mummyEvent!.type, DungeonEventType.bossBattle);
-      expect(mummyEvent.bossEnemies!.first.name, 'Major Mummy');
-
-      // 4) 맵 13 EVIL SEAL 황금의 봉인 해제
-      final sealEvent = dungeonEvents.checkEvent(13, 25, 25, [hero]);
-      expect(sealEvent, isNotNull);
-      expect(sealEvent!.type, DungeonEventType.sealBroken);
-      expect(dialogue.goldenSealFound, isTrue);
-
-      // 5) 맵 17 NOTICE 보스전 (삼두룡 Hidra)
-      final hidraEvent = dungeonEvents.checkEvent(17, 15, 15, [hero]);
-      expect(hidraEvent, isNotNull);
-      expect(hidraEvent!.bossEnemies!.length, 3);
-      expect(hidraEvent.bossEnemies!.first.name, contains('Hidra'));
-
-      // 6) 맵 18 LOCKUP 보스전 (Huge Dragon)
-      final dragonEvent = dungeonEvents.checkEvent(18, 28, 28, [hero]);
-      expect(dragonEvent, isNotNull);
-      expect(dragonEvent!.bossEnemies!.first.name, 'Huge Dragon');
+      final engine = LoreScriptEngine.instance;
+      // 맵 4 (26,16) Draconian 강의 → 영입
+      expect(
+        engine.startStep(4, 26, 16, const ScriptContext())!.outcome.messages,
+        isNotEmpty,
+      );
+      // 맵 11 (y=24) 미이라의 방 → Major Mummy 전투
+      final mummy = engine.startStep(11, 12, 24, const ScriptContext())!;
+      expect(mummy.outcome.battleMonsters, [35, 35, 26]);
+      // 맵 12 (18,10) 황금의 봉인 → 원작 좌표
+      final seal = engine.startStep(12, 18, 10, const ScriptContext())!;
+      expect(seal.outcome.setFlags, contains('goldenSealFound'));
+      expect(
+        engine.startStep(13, 25, 25, const ScriptContext()),
+        isNull,
+        reason: '임의 좌표(맵 13) 봉인 이벤트는 제거되어야 한다',
+      );
     });
 
     test('6. 세이브/로드 플래그 직렬화 및 복원 검증', () {

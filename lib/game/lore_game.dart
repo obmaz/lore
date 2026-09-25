@@ -38,6 +38,31 @@ class LoreGame extends FlameGame {
   int playerY = 31;
   int playerDirection = 0; // 0: 남, 1: 북, 2: 동, 3: 서
 
+  /// 원작 `scroll(FALSE)` 연출용 임시 시야 중심 (null이면 파티 위치).
+  ///
+  /// 원작은 Ancient Evil 안내처럼 다른 장소를 잠시 보여준 뒤 파티로 돌아온다.
+  int? peekX;
+  int? peekY;
+
+  /// 현재 뷰포트가 바라보는 좌표(연출 중이면 연출 대상).
+  int get viewCenterX => peekX ?? playerX;
+  int get viewCenterY => peekY ?? playerY;
+
+  /// 연출 중인지(플레이어 스프라이트를 감출지) 여부.
+  bool get isPeeking => peekX != null && peekY != null;
+
+  /// 원작 `scroll(FALSE)`: 시야를 (x, y)로 옮긴다(파티는 이동하지 않는다).
+  void peekAt(int x, int y) {
+    peekX = x;
+    peekY = y;
+  }
+
+  /// 원작 `scroll(TRUE)`: 시야를 파티 위치로 되돌린다.
+  void clearPeek() {
+    peekX = null;
+    peekY = null;
+  }
+
   final void Function(String message)? onLog;
   final void Function()? onEncounter;
   final void Function()? onTownEntered;
@@ -369,8 +394,8 @@ class LoreGame extends FlameGame {
     // 1. 플레이어 중심 11x11 뷰포트 렌더링
     for (int vy = 0; vy < viewTilesY; vy++) {
       for (int vx = 0; vx < viewTilesX; vx++) {
-        final worldX = playerX - halfX + vx;
-        final worldY = playerY - halfY + vy;
+        final worldX = viewCenterX - halfX + vx;
+        final worldY = viewCenterY - halfY + vy;
 
         final rect = Rect.fromLTWH(
           offsetX + vx * tileSize,
@@ -452,6 +477,9 @@ class LoreGame extends FlameGame {
     }
 
     // 2. 뷰포트 정중앙에 위치한 플레이어 캐릭터 렌더링 (원작 CHARA.FNT 20x20 픽셀 아트)
+    //    카메라 연출(원작 scroll(FALSE)) 중에는 파티를 그리지 않는다.
+    if (isPeeking) return;
+
     final centerRect = Rect.fromLTWH(
       offsetX + halfX * tileSize + 2,
       offsetY + halfY * tileSize + 2,

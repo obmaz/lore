@@ -58,6 +58,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
   int _waterWalkSteps = 0; // etc[2]: 물위를 걸음
   int _swampWalkSteps = 0; // etc[3]: 늪위를 걸음
   int _levitateSteps = 0; // etc[4]: 공중 부상
+
+  /// 카메라 연출(원작 scroll(FALSE)) 한 장면을 보여주는 시간.
+  /// 원작의 `PressAnyKey` 를 현대적으로 대체한 것이다.
+  static const Duration _peekHold = Duration(milliseconds: 1600);
   int _mindReadCount = 0; // etc[5]: 독심술
   int _stepCount = 0;
 
@@ -320,8 +324,25 @@ class _MainGameScreenState extends State<MainGameScreen> {
   Future<void> _applyScriptOutcome(ScriptRun run) async {
     final outcome = run.outcome;
 
-    for (final m in outcome.messages) {
-      _addLog(m);
+    if (outcome.events.isEmpty) {
+      for (final m in outcome.messages) {
+        _addLog(m);
+      }
+    } else {
+      // 대사와 카메라 연출(원작 scroll(FALSE))을 원작 순서대로 재생한다.
+      for (final event in outcome.events) {
+        if (event.kind == 'peek') {
+          _game.peekAt(event.x!, event.y!);
+          _addLog('▶ 시야를 (${event.x}, ${event.y}) 부근으로 옮깁니다.');
+          setState(() {});
+          await Future<void>.delayed(_peekHold);
+          if (!mounted) return;
+        } else {
+          _addLog(event.text!);
+        }
+      }
+      _game.clearPeek();
+      setState(() {});
     }
 
     for (final equip in outcome.equips) {

@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 50);
+      expect(LoreScriptEngine.instance.scripts.length, 52);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -269,6 +269,45 @@ void main() {
           11,
           48,
           const ScriptContext(flags: {'quakeGoldA', 'quakeGoldB'}),
+        ),
+        isNull,
+      );
+    });
+
+    test('12. 카메라 연출(peek)과 Skeleton 영입, 황금의 봉인 (원작 잔여 이관)', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+
+      // 1) Ancient Evil 안내는 원작처럼 대사 → 시야 이동 → 대사 순서로 진행된다.
+      final ancient = engine.startTalk(4, 20, 39, noCtx)!;
+      final kinds = ancient.outcome.events.map((e) => e.kind).toList();
+      expect(kinds.where((k) => k == 'peek').length, 3);
+      expect(kinds.first, 'message');
+      expect(kinds[2], 'peek');
+      final firstPeek = ancient.outcome.events
+          .firstWhere((e) => e.kind == 'peek');
+      expect(firstPeek.x, 48); // 원작 x := 48; y := 57;
+      expect(firstPeek.y, 57);
+      expect(ancient.outcome.messages.length, 5); // messages에는 대사만 남는다
+
+      // 2) LORE 성 출구(맵 6 y=95) Skeleton 영입 - 원작 join(19,6) = 6번 슬롯
+      final skeleton = engine.startStep(6, 40, 95, noCtx)!;
+      expect(skeleton.outcome.messages.first, contains('누군가가 당신을 불렀다'));
+      final joined = skeleton.choose(0).outcome.recruits.single;
+      expect(joined.key, 'skeleton');
+      expect(joined.slot, 4);
+      expect(LoreJoin.byKey('skeleton')!.name, 'Skeleton');
+
+      // 3) 맵 12 (18,10) 황금의 봉인 (원작 party.etc[14] := 2)
+      final seal = engine.startStep(12, 18, 10, noCtx)!;
+      expect(seal.outcome.messages.first, contains('황금의 봉인'));
+      expect(seal.outcome.setFlags, contains('goldenSealFound'));
+      expect(
+        engine.startStep(
+          12,
+          18,
+          10,
+          const ScriptContext(flags: {'goldenSealFound'}),
         ),
         isNull,
       );

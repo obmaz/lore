@@ -12,6 +12,8 @@
 /// - `{"battle": {"title": "..", "monsters": [26, 8, 8]}}` 전투 개시
 /// - `{"teleport": {"x": 46, "y": 41, "map": 1}}`   강제 이동 (map 생략 시 현재 맵)
 /// - `{"setTile": {"x": 62, "y": 82, "tile": 44}}`  지형 변형 (통로 개방/상자 제거)
+/// - `{"peek": {"x": 48, "y": 57}}`  카메라 연출 (원작 `scroll(FALSE)`):
+///   파티는 그대로 두고 시야만 옮겨 다른 장소를 보여준 뒤 돌아온다.
 /// - `{"equip": {"kind": "weapon", "index": 3, "power": 12, "prompt": true}}`
 ///   장비 지급 (원작 `choosewhom` + `weapon := n`). `onlyUnarmed`면 무기 없는
 ///   대원만 대상이 된다(원작 맵 6의 기본 무장).
@@ -82,9 +84,21 @@ class ScriptOption {
   const ScriptOption(this.text, this.steps);
 }
 
+/// 스크립트 실행 중 일어난 일 1건(순서 보존).
+class ScriptEvent {
+  /// 'message' = 대사 출력, 'peek' = 카메라 연출(원작 `scroll(FALSE)`).
+  final String kind;
+  final String? text;
+  final int? x;
+  final int? y;
+
+  const ScriptEvent.message(String this.text) : kind = 'message', x = null, y = null;
+  const ScriptEvent.peek(this.x, this.y) : kind = 'peek', text = null;
+}
+
 /// 스크립트 스텝 1개.
 class ScriptStep {
-  final String kind; // say / gold / food / flag / join / battle / choice / equip
+  final String kind; // say / gold / food / flag / join / battle / choice / equip / peek
   final String? text;
   final int? amount;
   final String? key;
@@ -107,6 +121,10 @@ class ScriptStep {
   final bool equipPrompt;
   final bool equipOnlyUnarmed;
 
+  /// peek 스텝 (카메라 연출): 시야만 옮길 좌표.
+  final int? peekX;
+  final int? peekY;
+
   const ScriptStep({
     required this.kind,
     this.text,
@@ -126,6 +144,8 @@ class ScriptStep {
     this.equipPower,
     this.equipPrompt = false,
     this.equipOnlyUnarmed = false,
+    this.peekX,
+    this.peekY,
   });
 }
 
@@ -203,6 +223,9 @@ class ScriptOutcome {
   >
   equips;
 
+  /// 대사와 카메라 연출의 **실행 순서**(UI가 순서대로 재생하기 위해 쓴다).
+  final List<ScriptEvent> events;
+
   const ScriptOutcome({
     this.messages = const [],
     this.goldDelta = 0,
@@ -216,6 +239,7 @@ class ScriptOutcome {
     this.teleportY,
     this.tileChanges = const [],
     this.equips = const [],
+    this.events = const [],
   });
 }
 
@@ -362,12 +386,14 @@ class LoreScriptEngine {
     var equips = List<
       ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
     >.from(acc.equips);
+    var events = List<ScriptEvent>.from(acc.events);
 
     for (var i = 0; i < steps.length; i++) {
       final step = steps[i];
       switch (step.kind) {
         case 'say':
           messages.add(step.text!);
+          events.add(ScriptEvent.message(step.text!));
           break;
         case 'gold':
           gold += step.amount!;
@@ -407,6 +433,9 @@ class LoreScriptEngine {
             onlyUnarmed: step.equipOnlyUnarmed,
           ));
           break;
+        case 'peek':
+          events.add(ScriptEvent.peek(step.peekX, step.peekY));
+          break;
         case 'choice':
           final run = ScriptRun._(
             script,
@@ -424,6 +453,7 @@ class LoreScriptEngine {
               teleportY: teleportY,
               tileChanges: tileChanges,
               equips: equips,
+              events: events,
             ),
             choicePrompt: step.prompt,
             choiceTexts: step.options!.map((o) => o.text).toList(),
@@ -449,6 +479,7 @@ class LoreScriptEngine {
         teleportY: teleportY,
         tileChanges: tileChanges,
         equips: equips,
+        events: events,
       ),
     );
   }
@@ -537,6 +568,17 @@ class LoreScriptEngine {
             tileX: t['x'] as int,
             tileY: t['y'] as int,
             tileValue: t['tile'] as int,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('peek')) {
+        final p = m['peek'] as Map<String, dynamic>;
+        steps.add(
+          ScriptStep(
+            kind: 'peek',
+            peekX: p['x'] as int,
+            peekY: p['y'] as int,
           ),
         );
         matched = true;

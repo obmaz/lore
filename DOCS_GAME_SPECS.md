@@ -467,28 +467,35 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
    ("식량과 치료는 해결해 주겠소" = 식량 5 소모)도 그대로 구현했다.
 2. **지형 변형 / 강제 이동** ✅ 지원: 스크립트에 `setTile`(원작 `map[x,y] := 값`)과
    `teleport`(원작 `x := ..; y := ..`) 스텝을 추가하고 게임 화면에서 적용한다.
-   (적용 위치: 맵 6 (62,82) 상자, 맵 1 (20,39) Ancient Evil 비밀 통로)
+   (적용 위치: 맵 6 (62,82) 상자, 맵 4 (20,39) Ancient Evil 비밀 통로)
 3. **`wantexit` 게이트별 분기** ✅ 완료: 맵별 목적지를 `assets/data/portals.json`의
    포털 표(정확 좌표 + `yMin` 범위 조건)로 옮겨 코드 수정 없이 편집할 수 있다.
-4. **남은 서사형 좌표 이벤트** ✅ 대부분 완료: 원작 `LORESPEC.PAS`의
+   원작 `if y = N then if wantexit` 출구 21곳을 모두 이관했다.
+4. **남은 서사형 좌표 이벤트** ✅ 완료: 원작 `LORESPEC.PAS`의
    `if y = N then ...` 처럼 **행/구역 단위 조건**을 스크립트의 `xMin/xMax/yMin/yMax`
-   로 옮겼고, `equip` 스텝(장비 지급)을 추가해 다음을 이관했다.
-   - 맵 4: (40,18) 공간 이동, (26,16) Draconian 강의 + 영입(6번 슬롯 고정)
-   - 맵 6: (51,12) 수감소 병사 전투(2명 → 재방문 7명), (41,79) 기본 무장
+   로 옮겼고, `equip`(장비 지급)과 `peek`(카메라 연출) 스텝을 추가해 다음을 이관했다.
+   - 맵 4: (40,18) 공간 이동, (26,16) Draconian 강의 + 영입(6번 슬롯 고정),
+     (20,39) Ancient Evil 안내 중 **시야 연출**(48,57 → 82,16 → 16,15)
+   - 맵 6: (51,12) 수감소 병사 전투(2명 → 재방문 7명), (41,79) 기본 무장,
+     (y=95) 성문 Skeleton 영입(원작 `join(19,6)`)
    - 맵 11: (y=44) 오이디푸스의 창, (y=24) 미이라의 방(Sphinx ×2 + Major Mummy)
+   - 맵 12: (18,10) **황금의 봉인** (원작 `party.etc[14] := 2`)
    - 맵 14: (16,20) 황금의 방패, (25,8)/(26,8) MENACE 중심 도달
    - 맵 15: (14,7) 황금의 방패, (45,19) 황금의 갑옷, (y=27) Zombie ×2 +
      ArchiGagoyle, (y=48) 보물 6000 → 4000 두 단계
-   - 맵 출구(wantexit) 21곳을 `portals.json`의 범위 규칙으로 옮겼다.
-   남은 것은 **카메라 스크롤 연출 정밀 재현**(원작 `scroll(FALSE)`로 다른 장소를
-   미리 보여주는 연출)과 LORE 성 출구의 Skeleton 영입뿐이며, 둘 다 스크립트
-   스키마 확장으로 이어서 이관할 수 있다.
-5. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
+5. **아직 이관하지 못한 원작 이벤트**: 보스전/봉인방의 **진행형 스크립트**는 남았다.
+   - 맵 17 NOTICE: 세 개 머리 Hidra (원작 `LORESPEC.PAS:1121~1161`, `if (x = 22)` 등
+     복합 조건 + 컷신)
+   - 맵 18 LOCKUP: Huge Dragon (원작 `LORESPEC.PAS:1303~1353`)
+   - 맵 19 EVIL GOD: Crab God 7방 · 봉인 해제 (원작 `LORESPEC.PAS:1378~1470`)
+   - 맵 12: 수수께끼 문(오이디푸스/스핑크스 퍼즐, `y=50`/`y=10` 분기)
+   모두 `battle`/`setTile`/`peek`/`choice` 스텝만으로 표현 가능하므로 계속 추가할 수 있다.
+6. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
    아니므로 이식 대상에서 제외한다.
-6. **원작과 다른 근사 이벤트 정리 필요**: `lib/game/lore_dungeon_event_manager.dart`의
-   보스전·보물상자 연출은 초기 이식 단계에서 좌표를 임의로 잡은 근사치로, 지금은
-   원작 좌표를 옮긴 `scripts.json`이 **우선 적용**된다(JSON에 같은 좌표가 있으면
-   JSON이 실행됨). 원작 대조가 끝난 만큼 근사 이벤트를 제거하는 정리가 남았다.
+7. **근사 이벤트 정리** ✅ 완료: `lib/game/lore_dungeon_event_manager.dart`에 있던
+   임의 좌표 보스전·보물상자(7의 배수 좌표) 연출을 제거하고, 그 자리는 원작 좌표를
+   쓴 `scripts.json`으로 대체했다. 현재 Dart 쪽에 남은 것은 `findgold` 표(폴백용)와
+   맵 1 식량 발견뿐이다.
 
 ---
 
@@ -504,7 +511,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `items.json` | 무기 10 / 방패 6 / 갑옷 6 (위력·가격) | `LoreData.instance.weapon/shield/armor(id)` |
 | `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
 | `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
-| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (50건) | `LoreScriptEngine.instance` |
+| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (52건) | `LoreScriptEngine.instance` |
 | `portals.json` | 맵 연결(포털 30) + 표지판 문구 (21) | `LoreWorldManager.instance.findPortal/getSignMessage` |
 | `dialogues.json` | 좌표 기반 NPC 대사 (30) | `LoreDialogueManager.instance.getDialogue` |
 
@@ -525,6 +532,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     { "setTile": { "x": 62, "y": 82, "tile": 44 } },
     { "teleport": { "x": 46, "y": 41 } },
     { "equip": { "kind": "weapon", "index": 3, "power": 12, "prompt": true } },
+    { "peek": { "x": 48, "y": 57 } },
     { "choice": { "prompt": "?", "options": [
         { "text": "예", "steps": [ { "join": "rigel" } ] },
         { "text": "아니오", "steps": [ { "say": "..." } ] } ] } }
@@ -541,6 +549,8 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
   `draconian`, `skeleton`
 * `equip` 스텝: `kind`(weapon/shield/armor), `index`, `power`, `prompt`(누가 장착할지
   선택 - 원작 `choosewhom`), `onlyUnarmed`(무기 없는 대원만 - 원작 맵 6 기본 무장)
+* `peek` 스텝: 원작 `scroll(FALSE)` 연출. 파티는 그대로 두고 **시야만** 옮겨 다른
+  장소를 보여준 뒤 잠시 뒤 자동으로 돌아온다(원작의 `PressAnyKey` 대체).
 
 ### 8.3 이미지 에셋 (`assets/images/`)
 | 파일 | 내용 |
