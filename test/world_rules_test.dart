@@ -84,7 +84,44 @@ void main() {
       expect(quake.targetX, 25);
       expect(quake.targetY, 70);
     });
+    test('2-1. 원작 LORESPEC의 맵 출구(wantexit) 20곳이 모두 있다', () async {
+      await manager.loadData();
 
+      // (맵, 조건 y, 목적지 맵/좌표) - 원작 `if y = N then if wantexit`
+      const exits = <(int, int, int, int, int)>[
+        (6, 96, 1, 20, 12),
+        (7, 71, 1, 77, 57),
+        (8, 71, 2, 19, 27),
+        (9, 46, 2, 32, 82),
+        (10, 71, 3, 74, 20),
+        (11, 46, 7, 38, 7),
+        (12, 71, 8, 39, 7),
+        (13, 96, 9, 26, 6),
+        (14, 46, 1, 18, 89),
+        (15, 71, 2, 82, 48),
+        (16, 36, 2, 44, 8),
+        (17, 95, 3, 23, 63),
+        (18, 95, 3, 96, 43),
+        (19, 46, 4, 48, 58),
+        (20, 96, 4, 82, 17),
+        (21, 46, 4, 48, 36),
+        (22, 46, 5, 15, 32),
+        (23, 46, 5, 34, 15),
+        (24, 46, 22, 25, 24),
+        (25, 46, 23, 25, 45),
+        (27, 50, 1, 20, 8),
+      ];
+
+      for (final (map, y, tm, tx, ty) in exits) {
+        final portal = manager.findPortal(map, 10, y);
+        expect(portal, isNotNull, reason: '맵 $map y=$y 출구 누락');
+        expect(portal!.targetMapId, tm, reason: '맵 $map y=$y 목적지 맵');
+        expect(portal.targetX, tx, reason: '맵 $map y=$y 목적지 x');
+        expect(portal.targetY, ty, reason: '맵 $map y=$y 목적지 y');
+        // 출구 행 바로 위에서는 발동하지 않는다.
+        expect(manager.findPortal(map, 10, y - 1), isNull, reason: '맵 $map y=${y - 1} 오발동');
+      }
+    });
     test('3. 표지판: JSON 규칙이 내장 규칙과 일치한다', () async {
       const coords = <(int, int, int)>[
         (2, 31, 44),

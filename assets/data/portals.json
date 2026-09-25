@@ -2,43 +2,363 @@
   "version": 1,
   "description": "원작 LOREENT.PAS / LORESUB.PAS Load 기반 맵 연결(포털) 및 표지판 메시지. rule에 x/y(정확) 또는 yMin/yMax/xMin/xMax(범위)를 쓴다.",
   "portals": [
-    { "map": 1, "x": 20, "y": 11, "targetMap": 6,  "targetX": 51, "targetY": 95, "name": "CASTLE LORE" },
-    { "map": 1, "x": 76, "y": 57, "targetMap": 7,  "targetX": 37, "targetY": 70, "name": "LASTDITCH" },
-    { "map": 1, "x": 17, "y": 89, "targetMap": 14, "targetX": 25, "targetY": 45, "name": "MENACE" },
-    { "map": 1, "x": 20, "y": 6,  "targetMap": 27, "targetX": 15, "targetY": 45, "name": "ANOTHER LORE" },
-
-    { "map": 6, "yMin": 96, "targetMap": 1, "targetX": 20, "targetY": 12, "name": "GROUND FIELD" },
-    { "map": 6, "x": 51, "y": 96, "targetMap": 1, "targetX": 20, "targetY": 12, "name": "GROUND FIELD" },
-    { "map": 7, "yMin": 71, "targetMap": 1, "targetX": 76, "targetY": 58, "name": "GROUND FIELD" },
-
-    { "map": 2, "x": 19, "y": 26, "targetMap": 8,  "targetX": 38, "targetY": 70, "name": "VALIANT PEOPLES" },
-    { "map": 2, "x": 31, "y": 82, "targetMap": 9,  "targetX": 26, "targetY": 45, "name": "GAIA TERRA" },
-    { "map": 2, "x": 82, "y": 47, "targetMap": 15, "targetX": 25, "targetY": 70, "name": "QUAKE" },
-    { "map": 2, "x": 44, "y": 7,  "targetMap": 16, "targetX": 20, "targetY": 35, "name": "WIVERN" }
+    {
+      "map": 1,
+      "x": 20,
+      "y": 11,
+      "targetMap": 6,
+      "targetX": 51,
+      "targetY": 95,
+      "name": "CASTLE LORE"
+    },
+    {
+      "map": 1,
+      "x": 76,
+      "y": 57,
+      "targetMap": 7,
+      "targetX": 37,
+      "targetY": 70,
+      "name": "LASTDITCH"
+    },
+    {
+      "map": 1,
+      "x": 17,
+      "y": 89,
+      "targetMap": 14,
+      "targetX": 25,
+      "targetY": 45,
+      "name": "MENACE"
+    },
+    {
+      "map": 1,
+      "x": 20,
+      "y": 6,
+      "targetMap": 27,
+      "targetX": 15,
+      "targetY": 45,
+      "name": "ANOTHER LORE"
+    },
+    {
+      "map": 2,
+      "x": 19,
+      "y": 26,
+      "targetMap": 8,
+      "targetX": 38,
+      "targetY": 70,
+      "name": "VALIANT PEOPLES"
+    },
+    {
+      "map": 2,
+      "x": 31,
+      "y": 82,
+      "targetMap": 9,
+      "targetX": 26,
+      "targetY": 45,
+      "name": "GAIA TERRA"
+    },
+    {
+      "map": 2,
+      "x": 82,
+      "y": 47,
+      "targetMap": 15,
+      "targetX": 25,
+      "targetY": 70,
+      "name": "QUAKE"
+    },
+    {
+      "map": 2,
+      "x": 44,
+      "y": 7,
+      "targetMap": 16,
+      "targetX": 20,
+      "targetY": 35,
+      "name": "WIVERN"
+    },
+    {
+      "map": 6,
+      "x": 51,
+      "y": 96,
+      "targetMap": 1,
+      "targetX": 20,
+      "targetY": 12,
+      "name": "GROUND FIELD"
+    },
+    {
+      "map": 6,
+      "yMin": 96,
+      "targetMap": 1,
+      "targetX": 20,
+      "targetY": 12,
+      "name": "GROUND FIELD"
+    },
+    {
+      "map": 7,
+      "yMin": 71,
+      "targetMap": 1,
+      "targetX": 77,
+      "targetY": 57,
+      "name": "GROUND FIELD"
+    },
+    {
+      "map": 8,
+      "yMin": 71,
+      "targetMap": 2,
+      "targetX": 19,
+      "targetY": 27,
+      "name": "GROUND 2"
+    },
+    {
+      "map": 9,
+      "yMin": 46,
+      "targetMap": 2,
+      "targetX": 32,
+      "targetY": 82,
+      "name": "GROUND 2"
+    },
+    {
+      "map": 10,
+      "yMin": 71,
+      "targetMap": 3,
+      "targetX": 74,
+      "targetY": 20,
+      "name": "WATER FIELD"
+    },
+    {
+      "map": 11,
+      "yMin": 46,
+      "targetMap": 7,
+      "targetX": 38,
+      "targetY": 7,
+      "name": "LASTDITCH"
+    },
+    {
+      "map": 12,
+      "yMin": 71,
+      "targetMap": 8,
+      "targetX": 39,
+      "targetY": 7,
+      "name": "VALIANT PEOPLES"
+    },
+    {
+      "map": 13,
+      "yMin": 96,
+      "targetMap": 9,
+      "targetX": 26,
+      "targetY": 6,
+      "name": "GAIA TERRA"
+    },
+    {
+      "map": 14,
+      "yMin": 46,
+      "targetMap": 1,
+      "targetX": 18,
+      "targetY": 89,
+      "name": "MENACE 출구"
+    },
+    {
+      "map": 15,
+      "yMin": 71,
+      "targetMap": 2,
+      "targetX": 82,
+      "targetY": 48,
+      "name": "QUAKE 출구"
+    },
+    {
+      "map": 16,
+      "yMin": 36,
+      "targetMap": 2,
+      "targetX": 44,
+      "targetY": 8,
+      "name": "WIVERN 출구"
+    },
+    {
+      "map": 17,
+      "yMin": 95,
+      "targetMap": 3,
+      "targetX": 23,
+      "targetY": 63,
+      "name": "NOTICE 출구"
+    },
+    {
+      "map": 18,
+      "yMin": 95,
+      "targetMap": 3,
+      "targetX": 96,
+      "targetY": 43,
+      "name": "LOCKUP 출구"
+    },
+    {
+      "map": 19,
+      "yMin": 46,
+      "targetMap": 4,
+      "targetX": 48,
+      "targetY": 58,
+      "name": "EVIL GOD 출구"
+    },
+    {
+      "map": 20,
+      "yMin": 96,
+      "targetMap": 4,
+      "targetX": 82,
+      "targetY": 17,
+      "name": "DEN7 출구"
+    },
+    {
+      "map": 21,
+      "yMin": 46,
+      "targetMap": 4,
+      "targetX": 48,
+      "targetY": 36,
+      "name": "SWAMP KEEP 출구"
+    },
+    {
+      "map": 22,
+      "yMin": 46,
+      "targetMap": 5,
+      "targetX": 15,
+      "targetY": 32,
+      "name": "KEEP2 출구"
+    },
+    {
+      "map": 23,
+      "yMin": 46,
+      "targetMap": 5,
+      "targetX": 34,
+      "targetY": 15,
+      "name": "KEEP3 출구"
+    },
+    {
+      "map": 24,
+      "yMin": 46,
+      "targetMap": 22,
+      "targetX": 25,
+      "targetY": 24,
+      "name": "LAST SHELTER 출구"
+    },
+    {
+      "map": 25,
+      "yMin": 46,
+      "targetMap": 23,
+      "targetX": 25,
+      "targetY": 45,
+      "name": "K_DEN2 출구"
+    },
+    {
+      "map": 27,
+      "yMin": 50,
+      "targetMap": 1,
+      "targetX": 20,
+      "targetY": 8,
+      "name": "ANOTHER LORE 출구"
+    }
   ],
   "signs": [
-    { "map": 2,  "x": 31, "y": 44, "text": "푯말: WIVERN 가는길" },
-    { "map": 2,  "x": 29, "y": 50, "text": "푯말: 북쪽: VALIANT PEOPLES 가는길 / 남쪽: GAIA TERRA 가는길" },
-    { "map": 2,  "x": 35, "y": 72, "text": "푯말: 북쪽: VALIANT PEOPLES 가는길 / 남쪽: GAIA TERRA 가는길" },
-    { "map": 2,  "x": 44, "y": 77, "text": "푯말: 북동쪽: QUAKE 가는길 / 남서쪽: GAIA TERRA 가는길" },
-
-    { "map": 6,  "x": 51, "y": 84, "text": "푯말: '여기는 CASTLE LORE 성. 여러분을 환영합니다.' - Lord Ahn" },
-    { "map": 6,  "x": 24, "y": 31, "text": "푯말: '여기는 LORE 주점. 여러분 모두를 환영합니다 !!'" },
-    { "map": 6,  "x": 51, "y": 18, "text": "푯말: 'LORE 왕립 죄수 수용소 - 면회 사절'" },
-    { "map": 6,  "x": 52, "y": 18, "text": "푯말: 'LORE 왕립 죄수 수용소 - 면회 사절'" },
-
-    { "map": 7,  "x": 39, "y": 68, "text": "푯말: '여기는 LASTDITCH. 여러분을 환영합니다.'" },
-    { "map": 7,  "x": 39, "y": 8,  "text": "푯말: '여기는 PYRAMID의 입구'" },
-    { "map": 7,  "x": 54, "y": 9,  "text": "푯말: '여기는 GROUND GATE의 입구'" },
-
-    { "map": 8,  "x": 39, "y": 67, "text": "푯말: '여기는 VALIANT PEOPLES. 용사의 영혼은 대륙을 지킨다.'" },
-
-    { "map": 9,  "x": 24, "y": 26, "text": "푯말: '여기는 거인의 안식처 입구'" },
-    { "map": 9,  "mapDefault": true, "text": "푯말: '여기는 GAIA TERRA. 여러분을 환영합니다.'" },
-
-    { "map": 12, "x": 24, "y": 68, "text": "벽에 적힌 글: 'X 는 7'" },
-    { "map": 12, "x": 27, "y": 68, "text": "벽에 적힌 글: 'Y 는 9'" },
-    { "map": 12, "x": 25, "y": 63, "text": "벽에 적힌 글: '첫번째 문의 열쇠는 X + Y'" },
-    { "map": 12, "x": 26, "y": 42, "text": "벽에 적힌 글: 'Z 는 2 * Y + X'" }
+    {
+      "map": 2,
+      "x": 31,
+      "y": 44,
+      "text": "푯말: WIVERN 가는길"
+    },
+    {
+      "map": 2,
+      "x": 29,
+      "y": 50,
+      "text": "푯말: 북쪽: VALIANT PEOPLES 가는길 / 남쪽: GAIA TERRA 가는길"
+    },
+    {
+      "map": 2,
+      "x": 35,
+      "y": 72,
+      "text": "푯말: 북쪽: VALIANT PEOPLES 가는길 / 남쪽: GAIA TERRA 가는길"
+    },
+    {
+      "map": 2,
+      "x": 44,
+      "y": 77,
+      "text": "푯말: 북동쪽: QUAKE 가는길 / 남서쪽: GAIA TERRA 가는길"
+    },
+    {
+      "map": 6,
+      "x": 51,
+      "y": 84,
+      "text": "푯말: '여기는 CASTLE LORE 성. 여러분을 환영합니다.' - Lord Ahn"
+    },
+    {
+      "map": 6,
+      "x": 24,
+      "y": 31,
+      "text": "푯말: '여기는 LORE 주점. 여러분 모두를 환영합니다 !!'"
+    },
+    {
+      "map": 6,
+      "x": 51,
+      "y": 18,
+      "text": "푯말: 'LORE 왕립 죄수 수용소 - 면회 사절'"
+    },
+    {
+      "map": 6,
+      "x": 52,
+      "y": 18,
+      "text": "푯말: 'LORE 왕립 죄수 수용소 - 면회 사절'"
+    },
+    {
+      "map": 7,
+      "x": 39,
+      "y": 68,
+      "text": "푯말: '여기는 LASTDITCH. 여러분을 환영합니다.'"
+    },
+    {
+      "map": 7,
+      "x": 39,
+      "y": 8,
+      "text": "푯말: '여기는 PYRAMID의 입구'"
+    },
+    {
+      "map": 7,
+      "x": 54,
+      "y": 9,
+      "text": "푯말: '여기는 GROUND GATE의 입구'"
+    },
+    {
+      "map": 8,
+      "x": 39,
+      "y": 67,
+      "text": "푯말: '여기는 VALIANT PEOPLES. 용사의 영혼은 대륙을 지킨다.'"
+    },
+    {
+      "map": 9,
+      "x": 24,
+      "y": 26,
+      "text": "푯말: '여기는 거인의 안식처 입구'"
+    },
+    {
+      "map": 9,
+      "mapDefault": true,
+      "text": "푯말: '여기는 GAIA TERRA. 여러분을 환영합니다.'"
+    },
+    {
+      "map": 12,
+      "x": 24,
+      "y": 68,
+      "text": "벽에 적힌 글: 'X 는 7'"
+    },
+    {
+      "map": 12,
+      "x": 27,
+      "y": 68,
+      "text": "벽에 적힌 글: 'Y 는 9'"
+    },
+    {
+      "map": 12,
+      "x": 25,
+      "y": 63,
+      "text": "벽에 적힌 글: '첫번째 문의 열쇠는 X + Y'"
+    },
+    {
+      "map": 12,
+      "x": 26,
+      "y": 42,
+      "text": "벽에 적힌 글: 'Z 는 2 * Y + X'"
+    }
   ]
 }

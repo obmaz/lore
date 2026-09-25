@@ -53,7 +53,7 @@ class LoreDialogueManager {
   bool redAntaresJoined = false; // 맵 17 (75,52) - Red Antares
   bool spicaJoined = false; // 맵 18 (37,31) - Spica
 
-  /// 원작 `party.etc[16] bit1` - 맵 1 (20,39)에서 Ancient Evil을 만난 상태.
+  /// 원작 `party.etc[16] bit1` - 맵 4 (20,39)에서 Ancient Evil을 만난 상태.
   bool ancientEvilMet = false;
 
   /// 원작 `LOREBATT.PAS:245 CastSpecial` - 특수 마법 미습득 시 문구.

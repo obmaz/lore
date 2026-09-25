@@ -12,7 +12,13 @@
 /// - `{"battle": {"title": "..", "monsters": [26, 8, 8]}}` 전투 개시
 /// - `{"teleport": {"x": 46, "y": 41, "map": 1}}`   강제 이동 (map 생략 시 현재 맵)
 /// - `{"setTile": {"x": 62, "y": 82, "tile": 44}}`  지형 변형 (통로 개방/상자 제거)
+/// - `{"equip": {"kind": "weapon", "index": 3, "power": 12, "prompt": true}}`
+///   장비 지급 (원작 `choosewhom` + `weapon := n`). `onlyUnarmed`면 무기 없는
+///   대원만 대상이 된다(원작 맵 6의 기본 무장).
 /// - `{"choice": {"prompt": "..", "options": [{"text": "..", "steps": [...]}]}}`
+///
+/// 좌표(`x`,`y`) 대신 `xMin`/`xMax`/`yMin`/`yMax`로 "열/행 전체" 트리거도
+/// 정의할 수 있다(원작 `if y = 44 then ...` 같은 조건).
 ///
 /// 조건(`require`):
 /// - `flag` / `flagNot`               플래그 설정/미설정
@@ -78,7 +84,7 @@ class ScriptOption {
 
 /// 스크립트 스텝 1개.
 class ScriptStep {
-  final String kind; // say / gold / food / flag / join / battle / choice
+  final String kind; // say / gold / food / flag / join / battle / choice / equip
   final String? text;
   final int? amount;
   final String? key;
@@ -94,6 +100,13 @@ class ScriptStep {
   final int? tileY;
   final int? tileValue;
 
+  /// equip 스텝 (장비 지급): 원작 `weapon := 3; wea_power := 12` 등.
+  final String? equipKind; // weapon | shield | armor
+  final int? equipIndex;
+  final int? equipPower;
+  final bool equipPrompt;
+  final bool equipOnlyUnarmed;
+
   const ScriptStep({
     required this.kind,
     this.text,
@@ -108,6 +121,11 @@ class ScriptStep {
     this.tileX,
     this.tileY,
     this.tileValue,
+    this.equipKind,
+    this.equipIndex,
+    this.equipPower,
+    this.equipPrompt = false,
+    this.equipOnlyUnarmed = false,
   });
 }
 
@@ -116,8 +134,17 @@ class LoreScript {
   final String id;
   final String trigger; // step | talk
   final int map;
-  final int x;
-  final int y;
+
+  /// 정확 좌표(없으면 아래 영역 조건으로 판정한다).
+  final int? x;
+  final int? y;
+
+  /// 영역(행/열) 트리거. 원작의 `if y = 44 then ...` 같은 조건을 그대로 옮긴다.
+  final int? xMin;
+  final int? xMax;
+  final int? yMin;
+  final int? yMax;
+
   final bool once;
   final ScriptRequire require;
   final List<ScriptStep> steps;
@@ -126,12 +153,30 @@ class LoreScript {
     required this.id,
     required this.trigger,
     required this.map,
-    required this.x,
-    required this.y,
+    this.x,
+    this.y,
+    this.xMin,
+    this.xMax,
+    this.yMin,
+    this.yMax,
     required this.once,
     required this.require,
     required this.steps,
   });
+
+  /// 이 스크립트가 (mapId, tx, ty)에서 발동되는지 검사한다.
+  bool matches(String triggerName, int mapId, int tx, int ty) {
+    if (trigger != triggerName || map != mapId) return false;
+    if (x != null || y != null) {
+      if (x != null && x != tx) return false;
+      if (y != null && y != ty) return false;
+    }
+    if (xMin != null && tx < xMin!) return false;
+    if (xMax != null && tx > xMax!) return false;
+    if (yMin != null && ty < yMin!) return false;
+    if (yMax != null && ty > yMax!) return false;
+    return true;
+  }
 }
 
 /// 스크립트 실행 결과(누적).
@@ -152,6 +197,12 @@ class ScriptOutcome {
   /// 지형 변형 목록 (원작 `map[x,y] := 값`).
   final List<({int? map, int x, int y, int tile})> tileChanges;
 
+  /// 장비 지급 목록 (원작 `weapon := n` / `shield := n` / `armor := n`).
+  final List<
+    ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
+  >
+  equips;
+
   const ScriptOutcome({
     this.messages = const [],
     this.goldDelta = 0,
@@ -164,6 +215,7 @@ class ScriptOutcome {
     this.teleportX,
     this.teleportY,
     this.tileChanges = const [],
+    this.equips = const [],
   });
 }
 
@@ -252,18 +304,14 @@ class LoreScriptEngine {
   /// 좌표에 해당하는 스크립트를 찾는다(조건 검사 포함).
   LoreScript? find(String trigger, int mapId, int x, int y, ScriptContext ctx) {
     for (final s in _scripts) {
-      if (s.trigger != trigger || s.map != mapId || s.x != x || s.y != y) {
-        continue;
-      }
+      if (!s.matches(trigger, mapId, x, y)) continue;
       if (s.once && consumedScripts.contains(s.id)) continue;
       if (!_meets(s.require, ctx)) continue;
       return s;
     }
     // 조건을 만족하는 스크립트가 없으면 "안내용" 스크립트(조건 부정)를 찾는다.
     for (final s in _scripts) {
-      if (s.trigger != trigger || s.map != mapId || s.x != x || s.y != y) {
-        continue;
-      }
+      if (!s.matches(trigger, mapId, x, y)) continue;
       if (s.once && consumedScripts.contains(s.id)) continue;
       if (s.require.notMindReadOrLowEsp &&
           (!ctx.mindReadActive || ctx.maxEspLevel < 5)) {
@@ -311,6 +359,9 @@ class LoreScriptEngine {
     var tileChanges = List<({int? map, int x, int y, int tile})>.from(
       acc.tileChanges,
     );
+    var equips = List<
+      ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
+    >.from(acc.equips);
 
     for (var i = 0; i < steps.length; i++) {
       final step = steps[i];
@@ -347,6 +398,15 @@ class LoreScriptEngine {
             tile: step.tileValue!,
           ));
           break;
+        case 'equip':
+          equips.add((
+            kind: step.equipKind!,
+            index: step.equipIndex!,
+            power: step.equipPower ?? 0,
+            prompt: step.equipPrompt,
+            onlyUnarmed: step.equipOnlyUnarmed,
+          ));
+          break;
         case 'choice':
           final run = ScriptRun._(
             script,
@@ -363,6 +423,7 @@ class LoreScriptEngine {
               teleportX: teleportX,
               teleportY: teleportY,
               tileChanges: tileChanges,
+              equips: equips,
             ),
             choicePrompt: step.prompt,
             choiceTexts: step.options!.map((o) => o.text).toList(),
@@ -387,6 +448,7 @@ class LoreScriptEngine {
         teleportX: teleportX,
         teleportY: teleportY,
         tileChanges: tileChanges,
+        equips: equips,
       ),
     );
   }
@@ -407,8 +469,12 @@ class LoreScriptEngine {
       id: json['id'] as String,
       trigger: json['trigger'] as String? ?? 'step',
       map: json['map'] as int,
-      x: json['x'] as int,
-      y: json['y'] as int,
+      x: json['x'] as int?,
+      y: json['y'] as int?,
+      xMin: json['xMin'] as int?,
+      xMax: json['xMax'] as int?,
+      yMin: json['yMin'] as int?,
+      yMax: json['yMax'] as int?,
       once: json['once'] == true,
       require: ScriptRequire.fromJson(json['require'] as Map<String, dynamic>?),
       steps: _parseSteps(json['steps'] as List<dynamic>),
@@ -471,6 +537,20 @@ class LoreScriptEngine {
             tileX: t['x'] as int,
             tileY: t['y'] as int,
             tileValue: t['tile'] as int,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('equip')) {
+        final e = m['equip'] as Map<String, dynamic>;
+        steps.add(
+          ScriptStep(
+            kind: 'equip',
+            equipKind: e['kind'] as String,
+            equipIndex: e['index'] as int,
+            equipPower: e['power'] as int? ?? 0,
+            equipPrompt: e['prompt'] == true,
+            equipOnlyUnarmed: e['onlyUnarmed'] == true,
           ),
         );
         matched = true;

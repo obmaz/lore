@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -261,9 +262,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
   Future<void> _driveScript(ScriptRun run) async {
     var current = run;
     while (true) {
-      _applyScriptOutcome(current);
+      await _applyScriptOutcome(current);
       final options = current.pendingChoice;
       if (options == null) return;
+      if (!mounted) return;
 
       final chosen = await showDialog<int>(
         context: context,
@@ -314,12 +316,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
   }
 
-  /// 스크립트 결과(메시지/보상/플래그/동료/전투)를 게임 상태에 반영한다.
-  void _applyScriptOutcome(ScriptRun run) {
+  /// 스크립트 결과(메시지/보상/플래그/동료/장비/전투)를 게임 상태에 반영한다.
+  Future<void> _applyScriptOutcome(ScriptRun run) async {
     final outcome = run.outcome;
 
     for (final m in outcome.messages) {
       _addLog(m);
+    }
+
+    for (final equip in outcome.equips) {
+      await _applyScriptEquip(equip);
     }
 
     if (outcome.goldDelta != 0) {
@@ -380,6 +386,107 @@ class _MainGameScreenState extends State<MainGameScreen> {
           .map((id) => LoreData.instance.monster(id))
           .toList();
       _startBossBattle(enemies);
+    }
+  }
+
+  /// 원작 `choosewhom` + 장비 지급 (`weapon := 3; wea_power := 12`).
+  ///
+  /// `prompt`가 참이면 원작과 같이 누가 장착할지 물어보고, 거절하면
+  /// `asyouwish`("당신이 바란다면 ...") 를 남긴다.
+  Future<void> _applyScriptEquip(
+    ({String kind, int index, int power, bool prompt, bool onlyUnarmed}) equip,
+  ) async {
+    final targets = <int>[];
+
+    if (equip.prompt) {
+      final chosen = await showDialog<int>(
+        context: context,
+        barrierDismissible: false,
+        builder: (ctx) => AlertDialog(
+          backgroundColor: RetroTheme.black,
+          shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+          title: Text(
+            '누가 이 장비를 장착하겠습니까 ?',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.yellow,
+              fontSize: 12,
+            ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (var i = 0; i < _party.length; i++)
+                if (_party[i].name.isNotEmpty)
+                  ListTile(
+                    dense: true,
+                    title: Text(
+                      '${i + 1}번 ${_party[i].name} (${_party[i].playerClass.koreanName})',
+                      style: RetroTheme.dosFont.copyWith(
+                        color: RetroTheme.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                    onTap: () => Navigator.of(ctx).pop(i),
+                  ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(-1),
+              child: Text(
+                '취소 (ESC)',
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.lightRed,
+                  fontSize: 11,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+      if (chosen == null || chosen < 0) {
+        _addLog(LoreFieldLogic.asYouWish);
+        return;
+      }
+      targets.add(chosen);
+    } else {
+      for (var i = 0; i < _party.length; i++) {
+        final m = _party[i];
+        if (m.name.isEmpty) continue;
+        // 원작 맵 6: 무기가 없는 대원만 기본 무장을 한다.
+        if (equip.kind == 'weapon' && equip.onlyUnarmed && m.weapon != 0) {
+          continue;
+        }
+        targets.add(i);
+      }
+    }
+
+    if (targets.isEmpty) {
+      _addLog(LoreFieldLogic.asYouWish);
+      return;
+    }
+
+    for (final index in targets) {
+      final member = _party[index];
+      setState(() {
+        switch (equip.kind) {
+          case 'weapon':
+            member.equipWeaponRaw(equip.index, equip.power);
+            break;
+          case 'shield':
+            member.equipShieldRaw(equip.index, equip.power);
+            break;
+          case 'armor':
+            member.equipArmorRaw(equip.index, equip.power);
+            break;
+        }
+      });
+      final itemName = switch (equip.kind) {
+        'weapon' => member.weaponName,
+        'shield' => member.shieldName,
+        _ => member.armorName,
+      };
+      _addLog('${member.name} 이(가) $itemName 을(를) 장착했다.');
     }
   }
 
@@ -546,7 +653,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _scriptContext(),
     );
     if (scriptRun != null) {
-      _applyScriptOutcome(scriptRun);
+      unawaited(_applyScriptOutcome(scriptRun));
       return;
     }
 

@@ -6,8 +6,10 @@
 
 사용법:
     python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS
+    python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS --json
     python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORETALK.PAS
 """
+import json
 import re
 import sys
 
@@ -25,10 +27,18 @@ EFFECTS = [
     'map[',
     'loadmap',
     'gameover',
+    'joinenemy',
+    'silent_scroll',
+    'scroll(',
 ]
 
-MAP_CASE = re.compile(r'^\s{0,9}(\d+)\s*:\s*(begin)?\s*$')
+CASE = re.compile(r'^(\s*)case\s+party\.map\s+of\b')
+# `6 : begin` 처럼 begin 이 붙거나, `6 : if on(...)` 처럼 바로 문장이 오는 경우도 있다.
+LABEL = re.compile(r'^(\s*)(\d+)\s*:\s*(begin|if\b.*)?\s*$')
 ON = re.compile(r'\bon\((\d+)\s*,\s*(\d+)\)|\bat\((\d+)\s*,\s*(\d+)\)')
+
+# 좌표 블록 안에서 관찰할 앞쪽 줄 수
+WINDOW = 45
 
 
 def decode(raw: bytes) -> str:
@@ -38,34 +48,93 @@ def decode(raw: bytes) -> str:
         return raw.decode('latin-1')
 
 
-def main() -> int:
-    if len(sys.argv) < 2:
-        print(__doc__)
-        return 1
-    path = sys.argv[1]
-    lines = open(path, 'rb').read().split(b'\n')
+def scan(path: str):
+    """(이벤트 목록, 맵 시작 줄 목록)을 돌려준다.
 
+    이벤트: [(map_id, line_no, x, y, [effects])]
+    맵 시작: [(map_id, line_no)]
+    """
+    lines = open(path, 'rb').read().split(b'\n')
+    decoded = [decode(line).rstrip() for line in lines]
+
+    events = []
+    map_starts = []
+    case_indents = []  # 열려 있는 `case party.map of` 들여쓰기 스택
     current_map = None
-    map_start = None
-    for idx, raw in enumerate(lines):
-        line = decode(raw).rstrip()
-        # `case party.map of` 이후의 최상위 "N : begin" 이 맵 블록 시작
-        m = MAP_CASE.match(line)
-        if m and 'party.map' in decode(b'\n'.join(lines[max(0, idx - 12):idx])):
-            current_map = int(m.group(1))
-            map_start = idx + 1
-            print(f'\n### MAP {current_map} (line {map_start})')
+
+    for idx, line in enumerate(decoded):
+        if not line.strip():
             continue
+        indent = len(line) - len(line.lstrip())
+
+        m_case = CASE.match(line)
+        if m_case:
+            case_indents.append(len(m_case.group(1)))
+            current_map = None
+            continue
+
+        # 열린 case 블록 정리: 같은 들여쓰기 이하의 `end` 를 만나면 블록 종료
+        while case_indents and indent <= case_indents[-1] and re.match(
+            r'^\s*end\b', line
+        ):
+            case_indents.pop()
+        if not case_indents:
+            current_map = None
+
+        if case_indents:
+            m_label = LABEL.match(line)
+            if m_label and indent == case_indents[-1] + 3:
+                current_map = int(m_label.group(2))
+                map_starts.append((current_map, idx + 1))
+                # `6 : if on(62,82) then ...` 처럼 라벨 뒤에 바로 조건이 오면
+                # 같은 줄의 좌표도 이벤트로 잡아야 하므로 continue 하지 않는다.
+                if not (m_label.group(3) or '').startswith('if'):
+                    continue
+
         if current_map is None:
             continue
+
         on = ON.search(line)
-        if on:
-            x = on.group(1) or on.group(3)
-            y = on.group(2) or on.group(4)
-            # 이 조건 블록의 다음 40줄 안에서 효과를 찾는다
-            window = '\n'.join(decode(l) for l in lines[idx:idx + 40])
-            found = [e for e in EFFECTS if e in window]
-            print(f'  line {idx + 1:5d}  on({x},{y})  -> {", ".join(found) or "-"}')
+        if not on:
+            continue
+        x = int(on.group(1) or on.group(3))
+        y = int(on.group(2) or on.group(4))
+        window = '\n'.join(decoded[idx:idx + WINDOW])
+        found = [e for e in EFFECTS if e in window]
+        events.append((current_map, idx + 1, x, y, found))
+    return events, map_starts
+
+
+def main() -> int:
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    as_json = '--json' in sys.argv
+    if not args:
+        print(__doc__)
+        return 1
+
+    events, map_starts = scan(args[0])
+    if as_json:
+        print(json.dumps(
+            {
+                'maps': [{'map': m, 'line': line} for m, line in map_starts],
+                'events': [
+                    {'map': m, 'line': line, 'x': x, 'y': y, 'effects': e}
+                    for m, line, x, y, e in events
+                ],
+            },
+            ensure_ascii=False,
+            indent=2,
+        ))
+        return 0
+
+    starts = dict(map_starts)
+    last_map = None
+    for m, line, x, y, effects in events:
+        if m != last_map:
+            print(f'\n### MAP {m} (line {starts.get(m, "?")})')
+            last_map = m
+        print(f'  line {line:5d}  on({x},{y})  -> {", ".join(effects) or "-"}')
+    print(f'\n총 {len(events)}개 좌표 이벤트 / 맵 {sorted(starts)}')
     return 0
 
 

@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 28);
+      expect(LoreScriptEngine.instance.scripts.length, 50);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -148,15 +148,15 @@ void main() {
       expect(change.tile, 44);
       expect(change.map, isNull); // 현재 맵에 적용
 
-      // 맵 1 (20,39) Ancient Evil: 첫 방문은 대륙 안내 + 플래그
-      final first = LoreScriptEngine.instance.startTalk(1, 20, 39, noCtx)!;
+      // 맵 4 (20,39) Ancient Evil: 첫 방문은 대륙 안내 + 플래그 (원작 LORESPEC 맵 4)
+      final first = LoreScriptEngine.instance.startTalk(4, 20, 39, noCtx)!;
       expect(first.outcome.setFlags, contains('ancientEvilMet'));
       expect(first.outcome.teleportX, isNull);
       expect(first.outcome.messages.length, 5);
 
       // 재방문은 비밀 통로로 강제 이동 (원작 x := 46; y := 41)
       final later = LoreScriptEngine.instance.startTalk(
-        1,
+        4,
         20,
         39,
         const ScriptContext(flags: {'ancientEvilMet'}),
@@ -174,6 +174,104 @@ void main() {
       expect(LoreScriptEngine.instance.scripts, isEmpty);
       expect(LoreScriptEngine.instance.startStep(9, 10, 24, noCtx), isNull);
       expect(LoreScriptEngine.instance.startTalk(12, 12, 48, noCtx), isNull);
+    });
+
+    test('10. 원작 잔여 좌표 이벤트 이관 (맵 4/6/11/14/15)', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+
+      // 1) 맵 4 (40,18) 공간 이동 (원작 x := 46; y := 41)
+      final jump = engine.startStep(4, 40, 18, noCtx)!;
+      expect(jump.outcome.teleportX, 46);
+      expect(jump.outcome.teleportY, 41);
+      expect(jump.outcome.messages.single, contains('공간 이동'));
+
+      // 2) 맵 4 (26,16) Draconian: 강의 → 재방문 시 영입 선택
+      final lecture = engine.startStep(4, 26, 16, noCtx)!;
+      expect(lecture.outcome.setFlags, contains('draconianMet'));
+      final join = engine.startStep(
+        4,
+        26,
+        16,
+        const ScriptContext(flags: {'draconianMet'}),
+      )!;
+      expect(join.pendingChoice, isNotNull);
+      final joined = join.choose(0).outcome.recruits.single;
+      expect(joined.key, 'draconian');
+      expect(joined.slot, 4); // 원작 join(62,6) = 6번 슬롯
+      // 원작 join(62,6)은 레벨 17로 편입시킨다.
+      expect(LoreJoin.byKey('draconian')!.battleLevel, 17);
+
+      // 3) 맵 6 (51,12) 수감소 병사 전투 (2명 → 재방문 7명)
+      final prison = engine.startStep(6, 51, 12, noCtx)!;
+      expect(prison.outcome.battleMonsters, [26, 26]);
+      expect(prison.outcome.tileChanges.length, 4);
+      expect(prison.outcome.setFlags, contains('prisonBattleDone'));
+      final prisonAgain = engine.startStep(
+        6,
+        51,
+        12,
+        const ScriptContext(flags: {'prisonBattleDone'}),
+      )!;
+      expect(prisonAgain.outcome.battleMonsters.length, 7);
+
+      // 4) 맵 6 (41,79) 기본 무장 (무기 없는 대원만)
+      final arm = engine.startStep(6, 41, 79, noCtx)!;
+      final equip = arm.outcome.equips.single;
+      expect(equip.kind, 'weapon');
+      expect(equip.index, 1);
+      expect(equip.power, 5);
+      expect(equip.onlyUnarmed, isTrue);
+
+      // 5) 맵 11 y=44 오이디푸스의 창 (행 전체 트리거) + 선택 대화상자
+      final spear = engine.startStep(11, 30, 44, noCtx)!;
+      expect(spear.outcome.equips.single.kind, 'weapon');
+      expect(spear.outcome.equips.single.index, 3);
+      expect(spear.outcome.equips.single.power, 12);
+      expect(spear.outcome.equips.single.prompt, isTrue);
+      // 같은 행(y=44)의 다른 x에서도 발동하고, 다른 행에서는 발동하지 않는다.
+      final oedipus = engine.scripts.firstWhere((s) => s.id == 'oedipus-spear');
+      expect(oedipus.matches('step', 11, 7, 44), isTrue);
+      expect(oedipus.matches('step', 11, 7, 43), isFalse);
+      expect(oedipus.matches('step', 10, 7, 44), isFalse);
+
+      // 6) 맵 11 y=24 미이라의 방 (Sphinx ×2 + Major Mummy)
+      final mummy = engine.startStep(11, 12, 24, noCtx)!;
+      expect(mummy.outcome.battleMonsters, [35, 35, 26]);
+
+      // 7) 맵 14 (16,20) 황금의 방패 / 맵 15 (14,7) 방패, (45,19) 갑옷
+      expect(engine.startStep(14, 16, 20, noCtx)!.outcome.equips.single.kind, 'shield');
+      expect(engine.startStep(15, 14, 7, noCtx)!.outcome.equips.single.kind, 'shield');
+      expect(engine.startStep(15, 45, 19, noCtx)!.outcome.equips.single.kind, 'armor');
+
+      // 8) 맵 15 y=27 QUAKE 보스 (Zombie ×2 + ArchiGagoyle)
+      expect(engine.startStep(15, 20, 27, noCtx)!.outcome.battleMonsters, [36, 36, 42]);
+    });
+
+    test('11. 원작 맵 15 (y=48) 보물은 6000 → 4000 두 단계로 지급된다', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+
+      final first = engine.startStep(15, 10, 48, noCtx)!;
+      expect(first.outcome.goldDelta, 6000);
+      // 첫 보상을 받은 뒤에는 두 번째 좌표에서 4000을 받는다.
+      final second = engine.startStep(
+        15,
+        40,
+        48,
+        const ScriptContext(flags: {'quakeGoldA'}),
+      )!;
+      expect(second.outcome.goldDelta, 4000);
+      // 두 단계를 모두 마치면 더 이상 보상이 없다.
+      expect(
+        engine.startStep(
+          15,
+          11,
+          48,
+          const ScriptContext(flags: {'quakeGoldA', 'quakeGoldB'}),
+        ),
+        isNull,
+      );
     });
   });
 }

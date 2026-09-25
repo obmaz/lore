@@ -194,7 +194,7 @@ void main() {
       // 같은 좌표를 다시 밟아도 보상은 한 번뿐이다.
       expect(events.checkEvent(9, 10, 24, party), isNull);
       // 다른 좌표는 별개로 획득된다.
-      expect(events.checkEvent(10, 20, 30, party)!.goldGained, 5000);
+      expect(events.checkEvent(11, 20, 30, party)!.goldGained, 5000);
       expect(events.checkEvent(14, 6, 6, party)!.goldGained, 1000);
       expect(events.checkEvent(14, 18, 10, party)!.goldGained, 2500);
       expect(events.checkEvent(14, 31, 8, party)!.goldGained, 1500);

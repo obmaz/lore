@@ -470,12 +470,25 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
    (적용 위치: 맵 6 (62,82) 상자, 맵 1 (20,39) Ancient Evil 비밀 통로)
 3. **`wantexit` 게이트별 분기** ✅ 완료: 맵별 목적지를 `assets/data/portals.json`의
    포털 표(정확 좌표 + `yMin` 범위 조건)로 옮겨 코드 수정 없이 편집할 수 있다.
-4. **남은 서사형 좌표 이벤트**: 맵 1~26의 `if on(x,y)` 블록 중 카메라 스크롤 연출이나
-   몬스터 소환(`joinenemy`)처럼 전투 연출이 결합된 일부 이벤트는 아직 Dart/스크립트에
-   모두 반영되지 않았다. 스크립트 스키마에 `battle`/`teleport` 스텝이 있으므로 계속
-   추가 이관할 수 있다.
+4. **남은 서사형 좌표 이벤트** ✅ 대부분 완료: 원작 `LORESPEC.PAS`의
+   `if y = N then ...` 처럼 **행/구역 단위 조건**을 스크립트의 `xMin/xMax/yMin/yMax`
+   로 옮겼고, `equip` 스텝(장비 지급)을 추가해 다음을 이관했다.
+   - 맵 4: (40,18) 공간 이동, (26,16) Draconian 강의 + 영입(6번 슬롯 고정)
+   - 맵 6: (51,12) 수감소 병사 전투(2명 → 재방문 7명), (41,79) 기본 무장
+   - 맵 11: (y=44) 오이디푸스의 창, (y=24) 미이라의 방(Sphinx ×2 + Major Mummy)
+   - 맵 14: (16,20) 황금의 방패, (25,8)/(26,8) MENACE 중심 도달
+   - 맵 15: (14,7) 황금의 방패, (45,19) 황금의 갑옷, (y=27) Zombie ×2 +
+     ArchiGagoyle, (y=48) 보물 6000 → 4000 두 단계
+   - 맵 출구(wantexit) 21곳을 `portals.json`의 범위 규칙으로 옮겼다.
+   남은 것은 **카메라 스크롤 연출 정밀 재현**(원작 `scroll(FALSE)`로 다른 장소를
+   미리 보여주는 연출)과 LORE 성 출구의 Skeleton 영입뿐이며, 둘 다 스크립트
+   스키마 확장으로 이어서 이관할 수 있다.
 5. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
    아니므로 이식 대상에서 제외한다.
+6. **원작과 다른 근사 이벤트 정리 필요**: `lib/game/lore_dungeon_event_manager.dart`의
+   보스전·보물상자 연출은 초기 이식 단계에서 좌표를 임의로 잡은 근사치로, 지금은
+   원작 좌표를 옮긴 `scripts.json`이 **우선 적용**된다(JSON에 같은 좌표가 있으면
+   JSON이 실행됨). 원작 대조가 끝난 만큼 근사 이벤트를 제거하는 정리가 남았다.
 
 ---
 
@@ -491,9 +504,9 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `items.json` | 무기 10 / 방패 6 / 갑옷 6 (위력·가격) | `LoreData.instance.weapon/shield/armor(id)` |
 | `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
 | `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
-| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 | `LoreScriptEngine.instance` |
-| `portals.json` | 맵 연결(포털) + 표지판 문구 | `LoreWorldManager.instance.findPortal/getSignMessage` |
-| `dialogues.json` | 좌표 기반 NPC 대사 | `LoreDialogueManager.instance.getDialogue` |
+| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (50건) | `LoreScriptEngine.instance` |
+| `portals.json` | 맵 연결(포털 30) + 표지판 문구 (21) | `LoreWorldManager.instance.findPortal/getSignMessage` |
+| `dialogues.json` | 좌표 기반 NPC 대사 (30) | `LoreDialogueManager.instance.getDialogue` |
 
 `LoreData` / `LoreScriptEngine` / `LoreWorldManager` / `LoreDialogueManager`는 `main()`에서
 한 번 로드한다. JSON이 없거나 파싱에 실패하면 코드 내장 데이터로 폴백한다.
@@ -511,6 +524,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     { "battle": { "title": "미이라의 방", "monsters": [26, 8, 8] } },
     { "setTile": { "x": 62, "y": 82, "tile": 44 } },
     { "teleport": { "x": 46, "y": 41 } },
+    { "equip": { "kind": "weapon", "index": 3, "power": 12, "prompt": true } },
     { "choice": { "prompt": "?", "options": [
         { "text": "예", "steps": [ { "join": "rigel" } ] },
         { "text": "아니오", "steps": [ { "say": "..." } ] } ] } }
@@ -519,9 +533,14 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 ```
 * `trigger`: `step`(좌표 진입) / `talk`(NPC 접촉)
 * `once`: 1회성. 실행 이력은 `LoreScriptEngine.consumedScripts`에 남는다.
+* 좌표는 `x`/`y`(정확) 대신 `xMin`/`xMax`/`yMin`/`yMax`로 **행/구역 전체**를 쓸 수
+  있다(원작 `if y = 44 then ...` 조건 그대로).
 * `require`: `flag` / `flagNot` / `mindRead`(독심술 사용 가능) / `minEspLevel` /
   `notMindReadOrLowEsp`(조건 미충족 안내용)
-* `join` 키: `mad_joe`, `polaris`, `rigel`, `red_antares`, `spica`, `lore_hunter`
+* `join` 키: `mad_joe`, `polaris`, `rigel`, `red_antares`, `spica`, `lore_hunter`,
+  `draconian`, `skeleton`
+* `equip` 스텝: `kind`(weapon/shield/armor), `index`, `power`, `prompt`(누가 장착할지
+  선택 - 원작 `choosewhom`), `onlyUnarmed`(무기 없는 대원만 - 원작 맵 6 기본 무장)
 
 ### 8.3 이미지 에셋 (`assets/images/`)
 | 파일 | 내용 |

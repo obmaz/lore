@@ -64,9 +64,12 @@ class LoreDungeonEventManager {
 
   /// 원작 `LORESPEC.PAS`에서 `findgold(금액)`을 호출하는 좌표 목록.
   ///
-  /// - 맵 9  (TOWN4/GAIA TERRA) : etc[35] bit1~5  → 각 5000
-  /// - 맵 10 (TOWN5/WATER TOWN) : etc[33] bit1~7  → 각 5000
-  /// - 맵 14 (DEN1)             : etc[32] bit1~6  → 1000/2500/400/600/1500/1000
+  /// - 맵 9  (TOWN4/GAIA TERRA)  : etc[35] bit1~5  → 각 5000
+  /// - 맵 11 (T_DEN1/시련의 동굴 1): etc[33] bit1~7  → 각 5000
+  /// - 맵 14 (DEN1/MENACE)       : etc[32] bit1~6  → 1000/2500/400/600/1500/1000
+  ///
+  /// (맵 11은 다른 맵이 아니고 원작 LORESPEC의 `case party.map of` 라벨을 따른다.
+  ///  늪지/수중 마을이 아니라 시련의 동굴이다.)
   static const List<GoldSite> goldSites = [
     // 맵 9 (LORESPEC.PAS:356~374)
     GoldSite(mapId: 9, x: 10, y: 24, amount: 5000),
@@ -74,14 +77,14 @@ class LoreDungeonEventManager {
     GoldSite(mapId: 9, x: 15, y: 25, amount: 5000),
     GoldSite(mapId: 9, x: 16, y: 23, amount: 5000),
     GoldSite(mapId: 9, x: 18, y: 27, amount: 5000),
-    // 맵 10 (LORESPEC.PAS:466~492)
-    GoldSite(mapId: 10, x: 20, y: 30, amount: 5000),
-    GoldSite(mapId: 10, x: 18, y: 36, amount: 5000),
-    GoldSite(mapId: 10, x: 35, y: 32, amount: 5000),
-    GoldSite(mapId: 10, x: 33, y: 36, amount: 5000),
-    GoldSite(mapId: 10, x: 35, y: 14, amount: 5000),
-    GoldSite(mapId: 10, x: 14, y: 16, amount: 5000),
-    GoldSite(mapId: 10, x: 37, y: 12, amount: 5000),
+    // 맵 11 (LORESPEC.PAS:466~492)
+    GoldSite(mapId: 11, x: 20, y: 30, amount: 5000),
+    GoldSite(mapId: 11, x: 18, y: 36, amount: 5000),
+    GoldSite(mapId: 11, x: 35, y: 32, amount: 5000),
+    GoldSite(mapId: 11, x: 33, y: 36, amount: 5000),
+    GoldSite(mapId: 11, x: 35, y: 14, amount: 5000),
+    GoldSite(mapId: 11, x: 14, y: 16, amount: 5000),
+    GoldSite(mapId: 11, x: 37, y: 12, amount: 5000),
     // 맵 14 (LORESPEC.PAS:826~858)
     GoldSite(mapId: 14, x: 6, y: 6, amount: 1000),
     GoldSite(mapId: 14, x: 18, y: 10, amount: 2500),
@@ -121,7 +124,7 @@ class LoreDungeonEventManager {
     if (goldSite != null) return goldSite;
 
     // ------------------------------------------
-    // 1. 맵 1 (지상 필드): 100인분 식량 나무 (LORESPEC.PAS:28)
+    // 1. 맵 1 (지상 필드): 100인분 식량 발견 (LORESPEC.PAS:25~35)
     // ------------------------------------------
     if (mapId == 1 && tx == 94 && ty == 68) {
       if (!_dialogue.foodTreeHarvested) {

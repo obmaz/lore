@@ -320,103 +320,15 @@ class LoreWorldManager {
   }
 
   PortalInfo? _findPortalBuiltIn(int currentMapId, int x, int y) {
-    // 1. GROUND1 (맵 1) 에서 진입
-    if (currentMapId == 1) {
-      if (x == 20 && y == 11) {
-        return const PortalInfo(
-          targetMapId: 6,
-          targetX: 51,
-          targetY: 95,
-          name: 'CASTLE LORE',
-        );
-      }
-      if (x == 76 && y == 57) {
-        return const PortalInfo(
-          targetMapId: 7,
-          targetX: 37,
-          targetY: 70,
-          name: 'LASTDITCH',
-        );
-      }
-      if (x == 17 && y == 89) {
-        return const PortalInfo(
-          targetMapId: 14,
-          targetX: 25,
-          targetY: 45,
-          name: 'MENACE',
-        );
-      }
-      if (x == 20 && y == 6) {
-        return const PortalInfo(
-          targetMapId: 27,
-          targetX: 15,
-          targetY: 45,
-          name: 'ANOTHER LORE',
-        );
-      }
+    for (final rule in _builtInPortals) {
+      if (!rule.matches(currentMapId, x, y)) continue;
+      return PortalInfo(
+        targetMapId: rule.targetMap,
+        targetX: rule.targetX,
+        targetY: rule.targetY,
+        name: rule.name,
+      );
     }
-
-    // 2. CASTLE LORE 성 (맵 6) 성문 -> 필드(GROUND1)로 출구
-    if (currentMapId == 6) {
-      if (y >= 96 || (x == 51 && y == 96)) {
-        return const PortalInfo(
-          targetMapId: 1,
-          targetX: 20,
-          targetY: 12,
-          name: 'GROUND FIELD',
-        );
-      }
-    }
-
-    // 3. LASTDITCH (맵 7) -> 출구
-    if (currentMapId == 7) {
-      if (y >= 71) {
-        return const PortalInfo(
-          targetMapId: 1,
-          targetX: 76,
-          targetY: 58,
-          name: 'GROUND FIELD',
-        );
-      }
-    }
-
-    // 4. GROUND2 (맵 2) 에서 진입
-    if (currentMapId == 2) {
-      if (x == 19 && y == 26) {
-        return const PortalInfo(
-          targetMapId: 8,
-          targetX: 38,
-          targetY: 70,
-          name: 'VALIANT PEOPLES',
-        );
-      }
-      if (x == 31 && y == 82) {
-        return const PortalInfo(
-          targetMapId: 9,
-          targetX: 26,
-          targetY: 45,
-          name: 'GAIA TERRA',
-        );
-      }
-      if (x == 82 && y == 47) {
-        return const PortalInfo(
-          targetMapId: 15,
-          targetX: 25,
-          targetY: 70,
-          name: 'QUAKE',
-        );
-      }
-      if (x == 44 && y == 7) {
-        return const PortalInfo(
-          targetMapId: 16,
-          targetX: 20,
-          targetY: 35,
-          name: 'WIVERN',
-        );
-      }
-    }
-
-    // 5. 일반 성문 타일(22)이나 탈출구 기본 fallback
     return null;
   }
 
@@ -570,3 +482,75 @@ class _SignRule {
     return null;
   }
 }
+
+/// JSON(`assets/data/portals.json`)을 읽지 못했을 때 쓰는 내장 포털 표.
+///
+/// 원작 `LOREENT.PAS`(마을 진입)와 `LORESPEC.PAS`(맵 출구 `wantexit`)의
+/// 목적지 좌표를 그대로 옮긴 것으로, JSON 규칙과 항상 같은 결과를 내야 한다
+/// (`test/world_rules_test.dart`가 둘을 대조한다).
+class _BuiltInPortal {
+  final int map;
+  final int? x;
+  final int? y;
+  final int? yMin;
+  final int targetMap;
+  final int targetX;
+  final int targetY;
+  final String name;
+
+  const _BuiltInPortal(
+    this.map, {
+    this.x,
+    this.y,
+    this.yMin,
+    required this.targetMap,
+    required this.targetX,
+    required this.targetY,
+    required this.name,
+  });
+
+  bool matches(int m, int tx, int ty) {
+    if (map != m) return false;
+    if (x != null && x != tx) return false;
+    if (y != null && y != ty) return false;
+    if (yMin != null && ty < yMin!) return false;
+    return true;
+  }
+}
+
+// ignore: constant_identifier_names
+const List<_BuiltInPortal> _builtInPortals = [
+  // 마을/던전 진입 (LOREENT.PAS entermode)
+  _BuiltInPortal(1, x: 20, y: 11, targetMap: 6, targetX: 51, targetY: 95, name: 'CASTLE LORE'),
+  _BuiltInPortal(1, x: 76, y: 57, targetMap: 7, targetX: 37, targetY: 70, name: 'LASTDITCH'),
+  _BuiltInPortal(1, x: 17, y: 89, targetMap: 14, targetX: 25, targetY: 45, name: 'MENACE'),
+  _BuiltInPortal(1, x: 20, y: 6, targetMap: 27, targetX: 15, targetY: 45, name: 'ANOTHER LORE'),
+  _BuiltInPortal(2, x: 19, y: 26, targetMap: 8, targetX: 38, targetY: 70, name: 'VALIANT PEOPLES'),
+  _BuiltInPortal(2, x: 31, y: 82, targetMap: 9, targetX: 26, targetY: 45, name: 'GAIA TERRA'),
+  _BuiltInPortal(2, x: 82, y: 47, targetMap: 15, targetX: 25, targetY: 70, name: 'QUAKE'),
+  _BuiltInPortal(2, x: 44, y: 7, targetMap: 16, targetX: 20, targetY: 35, name: 'WIVERN'),
+  _BuiltInPortal(6, x: 51, y: 96, targetMap: 1, targetX: 20, targetY: 12, name: 'GROUND FIELD'),
+
+  // 맵 출구 (LORESPEC.PAS wantexit)
+  _BuiltInPortal(6, yMin: 96, targetMap: 1, targetX: 20, targetY: 12, name: 'GROUND FIELD'),
+  _BuiltInPortal(7, yMin: 71, targetMap: 1, targetX: 77, targetY: 57, name: 'GROUND FIELD'),
+  _BuiltInPortal(8, yMin: 71, targetMap: 2, targetX: 19, targetY: 27, name: 'GROUND 2'),
+  _BuiltInPortal(9, yMin: 46, targetMap: 2, targetX: 32, targetY: 82, name: 'GROUND 2'),
+  _BuiltInPortal(10, yMin: 71, targetMap: 3, targetX: 74, targetY: 20, name: 'WATER FIELD'),
+  _BuiltInPortal(11, yMin: 46, targetMap: 7, targetX: 38, targetY: 7, name: 'LASTDITCH'),
+  _BuiltInPortal(12, yMin: 71, targetMap: 8, targetX: 39, targetY: 7, name: 'VALIANT PEOPLES'),
+  _BuiltInPortal(13, yMin: 96, targetMap: 9, targetX: 26, targetY: 6, name: 'GAIA TERRA'),
+  _BuiltInPortal(14, yMin: 46, targetMap: 1, targetX: 18, targetY: 89, name: 'MENACE 출구'),
+  _BuiltInPortal(15, yMin: 71, targetMap: 2, targetX: 82, targetY: 48, name: 'QUAKE 출구'),
+  _BuiltInPortal(16, yMin: 36, targetMap: 2, targetX: 44, targetY: 8, name: 'WIVERN 출구'),
+  _BuiltInPortal(17, yMin: 95, targetMap: 3, targetX: 23, targetY: 63, name: 'NOTICE 출구'),
+  _BuiltInPortal(18, yMin: 95, targetMap: 3, targetX: 96, targetY: 43, name: 'LOCKUP 출구'),
+  _BuiltInPortal(19, yMin: 46, targetMap: 4, targetX: 48, targetY: 58, name: 'EVIL GOD 출구'),
+  _BuiltInPortal(20, yMin: 96, targetMap: 4, targetX: 82, targetY: 17, name: 'DEN7 출구'),
+  _BuiltInPortal(21, yMin: 46, targetMap: 4, targetX: 48, targetY: 36, name: 'SWAMP KEEP 출구'),
+  _BuiltInPortal(22, yMin: 46, targetMap: 5, targetX: 15, targetY: 32, name: 'KEEP2 출구'),
+  _BuiltInPortal(23, yMin: 46, targetMap: 5, targetX: 34, targetY: 15, name: 'KEEP3 출구'),
+  _BuiltInPortal(24, yMin: 46, targetMap: 22, targetX: 25, targetY: 24, name: 'LAST SHELTER 출구'),
+  _BuiltInPortal(25, yMin: 46, targetMap: 23, targetX: 25, targetY: 45, name: 'K_DEN2 출구'),
+  _BuiltInPortal(27, yMin: 50, targetMap: 1, targetX: 20, targetY: 8, name: 'ANOTHER LORE 출구'),
+];

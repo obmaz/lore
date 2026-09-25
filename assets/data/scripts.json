@@ -68,9 +68,9 @@
       ]
     },
     {
-      "id": "gold-10-20-30",
+      "id": "gold-11-20-30",
       "trigger": "step",
-      "map": 10,
+      "map": 11,
       "x": 20,
       "y": 30,
       "once": true,
@@ -81,9 +81,9 @@
       ]
     },
     {
-      "id": "gold-10-18-36",
+      "id": "gold-11-18-36",
       "trigger": "step",
-      "map": 10,
+      "map": 11,
       "x": 18,
       "y": 36,
       "once": true,
@@ -94,9 +94,9 @@
       ]
     },
     {
-      "id": "gold-10-35-32",
+      "id": "gold-11-35-32",
       "trigger": "step",
-      "map": 10,
+      "map": 11,
       "x": 35,
       "y": 32,
       "once": true,
@@ -107,9 +107,9 @@
       ]
     },
     {
-      "id": "gold-10-33-36",
+      "id": "gold-11-33-36",
       "trigger": "step",
-      "map": 10,
+      "map": 11,
       "x": 33,
       "y": 36,
       "once": true,
@@ -120,9 +120,9 @@
       ]
     },
     {
-      "id": "gold-10-35-14",
+      "id": "gold-11-35-14",
       "trigger": "step",
-      "map": 10,
+      "map": 11,
       "x": 35,
       "y": 14,
       "once": true,
@@ -133,9 +133,9 @@
       ]
     },
     {
-      "id": "gold-10-14-16",
+      "id": "gold-11-14-16",
       "trigger": "step",
-      "map": 10,
+      "map": 11,
       "x": 14,
       "y": 16,
       "once": true,
@@ -146,9 +146,9 @@
       ]
     },
     {
-      "id": "gold-10-37-12",
+      "id": "gold-11-37-12",
       "trigger": "step",
-      "map": 10,
+      "map": 11,
       "x": 37,
       "y": 12,
       "once": true,
@@ -525,7 +525,7 @@
     {
       "id": "ancient-evil-first",
       "trigger": "talk",
-      "map": 1,
+      "map": 4,
       "x": 20,
       "y": 39,
       "once": true,
@@ -557,7 +557,7 @@
     {
       "id": "ancient-evil-later",
       "trigger": "talk",
-      "map": 1,
+      "map": 4,
       "x": 20,
       "y": 39,
       "once": false,
@@ -573,6 +573,721 @@
             "x": 46,
             "y": 41
           }
+        }
+      ]
+    },
+    {
+      "id": "map4-spacejump-40-18",
+      "trigger": "step",
+      "map": 4,
+      "x": 40,
+      "y": 18,
+      "once": false,
+      "steps": [
+        {
+          "say": "일행은 공간 이동이 되었다"
+        },
+        {
+          "teleport": {
+            "x": 46,
+            "y": 41
+          }
+        }
+      ]
+    },
+    {
+      "id": "draconian-lecture",
+      "trigger": "step",
+      "map": 4,
+      "x": 26,
+      "y": 16,
+      "once": true,
+      "require": {
+        "flagNot": "draconianMet"
+      },
+      "title": "Draconian의 피라밋",
+      "steps": [
+        {
+          "say": "여기는 인간과 드래곤의 중간 종족이며 혼란스런 세상을 피해 은둔하고있는 Draconian이란 자가 살고있는 피라밋이었다."
+        },
+        {
+          "say": "Draconian: \"나는 Draconian이라고 하오. 이런곳까지 사람이 찾아오리라고는 생각하지 못했는데 참 의외로군요. 나는 숨어 지내는 오랜 세월동안에 여러가지 학문을 연구하고 있었소. 특히 천문학에 대해서는 특별히 전념하여 다루었소.\""
+        },
+        {
+          "say": "Draconian: \"지금 우리가 살고있는 지구는 태양계에서 세번째로 위치한 행성인데 이상하게도 위성인 달이 지구보다도 더 오래되었다는 사실이 연구되었소. 또한 이 지구가 세차운동에 의해 2 등성이었던 북극성이 다른 별로 바뀐다는걸 알았소.\""
+        },
+        {
+          "say": "Draconian: \"마지막으로 알아낸것은 바로 당신이 응징하고자 하는 Necromancer 의 출처에 관한 것이오. 당신은 시그너스 X1과 같은 블랙홀에 대해서 알고있을 것이오. 이런 물리학적인 파라독스에 의해 그는 생겨났던것이오.\""
+        },
+        {
+          "say": "Draconian: \"Necromancer와 당신들의 운명은 언제까지나 쫒고 쫒기며 대립하여야하는 운명으로 탄생되었던 것이오. 이런 이유에서 당신은 그를 반드시 무찌를 수가 있다는 근거가 되는 것이오.\""
+        },
+        {
+          "flag": "draconianMet"
+        }
+      ]
+    },
+    {
+      "id": "draconian-join",
+      "trigger": "step",
+      "map": 4,
+      "x": 26,
+      "y": 16,
+      "once": true,
+      "require": {
+        "flag": "draconianMet",
+        "flagNot": "draconianJoined"
+      },
+      "title": "Draconian의 합류",
+      "steps": [
+        {
+          "say": "Draconian: \"나의 운명을 생각해 보니 나 역시 당신들을 필연적으로 만나 Necromancer를 물리쳐야 한다는걸 깨닫았소. 당신들 일행의 제일 뒤에서 도와주고 싶소. 어떻소.\""
+        },
+        {
+          "choice": {
+            "prompt": "어떻게 하시겠소 ?",
+            "options": [
+              {
+                "text": "저도 바라던 차입니다",
+                "steps": [
+                  {
+                    "join": "draconian",
+                    "slot": 4
+                  },
+                  {
+                    "flag": "draconianJoined"
+                  }
+                ]
+              },
+              {
+                "text": "별로 좋지는 않군요",
+                "steps": [
+                  {
+                    "say": "Draconian: \"다시 생각해보니 나는 당신들과 같이 싸울 운명이 아닌것 같소.\""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "prison-battle-first",
+      "trigger": "step",
+      "map": 6,
+      "x": 51,
+      "y": 12,
+      "once": true,
+      "require": {
+        "flagNot": "prisonBattleDone"
+      },
+      "title": "LORE 왕립 죄수 수용소",
+      "steps": [
+        {
+          "say": "아니! 당신이 우리들을 배신하고 죄수를 풀어주다니... 그렇다면 우리들은 결투로서 당신들과 승부할수 밖에 없군요."
+        },
+        {
+          "battle": {
+            "title": "수감소 병사",
+            "monsters": [
+              26,
+              26
+            ]
+          }
+        },
+        {
+          "say": "당신들은 수감소 병사들을 물리쳤다."
+        },
+        {
+          "setTile": {
+            "x": 51,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "prisonBattleDone"
+        }
+      ]
+    },
+    {
+      "id": "prison-battle-return",
+      "trigger": "step",
+      "map": 6,
+      "x": 51,
+      "y": 12,
+      "once": true,
+      "require": {
+        "flag": "prisonBattleDone",
+        "flagNot": "prisonBattleReturned"
+      },
+      "title": "수감소 병사들의 복수",
+      "steps": [
+        {
+          "say": "다시 돌아오다니, 이번에는 기어이 네놈들을 해치우고야 말겠다. 나의 친구들도 이번에 거들것이다."
+        },
+        {
+          "battle": {
+            "title": "수감소 병사",
+            "monsters": [
+              26,
+              26,
+              26,
+              26,
+              26,
+              26,
+              26
+            ]
+          }
+        },
+        {
+          "flag": "prisonBattleReturned"
+        }
+      ]
+    },
+    {
+      "id": "castle-arm-41-79",
+      "trigger": "step",
+      "map": 6,
+      "x": 41,
+      "y": 79,
+      "once": true,
+      "title": "기본 무장",
+      "steps": [
+        {
+          "say": "일행은 가장 기본적인 무기로 모두 무장을 하였다."
+        },
+        {
+          "setTile": {
+            "x": 41,
+            "y": 79,
+            "tile": 44
+          }
+        },
+        {
+          "equip": {
+            "kind": "weapon",
+            "index": 1,
+            "power": 5,
+            "onlyUnarmed": true
+          }
+        },
+        {
+          "flag": "castleBasicArmed"
+        }
+      ]
+    },
+    {
+      "id": "oedipus-spear",
+      "trigger": "step",
+      "map": 11,
+      "yMin": 44,
+      "yMax": 44,
+      "once": true,
+      "require": {
+        "flagNot": "oedipusSpearTaken"
+      },
+      "title": "오이디푸스의 창",
+      "steps": [
+        {
+          "say": "당신은 어떤 창을 발견했다."
+        },
+        {
+          "say": "그 창의 손잡이에 쓰인 문구를 따르면.."
+        },
+        {
+          "say": "이것은 오이디푸스의 창. 이것으로 전에 Sphinx 를 무찌르다."
+        },
+        {
+          "equip": {
+            "kind": "weapon",
+            "index": 3,
+            "power": 12,
+            "prompt": true
+          }
+        },
+        {
+          "flag": "oedipusSpearTaken"
+        }
+      ]
+    },
+    {
+      "id": "mummy-room",
+      "trigger": "step",
+      "map": 11,
+      "yMin": 24,
+      "yMax": 24,
+      "once": true,
+      "require": {
+        "flagNot": "mummyRoomCleared"
+      },
+      "title": "미이라의 방",
+      "steps": [
+        {
+          "say": "당신은 미이라의 방을 발견했다."
+        },
+        {
+          "battle": {
+            "title": "미이라의 방",
+            "monsters": [
+              35,
+              35,
+              26
+            ]
+          }
+        },
+        {
+          "say": "당신들은 Major Mummy 를 물리쳤다."
+        },
+        {
+          "say": "그리고 당신은 이 임무에 성공했다."
+        },
+        {
+          "flag": "mummyRoomCleared"
+        }
+      ]
+    },
+    {
+      "id": "golden-shield-menace",
+      "trigger": "step",
+      "map": 14,
+      "x": 16,
+      "y": 20,
+      "once": true,
+      "require": {
+        "flagNot": "goldenShieldMenaceTaken"
+      },
+      "title": "황금의 방패",
+      "steps": [
+        {
+          "say": "당신은 황금의 방패를 발견했다."
+        },
+        {
+          "equip": {
+            "kind": "shield",
+            "index": 5,
+            "power": 5,
+            "prompt": true
+          }
+        },
+        {
+          "flag": "goldenShieldMenaceTaken"
+        }
+      ]
+    },
+    {
+      "id": "menace-center-25-8",
+      "trigger": "step",
+      "map": 14,
+      "x": 25,
+      "y": 8,
+      "once": true,
+      "title": "MENACE의 중심",
+      "steps": [
+        {
+          "say": "여기가 'MENACE'의 중심이다."
+        },
+        {
+          "say": "당신의 탐험은 성공적이었다. 이제 Lord Ahn 에게 돌아가는 일만 남았다."
+        },
+        {
+          "flag": "menaceCenterReachedA"
+        }
+      ]
+    },
+    {
+      "id": "menace-center-26-8",
+      "trigger": "step",
+      "map": 14,
+      "x": 26,
+      "y": 8,
+      "once": true,
+      "title": "MENACE의 중심",
+      "steps": [
+        {
+          "say": "여기가 'MENACE'의 중심이다."
+        },
+        {
+          "say": "당신의 탐험은 성공적이었다. 이제 Lord Ahn 에게 돌아가는 일만 남았다."
+        },
+        {
+          "flag": "menaceCenterReachedB"
+        }
+      ]
+    },
+    {
+      "id": "golden-shield-quake",
+      "trigger": "step",
+      "map": 15,
+      "x": 14,
+      "y": 7,
+      "once": true,
+      "require": {
+        "flagNot": "goldenShieldQuakeTaken"
+      },
+      "title": "황금의 방패",
+      "steps": [
+        {
+          "say": "당신은 황금의 방패를 발견했다."
+        },
+        {
+          "equip": {
+            "kind": "shield",
+            "index": 5,
+            "power": 5,
+            "prompt": true
+          }
+        },
+        {
+          "flag": "goldenShieldQuakeTaken"
+        }
+      ]
+    },
+    {
+      "id": "golden-armor-quake",
+      "trigger": "step",
+      "map": 15,
+      "x": 45,
+      "y": 19,
+      "once": true,
+      "require": {
+        "flagNot": "goldenArmorQuakeTaken"
+      },
+      "title": "황금의 갑옷",
+      "steps": [
+        {
+          "say": "당신은 황금의 갑옷을 발견했다."
+        },
+        {
+          "equip": {
+            "kind": "armor",
+            "index": 5,
+            "power": 6,
+            "prompt": true
+          }
+        },
+        {
+          "flag": "goldenArmorQuakeTaken"
+        }
+      ]
+    },
+    {
+      "id": "quake-boss-room",
+      "trigger": "step",
+      "map": 15,
+      "yMin": 27,
+      "yMax": 27,
+      "once": true,
+      "require": {
+        "flagNot": "quakeBossCleared"
+      },
+      "title": "QUAKE 최심부",
+      "steps": [
+        {
+          "say": "Zombie 들과 ArchiGagoyle 이 길을 막아섰다 !"
+        },
+        {
+          "battle": {
+            "title": "QUAKE 최심부",
+            "monsters": [
+              36,
+              36,
+              42
+            ]
+          }
+        },
+        {
+          "flag": "quakeBossCleared"
+        }
+      ]
+    },
+    {
+      "id": "quake-gold-a-10",
+      "trigger": "step",
+      "map": 15,
+      "x": 10,
+      "y": 48,
+      "once": true,
+      "require": {
+        "flagNot": "quakeGoldA"
+      },
+      "steps": [
+        {
+          "gold": 6000
+        },
+        {
+          "setTile": {
+            "x": 10,
+            "y": 48,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 10,
+            "y": 47,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "quakeGoldA"
+        }
+      ]
+    },
+    {
+      "id": "quake-gold-a-11",
+      "trigger": "step",
+      "map": 15,
+      "x": 11,
+      "y": 48,
+      "once": true,
+      "require": {
+        "flagNot": "quakeGoldA"
+      },
+      "steps": [
+        {
+          "gold": 6000
+        },
+        {
+          "setTile": {
+            "x": 11,
+            "y": 48,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 11,
+            "y": 47,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "quakeGoldA"
+        }
+      ]
+    },
+    {
+      "id": "quake-gold-a-40",
+      "trigger": "step",
+      "map": 15,
+      "x": 40,
+      "y": 48,
+      "once": true,
+      "require": {
+        "flagNot": "quakeGoldA"
+      },
+      "steps": [
+        {
+          "gold": 6000
+        },
+        {
+          "setTile": {
+            "x": 40,
+            "y": 48,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 40,
+            "y": 47,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "quakeGoldA"
+        }
+      ]
+    },
+    {
+      "id": "quake-gold-a-41",
+      "trigger": "step",
+      "map": 15,
+      "x": 41,
+      "y": 48,
+      "once": true,
+      "require": {
+        "flagNot": "quakeGoldA"
+      },
+      "steps": [
+        {
+          "gold": 6000
+        },
+        {
+          "setTile": {
+            "x": 41,
+            "y": 48,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 41,
+            "y": 47,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "quakeGoldA"
+        }
+      ]
+    },
+    {
+      "id": "quake-gold-b-10",
+      "trigger": "step",
+      "map": 15,
+      "x": 10,
+      "y": 48,
+      "once": true,
+      "require": {
+        "flag": "quakeGoldA",
+        "flagNot": "quakeGoldB"
+      },
+      "steps": [
+        {
+          "gold": 4000
+        },
+        {
+          "setTile": {
+            "x": 10,
+            "y": 48,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 10,
+            "y": 47,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "quakeGoldB"
+        }
+      ]
+    },
+    {
+      "id": "quake-gold-b-11",
+      "trigger": "step",
+      "map": 15,
+      "x": 11,
+      "y": 48,
+      "once": true,
+      "require": {
+        "flag": "quakeGoldA",
+        "flagNot": "quakeGoldB"
+      },
+      "steps": [
+        {
+          "gold": 4000
+        },
+        {
+          "setTile": {
+            "x": 11,
+            "y": 48,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 11,
+            "y": 47,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "quakeGoldB"
+        }
+      ]
+    },
+    {
+      "id": "quake-gold-b-40",
+      "trigger": "step",
+      "map": 15,
+      "x": 40,
+      "y": 48,
+      "once": true,
+      "require": {
+        "flag": "quakeGoldA",
+        "flagNot": "quakeGoldB"
+      },
+      "steps": [
+        {
+          "gold": 4000
+        },
+        {
+          "setTile": {
+            "x": 40,
+            "y": 48,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 40,
+            "y": 47,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "quakeGoldB"
+        }
+      ]
+    },
+    {
+      "id": "quake-gold-b-41",
+      "trigger": "step",
+      "map": 15,
+      "x": 41,
+      "y": 48,
+      "once": true,
+      "require": {
+        "flag": "quakeGoldA",
+        "flagNot": "quakeGoldB"
+      },
+      "steps": [
+        {
+          "gold": 4000
+        },
+        {
+          "setTile": {
+            "x": 41,
+            "y": 48,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 41,
+            "y": 47,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "quakeGoldB"
         }
       ]
     }

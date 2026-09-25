@@ -153,6 +153,31 @@ class LoreJoin {
       ..ac = 4;
   }
 
+  /// 원작 `LORESPEC.PAS:135` - 늪지 대륙 피라밋의 Draconian (몬스터 #62 템플릿).
+  ///
+  /// 원작은 `enemydata[62].level := 17; join(62,6); enemydata[62].level := 19;`
+  /// 로 **레벨 17** 상태로 6번 슬롯에 편입시키고, 몬스터 템플릿 레벨은
+  /// 19 로 되돌려 둔다(재도전 시 적 레벨 유지).
+  static PartyMember draconian() {
+    final base = LoreData.instance.monster(62);
+    final member = PartyMember.fromMonsterTemplate(base, name: 'Draconian')
+      ..battleLevel = 17
+      ..experience = PartyMember.expTable[16]
+      ..hp = base.endurance * 17
+      ..weaPower = 17 * 2 + 10;
+    return member;
+  }
+
+  /// 원작 `LORESPEC.PAS:291` - LORE 성을 떠날 때 합류하는 Skeleton (#19).
+  ///
+  /// 원작은 `join(19,6)` 으로 6번 슬롯을 고정한다.
+  static PartyMember skeleton() {
+    return PartyMember.fromMonsterTemplate(
+      LoreData.instance.monster(19),
+      name: 'Skeleton',
+    );
+  }
+
   /// 스크립트(JSON `{"join": "polaris"}`)에서 쓰는 키로 동료를 만든다.
   static PartyMember? byKey(String key) {
     switch (key) {
@@ -168,10 +193,17 @@ class LoreJoin {
         return spica();
       case 'lore_hunter':
         return loreHunter();
+      case 'draconian':
+        return draconian();
+      case 'skeleton':
+        return skeleton();
       default:
         return null;
     }
   }
+
+  /// 원작이 6번 슬롯을 고정한 영입(join(num,6))의 메뉴 옵션 인덱스.
+  static const int forcedSixthSlotOption = 4;
 
   /// 원작 `LORESUB.PAS:1144 ReturnJoinMember`의 메뉴 문구.
   static const String joinMenuPrompt = '교체 시킬 인물은 누구입니까 ?';
