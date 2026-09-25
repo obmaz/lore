@@ -1378,6 +1378,116 @@
           "flag": "goldenSealFound"
         }
       ]
+    },
+    {
+      "id": "map17-hidra",
+      "trigger": "step",
+      "map": 17,
+      "xMin": 22,
+      "xMax": 22,
+      "once": true,
+      "require": {
+        "flagNot": "bossHidraDefeated"
+      },
+      "title": "호수의 소용돌이",
+      "steps": [
+        {
+          "say": "수면이 크게 요동치더니 세 개의 머리를 가진 거대한 괴수가 솟구쳐 올랐다 !"
+        },
+        {
+          "battle": {
+            "title": "Hidra의 습격",
+            "monsters": [
+              49,
+              49,
+              49
+            ]
+          }
+        },
+        {
+          "say": "당신들은 Hidra를 물리쳤다."
+        },
+        {
+          "say": "그리고 당신은 이 임무에 성공했다. 다시 WATER FIELD 의 군주에게로 돌아가라."
+        },
+        {
+          "flag": "bossHidraDefeated"
+        }
+      ]
+    },
+    {
+      "id": "map18-huge-dragon",
+      "trigger": "step",
+      "map": 18,
+      "xMin": 31,
+      "xMax": 31,
+      "once": true,
+      "require": {
+        "flagNot": "bossHugeDragonDefeated"
+      },
+      "title": "용의 거처",
+      "steps": [
+        {
+          "say": "당신은 여기가 Huge Dragon의 거처임을 느꼈다."
+        },
+        {
+          "say": "거룡과 그 꼬리가 대지를 뒤흔들며 모습을 드러냈다 !"
+        },
+        {
+          "battle": {
+            "title": "Huge Dragon",
+            "monsters": [
+              54,
+              39,
+              30,
+              31,
+              32,
+              30,
+              31
+            ]
+          }
+        },
+        {
+          "say": "당신들은 거룡을 쓰러뜨렸다."
+        },
+        {
+          "flag": "bossHugeDragonDefeated"
+        }
+      ]
+    },
+    {
+      "id": "map17-shortcut-72",
+      "trigger": "step",
+      "map": 17,
+      "xMin": 72,
+      "xMax": 72,
+      "once": true,
+      "steps": [
+        {
+          "setTile": {
+            "x": 72,
+            "y": 19,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 72,
+            "y": 20,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 72,
+            "y": 21,
+            "tile": 44
+          }
+        },
+        {
+          "say": "무너진 벽 사이로 지름길이 열렸다."
+        }
+      ]
     }
   ]
 }

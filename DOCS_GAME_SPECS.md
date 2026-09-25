@@ -483,12 +483,14 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
    - 맵 14: (16,20) 황금의 방패, (25,8)/(26,8) MENACE 중심 도달
    - 맵 15: (14,7) 황금의 방패, (45,19) 황금의 갑옷, (y=27) Zombie ×2 +
      ArchiGagoyle, (y=48) 보물 6000 → 4000 두 단계
-5. **아직 이관하지 못한 원작 이벤트**: 보스전/봉인방의 **진행형 스크립트**는 남았다.
-   - 맵 17 NOTICE: 세 개 머리 Hidra (원작 `LORESPEC.PAS:1121~1161`, `if (x = 22)` 등
-     복합 조건 + 컷신)
-   - 맵 18 LOCKUP: Huge Dragon (원작 `LORESPEC.PAS:1303~1353`)
-   - 맵 19 EVIL GOD: Crab God 7방 · 봉인 해제 (원작 `LORESPEC.PAS:1378~1470`)
-   - 맵 12: 수수께끼 문(오이디푸스/스핑크스 퍼즐, `y=50`/`y=10` 분기)
+5. **아직 이관하지 못한 원작 이벤트**: 진행형 보스전은 이관했고, 남은 것은 복합 퍼즐·
+   컷신이다.
+   - 맵 17 NOTICE: Hidra 삼두룡 ✅ 완료 (x = 22 열 진입, `bossHidraDefeated`)
+   - 맵 18 LOCKUP: Huge Dragon ✅ 완료 (x = 31 열 진입, `bossHugeDragonDefeated`)
+     · 꼬리 쪽 5마리는 원작이 `random(3)+30`으로 고르므로 30~32 고정 목록으로 근사했다.
+   - 맵 19 EVIL GOD: Crab God 7방 · 봉인 해제 (`party.etc[40]` 방 번호 퍼즐)
+   - 맵 12: 수수께끼 문(`y=50`/`y=10` 분기)과 특정 열을 막는 함정 타일
+   - 맵 17: `y = 38` 통로 개방 + (56,93) 강제 이동
    모두 `battle`/`setTile`/`peek`/`choice` 스텝만으로 표현 가능하므로 계속 추가할 수 있다.
 6. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
    아니므로 이식 대상에서 제외한다.
@@ -511,7 +513,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `items.json` | 무기 10 / 방패 6 / 갑옷 6 (위력·가격) | `LoreData.instance.weapon/shield/armor(id)` |
 | `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
 | `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
-| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (52건) | `LoreScriptEngine.instance` |
+| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (55건) | `LoreScriptEngine.instance` |
 | `portals.json` | 맵 연결(포털 30) + 표지판 문구 (21) | `LoreWorldManager.instance.findPortal/getSignMessage` |
 | `dialogues.json` | 좌표 기반 NPC 대사 (30) | `LoreDialogueManager.instance.getDialogue` |
 
