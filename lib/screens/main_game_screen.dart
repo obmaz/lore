@@ -7,6 +7,7 @@ import 'package:flame/game.dart';
 import '../theme/retro_theme.dart';
 import '../services/audio_manager.dart';
 import '../game/lore_game.dart';
+import '../logic/lore_join.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
 import '../widgets/viewport_view.dart';
@@ -23,10 +24,9 @@ import '../game/lore_map_manager.dart';
 import '../services/save_manager.dart';
 import '../game/lore_dialogue_manager.dart';
 import '../game/lore_dungeon_event_manager.dart';
-import '../widgets/ending_view.dart';
-import '../widgets/monster_bestiary_dialog.dart';
+import '../widgets/lore_guide_dialog.dart';
 
-enum GameScreenMode { field, battle, gameOver, ending }
+enum GameScreenMode { field, battle, gameOver }
 
 /// 4:3 레트로 콘솔 레이아웃 통합 메인 게임 화면
 class MainGameScreen extends StatefulWidget {
@@ -157,6 +157,17 @@ class _MainGameScreenState extends State<MainGameScreen> {
       canWalkOnWater: () => _waterWalkSteps > 0,
       onHazardTile: (cat) => _handleHazardTile(cat),
       onStepTaken: () => _handleStepTaken(),
+      onRecruitRequested: (recruit) {
+        // 원작 LORESUB.PAS:1042 join(num, partynum) - 최대 6인 파티
+        if (_party.length >= LoreJoin.maxPartySize) {
+          _addLog('일행이 ${LoreJoin.maxPartySize}명으로 가득 차 ${recruit.name}이(가) 합류하지 못했습니다.');
+          return;
+        }
+        setState(() => _party.add(recruit));
+        _addLog(
+          '★ ${recruit.name} (${recruit.playerClass.koreanName} Lv.${recruit.battleLevel})이(가) 일행에 합류했습니다!',
+        );
+      },
     );
   }
 
@@ -353,8 +364,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       builder: (ctx) => TownDialog(
         party: _party,
         gold: _partyGold,
+        food: _partyFood,
         mapId: _game.currentMapId,
         onGoldChanged: (newGold) => setState(() => _partyGold = newGold),
+        onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
         onLog: (msg) => _addLog(msg),
       ),
     );
@@ -435,12 +448,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         } else if (_currentBossName == 'Huge Dragon') {
           LoreDialogueManager.instance.bossHugeDragonDefeated = true;
           _addLog('★ Huge Dragon을 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
-        } else if (_currentBossName == 'Neo-Necromancer' || _currentBossName == 'Necromancer') {
-          LoreDialogueManager.instance.bossNecromancerDefeated = true;
-          _addLog('★ 최종 보스 Necromancer를 물리쳤습니다! 세계에 영원한 평화가 찾아왔습니다! ★');
-          _currentBossName = null;
-          _currentMode = GameScreenMode.ending;
-          return;
         }
         _currentBossName = null;
       }
@@ -714,17 +721,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
             ],
           ),
         );
-
-      case GameScreenMode.ending:
-        return EndingView(
-          heroName: _party.isNotEmpty ? _party.first.name : '용사',
-          onFinish: () {
-            setState(() {
-              _currentMode = GameScreenMode.field;
-            });
-            _restartGame();
-          },
-        );
     }
   }
 
@@ -736,8 +732,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         return '⚔ 턴제 전투 모드 (BATTLE ARENA) ⚔';
       case GameScreenMode.gameOver:
         return '† 게임 오버 (GAME OVER) †';
-      case GameScreenMode.ending:
-        return '★ 위대한 모험의 대단원 (THE END) ★';
     }
   }
 
@@ -755,19 +749,20 @@ class _MainGameScreenState extends State<MainGameScreen> {
       onKeyEvent: (event) {
         if (_currentMode == GameScreenMode.field) {
           if (event is KeyDownEvent) {
+            if (event.logicalKey == LogicalKeyboardKey.f1 ||
+                event.logicalKey == LogicalKeyboardKey.keyH) {
+              showDialog(
+                context: context,
+                builder: (ctx) => const LoreGuideDialog(),
+              );
+              return;
+            }
             if (event.logicalKey == LogicalKeyboardKey.keyQ) {
               _openQuickViewDialog();
               return;
             }
             if (event.logicalKey == LogicalKeyboardKey.keyE) {
               _openEspDialog();
-              return;
-            }
-            if (event.logicalKey == LogicalKeyboardKey.keyB) {
-              showDialog(
-                context: context,
-                builder: (ctx) => const MonsterBestiaryDialog(),
-              );
               return;
             }
             if (event.logicalKey == LogicalKeyboardKey.space ||

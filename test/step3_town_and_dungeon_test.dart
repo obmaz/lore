@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_dungeon_event_manager.dart';
+import 'package:lore/logic/lore_join.dart';
+import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
 
 void main() {
@@ -195,6 +197,83 @@ void main() {
       expect(newManager.metLordAhn, isTrue);
       expect(newManager.hasWaterKey, isTrue);
       expect(newManager.hasSwampKey, isTrue);
+    });
+
+    test('7. 원작 join(num, partynum) 동료 영입 이식 검증', () {
+      // 원작 LORESUB.PAS:1042 join - 몬스터 템플릿 기반 파티원 생성
+      final orc = Monster.create(1);
+      final joined = PartyMember.fromMonsterTemplate(orc, name: 'TestRecruit');
+      expect(joined.name, 'TestRecruit');
+      expect(joined.playerClass, PlayerClass.none); // 원작 class := 0
+      expect(joined.resistance, orc.resistance ~/ 2); // 저항력 절반
+      expect(joined.concentration, 0); // 집중력 0
+      expect(joined.accEsp, 0); // 초능력 명중 0
+      expect(joined.luck, 10);
+      expect(joined.battleLevel, orc.level);
+      expect(joined.magicLevel, orc.castLevel * 3 == 0 ? 1 : orc.castLevel * 3);
+      expect(joined.espLevel, 1);
+      expect(joined.weaPower, orc.level * 2 + 10); // 맨손 위력 공식
+      expect(joined.armPower, orc.ac);
+      expect(joined.hp, orc.endurance * orc.level);
+
+      // Polaris (LORETALK.PAS:413): class 4 전사, 전투Lv=1, 마법Lv=3
+      final polaris = LoreJoin.polaris();
+      expect(polaris.name, 'Polaris');
+      expect(polaris.playerClass, PlayerClass.warrior);
+      expect(polaris.magicLevel, 3);
+      expect(polaris.weaPower, 10);
+      expect(polaris.ac, 3);
+
+      // Lore Hunter (LORETALK.PAS:623): class 7 사냥꾼, 철퇴(위력 15)
+      final hunter = LoreJoin.loreHunter();
+      expect(hunter.name, 'Lore Hunter');
+      expect(hunter.playerClass, PlayerClass.hunter);
+      expect(hunter.weaPower, 15);
+      expect(hunter.ac, 4);
+
+      // Spica (LORESPEC.PAS:1230): 여성 에스퍼, Lv 11/6/11
+      final spica = LoreJoin.spica();
+      expect(spica.sex, Gender.female);
+      expect(spica.playerClass, PlayerClass.esper);
+      expect(spica.battleLevel, 11);
+      expect(spica.magicLevel, 6);
+      expect(spica.espLevel, 11);
+      expect(spica.maxHp, 9 * 11);
+      expect(spica.maxSp, 17 * 6);
+      expect(spica.maxEsp, 20 * 11);
+
+      // Rigel은 빈사(hp 1), Red Antares는 hp 0 상태로 합류한다.
+      expect(LoreJoin.rigel().hp, 1);
+      expect(LoreJoin.redAntares().hp, 0);
+      expect(LoreJoin.redAntares().resistance, 15);
+
+      // 원작 ReturnJoinMember: 최대 6인까지만 합류 가능
+      final party = <PartyMember>[hero];
+      expect(LoreJoin.recruit(party, polaris), isTrue);
+      expect(party.length, 2);
+      for (var i = party.length; i < LoreJoin.maxPartySize; i++) {
+        expect(LoreJoin.recruit(party, LoreJoin.madJoe()), isTrue);
+      }
+      expect(party.length, LoreJoin.maxPartySize);
+      expect(LoreJoin.recruit(party, LoreJoin.loreHunter()), isFalse);
+      expect(party.length, LoreJoin.maxPartySize);
+
+      // 대화 트리거 → 영입 대기열 적재 확인
+      dialogue.loadFlags({});
+      dialogue.takePendingRecruits(); // 잔여 큐 정리
+      final talk = dialogue.getDialogue(7, 37, 41, hero.name);
+      expect(talk, contains('동료 Polaris 합류'));
+      final pending = dialogue.takePendingRecruits();
+      expect(pending.length, 1);
+      expect(pending.first.name, 'Polaris');
+      // 중복 대화에서는 다시 적재되지 않는다.
+      dialogue.getDialogue(7, 37, 41, hero.name);
+      expect(dialogue.takePendingRecruits(), isEmpty);
+
+      dialogue.loadFlags({});
+      final hunterTalk = dialogue.getDialogue(10, 40, 56, hero.name);
+      expect(hunterTalk, contains('동료 Lore Hunter 합류'));
+      expect(dialogue.takePendingRecruits().single.name, 'Lore Hunter');
     });
   });
 }

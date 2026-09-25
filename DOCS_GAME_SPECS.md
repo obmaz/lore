@@ -319,6 +319,59 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 4. **부활 (사망 부활)**:
    - 비용: $\text{dead} \times 100 + 400$
    - 효과: $\text{dead} = 0, \quad \text{unconscious} = \min(\text{unconscious}, \text{endurance} \times \text{level}[1])$
+   - 주의: 원작 부활은 HP를 회복시키지 않으며 `unconscious`를 최대 HP로 제한할 뿐이다.
+
+### 4.3 식료품점 가격표 (`Grocery`, `LORESUB.PAS:1155`)
+| 구매 단위 | 가격 (금화) |
+| :---: | :---: |
+| 10 인분 | 100 |
+| 20 인분 | 200 |
+| 30 인분 | 300 |
+| 40 인분 | 400 |
+| 50 인분 | 500 |
+
+* 환율은 10인분당 100금화 고정이며, 보유 식량 상한은 **255인분**이다.
+* 상한을 넘는 분량은 버려진다(원작은 금화만 차감하고 clamp).
+
+### 4.4 야외 캠프 휴식 (`Rest`, `LOREMENU.PAS:869`)
+파티원 1~6번 순서로 아래 분기를 적용한다.
+
+| 상태 | 처리 | 식량 |
+| :--- | :--- | :--- |
+| `food <= 0` | "일행은 식량이 바닥났다"만 출력 | - |
+| `dead > 0` | "{이름}는 죽었다" (회복 불가) | - |
+| `unconscious > 0 && poison == 0` | `unconscious -= level[1]+level[2]+level[3]`, 0 이하가 되면 `unconscious=0`, `hp<=0`이면 `hp=1` | 깨어난 경우 1 소모 |
+| `unconscious > 0 && poison > 0` | "독때문에, {이름} {그의/그녀의} 의식은 회복되지 않았다" | - |
+| `poison > 0` | "독때문에, {이름} {그의/그녀의} 건강은 회복되지 않았다" | - |
+| 정상 | `hp += (level[1]+level[2]+level[3]) * 2` (최대치 clamp) | 1 소모 (만복이면 1 회복 후 1 소모 = 순 0) |
+
+* 휴식 후 `party.etc[1]`(마법의 횃불)이 1 감소하고 `etc[2..4]`(물위걸음/늪위걸음/공중부상)는 초기화된다.
+* 이름이 있는 파티원 전원은 `sp = mentality * level[2]`, `esp = concentration * level[3]`로 **완전 회복**된다. (사망자 포함)
+
+### 4.5 동료 영입 (`join`, `LORESUB.PAS:1042`)
+* `join(몬스터번호, 파티슬롯)`으로 몬스터 템플릿을 파티원으로 편입한다.
+  - `class := 0`, `resistance := enemydata.resistance div 2`, `concentration/accuracy[3]/esp := 0`, `luck := 10`
+  - `level[1] := 몬스터 레벨`, `level[2] := castlevel * 3` (0이면 1), `level[3] := 1`
+  - `wea_power := level[1] * 2 + 10`, `arm_power := ac`, `hp := endurance * level[1]`, `sp := mentality * level[2]`
+* 영입 후 캐릭터별로 이름/직업/장비/능력치를 덮어쓴다.
+
+| 동료 | 원작 위치 | 몬스터 | 직업 | 비고 |
+| :--- | :--- | :---: | :--- | :--- |
+| Mad Joe | LORETALK:197 (지하 감옥) | #1 | 8 떠돌이 | 장비/방어도 전부 0 |
+| Polaris | LORETALK:413 (LASTDITCH) | #9 | 4 전사 | 장검(wea 10), 마법Lv 3 |
+| Rigel | LORESPEC:620 (EVIL SEAL) | #14 | 7 사냥꾼 | `hp := 1` 빈사 상태 |
+| Red Antares | LORESPEC:1040 | #55 | 9 혼령 | 장비 제거, `hp := 0`, resistance 15 |
+| Spica | LORESPEC:1230 (LOCKUP) | #43 | 3 에스퍼 | 여성, Lv 11/6/11 |
+| Lore Hunter | LORETALK:623 (WATER FIELD) | #39 | 7 사냥꾼 | 철퇴(wea 15) |
+
+* `ReturnJoinMember`는 합류시킬 슬롯(2~6번)을 고르게 하며, 파티는 최대 6인이다.
+
+### 4.6 원작 소스 표기 오류 (이식 시 정정)
+* `Train_Center`의 `Expdata` 문자열 상수에 오타가 있다.
+  - Lv.15 `'270000'` → 실제 값 **2,700,000**
+  - Lv.20 `'510000'` → 실제 값 **5,100,000**
+* 본 이식판은 실제 진행 값(정정값)을 사용한다 (`PartyMember.expTable`).
+* 또한 원작 훈련소는 승급 시 **HP/SP/ESP를 회복시켜 주지 않는다**. 회복은 병원의 "상처를 치료"만 가능하다.
 
 ---
 
@@ -333,7 +386,9 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
   - `Q`: 빠른 정보 (`QuickView`)
   - `C`: 마법 시전 (`CastSpell`)
   - `E`: 초능력 (`Extrasense`)
-  - `R`: 캠프 휴식 (`Rest`, 식량 소모 체력 회복)
+  - `R`: 캠프 휴식 (`Rest`, `LOREMENU.PAS:869` - 4.4절 참조)
+  - `G`: 게임 저장/불러오기 (`GameOption`)
+  - `F1` / `H`: 원작자 서문 & 게임 매뉴얼 (`LOREHELP.PAS` Title_Str / Title_Menu 자막)
 
 ### 5.2 타일 속성 및 특수 효과
 - 일반 바닥: 1걸음마다 독 진행 (10스텝마다 HP 감소), 1걸음마다 인카운터 확률 검사.

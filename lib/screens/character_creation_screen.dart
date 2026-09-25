@@ -5,6 +5,7 @@ import '../models/party_member.dart';
 import '../services/audio_manager.dart';
 import '../services/save_manager.dart';
 import '../widgets/monster_bestiary_dialog.dart';
+import '../widgets/lore_guide_dialog.dart';
 
 /// 1993년 원작 LORECRET.PAS 기반 캐릭터 생성 및 오프닝 화면
 class CharacterCreationScreen extends StatefulWidget {
@@ -359,6 +360,28 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 style: RetroTheme.dosFont.copyWith(
                   fontSize: 12,
                   color: RetroTheme.yellow,
+                ),
+              ),
+            ),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: RetroTheme.lightCyan),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 12,
+                ),
+              ),
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (ctx) => const LoreGuideDialog(),
+                );
+              },
+              child: Text(
+                '📜 제작자 서문 & 가이드',
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 12,
+                  color: RetroTheme.lightCyan,
                 ),
               ),
             ),

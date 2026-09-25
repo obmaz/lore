@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'item.dart';
+import 'monster.dart';
 
 enum Gender { male, female }
 
@@ -14,7 +15,11 @@ enum PlayerClass {
   hunter(7, '사냥꾼'),
   vagrant(8, '떠돌이'),
   ghost(9, '혼령'),
-  demigod(10, '반신');
+  demigod(10, '반신'),
+
+  /// 원작 `join`으로 영입된 동료 (파스칼 `class := 0`).
+  /// 직업별 성장 판정이 적용되지 않는다.
+  none(0, '동료');
 
   final int id;
   final String koreanName;
@@ -208,13 +213,272 @@ class PartyMember {
     ac = min(10, total);
   }
 
-  /// 레벨업 처리 (군사 훈련소)
+  static const List<int> expTable = [
+    0, // Lv 1
+    1500, // Lv 2
+    6000, // Lv 3
+    20000, // Lv 4
+    50000, // Lv 5
+    150000, // Lv 6
+    250000, // Lv 7
+    500000, // Lv 8
+    800000, // Lv 9
+    1050000, // Lv 10
+    1320000, // Lv 11
+    1620000, // Lv 12
+    1950000, // Lv 13
+    2310000, // Lv 14
+    2700000, // Lv 15
+    3120000, // Lv 16
+    3570000, // Lv 17
+    4050000, // Lv 18
+    4560000, // Lv 19
+    5100000, // Lv 20
+  ];
+
+  static const List<int> trainingCostTable = [
+    0, // Lv 1
+    3, // Lv 2
+    5, // Lv 3
+    8, // Lv 4
+    15, // Lv 5
+    25, // Lv 6
+    40, // Lv 7
+    70, // Lv 8
+    120, // Lv 9
+    200, // Lv 10
+    350, // Lv 11
+    600, // Lv 12
+    1000, // Lv 13
+    1700, // Lv 14
+    3000, // Lv 15
+    5000, // Lv 16
+    8300, // Lv 17
+    14000, // Lv 18
+    24000, // Lv 19
+    40000, // Lv 20
+  ];
+
+  /// 경험치에 따라 달성 가능한 최대 레벨 계산 (원작 LORESUB.PAS:1355)
+  static int getCalculatedLevel(int exp) {
+    for (int i = 20; i >= 1; i--) {
+      if (exp >= expTable[i - 1]) return i;
+    }
+    return 1;
+  }
+
+  /// 특정 레벨로 승급하기 위한 훈련 비용 (원작 LORESUB.PAS:1375)
+  static int getTrainingCost(int targetLevel) {
+    if (targetLevel < 1 || targetLevel > 20) return 0;
+    return trainingCostTable[targetLevel - 1];
+  }
+
+  /// 1993년 원작 LORESUB.PAS:1332 Train_Center 승급 처리.
+  ///
+  /// 원작은 경험치로 계산된 레벨(`j`)로 **한 번에 점프**시키고,
+  /// 능력치 성장 판정(`luck > random(30)`)은 **점프 1회당 단 1회**만 수행한다.
+  /// 따라서 Lv.1 → Lv.15로 한 번에 승급해도 스탯은 1번만 오른다.
+  ///
+  /// 또한 원작은 훈련소에서 HP/SP/ESP를 회복시켜 주지 않는다.
+  /// (회복은 병원 `LORESUB.PAS:1517 Hospital`에서만 가능)
+  List<String> trainLevelUp(int targetLevel) {
+    if (targetLevel <= battleLevel || targetLevel > 20) return [];
+    final growthMessages = <String>[];
+    final rng = Random();
+
+    battleLevel = targetLevel;
+    growthMessages.add('$name의 레벨이 $battleLevel(으)로 승급되었습니다!');
+
+    // 직업별 주사위 스탯 성장 (luck > random(30))
+    switch (playerClass) {
+      case PlayerClass.knight: // 1: Fighter
+        if (luck > rng.nextInt(30)) {
+          if (strength < 20) {
+            strength++;
+            growthMessages.add('완력이 1 상승했습니다. ($strength)');
+          } else if (endurance < 20) {
+            endurance++;
+            growthMessages.add('체질이 1 상승했습니다. ($endurance)');
+          } else if (accArms < 20) {
+            accArms++;
+            growthMessages.add('무기명중률이 1 상승했습니다. ($accArms)');
+          } else {
+            agility++;
+            growthMessages.add('민첩성이 1 상승했습니다. ($agility)');
+          }
+        }
+        break;
+
+      case PlayerClass.mage: // 2: Mage
+      case PlayerClass.ghost: // 9: Antares
+        magicLevel = battleLevel;
+        espLevel = (battleLevel / 2).round();
+        if (luck > rng.nextInt(30)) {
+          if (mentality < 20) {
+            mentality++;
+            growthMessages.add('지력이 1 상승했습니다. ($mentality)');
+          } else if (concentration < 20) {
+            concentration++;
+            growthMessages.add('집중력이 1 상승했습니다. ($concentration)');
+          } else if (accMagic < 20) {
+            accMagic++;
+            growthMessages.add('마법명중률이 1 상승했습니다. ($accMagic)');
+          }
+        }
+        break;
+
+      case PlayerClass.esper: // 3: Esper
+        espLevel = battleLevel;
+        magicLevel = (battleLevel / 2).round();
+        if (luck > rng.nextInt(30)) {
+          if (concentration < 20) {
+            concentration++;
+            growthMessages.add('집중력이 1 상승했습니다. ($concentration)');
+          } else if (accEsp < 20) {
+            accEsp++;
+            growthMessages.add('초능력명중률이 1 상승했습니다. ($accEsp)');
+          } else if (mentality < 20) {
+            mentality++;
+            growthMessages.add('지력이 1 상승했습니다. ($mentality)');
+          }
+        }
+        break;
+
+      case PlayerClass.warrior: // 4: Priest
+        magicLevel = battleLevel < 16 ? battleLevel : 15;
+        if (luck > rng.nextInt(30)) {
+          if (strength < 20) {
+            strength++;
+            growthMessages.add('완력이 1 상승했습니다. ($strength)');
+          } else if (mentality < 20) {
+            mentality++;
+            growthMessages.add('지력이 1 상승했습니다. ($mentality)');
+          } else if (accArms < 20) {
+            accArms++;
+            growthMessages.add('무기명중률이 1 상승했습니다. ($accArms)');
+          } else if (accMagic < 20) {
+            accMagic++;
+            growthMessages.add('마법명중률이 1 상승했습니다. ($accMagic)');
+          }
+        }
+        break;
+
+      case PlayerClass.monk: // 5: Monk (무기를 착용하지 않는 대신 맨손 위력 자동 폭증!)
+        weaPower = battleLevel * 2 + 10;
+        growthMessages.add('전투승의 맨손 위력이 $weaPower(으)로 대폭 상승했습니다!');
+        if (luck > rng.nextInt(30)) {
+          if (strength < 20) {
+            strength++;
+            growthMessages.add('완력이 1 상승했습니다. ($strength)');
+          } else if (accArms < 20) {
+            accArms++;
+            growthMessages.add('무기명중률이 1 상승했습니다. ($accArms)');
+          } else if (endurance < 20) {
+            endurance++;
+            growthMessages.add('체질이 1 상승했습니다. ($endurance)');
+          }
+        }
+        break;
+
+      case PlayerClass.ninja: // 6: Ninja
+        magicLevel = (battleLevel / 2).round();
+        espLevel = magicLevel;
+        if (luck > rng.nextInt(30)) {
+          if (resistance < 18) {
+            resistance++;
+            growthMessages.add('저항력이 1 상승했습니다. ($resistance)');
+          } else if (resistance < 20) {
+            if (luck < rng.nextInt(21)) {
+              resistance++;
+              growthMessages.add('저항력이 1 상승했습니다. ($resistance)');
+            }
+          } else {
+            agility++;
+            growthMessages.add('민첩성이 1 상승했습니다. ($agility)');
+          }
+        }
+        break;
+
+      case PlayerClass.hunter: // 7: Hunter
+      case PlayerClass.vagrant: // 8: Thief
+        if (luck > rng.nextInt(30)) {
+          if (endurance < 20) {
+            endurance++;
+            growthMessages.add('체질이 1 상승했습니다. ($endurance)');
+          } else if (strength < 20) {
+            strength++;
+            growthMessages.add('완력이 1 상승했습니다. ($strength)');
+          } else {
+            agility++;
+            growthMessages.add('민첩성이 1 상승했습니다. ($agility)');
+          }
+        }
+        break;
+
+      case PlayerClass.none: // 0: join으로 영입된 동료 (직업 성장 없음)
+        break;
+
+      case PlayerClass.demigod: // 10: Hero (올스탯 성장)
+        magicLevel = battleLevel;
+        espLevel = battleLevel;
+        if (strength < 20) strength++;
+        if (mentality < 20) mentality++;
+        if (concentration < 20) concentration++;
+        if (endurance < 20) endurance++;
+        if (agility < 20) agility++;
+        if (accArms < 20) accArms++;
+        if (accMagic < 20) accMagic++;
+        if (accEsp < 20) accEsp++;
+        growthMessages.add('영웅의 모든 스탯이 고루 성장했습니다!');
+        break;
+    }
+
+    return growthMessages;
+  }
+
+  /// 레벨업 처리 (군사 훈련소 간이 승급)
   void levelUp() {
-    battleLevel += 1;
-    hp = maxHp;
-    sp = maxSp;
-    strength += 1;
-    agility += 1;
+    trainLevelUp(battleLevel + 1);
+  }
+
+  /// 1993년 원작 LORESUB.PAS:1042 `join(num, partynum)` 이식.
+  ///
+  /// 몬스터 템플릿(FOEDATA 75종)의 능력치로 동료 파티원을 생성한다.
+  /// - `class := 0` (직업 없음) → [PlayerClass.none]
+  /// - `resistance div 2`, `concentration/esp/accEsp = 0`, `luck = 10`
+  /// - `level[1] = 몬스터 레벨`, `level[2] = castlevel * 3` (최소 1), `level[3] = 1`
+  /// - 장비 ID는 무기 10 / 방패 6 / 갑옷 6(원작의 가상 슬롯), `wea_power = level*2+10`
+  static PartyMember fromMonsterTemplate(Monster monster, {String? name}) {
+    final level = min(monster.level, 20);
+    final magicLevel = monster.castLevel * 3 == 0 ? 1 : monster.castLevel * 3;
+    return PartyMember(
+      name: name ?? monster.name,
+      playerClass: PlayerClass.none,
+      strength: monster.strength,
+      mentality: monster.mentality,
+      concentration: 0,
+      endurance: monster.endurance,
+      resistance: monster.resistance ~/ 2,
+      agility: monster.agility,
+      accArms: monster.accArms,
+      accMagic: monster.accMagic,
+      accEsp: 0,
+      luck: 10,
+      battleLevel: level,
+      magicLevel: magicLevel,
+      espLevel: 1,
+      experience: expTable[level - 1],
+      weapon: 10,
+      shield: 6,
+      armor: 6,
+      weaPower: level * 2 + 10,
+      shiPower: 0,
+      armPower: monster.ac,
+      ac: monster.ac,
+      hp: monster.endurance * level,
+      sp: monster.mentality * magicLevel,
+      esp: 0,
+    );
   }
 
   /// 1993년 원작 LORECRET.PAS 프리셋 캐릭터 생성

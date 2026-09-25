@@ -1,5 +1,10 @@
 /// 1993년 원작 LORETALK.PAS 및 LORESPEC.PAS 기반 대화 및 퀘스트 플래그 매니저
 /// 4대 성/마을(6: CASTLE LORE, 7: LASTDITCH, 9: GAIA TERRA, 10: WATER FIELD)
+library;
+
+import '../logic/lore_join.dart';
+import '../models/party_member.dart';
+
 class LoreDialogueManager {
   static final LoreDialogueManager instance = LoreDialogueManager._internal();
   factory LoreDialogueManager() => instance;
@@ -35,6 +40,18 @@ class LoreDialogueManager {
   // 식량 및 기타 던전 이벤트 플래그
   bool foodTreeHarvested = false; // 맵 1 100인분 식량 나무
   bool draconianMet = false;      // 맵 4 Draconian 천문학 지식
+
+  /// 원작 `LORESUB.PAS:1042 join(num, partynum)` 대기열.
+  /// 대화에서 동료 영입이 확정되면 여기에 적재되고, 화면단에서 실제 파티에
+  /// 추가한 뒤 [takePendingRecruits]로 비운다.
+  final List<PartyMember> _pendingRecruits = [];
+
+  /// 대기 중인 동료 영입 목록을 비우면서 가져간다.
+  List<PartyMember> takePendingRecruits() {
+    final recruits = List<PartyMember>.from(_pendingRecruits);
+    _pendingRecruits.clear();
+    return recruits;
+  }
 
   // 원작 25단계 예언 목록 (LORESUB.PAS: Predict_Data)
   static const List<String> predictData = [
@@ -275,6 +292,8 @@ class LoreDialogueManager {
     if (tx == 37 && ty == 41) {
       if (!polarisJoined) {
         polarisJoined = true;
+        // 원작 LORETALK.PAS:413 - join(9, k) + Polaris 능력치 보정
+        _pendingRecruits.add(LoreJoin.polaris());
         return '전사 Polaris: "나의 이름은 Polaris요. 당신들과 같이 PYRAMID의 Major Mummy를 물리치고 싶소! 일행으로 받아주시오! (★ 동료 Polaris 합류!)"';
       } else {
         return '전사 Polaris: "준비는 끝났소. 언제든 전장으로 나아갑시다!"';
@@ -370,6 +389,8 @@ class LoreDialogueManager {
     if (tx == 40 && ty == 56) {
       if (!loreHunterJoined) {
         loreHunterJoined = true;
+        // 원작 LORETALK.PAS:623 - join(39, k) + Lore Hunter 능력치 보정
+        _pendingRecruits.add(LoreJoin.loreHunter());
         return '특공대장 Lore Hunter: "나는 LORE 특공대장 Lore Hunter요! 새로운 영웅들을 기다리고 있었소. 내가 당신의 일행에 합류하겠소! (★ 동료 Lore Hunter 합류!)"';
       } else {
         return '특공대장 Lore Hunter: "언제든 명을 내리시오. Necromancer를 끝장냅시다!"';

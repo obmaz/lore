@@ -1,0 +1,141 @@
+/// 1993년 원작 LORE의 동료 영입(join) 이벤트 이식.
+///
+/// 대응 원작 코드:
+/// - `LORESUB.PAS:1042  join(num, partynum)`   몬스터 템플릿 → 파티원 편입
+/// - `LORESUB.PAS:1144  ReturnJoinMember`      합류시킬 파티 슬롯 선택 (2~6번)
+/// - `LORETALK.PAS / LORESPEC.PAS`             6명의 영입 가능 동료별 능력치 보정
+///
+/// 원작은 `join(몬스터번호, 슬롯)` 으로 기본 능력치를 채운 뒤,
+/// 캐릭터별로 이름/직업/장비/능력치를 덮어쓴다. 이 파일은 그 결과를 그대로 옮긴 것이다.
+library;
+
+import '../models/monster.dart';
+import '../models/party_member.dart';
+
+/// 원작에서 실제로 일행에 합류할 수 있는 6명의 동료.
+class LoreJoin {
+  LoreJoin._();
+
+  /// 원작 파티 슬롯은 1~6번(리더 포함)이다.
+  static const int maxPartySize = 6;
+
+  /// 원작 `LORETALK.PAS:197` - 지하 감옥의 Mad Joe (몬스터 #1 Orc 템플릿).
+  /// 원작: class 8(떠돌이), 모든 장비/방어도 0.
+  static PartyMember madJoe() {
+    return PartyMember.fromMonsterTemplate(Monster.create(1), name: 'Mad Joe')
+      ..playerClass = PlayerClass.vagrant
+      ..weapon = 0
+      ..shield = 0
+      ..armor = 0
+      ..weaPower = 0
+      ..shiPower = 0
+      ..armPower = 0
+      ..ac = 0;
+  }
+
+  /// 원작 `LORETALK.PAS:413` - LASTDITCH의 전사 Polaris (몬스터 #9 Imp 템플릿).
+  /// 원작: class 4(전사), level[2] := 3, 장검(4)/가죽 방패(1)/가죽 갑옷(1) 장착.
+  static PartyMember polaris() {
+    return PartyMember.fromMonsterTemplate(Monster.create(9), name: 'Polaris')
+      ..playerClass = PlayerClass.warrior
+      ..magicLevel = 3
+      ..weapon = 4
+      ..shield = 1
+      ..armor = 1
+      ..weaPower = 10
+      ..shiPower = 1
+      ..armPower = 2
+      ..ac = 3;
+  }
+
+  /// 원작 `LORESPEC.PAS:620` - EVIL SEAL의 사냥꾼 Rigel (몬스터 #14 Gremlin 템플릿).
+  /// 원작: class 7(사냥꾼), hp := 1 (빈사 상태로 합류).
+  static PartyMember rigel() {
+    return PartyMember.fromMonsterTemplate(Monster.create(14), name: 'Rigel')
+      ..playerClass = PlayerClass.hunter
+      ..weapon = 4
+      ..shield = 1
+      ..armor = 1
+      ..weaPower = 10
+      ..shiPower = 1
+      ..armPower = 2
+      ..ac = 3
+      ..hp = 1;
+  }
+
+  /// 원작 `LORESPEC.PAS:1040` - Red Antares (몬스터 #55 Dark Soul 템플릿).
+  /// 원작: class 9(혼령), 모든 장비 제거, hp := 0, resistance := 15, endurance := 10.
+  static PartyMember redAntares() {
+    return PartyMember.fromMonsterTemplate(
+        Monster.create(55),
+        name: 'Red Antares',
+      )
+      ..playerClass = PlayerClass.ghost
+      ..weapon = 0
+      ..shield = 0
+      ..armor = 0
+      ..weaPower = 0
+      ..shiPower = 0
+      ..armPower = 0
+      ..ac = 0
+      ..hp = 0
+      ..resistance = 15
+      ..endurance = 10;
+  }
+
+  /// 원작 `LORESPEC.PAS:1230` - Spica (몬스터 #43 Wivern 템플릿).
+  /// 원작: 여성, class 3(에스퍼), level 11/6/11, 단도(1)/가죽 방패(1)/가죽 갑옷(1).
+  static PartyMember spica() {
+    return PartyMember.fromMonsterTemplate(Monster.create(43), name: 'Spica')
+      ..sex = Gender.female
+      ..playerClass = PlayerClass.esper
+      ..strength = 10
+      ..mentality = 17
+      ..concentration = 20
+      ..endurance = 9
+      ..resistance = 15
+      ..agility = 7
+      ..accArms = 8
+      ..accMagic = 15
+      ..accEsp = 20
+      ..luck = 10
+      ..battleLevel = 11
+      ..magicLevel = 6
+      ..espLevel = 11
+      ..hp = 9 * 11
+      ..sp = 17 * 6
+      ..esp = 20 * 11
+      ..ac = 3
+      ..weapon = 1
+      ..shield = 1
+      ..armor = 1
+      ..weaPower = 5
+      ..shiPower = 1
+      ..armPower = 2;
+  }
+
+  /// 원작 `LORETALK.PAS:623` - LORE 특공대장 Lore Hunter (몬스터 #39 Rampager 템플릿).
+  /// 원작: class 7(사냥꾼), 철퇴(5)/청동 방패(2)/가죽 갑옷(1) 장착.
+  static PartyMember loreHunter() {
+    return PartyMember.fromMonsterTemplate(
+        Monster.create(39),
+        name: 'Lore Hunter',
+      )
+      ..playerClass = PlayerClass.hunter
+      ..weapon = 5
+      ..shield = 2
+      ..armor = 1
+      ..weaPower = 15
+      ..shiPower = 2
+      ..armPower = 2
+      ..ac = 4;
+  }
+
+  /// 원작 `ReturnJoinMember` + `join` : 빈 슬롯(최대 6명)에 동료를 합류시킨다.
+  /// 반환값: 합류 성공 여부 (파티가 가득 차면 false).
+  static bool recruit(List<PartyMember> party, PartyMember recruit) {
+    if (party.length >= maxPartySize) return false;
+    party.add(recruit);
+    return true;
+  }
+}

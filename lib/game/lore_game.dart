@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme/retro_theme.dart';
+import '../models/party_member.dart';
 import '../services/audio_manager.dart';
 import 'lore_map_manager.dart';
 import 'lore_world_manager.dart';
@@ -42,6 +43,9 @@ class LoreGame extends FlameGame {
   final void Function(int x, int y)? onPositionChanged;
   final void Function(TileCategory category)? onHazardTile;
   final void Function()? onStepTaken;
+
+  /// 원작 `join(num, partynum)`으로 동료가 합류할 때 호출된다.
+  final void Function(PartyMember recruit)? onRecruitRequested;
   final bool Function()? canWalkOnWater;
   final Random _random = Random();
 
@@ -57,6 +61,7 @@ class LoreGame extends FlameGame {
     this.onPositionChanged,
     this.onHazardTile,
     this.onStepTaken,
+    this.onRecruitRequested,
     this.canWalkOnWater,
   }) : currentMapId = initialMapId,
        playerX = initialPlayerX,
@@ -223,20 +228,35 @@ class LoreGame extends FlameGame {
         onFacilityEntered?.call(4); // 식료품점
         return;
       }
+    }
 
-      // 2. 원작 LORETALK.PAS 실제 주민 및 경비병 대화 연동
-      final dlg = LoreDialogueManager.instance.getDialogue(
-        currentMapId,
-        tx,
-        ty,
-        'Hero',
-      );
-      if (dlg != null) {
-        onLog?.call(dlg);
-      } else {
-        onNpcTalk?.call('마을 주민', '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.');
-        onTownEntered?.call();
-      }
+    // 2. 원작 LORETALK.PAS / LORESPEC.PAS 실제 주민, 영주, 동료 대화 연동
+    //    (마을뿐 아니라 모든 맵에서 좌표 기반 대화가 동작한다)
+    final dlg = LoreDialogueManager.instance.getDialogue(
+      currentMapId,
+      tx,
+      ty,
+      'Hero',
+    );
+    if (dlg != null) {
+      onLog?.call(dlg);
+      _flushPendingRecruits();
+      return;
+    }
+
+    if (currentMapName == 'TOWN1') {
+      onNpcTalk?.call('마을 주민', '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.');
+      onTownEntered?.call();
+      return;
+    }
+    onLog?.call('주민은 더 이상 할 말이 없는 듯합니다.');
+  }
+
+  /// 원작 `join(num, partynum)` 대기열을 실제 일행 합류로 전환한다.
+  void _flushPendingRecruits() {
+    for (final recruit
+        in LoreDialogueManager.instance.takePendingRecruits()) {
+      onRecruitRequested?.call(recruit);
     }
   }
 

@@ -5,7 +5,7 @@ import '../models/party_member.dart';
 import '../services/save_manager.dart';
 import '../game/lore_world_manager.dart';
 import '../game/lore_dialogue_manager.dart';
-import '../models/monster.dart';
+import '../logic/town_logic.dart';
 
 /// 1993년 원작 LOREMENU.PAS 기반 스페이스바 필드 시스템 메뉴 (SelectMode)
 class FieldMenuDialog extends StatefulWidget {
@@ -52,13 +52,11 @@ enum FieldMenuTab {
   esp,
   rest,
   gameOption,
-  bestiary,
 }
 
 class _FieldMenuDialogState extends State<FieldMenuDialog> {
   FieldMenuTab _currentTab = FieldMenuTab.main;
   int _selectedMemberIndex = 0;
-  int _bestiaryIndex = 0;
   late int _currentFood;
   List<SaveData?>? _slots;
   bool _isLoadingSlots = false;
@@ -170,8 +168,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         return _buildRest();
       case FieldMenuTab.gameOption:
         return _buildGameOption();
-      case FieldMenuTab.bestiary:
-        return _buildBestiaryView();
     }
   }
 
@@ -230,7 +226,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         _menuBtn('[E] 초감각 기술을 쓴다 (Extrasense / ESP)', FieldMenuTab.esp),
         _menuBtn('[R] 여기서 쉰다 (Rest)', FieldMenuTab.rest),
         _menuBtn('[G] 게임 저장 / 불러오기 (Game Option)', FieldMenuTab.gameOption),
-        _menuBtn('[B] 몬스터 도감을 본다 (Bestiary 75종)', FieldMenuTab.bestiary),
       ],
     );
   }
@@ -1112,60 +1107,85 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   }
 
   // =========================================================================
-  // 4. 야외 캠프 휴식 (Rest)
+  // 4. 여기서 쉰다 (원작 LOREMENU.PAS:869 Rest)
   // =========================================================================
   Widget _buildRest() {
+    final aliveMembers = widget.party.where((p) => !p.isDead).toList();
+    final torchSteps = widget.etc?['torchSteps'] ?? 0;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '모닥불을 피우고 휴식을 취하여 일행 전원의 체력과 마력을 회복합니다.',
+          '모닥불을 피우고 야외 캠프에서 휴식을 취합니다.',
           style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.lightCyan,
+            color: RetroTheme.yellow,
             fontSize: 12,
+          ),
+        ),
+        const SizedBox(height: 6),
+        Text(
+          '• 체력이 (전투Lv + 마법Lv + 초능력Lv) × 2 만큼 회복됩니다.\n'
+          '• 마력(SP)과 초능력(ESP)은 전원 100% 완전 회복됩니다.\n'
+          '• 중독(독)에 걸린 파티원은 독 때문에 건강이 회복되지 않습니다.\n'
+          '• 의식불명 파티원은 전투/마법/초능력 레벨 합만큼 의식불명 수치가 감소합니다.\n'
+          '• 실제로 상처를 치료한 파티원 1인당 식량 1인분이 소모됩니다.\n'
+          '• 물위걸음/늪위걸음/공중부상 마법은 해제되고 횃불 지속시간이 1 감소합니다.',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.lightGray,
+            fontSize: 10,
+            height: 1.4,
           ),
         ),
         const SizedBox(height: 8),
         Text(
-          '휴식 소모량: 식량 ${widget.party.length * 2} 인분 (현재 보유: $_currentFood 인분)',
+          '생존 인원: ${aliveMembers.length}명 | 현재 보유 식량: $_currentFood 인분',
           style: RetroTheme.dosFont.copyWith(
-            color: _currentFood >= widget.party.length * 2
+            color: _currentFood > 0
                 ? RetroTheme.lightGreen
                 : RetroTheme.lightRed,
             fontSize: 11,
           ),
         ),
+        if (_currentFood <= 0)
+          Text(
+            '⚠ 식량이 없어 체력은 회복되지 않지만, 마력과 초능력은 회복됩니다.',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.lightRed,
+              fontSize: 10,
+            ),
+          ),
         const SizedBox(height: 12),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: _currentFood >= widget.party.length * 2
-                ? RetroTheme.blue
-                : RetroTheme.darkGray,
+            backgroundColor: RetroTheme.blue,
             foregroundColor: RetroTheme.white,
             minimumSize: const Size.fromHeight(36),
           ),
-          onPressed: _currentFood >= widget.party.length * 2
-              ? () {
-                  final neededFood = widget.party.length * 2;
-                  setState(() {
-                    _currentFood -= neededFood;
-                    for (final p in widget.party) {
-                      if (!p.isDead) {
-                        p.hp = p.maxHp;
-                        p.sp = p.maxSp;
-                        p.unconscious = 0;
-                      }
-                    }
-                  });
-                  widget.onFoodChanged?.call(_currentFood);
-                  widget.onLog(
-                    '⛺ 일행은 야외 캠프에서 편안한 휴식을 취하고 모든 체력과 마력을 완전히 회복했습니다.',
-                  );
-                  Navigator.of(context).pop();
-                }
-              : null,
+          onPressed: () {
+            final outcome = TownLogic.rest(
+              widget.party,
+              _currentFood,
+              torchSteps: torchSteps,
+            );
+            setState(() => _currentFood = outcome.food);
+            widget.onFoodChanged?.call(_currentFood);
+            // 현상계 지속 마법 해제 (원작 party.etc[1..4] 처리)
+            widget.onSpellEffect?.call(
+              torch: outcome.torchSteps,
+              water: 0,
+              swamp: 0,
+              levitate: 0,
+            );
+
+            widget.onLog('⛺ 일행은 야외 캠프에서 휴식을 마쳤습니다. (남은 식량: ${outcome.food}인분)');
+            for (final l in outcome.logs) {
+              widget.onLog(l);
+            }
+            Navigator.of(context).pop();
+          },
           child: Text(
-            '지금 휴식하기',
+            '지금 휴식하기 (Rest)',
             style: RetroTheme.dosFont.copyWith(fontSize: 12),
           ),
         ),
@@ -1344,72 +1364,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           );
         },
       ),
-    );
-  }
-
-  // =========================================================================
-  // 몬스터 도감 (75종)
-  // =========================================================================
-  Widget _buildBestiaryView() {
-    final monsters = Monster.monsterTemplates;
-    if (_bestiaryIndex >= monsters.length) _bestiaryIndex = 0;
-    final m = monsters[_bestiaryIndex];
-
-    return Row(
-      children: [
-        // 왼쪽 몬스터 목록
-        Expanded(
-          flex: 4,
-          child: Container(
-            color: RetroTheme.viewportBg,
-            child: ListView.builder(
-              itemCount: monsters.length,
-              itemBuilder: (ctx, idx) {
-                final cur = monsters[idx];
-                final isSel = idx == _bestiaryIndex;
-                return GestureDetector(
-                  onTap: () => setState(() => _bestiaryIndex = idx),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
-                    color: isSel ? RetroTheme.blue.withValues(alpha: 0.6) : Colors.transparent,
-                    child: Text(
-                      '#${cur.eNumber.toString().padLeft(2, '0')} ${cur.name}',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: isSel ? RetroTheme.yellow : RetroTheme.white,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
-        const SizedBox(width: 8),
-        // 오른쪽 스탯 카드
-        Expanded(
-          flex: 6,
-          child: Container(
-            padding: const EdgeInsets.all(8),
-            color: RetroTheme.black,
-            child: ListView(
-              children: [
-                Text(
-                  '#${m.eNumber} ${m.name} (Lv.${m.level})',
-                  style: RetroTheme.headerFont.copyWith(fontSize: 13, color: RetroTheme.yellow),
-                ),
-                Text('최대 HP: ${m.maxHp} | AC: ${m.ac}', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGreen, fontSize: 10)),
-                const Divider(color: RetroTheme.lightGray, height: 10),
-                Text('힘: ${m.strength} | 지능: ${m.mentality}', style: RetroTheme.dosFont.copyWith(color: RetroTheme.white, fontSize: 10)),
-                Text('체질: ${m.endurance} | 저항력: ${m.resistance}%', style: RetroTheme.dosFont.copyWith(color: RetroTheme.white, fontSize: 10)),
-                Text('민첩: ${m.agility} | 무기명중: ${m.accArms}/20', style: RetroTheme.dosFont.copyWith(color: RetroTheme.white, fontSize: 10)),
-                Text('마법명중: ${m.accMagic}/20 | 마법Lv: ${m.castLevel}', style: RetroTheme.dosFont.copyWith(color: RetroTheme.white, fontSize: 10)),
-                Text('특수공격: ${m.special == 1 ? "독" : (m.special == 2 ? "치명타" : (m.special == 3 ? "즉사" : "없음"))}', style: RetroTheme.dosFont.copyWith(color: m.special > 0 ? RetroTheme.lightRed : RetroTheme.lightGray, fontSize: 10)),
-              ],
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
