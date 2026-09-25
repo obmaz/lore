@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'models/party_member.dart';
 import 'screens/character_creation_screen.dart';
 import 'screens/main_game_screen.dart';
@@ -30,9 +31,7 @@ class _LoreAppState extends State<LoreApp> {
     return MaterialApp(
       title: '또 다른 지식의 성전 (1993)',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: Colors.black,
-      ),
+      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
       // 파티가 결성되지 않았으면 원작 오프닝 및 캐릭터 생성 모드로 시작,
       // 생성이 완료되면 5인 파티를 들고 메인 게임 화면으로 진입!
       home: _party == null
@@ -41,9 +40,7 @@ class _LoreAppState extends State<LoreApp> {
                 setState(() => _party = party);
               },
             )
-          : MainGameScreen(
-              initialParty: _party,
-            ),
+          : MainGameScreen(initialParty: _party),
     );
   }
 }

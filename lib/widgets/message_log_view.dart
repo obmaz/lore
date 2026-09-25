@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 import 'retro_box.dart';
 
@@ -6,10 +7,7 @@ import 'retro_box.dart';
 class MessageLogView extends StatefulWidget {
   final List<String> logs;
 
-  const MessageLogView({
-    super.key,
-    required this.logs,
-  });
+  const MessageLogView({super.key, required this.logs});
 
   @override
   State<MessageLogView> createState() => _MessageLogViewState();
@@ -71,18 +69,26 @@ class _MessageLogViewState extends State<MessageLogView> {
                       Text(
                         isLatest ? '▶ ' : '  · ',
                         style: RetroTheme.dosFont.copyWith(
-                          color: isLatest ? RetroTheme.yellow : RetroTheme.darkGray,
+                          color: isLatest
+                              ? RetroTheme.yellow
+                              : RetroTheme.darkGray,
                           fontSize: 12,
-                          fontWeight: isLatest ? FontWeight.bold : FontWeight.normal,
+                          fontWeight: isLatest
+                              ? FontWeight.bold
+                              : FontWeight.normal,
                         ),
                       ),
                       Expanded(
                         child: Text(
                           text,
                           style: RetroTheme.logFont.copyWith(
-                            color: isLatest ? RetroTheme.yellow : RetroTheme.lightCyan,
+                            color: isLatest
+                                ? RetroTheme.yellow
+                                : RetroTheme.lightCyan,
                             fontSize: 12,
-                            fontWeight: isLatest ? FontWeight.bold : FontWeight.normal,
+                            fontWeight: isLatest
+                                ? FontWeight.bold
+                                : FontWeight.normal,
                           ),
                         ),
                       ),

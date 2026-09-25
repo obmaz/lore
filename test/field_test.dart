@@ -6,12 +6,15 @@ void main() {
   group('바이너리 타일맵 및 이동 충돌 테스트 (Map & Field Tests)', () {
     test('1. LoreMapData 타일 카테고리 판정 검증', () {
       // 10x10 테스트 맵 구성 (외곽은 벽 1, 내부는 42)
-      final grid = List.generate(10, (y) => List.generate(10, (x) {
-        if (x == 0 || y == 0 || x == 9 || y == 9) return 1; // 외곽 성벽
-        if (x == 5 && y == 5) return 48; // NPC
-        if (x == 8 && y == 8) return 22; // 성문
-        return 42; // 바닥 길
-      }));
+      final grid = List.generate(
+        10,
+        (y) => List.generate(10, (x) {
+          if (x == 0 || y == 0 || x == 9 || y == 9) return 1; // 외곽 성벽
+          if (x == 5 && y == 5) return 48; // NPC
+          if (x == 8 && y == 8) return 22; // 성문
+          return 42; // 바닥 길
+        }),
+      );
 
       final mapData = LoreMapData(name: 'TEST', xmax: 10, ymax: 10, grid: grid);
 
@@ -34,10 +37,13 @@ void main() {
 
     test('2. LoreGame 플레이어 이동 및 방향 전환 검증', () {
       // (1, 1)부터 (10, 10) 중 x=1, y=1 테두리는 벽(1), 내부는 42
-      final grid = List.generate(10, (y) => List.generate(10, (x) {
-        if (x == 0 || y == 0 || x == 9 || y == 9) return 1;
-        return 42;
-      }));
+      final grid = List.generate(
+        10,
+        (y) => List.generate(10, (x) {
+          if (x == 0 || y == 0 || x == 9 || y == 9) return 1;
+          return 42;
+        }),
+      );
       final mapData = LoreMapData(name: 'TEST', xmax: 10, ymax: 10, grid: grid);
 
       final game = LoreGame();

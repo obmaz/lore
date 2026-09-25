@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
+
 import '../theme/retro_theme.dart';
 import '../game/lore_game.dart';
 import '../models/party_member.dart';
@@ -11,20 +12,13 @@ import '../widgets/dpad_widget.dart';
 import '../widgets/battle_viewport_view.dart';
 import '../widgets/town_dialog.dart';
 
-enum GameScreenMode {
-  field,
-  battle,
-  gameOver,
-}
+enum GameScreenMode { field, battle, gameOver }
 
 /// 4:3 레트로 콘솔 레이아웃 통합 메인 게임 화면
 class MainGameScreen extends StatefulWidget {
   final List<PartyMember>? initialParty;
 
-  const MainGameScreen({
-    super.key,
-    this.initialParty,
-  });
+  const MainGameScreen({super.key, this.initialParty});
 
   @override
   State<MainGameScreen> createState() => _MainGameScreenState();
@@ -50,7 +44,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   void _initParty() {
-    _party = widget.initialParty ??
+    _party =
+        widget.initialParty ??
         [
           PartyMember.createPreset(1), // Hercules (기사)
           PartyMember.createPreset(3), // Merlin (마법사)
@@ -107,7 +102,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
       // 1~3마리의 몬스터 무작위 조우 (Orc, Troll, Serpent, Wolf 등)
       _battleEnemies = [
         Monster.create(1), // Orc
-        Monster.create(DateTime.now().millisecond % 2 == 0 ? 3 : 2), // Serpent or Troll
+        Monster.create(
+          DateTime.now().millisecond % 2 == 0 ? 3 : 2,
+        ), // Serpent or Troll
       ];
       _addLog('=== 몬스터가 나타났다! ===');
       for (final e in _battleEnemies) {
@@ -171,9 +168,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         return Stack(
           children: [
             // Flame 2D 타일맵 게임 위젯
-            Positioned.fill(
-              child: GameWidget(game: _game),
-            ),
+            Positioned.fill(child: GameWidget(game: _game)),
             // 좌측 상단 좌표 표시
             Positioned(
               top: 6,
@@ -183,7 +178,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 color: RetroTheme.black.withValues(alpha: 0.7),
                 child: Text(
                   '좌표: (${_game.playerX}, ${_game.playerY})',
-                  style: RetroTheme.dosFont.copyWith(fontSize: 11, color: RetroTheme.lightCyan),
+                  style: RetroTheme.dosFont.copyWith(
+                    fontSize: 11,
+                    color: RetroTheme.lightCyan,
+                  ),
                 ),
               ),
             ),
@@ -196,7 +194,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 color: RetroTheme.black.withValues(alpha: 0.7),
                 child: Text(
                   '금화: $_partyGold 개',
-                  style: RetroTheme.dosFont.copyWith(fontSize: 11, color: RetroTheme.yellow),
+                  style: RetroTheme.dosFont.copyWith(
+                    fontSize: 11,
+                    color: RetroTheme.yellow,
+                  ),
                 ),
               ),
             ),
@@ -229,16 +230,26 @@ class _MainGameScreenState extends State<MainGameScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.dangerous_outlined, size: 54, color: RetroTheme.lightRed),
+              const Icon(
+                Icons.dangerous_outlined,
+                size: 54,
+                color: RetroTheme.lightRed,
+              ),
               const SizedBox(height: 12),
               Text(
                 'G A M E   O V E R',
-                style: RetroTheme.headerFont.copyWith(color: RetroTheme.lightRed, fontSize: 20),
+                style: RetroTheme.headerFont.copyWith(
+                  color: RetroTheme.lightRed,
+                  fontSize: 20,
+                ),
               ),
               const SizedBox(height: 8),
               Text(
                 '일행은 모험중에 모두 목숨을 잃었다.',
-                style: RetroTheme.dosFont.copyWith(color: RetroTheme.white, fontSize: 13),
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.white,
+                  fontSize: 13,
+                ),
               ),
               const SizedBox(height: 16),
               ElevatedButton(
@@ -317,21 +328,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
                           // 오른쪽 상단: 파티원 상태창
                           Expanded(
                             flex: 38,
-                            child: PartyStatusView(
-                              members: _mapPartyStatus(),
-                            ),
+                            child: PartyStatusView(members: _mapPartyStatus()),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 6),
                     // 하단 영역: 3~4줄 분량 메시지 로그 스크롤 영역
-                    Expanded(
-                      flex: 32,
-                      child: MessageLogView(
-                        logs: _logs,
-                      ),
-                    ),
+                    Expanded(flex: 32, child: MessageLogView(logs: _logs)),
                   ],
                 ),
               ),

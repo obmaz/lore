@@ -1,12 +1,15 @@
 import 'dart:math';
+
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import '../theme/retro_theme.dart';
 import 'lore_map_manager.dart';
+import 'bgi_font_decoder.dart';
 
 /// 1993년 원작의 실제 100x100 바이너리 맵(TOWN1.MAP, GROUND1.MAP 등)과
-/// 플레이어 중심 카메라 스크롤을 지원하는 Flame 2D 엔진
+/// 원작 CHARA.FNT 스프라이트 렌더링을 지원하는 Flame 2D 엔진
 class LoreGame extends FlameGame {
   static const int viewTilesX = 11;
   static const int viewTilesY = 11;
@@ -14,6 +17,11 @@ class LoreGame extends FlameGame {
 
   LoreMapData? currentMap;
   String currentMapName = 'TOWN1'; // 1993년 원작 시작 맵: CASTLE LORE 성내 마을
+
+  // 원작 4-plane BGI 폰트 디코더 (캐릭터 및 타일)
+  BgiFontDecoder? charaFont;
+  BgiFontDecoder? townFont;
+  BgiFontDecoder? groundFont;
 
   // 원작 LORECRET.PAS 및 LOREMAIN.PAS 기준 초기 시작 좌표: (51, 31)
   int playerX = 51;
@@ -41,6 +49,13 @@ class LoreGame extends FlameGame {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    try {
+      charaFont = await BgiFontDecoder.loadFromAsset('CHARA');
+      townFont = await BgiFontDecoder.loadFromAsset('TOWN');
+      groundFont = await BgiFontDecoder.loadFromAsset('GROUND');
+    } catch (e) {
+      // 폰트 에셋 로드 실패 시 무시 (fallback 벡터 드로잉)
+    }
     await loadMap('TOWN1');
   }
 
@@ -52,7 +67,9 @@ class LoreGame extends FlameGame {
         playerX = startX;
         playerY = startY;
       }
-      onLog?.call('지도 [$mapName] 로드 완료 (크기: ${currentMap!.xmax}x${currentMap!.ymax})');
+      onLog?.call(
+        '지도 [$mapName] 로드 완료 (크기: ${currentMap!.xmax}x${currentMap!.ymax})',
+      );
     } catch (e) {
       // 에셋 로드 실패 시 안전 fallback
       onLog?.call('지도 파일 로드 실패: $e');
@@ -72,7 +89,10 @@ class LoreGame extends FlameGame {
     if (currentMap == null) return false;
 
     // 맵 경계 체크
-    if (targetX < 1 || targetX > currentMap!.xmax || targetY < 1 || targetY > currentMap!.ymax) {
+    if (targetX < 1 ||
+        targetX > currentMap!.xmax ||
+        targetY < 1 ||
+        targetY > currentMap!.ymax) {
       onLog?.call('더 이상 나아갈 수 없는 경계 지역입니다.');
       return false;
     }
@@ -111,7 +131,8 @@ class LoreGame extends FlameGame {
     }
 
     // 필드(GROUND1)일 때 약 10% 확률로 몬스터 인카운터 발생
-    if (currentMapName.startsWith('GROUND') || currentMapName.startsWith('DEN')) {
+    if (currentMapName.startsWith('GROUND') ||
+        currentMapName.startsWith('DEN')) {
       if (_random.nextInt(10) == 0) {
         onLog?.call('!! 적의 기척이 느껴집니다! 전투 모드로 돌입합니다!');
         onEncounter?.call();
@@ -124,7 +145,10 @@ class LoreGame extends FlameGame {
   void _handleNpcInteraction(int tileVal, int tx, int ty) {
     if (currentMapName == 'TOWN1') {
       if (tx == 9 && ty == 64) {
-        onNpcTalk?.call('경비병', '모험을 시작한다면 많은 괴물을 만날 것이오. Serpent와 Python은 맹독이 있으니 주의하시오.');
+        onNpcTalk?.call(
+          '경비병',
+          '모험을 시작한다면 많은 괴물을 만날 것이오. Serpent와 Python은 맹독이 있으니 주의하시오.',
+        );
       } else if (tx == 72 && ty == 73) {
         onNpcTalk?.call('마을 주민', 'Orc는 가장 하급 괴물이오.');
       } else if (tx == 19 && ty == 53) {
@@ -176,108 +200,116 @@ class LoreGame extends FlameGame {
         final tileVal = currentMap!.getTile(worldX, worldY);
         final cat = currentMap!.getCategory(tileVal);
 
-        final paint = Paint();
-        switch (cat) {
-          case TileCategory.wall:
-            // 석조 성벽 (도스 청회색/벽돌)
-            paint.color = const Color(0xFF1E284A);
-            canvas.drawRect(rect, paint);
-            final brickPaint = Paint()
-              ..color = const Color(0xFF384B78)
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 1.0;
-            canvas.drawRect(rect, brickPaint);
-            break;
+        // 원작 FNT 타일 스프라이트가 존재하면 원작 픽셀 아트로 즉시 렌더링
+        final activeTileFont = currentMapName.startsWith('TOWN') ? townFont : groundFont;
+        if (activeTileFont != null && tileVal >= 0 && tileVal < activeTileFont.totalSprites) {
+          activeTileFont.renderSprite(canvas, tileVal, rect, opaqueBackground: true);
+        } else {
+          final paint = Paint();
+          switch (cat) {
+            case TileCategory.wall:
+              paint.color = const Color(0xFF1E284A);
+              canvas.drawRect(rect, paint);
+              final brickPaint = Paint()
+                ..color = const Color(0xFF384B78)
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 1.0;
+              canvas.drawRect(rect, brickPaint);
+              break;
 
-          case TileCategory.portal:
-            // 성문 / 포털
-            paint.color = const Color(0xFF886622);
-            canvas.drawRect(rect, paint);
-            final gatePaint = Paint()
-              ..color = RetroTheme.yellow
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 2.0;
-            canvas.drawCircle(rect.center, tileSize * 0.35, gatePaint);
-            break;
+            case TileCategory.portal:
+              paint.color = const Color(0xFF886622);
+              canvas.drawRect(rect, paint);
+              final gatePaint = Paint()
+                ..color = RetroTheme.yellow
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 2.0;
+              canvas.drawCircle(rect.center, tileSize * 0.35, gatePaint);
+              break;
 
-          case TileCategory.npc:
-            // NPC 타일
-            paint.color = const Color(0xFF152A18);
-            canvas.drawRect(rect, paint);
-            final npcPaint = Paint()..color = RetroTheme.lightCyan;
-            canvas.drawCircle(rect.center, tileSize * 0.28, npcPaint);
-            break;
+            case TileCategory.npc:
+              paint.color = const Color(0xFF152A18);
+              canvas.drawRect(rect, paint);
+              final npcPaint = Paint()..color = RetroTheme.lightCyan;
+              canvas.drawCircle(rect.center, tileSize * 0.28, npcPaint);
+              break;
 
-          case TileCategory.water:
-            paint.color = const Color(0xFF0A2555);
-            canvas.drawRect(rect, paint);
-            break;
+            case TileCategory.water:
+              paint.color = const Color(0xFF0A2555);
+              canvas.drawRect(rect, paint);
+              break;
 
-          case TileCategory.swamp:
-            paint.color = const Color(0xFF253B15);
-            canvas.drawRect(rect, paint);
-            break;
+            case TileCategory.swamp:
+              paint.color = const Color(0xFF253B15);
+              canvas.drawRect(rect, paint);
+              break;
 
-          case TileCategory.lava:
-            paint.color = const Color(0xFF551100);
-            canvas.drawRect(rect, paint);
-            break;
+            case TileCategory.lava:
+              paint.color = const Color(0xFF551100);
+              canvas.drawRect(rect, paint);
+              break;
 
-          case TileCategory.walkable:
-          default:
-            // 평지 길 / 보도블록
-            paint.color = const Color(0xFF101B12);
-            canvas.drawRect(rect, paint);
-            final dotPaint = Paint()..color = const Color(0xFF1E3523);
-            canvas.drawCircle(Offset(rect.left + 5, rect.top + 5), 1.0, dotPaint);
-            canvas.drawCircle(Offset(rect.right - 5, rect.bottom - 5), 1.0, dotPaint);
-            break;
+            case TileCategory.walkable:
+            default:
+              paint.color = const Color(0xFF101B12);
+              canvas.drawRect(rect, paint);
+              break;
+          }
         }
       }
     }
 
-    // 2. 뷰포트 정중앙에 위치한 플레이어 캐릭터 렌더링
+    // 2. 뷰포트 정중앙에 위치한 플레이어 캐릭터 렌더링 (원작 CHARA.FNT 20x20 픽셀 아트)
     final centerRect = Rect.fromLTWH(
-      offsetX + halfX * tileSize + 3,
-      offsetY + halfY * tileSize + 3,
-      tileSize - 6,
-      tileSize - 6,
+      offsetX + halfX * tileSize + 2,
+      offsetY + halfY * tileSize + 2,
+      tileSize - 4,
+      tileSize - 4,
     );
 
-    // 플레이어 외형 (황금빛 용사 아이콘)
-    final playerPaint = Paint()..color = RetroTheme.yellow;
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(centerRect, const Radius.circular(4)),
-      playerPaint,
-    );
+    if (charaFont != null) {
+      // 원작 LORESUB.PAS 기준 방향 인덱스:
+      // 남: 0, 북: 1, 동: 2, 서: 3 (필드 시 +4)
+      int face = playerDirection;
+      if (!currentMapName.startsWith('TOWN')) {
+        face += 4;
+      }
+      charaFont!.renderSprite(canvas, face, centerRect);
+    } else {
+      // Fallback 벡터 렌더링
+      final playerPaint = Paint()..color = RetroTheme.yellow;
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(centerRect, const Radius.circular(4)),
+        playerPaint,
+      );
 
-    final playerBorder = Paint()
-      ..color = RetroTheme.white
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.5;
-    canvas.drawRRect(
-      RRect.fromRectAndRadius(centerRect, const Radius.circular(4)),
-      playerBorder,
-    );
+      final playerBorder = Paint()
+        ..color = RetroTheme.white
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1.5;
+      canvas.drawRRect(
+        RRect.fromRectAndRadius(centerRect, const Radius.circular(4)),
+        playerBorder,
+      );
 
-    // 바라보는 방향 표시
-    final eyePaint = Paint()..color = RetroTheme.red;
-    Offset eyeOffset;
-    switch (playerDirection) {
-      case 0: // 남
-        eyeOffset = Offset(centerRect.center.dx, centerRect.bottom - 4);
-        break;
-      case 1: // 북
-        eyeOffset = Offset(centerRect.center.dx, centerRect.top + 4);
-        break;
-      case 2: // 동
-        eyeOffset = Offset(centerRect.right - 4, centerRect.center.dy);
-        break;
-      default: // 서
-        eyeOffset = Offset(centerRect.left + 4, centerRect.center.dy);
-        break;
+      final eyePaint = Paint()..color = RetroTheme.red;
+      Offset eyeOffset;
+      switch (playerDirection) {
+        case 0: // 남
+          eyeOffset = Offset(centerRect.center.dx, centerRect.bottom - 4);
+          break;
+        case 1: // 북
+          eyeOffset = Offset(centerRect.center.dx, centerRect.top + 4);
+          break;
+        case 2: // 동
+          eyeOffset = Offset(centerRect.right - 4, centerRect.center.dy);
+          break;
+        default: // 서
+          eyeOffset = Offset(centerRect.left + 4, centerRect.center.dy);
+          break;
+      }
+      canvas.drawCircle(eyeOffset, 2.5, eyePaint);
     }
-    canvas.drawCircle(eyeOffset, 2.5, eyePaint);
   }
 
   void handleKeyEvent(KeyEvent event) {

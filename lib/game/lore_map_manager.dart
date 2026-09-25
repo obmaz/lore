@@ -1,15 +1,15 @@
 import 'package:flutter/services.dart';
 
 enum TileCategory {
-  special,  // 0: 특수 이벤트
-  wall,     // 1..21: 성벽/바위/건물 (통과 불가)
-  portal,   // 22: 다른 맵 진입 (마을<->필드 성문)
-  sign,     // 23: 표지판
-  water,    // 24: 물
-  swamp,    // 25: 늪지 (중독)
-  lava,     // 26: 용암
+  special, // 0: 특수 이벤트
+  wall, // 1..21: 성벽/바위/건물 (통과 불가)
+  portal, // 22: 다른 맵 진입 (마을<->필드 성문)
+  sign, // 23: 표지판
+  water, // 24: 물
+  swamp, // 25: 늪지 (중독)
+  lava, // 26: 용암
   walkable, // 27..47: 일반 이동 가능 바닥/길
-  npc,      // 48+: NPC / 주민
+  npc, // 48+: NPC / 주민
 }
 
 /// 1993년 원작 LORE 바이너리 맵(.MAP) 데이터 및 로더
@@ -31,7 +31,8 @@ class LoreMapData {
     return grid[y - 1][x - 1];
   }
 
-  bool get isTown => name.startsWith('TOWN') || name.startsWith('KEEP') || name == 'TEST';
+  bool get isTown =>
+      name.startsWith('TOWN') || name.startsWith('KEEP') || name == 'TEST';
 
   TileCategory getCategory(int tileValue) {
     if (tileValue == 0) return TileCategory.special;
@@ -79,11 +80,6 @@ class LoreMapData {
       });
     });
 
-    return LoreMapData(
-      name: mapName,
-      xmax: xmax,
-      ymax: ymax,
-      grid: grid,
-    );
+    return LoreMapData(name: mapName, xmax: xmax, ymax: ymax, grid: grid);
   }
 }

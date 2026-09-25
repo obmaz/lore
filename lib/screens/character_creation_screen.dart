@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 
@@ -6,18 +7,18 @@ import '../models/party_member.dart';
 class CharacterCreationScreen extends StatefulWidget {
   final void Function(List<PartyMember> party) onGameStart;
 
-  const CharacterCreationScreen({
-    super.key,
-    required this.onGameStart,
-  });
+  const CharacterCreationScreen({super.key, required this.onGameStart});
 
   @override
-  State<CharacterCreationScreen> createState() => _CharacterCreationScreenState();
+  State<CharacterCreationScreen> createState() =>
+      _CharacterCreationScreenState();
 }
 
 class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   int _step = 0; // 0: 타이틀, 1: 이름&성별, 2: 성향 질문, 3: 직업 확인, 4: 동료 4명 선택
-  final TextEditingController _nameController = TextEditingController(text: 'Hero');
+  final TextEditingController _nameController = TextEditingController(
+    text: 'Hero',
+  );
   Gender _selectedGender = Gender.male;
 
   // 질문 응답 및 성향 데이터 (transdata[1..5])
@@ -26,14 +27,24 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   PlayerClass _determinedClass = PlayerClass.knight;
 
   // 선택된 동료 4명 인덱스 (1..10 중)
-  final Set<int> _selectedCompanions = {1, 3, 5, 7}; // 기본값: Hercules, Merlin, Genius Kie, Regulus
+  final Set<int> _selectedCompanions = {
+    1,
+    3,
+    5,
+    7,
+  }; // 기본값: Hercules, Merlin, Genius Kie, Regulus
 
   // 원작 10인 영웅 정보
   static const List<Map<String, dynamic>> companionsList = [
     {'id': 1, 'name': 'Hercules', 'class': '기사', 'desc': '힘과 인내력이 뛰어난 중기사'},
     {'id': 2, 'name': 'Titan', 'class': '기사', 'desc': '공격과 방어의 균형이 잡힌 기사'},
     {'id': 3, 'name': 'Merlin', 'class': '마법사', 'desc': '강력한 정신력의 원로 마법사'},
-    {'id': 4, 'name': 'Betelgeuse', 'class': '마법사', 'desc': '정신력과 민첩성을 겸비한 마법사'},
+    {
+      'id': 4,
+      'name': 'Betelgeuse',
+      'class': '마법사',
+      'desc': '정신력과 민첩성을 겸비한 마법사',
+    },
     {'id': 5, 'name': 'Genius Kie', 'class': '전사', 'desc': '무기 정확도가 가장 뛰어난 검사'},
     {'id': 6, 'name': 'Bellatrix', 'class': '전사', 'desc': '높은 저항력과 민첩성의 전사'},
     {'id': 7, 'name': 'Regulus', 'class': '전투승', 'desc': '맨손 무투술의 달인'},
@@ -127,7 +138,9 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   void _finishCreation() {
     // 1. 주인공 캐릭터 생성
     final hero = PartyMember(
-      name: _nameController.text.trim().isEmpty ? 'Hero' : _nameController.text.trim(),
+      name: _nameController.text.trim().isEmpty
+          ? 'Hero'
+          : _nameController.text.trim(),
       sex: _selectedGender,
       playerClass: _determinedClass,
       strength: 15 + _transdata[1] * 2,
@@ -210,7 +223,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
         const SizedBox(height: 6),
         Text(
           '제 1 부 (1993 - 2026 Flutter Port)',
-          style: RetroTheme.dosFont.copyWith(fontSize: 14, color: RetroTheme.lightCyan),
+          style: RetroTheme.dosFont.copyWith(
+            fontSize: 14,
+            color: RetroTheme.lightCyan,
+          ),
         ),
         const SizedBox(height: 32),
         Container(
@@ -221,11 +237,29 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
           ),
           child: Column(
             children: [
-              Text('원작: 안 영 기 (1993년 Borland Pascal 6.0)', style: RetroTheme.dosFont.copyWith(fontSize: 12, color: RetroTheme.white)),
+              Text(
+                '원작: 안 영 기 (1993년 Borland Pascal 6.0)',
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 12,
+                  color: RetroTheme.white,
+                ),
+              ),
               const SizedBox(height: 4),
-              Text('엔진: Flutter & Flame 2D 엔진', style: RetroTheme.dosFont.copyWith(fontSize: 11, color: RetroTheme.lightGray)),
+              Text(
+                '엔진: Flutter & Flame 2D 엔진',
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 11,
+                  color: RetroTheme.lightGray,
+                ),
+              ),
               const SizedBox(height: 4),
-              Text('지도: 원작 100x100 바이너리 TOWN1.MAP 로드', style: RetroTheme.dosFont.copyWith(fontSize: 11, color: RetroTheme.lightGreen)),
+              Text(
+                '지도: 원작 100x100 바이너리 TOWN1.MAP 로드',
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 11,
+                  color: RetroTheme.lightGreen,
+                ),
+              ),
             ],
           ),
         ),
@@ -236,16 +270,25 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: RetroTheme.blue,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
               ),
               onPressed: () => setState(() => _step = 1),
-              child: Text('새 게임 시작 (캐릭터 만들기)', style: RetroTheme.headerFont.copyWith(fontSize: 13)),
+              child: Text(
+                '새 게임 시작 (캐릭터 만들기)',
+                style: RetroTheme.headerFont.copyWith(fontSize: 13),
+              ),
             ),
             const SizedBox(width: 16),
             OutlinedButton(
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: RetroTheme.lightCyan),
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
               ),
               onPressed: () {
                 // 기본 파티로 즉시 시작
@@ -258,7 +301,13 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 ];
                 widget.onGameStart(defaultParty);
               },
-              child: Text('빠른 모험 시작 (기본 파티)', style: RetroTheme.dosFont.copyWith(fontSize: 12, color: RetroTheme.lightCyan)),
+              child: Text(
+                '빠른 모험 시작 (기본 파티)',
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 12,
+                  color: RetroTheme.lightCyan,
+                ),
+              ),
             ),
           ],
         ),
@@ -273,7 +322,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('◆ 주인공의 이름과 성별을 정해주십시오 ◆', style: RetroTheme.headerFont.copyWith(fontSize: 16)),
+        Text(
+          '◆ 주인공의 이름과 성별을 정해주십시오 ◆',
+          style: RetroTheme.headerFont.copyWith(fontSize: 16),
+        ),
         const SizedBox(height: 24),
         Container(
           width: 320,
@@ -282,7 +334,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('당신의 이름은 :', style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow)),
+              Text(
+                '당신의 이름은 :',
+                style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow),
+              ),
               const SizedBox(height: 6),
               TextField(
                 controller: _nameController,
@@ -291,30 +346,64 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                   filled: true,
                   fillColor: Color(0xFF000033),
                   border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 6,
+                  ),
                 ),
               ),
               const SizedBox(height: 16),
-              Text('당신의 성별은 :', style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow)),
+              Text(
+                '당신의 성별은 :',
+                style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow),
+              ),
               const SizedBox(height: 6),
               Row(
                 children: [
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      backgroundColor: _selectedGender == Gender.male ? RetroTheme.blue : Colors.transparent,
-                      side: BorderSide(color: _selectedGender == Gender.male ? RetroTheme.yellow : RetroTheme.darkGray),
+                      backgroundColor: _selectedGender == Gender.male
+                          ? RetroTheme.blue
+                          : Colors.transparent,
+                      side: BorderSide(
+                        color: _selectedGender == Gender.male
+                            ? RetroTheme.yellow
+                            : RetroTheme.darkGray,
+                      ),
                     ),
-                    onPressed: () => setState(() => _selectedGender = Gender.male),
-                    child: Text('남성 [M]', style: RetroTheme.dosFont.copyWith(color: _selectedGender == Gender.male ? RetroTheme.yellow : RetroTheme.lightGray)),
+                    onPressed: () =>
+                        setState(() => _selectedGender = Gender.male),
+                    child: Text(
+                      '남성 [M]',
+                      style: RetroTheme.dosFont.copyWith(
+                        color: _selectedGender == Gender.male
+                            ? RetroTheme.yellow
+                            : RetroTheme.lightGray,
+                      ),
+                    ),
                   ),
                   const SizedBox(width: 12),
                   OutlinedButton(
                     style: OutlinedButton.styleFrom(
-                      backgroundColor: _selectedGender == Gender.female ? RetroTheme.blue : Colors.transparent,
-                      side: BorderSide(color: _selectedGender == Gender.female ? RetroTheme.yellow : RetroTheme.darkGray),
+                      backgroundColor: _selectedGender == Gender.female
+                          ? RetroTheme.blue
+                          : Colors.transparent,
+                      side: BorderSide(
+                        color: _selectedGender == Gender.female
+                            ? RetroTheme.yellow
+                            : RetroTheme.darkGray,
+                      ),
                     ),
-                    onPressed: () => setState(() => _selectedGender = Gender.female),
-                    child: Text('여성 [F]', style: RetroTheme.dosFont.copyWith(color: _selectedGender == Gender.female ? RetroTheme.yellow : RetroTheme.lightGray)),
+                    onPressed: () =>
+                        setState(() => _selectedGender = Gender.female),
+                    child: Text(
+                      '여성 [F]',
+                      style: RetroTheme.dosFont.copyWith(
+                        color: _selectedGender == Gender.female
+                            ? RetroTheme.yellow
+                            : RetroTheme.lightGray,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -339,9 +428,18 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('◆ 성향 문답 테스트 (${_currentQuestionIndex + 1} / 4) ◆', style: RetroTheme.headerFont.copyWith(fontSize: 15)),
+        Text(
+          '◆ 성향 문답 테스트 (${_currentQuestionIndex + 1} / 4) ◆',
+          style: RetroTheme.headerFont.copyWith(fontSize: 15),
+        ),
         const SizedBox(height: 8),
-        Text('자신에게 맞는 답을 소신있게 선택해 주십시오.', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGray, fontSize: 12)),
+        Text(
+          '자신에게 맞는 답을 소신있게 선택해 주십시오.',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.lightGray,
+            fontSize: 12,
+          ),
+        ),
         const SizedBox(height: 20),
         Container(
           width: 480,
@@ -352,7 +450,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             children: [
               Text(
                 q['question'],
-                style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 13),
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.yellow,
+                  fontSize: 13,
+                ),
               ),
               const SizedBox(height: 16),
               ...List.generate(3, (idx) {
@@ -369,7 +470,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                       onPressed: () => _answerQuestion(idx),
                       child: Text(
                         q['options'][idx],
-                        style: RetroTheme.dosFont.copyWith(color: RetroTheme.white, fontSize: 12),
+                        style: RetroTheme.dosFont.copyWith(
+                          color: RetroTheme.white,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                   ),
@@ -389,7 +493,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('◆ 성향 분석 결과 ◆', style: RetroTheme.headerFont.copyWith(fontSize: 16)),
+        Text(
+          '◆ 성향 분석 결과 ◆',
+          style: RetroTheme.headerFont.copyWith(fontSize: 16),
+        ),
         const SizedBox(height: 16),
         Container(
           width: 420,
@@ -404,12 +511,18 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
               const SizedBox(height: 8),
               Text(
                 '★ ${_determinedClass.koreanName} ★',
-                style: RetroTheme.headerFont.copyWith(fontSize: 22, color: RetroTheme.yellow),
+                style: RetroTheme.headerFont.copyWith(
+                  fontSize: 22,
+                  color: RetroTheme.yellow,
+                ),
               ),
               const SizedBox(height: 12),
               Text(
                 '원하시면 다른 직업으로 변경하여 모험을 시작할 수 있습니다.',
-                style: RetroTheme.dosFont.copyWith(fontSize: 11, color: RetroTheme.lightCyan),
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 11,
+                  color: RetroTheme.lightCyan,
+                ),
               ),
               const SizedBox(height: 12),
               DropdownButton<PlayerClass>(
@@ -444,10 +557,16 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   Widget _buildCompanionsScreen() {
     return Column(
       children: [
-        Text('◆ 동행할 4명의 동료 용사를 골라주십시오 ◆', style: RetroTheme.headerFont.copyWith(fontSize: 15)),
+        Text(
+          '◆ 동행할 4명의 동료 용사를 골라주십시오 ◆',
+          style: RetroTheme.headerFont.copyWith(fontSize: 15),
+        ),
         Text(
           '선택된 동료: ${_selectedCompanions.length} / 4 명',
-          style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 12),
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 12,
+          ),
         ),
         const SizedBox(height: 10),
         Expanded(
@@ -460,10 +579,17 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
 
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 2),
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
-                  color: isSelected ? RetroTheme.blue.withValues(alpha: 0.5) : RetroTheme.background,
-                  border: Border.all(color: isSelected ? RetroTheme.yellow : RetroTheme.darkGray),
+                  color: isSelected
+                      ? RetroTheme.blue.withValues(alpha: 0.5)
+                      : RetroTheme.background,
+                  border: Border.all(
+                    color: isSelected ? RetroTheme.yellow : RetroTheme.darkGray,
+                  ),
                 ),
                 child: Row(
                   children: [
@@ -483,11 +609,24 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                     ),
                     Expanded(
                       flex: 3,
-                      child: Text('${c['name']} [${c['class']}]', style: RetroTheme.dosFont.copyWith(color: isSelected ? RetroTheme.yellow : RetroTheme.white)),
+                      child: Text(
+                        '${c['name']} [${c['class']}]',
+                        style: RetroTheme.dosFont.copyWith(
+                          color: isSelected
+                              ? RetroTheme.yellow
+                              : RetroTheme.white,
+                        ),
+                      ),
                     ),
                     Expanded(
                       flex: 5,
-                      child: Text(c['desc'], style: RetroTheme.dosFont.copyWith(fontSize: 11, color: RetroTheme.lightGray)),
+                      child: Text(
+                        c['desc'],
+                        style: RetroTheme.dosFont.copyWith(
+                          fontSize: 11,
+                          color: RetroTheme.lightGray,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -498,10 +637,15 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
         const SizedBox(height: 8),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: _selectedCompanions.length == 4 ? RetroTheme.green : RetroTheme.darkGray,
+            backgroundColor: _selectedCompanions.length == 4
+                ? RetroTheme.green
+                : RetroTheme.darkGray,
           ),
           onPressed: _selectedCompanions.length == 4 ? _finishCreation : null,
-          child: Text('LORE 모험 시작하기 (성내 광장 51, 31 진입) ▶', style: RetroTheme.dosFont),
+          child: Text(
+            'LORE 모험 시작하기 (성내 광장 51, 31 진입) ▶',
+            style: RetroTheme.dosFont,
+          ),
         ),
       ],
     );

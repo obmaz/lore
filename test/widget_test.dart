@@ -3,7 +3,9 @@ import 'package:lore/main.dart';
 import 'package:lore/widgets/dpad_widget.dart';
 
 void main() {
-  testWidgets('Opening title screen and game start flow', (WidgetTester tester) async {
+  testWidgets('Opening title screen and game start flow', (
+    WidgetTester tester,
+  ) async {
     await tester.pumpWidget(const LoreApp());
     await tester.pump(const Duration(milliseconds: 100));
 
