@@ -3,12 +3,18 @@ import 'package:flutter/material.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 import '../services/audio_manager.dart';
+import '../services/save_manager.dart';
 
 /// 1993년 원작 LORECRET.PAS 기반 캐릭터 생성 및 오프닝 화면
 class CharacterCreationScreen extends StatefulWidget {
   final void Function(List<PartyMember> party) onGameStart;
+  final void Function(SaveData loadedData)? onLoadGame;
 
-  const CharacterCreationScreen({super.key, required this.onGameStart});
+  const CharacterCreationScreen({
+    super.key,
+    required this.onGameStart,
+    this.onLoadGame,
+  });
 
   @override
   State<CharacterCreationScreen> createState() =>
@@ -273,29 +279,30 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
           ),
         ),
         const SizedBox(height: 32),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Wrap(
+          spacing: 12,
+          runSpacing: 10,
+          alignment: WrapAlignment.center,
           children: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: RetroTheme.blue,
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
+                  horizontal: 16,
                   vertical: 12,
                 ),
               ),
               onPressed: () => setState(() => _step = 1),
               child: Text(
                 '새 게임 시작 (캐릭터 만들기)',
-                style: RetroTheme.headerFont.copyWith(fontSize: 13),
+                style: RetroTheme.headerFont.copyWith(fontSize: 12),
               ),
             ),
-            const SizedBox(width: 16),
             OutlinedButton(
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: RetroTheme.lightCyan),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
+                  horizontal: 14,
                   vertical: 12,
                 ),
               ),
@@ -318,9 +325,181 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 ),
               ),
             ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: RetroTheme.green,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
+              ),
+              onPressed: _showLoadGameDialog,
+              child: Text(
+                '💾 저장된 모험 이어하기',
+                style: RetroTheme.headerFont.copyWith(fontSize: 12),
+              ),
+            ),
           ],
         ),
       ],
+    );
+  }
+
+  void _showLoadGameDialog() {
+    showDialog(
+      context: context,
+      builder: (ctx) => FutureBuilder<List<SaveData?>>(
+        future: SaveManager.instance.getAllSlots(),
+        builder: (ctx, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          final slots = snapshot.data!;
+          final hasAnySave = slots.any((s) => s != null);
+
+          return Dialog(
+            backgroundColor: RetroTheme.black,
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(color: RetroTheme.lightMagenta, width: 2),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Container(
+              width: 480,
+              padding: const EdgeInsets.all(14),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '◆ 저장된 모험 이어하기 (LOAD GAME) ◆',
+                        style: RetroTheme.headerFont.copyWith(
+                          color: RetroTheme.lightMagenta,
+                          fontSize: 12,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.close, size: 16, color: RetroTheme.lightGray),
+                        onPressed: () => Navigator.of(ctx).pop(),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  if (!hasAnySave)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24),
+                      child: Center(
+                        child: Text(
+                          '저장된 게임 데이터가 없습니다.\n먼저 새 게임을 시작하여 모험을 저장하십시오.',
+                          textAlign: TextAlign.center,
+                          style: RetroTheme.dosFont.copyWith(
+                            color: RetroTheme.yellow,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    )
+                  else
+                    ...List.generate(4, (index) {
+                      final slotNum = index + 1;
+                      final slotData = slots[index];
+                      final slotTitle = SaveManager.slotNames[index];
+
+                      return Container(
+                        margin: const EdgeInsets.only(bottom: 8),
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: slotData != null ? RetroTheme.lightCyan : RetroTheme.darkGray,
+                          ),
+                          color: RetroTheme.background,
+                        ),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    '슬롯 $slotNum. $slotTitle',
+                                    style: RetroTheme.headerFont.copyWith(
+                                      color: slotData != null ? RetroTheme.yellow : RetroTheme.lightGray,
+                                      fontSize: 11,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 2),
+                                  if (slotData == null)
+                                    Text(
+                                      '-- [ 비어 있음 (EMPTY) ] --',
+                                      style: RetroTheme.dosFont.copyWith(
+                                        color: RetroTheme.darkGray,
+                                        fontSize: 10,
+                                      ),
+                                    )
+                                  else ...[
+                                    Text(
+                                      '${slotData.mapTitle} (${slotData.playerX}, ${slotData.playerY}) | 금화: ${slotData.gold}',
+                                      style: RetroTheme.dosFont.copyWith(
+                                        color: RetroTheme.lightGreen,
+                                        fontSize: 10,
+                                      ),
+                                    ),
+                                    Text(
+                                      '일행: ${slotData.party.map((p) => p.name).join(', ')}',
+                                      style: RetroTheme.dosFont.copyWith(
+                                        color: RetroTheme.white,
+                                        fontSize: 9,
+                                      ),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ],
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: slotData != null ? RetroTheme.blue : RetroTheme.darkGray,
+                                foregroundColor: RetroTheme.white,
+                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                minimumSize: const Size(64, 28),
+                              ),
+                              onPressed: slotData == null
+                                  ? null
+                                  : () {
+                                      Navigator.of(ctx).pop();
+                                      widget.onLoadGame?.call(slotData);
+                                    },
+                              child: Text(
+                                '불러오기',
+                                style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
+                  const SizedBox(height: 8),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        backgroundColor: RetroTheme.darkGray,
+                        foregroundColor: RetroTheme.white,
+                      ),
+                      onPressed: () => Navigator.of(ctx).pop(),
+                      child: Text('닫기', style: RetroTheme.dosFont.copyWith(fontSize: 11)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 

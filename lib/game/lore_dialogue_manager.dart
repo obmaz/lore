@@ -10,6 +10,20 @@ class LoreDialogueManager {
   bool jrAntaresSecretFound = false;
   bool metPyramidSage = false;
 
+  Map<String, bool> getFlagsCopy() => {
+    'metLordAhn': metLordAhn,
+    'castleGateOpen': castleGateOpen,
+    'jrAntaresSecretFound': jrAntaresSecretFound,
+    'metPyramidSage': metPyramidSage,
+  };
+
+  void loadFlags(Map<String, bool> flags) {
+    metLordAhn = flags['metLordAhn'] ?? false;
+    castleGateOpen = flags['castleGateOpen'] ?? false;
+    jrAntaresSecretFound = flags['jrAntaresSecretFound'] ?? false;
+    metPyramidSage = flags['metPyramidSage'] ?? false;
+  }
+
   /// CASTLE LORE 성내 마을(TOWN1, 맵 6) NPC 대화 조회
   String? getDialogue(int mapId, int tx, int ty, String heroName) {
     if (mapId == 6) { // CASTLE LORE

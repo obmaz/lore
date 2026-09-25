@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
+import '../services/save_manager.dart';
+import '../game/lore_world_manager.dart';
+import '../game/lore_dialogue_manager.dart';
 
 /// 1993년 원작 LOREMENU.PAS 기반 스페이스바 필드 시스템 메뉴 (SelectMode)
 class FieldMenuDialog extends StatefulWidget {
   final List<PartyMember> party;
   final int gold;
   final int food;
+  final int currentMapId;
+  final int playerX;
+  final int playerY;
   final void Function(int newFood)? onFoodChanged;
+  final void Function(SaveData loadedData)? onSaveDataLoaded;
   final void Function(String message) onLog;
 
   const FieldMenuDialog({
@@ -15,7 +22,11 @@ class FieldMenuDialog extends StatefulWidget {
     required this.party,
     required this.gold,
     required this.food,
+    this.currentMapId = 6,
+    this.playerX = 51,
+    this.playerY = 31,
     this.onFoodChanged,
+    this.onSaveDataLoaded,
     required this.onLog,
   });
 
@@ -29,17 +40,38 @@ enum FieldMenuTab {
   characterView,
   castSpell,
   rest,
+  gameOption,
 }
 
 class _FieldMenuDialogState extends State<FieldMenuDialog> {
   FieldMenuTab _currentTab = FieldMenuTab.main;
   int _selectedMemberIndex = 0;
   late int _currentFood;
+  List<SaveData?>? _slots;
+  bool _isLoadingSlots = false;
 
   @override
   void initState() {
     super.initState();
     _currentFood = widget.food;
+    _loadSlots();
+  }
+
+  Future<void> _loadSlots() async {
+    setState(() => _isLoadingSlots = true);
+    try {
+      final slots = await SaveManager.instance.getAllSlots();
+      if (mounted) {
+        setState(() {
+          _slots = slots;
+          _isLoadingSlots = false;
+        });
+      }
+    } catch (_) {
+      if (mounted) {
+        setState(() => _isLoadingSlots = false);
+      }
+    }
   }
 
   @override
@@ -74,6 +106,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     if (_currentTab == FieldMenuTab.characterView) title = '2. 개인의 상황 (VIEW CHARACTER)';
     if (_currentTab == FieldMenuTab.castSpell) title = '3. 비전투 마법 시전 (CAST SPELL)';
     if (_currentTab == FieldMenuTab.rest) title = '4. 야외 캠프 휴식 (REST)';
+    if (_currentTab == FieldMenuTab.gameOption) title = '5. 게임 저장 및 불러오기 (GAME OPTION)';
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,6 +135,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         return _buildCastSpell();
       case FieldMenuTab.rest:
         return _buildRest();
+      case FieldMenuTab.gameOption:
+        return _buildGameOption();
     }
   }
 
@@ -148,6 +183,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         _menuBtn('[V] 개인의 상황을 본다 (View Character)', FieldMenuTab.characterView),
         _menuBtn('[C] 마법을 사용한다 (Cast Spell)', FieldMenuTab.castSpell),
         _menuBtn('[R] 여기서 쉰다 (Rest)', FieldMenuTab.rest),
+        _menuBtn('[G] 게임 저장 / 불러오기 (Game Option)', FieldMenuTab.gameOption),
       ],
     );
   }
@@ -424,6 +460,151 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           child: Text('지금 휴식하기', style: RetroTheme.dosFont.copyWith(fontSize: 12)),
         ),
       ],
+    );
+  }
+
+  // =========================================================================
+  // 5. 게임 저장 및 불러오기 (LOREMENU.PAS: GameOption)
+  // =========================================================================
+  Widget _buildGameOption() {
+    if (_isLoadingSlots || _slots == null) {
+      return Container(
+        height: 240,
+        alignment: Alignment.center,
+        child: Text(
+          '슬롯 정보를 확인하는 중입니다...',
+          style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 12),
+        ),
+      );
+    }
+
+    return Container(
+      constraints: const BoxConstraints(maxHeight: 280),
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: 4,
+        itemBuilder: (context, index) {
+          final slotNum = index + 1;
+          final slotData = _slots![index];
+          final slotTitle = SaveManager.slotNames[index];
+
+          return Container(
+            margin: const EdgeInsets.only(bottom: 8),
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: slotData != null ? RetroTheme.lightCyan : RetroTheme.darkGray,
+                width: 1,
+              ),
+              color: RetroTheme.background,
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '슬롯 $slotNum. $slotTitle',
+                        style: RetroTheme.headerFont.copyWith(
+                          color: slotData != null ? RetroTheme.yellow : RetroTheme.lightGray,
+                          fontSize: 11,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      if (slotData == null)
+                        Text(
+                          '-- [ 비어 있는 슬롯 (EMPTY) ] --',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: RetroTheme.darkGray,
+                            fontSize: 10,
+                          ),
+                        )
+                      else ...[
+                        Text(
+                          '위치: ${slotData.mapTitle} (${slotData.playerX}, ${slotData.playerY})',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: RetroTheme.lightGreen,
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          '일시: ${slotData.timestamp.toLocal().toString().substring(0, 16)} | 금화: ${slotData.gold} | 식량: ${slotData.food}',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: RetroTheme.lightCyan,
+                            fontSize: 9,
+                          ),
+                        ),
+                        Text(
+                          '일행: ${slotData.party.map((p) => p.name).join(', ')}',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: RetroTheme.white,
+                            fontSize: 9,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: RetroTheme.blue,
+                        foregroundColor: RetroTheme.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        minimumSize: const Size(60, 26),
+                      ),
+                      onPressed: () async {
+                        final mapTitle = LoreWorldManager.mapRegistry[widget.currentMapId]?.title ??
+                            '지도 ${widget.currentMapId}';
+                        final newSave = SaveData(
+                          slot: slotNum,
+                          slotName: slotTitle,
+                          timestamp: DateTime.now(),
+                          mapId: widget.currentMapId,
+                          mapTitle: mapTitle,
+                          playerX: widget.playerX,
+                          playerY: widget.playerY,
+                          gold: widget.gold,
+                          food: _currentFood,
+                          party: widget.party,
+                          flags: LoreDialogueManager.instance.getFlagsCopy(),
+                        );
+                        await SaveManager.instance.saveGame(newSave);
+                        widget.onLog('💾 [슬롯 $slotNum: $slotTitle] 에 현재 모험 데이터를 저장했습니다.');
+                        await _loadSlots();
+                      },
+                      child: Text('저장', style: RetroTheme.dosFont.copyWith(fontSize: 10)),
+                    ),
+                    const SizedBox(height: 4),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: slotData != null ? RetroTheme.green : RetroTheme.darkGray,
+                        foregroundColor: RetroTheme.white,
+                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                        minimumSize: const Size(60, 26),
+                      ),
+                      onPressed: slotData == null
+                          ? null
+                          : () {
+                              LoreDialogueManager.instance.loadFlags(slotData.flags);
+                              widget.onSaveDataLoaded?.call(slotData);
+                              Navigator.of(context).pop();
+                            },
+                      child: Text('불러오기', style: RetroTheme.dosFont.copyWith(fontSize: 10)),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

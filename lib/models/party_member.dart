@@ -318,4 +318,73 @@ class PartyMember {
         );
     }
   }
+
+  Map<String, dynamic> toJson() => {
+    'name': name,
+    'sex': sex.index,
+    'classId': playerClass.id,
+    'strength': strength,
+    'mentality': mentality,
+    'concentration': concentration,
+    'endurance': endurance,
+    'resistance': resistance,
+    'agility': agility,
+    'accArms': accArms,
+    'accMagic': accMagic,
+    'accEsp': accEsp,
+    'luck': luck,
+    'hp': hp,
+    'sp': sp,
+    'esp': esp,
+    'battleLevel': battleLevel,
+    'magicLevel': magicLevel,
+    'espLevel': espLevel,
+    'experience': experience,
+    'weapon': weapon,
+    'shield': shield,
+    'armor': armor,
+    'weaPower': weaPower,
+    'shiPower': shiPower,
+    'armPower': armPower,
+    'ac': ac,
+    'poison': poison,
+    'unconscious': unconscious,
+    'dead': dead,
+  };
+
+  factory PartyMember.fromJson(Map<String, dynamic> json) {
+    final member = PartyMember(
+      name: json['name'] as String? ?? 'Hero',
+      sex: (json['sex'] as int? ?? 0) == 1 ? Gender.female : Gender.male,
+      playerClass: PlayerClass.fromId(json['classId'] as int? ?? 1),
+      strength: json['strength'] as int? ?? 10,
+      mentality: json['mentality'] as int? ?? 10,
+      concentration: json['concentration'] as int? ?? 10,
+      endurance: json['endurance'] as int? ?? 10,
+      resistance: json['resistance'] as int? ?? 10,
+      agility: json['agility'] as int? ?? 10,
+      accArms: json['accArms'] as int? ?? 10,
+      accMagic: json['accMagic'] as int? ?? 5,
+      accEsp: json['accEsp'] as int? ?? 5,
+      luck: json['luck'] as int? ?? 10,
+      hp: json['hp'] as int?,
+      sp: json['sp'] as int?,
+      esp: json['esp'] as int?,
+      battleLevel: json['battleLevel'] as int? ?? 1,
+      magicLevel: json['magicLevel'] as int? ?? 1,
+      espLevel: json['espLevel'] as int? ?? 1,
+      experience: json['experience'] as int? ?? 0,
+      weapon: json['weapon'] as int? ?? 0,
+      shield: json['shield'] as int? ?? 0,
+      armor: json['armor'] as int? ?? 0,
+      weaPower: json['weaPower'] as int? ?? 0,
+      shiPower: json['shiPower'] as int? ?? 0,
+      armPower: json['armPower'] as int? ?? 0,
+      ac: json['ac'] as int? ?? 0,
+      poison: json['poison'] as int? ?? 0,
+      unconscious: json['unconscious'] as int? ?? 0,
+      dead: json['dead'] as int? ?? 0,
+    );
+    return member;
+  }
 }

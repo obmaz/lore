@@ -43,13 +43,18 @@ class LoreGame extends FlameGame {
   final Random _random = Random();
 
   LoreGame({
+    int initialMapId = 6,
+    int initialPlayerX = 51,
+    int initialPlayerY = 31,
     this.onLog,
     this.onEncounter,
     this.onTownEntered,
     this.onNpcTalk,
     this.onFacilityEntered,
     this.onPositionChanged,
-  });
+  })  : currentMapId = initialMapId,
+        playerX = initialPlayerX,
+        playerY = initialPlayerY;
 
   @override
   Color backgroundColor() => RetroTheme.viewportBg;
@@ -66,7 +71,7 @@ class LoreGame extends FlameGame {
     } catch (e) {
       // 폰트 에셋 로드 실패 시 무시 (fallback 벡터 드로잉)
     }
-    await loadMapById(6, startX: 51, startY: 31);
+    await loadMapById(currentMapId, startX: playerX, startY: playerY);
   }
 
   Future<void> loadMapById(int mapId, {int? startX, int? startY}) async {
