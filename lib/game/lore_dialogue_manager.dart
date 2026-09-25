@@ -9,6 +9,51 @@ class LoreDialogueManager {
   bool castleGateOpen = false;
   bool jrAntaresSecretFound = false;
   bool metPyramidSage = false;
+  int questStep = 1;
+
+  static const List<String> predictData = [
+    'Lord Ahn 을 만날',
+    'MENACE를 탐험할',
+    'Lord Ahn에게 다시 돌아갈',
+    'LASTDITCH로 갈',
+    'LASTDITCH의 성주를 만날',
+    'PYRAMID 속의 Major Mummy를 물리칠',
+    'LASTDITCH의 성주에게로 돌아갈',
+    'LASTDITCH의 GROUND GATE로 갈',
+    'GAIA TERRA의 성주를 만날',
+    'EVIL SEAL에서 황금의 봉인을 발견할',
+    'GAIA TERRA의 성주에게 돌아갈',
+    'QUAKE에서 ArchiGagoyle를 물리칠',
+    '북동쪽의 WIVERN 동굴에 갈',
+    'WATER FIELD로 갈',
+    'WATER FIELD의 군주를 만날',
+    'NOTICE 속의 Hidra를 물리칠',
+    'LOCKUP 속의 Dragon을 물리칠',
+    'GAIA TERRA 의 SWAMP GATE로 갈',
+    '위쪽의 게이트를 통해 SWAMP KEEP으로 갈',
+    'SWAMP 대륙에 존재하는 두개의 봉인을 풀',
+    'SWAMP KEEP의 라바 게이트를 작동 시킬',
+    '적의 집결지인 EVIL CONCENTRATION으로 갈',
+    '숨겨진 적의 마지막 요새로 들어갈',
+    '위쪽의 동굴에서 Necromancer를 만날',
+    'Necromancer와 마지막 결전을 벌일',
+  ];
+
+  int get currentQuestStep {
+    if (!metLordAhn) return 1;
+    if (!jrAntaresSecretFound) return 2;
+    if (!castleGateOpen) return 3;
+    if (!metPyramidSage) return 4;
+    return questStep.clamp(4, 25);
+  }
+
+  String getProphecy() {
+    final idx = currentQuestStep - 1;
+    if (idx >= 0 && idx < predictData.length) {
+      return '당신은 ${predictData[idx]} 것이다';
+    }
+    return '당신은 어떤 힘에 의해 예언을 방해 받고 있다';
+  }
 
   Map<String, bool> getFlagsCopy() => {
     'metLordAhn': metLordAhn,
@@ -26,7 +71,8 @@ class LoreDialogueManager {
 
   /// CASTLE LORE 성내 마을(TOWN1, 맵 6) NPC 대화 조회
   String? getDialogue(int mapId, int tx, int ty, String heroName) {
-    if (mapId == 6) { // CASTLE LORE
+    if (mapId == 6) {
+      // CASTLE LORE
       if (tx == 9 && ty == 64) {
         return '경비병: "당신이 모험을 시작한다면, 많은 괴물들을 만날 것이오. Serpent와 Insects와 Python은 맹독이 있으니 주의 하시기 바라오."';
       }

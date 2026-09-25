@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'item.dart';
 
 enum Gender { male, female }
@@ -97,14 +98,15 @@ class PartyMember {
     this.shiPower = 0,
     this.armPower = 0,
     int? ac,
-  })  : weaPower = weaPower ??
-            (playerClass == PlayerClass.monk
-                ? 12
-                : (playerClass == PlayerClass.knight ? 3 : 2)),
-        ac = ac ?? (playerClass == PlayerClass.knight ? 1 : 0),
-        hp = hp ?? (endurance * battleLevel),
-        sp = sp ?? (mentality * magicLevel),
-        esp = esp ?? (concentration * espLevel);
+  }) : weaPower =
+           weaPower ??
+           (playerClass == PlayerClass.monk
+               ? 12
+               : (playerClass == PlayerClass.knight ? 3 : 2)),
+       ac = ac ?? (playerClass == PlayerClass.knight ? 1 : 0),
+       hp = hp ?? (endurance * battleLevel),
+       sp = sp ?? (mentality * magicLevel),
+       esp = esp ?? (concentration * espLevel);
 
   int get maxHp => endurance * battleLevel;
   int get maxSp => mentality * magicLevel;
@@ -124,18 +126,40 @@ class PartyMember {
   }
 
   static const List<String> weaponNames = [
-    '맨손', '단도', '곤봉', '미늘창', '장검', '철퇴', '기병창', '도끼창', '삼지창', '화염검'
+    '맨손',
+    '단도',
+    '곤봉',
+    '미늘창',
+    '장검',
+    '철퇴',
+    '기병창',
+    '도끼창',
+    '삼지창',
+    '화염검',
   ];
   static const List<String> shieldNames = [
-    '없음', '가죽 방패', '청동 방패', '강철 방패', '기사 방패', '마법 방패'
+    '없음',
+    '가죽 방패',
+    '청동 방패',
+    '강철 방패',
+    '기사 방패',
+    '마법 방패',
   ];
   static const List<String> armorNames = [
-    '평복', '가죽 갑옷', '사슬 갑옷', '판금 갑옷', '기사 갑옷', '용비늘 갑옷'
+    '평복',
+    '가죽 갑옷',
+    '사슬 갑옷',
+    '판금 갑옷',
+    '기사 갑옷',
+    '용비늘 갑옷',
   ];
 
-  String get weaponName => weapon >= 0 && weapon < weaponNames.length ? weaponNames[weapon] : '맨손';
-  String get shieldName => shield >= 0 && shield < shieldNames.length ? shieldNames[shield] : '없음';
-  String get armorName => armor >= 0 && armor < armorNames.length ? armorNames[armor] : '평복';
+  String get weaponName =>
+      weapon >= 0 && weapon < weaponNames.length ? weaponNames[weapon] : '맨손';
+  String get shieldName =>
+      shield >= 0 && shield < shieldNames.length ? shieldNames[shield] : '없음';
+  String get armorName =>
+      armor >= 0 && armor < armorNames.length ? armorNames[armor] : '평복';
 
   /// 원작 LORESUB.PAS 기준 무기 장착
   void equipWeaponRaw(int id, int power) {

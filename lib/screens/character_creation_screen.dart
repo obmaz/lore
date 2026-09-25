@@ -381,7 +381,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                         ),
                       ),
                       IconButton(
-                        icon: const Icon(Icons.close, size: 16, color: RetroTheme.lightGray),
+                        icon: const Icon(
+                          Icons.close,
+                          size: 16,
+                          color: RetroTheme.lightGray,
+                        ),
                         onPressed: () => Navigator.of(ctx).pop(),
                       ),
                     ],
@@ -412,7 +416,9 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           border: Border.all(
-                            color: slotData != null ? RetroTheme.lightCyan : RetroTheme.darkGray,
+                            color: slotData != null
+                                ? RetroTheme.lightCyan
+                                : RetroTheme.darkGray,
                           ),
                           color: RetroTheme.background,
                         ),
@@ -425,7 +431,9 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                                   Text(
                                     '슬롯 $slotNum. $slotTitle',
                                     style: RetroTheme.headerFont.copyWith(
-                                      color: slotData != null ? RetroTheme.yellow : RetroTheme.lightGray,
+                                      color: slotData != null
+                                          ? RetroTheme.yellow
+                                          : RetroTheme.lightGray,
                                       fontSize: 11,
                                     ),
                                   ),
@@ -462,9 +470,14 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                             const SizedBox(width: 8),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: slotData != null ? RetroTheme.blue : RetroTheme.darkGray,
+                                backgroundColor: slotData != null
+                                    ? RetroTheme.blue
+                                    : RetroTheme.darkGray,
                                 foregroundColor: RetroTheme.white,
-                                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                  vertical: 6,
+                                ),
                                 minimumSize: const Size(64, 28),
                               ),
                               onPressed: slotData == null
@@ -475,7 +488,9 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                                     },
                               child: Text(
                                 '불러오기',
-                                style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                                style: RetroTheme.dosFont.copyWith(
+                                  fontSize: 10,
+                                ),
                               ),
                             ),
                           ],
@@ -491,7 +506,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                         foregroundColor: RetroTheme.white,
                       ),
                       onPressed: () => Navigator.of(ctx).pop(),
-                      child: Text('닫기', style: RetroTheme.dosFont.copyWith(fontSize: 11)),
+                      child: Text(
+                        '닫기',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 11),
+                      ),
                     ),
                   ),
                 ],

@@ -1,5 +1,7 @@
 import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
+
 import '../models/party_member.dart';
 
 class SaveData {
@@ -14,6 +16,7 @@ class SaveData {
   final int food;
   final List<PartyMember> party;
   final Map<String, bool> flags;
+  final Map<String, int> etc;
 
   const SaveData({
     required this.slot,
@@ -27,6 +30,7 @@ class SaveData {
     required this.food,
     required this.party,
     required this.flags,
+    this.etc = const {},
   });
 
   Map<String, dynamic> toJson() => {
@@ -41,6 +45,7 @@ class SaveData {
     'food': food,
     'party': party.map((p) => p.toJson()).toList(),
     'flags': flags,
+    'etc': etc,
   };
 
   factory SaveData.fromJson(Map<String, dynamic> json) {
@@ -51,7 +56,9 @@ class SaveData {
     return SaveData(
       slot: json['slot'] as int? ?? 1,
       slotName: json['slotName'] as String? ?? '본 게임 데이타',
-      timestamp: DateTime.tryParse(json['timestamp'] as String? ?? '') ?? DateTime.now(),
+      timestamp:
+          DateTime.tryParse(json['timestamp'] as String? ?? '') ??
+          DateTime.now(),
       mapId: json['mapId'] as int? ?? 6,
       mapTitle: json['mapTitle'] as String? ?? 'CASTLE LORE',
       playerX: json['playerX'] as int? ?? 51,
@@ -61,6 +68,9 @@ class SaveData {
       party: partyList,
       flags: (json['flags'] as Map<String, dynamic>? ?? {}).map(
         (k, v) => MapEntry(k, v as bool),
+      ),
+      etc: (json['etc'] as Map<String, dynamic>? ?? {}).map(
+        (k, v) => MapEntry(k, v as int? ?? 0),
       ),
     );
   }

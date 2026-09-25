@@ -5,6 +5,7 @@ class RetroTheme {
   // Classic 16-color VGA Palette
   static const Color black = Color(0xFF000000);
   static const Color blue = Color(0xFF0000AA);
+  static const Color darkBlue = Color(0xFF000066);
   static const Color green = Color(0xFF00AA00);
   static const Color cyan = Color(0xFF00AAAA);
   static const Color red = Color(0xFFAA0000);

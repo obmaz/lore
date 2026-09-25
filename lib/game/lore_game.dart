@@ -40,6 +40,9 @@ class LoreGame extends FlameGame {
   final void Function(String npcName, String dialogue)? onNpcTalk;
   final void Function(int facilityType)? onFacilityEntered;
   final void Function(int x, int y)? onPositionChanged;
+  final void Function(TileCategory category)? onHazardTile;
+  final void Function()? onStepTaken;
+  final bool Function()? canWalkOnWater;
   final Random _random = Random();
 
   LoreGame({
@@ -52,9 +55,12 @@ class LoreGame extends FlameGame {
     this.onNpcTalk,
     this.onFacilityEntered,
     this.onPositionChanged,
-  })  : currentMapId = initialMapId,
-        playerX = initialPlayerX,
-        playerY = initialPlayerY;
+    this.onHazardTile,
+    this.onStepTaken,
+    this.canWalkOnWater,
+  }) : currentMapId = initialMapId,
+       playerX = initialPlayerX,
+       playerY = initialPlayerY;
 
   @override
   Color backgroundColor() => RetroTheme.viewportBg;
@@ -136,35 +142,42 @@ class LoreGame extends FlameGame {
       return false;
     }
 
-    // 2. 주민/NPC 상호작용 (48+)
+    // 2. 물/바다 진입 제약 (배 또는 물위를 걸음 마법 필요)
+    if (cat == TileCategory.water) {
+      if (canWalkOnWater?.call() != true) {
+        onLog?.call('깊은 물속은 배나 [물위를 걸음] 마법 없이는 건널 수 없습니다!');
+        return false;
+      }
+    }
+
+    // 3. 주민/NPC 상호작용 (48+)
     if (cat == TileCategory.npc) {
       _handleNpcInteraction(tileVal, targetX, targetY);
       return false;
     }
 
-    // 3. 성문/포털 이동 (22)
+    // 4. 성문/포털 이동 (22)
     if (cat == TileCategory.portal) {
       _handlePortal(targetX, targetY);
       return true;
     }
 
-    // 4. 표지판/푯말 상호작용 (23)
+    // 5. 표지판/푯말 상호작용 (23)
     if (cat == TileCategory.sign) {
       _handleSign(targetX, targetY);
       return false;
     }
 
-    // 5. 이동 성공
+    // 6. 이동 성공
     playerX = targetX;
     playerY = targetY;
     onPositionChanged?.call(playerX, playerY);
 
-    // 특수 타일 효과
-    if (cat == TileCategory.swamp) {
-      onLog?.call('독이 있는 늪지에 발을 디뎠습니다! 주의하십시오.');
-    } else if (cat == TileCategory.lava) {
-      onLog?.call('뜨거운 용암 지대에 접근했습니다!');
+    // 위험 지형 콜백 호출 (독 늪, 용암 등)
+    if (cat == TileCategory.swamp || cat == TileCategory.lava || cat == TileCategory.water) {
+      onHazardTile?.call(cat);
     }
+    onStepTaken?.call();
 
     // 필드(GROUND1)일 때 약 10% 확률로 몬스터 인카운터 발생
     final mapCat = LoreWorldManager.mapRegistry[currentMapId]?.category;
@@ -190,7 +203,9 @@ class LoreGame extends FlameGame {
   void _handleNpcInteraction(int tileVal, int tx, int ty) {
     if (currentMapName == 'TOWN1') {
       // 1. 원작 LORETALK.PAS 마을 시설 상점 판정
-      if ((tx == 8 && ty == 71) || (tx == 14 && ty == 69) || (tx == 14 && ty == 73)) {
+      if ((tx == 8 && ty == 71) ||
+          (tx == 14 && ty == 69) ||
+          (tx == 14 && ty == 73)) {
         onFacilityEntered?.call(1); // 무기점
         return;
       }
@@ -208,7 +223,12 @@ class LoreGame extends FlameGame {
       }
 
       // 2. 원작 LORETALK.PAS 실제 주민 및 경비병 대화 연동
-      final dlg = LoreDialogueManager.instance.getDialogue(currentMapId, tx, ty, 'Hero');
+      final dlg = LoreDialogueManager.instance.getDialogue(
+        currentMapId,
+        tx,
+        ty,
+        'Hero',
+      );
       if (dlg != null) {
         onLog?.call(dlg);
       } else {
@@ -221,7 +241,11 @@ class LoreGame extends FlameGame {
   void _handlePortal(int tx, int ty) {
     final portal = LoreWorldManager.instance.findPortal(currentMapId, tx, ty);
     if (portal != null) {
-      loadMapById(portal.targetMapId, startX: portal.targetX, startY: portal.targetY);
+      loadMapById(
+        portal.targetMapId,
+        startX: portal.targetX,
+        startY: portal.targetY,
+      );
       onLog?.call('${portal.name}에 진입했습니다.');
     } else {
       if (currentMapName.startsWith('TOWN')) {

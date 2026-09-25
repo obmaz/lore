@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flame/game.dart';
@@ -16,6 +17,9 @@ import '../widgets/battle_viewport_view.dart';
 import '../widgets/town_dialog.dart';
 import '../widgets/town_facilities_dialog.dart';
 import '../widgets/field_menu_dialog.dart';
+import '../widgets/quick_view_dialog.dart';
+import '../widgets/esp_dialog.dart';
+import '../game/lore_map_manager.dart';
 import '../services/save_manager.dart';
 import '../game/lore_dialogue_manager.dart';
 
@@ -26,11 +30,7 @@ class MainGameScreen extends StatefulWidget {
   final List<PartyMember>? initialParty;
   final SaveData? initialSaveData;
 
-  const MainGameScreen({
-    super.key,
-    this.initialParty,
-    this.initialSaveData,
-  });
+  const MainGameScreen({super.key, this.initialParty, this.initialSaveData});
 
   @override
   State<MainGameScreen> createState() => _MainGameScreenState();
@@ -43,6 +43,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
   final List<String> _logs = [];
   int _partyGold = 2000;
   int _partyFood = 100;
+
+  // 원작 LOREMAIN.PAS: 환경 효과 및 보조 마법 지속 걸음수
+  int _torchSteps = 0; // etc[1]: 마법의 횃불
+  int _waterWalkSteps = 0; // etc[2]: 물위를 걸음
+  int _swampWalkSteps = 0; // etc[3]: 늪위를 걸음
+  int _levitateSteps = 0; // etc[4]: 공중 부상
+  int _mindReadCount = 0; // etc[5]: 독심술
+  int _stepCount = 0;
 
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
@@ -62,6 +70,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _partyGold = widget.initialSaveData!.gold;
       _partyFood = widget.initialSaveData!.food;
       LoreDialogueManager.instance.loadFlags(widget.initialSaveData!.flags);
+      final etc = widget.initialSaveData!.etc;
+      _torchSteps = etc['torchSteps'] ?? 0;
+      _waterWalkSteps = etc['waterWalkSteps'] ?? 0;
+      _swampWalkSteps = etc['swampWalkSteps'] ?? 0;
+      _levitateSteps = etc['levitateSteps'] ?? 0;
+      _mindReadCount = etc['mindReadCount'] ?? 0;
     } else {
       _party =
           widget.initialParty ??
@@ -74,6 +88,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
           ];
       _partyGold = 2000;
       _partyFood = 100;
+      _torchSteps = 0;
+      _waterWalkSteps = 0;
+      _swampWalkSteps = 0;
+      _levitateSteps = 0;
+      _mindReadCount = 0;
     }
   }
 
@@ -121,8 +140,111 @@ class _MainGameScreenState extends State<MainGameScreen> {
         _openTownFacilityDialog(fType);
       },
       onNpcTalk: (name, talk) {
-        _addLog('[$name]: "$talk"');
+        if (_mindReadCount > 0) {
+          setState(() => _mindReadCount--);
+          _addLog('[$name]: "$talk"');
+          _addLog('🧠 [독심술 간파]: $name의 마음에 악의는 느껴지지 않습니다. (독심술 잔여: $_mindReadCount회)');
+        } else {
+          _addLog('[$name]: "$talk"');
+        }
       },
+      canWalkOnWater: () => _waterWalkSteps > 0,
+      onHazardTile: (cat) => _handleHazardTile(cat),
+      onStepTaken: () => _handleStepTaken(),
+    );
+  }
+
+  void _handleHazardTile(TileCategory cat) {
+    if (cat == TileCategory.water) {
+      if (_waterWalkSteps > 0) {
+        setState(() => _waterWalkSteps--);
+        _addLog('🌊 [물위를 걸음] 깊은 물 위를 걸어갑니다. (남은 걸음: $_waterWalkSteps)');
+      }
+    } else if (cat == TileCategory.swamp) {
+      if (_swampWalkSteps > 0) {
+        setState(() => _swampWalkSteps--);
+        _addLog('🌿 [늪위를 걸음] 독성 늪지를 안전하게 통과했습니다. (남은 걸음: $_swampWalkSteps)');
+      } else {
+        _addLog('☣ 일행은 유독한 늪지대에 발을 디뎠습니다!');
+        final rnd = Random();
+        for (final p in _party) {
+          if (p.isAlive && !p.isPoisoned) {
+            if (rnd.nextInt(20) + 1 >= p.luck) {
+              setState(() => p.poison = 1);
+              _addLog('☠ ${p.name}은(는) 늪지의 독에 중독되었습니다!');
+            }
+          }
+        }
+      }
+    } else if (cat == TileCategory.lava) {
+      if (_levitateSteps > 0) {
+        setState(() => _levitateSteps--);
+        _addLog('✨ [공중 부상] 용암 위를 안전하게 비행 중입니다. (남은 걸음: $_levitateSteps)');
+      } else {
+        _addLog('🔥 일행은 펄펄 끓는 용암 지대로 들어섰습니다 !!!');
+        final rnd = Random();
+        for (final p in _party) {
+          if (p.isAlive) {
+            int dmg = rnd.nextInt(41) + 40 - (p.luck ~/ 2);
+            if (dmg < 10) dmg = 10;
+            setState(() {
+              p.hp -= dmg;
+              if (p.hp <= 0) {
+                p.hp = 0;
+                p.unconscious = 1;
+              }
+            });
+            if (p.isUnconscious) {
+              _addLog('💀 ${p.name}은(는) $dmg의 화염 피해를 입고 기절했습니다!');
+            } else {
+              _addLog('💥 ${p.name}은(는) $dmg의 화염 피해를 입었습니다!');
+            }
+          }
+        }
+      }
+    }
+  }
+
+  void _handleStepTaken() {
+    _stepCount++;
+    if (_torchSteps > 0) _torchSteps--;
+    if (_stepCount % 10 == 0) {
+      for (final p in _party) {
+        if (p.isPoisoned && !p.isDead) {
+          setState(() {
+            p.hp -= 1;
+            if (p.hp <= 0) {
+              p.hp = 0;
+              p.unconscious = 1;
+            }
+          });
+          if (p.isUnconscious) {
+            _addLog('☠ ${p.name}의 온몸에 독이 퍼져 의식을 잃었습니다!');
+          }
+        }
+      }
+    }
+  }
+
+  void _openQuickViewDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (ctx) => QuickViewDialog(party: _party),
+    );
+  }
+
+  void _openEspDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (ctx) => EspDialog(
+        party: _party,
+        onLog: (msg) => _addLog(msg),
+        onMindReadActivated: (count) {
+          setState(() => _mindReadCount = count);
+        },
+      ),
     );
   }
 
@@ -153,14 +275,43 @@ class _MainGameScreenState extends State<MainGameScreen> {
         currentMapId: _game.currentMapId,
         playerX: _game.playerX,
         playerY: _game.playerY,
+        etc: {
+          'torchSteps': _torchSteps,
+          'waterWalkSteps': _waterWalkSteps,
+          'swampWalkSteps': _swampWalkSteps,
+          'levitateSteps': _levitateSteps,
+          'mindReadCount': _mindReadCount,
+        },
         onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
+        onSpellEffect: ({int? torch, int? water, int? swamp, int? levitate}) {
+          setState(() {
+            if (torch != null) _torchSteps = torch;
+            if (water != null) _waterWalkSteps = water;
+            if (swamp != null) _swampWalkSteps = swamp;
+            if (levitate != null) _levitateSteps = levitate;
+          });
+        },
+        onMindReadActivated: (count) {
+          setState(() => _mindReadCount = count);
+        },
         onSaveDataLoaded: (save) {
           setState(() {
             _party = List.from(save.party);
             _partyGold = save.gold;
             _partyFood = save.food;
-            _game.loadMapById(save.mapId, startX: save.playerX, startY: save.playerY);
-            _addLog('💾 [슬롯 ${save.slot}: ${save.slotName}] 데이터를 성공적으로 불러왔습니다.');
+            _torchSteps = save.etc['torchSteps'] ?? 0;
+            _waterWalkSteps = save.etc['waterWalkSteps'] ?? 0;
+            _swampWalkSteps = save.etc['swampWalkSteps'] ?? 0;
+            _levitateSteps = save.etc['levitateSteps'] ?? 0;
+            _mindReadCount = save.etc['mindReadCount'] ?? 0;
+            _game.loadMapById(
+              save.mapId,
+              startX: save.playerX,
+              startY: save.playerY,
+            );
+            _addLog(
+              '💾 [슬롯 ${save.slot}: ${save.slotName}] 데이터를 성공적으로 불러왔습니다.',
+            );
           });
         },
         onLog: (msg) => _addLog(msg),
@@ -343,34 +494,96 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 ],
               ),
             ),
-            // 좌측 하단 [메뉴 (Space)] 버튼
+            // 좌측 하단 [메뉴(Space)], [Q] 상태, [E] 초감각 버튼들
             Positioned(
               bottom: 6,
               left: 6,
-              child: GestureDetector(
-                onTap: _openFieldMenuDialog,
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                  decoration: BoxDecoration(
-                    color: RetroTheme.blue.withValues(alpha: 0.8),
-                    border: Border.all(color: RetroTheme.cyan, width: 1.5),
-                    borderRadius: BorderRadius.circular(4),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  GestureDetector(
+                    onTap: _openFieldMenuDialog,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: RetroTheme.blue.withValues(alpha: 0.8),
+                        border: Border.all(color: RetroTheme.cyan, width: 1.5),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.menu,
+                            size: 13,
+                            color: RetroTheme.yellow,
+                          ),
+                          const SizedBox(width: 3),
+                          Text(
+                            '메뉴(Space)',
+                            style: RetroTheme.dosFont.copyWith(
+                              fontSize: 10,
+                              color: RetroTheme.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(Icons.menu, size: 14, color: RetroTheme.yellow),
-                      const SizedBox(width: 4),
-                      Text(
-                        '메뉴 (Space)',
+                  const SizedBox(width: 4),
+                  GestureDetector(
+                    onTap: _openQuickViewDialog,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: RetroTheme.darkBlue.withValues(alpha: 0.8),
+                        border: Border.all(
+                          color: RetroTheme.lightGreen,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        '[Q] 상태',
                         style: RetroTheme.dosFont.copyWith(
-                          fontSize: 11,
-                          color: RetroTheme.white,
+                          fontSize: 10,
+                          color: RetroTheme.lightGreen,
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                ),
+                  const SizedBox(width: 4),
+                  GestureDetector(
+                    onTap: _openEspDialog,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: RetroTheme.darkBlue.withValues(alpha: 0.8),
+                        border: Border.all(
+                          color: RetroTheme.lightMagenta,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      child: Text(
+                        '[E] 초감각',
+                        style: RetroTheme.dosFont.copyWith(
+                          fontSize: 10,
+                          color: RetroTheme.lightMagenta,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             // 우측 하단 D-Pad 컨트롤러
@@ -463,6 +676,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
       onKeyEvent: (event) {
         if (_currentMode == GameScreenMode.field) {
           if (event is KeyDownEvent) {
+            if (event.logicalKey == LogicalKeyboardKey.keyQ) {
+              _openQuickViewDialog();
+              return;
+            }
+            if (event.logicalKey == LogicalKeyboardKey.keyE) {
+              _openEspDialog();
+              return;
+            }
             if (event.logicalKey == LogicalKeyboardKey.space ||
                 event.logicalKey == LogicalKeyboardKey.keyP ||
                 event.logicalKey == LogicalKeyboardKey.keyV ||
