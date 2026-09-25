@@ -462,15 +462,19 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `LOREHELP.PAS` 제작자 서문/타이틀 자막 | `lib/widgets/lore_guide_dialog.dart` (F1) | `step5` |
 
 ### 7.2 남은 항목 (미이식)
-1. **LORESPEC.PAS의 서사형 좌표 이벤트 전량**: 맵 1~26에 걸친 약 60여 개 `if on(x,y)` 중
-   보스전/금화/동료/특수마법/식량나무/봉인은 이식했으나, 지형 변형(`map[x,y] := 44`),
-   강제 이동, 연출용 다중 메시지 블록은 일부만 반영되어 있다.
-2. **선택지 분기 대화**: 원작은 `select(...)`로 2~3지선다를 제시한다(예: Rigel의
-   "식량과 치료는 해결해 주겠소"는 식량 5 소모 + 행운 판정 성공자 무기 위력 1.2배).
-   현재는 대표 경로만 자동 진행한다 → 스크립트(JSON) 시스템에서 분기 지원 예정.
-3. **`wantexit` 게이트별 분기**: 맵별 `map := N; xaxis/yaxis` 목적지가 하드코딩된
-   경우가 있어, `LoreWorldManager`의 포털 표에 순차 반영 필요.
-4. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
+1. **선택지 분기 대화** ✅ 완료: `LoreScriptEngine`의 `choice` 스텝으로 2~3지선다를
+   JSON에서 정의·실행한다(예: Rigel 3지선다, Spica 합류 여부). 원작의 대안 경로
+   ("식량과 치료는 해결해 주겠소" = 식량 5 소모)도 그대로 구현했다.
+2. **지형 변형 / 강제 이동** ✅ 지원: 스크립트에 `setTile`(원작 `map[x,y] := 값`)과
+   `teleport`(원작 `x := ..; y := ..`) 스텝을 추가하고 게임 화면에서 적용한다.
+   (적용 위치: 맵 6 (62,82) 상자, 맵 1 (20,39) Ancient Evil 비밀 통로)
+3. **`wantexit` 게이트별 분기** ✅ 완료: 맵별 목적지를 `assets/data/portals.json`의
+   포털 표(정확 좌표 + `yMin` 범위 조건)로 옮겨 코드 수정 없이 편집할 수 있다.
+4. **남은 서사형 좌표 이벤트**: 맵 1~26의 `if on(x,y)` 블록 중 카메라 스크롤 연출이나
+   몬스터 소환(`joinenemy`)처럼 전투 연출이 결합된 일부 이벤트는 아직 Dart/스크립트에
+   모두 반영되지 않았다. 스크립트 스키마에 `battle`/`teleport` 스텝이 있으므로 계속
+   추가 이관할 수 있다.
+5. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
    아니므로 이식 대상에서 제외한다.
 
 ---
@@ -488,8 +492,11 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
 | `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
 | `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 | `LoreScriptEngine.instance` |
+| `portals.json` | 맵 연결(포털) + 표지판 문구 | `LoreWorldManager.instance.findPortal/getSignMessage` |
+| `dialogues.json` | 좌표 기반 NPC 대사 | `LoreDialogueManager.instance.getDialogue` |
 
-`LoreData` / `LoreScriptEngine`은 `main()`에서 한 번 로드한다.
+`LoreData` / `LoreScriptEngine` / `LoreWorldManager` / `LoreDialogueManager`는 `main()`에서
+한 번 로드한다. JSON이 없거나 파싱에 실패하면 코드 내장 데이터로 폴백한다.
 
 ### 8.2 스크립트 스키마 (`scripts.json`)
 ```json
@@ -502,6 +509,8 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     { "gold": 5000 }, { "food": -5 }, { "flag": "rigelJoined" },
     { "join": "rigel", "slot": 4 },
     { "battle": { "title": "미이라의 방", "monsters": [26, 8, 8] } },
+    { "setTile": { "x": 62, "y": 82, "tile": 44 } },
+    { "teleport": { "x": 46, "y": 41 } },
     { "choice": { "prompt": "?", "options": [
         { "text": "예", "steps": [ { "join": "rigel" } ] },
         { "text": "아니오", "steps": [ { "say": "..." } ] } ] } }
@@ -532,6 +541,7 @@ flutter test test/tools/export_data_test.dart --dart-define=EXPORT_DATA=true
 # 원작 .FNT → PNG 스프라이트 시트
 flutter test test/tools/export_images_test.dart --dart-define=EXPORT_IMAGES=true
 ```
+* 좌표 대사 → JSON: `python3 tool/export_dialogues.py` (dialogues.json 재생성)
 * 원작 소스 감사: `python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS`
 * 원작 한글 문자열 디코딩: `python3 tool/dec_johab.py <PAS파일> <시작Proc> [끝Proc]`
 

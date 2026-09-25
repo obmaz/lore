@@ -348,6 +348,33 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _requestJoinSlot(PendingRecruit(member, forcedSlotOption: recruit.slot));
     }
 
+    // 지형 변형 (원작 `map[x,y] := 값`)
+    for (final change in outcome.tileChanges) {
+      final map = _game.currentMap;
+      if (map == null) continue;
+      if (change.map != null && change.map != _game.currentMapId) continue;
+      if (change.x < 1 ||
+          change.x > map.xmax ||
+          change.y < 1 ||
+          change.y > map.ymax) {
+        continue;
+      }
+      map.grid[change.y - 1][change.x - 1] = change.tile;
+      setState(() {});
+    }
+
+    // 강제 이동 (원작 `x := ..; y := ..` / map 변경)
+    if (outcome.teleportX != null && outcome.teleportY != null) {
+      final targetMap = outcome.teleportMap ?? _game.currentMapId;
+      _game.loadMapById(
+        targetMap,
+        startX: outcome.teleportX!,
+        startY: outcome.teleportY!,
+      );
+      setState(() {});
+      _addLog('▶ (${outcome.teleportX}, ${outcome.teleportY}) 위치로 이동했습니다.');
+    }
+
     if (outcome.battleMonsters.isNotEmpty) {
       final enemies = outcome.battleMonsters
           .map((id) => LoreData.instance.monster(id))

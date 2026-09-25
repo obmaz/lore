@@ -10,6 +10,8 @@
 /// - `{"flag": "이름"}`               플래그 설정
 /// - `{"join": "polaris", "slot": 4}` 동료 영입 (slot은 0~4 = 2~6번 슬롯 고정)
 /// - `{"battle": {"title": "..", "monsters": [26, 8, 8]}}` 전투 개시
+/// - `{"teleport": {"x": 46, "y": 41, "map": 1}}`   강제 이동 (map 생략 시 현재 맵)
+/// - `{"setTile": {"x": 62, "y": 82, "tile": 44}}`  지형 변형 (통로 개방/상자 제거)
 /// - `{"choice": {"prompt": "..", "options": [{"text": "..", "steps": [...]}]}}`
 ///
 /// 조건(`require`):
@@ -86,6 +88,12 @@ class ScriptStep {
   final List<int>? monsters;
   final String? battleTitle;
 
+  /// teleport 스텝 (강제 이동) - map이 null이면 현재 맵.
+  final int? teleportMap;
+  final int? tileX;
+  final int? tileY;
+  final int? tileValue;
+
   const ScriptStep({
     required this.kind,
     this.text,
@@ -96,6 +104,10 @@ class ScriptStep {
     this.options,
     this.monsters,
     this.battleTitle,
+    this.teleportMap,
+    this.tileX,
+    this.tileY,
+    this.tileValue,
   });
 }
 
@@ -132,6 +144,14 @@ class ScriptOutcome {
   final List<int> battleMonsters;
   final String? battleTitle;
 
+  /// 강제 이동 목적지 (없으면 null).
+  final int? teleportMap;
+  final int? teleportX;
+  final int? teleportY;
+
+  /// 지형 변형 목록 (원작 `map[x,y] := 값`).
+  final List<({int? map, int x, int y, int tile})> tileChanges;
+
   const ScriptOutcome({
     this.messages = const [],
     this.goldDelta = 0,
@@ -140,6 +160,10 @@ class ScriptOutcome {
     this.recruits = const [],
     this.battleMonsters = const [],
     this.battleTitle,
+    this.teleportMap,
+    this.teleportX,
+    this.teleportY,
+    this.tileChanges = const [],
   });
 }
 
@@ -281,6 +305,12 @@ class LoreScriptEngine {
     var recruits = List<({String key, int? slot})>.from(acc.recruits);
     var monsters = List<int>.from(acc.battleMonsters);
     var battleTitle = acc.battleTitle;
+    var teleportMap = acc.teleportMap;
+    var teleportX = acc.teleportX;
+    var teleportY = acc.teleportY;
+    var tileChanges = List<({int? map, int x, int y, int tile})>.from(
+      acc.tileChanges,
+    );
 
     for (var i = 0; i < steps.length; i++) {
       final step = steps[i];
@@ -304,6 +334,19 @@ class LoreScriptEngine {
           monsters = List<int>.from(step.monsters ?? const []);
           battleTitle = step.battleTitle;
           break;
+        case 'teleport':
+          teleportMap = step.teleportMap;
+          teleportX = step.tileX;
+          teleportY = step.tileY;
+          break;
+        case 'setTile':
+          tileChanges.add((
+            map: step.teleportMap,
+            x: step.tileX!,
+            y: step.tileY!,
+            tile: step.tileValue!,
+          ));
+          break;
         case 'choice':
           final run = ScriptRun._(
             script,
@@ -316,6 +359,10 @@ class LoreScriptEngine {
               recruits: recruits,
               battleMonsters: monsters,
               battleTitle: battleTitle,
+              teleportMap: teleportMap,
+              teleportX: teleportX,
+              teleportY: teleportY,
+              tileChanges: tileChanges,
             ),
             choicePrompt: step.prompt,
             choiceTexts: step.options!.map((o) => o.text).toList(),
@@ -336,6 +383,10 @@ class LoreScriptEngine {
         recruits: recruits,
         battleMonsters: monsters,
         battleTitle: battleTitle,
+        teleportMap: teleportMap,
+        teleportX: teleportX,
+        teleportY: teleportY,
+        tileChanges: tileChanges,
       ),
     );
   }
@@ -397,6 +448,31 @@ class LoreScriptEngine {
       }
       if (m.containsKey('flag')) {
         steps.add(ScriptStep(kind: 'flag', key: m['flag'] as String));
+        matched = true;
+      }
+      if (m.containsKey('teleport')) {
+        final t = m['teleport'] as Map<String, dynamic>;
+        steps.add(
+          ScriptStep(
+            kind: 'teleport',
+            teleportMap: t['map'] as int?,
+            tileX: t['x'] as int,
+            tileY: t['y'] as int,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('setTile')) {
+        final t = m['setTile'] as Map<String, dynamic>;
+        steps.add(
+          ScriptStep(
+            kind: 'setTile',
+            teleportMap: t['map'] as int?,
+            tileX: t['x'] as int,
+            tileY: t['y'] as int,
+            tileValue: t['tile'] as int,
+          ),
+        );
         matched = true;
       }
       if (m.containsKey('battle')) {

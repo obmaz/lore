@@ -2,7 +2,10 @@
 /// 4대 성/마을(6: CASTLE LORE, 7: LASTDITCH, 9: GAIA TERRA, 10: WATER FIELD)
 library;
 
+import 'dart:convert';
 import 'dart:math';
+
+import 'package:flutter/services.dart' show AssetBundle, rootBundle;
 
 import '../logic/lore_join.dart';
 import '../models/party_member.dart';
@@ -49,6 +52,9 @@ class LoreDialogueManager {
   bool rigelJoined = false; // 맵 12 (12,48) - 사냥꾼 Rigel
   bool redAntaresJoined = false; // 맵 17 (75,52) - Red Antares
   bool spicaJoined = false; // 맵 18 (37,31) - Spica
+
+  /// 원작 `party.etc[16] bit1` - 맵 1 (20,39)에서 Ancient Evil을 만난 상태.
+  bool ancientEvilMet = false;
 
   /// 원작 `LOREBATT.PAS:245 CastSpecial` - 특수 마법 미습득 시 문구.
   static const String specialMagicLockedMessage = '당신에게는 아직 능력이 없다.';
@@ -178,6 +184,7 @@ class LoreDialogueManager {
     'redAntaresJoined': redAntaresJoined,
     'spicaJoined': spicaJoined,
     'specialMagicLearned': specialMagicLearned,
+    'ancientEvilMet': ancientEvilMet,
     for (final key in collectedTreasures) key: true,
   };
 
@@ -216,12 +223,63 @@ class LoreDialogueManager {
     redAntaresJoined = flags['redAntaresJoined'] == true;
     spicaJoined = flags['spicaJoined'] == true;
     specialMagicLearned = flags['specialMagicLearned'] == true;
+    ancientEvilMet = flags['ancientEvilMet'] == true;
     collectedTreasures
       ..clear()
       ..addAll(flags.keys.where((k) => k.startsWith('gold:')));
   }
 
   void loadFlags(Map<String, dynamic> flags) => loadSaveFlags(flags);
+
+  // =========================================================================
+  // JSON 대화 테이블 (assets/data/dialogues.json)
+  // =========================================================================
+
+  List<_DialogueEntry> _jsonDialogues = [];
+  bool _loadedDialogues = false;
+
+  /// JSON 대화 테이블을 사용 중인지(테스트/디버깅용).
+  bool usingJsonDialogues = false;
+  String? dialoguesLoadError;
+
+  /// `assets/data/dialogues.json`을 읽는다.
+  ///
+  /// JSON에 있는 좌표는 JSON 문구를 우선 사용하고, 플래그/퀘스트 분기가 필요한
+  /// 대화는 기존 Dart 로직이 그대로 처리한다.
+  Future<void> loadData({AssetBundle? bundle}) async {
+    if (_loadedDialogues) return;
+    try {
+      final decoded = json.decode(
+        await (bundle ?? rootBundle).loadString('assets/data/dialogues.json'),
+      ) as Map<String, dynamic>;
+      _jsonDialogues = (decoded['dialogues'] as List<dynamic>)
+          .map((e) => _DialogueEntry.fromJson(e as Map<String, dynamic>))
+          .toList();
+      usingJsonDialogues = true;
+    } catch (e) {
+      _jsonDialogues = [];
+      usingJsonDialogues = false;
+      dialoguesLoadError = e.toString();
+    }
+    _loadedDialogues = true;
+  }
+
+  void resetDataForTest() {
+    _loadedDialogues = false;
+    usingJsonDialogues = false;
+    dialoguesLoadError = null;
+    _jsonDialogues = [];
+  }
+
+  /// JSON 대화 테이블에서 좌표 대사를 찾는다 (`{hero}`는 주인공 이름으로 치환).
+  String? _jsonDialogue(int mapId, int tx, int ty, String heroName) {
+    for (final e in _jsonDialogues) {
+      if (e.map == mapId && e.x == tx && e.y == ty) {
+        return e.text.replaceAll('{hero}', heroName);
+      }
+    }
+    return null;
+  }
 
   /// JSON 스크립트(`{"flag": "이름"}`)로 플래그를 설정한다.
   ///
@@ -270,6 +328,8 @@ class LoreDialogueManager {
         spicaJoined = value;
       case 'specialMagicLearned':
         specialMagicLearned = value;
+      case 'ancientEvilMet':
+        ancientEvilMet = value;
     }
   }
 
@@ -288,6 +348,10 @@ class LoreDialogueManager {
     List<PartyMember>? party,
     int mindReadCount = 0,
   }) {
+    // 1순위: JSON 대화 테이블 (assets/data/dialogues.json)
+    final fromJson = _jsonDialogue(mapId, tx, ty, heroName);
+    if (fromJson != null) return fromJson;
+
     switch (mapId) {
       case 6: // CASTLE LORE (성도)
         return _getCastleLoreDialogue(tx, ty, heroName);
@@ -632,4 +696,26 @@ class LoreDialogueManager {
     }
     return null;
   }
+}
+
+/// `assets/data/dialogues.json`의 좌표 대사 1건.
+class _DialogueEntry {
+  final int map;
+  final int x;
+  final int y;
+  final String text;
+
+  const _DialogueEntry({
+    required this.map,
+    required this.x,
+    required this.y,
+    required this.text,
+  });
+
+  factory _DialogueEntry.fromJson(Map<String, dynamic> json) => _DialogueEntry(
+    map: json['map'] as int,
+    x: json['x'] as int,
+    y: json['y'] as int,
+    text: json['text'] as String,
+  );
 }

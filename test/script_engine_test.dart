@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 25);
+      expect(LoreScriptEngine.instance.scripts.length, 28);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -133,6 +133,37 @@ void main() {
       final joined = run.choose(0);
       expect(joined.outcome.recruits.single.key, 'mad_joe');
       expect(joined.outcome.recruits.single.slot, 4); // 0-based = 6번 슬롯
+    });
+
+    test('8. 지형 변형(setTile)과 강제 이동(teleport) 스텝', () async {
+      await LoreScriptEngine.instance.load();
+
+      // 맵 6 (62,82) 상자: 메시지 + 금 1000 + 타일 44로 변경(원작 map[62,82] := 44)
+      final chest = LoreScriptEngine.instance.startStep(6, 62, 82, noCtx)!;
+      expect(chest.outcome.messages.first, contains('상자 속에서'));
+      expect(chest.outcome.goldDelta, 1000);
+      final change = chest.outcome.tileChanges.single;
+      expect(change.x, 62);
+      expect(change.y, 82);
+      expect(change.tile, 44);
+      expect(change.map, isNull); // 현재 맵에 적용
+
+      // 맵 1 (20,39) Ancient Evil: 첫 방문은 대륙 안내 + 플래그
+      final first = LoreScriptEngine.instance.startTalk(1, 20, 39, noCtx)!;
+      expect(first.outcome.setFlags, contains('ancientEvilMet'));
+      expect(first.outcome.teleportX, isNull);
+      expect(first.outcome.messages.length, 5);
+
+      // 재방문은 비밀 통로로 강제 이동 (원작 x := 46; y := 41)
+      final later = LoreScriptEngine.instance.startTalk(
+        1,
+        20,
+        39,
+        const ScriptContext(flags: {'ancientEvilMet'}),
+      )!;
+      expect(later.outcome.teleportX, 46);
+      expect(later.outcome.teleportY, 41);
+      expect(later.outcome.teleportMap, isNull); // 같은 맵
     });
 
     test('7. JSON이 없으면 스크립트 없음으로 동작하고 게임은 Dart 로직으로 폴백한다', () async {

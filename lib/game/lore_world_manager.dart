@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart' show AssetBundle, rootBundle;
+
 import '../services/audio_manager.dart';
 
 enum MapCategory { ground, town, den, keep }
@@ -260,8 +264,62 @@ class LoreWorldManager {
     ),
   };
 
+  // =========================================================================
+  // JSON 데이터 (assets/data/portals.json)
+  // =========================================================================
+
+  List<_PortalRule> _portalRules = [];
+  List<_SignRule> _signRules = [];
+  bool _loadedRules = false;
+
+  /// JSON 규칙을 사용 중인지(테스트/디버깅용).
+  bool usingJsonRules = false;
+  String? rulesLoadError;
+
+  /// `assets/data/portals.json`을 읽는다. 실패하면 아래 코드 내장 규칙을 사용한다.
+  Future<void> loadData({AssetBundle? bundle}) async {
+    if (_loadedRules) return;
+    try {
+      final decoded = json.decode(
+        await (bundle ?? rootBundle).loadString('assets/data/portals.json'),
+      ) as Map<String, dynamic>;
+      _portalRules = (decoded['portals'] as List<dynamic>)
+          .map((e) => _PortalRule.fromJson(e as Map<String, dynamic>))
+          .toList();
+      _signRules = (decoded['signs'] as List<dynamic>)
+          .map((e) => _SignRule.fromJson(e as Map<String, dynamic>))
+          .toList();
+      usingJsonRules = true;
+    } catch (e) {
+      _portalRules = [];
+      _signRules = [];
+      usingJsonRules = false;
+      rulesLoadError = e.toString();
+    }
+    _loadedRules = true;
+  }
+
+  void resetRulesForTest() {
+    _loadedRules = false;
+    usingJsonRules = false;
+    rulesLoadError = null;
+    _portalRules = [];
+    _signRules = [];
+  }
+
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
   PortalInfo? findPortal(int currentMapId, int x, int y) {
+    // 1순위: JSON 규칙 (assets/data/portals.json)
+    for (final rule in _portalRules) {
+      final portal = rule.match(currentMapId, x, y);
+      if (portal != null) return portal;
+    }
+    // JSON이 로드되었다면 JSON이 단일 소스이므로 내장 규칙은 쓰지 않는다.
+    if (usingJsonRules) return null;
+    return _findPortalBuiltIn(currentMapId, x, y);
+  }
+
+  PortalInfo? _findPortalBuiltIn(int currentMapId, int x, int y) {
     // 1. GROUND1 (맵 1) 에서 진입
     if (currentMapId == 1) {
       if (x == 20 && y == 11) {
@@ -364,6 +422,19 @@ class LoreWorldManager {
 
   /// LOREENT.PAS sign 프로시저 기반 표지판/푯말 메시지
   String? getSignMessage(int mapId, int x, int y) {
+    // 1순위: 좌표가 정확히 일치하는 JSON 규칙
+    for (final rule in _signRules) {
+      if (rule.mapDefault) continue;
+      final text = rule.match(mapId, x, y);
+      if (text != null) return text;
+    }
+    // 2순위: 맵 기본 문구 규칙
+    for (final rule in _signRules) {
+      final text = rule.match(mapId, x, y);
+      if (text != null) return text;
+    }
+    // JSON이 로드되었다면 JSON이 단일 소스이므로 내장 규칙은 쓰지 않는다.
+    if (usingJsonRules) return null;
     if (mapId == 2) {
       if (x == 31 && y == 44) return '푯말: WIVERN 가는길';
       if ((x == 29 && y == 50) || (x == 35 && y == 72)) {
@@ -404,6 +475,98 @@ class LoreWorldManager {
       if (x == 25 && y == 63) return "벽에 적힌 글: '첫번째 문의 열쇠는 X + Y'";
       if (x == 26 && y == 42) return "벽에 적힌 글: 'Z 는 2 * Y + X'";
     }
+    return null;
+  }
+}
+
+/// 포털 규칙 1건 (정확 좌표 또는 범위 조건).
+class _PortalRule {
+  final int map;
+  final int? x;
+  final int? y;
+  final int? xMin;
+  final int? xMax;
+  final int? yMin;
+  final int? yMax;
+  final int targetMap;
+  final int targetX;
+  final int targetY;
+  final String name;
+
+  const _PortalRule({
+    required this.map,
+    this.x,
+    this.y,
+    this.xMin,
+    this.xMax,
+    this.yMin,
+    this.yMax,
+    required this.targetMap,
+    required this.targetX,
+    required this.targetY,
+    required this.name,
+  });
+
+  factory _PortalRule.fromJson(Map<String, dynamic> json) => _PortalRule(
+    map: json['map'] as int,
+    x: json['x'] as int?,
+    y: json['y'] as int?,
+    xMin: json['xMin'] as int?,
+    xMax: json['xMax'] as int?,
+    yMin: json['yMin'] as int?,
+    yMax: json['yMax'] as int?,
+    targetMap: json['targetMap'] as int,
+    targetX: json['targetX'] as int,
+    targetY: json['targetY'] as int,
+    name: json['name'] as String,
+  );
+
+  PortalInfo? match(int mapId, int px, int py) {
+    if (mapId != map) return null;
+    if (x != null && px != x) return null;
+    if (y != null && py != y) return null;
+    if (xMin != null && px < xMin!) return null;
+    if (xMax != null && px > xMax!) return null;
+    if (yMin != null && py < yMin!) return null;
+    if (yMax != null && py > yMax!) return null;
+    return PortalInfo(
+      targetMapId: targetMap,
+      targetX: targetX,
+      targetY: targetY,
+      name: name,
+    );
+  }
+}
+
+/// 표지판 규칙 1건 (좌표 또는 맵 기본 문구).
+class _SignRule {
+  final int map;
+  final int? x;
+  final int? y;
+  final bool mapDefault;
+  final String text;
+
+  const _SignRule({
+    required this.map,
+    this.x,
+    this.y,
+    this.mapDefault = false,
+    required this.text,
+  });
+
+  factory _SignRule.fromJson(Map<String, dynamic> json) => _SignRule(
+    map: json['map'] as int,
+    x: json['x'] as int?,
+    y: json['y'] as int?,
+    mapDefault: json['mapDefault'] == true,
+    text: json['text'] as String,
+  );
+
+  String? match(int mapId, int px, int py) {
+    if (mapId != map) return null;
+    if (mapDefault) return text;
+    // 정확 좌표 규칙은 맵 기본 문구보다 우선한다.
+    if (x == px && y == py) return text;
     return null;
   }
 }

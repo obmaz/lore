@@ -7,6 +7,8 @@ import 'data/lore_data.dart';
 import 'data/lore_script.dart';
 import 'models/party_member.dart';
 import 'services/save_manager.dart';
+import 'game/lore_dialogue_manager.dart';
+import 'game/lore_world_manager.dart';
 import 'game/sprite_sheet.dart';
 import 'screens/character_creation_screen.dart';
 import 'screens/main_game_screen.dart';
@@ -26,6 +28,10 @@ Future<void> main() async {
   await LoreScriptEngine.instance.load();
   // 이미지 파일(PNG) 스프라이트 시트를 로드한다. 없으면 FNT 디코더로 폴백한다.
   await SpriteLibrary.instance.load();
+  // 맵 연결(포털)과 표지판 규칙도 JSON에서 로드한다.
+  await LoreWorldManager.instance.loadData();
+  // 좌표 기반 NPC 대사 테이블도 JSON에서 로드한다.
+  await LoreDialogueManager.instance.loadData();
 
   runApp(const LoreApp());
 }
