@@ -23,6 +23,9 @@ class FieldMenuDialog extends StatefulWidget {
   final Map<String, int>? etc;
   final void Function(String message) onLog;
 
+  /// 원작 핫키(P/V/C/R/G)로 진입할 때 바로 열 탭.
+  final FieldMenuTab initialTab;
+
   const FieldMenuDialog({
     super.key,
     required this.party,
@@ -36,6 +39,7 @@ class FieldMenuDialog extends StatefulWidget {
     this.onSpellEffect,
     this.onMindReadActivated,
     this.etc,
+    this.initialTab = FieldMenuTab.main,
     required this.onLog,
   });
 
@@ -64,6 +68,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   @override
   void initState() {
     super.initState();
+    _currentTab = widget.initialTab;
     _currentFood = widget.food;
     _loadSlots();
   }
@@ -132,13 +137,17 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          title,
-          style: RetroTheme.headerFont.copyWith(
-            color: RetroTheme.lightMagenta,
-            fontSize: 12,
+        Expanded(
+          child: Text(
+            title,
+            overflow: TextOverflow.ellipsis,
+            style: RetroTheme.headerFont.copyWith(
+              color: RetroTheme.lightMagenta,
+              fontSize: 12,
+            ),
           ),
         ),
+        const SizedBox(width: 8),
         Text(
           '식량: $_currentFood | 금화: ${widget.gold}',
           style: RetroTheme.dosFont.copyWith(
@@ -238,11 +247,13 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           backgroundColor: RetroTheme.blue,
           foregroundColor: RetroTheme.white,
           minimumSize: const Size.fromHeight(34),
+          alignment: Alignment.centerLeft,
         ),
         onPressed: () => setState(() => _currentTab = tab),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(title, style: RetroTheme.dosFont.copyWith(fontSize: 12)),
+        child: Text(
+          title,
+          overflow: TextOverflow.ellipsis,
+          style: RetroTheme.dosFont.copyWith(fontSize: 12),
         ),
       ),
     );
@@ -315,27 +326,30 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     final p = widget.party[_selectedMemberIndex];
     return Column(
       children: [
-        // 멤버 선택 탭
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: widget.party.asMap().entries.map((e) {
-            final isSel = e.key == _selectedMemberIndex;
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 2),
-              child: ChoiceChip(
-                label: Text(
-                  e.value.name,
-                  style: RetroTheme.dosFont.copyWith(fontSize: 10),
+        // 멤버 선택 탭 (인원이 많아도 넘치지 않도록 가로 스크롤)
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: widget.party.asMap().entries.map((e) {
+              final isSel = e.key == _selectedMemberIndex;
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2),
+                child: ChoiceChip(
+                  label: Text(
+                    e.value.name,
+                    style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                  ),
+                  selected: isSel,
+                  selectedColor: RetroTheme.yellow,
+                  backgroundColor: RetroTheme.darkGray,
+                  onSelected: (val) {
+                    if (val) setState(() => _selectedMemberIndex = e.key);
+                  },
                 ),
-                selected: isSel,
-                selectedColor: RetroTheme.yellow,
-                backgroundColor: RetroTheme.darkGray,
-                onSelected: (val) {
-                  if (val) setState(() => _selectedMemberIndex = e.key);
-                },
-              ),
-            );
-          }).toList(),
+              );
+            }).toList(),
+          ),
         ),
         const SizedBox(height: 8),
         Container(

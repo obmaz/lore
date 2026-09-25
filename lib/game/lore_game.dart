@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme/retro_theme.dart';
+import '../logic/lore_join.dart';
 import '../models/party_member.dart';
 import '../services/audio_manager.dart';
 import 'lore_map_manager.dart';
@@ -45,7 +46,18 @@ class LoreGame extends FlameGame {
   final void Function()? onStepTaken;
 
   /// 원작 `join(num, partynum)`으로 동료가 합류할 때 호출된다.
-  final void Function(PartyMember recruit)? onRecruitRequested;
+  final void Function(PendingRecruit recruit)? onRecruitRequested;
+
+  /// 좌표 대화의 조건 분기(예: Spica 영입 조건)에 필요한 파티 상태 제공자.
+  final List<PartyMember> Function()? partyProvider;
+
+  /// 원작 `party.etc[5]`(독심술 사용 가능 횟수) 제공자.
+  final int Function()? mindReadCountProvider;
+
+  /// 성문/동굴 입구 앞에 섰을 때 호출된다 (원작 `wantenter`/`wantexit`).
+  /// 확인 대화상자에서 승인하면 화면단이 [enterPortal]을 호출한다.
+  final void Function(PortalInfo? portal, int tx, int ty)? onPortalRequested;
+
   final bool Function()? canWalkOnWater;
   final Random _random = Random();
 
@@ -62,6 +74,9 @@ class LoreGame extends FlameGame {
     this.onHazardTile,
     this.onStepTaken,
     this.onRecruitRequested,
+    this.partyProvider,
+    this.mindReadCountProvider,
+    this.onPortalRequested,
     this.canWalkOnWater,
   }) : currentMapId = initialMapId,
        playerX = initialPlayerX,
@@ -163,7 +178,17 @@ class LoreGame extends FlameGame {
 
     // 4. 성문/포털 이동 (22)
     if (cat == TileCategory.portal) {
-      _handlePortal(targetX, targetY);
+      final portal = LoreWorldManager.instance.findPortal(
+        currentMapId,
+        targetX,
+        targetY,
+      );
+      if (onPortalRequested != null) {
+        // 원작 wantenter/wantexit: 화면단에서 확인을 받은 뒤 enterPortal 호출
+        onPortalRequested!(portal, targetX, targetY);
+        return false;
+      }
+      enterPortal(portal, targetX, targetY);
       return true;
     }
 
@@ -237,6 +262,8 @@ class LoreGame extends FlameGame {
       tx,
       ty,
       'Hero',
+      party: partyProvider?.call(),
+      mindReadCount: mindReadCountProvider?.call() ?? 0,
     );
     if (dlg != null) {
       onLog?.call(dlg);
@@ -254,14 +281,14 @@ class LoreGame extends FlameGame {
 
   /// 원작 `join(num, partynum)` 대기열을 실제 일행 합류로 전환한다.
   void _flushPendingRecruits() {
-    for (final recruit
-        in LoreDialogueManager.instance.takePendingRecruits()) {
+    for (final recruit in LoreDialogueManager.instance.takePendingRecruits()) {
       onRecruitRequested?.call(recruit);
     }
   }
 
-  void _handlePortal(int tx, int ty) {
-    final portal = LoreWorldManager.instance.findPortal(currentMapId, tx, ty);
+  /// 성문/동굴 입구 진입 처리.
+  /// 원작 `LORESUB.PAS:986 wantenter` / `:999 wantexit` 확인을 통과한 뒤 호출된다.
+  void enterPortal(PortalInfo? portal, int tx, int ty) {
     if (portal != null) {
       loadMapById(
         portal.targetMapId,

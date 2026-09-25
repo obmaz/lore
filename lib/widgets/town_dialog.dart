@@ -265,10 +265,14 @@ class _TownDialogState extends State<TownDialog> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '◆ $townName ◆',
-                  style: RetroTheme.headerFont.copyWith(fontSize: 13),
+                Expanded(
+                  child: Text(
+                    '◆ $townName ◆',
+                    overflow: TextOverflow.ellipsis,
+                    style: RetroTheme.headerFont.copyWith(fontSize: 13),
+                  ),
                 ),
+                const SizedBox(width: 8),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

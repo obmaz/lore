@@ -247,16 +247,31 @@ void main() {
       expect(LoreJoin.redAntares().hp, 0);
       expect(LoreJoin.redAntares().resistance, 15);
 
-      // 원작 ReturnJoinMember: 최대 6인까지만 합류 가능
+      // 원작 ReturnJoinMember: 슬롯 2~6번 중 하나를 골라 교체/충원한다.
+      // (파티 6명 미만이면 마지막 6번 슬롯 라벨이 '보조 일원으로 둠'이 된다)
       final party = <PartyMember>[hero];
-      expect(LoreJoin.recruit(party, polaris), isTrue);
+      expect(LoreJoin.joinMenuPrompt, '교체 시킬 인물은 누구입니까 ?');
+      expect(LoreJoin.joinMenuLabels(party).length, 5);
+      expect(LoreJoin.joinMenuLabels(party).last, LoreJoin.reserveSlotLabel);
+
+      LoreJoin.applyJoin(party, polaris, 4); // 빈 6번 슬롯으로 합류
       expect(party.length, 2);
-      for (var i = party.length; i < LoreJoin.maxPartySize; i++) {
-        expect(LoreJoin.recruit(party, LoreJoin.madJoe()), isTrue);
-      }
-      expect(party.length, LoreJoin.maxPartySize);
-      expect(LoreJoin.recruit(party, LoreJoin.loreHunter()), isFalse);
-      expect(party.length, LoreJoin.maxPartySize);
+      expect(party.last.name, 'Polaris');
+
+      // 6인 파티에서는 선택한 슬롯을 교체한다.
+      final full = <PartyMember>[
+        hero,
+        for (var i = 0; i < 5; i++) LoreJoin.madJoe(),
+      ];
+      final fullLabels = LoreJoin.joinMenuLabels(full);
+      expect(fullLabels.length, 5);
+      expect(fullLabels.first, 'Mad Joe'); // 2번 슬롯
+      expect(fullLabels.last, 'Mad Joe'); // 6번 슬롯 (빈 슬롯 아님)
+
+      LoreJoin.applyJoin(full, LoreJoin.loreHunter(), 3); // 5번 슬롯 교체
+      expect(full.length, LoreJoin.maxPartySize);
+      expect(full[4].name, 'Lore Hunter');
+      expect(full[0].name, hero.name); // 리더(1번)는 교체되지 않는다
 
       // 대화 트리거 → 영입 대기열 적재 확인
       dialogue.loadFlags({});
@@ -265,7 +280,8 @@ void main() {
       expect(talk, contains('동료 Polaris 합류'));
       final pending = dialogue.takePendingRecruits();
       expect(pending.length, 1);
-      expect(pending.first.name, 'Polaris');
+      expect(pending.first.member.name, 'Polaris');
+      expect(pending.first.forcedSlotOption, isNull); // 슬롯은 플레이어가 선택
       // 중복 대화에서는 다시 적재되지 않는다.
       dialogue.getDialogue(7, 37, 41, hero.name);
       expect(dialogue.takePendingRecruits(), isEmpty);
@@ -273,7 +289,7 @@ void main() {
       dialogue.loadFlags({});
       final hunterTalk = dialogue.getDialogue(10, 40, 56, hero.name);
       expect(hunterTalk, contains('동료 Lore Hunter 합류'));
-      expect(dialogue.takePendingRecruits().single.name, 'Lore Hunter');
+      expect(dialogue.takePendingRecruits().single.member.name, 'Lore Hunter');
     });
   });
 }

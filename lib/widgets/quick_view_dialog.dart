@@ -28,13 +28,17 @@ class QuickViewDialog extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '◆ 간이 일행 상황 (QUICK VIEW) ◆',
-                  style: RetroTheme.headerFont.copyWith(
-                    color: RetroTheme.lightMagenta,
-                    fontSize: 12,
+                Expanded(
+                  child: Text(
+                    '◆ 간이 일행 상황 (QUICK VIEW) ◆',
+                    overflow: TextOverflow.ellipsis,
+                    style: RetroTheme.headerFont.copyWith(
+                      color: RetroTheme.lightMagenta,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
+                const SizedBox(width: 8),
                 Text(
                   '[ESC / Q / 닫기]',
                   style: RetroTheme.dosFont.copyWith(

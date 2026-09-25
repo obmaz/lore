@@ -12,6 +12,16 @@ library;
 import '../models/monster.dart';
 import '../models/party_member.dart';
 
+/// 영입 대기 항목 - 원작 `join(num, partynum)` 호출 1건에 대응한다.
+class PendingRecruit {
+  final PartyMember member;
+
+  /// 원작이 슬롯을 고정한 경우(예: Mad Joe = 6번 슬롯)의 메뉴 옵션 인덱스(0~4).
+  final int? forcedSlotOption;
+
+  const PendingRecruit(this.member, {this.forcedSlotOption});
+}
+
 /// 원작에서 실제로 일행에 합류할 수 있는 6명의 동료.
 class LoreJoin {
   LoreJoin._();
@@ -131,11 +141,44 @@ class LoreJoin {
       ..ac = 4;
   }
 
-  /// 원작 `ReturnJoinMember` + `join` : 빈 슬롯(최대 6명)에 동료를 합류시킨다.
-  /// 반환값: 합류 성공 여부 (파티가 가득 차면 false).
-  static bool recruit(List<PartyMember> party, PartyMember recruit) {
-    if (party.length >= maxPartySize) return false;
-    party.add(recruit);
-    return true;
+  /// 원작 `LORESUB.PAS:1144 ReturnJoinMember`의 메뉴 문구.
+  static const String joinMenuPrompt = '교체 시킬 인물은 누구입니까 ?';
+
+  /// 6번 슬롯이 비어 있을 때 표시되는 원작 문구.
+  static const String reserveSlotLabel = '보조 일원으로 둠';
+
+  /// 영입을 취소했을 때의 원작 문구 (`asyouwish`).
+  static const String joinCancelled = '당신이 바란다면 ...';
+
+  /// 원작 `ReturnJoinMember`의 선택지(m[1..5] = 파티 2~6번 슬롯) 5개.
+  ///
+  /// 파티가 6명 미만이면 비어 있는 슬롯 라벨은 빈 문자열이 되고,
+  /// 6번 슬롯이 비어 있으면 `'보조 일원으로 둠'`으로 대체된다(원작과 동일).
+  static List<String> joinMenuLabels(List<PartyMember> party) {
+    final labels = <String>[];
+    for (var slot = 2; slot <= maxPartySize; slot++) {
+      labels.add(slot <= party.length ? party[slot - 1].name : '');
+    }
+    if (labels.isNotEmpty && labels.last.isEmpty) {
+      labels[labels.length - 1] = reserveSlotLabel;
+    }
+    return labels;
+  }
+
+  /// 원작 `join(num, partynum)` 적용.
+  ///
+  /// [optionIndex]는 메뉴 1~5번째(0~4)로 파티 슬롯 2~6번에 대응한다.
+  /// 해당 슬롯에 이미 파티원이 있으면 **교체**하고, 비어 있으면 합류시킨다.
+  static void applyJoin(
+    List<PartyMember> party,
+    PartyMember recruit,
+    int optionIndex,
+  ) {
+    final slotIndex = optionIndex + 1; // 파티 2번 슬롯 = index 1
+    if (slotIndex < party.length) {
+      party[slotIndex] = recruit;
+    } else {
+      party.add(recruit);
+    }
   }
 }

@@ -37,8 +37,12 @@ def main() -> int:
     search_from = body if body >= 0 else 0
 
     idx = -1
-    for marker in (f'Procedure {start_marker};', f'Procedure {start_marker}('):
-        idx = src.find(marker.encode(), search_from)
+    for kind in ('Procedure', 'Function'):
+        for suffix in (';', '(', ' :'):
+            marker = f'{kind} {start_marker}{suffix}'
+            idx = src.find(marker.encode(), search_from)
+            if idx >= 0:
+                break
         if idx >= 0:
             break
     if idx < 0:
@@ -47,8 +51,12 @@ def main() -> int:
 
     if end_marker:
         end = -1
-        for marker in (f'Procedure {end_marker};', f'Procedure {end_marker}('):
-            end = src.find(marker.encode(), idx + 1)
+        for kind in ('Procedure', 'Function'):
+            for suffix in (';', '(', ' :'):
+                marker = f'{kind} {end_marker}{suffix}'
+                end = src.find(marker.encode(), idx + 1)
+                if end >= 0:
+                    break
             if end >= 0:
                 break
     else:

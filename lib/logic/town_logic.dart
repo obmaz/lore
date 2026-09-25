@@ -16,6 +16,7 @@ import 'dart:math';
 
 import '../models/item.dart';
 import '../models/party_member.dart';
+import 'lore_field_logic.dart';
 
 /// 병원(신전)에서 받을 수 있는 4종 치료 - 원작 `Hospital`의 `select` 메뉴 순서.
 enum Treatment {
@@ -93,7 +94,9 @@ class TownLogic {
 
   static const String groceryIntro = '여기는 식료품점 입니다.';
   static const String groceryPrompt = '몇개를 원하십니까 ?';
-  static const String groceryDecline = '필요 없습니다.';
+
+  /// 원작 `m[1] := '필요 없습니다'` (구두점 없음).
+  static const String groceryDecline = '필요 없습니다';
   static const String shopIntro = '여기는 무기상점입니다.';
   static const String shopSubIntro = '우리들은 무기, 방패, 갑옷을 팔고있습니다.';
   static const String shopCategoryPrompt = '어떤 종류를 원하십니까 ?';
@@ -111,10 +114,11 @@ class TownLogic {
   static const String hospitalWhoPrompt = '누가 치료를 받겠습니까 ?';
   static const String hospitalWhatPrompt = '어떤 치료입니까 ?';
 
-  /// 원작 `notenoughmoney` / `thankyou` / `asyouwish`.
-  static const String notEnoughMoney = '당신의 금이 충분하지 않습니다.';
-  static const String thankYou = '매우 고맙습니다.';
-  static const String asYouWish = '당신의 뜻대로 ...';
+  /// 원작 `notenoughmoney` / `thankyou` / `asyouwish` (LORESUB.PAS:1027~1037).
+  /// 문구는 [LoreFieldLogic]을 단일 소스로 사용한다.
+  static const String notEnoughMoney = LoreFieldLogic.notEnoughMoney;
+  static const String thankYou = LoreFieldLogic.thankYou;
+  static const String asYouWish = LoreFieldLogic.asYouWish;
 
   /// 성별에 따른 원작 대명사 (`his`/`her`).
   static String possessive(Gender sex) => sex == Gender.male ? '그의' : '그녀의';

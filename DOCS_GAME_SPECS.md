@@ -364,9 +364,44 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | Spica | LORESPEC:1230 (LOCKUP) | #43 | 3 에스퍼 | 여성, Lv 11/6/11 |
 | Lore Hunter | LORETALK:623 (WATER FIELD) | #39 | 7 사냥꾼 | 철퇴(wea 15) |
 
-* `ReturnJoinMember`는 합류시킬 슬롯(2~6번)을 고르게 하며, 파티는 최대 6인이다.
+* `ReturnJoinMember`는 합류시킬 슬롯(2~6번)을 골라야 하며, 파티는 최대 6인이다.
+  - 6번 슬롯이 비어 있으면 그 자리 라벨이 `'보조 일원으로 둠'`으로 바뀈다(원작과 동일).
+  - 선택한 슬롯에 이미 파티원이 있으면 **교체**되고, 리더(1번)는 교체 대상이 아니다.
 
-### 4.6 원작 소스 표기 오류 (이식 시 정정)
+#### 동료 영입 좌표 (LORESPEC.PAS)
+| 동료 | 맵 | 좌표 | 원작 조건 |
+| :--- | :---: | :---: | :--- |
+| Mad Joe | 6 (CASTLE LORE 지하 감옥) | (40,15) | `at(40,15)` - 6번 슬롯 고정 (`k := 6`) |
+| Polaris | 7 (LASTDITCH) | (37,41) | `etc[13] < 2` |
+| Rigel | 12 (T_DEN2) | (12,48) | `etc[31] bit2 = 0` |
+| Lore Hunter | 10 (WATER FIELD) | (40,56) | `etc[38] bit4` |
+| Red Antares | 17 (NOTICE) | (75,52) | 1단계 특수마법 전수(`etc[38] bit1`) → 2단계 합류 |
+| Spica | 18 (LOCKUP) | (37,31) | `etc[5] > 0`(독심술) **그리고** 파티 최고 초능력 Lv.5 이상 |
+
+### 4.6 성문/동굴 입구 확인 (`wantenter` / `wantexit`)
+* 성문·동굴 입구 타일로 이동하면 확인 대화상자를 띄운다.
+  - `Print(11, name + ' 에 들어가기를 원합니까 ?')` / `'여기서 나가기를 원합니까 ?'`
+  - 선택지: `'예, 그렇습니다.'` / `'아니오, 원하지 않습니다.'`
+  - 거절하면 `asyouwish`(`'당신이 바란다면 ...'`)만 출력되고 제자리에 머무른다.
+
+### 4.7 금화 발견 (`findgold`, `LORESPEC.PAS`)
+* 문구: `'당신은 금화 N개를 발견했다.'`
+* 좌표당 1회만 획득하며(원작 `party.etc[32/33/35]` 비트), 저장 시 불리언 플래그
+  `gold:<mapId>:<x>:<y>`로 직렬화된다.
+
+| 맵 | 좌표 | 금액 |
+| :---: | :--- | :---: |
+| 9 (TOWN4) | (10,24) (12,26) (15,25) (16,23) (18,27) | 각 5,000 |
+| 10 (TOWN5) | (20,30) (18,36) (35,32) (33,36) (35,14) (14,16) (37,12) | 각 5,000 |
+| 14 (DEN1) | (6,6) 1,000 / (18,10) 2,500 / (6,44) 400 / (31,30) 600 / (31,8) 1,500 / (14,28) 1,000 | |
+
+### 4.8 특수 마법(간접 공격) 해금
+* 원작 `LOREBATT.PAS:245 CastSpecial`은 `party.etc[38] bit1 = 0`이면
+  `'당신에게는 아직 능력이 없다.'`를 출력하고 시전 자체를 막는다.
+* 해금 경로: 맵 17 NOTICE 동굴 (75,52)에서 Red Antares의 영혼을 만나
+  "간접 공격" 6종(독 / 기술 무력화 / 방어 무력화 / 능력 저하 / 마법 불능 / 탈초인화)을 전수받는다.
+
+### 4.9 원작 소스 표기 오류 (이식 시 정정)
 * `Train_Center`의 `Expdata` 문자열 상수에 오타가 있다.
   - Lv.15 `'270000'` → 실제 값 **2,700,000**
   - Lv.20 `'510000'` → 실제 값 **5,100,000**
@@ -406,3 +441,35 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 - `lib/logic/`: `battle_engine.dart` (본 명세서의 수식을 단위 테스트로 100% 검증 가능)
 - `lib/screens/`: 4:3 레트로 도스 레이아웃 (뷰포트, 파티창, 3~4줄 콘솔 텍스트 로그)
 - `lib/game/`: Flame 기반 또는 그리드 타일맵 이동 컴포넌트
+
+---
+
+## 7. 이식 현황 및 잔여 항목 (최종 리뷰)
+
+### 7.1 이식 완료
+| 원작 | 이식 위치 | 검증 테스트 |
+| :--- | :--- | :--- |
+| `LORESUB.PAS` 데이터 구조/무기점/식료품점/훈련소/병원/휴식 | `lib/logic/town_logic.dart`, `lib/widgets/town_*.dart` | `step5_train_rest_guide_test.dart` |
+| `LORESUB.PAS:986/999/1012` 성문 확인·금화 발견·공통 메시지 | `lib/logic/lore_field_logic.dart` | `step6_field_prompts_test.dart` |
+| `LORESUB.PAS:1042/1144` 동료 영입(join) 및 슬롯 선택 | `lib/logic/lore_join.dart` | `step3/step6` |
+| `LOREBATT.PAS` 전투 전 공식 + 특수 마법 해금 게이트 | `lib/logic/battle_engine.dart`, `battle_viewport_view.dart` | `battle_test.dart` |
+| `LOREMENU.PAS` 필드 메뉴/휴식/게임 옵션 + 핫키 | `lib/widgets/field_menu_dialog.dart`, `lib/logic/field_hotkeys.dart` | `keyboard_input_test.dart` |
+| `LOREMAIN.PAS` 이동/지형 위험(늪·용암·물) | `lib/game/lore_game.dart` | `field_test.dart`, `step1_...` |
+| `LORESPEC.PAS` 보스/봉인/식량나무/금화 좌표/동료 6명 | `lib/game/lore_dungeon_event_manager.dart`, `lore_dialogue_manager.dart` | `step3/step6` |
+| `LORETALK.PAS` 4대 마을 NPC/영주 퀘스트 | `lib/game/lore_dialogue_manager.dart`, `town_dialog.dart` | `step3` |
+| `LORECRET.PAS` 캐릭터 생성/성향 문답 | `character_creation_screen.dart` | `widget_test.dart` |
+| `LOREEND.PAS` 엔딩/스태프롤 | `lib/widgets/ending_view.dart` | `step4` |
+| `LOREHELP.PAS` 제작자 서문/타이틀 자막 | `lib/widgets/lore_guide_dialog.dart` (F1) | `step5` |
+
+### 7.2 남은 항목 (미이식)
+1. **LORESPEC.PAS의 서사형 좌표 이벤트 전량**: 맵 1~26에 걸친 약 60여 개 `if on(x,y)` 중
+   보스전/금화/동료/특수마법/식량나무/봉인은 이식했으나, 지형 변형(`map[x,y] := 44`),
+   강제 이동, 연출용 다중 메시지 블록은 일부만 반영되어 있다.
+2. **선택지 분기 대화**: 원작은 `select(...)`로 2~3지선다를 제시한다(예: Rigel의
+   "식량과 치료는 해결해 주겠소"는 식량 5 소모 + 행운 판정 성공자 무기 위력 1.2배).
+   현재는 대표 경로만 자동 진행한다 → 스크립트(JSON) 시스템에서 분기 지원 예정.
+3. **`wantexit` 게이트별 분기**: 맵별 `map := N; xaxis/yaxis` 목적지가 하드코딩된
+   경우가 있어, `LoreWorldManager`의 포털 표에 순차 반영 필요.
+4. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
+   아니므로 이식 대상에서 제외한다.
+

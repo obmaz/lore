@@ -2,6 +2,8 @@
 /// 4대 성/마을(6: CASTLE LORE, 7: LASTDITCH, 9: GAIA TERRA, 10: WATER FIELD)
 library;
 
+import 'dart:math';
+
 import '../logic/lore_join.dart';
 import '../models/party_member.dart';
 
@@ -17,7 +19,8 @@ class LoreDialogueManager {
   bool metPyramidSage = false;
 
   // 2. LASTDITCH 플래그 (맵 7 - party.etc[13])
-  int lastditchQuestStep = 0; // 0: 미의뢰, 1: Major Mummy 의뢰중, 2: 격퇴 완료 보고대기, 3: 보상완료(Ground Gate 안내)
+  int lastditchQuestStep =
+      0; // 0: 미의뢰, 1: Major Mummy 의뢰중, 2: 격퇴 완료 보고대기, 3: 보상완료(Ground Gate 안내)
   bool polarisJoined = false;
 
   // 3. GAIA TERRA 플래그 (맵 9 - party.etc[14])
@@ -39,16 +42,32 @@ class LoreDialogueManager {
 
   // 식량 및 기타 던전 이벤트 플래그
   bool foodTreeHarvested = false; // 맵 1 100인분 식량 나무
-  bool draconianMet = false;      // 맵 4 Draconian 천문학 지식
+  bool draconianMet = false; // 맵 4 Draconian 천문학 지식
+
+  // 원작 LORESPEC.PAS 동료 영입 / 특수 마법 플래그
+  bool madJoeJoined = false; // 맵 6 (40,15) - 지하 감옥의 Mad Joe
+  bool rigelJoined = false; // 맵 12 (12,48) - 사냥꾼 Rigel
+  bool redAntaresJoined = false; // 맵 17 (75,52) - Red Antares
+  bool spicaJoined = false; // 맵 18 (37,31) - Spica
+
+  /// 원작 `LOREBATT.PAS:245 CastSpecial` - 특수 마법 미습득 시 문구.
+  static const String specialMagicLockedMessage = '당신에게는 아직 능력이 없다.';
+
+  /// 원작 `party.etc[38] bit1` - Red Antares에게 "간접 공격" 6종 특수 마법 해금.
+  bool specialMagicLearned = false;
+
+  /// 원작 `party.etc[n]` 비트로 관리하던 1회성 금화 좌표 (`findgold`).
+  /// 키 형식: `gold:<mapId>:<x>:<y>`
+  final Set<String> collectedTreasures = {};
 
   /// 원작 `LORESUB.PAS:1042 join(num, partynum)` 대기열.
   /// 대화에서 동료 영입이 확정되면 여기에 적재되고, 화면단에서 실제 파티에
   /// 추가한 뒤 [takePendingRecruits]로 비운다.
-  final List<PartyMember> _pendingRecruits = [];
+  final List<PendingRecruit> _pendingRecruits = [];
 
   /// 대기 중인 동료 영입 목록을 비우면서 가져간다.
-  List<PartyMember> takePendingRecruits() {
-    final recruits = List<PartyMember>.from(_pendingRecruits);
+  List<PendingRecruit> takePendingRecruits() {
+    final recruits = List<PendingRecruit>.from(_pendingRecruits);
     _pendingRecruits.clear();
     return recruits;
   }
@@ -128,6 +147,13 @@ class LoreDialogueManager {
     'bossNecromancerDefeated': bossNecromancerDefeated,
     'foodTreeHarvested': foodTreeHarvested,
     'draconianMet': draconianMet,
+    'madJoeJoined': madJoeJoined,
+    'rigelJoined': rigelJoined,
+    'redAntaresJoined': redAntaresJoined,
+    'spicaJoined': spicaJoined,
+    'specialMagicLearned': specialMagicLearned,
+    // 1회성 보물 좌표(원작 party.etc 비트)는 불리언 플래그로 직렬화한다.
+    for (final key in collectedTreasures) key: true,
   };
 
   Map<String, bool> getFlagsCopy() => {
@@ -147,6 +173,12 @@ class LoreDialogueManager {
     'bossNecromancerDefeated': bossNecromancerDefeated,
     'foodTreeHarvested': foodTreeHarvested,
     'draconianMet': draconianMet,
+    'madJoeJoined': madJoeJoined,
+    'rigelJoined': rigelJoined,
+    'redAntaresJoined': redAntaresJoined,
+    'spicaJoined': spicaJoined,
+    'specialMagicLearned': specialMagicLearned,
+    for (final key in collectedTreasures) key: true,
   };
 
   void loadSaveFlags(Map<String, dynamic> flags) {
@@ -154,11 +186,21 @@ class LoreDialogueManager {
     castleGateOpen = flags['castleGateOpen'] == true;
     jrAntaresSecretFound = flags['jrAntaresSecretFound'] == true;
     metPyramidSage = flags['metPyramidSage'] == true;
-    lastditchQuestStep = (flags['lastditchQuestStep'] as int?) ?? (flags['bossMajorMummyDefeated'] == true ? 2 : 0);
+    lastditchQuestStep =
+        (flags['lastditchQuestStep'] as int?) ??
+        (flags['bossMajorMummyDefeated'] == true ? 2 : 0);
     polarisJoined = flags['polarisJoined'] == true;
-    gaiaQuestStep = (flags['gaiaQuestStep'] as int?) ?? (flags['bossArchiGagoyleDefeated'] == true ? 3 : (flags['goldenSealFound'] == true ? 2 : 0));
+    gaiaQuestStep =
+        (flags['gaiaQuestStep'] as int?) ??
+        (flags['bossArchiGagoyleDefeated'] == true
+            ? 3
+            : (flags['goldenSealFound'] == true ? 2 : 0));
     hasWaterKey = flags['hasWaterKey'] == true;
-    waterFieldQuestStep = (flags['waterFieldQuestStep'] as int?) ?? (flags['bossHugeDragonDefeated'] == true ? 3 : (flags['bossHidraDefeated'] == true ? 2 : 0));
+    waterFieldQuestStep =
+        (flags['waterFieldQuestStep'] as int?) ??
+        (flags['bossHugeDragonDefeated'] == true
+            ? 3
+            : (flags['bossHidraDefeated'] == true ? 2 : 0));
     hasSwampKey = flags['hasSwampKey'] == true;
     loreHunterJoined = flags['loreHunterJoined'] == true;
     bossMajorMummyDefeated = flags['bossMajorMummyDefeated'] == true;
@@ -169,6 +211,14 @@ class LoreDialogueManager {
     bossNecromancerDefeated = flags['bossNecromancerDefeated'] == true;
     foodTreeHarvested = flags['foodTreeHarvested'] == true;
     draconianMet = flags['draconianMet'] == true;
+    madJoeJoined = flags['madJoeJoined'] == true;
+    rigelJoined = flags['rigelJoined'] == true;
+    redAntaresJoined = flags['redAntaresJoined'] == true;
+    spicaJoined = flags['spicaJoined'] == true;
+    specialMagicLearned = flags['specialMagicLearned'] == true;
+    collectedTreasures
+      ..clear()
+      ..addAll(flags.keys.where((k) => k.startsWith('gold:')));
   }
 
   void loadFlags(Map<String, dynamic> flags) => loadSaveFlags(flags);
@@ -176,7 +226,18 @@ class LoreDialogueManager {
   // ==========================================
   // 원작 4대 성/마을(6, 7, 9, 10) 고유 대화 조회 (LORETALK.PAS)
   // ==========================================
-  String? getDialogue(int mapId, int tx, int ty, String heroName) {
+  /// 좌표 기반 대화 조회 (원작 LORETALK.PAS `talkmode` / LORESPEC.PAS `specialevent`).
+  ///
+  /// [party]와 [mindReadCount]는 LORESPEC의 조건 분기(예: Spica는 독심술 사용
+  /// 가능 상태에서 초능력 Lv.5 이상이어야 함)에 필요하다.
+  String? getDialogue(
+    int mapId,
+    int tx,
+    int ty,
+    String heroName, {
+    List<PartyMember>? party,
+    int mindReadCount = 0,
+  }) {
     switch (mapId) {
       case 6: // CASTLE LORE (성도)
         return _getCastleLoreDialogue(tx, ty, heroName);
@@ -186,9 +247,94 @@ class LoreDialogueManager {
         return _getGaiaTerraDialogue(tx, ty, heroName);
       case 10: // WATER FIELD (4번 성)
         return _getWaterFieldDialogue(tx, ty, heroName);
+      case 12: // T_DEN2 (LORESPEC.PAS:600 - Rigel)
+        return _getDen2Dialogue(tx, ty);
+      case 17: // NOTICE 동굴 (LORESPEC.PAS:1010 - Red Antares)
+        return _getNoticeDenDialogue(tx, ty);
+      case 18: // LOCKUP 동굴 (LORESPEC.PAS:1208 - Spica)
+        return _getLockupDenDialogue(tx, ty, party, mindReadCount);
       default:
         return null;
     }
+  }
+
+  // ------------------------------------------
+  // LORESPEC.PAS 잔여 좌표 이벤트 (동료 영입)
+  // ------------------------------------------
+
+  /// 맵 12 T_DEN2: `on(12,48)` - 사냥꾼 Rigel (LORESPEC.PAS:600)
+  String? _getDen2Dialogue(int tx, int ty) {
+    if (tx != 12 || ty != 48) return null;
+    if (rigelJoined) {
+      return 'Rigel: "이제 힘을 되찾았소. 함께 Necromancer를 무찌릅시다!"';
+    }
+    rigelJoined = true;
+    _pendingRecruits.add(PendingRecruit(LoreJoin.rigel()));
+    return '일행들은 심한 부상 때문에 거의 몸을 가누지 못하는 한 남자와 마주쳤다.\n'
+        'Rigel: "나는 VALIANT PEOPLES의 용사였던 Rigel이오. 내가 동굴속에서 적들을 막아내는 동안 지각변동으로 인해 이런 절벽이 군데 군데 생겼소. 나는 이제 너무 지치고 많은 상처를 입어서 혼자 힘으로는 이곳을 빠져 나갈수가 없소. 나를 도와 주시오."\n'
+        '(원작 선택지: 좋소, 같이 모험을 합시다 / 식량과 치료는 해결해 주겠소 / 당신을 도와줄 시간이 없소)\n'
+        '★ 동료 Rigel 합류! (원작과 동일하게 hp 1의 빈사 상태로 합류합니다)';
+  }
+
+  /// 맵 17 NOTICE 동굴: `on(75,52)` - Red Antares (LORESPEC.PAS:1026~1105)
+  ///
+  /// 원작은 `party.etc[38]` 비트로 2단계를 관리한다.
+  /// 1단계(bit1 미설정): "간접 공격" 특수 마법 6종을 전수받는다.
+  /// 2단계(bit1 설정, bit2 미설정): 영혼이 일행에 합류한다.
+  String? _getNoticeDenDialogue(int tx, int ty) {
+    if (tx != 75 || ty != 52) return null;
+
+    if (!specialMagicLearned) {
+      specialMagicLearned = true;
+      return '갑자기 주위가 용암으로 변하면서 한 영혼이 당신앞에 나타났다.\n'
+          'Red Antares: "나는 고대의 강력한 마법사였던 Red Antares의 영혼이오. 나는 그가 이 동굴을 요새화 시킬때 이미 그의 마법 능력을 지켜 보았기 때문에 그의 능력을 알수 있었소. 그래서 당신들을 위해 나의 마법중 \'간접 공격\'이란 기법을 전해 주겠소."\n'
+          '1. 독 - 적을 중독 시킴   2. 기술 무력화 - 적의 특수 공격 능력 제거\n'
+          '3. 방어 무력화 - 적의 방어력 감소   4. 능력 저하 - 적의 모든 능력 감소\n'
+          '5. 마법 불능 - 적의 마법 능력 제거   6. 탈초인화 - 적의 초자연력 제거\n'
+          '★ 이제 전투에서 특수 마법(4번 항목)을 사용할 수 있습니다!';
+    }
+
+    if (!redAntaresJoined) {
+      redAntaresJoined = true;
+      _pendingRecruits.add(PendingRecruit(LoreJoin.redAntares()));
+      return 'Red Antares: "당신들의 결의를 보았소. 내 영혼이 당신들의 마법을 돕겠소."\n'
+          '★ 동료 Red Antares 합류! (원작과 동일하게 hp 0의 상태입니다)';
+    }
+
+    return 'Red Antares의 영혼이 조용히 빛나고 있습니다.';
+  }
+
+  /// 맵 18 LOCKUP 동굴: `on(37,31)` - Spica (LORESPEC.PAS:1208)
+  ///
+  /// 원작은 `party.etc[5] > 0`(독심술 사용 가능) 과 파티 최고 초능력 레벨 5 이상을
+  /// 요구한다. 조건을 만족하지 못하면 마음을 읽을 수 없다는 메시지만 나온다.
+  String? _getLockupDenDialogue(
+    int tx,
+    int ty,
+    List<PartyMember>? party,
+    int mindReadCount,
+  ) {
+    if (tx != 37 || ty != 31) return null;
+
+    if (spicaJoined) {
+      return 'Spica: "저도 힘을 보태겠습니다. Necromancer를 무찌릅시다!"';
+    }
+
+    final maxEspLevel = party == null || party.isEmpty
+        ? 0
+        : party.map((p) => p.espLevel).reduce(max);
+
+    if (mindReadCount <= 0 || maxEspLevel < 5) {
+      return 'Spica: "당신이 나의 마음을 읽으려 하지만 아직 당신의 능력으로는 나의 마음을 끌어낼수는 없습니다."\n'
+          '(원작 조건: 독심술(ESP) 사용 가능 상태에서 파티 최고 초능력 레벨 5 이상)';
+    }
+
+    spicaJoined = true;
+    _pendingRecruits.add(PendingRecruit(LoreJoin.spica()));
+    return '갑자기 Necromancer에게 대항 하고픈 결의가 생기는 군요.\n'
+        'Spica: "나도 당신들을 도와 그를 무찌르겠습니다."\n'
+        '(원작 선택지: 저도 원했던 바입니다 / 말씀은 고맙지만 사양하겠습니다)\n'
+        '★ 동료 Spica 합류!';
   }
 
   // ------------------------------------------
@@ -206,6 +352,20 @@ class LoreDialogueManager {
     }
     if (tx == 63 && ty == 27) {
       return '학자: "단지 Lord Ahn 성주님만이 능력상으로 Necromancer에게 도전할 수 있습니다. 하지만 성주님 자신이 대립을 싫어하셔서 현재는 대항할 자가 없습니다."';
+    }
+    // 원작 LORETALK.PAS:191 `at(40,15)` - 지하 감옥의 Mad Joe
+    // (원작은 `k := 6` 으로 6번 슬롯에 고정 합류시킨다)
+    if (tx == 40 && ty == 15) {
+      if (!madJoeJoined) {
+        madJoeJoined = true;
+        _pendingRecruits.add(
+          PendingRecruit(LoreJoin.madJoe(), forcedSlotOption: 4),
+        );
+        return 'Mad Joe: "히히히... 위대한 용사님. 낄낄낄.. 내가 당신들의 일행에 끼이면 안될까요 ? 우히히히.."\n'
+            '(원작 선택지: 그렇다면 당신을 받아들이지요 / 당신은 이곳에 그냥 있는게 낫겠소)\n'
+            '★ 동료 Mad Joe 합류! (원작과 동일하게 6번 슬롯 고정)';
+      }
+      return 'Mad Joe: "히히히.. 이제 나도 일행이지요 ?"';
     }
     if (tx == 90 && ty == 82) {
       return '주민: "우리는 Ancient Evil을 배척하고 Lord Ahn 님을 받들어야 합니다."';
@@ -293,7 +453,7 @@ class LoreDialogueManager {
       if (!polarisJoined) {
         polarisJoined = true;
         // 원작 LORETALK.PAS:413 - join(9, k) + Polaris 능력치 보정
-        _pendingRecruits.add(LoreJoin.polaris());
+        _pendingRecruits.add(PendingRecruit(LoreJoin.polaris()));
         return '전사 Polaris: "나의 이름은 Polaris요. 당신들과 같이 PYRAMID의 Major Mummy를 물리치고 싶소! 일행으로 받아주시오! (★ 동료 Polaris 합류!)"';
       } else {
         return '전사 Polaris: "준비는 끝났소. 언제든 전장으로 나아갑시다!"';
@@ -390,7 +550,7 @@ class LoreDialogueManager {
       if (!loreHunterJoined) {
         loreHunterJoined = true;
         // 원작 LORETALK.PAS:623 - join(39, k) + Lore Hunter 능력치 보정
-        _pendingRecruits.add(LoreJoin.loreHunter());
+        _pendingRecruits.add(PendingRecruit(LoreJoin.loreHunter()));
         return '특공대장 Lore Hunter: "나는 LORE 특공대장 Lore Hunter요! 새로운 영웅들을 기다리고 있었소. 내가 당신의 일행에 합류하겠소! (★ 동료 Lore Hunter 합류!)"';
       } else {
         return '특공대장 Lore Hunter: "언제든 명을 내리시오. Necromancer를 끝장냅시다!"';

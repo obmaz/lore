@@ -263,11 +263,13 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
           backgroundColor: RetroTheme.blue,
           foregroundColor: RetroTheme.white,
           minimumSize: const Size.fromHeight(34),
+          alignment: Alignment.centerLeft,
         ),
         onPressed: () => setState(() => _weaponShopCategory = catIndex),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(title, style: RetroTheme.dosFont.copyWith(fontSize: 12)),
+        child: Text(
+          title,
+          overflow: TextOverflow.ellipsis,
+          style: RetroTheme.dosFont.copyWith(fontSize: 12),
         ),
       ),
     );

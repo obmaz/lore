@@ -9,6 +9,7 @@ import '../models/monster.dart';
 import '../models/party_member.dart';
 import '../models/spell.dart';
 import '../logic/battle_engine.dart';
+import '../game/lore_dialogue_manager.dart';
 
 /// 1993년 원작 LOREBATT.PAS 기반 턴제 전투 뷰포트 위젯
 /// - 7대 전투 커맨드 ([1]무기, [2]단일마법, [3]전체마법, [4]특수마법, [5]일행치료, [6]초능력, [7]자동전투/도망)
@@ -305,6 +306,16 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   }
 
   void _executeSpecialMagic(PartyMember player, Spell spell) async {
+    // 원작 LOREBATT.PAS:245 CastSpecial -
+    // Red Antares에게 "간접 공격"을 배우기 전에는 특수 마법을 쓸 수 없다.
+    if (!LoreDialogueManager.instance.specialMagicLearned) {
+      widget.onLog(
+        '${player.name}: ${LoreDialogueManager.specialMagicLockedMessage}',
+      );
+      widget.onLog('(NOTICE 동굴 (75,52)의 Red Antares를 만나 특수 마법을 배워야 합니다)');
+      return;
+    }
+
     setState(() => _isTurnProcessing = true);
 
     widget.onLog(

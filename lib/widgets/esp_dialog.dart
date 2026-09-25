@@ -52,13 +52,17 @@ class _EspDialogState extends State<EspDialog> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '◆ 초감각 기술 (EXTRASENSE / ESP) ◆',
-                  style: RetroTheme.headerFont.copyWith(
-                    color: RetroTheme.lightMagenta,
-                    fontSize: 12,
+                Expanded(
+                  child: Text(
+                    '◆ 초감각 기술 (EXTRASENSE / ESP) ◆',
+                    overflow: TextOverflow.ellipsis,
+                    style: RetroTheme.headerFont.copyWith(
+                      color: RetroTheme.lightMagenta,
+                      fontSize: 12,
+                    ),
                   ),
                 ),
+                const SizedBox(width: 8),
                 Text(
                   '[ESC / 닫기]',
                   style: RetroTheme.dosFont.copyWith(

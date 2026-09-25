@@ -7,6 +7,9 @@ import 'package:flame/game.dart';
 import '../theme/retro_theme.dart';
 import '../services/audio_manager.dart';
 import '../game/lore_game.dart';
+import '../game/lore_world_manager.dart';
+import '../logic/field_hotkeys.dart';
+import '../logic/lore_field_logic.dart';
 import '../logic/lore_join.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
@@ -66,6 +69,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
     super.initState();
     _initParty();
     _initGame();
+    // 화면 진입 직후 키보드 포커스를 게임으로 가져온다.
+    WidgetsBinding.instance.addPostFrameCallback((_) => _reclaimFocus());
+  }
+
+  /// 버튼/대화상자 조작 뒤 키보드 입력이 게임으로 돌아오게 한다.
+  void _reclaimFocus() {
+    if (mounted && !_focusNode.hasFocus) _focusNode.requestFocus();
   }
 
   void _initParty() {
@@ -157,18 +167,151 @@ class _MainGameScreenState extends State<MainGameScreen> {
       canWalkOnWater: () => _waterWalkSteps > 0,
       onHazardTile: (cat) => _handleHazardTile(cat),
       onStepTaken: () => _handleStepTaken(),
-      onRecruitRequested: (recruit) {
-        // 원작 LORESUB.PAS:1042 join(num, partynum) - 최대 6인 파티
-        if (_party.length >= LoreJoin.maxPartySize) {
-          _addLog('일행이 ${LoreJoin.maxPartySize}명으로 가득 차 ${recruit.name}이(가) 합류하지 못했습니다.');
-          return;
-        }
-        setState(() => _party.add(recruit));
-        _addLog(
-          '★ ${recruit.name} (${recruit.playerClass.koreanName} Lv.${recruit.battleLevel})이(가) 일행에 합류했습니다!',
-        );
-      },
+      partyProvider: () => _party,
+      mindReadCountProvider: () => _mindReadCount,
+      onPortalRequested: (portal, tx, ty) =>
+          _confirmPortalEntry(portal, tx, ty),
+      onRecruitRequested: (recruit) => _requestJoinSlot(recruit),
     );
+  }
+
+  /// 원작 `LORESUB.PAS:986 wantenter` / `:999 wantexit`
+  /// 성문·동굴 입구 진입 여부를 확인한 뒤 이동한다.
+  Future<void> _confirmPortalEntry(PortalInfo? portal, int tx, int ty) async {
+    final leavingTown =
+        portal == null && _game.currentMapName.startsWith('TOWN');
+    final prompt = portal != null
+        ? LoreFieldLogic.enterPrompt(portal.name)
+        : (leavingTown
+              ? LoreFieldLogic.exitPrompt
+              : LoreFieldLogic.enterPrompt('이 곳'));
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+        title: Text(
+          prompt,
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 12,
+          ),
+        ),
+        actions: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: RetroTheme.blue),
+            onPressed: () => Navigator.of(ctx).pop(true),
+            child: Text(
+              LoreFieldLogic.confirmYes,
+              style: RetroTheme.dosFont.copyWith(fontSize: 11),
+            ),
+          ),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: RetroTheme.darkGray,
+            ),
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text(
+              LoreFieldLogic.confirmNo,
+              style: RetroTheme.dosFont.copyWith(fontSize: 11),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    if (confirmed == true) {
+      _game.enterPortal(portal, tx, ty);
+      setState(() {});
+    } else if (confirmed == false) {
+      _addLog(LoreFieldLogic.asYouWish);
+    }
+  }
+
+  /// 원작 `LORESUB.PAS:1144 ReturnJoinMember` - 합류시킬 파티 슬롯(2~6번) 선택
+  Future<void> _requestJoinSlot(PendingRecruit pending) async {
+    final recruit = pending.member;
+
+    // 원작이 슬롯을 고정한 경우(예: Mad Joe = 6번)에는 선택 없이 바로 합류시킨다.
+    if (pending.forcedSlotOption != null) {
+      final option = pending.forcedSlotOption!;
+      final replaced = option + 1 < _party.length
+          ? _party[option + 1].name
+          : null;
+      setState(() => LoreJoin.applyJoin(_party, recruit, option));
+      _addLog(
+        '★ ${recruit.name} (${recruit.playerClass.koreanName} Lv.${recruit.battleLevel})이(가) ${option + 2}번 슬롯으로 일행에 합류했습니다!',
+      );
+      if (replaced != null) {
+        _addLog('$replaced은(는) 전장에서 물러났습니다.');
+      }
+      return;
+    }
+
+    final labels = LoreJoin.joinMenuLabels(_party);
+    final option = await showDialog<int>(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+        title: Text(
+          LoreJoin.joinMenuPrompt,
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 12,
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (var i = 0; i < labels.length; i++)
+              ListTile(
+                dense: true,
+                title: Text(
+                  '${i + 2}번 ${labels[i]}',
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.white,
+                    fontSize: 12,
+                  ),
+                ),
+                onTap: () => Navigator.of(ctx).pop(i),
+              ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(-1),
+            child: Text(
+              '취소 (ESC)',
+              style: RetroTheme.dosFont.copyWith(
+                color: RetroTheme.lightRed,
+                fontSize: 11,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    if (option == null || option < 0) {
+      _addLog(LoreJoin.joinCancelled);
+      return;
+    }
+
+    final slotNumber = option + 2; // 2~6번 슬롯
+    final replaced = option + 1 < _party.length
+        ? _party[option + 1].name
+        : null;
+    setState(() => LoreJoin.applyJoin(_party, recruit, option));
+    _addLog(
+      '★ ${recruit.name} (${recruit.playerClass.koreanName} Lv.${recruit.battleLevel})이(가) $slotNumber번 슬롯으로 일행에 합류했습니다!',
+    );
+    if (replaced != null) {
+      _addLog('$replaced은(는) 전장에서 물러났습니다.');
+    }
   }
 
   void _handleHazardTile(TileCategory cat) {
@@ -302,7 +445,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
   }
 
-  void _openFieldMenuDialog() {
+  void _openFieldMenuDialog({FieldMenuTab initialTab = FieldMenuTab.main}) {
     showDialog(
       context: context,
       barrierDismissible: true,
@@ -313,6 +456,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         currentMapId: _game.currentMapId,
         playerX: _game.playerX,
         playerY: _game.playerY,
+        initialTab: initialTab,
         etc: {
           'torchSteps': _torchSteps,
           'waterWalkSteps': _waterWalkSteps,
@@ -667,6 +811,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 onDirectionPressed: (dx, dy) {
                   _game.tryMove(dx, dy);
                   setState(() {});
+                  _reclaimFocus();
                 },
               ),
             ),
@@ -749,29 +894,40 @@ class _MainGameScreenState extends State<MainGameScreen> {
       onKeyEvent: (event) {
         if (_currentMode == GameScreenMode.field) {
           if (event is KeyDownEvent) {
-            if (event.logicalKey == LogicalKeyboardKey.f1 ||
-                event.logicalKey == LogicalKeyboardKey.keyH) {
-              showDialog(
-                context: context,
-                builder: (ctx) => const LoreGuideDialog(),
-              );
-              return;
-            }
-            if (event.logicalKey == LogicalKeyboardKey.keyQ) {
-              _openQuickViewDialog();
-              return;
-            }
-            if (event.logicalKey == LogicalKeyboardKey.keyE) {
-              _openEspDialog();
-              return;
-            }
-            if (event.logicalKey == LogicalKeyboardKey.space ||
-                event.logicalKey == LogicalKeyboardKey.keyP ||
-                event.logicalKey == LogicalKeyboardKey.keyV ||
-                event.logicalKey == LogicalKeyboardKey.keyC ||
-                event.logicalKey == LogicalKeyboardKey.keyR) {
-              _openFieldMenuDialog();
-              return;
+            // 원작 LOREMAIN.PAS 핫키: P/V/Q/C/E/R/G + Space
+            switch (FieldHotkeys.resolve(event.logicalKey)) {
+              case FieldAction.openMenu:
+                _openFieldMenuDialog();
+                return;
+              case FieldAction.viewParty:
+                _openFieldMenuDialog(initialTab: FieldMenuTab.partyView);
+                return;
+              case FieldAction.viewCharacter:
+                _openFieldMenuDialog(initialTab: FieldMenuTab.characterView);
+                return;
+              case FieldAction.castSpell:
+                _openFieldMenuDialog(initialTab: FieldMenuTab.castSpell);
+                return;
+              case FieldAction.rest:
+                _openFieldMenuDialog(initialTab: FieldMenuTab.rest);
+                return;
+              case FieldAction.gameOption:
+                _openFieldMenuDialog(initialTab: FieldMenuTab.gameOption);
+                return;
+              case FieldAction.quickView:
+                _openQuickViewDialog();
+                return;
+              case FieldAction.extrasense:
+                _openEspDialog();
+                return;
+              case FieldAction.guide:
+                showDialog(
+                  context: context,
+                  builder: (ctx) => const LoreGuideDialog(),
+                );
+                return;
+              case FieldAction.none:
+                break;
             }
           }
           _game.handleKeyEvent(event);
