@@ -143,7 +143,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
         if (_mindReadCount > 0) {
           setState(() => _mindReadCount--);
           _addLog('[$name]: "$talk"');
-          _addLog('🧠 [독심술 간파]: $name의 마음에 악의는 느껴지지 않습니다. (독심술 잔여: $_mindReadCount회)');
+          _addLog(
+            '🧠 [독심술 간파]: $name의 마음에 악의는 느껴지지 않습니다. (독심술 잔여: $_mindReadCount회)',
+          );
         } else {
           _addLog('[$name]: "$talk"');
         }

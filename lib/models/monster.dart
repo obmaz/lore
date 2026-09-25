@@ -5,15 +5,15 @@ class Monster {
   final int strength;
   final int mentality;
   final int endurance;
-  final int resistance;
+  int resistance;
   final int agility;
   final int accArms;
   final int accMagic;
-  final int ac;
-  final int special;
-  final int castLevel;
-  final int specialCastLevel;
-  final int level;
+  int ac;
+  int special;
+  int castLevel;
+  int specialCastLevel;
+  int level;
 
   int hp;
   final int maxHp;

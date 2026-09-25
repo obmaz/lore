@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 import '../game/lore_dialogue_manager.dart';
@@ -72,7 +73,10 @@ class _EspDialogState extends State<EspDialog> {
             // 파티원 선택 탭
             Text(
               '초감각을 사용할 인물을 선택하십시오:',
-              style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 11),
+              style: RetroTheme.dosFont.copyWith(
+                color: RetroTheme.yellow,
+                fontSize: 11,
+              ),
             ),
             const SizedBox(height: 6),
             Wrap(
@@ -112,13 +116,19 @@ class _EspDialogState extends State<EspDialog> {
                 color: RetroTheme.background,
                 child: Text(
                   '${member.name}에게는 아직 초감각 능력이 없습니다.\n(마법사, 승려, 에스퍼, 방랑자 등이 초감각을 사용할 수 있습니다.)',
-                  style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightRed, fontSize: 11),
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.lightRed,
+                    fontSize: 11,
+                  ),
                 ),
               ),
             ] else ...[
               Text(
                 '사용할 초감각의 종류 ===>',
-                style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightCyan, fontSize: 11),
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.lightCyan,
+                  fontSize: 11,
+                ),
               ),
               const SizedBox(height: 8),
 
@@ -131,7 +141,9 @@ class _EspDialogState extends State<EspDialog> {
                     member.esp -= 10;
                     _resultText = '✨ 일행은 마법의 혜안으로 주변 지형과 숨겨진 통로를 꿰뚫어 보고 있습니다.';
                   });
-                  widget.onLog('👁 [투시] ${member.name}이(가) 초감각으로 주변 지형을 투시했습니다.');
+                  widget.onLog(
+                    '👁 [투시] ${member.name}이(가) 초감각으로 주변 지형을 투시했습니다.',
+                  );
                 },
               ),
               _espButton(
@@ -154,10 +166,13 @@ class _EspDialogState extends State<EspDialog> {
                 () {
                   setState(() {
                     member.esp -= 20;
-                    _resultText = '🧠 당신은 잠시동안 다른 사람의 숨겨진 마음을 읽을 수 있습니다. (3회 가능)';
+                    _resultText =
+                        '🧠 당신은 잠시동안 다른 사람의 숨겨진 마음을 읽을 수 있습니다. (3회 가능)';
                   });
                   widget.onMindReadActivated?.call(3);
-                  widget.onLog('🧠 [독심술] ${member.name}이(가) 타인의 마음을 읽는 능력을 활성화했습니다.');
+                  widget.onLog(
+                    '🧠 [독심술] ${member.name}이(가) 타인의 마음을 읽는 능력을 활성화했습니다.',
+                  );
                 },
               ),
               _espButton(
@@ -167,9 +182,12 @@ class _EspDialogState extends State<EspDialog> {
                 () {
                   setState(() {
                     member.esp -= 10;
-                    _resultText = '🔭 천리안의 눈으로 전방 원거리 지형을 정찰했습니다. 주변에 특이 동향이 감지되었습니다.';
+                    _resultText =
+                        '🔭 천리안의 눈으로 전방 원거리 지형을 정찰했습니다. 주변에 특이 동향이 감지되었습니다.';
                   });
-                  widget.onLog('🔭 [천리안] ${member.name}이(가) 전방 원거리 지형을 정찰했습니다.');
+                  widget.onLog(
+                    '🔭 [천리안] ${member.name}이(가) 전방 원거리 지형을 정찰했습니다.',
+                  );
                 },
               ),
             ],
@@ -201,7 +219,10 @@ class _EspDialogState extends State<EspDialog> {
                   foregroundColor: RetroTheme.white,
                 ),
                 onPressed: () => Navigator.of(context).pop(),
-                child: Text('닫기 (ESC)', style: RetroTheme.dosFont.copyWith(fontSize: 11)),
+                child: Text(
+                  '닫기 (ESC)',
+                  style: RetroTheme.dosFont.copyWith(fontSize: 11),
+                ),
               ),
             ),
           ],
@@ -230,9 +251,21 @@ class _EspDialogState extends State<EspDialog> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(title, style: RetroTheme.dosFont.copyWith(fontSize: 11, color: RetroTheme.yellow)),
+              Text(
+                title,
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 11,
+                  color: RetroTheme.yellow,
+                ),
+              ),
               const SizedBox(height: 2),
-              Text(desc, style: RetroTheme.dosFont.copyWith(fontSize: 9, color: RetroTheme.lightGray)),
+              Text(
+                desc,
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 9,
+                  color: RetroTheme.lightGray,
+                ),
+              ),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 
@@ -148,8 +149,8 @@ class QuickViewDialog extends StatelessWidget {
                           color: p.isDead
                               ? RetroTheme.darkGray
                               : (p.isUnconscious
-                                  ? RetroTheme.lightRed
-                                  : RetroTheme.yellow),
+                                    ? RetroTheme.lightRed
+                                    : RetroTheme.yellow),
                           fontSize: 11,
                         ),
                         overflow: TextOverflow.ellipsis,
@@ -235,10 +236,16 @@ class QuickViewDialog extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: RetroTheme.darkGray,
                   foregroundColor: RetroTheme.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 6,
+                  ),
                 ),
                 onPressed: () => Navigator.of(context).pop(),
-                child: Text('확인 (ESC)', style: RetroTheme.dosFont.copyWith(fontSize: 11)),
+                child: Text(
+                  '확인 (ESC)',
+                  style: RetroTheme.dosFont.copyWith(fontSize: 11),
+                ),
               ),
             ),
           ],

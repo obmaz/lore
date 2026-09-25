@@ -253,7 +253,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
           child: Column(
             children: [
               Text(
-                '원작: 안 영 기 (1993년 Borland Pascal 6.0)',
+                '제작: 문 동 욱',
                 style: RetroTheme.dosFont.copyWith(
                   fontSize: 12,
                   color: RetroTheme.white,

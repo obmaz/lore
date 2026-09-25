@@ -16,7 +16,8 @@ class FieldMenuDialog extends StatefulWidget {
   final int playerY;
   final void Function(int newFood)? onFoodChanged;
   final void Function(SaveData loadedData)? onSaveDataLoaded;
-  final void Function({int? torch, int? water, int? swamp, int? levitate})? onSpellEffect;
+  final void Function({int? torch, int? water, int? swamp, int? levitate})?
+  onSpellEffect;
   final void Function(int count)? onMindReadActivated;
   final Map<String, int>? etc;
   final void Function(String message) onLog;
@@ -447,13 +448,76 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
             child: Row(
               children: [
-                Expanded(flex: 3, child: Text('이름', style: RetroTheme.dosFont.copyWith(color: RetroTheme.white, fontSize: 10))),
-                Expanded(flex: 2, child: Text('HP', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGreen, fontSize: 10))),
-                Expanded(flex: 2, child: Text('SP', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightCyan, fontSize: 10))),
-                Expanded(flex: 2, child: Text('ESP', style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 10))),
-                Expanded(flex: 2, child: Text('중독', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightRed, fontSize: 10))),
-                Expanded(flex: 2, child: Text('기절', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightRed, fontSize: 10))),
-                Expanded(flex: 2, child: Text('사망', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightRed, fontSize: 10))),
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    '이름',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.white,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    'HP',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.lightGreen,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    'SP',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.lightCyan,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    'ESP',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.yellow,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    '중독',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.lightRed,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    '기절',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.lightRed,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: Text(
+                    '사망',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.lightRed,
+                      fontSize: 10,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -465,7 +529,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                 final p = widget.party[idx];
                 return Container(
                   margin: const EdgeInsets.only(bottom: 2),
-                  padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: RetroTheme.background,
                     border: Border.all(color: RetroTheme.darkGray, width: 0.5),
@@ -477,18 +544,82 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                         child: Text(
                           '${idx + 1}. ${p.name}',
                           style: RetroTheme.dosFont.copyWith(
-                            color: p.isDead ? RetroTheme.darkGray : (p.isUnconscious ? RetroTheme.lightRed : RetroTheme.yellow),
+                            color: p.isDead
+                                ? RetroTheme.darkGray
+                                : (p.isUnconscious
+                                      ? RetroTheme.lightRed
+                                      : RetroTheme.yellow),
                             fontSize: 10,
                           ),
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      Expanded(flex: 2, child: Text('${p.hp}/${p.maxHp}', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGreen, fontSize: 9))),
-                      Expanded(flex: 2, child: Text('${p.sp}/${p.maxSp}', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightCyan, fontSize: 9))),
-                      Expanded(flex: 2, child: Text('${p.esp}/${p.maxEsp}', style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 9))),
-                      Expanded(flex: 2, child: Text(p.poison > 0 ? '${p.poison}' : '-', style: RetroTheme.dosFont.copyWith(color: p.poison > 0 ? RetroTheme.lightRed : RetroTheme.lightGray, fontSize: 9))),
-                      Expanded(flex: 2, child: Text(p.unconscious > 0 ? '${p.unconscious}' : '-', style: RetroTheme.dosFont.copyWith(color: p.unconscious > 0 ? RetroTheme.lightRed : RetroTheme.lightGray, fontSize: 9))),
-                      Expanded(flex: 2, child: Text(p.dead > 0 ? '${p.dead}' : '-', style: RetroTheme.dosFont.copyWith(color: p.dead > 0 ? RetroTheme.lightRed : RetroTheme.lightGray, fontSize: 9))),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          '${p.hp}/${p.maxHp}',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: RetroTheme.lightGreen,
+                            fontSize: 9,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          '${p.sp}/${p.maxSp}',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: RetroTheme.lightCyan,
+                            fontSize: 9,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          '${p.esp}/${p.maxEsp}',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: RetroTheme.yellow,
+                            fontSize: 9,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          p.poison > 0 ? '${p.poison}' : '-',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: p.poison > 0
+                                ? RetroTheme.lightRed
+                                : RetroTheme.lightGray,
+                            fontSize: 9,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          p.unconscious > 0 ? '${p.unconscious}' : '-',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: p.unconscious > 0
+                                ? RetroTheme.lightRed
+                                : RetroTheme.lightGray,
+                            fontSize: 9,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Text(
+                          p.dead > 0 ? '${p.dead}' : '-',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: p.dead > 0
+                                ? RetroTheme.lightRed
+                                : RetroTheme.lightGray,
+                            fontSize: 9,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 );
@@ -524,7 +655,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         children: [
           Text(
             '【 1. 필드 회복 마법 】 (LOREMENU.PAS: CureSpell)',
-            style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 11),
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.yellow,
+              fontSize: 11,
+            ),
           ),
           const SizedBox(height: 6),
           for (final caster in mages)
@@ -538,7 +672,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                   children: [
                     Text(
                       '${caster.name} (SP: ${caster.sp}/${caster.maxSp})',
-                      style: RetroTheme.dosFont.copyWith(color: RetroTheme.white, fontSize: 11),
+                      style: RetroTheme.dosFont.copyWith(
+                        color: RetroTheme.white,
+                        fontSize: 11,
+                      ),
                     ),
                     const SizedBox(height: 4),
                     Wrap(
@@ -547,41 +684,79 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                       children: [
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: caster.sp >= 5 ? RetroTheme.green : RetroTheme.darkGray,
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            backgroundColor: caster.sp >= 5
+                                ? RetroTheme.green
+                                : RetroTheme.darkGray,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
                             minimumSize: const Size(80, 26),
                           ),
-                          onPressed: caster.sp >= 5 ? () => _chooseTargetForHeal(caster, isCurePoison: false) : null,
-                          child: Text('한명 치료 (5 SP)', style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+                          onPressed: caster.sp >= 5
+                              ? () => _chooseTargetForHeal(
+                                  caster,
+                                  isCurePoison: false,
+                                )
+                              : null,
+                          child: Text(
+                            '한명 치료 (5 SP)',
+                            style: RetroTheme.dosFont.copyWith(fontSize: 9),
+                          ),
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: caster.sp >= 8 ? RetroTheme.green : RetroTheme.darkGray,
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            backgroundColor: caster.sp >= 8
+                                ? RetroTheme.green
+                                : RetroTheme.darkGray,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
                             minimumSize: const Size(80, 26),
                           ),
-                          onPressed: caster.sp >= 8 ? () => _chooseTargetForHeal(caster, isCurePoison: true) : null,
-                          child: Text('한명 독제거 (8 SP)', style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+                          onPressed: caster.sp >= 8
+                              ? () => _chooseTargetForHeal(
+                                  caster,
+                                  isCurePoison: true,
+                                )
+                              : null,
+                          child: Text(
+                            '한명 독제거 (8 SP)',
+                            style: RetroTheme.dosFont.copyWith(fontSize: 9),
+                          ),
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: caster.sp >= 20 ? RetroTheme.green : RetroTheme.darkGray,
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            backgroundColor: caster.sp >= 20
+                                ? RetroTheme.green
+                                : RetroTheme.darkGray,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
                             minimumSize: const Size(80, 26),
                           ),
-                          onPressed: caster.sp >= 20 ? () {
-                            setState(() {
-                              caster.sp -= 20;
-                              for (final p in widget.party) {
-                                if (!p.isDead) {
-                                  p.hp = (p.hp + 30).clamp(0, p.maxHp);
-                                  p.poison = 0;
+                          onPressed: caster.sp >= 20
+                              ? () {
+                                  setState(() {
+                                    caster.sp -= 20;
+                                    for (final p in widget.party) {
+                                      if (!p.isDead) {
+                                        p.hp = (p.hp + 30).clamp(0, p.maxHp);
+                                        p.poison = 0;
+                                      }
+                                    }
+                                  });
+                                  widget.onLog(
+                                    '✨ ${caster.name}의 전체 치료 마법으로 파티 전원의 체력이 회복되고 독이 정화되었습니다!',
+                                  );
                                 }
-                              }
-                            });
-                            widget.onLog('✨ ${caster.name}의 전체 치료 마법으로 파티 전원의 체력이 회복되고 독이 정화되었습니다!');
-                          } : null,
-                          child: Text('전체 치료 (20 SP)', style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+                              : null,
+                          child: Text(
+                            '전체 치료 (20 SP)',
+                            style: RetroTheme.dosFont.copyWith(fontSize: 9),
+                          ),
                         ),
                       ],
                     ),
@@ -593,7 +768,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           const SizedBox(height: 8),
           Text(
             '【 2. 현상계 보조 마법 】 (LOREMENU.PAS: PhenominaSpell)',
-            style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightCyan, fontSize: 11),
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.lightCyan,
+              fontSize: 11,
+            ),
           ),
           const SizedBox(height: 6),
           for (final caster in mages)
@@ -608,71 +786,134 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 1 ? RetroTheme.blue : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        backgroundColor: caster.sp >= 1
+                            ? RetroTheme.blue
+                            : RetroTheme.darkGray,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         minimumSize: const Size(84, 26),
                       ),
-                      onPressed: caster.sp >= 1 ? () {
-                        setState(() => caster.sp -= 1);
-                        widget.onSpellEffect?.call(torch: 255);
-                        widget.onLog('🔥 ${caster.name}이(가) [마법의 횃불]을 밝혔습니다. 던전 시야가 확장됩니다.');
-                      } : null,
-                      child: Text('마법 횃불 (1 SP)', style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+                      onPressed: caster.sp >= 1
+                          ? () {
+                              setState(() => caster.sp -= 1);
+                              widget.onSpellEffect?.call(torch: 255);
+                              widget.onLog(
+                                '🔥 ${caster.name}이(가) [마법의 횃불]을 밝혔습니다. 던전 시야가 확장됩니다.',
+                              );
+                            }
+                          : null,
+                      child: Text(
+                        '마법 횃불 (1 SP)',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
+                      ),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 5 ? RetroTheme.blue : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        backgroundColor: caster.sp >= 5
+                            ? RetroTheme.blue
+                            : RetroTheme.darkGray,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         minimumSize: const Size(84, 26),
                       ),
-                      onPressed: caster.sp >= 5 ? () {
-                        setState(() => caster.sp -= 5);
-                        widget.onSpellEffect?.call(levitate: 255);
-                        widget.onLog('✨ ${caster.name}이(가) [공중 부상] 마법을 시전했습니다. 용암 위를 안전하게 이동합니다.');
-                      } : null,
-                      child: Text('공중 부상 (5 SP)', style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+                      onPressed: caster.sp >= 5
+                          ? () {
+                              setState(() => caster.sp -= 5);
+                              widget.onSpellEffect?.call(levitate: 255);
+                              widget.onLog(
+                                '✨ ${caster.name}이(가) [공중 부상] 마법을 시전했습니다. 용암 위를 안전하게 이동합니다.',
+                              );
+                            }
+                          : null,
+                      child: Text(
+                        '공중 부상 (5 SP)',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
+                      ),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 10 ? RetroTheme.blue : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        backgroundColor: caster.sp >= 10
+                            ? RetroTheme.blue
+                            : RetroTheme.darkGray,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         minimumSize: const Size(84, 26),
                       ),
-                      onPressed: caster.sp >= 10 ? () {
-                        setState(() => caster.sp -= 10);
-                        widget.onSpellEffect?.call(water: 255);
-                        widget.onLog('🌊 ${caster.name}이(가) [물위를 걸음] 마법을 시전했습니다. 깊은 물 위를 걸을 수 있습니다.');
-                      } : null,
-                      child: Text('물위 걸음 (10 SP)', style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+                      onPressed: caster.sp >= 10
+                          ? () {
+                              setState(() => caster.sp -= 10);
+                              widget.onSpellEffect?.call(water: 255);
+                              widget.onLog(
+                                '🌊 ${caster.name}이(가) [물위를 걸음] 마법을 시전했습니다. 깊은 물 위를 걸을 수 있습니다.',
+                              );
+                            }
+                          : null,
+                      child: Text(
+                        '물위 걸음 (10 SP)',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
+                      ),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 10 ? RetroTheme.blue : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        backgroundColor: caster.sp >= 10
+                            ? RetroTheme.blue
+                            : RetroTheme.darkGray,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         minimumSize: const Size(84, 26),
                       ),
-                      onPressed: caster.sp >= 10 ? () {
-                        setState(() => caster.sp -= 10);
-                        widget.onSpellEffect?.call(swamp: 255);
-                        widget.onLog('🌿 ${caster.name}이(가) [늪위를 걸음] 마법을 시전했습니다. 독 늪지대 피해가 면제됩니다.');
-                      } : null,
-                      child: Text('늪위 걸음 (10 SP)', style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+                      onPressed: caster.sp >= 10
+                          ? () {
+                              setState(() => caster.sp -= 10);
+                              widget.onSpellEffect?.call(swamp: 255);
+                              widget.onLog(
+                                '🌿 ${caster.name}이(가) [늪위를 걸음] 마법을 시전했습니다. 독 늪지대 피해가 면제됩니다.',
+                              );
+                            }
+                          : null,
+                      child: Text(
+                        '늪위 걸음 (10 SP)',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
+                      ),
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 15 ? RetroTheme.blue : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        backgroundColor: caster.sp >= 15
+                            ? RetroTheme.blue
+                            : RetroTheme.darkGray,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
                         minimumSize: const Size(84, 26),
                       ),
-                      onPressed: caster.sp >= 15 ? () {
-                        setState(() {
-                          caster.sp -= 15;
-                          _currentFood = (_currentFood + 50).clamp(0, 255);
-                        });
-                        widget.onFoodChanged?.call(_currentFood);
-                        widget.onLog('🍞 ${caster.name}이(가) [식량 제조] 마법으로 50인분의 식량을 생성했습니다! (현재: $_currentFood)');
-                      } : null,
-                      child: Text('식량 제조 (15 SP)', style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+                      onPressed: caster.sp >= 15
+                          ? () {
+                              setState(() {
+                                caster.sp -= 15;
+                                _currentFood = (_currentFood + 50).clamp(
+                                  0,
+                                  255,
+                                );
+                              });
+                              widget.onFoodChanged?.call(_currentFood);
+                              widget.onLog(
+                                '🍞 ${caster.name}이(가) [식량 제조] 마법으로 50인분의 식량을 생성했습니다! (현재: $_currentFood)',
+                              );
+                            }
+                          : null,
+                      child: Text(
+                        '식량 제조 (15 SP)',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
+                      ),
                     ),
                   ],
                 ),
@@ -740,7 +981,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
 
   Widget _buildEspView() {
     final member = widget.party[_espMemberIdx];
-    final hasEsp = member.esp > 0 ||
+    final hasEsp =
+        member.esp > 0 ||
         member.playerClass == PlayerClass.mage ||
         member.playerClass == PlayerClass.monk ||
         member.playerClass == PlayerClass.esper ||
@@ -768,7 +1010,12 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                   selectedColor: RetroTheme.yellow,
                   backgroundColor: RetroTheme.darkBlue,
                   onSelected: (val) {
-                    if (val) setState(() { _espMemberIdx = e.key; _espResultText = null; });
+                    if (val) {
+                      setState(() {
+                        _espMemberIdx = e.key;
+                        _espResultText = null;
+                      });
+                    }
                   },
                 ),
               );
@@ -778,16 +1025,23 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           if (!hasEsp)
             Text(
               '${member.name}에게는 아직 초감각 능력이 없습니다.',
-              style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightRed, fontSize: 11),
+              style: RetroTheme.dosFont.copyWith(
+                color: RetroTheme.lightRed,
+                fontSize: 11,
+              ),
             )
           else ...[
-            _espActionBtn('[1] 투시 (Clairvoyance) - 10 ESP', member.esp >= 10, () {
-              setState(() {
-                member.esp -= 10;
-                _espResultText = '✨ 일행은 마법의 혜안으로 주변 지형과 숨겨진 통로를 꿰뚫어 보고 있습니다.';
-              });
-              widget.onLog('👁 [투시] ${member.name}이(가) 초감각으로 주변 지형을 투시했습니다.');
-            }),
+            _espActionBtn(
+              '[1] 투시 (Clairvoyance) - 10 ESP',
+              member.esp >= 10,
+              () {
+                setState(() {
+                  member.esp -= 10;
+                  _espResultText = '✨ 일행은 마법의 혜안으로 주변 지형과 숨겨진 통로를 꿰뚫어 보고 있습니다.';
+                });
+                widget.onLog('👁 [투시] ${member.name}이(가) 초감각으로 주변 지형을 투시했습니다.');
+              },
+            ),
             _espActionBtn('[2] 미래 예언 (Prophecy) - 5 ESP', member.esp >= 5, () {
               final prop = LoreDialogueManager.instance.getProphecy();
               setState(() {
@@ -802,7 +1056,9 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                 _espResultText = '🧠 다른 사람의 숨겨진 마음을 읽을 수 있는 영적 능력이 3회 부여되었습니다.';
               });
               widget.onMindReadActivated?.call(3);
-              widget.onLog('🧠 [독심술] ${member.name}이(가) 타인의 마음을 읽는 능력을 활성화했습니다.');
+              widget.onLog(
+                '🧠 [독심술] ${member.name}이(가) 타인의 마음을 읽는 능력을 활성화했습니다.',
+              );
             }),
             _espActionBtn('[4] 천리안 (Scrying) - 10 ESP', member.esp >= 10, () {
               setState(() {
@@ -819,7 +1075,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
               color: RetroTheme.darkBlue,
               child: Text(
                 _espResultText!,
-                style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 11),
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.yellow,
+                  fontSize: 11,
+                ),
               ),
             ),
           ],

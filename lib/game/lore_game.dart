@@ -174,7 +174,9 @@ class LoreGame extends FlameGame {
     onPositionChanged?.call(playerX, playerY);
 
     // 위험 지형 콜백 호출 (독 늪, 용암 등)
-    if (cat == TileCategory.swamp || cat == TileCategory.lava || cat == TileCategory.water) {
+    if (cat == TileCategory.swamp ||
+        cat == TileCategory.lava ||
+        cat == TileCategory.water) {
       onHazardTile?.call(cat);
     }
     onStepTaken?.call();

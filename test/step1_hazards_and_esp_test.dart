@@ -12,7 +12,10 @@ void main() {
         name: 'TOWN1',
         xmax: 10,
         ymax: 10,
-        grid: List.generate(10, (y) => List.generate(10, (x) => 27)), // walkable 27
+        grid: List.generate(
+          10,
+          (y) => List.generate(10, (x) => 27),
+        ), // walkable 27
       );
 
       // 마을 타일 기준: 24=water, 25=swamp, 26=lava

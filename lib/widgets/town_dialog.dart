@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 import '../models/item.dart';
@@ -47,7 +48,9 @@ class _TownDialogState extends State<TownDialog> {
       widget.onGoldChanged(_gold);
       member.equipWeapon(weapon);
     });
-    widget.onLog('${member.name}이(가) ${weapon.name}을(를) 구매하여 장착했습니다. (위력: ${member.weaPower})');
+    widget.onLog(
+      '${member.name}이(가) ${weapon.name}을(를) 구매하여 장착했습니다. (위력: ${member.weaPower})',
+    );
   }
 
   void _healAllParty() {
@@ -94,7 +97,10 @@ class _TownDialogState extends State<TownDialog> {
                 ),
                 Text(
                   '금화: $_gold G',
-                  style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 13),
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.yellow,
+                    fontSize: 13,
+                  ),
                 ),
               ],
             ),
@@ -110,7 +116,12 @@ class _TownDialogState extends State<TownDialog> {
                 if (_currentTab != 0)
                   TextButton(
                     onPressed: () => setState(() => _currentTab = 0),
-                    child: Text('◀ 메인으로', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightCyan)),
+                    child: Text(
+                      '◀ 메인으로',
+                      style: RetroTheme.dosFont.copyWith(
+                        color: RetroTheme.lightCyan,
+                      ),
+                    ),
                   ),
                 const SizedBox(width: 8),
                 ElevatedButton(
@@ -134,7 +145,10 @@ class _TownDialogState extends State<TownDialog> {
       case 1: // 무기 상점
         return ListView(
           children: [
-            Text('구매할 무기와 장착할 파티원을 선택하십시오:', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGray)),
+            Text(
+              '구매할 무기와 장착할 파티원을 선택하십시오:',
+              style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGray),
+            ),
             const SizedBox(height: 6),
             ...Item.weapons.skip(1).take(5).map((w) {
               return Container(
@@ -145,22 +159,36 @@ class _TownDialogState extends State<TownDialog> {
                   children: [
                     Expanded(
                       flex: 4,
-                      child: Text('${w.name} (위력:${w.power})', style: RetroTheme.dosFont),
+                      child: Text(
+                        '${w.name} (위력:${w.power})',
+                        style: RetroTheme.dosFont,
+                      ),
                     ),
                     Expanded(
                       flex: 3,
-                      child: Text('${w.price} G', style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow)),
+                      child: Text(
+                        '${w.price} G',
+                        style: RetroTheme.dosFont.copyWith(
+                          color: RetroTheme.yellow,
+                        ),
+                      ),
                     ),
                     Expanded(
                       flex: 3,
                       child: DropdownButton<PartyMember>(
                         isExpanded: true,
-                        hint: Text('장착자', style: RetroTheme.dosFont.copyWith(fontSize: 11)),
+                        hint: Text(
+                          '장착자',
+                          style: RetroTheme.dosFont.copyWith(fontSize: 11),
+                        ),
                         dropdownColor: RetroTheme.panelBg,
                         items: widget.party.map((m) {
                           return DropdownMenuItem(
                             value: m,
-                            child: Text(m.name, style: RetroTheme.dosFont.copyWith(fontSize: 11)),
+                            child: Text(
+                              m.name,
+                              style: RetroTheme.dosFont.copyWith(fontSize: 11),
+                            ),
                           );
                         }).toList(),
                         onChanged: (member) {
@@ -180,7 +208,11 @@ class _TownDialogState extends State<TownDialog> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(Icons.church_outlined, size: 48, color: RetroTheme.lightCyan),
+              const Icon(
+                Icons.church_outlined,
+                size: 48,
+                color: RetroTheme.lightCyan,
+              ),
               const SizedBox(height: 10),
               Text(
                 '치유의 신전 (HOSPITAL)',
@@ -189,11 +221,16 @@ class _TownDialogState extends State<TownDialog> {
               const SizedBox(height: 6),
               Text(
                 '일행 전원의 부상과 중독을 치유합니다. (비용: 50 G)',
-                style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGray, fontSize: 12),
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.lightGray,
+                  fontSize: 12,
+                ),
               ),
               const SizedBox(height: 14),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: RetroTheme.green),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: RetroTheme.green,
+                ),
                 onPressed: _healAllParty,
                 child: Text('전체 파티원 치료받기', style: RetroTheme.dosFont),
               ),
@@ -204,9 +241,18 @@ class _TownDialogState extends State<TownDialog> {
       case 3: // NPC 대화
         return ListView(
           children: [
-            _buildNpcTalk('수호 기사', 'Orc는 가장 하급 괴물이오. 하지만 Serpent와 Insects는 맹독을 품고 있으니 조심하시오.'),
-            _buildNpcTalk('학자 Draconian', '시그너스 X1과 같은 블랙홀의 물리학적 파라독스에 의해 Necromancer가 생겨난 것이오.'),
-            _buildNpcTalk('성전의 기록관', '이 세계의 창시자는 안영기 님이시며, 그는 위대한 1993년의 프로그래머입니다.'),
+            _buildNpcTalk(
+              '수호 기사',
+              'Orc는 가장 하급 괴물이오. 하지만 Serpent와 Insects는 맹독을 품고 있으니 조심하시오.',
+            ),
+            _buildNpcTalk(
+              '학자 Draconian',
+              '시그너스 X1과 같은 블랙홀의 물리학적 파라독스에 의해 Necromancer가 생겨난 것이오.',
+            ),
+            _buildNpcTalk(
+              '성전의 기록관',
+              '이 세계의 창시자는 문동욱 님이시며, 그는 위대한 1993년의 프로그래머입니다.',
+            ),
           ],
         );
 
@@ -218,19 +264,34 @@ class _TownDialogState extends State<TownDialog> {
               _buildMenuCard(Icons.shield_outlined, '무기 상점', '새로운 장비 구입', () {
                 setState(() => _currentTab = 1);
               }),
-              _buildMenuCard(Icons.health_and_safety_outlined, '성소/치료소', '파티원 전체 회복', () {
-                setState(() => _currentTab = 2);
-              }),
-              _buildMenuCard(Icons.record_voice_over_outlined, '주민 대화', '소문과 정보 수집', () {
-                setState(() => _currentTab = 3);
-              }),
+              _buildMenuCard(
+                Icons.health_and_safety_outlined,
+                '성소/치료소',
+                '파티원 전체 회복',
+                () {
+                  setState(() => _currentTab = 2);
+                },
+              ),
+              _buildMenuCard(
+                Icons.record_voice_over_outlined,
+                '주민 대화',
+                '소문과 정보 수집',
+                () {
+                  setState(() => _currentTab = 3);
+                },
+              ),
             ],
           ),
         );
     }
   }
 
-  Widget _buildMenuCard(IconData icon, String title, String desc, VoidCallback onTap) {
+  Widget _buildMenuCard(
+    IconData icon,
+    String title,
+    String desc,
+    VoidCallback onTap,
+  ) {
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -249,7 +310,14 @@ class _TownDialogState extends State<TownDialog> {
             const SizedBox(height: 10),
             Text(title, style: RetroTheme.headerFont.copyWith(fontSize: 13)),
             const SizedBox(height: 4),
-            Text(desc, textAlign: TextAlign.center, style: RetroTheme.dosFont.copyWith(fontSize: 10, color: RetroTheme.lightGray)),
+            Text(
+              desc,
+              textAlign: TextAlign.center,
+              style: RetroTheme.dosFont.copyWith(
+                fontSize: 10,
+                color: RetroTheme.lightGray,
+              ),
+            ),
           ],
         ),
       ),
@@ -267,9 +335,21 @@ class _TownDialogState extends State<TownDialog> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('[NPC $name]', style: RetroTheme.headerFont.copyWith(fontSize: 12, color: RetroTheme.lightCyan)),
+          Text(
+            '[NPC $name]',
+            style: RetroTheme.headerFont.copyWith(
+              fontSize: 12,
+              color: RetroTheme.lightCyan,
+            ),
+          ),
           const SizedBox(height: 4),
-          Text(dialogue, style: RetroTheme.dosFont.copyWith(fontSize: 12, color: RetroTheme.white)),
+          Text(
+            dialogue,
+            style: RetroTheme.dosFont.copyWith(
+              fontSize: 12,
+              color: RetroTheme.white,
+            ),
+          ),
         ],
       ),
     );
