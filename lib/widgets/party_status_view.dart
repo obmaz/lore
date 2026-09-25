@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 import 'retro_box.dart';
 
@@ -26,10 +27,7 @@ class PartyMemberStatus {
 class PartyStatusView extends StatelessWidget {
   final List<PartyMemberStatus> members;
 
-  const PartyStatusView({
-    super.key,
-    required this.members,
-  });
+  const PartyStatusView({super.key, required this.members});
 
   Color _getConditionColor(String cond) {
     switch (cond) {
@@ -52,11 +50,8 @@ class PartyStatusView extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
       child: ListView.separated(
         itemCount: members.length,
-        separatorBuilder: (context, index) => const Divider(
-          color: RetroTheme.darkGray,
-          height: 6,
-          thickness: 1,
-        ),
+        separatorBuilder: (context, index) =>
+            const Divider(color: RetroTheme.darkGray, height: 6, thickness: 1),
         itemBuilder: (context, index) {
           final m = members[index];
           final condColor = _getConditionColor(m.condition);

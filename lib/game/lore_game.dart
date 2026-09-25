@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme/retro_theme.dart';
+import '../data/lore_script.dart';
 import '../logic/lore_join.dart';
 import '../models/party_member.dart';
 import '../services/audio_manager.dart';
@@ -12,6 +13,7 @@ import 'lore_map_manager.dart';
 import 'lore_world_manager.dart';
 import 'lore_dialogue_manager.dart';
 import 'bgi_font_decoder.dart';
+import 'sprite_sheet.dart';
 
 /// 1993년 원작의 실제 100x100 바이너리 맵(TOWN1.MAP, GROUND1.MAP 등)과
 /// 원작 CHARA.FNT 스프라이트 렌더링을 지원하는 Flame 2D 엔진
@@ -54,6 +56,12 @@ class LoreGame extends FlameGame {
   /// 원작 `party.etc[5]`(독심술 사용 가능 횟수) 제공자.
   final int Function()? mindReadCountProvider;
 
+  /// JSON 스크립트 실행에 필요한 상황(파티/플래그/독심술) 제공자.
+  final ScriptContext Function()? scriptContextProvider;
+
+  /// JSON 스크립트(talk 트리거)가 매칭되었을 때 호출된다.
+  final void Function(ScriptRun run)? onScriptTalk;
+
   /// 성문/동굴 입구 앞에 섰을 때 호출된다 (원작 `wantenter`/`wantexit`).
   /// 확인 대화상자에서 승인하면 화면단이 [enterPortal]을 호출한다.
   final void Function(PortalInfo? portal, int tx, int ty)? onPortalRequested;
@@ -76,6 +84,8 @@ class LoreGame extends FlameGame {
     this.onRecruitRequested,
     this.partyProvider,
     this.mindReadCountProvider,
+    this.scriptContextProvider,
+    this.onScriptTalk,
     this.onPortalRequested,
     this.canWalkOnWater,
   }) : currentMapId = initialMapId,
@@ -255,7 +265,22 @@ class LoreGame extends FlameGame {
       }
     }
 
-    // 2. 원작 LORETALK.PAS / LORESPEC.PAS 실제 주민, 영주, 동료 대화 연동
+    // 2. JSON 스크립트(assets/data/scripts.json)로 정의된 좌표 대화를 우선 실행한다.
+    final scriptCtx = scriptContextProvider?.call();
+    if (scriptCtx != null) {
+      final run = LoreScriptEngine.instance.startTalk(
+        currentMapId,
+        tx,
+        ty,
+        scriptCtx,
+      );
+      if (run != null) {
+        onScriptTalk?.call(run);
+        return;
+      }
+    }
+
+    // 3. 원작 LORETALK.PAS / LORESPEC.PAS 실제 주민, 영주, 동료 대화 연동
     //    (마을뿐 아니라 모든 맵에서 좌표 기반 대화가 동작한다)
     final dlg = LoreDialogueManager.instance.getDialogue(
       currentMapId,
@@ -321,6 +346,8 @@ class LoreGame extends FlameGame {
 
     // 현재 맵 카테고리에 맞는 타일 폰트 선택
     final mapCat = LoreWorldManager.mapRegistry[currentMapId]?.category;
+    final tileFontName =
+        LoreWorldManager.mapRegistry[currentMapId]?.fontName ?? 'TOWN';
     BgiFontDecoder? activeTileFont;
     switch (mapCat) {
       case MapCategory.town:
@@ -355,10 +382,14 @@ class LoreGame extends FlameGame {
         final tileVal = currentMap!.getTile(worldX, worldY);
         final cat = currentMap!.getCategory(tileVal);
 
-        // 원작 FNT 타일 스프라이트가 존재하면 원작 픽셀 아트로 즉시 렌더링
-        if (activeTileFont != null &&
+        // 1순위: 이미지 파일(PNG) 스프라이트 시트
+        final tileSheet = SpriteLibrary.instance.get(tileFontName);
+        if (tileSheet != null && tileVal >= 0 && tileVal < tileSheet.count) {
+          tileSheet.draw(canvas, tileVal, rect, opaqueBackground: true);
+        } else if (activeTileFont != null &&
             tileVal >= 0 &&
             tileVal < activeTileFont.totalSprites) {
+          // 2순위: 원작 FNT 픽셀 디코더
           activeTileFont.renderSprite(
             canvas,
             tileVal,
@@ -428,13 +459,17 @@ class LoreGame extends FlameGame {
       tileSize - 4,
     );
 
-    if (charaFont != null) {
-      // 원작 LORESUB.PAS 기준 방향 인덱스:
-      // 남: 0, 북: 1, 동: 2, 서: 3 (필드 시 +4)
-      int face = playerDirection;
-      if (!currentMapName.startsWith('TOWN')) {
-        face += 4;
-      }
+    // 원작 LORESUB.PAS 기준 방향 인덱스: 남: 0, 북: 1, 동: 2, 서: 3 (필드 시 +4)
+    int face = playerDirection;
+    if (!currentMapName.startsWith('TOWN')) {
+      face += 4;
+    }
+
+    final charaSheet = SpriteLibrary.instance.get('CHARA');
+    if (charaSheet != null && face < charaSheet.count) {
+      // 1순위: 이미지 파일(PNG) 스프라이트 시트
+      charaSheet.draw(canvas, face, centerRect);
+    } else if (charaFont != null) {
       charaFont!.renderSprite(canvas, face, centerRect);
     } else {
       // Fallback 벡터 렌더링

@@ -9,7 +9,7 @@
 /// 캐릭터별로 이름/직업/장비/능력치를 덮어쓴다. 이 파일은 그 결과를 그대로 옮긴 것이다.
 library;
 
-import '../models/monster.dart';
+import '../data/lore_data.dart';
 import '../models/party_member.dart';
 
 /// 영입 대기 항목 - 원작 `join(num, partynum)` 호출 1건에 대응한다.
@@ -32,7 +32,10 @@ class LoreJoin {
   /// 원작 `LORETALK.PAS:197` - 지하 감옥의 Mad Joe (몬스터 #1 Orc 템플릿).
   /// 원작: class 8(떠돌이), 모든 장비/방어도 0.
   static PartyMember madJoe() {
-    return PartyMember.fromMonsterTemplate(Monster.create(1), name: 'Mad Joe')
+    return PartyMember.fromMonsterTemplate(
+        LoreData.instance.monster(1),
+        name: 'Mad Joe',
+      )
       ..playerClass = PlayerClass.vagrant
       ..weapon = 0
       ..shield = 0
@@ -46,7 +49,10 @@ class LoreJoin {
   /// 원작 `LORETALK.PAS:413` - LASTDITCH의 전사 Polaris (몬스터 #9 Imp 템플릿).
   /// 원작: class 4(전사), level[2] := 3, 장검(4)/가죽 방패(1)/가죽 갑옷(1) 장착.
   static PartyMember polaris() {
-    return PartyMember.fromMonsterTemplate(Monster.create(9), name: 'Polaris')
+    return PartyMember.fromMonsterTemplate(
+        LoreData.instance.monster(9),
+        name: 'Polaris',
+      )
       ..playerClass = PlayerClass.warrior
       ..magicLevel = 3
       ..weapon = 4
@@ -61,7 +67,10 @@ class LoreJoin {
   /// 원작 `LORESPEC.PAS:620` - EVIL SEAL의 사냥꾼 Rigel (몬스터 #14 Gremlin 템플릿).
   /// 원작: class 7(사냥꾼), hp := 1 (빈사 상태로 합류).
   static PartyMember rigel() {
-    return PartyMember.fromMonsterTemplate(Monster.create(14), name: 'Rigel')
+    return PartyMember.fromMonsterTemplate(
+        LoreData.instance.monster(14),
+        name: 'Rigel',
+      )
       ..playerClass = PlayerClass.hunter
       ..weapon = 4
       ..shield = 1
@@ -77,7 +86,7 @@ class LoreJoin {
   /// 원작: class 9(혼령), 모든 장비 제거, hp := 0, resistance := 15, endurance := 10.
   static PartyMember redAntares() {
     return PartyMember.fromMonsterTemplate(
-        Monster.create(55),
+        LoreData.instance.monster(55),
         name: 'Red Antares',
       )
       ..playerClass = PlayerClass.ghost
@@ -96,7 +105,10 @@ class LoreJoin {
   /// 원작 `LORESPEC.PAS:1230` - Spica (몬스터 #43 Wivern 템플릿).
   /// 원작: 여성, class 3(에스퍼), level 11/6/11, 단도(1)/가죽 방패(1)/가죽 갑옷(1).
   static PartyMember spica() {
-    return PartyMember.fromMonsterTemplate(Monster.create(43), name: 'Spica')
+    return PartyMember.fromMonsterTemplate(
+        LoreData.instance.monster(43),
+        name: 'Spica',
+      )
       ..sex = Gender.female
       ..playerClass = PlayerClass.esper
       ..strength = 10
@@ -128,7 +140,7 @@ class LoreJoin {
   /// 원작: class 7(사냥꾼), 철퇴(5)/청동 방패(2)/가죽 갑옷(1) 장착.
   static PartyMember loreHunter() {
     return PartyMember.fromMonsterTemplate(
-        Monster.create(39),
+        LoreData.instance.monster(39),
         name: 'Lore Hunter',
       )
       ..playerClass = PlayerClass.hunter
@@ -139,6 +151,26 @@ class LoreJoin {
       ..shiPower = 2
       ..armPower = 2
       ..ac = 4;
+  }
+
+  /// 스크립트(JSON `{"join": "polaris"}`)에서 쓰는 키로 동료를 만든다.
+  static PartyMember? byKey(String key) {
+    switch (key) {
+      case 'mad_joe':
+        return madJoe();
+      case 'polaris':
+        return polaris();
+      case 'rigel':
+        return rigel();
+      case 'red_antares':
+        return redAntares();
+      case 'spica':
+        return spica();
+      case 'lore_hunter':
+        return loreHunter();
+      default:
+        return null;
+    }
   }
 
   /// 원작 `LORESUB.PAS:1144 ReturnJoinMember`의 메뉴 문구.

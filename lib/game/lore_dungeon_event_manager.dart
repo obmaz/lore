@@ -1,4 +1,5 @@
 import '../models/monster.dart';
+import '../data/lore_data.dart';
 import '../models/party_member.dart';
 import '../logic/lore_field_logic.dart';
 import 'lore_dialogue_manager.dart';
@@ -182,8 +183,8 @@ class LoreDungeonEventManager {
           level: 8,
           hp: 160,
         );
-        final sphinx1 = Monster.create(8); // 호위 몬스터
-        final sphinx2 = Monster.create(8);
+        final sphinx1 = LoreData.instance.monster(8); // 호위 몬스터
+        final sphinx2 = LoreData.instance.monster(8);
 
         return DungeonEventResult(
           type: DungeonEventType.bossBattle,
@@ -231,8 +232,8 @@ class LoreDungeonEventManager {
           level: 11,
           hp: 242,
         );
-        final z1 = Monster.create(19); // Skeleton/Zombie 호위
-        final z2 = Monster.create(19);
+        final z1 = LoreData.instance.monster(19); // Skeleton/Zombie 호위
+        final z2 = LoreData.instance.monster(19);
 
         return DungeonEventResult(
           type: DungeonEventType.bossBattle,

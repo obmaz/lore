@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
@@ -25,11 +26,7 @@ class EndingView extends StatefulWidget {
     '몇 천 년만 지나면 전설로서, 아니 잊혀진 얘기로만 남을 테니까 ...',
   ];
 
-  const EndingView({
-    super.key,
-    required this.heroName,
-    required this.onFinish,
-  });
+  const EndingView({super.key, required this.heroName, required this.onFinish});
 
   @override
   State<EndingView> createState() => _EndingViewState();
@@ -75,7 +72,9 @@ class _EndingViewState extends State<EndingView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: _lightningFlash ? RetroTheme.white.withValues(alpha: 0.3) : RetroTheme.black,
+      color: _lightningFlash
+          ? RetroTheme.white.withValues(alpha: 0.3)
+          : RetroTheme.black,
       padding: const EdgeInsets.all(24.0),
       child: Center(
         child: Container(
@@ -114,7 +113,10 @@ class _EndingViewState extends State<EndingView> {
       children: [
         Text(
           '◆ 에필로그 (EPILOGUE) ◆',
-          style: RetroTheme.headerFont.copyWith(fontSize: 14, color: RetroTheme.yellow),
+          style: RetroTheme.headerFont.copyWith(
+            fontSize: 14,
+            color: RetroTheme.yellow,
+          ),
         ),
         const Divider(color: RetroTheme.borderColor, height: 16),
         ...EndingView.epilogueTexts.map((line) {
@@ -123,7 +125,11 @@ class _EndingViewState extends State<EndingView> {
             padding: const EdgeInsets.symmetric(vertical: 2.5),
             child: Text(
               line,
-              style: RetroTheme.dosFont.copyWith(fontSize: 11, color: RetroTheme.white, height: 1.4),
+              style: RetroTheme.dosFont.copyWith(
+                fontSize: 11,
+                color: RetroTheme.white,
+                height: 1.4,
+              ),
             ),
           );
         }),
@@ -150,13 +156,33 @@ class _EndingViewState extends State<EndingView> {
     final staffItems = [
       {'title': '영웅', 'name': widget.heroName, 'desc': '바로 당신이다. 이 세계의 구원자.'},
       {'title': 'NOTICE 보스', 'name': 'Hydra', 'desc': 'NOTICE 동굴을 지배하던 삼두룡.'},
-      {'title': 'LOCKUP 보스', 'name': 'Huge Dragon', 'desc': 'LOCKUP 동굴의 거대한 화염룡.'},
+      {
+        'title': 'LOCKUP 보스',
+        'name': 'Huge Dragon',
+        'desc': 'LOCKUP 동굴의 거대한 화염룡.',
+      },
       {'title': '미로의 괴수', 'name': 'Minotaur', 'desc': '던전 속에서 두 번 등장한 미노타우로스.'},
-      {'title': '기계 생물', 'name': 'Panzer Viper', 'desc': 'DUNGEON OF EVIL을 지키던 사이버 바이퍼.'},
-      {'title': '제 2 인자', 'name': 'Black Knight', 'desc': 'Necromancer 군단의 제 2 인자 암흑 기사.'},
-      {'title': '왼팔', 'name': 'ArchiMonk', 'desc': 'Necromancer의 왼팔 역할을 맡았던 실력자.'},
+      {
+        'title': '기계 생물',
+        'name': 'Panzer Viper',
+        'desc': 'DUNGEON OF EVIL을 지키던 사이버 바이퍼.',
+      },
+      {
+        'title': '제 2 인자',
+        'name': 'Black Knight',
+        'desc': 'Necromancer 군단의 제 2 인자 암흑 기사.',
+      },
+      {
+        'title': '왼팔',
+        'name': 'ArchiMonk',
+        'desc': 'Necromancer의 왼팔 역할을 맡았던 실력자.',
+      },
       {'title': '오른팔', 'name': 'ArchiMage', 'desc': 'Necromancer의 오른팔 대마법사.'},
-      {'title': '최종 보스', 'name': 'Neo-Necromancer', 'desc': '바로 당신의 궁극적인 목표였던 사악한 지배자.'},
+      {
+        'title': '최종 보스',
+        'name': 'Neo-Necromancer',
+        'desc': '바로 당신의 궁극적인 목표였던 사악한 지배자.',
+      },
     ];
 
     return Column(
@@ -165,7 +191,10 @@ class _EndingViewState extends State<EndingView> {
       children: [
         Text(
           '◆ 이 게임의 끝마무리에 공헌한 인물들 (STAFF) ◆',
-          style: RetroTheme.headerFont.copyWith(fontSize: 13, color: RetroTheme.lightCyan),
+          style: RetroTheme.headerFont.copyWith(
+            fontSize: 13,
+            color: RetroTheme.lightCyan,
+          ),
         ),
         const Divider(color: RetroTheme.borderColor, height: 14),
         SizedBox(
@@ -178,7 +207,9 @@ class _EndingViewState extends State<EndingView> {
               return Container(
                 margin: const EdgeInsets.symmetric(vertical: 3),
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                color: isHero ? RetroTheme.blue.withValues(alpha: 0.5) : RetroTheme.background,
+                color: isHero
+                    ? RetroTheme.blue.withValues(alpha: 0.5)
+                    : RetroTheme.background,
                 child: Row(
                   children: [
                     SizedBox(
@@ -186,7 +217,9 @@ class _EndingViewState extends State<EndingView> {
                       child: Text(
                         it['title']!,
                         style: RetroTheme.dosFont.copyWith(
-                          color: isHero ? RetroTheme.yellow : RetroTheme.lightGray,
+                          color: isHero
+                              ? RetroTheme.yellow
+                              : RetroTheme.lightGray,
                           fontSize: 10,
                         ),
                       ),
@@ -300,7 +333,10 @@ class _EndingViewState extends State<EndingView> {
           onPressed: widget.onFinish,
           child: Text(
             '타이틀 화면으로 돌아가기 [ESC]',
-            style: RetroTheme.dosFont.copyWith(fontSize: 12, fontWeight: FontWeight.bold),
+            style: RetroTheme.dosFont.copyWith(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         const SizedBox(height: 10),

@@ -8,6 +8,7 @@ import '../services/audio_manager.dart';
 import '../models/monster.dart';
 import '../models/party_member.dart';
 import '../models/spell.dart';
+import '../data/lore_data.dart';
 import '../logic/battle_engine.dart';
 import '../game/lore_dialogue_manager.dart';
 
@@ -228,7 +229,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final player = activePlayer;
     if (player == null) return;
 
-    final singleSpells = Spell.allSpells
+    final singleSpells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.singleAttack)
         .toList();
     _showSpellDialog('단일 마법 공격', singleSpells, player, (spell) {
@@ -261,7 +262,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final player = activePlayer;
     if (player == null) return;
 
-    final allSpells = Spell.allSpells
+    final allSpells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.allAttack)
         .toList();
     _showSpellDialog('전체 마법 공격', allSpells, player, (spell) {
@@ -297,7 +298,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final player = activePlayer;
     if (player == null) return;
 
-    final specialSpells = Spell.allSpells
+    final specialSpells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.specialDebuff)
         .toList();
     _showSpellDialog('적 특수 디버프 마법', specialSpells, player, (spell) {
@@ -415,7 +416,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   }
 
   void _showSingleCureSpells(PartyMember caster, PartyMember target) {
-    final singleCure = Spell.allSpells
+    final singleCure = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.singleCure)
         .toList();
     _showSpellDialog('${target.name}에게 치료 시전', singleCure, caster, (spell) {
@@ -424,7 +425,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   }
 
   void _showAllCureSpells(PartyMember caster) {
-    final allCure = Spell.allSpells
+    final allCure = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.allCure)
         .toList();
     _showSpellDialog('일행 전체 치료 시전', allCure, caster, (spell) {
@@ -462,7 +463,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final player = activePlayer;
     if (player == null) return;
 
-    final battleEsp = Spell.allSpells
+    final battleEsp = LoreData.instance.spells
         .where((s) => s.id == 43 || s.id == 45)
         .toList();
     _showSpellDialog('초능력 (ESP) 시전', battleEsp, player, (spell) {
@@ -544,9 +545,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
             player.playerClass == PlayerClass.ghost) &&
         player.sp >= 4) {
       int spellId = min(6, max(1, player.magicLevel ~/ 2));
-      _executeSingleMagic(player, Spell.getById(spellId));
+      _executeSingleMagic(player, LoreData.instance.spell(spellId));
     } else if (player.playerClass == PlayerClass.esper && player.esp >= 20) {
-      _executeEsp(player, Spell.getById(45)); // 염력
+      _executeEsp(player, LoreData.instance.spell(45)); // 염력
     } else {
       _onWeaponAttack();
     }

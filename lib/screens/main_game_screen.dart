@@ -13,6 +13,8 @@ import '../logic/lore_field_logic.dart';
 import '../logic/lore_join.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
+import '../data/lore_data.dart';
+import '../data/lore_script.dart';
 import '../widgets/viewport_view.dart';
 import '../widgets/party_status_view.dart';
 import '../widgets/message_log_view.dart';
@@ -169,6 +171,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
       onStepTaken: () => _handleStepTaken(),
       partyProvider: () => _party,
       mindReadCountProvider: () => _mindReadCount,
+      scriptContextProvider: _scriptContext,
+      onScriptTalk: (run) => _driveScript(run),
       onPortalRequested: (portal, tx, ty) =>
           _confirmPortalEntry(portal, tx, ty),
       onRecruitRequested: (recruit) => _requestJoinSlot(recruit),
@@ -227,6 +231,128 @@ class _MainGameScreenState extends State<MainGameScreen> {
       setState(() {});
     } else if (confirmed == false) {
       _addLog(LoreFieldLogic.asYouWish);
+    }
+  }
+
+  // =========================================================================
+  // JSON 스크립트 실행 (assets/data/scripts.json)
+  // =========================================================================
+
+  /// 현재 파티/플래그/독심술 상태를 스크립트 엔진에 전달한다.
+  ScriptContext _scriptContext() {
+    var maxEsp = 0;
+    for (final p in _party) {
+      if (p.espLevel > maxEsp) maxEsp = p.espLevel;
+    }
+    final flags = LoreDialogueManager.instance
+        .getFlagsCopy()
+        .entries
+        .where((e) => e.value)
+        .map((e) => e.key)
+        .toSet();
+    return ScriptContext(
+      mindReadActive: _mindReadCount > 0,
+      maxEspLevel: maxEsp,
+      flags: flags,
+    );
+  }
+
+  /// 스크립트를 끝까지 진행한다(선택지가 나오면 대화상자로 물어본다).
+  Future<void> _driveScript(ScriptRun run) async {
+    var current = run;
+    while (true) {
+      _applyScriptOutcome(current);
+      final options = current.pendingChoice;
+      if (options == null) return;
+
+      final chosen = await showDialog<int>(
+        context: context,
+        barrierDismissible: false,
+        builder: (ctx) => AlertDialog(
+          backgroundColor: RetroTheme.black,
+          shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+          title: Text(
+            current.choicePrompt ?? '어떻게 하시겠습니까 ?',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.yellow,
+              fontSize: 12,
+            ),
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (var i = 0; i < options.length; i++)
+                ListTile(
+                  dense: true,
+                  title: Text(
+                    options[i],
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                  onTap: () => Navigator.of(ctx).pop(i),
+                ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(-1),
+              child: Text(
+                '취소 (ESC)',
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.lightRed,
+                  fontSize: 11,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+      if (chosen == null || chosen < 0) return;
+      current = current.choose(chosen);
+    }
+  }
+
+  /// 스크립트 결과(메시지/보상/플래그/동료/전투)를 게임 상태에 반영한다.
+  void _applyScriptOutcome(ScriptRun run) {
+    final outcome = run.outcome;
+
+    for (final m in outcome.messages) {
+      _addLog(m);
+    }
+
+    if (outcome.goldDelta != 0) {
+      setState(() => _partyGold += outcome.goldDelta);
+      if (outcome.goldDelta > 0) {
+        _addLog('💰 금화 +${outcome.goldDelta} (보유: $_partyGold)');
+      }
+    }
+
+    if (outcome.foodDelta != 0) {
+      setState(
+        () => _partyFood = (_partyFood + outcome.foodDelta).clamp(0, 255),
+      );
+      _addLog(
+        '🍞 식량 ${outcome.foodDelta > 0 ? '+' : ''}${outcome.foodDelta} (보유: $_partyFood)',
+      );
+    }
+
+    for (final flag in outcome.setFlags) {
+      LoreDialogueManager.instance.setFlag(flag);
+    }
+
+    for (final recruit in outcome.recruits) {
+      final member = LoreJoin.byKey(recruit.key);
+      if (member == null) continue;
+      _requestJoinSlot(PendingRecruit(member, forcedSlotOption: recruit.slot));
+    }
+
+    if (outcome.battleMonsters.isNotEmpty) {
+      final enemies = outcome.battleMonsters
+          .map((id) => LoreData.instance.monster(id))
+          .toList();
+      _startBossBattle(enemies);
     }
   }
 
@@ -383,6 +509,18 @@ class _MainGameScreenState extends State<MainGameScreen> {
           }
         }
       }
+    }
+
+    // JSON 스크립트(step 트리거)를 우선 실행하고, 없으면 기존 이벤트 로직을 쓴다.
+    final scriptRun = LoreScriptEngine.instance.startStep(
+      _game.currentMapId,
+      _game.playerX,
+      _game.playerY,
+      _scriptContext(),
+    );
+    if (scriptRun != null) {
+      _applyScriptOutcome(scriptRun);
+      return;
     }
 
     // 던전 및 필드 특수 이벤트 감지 (LORESPEC.PAS)
@@ -547,7 +685,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
       _battleEnemies = List.generate(count, (_) {
         final id = minId + rnd.nextInt(maxId - minId + 1);
-        return Monster.create(id);
+        return LoreData.instance.monster(id);
       });
 
       _addLog('=== 몬스터 무리가 나타났다! ===');

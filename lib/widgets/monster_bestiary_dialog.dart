@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
 import '../models/monster.dart';
+import '../data/lore_data.dart';
 
 /// 1993년 원작 LOOKFOE.PAS 기반 75종 전체 몬스터 도감 모달
 class MonsterBestiaryDialog extends StatefulWidget {
@@ -15,7 +16,7 @@ class _MonsterBestiaryDialogState extends State<MonsterBestiaryDialog> {
   int _selectedIndex = 0;
   String _searchQuery = '';
 
-  List<Monster> get _allMonsters => Monster.monsterTemplates;
+  List<Monster> get _allMonsters => LoreData.instance.monsters;
 
   List<Monster> get _filteredMonsters {
     if (_searchQuery.trim().isEmpty) return _allMonsters;
@@ -83,11 +84,16 @@ class _MonsterBestiaryDialogState extends State<MonsterBestiaryDialog> {
                         color: RetroTheme.darkGray,
                         fontSize: 9,
                       ),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 4,
+                      ),
                       fillColor: RetroTheme.background,
                       filled: true,
                       border: OutlineInputBorder(
-                        borderSide: const BorderSide(color: RetroTheme.borderColor),
+                        borderSide: const BorderSide(
+                          color: RetroTheme.borderColor,
+                        ),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -121,24 +127,32 @@ class _MonsterBestiaryDialogState extends State<MonsterBestiaryDialog> {
                           return GestureDetector(
                             onTap: () => setState(() => _selectedIndex = idx),
                             child: Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
                               color: isCur
                                   ? RetroTheme.blue.withValues(alpha: 0.6)
                                   : Colors.transparent,
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
                                     '#${m.eNumber.toString().padLeft(2, '0')} ${m.name}',
                                     style: RetroTheme.dosFont.copyWith(
-                                      color: isCur ? RetroTheme.yellow : RetroTheme.white,
+                                      color: isCur
+                                          ? RetroTheme.yellow
+                                          : RetroTheme.white,
                                       fontSize: 11,
                                     ),
                                   ),
                                   Text(
                                     'Lv.${m.level}',
                                     style: RetroTheme.dosFont.copyWith(
-                                      color: isCur ? RetroTheme.lightCyan : RetroTheme.lightGray,
+                                      color: isCur
+                                          ? RetroTheme.lightCyan
+                                          : RetroTheme.lightGray,
                                       fontSize: 10,
                                     ),
                                   ),
@@ -159,52 +173,102 @@ class _MonsterBestiaryDialogState extends State<MonsterBestiaryDialog> {
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color: RetroTheme.black,
-                        border: Border.all(color: RetroTheme.borderColor, width: 1),
+                        border: Border.all(
+                          color: RetroTheme.borderColor,
+                          width: 1,
+                        ),
                       ),
                       child: ListView(
                         children: [
                           // 몬스터 헤더
                           Row(
                             children: [
-                              const Icon(Icons.pest_control_outlined, color: RetroTheme.yellow, size: 28),
+                              const Icon(
+                                Icons.pest_control_outlined,
+                                color: RetroTheme.yellow,
+                                size: 28,
+                              ),
                               const SizedBox(width: 8),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     '#${selected.eNumber} ${selected.name}',
-                                    style: RetroTheme.headerFont.copyWith(fontSize: 14),
+                                    style: RetroTheme.headerFont.copyWith(
+                                      fontSize: 14,
+                                    ),
                                   ),
                                   Text(
                                     '등급: Level ${selected.level} | 최대 HP: ${selected.maxHp}',
-                                    style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGreen, fontSize: 10),
+                                    style: RetroTheme.dosFont.copyWith(
+                                      color: RetroTheme.lightGreen,
+                                      fontSize: 10,
+                                    ),
                                   ),
                                 ],
                               ),
                             ],
                           ),
-                          const Divider(color: RetroTheme.lightGray, height: 14),
+                          const Divider(
+                            color: RetroTheme.lightGray,
+                            height: 14,
+                          ),
 
                           // 스탯 테이블 (LOOKFOE.PAS와 100% 동일 규격)
-                          _buildStatRow('힘 (Strength)', '${selected.strength}', '정신력 (Mentality)', '${selected.mentality}'),
-                          _buildStatRow('체질 (Endurance)', '${selected.endurance}', '마법 저항력 (Resistance)', '${selected.resistance}%'),
-                          _buildStatRow('민첩성 (Agility)', '${selected.agility}', '방어 등급 (Armor Class)', '${selected.ac}'),
-                          _buildStatRow('물리 명중 (Acc Arms)', '${selected.accArms}/20', '마법 명중 (Acc Magic)', '${selected.accMagic}/20'),
-                          _buildStatRow('마법 레벨 (Cast Lv)', '${selected.castLevel}', '초자연 레벨 (Special Cast)', '${selected.specialCastLevel}'),
+                          _buildStatRow(
+                            '힘 (Strength)',
+                            '${selected.strength}',
+                            '정신력 (Mentality)',
+                            '${selected.mentality}',
+                          ),
+                          _buildStatRow(
+                            '체질 (Endurance)',
+                            '${selected.endurance}',
+                            '마법 저항력 (Resistance)',
+                            '${selected.resistance}%',
+                          ),
+                          _buildStatRow(
+                            '민첩성 (Agility)',
+                            '${selected.agility}',
+                            '방어 등급 (Armor Class)',
+                            '${selected.ac}',
+                          ),
+                          _buildStatRow(
+                            '물리 명중 (Acc Arms)',
+                            '${selected.accArms}/20',
+                            '마법 명중 (Acc Magic)',
+                            '${selected.accMagic}/20',
+                          ),
+                          _buildStatRow(
+                            '마법 레벨 (Cast Lv)',
+                            '${selected.castLevel}',
+                            '초자연 레벨 (Special Cast)',
+                            '${selected.specialCastLevel}',
+                          ),
                           const SizedBox(height: 6),
                           Container(
                             padding: const EdgeInsets.all(6),
                             color: RetroTheme.background,
                             child: Row(
                               children: [
-                                Text('특수 공격: ', style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightCyan, fontSize: 10)),
+                                Text(
+                                  '특수 공격: ',
+                                  style: RetroTheme.dosFont.copyWith(
+                                    color: RetroTheme.lightCyan,
+                                    fontSize: 10,
+                                  ),
+                                ),
                                 Expanded(
                                   child: Text(
                                     _getSpecialDesc(selected.special),
                                     style: RetroTheme.dosFont.copyWith(
-                                      color: selected.special > 0 ? RetroTheme.lightRed : RetroTheme.lightGray,
+                                      color: selected.special > 0
+                                          ? RetroTheme.lightRed
+                                          : RetroTheme.lightGray,
                                       fontSize: 10,
-                                      fontWeight: selected.special > 0 ? FontWeight.bold : FontWeight.normal,
+                                      fontWeight: selected.special > 0
+                                          ? FontWeight.bold
+                                          : FontWeight.normal,
                                     ),
                                   ),
                                 ),
@@ -226,17 +290,26 @@ class _MonsterBestiaryDialogState extends State<MonsterBestiaryDialog> {
               children: [
                 Text(
                   '총 ${_allMonsters.length}종 수록 (1993 문동욱 원작 발굴 복원)',
-                  style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGray, fontSize: 10),
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.lightGray,
+                    fontSize: 10,
+                  ),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: RetroTheme.background,
                     foregroundColor: RetroTheme.yellow,
                     side: const BorderSide(color: RetroTheme.borderColor),
-                    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 14,
+                      vertical: 4,
+                    ),
                   ),
                   onPressed: () => Navigator.of(context).pop(),
-                  child: Text('닫기 [ESC]', style: RetroTheme.dosFont.copyWith(fontSize: 11)),
+                  child: Text(
+                    '닫기 [ESC]',
+                    style: RetroTheme.dosFont.copyWith(fontSize: 11),
+                  ),
                 ),
               ],
             ),
@@ -253,11 +326,23 @@ class _MonsterBestiaryDialogState extends State<MonsterBestiaryDialog> {
         children: [
           Expanded(
             flex: 5,
-            child: Text('$label1: $val1', style: RetroTheme.dosFont.copyWith(fontSize: 10, color: RetroTheme.white)),
+            child: Text(
+              '$label1: $val1',
+              style: RetroTheme.dosFont.copyWith(
+                fontSize: 10,
+                color: RetroTheme.white,
+              ),
+            ),
           ),
           Expanded(
             flex: 5,
-            child: Text('$label2: $val2', style: RetroTheme.dosFont.copyWith(fontSize: 10, color: RetroTheme.lightCyan)),
+            child: Text(
+              '$label2: $val2',
+              style: RetroTheme.dosFont.copyWith(
+                fontSize: 10,
+                color: RetroTheme.lightCyan,
+              ),
+            ),
           ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 
 /// 90년대 도스 게임 특유의 각진 테두리와 타이틀 바를 지원하는 레트로 패널
@@ -45,10 +46,7 @@ class RetroBox extends StatelessWidget {
               ),
             ),
           Expanded(
-            child: Padding(
-              padding: padding,
-              child: child,
-            ),
+            child: Padding(padding: padding, child: child),
           ),
         ],
       ),

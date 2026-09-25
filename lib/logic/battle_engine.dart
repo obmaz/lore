@@ -2,7 +2,7 @@ import 'dart:math';
 
 import '../models/party_member.dart';
 import '../models/monster.dart';
-import '../models/spell.dart';
+import '../data/lore_data.dart';
 
 enum AttackOutcome {
   hit,
@@ -144,7 +144,7 @@ class BattleEngine {
       );
     }
 
-    final spell = Spell.getById(magicIndex);
+    final spell = LoreData.instance.spell(magicIndex);
     final reqSp = spell.calculateSpCost(attacker.magicLevel);
 
     if (attacker.sp < reqSp) {
@@ -230,7 +230,7 @@ class BattleEngine {
     List<Monster> enemies,
     int magicIndex, // 7 ~ 12
   ) {
-    final spell = Spell.getById(magicIndex);
+    final spell = LoreData.instance.spell(magicIndex);
     final reqSp = spell.calculateSpCost(attacker.magicLevel);
 
     if (attacker.sp < reqSp) {
@@ -346,7 +346,7 @@ class BattleEngine {
       );
     }
 
-    final spell = Spell.getById(debuffIndex);
+    final spell = LoreData.instance.spell(debuffIndex);
     final reqSp = spell.calculateSpCost(attacker.magicLevel);
 
     if (attacker.sp < reqSp) {
@@ -499,7 +499,7 @@ class BattleEngine {
     PartyMember target,
     int spellId,
   ) {
-    final spell = Spell.getById(spellId);
+    final spell = LoreData.instance.spell(spellId);
     final reqSp = spell.calculateSpCost(caster.magicLevel);
 
     if (caster.sp < reqSp) {
@@ -587,7 +587,7 @@ class BattleEngine {
     int espId,
     List<PartyMember> party,
   ) {
-    final spell = Spell.getById(espId);
+    final spell = LoreData.instance.spell(espId);
     final reqEsp = spell.calculateSpCost(caster.espLevel);
 
     if (caster.esp < reqEsp) {

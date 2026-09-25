@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 import 'retro_box.dart';
 
@@ -20,7 +21,8 @@ class ViewportView extends StatelessWidget {
       borderColor: RetroTheme.lightBlue,
       backgroundColor: RetroTheme.viewportBg,
       padding: EdgeInsets.zero,
-      child: content ??
+      child:
+          content ??
           Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

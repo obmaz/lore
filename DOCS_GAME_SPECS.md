@@ -473,3 +473,66 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 4. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
    아니므로 이식 대상에서 제외한다.
 
+---
+
+## 8. 현대적 구조: JSON 데이터 & 이미지 에셋
+
+게임 데이터를 코드에서 분리해 JSON/이미지 파일로 관리한다. **파일이 없거나 파싱에
+실패하면 코드에 내장된 원작 테이블로 자동 폴백**하므로 어떤 경우에도 게임은 동작한다.
+
+### 8.1 데이터 파일 (`assets/data/`)
+| 파일 | 내용 | 로더 |
+| :--- | :--- | :--- |
+| `monsters.json` | 원작 FOEDATA 75종 템플릿 | `LoreData.instance.monster(id)` |
+| `items.json` | 무기 10 / 방패 6 / 갑옷 6 (위력·가격) | `LoreData.instance.weapon/shield/armor(id)` |
+| `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
+| `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
+| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 | `LoreScriptEngine.instance` |
+
+`LoreData` / `LoreScriptEngine`은 `main()`에서 한 번 로드한다.
+
+### 8.2 스크립트 스키마 (`scripts.json`)
+```json
+{
+  "id": "rigel-join", "trigger": "talk", "map": 12, "x": 12, "y": 48, "once": true,
+  "require": { "flag": "metPyramidSage", "flagNot": "rigelJoined",
+               "mindRead": true, "minEspLevel": 5 },
+  "steps": [
+    { "say": "대사" },
+    { "gold": 5000 }, { "food": -5 }, { "flag": "rigelJoined" },
+    { "join": "rigel", "slot": 4 },
+    { "battle": { "title": "미이라의 방", "monsters": [26, 8, 8] } },
+    { "choice": { "prompt": "?", "options": [
+        { "text": "예", "steps": [ { "join": "rigel" } ] },
+        { "text": "아니오", "steps": [ { "say": "..." } ] } ] } }
+  ]
+}
+```
+* `trigger`: `step`(좌표 진입) / `talk`(NPC 접촉)
+* `once`: 1회성. 실행 이력은 `LoreScriptEngine.consumedScripts`에 남는다.
+* `require`: `flag` / `flagNot` / `mindRead`(독심술 사용 가능) / `minEspLevel` /
+  `notMindReadOrLowEsp`(조건 미충족 안내용)
+* `join` 키: `mad_joe`, `polaris`, `rigel`, `red_antares`, `spica`, `lore_hunter`
+
+### 8.3 이미지 에셋 (`assets/images/`)
+| 파일 | 내용 |
+| :--- | :--- |
+| `chara.png` | CHARA.FNT 스프라이트 56개 (20×20, 배경 투명) |
+| `town.png` / `ground.png` / `den.png` / `keep.png` | 타일 스프라이트 56개 (배경 불투명) |
+| `manifest.json` | 타일 크기와 폰트별 파일/개수 |
+
+* 렌더링 우선순위: **PNG 스프라이트 시트 → FNT 디코더 → 벡터 도형**.
+* 이미지 교체만으로 그래픽을 바꿀 수 있다(도트 크기 20×20 유지 시 코드 수정 불필요).
+
+### 8.4 데이터/이미지 재생성 도구
+```sh
+# 코드에 내장된 원작 테이블 → JSON
+flutter test test/tools/export_data_test.dart --dart-define=EXPORT_DATA=true
+
+# 원작 .FNT → PNG 스프라이트 시트
+flutter test test/tools/export_images_test.dart --dart-define=EXPORT_IMAGES=true
+```
+* 원작 소스 감사: `python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS`
+* 원작 한글 문자열 디코딩: `python3 tool/dec_johab.py <PAS파일> <시작Proc> [끝Proc]`
+
+

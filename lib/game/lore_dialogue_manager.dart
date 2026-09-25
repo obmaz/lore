@@ -223,6 +223,56 @@ class LoreDialogueManager {
 
   void loadFlags(Map<String, dynamic> flags) => loadSaveFlags(flags);
 
+  /// JSON 스크립트(`{"flag": "이름"}`)로 플래그를 설정한다.
+  ///
+  /// 알 수 없는 이름은 무시한다(오타로 게임이 멈추지 않도록).
+  void setFlag(String name, [bool value = true]) {
+    switch (name) {
+      case 'metLordAhn':
+        metLordAhn = value;
+      case 'castleGateOpen':
+        castleGateOpen = value;
+      case 'jrAntaresSecretFound':
+        jrAntaresSecretFound = value;
+      case 'metPyramidSage':
+        metPyramidSage = value;
+      case 'polarisJoined':
+        polarisJoined = value;
+      case 'hasWaterKey':
+        hasWaterKey = value;
+      case 'hasSwampKey':
+        hasSwampKey = value;
+      case 'loreHunterJoined':
+        loreHunterJoined = value;
+      case 'bossMajorMummyDefeated':
+        bossMajorMummyDefeated = value;
+      case 'goldenSealFound':
+        goldenSealFound = value;
+      case 'bossArchiGagoyleDefeated':
+        bossArchiGagoyleDefeated = value;
+      case 'bossHidraDefeated':
+        bossHidraDefeated = value;
+      case 'bossHugeDragonDefeated':
+        bossHugeDragonDefeated = value;
+      case 'bossNecromancerDefeated':
+        bossNecromancerDefeated = value;
+      case 'foodTreeHarvested':
+        foodTreeHarvested = value;
+      case 'draconianMet':
+        draconianMet = value;
+      case 'madJoeJoined':
+        madJoeJoined = value;
+      case 'rigelJoined':
+        rigelJoined = value;
+      case 'redAntaresJoined':
+        redAntaresJoined = value;
+      case 'spicaJoined':
+        spicaJoined = value;
+      case 'specialMagicLearned':
+        specialMagicLearned = value;
+    }
+  }
+
   // ==========================================
   // 원작 4대 성/마을(6, 7, 9, 10) 고유 대화 조회 (LORETALK.PAS)
   // ==========================================

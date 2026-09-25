@@ -1,8 +1,4 @@
-enum ItemType {
-  weapon,
-  shield,
-  armor,
-}
+enum ItemType { weapon, shield, armor }
 
 class Item {
   final int id;

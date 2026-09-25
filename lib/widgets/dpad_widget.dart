@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 
 /// 모바일 터치 및 마우스 클릭을 지원하는 레트로 십자키 (D-Pad) 위젯
 class DPadWidget extends StatelessWidget {
   final void Function(int dx, int dy) onDirectionPressed;
 
-  const DPadWidget({
-    super.key,
-    required this.onDirectionPressed,
-  });
+  const DPadWidget({super.key, required this.onDirectionPressed});
 
   Widget _buildButton(IconData icon, String label, int dx, int dy) {
     return Material(
@@ -24,11 +22,7 @@ class DPadWidget extends StatelessWidget {
             border: Border.all(color: RetroTheme.borderColor, width: 1.5),
             borderRadius: BorderRadius.circular(4),
           ),
-          child: Icon(
-            icon,
-            color: RetroTheme.lightCyan,
-            size: 20,
-          ),
+          child: Icon(icon, color: RetroTheme.lightCyan, size: 20),
         ),
       ),
     );

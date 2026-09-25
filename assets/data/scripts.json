@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "description": "원작 LORESPEC.PAS / LORETALK.PAS의 좌표 이벤트를 JSON 스크립트로 관리한다. step=좌표 진입 시, talk=NPC 대화 시 실행.",
+  "scripts": [
+    { "id": "gold-9-10-24",  "trigger": "step", "map": 9,  "x": 10, "y": 24, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-9-12-26",  "trigger": "step", "map": 9,  "x": 12, "y": 26, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-9-15-25",  "trigger": "step", "map": 9,  "x": 15, "y": 25, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-9-16-23",  "trigger": "step", "map": 9,  "x": 16, "y": 23, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-9-18-27",  "trigger": "step", "map": 9,  "x": 18, "y": 27, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-10-20-30", "trigger": "step", "map": 10, "x": 20, "y": 30, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-10-18-36", "trigger": "step", "map": 10, "x": 18, "y": 36, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-10-35-32", "trigger": "step", "map": 10, "x": 35, "y": 32, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-10-33-36", "trigger": "step", "map": 10, "x": 33, "y": 36, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-10-35-14", "trigger": "step", "map": 10, "x": 35, "y": 14, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-10-14-16", "trigger": "step", "map": 10, "x": 14, "y": 16, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-10-37-12", "trigger": "step", "map": 10, "x": 37, "y": 12, "once": true, "steps": [ { "gold": 5000 } ] },
+    { "id": "gold-14-6-6",   "trigger": "step", "map": 14, "x": 6,  "y": 6,  "once": true, "steps": [ { "gold": 1000 } ] },
+    { "id": "gold-14-18-10", "trigger": "step", "map": 14, "x": 18, "y": 10, "once": true, "steps": [ { "gold": 2500 } ] },
+    { "id": "gold-14-6-44",  "trigger": "step", "map": 14, "x": 6,  "y": 44, "once": true, "steps": [ { "gold": 400 } ] },
+    { "id": "gold-14-31-30", "trigger": "step", "map": 14, "x": 31, "y": 30, "once": true, "steps": [ { "gold": 600 } ] },
+    { "id": "gold-14-31-8",  "trigger": "step", "map": 14, "x": 31, "y": 8,  "once": true, "steps": [ { "gold": 1500 } ] },
+    { "id": "gold-14-14-28", "trigger": "step", "map": 14, "x": 14, "y": 28, "once": true, "steps": [ { "gold": 1000 } ] },
+
+    {
+      "id": "madjoe-join",
+      "trigger": "talk", "map": 6, "x": 40, "y": 15, "once": true,
+      "title": "지하 감옥의 남자",
+      "steps": [
+        { "say": "정체불명의 남자: \"히히히... 위대한 용사님. 낄낄낄.. 내가 당신들의 일행에 끼이면 안될까요 ? 우히히히..\"" },
+        {
+          "choice": {
+            "prompt": "그의 제안을 받아들이시겠습니까 ?",
+            "options": [
+              { "text": "그렇다면 당신을 받아들이지요", "steps": [ { "join": "mad_joe", "flag": "madJoeJoined", "slot": 4 } ] },
+              { "text": "당신은 이곳에 그냥 있는게 낫겠소", "steps": [ { "say": "Mad Joe: \"히히.. 그렇다면 어쩔수 없지요.\"" } ] }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "polaris-join",
+      "trigger": "talk", "map": 7, "x": 37, "y": 41, "once": true,
+      "steps": [
+        { "say": "전사 Polaris: \"나의 이름은 Polaris요. 당신들과 같이 PYRAMID의 Major Mummy를 물리치고 싶소!\"" },
+        {
+          "choice": {
+            "prompt": "Polaris를 일행으로 받아들이시겠습니까 ?",
+            "options": [
+              { "text": "일행으로 받아주시오", "steps": [ { "join": "polaris", "flag": "polarisJoined" } ] },
+              { "text": "지금은 함께할 수 없소", "steps": [ { "say": "Polaris: \"그렇다면 준비가 되면 다시 오시오.\"" } ] }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "rigel-join",
+      "trigger": "talk", "map": 12, "x": 12, "y": 48, "once": true,
+      "steps": [
+        { "say": "일행들은 심한 부상 때문에 거의 몸을 가누지 못하는 한 남자와 마주쳤다." },
+        { "say": "Rigel: \"나는 VALIANT PEOPLES의 용사였던 Rigel이오. 나는 이제 너무 지치고 많은 상처를 입어서 혼자 힘으로는 이곳을 빠져 나갈수가 없소. 나를 도와 주시오.\"" },
+        {
+          "choice": {
+            "prompt": "어떻게 하시겠습니까 ?",
+            "options": [
+              { "text": "좋소, 같이 모험을 합시다", "steps": [ { "join": "rigel", "flag": "rigelJoined" } ] },
+              { "text": "식량과 치료는 해결해 주겠소", "steps": [ { "food": -5 }, { "say": "일행은 식량을 나누고 상처를 돌봐주었다." }, { "join": "rigel", "flag": "rigelJoined" } ] },
+              { "text": "당신을 도와줄 시간이 없소", "steps": [ { "say": "Rigel: \"...그렇다면 어쩔수 없군.\"" } ] }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "redantares-teach",
+      "trigger": "talk", "map": 17, "x": 75, "y": 52, "once": true,
+      "require": { "flagNot": "specialMagicLearned" },
+      "title": "용암 속의 영혼",
+      "steps": [
+        { "say": "갑자기 주위가 용암으로 변하면서 한 영혼이 당신앞에 나타났다." },
+        { "say": "Red Antares: \"나는 고대의 강력한 마법사였던 Red Antares의 영혼이오. 당신들을 위해 나의 마법중 '간접 공격'이란 기법을 전해 주겠소.\"" },
+        { "say": "1. 독 - 적을 중독 시킴 / 2. 기술 무력화 - 적의 특수 공격 능력 제거 / 3. 방어 무력화 - 적의 방어력 감소 / 4. 능력 저하 - 적의 모든 능력 감소 / 5. 마법 불능 - 적의 마법 능력 제거 / 6. 탈초인화 - 적의 초자연력 제거" },
+        { "flag": "specialMagicLearned" },
+        { "say": "★ 이제 전투에서 특수 마법(4번 항목)을 사용할 수 있습니다!" }
+      ]
+    },
+    {
+      "id": "redantares-join",
+      "trigger": "talk", "map": 17, "x": 75, "y": 52, "once": true,
+      "require": { "flag": "specialMagicLearned" },
+      "steps": [
+        { "say": "Red Antares: \"당신들의 결의를 보았소. 내 영혼이 당신들의 마법을 돕겠소.\"" },
+        {
+          "choice": {
+            "prompt": "Red Antares의 영혼을 일행으로 맞이하시겠습니까 ?",
+            "options": [
+              { "text": "함께 싸워 주시오", "steps": [ { "join": "red_antares", "flag": "redAntaresJoined" } ] },
+              { "text": "고맙지만 사양하겠소", "steps": [ { "say": "Red Antares: \"...그러시오.\"" } ] }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "spica-join",
+      "trigger": "talk", "map": 18, "x": 37, "y": 31, "once": true,
+      "require": { "mindRead": true, "minEspLevel": 5 },
+      "steps": [
+        { "say": "갑자기 Necromancer에게 대항 하고픈 결의가 생기는 군요." },
+        { "say": "Spica: \"나도 당신들을 도와 그를 무찌르겠습니다.\"" },
+        {
+          "choice": {
+            "prompt": "Spica를 일행으로 받아들이시겠습니까 ?",
+            "options": [
+              { "text": "저도 원했던 바입니다", "steps": [ { "join": "spica", "flag": "spicaJoined" } ] },
+              { "text": "말씀은 고맙지만 사양하겠습니다", "steps": [ { "say": "Spica: \"...알겠습니다.\"" } ] }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "spica-cannot-read",
+      "trigger": "talk", "map": 18, "x": 37, "y": 31, "once": false,
+      "require": { "notMindReadOrLowEsp": true },
+      "steps": [
+        { "say": "Spica: \"당신이 나의 마음을 읽으려 하지만 아직 당신의 능력으로는 나의 마음을 끌어낼수는 없습니다.\"" },
+        { "say": "(원작 조건: 독심술(ESP) 사용 가능 상태에서 파티 최고 초능력 레벨 5 이상)" }
+      ]
+    }
+  ]
+}

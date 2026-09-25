@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/models/monster.dart';
@@ -34,7 +35,10 @@ void main() {
 
       // Orc (eNumber: 1, Level: 1, AC: 1)
       final orc = Monster.create(1);
-      expect(engine.calculateExperience(orc), equals(1)); // 1^3 / 8 = 0 -> min 1
+      expect(
+        engine.calculateExperience(orc),
+        equals(1),
+      ); // 1^3 / 8 = 0 -> min 1
 
       // Imp (eNumber: 9, Level: 3, AC: 2)
       final imp = Monster.create(9);
@@ -60,7 +64,9 @@ void main() {
       final mockRandom = DeterministicRandom([0, 0, 99, 0]);
       final engine = BattleEngine(random: mockRandom);
 
-      final hero = PartyMember.createPreset(1); // Hercules: strength=17, accArms=15, level=1, weaPower=3 (기사 기본)
+      final hero = PartyMember.createPreset(
+        1,
+      ); // Hercules: strength=17, accArms=15, level=1, weaPower=3 (기사 기본)
       hero.equipWeapon(Item.weapons[4]); // 장검 (power 10 + 기사 보너스 50% = 15)
       expect(hero.weaPower, equals(15));
 
@@ -74,7 +80,10 @@ void main() {
       // Final Damage = 12 - 0 = 12
       final result = engine.executePlayerWeaponAttack(hero, orc);
 
-      expect(result.outcome, equals(AttackOutcome.unconscious)); // 체력 8인데 12 대미지 -> 기절
+      expect(
+        result.outcome,
+        equals(AttackOutcome.unconscious),
+      ); // 체력 8인데 12 대미지 -> 기절
       expect(result.damage, equals(12));
       expect(orc.hp, equals(0));
       expect(orc.isUnconscious, isTrue);
@@ -101,8 +110,12 @@ void main() {
       final mockRandom = DeterministicRandom([0, 99, 0]);
       final engine = BattleEngine(random: mockRandom);
 
-      final mage = PartyMember.createPreset(3); // Merlin: mentality=19, accMagic=18, magicLevel=1, SP=19
-      final troll = Monster.create(2); // Troll: HP=6, AC=1, Level=1, Resistance=0
+      final mage = PartyMember.createPreset(
+        3,
+      ); // Merlin: mentality=19, accMagic=18, magicLevel=1, SP=19
+      final troll = Monster.create(
+        2,
+      ); // Troll: HP=6, AC=1, Level=1, Resistance=0
 
       // 1번 마법 시전 (magicIndex=1)
       // SP 소모: round(1 * 1 * 1 / 2) = round(0.5) = 1
@@ -125,7 +138,9 @@ void main() {
 
       final giant = Monster.create(6); // Giant: Strength=15, Level=2, accArms=8
       // Enemy Base Dmg = 15 * 2 * 10 / 10 = 30
-      final hero = PartyMember.createPreset(1); // Hercules: endurance=17, level=1, AC=1 (기사 기본)
+      final hero = PartyMember.createPreset(
+        1,
+      ); // Hercules: endurance=17, level=1, AC=1 (기사 기본)
       hero.hp = 10;
 
       // 1차 피격: HP 10 -> 0 이하로 떨어져 기절(unconscious = 1)

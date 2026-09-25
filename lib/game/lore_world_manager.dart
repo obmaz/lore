@@ -265,46 +265,96 @@ class LoreWorldManager {
     // 1. GROUND1 (맵 1) 에서 진입
     if (currentMapId == 1) {
       if (x == 20 && y == 11) {
-        return const PortalInfo(targetMapId: 6, targetX: 51, targetY: 95, name: 'CASTLE LORE');
+        return const PortalInfo(
+          targetMapId: 6,
+          targetX: 51,
+          targetY: 95,
+          name: 'CASTLE LORE',
+        );
       }
       if (x == 76 && y == 57) {
-        return const PortalInfo(targetMapId: 7, targetX: 37, targetY: 70, name: 'LASTDITCH');
+        return const PortalInfo(
+          targetMapId: 7,
+          targetX: 37,
+          targetY: 70,
+          name: 'LASTDITCH',
+        );
       }
       if (x == 17 && y == 89) {
-        return const PortalInfo(targetMapId: 14, targetX: 25, targetY: 45, name: 'MENACE');
+        return const PortalInfo(
+          targetMapId: 14,
+          targetX: 25,
+          targetY: 45,
+          name: 'MENACE',
+        );
       }
       if (x == 20 && y == 6) {
-        return const PortalInfo(targetMapId: 27, targetX: 15, targetY: 45, name: 'ANOTHER LORE');
+        return const PortalInfo(
+          targetMapId: 27,
+          targetX: 15,
+          targetY: 45,
+          name: 'ANOTHER LORE',
+        );
       }
     }
 
     // 2. CASTLE LORE 성 (맵 6) 성문 -> 필드(GROUND1)로 출구
     if (currentMapId == 6) {
       if (y >= 96 || (x == 51 && y == 96)) {
-        return const PortalInfo(targetMapId: 1, targetX: 20, targetY: 12, name: 'GROUND FIELD');
+        return const PortalInfo(
+          targetMapId: 1,
+          targetX: 20,
+          targetY: 12,
+          name: 'GROUND FIELD',
+        );
       }
     }
 
     // 3. LASTDITCH (맵 7) -> 출구
     if (currentMapId == 7) {
       if (y >= 71) {
-        return const PortalInfo(targetMapId: 1, targetX: 76, targetY: 58, name: 'GROUND FIELD');
+        return const PortalInfo(
+          targetMapId: 1,
+          targetX: 76,
+          targetY: 58,
+          name: 'GROUND FIELD',
+        );
       }
     }
 
     // 4. GROUND2 (맵 2) 에서 진입
     if (currentMapId == 2) {
       if (x == 19 && y == 26) {
-        return const PortalInfo(targetMapId: 8, targetX: 38, targetY: 70, name: 'VALIANT PEOPLES');
+        return const PortalInfo(
+          targetMapId: 8,
+          targetX: 38,
+          targetY: 70,
+          name: 'VALIANT PEOPLES',
+        );
       }
       if (x == 31 && y == 82) {
-        return const PortalInfo(targetMapId: 9, targetX: 26, targetY: 45, name: 'GAIA TERRA');
+        return const PortalInfo(
+          targetMapId: 9,
+          targetX: 26,
+          targetY: 45,
+          name: 'GAIA TERRA',
+        );
       }
       if (x == 82 && y == 47) {
-        return const PortalInfo(targetMapId: 15, targetX: 25, targetY: 70, name: 'QUAKE');
+        return const PortalInfo(
+          targetMapId: 15,
+          targetX: 25,
+          targetY: 70,
+          name: 'QUAKE',
+        );
       }
       if (x == 44 && y == 7) {
-        return const PortalInfo(targetMapId: 16, targetX: 20, targetY: 35, name: 'WIVERN');
+        return const PortalInfo(
+          targetMapId: 16,
+          targetX: 20,
+          targetY: 35,
+          name: 'WIVERN',
+        );
       }
     }
 

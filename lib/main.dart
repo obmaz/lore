@@ -1,18 +1,31 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'data/lore_data.dart';
+import 'data/lore_script.dart';
 import 'models/party_member.dart';
 import 'services/save_manager.dart';
+import 'game/sprite_sheet.dart';
 import 'screens/character_creation_screen.dart';
 import 'screens/main_game_screen.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // 가로 모드 (Landscape) 고정 지원
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
     DeviceOrientation.landscapeRight,
   ]);
+
+  // 원작 데이터(몬스터/아이템/마법/맵)를 JSON에서 로드한다.
+  // 실패하면 코드 내장 테이블로 자동 폴백하므로 게임은 항상 동작한다.
+  await LoreData.instance.load();
+  // 좌표 이벤트/NPC 대화 스크립트(assets/data/scripts.json)도 함께 로드한다.
+  await LoreScriptEngine.instance.load();
+  // 이미지 파일(PNG) 스프라이트 시트를 로드한다. 없으면 FNT 디코더로 폴백한다.
+  await SpriteLibrary.instance.load();
 
   runApp(const LoreApp());
 }
