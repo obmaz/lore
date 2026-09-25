@@ -102,30 +102,33 @@ void main() {
       expect(dialogue.gaiaQuestStep, 3);
     });
 
-    test('4. 맵 10 (WATER FIELD) 성주 퀘스트: Hidra & Huge Dragon 및 Lore Hunter 영입 검증', () {
-      // 1) 특공대장 Lore Hunter 영입
-      final hunterTalk = dialogue.getDialogue(10, 40, 56, hero.name);
-      expect(hunterTalk, contains('Lore Hunter'));
-      expect(dialogue.loreHunterJoined, isTrue);
+    test(
+      '4. 맵 10 (WATER FIELD) 성주 퀘스트: Hidra & Huge Dragon 및 Lore Hunter 영입 검증',
+      () {
+        // 1) 특공대장 Lore Hunter 영입
+        final hunterTalk = dialogue.getDialogue(10, 40, 56, hero.name);
+        expect(hunterTalk, contains('Lore Hunter'));
+        expect(dialogue.loreHunterJoined, isTrue);
 
-      // 2) 성주 첫 대면: NOTICE 동굴의 Hidra 처단 의뢰
-      final wQuest1 = dialogue.getDialogue(10, 25, 18, hero.name);
-      expect(wQuest1, contains('Hidra'));
-      expect(dialogue.waterFieldQuestStep, 1);
+        // 2) 성주 첫 대면: NOTICE 동굴의 Hidra 처단 의뢰
+        final wQuest1 = dialogue.getDialogue(10, 25, 18, hero.name);
+        expect(wQuest1, contains('Hidra'));
+        expect(dialogue.waterFieldQuestStep, 1);
 
-      // 3) Hidra 격퇴 후 보고: Huge Dragon 처단 의뢰
-      dialogue.bossHidraDefeated = true;
-      final wQuest2 = dialogue.getDialogue(10, 25, 18, hero.name);
-      expect(wQuest2, contains('Huge Dragon'));
-      expect(dialogue.waterFieldQuestStep, 2);
+        // 3) Hidra 격퇴 후 보고: Huge Dragon 처단 의뢰
+        dialogue.bossHidraDefeated = true;
+        final wQuest2 = dialogue.getDialogue(10, 25, 18, hero.name);
+        expect(wQuest2, contains('Huge Dragon'));
+        expect(dialogue.waterFieldQuestStep, 2);
 
-      // 4) Huge Dragon 격퇴 후 보고: Swamp Key 획득
-      dialogue.bossHugeDragonDefeated = true;
-      final wQuest3 = dialogue.getDialogue(10, 25, 18, hero.name);
-      expect(wQuest3, contains('Swamp Key'));
-      expect(dialogue.hasSwampKey, isTrue);
-      expect(dialogue.waterFieldQuestStep, 3);
-    });
+        // 4) Huge Dragon 격퇴 후 보고: Swamp Key 획득
+        dialogue.bossHugeDragonDefeated = true;
+        final wQuest3 = dialogue.getDialogue(10, 25, 18, hero.name);
+        expect(wQuest3, contains('Swamp Key'));
+        expect(dialogue.hasSwampKey, isTrue);
+        expect(dialogue.waterFieldQuestStep, 3);
+      },
+    );
 
     test('5. 던전 및 필드 특수 이벤트 (식량 나무, Draconian, 황금봉인, 보스전) 검증', () {
       // 1) 맵 1 식량 나무 (94, 68)

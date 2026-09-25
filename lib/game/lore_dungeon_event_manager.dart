@@ -32,14 +32,20 @@ class DungeonEventResult {
 
 /// 1993년 원작 LORESPEC.PAS 기반 던전 및 필드 특수 이벤트 엔진
 class LoreDungeonEventManager {
-  static final LoreDungeonEventManager instance = LoreDungeonEventManager._internal();
+  static final LoreDungeonEventManager instance =
+      LoreDungeonEventManager._internal();
   factory LoreDungeonEventManager() => instance;
   LoreDungeonEventManager._internal();
 
   final LoreDialogueManager _dialogue = LoreDialogueManager.instance;
 
   /// 던전/필드 좌표 인터랙션 검사 및 이벤트 실행
-  DungeonEventResult? checkEvent(int mapId, int tx, int ty, List<PartyMember> party) {
+  DungeonEventResult? checkEvent(
+    int mapId,
+    int tx,
+    int ty,
+    List<PartyMember> party,
+  ) {
     // ------------------------------------------
     // 1. 맵 1 (지상 필드): 100인분 식량 나무 (LORESPEC.PAS:28)
     // ------------------------------------------
@@ -124,7 +130,8 @@ class LoreDungeonEventManager {
         return const DungeonEventResult(
           type: DungeonEventType.sealBroken,
           title: '지하 신전 제단',
-          message: '★ 당신은 눈부신 빛을 발하는 [황금의 봉인]을 찾았다! 대륙을 옭아매던 고대의 사악한 주술이 해제되었다!',
+          message:
+              '★ 당신은 눈부신 빛을 발하는 [황금의 봉인]을 찾았다! 대륙을 옭아매던 고대의 사악한 주술이 해제되었다!',
         );
       }
     }
@@ -255,7 +262,8 @@ class LoreDungeonEventManager {
         return DungeonEventResult(
           type: DungeonEventType.bossBattle,
           title: '용의 거처',
-          message: '당신은 여기가 Huge Dragon의 거처임을 느꼈다! 붉은 화염을 내뿜는 거룡이 대지를 흔들며 내려앉았다!',
+          message:
+              '당신은 여기가 Huge Dragon의 거처임을 느꼈다! 붉은 화염을 내뿜는 거룡이 대지를 흔들며 내려앉았다!',
           bossEnemies: [dragon],
         );
       }

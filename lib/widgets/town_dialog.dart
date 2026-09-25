@@ -9,7 +9,8 @@ import '../game/lore_dialogue_manager.dart';
 class TownDialog extends StatefulWidget {
   final List<PartyMember> party;
   final int gold;
-  final int mapId; // 6: CASTLE LORE, 7: LASTDITCH, 9: GAIA TERRA, 10: WATER FIELD
+  final int
+  mapId; // 6: CASTLE LORE, 7: LASTDITCH, 9: GAIA TERRA, 10: WATER FIELD
   final void Function(int newGold) onGoldChanged;
   final void Function(String message) onLog;
 
@@ -32,11 +33,16 @@ class _TownDialogState extends State<TownDialog> {
 
   String get townName {
     switch (widget.mapId) {
-      case 6: return '성전의 도읍 : CASTLE LORE';
-      case 7: return '결사항전의 요새 : LASTDITCH';
-      case 9: return '영광의 성채 : GAIA TERRA (VALIANT PEOPLES)';
-      case 10: return '수몰 대륙의 마지막 왕국 : WATER FIELD';
-      default: return '미지의 성채';
+      case 6:
+        return '성전의 도읍 : CASTLE LORE';
+      case 7:
+        return '결사항전의 요새 : LASTDITCH';
+      case 9:
+        return '영광의 성채 : GAIA TERRA (VALIANT PEOPLES)';
+      case 10:
+        return '수몰 대륙의 마지막 왕국 : WATER FIELD';
+      default:
+        return '미지의 성채';
     }
   }
 
@@ -103,32 +109,88 @@ class _TownDialogState extends State<TownDialog> {
     switch (widget.mapId) {
       case 7:
         return [
-          {'name': 'LASTDITCH 성주', 'talk': dialogue.lastditchQuestStep >= 2 ? 'Major Mummy를 처치하셨군요! 북동쪽 GROUND GATE를 통해 다음 대륙으로 나아가시오!' : '북쪽 동굴 PYRAMID의 보스 Major Mummy를 처단해 주시오!'},
+          {
+            'name': 'LASTDITCH 성주',
+            'talk': dialogue.lastditchQuestStep >= 2
+                ? 'Major Mummy를 처치하셨군요! 북동쪽 GROUND GATE를 통해 다음 대륙으로 나아가시오!'
+                : '북쪽 동굴 PYRAMID의 보스 Major Mummy를 처단해 주시오!',
+          },
           {'name': '전사 Polaris', 'talk': '나의 이름은 Polaris요. 당신들과 같이 전장에 서고 싶소!'},
-          {'name': '노병', 'talk': 'Major Mummy와 두 마리의 Sphinx의 공격은 가히 치명적이오. 단단히 대비하시오.'},
-          {'name': '탐험가', 'talk': 'GROUND GATE는 여기로부터 서쪽에 나타나며, 다른 대륙으로 인도해 줍니다.'},
+          {
+            'name': '노병',
+            'talk': 'Major Mummy와 두 마리의 Sphinx의 공격은 가히 치명적이오. 단단히 대비하시오.',
+          },
+          {
+            'name': '탐험가',
+            'talk': 'GROUND GATE는 여기로부터 서쪽에 나타나며, 다른 대륙으로 인도해 줍니다.',
+          },
         ];
       case 9:
         return [
-          {'name': 'GAIA TERRA 성주', 'talk': dialogue.gaiaQuestStep >= 3 ? 'ArchiGagoyle을 물리치셨군요! Water Key로 WIVERN 동굴을 열어 다음 대륙으로 가시오!' : (dialogue.gaiaQuestStep >= 1 ? '지하의 EVIL SEAL로 가서 황금의 봉인을 찾으시오!' : 'VALIANT PEOPLES 성을 파괴한 적들의 음모를 저지해 주시오!')},
-          {'name': '사냥꾼', 'talk': '최대의 사냥꾼 Rigel은 성을 파괴시킨 적들을 물리치기 위해 EVIL SEAL로 들어갔습니다.'},
-          {'name': '경비병', 'talk': 'SWAMP 대륙으로 통하는 문에는 불멸에 가까운 고르곤 세자매가 살고 있습니다.'},
+          {
+            'name': 'GAIA TERRA 성주',
+            'talk': dialogue.gaiaQuestStep >= 3
+                ? 'ArchiGagoyle을 물리치셨군요! Water Key로 WIVERN 동굴을 열어 다음 대륙으로 가시오!'
+                : (dialogue.gaiaQuestStep >= 1
+                      ? '지하의 EVIL SEAL로 가서 황금의 봉인을 찾으시오!'
+                      : 'VALIANT PEOPLES 성을 파괴한 적들의 음모를 저지해 주시오!'),
+          },
+          {
+            'name': '사냥꾼',
+            'talk': '최대의 사냥꾼 Rigel은 성을 파괴시킨 적들을 물리치기 위해 EVIL SEAL로 들어갔습니다.',
+          },
+          {
+            'name': '경비병',
+            'talk': 'SWAMP 대륙으로 통하는 문에는 불멸에 가까운 고르곤 세자매가 살고 있습니다.',
+          },
           {'name': '학자', 'talk': '황금의 갑옷이 QUAKE 동굴 안에 숨겨져 있다는 소문이 있습니다.'},
         ];
       case 10:
         return [
-          {'name': 'WATER FIELD 성주', 'talk': dialogue.waterFieldQuestStep >= 3 ? 'Huge Dragon을 처단하고 Swamp Key를 얻으셨군요! 늪의 대륙으로 진격하시오!' : 'NOTICE 동굴의 Hidra와 LOCKUP 동굴의 거룡 Huge Dragon을 처단해 주시오!'},
-          {'name': '특공대장 Lore Hunter', 'talk': '나는 LORE 특공대장 Lore Hunter요! 새로운 영웅들과 함께 Necromancer의 목을 베러 가겠소!'},
-          {'name': '탐험가', 'talk': 'NOTICE 동굴은 혼란스러운 미로이며 삼두룡 Hidra가 도사리고 있습니다.'},
-          {'name': '노인', 'talk': 'LOCKUP의 Huge Dragon은 거대한 불꽃과 꼬리로 침입자를 짓밟습니다.'},
+          {
+            'name': 'WATER FIELD 성주',
+            'talk': dialogue.waterFieldQuestStep >= 3
+                ? 'Huge Dragon을 처단하고 Swamp Key를 얻으셨군요! 늪의 대륙으로 진격하시오!'
+                : 'NOTICE 동굴의 Hidra와 LOCKUP 동굴의 거룡 Huge Dragon을 처단해 주시오!',
+          },
+          {
+            'name': '특공대장 Lore Hunter',
+            'talk': '나는 LORE 특공대장 Lore Hunter요! 새로운 영웅들과 함께 Necromancer의 목을 베러 가겠소!',
+          },
+          {
+            'name': '탐험가',
+            'talk': 'NOTICE 동굴은 혼란스러운 미로이며 삼두룡 Hidra가 도사리고 있습니다.',
+          },
+          {
+            'name': '노인',
+            'talk': 'LOCKUP의 Huge Dragon은 거대한 불꽃과 꼬리로 침입자를 짓밟습니다.',
+          },
         ];
       default: // 6: CASTLE LORE
         return [
-          {'name': '성주 Lord Ahn', 'talk': dialogue.castleGateOpen ? '남쪽 성문을 개방했으니 광활한 LORE 대륙으로 나아가 Necromancer를 응징해주게!' : '용사들이여, 그대들의 결의를 보았다. 대륙의 평화를 위해 싸워주게!'},
-          {'name': 'Jr. Antares의 영혼', 'talk': '나의 아버지는 최강의 마법사 Red Antares였소! 동굴로 은신한 아버지를 찾아 동료로 삼으시오!'},
-          {'name': '현자', 'talk': 'Necromancer에 대항하고자 한다면 바로 위의 피라밋에 가보시오. 또 다른 지식의 성전이기 때문이오.'},
-          {'name': '경비병', 'talk': '모험 중 마주칠 Serpent와 Insects와 Python은 치명적인 맹독을 품고 있으니 주의하시오.'},
-          {'name': '성전 기록관', 'talk': '이 세계의 창시자는 문동욱 님이시며, 그는 위대한 1993년의 프로그래머입니다.'},
+          {
+            'name': '성주 Lord Ahn',
+            'talk': dialogue.castleGateOpen
+                ? '남쪽 성문을 개방했으니 광활한 LORE 대륙으로 나아가 Necromancer를 응징해주게!'
+                : '용사들이여, 그대들의 결의를 보았다. 대륙의 평화를 위해 싸워주게!',
+          },
+          {
+            'name': 'Jr. Antares의 영혼',
+            'talk': '나의 아버지는 최강의 마법사 Red Antares였소! 동굴로 은신한 아버지를 찾아 동료로 삼으시오!',
+          },
+          {
+            'name': '현자',
+            'talk':
+                'Necromancer에 대항하고자 한다면 바로 위의 피라밋에 가보시오. 또 다른 지식의 성전이기 때문이오.',
+          },
+          {
+            'name': '경비병',
+            'talk': '모험 중 마주칠 Serpent와 Insects와 Python은 치명적인 맹독을 품고 있으니 주의하시오.',
+          },
+          {
+            'name': '성전 기록관',
+            'talk': '이 세계의 창시자는 문동욱 님이시며, 그는 위대한 1993년의 프로그래머입니다.',
+          },
         ];
     }
   }
