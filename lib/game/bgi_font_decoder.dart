@@ -9,22 +9,22 @@ class BgiFontDecoder {
 
   // DOS VGA 16-Color Standard Palette (ARGB)
   static const List<Color> vgaPalette = [
-    Colors.transparent,       // 0: Black (스프라이트에서는 배경 투명 처리)
-    Color(0xFF0000AA),        // 1: Blue (원작 머리색/어두운 톤)
-    Color(0xFF00AA00),        // 2: Green
-    Color(0xFF00AAAA),        // 3: Cyan
-    Color(0xFFAA0000),        // 4: Red
-    Color(0xFFAA00AA),        // 5: Magenta
-    Color(0xFFAA5500),        // 6: Brown (피부/살구색 톤)
-    Color(0xFFAAAAAA),        // 7: Light Gray
-    Color(0xFF555555),        // 8: Dark Gray (바지/쇠사슬)
-    Color(0xFF5555FF),        // 9: Light Blue
-    Color(0xFF55FF55),        // 10: Light Green
-    Color(0xFF55FFFF),        // 11: Light Cyan
-    Color(0xFFFF5555),        // 12: Light Red (갑옷 하이라이트)
-    Color(0xFFFF55FF),        // 13: Light Magenta
-    Color(0xFFFFFF55),        // 14: Yellow
-    Color(0xFFFFFFFF),        // 15: White
+    Colors.transparent, // 0: Black (스프라이트에서는 배경 투명 처리)
+    Color(0xFF0000AA), // 1: Blue (원작 머리색/어두운 톤)
+    Color(0xFF00AA00), // 2: Green
+    Color(0xFF00AAAA), // 3: Cyan
+    Color(0xFFAA0000), // 4: Red
+    Color(0xFFAA00AA), // 5: Magenta
+    Color(0xFFAA5500), // 6: Brown (피부/살구색 톤)
+    Color(0xFFAAAAAA), // 7: Light Gray
+    Color(0xFF555555), // 8: Dark Gray (바지/쇠사슬)
+    Color(0xFF5555FF), // 9: Light Blue
+    Color(0xFF55FF55), // 10: Light Green
+    Color(0xFF55FFFF), // 11: Light Cyan
+    Color(0xFFFF5555), // 12: Light Red (갑옷 하이라이트)
+    Color(0xFFFF55FF), // 13: Light Magenta
+    Color(0xFFFFFF55), // 14: Yellow
+    Color(0xFFFFFFFF), // 15: White
   ];
 
   final Uint8List data;

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme/retro_theme.dart';
+import '../services/audio_manager.dart';
 import 'lore_map_manager.dart';
 import 'bgi_font_decoder.dart';
 
@@ -70,6 +71,17 @@ class LoreGame extends FlameGame {
       onLog?.call(
         '지도 [$mapName] 로드 완료 (크기: ${currentMap!.xmax}x${currentMap!.ymax})',
       );
+
+      // 원작 BGM 전환 (LORESUB.PAS 기준)
+      if (mapName.startsWith('TOWN')) {
+        AudioManager.instance.playBgm(BgmTrack.town);
+      } else if (mapName.startsWith('GROUND')) {
+        AudioManager.instance.playBgm(BgmTrack.ground);
+      } else if (mapName.startsWith('DEN')) {
+        AudioManager.instance.playBgm(BgmTrack.den);
+      } else if (mapName.startsWith('KEEP')) {
+        AudioManager.instance.playBgm(BgmTrack.keep);
+      }
     } catch (e) {
       // 에셋 로드 실패 시 안전 fallback
       onLog?.call('지도 파일 로드 실패: $e');
@@ -201,9 +213,18 @@ class LoreGame extends FlameGame {
         final cat = currentMap!.getCategory(tileVal);
 
         // 원작 FNT 타일 스프라이트가 존재하면 원작 픽셀 아트로 즉시 렌더링
-        final activeTileFont = currentMapName.startsWith('TOWN') ? townFont : groundFont;
-        if (activeTileFont != null && tileVal >= 0 && tileVal < activeTileFont.totalSprites) {
-          activeTileFont.renderSprite(canvas, tileVal, rect, opaqueBackground: true);
+        final activeTileFont = currentMapName.startsWith('TOWN')
+            ? townFont
+            : groundFont;
+        if (activeTileFont != null &&
+            tileVal >= 0 &&
+            tileVal < activeTileFont.totalSprites) {
+          activeTileFont.renderSprite(
+            canvas,
+            tileVal,
+            rect,
+            opaqueBackground: true,
+          );
         } else {
           final paint = Paint();
           switch (cat) {

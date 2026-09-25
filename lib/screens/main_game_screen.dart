@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
 
 import '../theme/retro_theme.dart';
+import '../services/audio_manager.dart';
 import '../game/lore_game.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
@@ -134,6 +135,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   /// 전투 패배 -> 게임 오버
   void _onBattleDefeat() {
+    AudioManager.instance.stopBgm();
     setState(() {
       _currentMode = GameScreenMode.gameOver;
     });
@@ -145,6 +147,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _initGame();
       _currentMode = GameScreenMode.field;
     });
+    AudioManager.instance.playBgm(BgmTrack.town);
     _focusNode.requestFocus();
   }
 
@@ -185,20 +188,46 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 ),
               ),
             ),
-            // 우측 상단 골드 표시
+            // 우측 상단 골드 및 오디오 토글 표시
             Positioned(
               top: 6,
               right: 6,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                color: RetroTheme.black.withValues(alpha: 0.7),
-                child: Text(
-                  '금화: $_partyGold 개',
-                  style: RetroTheme.dosFont.copyWith(
-                    fontSize: 11,
-                    color: RetroTheme.yellow,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    color: RetroTheme.black.withValues(alpha: 0.7),
+                    child: Text(
+                      '금화: $_partyGold 개',
+                      style: RetroTheme.dosFont.copyWith(
+                        fontSize: 11,
+                        color: RetroTheme.yellow,
+                      ),
+                    ),
                   ),
-                ),
+                  const SizedBox(width: 4),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        AudioManager.instance.toggleMute();
+                      });
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                      color: RetroTheme.black.withValues(alpha: 0.7),
+                      child: Icon(
+                        AudioManager.instance.isMuted
+                            ? Icons.volume_off
+                            : Icons.volume_up,
+                        size: 14,
+                        color: AudioManager.instance.isMuted
+                            ? RetroTheme.lightRed
+                            : RetroTheme.lightGreen,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
             // 우측 하단 D-Pad 컨트롤러

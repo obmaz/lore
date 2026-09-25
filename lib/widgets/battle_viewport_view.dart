@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/retro_theme.dart';
+import '../services/audio_manager.dart';
 import '../models/monster.dart';
 import '../models/party_member.dart';
 import '../logic/battle_engine.dart';
@@ -80,6 +81,14 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       final res = _engine.executeEnemyWeaponAttack(enemy, target);
       widget.onLog(res.message);
 
+      if (res.outcome == AttackOutcome.hit) {
+        AudioManager.instance.playHit();
+      } else if (res.outcome == AttackOutcome.killed) {
+        AudioManager.instance.playScream2();
+      } else if (res.outcome == AttackOutcome.unconscious) {
+        AudioManager.instance.playScream1();
+      }
+
       await Future.delayed(const Duration(milliseconds: 250));
     }
 
@@ -100,6 +109,16 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     widget.onLog('${player.name}의 일반 무기 공격 시작!');
     final res = _engine.executePlayerWeaponAttack(player, currentTarget);
     widget.onLog(res.message);
+
+    if (res.outcome == AttackOutcome.hit) {
+      AudioManager.instance.playHit();
+    } else if (res.outcome == AttackOutcome.killed) {
+      AudioManager.instance.playHit();
+      Future.delayed(const Duration(milliseconds: 150), () => AudioManager.instance.playScream2());
+    } else if (res.outcome == AttackOutcome.unconscious) {
+      AudioManager.instance.playHit();
+      Future.delayed(const Duration(milliseconds: 150), () => AudioManager.instance.playScream1());
+    }
 
     // 타겟이 쓰러졌으면 다음 생존한 적으로 자동 타겟 변경
     if (currentTarget.isDead || currentTarget.isUnconscious) {
@@ -130,6 +149,13 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     widget.onLog('${player.name}의 마법 화살(Magic Arrow) 시전!');
     final res = _engine.executePlayerMagicAttack(player, currentTarget, 1);
     widget.onLog(res.message);
+
+    if (res.outcome == AttackOutcome.hit) {
+      AudioManager.instance.playHit();
+    } else if (res.outcome == AttackOutcome.killed) {
+      AudioManager.instance.playHit();
+      Future.delayed(const Duration(milliseconds: 150), () => AudioManager.instance.playScream2());
+    }
 
     if (res.outcome != AttackOutcome.outOfSp) {
       _checkBattleEnd();

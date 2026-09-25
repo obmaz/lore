@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
+import '../services/audio_manager.dart';
 
 /// 1993년 원작 LORECRET.PAS 기반 캐릭터 생성 및 오프닝 화면
 class CharacterCreationScreen extends StatefulWidget {
@@ -16,6 +17,13 @@ class CharacterCreationScreen extends StatefulWidget {
 
 class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   int _step = 0; // 0: 타이틀, 1: 이름&성별, 2: 성향 질문, 3: 직업 확인, 4: 동료 4명 선택
+
+  @override
+  void initState() {
+    super.initState();
+    // 원작 오프닝/타이틀 BGM 재생
+    AudioManager.instance.playBgm(BgmTrack.title);
+  }
   final TextEditingController _nameController = TextEditingController(
     text: 'Hero',
   );
