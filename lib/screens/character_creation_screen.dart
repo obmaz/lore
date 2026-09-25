@@ -24,6 +24,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     // 원작 오프닝/타이틀 BGM 재생
     AudioManager.instance.playBgm(BgmTrack.title);
   }
+
   final TextEditingController _nameController = TextEditingController(
     text: 'Hero',
   );

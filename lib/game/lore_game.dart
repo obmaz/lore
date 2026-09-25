@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import '../theme/retro_theme.dart';
 import '../services/audio_manager.dart';
 import 'lore_map_manager.dart';
+import 'lore_world_manager.dart';
+import 'lore_dialogue_manager.dart';
 import 'bgi_font_decoder.dart';
 
 /// 1993년 원작의 실제 100x100 바이너리 맵(TOWN1.MAP, GROUND1.MAP 등)과
@@ -17,12 +19,15 @@ class LoreGame extends FlameGame {
   static const double tileSize = 28.0;
 
   LoreMapData? currentMap;
-  String currentMapName = 'TOWN1'; // 1993년 원작 시작 맵: CASTLE LORE 성내 마을
+  int currentMapId = 6; // 원작 시작 맵: 6 (CASTLE LORE)
+  String currentMapName = 'TOWN1';
 
   // 원작 4-plane BGI 폰트 디코더 (캐릭터 및 타일)
   BgiFontDecoder? charaFont;
   BgiFontDecoder? townFont;
   BgiFontDecoder? groundFont;
+  BgiFontDecoder? denFont;
+  BgiFontDecoder? keepFont;
 
   // 원작 LORECRET.PAS 및 LOREMAIN.PAS 기준 초기 시작 좌표: (51, 31)
   int playerX = 51;
@@ -33,6 +38,7 @@ class LoreGame extends FlameGame {
   final void Function()? onEncounter;
   final void Function()? onTownEntered;
   final void Function(String npcName, String dialogue)? onNpcTalk;
+  final void Function(int facilityType)? onFacilityEntered;
   final void Function(int x, int y)? onPositionChanged;
   final Random _random = Random();
 
@@ -41,6 +47,7 @@ class LoreGame extends FlameGame {
     this.onEncounter,
     this.onTownEntered,
     this.onNpcTalk,
+    this.onFacilityEntered,
     this.onPositionChanged,
   });
 
@@ -54,38 +61,44 @@ class LoreGame extends FlameGame {
       charaFont = await BgiFontDecoder.loadFromAsset('CHARA');
       townFont = await BgiFontDecoder.loadFromAsset('TOWN');
       groundFont = await BgiFontDecoder.loadFromAsset('GROUND');
+      denFont = await BgiFontDecoder.loadFromAsset('DEN');
+      keepFont = await BgiFontDecoder.loadFromAsset('KEEP');
     } catch (e) {
       // 폰트 에셋 로드 실패 시 무시 (fallback 벡터 드로잉)
     }
-    await loadMap('TOWN1');
+    await loadMapById(6, startX: 51, startY: 31);
   }
 
-  Future<void> loadMap(String mapName, {int? startX, int? startY}) async {
+  Future<void> loadMapById(int mapId, {int? startX, int? startY}) async {
+    final info = LoreWorldManager.mapRegistry[mapId];
+    if (info == null) return;
+    currentMapId = mapId;
+    currentMapName = info.fileName;
     try {
-      currentMap = await LoreMapData.loadFromAsset(mapName);
-      currentMapName = mapName;
+      currentMap = await LoreMapData.loadFromAsset(info.fileName);
       if (startX != null && startY != null) {
         playerX = startX;
         playerY = startY;
       }
       onLog?.call(
-        '지도 [$mapName] 로드 완료 (크기: ${currentMap!.xmax}x${currentMap!.ymax})',
+        '지도 [${info.title}] 진입 (크기: ${currentMap!.xmax}x${currentMap!.ymax})',
       );
-
-      // 원작 BGM 전환 (LORESUB.PAS 기준)
-      if (mapName.startsWith('TOWN')) {
-        AudioManager.instance.playBgm(BgmTrack.town);
-      } else if (mapName.startsWith('GROUND')) {
-        AudioManager.instance.playBgm(BgmTrack.ground);
-      } else if (mapName.startsWith('DEN')) {
-        AudioManager.instance.playBgm(BgmTrack.den);
-      } else if (mapName.startsWith('KEEP')) {
-        AudioManager.instance.playBgm(BgmTrack.keep);
-      }
+      // 원작 BGM 전환
+      AudioManager.instance.playBgm(info.bgmTrack);
     } catch (e) {
-      // 에셋 로드 실패 시 안전 fallback
       onLog?.call('지도 파일 로드 실패: $e');
     }
+  }
+
+  Future<void> loadMap(String mapName, {int? startX, int? startY}) async {
+    int targetId = 6;
+    for (final entry in LoreWorldManager.mapRegistry.entries) {
+      if (entry.value.fileName.toUpperCase() == mapName.toUpperCase()) {
+        targetId = entry.key;
+        break;
+      }
+    }
+    await loadMapById(targetId, startX: startX, startY: startY);
   }
 
   /// 플레이어 이동 처리
@@ -126,11 +139,17 @@ class LoreGame extends FlameGame {
 
     // 3. 성문/포털 이동 (22)
     if (cat == TileCategory.portal) {
-      _handlePortal();
+      _handlePortal(targetX, targetY);
       return true;
     }
 
-    // 4. 이동 성공
+    // 4. 표지판/푯말 상호작용 (23)
+    if (cat == TileCategory.sign) {
+      _handleSign(targetX, targetY);
+      return false;
+    }
+
+    // 5. 이동 성공
     playerX = targetX;
     playerY = targetY;
     onPositionChanged?.call(playerX, playerY);
@@ -143,8 +162,8 @@ class LoreGame extends FlameGame {
     }
 
     // 필드(GROUND1)일 때 약 10% 확률로 몬스터 인카운터 발생
-    if (currentMapName.startsWith('GROUND') ||
-        currentMapName.startsWith('DEN')) {
+    final mapCat = LoreWorldManager.mapRegistry[currentMapId]?.category;
+    if (mapCat == MapCategory.ground || mapCat == MapCategory.den) {
       if (_random.nextInt(10) == 0) {
         onLog?.call('!! 적의 기척이 느껴집니다! 전투 모드로 돌입합니다!');
         onEncounter?.call();
@@ -154,33 +173,59 @@ class LoreGame extends FlameGame {
     return true;
   }
 
-  void _handleNpcInteraction(int tileVal, int tx, int ty) {
-    if (currentMapName == 'TOWN1') {
-      if (tx == 9 && ty == 64) {
-        onNpcTalk?.call(
-          '경비병',
-          '모험을 시작한다면 많은 괴물을 만날 것이오. Serpent와 Python은 맹독이 있으니 주의하시오.',
-        );
-      } else if (tx == 72 && ty == 73) {
-        onNpcTalk?.call('마을 주민', 'Orc는 가장 하급 괴물이오.');
-      } else if (tx == 19 && ty == 53) {
-        onNpcTalk?.call('성전의 석판', '이 세계의 창시자는 안영기 님이시며, 그는 위대한 프로그래머입니다.');
-      } else {
-        onNpcTalk?.call('마을 주민', '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.');
-      }
-      onTownEntered?.call();
+  void _handleSign(int tx, int ty) {
+    final msg = LoreWorldManager.instance.getSignMessage(currentMapId, tx, ty);
+    if (msg != null) {
+      onLog?.call(msg);
+    } else {
+      onLog?.call('푯말에 흐릿한 글씨가 적혀 있습니다.');
     }
   }
 
-  void _handlePortal() {
+  void _handleNpcInteraction(int tileVal, int tx, int ty) {
     if (currentMapName == 'TOWN1') {
-      // 성 밖 대륙 필드로 나가기
-      loadMap('GROUND1', startX: 20, startY: 12);
-      onLog?.call('성문을 나와 광활한 LORE 대륙 필드(GROUND1)로 나섰습니다.');
+      // 1. 원작 LORETALK.PAS 마을 시설 상점 판정
+      if ((tx == 8 && ty == 71) || (tx == 14 && ty == 69) || (tx == 14 && ty == 73)) {
+        onFacilityEntered?.call(1); // 무기점
+        return;
+      }
+      if ((tx == 87 && ty == 14) || (tx == 86 && ty == 12)) {
+        onFacilityEntered?.call(2); // 병원
+        return;
+      }
+      if ((tx == 21 && ty == 12) || (tx == 25 && ty == 13)) {
+        onFacilityEntered?.call(3); // 훈련소
+        return;
+      }
+      if ((tx == 87 && ty == 73) || (tx == 91 && ty == 65)) {
+        onFacilityEntered?.call(4); // 식료품점
+        return;
+      }
+
+      // 2. 원작 LORETALK.PAS 실제 주민 및 경비병 대화 연동
+      final dlg = LoreDialogueManager.instance.getDialogue(currentMapId, tx, ty, 'Hero');
+      if (dlg != null) {
+        onLog?.call(dlg);
+      } else {
+        onNpcTalk?.call('마을 주민', '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.');
+        onTownEntered?.call();
+      }
+    }
+  }
+
+  void _handlePortal(int tx, int ty) {
+    final portal = LoreWorldManager.instance.findPortal(currentMapId, tx, ty);
+    if (portal != null) {
+      loadMapById(portal.targetMapId, startX: portal.targetX, startY: portal.targetY);
+      onLog?.call('${portal.name}에 진입했습니다.');
     } else {
-      // 마을로 귀환
-      loadMap('TOWN1', startX: 51, startY: 95);
-      onLog?.call('성전 마을 CASTLE LORE 성내로 귀환했습니다.');
+      if (currentMapName.startsWith('TOWN')) {
+        loadMapById(1, startX: 20, startY: 12);
+        onLog?.call('성문을 나와 광활한 LORE 대륙 필드(GROUND1)로 나섰습니다.');
+      } else {
+        loadMapById(6, startX: 51, startY: 95);
+        onLog?.call('성문 안으로 들어서 CASTLE LORE 성내 마을로 진입했습니다.');
+      }
     }
   }
 
@@ -195,6 +240,26 @@ class LoreGame extends FlameGame {
 
     final offsetX = (size.x - (viewTilesX * tileSize)) / 2;
     final offsetY = (size.y - (viewTilesY * tileSize)) / 2;
+
+    // 현재 맵 카테고리에 맞는 타일 폰트 선택
+    final mapCat = LoreWorldManager.mapRegistry[currentMapId]?.category;
+    BgiFontDecoder? activeTileFont;
+    switch (mapCat) {
+      case MapCategory.town:
+        activeTileFont = townFont;
+        break;
+      case MapCategory.ground:
+        activeTileFont = groundFont;
+        break;
+      case MapCategory.den:
+        activeTileFont = denFont ?? townFont;
+        break;
+      case MapCategory.keep:
+        activeTileFont = keepFont ?? groundFont;
+        break;
+      default:
+        activeTileFont = townFont;
+    }
 
     // 1. 플레이어 중심 11x11 뷰포트 렌더링
     for (int vy = 0; vy < viewTilesY; vy++) {
@@ -213,9 +278,6 @@ class LoreGame extends FlameGame {
         final cat = currentMap!.getCategory(tileVal);
 
         // 원작 FNT 타일 스프라이트가 존재하면 원작 픽셀 아트로 즉시 렌더링
-        final activeTileFont = currentMapName.startsWith('TOWN')
-            ? townFont
-            : groundFont;
         if (activeTileFont != null &&
             tileVal >= 0 &&
             tileVal < activeTileFont.totalSprites) {

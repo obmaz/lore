@@ -41,18 +41,18 @@ void main() {
       // 9^3 / 8 = 729 / 8 = 91
       expect(engine.calculateExperience(imp), equals(91));
 
-      // Skeleton (eNumber: 16, Level: 5, AC: 3)
-      final skeleton = Monster.create(16);
+      // Salamander (eNumber: 16, Level: 4, AC: 3)
+      final salamander = Monster.create(16);
       // 16^3 / 8 = 4096 / 8 = 512
-      expect(engine.calculateExperience(skeleton), equals(512));
+      expect(engine.calculateExperience(salamander), equals(512));
 
       // 골드 보상: sum(level^3 * ac)
       // orc: 1^3 * 1 = 1
       // imp: 3^3 * 2 = 54
-      // skeleton: 5^3 * 3 = 375
-      // 총합 = 1 + 54 + 375 = 430
-      final gold = engine.calculateGold([orc, imp, skeleton]);
-      expect(gold, equals(430));
+      // salamander: 4^3 * 3 = 192
+      // 총합 = 1 + 54 + 192 = 247
+      final gold = engine.calculateGold([orc, imp, salamander]);
+      expect(gold, equals(247));
     });
 
     test('2. 플레이어 무기 공격 명중 및 대미지 공식 검증', () {

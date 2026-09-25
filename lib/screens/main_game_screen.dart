@@ -1,4 +1,6 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flame/game.dart';
 
 import '../theme/retro_theme.dart';
@@ -12,6 +14,8 @@ import '../widgets/message_log_view.dart';
 import '../widgets/dpad_widget.dart';
 import '../widgets/battle_viewport_view.dart';
 import '../widgets/town_dialog.dart';
+import '../widgets/town_facilities_dialog.dart';
+import '../widgets/field_menu_dialog.dart';
 
 enum GameScreenMode { field, battle, gameOver }
 
@@ -67,9 +71,60 @@ class _MainGameScreenState extends State<MainGameScreen> {
       onLog: (msg) => _addLog(msg),
       onEncounter: () => _startBattle(),
       onTownEntered: () => _openTownDialog(),
+      onFacilityEntered: (type) {
+        TownFacilityType fType;
+        switch (type) {
+          case 1:
+            fType = TownFacilityType.weaponShop;
+            break;
+          case 2:
+            fType = TownFacilityType.hospital;
+            break;
+          case 3:
+            fType = TownFacilityType.trainCenter;
+            break;
+          case 4:
+          default:
+            fType = TownFacilityType.grocery;
+            break;
+        }
+        _openTownFacilityDialog(fType);
+      },
       onNpcTalk: (name, talk) {
         _addLog('[$name]: "$talk"');
       },
+    );
+  }
+
+  int _partyFood = 100;
+
+  void _openTownFacilityDialog(TownFacilityType type) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (ctx) => TownFacilitiesDialog(
+        facilityType: type,
+        party: _party,
+        gold: _partyGold,
+        food: _partyFood,
+        onGoldChanged: (newGold) => setState(() => _partyGold = newGold),
+        onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
+        onLog: (msg) => _addLog(msg),
+      ),
+    );
+  }
+
+  void _openFieldMenuDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (ctx) => FieldMenuDialog(
+        party: _party,
+        gold: _partyGold,
+        food: _partyFood,
+        onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
+        onLog: (msg) => _addLog(msg),
+      ),
     );
   }
 
@@ -100,14 +155,26 @@ class _MainGameScreenState extends State<MainGameScreen> {
   void _startBattle() {
     setState(() {
       _currentMode = GameScreenMode.battle;
-      // 1~3마리의 몬스터 무작위 조우 (Orc, Troll, Serpent, Wolf 등)
-      _battleEnemies = [
-        Monster.create(1), // Orc
-        Monster.create(
-          DateTime.now().millisecond % 2 == 0 ? 3 : 2,
-        ), // Serpent or Troll
-      ];
-      _addLog('=== 몬스터가 나타났다! ===');
+      final rnd = Random();
+      final count = rnd.nextInt(3) + 1; // 1~3마리
+      int minId = 1;
+      int maxId = 12;
+
+      // 맵 난이도에 따른 몬스터 ID 풀
+      if (_game.currentMapId >= 11 && _game.currentMapId <= 20) {
+        minId = 13;
+        maxId = 45; // 동굴 던전 몬스터
+      } else if (_game.currentMapId >= 21) {
+        minId = 40;
+        maxId = 72; // 요새/심연 몬스터
+      }
+
+      _battleEnemies = List.generate(count, (_) {
+        final id = minId + rnd.nextInt(maxId - minId + 1);
+        return Monster.create(id);
+      });
+
+      _addLog('=== 몬스터 무리가 나타났다! ===');
       for (final e in _battleEnemies) {
         _addLog('${e.name} (Lv.${e.level}, HP:${e.hp}) 등장!');
       }
@@ -196,7 +263,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 2,
+                    ),
                     color: RetroTheme.black.withValues(alpha: 0.7),
                     child: Text(
                       '금화: $_partyGold 개',
@@ -214,7 +284,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
                       });
                     },
                     child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 4,
+                        vertical: 2,
+                      ),
                       color: RetroTheme.black.withValues(alpha: 0.7),
                       child: Icon(
                         AudioManager.instance.isMuted
@@ -228,6 +301,36 @@ class _MainGameScreenState extends State<MainGameScreen> {
                     ),
                   ),
                 ],
+              ),
+            ),
+            // 좌측 하단 [메뉴 (Space)] 버튼
+            Positioned(
+              bottom: 6,
+              left: 6,
+              child: GestureDetector(
+                onTap: _openFieldMenuDialog,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  decoration: BoxDecoration(
+                    color: RetroTheme.blue.withValues(alpha: 0.8),
+                    border: Border.all(color: RetroTheme.cyan, width: 1.5),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(Icons.menu, size: 14, color: RetroTheme.yellow),
+                      const SizedBox(width: 4),
+                      Text(
+                        '메뉴 (Space)',
+                        style: RetroTheme.dosFont.copyWith(
+                          fontSize: 11,
+                          color: RetroTheme.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
             // 우측 하단 D-Pad 컨트롤러
@@ -319,6 +422,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
       autofocus: true,
       onKeyEvent: (event) {
         if (_currentMode == GameScreenMode.field) {
+          if (event is KeyDownEvent) {
+            if (event.logicalKey == LogicalKeyboardKey.space ||
+                event.logicalKey == LogicalKeyboardKey.keyP ||
+                event.logicalKey == LogicalKeyboardKey.keyV ||
+                event.logicalKey == LogicalKeyboardKey.keyC ||
+                event.logicalKey == LogicalKeyboardKey.keyR) {
+              _openFieldMenuDialog();
+              return;
+            }
+          }
           _game.handleKeyEvent(event);
           setState(() {});
         }

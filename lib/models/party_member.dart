@@ -123,39 +123,74 @@ class PartyMember {
     return 'good';
   }
 
-  /// 무기 장착
-  void equipWeapon(Item item) {
-    if (item.type != ItemType.weapon) return;
-    if (playerClass == PlayerClass.monk) return; // 전투승은 무기 장착 불가
+  static const List<String> weaponNames = [
+    '맨손', '단도', '곤봉', '미늘창', '장검', '철퇴', '기병창', '도끼창', '삼지창', '화염검'
+  ];
+  static const List<String> shieldNames = [
+    '없음', '가죽 방패', '청동 방패', '강철 방패', '기사 방패', '마법 방패'
+  ];
+  static const List<String> armorNames = [
+    '평복', '가죽 갑옷', '사슬 갑옷', '판금 갑옷', '기사 갑옷', '용비늘 갑옷'
+  ];
 
-    weapon = item.id;
-    int p = item.power;
+  String get weaponName => weapon >= 0 && weapon < weaponNames.length ? weaponNames[weapon] : '맨손';
+  String get shieldName => shield >= 0 && shield < shieldNames.length ? shieldNames[shield] : '없음';
+  String get armorName => armor >= 0 && armor < armorNames.length ? armorNames[armor] : '평복';
+
+  /// 원작 LORESUB.PAS 기준 무기 장착
+  void equipWeaponRaw(int id, int power) {
+    if (playerClass == PlayerClass.monk) return;
+    weapon = id;
+    int p = power;
     if (playerClass == PlayerClass.knight) {
-      p += (p * 0.5).round(); // 기사 무기 위력 +50% 보너스
+      p += (p * 0.5).round();
     }
     weaPower = p;
+  }
+
+  void equipShieldRaw(int id, int power) {
+    shield = id;
+    shiPower = power;
+    _updateAc();
+  }
+
+  void equipArmorRaw(int id, int power) {
+    armor = id;
+    armPower = power;
+    _updateAc();
+  }
+
+  /// 무기 장착 (Item 기반)
+  void equipWeapon(Item item) {
+    if (item.type != ItemType.weapon) return;
+    equipWeaponRaw(item.id, item.power);
   }
 
   /// 방패 장착
   void equipShield(Item item) {
     if (item.type != ItemType.shield) return;
-    shield = item.id;
-    shiPower = item.power;
-    _updateAc();
+    equipShieldRaw(item.id, item.power);
   }
 
   /// 갑옷 장착
   void equipArmor(Item item) {
     if (item.type != ItemType.armor) return;
-    armor = item.id;
-    armPower = item.power;
-    _updateAc();
+    equipArmorRaw(item.id, item.power);
   }
 
   void _updateAc() {
     int total = shiPower + armPower;
     if (playerClass == PlayerClass.knight) total += 1;
     ac = min(10, total);
+  }
+
+  /// 레벨업 처리 (군사 훈련소)
+  void levelUp() {
+    battleLevel += 1;
+    hp = maxHp;
+    sp = maxSp;
+    strength += 1;
+    agility += 1;
   }
 
   /// 1993년 원작 LORECRET.PAS 프리셋 캐릭터 생성

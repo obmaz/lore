@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../theme/retro_theme.dart';
 import '../services/audio_manager.dart';
 import '../models/monster.dart';
@@ -45,7 +46,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
   void _checkBattleEnd() {
     // 1. 모든 적 퇴치 확인
-    final allEnemiesDefeated = widget.enemies.every((e) => e.isDead || e.isUnconscious);
+    final allEnemiesDefeated = widget.enemies.every(
+      (e) => e.isDead || e.isUnconscious,
+    );
     if (allEnemiesDefeated) {
       _battleEnded = true;
       final gold = _engine.calculateGold(widget.enemies);
@@ -74,10 +77,14 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       if (enemy.isDead || enemy.isUnconscious) continue;
 
       // 생존한 파티원 중 무작위 1명 대상 선택
-      final livingMembers = widget.partyMembers.where((p) => p.isAlive).toList();
+      final livingMembers = widget.partyMembers
+          .where((p) => p.isAlive)
+          .toList();
       if (livingMembers.isEmpty) break;
 
-      final target = livingMembers[DateTime.now().millisecondsSinceEpoch % livingMembers.length];
+      final target =
+          livingMembers[DateTime.now().millisecondsSinceEpoch %
+              livingMembers.length];
       final res = _engine.executeEnemyWeaponAttack(enemy, target);
       widget.onLog(res.message);
 
@@ -114,10 +121,16 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       AudioManager.instance.playHit();
     } else if (res.outcome == AttackOutcome.killed) {
       AudioManager.instance.playHit();
-      Future.delayed(const Duration(milliseconds: 150), () => AudioManager.instance.playScream2());
+      Future.delayed(
+        const Duration(milliseconds: 150),
+        () => AudioManager.instance.playScream2(),
+      );
     } else if (res.outcome == AttackOutcome.unconscious) {
       AudioManager.instance.playHit();
-      Future.delayed(const Duration(milliseconds: 150), () => AudioManager.instance.playScream1());
+      Future.delayed(
+        const Duration(milliseconds: 150),
+        () => AudioManager.instance.playScream1(),
+      );
     }
 
     // 타겟이 쓰러졌으면 다음 생존한 적으로 자동 타겟 변경
@@ -139,22 +152,83 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   }
 
   /// 플레이어 마법 공격 실행 (1번 마법 시전)
-  void _onMagic() async {
+  static const List<Map<String, dynamic>> spellsList = [
+    {'id': 1, 'name': '매직 애로우 (Magic Arrow)', 'sp': 3},
+    {'id': 2, 'name': '파이어볼 (Fire Ball)', 'sp': 6},
+    {'id': 3, 'name': '라이트닝 볼트 (Lightning Bolt)', 'sp': 12},
+    {'id': 4, 'name': '아이스 블리자드 (Ice Blizzard)', 'sp': 20},
+    {'id': 5, 'name': '데스 레이 (Death Ray)', 'sp': 30},
+    {'id': 6, 'name': '메테오 스트라이크 (Meteor Strike)', 'sp': 45},
+  ];
+
+  /// 플레이어 마법 공격 실행 (선택 다이얼로그 팝업)
+  void _onMagic() {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
 
+    if (player.sp <= 0) {
+      widget.onLog('${player.name}의 마법 지수(SP)가 바닥났습니다!');
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightMagenta, width: 2),
+        title: Text(
+          '${player.name}의 마법 시전 (현재 SP: ${player.sp})',
+          style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow, fontSize: 12),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: spellsList.map((sp) {
+            final canCast = player.sp >= sp['sp'];
+            return ListTile(
+              dense: true,
+              title: Text(
+                sp['name'],
+                style: RetroTheme.dosFont.copyWith(
+                  color: canCast ? RetroTheme.white : RetroTheme.darkGray,
+                  fontSize: 11,
+                ),
+              ),
+              trailing: Text(
+                'SP ${sp['sp']}',
+                style: RetroTheme.dosFont.copyWith(
+                  color: canCast ? RetroTheme.lightCyan : RetroTheme.lightRed,
+                  fontSize: 10,
+                ),
+              ),
+              onTap: canCast
+                  ? () {
+                      Navigator.of(ctx).pop();
+                      _executeMagicCast(player, sp['id'], sp['name']);
+                    }
+                  : null,
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+
+  void _executeMagicCast(PartyMember player, int spellId, String spellName) async {
     setState(() => _isTurnProcessing = true);
 
-    widget.onLog('${player.name}의 마법 화살(Magic Arrow) 시전!');
-    final res = _engine.executePlayerMagicAttack(player, currentTarget, 1);
+    widget.onLog('${player.name}의 $spellName 시전!');
+    final res = _engine.executePlayerMagicAttack(player, currentTarget, spellId);
     widget.onLog(res.message);
 
     if (res.outcome == AttackOutcome.hit) {
       AudioManager.instance.playHit();
     } else if (res.outcome == AttackOutcome.killed) {
       AudioManager.instance.playHit();
-      Future.delayed(const Duration(milliseconds: 150), () => AudioManager.instance.playScream2());
+      Future.delayed(
+        const Duration(milliseconds: 150),
+        () => AudioManager.instance.playScream2(),
+      );
     }
 
     if (res.outcome != AttackOutcome.outOfSp) {
@@ -235,13 +309,18 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                         },
                         child: Container(
                           margin: const EdgeInsets.symmetric(vertical: 2),
-                          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 6,
+                            vertical: 4,
+                          ),
                           decoration: BoxDecoration(
                             color: isSelected
                                 ? RetroTheme.blue.withValues(alpha: 0.6)
                                 : Colors.transparent,
                             border: Border.all(
-                              color: isSelected ? RetroTheme.yellow : Colors.transparent,
+                              color: isSelected
+                                  ? RetroTheme.yellow
+                                  : Colors.transparent,
                               width: 1,
                             ),
                           ),
@@ -253,14 +332,18 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                                 style: RetroTheme.dosFont.copyWith(
                                   color: enemy.isDead
                                       ? RetroTheme.darkGray
-                                      : (isSelected ? RetroTheme.yellow : RetroTheme.white),
+                                      : (isSelected
+                                            ? RetroTheme.yellow
+                                            : RetroTheme.white),
                                   fontSize: 12,
                                 ),
                               ),
                               Text(
                                 enemy.isDead
                                     ? '[사망]'
-                                    : (enemy.isUnconscious ? '[기절]' : '${enemy.hp}/${enemy.maxHp}'),
+                                    : (enemy.isUnconscious
+                                          ? '[기절]'
+                                          : '${enemy.hp}/${enemy.maxHp}'),
                                 style: RetroTheme.dosFont.copyWith(
                                   color: hpColor,
                                   fontSize: 11,
@@ -278,7 +361,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                   flex: 5,
                   child: Container(
                     decoration: BoxDecoration(
-                      border: Border.all(color: RetroTheme.borderColor, width: 1),
+                      border: Border.all(
+                        color: RetroTheme.borderColor,
+                        width: 1,
+                      ),
                       color: RetroTheme.black,
                     ),
                     child: Center(
@@ -291,8 +377,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                             color: currentTarget.isDead
                                 ? RetroTheme.darkGray
                                 : (currentTarget.isUnconscious
-                                    ? RetroTheme.yellow
-                                    : RetroTheme.lightRed),
+                                      ? RetroTheme.yellow
+                                      : RetroTheme.lightRed),
                           ),
                           const SizedBox(height: 6),
                           Text(
@@ -302,7 +388,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                           Text(
                             currentTarget.isDead
                                 ? '상태: 사망'
-                                : (currentTarget.isUnconscious ? '상태: 의식불명' : '상태: 전투중'),
+                                : (currentTarget.isUnconscious
+                                      ? '상태: 의식불명'
+                                      : '상태: 전투중'),
                             style: RetroTheme.dosFont.copyWith(
                               color: _getEnemyHpColor(currentTarget),
                               fontSize: 11,
@@ -324,7 +412,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
           decoration: const BoxDecoration(
             color: RetroTheme.panelBg,
-            border: Border(top: BorderSide(color: RetroTheme.borderColor, width: 1.5)),
+            border: Border(
+              top: BorderSide(color: RetroTheme.borderColor, width: 1.5),
+            ),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -353,7 +443,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       child: Text(
         label,
         style: RetroTheme.dosFont.copyWith(
-          color: _isTurnProcessing || _battleEnded ? RetroTheme.darkGray : color,
+          color: _isTurnProcessing || _battleEnded
+              ? RetroTheme.darkGray
+              : color,
           fontSize: 11,
           fontWeight: FontWeight.bold,
         ),
