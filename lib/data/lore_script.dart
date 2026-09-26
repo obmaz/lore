@@ -43,6 +43,9 @@ class ScriptRequire {
 
   /// 원작 `player[i].name` 검사처럼 현재 파티에 있는 동료 이름.
   final String? partyMember;
+
+  /// 진입 직전 지도 ID (`LOREENT.PAS`의 출발 `party.map`).
+  final int? enteredFromMap;
   final bool mindRead;
   final bool mindReadInactive;
   final int? minEspLevel;
@@ -70,6 +73,7 @@ class ScriptRequire {
     this.flag,
     this.flagNot,
     this.partyMember,
+    this.enteredFromMap,
     this.mindRead = false,
     this.mindReadInactive = false,
     this.minEspLevel,
@@ -98,6 +102,7 @@ class ScriptRequire {
       flag: json['flag'] as String?,
       flagNot: json['flagNot'] as String?,
       partyMember: json['partyMember'] as String?,
+      enteredFromMap: json['enteredFromMap'] as int?,
       mindRead: json['mindRead'] == true,
       mindReadInactive: json['mindReadInactive'] == true,
       minEspLevel: json['minEspLevel'] as int?,
@@ -129,6 +134,7 @@ class ScriptContext {
   final int maxEspLevel;
   final Set<String> flags;
   final Set<String> partyNames;
+  final int? enteredFromMap;
 
   /// 플레이어가 지금 밟고 있는 타일 값(원작 `map[x,y]` 판정용, 모르면 null).
   final int? tileAtPlayer;
@@ -142,6 +148,7 @@ class ScriptContext {
     this.maxEspLevel = 0,
     this.flags = const {},
     this.partyNames = const {},
+    this.enteredFromMap,
     this.tileAtPlayer,
     this.moveDy = 0,
     this.questSteps = const {},
@@ -1166,6 +1173,9 @@ class LoreScriptEngine {
     if (r.flag != null && !ctx.flags.contains(r.flag)) return false;
     if (r.flagNot != null && ctx.flags.contains(r.flagNot)) return false;
     if (r.partyMember != null && !ctx.partyNames.contains(r.partyMember)) {
+      return false;
+    }
+    if (r.enteredFromMap != null && ctx.enteredFromMap != r.enteredFromMap) {
       return false;
     }
     if (r.mindRead && !ctx.mindReadActive) return false;

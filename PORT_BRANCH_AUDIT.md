@@ -833,7 +833,7 @@
 | `keep2-guards-y25`<br>LORESPEC.PAS (파일 추정) | step (24..26, 25) | {"flagNot":"keep2GuardsCleared"} | flagNot keep2GuardsCleared → 추가 | battle(적 5), flag:keep2GuardsCleared |
 | `keep2-ambush-zone-a`<br>LORESPEC.PAS (파일 추정) | step (*, 1..45) | {"flagNot":"keep2AmbushCleared"} | flagNot keep2AmbushCleared → 추가 | battle(적 5, 도주 분기), setTileAtPlayer |
 | `keep2-ambush-zone-b`<br>LORESPEC.PAS (파일 추정) | step (*, 47..99) | {"flagNot":"keep2AmbushCleared"} | flagNot keep2AmbushCleared → 추가 | battle(적 5, 도주 분기), setTileAtPlayer |
-| `enter-22-ancient-evil`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"flagNot":"ancientEvilSpeechGiven"} | flagNot ancientEvilSpeechGiven → 추가 | flag:ancientEvilSpeechGiven |
+| `enter-22-ancient-evil`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"flagNot":"ancientEvilSpeechGiven","enteredFromMap":21} | flagNot ancientEvilSpeechGiven → 추가; enteredFromMap 21 → 다른 맵에서 진입 | flag:ancientEvilSpeechGiven |
 
 ### 맵 23
 

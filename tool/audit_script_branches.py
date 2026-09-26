@@ -121,6 +121,7 @@ def false_probes(require):
         ("flag", "제거"),
         ("flagNot", "추가"),
         ("partyMember", "현재 파티에서 제외"),
+        ("enteredFromMap", "다른 맵에서 진입"),
         ("mindRead", "독심술 끄기"),
         ("mindReadInactive", "독심술 켜기"),
         ("tileAtPlayerZero", "타일을 0 이외로"),

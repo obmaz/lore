@@ -51,6 +51,10 @@ class ScriptBranchAuditTest(unittest.TestCase):
             "Polaris → 현재 파티에서 제외",
             false_probes({"partyMember": "Polaris"}),
         )
+        self.assertIn(
+            "21 → 다른 맵에서 진입",
+            false_probes({"enteredFromMap": 21}),
+        )
 
     def test_links_battle_victory_escape_and_tile_effects(self):
         summary = effect_summary([

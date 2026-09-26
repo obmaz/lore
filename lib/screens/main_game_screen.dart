@@ -308,13 +308,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
         // 원작 `exit` - 진행을 취소하는 판정(라바 게이트 등).
         if (pre != null && pre.outcome.blockMove) return;
       }
+      final enteredFromMap = _game.currentMapId;
       await _game.enterPortal(portal, tx, ty);
       if (!mounted) return;
       setState(() {});
       // 원작 entermode - 맵 진입 후 타일/연출 처리.
       final enter = LoreScriptEngine.instance.startEnter(
         _game.currentMapId,
-        _scriptContext(),
+        _scriptContext(enteredFromMap: enteredFromMap),
       );
       if (enter != null) await _applyScriptOutcome(enter);
     } else if (confirmed == false) {
@@ -327,7 +328,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   // =========================================================================
 
   /// 현재 파티/플래그/독심술 상태를 스크립트 엔진에 전달한다.
-  ScriptContext _scriptContext() {
+  ScriptContext _scriptContext({int? enteredFromMap}) {
     var maxEsp = 0;
     for (final p in _party) {
       if (p.espLevel > maxEsp) maxEsp = p.espLevel;
@@ -372,6 +373,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       maxEspLevel: maxEsp,
       flags: flags,
       partyNames: {for (final member in _party) member.name},
+      enteredFromMap: enteredFromMap,
       // 원작 `party.etc[10]`/`[13]`/`[14]`/`[15]` 퀘스트 단계.
       questSteps: LoreDialogueManager.instance.questSteps,
       // 원작 `map[x,y]` 판정(숨은 통로 등)을 위해 밟은 타일을 넘긴다.
@@ -1337,12 +1339,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
     _pendingPortalTransition = null;
     if (blocked) return;
+    final enteredFromMap = _game.currentMapId;
     await _game.enterPortal(portal.portal, portal.tx, portal.ty);
     if (!mounted) return;
     setState(() {});
     final enter = LoreScriptEngine.instance.startEnter(
       _game.currentMapId,
-      _scriptContext(),
+      _scriptContext(enteredFromMap: enteredFromMap),
     );
     if (enter != null) await _driveScript(enter);
   }

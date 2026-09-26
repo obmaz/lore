@@ -17049,7 +17049,8 @@
       "trigger": "enter",
       "map": 22,
       "require": {
-        "flagNot": "ancientEvilSpeechGiven"
+        "flagNot": "ancientEvilSpeechGiven",
+        "enteredFromMap": 21
       },
       "steps": [
         {

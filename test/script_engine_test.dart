@@ -221,9 +221,27 @@ void main() {
       expect(cleared.outcome.battleMonsters, isEmpty);
       expect(cleared.outcome.setFlags, contains('lavaGateGuardiansCleared'));
 
-      final speech = engine.startEnter(22, noCtx)!;
+      expect(engine.startEnter(22, noCtx), isNull);
+      expect(
+        engine.startEnter(22, const ScriptContext(enteredFromMap: 5)),
+        isNull,
+      );
+      final speech = engine.startEnter(
+        22,
+        const ScriptContext(enteredFromMap: 21),
+      )!;
       expect(speech.outcome.battleMonsters, isEmpty);
       expect(speech.outcome.setFlags, contains('ancientEvilSpeechGiven'));
+      expect(
+        engine.startEnter(
+          22,
+          const ScriptContext(
+            enteredFromMap: 21,
+            flags: {'ancientEvilSpeechGiven'},
+          ),
+        ),
+        isNull,
+      );
     });
 
     test('Frost Dragon은 일곱 자리 중 2~6번에 섞이고 도망치면 진입이 취소된다', () async {

@@ -52,6 +52,9 @@
    플래그 판정을 현재 파티 이름 판정으로 고치고, 영입 슬롯 취소 시 후속 타일
    변경을 중단한다. 커밋: `Match Polaris town tile to current party membership`.
 8. 포털과 겹친 77개의 취소·수문장·부수 효과를 원본과 더 깊게 대조한다.
+   맵 22 Ancient Evil 안내는 원본에서 맵 21 라바 게이트로 진입할 때만
+   실행된다. 진입 출발 맵 조건을 스크립트 계약에 추가해 맵 5에서 들어올 때
+   잘못 재생되던 안내를 막았다. 커밋: `Scope Ancient Evil speech to lava gate entry`.
 9. 원본 `LORETALK.PAS`, `LOREENT.PAS`, `LOREBATT.PAS`의 분기 추출 범위를
    넓혀 스크립트·포털·전투와 상호 대조하고 남은 누락을 처리한다. 첫 단계로
    `LOREENT.PAS`의 지도 로드 27건을 추출해 출발 맵, 명시 좌표 16건, 목적지
