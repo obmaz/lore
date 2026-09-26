@@ -16,6 +16,8 @@ class LoreDialogueManager {
   LoreDialogueManager._internal();
 
   // 1. CASTLE LORE 플래그 (맵 6)
+  /// 원작 `party.etc[10]` - Lord Ahn 알현 대화 단계(0~6). `LORETALK.PAS:296`.
+  int lordAhnQuestStep = 0;
   bool metLordAhn = false;
   bool castleGateOpen = false;
   bool jrAntaresSecretFound = false;
@@ -55,6 +57,19 @@ class LoreDialogueManager {
 
   /// 원작 `party.etc[16] bit1` - 맵 4 (20,39)에서 Ancient Evil을 만난 상태.
   bool ancientEvilMet = false;
+
+  /// 원작 `LORETALK.PAS` 의 `party.etc[50]`/`[30]`/`[43]` 비트 상태.
+  ///
+  ///  - `menaceInfoGiven`        = etc[50] bit5 (맵 6 (51,72) 피라밋 안내)
+  ///  - `weaponRoomVisited`      = etc[50] bit4 (맵 6 무기고 방문)
+  ///  - `loreChallengeAccepted`  = etc[30] bit1 (맵 6 (50,51) 도전 수락)
+  ///  - `loreChallengeBlessed`   = etc[30] bit2 (맵 6 (51,87) 성문 축복)
+  ///  - `programmerMet`          = etc[43] bit4 (맵 24 (33,10) 안 영기)
+  bool menaceInfoGiven = false;
+  bool weaponRoomVisited = false;
+  bool loreChallengeAccepted = false;
+  bool loreChallengeBlessed = false;
+  bool programmerMet = false;
 
   /// 원작 `LOREBATT.PAS:245 CastSpecial` - 특수 마법 미습득 시 문구.
   static const String specialMagicLockedMessage = '당신에게는 아직 능력이 없다.';
@@ -136,6 +151,7 @@ class LoreDialogueManager {
   Map<String, dynamic> getSaveFlags() => {
     'metLordAhn': metLordAhn,
     'castleGateOpen': castleGateOpen,
+    'lordAhnQuestStep': lordAhnQuestStep,
     'jrAntaresSecretFound': jrAntaresSecretFound,
     'metPyramidSage': metPyramidSage,
     'lastditchQuestStep': lastditchQuestStep,
@@ -158,6 +174,12 @@ class LoreDialogueManager {
     'redAntaresJoined': redAntaresJoined,
     'spicaJoined': spicaJoined,
     'specialMagicLearned': specialMagicLearned,
+    'ancientEvilMet': ancientEvilMet,
+    'menaceInfoGiven': menaceInfoGiven,
+    'weaponRoomVisited': weaponRoomVisited,
+    'loreChallengeAccepted': loreChallengeAccepted,
+    'loreChallengeBlessed': loreChallengeBlessed,
+    'programmerMet': programmerMet,
     // 1회성 보물 좌표(원작 party.etc 비트)는 불리언 플래그로 직렬화한다.
     for (final key in collectedTreasures) key: true,
   };
@@ -185,12 +207,18 @@ class LoreDialogueManager {
     'spicaJoined': spicaJoined,
     'specialMagicLearned': specialMagicLearned,
     'ancientEvilMet': ancientEvilMet,
+    'menaceInfoGiven': menaceInfoGiven,
+    'weaponRoomVisited': weaponRoomVisited,
+    'loreChallengeAccepted': loreChallengeAccepted,
+    'loreChallengeBlessed': loreChallengeBlessed,
+    'programmerMet': programmerMet,
     for (final key in collectedTreasures) key: true,
   };
 
   void loadSaveFlags(Map<String, dynamic> flags) {
     metLordAhn = flags['metLordAhn'] == true;
     castleGateOpen = flags['castleGateOpen'] == true;
+    lordAhnQuestStep = flags['lordAhnQuestStep'] as int? ?? 0;
     jrAntaresSecretFound = flags['jrAntaresSecretFound'] == true;
     metPyramidSage = flags['metPyramidSage'] == true;
     lastditchQuestStep =
@@ -224,6 +252,11 @@ class LoreDialogueManager {
     spicaJoined = flags['spicaJoined'] == true;
     specialMagicLearned = flags['specialMagicLearned'] == true;
     ancientEvilMet = flags['ancientEvilMet'] == true;
+    menaceInfoGiven = flags['menaceInfoGiven'] == true;
+    weaponRoomVisited = flags['weaponRoomVisited'] == true;
+    loreChallengeAccepted = flags['loreChallengeAccepted'] == true;
+    loreChallengeBlessed = flags['loreChallengeBlessed'] == true;
+    programmerMet = flags['programmerMet'] == true;
     collectedTreasures
       ..clear()
       ..addAll(flags.keys.where((k) => k.startsWith('gold:')));
@@ -330,6 +363,16 @@ class LoreDialogueManager {
         specialMagicLearned = value;
       case 'ancientEvilMet':
         ancientEvilMet = value;
+      case 'menaceInfoGiven':
+        menaceInfoGiven = value;
+      case 'weaponRoomVisited':
+        weaponRoomVisited = value;
+      case 'loreChallengeAccepted':
+        loreChallengeAccepted = value;
+      case 'loreChallengeBlessed':
+        loreChallengeBlessed = value;
+      case 'programmerMet':
+        programmerMet = value;
     }
   }
 
@@ -392,6 +435,54 @@ class LoreDialogueManager {
 
   /// 맵 17 NOTICE 동굴: `on(75,52)` - Red Antares (LORESPEC.PAS:1026~1105)
   ///
+  /// 스크립트(`require.quest`)가 쓰는 퀘스트 이름 → 단계 값.
+  ///
+  /// 이름은 원작 `party.etc[n]` 에 대응한다:
+  ///  - `lordahn`  = etc[10] (Lord Ahn 알현 단계)
+  ///  - `lastditch`= etc[13] (LASTDITCH 성주 퀘스트)
+  ///  - `gaia`     = etc[14] (GAIA TERRA 성주 퀘스트)
+  ///  - `water`    = etc[15] (WATER FIELD 성주 퀘스트)
+  int questStepValue(String name) {
+    switch (name) {
+      case 'lordahn':
+        return lordAhnQuestStep;
+      case 'lastditch':
+        return lastditchQuestStep;
+      case 'gaia':
+        return gaiaQuestStep;
+      case 'water':
+        return waterFieldQuestStep;
+      default:
+        return 0;
+    }
+  }
+
+  Map<String, int> get questSteps => {
+    'lordahn': lordAhnQuestStep,
+    'lastditch': lastditchQuestStep,
+    'gaia': gaiaQuestStep,
+    'water': waterFieldQuestStep,
+  };
+
+  /// 스크립트의 `questStep` 스텝을 적용한다 (원작 `inc(party.etc[n])` / `:= n`).
+  void applyQuestStep(String name, {int? set, int? inc}) {
+    final value = set ?? (questStepValue(name) + (inc ?? 0));
+    switch (name) {
+      case 'lordahn':
+        lordAhnQuestStep = value;
+        break;
+      case 'lastditch':
+        lastditchQuestStep = value;
+        break;
+      case 'gaia':
+        gaiaQuestStep = value;
+        break;
+      case 'water':
+        waterFieldQuestStep = value;
+        break;
+    }
+  }
+
   /// 원작은 `party.etc[38]` 비트로 2단계를 관리한다.
   /// 1단계(bit1 미설정): "간접 공격" 특수 마법 6종을 전수받는다.
   /// 2단계(bit1 설정, bit2 미설정): 영혼이 일행에 합류한다.

@@ -266,6 +266,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
       mindReadActive: _mindReadCount > 0,
       maxEspLevel: maxEsp,
       flags: flags,
+      // 원작 `party.etc[10]`/`[13]`/`[14]`/`[15]` 퀘스트 단계.
+      questSteps: LoreDialogueManager.instance.questSteps,
       // 원작 `map[x,y]` 판정(숨은 통로 등)을 위해 밟은 타일을 넘긴다.
       tileAtPlayer: _game.currentMap?.getTile(_game.playerX, _game.playerY),
     );
@@ -376,6 +378,26 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
     for (final flag in outcome.setFlags) {
       LoreDialogueManager.instance.setFlag(flag);
+    }
+
+    // 퀘스트 단계 변화 (원작 `inc(party.etc[n])` / `party.etc[n] := 값`)
+    for (final quest in outcome.questChanges) {
+      LoreDialogueManager.instance.applyQuestStep(
+        quest.name,
+        set: quest.set,
+        inc: quest.inc,
+      );
+    }
+
+    // 경험치 보상 (원작 `for i := 1 to 6 do if player[i].name <> '' then
+    // player[i].experience := player[i].experience + n`)
+    if (outcome.expDelta != 0) {
+      for (final member in _party) {
+        if (member.name.isEmpty) continue;
+        member.experience += outcome.expDelta;
+      }
+      setState(() {});
+      _addLog('⭐ 경험치 ${outcome.expDelta > 0 ? '+' : ''}${outcome.expDelta}');
     }
 
     for (final recruit in outcome.recruits) {

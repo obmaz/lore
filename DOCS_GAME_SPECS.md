@@ -531,7 +531,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `LORESPEC.PAS` (좌표 이벤트) | ✅ 46/46 | `--coverage` 자동 점검 |
 | `LOREENT.PAS` (맵 진입/표지판) | ✅ | 포털 30 + 표지판 18 |
 | `LORESUB.PAS` (시설/조인/세이브/프롬프트) | ✅ 73% 문구 반영 | 로직은 전부 이관 |
-| `LORETALK.PAS` (마을 NPC 대사) | ⏳ 40% | 자동 변환 79개 이관, **62개 분기는 수동 필요** |
+| `LORETALK.PAS` (마을 NPC 대사) | ✅ 상태 분기 이관 | 자동 변환 79개 + 상태 분기 69개(`tool/export_lore_quest_talk.py`) |
 | `LOREMENU.PAS` (필드 메뉴/마법) | ⏳ 32% | 마법 시전 계열 점검 필요 |
 | `LOREBATT.PAS` (전투) | ⏳ 22% | 전투 문구/특수능력 문구 보강 필요 |
 | `LORECRET.PAS` (캐릭터 생성) | ⏳ 17% | 성향 문답 문구 보강 필요 |
@@ -542,9 +542,17 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
   `tool/lore_talk_report.txt`), `--emit <파일>`로 talk 스크립트 생성.
 * 마을 시설(무기점/병원/훈련소/식료품점) 좌표는 `assets/data/facilities.json`
   (5개 마을 58곳) — 이전에는 CASTLE LORE만 하드코딩되어 있었다.
-* 남은 62개 분기는 `select`(선택지)·`join`·`map[]` 변경·퀘스트 단계(`case party.etc[n]`)
-  가 섞여 있어 손으로 옮겨야 한다. 이미 조인/퀘스트는 Dart(`lore_dialogue_manager.dart`)
-  에 로직이 있고, 남은 일은 **원작 문구 전체를 옮겨 넣는 것**이다.
+* **상태 분기(`party.etc[N]`) 대사는 `python3 tool/export_lore_quest_talk.py
+  --write`로 생성**한다(원문 대사·비트·타일 변경·경험치까지 그대로 옮김).
+  - 퀘스트 단계 4종: `lordahn`(etc[10]), `lastditch`(etc[13]), `gaia`(etc[14]),
+    `water`(etc[15]) → `LoreDialogueManager.questStepValue/applyQuestStep`.
+  - 비트 5종: `menaceInfoGiven`(etc[50]b5), `weaponRoomVisited`(etc[50]b4),
+    `loreChallengeAccepted`(etc[30]b1), `loreChallengeBlessed`(etc[30]b2),
+    `programmerMet`(etc[43]b4), `jrAntaresSecretFound`(etc[50]b1).
+  - 스크립트 스텝 `{"questStep":{"name":"lordahn","inc":1}}` / `{"exp":1000}`,
+    조건 `require:{"quest":{"name":"lordahn","gte":3}}` 로 표현한다.
+  - 남은 수동 대상: `select`(선택지)·`join` 계열은 이미 스크립트 선택지로 옮겼고,
+    `LORESPEC.PAS` 좌표의 퀘스트 단계 조건(잠금/개방)이 남아 있다.
 
 ---
 

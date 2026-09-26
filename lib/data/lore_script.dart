@@ -47,6 +47,9 @@ class ScriptRequire {
   /// 플레이어가 밟고 있는 타일이 0일 때만 발동한다(원작 `if map[x,y] = 0`).
   final bool tileAtPlayerZero;
 
+  /// 퀘스트 단계 조건 (원작 `party.etc[10] = 3` / `< 3`).
+  final List<({String name, int? eq, int? lt, int? gte})> quests;
+
   const ScriptRequire({
     this.flag,
     this.flagNot,
@@ -54,10 +57,20 @@ class ScriptRequire {
     this.minEspLevel,
     this.notMindReadOrLowEsp = false,
     this.tileAtPlayerZero = false,
+    this.quests = const [],
   });
 
   factory ScriptRequire.fromJson(Map<String, dynamic>? json) {
     if (json == null) return const ScriptRequire();
+    final rawQuest = json['quest'];
+    final quests = <({String name, int? eq, int? lt, int? gte})>[];
+    if (rawQuest is Map<String, dynamic>) {
+      quests.add(_questFrom(rawQuest));
+    } else if (rawQuest is List<dynamic>) {
+      for (final q in rawQuest) {
+        quests.add(_questFrom(q as Map<String, dynamic>));
+      }
+    }
     return ScriptRequire(
       flag: json['flag'] as String?,
       flagNot: json['flagNot'] as String?,
@@ -65,8 +78,18 @@ class ScriptRequire {
       minEspLevel: json['minEspLevel'] as int?,
       notMindReadOrLowEsp: json['notMindReadOrLowEsp'] == true,
       tileAtPlayerZero: json['tileAtPlayerZero'] == true,
+      quests: quests,
     );
   }
+
+  static ({String name, int? eq, int? lt, int? gte}) _questFrom(
+    Map<String, dynamic> q,
+  ) => (
+    name: q['name'] as String,
+    eq: q['eq'] as int?,
+    lt: q['lt'] as int?,
+    gte: q['gte'] as int?,
+  );
 }
 
 /// 스크립트 실행에 필요한 상황 정보.
@@ -78,11 +101,15 @@ class ScriptContext {
   /// 플레이어가 지금 밟고 있는 타일 값(원작 `map[x,y]` 판정용, 모르면 null).
   final int? tileAtPlayer;
 
+  /// 퀘스트 단계 값 (원작 `party.etc[10/13/14/15]` 등).
+  final Map<String, int> questSteps;
+
   const ScriptContext({
     this.mindReadActive = false,
     this.maxEspLevel = 0,
     this.flags = const {},
     this.tileAtPlayer,
+    this.questSteps = const {},
   });
 }
 
@@ -138,6 +165,15 @@ class ScriptStep {
 
   /// torch 스텝: 마법의 횃불을 켠다 (원작 `party.etc[1] := 1`).
   final bool torchLit;
+
+  /// questStep 스텝: 원작 `party.etc[N]` 숫자 상태를 바꾼다
+  /// (예: `inc(party.etc[10])`).
+  final String? questName;
+  final int? questSet;
+  final int? questInc;
+
+  /// exp 스텝: 원작 `player[i].experience + n` (생존 중인 전원).
+  final int? expDelta;
 
   /// equip 스텝 (장비 지급): 원작 `weapon := 3; wea_power := 12` 등.
   final String? equipKind; // weapon | shield | armor
@@ -196,6 +232,10 @@ class ScriptStep {
     this.teleportKeepY = false,
     this.randomBranches,
     this.torchLit = false,
+    this.questName,
+    this.questSet,
+    this.questInc,
+    this.expDelta,
     this.equipKind,
     this.equipIndex,
     this.equipPower,
@@ -289,6 +329,12 @@ class ScriptOutcome {
   /// 마법의 횃불을 켰는지 (원작 `party.etc[1] := 1`).
   final bool torchLit;
 
+  /// 퀘스트 단계 변경 (원작 `party.etc[N] := n` / `inc(party.etc[N])`).
+  final List<({String name, int? set, int? inc})> questChanges;
+
+  /// 경험치 증가 (원작 `player[i].experience + n`).
+  final int expDelta;
+
   /// 지형 변형 목록 (원작 `map[x,y] := 값`).
   final List<({int? map, int x, int y, int tile, int? ifZero})> tileChanges;
 
@@ -336,6 +382,8 @@ class ScriptOutcome {
     this.teleportKeepX = false,
     this.teleportKeepY = false,
     this.torchLit = false,
+    this.questChanges = const [],
+    this.expDelta = 0,
     this.tileChanges = const [],
     this.tileAreas = const [],
     this.playerTiles = const [],
@@ -485,6 +533,10 @@ class LoreScriptEngine {
     var teleportKeepX = acc.teleportKeepX;
     var teleportKeepY = acc.teleportKeepY;
     var torchLit = acc.torchLit;
+    var questChanges = List<({String name, int? set, int? inc})>.from(
+      acc.questChanges,
+    );
+    var expDelta = acc.expDelta;
     var tileChanges =
         List<({int? map, int x, int y, int tile, int? ifZero})>.from(
           acc.tileChanges,
@@ -565,6 +617,16 @@ class LoreScriptEngine {
         case 'torch':
           torchLit = true;
           break;
+        case 'questStep':
+          questChanges.add((
+            name: step.questName!,
+            set: step.questSet,
+            inc: step.questInc,
+          ));
+          break;
+        case 'exp':
+          expDelta += step.expDelta ?? 0;
+          break;
         case 'setTile':
           tileChanges.add((
             map: step.teleportMap,
@@ -631,6 +693,8 @@ class LoreScriptEngine {
               teleportKeepX: teleportKeepX,
               teleportKeepY: teleportKeepY,
               torchLit: torchLit,
+              questChanges: questChanges,
+              expDelta: expDelta,
               tileChanges: tileChanges,
               tileAreas: tileAreas,
               playerTiles: playerTiles,
@@ -663,6 +727,8 @@ class LoreScriptEngine {
         teleportKeepX: teleportKeepX,
         teleportKeepY: teleportKeepY,
         torchLit: torchLit,
+        questChanges: questChanges,
+        expDelta: expDelta,
         tileChanges: tileChanges,
         tileAreas: tileAreas,
         playerTiles: playerTiles,
@@ -680,6 +746,13 @@ class LoreScriptEngine {
     if (r.minEspLevel != null && ctx.maxEspLevel < r.minEspLevel!) return false;
     // 원작 `if map[x,y] = 0 then ...` 같은 밟은 타일 판정.
     if (r.tileAtPlayerZero && ctx.tileAtPlayer != 0) return false;
+    // 원작 `case party.etc[10] of 3 : ...` 같은 퀘스트 단계 판정.
+    for (final q in r.quests) {
+      final value = ctx.questSteps[q.name] ?? 0;
+      if (q.eq != null && value != q.eq) return false;
+      if (q.lt != null && value >= q.lt!) return false;
+      if (q.gte != null && value < q.gte!) return false;
+    }
     if (r.notMindReadOrLowEsp) return false; // 안내용 스크립트는 위에서 처리
     return true;
   }
@@ -756,6 +829,22 @@ class LoreScriptEngine {
         steps.add(ScriptStep(kind: 'torch', torchLit: m['torch'] == true));
         matched = true;
       }
+      if (m.containsKey('questStep')) {
+        final q = m['questStep'] as Map<String, dynamic>;
+        steps.add(
+          ScriptStep(
+            kind: 'questStep',
+            questName: q['name'] as String,
+            questSet: q['set'] as int?,
+            questInc: q['inc'] as int?,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('exp')) {
+        steps.add(ScriptStep(kind: 'exp', expDelta: m['exp'] as int));
+        matched = true;
+      }
       if (m.containsKey('randomSteps')) {
         final branches = (m['randomSteps'] as List<dynamic>)
             .map((b) => _parseSteps(b as List<dynamic>))
@@ -811,6 +900,7 @@ class LoreScriptEngine {
             tileYMax: t['yMax'] as int?,
             tileValue: t['tile'] as int,
             tileIfZero: t['ifZero'] as int?,
+            tileAtPlayerX: t['atPlayerX'] == true,
           ),
         );
         matched = true;

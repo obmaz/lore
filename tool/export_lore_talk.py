@@ -28,6 +28,18 @@ SRC = 'repo_source/LORE_1993_src/LORETALK.PAS'
 # 자동 변환에서 제외할(수동 이관 대상) 키워드
 COMPLEX = ['select(', 'join(', 'joinenemy(', 'whom(', 'choosewhom']
 
+# 원작 `party.etc[N]` → 스크립트 퀘스트 이름 (포트의 상태 이름과 대응)
+QUEST_BY_ETC = {10: 'lordahn', 13: 'lastditch', 14: 'gaia', 15: 'water'}
+
+# `case party.etc[N] of` 로 시작하는 분기 (원작 퀘스트 단계별 대사)
+CASE_QUEST = re.compile(r'case\s+party\.etc\[(\d+)\]\s+of')
+# `if party.etc[N] = v` / `< v`
+QUEST_COND = re.compile(r'party\.etc\[(\d+)\]\s*(=|<|>)\s*(\d+)')
+# `inc(party.etc[N])`
+QUEST_INC = re.compile(r'inc\(\s*party\.etc\[(\d+)\]\s*\)', re.I)
+# `player[i].experience := player[i].experience + n`
+EXP_ADD = re.compile(r'experience\s*\+\s*(\d+)')
+
 AT = re.compile(r"at\((\d+)\s*,\s*(\d+)\)")
 FLAG_COND = re.compile(r"party\.etc\[(\d+)\]\s+and\s+bit(\d+)\s*(=|>)\s*0")
 FLAG_SET = re.compile(r"party\.etc\[(\d+)\]\s*:=\s*party\.etc\[(\d+)\]\s*or\s+bit(\d+)")
@@ -169,6 +181,79 @@ def branch_to_steps(branch):
     return steps, []
 
 
+
+def parse_case_arms(body, etc_n):
+    """`case party.etc[N] of v : begin ... end;` 팔을 (값, 스텝들, 비고) 로 뽑는다."""
+    quest = QUEST_BY_ETC.get(etc_n)
+    arms = []
+    i = 0
+    # `case ... of` 줄 다음부터
+    while i < len(body):
+        if CASE_QUEST.search(body[i]):
+            i += 1
+            break
+        i += 1
+    while i < len(body):
+        line = body[i]
+        stripped = line.strip()
+        m = re.match(r'^(\d+)\s*:\s*(begin)?\s*$', stripped)
+        if not m:
+            i += 1
+            continue
+        value = int(m.group(1))
+        arm_lines = []
+        if m.group(2):  # begin ~ end;
+            depth = 0
+            j = i
+            while j < len(body):
+                depth += len(re.findall(r'\bbegin\b', body[j], re.I)) - len(
+                    re.findall(r'\bend\b', body[j], re.I)
+                )
+                if j > i:
+                    arm_lines.append(body[j])
+                if depth <= 0 and j > i:
+                    break
+                j += 1
+            i = j + 1
+        else:  # 한 줄 문장
+            arm_lines.append(line)
+            i += 1
+        steps = []
+        notes = []
+        vars_ = {}
+        for raw in arm_lines:
+            if any(c in raw for c in ['map[', 'for i :=', 'putimage', 'Scroll',
+                                      'PressAnyKey', 'delay', 'BattleMode',
+                                      'displayenemies', 'enemy[']):
+                if not any(k in raw for k in ['PressAnyKey', 'Scroll']):
+                    notes.append(raw.strip()[:60])
+                continue
+            t = line_text(raw, vars_)
+            if t:
+                steps.append({'say': t})
+                continue
+            sv = SETVAR.match(raw)
+            if sv:
+                lit = STRING.search(sv.group(1))
+                if lit:
+                    vars_['s'] = unescape(lit.group(1))
+                continue
+            if QUEST_INC.search(raw):
+                steps.append({'questStep': {'name': quest, 'inc': 1}})
+            em = EXP_ADD.search(raw)
+            if em:
+                steps.append({'exp': int(em.group(1))})
+        if any('say' in st for st in steps):
+            arms.append((value, steps, notes))
+    return arms
+
+
+def quest_require(etc_n):
+    """`if party.etc[N] = v` / `< v` 헤더 조건 → require 딕셔너리."""
+    quest = QUEST_BY_ETC.get(etc_n)
+    return quest
+
+
 def main() -> int:
     report = '--report' in sys.argv
     emit_path = None
@@ -194,6 +279,37 @@ def main() -> int:
             continue
         if 'at(' in line and stripped.startswith('if'):
             branch, nxt = parse_branch(lines, i, ind)
+            body_text = '\n'.join(branch['body'])
+            m_case = CASE_QUEST.search(body_text)
+            if m_case:
+                etc_n = int(m_case.group(1))
+                if QUEST_BY_ETC.get(etc_n):
+                    for value, arm_steps, notes in parse_case_arms(
+                        branch['body'], etc_n
+                    ):
+                        for (x, y) in branch['coords']:
+                            scripts.append({
+                                'id': f'talk-{cur_map}-{x}-{y}-q{value}',
+                                'trigger': 'talk',
+                                'map': cur_map,
+                                'x': x,
+                                'y': y,
+                                'once': False,
+                                'require': {
+                                    'quest': {
+                                        'name': QUEST_BY_ETC[etc_n],
+                                        'eq': value,
+                                    }
+                                },
+                                'steps': arm_steps,
+                            })
+                            if notes:
+                                skipped.append(
+                                    (cur_map, x, y, branch['line'],
+                                     [f'퀘스트 {value} 팔 미처리: {n}' for n in notes])
+                                )
+                    i = nxt
+                    continue
             steps, complex_hit = branch_to_steps(branch)
             for (x, y) in branch['coords']:
                 if steps:

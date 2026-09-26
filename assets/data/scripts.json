@@ -276,43 +276,6 @@
       ]
     },
     {
-      "id": "polaris-join",
-      "trigger": "talk",
-      "map": 7,
-      "x": 37,
-      "y": 41,
-      "once": true,
-      "steps": [
-        {
-          "say": "전사 Polaris: \"나의 이름은 Polaris요. 당신들과 같이 PYRAMID의 Major Mummy를 물리치고 싶소!\""
-        },
-        {
-          "choice": {
-            "prompt": "Polaris를 일행으로 받아들이시겠습니까 ?",
-            "options": [
-              {
-                "text": "일행으로 받아주시오",
-                "steps": [
-                  {
-                    "join": "polaris",
-                    "flag": "polarisJoined"
-                  }
-                ]
-              },
-              {
-                "text": "지금은 함께할 수 없소",
-                "steps": [
-                  {
-                    "say": "Polaris: \"그렇다면 준비가 되면 다시 오시오.\""
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
       "id": "rigel-join",
       "trigger": "talk",
       "map": 12,
@@ -782,38 +745,6 @@
         },
         {
           "flag": "prisonBattleReturned"
-        }
-      ]
-    },
-    {
-      "id": "castle-arm-41-79",
-      "trigger": "step",
-      "map": 6,
-      "x": 41,
-      "y": 79,
-      "once": true,
-      "title": "기본 무장",
-      "steps": [
-        {
-          "say": "일행은 가장 기본적인 무기로 모두 무장을 하였다."
-        },
-        {
-          "setTile": {
-            "x": 41,
-            "y": 79,
-            "tile": 44
-          }
-        },
-        {
-          "equip": {
-            "kind": "weapon",
-            "index": 1,
-            "power": 5,
-            "onlyUnarmed": true
-          }
-        },
-        {
-          "flag": "castleBasicArmed"
         }
       ]
     },
@@ -4088,46 +4019,6 @@
       ]
     },
     {
-      "id": "talk-6-51-72",
-      "trigger": "talk",
-      "map": 6,
-      "x": 51,
-      "y": 72,
-      "once": false,
-      "steps": [
-        {
-          "say": " 당신이  Necromancer에 진정으로  대항하고자"
-        },
-        {
-          "say": "한다면, 이 성의 바로위에 있는 피라밋에 가보"
-        },
-        {
-          "say": "도록하시오. 그 곳은 Necromancer와 동시에 바"
-        },
-        {
-          "say": "다에서 떠오른 또다른 지식의 성전이기 때문이"
-        },
-        {
-          "say": "오.  당신이 어느 수준이 되어 그 곳에 들어간"
-        },
-        {
-          "say": "다면  진정한 이 세계의 진실을 알수 있을것이"
-        },
-        {
-          "say": "오."
-        },
-        {
-          "flag": "etc50_bit5"
-        },
-        {
-          "say": " `MENACE' 속에는 Dwarf, Giant, Wolf, Python"
-        },
-        {
-          "say": "같은 괴물들이 살고 있소."
-        }
-      ]
-    },
-    {
       "id": "talk-6-58-74",
       "trigger": "talk",
       "map": 6,
@@ -4402,76 +4293,6 @@
       ]
     },
     {
-      "id": "talk-6-63-76",
-      "trigger": "talk",
-      "map": 6,
-      "x": 63,
-      "y": 76,
-      "once": false,
-      "steps": [
-        {
-          "say": " 당신이  한 유골 앞에 섰을때  이상한 느낌과"
-        },
-        {
-          "say": "함께 먼곳으로 부터 어떤 소리가 들려왔다."
-        },
-        {
-          "say": " 안녕하시오. 대담한 용사여."
-        },
-        {
-          "say": " 당신이 나의 잠을 깨웠소 ?  나는 고대에 이"
-        },
-        {
-          "say": "곳을 지키다가 죽어간 기사 Jr. Antares 라고"
-        },
-        {
-          "say": "하오.  저의 아버지는 Red Antares 라고 불리"
-        },
-        {
-          "say": "웠던 최강의 마법사였소.  그는 말년에  어떤"
-        },
-        {
-          "say": "동굴로 은신을 한 후 아무에게도 모습을 나타"
-        },
-        {
-          "say": "내지 않았소.  하지만 당신의 운명은 나의 아"
-        },
-        {
-          "say": "버지를 만나야만하는 운명이라는 것을 알수있"
-        },
-        {
-          "say": "소.  반드시 나의 아버지를 만나서 당신이 알"
-        },
-        {
-          "say": "지 못했던 새로운 능력들을 배우시오. 그리고"
-        },
-        {
-          "say": "나의 아버지를 당신의 동행으로 참가시키도록"
-        },
-        {
-          "say": "하시오. 물론 좀 어렵겠지만 ..."
-        },
-        {
-          "say": " 아참,  그리고 내가 죽기전에 여기에 뭔가를"
-        },
-        {
-          "say": "여기에 숨겨 두었는데  당신에게 도움이 될지"
-        },
-        {
-          "say": "모르겠소. 그럼, 나는 다시 오랜 잠으로 들어"
-        },
-        {
-          "say": "가야 겠소."
-        },
-        {
-          "flag": "etc50_bit1"
-        }
-      ],
-      "require": {
-        "flagNot": "etc50_bit1"
-      }
-    },
-    {
       "id": "talk-6-24-50",
       "trigger": "talk",
       "map": 6,
@@ -4741,56 +4562,6 @@
       ]
     },
     {
-      "id": "talk-6-42-78",
-      "trigger": "talk",
-      "map": 6,
-      "x": 42,
-      "y": 78,
-      "once": false,
-      "steps": [
-        {
-          "say": " Lord Ahn 님의 명령에 의해서 당신들에게 한"
-        },
-        {
-          "say": "가지의 무기를 드리겠습니다.  들어가셔서 무"
-        },
-        {
-          "say": "기를 선택해 주십시오."
-        },
-        {
-          "say": " 여기서 가져가신 무기를 잘 사용하셔서 세계"
-        },
-        {
-          "say": "의 적인 Necromancer를 무찔러 주십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-6-42-80",
-      "trigger": "talk",
-      "map": 6,
-      "x": 42,
-      "y": 80,
-      "once": false,
-      "steps": [
-        {
-          "say": " Lord Ahn 님의 명령에 의해서 당신들에게 한"
-        },
-        {
-          "say": "가지의 무기를 드리겠습니다.  들어가셔서 무"
-        },
-        {
-          "say": "기를 선택해 주십시오."
-        },
-        {
-          "say": " 여기서 가져가신 무기를 잘 사용하셔서 세계"
-        },
-        {
-          "say": "의 적인 Necromancer를 무찔러 주십시오."
-        }
-      ]
-    },
-    {
       "id": "talk-6-51-14",
       "trigger": "talk",
       "map": 6,
@@ -4813,38 +4584,6 @@
       "steps": [
         {
           "say": "MENACE 는 한때 금광이었습니다."
-        }
-      ]
-    },
-    {
-      "id": "talk-6-50-51",
-      "trigger": "talk",
-      "map": 6,
-      "x": 50,
-      "y": 51,
-      "once": false,
-      "steps": [
-        {
-          "say": "행운을 빌겠소 !!!"
-        },
-        {
-          "say": "저희 성주님을 만나 보십시오."
-        },
-        {
-          "say": "당신은 이 게임 세계에 도전하고 싶습니까 ?"
-        }
-      ]
-    },
-    {
-      "id": "talk-6-51-28",
-      "trigger": "talk",
-      "map": 6,
-      "x": 51,
-      "y": 28,
-      "once": false,
-      "steps": [
-        {
-          "say": " 나는 Lord Ahn 이오."
         }
       ]
     },
@@ -4966,97 +4705,6 @@
       ]
     },
     {
-      "id": "talk-7-36-19",
-      "trigger": "talk",
-      "map": 7,
-      "x": 36,
-      "y": 19,
-      "once": false,
-      "steps": [
-        {
-          "say": "성주님을 만나 보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-7-36-21",
-      "trigger": "talk",
-      "map": 7,
-      "x": 36,
-      "y": 21,
-      "once": false,
-      "steps": [
-        {
-          "say": "성주님을 만나 보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-7-41-18",
-      "trigger": "talk",
-      "map": 7,
-      "x": 41,
-      "y": 18,
-      "once": false,
-      "steps": [
-        {
-          "say": "성주님을 만나 보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-7-41-20",
-      "trigger": "talk",
-      "map": 7,
-      "x": 41,
-      "y": 20,
-      "once": false,
-      "steps": [
-        {
-          "say": "성주님을 만나 보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-7-41-22",
-      "trigger": "talk",
-      "map": 7,
-      "x": 41,
-      "y": 22,
-      "once": false,
-      "steps": [
-        {
-          "say": "성주님을 만나 보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-7-40-41",
-      "trigger": "talk",
-      "map": 7,
-      "x": 40,
-      "y": 41,
-      "once": false,
-      "steps": [
-        {
-          "say": "성주님을 만나 보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-7-38-17",
-      "trigger": "talk",
-      "map": 7,
-      "x": 38,
-      "y": 17,
-      "once": false,
-      "steps": [
-        {
-          "say": " 당신이 이오 ?{hero}"
-        }
-      ]
-    },
-    {
       "id": "talk-9-24-38",
       "trigger": "talk",
       "map": 9,
@@ -5173,97 +4821,6 @@
       ]
     },
     {
-      "id": "talk-9-34-24",
-      "trigger": "talk",
-      "map": 9,
-      "x": 34,
-      "y": 24,
-      "once": false,
-      "steps": [
-        {
-          "say": "우리 성주님을 만나보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-9-37-24",
-      "trigger": "talk",
-      "map": 9,
-      "x": 37,
-      "y": 24,
-      "once": false,
-      "steps": [
-        {
-          "say": "우리 성주님을 만나보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-9-41-24",
-      "trigger": "talk",
-      "map": 9,
-      "x": 41,
-      "y": 24,
-      "once": false,
-      "steps": [
-        {
-          "say": "우리 성주님을 만나보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-9-35-27",
-      "trigger": "talk",
-      "map": 9,
-      "x": 35,
-      "y": 27,
-      "once": false,
-      "steps": [
-        {
-          "say": "우리 성주님을 만나보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-9-38-27",
-      "trigger": "talk",
-      "map": 9,
-      "x": 38,
-      "y": 27,
-      "once": false,
-      "steps": [
-        {
-          "say": "우리 성주님을 만나보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-9-41-27",
-      "trigger": "talk",
-      "map": 9,
-      "x": 41,
-      "y": 27,
-      "once": false,
-      "steps": [
-        {
-          "say": "우리 성주님을 만나보십시오."
-        }
-      ]
-    },
-    {
-      "id": "talk-9-42-25",
-      "trigger": "talk",
-      "map": 9,
-      "x": 42,
-      "y": 25,
-      "once": false,
-      "steps": [
-        {
-          "say": " 당신을 만나게되어 영광이오."
-        }
-      ]
-    },
-    {
       "id": "talk-10-11-16",
       "trigger": "talk",
       "map": 10,
@@ -5364,19 +4921,6 @@
       ]
     },
     {
-      "id": "talk-10-25-18",
-      "trigger": "talk",
-      "map": 10,
-      "x": 25,
-      "y": 18,
-      "once": false,
-      "steps": [
-        {
-          "say": " 여기는 WATER FIELD 라는 성이오.  이곳이 당"
-        }
-      ]
-    },
-    {
       "id": "talk-24-17-15",
       "trigger": "talk",
       "map": 24,
@@ -5442,43 +4986,6 @@
       ]
     },
     {
-      "id": "talk-24-33-10",
-      "trigger": "talk",
-      "map": 24,
-      "x": 33,
-      "y": 10,
-      "once": false,
-      "steps": [
-        {
-          "say": " 이 사람들은 잘 모르겠지만  사실 나는 이 게"
-        },
-        {
-          "say": "임의 제작자인 안 영기요."
-        },
-        {
-          "say": " 나는 여태껏 계속 당신들이 가는 도시마다 주"
-        },
-        {
-          "say": "민으로 가장한채 당신들을 지켜 보았소. 이 게"
-        },
-        {
-          "say": "임의 버그를 찾거나 난이도를 조절하기 위해서"
-        },
-        {
-          "say": "말이요. 만약 당신들이 Necromancer 를 물리친"
-        },
-        {
-          "say": "다면 내가 마지막으로 당신앞에 나타나겠소."
-        },
-        {
-          "say": " 그럼, 이만 나는 가보겠소."
-        },
-        {
-          "flag": "etc43_bit4"
-        }
-      ]
-    },
-    {
       "id": "talk-27-15-6",
       "trigger": "talk",
       "map": 27,
@@ -5538,6 +5045,2243 @@
           "say": "하지요."
         }
       ]
+    },
+    {
+      "id": "talk-6-51-72",
+      "map": 6,
+      "x": 51,
+      "y": 72,
+      "require": {
+        "flagNot": "menaceInfoGiven"
+      },
+      "steps": [
+        {
+          "say": " 당신이  Necromancer에 진정으로  대항하고자"
+        },
+        {
+          "say": "한다면, 이 성의 바로위에 있는 피라밋에 가보"
+        },
+        {
+          "say": "도록하시오. 그 곳은 Necromancer와 동시에 바"
+        },
+        {
+          "say": "다에서 떠오른 또다른 지식의 성전이기 때문이"
+        },
+        {
+          "say": "오.  당신이 어느 수준이 되어 그 곳에 들어간"
+        },
+        {
+          "say": "다면  진정한 이 세계의 진실을 알수 있을것이"
+        },
+        {
+          "say": "오."
+        },
+        {
+          "flag": "menaceInfoGiven"
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-51-72-b",
+      "map": 6,
+      "x": 51,
+      "y": 72,
+      "require": {
+        "flag": "menaceInfoGiven"
+      },
+      "steps": [
+        {
+          "say": " `MENACE' 속에는 Dwarf, Giant, Wolf, Python"
+        },
+        {
+          "say": "같은 괴물들이 살고 있소."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-63-76",
+      "map": 6,
+      "x": 63,
+      "y": 76,
+      "require": {
+        "flagNot": "jrAntaresSecretFound"
+      },
+      "steps": [
+        {
+          "say": " 당신이  한 유골 앞에 섰을때  이상한 느낌과"
+        },
+        {
+          "say": "함께 먼곳으로 부터 어떤 소리가 들려왔다."
+        },
+        {
+          "say": " 안녕하시오. 대담한 용사여."
+        },
+        {
+          "say": " 당신이 나의 잠을 깨웠소 ?  나는 고대에 이"
+        },
+        {
+          "say": "곳을 지키다가 죽어간 기사 Jr. Antares 라고"
+        },
+        {
+          "say": "하오.  저의 아버지는 Red Antares 라고 불리"
+        },
+        {
+          "say": "웠던 최강의 마법사였소.  그는 말년에  어떤"
+        },
+        {
+          "say": "동굴로 은신을 한 후 아무에게도 모습을 나타"
+        },
+        {
+          "say": "내지 않았소.  하지만 당신의 운명은 나의 아"
+        },
+        {
+          "say": "버지를 만나야만하는 운명이라는 것을 알수있"
+        },
+        {
+          "say": "소.  반드시 나의 아버지를 만나서 당신이 알"
+        },
+        {
+          "say": "지 못했던 새로운 능력들을 배우시오. 그리고"
+        },
+        {
+          "say": "나의 아버지를 당신의 동행으로 참가시키도록"
+        },
+        {
+          "say": "하시오. 물론 좀 어렵겠지만 ..."
+        },
+        {
+          "say": " 아참,  그리고 내가 죽기전에 여기에 뭔가를"
+        },
+        {
+          "say": "여기에 숨겨 두었는데  당신에게 도움이 될지"
+        },
+        {
+          "say": "모르겠소. 그럼, 나는 다시 오랜 잠으로 들어"
+        },
+        {
+          "say": "가야 겠소."
+        },
+        {
+          "setTileArea": {
+            "xMin": 62,
+            "xMax": 62,
+            "yMin": 79,
+            "yMax": 81,
+            "tile": 44,
+            "map": 6
+          }
+        },
+        {
+          "setTile": {
+            "x": 62,
+            "y": 82,
+            "tile": 0,
+            "map": 6
+          }
+        },
+        {
+          "setTile": {
+            "x": 62,
+            "y": 83,
+            "tile": 14,
+            "map": 6
+          }
+        },
+        {
+          "flag": "jrAntaresSecretFound"
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-42-78",
+      "map": 6,
+      "x": 42,
+      "y": 78,
+      "require": {
+        "flagNot": "weaponRoomVisited"
+      },
+      "steps": [
+        {
+          "say": " Lord Ahn 님의 명령에 의해서 당신들에게 한"
+        },
+        {
+          "say": "가지의 무기를 드리겠습니다.  들어가셔서 무"
+        },
+        {
+          "say": "기를 선택해 주십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-42-78-b",
+      "map": 6,
+      "x": 42,
+      "y": 78,
+      "require": {
+        "flag": "weaponRoomVisited"
+      },
+      "steps": [
+        {
+          "say": " 여기서 가져가신 무기를 잘 사용하셔서 세계"
+        },
+        {
+          "say": "의 적인 Necromancer를 무찔러 주십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-42-80",
+      "map": 6,
+      "x": 42,
+      "y": 80,
+      "require": {
+        "flagNot": "weaponRoomVisited"
+      },
+      "steps": [
+        {
+          "say": " Lord Ahn 님의 명령에 의해서 당신들에게 한"
+        },
+        {
+          "say": "가지의 무기를 드리겠습니다.  들어가셔서 무"
+        },
+        {
+          "say": "기를 선택해 주십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-42-80-b",
+      "map": 6,
+      "x": 42,
+      "y": 80,
+      "require": {
+        "flag": "weaponRoomVisited"
+      },
+      "steps": [
+        {
+          "say": " 여기서 가져가신 무기를 잘 사용하셔서 세계"
+        },
+        {
+          "say": "의 적인 Necromancer를 무찔러 주십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-50-51-a",
+      "map": 6,
+      "x": 50,
+      "y": 51,
+      "require": {
+        "flag": "loreChallengeAccepted"
+      },
+      "steps": [
+        {
+          "say": "행운을 빌겠소 !!!"
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-50-51-b",
+      "map": 6,
+      "x": 50,
+      "y": 51,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "lt": 3
+        },
+        "flagNot": "loreChallengeAccepted"
+      },
+      "steps": [
+        {
+          "say": "저희 성주님을 만나 보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-50-51-c",
+      "map": 6,
+      "x": 50,
+      "y": 51,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "gte": 3
+        },
+        "flagNot": "loreChallengeAccepted"
+      },
+      "steps": [
+        {
+          "choice": {
+            "prompt": "당신은 이 게임 세계에 도전하고 싶습니까 ?\n(Y/n)",
+            "options": [
+              {
+                "text": "예.",
+                "steps": [
+                  {
+                    "setTile": {
+                      "x": 49,
+                      "y": 52,
+                      "tile": 47,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 50,
+                      "y": 52,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 51,
+                      "y": 52,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 52,
+                      "y": 52,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 53,
+                      "y": 52,
+                      "tile": 47,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 49,
+                      "y": 53,
+                      "tile": 47,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 50,
+                      "y": 53,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 51,
+                      "y": 53,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 52,
+                      "y": 53,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 53,
+                      "y": 53,
+                      "tile": 45,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "say": "이제부터 당신은 진정한 이 세계에 발을 디디게 되는 것입니다."
+                  },
+                  {
+                    "flag": "loreChallengeAccepted"
+                  }
+                ]
+              },
+              {
+                "text": "아니오.",
+                "steps": [
+                  {
+                    "say": "다시 생각 해보십시오."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-52-51-a",
+      "map": 6,
+      "x": 52,
+      "y": 51,
+      "require": {
+        "flag": "loreChallengeAccepted"
+      },
+      "steps": [
+        {
+          "say": "행운을 빌겠소 !!!"
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-52-51-b",
+      "map": 6,
+      "x": 52,
+      "y": 51,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "lt": 3
+        },
+        "flagNot": "loreChallengeAccepted"
+      },
+      "steps": [
+        {
+          "say": "저희 성주님을 만나 보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-52-51-c",
+      "map": 6,
+      "x": 52,
+      "y": 51,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "gte": 3
+        },
+        "flagNot": "loreChallengeAccepted"
+      },
+      "steps": [
+        {
+          "choice": {
+            "prompt": "당신은 이 게임 세계에 도전하고 싶습니까 ?\n(Y/n)",
+            "options": [
+              {
+                "text": "예.",
+                "steps": [
+                  {
+                    "setTile": {
+                      "x": 49,
+                      "y": 52,
+                      "tile": 47,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 50,
+                      "y": 52,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 51,
+                      "y": 52,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 52,
+                      "y": 52,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 53,
+                      "y": 52,
+                      "tile": 47,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 49,
+                      "y": 53,
+                      "tile": 47,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 50,
+                      "y": 53,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 51,
+                      "y": 53,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 52,
+                      "y": 53,
+                      "tile": 44,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "setTile": {
+                      "x": 53,
+                      "y": 53,
+                      "tile": 45,
+                      "map": 6
+                    }
+                  },
+                  {
+                    "say": "이제부터 당신은 진정한 이 세계에 발을 디디게 되는 것입니다."
+                  },
+                  {
+                    "flag": "loreChallengeAccepted"
+                  }
+                ]
+              },
+              {
+                "text": "아니오.",
+                "steps": [
+                  {
+                    "say": "다시 생각 해보십시오."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-51-87",
+      "map": 6,
+      "x": 51,
+      "y": 87,
+      "require": {
+        "flagNot": "loreChallengeBlessed"
+      },
+      "steps": [
+        {
+          "setTileArea": {
+            "xMin": 49,
+            "xMax": 53,
+            "yMin": 88,
+            "yMax": 88,
+            "tile": 44,
+            "map": 6
+          }
+        },
+        {
+          "say": "난 당신을 믿소, {hero}."
+        },
+        {
+          "flag": "loreChallengeBlessed"
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-51-87-b",
+      "map": 6,
+      "x": 51,
+      "y": 87,
+      "require": {
+        "flag": "loreChallengeBlessed"
+      },
+      "steps": [
+        {
+          "say": "힘내시오, {hero}."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-gate-a",
+      "map": 6,
+      "xMin": 48,
+      "xMax": 54,
+      "yMin": 31,
+      "yMax": 37,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "저희 성주님을 만나십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-gate-b",
+      "map": 6,
+      "xMin": 48,
+      "xMax": 54,
+      "yMin": 31,
+      "yMax": 37,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신이 성공하기를 빕니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-6-51-28-q0",
+      "trigger": "talk",
+      "map": 6,
+      "x": 51,
+      "y": 28,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": " 나는 Lord Ahn 이오."
+        },
+        {
+          "say": " 이제부터 당신은  이 게임에서 새로운 인물로"
+        },
+        {
+          "say": "서 생을 시작하게 될것이오. 그럼 나의 이야기"
+        },
+        {
+          "say": "를 시작하겠소."
+        },
+        {
+          "questStep": {
+            "name": "lordahn",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-6-51-28-q1",
+      "trigger": "talk",
+      "map": 6,
+      "x": 51,
+      "y": 28,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "eq": 1
+        }
+      },
+      "steps": [
+        {
+          "say": " 이 세계는 내가 통치하는 동안에는 무척 평화"
+        },
+        {
+          "say": "로운 세상이 진행되어 왔었소.  그러나 그것은"
+        },
+        {
+          "say": "한 운명의 장난으로 무참히 깨어져 버렸소."
+        },
+        {
+          "say": " 한날, 대기의 공간이 진동하며 난데없는 푸른"
+        },
+        {
+          "say": "번개가 대륙들 중의 하나를 강타했소.  공간은"
+        },
+        {
+          "say": "휘어지고 시간은 진동하며  이 세계를 공포 속"
+        },
+        {
+          "say": "으로 몰고 갔소.  그 번개의 위력으로 그 불운"
+        },
+        {
+          "say": "한 대륙은  황폐화된 용암 대지로 변하고 말았"
+        },
+        {
+          "say": "고, 다른 하나의 대륙은 충돌시의 진동에 의해"
+        },
+        {
+          "say": "바다 깊이 가라앉아 버렸소."
+        },
+        {
+          "say": " 그런 일이 있은 한참 후에,  이상하게도 용암"
+        },
+        {
+          "say": "대지의 대륙으로부터 강한 생명의 기운이 발산"
+        },
+        {
+          "say": "되기 시작 했소.  그래서, 우리들은 그 원인을"
+        },
+        {
+          "say": "알아보기 위해 'LORE 특공대'를 조직하기로 합"
+        },
+        {
+          "say": "의를 하고 이곳에 있는 거의 모든 용사들을 모"
+        },
+        {
+          "say": "아서 용암 대지로 변한 그 대륙으로 급히 그들"
+        },
+        {
+          "say": "을 파견하였지만 여태껏 아무 소식도 듣지못했"
+        },
+        {
+          "say": "소. 그들이 생존해 있는지 조차도 말이오."
+        },
+        {
+          "say": " 이런 저런 방법을 통하여 그들의 생사를 알아"
+        },
+        {
+          "say": "려던중 우연히 우리들은 'Necromancer'라고 불"
+        },
+        {
+          "say": "리우는  용암 대지속의  새로운 세력의 존재를"
+        },
+        {
+          "say": "알아내었고,  그때의 그들은 이미 막강한 세력"
+        },
+        {
+          "say": "으로 성장해가고 있는중 이었소.  그때의 번개"
+        },
+        {
+          "say": "는 그가 이 공간으로 이동하는 수단이었소. 즉"
+        },
+        {
+          "say": "그는 이 공간의 인물이 아닌 다른 차원을 가진"
+        },
+        {
+          "say": "공간에서 왔던 것이오."
+        },
+        {
+          "say": " 그는 현재 이 세계의 반을  그의 세력권 안에"
+        },
+        {
+          "say": "넣고 있소. 여기서 당신의 궁극적인 임무는 바"
+        },
+        {
+          "say": "로 'Necromancer 의 야심을 봉쇄 시키는 것'이"
+        },
+        {
+          "say": "라는 걸 명심해 두시오."
+        },
+        {
+          "questStep": {
+            "name": "lordahn",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-6-51-28-q2",
+      "trigger": "talk",
+      "map": 6,
+      "x": 51,
+      "y": 28,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "eq": 2
+        }
+      },
+      "steps": [
+        {
+          "say": " Necromancer 의 영향력은 이미 LORE 대륙까지"
+        },
+        {
+          "say": "도달해있소.  또한 그들은 이 대륙의 남서쪽에"
+        },
+        {
+          "say": "'MENACE' 라고 불리우는 지하 동굴을 얼마전에"
+        },
+        {
+          "say": "구축했소.  그래서, 그 동굴의 존재 때문에 우"
+        },
+        {
+          "say": "리들은 그에게 위협을 당하게 되었던 것이오."
+        },
+        {
+          "say": " 하지만, LORE 특공대가 이 대륙을 떠난후로는"
+        },
+        {
+          "say": "그 일당들에게 대적할 용사는  이미  남아있지"
+        },
+        {
+          "say": "않았소. 그래서 부탁하건데, 그 동굴을 중심부"
+        },
+        {
+          "say": "까지 탐사해 주시오."
+        },
+        {
+          "say": " 나는 당신들에게 Necromancer에 대한 일을 맡"
+        },
+        {
+          "say": "기고 싶지만, 아직은 당신들의  확실한 능력을"
+        },
+        {
+          "say": "모르는 상태이지요.  그래서 이 일은 당신들의"
+        },
+        {
+          "say": "잠재력을 증명해 주는 좋은 기회가 될것이오."
+        },
+        {
+          "say": " 만약 당신들이 무기가 필요하다면 무기고에서"
+        },
+        {
+          "say": "약간의 무기를 가져가도록 허락하겠소."
+        },
+        {
+          "questStep": {
+            "name": "lordahn",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-6-51-28-q3",
+      "trigger": "talk",
+      "map": 6,
+      "x": 51,
+      "y": 28,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "eq": 3
+        }
+      },
+      "steps": [
+        {
+          "say": " 대륙의 남서쪽에 있는 `MENACE'를 탐사해 주시오."
+        }
+      ]
+    },
+    {
+      "id": "talk-6-51-28-q4",
+      "trigger": "talk",
+      "map": 6,
+      "x": 51,
+      "y": 28,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "eq": 4
+        }
+      },
+      "steps": [
+        {
+          "say": "당신들의 성공을 축하하오 !!"
+        },
+        {
+          "say": "[EXP + 1000]"
+        },
+        {
+          "exp": 1000
+        },
+        {
+          "questStep": {
+            "name": "lordahn",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-6-51-28-q5",
+      "trigger": "talk",
+      "map": 6,
+      "x": 51,
+      "y": 28,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "eq": 5
+        }
+      },
+      "steps": [
+        {
+          "say": " 드디어 나는 당신들의 능력을 믿을수 있게 되"
+        },
+        {
+          "say": "었소.  그렇다면 당신들에게 Necromancer 응징"
+        },
+        {
+          "say": "이라는 막중한 임무를 한번 맡겨 보겠소."
+        },
+        {
+          "say": " 먼저 대륙의 동쪽에 있는 'LASTDITCH'에 가보"
+        },
+        {
+          "say": "도록 하시오. 'LASTDITCH'성에는 지금 많은 근"
+        },
+        {
+          "say": "심에 쌓여있소. 그들을 도와 주시오."
+        },
+        {
+          "questStep": {
+            "name": "lordahn",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-6-51-28-q6",
+      "trigger": "talk",
+      "map": 6,
+      "x": 51,
+      "y": 28,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lordahn",
+          "eq": 6
+        }
+      },
+      "steps": [
+        {
+          "say": " 당신은 이제 스스로 행동해 나가시오."
+        }
+      ]
+    },
+    {
+      "id": "lore-weapon-room",
+      "map": 6,
+      "x": 41,
+      "y": 79,
+      "trigger": "step",
+      "require": {
+        "flagNot": "weaponRoomVisited"
+      },
+      "steps": [
+        {
+          "flag": "weaponRoomVisited"
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 41,
+            "y": 79,
+            "tile": 44
+          }
+        },
+        {
+          "nudge": {
+            "dx": -1,
+            "dy": 0
+          }
+        },
+        {
+          "nudge": {
+            "dx": -1,
+            "dy": 0
+          }
+        },
+        {
+          "nudge": {
+            "dx": -1,
+            "dy": 0
+          }
+        },
+        {
+          "say": " 일행은 가장 기본적인 무기로  모두  무장을"
+        },
+        {
+          "say": "하였다."
+        },
+        {
+          "equip": {
+            "kind": "weapon",
+            "index": 1,
+            "power": 5,
+            "onlyUnarmed": true
+          }
+        }
+      ],
+      "once": false
+    },
+    {
+      "id": "talk-7-36-19-a",
+      "map": 7,
+      "x": 36,
+      "y": 19,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "성주님을 만나 보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-36-19-b",
+      "map": 7,
+      "x": 36,
+      "y": 19,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신이 성공하기를 빕니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-36-21-a",
+      "map": 7,
+      "x": 36,
+      "y": 21,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "성주님을 만나 보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-36-21-b",
+      "map": 7,
+      "x": 36,
+      "y": 21,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신이 성공하기를 빕니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-41-18-a",
+      "map": 7,
+      "x": 41,
+      "y": 18,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "성주님을 만나 보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-41-18-b",
+      "map": 7,
+      "x": 41,
+      "y": 18,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신이 성공하기를 빕니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-41-20-a",
+      "map": 7,
+      "x": 41,
+      "y": 20,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "성주님을 만나 보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-41-20-b",
+      "map": 7,
+      "x": 41,
+      "y": 20,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신이 성공하기를 빕니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-41-22-a",
+      "map": 7,
+      "x": 41,
+      "y": 22,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "성주님을 만나 보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-41-22-b",
+      "map": 7,
+      "x": 41,
+      "y": 22,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신이 성공하기를 빕니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-40-41-a",
+      "map": 7,
+      "x": 40,
+      "y": 41,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "성주님을 만나 보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-40-41-b",
+      "map": 7,
+      "x": 40,
+      "y": 41,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신이 성공하기를 빕니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "polaris-join",
+      "map": 7,
+      "x": 37,
+      "y": 41,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "lt": 2
+        }
+      },
+      "steps": [
+        {
+          "say": "나의 이름은 Polaris 요."
+        },
+        {
+          "say": "당신들과 같이 Major Mummy 를 물리치고 싶소."
+        },
+        {
+          "choice": {
+            "prompt": "내가 당신의 일행에 끼여도 되겠소 ?",
+            "options": [
+              {
+                "text": "나는 당신의 제안을 받아 들이겠소",
+                "steps": [
+                  {
+                    "join": "polaris",
+                    "flag": "polarisJoined"
+                  },
+                  {
+                    "setTile": {
+                      "x": 37,
+                      "y": 41,
+                      "tile": 44,
+                      "map": 7
+                    }
+                  }
+                ]
+              },
+              {
+                "text": "나는 당신의 도움은 필요 없소",
+                "steps": [
+                  {
+                    "say": "당신이 바란다면 ..."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-7-38-17-q0",
+      "trigger": "talk",
+      "map": 7,
+      "x": 38,
+      "y": 17,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": " 당신이 {hero}이오 ?"
+        },
+        {
+          "say": " 나는 Lord Ahn 에게 당신이 온다는 소식을 전"
+        },
+        {
+          "say": "해받았소.  들었다시피 우리성에는  큰 문제가"
+        },
+        {
+          "say": "있소. 그것은 이 성의 북쪽에 위치해있는 동굴"
+        },
+        {
+          "say": "때문이오.  그 동굴때문에 우리들은 상당한 압"
+        },
+        {
+          "say": "박을받고 있소."
+        },
+        {
+          "say": " 만약 당신들이 위대한 영웅이라면, PYRAMID라"
+        },
+        {
+          "say": "는 동굴에 있는 Major Mummy를 처단해 주시오."
+        },
+        {
+          "say": " 당신들이 이 임무를 완수하면  나는 당신들에"
+        },
+        {
+          "say": "게 도움에 대한 댓가를 치뤄주겠소."
+        },
+        {
+          "questStep": {
+            "name": "lastditch",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-7-38-17-q1",
+      "trigger": "talk",
+      "map": 7,
+      "x": 38,
+      "y": 17,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 1
+        }
+      },
+      "steps": [
+        {
+          "say": " 부탁하건데, PYRAMID의 'Major Mummy'를 처단"
+        },
+        {
+          "say": "해 주시오."
+        }
+      ]
+    },
+    {
+      "id": "talk-7-38-17-q2",
+      "trigger": "talk",
+      "map": 7,
+      "x": 38,
+      "y": 17,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 2
+        }
+      },
+      "steps": [
+        {
+          "say": "당신의 성공에 경의를 표하오."
+        },
+        {
+          "say": "[EXP + 10000]"
+        },
+        {
+          "say": "당신의 도움 덕분에 우리의 성이 구제 되었소."
+        },
+        {
+          "exp": 10000
+        },
+        {
+          "questStep": {
+            "name": "lastditch",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-7-38-17-q3",
+      "trigger": "talk",
+      "map": 7,
+      "x": 38,
+      "y": 17,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "eq": 3
+        }
+      },
+      "steps": [
+        {
+          "say": " 이 성의 북동쪽에 'GROUND GATE' 라는것이 있"
+        },
+        {
+          "say": "소. 만약 당신이 'GROUND GATE' 속에 들어간다"
+        },
+        {
+          "say": "면 'VALIANT PEOPLES'성으로 통하게 될것이오."
+        },
+        {
+          "say": "'VALIANT PEOPLES'는 Necromancer에게 매우 심"
+        },
+        {
+          "say": "하게 영향을 받고있소."
+        }
+      ]
+    },
+    {
+      "id": "talk-9-34-24-a",
+      "map": 9,
+      "x": 34,
+      "y": 24,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "우리 성주님을 만나보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-34-24-b",
+      "map": 9,
+      "x": 34,
+      "y": 24,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신의 성공을 빌겠습니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-37-24-a",
+      "map": 9,
+      "x": 37,
+      "y": 24,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "우리 성주님을 만나보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-37-24-b",
+      "map": 9,
+      "x": 37,
+      "y": 24,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신의 성공을 빌겠습니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-41-24-a",
+      "map": 9,
+      "x": 41,
+      "y": 24,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "우리 성주님을 만나보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-41-24-b",
+      "map": 9,
+      "x": 41,
+      "y": 24,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신의 성공을 빌겠습니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-35-27-a",
+      "map": 9,
+      "x": 35,
+      "y": 27,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "우리 성주님을 만나보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-35-27-b",
+      "map": 9,
+      "x": 35,
+      "y": 27,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신의 성공을 빌겠습니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-38-27-a",
+      "map": 9,
+      "x": 38,
+      "y": 27,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "우리 성주님을 만나보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-38-27-b",
+      "map": 9,
+      "x": 38,
+      "y": 27,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신의 성공을 빌겠습니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-41-27-a",
+      "map": 9,
+      "x": 41,
+      "y": 27,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "우리 성주님을 만나보십시오."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-41-27-b",
+      "map": 9,
+      "x": 41,
+      "y": 27,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "gte": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신의 성공을 빌겠습니다."
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-9-42-25-q0",
+      "trigger": "talk",
+      "map": 9,
+      "x": 42,
+      "y": 25,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": " 당신을 만나게되어 영광이오."
+        },
+        {
+          "say": " 나는 LORE 대륙에서의 당신의 공훈을 높이 평"
+        },
+        {
+          "say": "가하며, 또한 LAST DITCH성을 구제하것에 대해"
+        },
+        {
+          "say": "서도 감사를 표하오.  LAST DITCH 성의 쌍둥이"
+        },
+        {
+          "say": "성인 'VALIANT PEOPLES'는 Necromancer에 대한"
+        },
+        {
+          "say": "강한 저항 때문에 그에 의해서  처참히 파괴되"
+        },
+        {
+          "say": "었소.  그런후에 그는 'VALIANT PEOPLES'의 지"
+        },
+        {
+          "say": "하에다가 EVIL SEAL이라는 동굴을 구축하였소."
+        },
+        {
+          "say": "그리고 그는 EVIL SEAL의 어디엔가에  이 대륙"
+        },
+        {
+          "say": "의 운명을 담고 있는  황금의 봉인을 숨겨놓았"
+        },
+        {
+          "say": "소. 만약 그 봉인이 풀어진다면, 이 대륙은 봉"
+        },
+        {
+          "say": "인 속에서 나타난 괴물들에 의해서 황폐화  될"
+        },
+        {
+          "say": "것이오."
+        },
+        {
+          "say": " 한시바삐 EVIL SEAL 로 가시오, 그리고 '황금"
+        },
+        {
+          "say": "의 봉인'을 찾으시오."
+        },
+        {
+          "questStep": {
+            "name": "gaia",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-9-42-25-q1",
+      "trigger": "talk",
+      "map": 9,
+      "x": 42,
+      "y": 25,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 1
+        }
+      },
+      "steps": [
+        {
+          "say": " VALIANT PEOPLES에 있는 EVIL SEAL로 가서 황"
+        },
+        {
+          "say": "금의 봉인을 찾아오시오."
+        },
+        {
+          "say": " 지금 지체할 시간이 없소."
+        }
+      ]
+    },
+    {
+      "id": "talk-9-42-25-q2",
+      "trigger": "talk",
+      "map": 9,
+      "x": 42,
+      "y": 25,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 2
+        }
+      },
+      "steps": [
+        {
+          "say": " 오, 당신은 황금의 봉인을 찾았군요 !"
+        },
+        {
+          "say": " [ EXP + 10000 ]"
+        },
+        {
+          "exp": 10000
+        },
+        {
+          "questStep": {
+            "name": "gaia",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-9-42-25-q3",
+      "trigger": "talk",
+      "map": 9,
+      "x": 42,
+      "y": 25,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 3
+        }
+      },
+      "steps": [
+        {
+          "say": " 그러나, 이 대륙에는 아직 위험한 장소가  많"
+        },
+        {
+          "say": "이 있소."
+        },
+        {
+          "say": " 여기로부터 북동쪽에 'QUAKE' 라고 불리는 동"
+        },
+        {
+          "say": "굴이있소. 만약 QUAKE 마저 무너뜨리면, 이 대"
+        },
+        {
+          "say": "륙은 다시 평화롭게 될것이오."
+        },
+        {
+          "say": " QUAKE 로 가서 보스인 ArchiGagoyle과 Zombie"
+        },
+        {
+          "say": "들을 물리쳐 주십시오."
+        },
+        {
+          "questStep": {
+            "name": "gaia",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-9-42-25-q4",
+      "trigger": "talk",
+      "map": 9,
+      "x": 42,
+      "y": 25,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 4
+        }
+      },
+      "steps": [
+        {
+          "say": "QUAKE의 ArchiGagoyle을 물리치십시오."
+        }
+      ]
+    },
+    {
+      "id": "talk-9-42-25-q5",
+      "trigger": "talk",
+      "map": 9,
+      "x": 42,
+      "y": 25,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 5
+        }
+      },
+      "steps": [
+        {
+          "say": "당신들은 위대한 영웅임에 틀림없군요."
+        },
+        {
+          "say": "[ EXP + 40000 ]"
+        },
+        {
+          "say": " 여기에 Water Key가 있소."
+        },
+        {
+          "say": " 이 열쇠는 WATER FIELD의 문을 열것이오."
+        },
+        {
+          "exp": 40000
+        },
+        {
+          "questStep": {
+            "name": "gaia",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-9-42-25-q6",
+      "trigger": "talk",
+      "map": 9,
+      "x": 42,
+      "y": 25,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "eq": 6
+        }
+      },
+      "steps": [
+        {
+          "say": "WIVERN 동굴의 WATER FIELD의 문을 통하여 다음 대륙으로 가십시오."
+        }
+      ]
+    },
+    {
+      "id": "lorehunter-join",
+      "map": 10,
+      "x": 40,
+      "y": 56,
+      "require": {
+        "flagNot": "loreHunterJoined"
+      },
+      "steps": [
+        {
+          "say": " 나는 LORE 특공대의 대장인 Lore Hunter 라고"
+        },
+        {
+          "say": "하오. 여기서의 적들과는, 이제 대항하기가 혼"
+        },
+        {
+          "say": "자서는 무리라고 판단했소. 그래서, 나는 여태"
+        },
+        {
+          "say": "껏 여기서 새로운 영웅들을 기다리고 있었소."
+        },
+        {
+          "say": " 내가 당신의 일행에 끼게 되는걸 어떻게 생각"
+        },
+        {
+          "choice": {
+            "prompt": "하오 ?",
+            "options": [
+              {
+                "text": "우리도 그러기를 바라오",
+                "steps": [
+                  {
+                    "join": "lore_hunter",
+                    "flag": "loreHunterJoined"
+                  },
+                  {
+                    "setTile": {
+                      "x": 40,
+                      "y": 56,
+                      "tile": 44,
+                      "map": 10
+                    }
+                  }
+                ]
+              },
+              {
+                "text": "몸이 완전히 회복될때까지 기다리시오",
+                "steps": [
+                  {
+                    "say": "당신이 바란다면 ..."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "trigger": "talk",
+      "once": false
+    },
+    {
+      "id": "talk-10-25-18-q0",
+      "trigger": "talk",
+      "map": 10,
+      "x": 25,
+      "y": 18,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "water",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": " 여기는 WATER FIELD 라는 성이오.  이곳이 당"
+        },
+        {
+          "say": "신이 마지막으로 거칠 우리편의 성이오."
+        },
+        {
+          "say": " 차원의 틈을 통해 Necromancer가 내려 오던날"
+        },
+        {
+          "say": "이 대륙은 거의 전부가 바다로 가라않았소. 하"
+        },
+        {
+          "say": "지만  그때에 살아 남은 사람들은 아직 가라않"
+        },
+        {
+          "say": "지 않은 이곳에 찾아와서 이 성을 건립했소.그"
+        },
+        {
+          "say": "리고는  공이 컸던 나를 왕으로 추대했던 것이"
+        },
+        {
+          "say": "오."
+        },
+        {
+          "say": " 당신도 생각하고 있다시피 이 대륙은 거의 물"
+        },
+        {
+          "say": "로 덮혀있소.  하지만 이곳처럼 물이 차지않은"
+        },
+        {
+          "say": "두곳에 Necromancer 는 이미 이 대륙의 지배를"
+        },
+        {
+          "say": "위한 동굴을 만들었소. 그 두곳의 적들은 여타"
+        },
+        {
+          "say": "의 대륙과는 비교가 안될 정도의  거대한 적들"
+        },
+        {
+          "say": "이 많이 있소."
+        },
+        {
+          "say": " 우리로서는 더 이상 손을 쓸수가 없소.  이곳"
+        },
+        {
+          "say": "사람들의 마지막 희망인  이 곳이 적들에게 점"
+        },
+        {
+          "say": "령된다면 WIVERN 동굴로 이어지는 워터 게이트"
+        },
+        {
+          "say": "를 통해 다른 대륙도 하나둘씩  점령되어 갈것"
+        },
+        {
+          "say": "이오."
+        },
+        {
+          "questStep": {
+            "name": "water",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-10-25-18-q1",
+      "trigger": "talk",
+      "map": 10,
+      "x": 25,
+      "y": 18,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "water",
+          "eq": 1
+        }
+      },
+      "steps": [
+        {
+          "say": " 먼저,  여기서 남서쪽의 어느 섬에 있는 동굴"
+        },
+        {
+          "say": "인 NOTICE에 가서 보스인 Hidra를 물리쳐 주십"
+        },
+        {
+          "say": "시오."
+        }
+      ]
+    },
+    {
+      "id": "talk-10-25-18-q2",
+      "trigger": "talk",
+      "map": 10,
+      "x": 25,
+      "y": 18,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "water",
+          "eq": 2
+        }
+      },
+      "steps": [
+        {
+          "say": "Hidra를 물리치다니 ... 대단한 능력이오."
+        },
+        {
+          "say": "[ EXP + 150000 ]"
+        },
+        {
+          "exp": 150000
+        },
+        {
+          "say": "이제는 소문으로만 듣던 당신들의 능력을 믿을"
+        },
+        {
+          "say": "수 있겠소."
+        },
+        {
+          "questStep": {
+            "name": "water",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-10-25-18-q3",
+      "trigger": "talk",
+      "map": 10,
+      "x": 25,
+      "y": 18,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "water",
+          "eq": 3
+        }
+      },
+      "steps": [
+        {
+          "say": " 이번에는  대륙의 동쪽에 있는 LOCKUP 동굴속"
+        },
+        {
+          "say": "의 Huge Dragon을 물리쳐 주시오."
+        }
+      ]
+    },
+    {
+      "id": "talk-10-25-18-q4",
+      "trigger": "talk",
+      "map": 10,
+      "x": 25,
+      "y": 18,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "water",
+          "eq": 4
+        }
+      },
+      "steps": [
+        {
+          "say": "역시 위대한 영웅이오 !!"
+        },
+        {
+          "say": "[ EXP + 300000 ]"
+        },
+        {
+          "exp": 300000
+        },
+        {
+          "say": "여기에 Swamp Key 가 있소."
+        },
+        {
+          "questStep": {
+            "name": "water",
+            "inc": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "talk-10-25-18-q5",
+      "trigger": "talk",
+      "map": 10,
+      "x": 25,
+      "y": 18,
+      "once": false,
+      "require": {
+        "quest": {
+          "name": "water",
+          "eq": 5
+        }
+      },
+      "steps": [
+        {
+          "say": " Swamp Key 는 GAIA TERRA 의 스왐프 게이트를"
+        },
+        {
+          "say": "여는데 사용되오.  거기서 늪의 대륙으로 가시"
+        },
+        {
+          "say": "오. 늪의 대륙은 완전한 적들의 소굴이므로 매"
+        },
+        {
+          "say": "우 주의하시오."
+        }
+      ]
+    },
+    {
+      "id": "talk-24-33-10",
+      "map": 24,
+      "x": 33,
+      "y": 10,
+      "steps": [
+        {
+          "say": " 이 사람들은 잘 모르겠지만  사실 나는 이 게"
+        },
+        {
+          "say": "임의 제작자인 안 영기요."
+        },
+        {
+          "say": " 나는 여태껏 계속 당신들이 가는 도시마다 주"
+        },
+        {
+          "say": "민으로 가장한채 당신들을 지켜 보았소. 이 게"
+        },
+        {
+          "say": "임의 버그를 찾거나 난이도를 조절하기 위해서"
+        },
+        {
+          "say": "말이요. 만약 당신들이 Necromancer 를 물리친"
+        },
+        {
+          "say": "다면 내가 마지막으로 당신앞에 나타나겠소."
+        },
+        {
+          "say": " 그럼, 이만 나는 가보겠소."
+        },
+        {
+          "setTile": {
+            "x": 33,
+            "y": 10,
+            "tile": 47,
+            "map": 24
+          }
+        },
+        {
+          "flag": "programmerMet"
+        }
+      ],
+      "trigger": "talk",
+      "once": false
     }
   ]
 }

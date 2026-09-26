@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 185);
+      expect(LoreScriptEngine.instance.scripts.length, 230);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
