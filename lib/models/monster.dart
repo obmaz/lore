@@ -6,9 +6,9 @@ class Monster {
   final int mentality;
   final int endurance;
   int resistance;
-  final int agility;
-  final int accArms;
-  final int accMagic;
+  int agility;
+  int accArms;
+  int accMagic;
   int ac;
   int special;
   int castLevel;

@@ -96,5 +96,9 @@
    또는 HP 10 미만 기절, 성공 시 HP를 유지한 채 기절시키는 원본 분기를
    복원했다. 각 결과와 ESP 소모를 검증했다.
    커밋: `Restore telekinetic heart-stop branches`.
+   염력 18단계 이상 환상은 원본처럼 저항 시 민첩 -5, 명중 실패 시 무효,
+   성공 시 무기·마법 명중치 각각 -1을 적용한다. 몬스터 전투 인스턴스의
+   해당 능력치를 변경 가능하게 만들고 세 경로를 검증했다.
+   커밋: `Apply telekinetic illusion to monster combat stats`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

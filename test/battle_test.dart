@@ -307,6 +307,43 @@ void main() {
       expect(caster.esp, 0);
     });
 
+    test('염력 18단계 이상 환상은 저항 시 민첩, 성공 시 두 정확도를 낮춘다', () {
+      final caster = PartyMember.createPreset(2)
+        ..espLevel = 18
+        ..esp = 60
+        ..accEsp = 5;
+      final party = [caster];
+      final resistant = Monster.create(3)..resistance = 10;
+      final agility = resistant.agility;
+      final resisted = BattleEngine(random: DeterministicRandom([17, 0]))
+          .executePlayerESP(caster, resistant, 45, party, enemies: [resistant]);
+      expect(resisted.outcome, AttackOutcome.resisted);
+      expect(resistant.agility, agility - 5);
+
+      final missedTarget = Monster.create(3)..resistance = 0;
+      final arms = missedTarget.accArms;
+      final magic = missedTarget.accMagic;
+      final missed = BattleEngine(random: DeterministicRandom([17, 39, 29]))
+          .executePlayerESP(
+            caster,
+            missedTarget,
+            45,
+            party,
+            enemies: [missedTarget],
+          );
+      expect(missed.outcome, AttackOutcome.miss);
+      expect(missedTarget.accArms, arms);
+      expect(missedTarget.accMagic, magic);
+
+      final hitTarget = Monster.create(3)..resistance = 0;
+      final hit = BattleEngine(random: DeterministicRandom([17, 39, 0]))
+          .executePlayerESP(caster, hitTarget, 45, party, enemies: [hitTarget]);
+      expect(hit.outcome, AttackOutcome.debuffed);
+      expect(hitTarget.accArms, arms - 1);
+      expect(hitTarget.accMagic, magic - 1);
+      expect(caster.esp, 0);
+    });
+
     test('2. 플레이어 무기 공격 명중 및 대미지 공식 검증', () {
       // 주사위: [명중(0: 0 <= accArms), 분산(0: 분산감소 0%), 저항(99: 저항 실패), 방어차감 난수(0: +1/10)]
       final mockRandom = DeterministicRandom([0, 0, 99, 0]);

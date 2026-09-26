@@ -805,7 +805,22 @@ class BattleEngine {
         message: '★ 염력으로 ${target.name}의 심장을 직접 멈추어 의식불명으로 만들었다!',
       );
     } else {
-      // 환상 (명중 저하)
+      // LOREBATT.PAS:497-509 — 저항 시 민첩 감소, 명중 시 두 정확도 감소.
+      if (_rand(40) < target.resistance) {
+        target.agility = max(0, target.agility - 5);
+        return AttackResult(
+          outcome: AttackOutcome.resisted,
+          message: '${target.name}은(는) 환상을 견뎠지만 민첩이 5 떨어졌다.',
+        );
+      }
+      if (_rand(30) > caster.accEsp) {
+        return AttackResult(
+          outcome: AttackOutcome.miss,
+          message: '${caster.name}의 환상 염력이 빗나갔다.',
+        );
+      }
+      if (target.accArms > 0) target.accArms--;
+      if (target.accMagic > 0) target.accMagic--;
       return AttackResult(
         outcome: AttackOutcome.debuffed,
         message: '★ ${target.name}은(는) 강력한 환상에 빠져 공격 감각을 상실했다!',
