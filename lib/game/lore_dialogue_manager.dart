@@ -222,8 +222,9 @@ class LoreDialogueManager {
     if (lastditchQuestStep == 1 && bossMajorMummyDefeated) return 7;
     if (lastditchQuestStep >= 2 && gaiaQuestStep == 0) return 8;
     if (gaiaQuestStep == 1 && !goldenSealFound) return 10;
-    if (gaiaQuestStep == 1 && goldenSealFound) return 11;
-    if (gaiaQuestStep >= 2 && !bossArchiGagoyleDefeated) return 12;
+    if (gaiaQuestStep == 1 && goldenSealFound) return 11; // 구형 저장 호환
+    if (gaiaQuestStep == 2) return 11; // 봉인을 찾고 성주에게 보고 전
+    if (gaiaQuestStep >= 3 && !bossArchiGagoyleDefeated) return 12;
     if (gaiaQuestStep >= 3 && waterFieldQuestStep == 0) return 14;
     if (waterFieldQuestStep == 1 && !bossHidraDefeated) return 16;
     if (waterFieldQuestStep >= 2 && !bossHugeDragonDefeated) return 17;

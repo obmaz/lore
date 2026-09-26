@@ -41,7 +41,10 @@
    목적지 일치만으로 전투·플래그 효과까지 같다고 판단하지 않는다.
    커밋: `Reconcile disabled exit branches with portal routes`.
 7. 나머지 비활성 217개도 활성 규칙과 **효과가 같은지** 대조한다. 좌표가
-   겹친다는 사실만으로 이식 완료 처리하지 않는다.
+   겹친다는 사실만으로 이식 완료 처리하지 않는다. 첫 발견인 맵 12 황금의
+   봉인에서 누락된 GAIA 단계 2 변경과 `< 2` 조건을 복원했고, 이후 성주 보상과
+   저장 복원, 퀘스트 표시를 검증했다.
+   커밋: `Restore GAIA progress when finding the golden seal`.
 8. 포털과 겹친 77개의 취소·수문장·부수 효과를 원본과 더 깊게 대조한다.
 9. 원본 `LORETALK.PAS`, `LOREENT.PAS`, `LOREBATT.PAS`의 분기 추출 범위를
    넓혀 스크립트·포털·전투와 상호 대조하고 남은 누락을 처리한다.

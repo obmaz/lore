@@ -675,10 +675,10 @@
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
 | `rigel-join`<br>LORESPEC.PAS (파일 추정) | step (12, 48) | 조건 없음 | 조건 없음 | flag:rigelJoined, join:rigel, flag:etc31_bit2, food, rigelBlessing |
-| `golden-seal-12-18-10`<br>LORESPEC.PAS (파일 추정) | step (18, 10) | {"flagNot":"goldenSealFound"} | flagNot goldenSealFound → 추가 | setTile, flag:goldenSealFound |
+| `golden-seal-12-18-10`<br>LORESPEC.PAS (파일 추정) | step (18, 10) | {"flagNot":"goldenSealFound","quest":{"name":"gaia","lt":2}} | flagNot goldenSealFound → 추가; gaia 단계 → 조건 밖 값 | setTile, questStep:gaia, flag:goldenSealFound |
 | `puzzle-door-right`<br>LORESPEC.PAS (파일 추정) | step (33, 50) | {"moveDyNot":1} | moveDyNot 1 → 진입 방향을 금지 값으로 | setTile |
 | `puzzle-door-wrong`<br>LORESPEC.PAS (파일 추정) | step (1..99, 50) | {"moveDyNot":1} | moveDyNot 1 → 진입 방향을 금지 값으로 | teleport |
-| `t_den2-trap-y10`<br>LORESPEC.PAS (파일 추정) | step (*, 10) | {"flagNot":"goldenSealFound"} | flagNot goldenSealFound → 추가 | setTileArea |
+| `t_den2-trap-y10`<br>LORESPEC.PAS (파일 추정) | step (*, 10) | {"flagNot":"goldenSealFound","quest":{"name":"gaia","lt":2}} | flagNot goldenSealFound → 추가; gaia 단계 → 조건 밖 값 | setTileArea |
 | `enter-12-evilseal`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"quest":{"name":"gaia","gte":2}} | gaia 단계 → 조건 밖 값 | setTile |
 
 ### 맵 13

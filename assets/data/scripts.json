@@ -5010,7 +5010,11 @@
       "y": 10,
       "once": true,
       "require": {
-        "flagNot": "goldenSealFound"
+        "flagNot": "goldenSealFound",
+        "quest": {
+          "name": "gaia",
+          "lt": 2
+        }
       },
       "title": "황금의 봉인",
       "steps": [
@@ -5019,6 +5023,12 @@
             "x": 18,
             "y": 9,
             "tile": 0
+          }
+        },
+        {
+          "questStep": {
+            "name": "gaia",
+            "set": 2
           }
         },
         {
@@ -8505,7 +8515,11 @@
       "yMax": 10,
       "once": false,
       "require": {
-        "flagNot": "goldenSealFound"
+        "flagNot": "goldenSealFound",
+        "quest": {
+          "name": "gaia",
+          "lt": 2
+        }
       },
       "steps": [
         {
