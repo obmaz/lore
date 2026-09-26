@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../data/lore_creation.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 import '../services/audio_manager.dart';
@@ -25,7 +26,9 @@ class CharacterCreationScreen extends StatefulWidget {
 }
 
 class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
-  int _step = 0; // 0: 타이틀, 1: 이름&성별, 2: 성향 질문, 3: 직업 확인, 4: 동료 4명 선택
+  /// 0: 타이틀, 1: 이름&성별, 2: 성향 문답(원작 First),
+  /// 3: 40포인트 분배(Second), 4: 계급 선택(Third), 5: 동료 4명( Fourth)
+  int _step = 0;
 
   @override
   void initState() {
@@ -41,8 +44,6 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
 
   // 질문 응답 및 성향 데이터 (transdata[1..5])
   final List<int> _transdata = List.filled(6, 0);
-  int _currentQuestionIndex = 0;
-  PlayerClass _determinedClass = PlayerClass.knight;
 
   // 선택된 동료 4명 인덱스 (1..10 중)
   final Set<int> _selectedCompanions = {
@@ -52,134 +53,242 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     7,
   }; // 기본값: Hercules, Merlin, Genius Kie, Regulus
 
-  // 원작 10인 영웅 정보
-  static const List<Map<String, dynamic>> companionsList = [
-    {'id': 1, 'name': 'Hercules', 'class': '기사', 'desc': '힘과 인내력이 뛰어난 중기사'},
-    {'id': 2, 'name': 'Titan', 'class': '기사', 'desc': '공격과 방어의 균형이 잡힌 기사'},
-    {'id': 3, 'name': 'Merlin', 'class': '마법사', 'desc': '강력한 정신력의 원로 마법사'},
-    {
-      'id': 4,
-      'name': 'Betelgeuse',
-      'class': '마법사',
-      'desc': '정신력과 민첩성을 겸비한 마법사',
-    },
-    {'id': 5, 'name': 'Genius Kie', 'class': '전사', 'desc': '무기 정확도가 가장 뛰어난 검사'},
-    {'id': 6, 'name': 'Bellatrix', 'class': '전사', 'desc': '높은 저항력과 민첩성의 전사'},
-    {'id': 7, 'name': 'Regulus', 'class': '전투승', 'desc': '맨손 무투술의 달인'},
-    {'id': 8, 'name': 'Procyon', 'class': '사냥꾼', 'desc': '정확성과 행운이 높은 사냥꾼'},
-    {'id': 9, 'name': 'Arcturus', 'class': '떠돌이', 'desc': '다방면에 능숙한 방랑자'},
-    {'id': 10, 'name': 'Algol', 'class': '닌자', 'desc': '은밀하고 치명적인 암살자'},
-  ];
+  // 원작 LORECRET.PAS 데이터 (assets/data/creation.json / 내장 폴백)
+  LoreCreationData get _data => LoreCreationData.instance;
 
-  static const List<Map<String, dynamic>> questions = [
-    {
-      'question': '당신이 한 밤중에 공부하고 있을 때 밖에서 무슨 소리가 들렸다.',
-      'options': [
-        '1] 밖으로 나가서 알아본다 (근력)',
-        '2] 그 소리가 무엇일까 생각을 한다 (정신력)',
-        '3] 공부에만 열중한다 (집중력)',
-      ],
-      'statWeights': [1, 2, 3],
-    },
-    {
-      'question': '체력장 오래달리기에서 한 바퀴를 남겨 놓고 거의 탈진 상태가 되었다.',
-      'options': [
-        '1] 힘으로 밀고 나간다 (근력)',
-        '2] 정신력으로 버티며 달린다 (정신력)',
-        '3] 그래도 여태까지와 마찬가지로 달린다 (인내력)',
-      ],
-      'statWeights': [1, 2, 4],
-    },
-    {
-      'question': '적들에게 완전히 포위되어 승산 없이 싸우고 있다.',
-      'options': [
-        '1] 힘이 남아 있는 한 죽을 때까지 싸운다 (근력)',
-        '2] 한 가지라도 탈출할 가능성을 찾는다 (정신력)',
-        '3] 일단 싸우면서 여러 방법을 생각한다 (집중력)',
-      ],
-      'statWeights': [1, 2, 5],
-    },
-    {
-      'question': '매우 복잡한 매듭을 풀어야 하는 일이 생겼다.',
-      'options': [
-        '1] 칼로 매듭을 잘라 버린다 (근력)',
-        '2] 매듭의 끝부분부터 차근차근 훑어본다 (정신력)',
-        '3] 어쨌든 계속 풀려고 손을 놀린다 (인내력)',
-      ],
-      'statWeights': [1, 2, 4],
-    },
-  ];
+  /// 문항 진행용 상태.
+  int _qIndex = 0;
 
-  void _answerQuestion(int choiceIndex) {
-    final weight = questions[_currentQuestionIndex]['statWeights'][choiceIndex];
-    _transdata[weight]++;
+  /// `First` 결과 (성향 테스트로 정해지는 5개 능력치).
+  int _strength = 0;
+  int _mentality = 0;
+  int _concentration = 0;
+  int _endurance = 0;
+  int _resistanceStat = 0;
 
-    if (_currentQuestionIndex < questions.length - 1) {
-      setState(() => _currentQuestionIndex++);
+  /// `Second` 40포인트 분배 결과.
+  int _agility = 0;
+  int _accuracy = 0;
+  int _luck = 0;
+  int _pointsLeft = 40;
+
+  /// `Third` 에서 실제로 선택한 계급.
+  PlayerClass? _selectedClass;
+
+  /// `Fourth` 에서 능력치를 미리 보는 동료.
+  CreationCharacter? _profileTarget;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_data.loaded) return;
+    _data.load().then((_) {
+      if (mounted) setState(() {});
+    });
+  }
+
+  /// 원작 성향 문답(10문항).
+  List<CreationQuestion> get _questions => _data.questions;
+
+  /// 원작 `First` 의 스탯 환산 + 성별 보정.
+  void _applyQuizResult() {
+    _strength = _data.statValue(_transdata[1]);
+    _mentality = _data.statValue(_transdata[2]);
+    _concentration = _data.statValue(_transdata[3]);
+    _endurance = _data.statValue(_transdata[4]);
+    _resistanceStat = _data.statValue(_transdata[5]);
+
+    // 원작 `j := 4;` 성별 보정 (20 상한, 남는 값은 다음 능력치로 이월).
+    var j = 4;
+    void add(int Function() get, void Function(int) set) {
+      set(get() + j);
+      if (get() <= 20) {
+        j = 0;
+      } else {
+        j = get() - 20;
+        set(20);
+      }
+    }
+
+    if (_selectedGender == Gender.male) {
+      add(() => _strength, (v) => _strength = v);
+      add(() => _endurance, (v) => _endurance = v);
+      _resistanceStat = (_resistanceStat + j).clamp(0, 20);
     } else {
-      // 4문항 완료 -> 직업 판정
-      int maxScore = 0;
-      int bestStat = 1;
-      for (int i = 1; i <= 5; i++) {
-        if (_transdata[i] > maxScore) {
-          maxScore = _transdata[i];
-          bestStat = i;
-        }
-      }
-
-      PlayerClass pClass;
-      switch (bestStat) {
-        case 1:
-          pClass = PlayerClass.knight;
-          break;
-        case 2:
-          pClass = PlayerClass.mage;
-          break;
-        case 3:
-          pClass = PlayerClass.esper;
-          break;
-        case 4:
-          pClass = PlayerClass.warrior;
-          break;
-        default:
-          pClass = PlayerClass.monk;
-          break;
-      }
-
-      setState(() {
-        _determinedClass = pClass;
-        _step = 3;
-      });
+      add(() => _mentality, (v) => _mentality = v);
+      add(() => _concentration, (v) => _concentration = v);
+      _resistanceStat = (_resistanceStat + j).clamp(0, 20);
     }
   }
 
+  /// 원작 `First` 의 답 처리(`inc(transdata[N])`) 후 다음 단계로.
+  void _answerQuestion(int choiceIndex) {
+    final q = _questions[_qIndex];
+    if (choiceIndex >= q.options.length) return;
+    final stat = q.options[choiceIndex].stat;
+    if (stat >= 1 && stat <= 5) _transdata[stat]++;
+
+    if (_qIndex < _questions.length - 1) {
+      setState(() => _qIndex++);
+      return;
+    }
+    setState(() {
+      _applyQuizResult();
+      _step = 3; // 40포인트 분배(원작 Second)
+    });
+  }
+
+  /// 원작 `Second` - 민첩성/정확성/행운에 40포인트를 분배한다.
+  void _distribute(int slot, int delta) {
+    setState(() {
+      final current = switch (slot) {
+        1 => _agility,
+        2 => _accuracy,
+        _ => _luck,
+      };
+      final next = current + delta;
+      if (next < 0 || next > 20) return;
+      if (_pointsLeft - delta < 0 || _pointsLeft - delta > 40) return;
+      _pointsLeft -= delta;
+      switch (slot) {
+        case 1:
+          _agility = next;
+        case 2:
+          _accuracy = next;
+        default:
+          _luck = next;
+      }
+    });
+  }
+
+  /// 원작 `Third` - 조건을 만족하는 계급만 고를 수 있다.
+  List<CreationClassOption> get _availableClasses => _data.classes
+      .where(
+        (c) => c.satisfied(
+          strength: _strength,
+          mentality: _mentality,
+          concentration: _concentration,
+          endurance: _endurance,
+          resistance: _resistanceStat,
+          agility: _agility,
+          accuracy: _accuracy,
+          luck: _luck,
+        ),
+      )
+      .toList();
+
+  /// 원작 `Fourth` 끝의 파티 구성 + `Last` 초기 상태로 게임을 시작한다.
   void _finishCreation() {
-    // 1. 주인공 캐릭터 생성
+    final heroName = _nameController.text.trim().isEmpty
+        ? 'Hero'
+        : _nameController.text.trim();
+
     final hero = PartyMember(
-      name: _nameController.text.trim().isEmpty
-          ? 'Hero'
-          : _nameController.text.trim(),
+      name: heroName,
       sex: _selectedGender,
-      playerClass: _determinedClass,
-      strength: 15 + _transdata[1] * 2,
-      mentality: 12 + _transdata[2] * 2,
-      concentration: 10 + _transdata[3] * 2,
-      endurance: 15 + _transdata[4] * 2,
-      resistance: 10,
-      agility: 14,
-      accArms: 15,
-      accMagic: 10,
-      accEsp: 8,
-      luck: 12,
+      playerClass: _selectedClass ?? _availableClasses.first.playerClass,
+      strength: _strength,
+      mentality: _mentality,
+      concentration: _concentration,
+      endurance: _endurance,
+      resistance: _resistanceStat,
+      agility: _agility,
+      accArms: _accuracy,
+      accMagic: 5,
+      accEsp: 5,
+      luck: _luck,
     );
 
-    // 2. 선택된 동료 4명 생성
     final party = <PartyMember>[hero];
-    for (final compId in _selectedCompanions) {
-      party.add(PartyMember.createPreset(compId));
+    for (final id in _selectedCompanions) {
+      final c = _data.characters.firstWhere((e) => e.id == id);
+      party.add(c.toMember());
+    }
+    for (final m in party) {
+      m.applyCreationInit();
     }
 
     widget.onGameStart(party);
+  }
+
+  /// 원작 `Profile(number)` - 동료 능력치 미리보기 문구.
+  Widget _buildProfilePanel(CreationCharacter c) {
+    String t(String k, int i) => _data.text('Profile', i);
+    return Container(
+      width: 300,
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: RetroTheme.background,
+        border: Border.all(color: RetroTheme.borderColor),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            t('Profile', 0),
+            style: RetroTheme.headerFont.copyWith(
+              color: RetroTheme.white,
+              fontSize: 11,
+            ),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            '${t('Profile', 1)}${c.name}',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.yellow,
+              fontSize: 11,
+            ),
+          ),
+          Text(
+            '${t('Profile', 2)}${c.sexLabel}',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.yellow,
+              fontSize: 11,
+            ),
+          ),
+          Text(
+            '${t('Profile', 3)}${c.playerClass.koreanName}',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.yellow,
+              fontSize: 11,
+            ),
+          ),
+          const SizedBox(height: 4),
+          for (final entry in [
+            (t('Profile', 4), c.strength),
+            (t('Profile', 5), c.mentality),
+            (t('Profile', 6), c.concentration),
+            (t('Profile', 7), c.endurance),
+            (t('Profile', 8), c.resistance),
+            (t('Profile', 9), c.agility),
+            (t('Profile', 10), c.accuracy),
+            (t('Profile', 11), c.luck),
+          ])
+            Text(
+              '${entry.$1}${entry.$2}',
+              style: RetroTheme.dosFont.copyWith(
+                color: RetroTheme.lightCyan,
+                fontSize: 10,
+              ),
+            ),
+          const SizedBox(height: 4),
+          Text(
+            '${t('Profile', 15)}${c.endurance}',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.lightGreen,
+              fontSize: 10,
+            ),
+          ),
+          Text(
+            '${t('Profile', 16)}1',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.lightGreen,
+              fontSize: 10,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -213,8 +322,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       case 2:
         return _buildQuestionScreen();
       case 3:
-        return _buildClassScreen();
+        return _buildDistributeScreen();
       case 4:
+        return _buildClassScreen();
+      case 5:
         return _buildCompanionsScreen();
       default:
         return _buildTitleScreen();
@@ -228,8 +339,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-          '또 다른 지식의 성전',
+        Text(
+          // 원작 Display: `또다른 지식의 성전  제 1 부`
+          _data.text('Display', 0).isEmpty
+              ? '또다른 지식의 성전  제 1 부'
+              : _data.text('Display', 0),
           style: TextStyle(
             fontFamily: 'monospace',
             fontSize: 26,
@@ -256,7 +370,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
           child: Column(
             children: [
               Text(
-                '제작: 문 동 욱',
+                // 원작 LORECRET.PAS:73 - `캐릭터 만들기 프로그램   제 1.5 탄`
+                _data.text('Display', 1).isEmpty
+                    ? '캐릭터 만들기 프로그램   제 1.5 탄'
+                    : _data.text('Display', 1),
                 style: RetroTheme.dosFont.copyWith(
                   fontSize: 12,
                   color: RetroTheme.white,
@@ -594,7 +711,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          '◆ 주인공의 이름과 성별을 정해주십시오 ◆',
+          '◆ ${_data.text('Display', 0)} ◆',
           style: RetroTheme.headerFont.copyWith(fontSize: 16),
         ),
         const SizedBox(height: 24),
@@ -606,7 +723,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                '당신의 이름은 :',
+                _data.text('Name', 0),
                 style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow),
               ),
               const SizedBox(height: 6),
@@ -625,7 +742,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
               ),
               const SizedBox(height: 16),
               Text(
-                '당신의 성별은 :',
+                _data.text('Name', 2),
                 style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow),
               ),
               const SizedBox(height: 6),
@@ -681,7 +798,22 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             ],
           ),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 8),
+        Text(
+          '${_data.text('Name', 1)}${_nameController.text} ${_data.text('Name', 1).isEmpty ? '' : ''}',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.lightGreen,
+            fontSize: 11,
+          ),
+        ),
+        Text(
+          '${_data.text('Name', 3)}${_selectedGender == Gender.male ? '남성' : '여성'}',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.lightGreen,
+            fontSize: 11,
+          ),
+        ),
+        const SizedBox(height: 16),
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: RetroTheme.blue),
           onPressed: () => setState(() => _step = 2),
@@ -692,42 +824,47 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   }
 
   // ==========================================
-  // Step 2: 원작 4대 성향 문답 테스트
+  // Step 2: 원작 10문항 성향 문답 (First)
   // ==========================================
   Widget _buildQuestionScreen() {
-    final q = questions[_currentQuestionIndex];
+    if (_questions.isEmpty) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    final q = _questions[_qIndex];
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          '◆ 성향 문답 테스트 (${_currentQuestionIndex + 1} / 4) ◆',
-          style: RetroTheme.headerFont.copyWith(fontSize: 15),
+          '◆ ${_data.quizIntro.isNotEmpty ? _data.quizIntro[0] : ''} (${_qIndex + 1} / ${_questions.length}) ◆',
+          style: RetroTheme.headerFont.copyWith(fontSize: 14),
         ),
-        const SizedBox(height: 8),
-        Text(
-          '자신에게 맞는 답을 소신있게 선택해 주십시오.',
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.lightGray,
-            fontSize: 12,
+        const SizedBox(height: 6),
+        if (_data.quizIntro.length > 1)
+          Text(
+            _data.quizIntro[1],
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.lightGray,
+              fontSize: 12,
+            ),
           ),
-        ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
         Container(
-          width: 480,
+          width: 520,
           padding: const EdgeInsets.all(16),
           color: RetroTheme.background,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                q['question'],
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.yellow,
-                  fontSize: 13,
+              for (final line in q.lines)
+                Text(
+                  line,
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.yellow,
+                    fontSize: 13,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 16),
-              ...List.generate(3, (idx) {
+              const SizedBox(height: 14),
+              ...List.generate(q.options.length, (idx) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: SizedBox(
@@ -740,7 +877,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                       ),
                       onPressed: () => _answerQuestion(idx),
                       child: Text(
-                        q['options'][idx],
+                        q.options[idx].text,
                         style: RetroTheme.dosFont.copyWith(
                           color: RetroTheme.white,
                           fontSize: 12,
@@ -758,65 +895,162 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   }
 
   // ==========================================
-  // Step 3: 직업 판정 확인 및 선택
+  // Step 3: 원작 Second - 40포인트 분배
   // ==========================================
-  Widget _buildClassScreen() {
+  Widget _buildDistributeScreen() {
+    String t(int i) => _data.text('Second', i);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          '◆ 성향 분석 결과 ◆',
-          style: RetroTheme.headerFont.copyWith(fontSize: 16),
+          '◆ ${t(0)} ◆',
+          style: RetroTheme.headerFont.copyWith(fontSize: 15),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 10),
+        Text(
+          '${t(1)}$_pointsLeft',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 13,
+          ),
+        ),
+        const SizedBox(height: 12),
         Container(
           width: 420,
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(14),
           color: RetroTheme.background,
           child: Column(
             children: [
-              Text(
-                '${_nameController.text}님의 추천 계급은',
-                style: RetroTheme.dosFont.copyWith(color: RetroTheme.lightGray),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                '★ ${_determinedClass.koreanName} ★',
-                style: RetroTheme.headerFont.copyWith(
-                  fontSize: 22,
-                  color: RetroTheme.yellow,
+              for (final (slot, label, value) in [
+                (1, t(2), _agility),
+                (2, t(3), _accuracy),
+                (3, t(4), _luck),
+              ])
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        '$label $value',
+                        style: RetroTheme.dosFont.copyWith(
+                          color: RetroTheme.white,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => _distribute(slot, -1),
+                      icon: const Icon(
+                        Icons.remove_circle_outline,
+                        color: RetroTheme.lightRed,
+                        size: 18,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => _distribute(slot, 1),
+                      icon: const Icon(
+                        Icons.add_circle_outline,
+                        color: RetroTheme.lightGreen,
+                        size: 18,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 12),
-              Text(
-                '원하시면 다른 직업으로 변경하여 모험을 시작할 수 있습니다.',
-                style: RetroTheme.dosFont.copyWith(
-                  fontSize: 11,
-                  color: RetroTheme.lightCyan,
-                ),
-              ),
-              const SizedBox(height: 12),
-              DropdownButton<PlayerClass>(
-                value: _determinedClass,
-                dropdownColor: RetroTheme.panelBg,
-                items: PlayerClass.values.take(8).map((c) {
-                  return DropdownMenuItem(
-                    value: c,
-                    child: Text(c.koreanName, style: RetroTheme.dosFont),
-                  );
-                }).toList(),
-                onChanged: (val) {
-                  if (val != null) setState(() => _determinedClass = val);
-                },
-              ),
             ],
           ),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 16),
         ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: RetroTheme.blue),
-          onPressed: () => setState(() => _step = 4),
-          child: Text('동행할 4명의 동료 용사 선택 ▶', style: RetroTheme.dosFont),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: _pointsLeft == 0
+                ? RetroTheme.green
+                : RetroTheme.darkGray,
+          ),
+          onPressed: _pointsLeft == 0 ? () => setState(() => _step = 4) : null,
+          child: Text('계급 선택 ▶', style: RetroTheme.dosFont),
+        ),
+      ],
+    );
+  }
+
+  // ==========================================
+  // Step 3: 직업 판정 확인 및 선택
+  // ==========================================
+  Widget _buildClassScreen() {
+    final options = _availableClasses;
+    final t = _data.text('Third', 0);
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          '◆ $t ◆',
+          style: RetroTheme.headerFont.copyWith(fontSize: 15),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          width: 460,
+          padding: const EdgeInsets.all(12),
+          color: RetroTheme.background,
+          child: Wrap(
+            spacing: 10,
+            runSpacing: 8,
+            children: [
+              for (final c in options)
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: _selectedClass == c.playerClass
+                        ? RetroTheme.blue
+                        : RetroTheme.panelBg,
+                    side: const BorderSide(color: RetroTheme.borderColor),
+                  ),
+                  onPressed: () =>
+                      setState(() => _selectedClass = c.playerClass),
+                  child: Text(
+                    c.text,
+                    style: RetroTheme.dosFont.copyWith(
+                      color: _selectedClass == c.playerClass
+                          ? RetroTheme.yellow
+                          : RetroTheme.white,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10),
+        if (_selectedClass != null)
+          Text(
+            '${_data.text('Third', 9)}${_selectedClass!.koreanName}',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.lightGreen,
+              fontSize: 12,
+            ),
+          ),
+        if (options.length < _data.classes.length)
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: Text(
+              '(능력치 조건을 만족하지 못한 계급은 고를 수 없습니다)',
+              style: RetroTheme.dosFont.copyWith(
+                color: RetroTheme.lightGray,
+                fontSize: 10,
+              ),
+            ),
+          ),
+        const SizedBox(height: 14),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: _selectedClass != null
+                ? RetroTheme.green
+                : RetroTheme.darkGray,
+          ),
+          onPressed: _selectedClass == null
+              ? null
+              : () => setState(() => _step = 5),
+          child: Text(
+            '${_data.text('Third', 10)} (동료 선택 ▶)',
+            style: RetroTheme.dosFont,
+          ),
         ),
       ],
     );
@@ -826,96 +1060,165 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   // Step 4: 동행할 4명의 동료 용사 선택
   // ==========================================
   Widget _buildCompanionsScreen() {
+    String t4(int i) => _data.text('Fourth', i);
+    final names = _profileTarget;
     return Column(
       children: [
         Text(
-          '◆ 동행할 4명의 동료 용사를 골라주십시오 ◆',
-          style: RetroTheme.headerFont.copyWith(fontSize: 15),
+          t4(0),
+          style: RetroTheme.headerFont.copyWith(fontSize: 14),
         ),
         Text(
-          '선택된 동료: ${_selectedCompanions.length} / 4 명',
+          t4(1),
           style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
+            color: RetroTheme.lightCyan,
             fontSize: 12,
           ),
         ),
-        const SizedBox(height: 10),
-        Expanded(
-          child: ListView.builder(
-            itemCount: companionsList.length,
-            itemBuilder: (context, idx) {
-              final c = companionsList[idx];
-              final id = c['id'] as int;
-              final isSelected = _selectedCompanions.contains(id);
-
-              return Container(
-                margin: const EdgeInsets.symmetric(vertical: 2),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 4,
-                ),
-                decoration: BoxDecoration(
-                  color: isSelected
-                      ? RetroTheme.blue.withValues(alpha: 0.5)
-                      : RetroTheme.background,
-                  border: Border.all(
-                    color: isSelected ? RetroTheme.yellow : RetroTheme.darkGray,
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Checkbox(
-                      value: isSelected,
-                      onChanged: (val) {
-                        setState(() {
-                          if (val == true) {
-                            if (_selectedCompanions.length < 4) {
-                              _selectedCompanions.add(id);
-                            }
-                          } else {
-                            _selectedCompanions.remove(id);
-                          }
-                        });
-                      },
-                    ),
-                    Expanded(
-                      flex: 3,
-                      child: Text(
-                        '${c['name']} [${c['class']}]',
-                        style: RetroTheme.dosFont.copyWith(
-                          color: isSelected
-                              ? RetroTheme.yellow
-                              : RetroTheme.white,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Text(
-                        c['desc'],
-                        style: RetroTheme.dosFont.copyWith(
-                          fontSize: 11,
-                          color: RetroTheme.lightGray,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
+        Text(
+          '선택: ${_selectedCompanions.length} / 4 명',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 11,
           ),
         ),
         const SizedBox(height: 8),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: _selectedCompanions.length == 4
-                ? RetroTheme.green
-                : RetroTheme.darkGray,
+        Expanded(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: _data.characters.length,
+                  itemBuilder: (context, idx) {
+                    final c = _data.characters[idx];
+                    final isSelected = _selectedCompanions.contains(c.id);
+                    return Container(
+                      margin: const EdgeInsets.symmetric(vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 3,
+                      ),
+                      decoration: BoxDecoration(
+                        color: isSelected
+                            ? RetroTheme.blue.withValues(alpha: 0.5)
+                            : RetroTheme.background,
+                        border: Border.all(
+                          color: isSelected
+                              ? RetroTheme.yellow
+                              : RetroTheme.darkGray,
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              '${c.name} [${c.playerClass.koreanName}]',
+                              style: RetroTheme.dosFont.copyWith(
+                                color: isSelected
+                                    ? RetroTheme.yellow
+                                    : RetroTheme.white,
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                if (isSelected) {
+                                  _selectedCompanions.remove(c.id);
+                                } else if (_selectedCompanions.length < 4) {
+                                  _selectedCompanions.add(c.id);
+                                }
+                              });
+                            },
+                            child: Text(
+                              t4(2),
+                              style: RetroTheme.dosFont.copyWith(
+                                color: RetroTheme.lightGreen,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () =>
+                                setState(() => _profileTarget = c),
+                            child: Text(
+                              t4(3),
+                              style: RetroTheme.dosFont.copyWith(
+                                color: RetroTheme.lightCyan,
+                                fontSize: 10,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(width: 10),
+              if (names != null) _buildProfilePanel(names),
+            ],
           ),
-          onPressed: _selectedCompanions.length == 4 ? _finishCreation : null,
-          child: Text(
-            'LORE 모험 시작하기 (성내 광장 51, 31 진입) ▶',
-            style: RetroTheme.dosFont,
+        ),
+        const SizedBox(height: 6),
+        Text(
+          t4(4),
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.lightGray,
+            fontSize: 11,
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: _selectedCompanions.length == 4
+                    ? RetroTheme.green
+                    : RetroTheme.darkGray,
+              ),
+              onPressed: _selectedCompanions.length == 4
+                  ? _finishCreation
+                  : null,
+              child: Text(
+                'LORE 모험 시작하기 (${_data.initial['x'] ?? 51}, ${_data.initial['y'] ?? 31} 진입) ▶',
+                style: RetroTheme.dosFont,
+              ),
+            ),
+            const SizedBox(width: 10),
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: RetroTheme.darkGray,
+                foregroundColor: RetroTheme.white,
+              ),
+              onPressed: () => setState(() {
+                _selectedCompanions.clear();
+                _qIndex = 0;
+                for (var i = 0; i < _transdata.length; i++) {
+                  _transdata[i] = 0;
+                }
+                _pointsLeft = 40;
+                _agility = 0;
+                _accuracy = 0;
+                _luck = 0;
+                _selectedClass = null;
+                _profileTarget = null;
+                _step = 1;
+              }),
+              child: Text(
+                t4(5),
+                style: RetroTheme.dosFont.copyWith(fontSize: 10),
+              ),
+            ),
+          ],
+        ),
+        Text(
+          t4(6),
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.lightRed,
+            fontSize: 10,
           ),
         ),
       ],

@@ -52,7 +52,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   late LoreGame _game;
   final List<String> _logs = [];
   int _partyGold = 2000;
-  int _partyFood = 100;
+  int _partyFood = 20; // 원작 LORECRET.PAS `Last`: food := 20;
 
   // 원작 LOREMAIN.PAS: 환경 효과 및 보조 마법 지속 걸음수
   int _torchSteps = 0; // etc[1]: 마법의 횃불
@@ -110,8 +110,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
             PartyMember.createPreset(6), // Bellatrix (전사)
             PartyMember.createPreset(7), // Regulus (전투승)
           ];
+      // 원작 LORECRET.PAS:715 `Last` - food := 20; gold := 2000;
       _partyGold = 2000;
-      _partyFood = 100;
+      _partyFood = 20;
       _torchSteps = 0;
       _waterWalkSteps = 0;
       _swampWalkSteps = 0;

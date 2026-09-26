@@ -121,7 +121,7 @@ void main() {
       await tester.pump(const Duration(milliseconds: 100));
 
       // 타이틀 화면
-      expect(find.text('또 다른 지식의 성전'), findsOneWidget);
+      expect(find.text('또다른 지식의 성전  제 1 부'), findsOneWidget);
       expect(find.text('빠른 모험 시작 (기본 파티)'), findsOneWidget);
 
       // 빠른 모험 시작 → 마을(51, 31) 진입

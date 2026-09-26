@@ -482,6 +482,71 @@ class PartyMember {
   }
 
   /// 1993년 원작 LORECRET.PAS 프리셋 캐릭터 생성
+  /// 원작 `LORECRET.PAS:704` `Fourth` 끝의 공통 초기화.
+  ///
+  /// ```pascal
+  /// poison := 0; unconscious := 0; dead := 0; level[1..3] := 1;
+  /// ac := 0; if class = 1 then ac := 1;
+  /// experience := 0; weapon := 0; shield := 0; armor := 0;
+  /// wea_power := 2; if class = 1 then wea_power := 3;
+  /// if class = 5 then wea_power := 12;
+  /// ```
+  void applyCreationInit() {
+    poison = 0;
+    unconscious = 0;
+    dead = 0;
+    battleLevel = 1;
+    magicLevel = 1;
+    espLevel = concentration;
+    ac = playerClass == PlayerClass.knight ? 1 : 0;
+    experience = 0;
+    weapon = 0;
+    shield = 0;
+    armor = 0;
+    weaPower = switch (playerClass) {
+      PlayerClass.knight => 3,
+      PlayerClass.monk => 12,
+      _ => 2,
+    };
+    shiPower = 0;
+    armPower = 0;
+    hp = endurance;
+    sp = mentality;
+    // 원작 `accuracy[2]/[3]` 재배치 (무기/마법/초능력 명중률).
+    final acc = accArms;
+    switch (playerClass) {
+      case PlayerClass.knight:
+      case PlayerClass.monk:
+      case PlayerClass.hunter:
+      case PlayerClass.vagrant:
+        accMagic = 5;
+        accEsp = 5;
+        break;
+      case PlayerClass.mage:
+        accArms = 5;
+        accMagic = acc;
+        accEsp = 5;
+        break;
+      case PlayerClass.esper:
+        accArms = 5;
+        accMagic = 5;
+        accEsp = acc;
+        break;
+      case PlayerClass.warrior:
+        accMagic = acc;
+        accEsp = 8;
+        break;
+      case PlayerClass.ninja:
+        accMagic = 5;
+        accEsp = acc;
+        break;
+      default:
+        accMagic = 5;
+        accEsp = 5;
+        break;
+    }
+  }
+
   static PartyMember createPreset(int presetIndex, {String? customName}) {
     switch (presetIndex) {
       case 1: // Hercules
