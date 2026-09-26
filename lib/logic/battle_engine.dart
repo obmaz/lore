@@ -1017,8 +1017,11 @@ class BattleEngine {
   int calculateGold(List<Monster> defeatedEnemies) {
     int totalGold = 0;
     for (final e in defeatedEnemies) {
-      final acVal = e.ac <= 0 ? 1 : e.ac;
-      final plus = (e.level * e.level * e.level) * acVal;
+      // LOREBATT.PAS:60-69 PlusGold는 전투 인스턴스 enemy[i]에서
+      // E_number만 읽고, 레벨과 AC는 원본 enemydata[E_number]에서 읽는다.
+      final template = LoreData.instance.monster(e.eNumber);
+      final acVal = template.ac == 0 ? 1 : template.ac;
+      final plus = (template.level * template.level * template.level) * acVal;
       totalGold += plus;
     }
     return totalGold;

@@ -59,6 +59,20 @@ void main() {
       expect(gold, equals(247));
     });
 
+    test('Major Mummy 전투 금화는 덮어쓴 능력치 대신 원본 도감 값을 쓴다', () {
+      final engine = BattleEngine();
+      // LORESPEC.PAS:533-546: Sprite 둘을 Sphinx로 바꾸고 E_number=20,
+      // Mummy는 AC를 1로 바꾼다. PlusGold는 enemydata[20/26]을 조회한다.
+      final enemies = [
+        Monster.create(35).withOverrides(name: 'Sphinx', level: 4, eNumber: 20),
+        Monster.create(35).withOverrides(name: 'Sphinx', level: 4, eNumber: 20),
+        Monster.create(26).withOverrides(name: 'Major Mummy', ac: 1),
+      ];
+      expect(enemies.last.ac, 1);
+      // Kelpie(#20): 5^3 * 2 = 250, Mummy(#26): 7^3 * 3 = 1029.
+      expect(engine.calculateGold(enemies), 1529);
+    });
+
     test('2. 플레이어 무기 공격 명중 및 대미지 공식 검증', () {
       // 주사위: [명중(0: 0 <= accArms), 분산(0: 분산감소 0%), 저항(99: 저항 실패), 방어차감 난수(0: +1/10)]
       final mockRandom = DeterministicRandom([0, 0, 99, 0]);
@@ -172,12 +186,8 @@ void main() {
 
     test('7. 원작 `with enemy[i] do` 적별 덮어쓰기(이름/방어도/레벨)', () {
       // 원작 map 11 미이라의 방: `name := 'Sphinx'; level := 4; E_number := 20`
-      final sphinx = Monster.create(35).withOverrides(
-        name: 'Sphinx',
-        level: 4,
-        special: 0,
-        eNumber: 20,
-      );
+      final sphinx = Monster.create(35)
+          .withOverrides(name: 'Sphinx', level: 4, special: 0, eNumber: 20);
       expect(sphinx.name, 'Sphinx');
       expect(sphinx.level, 4);
       expect(sphinx.eNumber, 20);
@@ -187,10 +197,8 @@ void main() {
       expect(sphinx.hp, sphinx.maxHp);
 
       // 원작 map 18: `enemy[2] do begin name := 'Dragon''s tail'; ac := 8; end;`
-      final tail = Monster.create(39).withOverrides(
-        name: "Dragon's tail",
-        ac: 8,
-      );
+      final tail = Monster.create(39)
+          .withOverrides(name: "Dragon's tail", ac: 8);
       expect(tail.name, "Dragon's tail");
       expect(tail.ac, 8);
       // 레벨을 건드리지 않으면 HP 는 그대로다.

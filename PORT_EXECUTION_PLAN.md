@@ -68,5 +68,9 @@
    스크립트·시설·대화 데이터와 대조했다. 제공자 없는 좌표는 0곳이다.
    조건·선택지·효과의 동등성은 별도로 검증한다.
    커밋: `Audit original talk coordinates against active data`.
+   `LOREBATT.PAS PlusGold`는 전투 중 덮어쓴 적 능력치가 아니라
+   `enemydata[E_number]`의 레벨·AC로 지급액을 계산한다. Major Mummy
+   전투를 원본 수치로 재현해 보상 계산을 바로잡았다.
+   커밋: `Calculate battle gold from original monster templates`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
