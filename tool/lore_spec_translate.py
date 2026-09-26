@@ -98,6 +98,14 @@ SET_TILE_AREA = re.compile(
     r"map\[\s*([a-z0-9]+)\s*,\s*([a-z0-9]+)\s*\]\s*:=\s*(\d+)",
     re.I,
 )
+# `for i := 67 to 69 do begin ... end;` (여러 줄 영역 변형)
+FOR_AREA_OPEN = re.compile(
+    r"^\s*for\s+([a-z])\s*:=\s*(\d+)\s+to\s+(\d+)\s+do\s+begin\s*$",
+    re.I,
+)
+LOOP_TILE = re.compile(
+    r"map\[\s*([a-z0-9]+)\s*,\s*([a-z0-9]+)\s*\]\s*:=\s*(\d+)"
+)
 # `for i := 12 to 39 do if map[i,j] = 0 then map[i,j] := 39;` (빈 칸만)
 SET_TILE_AREA_IFZERO = re.compile(
     r"for\s+([a-z])\s*:=\s*(\d+)\s+to\s+(\d+)\s+do\s+"
@@ -168,6 +176,30 @@ NOTE_ONLY = re.compile(
 # `party.etc[N] < v` 같은 단계 비교를 퀘스트 이름으로 옮긴다.
 QUEST_BY_ETC = {10: 'lordahn', 13: 'lastditch', 14: 'gaia', 15: 'water'}
 
+# 퀘스트 단계 ↔ 포트의 이름 있는 격퇴 플래그 (원작에서 같은 시점에 선다).
+#  - `gaia` 2 = 황금의 봉인 획득, `gaia` 3 = ArchiGagoyle 격퇴
+#  - `water` 2 = Hidra 격퇴, `water` 3 = Huge Dragon 격퇴
+#  - `lastditch` 2 = Major Mummy 격퇴
+QUEST_FLAG = {
+    ('gaia', 2): 'goldenSealFound',
+    ('gaia', 3): 'bossArchiGagoyleDefeated',
+    ('water', 2): 'bossHidraDefeated',
+    ('water', 3): 'bossHugeDragonDefeated',
+    ('lastditch', 2): 'bossMajorMummyDefeated',
+}
+
+
+def quest_flag_for(name: str, op: str, value: int):
+    """퀘스트 단계 비교 → 같은 의미의 이름 있는 플래그 (없으면 None)."""
+    flag = QUEST_FLAG.get((name, value))
+    if flag is None:
+        return None
+    if op in ('gte', 'eq'):
+        return (flag, True)
+    if op == 'lt':
+        return (flag, False)
+    return None
+
 # 몬스터 번호 → 포트 몬스터 (원작 enemydata[] 번호). 그대로 쓴다.
 MAX_VARIANT_STEPS = 400
 
@@ -222,24 +254,30 @@ class Req:
     def add_quest(self, name: str, op: str, value: int):
         """원작 비교 연산자를 포트의 `lt`/`gte`/`eq` 로 정규화해 담는다."""
         if op == '<':
-            self.quests.append((name, 'lt', value))
+            norm, val = 'lt', value
         elif op == '<=':
-            self.quests.append((name, 'lt', value + 1))
+            norm, val = 'lt', value + 1
         elif op == '>':
-            self.quests.append((name, 'gte', value + 1))
+            norm, val = 'gte', value + 1
         elif op == '>=':
-            self.quests.append((name, 'gte', value))
+            norm, val = 'gte', value
         else:
-            self.quests.append((name, 'eq', value))
+            norm, val = 'eq', value
+        self.quests.append((name, norm, val))
+        # 포트에 같은 의미의 이름 있는 플래그가 있으면 함께 요구한다
+        # (손으로 쓴 스크립트·다른 코드가 그 이름을 읽는다).
+        f = quest_flag_for(name, norm, val)
+        if f:
+            self.add_flag(f[0], f[1])
 
     def add_quest_negation(self, q):
         name, op, val = q
         if op == 'lt':
             self.add_quest(name, '>=', val)
         elif op == 'gte':
-            self.quests.append((name, 'lt', val))
+            self.add_quest(name, '<', val)
         else:  # eq 의 부정은 `>= v+1` 로 근사한다.
-            self.quests.append((name, 'gte', val + 1))
+            self.add_quest(name, '>=', val + 1)
 
     def invert_quests(self):
         """조건의 부정(else 쪽)을 만든다."""
@@ -496,6 +534,8 @@ class Ctx:
         self.notes: list[str] = []
         # 옮기지 못한 조건이 하나라도 있었는지(있으면 실행하지 않는다).
         self.unsupported = False
+        # 여러 줄 `for <var> := A to B do begin ... end` 영역 변형 상태.
+        self.area_loop: tuple[str, int, int] | None = None
         # 전투: `enemynumber := N` / `joinenemy(...)` 로 모은 적 목록.
         self.monsters: list[int] = []
         self.enemy_count: int | None = None
@@ -986,9 +1026,11 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         if m:
             etc_n, val = int(m.group(1)), int(m.group(2))
             if etc_n in QUEST_BY_ETC:
-                ctx.add_step({
-                    'questStep': {'name': QUEST_BY_ETC[etc_n], 'set': val}
-                })
+                qname = QUEST_BY_ETC[etc_n]
+                ctx.add_step({'questStep': {'name': qname, 'set': val}})
+                f = quest_flag_for(qname, 'eq', val)
+                if f:
+                    ctx.add_step({'flag': f[0]})
             else:
                 ctx.note(f'party.etc[{etc_n}] := {val} (숫자 대입)')
             continue
@@ -1015,6 +1057,45 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         if m:
             ctx.add_step({'setTileAtPlayer': {'tile': int(m.group(1))}})
             continue
+        m = FOR_AREA_OPEN.match(s)
+        if m:
+            ctx.area_loop = (m.group(1).lower(), int(m.group(2)), int(m.group(3)))
+            continue
+        if ctx.area_loop is not None and re.match(r'^\s*end\s*;?\s*$', s, re.I):
+            ctx.area_loop = None
+            continue
+        if ctx.area_loop is not None:
+            var, lo, hi = ctx.area_loop
+            areas = []
+            for lm in LOOP_TILE.finditer(s):
+                a, b, tile = (lm.group(1).lower(), lm.group(2).lower(),
+                              int(lm.group(3)))
+                area = {'tile': tile}
+                if a == var:
+                    area['xMin'], area['xMax'] = lo, hi
+                    if b == 'y':
+                        area['atPlayerY'] = True
+                        area['yMin'] = area['yMax'] = 1
+                    elif b.isdigit():
+                        area['yMin'] = area['yMax'] = int(b)
+                    else:
+                        continue
+                elif b == var:
+                    area['yMin'], area['yMax'] = lo, hi
+                    if a == 'x':
+                        area['atPlayerX'] = True
+                        area['xMin'] = area['xMax'] = 1
+                    elif a.isdigit():
+                        area['xMin'] = area['xMax'] = int(a)
+                    else:
+                        continue
+                else:
+                    continue
+                areas.append(area)
+            if areas:
+                for area in areas:
+                    ctx.add_step({'setTileArea': area})
+                continue
         tiles = list(TILE.finditer(s))
         if tiles:
             # 한 줄에 `map[8,88] := 52; map[43,88] := 0;` 처럼 여러 개가 온다.
@@ -1026,6 +1107,13 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
                         'tile': int(m.group(3)),
                     }
                 })
+            continue
+        m = TELEPORT.search(s)
+        if m:
+            # 원작 `x := 46; y := 41;` - 같은 맵 안에서 좌표만 바꾼다.
+            ctx.add_step({
+                'teleport': {'x': int(m.group(1)), 'y': int(m.group(2))}
+            })
             continue
         if WITH_PARTY.match(s):
             # (문장 단위 처리에서 걸러지지 않은 한 줄짜리 형태)

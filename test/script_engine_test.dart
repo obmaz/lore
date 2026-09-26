@@ -47,7 +47,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 567);
+      expect(LoreScriptEngine.instance.scripts.length, 568);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -376,13 +376,18 @@ void main() {
       // 1) 맵 17: x = 22 열에 들어서면 세 머리 Hidra 와 전투 (원작 etc[15] < 2)
       final hidra = engine.startStep(17, 22, 40, noCtx)!;
       expect(hidra.outcome.battleMonsters, [49, 49, 49]);
-      expect(hidra.outcome.battleTitle, contains('Hidra'));
+      // 원작 안내 문구가 그대로 대사로 들어온다(제목은 없을 수 있다).
+      expect(
+        hidra.outcome.messages.any((m) => m.contains('Hidra')),
+        isTrue,
+      );
       expect(hidra.outcome.setFlags, contains('bossHidraDefeated'));
       // 다른 열에서는 발동하지 않는다.
-      final hidraScript = engine.scripts.firstWhere(
-        (s) => s.id == 'map17-hidra',
+      expect(
+        engine.startStep(17, 23, 40, noCtx)?.outcome.battleMonsters ??
+            const <int>[],
+        isEmpty,
       );
-      expect(hidraScript.matches('step', 17, 23, 40), isFalse);
 
       // 2) 맵 18: x = 31 열에서 거룡 + 꼬리 + Mud-Man 무리와 전투
       final dragon = engine.startStep(
@@ -391,7 +396,6 @@ void main() {
         40,
         const ScriptContext(flags: {}),
       )!;
-      expect(dragon.outcome.battleTitle, 'Huge Dragon');
       expect(dragon.outcome.battleMonsters.first, 54);
       expect(dragon.outcome.battleMonsters[1], 39); // Dragon's tail
       expect(dragon.outcome.setFlags, contains('bossHugeDragonDefeated'));

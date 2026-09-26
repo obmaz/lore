@@ -1032,6 +1032,25 @@
       ]
     },
     {
+      "id": "spec-4-L37",
+      "trigger": "step",
+      "map": 4,
+      "once": false,
+      "steps": [
+        {
+          "say": " 일행은 공간 이동이 되었다"
+        },
+        {
+          "teleport": {
+            "x": 46,
+            "y": 41
+          }
+        }
+      ],
+      "x": 40,
+      "y": 18
+    },
+    {
       "id": "map4-spacejump-40-18",
       "trigger": "step",
       "map": 4,
@@ -1048,21 +1067,7 @@
             "y": 41
           }
         }
-      ]
-    },
-    {
-      "id": "spec-4-L37",
-      "trigger": "step",
-      "map": 4,
-      "once": false,
-      "steps": [
-        {
-          "say": " 일행은 공간 이동이 되었다"
-        }
       ],
-      "x": 40,
-      "y": 18,
-      "note": "미지원: x := 46; y := 41;",
       "disabled": true
     },
     {
@@ -2446,7 +2451,7 @@
           }
         ]
       },
-      "note": "미지원: for i := 1 to 2 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
+      "note": "미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
     },
     {
       "id": "spec-11-L465-2x",
@@ -2482,7 +2487,7 @@
           }
         ]
       },
-      "note": "미지원: for i := 1 to 2 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
+      "note": "미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
     },
     {
       "id": "spec-11-L465-3x",
@@ -2521,7 +2526,7 @@
           }
         ]
       },
-      "note": "미지원: for i := 1 to 2 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
+      "note": "미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
     },
     {
       "id": "spec-14-L814xxxxxx",
@@ -2899,7 +2904,7 @@
           }
         ]
       },
-      "note": "미지원: for i := 1 to 2 do begin; 미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
+      "note": "미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
     },
     {
       "id": "spec-15-L879-2xxxx",
@@ -2935,7 +2940,7 @@
           }
         ]
       },
-      "note": "미지원: for i := 1 to 2 do begin; 미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
+      "note": "미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
     },
     {
       "id": "spec-15-L879-3",
@@ -2974,7 +2979,7 @@
           }
         ]
       },
-      "note": "미지원: for i := 1 to 2 do begin; 미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
+      "note": "미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
     },
     {
       "id": "quake-gold-a-10",
@@ -3315,42 +3320,6 @@
       ]
     },
     {
-      "id": "map17-hidra",
-      "trigger": "step",
-      "map": 17,
-      "xMin": 22,
-      "xMax": 22,
-      "once": true,
-      "require": {
-        "flagNot": "bossHidraDefeated"
-      },
-      "title": "호수의 소용돌이",
-      "steps": [
-        {
-          "say": "수면이 크게 요동치더니 세 개의 머리를 가진 거대한 괴수가 솟구쳐 올랐다 !"
-        },
-        {
-          "battle": {
-            "title": "Hidra의 습격",
-            "monsters": [
-              49,
-              49,
-              49
-            ]
-          }
-        },
-        {
-          "say": "당신들은 Hidra를 물리쳤다."
-        },
-        {
-          "say": "그리고 당신은 이 임무에 성공했다. 다시 WATER FIELD 의 군주에게로 돌아가라."
-        },
-        {
-          "flag": "bossHidraDefeated"
-        }
-      ]
-    },
-    {
       "id": "spec-17-L1010-1xx",
       "trigger": "step",
       "map": 17,
@@ -3388,12 +3357,22 @@
             "name": "water",
             "set": 2
           }
+        },
+        {
+          "flag": "bossHidraDefeated"
+        },
+        {
+          "teleport": {
+            "x": 56,
+            "y": 93
+          }
         }
       ],
       "xMin": 22,
       "xMax": 22,
       "require": {
         "notAllFlags": [
+          "bossHidraDefeated",
           "etc1",
           "etc6"
         ],
@@ -3404,8 +3383,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 2 to 3 do begin; 미지원: for i := 2 to 4 do begin; 미지원: for i := 1 to 3 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: x := 56; y :",
-      "disabled": true
+      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-2xx",
@@ -3439,6 +3417,15 @@
             "name": "water",
             "set": 2
           }
+        },
+        {
+          "flag": "bossHidraDefeated"
+        },
+        {
+          "teleport": {
+            "x": 56,
+            "y": 93
+          }
         }
       ],
       "xMin": 22,
@@ -3448,6 +3435,7 @@
           "etc1"
         ],
         "notAllFlags": [
+          "bossHidraDefeated",
           "etc6"
         ],
         "quest": [
@@ -3457,8 +3445,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 2 to 3 do begin; 미지원: for i := 2 to 4 do begin; 미지원: for i := 1 to 3 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: x := 56; y :",
-      "disabled": true
+      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-3",
@@ -3497,6 +3484,7 @@
           "etc6"
         ],
         "notAllFlags": [
+          "bossHidraDefeated",
           "etc1"
         ],
         "quest": [
@@ -3506,8 +3494,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 2 to 3 do begin; 미지원: for i := 2 to 4 do begin; 미지원: for i := 1 to 3 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: x := 56; y :",
-      "disabled": true
+      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-4",
@@ -3540,6 +3527,9 @@
           "etc1",
           "etc6"
         ],
+        "notAllFlags": [
+          "bossHidraDefeated"
+        ],
         "quest": [
           {
             "name": "water",
@@ -3547,8 +3537,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 2 to 3 do begin; 미지원: for i := 2 to 4 do begin; 미지원: for i := 1 to 3 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: x := 56; y :",
-      "disabled": true
+      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-5",
@@ -3585,6 +3574,7 @@
           "etc6"
         ],
         "notAllFlags": [
+          "bossHidraDefeated",
           "etc1"
         ],
         "quest": [
@@ -3594,8 +3584,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 2 to 3 do begin; 미지원: for i := 2 to 4 do begin; 미지원: for i := 1 to 3 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: x := 56; y :",
-      "disabled": true
+      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-6",
@@ -3626,6 +3615,9 @@
           "etc1",
           "etc6"
         ],
+        "notAllFlags": [
+          "bossHidraDefeated"
+        ],
         "quest": [
           {
             "name": "water",
@@ -3633,7 +3625,43 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 2 to 3 do begin; 미지원: for i := 2 to 4 do begin; 미지원: for i := 1 to 3 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: x := 56; y :",
+      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
+    },
+    {
+      "id": "map17-hidra",
+      "trigger": "step",
+      "map": 17,
+      "xMin": 22,
+      "xMax": 22,
+      "once": true,
+      "require": {
+        "flagNot": "bossHidraDefeated"
+      },
+      "title": "호수의 소용돌이",
+      "steps": [
+        {
+          "say": "수면이 크게 요동치더니 세 개의 머리를 가진 거대한 괴수가 솟구쳐 올랐다 !"
+        },
+        {
+          "battle": {
+            "title": "Hidra의 습격",
+            "monsters": [
+              49,
+              49,
+              49
+            ]
+          }
+        },
+        {
+          "say": "당신들은 Hidra를 물리쳤다."
+        },
+        {
+          "say": "그리고 당신은 이 임무에 성공했다. 다시 WATER FIELD 의 군주에게로 돌아가라."
+        },
+        {
+          "flag": "bossHidraDefeated"
+        }
+      ],
       "disabled": true
     },
     {
@@ -3734,7 +3762,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: for i := 1 to 6 do begin; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: for i := 4 to 6 do begin; 미지원: for j := 1 to 3 do begin; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),f",
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원",
       "disabled": true
     },
     {
@@ -3791,7 +3819,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: for i := 1 to 6 do begin; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: for i := 4 to 6 do begin; 미지원: for j := 1 to 3 do begin; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),f",
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원",
       "disabled": true
     },
     {
@@ -3821,6 +3849,12 @@
               39
             ]
           }
+        },
+        {
+          "teleport": {
+            "x": 25,
+            "y": 94
+          }
         }
       ],
       "xMin": 31,
@@ -3839,7 +3873,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: for i := 1 to 6 do begin; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: for i := 4 to 6 do begin; 미지원: for j := 1 to 3 do begin; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),f",
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원",
       "disabled": true
     },
     {
@@ -3863,6 +3897,12 @@
               39
             ]
           }
+        },
+        {
+          "teleport": {
+            "x": 25,
+            "y": 94
+          }
         }
       ],
       "xMin": 31,
@@ -3879,7 +3919,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: for i := 1 to 6 do begin; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: for i := 4 to 6 do begin; 미지원: for j := 1 to 3 do begin; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),f",
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원",
       "disabled": true
     },
     {
@@ -3930,7 +3970,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: for i := 1 to 6 do begin; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: for i := 4 to 6 do begin; 미지원: for j := 1 to 3 do begin; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),f",
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원",
       "disabled": true
     },
     {
@@ -3973,7 +4013,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: for i := 1 to 6 do begin; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: for i := 4 to 6 do begin; 미지원: for j := 1 to 3 do begin; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),f",
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원",
       "disabled": true
     },
     {
@@ -4265,7 +4305,7 @@
           "etc3"
         ]
       },
-      "note": "조건 미지원: not odd(party.etc[40]); 미지원: for j := 27 to 36 do begin; 미지원: map[24,j] := 25;; 미지원: map[28,j] := 23;; 미지원: for j := 27 to 37 do; 미지원: party.etc[40] := (random(7)+1) shl 1;"
+      "note": "조건 미지원: not odd(party.etc[40]); 미지원: for j := 27 to 37 do; 미지원: party.etc[40] := (random(7)+1) shl 1;"
     },
     {
       "id": "spec-19-L1366-2xxx",
@@ -4287,6 +4327,24 @@
             "x": 41,
             "y": 39,
             "tile": 49
+          }
+        },
+        {
+          "setTileArea": {
+            "tile": 25,
+            "yMin": 27,
+            "yMax": 36,
+            "xMin": 24,
+            "xMax": 24
+          }
+        },
+        {
+          "setTileArea": {
+            "tile": 23,
+            "yMin": 27,
+            "yMax": 36,
+            "xMin": 28,
+            "xMax": 28
           }
         },
         {
@@ -4321,7 +4379,7 @@
           "etc3"
         ]
       },
-      "note": "조건 미지원: not odd(party.etc[40]); 미지원: for j := 27 to 36 do begin; 미지원: map[24,j] := 25;; 미지원: map[28,j] := 23;; 미지원: for j := 27 to 37 do; 미지원: party.etc[40] := (random(7)+1) shl 1;"
+      "note": "조건 미지원: not odd(party.etc[40]); 미지원: for j := 27 to 37 do; 미지원: party.etc[40] := (random(7)+1) shl 1;"
     },
     {
       "id": "spec-19-L1366-3",
@@ -4354,7 +4412,7 @@
           "etc3"
         ]
       },
-      "note": "조건 미지원: not odd(party.etc[40]); 미지원: for j := 27 to 36 do begin; 미지원: map[24,j] := 25;; 미지원: map[28,j] := 23;; 미지원: for j := 27 to 37 do; 미지원: party.etc[40] := (random(7)+1) shl 1;"
+      "note": "조건 미지원: not odd(party.etc[40]); 미지원: for j := 27 to 37 do; 미지원: party.etc[40] := (random(7)+1) shl 1;"
     },
     {
       "id": "evil-seal-room-1",
@@ -4929,6 +4987,41 @@
           }
         }
       ]
+    },
+    {
+      "id": "spec-17-L1010xxxxxx",
+      "trigger": "step",
+      "map": 17,
+      "once": false,
+      "steps": [
+        {
+          "setTileArea": {
+            "tile": 44,
+            "xMin": 67,
+            "xMax": 69,
+            "yMin": 38,
+            "yMax": 38
+          }
+        },
+        {
+          "setTileArea": {
+            "tile": 52,
+            "xMin": 67,
+            "xMax": 69,
+            "yMin": 44,
+            "yMax": 44
+          }
+        },
+        {
+          "teleport": {
+            "x": 56,
+            "y": 93
+          }
+        }
+      ],
+      "yMin": 38,
+      "yMax": 38,
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-1x",
@@ -5551,6 +5644,33 @@
           }
         },
         {
+          "setTileArea": {
+            "tile": 24,
+            "xMin": 11,
+            "xMax": 14,
+            "yMin": 33,
+            "yMax": 33
+          }
+        },
+        {
+          "setTileArea": {
+            "tile": 26,
+            "xMin": 11,
+            "xMax": 14,
+            "yMin": 35,
+            "yMax": 35
+          }
+        },
+        {
+          "setTileArea": {
+            "tile": 42,
+            "xMin": 11,
+            "xMax": 14,
+            "yMin": 34,
+            "yMax": 34
+          }
+        },
+        {
           "setTile": {
             "x": 14,
             "y": 33,
@@ -5567,7 +5687,6 @@
       ],
       "x": 15,
       "y": 34,
-      "note": "미지원: for i := 11 to 14 do begin; 미지원: map[i,33] := 24; map[i,35] := 26; map[i,34] := 42;",
       "disabled": true
     },
     {
@@ -5645,6 +5764,33 @@
           }
         },
         {
+          "setTileArea": {
+            "tile": 24,
+            "xMin": 37,
+            "xMax": 40,
+            "yMin": 33,
+            "yMax": 33
+          }
+        },
+        {
+          "setTileArea": {
+            "tile": 26,
+            "xMin": 37,
+            "xMax": 40,
+            "yMin": 35,
+            "yMax": 35
+          }
+        },
+        {
+          "setTileArea": {
+            "tile": 42,
+            "xMin": 37,
+            "xMax": 40,
+            "yMin": 34,
+            "yMax": 34
+          }
+        },
+        {
           "setTile": {
             "x": 37,
             "y": 33,
@@ -5661,7 +5807,6 @@
       ],
       "x": 36,
       "y": 34,
-      "note": "미지원: for i := 37 to 40 do begin; 미지원: map[i,33] := 24; map[i,35] := 26; map[i,34] := 42;",
       "disabled": true
     },
     {
@@ -5858,7 +6003,7 @@
           "lockupGuardianDefeated"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
+      "note": "미지원: scroll(true);; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
     },
     {
       "id": "spec-18-L1174-2xx",
@@ -5890,7 +6035,7 @@
           "lockupGuardianDefeated"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
+      "note": "미지원: scroll(true);; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
     },
     {
       "id": "lockup-guardian-21-41",
@@ -5970,6 +6115,9 @@
           }
         },
         {
+          "flag": "goldenSealFound"
+        },
+        {
           "say": "당신은 황금의 봉인을 찾았다 !!"
         },
         {
@@ -5983,6 +6131,9 @@
       "yMin": 10,
       "yMax": 10,
       "require": {
+        "notAllFlags": [
+          "goldenSealFound"
+        ],
         "quest": [
           {
             "name": "gaia",
@@ -6013,6 +6164,9 @@
       "yMin": 10,
       "yMax": 10,
       "require": {
+        "notAllFlags": [
+          "goldenSealFound"
+        ],
         "quest": [
           {
             "name": "gaia",
@@ -7629,6 +7783,24 @@
         },
         {
           "setTileArea": {
+            "tile": 25,
+            "yMin": 49,
+            "yMax": 52,
+            "xMin": 22,
+            "xMax": 22
+          }
+        },
+        {
+          "setTileArea": {
+            "tile": 23,
+            "yMin": 49,
+            "yMax": 52,
+            "xMin": 26,
+            "xMax": 26
+          }
+        },
+        {
+          "setTileArea": {
             "xMin": 23,
             "xMax": 25,
             "yMin": 1,
@@ -7885,7 +8057,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
+      "note": "미지원: scroll(true);; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
     },
     {
       "id": "spec-20-L1475-2xxx",
@@ -7917,7 +8089,7 @@
           "den7MinotaurCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
+      "note": "미지원: scroll(true);; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
     },
     {
       "id": "den7-minotaur-y48",
@@ -8133,7 +8305,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-2xxxx",
@@ -8191,7 +8363,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-3",
@@ -8243,7 +8415,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-4",
@@ -8289,7 +8461,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-5",
@@ -8337,7 +8509,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-6",
@@ -8379,7 +8551,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-7",
@@ -8414,7 +8586,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-8",
@@ -8441,7 +8613,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-9",
@@ -8480,7 +8652,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-10",
@@ -8513,7 +8685,7 @@
           "den7DragonsCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-11",
@@ -8557,7 +8729,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-12",
@@ -8595,7 +8767,7 @@
           "den7DragonsCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-13",
@@ -8651,7 +8823,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-14",
@@ -8701,7 +8873,7 @@
           "den7MudmenCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-15",
@@ -8745,7 +8917,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-16",
@@ -8783,7 +8955,7 @@
           "den7MudmenCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-17",
@@ -8844,7 +9016,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-18",
@@ -8899,7 +9071,7 @@
           "den7MudmenCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-19",
@@ -8948,7 +9120,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-20",
@@ -8991,7 +9163,7 @@
           "den7MudmenCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-21",
@@ -9099,7 +9271,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-22",
@@ -9203,7 +9375,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-23",
@@ -9301,7 +9473,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-24",
@@ -9393,7 +9565,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-25",
@@ -9487,7 +9659,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-26",
@@ -9575,7 +9747,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-27",
@@ -9656,7 +9828,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-28",
@@ -9731,7 +9903,7 @@
           "den7MazeCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-29",
@@ -9825,7 +9997,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-30",
@@ -9915,7 +10087,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-31",
@@ -9999,7 +10171,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-32",
@@ -10077,7 +10249,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-33",
@@ -10157,7 +10329,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-34",
@@ -10231,7 +10403,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-35",
@@ -10298,7 +10470,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-36",
@@ -10359,7 +10531,7 @@
           "den7MazeCleared"
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
+      "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead; 미지원: scroll(TRUE);"
     },
     {
       "id": "keep2-ambush-zone-a",
@@ -12533,7 +12705,7 @@
           "weaponRoomVisited"
         ]
       },
-      "note": "미지원: for i := 1 to 3 do begin; 미지원: Scroll(TRUE);; 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: soundon := FALSE;; 미지원: for i := y - 4 to y - 1 do begin; "
+      "note": "미지원: Scroll(TRUE);; 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: soundon := FALSE;; 미지원: for i := y - 4 to y - 1 do begin; 미지원: map[x,pred(i)] := 44;; 미지원"
     },
     {
       "id": "spec-6-L190-2",
@@ -12612,7 +12784,7 @@
           "etc31_bit1"
         ]
       },
-      "note": "미지원: for i := 1 to 3 do begin; 미지원: Scroll(TRUE);; 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: soundon := FALSE;; 미지원: for i := y - 4 to y - 1 do begin; "
+      "note": "미지원: Scroll(TRUE);; 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: soundon := FALSE;; 미지원: for i := y - 4 to y - 1 do begin; 미지원: map[x,pred(i)] := 44;; 미지원"
     },
     {
       "id": "spec-6-L190-3",
@@ -12636,7 +12808,7 @@
           "etc31_bit1"
         ]
       },
-      "note": "미지원: for i := 1 to 3 do begin; 미지원: Scroll(TRUE);; 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: soundon := FALSE;; 미지원: for i := y - 4 to y - 1 do begin; "
+      "note": "미지원: Scroll(TRUE);; 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: soundon := FALSE;; 미지원: for i := y - 4 to y - 1 do begin; 미지원: map[x,pred(i)] := 44;; 미지원"
     },
     {
       "id": "talk-7-36-19-a",
@@ -15024,6 +15196,12 @@
           "say": "일을 말해 주겠소."
         },
         {
+          "teleport": {
+            "x": 48,
+            "y": 57
+          }
+        },
+        {
           "say": " 여기는 EVIL GOD 라는 동굴이오. 여기의 보스"
         },
         {
@@ -15037,6 +15215,12 @@
         },
         {
           "say": "있을 것이오."
+        },
+        {
+          "teleport": {
+            "x": 82,
+            "y": 16
+          }
         },
         {
           "say": " 여기는 Muddy 라는 동굴이오.  여기의 보스는"
@@ -15060,6 +15244,12 @@
           "say": "문에 약간 까다로울 것이오."
         },
         {
+          "teleport": {
+            "x": 16,
+            "y": 15
+          }
+        },
+        {
           "say": " 여기는 이 대륙의 외진곳이오. 여기서는 어떤"
         },
         {
@@ -15076,7 +15266,7 @@
           "ancientEvilMet"
         ]
       },
-      "note": "미지원: x := 46; y := 41;; 미지원: scroll(TRUE);; 미지원: aux := SoundOn; SoundOn := false;; 미지원: x := 48; y := 57;; 미지원: x := 82; y := 16;; 미지원: x := 16; y := 15;; 미지원: soundon := aux;"
+      "note": "미지원: scroll(TRUE);; 미지원: aux := SoundOn; SoundOn := false;; 미지원: soundon := aux;"
     },
     {
       "id": "spec-4-L37-2x",
@@ -15084,6 +15274,12 @@
       "map": 4,
       "once": false,
       "steps": [
+        {
+          "teleport": {
+            "x": 46,
+            "y": 41
+          }
+        },
         {
           "say": " 이제는 더 이상 할말이 없소."
         },
@@ -15098,7 +15294,7 @@
           "ancientEvilMet"
         ]
       },
-      "note": "미지원: x := 46; y := 41;; 미지원: scroll(TRUE);; 미지원: aux := SoundOn; SoundOn := false;; 미지원: x := 48; y := 57;; 미지원: x := 82; y := 16;; 미지원: x := 16; y := 15;; 미지원: soundon := aux;"
+      "note": "미지원: scroll(TRUE);; 미지원: aux := SoundOn; SoundOn := false;; 미지원: soundon := aux;"
     },
     {
       "id": "spec-6-L190-2-1",
@@ -16539,7 +16735,7 @@
       "disabled": true,
       "yMin": 50,
       "yMax": 50,
-      "note": "조건 미지원: x = 33; 미지원: scroll(TRUE);; 미지원: x := 25; y := 70;"
+      "note": "조건 미지원: x = 33; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-12-L560-2x",
@@ -16549,12 +16745,18 @@
       "steps": [
         {
           "say": "당신은 바보군요, 다시 생각하십시오."
+        },
+        {
+          "teleport": {
+            "x": 25,
+            "y": 70
+          }
         }
       ],
       "disabled": true,
       "yMin": 50,
       "yMax": 50,
-      "note": "조건 미지원: x = 33; 미지원: scroll(TRUE);; 미지원: x := 25; y := 70;"
+      "note": "조건 미지원: x = 33; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-12-L560",
@@ -16936,7 +17138,7 @@
       "disabled": true,
       "xMin": 76,
       "xMax": 86,
-      "note": "미지원: for j := 71 to 81 do; 미지원: for i := 76 to 86 do begin; 미지원: if map[i,j] = 52 then map[i,j] := 44;; 미지원: if map[i,j] in [40,51] then map[i,j] := 42;; 미지원: allright := FALSE;; 미지원: x1 := sgn(81-x);; 미지원: if x1 = 0 then allright := TRUE; 미지원: else begin; 미지원: if x1 = 1 then face := 6 else face := "
+      "note": "미지원: for j := 71 to 81 do; 미지원: if map[i,j] = 52 then map[i,j] := 44;; 미지원: if map[i,j] in [40,51] then map[i,j] := 42;; 미지원: allright := FALSE;; 미지원: x1 := sgn(81-x);; 미지원: if x1 = 0 then allright := TRUE; 미지원: else begin; 미지원: if x1 = 1 then face := 6 else face := 7;; 미지원: x := x + x1;; 미지원: scrol"
     },
     {
       "id": "spec-13-L669-1xx",
@@ -16963,7 +17165,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for i := 1 to 3 do begin; 적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
     },
     {
       "id": "spec-13-L669-2xx",
@@ -16991,7 +17193,7 @@
           "etc38_bit5"
         ]
       },
-      "note": "미지원: for i := 1 to 3 do begin; 적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
     },
     {
       "id": "spec-13-L669-3",
@@ -17014,7 +17216,7 @@
           "etc38_bit5"
         ]
       },
-      "note": "미지원: for i := 1 to 3 do begin; 적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
     },
     {
       "id": "spec-13-L669-4",
@@ -17040,7 +17242,7 @@
           "etc38_bit5"
         ]
       },
-      "note": "미지원: for i := 1 to 3 do begin; 적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
     },
     {
       "id": "spec-14-L814-1",
@@ -20781,7 +20983,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: for i := 1 to 6 do begin; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(T"
+      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 d"
     },
     {
       "id": "spec-23-L1880-2x",
@@ -20868,7 +21070,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: for i := 1 to 6 do begin; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(T"
+      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 d"
     },
     {
       "id": "spec-23-L1880-3",
@@ -20960,7 +21162,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: for i := 1 to 6 do begin; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(T"
+      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 d"
     },
     {
       "id": "spec-24-L1980-1",
@@ -21132,7 +21334,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-2x",
@@ -21228,7 +21430,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-3",
@@ -21280,7 +21482,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-4",
@@ -21324,7 +21526,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-5",
@@ -21381,7 +21583,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-6",
@@ -21430,7 +21632,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-26-L2104-seq",
@@ -21542,7 +21744,7 @@
           "say": "원히 안녕 ! !"
         }
       ],
-      "note": "미지원: face := 5;; 미지원: for i := 1 to 3 do begin; 미지원: scroll(TRUE);; 미지원: face := 6;; 미지원: while x < 26 do begin; 미지원: for j := 4 downto 2 do begin; 미지원: if j < 4 then; 미지원: for j := 1 to 3 do begin; 미지원: if j > 1 then begin; 미지원: for j := 3 to 4 do begin; 적 배치(계산식): joinenemy(i, 68+i); 미지원: aux := F"
+      "note": "미지원: face := 5;; 미지원: scroll(TRUE);; 미지원: face := 6;; 미지원: while x < 26 do begin; 미지원: for j := 4 downto 2 do begin; 미지원: if j < 4 then; 미지원: if j > 1 then begin; 적 배치(계산식): joinenemy(i, 68+i); 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if (party.etc[6] > 0) and (not enemy[7].de"
     },
     {
       "id": "spec-27-L2202-seq",
