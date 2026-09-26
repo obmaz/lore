@@ -139,7 +139,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     if (_currentTab == FieldMenuTab.partyView) {
       title = '1. 일행의 상황 (VIEW PARTY)';
     } else if (_currentTab == FieldMenuTab.characterView) {
-      title = '2. 개인의 상황 (VIEW CHARACTER)';
+      // 원작 LOREMENU.PAS:528 - `능력을 보고싶은 인물을 선택하시오`
+      title = '2. ${LoreMenuText.viewCharWho}';
     } else if (_currentTab == FieldMenuTab.quickView) {
       title = '3. 간이 일행 상황 (QUICK VIEW)';
     } else if (_currentTab == FieldMenuTab.castSpell) {
@@ -416,8 +417,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   // 2. 개인의 상황 (ViewCharacter)
   // =========================================================================
   Widget _buildCharacterView() {
-    // 원작 LOREMENU.PAS:528 - `능력을 보고싶은 인물을 선택하시오`
-    final whoPrompt = LoreMenuText.viewCharWho;
     final p = widget.party[_selectedMemberIndex];
     return Column(
       children: [

@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import '../logic/lore_batt_text.dart';
+
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -253,7 +255,8 @@ class LoreGame extends FlameGame {
     final mapCat = LoreWorldManager.mapRegistry[currentMapId]?.category;
     if (mapCat == MapCategory.ground || mapCat == MapCategory.den) {
       if (_random.nextInt(10) == 0) {
-        onLog?.call('!! 적의 기척이 느껴집니다! 전투 모드로 돌입합니다!');
+        // 원작 LOREBATT.PAS 인카운터 문구
+        onLog?.call(LoreBattText.encounter);
         onEncounter?.call();
       }
     }

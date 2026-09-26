@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'lore_batt_text.dart';
+
 import '../models/party_member.dart';
 import '../models/monster.dart';
 import '../data/lore_data.dart';
@@ -62,15 +64,19 @@ class BattleEngine {
         outcome: AttackOutcome.killed,
         expGained: exp,
         message:
-            '${attacker.name}의 치명적인 일격! ${target.name}의 숨통을 완전히 끊었다! (EXP +$exp)',
+            '${LoreBattText.weaponKill(LoreBattText.sexData(attacker.sex == Gender.female), target.name, _rand(4))}'
+            ' (${LoreBattText.expGained(attacker.name, '$exp')})',
       );
     }
 
     // 2. 명중 판정 (random(20) > accuracy[1] 이면 빗나감)
     if (_rand(20) > attacker.accArms) {
+      // 원작 LOREBATT.PAS:138 - `{sexdata}의 공격은 빗나갔다 ....`
       return AttackResult(
         outcome: AttackOutcome.miss,
-        message: '${attacker.name}의 공격은 빗나갔다 ....',
+        message:
+            '${LoreBattText.sexData(attacker.sex == Gender.female)}'
+            '${LoreBattText.attackMissed}',
       );
     }
 
@@ -83,9 +89,12 @@ class BattleEngine {
 
     // 4. 적 저항 판정 (random(100) < resistance)
     if (_rand(100) < target.resistance) {
+      // 원작 LOREBATT.PAS:144 - `적은 {sexdata}의 공격을 저지했다`
+      final sex = LoreBattText.sexData(attacker.sex == Gender.female);
       return AttackResult(
         outcome: AttackOutcome.resisted,
-        message: '${target.name}은(는) ${attacker.name}의 공격을 저지했다!',
+        message: '${LoreBattText.enemyResisted}$sex'
+            '${LoreBattText.enemyResistedRest}',
       );
     }
 
@@ -94,9 +103,12 @@ class BattleEngine {
     final finalDmg = baseDmg - defReduce;
 
     if (finalDmg <= 0) {
+      // 원작 LOREBATT.PAS:150 - `그러나, 적은 {sexdata}의 공격을 막았다`
+      final sex = LoreBattText.sexData(attacker.sex == Gender.female);
       return AttackResult(
         outcome: AttackOutcome.blocked,
-        message: '그러나, ${target.name}은(는) ${attacker.name}의 공격을 막아냈다!',
+        message: '${LoreBattText.enemyBlocked}$sex'
+            '${LoreBattText.enemyBlockedRest}',
       );
     }
 
@@ -107,18 +119,26 @@ class BattleEngine {
       target.isUnconscious = true;
       final exp = calculateExperience(target);
       attacker.experience += exp;
+      // 원작 LOREBATT.PAS:159 - `적은 {sexdata}의 공격으로 의식불명이 되었다`
+      final sex = LoreBattText.sexData(attacker.sex == Gender.female);
       return AttackResult(
         outcome: AttackOutcome.unconscious,
         damage: finalDmg,
         expGained: exp,
-        message: '${target.name}은(는) $finalDmg의 피해를 입고 의식불명이 되었다! (EXP +$exp)',
+        message:
+            '${LoreBattText.enemyKnockedOut}$sex'
+            '${LoreBattText.enemyKnockedOutRest}'
+            ' (${LoreBattText.expGained(attacker.name, '$exp')})',
       );
     }
 
+    // 원작 LOREBATT.PAS:165 - `적은 {n}만큼의 피해를 입었다`
     return AttackResult(
       outcome: AttackOutcome.hit,
       damage: finalDmg,
-      message: '${target.name}은(는) $finalDmg만큼의 피해를 입었다.',
+      message:
+          '${LoreBattText.enemyDamaged}$finalDmg'
+          '${LoreBattText.enemyDamagedRest}',
     );
   }
 

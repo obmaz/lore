@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import '../logic/lore_batt_text.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -501,7 +503,13 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         _isAutoBattle = !_isAutoBattle;
       });
       if (_isAutoBattle) {
-        widget.onLog('⚔ 일행에게 무조건 공격할 것을 지시했다! (자동 전투 개시)');
+        // 원작 LOREBATT.PAS:1228 - `{이름}의 전투 모드 ===>` / `일행에게 무조건
+        // 공격 할 것을 지시`
+        widget.onLog(
+          '${widget.partyMembers.first.name}'
+          '${LoreBattText.battleMode}'
+          '${LoreBattText.menuCommandAll}',
+        );
         _executeAutoAction();
       } else {
         widget.onLog('⚔ 자동 전투를 중지하고 일반 전투 모드로 전환합니다.');
@@ -516,15 +524,16 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final player = activePlayer ?? widget.partyMembers.first;
     setState(() => _isTurnProcessing = true);
 
-    widget.onLog('${player.name}이(가) 도망을 시도합니다...');
+    // 원작 LOREBATT.PAS:79-88 - `{이름}은 도망간다` / 실패 시 `그러나,
+    // 일행은 성공하지 못했다`
+    widget.onLog('${player.name}${LoreBattText.flee}');
     final success = _engine.checkRunAway(player);
     await Future.delayed(const Duration(milliseconds: 250));
 
     if (success) {
-      widget.onLog('일행은 성공적으로 도망쳤습니다!');
       widget.onRunAway();
     } else {
-      widget.onLog('그러나, 일행은 도망에 성공하지 못했다!');
+      widget.onLog(LoreBattText.runFailed);
       await _advanceTurn();
     }
   }

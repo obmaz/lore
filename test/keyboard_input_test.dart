@@ -180,7 +180,7 @@ void main() {
       // V -> 개인의 상황
       await tester.sendKeyEvent(LogicalKeyboardKey.keyV);
       await settle(tester);
-      expect(find.text('2. 개인의 상황 (VIEW CHARACTER)'), findsOneWidget);
+      expect(find.text('2. 능력을 보고싶은 인물을 선택하시오'), findsOneWidget);
       await closeDialog(tester);
 
       // C -> 비전투 마법 시전

@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:math';
 
+import '../logic/lore_batt_text.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flame/game.dart';
@@ -993,10 +995,17 @@ class _MainGameScreenState extends State<MainGameScreen> {
         return LoreData.instance.monster(id);
       });
 
-      _addLog('=== 몬스터 무리가 나타났다! ===');
+      // 원작 LOREBATT.PAS:1228-1240 - 조우 화면: `적이 출현했다 !!!` /
+      // `적의 평균 민첩성 : n` / `적과 교전한다` / `도망간다`
+      _addLog(LoreBattText.encounter);
       for (final e in _battleEnemies) {
-        _addLog('${e.name} (Lv.${e.level}, HP:${e.hp}) 등장!');
+        _addLog('${e.name} (Lv.${e.level}, HP:${e.hp})');
       }
+      final avgAgility =
+          _battleEnemies.fold<int>(0, (a, e) => a + e.agility) ~/
+              _battleEnemies.length;
+      _addLog('${LoreBattText.enemyAgility} : $avgAgility');
+      _addLog(LoreBattText.engage);
     });
   }
 
