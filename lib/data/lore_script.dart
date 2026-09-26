@@ -93,13 +93,17 @@ class ScriptEvent {
   final int? x;
   final int? y;
 
-  const ScriptEvent.message(String this.text) : kind = 'message', x = null, y = null;
+  const ScriptEvent.message(String this.text)
+    : kind = 'message',
+      x = null,
+      y = null;
   const ScriptEvent.peek(this.x, this.y) : kind = 'peek', text = null;
 }
 
 /// 스크립트 스텝 1개.
 class ScriptStep {
-  final String kind; // say / gold / food / flag / join / battle / choice / equip / peek
+  final String
+  kind; // say / gold / food / flag / join / battle / choice / equip / peek
   final String? text;
   final int? amount;
   final String? key;
@@ -130,6 +134,10 @@ class ScriptStep {
   final int? tileXMax;
   final int? tileYMax;
 
+  /// `atPlayerX`: 영역의 x를 플레이어가 선 **열**로 삼는다
+  /// (원작 `for i := 10 to 23 do map[x,i] := 49`).
+  final bool tileAtPlayerX;
+
   /// battle 스텝의 난수 추가: `random.pool`에서 `random.min`~`random.max` 마리.
   final List<int>? randomPool;
   final int? randomMin;
@@ -138,6 +146,17 @@ class ScriptStep {
   /// randomFlag 스텝: 이름 목록 중 하나를 무작위로 설정한다
   /// (원작 `party.etc[40] := (random(7)+1) shl 1` 같은 "방 번호 뽑기").
   final List<String>? randomFlagNames;
+
+  /// `ifZero`: 현재 타일이 0(빈 땅)일 때만 다른 값으로 바꾼다
+  /// (원작 `if map[x,y] = 0 then map[x,y] := 40 else map[x,y] := 46`).
+  final int? tileIfZero;
+
+  /// setTileAtPlayer 스텝: 플레이어가 밟고 있는 칸을 바꾼다 (원작 `map[x,y] := v`).
+  final int? tileAtPlayer; // 1이면 setTileAtPlayer 스텝
+
+  /// nudge 스텝: 원작 `inc(y)`/`dec(y)` 처럼 플레이어를 한 칸 민다.
+  final int? nudgeDx;
+  final int? nudgeDy;
 
   const ScriptStep({
     required this.kind,
@@ -162,10 +181,15 @@ class ScriptStep {
     this.peekY,
     this.tileXMax,
     this.tileYMax,
+    this.tileAtPlayerX = false,
     this.randomPool,
     this.randomMin,
     this.randomMax,
     this.randomFlagNames,
+    this.tileIfZero,
+    this.tileAtPlayer,
+    this.nudgeDx,
+    this.nudgeDy,
   });
 }
 
@@ -235,11 +259,28 @@ class ScriptOutcome {
   final int? teleportY;
 
   /// 지형 변형 목록 (원작 `map[x,y] := 값`).
-  final List<({int? map, int x, int y, int tile})> tileChanges;
+  final List<({int? map, int x, int y, int tile, int? ifZero})> tileChanges;
 
   /// 영역 지형 변형 목록 (원작 `for j := .. do map[i,j] := 값`).
-  final List<({int? map, int xMin, int xMax, int yMin, int yMax, int tile})>
+  final List<
+    ({
+      int? map,
+      int xMin,
+      int xMax,
+      int yMin,
+      int yMax,
+      int tile,
+      int? ifZero,
+      bool atPlayerX,
+    })
+  >
   tileAreas;
+
+  /// 플레이어가 밟고 있는 칸의 지형 변형 (원작 `map[x,y] := 값`).
+  final List<({int tile, int? ifZero})> playerTiles;
+
+  /// 플레이어를 미는 이동 (원작 `inc(y)` / `dec(y)`).
+  final List<({int dx, int dy})> nudges;
 
   /// 장비 지급 목록 (원작 `weapon := n` / `shield := n` / `armor := n`).
   final List<
@@ -263,6 +304,8 @@ class ScriptOutcome {
     this.teleportY,
     this.tileChanges = const [],
     this.tileAreas = const [],
+    this.playerTiles = const [],
+    this.nudges = const [],
     this.equips = const [],
     this.events = const [],
   });
@@ -405,16 +448,29 @@ class LoreScriptEngine {
     var teleportMap = acc.teleportMap;
     var teleportX = acc.teleportX;
     var teleportY = acc.teleportY;
-    var tileChanges = List<({int? map, int x, int y, int tile})>.from(
-      acc.tileChanges,
-    );
-    var tileAreas =
-        List<({int? map, int xMin, int xMax, int yMin, int yMax, int tile})>.from(
-          acc.tileAreas,
+    var tileChanges =
+        List<({int? map, int x, int y, int tile, int? ifZero})>.from(
+          acc.tileChanges,
         );
-    var equips = List<
-      ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
-    >.from(acc.equips);
+    var tileAreas =
+        List<
+          ({
+            int? map,
+            int xMin,
+            int xMax,
+            int yMin,
+            int yMax,
+            int tile,
+            int? ifZero,
+            bool atPlayerX,
+          })
+        >.from(acc.tileAreas);
+    var playerTiles = List<({int tile, int? ifZero})>.from(acc.playerTiles);
+    var nudges = List<({int dx, int dy})>.from(acc.nudges);
+    var equips =
+        List<
+          ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
+        >.from(acc.equips);
     var events = List<ScriptEvent>.from(acc.events);
 
     for (var i = 0; i < steps.length; i++) {
@@ -463,6 +519,7 @@ class LoreScriptEngine {
             x: step.tileX!,
             y: step.tileY!,
             tile: step.tileValue!,
+            ifZero: step.tileIfZero,
           ));
           break;
         case 'setTileArea':
@@ -473,6 +530,8 @@ class LoreScriptEngine {
             yMin: step.tileY!,
             yMax: step.tileYMax ?? step.tileY!,
             tile: step.tileValue!,
+            ifZero: step.tileIfZero,
+            atPlayerX: step.tileAtPlayerX,
           ));
           break;
         case 'randomFlag':
@@ -480,6 +539,15 @@ class LoreScriptEngine {
           if (names.isNotEmpty) {
             flags.add(names[_random.nextInt(names.length)]);
           }
+          break;
+        case 'setTileAtPlayer':
+          playerTiles.add((
+            tile: step.tileValue ?? 49,
+            ifZero: step.tileIfZero,
+          ));
+          break;
+        case 'nudge':
+          nudges.add((dx: step.nudgeDx ?? 0, dy: step.nudgeDy ?? 0));
           break;
         case 'equip':
           equips.add((
@@ -510,6 +578,8 @@ class LoreScriptEngine {
               teleportY: teleportY,
               tileChanges: tileChanges,
               tileAreas: tileAreas,
+              playerTiles: playerTiles,
+              nudges: nudges,
               equips: equips,
               events: events,
             ),
@@ -537,6 +607,8 @@ class LoreScriptEngine {
         teleportY: teleportY,
         tileChanges: tileChanges,
         tileAreas: tileAreas,
+        playerTiles: playerTiles,
+        nudges: nudges,
         equips: equips,
         events: events,
       ),
@@ -627,6 +699,8 @@ class LoreScriptEngine {
             tileX: t['x'] as int,
             tileY: t['y'] as int,
             tileValue: t['tile'] as int,
+            tileIfZero: t['ifZero'] as int?,
+            tileAtPlayerX: t['atPlayerX'] == true,
           ),
         );
         matched = true;
@@ -634,11 +708,7 @@ class LoreScriptEngine {
       if (m.containsKey('peek')) {
         final p = m['peek'] as Map<String, dynamic>;
         steps.add(
-          ScriptStep(
-            kind: 'peek',
-            peekX: p['x'] as int,
-            peekY: p['y'] as int,
-          ),
+          ScriptStep(kind: 'peek', peekX: p['x'] as int, peekY: p['y'] as int),
         );
         matched = true;
       }
@@ -667,6 +737,29 @@ class LoreScriptEngine {
             tileY: t['yMin'] as int,
             tileYMax: t['yMax'] as int?,
             tileValue: t['tile'] as int,
+            tileIfZero: t['ifZero'] as int?,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('setTileAtPlayer')) {
+        final t = m['setTileAtPlayer'] as Map<String, dynamic>;
+        steps.add(
+          ScriptStep(
+            kind: 'setTileAtPlayer',
+            tileValue: t['tile'] as int? ?? 49,
+            tileIfZero: t['ifZero'] as int?,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('nudge')) {
+        final n = m['nudge'] as Map<String, dynamic>;
+        steps.add(
+          ScriptStep(
+            kind: 'nudge',
+            nudgeDx: n['dx'] as int? ?? 0,
+            nudgeDy: n['dy'] as int? ?? 0,
           ),
         );
         matched = true;

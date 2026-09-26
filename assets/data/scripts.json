@@ -1672,6 +1672,9 @@
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "sealPuzzleA"
         }
       ]
     },
@@ -1712,6 +1715,9 @@
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "sealPuzzleA"
         }
       ]
     },
@@ -1752,6 +1758,9 @@
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "sealPuzzleA"
         }
       ]
     },
@@ -1792,6 +1801,9 @@
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "sealPuzzleA"
         }
       ]
     },
@@ -1832,6 +1844,9 @@
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "sealPuzzleA"
         }
       ]
     },
@@ -1872,6 +1887,9 @@
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "sealPuzzleA"
         }
       ]
     },
@@ -1912,6 +1930,9 @@
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "sealPuzzleA"
         }
       ]
     },
@@ -1930,6 +1951,11 @@
       "steps": [
         {
           "say": "여기에는 봉인이 발견되지 않았다"
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 49
+          }
         }
       ]
     },
@@ -1948,6 +1974,11 @@
       "steps": [
         {
           "say": "여기에는 봉인이 발견되지 않았다"
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 49
+          }
         }
       ]
     },
@@ -1966,6 +1997,11 @@
       "steps": [
         {
           "say": "여기에는 봉인이 발견되지 않았다"
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 49
+          }
         }
       ]
     },
@@ -1984,6 +2020,11 @@
       "steps": [
         {
           "say": "여기에는 봉인이 발견되지 않았다"
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 49
+          }
         }
       ]
     },
@@ -2002,6 +2043,11 @@
       "steps": [
         {
           "say": "여기에는 봉인이 발견되지 않았다"
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 49
+          }
         }
       ]
     },
@@ -2020,6 +2066,11 @@
       "steps": [
         {
           "say": "여기에는 봉인이 발견되지 않았다"
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 49
+          }
         }
       ]
     },
@@ -2038,6 +2089,11 @@
       "steps": [
         {
           "say": "여기에는 봉인이 발견되지 않았다"
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 49
+          }
         }
       ]
     },
@@ -2067,6 +2123,11 @@
               "min": 3,
               "max": 5
             }
+          }
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 49
           }
         }
       ]
@@ -2144,6 +2205,493 @@
           "teleport": {
             "x": 56,
             "y": 93
+          }
+        }
+      ]
+    },
+    {
+      "id": "keep2-ambush-25-18",
+      "trigger": "step",
+      "map": 22,
+      "x": 25,
+      "y": 18,
+      "once": true,
+      "require": {
+        "flagNot": "keep2AmbushCleared"
+      },
+      "title": "암흑의 성채",
+      "steps": [
+        {
+          "say": "Wraith 떼가 사방에서 몰려온다. 그 뒤로 Death Knight가 다가선다 !"
+        },
+        {
+          "battle": {
+            "title": "암흑의 성채",
+            "monsters": [
+              60,
+              60,
+              60,
+              60,
+              60
+            ],
+            "random": {
+              "pool": [
+                63
+              ],
+              "min": 1,
+              "max": 1
+            }
+          }
+        },
+        {
+          "say": "당신들은 성채의 문지기들을 물리쳤다."
+        },
+        {
+          "flag": "keep2AmbushCleared"
+        }
+      ]
+    },
+    {
+      "id": "keep2-guards-y25",
+      "trigger": "step",
+      "map": 22,
+      "xMin": 24,
+      "xMax": 26,
+      "yMin": 25,
+      "yMax": 25,
+      "once": true,
+      "require": {
+        "flagNot": "keep2GuardsCleared"
+      },
+      "title": "성채의 수문장",
+      "steps": [
+        {
+          "say": "성채의 수문장들이 앞을 가로막았다 !"
+        },
+        {
+          "battle": {
+            "title": "성채의 수문장",
+            "monsters": [
+              61,
+              58,
+              56,
+              55,
+              60
+            ]
+          }
+        },
+        {
+          "flag": "keep2GuardsCleared"
+        }
+      ]
+    },
+    {
+      "id": "keep3-trap-25-27",
+      "trigger": "step",
+      "map": 23,
+      "x": 25,
+      "y": 27,
+      "once": true,
+      "steps": [
+        {
+          "say": "바닥의 함정 장치가 풀리며 막힌 길이 열렸다."
+        },
+        {
+          "setTile": {
+            "x": 25,
+            "y": 27,
+            "tile": 46
+          }
+        },
+        {
+          "setTile": {
+            "x": 29,
+            "y": 43,
+            "tile": 44
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 12,
+            "xMax": 39,
+            "yMin": 7,
+            "yMax": 34,
+            "tile": 39,
+            "ifZero": 39
+          }
+        },
+        {
+          "setTile": {
+            "x": 25,
+            "y": 12,
+            "tile": 54
+          }
+        },
+        {
+          "setTile": {
+            "x": 26,
+            "y": 12,
+            "tile": 54
+          }
+        },
+        {
+          "flag": "keep3TrapCleared"
+        }
+      ]
+    },
+    {
+      "id": "keep3-key-a-second",
+      "trigger": "step",
+      "map": 25,
+      "x": 5,
+      "y": 34,
+      "once": true,
+      "require": {
+        "flag": "keep3KeyB",
+        "flagNot": "keep3KeyA"
+      },
+      "steps": [
+        {
+          "say": "두 번째 열쇠가 맞물리며 봉인된 문이 열렸다."
+        },
+        {
+          "setTile": {
+            "x": 25,
+            "y": 27,
+            "tile": 54
+          }
+        },
+        {
+          "setTile": {
+            "x": 26,
+            "y": 27,
+            "tile": 54
+          }
+        },
+        {
+          "flag": "keep3KeyA"
+        },
+        {
+          "flag": "sealPuzzleB"
+        }
+      ]
+    },
+    {
+      "id": "keep3-key-a-first",
+      "trigger": "step",
+      "map": 25,
+      "x": 5,
+      "y": 34,
+      "once": true,
+      "require": {
+        "flagNot": "keep3KeyA"
+      },
+      "steps": [
+        {
+          "say": "봉인을 여는 열쇠 하나를 찾았다."
+        },
+        {
+          "flag": "keep3KeyA"
+        }
+      ]
+    },
+    {
+      "id": "keep3-key-b-second",
+      "trigger": "step",
+      "map": 25,
+      "x": 46,
+      "y": 34,
+      "once": true,
+      "require": {
+        "flag": "keep3KeyA",
+        "flagNot": "keep3KeyB"
+      },
+      "steps": [
+        {
+          "say": "두 번째 열쇠가 맞물리며 봉인된 문이 열렸다."
+        },
+        {
+          "setTile": {
+            "x": 25,
+            "y": 27,
+            "tile": 54
+          }
+        },
+        {
+          "setTile": {
+            "x": 26,
+            "y": 27,
+            "tile": 54
+          }
+        },
+        {
+          "flag": "keep3KeyB"
+        },
+        {
+          "flag": "sealPuzzleB"
+        }
+      ]
+    },
+    {
+      "id": "keep3-key-b-first",
+      "trigger": "step",
+      "map": 25,
+      "x": 46,
+      "y": 34,
+      "once": true,
+      "require": {
+        "flagNot": "keep3KeyB"
+      },
+      "steps": [
+        {
+          "say": "봉인을 여는 열쇠 하나를 찾았다."
+        },
+        {
+          "flag": "keep3KeyB"
+        }
+      ]
+    },
+    {
+      "id": "keep25-corridor-15-34",
+      "trigger": "step",
+      "map": 25,
+      "x": 15,
+      "y": 34,
+      "once": true,
+      "steps": [
+        {
+          "setTile": {
+            "x": 15,
+            "y": 34,
+            "tile": 41
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 11,
+            "xMax": 14,
+            "yMin": 33,
+            "yMax": 33,
+            "tile": 24
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 11,
+            "xMax": 14,
+            "yMin": 35,
+            "yMax": 35,
+            "tile": 26
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 11,
+            "xMax": 14,
+            "yMin": 34,
+            "yMax": 34,
+            "tile": 42
+          }
+        },
+        {
+          "setTile": {
+            "x": 14,
+            "y": 33,
+            "tile": 17
+          }
+        },
+        {
+          "setTile": {
+            "x": 14,
+            "y": 35,
+            "tile": 18
+          }
+        },
+        {
+          "say": "무너진 통로가 열렸다."
+        }
+      ]
+    },
+    {
+      "id": "keep25-corridor-36-34",
+      "trigger": "step",
+      "map": 25,
+      "x": 36,
+      "y": 34,
+      "once": true,
+      "steps": [
+        {
+          "setTile": {
+            "x": 36,
+            "y": 34,
+            "tile": 41
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 37,
+            "xMax": 40,
+            "yMin": 33,
+            "yMax": 33,
+            "tile": 24
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 37,
+            "xMax": 40,
+            "yMin": 35,
+            "yMax": 35,
+            "tile": 26
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 37,
+            "xMax": 40,
+            "yMin": 34,
+            "yMax": 34,
+            "tile": 42
+          }
+        },
+        {
+          "setTile": {
+            "x": 37,
+            "y": 33,
+            "tile": 19
+          }
+        },
+        {
+          "setTile": {
+            "x": 37,
+            "y": 35,
+            "tile": 22
+          }
+        },
+        {
+          "say": "무너진 통로가 열렸다."
+        }
+      ]
+    },
+    {
+      "id": "keep1-seal-gate-a",
+      "trigger": "step",
+      "map": 21,
+      "x": 25,
+      "y": 20,
+      "once": false,
+      "require": {
+        "flagNot": "sealPuzzleA"
+      },
+      "steps": [
+        {
+          "say": "두 개의 봉인이 모두 풀리지 않으면 이 문은 열리지 않는다."
+        },
+        {
+          "nudge": {
+            "dy": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "keep1-seal-gate-b",
+      "trigger": "step",
+      "map": 21,
+      "x": 25,
+      "y": 20,
+      "once": false,
+      "require": {
+        "flagNot": "sealPuzzleB"
+      },
+      "steps": [
+        {
+          "say": "두 개의 봉인이 모두 풀리지 않으면 이 문은 열리지 않는다."
+        },
+        {
+          "nudge": {
+            "dy": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "lockup-passage-22-41",
+      "trigger": "step",
+      "map": 18,
+      "x": 22,
+      "y": 41,
+      "once": false,
+      "steps": [
+        {
+          "setTile": {
+            "x": 22,
+            "y": 41,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 21,
+            "y": 41,
+            "tile": 52
+          }
+        }
+      ]
+    },
+    {
+      "id": "lockup-guardian-21-41",
+      "trigger": "step",
+      "map": 18,
+      "x": 21,
+      "y": 41,
+      "once": true,
+      "require": {
+        "flagNot": "lockupGuardianDefeated"
+      },
+      "title": "감옥의 수문장",
+      "steps": [
+        {
+          "say": "거대한 형체가 감옥 통로를 막아선다 !"
+        },
+        {
+          "battle": {
+            "title": "감옥의 수문장",
+            "monsters": [
+              53
+            ]
+          }
+        },
+        {
+          "say": "당신들은 수문장을 물리치고 통로를 지나갔다."
+        },
+        {
+          "flag": "lockupGuardianDefeated"
+        }
+      ]
+    },
+    {
+      "id": "t_den2-trap-y10",
+      "trigger": "step",
+      "map": 12,
+      "yMin": 10,
+      "yMax": 10,
+      "once": false,
+      "require": {
+        "flagNot": "goldenSealFound"
+      },
+      "steps": [
+        {
+          "say": "당신은 함정을 밟았다 ! 벽이 솟아올라 길을 막았다."
+        },
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "xMax": 1,
+            "yMin": 10,
+            "yMax": 23,
+            "tile": 49,
+            "atPlayerX": true
           }
         }
       ]

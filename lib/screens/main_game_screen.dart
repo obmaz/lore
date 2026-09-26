@@ -393,7 +393,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
           change.y > map.ymax) {
         continue;
       }
-      map.grid[change.y - 1][change.x - 1] = change.tile;
+      map.grid[change.y - 1][change.x - 1] = _resolveTile(
+        map.grid[change.y - 1][change.x - 1],
+        change.tile,
+        change.ifZero,
+      );
       setState(() {});
     }
 
@@ -402,13 +406,41 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final map = _game.currentMap;
       if (map == null) continue;
       if (area.map != null && area.map != _game.currentMapId) continue;
+      // 원작 `map[x,i] := 값`: x는 플레이어가 선 열이다.
+      final xMin = area.atPlayerX ? _game.playerX : area.xMin;
+      final xMax = area.atPlayerX ? _game.playerX : area.xMax;
       for (var y = area.yMin; y <= area.yMax; y++) {
         if (y < 1 || y > map.ymax) continue;
-        for (var x = area.xMin; x <= area.xMax; x++) {
+        for (var x = xMin; x <= xMax; x++) {
           if (x < 1 || x > map.xmax) continue;
-          map.grid[y - 1][x - 1] = area.tile;
+          map.grid[y - 1][x - 1] = _resolveTile(
+            map.grid[y - 1][x - 1],
+            area.tile,
+            area.ifZero,
+          );
         }
       }
+      setState(() {});
+    }
+
+    // 플레이어가 밟고 있는 칸의 지형 변형 (원작 `map[x,y] := 값`)
+    for (final playerTile in outcome.playerTiles) {
+      final map = _game.currentMap;
+      if (map == null) continue;
+      final px = _game.playerX;
+      final py = _game.playerY;
+      if (px < 1 || px > map.xmax || py < 1 || py > map.ymax) continue;
+      map.grid[py - 1][px - 1] = _resolveTile(
+        map.grid[py - 1][px - 1],
+        playerTile.tile,
+        playerTile.ifZero,
+      );
+      setState(() {});
+    }
+
+    // 밀어내기 (원작 `inc(y)` / `dec(y)`)
+    for (final nudge in outcome.nudges) {
+      _game.tryMove(nudge.dx, nudge.dy);
       setState(() {});
     }
 
@@ -430,6 +462,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
           .toList();
       _startBossBattle(enemies);
     }
+  }
+
+  /// 원작 `if map[x,y] = 0 then map[x,y] := A else map[x,y] := B` 규칙을 적용한다.
+  int _resolveTile(int current, int tile, int? ifZero) {
+    if (ifZero != null && current == 0) return ifZero;
+    return tile;
   }
 
   /// 원작 `choosewhom` + 장비 지급 (`weapon := 3; wea_power := 12`).

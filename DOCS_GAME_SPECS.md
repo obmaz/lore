@@ -493,11 +493,19 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
      CRAB GOD의 왕 7마리 전투 → 봉인 해제(`evilSealRoomCleared`). 봉인이 남아 있는
      동안 y=8~12 에서는 `random(3)+3` 마리의 수호 무리가 나온다.
    - 맵 12 T_DEN2: 수수께끼 문(오른쪽 문 통로 개방 / 오답이면 (25,70)으로 되돌림)
-6. **남은 세부(원작의 좌표 의존 타일 조작)**: `map[x,y] := 49` 처럼 **플레이어가 밟은
-   좌표 자체**를 바꾸는 처리는 스크립트가 정적 좌표만 다루므로 아직 미이관이다.
-   - 맵 19: 잘못된 방/수호 무리 전투 후 `map[x,y] := 49`(밟은 칸 봉쇄)
-   - 맵 12: `y=10` 에서 함정(플레이어가 선 **열** 전체를 벽으로 바꿈)
-   엔진에 `setTileAtPlayer` 같은 스텝을 추가하면 그대로 옮길 수 있다.
+6. **원작 좌표 이벤트 전수 이관** ✅ `LORESPEC.PAS` 의 `on(x,y)` / `if y = N` 이벤트
+   **46건 모두** 커버한다. 자동 점검: `python3 tool/audit_lorespec.py
+   repo_source/LORE_1993_src/LORESPEC.PAS --coverage` (미커버가 있으면 종료코드 1).
+   - 맵 18 LOCKUP: (22,41) 통로 교체, (21,41) 수문장 Minotaur 전투
+   - 맵 21 SWAMP KEEP: (25,20) 봉인문(두 봉인 퍼즐이 모두 풀려야 열림, 아니면 `nudge`)
+   - 맵 22 KEEP2: (25,18) Wraith 5 + Death Knight, (y=25, x=24~26) 수문장 5명
+   - 맵 23 KEEP3: (25,27) 함정 해제 + `ifZero` 영역 타일 변환
+   - 맵 25 K_DEN2: (5,34)/(46,34) 열쇠 두 개(순서 무관) → 봉인문 개방,
+     (15,34)/(36,34) 통로 개방
+   - 맵 19: 잘못된 방/수호 무리 전투 후 **밟은 칸 봉쇄**(`setTileAtPlayer`),
+     맵 12: `y=10` 함정이 **플레이어가 선 열**을 막는다(`setTileArea.atPlayerX`)
+   - 남은 차이는 전투 개체 수가 난수인 경우의 실제 수치뿐이며, `battle.random`
+     으로 원작 범위(`random(3)+3` 등)를 그대로 쓴다.
 7. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
    아니므로 이식 대상에서 제외한다.
 8. **근사 이벤트 정리** ✅ 완료: `lib/game/lore_dungeon_event_manager.dart`에 있던
@@ -519,7 +527,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `items.json` | 무기 10 / 방패 6 / 갑옷 6 (위력·가격) | `LoreData.instance.weapon/shield/armor(id)` |
 | `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
 | `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
-| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (77건) | `LoreScriptEngine.instance` |
+| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (91건) | `LoreScriptEngine.instance` |
 | `portals.json` | 맵 연결(포털 30) + 표지판 문구 (21) | `LoreWorldManager.instance.findPortal/getSignMessage` |
 | `dialogues.json` | 좌표 기반 NPC 대사 (30) | `LoreDialogueManager.instance.getDialogue` |
 
@@ -539,6 +547,8 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     { "battle": { "title": "미이라의 방", "monsters": [26, 8, 8] } },
     { "setTile": { "x": 62, "y": 82, "tile": 44 } },
     { "setTileArea": { "xMin": 25, "xMax": 27, "yMin": 27, "yMax": 37, "tile": 44 } },
+    { "setTileAtPlayer": { "tile": 49 } },
+    { "nudge": { "dy": 1 } },
     { "randomFlag": ["evilSealRoom1", "evilSealRoom2"] },
     { "teleport": { "x": 46, "y": 41 } },
     { "equip": { "kind": "weapon", "index": 3, "power": 12, "prompt": true } },
@@ -562,7 +572,10 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 * `peek` 스텝: 원작 `scroll(FALSE)` 연출. 파티는 그대로 두고 **시야만** 옮겨 다른
   장소를 보여준 뒤 잠시 뒤 자동으로 돌아온다(원작의 `PressAnyKey` 대체).
 * `setTileArea` 스텝: `xMin`/`xMax`/`yMin`/`yMax` 영역을 한 타일로 바꾼다
-  (원작 `for j := .. do map[i,j] := v` 같은 통로 개방).
+  (원작 `for j := .. do map[i,j] := v`). `atPlayerX: true`면 x를 **플레이어가 선 열**로
+  삼고, `ifZero: v`면 현재 타일이 0일 때만 바꾼다.
+* `setTileAtPlayer` 스텝: 플레이어가 밟고 있는 칸을 바꾼다(`map[x,y] := v`).
+* `nudge` 스텝: `{"dx": 0, "dy": 1}` 로 플레이어를 한 칸 민다(원작 `inc(y)`/`dec(y)`).
 * `randomFlag` 스텝: 이름 목록 중 하나를 무작위로 세운다
   (원작 `party.etc[40] := (random(7)+1) shl 1` 같은 "방 번호 뽑기").
 * `battle` 스텝의 `random`: `{"pool": [59], "min": 3, "max": 5}` 로

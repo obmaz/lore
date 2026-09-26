@@ -71,13 +71,13 @@ void main() {
     });
 
     test('3. 카메라 연출(원작 scroll(FALSE)) 상태 검증', () {
-      final grid = List.generate(
-        10,
-        (y) => List.generate(10, (x) => 42),
-      );
+      final grid = List.generate(10, (y) => List.generate(10, (x) => 42));
       final mapData = LoreMapData(name: 'TEST', xmax: 10, ymax: 10, grid: grid);
-      final game = LoreGame(initialMapId: 4, initialPlayerX: 3, initialPlayerY: 3)
-        ..currentMap = mapData;
+      final game = LoreGame(
+        initialMapId: 4,
+        initialPlayerX: 3,
+        initialPlayerY: 3,
+      )..currentMap = mapData;
 
       // 연출 전: 시야는 파티 위치
       expect(game.isPeeking, isFalse);

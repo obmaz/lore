@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 77);
+      expect(LoreScriptEngine.instance.scripts.length, 91);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -240,12 +240,25 @@ void main() {
       expect(mummy.outcome.battleMonsters, [35, 35, 26]);
 
       // 7) 맵 14 (16,20) 황금의 방패 / 맵 15 (14,7) 방패, (45,19) 갑옷
-      expect(engine.startStep(14, 16, 20, noCtx)!.outcome.equips.single.kind, 'shield');
-      expect(engine.startStep(15, 14, 7, noCtx)!.outcome.equips.single.kind, 'shield');
-      expect(engine.startStep(15, 45, 19, noCtx)!.outcome.equips.single.kind, 'armor');
+      expect(
+        engine.startStep(14, 16, 20, noCtx)!.outcome.equips.single.kind,
+        'shield',
+      );
+      expect(
+        engine.startStep(15, 14, 7, noCtx)!.outcome.equips.single.kind,
+        'shield',
+      );
+      expect(
+        engine.startStep(15, 45, 19, noCtx)!.outcome.equips.single.kind,
+        'armor',
+      );
 
       // 8) 맵 15 y=27 QUAKE 보스 (Zombie ×2 + ArchiGagoyle)
-      expect(engine.startStep(15, 20, 27, noCtx)!.outcome.battleMonsters, [36, 36, 42]);
+      expect(engine.startStep(15, 20, 27, noCtx)!.outcome.battleMonsters, [
+        36,
+        36,
+        42,
+      ]);
     });
 
     test('11. 원작 맵 15 (y=48) 보물은 6000 → 4000 두 단계로 지급된다', () async {
@@ -284,8 +297,9 @@ void main() {
       expect(kinds.where((k) => k == 'peek').length, 3);
       expect(kinds.first, 'message');
       expect(kinds[2], 'peek');
-      final firstPeek = ancient.outcome.events
-          .firstWhere((e) => e.kind == 'peek');
+      final firstPeek = ancient.outcome.events.firstWhere(
+        (e) => e.kind == 'peek',
+      );
       expect(firstPeek.x, 48); // 원작 x := 48; y := 57;
       expect(firstPeek.y, 57);
       expect(ancient.outcome.messages.length, 5); // messages에는 대사만 남는다
@@ -322,7 +336,9 @@ void main() {
       expect(hidra.outcome.battleTitle, contains('Hidra'));
       expect(hidra.outcome.setFlags, contains('bossHidraDefeated'));
       // 다른 열에서는 발동하지 않는다.
-      final hidraScript = engine.scripts.firstWhere((s) => s.id == 'map17-hidra');
+      final hidraScript = engine.scripts.firstWhere(
+        (s) => s.id == 'map17-hidra',
+      );
       expect(hidraScript.matches('step', 17, 23, 40), isFalse);
 
       // 2) 맵 18: x = 31 열에서 거룡 + 꼬리 + Mud-Man 무리와 전투
@@ -350,9 +366,7 @@ void main() {
       // 1) 맵 19 (41,39) 레버: 통로를 영역 단위로 열고 7개 방 중 하나를 뽑는다.
       final leverB = engine.startStep(19, 41, 39, noCtx)!;
       expect(leverB.outcome.tileAreas.map((a) => a.tile), contains(44));
-      final corridor = leverB.outcome.tileAreas.firstWhere(
-        (a) => a.tile == 44,
-      );
+      final corridor = leverB.outcome.tileAreas.firstWhere((a) => a.tile == 44);
       expect(corridor.xMin, 25);
       expect(corridor.xMax, 27);
       expect(corridor.yMin, 27);
@@ -398,10 +412,7 @@ void main() {
         const ScriptContext(flags: {'evilSealLeverB'}),
       )!;
       expect(guardians.outcome.battleMonsters.length, inInclusiveRange(3, 5));
-      expect(
-        guardians.outcome.battleMonsters.every((id) => id == 59),
-        isTrue,
-      );
+      expect(guardians.outcome.battleMonsters.every((id) => id == 59), isTrue);
       // 봉인을 이미 풀었다면 나오지 않는다.
       expect(
         engine.startStep(
@@ -434,6 +445,70 @@ void main() {
       expect(passage.outcome.tileAreas.length, 2);
       expect(passage.outcome.teleportX, 56);
       expect(passage.outcome.teleportY, 93);
+    });
+
+    test('16. 맵 21/22/23/25 (KEEP·K_DEN) 이벤트 이관', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+
+      // 1) 맵 21 (25,20) 봉인문: 두 퍼즐 중 하나라도 남아 있으면 막히고 밀려난다.
+      final blocked = engine.startStep(
+        21,
+        25,
+        20,
+        const ScriptContext(flags: {'sealPuzzleA'}),
+      )!;
+      expect(blocked.outcome.messages.single, contains('봉인'));
+      final nudge = blocked.outcome.nudges.single;
+      expect(nudge.dy, 1); // 원작 `inc(y)`
+      // 두 퍼즐을 모두 풀면 아무 일도 일어나지 않는다(문이 열린다).
+      expect(
+        engine.startStep(
+          21,
+          25,
+          20,
+          const ScriptContext(flags: {'sealPuzzleA', 'sealPuzzleB'}),
+        ),
+        isNull,
+      );
+
+      // 2) 맵 22 (25,18): Wraith 5 + Death Knight 1
+      final ambush = engine.startStep(22, 25, 18, noCtx)!;
+      expect(ambush.outcome.battleMonsters.where((m) => m == 60).length, 5);
+      expect(ambush.outcome.battleMonsters.where((m) => m == 63).length, 1);
+      expect(ambush.outcome.setFlags, contains('keep2AmbushCleared'));
+
+      // 3) 맵 22 (y=25, x=24~26) 수문장 5명
+      final guards = engine.startStep(22, 25, 25, noCtx)!;
+      expect(guards.outcome.battleMonsters, [61, 58, 56, 55, 60]);
+
+      // 4) 맵 23 (25,27): 함정 해제 + 영역 타일 변형(ifZero)
+      final trap = engine.startStep(23, 25, 27, noCtx)!;
+      final zeroArea = trap.outcome.tileAreas.firstWhere((a) => a.ifZero == 39);
+      expect(zeroArea.xMin, 12);
+      expect(zeroArea.xMax, 39);
+      expect(zeroArea.yMin, 7);
+      expect(zeroArea.yMax, 34);
+
+      // 5) 맵 25 열쇠: 먼저 닿은 쪽은 기록만, 나중 쪽에서 문이 열린다.
+      final firstKey = engine.startStep(25, 5, 34, noCtx)!;
+      expect(firstKey.outcome.setFlags, ['keep3KeyA']);
+      final secondKey = engine.startStep(
+        25,
+        46,
+        34,
+        const ScriptContext(flags: {'keep3KeyA'}),
+      )!;
+      expect(secondKey.outcome.setFlags, contains('keep3KeyB'));
+      expect(secondKey.outcome.setFlags, contains('sealPuzzleB'));
+      expect(
+        secondKey.outcome.tileChanges.map((t) => t.x),
+        containsAll(<int>[25, 26]),
+      );
+
+      // 6) 맵 25 통로 개방 (15,34)/(36,34)
+      final corridor = engine.startStep(25, 15, 34, noCtx)!;
+      expect(corridor.outcome.tileAreas.length, 3);
     });
   });
 }

@@ -7,7 +7,11 @@
 사용법:
     python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS
     python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS --json
+    python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS --coverage
     python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORETALK.PAS
+
+`--coverage`는 assets/data/scripts.json + portals.json 과 대조해 아직
+이관하지 않은 좌표 이벤트가 있는지 보고한다(미커버가 있으면 종료코드 1).
 """
 import json
 import re
@@ -105,14 +109,62 @@ def scan(path: str):
     return events, map_starts
 
 
+def _covers(scripts, portals, map_id, x, y):
+    """scripts.json / portals.json 이 해당 좌표를 다루는지 검사한다."""
+    for s in scripts:
+        if s['map'] != map_id:
+            continue
+        if s.get('x') is not None and s['x'] != x:
+            continue
+        if s.get('y') is not None and s['y'] != y:
+            continue
+        if s.get('xMin') is not None and x < s['xMin']:
+            continue
+        if s.get('xMax') is not None and x > s['xMax']:
+            continue
+        if s.get('yMin') is not None and y < s['yMin']:
+            continue
+        if s.get('yMax') is not None and y > s['yMax']:
+            continue
+        return s['id']
+    for p in portals:
+        if p['map'] != map_id:
+            continue
+        if 'x' in p and p['x'] != x:
+            continue
+        if 'y' in p and p['y'] != y:
+            continue
+        if 'yMin' in p and y < p['yMin']:
+            continue
+        return 'portal:' + p['name']
+    return None
+
+
 def main() -> int:
     args = [a for a in sys.argv[1:] if not a.startswith('--')]
     as_json = '--json' in sys.argv
+    coverage = '--coverage' in sys.argv
     if not args:
         print(__doc__)
         return 1
 
     events, map_starts = scan(args[0])
+
+    if coverage:
+        scripts_path = 'assets/data/scripts.json'
+        portals_path = 'assets/data/portals.json'
+        scripts = json.load(open(scripts_path, encoding='utf-8'))['scripts']
+        portals = json.load(open(portals_path, encoding='utf-8'))['portals']
+        missing = [
+            (m, x, y, e)
+            for m, _line, x, y, e in events
+            if _covers(scripts, portals, m, x, y) is None
+        ]
+        print(f'원작 좌표 이벤트 {len(events)}건 / 미커버 {len(missing)}건')
+        for m, x, y, effects in missing:
+            print(f'  맵 {m} ({x},{y}) -> {", ".join(effects) or "-"}')
+        return 1 if missing else 0
+
     if as_json:
         print(json.dumps(
             {

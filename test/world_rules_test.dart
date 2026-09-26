@@ -119,7 +119,11 @@ void main() {
         expect(portal.targetX, tx, reason: '맵 $map y=$y 목적지 x');
         expect(portal.targetY, ty, reason: '맵 $map y=$y 목적지 y');
         // 출구 행 바로 위에서는 발동하지 않는다.
-        expect(manager.findPortal(map, 10, y - 1), isNull, reason: '맵 $map y=${y - 1} 오발동');
+        expect(
+          manager.findPortal(map, 10, y - 1),
+          isNull,
+          reason: '맵 $map y=${y - 1} 오발동',
+        );
       }
     });
     test('3. 표지판: JSON 규칙이 내장 규칙과 일치한다', () async {
