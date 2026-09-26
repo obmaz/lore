@@ -16649,7 +16649,7 @@
       "trigger": "enter",
       "map": 7,
       "require": {
-        "flag": "polarisJoined"
+        "partyMember": "Polaris"
       },
       "steps": [
         {

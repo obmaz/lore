@@ -590,7 +590,7 @@
 | `talk-7-38-17-q1`<br>LORETALK.PAS (파일 추정) | talk (38, 17) | {"quest":{"name":"lastditch","eq":1}} | lastditch 단계 → 조건 밖 값 | 대사/연출 |
 | `talk-7-38-17-q2`<br>LORETALK.PAS (파일 추정) | talk (38, 17) | {"quest":{"name":"lastditch","eq":2}} | lastditch 단계 → 조건 밖 값 | exp, questStep:lastditch |
 | `talk-7-38-17-q3`<br>LORETALK.PAS (파일 추정) | talk (38, 17) | {"quest":{"name":"lastditch","eq":3}} | lastditch 단계 → 조건 밖 값 | 대사/연출 |
-| `enter-7-polaris-tile`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"flag":"polarisJoined"} | flag polarisJoined → 제거 | setTile |
+| `enter-7-polaris-tile`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"partyMember":"Polaris"} | partyMember Polaris → 현재 파티에서 제외 | setTile |
 
 ### 맵 9
 

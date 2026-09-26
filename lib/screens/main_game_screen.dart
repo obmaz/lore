@@ -371,6 +371,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       mindReadActive: _mindReadCount > 0,
       maxEspLevel: maxEsp,
       flags: flags,
+      partyNames: {for (final member in _party) member.name},
       // 원작 `party.etc[10]`/`[13]`/`[14]`/`[15]` 퀘스트 단계.
       questSteps: LoreDialogueManager.instance.questSteps,
       // 원작 `map[x,y]` 판정(숨은 통로 등)을 위해 밟은 타일을 넘긴다.
@@ -578,8 +579,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final joined = await _requestJoinSlot(
         PendingRecruit(member, forcedSlotOption: recruit.slot),
       );
+      if (!joined) return false;
       final flag = recruitFlagByKey[recruit.key];
-      if (joined && flag != null && deferredRecruitFlags.contains(flag)) {
+      if (flag != null && deferredRecruitFlags.contains(flag)) {
         LoreDialogueManager.instance.setFlag(flag);
       }
       if (joined && recruit.key == 'mad_joe' && _game.currentMapId == 6) {

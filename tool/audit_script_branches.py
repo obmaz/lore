@@ -120,6 +120,7 @@ def false_probes(require):
     for key, action in (
         ("flag", "제거"),
         ("flagNot", "추가"),
+        ("partyMember", "현재 파티에서 제외"),
         ("mindRead", "독심술 끄기"),
         ("mindReadInactive", "독심술 켜기"),
         ("tileAtPlayerZero", "타일을 0 이외로"),

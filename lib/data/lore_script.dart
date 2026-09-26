@@ -40,6 +40,9 @@ import 'package:flutter/services.dart' show AssetBundle, rootBundle;
 class ScriptRequire {
   final String? flag;
   final String? flagNot;
+
+  /// 원작 `player[i].name` 검사처럼 현재 파티에 있는 동료 이름.
+  final String? partyMember;
   final bool mindRead;
   final bool mindReadInactive;
   final int? minEspLevel;
@@ -66,6 +69,7 @@ class ScriptRequire {
   const ScriptRequire({
     this.flag,
     this.flagNot,
+    this.partyMember,
     this.mindRead = false,
     this.mindReadInactive = false,
     this.minEspLevel,
@@ -93,6 +97,7 @@ class ScriptRequire {
     return ScriptRequire(
       flag: json['flag'] as String?,
       flagNot: json['flagNot'] as String?,
+      partyMember: json['partyMember'] as String?,
       mindRead: json['mindRead'] == true,
       mindReadInactive: json['mindReadInactive'] == true,
       minEspLevel: json['minEspLevel'] as int?,
@@ -123,6 +128,7 @@ class ScriptContext {
   final bool mindReadActive;
   final int maxEspLevel;
   final Set<String> flags;
+  final Set<String> partyNames;
 
   /// 플레이어가 지금 밟고 있는 타일 값(원작 `map[x,y]` 판정용, 모르면 null).
   final int? tileAtPlayer;
@@ -135,6 +141,7 @@ class ScriptContext {
     this.mindReadActive = false,
     this.maxEspLevel = 0,
     this.flags = const {},
+    this.partyNames = const {},
     this.tileAtPlayer,
     this.moveDy = 0,
     this.questSteps = const {},
@@ -1158,6 +1165,9 @@ class LoreScriptEngine {
   bool _meets(ScriptRequire r, ScriptContext ctx) {
     if (r.flag != null && !ctx.flags.contains(r.flag)) return false;
     if (r.flagNot != null && ctx.flags.contains(r.flagNot)) return false;
+    if (r.partyMember != null && !ctx.partyNames.contains(r.partyMember)) {
+      return false;
+    }
     if (r.mindRead && !ctx.mindReadActive) return false;
     if (r.mindReadInactive && ctx.mindReadActive) return false;
     if (r.minEspLevel != null && ctx.maxEspLevel < r.minEspLevel!) return false;

@@ -1,6 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
+import 'package:lore/game/lore_map_manager.dart';
+import 'package:lore/logic/script_world_reducer.dart';
 
 /// 원작 `LORETALK.PAS` 의 상태 분기(party.etc 비트/퀘스트 단계) 대사를
 /// 검증한다. (아이템 1: 남은 수동 이관 분기)
@@ -219,6 +221,7 @@ void main() {
         joined.tileChanges.single.x == 37 && joined.tileChanges.single.y == 41,
         isTrue,
       );
+      expect(polaris.choose(1).outcome.tileChanges, isEmpty);
 
       // 맵 10 (40,56) Lore Hunter
       final hunter = engine.startTalk(10, 40, 56, const ScriptContext())!;
@@ -226,6 +229,26 @@ void main() {
       final hunterJoined = hunter.choose(0).outcome;
       expect(hunterJoined.recruits.single.key, 'lore_hunter');
       expect(hunterJoined.setFlags, contains('loreHunterJoined'));
+    });
+
+    test('LASTDITCH 재진입 시 Polaris의 현재 동행 여부로 NPC 타일을 바꾼다', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+      final map = await LoreMapData.loadFromAsset('TOWN2', category: 'town');
+      expect(map.getTile(37, 41), 53);
+
+      const formerMember = ScriptContext(flags: {'polarisJoined'});
+      expect(engine.startEnter(7, formerMember), isNull);
+
+      const currentMember = ScriptContext(partyNames: {'Polaris'});
+      final entry = engine.startEnter(7, currentMember)!;
+      expect(entry.outcome.tileChanges.single.tile, 44);
+      final after = ScriptWorldReducer.applyMap(
+        ScriptMapState(mapId: 7, x: 38, y: 7, direction: 0, grid: map.grid),
+        entry.outcome,
+      );
+      expect(after.grid[40][36], 44);
+      expect(map.getTile(37, 41), 53);
     });
 
     test('(41,79) 기본 무장 이벤트가 etc[50] bit4 를 세운다', () async {

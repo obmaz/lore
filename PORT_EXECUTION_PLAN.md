@@ -47,6 +47,10 @@
    커밋: `Restore GAIA progress when finding the golden seal`.
    맵 20 DEN7의 y=13 전투·복귀 네 단계에서 빠졌던 횃불 효과도 복원했다.
    커밋: `Restore DEN7 torch effect across final maze branches`.
+   맵 11 출구와 맵 1 입구에서 LASTDITCH로 돌아올 때 원본은 현재 파티의
+   Polaris를 확인해 NPC 타일을 길로 바꾼다. 기존 재진입 규칙의 과거 영입
+   플래그 판정을 현재 파티 이름 판정으로 고치고, 영입 슬롯 취소 시 후속 타일
+   변경을 중단한다. 커밋: `Match Polaris town tile to current party membership`.
 8. 포털과 겹친 77개의 취소·수문장·부수 효과를 원본과 더 깊게 대조한다.
 9. 원본 `LORETALK.PAS`, `LOREENT.PAS`, `LOREBATT.PAS`의 분기 추출 범위를
    넓혀 스크립트·포털·전투와 상호 대조하고 남은 누락을 처리한다.

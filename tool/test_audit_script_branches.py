@@ -1,6 +1,6 @@
 import unittest
 
-from audit_script_branches import audit, contradictions, effect_summary, report
+from audit_script_branches import audit, contradictions, effect_summary, false_probes, report
 
 
 class ScriptBranchAuditTest(unittest.TestCase):
@@ -45,6 +45,12 @@ class ScriptBranchAuditTest(unittest.TestCase):
         _, _, findings = audit(scripts, [], [], {1: (10, 10)})
         self.assertEqual(findings["duplicate_ids"], [])
         self.assertEqual(len(findings["shared_ids"]), 1)
+
+    def test_party_member_false_probe(self):
+        self.assertIn(
+            "Polaris → 현재 파티에서 제외",
+            false_probes({"partyMember": "Polaris"}),
+        )
 
     def test_links_battle_victory_escape_and_tile_effects(self):
         summary = effect_summary([
