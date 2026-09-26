@@ -224,6 +224,49 @@ void main() {
       expect(caster.esp, 20);
     });
 
+    test('염력 11~12단계 공포는 저항·인내력 손실·죽음의 세 분기를 따른다', () {
+      final caster = PartyMember.createPreset(2)
+        ..espLevel = 11
+        ..esp = 60
+        ..accEsp = 5;
+      final party = [caster];
+      final resistant = Monster.create(1)..resistance = 20;
+      final resisted = BattleEngine(random: DeterministicRandom([10, 0]))
+          .executePlayerESP(caster, resistant, 45, party, enemies: [resistant]);
+      expect(resisted.outcome, AttackOutcome.resisted);
+      expect(resistant.resistance, 15);
+      expect(resistant.endurance, 8);
+
+      final missedTarget = Monster.create(1);
+      final missed = BattleEngine(random: DeterministicRandom([10, 39, 59]))
+          .executePlayerESP(
+            caster,
+            missedTarget,
+            45,
+            party,
+            enemies: [missedTarget],
+          );
+      expect(missed.outcome, AttackOutcome.miss);
+      expect(missedTarget.endurance, 3);
+      expect(missedTarget.maxHp, 3);
+      expect(missedTarget.hp, 8); // 원본은 현재 HP를 변경하지 않는다.
+      expect(missedTarget.isDead, isFalse);
+
+      final killedTarget = Monster.create(1);
+      final killed = BattleEngine(random: DeterministicRandom([10, 39, 0]))
+          .executePlayerESP(
+            caster,
+            killedTarget,
+            45,
+            party,
+            enemies: [killedTarget],
+          );
+      expect(killed.outcome, AttackOutcome.killed);
+      expect(killedTarget.isDead, isTrue);
+      expect(killedTarget.hp, 8); // 원본은 dead 플래그만 설정한다.
+      expect(caster.esp, 0);
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
       final caster = PartyMember.createPreset(2)
         ..espLevel = 13

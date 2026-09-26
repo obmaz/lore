@@ -740,7 +740,7 @@ class BattleEngine {
             '각각 $dmg 피해를 주었다! (경험치 +$expGained)',
       );
     } else if (k <= 12) {
-      // 공포심 주입 -> 도망/즉사
+      // LOREBATT.PAS:456-470 — 저항은 저항력, 명중 실패는 인내력을 낮춘다.
       if (_rand(40) < target.resistance) {
         target.resistance = max(0, target.resistance - 5);
         return AttackResult(
@@ -748,8 +748,14 @@ class BattleEngine {
           message: '${target.name}은(는) 공포를 견뎌냈다.',
         );
       }
+      if (_rand(60) > caster.accEsp) {
+        target.endurance = max(0, target.endurance - 5);
+        return AttackResult(
+          outcome: AttackOutcome.miss,
+          message: '${target.name}은(는) 공포를 떨쳤지만 인내력이 5 떨어졌다.',
+        );
+      }
       target.isDead = true;
-      target.hp = 0;
       return AttackResult(
         outcome: AttackOutcome.killed,
         message: '★ ${target.name}은(는) 극심한 공포를 견디지 못하고 전장에서 도망쳐버렸다!',

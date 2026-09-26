@@ -100,5 +100,9 @@
    성공 시 무기·마법 명중치 각각 -1을 적용한다. 몬스터 전투 인스턴스의
    해당 능력치를 변경 가능하게 만들고 세 경로를 검증했다.
    커밋: `Apply telekinetic illusion to monster combat stats`.
+   염력 11~12단계 공포는 저항 시 저항력 -5, 명중 실패 시 인내력 -5,
+   성공 시 사망 플래그만 설정한다. 현재 HP를 유지하는 원본 동작과
+   인내력 변경에 따른 최대 HP 재계산도 검증했다.
+   커밋: `Restore telekinetic fear and endurance effects`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

@@ -4,7 +4,7 @@ class Monster {
   final String name;
   final int strength;
   final int mentality;
-  final int endurance;
+  int endurance;
   int resistance;
   int agility;
   int accArms;
@@ -16,7 +16,7 @@ class Monster {
   int level;
 
   int hp;
-  final int maxHp;
+  int get maxHp => endurance * (level > 0 ? level : 1);
   bool isPoisoned;
   bool isUnconscious;
   bool isDead;
@@ -40,8 +40,7 @@ class Monster {
     this.isPoisoned = false,
     this.isUnconscious = false,
     this.isDead = false,
-  }) : maxHp = endurance * (level > 0 ? level : 1),
-       hp = hp ?? (endurance * (level > 0 ? level : 1));
+  }) : hp = hp ?? (endurance * (level > 0 ? level : 1));
 
   Monster copyWith({
     int? hp,
