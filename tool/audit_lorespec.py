@@ -58,7 +58,8 @@ def scan(path: str):
     이벤트: [(map_id, line_no, x, y, [effects])]
     맵 시작: [(map_id, line_no)]
     """
-    lines = open(path, 'rb').read().split(b'\n')
+    with open(path, 'rb') as source:
+        lines = source.read().split(b'\n')
     decoded = [decode(line).rstrip() for line in lines]
 
     events = []
