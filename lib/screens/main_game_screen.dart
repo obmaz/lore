@@ -18,6 +18,7 @@ import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_battle_progress.dart';
 import '../logic/lore_mirror_enemy.dart';
 import '../logic/lore_rigel_blessing.dart';
+import '../logic/script_battle_session.dart';
 import '../logic/script_equip_reducer.dart';
 import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
@@ -299,9 +300,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
           }
           _pendingPortalTransition = (portal: portal, tx: tx, ty: ty);
           await _driveScript(pre, alreadyApplied: alreadyApplied);
+          if (_pendingScriptBattle == null) _pendingPortalTransition = null;
           return;
         }
-        if (pre != null) await _applyScriptOutcome(pre);
+        if (pre != null && !await _applyScriptOutcome(pre)) return;
         if (!mounted) return;
         // 원작 `exit` - 진행을 취소하는 판정(라바 게이트 등).
         if (pre != null && pre.outcome.blockMove) return;
@@ -385,7 +387,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   ///
   /// [talkTargetX]/[talkTargetY]는 NPC 대화일 때 대화 상대(앞 칸)의 좌표다.
   /// 원작 `map[x+x1,y+y1] := 값` 스텝(`setTileAtTarget`)에 쓰인다.
-  Future<void> _driveScript(
+  Future<bool> _driveScript(
     ScriptRun run, {
     ScriptOutcome alreadyApplied = const ScriptOutcome(),
     int? talkTargetX,
@@ -394,22 +396,23 @@ class _MainGameScreenState extends State<MainGameScreen> {
     var current = run;
     var applied = alreadyApplied;
     while (true) {
-      await _applyScriptOutcome(
+      final appliedSuccessfully = await _applyScriptOutcome(
         current,
         since: applied,
         talkTargetX: talkTargetX,
         talkTargetY: talkTargetY,
       );
+      if (!appliedSuccessfully) return false;
       applied = current.outcome;
       if (current.awaitingBattle) {
         _pendingScriptBattle = current;
         _pendingScriptTargetX = talkTargetX;
         _pendingScriptTargetY = talkTargetY;
-        return;
+        return false;
       }
       final options = current.pendingChoice;
-      if (options == null) return;
-      if (!mounted) return;
+      if (options == null) return true;
+      if (!mounted) return false;
 
       final chosen = await showDialog<int>(
         context: context,
@@ -455,13 +458,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
           ],
         ),
       );
-      if (chosen == null || chosen < 0) return;
+      if (chosen == null || chosen < 0) return false;
       current = current.choose(chosen);
     }
   }
 
   /// 스크립트 결과(메시지/보상/플래그/동료/장비/전투)를 게임 상태에 반영한다.
-  Future<void> _applyScriptOutcome(
+  Future<bool> _applyScriptOutcome(
     ScriptRun run, {
     ScriptOutcome? since,
     int? talkTargetX,
@@ -485,7 +488,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           _addLog('▶ 시야를 (${event.x}, ${event.y}) 부근으로 옮깁니다.');
           setState(() {});
           await Future<void>.delayed(_peekHold);
-          if (!mounted) return;
+          if (!mounted) return false;
         } else {
           _addLog(presented(event.text!));
         }
@@ -495,7 +498,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
 
     for (final equip in outcome.equips) {
-      if (!await _applyScriptEquip(equip)) return;
+      if (!await _applyScriptEquip(equip)) return false;
     }
     run.completeEquipment();
 
@@ -626,7 +629,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
             startX: result.x,
             startY: result.y,
           );
-          if (!mounted) return;
+          if (!mounted) return false;
           setState(() {});
         }
         if (outcome.teleportX != null && outcome.teleportY != null) {
@@ -641,7 +644,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           startX: x,
           startY: y,
         );
-        if (!mounted) return;
+        if (!mounted) return false;
         setState(() {});
         _addLog('▶ ($x, $y) 위치로 이동했습니다.');
       }
@@ -654,7 +657,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
 
     if (outcome.setFlags.contains('bossNecromancerDefeated')) {
-      if (!mounted) return;
+      if (!mounted) return false;
       await showDialog<void>(
         context: context,
         barrierDismissible: false,
@@ -674,9 +677,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
           ],
         ),
       );
-      if (!mounted) return;
+      if (!mounted) return false;
       setState(() => _currentMode = GameScreenMode.ending);
-      return;
+      return false;
     }
 
     if (outcome.battleMonsters.isNotEmpty) {
@@ -701,6 +704,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       }
       _startBossBattle(enemies, title: outcome.battleTitle);
     }
+    return true;
   }
 
   /// 원작 `with enemy[i] do begin name := 'Sphinx'; level := 4; ac := 1; end`.
@@ -1239,10 +1243,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final pendingScript = _pendingScriptBattle;
     final targetX = _pendingScriptTargetX;
     final targetY = _pendingScriptTargetY;
-    final result = LoreBattleProgress.resolve(
-      _battleProgressState(),
+    final session = ScriptBattleSession.resolve(
+      before: _battleProgressState(),
       end: LoreBattleEnd.victory,
-      enemyNames: _battleEnemies.map((enemy) => enemy.name),
+      enemies: _battleEnemies,
+      pendingScript: pendingScript,
       goldEarned: goldEarned,
       victoryFlags: _pendingVictoryFlags,
     );
@@ -1251,17 +1256,18 @@ class _MainGameScreenState extends State<MainGameScreen> {
     _pendingScriptTargetY = null;
     _pendingVictoryFlags.clear();
     setState(() {
-      _applyBattleProgress(result);
+      _applyBattleProgress(session.progress);
       _currentMode = GameScreenMode.field;
     });
     _addLog('전투 종료. 일행은 필드로 복귀합니다. 보유 금화: $_partyGold');
-    if (result.bossMessage case final message?) _addLog(message);
+    if (session.progress.bossMessage case final message?) _addLog(message);
     _focusNode.requestFocus();
-    if (pendingScript != null) {
+    if (session.continuation case final continuation?) {
       unawaited(
         _resumeScriptAfterBattle(
-          pendingScript.continueAfterBattle(),
-          pendingScript.outcome,
+          continuation,
+          session.appliedOutcome!,
+          session.delta,
           talkTargetX: targetX,
           talkTargetY: targetY,
         ),
@@ -1274,36 +1280,29 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final pendingScript = _pendingScriptBattle;
     final targetX = _pendingScriptTargetX;
     final targetY = _pendingScriptTargetY;
-    final defeatedEnemySlots = {
-      for (var i = 0; i < _battleEnemies.length; i++)
-        if (_battleEnemies[i].isDead || _battleEnemies[i].hp <= 0) i + 1,
-    };
-    final bossDefeated =
-        pendingScript?.isVictoryAfterRunAway(defeatedEnemySlots) ?? false;
-    final result = LoreBattleProgress.resolve(
-      _battleProgressState(),
+    final session = ScriptBattleSession.resolve(
+      before: _battleProgressState(),
       end: LoreBattleEnd.runAway,
-      enemyNames: _battleEnemies.map((enemy) => enemy.name),
-      keyEnemyDefeatedOnEscape: bossDefeated,
+      enemies: _battleEnemies,
+      pendingScript: pendingScript,
     );
     _pendingScriptBattle = null;
     _pendingScriptTargetX = null;
     _pendingScriptTargetY = null;
     _pendingVictoryFlags.clear();
     setState(() {
-      _applyBattleProgress(result);
+      _applyBattleProgress(session.progress);
       _currentMode = GameScreenMode.field;
     });
     _addLog('안전한 곳으로 도망쳐 필드로 복귀했습니다.');
-    if (result.bossMessage case final message?) _addLog(message);
+    if (session.progress.bossMessage case final message?) _addLog(message);
     _focusNode.requestFocus();
-    if (pendingScript != null) {
+    if (session.continuation case final continuation?) {
       unawaited(
         _resumeScriptAfterBattle(
-          pendingScript.continueAfterRunAway(
-            defeatedEnemySlots: defeatedEnemySlots,
-          ),
-          pendingScript.outcome,
+          continuation,
+          session.appliedOutcome!,
+          session.delta,
           talkTargetX: targetX,
           talkTargetY: targetY,
         ),
@@ -1313,19 +1312,27 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   Future<void> _resumeScriptAfterBattle(
     ScriptRun run,
-    ScriptOutcome applied, {
+    ScriptOutcome applied,
+    ScriptOutcome delta, {
     int? talkTargetX,
     int? talkTargetY,
   }) async {
-    final blocked = run.outcome.since(applied).blockMove;
-    await _driveScript(
+    final blocked = delta.blockMove;
+    final completed = await _driveScript(
       run,
       alreadyApplied: applied,
       talkTargetX: talkTargetX,
       talkTargetY: talkTargetY,
     );
     final portal = _pendingPortalTransition;
-    if (!mounted || _pendingScriptBattle != null || portal == null) return;
+    if (!mounted) return;
+    if (!completed && _pendingScriptBattle == null) {
+      _pendingPortalTransition = null;
+      return;
+    }
+    if (_pendingScriptBattle != null || portal == null) {
+      return;
+    }
     _pendingPortalTransition = null;
     if (blocked) return;
     await _game.enterPortal(portal.portal, portal.tx, portal.ty);
@@ -1358,10 +1365,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   /// 전투 패배 -> 게임 오버
   void _onBattleDefeat() {
-    final result = LoreBattleProgress.resolve(
-      _battleProgressState(),
+    final session = ScriptBattleSession.resolve(
+      before: _battleProgressState(),
       end: LoreBattleEnd.defeat,
-      enemyNames: _battleEnemies.map((enemy) => enemy.name),
+      enemies: _battleEnemies,
+      pendingScript: _pendingScriptBattle,
     );
     _pendingScriptBattle = null;
     _pendingScriptTargetX = null;
@@ -1370,7 +1378,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     _pendingPortalTransition = null;
     AudioManager.instance.stopBgm();
     setState(() {
-      _applyBattleProgress(result);
+      _applyBattleProgress(session.progress);
       _currentMode = GameScreenMode.gameOver;
     });
   }
