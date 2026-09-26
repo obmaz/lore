@@ -104,5 +104,9 @@
    성공 시 사망 플래그만 설정한다. 현재 HP를 유지하는 원본 동작과
    인내력 변경에 따른 최대 HP 재계산도 검증했다.
    커밋: `Restore telekinetic fear and endurance effects`.
+   독심술은 포섭 가능 여부 다음에 고레벨 적의 50% 거부 판정을 거치며,
+   62번 적은 현재 레벨 19 대신 고정 레벨 17로 비교·명중 계산한다.
+   거부·통과·동레벨의 세 경우를 검증했다.
+   커밋: `Restore telepathy level resistance and Draconian exception`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

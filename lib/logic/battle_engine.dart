@@ -644,7 +644,16 @@ class BattleEngine {
           message: '${target.name}에게 독심술은 전혀 통하지 않았다.',
         );
       }
-      if (_rand(60) > (caster.espLevel - target.level) * 2 + caster.accEsp) {
+      // LOREBATT.PAS:385-390 — 높은 레벨의 적은 먼저 50% 확률로 거부한다.
+      // 62번은 전투 레벨 대신 고정 레벨 17로 비교한다.
+      final resistanceLevel = target.eNumber == 62 ? 17 : target.level;
+      if (resistanceLevel > caster.espLevel && _rand(2) == 0) {
+        return AttackResult(
+          outcome: AttackOutcome.failed,
+          message: '${target.name}의 마음은 너무 강해 독심술을 거부했다.',
+        );
+      }
+      if (_rand(60) > (caster.espLevel - resistanceLevel) * 2 + caster.accEsp) {
         return AttackResult(
           outcome: AttackOutcome.failed,
           message: '${target.name}의 마음은 흔들리지 않았다.',

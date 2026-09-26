@@ -267,6 +267,50 @@ void main() {
       expect(caster.esp, 0);
     });
 
+    test('독심술은 고레벨 저항을 먼저 판정하고 62번 적을 레벨 17로 취급한다', () {
+      final caster = PartyMember.createPreset(2)
+        ..espLevel = 16
+        ..esp = 45
+        ..accEsp = 60;
+      final party = [caster];
+      final blockedTarget = Monster.create(62);
+      expect(blockedTarget.level, 19);
+      final blocked = BattleEngine(random: DeterministicRandom([0]))
+          .executePlayerESP(
+            caster,
+            blockedTarget,
+            43,
+            party,
+            enemies: [blockedTarget],
+          );
+      expect(blocked.outcome, AttackOutcome.failed);
+      expect(blockedTarget.isDead, isFalse);
+
+      final passedTarget = Monster.create(62);
+      final passed = BattleEngine(random: DeterministicRandom([1, 0]))
+          .executePlayerESP(
+            caster,
+            passedTarget,
+            43,
+            party,
+            enemies: [passedTarget],
+          );
+      expect(passed.outcome, AttackOutcome.joined);
+
+      caster.espLevel = 17;
+      final equalLevelTarget = Monster.create(62);
+      final equalLevel = BattleEngine(random: DeterministicRandom([0]))
+          .executePlayerESP(
+            caster,
+            equalLevelTarget,
+            43,
+            party,
+            enemies: [equalLevelTarget],
+          );
+      expect(equalLevel.outcome, AttackOutcome.joined);
+      expect(caster.esp, 0);
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
       final caster = PartyMember.createPreset(2)
         ..espLevel = 13
