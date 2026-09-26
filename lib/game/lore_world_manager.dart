@@ -270,10 +270,14 @@ class LoreWorldManager {
 
   List<_PortalRule> _portalRules = [];
   List<_SignRule> _signRules = [];
+  List<_FacilityRule> _facilityRules = [];
   bool _loadedRules = false;
 
   /// JSON 규칙을 사용 중인지(테스트/디버깅용).
   bool usingJsonRules = false;
+
+  /// `assets/data/facilities.json`의 시설 좌표를 사용 중인지.
+  bool usingJsonFacilities = false;
   String? rulesLoadError;
 
   /// `assets/data/portals.json`을 읽는다. 실패하면 아래 코드 내장 규칙을 사용한다.
@@ -289,6 +293,21 @@ class LoreWorldManager {
       _signRules = (decoded['signs'] as List<dynamic>)
           .map((e) => _SignRule.fromJson(e as Map<String, dynamic>))
           .toList();
+      // 시설 좌표는 별도 파일이므로, 있으면 함께 읽는다(없어도 동작).
+      try {
+        final facilities = json.decode(
+          await (bundle ?? rootBundle).loadString(
+            'assets/data/facilities.json',
+          ),
+        ) as Map<String, dynamic>;
+        _facilityRules = (facilities['facilities'] as List<dynamic>)
+            .map((e) => _FacilityRule.fromJson(e as Map<String, dynamic>))
+            .toList();
+        usingJsonFacilities = true;
+      } catch (e) {
+        _facilityRules = [];
+        usingJsonFacilities = false;
+      }
       usingJsonRules = true;
     } catch (e) {
       _portalRules = [];
@@ -302,9 +321,26 @@ class LoreWorldManager {
   void resetRulesForTest() {
     _loadedRules = false;
     usingJsonRules = false;
+    usingJsonFacilities = false;
     rulesLoadError = null;
     _portalRules = [];
     _signRules = [];
+    _facilityRules = [];
+  }
+
+  /// 원작 `LORETALK.PAS`가 시설(무기점/병원/훈련소/식료품점)로 진입시키는 좌표.
+  ///
+  /// 반환값: 1=무기점, 2=병원, 3=훈련소, 4=식료품점 (없으면 null).
+  int? findFacility(int currentMapId, int x, int y) {
+    for (final rule in _facilityRules) {
+      final code = rule.match(currentMapId, x, y);
+      if (code != null) return code;
+    }
+    if (usingJsonFacilities) return null;
+    for (final f in _builtInFacilities) {
+      if (f.matches(currentMapId, x, y)) return f.facility;
+    }
+    return null;
   }
 
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
@@ -772,4 +808,95 @@ const List<_BuiltInPortal> _builtInPortals = [
     targetY: 8,
     name: 'ANOTHER LORE 출구',
   ),
+];
+
+/// 시설 규칙 1건 (원작 `LORETALK.PAS`의 `then train_center;` 같은 트리거).
+class _FacilityRule {
+  final int map;
+  final int x;
+  final int y;
+  final int facility;
+
+  const _FacilityRule({
+    required this.map,
+    required this.x,
+    required this.y,
+    required this.facility,
+  });
+
+  factory _FacilityRule.fromJson(Map<String, dynamic> json) => _FacilityRule(
+    map: json['map'] as int,
+    x: json['x'] as int,
+    y: json['y'] as int,
+    facility: json['facility'] as int,
+  );
+
+  bool matches(int mapId, int px, int py) =>
+      map == mapId && x == px && y == py;
+
+  int? match(int mapId, int px, int py) =>
+      matches(mapId, px, py) ? facility : null;
+}
+
+/// JSON(`assets/data/facilities.json`)을 읽지 못했을 때 쓰는 내장 시설 표.
+// ignore: constant_identifier_names
+const List<_FacilityRule> _builtInFacilities = [
+  _FacilityRule(map: 6, x: 8, y: 71, facility: 1), // 무기점
+  _FacilityRule(map: 6, x: 14, y: 69, facility: 1), // 무기점
+  _FacilityRule(map: 6, x: 14, y: 73, facility: 1), // 무기점
+  _FacilityRule(map: 6, x: 86, y: 12, facility: 2), // 병원
+  _FacilityRule(map: 6, x: 87, y: 14, facility: 2), // 병원
+  _FacilityRule(map: 6, x: 21, y: 12, facility: 3), // 훈련소
+  _FacilityRule(map: 6, x: 25, y: 13, facility: 3), // 훈련소
+  _FacilityRule(map: 6, x: 87, y: 73, facility: 4), // 식료품점
+  _FacilityRule(map: 6, x: 91, y: 65, facility: 4), // 식료품점
+  _FacilityRule(map: 7, x: 59, y: 56, facility: 1), // 무기점
+  _FacilityRule(map: 7, x: 59, y: 58, facility: 1), // 무기점
+  _FacilityRule(map: 7, x: 59, y: 60, facility: 1), // 무기점
+  _FacilityRule(map: 7, x: 17, y: 56, facility: 2), // 병원
+  _FacilityRule(map: 7, x: 17, y: 58, facility: 2), // 병원
+  _FacilityRule(map: 7, x: 17, y: 60, facility: 2), // 병원
+  _FacilityRule(map: 7, x: 16, y: 24, facility: 3), // 훈련소
+  _FacilityRule(map: 7, x: 18, y: 19, facility: 3), // 훈련소
+  _FacilityRule(map: 7, x: 21, y: 21, facility: 3), // 훈련소
+  _FacilityRule(map: 7, x: 24, y: 19, facility: 3), // 훈련소
+  _FacilityRule(map: 7, x: 54, y: 20, facility: 4), // 식료품점
+  _FacilityRule(map: 7, x: 57, y: 17, facility: 4), // 식료품점
+  _FacilityRule(map: 7, x: 58, y: 22, facility: 4), // 식료품점
+  _FacilityRule(map: 7, x: 59, y: 25, facility: 4), // 식료품점
+  _FacilityRule(map: 9, x: 37, y: 10, facility: 1), // 무기점
+  _FacilityRule(map: 9, x: 40, y: 12, facility: 1), // 무기점
+  _FacilityRule(map: 9, x: 41, y: 15, facility: 1), // 무기점
+  _FacilityRule(map: 9, x: 9, y: 39, facility: 2), // 병원
+  _FacilityRule(map: 9, x: 12, y: 41, facility: 2), // 병원
+  _FacilityRule(map: 9, x: 16, y: 40, facility: 2), // 병원
+  _FacilityRule(map: 9, x: 12, y: 11, facility: 3), // 훈련소
+  _FacilityRule(map: 9, x: 12, y: 15, facility: 3), // 훈련소
+  _FacilityRule(map: 9, x: 15, y: 12, facility: 3), // 훈련소
+  _FacilityRule(map: 9, x: 37, y: 39, facility: 4), // 식료품점
+  _FacilityRule(map: 9, x: 40, y: 37, facility: 4), // 식료품점
+  _FacilityRule(map: 9, x: 41, y: 41, facility: 4), // 식료품점
+  _FacilityRule(map: 10, x: 11, y: 30, facility: 1), // 무기점
+  _FacilityRule(map: 10, x: 11, y: 32, facility: 1), // 무기점
+  _FacilityRule(map: 10, x: 13, y: 34, facility: 1), // 무기점
+  _FacilityRule(map: 10, x: 33, y: 60, facility: 2), // 병원
+  _FacilityRule(map: 10, x: 35, y: 54, facility: 2), // 병원
+  _FacilityRule(map: 10, x: 41, y: 58, facility: 2), // 병원
+  _FacilityRule(map: 10, x: 36, y: 32, facility: 3), // 훈련소
+  _FacilityRule(map: 10, x: 38, y: 33, facility: 3), // 훈련소
+  _FacilityRule(map: 10, x: 39, y: 35, facility: 3), // 훈련소
+  _FacilityRule(map: 10, x: 11, y: 55, facility: 4), // 식료품점
+  _FacilityRule(map: 10, x: 12, y: 59, facility: 4), // 식료품점
+  _FacilityRule(map: 10, x: 17, y: 57, facility: 4), // 식료품점
+  _FacilityRule(map: 24, x: 33, y: 21, facility: 1), // 무기점
+  _FacilityRule(map: 24, x: 37, y: 24, facility: 1), // 무기점
+  _FacilityRule(map: 24, x: 40, y: 23, facility: 1), // 무기점
+  _FacilityRule(map: 24, x: 11, y: 38, facility: 2), // 병원
+  _FacilityRule(map: 24, x: 14, y: 40, facility: 2), // 병원
+  _FacilityRule(map: 24, x: 15, y: 36, facility: 2), // 병원
+  _FacilityRule(map: 24, x: 11, y: 22, facility: 3), // 훈련소
+  _FacilityRule(map: 24, x: 14, y: 24, facility: 3), // 훈련소
+  _FacilityRule(map: 24, x: 33, y: 35, facility: 4), // 식료품점
+  _FacilityRule(map: 24, x: 35, y: 37, facility: 4), // 식료품점
+  _FacilityRule(map: 24, x: 41, y: 38, facility: 4), // 식료품점
 ];

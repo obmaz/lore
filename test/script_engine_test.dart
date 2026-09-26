@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 106);
+      expect(LoreScriptEngine.instance.scripts.length, 185);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -519,9 +519,7 @@ void main() {
       final quiz = engine.startStep(20, 30, 91, noCtx)!;
       expect(quiz.outcome.messages.single, startsWith('문> '));
       // 문은 항상 좌/우 중 한쪽만 열린다.
-      final doors = quiz.outcome.tileChanges
-          .where((t) => t.y == 88)
-          .toList();
+      final doors = quiz.outcome.tileChanges.where((t) => t.y == 88).toList();
       expect(doors.length, 2);
       expect(doors.map((t) => t.tile).toSet(), {0, 52});
 
@@ -549,10 +547,11 @@ void main() {
 
       // 4) y=48 Minotaur, y=13 거룡 → 진흙 인간 → 미궁의 주인 순서
       expect(engine.startStep(20, 30, 48, noCtx)!.outcome.battleMonsters, [53]);
-      expect(
-        engine.startStep(20, 30, 13, noCtx)!.outcome.battleMonsters,
-        [54, 54, 54],
-      );
+      expect(engine.startStep(20, 30, 13, noCtx)!.outcome.battleMonsters, [
+        54,
+        54,
+        54,
+      ]);
       final mudmen = engine.startStep(
         20,
         30,
@@ -587,6 +586,34 @@ void main() {
         engine.startStep(22, 25, 18, noCtx)!.outcome.battleMonsters.length,
         6,
       );
+    });
+
+    test('18. 원작 LORETALK 마을 NPC 대사 이관 (자동 생성분)', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+
+      // 마을 5곳(6/7/9/10/24)의 NPC 대사가 좌표 대화로 들어와 있다.
+      expect(engine.startTalk(6, 72, 73, noCtx)!.outcome.messages.single,
+          'Orc 는 가장 하급 괴물이오.');
+      expect(engine.startTalk(9, 24, 38, noCtx)!.outcome.messages.single,
+          contains('황금의 봉인'));
+      expect(engine.startTalk(10, 11, 16, noCtx), isNotNull);
+
+      // 주인공 이름이 들어가는 원작 대사는 {hero} 로 치환된다.
+      final byHero = LoreScriptEngine.instance.scripts
+          .where((s) => s.map == 6 && s.x == 24 && s.y == 50)
+          .toList();
+      expect(byHero, isNotEmpty);
+      expect(
+        byHero.first.steps.any(
+          (st) => (st.text ?? '').contains('{hero}'),
+        ),
+        isTrue,
+      );
+      // 대사가 있는 talk 스크립트는 79개 이상 이관되어 있다.
+      final talkCount =
+          engine.scripts.where((s) => s.trigger == 'talk').length;
+      expect(talkCount, greaterThanOrEqualTo(88));
     });
   });
 }

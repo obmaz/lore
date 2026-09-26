@@ -522,6 +522,30 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
    쓴 `scripts.json`으로 대체했다. 현재 Dart 쪽에 남은 것은 `findgold` 표(폴백용)와
    맵 1 식량 발견뿐이다.
 
+### 7.3 전체 검토(2026-09) — 원작 대비 남은 것
+
+원작 게임 유닛 11개(약 9,700줄)를 전수 대조한 결과다.
+
+| 원작 | 상태 | 비고 |
+| :--- | :--- | :--- |
+| `LORESPEC.PAS` (좌표 이벤트) | ✅ 46/46 | `--coverage` 자동 점검 |
+| `LOREENT.PAS` (맵 진입/표지판) | ✅ | 포털 30 + 표지판 18 |
+| `LORESUB.PAS` (시설/조인/세이브/프롬프트) | ✅ 73% 문구 반영 | 로직은 전부 이관 |
+| `LORETALK.PAS` (마을 NPC 대사) | ⏳ 40% | 자동 변환 79개 이관, **62개 분기는 수동 필요** |
+| `LOREMENU.PAS` (필드 메뉴/마법) | ⏳ 32% | 마법 시전 계열 점검 필요 |
+| `LOREBATT.PAS` (전투) | ⏳ 22% | 전투 문구/특수능력 문구 보강 필요 |
+| `LORECRET.PAS` (캐릭터 생성) | ⏳ 17% | 성향 문답 문구 보강 필요 |
+| `LOREEND.PAS` / `LOREHELP.PAS` | ✅ | 엔딩/F1 가이드 |
+| `LORE.PAS` / `LOREMAIN.PAS` / 개발 도구 | ✅ 제외/이관 | 이동·지형 진입 이관 |
+
+* 자동 추출: `python3 tool/export_lore_talk.py --report` (수동 필요 목록은
+  `tool/lore_talk_report.txt`), `--emit <파일>`로 talk 스크립트 생성.
+* 마을 시설(무기점/병원/훈련소/식료품점) 좌표는 `assets/data/facilities.json`
+  (5개 마을 58곳) — 이전에는 CASTLE LORE만 하드코딩되어 있었다.
+* 남은 62개 분기는 `select`(선택지)·`join`·`map[]` 변경·퀘스트 단계(`case party.etc[n]`)
+  가 섞여 있어 손으로 옮겨야 한다. 이미 조인/퀘스트는 Dart(`lore_dialogue_manager.dart`)
+  에 로직이 있고, 남은 일은 **원작 문구 전체를 옮겨 넣는 것**이다.
+
 ---
 
 ## 8. 현대적 구조: JSON 데이터 & 이미지 에셋

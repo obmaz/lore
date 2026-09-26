@@ -178,6 +178,57 @@ void main() {
       expect(manager.findPortal(1, 20, 11)!.targetMapId, 6);
       expect(manager.getSignMessage(2, 31, 44), contains('WIVERN'));
     });
+
+    test('5. 시설 좌표: JSON(facilities.json)과 내장 표가 일치한다', () async {
+      // 원작 LORETALK.PAS의 시설 트리거 좌표 (마을별)
+      const coords = <(int, int, int)>[
+        (6, 8, 71), (6, 14, 69), (6, 14, 73),   // CASTLE LORE 무기점
+        (6, 87, 14), (6, 86, 12),               // 병원
+        (6, 21, 12), (6, 25, 13),               // 훈련소
+        (6, 87, 73), (6, 91, 65),               // 식료품점
+        (7, 18, 19), (7, 16, 24),               // LASTDITCH 훈련소
+        (7, 57, 17), (7, 59, 25),               // 식료품점
+        (7, 59, 56), (7, 59, 60),               // 무기점
+        (7, 17, 56), (7, 17, 60),               // 병원
+        (9, 12, 11), (9, 15, 12),               // GAIA TERRA 훈련소
+        (9, 40, 37), (9, 41, 41),               // 식료품점
+        (9, 37, 10), (9, 41, 15),               // 무기점
+        (9, 9, 39), (9, 16, 40),                // 병원
+        (10, 36, 32), (10, 39, 35),             // WATER TOWN 훈련소
+        (10, 17, 57), (10, 11, 55),             // 식료품점
+        (10, 11, 30), (10, 13, 34),             // 무기점
+        (10, 33, 60), (10, 41, 58),             // 병원
+        (24, 11, 22), (24, 14, 24),             // LAST SHELTER 훈련소
+        (24, 33, 35), (24, 41, 38),             // 식료품점
+        (24, 33, 21), (24, 40, 23),             // 무기점
+        (24, 15, 36), (24, 14, 40),             // 병원
+        (1, 0, 0), (6, 0, 0), (7, 0, 0),        // 시설 아님
+      ];
+
+      manager.resetRulesForTest();
+      final before = {
+        for (final (map, x, y) in coords) '$map,$x,$y': manager.findFacility(map, x, y),
+      };
+
+      await manager.loadData();
+      expect(manager.usingJsonFacilities, isTrue);
+
+      for (final (map, x, y) in coords) {
+        expect(
+          manager.findFacility(map, x, y),
+          before['$map,$x,$y'],
+          reason: '시설 불일치: 맵 $map ($x,$y)',
+        );
+      }
+
+      // 마을별 시설 코드가 원작과 같다 (1=무기점, 2=병원, 3=훈련소, 4=식료품점)
+      expect(manager.findFacility(7, 59, 56), 1);
+      expect(manager.findFacility(9, 9, 39), 2);
+      expect(manager.findFacility(10, 36, 32), 3);
+      expect(manager.findFacility(24, 33, 35), 4);
+      // 시설이 없는 좌표는 null
+      expect(manager.findFacility(6, 50, 51), isNull);
+    });
   });
 }
 

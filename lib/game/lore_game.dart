@@ -268,26 +268,16 @@ class LoreGame extends FlameGame {
   }
 
   void _handleNpcInteraction(int tileVal, int tx, int ty) {
-    if (currentMapName == 'TOWN1') {
-      // 1. 원작 LORETALK.PAS 마을 시설 상점 판정
-      if ((tx == 8 && ty == 71) ||
-          (tx == 14 && ty == 69) ||
-          (tx == 14 && ty == 73)) {
-        onFacilityEntered?.call(1); // 무기점
-        return;
-      }
-      if ((tx == 87 && ty == 14) || (tx == 86 && ty == 12)) {
-        onFacilityEntered?.call(2); // 병원
-        return;
-      }
-      if ((tx == 21 && ty == 12) || (tx == 25 && ty == 13)) {
-        onFacilityEntered?.call(3); // 훈련소
-        return;
-      }
-      if ((tx == 87 && ty == 73) || (tx == 91 && ty == 65)) {
-        onFacilityEntered?.call(4); // 식료품점
-        return;
-      }
+    // 1. 원작 LORETALK.PAS 마을 시설(무기점/병원/훈련소/식료품점) 판정.
+    //    좌표는 assets/data/facilities.json(폴백: 내장 표)에서 온다.
+    final facility = LoreWorldManager.instance.findFacility(
+      currentMapId,
+      tx,
+      ty,
+    );
+    if (facility != null) {
+      onFacilityEntered?.call(facility);
+      return;
     }
 
     // 2. JSON 스크립트(assets/data/scripts.json)로 정의된 좌표 대화를 우선 실행한다.
