@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
@@ -296,7 +297,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
               ),
               onPressed: () => setState(() => _step = 1),
               child: Text(
-                '새 게임 시작 (캐릭터 만들기)',
+                '1] 새로운 주인공을 생성 시킴',
                 style: RetroTheme.headerFont.copyWith(fontSize: 12),
               ),
             ),
@@ -337,8 +338,26 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
               ),
               onPressed: _showLoadGameDialog,
               child: Text(
-                '💾 저장된 모험 이어하기',
+                '2] 이전의 게임을 재개 시킴',
                 style: RetroTheme.headerFont.copyWith(fontSize: 12),
+              ),
+            ),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                side: const BorderSide(color: RetroTheme.lightRed),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 14,
+                  vertical: 12,
+                ),
+              ),
+              // 원작 LOREHELP.PAS:272 `3] 도스로 돌아감`
+              onPressed: () => SystemNavigator.pop(),
+              child: Text(
+                '3] 도스로 돌아감',
+                style: RetroTheme.dosFont.copyWith(
+                  fontSize: 12,
+                  color: RetroTheme.lightRed,
+                ),
               ),
             ),
             OutlinedButton(

@@ -43,22 +43,24 @@ void main() {
       final fullEpilogue = EndingView.epilogueTexts.join('\n');
       expect(fullEpilogue, contains('밖은 비바람이 치기 시작한다'));
       expect(fullEpilogue, contains('Necromancer의 기구한 운명을 애도'));
-      expect(fullEpilogue, contains('그가 이런 역사를 몇 번이나 반복했는지'));
-      expect(fullEpilogue, contains('당신도 이제 할 일을 모두 끝냈다'));
-      expect(fullEpilogue, contains('수천억 년에 한 번 날까 말까'));
-      expect(fullEpilogue, contains('전설로서, 아니 잊혀진 얘기로만'));
+      expect(fullEpilogue, contains('그가 이런 역사를 몇번이나 반복했는지'));
+      expect(fullEpilogue, contains('당신도 이제 할일을 모두 끝냈다. 이제 편안하게'));
+      expect(fullEpilogue, contains('수천억년에 한번 날까 말까한'));
+      expect(fullEpilogue, contains('전설로서, 아니 잋혀진 애기로만'));
+      expect(fullEpilogue, contains('그가 최후로 정착할 곳 마저 알수가 없었다'));
     });
 
     test('3. 원작 LOREEND.PAS 최종 크레딧 및 원작자 명기 검증', () {
       // 1993년 원작의 엔딩 크레딧 핵심 문구 검증
       const theEndTitle = '<< The End >>';
-      const codexTitle = '" The Codex of Another Lore vol. #1 "';
-      const author = 'Moon Dong-Wook (문동욱)';
-      const geniusQuote = '★ You must be a genius !!! ★';
+      const codexTitle =
+          '    " The Codex of Another Lore  vol. #1 " is made by Ahn Young-Kie.';
+      const author = 'Ahn Young-Kie';
+      const geniusQuote = 'You must be a genius !!!';
 
       expect(theEndTitle, contains('The End'));
       expect(codexTitle, contains('Codex of Another Lore'));
-      expect(author, contains('문동욱'));
+      expect(author, contains('Ahn Young-Kie'));
       expect(geniusQuote, contains('genius'));
     });
 

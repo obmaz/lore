@@ -11,7 +11,7 @@ void main() {
 
     // 1. 원작 타이틀 화면 렌더링 확인
     expect(find.text('또 다른 지식의 성전'), findsOneWidget);
-    expect(find.text('새 게임 시작 (캐릭터 만들기)'), findsOneWidget);
+    expect(find.text('1] 새로운 주인공을 생성 시킴'), findsOneWidget);
     expect(find.text('빠른 모험 시작 (기본 파티)'), findsOneWidget);
 
     // 2. 빠른 모험 시작 버튼 클릭

@@ -508,7 +508,14 @@ class LoreScriptEngine {
     if (s == null) return null;
     return _start(s, ctx);
   }
-
+  /// `enter` 트리거 (원작 LOREENT.PAS `entermode` - 맵 진입 연출).
+  ///
+  /// 좌표 대신 맵 단위로 발동하며, 조건을 만족하는 첫 스크립트 하나만 실행한다.
+  ScriptRun? startEnter(int mapId, ScriptContext ctx) {
+    final s = find('enter', mapId, 0, 0, ctx);
+    if (s == null) return null;
+    return _start(s, ctx);
+  }
   ScriptRun _start(LoreScript s, ScriptContext ctx) {
     if (s.once) consumedScripts.add(s.id);
     return _execute(s, s.steps, const ScriptOutcome());

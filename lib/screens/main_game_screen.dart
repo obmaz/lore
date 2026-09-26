@@ -63,7 +63,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 원작의 `PressAnyKey` 를 현대적으로 대체한 것이다.
   static const Duration _peekHold = Duration(milliseconds: 1600);
   int _mindReadCount = 0; // etc[5]: 독심술
-  int _stepCount = 0;
 
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
@@ -696,14 +695,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
         setState(() => _swampWalkSteps--);
         _addLog('🌿 [늪위를 걸음] 독성 늪지를 안전하게 통과했습니다. (남은 걸음: $_swampWalkSteps)');
       } else {
-        _addLog('☣ 일행은 유독한 늪지대에 발을 디뎠습니다!');
+        // 원작 LOREMAIN.PAS:60 `일행은 독이 있는 늪에 들어갔다 !!!`
+        _addLog('☣ 일행은 독이 있는 늪에 들어갔다 !!!');
         final rnd = Random();
         for (final p in _party) {
-          if (p.isAlive && !p.isPoisoned) {
-            if (rnd.nextInt(20) + 1 >= p.luck) {
-              setState(() => p.poison = 1);
-              _addLog('☠ ${p.name}은(는) 늪지의 독에 중독되었습니다!');
-            }
+          if (p.name.isEmpty) continue;
+          if (rnd.nextInt(20) + 1 >= p.luck) {
+            // 원작 LOREMAIN.PAS:64 `{name}는 중독 되었다.`
+            _addLog('☠ ${p.name}는 중독 되었다.');
+            if (p.poison == 0) setState(() => p.poison = 1);
           }
         }
       }
@@ -712,49 +712,66 @@ class _MainGameScreenState extends State<MainGameScreen> {
         setState(() => _levitateSteps--);
         _addLog('✨ [공중 부상] 용암 위를 안전하게 비행 중입니다. (남은 걸음: $_levitateSteps)');
       } else {
-        _addLog('🔥 일행은 펄펄 끓는 용암 지대로 들어섰습니다 !!!');
+        // 원작 LOREMAIN.PAS:90 `일행은 용암지대로 들어섰다 !!!`
+        _addLog('🔥 일행은 용암지대로 들어섰다 !!!');
         final rnd = Random();
+        // 원작은 피해량을 한 번 굴려 `{name}는 {n}의 피해를 입었다 !` 로 출력하고
+        // 같은 값으로 HP/상태를 갱신한다.
+        final damages = <({PartyMember member, int dmg})>[];
         for (final p in _party) {
-          if (p.isAlive) {
-            int dmg = rnd.nextInt(41) + 40 - (p.luck ~/ 2);
-            if (dmg < 10) dmg = 10;
-            setState(() {
+          if (p.name.isEmpty) continue;
+          final luckRoll = p.luck > 0 ? rnd.nextInt(p.luck) : 0;
+          damages.add((member: p, dmg: rnd.nextInt(40) + 40 - 2 * luckRoll));
+        }
+        for (final d in damages) {
+          _addLog('💥 ${d.member.name}는 ${d.dmg}의 피해를 입었다 !');
+        }
+        for (final d in damages) {
+          final p = d.member;
+          final dmg = d.dmg;
+          setState(() {
+            if (p.hp > 0 && p.unconscious == 0) {
               p.hp -= dmg;
-              if (p.hp <= 0) {
-                p.hp = 0;
-                p.unconscious = 1;
-              }
-            });
-            if (p.isUnconscious) {
-              _addLog('💀 ${p.name}은(는) $dmg의 화염 피해를 입고 기절했습니다!');
-            } else {
-              _addLog('💥 ${p.name}은(는) $dmg의 화염 피해를 입었습니다!');
+              if (p.hp <= 0) p.unconscious = 1;
+            } else if (p.hp > 0 && p.unconscious > 0) {
+              p.hp -= dmg;
+            } else if (p.unconscious > 0 && p.dead == 0) {
+              p.unconscious += dmg;
+              if (p.unconscious > p.endurance * p.battleLevel) p.dead = 1;
+            } else if (p.dead > 0) {
+              p.dead = (p.dead + dmg > 30000) ? 30000 : p.dead + dmg;
             }
-          }
+          });
         }
       }
     }
   }
 
   void _handleStepTaken() {
-    _stepCount++;
     if (_torchSteps > 0) _torchSteps--;
-    if (_stepCount % 10 == 0) {
-      for (final p in _party) {
-        if (p.isPoisoned && !p.isDead) {
-          setState(() {
-            p.hp -= 1;
-            if (p.hp <= 0) {
-              p.hp = 0;
-              p.unconscious = 1;
-            }
-          });
-          if (p.isUnconscious) {
-            _addLog('☠ ${p.name}의 온몸에 독이 퍼져 의식을 잃었습니다!');
+    // 원작 LOREMAIN.PAS:31 `Move_Mode` - 독은 걸을 때마다 진행되고 10 을 넘으면
+    // 발병하여 상태(dead/unconscious/hp)에 따라 피해를 준다.
+    var poisonProgressed = false;
+    for (final p in _party) {
+      if (p.name.isEmpty || p.poison <= 0) continue;
+      poisonProgressed = true;
+      setState(() {
+        p.poison++;
+        if (p.poison > 10) {
+          p.poison = 1;
+          if (p.dead > 0 && p.dead < 100) {
+            p.dead++;
+          } else if (p.unconscious > 0) {
+            p.unconscious++;
+            if (p.unconscious > p.endurance * p.battleLevel) p.dead = 1;
+          } else {
+            p.hp--;
+            if (p.hp <= 0) p.unconscious = 1;
           }
         }
-      }
+      });
     }
+    if (poisonProgressed) _addLog('☠ 독이 온몸에 퍼져나갑니다.');
 
     // JSON 스크립트(step 트리거)를 우선 실행하고, 없으면 기존 이벤트 로직을 쓴다.
     final scriptRun = LoreScriptEngine.instance.startStep(

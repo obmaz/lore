@@ -10,20 +10,19 @@ class EndingView extends StatefulWidget {
   final String heroName;
   final VoidCallback onFinish;
 
+  // 원작 LOREEND.PAS:86 `EndMessage` 의 cHPrint 문구를 그대로 옮긴다.
   static const List<String> epilogueTexts = [
     '밖은 비바람이 치기 시작한다. 이번 계절에 들어 처음 오는 비였다.',
     '마치 Necromancer의 기구한 운명을 애도하는 듯이 ...',
     '하지만 그는 또다른 운명의 아이러니 때문에 새로운 길을 떠났다.',
-    '그가 이런 역사를 몇 번이나 반복했는지 그 자신도 모른다.',
-    '그가 최후로 정착할 곳마저 알 수가 없었다.',
-    '아니, 그가 정착할 곳이 있는지조차도 알 수가 없었다.',
-    '',
-    '당신도 이제 할 일을 모두 끝냈다.',
-    '이제 편안하게 쉴 기회를 가지게 된 것이다.',
+    '그가 이런 역사를 몇번이나 반복했는지 그 자신도 모른다.',
+    '그가 최후로 정착할 곳 마저 알수가 없었다',
+    '아니, 그가 정착할 곳이 있는지 조차도 알수가 없었다.',
+    '당신도 이제 할일을 모두 끝냈다. 이제 편안하게 쉴 기회를 가지게 된것이다.',
     '이제는 다시 이런 일이 일어나지 않을 것이다.',
-    '후세의 사람들은 말하겠지, 수천억 년에 한 번 날까 말까 한 일이라고.',
-    '아마 이 일도 별로 오래 기억되지 않을 것 같다.',
-    '몇 천 년만 지나면 전설로서, 아니 잊혀진 얘기로만 남을 테니까 ...',
+    '후세의 사람들은 말하겠지, 수천억년에 한번 날까 말까한 일이라고.',
+    '아마 이 일도 별로 오래 기억되지 않을 것같다.',
+    '몇 천년만 지나면 전설로서, 아니 잋혀진 애기로만 남을테니까 ...',
   ];
 
   const EndingView({super.key, required this.heroName, required this.onFinish});
@@ -154,34 +153,50 @@ class _EndingViewState extends State<EndingView> {
   // ------------------------------------------
   Widget _buildStaffStep() {
     final staffItems = [
-      {'title': '영웅', 'name': widget.heroName, 'desc': '바로 당신이다. 이 세계의 구원자.'},
-      {'title': 'NOTICE 보스', 'name': 'Hydra', 'desc': 'NOTICE 동굴을 지배하던 삼두룡.'},
+      {
+        'title': '영웅',
+        'name': widget.heroName,
+        'desc': '이름은 ${widget.heroName}. 바로 당신이다.',
+      },
+      {
+        'title': 'NOTICE 보스',
+        'name': 'Hydra',
+        'desc': 'Hydra, NOTICE 동굴의 보스였다.',
+      },
       {
         'title': 'LOCKUP 보스',
         'name': 'Huge Dragon',
-        'desc': 'LOCKUP 동굴의 거대한 화염룡.',
+        'desc': 'Huge Dragon, LOCKUP 동굴의 보스였다.',
       },
-      {'title': '미로의 괴수', 'name': 'Minotaur', 'desc': '던전 속에서 두 번 등장한 미노타우로스.'},
+      {
+        'title': '미로의 괴수',
+        'name': 'Minotaur',
+        'desc': 'Minotaur, 여기서 두번 등장하는 생물이다.',
+      },
       {
         'title': '기계 생물',
         'name': 'Panzer Viper',
-        'desc': 'DUNGEON OF EVIL을 지키던 사이버 바이퍼.',
+        'desc': 'Panzer Viper, DUNGEON OF EVIL 을 지키던 기계 생물.',
       },
       {
         'title': '제 2 인자',
         'name': 'Black Knight',
-        'desc': 'Necromancer 군단의 제 2 인자 암흑 기사.',
+        'desc': 'Black Knight, Necromancer 쪽의 제 2 인자 이다.',
       },
       {
         'title': '왼팔',
         'name': 'ArchiMonk',
-        'desc': 'Necromancer의 왼팔 역할을 맡았던 실력자.',
+        'desc': 'ArchiMonk, Necromancer의 왼팔 역할의 실력자.',
       },
-      {'title': '오른팔', 'name': 'ArchiMage', 'desc': 'Necromancer의 오른팔 대마법사.'},
+      {
+        'title': '오른팔',
+        'name': 'ArchiMage',
+        'desc': 'ArchiMage, Necromancer의 오른팔인 마법사.',
+      },
       {
         'title': '최종 보스',
         'name': 'Neo-Necromancer',
-        'desc': '바로 당신의 궁극적인 목표였던 사악한 지배자.',
+        'desc': 'Neo-Necromancer, 바로 당신의 목표였던 그자.',
       },
     ];
 
@@ -190,7 +205,7 @@ class _EndingViewState extends State<EndingView> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '◆ 이 게임의 끝마무리에 공헌한 인물들 (STAFF) ◆',
+          '◆ 이 게임의 끝마무리에 공헌한 인물 ◆',
           style: RetroTheme.headerFont.copyWith(
             fontSize: 13,
             color: RetroTheme.lightCyan,
@@ -283,28 +298,21 @@ class _EndingViewState extends State<EndingView> {
             letterSpacing: 2.0,
           ),
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 14),
+        // 원작 LOREEND.PAS:236 이후 - `" The Codex of Another Lore  vol. #1 "
+        // is made by Ahn Young-Kie.` / `You must be a genius !!!`
         Text(
-          '" The Codex of Another Lore vol. #1 "',
-          style: RetroTheme.dosFont.copyWith(
-            fontSize: 14,
-            color: RetroTheme.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          'Original Created in 1993 by Moon Dong-Wook (문동욱)',
+          '    " The Codex of Another Lore  vol. #1 " is made by Ahn Young-Kie.',
           style: RetroTheme.dosFont.copyWith(
             fontSize: 12,
-            color: RetroTheme.lightCyan,
+            color: RetroTheme.white,
           ),
         ),
         const SizedBox(height: 6),
         Text(
-          'Engineered for Flutter/Flame in 2026',
+          'Original 1993 · Ahn Young-Kie',
           style: RetroTheme.dosFont.copyWith(
-            fontSize: 11,
+            fontSize: 12,
             color: RetroTheme.lightGray,
           ),
         ),
@@ -316,7 +324,7 @@ class _EndingViewState extends State<EndingView> {
             border: Border.all(color: RetroTheme.yellow),
           ),
           child: Text(
-            '★ You must be a genius !!! ★',
+            'You must be a genius !!!',
             style: RetroTheme.headerFont.copyWith(
               fontSize: 14,
               color: RetroTheme.yellow,

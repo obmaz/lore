@@ -141,7 +141,10 @@ class LoreGame extends FlameGame {
     currentMapId = mapId;
     currentMapName = info.fileName;
     try {
-      currentMap = await LoreMapData.loadFromAsset(info.fileName);
+      currentMap = await LoreMapData.loadFromAsset(
+        info.fileName,
+        category: info.category.name,
+      );
       if (startX != null && startY != null) {
         playerX = startX;
         playerY = startY;
