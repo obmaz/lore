@@ -152,7 +152,7 @@ void main() {
 
     test('염력 1~6단계는 첫 기절과 처형에 각각 원본 경험치 분기를 적용한다', () {
       final engine = BattleEngine(random: DeterministicRandom([0]));
-      final caster = PartyMember.createPreset(2)
+      final caster = PartyMember.createPreset(3)
         ..espLevel = 1
         ..esp = 40;
       final ally = PartyMember.createPreset(1);
@@ -191,7 +191,7 @@ void main() {
 
     test('염력 7~10단계는 적 전체를 공격하고 원본의 선택 대상 경험치 계산을 따른다', () {
       final engine = BattleEngine(random: DeterministicRandom([6]));
-      final caster = PartyMember.createPreset(2)
+      final caster = PartyMember.createPreset(3)
         ..espLevel = 7
         ..esp = 40;
       final ally = PartyMember.createPreset(1);
@@ -226,7 +226,7 @@ void main() {
     });
 
     test('염력 11~12단계 공포는 저항·인내력 손실·죽음의 세 분기를 따른다', () {
-      final caster = PartyMember.createPreset(2)
+      final caster = PartyMember.createPreset(3)
         ..espLevel = 11
         ..esp = 60
         ..accEsp = 5;
@@ -269,7 +269,7 @@ void main() {
     });
 
     test('독심술은 고레벨 저항을 먼저 판정하고 62번 적을 레벨 17로 취급한다', () {
-      final caster = PartyMember.createPreset(2)
+      final caster = PartyMember.createPreset(3)
         ..espLevel = 16
         ..esp = 45
         ..accEsp = 60;
@@ -313,7 +313,7 @@ void main() {
     });
 
     test('독심술 성공 후 6번 슬롯에는 전투 덮어쓰기 전의 도감 동료가 합류한다', () {
-      final caster = PartyMember.createPreset(2)
+      final caster = PartyMember.createPreset(3)
         ..espLevel = 17
         ..esp = 15
         ..accEsp = 60;
@@ -340,8 +340,52 @@ void main() {
       expect(target.level, 0);
     });
 
+    test('전투 ESP는 세 직업 또는 etc39 첫 비트가 있을 때만 시전한다', () {
+      final knight = PartyMember.createPreset(1)
+        ..espLevel = 5
+        ..esp = 40;
+      final target = Monster.create(1);
+      final engine = BattleEngine(random: DeterministicRandom([0]));
+      final denied = engine.executePlayerESP(
+        knight,
+        target,
+        45,
+        [knight],
+        enemies: [target],
+      );
+      expect(denied.outcome, AttackOutcome.failed);
+      expect(knight.esp, 40);
+      expect(target.hp, 8);
+
+      final granted = engine.executePlayerESP(
+        knight,
+        target,
+        45,
+        [knight],
+        enemies: [target],
+        espAccessGranted: true,
+      );
+      expect(granted.outcome, AttackOutcome.unconscious);
+      expect(knight.esp, 20);
+
+      final ninja = PartyMember.createPreset(8)
+        ..playerClass = PlayerClass.ninja
+        ..espLevel = 5
+        ..esp = 20;
+      final ninjaTarget = Monster.create(1);
+      final native = engine.executePlayerESP(
+        ninja,
+        ninjaTarget,
+        45,
+        [ninja],
+        enemies: [ninjaTarget],
+      );
+      expect(native.outcome, AttackOutcome.unconscious);
+      expect(ninja.esp, 0);
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
-      final caster = PartyMember.createPreset(2)
+      final caster = PartyMember.createPreset(3)
         ..espLevel = 13
         ..esp = 60
         ..accEsp = 5;
@@ -379,7 +423,7 @@ void main() {
     });
 
     test('염력 15~17단계 심장 정지는 저항·부분 피해·저체력 기절·성공을 구분한다', () {
-      final caster = PartyMember.createPreset(2)
+      final caster = PartyMember.createPreset(3)
         ..espLevel = 15
         ..esp = 80
         ..accEsp = 5;
@@ -424,7 +468,7 @@ void main() {
     });
 
     test('염력 18단계 이상 환상은 저항 시 민첩, 성공 시 두 정확도를 낮춘다', () {
-      final caster = PartyMember.createPreset(2)
+      final caster = PartyMember.createPreset(3)
         ..espLevel = 18
         ..esp = 60
         ..accEsp = 5;

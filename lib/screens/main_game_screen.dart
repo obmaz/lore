@@ -1606,6 +1606,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
         return BattleViewportView(
           partyMembers: _party,
           enemies: _battleEnemies,
+          espAccessGranted:
+              LoreDialogueManager.instance.getFlagsCopy()['etc39_bit1'] == true,
           onLog: (msg) => _addLog(msg),
           onVictory: _onBattleVictory,
           onTelepathyJoin: _onBattleTelepathyJoin,

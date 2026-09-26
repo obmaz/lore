@@ -112,5 +112,9 @@
    즉시 교체한다. 동료 능력치는 전투 중 덮어쓴 적이 아닌 도감 원본에서
    생성하며, 62번 적의 비교 레벨 17과 실제 합류 레벨 19를 구분했다.
    커밋: `Recruit telepathy targets into the sixth party slot`.
+   `BattleESP`는 직업 2·3·6 또는 `etc39_bit1` 보유자만 사용할 수 있다.
+   전투 화면에서 스크립트 플래그를 엔진에 전달하고 거부 시 ESP가 소모되지
+   않도록 했다. 기존 염력 테스트의 잘못된 기사 시전자를 마법사로 교체했다.
+   커밋: `Gate battle ESP by class or granted access`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

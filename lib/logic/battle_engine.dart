@@ -622,7 +622,18 @@ class BattleEngine {
     int espId,
     List<PartyMember> party, {
     required List<Monster> enemies,
+    bool espAccessGranted = false,
   }) {
+    // LOREBATT.PAS:366-369 — 직업 2/3/6 또는 party.etc[39] bit1.
+    if (caster.playerClass != PlayerClass.mage &&
+        caster.playerClass != PlayerClass.esper &&
+        caster.playerClass != PlayerClass.ninja &&
+        !espAccessGranted) {
+      return const AttackResult(
+        outcome: AttackOutcome.failed,
+        message: '초능력을 사용할 수 없는 직업입니다.',
+      );
+    }
     final spell = LoreData.instance.spell(espId);
     final reqEsp = spell.calculateSpCost(caster.espLevel);
 

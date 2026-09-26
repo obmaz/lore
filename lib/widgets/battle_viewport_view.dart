@@ -22,6 +22,7 @@ import '../game/lore_dialogue_manager.dart';
 class BattleViewportView extends StatefulWidget {
   final List<PartyMember> partyMembers;
   final List<Monster> enemies;
+  final bool espAccessGranted;
   final void Function(String message) onLog;
   final void Function(int goldEarned) onVictory;
   final void Function(int eNumber) onTelepathyJoin;
@@ -32,6 +33,7 @@ class BattleViewportView extends StatefulWidget {
     super.key,
     required this.partyMembers,
     required this.enemies,
+    required this.espAccessGranted,
     required this.onLog,
     required this.onVictory,
     required this.onTelepathyJoin,
@@ -492,6 +494,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       spell.id,
       widget.partyMembers,
       enemies: widget.enemies,
+      espAccessGranted: widget.espAccessGranted,
     );
     widget.onLog(res.message);
     if (res.outcome == AttackOutcome.joined) {
