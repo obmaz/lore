@@ -662,6 +662,7 @@ class BattleEngine {
       target.hp = 0;
       target.isDead = true;
       target.isUnconscious = true;
+      target.level = 0;
       return AttackResult(
         outcome: AttackOutcome.joined,
         message: '★ 독심술 성공! ${target.name}은(는) 감화되어 전투를 멈추고 우리 편이 되었다!',

@@ -186,6 +186,12 @@ class LoreJoin {
     );
   }
 
+  /// LOREBATT.PAS:396-397 `join(E_number, 6)` — 독심술 영입은
+  /// 전투 중 변경된 적 능력치가 아니라 원본 enemydata 템플릿을 사용한다.
+  static PartyMember telepathyRecruit(int eNumber) {
+    return PartyMember.fromMonsterTemplate(LoreData.instance.monster(eNumber));
+  }
+
   /// 스크립트(JSON `{"join": "polaris"}`)에서 쓰는 키로 동료를 만든다.
   static PartyMember? byKey(String key) {
     switch (key) {

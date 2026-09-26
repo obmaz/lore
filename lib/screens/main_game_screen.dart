@@ -1198,6 +1198,18 @@ class _MainGameScreenState extends State<MainGameScreen> {
     });
   }
 
+  /// LOREBATT.PAS:396 `join(E_number, 6)` — 독심술로 설득한 적을
+  /// 도감 원본 능력치로 6번 슬롯에 즉시 편입한다.
+  void _onBattleTelepathyJoin(int eNumber) {
+    final recruit = LoreJoin.telepathyRecruit(eNumber);
+    final replaced = _party.length >= 6 ? _party[5].name : '';
+    setState(() {
+      LoreJoin.applyJoin(_party, recruit, LoreJoin.forcedSixthSlotOption);
+    });
+    _addLog('${recruit.name}이(가) 6번 슬롯에 합류했습니다.');
+    if (replaced.isNotEmpty) _addLog('$replaced은(는) 전장에서 물러났습니다.');
+  }
+
   /// 필드 인카운터 -> 전투 모드로 전환
   void _startBattle() {
     final monsterIds = LoreEncounterLogic.rollMonsters(
@@ -1596,6 +1608,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           enemies: _battleEnemies,
           onLog: (msg) => _addLog(msg),
           onVictory: _onBattleVictory,
+          onTelepathyJoin: _onBattleTelepathyJoin,
           onDefeat: _onBattleDefeat,
           onRunAway: _onBattleRunAway,
         );

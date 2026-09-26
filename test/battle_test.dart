@@ -5,6 +5,7 @@ import 'package:lore/models/party_member.dart';
 import 'package:lore/models/monster.dart';
 import 'package:lore/models/item.dart';
 import 'package:lore/logic/battle_engine.dart';
+import 'package:lore/logic/lore_join.dart';
 
 /// 고정된 난수 시퀀스를 반환하는 Mock Random 클래스
 class DeterministicRandom implements Random {
@@ -309,6 +310,34 @@ void main() {
           );
       expect(equalLevel.outcome, AttackOutcome.joined);
       expect(caster.esp, 0);
+    });
+
+    test('독심술 성공 후 6번 슬롯에는 전투 덮어쓰기 전의 도감 동료가 합류한다', () {
+      final caster = PartyMember.createPreset(2)
+        ..espLevel = 17
+        ..esp = 15
+        ..accEsp = 60;
+      final party = [
+        caster,
+        for (var i = 1; i < 6; i++) PartyMember.createPreset(i + 1),
+      ];
+      final replaced = party[5];
+      final target = Monster.create(62).withOverrides(name: '전투용 이름', level: 4);
+      final result = BattleEngine(random: DeterministicRandom([0]))
+          .executePlayerESP(caster, target, 43, party, enemies: [target]);
+      expect(result.outcome, AttackOutcome.joined);
+
+      final recruit = LoreJoin.telepathyRecruit(target.eNumber);
+      LoreJoin.applyJoin(party, recruit, LoreJoin.forcedSixthSlotOption);
+      expect(party, hasLength(6));
+      expect(party[5], same(recruit));
+      expect(party[5], isNot(same(replaced)));
+      expect(recruit.name, Monster.create(62).name);
+      expect(recruit.name, isNot(target.name));
+      expect(recruit.battleLevel, 19);
+      expect(recruit.esp, 0);
+      expect(target.isDead, isTrue);
+      expect(target.level, 0);
     });
 
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {

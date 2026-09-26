@@ -24,6 +24,7 @@ class BattleViewportView extends StatefulWidget {
   final List<Monster> enemies;
   final void Function(String message) onLog;
   final void Function(int goldEarned) onVictory;
+  final void Function(int eNumber) onTelepathyJoin;
   final VoidCallback onDefeat;
   final VoidCallback onRunAway;
 
@@ -33,6 +34,7 @@ class BattleViewportView extends StatefulWidget {
     required this.enemies,
     required this.onLog,
     required this.onVictory,
+    required this.onTelepathyJoin,
     required this.onDefeat,
     required this.onRunAway,
   });
@@ -483,14 +485,18 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     setState(() => _isTurnProcessing = true);
 
     widget.onLog('${player.name}의 초능력 \'${spell.name}\' 발동!');
+    final target = currentTarget;
     final res = _engine.executePlayerESP(
       player,
-      currentTarget,
+      target,
       spell.id,
       widget.partyMembers,
       enemies: widget.enemies,
     );
     widget.onLog(res.message);
+    if (res.outcome == AttackOutcome.joined) {
+      widget.onTelepathyJoin(target.eNumber);
+    }
 
     _playAttackSound(res);
     _reTargetIfDead();

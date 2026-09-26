@@ -108,5 +108,9 @@
    62번 적은 현재 레벨 19 대신 고정 레벨 17로 비교·명중 계산한다.
    거부·통과·동레벨의 세 경우를 검증했다.
    커밋: `Restore telepathy level resistance and Draconian exception`.
+   독심술 성공 시 전투 화면에서 `join(E_number, 6)`을 호출해 6번 슬롯을
+   즉시 교체한다. 동료 능력치는 전투 중 덮어쓴 적이 아닌 도감 원본에서
+   생성하며, 62번 적의 비교 레벨 17과 실제 합류 레벨 19를 구분했다.
+   커밋: `Recruit telepathy targets into the sixth party slot`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
