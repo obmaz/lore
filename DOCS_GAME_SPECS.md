@@ -560,6 +560,9 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     { "nudge": { "dy": 1 } },
     { "randomFlag": ["evilSealRoom1", "evilSealRoom2"] },
     { "teleport": { "x": 46, "y": 41 } },
+    { "teleport": { "y": 80, "keepX": true } },
+    { "torch": true },
+    { "randomSteps": [ [ { "say": "문항 A" } ], [ { "say": "문항 B" } ] ] },
     { "equip": { "kind": "weapon", "index": 3, "power": 12, "prompt": true } },
     { "peek": { "x": 48, "y": 57 } },
     { "choice": { "prompt": "?", "options": [
@@ -573,7 +576,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 * 좌표는 `x`/`y`(정확) 대신 `xMin`/`xMax`/`yMin`/`yMax`로 **행/구역 전체**를 쓸 수
   있다(원작 `if y = 44 then ...` 조건 그대로).
 * `require`: `flag` / `flagNot` / `mindRead`(독심술 사용 가능) / `minEspLevel` /
-  `notMindReadOrLowEsp`(조건 미충족 안내용)
+  `notMindReadOrLowEsp`(조건 미충족 안내용) / `tileAtPlayerZero`(밟은 타일이 0)
 * `join` 키: `mad_joe`, `polaris`, `rigel`, `red_antares`, `spica`, `lore_hunter`,
   `draconian`, `skeleton`
 * `equip` 스텝: `kind`(weapon/shield/armor), `index`, `power`, `prompt`(누가 장착할지
