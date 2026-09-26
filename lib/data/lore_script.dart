@@ -212,6 +212,10 @@ class ScriptStep {
   /// (원작 `for i := 10 to 23 do map[x,i] := 49`).
   final bool tileAtPlayerX;
 
+  /// `atPlayerY`: 영역의 y를 플레이어가 선 **행**으로 삼는다
+  /// (원작 `for j := 23 to 26 do map[j,y] := 44`).
+  final bool tileAtPlayerY;
+
   /// battle 스텝의 난수 추가: `random.pool`에서 `random.min`~`random.max` 마리.
   final List<int>? randomPool;
   final int? randomMin;
@@ -266,6 +270,7 @@ class ScriptStep {
     this.tileXMax,
     this.tileYMax,
     this.tileAtPlayerX = false,
+    this.tileAtPlayerY = false,
     this.randomPool,
     this.randomMin,
     this.randomMax,
@@ -382,6 +387,7 @@ class ScriptOutcome {
       int tile,
       int? ifZero,
       bool atPlayerX,
+      bool atPlayerY,
     })
   >
   tileAreas;
@@ -613,6 +619,7 @@ class LoreScriptEngine {
             int tile,
             int? ifZero,
             bool atPlayerX,
+            bool atPlayerY,
           })
         >.from(acc.tileAreas);
     var playerTiles = List<({int tile, int? ifZero})>.from(acc.playerTiles);
@@ -714,6 +721,7 @@ class LoreScriptEngine {
             tile: step.tileValue!,
             ifZero: step.tileIfZero,
             atPlayerX: step.tileAtPlayerX,
+            atPlayerY: step.tileAtPlayerY,
           ));
           break;
         case 'randomFlag':
@@ -991,6 +999,7 @@ class LoreScriptEngine {
             tileValue: t['tile'] as int,
             tileIfZero: t['ifZero'] as int?,
             tileAtPlayerX: t['atPlayerX'] == true,
+            tileAtPlayerY: t['atPlayerY'] == true,
           ),
         );
         matched = true;

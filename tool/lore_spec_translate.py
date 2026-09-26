@@ -98,6 +98,13 @@ SET_TILE_AREA = re.compile(
     r"map\[\s*([a-z0-9]+)\s*,\s*([a-z0-9]+)\s*\]\s*:=\s*(\d+)",
     re.I,
 )
+# `for i := 12 to 39 do if map[i,j] = 0 then map[i,j] := 39;` (빈 칸만)
+SET_TILE_AREA_IFZERO = re.compile(
+    r"for\s+([a-z])\s*:=\s*(\d+)\s+to\s+(\d+)\s+do\s+"
+    r"if\s+map\[\s*([a-z0-9]+)\s*,\s*([a-z0-9]+)\s*\]\s*=\s*0\s+then\s+"
+    r"map\[\s*\4\s*,\s*\5\s*\]\s*:=\s*(\d+)",
+    re.I,
+)
 # `for i := 1 to 3 do joinenemy(i, 43);` (적 배치)
 LOOP_JOINENEMY = re.compile(
     r"for\s+i\s*:=\s*1\s+to\s+(\d+)\s+do\s+"
@@ -142,6 +149,16 @@ EQUIP_FIELD = {
     'armor': ('armor', 'arm_power'),
 }
 CHOOSEWHOM = re.compile(r"choosewhom\s*\(", re.I)
+# 원작 퀴즈: `i := random(8); case i of 0 : Print(..) .. end; if i < 4 then .. `
+RANDOM_ASSIGN = re.compile(r"^\s*i\s*:=\s*random\((\d+)\)\s*;", re.I)
+CASE_I = re.compile(r"^\s*case\s+i\s+of\s*$", re.I)
+CASE_ARM_TEXT = re.compile(
+    r"^\s*(\d+)\s*:\s*(?:Print|cPrint|talk|Talk|message|Message)\(.*"
+)
+CASE_ARM_OPEN = re.compile(r"^\s*(\d+)\s*:\s*begin\s*$", re.I)
+RANDOM_SPLIT_IF = re.compile(
+    r"^\s*if\s+i\s*<\s*(\d+)\s+then\s+begin\s*$", re.I
+)
 WITH_PLAYER = re.compile(r"^with\s+player\[k\]\s+do\s+begin", re.I)
 
 NOTE_ONLY = re.compile(
@@ -594,6 +611,65 @@ def resolve_if(stmts: list[list[str]], i: int):
     return cond, body, else_body, j
 
 
+def parse_case_i_arms(chunk: list[str]) -> dict[int, list[str]]:
+    """`case i of 0 : Print(..) .. end;` 에서 팔별 문장 줄을 모은다."""
+    arms: dict[int, list[str]] = {}
+    i = 1
+    while i < len(chunk):
+        line = chunk[i]
+        txt = CASE_ARM_TEXT.match(line)
+        if txt:
+            # `0 : Print(..)` 에서 팔 번호 접두를 떼고 문장만 남긴다.
+            arms.setdefault(int(txt.group(1)), []).append(
+                re.sub(r'^\s*\d+\s*:\s*', '', line)
+            )
+            i += 1
+            continue
+        op = CASE_ARM_OPEN.match(line)
+        if op:
+            val = int(op.group(1))
+            depth = 1
+            i += 1
+            while i < len(chunk) and depth > 0:
+                depth += block_delta(chunk[i])
+                if depth > 0:
+                    arms.setdefault(val, []).append(chunk[i])
+                i += 1
+            continue
+        i += 1
+    return arms
+
+
+def resolve_random_threshold(stmts: list[list[str]], idx: int):
+    """`if i < K then begin A end else begin B end` → (K, A스텝, B스텝, 다음)."""
+    if idx >= len(stmts):
+        return None, [], [], idx
+    m = RANDOM_SPLIT_IF.match(stmts[idx][0].strip())
+    if not m:
+        return None, [], [], idx
+    threshold = int(m.group(1))
+    a_steps: list[dict] = []
+    b_steps: list[dict] = []
+    sub = Ctx(0, None, None)
+    sub.variants = [(Req(), [])]
+    body_a = _trim_end(stmts[idx][1:])
+    walk(sub, body_a)
+    sub.finish()
+    if sub.variants:
+        a_steps = sub.variants[0][1]
+    j = idx + 1
+    if j < len(stmts) and re.match(r'^else\s+begin\s*$',
+                                   stmts[j][0].strip(), re.I):
+        sub_b = Ctx(0, None, None)
+        sub_b.variants = [(Req(), [])]
+        walk(sub_b, _trim_end(stmts[j][1:]))
+        sub_b.finish()
+        if sub_b.variants:
+            b_steps = sub_b.variants[0][1]
+        j += 1
+    return threshold, a_steps, b_steps, j
+
+
 def walk_statements(ctx, stmts: list[list[str]], depth: int = 0):
     """문장 목록을 해석한다(`walk` 과 같은 일을 하지만 목록을 직접 받는다)."""
     i = 0
@@ -651,6 +727,43 @@ def walk_statements(ctx, stmts: list[list[str]], depth: int = 0):
             ctx.note('장비 지급(choosewhom) 미해석')
             i += 1
             continue
+        m = RANDOM_ASSIGN.match(first)
+        if m:
+            # 원작 퀴즈: 무작위 문항 + 정답 여부에 따른 지형 변화
+            n = int(m.group(1))
+            if (i + 2 < len(stmts) and CASE_I.match(stmts[i + 1][0].strip())):
+                arms = parse_case_i_arms(stmts[i + 1])
+                # `if i < K then` 사이에 낀 공통 문장(지형 정리 등)을 모은다.
+                idx = i + 2
+                common: list[dict] = []
+                sub_c = Ctx(ctx.map_id, None, None)
+                sub_c.variants = [(Req(), [])]
+                while (idx < len(stmts) and idx < i + 6
+                       and not RANDOM_SPLIT_IF.match(stmts[idx][0].strip())):
+                    walk(sub_c, stmts[idx])
+                    idx += 1
+                sub_c.finish()
+                if sub_c.variants:
+                    common = sub_c.variants[0][1]
+                k_chunk, k_body_a, k_body_b, j = resolve_random_threshold(
+                    stmts, idx
+                )
+                if arms and k_chunk is not None:
+                    branches = []
+                    for ai in range(n):
+                        steps: list[dict] = []
+                        arm_lines = arms.get(ai, [])
+                        for t in collect_texts(arm_lines):
+                            if t.strip():
+                                steps.append({'say': t})
+                        steps.extend(common)
+                        steps.extend(
+                            k_body_a if ai < k_chunk else k_body_b
+                        )
+                        branches.append(steps)
+                    ctx.add_step({'randomSteps': branches})
+                    i = j
+                    continue
         if SELECT.search(first) and 'k :=' in first:
             option_bodies: dict[int, list[list[str]]] = {}
             j = i + 1
@@ -753,9 +866,10 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         if texts:
             continue
 
-        m = ETC_BIT_SET.search(s)
-        if m:
-            ctx.add_step({'flag': f'etc{m.group(1)}_bit{m.group(2)}'})
+        bits = list(ETC_BIT_SET.finditer(s))
+        if bits:
+            for m in bits:
+                ctx.add_step({'flag': f'etc{m.group(1)}_bit{m.group(2)}'})
             continue
         m = ETC_BIT_CLR.search(s)
         if m:
@@ -860,15 +974,17 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         if m:
             ctx.add_step({'setTileAtPlayer': {'tile': int(m.group(1))}})
             continue
-        m = TILE.search(s)
-        if m:
-            ctx.add_step({
-                'setTile': {
-                    'x': int(m.group(1)),
-                    'y': int(m.group(2)),
-                    'tile': int(m.group(3)),
-                }
-            })
+        tiles = list(TILE.finditer(s))
+        if tiles:
+            # 한 줄에 `map[8,88] := 52; map[43,88] := 0;` 처럼 여러 개가 온다.
+            for m in tiles:
+                ctx.add_step({
+                    'setTile': {
+                        'x': int(m.group(1)),
+                        'y': int(m.group(2)),
+                        'tile': int(m.group(3)),
+                    }
+                })
             continue
         if WITH_PARTY.match(s):
             # (문장 단위 처리에서 걸러지지 않은 한 줄짜리 형태)
@@ -890,6 +1006,31 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
             key = 'dx' if m.group(2).lower() == 'x' else 'dy'
             ctx.add_step({'nudge': {key: sign}})
             continue
+        m = SET_TILE_AREA_IFZERO.search(s)
+        if m:
+            var, lo, hi, xc, yc, tile = m.groups()
+            xc, yc = xc.lower(), yc.lower()
+            area = {'tile': int(tile), 'ifZero': int(tile)}
+            if xc == var.lower():
+                area['xMin'], area['xMax'] = int(lo), int(hi)
+                area['yMin'] = area['yMax'] = 1
+                if yc == 'y':
+                    area['atPlayerY'] = True
+                    ctx.add_step({'setTileArea': area})
+                    continue
+                ctx.note(f'영역 변형(0인 칸, 변수): {s[:50]}')
+                continue
+            if yc == var.lower():
+                area['yMin'], area['yMax'] = int(lo), int(hi)
+                area['xMin'] = area['xMax'] = 1
+                if xc == 'x':
+                    area['atPlayerX'] = True
+                    ctx.add_step({'setTileArea': area})
+                    continue
+                ctx.note(f'영역 변형(0인 칸, 변수): {s[:50]}')
+                continue
+            ctx.note(f'영역 변형(0인 칸): {s[:50]}')
+            continue
         m = SET_TILE_AREA.search(s)
         if m:
             var, lo, hi, xc, yc, tile = m.groups()
@@ -901,14 +1042,23 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
                 'yMax': int(hi) if yc == var.lower() else 1,
                 'tile': int(tile),
             }
-            if xc in ('x', 'y') or yc in ('x', 'y'):
-                ctx.note(f'영역 변형(좌표 변수): {s[:50]}')
-                continue
             if xc == var.lower():
-                area['atPlayerY'] = False
                 area['xMin'], area['xMax'] = int(lo), int(hi)
             elif yc == var.lower():
                 area['yMin'], area['yMax'] = int(lo), int(hi)
+            if xc == 'x':
+                # `map[x,i] := v` - x는 플레이어가 선 열
+                area['atPlayerX'] = True
+                area['xMin'] = area['xMax'] = 1
+                area['yMin'], area['yMax'] = int(lo), int(hi)
+            elif yc == 'y':
+                # `map[i,y] := v` - y는 플레이어가 선 행
+                area['atPlayerY'] = True
+                area['yMin'] = area['yMax'] = 1
+                area['xMin'], area['xMax'] = int(lo), int(hi)
+            elif xc == 'y' or yc == 'x':
+                ctx.note(f'영역 변형(좌표 변수): {s[:50]}')
+                continue
             ctx.add_step({'setTileArea': area})
             continue
         m = AXIS_ASSIGN.match(s)

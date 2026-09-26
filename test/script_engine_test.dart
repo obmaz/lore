@@ -47,7 +47,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 568);
+      expect(LoreScriptEngine.instance.scripts.length, 567);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -563,7 +563,8 @@ void main() {
 
       // 1) 퀴즈 행(y=91): 8개 문항 중 하나가 무작위로 나오고, 문이 함께 정해진다.
       final quiz = engine.startStep(20, 30, 91, noCtx)!;
-      expect(quiz.outcome.messages.single, startsWith('문> '));
+      // 원작은 안내문(` 다음 물음이 맞다면 ...`) 뒤에 `문> ...` 문항을 보여준다.
+      expect(quiz.outcome.messages.any((m) => m.startsWith('문> ')), isTrue);
       // 문은 항상 좌/우 중 한쪽만 열린다.
       final doors = quiz.outcome.tileChanges.where((t) => t.y == 88).toList();
       expect(doors.length, 2);

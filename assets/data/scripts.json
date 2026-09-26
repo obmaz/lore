@@ -1613,7 +1613,21 @@
         },
         {
           "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
             "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
             "y": 11,
             "tile": 44
           }
@@ -1680,7 +1694,21 @@
         },
         {
           "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
             "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
             "y": 11,
             "tile": 44
           }
@@ -1738,7 +1766,21 @@
         },
         {
           "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
             "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
             "y": 11,
             "tile": 44
           }
@@ -1799,7 +1841,21 @@
         },
         {
           "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
             "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
             "y": 11,
             "tile": 44
           }
@@ -4241,13 +4297,19 @@
           }
         },
         {
+          "setTile": {
+            "x": 28,
+            "y": 37,
+            "tile": 19
+          }
+        },
+        {
           "setTileArea": {
             "xMin": 25,
             "xMax": 27,
             "yMin": 1,
             "yMax": 1,
-            "tile": 44,
-            "atPlayerY": false
+            "tile": 44
           }
         }
       ],
@@ -5148,8 +5210,7 @@
             "xMax": 26,
             "yMin": 1,
             "yMax": 1,
-            "tile": 54,
-            "atPlayerY": false
+            "tile": 54
           }
         },
         {
@@ -5241,6 +5302,13 @@
         {
           "setTile": {
             "x": 25,
+            "y": 27,
+            "tile": 54
+          }
+        },
+        {
+          "setTile": {
+            "x": 26,
             "y": 27,
             "tile": 54
           }
@@ -5359,6 +5427,13 @@
         {
           "setTile": {
             "x": 25,
+            "y": 27,
+            "tile": 54
+          }
+        },
+        {
+          "setTile": {
+            "x": 26,
             "y": 27,
             "tile": 54
           }
@@ -5483,6 +5558,13 @@
             "y": 33,
             "tile": 17
           }
+        },
+        {
+          "setTile": {
+            "x": 14,
+            "y": 35,
+            "tile": 18
+          }
         }
       ],
       "x": 15,
@@ -5569,6 +5651,13 @@
             "x": 37,
             "y": 33,
             "tile": 19
+          }
+        },
+        {
+          "setTile": {
+            "x": 37,
+            "y": 35,
+            "tile": 22
           }
         }
       ],
@@ -5699,6 +5788,13 @@
             "x": 22,
             "y": 41,
             "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 21,
+            "y": 41,
+            "tile": 52
           }
         }
       ],
@@ -5858,7 +5954,7 @@
       ]
     },
     {
-      "id": "spec-12-L560",
+      "id": "spec-12-L560-1xx",
       "trigger": "step",
       "map": 12,
       "once": false,
@@ -5897,7 +5993,289 @@
           }
         ]
       },
-      "note": "조건 미지원: x = 18; 미지원: scroll(TRUE);; 영역 변형(좌표 변수): for i := 10 to 23 do map[x,i] := 49;"
+      "note": "조건 미지원: x = 18; 미지원: scroll(TRUE);"
+    },
+    {
+      "id": "spec-12-L560-2xx",
+      "trigger": "step",
+      "map": 12,
+      "once": false,
+      "steps": [
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "xMax": 1,
+            "yMin": 10,
+            "yMax": 23,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        }
+      ],
+      "disabled": true,
+      "yMin": 10,
+      "yMax": 10,
+      "require": {
+        "quest": [
+          {
+            "name": "gaia",
+            "lt": 2
+          }
+        ]
+      },
+      "note": "조건 미지원: x = 18; 미지원: scroll(TRUE);"
+    },
+    {
+      "id": "spec-20-L1475xx",
+      "trigger": "step",
+      "map": 20,
+      "once": false,
+      "steps": [
+        {
+          "say": " 다음 물음이 맞다면 왼쪽길로, 아니면 오른쪽"
+        },
+        {
+          "say": "길로 가시오."
+        },
+        {
+          "randomSteps": [
+            [
+              {
+                "say": "문> CONFIG.SYS가 없으면 부팅이 안된다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Quick-BASIC은 인터프리터어 이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Super VGA는 호환이 잘된다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 8-bit APPLE의 CPU는 Z - 80 이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> COMMAND.COM 안에 도스 명령이 들어있다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> AdLib 카드는 9 채널이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Ultima의 제작자는 리차드 게리오트이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 당신의 컴퓨터는 IBM 계열이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 52
+                }
+              }
+            ]
+          ]
+        }
+      ],
+      "yMin": 91,
+      "yMax": 91
     },
     {
       "id": "den7-quiz-y91",
@@ -6135,10 +6513,11 @@
             ]
           ]
         }
-      ]
+      ],
+      "disabled": true
     },
     {
-      "id": "spec-20-L1475-1xx",
+      "id": "spec-20-L1475xxx",
       "trigger": "step",
       "map": 20,
       "once": false,
@@ -6150,42 +6529,244 @@
           "say": "길로 가시오."
         },
         {
-          "setTile": {
-            "x": 8,
-            "y": 88,
-            "tile": 52
-          }
+          "randomSteps": [
+            [
+              {
+                "say": "문> 태양계의 제 4 혹성은 지구이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 북극성이 가장 밝은 별이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 1월의 수호성좌는 1월에 볼수있다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 빛보다 빠른 입자는 실험상 없었다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 달이 지구보다 먼저 생겨났다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 시그너스 X1은 블랙홀이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 과거로의 타임머신은 불가능하다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 북극성은 주기적으로 달라진다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 1,
+                  "yMax": 1,
+                  "tile": 44,
+                  "atPlayerY": true
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 52
+                }
+              }
+            ]
+          ]
         }
       ],
-      "disabled": true,
-      "yMin": 91,
-      "yMax": 91,
-      "note": "미지원: i := random(8);; 미지원: case i of; 미지원: 0 : Print(7,'문> CONFIG.SYS가 없으면 부팅이 안된다');; 미지원: 1 : Print(7,'문> Quick-BASIC은 인터프리터어 이다');; 미지원: 2 : Print(7,'문> Super VGA는 호환이 잘된다');; 미지원: 3 : Print(7,'문> 8-bit APPLE의 CPU는 Z - 80 이다');; 미지원: 4 : Print(7,'문> COMMAND.COM 안에 도스 명령이 들어있다');; 미지원: 5 : Print(7"
-    },
-    {
-      "id": "spec-20-L1475-2xx",
-      "trigger": "step",
-      "map": 20,
-      "once": false,
-      "steps": [
-        {
-          "say": " 다음 물음이 맞다면 왼쪽길로, 아니면 오른쪽"
-        },
-        {
-          "say": "길로 가시오."
-        },
-        {
-          "setTile": {
-            "x": 8,
-            "y": 88,
-            "tile": 0
-          }
-        }
-      ],
-      "disabled": true,
-      "yMin": 91,
-      "yMax": 91,
-      "note": "미지원: i := random(8);; 미지원: case i of; 미지원: 0 : Print(7,'문> CONFIG.SYS가 없으면 부팅이 안된다');; 미지원: 1 : Print(7,'문> Quick-BASIC은 인터프리터어 이다');; 미지원: 2 : Print(7,'문> Super VGA는 호환이 잘된다');; 미지원: 3 : Print(7,'문> 8-bit APPLE의 CPU는 Z - 80 이다');; 미지원: 4 : Print(7,'문> COMMAND.COM 안에 도스 명령이 들어있다');; 미지원: 5 : Print(7"
+      "yMin": 75,
+      "yMax": 75
     },
     {
       "id": "den7-quiz-y75",
@@ -6423,57 +7004,8 @@
             ]
           ]
         }
-      ]
-    },
-    {
-      "id": "spec-20-L1475-1xxx",
-      "trigger": "step",
-      "map": 20,
-      "once": false,
-      "steps": [
-        {
-          "say": " 다음 물음이 맞다면 왼쪽길로, 아니면 오른쪽"
-        },
-        {
-          "say": "길로 가시오."
-        },
-        {
-          "setTile": {
-            "x": 8,
-            "y": 71,
-            "tile": 52
-          }
-        }
       ],
-      "disabled": true,
-      "yMin": 75,
-      "yMax": 75,
-      "note": "미지원: i := random(8);; 미지원: case i of; 미지원: 0 : Print(7,'문> 태양계의 제 4 혹성은 지구이다');; 미지원: 1 : Print(7,'문> 북극성이 가장 밝은 별이다');; 미지원: 2 : Print(7,'문> 1월의 수호성좌는 1월에 볼수있다');; 미지원: 3 : Print(7,'문> 빛보다 빠른 입자는 실험상 없었다');; 미지원: 4 : Print(7,'문> 달이 지구보다 먼저 생겨났다');; 미지원: 5 : Print(7,'문> 시그너스 X1은 블랙홀이다');; 미지원: 6 : P"
-    },
-    {
-      "id": "spec-20-L1475-2xxx",
-      "trigger": "step",
-      "map": 20,
-      "once": false,
-      "steps": [
-        {
-          "say": " 다음 물음이 맞다면 왼쪽길로, 아니면 오른쪽"
-        },
-        {
-          "say": "길로 가시오."
-        },
-        {
-          "setTile": {
-            "x": 8,
-            "y": 71,
-            "tile": 0
-          }
-        }
-      ],
-      "disabled": true,
-      "yMin": 75,
-      "yMax": 75,
-      "note": "미지원: i := random(8);; 미지원: case i of; 미지원: 0 : Print(7,'문> 태양계의 제 4 혹성은 지구이다');; 미지원: 1 : Print(7,'문> 북극성이 가장 밝은 별이다');; 미지원: 2 : Print(7,'문> 1월의 수호성좌는 1월에 볼수있다');; 미지원: 3 : Print(7,'문> 빛보다 빠른 입자는 실험상 없었다');; 미지원: 4 : Print(7,'문> 달이 지구보다 먼저 생겨났다');; 미지원: 5 : Print(7,'문> 시그너스 X1은 블랙홀이다');; 미지원: 6 : P"
+      "disabled": true
     },
     {
       "id": "den7-quiz-y54",
@@ -7058,7 +7590,7 @@
       ]
     },
     {
-      "id": "spec-20-L1475-1xxxx",
+      "id": "spec-20-L1475-1xx",
       "trigger": "step",
       "map": 20,
       "once": false,
@@ -7095,7 +7627,16 @@
             "yMin": 1,
             "yMax": 1,
             "tile": 44,
-            "atPlayerY": false
+            "atPlayerY": true
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 23,
+            "xMax": 25,
+            "yMin": 1,
+            "yMax": 1,
+            "tile": 44
           }
         }
       ],
@@ -7105,7 +7646,7 @@
       "note": "미지원: i := random(8);; 미지원: case i of; 미지원: 0 : Print(7,'문> 이 게임의 배경은 4개의 대륙이다');; 미지원: 1 : Print(7,'문> Ancient Evil은 응징되어야 한다');; 미지원: 2 : Print(7,'문> Lord Ahn만이 유일한 Semi-God이다');; 미지원: 3 : Print(7,'문> 이 세계의 모든 악은 응징되어야 한다');; 미지원: 4 : Print(7,'문> 이 게임의 제작자는 안 영기이다');; 미지원: 5 : Print(7,'문> 게임속의 인물은 "
     },
     {
-      "id": "spec-20-L1475-2xxxx",
+      "id": "spec-20-L1475-2xx",
       "trigger": "step",
       "map": 20,
       "once": false,
@@ -7133,6 +7674,16 @@
                 ]
               }
             ]
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 23,
+            "xMax": 25,
+            "yMin": 1,
+            "yMax": 1,
+            "tile": 44,
+            "atPlayerY": true
           }
         },
         {
@@ -7274,7 +7825,7 @@
       "note": "조건 미지원: map[x,y] = 0; 미지원: y := 63"
     },
     {
-      "id": "spec-20-L1475xx",
+      "id": "spec-20-L1475xxxx",
       "trigger": "step",
       "map": 20,
       "once": false,
@@ -7332,7 +7883,7 @@
       ]
     },
     {
-      "id": "spec-20-L1475-1xxxxx",
+      "id": "spec-20-L1475-1xxx",
       "trigger": "step",
       "map": 20,
       "once": false,
@@ -7369,7 +7920,7 @@
       "disabled": true
     },
     {
-      "id": "spec-20-L1475-2xxxxx",
+      "id": "spec-20-L1475-2xxx",
       "trigger": "step",
       "map": 20,
       "once": false,
@@ -7525,7 +8076,7 @@
       ]
     },
     {
-      "id": "spec-20-L1475-1xxxxxx",
+      "id": "spec-20-L1475-1xxxx",
       "trigger": "step",
       "map": 20,
       "once": false,
@@ -7589,7 +8140,7 @@
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
     },
     {
-      "id": "spec-20-L1475-2xxxxxx",
+      "id": "spec-20-L1475-2xxxx",
       "trigger": "step",
       "map": 20,
       "once": false,
@@ -14597,7 +15148,21 @@
         },
         {
           "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
             "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
             "y": 11,
             "tile": 44
           }
@@ -14664,7 +15229,21 @@
         },
         {
           "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
             "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
             "y": 11,
             "tile": 44
           }
@@ -14722,7 +15301,21 @@
         },
         {
           "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
             "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
             "y": 11,
             "tile": 44
           }
@@ -14783,7 +15376,21 @@
         },
         {
           "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
             "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
             "y": 11,
             "tile": 44
           }
@@ -15954,7 +16561,7 @@
       "note": "조건 미지원: x = 33; 미지원: scroll(TRUE);; 미지원: x := 25; y := 70;"
     },
     {
-      "id": "spec-12-L560x",
+      "id": "spec-12-L560",
       "trigger": "step",
       "map": 12,
       "once": false,
@@ -16049,7 +16656,7 @@
       "note": "미지원: hany := 20;; 미지원: case k of; 미지원: 0 : begin; 미지원: 1 : begin; 미지원: k := ReturnJoinMember;; 미지원: if k = 1 then begin; 미지원: with player[k] do begin; 미지원: name := 'Rigel';; 미지원: class := 7;; 미지원: weapon := 4;; 미지원: shield := 1;; 미지원: armor := 1;; 미지원: wea_power := 10;; 미지원: shi_power := 1;; 미지원: ar"
     },
     {
-      "id": "spec-12-L560xx",
+      "id": "spec-12-L560x",
       "trigger": "step",
       "map": 12,
       "once": false,
@@ -20167,8 +20774,7 @@
             "xMax": 27,
             "yMin": 1,
             "yMax": 1,
-            "tile": 46,
-            "atPlayerY": false
+            "tile": 46
           }
         }
       ],
@@ -20468,6 +21074,16 @@
           }
         },
         {
+          "setTileArea": {
+            "xMin": 24,
+            "xMax": 27,
+            "yMin": 1,
+            "yMax": 1,
+            "tile": 41,
+            "atPlayerY": true
+          }
+        },
+        {
           "say": " 당신이 적을 물리치자 조금후에 이상하리만큼"
         },
         {
@@ -20520,7 +21136,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,y] := 41;; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-2x",
@@ -20549,6 +21165,16 @@
               66,
               71
             ]
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 24,
+            "xMax": 27,
+            "yMin": 1,
+            "yMax": 1,
+            "tile": 41,
+            "atPlayerY": true
           }
         },
         {
@@ -20606,7 +21232,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,y] := 41;; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-3",
@@ -20658,7 +21284,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,y] := 41;; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-4",
@@ -20702,7 +21328,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,y] := 41;; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-5",
@@ -20759,7 +21385,7 @@
           "etc1"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,y] := 41;; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-25-L1995-6",
@@ -20808,7 +21434,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,y] := 41;; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
+      "note": "미지원: for j := 1 to 3 do begin; 미지원: for i := 0 to 9 do begin; 미지원: if (i = 0) and (j > 1) then; 미지원: scroll(TRUE);; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;"
     },
     {
       "id": "spec-26-L2104-seq",

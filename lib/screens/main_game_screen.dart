@@ -490,7 +490,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       // 원작 `map[x,i] := 값`: x는 플레이어가 선 열이다.
       final xMin = area.atPlayerX ? _game.playerX : area.xMin;
       final xMax = area.atPlayerX ? _game.playerX : area.xMax;
-      for (var y = area.yMin; y <= area.yMax; y++) {
+      // 원작 `map[j,y] := 값`: y는 플레이어가 선 행이다.
+      final yMin = area.atPlayerY ? _game.playerY : area.yMin;
+      final yMax = area.atPlayerY ? _game.playerY : area.yMax;
+      for (var y = yMin; y <= yMax; y++) {
         if (y < 1 || y > map.ymax) continue;
         for (var x = xMin; x <= xMax; x++) {
           if (x < 1 || x > map.xmax) continue;
