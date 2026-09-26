@@ -18,6 +18,7 @@ import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_battle_progress.dart';
 import '../logic/lore_mirror_enemy.dart';
 import '../logic/lore_rigel_blessing.dart';
+import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
 import '../models/party_member.dart';
@@ -557,24 +558,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
       setState(() {});
     }
 
-    if (outcome.partyClassId case final classId?) {
+    if (outcome.partyClassId != null || outcome.expDelta != 0) {
       setState(() {
-        for (final member in _party) {
-          if (member.name.isNotEmpty) {
-            member.playerClass = PlayerClass.fromId(classId);
-          }
-        }
+        _party = ScriptPartyReducer.applyProgress(_party, outcome);
       });
     }
-
-    // 경험치 보상 (원작 `for i := 1 to 6 do if player[i].name <> '' then
-    // player[i].experience := player[i].experience + n`)
     if (outcome.expDelta != 0) {
-      for (final member in _party) {
-        if (member.name.isEmpty) continue;
-        member.experience += outcome.expDelta;
-      }
-      setState(() {});
       _addLog('⭐ 경험치 ${outcome.expDelta > 0 ? '+' : ''}${outcome.expDelta}');
     }
 
