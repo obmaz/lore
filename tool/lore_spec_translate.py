@@ -119,6 +119,13 @@ LOOP_JOINENEMY = re.compile(
     r"joinenemy\(\s*i\s*,\s*(\d+)\s*\)",
     re.I,
 )
+# `for i := 3 to 7 do joinenemy(i, random(3)+30);` (무작위 종류의 적)
+LOOP_JOINENEMY_RANDOM = re.compile(
+    r"for\s+i\s*:=\s*(\d+)\s+to\s+(\d+)\s+do\s+"
+    r"joinenemy\(\s*i\s*,\s*random\((\d+)\)\s*\+\s*(\d+)\s*\)",
+    re.I,
+)
+# `joinenemy(random(5)+1, 63);` (무작위 자리에 고정 종류)
 # `for i := 1 to 7 do joinenemy(i, 68+i);` (id 가 순번에 따라 증가)
 LOOP_JOINENEMY_OFF = re.compile(
     r"for\s+i\s*:=\s*1\s+to\s+(\d+)\s+do\s+"
@@ -184,7 +191,7 @@ QUEST_FLAG = {
     ('gaia', 2): 'goldenSealFound',
     ('gaia', 3): 'bossArchiGagoyleDefeated',
     ('water', 2): 'bossHidraDefeated',
-    ('water', 3): 'bossHugeDragonDefeated',
+    ('water', 4): 'bossHugeDragonDefeated',
     ('lastditch', 2): 'bossMajorMummyDefeated',
 }
 
@@ -539,6 +546,8 @@ class Ctx:
         # 전투: `enemynumber := N` / `joinenemy(...)` 로 모은 적 목록.
         self.monsters: list[int] = []
         self.enemy_count: int | None = None
+        # `random(N)+BASE` 로 뽑히는 적(포트 `battle.random`).
+        self.pending_random: list[dict] = []
         self.battle_emitted = False
         # 조건 분기별로 (요구 조건, 스텝들) 을 모은다.
         self.variants: list[tuple[Req, list[dict]]] = [(Req(), [])]
@@ -979,6 +988,19 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
             n, base = int(m.group(1)), int(m.group(2))
             ctx.monsters.extend(base + i for i in range(1, n + 1))
             continue
+        m = LOOP_JOINENEMY_RANDOM.search(s)
+        if m:
+            # `for i := A to B do joinenemy(i, random(N)+BASE)` →
+            # 포트의 `battle.random`(pool/min/max)으로 옮긴다.
+            lo, hi = int(m.group(1)), int(m.group(2))
+            span, base = int(m.group(3)), int(m.group(4))
+            count = hi - lo + 1
+            ctx.pending_random.append({
+                'pool': list(range(base, base + span)),
+                'min': count,
+                'max': count,
+            })
+            continue
         m = LOOP_JOINENEMY.search(s)
         if m:
             n, mid = int(m.group(1)), int(m.group(2))
@@ -987,19 +1009,30 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         m = JOINENEMY.search(s)
         if m:
             mid = m.group(2).strip()
+            idx = m.group(1).strip()
             if mid.isdigit():
                 count = 1
-                if m.group(1).strip() == 'i':
+                if idx == 'i':
                     count = ctx.enemy_count or 1
                 ctx.monsters.extend([int(mid)] * count)
             else:
-                ctx.note(f'적 배치(계산식): joinenemy({m.group(1)}, {mid})')
+                rm = re.match(r'random\((\d+)\)\s*\+\s*(\d+)$', mid, re.I)
+                if rm:
+                    # 무작위 자리 배치 → 같은 종류를 한 마리 넣는다.
+                    ctx.monsters.append(int(rm.group(2)) + 1)
+                else:
+                    ctx.note(f'적 배치(계산식): joinenemy({idx}, {mid})')
             continue
         m = BATTLE_TRIGGER.search(s)
         if m:
-            if ctx.monsters:
-                ctx.add_step({'battle': {'monsters': list(ctx.monsters)}})
+            if ctx.monsters or ctx.pending_random:
+                battle = {'monsters': list(ctx.monsters)}
+                if ctx.pending_random:
+                    r = ctx.pending_random[0]
+                    battle['random'] = r
+                ctx.add_step({'battle': battle})
                 ctx.monsters = []
+                ctx.pending_random = []
                 ctx.battle_emitted = True
             continue
         # ── 동료 영입 ───────────────────────────────────────

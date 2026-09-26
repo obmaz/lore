@@ -109,8 +109,9 @@ void main() {
       expect(run!.hasPendingChoice, isTrue);
       expect(run.pendingChoice!.length, 3);
       expect(run.pendingChoice!.first, '좋소, 같이 모험을 합시다');
-      // 전투 전 안내 메시지가 누적되어 있다
-      expect(run.outcome.messages.length, 2);
+      // 원작 `Print` 줄 수만큼 안내 메시지가 누적된다(마주침 + Rigel의 말)
+      expect(run.outcome.messages.length, 8);
+      expect(run.outcome.messages.first, contains('몸을 가누지'));
 
       // 1번 선택지: "식량과 치료는 해결해 주겠소" → 식량 -5 + 합류
       final after = run.choose(1);
@@ -119,14 +120,14 @@ void main() {
       expect(after.outcome.recruits.single.key, 'rigel');
       expect(LoreJoin.byKey('rigel')!.hp, 1); // 원작과 동일한 빈사 상태
 
-      // 2번 선택지(거절)는 합류하지 않는다
+      // 2번 선택지(거절)는 합류하지 않는다(원작도 아무 말 없이 빠져나간다)
       LoreScriptEngine.instance.resetForTest();
       await LoreScriptEngine.instance.load();
-      final decline = LoreScriptEngine.instance
-          .startTalk(12, 12, 48, noCtx)!
-          .choose(2);
+      final base = LoreScriptEngine.instance.startTalk(12, 12, 48, noCtx)!;
+      final decline = base.choose(2);
       expect(decline.outcome.recruits, isEmpty);
-      expect(decline.outcome.messages.last, contains('어쩔수 없군'));
+      // 거절은 안내 문구를 더하지 않는다(원작에 문구가 없다)
+      expect(decline.outcome.messages.length, base.outcome.messages.length);
     });
 
     test('4. require 조건에 따라 다른 스크립트가 선택된다 (Red Antares)', () async {
@@ -151,9 +152,12 @@ void main() {
     test('5. ESP 조건 미충족 시 안내 스크립트가 나온다 (Spica)', () async {
       await LoreScriptEngine.instance.load();
 
-      // 독심술 미사용 → 마음을 읽을 수 없다는 안내
+      // 독심술 미사용 → 마음을 읽을 수 없다는 안내(원작 문구 그대로)
       final cannot = LoreScriptEngine.instance.startTalk(18, 37, 31, noCtx)!;
-      expect(cannot.outcome.messages.first, contains('나의 마음을 끌어낼수는 없습니다'));
+      expect(
+        cannot.outcome.messages.join(''),
+        contains('나의 마음을 끌어낼수는 없습니'),
+      );
       expect(cannot.hasPendingChoice, isFalse);
 
       // 독심술 사용 + 초능력 Lv.5 → 합류 선택지
@@ -505,7 +509,7 @@ void main() {
         20,
         const ScriptContext(flags: {'sealPuzzleA'}),
       )!;
-      expect(blocked.outcome.messages.single, contains('봉인'));
+      expect(blocked.outcome.messages.join(''), contains('라바 게이트를 열수가 없다'));
       final nudge = blocked.outcome.nudges.single;
       expect(nudge.dy, 1); // 원작 `inc(y)`
       // 두 퍼즐을 모두 풀면 문이 열린다 → 더 이상 막히지 않는다.

@@ -555,19 +555,55 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     옮긴 쪽이 **모두** 포함하면 그 좌표는 옮긴 쪽으로 대체하고, 손으로 쓴 항목은
     `"disabled": true` 로 꺼 둔다(지우지 않으므로 다시 병합해도 결과가 같다).
   - 포함하지 못하면 손으로 쓴 쪽을 그대로 실행하고 옮긴 쪽은 문구 보관용으로만
-    넣는다(`disabled`). 현재 249개 중 **21개 좌표가 대체**, 나머지는 보관 상태다.
+    넣는다(`disabled`). 현재 249개 중 **31개 좌표가 대체**, 나머지는 보관 상태다.
+  - 대체 판정: 효과 종류, `flag 이름: …`, `전투 구성: …`, `require 플래그: …` 를
+    옮긴 쪽이 모두 포함해야 하고, **옮긴 쪽에 `disabled` 항목이 하나라도 있으면
+    대체하지 않는다**(조건을 못 옮긴 채로 바꾸면 동작이 망가진다).
+  - 무작위 적(`for i := 3 to 7 do joinenemy(i, random(3)+30)`)는 포트의
+    `battle.random`(`pool`/`min`/`max`)으로 옮기고, 전투 구성 비교에 `pool` 도 넣는다.
   - 실행할 수 없는 조건(`not (odd(...) and ...)`, `enemy[i].dead` 등)도 꺼 둔다.
   - `--spec` 은 이전에 생성해 넣은 `spec-*` 항목을 먼저 걷어내므로 **멱등**하다.
 * 포트에 이미 이름이 붙은 상태 비트는 같은 이름으로 옮긴다
-  (`ETC_FLAG_ALIAS`: `etc[16] bit1`→`ancientEvilMet`, `etc[50] bit5`→`menaceInfoGiven`,
-  `etc[45] bit7/8`→`lavaLeverLeft/RightPulled` 등 15개). 나머지는 `etcN_bitM`.
+  (`ETC_FLAG_ALIAS` 27개: `etc[16] b1`→`ancientEvilMet`, `etc[50] b5`→`menaceInfoGiven`,
+  `etc[45] b7/8`→`lavaLeverLeft/RightPulled`,
+  `etc[41] b1..b4`→`den7Maze/Dragons/Mudmen/MinotaurCleared`,
+  `etc[44] b1/b2`→`frostDragonDefeated`/`dungeonOfEvilCleared`,
+  `etc[50] b4`→`weaponRoomVisited` 등). 나머지는 `etcN_bitM`.
+  퀘스트 단계가 곧 격퇴 플래그인 자리도 있다(`QUEST_FLAG`: `gaia 2`→`goldenSealFound`,
+  `water 2/4`→`bossHidraDefeated`/`bossHugeDragonDefeated`,
+  `lastditch 2`→`bossMajorMummyDefeated`).
 * 원작 퀴즈(`i := random(8); case i of ... end; if i < 4 then ... else ...`)는
   포트의 `randomSteps` 8분기(문항 + 정답 여부에 따른 지도 변화)로 옮긴다.
-* 남은 활성화 과제: 옮긴 쪽이 아직 **전투 제목**(`battle.title`)·다단계 보스
-  (`enemy[i].dead` 재소환)·`require`에 쓰이는 자체 이름 플래그(`goldenSealFound`,
-  `oedipusSpearTaken`, `mummyRoomCleared` 등)를 표현하지 못해 약 30개 좌표는 손으로
-  쓴 스크립트가 먼저 실행된다. 해당 부분을 생성기에 추가하면 `--replace-ok` 로 넓힐
-  수 있다(`--spec` 로그의 `덧붙임` 항목이 목록).
+* 남은 활성화 과제: 옮긴 쪽이 아직 **다단계 보스**(`enemy[i].dead` 재소환)·
+  `require`에 쓰이는 자체 이름 플래그(`oedipusSpearTaken`, `mummyRoomCleared` 등)·
+  `randomFlag` 짝 조건(`not odd(party.etc[40])`)을 표현하지 못해 약 24개 좌표는 손으로
+  쓴 스크립트가 먼저 실행된다. `--spec` 로그의 `덧붙임` 항목이 목록이다
+  (해당 좌표의 문구 자체는 아래 7.3.1 로 원문에 맞춰 두었다).
+
+#### 7.3.1 역방향 감사 — 포트에만 있는 문구 걷어내기(2026-09)
+
+`python3 tool/audit_messages.py` 는 **원작 → 포트**(원작 문구가 다 있는가)만 본다.
+반대 방향은 `python3 tool/audit_invented.py` 가 본다.
+
+* 원작 `.PAS` 의 문자열 리터럴을 전부 모아 두고, 포트의 `say`/`choice`/`title`
+  문구를 **원작 리터럴을 이어붙여 덮을 수 있는지** DP 로 검사한다(원작은 한 문장을
+  `Print` 여러 줄로 쪼개므로 공백을 무시하고 이어 붙인다). 덮이지 않는 조각이 남으면
+  그 문구는 원작에 없는 문구다.
+* 검사 대상은 기본이 **활성 항목**이다(`disabled` 는 원문 보관용이므로 `--all`).
+* `python3 tool/fix_invented_text.py --dry|--write` 로 바로잡는다.
+  - 원작에 같은 자리 문구가 있으면 **원작 `Print` 줄 그대로** 되돌리고,
+  - 원작에 문구가 아예 없으면 지운다(예: 함정 문구, 층 이동 문구, 보스 등장 문구).
+  - 전투 제목(`battle.title`)은 원작 `Displayenemies` 를 대신하는 한 줄이므로
+    **원작 이름**(원작이 `name :=` 로 붙인 이름 → 없으면 원작 적 데이터 이름)으로
+    맞춘다. 붙일 이름이 없으면 제목을 없앤다.
+* 이번 회차 결과(활성 문구 1150개): 남은 미일치 조각은 33개(1글자까지)이고, 의미
+  있는 것은 포트 UI 인 `취소`(선택지 취소 버튼)와 `den7-quiz` 의 `정답이다!/오답이다!`
+  (원작의 미로 길 선택을 선택지로 바꾼 자리의 조작 피드백) 뿐이다. 나머지는 원작이
+  변수(적/동료 이름)를 끼워 넣은 자리에 포트가 값을 바로 적어 넣으면서 생기는
+  1~2글자 경계 차이다.
+* 함께 고친 것: **대사가 줄어들어 있던 동료 영입 대사**(Rigel · Red Antares · Spica ·
+  Draconian — 원작 대사의 문장 일부가 빠져 있었다), 원작의 오타(`전념`→원문 `전염`),
+  원작이 백틱(`` ` ``)을 쓴 자리의 인용부호, 원작 `m[1]`/`m[2]` 를 그대로 쓴 선택지.
 
 * 자동 추출: `python3 tool/export_lore_talk.py --report` (수동 필요 목록은
   `tool/lore_talk_report.txt`), `--emit <파일>`로 talk 스크립트 생성.

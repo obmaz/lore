@@ -81,6 +81,10 @@ def effect_detail(entry):
         b = st.get('battle')
         if isinstance(b, dict):
             monsters.extend(b.get('monsters', []))
+            # `random` 으로 뽑히는 후보도 전투 구성의 일부로 본다.
+            rnd = b.get('random')
+            if isinstance(rnd, dict):
+                monsters.extend(rnd.get('pool', []))
             if b.get('title'):
                 has_title = True
 
