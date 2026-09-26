@@ -665,12 +665,30 @@ class BattleEngine {
       // 돌, 세균, 무기 염력 공격
       final dmg = k * 10;
       target.hp = max(0, target.hp - dmg);
-      if (target.hp <= 0) {
+      if (target.isUnconscious && !target.isDead) {
+        target.isDead = true;
+        final exp = calculateExperience(target);
+        _awardExecutionExperience(caster, exp, party);
+        return AttackResult(
+          outcome: AttackOutcome.killed,
+          damage: dmg,
+          expGained: exp,
+          message:
+              '${target.name}을(를) 염력으로 처형했다! '
+              '(${_executionExperienceMessage(caster, exp, party)})',
+        );
+      }
+      if (target.hp == 0 && !target.isUnconscious) {
         target.isUnconscious = true;
+        final exp = calculateExperience(target);
+        caster.experience += exp;
         return AttackResult(
           outcome: AttackOutcome.unconscious,
           damage: dmg,
-          message: '주위의 돌들이 날아올라 ${target.name}을(를) 강타했다! ($dmg 피해, 기절)',
+          expGained: exp,
+          message:
+              '주위의 돌들이 날아올라 ${target.name}을(를) 강타했다! '
+              '($dmg 피해, 기절, 경험치 +$exp)',
         );
       }
       return AttackResult(

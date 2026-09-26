@@ -149,6 +149,33 @@ void main() {
       expect(ally.experience, beforeAlly + 182);
     });
 
+    test('염력 1~6단계는 첫 기절과 처형에 각각 원본 경험치 분기를 적용한다', () {
+      final engine = BattleEngine(random: DeterministicRandom([0]));
+      final caster = PartyMember.createPreset(2)
+        ..espLevel = 1
+        ..esp = 40;
+      final ally = PartyMember.createPreset(1);
+      final party = [caster, ally];
+      final beforeCaster = caster.experience;
+      final beforeAlly = ally.experience;
+      final orc = Monster.create(1);
+
+      final knockout = engine.executePlayerESP(caster, orc, 45, party);
+      expect(knockout.outcome, AttackOutcome.unconscious);
+      expect(knockout.expGained, 1);
+      expect(orc.isUnconscious, isTrue);
+      expect(caster.experience, beforeCaster + 1);
+      expect(ally.experience, beforeAlly);
+
+      final execution = engine.executePlayerESP(caster, orc, 45, party);
+      expect(execution.outcome, AttackOutcome.killed);
+      expect(execution.expGained, 1);
+      expect(orc.isDead, isTrue);
+      expect(caster.experience, beforeCaster + 2);
+      expect(ally.experience, beforeAlly + 1);
+      expect(caster.esp, 0);
+    });
+
     test('2. 플레이어 무기 공격 명중 및 대미지 공식 검증', () {
       // 주사위: [명중(0: 0 <= accArms), 분산(0: 분산감소 0%), 저항(99: 저항 실패), 방어차감 난수(0: +1/10)]
       final mockRandom = DeterministicRandom([0, 0, 99, 0]);

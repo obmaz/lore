@@ -80,5 +80,9 @@
    계산·소모하고, 중간에 SP가 부족하면 남은 적은 공격받지 않는다. 의식불명
    적의 처형은 SP 없이 실행되도록 하고 선택창에 대상별 비용을 표시한다.
    커밋: `Charge all-target magic per conscious enemy`.
+   `BattleESP` 염력 1~6단계는 적을 처음 의식불명으로 만들면 시전자에게,
+   이미 의식불명인 적을 처형하면 행동 가능한 일행 전원에게 경험치를 준다.
+   같은 적을 두 번 공격하는 시나리오로 보상과 ESP 소모를 검증했다.
+   커밋: `Award battle experience for telekinetic knockouts`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
