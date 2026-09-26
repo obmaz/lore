@@ -7282,6 +7282,431 @@
       ],
       "trigger": "talk",
       "once": false
+    },
+    {
+      "id": "enter-6-castle-gate",
+      "trigger": "enter",
+      "map": 6,
+      "steps": [
+        {
+          "setTile": {
+            "map": 6,
+            "x": 49,
+            "y": 52,
+            "tile": 47
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 50,
+            "y": 52,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 51,
+            "y": 52,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 52,
+            "y": 52,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 53,
+            "y": 52,
+            "tile": 47
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 49,
+            "y": 53,
+            "tile": 47
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 50,
+            "y": 53,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 51,
+            "y": 53,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 52,
+            "y": 53,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "map": 6,
+            "x": 53,
+            "y": 53,
+            "tile": 45
+          }
+        },
+        {
+          "setTileArea": {
+            "map": 6,
+            "xMin": 49,
+            "xMax": 53,
+            "yMin": 88,
+            "yMax": 88,
+            "tile": 44
+          }
+        }
+      ]
+    },
+    {
+      "id": "enter-7-polaris-tile",
+      "trigger": "enter",
+      "map": 7,
+      "require": {
+        "flag": "polarisJoined"
+      },
+      "steps": [
+        {
+          "setTile": {
+            "map": 7,
+            "x": 37,
+            "y": 41,
+            "tile": 44
+          }
+        }
+      ]
+    },
+    {
+      "id": "enter-10-hunter-tile",
+      "trigger": "enter",
+      "map": 10,
+      "require": {
+        "flag": "loreHunterJoined"
+      },
+      "steps": [
+        {
+          "setTile": {
+            "map": 10,
+            "x": 40,
+            "y": 56,
+            "tile": 44
+          }
+        }
+      ]
+    },
+    {
+      "id": "enter-16-hunter-tile",
+      "trigger": "enter",
+      "map": 16,
+      "require": {
+        "flag": "loreHunterJoined"
+      },
+      "steps": [
+        {
+          "setTile": {
+            "map": 16,
+            "x": 40,
+            "y": 56,
+            "tile": 44
+          }
+        }
+      ]
+    },
+    {
+      "id": "enter-11-pyramid",
+      "trigger": "enter",
+      "map": 11,
+      "require": {
+        "quest": {
+          "name": "lastditch",
+          "gte": 2
+        }
+      },
+      "steps": [
+        {
+          "setTile": {
+            "map": 11,
+            "x": 25,
+            "y": 44,
+            "tile": 50
+          }
+        },
+        {
+          "setTile": {
+            "map": 11,
+            "x": 26,
+            "y": 44,
+            "tile": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": "enter-12-evilseal",
+      "trigger": "enter",
+      "map": 12,
+      "require": {
+        "quest": {
+          "name": "gaia",
+          "gte": 2
+        }
+      },
+      "steps": [
+        {
+          "setTile": {
+            "map": 12,
+            "x": 18,
+            "y": 9,
+            "tile": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "enter-24-shelter",
+      "trigger": "enter",
+      "map": 24,
+      "require": {
+        "flag": "programmerMet"
+      },
+      "steps": [
+        {
+          "setTile": {
+            "map": 24,
+            "x": 33,
+            "y": 10,
+            "tile": 47
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-5-23-frostdragon",
+      "trigger": "portal",
+      "map": 5,
+      "require": {
+        "flagNot": "frostDragonDefeated"
+      },
+      "steps": [
+        {
+          "say": " 나는 EVIL CONCENTRATION 성의 입구를 지키는"
+        },
+        {
+          "say": "임무를 맡고 있는 Frost Dragon이다.  내가 지"
+        },
+        {
+          "say": "키고 있는한  너희들은 한 발자국도  들여놓지"
+        },
+        {
+          "say": "않을것이다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              54,
+              54,
+              54,
+              54,
+              54,
+              54,
+              69
+            ],
+            "title": "Frost Dragon",
+            "victoryFlag": "frostDragonDefeated"
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-23-25-dungeon",
+      "trigger": "portal",
+      "map": 23,
+      "require": {
+        "flagNot": "dungeonOfEvilCleared"
+      },
+      "steps": [
+        {
+          "say": " 이 동굴에 들어 가겠다고?"
+        },
+        {
+          "say": " 하!, 우습군. 너희들에게는 여기의 Draconian"
+        },
+        {
+          "say": "족들의 모습이 보이지 않는 모양이군."
+        },
+        {
+          "say": " ArchiDraconian은 마지막에 있는 Draconian"
+        },
+        {
+          "say": "을 발견했다."
+        },
+        {
+          "say": " 아니 너는 누구냐! 감히 Draconian 족이면"
+        },
+        {
+          "say": "서 Necromancer님에게 반기를 들다니... 그"
+        },
+        {
+          "say": "것은 바로 죽음이다. 받아랏!!"
+        },
+        {
+          "battle": {
+            "monsters": [
+              62,
+              62,
+              62,
+              62,
+              62,
+              62,
+              62,
+              70
+            ],
+            "title": "ArchiDraconian",
+            "victoryFlag": "dungeonOfEvilCleared"
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-21-22-lavagate",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "notAllFlags": [
+          "lavaGateKeyLeft",
+          "lavaGateKeyRight"
+        ]
+      },
+      "steps": [
+        {
+          "say": " 라바 게이트는 작동되지 않았다."
+        },
+        {
+          "block": true
+        }
+      ]
+    },
+    {
+      "id": "enter-22-ancient-evil",
+      "trigger": "enter",
+      "map": 22,
+      "require": {
+        "flagNot": "ancientEvilSpeechGiven"
+      },
+      "steps": [
+        {
+          "say": " 역시 당신들은 나의 예상대로 마지막  대륙까"
+        },
+        {
+          "say": "지 무난하게 왔군요. 이번에 가게될 LAVA 대륙"
+        },
+        {
+          "say": "은 이 세계에 있는 모든 대륙중에서 가장 작은"
+        },
+        {
+          "say": "대륙이오. 적의 요새도 또한 2개 밖에 없는 곳"
+        },
+        {
+          "say": "이오. 하지만 이번에 도착할 IMPERIUM MINOR나"
+        },
+        {
+          "say": "마지막으로 거칠 EVIL CONCENTRATION 은 말 그"
+        },
+        {
+          "say": "대로 악의 집결지인 것이오.  거기에는 최강의"
+        },
+        {
+          "say": "괴물들과 Necromancer 의 심복들로 가득차있는"
+        },
+        {
+          "say": "곳이지만 IMPERIUM MINOR의 지하에는 마지막으"
+        },
+        {
+          "say": "로 살아남은 사람들의 도시가 있소. 원래 거기"
+        },
+        {
+          "say": "는 Ancient Evil이 전에 세운 악의 동굴이었지"
+        },
+        {
+          "say": "만 Necromancer의 침략으로 지상의 도시가  함"
+        },
+        {
+          "say": "락되자 그 곳의 사람들은 모두 거기로 피난 했"
+        },
+        {
+          "say": "던 것이고 거기는 Ancient Evil의 영적인 힘으"
+        },
+        {
+          "say": "로 보호되고 있어서 적들이 침략을하지 못하는"
+        },
+        {
+          "say": "이유가 되지요.  그러므로 모든 도움과 물자는"
+        },
+        {
+          "say": "거기서 받도록하시오."
+        },
+        {
+          "say": " 그러면, 나는 당신이 Necromancer와 상대하게"
+        },
+        {
+          "say": "될 때 다시 Ancient Evil과 같이 나타나겠소."
+        },
+        {
+          "battle": {
+            "monsters": [
+              68
+            ],
+            "title": "Ancient Evil",
+            "victoryFlag": "ancientEvilSpeechGiven"
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-25-26-chamber",
+      "trigger": "portal",
+      "map": 25,
+      "steps": [
+        {
+          "say": " 두말이 필요없다. 덤벼라 !!"
+        },
+        {
+          "battle": {
+            "monsters": [
+              63,
+              63,
+              63,
+              63,
+              63,
+              72
+            ],
+            "title": "Necromancer",
+            "victoryFlag": "bossNecromancerDefeated"
+          }
+        }
+      ]
     }
   ]
 }

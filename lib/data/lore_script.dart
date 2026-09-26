@@ -50,6 +50,13 @@ class ScriptRequire {
   /// 퀘스트 단계 조건 (원작 `party.etc[10] = 3` / `< 3`).
   final List<({String name, int? eq, int? lt, int? gte})> quests;
 
+  /// 나열한 플래그가 **모두** 세워졌을 때만 발동한다.
+  final List<String> allFlags;
+
+  /// 나열한 플래그가 **모두** 세워지지 않았을 때만 발동한다
+  /// (원작 `if not (odd(etc[40]) and odd(etc[41])) then`).
+  final List<String> notAllFlags;
+
   const ScriptRequire({
     this.flag,
     this.flagNot,
@@ -58,6 +65,8 @@ class ScriptRequire {
     this.notMindReadOrLowEsp = false,
     this.tileAtPlayerZero = false,
     this.quests = const [],
+    this.allFlags = const [],
+    this.notAllFlags = const [],
   });
 
   factory ScriptRequire.fromJson(Map<String, dynamic>? json) {
@@ -79,6 +88,10 @@ class ScriptRequire {
       notMindReadOrLowEsp: json['notMindReadOrLowEsp'] == true,
       tileAtPlayerZero: json['tileAtPlayerZero'] == true,
       quests: quests,
+      allFlags:
+          (json['allFlags'] as List<dynamic>? ?? const []).cast<String>(),
+      notAllFlags:
+          (json['notAllFlags'] as List<dynamic>? ?? const []).cast<String>(),
     );
   }
 
@@ -148,6 +161,12 @@ class ScriptStep {
   final List<ScriptOption>? options;
   final List<int>? monsters;
   final String? battleTitle;
+
+  /// 전투 **승리 시** 설정할 플래그 (원작 `if party.etc[6] = 0 then party.etc[..] or bit`).
+  final List<String> battleVictoryFlags;
+
+  /// 진행을 취소한다 (원작 `exit` - 예: 라바 게이트가 열리지 않았을 때).
+  final bool block;
 
   /// teleport 스텝 (강제 이동) - map이 null이면 현재 맵.
   final int? teleportMap;
@@ -224,6 +243,8 @@ class ScriptStep {
     this.options,
     this.monsters,
     this.battleTitle,
+    this.battleVictoryFlags = const [],
+    this.block = false,
     this.teleportMap,
     this.tileX,
     this.tileY,
@@ -317,6 +338,12 @@ class ScriptOutcome {
   final List<int> battleMonsters;
   final String? battleTitle;
 
+  /// 전투 승리 시 설정할 플래그.
+  final List<String> battleVictoryFlags;
+
+  /// 이동/진입을 취소할지 여부 (원작 `exit`).
+  final bool blockMove;
+
   /// 강제 이동 목적지 (없으면 null).
   final int? teleportMap;
   final int? teleportX;
@@ -376,6 +403,8 @@ class ScriptOutcome {
     this.recruits = const [],
     this.battleMonsters = const [],
     this.battleTitle,
+    this.battleVictoryFlags = const [],
+    this.blockMove = false,
     this.teleportMap,
     this.teleportX,
     this.teleportY,
@@ -508,6 +537,17 @@ class LoreScriptEngine {
     if (s == null) return null;
     return _start(s, ctx);
   }
+  /// id 로 지정한 스크립트를 실행한다(포털의 `script` 필드 등).
+  ScriptRun? startById(String id, ScriptContext ctx) {
+    for (final s in _scripts) {
+      if (s.id != id) continue;
+      if (!_meets(s.require, ctx)) return null;
+      if (s.once && consumedScripts.contains(s.id)) return null;
+      return _start(s, ctx);
+    }
+    return null;
+  }
+
   /// `enter` 트리거 (원작 LOREENT.PAS `entermode` - 맵 진입 연출).
   ///
   /// 좌표 대신 맵 단위로 발동하며, 조건을 만족하는 첫 스크립트 하나만 실행한다.
@@ -563,6 +603,8 @@ class LoreScriptEngine {
         >.from(acc.tileAreas);
     var playerTiles = List<({int tile, int? ifZero})>.from(acc.playerTiles);
     var nudges = List<({int dx, int dy})>.from(acc.nudges);
+    var battleVictory = List<String>.from(acc.battleVictoryFlags);
+    var blockMove = acc.blockMove;
     var equips =
         List<
           ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
@@ -613,6 +655,7 @@ class LoreScriptEngine {
             }
           }
           battleTitle = step.battleTitle;
+          battleVictory.addAll(step.battleVictoryFlags);
           break;
         case 'teleport':
           teleportMap = step.teleportMap;
@@ -623,6 +666,9 @@ class LoreScriptEngine {
           break;
         case 'torch':
           torchLit = true;
+          break;
+        case 'block':
+          blockMove = true;
           break;
         case 'questStep':
           questChanges.add((
@@ -694,6 +740,8 @@ class LoreScriptEngine {
               recruits: recruits,
               battleMonsters: monsters,
               battleTitle: battleTitle,
+              battleVictoryFlags: List<String>.from(battleVictory),
+              blockMove: blockMove,
               teleportMap: teleportMap,
               teleportX: teleportX,
               teleportY: teleportY,
@@ -728,6 +776,8 @@ class LoreScriptEngine {
         recruits: recruits,
         battleMonsters: monsters,
         battleTitle: battleTitle,
+        battleVictoryFlags: battleVictory,
+        blockMove: blockMove,
         teleportMap: teleportMap,
         teleportX: teleportX,
         teleportY: teleportY,
@@ -753,6 +803,14 @@ class LoreScriptEngine {
     if (r.minEspLevel != null && ctx.maxEspLevel < r.minEspLevel!) return false;
     // 원작 `if map[x,y] = 0 then ...` 같은 밟은 타일 판정.
     if (r.tileAtPlayerZero && ctx.tileAtPlayer != 0) return false;
+    if (r.allFlags.isNotEmpty &&
+        !r.allFlags.every((f) => ctx.flags.contains(f))) {
+      return false;
+    }
+    if (r.notAllFlags.isNotEmpty &&
+        r.notAllFlags.every((f) => ctx.flags.contains(f))) {
+      return false;
+    }
     // 원작 `case party.etc[10] of 3 : ...` 같은 퀘스트 단계 판정.
     for (final q in r.quests) {
       final value = ctx.questSteps[q.name] ?? 0;
@@ -829,6 +887,12 @@ class LoreScriptEngine {
             teleportKeepX: t['keepX'] == true,
             teleportKeepY: t['keepY'] == true,
           ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('block')) {
+        steps.add(
+          ScriptStep(kind: 'block', block: m['block'] == true),
         );
         matched = true;
       }
@@ -951,6 +1015,11 @@ class LoreScriptEngine {
             kind: 'battle',
             monsters: (b['monsters'] as List<dynamic>? ?? const []).cast<int>(),
             battleTitle: b['title'] as String?,
+            battleVictoryFlags: switch (b['victoryFlag']) {
+              final String s => [s],
+              final List<dynamic> list => list.cast<String>(),
+              _ => const <String>[],
+            },
             randomPool: (random?['pool'] as List<dynamic>?)?.cast<int>(),
             randomMin: random?['min'] as int?,
             randomMax: random?['max'] as int?,

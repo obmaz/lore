@@ -30,10 +30,12 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 230);
+      expect(LoreScriptEngine.instance.scripts.length, 242);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
+        'enter', // 원작 LOREENT.PAS entermode (맵 진입 연출)
+        'portal', // 진입 전 판정(라바 게이트/수문장 전투)
       });
     });
 

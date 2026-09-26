@@ -71,6 +71,25 @@ class LoreDialogueManager {
   bool loreChallengeBlessed = false;
   bool programmerMet = false;
 
+  /// 원작 `LORENT.PAS`/`LORESPEC.PAS` 후반부 상태 비트.
+  ///
+  ///  - `frostDragonDefeated`      = etc[44] bit1 (EVIL CONCENTRATION 입구 수문장)
+  ///  - `dungeonOfEvilCleared`     = etc[44] bit2 (DUNGEON OF EVIL 입구 수문장)
+  ///  - `ancientEvilSpeechGiven`   = etc[42] bit7 (IMPERIUM MINOR 입구 연출)
+  ///  - `swampKeepBossDefeated`    = etc[42] bit1 (SWAMP KEEP 출구 전투)
+  ///  - `evilShelterBossDefeated`  = etc[43] bit3 (LAST SHELTER 출구 전투)
+  ///  - `lavaGateKeyLeft/Right`    = etc[40]/etc[41] 홀수(라바 게이트 봉인 해제)
+  ///  - `lavaLeverLeft/RightPulled`= etc[45] bit7/bit8 (맵 25 레버)
+  bool frostDragonDefeated = false;
+  bool dungeonOfEvilCleared = false;
+  bool ancientEvilSpeechGiven = false;
+  bool swampKeepBossDefeated = false;
+  bool evilShelterBossDefeated = false;
+  bool lavaGateKeyLeft = false;
+  bool lavaGateKeyRight = false;
+  bool lavaLeverLeftPulled = false;
+  bool lavaLeverRightPulled = false;
+
   /// 원작 `LOREBATT.PAS:245 CastSpecial` - 특수 마법 미습득 시 문구.
   static const String specialMagicLockedMessage = '당신에게는 아직 능력이 없다.';
 
@@ -180,6 +199,15 @@ class LoreDialogueManager {
     'loreChallengeAccepted': loreChallengeAccepted,
     'loreChallengeBlessed': loreChallengeBlessed,
     'programmerMet': programmerMet,
+    'frostDragonDefeated': frostDragonDefeated,
+    'dungeonOfEvilCleared': dungeonOfEvilCleared,
+    'ancientEvilSpeechGiven': ancientEvilSpeechGiven,
+    'swampKeepBossDefeated': swampKeepBossDefeated,
+    'evilShelterBossDefeated': evilShelterBossDefeated,
+    'lavaGateKeyLeft': lavaGateKeyLeft,
+    'lavaGateKeyRight': lavaGateKeyRight,
+    'lavaLeverLeftPulled': lavaLeverLeftPulled,
+    'lavaLeverRightPulled': lavaLeverRightPulled,
     // 1회성 보물 좌표(원작 party.etc 비트)는 불리언 플래그로 직렬화한다.
     for (final key in collectedTreasures) key: true,
   };
@@ -212,6 +240,15 @@ class LoreDialogueManager {
     'loreChallengeAccepted': loreChallengeAccepted,
     'loreChallengeBlessed': loreChallengeBlessed,
     'programmerMet': programmerMet,
+    'frostDragonDefeated': frostDragonDefeated,
+    'dungeonOfEvilCleared': dungeonOfEvilCleared,
+    'ancientEvilSpeechGiven': ancientEvilSpeechGiven,
+    'swampKeepBossDefeated': swampKeepBossDefeated,
+    'evilShelterBossDefeated': evilShelterBossDefeated,
+    'lavaGateKeyLeft': lavaGateKeyLeft,
+    'lavaGateKeyRight': lavaGateKeyRight,
+    'lavaLeverLeftPulled': lavaLeverLeftPulled,
+    'lavaLeverRightPulled': lavaLeverRightPulled,
     for (final key in collectedTreasures) key: true,
   };
 
@@ -257,6 +294,15 @@ class LoreDialogueManager {
     loreChallengeAccepted = flags['loreChallengeAccepted'] == true;
     loreChallengeBlessed = flags['loreChallengeBlessed'] == true;
     programmerMet = flags['programmerMet'] == true;
+    frostDragonDefeated = flags['frostDragonDefeated'] == true;
+    dungeonOfEvilCleared = flags['dungeonOfEvilCleared'] == true;
+    ancientEvilSpeechGiven = flags['ancientEvilSpeechGiven'] == true;
+    swampKeepBossDefeated = flags['swampKeepBossDefeated'] == true;
+    evilShelterBossDefeated = flags['evilShelterBossDefeated'] == true;
+    lavaGateKeyLeft = flags['lavaGateKeyLeft'] == true;
+    lavaGateKeyRight = flags['lavaGateKeyRight'] == true;
+    lavaLeverLeftPulled = flags['lavaLeverLeftPulled'] == true;
+    lavaLeverRightPulled = flags['lavaLeverRightPulled'] == true;
     collectedTreasures
       ..clear()
       ..addAll(flags.keys.where((k) => k.startsWith('gold:')));
@@ -373,6 +419,24 @@ class LoreDialogueManager {
         loreChallengeBlessed = value;
       case 'programmerMet':
         programmerMet = value;
+      case 'frostDragonDefeated':
+        frostDragonDefeated = value;
+      case 'dungeonOfEvilCleared':
+        dungeonOfEvilCleared = value;
+      case 'ancientEvilSpeechGiven':
+        ancientEvilSpeechGiven = value;
+      case 'swampKeepBossDefeated':
+        swampKeepBossDefeated = value;
+      case 'evilShelterBossDefeated':
+        evilShelterBossDefeated = value;
+      case 'lavaGateKeyLeft':
+        lavaGateKeyLeft = value;
+      case 'lavaGateKeyRight':
+        lavaGateKeyRight = value;
+      case 'lavaLeverLeftPulled':
+        lavaLeverLeftPulled = value;
+      case 'lavaLeverRightPulled':
+        lavaLeverRightPulled = value;
     }
   }
 

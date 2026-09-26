@@ -30,11 +30,15 @@ class PortalInfo {
   final int targetY;
   final String name;
 
+  /// 진입 **전에** 실행할 스크립트 id (원작 LOREENT.PAS 의 수문장 전투/판정).
+  final String? scriptId;
+
   const PortalInfo({
     required this.targetMapId,
     required this.targetX,
     required this.targetY,
     required this.name,
+    this.scriptId,
   });
 }
 
@@ -368,8 +372,27 @@ class LoreWorldManager {
     return null;
   }
 
-  /// LOREENT.PAS sign 프로시저 기반 표지판/푯말 메시지
+  /// 원작 `LOREENT.PAS:440` 맵 12 의 **동적** 퐷말 문구.
+  ///
+  /// 미로의 문 번호는 원작에서 플레이어 좌표로 계산해 출력하므로 JSON 에 담을
+  /// 수 없다(`j := (x+x1-6) div 7 + 12` / `j := (x+x1-3) div 5 + 2`).
+  String? _dynamicSignMessage(int mapId, int x, int y) {
+    if (mapId != 12) return null;
+    if (y == 56) {
+      final number = (x - 6) ~/ 7 + 12;
+      return "퐷말에 쓰여있기로 ...\n           문의 번호는 '$number'";
+    }
+    if (y == 29) {
+      final number = (x - 3) ~/ 5 + 2;
+      return "퐷말에 쓰여있기로 ...\n           패스코드는 '$number'";
+    }
+    return null;
+  }
+
+  /// LOREENT.PAS sign 프로시저 기반 표지판/퐷말 메시지
   String? getSignMessage(int mapId, int x, int y) {
+    final dynamicText = _dynamicSignMessage(mapId, x, y);
+    if (dynamicText != null) return dynamicText;
     // 1순위: 좌표가 정확히 일치하는 JSON 규칙
     for (final rule in _signRules) {
       if (rule.mapDefault) continue;
@@ -384,44 +407,57 @@ class LoreWorldManager {
     // JSON이 로드되었다면 JSON이 단일 소스이므로 내장 규칙은 쓰지 않는다.
     if (usingJsonRules) return null;
     if (mapId == 2) {
-      if (x == 31 && y == 44) return '푯말: WIVERN 가는길';
-      if ((x == 29 && y == 50) || (x == 35 && y == 72)) {
-        return '푯말: 북쪽: VALIANT PEOPLES 가는길 / 남쪽: GAIA TERRA 가는길';
-      }
-      if (x == 44 && y == 77) {
-        return '푯말: 북동쪽: QUAKE 가는길 / 남서쪽: GAIA TERRA 가는길';
-      }
+      if (x == 31 && y == 44) { return '푯말에 쓰여있기로 ...\n          WIVERN 가는길'; }
+      if (x == 29 && y == 50) { return '푯말에 쓰여있기로 ...\n  북쪽 :\n       VALIANT PEOPLES 가는길\n  남쪽 :\n       GAIA TERRA 가는길'; }
+      if (x == 35 && y == 72) { return '푯말에 쓰여있기로 ...\n  북쪽 :\n       VALIANT PEOPLES 가는길\n  남쪽 :\n       GAIA TERRA 가는길'; }
+      if (x == 44 && y == 77) { return '푯말에 쓰여있기로 ...\n  북동쪽 :\n       QUAKE 가는길\n  남서쪽 :\n       GAIA TERRA 가는길'; }
     }
     if (mapId == 6) {
-      if (x == 51 && y == 84) {
-        return "푯말: '여기는 CASTLE LORE 성. 여러분을 환영합니다.' - Lord Ahn";
-      }
-      if (x == 24 && y == 31) {
-        return "푯말: '여기는 LORE 주점. 여러분 모두를 환영합니다 !!'";
-      }
-      if (x == 51 && y == 18 || x == 52 && y == 18) {
-        return "푯말: 'LORE 왕립 죄수 수용소 - 면회 사절'";
-      }
+      if (x == 51 && y == 84) { return '푯말에 쓰여있기로 ...\n       여기는 `CASTLE LORE\'성\n         여러분을 환영합니다'; }
+      if (x == 24 && y == 31) { return '푯말에 쓰여있기로 ...\n             여기는 LORE 주점\n       여러분 모두를 환영합니다 !!'; }
+      if (x == 51 && y == 18) { return '푯말에 쓰여있기로 ...\n          LORE 왕립  죄수 수용소'; }
+      if (x == 52 && y == 18) { return '푯말에 쓰여있기로 ...\n          LORE 왕립  죄수 수용소'; }
     }
     if (mapId == 7) {
-      if (x == 39 && y == 68) return "푯말: '여기는 LASTDITCH. 여러분을 환영합니다.'";
-      if (x == 39 && y == 8) return "푯말: '여기는 PYRAMID의 입구'";
-      if (x == 54 && y == 9) return "푯말: '여기는 GROUND GATE의 입구'";
+      if (x == 39 && y == 68) { return '푯말에 쓰여있기로 ...\n        여기는 `LASTDITCH\'성\n         여러분을 환영합니다'; }
+      if (x == 39 && y == 8) { return '푯말에 쓰여있기로 ...\n       여기는 PYRAMID 의 입구'; }
+      if (x == 54 && y == 9) { return '푯말에 쓰여있기로 ...\n     여기는 GROUND GATE 의 입구'; }
     }
     if (mapId == 8) {
-      if (x == 39 && y == 67) {
-        return "푯말: '여기는 VALIANT PEOPLES. 용사의 영혼은 대륙을 지킨다.'";
-      }
+      if (x == 39 && y == 67) { return '푯말에 쓰여있기로 ...\n      여기는`VALIANT PEOPLES\'성\n    우리의 미덕은 굽히지 않는 용기\n   우리는 어떤 악에도 굽히지 않는다'; }
+      return '푯말에 쓰여있기로 ...\n     여기는 EVIL SEAL 의 입구';
     }
     if (mapId == 9) {
-      if (x == 24 && y == 26) return "푯말: '여기는 거인의 안식처 입구'";
-      return "푯말: '여기는 GAIA TERRA. 여러분을 환영합니다.'";
+      if (x == 24 && y == 26) { return '푯말에 쓰여있기로 ...\n       여기는 국왕의 보물 창고'; }
+      return '푯말에 쓰여있기로 ...\n         여기는 `GAIA TERRA\'성\n          여러분을 환영합니다';
     }
     if (mapId == 12) {
-      if (x == 24 && y == 68) return "벽에 적힌 글: 'X 는 7'";
-      if (x == 27 && y == 68) return "벽에 적힌 글: 'Y 는 9'";
-      if (x == 25 && y == 63) return "벽에 적힌 글: '첫번째 문의 열쇠는 X + Y'";
-      if (x == 26 && y == 42) return "벽에 적힌 글: 'Z 는 2 * Y + X'";
+      if (x == 24 && y == 68) { return '푯말에 쓰여있기로 ...\n               X 는 7'; }
+      if (x == 27 && y == 68) { return '푯말에 쓰여있기로 ...\n               Y 는 9'; }
+      if (x == 25 && y == 63) { return '푯말에 쓰여있기로 ...\n       바른 문의 번호는 X + Y'; }
+      if (x == 26 && y == 42) { return '푯말에 쓰여있기로 ...\n            Z 는 2 * Y + X'; }
+      if (x == 26 && y == 33) { return '푯말에 쓰여있기로 ...\n        패스코드 x 패스코드 는 Z 라면\n            패스코드는 무엇인가 ?'; }
+    }
+    if (mapId == 15) {
+      if (x == 26 && y == 63) { return '푯말에 쓰여있기로 ...\n            길의 마지막'; }
+      if (x == 22 && y == 15) { return '푯말에 쓰여있기로 ...\n     (12,15) 로 공간이동 하시오'; }
+      if (x == 11 && y == 14) { return '푯말에 쓰여있기로 ...\n     (13,7) 로 공간이동 하시오'; }
+      if (x == 27 && y == 14) { return '푯말에 쓰여있기로 ...\n   황금의 갑옷은 (45,19) 에 숨겨져있음'; }
+      return '푯말에 쓰여있기로 ...';
+    }
+    if (mapId == 17) {
+      if (x == 68 && y == 47) { return '푯말에 쓰여있기로 ...\n    하! 하! 하!  너는 우리에게 속았다'; }
+      if (x == 58 && y == 53) { return '푯말에 쓰여있기로 ...\n      이 게임을 만든 사람\n  : 동아 대학교 전기 공학과\n        92 학번  안 영기'; }
+      if (x == 51 && y == 30) { return '푯말에 쓰여있기로 ...\n       오른쪽 : Hidra 의 보물창고\n       왼  쪽 : Hidra 가 있는 방'; }
+      if (x == 66 && y == 13) { return '푯말에 쓰여있기로 ...\n     일찌감치 이 곳 탐험을 포기해라'; }
+      if (x == 9 && y == 28) { return '푯말에 쓰여있기로 ...\n         위쪽이 진짜 보물창고임'; }
+      return '푯말에 쓰여있기로 ...';
+    }
+    if (mapId == 19) {
+      if (x == 26 && y == 40) { return '푯말에 쓰여있기로 ...\n       이 길을 통과하고자하는 사람은\n     양측의 늪속에 있는 레버를 당기시오'; }
+    }
+    if (mapId == 23) {
+      return '푯말에 쓰여있기로 ...\n      (25,27)에 있는 레버를 움직이면\n          성을 볼수 있을 것이오.\n             제작자 안 영기 씀';
     }
     return null;
   }
@@ -440,6 +476,7 @@ class _PortalRule {
   final int targetX;
   final int targetY;
   final String name;
+  final String? script;
 
   const _PortalRule({
     required this.map,
@@ -453,6 +490,7 @@ class _PortalRule {
     required this.targetX,
     required this.targetY,
     required this.name,
+    this.script,
   });
 
   factory _PortalRule.fromJson(Map<String, dynamic> json) => _PortalRule(
@@ -467,6 +505,7 @@ class _PortalRule {
     targetX: json['targetX'] as int,
     targetY: json['targetY'] as int,
     name: json['name'] as String,
+    script: json['script'] as String?,
   );
 
   PortalInfo? match(int mapId, int px, int py) {
@@ -482,6 +521,7 @@ class _PortalRule {
       targetX: targetX,
       targetY: targetY,
       name: name,
+      scriptId: script,
     );
   }
 }
@@ -556,90 +596,8 @@ class _BuiltInPortal {
 
 // ignore: constant_identifier_names
 const List<_BuiltInPortal> _builtInPortals = [
-  // 마을/던전 진입 (LOREENT.PAS entermode)
-  _BuiltInPortal(
-    1,
-    x: 20,
-    y: 11,
-    targetMap: 6,
-    targetX: 51,
-    targetY: 95,
-    name: 'CASTLE LORE',
-  ),
-  _BuiltInPortal(
-    1,
-    x: 76,
-    y: 57,
-    targetMap: 7,
-    targetX: 37,
-    targetY: 70,
-    name: 'LASTDITCH',
-  ),
-  _BuiltInPortal(
-    1,
-    x: 17,
-    y: 89,
-    targetMap: 14,
-    targetX: 25,
-    targetY: 45,
-    name: 'MENACE',
-  ),
-  _BuiltInPortal(
-    1,
-    x: 20,
-    y: 6,
-    targetMap: 27,
-    targetX: 15,
-    targetY: 45,
-    name: 'ANOTHER LORE',
-  ),
-  _BuiltInPortal(
-    2,
-    x: 19,
-    y: 26,
-    targetMap: 8,
-    targetX: 38,
-    targetY: 70,
-    name: 'VALIANT PEOPLES',
-  ),
-  _BuiltInPortal(
-    2,
-    x: 31,
-    y: 82,
-    targetMap: 9,
-    targetX: 26,
-    targetY: 45,
-    name: 'GAIA TERRA',
-  ),
-  _BuiltInPortal(
-    2,
-    x: 82,
-    y: 47,
-    targetMap: 15,
-    targetX: 25,
-    targetY: 70,
-    name: 'QUAKE',
-  ),
-  _BuiltInPortal(
-    2,
-    x: 44,
-    y: 7,
-    targetMap: 16,
-    targetX: 20,
-    targetY: 35,
-    name: 'WIVERN',
-  ),
-  _BuiltInPortal(
-    6,
-    x: 51,
-    y: 96,
-    targetMap: 1,
-    targetX: 20,
-    targetY: 12,
-    name: 'GROUND FIELD',
-  ),
-
-  // 맵 출구 (LORESPEC.PAS wantexit)
+  // 원작 LOREENT.PAS(진입) / LORESPEC.PAS(출구) 좌표.
+  // `tool/export_lore_ent.py --write` 가 JSON 에서 자동 생성한다.
   _BuiltInPortal(
     6,
     yMin: 96,
@@ -807,6 +765,357 @@ const List<_BuiltInPortal> _builtInPortals = [
     targetX: 20,
     targetY: 8,
     name: 'ANOTHER LORE 출구',
+  ),
+  _BuiltInPortal(
+    1,
+    x: 20,
+    y: 11,
+    targetMap: 6,
+    targetX: 51,
+    targetY: 95,
+    name: 'CASTLE LORE',
+  ),
+  _BuiltInPortal(
+    1,
+    x: 76,
+    y: 57,
+    targetMap: 7,
+    targetX: 37,
+    targetY: 70,
+    name: 'LASTDITCH',
+  ),
+  _BuiltInPortal(
+    1,
+    x: 17,
+    y: 89,
+    targetMap: 14,
+    targetX: 25,
+    targetY: 45,
+    name: 'MENACE',
+  ),
+  _BuiltInPortal(
+    1,
+    x: 20,
+    y: 6,
+    targetMap: 27,
+    targetX: 15,
+    targetY: 45,
+    name: 'ANOTHER LORE',
+  ),
+  _BuiltInPortal(
+    2,
+    x: 19,
+    y: 26,
+    targetMap: 8,
+    targetX: 38,
+    targetY: 70,
+    name: 'VALIANT PEOPLES',
+  ),
+  _BuiltInPortal(
+    2,
+    x: 31,
+    y: 82,
+    targetMap: 9,
+    targetX: 26,
+    targetY: 45,
+    name: 'GAIA TERRA',
+  ),
+  _BuiltInPortal(
+    2,
+    x: 82,
+    y: 47,
+    targetMap: 15,
+    targetX: 25,
+    targetY: 70,
+    name: 'QUAKE',
+  ),
+  _BuiltInPortal(
+    2,
+    x: 44,
+    y: 7,
+    targetMap: 16,
+    targetX: 20,
+    targetY: 35,
+    name: 'WIVERN',
+  ),
+  _BuiltInPortal(
+    3,
+    x: 74,
+    y: 19,
+    targetMap: 10,
+    targetX: 25,
+    targetY: 70,
+    name: 'WATER FIELD',
+  ),
+  _BuiltInPortal(
+    3,
+    x: 23,
+    y: 62,
+    targetMap: 17,
+    targetX: 56,
+    targetY: 94,
+    name: 'NOTICE',
+  ),
+  _BuiltInPortal(
+    3,
+    x: 96,
+    y: 42,
+    targetMap: 18,
+    targetX: 25,
+    targetY: 94,
+    name: 'LOCKUP',
+  ),
+  _BuiltInPortal(
+    4,
+    x: 48,
+    y: 35,
+    targetMap: 21,
+    targetX: 25,
+    targetY: 45,
+    name: 'SWAMP KEEP',
+  ),
+  _BuiltInPortal(
+    4,
+    x: 48,
+    y: 57,
+    targetMap: 19,
+    targetX: 25,
+    targetY: 45,
+    name: 'EVIL GOD',
+  ),
+  _BuiltInPortal(
+    4,
+    x: 82,
+    y: 16,
+    targetMap: 20,
+    targetX: 25,
+    targetY: 95,
+    name: 'MUDDY',
+  ),
+  _BuiltInPortal(
+    5,
+    x: 15,
+    y: 31,
+    targetMap: 22,
+    targetX: 25,
+    targetY: 45,
+    name: 'IMPERIUM MINOR',
+  ),
+  _BuiltInPortal(
+    5,
+    x: 34,
+    y: 14,
+    targetMap: 23,
+    targetX: 25,
+    targetY: 45,
+    name: 'EVIL CONCENTRATION',
+  ),
+  _BuiltInPortal(
+    7,
+    x: 37,
+    y: 6,
+    targetMap: 11,
+    targetX: 25,
+    targetY: 45,
+    name: 'PYRAMID',
+  ),
+  _BuiltInPortal(
+    7,
+    x: 38,
+    y: 6,
+    targetMap: 11,
+    targetX: 25,
+    targetY: 45,
+    name: 'PYRAMID',
+  ),
+  _BuiltInPortal(
+    7,
+    x: 39,
+    y: 6,
+    targetMap: 11,
+    targetX: 25,
+    targetY: 45,
+    name: 'PYRAMID',
+  ),
+  _BuiltInPortal(
+    7,
+    x: 40,
+    y: 6,
+    targetMap: 11,
+    targetX: 25,
+    targetY: 45,
+    name: 'PYRAMID',
+  ),
+  _BuiltInPortal(
+    8,
+    x: 37,
+    y: 6,
+    targetMap: 12,
+    targetX: 25,
+    targetY: 70,
+    name: 'EVIL SEAL',
+  ),
+  _BuiltInPortal(
+    8,
+    x: 38,
+    y: 6,
+    targetMap: 12,
+    targetX: 25,
+    targetY: 70,
+    name: 'EVIL SEAL',
+  ),
+  _BuiltInPortal(
+    8,
+    x: 39,
+    y: 6,
+    targetMap: 12,
+    targetX: 25,
+    targetY: 70,
+    name: 'EVIL SEAL',
+  ),
+  _BuiltInPortal(
+    8,
+    x: 40,
+    y: 6,
+    targetMap: 12,
+    targetX: 25,
+    targetY: 70,
+    name: 'EVIL SEAL',
+  ),
+  _BuiltInPortal(
+    10,
+    x: 25,
+    y: 7,
+    targetMap: 16,
+    targetX: 20,
+    targetY: 9,
+    name: 'WIVERN',
+  ),
+  _BuiltInPortal(
+    10,
+    x: 26,
+    y: 7,
+    targetMap: 16,
+    targetX: 20,
+    targetY: 9,
+    name: 'WIVERN',
+  ),
+  _BuiltInPortal(
+    13,
+    x: 80,
+    y: 67,
+    targetMap: 21,
+    targetX: 25,
+    targetY: 6,
+    name: 'SWAMP KEEP',
+  ),
+  _BuiltInPortal(
+    13,
+    x: 81,
+    y: 67,
+    targetMap: 21,
+    targetX: 25,
+    targetY: 6,
+    name: 'SWAMP KEEP',
+  ),
+  _BuiltInPortal(
+    13,
+    x: 82,
+    y: 67,
+    targetMap: 21,
+    targetX: 25,
+    targetY: 6,
+    name: 'SWAMP KEEP',
+  ),
+  _BuiltInPortal(
+    16,
+    x: 20,
+    y: 8,
+    targetMap: 10,
+    targetX: 26,
+    targetY: 8,
+    name: 'WATER FIELD',
+  ),
+  _BuiltInPortal(
+    16,
+    x: 21,
+    y: 8,
+    targetMap: 10,
+    targetX: 26,
+    targetY: 8,
+    name: 'WATER FIELD',
+  ),
+  _BuiltInPortal(
+    21,
+    x: 24,
+    y: 5,
+    targetMap: 13,
+    targetX: 81,
+    targetY: 68,
+    name: 'SWAMP GATE',
+  ),
+  _BuiltInPortal(
+    21,
+    x: 25,
+    y: 5,
+    targetMap: 13,
+    targetX: 81,
+    targetY: 68,
+    name: 'SWAMP GATE',
+  ),
+  _BuiltInPortal(
+    21,
+    x: 26,
+    y: 5,
+    targetMap: 13,
+    targetX: 81,
+    targetY: 68,
+    name: 'SWAMP GATE',
+  ),
+  _BuiltInPortal(
+    21,
+    x: 25,
+    y: 19,
+    targetMap: 13,
+    targetX: 81,
+    targetY: 68,
+    name: 'SWAMP GATE',
+  ),
+  _BuiltInPortal(
+    22,
+    x: 24,
+    y: 5,
+    targetMap: 21,
+    targetX: 25,
+    targetY: 20,
+    name: 'SWAMP KEEP',
+  ),
+  _BuiltInPortal(
+    22,
+    x: 25,
+    y: 5,
+    targetMap: 21,
+    targetX: 25,
+    targetY: 20,
+    name: 'SWAMP KEEP',
+  ),
+  _BuiltInPortal(
+    22,
+    x: 26,
+    y: 5,
+    targetMap: 21,
+    targetX: 25,
+    targetY: 20,
+    name: 'SWAMP KEEP',
+  ),
+  _BuiltInPortal(
+    22,
+    x: 25,
+    y: 23,
+    targetMap: 21,
+    targetX: 25,
+    targetY: 20,
+    name: 'SWAMP KEEP',
   ),
 ];
 

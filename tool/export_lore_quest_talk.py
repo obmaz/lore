@@ -54,7 +54,7 @@ RANGE_TILE = re.compile(
 RANGE_TILE_X = re.compile(
     r'for\s+i\s*:=\s*(\d+)\s+to\s+(\d+)\s+do\s+map\[i\s*,\s*(\d+)\]\s*:=\s*(\d+)'
 )
-CALLOUT = re.compile(r'^\s*(?:Print|cPrint|talk|Talk)\s*\(', re.I)
+CALLOUT = re.compile(r'^\s*(?:Print|cPrint|talk|Talk|message|Message)\s*\(', re.I)
 # 문자열 리터럴 | 누적 변수 s | player[n].name (순서 보존)
 PIECE = re.compile(
     r"'((?:[^']|'')*)'|(?<![\w.])(s)(?![\w.])|(player\[\d+\]\.name)"

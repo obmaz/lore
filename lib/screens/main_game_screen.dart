@@ -64,6 +64,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
   static const Duration _peekHold = Duration(milliseconds: 1600);
   int _mindReadCount = 0; // etc[5]: 독심술
 
+  /// 스크립트 전투 승리 시 설정할 플래그 (원작 `party.etc[6] = 0` 처리).
+  final List<String> _pendingVictoryFlags = [];
+
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
   String? _currentBossName;
@@ -231,8 +234,26 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
 
     if (confirmed == true) {
+      // 원작 LOREENT.PAS - 진입 전 연출(수문장 전투/대사/라바 게이트 판정).
+      final enterScriptId = portal?.scriptId;
+      if (enterScriptId != null) {
+        final pre = LoreScriptEngine.instance.startById(
+          enterScriptId,
+          _scriptContext(),
+        );
+        if (pre != null) await _applyScriptOutcome(pre);
+        if (!mounted) return;
+        // 원작 `exit` - 진행을 취소하는 판정(라바 게이트 등).
+        if (pre != null && pre.outcome.blockMove) return;
+      }
       _game.enterPortal(portal, tx, ty);
       setState(() {});
+      // 원작 entermode - 맵 진입 후 타일/연출 처리.
+      final enter = LoreScriptEngine.instance.startEnter(
+        _game.currentMapId,
+        _scriptContext(),
+      );
+      if (enter != null) await _applyScriptOutcome(enter);
     } else if (confirmed == false) {
       _addLog(LoreFieldLogic.asYouWish);
     }
@@ -486,6 +507,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
 
     if (outcome.battleMonsters.isNotEmpty) {
+      _pendingVictoryFlags
+        ..clear()
+        ..addAll(outcome.battleVictoryFlags);
       final enemies = outcome.battleMonsters
           .map((id) => LoreData.instance.monster(id))
           .toList();
@@ -994,6 +1018,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _partyGold += goldEarned;
       _currentMode = GameScreenMode.field;
       _addLog('전투 종료. 일행은 필드로 복귀합니다. 보유 금화: $_partyGold');
+
+      // 원작 `if party.etc[6] = 0 then party.etc[..] or bit` - 승리 시 플래그.
+      for (final flag in _pendingVictoryFlags) {
+        LoreDialogueManager.instance.setFlag(flag);
+      }
+      _pendingVictoryFlags.clear();
 
       // 보스 격퇴 플래그 갱신
       if (_currentBossName != null) {
