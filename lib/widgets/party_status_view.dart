@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../logic/lore_sub_text.dart';
 import '../theme/retro_theme.dart';
 import 'retro_box.dart';
 
@@ -48,8 +49,21 @@ class PartyStatusView extends StatelessWidget {
       title: '◆ 파티원 상태 (PARTY STATUS) ◆',
       borderColor: RetroTheme.borderColor,
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-      child: ListView.separated(
-        itemCount: members.length,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // 원작 LORESUB.PAS:1520 상태표 머리글
+          Text(
+            LoreSubText.statusHeader,
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.lightGray,
+              fontSize: 10,
+            ),
+          ),
+          const Divider(color: RetroTheme.darkGray, height: 6, thickness: 1),
+          Expanded(
+            child: ListView.separated(
+              itemCount: members.length,
         separatorBuilder: (context, index) =>
             const Divider(color: RetroTheme.darkGray, height: 6, thickness: 1),
         itemBuilder: (context, index) {
@@ -95,11 +109,14 @@ class PartyStatusView extends StatelessWidget {
                       fontSize: 11,
                     ),
                   ),
-                ),
-              ],
+                      ),
+                    ],
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }

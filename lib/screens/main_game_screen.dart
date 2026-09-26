@@ -10,6 +10,7 @@ import '../services/audio_manager.dart';
 import '../game/lore_game.dart';
 import '../game/lore_world_manager.dart';
 import '../logic/field_hotkeys.dart';
+import '../logic/lore_sub_text.dart';
 import '../logic/lore_field_logic.dart';
 import '../logic/lore_join.dart';
 import '../models/party_member.dart';
@@ -1301,6 +1302,22 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   fontSize: 13,
                 ),
               ),
+              const SizedBox(height: 4),
+              // 원작 LORESUB.PAS:480 전투 패배 시 선택
+              Text(
+                LoreSubText.battleLost,
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.lightRed,
+                  fontSize: 13,
+                ),
+              ),
+              Text(
+                LoreSubText.battleLostAsk,
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.yellow,
+                  fontSize: 13,
+                ),
+              ),
               const SizedBox(height: 16),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -1308,7 +1325,22 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   foregroundColor: RetroTheme.white,
                 ),
                 onPressed: _restartGame,
-                child: Text('처음부터 다시 시작', style: RetroTheme.dosFont),
+                child: Text(
+                  LoreSubText.resumeGame,
+                  style: RetroTheme.dosFont,
+                ),
+              ),
+              const SizedBox(height: 8),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(color: RetroTheme.lightRed),
+                  foregroundColor: RetroTheme.lightRed,
+                ),
+                onPressed: () => SystemNavigator.pop(),
+                child: Text(
+                  LoreSubText.endGame,
+                  style: RetroTheme.dosFont,
+                ),
               ),
             ],
           ),
