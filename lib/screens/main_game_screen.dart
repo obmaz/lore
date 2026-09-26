@@ -553,7 +553,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final enemies = outcome.battleMonsters
           .map((id) => LoreData.instance.monster(id))
           .toList();
-      _startBossBattle(enemies);
+      _startBossBattle(enemies, title: outcome.battleTitle);
     }
   }
 
@@ -866,7 +866,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         setState(() => _partyGold += dEvent.goldGained);
       }
       if (dEvent.bossEnemies != null && dEvent.bossEnemies!.isNotEmpty) {
-        _startBossBattle(dEvent.bossEnemies!);
+        _startBossBattle(dEvent.bossEnemies!, title: dEvent.title);
       }
     }
   }
@@ -1046,13 +1046,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   /// 보스전 시작
-  void _startBossBattle(List<Monster> bossEnemies) {
+  void _startBossBattle(List<Monster> bossEnemies, {String? title}) {
     setState(() {
       _currentMode = GameScreenMode.battle;
       _currentBossName = bossEnemies.first.name;
       _battleEnemies = bossEnemies;
 
-      _addLog('⚔⚔⚔ 강력한 보스 출현! ⚔⚔⚔');
+      // 원작은 전투 직전 안내 문구를 보여준다. 스크립트에 제목이 있으면 쓴다.
+      _addLog(title == null || title.trim().isEmpty
+          ? '⚔⚔⚔ 강력한 보스 출현! ⚔⚔⚔'
+          : '⚔⚔⚔ ${title.trim()} ⚔⚔⚔');
       for (final e in _battleEnemies) {
         _addLog('▶ ${e.name} (Lv.${e.level}, HP:${e.hp}) 결전 시작!');
       }
@@ -1062,6 +1065,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 전투 승리 -> 필드로 복귀
   void _onBattleVictory(int goldEarned) {
     setState(() {
+      // 원작 `LOREBATT.PAS:1186 party.etc[6] := 0` (승리).
+      LoreDialogueManager.instance.setBattleResult(0);
       _partyGold += goldEarned;
       _currentMode = GameScreenMode.field;
       _addLog('전투 종료. 일행은 필드로 복귀합니다. 보유 금화: $_partyGold');
@@ -1096,6 +1101,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 전투 도망 -> 필드로 복귀
   void _onBattleRunAway() {
     setState(() {
+      // 원작 `LOREBATT.PAS:1148 party.etc[6] := 2` (도망).
+      LoreDialogueManager.instance.setBattleResult(2);
       _currentMode = GameScreenMode.field;
       _addLog('안전한 곳으로 도망쳐 필드로 복귀했습니다.');
     });
@@ -1106,6 +1113,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   void _onBattleDefeat() {
     AudioManager.instance.stopBgm();
     setState(() {
+      // 원작 `LOREBATT.PAS:58 party.etc[6] = 255` (전멸).
+      LoreDialogueManager.instance.setBattleResult(255);
       _currentMode = GameScreenMode.gameOver;
     });
   }

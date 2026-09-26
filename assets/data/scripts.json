@@ -1602,7 +1602,7 @@
           "say": "당신들은 수감소 병사들을 물리쳤다."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "setTile": {
@@ -1638,8 +1638,8 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3"
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ],
         "notAllFlags": [
           "etc6"
@@ -1663,7 +1663,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -1683,7 +1683,7 @@
           "say": "당신들은 수감소 병사들을 물리쳤다."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "setTile": {
@@ -1719,11 +1719,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2"
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -1755,7 +1755,7 @@
           "say": "당신들은 수감소 병사들을 물리쳤다."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "setTile": {
@@ -1791,8 +1791,8 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3"
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ],
         "notAllFlags": [
           "etc6"
@@ -1816,7 +1816,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -1830,7 +1830,7 @@
           "say": "당신들은 수감소 병사들을 물리쳤다."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "setTile": {
@@ -1866,11 +1866,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2"
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -1910,9 +1910,9 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -1933,7 +1933,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -1955,11 +1955,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc6"
+          "etc6",
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3"
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -1993,9 +1993,9 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -2016,7 +2016,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -2032,11 +2032,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc6"
+          "etc6",
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3"
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -2079,9 +2079,9 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -2102,7 +2102,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -2127,11 +2127,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc6"
+          "etc6",
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3"
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -2168,9 +2168,9 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -2191,7 +2191,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -2210,11 +2210,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc6"
+          "etc6",
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3"
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -2278,7 +2278,7 @@
           "say": " 가 오이디푸스의 창을 장착했다."
         },
         {
-          "flag": "etc33_bit8"
+          "flag": "oedipusSpearTaken"
         }
       ],
       "disabled": true,
@@ -2286,7 +2286,7 @@
       "yMax": 44,
       "require": {
         "notAllFlags": [
-          "etc33_bit8"
+          "oedipusSpearTaken"
         ]
       },
       "note": "장비 지급(choosewhom) 미해석; 조건 미지원: k = 0; 미지원: asyouwish;; 조건 미지원: player[k].class = 5; 미지원: with player[k] do begin; 미지원: weapon := 3;; 미지원: wea_power := 12;; 미지원: if class = 1 then wea_power := wea_power + round(wea_power *"
@@ -2321,7 +2321,7 @@
       "yMax": 44,
       "require": {
         "notAllFlags": [
-          "etc33_bit8"
+          "oedipusSpearTaken"
         ]
       },
       "note": "장비 지급(choosewhom) 미해석; 조건 미지원: k = 0; 미지원: asyouwish;; 조건 미지원: player[k].class = 5; 미지원: with player[k] do begin; 미지원: weapon := 3;; 미지원: wea_power := 12;; 미지원: if class = 1 then wea_power := wea_power + round(wea_power *"
@@ -2359,7 +2359,7 @@
       "yMax": 44,
       "require": {
         "notAllFlags": [
-          "etc33_bit8"
+          "oedipusSpearTaken"
         ]
       },
       "note": "장비 지급(choosewhom) 미해석; 조건 미지원: k = 0; 미지원: asyouwish;; 조건 미지원: player[k].class = 5; 미지원: with player[k] do begin; 미지원: weapon := 3;; 미지원: wea_power := 12;; 미지원: if class = 1 then wea_power := wea_power + round(wea_power *"
@@ -2524,6 +2524,42 @@
       "note": "미지원: for i := 1 to 2 do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
     },
     {
+      "id": "spec-14-L814xxxxxx",
+      "trigger": "step",
+      "map": 14,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 황금의 방패를 발견했다."
+        },
+        {
+          "say": "누가 이 황금의 방패를 장착 하겠습니까 ?"
+        },
+        {
+          "equip": {
+            "kind": "shield",
+            "index": 5,
+            "power": 5,
+            "prompt": true
+          }
+        },
+        {
+          "say": "가 황금의 방패를 장착했다."
+        },
+        {
+          "flag": "goldenShieldMenaceTaken"
+        }
+      ],
+      "x": 16,
+      "y": 20,
+      "require": {
+        "notAllFlags": [
+          "goldenShieldMenaceTaken"
+        ]
+      },
+      "note": "미지원: Display_Condition;"
+    },
+    {
       "id": "golden-shield-menace",
       "trigger": "step",
       "map": 14,
@@ -2549,43 +2585,7 @@
         {
           "flag": "goldenShieldMenaceTaken"
         }
-      ]
-    },
-    {
-      "id": "spec-14-L814xxxxxx",
-      "trigger": "step",
-      "map": 14,
-      "once": false,
-      "steps": [
-        {
-          "say": "당신은 황금의 방패를 발견했다."
-        },
-        {
-          "say": "누가 이 황금의 방패를 장착 하겠습니까 ?"
-        },
-        {
-          "equip": {
-            "kind": "shield",
-            "index": 5,
-            "power": 5,
-            "prompt": true
-          }
-        },
-        {
-          "say": "가 황금의 방패를 장착했다."
-        },
-        {
-          "flag": "etc32_bit7"
-        }
       ],
-      "x": 16,
-      "y": 20,
-      "require": {
-        "notAllFlags": [
-          "etc32_bit7"
-        ]
-      },
-      "note": "미지원: Display_Condition;",
       "disabled": true
     },
     {
@@ -2697,6 +2697,42 @@
       "disabled": true
     },
     {
+      "id": "spec-15-L879",
+      "trigger": "step",
+      "map": 15,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 황금의 방패를 발견했다."
+        },
+        {
+          "say": "누가 이 황금의 방패를 장착 하겠습니까 ?"
+        },
+        {
+          "equip": {
+            "kind": "shield",
+            "index": 5,
+            "power": 5,
+            "prompt": true
+          }
+        },
+        {
+          "say": "가 황금의 방패를 장착했다."
+        },
+        {
+          "flag": "goldenShieldQuakeTaken"
+        }
+      ],
+      "x": 14,
+      "y": 7,
+      "require": {
+        "notAllFlags": [
+          "goldenShieldQuakeTaken"
+        ]
+      },
+      "note": "미지원: Display_Condition;"
+    },
+    {
       "id": "golden-shield-quake",
       "trigger": "step",
       "map": 15,
@@ -2722,44 +2758,44 @@
         {
           "flag": "goldenShieldQuakeTaken"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
-      "id": "spec-15-L879",
+      "id": "spec-15-L879x",
       "trigger": "step",
       "map": 15,
       "once": false,
       "steps": [
         {
-          "say": "당신은 황금의 방패를 발견했다."
+          "say": "당신은 황금의 갑옷을 발견했다."
         },
         {
-          "say": "누가 이 황금의 방패를 장착 하겠습니까 ?"
+          "say": "누가 이 황금의 갑옷을 장착 하겠습니까 ?"
         },
         {
           "equip": {
-            "kind": "shield",
+            "kind": "armor",
             "index": 5,
-            "power": 5,
+            "power": 6,
             "prompt": true
           }
         },
         {
-          "say": "가 황금의 방패를 장착했다."
+          "say": "가 황금의 갑옷을 장착했다."
         },
         {
-          "flag": "etc36_bit3"
+          "flag": "goldenArmorQuakeTaken"
         }
       ],
-      "x": 14,
-      "y": 7,
+      "x": 45,
+      "y": 19,
       "require": {
         "notAllFlags": [
-          "etc36_bit3"
+          "goldenArmorQuakeTaken"
         ]
       },
-      "note": "미지원: Display_Condition;",
-      "disabled": true
+      "note": "미지원: Display_Condition;"
     },
     {
       "id": "golden-armor-quake",
@@ -2787,43 +2823,7 @@
         {
           "flag": "goldenArmorQuakeTaken"
         }
-      ]
-    },
-    {
-      "id": "spec-15-L879x",
-      "trigger": "step",
-      "map": 15,
-      "once": false,
-      "steps": [
-        {
-          "say": "당신은 황금의 갑옷을 발견했다."
-        },
-        {
-          "say": "누가 이 황금의 갑옷을 장착 하겠습니까 ?"
-        },
-        {
-          "equip": {
-            "kind": "armor",
-            "index": 5,
-            "power": 6,
-            "prompt": true
-          }
-        },
-        {
-          "say": "가 황금의 갑옷을 장착했다."
-        },
-        {
-          "flag": "etc36_bit4"
-        }
       ],
-      "x": 45,
-      "y": 19,
-      "require": {
-        "notAllFlags": [
-          "etc36_bit4"
-        ]
-      },
-      "note": "미지원: Display_Condition;",
       "disabled": true
     },
     {
@@ -4931,48 +4931,6 @@
       ]
     },
     {
-      "id": "keep2-ambush-25-18",
-      "trigger": "step",
-      "map": 22,
-      "x": 25,
-      "y": 18,
-      "once": true,
-      "require": {
-        "flagNot": "keep2AmbushCleared"
-      },
-      "title": "암흑의 성채",
-      "steps": [
-        {
-          "say": "Wraith 떼가 사방에서 몰려온다. 그 뒤로 Death Knight가 다가선다 !"
-        },
-        {
-          "battle": {
-            "title": "암흑의 성채",
-            "monsters": [
-              60,
-              60,
-              60,
-              60,
-              60
-            ],
-            "random": {
-              "pool": [
-                63
-              ],
-              "min": 1,
-              "max": 1
-            }
-          }
-        },
-        {
-          "say": "당신들은 성채의 문지기들을 물리쳤다."
-        },
-        {
-          "flag": "keep2AmbushCleared"
-        }
-      ]
-    },
-    {
       "id": "spec-22-L1816-1x",
       "trigger": "step",
       "map": 22,
@@ -5000,18 +4958,17 @@
           "say": "로운 것들. 으하하...."
         },
         {
-          "flag": "etc43_bit2"
+          "flag": "keep2AmbushCleared"
         }
       ],
       "x": 25,
       "y": 18,
       "require": {
         "notAllFlags": [
-          "etc43_bit2",
-          "etc6"
+          "etc6",
+          "keep2AmbushCleared"
         ]
-      },
-      "disabled": true
+      }
     },
     {
       "id": "spec-22-L1816-2x",
@@ -5048,10 +5005,9 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc43_bit2"
+          "keep2AmbushCleared"
         ]
-      },
-      "disabled": true
+      }
     },
     {
       "id": "spec-22-L1816-3x",
@@ -5091,9 +5047,51 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc43_bit2"
+          "keep2AmbushCleared"
         ]
+      }
+    },
+    {
+      "id": "keep2-ambush-25-18",
+      "trigger": "step",
+      "map": 22,
+      "x": 25,
+      "y": 18,
+      "once": true,
+      "require": {
+        "flagNot": "keep2AmbushCleared"
       },
+      "title": "암흑의 성채",
+      "steps": [
+        {
+          "say": "Wraith 떼가 사방에서 몰려온다. 그 뒤로 Death Knight가 다가선다 !"
+        },
+        {
+          "battle": {
+            "title": "암흑의 성채",
+            "monsters": [
+              60,
+              60,
+              60,
+              60,
+              60
+            ],
+            "random": {
+              "pool": [
+                63
+              ],
+              "min": 1,
+              "max": 1
+            }
+          }
+        },
+        {
+          "say": "당신들은 성채의 문지기들을 물리쳤다."
+        },
+        {
+          "flag": "keep2AmbushCleared"
+        }
+      ],
       "disabled": true
     },
     {
@@ -5827,6 +5825,74 @@
       "disabled": true
     },
     {
+      "id": "spec-18-L1174-1xx",
+      "trigger": "step",
+      "map": 18,
+      "once": false,
+      "steps": [
+        {
+          "torch": true
+        },
+        {
+          "flag": "etc1"
+        },
+        {
+          "say": "미로속에서 소를 닮은 괴물이 나타났다"
+        },
+        {
+          "battle": {
+            "monsters": [
+              53
+            ]
+          }
+        },
+        {
+          "flag": "lockupGuardianDefeated"
+        }
+      ],
+      "x": 21,
+      "y": 41,
+      "require": {
+        "notAllFlags": [
+          "etc1",
+          "lockupGuardianDefeated"
+        ]
+      },
+      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
+    },
+    {
+      "id": "spec-18-L1174-2xx",
+      "trigger": "step",
+      "map": 18,
+      "once": false,
+      "steps": [
+        {
+          "say": "미로속에서 소를 닮은 괴물이 나타났다"
+        },
+        {
+          "battle": {
+            "monsters": [
+              53
+            ]
+          }
+        },
+        {
+          "flag": "lockupGuardianDefeated"
+        }
+      ],
+      "x": 21,
+      "y": 41,
+      "require": {
+        "allFlags": [
+          "etc1"
+        ],
+        "notAllFlags": [
+          "lockupGuardianDefeated"
+        ]
+      },
+      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
+    },
+    {
       "id": "lockup-guardian-21-41",
       "trigger": "step",
       "map": 18,
@@ -5855,76 +5921,7 @@
         {
           "flag": "lockupGuardianDefeated"
         }
-      ]
-    },
-    {
-      "id": "spec-18-L1174-1xx",
-      "trigger": "step",
-      "map": 18,
-      "once": false,
-      "steps": [
-        {
-          "torch": true
-        },
-        {
-          "flag": "etc1"
-        },
-        {
-          "say": "미로속에서 소를 닮은 괴물이 나타났다"
-        },
-        {
-          "battle": {
-            "monsters": [
-              53
-            ]
-          }
-        },
-        {
-          "flag": "etc39_bit3"
-        }
       ],
-      "x": 21,
-      "y": 41,
-      "require": {
-        "notAllFlags": [
-          "etc1",
-          "etc39_bit3"
-        ]
-      },
-      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);",
-      "disabled": true
-    },
-    {
-      "id": "spec-18-L1174-2xx",
-      "trigger": "step",
-      "map": 18,
-      "once": false,
-      "steps": [
-        {
-          "say": "미로속에서 소를 닮은 괴물이 나타났다"
-        },
-        {
-          "battle": {
-            "monsters": [
-              53
-            ]
-          }
-        },
-        {
-          "flag": "etc39_bit3"
-        }
-      ],
-      "x": 21,
-      "y": 41,
-      "require": {
-        "allFlags": [
-          "etc1"
-        ],
-        "notAllFlags": [
-          "etc39_bit3"
-        ]
-      },
-      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);",
       "disabled": true
     },
     {
@@ -7855,6 +7852,74 @@
       "disabled": true
     },
     {
+      "id": "spec-20-L1475-1xxx",
+      "trigger": "step",
+      "map": 20,
+      "once": false,
+      "steps": [
+        {
+          "torch": true
+        },
+        {
+          "flag": "etc1"
+        },
+        {
+          "say": "미로속에서 소를 닮은 괴물이 나타났다"
+        },
+        {
+          "battle": {
+            "monsters": [
+              53
+            ]
+          }
+        },
+        {
+          "flag": "den7MinotaurCleared"
+        }
+      ],
+      "yMin": 48,
+      "yMax": 48,
+      "require": {
+        "notAllFlags": [
+          "den7MinotaurCleared",
+          "etc1"
+        ]
+      },
+      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
+    },
+    {
+      "id": "spec-20-L1475-2xxx",
+      "trigger": "step",
+      "map": 20,
+      "once": false,
+      "steps": [
+        {
+          "say": "미로속에서 소를 닮은 괴물이 나타났다"
+        },
+        {
+          "battle": {
+            "monsters": [
+              53
+            ]
+          }
+        },
+        {
+          "flag": "den7MinotaurCleared"
+        }
+      ],
+      "yMin": 48,
+      "yMax": 48,
+      "require": {
+        "allFlags": [
+          "etc1"
+        ],
+        "notAllFlags": [
+          "den7MinotaurCleared"
+        ]
+      },
+      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);"
+    },
+    {
       "id": "den7-minotaur-y48",
       "trigger": "step",
       "map": 20,
@@ -7880,76 +7945,7 @@
         {
           "flag": "den7MinotaurCleared"
         }
-      ]
-    },
-    {
-      "id": "spec-20-L1475-1xxx",
-      "trigger": "step",
-      "map": 20,
-      "once": false,
-      "steps": [
-        {
-          "torch": true
-        },
-        {
-          "flag": "etc1"
-        },
-        {
-          "say": "미로속에서 소를 닮은 괴물이 나타났다"
-        },
-        {
-          "battle": {
-            "monsters": [
-              53
-            ]
-          }
-        },
-        {
-          "flag": "etc41_bit4"
-        }
       ],
-      "yMin": 48,
-      "yMax": 48,
-      "require": {
-        "notAllFlags": [
-          "etc1",
-          "etc41_bit4"
-        ]
-      },
-      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);",
-      "disabled": true
-    },
-    {
-      "id": "spec-20-L1475-2xxx",
-      "trigger": "step",
-      "map": 20,
-      "once": false,
-      "steps": [
-        {
-          "say": "미로속에서 소를 닮은 괴물이 나타났다"
-        },
-        {
-          "battle": {
-            "monsters": [
-              53
-            ]
-          }
-        },
-        {
-          "flag": "etc41_bit4"
-        }
-      ],
-      "yMin": 48,
-      "yMax": 48,
-      "require": {
-        "allFlags": [
-          "etc1"
-        ],
-        "notAllFlags": [
-          "etc41_bit4"
-        ]
-      },
-      "note": "미지원: scroll(true);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then putimage(100,(i-1)*20,font^[map[x,y-(6-i)]],co; 미지원: if i < 4 then delay(1000);",
       "disabled": true
     },
     {
@@ -8097,7 +8093,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -8113,7 +8109,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "teleport": {
@@ -8128,12 +8124,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit1"
+          "den7MazeCleared"
         ],
         "notAllFlags": [
+          "den7DragonsCleared",
+          "den7MudmenCleared",
           "etc1",
-          "etc41_bit2",
-          "etc41_bit3",
           "etc6"
         ]
       },
@@ -8155,7 +8151,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -8171,7 +8167,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "teleport": {
@@ -8186,12 +8182,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit1"
+          "den7MazeCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit2",
-          "etc41_bit3",
+          "den7DragonsCleared",
+          "den7MudmenCleared",
           "etc6"
         ]
       },
@@ -8223,7 +8219,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "teleport": {
@@ -8238,12 +8234,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit1",
-          "etc41_bit2"
+          "den7DragonsCleared",
+          "den7MazeCleared"
         ],
         "notAllFlags": [
+          "den7MudmenCleared",
           "etc1",
-          "etc41_bit3",
           "etc6"
         ]
       },
@@ -8269,7 +8265,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "teleport": {
@@ -8284,12 +8280,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit1",
-          "etc41_bit2"
+          "den7DragonsCleared",
+          "den7MazeCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit3",
+          "den7MudmenCleared",
           "etc6"
         ]
       },
@@ -8317,7 +8313,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "teleport": {
@@ -8332,12 +8328,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit1",
-          "etc41_bit3"
+          "den7MazeCleared",
+          "den7MudmenCleared"
         ],
         "notAllFlags": [
+          "den7DragonsCleared",
           "etc1",
-          "etc41_bit2",
           "etc6"
         ]
       },
@@ -8359,7 +8355,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "teleport": {
@@ -8374,12 +8370,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit1",
-          "etc41_bit3"
+          "den7MazeCleared",
+          "den7MudmenCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit2",
+          "den7DragonsCleared",
           "etc6"
         ]
       },
@@ -8410,9 +8406,9 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit1",
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MazeCleared",
+          "den7MudmenCleared"
         ],
         "notAllFlags": [
           "etc1"
@@ -8439,10 +8435,10 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit1",
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MazeCleared",
+          "den7MudmenCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8480,8 +8476,8 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc1",
-          "etc41_bit2"
+          "den7DragonsCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8514,7 +8510,7 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc41_bit2"
+          "den7DragonsCleared"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8557,8 +8553,8 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc1",
-          "etc41_bit2"
+          "den7DragonsCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8596,7 +8592,7 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc41_bit2"
+          "den7DragonsCleared"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8623,7 +8619,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -8650,9 +8646,9 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc1",
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MudmenCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8673,7 +8669,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -8701,8 +8697,8 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MudmenCleared"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8741,12 +8737,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit2",
+          "den7DragonsCleared",
           "etc6"
         ],
         "notAllFlags": [
-          "etc1",
-          "etc41_bit3"
+          "den7MudmenCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8779,12 +8775,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
+          "den7DragonsCleared",
           "etc1",
-          "etc41_bit2",
           "etc6"
         ],
         "notAllFlags": [
-          "etc41_bit3"
+          "den7MudmenCleared"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8811,7 +8807,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -8843,9 +8839,9 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc1",
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MudmenCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8866,7 +8862,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -8899,8 +8895,8 @@
           "etc6"
         ],
         "notAllFlags": [
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MudmenCleared"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8944,12 +8940,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit2",
+          "den7DragonsCleared",
           "etc6"
         ],
         "notAllFlags": [
-          "etc1",
-          "etc41_bit3"
+          "den7MudmenCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -8987,12 +8983,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
+          "den7DragonsCleared",
           "etc1",
-          "etc41_bit2",
           "etc6"
         ],
         "notAllFlags": [
-          "etc41_bit3"
+          "den7MudmenCleared"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -9019,7 +9015,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -9035,7 +9031,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9069,7 +9065,7 @@
           }
         },
         {
-          "flag": "etc41_bit1"
+          "flag": "den7MazeCleared"
         },
         {
           "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
@@ -9096,10 +9092,10 @@
       "yMax": 13,
       "require": {
         "notAllFlags": [
+          "den7DragonsCleared",
+          "den7MazeCleared",
+          "den7MudmenCleared",
           "etc1",
-          "etc41_bit1",
-          "etc41_bit2",
-          "etc41_bit3",
           "etc6"
         ]
       },
@@ -9121,7 +9117,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -9137,7 +9133,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9171,7 +9167,7 @@
           }
         },
         {
-          "flag": "etc41_bit1"
+          "flag": "den7MazeCleared"
         },
         {
           "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
@@ -9201,9 +9197,9 @@
           "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit1",
-          "etc41_bit2",
-          "etc41_bit3",
+          "den7DragonsCleared",
+          "den7MazeCleared",
+          "den7MudmenCleared",
           "etc6"
         ]
       },
@@ -9235,7 +9231,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9269,7 +9265,7 @@
           }
         },
         {
-          "flag": "etc41_bit1"
+          "flag": "den7MazeCleared"
         },
         {
           "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
@@ -9296,12 +9292,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit2"
+          "den7DragonsCleared"
         ],
         "notAllFlags": [
+          "den7MazeCleared",
+          "den7MudmenCleared",
           "etc1",
-          "etc41_bit1",
-          "etc41_bit3",
           "etc6"
         ]
       },
@@ -9327,7 +9323,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9361,7 +9357,7 @@
           }
         },
         {
-          "flag": "etc41_bit1"
+          "flag": "den7MazeCleared"
         },
         {
           "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
@@ -9388,12 +9384,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit2"
+          "den7DragonsCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit1",
-          "etc41_bit3",
+          "den7MazeCleared",
+          "den7MudmenCleared",
           "etc6"
         ]
       },
@@ -9421,7 +9417,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9455,7 +9451,7 @@
           }
         },
         {
-          "flag": "etc41_bit1"
+          "flag": "den7MazeCleared"
         },
         {
           "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
@@ -9482,12 +9478,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit3"
+          "den7MudmenCleared"
         ],
         "notAllFlags": [
+          "den7DragonsCleared",
+          "den7MazeCleared",
           "etc1",
-          "etc41_bit1",
-          "etc41_bit2",
           "etc6"
         ]
       },
@@ -9509,7 +9505,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9543,7 +9539,7 @@
           }
         },
         {
-          "flag": "etc41_bit1"
+          "flag": "den7MazeCleared"
         },
         {
           "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
@@ -9570,12 +9566,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit3"
+          "den7MudmenCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit1",
-          "etc41_bit2",
+          "den7DragonsCleared",
+          "den7MazeCleared",
           "etc6"
         ]
       },
@@ -9625,7 +9621,7 @@
           }
         },
         {
-          "flag": "etc41_bit1"
+          "flag": "den7MazeCleared"
         },
         {
           "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
@@ -9652,12 +9648,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MudmenCleared"
         ],
         "notAllFlags": [
-          "etc1",
-          "etc41_bit1"
+          "den7MazeCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -9700,7 +9696,7 @@
           }
         },
         {
-          "flag": "etc41_bit1"
+          "flag": "den7MazeCleared"
         },
         {
           "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
@@ -9727,12 +9723,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MudmenCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit1"
+          "den7MazeCleared"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -9759,7 +9755,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -9775,7 +9771,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9822,10 +9818,10 @@
       "yMax": 13,
       "require": {
         "notAllFlags": [
+          "den7DragonsCleared",
+          "den7MazeCleared",
+          "den7MudmenCleared",
           "etc1",
-          "etc41_bit1",
-          "etc41_bit2",
-          "etc41_bit3",
           "etc6"
         ]
       },
@@ -9847,7 +9843,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "battle": {
@@ -9863,7 +9859,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9913,9 +9909,9 @@
           "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit1",
-          "etc41_bit2",
-          "etc41_bit3",
+          "den7DragonsCleared",
+          "den7MazeCleared",
+          "den7MudmenCleared",
           "etc6"
         ]
       },
@@ -9947,7 +9943,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -9994,12 +9990,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit2"
+          "den7DragonsCleared"
         ],
         "notAllFlags": [
+          "den7MazeCleared",
+          "den7MudmenCleared",
           "etc1",
-          "etc41_bit1",
-          "etc41_bit3",
           "etc6"
         ]
       },
@@ -10025,7 +10021,7 @@
           }
         },
         {
-          "flag": "etc41_bit3"
+          "flag": "den7MudmenCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -10072,12 +10068,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit2"
+          "den7DragonsCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit1",
-          "etc41_bit3",
+          "den7MazeCleared",
+          "den7MudmenCleared",
           "etc6"
         ]
       },
@@ -10105,7 +10101,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -10152,12 +10148,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit3"
+          "den7MudmenCleared"
         ],
         "notAllFlags": [
+          "den7DragonsCleared",
+          "den7MazeCleared",
           "etc1",
-          "etc41_bit1",
-          "etc41_bit2",
           "etc6"
         ]
       },
@@ -10179,7 +10175,7 @@
           }
         },
         {
-          "flag": "etc41_bit2"
+          "flag": "den7DragonsCleared"
         },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
@@ -10226,12 +10222,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit3"
+          "den7MudmenCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit1",
-          "etc41_bit2",
+          "den7DragonsCleared",
+          "den7MazeCleared",
           "etc6"
         ]
       },
@@ -10294,12 +10290,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MudmenCleared"
         ],
         "notAllFlags": [
-          "etc1",
-          "etc41_bit1"
+          "den7MazeCleared",
+          "etc1"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -10355,12 +10351,12 @@
       "yMax": 13,
       "require": {
         "allFlags": [
-          "etc1",
-          "etc41_bit2",
-          "etc41_bit3"
+          "den7DragonsCleared",
+          "den7MudmenCleared",
+          "etc1"
         ],
         "notAllFlags": [
-          "etc41_bit1"
+          "den7MazeCleared"
         ]
       },
       "note": "미지원: scroll(true);; 미지원: for i := 4 to 6 do begin; 미지원: for j := 0 to 1 do begin; 미지원: for j := 1 to 3 do begin; 미지원: for i := 4 to 6 do; 미지원: for k := 0 to 1 do begin; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: for i := 1 to 4 do begin; 미지원: if i > 1 then beg"
@@ -15137,7 +15133,7 @@
           "say": "당신들은 수감소 병사들을 물리쳤다."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "setTile": {
@@ -15173,8 +15169,8 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3"
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ],
         "notAllFlags": [
           "etc6"
@@ -15198,7 +15194,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -15218,7 +15214,7 @@
           "say": "당신들은 수감소 병사들을 물리쳤다."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "setTile": {
@@ -15254,11 +15250,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2"
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15290,7 +15286,7 @@
           "say": "당신들은 수감소 병사들을 물리쳤다."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "setTile": {
@@ -15326,8 +15322,8 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3"
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ],
         "notAllFlags": [
           "etc6"
@@ -15351,7 +15347,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -15365,7 +15361,7 @@
           "say": "당신들은 수감소 병사들을 물리쳤다."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "setTile": {
@@ -15401,11 +15397,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2"
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15445,9 +15441,9 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15468,7 +15464,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -15490,11 +15486,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc6"
+          "etc6",
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3"
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15528,9 +15524,9 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15551,7 +15547,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -15567,11 +15563,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc6"
+          "etc6",
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3"
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15614,9 +15610,9 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15637,7 +15633,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -15662,11 +15658,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc6"
+          "etc6",
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3"
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15703,9 +15699,9 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc50_bit3",
-          "etc6"
+          "etc6",
+          "prisonBattleDone",
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -15726,7 +15722,7 @@
           "say": "과 승부할수 밖에 없군요."
         },
         {
-          "flag": "etc50_bit3"
+          "flag": "prisonBattleReturned"
         },
         {
           "battle": {
@@ -15745,11 +15741,11 @@
       "y": 12,
       "require": {
         "allFlags": [
-          "etc50_bit2",
-          "etc6"
+          "etc6",
+          "prisonBattleDone"
         ],
         "notAllFlags": [
-          "etc50_bit3"
+          "prisonBattleReturned"
         ]
       },
       "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
@@ -20489,7 +20485,7 @@
       "xMax": 26,
       "require": {
         "notAllFlags": [
-          "etc43_bit2"
+          "keep2AmbushCleared"
         ]
       }
     },
@@ -20611,7 +20607,7 @@
       "yMax": 25,
       "require": {
         "notAllFlags": [
-          "etc43_bit2"
+          "keep2AmbushCleared"
         ]
       }
     },

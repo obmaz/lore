@@ -319,6 +319,20 @@ ETC_FLAG_ALIAS = {
     (45, 7): 'lavaLeverLeftPulled',
     (45, 8): 'lavaLeverRightPulled',
     (38, 1): 'specialMagicLearned',
+    # 아래는 손으로 쓴 스크립트의 이름을 원작 비트와 짝지어 확인한 대응이다
+    # (같은 좌표의 두 스크립트를 비교해 의미가 1:1 임을 확인했다).
+    (33, 8): 'oedipusSpearTaken',        # 맵 11 오이디푸스의 창
+    (32, 7): 'goldenShieldMenaceTaken',  # 맵 14 MENACE 황금의 방패
+    (36, 3): 'goldenShieldQuakeTaken',   # 맵 15 QUAKE 황금의 방패
+    (36, 4): 'goldenArmorQuakeTaken',    # 맵 15 QUAKE 황금의 갑옷
+    (39, 3): 'lockupGuardianDefeated',   # 맵 18 LOCKUP 수문장
+    (43, 2): 'keep2AmbushCleared',       # 맵 22 KEEP2 습격
+    (41, 4): 'den7MinotaurCleared',      # 맵 20 DEN7 미노타우르스
+    (41, 2): 'den7DragonsCleared',       # 맵 20 DEN7 3마리 Dragon
+    (41, 3): 'den7MudmenCleared',        # 맵 20 DEN7 7마리 Mud-Man
+    (41, 1): 'den7MazeCleared',          # 맵 20 DEN7 Astral Mud(봉인)
+    (50, 2): 'prisonBattleDone',         # 맵 6 죄수 수용소 첫 결투
+    (50, 3): 'prisonBattleReturned',     # 맵 6 죄수 수용소 재방문 결투
 }
 
 

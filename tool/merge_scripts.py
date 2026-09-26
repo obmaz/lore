@@ -160,9 +160,9 @@ def merge_spec(existing, gen, replace_ok: bool = False,
         # 플래그 이름/전투 구성/전투 제목까지 같아야 안전하게 대체할 수 있다.
         if ex_flags - gn_flags:
             missing.append('flag 이름: ' + ', '.join(sorted(ex_flags - gn_flags)))
-        if ex_title and not any(
-                effect_detail(e)[2] for e in items):
-            missing.append('전투 제목')
+        # 전투 제목은 표시용 이름일 뿐이라 대체를 막지 않는다(원작 안내 문구는
+        # 옮긴 쪽의 `say` 스텝으로 그대로 남는다). `ex_title` 은 기록용으로만 둔다.
+        _ = ex_title
         if ex_monsters and not set(ex_monsters) <= set(gn_monsters):
             missing.append('전투 구성: ' + str(ex_monsters))
         # 진행 조건(`require`)에 쓰인 플래그가 옮긴 쪽에 없으면 대체하지 않는다.
@@ -174,6 +174,10 @@ def merge_spec(existing, gen, replace_ok: bool = False,
             gn_req |= require_flags(e)
         if ex_req - gn_req:
             missing.append('require 플래그: ' + ', '.join(sorted(ex_req - gn_req)))
+        # 옮긴 쪽에 실행하지 못하는(`disabled`) 항목이 섞여 있으면 대체하지
+        # 않는다.  손으로 쓴 스크립트가 하던 일을 못 하게 될 수 있다.
+        if any(e.get('disabled') for e in items):
+            missing.append('옮긴 쪽에 disabled 항목 있음')
         if not missing and replace_ok:
             # 옮긴 쪽이 손으로 쓴 스크립트의 효과를 모두 포함한다 → 대체한다.
             plan[k] = 'replace'

@@ -117,6 +117,19 @@ class LoreDialogueManager {
     return ((partyEtc[n] ?? 0) >> (m - 1)) & 1 == 1;
   }
 
+  /// 원작 `party.etc[6]` - **마지막 전투의 결과**.
+  ///
+  ///  - `0`   승리
+  ///  - `2`   도망 (`LOREBATT.PAS:1148`)
+  ///  - `255` 전멸 (`LOREBATT.PAS:58`)
+  ///
+  /// 원작은 좌표 이벤트에서 `if party.etc[6] = 0 then`(승리 후 보상) /
+  /// `= 255 then exit`(전멸) 로 갈라지므로, 같은 판정이 가능하도록 기록한다.
+  int get lastBattleResult => partyEtc[6] ?? 0;
+
+  /// 전투 결과를 기록한다(원작 `party.etc[6] := v`).
+  void setBattleResult(int value) => partyEtc[6] = value;
+
   /// `party.etc[N] := party.etc[N] or bitM` / 비트 해제.
   void setEtcBit(int n, int m, [bool value = true]) {
     if (m < 1 || m > 8) return;
