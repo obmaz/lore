@@ -10557,6 +10557,9 @@
       "title": "미궁의 수호룡",
       "steps": [
         {
+          "torch": true
+        },
+        {
           "battle": {
             "title": "Dragon",
             "monsters": [
@@ -10584,6 +10587,9 @@
       },
       "title": "진흙 인간 무리",
       "steps": [
+        {
+          "torch": true
+        },
         {
           "battle": {
             "title": "Mud-Man",
@@ -10616,6 +10622,9 @@
       },
       "title": "미궁의 주인",
       "steps": [
+        {
+          "torch": true
+        },
         {
           "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
         },
@@ -10691,6 +10700,9 @@
         "flag": "den7MazeCleared"
       },
       "steps": [
+        {
+          "torch": true
+        },
         {
           "teleport": {
             "map": 4,

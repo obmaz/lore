@@ -45,6 +45,8 @@
    봉인에서 누락된 GAIA 단계 2 변경과 `< 2` 조건을 복원했고, 이후 성주 보상과
    저장 복원, 퀘스트 표시를 검증했다.
    커밋: `Restore GAIA progress when finding the golden seal`.
+   맵 20 DEN7의 y=13 전투·복귀 네 단계에서 빠졌던 횃불 효과도 복원했다.
+   커밋: `Restore DEN7 torch effect across final maze branches`.
 8. 포털과 겹친 77개의 취소·수문장·부수 효과를 원본과 더 깊게 대조한다.
 9. 원본 `LORETALK.PAS`, `LOREENT.PAS`, `LOREBATT.PAS`의 분기 추출 범위를
    넓혀 스크립트·포털·전투와 상호 대조하고 남은 누락을 처리한다.

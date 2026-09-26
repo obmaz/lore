@@ -802,10 +802,10 @@
 | `spec-20-L1475xxxx`<br>LORESPEC.PAS:1475 | step (*, 18) | 조건 없음 | 조건 없음 | torch, flag:etc1 |
 | `spec-20-L1475-1xxx`<br>LORESPEC.PAS:1475 | step (*, 48) | {"notAllFlags":["den7MinotaurCleared","etc1"]} | notAllFlags → den7MinotaurCleared 추가 | torch, flag:etc1, battle(적 1), flag:den7MinotaurCleared |
 | `spec-20-L1475-2xxx`<br>LORESPEC.PAS:1475 | step (*, 48) | {"allFlags":["etc1"],"notAllFlags":["den7MinotaurCleared"]} | allFlags → etc1 제거; notAllFlags → den7MinotaurCleared 추가 | battle(적 1), flag:den7MinotaurCleared |
-| `den7-dragons-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flagNot":"den7DragonsCleared"} | flagNot den7DragonsCleared → 추가 | battle(적 3), flag:den7DragonsCleared |
-| `den7-mudmen-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7DragonsCleared","flagNot":"den7MudmenCleared"} | flag den7DragonsCleared → 제거; flagNot den7MudmenCleared → 추가 | battle(적 7), flag:den7MudmenCleared |
-| `den7-master-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MudmenCleared","flagNot":"den7MazeCleared"} | flag den7MudmenCleared → 제거; flagNot den7MazeCleared → 추가 | battle(적 7, 도주 분기, 격퇴 슬롯 7), nudge, flag:den7MazeCleared, flag:lavaGateKeyRight, teleport |
-| `den7-return-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MazeCleared"} | flag den7MazeCleared → 제거 | teleport |
+| `den7-dragons-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flagNot":"den7DragonsCleared"} | flagNot den7DragonsCleared → 추가 | torch, battle(적 3), flag:den7DragonsCleared |
+| `den7-mudmen-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7DragonsCleared","flagNot":"den7MudmenCleared"} | flag den7DragonsCleared → 제거; flagNot den7MudmenCleared → 추가 | torch, battle(적 7), flag:den7MudmenCleared |
+| `den7-master-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MudmenCleared","flagNot":"den7MazeCleared"} | flag den7MudmenCleared → 제거; flagNot den7MazeCleared → 추가 | torch, battle(적 7, 도주 분기, 격퇴 슬롯 7), nudge, flag:den7MazeCleared, flag:lavaGateKeyRight, teleport |
+| `den7-return-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MazeCleared"} | flag den7MazeCleared → 제거 | torch, teleport |
 
 ### 맵 21
 
