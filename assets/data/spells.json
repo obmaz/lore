@@ -231,28 +231,28 @@
       "name": "마법의 햇불",
       "category": "field",
       "description": "어두운 던전을 밝히는 마법 불빛을 밝힙니다.",
-      "baseSp": 5
+      "baseSp": 1
     },
     {
       "id": 34,
       "name": "공중 부상",
       "category": "field",
       "description": "일행의 몸을 띄워 함정을 무시합니다.",
-      "baseSp": 10
+      "baseSp": 5
     },
     {
       "id": 35,
       "name": "물위를 걸음",
       "category": "field",
       "description": "깊은 물 위를 자유롭게 걸을 수 있게 합니다.",
-      "baseSp": 15
+      "baseSp": 10
     },
     {
       "id": 36,
       "name": "늪위를 걸음",
       "category": "field",
       "description": "독 늪지대를 피해 없이 안전하게 통과합니다.",
-      "baseSp": 15
+      "baseSp": 20
     },
     {
       "id": 37,
@@ -273,14 +273,14 @@
       "name": "공간 이동",
       "category": "field",
       "description": "원하는 마을이나 거점으로 즉시 공간도약합니다.",
-      "baseSp": 40
+      "baseSp": 50
     },
     {
       "id": 40,
       "name": "식량 제조",
       "category": "field",
       "description": "마력으로 일행의 비상 식량을 소환합니다.",
-      "baseSp": 10
+      "baseSp": 30
     },
     {
       "id": 41,

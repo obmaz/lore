@@ -834,6 +834,23 @@ class _MainGameScreenState extends State<MainGameScreen> {
             if (levitate != null) _levitateSteps = levitate;
           });
         },
+        // 원작 PhenominaSpell의 기화 이동/지형 변화/공간 이동용 지도 접근.
+        mapSize: _game.currentMap == null
+            ? null
+            : (_game.currentMap!.xmax, _game.currentMap!.ymax),
+        tileAt: (x, y) => _game.currentMap?.getTile(x, y) ?? 0,
+        onMoveTo: (x, y) {
+          setState(() {
+            _game.playerX = x;
+            _game.playerY = y;
+          });
+        },
+        onTerrainChange: (x, y, tile) {
+          final map = _game.currentMap;
+          if (map == null) return;
+          if (x < 1 || x > map.xmax || y < 1 || y > map.ymax) return;
+          setState(() => map.grid[y - 1][x - 1] = tile);
+        },
         onMindReadActivated: (count) {
           setState(() => _mindReadCount = count);
         },

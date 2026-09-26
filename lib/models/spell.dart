@@ -100,7 +100,11 @@ class Spell {
         }
 
       case SpellCategory.field:
-        return baseSp;
+        // 원작 `PhenominaSpell`의 고정 소모값 (33~40 순서: 1/5/10/20/25/30/50/30)
+        const fieldCosts = <int, int>{
+          33: 1, 34: 5, 35: 10, 36: 20, 37: 25, 38: 30, 39: 50, 40: 30,
+        };
+        return fieldCosts[id] ?? baseSp;
 
       case SpellCategory.esp:
         switch (id) {
@@ -393,28 +397,28 @@ class Spell {
       name: '마법의 햇불',
       category: SpellCategory.field,
       description: '어두운 던전을 밝히는 마법 불빛을 밝힙니다.',
-      baseSp: 5,
+      baseSp: 1,
     ),
     Spell(
       id: 34,
       name: '공중 부상',
       category: SpellCategory.field,
       description: '일행의 몸을 띄워 함정을 무시합니다.',
-      baseSp: 10,
+      baseSp: 5,
     ),
     Spell(
       id: 35,
       name: '물위를 걸음',
       category: SpellCategory.field,
       description: '깊은 물 위를 자유롭게 걸을 수 있게 합니다.',
-      baseSp: 15,
+      baseSp: 10,
     ),
     Spell(
       id: 36,
       name: '늪위를 걸음',
       category: SpellCategory.field,
       description: '독 늪지대를 피해 없이 안전하게 통과합니다.',
-      baseSp: 15,
+      baseSp: 20,
     ),
     Spell(
       id: 37,
@@ -435,14 +439,14 @@ class Spell {
       name: '공간 이동',
       category: SpellCategory.field,
       description: '원하는 마을이나 거점으로 즉시 공간도약합니다.',
-      baseSp: 40,
+      baseSp: 50,
     ),
     Spell(
       id: 40,
       name: '식량 제조',
       category: SpellCategory.field,
       description: '마력으로 일행의 비상 식량을 소환합니다.',
-      baseSp: 10,
+      baseSp: 30,
     ),
 
     // 41..45: 초능력 / ESP

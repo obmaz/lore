@@ -5,6 +5,7 @@ import '../models/party_member.dart';
 import '../services/save_manager.dart';
 import '../game/lore_world_manager.dart';
 import '../game/lore_dialogue_manager.dart';
+import '../logic/field_magic_logic.dart';
 import '../logic/town_logic.dart';
 
 /// 1993년 원작 LOREMENU.PAS 기반 스페이스바 필드 시스템 메뉴 (SelectMode)
@@ -19,6 +20,18 @@ class FieldMenuDialog extends StatefulWidget {
   final void Function(SaveData loadedData)? onSaveDataLoaded;
   final void Function({int? torch, int? water, int? swamp, int? levitate})?
   onSpellEffect;
+
+  /// 현재 맵의 크기 (원작 `xmax`,`ymax`) - 기화/공간 이동 판정용.
+  final (int, int)? mapSize;
+
+  /// (x, y)의 타일 값 (원작 `map[x,y]`).
+  final int? Function(int x, int y)? tileAt;
+
+  /// 파티를 (x, y)로 이동시킨다 (원작 `x := ..; y := ..`).
+  final void Function(int x, int y)? onMoveTo;
+
+  /// (x, y) 타일을 바꾼다 (원작 `map[x+dx,y+dy] := k`).
+  final void Function(int x, int y, int tile)? onTerrainChange;
   final void Function(int count)? onMindReadActivated;
   final Map<String, int>? etc;
   final void Function(String message) onLog;
@@ -37,6 +50,10 @@ class FieldMenuDialog extends StatefulWidget {
     this.onFoodChanged,
     this.onSaveDataLoaded,
     this.onSpellEffect,
+    this.mapSize,
+    this.tileAt,
+    this.onMoveTo,
+    this.onTerrainChange,
     this.onMindReadActivated,
     this.etc,
     this.initialTab = FieldMenuTab.main,
@@ -647,10 +664,13 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   }
 
   // =========================================================================
-  // 4. 비전투 마법 시전 (CastSpell)
+  // =========================================================================
+  // 4. 비전투 마법 시전 (LOREMENU.PAS: CastSpell / CureSpell / PhenominaSpell)
   // =========================================================================
   Widget _buildCastSpell() {
-    final mages = widget.party.where((p) => p.maxSp > 0).toList();
+    final mages = widget.party
+        .where((p) => p.name.isNotEmpty && p.maxSp > 0)
+        .toList();
     if (mages.isEmpty) {
       return Center(
         child: Text(
@@ -669,7 +689,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         shrinkWrap: true,
         children: [
           Text(
-            '【 1. 필드 회복 마법 】 (LOREMENU.PAS: CureSpell)',
+            '【 사용할 마법의 종류 ===> 】 (LOREMENU.PAS: CastSpell)',
             style: RetroTheme.dosFont.copyWith(
               color: RetroTheme.yellow,
               fontSize: 11,
@@ -686,7 +706,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${caster.name} (SP: ${caster.sp}/${caster.maxSp})',
+                      '${caster.name} (${caster.playerClass.koreanName} · SP: ${caster.sp}/${caster.maxSp} · 마법 Lv.${caster.magicLevel})',
                       style: RetroTheme.dosFont.copyWith(
                         color: RetroTheme.white,
                         fontSize: 11,
@@ -697,238 +717,22 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                       spacing: 6,
                       runSpacing: 4,
                       children: [
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: caster.sp >= 5
-                                ? RetroTheme.green
-                                : RetroTheme.darkGray,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            minimumSize: const Size(80, 26),
-                          ),
-                          onPressed: caster.sp >= 5
-                              ? () => _chooseTargetForHeal(
-                                  caster,
-                                  isCurePoison: false,
-                                )
-                              : null,
-                          child: Text(
-                            '한명 치료 (5 SP)',
-                            style: RetroTheme.dosFont.copyWith(fontSize: 9),
-                          ),
+                        _spellBtn(
+                          '1. 공격 마법',
+                          RetroTheme.darkGray,
+                          () => widget.onLog(FieldMagicLogic.attackSpellMessage),
                         ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: caster.sp >= 8
-                                ? RetroTheme.green
-                                : RetroTheme.darkGray,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            minimumSize: const Size(80, 26),
-                          ),
-                          onPressed: caster.sp >= 8
-                              ? () => _chooseTargetForHeal(
-                                  caster,
-                                  isCurePoison: true,
-                                )
-                              : null,
-                          child: Text(
-                            '한명 독제거 (8 SP)',
-                            style: RetroTheme.dosFont.copyWith(fontSize: 9),
-                          ),
+                        _spellBtn(
+                          '2. 치료 마법',
+                          RetroTheme.green,
+                          () => _castCureSpell(caster),
                         ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: caster.sp >= 20
-                                ? RetroTheme.green
-                                : RetroTheme.darkGray,
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            minimumSize: const Size(80, 26),
-                          ),
-                          onPressed: caster.sp >= 20
-                              ? () {
-                                  setState(() {
-                                    caster.sp -= 20;
-                                    for (final p in widget.party) {
-                                      if (!p.isDead) {
-                                        p.hp = (p.hp + 30).clamp(0, p.maxHp);
-                                        p.poison = 0;
-                                      }
-                                    }
-                                  });
-                                  widget.onLog(
-                                    '✨ ${caster.name}의 전체 치료 마법으로 파티 전원의 체력이 회복되고 독이 정화되었습니다!',
-                                  );
-                                }
-                              : null,
-                          child: Text(
-                            '전체 치료 (20 SP)',
-                            style: RetroTheme.dosFont.copyWith(fontSize: 9),
-                          ),
+                        _spellBtn(
+                          '3. 변화 마법',
+                          RetroTheme.blue,
+                          () => _castPhenominaSpell(caster),
                         ),
                       ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-
-          const SizedBox(height: 8),
-          Text(
-            '【 2. 현상계 보조 마법 】 (LOREMENU.PAS: PhenominaSpell)',
-            style: RetroTheme.dosFont.copyWith(
-              color: RetroTheme.lightCyan,
-              fontSize: 11,
-            ),
-          ),
-          const SizedBox(height: 6),
-          for (final caster in mages)
-            Card(
-              color: RetroTheme.black,
-              margin: const EdgeInsets.only(bottom: 6),
-              child: Padding(
-                padding: const EdgeInsets.all(6),
-                child: Wrap(
-                  spacing: 6,
-                  runSpacing: 4,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 1
-                            ? RetroTheme.blue
-                            : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        minimumSize: const Size(84, 26),
-                      ),
-                      onPressed: caster.sp >= 1
-                          ? () {
-                              setState(() => caster.sp -= 1);
-                              widget.onSpellEffect?.call(torch: 255);
-                              widget.onLog(
-                                '🔥 ${caster.name}이(가) [마법의 횃불]을 밝혔습니다. 던전 시야가 확장됩니다.',
-                              );
-                            }
-                          : null,
-                      child: Text(
-                        '마법 횃불 (1 SP)',
-                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 5
-                            ? RetroTheme.blue
-                            : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        minimumSize: const Size(84, 26),
-                      ),
-                      onPressed: caster.sp >= 5
-                          ? () {
-                              setState(() => caster.sp -= 5);
-                              widget.onSpellEffect?.call(levitate: 255);
-                              widget.onLog(
-                                '✨ ${caster.name}이(가) [공중 부상] 마법을 시전했습니다. 용암 위를 안전하게 이동합니다.',
-                              );
-                            }
-                          : null,
-                      child: Text(
-                        '공중 부상 (5 SP)',
-                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 10
-                            ? RetroTheme.blue
-                            : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        minimumSize: const Size(84, 26),
-                      ),
-                      onPressed: caster.sp >= 10
-                          ? () {
-                              setState(() => caster.sp -= 10);
-                              widget.onSpellEffect?.call(water: 255);
-                              widget.onLog(
-                                '🌊 ${caster.name}이(가) [물위를 걸음] 마법을 시전했습니다. 깊은 물 위를 걸을 수 있습니다.',
-                              );
-                            }
-                          : null,
-                      child: Text(
-                        '물위 걸음 (10 SP)',
-                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 10
-                            ? RetroTheme.blue
-                            : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        minimumSize: const Size(84, 26),
-                      ),
-                      onPressed: caster.sp >= 10
-                          ? () {
-                              setState(() => caster.sp -= 10);
-                              widget.onSpellEffect?.call(swamp: 255);
-                              widget.onLog(
-                                '🌿 ${caster.name}이(가) [늪위를 걸음] 마법을 시전했습니다. 독 늪지대 피해가 면제됩니다.',
-                              );
-                            }
-                          : null,
-                      child: Text(
-                        '늪위 걸음 (10 SP)',
-                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: caster.sp >= 15
-                            ? RetroTheme.blue
-                            : RetroTheme.darkGray,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 8,
-                          vertical: 4,
-                        ),
-                        minimumSize: const Size(84, 26),
-                      ),
-                      onPressed: caster.sp >= 15
-                          ? () {
-                              setState(() {
-                                caster.sp -= 15;
-                                _currentFood = (_currentFood + 50).clamp(
-                                  0,
-                                  255,
-                                );
-                              });
-                              widget.onFoodChanged?.call(_currentFood);
-                              widget.onLog(
-                                '🍞 ${caster.name}이(가) [식량 제조] 마법으로 50인분의 식량을 생성했습니다! (현재: $_currentFood)',
-                              );
-                            }
-                          : null,
-                      child: Text(
-                        '식량 제조 (15 SP)',
-                        style: RetroTheme.dosFont.copyWith(fontSize: 9),
-                      ),
                     ),
                   ],
                 ),
@@ -939,14 +743,59 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     );
   }
 
-  void _chooseTargetForHeal(PartyMember caster, {required bool isCurePoison}) {
-    showDialog(
+  Widget _spellBtn(String title, Color color, VoidCallback onTap) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: color,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        minimumSize: const Size(96, 26),
+      ),
+      onPressed: onTap,
+      child: Text(title, style: RetroTheme.dosFont.copyWith(fontSize: 9)),
+    );
+  }
+
+  /// 원작 `exist(person)` 판정 - 이름이 있고 기절/사망/HP 0이 아닌 상태.
+  bool _canCast(PartyMember m) =>
+      m.name.isNotEmpty && !m.isUnconscious && !m.isDead && m.hp > 0;
+
+  /// 현재 맵의 원작 `position` 값 (town/ground/den/keep).
+  String get _position {
+    final cat = LoreWorldManager.mapRegistry[widget.currentMapId]?.category;
+    switch (cat) {
+      case MapCategory.town:
+        return 'town';
+      case MapCategory.ground:
+        return 'ground';
+      case MapCategory.den:
+        return 'den';
+      case MapCategory.keep:
+        return 'keep';
+      default:
+        return 'town';
+    }
+  }
+
+  int _tileAt(int x, int y) => widget.tileAt?.call(x, y) ?? 0;
+
+  // ------------------------------------------------------------------
+  // 치료 마법 (원작 CureSpell: 대상 → 개인 7종 / 전체 7종)
+  // ------------------------------------------------------------------
+  void _castCureSpell(PartyMember caster) {
+    if (!_canCast(caster)) {
+      widget.onLog(
+        '${caster.sex == Gender.female ? '그녀' : '그'}는 마법을 사용할수있는 상태가 아닙니다',
+      );
+      return;
+    }
+    final members = widget.party.where((p) => p.name.isNotEmpty).toList();
+    showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: RetroTheme.black,
         shape: Border.all(color: RetroTheme.lightCyan, width: 2),
         title: Text(
-          isCurePoison ? '누구의 독을 정화하시겠습니까?' : '누구의 상처를 치료하시겠습니까?',
+          '누구에게',
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 12,
@@ -954,41 +803,425 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          children: widget.party.map((target) {
-            return ListTile(
+          children: [
+            for (final target in members)
+              ListTile(
+                dense: true,
+                title: Text(
+                  '${target.name} (HP ${target.hp}/${target.maxHp} · SP ${target.sp}/${target.maxSp})',
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.white,
+                    fontSize: 12,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(ctx).pop();
+                  _choosePersonalCure(caster, target);
+                },
+              ),
+            ListTile(
               dense: true,
               title: Text(
-                '${target.name} (HP: ${target.hp}/${target.maxHp}, ${target.isPoisoned ? "중독" : "정상"})',
+                '모든 사람들에게',
                 style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.white,
+                  color: RetroTheme.lightCyan,
                   fontSize: 12,
                 ),
               ),
               onTap: () {
                 Navigator.of(ctx).pop();
-                setState(() {
-                  if (isCurePoison) {
-                    caster.sp -= 8;
-                    target.poison = 0;
-                  } else {
-                    caster.sp -= 5;
-                    target.hp = (target.hp + 25).clamp(0, target.maxHp);
-                  }
-                });
-                widget.onLog(
-                  isCurePoison
-                      ? '🌿 ${caster.name}의 해독 마법으로 ${target.name}의 몸에서 독이 완전히 정화되었습니다!'
-                      : '✨ ${caster.name}의 치유 마법으로 ${target.name}의 체력이 25 회복되었습니다!',
-                );
+                _chooseGroupCure(caster);
               },
-            );
-          }).toList(),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  // =========================================================================
+  void _choosePersonalCure(PartyMember caster, PartyMember target) {
+    final slots = FieldMagicLogic.personalCureSlots(caster.magicLevel);
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+        title: Text(
+          '선택',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 12,
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (var i = 0; i < slots; i++)
+              ListTile(
+                dense: true,
+                title: Text(
+                  FieldMagicLogic.cureSpellNames[i],
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.white,
+                    fontSize: 12,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(ctx).pop();
+                  final result = FieldMagicLogic.castPersonalCure(
+                    caster,
+                    target,
+                    i + 1,
+                  );
+                  setState(() {});
+                  for (final msg in result.messages) {
+                    widget.onLog(msg);
+                  }
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _chooseGroupCure(PartyMember caster) {
+    final slots = FieldMagicLogic.groupCureSlots(caster.magicLevel);
+    if (slots <= 0) {
+      widget.onLog(FieldMagicLogic.strongCureNotReady(caster.name));
+      return;
+    }
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+        title: Text(
+          '선택',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 12,
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (var i = 0; i < slots; i++)
+              ListTile(
+                dense: true,
+                title: Text(
+                  FieldMagicLogic.cureAllSpellNames[i],
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.white,
+                    fontSize: 12,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(ctx).pop();
+                  final result = FieldMagicLogic.castGroupCure(
+                    caster,
+                    widget.party,
+                    i + 1,
+                  );
+                  setState(() {});
+                  for (final msg in result.messages) {
+                    widget.onLog(msg);
+                  }
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ------------------------------------------------------------------
+  // 변화 마법 (원작 PhenominaSpell 8종)
+  // ------------------------------------------------------------------
+  void _castPhenominaSpell(PartyMember caster) {
+    if (!_canCast(caster)) {
+      widget.onLog(
+        '${caster.sex == Gender.female ? '그녀' : '그'}는 마법을 사용할수있는 상태가 아닙니다',
+      );
+      return;
+    }
+    if (FieldMagicLogic.isPhenominaBlocked(widget.currentMapId)) {
+      widget.onLog(FieldMagicLogic.phenominaBlockedMessage);
+      return;
+    }
+    final slots = FieldMagicLogic.phenominaSlots(caster.magicLevel);
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+        title: Text(
+          '선택',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 12,
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (var i = 0; i < slots; i++)
+              ListTile(
+                dense: true,
+                title: Text(
+                  '${FieldMagicLogic.phenominaSpellNames[i]} (${FieldMagicLogic.phenominaSpCosts[i]} SP)',
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.white,
+                    fontSize: 12,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(ctx).pop();
+                  _applyPhenomina(caster, i + 1);
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _applyPhenomina(PartyMember caster, int index) {
+    MagicCastResult result;
+    switch (index) {
+      case 1:
+        result = FieldMagicLogic.torch(caster);
+        if (result.success) widget.onSpellEffect?.call(torch: 255);
+        break;
+      case 2:
+        result = FieldMagicLogic.levitate(caster);
+        if (result.success) widget.onSpellEffect?.call(levitate: 255);
+        break;
+      case 3:
+        result = FieldMagicLogic.waterWalk(caster);
+        if (result.success) widget.onSpellEffect?.call(water: 255);
+        break;
+      case 4:
+        result = FieldMagicLogic.swampWalk(caster);
+        if (result.success) widget.onSpellEffect?.call(swamp: 255);
+        break;
+      case 5:
+        _chooseDirection('기화 이동', (dx, dy, label) {
+          final moved = _applyVaporize(caster, dx, dy);
+          if (moved == null) {
+            widget.onLog(FieldMagicLogic.vaporizeNotAllowedMessage);
+          }
+        });
+        return;
+      case 6:
+        _chooseDirection('지형 변화', (dx, dy, label) {
+          _applyTerrainChange(caster, dx, dy);
+        });
+        return;
+      case 7:
+        _chooseDirection('공간 이동', (dx, dy, label) {
+          _chooseDistance(caster, dx, dy);
+        });
+        return;
+      case 8:
+        result = FieldMagicLogic.createFood(
+          caster,
+          widget.party,
+          _currentFood,
+        );
+        if (result.success) {
+          final members = widget.party.where((p) => p.name.isNotEmpty).length;
+          _currentFood = (_currentFood + members).clamp(0, 255);
+          widget.onFoodChanged?.call(_currentFood);
+        }
+        break;
+      default:
+        return;
+    }
+    setState(() {});
+    for (final msg in result.messages) {
+      widget.onLog(msg);
+    }
+  }
+
+  /// 원작 방향 선택(`m[1..4]` = 북/남/동/서).
+  void _chooseDirection(
+    String label,
+    void Function(int dx, int dy, String label) onPicked,
+  ) {
+    const dirs = [
+      ('북쪽', 0, -1),
+      ('남쪽', 0, 1),
+      ('동쪽', 1, 0),
+      ('서쪽', -1, 0),
+    ];
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+        title: Text(
+          '<<<  $label 방향을 선택하시오  >>>',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 12,
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (final (name, dx, dy) in dirs)
+              ListTile(
+                dense: true,
+                title: Text(
+                  name,
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.white,
+                    fontSize: 12,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(ctx).pop();
+                  onPicked(dx, dy, name);
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// 원작 공간 이동은 1~9칸 거리를 입력받는다.
+  void _chooseDistance(PartyMember caster, int dx, int dy) {
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+        title: Text(
+          '공간 이동력 (1~9)',
+          style: RetroTheme.dosFont.copyWith(
+            color: RetroTheme.yellow,
+            fontSize: 12,
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            for (var k = 1; k <= 9; k++)
+              ListTile(
+                dense: true,
+                title: Text(
+                  '$k 칸',
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.white,
+                    fontSize: 12,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.of(ctx).pop();
+                  _applySpaceMove(caster, dx, dy, k);
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  (int, int)? _applyVaporize(PartyMember caster, int dx, int dy) {
+    if (!_canCast(caster)) return null;
+    final map = widget.mapSize;
+    if (map == null) return null;
+    final target = FieldMagicLogic.vaporizeTarget(
+      widget.playerX,
+      widget.playerY,
+      dx,
+      dy,
+      map.$1,
+      map.$2,
+    );
+    if (target == null) return null;
+    if (caster.sp < FieldMagicLogic.vaporizeMoveSpCost) {
+      widget.onLog(FieldMagicLogic.spNotEnoughMessage);
+      return null;
+    }
+    final (tx, ty) = target;
+    if (!FieldMagicLogic.vaporizeTileAllowed(_position, _tileAt(tx, ty))) {
+      widget.onLog(FieldMagicLogic.vaporizeNotAllowedMessage);
+      return null;
+    }
+    caster.sp -= FieldMagicLogic.vaporizeMoveSpCost;
+    // 원작: 도착 지점 뒤 타일이 0이거나 던전 벽(52)이면 마법이 배척된다.
+    final behind = _tileAt(widget.playerX + dx, widget.playerY + dy);
+    if (behind == 0 || (['den', 'keep'].contains(_position) && behind == 52)) {
+      widget.onLog(FieldMagicLogic.magicRejectedMessage);
+      return null;
+    }
+    widget.onMoveTo?.call(tx, ty);
+    setState(() {});
+    widget.onLog(FieldMagicLogic.vaporizeDoneMessage);
+    return (tx, ty);
+  }
+
+  void _applyTerrainChange(PartyMember caster, int dx, int dy) {
+    if (!_canCast(caster)) return;
+    if (!['town', 'ground', 'den', 'keep'].contains(_position)) return;
+    if (caster.sp < FieldMagicLogic.terrainChangeSpCost) {
+      widget.onLog(FieldMagicLogic.spNotEnoughMessage);
+      return;
+    }
+    final tx = widget.playerX + dx;
+    final ty = widget.playerY + dy;
+    final tile = _tileAt(tx, ty);
+    if (tile == 0 || (['den', 'keep'].contains(_position) && tile == 52)) {
+      widget.onLog(FieldMagicLogic.magicRejectedMessage);
+      return;
+    }
+    caster.sp -= FieldMagicLogic.terrainChangeSpCost;
+    final newTile = FieldMagicLogic.terrainChangeTile(_position);
+    widget.onTerrainChange?.call(tx, ty, newTile);
+    setState(() {});
+    widget.onLog(FieldMagicLogic.terrainChangedMessage);
+  }
+
+  void _applySpaceMove(PartyMember caster, int dx, int dy, int distance) {
+    if (!_canCast(caster)) return;
+    final map = widget.mapSize;
+    if (map == null) return;
+    final target = FieldMagicLogic.spaceMoveTarget(
+      widget.playerX,
+      widget.playerY,
+      dx,
+      dy,
+      distance,
+      map.$1,
+      map.$2,
+    );
+    if (target == null) {
+      widget.onLog(FieldMagicLogic.spaceMoveNotAllowedMessage);
+      return;
+    }
+    if (caster.sp < FieldMagicLogic.spaceMoveSpCost) {
+      widget.onLog(FieldMagicLogic.spNotEnoughMessage);
+      return;
+    }
+    final (tx, ty) = target;
+    if (!FieldMagicLogic.spaceMoveTileAllowed(_position, _tileAt(tx, ty))) {
+      widget.onLog(FieldMagicLogic.spaceMoveBadSpotMessage);
+      return;
+    }
+    caster.sp -= FieldMagicLogic.spaceMoveSpCost;
+    final ahead = _tileAt(tx + dx, ty + dy);
+    if (ahead == 0 || (['den', 'keep'].contains(_position) && ahead == 52)) {
+      widget.onLog(FieldMagicLogic.spaceMoveRejectedMessage);
+      return;
+    }
+    widget.onMoveTo?.call(tx, ty);
+    setState(() {});
+    widget.onLog(FieldMagicLogic.spaceMoveDoneMessage);
+  }
+
   // 5. 초감각 기술 (LOREMENU.PAS: Extrasense / ESP)
   // =========================================================================
   int _espMemberIdx = 0;
