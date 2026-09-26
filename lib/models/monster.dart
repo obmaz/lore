@@ -71,6 +71,47 @@ class Monster {
     );
   }
 
+  /// 원작 `with enemy[i] do begin name := 'Sphinx'; level := 4; ac := 8; end`
+  /// 같은 **적별 덮어쓰기**를 적용한 사본을 만든다.
+  ///
+  /// 원작은 전투 직전에 이름·방어도·레벨·특수능력·`E_number` 를 직접 바꿔
+  /// 넣는다(Sphinx, Major Mummy, Dragon's tail, Hidra's Head …).
+  /// `level` 을 바꾸면 원작과 같이 최대 HP 도 `endurance * level` 로 다시
+  /// 계산한다(최대치는 체력 계수 기준이며, 명시적 `hp` 가 있으면 그것을 쓴다).
+  Monster withOverrides({
+    String? name,
+    int? ac,
+    int? special,
+    int? castLevel,
+    int? specialCastLevel,
+    int? level,
+    int? eNumber,
+    int? hp,
+  }) {
+    final newLevel = level ?? this.level;
+    final newStamina = endurance * (newLevel > 0 ? newLevel : 1);
+    return Monster(
+      eNumber: eNumber ?? this.eNumber,
+      name: name ?? this.name,
+      strength: strength,
+      mentality: mentality,
+      endurance: endurance,
+      resistance: resistance,
+      agility: agility,
+      accArms: accArms,
+      accMagic: accMagic,
+      ac: ac ?? this.ac,
+      special: special ?? this.special,
+      castLevel: castLevel ?? this.castLevel,
+      specialCastLevel: specialCastLevel ?? this.specialCastLevel,
+      level: newLevel,
+      hp: hp ?? (level == null ? this.hp : newStamina),
+      isPoisoned: isPoisoned,
+      isUnconscious: isUnconscious,
+      isDead: isDead,
+    );
+  }
+
   /// 원작 FOEDATA.DAT 기반 75종 몬스터 생성 팩토리 (1..75)
   factory Monster.create(int id) {
     if (id < 1 || id > monsterTemplates.length) {

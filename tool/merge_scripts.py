@@ -106,6 +106,53 @@ def require_flags(entry) -> set:
     return out
 
 
+# 진행 상태를 남기는 스텝 종류. 손으로 쓴 `flag` 와 옮긴 쪽 `questStep` 은 원작에서
+# 같은 일(예: `inc(party.etc[13])` ↔ "완료 표시 플래그")이므로 종류 비교에서 빼고
+# 이름 비교로 정밀하게 판단한다.
+MARKER_KINDS = {'flag', 'questStep', 'randomFlag'}
+
+
+def flag_sites(existing) -> dict:
+    """플래그 이름 → 그 플래그를 쓰는(설정/조건) 좌표 키 집합.
+
+    손으로 쓴 "완료 표시" 플래그가 **그 좌표에서만** 쓰이면, 옮긴 쪽이 그 자리를
+    원작 조건으로 이미 표현하고 있으므로 대체해도 안전하다고 본다.
+    """
+    sites: dict[str, set] = {}
+    for e in existing:
+        if e.get('disabled'):
+            continue
+        k = key(e)
+        names = set(effect_detail(e)[0]) | require_flags(e)
+        for n in names:
+            sites.setdefault(n, set()).add(k)
+    return sites
+
+
+def hard_missing(existing_entries, gen_items) -> list:
+    """확실한 차단 사유(종류·전투 구성·disabled).
+
+    표시자(플래그/퀘스트 단계)는 이름 비교로 따로 판단하므로 종류에서는 뺀다.
+    """
+    out: list = []
+    ex_kinds = set()
+    gn_kinds = set()
+    ex_monsters: list = []
+    gn_monsters: list = []
+    for e in existing_entries:
+        ex_kinds |= kinds(e)
+        ex_monsters.extend(effect_detail(e)[1])
+    for e in gen_items:
+        gn_kinds |= kinds(e)
+        gn_monsters.extend(effect_detail(e)[1])
+    out.extend(sorted((ex_kinds - gn_kinds) - MARKER_KINDS))
+    if ex_monsters and not set(ex_monsters) <= set(gn_monsters):
+        out.append('전투 구성: ' + str(tuple(sorted(ex_monsters))))
+    if any(e.get('disabled') for e in gen_items):
+        out.append('옮긴 쪽에 disabled 항목 있음')
+    return out
+
+
 def merge_spec(existing, gen, replace_ok: bool = False,
                append_active: bool = False):
     """원작에서 기계적으로 옮긴 스크립트를 반영한다.
@@ -130,8 +177,18 @@ def merge_spec(existing, gen, replace_ok: bool = False,
     for e in gen:
         gen_by_key.setdefault(key(e), []).append(e)
 
+    # 1차: 플래그 이름 차이를 빼고 판단해 "대체될 좌표"를 먼저 구한다.
+    # (두 봉인문처럼 서로 플래그를 주고받는 좌표를 함께 대체할 수 있게)
+    sites = flag_sites(existing)
+    keys0 = set()
+    for k, items in gen_by_key.items():
+        have = by_key.get(k, [])
+        if have and not hard_missing([existing[i] for i in have], items):
+            keys0.add(k)
+
     plan = {}          # key -> 'replace' | 'append'
     decisions = []
+    relaxed_log = []
     for k, items in gen_by_key.items():
         have = by_key.get(k, [])
         if not have:
@@ -160,10 +217,24 @@ def merge_spec(existing, gen, replace_ok: bool = False,
             gn_monsters = gn_monsters + m3
         ex_monsters = tuple(sorted(ex_monsters))
         gn_monsters = tuple(sorted(gn_monsters))
+        # 표시자(플래그/퀘스트 단계/무작위 플래그)는 따로 판단하므로 종류 비교에서는
+        # 뺀다(손으로 쓴 `flag` ↔ 옮긴 쪽 `questStep` 은 원작에서 같은 일이다).
+        existing_kinds -= MARKER_KINDS
+        gen_kinds -= MARKER_KINDS
         missing = sorted(existing_kinds - gen_kinds)
         # 플래그 이름/전투 구성/전투 제목까지 같아야 안전하게 대체할 수 있다.
-        if ex_flags - gn_flags:
-            missing.append('flag 이름: ' + ', '.join(sorted(ex_flags - gn_flags)))
+        # 단, 손으로 쓴 "완료 표시" 플래그가 **대체되는 좌표에서만** 쓰이면
+        # 옮긴 쪽이 원작 조건으로 같은 일을 하므로 무시한다.
+        relaxed = set()
+        for n in sorted(ex_flags - gn_flags):
+            if sites.get(n, set()) <= keys0:
+                relaxed.add(n)
+        if ex_flags - gn_flags - relaxed:
+            missing.append('flag 이름: ' +
+                           ', '.join(sorted(ex_flags - gn_flags - relaxed)))
+        if relaxed:
+            relaxed_log.append(f'{k[:4]} 자체 표시 플래그 무시: '
+                               + ', '.join(sorted(relaxed)))
         # 전투 제목은 표시용 이름일 뿐이라 대체를 막지 않는다(원작 안내 문구는
         # 옮긴 쪽의 `say` 스텝으로 그대로 남는다). `ex_title` 은 기록용으로만 둔다.
         _ = ex_title
@@ -176,8 +247,10 @@ def merge_spec(existing, gen, replace_ok: bool = False,
             ex_req |= require_flags(existing[idx])
         for e in items:
             gn_req |= require_flags(e)
-        if ex_req - gn_req:
-            missing.append('require 플래그: ' + ', '.join(sorted(ex_req - gn_req)))
+        req_relax = {n for n in (ex_req - gn_req) if sites.get(n, set()) <= keys0}
+        if ex_req - gn_req - req_relax:
+            missing.append('require 플래그: ' +
+                           ', '.join(sorted(ex_req - gn_req - req_relax)))
         # 옮긴 쪽에 실행하지 못하는(`disabled`) 항목이 섞여 있으면 대체하지
         # 않는다.  손으로 쓴 스크립트가 하던 일을 못 하게 될 수 있다.
         if any(e.get('disabled') for e in items):
@@ -222,7 +295,7 @@ def merge_spec(existing, gen, replace_ok: bool = False,
     for k, items in gen_by_key.items():
         if plan.get(k) == 'new':
             out.extend(items)
-    return out, decisions
+    return out, decisions, relaxed_log
 
 
 def main() -> int:
@@ -243,9 +316,11 @@ def main() -> int:
     if '--spec' in sys.argv:
         replace_ok = '--replace-ok' in sys.argv
         append_active = '--append-active' in sys.argv
-        merged, decisions = merge_spec(existing, gen['scripts'], replace_ok,
-                                       append_active)
-        print('원작 이관 스크립트 병합:')
+    merged, decisions, relaxed_log = merge_spec(existing, gen['scripts'],
+                                                replace_ok, append_active)
+    print('원작 이관 스크립트 병합:')
+    for line in relaxed_log:
+        print(f'  참고: {line}')
         for k, ids, missing, how in decisions:
             mark = '대체' if how == 'replace' else '덧붙임'
             extra = f' (못 옮긴 효과: {", ".join(missing)})' if missing else ''

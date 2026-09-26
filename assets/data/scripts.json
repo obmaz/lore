@@ -1183,6 +1183,335 @@
       "disabled": true
     },
     {
+      "id": "spec-4-L37-1",
+      "trigger": "step",
+      "map": 4,
+      "once": false,
+      "steps": [
+        {
+          "say": " 여기는 인간과 드래곤의 중간 종족이며  혼란"
+        },
+        {
+          "say": "스런 세상을 피해 은둔하고있는 Draconian이란"
+        },
+        {
+          "say": "자가 살고있는 피라밋이었다."
+        },
+        {
+          "say": " 나는 Draconian이라고 하오. 이런곳까지 사람"
+        },
+        {
+          "say": "이 찾아오리라고는 생각하지 못했는데 참 의외"
+        },
+        {
+          "say": "로군요. 나는 숨어 지내는 오랜 세월동안에 여"
+        },
+        {
+          "say": "러가지 학문을 연구하고 있었소.  특히 천문학"
+        },
+        {
+          "say": "에 대해서는 특별히 전염하여 다루었소.  내가"
+        },
+        {
+          "say": "그동안 알아낸 지식들은 다음과 같은 것이오."
+        },
+        {
+          "say": " 지금 우리가 살고있는 지구는 태양계에서  세"
+        },
+        {
+          "say": "번째로 위치한 행성인데 이상하게도 위성인 달"
+        },
+        {
+          "say": "이 지구보다도 더 오래되었다는 사실이 연구되"
+        },
+        {
+          "say": "었소. 또한 이 지구가 세차운동에 의해 2 등성"
+        },
+        {
+          "say": "이었던 북극성이 다른 별로 바뀐다는걸 알았소"
+        },
+        {
+          "say": " 물리학에서 알아낸것은, 중수반응에서 매질의"
+        },
+        {
+          "say": "차이로 빛이 속도가 느려진 틈을 이용해 빛 보"
+        },
+        {
+          "say": "다 빠른 입자가 생겨났소. 하지만 절대적인 빛"
+        },
+        {
+          "say": "의 속도에는 미치지 못했지만 말이오.  이것을"
+        },
+        {
+          "say": "잘만 이용하면 미래로의 타임머신이  가능하다"
+        },
+        {
+          "say": "는 걸 입증할 수가 있소."
+        },
+        {
+          "say": " 사실 이런것은 당신에게는 별 의미가 없는 것"
+        },
+        {
+          "say": "일지도 모르오. 하지만 마지막으로 알아낸것은"
+        },
+        {
+          "say": "바로 당신이 응징하고자 하는  Necromancer 의"
+        },
+        {
+          "say": "출처에 관한 것이오. 당신은 시그너스 X1과 같"
+        },
+        {
+          "say": "은 블랙홀에 대해서 알고있을 것이오. 이런 물"
+        },
+        {
+          "say": "리학적인 파라독스에 의해 그는 생겨났던것이오."
+        },
+        {
+          "say": " 지금 우리가 있는 3차원 위에 또 다른 차원이"
+        },
+        {
+          "say": "있다고 생각하오?  생각은 하더라도 눈으로 확"
+        },
+        {
+          "say": "인은 못해봤을것이오. 우리는 2차원을 인식 할"
+        },
+        {
+          "say": "수가 있소.  하지만 실제로 2차원에  살고있는"
+        },
+        {
+          "say": "생물은 자신의 차원은 인식해도 우리가 살고있"
+        },
+        {
+          "say": "는 3차원은 인식할 수가 없는 것이오. 그의 차"
+        },
+        {
+          "say": "원에는 우리의 차원이  존재하지 않기  때문에"
+        },
+        {
+          "say": "개념을 잡을수가 없는 것이오.  마찬가지로 우"
+        },
+        {
+          "say": "리 또한 지금의 차원보다 한 차원 높은 4 차원"
+        },
+        {
+          "say": "을 개념을 잡기가 어려운 것이오."
+        },
+        {
+          "say": " 어떤이는 4차원은 시간의 축이 보태어 진다고"
+        },
+        {
+          "say": "하는 이론을 세우더군요.  하지만 나의 이론은"
+        },
+        {
+          "say": "시간은 모든 차원의 기준이며 4차원에 국한 되"
+        },
+        {
+          "say": "지는 않는다는 생각이오. 3차원에서는 동 시간"
+        },
+        {
+          "say": "대에 무한한 2차원을 포함 하듯이 4차원에서는"
+        },
+        {
+          "say": "동 시간대에  무한한 3차원을 포함하고 있다는"
+        },
+        {
+          "say": "이론이 성립되오. 말이 조금은 빗나갔지만  이"
+        },
+        {
+          "say": "이론으로 Necromancer의 출처를 해명해 보겠소"
+        },
+        {
+          "say": " 방금 말했듯이 3차원은 이 공간만이 존재하는"
+        },
+        {
+          "say": "것은 아니오. 동 시대를 살아가는 다른 공간도"
+        },
+        {
+          "say": "인정해야 한다는 말이오.  그 공간들을 이어주"
+        },
+        {
+          "say": "는 것이 바로 블랙 홀이란 것이지요.  그는 원"
+        },
+        {
+          "say": "래 그가 있던 공간에서 블랙 홀을 통해서 다른"
+        },
+        {
+          "say": "공간으로 가려고 시도를 했고 웜 홀을 통해 시"
+        },
+        {
+          "say": "공간을 가로질러 오래전 우리의 공간에 화이트"
+        },
+        {
+          "say": "홀이 생기는 틈을 이용하여 내려왔던 것이오."
+        },
+        {
+          "say": " 하지만 3차원에 사는 나로서는 그가 전에  있"
+        },
+        {
+          "say": "던 공간에서 왜 이쪽으로 왔는지  알수가 없었"
+        },
+        {
+          "say": "지요. 그래서 그와 같이 이 공간으로 들어왔던"
+        },
+        {
+          "say": "심복들을 통해 그 사정을 알게 되었소."
+        },
+        {
+          "say": " Necromacer는 저쪽의 공간에서도 지금과 마찬"
+        },
+        {
+          "say": "가지로 차원을 통해 그 공간에 도달했소. 역시"
+        },
+        {
+          "say": "거기서도 악을 뿌리며 거기의 생명체들을 위협"
+        },
+        {
+          "say": "했소. 하지만 어떤 선택되어진 6인의 용사들에"
+        },
+        {
+          "say": "의해 쫒겨나서 여기로 온것이오.  지금의 당신"
+        },
+        {
+          "say": "들과 비슷하다고 생각되지 않소? 그렇소. 다른"
+        },
+        {
+          "say": "공간의 당신들에게 쫒겨난후 다시 여기서 당신"
+        },
+        {
+          "say": "들을 또 만나게 된것이오. Necromancer와 당신"
+        },
+        {
+          "say": "들의 운명은 언제까지나 쫒고 쫒기며 대립하여"
+        },
+        {
+          "say": "야하는 운명으로 탄생되었던 것이오. 이런  이"
+        },
+        {
+          "say": "유에서 당신은 그를 반드시 무찌를 수가  있다"
+        },
+        {
+          "say": "는 근거가 되는 것이오."
+        },
+        {
+          "say": " 당신들의 건투를 빌어주겠소."
+        }
+      ],
+      "x": 26,
+      "y": 16,
+      "require": {
+        "notAllFlags": [
+          "draconianMet",
+          "etc5"
+        ]
+      }
+    },
+    {
+      "id": "spec-4-L37-2",
+      "trigger": "step",
+      "map": 4,
+      "once": false,
+      "steps": [
+        {
+          "say": " 여기는 인간과 드래곤의 중간 종족이며  혼란"
+        },
+        {
+          "say": "스런 세상을 피해 은둔하고있는 Draconian이란"
+        },
+        {
+          "say": "자가 살고있는 피라밋이었다."
+        },
+        {
+          "say": " 나의 운명을 생각해 보니  나 역시  당신들을"
+        },
+        {
+          "say": "필연적으로 만나 Necromancer를 물리쳐야 한다"
+        },
+        {
+          "say": "는걸 깨닭았소. 당신들 일행의 제일 뒤에서 도"
+        },
+        {
+          "say": "와주고 싶소. 어떻소."
+        },
+        {
+          "choice": {
+            "options": [
+              {
+                "text": "저도 바라던 차입니다",
+                "steps": [
+                  {
+                    "join": "draconian",
+                    "slot": 4
+                  },
+                  {
+                    "flag": "draconianMet"
+                  }
+                ]
+              },
+              {
+                "text": "별로 좋지는 않군요",
+                "steps": [
+                  {
+                    "say": " 다시 생각해보니 나는 당신들과 같이 싸울 운"
+                  },
+                  {
+                    "say": "명이 아닌것 같소."
+                  }
+                ]
+              },
+              {
+                "text": "취소",
+                "steps": [
+                  {
+                    "block": true
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "x": 26,
+      "y": 16,
+      "require": {
+        "allFlags": [
+          "etc5"
+        ],
+        "notAllFlags": [
+          "draconianMet"
+        ]
+      }
+    },
+    {
+      "id": "spec-4-L37-3",
+      "trigger": "step",
+      "map": 4,
+      "once": false,
+      "steps": [
+        {
+          "say": " 여기는 인간과 드래곤의 중간 종족이며  혼란"
+        },
+        {
+          "say": "스런 세상을 피해 은둔하고있는 Draconian이란"
+        },
+        {
+          "say": "자가 살고있는 피라밋이었다."
+        },
+        {
+          "say": " 그러나, 아무도 살고 있지 않았다."
+        },
+        {
+          "block": true
+        }
+      ],
+      "x": 26,
+      "y": 16,
+      "require": {
+        "allFlags": [
+          "draconianMet"
+        ]
+      }
+    },
+    {
       "id": "draconian-lecture",
       "trigger": "step",
       "map": 4,
@@ -1404,7 +1733,8 @@
         {
           "flag": "draconianMet"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "id": "draconian-join",
@@ -1467,338 +1797,7 @@
             ]
           }
         }
-      ]
-    },
-    {
-      "id": "spec-4-L37-1",
-      "trigger": "step",
-      "map": 4,
-      "once": false,
-      "steps": [
-        {
-          "say": " 여기는 인간과 드래곤의 중간 종족이며  혼란"
-        },
-        {
-          "say": "스런 세상을 피해 은둔하고있는 Draconian이란"
-        },
-        {
-          "say": "자가 살고있는 피라밋이었다."
-        },
-        {
-          "say": " 나는 Draconian이라고 하오. 이런곳까지 사람"
-        },
-        {
-          "say": "이 찾아오리라고는 생각하지 못했는데 참 의외"
-        },
-        {
-          "say": "로군요. 나는 숨어 지내는 오랜 세월동안에 여"
-        },
-        {
-          "say": "러가지 학문을 연구하고 있었소.  특히 천문학"
-        },
-        {
-          "say": "에 대해서는 특별히 전염하여 다루었소.  내가"
-        },
-        {
-          "say": "그동안 알아낸 지식들은 다음과 같은 것이오."
-        },
-        {
-          "say": " 지금 우리가 살고있는 지구는 태양계에서  세"
-        },
-        {
-          "say": "번째로 위치한 행성인데 이상하게도 위성인 달"
-        },
-        {
-          "say": "이 지구보다도 더 오래되었다는 사실이 연구되"
-        },
-        {
-          "say": "었소. 또한 이 지구가 세차운동에 의해 2 등성"
-        },
-        {
-          "say": "이었던 북극성이 다른 별로 바뀐다는걸 알았소"
-        },
-        {
-          "say": " 물리학에서 알아낸것은, 중수반응에서 매질의"
-        },
-        {
-          "say": "차이로 빛이 속도가 느려진 틈을 이용해 빛 보"
-        },
-        {
-          "say": "다 빠른 입자가 생겨났소. 하지만 절대적인 빛"
-        },
-        {
-          "say": "의 속도에는 미치지 못했지만 말이오.  이것을"
-        },
-        {
-          "say": "잘만 이용하면 미래로의 타임머신이  가능하다"
-        },
-        {
-          "say": "는 걸 입증할 수가 있소."
-        },
-        {
-          "say": " 사실 이런것은 당신에게는 별 의미가 없는 것"
-        },
-        {
-          "say": "일지도 모르오. 하지만 마지막으로 알아낸것은"
-        },
-        {
-          "say": "바로 당신이 응징하고자 하는  Necromancer 의"
-        },
-        {
-          "say": "출처에 관한 것이오. 당신은 시그너스 X1과 같"
-        },
-        {
-          "say": "은 블랙홀에 대해서 알고있을 것이오. 이런 물"
-        },
-        {
-          "say": "리학적인 파라독스에 의해 그는 생겨났던것이오."
-        },
-        {
-          "say": " 지금 우리가 있는 3차원 위에 또 다른 차원이"
-        },
-        {
-          "say": "있다고 생각하오?  생각은 하더라도 눈으로 확"
-        },
-        {
-          "say": "인은 못해봤을것이오. 우리는 2차원을 인식 할"
-        },
-        {
-          "say": "수가 있소.  하지만 실제로 2차원에  살고있는"
-        },
-        {
-          "say": "생물은 자신의 차원은 인식해도 우리가 살고있"
-        },
-        {
-          "say": "는 3차원은 인식할 수가 없는 것이오. 그의 차"
-        },
-        {
-          "say": "원에는 우리의 차원이  존재하지 않기  때문에"
-        },
-        {
-          "say": "개념을 잡을수가 없는 것이오.  마찬가지로 우"
-        },
-        {
-          "say": "리 또한 지금의 차원보다 한 차원 높은 4 차원"
-        },
-        {
-          "say": "을 개념을 잡기가 어려운 것이오."
-        },
-        {
-          "say": " 어떤이는 4차원은 시간의 축이 보태어 진다고"
-        },
-        {
-          "say": "하는 이론을 세우더군요.  하지만 나의 이론은"
-        },
-        {
-          "say": "시간은 모든 차원의 기준이며 4차원에 국한 되"
-        },
-        {
-          "say": "지는 않는다는 생각이오. 3차원에서는 동 시간"
-        },
-        {
-          "say": "대에 무한한 2차원을 포함 하듯이 4차원에서는"
-        },
-        {
-          "say": "동 시간대에  무한한 3차원을 포함하고 있다는"
-        },
-        {
-          "say": "이론이 성립되오. 말이 조금은 빗나갔지만  이"
-        },
-        {
-          "say": "이론으로 Necromancer의 출처를 해명해 보겠소"
-        },
-        {
-          "say": " 방금 말했듯이 3차원은 이 공간만이 존재하는"
-        },
-        {
-          "say": "것은 아니오. 동 시대를 살아가는 다른 공간도"
-        },
-        {
-          "say": "인정해야 한다는 말이오.  그 공간들을 이어주"
-        },
-        {
-          "say": "는 것이 바로 블랙 홀이란 것이지요.  그는 원"
-        },
-        {
-          "say": "래 그가 있던 공간에서 블랙 홀을 통해서 다른"
-        },
-        {
-          "say": "공간으로 가려고 시도를 했고 웜 홀을 통해 시"
-        },
-        {
-          "say": "공간을 가로질러 오래전 우리의 공간에 화이트"
-        },
-        {
-          "say": "홀이 생기는 틈을 이용하여 내려왔던 것이오."
-        },
-        {
-          "say": " 하지만 3차원에 사는 나로서는 그가 전에  있"
-        },
-        {
-          "say": "던 공간에서 왜 이쪽으로 왔는지  알수가 없었"
-        },
-        {
-          "say": "지요. 그래서 그와 같이 이 공간으로 들어왔던"
-        },
-        {
-          "say": "심복들을 통해 그 사정을 알게 되었소."
-        },
-        {
-          "say": " Necromacer는 저쪽의 공간에서도 지금과 마찬"
-        },
-        {
-          "say": "가지로 차원을 통해 그 공간에 도달했소. 역시"
-        },
-        {
-          "say": "거기서도 악을 뿌리며 거기의 생명체들을 위협"
-        },
-        {
-          "say": "했소. 하지만 어떤 선택되어진 6인의 용사들에"
-        },
-        {
-          "say": "의해 쫒겨나서 여기로 온것이오.  지금의 당신"
-        },
-        {
-          "say": "들과 비슷하다고 생각되지 않소? 그렇소. 다른"
-        },
-        {
-          "say": "공간의 당신들에게 쫒겨난후 다시 여기서 당신"
-        },
-        {
-          "say": "들을 또 만나게 된것이오. Necromancer와 당신"
-        },
-        {
-          "say": "들의 운명은 언제까지나 쫒고 쫒기며 대립하여"
-        },
-        {
-          "say": "야하는 운명으로 탄생되었던 것이오. 이런  이"
-        },
-        {
-          "say": "유에서 당신은 그를 반드시 무찌를 수가  있다"
-        },
-        {
-          "say": "는 근거가 되는 것이오."
-        },
-        {
-          "say": " 당신들의 건투를 빌어주겠소."
-        }
       ],
-      "x": 26,
-      "y": 16,
-      "require": {
-        "notAllFlags": [
-          "draconianMet",
-          "etc5"
-        ]
-      },
-      "disabled": true
-    },
-    {
-      "id": "spec-4-L37-2",
-      "trigger": "step",
-      "map": 4,
-      "once": false,
-      "steps": [
-        {
-          "say": " 여기는 인간과 드래곤의 중간 종족이며  혼란"
-        },
-        {
-          "say": "스런 세상을 피해 은둔하고있는 Draconian이란"
-        },
-        {
-          "say": "자가 살고있는 피라밋이었다."
-        },
-        {
-          "say": " 나의 운명을 생각해 보니  나 역시  당신들을"
-        },
-        {
-          "say": "필연적으로 만나 Necromancer를 물리쳐야 한다"
-        },
-        {
-          "say": "는걸 깨닭았소. 당신들 일행의 제일 뒤에서 도"
-        },
-        {
-          "say": "와주고 싶소. 어떻소."
-        },
-        {
-          "choice": {
-            "options": [
-              {
-                "text": "저도 바라던 차입니다",
-                "steps": [
-                  {
-                    "join": "draconian",
-                    "slot": 4
-                  },
-                  {
-                    "flag": "draconianMet"
-                  }
-                ]
-              },
-              {
-                "text": "별로 좋지는 않군요",
-                "steps": [
-                  {
-                    "say": " 다시 생각해보니 나는 당신들과 같이 싸울 운"
-                  },
-                  {
-                    "say": "명이 아닌것 같소."
-                  }
-                ]
-              },
-              {
-                "text": "취소",
-                "steps": [
-                  {
-                    "block": true
-                  }
-                ]
-              }
-            ]
-          }
-        }
-      ],
-      "x": 26,
-      "y": 16,
-      "require": {
-        "allFlags": [
-          "etc5"
-        ],
-        "notAllFlags": [
-          "draconianMet"
-        ]
-      },
-      "disabled": true
-    },
-    {
-      "id": "spec-4-L37-3",
-      "trigger": "step",
-      "map": 4,
-      "once": false,
-      "steps": [
-        {
-          "say": " 여기는 인간과 드래곤의 중간 종족이며  혼란"
-        },
-        {
-          "say": "스런 세상을 피해 은둔하고있는 Draconian이란"
-        },
-        {
-          "say": "자가 살고있는 피라밋이었다."
-        },
-        {
-          "say": " 그러나, 아무도 살고 있지 않았다."
-        },
-        {
-          "block": true
-        }
-      ],
-      "x": 26,
-      "y": 16,
-      "require": {
-        "allFlags": [
-          "draconianMet"
-        ]
-      },
       "disabled": true
     },
     {
@@ -1916,6 +1915,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -1972,7 +1987,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-2",
@@ -1997,6 +2012,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2053,7 +2084,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-3",
@@ -2075,6 +2106,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2125,7 +2172,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-4",
@@ -2150,6 +2197,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2200,7 +2263,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-5",
@@ -2222,6 +2285,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2242,7 +2321,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-6",
@@ -2267,6 +2346,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2289,7 +2384,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-7",
@@ -2311,6 +2406,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         }
@@ -2325,7 +2436,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-8",
@@ -2350,6 +2461,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         }
@@ -2366,7 +2493,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-9",
@@ -2388,6 +2515,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2411,7 +2554,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-10",
@@ -2436,6 +2579,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2461,7 +2620,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-11",
@@ -2483,6 +2642,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2500,7 +2675,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1-12",
@@ -2525,6 +2700,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -2544,7 +2735,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "oedipus-spear",
@@ -2692,6 +2883,183 @@
       "note": "장비 지급(choosewhom) 미해석; 조건 미지원: k = 0; 미지원: asyouwish;; 조건 미지원: player[k].class = 5; 미지원: with player[k] do begin; 미지원: weapon := 3;; 미지원: wea_power := 12;; 미지원: if class = 1 then wea_power := wea_power + round(wea_power *"
     },
     {
+      "id": "spec-11-L465-1x",
+      "trigger": "step",
+      "map": 11,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 미이라의 방을 발견했다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              35,
+              35,
+              26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Sphinx",
+                "level": 4,
+                "special": 0,
+                "eNumber": 20
+              },
+              {
+                "index": 2,
+                "name": "Sphinx",
+                "level": 4,
+                "special": 0,
+                "eNumber": 20
+              },
+              {
+                "index": 3,
+                "name": "Major Mummy",
+                "ac": 1
+              }
+            ]
+          }
+        },
+        {
+          "say": "당신들은 Major Mummy 물리쳤다."
+        },
+        {
+          "say": "그리고 당신은 이 임무에 성공했다."
+        },
+        {
+          "questStep": {
+            "name": "lastditch",
+            "inc": 1
+          }
+        }
+      ],
+      "yMin": 24,
+      "yMax": 24,
+      "require": {
+        "notAllFlags": [
+          "etc6"
+        ],
+        "quest": [
+          {
+            "name": "lastditch",
+            "eq": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "spec-11-L465-2x",
+      "trigger": "step",
+      "map": 11,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 미이라의 방을 발견했다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              35,
+              35,
+              26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Sphinx",
+                "level": 4,
+                "special": 0,
+                "eNumber": 20
+              },
+              {
+                "index": 2,
+                "name": "Sphinx",
+                "level": 4,
+                "special": 0,
+                "eNumber": 20
+              },
+              {
+                "index": 3,
+                "name": "Major Mummy",
+                "ac": 1
+              }
+            ]
+          }
+        }
+      ],
+      "yMin": 24,
+      "yMax": 24,
+      "require": {
+        "allFlags": [
+          "etc6"
+        ],
+        "quest": [
+          {
+            "name": "lastditch",
+            "eq": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "spec-11-L465-3x",
+      "trigger": "step",
+      "map": 11,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 미이라의 방을 발견했다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              35,
+              35,
+              26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Sphinx",
+                "level": 4,
+                "special": 0,
+                "eNumber": 20
+              },
+              {
+                "index": 2,
+                "name": "Sphinx",
+                "level": 4,
+                "special": 0,
+                "eNumber": 20
+              },
+              {
+                "index": 3,
+                "name": "Major Mummy",
+                "ac": 1
+              }
+            ]
+          }
+        },
+        {
+          "block": true
+        }
+      ],
+      "yMin": 24,
+      "yMax": 24,
+      "require": {
+        "allFlags": [
+          "etc6"
+        ],
+        "quest": [
+          {
+            "name": "lastditch",
+            "eq": 1
+          }
+        ]
+      }
+    },
+    {
       "id": "mummy-room",
       "trigger": "step",
       "map": 11,
@@ -2725,130 +3093,8 @@
         {
           "flag": "mummyRoomCleared"
         }
-      ]
-    },
-    {
-      "id": "spec-11-L465-1x",
-      "trigger": "step",
-      "map": 11,
-      "once": false,
-      "steps": [
-        {
-          "say": "당신은 미이라의 방을 발견했다."
-        },
-        {
-          "battle": {
-            "monsters": [
-              35,
-              35,
-              35,
-              26
-            ]
-          }
-        },
-        {
-          "say": "당신들은 Major Mummy 물리쳤다."
-        },
-        {
-          "say": "그리고 당신은 이 임무에 성공했다."
-        },
-        {
-          "questStep": {
-            "name": "lastditch",
-            "inc": 1
-          }
-        }
       ],
-      "disabled": true,
-      "yMin": 24,
-      "yMax": 24,
-      "require": {
-        "notAllFlags": [
-          "etc6"
-        ],
-        "quest": [
-          {
-            "name": "lastditch",
-            "eq": 1
-          }
-        ]
-      },
-      "note": "미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
-    },
-    {
-      "id": "spec-11-L465-2x",
-      "trigger": "step",
-      "map": 11,
-      "once": false,
-      "steps": [
-        {
-          "say": "당신은 미이라의 방을 발견했다."
-        },
-        {
-          "battle": {
-            "monsters": [
-              35,
-              35,
-              35,
-              26
-            ]
-          }
-        }
-      ],
-      "disabled": true,
-      "yMin": 24,
-      "yMax": 24,
-      "require": {
-        "allFlags": [
-          "etc6"
-        ],
-        "quest": [
-          {
-            "name": "lastditch",
-            "eq": 1
-          }
-        ]
-      },
-      "note": "미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
-    },
-    {
-      "id": "spec-11-L465-3x",
-      "trigger": "step",
-      "map": 11,
-      "once": false,
-      "steps": [
-        {
-          "say": "당신은 미이라의 방을 발견했다."
-        },
-        {
-          "battle": {
-            "monsters": [
-              35,
-              35,
-              35,
-              26
-            ]
-          }
-        },
-        {
-          "block": true
-        }
-      ],
-      "disabled": true,
-      "yMin": 24,
-      "yMax": 24,
-      "require": {
-        "allFlags": [
-          "etc6"
-        ],
-        "quest": [
-          {
-            "name": "lastditch",
-            "eq": 1
-          }
-        ]
-      },
-      "note": "미지원: with enemy[i] do begin; 미지원: name := 'Sphinx';; 미지원: level := 4;; 미지원: special := 0;; 미지원: E_number := 20;; 미지원: with enemy[3] do begin; 미지원: name := 'Major Mummy';; 미지원: ac := 1;; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
+      "disabled": true
     },
     {
       "id": "spec-14-L814xxxxxx",
@@ -2916,29 +3162,6 @@
       "disabled": true
     },
     {
-      "id": "menace-center-25-8",
-      "trigger": "step",
-      "map": 14,
-      "x": 25,
-      "y": 8,
-      "once": true,
-      "title": "MENACE의 중심",
-      "steps": [
-        {
-          "say": "여기가 `MENACE의 중심이다."
-        },
-        {
-          "say": "당신의 탐험은 성공적이었다."
-        },
-        {
-          "say": "이제 Lord Ahn 에게 돌아가는 일만 남았다."
-        },
-        {
-          "flag": "menaceCenterReachedA"
-        }
-      ]
-    },
-    {
       "id": "spec-14-L814-1-1",
       "trigger": "step",
       "map": 14,
@@ -2969,14 +3192,13 @@
             "eq": 3
           }
         ]
-      },
-      "disabled": true
+      }
     },
     {
-      "id": "menace-center-26-8",
+      "id": "menace-center-25-8",
       "trigger": "step",
       "map": 14,
-      "x": 26,
+      "x": 25,
       "y": 8,
       "once": true,
       "title": "MENACE의 중심",
@@ -2991,9 +3213,10 @@
           "say": "이제 Lord Ahn 에게 돌아가는 일만 남았다."
         },
         {
-          "flag": "menaceCenterReachedB"
+          "flag": "menaceCenterReachedA"
         }
-      ]
+      ],
+      "disabled": true
     },
     {
       "id": "spec-14-L814-2-1",
@@ -3026,7 +3249,30 @@
             "eq": 3
           }
         ]
-      },
+      }
+    },
+    {
+      "id": "menace-center-26-8",
+      "trigger": "step",
+      "map": 14,
+      "x": 26,
+      "y": 8,
+      "once": true,
+      "title": "MENACE의 중심",
+      "steps": [
+        {
+          "say": "여기가 `MENACE의 중심이다."
+        },
+        {
+          "say": "당신의 탐험은 성공적이었다."
+        },
+        {
+          "say": "이제 Lord Ahn 에게 돌아가는 일만 남았다."
+        },
+        {
+          "flag": "menaceCenterReachedB"
+        }
+      ],
       "disabled": true
     },
     {
@@ -3160,6 +3406,159 @@
       "disabled": true
     },
     {
+      "id": "spec-15-L879-1xxxx",
+      "trigger": "step",
+      "map": 15,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 ArchiGagoyle과 두마리의 Zombie를 발견했다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              36,
+              36,
+              42
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Zombie"
+              },
+              {
+                "index": 2,
+                "name": "Zombie"
+              },
+              {
+                "index": 3,
+                "name": "ArchiGagoyle"
+              }
+            ]
+          }
+        },
+        {
+          "say": "당신은 ArchiGagoyle을 물리쳤다."
+        },
+        {
+          "questStep": {
+            "name": "gaia",
+            "inc": 1
+          }
+        }
+      ],
+      "yMin": 27,
+      "yMax": 27,
+      "require": {
+        "notAllFlags": [
+          "etc6"
+        ],
+        "quest": [
+          {
+            "name": "gaia",
+            "eq": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "spec-15-L879-2xxxx",
+      "trigger": "step",
+      "map": 15,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 ArchiGagoyle과 두마리의 Zombie를 발견했다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              36,
+              36,
+              42
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Zombie"
+              },
+              {
+                "index": 2,
+                "name": "Zombie"
+              },
+              {
+                "index": 3,
+                "name": "ArchiGagoyle"
+              }
+            ]
+          }
+        }
+      ],
+      "yMin": 27,
+      "yMax": 27,
+      "require": {
+        "allFlags": [
+          "etc6"
+        ],
+        "quest": [
+          {
+            "name": "gaia",
+            "eq": 4
+          }
+        ]
+      }
+    },
+    {
+      "id": "spec-15-L879-3",
+      "trigger": "step",
+      "map": 15,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 ArchiGagoyle과 두마리의 Zombie를 발견했다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              36,
+              36,
+              42
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Zombie"
+              },
+              {
+                "index": 2,
+                "name": "Zombie"
+              },
+              {
+                "index": 3,
+                "name": "ArchiGagoyle"
+              }
+            ]
+          }
+        },
+        {
+          "block": true
+        }
+      ],
+      "yMin": 27,
+      "yMax": 27,
+      "require": {
+        "allFlags": [
+          "etc6"
+        ],
+        "quest": [
+          {
+            "name": "gaia",
+            "eq": 4
+          }
+        ]
+      }
+    },
+    {
       "id": "quake-boss-room",
       "trigger": "step",
       "map": 15,
@@ -3190,127 +3589,8 @@
         {
           "flag": "quakeBossCleared"
         }
-      ]
-    },
-    {
-      "id": "spec-15-L879-1xxxx",
-      "trigger": "step",
-      "map": 15,
-      "once": false,
-      "steps": [
-        {
-          "say": "당신은 ArchiGagoyle과 두마리의 Zombie를 발견했다."
-        },
-        {
-          "battle": {
-            "monsters": [
-              36,
-              36,
-              36,
-              42
-            ]
-          }
-        },
-        {
-          "say": "당신은 ArchiGagoyle을 물리쳤다."
-        },
-        {
-          "questStep": {
-            "name": "gaia",
-            "inc": 1
-          }
-        }
       ],
-      "disabled": true,
-      "yMin": 27,
-      "yMax": 27,
-      "require": {
-        "notAllFlags": [
-          "etc6"
-        ],
-        "quest": [
-          {
-            "name": "gaia",
-            "eq": 4
-          }
-        ]
-      },
-      "note": "미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
-    },
-    {
-      "id": "spec-15-L879-2xxxx",
-      "trigger": "step",
-      "map": 15,
-      "once": false,
-      "steps": [
-        {
-          "say": "당신은 ArchiGagoyle과 두마리의 Zombie를 발견했다."
-        },
-        {
-          "battle": {
-            "monsters": [
-              36,
-              36,
-              36,
-              42
-            ]
-          }
-        }
-      ],
-      "disabled": true,
-      "yMin": 27,
-      "yMax": 27,
-      "require": {
-        "allFlags": [
-          "etc6"
-        ],
-        "quest": [
-          {
-            "name": "gaia",
-            "eq": 4
-          }
-        ]
-      },
-      "note": "미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
-    },
-    {
-      "id": "spec-15-L879-3",
-      "trigger": "step",
-      "map": 15,
-      "once": false,
-      "steps": [
-        {
-          "say": "당신은 ArchiGagoyle과 두마리의 Zombie를 발견했다."
-        },
-        {
-          "battle": {
-            "monsters": [
-              36,
-              36,
-              36,
-              42
-            ]
-          }
-        },
-        {
-          "block": true
-        }
-      ],
-      "disabled": true,
-      "yMin": 27,
-      "yMax": 27,
-      "require": {
-        "allFlags": [
-          "etc6"
-        ],
-        "quest": [
-          {
-            "name": "gaia",
-            "eq": 4
-          }
-        ]
-      },
-      "note": "미지원: enemy[i].name := 'Zombie';; 미지원: enemy[3].name := 'ArchiGagoyle';; 조건 미지원: (party.etc[6]=0) or (enemy[3].hp<=0)"
+      "disabled": true
     },
     {
       "id": "quake-gold-a-10",
@@ -3671,6 +3951,26 @@
               49,
               49,
               49
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Hidra's Head 1",
+                "level": 8,
+                "eNumber": 34
+              },
+              {
+                "index": 2,
+                "name": "Hidra's Head 2",
+                "level": 10,
+                "eNumber": 39
+              },
+              {
+                "index": 3,
+                "name": "Hidra's Head 3",
+                "level": 8,
+                "eNumber": 34
+              }
             ]
           }
         },
@@ -3714,7 +4014,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
+      "note": "미지원: scroll(true);; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-2xx",
@@ -3731,6 +4031,26 @@
               49,
               49,
               49
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Hidra's Head 1",
+                "level": 8,
+                "eNumber": 34
+              },
+              {
+                "index": 2,
+                "name": "Hidra's Head 2",
+                "level": 10,
+                "eNumber": 39
+              },
+              {
+                "index": 3,
+                "name": "Hidra's Head 3",
+                "level": 8,
+                "eNumber": 34
+              }
             ]
           }
         },
@@ -3776,7 +4096,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
+      "note": "미지원: scroll(true);; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-3",
@@ -3799,6 +4119,26 @@
               49,
               49,
               49
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Hidra's Head 1",
+                "level": 8,
+                "eNumber": 34
+              },
+              {
+                "index": 2,
+                "name": "Hidra's Head 2",
+                "level": 10,
+                "eNumber": 39
+              },
+              {
+                "index": 3,
+                "name": "Hidra's Head 3",
+                "level": 8,
+                "eNumber": 34
+              }
             ]
           }
         },
@@ -3825,7 +4165,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
+      "note": "미지원: scroll(true);; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-4",
@@ -3842,6 +4182,26 @@
               49,
               49,
               49
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Hidra's Head 1",
+                "level": 8,
+                "eNumber": 34
+              },
+              {
+                "index": 2,
+                "name": "Hidra's Head 2",
+                "level": 10,
+                "eNumber": 39
+              },
+              {
+                "index": 3,
+                "name": "Hidra's Head 3",
+                "level": 8,
+                "eNumber": 34
+              }
             ]
           }
         },
@@ -3868,7 +4228,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
+      "note": "미지원: scroll(true);; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-5",
@@ -3891,6 +4251,26 @@
               49,
               49,
               49
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Hidra's Head 1",
+                "level": 8,
+                "eNumber": 34
+              },
+              {
+                "index": 2,
+                "name": "Hidra's Head 2",
+                "level": 10,
+                "eNumber": 39
+              },
+              {
+                "index": 3,
+                "name": "Hidra's Head 3",
+                "level": 8,
+                "eNumber": 34
+              }
             ]
           }
         },
@@ -3915,7 +4295,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
+      "note": "미지원: scroll(true);; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-17-L1010-6",
@@ -3932,6 +4312,26 @@
               49,
               49,
               49
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Hidra's Head 1",
+                "level": 8,
+                "eNumber": 34
+              },
+              {
+                "index": 2,
+                "name": "Hidra's Head 2",
+                "level": 10,
+                "eNumber": 39
+              },
+              {
+                "index": 3,
+                "name": "Hidra's Head 3",
+                "level": 8,
+                "eNumber": 34
+              }
             ]
           }
         },
@@ -3956,7 +4356,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: with enemy[i] do begin; 미지원: name := 'Hidra''s Head '+chr(48+i);; 미지원: level := 8;; 미지원: E_number := 34;; 미지원: enemy[2].level := 10;; 미지원: enemy[2].E_number := 39;; 미지원: scroll(TRUE);"
+      "note": "미지원: scroll(true);; 미지원: scroll(TRUE);"
     },
     {
       "id": "map17-hidra",
@@ -4029,7 +4429,18 @@
               ],
               "min": 5,
               "max": 5
-            }
+            },
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Huge Dragon"
+              },
+              {
+                "index": 2,
+                "name": "Dragon's tail",
+                "ac": 8
+              }
+            ]
           }
         },
         {
@@ -4066,7 +4477,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원"
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);"
     },
     {
       "id": "spec-18-L1174-2xxxx",
@@ -4096,7 +4507,18 @@
               ],
               "min": 5,
               "max": 5
-            }
+            },
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Huge Dragon"
+              },
+              {
+                "index": 2,
+                "name": "Dragon's tail",
+                "ac": 8
+              }
+            ]
           }
         },
         {
@@ -4135,7 +4557,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원"
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);"
     },
     {
       "id": "spec-18-L1174-3x",
@@ -4171,7 +4593,18 @@
               ],
               "min": 5,
               "max": 5
-            }
+            },
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Huge Dragon"
+              },
+              {
+                "index": 2,
+                "name": "Dragon's tail",
+                "ac": 8
+              }
+            ]
           }
         },
         {
@@ -4198,7 +4631,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원"
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);"
     },
     {
       "id": "spec-18-L1174-4x",
@@ -4228,7 +4661,18 @@
               ],
               "min": 5,
               "max": 5
-            }
+            },
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Huge Dragon"
+              },
+              {
+                "index": 2,
+                "name": "Dragon's tail",
+                "ac": 8
+              }
+            ]
           }
         },
         {
@@ -4255,7 +4699,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원"
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);"
     },
     {
       "id": "spec-18-L1174-5x",
@@ -4291,7 +4735,18 @@
               ],
               "min": 5,
               "max": 5
-            }
+            },
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Huge Dragon"
+              },
+              {
+                "index": 2,
+                "name": "Dragon's tail",
+                "ac": 8
+              }
+            ]
           }
         },
         {
@@ -4315,7 +4770,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원"
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);"
     },
     {
       "id": "spec-18-L1174-6x",
@@ -4345,7 +4800,18 @@
               ],
               "min": 5,
               "max": 5
-            }
+            },
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Huge Dragon"
+              },
+              {
+                "index": 2,
+                "name": "Dragon's tail",
+                "ac": 8
+              }
+            ]
           }
         },
         {
@@ -4369,7 +4835,7 @@
           }
         ]
       },
-      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);; 미지원: enemy[1].name := 'Huge Dragon';; 미지원"
+      "note": "미지원: scroll(true);; 미지원: face := 6;; 미지원: scroll(TRUE);; 미지원: face := 4;; 미지원: for i := y+1 to 13 do begin; 미지원: y := i;; 미지원: face := 5;; 미지원: if j > 1 then; 미지원: for i := 4 to 6 do putimage(20*i,20*(j-1),font^[43],copyput); 미지원: if j < 3 then delay(2000);"
     },
     {
       "id": "map18-huge-dragon",
@@ -15732,6 +16198,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -15788,7 +16270,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-2",
@@ -15813,6 +16295,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -15869,7 +16367,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-3",
@@ -15891,6 +16389,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -15941,7 +16455,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-4",
@@ -15966,6 +16480,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -16016,7 +16546,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-5",
@@ -16038,6 +16568,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -16058,7 +16604,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-6",
@@ -16083,6 +16629,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -16105,7 +16667,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-7",
@@ -16127,6 +16689,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         }
@@ -16141,7 +16719,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-8",
@@ -16166,6 +16744,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         }
@@ -16182,7 +16776,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-9",
@@ -16204,6 +16798,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -16227,7 +16837,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-10",
@@ -16252,6 +16862,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -16277,7 +16903,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-11",
@@ -16299,6 +16925,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -16316,7 +16958,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-2-12",
@@ -16341,6 +16983,22 @@
             "monsters": [
               26,
               26
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Soldier1",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "name": "Soldier2",
+                "special": 0,
+                "castLevel": 0,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -16360,7 +17018,7 @@
           "prisonBattleReturned"
         ]
       },
-      "note": "미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: name := 'Soldier'+chr(48+i);; 미지원: special := 0;; 미지원: castlevel := 0;; 미지원: E_number := 1;; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
+      "note": "미지원: for i := 1 to enemynumber do begin; 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';; 미지원: Display_Condition;"
     },
     {
       "id": "spec-6-L190-1x",
@@ -17581,7 +18239,7 @@
           "etc6"
         ]
       },
-      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
     },
     {
       "id": "spec-13-L669-2xx",
@@ -17609,7 +18267,7 @@
           "etc38_bit5"
         ]
       },
-      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
     },
     {
       "id": "spec-13-L669-3",
@@ -17632,7 +18290,7 @@
           "etc38_bit5"
         ]
       },
-      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
     },
     {
       "id": "spec-13-L669-4",
@@ -17658,7 +18316,7 @@
           "etc38_bit5"
         ]
       },
-      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: enemy[i].E_number := 1;; 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 미지원: scroll(TRUE);; 조건 미지원: not enemy[3].dead"
     },
     {
       "id": "spec-14-L814-1",
@@ -19174,7 +19832,7 @@
       "require": {
         "tileAtPlayerZero": true
       },
-      "note": "미지원: enemynumber := random(3) + 3;; 미지원: for i := 1 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: E_number := 25;; 미지원: hp := 210;; 미지원: level := 7;"
+      "note": "미지원: enemynumber := random(3) + 3;; 미지원: for i := 1 to enemynumber do begin; 적 지정(미상): with enemy[i] do begin; 미지원: E_number := 25;; 미지원: hp := 210;; 미지원: level := 7;"
     },
     {
       "id": "spec-19-L1366-1xxxx",
@@ -19194,7 +19852,7 @@
       "disabled": true,
       "yMin": 6,
       "yMax": 6,
-      "note": "미지원: map[x,y-1] := 49;; 미지원: j := party.etc[40] shr 1;; 조건 미지원: j <> (x-10) div 4; 미지원: for i := 4 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: E_number := 25;; 미지원: hp := 210;; 미지원: level := 7;; 미지원: scroll(TRUE);"
+      "note": "미지원: map[x,y-1] := 49;; 미지원: j := party.etc[40] shr 1;; 조건 미지원: j <> (x-10) div 4; 미지원: for i := 4 to enemynumber do begin; 미지원: hp := 210;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-19-L1366-2xxxx",
@@ -19211,10 +19869,29 @@
               59,
               59,
               59,
-              59,
-              59,
-              59,
               59
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "level": 7
+              }
             ]
           }
         },
@@ -19248,7 +19925,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: map[x,y-1] := 49;; 미지원: j := party.etc[40] shr 1;; 조건 미지원: j <> (x-10) div 4; 미지원: for i := 4 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: E_number := 25;; 미지원: hp := 210;; 미지원: level := 7;; 미지원: scroll(TRUE);"
+      "note": "미지원: map[x,y-1] := 49;; 미지원: j := party.etc[40] shr 1;; 조건 미지원: j <> (x-10) div 4; 미지원: for i := 4 to enemynumber do begin; 미지원: hp := 210;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-19-L1366-3x",
@@ -19265,10 +19942,29 @@
               59,
               59,
               59,
-              59,
-              59,
-              59,
               59
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "level": 7
+              }
             ]
           }
         },
@@ -19295,7 +19991,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: map[x,y-1] := 49;; 미지원: j := party.etc[40] shr 1;; 조건 미지원: j <> (x-10) div 4; 미지원: for i := 4 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: E_number := 25;; 미지원: hp := 210;; 미지원: level := 7;; 미지원: scroll(TRUE);"
+      "note": "미지원: map[x,y-1] := 49;; 미지원: j := party.etc[40] shr 1;; 조건 미지원: j <> (x-10) div 4; 미지원: for i := 4 to enemynumber do begin; 미지원: hp := 210;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-19-L1366-4",
@@ -19312,10 +20008,29 @@
               59,
               59,
               59,
-              59,
-              59,
-              59,
               59
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "level": 7
+              }
             ]
           }
         },
@@ -19340,7 +20055,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: map[x,y-1] := 49;; 미지원: j := party.etc[40] shr 1;; 조건 미지원: j <> (x-10) div 4; 미지원: for i := 4 to enemynumber do begin; 미지원: with enemy[i] do begin; 미지원: E_number := 25;; 미지원: hp := 210;; 미지원: level := 7;; 미지원: scroll(TRUE);"
+      "note": "미지원: map[x,y-1] := 49;; 미지원: j := party.etc[40] shr 1;; 조건 미지원: j <> (x-10) div 4; 미지원: for i := 4 to enemynumber do begin; 미지원: hp := 210;; 미지원: scroll(TRUE);"
     },
     {
       "id": "spec-20-L1475-1",
@@ -21290,6 +22005,13 @@
           "battle": {
             "monsters": [
               70
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Necromancer",
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21335,6 +22057,32 @@
               60,
               60,
               60
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "eNumber": 1
+              },
+              {
+                "index": 3,
+                "eNumber": 1
+              },
+              {
+                "index": 4,
+                "eNumber": 1
+              },
+              {
+                "index": 5,
+                "eNumber": 1
+              },
+              {
+                "index": 6,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21345,6 +22093,13 @@
           "battle": {
             "monsters": [
               70
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Necromancer",
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21399,7 +22154,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 d"
+      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 do"
     },
     {
       "id": "spec-23-L1880-2x",
@@ -21411,6 +22166,13 @@
           "battle": {
             "monsters": [
               70
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Necromancer",
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21456,6 +22218,32 @@
               60,
               60,
               60
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "eNumber": 1
+              },
+              {
+                "index": 3,
+                "eNumber": 1
+              },
+              {
+                "index": 4,
+                "eNumber": 1
+              },
+              {
+                "index": 5,
+                "eNumber": 1
+              },
+              {
+                "index": 6,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21466,6 +22254,13 @@
           "battle": {
             "monsters": [
               70
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Necromancer",
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21486,7 +22281,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 d"
+      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 do"
     },
     {
       "id": "spec-23-L1880-3",
@@ -21498,6 +22293,13 @@
           "battle": {
             "monsters": [
               70
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Necromancer",
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21543,6 +22345,32 @@
               60,
               60,
               60
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "eNumber": 1
+              },
+              {
+                "index": 3,
+                "eNumber": 1
+              },
+              {
+                "index": 4,
+                "eNumber": 1
+              },
+              {
+                "index": 5,
+                "eNumber": 1
+              },
+              {
+                "index": 6,
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21553,6 +22381,13 @@
           "battle": {
             "monsters": [
               70
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Necromancer",
+                "eNumber": 1
+              }
             ]
           }
         },
@@ -21578,7 +22413,7 @@
           "etc6"
         ]
       },
-      "note": "미지원: with enemy[1] do begin; 미지원: name := 'Necromancer';; 미지원: E_number := 1;; 미지원: else turn_mind(i,i);; 미지원: enemy[i].E_number := 1;; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 d"
+      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: scroll(TRUE);; 미지원: for j := 25 to 27 do"
     },
     {
       "id": "spec-24-L1980-1",

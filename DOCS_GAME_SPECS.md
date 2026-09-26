@@ -555,15 +555,33 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     옮긴 쪽이 **모두** 포함하면 그 좌표는 옮긴 쪽으로 대체하고, 손으로 쓴 항목은
     `"disabled": true` 로 꺼 둔다(지우지 않으므로 다시 병합해도 결과가 같다).
   - 포함하지 못하면 손으로 쓴 쪽을 그대로 실행하고 옮긴 쪽은 문구 보관용으로만
-    넣는다(`disabled`). 현재 249개 중 **35개 좌표가 대체**(자동 이관 활성 86개),
+    넣는다(`disabled`). 현재 249개 중 **41개 좌표가 대체**(자동 이관 활성 97개),
     나머지는 보관 상태다.
-  - 대체 판정: 효과 종류, `flag 이름: …`, `전투 구성: …`, `require 플래그: …` 를
-    옮긴 쪽이 모두 포함해야 하고, **옮긴 쪽에 `disabled` 항목이 하나라도 있으면
-    대체하지 않는다**(조건을 못 옮긴 채로 바꾸면 동작이 망가진다).
+  - 대체 판정: 효과 종류, 플래그/퀘스트 이름, 전투 구성, `require` 플래그를
+    옮긴 쪽이 모두 포함해야 한다.
+    · 진행 표시 스텝(`flag`/`questStep`/`randomFlag`)은 **종류가 아니라 이름**으로
+      본다(손으로 쓴 `flag: x` ↔ 옮긴 쪽 `questStep` 은 원작에서 같은 일이다).
+    · 손으로 쓴 “완료 표시” 플래그가 **그 좌표에서만** 쓰이면 무시해도 된다
+      (옮긴 쪽이 원작 조건으로 같은 일을 하므로).
+    · **옮긴 쪽에 `disabled` 항목이 하나라도 있으면 대체하지 않는다**.
   - 무작위 적(`for i := 3 to 7 do joinenemy(i, random(3)+30)`)는 포트의
     `battle.random`(`pool`/`min`/`max`)으로 옮기고, 전투 구성 비교에 `pool` 도 넣는다.
-  - 실행할 수 없는 조건(`not (odd(...) and ...)`, `enemy[i].dead` 등)도 꺼 둔다.
+  - 실행할 수 없는 조건(`enemy[i].dead` 재소환 등)은 꺼 둔다.
   - `--spec` 은 이전에 생성해 넣은 `spec-*` 항목을 먼저 걷어내므로 **멱등**하다.
+* 적별 덮어쓰기: 원작이 전투 직전에 적 이름·능력치를 직접 바꾸는 부분
+  (`with enemy[i] do begin name := 'Sphinx'; level := 4; ac := 1; end`,
+  `enemy[3].name := 'ArchiGagoyle'`, `name := 'Soldier'+chr(48+i)`)은
+  `battle.overrides`(`[{"index":3,"name":"Major Mummy","ac":1}]`)로 옮긴다.
+  포트는 `Monster.withOverrides()` 로 적용하고(레벨을 바꾸면 최대 HP 도
+  `endurance * level` 로 다시 잡는다), 그 결과 미이라의 방은 `Sphinx ×2 + Major Mummy`,
+  Hidra 는 `Hidra's Head 1~3`(가운데만 레벨 10), 거룡은 `Huge Dragon + Dragon's tail(ac 8)`
+  로 나온다.
+* 원작 `enemy[i].hp <= 0`(보스가 쓰러졌다)은 포트에서 **전투 승리와 같다**
+  (`party.etc[6] = 0` = `etc6` 플래그 미설정). 원작도 같은 자리에서
+  `(party.etc[6]=0) or (enemy[3].hp<=0)` 처럼 둘을 같이 본다.
+* 마법 카운터 조건(`party.etc[1..5] > 0`)은 스크립트 플래그 `etcN` 으로 넘긴다.
+  특히 `etc5`(독심술)은 ESP 메뉴 `[3] 독심술`(원작 `party.etc[5] := 3`)로 켜지고
+  걸음마다 줄어들며, **Draconian · Red Antares 영입 제안과 Spica 상담의 조건**이다.
 * 포트에 이미 이름이 붙은 상태 비트는 같은 이름으로 옮긴다
   (`ETC_FLAG_ALIAS` 27개: `etc[16] b1`→`ancientEvilMet`, `etc[50] b5`→`menaceInfoGiven`,
   `etc[45] b7/8`→`lavaLeverLeft/RightPulled`,
@@ -576,10 +594,10 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 * 원작 퀴즈(`i := random(8); case i of ... end; if i < 4 then ... else ...`)는
   포트의 `randomSteps` 8분기(문항 + 정답 여부에 따른 지도 변화)로 옮긴다.
 * 남은 활성화 과제: 옮긴 쪽이 아직 **다단계 보스**(`enemy[i].dead` 재소환)·
-  `require`에 쓰이는 자체 이름 플래그(`oedipusSpearTaken`, `mummyRoomCleared` 등)·
-  `randomFlag` 짝 조건(`not odd(party.etc[40])`)을 표현하지 못해 약 24개 좌표는 손으로
-  쓴 스크립트가 먼저 실행된다. `--spec` 로그의 `덧붙임` 항목이 목록이다
-  (해당 좌표의 문구 자체는 아래 7.3.1 로 원문에 맞춰 두었다).
+  전체 파티 대상 장비 루프(`for i := 1 to 6 do with player[i] do …` → `equip`),
+  좌표 간에 얽힌 자체 퍼즐 플래그(`sealPuzzleA/B`, `keep3KeyA/B`)를 표현하지 못해
+  약 13개 좌표는 손으로 쓴 스크립트가 먼저 실행된다. `--spec` 로그의 `덧붙임`
+  항목이 목록이다(해당 좌표의 문구 자체는 아래 7.3.1 로 원문에 맞춰 두었다).
 
 #### 7.3.1 역방향 감사 — 포트에만 있는 문구 걷어내기(2026-09)
 

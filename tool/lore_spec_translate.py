@@ -135,6 +135,32 @@ LOOP_JOINENEMY_OFF = re.compile(
 ENEMY_COUNT = re.compile(r"enemynumber\s*:=\s*(\d+)\s*;")
 BATTLE_TRIGGER = re.compile(r"^(BattleMode|battlemode|displayenemies)\b", re.I)
 
+# `for <var> := A to B do begin` — 영역 지형 변형과 적 배치 루프가 같은 모양이라
+# 스코프 스택에 모두 올려 두고, 적 관련 줄에서만 꺼내 쓴다.
+FOR_LOOP_OPEN = re.compile(
+    r"^for\s+([a-z])\s*:=\s*([a-z0-9]+)\s+to\s+([a-z0-9]+)\s+do\s+begin\s*$",
+    re.I)
+WITH_ENEMY_OPEN = re.compile(
+    r"^with\s+enemy\[\s*([a-z0-9]+)\s*\]\s+do\s+begin\s*$", re.I)
+ENEMY_FIELD = re.compile(
+    r"^(name|ac|level|special|castlevel|e_number)\s*:=\s*(.+?)\s*;\s*$", re.I)
+ENEMY_FIELD_ASG = re.compile(
+    r"^enemy\[\s*([a-z0-9]+)\s*\]\s*\.\s*"
+    r"(name|ac|level|special|castlevel|e_number)\s*:=\s*(.+?)\s*;\s*$",
+    re.I)
+# 원작 필드 이름 → 포트 `battle.overrides` 키
+ENEMY_FIELD_KEY = {
+    'name': 'name',
+    'ac': 'ac',
+    'level': 'level',
+    'special': 'special',
+    'castlevel': 'castLevel',
+    'e_number': 'eNumber',
+}
+# `enemy[i].hp <= 0`(보스가 쓰러짐) → 포트는 승리(`party.etc[6] = 0`)로 본다.
+ENEMY_HP_REQ = re.compile(
+    r"enemy\[\s*[a-z0-9]+\s*\]\s*\.\s*hp\s*<=\s*0", re.I)
+
 # `with party do begin xaxis := A; yaxis := B; map := M; end` (맵 이동 연출)
 WITH_PARTY = re.compile(r"^with\s+party\s+do\s+begin", re.I)
 XAXIS = re.compile(r"xaxis\s*:=\s*(\d+)", re.I)
@@ -422,6 +448,13 @@ def condition_to_req(text: str) -> tuple[Req, bool]:
             req.add_flag(f'etc{etc_n}', False)
     stripped = ETC_NUM_REQ.sub('', stripped)
 
+    # `enemy[3].hp <= 0` (보스가 쓰러졌다) 는 포트에서 전투 승리와 같다
+    # (`party.etc[6] = 0`, 즉 `etc6` 플래그 미설정). 원작도 같은 자리에서
+    # `(party.etc[6]=0) or (enemy[3].hp<=0)` 처럼 둘을 같이 본다.
+    if ENEMY_HP_REQ.search(stripped):
+        req.add_flag('etc6', False)
+    stripped = ENEMY_HP_REQ.sub('', stripped)
+
     # 남은 조각이 있으면 옮기지 못한 조건이 있다는 뜻이다.
     residue = re.sub(r'\b(and|or|not|true|false)\b', '', stripped, flags=re.I)
     residue = re.sub(r'[()\s]', '', residue)
@@ -548,6 +581,15 @@ class Ctx:
         self.enemy_count: int | None = None
         # `random(N)+BASE` 로 뽑히는 적(포트 `battle.random`).
         self.pending_random: list[dict] = []
+        # 적별 덮어쓰기: 1부터의 적 번호 → 필드 dict
+        # (원작 `with enemy[i] do begin name := ..; ac := ..; end`).
+        self.enemy_overrides: dict[int, dict] = {}
+        # 열려 있는 `for <var> := A to B do begin` 스코프: (변수, A, B, 깊이).
+        self.loop_stack: list[tuple[str, int, int, int]] = []
+        # `begin`/`end` 깊이(루프 스코프를 자동으로 닫기 위해 센다).
+        self.depth = 0
+        # 열려 있는 `with enemy[..] do begin` 의 대상 적 번호들.
+        self.enemy_target: list[int] | None = None
         self.battle_emitted = False
         # 조건 분기별로 (요구 조건, 스텝들) 을 모은다.
         self.variants: list[tuple[Req, list[dict]]] = [(Req(), [])]
@@ -558,6 +600,16 @@ class Ctx:
         for _req, steps in self.variants:
             if len(steps) < MAX_VARIANT_STEPS:
                 steps.append(step)
+
+    def add_enemy_override(self, index: int, key: str, value):
+        self.enemy_overrides.setdefault(index, {})[key] = value
+
+    def enemy_range(self) -> tuple[int, int] | None:
+        """지금 열려 있는 적 배치 루프(`for i := A to B`)의 범위."""
+        for var, lo, hi, _d in reversed(self.loop_stack):
+            if var == 'i':
+                return lo, hi
+        return None
 
     def note(self, text: str):
         if text not in self.notes:
@@ -916,6 +968,67 @@ def if_then_body(chunk: list[str]) -> list[str]:
     return [tail] if tail else chunk[1:]
 
 
+def battle_overrides(overrides: dict[int, dict]) -> list[dict]:
+    """`{3: {'name': 'Major Mummy', 'ac': 1}}` → `[{'index':3, ...}]`."""
+    out = []
+    for idx in sorted(overrides):
+        fields = {k: v for k, v in overrides[idx].items() if v is not None}
+        if not fields:
+            continue
+        out.append({'index': idx, **fields})
+    return out
+
+
+def resolve_loop_range(lo_s: str, hi_s: str, ctx: Ctx) -> tuple[int, int] | None:
+    """`for i := A to B` 의 범위(`enemynumber` 는 모아 둔 값으로 푼다)."""
+    def val(text: str) -> int | None:
+        t = text.strip().lower()
+        if t.isdigit():
+            return int(t)
+        if t == 'enemynumber':
+            return ctx.enemy_count
+        return None
+    lo, hi = val(lo_s), val(hi_s)
+    if lo is None or hi is None or hi < lo:
+        return None
+    return lo, hi
+
+
+def enemy_target_of(expr: str, ctx: Ctx) -> list[int] | None:
+    """`with enemy[i]`/`enemy[3]` 의 대상 적 번호들(1부터)."""
+    e = expr.strip().lower()
+    if e == 'i':
+        rng = ctx.enemy_range()
+        return list(range(rng[0], rng[1] + 1)) if rng else None
+    if e.isdigit():
+        return [int(e)]
+    return None
+
+
+NAME_LITERAL = re.compile(r"^'((?:[^']|'')*)'$")
+NAME_WITH_CHR = re.compile(
+    r"^'((?:[^']|'')*)'\s*\+\s*chr\(\s*(\d+)\s*\+\s*([a-z])\s*\)$",
+    re.I)
+
+
+def enemy_field_value(key: str, expr: str, index: int):
+    """원작 필드 값을 포트 값으로.
+
+    - `name` → `'Sphinx'`, `'Soldier'+chr(48+i)` (i 는 적 번호)
+    - 그 밖(`ac`/`level`/`special`/`castlevel`/`e_number`) → 정수
+    """
+    e = expr.strip()
+    if key != 'name':
+        return int(e) if re.fullmatch(r'-?\d+', e) else None
+    m = NAME_LITERAL.match(e)
+    if m:
+        return m.group(1).replace("''", "'")
+    m = NAME_WITH_CHR.match(e)
+    if m:
+        return m.group(1).replace("''", "'") + chr(int(m.group(2)) + index)
+    return None
+
+
 def walk(ctx: Ctx, body: list[str], depth: int = 0):
     """본문을 순서대로 해석해 ctx.variants 의 스텝 목록을 채운다."""
     if depth > 24:  # 비정상적으로 깊은 중첩은 더 들어가지 않는다.
@@ -945,6 +1058,19 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         s = line.strip()
         if not s:
             continue
+        # `begin`/`end` 깊이를 세어 적 배치 루프 스코프를 자동으로 닫는다.
+        delta = block_delta(line)
+        ctx.depth += delta
+        if delta < 0:
+            while ctx.loop_stack and ctx.loop_stack[-1][3] > ctx.depth:
+                ctx.loop_stack.pop()
+        else:
+            lm = FOR_LOOP_OPEN.match(s)
+            if lm:
+                rng = resolve_loop_range(lm.group(2), lm.group(3), ctx)
+                if rng is not None:
+                    ctx.loop_stack.append(
+                        (lm.group(1).lower(), rng[0], rng[1], ctx.depth))
         texts = collect_texts([line])
         for t in texts:
             if t.strip():
@@ -979,6 +1105,39 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
                 })
             continue
         # ── 전투 준비 ────────────────────────────────────────
+        m = WITH_ENEMY_OPEN.search(s)
+        if m:
+            ctx.enemy_target = enemy_target_of(m.group(1), ctx)
+            if ctx.enemy_target is None:
+                ctx.note(f'적 지정(미상): {s[:50]}')
+            continue
+        m = ENEMY_FIELD.search(s)
+        if m and ctx.enemy_target is not None:
+            key = ENEMY_FIELD_KEY[m.group(1).lower()]
+            for idx in ctx.enemy_target:
+                value = enemy_field_value(key, m.group(2).strip(), idx)
+                if value is None:
+                    ctx.note(f'적 필드(계산식): {s[:50]}')
+                else:
+                    ctx.add_enemy_override(idx, key, value)
+            continue
+        m = ENEMY_FIELD_ASG.search(s)
+        if m:
+            target = enemy_target_of(m.group(1), ctx)
+            key = ENEMY_FIELD_KEY[m.group(2).lower()]
+            if target is None:
+                ctx.note(f'적 지정(미상): {s[:50]}')
+            else:
+                for idx in target:
+                    value = enemy_field_value(key, m.group(3).strip(), idx)
+                    if value is None:
+                        ctx.note(f'적 필드(계산식): {s[:50]}')
+                    else:
+                        ctx.add_enemy_override(idx, key, value)
+            continue
+        if END_ONLY.match(s) and ctx.enemy_target is not None:
+            ctx.enemy_target = None
+            continue
         m = ENEMY_COUNT.search(s)
         if m:
             ctx.enemy_count = int(m.group(1))
@@ -1013,7 +1172,10 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
             if mid.isdigit():
                 count = 1
                 if idx == 'i':
-                    count = ctx.enemy_count or 1
+                    # `for i := A to B do ... joinenemy(i, id)` 는 루프 범위가
+                    # 마리 수다(`enemynumber` 는 전체 적 수라 다를 수 있다).
+                    rng = ctx.enemy_range()
+                    count = (rng[1] - rng[0] + 1) if rng else (ctx.enemy_count or 1)
                 ctx.monsters.extend([int(mid)] * count)
             else:
                 rm = re.match(r'random\((\d+)\)\s*\+\s*(\d+)$', mid, re.I)
@@ -1030,9 +1192,14 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
                 if ctx.pending_random:
                     r = ctx.pending_random[0]
                     battle['random'] = r
+                overrides = battle_overrides(ctx.enemy_overrides)
+                if overrides:
+                    battle['overrides'] = overrides
                 ctx.add_step({'battle': battle})
                 ctx.monsters = []
                 ctx.pending_random = []
+                ctx.enemy_overrides = {}
+                ctx.enemy_target = None
                 ctx.battle_emitted = True
             continue
         # ── 동료 영입 ───────────────────────────────────────

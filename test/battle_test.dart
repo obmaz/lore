@@ -169,5 +169,33 @@ void main() {
       final engineFail = BattleEngine(random: DeterministicRandom([40]));
       expect(engineFail.checkRunAway(hero), isFalse);
     });
+
+    test('7. 원작 `with enemy[i] do` 적별 덮어쓰기(이름/방어도/레벨)', () {
+      // 원작 map 11 미이라의 방: `name := 'Sphinx'; level := 4; E_number := 20`
+      final sphinx = Monster.create(35).withOverrides(
+        name: 'Sphinx',
+        level: 4,
+        special: 0,
+        eNumber: 20,
+      );
+      expect(sphinx.name, 'Sphinx');
+      expect(sphinx.level, 4);
+      expect(sphinx.eNumber, 20);
+      expect(sphinx.special, 0);
+      // 원작은 `level` 을 바꾸면 최대 HP 도 `endurance * level` 로 다시 잡는다.
+      expect(sphinx.maxHp, sphinx.endurance * 4);
+      expect(sphinx.hp, sphinx.maxHp);
+
+      // 원작 map 18: `enemy[2] do begin name := 'Dragon''s tail'; ac := 8; end;`
+      final tail = Monster.create(39).withOverrides(
+        name: "Dragon's tail",
+        ac: 8,
+      );
+      expect(tail.name, "Dragon's tail");
+      expect(tail.ac, 8);
+      // 레벨을 건드리지 않으면 HP 는 그대로다.
+      expect(tail.level, Monster.create(39).level);
+      expect(tail.hp, Monster.create(39).hp);
+    });
   });
 }

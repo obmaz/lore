@@ -216,6 +216,10 @@ class ScriptStep {
   /// (원작 `for j := 23 to 26 do map[j,y] := 44`).
   final bool tileAtPlayerY;
 
+  /// battle 스텝의 적별 덮어쓰기: `[{"index": 3, "name": "Major Mummy", "ac": 1}]`
+  /// (원작 `with enemy[i] do begin name := ...; ac := ...; end`).
+  final List<Map<String, Object?>>? battleOverrides;
+
   /// battle 스텝의 난수 추가: `random.pool`에서 `random.min`~`random.max` 마리.
   final List<int>? randomPool;
   final int? randomMin;
@@ -272,6 +276,7 @@ class ScriptStep {
     this.tileAtPlayerX = false,
     this.tileAtPlayerY = false,
     this.randomPool,
+    this.battleOverrides,
     this.randomMin,
     this.randomMax,
     this.randomFlagNames,
@@ -349,6 +354,9 @@ class ScriptOutcome {
   final List<int> battleMonsters;
   final String? battleTitle;
 
+  /// 전투 적별 덮어쓰기 (원작 `with enemy[i] do begin name := ..; ac := ..; end`).
+  final List<Map<String, Object?>> battleOverrides;
+
   /// 전투 승리 시 설정할 플래그.
   final List<String> battleVictoryFlags;
 
@@ -420,6 +428,7 @@ class ScriptOutcome {
     this.recruits = const [],
     this.battleMonsters = const [],
     this.battleTitle,
+    this.battleOverrides = const [],
     this.battleVictoryFlags = const [],
     this.blockMove = false,
     this.teleportMap,
@@ -594,6 +603,9 @@ class LoreScriptEngine {
     var recruits = List<({String key, int? slot})>.from(acc.recruits);
     var monsters = List<int>.from(acc.battleMonsters);
     var battleTitle = acc.battleTitle;
+    var battleOverrides = List<Map<String, Object?>>.from(
+      acc.battleOverrides,
+    );
     var teleportMap = acc.teleportMap;
     var teleportX = acc.teleportX;
     var teleportY = acc.teleportY;
@@ -677,6 +689,9 @@ class LoreScriptEngine {
             }
           }
           battleTitle = step.battleTitle;
+          battleOverrides = List<Map<String, Object?>>.from(
+            step.battleOverrides ?? const [],
+          );
           battleVictory.addAll(step.battleVictoryFlags);
           break;
         case 'teleport':
@@ -765,6 +780,7 @@ class LoreScriptEngine {
               setFlags: flags,
               recruits: recruits,
               battleMonsters: monsters,
+              battleOverrides: battleOverrides,
               battleTitle: battleTitle,
               battleVictoryFlags: List<String>.from(battleVictory),
               blockMove: blockMove,
@@ -802,6 +818,7 @@ class LoreScriptEngine {
         setFlags: flags,
         recruits: recruits,
         battleMonsters: monsters,
+        battleOverrides: battleOverrides,
         battleTitle: battleTitle,
         battleVictoryFlags: battleVictory,
         blockMove: blockMove,
@@ -835,8 +852,11 @@ class LoreScriptEngine {
         !r.allFlags.every((f) => ctx.flags.contains(f))) {
       return false;
     }
+    // `notAllFlags`: 나열한 플래그가 **하나도** 서 있지 않아야 한다
+    // (원작 `party.etc[16] and bit2 = 0 and party.etc[5] = 0` 처럼 여러 개를
+    //  동시에 본다. `every` 로 보면 하나만 서 있어도 통과해 버린다).
     if (r.notAllFlags.isNotEmpty &&
-        r.notAllFlags.every((f) => ctx.flags.contains(f))) {
+        r.notAllFlags.any((f) => ctx.flags.contains(f))) {
       return false;
     }
     // 원작 `case party.etc[10] of 3 : ...` 같은 퀘스트 단계 판정.
@@ -1053,6 +1073,9 @@ class LoreScriptEngine {
             kind: 'battle',
             monsters: (b['monsters'] as List<dynamic>? ?? const []).cast<int>(),
             battleTitle: b['title'] as String?,
+            battleOverrides: (b['overrides'] as List<dynamic>?)
+                ?.map((o) => (o as Map<String, dynamic>).cast<String, Object?>())
+                .toList(),
             battleVictoryFlags: switch (b['victoryFlag']) {
               final String s => [s],
               final List<dynamic> list => list.cast<String>(),

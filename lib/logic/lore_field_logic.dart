@@ -20,6 +20,30 @@ class LoreFieldLogic {
   /// 원작 `party.etc[2] > 0` - 물위를 걷는 마법.
   static const String scriptFlagWaterWalk = 'waterWalkActive';
 
+  /// 원작 `party.etc[N] > 0` 을 그대로 쓴 이름.
+  ///
+  /// 기계적으로 옮긴 좌표 스크립트는 원작 조건을 `etcN` 으로 적으므로
+  /// (`allFlags: ["etc5"]`), 상황 플래그와 **함께** 이 이름도 넘겨야 한다.
+  static String etcCounter(int n) => 'etc$n';
+
+  /// 원작 `party.etc[1] > 0` - 마법의 횃불.
+  static const String etcTorch = 'etc1';
+
+  /// 원작 `party.etc[2] > 0` - 물위를 걷는 마법.
+  static const String etcWaterWalk = 'etc2';
+
+  /// 원작 `party.etc[3] > 0` - 늪위를 걷는 마법.
+  static const String etcSwampWalk = 'etc3';
+
+  /// 원작 `party.etc[4] > 0` - 공중 부상(용암 통과).
+  static const String etcLevitate = 'etc4';
+
+  /// 원작 `party.etc[5] > 0` - 독심술(마음을 읽는 능력) 활성.
+  ///
+  /// ESP 메뉴 `[3] 독심술` 로 켜지고(원작 `party.etc[5] := 3`), 걸음/대화마다
+  /// 줄어든다. Draconian·Red Antares 영입 제안과 Spica 상담이 이 조건을 본다.
+  static const String etcMindRead = 'etc5';
+
   LoreFieldLogic._();
 
   // ── 성문/동굴 입구 확인 (wantenter / wantexit) ──

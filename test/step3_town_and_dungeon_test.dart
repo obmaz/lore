@@ -169,7 +169,13 @@ void main() {
         isNotEmpty,
       );
       // 맵 11 (y=24) 미이라의 방 → Major Mummy 전투
-      final mummy = engine.startStep(11, 12, 24, const ScriptContext())!;
+      // (원작 조건: `party.etc[13] = 1` = LASTDITCH 퀘스트 단계 1)
+      final mummy = engine.startStep(
+        11,
+        12,
+        24,
+        const ScriptContext(questSteps: {'lastditch': 1}),
+      )!;
       expect(mummy.outcome.battleMonsters, [35, 35, 26]);
       // 맵 12 (18,10) 황금의 봉인 → 원작 좌표
       final seal = engine.startStep(12, 18, 10, const ScriptContext())!;

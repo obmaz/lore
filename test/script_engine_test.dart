@@ -225,21 +225,33 @@ void main() {
       expect(jump.outcome.teleportY, 41);
       expect(jump.outcome.messages.single, contains('공간 이동'));
 
-      // 2) 맵 4 (26,16) Draconian: 강의 → 재방문 시 영입 선택
+      // 2) 맵 4 (26,16) Draconian: 피라밋 설명 + 강의 → 독심술(etc5) 사용 후
+      //    영입 제안 (원작도 `party.etc[5] > 0` 일 때만 영입을 제안한다)
       final lecture = engine.startStep(4, 26, 16, noCtx)!;
-      expect(lecture.outcome.setFlags, contains('draconianMet'));
+      expect(lecture.outcome.messages.first, contains('드래곤의 중간 종족'));
+      expect(lecture.outcome.recruits, isEmpty);
       final join = engine.startStep(
+        4,
+        26,
+        16,
+        const ScriptContext(flags: {'etc5'}),
+      )!;
+      expect(join.pendingChoice, isNotNull);
+      final joinOutcome = join.choose(0).outcome;
+      final joined = joinOutcome.recruits.single;
+      expect(joined.key, 'draconian');
+      expect(joined.slot, 4); // 원작 join(62,6) = 6번 슬롯
+      expect(joinOutcome.setFlags, contains('draconianMet'));
+      // 원작 join(62,6)은 레벨 17로 편입시킨다.
+      expect(LoreJoin.byKey('draconian')!.battleLevel, 17);
+      // 이미 합류했다면 피라밋은 비어 있다(원작 `etc[16] and bit2 > 0`).
+      final after = engine.startStep(
         4,
         26,
         16,
         const ScriptContext(flags: {'draconianMet'}),
       )!;
-      expect(join.pendingChoice, isNotNull);
-      final joined = join.choose(0).outcome.recruits.single;
-      expect(joined.key, 'draconian');
-      expect(joined.slot, 4); // 원작 join(62,6) = 6번 슬롯
-      // 원작 join(62,6)은 레벨 17로 편입시킨다.
-      expect(LoreJoin.byKey('draconian')!.battleLevel, 17);
+      expect(after.outcome.messages.join(''), contains('아무도 살고 있지 않았다'));
 
       // 3) 맵 6 (51,12) 수감소 병사 전투 (2명 → 재방문 7명)
       final prison = engine.startStep(6, 51, 12, noCtx)!;
@@ -275,8 +287,20 @@ void main() {
       expect(oedipus.matches('step', 10, 7, 44), isFalse);
 
       // 6) 맵 11 y=24 미이라의 방 (Sphinx ×2 + Major Mummy)
-      final mummy = engine.startStep(11, 12, 24, noCtx)!;
+      //    원작은 `party.etc[13] = 1`(LASTDITCH 퀘스트 단계 1)일 때만 발동한다.
+      final mummy = engine.startStep(
+        11,
+        12,
+        24,
+        const ScriptContext(questSteps: {'lastditch': 1}),
+      )!;
       expect(mummy.outcome.battleMonsters, [35, 35, 26]);
+      // 적 이름/능력치도 원작 그대로 덮어쓴다.
+      final names = mummy.outcome.battleOverrides
+          .map((o) => o['name'])
+          .whereType<String>()
+          .toList();
+      expect(names, ['Sphinx', 'Sphinx', 'Major Mummy']);
 
       // 7) 맵 14 (16,20) 황금의 방패 / 맵 15 (14,7) 방패, (45,19) 갑옷
       expect(
@@ -293,11 +317,18 @@ void main() {
       );
 
       // 8) 맵 15 y=27 QUAKE 보스 (Zombie ×2 + ArchiGagoyle)
-      expect(engine.startStep(15, 20, 27, noCtx)!.outcome.battleMonsters, [
-        36,
-        36,
-        42,
-      ]);
+      //    원작은 `party.etc[14] = 4`(GAIA 퀘스트 단계 4)일 때 발동한다.
+      final quake = engine.startStep(
+        15,
+        20,
+        27,
+        const ScriptContext(questSteps: {'gaia': 4}),
+      )!;
+      expect(quake.outcome.battleMonsters, [36, 36, 42]);
+      expect(
+        quake.outcome.battleOverrides.map((o) => o['name']).whereType<String>(),
+        ['Zombie', 'Zombie', 'ArchiGagoyle'],
+      );
     });
 
     test('11. 원작 맵 15 (y=48) 보물은 6000 → 4000 두 단계로 지급된다', () async {

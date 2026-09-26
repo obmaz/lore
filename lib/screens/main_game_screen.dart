@@ -282,10 +282,29 @@ class _MainGameScreenState extends State<MainGameScreen> {
         .toSet();
 
     // 원작 `party.etc[3] > 0`(늪위를 걷는 마법)처럼 상황 기반 플래그도 넘긴다.
-    if (_swampWalkSteps > 0) flags.add(LoreFieldLogic.scriptFlagSwampWalk);
-    if (_levitateSteps > 0) flags.add(LoreFieldLogic.scriptFlagLevitate);
-    if (_torchSteps > 0) flags.add(LoreFieldLogic.scriptFlagTorch);
-    if (_waterWalkSteps > 0) flags.add(LoreFieldLogic.scriptFlagWaterWalk);
+    // 기계적으로 옮긴 스크립트는 원작 조건을 `etcN` 으로 적으므로 두 이름을 모두
+    // 넘긴다(예: `etc5` = 독심술 활성).
+    if (_swampWalkSteps > 0) {
+      flags
+        ..add(LoreFieldLogic.scriptFlagSwampWalk)
+        ..add(LoreFieldLogic.etcSwampWalk);
+    }
+    if (_levitateSteps > 0) {
+      flags
+        ..add(LoreFieldLogic.scriptFlagLevitate)
+        ..add(LoreFieldLogic.etcLevitate);
+    }
+    if (_torchSteps > 0) {
+      flags
+        ..add(LoreFieldLogic.scriptFlagTorch)
+        ..add(LoreFieldLogic.etcTorch);
+    }
+    if (_waterWalkSteps > 0) {
+      flags
+        ..add(LoreFieldLogic.scriptFlagWaterWalk)
+        ..add(LoreFieldLogic.etcWaterWalk);
+    }
+    if (_mindReadCount > 0) flags.add(LoreFieldLogic.etcMindRead);
 
     return ScriptContext(
       mindReadActive: _mindReadCount > 0,
@@ -553,7 +572,32 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final enemies = outcome.battleMonsters
           .map((id) => LoreData.instance.monster(id))
           .toList();
+      _applyBattleOverrides(enemies, outcome.battleOverrides);
       _startBossBattle(enemies, title: outcome.battleTitle);
+    }
+  }
+
+  /// 원작 `with enemy[i] do begin name := 'Sphinx'; level := 4; ac := 1; end`.
+  ///
+  /// 적 번호는 1부터이며 `monsters` 목록 순서와 같다.
+  void _applyBattleOverrides(
+    List<Monster> enemies,
+    List<Map<String, Object?>> overrides,
+  ) {
+    for (final o in overrides) {
+      final index = (o['index'] as num?)?.toInt();
+      if (index == null || index < 1 || index > enemies.length) continue;
+      final i = index - 1;
+      enemies[i] = enemies[i].withOverrides(
+        name: o['name'] as String?,
+        ac: (o['ac'] as num?)?.toInt(),
+        special: (o['special'] as num?)?.toInt(),
+        castLevel: (o['castLevel'] as num?)?.toInt(),
+        specialCastLevel: (o['specialCastLevel'] as num?)?.toInt(),
+        level: (o['level'] as num?)?.toInt(),
+        eNumber: (o['eNumber'] as num?)?.toInt(),
+        hp: (o['hp'] as num?)?.toInt(),
+      );
     }
   }
 
