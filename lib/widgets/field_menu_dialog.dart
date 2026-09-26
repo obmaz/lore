@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../logic/lore_menu_text.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 import '../services/save_manager.dart';
@@ -238,20 +239,30 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          '당신의 명령을 고르시오 ===>',
+          LoreMenuText.selectModePrompt,
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 12,
           ),
         ),
         const SizedBox(height: 8),
-        _menuBtn('[P] 일행의 상황을 본다 (View Party)', FieldMenuTab.partyView),
-        _menuBtn('[V] 개인의 상황을 본다 (View Character)', FieldMenuTab.characterView),
-        _menuBtn('[Q] 간이 일행 상황을 본다 (Quick View)', FieldMenuTab.quickView),
-        _menuBtn('[C] 마법을 사용한다 (Cast Spell)', FieldMenuTab.castSpell),
-        _menuBtn('[E] 초감각 기술을 쓴다 (Extrasense / ESP)', FieldMenuTab.esp),
-        _menuBtn('[R] 여기서 쉰다 (Rest)', FieldMenuTab.rest),
-        _menuBtn('[G] 게임 저장 / 불러오기 (Game Option)', FieldMenuTab.gameOption),
+        // 원작 LOREMENU.PAS:1033 SelectMode 의 7개 항목
+        _menuBtn('[P] ${LoreMenuText.selectModeParty}', FieldMenuTab.partyView),
+        _menuBtn(
+          '[V] ${LoreMenuText.selectModeCharacter}',
+          FieldMenuTab.characterView,
+        ),
+        _menuBtn(
+          '[Q] ${LoreMenuText.selectModeQuick}',
+          FieldMenuTab.quickView,
+        ),
+        _menuBtn('[C] ${LoreMenuText.selectModeCast}', FieldMenuTab.castSpell),
+        _menuBtn('[E] ${LoreMenuText.selectModeEsp}', FieldMenuTab.esp),
+        _menuBtn('[R] ${LoreMenuText.selectModeRest}', FieldMenuTab.rest),
+        _menuBtn(
+          '[G] ${LoreMenuText.selectModeOption}',
+          FieldMenuTab.gameOption,
+        ),
       ],
     );
   }
@@ -280,13 +291,75 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   // 1. 일행의 상황 (ViewParty)
   // =========================================================================
   Widget _buildPartyView() {
-    return Container(
-      height: 200,
-      decoration: BoxDecoration(
-        border: Border.all(color: RetroTheme.darkGray),
-        color: RetroTheme.background,
-      ),
-      child: ListView.builder(
+    final etc = widget.etc ?? const <String, int>{};
+    String availability(int value) => value > 0
+        ? LoreMenuText.viewPartyAvailable
+        : LoreMenuText.viewPartyUnavailable;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        // 원작 LOREMENU.PAS:504 `ViewParty` - 세계 상태 요약
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${LoreMenuText.viewPartyXAxis}${widget.playerX}   '
+                      '${LoreMenuText.viewPartyYAxis}${widget.playerY}',
+                      style: RetroTheme.dosFont.copyWith(
+                        fontSize: 10,
+                      ),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewPartyFood}${widget.food}   '
+                      '${LoreMenuText.viewPartyGold}${widget.gold}',
+                      style: RetroTheme.dosFont.copyWith(
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${LoreMenuText.viewPartyTorch}${availability(etc['torchSteps'] ?? 0)}'
+                      '  ${LoreMenuText.viewPartyLevitate}${availability(etc['levitateSteps'] ?? 0)}',
+                      style: RetroTheme.dosFont.copyWith(
+                        color: RetroTheme.lightCyan,
+                        fontSize: 10,
+                      ),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewPartyWater}${availability(etc['waterWalkSteps'] ?? 0)}'
+                      '  ${LoreMenuText.viewPartySwamp}${availability(etc['swampWalkSteps'] ?? 0)}',
+                      style: RetroTheme.dosFont.copyWith(
+                        color: RetroTheme.lightCyan,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 86,
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: RetroTheme.darkGray),
+              color: RetroTheme.background,
+            ),
+            child: ListView.builder(
         itemCount: widget.party.length,
         itemBuilder: (context, idx) {
           final p = widget.party[idx];
@@ -332,7 +405,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
             ),
           );
         },
-      ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
@@ -340,6 +416,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   // 2. 개인의 상황 (ViewCharacter)
   // =========================================================================
   Widget _buildCharacterView() {
+    // 원작 LOREMENU.PAS:528 - `능력을 보고싶은 인물을 선택하시오`
+    final whoPrompt = LoreMenuText.viewCharWho;
     final p = widget.party[_selectedMemberIndex];
     return Column(
       children: [
@@ -370,13 +448,14 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         ),
         const SizedBox(height: 8),
         Container(
-          height: 160,
+          height: 168,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             border: Border.all(color: RetroTheme.darkGray),
             color: RetroTheme.background,
           ),
-          child: Row(
+          child: SingleChildScrollView(
+            child: Row(
             children: [
               // 기본 스탯
               Expanded(
@@ -391,28 +470,33 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                       ),
                     ),
                     const SizedBox(height: 4),
+                    // 원작 LOREMENU.PAS:526 `ViewCharacter` 표기
                     Text(
-                      '근력(STR): ${p.strength}',
+                      '${LoreMenuText.viewCharStrength}${p.strength}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
-                      '지능(INT): ${p.mentality}',
+                      '${LoreMenuText.viewCharMentality}${p.mentality}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
-                      '인내(CON): ${p.endurance}',
+                      '${LoreMenuText.viewCharConcentration}${p.concentration}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
-                      '민첩(AGI): ${p.agility}',
+                      '${LoreMenuText.viewCharEndurance}${p.endurance}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
-                      '저항(RES): ${p.resistance}',
+                      '${LoreMenuText.viewCharResistance}${p.resistance}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
-                      '행운(LUK): ${p.luck}',
+                      '${LoreMenuText.viewCharAgility}${p.agility}',
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewCharLuck}${p.luck}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                   ],
@@ -432,15 +516,43 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '무기: ${p.weaponName} (+${p.weaPower})',
+                      '${LoreMenuText.viewCharWeapon}${p.weaponName}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
-                      '방패: ${p.shieldName} (+${p.shiPower})',
+                      '${LoreMenuText.viewCharShield}${p.shieldName}${LoreMenuText.viewCharShieldSuffix}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
-                      '갑옷: ${p.armorName} (+${p.armPower})',
+                      '${LoreMenuText.viewCharArmor}${p.armorName}${LoreMenuText.viewCharArmorSuffix}',
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewCharAccArms}${p.accArms}',
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewCharAccMagic}${p.accMagic}',
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewCharAccEsp}${p.accEsp}',
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewCharBattleLevel}${p.battleLevel}',
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewCharMagicLevel}${p.magicLevel}',
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewCharEspLevel}${p.espLevel}',
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                    ),
+                    Text(
+                      '${LoreMenuText.viewCharExp}${p.experience}',
                       style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
@@ -461,6 +573,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                 ),
               ),
             ],
+            ),
           ),
         ),
       ],
@@ -483,7 +596,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    '이름',
+                    LoreMenuText.quickViewName,
                     style: RetroTheme.dosFont.copyWith(
                       color: RetroTheme.white,
                       fontSize: 10,
@@ -523,7 +636,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    '중독',
+                    // 원작 QuickView: ` 중독 의식불명 죽음`
+                    LoreMenuText.quickViewHeader,
                     style: RetroTheme.dosFont.copyWith(
                       color: RetroTheme.lightRed,
                       fontSize: 10,
@@ -533,7 +647,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    '기절',
+                    '',
                     style: RetroTheme.dosFont.copyWith(
                       color: RetroTheme.lightRed,
                       fontSize: 10,
@@ -543,7 +657,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    '사망',
+                    '',
                     style: RetroTheme.dosFont.copyWith(
                       color: RetroTheme.lightRed,
                       fontSize: 10,
