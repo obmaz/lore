@@ -8,6 +8,7 @@ import '../game/lore_world_manager.dart';
 import '../game/lore_dialogue_manager.dart';
 import '../logic/field_magic_logic.dart';
 import '../logic/town_logic.dart';
+import '../data/lore_script.dart';
 
 /// 1993년 원작 LOREMENU.PAS 기반 스페이스바 필드 시스템 메뉴 (SelectMode)
 class FieldMenuDialog extends StatefulWidget {
@@ -18,7 +19,7 @@ class FieldMenuDialog extends StatefulWidget {
   final int playerX;
   final int playerY;
   final void Function(int newFood)? onFoodChanged;
-  final void Function(SaveData loadedData)? onSaveDataLoaded;
+  final Future<void> Function(SaveData loadedData)? onSaveDataLoaded;
   final void Function({int? torch, int? water, int? swamp, int? levitate})?
   onSpellEffect;
 
@@ -34,6 +35,9 @@ class FieldMenuDialog extends StatefulWidget {
   /// (x, y) 타일을 바꾼다 (원작 `map[x+dx,y+dy] := k`).
   final void Function(int x, int y, int tile)? onTerrainChange;
   final void Function(int count)? onMindReadActivated;
+  final void Function(int frequency, int maxEnemies)?
+  onEncounterSettingsChanged;
+  final List<int> Function()? mapTilesProvider;
   final Map<String, int>? etc;
   final void Function(String message) onLog;
 
@@ -56,6 +60,8 @@ class FieldMenuDialog extends StatefulWidget {
     this.onMoveTo,
     this.onTerrainChange,
     this.onMindReadActivated,
+    this.onEncounterSettingsChanged,
+    this.mapTilesProvider,
     this.etc,
     this.initialTab = FieldMenuTab.main,
     required this.onLog,
@@ -80,6 +86,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   FieldMenuTab _currentTab = FieldMenuTab.main;
   int _selectedMemberIndex = 0;
   late int _currentFood;
+  late int _encounterFrequency;
+  late int _maxEnemies;
   List<SaveData?>? _slots;
   bool _isLoadingSlots = false;
 
@@ -88,6 +96,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     super.initState();
     _currentTab = widget.initialTab;
     _currentFood = widget.food;
+    _encounterFrequency = widget.etc?['encounterFrequency'] ?? 2;
+    _maxEnemies = widget.etc?['maxEnemies'] ?? 5;
     _loadSlots();
   }
 
@@ -1563,11 +1573,64 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
       constraints: const BoxConstraints(maxHeight: 280),
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: 4,
+        itemCount: 5,
         itemBuilder: (context, index) {
-          final slotNum = index + 1;
-          final slotData = _slots![index];
-          final slotTitle = SaveManager.slotNames[index];
+          if (index == 0) {
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 12),
+              child: Wrap(
+                spacing: 18,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  Text(
+                    '조우 간격',
+                    style: RetroTheme.dosFont.copyWith(fontSize: 11),
+                  ),
+                  DropdownButton<int>(
+                    value: _encounterFrequency,
+                    dropdownColor: RetroTheme.background,
+                    items: const [1, 2, 3]
+                        .map(
+                          (n) => DropdownMenuItem(value: n, child: Text('$n')),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      if (value == null) return;
+                      setState(() => _encounterFrequency = value);
+                      widget.onEncounterSettingsChanged?.call(
+                        value,
+                        _maxEnemies,
+                      );
+                    },
+                  ),
+                  Text(
+                    '최대 적 수',
+                    style: RetroTheme.dosFont.copyWith(fontSize: 11),
+                  ),
+                  DropdownButton<int>(
+                    value: _maxEnemies,
+                    dropdownColor: RetroTheme.background,
+                    items: const [3, 4, 5, 6, 7]
+                        .map(
+                          (n) => DropdownMenuItem(value: n, child: Text('$n')),
+                        )
+                        .toList(),
+                    onChanged: (value) {
+                      if (value == null) return;
+                      setState(() => _maxEnemies = value);
+                      widget.onEncounterSettingsChanged?.call(
+                        _encounterFrequency,
+                        value,
+                      );
+                    },
+                  ),
+                ],
+              ),
+            );
+          }
+          final slotNum = index;
+          final slotData = _slots![index - 1];
+          final slotTitle = SaveManager.slotNames[index - 1];
 
           return Container(
             margin: const EdgeInsets.only(bottom: 8),
@@ -1664,8 +1727,13 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                           gold: widget.gold,
                           food: _currentFood,
                           party: widget.party,
-                          flags: LoreDialogueManager.instance.getFlagsCopy(),
+                          flags: LoreDialogueManager.instance.getSaveFlags(),
                           etc: widget.etc ?? {},
+                          mapTiles: widget.mapTilesProvider?.call() ?? const [],
+                          consumedScripts: LoreScriptEngine
+                              .instance
+                              .consumedScripts
+                              .toList(),
                         );
                         await SaveManager.instance.saveGame(newSave);
                         widget.onLog(
@@ -1693,11 +1761,12 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                       ),
                       onPressed: slotData == null
                           ? null
-                          : () {
+                          : () async {
                               LoreDialogueManager.instance.loadFlags(
                                 slotData.flags,
                               );
-                              widget.onSaveDataLoaded?.call(slotData);
+                              await widget.onSaveDataLoaded?.call(slotData);
+                              if (!context.mounted) return;
                               Navigator.of(context).pop();
                             },
                       child: Text(

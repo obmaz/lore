@@ -8,6 +8,10 @@ library;
 /// 원작 `party.etc[n]` 의 보조 마법/환경 상태를 스크립트 조건에서 쓸 수 있게
 /// 이름을 붙인 것이다(`_scriptContext()`가 상황에 따라 넣어 준다).
 class LoreFieldLogic {
+  /// LORESPEC.PAS 맵 20: 횃불은 퀴즈 미로의 이 구역에서만 한 칸 소모된다.
+  static bool consumesTorch(int mapId, int x, int y) =>
+      mapId == 20 && x >= 8 && x <= 42 && y >= 19 && y <= 43;
+
   /// 원작 `party.etc[3] > 0` - 늪위를 걷는 마법.
   static const String scriptFlagSwampWalk = 'swampWalkActive';
 

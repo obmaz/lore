@@ -106,6 +106,7 @@ class LoreDialogueManager {
   /// 진행 상황을 기록한다. 포트는 같은 정보를 `etcN_bitM` 플래그로 보관해
   /// 스크립트 JSON의 `require`/`flag`에서 그대로 쓸 수 있게 한다.
   final Map<int, int> partyEtc = {};
+  final Map<String, bool> _scriptFlags = {};
 
   static final RegExp _etcFlagPattern = RegExp(r'^etc(\d+)_bit(\d+)$');
 
@@ -283,6 +284,7 @@ class LoreDialogueManager {
     for (final key in collectedTreasures) key: true,
     // 원작 `party.etc[N]` 비트/카운터도 그대로 보존한다.
     for (final entry in partyEtc.entries) 'etc${entry.key}': entry.value,
+    'scriptFlags': Map<String, bool>.from(_scriptFlags),
   };
 
   Map<String, bool> getFlagsCopy() => {
@@ -322,6 +324,7 @@ class LoreDialogueManager {
     'lavaGateKeyRight': lavaGateKeyRight,
     'lavaLeverLeftPulled': lavaLeverLeftPulled,
     'lavaLeverRightPulled': lavaLeverRightPulled,
+    ..._scriptFlags,
     for (final key in collectedTreasures) key: true,
     // 원작 `party.etc[N]` 비트도 켜진 것만 노출한다.
     for (final entry in partyEtc.entries)
@@ -332,6 +335,7 @@ class LoreDialogueManager {
   };
 
   void loadSaveFlags(Map<String, dynamic> flags) {
+    final knownSaveKeys = getSaveFlags().keys.toSet();
     metLordAhn = flags['metLordAhn'] == true;
     castleGateOpen = flags['castleGateOpen'] == true;
     lordAhnQuestStep = flags['lordAhnQuestStep'] as int? ?? 0;
@@ -382,22 +386,60 @@ class LoreDialogueManager {
     lavaGateKeyRight = flags['lavaGateKeyRight'] == true;
     lavaLeverLeftPulled = flags['lavaLeverLeftPulled'] == true;
     lavaLeverRightPulled = flags['lavaLeverRightPulled'] == true;
+    _scriptFlags
+      ..clear()
+      ..addAll(
+        (flags['scriptFlags'] as Map?)?.map(
+              (key, value) => MapEntry(key.toString(), value == true),
+            ) ??
+            const <String, bool>{},
+      );
+    // 구형 저장 파일은 getFlagsCopy()의 동적 플래그를 최상위에 저장했다.
+    for (final entry in flags.entries) {
+      if (entry.value is bool &&
+          !knownSaveKeys.contains(entry.key) &&
+          !entry.key.startsWith('gold:') &&
+          !_etcCounterFlagPattern.hasMatch(entry.key) &&
+          !_etcFlagPattern.hasMatch(entry.key)) {
+        _scriptFlags[entry.key] = entry.value as bool;
+      }
+    }
     collectedTreasures
       ..clear()
-      ..addAll(flags.keys.where((k) => k.startsWith('gold:')));
-    partyEtc
-      ..clear()
-      ..addEntries(
+      ..addAll(
         flags.entries
-            .where((e) => e.key.startsWith('etc'))
-            .map(
-              (e) => MapEntry(
-                int.tryParse(e.key.substring(3)) ?? -1,
-                e.value as int? ?? 0,
-              ),
+            .where(
+              (entry) => entry.key.startsWith('gold:') && entry.value == true,
             )
-            .where((e) => e.key > 0 && e.value != 0),
+            .map((entry) => entry.key),
       );
+    final etcBits = <int, int>{};
+    for (final entry in flags.entries) {
+      final bit = _etcFlagPattern.firstMatch(entry.key);
+      if (bit == null || entry.value != true) continue;
+      final n = int.parse(bit.group(1)!);
+      final m = int.parse(bit.group(2)!);
+      if (m >= 1 && m <= 8) {
+        etcBits[n] = (etcBits[n] ?? 0) | (1 << (m - 1));
+      }
+    }
+    partyEtc.clear();
+    for (final entry in flags.entries) {
+      final counter = _etcCounterFlagPattern.firstMatch(entry.key);
+      if (counter == null) continue;
+      final n = int.parse(counter.group(1)!);
+      final value = entry.value;
+      if (value is num) {
+        if (value.toInt() != 0) partyEtc[n] = value.toInt();
+      } else if (value == true) {
+        // 구형 불리언 etcN은 0이 아님만 뜻한다. 비트 플래그가 있으면
+        // 그 비트들이 정확한 원본 값을 나타낸다.
+        partyEtc[n] = etcBits[n] ?? 1;
+      }
+    }
+    for (final entry in etcBits.entries) {
+      partyEtc.putIfAbsent(entry.key, () => entry.value);
+    }
   }
 
   void loadFlags(Map<String, dynamic> flags) => loadSaveFlags(flags);
@@ -454,7 +496,7 @@ class LoreDialogueManager {
 
   /// JSON 스크립트(`{"flag": "이름"}`)로 플래그를 설정한다.
   ///
-  /// 알 수 없는 이름은 무시한다(오타로 게임이 멈추지 않도록).
+  /// 별도 필드가 없는 스크립트 플래그도 저장 파일에 보존한다.
   void setFlag(String name, [bool value = true]) {
     // 원작 `party.etc[N]` 비트/카운터 이름은 동적으로 처리한다.
     if (_etcFlagPattern.hasMatch(name) ||
@@ -535,6 +577,8 @@ class LoreDialogueManager {
         lavaLeverLeftPulled = value;
       case 'lavaLeverRightPulled':
         lavaLeverRightPulled = value;
+      default:
+        _scriptFlags[name] = value;
     }
   }
 
@@ -604,6 +648,7 @@ class LoreDialogueManager {
   ///  - `lastditch`= etc[13] (LASTDITCH 성주 퀘스트)
   ///  - `gaia`     = etc[14] (GAIA TERRA 성주 퀘스트)
   ///  - `water`    = etc[15] (WATER FIELD 성주 퀘스트)
+  ///  - `wivern`   = etc[37] (남은 Wivern 수문장 진행)
   int questStepValue(String name) {
     switch (name) {
       case 'lordahn':
@@ -614,6 +659,8 @@ class LoreDialogueManager {
         return gaiaQuestStep;
       case 'water':
         return waterFieldQuestStep;
+      case 'wivern':
+        return partyEtc[37] ?? 0;
       default:
         return 0;
     }
@@ -624,6 +671,7 @@ class LoreDialogueManager {
     'lastditch': lastditchQuestStep,
     'gaia': gaiaQuestStep,
     'water': waterFieldQuestStep,
+    'wivern': partyEtc[37] ?? 0,
   };
 
   /// 스크립트의 `questStep` 스텝을 적용한다 (원작 `inc(party.etc[n])` / `:= n`).
@@ -641,6 +689,9 @@ class LoreDialogueManager {
         break;
       case 'water':
         waterFieldQuestStep = value;
+        break;
+      case 'wivern':
+        partyEtc[37] = value;
         break;
     }
   }

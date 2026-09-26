@@ -29,6 +29,14 @@ void main() {
   );
 
   group('LORE 1993 [5단계 보강] 필드 프롬프트 & 동료 슬롯 선택 단위 테스트', () {
+    test('DEN7 횃불은 원작의 x=8..42, y=19..43 구역에서만 소모된다', () {
+      expect(LoreFieldLogic.consumesTorch(20, 8, 19), isTrue);
+      expect(LoreFieldLogic.consumesTorch(20, 42, 43), isTrue);
+      expect(LoreFieldLogic.consumesTorch(20, 7, 19), isFalse);
+      expect(LoreFieldLogic.consumesTorch(20, 42, 44), isFalse);
+      expect(LoreFieldLogic.consumesTorch(19, 8, 19), isFalse);
+    });
+
     test(
       '1. 성문/동굴 입구 확인 문구 검증 (LORESUB.PAS:986 wantenter / :999 wantexit)',
       () {

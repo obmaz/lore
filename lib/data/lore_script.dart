@@ -41,11 +41,17 @@ class ScriptRequire {
   final String? flag;
   final String? flagNot;
   final bool mindRead;
+  final bool mindReadInactive;
   final int? minEspLevel;
+  final int? maxEspLevelBelow;
   final bool notMindReadOrLowEsp;
 
   /// 플레이어가 밟고 있는 타일이 0일 때만 발동한다(원작 `if map[x,y] = 0`).
   final bool tileAtPlayerZero;
+  final int? tileAtPlayerValue;
+
+  /// 원작 `y1 <> n` 등 이벤트 진입 방향 조건.
+  final int? moveDyNot;
 
   /// 퀘스트 단계 조건 (원작 `party.etc[10] = 3` / `< 3`).
   final List<({String name, int? eq, int? lt, int? gte})> quests;
@@ -61,9 +67,13 @@ class ScriptRequire {
     this.flag,
     this.flagNot,
     this.mindRead = false,
+    this.mindReadInactive = false,
     this.minEspLevel,
+    this.maxEspLevelBelow,
     this.notMindReadOrLowEsp = false,
     this.tileAtPlayerZero = false,
+    this.tileAtPlayerValue,
+    this.moveDyNot,
     this.quests = const [],
     this.allFlags = const [],
     this.notAllFlags = const [],
@@ -84,9 +94,13 @@ class ScriptRequire {
       flag: json['flag'] as String?,
       flagNot: json['flagNot'] as String?,
       mindRead: json['mindRead'] == true,
+      mindReadInactive: json['mindReadInactive'] == true,
       minEspLevel: json['minEspLevel'] as int?,
+      maxEspLevelBelow: json['maxEspLevelBelow'] as int?,
       notMindReadOrLowEsp: json['notMindReadOrLowEsp'] == true,
       tileAtPlayerZero: json['tileAtPlayerZero'] == true,
+      tileAtPlayerValue: json['tileAtPlayerValue'] as int?,
+      moveDyNot: json['moveDyNot'] as int?,
       quests: quests,
       allFlags: (json['allFlags'] as List<dynamic>? ?? const []).cast<String>(),
       notAllFlags: (json['notAllFlags'] as List<dynamic>? ?? const [])
@@ -112,6 +126,7 @@ class ScriptContext {
 
   /// 플레이어가 지금 밟고 있는 타일 값(원작 `map[x,y]` 판정용, 모르면 null).
   final int? tileAtPlayer;
+  final int moveDy;
 
   /// 퀘스트 단계 값 (원작 `party.etc[10/13/14/15]` 등).
   final Map<String, int> questSteps;
@@ -121,6 +136,7 @@ class ScriptContext {
     this.maxEspLevel = 0,
     this.flags = const {},
     this.tileAtPlayer,
+    this.moveDy = 0,
     this.questSteps = const {},
   });
 }
@@ -163,6 +179,16 @@ class ScriptStep {
 
   /// 전투 **승리 시** 설정할 플래그 (원작 `if party.etc[6] = 0 then party.etc[..] or bit`).
   final List<String> battleVictoryFlags;
+  final Map<int, String> battleEnemyDefeatFlags;
+  final List<ScriptStep> battleRunAwaySteps;
+  final bool battleContinueOnRunAway;
+  final bool battleRetryOnRunAway;
+  final bool battleMirrorParty;
+  final bool battleShuffle;
+  final int? battleVictoryIfEnemyDead;
+  final int? battleRunAwayIfEnemyAlive;
+  final String? battleRunAwayProgressQuest;
+  final int? battleRunAwayProgressTotal;
 
   /// 진행을 취소한다 (원작 `exit` - 예: 라바 게이트가 열리지 않았을 때).
   final bool block;
@@ -183,6 +209,8 @@ class ScriptStep {
 
   /// torch 스텝: 마법의 횃불을 켠다 (원작 `party.etc[1] := 1`).
   final bool torchLit;
+  final bool rigelBlessing;
+  final int? partyClassId;
 
   /// questStep 스텝: 원작 `party.etc[N]` 숫자 상태를 바꾼다
   /// (예: `inc(party.etc[10])`).
@@ -207,6 +235,9 @@ class ScriptStep {
   /// setTileArea 스텝 (영역 지형 변형): 원작 `for j := .. do map[i,j] := v`.
   final int? tileXMax;
   final int? tileYMax;
+
+  /// setTileArea: 이 값인 타일만 변경한다.
+  final int? tileOnlyIf;
 
   /// `atPlayerX`: 영역의 x를 플레이어가 선 **열**로 삼는다
   /// (원작 `for i := 10 to 23 do map[x,i] := 49`).
@@ -251,6 +282,16 @@ class ScriptStep {
     this.monsters,
     this.battleTitle,
     this.battleVictoryFlags = const [],
+    this.battleEnemyDefeatFlags = const {},
+    this.battleRunAwaySteps = const [],
+    this.battleContinueOnRunAway = false,
+    this.battleRetryOnRunAway = false,
+    this.battleMirrorParty = false,
+    this.battleShuffle = false,
+    this.battleVictoryIfEnemyDead,
+    this.battleRunAwayIfEnemyAlive,
+    this.battleRunAwayProgressQuest,
+    this.battleRunAwayProgressTotal,
     this.block = false,
     this.teleportMap,
     this.tileX,
@@ -260,6 +301,8 @@ class ScriptStep {
     this.teleportKeepY = false,
     this.randomBranches,
     this.torchLit = false,
+    this.rigelBlessing = false,
+    this.partyClassId,
     this.questName,
     this.questSet,
     this.questInc,
@@ -273,6 +316,7 @@ class ScriptStep {
     this.peekY,
     this.tileXMax,
     this.tileYMax,
+    this.tileOnlyIf,
     this.tileAtPlayerX = false,
     this.tileAtPlayerY = false,
     this.randomPool,
@@ -303,6 +347,9 @@ class LoreScript {
   final int? yMin;
   final int? yMax;
 
+  /// 넓은 범위 이벤트에서 원작의 앞선 `else if on(x,y)` 좌표를 제외한다.
+  final List<({int x, int y})> excludeCoords;
+
   final bool once;
 
   /// 조건을 충실히 옮길 수 없어 **실행하지 않고 보관만** 하는 항목.
@@ -322,6 +369,7 @@ class LoreScript {
     this.xMax,
     this.yMin,
     this.yMax,
+    this.excludeCoords = const [],
     required this.once,
     this.disabled = false,
     required this.require,
@@ -340,6 +388,7 @@ class LoreScript {
     if (xMax != null && tx > xMax!) return false;
     if (yMin != null && ty < yMin!) return false;
     if (yMax != null && ty > yMax!) return false;
+    if (excludeCoords.any((p) => p.x == tx && p.y == ty)) return false;
     return true;
   }
 }
@@ -352,6 +401,9 @@ class ScriptOutcome {
   final List<String> setFlags;
   final List<({String key, int? slot})> recruits;
   final List<int> battleMonsters;
+  final int battleCount;
+  final bool battleMirrorParty;
+  final bool battleReuseExisting;
   final String? battleTitle;
 
   /// 전투 적별 덮어쓰기 (원작 `with enemy[i] do begin name := ..; ac := ..; end`).
@@ -368,12 +420,19 @@ class ScriptOutcome {
   final int? teleportX;
   final int? teleportY;
 
+  /// 진입한 방향의 반대편으로 한 칸 되돌린다 (원작 `x:=x-x1; y:=y-y1`).
+  final bool stepBack;
+
   /// 한 축만 바꾸는 이동인지(원작 `y := 80`).
   final bool teleportKeepX;
   final bool teleportKeepY;
 
   /// 마법의 횃불을 켰는지 (원작 `party.etc[1] := 1`).
   final bool torchLit;
+  final bool rigelBlessing;
+
+  /// 원작 `for i := 1 to 6 do if player[i].name <> '' then class := n`.
+  final int? partyClassId;
 
   /// 퀘스트 단계 변경 (원작 `party.etc[N] := n` / `inc(party.etc[N])`).
   final List<({String name, int? set, int? inc})> questChanges;
@@ -396,6 +455,7 @@ class ScriptOutcome {
       int? ifZero,
       bool atPlayerX,
       bool atPlayerY,
+      int? onlyIf,
     })
   >
   tileAreas;
@@ -427,6 +487,9 @@ class ScriptOutcome {
     this.setFlags = const [],
     this.recruits = const [],
     this.battleMonsters = const [],
+    this.battleCount = 0,
+    this.battleMirrorParty = false,
+    this.battleReuseExisting = false,
     this.battleTitle,
     this.battleOverrides = const [],
     this.battleVictoryFlags = const [],
@@ -434,9 +497,12 @@ class ScriptOutcome {
     this.teleportMap,
     this.teleportX,
     this.teleportY,
+    this.stepBack = false,
     this.teleportKeepX = false,
     this.teleportKeepY = false,
     this.torchLit = false,
+    this.rigelBlessing = false,
+    this.partyClassId,
     this.questChanges = const [],
     this.expDelta = 0,
     this.tileChanges = const [],
@@ -447,24 +513,80 @@ class ScriptOutcome {
     this.equips = const [],
     this.events = const [],
   });
+
+  /// 선택지 이전에 이미 적용한 결과를 제외한 이번 구간의 효과만 돌려준다.
+  /// [ScriptRun.outcome]은 기존 호출자를 위해 누적 결과를 유지한다.
+  ScriptOutcome since(ScriptOutcome previous) {
+    List<T> added<T>(List<T> current, List<T> old) =>
+        current.skip(old.length).toList();
+
+    final newBattle = battleCount > previous.battleCount;
+    final newTeleport =
+        teleportX != previous.teleportX ||
+        teleportY != previous.teleportY ||
+        teleportMap != previous.teleportMap;
+
+    return ScriptOutcome(
+      messages: added(messages, previous.messages),
+      goldDelta: goldDelta - previous.goldDelta,
+      foodDelta: foodDelta - previous.foodDelta,
+      setFlags: added(setFlags, previous.setFlags),
+      recruits: added(recruits, previous.recruits),
+      battleMonsters: newBattle ? battleMonsters : const [],
+      battleCount: battleCount - previous.battleCount,
+      battleMirrorParty: newBattle && battleMirrorParty,
+      battleReuseExisting: newBattle && battleReuseExisting,
+      battleTitle: newBattle ? battleTitle : null,
+      battleOverrides: newBattle ? battleOverrides : const [],
+      battleVictoryFlags: added(
+        battleVictoryFlags,
+        previous.battleVictoryFlags,
+      ),
+      blockMove: blockMove && !previous.blockMove,
+      teleportMap: newTeleport ? teleportMap : null,
+      teleportX: newTeleport ? teleportX : null,
+      teleportY: newTeleport ? teleportY : null,
+      stepBack: stepBack && !previous.stepBack,
+      teleportKeepX: teleportKeepX,
+      teleportKeepY: teleportKeepY,
+      torchLit: torchLit && !previous.torchLit,
+      rigelBlessing: rigelBlessing && !previous.rigelBlessing,
+      partyClassId: partyClassId != previous.partyClassId ? partyClassId : null,
+      questChanges: added(questChanges, previous.questChanges),
+      expDelta: expDelta - previous.expDelta,
+      tileChanges: added(tileChanges, previous.tileChanges),
+      tileAreas: added(tileAreas, previous.tileAreas),
+      playerTiles: added(playerTiles, previous.playerTiles),
+      tileAtTarget: tileAtTarget != previous.tileAtTarget ? tileAtTarget : null,
+      nudges: added(nudges, previous.nudges),
+      equips: added(equips, previous.equips),
+      events: added(events, previous.events),
+    );
+  }
 }
 
 /// 실행 중인 스크립트. 선택지가 나오면 [pendingChoice]가 채워진다.
 class ScriptRun {
+  final LoreScriptEngine _engine;
   final LoreScript script;
   final List<ScriptStep> _remaining;
   final ScriptOutcome _acc;
   final String? choicePrompt;
   final List<String>? choiceTexts;
   final ScriptStep? _choiceStep;
+  final ScriptStep? _battleStep;
+  final bool awaitingBattle;
 
   ScriptRun._(
+    this._engine,
     this.script,
     this._remaining,
     this._acc, {
     this.choicePrompt,
     this.choiceTexts,
     this._choiceStep,
+    this._battleStep,
+    this.awaitingBattle = false,
   });
 
   /// UI가 사용자에게 물어봐야 하는 선택지 (없으면 null).
@@ -475,6 +597,11 @@ class ScriptRun {
 
   bool get hasPendingChoice => choiceTexts != null;
 
+  bool isVictoryAfterRunAway(Set<int> defeatedEnemySlots) {
+    final slot = _battleStep?.battleVictoryIfEnemyDead;
+    return awaitingBattle && slot != null && defeatedEnemySlots.contains(slot);
+  }
+
   /// 선택지 인덱스를 골라 실행을 이어간다. 반환값은 갱신된 [ScriptRun].
   ScriptRun choose(int optionIndex) {
     final options = _choiceStep?.options;
@@ -482,17 +609,84 @@ class ScriptRun {
     final chosen = (optionIndex >= 0 && optionIndex < options.length)
         ? options[optionIndex]
         : null;
+    if (chosen == null) return this;
     // 선택 이후 실행할 스텝 = 고른 옵션의 스텝 + 원래 스크립트의 나머지
-    final queue = <ScriptStep>[...?chosen?.steps, ..._remaining];
-    return LoreScriptEngine.instance._execute(script, queue, _acc);
+    final queue = <ScriptStep>[...chosen.steps, ..._remaining];
+    final run = _engine._execute(script, queue, _acc);
+    if (script.once && !run.hasPendingChoice && !run.awaitingBattle) {
+      _engine.consumedScripts.add(script.id);
+    }
+    return run;
+  }
+
+  /// 전투에서 이긴 뒤에만 남은 스텝을 실행한다.
+  ScriptRun continueAfterBattle() {
+    if (!awaitingBattle) return this;
+    final run = _engine._execute(script, [
+      for (final flag
+          in _battleStep?.battleEnemyDefeatFlags.values ?? const <String>[])
+        ScriptStep(kind: 'flag', key: flag),
+      ..._remaining,
+    ], _acc);
+    if (script.once && !run.hasPendingChoice && !run.awaitingBattle) {
+      _engine.consumedScripts.add(script.id);
+    }
+    return run;
+  }
+
+  /// 도망에 지정된 후속 스텝을 실행하고, 원작의 재도전 루프를 이어간다.
+  ScriptRun continueAfterRunAway({Set<int> defeatedEnemySlots = const {}}) {
+    final battle = _battleStep;
+    if (!awaitingBattle || battle == null) return this;
+    if (battle.battleVictoryIfEnemyDead != null &&
+        defeatedEnemySlots.contains(battle.battleVictoryIfEnemyDead)) {
+      return continueAfterBattle();
+    }
+    if (battle.battleRunAwayIfEnemyAlive != null &&
+        defeatedEnemySlots.contains(battle.battleRunAwayIfEnemyAlive)) {
+      return ScriptRun._(_engine, script, const [], _acc);
+    }
+    final queue = <ScriptStep>[
+      for (final slot in defeatedEnemySlots.toList()..sort())
+        if (battle.battleEnemyDefeatFlags.containsKey(slot))
+          ScriptStep(kind: 'flag', key: battle.battleEnemyDefeatFlags[slot]),
+      if (battle.battleRunAwayProgressQuest != null &&
+          battle.battleRunAwayProgressTotal != null)
+        ScriptStep(
+          kind: 'questStep',
+          questName: battle.battleRunAwayProgressQuest,
+          questSet:
+              battle.battleRunAwayProgressTotal! -
+              _acc.battleMonsters.length +
+              defeatedEnemySlots
+                  .where(
+                    (index) =>
+                        index >= 1 && index <= _acc.battleMonsters.length,
+                  )
+                  .length,
+        ),
+      ...battle.battleRunAwaySteps,
+      if (battle.battleRetryOnRunAway) battle,
+      if (battle.battleRetryOnRunAway) ..._remaining,
+      if (battle.battleContinueOnRunAway && !battle.battleRetryOnRunAway)
+        ..._remaining,
+    ];
+    return _engine._execute(
+      script,
+      queue,
+      _acc,
+      reuseFirstBattle: battle.battleRetryOnRunAway,
+    );
   }
 }
 
 // ── 엔진 ────────────────────────────────────────────────────────────
 
 class LoreScriptEngine {
-  static final LoreScriptEngine instance = LoreScriptEngine._internal();
-  LoreScriptEngine._internal();
+  static final LoreScriptEngine instance = LoreScriptEngine();
+
+  /// 별도 실행 세션을 만들 수 있다. 같은 시드와 입력이면 난수 분기를 재현한다.
+  LoreScriptEngine({Random? random}) : _random = random ?? Random();
 
   List<LoreScript> _scripts = [];
   bool _loaded = false;
@@ -501,7 +695,7 @@ class LoreScriptEngine {
 
   /// 1회성 스크립트 실행 이력 (원작 `party.etc` 비트에 대응).
   final Set<String> consumedScripts = {};
-  final Random _random = Random();
+  final Random _random;
   List<LoreScript> get scripts => _scripts;
 
   Future<void> load({AssetBundle? bundle}) async {
@@ -510,16 +704,25 @@ class LoreScriptEngine {
       final raw = await (bundle ?? rootBundle).loadString(
         'assets/data/scripts.json',
       );
-      final decoded = json.decode(raw) as Map<String, dynamic>;
-      _scripts = (decoded['scripts'] as List<dynamic>)
-          .map((e) => _parseScript(e as Map<String, dynamic>))
-          .toList();
-      usingJson = true;
+      loadFromJson(raw);
     } catch (e) {
       _scripts = [];
       usingJson = false;
       loadError = e.toString();
     }
+    _loaded = true;
+  }
+
+  /// 화면이나 asset bundle 없이 규칙을 주입한다. 파싱이 실패하면 기존 규칙은 유지한다.
+  void loadFromJson(String raw) {
+    final decoded = json.decode(raw) as Map<String, dynamic>;
+    final scripts = (decoded['scripts'] as List<dynamic>)
+        .map((e) => _parseScript(e as Map<String, dynamic>))
+        .toList();
+    _scripts = scripts;
+    consumedScripts.clear();
+    usingJson = true;
+    loadError = null;
     _loaded = true;
   }
 
@@ -569,8 +772,9 @@ class LoreScriptEngine {
   ScriptRun? startById(String id, ScriptContext ctx) {
     for (final s in _scripts) {
       if (s.id != id) continue;
-      if (!_meets(s.require, ctx)) return null;
-      if (s.once && consumedScripts.contains(s.id)) return null;
+      if (s.disabled) continue;
+      if (!_meets(s.require, ctx)) continue;
+      if (s.once && consumedScripts.contains(s.id)) continue;
       return _start(s, ctx);
     }
     return null;
@@ -586,32 +790,39 @@ class LoreScriptEngine {
   }
 
   ScriptRun _start(LoreScript s, ScriptContext ctx) {
-    if (s.once) consumedScripts.add(s.id);
-    return _execute(s, s.steps, const ScriptOutcome());
+    final run = _execute(s, s.steps, const ScriptOutcome());
+    if (s.once && !run.hasPendingChoice && !run.awaitingBattle) {
+      consumedScripts.add(s.id);
+    }
+    return run;
   }
 
   /// 스텝 목록을 순차 실행한다. choice를 만나면 거기서 멈추고 선택지를 돌려준다.
   ScriptRun _execute(
     LoreScript script,
     List<ScriptStep> steps,
-    ScriptOutcome acc,
-  ) {
+    ScriptOutcome acc, {
+    bool reuseFirstBattle = false,
+  }) {
     var messages = List<String>.from(acc.messages);
     var gold = acc.goldDelta;
     var food = acc.foodDelta;
     var flags = List<String>.from(acc.setFlags);
     var recruits = List<({String key, int? slot})>.from(acc.recruits);
     var monsters = List<int>.from(acc.battleMonsters);
+    var battleCount = acc.battleCount;
+    var battleMirrorParty = acc.battleMirrorParty;
+    var battleReuseExisting = acc.battleReuseExisting;
     var battleTitle = acc.battleTitle;
-    var battleOverrides = List<Map<String, Object?>>.from(
-      acc.battleOverrides,
-    );
+    var battleOverrides = List<Map<String, Object?>>.from(acc.battleOverrides);
     var teleportMap = acc.teleportMap;
     var teleportX = acc.teleportX;
     var teleportY = acc.teleportY;
     var teleportKeepX = acc.teleportKeepX;
     var teleportKeepY = acc.teleportKeepY;
     var torchLit = acc.torchLit;
+    var rigelBlessing = acc.rigelBlessing;
+    var partyClassId = acc.partyClassId;
     var questChanges = List<({String name, int? set, int? inc})>.from(
       acc.questChanges,
     );
@@ -632,6 +843,7 @@ class LoreScriptEngine {
             int? ifZero,
             bool atPlayerX,
             bool atPlayerY,
+            int? onlyIf,
           })
         >.from(acc.tileAreas);
     var playerTiles = List<({int tile, int? ifZero})>.from(acc.playerTiles);
@@ -639,11 +851,46 @@ class LoreScriptEngine {
     var nudges = List<({int dx, int dy})>.from(acc.nudges);
     var battleVictory = List<String>.from(acc.battleVictoryFlags);
     var blockMove = acc.blockMove;
+    var stepBack = acc.stepBack;
     var equips =
         List<
           ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
         >.from(acc.equips);
     var events = List<ScriptEvent>.from(acc.events);
+
+    ScriptOutcome snapshot() => ScriptOutcome(
+      messages: messages,
+      goldDelta: gold,
+      foodDelta: food,
+      setFlags: flags,
+      recruits: recruits,
+      battleMonsters: monsters,
+      battleCount: battleCount,
+      battleMirrorParty: battleMirrorParty,
+      battleReuseExisting: battleReuseExisting,
+      battleOverrides: battleOverrides,
+      battleTitle: battleTitle,
+      battleVictoryFlags: battleVictory,
+      blockMove: blockMove,
+      teleportMap: teleportMap,
+      teleportX: teleportX,
+      teleportY: teleportY,
+      stepBack: stepBack,
+      teleportKeepX: teleportKeepX,
+      teleportKeepY: teleportKeepY,
+      torchLit: torchLit,
+      rigelBlessing: rigelBlessing,
+      partyClassId: partyClassId,
+      questChanges: questChanges,
+      expDelta: expDelta,
+      tileChanges: tileChanges,
+      tileAreas: tileAreas,
+      playerTiles: playerTiles,
+      tileAtTarget: tileAtTarget,
+      nudges: nudges,
+      equips: equips,
+      events: events,
+    );
 
     // `randomSteps` 분기를 펼치기 위해 실행 목록을 큐로 다룬다.
     final queue = List<ScriptStep>.from(steps);
@@ -676,6 +923,11 @@ class LoreScriptEngine {
           break;
         case 'battle':
           monsters = List<int>.from(step.monsters ?? const []);
+          battleCount++;
+          battleMirrorParty = step.battleMirrorParty;
+          battleReuseExisting = reuseFirstBattle;
+          reuseFirstBattle = false;
+          if (step.battleShuffle) monsters.shuffle(_random);
           // 원작 `enemynumber := random(3) + 3` 같은 난수 소환.
           if (step.randomPool != null && step.randomPool!.isNotEmpty) {
             final minCount = step.randomMin ?? 1;
@@ -693,7 +945,14 @@ class LoreScriptEngine {
             step.battleOverrides ?? const [],
           );
           battleVictory.addAll(step.battleVictoryFlags);
-          break;
+          return ScriptRun._(
+            this,
+            script,
+            queue.sublist(i + 1),
+            snapshot(),
+            awaitingBattle: true,
+            battleStep: step,
+          );
         case 'teleport':
           teleportMap = step.teleportMap;
           teleportX = step.tileX;
@@ -703,6 +962,12 @@ class LoreScriptEngine {
           break;
         case 'torch':
           torchLit = true;
+          break;
+        case 'rigelBlessing':
+          rigelBlessing = true;
+          break;
+        case 'partyClass':
+          partyClassId = step.partyClassId;
           break;
         case 'block':
           blockMove = true;
@@ -737,6 +1002,7 @@ class LoreScriptEngine {
             ifZero: step.tileIfZero,
             atPlayerX: step.tileAtPlayerX,
             atPlayerY: step.tileAtPlayerY,
+            onlyIf: step.tileOnlyIf,
           ));
           break;
         case 'randomFlag':
@@ -757,6 +1023,9 @@ class LoreScriptEngine {
         case 'nudge':
           nudges.add((dx: step.nudgeDx ?? 0, dy: step.nudgeDy ?? 0));
           break;
+        case 'stepBack':
+          stepBack = true;
+          break;
         case 'equip':
           equips.add((
             kind: step.equipKind!,
@@ -771,35 +1040,10 @@ class LoreScriptEngine {
           break;
         case 'choice':
           final run = ScriptRun._(
+            this,
             script,
             queue.sublist(i + 1),
-            ScriptOutcome(
-              messages: messages,
-              goldDelta: gold,
-              foodDelta: food,
-              setFlags: flags,
-              recruits: recruits,
-              battleMonsters: monsters,
-              battleOverrides: battleOverrides,
-              battleTitle: battleTitle,
-              battleVictoryFlags: List<String>.from(battleVictory),
-              blockMove: blockMove,
-              teleportMap: teleportMap,
-              teleportX: teleportX,
-              teleportY: teleportY,
-              teleportKeepX: teleportKeepX,
-              teleportKeepY: teleportKeepY,
-              torchLit: torchLit,
-              questChanges: questChanges,
-              expDelta: expDelta,
-              tileChanges: tileChanges,
-              tileAreas: tileAreas,
-              playerTiles: playerTiles,
-              tileAtTarget: tileAtTarget,
-              nudges: nudges,
-              equips: equips,
-              events: events,
-            ),
+            snapshot(),
             choicePrompt: step.prompt,
             choiceTexts: step.options!.map((o) => o.text).toList(),
             choiceStep: step,
@@ -808,46 +1052,25 @@ class LoreScriptEngine {
       }
     }
 
-    return ScriptRun._(
-      script,
-      const [],
-      ScriptOutcome(
-        messages: messages,
-        goldDelta: gold,
-        foodDelta: food,
-        setFlags: flags,
-        recruits: recruits,
-        battleMonsters: monsters,
-        battleOverrides: battleOverrides,
-        battleTitle: battleTitle,
-        battleVictoryFlags: battleVictory,
-        blockMove: blockMove,
-        teleportMap: teleportMap,
-        teleportX: teleportX,
-        teleportY: teleportY,
-        teleportKeepX: teleportKeepX,
-        teleportKeepY: teleportKeepY,
-        torchLit: torchLit,
-        questChanges: questChanges,
-        expDelta: expDelta,
-        tileChanges: tileChanges,
-        tileAreas: tileAreas,
-        playerTiles: playerTiles,
-        tileAtTarget: tileAtTarget,
-        nudges: nudges,
-        equips: equips,
-        events: events,
-      ),
-    );
+    return ScriptRun._(this, script, const [], snapshot());
   }
 
   bool _meets(ScriptRequire r, ScriptContext ctx) {
     if (r.flag != null && !ctx.flags.contains(r.flag)) return false;
     if (r.flagNot != null && ctx.flags.contains(r.flagNot)) return false;
     if (r.mindRead && !ctx.mindReadActive) return false;
+    if (r.mindReadInactive && ctx.mindReadActive) return false;
     if (r.minEspLevel != null && ctx.maxEspLevel < r.minEspLevel!) return false;
+    if (r.maxEspLevelBelow != null && ctx.maxEspLevel >= r.maxEspLevelBelow!) {
+      return false;
+    }
     // 원작 `if map[x,y] = 0 then ...` 같은 밟은 타일 판정.
     if (r.tileAtPlayerZero && ctx.tileAtPlayer != 0) return false;
+    if (r.tileAtPlayerValue != null &&
+        ctx.tileAtPlayer != r.tileAtPlayerValue) {
+      return false;
+    }
+    if (r.moveDyNot != null && ctx.moveDy == r.moveDyNot) return false;
     if (r.allFlags.isNotEmpty &&
         !r.allFlags.every((f) => ctx.flags.contains(f))) {
       return false;
@@ -883,6 +1106,10 @@ class LoreScriptEngine {
       xMax: json['xMax'] as int?,
       yMin: json['yMin'] as int?,
       yMax: json['yMax'] as int?,
+      excludeCoords: [
+        for (final raw in json['excludeCoords'] as List<dynamic>? ?? const [])
+          (x: (raw as Map<String, dynamic>)['x'] as int, y: raw['y'] as int),
+      ],
       once: json['once'] == true,
       disabled: json['disabled'] == true,
       require: ScriptRequire.fromJson(json['require'] as Map<String, dynamic>?),
@@ -945,6 +1172,21 @@ class LoreScriptEngine {
       }
       if (m.containsKey('torch')) {
         steps.add(ScriptStep(kind: 'torch', torchLit: m['torch'] == true));
+        matched = true;
+      }
+      if (m.containsKey('rigelBlessing')) {
+        steps.add(
+          ScriptStep(
+            kind: 'rigelBlessing',
+            rigelBlessing: m['rigelBlessing'] == true,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('partyClass')) {
+        steps.add(
+          ScriptStep(kind: 'partyClass', partyClassId: m['partyClass'] as int),
+        );
         matched = true;
       }
       if (m.containsKey('questStep')) {
@@ -1020,6 +1262,7 @@ class LoreScriptEngine {
             tileIfZero: t['ifZero'] as int?,
             tileAtPlayerX: t['atPlayerX'] == true,
             tileAtPlayerY: t['atPlayerY'] == true,
+            tileOnlyIf: t['onlyIf'] as int?,
           ),
         );
         matched = true;
@@ -1056,6 +1299,10 @@ class LoreScriptEngine {
         );
         matched = true;
       }
+      if (m['stepBack'] == true) {
+        steps.add(const ScriptStep(kind: 'stepBack'));
+        matched = true;
+      }
       if (m.containsKey('randomFlag')) {
         steps.add(
           ScriptStep(
@@ -1074,13 +1321,35 @@ class LoreScriptEngine {
             monsters: (b['monsters'] as List<dynamic>? ?? const []).cast<int>(),
             battleTitle: b['title'] as String?,
             battleOverrides: (b['overrides'] as List<dynamic>?)
-                ?.map((o) => (o as Map<String, dynamic>).cast<String, Object?>())
+                ?.map(
+                  (o) => (o as Map<String, dynamic>).cast<String, Object?>(),
+                )
                 .toList(),
             battleVictoryFlags: switch (b['victoryFlag']) {
               final String s => [s],
               final List<dynamic> list => list.cast<String>(),
               _ => const <String>[],
             },
+            battleEnemyDefeatFlags:
+                (b['onEnemyDeadFlags'] as Map<String, dynamic>? ?? const {})
+                    .map(
+                      (slot, flag) => MapEntry(int.parse(slot), flag as String),
+                    ),
+            battleRunAwaySteps: _parseSteps(
+              b['onRunAway'] as List<dynamic>? ?? const [],
+            ),
+            battleContinueOnRunAway: b['continueOnRunAway'] == true,
+            battleRetryOnRunAway: b['retryOnRunAway'] == true,
+            battleMirrorParty: b['mirrorParty'] == true,
+            battleShuffle: b['shuffle'] == true,
+            battleVictoryIfEnemyDead: b['victoryIfEnemyDead'] as int?,
+            battleRunAwayIfEnemyAlive: b['runAwayIfEnemyAlive'] as int?,
+            battleRunAwayProgressQuest:
+                (b['runAwayProgress'] as Map<String, dynamic>?)?['quest']
+                    as String?,
+            battleRunAwayProgressTotal:
+                (b['runAwayProgress'] as Map<String, dynamic>?)?['total']
+                    as int?,
             randomPool: (random?['pool'] as List<dynamic>?)?.cast<int>(),
             randomMin: random?['min'] as int?,
             randomMax: random?['max'] as int?,

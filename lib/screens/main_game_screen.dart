@@ -14,6 +14,10 @@ import '../game/lore_world_manager.dart';
 import '../logic/field_hotkeys.dart';
 import '../logic/lore_sub_text.dart';
 import '../logic/lore_field_logic.dart';
+import '../logic/lore_encounter_logic.dart';
+import '../logic/lore_mirror_enemy.dart';
+import '../logic/lore_rigel_blessing.dart';
+import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
@@ -34,8 +38,9 @@ import '../services/save_manager.dart';
 import '../game/lore_dialogue_manager.dart';
 import '../game/lore_dungeon_event_manager.dart';
 import '../widgets/lore_guide_dialog.dart';
+import '../widgets/ending_view.dart';
 
-enum GameScreenMode { field, battle, gameOver }
+enum GameScreenMode { field, battle, gameOver, ending }
 
 /// 4:3 레트로 콘솔 레이아웃 통합 메인 게임 화면
 class MainGameScreen extends StatefulWidget {
@@ -66,9 +71,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 원작의 `PressAnyKey` 를 현대적으로 대체한 것이다.
   static const Duration _peekHold = Duration(milliseconds: 1600);
   int _mindReadCount = 0; // etc[5]: 독심술
+  int _encounterFrequency = 2; // etc[7]
+  int _maxEnemies = 5; // etc[8]
 
   /// 스크립트 전투 승리 시 설정할 플래그 (원작 `party.etc[6] = 0` 처리).
   final List<String> _pendingVictoryFlags = [];
+  ScriptRun? _pendingScriptBattle;
+  int? _pendingScriptTargetX;
+  int? _pendingScriptTargetY;
+  ({PortalInfo? portal, int tx, int ty})? _pendingPortalTransition;
 
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
@@ -96,13 +107,20 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _partyGold = widget.initialSaveData!.gold;
       _partyFood = widget.initialSaveData!.food;
       LoreDialogueManager.instance.loadFlags(widget.initialSaveData!.flags);
+      LoreScriptEngine.instance.consumedScripts
+        ..clear()
+        ..addAll(widget.initialSaveData!.consumedScripts);
       final etc = widget.initialSaveData!.etc;
       _torchSteps = etc['torchSteps'] ?? 0;
       _waterWalkSteps = etc['waterWalkSteps'] ?? 0;
       _swampWalkSteps = etc['swampWalkSteps'] ?? 0;
       _levitateSteps = etc['levitateSteps'] ?? 0;
       _mindReadCount = etc['mindReadCount'] ?? 0;
+      _encounterFrequency = etc['encounterFrequency'] ?? 2;
+      _maxEnemies = etc['maxEnemies'] ?? 5;
     } else {
+      LoreDialogueManager.instance.loadFlags({});
+      LoreScriptEngine.instance.consumedScripts.clear();
       _party =
           widget.initialParty ??
           [
@@ -120,6 +138,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _swampWalkSteps = 0;
       _levitateSteps = 0;
       _mindReadCount = 0;
+      _encounterFrequency = 2;
+      _maxEnemies = 5;
     }
   }
 
@@ -144,8 +164,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       initialMapId: initialMapId,
       initialPlayerX: startX,
       initialPlayerY: startY,
+      initialMapTiles: widget.initialSaveData?.mapTiles,
       onLog: (msg) => _addLog(msg),
       onEncounter: () => _startBattle(),
+      encounterFrequencyProvider: () => _encounterFrequency,
       onTownEntered: () => _openTownDialog(),
       onFacilityEntered: (type) {
         TownFacilityType fType;
@@ -246,12 +268,44 @@ class _MainGameScreenState extends State<MainGameScreen> {
           enterScriptId,
           _scriptContext(),
         );
+        if (pre != null && pre.awaitingBattle) {
+          var alreadyApplied = const ScriptOutcome();
+          if (enterScriptId == 'portal-23-25-dungeon') {
+            for (final message in pre.outcome.messages) {
+              _addLog(message);
+            }
+            if (_party.length >= 6 && _party[5].name == 'Draconian') {
+              for (final message in const [
+                ' ArchiDraconian은 마지막에 있는 Draconian',
+                '을 발견했다.',
+                ' 아니 너는 누구냐! 감히 Draconian 족이면',
+                '서 Necromancer님에게 반기를 들다니... 그',
+                '것은 바로 죽음이다. 받아랏!!',
+              ]) {
+                _addLog(message);
+              }
+              _party[5]
+                ..hp = 0
+                ..unconscious = 1
+                ..dead = 30000;
+              setState(() {});
+            }
+            alreadyApplied = ScriptOutcome(
+              messages: pre.outcome.messages,
+              events: pre.outcome.events,
+            );
+          }
+          _pendingPortalTransition = (portal: portal, tx: tx, ty: ty);
+          await _driveScript(pre, alreadyApplied: alreadyApplied);
+          return;
+        }
         if (pre != null) await _applyScriptOutcome(pre);
         if (!mounted) return;
         // 원작 `exit` - 진행을 취소하는 판정(라바 게이트 등).
         if (pre != null && pre.outcome.blockMove) return;
       }
-      _game.enterPortal(portal, tx, ty);
+      await _game.enterPortal(portal, tx, ty);
+      if (!mounted) return;
       setState(() {});
       // 원작 entermode - 맵 진입 후 타일/연출 처리.
       final enter = LoreScriptEngine.instance.startEnter(
@@ -280,6 +334,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
         .where((e) => e.value)
         .map((e) => e.key)
         .toSet();
+    // 생성된 전투 스크립트의 etc6 조건은 원작에서 *이번* 전투 직후에 평가된다.
+    // 이전 전투의 도망/패배 결과로 다음 보스전의 승리 분기가 바뀌지 않게 한다.
+    flags.remove('etc6');
 
     // 원작 `party.etc[3] > 0`(늪위를 걷는 마법)처럼 상황 기반 플래그도 넘긴다.
     // 기계적으로 옮긴 스크립트는 원작 조건을 `etcN` 으로 적으므로 두 이름을 모두
@@ -314,6 +371,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
       questSteps: LoreDialogueManager.instance.questSteps,
       // 원작 `map[x,y]` 판정(숨은 통로 등)을 위해 밟은 타일을 넘긴다.
       tileAtPlayer: _game.currentMap?.getTile(_game.playerX, _game.playerY),
+      moveDy: switch (_game.playerDirection) {
+        0 => 1,
+        1 => -1,
+        _ => 0,
+      },
     );
   }
 
@@ -323,16 +385,26 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 원작 `map[x+x1,y+y1] := 값` 스텝(`setTileAtTarget`)에 쓰인다.
   Future<void> _driveScript(
     ScriptRun run, {
+    ScriptOutcome alreadyApplied = const ScriptOutcome(),
     int? talkTargetX,
     int? talkTargetY,
   }) async {
     var current = run;
+    var applied = alreadyApplied;
     while (true) {
       await _applyScriptOutcome(
         current,
+        since: applied,
         talkTargetX: talkTargetX,
         talkTargetY: talkTargetY,
       );
+      applied = current.outcome;
+      if (current.awaitingBattle) {
+        _pendingScriptBattle = current;
+        _pendingScriptTargetX = talkTargetX;
+        _pendingScriptTargetY = talkTargetY;
+        return;
+      }
       final options = current.pendingChoice;
       if (options == null) return;
       if (!mounted) return;
@@ -389,14 +461,19 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 스크립트 결과(메시지/보상/플래그/동료/장비/전투)를 게임 상태에 반영한다.
   Future<void> _applyScriptOutcome(
     ScriptRun run, {
+    ScriptOutcome? since,
     int? talkTargetX,
     int? talkTargetY,
   }) async {
-    final outcome = run.outcome;
+    final outcome = since == null ? run.outcome : run.outcome.since(since);
+    String presented(String message) =>
+        run.script.id == 'keep2-exit-guard' && message.startsWith(', ')
+        ? '${_party.first.name}$message'
+        : message;
 
     if (outcome.events.isEmpty) {
       for (final m in outcome.messages) {
-        _addLog(m);
+        _addLog(presented(m));
       }
     } else {
       // 대사와 카메라 연출(원작 scroll(FALSE))을 원작 순서대로 재생한다.
@@ -408,7 +485,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           await Future<void>.delayed(_peekHold);
           if (!mounted) return;
         } else {
-          _addLog(event.text!);
+          _addLog(presented(event.text!));
         }
       }
       _game.clearPeek();
@@ -419,33 +496,75 @@ class _MainGameScreenState extends State<MainGameScreen> {
       await _applyScriptEquip(equip);
     }
 
+    if (outcome.goldDelta != 0 || outcome.foodDelta != 0) {
+      final resources = ScriptWorldReducer.applyResources(
+        ScriptResources(gold: _partyGold, food: _partyFood),
+        outcome,
+      );
+      setState(() {
+        _partyGold = resources.gold;
+        _partyFood = resources.food;
+      });
+    }
     if (outcome.goldDelta != 0) {
-      setState(() => _partyGold += outcome.goldDelta);
       if (outcome.goldDelta > 0) {
         _addLog('💰 금화 +${outcome.goldDelta} (보유: $_partyGold)');
       }
     }
 
     if (outcome.foodDelta != 0) {
-      setState(
-        () => _partyFood = (_partyFood + outcome.foodDelta).clamp(0, 255),
-      );
       _addLog(
         '🍞 식량 ${outcome.foodDelta > 0 ? '+' : ''}${outcome.foodDelta} (보유: $_partyFood)',
       );
     }
 
-    for (final flag in outcome.setFlags) {
-      LoreDialogueManager.instance.setFlag(flag);
+    const recruitFlagByKey = {
+      'mad_joe': 'madJoeJoined',
+      'rigel': 'rigelJoined',
+      'red_antares': 'redAntaresJoined',
+      'spica': 'spicaJoined',
+      'polaris': 'polarisJoined',
+      'lore_hunter': 'loreHunterJoined',
+    };
+    final deferredRecruitFlags = {
+      for (final recruit in outcome.recruits)
+        if (recruitFlagByKey[recruit.key] case final String flag)
+          if (outcome.setFlags.contains(flag)) flag,
+    };
+    final dialogue = LoreDialogueManager.instance;
+    final progressBefore = ScriptProgressState(
+      flags: dialogue.getFlagsCopy(),
+      quests: dialogue.questSteps,
+    );
+    final progressAfter = ScriptWorldReducer.applyProgress(
+      progressBefore,
+      outcome,
+      deferredFlags: deferredRecruitFlags,
+    );
+    for (final flag in progressAfter.flags.entries) {
+      if (flag.value && progressBefore.flags[flag.key] != true) {
+        dialogue.setFlag(flag.key);
+      }
+    }
+    for (final quest in progressAfter.quests.entries) {
+      if (progressBefore.quests[quest.key] != quest.value) {
+        dialogue.applyQuestStep(quest.key, set: quest.value);
+      }
     }
 
-    // 퀘스트 단계 변화 (원작 `inc(party.etc[n])` / `party.etc[n] := 값`)
-    for (final quest in outcome.questChanges) {
-      LoreDialogueManager.instance.applyQuestStep(
-        quest.name,
-        set: quest.set,
-        inc: quest.inc,
-      );
+    if (outcome.rigelBlessing) {
+      applyRigelBlessing(_party, Random());
+      setState(() {});
+    }
+
+    if (outcome.partyClassId case final classId?) {
+      setState(() {
+        for (final member in _party) {
+          if (member.name.isNotEmpty) {
+            member.playerClass = PlayerClass.fromId(classId);
+          }
+        }
+      });
     }
 
     // 경험치 보상 (원작 `for i := 1 to 6 do if player[i].name <> '' then
@@ -462,117 +581,133 @@ class _MainGameScreenState extends State<MainGameScreen> {
     for (final recruit in outcome.recruits) {
       final member = LoreJoin.byKey(recruit.key);
       if (member == null) continue;
-      _requestJoinSlot(PendingRecruit(member, forcedSlotOption: recruit.slot));
-    }
-
-    // 원작 `map[x+x1,y+y1] := 값` - 대화 상대(앞 칸)의 지형 변형.
-    if (outcome.tileAtTarget != null &&
-        talkTargetX != null &&
-        talkTargetY != null) {
-      final map = _game.currentMap;
-      final tx = talkTargetX;
-      final ty = talkTargetY;
-      if (map != null &&
-          tx >= 1 &&
-          tx <= map.xmax &&
-          ty >= 1 &&
-          ty <= map.ymax) {
-        map.grid[ty - 1][tx - 1] = outcome.tileAtTarget!;
-        setState(() {});
-      }
-    }
-
-    // 지형 변형 (원작 `map[x,y] := 값`)
-    for (final change in outcome.tileChanges) {
-      final map = _game.currentMap;
-      if (map == null) continue;
-      if (change.map != null && change.map != _game.currentMapId) continue;
-      if (change.x < 1 ||
-          change.x > map.xmax ||
-          change.y < 1 ||
-          change.y > map.ymax) {
-        continue;
-      }
-      map.grid[change.y - 1][change.x - 1] = _resolveTile(
-        map.grid[change.y - 1][change.x - 1],
-        change.tile,
-        change.ifZero,
+      final joined = await _requestJoinSlot(
+        PendingRecruit(member, forcedSlotOption: recruit.slot),
       );
-      setState(() {});
-    }
-
-    // 영역 지형 변형 (원작 `for j := .. do map[i,j] := 값`)
-    for (final area in outcome.tileAreas) {
-      final map = _game.currentMap;
-      if (map == null) continue;
-      if (area.map != null && area.map != _game.currentMapId) continue;
-      // 원작 `map[x,i] := 값`: x는 플레이어가 선 열이다.
-      final xMin = area.atPlayerX ? _game.playerX : area.xMin;
-      final xMax = area.atPlayerX ? _game.playerX : area.xMax;
-      // 원작 `map[j,y] := 값`: y는 플레이어가 선 행이다.
-      final yMin = area.atPlayerY ? _game.playerY : area.yMin;
-      final yMax = area.atPlayerY ? _game.playerY : area.yMax;
-      for (var y = yMin; y <= yMax; y++) {
-        if (y < 1 || y > map.ymax) continue;
-        for (var x = xMin; x <= xMax; x++) {
-          if (x < 1 || x > map.xmax) continue;
-          map.grid[y - 1][x - 1] = _resolveTile(
-            map.grid[y - 1][x - 1],
-            area.tile,
-            area.ifZero,
-          );
+      final flag = recruitFlagByKey[recruit.key];
+      if (joined && flag != null && deferredRecruitFlags.contains(flag)) {
+        LoreDialogueManager.instance.setFlag(flag);
+      }
+      if (joined && recruit.key == 'mad_joe' && _game.currentMapId == 6) {
+        final map = _game.currentMap;
+        if (map != null) {
+          map.grid[14][39] = 47; // LORETALK.PAS: map[40,15] := 47
+          setState(() {});
         }
       }
-      setState(() {});
     }
 
-    // 플레이어가 밟고 있는 칸의 지형 변형 (원작 `map[x,y] := 값`)
-    for (final playerTile in outcome.playerTiles) {
+    // 지도와 좌표 변화는 화면 밖의 순수 상태 전이 함수에서 계산한다.
+    final hasMapEffect =
+        outcome.tileAtTarget != null ||
+        outcome.tileChanges.isNotEmpty ||
+        outcome.tileAreas.isNotEmpty ||
+        outcome.playerTiles.isNotEmpty ||
+        outcome.nudges.isNotEmpty ||
+        outcome.stepBack ||
+        (outcome.teleportX != null && outcome.teleportY != null);
+    if (hasMapEffect) {
       final map = _game.currentMap;
-      if (map == null) continue;
-      final px = _game.playerX;
-      final py = _game.playerY;
-      if (px < 1 || px > map.xmax || py < 1 || py > map.ymax) continue;
-      map.grid[py - 1][px - 1] = _resolveTile(
-        map.grid[py - 1][px - 1],
-        playerTile.tile,
-        playerTile.ifZero,
-      );
-      setState(() {});
-    }
-
-    // 밀어내기 (원작 `inc(y)` / `dec(y)`)
-    for (final nudge in outcome.nudges) {
-      _game.tryMove(nudge.dx, nudge.dy);
-      setState(() {});
-    }
-
-    // 강제 이동 (원작 `x := ..; y := ..` / `map 변경`)
-    if (outcome.teleportX != null && outcome.teleportY != null) {
-      final targetMap = outcome.teleportMap ?? _game.currentMapId;
-      _game.loadMapById(
-        targetMap,
-        startX: outcome.teleportKeepX ? _game.playerX : outcome.teleportX!,
-        startY: outcome.teleportKeepY ? _game.playerY : outcome.teleportY!,
-      );
-      setState(() {});
-      _addLog('▶ (${outcome.teleportX}, ${outcome.teleportY}) 위치로 이동했습니다.');
+      if (map != null) {
+        final result = ScriptWorldReducer.applyMap(
+          ScriptMapState(
+            mapId: _game.currentMapId,
+            x: _game.playerX,
+            y: _game.playerY,
+            direction: _game.playerDirection,
+            grid: map.grid,
+          ),
+          outcome,
+          talkTargetX: talkTargetX,
+          talkTargetY: talkTargetY,
+        );
+        final originalMapId = _game.currentMapId;
+        setState(() {
+          map.grid.setAll(0, result.grid);
+          if (result.mapId == originalMapId) {
+            _game.playerX = result.x;
+            _game.playerY = result.y;
+          }
+        });
+        if (result.mapId != originalMapId) {
+          await _game.loadMapById(
+            result.mapId,
+            startX: result.x,
+            startY: result.y,
+          );
+          if (!mounted) return;
+          setState(() {});
+        }
+        if (outcome.teleportX != null && outcome.teleportY != null) {
+          _addLog('▶ (${result.x}, ${result.y}) 위치로 이동했습니다.');
+        }
+      } else if (outcome.teleportX != null && outcome.teleportY != null) {
+        // 지도가 아직 준비되지 않은 진입 스크립트도 목적지 이동은 수행한다.
+        final x = outcome.teleportKeepX ? _game.playerX : outcome.teleportX!;
+        final y = outcome.teleportKeepY ? _game.playerY : outcome.teleportY!;
+        await _game.loadMapById(
+          outcome.teleportMap ?? _game.currentMapId,
+          startX: x,
+          startY: y,
+        );
+        if (!mounted) return;
+        setState(() {});
+        _addLog('▶ ($x, $y) 위치로 이동했습니다.');
+      }
     }
 
     // 마법의 횃불 (원작 `party.etc[1] := 1`)
     if (outcome.torchLit && _torchSteps <= 0) {
-      setState(() => _torchSteps = 40);
+      setState(() => _torchSteps = 1);
       _addLog('🔥 마법의 횃불이 어둠을 밝힙니다.');
     }
 
+    if (outcome.setFlags.contains('bossNecromancerDefeated')) {
+      if (!mounted) return;
+      await showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (ctx) => AlertDialog(
+          scrollable: true,
+          backgroundColor: RetroTheme.black,
+          title: Text('최후의 대사', style: RetroTheme.dosFont),
+          content: Text(
+            outcome.messages.join('\n'),
+            style: RetroTheme.dosFont.copyWith(fontSize: 11),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(ctx).pop(),
+              child: Text('다음으로', style: RetroTheme.dosFont),
+            ),
+          ],
+        ),
+      );
+      if (!mounted) return;
+      setState(() => _currentMode = GameScreenMode.ending);
+      return;
+    }
+
     if (outcome.battleMonsters.isNotEmpty) {
+      if ((run.script.id == 'prison-battle-first' ||
+              run.script.id == 'prison-battle-return') &&
+          LoreJoin.removeMadJoeAtPrison(_party)) {
+        _addLog('전투가 시작되자 Mad Joe는 뒤로 물러나 일행을 떠났습니다.');
+        setState(() {});
+      }
       _pendingVictoryFlags
         ..clear()
         ..addAll(outcome.battleVictoryFlags);
-      final enemies = outcome.battleMonsters
-          .map((id) => LoreData.instance.monster(id))
-          .toList();
-      _applyBattleOverrides(enemies, outcome.battleOverrides);
+      final enemies = outcome.battleReuseExisting
+          ? _battleEnemies
+          : outcome.battleMirrorParty
+          ? createMindMirrorEnemies(_party)
+          : outcome.battleMonsters
+                .map((id) => LoreData.instance.monster(id))
+                .toList();
+      if (!outcome.battleReuseExisting) {
+        _applyBattleOverrides(enemies, outcome.battleOverrides);
+      }
       _startBossBattle(enemies, title: outcome.battleTitle);
     }
   }
@@ -599,12 +734,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         hp: (o['hp'] as num?)?.toInt(),
       );
     }
-  }
-
-  /// 원작 `if map[x,y] = 0 then map[x,y] := A else map[x,y] := B` 규칙을 적용한다.
-  int _resolveTile(int current, int tile, int? ifZero) {
-    if (ifZero != null && current == 0) return ifZero;
-    return tile;
   }
 
   /// 원작 `choosewhom` + 장비 지급 (`weapon := 3; wea_power := 12`).
@@ -709,7 +838,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   /// 원작 `LORESUB.PAS:1144 ReturnJoinMember` - 합류시킬 파티 슬롯(2~6번) 선택
-  Future<void> _requestJoinSlot(PendingRecruit pending) async {
+  Future<bool> _requestJoinSlot(PendingRecruit pending) async {
     final recruit = pending.member;
 
     // 원작이 슬롯을 고정한 경우(예: Mad Joe = 6번)에는 선택 없이 바로 합류시킨다.
@@ -725,7 +854,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (replaced != null) {
         _addLog('$replaced은(는) 전장에서 물러났습니다.');
       }
-      return;
+      return true;
     }
 
     final labels = LoreJoin.joinMenuLabels(_party);
@@ -776,7 +905,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
     if (option == null || option < 0) {
       _addLog(LoreJoin.joinCancelled);
-      return;
+      return false;
     }
 
     final slotNumber = option + 2; // 2~6번 슬롯
@@ -790,6 +919,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (replaced != null) {
       _addLog('$replaced은(는) 전장에서 물러났습니다.');
     }
+    return true;
   }
 
   void _handleHazardTile(TileCategory cat) {
@@ -855,8 +985,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
   }
 
-  void _handleStepTaken() {
-    if (_torchSteps > 0) _torchSteps--;
+  bool _handleStepTaken() {
+    if (_torchSteps > 0 &&
+        LoreFieldLogic.consumesTorch(
+          _game.currentMapId,
+          _game.playerX,
+          _game.playerY,
+        )) {
+      _torchSteps--;
+    }
     // 원작 LOREMAIN.PAS:31 `Move_Mode` - 독은 걸을 때마다 진행되고 10 을 넘으면
     // 발병하여 상태(dead/unconscious/hp)에 따라 피해를 준다.
     var poisonProgressed = false;
@@ -881,6 +1018,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
     if (poisonProgressed) _addLog('☠ 독이 온몸에 퍼져나갑니다.');
 
+    // LOREMAIN.PAS는 0(마을/필드) 또는 0·52(동굴/성채)에서만
+    // specialevent를 호출한다. 일반 바닥과 늪에서는 같은 좌표라도
+    // 이미 해제한 상자·레버·수문장 이벤트를 다시 실행하지 않는다.
+    final map = _game.currentMap;
+    if (map == null ||
+        map.getCategory(map.getTile(_game.playerX, _game.playerY)) !=
+            TileCategory.special) {
+      return false;
+    }
+
     // JSON 스크립트(step 트리거)를 우선 실행하고, 없으면 기존 이벤트 로직을 쓴다.
     final scriptRun = LoreScriptEngine.instance.startStep(
       _game.currentMapId,
@@ -889,8 +1036,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _scriptContext(),
     );
     if (scriptRun != null) {
-      unawaited(_applyScriptOutcome(scriptRun));
-      return;
+      unawaited(_driveScript(scriptRun));
+      return true;
     }
 
     // 던전 및 필드 특수 이벤트 감지 (LORESPEC.PAS)
@@ -912,7 +1059,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (dEvent.bossEnemies != null && dEvent.bossEnemies!.isNotEmpty) {
         _startBossBattle(dEvent.bossEnemies!, title: dEvent.title);
       }
+      return true;
     }
+    return false;
   }
 
   void _openQuickViewDialog() {
@@ -971,6 +1120,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
           'swampWalkSteps': _swampWalkSteps,
           'levitateSteps': _levitateSteps,
           'mindReadCount': _mindReadCount,
+          'encounterFrequency': _encounterFrequency,
+          'maxEnemies': _maxEnemies,
         },
         onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
         onSpellEffect: ({int? torch, int? water, int? swamp, int? levitate}) {
@@ -1001,8 +1152,20 @@ class _MainGameScreenState extends State<MainGameScreen> {
         onMindReadActivated: (count) {
           setState(() => _mindReadCount = count);
         },
-        onSaveDataLoaded: (save) {
+        onEncounterSettingsChanged: (frequency, maxEnemies) {
           setState(() {
+            _encounterFrequency = frequency;
+            _maxEnemies = maxEnemies;
+          });
+        },
+        mapTilesProvider: () => [
+          for (final row in _game.currentMap?.grid ?? <List<int>>[]) ...row,
+        ],
+        onSaveDataLoaded: (save) async {
+          setState(() {
+            LoreScriptEngine.instance.consumedScripts
+              ..clear()
+              ..addAll(save.consumedScripts);
             _party = List.from(save.party);
             _partyGold = save.gold;
             _partyFood = save.food;
@@ -1011,15 +1174,18 @@ class _MainGameScreenState extends State<MainGameScreen> {
             _swampWalkSteps = save.etc['swampWalkSteps'] ?? 0;
             _levitateSteps = save.etc['levitateSteps'] ?? 0;
             _mindReadCount = save.etc['mindReadCount'] ?? 0;
-            _game.loadMapById(
-              save.mapId,
-              startX: save.playerX,
-              startY: save.playerY,
-            );
-            _addLog(
-              '💾 [슬롯 ${save.slot}: ${save.slotName}] 데이터를 성공적으로 불러왔습니다.',
-            );
+            _encounterFrequency = save.etc['encounterFrequency'] ?? 2;
+            _maxEnemies = save.etc['maxEnemies'] ?? 5;
           });
+          await _game.loadMapById(
+            save.mapId,
+            startX: save.playerX,
+            startY: save.playerY,
+            mapTiles: save.mapTiles,
+          );
+          if (!mounted) return;
+          setState(() {});
+          _addLog('💾 [슬롯 ${save.slot}: ${save.slotName}] 데이터를 성공적으로 불러왔습니다.');
         },
         onLog: (msg) => _addLog(msg),
       ),
@@ -1054,26 +1220,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   /// 필드 인카운터 -> 전투 모드로 전환
   void _startBattle() {
+    final monsterIds = LoreEncounterLogic.rollMonsters(
+      _game.currentMapId,
+      Random(),
+      maxEnemies: _maxEnemies,
+    );
+    if (monsterIds.isEmpty) return;
     setState(() {
       _currentMode = GameScreenMode.battle;
-      final rnd = Random();
-      final count = rnd.nextInt(3) + 1; // 1~3마리
-      int minId = 1;
-      int maxId = 12;
-
-      // 맵 난이도에 따른 몬스터 ID 풀
-      if (_game.currentMapId >= 11 && _game.currentMapId <= 20) {
-        minId = 13;
-        maxId = 45; // 동굴 던전 몬스터
-      } else if (_game.currentMapId >= 21) {
-        minId = 40;
-        maxId = 72; // 요새/심연 몬스터
-      }
-
-      _battleEnemies = List.generate(count, (_) {
-        final id = minId + rnd.nextInt(maxId - minId + 1);
-        return LoreData.instance.monster(id);
-      });
+      _currentBossName = null;
+      _battleEnemies = monsterIds.map(LoreData.instance.monster).toList();
 
       // 원작 LOREBATT.PAS:1228-1240 - 조우 화면: `적이 출현했다 !!!` /
       // `적의 평균 민첩성 : n` / `적과 교전한다` / `도망간다`
@@ -1110,6 +1266,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   /// 전투 승리 -> 필드로 복귀
   void _onBattleVictory(int goldEarned) {
+    final pendingScript = _pendingScriptBattle;
+    final targetX = _pendingScriptTargetX;
+    final targetY = _pendingScriptTargetY;
+    _pendingScriptBattle = null;
+    _pendingScriptTargetX = null;
+    _pendingScriptTargetY = null;
     setState(() {
       // 원작 `LOREBATT.PAS:1186 party.etc[6] := 0` (승리).
       LoreDialogueManager.instance.setBattleResult(0);
@@ -1123,40 +1285,113 @@ class _MainGameScreenState extends State<MainGameScreen> {
       }
       _pendingVictoryFlags.clear();
 
-      // 보스 격퇴 플래그 갱신
-      if (_currentBossName != null) {
-        if (_currentBossName == 'Major Mummy') {
-          LoreDialogueManager.instance.bossMajorMummyDefeated = true;
-          _addLog('★ Major Mummy를 물리쳤습니다! LASTDITCH 성주에게 승전보를 전하십시오!');
-        } else if (_currentBossName == 'ArchiGagoyle') {
-          LoreDialogueManager.instance.bossArchiGagoyleDefeated = true;
-          _addLog('★ ArchiGagoyle을 물리쳤습니다! GAIA TERRA 성주에게 승전보를 전하십시오!');
-        } else if (_currentBossName?.startsWith('Hidra') ?? false) {
-          LoreDialogueManager.instance.bossHidraDefeated = true;
-          _addLog('★ 삼두룡 Hidra를 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
-        } else if (_currentBossName == 'Huge Dragon') {
-          LoreDialogueManager.instance.bossHugeDragonDefeated = true;
-          _addLog('★ Huge Dragon을 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
-        }
-        _currentBossName = null;
-      }
+      _markDefeatedBoss();
     });
     _focusNode.requestFocus();
+    if (pendingScript != null) {
+      unawaited(
+        _resumeScriptAfterBattle(
+          pendingScript.continueAfterBattle(),
+          pendingScript.outcome,
+          talkTargetX: targetX,
+          talkTargetY: targetY,
+        ),
+      );
+    }
   }
 
   /// 전투 도망 -> 필드로 복귀
   void _onBattleRunAway() {
+    final pendingScript = _pendingScriptBattle;
+    final targetX = _pendingScriptTargetX;
+    final targetY = _pendingScriptTargetY;
+    final defeatedEnemySlots = {
+      for (var i = 0; i < _battleEnemies.length; i++)
+        if (_battleEnemies[i].isDead || _battleEnemies[i].hp <= 0) i + 1,
+    };
+    final bossDefeated =
+        pendingScript?.isVictoryAfterRunAway(defeatedEnemySlots) ?? false;
+    _pendingScriptBattle = null;
+    _pendingScriptTargetX = null;
+    _pendingScriptTargetY = null;
+    _pendingVictoryFlags.clear();
     setState(() {
       // 원작 `LOREBATT.PAS:1148 party.etc[6] := 2` (도망).
       LoreDialogueManager.instance.setBattleResult(2);
       _currentMode = GameScreenMode.field;
       _addLog('안전한 곳으로 도망쳐 필드로 복귀했습니다.');
+      if (bossDefeated) {
+        _markDefeatedBoss();
+      } else {
+        _currentBossName = null;
+      }
     });
     _focusNode.requestFocus();
+    if (pendingScript != null) {
+      unawaited(
+        _resumeScriptAfterBattle(
+          pendingScript.continueAfterRunAway(
+            defeatedEnemySlots: defeatedEnemySlots,
+          ),
+          pendingScript.outcome,
+          talkTargetX: targetX,
+          talkTargetY: targetY,
+        ),
+      );
+    }
+  }
+
+  Future<void> _resumeScriptAfterBattle(
+    ScriptRun run,
+    ScriptOutcome applied, {
+    int? talkTargetX,
+    int? talkTargetY,
+  }) async {
+    final blocked = run.outcome.since(applied).blockMove;
+    await _driveScript(
+      run,
+      alreadyApplied: applied,
+      talkTargetX: talkTargetX,
+      talkTargetY: talkTargetY,
+    );
+    final portal = _pendingPortalTransition;
+    if (!mounted || _pendingScriptBattle != null || portal == null) return;
+    _pendingPortalTransition = null;
+    if (blocked) return;
+    await _game.enterPortal(portal.portal, portal.tx, portal.ty);
+    if (!mounted) return;
+    setState(() {});
+    final enter = LoreScriptEngine.instance.startEnter(
+      _game.currentMapId,
+      _scriptContext(),
+    );
+    if (enter != null) await _driveScript(enter);
+  }
+
+  void _markDefeatedBoss() {
+    if (_currentBossName == 'Major Mummy') {
+      LoreDialogueManager.instance.bossMajorMummyDefeated = true;
+      _addLog('★ Major Mummy를 물리쳤습니다! LASTDITCH 성주에게 승전보를 전하십시오!');
+    } else if (_currentBossName == 'ArchiGagoyle') {
+      LoreDialogueManager.instance.bossArchiGagoyleDefeated = true;
+      _addLog('★ ArchiGagoyle을 물리쳤습니다! GAIA TERRA 성주에게 승전보를 전하십시오!');
+    } else if (_currentBossName?.startsWith('Hidra') ?? false) {
+      LoreDialogueManager.instance.bossHidraDefeated = true;
+      _addLog('★ 삼두룡 Hidra를 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
+    } else if (_currentBossName == 'Huge Dragon') {
+      LoreDialogueManager.instance.bossHugeDragonDefeated = true;
+      _addLog('★ Huge Dragon을 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
+    }
+    _currentBossName = null;
   }
 
   /// 전투 패배 -> 게임 오버
   void _onBattleDefeat() {
+    _pendingScriptBattle = null;
+    _pendingScriptTargetX = null;
+    _pendingScriptTargetY = null;
+    _pendingVictoryFlags.clear();
+    _pendingPortalTransition = null;
     AudioManager.instance.stopBgm();
     setState(() {
       // 원작 `LOREBATT.PAS:58 party.etc[6] = 255` (전멸).
@@ -1440,6 +1675,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
             ],
           ),
         );
+      case GameScreenMode.ending:
+        return const SizedBox.shrink();
     }
   }
 
@@ -1451,6 +1688,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
         return '⚔ 턴제 전투 모드 (BATTLE ARENA) ⚔';
       case GameScreenMode.gameOver:
         return '† 게임 오버 (GAME OVER) †';
+      case GameScreenMode.ending:
+        return '◆ 에필로그 ◆';
     }
   }
 
@@ -1462,6 +1701,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_currentMode == GameScreenMode.ending) {
+      return Scaffold(
+        backgroundColor: RetroTheme.black,
+        body: EndingView(heroName: _party.first.name, onFinish: _restartGame),
+      );
+    }
     return KeyboardListener(
       focusNode: _focusNode,
       autofocus: true,

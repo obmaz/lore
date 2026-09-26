@@ -266,14 +266,21 @@ void main() {
         'lastditch': 0,
         'gaia': 5,
         'water': 0,
+        'wivern': 0,
       });
+
+      m.applyQuestStep('wivern', set: 2);
+      expect(m.questStepValue('wivern'), 2);
 
       final saved = m.getSaveFlags();
       expect(saved['lordAhnQuestStep'], 1);
       expect(saved['gaiaQuestStep'], 5);
+      expect(saved['etc37'], 2);
 
       m.lordAhnQuestStep = 0;
       m.gaiaQuestStep = 0;
+      m.loadSaveFlags(saved);
+      expect(m.questStepValue('wivern'), 2);
       m.loadSaveFlags({
         'lordAhnQuestStep': 4,
         'gaiaQuestStep': 2,

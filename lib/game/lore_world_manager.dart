@@ -367,6 +367,7 @@ class LoreWorldManager {
         targetX: rule.targetX,
         targetY: rule.targetY,
         name: rule.name,
+        scriptId: rule.script,
       );
     }
     return null;
@@ -624,28 +625,39 @@ class _BuiltInPortal {
   final int map;
   final int? x;
   final int? y;
+  final int? xMin;
+  final int? xMax;
   final int? yMin;
+  final int? yMax;
   final int targetMap;
   final int targetX;
   final int targetY;
   final String name;
+  final String? script;
 
   const _BuiltInPortal(
     this.map, {
     this.x,
     this.y,
+    this.xMin,
+    this.xMax,
     this.yMin,
+    this.yMax,
     required this.targetMap,
     required this.targetX,
     required this.targetY,
     required this.name,
+    this.script,
   });
 
   bool matches(int m, int tx, int ty) {
     if (map != m) return false;
     if (x != null && x != tx) return false;
     if (y != null && y != ty) return false;
+    if (xMin != null && tx < xMin!) return false;
+    if (xMax != null && tx > xMax!) return false;
     if (yMin != null && ty < yMin!) return false;
+    if (yMax != null && ty > yMax!) return false;
     return true;
   }
 }
@@ -677,6 +689,37 @@ const List<_BuiltInPortal> _builtInPortals = [
     targetX: 19,
     targetY: 27,
     name: 'GROUND 2',
+  ),
+  _BuiltInPortal(
+    7,
+    x: 50,
+    yMin: 9,
+    yMax: 10,
+    targetMap: 8,
+    targetX: 50,
+    targetY: 10,
+    name: 'GROUND GATE',
+  ),
+  _BuiltInPortal(
+    8,
+    x: 50,
+    yMin: 9,
+    yMax: 10,
+    targetMap: 7,
+    targetX: 50,
+    targetY: 10,
+    name: 'GROUND GATE',
+  ),
+  _BuiltInPortal(
+    9,
+    xMin: 24,
+    xMax: 29,
+    y: 5,
+    targetMap: 13,
+    targetX: 81,
+    targetY: 95,
+    name: 'SWAMP GATE',
+    script: 'portal-9-13-swamp-gate',
   ),
   _BuiltInPortal(
     9,
@@ -776,19 +819,61 @@ const List<_BuiltInPortal> _builtInPortals = [
   ),
   _BuiltInPortal(
     21,
-    yMin: 46,
+    y: 46,
     targetMap: 4,
     targetX: 48,
     targetY: 36,
     name: 'SWAMP KEEP 출구',
+    script: 'keep1-exit-guard',
   ),
   _BuiltInPortal(
     22,
-    yMin: 46,
+    y: 46,
     targetMap: 5,
     targetX: 15,
     targetY: 32,
     name: 'KEEP2 출구',
+    script: 'keep2-exit-guard',
+  ),
+  _BuiltInPortal(
+    23,
+    x: 25,
+    y: 12,
+    targetMap: 25,
+    targetX: 25,
+    targetY: 45,
+    name: 'DUNGEON OF EVIL',
+    script: 'portal-23-25-dungeon',
+  ),
+  _BuiltInPortal(
+    23,
+    x: 26,
+    y: 12,
+    targetMap: 25,
+    targetX: 25,
+    targetY: 45,
+    name: 'DUNGEON OF EVIL',
+    script: 'portal-23-25-dungeon',
+  ),
+  _BuiltInPortal(
+    25,
+    x: 25,
+    y: 27,
+    targetMap: 26,
+    targetX: 25,
+    targetY: 15,
+    name: 'CHAMBER OF NECROMANCER',
+    script: 'portal-25-26-chamber',
+  ),
+  _BuiltInPortal(
+    25,
+    x: 26,
+    y: 27,
+    targetMap: 26,
+    targetX: 25,
+    targetY: 15,
+    name: 'CHAMBER OF NECROMANCER',
+    script: 'portal-25-26-chamber',
   ),
   _BuiltInPortal(
     23,
@@ -965,6 +1050,7 @@ const List<_BuiltInPortal> _builtInPortals = [
     targetX: 25,
     targetY: 45,
     name: 'EVIL CONCENTRATION',
+    script: 'portal-5-23-frostdragon',
   ),
   _BuiltInPortal(
     7,
@@ -1132,10 +1218,11 @@ const List<_BuiltInPortal> _builtInPortals = [
     21,
     x: 25,
     y: 19,
-    targetMap: 13,
-    targetX: 81,
-    targetY: 68,
-    name: 'SWAMP GATE',
+    targetMap: 22,
+    targetX: 25,
+    targetY: 6,
+    name: 'IMPERIUM MINOR',
+    script: 'portal-21-22-lavagate',
   ),
   _BuiltInPortal(
     22,
@@ -1168,10 +1255,10 @@ const List<_BuiltInPortal> _builtInPortals = [
     22,
     x: 25,
     y: 23,
-    targetMap: 21,
+    targetMap: 24,
     targetX: 25,
-    targetY: 20,
-    name: 'SWAMP KEEP',
+    targetY: 45,
+    name: 'LAST SHELTER',
   ),
 ];
 

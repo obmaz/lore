@@ -46,7 +46,7 @@ void main() {
       expect(LoreData.instance.map(6)!.fileName, 'TOWN1');
       expect(SpriteLibrary.instance.get('CHARA')!.count, 56);
       expect(LoreWorldManager.instance.findPortal(1, 20, 11)!.targetMapId, 6);
-      expect(LoreScriptEngine.instance.scripts.length, 568);
+      expect(LoreScriptEngine.instance.scripts.length, 592);
       expect(
         LoreDialogueManager.instance.getDialogue(6, 9, 64, 'Hero'),
         isNotNull,
@@ -70,7 +70,7 @@ void main() {
       }
 
       // 3) 동료 영입 (스크립트 → LoreJoin)
-      final rigel = scripts.startTalk(12, 12, 48, const ScriptContext())!;
+      final rigel = scripts.startStep(12, 12, 48, const ScriptContext())!;
       final joined = rigel.choose(0).outcome.recruits.single;
       final member = LoreJoin.byKey(joined.key)!;
       expect(member.name, 'Rigel');

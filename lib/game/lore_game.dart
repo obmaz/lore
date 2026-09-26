@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'dart:math';
 
-import '../logic/lore_batt_text.dart';
+import '../logic/lore_encounter_logic.dart';
+import '../logic/lore_movement_logic.dart';
 
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
@@ -67,12 +69,15 @@ class LoreGame extends FlameGame {
 
   final void Function(String message)? onLog;
   final void Function()? onEncounter;
+  final int Function()? encounterFrequencyProvider;
   final void Function()? onTownEntered;
   final void Function(String npcName, String dialogue)? onNpcTalk;
   final void Function(int facilityType)? onFacilityEntered;
   final void Function(int x, int y)? onPositionChanged;
   final void Function(TileCategory category)? onHazardTile;
-  final void Function()? onStepTaken;
+
+  /// true이면 좌표 이벤트가 걸음을 처리했으므로 일반 무작위 전투를 건너뛴다.
+  final bool Function()? onStepTaken;
 
   /// 원작 `join(num, partynum)`으로 동료가 합류할 때 호출된다.
   final void Function(PendingRecruit recruit)? onRecruitRequested;
@@ -98,7 +103,8 @@ class LoreGame extends FlameGame {
   final void Function(PortalInfo? portal, int tx, int ty)? onPortalRequested;
 
   final bool Function()? canWalkOnWater;
-  final Random _random = Random();
+  final Random _random;
+  final List<int>? initialMapTiles;
 
   LoreGame({
     int initialMapId = 6,
@@ -106,6 +112,7 @@ class LoreGame extends FlameGame {
     int initialPlayerY = 31,
     this.onLog,
     this.onEncounter,
+    this.encounterFrequencyProvider,
     this.onTownEntered,
     this.onNpcTalk,
     this.onFacilityEntered,
@@ -119,9 +126,12 @@ class LoreGame extends FlameGame {
     this.onScriptTalk,
     this.onPortalRequested,
     this.canWalkOnWater,
+    this.initialMapTiles,
+    Random? random,
   }) : currentMapId = initialMapId,
        playerX = initialPlayerX,
-       playerY = initialPlayerY;
+       playerY = initialPlayerY,
+       _random = random ?? Random();
 
   @override
   Color backgroundColor() => RetroTheme.viewportBg;
@@ -138,10 +148,20 @@ class LoreGame extends FlameGame {
     } catch (e) {
       // 폰트 에셋 로드 실패 시 무시 (fallback 벡터 드로잉)
     }
-    await loadMapById(currentMapId, startX: playerX, startY: playerY);
+    await loadMapById(
+      currentMapId,
+      startX: playerX,
+      startY: playerY,
+      mapTiles: initialMapTiles,
+    );
   }
 
-  Future<void> loadMapById(int mapId, {int? startX, int? startY}) async {
+  Future<void> loadMapById(
+    int mapId, {
+    int? startX,
+    int? startY,
+    List<int>? mapTiles,
+  }) async {
     final info = LoreWorldManager.mapRegistry[mapId];
     if (info == null) return;
     currentMapId = mapId;
@@ -151,6 +171,7 @@ class LoreGame extends FlameGame {
         info.fileName,
         category: info.category.name,
       );
+      if (mapTiles != null) currentMap!.applyTileSnapshot(mapTiles);
       if (startX != null && startY != null) {
         playerX = startX;
         playerY = startY;
@@ -186,63 +207,49 @@ class LoreGame extends FlameGame {
     final targetX = playerX + dx;
     final targetY = playerY + dy;
 
-    if (currentMap == null) return false;
-
-    // 맵 경계 체크
-    if (targetX < 1 ||
-        targetX > currentMap!.xmax ||
-        targetY < 1 ||
-        targetY > currentMap!.ymax) {
-      onLog?.call('더 이상 나아갈 수 없는 경계 지역입니다.');
-      return false;
-    }
-
-    final tileVal = currentMap!.getTile(targetX, targetY);
-    final cat = currentMap!.getCategory(tileVal);
-
-    // 1. 벽 충돌 (1..21)
-    if (cat == TileCategory.wall) {
-      onLog?.call('단단한 성벽과 바위가 가로막아 지나갈 수 없습니다.');
-      return false;
-    }
-
-    // 2. 물/바다 진입 제약 (배 또는 물위를 걸음 마법 필요)
-    if (cat == TileCategory.water) {
-      if (canWalkOnWater?.call() != true) {
+    final map = currentMap;
+    if (map == null) return false;
+    final portal = LoreWorldManager.instance.findPortal(
+      currentMapId,
+      targetX,
+      targetY,
+    );
+    final decision = LoreMovementLogic.decide(
+      map: map,
+      targetX: targetX,
+      targetY: targetY,
+      canWalkOnWater: canWalkOnWater?.call() == true,
+      hasPortal: portal != null,
+    );
+    switch (decision.kind) {
+      case LoreMoveKind.boundary:
+        onLog?.call('더 이상 나아갈 수 없는 경계 지역입니다.');
+        return false;
+      case LoreMoveKind.wall:
+        onLog?.call('단단한 성벽과 바위가 가로막아 지나갈 수 없습니다.');
+        return false;
+      case LoreMoveKind.waterBlocked:
         onLog?.call('깊은 물속은 배나 [물위를 걸음] 마법 없이는 건널 수 없습니다!');
         return false;
-      }
-    }
-
-    // 3. 주민/NPC 상호작용 (48+)
-    if (cat == TileCategory.npc) {
-      _handleNpcInteraction(tileVal, targetX, targetY);
-      return false;
-    }
-
-    // 4. 성문/포털 이동 (22)
-    if (cat == TileCategory.portal) {
-      final portal = LoreWorldManager.instance.findPortal(
-        currentMapId,
-        targetX,
-        targetY,
-      );
-      if (onPortalRequested != null) {
-        // 원작 wantenter/wantexit: 화면단에서 확인을 받은 뒤 enterPortal 호출
-        onPortalRequested!(portal, targetX, targetY);
+      case LoreMoveKind.npc:
+        _handleNpcInteraction(map.getTile(targetX, targetY), targetX, targetY);
         return false;
-      }
-      enterPortal(portal, targetX, targetY);
-      return true;
+      case LoreMoveKind.portal:
+        if (onPortalRequested != null) {
+          // 원작 wantenter/wantexit: 화면단에서 확인을 받은 뒤 enterPortal 호출
+          onPortalRequested!(portal, targetX, targetY);
+          return false;
+        }
+        unawaited(enterPortal(portal, targetX, targetY));
+        return true;
+      case LoreMoveKind.sign:
+        _handleSign(targetX, targetY);
+        return false;
+      case LoreMoveKind.walk:
+        break;
     }
-
-    // 5. 표지판/푯말 상호작용 (23)
-    if (cat == TileCategory.sign) {
-      _handleSign(targetX, targetY);
-      return false;
-    }
-
-    // 6. 이동 성공
+    final cat = decision.category!;
+    // 이동 성공
     playerX = targetX;
     playerY = targetY;
     onPositionChanged?.call(playerX, playerY);
@@ -253,16 +260,17 @@ class LoreGame extends FlameGame {
         cat == TileCategory.water) {
       onHazardTile?.call(cat);
     }
-    onStepTaken?.call();
+    final specialEventHandled = onStepTaken?.call() ?? false;
 
-    // 필드(GROUND1)일 때 약 10% 확률로 몬스터 인카운터 발생
-    final mapCat = LoreWorldManager.mapRegistry[currentMapId]?.category;
-    if (mapCat == MapCategory.ground || mapCat == MapCategory.den) {
-      if (_random.nextInt(10) == 0) {
-        // 원작 LOREBATT.PAS 인카운터 문구
-        onLog?.call(LoreBattText.encounter);
-        onEncounter?.call();
-      }
+    // 원작 Move_Mode(1/(encounter*20)) / enter_water(1/(encounter*30)).
+    if (!specialEventHandled &&
+        LoreEncounterLogic.shouldEncounter(
+          currentMapId,
+          cat,
+          _random,
+          frequency: encounterFrequencyProvider?.call() ?? 2,
+        )) {
+      onEncounter?.call();
     }
 
     return true;
@@ -272,6 +280,13 @@ class LoreGame extends FlameGame {
     final msg = LoreWorldManager.instance.getSignMessage(currentMapId, tx, ty);
     if (msg != null) {
       onLog?.call(msg);
+      // LOREENT.PAS `sign`: KEEP3 푯말을 읽으면 레버(25,27)가 활성화된다.
+      if (currentMapId == 23) {
+        final map = currentMap;
+        if (map != null && map.xmax >= 25 && map.ymax >= 27) {
+          map.grid[26][24] = 52;
+        }
+      }
     } else {
       onLog?.call('푯말에 흐릿한 글씨가 적혀 있습니다.');
     }
@@ -338,9 +353,9 @@ class LoreGame extends FlameGame {
 
   /// 성문/동굴 입구 진입 처리.
   /// 원작 `LORESUB.PAS:986 wantenter` / `:999 wantexit` 확인을 통과한 뒤 호출된다.
-  void enterPortal(PortalInfo? portal, int tx, int ty) {
+  Future<void> enterPortal(PortalInfo? portal, int tx, int ty) async {
     if (portal != null) {
-      loadMapById(
+      await loadMapById(
         portal.targetMapId,
         startX: portal.targetX,
         startY: portal.targetY,
@@ -348,10 +363,10 @@ class LoreGame extends FlameGame {
       onLog?.call('${portal.name}에 진입했습니다.');
     } else {
       if (currentMapName.startsWith('TOWN')) {
-        loadMapById(1, startX: 20, startY: 12);
+        await loadMapById(1, startX: 20, startY: 12);
         onLog?.call('성문을 나와 광활한 LORE 대륙 필드(GROUND1)로 나섰습니다.');
       } else {
-        loadMapById(6, startX: 51, startY: 95);
+        await loadMapById(6, startX: 51, startY: 95);
         onLog?.call('성문 안으로 들어서 CASTLE LORE 성내 마을로 진입했습니다.');
       }
     }

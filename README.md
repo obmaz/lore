@@ -1,17 +1,28 @@
-# lore
+# 또 다른 지식의 성전 (LORE 1993)
 
-A new Flutter project.
+1993년 DOS 게임 **또 다른 지식의 성전**을 Flutter로 이식한 프로젝트입니다. 원본 Pascal 소스와 실행 데이터는 `repo_source/LORE_1993_src/`, `repo_source/LORE_1993_runtime/`에 있습니다. 게임 동작의 대조 내용과 알려진 편차는 [게임 명세서](DOCS_GAME_SPECS.md)에 기록했습니다.
 
-## Getting Started
+완전 이식의 검증 기준과 게임 엔진으로 확장하기 위한 경계는 [엔진 구조](ENGINE_ARCHITECTURE.md)에 정리했습니다.
 
-This project is a starting point for a Flutter application.
+## 실행
 
-A few resources to get you started if this is your first Flutter project:
+Flutter SDK가 설치된 환경에서:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+```sh
+flutter pub get
+flutter run -d chrome
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+데스크톱·모바일 등 다른 Flutter 기기도 `flutter devices`로 확인한 뒤 `flutter run -d <기기>`로 실행할 수 있습니다.
+
+## 검증
+
+```sh
+flutter analyze
+flutter test
+flutter build web --release
+python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS --coverage
+python3 tool/audit_messages.py
+```
+
+원본에서 추출한 지도·폰트·대사·전투 데이터를 `assets/`에 포함했습니다. 추출 및 병합 도구는 `tool/`에 있으며, 게임 실행과 테스트에는 별도의 DOS 런타임이 필요하지 않습니다.

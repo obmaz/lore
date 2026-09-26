@@ -35,6 +35,37 @@
       "name": "GROUND 2"
     },
     {
+      "map": 7,
+      "x": 50,
+      "yMin": 9,
+      "yMax": 10,
+      "targetMap": 8,
+      "targetX": 50,
+      "targetY": 10,
+      "name": "GROUND GATE"
+    },
+    {
+      "map": 8,
+      "x": 50,
+      "yMin": 9,
+      "yMax": 10,
+      "targetMap": 7,
+      "targetX": 50,
+      "targetY": 10,
+      "name": "GROUND GATE"
+    },
+    {
+      "map": 9,
+      "xMin": 24,
+      "xMax": 29,
+      "y": 5,
+      "targetMap": 13,
+      "targetX": 81,
+      "targetY": 95,
+      "name": "SWAMP GATE",
+      "script": "portal-9-13-swamp-gate"
+    },
+    {
       "map": 10,
       "yMin": 71,
       "targetMap": 3,
@@ -124,19 +155,21 @@
     },
     {
       "map": 21,
-      "yMin": 46,
+      "y": 46,
       "targetMap": 4,
       "targetX": 48,
       "targetY": 36,
-      "name": "SWAMP KEEP 출구"
+      "name": "SWAMP KEEP 출구",
+      "script": "keep1-exit-guard"
     },
     {
       "map": 22,
-      "yMin": 46,
+      "y": 46,
       "targetMap": 5,
       "targetX": 15,
       "targetY": 32,
-      "name": "KEEP2 출구"
+      "name": "KEEP2 출구",
+      "script": "keep2-exit-guard"
     },
     {
       "map": 23,
@@ -312,7 +345,8 @@
       "targetMap": 23,
       "targetX": 25,
       "targetY": 45,
-      "name": "EVIL CONCENTRATION"
+      "name": "EVIL CONCENTRATION",
+      "script": "portal-5-23-frostdragon"
     },
     {
       "map": 7,
@@ -480,10 +514,11 @@
       "map": 21,
       "x": 25,
       "y": 19,
-      "targetMap": 13,
-      "targetX": 81,
-      "targetY": 68,
-      "name": "SWAMP GATE"
+      "targetMap": 22,
+      "targetX": 25,
+      "targetY": 6,
+      "name": "IMPERIUM MINOR",
+      "script": "portal-21-22-lavagate"
     },
     {
       "map": 22,
@@ -516,10 +551,32 @@
       "map": 22,
       "x": 25,
       "y": 23,
-      "targetMap": 21,
+      "targetMap": 24,
       "targetX": 25,
-      "targetY": 20,
-      "name": "SWAMP KEEP"
+      "targetY": 45,
+      "name": "LAST SHELTER"
+    },
+    {
+      "map": 23,
+      "xMin": 25,
+      "xMax": 26,
+      "y": 12,
+      "targetMap": 25,
+      "targetX": 25,
+      "targetY": 45,
+      "name": "DUNGEON OF EVIL",
+      "script": "portal-23-25-dungeon"
+    },
+    {
+      "map": 25,
+      "xMin": 25,
+      "xMax": 26,
+      "y": 27,
+      "targetMap": 26,
+      "targetX": 25,
+      "targetY": 15,
+      "name": "CHAMBER OF NECROMANCER",
+      "script": "portal-25-26-chamber"
     }
   ],
   "signs": [

@@ -22,6 +22,39 @@ void main() {
     expect(ids.where((id) => id.startsWith('spec-')).length, greaterThan(100));
   });
 
+  test('맵 13 피라미드 장면과 Gorgon 전투가 실제로 실행된다', () {
+    final engine = LoreScriptEngine.instance;
+    expect(
+      engine.startStep(13, 80, 71, const ScriptContext(tileAtPlayer: 41)),
+      isNull,
+    );
+    final chapters = engine.startStep(
+      13,
+      80,
+      71,
+      const ScriptContext(tileAtPlayer: 52),
+    );
+    expect(chapters, isNotNull);
+    final outcome = chapters!.outcome;
+    expect(outcome.messages, contains('CHAPTER 4'));
+    expect(outcome.tileAreas.map((a) => a.onlyIf), containsAll([52, 40, 42]));
+    expect((outcome.teleportX, outcome.teleportY), (81, 77));
+    final gorgon = engine.startStep(
+      13,
+      81,
+      68,
+      const ScriptContext(tileAtPlayer: 52),
+    )!;
+    expect(gorgon.outcome.battleMonsters, [50, 51, 52]);
+    expect(gorgon.outcome.battleOverrides, hasLength(3));
+    expect(gorgon.outcome.battleVictoryFlags, contains('etc38_bit5'));
+    expect(gorgon.continueAfterRunAway().outcome.nudges.single.dy, 1);
+    expect(
+      gorgon.continueAfterRunAway(defeatedEnemySlots: {3}).outcome.nudges,
+      isEmpty,
+    );
+  });
+
   test('맵 26 최후 연출은 map[x,y]=0 인 칸에서만 발동한다', () {
     final seq = LoreScriptEngine.instance.scripts.firstWhere(
       (s) => s.id.startsWith('spec-26-') && s.id.endsWith('-seq'),
@@ -43,6 +76,48 @@ void main() {
         const ScriptContext(tileAtPlayer: 44),
       ),
       isNull,
+    );
+
+    final battle = LoreScriptEngine.instance.startStep(
+      26,
+      26,
+      20,
+      const ScriptContext(tileAtPlayer: 0),
+    )!;
+    expect(battle.awaitingBattle, isTrue);
+    expect(battle.outcome.battleMonsters, [69, 70, 71, 72, 73, 74, 75]);
+    expect(battle.outcome.setFlags, isEmpty);
+    final retry = battle.continueAfterRunAway();
+    expect(retry.awaitingBattle, isTrue);
+    expect(retry.outcome.since(battle.outcome).battleReuseExisting, isTrue);
+    expect(retry.outcome.messages.last, '없다는 점이 안타깝군.');
+    final escapedAfterBoss = battle.continueAfterRunAway(
+      defeatedEnemySlots: {7},
+    );
+    expect(escapedAfterBoss.awaitingBattle, isFalse);
+    expect(
+      escapedAfterBoss.outcome.setFlags,
+      contains('bossNecromancerDefeated'),
+    );
+    expect(
+      battle.continueAfterBattle().outcome.setFlags,
+      contains('bossNecromancerDefeated'),
+    );
+  });
+
+  test('Major Mummy는 도망쳐도 보스를 쓰러뜨렸으면 임무가 진행된다', () {
+    final mummy = LoreScriptEngine.instance.startStep(
+      11,
+      30,
+      24,
+      const ScriptContext(questSteps: {'lastditch': 1}),
+    )!;
+    expect(mummy.awaitingBattle, isTrue);
+    expect(mummy.isVictoryAfterRunAway({3}), isTrue);
+    expect(mummy.continueAfterRunAway().outcome.questChanges, isEmpty);
+    expect(
+      mummy.continueAfterRunAway(defeatedEnemySlots: {3}).outcome.questChanges,
+      isNotEmpty,
     );
   });
 

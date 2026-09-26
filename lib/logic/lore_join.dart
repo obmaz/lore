@@ -26,6 +26,14 @@ class PendingRecruit {
 class LoreJoin {
   LoreJoin._();
 
+  /// LORESPEC.PAS 수감소 전투: 6번 슬롯의 Mad Joe가 탈주 직후 일행을 떠난다.
+  /// 영입을 기록한 `party.etc[50]`의 bit2는 그대로 남아 병사 전투가 이어진다.
+  static bool removeMadJoeAtPrison(List<PartyMember> party) {
+    if (party.length < 6 || party[5].name != 'Mad Joe') return false;
+    party[5].name = '';
+    return true;
+  }
+
   /// 원작 파티 슬롯은 1~6번(리더 포함)이다.
   static const int maxPartySize = 6;
 

@@ -1,5 +1,5 @@
 name: lore
-description: "A new Flutter project."
+description: "1993년 DOS RPG 또 다른 지식의 성전 Flutter 이식"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev

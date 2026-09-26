@@ -46,8 +46,9 @@ class LoreMapData {
   /// ```
   /// town   : 22 진입, 23 퐷말, 24 물, 25 늪, 26 용암, 27..47 이동, 그외 NPC
   /// ground : 22 퐷말, 48 물, 23/49 늪, 50 용암, 24..47 이동, 그외 진입
-  /// den/keep: 0/52 특수, 53 퐷말, 48 물, 49 늪, 50 용암, 54 진입,
-  ///           41..47 이동, 1..40/51 벽, 그외 NPC
+  /// den: 0/52 특수, 53 푯말, 48 물, 49 늪, 50 용암, 54 진입,
+  ///      41..47 이동, 1..40/51 벽, 그 외 NPC
+  /// keep: den과 같으나 40..47 이동, 1..39/51 벽
   /// ```
   TileCategory getCategory(int tileValue) {
     if (tileValue == 0) return TileCategory.special;
@@ -72,14 +73,18 @@ class LoreMapData {
       case 'den':
       case 'keep':
         if (tileValue == 52) return TileCategory.special;
-        if (tileValue >= 41 && tileValue <= 47) return TileCategory.walkable;
+        if (tileValue >= (category == 'keep' ? 40 : 41) && tileValue <= 47) {
+          return TileCategory.walkable;
+        }
         if (tileValue == 48) return TileCategory.water;
         if (tileValue == 49) return TileCategory.swamp;
         if (tileValue == 50) return TileCategory.lava;
         if (tileValue == 51) return TileCategory.wall;
         if (tileValue == 53) return TileCategory.sign;
         if (tileValue == 54) return TileCategory.portal;
-        if (tileValue <= 40) return TileCategory.wall;
+        if (tileValue <= (category == 'keep' ? 39 : 40)) {
+          return TileCategory.wall;
+        }
         return TileCategory.npc;
     }
 
@@ -110,6 +115,16 @@ class LoreMapData {
     return true;
   }
 
+  /// 원작 `saveN.map`의 현재 지도 스냅샷을 적용한다.
+  void applyTileSnapshot(List<int> tiles) {
+    if (tiles.length != xmax * ymax) return;
+    for (var y = 0; y < ymax; y++) {
+      for (var x = 0; x < xmax; x++) {
+        grid[y][x] = tiles[y * xmax + x];
+      }
+    }
+  }
+
   /// `assets/maps/<filename>.MAP` 에서 바이너리 로드
   static Future<LoreMapData> loadFromAsset(
     String mapName, {
@@ -129,6 +144,12 @@ class LoreMapData {
       });
     });
 
-    return LoreMapData(name: mapName, xmax: xmax, ymax: ymax, grid: grid);
+    return LoreMapData(
+      name: mapName,
+      xmax: xmax,
+      ymax: ymax,
+      grid: grid,
+      category: category,
+    );
   }
 }

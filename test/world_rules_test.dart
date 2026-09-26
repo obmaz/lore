@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/game/lore_world_manager.dart';
 
 class _MissingBundle extends CachingAssetBundle {
@@ -26,9 +29,55 @@ void main() {
   tearDown(() => manager.resetRulesForTest());
 
   group('JSON 월드 규칙 (assets/data/portals.json)', () {
+    test('명시 좌표 포털은 실제 맵의 진입 타일에 놓인다', () async {
+      final raw = jsonDecode(
+        await rootBundle.loadString('assets/data/portals.json'),
+      ) as Map<String, dynamic>;
+      final maps = <int, LoreMapData>{};
+      for (final entry in raw['portals'] as List<dynamic>) {
+        final portal = entry as Map<String, dynamic>;
+        final x = portal['x'] as int?;
+        final y = portal['y'] as int?;
+        if (x == null || y == null) continue;
+        final mapId = portal['map'] as int;
+        final info = LoreWorldManager.mapRegistry[mapId]!;
+        final map = maps[mapId] ??= await LoreMapData.loadFromAsset(
+          info.fileName,
+          category: info.category.name,
+        );
+        final category = map.getCategory(map.getTile(x, y));
+        expect(
+          category == TileCategory.portal || category == TileCategory.special,
+          isTrue,
+          reason: '맵 $mapId ($x,$y)의 타일은 포털이 아니다',
+        );
+      }
+      for (final (mapId, x, y) in <(int, int, int)>[
+        (7, 50, 9),
+        (7, 50, 10),
+        (8, 50, 9),
+        (8, 50, 10),
+        (9, 24, 5),
+        (9, 29, 5),
+      ]) {
+        final info = LoreWorldManager.mapRegistry[mapId]!;
+        final map = maps[mapId] ??= await LoreMapData.loadFromAsset(
+          info.fileName,
+          category: info.category.name,
+        );
+        expect(map.getCategory(map.getTile(x, y)), TileCategory.special);
+      }
+    });
+
     test('1. 포털: JSON 규칙이 내장 규칙과 완전히 일치한다', () async {
-      // 원작 LOREENT.PAS 기준 알려진 포털 좌표 (경계값 포함)
-      const coords = <(int, int, int)>[
+      final raw = jsonDecode(
+        await rootBundle.loadString('assets/data/portals.json'),
+      ) as Map<String, dynamic>;
+      // 모든 명시 좌표와 범위 경계를 비교한다.
+      final coords = <(int, int, int)>[
+        for (final item in raw['portals'] as List<dynamic>)
+          if ((item as Map<String, dynamic>)['x'] is int && item['y'] is int)
+            (item['map'] as int, item['x'] as int, item['y'] as int),
         (1, 20, 11),
         (1, 76, 57),
         (1, 17, 89),
@@ -37,10 +86,23 @@ void main() {
         (6, 51, 97),
         (7, 39, 75), // LASTDITCH 출구 y>=71
         (7, 39, 71),
+        (7, 50, 9),
+        (7, 50, 10),
+        (8, 50, 9),
+        (8, 50, 10),
+        (9, 24, 5),
+        (9, 29, 5),
         (2, 19, 26),
         (2, 31, 82),
         (2, 82, 47),
         (2, 44, 7),
+        (22, 25, 46), // KEEP2 출구 수문장 전투
+        (22, 25, 23), // LAST SHELTER 입구
+        (21, 25, 19), // IMPERIUM MINOR 입구
+        (23, 25, 12),
+        (23, 26, 12),
+        (25, 25, 27),
+        (25, 26, 27),
         // 포털이 아닌 좌표
         (1, 0, 0),
         (6, 10, 10),
@@ -79,10 +141,38 @@ void main() {
       expect(gate.targetMapId, 1);
       expect(gate.name, 'GROUND FIELD');
 
+      expect(manager.findPortal(7, 50, 9)!.targetMapId, 8);
+      expect(manager.findPortal(8, 50, 10)!.targetMapId, 7);
+      final swampGate = manager.findPortal(9, 25, 5)!;
+      expect(swampGate.targetMapId, 13);
+      expect((swampGate.targetX, swampGate.targetY), (81, 95));
+      expect(swampGate.scriptId, 'portal-9-13-swamp-gate');
+
       final quake = manager.findPortal(2, 82, 47)!;
       expect(quake.targetMapId, 15);
       expect(quake.targetX, 25);
       expect(quake.targetY, 70);
+
+      final shelter = manager.findPortal(22, 25, 23)!;
+      expect(shelter.targetMapId, 24);
+      expect(shelter.targetX, 25);
+      expect(shelter.targetY, 45);
+      expect(shelter.name, 'LAST SHELTER');
+
+      final imperium = manager.findPortal(21, 25, 19)!;
+      expect(imperium.targetMapId, 22);
+      expect(imperium.targetX, 25);
+      expect(imperium.targetY, 6);
+      expect(imperium.scriptId, 'portal-21-22-lavagate');
+
+      final swampKeepExit = manager.findPortal(21, 25, 46)!;
+      expect(swampKeepExit.targetMapId, 4);
+      expect(swampKeepExit.scriptId, 'keep1-exit-guard');
+      expect(manager.findPortal(21, 25, 47), isNull);
+
+      final evilConcentration = manager.findPortal(5, 34, 14)!;
+      expect(evilConcentration.targetMapId, 23);
+      expect(evilConcentration.scriptId, 'portal-5-23-frostdragon');
     });
     test('2-1. 원작 LORESPEC의 맵 출구(wantexit) 20곳이 모두 있다', () async {
       await manager.loadData();
@@ -235,5 +325,5 @@ void main() {
 
 String? _describePortal(PortalInfo? p) {
   if (p == null) return null;
-  return '${p.targetMapId}/${p.targetX}/${p.targetY}/${p.name}';
+  return '${p.targetMapId}/${p.targetX}/${p.targetY}/${p.name}/${p.scriptId}';
 }

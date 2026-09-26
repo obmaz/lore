@@ -3,6 +3,959 @@
   "description": "원작 LORESPEC.PAS / LORETALK.PAS의 좌표 이벤트를 JSON 스크립트로 관리한다. step=좌표 진입 시, talk=NPC 대화 시 실행.",
   "scripts": [
     {
+      "id": "portal-9-13-swamp-gate",
+      "trigger": "portal",
+      "map": 9,
+      "require": {
+        "flagNot": "etc35_bit6"
+      },
+      "steps": [
+        {
+          "say": " SWAMP GATE 로 들어가고 있는 당신에게  허공"
+        },
+        {
+          "say": "에서 갑자가 누군가가 말을 꺼낸다"
+        },
+        {
+          "say": " 나는 LORE 성의 성주 Lord Ahn 이오."
+        },
+        {
+          "say": " 역시 내가 예상한 대로 당신들은 훌륭한 용사"
+        },
+        {
+          "say": "로 성장해 나가고 있소. 여태까지는 모험이 순"
+        },
+        {
+          "say": "조롭게 진행 되었지만 이제부터는 완전한 적들"
+        },
+        {
+          "say": "의 소굴이오. 그래서 나도 직접적인 도움은 못"
+        },
+        {
+          "say": "주더라도 여러가지 조언을 해주겠소."
+        },
+        {
+          "say": " 당신들은 식량을 많이 가지고 있소?  이 식량"
+        },
+        {
+          "say": "은 당신들을 회복시키기  위해  필요한 것이니"
+        },
+        {
+          "say": "절대 바닥나게 해서는 안되오. 왜냐하면 이 이"
+        },
+        {
+          "say": "후에 전개되는 모험에서는 식량을 파는곳이 거"
+        },
+        {
+          "say": "의 없다고 생각해도 될만큼 식량이 귀중하므로"
+        },
+        {
+          "say": "낭패를 보는일이 없도록 하시오."
+        },
+        {
+          "say": " SWAMP의 대륙에서의 할일을 요약하면 이렇소."
+        },
+        {
+          "say": " 스왐프 게이트와 통하는 SWAMP KEEP에는 많은"
+        },
+        {
+          "say": "강한 괴물들이 버티고 있소. 하지만 이전에 그"
+        },
+        {
+          "say": "대륙에 있는 2 개의 동굴 요새를 점령한뒤에야"
+        },
+        {
+          "say": "SWAMP KEEP의 중앙에 있는 라바 게이트를 작동"
+        },
+        {
+          "say": "시킬수 있을 것이오. 그곳의 괴물들은 매우 힘"
+        },
+        {
+          "say": "든 상대일 것이오. 하지만  당신들의 능력이라"
+        },
+        {
+          "say": "면 충분히 가능할 것이오. 나는 당신들이 라바"
+        },
+        {
+          "say": "게이트를 통과하려 할때 다시 조언을 해주겠소."
+        },
+        {
+          "say": " 그때까지 건투를 비는 바이오."
+        },
+        {
+          "flag": "etc35_bit6"
+        }
+      ]
+    },
+    {
+      "id": "keep1-exit-guard",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "notAllFlags": [
+          "keep1LeftGuardianDefeated",
+          "keep1RightGuardianDefeated"
+        ],
+        "flagNot": "swampKeepBossDefeated"
+      },
+      "steps": [
+        {
+          "battle": {
+            "monsters": [
+              55,
+              56,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "title": "SWAMP KEEP 수문장",
+            "onEnemyDeadFlags": {
+              "1": "keep1LeftGuardianDefeated",
+              "2": "keep1RightGuardianDefeated"
+            },
+            "victoryFlag": "swampKeepBossDefeated",
+            "continueOnRunAway": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "keep1-exit-guard",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "flag": "keep1LeftGuardianDefeated",
+        "flagNot": "keep1RightGuardianDefeated"
+      },
+      "steps": [
+        {
+          "battle": {
+            "monsters": [
+              56,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "title": "SWAMP KEEP 수문장",
+            "onEnemyDeadFlags": {
+              "1": "keep1RightGuardianDefeated"
+            },
+            "victoryFlag": "swampKeepBossDefeated",
+            "continueOnRunAway": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "keep1-exit-guard",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "flag": "keep1RightGuardianDefeated",
+        "flagNot": "keep1LeftGuardianDefeated"
+      },
+      "steps": [
+        {
+          "battle": {
+            "monsters": [
+              55,
+              35,
+              35,
+              35,
+              35,
+              35
+            ],
+            "title": "SWAMP KEEP 수문장",
+            "onEnemyDeadFlags": {
+              "1": "keep1LeftGuardianDefeated"
+            },
+            "victoryFlag": "swampKeepBossDefeated",
+            "continueOnRunAway": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "keep1-exit-guard",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "allFlags": [
+          "keep1LeftGuardianDefeated",
+          "keep1RightGuardianDefeated"
+        ],
+        "flagNot": "swampKeepBossDefeated"
+      },
+      "steps": [
+        {
+          "flag": "swampKeepBossDefeated"
+        },
+        {
+          "block": true
+        }
+      ]
+    },
+    {
+      "id": "portal-23-25-dungeon",
+      "trigger": "portal",
+      "map": 23,
+      "once": false,
+      "require": {
+        "flagNot": "dungeonOfEvilCleared"
+      },
+      "steps": [
+        {
+          "say": " 이 동굴에 들어 가겠다고?"
+        },
+        {
+          "say": " 하!, 우습군. 너희들에게는 여기의 Draconian"
+        },
+        {
+          "say": "족들의 모습이 보이지 않는 모양이군."
+        },
+        {
+          "battle": {
+            "title": "ArchiDraconian",
+            "monsters": [
+              62,
+              62,
+              70,
+              62,
+              62,
+              62,
+              62
+            ],
+            "victoryIfEnemyDead": 3,
+            "onRunAway": [
+              {
+                "block": true
+              }
+            ]
+          }
+        },
+        {
+          "flag": "dungeonOfEvilCleared"
+        }
+      ]
+    },
+    {
+      "id": "keep2-exit-guard",
+      "trigger": "portal",
+      "map": 22,
+      "once": false,
+      "require": {
+        "flagNot": "etc43_bit3"
+      },
+      "steps": [
+        {
+          "say": ", 나의 힘을 보여주겠다."
+        },
+        {
+          "randomSteps": [
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    35,
+                    35,
+                    35,
+                    35,
+                    35,
+                    35,
+                    66
+                  ],
+                  "victoryIfEnemyDead": 7
+                }
+              },
+              {
+                "flag": "etc43_bit3"
+              }
+            ],
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    43,
+                    43,
+                    43,
+                    43,
+                    43,
+                    43,
+                    66
+                  ],
+                  "victoryIfEnemyDead": 7
+                }
+              },
+              {
+                "flag": "etc43_bit3"
+              }
+            ],
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    44,
+                    44,
+                    44,
+                    44,
+                    44,
+                    44,
+                    66
+                  ],
+                  "victoryIfEnemyDead": 7
+                }
+              },
+              {
+                "flag": "etc43_bit3"
+              }
+            ],
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    45,
+                    45,
+                    45,
+                    45,
+                    45,
+                    45,
+                    66
+                  ],
+                  "victoryIfEnemyDead": 7
+                }
+              },
+              {
+                "flag": "etc43_bit3"
+              }
+            ],
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    46,
+                    46,
+                    46,
+                    46,
+                    46,
+                    46,
+                    66
+                  ],
+                  "victoryIfEnemyDead": 7
+                }
+              },
+              {
+                "flag": "etc43_bit3"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wivern-3-remaining",
+      "trigger": "step",
+      "map": 16,
+      "yMin": 10,
+      "yMax": 10,
+      "once": false,
+      "require": {
+        "tileAtPlayerZero": true,
+        "quest": {
+          "name": "wivern",
+          "eq": 0
+        }
+      },
+      "steps": [
+        {
+          "say": "당신은 세마리의 Wivern과 마주쳤다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              43,
+              43,
+              43
+            ],
+            "runAwayProgress": {
+              "quest": "wivern",
+              "total": 3
+            }
+          }
+        },
+        {
+          "questStep": {
+            "name": "wivern",
+            "set": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "wivern-2-remaining",
+      "trigger": "step",
+      "map": 16,
+      "yMin": 10,
+      "yMax": 10,
+      "once": false,
+      "require": {
+        "tileAtPlayerZero": true,
+        "quest": {
+          "name": "wivern",
+          "eq": 1
+        }
+      },
+      "steps": [
+        {
+          "say": "당신은 두마리의 Wivern과 마주쳤다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              43,
+              43
+            ],
+            "runAwayProgress": {
+              "quest": "wivern",
+              "total": 3
+            }
+          }
+        },
+        {
+          "questStep": {
+            "name": "wivern",
+            "set": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "wivern-1-remaining",
+      "trigger": "step",
+      "map": 16,
+      "yMin": 10,
+      "yMax": 10,
+      "once": false,
+      "require": {
+        "tileAtPlayerZero": true,
+        "quest": {
+          "name": "wivern",
+          "eq": 2
+        }
+      },
+      "steps": [
+        {
+          "say": "당신은 한마리의 Wivern과 마주쳤다."
+        },
+        {
+          "battle": {
+            "monsters": [
+              43
+            ],
+            "runAwayProgress": {
+              "quest": "wivern",
+              "total": 3
+            }
+          }
+        },
+        {
+          "questStep": {
+            "name": "wivern",
+            "set": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "wivern-cleared",
+      "trigger": "step",
+      "map": 16,
+      "yMin": 10,
+      "yMax": 10,
+      "once": false,
+      "require": {
+        "tileAtPlayerZero": true,
+        "quest": {
+          "name": "wivern",
+          "gte": 3
+        }
+      },
+      "steps": [
+        {
+          "say": "여기에는 Wivern의 시체만이 있다."
+        }
+      ]
+    },
+    {
+      "id": "keep3-necromancer-y26",
+      "trigger": "step",
+      "map": 23,
+      "yMin": 26,
+      "yMax": 26,
+      "once": false,
+      "require": {
+        "tileAtPlayerValue": 52
+      },
+      "steps": [
+        {
+          "say": " 잘도 여기까지 찾아왔구나 "
+        },
+        {
+          "say": "."
+        },
+        {
+          "say": " 네가 찾던 그 Necromancer가 바로 나다. 드디"
+        },
+        {
+          "say": "어 너의 실력을 보게 되겠구나. 하지만 분명히"
+        },
+        {
+          "say": "나보다는 떨어지겠지만. 으하하하."
+        },
+        {
+          "say": " 너희들은 곧 환상에 빠져들게 될 것이다."
+        },
+        {
+          "say": " 나는 벌써 너희들의 약점을 파악 했지.  너희"
+        },
+        {
+          "say": "일행들은 항상 자신을  너무 신뢰하고 믿고 있"
+        },
+        {
+          "say": "더군. 그러나 그 착각은 곧 깨어질 것이다."
+        },
+        {
+          "say": " 어둠의 신이여, 당신의 힘으로 이들을 환상에"
+        },
+        {
+          "say": "빠져 들게 하소서. 인 쿠아스 젠 ~~"
+        },
+        {
+          "battle": {
+            "monsters": [
+              60,
+              60,
+              60,
+              60,
+              60,
+              60
+            ],
+            "mirrorParty": true,
+            "retryOnRunAway": true,
+            "onRunAway": [
+              {
+                "say": " 하지만 당신은 환상에서 벗어나지 못했다."
+              }
+            ]
+          }
+        },
+        {
+          "say": " 환상에서 벗어나다니 대단한 의지력이군."
+        },
+        {
+          "say": " 하지만 진짜 적은 바로 나다. 받아라 !!"
+        },
+        {
+          "battle": {
+            "monsters": [
+              70
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Necromancer",
+                "eNumber": 1
+              }
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "say": " 욱! 너의 힘은 대단하구나. 나는 너에게 졌다"
+        },
+        {
+          "say": "고 인정하겠다.  흐흐, 그러나 사실 나는 너희"
+        },
+        {
+          "say": "찾던 Necromancer님이 아니다.  만약 그분이라"
+        },
+        {
+          "say": "이렇게 쉽게 당하지는 않았을게니까.  내 생명"
+        },
+        {
+          "say": "이 얼마 안남았구나. Necromancer님 만세 !!"
+        },
+        {
+          "say": " 그는 숨이 끊어졌고 주위의 기둥도 그와 함께"
+        },
+        {
+          "say": "사라져 버렸다."
+        },
+        {
+          "setTile": {
+            "x": 29,
+            "y": 43,
+            "tile": 53
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 24,
+            "xMax": 27,
+            "yMin": 25,
+            "yMax": 27,
+            "tile": 46
+          }
+        }
+      ]
+    },
+    {
+      "id": "den4-pyramid-chapters",
+      "trigger": "step",
+      "map": 13,
+      "xMin": 76,
+      "xMax": 86,
+      "yMin": 71,
+      "yMax": 81,
+      "once": true,
+      "require": {
+        "tileAtPlayerValue": 52
+      },
+      "steps": [
+        {
+          "setTileArea": {
+            "xMin": 76,
+            "xMax": 86,
+            "yMin": 71,
+            "yMax": 81,
+            "tile": 44,
+            "onlyIf": 52
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 76,
+            "xMax": 86,
+            "yMin": 71,
+            "yMax": 81,
+            "tile": 51,
+            "onlyIf": 40
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 76,
+            "xMax": 86,
+            "yMin": 71,
+            "yMax": 81,
+            "tile": 51,
+            "onlyIf": 42
+          }
+        },
+        {
+          "say": "알수없는 힘이 당신을 당기는걸 느꼈다"
+        },
+        {
+          "say": " 여기에는 기묘한 피라밋이 있었다"
+        },
+        {
+          "setTile": {
+            "x": 81,
+            "y": 76,
+            "tile": 48
+          }
+        },
+        {
+          "say": " 갑자기 피라밋이 아래로 가라앉기 시작했다"
+        },
+        {
+          "say": " 그 물속에서 당신은 한 시대의 운명을 바라다"
+        },
+        {
+          "say": "보고있었다"
+        },
+        {
+          "say": " 당신은 왜 하필이면 당신이 이 세계에 뛰어들"
+        },
+        {
+          "say": "어 단신으로 악과 싸워야하는 이유를 아는가 ?"
+        },
+        {
+          "say": " 여기서 당신은 Lord Ahn, Ancient Evil, Nec-"
+        },
+        {
+          "say": "romancer 의 관계를 기술한 예언서를 발견하여"
+        },
+        {
+          "say": "읽기 시작했다."
+        },
+        {
+          "say": "CHAPTER 1"
+        },
+        {
+          "say": " 이 세상에는 두개의 개념이 필요하다."
+        },
+        {
+          "say": " 그것은 바로 선과 악이다."
+        },
+        {
+          "say": " 전자의 상징은 Lord Ahn 이고, 후자의 상징은"
+        },
+        {
+          "say": "Ancient Evil 이다."
+        },
+        {
+          "say": "CHAPTER 2"
+        },
+        {
+          "say": " 만약 당신이 황야에서 Ancient Evil을 만나더"
+        },
+        {
+          "say": "라도 두려워하지 말라. 그는 비록 악의 표상이"
+        },
+        {
+          "say": "지만 Necromancer 가 행하는 악과는 다른 표현"
+        },
+        {
+          "say": "임을 명심하라. 만약 세상이 \"선\"만이 있고 이"
+        },
+        {
+          "say": "런 \"악\"은 존재하지 않는다면  누구도 선의 중"
+        },
+        {
+          "say": "요성을 인식하지 못한채 보편적인 진리로만 인"
+        },
+        {
+          "say": "식되어가는 시대가 올것이며 선으로 둘러 쌓여"
+        },
+        {
+          "say": "진 생활에 대한 고마움을 망각하는 시대가  우"
+        },
+        {
+          "say": "리 앞에 도래하는 때가 결국 올것이다. 그런때"
+        },
+        {
+          "say": "가 오기전에 사람들이  이런 선의 소중함을 느"
+        },
+        {
+          "say": "끼고 스스로 지키려고 노력하게  만들  하나의"
+        },
+        {
+          "say": "개념이 필요하게 되었는데 이것이 바로 태초에"
+        },
+        {
+          "say": "생겨난 악의 개념이었다. 하지만 일부러 뭇 사"
+        },
+        {
+          "say": "람들에게 비난을 사면서 까지 악을 대표해줄만"
+        },
+        {
+          "say": "한 자는 나타나지 않았다. 이에 스스로를 악의"
+        },
+        {
+          "say": "집대성으로 불러주기를 요구하는 한 현자가 있"
+        },
+        {
+          "say": "었으니 본명은 알수 없지만 그가 바로 Ancient"
+        },
+        {
+          "say": "Evil이라고 칭하는 자였다.  선에 의해 보호되"
+        },
+        {
+          "say": "어 너무나도 평화로운 생활을 해왔던 사람들은"
+        },
+        {
+          "say": "이제 새로운 마음을 갖고 그에게 대항하는  자"
+        },
+        {
+          "say": "세를 취하게 되었다. 하지만 그는 실지로 사람"
+        },
+        {
+          "say": "들에게 해를 입히지 않았으며  그의 본심은 선"
+        },
+        {
+          "say": "에 있다는걸 알아두기 바란다."
+        },
+        {
+          "say": "CHAPTER 3"
+        },
+        {
+          "say": " 위에서 기술한 Ancient Evil이 의미하는 악과"
+        },
+        {
+          "say": "는 달리 Neromancer 는 진정한 악의 의미를 알"
+        },
+        {
+          "say": "지 못한다. 그것으로 인해 Ancient Evil 은 그"
+        },
+        {
+          "say": "를 벌하려 하는 것이다. 하지만 육체가 없어진"
+        },
+        {
+          "say": "Ancient Evil의 능력으로는 그에게 대항하기가"
+        },
+        {
+          "say": "어렵다고 단정하고는 그의 강력한 마력으로 미"
+        },
+        {
+          "say": "래의 역사를 뒤틀어 운명적으로 Necromancer에"
+        },
+        {
+          "say": "대항하여야 하는 한 희생물을 창조해 냈으니.."
+        },
+        {
+          "say": "..그는 바로 당신인것이다."
+        },
+        {
+          "say": "CHAPTER 4"
+        },
+        {
+          "say": " Necromancer 에게 대항 할 수 있는 단 두명의"
+        },
+        {
+          "say": "존재는 바로 Lord Ahn과 그의 대립자이며 깊은"
+        },
+        {
+          "say": "관계를 가진 Ancient Evil이다."
+        },
+        {
+          "say": " 그들은 모두 Semi-God라는 계급의 인물들이며"
+        },
+        {
+          "say": "보통의 사람들은  상대하기조차 어려운 인물들"
+        },
+        {
+          "say": "이며 능력또한 인간을 초월하는 것뿐이다.  그"
+        },
+        {
+          "say": "러므로 만약 당신이 Necromancer를 응징하려고"
+        },
+        {
+          "say": "한다면 먼저 당신 자신이 Semi-God가 되어야만"
+        },
+        {
+          "say": "될것이다."
+        },
+        {
+          "teleport": {
+            "x": 81,
+            "y": 77
+          }
+        }
+      ]
+    },
+    {
+      "id": "den4-gorgon",
+      "trigger": "step",
+      "map": 13,
+      "xMin": 80,
+      "xMax": 82,
+      "y": 68,
+      "once": false,
+      "require": {
+        "flagNot": "etc38_bit5",
+        "tileAtPlayerValue": 52
+      },
+      "steps": [
+        {
+          "say": "우리들의 영역을 침범하는 자는 가만두지 않겠다 !!!"
+        },
+        {
+          "battle": {
+            "title": "Gorgon",
+            "monsters": [
+              50,
+              51,
+              52
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "eNumber": 1
+              },
+              {
+                "index": 2,
+                "eNumber": 1
+              },
+              {
+                "index": 3,
+                "eNumber": 1
+              }
+            ],
+            "victoryFlag": "etc38_bit5",
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ],
+            "runAwayIfEnemyAlive": 3
+          }
+        },
+        {
+          "say": "당신들은 Gorgon을 물리쳤다."
+        }
+      ]
+    },
+    {
+      "id": "lastditch-passwall-left",
+      "trigger": "step",
+      "map": 7,
+      "x": 30,
+      "yMin": 8,
+      "yMax": 11,
+      "once": false,
+      "require": {
+        "tileAtPlayerZero": true
+      },
+      "steps": [
+        {
+          "setTileArea": {
+            "xMin": 31,
+            "xMax": 31,
+            "yMin": 1,
+            "yMax": 1,
+            "atPlayerY": true,
+            "tile": 45
+          }
+        }
+      ]
+    },
+    {
+      "id": "lastditch-passwall-right",
+      "trigger": "step",
+      "map": 7,
+      "x": 32,
+      "yMin": 8,
+      "yMax": 11,
+      "once": false,
+      "require": {
+        "tileAtPlayerZero": true
+      },
+      "steps": [
+        {
+          "setTileArea": {
+            "xMin": 31,
+            "xMax": 31,
+            "yMin": 1,
+            "yMax": 1,
+            "atPlayerY": true,
+            "tile": 45
+          }
+        }
+      ]
+    },
+    {
       "id": "spec-9-L354",
       "trigger": "step",
       "map": 9,
@@ -692,7 +1645,10 @@
       "map": 6,
       "x": 40,
       "y": 15,
-      "once": true,
+      "once": false,
+      "require": {
+        "flagNot": "madJoeJoined"
+      },
       "title": "지하 감옥의 남자",
       "steps": [
         {
@@ -730,7 +1686,7 @@
     },
     {
       "id": "rigel-join",
-      "trigger": "talk",
+      "trigger": "step",
       "map": 12,
       "x": 12,
       "y": 48,
@@ -770,6 +1726,9 @@
                   {
                     "join": "rigel",
                     "flag": "rigelJoined"
+                  },
+                  {
+                    "flag": "etc31_bit2"
                   }
                 ]
               },
@@ -795,14 +1754,20 @@
                     "food": -5
                   },
                   {
-                    "join": "rigel",
-                    "flag": "rigelJoined"
+                    "rigelBlessing": true
+                  },
+                  {
+                    "flag": "etc31_bit2"
                   }
                 ]
               },
               {
                 "text": "당신을 도와줄 시간이 없소",
-                "steps": []
+                "steps": [
+                  {
+                    "flag": "etc31_bit2"
+                  }
+                ]
               }
             ]
           }
@@ -811,7 +1776,7 @@
     },
     {
       "id": "redantares-teach",
-      "trigger": "talk",
+      "trigger": "step",
       "map": 17,
       "x": 75,
       "y": 52,
@@ -912,7 +1877,7 @@
     },
     {
       "id": "redantares-join",
-      "trigger": "talk",
+      "trigger": "step",
       "map": 17,
       "x": 75,
       "y": 52,
@@ -960,13 +1925,73 @@
       ]
     },
     {
-      "id": "spica-join",
-      "trigger": "talk",
+      "id": "spica-first-meeting",
+      "trigger": "step",
       "map": 18,
       "x": 37,
       "y": 31,
-      "once": true,
+      "once": false,
       "require": {
+        "flagNot": "etc39_bit1"
+      },
+      "steps": [
+        {
+          "say": "여기에는 어떤 여자가 수도하고 있었다"
+        },
+        {
+          "say": " 나는 이곳 LOCKUP이 적들에게 점령되기전  부"
+        },
+        {
+          "say": "터 여기서 수도하고 있는 Spica란 사람입니다"
+        },
+        {
+          "say": " 오랜 수도 끝에 나는 초자연력의 존재와 사용"
+        },
+        {
+          "say": "법을 알게 되었습니다.  대충 요약하면 이렇습"
+        },
+        {
+          "say": "니다."
+        },
+        {
+          "say": "투  시 : 변화의 여지가 있는 지역을 탐지"
+        },
+        {
+          "say": "예  언 : 다음의 할 일을 알아냄"
+        },
+        {
+          "say": "독  심 : 남의 마음을 자기쪽으로 끌어들임"
+        },
+        {
+          "say": "천리안 : 능력에 따라 먼곳의 광경을 봄"
+        },
+        {
+          "say": "염  력 : 주위 환경 조절에 의한 공격"
+        },
+        {
+          "say": " 이것으로 Necromancer에게 도전 하십시오. 또"
+        },
+        {
+          "say": "한,  그도 초자연력의 존재를 알고있고 사용할"
+        },
+        {
+          "say": "줄 안다는걸 염두에 두고 사용하십시오."
+        },
+        {
+          "flag": "etc39_bit1"
+        }
+      ]
+    },
+    {
+      "id": "spica-join",
+      "trigger": "step",
+      "map": 18,
+      "x": 37,
+      "y": 31,
+      "once": false,
+      "require": {
+        "flag": "etc39_bit1",
+        "flagNot": "etc39_bit2",
         "mindRead": true,
         "minEspLevel": 5
       },
@@ -990,11 +2015,22 @@
                   {
                     "join": "spica",
                     "flag": "spicaJoined"
+                  },
+                  {
+                    "flag": "etc39_bit2"
                   }
                 ]
               },
               {
                 "text": "말씀은 고맙지만 사양하겠습니다",
+                "steps": [
+                  {
+                    "flag": "etc39_bit2"
+                  }
+                ]
+              },
+              {
+                "text": "취소",
                 "steps": []
               }
             ]
@@ -1004,13 +2040,16 @@
     },
     {
       "id": "spica-cannot-read",
-      "trigger": "talk",
+      "trigger": "step",
       "map": 18,
       "x": 37,
       "y": 31,
       "once": false,
       "require": {
-        "notMindReadOrLowEsp": true
+        "flag": "etc39_bit1",
+        "flagNot": "etc39_bit2",
+        "mindRead": true,
+        "maxEspLevelBelow": 5
       },
       "steps": [
         {
@@ -1021,6 +2060,27 @@
         },
         {
           "say": "다."
+        }
+      ]
+    },
+    {
+      "id": "spica-mind-read-inactive",
+      "trigger": "step",
+      "map": 18,
+      "x": 37,
+      "y": 31,
+      "once": false,
+      "require": {
+        "flag": "etc39_bit1",
+        "flagNot": "etc39_bit2",
+        "mindReadInactive": true
+      },
+      "steps": [
+        {
+          "say": " 지체할 시간이 없습니다. 신속히 행동을 취하"
+        },
+        {
+          "say": "십시오."
         }
       ]
     },
@@ -1045,7 +2105,10 @@
         }
       ],
       "x": 62,
-      "y": 82
+      "y": 82,
+      "require": {
+        "tileAtPlayerZero": true
+      }
     },
     {
       "id": "castle-chest-62-82",
@@ -1073,7 +2136,7 @@
     },
     {
       "id": "ancient-evil-first",
-      "trigger": "talk",
+      "trigger": "step",
       "map": 4,
       "x": 20,
       "y": 39,
@@ -1123,7 +2186,7 @@
     },
     {
       "id": "ancient-evil-later",
-      "trigger": "talk",
+      "trigger": "step",
       "map": 4,
       "x": 20,
       "y": 39,
@@ -1804,16 +2867,22 @@
       "id": "prison-battle-first",
       "trigger": "step",
       "map": 6,
-      "x": 51,
+      "xMin": 51,
+      "xMax": 52,
       "y": 12,
       "once": true,
       "require": {
-        "flagNot": "prisonBattleDone"
+        "flag": "madJoeJoined",
+        "flagNot": "prisonBattleStarted",
+        "tileAtPlayerZero": true
       },
       "title": "LORE 왕립 죄수 수용소",
       "steps": [
         {
           "say": "아니! 당신이 우리들을 배신하고 죄수를 풀어주다니... 그렇다면 우리들은 결투로서 당신들과 승부할수 밖에 없군요."
+        },
+        {
+          "flag": "prisonBattleStarted"
         },
         {
           "battle": {
@@ -1864,12 +2933,17 @@
       "id": "prison-battle-return",
       "trigger": "step",
       "map": 6,
-      "x": 51,
+      "xMin": 51,
+      "xMax": 52,
       "y": 12,
-      "once": true,
+      "once": false,
       "require": {
-        "flag": "prisonBattleDone",
-        "flagNot": "prisonBattleReturned"
+        "allFlags": [
+          "madJoeJoined",
+          "prisonBattleStarted"
+        ],
+        "flagNot": "prisonBattleDone",
+        "tileAtPlayerZero": true
       },
       "title": "수감소 병사들의 복수",
       "steps": [
@@ -1891,7 +2965,38 @@
           }
         },
         {
-          "flag": "prisonBattleReturned"
+          "say": "당신들은 수감소 병사들을 물리쳤다."
+        },
+        {
+          "setTile": {
+            "x": 51,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 52,
+            "y": 12,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 50,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "setTile": {
+            "x": 53,
+            "y": 11,
+            "tile": 44
+          }
+        },
+        {
+          "flag": "prisonBattleDone"
         }
       ]
     },
@@ -2918,7 +4023,8 @@
                 "name": "Major Mummy",
                 "ac": 1
               }
-            ]
+            ],
+            "victoryIfEnemyDead": 3
           }
         },
         {
@@ -3431,7 +4537,8 @@
                 "index": 3,
                 "name": "ArchiGagoyle"
               }
-            ]
+            ],
+            "victoryIfEnemyDead": 3
           }
         },
         {
@@ -3917,6 +5024,13 @@
       "title": "황금의 봉인",
       "steps": [
         {
+          "setTile": {
+            "x": 18,
+            "y": 9,
+            "tile": 0
+          }
+        },
+        {
           "say": "당신은 황금의 봉인을 찾았다 !!"
         },
         {
@@ -3967,6 +5081,13 @@
                 "name": "Hidra's Head 3",
                 "level": 8,
                 "eNumber": 34
+              }
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dx": 1
+                }
               }
             ]
           }
@@ -4046,6 +5167,13 @@
                 "name": "Hidra's Head 3",
                 "level": 8,
                 "eNumber": 34
+              }
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dx": 1
+                }
               }
             ]
           }
@@ -4431,6 +5559,14 @@
                 "name": "Dragon's tail",
                 "ac": 8
               }
+            ],
+            "onRunAway": [
+              {
+                "teleport": {
+                  "x": 25,
+                  "y": 94
+                }
+              }
             ]
           }
         },
@@ -4508,6 +5644,14 @@
                 "index": 2,
                 "name": "Dragon's tail",
                 "ac": 8
+              }
+            ],
+            "onRunAway": [
+              {
+                "teleport": {
+                  "x": 25,
+                  "y": 94
+                }
               }
             ]
           }
@@ -4929,7 +6073,8 @@
       "y": 40,
       "once": false,
       "require": {
-        "flag": "swampWalkActive"
+        "flag": "swampWalkActive",
+        "tileAtPlayerZero": true
       },
       "steps": [
         {
@@ -4945,7 +6090,8 @@
       "y": 40,
       "once": true,
       "require": {
-        "flagNot": "swampWalkActive"
+        "flagNot": "swampWalkActive",
+        "tileAtPlayerZero": true
       },
       "steps": [
         {
@@ -5042,7 +6188,8 @@
       "y": 39,
       "once": false,
       "require": {
-        "flag": "swampWalkActive"
+        "flag": "swampWalkActive",
+        "tileAtPlayerZero": true
       },
       "steps": [
         {
@@ -5058,7 +6205,8 @@
       "y": 39,
       "once": true,
       "require": {
-        "flagNot": "swampWalkActive"
+        "flagNot": "swampWalkActive",
+        "tileAtPlayerZero": true
       },
       "steps": [
         {
@@ -5256,8 +6404,6 @@
       "id": "evil-seal-room-1",
       "trigger": "step",
       "map": 19,
-      "xMin": 10,
-      "xMax": 13,
       "yMin": 6,
       "yMax": 6,
       "once": true,
@@ -5268,6 +6414,14 @@
       "title": "Crab God의 봉인",
       "steps": [
         {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
+        {
           "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
         },
         {
@@ -5281,6 +6435,39 @@
               59,
               59,
               59
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              }
             ]
           }
         },
@@ -5291,16 +6478,18 @@
           "flag": "evilSealRoomCleared"
         },
         {
+          "flag": "lavaGateKeyLeft"
+        },
+        {
           "flag": "sealPuzzleA"
         }
-      ]
+      ],
+      "x": 14
     },
     {
       "id": "evil-seal-room-2",
       "trigger": "step",
       "map": 19,
-      "xMin": 14,
-      "xMax": 17,
       "yMin": 6,
       "yMax": 6,
       "once": true,
@@ -5311,6 +6500,14 @@
       "title": "Crab God의 봉인",
       "steps": [
         {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
+        {
           "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
         },
         {
@@ -5324,6 +6521,39 @@
               59,
               59,
               59
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              }
             ]
           }
         },
@@ -5334,16 +6564,18 @@
           "flag": "evilSealRoomCleared"
         },
         {
+          "flag": "lavaGateKeyLeft"
+        },
+        {
           "flag": "sealPuzzleA"
         }
-      ]
+      ],
+      "x": 18
     },
     {
       "id": "evil-seal-room-3",
       "trigger": "step",
       "map": 19,
-      "xMin": 18,
-      "xMax": 21,
       "yMin": 6,
       "yMax": 6,
       "once": true,
@@ -5354,6 +6586,14 @@
       "title": "Crab God의 봉인",
       "steps": [
         {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
+        {
           "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
         },
         {
@@ -5367,6 +6607,39 @@
               59,
               59,
               59
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              }
             ]
           }
         },
@@ -5377,16 +6650,18 @@
           "flag": "evilSealRoomCleared"
         },
         {
+          "flag": "lavaGateKeyLeft"
+        },
+        {
           "flag": "sealPuzzleA"
         }
-      ]
+      ],
+      "x": 22
     },
     {
       "id": "evil-seal-room-4",
       "trigger": "step",
       "map": 19,
-      "xMin": 22,
-      "xMax": 25,
       "yMin": 6,
       "yMax": 6,
       "once": true,
@@ -5397,6 +6672,14 @@
       "title": "Crab God의 봉인",
       "steps": [
         {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
+        {
           "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
         },
         {
@@ -5410,6 +6693,39 @@
               59,
               59,
               59
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              }
             ]
           }
         },
@@ -5420,16 +6736,18 @@
           "flag": "evilSealRoomCleared"
         },
         {
+          "flag": "lavaGateKeyLeft"
+        },
+        {
           "flag": "sealPuzzleA"
         }
-      ]
+      ],
+      "x": 26
     },
     {
       "id": "evil-seal-room-5",
       "trigger": "step",
       "map": 19,
-      "xMin": 26,
-      "xMax": 29,
       "yMin": 6,
       "yMax": 6,
       "once": true,
@@ -5440,6 +6758,14 @@
       "title": "Crab God의 봉인",
       "steps": [
         {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
+        {
           "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
         },
         {
@@ -5453,6 +6779,39 @@
               59,
               59,
               59
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              }
             ]
           }
         },
@@ -5463,16 +6822,18 @@
           "flag": "evilSealRoomCleared"
         },
         {
+          "flag": "lavaGateKeyLeft"
+        },
+        {
           "flag": "sealPuzzleA"
         }
-      ]
+      ],
+      "x": 30
     },
     {
       "id": "evil-seal-room-6",
       "trigger": "step",
       "map": 19,
-      "xMin": 30,
-      "xMax": 33,
       "yMin": 6,
       "yMax": 6,
       "once": true,
@@ -5483,6 +6844,14 @@
       "title": "Crab God의 봉인",
       "steps": [
         {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
+        {
           "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
         },
         {
@@ -5496,6 +6865,39 @@
               59,
               59,
               59
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              }
             ]
           }
         },
@@ -5506,16 +6908,18 @@
           "flag": "evilSealRoomCleared"
         },
         {
+          "flag": "lavaGateKeyLeft"
+        },
+        {
           "flag": "sealPuzzleA"
         }
-      ]
+      ],
+      "x": 34
     },
     {
       "id": "evil-seal-room-7",
       "trigger": "step",
       "map": 19,
-      "xMin": 34,
-      "xMax": 37,
       "yMin": 6,
       "yMax": 6,
       "once": true,
@@ -5526,6 +6930,14 @@
       "title": "Crab God의 봉인",
       "steps": [
         {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
+        {
           "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
         },
         {
@@ -5539,6 +6951,39 @@
               59,
               59,
               59
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ],
+            "overrides": [
+              {
+                "index": 4,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 6,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 7,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              }
             ]
           }
         },
@@ -5549,23 +6994,36 @@
           "flag": "evilSealRoomCleared"
         },
         {
+          "flag": "lavaGateKeyLeft"
+        },
+        {
           "flag": "sealPuzzleA"
         }
-      ]
+      ],
+      "x": 38
     },
     {
       "id": "evil-seal-room-wrong-1",
       "trigger": "step",
       "map": 19,
-      "xMin": 10,
-      "xMax": 13,
       "yMin": 6,
       "yMax": 6,
       "once": true,
       "require": {
-        "flagNot": "evilSealRoom1"
+        "notAllFlags": [
+          "evilSealRoom1",
+          "evilSealRoomCleared"
+        ]
       },
       "steps": [
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
         {
           "say": "여기에는 봉인이 발견되지 않았다"
         },
@@ -5574,21 +7032,31 @@
             "tile": 49
           }
         }
-      ]
+      ],
+      "x": 14
     },
     {
       "id": "evil-seal-room-wrong-2",
       "trigger": "step",
       "map": 19,
-      "xMin": 14,
-      "xMax": 17,
       "yMin": 6,
       "yMax": 6,
       "once": true,
       "require": {
-        "flagNot": "evilSealRoom2"
+        "notAllFlags": [
+          "evilSealRoom2",
+          "evilSealRoomCleared"
+        ]
       },
       "steps": [
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
         {
           "say": "여기에는 봉인이 발견되지 않았다"
         },
@@ -5597,21 +7065,31 @@
             "tile": 49
           }
         }
-      ]
+      ],
+      "x": 18
     },
     {
       "id": "evil-seal-room-wrong-3",
       "trigger": "step",
       "map": 19,
-      "xMin": 18,
-      "xMax": 21,
       "yMin": 6,
       "yMax": 6,
       "once": true,
       "require": {
-        "flagNot": "evilSealRoom3"
+        "notAllFlags": [
+          "evilSealRoom3",
+          "evilSealRoomCleared"
+        ]
       },
       "steps": [
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
         {
           "say": "여기에는 봉인이 발견되지 않았다"
         },
@@ -5620,21 +7098,31 @@
             "tile": 49
           }
         }
-      ]
+      ],
+      "x": 22
     },
     {
       "id": "evil-seal-room-wrong-4",
       "trigger": "step",
       "map": 19,
-      "xMin": 22,
-      "xMax": 25,
       "yMin": 6,
       "yMax": 6,
       "once": true,
       "require": {
-        "flagNot": "evilSealRoom4"
+        "notAllFlags": [
+          "evilSealRoom4",
+          "evilSealRoomCleared"
+        ]
       },
       "steps": [
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
         {
           "say": "여기에는 봉인이 발견되지 않았다"
         },
@@ -5643,21 +7131,31 @@
             "tile": 49
           }
         }
-      ]
+      ],
+      "x": 26
     },
     {
       "id": "evil-seal-room-wrong-5",
       "trigger": "step",
       "map": 19,
-      "xMin": 26,
-      "xMax": 29,
       "yMin": 6,
       "yMax": 6,
       "once": true,
       "require": {
-        "flagNot": "evilSealRoom5"
+        "notAllFlags": [
+          "evilSealRoom5",
+          "evilSealRoomCleared"
+        ]
       },
       "steps": [
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
         {
           "say": "여기에는 봉인이 발견되지 않았다"
         },
@@ -5666,21 +7164,31 @@
             "tile": 49
           }
         }
-      ]
+      ],
+      "x": 30
     },
     {
       "id": "evil-seal-room-wrong-6",
       "trigger": "step",
       "map": 19,
-      "xMin": 30,
-      "xMax": 33,
       "yMin": 6,
       "yMax": 6,
       "once": true,
       "require": {
-        "flagNot": "evilSealRoom6"
+        "notAllFlags": [
+          "evilSealRoom6",
+          "evilSealRoomCleared"
+        ]
       },
       "steps": [
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
         {
           "say": "여기에는 봉인이 발견되지 않았다"
         },
@@ -5689,21 +7197,31 @@
             "tile": 49
           }
         }
-      ]
+      ],
+      "x": 34
     },
     {
       "id": "evil-seal-room-wrong-7",
       "trigger": "step",
       "map": 19,
-      "xMin": 34,
-      "xMax": 37,
       "yMin": 6,
       "yMax": 6,
       "once": true,
       "require": {
-        "flagNot": "evilSealRoom7"
+        "notAllFlags": [
+          "evilSealRoom7",
+          "evilSealRoomCleared"
+        ]
       },
       "steps": [
+        {
+          "setTileArea": {
+            "xMin": 1,
+            "yMin": 5,
+            "tile": 49,
+            "atPlayerX": true
+          }
+        },
         {
           "say": "여기에는 봉인이 발견되지 않았다"
         },
@@ -5712,7 +7230,8 @@
             "tile": 49
           }
         }
-      ]
+      ],
+      "x": 38
     },
     {
       "id": "evil-seal-guardians",
@@ -5722,19 +7241,9 @@
       "yMax": 12,
       "once": false,
       "require": {
-        "flag": "evilSealLeverB",
         "flagNot": "evilSealRoomCleared"
       },
       "steps": [
-        {
-          "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD"
-        },
-        {
-          "say": "의 왕이다. CRAB GOD 족의 명예를 걸고 절대로"
-        },
-        {
-          "say": "너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
-        },
         {
           "battle": {
             "title": "Crab God",
@@ -5745,7 +7254,46 @@
               ],
               "min": 3,
               "max": 5
-            }
+            },
+            "onRunAway": [
+              {
+                "setTileAtPlayer": {
+                  "tile": 49
+                }
+              }
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 2,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 3,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 4,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              },
+              {
+                "index": 5,
+                "eNumber": 25,
+                "hp": 210,
+                "level": 7
+              }
+            ]
           }
         },
         {
@@ -5762,6 +7310,9 @@
       "x": 33,
       "y": 50,
       "once": false,
+      "require": {
+        "moveDyNot": 1
+      },
       "steps": [
         {
           "say": "여기는 옳은 문이었다."
@@ -5783,6 +7334,9 @@
       "xMax": 99,
       "y": 50,
       "once": false,
+      "require": {
+        "moveDyNot": 1
+      },
       "steps": [
         {
           "say": "당신은 바보군요, 다시 생각하십시오."
@@ -5871,18 +7425,6 @@
       "once": false,
       "steps": [
         {
-          "battle": {
-            "monsters": [
-              60,
-              60,
-              60,
-              60,
-              60,
-              63
-            ]
-          }
-        },
-        {
           "say": " 나는 이 요새의 Wraith를 조종하는 죽음의 기"
         },
         {
@@ -5890,6 +7432,18 @@
         },
         {
           "say": "로운 것들. 으하하...."
+        },
+        {
+          "battle": {
+            "monsters": [
+              60,
+              60,
+              60,
+              60,
+              63
+            ],
+            "shuffle": true
+          }
         },
         {
           "flag": "keep2AmbushCleared"
@@ -5941,7 +7495,8 @@
         "notAllFlags": [
           "keep2AmbushCleared"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-3x",
@@ -5983,7 +7538,8 @@
         "notAllFlags": [
           "keep2AmbushCleared"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "keep2-ambush-25-18",
@@ -6065,6 +7621,9 @@
       "x": 25,
       "y": 27,
       "once": true,
+      "require": {
+        "tileAtPlayerValue": 52
+      },
       "steps": [
         {
           "say": " 푯말에 쓰여 있는 대로 이 곳의 레버를 당겼 "
@@ -6486,7 +8045,10 @@
         }
       ],
       "x": 15,
-      "y": 34
+      "y": 34,
+      "require": {
+        "tileAtPlayerZero": true
+      }
     },
     {
       "id": "keep25-corridor-15-34",
@@ -6603,7 +8165,10 @@
         }
       ],
       "x": 36,
-      "y": 34
+      "y": 34,
+      "require": {
+        "tileAtPlayerZero": true
+      }
     },
     {
       "id": "keep25-corridor-36-34",
@@ -6809,7 +8374,10 @@
         }
       ],
       "x": 22,
-      "y": 41
+      "y": 41,
+      "require": {
+        "tileAtPlayerValue": 52
+      }
     },
     {
       "id": "lockup-passage-22-41",
@@ -6865,6 +8433,7 @@
       "x": 21,
       "y": 41,
       "require": {
+        "tileAtPlayerValue": 52,
         "notAllFlags": [
           "etc1",
           "lockupGuardianDefeated"
@@ -6895,6 +8464,7 @@
       "x": 21,
       "y": 41,
       "require": {
+        "tileAtPlayerValue": 52,
         "allFlags": [
           "etc1"
         ],
@@ -9070,11 +10640,38 @@
               31,
               31,
               57
+            ],
+            "victoryIfEnemyDead": 7,
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
             ]
           }
         },
         {
           "flag": "den7MazeCleared"
+        },
+        {
+          "flag": "lavaGateKeyRight"
+        },
+        {
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
+        },
+        {
+          "say": "했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸"
+        },
+        {
+          "say": "다."
+        },
+        {
+          "teleport": {
+            "map": 4,
+            "x": 82,
+            "y": 17
+          }
         }
       ]
     },
@@ -11408,14 +13005,38 @@
               60,
               60,
               60
+            ],
+            "onRunAway": [
+              {
+                "setTileAtPlayer": {
+                  "tile": 40
+                }
+              }
             ]
           }
         },
         {
           "setTileAtPlayer": {
-            "tile": 46,
-            "ifZero": 40
+            "tile": 40
           }
+        }
+      ],
+      "excludeCoords": [
+        {
+          "x": 25,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 25
+        },
+        {
+          "x": 25,
+          "y": 25
+        },
+        {
+          "x": 26,
+          "y": 25
         }
       ]
     },
@@ -11439,14 +13060,38 @@
               60,
               60,
               60
+            ],
+            "onRunAway": [
+              {
+                "setTileAtPlayer": {
+                  "tile": 40
+                }
+              }
             ]
           }
         },
         {
           "setTileAtPlayer": {
-            "tile": 46,
-            "ifZero": 40
+            "tile": 40
           }
+        }
+      ],
+      "excludeCoords": [
+        {
+          "x": 25,
+          "y": 18
+        },
+        {
+          "x": 24,
+          "y": 25
+        },
+        {
+          "x": 25,
+          "y": 25
+        },
+        {
+          "x": 26,
+          "y": 25
         }
       ]
     },
@@ -15105,6 +16750,23 @@
       ]
     },
     {
+      "id": "enter-26-chamber",
+      "trigger": "enter",
+      "map": 26,
+      "steps": [
+        {
+          "setTileArea": {
+            "map": 26,
+            "xMin": 24,
+            "xMax": 26,
+            "yMin": 16,
+            "yMax": 19,
+            "tile": 16
+          }
+        }
+      ]
+    },
+    {
       "id": "portal-5-23-frostdragon",
       "trigger": "portal",
       "map": 5,
@@ -15125,69 +16787,118 @@
           "say": "않을것이다."
         },
         {
-          "battle": {
-            "monsters": [
-              54,
-              54,
-              54,
-              54,
-              54,
-              54,
-              69
+          "randomSteps": [
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    54,
+                    69,
+                    54,
+                    54,
+                    54,
+                    54,
+                    54
+                  ],
+                  "title": "Frost Dragon",
+                  "victoryFlag": "frostDragonDefeated",
+                  "onRunAway": [
+                    {
+                      "block": true
+                    }
+                  ]
+                }
+              }
             ],
-            "title": "Frost Dragon",
-            "victoryFlag": "frostDragonDefeated"
-          }
-        }
-      ]
-    },
-    {
-      "id": "portal-23-25-dungeon",
-      "trigger": "portal",
-      "map": 23,
-      "require": {
-        "flagNot": "dungeonOfEvilCleared"
-      },
-      "steps": [
-        {
-          "say": " 이 동굴에 들어 가겠다고?"
-        },
-        {
-          "say": " 하!, 우습군. 너희들에게는 여기의 Draconian"
-        },
-        {
-          "say": "족들의 모습이 보이지 않는 모양이군."
-        },
-        {
-          "say": " ArchiDraconian은 마지막에 있는 Draconian"
-        },
-        {
-          "say": "을 발견했다."
-        },
-        {
-          "say": " 아니 너는 누구냐! 감히 Draconian 족이면"
-        },
-        {
-          "say": "서 Necromancer님에게 반기를 들다니... 그"
-        },
-        {
-          "say": "것은 바로 죽음이다. 받아랏!!"
-        },
-        {
-          "battle": {
-            "monsters": [
-              62,
-              62,
-              62,
-              62,
-              62,
-              62,
-              62,
-              70
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    54,
+                    54,
+                    69,
+                    54,
+                    54,
+                    54,
+                    54
+                  ],
+                  "title": "Frost Dragon",
+                  "victoryFlag": "frostDragonDefeated",
+                  "onRunAway": [
+                    {
+                      "block": true
+                    }
+                  ]
+                }
+              }
             ],
-            "title": "ArchiDraconian",
-            "victoryFlag": "dungeonOfEvilCleared"
-          }
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    54,
+                    54,
+                    54,
+                    69,
+                    54,
+                    54,
+                    54
+                  ],
+                  "title": "Frost Dragon",
+                  "victoryFlag": "frostDragonDefeated",
+                  "onRunAway": [
+                    {
+                      "block": true
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    54,
+                    54,
+                    54,
+                    54,
+                    69,
+                    54,
+                    54
+                  ],
+                  "title": "Frost Dragon",
+                  "victoryFlag": "frostDragonDefeated",
+                  "onRunAway": [
+                    {
+                      "block": true
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "battle": {
+                  "monsters": [
+                    54,
+                    54,
+                    54,
+                    54,
+                    54,
+                    69,
+                    54
+                  ],
+                  "title": "Frost Dragon",
+                  "victoryFlag": "frostDragonDefeated",
+                  "onRunAway": [
+                    {
+                      "block": true
+                    }
+                  ]
+                }
+              }
+            ]
+          ]
         }
       ]
     },
@@ -15207,6 +16918,112 @@
         },
         {
           "block": true
+        }
+      ]
+    },
+    {
+      "id": "portal-21-22-lavagate",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "allFlags": [
+          "lavaGateKeyLeft",
+          "lavaGateKeyRight"
+        ],
+        "notAllFlags": [
+          "lavaGateLeftGuardianDefeated",
+          "lavaGateRightGuardianDefeated"
+        ]
+      },
+      "steps": [
+        {
+          "battle": {
+            "monsters": [
+              65,
+              64
+            ],
+            "title": "IMPERIUM MINOR 수문장",
+            "onEnemyDeadFlags": {
+              "1": "lavaGateLeftGuardianDefeated",
+              "2": "lavaGateRightGuardianDefeated"
+            },
+            "victoryFlag": "lavaGateGuardiansCleared",
+            "continueOnRunAway": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-21-22-lavagate",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "allFlags": [
+          "lavaGateKeyLeft",
+          "lavaGateKeyRight",
+          "lavaGateLeftGuardianDefeated"
+        ],
+        "flagNot": "lavaGateRightGuardianDefeated"
+      },
+      "steps": [
+        {
+          "battle": {
+            "monsters": [
+              64
+            ],
+            "title": "IMPERIUM MINOR 수문장",
+            "onEnemyDeadFlags": {
+              "1": "lavaGateRightGuardianDefeated"
+            },
+            "victoryFlag": "lavaGateGuardiansCleared",
+            "continueOnRunAway": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-21-22-lavagate",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "allFlags": [
+          "lavaGateKeyLeft",
+          "lavaGateKeyRight",
+          "lavaGateRightGuardianDefeated"
+        ],
+        "flagNot": "lavaGateLeftGuardianDefeated"
+      },
+      "steps": [
+        {
+          "battle": {
+            "monsters": [
+              65
+            ],
+            "title": "IMPERIUM MINOR 수문장",
+            "onEnemyDeadFlags": {
+              "1": "lavaGateLeftGuardianDefeated"
+            },
+            "victoryFlag": "lavaGateGuardiansCleared",
+            "continueOnRunAway": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "portal-21-22-lavagate",
+      "trigger": "portal",
+      "map": 21,
+      "require": {
+        "allFlags": [
+          "lavaGateKeyLeft",
+          "lavaGateKeyRight",
+          "lavaGateLeftGuardianDefeated",
+          "lavaGateRightGuardianDefeated"
+        ]
+      },
+      "steps": [
+        {
+          "flag": "lavaGateGuardiansCleared"
         }
       ]
     },
@@ -15276,13 +17093,100 @@
           "say": "될 때 다시 Ancient Evil과 같이 나타나겠소."
         },
         {
+          "flag": "ancientEvilSpeechGiven"
+        }
+      ]
+    },
+    {
+      "id": "keep3-metal-guardian-y43",
+      "trigger": "step",
+      "map": 25,
+      "yMin": 43,
+      "yMax": 43,
+      "require": {
+        "tileAtPlayerZero": true
+      },
+      "steps": [
+        {
+          "torch": true
+        },
+        {
+          "say": " 금속으로된 어떤 적이 나타났다."
+        },
+        {
+          "say": " 여기까지 잘도왔구나. 나의 임무는 너희 같은"
+        },
+        {
+          "say": "쓰레기들 때문에 Necromancer 님이 수고하시지"
+        },
+        {
+          "say": "않도록 미리 처단해 버리는 것이다."
+        },
+        {
           "battle": {
             "monsters": [
-              68
+              66,
+              66,
+              66,
+              66,
+              71
             ],
-            "title": "Ancient Evil",
-            "victoryFlag": "ancientEvilSpeechGiven"
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
+            ]
           }
+        },
+        {
+          "setTileArea": {
+            "xMin": 24,
+            "xMax": 27,
+            "yMin": 43,
+            "yMax": 43,
+            "tile": 41
+          }
+        },
+        {
+          "say": " 당신이 적을 물리치자 조금후에 이상하리만큼"
+        },
+        {
+          "say": "편안한 기운이 일행을 감쌌다."
+        },
+        {
+          "say": " 매우 수고하시는군요."
+        },
+        {
+          "say": " 당신이 Necromancer에게 가기전에 한 가지 일"
+        },
+        {
+          "say": "러 두고자 하오."
+        },
+        {
+          "say": " 이곳에는 비밀스런 문이 두군데 있소. 지금은"
+        },
+        {
+          "say": "보이지가 않지만 양쪽의 벽을 살피다 보면 숨"
+        },
+        {
+          "say": "겨진 문 안에 레버가 각각 하나씩 있소. 그걸"
+        },
+        {
+          "say": "모두 작동시키면 용암의 중앙에서 Necromancer"
+        },
+        {
+          "say": "의 방으로 통하는 입구가 보일 것이오. 여기까"
+        },
+        {
+          "say": "지만 내가 알려줄 수가 있는 부분이오. 마지막"
+        },
+        {
+          "say": "으로 당신의 건투를 빌겠소."
+        },
+        {
+          "partyClass": 10
         }
       ]
     },
@@ -15291,6 +17195,9 @@
       "trigger": "portal",
       "map": 25,
       "steps": [
+        {
+          "torch": true
+        },
         {
           "say": " 두말이 필요없다. 덤벼라 !!"
         },
@@ -15305,7 +17212,17 @@
               72
             ],
             "title": "Necromancer",
-            "victoryFlag": "bossNecromancerDefeated"
+            "onRunAway": [
+              {
+                "teleport": {
+                  "x": 25,
+                  "y": 45
+                }
+              },
+              {
+                "block": true
+              }
+            ]
           }
         }
       ]
@@ -15978,14 +17895,21 @@
       "map": 1,
       "once": false,
       "require": {
-        "tileAtPlayerZero": true
+        "tileAtPlayerZero": true,
+        "flagNot": "etc32_bit8"
       },
       "steps": [
         {
           "say": "일행들은 100 인분의 식량을 발견했다."
         },
         {
+          "food": 100
+        },
+        {
           "flag": "etc32_bit8"
+        },
+        {
+          "stepBack": true
         }
       ],
       "note": "조건 미지원: party.food > 155; 미지원: party.food := 255; 미지원: x := x - x1; y := y - y1;"
@@ -16009,7 +17933,8 @@
           "flag": "etc32_bit8"
         }
       ],
-      "note": "조건 미지원: party.food > 155; 미지원: party.food := 255; 미지원: x := x - x1; y := y - y1;"
+      "note": "조건 미지원: party.food > 155; 미지원: party.food := 255; 미지원: x := x - x1; y := y - y1;",
+      "disabled": true
     },
     {
       "id": "spec-1-L25-seq3",
@@ -16017,11 +17942,15 @@
       "map": 1,
       "once": false,
       "require": {
-        "tileAtPlayerZero": true
+        "tileAtPlayerZero": true,
+        "flag": "etc32_bit8"
       },
       "steps": [
         {
           "say": "우리들은 아무것도 발견할수 없었다."
+        },
+        {
+          "stepBack": true
         }
       ],
       "note": "조건 미지원: party.food > 155; 미지원: party.food := 255; 미지원: x := x - x1; y := y - y1;"
@@ -16121,7 +18050,8 @@
           "ancientEvilMet"
         ]
       },
-      "note": "미지원: aux := SoundOn; SoundOn := false;"
+      "note": "미지원: aux := SoundOn; SoundOn := false;",
+      "disabled": true
     },
     {
       "id": "spec-4-L37-2x",
@@ -16149,7 +18079,8 @@
           "ancientEvilMet"
         ]
       },
-      "note": "미지원: aux := SoundOn; SoundOn := false;"
+      "note": "미지원: aux := SoundOn; SoundOn := false;",
+      "disabled": true
     },
     {
       "id": "spec-6-L190-2-1",
@@ -17893,7 +19824,8 @@
           "etc31_bit2"
         ]
       },
-      "note": "미지원: hany := 20;; 미지원: case k of; 미지원: 0 : begin; 미지원: 1 : begin; 미지원: k := ReturnJoinMember;; 미지원: if k = 1 then begin; 미지원: with player[k] do begin; 미지원: name := 'Rigel';; 미지원: class := 7;; 미지원: weapon := 4;; 미지원: shield := 1;; 미지원: armor := 1;; 미지원: wea_power := 10;; 미지원: shi_power := 1;; 미지원: ar"
+      "note": "미지원: hany := 20;; 미지원: case k of; 미지원: 0 : begin; 미지원: 1 : begin; 미지원: k := ReturnJoinMember;; 미지원: if k = 1 then begin; 미지원: with player[k] do begin; 미지원: name := 'Rigel';; 미지원: class := 7;; 미지원: weapon := 4;; 미지원: shield := 1;; 미지원: armor := 1;; 미지원: wea_power := 10;; 미지원: shi_power := 1;; 미지원: ar",
+      "disabled": true
     },
     {
       "id": "spec-12-L560x",
@@ -17912,7 +19844,8 @@
           "etc4"
         ]
       },
-      "note": "미지원: x := x - x1; y := y - y1;"
+      "note": "미지원: x := x - x1; y := y - y1;",
+      "disabled": true
     },
     {
       "id": "spec-13-L669-1",
@@ -18453,7 +20386,8 @@
         ],
         "tileAtPlayerZero": true
       },
-      "note": "미지원: map[x,48] := 44;; 미지원: map[x,47] := 44;"
+      "note": "미지원: map[x,48] := 44;; 미지원: map[x,47] := 44;",
+      "disabled": true
     },
     {
       "id": "spec-15-L879-2xxx",
@@ -18480,7 +20414,8 @@
         ],
         "tileAtPlayerZero": true
       },
-      "note": "미지원: map[x,48] := 44;; 미지원: map[x,47] := 44;"
+      "note": "미지원: map[x,48] := 44;; 미지원: map[x,47] := 44;",
+      "disabled": true
     },
     {
       "id": "spec-15-L879-1xx",
@@ -18637,7 +20572,8 @@
         ],
         "tileAtPlayerZero": true
       },
-      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;"
+      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;",
+      "disabled": true
     },
     {
       "id": "spec-16-L966-2xxx",
@@ -18668,7 +20604,8 @@
         ],
         "tileAtPlayerZero": true
       },
-      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;"
+      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;",
+      "disabled": true
     },
     {
       "id": "spec-16-L966-3x",
@@ -18702,7 +20639,8 @@
         ],
         "tileAtPlayerZero": true
       },
-      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;"
+      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;",
+      "disabled": true
     },
     {
       "id": "spec-16-L966-4x",
@@ -18720,7 +20658,8 @@
         ],
         "tileAtPlayerZero": true
       },
-      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;"
+      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;",
+      "disabled": true
     },
     {
       "id": "spec-16-L966-1xx",
@@ -18750,7 +20689,8 @@
           "etc6"
         ]
       },
-      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;"
+      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;",
+      "disabled": true
     },
     {
       "id": "spec-16-L966-2xx",
@@ -18782,7 +20722,8 @@
           "etc37"
         ]
       },
-      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;"
+      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;",
+      "disabled": true
     },
     {
       "id": "spec-16-L966-3",
@@ -18801,7 +20742,8 @@
           "etc37"
         ]
       },
-      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;"
+      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;",
+      "disabled": true
     },
     {
       "id": "spec-16-L966-4",
@@ -18836,7 +20778,8 @@
           "etc37"
         ]
       },
-      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;"
+      "note": "미지원: s := '';; 미지원: case party.etc[37] of; 미지원: 2 : s := '한';; 미지원: 1 : s := '두';; 미지원: 0 : s := '세';; 미지원: enemynumber := 3 - party.etc[37];; 미지원: party.etc[37] := 3; 미지원: j := 0;; 미지원: for i := 1 to enemynumber do if not enemy[i].dead then inc(j; 미지원: party.etc[37] := 3 - j;",
+      "disabled": true
     },
     {
       "id": "spec-17-L1010-1",
@@ -18942,7 +20885,8 @@
         "allFlags": [
           "etc38_bit2"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-17-L1010xx",
@@ -19002,7 +20946,8 @@
           "etc5",
           "specialMagicLearned"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-17-L1010xxx",
@@ -19023,7 +20968,8 @@
         "notAllFlags": [
           "etc38_bit2"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-17-L1010xxxx",
@@ -21696,7 +23642,8 @@
           "etc43_bit1",
           "etc6"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-1-2",
@@ -21725,7 +23672,8 @@
         "notAllFlags": [
           "etc43_bit1"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-1-3",
@@ -21757,7 +23705,8 @@
         "notAllFlags": [
           "etc43_bit1"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-1-4",
@@ -21788,7 +23737,8 @@
         "notAllFlags": [
           "keep2AmbushCleared"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-2-1",
@@ -21818,7 +23768,8 @@
           "etc43_bit1",
           "etc6"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-2-2",
@@ -21847,7 +23798,8 @@
         "notAllFlags": [
           "etc43_bit1"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-2-3",
@@ -21879,7 +23831,8 @@
         "notAllFlags": [
           "etc43_bit1"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-2-4",
@@ -21910,7 +23863,8 @@
         "notAllFlags": [
           "keep2AmbushCleared"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-23-L1880",
@@ -22113,7 +24067,8 @@
           "etc6"
         ]
       },
-      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: for j := 25 to 27 do; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,j] := 46;"
+      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: for j := 25 to 27 do; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,j] := 46;",
+      "disabled": true
     },
     {
       "id": "spec-23-L1880-2x",
@@ -22240,7 +24195,8 @@
           "etc6"
         ]
       },
-      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: for j := 25 to 27 do; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,j] := 46;"
+      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: for j := 25 to 27 do; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,j] := 46;",
+      "disabled": true
     },
     {
       "id": "spec-23-L1880-3",
@@ -22372,7 +24328,8 @@
           "etc6"
         ]
       },
-      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: for j := 25 to 27 do; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,j] := 46;"
+      "note": "미지원: else turn_mind(i,i);; 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if party.etc[6] > 0 then begin; 미지원: else aux := TRUE;; 미지원: for j := 25 to 27 do; 영역 변형(좌표 변수): for i := 24 to 27 do map[i,j] := 46;",
+      "disabled": true
     },
     {
       "id": "spec-24-L1980-1",
@@ -22850,7 +24807,8 @@
       "map": 26,
       "once": false,
       "require": {
-        "tileAtPlayerZero": true
+        "tileAtPlayerZero": true,
+        "flagNot": "bossNecromancerDefeated"
       },
       "steps": [
         {
@@ -22897,10 +24855,28 @@
           "say": "의 행운을 빌겠네."
         },
         {
-          "say": " 하지만 나에게 도전한 이상 도주는 허용할 수"
-        },
-        {
-          "say": "없다는 점이 안타깝군."
+          "battle": {
+            "title": "Neo-Necromancer",
+            "monsters": [
+              69,
+              70,
+              71,
+              72,
+              73,
+              74,
+              75
+            ],
+            "retryOnRunAway": true,
+            "victoryIfEnemyDead": 7,
+            "onRunAway": [
+              {
+                "say": " 하지만 나에게 도전한 이상 도주는 허용할 수"
+              },
+              {
+                "say": "없다는 점이 안타깝군."
+              }
+            ]
+          }
         },
         {
           "say": " 욱!!! 역시 너희들의 능력으로 여기까지 뚫고"
@@ -22952,6 +24928,9 @@
         },
         {
           "say": "원히 안녕 ! !"
+        },
+        {
+          "flag": "bossNecromancerDefeated"
         }
       ],
       "note": "미지원: face := 5;; 미지원: face := 6;; 미지원: while x < 26 do begin; 미지원: for j := 4 downto 2 do begin; 미지원: if j < 4 then; 미지원: if j > 1 then begin; 적 배치(계산식): joinenemy(i, 68+i); 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if (party.etc[6] > 0) and (not enemy[7].dead) then begin; 미지원:"
@@ -22974,6 +24953,39 @@
         }
       ],
       "note": "조건 미지원: wantexit; 조건 미지원: y < 25; 미지원: inc(y) else dec(y);"
+    },
+    {
+      "id": "keep1-special-ambush",
+      "trigger": "step",
+      "map": 21,
+      "yMax": 45,
+      "excludeCoords": [
+        {
+          "x": 25,
+          "y": 20
+        }
+      ],
+      "once": false,
+      "steps": [
+        {
+          "battle": {
+            "random": {
+              "pool": [
+                58
+              ],
+              "min": 3,
+              "max": 6
+            },
+            "continueOnRunAway": true
+          }
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 46,
+            "ifZero": 40
+          }
+        }
+      ]
     }
   ]
 }

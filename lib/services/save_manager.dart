@@ -15,8 +15,14 @@ class SaveData {
   final int gold;
   final int food;
   final List<PartyMember> party;
-  final Map<String, bool> flags;
+
+  /// 진행 단계, 원본 etc 값, 이름 있는 플래그를 함께 담는다.
+  final Map<String, dynamic> flags;
   final Map<String, int> etc;
+
+  /// 원작 `saveN.map`: 저장 당시 현재 지도의 타일을 행 우선으로 보관한다.
+  final List<int> mapTiles;
+  final List<String> consumedScripts;
 
   const SaveData({
     required this.slot,
@@ -31,6 +37,8 @@ class SaveData {
     required this.party,
     required this.flags,
     this.etc = const {},
+    this.mapTiles = const [],
+    this.consumedScripts = const [],
   });
 
   Map<String, dynamic> toJson() => {
@@ -46,6 +54,8 @@ class SaveData {
     'party': party.map((p) => p.toJson()).toList(),
     'flags': flags,
     'etc': etc,
+    'mapTiles': mapTiles,
+    'consumedScripts': consumedScripts,
   };
 
   factory SaveData.fromJson(Map<String, dynamic> json) {
@@ -66,12 +76,17 @@ class SaveData {
       gold: json['gold'] as int? ?? 2000,
       food: json['food'] as int? ?? 100,
       party: partyList,
-      flags: (json['flags'] as Map<String, dynamic>? ?? {}).map(
-        (k, v) => MapEntry(k, v as bool),
+      flags: Map<String, dynamic>.from(
+        json['flags'] as Map<String, dynamic>? ?? const {},
       ),
       etc: (json['etc'] as Map<String, dynamic>? ?? {}).map(
         (k, v) => MapEntry(k, v as int? ?? 0),
       ),
+      mapTiles: (json['mapTiles'] as List<dynamic>? ?? const [])
+          .map((v) => (v as num).toInt())
+          .toList(),
+      consumedScripts: (json['consumedScripts'] as List<dynamic>? ?? const [])
+          .cast<String>(),
     );
   }
 }

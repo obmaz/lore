@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/services/save_manager.dart';
+import 'package:lore/game/lore_dialogue_manager.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +12,76 @@ void main() {
   });
 
   group('LORE 1993 4-Slot Save/Load Manager Tests', () {
+    test('저장 슬롯 왕복으로 퀘스트·원본 etc·동적 플래그를 복원한다', () async {
+      final dialogue = LoreDialogueManager.instance;
+      dialogue.loadFlags({});
+      dialogue.applyQuestStep('lordahn', set: 3);
+      dialogue.applyQuestStep('gaia', set: 5);
+      dialogue.setEtcBit(39, 3);
+      dialogue.setFlag('evilSealRoomCleared');
+      dialogue.collectedTreasures.add('gold:9:10:24');
+
+      await SaveManager.instance.saveGame(
+        SaveData(
+          slot: 1,
+          slotName: '진행 상태',
+          timestamp: DateTime.utc(1993, 7, 25),
+          mapId: 6,
+          mapTitle: 'CASTLE LORE',
+          playerX: 51,
+          playerY: 31,
+          gold: 2000,
+          food: 100,
+          party: const [],
+          flags: dialogue.getSaveFlags(),
+        ),
+      );
+      dialogue.loadFlags({});
+      expect(dialogue.lordAhnQuestStep, 0);
+
+      final restored = await SaveManager.instance.loadGame(1);
+      expect(restored, isNotNull);
+      dialogue.loadFlags(restored!.flags);
+      expect(dialogue.lordAhnQuestStep, 3);
+      expect(dialogue.gaiaQuestStep, 5);
+      expect(dialogue.partyEtc[39], 4);
+      expect(dialogue.getFlagsCopy()['evilSealRoomCleared'], isTrue);
+      expect(dialogue.collectedTreasures, contains('gold:9:10:24'));
+      dialogue.loadFlags({});
+    });
+
+    test('구형 불리언 저장 플래그에서 etc 비트와 동적 플래그를 복원한다', () {
+      final dialogue = LoreDialogueManager.instance;
+      dialogue.loadFlags({
+        'lordAhnQuestStep': 2,
+        'etc39': true,
+        'etc39_bit3': true,
+        'evilSealRoomCleared': true,
+        'gold:9:10:24': true,
+      });
+      expect(dialogue.lordAhnQuestStep, 2);
+      expect(dialogue.partyEtc[39], 4);
+      expect(dialogue.getFlagsCopy()['evilSealRoomCleared'], isTrue);
+      expect(dialogue.collectedTreasures, contains('gold:9:10:24'));
+      dialogue.loadFlags({});
+    });
+
+    test('스크립트가 만든 이름 있는 플래그를 저장하고 복원한다', () {
+      final dialogue = LoreDialogueManager.instance;
+      dialogue.loadFlags({});
+      dialogue.setFlag('etc39_bit1');
+      dialogue.setFlag('evilSealRoomCleared');
+      dialogue.setFlag('lavaGateLeftGuardianDefeated');
+      final saved = dialogue.getSaveFlags();
+      dialogue.loadFlags({});
+      expect(dialogue.getFlagsCopy()['evilSealRoomCleared'], isNull);
+      dialogue.loadFlags(saved);
+      expect(dialogue.getFlagsCopy()['etc39_bit1'], isTrue);
+      expect(dialogue.getFlagsCopy()['evilSealRoomCleared'], isTrue);
+      expect(dialogue.getFlagsCopy()['lavaGateLeftGuardianDefeated'], isTrue);
+      dialogue.loadFlags({});
+    });
+
     test('1. SaveData serialization and deserialization', () {
       final hero = PartyMember.createPreset(1);
       final wizard = PartyMember.createPreset(3);
@@ -27,6 +98,8 @@ void main() {
         food: 80,
         party: [hero, wizard],
         flags: {'metLordAhn': true, 'castleGateOpen': true},
+        mapTiles: [44, 44, 0, 49],
+        consumedScripts: ['rigel-join', 'den4-pyramid-chapters'],
       );
 
       final json = save.toJson();
@@ -45,6 +118,14 @@ void main() {
       expect(restored.party[1].name, wizard.name);
       expect(restored.flags['metLordAhn'], true);
       expect(restored.flags['castleGateOpen'], true);
+      expect(restored.mapTiles, [44, 44, 0, 49]);
+      expect(restored.consumedScripts, ['rigel-join', 'den4-pyramid-chapters']);
+
+      // 이전 버전의 세이브에는 지도 배열이 없으므로 원본 지도를 사용한다.
+      json.remove('mapTiles');
+      json.remove('consumedScripts');
+      expect(SaveData.fromJson(json).mapTiles, isEmpty);
+      expect(SaveData.fromJson(json).consumedScripts, isEmpty);
     });
 
     test('2. SaveManager save and load slot 1..4', () async {

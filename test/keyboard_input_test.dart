@@ -20,12 +20,12 @@ void main() {
 
   LoreMapData openMap() => LoreMapData(
     name: 'TEST',
-    xmax: 10,
-    ymax: 10,
+    xmax: 20,
+    ymax: 20,
     grid: List.generate(
-      10,
-      (y) => List.generate(10, (x) {
-        if (x == 0 || y == 0 || x == 9 || y == 9) return 1; // 외곽 성벽
+      20,
+      (y) => List.generate(20, (x) {
+        if (x == 0 || y == 0 || x == 19 || y == 19) return 1; // 외곽 성벽
         return 42; // 바닥
       }),
     ),
@@ -98,28 +98,33 @@ void main() {
     test('방향키/WASD 로 이동하고 벽에서는 제자리다', () {
       final game = LoreGame();
       game.currentMap = openMap();
-      game.playerX = 3;
-      game.playerY = 3;
+      game.playerX = 6;
+      game.playerY = 6;
 
       // → (동)
       game.handleKeyEvent(keyDown(LogicalKeyboardKey.arrowRight));
-      expect(game.playerX, 4);
+      expect(game.playerX, 7);
       expect(game.playerDirection, 2);
 
       // A (서)
       game.handleKeyEvent(keyDown(LogicalKeyboardKey.keyA));
-      expect(game.playerX, 3);
+      expect(game.playerX, 6);
       expect(game.playerDirection, 3);
 
       // ↑ (북)
       game.handleKeyEvent(keyDown(LogicalKeyboardKey.arrowUp));
-      expect(game.playerY, 2);
+      expect(game.playerY, 5);
       expect(game.playerDirection, 1);
 
       // S (남)
       game.handleKeyEvent(keyDown(LogicalKeyboardKey.keyS));
-      expect(game.playerY, 3);
+      expect(game.playerY, 6);
       expect(game.playerDirection, 0);
+
+      // 원본 지도 경계(4열)는 내부 타일 값과 관계없이 진입할 수 없다.
+      game.playerX = 5;
+      game.handleKeyEvent(keyDown(LogicalKeyboardKey.arrowLeft));
+      expect(game.playerX, 5);
     });
 
     test('KeyUp 이벤트와 무관한 키는 이동시키지 않는다', () {
