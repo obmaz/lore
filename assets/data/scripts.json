@@ -1488,6 +1488,665 @@
           "say": "무너진 벽 사이로 지름길이 열렸다."
         }
       ]
+    },
+    {
+      "id": "evil-seal-lever-a-blocked",
+      "trigger": "step",
+      "map": 19,
+      "x": 11,
+      "y": 40,
+      "once": false,
+      "require": {
+        "flag": "swampWalkActive"
+      },
+      "steps": [
+        {
+          "say": "늪 아래를 보니 무언가 반짝이는 물체가 있었다. 하지만 늪위를 걷는 마법 때문에 늪속으로 들어갈수가 없다."
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-lever-a",
+      "trigger": "step",
+      "map": 19,
+      "x": 11,
+      "y": 40,
+      "once": true,
+      "require": {
+        "flagNot": "swampWalkActive"
+      },
+      "steps": [
+        {
+          "say": "일행은 독을 무릅쓰고 늪속에 빠져있는 레버를 당겼다. 순간 동굴 중심부에서 굉음이 들렸다."
+        },
+        {
+          "setTile": {
+            "x": 11,
+            "y": 40,
+            "tile": 49
+          }
+        },
+        {
+          "setTile": {
+            "x": 41,
+            "y": 39,
+            "tile": 0
+          }
+        },
+        {
+          "flag": "evilSealLeverA"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-lever-b-blocked",
+      "trigger": "step",
+      "map": 19,
+      "x": 41,
+      "y": 39,
+      "once": false,
+      "require": {
+        "flag": "swampWalkActive"
+      },
+      "steps": [
+        {
+          "say": "늪 아래를 보니 무언가 반짝이는 물체가 있었다. 하지만 늪위를 걷는 마법 때문에 늪속으로 들어갈수가 없다."
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-lever-b",
+      "trigger": "step",
+      "map": 19,
+      "x": 41,
+      "y": 39,
+      "once": true,
+      "require": {
+        "flagNot": "swampWalkActive"
+      },
+      "steps": [
+        {
+          "say": "일행은 독을 무릅쓰고 늪속에 빠져있는 레버를 당겼다. 순간 동굴 중심부에서 굉음이 들렸다."
+        },
+        {
+          "setTile": {
+            "x": 41,
+            "y": 39,
+            "tile": 49
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 24,
+            "xMax": 24,
+            "yMin": 27,
+            "yMax": 36,
+            "tile": 25
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 28,
+            "xMax": 28,
+            "yMin": 27,
+            "yMax": 36,
+            "tile": 23
+          }
+        },
+        {
+          "setTile": {
+            "x": 24,
+            "y": 37,
+            "tile": 17
+          }
+        },
+        {
+          "setTile": {
+            "x": 28,
+            "y": 37,
+            "tile": 19
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 25,
+            "xMax": 27,
+            "yMin": 27,
+            "yMax": 37,
+            "tile": 44
+          }
+        },
+        {
+          "randomFlag": [
+            "evilSealRoom1",
+            "evilSealRoom2",
+            "evilSealRoom3",
+            "evilSealRoom4",
+            "evilSealRoom5",
+            "evilSealRoom6",
+            "evilSealRoom7"
+          ]
+        },
+        {
+          "say": "동굴 중심부의 봉쇄가 풀렸다. 일곱 개의 방 중 한 곳에 봉인이 숨겨져 있다."
+        },
+        {
+          "flag": "evilSealLeverB"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-1",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 10,
+      "xMax": 13,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flag": "evilSealRoom1",
+        "flagNot": "evilSealRoomCleared"
+      },
+      "title": "Crab God의 봉인",
+      "steps": [
+        {
+          "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
+        },
+        {
+          "battle": {
+            "title": "CRAB GOD의 왕",
+            "monsters": [
+              59,
+              59,
+              59,
+              59,
+              59,
+              59,
+              59
+            ]
+          }
+        },
+        {
+          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+        },
+        {
+          "flag": "evilSealRoomCleared"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-2",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 14,
+      "xMax": 17,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flag": "evilSealRoom2",
+        "flagNot": "evilSealRoomCleared"
+      },
+      "title": "Crab God의 봉인",
+      "steps": [
+        {
+          "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
+        },
+        {
+          "battle": {
+            "title": "CRAB GOD의 왕",
+            "monsters": [
+              59,
+              59,
+              59,
+              59,
+              59,
+              59,
+              59
+            ]
+          }
+        },
+        {
+          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+        },
+        {
+          "flag": "evilSealRoomCleared"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-3",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 18,
+      "xMax": 21,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flag": "evilSealRoom3",
+        "flagNot": "evilSealRoomCleared"
+      },
+      "title": "Crab God의 봉인",
+      "steps": [
+        {
+          "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
+        },
+        {
+          "battle": {
+            "title": "CRAB GOD의 왕",
+            "monsters": [
+              59,
+              59,
+              59,
+              59,
+              59,
+              59,
+              59
+            ]
+          }
+        },
+        {
+          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+        },
+        {
+          "flag": "evilSealRoomCleared"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-4",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 22,
+      "xMax": 25,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flag": "evilSealRoom4",
+        "flagNot": "evilSealRoomCleared"
+      },
+      "title": "Crab God의 봉인",
+      "steps": [
+        {
+          "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
+        },
+        {
+          "battle": {
+            "title": "CRAB GOD의 왕",
+            "monsters": [
+              59,
+              59,
+              59,
+              59,
+              59,
+              59,
+              59
+            ]
+          }
+        },
+        {
+          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+        },
+        {
+          "flag": "evilSealRoomCleared"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-5",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 26,
+      "xMax": 29,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flag": "evilSealRoom5",
+        "flagNot": "evilSealRoomCleared"
+      },
+      "title": "Crab God의 봉인",
+      "steps": [
+        {
+          "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
+        },
+        {
+          "battle": {
+            "title": "CRAB GOD의 왕",
+            "monsters": [
+              59,
+              59,
+              59,
+              59,
+              59,
+              59,
+              59
+            ]
+          }
+        },
+        {
+          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+        },
+        {
+          "flag": "evilSealRoomCleared"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-6",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 30,
+      "xMax": 33,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flag": "evilSealRoom6",
+        "flagNot": "evilSealRoomCleared"
+      },
+      "title": "Crab God의 봉인",
+      "steps": [
+        {
+          "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
+        },
+        {
+          "battle": {
+            "title": "CRAB GOD의 왕",
+            "monsters": [
+              59,
+              59,
+              59,
+              59,
+              59,
+              59,
+              59
+            ]
+          }
+        },
+        {
+          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+        },
+        {
+          "flag": "evilSealRoomCleared"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-7",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 34,
+      "xMax": 37,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flag": "evilSealRoom7",
+        "flagNot": "evilSealRoomCleared"
+      },
+      "title": "Crab God의 봉인",
+      "steps": [
+        {
+          "say": "나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD의 왕이다. CRAB GOD 족의 명예를 걸고 절대로 너희 같은 자들에게 봉인을 넘겨주지 않겠다!!"
+        },
+        {
+          "battle": {
+            "title": "CRAB GOD의 왕",
+            "monsters": [
+              59,
+              59,
+              59,
+              59,
+              59,
+              59,
+              59
+            ]
+          }
+        },
+        {
+          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+        },
+        {
+          "flag": "evilSealRoomCleared"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-wrong-1",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 10,
+      "xMax": 13,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flagNot": "evilSealRoom1"
+      },
+      "steps": [
+        {
+          "say": "여기에는 봉인이 발견되지 않았다"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-wrong-2",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 14,
+      "xMax": 17,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flagNot": "evilSealRoom2"
+      },
+      "steps": [
+        {
+          "say": "여기에는 봉인이 발견되지 않았다"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-wrong-3",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 18,
+      "xMax": 21,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flagNot": "evilSealRoom3"
+      },
+      "steps": [
+        {
+          "say": "여기에는 봉인이 발견되지 않았다"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-wrong-4",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 22,
+      "xMax": 25,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flagNot": "evilSealRoom4"
+      },
+      "steps": [
+        {
+          "say": "여기에는 봉인이 발견되지 않았다"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-wrong-5",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 26,
+      "xMax": 29,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flagNot": "evilSealRoom5"
+      },
+      "steps": [
+        {
+          "say": "여기에는 봉인이 발견되지 않았다"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-wrong-6",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 30,
+      "xMax": 33,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flagNot": "evilSealRoom6"
+      },
+      "steps": [
+        {
+          "say": "여기에는 봉인이 발견되지 않았다"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-room-wrong-7",
+      "trigger": "step",
+      "map": 19,
+      "xMin": 34,
+      "xMax": 37,
+      "yMin": 6,
+      "yMax": 6,
+      "once": true,
+      "require": {
+        "flagNot": "evilSealRoom7"
+      },
+      "steps": [
+        {
+          "say": "여기에는 봉인이 발견되지 않았다"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-guardians",
+      "trigger": "step",
+      "map": 19,
+      "yMin": 8,
+      "yMax": 12,
+      "once": false,
+      "require": {
+        "flag": "evilSealLeverB",
+        "flagNot": "evilSealRoomCleared"
+      },
+      "steps": [
+        {
+          "say": "Crab God 무리가 봉인을 지키며 덤벼든다 !"
+        },
+        {
+          "battle": {
+            "title": "봉인의 문지기",
+            "monsters": [],
+            "random": {
+              "pool": [
+                59
+              ],
+              "min": 3,
+              "max": 5
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "puzzle-door-right",
+      "trigger": "step",
+      "map": 12,
+      "x": 33,
+      "y": 50,
+      "once": false,
+      "steps": [
+        {
+          "say": "여기는 옳은 문이었다."
+        },
+        {
+          "setTile": {
+            "x": 33,
+            "y": 49,
+            "tile": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": "puzzle-door-wrong",
+      "trigger": "step",
+      "map": 12,
+      "xMin": 1,
+      "xMax": 99,
+      "y": 50,
+      "once": false,
+      "steps": [
+        {
+          "say": "당신은 바보군요, 다시 생각하십시오."
+        },
+        {
+          "teleport": {
+            "x": 25,
+            "y": 70
+          }
+        }
+      ]
+    },
+    {
+      "id": "map17-passage-38",
+      "trigger": "step",
+      "map": 17,
+      "yMin": 38,
+      "yMax": 38,
+      "once": false,
+      "steps": [
+        {
+          "setTileArea": {
+            "xMin": 67,
+            "xMax": 69,
+            "yMin": 38,
+            "yMax": 38,
+            "tile": 44
+          }
+        },
+        {
+          "setTileArea": {
+            "xMin": 67,
+            "xMax": 69,
+            "yMin": 44,
+            "yMax": 44,
+            "tile": 52
+          }
+        },
+        {
+          "say": "무너진 지형을 따라 아래쪽으로 내려섰다."
+        },
+        {
+          "teleport": {
+            "x": 56,
+            "y": 93
+          }
+        }
+      ]
     }
   ]
 }

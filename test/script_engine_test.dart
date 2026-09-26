@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 55);
+      expect(LoreScriptEngine.instance.scripts.length, 77);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -341,6 +341,99 @@ void main() {
       final shortcut = engine.startStep(17, 72, 30, noCtx)!;
       expect(shortcut.outcome.tileChanges.length, 3);
       expect(shortcut.outcome.tileChanges.first.tile, 44);
+    });
+
+    test('14. 영역 지형 변형(setTileArea)과 난수 소환/난수 플래그', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+
+      // 1) 맵 19 (41,39) 레버: 통로를 영역 단위로 열고 7개 방 중 하나를 뽑는다.
+      final leverB = engine.startStep(19, 41, 39, noCtx)!;
+      expect(leverB.outcome.tileAreas.map((a) => a.tile), contains(44));
+      final corridor = leverB.outcome.tileAreas.firstWhere(
+        (a) => a.tile == 44,
+      );
+      expect(corridor.xMin, 25);
+      expect(corridor.xMax, 27);
+      expect(corridor.yMin, 27);
+      expect(corridor.yMax, 37); // 원작 `for j := 27 to 37 do for i := 25 to 27`
+      final pickedRoom = leverB.outcome.setFlags.firstWhere(
+        (f) => f.startsWith('evilSealRoom'),
+        orElse: () => '',
+      );
+      expect(pickedRoom, isNotEmpty); // 1~7 중 하나가 반드시 뽑힌다
+      expect(leverB.outcome.setFlags, contains('evilSealLeverB'));
+
+      // 2) 늪위를 걷는 마법이 켜져 있으면 레버를 당길 수 없다 (원작 etc[3] > 0).
+      const swampOn = ScriptContext(flags: {'swampWalkActive'});
+      final blocked = engine.startStep(19, 11, 40, swampOn)!;
+      expect(blocked.outcome.messages.single, contains('늪위를 걷는 마법'));
+      expect(blocked.outcome.tileChanges, isEmpty);
+
+      // 3) 정답 방에서만 Crab God 왕과 싸운다 (방 번호는 무작위로 정해진다).
+      final room3 = engine.startStep(
+        19,
+        18,
+        6,
+        const ScriptContext(flags: {'evilSealRoom3'}),
+      )!;
+      expect(room3.outcome.battleMonsters, List.filled(7, 59));
+      expect(room3.outcome.setFlags, contains('evilSealRoomCleared'));
+
+      // 4) 다른 방은 "봉인이 발견되지 않았다" 안내만 나온다.
+      final wrongRoom = engine.startStep(
+        19,
+        18,
+        6,
+        const ScriptContext(flags: {'evilSealRoom4'}),
+      )!;
+      expect(wrongRoom.outcome.battleMonsters, isEmpty);
+      expect(wrongRoom.outcome.messages.single, contains('봉인이 발견되지 않았다'));
+
+      // 5) 봉인이 남아 있는 동안 y 8~12에서는 난수 마리(3~5)의 수호 몬스터가 나온다.
+      final guardians = engine.startStep(
+        19,
+        20,
+        9,
+        const ScriptContext(flags: {'evilSealLeverB'}),
+      )!;
+      expect(guardians.outcome.battleMonsters.length, inInclusiveRange(3, 5));
+      expect(
+        guardians.outcome.battleMonsters.every((id) => id == 59),
+        isTrue,
+      );
+      // 봉인을 이미 풀었다면 나오지 않는다.
+      expect(
+        engine.startStep(
+          19,
+          20,
+          9,
+          const ScriptContext(flags: {'evilSealLeverB', 'evilSealRoomCleared'}),
+        ),
+        isNull,
+      );
+    });
+
+    test('15. 맵 12 수수께끼 문과 맵 17 통로 강제 이동', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+
+      // 1) 옳은 문(33, 50)은 통로를 연다.
+      final right = engine.startStep(12, 33, 50, noCtx)!;
+      expect(right.outcome.messages.single, contains('옳은 문'));
+      expect(right.outcome.tileChanges.single.tile, 0);
+
+      // 2) 그 밖의 문은 되돌려 보낸다 (원작 x := 25; y := 70).
+      final wrong = engine.startStep(12, 20, 50, noCtx)!;
+      expect(wrong.outcome.messages.single, contains('바보군요'));
+      expect(wrong.outcome.teleportX, 25);
+      expect(wrong.outcome.teleportY, 70);
+
+      // 3) 맵 17 y=38: 지형을 열고 (56, 93)으로 내려보낸다.
+      final passage = engine.startStep(17, 68, 38, noCtx)!;
+      expect(passage.outcome.tileAreas.length, 2);
+      expect(passage.outcome.teleportX, 56);
+      expect(passage.outcome.teleportY, 93);
     });
   });
 }

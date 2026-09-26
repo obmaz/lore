@@ -483,18 +483,24 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
    - 맵 14: (16,20) 황금의 방패, (25,8)/(26,8) MENACE 중심 도달
    - 맵 15: (14,7) 황금의 방패, (45,19) 황금의 갑옷, (y=27) Zombie ×2 +
      ArchiGagoyle, (y=48) 보물 6000 → 4000 두 단계
-5. **아직 이관하지 못한 원작 이벤트**: 진행형 보스전은 이관했고, 남은 것은 복합 퍼즐·
-   컷신이다.
-   - 맵 17 NOTICE: Hidra 삼두룡 ✅ 완료 (x = 22 열 진입, `bossHidraDefeated`)
-   - 맵 18 LOCKUP: Huge Dragon ✅ 완료 (x = 31 열 진입, `bossHugeDragonDefeated`)
-     · 꼬리 쪽 5마리는 원작이 `random(3)+30`으로 고르므로 30~32 고정 목록으로 근사했다.
-   - 맵 19 EVIL GOD: Crab God 7방 · 봉인 해제 (`party.etc[40]` 방 번호 퍼즐)
-   - 맵 12: 수수께끼 문(`y=50`/`y=10` 분기)과 특정 열을 막는 함정 타일
-   - 맵 17: `y = 38` 통로 개방 + (56,93) 강제 이동
-   모두 `battle`/`setTile`/`peek`/`choice` 스텝만으로 표현 가능하므로 계속 추가할 수 있다.
-6. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
+5. **이관 완료(진행형 퍼즐·보스전)**
+   - 맵 17 NOTICE: Hidra 삼두룡 (x = 22 열 진입, `bossHidraDefeated`), `y = 38` 통로
+     개방 + (56,93) 강제 이동, `x = 72` 지름길
+   - 맵 18 LOCKUP: Huge Dragon (x = 31 열 진입, `bossHugeDragonDefeated`)
+     · 꼬리 쪽 5마리는 원작 `random(3)+30`을 배틀 스텝의 `random` 으로 그대로 구현
+   - 맵 19 EVIL GOD: 레버 2개(늪위 걷기 마법이 켜져 있으면 못 당김) → 통로 개방 +
+     **일곱 방 중 한 곳을 무작위로 뽑는 봉인 퍼즐**(`randomFlag`) → 정답 방에서
+     CRAB GOD의 왕 7마리 전투 → 봉인 해제(`evilSealRoomCleared`). 봉인이 남아 있는
+     동안 y=8~12 에서는 `random(3)+3` 마리의 수호 무리가 나온다.
+   - 맵 12 T_DEN2: 수수께끼 문(오른쪽 문 통로 개방 / 오답이면 (25,70)으로 되돌림)
+6. **남은 세부(원작의 좌표 의존 타일 조작)**: `map[x,y] := 49` 처럼 **플레이어가 밟은
+   좌표 자체**를 바꾸는 처리는 스크립트가 정적 좌표만 다루므로 아직 미이관이다.
+   - 맵 19: 잘못된 방/수호 무리 전투 후 `map[x,y] := 49`(밟은 칸 봉쇄)
+   - 맵 12: `y=10` 에서 함정(플레이어가 선 **열** 전체를 벽으로 바꿈)
+   엔진에 `setTileAtPlayer` 같은 스텝을 추가하면 그대로 옮길 수 있다.
+7. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
    아니므로 이식 대상에서 제외한다.
-7. **근사 이벤트 정리** ✅ 완료: `lib/game/lore_dungeon_event_manager.dart`에 있던
+8. **근사 이벤트 정리** ✅ 완료: `lib/game/lore_dungeon_event_manager.dart`에 있던
    임의 좌표 보스전·보물상자(7의 배수 좌표) 연출을 제거하고, 그 자리는 원작 좌표를
    쓴 `scripts.json`으로 대체했다. 현재 Dart 쪽에 남은 것은 `findgold` 표(폴백용)와
    맵 1 식량 발견뿐이다.
@@ -513,7 +519,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `items.json` | 무기 10 / 방패 6 / 갑옷 6 (위력·가격) | `LoreData.instance.weapon/shield/armor(id)` |
 | `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
 | `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
-| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (55건) | `LoreScriptEngine.instance` |
+| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (77건) | `LoreScriptEngine.instance` |
 | `portals.json` | 맵 연결(포털 30) + 표지판 문구 (21) | `LoreWorldManager.instance.findPortal/getSignMessage` |
 | `dialogues.json` | 좌표 기반 NPC 대사 (30) | `LoreDialogueManager.instance.getDialogue` |
 
@@ -532,6 +538,8 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     { "join": "rigel", "slot": 4 },
     { "battle": { "title": "미이라의 방", "monsters": [26, 8, 8] } },
     { "setTile": { "x": 62, "y": 82, "tile": 44 } },
+    { "setTileArea": { "xMin": 25, "xMax": 27, "yMin": 27, "yMax": 37, "tile": 44 } },
+    { "randomFlag": ["evilSealRoom1", "evilSealRoom2"] },
     { "teleport": { "x": 46, "y": 41 } },
     { "equip": { "kind": "weapon", "index": 3, "power": 12, "prompt": true } },
     { "peek": { "x": 48, "y": 57 } },
@@ -553,6 +561,12 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
   선택 - 원작 `choosewhom`), `onlyUnarmed`(무기 없는 대원만 - 원작 맵 6 기본 무장)
 * `peek` 스텝: 원작 `scroll(FALSE)` 연출. 파티는 그대로 두고 **시야만** 옮겨 다른
   장소를 보여준 뒤 잠시 뒤 자동으로 돌아온다(원작의 `PressAnyKey` 대체).
+* `setTileArea` 스텝: `xMin`/`xMax`/`yMin`/`yMax` 영역을 한 타일로 바꾼다
+  (원작 `for j := .. do map[i,j] := v` 같은 통로 개방).
+* `randomFlag` 스텝: 이름 목록 중 하나를 무작위로 세운다
+  (원작 `party.etc[40] := (random(7)+1) shl 1` 같은 "방 번호 뽑기").
+* `battle` 스텝의 `random`: `{"pool": [59], "min": 3, "max": 5}` 로
+  `monsters` 뒤에 난수 마리를 추가 소환한다(원작 `enemynumber := random(3) + 3`).
 
 ### 8.3 이미지 에셋 (`assets/images/`)
 | 파일 | 내용 |

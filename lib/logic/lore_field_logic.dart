@@ -5,7 +5,21 @@
 /// - `LORESUB.PAS:1012 findgold(money)`  금화 발견 연출/보상
 library;
 
+/// 원작 `party.etc[n]` 의 보조 마법/환경 상태를 스크립트 조건에서 쓸 수 있게
+/// 이름을 붙인 것이다(`_scriptContext()`가 상황에 따라 넣어 준다).
 class LoreFieldLogic {
+  /// 원작 `party.etc[3] > 0` - 늪위를 걷는 마법.
+  static const String scriptFlagSwampWalk = 'swampWalkActive';
+
+  /// 원작 `party.etc[4] > 0` - 공중 부상(용암 통과).
+  static const String scriptFlagLevitate = 'levitateActive';
+
+  /// 원작 `party.etc[1] > 0` - 마법의 횃불.
+  static const String scriptFlagTorch = 'torchActive';
+
+  /// 원작 `party.etc[2] > 0` - 물위를 걷는 마법.
+  static const String scriptFlagWaterWalk = 'waterWalkActive';
+
   LoreFieldLogic._();
 
   // ── 성문/동굴 입구 확인 (wantenter / wantexit) ──

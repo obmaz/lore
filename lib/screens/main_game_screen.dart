@@ -255,6 +255,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
         .where((e) => e.value)
         .map((e) => e.key)
         .toSet();
+
+    // 원작 `party.etc[3] > 0`(늪위를 걷는 마법)처럼 상황 기반 플래그도 넘긴다.
+    if (_swampWalkSteps > 0) flags.add(LoreFieldLogic.scriptFlagSwampWalk);
+    if (_levitateSteps > 0) flags.add(LoreFieldLogic.scriptFlagLevitate);
+    if (_torchSteps > 0) flags.add(LoreFieldLogic.scriptFlagTorch);
+    if (_waterWalkSteps > 0) flags.add(LoreFieldLogic.scriptFlagWaterWalk);
+
     return ScriptContext(
       mindReadActive: _mindReadCount > 0,
       maxEspLevel: maxEsp,
@@ -387,6 +394,21 @@ class _MainGameScreenState extends State<MainGameScreen> {
         continue;
       }
       map.grid[change.y - 1][change.x - 1] = change.tile;
+      setState(() {});
+    }
+
+    // 영역 지형 변형 (원작 `for j := .. do map[i,j] := 값`)
+    for (final area in outcome.tileAreas) {
+      final map = _game.currentMap;
+      if (map == null) continue;
+      if (area.map != null && area.map != _game.currentMapId) continue;
+      for (var y = area.yMin; y <= area.yMax; y++) {
+        if (y < 1 || y > map.ymax) continue;
+        for (var x = area.xMin; x <= area.xMax; x++) {
+          if (x < 1 || x > map.xmax) continue;
+          map.grid[y - 1][x - 1] = area.tile;
+        }
+      }
       setState(() {});
     }
 

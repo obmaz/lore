@@ -30,6 +30,7 @@
 library;
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:flutter/services.dart' show AssetBundle, rootBundle;
 
@@ -125,6 +126,19 @@ class ScriptStep {
   final int? peekX;
   final int? peekY;
 
+  /// setTileArea 스텝 (영역 지형 변형): 원작 `for j := .. do map[i,j] := v`.
+  final int? tileXMax;
+  final int? tileYMax;
+
+  /// battle 스텝의 난수 추가: `random.pool`에서 `random.min`~`random.max` 마리.
+  final List<int>? randomPool;
+  final int? randomMin;
+  final int? randomMax;
+
+  /// randomFlag 스텝: 이름 목록 중 하나를 무작위로 설정한다
+  /// (원작 `party.etc[40] := (random(7)+1) shl 1` 같은 "방 번호 뽑기").
+  final List<String>? randomFlagNames;
+
   const ScriptStep({
     required this.kind,
     this.text,
@@ -146,6 +160,12 @@ class ScriptStep {
     this.equipOnlyUnarmed = false,
     this.peekX,
     this.peekY,
+    this.tileXMax,
+    this.tileYMax,
+    this.randomPool,
+    this.randomMin,
+    this.randomMax,
+    this.randomFlagNames,
   });
 }
 
@@ -217,6 +237,10 @@ class ScriptOutcome {
   /// 지형 변형 목록 (원작 `map[x,y] := 값`).
   final List<({int? map, int x, int y, int tile})> tileChanges;
 
+  /// 영역 지형 변형 목록 (원작 `for j := .. do map[i,j] := 값`).
+  final List<({int? map, int xMin, int xMax, int yMin, int yMax, int tile})>
+  tileAreas;
+
   /// 장비 지급 목록 (원작 `weapon := n` / `shield := n` / `armor := n`).
   final List<
     ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
@@ -238,6 +262,7 @@ class ScriptOutcome {
     this.teleportX,
     this.teleportY,
     this.tileChanges = const [],
+    this.tileAreas = const [],
     this.equips = const [],
     this.events = const [],
   });
@@ -295,7 +320,7 @@ class LoreScriptEngine {
 
   /// 1회성 스크립트 실행 이력 (원작 `party.etc` 비트에 대응).
   final Set<String> consumedScripts = {};
-
+  final Random _random = Random();
   List<LoreScript> get scripts => _scripts;
 
   Future<void> load({AssetBundle? bundle}) async {
@@ -383,6 +408,10 @@ class LoreScriptEngine {
     var tileChanges = List<({int? map, int x, int y, int tile})>.from(
       acc.tileChanges,
     );
+    var tileAreas =
+        List<({int? map, int xMin, int xMax, int yMin, int yMax, int tile})>.from(
+          acc.tileAreas,
+        );
     var equips = List<
       ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
     >.from(acc.equips);
@@ -409,6 +438,18 @@ class LoreScriptEngine {
           break;
         case 'battle':
           monsters = List<int>.from(step.monsters ?? const []);
+          // 원작 `enemynumber := random(3) + 3` 같은 난수 소환.
+          if (step.randomPool != null && step.randomPool!.isNotEmpty) {
+            final minCount = step.randomMin ?? 1;
+            final maxCount = step.randomMax ?? minCount;
+            final span = (maxCount - minCount).abs() + 1;
+            final count = minCount + _random.nextInt(span);
+            for (var n = 0; n < count; n++) {
+              monsters.add(
+                step.randomPool![_random.nextInt(step.randomPool!.length)],
+              );
+            }
+          }
           battleTitle = step.battleTitle;
           break;
         case 'teleport':
@@ -423,6 +464,22 @@ class LoreScriptEngine {
             y: step.tileY!,
             tile: step.tileValue!,
           ));
+          break;
+        case 'setTileArea':
+          tileAreas.add((
+            map: step.teleportMap,
+            xMin: step.tileX!,
+            xMax: step.tileXMax ?? step.tileX!,
+            yMin: step.tileY!,
+            yMax: step.tileYMax ?? step.tileY!,
+            tile: step.tileValue!,
+          ));
+          break;
+        case 'randomFlag':
+          final names = step.randomFlagNames ?? const [];
+          if (names.isNotEmpty) {
+            flags.add(names[_random.nextInt(names.length)]);
+          }
           break;
         case 'equip':
           equips.add((
@@ -452,6 +509,7 @@ class LoreScriptEngine {
               teleportX: teleportX,
               teleportY: teleportY,
               tileChanges: tileChanges,
+              tileAreas: tileAreas,
               equips: equips,
               events: events,
             ),
@@ -478,6 +536,7 @@ class LoreScriptEngine {
         teleportX: teleportX,
         teleportY: teleportY,
         tileChanges: tileChanges,
+        tileAreas: tileAreas,
         equips: equips,
         events: events,
       ),
@@ -597,13 +656,41 @@ class LoreScriptEngine {
         );
         matched = true;
       }
+      if (m.containsKey('setTileArea')) {
+        final t = m['setTileArea'] as Map<String, dynamic>;
+        steps.add(
+          ScriptStep(
+            kind: 'setTileArea',
+            teleportMap: t['map'] as int?,
+            tileX: t['xMin'] as int,
+            tileXMax: t['xMax'] as int?,
+            tileY: t['yMin'] as int,
+            tileYMax: t['yMax'] as int?,
+            tileValue: t['tile'] as int,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('randomFlag')) {
+        steps.add(
+          ScriptStep(
+            kind: 'randomFlag',
+            randomFlagNames: (m['randomFlag'] as List<dynamic>).cast<String>(),
+          ),
+        );
+        matched = true;
+      }
       if (m.containsKey('battle')) {
         final b = m['battle'] as Map<String, dynamic>;
+        final random = b['random'] as Map<String, dynamic>?;
         steps.add(
           ScriptStep(
             kind: 'battle',
-            monsters: (b['monsters'] as List<dynamic>).cast<int>(),
+            monsters: (b['monsters'] as List<dynamic>? ?? const []).cast<int>(),
             battleTitle: b['title'] as String?,
+            randomPool: (random?['pool'] as List<dynamic>?)?.cast<int>(),
+            randomMin: random?['min'] as int?,
+            randomMax: random?['max'] as int?,
           ),
         );
         matched = true;
