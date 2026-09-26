@@ -224,6 +224,44 @@ void main() {
       expect(caster.esp, 20);
     });
 
+    test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
+      final caster = PartyMember.createPreset(2)
+        ..espLevel = 13
+        ..esp = 60
+        ..accEsp = 5;
+      final party = [caster];
+      final resistant = Monster.create(1)..resistance = 40;
+      final resisted = BattleEngine(random: DeterministicRandom([12, 0]))
+          .executePlayerESP(caster, resistant, 45, party, enemies: [resistant]);
+      expect(resisted.outcome, AttackOutcome.resisted);
+      expect(resistant.isPoisoned, isFalse);
+
+      final missedTarget = Monster.create(1);
+      final missed = BattleEngine(random: DeterministicRandom([12, 50, 39]))
+          .executePlayerESP(
+            caster,
+            missedTarget,
+            45,
+            party,
+            enemies: [missedTarget],
+          );
+      expect(missed.outcome, AttackOutcome.miss);
+      expect(missedTarget.isPoisoned, isFalse);
+
+      final poisonedTarget = Monster.create(1);
+      final success = BattleEngine(random: DeterministicRandom([12, 50, 0]))
+          .executePlayerESP(
+            caster,
+            poisonedTarget,
+            45,
+            party,
+            enemies: [poisonedTarget],
+          );
+      expect(success.outcome, AttackOutcome.debuffed);
+      expect(poisonedTarget.isPoisoned, isTrue);
+      expect(caster.esp, 0);
+    });
+
     test('2. 플레이어 무기 공격 명중 및 대미지 공식 검증', () {
       // 주사위: [명중(0: 0 <= accArms), 분산(0: 분산감소 0%), 저항(99: 저항 실패), 방어차감 난수(0: +1/10)]
       final mockRandom = DeterministicRandom([0, 0, 99, 0]);

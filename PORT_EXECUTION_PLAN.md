@@ -89,5 +89,8 @@
    `PlusExperience`를 호출하므로 그 수치·분배까지 재현하고 기록했다.
    전투 화면은 전체 적 목록을 엔진에 전달한다.
    커밋: `Apply telekinetic blast to every enemy`.
+   염력 13~14단계 중독은 원본 순서대로 적의 저항, 시전자의 ESP 명중을
+   통과할 때만 적용한다. 저항·빗나감·성공을 고정 난수로 검증했다.
+   커밋: `Respect resistance and accuracy for telekinetic poison`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

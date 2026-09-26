@@ -755,7 +755,19 @@ class BattleEngine {
         message: '★ ${target.name}은(는) 극심한 공포를 견디지 못하고 전장에서 도망쳐버렸다!',
       );
     } else if (k <= 14) {
-      // 신진대사 교란 (중독)
+      // LOREBATT.PAS:472-478 — 저항 후 ESP 명중 판정을 통과해야 중독된다.
+      if (_rand(100) < target.resistance) {
+        return AttackResult(
+          outcome: AttackOutcome.resisted,
+          message: '${target.name}은(는) 염력 중독을 견뎌냈다.',
+        );
+      }
+      if (_rand(40) > caster.accEsp) {
+        return AttackResult(
+          outcome: AttackOutcome.miss,
+          message: '${caster.name}의 염력 중독이 빗나갔다.',
+        );
+      }
       target.isPoisoned = true;
       return AttackResult(
         outcome: AttackOutcome.debuffed,
