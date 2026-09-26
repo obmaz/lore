@@ -72,6 +72,14 @@ def overlaps(left, right):
     return max(ax0, bx0) <= min(ax1, bx1) and max(ay0, by0) <= min(ay1, by1)
 
 
+def spatial_overlap(left, right):
+    if left["map"] != right["map"]:
+        return False
+    ax0, ax1, ay0, ay1 = bounds(left)
+    bx0, bx1, by0, by1 = bounds(right)
+    return max(ax0, bx0) <= min(ax1, bx1) and max(ay0, by0) <= min(ay1, by1)
+
+
 def contradictions(require):
     issues = []
     flags = set(require.get("allFlags", []))
@@ -244,9 +252,30 @@ def audit(scripts, portals, source_events, dimensions):
             )
     for script in disabled:
         if not any(overlaps(script, candidate) for candidate in active):
-            findings["disabled_without_active_overlap"].append(
-                f"맵 {script['map']} `{script['id']}` {script.get('trigger', 'step')} {location(script)} — {source_ref(script)}"
-            )
+            label = f"맵 {script['map']} `{script['id']}` {script.get('trigger', 'step')} {location(script)} — {source_ref(script)}"
+            related = [portal for portal in portals if spatial_overlap(script, portal)]
+            if not related:
+                findings["disabled_without_cover"].append(label)
+                continue
+            teleports = [step["teleport"] for step in script["steps"] if "teleport" in step]
+            if teleports and all(
+                any(
+                    portal.get("targetMap") == target.get("map")
+                    and portal.get("targetX") == target.get("x")
+                    and portal.get("targetY") == target.get("y")
+                    for portal in related
+                )
+                for target in teleports
+            ):
+                findings["portal_target_match"].append(label)
+            elif script["steps"] and all(
+                set(step) <= {"nudge", "say"} for step in script["steps"]
+            ):
+                findings["portal_refusal"].append(label)
+            elif any("block" in step for step in script["steps"]):
+                findings["portal_guard"].append(label)
+            else:
+                findings["portal_unverified"].append(label)
     return active, disabled, findings
 
 
@@ -288,7 +317,11 @@ def report():
     lines += ["", "## 검토 필요 항목", ""]
     categories = (
         ("missing_source_coordinates", "원본 추출 좌표 중 활성 규칙/포털에 없는 곳"),
-        ("disabled_without_active_overlap", "같은 트리거·좌표에 활성 규칙이 겹치지 않는 비활성 항목"),
+        ("disabled_without_cover", "활성 규칙·포털이 모두 겹치지 않는 비활성 항목"),
+        ("portal_target_match", "포털과 좌표가 겹치고 이동 목적지가 일치하는 비활성 항목"),
+        ("portal_refusal", "포털과 겹치는 진입 거절 이동 분기"),
+        ("portal_guard", "포털과 겹치는 차단·플래그 분기"),
+        ("portal_unverified", "포털과 겹치지만 효과를 분류하지 못한 분기"),
         ("shadowed", "앞선 반복 규칙에 확정적으로 가린 규칙"),
         ("contradictions", "동시에 만족할 수 없는 조건"),
         ("invalid_coordinates", "맵 밖 또는 잘못된 좌표"),
@@ -302,8 +335,8 @@ def report():
         lines.append("")
 
     lines += [
-        "비활성 단독 항목은 누락 확정이 아니라 다른 시스템(포털·시설·전투·맵 규칙)으로",
-        "이관됐는지 원본 실행 경로와 대조할 후보이다.",
+        "이동 목적지 일치는 부수 효과(전투·플래그·지도 변화)의 동등성을 증명하지 않는다.",
+        "포털 거절·차단 분기는 UI 및 전투 실행 경로와 별도 대조해야 한다.",
         "",
     ]
 

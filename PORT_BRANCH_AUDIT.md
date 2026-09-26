@@ -45,37 +45,29 @@
 
 - 없음
 
-### 같은 트리거·좌표에 활성 규칙이 겹치지 않는 비활성 항목: 77개
+### 활성 규칙·포털이 모두 겹치지 않는 비활성 항목: 0개
+
+- 없음
+
+### 포털과 좌표가 겹치고 이동 목적지가 일치하는 비활성 항목: 56개
 
 - 맵 7 `spec-7-L306` step (50, *) — LORESPEC.PAS:306
 - 맵 7 `spec-7-L306-1` step (*, 71) — LORESPEC.PAS:306
-- 맵 7 `spec-7-L306-2` step (*, 71) — LORESPEC.PAS:306
 - 맵 8 `spec-8-L332` step (50, *) — LORESPEC.PAS:332
 - 맵 8 `spec-8-L332x` step (*, *) — LORESPEC.PAS:332
 - 맵 8 `spec-8-L332-1` step (*, 71) — LORESPEC.PAS:332
-- 맵 8 `spec-8-L332-2` step (*, 71) — LORESPEC.PAS:332
 - 맵 9 `spec-9-L354-1` step (*, 5) — LORESPEC.PAS:354
 - 맵 9 `spec-9-L354-2` step (*, 5) — LORESPEC.PAS:354
-- 맵 9 `spec-9-L354-3` step (*, 5) — LORESPEC.PAS:354
 - 맵 9 `spec-9-L354-1xx` step (*, 46) — LORESPEC.PAS:354
-- 맵 9 `spec-9-L354-2xx` step (*, 46) — LORESPEC.PAS:354
 - 맵 10 `spec-10-L444-1` step (*, 71) — LORESPEC.PAS:444
-- 맵 10 `spec-10-L444-2` step (*, 71) — LORESPEC.PAS:444
 - 맵 11 `spec-11-L465xxxxxxx` step (*, 46) — LORESPEC.PAS:465
 - 맵 12 `spec-12-L560-1` step (*, 71) — LORESPEC.PAS:560
-- 맵 12 `spec-12-L560-2` step (*, 71) — LORESPEC.PAS:560
 - 맵 13 `spec-13-L669-1` step (*, 96) — LORESPEC.PAS:669
-- 맵 13 `spec-13-L669-2` step (*, 96) — LORESPEC.PAS:669
 - 맵 14 `spec-14-L814-1` step (*, 46) — LORESPEC.PAS:814
-- 맵 14 `spec-14-L814-2` step (*, 46) — LORESPEC.PAS:814
 - 맵 15 `spec-15-L879-1` step (*, 71) — LORESPEC.PAS:879
-- 맵 15 `spec-15-L879-2` step (*, 71) — LORESPEC.PAS:879
 - 맵 16 `spec-16-L966-1` step (*, 36) — LORESPEC.PAS:966
-- 맵 16 `spec-16-L966-2` step (*, 36) — LORESPEC.PAS:966
 - 맵 19 `spec-19-L1366-1` step (*, 46) — LORESPEC.PAS:1366
-- 맵 19 `spec-19-L1366-2` step (*, 46) — LORESPEC.PAS:1366
 - 맵 20 `spec-20-L1475-1` step (*, 96) — LORESPEC.PAS:1475
-- 맵 20 `spec-20-L1475-2` step (*, 96) — LORESPEC.PAS:1475
 - 맵 21 `spec-21-L1760-1` step (*, 46) — LORESPEC.PAS:1760
 - 맵 21 `spec-21-L1760-2` step (*, 46) — LORESPEC.PAS:1760
 - 맵 21 `spec-21-L1760-3` step (*, 46) — LORESPEC.PAS:1760
@@ -109,21 +101,43 @@
 - 맵 21 `spec-21-L1760-31` step (*, 46) — LORESPEC.PAS:1760
 - 맵 21 `spec-21-L1760-32` step (*, 46) — LORESPEC.PAS:1760
 - 맵 21 `spec-21-L1760-33` step (*, 46) — LORESPEC.PAS:1760
+- 맵 22 `spec-22-L1816-1` step (*, 46) — LORESPEC.PAS:1816
+- 맵 22 `spec-22-L1816-2` step (*, 46) — LORESPEC.PAS:1816
+- 맵 22 `spec-22-L1816-3` step (*, 46) — LORESPEC.PAS:1816
+- 맵 23 `spec-23-L1880-1` step (*, 46) — LORESPEC.PAS:1880
+- 맵 24 `spec-24-L1980-1` step (*, 46) — LORESPEC.PAS:1980
+- 맵 25 `spec-25-L1995-1` step (*, 46) — LORESPEC.PAS:1995
+
+### 포털과 겹치는 진입 거절 이동 분기: 17개
+
+- 맵 7 `spec-7-L306-2` step (*, 71) — LORESPEC.PAS:306
+- 맵 8 `spec-8-L332-2` step (*, 71) — LORESPEC.PAS:332
+- 맵 9 `spec-9-L354-3` step (*, 5) — LORESPEC.PAS:354
+- 맵 9 `spec-9-L354-2xx` step (*, 46) — LORESPEC.PAS:354
+- 맵 10 `spec-10-L444-2` step (*, 71) — LORESPEC.PAS:444
+- 맵 12 `spec-12-L560-2` step (*, 71) — LORESPEC.PAS:560
+- 맵 13 `spec-13-L669-2` step (*, 96) — LORESPEC.PAS:669
+- 맵 14 `spec-14-L814-2` step (*, 46) — LORESPEC.PAS:814
+- 맵 15 `spec-15-L879-2` step (*, 71) — LORESPEC.PAS:879
+- 맵 16 `spec-16-L966-2` step (*, 36) — LORESPEC.PAS:966
+- 맵 19 `spec-19-L1366-2` step (*, 46) — LORESPEC.PAS:1366
+- 맵 20 `spec-20-L1475-2` step (*, 96) — LORESPEC.PAS:1475
 - 맵 21 `spec-21-L1760-34` step (*, 46) — LORESPEC.PAS:1760
+- 맵 22 `spec-22-L1816-4` step (*, 46) — LORESPEC.PAS:1816
+- 맵 23 `spec-23-L1880-2` step (*, 46) — LORESPEC.PAS:1880
+- 맵 24 `spec-24-L1980-2` step (*, 46) — LORESPEC.PAS:1980
+- 맵 25 `spec-25-L1995-2` step (*, 46) — LORESPEC.PAS:1995
+
+### 포털과 겹치는 차단·플래그 분기: 4개
+
 - 맵 21 `spec-21-L1760-35` step (*, 46) — LORESPEC.PAS:1760
 - 맵 21 `spec-21-L1760-36` step (*, 46) — LORESPEC.PAS:1760
 - 맵 21 `spec-21-L1760-37` step (*, 46) — LORESPEC.PAS:1760
 - 맵 21 `spec-21-L1760-38` step (*, 46) — LORESPEC.PAS:1760
-- 맵 22 `spec-22-L1816-1` step (*, 46) — LORESPEC.PAS:1816
-- 맵 22 `spec-22-L1816-2` step (*, 46) — LORESPEC.PAS:1816
-- 맵 22 `spec-22-L1816-3` step (*, 46) — LORESPEC.PAS:1816
-- 맵 22 `spec-22-L1816-4` step (*, 46) — LORESPEC.PAS:1816
-- 맵 23 `spec-23-L1880-1` step (*, 46) — LORESPEC.PAS:1880
-- 맵 23 `spec-23-L1880-2` step (*, 46) — LORESPEC.PAS:1880
-- 맵 24 `spec-24-L1980-1` step (*, 46) — LORESPEC.PAS:1980
-- 맵 24 `spec-24-L1980-2` step (*, 46) — LORESPEC.PAS:1980
-- 맵 25 `spec-25-L1995-1` step (*, 46) — LORESPEC.PAS:1995
-- 맵 25 `spec-25-L1995-2` step (*, 46) — LORESPEC.PAS:1995
+
+### 포털과 겹치지만 효과를 분류하지 못한 분기: 0개
+
+- 없음
 
 ### 앞선 반복 규칙에 확정적으로 가린 규칙: 0개
 
@@ -145,8 +159,8 @@
 
 - 없음
 
-비활성 단독 항목은 누락 확정이 아니라 다른 시스템(포털·시설·전투·맵 규칙)으로
-이관됐는지 원본 실행 경로와 대조할 후보이다.
+이동 목적지 일치는 부수 효과(전투·플래그·지도 변화)의 동등성을 증명하지 않는다.
+포털 거절·차단 분기는 UI 및 전투 실행 경로와 별도 대조해야 한다.
 
 ### 같은 ID를 공유하는 조건별 포털 분기
 

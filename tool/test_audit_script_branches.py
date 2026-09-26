@@ -20,7 +20,20 @@ class ScriptBranchAuditTest(unittest.TestCase):
             {"id": "unported-candidate", "map": 1, "trigger": "step", "x": 7, "y": 8, "disabled": True, "steps": [{"gold": 10}]},
         ]
         _, _, findings = audit(scripts, [], [], {1: (10, 10)})
-        self.assertIn("unported-candidate", findings["disabled_without_active_overlap"][0])
+        self.assertIn("unported-candidate", findings["disabled_without_cover"][0])
+
+    def test_reconciles_portal_target_but_keeps_guard_and_refusal_separate(self):
+        scripts = [
+            {"id": "target", "map": 1, "trigger": "step", "x": 5, "y": 6, "disabled": True, "steps": [{"teleport": {"map": 2, "x": 3, "y": 4}}]},
+            {"id": "refusal", "map": 1, "trigger": "step", "x": 5, "y": 6, "disabled": True, "steps": [{"nudge": {"dy": -1}}]},
+            {"id": "guard", "map": 1, "trigger": "step", "x": 5, "y": 6, "disabled": True, "steps": [{"flag": "done"}, {"block": True}]},
+        ]
+        portals = [{"map": 1, "x": 5, "y": 6, "targetMap": 2, "targetX": 3, "targetY": 4}]
+        _, _, findings = audit(scripts, portals, [], {1: (10, 10)})
+        self.assertEqual(len(findings["portal_target_match"]), 1)
+        self.assertEqual(len(findings["portal_refusal"]), 1)
+        self.assertEqual(len(findings["portal_guard"]), 1)
+        self.assertEqual(findings["disabled_without_cover"], [])
 
     def test_distinguishes_contradiction_from_condition_variant(self):
         self.assertTrue(contradictions({"flag": "a", "flagNot": "a"}))
