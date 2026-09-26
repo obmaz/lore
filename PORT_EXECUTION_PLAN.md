@@ -64,5 +64,9 @@
    맵·좌표를 포털 데이터와 재실행 가능한 방식으로 대조했다. 현재 미매칭 0건이며
    전투·대사·거절·진입 후 타일 효과는 후속 대조 대상이다.
    커밋: `Audit original entrance routes against portal data`.
+   다음으로 `LORETALK.PAS`의 리터럴 `at(x,y)` 148곳을 추출해 활성 talk
+   스크립트·시설·대화 데이터와 대조했다. 제공자 없는 좌표는 0곳이다.
+   조건·선택지·효과의 동등성은 별도로 검증한다.
+   커밋: `Audit original talk coordinates against active data`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

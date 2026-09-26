@@ -1,0 +1,159 @@
+# LORETALK 좌표 대조
+
+`python3 tool/audit_loretalk.py > PORT_TALK_AUDIT.md`로 재생성한다.
+원본 `at(x,y)`의 모든 리터럴 좌표를 활성 talk 스크립트, 시설, 대화 데이터와 대조한다.
+조건·선택지·문구·효과의 동등성은 검사하지 않는다. 동적 좌표도 범위 밖이다.
+
+원본 좌표 148건 / 제공자 없는 좌표 0건.
+맵별: 6: 45, 7: 31, 9: 27, 10: 21, 24: 17, 27: 7.
+
+| 원본 줄 | 맵 | 좌표 | 제공자 |
+| --- | ---: | ---: | --- |
+| LORETALK.PAS:18 | 6 | (9,64) | script, dialogue |
+| LORETALK.PAS:23 | 6 | (72,73) | script, dialogue |
+| LORETALK.PAS:24 | 6 | (51,72) | script |
+| LORETALK.PAS:46 | 6 | (58,74) | script, dialogue |
+| LORETALK.PAS:50 | 6 | (63,27) | script, dialogue |
+| LORETALK.PAS:55 | 6 | (90,82) | script, dialogue |
+| LORETALK.PAS:57 | 6 | (94,68) | script, dialogue |
+| LORETALK.PAS:60 | 6 | (19,53) | script, dialogue |
+| LORETALK.PAS:64 | 6 | (13,27) | script |
+| LORETALK.PAS:64 | 6 | (18,27) | script |
+| LORETALK.PAS:72 | 6 | (21,33) | script |
+| LORETALK.PAS:73 | 6 | (10,30) | script, dialogue |
+| LORETALK.PAS:74 | 6 | (13,32) | script, dialogue |
+| LORETALK.PAS:75 | 6 | (15,35) | script, dialogue |
+| LORETALK.PAS:81 | 6 | (18,33) | script, dialogue |
+| LORETALK.PAS:88 | 6 | (21,36) | script |
+| LORETALK.PAS:89 | 6 | (18,38) | script |
+| LORETALK.PAS:101 | 6 | (72,78) | script, dialogue |
+| LORETALK.PAS:105 | 6 | (63,76) | script |
+| LORETALK.PAS:131 | 6 | (24,50) | script, dialogue |
+| LORETALK.PAS:136 | 6 | (24,54) | script |
+| LORETALK.PAS:141 | 6 | (13,55) | script |
+| LORETALK.PAS:148 | 6 | (50,11) | script, dialogue |
+| LORETALK.PAS:152 | 6 | (53,11) | script |
+| LORETALK.PAS:158 | 6 | (41,10) | script |
+| LORETALK.PAS:191 | 6 | (40,15) | script |
+| LORETALK.PAS:219 | 6 | (63,10) | script |
+| LORETALK.PAS:235 | 6 | (60,15) | script |
+| LORETALK.PAS:241 | 6 | (42,78) | script |
+| LORETALK.PAS:241 | 6 | (42,80) | script |
+| LORETALK.PAS:253 | 6 | (51,14) | script |
+| LORETALK.PAS:254 | 6 | (83,27) | script |
+| LORETALK.PAS:255 | 6 | (87,73) | facility |
+| LORETALK.PAS:255 | 6 | (91,65) | facility |
+| LORETALK.PAS:256 | 6 | (8,71) | facility |
+| LORETALK.PAS:256 | 6 | (14,69) | facility |
+| LORETALK.PAS:256 | 6 | (14,73) | facility |
+| LORETALK.PAS:257 | 6 | (87,14) | facility |
+| LORETALK.PAS:257 | 6 | (86,12) | facility |
+| LORETALK.PAS:258 | 6 | (21,12) | facility |
+| LORETALK.PAS:258 | 6 | (25,13) | facility |
+| LORETALK.PAS:259 | 6 | (50,51) | script |
+| LORETALK.PAS:259 | 6 | (52,51) | script |
+| LORETALK.PAS:285 | 6 | (51,87) | script |
+| LORETALK.PAS:296 | 6 | (51,28) | script |
+| LORETALK.PAS:385 | 7 | (51,55) | script, dialogue |
+| LORETALK.PAS:387 | 7 | (8,44) | script, dialogue |
+| LORETALK.PAS:389 | 7 | (68,35) | script, dialogue |
+| LORETALK.PAS:391 | 7 | (43,9) | script, dialogue |
+| LORETALK.PAS:393 | 7 | (65,10) | script |
+| LORETALK.PAS:395 | 7 | (14,68) | script, dialogue |
+| LORETALK.PAS:397 | 7 | (57,42) | script, dialogue |
+| LORETALK.PAS:399 | 7 | (44,34) | script |
+| LORETALK.PAS:401 | 7 | (32,56) | script |
+| LORETALK.PAS:403 | 7 | (36,19) | script |
+| LORETALK.PAS:403 | 7 | (36,21) | script |
+| LORETALK.PAS:403 | 7 | (41,18) | script |
+| LORETALK.PAS:403 | 7 | (41,20) | script |
+| LORETALK.PAS:403 | 7 | (41,22) | script |
+| LORETALK.PAS:403 | 7 | (40,41) | script |
+| LORETALK.PAS:406 | 7 | (37,41) | script |
+| LORETALK.PAS:436 | 7 | (18,19) | facility |
+| LORETALK.PAS:436 | 7 | (24,19) | facility |
+| LORETALK.PAS:436 | 7 | (21,21) | facility |
+| LORETALK.PAS:436 | 7 | (16,24) | facility |
+| LORETALK.PAS:437 | 7 | (57,17) | facility |
+| LORETALK.PAS:437 | 7 | (54,20) | facility |
+| LORETALK.PAS:437 | 7 | (58,22) | facility |
+| LORETALK.PAS:437 | 7 | (59,25) | facility |
+| LORETALK.PAS:438 | 7 | (59,56) | facility |
+| LORETALK.PAS:438 | 7 | (59,58) | facility |
+| LORETALK.PAS:438 | 7 | (59,60) | facility |
+| LORETALK.PAS:439 | 7 | (17,56) | facility |
+| LORETALK.PAS:439 | 7 | (17,58) | facility |
+| LORETALK.PAS:439 | 7 | (17,60) | facility |
+| LORETALK.PAS:440 | 7 | (38,17) | script |
+| LORETALK.PAS:482 | 9 | (12,11) | facility |
+| LORETALK.PAS:482 | 9 | (15,12) | facility |
+| LORETALK.PAS:482 | 9 | (12,15) | facility |
+| LORETALK.PAS:483 | 9 | (40,37) | facility |
+| LORETALK.PAS:483 | 9 | (37,39) | facility |
+| LORETALK.PAS:483 | 9 | (41,41) | facility |
+| LORETALK.PAS:484 | 9 | (37,10) | facility |
+| LORETALK.PAS:484 | 9 | (40,12) | facility |
+| LORETALK.PAS:484 | 9 | (41,15) | facility |
+| LORETALK.PAS:485 | 9 | (9,39) | facility |
+| LORETALK.PAS:485 | 9 | (12,41) | facility |
+| LORETALK.PAS:485 | 9 | (16,40) | facility |
+| LORETALK.PAS:486 | 9 | (24,38) | script, dialogue |
+| LORETALK.PAS:488 | 9 | (23,12) | script, dialogue |
+| LORETALK.PAS:490 | 9 | (28,18) | script, dialogue |
+| LORETALK.PAS:496 | 9 | (30,31) | script, dialogue |
+| LORETALK.PAS:502 | 9 | (34,38) | script |
+| LORETALK.PAS:504 | 9 | (38,14) | script |
+| LORETALK.PAS:506 | 9 | (15,42) | script, dialogue |
+| LORETALK.PAS:508 | 9 | (26,7) | script |
+| LORETALK.PAS:510 | 9 | (34,24) | script |
+| LORETALK.PAS:510 | 9 | (37,24) | script |
+| LORETALK.PAS:510 | 9 | (41,24) | script |
+| LORETALK.PAS:510 | 9 | (35,27) | script |
+| LORETALK.PAS:510 | 9 | (38,27) | script |
+| LORETALK.PAS:510 | 9 | (41,27) | script |
+| LORETALK.PAS:513 | 9 | (42,25) | script |
+| LORETALK.PAS:582 | 10 | (36,32) | facility |
+| LORETALK.PAS:582 | 10 | (38,33) | facility |
+| LORETALK.PAS:582 | 10 | (39,35) | facility |
+| LORETALK.PAS:583 | 10 | (17,57) | facility |
+| LORETALK.PAS:583 | 10 | (12,59) | facility |
+| LORETALK.PAS:583 | 10 | (11,55) | facility |
+| LORETALK.PAS:584 | 10 | (11,30) | facility |
+| LORETALK.PAS:584 | 10 | (11,32) | facility |
+| LORETALK.PAS:584 | 10 | (13,34) | facility |
+| LORETALK.PAS:585 | 10 | (33,60) | facility |
+| LORETALK.PAS:585 | 10 | (35,54) | facility |
+| LORETALK.PAS:585 | 10 | (41,58) | facility |
+| LORETALK.PAS:586 | 10 | (11,16) | script, dialogue |
+| LORETALK.PAS:588 | 10 | (14,18) | script, dialogue |
+| LORETALK.PAS:590 | 10 | (24,22) | script |
+| LORETALK.PAS:592 | 10 | (27,22) | script, dialogue |
+| LORETALK.PAS:594 | 10 | (24,69) | script, dialogue |
+| LORETALK.PAS:600 | 10 | (37,16) | script |
+| LORETALK.PAS:605 | 10 | (40,18) | script, dialogue |
+| LORETALK.PAS:607 | 10 | (40,56) | script |
+| LORETALK.PAS:640 | 10 | (25,18) | script |
+| LORETALK.PAS:707 | 24 | (11,22) | facility |
+| LORETALK.PAS:707 | 24 | (14,24) | facility |
+| LORETALK.PAS:708 | 24 | (33,35) | facility |
+| LORETALK.PAS:708 | 24 | (35,37) | facility |
+| LORETALK.PAS:708 | 24 | (41,38) | facility |
+| LORETALK.PAS:709 | 24 | (33,21) | facility |
+| LORETALK.PAS:709 | 24 | (37,24) | facility |
+| LORETALK.PAS:709 | 24 | (40,23) | facility |
+| LORETALK.PAS:710 | 24 | (15,36) | facility |
+| LORETALK.PAS:710 | 24 | (11,38) | facility |
+| LORETALK.PAS:710 | 24 | (14,40) | facility |
+| LORETALK.PAS:711 | 24 | (17,15) | script |
+| LORETALK.PAS:713 | 24 | (18,10) | script |
+| LORETALK.PAS:715 | 24 | (20,13) | script |
+| LORETALK.PAS:717 | 24 | (27,8) | script |
+| LORETALK.PAS:719 | 24 | (31,13) | script |
+| LORETALK.PAS:721 | 24 | (33,10) | script |
+| LORETALK.PAS:742 | 27 | (15,6) | script |
+| LORETALK.PAS:769 | 27 | (10,14) | script |
+| LORETALK.PAS:835 | 27 | (10,18) | script |
+| LORETALK.PAS:881 | 27 | (10,30) | script |
+| LORETALK.PAS:917 | 27 | (21,32) | script |
+| LORETALK.PAS:968 | 27 | (21,22) | script |
+| LORETALK.PAS:1017 | 27 | (21,12) | script |
