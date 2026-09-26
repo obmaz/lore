@@ -183,7 +183,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       partyProvider: () => _party,
       mindReadCountProvider: () => _mindReadCount,
       scriptContextProvider: _scriptContext,
-      onScriptTalk: (run) => _driveScript(run),
+      onScriptTalk: (run, tx, ty) => _driveScript(run, talkTargetX: tx, talkTargetY: ty),
       onPortalRequested: (portal, tx, ty) =>
           _confirmPortalEntry(portal, tx, ty),
       onRecruitRequested: (recruit) => _requestJoinSlot(recruit),
@@ -298,10 +298,21 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   /// 스크립트를 끝까지 진행한다(선택지가 나오면 대화상자로 물어본다).
-  Future<void> _driveScript(ScriptRun run) async {
+  ///
+  /// [talkTargetX]/[talkTargetY]는 NPC 대화일 때 대화 상대(앞 칸)의 좌표다.
+  /// 원작 `map[x+x1,y+y1] := 값` 스텝(`setTileAtTarget`)에 쓰인다.
+  Future<void> _driveScript(
+    ScriptRun run, {
+    int? talkTargetX,
+    int? talkTargetY,
+  }) async {
     var current = run;
     while (true) {
-      await _applyScriptOutcome(current);
+      await _applyScriptOutcome(
+        current,
+        talkTargetX: talkTargetX,
+        talkTargetY: talkTargetY,
+      );
       final options = current.pendingChoice;
       if (options == null) return;
       if (!mounted) return;
@@ -356,7 +367,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   /// 스크립트 결과(메시지/보상/플래그/동료/장비/전투)를 게임 상태에 반영한다.
-  Future<void> _applyScriptOutcome(ScriptRun run) async {
+  Future<void> _applyScriptOutcome(
+    ScriptRun run, {
+    int? talkTargetX,
+    int? talkTargetY,
+  }) async {
     final outcome = run.outcome;
 
     if (outcome.events.isEmpty) {
@@ -428,6 +443,23 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final member = LoreJoin.byKey(recruit.key);
       if (member == null) continue;
       _requestJoinSlot(PendingRecruit(member, forcedSlotOption: recruit.slot));
+    }
+
+    // 원작 `map[x+x1,y+y1] := 값` - 대화 상대(앞 칸)의 지형 변형.
+    if (outcome.tileAtTarget != null &&
+        talkTargetX != null &&
+        talkTargetY != null) {
+      final map = _game.currentMap;
+      final tx = talkTargetX;
+      final ty = talkTargetY;
+      if (map != null &&
+          tx >= 1 &&
+          tx <= map.xmax &&
+          ty >= 1 &&
+          ty <= map.ymax) {
+        map.grid[ty - 1][tx - 1] = outcome.tileAtTarget!;
+        setState(() {});
+      }
     }
 
     // 지형 변형 (원작 `map[x,y] := 값`)

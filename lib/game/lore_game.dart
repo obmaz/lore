@@ -87,7 +87,11 @@ class LoreGame extends FlameGame {
   final ScriptContext Function()? scriptContextProvider;
 
   /// JSON 스크립트(talk 트리거)가 매칭되었을 때 호출된다.
-  final void Function(ScriptRun run)? onScriptTalk;
+  /// NPC 대화 스크립트 결과 + 대화 상대(앞 칸) 좌표.
+  ///
+  /// 원작 `talkmode`의 `map[x+x1,y+y1] := 값`(유골이 재로 변하는 연출)을
+  /// 포트에서도 같은 칸에 적용하기 위해 좌표를 함께 넘긴다.
+  final void Function(ScriptRun run, int tx, int ty)? onScriptTalk;
 
   /// 성문/동굴 입구 앞에 섰을 때 호출된다 (원작 `wantenter`/`wantexit`).
   /// 확인 대화상자에서 승인하면 화면단이 [enterPortal]을 호출한다.
@@ -296,7 +300,7 @@ class LoreGame extends FlameGame {
         scriptCtx,
       );
       if (run != null) {
-        onScriptTalk?.call(run);
+        onScriptTalk?.call(run, tx, ty);
         return;
       }
     }

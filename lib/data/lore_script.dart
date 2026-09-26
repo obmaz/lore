@@ -383,6 +383,11 @@ class ScriptOutcome {
   /// 플레이어가 밟고 있는 칸의 지형 변형 (원작 `map[x,y] := 값`).
   final List<({int tile, int? ifZero})> playerTiles;
 
+  /// 대화 상대(앞 칸)의 지형 변형 (원작 `map[x+x1,y+y1] := 값`).
+  ///
+  /// 맵 27(운명의 피라밋)에서 관계없는 "의지"가 재로 변하는 연출에 쓰인다.
+  final int? tileAtTarget;
+
   /// 플레이어를 미는 이동 (원작 `inc(y)` / `dec(y)`).
   final List<({int dx, int dy})> nudges;
 
@@ -416,6 +421,7 @@ class ScriptOutcome {
     this.tileChanges = const [],
     this.tileAreas = const [],
     this.playerTiles = const [],
+    this.tileAtTarget,
     this.nudges = const [],
     this.equips = const [],
     this.events = const [],
@@ -602,6 +608,7 @@ class LoreScriptEngine {
           })
         >.from(acc.tileAreas);
     var playerTiles = List<({int tile, int? ifZero})>.from(acc.playerTiles);
+    var tileAtTarget = acc.tileAtTarget;
     var nudges = List<({int dx, int dy})>.from(acc.nudges);
     var battleVictory = List<String>.from(acc.battleVictoryFlags);
     var blockMove = acc.blockMove;
@@ -713,6 +720,9 @@ class LoreScriptEngine {
             ifZero: step.tileIfZero,
           ));
           break;
+        case 'setTileAtTarget':
+          tileAtTarget = step.tileValue;
+          break;
         case 'nudge':
           nudges.add((dx: step.nudgeDx ?? 0, dy: step.nudgeDy ?? 0));
           break;
@@ -753,6 +763,7 @@ class LoreScriptEngine {
               tileChanges: tileChanges,
               tileAreas: tileAreas,
               playerTiles: playerTiles,
+              tileAtTarget: tileAtTarget,
               nudges: nudges,
               equips: equips,
               events: events,
@@ -789,6 +800,7 @@ class LoreScriptEngine {
         tileChanges: tileChanges,
         tileAreas: tileAreas,
         playerTiles: playerTiles,
+        tileAtTarget: tileAtTarget,
         nudges: nudges,
         equips: equips,
         events: events,
@@ -983,6 +995,16 @@ class LoreScriptEngine {
             kind: 'setTileAtPlayer',
             tileValue: t['tile'] as int? ?? 49,
             tileIfZero: t['ifZero'] as int?,
+          ),
+        );
+        matched = true;
+      }
+      if (m.containsKey('setTileAtTarget')) {
+        // 원작 `map[x+x1,y+y1] := 값` - 대화 상대(앞 칸)의 지형 변형.
+        steps.add(
+          ScriptStep(
+            kind: 'setTileAtTarget',
+            tileValue: m['setTileAtTarget'] as int,
           ),
         );
         matched = true;

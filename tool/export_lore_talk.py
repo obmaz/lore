@@ -43,9 +43,17 @@ EXP_ADD = re.compile(r'experience\s*\+\s*(\d+)')
 AT = re.compile(r"at\((\d+)\s*,\s*(\d+)\)")
 FLAG_COND = re.compile(r"party\.etc\[(\d+)\]\s+and\s+bit(\d+)\s*(=|>)\s*0")
 FLAG_SET = re.compile(r"party\.etc\[(\d+)\]\s*:=\s*party\.etc\[(\d+)\]\s*or\s+bit(\d+)")
-PRINT = re.compile(r"^\s*(?:Print|cPrint|talk|Talk)\s*\(", re.I)
+PRINT = re.compile(r"^\s*(?:Print|cPrint|talk|Talk|message|Message)\s*\(", re.I)
 STRING = re.compile(r"'((?:[^']|'')*)'")
 SETVAR = re.compile(r"^\s*s\s*:=\s*(.+?);\s*$", re.I)
+# `m[N] := '문장';` - 선택지 라벨
+MENU_ITEM = re.compile(r"^\s*m\[(\d+)\]\s*:=\s*'((?:[^']|'')*)'\s*;\s*$")
+# `if select(...) <> 1 then exit;` - 첫 선택지만 아래 문장을 실행한다
+SELECT_GUARD = re.compile(r"^\s*if\s+select\(", re.I)
+# `map[x+x1,y+y1] := V;` - 대화 상대(앞 칸)의 지형 변형
+TILE_AT_TARGET = re.compile(
+    r"^\s*map\[\s*x\s*\+\s*x1\s*,\s*y\s*\+\s*y1\s*\]\s*:=\s*(\d+)\s*;"
+)
 
 
 def decode(raw: bytes) -> str:
@@ -153,12 +161,40 @@ def branch_to_steps(branch):
     steps = []
     vars_ = {}
     complex_hit = []
+    menu_options = []   # `m[N] := '...'` 로 선언된 선택지
+    choice_step = None  # `select(...)` 가 들어간 스텝 인덱스
     for raw in branch['body']:
+        mi = MENU_ITEM.match(raw)
+        if mi:
+            if int(mi.group(1)) > 0:
+                menu_options.append(unescape(mi.group(2)))
+            continue
+        if SELECT_GUARD.match(raw) and 'exit' in raw:
+            # 이 줄 이후는 "1번을 골랐을 때"의 문장이다.
+            if not menu_options:
+                complex_hit.append(raw.strip()[:60])
+                continue
+            steps.append({
+                'choice': {
+                    'options': [
+                        {'text': t, 'steps': []} for t in menu_options
+                    ]
+                }
+            })
+            choice_step = len(steps) - 1
+            continue
         if any(c in raw for c in COMPLEX):
             complex_hit.append(raw.strip()[:60])
         if any(k in raw for k in ['map[', 'for i :=', 'for j :=', 'Scroll', 'scroll',
                                   'putimage', 'PressAnyKey', 'delay', 'displayenemies',
                                   'BattleMode']):
+            tt = TILE_AT_TARGET.match(raw)
+            if tt and choice_step is not None:
+                steps[-1]['choice']['options'][0]['steps'].append(
+                    {'setTileAtTarget': int(tt.group(1))}
+                )
+            elif tt:
+                steps.append({'setTileAtTarget': int(tt.group(1))})
             continue
         m = SETVAR.match(raw)
         if m:
@@ -168,13 +204,20 @@ def branch_to_steps(branch):
             continue
         text = line_text(raw, vars_)
         if text:
-            steps.append({'say': text})
+            if choice_step is not None:
+                # 1번 선택지를 골랐을 때의 문장
+                steps[-1]['choice']['options'][0]['steps'].append({'say': text})
+            else:
+                steps.append({'say': text})
             continue
         fm = FLAG_SET.search(raw)
         if fm:
             steps.append({'flag': f'etc{fm.group(1)}_bit{fm.group(3)}'})
     if complex_hit:
         return None, complex_hit
+    # 선택지 본문이 비어 있으면(문장이 나눠진 경우) 선택지만으로도 의미가 있다.
+    if choice_step is not None:
+        return steps, []
     # 대사가 없고 플래그만 바뀌는 분기는 스킵
     if not any('say' in s for s in steps):
         return None, ['(텍스트 없음)']
@@ -254,6 +297,31 @@ def quest_require(etc_n):
     return quest
 
 
+def arm_tail_after(lines, idx, case_indent):
+    """[idx]부터 빈 줄을 건너뛰었을 때 `case` 팔이 끝나는지 판단한다.
+
+    맵 팔의 마지막 `else`는 그 팔의 마지막 구문이므로, 뒤에 새 팔(`N :`)이나
+    `case`의 `end`가 온다. 중첩 `if`의 `else`는 뒤에 `at(...)`/`talk(...)` 등
+    팔 내부 구문이 이어진다.
+    """
+    j = idx
+    saw_end = False
+    while j < len(lines):
+        s = lines[j].strip()
+        j += 1
+        if not s:
+            continue
+        if re.match(r'^\d+\s*:\s*(begin)?\s*$', s):
+            return True  # 다음 팔 시작 → 이 블록이 팔의 마지막이었다
+        if re.match(r'^end\b', s, re.I):
+            saw_end = True
+            continue
+        if re.match(r'^begin\s*$', s, re.I) and saw_end:
+            return True  # 유닛의 `begin ... end.` (case 문 종료)
+        return False  # 팔 안의 다른 구문이 이어진다 → 마지막 else 가 아니다
+    return saw_end
+
+
 def main() -> int:
     report = '--report' in sys.argv
     emit_path = None
@@ -277,7 +345,27 @@ def main() -> int:
             case_indent = ind
             i += 1
             continue
-        if 'at(' in line and stripped.startswith('if'):
+        # `if at(x,y) then ... else if at(x,y) then ...` 사슬도 각각 분기로 읽는다.
+        if (case_indent is not None
+                and cur_map is not None
+                and ind == case_indent + 4
+                and re.match(r'^else\s+begin', stripped, re.I)
+                and 'at(' not in stripped):
+            # `case party.map of` 팔의 마지막 `else` → 좌표 없는 기본 대사.
+            branch, nxt = parse_branch(lines, i, ind)
+            if arm_tail_after(lines, nxt, case_indent):
+                steps, complex_hit = branch_to_steps(branch)
+                if steps:
+                    scripts.append({
+                        'id': f'talk-{cur_map}-any',
+                        'trigger': 'talk',
+                        'map': cur_map,
+                        'once': False,
+                        'steps': steps,
+                    })
+                i = nxt
+                continue
+        if 'at(' in line and re.match(r'^(?:else\s+)?if\b', stripped, re.I):
             branch, nxt = parse_branch(lines, i, ind)
             body_text = '\n'.join(branch['body'])
             m_case = CASE_QUEST.search(body_text)
