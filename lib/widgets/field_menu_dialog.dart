@@ -253,10 +253,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           '[V] ${LoreMenuText.selectModeCharacter}',
           FieldMenuTab.characterView,
         ),
-        _menuBtn(
-          '[Q] ${LoreMenuText.selectModeQuick}',
-          FieldMenuTab.quickView,
-        ),
+        _menuBtn('[Q] ${LoreMenuText.selectModeQuick}', FieldMenuTab.quickView),
         _menuBtn('[C] ${LoreMenuText.selectModeCast}', FieldMenuTab.castSpell),
         _menuBtn('[E] ${LoreMenuText.selectModeEsp}', FieldMenuTab.esp),
         _menuBtn('[R] ${LoreMenuText.selectModeRest}', FieldMenuTab.rest),
@@ -313,16 +310,12 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                     Text(
                       '${LoreMenuText.viewPartyXAxis}${widget.playerX}   '
                       '${LoreMenuText.viewPartyYAxis}${widget.playerY}',
-                      style: RetroTheme.dosFont.copyWith(
-                        fontSize: 10,
-                      ),
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                     Text(
                       '${LoreMenuText.viewPartyFood}${widget.food}   '
                       '${LoreMenuText.viewPartyGold}${widget.gold}',
-                      style: RetroTheme.dosFont.copyWith(
-                        fontSize: 10,
-                      ),
+                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
                     ),
                   ],
                 ),
@@ -361,51 +354,54 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
               color: RetroTheme.background,
             ),
             child: ListView.builder(
-        itemCount: widget.party.length,
-        itemBuilder: (context, idx) {
-          final p = widget.party[idx];
-          return Card(
-            color: RetroTheme.black,
-            margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-            child: Padding(
-              padding: const EdgeInsets.all(6),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      '${idx + 1}. ${p.name}\n(${p.playerClass.koreanName}, Lv.${p.battleLevel})',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.yellow,
-                        fontSize: 11,
-                      ),
+              itemCount: widget.party.length,
+              itemBuilder: (context, idx) {
+                final p = widget.party[idx];
+                return Card(
+                  color: RetroTheme.black,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 4,
+                    vertical: 2,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(6),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            '${idx + 1}. ${p.name}\n(${p.playerClass.koreanName}, Lv.${p.battleLevel})',
+                            style: RetroTheme.dosFont.copyWith(
+                              color: RetroTheme.yellow,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Text(
+                            'HP: ${p.hp}/${p.maxHp}\nSP: ${p.sp}/${p.maxSp}',
+                            style: RetroTheme.dosFont.copyWith(
+                              color: RetroTheme.lightGreen,
+                              fontSize: 11,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Text(
+                            '무기: ${p.weaponName}\n방어: ${p.armorName}/${p.shieldName}',
+                            style: RetroTheme.dosFont.copyWith(
+                              color: RetroTheme.lightCyan,
+                              fontSize: 10,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      'HP: ${p.hp}/${p.maxHp}\nSP: ${p.sp}/${p.maxSp}',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.lightGreen,
-                        fontSize: 11,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Text(
-                      '무기: ${p.weaponName}\n방어: ${p.armorName}/${p.shieldName}',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.lightCyan,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
+                );
+              },
             ),
           ),
         ),
@@ -455,123 +451,123 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           ),
           child: SingleChildScrollView(
             child: Row(
-            children: [
-              // 기본 스탯
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '【 기본 능력치 】',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.yellow,
-                        fontSize: 11,
+              children: [
+                // 기본 스탯
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '【 기본 능력치 】',
+                        style: RetroTheme.dosFont.copyWith(
+                          color: RetroTheme.yellow,
+                          fontSize: 11,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    // 원작 LOREMENU.PAS:526 `ViewCharacter` 표기
-                    Text(
-                      '${LoreMenuText.viewCharStrength}${p.strength}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharMentality}${p.mentality}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharConcentration}${p.concentration}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharEndurance}${p.endurance}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharResistance}${p.resistance}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharAgility}${p.agility}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharLuck}${p.luck}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                  ],
+                      const SizedBox(height: 4),
+                      // 원작 LOREMENU.PAS:526 `ViewCharacter` 표기
+                      Text(
+                        '${LoreMenuText.viewCharStrength}${p.strength}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharMentality}${p.mentality}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharConcentration}${p.concentration}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharEndurance}${p.endurance}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharResistance}${p.resistance}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharAgility}${p.agility}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharLuck}${p.luck}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              // 장비 및 전투력
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '【 전투 장비 】',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.yellow,
-                        fontSize: 11,
+                // 장비 및 전투력
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '【 전투 장비 】',
+                        style: RetroTheme.dosFont.copyWith(
+                          color: RetroTheme.yellow,
+                          fontSize: 11,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '${LoreMenuText.viewCharWeapon}${p.weaponName}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharShield}${p.shieldName}${LoreMenuText.viewCharShieldSuffix}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharArmor}${p.armorName}${LoreMenuText.viewCharArmorSuffix}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharAccArms}${p.accArms}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharAccMagic}${p.accMagic}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharAccEsp}${p.accEsp}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharBattleLevel}${p.battleLevel}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharMagicLevel}${p.magicLevel}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharEspLevel}${p.espLevel}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '${LoreMenuText.viewCharExp}${p.experience}',
-                      style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                    ),
-                    Text(
-                      '방어 등급(AC): ${p.ac}',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.lightGreen,
-                        fontSize: 10,
+                      const SizedBox(height: 4),
+                      Text(
+                        '${LoreMenuText.viewCharWeapon}${p.weaponName}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
                       ),
-                    ),
-                    Text(
-                      '경험치: ${p.experience}',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.lightCyan,
-                        fontSize: 10,
+                      Text(
+                        '${LoreMenuText.viewCharShield}${p.shieldName}${LoreMenuText.viewCharShieldSuffix}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
                       ),
-                    ),
-                  ],
+                      Text(
+                        '${LoreMenuText.viewCharArmor}${p.armorName}${LoreMenuText.viewCharArmorSuffix}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharAccArms}${p.accArms}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharAccMagic}${p.accMagic}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharAccEsp}${p.accEsp}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharBattleLevel}${p.battleLevel}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharMagicLevel}${p.magicLevel}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharEspLevel}${p.espLevel}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '${LoreMenuText.viewCharExp}${p.experience}',
+                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                      ),
+                      Text(
+                        '방어 등급(AC): ${p.ac}',
+                        style: RetroTheme.dosFont.copyWith(
+                          color: RetroTheme.lightGreen,
+                          fontSize: 10,
+                        ),
+                      ),
+                      Text(
+                        '경험치: ${p.experience}',
+                        style: RetroTheme.dosFont.copyWith(
+                          color: RetroTheme.lightCyan,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
             ),
           ),
         ),
@@ -833,7 +829,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                         _spellBtn(
                           '1. 공격 마법',
                           RetroTheme.darkGray,
-                          () => widget.onLog(FieldMagicLogic.attackSpellMessage),
+                          () =>
+                              widget.onLog(FieldMagicLogic.attackSpellMessage),
                         ),
                         _spellBtn(
                           '2. 치료 마법',
@@ -1137,11 +1134,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         });
         return;
       case 8:
-        result = FieldMagicLogic.createFood(
-          caster,
-          widget.party,
-          _currentFood,
-        );
+        result = FieldMagicLogic.createFood(caster, widget.party, _currentFood);
         if (result.success) {
           final members = widget.party.where((p) => p.name.isNotEmpty).length;
           _currentFood = (_currentFood + members).clamp(0, 255);
@@ -1162,12 +1155,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     String label,
     void Function(int dx, int dy, String label) onPicked,
   ) {
-    const dirs = [
-      ('북쪽', 0, -1),
-      ('남쪽', 0, 1),
-      ('동쪽', 1, 0),
-      ('서쪽', -1, 0),
-    ];
+    const dirs = [('북쪽', 0, -1), ('남쪽', 0, 1), ('동쪽', 1, 0), ('서쪽', -1, 0)];
     showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(

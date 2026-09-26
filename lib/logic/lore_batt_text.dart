@@ -168,6 +168,5 @@ class LoreBattText {
       '$actor는 $amount$expGainedMsg';
 
   /// 원작 `일행은 {n}개의 금을 얻었다.`
-  static String goldFound(String amount) =>
-      '일행은 $amount$goldGained';
+  static String goldFound(String amount) => '일행은 $amount$goldGained';
 }

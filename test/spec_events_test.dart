@@ -76,4 +76,48 @@ void main() {
       isTrue,
     );
   });
+
+  test('옮긴 스크립트가 전투·동료·장비·횃불·밀기 스텝까지 담고 있다', () {
+    final specs = LoreScriptEngine.instance.scripts
+        .where((s) => s.id.startsWith('spec-'))
+        .expand((s) => s.steps)
+        .toList();
+    final kinds = specs.map((s) => s.kind).toSet();
+    for (final kind in const [
+      'battle',
+      'join',
+      'equip',
+      'torch',
+      'nudge',
+      'setTileArea',
+      'teleport',
+      'choice',
+    ]) {
+      expect(kinds.contains(kind), isTrue, reason: '$kind 스텝이 없다');
+    }
+
+    // 원작 `joinenemy(i,43)` → 몬스터 43 이 전투 목록에 들어간다.
+    final battles = specs.where((s) => s.kind == 'battle').toList();
+    expect(battles.any((b) => (b.monsters ?? const []).contains(43)), isTrue);
+    // 원작 `join(9,k)` → Polaris, `join(43,k)` → Spica
+    final joins = specs
+        .where((s) => s.kind == 'join')
+        .map((s) => s.key)
+        .toSet();
+    expect(joins.contains('polaris') || joins.contains('spica'), isTrue);
+  });
+
+  test('원작 1회성은 party.etc 비트로 관리된다 (금화 재획득 불가)', () {
+    final engine = LoreScriptEngine.instance;
+    final first = engine.startStep(9, 10, 24, const ScriptContext())!;
+    expect(first.outcome.goldDelta, 5000);
+    // 원작 `party.etc[35] := party.etc[35] or bit1`
+    expect(first.outcome.setFlags, contains('etc35_bit1'));
+
+    // 비트가 켜진 상태에서는 같은 보상이 다시 나오지 않는다.
+    expect(
+      engine.startStep(9, 10, 24, const ScriptContext(flags: {'etc35_bit1'})),
+      isNull,
+    );
+  });
 }

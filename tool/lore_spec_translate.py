@@ -88,6 +88,62 @@ JOINENEMY = re.compile(r"joinenemy\(\s*([^,]+?)\s*,\s*([^)]+?)\s*\)", re.I)
 JOIN = re.compile(r"join\(\s*([^,]+?)\s*,\s*([^)]+?)\s*\)", re.I)
 PEEK = re.compile(r"scroll\(\s*FALSE\s*\)", re.I)
 
+# `inc(x)` / `dec(y)` → nudge 스텝 (원작은 플레이어를 한 칸 민다).
+NUDGE = re.compile(r"^(inc|dec)\s*\(\s*([xy])\s*\)\s*;", re.I)
+# `y := 80` / `x := 46` 한 축만 바꾸는 이동.
+AXIS_ASSIGN = re.compile(r"^\s*([xy])\s*:=\s*(\d+)\s*;", re.I)
+# `for i := 67 to 69 do map[i,44] := 44;` (영역 지형 변형)
+SET_TILE_AREA = re.compile(
+    r"for\s+([a-z])\s*:=\s*(\d+)\s+to\s+(\d+)\s+do\s+"
+    r"map\[\s*([a-z0-9]+)\s*,\s*([a-z0-9]+)\s*\]\s*:=\s*(\d+)",
+    re.I,
+)
+# `for i := 1 to 3 do joinenemy(i, 43);` (적 배치)
+LOOP_JOINENEMY = re.compile(
+    r"for\s+i\s*:=\s*1\s+to\s+(\d+)\s+do\s+"
+    r"joinenemy\(\s*i\s*,\s*(\d+)\s*\)",
+    re.I,
+)
+# `for i := 1 to 7 do joinenemy(i, 68+i);` (id 가 순번에 따라 증가)
+LOOP_JOINENEMY_OFF = re.compile(
+    r"for\s+i\s*:=\s*1\s+to\s+(\d+)\s+do\s+"
+    r"joinenemy\(\s*i\s*,\s*(\d+)\s*\+\s*i\s*\)",
+    re.I,
+)
+ENEMY_COUNT = re.compile(r"enemynumber\s*:=\s*(\d+)\s*;")
+BATTLE_TRIGGER = re.compile(r"^(BattleMode|battlemode|displayenemies)\b", re.I)
+
+# `with party do begin xaxis := A; yaxis := B; map := M; end` (맵 이동 연출)
+WITH_PARTY = re.compile(r"^with\s+party\s+do\s+begin", re.I)
+XAXIS = re.compile(r"xaxis\s*:=\s*(\d+)", re.I)
+YAXIS = re.compile(r"yaxis\s*:=\s*(\d+)", re.I)
+MAP_ASSIGN = re.compile(r"\bmap\s*:=\s*(\d+)", re.I)
+# `party.etc[1] := 1` = 마법의 횃불 점등
+TORCH_SET = re.compile(r"party\.etc\[1\]\s*:=\s*1\s*;")
+
+# `findgold(1000);` — 원작 LORESUB.PAS:1012 (금화 획득 + 안내 문구)
+FINDGOLD = re.compile(r"findgold\(\s*(\d+)\s*\)", re.I)
+
+# 원작 `join(N, k)` 의 N → 포트 동료 키.
+JOIN_BY_NUMBER = {
+    1: 'mad_joe',
+    9: 'polaris',
+    14: 'rigel',
+    19: 'skeleton',
+    39: 'lore_hunter',
+    43: 'spica',
+    55: 'red_antares',
+    62: 'draconian',
+}
+# `weapon := n` / `wea_power := m` → equip 스텝
+EQUIP_FIELD = {
+    'weapon': ('weapon', 'wea_power'),
+    'shield': ('shield', 'shi_power'),
+    'armor': ('armor', 'arm_power'),
+}
+CHOOSEWHOM = re.compile(r"choosewhom\s*\(", re.I)
+WITH_PLAYER = re.compile(r"^with\s+player\[k\]\s+do\s+begin", re.I)
+
 NOTE_ONLY = re.compile(
     r"^(Clear|PressAnyKey|Pressanykey|Delay|Sound|Voice|Discard|line|SetColor"
     r"|HPrintXY|PutImage|Display|originposition|load|Silent_Scroll)\b", re.I)
@@ -384,6 +440,10 @@ class Ctx:
         self.notes: list[str] = []
         # 옮기지 못한 조건이 하나라도 있었는지(있으면 실행하지 않는다).
         self.unsupported = False
+        # 전투: `enemynumber := N` / `joinenemy(...)` 로 모은 적 목록.
+        self.monsters: list[int] = []
+        self.enemy_count: int | None = None
+        self.battle_emitted = False
         # 조건 분기별로 (요구 조건, 스텝들) 을 모은다.
         self.variants: list[tuple[Req, list[dict]]] = [(Req(), [])]
         # `exit` 로 끝난 변형들(이후 문장의 영향을 받지 않는다).
@@ -551,6 +611,46 @@ def walk_statements(ctx, stmts: list[list[str]], depth: int = 0):
                 pending_menu[idx - 1] = unescape(m.group(2))
             i += 1
             continue
+        if CHOOSEWHOM.search(first):
+            # `k := choosewhom(FALSE);` + `with player[k] do begin <장비>`
+            j = i + 1
+            while j < len(stmts) and re.match(
+                    r'^if\s+k\s*=\s*0\s+then', stmts[j][0].strip(), re.I):
+                j += 1
+            if j < len(stmts) and WITH_PLAYER.match(stmts[j][0].strip()):
+                body = stmts[j]
+                kind = power = idx = None
+                for line in body:
+                    fm = re.match(
+                        r'^\s*(weapon|shield|armor)\s*:=\s*(\d+)\s*;',
+                        line, re.I)
+                    if fm:
+                        kind = fm.group(1).lower()
+                        idx = int(fm.group(2))
+                        continue
+                    pm = re.match(
+                        r'^\s*(wea_power|shi_power|arm_power)\s*:=\s*(\d+)\s*;',
+                        line, re.I)
+                    if pm:
+                        power = int(pm.group(2))
+                if kind and idx is not None:
+                    ctx.add_step({
+                        'equip': {
+                            'kind': kind,
+                            'index': idx,
+                            'power': power or 0,
+                            'prompt': True,
+                        }
+                    })
+                    # 장비 블록 안의 안내 문구(`name+'가 ... 장착했다.'`)도 살린다.
+                    for t in collect_texts(body):
+                        if t.strip():
+                            ctx.add_step({'say': t})
+                    i = j + 1
+                    continue
+            ctx.note('장비 지급(choosewhom) 미해석')
+            i += 1
+            continue
         if SELECT.search(first) and 'k :=' in first:
             option_bodies: dict[int, list[list[str]]] = {}
             j = i + 1
@@ -624,6 +724,22 @@ def walk(ctx: Ctx, body: list[str], depth: int = 0):
 
 
 def translate_statement(ctx: Ctx, chunk: list[str]):
+    # `with party do begin xaxis := ..; yaxis := ..; map := ..; end;` 는
+    # 여러 줄에 걸쳐 있으므로 문장 전체를 먼저 본다.
+    if chunk and WITH_PARTY.match(chunk[0].strip()):
+        joined = ' '.join(line.strip() for line in chunk)
+        xm, ym, mm = XAXIS.search(joined), YAXIS.search(joined), MAP_ASSIGN.search(joined)
+        if xm and ym and mm:
+            ctx.add_step({
+                'teleport': {
+                    'map': int(mm.group(1)),
+                    'x': int(xm.group(1)),
+                    'y': int(ym.group(1)),
+                }
+            })
+        else:
+            ctx.note(f'맵 이동(일부만): {joined[:60]}')
+        return
     for line in chunk:
         s = line.strip()
         if not s:
@@ -658,6 +774,59 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
                     }
                 })
             continue
+        # ── 전투 준비 ────────────────────────────────────────
+        m = ENEMY_COUNT.search(s)
+        if m:
+            ctx.enemy_count = int(m.group(1))
+            continue
+        m = LOOP_JOINENEMY_OFF.search(s)
+        if m:
+            n, base = int(m.group(1)), int(m.group(2))
+            ctx.monsters.extend(base + i for i in range(1, n + 1))
+            continue
+        m = LOOP_JOINENEMY.search(s)
+        if m:
+            n, mid = int(m.group(1)), int(m.group(2))
+            ctx.monsters.extend([mid] * n)
+            continue
+        m = JOINENEMY.search(s)
+        if m:
+            mid = m.group(2).strip()
+            if mid.isdigit():
+                count = 1
+                if m.group(1).strip() == 'i':
+                    count = ctx.enemy_count or 1
+                ctx.monsters.extend([int(mid)] * count)
+            else:
+                ctx.note(f'적 배치(계산식): joinenemy({m.group(1)}, {mid})')
+            continue
+        m = BATTLE_TRIGGER.search(s)
+        if m:
+            if ctx.monsters:
+                ctx.add_step({'battle': {'monsters': list(ctx.monsters)}})
+                ctx.monsters = []
+                ctx.battle_emitted = True
+            continue
+        # ── 동료 영입 ───────────────────────────────────────
+        m = JOIN.search(s)
+        if m:
+            num = m.group(1).strip()
+            key = JOIN_BY_NUMBER.get(int(num)) if num.isdigit() else None
+            if key is None:
+                ctx.note(f'동료 영입(미상): join({num}, {m.group(2).strip()})')
+            else:
+                step = {'join': key}
+                slot = m.group(2).strip()
+                if slot.isdigit() and int(slot) > 1:
+                    slot_step = {'join': key, 'slot': int(slot) - 2}
+                    step = slot_step
+                ctx.add_step(step)
+            continue
+        if TORCH_SET.search(s):
+            # 원작 `party.etc[1] := 1` → 마법의 횃불(40 걸음) + etc1 플래그
+            ctx.add_step({'torch': True})
+            ctx.add_step({'flag': 'etc1'})
+            continue
         m = ETC_SET.search(s)
         if m:
             etc_n, val = int(m.group(1)), int(m.group(2))
@@ -671,6 +840,13 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         m = GOLD.search(s)
         if m:
             ctx.add_step({'gold': int(m.group(1))})
+            continue
+        m = FINDGOLD.search(s)
+        if m:
+            # 원작 `findgold(n)` = 금화 n 개 획득 + 안내 문구
+            amount = int(m.group(1))
+            ctx.add_step({'gold': amount})
+            ctx.add_step({'say': f'당신은 금화 {amount}개를 발견했다.'})
             continue
         m = FOOD.search(s)
         if m:
@@ -694,10 +870,52 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
                 }
             })
             continue
-        m = TELEPORT.search(s)
+        if WITH_PARTY.match(s):
+            # (문장 단위 처리에서 걸러지지 않은 한 줄짜리 형태)
+            xm, ym, mm = XAXIS.search(s), YAXIS.search(s), MAP_ASSIGN.search(s)
+            if xm and ym and mm:
+                ctx.add_step({
+                    'teleport': {
+                        'map': int(mm.group(1)),
+                        'x': int(xm.group(1)),
+                        'y': int(ym.group(1)),
+                    }
+                })
+            else:
+                ctx.note(f'맵 이동(일부만): {s[:50]}')
+            continue
+        m = NUDGE.match(s)
         if m:
+            sign = 1 if m.group(1).lower() == 'inc' else -1
+            key = 'dx' if m.group(2).lower() == 'x' else 'dy'
+            ctx.add_step({'nudge': {key: sign}})
+            continue
+        m = SET_TILE_AREA.search(s)
+        if m:
+            var, lo, hi, xc, yc, tile = m.groups()
+            xc, yc = xc.lower(), yc.lower()
+            area = {
+                'xMin': int(lo) if xc == var.lower() else 1,
+                'xMax': int(hi) if xc == var.lower() else 1,
+                'yMin': int(lo) if yc == var.lower() else 1,
+                'yMax': int(hi) if yc == var.lower() else 1,
+                'tile': int(tile),
+            }
+            if xc in ('x', 'y') or yc in ('x', 'y'):
+                ctx.note(f'영역 변형(좌표 변수): {s[:50]}')
+                continue
+            if xc == var.lower():
+                area['atPlayerY'] = False
+                area['xMin'], area['xMax'] = int(lo), int(hi)
+            elif yc == var.lower():
+                area['yMin'], area['yMax'] = int(lo), int(hi)
+            ctx.add_step({'setTileArea': area})
+            continue
+        m = AXIS_ASSIGN.match(s)
+        if m and not TELEPORT.search(s):
+            axis, value = m.group(1).lower(), int(m.group(2))
             ctx.add_step({
-                'teleport': {'x': int(m.group(1)), 'y': int(m.group(2))}
+                'teleport': {axis: value, 'keepX' if axis == 'y' else 'keepY': True}
             })
             continue
         if re.match(r'^\s*exit\s*;?\s*$', s, re.I):
@@ -706,16 +924,14 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
             continue
         if PEEK.search(s):
             continue
-        if re.match(r'^\s*(BattleMode|battlemode)\b', s):
-            ctx.note('전투 개시(BattleMode)')
-            continue
-        m = JOINENEMY.search(s)
-        if m:
-            ctx.note(f'적 배치: joinenemy({m.group(1)}, {m.group(2)})')
-            continue
         m = JOIN.search(s)
         if m:
-            ctx.note(f'동료 영입: join({m.group(1)}, {m.group(2)})')
+            num = m.group(1).strip()
+            key = JOIN_BY_NUMBER.get(int(num)) if num.isdigit() else None
+            if key is None:
+                ctx.note(f'동료 영입(미상): join({num}, {m.group(2).strip()})')
+            else:
+                ctx.add_step({'join': key})
             continue
         if NOTE_ONLY.match(s):
             continue

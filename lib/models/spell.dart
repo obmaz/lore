@@ -102,7 +102,14 @@ class Spell {
       case SpellCategory.field:
         // 원작 `PhenominaSpell`의 고정 소모값 (33~40 순서: 1/5/10/20/25/30/50/30)
         const fieldCosts = <int, int>{
-          33: 1, 34: 5, 35: 10, 36: 20, 37: 25, 38: 30, 39: 50, 40: 30,
+          33: 1,
+          34: 5,
+          35: 10,
+          36: 20,
+          37: 25,
+          38: 30,
+          39: 50,
+          40: 30,
         };
         return fieldCosts[id] ?? baseSp;
 

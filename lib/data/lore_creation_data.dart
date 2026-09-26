@@ -148,9 +148,7 @@ const List<Map<String, Object>> kCreationCharacters = [
 /// 원작 `First` 의 성향 문답(질문 줄 + 선택지 3 + 스탯 번호).
 const List<Map<String, Object>> kCreationQuestions = [
   {
-    'lines': [
-      '당신이 한 밤중에 공부하고 있을때 밖에서 무슨 소리가 들렸다',
-    ],
+    'lines': ['당신이 한 밤중에 공부하고 있을때 밖에서 무슨 소리가 들렸다'],
     'options': [
       {'text': '1] 밖으로 나가서 알아본다', 'stat': 1},
       {'text': '2] 그 소리가 무엇일까 생각을 한다', 'stat': 2},
@@ -158,10 +156,7 @@ const List<Map<String, Object>> kCreationQuestions = [
     ],
   },
   {
-    'lines': [
-      '당신은 체력장 오래달리기에서 포기할 수 없는 한 바퀴를 남겨 놓고',
-      '거의 탈진 상태가 되었다',
-    ],
+    'lines': ['당신은 체력장 오래달리기에서 포기할 수 없는 한 바퀴를 남겨 놓고', '거의 탈진 상태가 되었다'],
     'options': [
       {'text': '1] 힘으로 밀고 나간다', 'stat': 1},
       {'text': '2] 정신력으로 버티며 달린다', 'stat': 2},
@@ -169,10 +164,7 @@ const List<Map<String, Object>> kCreationQuestions = [
     ],
   },
   {
-    'lines': [
-      '당신은 이 게임 속에서 적들에게 완전히 포위되어 승산 없이 싸우고',
-      '있다',
-    ],
+    'lines': ['당신은 이 게임 속에서 적들에게 완전히 포위되어 승산 없이 싸우고', '있다'],
     'options': [
       {'text': '1] 힘이 남아 있는한 죽을때까지 싸운다', 'stat': 1},
       {'text': '2] 한가지라도 탈출할 가능성을 찾는다', 'stat': 2},
@@ -180,9 +172,7 @@ const List<Map<String, Object>> kCreationQuestions = [
     ],
   },
   {
-    'lines': [
-      '당신은 매우 복잡한 매듭을 풀어야하는 일이 생겼다',
-    ],
+    'lines': ['당신은 매우 복잡한 매듭을 풀어야하는 일이 생겼다'],
     'options': [
       {'text': '1] 칼로 매듭을 잘라 버린다', 'stat': 1},
       {'text': '2] 매듭의 끝부분 부터 차근차근 훓어본다', 'stat': 3},
@@ -190,9 +180,7 @@ const List<Map<String, Object>> kCreationQuestions = [
     ],
   },
   {
-    'lines': [
-      '허허 벌판을 걸어가던 당신은 갑작스런 우박을 만난다',
-    ],
+    'lines': ['허허 벌판을 걸어가던 당신은 갑작스런 우박을 만난다'],
     'options': [
       {'text': '1] 당항한 나머지 피할곳을 찾아 뛴다', 'stat': 1},
       {'text': '2] 침착하게 주위를 살펴 안전한곳을 찾는다', 'stat': 3},
@@ -200,21 +188,18 @@ const List<Map<String, Object>> kCreationQuestions = [
     ],
   },
   {
-    'lines': [
-      '집안에 불이나서 탈출하려는데 나무로 만든 문이 좀처럼 열리지',
-      '않는다',
-    ],
+    'lines': ['집안에 불이나서 탈출하려는데 나무로 만든 문이 좀처럼 열리지', '않는다'],
     'options': [
       {'text': '1] 다른 탈출구를 찾아간다', 'stat': 1},
-      {'text': '2] 1] 번과 같은 불확실한 도전을 하는것 보다는 확실한 탈출구인 이 문을 끝까지 열려한다', 'stat': 4},
+      {
+        'text': '2] 1] 번과 같은 불확실한 도전을 하는것 보다는 확실한 탈출구인 이 문을 끝까지 열려한다',
+        'stat': 4,
+      },
       {'text': '3] 나무문이 타서 구멍이 생길때까지 기다려 탈출한다', 'stat': 5},
     ],
   },
   {
-    'lines': [
-      '고대에 태어난 당신은, 한날 당신의 눈앞에서 물체가 사라지는',
-      '마술을 보았을때 당신의 해석은 ?',
-    ],
+    'lines': ['고대에 태어난 당신은, 한날 당신의 눈앞에서 물체가 사라지는', '마술을 보았을때 당신의 해석은 ?'],
     'options': [
       {'text': '1] 이것은 마법이다', 'stat': 2},
       {'text': '2] 이것은 사람의 새로운 능력이다', 'stat': 3},
@@ -222,10 +207,7 @@ const List<Map<String, Object>> kCreationQuestions = [
     ],
   },
   {
-    'lines': [
-      '시험 기간에 당신이 도서관에서 공부를 하려는데 주위가 너무',
-      '시끄럽다',
-    ],
+    'lines': ['시험 기간에 당신이 도서관에서 공부를 하려는데 주위가 너무', '시끄럽다'],
     'options': [
       {'text': '1] 상관없이 참으며 공부한다', 'stat': 2},
       {'text': '2] 너무 공부를 열심히해서 그런 소리가 안 들린다', 'stat': 3},
@@ -233,9 +215,7 @@ const List<Map<String, Object>> kCreationQuestions = [
     ],
   },
   {
-    'lines': [
-      '직장 생활을 하던 당신은 아무 이유없이 상관에게 심한 욕을 들었다',
-    ],
+    'lines': ['직장 생활을 하던 당신은 아무 이유없이 상관에게 심한 욕을 들었다'],
     'options': [
       {'text': '1] 겉으로는 순종하면서 속으로는 감정을 샇는다', 'stat': 2},
       {'text': '2] 웬만하면 참고 넘긴다', 'stat': 4},
@@ -243,9 +223,7 @@ const List<Map<String, Object>> kCreationQuestions = [
     ],
   },
   {
-    'lines': [
-      '당신이 새로운 프로그램을 짜던중 알수없는 오류가 생겼다',
-    ],
+    'lines': ['당신이 새로운 프로그램을 짜던중 알수없는 오류가 생겼다'],
     'options': [
       {'text': '1] 차근차근 순서도를 생각하며 오류를 찾는다', 'stat': 3},
       {'text': '2] 여러번 실행 시키며 오류를 찾는다', 'stat': 4},
@@ -255,26 +233,53 @@ const List<Map<String, Object>> kCreationQuestions = [
 ];
 
 /// 원작 문항 안내문.
-const List<String> kCreationQuizIntro = ['지금 부터는 묻는 말에 대답을 해 주십시오.', '그리고, 자신에게 맞는 답을 소신있게 눌러 주십시오.'];
+const List<String> kCreationQuizIntro = [
+  '지금 부터는 묻는 말에 대답을 해 주십시오.',
+  '그리고, 자신에게 맞는 답을 소신있게 눌러 주십시오.',
+];
 
 /// 원작 `Third` 의 계급 조건(원문 문자열).
 const List<Map<String, Object>> kCreationClasses = [
-  {'class': 1, 'text': '1] 기  사', 'condition': 'if (strength>13)and(endurance>13)and(agility>11)and(accuracy[1]>11) then begin'},
-  {'class': 2, 'text': '2] 마법사', 'condition': 'if (mentality>13)and(accuracy[1]>14) then begin'},
-  {'class': 3, 'text': '3] 에스퍼', 'condition': 'if (mentality>10)and(concentration>13)and(accuracy[1]>12) then begin'},
-  {'class': 4, 'text': '4] 전  사', 'condition': 'if (strength>13)and(mentality>10)and(endurance>10)and(resistance>10)'},
-  {'class': 5, 'text': '5] 전투승', 'condition': 'if (strength>16)and(agility>13)and(accuracy[1]>11) then begin'},
-  {'class': 6, 'text': '6] 닌  자', 'condition': 'if (resistance>16)and(agility>16)and(luck>9) then begin'},
+  {
+    'class': 1,
+    'text': '1] 기  사',
+    'condition': 'if (strength>13)and(endurance>13)and(agility>11)and(accuracy[1]>11) then begin',
+  },
+  {
+    'class': 2,
+    'text': '2] 마법사',
+    'condition': 'if (mentality>13)and(accuracy[1]>14) then begin',
+  },
+  {
+    'class': 3,
+    'text': '3] 에스퍼',
+    'condition':
+        'if (mentality>10)and(concentration>13)and(accuracy[1]>12) then begin',
+  },
+  {
+    'class': 4,
+    'text': '4] 전  사',
+    'condition':
+        'if (strength>13)and(mentality>10)and(endurance>10)and(resistance>10)',
+  },
+  {
+    'class': 5,
+    'text': '5] 전투승',
+    'condition':
+        'if (strength>16)and(agility>13)and(accuracy[1]>11) then begin',
+  },
+  {
+    'class': 6,
+    'text': '6] 닌  자',
+    'condition': 'if (resistance>16)and(agility>16)and(luck>9) then begin',
+  },
   {'class': 7, 'text': '7] 사냥꾼', 'condition': 'if accuracy[1] > 18 then begin'},
   {'class': 8, 'text': '8] 떠돌이', 'condition': ''},
 ];
 
 /// 원작 문구 모음 (Name/Profile/Second/Third/Fourth).
 const Map<String, List<String>> kCreationTexts = {
-  'Display': [
-    '또다른 지식의 성전  제 1 부',
-    '캐릭터 만들기 프로그램   제 1.5 탄',
-  ],
+  'Display': ['또다른 지식의 성전  제 1 부', '캐릭터 만들기 프로그램   제 1.5 탄'],
   'Name': [
     '당신의 이름은 :',
     '당신은  입니다.',
@@ -337,8 +342,22 @@ const Map<String, List<String>> kCreationTexts = {
 };
 
 /// 원작 `First` 끝의 스탯 환산표.
-const Map<int, int> kCreationStatMap = {0: 5, 1: 7, 2: 11, 3: 14, 4: 17, 5: 19, 6: 20};
+const Map<int, int> kCreationStatMap = {
+  0: 5,
+  1: 7,
+  2: 11,
+  3: 14,
+  4: 17,
+  5: 19,
+  6: 20,
+};
 const int kCreationStatMapDefault = 10;
 
 /// 원작 `Last` 의 초기 상태.
-const Map<String, int> kCreationInitial = {'map': 6, 'x': 51, 'y': 31, 'food': 20, 'gold': 2000};
+const Map<String, int> kCreationInitial = {
+  'map': 6,
+  'x': 51,
+  'y': 31,
+  'food': 20,
+  'gold': 2000,
+};

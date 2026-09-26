@@ -545,11 +545,23 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 * `LORESPEC.PAS` 변환은 `on(x,y)` 조건을 좌표 트리거로, 분기 안의
   `party.etc[N]` 를 `etcN_bitM` 플래그/퀘스트 게이트로 옮긴다
   (`python3 tool/export_lore_spec.py --report` 로 변환 메모 확인).
-* 옮긴 쪽이 손으로 쓴 스크립트의 효과(전투·장비·동료 영입 등)를 모두
-  포함하지 못하면 **그 좌표는 기존 스크립트를 그대로 실행**하고, 옮긴 쪽은
-  `"disabled": true` 로 문구만 보관한다(`tool/merge_scripts.py --spec`).
-  이 좌표 목록은 `--spec` 실행 로그의 `append` 항목에서 확인할 수 있다.
-* 실행할 수 없는 조건(`not (odd(...) and ...)` 등)도 같은 방식으로 꺼 둔다.
+  옮기는 스텝: 문구/플래그/퀘스트/경험치/금화(`findgold`)/식량/지형(`map[..]`,
+  `map[x+x1,y+y1]`, 영역 `for ... do map[i,j]`)/이동(`x :=`,`with party do ... map :=`)/
+  밀기(`inc/dec`)/횃불(`etc[1] := 1`)/전투(`enemynumber := N` + `joinenemy` → `battle`)/
+  동료 영입(`join(N,k)` → 키)/장비 지급(`choosewhom` + `with player[k] do ...`)/
+  선택지(`m[N] :=` + `select`) — 번호→키 표는 `JOIN_BY_NUMBER`.
+* 병합은 `python3 tool/merge_scripts.py <gen.json> --spec [--replace-ok] --write`.
+  - 손으로 쓴 스크립트의 효과(종류·플래그 이름·전투 구성/제목·`require` 플래그)를
+    옮긴 쪽이 **모두** 포함하면 그 좌표는 옮긴 쪽으로 대체하고, 손으로 쓴 항목은
+    `"disabled": true` 로 꺼 둔다(지우지 않으므로 다시 병합해도 결과가 같다).
+  - 포함하지 못하면 손으로 쓴 쪽을 그대로 실행하고 옮긴 쪽은 문구 보관용으로만
+    넣는다(`disabled`). 현재 249개 중 **21개 좌표가 대체**, 나머지는 보관 상태다.
+  - 실행할 수 없는 조건(`not (odd(...) and ...)`, `enemy[i].dead` 등)도 꺼 둔다.
+  - `--spec` 은 이전에 생성해 넣은 `spec-*` 항목을 먼저 걷어내므로 **멱등**하다.
+* 남은 활성화 과제: 옮긴 쪽이 아직 `battle` 제목·`randomSteps`(퀴즈)·다단계 보스
+  (`enemy[i].dead`)·`setTileArea` 일부를 표현하지 못해 32개 좌표는 손으로 쓴
+  스크립트가 먼저 실행된다. 해당 스텝을 생성기에 추가하면 `--replace-ok` 로 넓힐 수
+  있다(`--spec` 로그의 `덧붙임` 항목이 목록).
 
 * 자동 추출: `python3 tool/export_lore_talk.py --report` (수동 필요 목록은
   `tool/lore_talk_report.txt`), `--emit <파일>`로 talk 스크립트 생성.

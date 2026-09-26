@@ -108,23 +108,8 @@ class LoreMenuText {
   static const String restPressKey = '아무키나 누르시오 ...';
 
   /// 원작 `ReturnMagic` 이름(41..45 = 초감각 5종).
-  static const List<String> espNames = [
-    '',
-    '',
-    '',
-    '',
-    '',
-  ];
+  static const List<String> espNames = ['', '', '', '', ''];
 
   /// 원작 `ReturnMagic` 이름(33..40 = 변화 마법 8종).
-  static const List<String> phenominaNames = [
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-    '',
-  ];
+  static const List<String> phenominaNames = ['', '', '', '', '', '', '', ''];
 }

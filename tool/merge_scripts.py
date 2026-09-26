@@ -30,15 +30,80 @@ def key(entry):
     )
 
 
-def kinds(entry) -> set:
-    """스텝 종류 집합(효과 비교용)."""
-    out = set()
-    for st in entry.get('steps', []):
+def _collect_kinds(steps, out: set):
+    for st in steps:
         out.update(st.keys())
+        # 선택지/난수 분기 안의 스텝도 같은 이벤트의 효과다.
+        ch = st.get('choice')
+        if isinstance(ch, dict):
+            for opt in ch.get('options', []):
+                _collect_kinds(opt.get('steps', []), out)
+        rs = st.get('randomSteps')
+        if isinstance(rs, list):
+            for branch in rs:
+                _collect_kinds(branch, out)
+
+
+def kinds(entry) -> set:
+    """스텝 종류 집합(효과 비교용). 선택지 안쪽까지 센다."""
+    out: set = set()
+    _collect_kinds(entry.get('steps', []), out)
     return out
 
 
-def merge_spec(existing, gen, replace_ok: bool = False):
+def _walk_steps(steps, fn):
+    for st in steps:
+        fn(st)
+        ch = st.get('choice')
+        if isinstance(ch, dict):
+            for opt in ch.get('options', []):
+                _walk_steps(opt.get('steps', []), fn)
+        rs = st.get('randomSteps')
+        if isinstance(rs, list):
+            for branch in rs:
+                _walk_steps(branch, fn)
+
+
+def effect_detail(entry):
+    """(플래그 이름 집합, 전투 몬스터 튜플, 전투 제목 유무) 를 모은다.
+
+    종류만 비교하면 "플래그 이름이 다르다" 같은 차이를 놓치므로 이름까지 본다.
+    """
+    flags: set = set()
+    monsters: list = []
+    has_title = False
+
+    def fn(st):
+        nonlocal has_title
+        f = st.get('flag')
+        if isinstance(f, str):
+            flags.add(f)
+        b = st.get('battle')
+        if isinstance(b, dict):
+            monsters.extend(b.get('monsters', []))
+            if b.get('title'):
+                has_title = True
+
+    _walk_steps(entry.get('steps', []), fn)
+    return flags, tuple(sorted(monsters)), has_title
+
+
+def require_flags(entry) -> set:
+    """`require` 에 쓰인 플래그 이름들(대체 안전성 판단용)."""
+    req = entry.get('require') or {}
+    out = set()
+    for key in ('flag', 'flagNot'):
+        v = req.get(key)
+        if isinstance(v, str):
+            out.add(v)
+    for key in ('allFlags', 'notAllFlags'):
+        for v in req.get(key, []) or []:
+            out.add(v)
+    return out
+
+
+def merge_spec(existing, gen, replace_ok: bool = False,
+               append_active: bool = False):
     """원작에서 기계적으로 옮긴 스크립트를 반영한다.
 
     같은 좌표에 손으로 쓴 스크립트가 이미 있으면,
@@ -50,6 +115,9 @@ def merge_spec(existing, gen, replace_ok: bool = False):
     인덱스를 직접 지우면 순서가 밀리므로, 먼저 계획을 세운 뒤 목록을
     **한 번만** 훑어서 새 목록을 만든다.
     """
+    # 이전에 생성해 넣은 `spec-*` 항목은 먼저 걷어낸다(재실행해도 결과가
+    # 같아지도록). 손으로 쓴 스크립트만 기준으로 다시 판단한다.
+    existing = [e for e in existing if not str(e.get('id', '')).startswith('spec-')]
     by_key = {}
     for idx, e in enumerate(existing):
         by_key.setdefault(key(e), []).append(idx)
@@ -71,10 +139,41 @@ def merge_spec(existing, gen, replace_ok: bool = False):
         gen_kinds = set()
         for e in items:
             gen_kinds |= kinds(e)
+        existing_kinds = set()
+        gen_kinds = set()
+        ex_flags, ex_monsters, ex_title = set(), (), False
+        gn_flags, gn_monsters, _gn_title = set(), (), False
+        for idx in have:
+            k2, f2, m2, t2 = kinds(existing[idx]), *effect_detail(existing[idx])
+            existing_kinds |= k2
+            ex_flags |= f2
+            ex_monsters = ex_monsters + m2
+            ex_title = ex_title or t2
+        for e in items:
+            gen_kinds |= kinds(e)
+            f3, m3, _t3 = effect_detail(e)
+            gn_flags |= f3
+            gn_monsters = gn_monsters + m3
+        ex_monsters = tuple(sorted(ex_monsters))
+        gn_monsters = tuple(sorted(gn_monsters))
         missing = sorted(existing_kinds - gen_kinds)
-        # 손으로 쓴 스크립트의 동작을 그대로 두고, 옮긴 쪽은 **원작 문구 보관용**
-        # 으로만 넣는다. (효과가 완전히 겹치는 항목은 `--replace-ok` 로 표시해
-        # 두어 나중에 대체 여부를 판단할 수 있게 한다.)
+        # 플래그 이름/전투 구성/전투 제목까지 같아야 안전하게 대체할 수 있다.
+        if ex_flags - gn_flags:
+            missing.append('flag 이름: ' + ', '.join(sorted(ex_flags - gn_flags)))
+        if ex_title and not any(
+                effect_detail(e)[2] for e in items):
+            missing.append('전투 제목')
+        if ex_monsters and not set(ex_monsters) <= set(gn_monsters):
+            missing.append('전투 구성: ' + str(ex_monsters))
+        # 진행 조건(`require`)에 쓰인 플래그가 옮긴 쪽에 없으면 대체하지 않는다.
+        ex_req: set = set()
+        gn_req: set = set()
+        for idx in have:
+            ex_req |= require_flags(existing[idx])
+        for e in items:
+            gn_req |= require_flags(e)
+        if ex_req - gn_req:
+            missing.append('require 플래그: ' + ', '.join(sorted(ex_req - gn_req)))
         if not missing and replace_ok:
             # 옮긴 쪽이 손으로 쓴 스크립트의 효과를 모두 포함한다 → 대체한다.
             plan[k] = 'replace'
@@ -91,8 +190,13 @@ def merge_spec(existing, gen, replace_ok: bool = False):
         mode = plan.get(k)
         if mode == 'replace':
             # 옮긴 쪽이 완전히 대신한다(첫 항목 자리에만 넣는다).
+            # 손으로 쓴 항목은 **지우지 않고** 꺼 둔 채로 남겨, 다시 병합해도
+            # 결과가 같도록 한다(멱등).
             if idx == by_key[k][0]:
                 out.extend(gen_by_key[k])
+            item = dict(e)
+            item['disabled'] = True
+            out.append(item)
             continue
         out.append(e)
         if mode == 'append' and idx == by_key[k][-1]:
@@ -101,7 +205,9 @@ def merge_spec(existing, gen, replace_ok: bool = False):
             # 원작 문구 보관용으로만 넣어 둔다(실행하지 않는다).
             for item in gen_by_key[k]:
                 item = dict(item)
-                item['disabled'] = True
+                if not append_active:
+                    # 기존 동작을 그대로 두고 문구만 보관한다.
+                    item['disabled'] = True
                 out.append(item)
 
     # 새 좌표(기존에 없던 것)는 끝에 덧붙인다.
@@ -128,7 +234,9 @@ def main() -> int:
 
     if '--spec' in sys.argv:
         replace_ok = '--replace-ok' in sys.argv
-        merged, decisions = merge_spec(existing, gen['scripts'], replace_ok)
+        append_active = '--append-active' in sys.argv
+        merged, decisions = merge_spec(existing, gen['scripts'], replace_ok,
+                                       append_active)
         print('원작 이관 스크립트 병합:')
         for k, ids, missing, how in decisions:
             mark = '대체' if how == 'replace' else '덧붙임'

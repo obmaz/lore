@@ -46,7 +46,7 @@ void main() {
       expect(LoreData.instance.map(6)!.fileName, 'TOWN1');
       expect(SpriteLibrary.instance.get('CHARA')!.count, 56);
       expect(LoreWorldManager.instance.findPortal(1, 20, 11)!.targetMapId, 6);
-      expect(LoreScriptEngine.instance.scripts.length, 426);
+      expect(LoreScriptEngine.instance.scripts.length, 568);
       expect(
         LoreDialogueManager.instance.getDialogue(6, 9, 64, 'Hero'),
         isNotNull,
@@ -62,8 +62,12 @@ void main() {
       expect(dialogue.getDialogue(6, 9, 64, 'Hero'), contains('경비병'));
 
       // 2) 좌표 이벤트로 금화 획득 (JSON scripts.json, step 트리거)
+      //    게임 화면과 같이 결과의 플래그를 대화 매니저에 반영한다.
       final gold = scripts.startStep(9, 10, 24, const ScriptContext())!;
       expect(gold.outcome.goldDelta, 5000);
+      for (final f in gold.outcome.setFlags) {
+        dialogue.setFlag(f);
+      }
 
       // 3) 동료 영입 (스크립트 → LoreJoin)
       final rigel = scripts.startTalk(12, 12, 48, const ScriptContext())!;
@@ -79,7 +83,21 @@ void main() {
       expect(flags['rigelJoined'], isTrue);
 
       // 5) 1회성 스크립트는 재실행되지 않는다
-      expect(scripts.startStep(9, 10, 24, const ScriptContext()), isNull);
+      // (원작 `party.etc` 비트가 켜졌으므로 현재 플래그로 다시 판정한다.)
+      final liveFlags = dialogue
+          .getFlagsCopy()
+          .entries
+          .where((e) => e.value)
+          .map((e) => e.key)
+          .toSet();
+      expect(
+        scripts
+                .startStep(9, 10, 24, ScriptContext(flags: liveFlags))
+                ?.outcome
+                .goldDelta ??
+            0,
+        0,
+      );
     });
 
     test('3. 로드된 PNG 스프라이트를 실제로 그릴 수 있다', () async {

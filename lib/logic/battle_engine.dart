@@ -93,7 +93,8 @@ class BattleEngine {
       final sex = LoreBattText.sexData(attacker.sex == Gender.female);
       return AttackResult(
         outcome: AttackOutcome.resisted,
-        message: '${LoreBattText.enemyResisted}$sex'
+        message:
+            '${LoreBattText.enemyResisted}$sex'
             '${LoreBattText.enemyResistedRest}',
       );
     }
@@ -107,7 +108,8 @@ class BattleEngine {
       final sex = LoreBattText.sexData(attacker.sex == Gender.female);
       return AttackResult(
         outcome: AttackOutcome.blocked,
-        message: '${LoreBattText.enemyBlocked}$sex'
+        message:
+            '${LoreBattText.enemyBlocked}$sex'
             '${LoreBattText.enemyBlockedRest}',
       );
     }

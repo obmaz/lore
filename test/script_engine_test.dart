@@ -1,7 +1,24 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
+import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/logic/lore_join.dart';
+
+/// 게임 본편과 같이 **현재 플래그**로 스크립트 컨텍스트를 만든다.
+/// 원작 좌표 이벤트의 1회성은 `party.etc` 비트로 관리되므로, 고정 컨텍스트로는
+/// 재진입 판정을 확인할 수 없다.
+ScriptContext _liveCtx() {
+  final flags = LoreDialogueManager.instance
+      .getFlagsCopy()
+      .entries
+      .where((e) => e.value)
+      .map((e) => e.key)
+      .toSet();
+  return ScriptContext(
+    flags: flags,
+    questSteps: LoreDialogueManager.instance.questSteps,
+  );
+}
 
 class _MissingBundle extends CachingAssetBundle {
   @override
@@ -30,7 +47,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 426);
+      expect(LoreScriptEngine.instance.scripts.length, 568);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -42,13 +59,25 @@ void main() {
     test('2. step 스크립트(금화 발견) 보상과 1회성', () async {
       await LoreScriptEngine.instance.load();
 
-      final run = LoreScriptEngine.instance.startStep(9, 10, 24, noCtx);
+      final run = LoreScriptEngine.instance.startStep(9, 10, 24, _liveCtx());
       expect(run, isNotNull);
       expect(run!.outcome.goldDelta, 5000);
       expect(run.hasPendingChoice, isFalse);
+      // 게임 화면과 같이 결과 플래그를 반영한다(원작 `party.etc[35] or bit1`).
+      for (final f in run.outcome.setFlags) {
+        LoreDialogueManager.instance.setFlag(f);
+      }
 
-      // 두 번째 진입에서는 once 스크립트가 다시 실행되지 않는다.
-      expect(LoreScriptEngine.instance.startStep(9, 10, 24, noCtx), isNull);
+      // 두 번째 진입에서는 원작 `party.etc` 비트가 켜져 다시 나오지 않는다.
+      // (게임과 같이 현재 플래그로 컨텍스트를 만들어 확인한다.)
+      expect(
+        LoreScriptEngine.instance
+                .startStep(9, 10, 24, _liveCtx())
+                ?.outcome
+                .goldDelta ??
+            0,
+        0,
+      );
       // 다른 좌표는 별개
       expect(
         LoreScriptEngine.instance.startStep(14, 6, 6, noCtx)!.outcome.goldDelta,
@@ -61,8 +90,15 @@ void main() {
             .goldDelta,
         1500,
       );
-      // 표에 없는 좌표는 null → 게임의 Dart 이벤트 로직으로 폴백
-      expect(LoreScriptEngine.instance.startStep(9, 11, 24, noCtx), isNull);
+      // 금화 좌표가 아닌 칸에는 금화 보상이 없다.
+      expect(
+        LoreScriptEngine.instance
+                .startStep(9, 11, 24, noCtx)
+                ?.outcome
+                .goldDelta ??
+            0,
+        0,
+      );
     });
 
     test('3. talk 스크립트의 선택지 분기 (Rigel)', () async {
