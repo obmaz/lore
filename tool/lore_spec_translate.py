@@ -301,7 +301,32 @@ def split_coords(cond: str):
     return coords, rest
 
 
+# 원작 `party.etc[N] bitM` ↔ 포트의 이름 있는 플래그
+# (`lib/game/lore_dialogue_manager.dart` 주석에 적힌 대응).
+ETC_FLAG_ALIAS = {
+    (16, 1): 'ancientEvilMet',
+    (16, 2): 'draconianMet',
+    (50, 5): 'menaceInfoGiven',
+    (50, 4): 'weaponRoomVisited',
+    (30, 1): 'loreChallengeAccepted',
+    (30, 2): 'loreChallengeBlessed',
+    (43, 4): 'programmerMet',
+    (44, 1): 'frostDragonDefeated',
+    (44, 2): 'dungeonOfEvilCleared',
+    (42, 7): 'ancientEvilSpeechGiven',
+    (42, 1): 'swampKeepBossDefeated',
+    (43, 3): 'evilShelterBossDefeated',
+    (45, 7): 'lavaLeverLeftPulled',
+    (45, 8): 'lavaLeverRightPulled',
+    (38, 1): 'specialMagicLearned',
+}
+
+
 def flag_name_for_bit(etc_n: int, bit: int) -> str:
+    if (etc_n, bit) in ETC_FLAG_ALIAS:
+        # 포트에 이미 이름이 붙은 플래그는 그 이름을 그대로 쓴다
+        # (다른 코드가 그 이름을 읽기 때문).
+        return ETC_FLAG_ALIAS[(etc_n, bit)]
     if etc_n in QUEST_BY_ETC:
         # 퀘스트 단계는 카운터이므로 비트 조건은 `>= n` 으로 옮긴다.
         return f'__quest_{etc_n}_bit{bit}'
@@ -869,7 +894,9 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         bits = list(ETC_BIT_SET.finditer(s))
         if bits:
             for m in bits:
-                ctx.add_step({'flag': f'etc{m.group(1)}_bit{m.group(2)}'})
+                ctx.add_step({
+                    'flag': flag_name_for_bit(int(m.group(1)), int(m.group(2)))
+                })
             continue
         m = ETC_BIT_CLR.search(s)
         if m:

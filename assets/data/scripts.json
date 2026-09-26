@@ -1360,7 +1360,7 @@
       "y": 16,
       "require": {
         "notAllFlags": [
-          "etc16_bit2",
+          "draconianMet",
           "etc5"
         ]
       },
@@ -1404,7 +1404,7 @@
                     "slot": 4
                   },
                   {
-                    "flag": "etc16_bit2"
+                    "flag": "draconianMet"
                   }
                 ]
               },
@@ -1438,7 +1438,7 @@
           "etc5"
         ],
         "notAllFlags": [
-          "etc16_bit2"
+          "draconianMet"
         ]
       },
       "disabled": true
@@ -1469,7 +1469,7 @@
       "y": 16,
       "require": {
         "allFlags": [
-          "etc16_bit2"
+          "draconianMet"
         ]
       },
       "disabled": true
@@ -5291,7 +5291,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc45_bit7"
+          "flag": "lavaLeverLeftPulled"
         },
         {
           "say": " 당신이 레버를 당기자  철컥하는 소리가 동굴"
@@ -5321,8 +5321,8 @@
       "y": 34,
       "require": {
         "allFlags": [
-          "etc45_bit7",
-          "etc45_bit8"
+          "lavaLeverLeftPulled",
+          "lavaLeverRightPulled"
         ]
       },
       "disabled": true
@@ -5334,7 +5334,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc45_bit7"
+          "flag": "lavaLeverLeftPulled"
         },
         {
           "say": " 당신이 레버를 당기자  철컥하는 소리가 동굴"
@@ -5347,8 +5347,8 @@
       "y": 34,
       "require": {
         "notAllFlags": [
-          "etc45_bit7",
-          "etc45_bit8"
+          "lavaLeverLeftPulled",
+          "lavaLeverRightPulled"
         ]
       },
       "disabled": true
@@ -5416,7 +5416,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc45_bit8"
+          "flag": "lavaLeverRightPulled"
         },
         {
           "say": " 당신이 레버를 당기자  철컥하는 소리가 동굴"
@@ -5446,8 +5446,8 @@
       "y": 34,
       "require": {
         "allFlags": [
-          "etc45_bit7",
-          "etc45_bit8"
+          "lavaLeverLeftPulled",
+          "lavaLeverRightPulled"
         ]
       },
       "disabled": true
@@ -5459,7 +5459,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc45_bit8"
+          "flag": "lavaLeverRightPulled"
         },
         {
           "say": " 당신이 레버를 당기자  철컥하는 소리가 동굴"
@@ -5472,8 +5472,8 @@
       "y": 34,
       "require": {
         "notAllFlags": [
-          "etc45_bit7",
-          "etc45_bit8"
+          "lavaLeverLeftPulled",
+          "lavaLeverRightPulled"
         ]
       },
       "disabled": true
@@ -12508,7 +12508,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc50_bit4"
+          "flag": "weaponRoomVisited"
         },
         {
           "nudge": {
@@ -12534,7 +12534,7 @@
       "y": 79,
       "require": {
         "notAllFlags": [
-          "etc50_bit4"
+          "weaponRoomVisited"
         ]
       },
       "note": "미지원: for i := 1 to 3 do begin; 미지원: Scroll(TRUE);; 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: soundon := FALSE;; 미지원: for i := y - 4 to y - 1 do begin; "
@@ -15070,14 +15070,14 @@
           "say": "만남이 기다리고 있을 것이오."
         },
         {
-          "flag": "etc16_bit1"
+          "flag": "ancientEvilMet"
         }
       ],
       "x": 20,
       "y": 39,
       "require": {
         "notAllFlags": [
-          "etc16_bit1"
+          "ancientEvilMet"
         ]
       },
       "note": "미지원: x := 46; y := 41;; 미지원: scroll(TRUE);; 미지원: aux := SoundOn; SoundOn := false;; 미지원: x := 48; y := 57;; 미지원: x := 82; y := 16;; 미지원: x := 16; y := 15;; 미지원: soundon := aux;"
@@ -15099,7 +15099,7 @@
       "y": 39,
       "require": {
         "allFlags": [
-          "etc16_bit1"
+          "ancientEvilMet"
         ]
       },
       "note": "미지원: x := 46; y := 41;; 미지원: scroll(TRUE);; 미지원: aux := SoundOn; SoundOn := false;; 미지원: x := 48; y := 57;; 미지원: x := 82; y := 16;; 미지원: x := 16; y := 15;; 미지원: soundon := aux;"
@@ -17759,8 +17759,8 @@
       "y": 52,
       "require": {
         "allFlags": [
-          "etc38_bit1",
-          "etc5"
+          "etc5",
+          "specialMagicLearned"
         ]
       }
     },
@@ -17778,7 +17778,7 @@
       "y": 52,
       "require": {
         "allFlags": [
-          "etc38_bit1"
+          "specialMagicLearned"
         ],
         "notAllFlags": [
           "etc38_bit2"
@@ -17876,7 +17876,7 @@
           "say": "대항할수 있을 것이오."
         },
         {
-          "flag": "etc38_bit1"
+          "flag": "specialMagicLearned"
         }
       ],
       "disabled": true,
@@ -17884,7 +17884,7 @@
       "y": 52,
       "require": {
         "notAllFlags": [
-          "etc38_bit1"
+          "specialMagicLearned"
         ]
       },
       "note": "미지원: for j := 47 to 57 do; 미지원: for i := 71 to 82 do; 조건 미지원: map[i,j] = 40; 미지원: map[i,j] := 50;"
@@ -18822,7 +18822,7 @@
           "flag": "etc42_bit4"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -18837,9 +18837,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -18866,7 +18866,7 @@
           "flag": "etc42_bit4"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -18884,8 +18884,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -18912,7 +18912,7 @@
           "flag": "etc42_bit4"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -18930,8 +18930,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -18958,7 +18958,7 @@
           "flag": "etc42_bit4"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -18977,7 +18977,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19001,7 +19001,7 @@
           "flag": "etc42_bit4"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19016,9 +19016,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19042,7 +19042,7 @@
           "flag": "etc42_bit4"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19060,8 +19060,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19085,7 +19085,7 @@
           "flag": "etc42_bit4"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19103,8 +19103,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19128,7 +19128,7 @@
           "flag": "etc42_bit4"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19147,7 +19147,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19171,7 +19171,7 @@
           "flag": "etc42_bit3"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19186,9 +19186,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19212,7 +19212,7 @@
           "flag": "etc42_bit3"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19230,8 +19230,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19255,7 +19255,7 @@
           "flag": "etc42_bit3"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19273,8 +19273,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19298,7 +19298,7 @@
           "flag": "etc42_bit3"
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19317,7 +19317,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19338,7 +19338,7 @@
           }
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19353,9 +19353,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19376,7 +19376,7 @@
           }
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19394,8 +19394,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19416,7 +19416,7 @@
           }
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19434,8 +19434,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19456,7 +19456,7 @@
           }
         },
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "teleport": {
@@ -19475,7 +19475,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19514,9 +19514,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19558,8 +19558,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19601,8 +19601,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19645,7 +19645,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19681,9 +19681,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19722,8 +19722,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19762,8 +19762,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19803,7 +19803,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19839,9 +19839,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19880,8 +19880,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19920,8 +19920,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19961,7 +19961,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -19994,9 +19994,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20032,8 +20032,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20069,8 +20069,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20107,7 +20107,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20131,7 +20131,7 @@
       "yMax": 46,
       "require": {
         "allFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20160,7 +20160,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "block": true
@@ -20171,9 +20171,9 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc42_bit1",
           "etc42_bit3",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20185,7 +20185,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "block": true
@@ -20199,8 +20199,8 @@
           "etc42_bit3"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit4"
+          "etc42_bit4",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20212,7 +20212,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "block": true
@@ -20226,8 +20226,8 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1",
-          "etc42_bit3"
+          "etc42_bit3",
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20239,7 +20239,7 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc42_bit1"
+          "flag": "swampKeepBossDefeated"
         },
         {
           "block": true
@@ -20254,7 +20254,7 @@
           "etc42_bit4"
         ],
         "notAllFlags": [
-          "etc42_bit1"
+          "swampKeepBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := 1;; 미지원: inc(j);; 조건 미지원: j = 1; 미지원: enemynumber := j+4;; 조건 미지원: enemy[1].dead; 조건 미지원: enemy[2].dead; 조건 미지원: enemy[1].dead and enemy[2].dead"
@@ -20276,7 +20276,7 @@
           "say": ", 나의 힘을 보여주겠다."
         },
         {
-          "flag": "etc43_bit3"
+          "flag": "evilShelterBossDefeated"
         },
         {
           "teleport": {
@@ -20291,7 +20291,7 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc43_bit3"
+          "evilShelterBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := random(5) + 42;; 조건 미지원: j = 42; 미지원: j := 35;; 적 배치(계산식): joinenemy(i, j); 조건 미지원: enemy[7].dead"
@@ -20325,7 +20325,7 @@
       "yMax": 46,
       "require": {
         "notAllFlags": [
-          "etc43_bit3"
+          "evilShelterBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := random(5) + 42;; 조건 미지원: j = 42; 미지원: j := 35;; 적 배치(계산식): joinenemy(i, j); 조건 미지원: enemy[7].dead"
@@ -20349,7 +20349,7 @@
       "yMax": 46,
       "require": {
         "allFlags": [
-          "etc43_bit3"
+          "evilShelterBossDefeated"
         ]
       },
       "note": "조건 미지원: wantexit; 미지원: j := random(5) + 42;; 조건 미지원: j = 42; 미지원: j := 35;; 적 배치(계산식): joinenemy(i, j); 조건 미지원: enemy[7].dead"

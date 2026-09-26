@@ -558,10 +558,16 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     넣는다(`disabled`). 현재 249개 중 **21개 좌표가 대체**, 나머지는 보관 상태다.
   - 실행할 수 없는 조건(`not (odd(...) and ...)`, `enemy[i].dead` 등)도 꺼 둔다.
   - `--spec` 은 이전에 생성해 넣은 `spec-*` 항목을 먼저 걷어내므로 **멱등**하다.
-* 남은 활성화 과제: 옮긴 쪽이 아직 `battle` 제목·`randomSteps`(퀴즈)·다단계 보스
-  (`enemy[i].dead`)·`setTileArea` 일부를 표현하지 못해 32개 좌표는 손으로 쓴
-  스크립트가 먼저 실행된다. 해당 스텝을 생성기에 추가하면 `--replace-ok` 로 넓힐 수
-  있다(`--spec` 로그의 `덧붙임` 항목이 목록).
+* 포트에 이미 이름이 붙은 상태 비트는 같은 이름으로 옮긴다
+  (`ETC_FLAG_ALIAS`: `etc[16] bit1`→`ancientEvilMet`, `etc[50] bit5`→`menaceInfoGiven`,
+  `etc[45] bit7/8`→`lavaLeverLeft/RightPulled` 등 15개). 나머지는 `etcN_bitM`.
+* 원작 퀴즈(`i := random(8); case i of ... end; if i < 4 then ... else ...`)는
+  포트의 `randomSteps` 8분기(문항 + 정답 여부에 따른 지도 변화)로 옮긴다.
+* 남은 활성화 과제: 옮긴 쪽이 아직 **전투 제목**(`battle.title`)·다단계 보스
+  (`enemy[i].dead` 재소환)·`require`에 쓰이는 자체 이름 플래그(`goldenSealFound`,
+  `oedipusSpearTaken`, `mummyRoomCleared` 등)를 표현하지 못해 약 30개 좌표는 손으로
+  쓴 스크립트가 먼저 실행된다. 해당 부분을 생성기에 추가하면 `--replace-ok` 로 넓힐
+  수 있다(`--spec` 로그의 `덧붙임` 항목이 목록).
 
 * 자동 추출: `python3 tool/export_lore_talk.py --report` (수동 필요 목록은
   `tool/lore_talk_report.txt`), `--emit <파일>`로 talk 스크립트 생성.
