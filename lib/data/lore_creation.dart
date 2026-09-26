@@ -239,9 +239,8 @@ class CreationClassOption {
     };
     // 8] 떠돌이는 원작에서 무조건 선택 가능하다(`transdata[8] := 1`).
     if (playerClass == PlayerClass.vagrant) return true;
-    final matches = RegExp(
-      r'(\w+)(?:\[\d\])?\s*(>=|<=|>|<|=)\s*(\d+)',
-    ).allMatches(condition);
+    final matches = RegExp(r'(\w+)(?:\[\d\])?\s*(>=|<=|>|<|=)\s*(\d+)')
+        .allMatches(condition);
     if (matches.isEmpty) return false;
     for (final m in matches) {
       final stat = m.group(1)!;

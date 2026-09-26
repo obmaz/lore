@@ -47,10 +47,7 @@ void main() {
         FieldMagicLogic.attackSpellMessage,
         '전투 모드가 아닐때는 공격 마법을 사용할 수 없습니다.',
       );
-      expect(
-        FieldMagicLogic.spNotEnoughMessage,
-        '그러나, 마법 지수가 충분하지 않습니다.',
-      );
+      expect(FieldMagicLogic.spNotEnoughMessage, '그러나, 마법 지수가 충분하지 않습니다.');
 
       // 개인 치료: level[2] div 2 + 1 (최대 7)
       expect(FieldMagicLogic.personalCureSlots(1), 1);
@@ -222,7 +219,10 @@ void main() {
       // 공간 이동: 1~9칸 (원작 입력 범위)
       expect(FieldMagicLogic.clampSpaceMoveDistance(0), 1);
       expect(FieldMagicLogic.clampSpaceMoveDistance(12), 9);
-      expect(FieldMagicLogic.spaceMoveTarget(20, 20, 1, 0, 5, 50, 50), (25, 20));
+      expect(FieldMagicLogic.spaceMoveTarget(20, 20, 1, 0, 5, 50, 50), (
+        25,
+        20,
+      ));
 
       // 지형 변화 타일 (원작 town:47 ground:41 den/keep:43)
       expect(FieldMagicLogic.terrainChangeTile('town'), 47);

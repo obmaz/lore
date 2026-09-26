@@ -69,11 +69,7 @@ void main() {
     final anyIndex = scripts.indexWhere((s) => s.id == 'talk-27-any');
     expect(anyIndex, greaterThan(-1));
     // 좌표별 스크립트가 전부 앞에 있어야 한다(find는 첫 일치를 실행).
-    for (final id in const [
-      'talk-27-15-6',
-      'talk-27-10-14',
-      'talk-27-21-12',
-    ]) {
+    for (final id in const ['talk-27-15-6', 'talk-27-10-14', 'talk-27-21-12']) {
       expect(
         scripts.indexWhere((s) => s.id == id),
         lessThan(anyIndex),

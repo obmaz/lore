@@ -328,8 +328,10 @@ void main() {
         10,
         const ScriptContext(flags: {'goldenSealFound'}),
       );
-      expect(again?.outcome.setFlags.contains('goldenSealFound') ?? false,
-          isFalse);
+      expect(
+        again?.outcome.setFlags.contains('goldenSealFound') ?? false,
+        isFalse,
+      );
     });
     test('13. 원작 보스전 (맵 17 Hidra / 맵 18 Huge Dragon) 이관', () async {
       await LoreScriptEngine.instance.load();
@@ -601,10 +603,14 @@ void main() {
       final engine = LoreScriptEngine.instance;
 
       // 마을 5곳(6/7/9/10/24)의 NPC 대사가 좌표 대화로 들어와 있다.
-      expect(engine.startTalk(6, 72, 73, noCtx)!.outcome.messages.single,
-          'Orc 는 가장 하급 괴물이오.');
-      expect(engine.startTalk(9, 24, 38, noCtx)!.outcome.messages.single,
-          contains('황금의 봉인'));
+      expect(
+        engine.startTalk(6, 72, 73, noCtx)!.outcome.messages.single,
+        'Orc 는 가장 하급 괴물이오.',
+      );
+      expect(
+        engine.startTalk(9, 24, 38, noCtx)!.outcome.messages.single,
+        contains('황금의 봉인'),
+      );
       expect(engine.startTalk(10, 11, 16, noCtx), isNotNull);
 
       // 주인공 이름이 들어가는 원작 대사는 {hero} 로 치환된다.
@@ -613,14 +619,11 @@ void main() {
           .toList();
       expect(byHero, isNotEmpty);
       expect(
-        byHero.first.steps.any(
-          (st) => (st.text ?? '').contains('{hero}'),
-        ),
+        byHero.first.steps.any((st) => (st.text ?? '').contains('{hero}')),
         isTrue,
       );
       // 대사가 있는 talk 스크립트는 79개 이상 이관되어 있다.
-      final talkCount =
-          engine.scripts.where((s) => s.trigger == 'talk').length;
+      final talkCount = engine.scripts.where((s) => s.trigger == 'talk').length;
       expect(talkCount, greaterThanOrEqualTo(88));
     });
   });

@@ -981,10 +981,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
-          '◆ $t ◆',
-          style: RetroTheme.headerFont.copyWith(fontSize: 15),
-        ),
+        Text('◆ $t ◆', style: RetroTheme.headerFont.copyWith(fontSize: 15)),
         const SizedBox(height: 10),
         Container(
           width: 460,
@@ -1064,10 +1061,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     final names = _profileTarget;
     return Column(
       children: [
-        Text(
-          t4(0),
-          style: RetroTheme.headerFont.copyWith(fontSize: 14),
-        ),
+        Text(t4(0), style: RetroTheme.headerFont.copyWith(fontSize: 14)),
         Text(
           t4(1),
           style: RetroTheme.dosFont.copyWith(
@@ -1141,8 +1135,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                             ),
                           ),
                           TextButton(
-                            onPressed: () =>
-                                setState(() => _profileTarget = c),
+                            onPressed: () => setState(() => _profileTarget = c),
                             child: Text(
                               t4(3),
                               style: RetroTheme.dosFont.copyWith(

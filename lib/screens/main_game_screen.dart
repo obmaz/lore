@@ -183,7 +183,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
       partyProvider: () => _party,
       mindReadCountProvider: () => _mindReadCount,
       scriptContextProvider: _scriptContext,
-      onScriptTalk: (run, tx, ty) => _driveScript(run, talkTargetX: tx, talkTargetY: ty),
+      onScriptTalk: (run, tx, ty) =>
+          _driveScript(run, talkTargetX: tx, talkTargetY: ty),
       onPortalRequested: (portal, tx, ty) =>
           _confirmPortalEntry(portal, tx, ty),
       onRecruitRequested: (recruit) => _requestJoinSlot(recruit),
@@ -1035,7 +1036,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       }
       final avgAgility =
           _battleEnemies.fold<int>(0, (a, e) => a + e.agility) ~/
-              _battleEnemies.length;
+          _battleEnemies.length;
       _addLog('${LoreBattText.enemyAgility} : $avgAgility');
       _addLog(LoreBattText.engage);
     });
@@ -1367,10 +1368,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   foregroundColor: RetroTheme.white,
                 ),
                 onPressed: _restartGame,
-                child: Text(
-                  LoreSubText.resumeGame,
-                  style: RetroTheme.dosFont,
-                ),
+                child: Text(LoreSubText.resumeGame, style: RetroTheme.dosFont),
               ),
               const SizedBox(height: 8),
               OutlinedButton(
@@ -1379,10 +1377,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   foregroundColor: RetroTheme.lightRed,
                 ),
                 onPressed: () => SystemNavigator.pop(),
-                child: Text(
-                  LoreSubText.endGame,
-                  style: RetroTheme.dosFont,
-                ),
+                child: Text(LoreSubText.endGame, style: RetroTheme.dosFont),
               ),
             ],
           ),

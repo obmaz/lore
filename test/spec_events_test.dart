@@ -28,10 +28,7 @@ void main() {
     );
     expect(seq.require.tileAtPlayerZero, isTrue);
     // 원작 `Print(13,' 당신들이 나를 없에겠다고 온자들인가?')` 문구가 살아 있다.
-    expect(
-      seq.steps.any((st) => st.text == ' 당신들이 나를 없에겠다고 온자들인가?'),
-      isTrue,
-    );
+    expect(seq.steps.any((st) => st.text == ' 당신들이 나를 없에겠다고 온자들인가?'), isTrue);
     expect(
       seq.steps.any((st) => st.text == ' 욱!!! 역시 너희들의 능력으로 여기까지 뚫고'),
       isTrue,
@@ -75,9 +72,7 @@ void main() {
       orElse: () => variants.first,
     );
     expect(
-      lecture.steps.any(
-        (st) => (st.text ?? '').contains('나는 Draconian이라고 하오'),
-      ),
+      lecture.steps.any((st) => (st.text ?? '').contains('나는 Draconian이라고 하오')),
       isTrue,
     );
   });

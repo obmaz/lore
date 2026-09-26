@@ -179,10 +179,7 @@ class FieldMagicLogic {
   }
 
   /// 원작 `RevitalizeOne(whom)`.
-  static MagicCastResult revitalizeOne(
-    PartyMember caster,
-    PartyMember target,
-  ) {
+  static MagicCastResult revitalizeOne(PartyMember caster, PartyMember target) {
     if (target.dead == 0) {
       return MagicCastResult(messages: ['${target.name}는 아직 살아 있습니다.']);
     }
@@ -383,11 +380,7 @@ class FieldMagicLogic {
       return const MagicCastResult(messages: [spNotEnoughMessage]);
     }
     caster.sp -= cost;
-    return MagicCastResult(
-      messages: [message],
-      spSpent: cost,
-      success: true,
-    );
+    return MagicCastResult(messages: [message], spSpent: cost, success: true);
   }
 
   /// 원작 5번: 기화 이동 (SP 25) - 2칸 이동 가능 여부 판정.

@@ -89,14 +89,17 @@ void main() {
       expect(ask.pendingChoice!.length, 2);
       final accepted = ask.choose(0).outcome;
       expect(accepted.setFlags, contains('loreChallengeAccepted'));
-      expect(accepted.tileChanges.length, 10); // map[49..53,52] + map[49..53,53]
       expect(
-        accepted.messages.join('\n'),
-        contains('진정한 이 세계에 발을 디디게'),
-      );
+        accepted.tileChanges.length,
+        10,
+      ); // map[49..53,52] + map[49..53,53]
+      expect(accepted.messages.join('\n'), contains('진정한 이 세계에 발을 디디게'));
 
       // 거절
-      final refused = engine.startTalk(6, 52, 51, lordahnCtx4)!.choose(1).outcome;
+      final refused = engine
+          .startTalk(6, 52, 51, lordahnCtx4)!
+          .choose(1)
+          .outcome;
       expect(refused.setFlags, isEmpty);
       expect(refused.messages.join('\n'), contains('다시 생각 해보십시오.'));
     });

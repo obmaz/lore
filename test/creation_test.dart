@@ -62,7 +62,9 @@ void main() {
   test('4. 계급 조건은 원작 판정식대로 평가된다', () async {
     await LoreCreationData.instance.load(force: true);
     final classes = LoreCreationData.instance.classes;
-    final knight = classes.firstWhere((c) => c.playerClass == PlayerClass.knight);
+    final knight = classes.firstWhere(
+      (c) => c.playerClass == PlayerClass.knight,
+    );
     final mage = classes.firstWhere((c) => c.playerClass == PlayerClass.mage);
 
     // 기사: strength>13, endurance>13, agility>11, accuracy>11
@@ -183,10 +185,7 @@ void main() {
   });
 
   test('7. JSON 이 없으면 내장 표(원문)로 폴백한다', () async {
-    await LoreCreationData.instance.load(
-      bundle: _MissingBundle(),
-      force: true,
-    );
+    await LoreCreationData.instance.load(bundle: _MissingBundle(), force: true);
     final d = LoreCreationData.instance;
     expect(d.usingJson, isFalse);
     expect(d.loadError, isNotNull);

@@ -88,10 +88,9 @@ class ScriptRequire {
       notMindReadOrLowEsp: json['notMindReadOrLowEsp'] == true,
       tileAtPlayerZero: json['tileAtPlayerZero'] == true,
       quests: quests,
-      allFlags:
-          (json['allFlags'] as List<dynamic>? ?? const []).cast<String>(),
-      notAllFlags:
-          (json['notAllFlags'] as List<dynamic>? ?? const []).cast<String>(),
+      allFlags: (json['allFlags'] as List<dynamic>? ?? const []).cast<String>(),
+      notAllFlags: (json['notAllFlags'] as List<dynamic>? ?? const [])
+          .cast<String>(),
     );
   }
 
@@ -550,6 +549,7 @@ class LoreScriptEngine {
     if (s == null) return null;
     return _start(s, ctx);
   }
+
   /// id 로 지정한 스크립트를 실행한다(포털의 `script` 필드 등).
   ScriptRun? startById(String id, ScriptContext ctx) {
     for (final s in _scripts) {
@@ -569,6 +569,7 @@ class LoreScriptEngine {
     if (s == null) return null;
     return _start(s, ctx);
   }
+
   ScriptRun _start(LoreScript s, ScriptContext ctx) {
     if (s.once) consumedScripts.add(s.id);
     return _execute(s, s.steps, const ScriptOutcome());
@@ -911,9 +912,7 @@ class LoreScriptEngine {
         matched = true;
       }
       if (m.containsKey('block')) {
-        steps.add(
-          ScriptStep(kind: 'block', block: m['block'] == true),
-        );
+        steps.add(ScriptStep(kind: 'block', block: m['block'] == true));
         matched = true;
       }
       if (m.containsKey('torch')) {

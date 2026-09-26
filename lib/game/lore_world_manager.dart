@@ -407,54 +407,110 @@ class LoreWorldManager {
     // JSON이 로드되었다면 JSON이 단일 소스이므로 내장 규칙은 쓰지 않는다.
     if (usingJsonRules) return null;
     if (mapId == 2) {
-      if (x == 31 && y == 44) { return '푯말에 쓰여있기로 ...\n          WIVERN 가는길'; }
-      if (x == 29 && y == 50) { return '푯말에 쓰여있기로 ...\n  북쪽 :\n       VALIANT PEOPLES 가는길\n  남쪽 :\n       GAIA TERRA 가는길'; }
-      if (x == 35 && y == 72) { return '푯말에 쓰여있기로 ...\n  북쪽 :\n       VALIANT PEOPLES 가는길\n  남쪽 :\n       GAIA TERRA 가는길'; }
-      if (x == 44 && y == 77) { return '푯말에 쓰여있기로 ...\n  북동쪽 :\n       QUAKE 가는길\n  남서쪽 :\n       GAIA TERRA 가는길'; }
+      if (x == 31 && y == 44) {
+        return '푯말에 쓰여있기로 ...\n          WIVERN 가는길';
+      }
+      if (x == 29 && y == 50) {
+        return '푯말에 쓰여있기로 ...\n  북쪽 :\n       VALIANT PEOPLES 가는길\n  남쪽 :\n       GAIA TERRA 가는길';
+      }
+      if (x == 35 && y == 72) {
+        return '푯말에 쓰여있기로 ...\n  북쪽 :\n       VALIANT PEOPLES 가는길\n  남쪽 :\n       GAIA TERRA 가는길';
+      }
+      if (x == 44 && y == 77) {
+        return '푯말에 쓰여있기로 ...\n  북동쪽 :\n       QUAKE 가는길\n  남서쪽 :\n       GAIA TERRA 가는길';
+      }
     }
     if (mapId == 6) {
-      if (x == 51 && y == 84) { return '푯말에 쓰여있기로 ...\n       여기는 `CASTLE LORE\'성\n         여러분을 환영합니다'; }
-      if (x == 24 && y == 31) { return '푯말에 쓰여있기로 ...\n             여기는 LORE 주점\n       여러분 모두를 환영합니다 !!'; }
-      if (x == 51 && y == 18) { return '푯말에 쓰여있기로 ...\n          LORE 왕립  죄수 수용소'; }
-      if (x == 52 && y == 18) { return '푯말에 쓰여있기로 ...\n          LORE 왕립  죄수 수용소'; }
+      if (x == 51 && y == 84) {
+        return '푯말에 쓰여있기로 ...\n       여기는 `CASTLE LORE\'성\n         여러분을 환영합니다';
+      }
+      if (x == 24 && y == 31) {
+        return '푯말에 쓰여있기로 ...\n             여기는 LORE 주점\n       여러분 모두를 환영합니다 !!';
+      }
+      if (x == 51 && y == 18) {
+        return '푯말에 쓰여있기로 ...\n          LORE 왕립  죄수 수용소';
+      }
+      if (x == 52 && y == 18) {
+        return '푯말에 쓰여있기로 ...\n          LORE 왕립  죄수 수용소';
+      }
     }
     if (mapId == 7) {
-      if (x == 39 && y == 68) { return '푯말에 쓰여있기로 ...\n        여기는 `LASTDITCH\'성\n         여러분을 환영합니다'; }
-      if (x == 39 && y == 8) { return '푯말에 쓰여있기로 ...\n       여기는 PYRAMID 의 입구'; }
-      if (x == 54 && y == 9) { return '푯말에 쓰여있기로 ...\n     여기는 GROUND GATE 의 입구'; }
+      if (x == 39 && y == 68) {
+        return '푯말에 쓰여있기로 ...\n        여기는 `LASTDITCH\'성\n         여러분을 환영합니다';
+      }
+      if (x == 39 && y == 8) {
+        return '푯말에 쓰여있기로 ...\n       여기는 PYRAMID 의 입구';
+      }
+      if (x == 54 && y == 9) {
+        return '푯말에 쓰여있기로 ...\n     여기는 GROUND GATE 의 입구';
+      }
     }
     if (mapId == 8) {
-      if (x == 39 && y == 67) { return '푯말에 쓰여있기로 ...\n      여기는`VALIANT PEOPLES\'성\n    우리의 미덕은 굽히지 않는 용기\n   우리는 어떤 악에도 굽히지 않는다'; }
+      if (x == 39 && y == 67) {
+        return '푯말에 쓰여있기로 ...\n      여기는`VALIANT PEOPLES\'성\n    우리의 미덕은 굽히지 않는 용기\n   우리는 어떤 악에도 굽히지 않는다';
+      }
       return '푯말에 쓰여있기로 ...\n     여기는 EVIL SEAL 의 입구';
     }
     if (mapId == 9) {
-      if (x == 24 && y == 26) { return '푯말에 쓰여있기로 ...\n       여기는 국왕의 보물 창고'; }
+      if (x == 24 && y == 26) {
+        return '푯말에 쓰여있기로 ...\n       여기는 국왕의 보물 창고';
+      }
       return '푯말에 쓰여있기로 ...\n         여기는 `GAIA TERRA\'성\n          여러분을 환영합니다';
     }
     if (mapId == 12) {
-      if (x == 24 && y == 68) { return '푯말에 쓰여있기로 ...\n               X 는 7'; }
-      if (x == 27 && y == 68) { return '푯말에 쓰여있기로 ...\n               Y 는 9'; }
-      if (x == 25 && y == 63) { return '푯말에 쓰여있기로 ...\n       바른 문의 번호는 X + Y'; }
-      if (x == 26 && y == 42) { return '푯말에 쓰여있기로 ...\n            Z 는 2 * Y + X'; }
-      if (x == 26 && y == 33) { return '푯말에 쓰여있기로 ...\n        패스코드 x 패스코드 는 Z 라면\n            패스코드는 무엇인가 ?'; }
+      if (x == 24 && y == 68) {
+        return '푯말에 쓰여있기로 ...\n               X 는 7';
+      }
+      if (x == 27 && y == 68) {
+        return '푯말에 쓰여있기로 ...\n               Y 는 9';
+      }
+      if (x == 25 && y == 63) {
+        return '푯말에 쓰여있기로 ...\n       바른 문의 번호는 X + Y';
+      }
+      if (x == 26 && y == 42) {
+        return '푯말에 쓰여있기로 ...\n            Z 는 2 * Y + X';
+      }
+      if (x == 26 && y == 33) {
+        return '푯말에 쓰여있기로 ...\n        패스코드 x 패스코드 는 Z 라면\n            패스코드는 무엇인가 ?';
+      }
     }
     if (mapId == 15) {
-      if (x == 26 && y == 63) { return '푯말에 쓰여있기로 ...\n            길의 마지막'; }
-      if (x == 22 && y == 15) { return '푯말에 쓰여있기로 ...\n     (12,15) 로 공간이동 하시오'; }
-      if (x == 11 && y == 14) { return '푯말에 쓰여있기로 ...\n     (13,7) 로 공간이동 하시오'; }
-      if (x == 27 && y == 14) { return '푯말에 쓰여있기로 ...\n   황금의 갑옷은 (45,19) 에 숨겨져있음'; }
+      if (x == 26 && y == 63) {
+        return '푯말에 쓰여있기로 ...\n            길의 마지막';
+      }
+      if (x == 22 && y == 15) {
+        return '푯말에 쓰여있기로 ...\n     (12,15) 로 공간이동 하시오';
+      }
+      if (x == 11 && y == 14) {
+        return '푯말에 쓰여있기로 ...\n     (13,7) 로 공간이동 하시오';
+      }
+      if (x == 27 && y == 14) {
+        return '푯말에 쓰여있기로 ...\n   황금의 갑옷은 (45,19) 에 숨겨져있음';
+      }
       return '푯말에 쓰여있기로 ...';
     }
     if (mapId == 17) {
-      if (x == 68 && y == 47) { return '푯말에 쓰여있기로 ...\n    하! 하! 하!  너는 우리에게 속았다'; }
-      if (x == 58 && y == 53) { return '푯말에 쓰여있기로 ...\n      이 게임을 만든 사람\n  : 동아 대학교 전기 공학과\n        92 학번  안 영기'; }
-      if (x == 51 && y == 30) { return '푯말에 쓰여있기로 ...\n       오른쪽 : Hidra 의 보물창고\n       왼  쪽 : Hidra 가 있는 방'; }
-      if (x == 66 && y == 13) { return '푯말에 쓰여있기로 ...\n     일찌감치 이 곳 탐험을 포기해라'; }
-      if (x == 9 && y == 28) { return '푯말에 쓰여있기로 ...\n         위쪽이 진짜 보물창고임'; }
+      if (x == 68 && y == 47) {
+        return '푯말에 쓰여있기로 ...\n    하! 하! 하!  너는 우리에게 속았다';
+      }
+      if (x == 58 && y == 53) {
+        return '푯말에 쓰여있기로 ...\n      이 게임을 만든 사람\n  : 동아 대학교 전기 공학과\n        92 학번  안 영기';
+      }
+      if (x == 51 && y == 30) {
+        return '푯말에 쓰여있기로 ...\n       오른쪽 : Hidra 의 보물창고\n       왼  쪽 : Hidra 가 있는 방';
+      }
+      if (x == 66 && y == 13) {
+        return '푯말에 쓰여있기로 ...\n     일찌감치 이 곳 탐험을 포기해라';
+      }
+      if (x == 9 && y == 28) {
+        return '푯말에 쓰여있기로 ...\n         위쪽이 진짜 보물창고임';
+      }
       return '푯말에 쓰여있기로 ...';
     }
     if (mapId == 19) {
-      if (x == 26 && y == 40) { return '푯말에 쓰여있기로 ...\n       이 길을 통과하고자하는 사람은\n     양측의 늪속에 있는 레버를 당기시오'; }
+      if (x == 26 && y == 40) {
+        return '푯말에 쓰여있기로 ...\n       이 길을 통과하고자하는 사람은\n     양측의 늪속에 있는 레버를 당기시오';
+      }
     }
     if (mapId == 23) {
       return '푯말에 쓰여있기로 ...\n      (25,27)에 있는 레버를 움직이면\n          성을 볼수 있을 것이오.\n             제작자 안 영기 씀';
@@ -1140,8 +1196,7 @@ class _FacilityRule {
     facility: json['facility'] as int,
   );
 
-  bool matches(int mapId, int px, int py) =>
-      map == mapId && x == px && y == py;
+  bool matches(int mapId, int px, int py) => map == mapId && x == px && y == py;
 
   int? match(int mapId, int px, int py) =>
       matches(mapId, px, py) ? facility : null;

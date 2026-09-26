@@ -213,7 +213,24 @@ class LoreSubText {
   static String magicName(int id) => magicNames[id] ?? magicNameDefault;
 
   static const Set<int> _josaE = {
-    2, 9, 10, 14, 15, 16, 18, 19, 20, 21, 25, 26, 27, 28, 32, 38, 40, 41,
+    2,
+    9,
+    10,
+    14,
+    15,
+    16,
+    18,
+    19,
+    20,
+    21,
+    25,
+    26,
+    27,
+    28,
+    32,
+    38,
+    40,
+    41,
   };
 
   /// 조사 `으`/`` (원작 `if magic in [2,9,10,...]`).

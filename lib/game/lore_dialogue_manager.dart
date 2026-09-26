@@ -134,7 +134,9 @@ class LoreDialogueManager {
       return etcBit(int.parse(bit.group(1)!), int.parse(bit.group(2)!));
     }
     final counter = _etcCounterFlagPattern.firstMatch(name);
-    if (counter != null) return (partyEtc[int.parse(counter.group(1)!)] ?? 0) != 0;
+    if (counter != null) {
+      return (partyEtc[int.parse(counter.group(1)!)] ?? 0) != 0;
+    }
     return false;
   }
 
