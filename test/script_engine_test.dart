@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 91);
+      expect(LoreScriptEngine.instance.scripts.length, 106);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -509,6 +509,84 @@ void main() {
       // 6) 맵 25 통로 개방 (15,34)/(36,34)
       final corridor = engine.startStep(25, 15, 34, noCtx)!;
       expect(corridor.outcome.tileAreas.length, 3);
+    });
+
+    test('17. 맵 20(DEN 7) 퀴즈 미로와 숨은 통로, 맵 22 상시 습격', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+
+      // 1) 퀴즈 행(y=91): 8개 문항 중 하나가 무작위로 나오고, 문이 함께 정해진다.
+      final quiz = engine.startStep(20, 30, 91, noCtx)!;
+      expect(quiz.outcome.messages.single, startsWith('문> '));
+      // 문은 항상 좌/우 중 한쪽만 열린다.
+      final doors = quiz.outcome.tileChanges
+          .where((t) => t.y == 88)
+          .toList();
+      expect(doors.length, 2);
+      expect(doors.map((t) => t.tile).toSet(), {0, 52});
+
+      // 2) 숨은 통로: 밟은 타일이 0일 때만 아래층으로 내려간다 (원작 y := 80).
+      final passage = engine.startStep(
+        20,
+        30,
+        88,
+        const ScriptContext(tileAtPlayer: 0),
+      )!;
+      expect(passage.outcome.teleportY, 80);
+      expect(passage.outcome.teleportKeepX, isTrue);
+      // 타일이 0이 아니면 필드로 퇴장한다.
+      final exit = engine.startStep(
+        20,
+        30,
+        88,
+        const ScriptContext(tileAtPlayer: 46),
+      )!;
+      expect(exit.outcome.teleportMap, 4);
+      expect(exit.outcome.teleportX, 82);
+
+      // 3) y=18 에서 마법의 횃불을 얻는다 (원작 etc[1] := 1).
+      expect(engine.startStep(20, 30, 18, noCtx)!.outcome.torchLit, isTrue);
+
+      // 4) y=48 Minotaur, y=13 거룡 → 진흙 인간 → 미궁의 주인 순서
+      expect(engine.startStep(20, 30, 48, noCtx)!.outcome.battleMonsters, [53]);
+      expect(
+        engine.startStep(20, 30, 13, noCtx)!.outcome.battleMonsters,
+        [54, 54, 54],
+      );
+      final mudmen = engine.startStep(
+        20,
+        30,
+        13,
+        const ScriptContext(flags: {'den7DragonsCleared'}),
+      )!;
+      expect(mudmen.outcome.battleMonsters.length, 7);
+      final master = engine.startStep(
+        20,
+        30,
+        13,
+        const ScriptContext(flags: {'den7DragonsCleared', 'den7MudmenCleared'}),
+      )!;
+      expect(master.outcome.battleMonsters.last, 57); // Astral Mud
+      // 미궁을 깨면 지상으로 돌아간다.
+      final back = engine.startStep(
+        20,
+        30,
+        13,
+        const ScriptContext(flags: {'den7MazeCleared'}),
+      )!;
+      expect(back.outcome.teleportMap, 4);
+
+      // 5) 맵 22 상시 습격: 좌표와 무관하게 Wraith 무리가 나오고 지형이 바뀐다.
+      final ambush = engine.startStep(22, 40, 10, noCtx)!;
+      expect(ambush.outcome.battleMonsters, [60, 60, 60, 60, 60]);
+      final tile = ambush.outcome.playerTiles.single;
+      expect(tile.ifZero, 40);
+      expect(tile.tile, 46);
+      // (25,18) 등 지정 이벤트가 우선한다.
+      expect(
+        engine.startStep(22, 25, 18, noCtx)!.outcome.battleMonsters.length,
+        6,
+      );
     });
   });
 }

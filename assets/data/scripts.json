@@ -2695,6 +2695,1368 @@
           }
         }
       ]
+    },
+    {
+      "id": "den7-quiz-y91",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 91,
+      "yMax": 91,
+      "once": false,
+      "steps": [
+        {
+          "randomSteps": [
+            [
+              {
+                "say": "문> CONFIG.SYS가 없으면 부팅이 안된다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 91,
+                  "yMax": 91,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Quick-BASIC은 인터프리터어 이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 91,
+                  "yMax": 91,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Super VGA는 호환이 잘된다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 91,
+                  "yMax": 91,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 8-bit APPLE의 CPU는 Z - 80 이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 91,
+                  "yMax": 91,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> COMMAND.COM 안에 도스 명령이 들어있다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 91,
+                  "yMax": 91,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> AdLib 카드는 9 채널이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 91,
+                  "yMax": 91,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Ultima의 제작자는 리차드 게리오트이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 91,
+                  "yMax": 91,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 당신의 컴퓨터는 IBM 계열이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 91,
+                  "yMax": 91,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 88,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 88,
+                  "tile": 52
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "den7-quiz-y75",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 75,
+      "yMax": 75,
+      "once": false,
+      "steps": [
+        {
+          "randomSteps": [
+            [
+              {
+                "say": "문> 태양계의 제 4 혹성은 지구이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 75,
+                  "yMax": 75,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 북극성이 가장 밝은 별이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 75,
+                  "yMax": 75,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 1월의 수호성좌는 1월에 볼수있다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 75,
+                  "yMax": 75,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 빛보다 빠른 입자는 실험상 없었다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 75,
+                  "yMax": 75,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 52
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 0
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 달이 지구보다 먼저 생겨났다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 75,
+                  "yMax": 75,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 시그너스 X1은 블랙홀이다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 75,
+                  "yMax": 75,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 과거로의 타임머신은 불가능하다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 75,
+                  "yMax": 75,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 52
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 북극성은 주기적으로 달라진다"
+              },
+              {
+                "setTileArea": {
+                  "xMin": 23,
+                  "xMax": 26,
+                  "yMin": 75,
+                  "yMax": 75,
+                  "tile": 44
+                }
+              },
+              {
+                "setTile": {
+                  "x": 8,
+                  "y": 71,
+                  "tile": 0
+                }
+              },
+              {
+                "setTile": {
+                  "x": 43,
+                  "y": 71,
+                  "tile": 52
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "den7-quiz-y54",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 54,
+      "yMax": 54,
+      "once": false,
+      "steps": [
+        {
+          "randomSteps": [
+            [
+              {
+                "say": "문> 이 게임의 배경은 4개의 대륙이다"
+              },
+              {
+                "choice": {
+                  "prompt": "위의 말은 ?",
+                  "options": [
+                    {
+                      "text": "위의 말은 옳다",
+                      "steps": [
+                        {
+                          "say": "정답이다!"
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 54,
+                            "yMax": 54,
+                            "tile": 44
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 22,
+                            "xMax": 22,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 25
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 26,
+                            "xMax": 26,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 23
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 44
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "위의 말은 잘못되었다",
+                      "steps": [
+                        {
+                          "say": "오답이다!"
+                        },
+                        {
+                          "teleport": {
+                            "map": 4,
+                            "x": 82,
+                            "y": 17
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Ancient Evil은 응징되어야 한다"
+              },
+              {
+                "choice": {
+                  "prompt": "위의 말은 ?",
+                  "options": [
+                    {
+                      "text": "위의 말은 옳다",
+                      "steps": [
+                        {
+                          "say": "정답이다!"
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 54,
+                            "yMax": 54,
+                            "tile": 44
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 22,
+                            "xMax": 22,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 25
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 26,
+                            "xMax": 26,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 23
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 44
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "위의 말은 잘못되었다",
+                      "steps": [
+                        {
+                          "say": "오답이다!"
+                        },
+                        {
+                          "teleport": {
+                            "map": 4,
+                            "x": 82,
+                            "y": 17
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Lord Ahn만이 유일한 Semi-God이다"
+              },
+              {
+                "choice": {
+                  "prompt": "위의 말은 ?",
+                  "options": [
+                    {
+                      "text": "위의 말은 옳다",
+                      "steps": [
+                        {
+                          "say": "정답이다!"
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 54,
+                            "yMax": 54,
+                            "tile": 44
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 22,
+                            "xMax": 22,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 25
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 26,
+                            "xMax": 26,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 23
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 44
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "위의 말은 잘못되었다",
+                      "steps": [
+                        {
+                          "say": "오답이다!"
+                        },
+                        {
+                          "teleport": {
+                            "map": 4,
+                            "x": 82,
+                            "y": 17
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 이 세계의 모든 악은 응징되어야 한다"
+              },
+              {
+                "choice": {
+                  "prompt": "위의 말은 ?",
+                  "options": [
+                    {
+                      "text": "위의 말은 옳다",
+                      "steps": [
+                        {
+                          "say": "정답이다!"
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 54,
+                            "yMax": 54,
+                            "tile": 44
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 22,
+                            "xMax": 22,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 25
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 26,
+                            "xMax": 26,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 23
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 44
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "위의 말은 잘못되었다",
+                      "steps": [
+                        {
+                          "say": "오답이다!"
+                        },
+                        {
+                          "teleport": {
+                            "map": 4,
+                            "x": 82,
+                            "y": 17
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 이 게임의 제작자는 안 영기이다"
+              },
+              {
+                "choice": {
+                  "prompt": "위의 말은 ?",
+                  "options": [
+                    {
+                      "text": "위의 말은 옳다",
+                      "steps": [
+                        {
+                          "say": "정답이다!"
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 54,
+                            "yMax": 54,
+                            "tile": 44
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 22,
+                            "xMax": 22,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 25
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 26,
+                            "xMax": 26,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 23
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 44
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "위의 말은 잘못되었다",
+                      "steps": [
+                        {
+                          "say": "오답이다!"
+                        },
+                        {
+                          "teleport": {
+                            "map": 4,
+                            "x": 82,
+                            "y": 17
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> 게임속의 인물은 거의 별의 이름을 가졌다"
+              },
+              {
+                "choice": {
+                  "prompt": "위의 말은 ?",
+                  "options": [
+                    {
+                      "text": "위의 말은 옳다",
+                      "steps": [
+                        {
+                          "say": "정답이다!"
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 54,
+                            "yMax": 54,
+                            "tile": 44
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 22,
+                            "xMax": 22,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 25
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 26,
+                            "xMax": 26,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 23
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 44
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "위의 말은 잘못되었다",
+                      "steps": [
+                        {
+                          "say": "오답이다!"
+                        },
+                        {
+                          "teleport": {
+                            "map": 4,
+                            "x": 82,
+                            "y": 17
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Necromancer는 신의 경지에 이르렀다"
+              },
+              {
+                "choice": {
+                  "prompt": "위의 말은 ?",
+                  "options": [
+                    {
+                      "text": "위의 말은 옳다",
+                      "steps": [
+                        {
+                          "say": "정답이다!"
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 54,
+                            "yMax": 54,
+                            "tile": 44
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 22,
+                            "xMax": 22,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 25
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 26,
+                            "xMax": 26,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 23
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 44
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "위의 말은 잘못되었다",
+                      "steps": [
+                        {
+                          "say": "오답이다!"
+                        },
+                        {
+                          "teleport": {
+                            "map": 4,
+                            "x": 82,
+                            "y": 17
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            [
+              {
+                "say": "문> Necromancer는 이 세계의 존재가 아니었다"
+              },
+              {
+                "choice": {
+                  "prompt": "위의 말은 ?",
+                  "options": [
+                    {
+                      "text": "위의 말은 옳다",
+                      "steps": [
+                        {
+                          "say": "정답이다!"
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 54,
+                            "yMax": 54,
+                            "tile": 44
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 22,
+                            "xMax": 22,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 25
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 26,
+                            "xMax": 26,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 23
+                          }
+                        },
+                        {
+                          "setTileArea": {
+                            "xMin": 23,
+                            "xMax": 25,
+                            "yMin": 49,
+                            "yMax": 52,
+                            "tile": 44
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "위의 말은 잘못되었다",
+                      "steps": [
+                        {
+                          "say": "오답이다!"
+                        },
+                        {
+                          "teleport": {
+                            "map": 4,
+                            "x": 82,
+                            "y": 17
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "den7-passage-y88",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 88,
+      "yMax": 88,
+      "once": false,
+      "require": {
+        "tileAtPlayerZero": true
+      },
+      "steps": [
+        {
+          "say": "바닥이 열리며 아래층으로 내려섰다."
+        },
+        {
+          "teleport": {
+            "y": 80,
+            "keepX": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "den7-exit-y88",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 88,
+      "yMax": 88,
+      "once": false,
+      "steps": [
+        {
+          "teleport": {
+            "map": 4,
+            "x": 82,
+            "y": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "den7-passage-y71",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 71,
+      "yMax": 71,
+      "once": false,
+      "require": {
+        "tileAtPlayerZero": true
+      },
+      "steps": [
+        {
+          "say": "바닥이 열리며 아래층으로 내려섰다."
+        },
+        {
+          "teleport": {
+            "y": 63,
+            "keepX": true
+          }
+        }
+      ]
+    },
+    {
+      "id": "den7-exit-y71",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 71,
+      "yMax": 71,
+      "once": false,
+      "steps": [
+        {
+          "teleport": {
+            "map": 4,
+            "x": 82,
+            "y": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "den7-torch-y18",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 18,
+      "yMax": 18,
+      "once": false,
+      "steps": [
+        {
+          "torch": true
+        }
+      ]
+    },
+    {
+      "id": "den7-minotaur-y48",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 48,
+      "yMax": 48,
+      "once": true,
+      "require": {
+        "flagNot": "den7MinotaurCleared"
+      },
+      "title": "미궁의 수문장",
+      "steps": [
+        {
+          "say": "미궁의 수문장 Minotaur 가 앞을 막아선다 !"
+        },
+        {
+          "battle": {
+            "title": "미궁의 수문장",
+            "monsters": [
+              53
+            ]
+          }
+        },
+        {
+          "flag": "den7MinotaurCleared"
+        }
+      ]
+    },
+    {
+      "id": "den7-dragons-y13",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 13,
+      "yMax": 13,
+      "once": true,
+      "require": {
+        "flagNot": "den7DragonsCleared"
+      },
+      "title": "미궁의 수호룡",
+      "steps": [
+        {
+          "say": "세 마리의 Dragon 이 미궁의 끝을 지키고 있다 !"
+        },
+        {
+          "battle": {
+            "title": "미궁의 수호룡",
+            "monsters": [
+              54,
+              54,
+              54
+            ]
+          }
+        },
+        {
+          "flag": "den7DragonsCleared"
+        }
+      ]
+    },
+    {
+      "id": "den7-mudmen-y13",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 13,
+      "yMax": 13,
+      "once": true,
+      "require": {
+        "flag": "den7DragonsCleared",
+        "flagNot": "den7MudmenCleared"
+      },
+      "title": "진흙 인간 무리",
+      "steps": [
+        {
+          "say": "진흙 인간들이 떼를 지어 달려든다 !"
+        },
+        {
+          "battle": {
+            "title": "진흙 인간 무리",
+            "monsters": [
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              31
+            ]
+          }
+        },
+        {
+          "flag": "den7MudmenCleared"
+        }
+      ]
+    },
+    {
+      "id": "den7-master-y13",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 13,
+      "yMax": 13,
+      "once": true,
+      "require": {
+        "flag": "den7MudmenCleared",
+        "flagNot": "den7MazeCleared"
+      },
+      "title": "미궁의 주인",
+      "steps": [
+        {
+          "say": "미궁의 주인이 진흙 인간들을 거느리고 나타났다 !"
+        },
+        {
+          "battle": {
+            "title": "미궁의 주인",
+            "monsters": [
+              31,
+              31,
+              31,
+              31,
+              31,
+              31,
+              57
+            ]
+          }
+        },
+        {
+          "flag": "den7MazeCleared"
+        }
+      ]
+    },
+    {
+      "id": "den7-return-y13",
+      "trigger": "step",
+      "map": 20,
+      "yMin": 13,
+      "yMax": 13,
+      "once": false,
+      "require": {
+        "flag": "den7MazeCleared"
+      },
+      "steps": [
+        {
+          "say": "미궁의 주인을 물리쳤다. 지상으로 돌아가자."
+        },
+        {
+          "teleport": {
+            "map": 4,
+            "x": 82,
+            "y": 17
+          }
+        }
+      ]
+    },
+    {
+      "id": "keep2-ambush-zone-a",
+      "trigger": "step",
+      "map": 22,
+      "yMin": 1,
+      "yMax": 45,
+      "once": false,
+      "require": {
+        "flagNot": "keep2AmbushCleared"
+      },
+      "steps": [
+        {
+          "battle": {
+            "title": "암흑의 성채",
+            "monsters": [
+              60,
+              60,
+              60,
+              60,
+              60
+            ]
+          }
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 46,
+            "ifZero": 40
+          }
+        }
+      ]
+    },
+    {
+      "id": "keep2-ambush-zone-b",
+      "trigger": "step",
+      "map": 22,
+      "yMin": 47,
+      "yMax": 99,
+      "once": false,
+      "require": {
+        "flagNot": "keep2AmbushCleared"
+      },
+      "steps": [
+        {
+          "battle": {
+            "title": "암흑의 성채",
+            "monsters": [
+              60,
+              60,
+              60,
+              60,
+              60
+            ]
+          }
+        },
+        {
+          "setTileAtPlayer": {
+            "tile": 46,
+            "ifZero": 40
+          }
+        }
+      ]
     }
   ]
 }

@@ -497,18 +497,27 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
    **46건 모두** 커버한다. 자동 점검: `python3 tool/audit_lorespec.py
    repo_source/LORE_1993_src/LORESPEC.PAS --coverage` (미커버가 있으면 종료코드 1).
    - 맵 18 LOCKUP: (22,41) 통로 교체, (21,41) 수문장 Minotaur 전투
-   - 맵 21 SWAMP KEEP: (25,20) 봉인문(두 봉인 퍼즐이 모두 풀려야 열림, 아니면 `nudge`)
-   - 맵 22 KEEP2: (25,18) Wraith 5 + Death Knight, (y=25, x=24~26) 수문장 5명
-   - 맵 23 KEEP3: (25,27) 함정 해제 + `ifZero` 영역 타일 변환
-   - 맵 25 K_DEN2: (5,34)/(46,34) 열쇠 두 개(순서 무관) → 봉인문 개방,
-     (15,34)/(36,34) 통로 개방
-   - 맵 19: 잘못된 방/수호 무리 전투 후 **밟은 칸 봉쇄**(`setTileAtPlayer`),
-     맵 12: `y=10` 함정이 **플레이어가 선 열**을 막는다(`setTileArea.atPlayerX`)
-   - 남은 차이는 전투 개체 수가 난수인 경우의 실제 수치뿐이며, `battle.random`
-     으로 원작 범위(`random(3)+3` 등)를 그대로 쓴다.
-7. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
+   - 맵 19 EVIL GOD: 레버 2개 → 일곱 방 중 하나를 무작위로 뽑는 봉인 퍼즐,
+     잘못된 방/수호 무리 전투 후 밟은 칸 봉쇄(`setTileAtPlayer`)
+   - 맵 20 DEN 7 (**퀴즈 미로**): y=91/75 문항 무작위 뽑기(`randomSteps`) + 좌/우 문,
+     y=54 옳다/틀리다 선택 문제, y=88/71 숨은 통로(`tileAtPlayerZero` + `keepX` 이동),
+     y=18 횃불 지급, y=48 Minotaur, y=13 거룡 → 진흙 인간 → Astral Mud 3연전
+   - 맵 21 SWAMP KEEP: (25,20) 봉인문(두 퍼즐이 모두 풀려야 열림)
+   - 맵 22 KEEP2: (25,18) Wraith 5 + Death Knight, (y=25) 수문장 5명,
+     그 외 좌표는 상시 습격(`else` 분기 그대로 — y=46 출구 행만 제외)
+   - 맵 23/25: 함정 해제·열쇠 두 개(순서 무관)·통로 개방
+   - 맵 12: 수수께끼 문, `y=10` 함정(플레이어가 선 열 차단)
+   - 맵 17: `y=38` 통로 + (56,93) 이동, `x=72` 지름길
+7. **알려진 편차(원작과 다른 점)**
+   - 전투 승리 여부에 따라 갈리는 이동(예: 미궁의 주인 격파 시에만 퇴장)은
+     스크립트가 전투 결과를 기다리지 못하므로, 격파를 플래그로 표시한 뒤 **다음
+     걸음에 이동**하도록 옮겼다.
+   - 마법의 횃불 소모는 원작이 특정 구역(`x 8~42`, `y 19~43`)에서만 줄지만,
+     이식편은 모든 걸음에서 줄인다.
+   - 맵 20 퀴즈의 `delay(3000)`/`PressAnyKey` 연출은 메시지 로그로 대체했다.
+8. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
    아니므로 이식 대상에서 제외한다.
-8. **근사 이벤트 정리** ✅ 완료: `lib/game/lore_dungeon_event_manager.dart`에 있던
+9. **근사 이벤트 정리** ✅ 완료: `lib/game/lore_dungeon_event_manager.dart`에 있던
    임의 좌표 보스전·보물상자(7의 배수 좌표) 연출을 제거하고, 그 자리는 원작 좌표를
    쓴 `scripts.json`으로 대체했다. 현재 Dart 쪽에 남은 것은 `findgold` 표(폴백용)와
    맵 1 식량 발견뿐이다.
@@ -527,7 +536,7 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 | `items.json` | 무기 10 / 방패 6 / 갑옷 6 (위력·가격) | `LoreData.instance.weapon/shield/armor(id)` |
 | `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
 | `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
-| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (91건) | `LoreScriptEngine.instance` |
+| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (106건) | `LoreScriptEngine.instance` |
 | `portals.json` | 맵 연결(포털 30) + 표지판 문구 (21) | `LoreWorldManager.instance.findPortal/getSignMessage` |
 | `dialogues.json` | 좌표 기반 NPC 대사 (30) | `LoreDialogueManager.instance.getDialogue` |
 
@@ -576,6 +585,11 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
   삼고, `ifZero: v`면 현재 타일이 0일 때만 바꾼다.
 * `setTileAtPlayer` 스텝: 플레이어가 밟고 있는 칸을 바꾼다(`map[x,y] := v`).
 * `nudge` 스텝: `{"dx": 0, "dy": 1}` 로 플레이어를 한 칸 민다(원작 `inc(y)`/`dec(y)`).
+* `randomSteps` 스텝: 여러 스텝 목록 중 **하나를 무작위로 골라 실행**한다
+  (원작 퀴즈 미로처럼 문항과 효과가 함께 정해져야 하는 경우).
+* `teleport` 의 `keepX`/`keepY`: 한 축만 바꾸고 나머지는 그대로 둔다(원작 `y := 80`).
+* `torch` 스텝: 마법의 횃불을 켠다(원작 `party.etc[1] := 1`).
+* `require.tileAtPlayerZero`: 플레이어가 밟은 타일이 0일 때만 발동(원작 `map[x,y] = 0`).
 * `randomFlag` 스텝: 이름 목록 중 하나를 무작위로 세운다
   (원작 `party.etc[40] := (random(7)+1) shl 1` 같은 "방 번호 뽑기").
 * `battle` 스텝의 `random`: `{"pool": [59], "min": 3, "max": 5}` 로

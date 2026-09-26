@@ -266,6 +266,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
       mindReadActive: _mindReadCount > 0,
       maxEspLevel: maxEsp,
       flags: flags,
+      // 원작 `map[x,y]` 판정(숨은 통로 등)을 위해 밟은 타일을 넘긴다.
+      tileAtPlayer: _game.currentMap?.getTile(_game.playerX, _game.playerY),
     );
   }
 
@@ -444,16 +446,22 @@ class _MainGameScreenState extends State<MainGameScreen> {
       setState(() {});
     }
 
-    // 강제 이동 (원작 `x := ..; y := ..` / map 변경)
+    // 강제 이동 (원작 `x := ..; y := ..` / `map 변경`)
     if (outcome.teleportX != null && outcome.teleportY != null) {
       final targetMap = outcome.teleportMap ?? _game.currentMapId;
       _game.loadMapById(
         targetMap,
-        startX: outcome.teleportX!,
-        startY: outcome.teleportY!,
+        startX: outcome.teleportKeepX ? _game.playerX : outcome.teleportX!,
+        startY: outcome.teleportKeepY ? _game.playerY : outcome.teleportY!,
       );
       setState(() {});
       _addLog('▶ (${outcome.teleportX}, ${outcome.teleportY}) 위치로 이동했습니다.');
+    }
+
+    // 마법의 횃불 (원작 `party.etc[1] := 1`)
+    if (outcome.torchLit && _torchSteps <= 0) {
+      setState(() => _torchSteps = 40);
+      _addLog('🔥 마법의 횃불이 어둠을 밝힙니다.');
     }
 
     if (outcome.battleMonsters.isNotEmpty) {

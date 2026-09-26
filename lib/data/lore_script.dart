@@ -44,12 +44,16 @@ class ScriptRequire {
   final int? minEspLevel;
   final bool notMindReadOrLowEsp;
 
+  /// 플레이어가 밟고 있는 타일이 0일 때만 발동한다(원작 `if map[x,y] = 0`).
+  final bool tileAtPlayerZero;
+
   const ScriptRequire({
     this.flag,
     this.flagNot,
     this.mindRead = false,
     this.minEspLevel,
     this.notMindReadOrLowEsp = false,
+    this.tileAtPlayerZero = false,
   });
 
   factory ScriptRequire.fromJson(Map<String, dynamic>? json) {
@@ -60,6 +64,7 @@ class ScriptRequire {
       mindRead: json['mindRead'] == true,
       minEspLevel: json['minEspLevel'] as int?,
       notMindReadOrLowEsp: json['notMindReadOrLowEsp'] == true,
+      tileAtPlayerZero: json['tileAtPlayerZero'] == true,
     );
   }
 }
@@ -70,10 +75,14 @@ class ScriptContext {
   final int maxEspLevel;
   final Set<String> flags;
 
+  /// 플레이어가 지금 밟고 있는 타일 값(원작 `map[x,y]` 판정용, 모르면 null).
+  final int? tileAtPlayer;
+
   const ScriptContext({
     this.mindReadActive = false,
     this.maxEspLevel = 0,
     this.flags = const {},
+    this.tileAtPlayer,
   });
 }
 
@@ -118,6 +127,17 @@ class ScriptStep {
   final int? tileX;
   final int? tileY;
   final int? tileValue;
+
+  /// teleport 스텝에서 x/y를 그대로 둔다 (원작 `y := 80` 처럼 한 축만 바꿈).
+  final bool teleportKeepX;
+  final bool teleportKeepY;
+
+  /// randomSteps 스텝: 여러 스텝 목록 중 하나를 무작위로 골라 실행한다
+  /// (원작 퀴즈 미로의 문항 뽑기처럼 메시지와 효과가 같이 정해져야 하는 경우).
+  final List<List<ScriptStep>>? randomBranches;
+
+  /// torch 스텝: 마법의 횃불을 켠다 (원작 `party.etc[1] := 1`).
+  final bool torchLit;
 
   /// equip 스텝 (장비 지급): 원작 `weapon := 3; wea_power := 12` 등.
   final String? equipKind; // weapon | shield | armor
@@ -172,6 +192,10 @@ class ScriptStep {
     this.tileX,
     this.tileY,
     this.tileValue,
+    this.teleportKeepX = false,
+    this.teleportKeepY = false,
+    this.randomBranches,
+    this.torchLit = false,
     this.equipKind,
     this.equipIndex,
     this.equipPower,
@@ -258,6 +282,13 @@ class ScriptOutcome {
   final int? teleportX;
   final int? teleportY;
 
+  /// 한 축만 바꾸는 이동인지(원작 `y := 80`).
+  final bool teleportKeepX;
+  final bool teleportKeepY;
+
+  /// 마법의 횃불을 켰는지 (원작 `party.etc[1] := 1`).
+  final bool torchLit;
+
   /// 지형 변형 목록 (원작 `map[x,y] := 값`).
   final List<({int? map, int x, int y, int tile, int? ifZero})> tileChanges;
 
@@ -302,6 +333,9 @@ class ScriptOutcome {
     this.teleportMap,
     this.teleportX,
     this.teleportY,
+    this.teleportKeepX = false,
+    this.teleportKeepY = false,
+    this.torchLit = false,
     this.tileChanges = const [],
     this.tileAreas = const [],
     this.playerTiles = const [],
@@ -448,6 +482,9 @@ class LoreScriptEngine {
     var teleportMap = acc.teleportMap;
     var teleportX = acc.teleportX;
     var teleportY = acc.teleportY;
+    var teleportKeepX = acc.teleportKeepX;
+    var teleportKeepY = acc.teleportKeepY;
+    var torchLit = acc.torchLit;
     var tileChanges =
         List<({int? map, int x, int y, int tile, int? ifZero})>.from(
           acc.tileChanges,
@@ -473,8 +510,18 @@ class LoreScriptEngine {
         >.from(acc.equips);
     var events = List<ScriptEvent>.from(acc.events);
 
-    for (var i = 0; i < steps.length; i++) {
-      final step = steps[i];
+    // `randomSteps` 분기를 펼치기 위해 실행 목록을 큐로 다룬다.
+    final queue = List<ScriptStep>.from(steps);
+    for (var i = 0; i < queue.length; i++) {
+      final step = queue[i];
+      if (step.kind == 'randomSteps') {
+        final branches = step.randomBranches ?? const [];
+        if (branches.isNotEmpty) {
+          final picked = branches[_random.nextInt(branches.length)];
+          queue.insertAll(i + 1, picked);
+        }
+        continue;
+      }
       switch (step.kind) {
         case 'say':
           messages.add(step.text!);
@@ -512,6 +559,11 @@ class LoreScriptEngine {
           teleportMap = step.teleportMap;
           teleportX = step.tileX;
           teleportY = step.tileY;
+          teleportKeepX = step.teleportKeepX;
+          teleportKeepY = step.teleportKeepY;
+          break;
+        case 'torch':
+          torchLit = true;
           break;
         case 'setTile':
           tileChanges.add((
@@ -564,7 +616,7 @@ class LoreScriptEngine {
         case 'choice':
           final run = ScriptRun._(
             script,
-            steps.sublist(i + 1),
+            queue.sublist(i + 1),
             ScriptOutcome(
               messages: messages,
               goldDelta: gold,
@@ -576,6 +628,9 @@ class LoreScriptEngine {
               teleportMap: teleportMap,
               teleportX: teleportX,
               teleportY: teleportY,
+              teleportKeepX: teleportKeepX,
+              teleportKeepY: teleportKeepY,
+              torchLit: torchLit,
               tileChanges: tileChanges,
               tileAreas: tileAreas,
               playerTiles: playerTiles,
@@ -605,6 +660,9 @@ class LoreScriptEngine {
         teleportMap: teleportMap,
         teleportX: teleportX,
         teleportY: teleportY,
+        teleportKeepX: teleportKeepX,
+        teleportKeepY: teleportKeepY,
+        torchLit: torchLit,
         tileChanges: tileChanges,
         tileAreas: tileAreas,
         playerTiles: playerTiles,
@@ -620,6 +678,8 @@ class LoreScriptEngine {
     if (r.flagNot != null && ctx.flags.contains(r.flagNot)) return false;
     if (r.mindRead && !ctx.mindReadActive) return false;
     if (r.minEspLevel != null && ctx.maxEspLevel < r.minEspLevel!) return false;
+    // 원작 `if map[x,y] = 0 then ...` 같은 밟은 타일 판정.
+    if (r.tileAtPlayerZero && ctx.tileAtPlayer != 0) return false;
     if (r.notMindReadOrLowEsp) return false; // 안내용 스크립트는 위에서 처리
     return true;
   }
@@ -684,10 +744,23 @@ class LoreScriptEngine {
           ScriptStep(
             kind: 'teleport',
             teleportMap: t['map'] as int?,
-            tileX: t['x'] as int,
-            tileY: t['y'] as int,
+            tileX: t['x'] as int? ?? 0,
+            tileY: t['y'] as int? ?? 0,
+            teleportKeepX: t['keepX'] == true,
+            teleportKeepY: t['keepY'] == true,
           ),
         );
+        matched = true;
+      }
+      if (m.containsKey('torch')) {
+        steps.add(ScriptStep(kind: 'torch', torchLit: m['torch'] == true));
+        matched = true;
+      }
+      if (m.containsKey('randomSteps')) {
+        final branches = (m['randomSteps'] as List<dynamic>)
+            .map((b) => _parseSteps(b as List<dynamic>))
+            .toList();
+        steps.add(ScriptStep(kind: 'randomSteps', randomBranches: branches));
         matched = true;
       }
       if (m.containsKey('setTile')) {
