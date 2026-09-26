@@ -18,6 +18,7 @@ import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_battle_progress.dart';
 import '../logic/lore_mirror_enemy.dart';
 import '../logic/lore_rigel_blessing.dart';
+import '../logic/script_equip_reducer.dart';
 import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
@@ -494,8 +495,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
 
     for (final equip in outcome.equips) {
-      await _applyScriptEquip(equip);
+      if (!await _applyScriptEquip(equip)) return;
     }
+    run.completeEquipment();
 
     if (outcome.goldDelta != 0 || outcome.foodDelta != 0) {
       final resources = ScriptWorldReducer.applyResources(
@@ -729,13 +731,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
   ///
   /// `prompt`가 참이면 원작과 같이 누가 장착할지 물어보고, 거절하면
   /// `asyouwish`("당신이 바란다면 ...") 를 남긴다.
-  Future<void> _applyScriptEquip(
+  Future<bool> _applyScriptEquip(
     ({String kind, int index, int power, bool prompt, bool onlyUnarmed}) equip,
   ) async {
-    final targets = <int>[];
-
+    int? chosen;
     if (equip.prompt) {
-      final chosen = await showDialog<int>(
+      chosen = await showDialog<int>(
         context: context,
         barrierDismissible: false,
         builder: (ctx) => AlertDialog(
@@ -780,43 +781,24 @@ class _MainGameScreenState extends State<MainGameScreen> {
           ],
         ),
       );
-      if (chosen == null || chosen < 0) {
-        _addLog(LoreFieldLogic.asYouWish);
-        return;
-      }
-      targets.add(chosen);
-    } else {
-      for (var i = 0; i < _party.length; i++) {
-        final m = _party[i];
-        if (m.name.isEmpty) continue;
-        // 원작 맵 6: 무기가 없는 대원만 기본 무장을 한다.
-        if (equip.kind == 'weapon' && equip.onlyUnarmed && m.weapon != 0) {
-          continue;
-        }
-        targets.add(i);
-      }
+      if (!mounted) return false;
     }
-
-    if (targets.isEmpty) {
-      _addLog(LoreFieldLogic.asYouWish);
-      return;
+    final result = ScriptEquipReducer.apply(
+      _party,
+      equip,
+      selectedIndex: chosen,
+    );
+    if (!result.accepted) {
+      _addLog(
+        result.rejectedMonk ? '전투승은 이 무기가 필요없습니다.' : LoreFieldLogic.asYouWish,
+      );
+      return false;
     }
-
-    for (final index in targets) {
+    if (result.equippedIndexes.isNotEmpty) {
+      setState(() => _party = result.party);
+    }
+    for (final index in result.equippedIndexes) {
       final member = _party[index];
-      setState(() {
-        switch (equip.kind) {
-          case 'weapon':
-            member.equipWeaponRaw(equip.index, equip.power);
-            break;
-          case 'shield':
-            member.equipShieldRaw(equip.index, equip.power);
-            break;
-          case 'armor':
-            member.equipArmorRaw(equip.index, equip.power);
-            break;
-        }
-      });
       final itemName = switch (equip.kind) {
         'weapon' => member.weaponName,
         'shield' => member.shieldName,
@@ -824,6 +806,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       };
       _addLog('${member.name} 이(가) $itemName 을(를) 장착했다.');
     }
+    return true;
   }
 
   /// 원작 `LORESUB.PAS:1144 ReturnJoinMember` - 합류시킬 파티 슬롯(2~6번) 선택

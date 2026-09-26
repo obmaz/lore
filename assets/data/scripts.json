@@ -4223,9 +4223,6 @@
           }
         },
         {
-          "say": "가 황금의 방패를 장착했다."
-        },
-        {
           "flag": "goldenShieldMenaceTaken"
         }
       ],
@@ -4401,9 +4398,6 @@
           }
         },
         {
-          "say": "가 황금의 방패를 장착했다."
-        },
-        {
           "flag": "goldenShieldQuakeTaken"
         }
       ],
@@ -4463,9 +4457,6 @@
             "power": 6,
             "prompt": true
           }
-        },
-        {
-          "say": "가 황금의 갑옷을 장착했다."
         },
         {
           "flag": "goldenArmorQuakeTaken"

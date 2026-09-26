@@ -655,6 +655,18 @@ class ScriptRun {
 
   bool get hasPendingChoice => choiceTexts != null;
 
+  /// 선택형 장비는 UI에서 장착이 확정된 뒤에만 1회 스크립트를 소모한다.
+  bool get requiresEquipmentCommit => _acc.equips.any((equip) => equip.prompt);
+
+  void completeEquipment() {
+    if (script.once &&
+        !hasPendingChoice &&
+        !awaitingBattle &&
+        requiresEquipmentCommit) {
+      _engine.consumedScripts.add(script.id);
+    }
+  }
+
   bool isVictoryAfterRunAway(Set<int> defeatedEnemySlots) {
     final slot = _battleStep?.battleVictoryIfEnemyDead;
     return awaitingBattle && slot != null && defeatedEnemySlots.contains(slot);
@@ -671,7 +683,10 @@ class ScriptRun {
     // 선택 이후 실행할 스텝 = 고른 옵션의 스텝 + 원래 스크립트의 나머지
     final queue = <ScriptStep>[...chosen.steps, ..._remaining];
     final run = _engine._execute(script, queue, _acc);
-    if (script.once && !run.hasPendingChoice && !run.awaitingBattle) {
+    if (script.once &&
+        !run.hasPendingChoice &&
+        !run.awaitingBattle &&
+        !run.requiresEquipmentCommit) {
       _engine.consumedScripts.add(script.id);
     }
     return run;
@@ -686,7 +701,10 @@ class ScriptRun {
         ScriptStep(kind: 'flag', key: flag),
       ..._remaining,
     ], _acc);
-    if (script.once && !run.hasPendingChoice && !run.awaitingBattle) {
+    if (script.once &&
+        !run.hasPendingChoice &&
+        !run.awaitingBattle &&
+        !run.requiresEquipmentCommit) {
       _engine.consumedScripts.add(script.id);
     }
     return run;
@@ -849,7 +867,10 @@ class LoreScriptEngine {
 
   ScriptRun _start(LoreScript s, ScriptContext ctx) {
     final run = _execute(s, s.steps, const ScriptOutcome());
-    if (s.once && !run.hasPendingChoice && !run.awaitingBattle) {
+    if (s.once &&
+        !run.hasPendingChoice &&
+        !run.awaitingBattle &&
+        !run.requiresEquipmentCommit) {
       consumedScripts.add(s.id);
     }
     return run;
