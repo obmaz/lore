@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/party_member.dart';
 
 class SaveData {
+  static const int currentSchemaVersion = 2;
+
   final int slot;
   final String slotName;
   final DateTime timestamp;
@@ -42,6 +44,7 @@ class SaveData {
   });
 
   Map<String, dynamic> toJson() => {
+    'schemaVersion': currentSchemaVersion,
     'slot': slot,
     'slotName': slotName,
     'timestamp': timestamp.toIso8601String(),
@@ -59,35 +62,55 @@ class SaveData {
   };
 
   factory SaveData.fromJson(Map<String, dynamic> json) {
-    final partyList = (json['party'] as List<dynamic>? ?? [])
+    final current = _migrateToCurrent(json);
+    final partyList = (current['party'] as List<dynamic>? ?? [])
         .map((e) => PartyMember.fromJson(e as Map<String, dynamic>))
         .toList();
 
     return SaveData(
-      slot: json['slot'] as int? ?? 1,
-      slotName: json['slotName'] as String? ?? '본 게임 데이타',
+      slot: current['slot'] as int? ?? 1,
+      slotName: current['slotName'] as String? ?? '본 게임 데이타',
       timestamp:
-          DateTime.tryParse(json['timestamp'] as String? ?? '') ??
+          DateTime.tryParse(current['timestamp'] as String? ?? '') ??
           DateTime.now(),
-      mapId: json['mapId'] as int? ?? 6,
-      mapTitle: json['mapTitle'] as String? ?? 'CASTLE LORE',
-      playerX: json['playerX'] as int? ?? 51,
-      playerY: json['playerY'] as int? ?? 31,
-      gold: json['gold'] as int? ?? 2000,
-      food: json['food'] as int? ?? 100,
+      mapId: current['mapId'] as int? ?? 6,
+      mapTitle: current['mapTitle'] as String? ?? 'CASTLE LORE',
+      playerX: current['playerX'] as int? ?? 51,
+      playerY: current['playerY'] as int? ?? 31,
+      gold: current['gold'] as int? ?? 2000,
+      food: current['food'] as int? ?? 100,
       party: partyList,
       flags: Map<String, dynamic>.from(
-        json['flags'] as Map<String, dynamic>? ?? const {},
+        current['flags'] as Map<String, dynamic>? ?? const {},
       ),
-      etc: (json['etc'] as Map<String, dynamic>? ?? {}).map(
+      etc: (current['etc'] as Map<String, dynamic>? ?? {}).map(
         (k, v) => MapEntry(k, v as int? ?? 0),
       ),
-      mapTiles: (json['mapTiles'] as List<dynamic>? ?? const [])
+      mapTiles: (current['mapTiles'] as List<dynamic>? ?? const [])
           .map((v) => (v as num).toInt())
           .toList(),
-      consumedScripts: (json['consumedScripts'] as List<dynamic>? ?? const [])
-          .cast<String>(),
+      consumedScripts:
+          (current['consumedScripts'] as List<dynamic>? ?? const [])
+              .cast<String>(),
     );
+  }
+
+  static Map<String, dynamic> _migrateToCurrent(Map<String, dynamic> json) {
+    final version = json['schemaVersion'];
+    if (version == null || version == 1) {
+      // 기존 앱의 무버전 형식과 명시적 v1은 같은 필드를 사용한다.
+      return {
+        ...json,
+        'schemaVersion': currentSchemaVersion,
+        'etc': json['etc'] ?? const <String, int>{},
+        'mapTiles': json['mapTiles'] ?? const <int>[],
+        'consumedScripts': json['consumedScripts'] ?? const <String>[],
+      };
+    }
+    if (version != currentSchemaVersion) {
+      throw FormatException('지원하지 않는 저장 버전: $version');
+    }
+    return json;
   }
 }
 
