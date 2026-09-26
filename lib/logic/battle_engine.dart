@@ -46,7 +46,11 @@ class BattleEngine {
   // ==========================================
   // 1. 플레이어 일반 무기 공격 (AttackOne - LOREBATT.PAS:527)
   // ==========================================
-  AttackResult executePlayerWeaponAttack(PartyMember attacker, Monster target) {
+  AttackResult executePlayerWeaponAttack(
+    PartyMember attacker,
+    Monster target, {
+    List<PartyMember>? party,
+  }) {
     if (target.isDead) {
       return const AttackResult(
         outcome: AttackOutcome.miss,
@@ -59,13 +63,13 @@ class BattleEngine {
       target.hp = 0;
       target.isDead = true;
       final exp = calculateExperience(target);
-      attacker.experience += exp;
+      _awardExecutionExperience(attacker, exp, party);
       return AttackResult(
         outcome: AttackOutcome.killed,
         expGained: exp,
         message:
             '${LoreBattText.weaponKill(LoreBattText.sexData(attacker.sex == Gender.female), target.name, _rand(4))}'
-            ' (${LoreBattText.expGained(attacker.name, '$exp')})',
+            ' (${_executionExperienceMessage(attacker, exp, party)})',
       );
     }
 
@@ -151,18 +155,39 @@ class BattleEngine {
   AttackResult executePlayerMagicAttack(
     PartyMember attacker,
     Monster target,
-    int magicIndex, // 1 ~ 6
-  ) => executePlayerSingleMagicAttack(attacker, target, magicIndex);
+    int magicIndex, {
+    List<PartyMember>? party,
+  }) => executePlayerSingleMagicAttack(
+    attacker,
+    target,
+    magicIndex,
+    party: party,
+  );
 
   AttackResult executePlayerSingleMagicAttack(
     PartyMember attacker,
     Monster target,
-    int magicIndex, // 1 ~ 6
-  ) {
+    int magicIndex, {
+    List<PartyMember>? party,
+  }) {
     if (target.isDead) {
       return const AttackResult(
         outcome: AttackOutcome.miss,
         message: '공격 대상이 이미 사망했습니다.',
+      );
+    }
+
+    // 원본 CastOne은 의식불명 처형을 SP 검사·소모보다 먼저 실행한다.
+    if (target.isUnconscious) {
+      target.hp = 0;
+      target.isDead = true;
+      final exp = calculateExperience(target);
+      _awardExecutionExperience(attacker, exp, party);
+      return AttackResult(
+        outcome: AttackOutcome.killed,
+        expGained: exp,
+        message:
+            '${attacker.name}의 마법은 ${target.name}의 시체 위에서 작열하여 소멸시켰다! (${_executionExperienceMessage(attacker, exp, party)})',
       );
     }
 
@@ -176,20 +201,6 @@ class BattleEngine {
       );
     }
     attacker.sp -= reqSp;
-
-    // 기절 상태 대상: 마법 작열로 즉사
-    if (target.isUnconscious) {
-      target.hp = 0;
-      target.isDead = true;
-      final exp = calculateExperience(target);
-      attacker.experience += exp;
-      return AttackResult(
-        outcome: AttackOutcome.killed,
-        expGained: exp,
-        message:
-            '${attacker.name}의 마법은 ${target.name}의 시체 위에서 작열하여 소멸시켰다! (EXP +$exp)',
-      );
-    }
 
     // 명중 판정 (random(20) >= accuracy[2])
     if (_rand(20) >= attacker.accMagic) {
@@ -250,8 +261,9 @@ class BattleEngine {
   List<AttackResult> executePlayerAllMagicAttack(
     PartyMember attacker,
     List<Monster> enemies,
-    int magicIndex, // 7 ~ 12
-  ) {
+    int magicIndex, {
+    List<PartyMember>? party,
+  }) {
     final spell = LoreData.instance.spell(magicIndex);
     final reqSp = spell.calculateSpCost(attacker.magicLevel);
 
@@ -275,13 +287,13 @@ class BattleEngine {
         target.hp = 0;
         target.isDead = true;
         final exp = calculateExperience(target);
-        attacker.experience += exp;
+        _awardExecutionExperience(attacker, exp, party);
         results.add(
           AttackResult(
             outcome: AttackOutcome.killed,
             expGained: exp,
             message:
-                '${target.name}의 시체 위에서 \'${spell.name}\'이 작열했다! (EXP +$exp)',
+                '${target.name}의 시체 위에서 \'${spell.name}\'이 작열했다! (${_executionExperienceMessage(attacker, exp, party)})',
           ),
         );
         continue;
@@ -1013,6 +1025,31 @@ class BattleEngine {
     int exp = (n * n * n) ~/ 8;
     return exp <= 0 ? 1 : exp;
   }
+
+  /// LOREBATT.PAS:43-50 — 의식불명 적의 처형 경험치는 `exist(i)`인 일행 전원.
+  void _awardExecutionExperience(
+    PartyMember attacker,
+    int exp,
+    List<PartyMember>? party,
+  ) {
+    if (party == null) {
+      attacker.experience += exp;
+      return;
+    }
+    for (final member in party) {
+      if (member.name.isNotEmpty && member.canAct && member.hp > 0) {
+        member.experience += exp;
+      }
+    }
+  }
+
+  String _executionExperienceMessage(
+    PartyMember attacker,
+    int exp,
+    List<PartyMember>? party,
+  ) => party == null
+      ? LoreBattText.expGained(attacker.name, '$exp')
+      : '행동 가능한 일행 모두 경험치 +$exp';
 
   int calculateGold(List<Monster> defeatedEnemies) {
     int totalGold = 0;

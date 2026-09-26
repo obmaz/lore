@@ -214,7 +214,11 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     setState(() => _isTurnProcessing = true);
 
     widget.onLog('${player.name}의 무기 공격!');
-    final res = _engine.executePlayerWeaponAttack(player, currentTarget);
+    final res = _engine.executePlayerWeaponAttack(
+      player,
+      currentTarget,
+      party: widget.partyMembers,
+    );
     widget.onLog(res.message);
 
     _playAttackSound(res);
@@ -247,6 +251,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       player,
       currentTarget,
       spell.id,
+      party: widget.partyMembers,
     );
     widget.onLog(res.message);
 
@@ -280,6 +285,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       player,
       widget.enemies,
       spell.id,
+      party: widget.partyMembers,
     );
 
     for (final res in results) {

@@ -72,5 +72,9 @@
    `enemydata[E_number]`의 레벨·AC로 지급액을 계산한다. Major Mummy
    전투를 원본 수치로 재현해 보상 계산을 바로잡았다.
    커밋: `Calculate battle gold from original monster templates`.
+   `PlusExperience`는 의식불명 적을 처형할 때 행동 가능한 일행 모두에게
+   경험치를 주며, `CastOne`은 이 처형을 SP 소모보다 먼저 수행한다. 무기·단일·
+   전체 마법에 파티 경험치 분기를 적용하고 전투 화면에서 파티 명단을 전달했다.
+   커밋: `Share execution experience with active party members`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

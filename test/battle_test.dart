@@ -73,6 +73,82 @@ void main() {
       expect(engine.calculateGold(enemies), 1529);
     });
 
+    test('의식불명 적의 처형 경험치는 행동 가능한 일행 전원에게 지급한다', () {
+      final engine = BattleEngine(random: DeterministicRandom([0, 0, 99, 0]));
+      final hero = PartyMember.createPreset(1)..weaPower = 100;
+      final ally = PartyMember.createPreset(3);
+      final empty = PartyMember.createPreset(4)..name = '';
+      final unconscious = PartyMember.createPreset(5)..unconscious = 1;
+      final dead = PartyMember.createPreset(6)..dead = 1;
+      final noHp = PartyMember.createPreset(7)..hp = 0;
+      final party = [hero, ally, empty, unconscious, dead, noHp];
+      final before = [for (final member in party) member.experience];
+      final target = Monster.create(9)
+        ..hp = 0
+        ..isUnconscious = true;
+
+      final result = engine.executePlayerWeaponAttack(
+        hero,
+        target,
+        party: party,
+      );
+      expect(result.outcome, AttackOutcome.killed);
+      expect(result.expGained, 91);
+      expect(hero.experience, before[0] + 91);
+      expect(ally.experience, before[1] + 91);
+      for (var i = 2; i < party.length; i++) {
+        expect(party[i].experience, before[i]);
+      }
+
+      // 멀쩡한 적을 처음 쓰러뜨린 경험치는 공격자에게만 간다.
+      final fresh = Monster.create(1);
+      final knockdown = engine.executePlayerWeaponAttack(
+        hero,
+        fresh,
+        party: party,
+      );
+      expect(knockdown.outcome, AttackOutcome.unconscious);
+      expect(hero.experience, before[0] + 92);
+      expect(ally.experience, before[1] + 91);
+    });
+
+    test('단일 마법은 의식불명 적을 SP 없이 처형하고 일행 경험치를 지급한다', () {
+      final engine = BattleEngine();
+      final mage = PartyMember.createPreset(3)..sp = 0;
+      final ally = PartyMember.createPreset(1);
+      final party = [mage, ally];
+      final beforeMage = mage.experience;
+      final beforeAlly = ally.experience;
+      final target = Monster.create(9)
+        ..hp = 0
+        ..isUnconscious = true;
+
+      final result = engine.executePlayerSingleMagicAttack(
+        mage,
+        target,
+        1,
+        party: party,
+      );
+      expect(result.outcome, AttackOutcome.killed);
+      expect(mage.sp, 0);
+      expect(mage.experience, beforeMage + 91);
+      expect(ally.experience, beforeAlly + 91);
+
+      mage.sp = 100;
+      final second = Monster.create(9)
+        ..hp = 0
+        ..isUnconscious = true;
+      final all = engine.executePlayerAllMagicAttack(
+        mage,
+        [second],
+        7,
+        party: party,
+      );
+      expect(all.single.outcome, AttackOutcome.killed);
+      expect(mage.experience, beforeMage + 182);
+      expect(ally.experience, beforeAlly + 182);
+    });
+
     test('2. 플레이어 무기 공격 명중 및 대미지 공식 검증', () {
       // 주사위: [명중(0: 0 <= accArms), 분산(0: 분산감소 0%), 저항(99: 저항 실패), 방어차감 난수(0: +1/10)]
       final mockRandom = DeterministicRandom([0, 0, 99, 0]);
