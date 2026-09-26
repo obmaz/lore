@@ -366,8 +366,13 @@ def main() -> int:
         print(' -', line)
     print(f'총 {len(changed)}개 항목')
     if write:
-        json.dump(data, open(SCRIPTS, 'w'), ensure_ascii=False, indent=1)
-        open(SCRIPTS, 'a').write('\n')
+        # `tool/merge_scripts.py` 와 같은 형식으로 써서 서로 덮어써도 diff 가
+        # 서식 때문에 흔들리지 않게 한다.
+        with open(SCRIPTS, 'w', encoding='utf-8') as fh:
+            json.dump(data, fh, ensure_ascii=False, indent=2)
+        fh = open(SCRIPTS, 'a')
+        fh.write('\n')
+        fh.close()
         print('assets/data/scripts.json 갱신 완료')
     return 0
 
