@@ -295,6 +295,11 @@ class LoreScript {
   final int? yMax;
 
   final bool once;
+
+  /// 조건을 충실히 옮길 수 없어 **실행하지 않고 보관만** 하는 항목.
+  /// 원작 문구는 그대로 남기되(대조용), 게임에서는 무시한다.
+  final bool disabled;
+
   final ScriptRequire require;
   final List<ScriptStep> steps;
 
@@ -309,12 +314,14 @@ class LoreScript {
     this.yMin,
     this.yMax,
     required this.once,
+    this.disabled = false,
     required this.require,
     required this.steps,
   });
 
   /// 이 스크립트가 (mapId, tx, ty)에서 발동되는지 검사한다.
   bool matches(String triggerName, int mapId, int tx, int ty) {
+    if (disabled) return false;
     if (trigger != triggerName || map != mapId) return false;
     if (x != null || y != null) {
       if (x != null && x != tx) return false;
@@ -848,6 +855,7 @@ class LoreScriptEngine {
       yMin: json['yMin'] as int?,
       yMax: json['yMax'] as int?,
       once: json['once'] == true,
+      disabled: json['disabled'] == true,
       require: ScriptRequire.fromJson(json['require'] as Map<String, dynamic>?),
       steps: _parseSteps(json['steps'] as List<dynamic>),
     );

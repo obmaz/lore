@@ -100,6 +100,62 @@ class LoreDialogueManager {
   /// 키 형식: `gold:<mapId>:<x>:<y>`
   final Set<String> collectedTreasures = {};
 
+  /// 원작 `party.etc[N]` 비트 배열 (N : 1..51).
+  ///
+  /// 원작은 `party.etc[N] and bitM` / `party.etc[N] or bitM` 로 마을·동굴의
+  /// 진행 상황을 기록한다. 포트는 같은 정보를 `etcN_bitM` 플래그로 보관해
+  /// 스크립트 JSON의 `require`/`flag`에서 그대로 쓸 수 있게 한다.
+  final Map<int, int> partyEtc = {};
+
+  static final RegExp _etcFlagPattern = RegExp(r'^etc(\d+)_bit(\d+)$');
+
+  static final RegExp _etcCounterFlagPattern = RegExp(r'^etc(\d+)$');
+
+  /// `party.etc[N]`의 M번째 비트(1-based)가 켜져 있는지.
+  bool etcBit(int n, int m) {
+    if (m < 1 || m > 8) return false;
+    return ((partyEtc[n] ?? 0) >> (m - 1)) & 1 == 1;
+  }
+
+  /// `party.etc[N] := party.etc[N] or bitM` / 비트 해제.
+  void setEtcBit(int n, int m, [bool value = true]) {
+    if (m < 1 || m > 8) return;
+    final mask = 1 << (m - 1);
+    final cur = partyEtc[n] ?? 0;
+    partyEtc[n] = value ? (cur | mask) : (cur & ~mask);
+  }
+
+  /// 이름 하나로 `party.etc` 비트/카운터를 읽거나 쓴다.
+  /// - `etc32_bit8` → 비트 플래그
+  /// - `etc5`        → 정수 카운터 (0이면 꺼진 것으로 본다)
+  bool etcFlagValue(String name) {
+    final bit = _etcFlagPattern.firstMatch(name);
+    if (bit != null) {
+      return etcBit(int.parse(bit.group(1)!), int.parse(bit.group(2)!));
+    }
+    final counter = _etcCounterFlagPattern.firstMatch(name);
+    if (counter != null) return (partyEtc[int.parse(counter.group(1)!)] ?? 0) != 0;
+    return false;
+  }
+
+  /// 이름 하나로 `party.etc` 비트/카운터를 설정한다.
+  void setEtcFlagValue(String name, bool value) {
+    final bit = _etcFlagPattern.firstMatch(name);
+    if (bit != null) {
+      setEtcBit(int.parse(bit.group(1)!), int.parse(bit.group(2)!), value);
+      return;
+    }
+    final counter = _etcCounterFlagPattern.firstMatch(name);
+    if (counter != null) {
+      final n = int.parse(counter.group(1)!);
+      if (value) {
+        partyEtc[n] = (partyEtc[n] ?? 0) == 0 ? 1 : partyEtc[n]!;
+      } else {
+        partyEtc[n] = 0;
+      }
+    }
+  }
+
   /// 원작 `LORESUB.PAS:1042 join(num, partynum)` 대기열.
   /// 대화에서 동료 영입이 확정되면 여기에 적재되고, 화면단에서 실제 파티에
   /// 추가한 뒤 [takePendingRecruits]로 비운다.
@@ -210,6 +266,8 @@ class LoreDialogueManager {
     'lavaLeverRightPulled': lavaLeverRightPulled,
     // 1회성 보물 좌표(원작 party.etc 비트)는 불리언 플래그로 직렬화한다.
     for (final key in collectedTreasures) key: true,
+    // 원작 `party.etc[N]` 비트/카운터도 그대로 보존한다.
+    for (final entry in partyEtc.entries) 'etc${entry.key}': entry.value,
   };
 
   Map<String, bool> getFlagsCopy() => {
@@ -250,6 +308,12 @@ class LoreDialogueManager {
     'lavaLeverLeftPulled': lavaLeverLeftPulled,
     'lavaLeverRightPulled': lavaLeverRightPulled,
     for (final key in collectedTreasures) key: true,
+    // 원작 `party.etc[N]` 비트도 켜진 것만 노출한다.
+    for (final entry in partyEtc.entries)
+      for (var m = 1; m <= 8; m++)
+        if (((entry.value >> (m - 1)) & 1) == 1) 'etc${entry.key}_bit$m': true,
+    for (final entry in partyEtc.entries)
+      if (entry.value != 0) 'etc${entry.key}': true,
   };
 
   void loadSaveFlags(Map<String, dynamic> flags) {
@@ -306,6 +370,19 @@ class LoreDialogueManager {
     collectedTreasures
       ..clear()
       ..addAll(flags.keys.where((k) => k.startsWith('gold:')));
+    partyEtc
+      ..clear()
+      ..addEntries(
+        flags.entries
+            .where((e) => e.key.startsWith('etc'))
+            .map(
+              (e) => MapEntry(
+                int.tryParse(e.key.substring(3)) ?? -1,
+                e.value as int? ?? 0,
+              ),
+            )
+            .where((e) => e.key > 0 && e.value != 0),
+      );
   }
 
   void loadFlags(Map<String, dynamic> flags) => loadSaveFlags(flags);
@@ -364,6 +441,12 @@ class LoreDialogueManager {
   ///
   /// 알 수 없는 이름은 무시한다(오타로 게임이 멈추지 않도록).
   void setFlag(String name, [bool value = true]) {
+    // 원작 `party.etc[N]` 비트/카운터 이름은 동적으로 처리한다.
+    if (_etcFlagPattern.hasMatch(name) ||
+        _etcCounterFlagPattern.hasMatch(name)) {
+      setEtcFlagValue(name, value);
+      return;
+    }
     switch (name) {
       case 'metLordAhn':
         metLordAhn = value;

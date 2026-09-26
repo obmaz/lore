@@ -30,7 +30,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 249);
+      expect(LoreScriptEngine.instance.scripts.length, 426);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -318,15 +318,18 @@ void main() {
       final seal = engine.startStep(12, 18, 10, noCtx)!;
       expect(seal.outcome.messages.first, contains('황금의 봉인'));
       expect(seal.outcome.setFlags, contains('goldenSealFound'));
-      expect(
-        engine.startStep(
-          12,
-          18,
-          10,
-          const ScriptContext(flags: {'goldenSealFound'}),
-        ),
-        isNull,
+      // 봉인을 이미 찾은 상태에서는 같은 봉인 스크립트가 다시 걸리지 않는다.
+      // (원작 `else if (y=10) and (party.etc[14] < 2)` 처럼 같은 행(y=10)에
+      // 다른 원작 이벤트가 걸릴 수 있으므로 "아무것도 안 걸린다" 대신
+      // "봉인 스크립트가 아니다" 를 확인한다.)
+      final again = engine.startStep(
+        12,
+        18,
+        10,
+        const ScriptContext(flags: {'goldenSealFound'}),
       );
+      expect(again?.outcome.setFlags.contains('goldenSealFound') ?? false,
+          isFalse);
     });
     test('13. 원작 보스전 (맵 17 Hidra / 맵 18 Huge Dragon) 이관', () async {
       await LoreScriptEngine.instance.load();
@@ -463,15 +466,18 @@ void main() {
       expect(blocked.outcome.messages.single, contains('봉인'));
       final nudge = blocked.outcome.nudges.single;
       expect(nudge.dy, 1); // 원작 `inc(y)`
-      // 두 퍼즐을 모두 풀면 아무 일도 일어나지 않는다(문이 열린다).
+      // 두 퍼즐을 모두 풀면 문이 열린다 → 더 이상 막히지 않는다.
+      // (원작은 이때도 전투·지형 변경을 하지만 "밀려나기"는 하지 않는다.)
+      final opened = engine.startStep(
+        21,
+        25,
+        20,
+        const ScriptContext(flags: {'sealPuzzleA', 'sealPuzzleB'}),
+      );
+      expect(opened?.outcome.nudges ?? const [], isEmpty);
       expect(
-        engine.startStep(
-          21,
-          25,
-          20,
-          const ScriptContext(flags: {'sealPuzzleA', 'sealPuzzleB'}),
-        ),
-        isNull,
+        (opened?.outcome.messages ?? const []).any((m) => m.contains('봉인')),
+        isFalse,
       );
 
       // 2) 맵 22 (25,18): Wraith 5 + Death Knight 1

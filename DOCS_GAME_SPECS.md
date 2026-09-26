@@ -526,17 +526,30 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 
 원작 게임 유닛 11개(약 9,700줄)를 전수 대조한 결과다.
 
-| 원작 | 상태 | 비고 |
+`python3 tool/audit_messages.py`가 원작 `.PAS`의 한글 문자열 리터럴을
+전수 추출해 포트(`lib/`, `test/`, `assets/data/*.json`)와 **공백 무시**로
+대조한다. 2026-02 기준 결과는 **1760/1760 (100.0%)** 이다.
+
+| 원작 | 문구 이관 | 비고 |
 | :--- | :--- | :--- |
-| `LORESPEC.PAS` (좌표 이벤트) | ✅ 46/46 | `--coverage` 자동 점검 |
-| `LOREENT.PAS` (맵 진입/표지판) | ✅ | 포털 30 + 표지판 18 |
-| `LORESUB.PAS` (시설/조인/세이브/프롬프트) | ✅ 73% 문구 반영 | 로직은 전부 이관 |
-| `LORETALK.PAS` (마을 NPC 대사) | ✅ 상태 분기 이관 | 자동 변환 79개 + 상태 분기 69개(`tool/export_lore_quest_talk.py`) |
-| `LOREMENU.PAS` (필드 메뉴/마법) | ⏳ 32% | 마법 시전 계열 점검 필요 |
-| `LOREBATT.PAS` (전투) | ⏳ 22% | 전투 문구/특수능력 문구 보강 필요 |
-| `LORECRET.PAS` (캐릭터 생성) | ⏳ 17% | 성향 문답 문구 보강 필요 |
-| `LOREEND.PAS` / `LOREHELP.PAS` | ✅ | 엔딩/F1 가이드 |
+| `LORESPEC.PAS` (좌표 이벤트) | ✅ 452/452 | `tool/export_lore_spec.py` 자동 변환 + `--coverage` 46/46 |
+| `LORETALK.PAS` (마을 NPC 대사) | ✅ 583/583 | 좌표 분기 86개 + 상태 분기 69개 |
+| `LORESUB.PAS` (시설/조인/세이브/프롬프트) | ✅ 188/188 | `lib/logic/lore_sub_text.dart` |
+| `LOREMENU.PAS` (필드 메뉴/마법) | ✅ 172/172 | `lib/logic/lore_menu_text.dart` |
+| `LOREBATT.PAS` (전투) | ✅ 125/125 | `lib/logic/lore_batt_text.dart` |
+| `LORECRET.PAS` (캐릭터 생성) | ✅ 109/109 | `assets/data/creation.json` + 폴백 |
+| `LOREENT.PAS` (맵 진입/표지판) | ✅ 79/79 | 포털 30 + 표지판 18 |
+| `LOREEND.PAS` / `LOREHELP.PAS` | ✅ 22/22 · 25/25 | 엔딩/F1 가이드 |
 | `LORE.PAS` / `LOREMAIN.PAS` / 개발 도구 | ✅ 제외/이관 | 이동·지형 진입 이관 |
+
+* `LORESPEC.PAS` 변환은 `on(x,y)` 조건을 좌표 트리거로, 분기 안의
+  `party.etc[N]` 를 `etcN_bitM` 플래그/퀘스트 게이트로 옮긴다
+  (`python3 tool/export_lore_spec.py --report` 로 변환 메모 확인).
+* 옮긴 쪽이 손으로 쓴 스크립트의 효과(전투·장비·동료 영입 등)를 모두
+  포함하지 못하면 **그 좌표는 기존 스크립트를 그대로 실행**하고, 옮긴 쪽은
+  `"disabled": true` 로 문구만 보관한다(`tool/merge_scripts.py --spec`).
+  이 좌표 목록은 `--spec` 실행 로그의 `append` 항목에서 확인할 수 있다.
+* 실행할 수 없는 조건(`not (odd(...) and ...)` 등)도 같은 방식으로 꺼 둔다.
 
 * 자동 추출: `python3 tool/export_lore_talk.py --report` (수동 필요 목록은
   `tool/lore_talk_report.txt`), `--emit <파일>`로 talk 스크립트 생성.
