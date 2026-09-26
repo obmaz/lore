@@ -1053,9 +1053,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _battleEnemies = bossEnemies;
 
       // 원작은 전투 직전 안내 문구를 보여준다. 스크립트에 제목이 있으면 쓴다.
-      _addLog(title == null || title.trim().isEmpty
-          ? '⚔⚔⚔ 강력한 보스 출현! ⚔⚔⚔'
-          : '⚔⚔⚔ ${title.trim()} ⚔⚔⚔');
+      _addLog(
+        title == null || title.trim().isEmpty
+            ? '⚔⚔⚔ 강력한 보스 출현! ⚔⚔⚔'
+            : '⚔⚔⚔ ${title.trim()} ⚔⚔⚔',
+      );
       for (final e in _battleEnemies) {
         _addLog('▶ ${e.name} (Lv.${e.level}, HP:${e.hp}) 결전 시작!');
       }

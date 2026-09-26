@@ -154,10 +154,7 @@ void main() {
 
       // 독심술 미사용 → 마음을 읽을 수 없다는 안내(원작 문구 그대로)
       final cannot = LoreScriptEngine.instance.startTalk(18, 37, 31, noCtx)!;
-      expect(
-        cannot.outcome.messages.join(''),
-        contains('나의 마음을 끌어낼수는 없습니'),
-      );
+      expect(cannot.outcome.messages.join(''), contains('나의 마음을 끌어낼수는 없습니'));
       expect(cannot.hasPendingChoice, isFalse);
 
       // 독심술 사용 + 초능력 Lv.5 → 합류 선택지
@@ -381,10 +378,7 @@ void main() {
       final hidra = engine.startStep(17, 22, 40, noCtx)!;
       expect(hidra.outcome.battleMonsters, [49, 49, 49]);
       // 원작 안내 문구가 그대로 대사로 들어온다(제목은 없을 수 있다).
-      expect(
-        hidra.outcome.messages.any((m) => m.contains('Hidra')),
-        isTrue,
-      );
+      expect(hidra.outcome.messages.any((m) => m.contains('Hidra')), isTrue);
       expect(hidra.outcome.setFlags, contains('bossHidraDefeated'));
       // 다른 열에서는 발동하지 않는다.
       expect(
