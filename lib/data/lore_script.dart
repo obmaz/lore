@@ -480,6 +480,15 @@ class ScriptOutcome {
   /// 대사와 카메라 연출의 **실행 순서**(UI가 순서대로 재생하기 위해 쓴다).
   final List<ScriptEvent> events;
 
+  // 누적 결과의 값이 같아도 선택지/전투 이후 다시 발생한 효과를 구분한다.
+  final int _teleportCount;
+  final int _targetTileCount;
+  final int _partyClassCount;
+  final int _torchCount;
+  final int _rigelBlessingCount;
+  final int _stepBackCount;
+  final int _blockCount;
+
   const ScriptOutcome({
     this.messages = const [],
     this.goldDelta = 0,
@@ -512,6 +521,13 @@ class ScriptOutcome {
     this.nudges = const [],
     this.equips = const [],
     this.events = const [],
+    this._teleportCount = 0,
+    this._targetTileCount = 0,
+    this._partyClassCount = 0,
+    this._torchCount = 0,
+    this._rigelBlessingCount = 0,
+    this._stepBackCount = 0,
+    this._blockCount = 0,
   });
 
   /// 선택지 이전에 이미 적용한 결과를 제외한 이번 구간의 효과만 돌려준다.
@@ -519,12 +535,17 @@ class ScriptOutcome {
   ScriptOutcome since(ScriptOutcome previous) {
     List<T> added<T>(List<T> current, List<T> old) =>
         current.skip(old.length).toList();
+    bool emitted(int current, int old, bool legacyChanged) =>
+        current > old || (current == 0 && old == 0 && legacyChanged);
 
     final newBattle = battleCount > previous.battleCount;
-    final newTeleport =
-        teleportX != previous.teleportX ||
-        teleportY != previous.teleportY ||
-        teleportMap != previous.teleportMap;
+    final newTeleport = emitted(
+      _teleportCount,
+      previous._teleportCount,
+      teleportX != previous.teleportX ||
+          teleportY != previous.teleportY ||
+          teleportMap != previous.teleportMap,
+    );
 
     return ScriptOutcome(
       messages: added(messages, previous.messages),
@@ -542,25 +563,62 @@ class ScriptOutcome {
         battleVictoryFlags,
         previous.battleVictoryFlags,
       ),
-      blockMove: blockMove && !previous.blockMove,
+      blockMove: emitted(
+        _blockCount,
+        previous._blockCount,
+        blockMove && !previous.blockMove,
+      ),
       teleportMap: newTeleport ? teleportMap : null,
       teleportX: newTeleport ? teleportX : null,
       teleportY: newTeleport ? teleportY : null,
-      stepBack: stepBack && !previous.stepBack,
+      stepBack: emitted(
+        _stepBackCount,
+        previous._stepBackCount,
+        stepBack && !previous.stepBack,
+      ),
       teleportKeepX: teleportKeepX,
       teleportKeepY: teleportKeepY,
-      torchLit: torchLit && !previous.torchLit,
-      rigelBlessing: rigelBlessing && !previous.rigelBlessing,
-      partyClassId: partyClassId != previous.partyClassId ? partyClassId : null,
+      torchLit: emitted(
+        _torchCount,
+        previous._torchCount,
+        torchLit && !previous.torchLit,
+      ),
+      rigelBlessing: emitted(
+        _rigelBlessingCount,
+        previous._rigelBlessingCount,
+        rigelBlessing && !previous.rigelBlessing,
+      ),
+      partyClassId:
+          emitted(
+            _partyClassCount,
+            previous._partyClassCount,
+            partyClassId != previous.partyClassId,
+          )
+          ? partyClassId
+          : null,
       questChanges: added(questChanges, previous.questChanges),
       expDelta: expDelta - previous.expDelta,
       tileChanges: added(tileChanges, previous.tileChanges),
       tileAreas: added(tileAreas, previous.tileAreas),
       playerTiles: added(playerTiles, previous.playerTiles),
-      tileAtTarget: tileAtTarget != previous.tileAtTarget ? tileAtTarget : null,
+      tileAtTarget:
+          emitted(
+            _targetTileCount,
+            previous._targetTileCount,
+            tileAtTarget != previous.tileAtTarget,
+          )
+          ? tileAtTarget
+          : null,
       nudges: added(nudges, previous.nudges),
       equips: added(equips, previous.equips),
       events: added(events, previous.events),
+      teleportCount: _teleportCount - previous._teleportCount,
+      targetTileCount: _targetTileCount - previous._targetTileCount,
+      partyClassCount: _partyClassCount - previous._partyClassCount,
+      torchCount: _torchCount - previous._torchCount,
+      rigelBlessingCount: _rigelBlessingCount - previous._rigelBlessingCount,
+      stepBackCount: _stepBackCount - previous._stepBackCount,
+      blockCount: _blockCount - previous._blockCount,
     );
   }
 }
@@ -852,6 +910,13 @@ class LoreScriptEngine {
     var battleVictory = List<String>.from(acc.battleVictoryFlags);
     var blockMove = acc.blockMove;
     var stepBack = acc.stepBack;
+    var teleportCount = acc._teleportCount;
+    var targetTileCount = acc._targetTileCount;
+    var partyClassCount = acc._partyClassCount;
+    var torchCount = acc._torchCount;
+    var rigelBlessingCount = acc._rigelBlessingCount;
+    var stepBackCount = acc._stepBackCount;
+    var blockCount = acc._blockCount;
     var equips =
         List<
           ({String kind, int index, int power, bool prompt, bool onlyUnarmed})
@@ -890,6 +955,13 @@ class LoreScriptEngine {
       nudges: nudges,
       equips: equips,
       events: events,
+      teleportCount: teleportCount,
+      targetTileCount: targetTileCount,
+      partyClassCount: partyClassCount,
+      torchCount: torchCount,
+      rigelBlessingCount: rigelBlessingCount,
+      stepBackCount: stepBackCount,
+      blockCount: blockCount,
     );
 
     // `randomSteps` 분기를 펼치기 위해 실행 목록을 큐로 다룬다.
@@ -954,6 +1026,7 @@ class LoreScriptEngine {
             battleStep: step,
           );
         case 'teleport':
+          teleportCount++;
           teleportMap = step.teleportMap;
           teleportX = step.tileX;
           teleportY = step.tileY;
@@ -961,15 +1034,19 @@ class LoreScriptEngine {
           teleportKeepY = step.teleportKeepY;
           break;
         case 'torch':
+          torchCount++;
           torchLit = true;
           break;
         case 'rigelBlessing':
+          rigelBlessingCount++;
           rigelBlessing = true;
           break;
         case 'partyClass':
+          partyClassCount++;
           partyClassId = step.partyClassId;
           break;
         case 'block':
+          blockCount++;
           blockMove = true;
           break;
         case 'questStep':
@@ -1018,12 +1095,14 @@ class LoreScriptEngine {
           ));
           break;
         case 'setTileAtTarget':
+          targetTileCount++;
           tileAtTarget = step.tileValue;
           break;
         case 'nudge':
           nudges.add((dx: step.nudgeDx ?? 0, dy: step.nudgeDy ?? 0));
           break;
         case 'stepBack':
+          stepBackCount++;
           stepBack = true;
           break;
         case 'equip':

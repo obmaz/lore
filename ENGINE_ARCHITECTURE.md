@@ -52,6 +52,8 @@
 
 1. **독립 세션:** `LoreScriptEngine()`에 난수를 주입하고 `loadFromJson`으로
    규칙을 넣는다. `ScriptRun`의 선택지·전투 후속 처리는 생성한 엔진에 귀속한다.
+   누적 결과의 효과 발생 횟수를 기록해 같은 값의 이동·타일·직업 효과가 다음
+   구간에서 반복돼도 `since()`가 다시 전달한다.
    기존 UI용 `LoreScriptEngine.instance`는 이전 기간 동안 유지한다.
    이 단계는 구현됐으며 `test/script_engine_isolation_test.dart`에서 검증한다.
 2. **상태 모델:** 파티, 퀘스트, 좌표, 현재 지도 타일, 소모한 규칙, 난수 상태를
