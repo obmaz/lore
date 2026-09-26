@@ -92,5 +92,9 @@
    염력 13~14단계 중독은 원본 순서대로 적의 저항, 시전자의 ESP 명중을
    통과할 때만 적용한다. 저항·빗나감·성공을 고정 난수로 검증했다.
    커밋: `Respect resistance and accuracy for telekinetic poison`.
+   염력 15~17단계 심장 정지는 저항 시 저항력 -5, 명중 실패 시 HP -5
+   또는 HP 10 미만 기절, 성공 시 HP를 유지한 채 기절시키는 원본 분기를
+   복원했다. 각 결과와 ESP 소모를 검증했다.
+   커밋: `Restore telekinetic heart-stop branches`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

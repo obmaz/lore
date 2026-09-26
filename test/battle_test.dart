@@ -262,6 +262,51 @@ void main() {
       expect(caster.esp, 0);
     });
 
+    test('염력 15~17단계 심장 정지는 저항·부분 피해·저체력 기절·성공을 구분한다', () {
+      final caster = PartyMember.createPreset(2)
+        ..espLevel = 15
+        ..esp = 80
+        ..accEsp = 5;
+      final party = [caster];
+      final resistant = Monster.create(1)
+        ..hp = 20
+        ..resistance = 20;
+      final resisted = BattleEngine(random: DeterministicRandom([14, 0]))
+          .executePlayerESP(caster, resistant, 45, party, enemies: [resistant]);
+      expect(resisted.outcome, AttackOutcome.resisted);
+      expect(resistant.resistance, 15);
+      expect(resistant.hp, 20);
+      expect(resistant.isUnconscious, isFalse);
+
+      final sturdy = Monster.create(1)..hp = 20;
+      final graze = BattleEngine(random: DeterministicRandom([14, 50, 79]))
+          .executePlayerESP(caster, sturdy, 45, party, enemies: [sturdy]);
+      expect(graze.outcome, AttackOutcome.hit);
+      expect(sturdy.hp, 15);
+      expect(sturdy.isUnconscious, isFalse);
+
+      final weak = Monster.create(1)..hp = 8;
+      final weakHit = BattleEngine(random: DeterministicRandom([14, 50, 79]))
+          .executePlayerESP(caster, weak, 45, party, enemies: [weak]);
+      expect(weakHit.outcome, AttackOutcome.unconscious);
+      expect(weak.hp, 0);
+      expect(weak.isUnconscious, isTrue);
+
+      final successTarget = Monster.create(1)..hp = 20;
+      final success = BattleEngine(random: DeterministicRandom([14, 50, 0]))
+          .executePlayerESP(
+            caster,
+            successTarget,
+            45,
+            party,
+            enemies: [successTarget],
+          );
+      expect(success.outcome, AttackOutcome.unconscious);
+      expect(successTarget.hp, 20); // 원본은 명중 시 HP를 건드리지 않는다.
+      expect(successTarget.isUnconscious, isTrue);
+      expect(caster.esp, 0);
+    });
+
     test('2. 플레이어 무기 공격 명중 및 대미지 공식 검증', () {
       // 주사위: [명중(0: 0 <= accArms), 분산(0: 분산감소 0%), 저항(99: 저항 실패), 방어차감 난수(0: +1/10)]
       final mockRandom = DeterministicRandom([0, 0, 99, 0]);

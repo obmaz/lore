@@ -774,8 +774,31 @@ class BattleEngine {
         message: '★ 신진대사를 조절하여 ${target.name}의 체내에 맹독을 발생시켰다!',
       );
     } else if (k <= 17) {
-      // 심장 정지 (기절)
-      target.hp = 0;
+      // LOREBATT.PAS:479-496 — 저항하면 저항력이 약해지고,
+      // ESP 명중 실패도 HP 5 피해 또는 저체력 기절을 남긴다.
+      if (_rand(40) < target.resistance) {
+        target.resistance = max(0, target.resistance - 5);
+        return AttackResult(
+          outcome: AttackOutcome.resisted,
+          message: '${target.name}은(는) 심장 정지 염력을 견뎠다.',
+        );
+      }
+      if (_rand(80) > caster.accEsp) {
+        if (target.hp < 10) {
+          target.hp = 0;
+          target.isUnconscious = true;
+          return AttackResult(
+            outcome: AttackOutcome.unconscious,
+            message: '${target.name}은(는) 염력 충격으로 의식을 잃었다!',
+          );
+        }
+        target.hp -= 5;
+        return AttackResult(
+          outcome: AttackOutcome.hit,
+          damage: 5,
+          message: '${target.name}은(는) 빗나간 염력에도 HP 5를 잃었다.',
+        );
+      }
       target.isUnconscious = true;
       return AttackResult(
         outcome: AttackOutcome.unconscious,
