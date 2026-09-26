@@ -160,20 +160,68 @@ void main() {
       final beforeAlly = ally.experience;
       final orc = Monster.create(1);
 
-      final knockout = engine.executePlayerESP(caster, orc, 45, party);
+      final knockout = engine.executePlayerESP(
+        caster,
+        orc,
+        45,
+        party,
+        enemies: [orc],
+      );
       expect(knockout.outcome, AttackOutcome.unconscious);
       expect(knockout.expGained, 1);
       expect(orc.isUnconscious, isTrue);
       expect(caster.experience, beforeCaster + 1);
       expect(ally.experience, beforeAlly);
 
-      final execution = engine.executePlayerESP(caster, orc, 45, party);
+      final execution = engine.executePlayerESP(
+        caster,
+        orc,
+        45,
+        party,
+        enemies: [orc],
+      );
       expect(execution.outcome, AttackOutcome.killed);
       expect(execution.expGained, 1);
       expect(orc.isDead, isTrue);
       expect(caster.experience, beforeCaster + 2);
       expect(ally.experience, beforeAlly + 1);
       expect(caster.esp, 0);
+    });
+
+    test('염력 7~10단계는 적 전체를 공격하고 원본의 선택 대상 경험치 계산을 따른다', () {
+      final engine = BattleEngine(random: DeterministicRandom([6]));
+      final caster = PartyMember.createPreset(2)
+        ..espLevel = 7
+        ..esp = 40;
+      final ally = PartyMember.createPreset(1);
+      final party = [caster, ally];
+      final selected = Monster.create(1);
+      final sleeping = Monster.create(9)
+        ..hp = 0
+        ..isUnconscious = true;
+      final sturdy = Monster.create(2)..hp = 100;
+      final enemies = [selected, sleeping, sturdy];
+      final beforeCaster = caster.experience;
+      final beforeAlly = ally.experience;
+
+      final result = engine.executePlayerESP(
+        caster,
+        selected,
+        45,
+        party,
+        enemies: enemies,
+      );
+      expect(result.outcome, AttackOutcome.killed);
+      expect(result.damage, 105); // k=7, 적마다 35
+      expect(selected.isUnconscious, isTrue);
+      expect(sleeping.isDead, isTrue);
+      expect(sturdy.hp, 65);
+      // 원본은 처형 시 sleeping(#9)이 아닌 선택한 selected(#1)로
+      // PlusExperience를 호출한다. 첫 기절 +1, 처형 일행에게 +1.
+      expect(result.expGained, 2);
+      expect(caster.experience, beforeCaster + 2);
+      expect(ally.experience, beforeAlly + 1);
+      expect(caster.esp, 20);
     });
 
     test('2. 플레이어 무기 공격 명중 및 대미지 공식 검증', () {

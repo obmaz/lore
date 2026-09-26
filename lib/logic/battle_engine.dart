@@ -620,8 +620,9 @@ class BattleEngine {
     PartyMember caster,
     Monster target,
     int espId,
-    List<PartyMember> party,
-  ) {
+    List<PartyMember> party, {
+    required List<Monster> enemies,
+  }) {
     final spell = LoreData.instance.spell(espId);
     final reqEsp = spell.calculateSpCost(caster.espLevel);
 
@@ -697,14 +698,46 @@ class BattleEngine {
         message: '주위의 물체들이 날아올라 ${target.name}에게 $dmg의 염력 피해를 입혔다!',
       );
     } else if (k <= 10) {
-      // 핵분열/핵융합 고열 에너지 방출
+      // LOREBATT.PAS:442-453 — 핵분열/핵융합은 전투 중인 모든 적에게 적용.
       final dmg = k * 5;
-      target.hp = max(0, target.hp - dmg);
-      if (target.hp <= 0) target.isUnconscious = true;
+      var expGained = 0;
+      var knockedOut = false;
+      var executed = false;
+      final affected = enemies;
+      for (final monster in affected) {
+        monster.hp = max(0, monster.hp - dmg);
+        if (monster.isUnconscious && !monster.isDead) {
+          monster.isDead = true;
+          // 원본은 여기서 현재 반복 중인 적이 아닌 선택한 적의 번호로
+          // PlusExperience를 호출한다. 경험치 종류와 분배도 선택한 적 기준이다.
+          final exp = calculateExperience(target);
+          if (target.isUnconscious) {
+            _awardExecutionExperience(caster, exp, party);
+          } else {
+            caster.experience += exp;
+          }
+          expGained += exp;
+          executed = true;
+        }
+        if (monster.hp == 0 && !monster.isUnconscious) {
+          monster.isUnconscious = true;
+          final exp = calculateExperience(monster);
+          caster.experience += exp;
+          expGained += exp;
+          knockedOut = true;
+        }
+      }
       return AttackResult(
-        outcome: AttackOutcome.hit,
-        damage: dmg,
-        message: '대기 중의 원자가 염력에 의해 핵반응을 일으키며 ${target.name}에게 $dmg 피해를 주었다!',
+        outcome: executed
+            ? AttackOutcome.killed
+            : knockedOut
+            ? AttackOutcome.unconscious
+            : AttackOutcome.hit,
+        damage: dmg * affected.length,
+        expGained: expGained,
+        message:
+            '대기 중의 원자가 염력에 의해 핵반응을 일으켜 적 ${affected.length}명에게 '
+            '각각 $dmg 피해를 주었다! (경험치 +$expGained)',
       );
     } else if (k <= 12) {
       // 공포심 주입 -> 도망/즉사

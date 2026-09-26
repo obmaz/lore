@@ -84,5 +84,10 @@
    이미 의식불명인 적을 처형하면 행동 가능한 일행 전원에게 경험치를 준다.
    같은 적을 두 번 공격하는 시나리오로 보상과 ESP 소모를 검증했다.
    커밋: `Award battle experience for telekinetic knockouts`.
+   염력 7~10단계는 적 전원에게 한 번씩 피해를 주고 기절·처형 보상을
+   처리한다. 원본의 전체 공격 처형은 현재 반복 중인 적이 아닌 선택한 적으로
+   `PlusExperience`를 호출하므로 그 수치·분배까지 재현하고 기록했다.
+   전투 화면은 전체 적 목록을 엔진에 전달한다.
+   커밋: `Apply telekinetic blast to every enemy`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

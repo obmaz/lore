@@ -236,11 +236,13 @@ void main() {
 
       // 43: 독심술 테스트 (10번 Goblin: 원작 포섭 대상)
       final goblin = Monster.create(10);
-      final resEspJoin = engine.executePlayerESP(esper, goblin, 43, [
-        hero,
-        mage,
+      final resEspJoin = engine.executePlayerESP(
         esper,
-      ]);
+        goblin,
+        43,
+        [hero, mage, esper],
+        enemies: [goblin],
+      );
       expect(
         resEspJoin.outcome == AttackOutcome.joined ||
             resEspJoin.outcome == AttackOutcome.failed,
@@ -249,11 +251,13 @@ void main() {
 
       // 45: 염력 공격 테스트 (1번 Orc)
       final orc = Monster.create(1);
-      final resPfk = engine.executePlayerESP(esper, orc, 45, [
-        hero,
-        mage,
+      final resPfk = engine.executePlayerESP(
         esper,
-      ]);
+        orc,
+        45,
+        [hero, mage, esper],
+        enemies: [orc],
+      );
       expect(esper.esp < 100, isTrue); // ESP 소모
       expect(resPfk.outcome != AttackOutcome.outOfSp, isTrue);
     });

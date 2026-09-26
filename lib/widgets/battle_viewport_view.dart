@@ -488,6 +488,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       currentTarget,
       spell.id,
       widget.partyMembers,
+      enemies: widget.enemies,
     );
     widget.onLog(res.message);
 
