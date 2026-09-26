@@ -267,16 +267,6 @@ class BattleEngine {
     final spell = LoreData.instance.spell(magicIndex);
     final reqSp = spell.calculateSpCost(attacker.magicLevel);
 
-    if (attacker.sp < reqSp) {
-      return [
-        const AttackResult(
-          outcome: AttackOutcome.outOfSp,
-          message: '마법 지수(SP)가 부족합니다!',
-        ),
-      ];
-    }
-    attacker.sp -= reqSp;
-
     final results = <AttackResult>[];
     final j = magicIndex - 6; // 1..6 등급
 
@@ -298,6 +288,17 @@ class BattleEngine {
         );
         continue;
       }
+
+      if (attacker.sp < reqSp) {
+        results.add(
+          const AttackResult(
+            outcome: AttackOutcome.outOfSp,
+            message: '마법 지수(SP)가 부족합니다!',
+          ),
+        );
+        continue;
+      }
+      attacker.sp -= reqSp;
 
       // 명중 판정
       if (_rand(20) >= attacker.accMagic) {

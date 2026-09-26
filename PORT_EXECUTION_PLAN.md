@@ -76,5 +76,9 @@
    경험치를 주며, `CastOne`은 이 처형을 SP 소모보다 먼저 수행한다. 무기·단일·
    전체 마법에 파티 경험치 분기를 적용하고 전투 화면에서 파티 명단을 전달했다.
    커밋: `Share execution experience with active party members`.
+   `CastAll`은 `CastOne`을 적마다 호출한다. 따라서 의식 있는 적마다 SP를
+   계산·소모하고, 중간에 SP가 부족하면 남은 적은 공격받지 않는다. 의식불명
+   적의 처형은 SP 없이 실행되도록 하고 선택창에 대상별 비용을 표시한다.
+   커밋: `Charge all-target magic per conscious enemy`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

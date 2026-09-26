@@ -603,9 +603,16 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                 player.magicLevel,
                 player.espLevel,
               );
+              final executionIsFree = switch (sp.category) {
+                SpellCategory.singleAttack => currentTarget.isUnconscious,
+                SpellCategory.allAttack => widget.enemies.every(
+                  (enemy) => enemy.isDead || enemy.isUnconscious,
+                ),
+                _ => false,
+              };
               final canAfford = sp.category == SpellCategory.esp
                   ? player.esp >= cost
-                  : player.sp >= cost;
+                  : executionIsFree || player.sp >= cost;
               final canCast = isAvailable && canAfford;
 
               return ListTile(
@@ -629,6 +636,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                       ? 'Lv부족'
                       : (sp.category == SpellCategory.esp
                             ? 'ESP $cost'
+                            : executionIsFree
+                            ? 'SP 0'
+                            : sp.category == SpellCategory.allAttack
+                            ? 'SP $cost/적'
                             : 'SP $cost'),
                   style: RetroTheme.dosFont.copyWith(
                     color: canCast ? RetroTheme.lightCyan : RetroTheme.lightRed,

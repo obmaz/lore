@@ -30,16 +30,14 @@ class Spell {
 
     switch (category) {
       case SpellCategory.singleAttack:
-        // round(level[2] * j * j / 2) (최소 1)
+        // CastOne: round(level[2] * j * j / 2)
         final j = id; // 1..6
-        final cost = (magicLevel * j * j) ~/ 2;
-        return cost <= 0 ? 1 : cost;
+        return (magicLevel * j * j / 2).round();
 
       case SpellCategory.allAttack:
-        // 전체 공격 마법: 단일 마법과 유사하나 위력과 범위가 큼
+        // CastAll은 적마다 CastOne을 호출한다. 이 값은 적 1명당 비용이다.
         final j = id - 6; // 1..6
-        final cost = (magicLevel * j * j);
-        return cost <= 0 ? 2 : cost;
+        return (magicLevel * j * j / 2).round();
 
       case SpellCategory.specialDebuff:
         switch (id) {

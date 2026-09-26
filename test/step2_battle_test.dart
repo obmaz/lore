@@ -149,6 +149,38 @@ void main() {
       expect(damaged, isTrue);
     });
 
+    test('CastAll은 의식 있는 적마다 SP를 쓰고 부족해지면 나머지 적을 건너뛴다', () {
+      mage.magicLevel = 4;
+      mage.sp = 5;
+      mage.accMagic = 20;
+      final enemies = [Monster.create(1), Monster.create(2), Monster.create(3)];
+      final lastHp = enemies.last.hp;
+      expect(Spell.getById(7).calculateSpCost(mage.magicLevel), 2);
+
+      final results = engine.executePlayerAllMagicAttack(mage, enemies, 7);
+      expect(results, hasLength(3));
+      expect(
+        results
+            .take(2)
+            .every((result) => result.outcome != AttackOutcome.outOfSp),
+        isTrue,
+      );
+      expect(results.last.outcome, AttackOutcome.outOfSp);
+      expect(mage.sp, 1);
+      expect(enemies.last.hp, lastHp);
+    });
+
+    test('CastAll의 의식불명 적 처형은 SP가 없어도 진행한다', () {
+      mage.sp = 0;
+      final target = Monster.create(9)
+        ..hp = 0
+        ..isUnconscious = true;
+      final result = engine.executePlayerAllMagicAttack(mage, [target], 7);
+      expect(result.single.outcome, AttackOutcome.killed);
+      expect(mage.sp, 0);
+      expect(target.isDead, isTrue);
+    });
+
     test('3. 특수 디버프 마법(CastSpecial: 13..18) 효과 검증', () {
       final target = Monster.create(11); // Python: special=1, castLevel=1, ac=1
       target.resistance = 0; // 테스트를 위해 저항 0 설정
