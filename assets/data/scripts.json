@@ -16681,24 +16681,6 @@
       ]
     },
     {
-      "id": "enter-16-hunter-tile",
-      "trigger": "enter",
-      "map": 16,
-      "require": {
-        "flag": "loreHunterJoined"
-      },
-      "steps": [
-        {
-          "setTile": {
-            "map": 16,
-            "x": 40,
-            "y": 56,
-            "tile": 44
-          }
-        }
-      ]
-    },
-    {
       "id": "enter-11-pyramid",
       "trigger": "enter",
       "map": 11,

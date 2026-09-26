@@ -6,6 +6,19 @@ import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/game/lore_world_manager.dart';
 
+Iterable<Map<String, dynamic>> _tileChanges(Object? value) sync* {
+  if (value is List) {
+    for (final item in value) {
+      yield* _tileChanges(item);
+    }
+  } else if (value is Map<String, dynamic>) {
+    if (value['setTile'] case final Map<String, dynamic> tile) yield tile;
+    for (final entry in value.entries) {
+      if (entry.key != 'setTile') yield* _tileChanges(entry.value);
+    }
+  }
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -37,6 +50,41 @@ void main() {
       );
     }
     engine.resetForTest();
+  });
+
+  test('활성 스크립트의 고정 타일 변경은 대상 맵 범위 안에 있다', () async {
+    final raw = jsonDecode(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    ) as Map<String, dynamic>;
+    final maps = <int, LoreMapData>{};
+    for (final item in raw['scripts'] as List<dynamic>) {
+      final script = item as Map<String, dynamic>;
+      if (script['disabled'] == true) continue;
+      final sourceMapId = script['map'] as int;
+      for (final tile in _tileChanges(script['steps'])) {
+        final mapId = tile['map'] as int? ?? sourceMapId;
+        final info = LoreWorldManager.mapRegistry[mapId]!;
+        final map = maps[mapId] ??= await LoreMapData.loadFromAsset(
+          info.fileName,
+          category: info.category.name,
+        );
+        final x = tile['x'] as int;
+        final y = tile['y'] as int;
+        expect(
+          x >= 1 && x <= map.xmax && y >= 1 && y <= map.ymax,
+          isTrue,
+          reason:
+              '${script['id']}: 맵 $mapId ($x,$y)는 ${map.xmax}x${map.ymax} 밖이다',
+        );
+      }
+    }
+    final active = (raw['scripts'] as List<dynamic>)
+        .cast<Map<String, dynamic>>()
+        .where((script) => script['disabled'] != true)
+        .map((script) => script['id'])
+        .toSet();
+    expect(active, contains('enter-10-hunter-tile'));
+    expect(active, isNot(contains('enter-16-hunter-tile')));
   });
 
   test('원작 특수 타일의 핵심 만남은 걸음 이벤트로 등록된다', () async {

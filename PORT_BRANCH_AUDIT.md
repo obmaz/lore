@@ -5,7 +5,7 @@
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.
 
-전체 592개 / 활성 298개 / 비활성 294개 / 원본 추출 좌표 46개.
+전체 591개 / 활성 297개 / 비활성 294개 / 원본 추출 좌표 46개.
 
 ## 맵별 현황
 
@@ -26,7 +26,7 @@
 | 13 | 100×100 | 2 | 9 | 2 | 0 | 0 | 0 |
 | 14 | 50×50 | 9 | 13 | 9 | 0 | 0 | 0 |
 | 15 | 50×75 | 13 | 11 | 13 | 0 | 0 | 0 |
-| 16 | 40×40 | 5 | 12 | 4 | 0 | 0 | 1 |
+| 16 | 40×40 | 4 | 12 | 4 | 0 | 0 | 0 |
 | 17 | 100×100 | 11 | 11 | 11 | 0 | 0 | 0 |
 | 18 | 50×100 | 13 | 16 | 13 | 0 | 0 | 0 |
 | 19 | 50×50 | 19 | 14 | 19 | 0 | 0 | 0 |
@@ -728,7 +728,6 @@
 | `wivern-2-remaining`<br>LORESPEC.PAS (파일 추정) | step (*, 10) | {"tileAtPlayerZero":true,"quest":{"name":"wivern","eq":1}} | tileAtPlayerZero True → 타일을 0 이외로; wivern 단계 → 조건 밖 값 | battle(적 2), questStep:wivern |
 | `wivern-1-remaining`<br>LORESPEC.PAS (파일 추정) | step (*, 10) | {"tileAtPlayerZero":true,"quest":{"name":"wivern","eq":2}} | tileAtPlayerZero True → 타일을 0 이외로; wivern 단계 → 조건 밖 값 | battle(적 1), questStep:wivern |
 | `wivern-cleared`<br>LORESPEC.PAS (파일 추정) | step (*, 10) | {"tileAtPlayerZero":true,"quest":{"name":"wivern","gte":3}} | tileAtPlayerZero True → 타일을 0 이외로; wivern 단계 → 조건 밖 값 | 대사/연출 |
-| `enter-16-hunter-tile`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"flag":"loreHunterJoined"} | flag loreHunterJoined → 제거 | setTile |
 
 ### 맵 17
 
