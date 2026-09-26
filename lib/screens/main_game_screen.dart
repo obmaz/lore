@@ -15,6 +15,7 @@ import '../logic/field_hotkeys.dart';
 import '../logic/lore_sub_text.dart';
 import '../logic/lore_field_logic.dart';
 import '../logic/lore_encounter_logic.dart';
+import '../logic/lore_battle_progress.dart';
 import '../logic/lore_mirror_enemy.dart';
 import '../logic/lore_rigel_blessing.dart';
 import '../logic/script_world_reducer.dart';
@@ -83,7 +84,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
-  String? _currentBossName;
 
   final FocusNode _focusNode = FocusNode();
 
@@ -1228,7 +1228,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (monsterIds.isEmpty) return;
     setState(() {
       _currentMode = GameScreenMode.battle;
-      _currentBossName = null;
       _battleEnemies = monsterIds.map(LoreData.instance.monster).toList();
 
       // 원작 LOREBATT.PAS:1228-1240 - 조우 화면: `적이 출현했다 !!!` /
@@ -1249,7 +1248,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
   void _startBossBattle(List<Monster> bossEnemies, {String? title}) {
     setState(() {
       _currentMode = GameScreenMode.battle;
-      _currentBossName = bossEnemies.first.name;
       _battleEnemies = bossEnemies;
 
       // 원작은 전투 직전 안내 문구를 보여준다. 스크립트에 제목이 있으면 쓴다.
@@ -1269,24 +1267,23 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final pendingScript = _pendingScriptBattle;
     final targetX = _pendingScriptTargetX;
     final targetY = _pendingScriptTargetY;
+    final result = LoreBattleProgress.resolve(
+      _battleProgressState(),
+      end: LoreBattleEnd.victory,
+      enemyNames: _battleEnemies.map((enemy) => enemy.name),
+      goldEarned: goldEarned,
+      victoryFlags: _pendingVictoryFlags,
+    );
     _pendingScriptBattle = null;
     _pendingScriptTargetX = null;
     _pendingScriptTargetY = null;
+    _pendingVictoryFlags.clear();
     setState(() {
-      // 원작 `LOREBATT.PAS:1186 party.etc[6] := 0` (승리).
-      LoreDialogueManager.instance.setBattleResult(0);
-      _partyGold += goldEarned;
+      _applyBattleProgress(result);
       _currentMode = GameScreenMode.field;
-      _addLog('전투 종료. 일행은 필드로 복귀합니다. 보유 금화: $_partyGold');
-
-      // 원작 `if party.etc[6] = 0 then party.etc[..] or bit` - 승리 시 플래그.
-      for (final flag in _pendingVictoryFlags) {
-        LoreDialogueManager.instance.setFlag(flag);
-      }
-      _pendingVictoryFlags.clear();
-
-      _markDefeatedBoss();
     });
+    _addLog('전투 종료. 일행은 필드로 복귀합니다. 보유 금화: $_partyGold');
+    if (result.bossMessage case final message?) _addLog(message);
     _focusNode.requestFocus();
     if (pendingScript != null) {
       unawaited(
@@ -1311,21 +1308,22 @@ class _MainGameScreenState extends State<MainGameScreen> {
     };
     final bossDefeated =
         pendingScript?.isVictoryAfterRunAway(defeatedEnemySlots) ?? false;
+    final result = LoreBattleProgress.resolve(
+      _battleProgressState(),
+      end: LoreBattleEnd.runAway,
+      enemyNames: _battleEnemies.map((enemy) => enemy.name),
+      keyEnemyDefeatedOnEscape: bossDefeated,
+    );
     _pendingScriptBattle = null;
     _pendingScriptTargetX = null;
     _pendingScriptTargetY = null;
     _pendingVictoryFlags.clear();
     setState(() {
-      // 원작 `LOREBATT.PAS:1148 party.etc[6] := 2` (도망).
-      LoreDialogueManager.instance.setBattleResult(2);
+      _applyBattleProgress(result);
       _currentMode = GameScreenMode.field;
-      _addLog('안전한 곳으로 도망쳐 필드로 복귀했습니다.');
-      if (bossDefeated) {
-        _markDefeatedBoss();
-      } else {
-        _currentBossName = null;
-      }
     });
+    _addLog('안전한 곳으로 도망쳐 필드로 복귀했습니다.');
+    if (result.bossMessage case final message?) _addLog(message);
     _focusNode.requestFocus();
     if (pendingScript != null) {
       unawaited(
@@ -1368,25 +1366,31 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (enter != null) await _driveScript(enter);
   }
 
-  void _markDefeatedBoss() {
-    if (_currentBossName == 'Major Mummy') {
-      LoreDialogueManager.instance.bossMajorMummyDefeated = true;
-      _addLog('★ Major Mummy를 물리쳤습니다! LASTDITCH 성주에게 승전보를 전하십시오!');
-    } else if (_currentBossName == 'ArchiGagoyle') {
-      LoreDialogueManager.instance.bossArchiGagoyleDefeated = true;
-      _addLog('★ ArchiGagoyle을 물리쳤습니다! GAIA TERRA 성주에게 승전보를 전하십시오!');
-    } else if (_currentBossName?.startsWith('Hidra') ?? false) {
-      LoreDialogueManager.instance.bossHidraDefeated = true;
-      _addLog('★ 삼두룡 Hidra를 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
-    } else if (_currentBossName == 'Huge Dragon') {
-      LoreDialogueManager.instance.bossHugeDragonDefeated = true;
-      _addLog('★ Huge Dragon을 물리쳤습니다! WATER FIELD 성주에게 승전보를 전하십시오!');
+  LoreBattleProgressState _battleProgressState() {
+    final dialogue = LoreDialogueManager.instance;
+    return LoreBattleProgressState(
+      gold: _partyGold,
+      lastBattleResult: dialogue.lastBattleResult,
+      flags: dialogue.getFlagsCopy(),
+    );
+  }
+
+  void _applyBattleProgress(LoreBattleProgressResult result) {
+    final dialogue = LoreDialogueManager.instance;
+    _partyGold = result.state.gold;
+    dialogue.setBattleResult(result.state.lastBattleResult);
+    for (final flag in result.newlySetFlags) {
+      dialogue.setFlag(flag);
     }
-    _currentBossName = null;
   }
 
   /// 전투 패배 -> 게임 오버
   void _onBattleDefeat() {
+    final result = LoreBattleProgress.resolve(
+      _battleProgressState(),
+      end: LoreBattleEnd.defeat,
+      enemyNames: _battleEnemies.map((enemy) => enemy.name),
+    );
     _pendingScriptBattle = null;
     _pendingScriptTargetX = null;
     _pendingScriptTargetY = null;
@@ -1394,8 +1398,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     _pendingPortalTransition = null;
     AudioManager.instance.stopBgm();
     setState(() {
-      // 원작 `LOREBATT.PAS:58 party.etc[6] = 255` (전멸).
-      LoreDialogueManager.instance.setBattleResult(255);
+      _applyBattleProgress(result);
       _currentMode = GameScreenMode.gameOver;
     });
   }
