@@ -202,9 +202,12 @@ RANDOM_SPLIT_IF = re.compile(
 )
 WITH_PLAYER = re.compile(r"^with\s+player\[k\]\s+do\s+begin", re.I)
 
+# 연출/화면 갱신 호출은 포트가 자기 방식으로 처리하므로 "미지원"으로 세지 않는다.
+# (`Display_Condition` 처럼 밑줄이 붙은 이름도 있어 `\w*` 로 받는다)
 NOTE_ONLY = re.compile(
-    r"^(Clear|PressAnyKey|Pressanykey|Delay|Sound|Voice|Discard|line|SetColor"
-    r"|HPrintXY|PutImage|Display|originposition|load|Silent_Scroll)\b", re.I)
+    r"^(Clear\w*|PressAnyKey\w*|Pressanykey\w*|Delay\w*|Sound\w*|Voice\w*"
+    r"|Discard\w*|line\w*|SetColor\w*|HPrintXY\w*|PutImage\w*|Display\w*"
+    r"|originposition|load\w*|Silent_Scroll\w*|Scroll\w*)\b", re.I)
 
 # `party.etc[N] < v` 같은 단계 비교를 퀘스트 이름으로 옮긴다.
 QUEST_BY_ETC = {10: 'lordahn', 13: 'lastditch', 14: 'gaia', 15: 'water'}
@@ -1363,31 +1366,33 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         m = SET_TILE_AREA.search(s)
         if m:
             var, lo, hi, xc, yc, tile = m.groups()
-            xc, yc = xc.lower(), yc.lower()
-            area = {
-                'xMin': int(lo) if xc == var.lower() else 1,
-                'xMax': int(hi) if xc == var.lower() else 1,
-                'yMin': int(lo) if yc == var.lower() else 1,
-                'yMax': int(hi) if yc == var.lower() else 1,
-                'tile': int(tile),
-            }
-            if xc == var.lower():
-                area['xMin'], area['xMax'] = int(lo), int(hi)
-            elif yc == var.lower():
-                area['yMin'], area['yMax'] = int(lo), int(hi)
-            if xc == 'x':
-                # `map[x,i] := v` - x는 플레이어가 선 열
-                area['atPlayerX'] = True
-                area['xMin'] = area['xMax'] = 1
-                area['yMin'], area['yMax'] = int(lo), int(hi)
-            elif yc == 'y':
-                # `map[i,y] := v` - y는 플레이어가 선 행
-                area['atPlayerY'] = True
-                area['yMin'] = area['yMax'] = 1
-                area['xMin'], area['xMax'] = int(lo), int(hi)
-            elif xc == 'y' or yc == 'x':
+            var, xc, yc = var.lower(), xc.lower(), yc.lower()
+
+            def axis_range(expr):
+                """한 축의 (min, max, 플레이어기준) — 못 옮기면 None."""
+                if expr == var:
+                    return int(lo), int(hi), False
+                if expr == 'x':
+                    return 1, 1, True   # 플레이어가 선 열
+                if expr == 'y':
+                    return 1, 1, True   # 플레이어가 선 행
+                if expr.isdigit():
+                    return int(expr), int(expr), False
+                return None
+
+            xr, yr = axis_range(xc), axis_range(yc)
+            if xr is None or yr is None:
                 ctx.note(f'영역 변형(좌표 변수): {s[:50]}')
                 continue
+            area = {
+                'xMin': xr[0], 'xMax': xr[1],
+                'yMin': yr[0], 'yMax': yr[1],
+                'tile': int(tile),
+            }
+            if xr[2]:
+                area['atPlayerX'] = True
+            if yr[2]:
+                area['atPlayerY'] = True
             ctx.add_step({'setTileArea': area})
             continue
         m = AXIS_ASSIGN.match(s)
@@ -1415,6 +1420,10 @@ def translate_statement(ctx: Ctx, chunk: list[str]):
         if NOTE_ONLY.match(s):
             continue
         if re.match(r'^\s*(end|begin|until|repeat)\b', s, re.I):
+            continue
+        # 적 배치 루프 헤더(`for i := 1 to enemynumber do begin`)는 위에서
+        # 스코프로만 쓰고 별도 스텝이 없다(미지원으로 세지 않는다).
+        if FOR_LOOP_OPEN.match(s):
             continue
         ctx.note(f'미지원: {s[:60]}')
 

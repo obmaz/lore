@@ -112,6 +112,65 @@ def require_flags(entry) -> set:
 MARKER_KINDS = {'flag', 'questStep', 'randomFlag'}
 
 
+# 타일 변경은 `setTile`/`setTileArea`/`setTileAtPlayer` 로 나뉘어 있지만 원작에서는
+# 모두 `map[..] := 값` 이다. 종류는 하나로 보고 **내용**으로 비교한다.
+TILE_KINDS = {'setTile', 'setTileArea', 'setTileAtPlayer', 'setTileAtTarget'}
+
+
+def tile_specs(entry) -> list:
+    """타일 변경을 비교용 튜플 목록으로.
+
+    - `setTile {x,y,tile}` → `('point', x, y, tile)`
+    - `setTileArea {xMin,xMax,yMin,yMax,tile}` → `('area', …)`
+      (`atPlayerX`/`atPlayerY` 는 1로 표시된 축이 플레이어 기준이라는 뜻)
+    """
+    out: list = []
+
+    def fn(st):
+        t = st.get('setTile')
+        if isinstance(t, dict):
+            out.append(('point', t.get('x'), t.get('y'), t.get('tile')))
+        a = st.get('setTileArea')
+        if isinstance(a, dict):
+            out.append((
+                'area', a.get('xMin'), a.get('xMax'), a.get('yMin'),
+                a.get('yMax'), a.get('tile'), bool(a.get('atPlayerX')),
+                bool(a.get('atPlayerY')),
+            ))
+        p = st.get('setTileAtPlayer')
+        if isinstance(p, dict):
+            out.append(('player', p.get('tile')))
+        g = st.get('setTileAtTarget')
+        if isinstance(g, dict):
+            out.append(('target', g.get('tile')))
+
+    _walk_steps(entry.get('steps', []), fn)
+    return out
+
+
+def tile_covered(spec, gen_specs) -> bool:
+    """`spec` 한 개를 옮긴 쪽 타일 목록이 덮는가."""
+    kind = spec[0]
+    if kind in ('player', 'target'):
+        # 플레이어/대화상대 기준은 같은 종류가 있으면 덮인 것으로 본다.
+        return any(g[0] == kind for g in gen_specs)
+    for g in gen_specs:
+        if g[0] == 'point' and kind == 'point':
+            if (g[1], g[2], g[3]) == (spec[1], spec[2], spec[3]):
+                return True
+        elif g[0] == 'area' and kind == 'point':
+            x, y, tile = spec[1], spec[2], spec[3]
+            gx = g[6] or g[1] <= x <= g[2]
+            gy = g[7] or g[3] <= y <= g[4]
+            if gx and gy and g[5] == tile:
+                return True
+        elif g[0] == 'area' and kind == 'area':
+            if (g[1], g[2], g[3], g[4], g[5]) == (spec[1], spec[2], spec[3],
+                                                  spec[4], spec[5]):
+                return True
+    return False
+
+
 def flag_sites(existing) -> dict:
     """플래그 이름 → 그 플래그를 쓰는(설정/조건) 좌표 키 집합.
 
@@ -145,9 +204,19 @@ def hard_missing(existing_entries, gen_items) -> list:
     for e in gen_items:
         gn_kinds |= kinds(e)
         gn_monsters.extend(effect_detail(e)[1])
-    out.extend(sorted((ex_kinds - gn_kinds) - MARKER_KINDS))
+    out.extend(sorted((ex_kinds - gn_kinds) - MARKER_KINDS - TILE_KINDS))
     if ex_monsters and not set(ex_monsters) <= set(gn_monsters):
         out.append('전투 구성: ' + str(tuple(sorted(ex_monsters))))
+    # 타일 변경은 내용까지 보고 덮이지 않으면 대체하지 않는다.
+    ex_tiles: list = []
+    gn_tiles: list = []
+    for e in existing_entries:
+        ex_tiles.extend(tile_specs(e))
+    for e in gen_items:
+        gn_tiles.extend(tile_specs(e))
+    uncovered = [t for t in ex_tiles if not tile_covered(t, gn_tiles)]
+    if uncovered:
+        out.append('지형 변경: ' + str(tuple(uncovered[:4])))
     if any(e.get('disabled') for e in gen_items):
         out.append('옮긴 쪽에 disabled 항목 있음')
     return out
@@ -221,6 +290,8 @@ def merge_spec(existing, gen, replace_ok: bool = False,
         # 뺀다(손으로 쓴 `flag` ↔ 옮긴 쪽 `questStep` 은 원작에서 같은 일이다).
         existing_kinds -= MARKER_KINDS
         gen_kinds -= MARKER_KINDS
+        existing_kinds -= TILE_KINDS
+        gen_kinds -= TILE_KINDS
         missing = sorted(existing_kinds - gen_kinds)
         # 플래그 이름/전투 구성/전투 제목까지 같아야 안전하게 대체할 수 있다.
         # 단, 손으로 쓴 "완료 표시" 플래그가 **대체되는 좌표에서만** 쓰이면

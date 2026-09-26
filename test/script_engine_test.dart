@@ -429,10 +429,15 @@ void main() {
       expect(dragon.outcome.battleMonsters[1], 39); // Dragon's tail
       expect(dragon.outcome.setFlags, contains('bossHugeDragonDefeated'));
 
-      // 3) 지름길(맵 17 x = 72)은 통로 타일 3곳을 연다.
+      // 3) 지름길(맵 17 x = 72)은 통로 타일을 연다.
+      //    원작 `for j := 19 to 21 do map[72,j] := 44` → (x=72, y=19~21) 영역.
       final shortcut = engine.startStep(17, 72, 30, noCtx)!;
-      expect(shortcut.outcome.tileChanges.length, 3);
-      expect(shortcut.outcome.tileChanges.first.tile, 44);
+      final openArea = shortcut.outcome.tileAreas.single;
+      expect(openArea.tile, 44);
+      expect(openArea.xMin, 72);
+      expect(openArea.xMax, 72);
+      expect(openArea.yMin, 19);
+      expect(openArea.yMax, 21);
     });
 
     test('14. 영역 지형 변형(setTileArea)과 난수 소환/난수 플래그', () async {

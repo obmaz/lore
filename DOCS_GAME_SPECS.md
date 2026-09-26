@@ -555,19 +555,30 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
     옮긴 쪽이 **모두** 포함하면 그 좌표는 옮긴 쪽으로 대체하고, 손으로 쓴 항목은
     `"disabled": true` 로 꺼 둔다(지우지 않으므로 다시 병합해도 결과가 같다).
   - 포함하지 못하면 손으로 쓴 쪽을 그대로 실행하고 옮긴 쪽은 문구 보관용으로만
-    넣는다(`disabled`). 현재 249개 중 **41개 좌표가 대체**(자동 이관 활성 97개),
+    넣는다(`disabled`). 현재 249개 중 **42개 좌표가 대체**(자동 이관 활성 98개),
     나머지는 보관 상태다.
-  - 대체 판정: 효과 종류, 플래그/퀘스트 이름, 전투 구성, `require` 플래그를
-    옮긴 쪽이 모두 포함해야 한다.
+  - 대체 판정: 효과 종류, 플래그/퀘스트 이름, 전투 구성, 지형 변경, `require`
+    플래그를 옮긴 쪽이 모두 포함해야 한다.
     · 진행 표시 스텝(`flag`/`questStep`/`randomFlag`)은 **종류가 아니라 이름**으로
       본다(손으로 쓴 `flag: x` ↔ 옮긴 쪽 `questStep` 은 원작에서 같은 일이다).
     · 손으로 쓴 “완료 표시” 플래그가 **그 좌표에서만** 쓰이면 무시해도 된다
       (옮긴 쪽이 원작 조건으로 같은 일을 하므로).
+    · 지형 변경(`setTile`/`setTileArea`/`setTileAtPlayer`)도 종류는 하나로 보고
+      **내용**(좌표·타일값)이 덮이는지 본다.
     · **옮긴 쪽에 `disabled` 항목이 하나라도 있으면 대체하지 않는다**.
   - 무작위 적(`for i := 3 to 7 do joinenemy(i, random(3)+30)`)는 포트의
     `battle.random`(`pool`/`min`/`max`)으로 옮기고, 전투 구성 비교에 `pool` 도 넣는다.
   - 실행할 수 없는 조건(`enemy[i].dead` 재소환 등)은 꺼 둔다.
   - `--spec` 은 이전에 생성해 넣은 `spec-*` 항목을 먼저 걷어내므로 **멱등**하다.
+* 지형 변경: `for j := 19 to 21 do map[72,j] := 44` 처럼 **한 축만 범위**인
+  경우 `setTileArea`(`xMin=xMax=72`, `yMin=19`, `yMax=21`)로 옮긴다.
+  `map[x,j]`/`map[i,y]` 처럼 플레이어 위치를 쓰는 축은 `atPlayerX`/`atPlayerY`
+  로 표시하고 그 축은 1로 둔다(엔진은 플레이어가 선 열/행을 쓴다).
+  · 이전에는 리터럴 축을 1로 덮어써 지형 변경이 통째로 어긋나는 버그가 있었다
+    (`map[72,j]` → `xMin=1`) → 수정.
+* 연출/화면 갱신 호출(`Clear`/`PressAnyKey`/`Delay`/`Scroll`/`Display_Condition`
+  /`PutImage`/`Silent_Scroll`/`load`)은 포트가 자기 방식으로 처리하므로
+  “미지원”으로 세지 않는다(밑줄 붙은 이름도 받도록 `\w*` 로 맞춤).
 * 적별 덮어쓰기: 원작이 전투 직전에 적 이름·능력치를 직접 바꾸는 부분
   (`with enemy[i] do begin name := 'Sphinx'; level := 4; ac := 1; end`,
   `enemy[3].name := 'ArchiGagoyle'`, `name := 'Soldier'+chr(48+i)`)은
