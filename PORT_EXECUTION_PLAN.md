@@ -53,6 +53,10 @@
    변경을 중단한다. 커밋: `Match Polaris town tile to current party membership`.
 8. 포털과 겹친 77개의 취소·수문장·부수 효과를 원본과 더 깊게 대조한다.
 9. 원본 `LORETALK.PAS`, `LOREENT.PAS`, `LOREBATT.PAS`의 분기 추출 범위를
-   넓혀 스크립트·포털·전투와 상호 대조하고 남은 누락을 처리한다.
+   넓혀 스크립트·포털·전투와 상호 대조하고 남은 누락을 처리한다. 첫 단계로
+   `LOREENT.PAS`의 지도 로드 27건을 추출해 출발 맵, 명시 좌표 16건, 목적지
+   맵·좌표를 포털 데이터와 재실행 가능한 방식으로 대조했다. 현재 미매칭 0건이며
+   전투·대사·거절·진입 후 타일 효과는 후속 대조 대상이다.
+   커밋: `Audit original entrance routes against portal data`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
