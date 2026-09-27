@@ -6140,6 +6140,7 @@
       "id": "map17-passage-44-shortcut",
       "trigger": "step",
       "map": 17,
+      "disabled": true,
       "x": 72,
       "y": 44,
       "once": false,

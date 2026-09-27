@@ -25888,7 +25888,7 @@
     {
       "path": "test/script_engine_test.dart",
       "kind": "test",
-      "sha256": "43dcf1da03e1520b5df7423e15046d988176703b11319fc953080237075d42f3",
+      "sha256": "a5d0275d8493b2ba853ff4669c883d1030fd84962663e5b463b93043fed4a4d6",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS",
@@ -26078,6 +26078,13 @@
       "path": "test/step_rule_selection_test.dart",
       "kind": "test",
       "sha256": "e2c06d83c50ac69446f37cd4f411515598a604a3744f72248ab06eab3e2af18e",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/step_tile_reachability_test.dart",
+      "kind": "test",
+      "sha256": "68d7ecc98afd0701c051c72d389fba38f5d8216e3ae84ff62d4506bbefccc51a",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26322,7 +26329,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "56b1a5d121bec53b1dc1848875f7bad2d799f0cecdf681bd085ab9b5e88c250d",
+      "sha256": "4adf845e834237d02e3fd9e8540fb947a9f59fbd426f59d8e1e91f8939a22d45",
       "top_level_counts": {
         "scripts": 598
       }

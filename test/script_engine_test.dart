@@ -2,7 +2,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
+import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/lore_join.dart';
+import 'package:lore/logic/lore_tile_protocol.dart';
 
 /// 게임 본편과 같이 **현재 플래그**로 스크립트 컨텍스트를 만든다.
 /// 원작 좌표 이벤트의 1회성은 `party.etc` 비트로 관리되므로, 고정 컨텍스트로는
@@ -371,10 +373,7 @@ void main() {
       expect(LoreScriptEngine.instance.startStep(12, 12, 48, noCtx), isNotNull);
 
       final declined = first.choose(2);
-      expect(
-        declined.outcome.setFlags,
-        contains('etc31_bit2'),
-      );
+      expect(declined.outcome.setFlags, contains('etc31_bit2'));
       expect(LoreScriptEngine.instance.startStep(12, 12, 48, noCtx), isNotNull);
     });
 
@@ -552,17 +551,20 @@ void main() {
       expect(run.outcome.nudges.single.dy, -7);
     });
 
-    test('맵 17 y=44는 출구 지형을 바꾸고 x=72에서는 지름길도 처리한다', () async {
+    test('맵 17 y=44는 출구 지형을 바꾸며 x=72 벽에는 사건이 발동하지 않는다', () async {
       await LoreScriptEngine.instance.load();
       final normal = LoreScriptEngine.instance.startStep(17, 68, 44, noCtx)!;
       expect(normal.script.id, 'map17-passage-44');
       expect(normal.outcome.tileAreas.map((a) => a.tile), [44, 52]);
       expect(normal.outcome.nudges, isEmpty);
-
-      final crossing = LoreScriptEngine.instance.startStep(17, 72, 44, noCtx)!;
-      expect(crossing.script.id, 'map17-passage-44-shortcut');
-      expect(crossing.outcome.tileAreas.map((a) => a.tile), [44, 52, 44]);
-      expect(crossing.outcome.nudges.single.dy, -7);
+      final map = await LoreMapData.loadFromAsset('DEN4', category: 'den');
+      expect(map.actionForTile(map.getTile(72, 44)), LoreTileAction.wall);
+      expect(
+        LoreScriptEngine.instance.scripts
+            .singleWhere((script) => script.id == 'map17-passage-44-shortcut')
+            .disabled,
+        isTrue,
+      );
     });
 
     test('5. Spica는 특수 타일 첫 만남 뒤에만 독심술로 영입한다', () async {
