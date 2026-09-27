@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
+import 'package:lore/logic/lore_ent_procedures.dart';
 
 void main() {
   final scripts = LoreScriptEngine()
@@ -93,5 +94,43 @@ void main() {
     expect(chamber?.outcome.tileAreas.single.yMin, 16);
     expect(chamber?.outcome.tileAreas.single.xMax, 26);
     expect(chamber?.outcome.tileAreas.single.yMax, 19);
+  });
+
+  test('직접 이식한 load 후 지도 변경은 출발지와 조건을 보존한다', () {
+    List<(int, int, int)> changes(
+      int fromMap,
+      int toMap, {
+      Set<String> partyNames = const {},
+      Set<String> flags = const {},
+      Map<String, int> questSteps = const {},
+    }) {
+      final writes = <(int, int, int)>[];
+      LoreEntProcedures.afterMapLoadTiles(
+        fromMap: fromMap,
+        toMap: toMap,
+        partyNames: partyNames,
+        flags: flags,
+        questSteps: questSteps,
+        setTile: (x, y, tile) => writes.add((x, y, tile)),
+      );
+      return writes;
+    }
+
+    expect(changes(1, 6), hasLength(15));
+    expect(changes(1, 7, partyNames: {'Polaris'}), [(37, 41, 44)]);
+    expect(changes(8, 7, partyNames: {'Polaris'}), isEmpty);
+    expect(changes(11, 7, partyNames: {'Polaris'}), isEmpty);
+    expect(changes(3, 10, flags: {'loreHunterJoined'}), [(40, 56, 44)]);
+    expect(changes(16, 10, flags: {'loreHunterJoined'}), [(40, 56, 44)]);
+    expect(changes(7, 11, questSteps: {'lastditch': 2}), [
+      (25, 44, 50),
+      (26, 44, 50),
+    ]);
+    expect(changes(7, 11, questSteps: {'lastditch': 1}), isEmpty);
+    expect(changes(8, 12, questSteps: {'gaia': 2}), [(18, 9, 0)]);
+    expect(changes(22, 24, flags: {'programmerMet'}), [(33, 10, 47)]);
+    expect(changes(25, 26), hasLength(12));
+    expect(changes(25, 26).first, (24, 16, 16));
+    expect(changes(25, 26).last, (26, 19, 16));
   });
 }

@@ -94,7 +94,7 @@
 | 원본 유닛 | 직접 실행 완료 | 남은 루틴·경계 |
 | --- | --- | --- |
 | `LOREMAIN` | `enter_water`, `enter_swamp`, `enter_lava`, `Move_Mode` | `Main`의 단일 프로시저 코어. 입력 후 현재 타일 재판정·소리 전환·Space의 전투 결과 초기화는 앱에 연결했다. |
-| `LOREENT` | 없음 | `entermode`, `sign`의 단일 프로시저 코어. 27개 목적지·41개 정적 표지판·입장 전후 효과는 현재 JSON/어댑터에서 실행·검증한다. |
+| `LOREENT` | 없음 | `entermode`, `sign`의 단일 중단/재개 코어. 27개 목적지와 `load` 뒤 지도 변경은 원본형 Dart 코드에서 실행한다. 수문장 전투·선택 후속은 아직 JSON 스크립트 세션을 사용한다. |
 | `LORETALK` | 없음 | `talkmode` 전체 |
 | `LORESPEC` | 없음 | `sgn`, `specialevent_part1`, `specialevent_part2`, `specialevent` 및 모든 지도별 본문 |
 

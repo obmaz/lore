@@ -392,6 +392,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   Future<void> _finishPortalEntry(PortalInfo portal, int tx, int ty) async {
     final enteredFromMap = _game.currentMapId;
+    // LOREENT map 21 shows Ancient Evil before the destination `load`.
+    if (enteredFromMap == 21 && portal.targetMapId == 22) {
+      final speech = _scripts.startEnter(
+        22,
+        _scriptContext(enteredFromMap: enteredFromMap),
+      );
+      if (speech != null) await _driveScript(speech);
+      if (!mounted) return;
+    }
     await _game.enterPortal(portal, tx, ty, deferPostLoadEffects: true);
     if (!mounted) return;
     if (enteredFromMap == 25 && _game.currentMapId == 26) {
@@ -403,11 +412,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
       await _playChamberDescent();
       if (!mounted) return;
     }
-    final enter = _scripts.startEnter(
-      _game.currentMapId,
-      _scriptContext(enteredFromMap: enteredFromMap),
+    final context = _scriptContext(enteredFromMap: enteredFromMap);
+    _game.applyEntrancePostLoadTiles(
+      fromMap: enteredFromMap,
+      partyNames: context.partyNames,
+      flags: context.flags,
+      questSteps: context.questSteps,
     );
-    if (enter != null) await _driveScript(enter);
     if (!mounted) return;
     _game.finishEntrance();
     setState(() {});

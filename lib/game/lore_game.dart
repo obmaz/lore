@@ -5,6 +5,7 @@ import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_ent_procedures.dart';
 import '../logic/lore_field_session.dart';
 import '../logic/lore_main_procedures.dart';
+import '../logic/lore_tile_protocol.dart';
 import '../logic/lore_talk_dispatcher.dart';
 
 import 'package:flame/game.dart';
@@ -236,11 +237,10 @@ class LoreGame extends FlameGame {
     final targetY = playerY + dy;
     final map = currentMap;
     if (map == null) return false;
-    final portal = LoreWorldManager.instance.findPortal(
-      currentMapId,
-      targetX,
-      targetY,
-    );
+    final targetAction = map.actionForTile(map.getTile(targetX, targetY));
+    final portal = targetAction == LoreTileAction.enter
+        ? LoreEntProcedures.entranceAt(currentMapId, targetX, targetY)
+        : LoreWorldManager.instance.findPortal(currentMapId, targetX, targetY);
     final transition = LoreFieldSession.move(
       map: map,
       x: playerX,
@@ -442,6 +442,27 @@ class LoreGame extends FlameGame {
 
   void finishEntrance() {
     LoreEntProcedures.finishEntrance(clearPeek);
+  }
+
+  void applyEntrancePostLoadTiles({
+    required int fromMap,
+    required Set<String> partyNames,
+    required Set<String> flags,
+    required Map<String, int> questSteps,
+  }) {
+    final map = currentMap;
+    if (map == null) return;
+    LoreEntProcedures.afterMapLoadTiles(
+      fromMap: fromMap,
+      toMap: currentMapId,
+      partyNames: partyNames,
+      flags: flags,
+      questSteps: questSteps,
+      setTile: (x, y, tile) {
+        if (x < 1 || y < 1 || x > map.xmax || y > map.ymax) return;
+        map.grid[y - 1][x - 1] = tile;
+      },
+    );
   }
 
   @override
