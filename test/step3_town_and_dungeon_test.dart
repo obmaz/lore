@@ -3,6 +3,7 @@ import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_dungeon_event_manager.dart';
 import 'package:lore/logic/lore_join.dart';
+import 'package:lore/logic/lore_spec_procedures.dart';
 import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
 
@@ -165,7 +166,12 @@ void main() {
       final engine = LoreScriptEngine.instance;
       // 맵 4 (26,16) Draconian 강의 → 영입
       expect(
-        engine.startStep(4, 26, 16, const ScriptContext())!.outcome.messages,
+        LoreSpecProcedures.map4(
+          26,
+          16,
+          const ScriptContext(),
+          engine,
+        )!.outcome.messages,
         isNotEmpty,
       );
       // 맵 11 (y=24) 미이라의 방 → Major Mummy 전투

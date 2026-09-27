@@ -27,10 +27,11 @@ class ScriptBranchAuditTest(unittest.TestCase):
             {"id": "source-copy", "map": 1, "trigger": "step", "disabled": True,
              "portedBy": "LoreSpecProcedures.map1Food", "steps": [{"food": 100}]},
         ]
-        _, _, findings = audit(scripts, [], [], {1: (10, 10)})
+        _, _, findings = audit(scripts, [], [(1, 12, 4, 5, [])], {1: (10, 10)})
         self.assertIn("LoreSpecProcedures.map1Food", findings["ported_procedure"][0])
         self.assertEqual(findings["disabled_without_cover"], [])
         self.assertEqual(findings["portal_unverified"], [])
+        self.assertEqual(findings["missing_source_coordinates"], [])
 
     def test_reconciles_portal_target_but_keeps_guard_and_refusal_separate(self):
         scripts = [

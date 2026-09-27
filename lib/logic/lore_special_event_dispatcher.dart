@@ -37,6 +37,11 @@ class LoreSpecialEventDispatcher {
         script: LoreSpecProcedures.map1Food(context, scripts),
       );
     }
+    if (mapId == 4 && scripts.usingJson) {
+      return LoreSpecialEventDispatch(
+        script: LoreSpecProcedures.map4(x, y, context, scripts),
+      );
+    }
     if (scripts.usingJson) {
       return LoreSpecialEventDispatch(
         script: scripts.startStep(mapId, x, y, context),

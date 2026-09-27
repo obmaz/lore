@@ -653,17 +653,23 @@ void main() {
       expect(change.map, isNull); // 현재 맵에 적용
 
       // 맵 4 (20,39) Ancient Evil: 첫 방문은 대륙 안내 + 플래그 (원작 LORESPEC 맵 4)
-      final first = LoreScriptEngine.instance.startStep(4, 20, 39, noCtx)!;
+      final first = LoreSpecProcedures.map4(
+        20,
+        39,
+        noCtx,
+        LoreScriptEngine.instance,
+      )!;
       expect(first.outcome.setFlags, contains('ancientEvilMet'));
-      expect(first.outcome.teleportX, isNull);
+      expect(first.outcome.teleportX, 16);
+      expect(first.outcome.teleportY, 15);
       expect(first.outcome.messages.length, 5);
 
       // 재방문은 비밀 통로로 강제 이동 (원작 x := 46; y := 41)
-      final later = LoreScriptEngine.instance.startStep(
-        4,
+      final later = LoreSpecProcedures.map4(
         20,
         39,
         const ScriptContext(flags: {'ancientEvilMet'}),
+        LoreScriptEngine.instance,
       )!;
       expect(later.outcome.teleportX, 46);
       expect(later.outcome.teleportY, 41);
@@ -685,21 +691,21 @@ void main() {
       final engine = LoreScriptEngine.instance;
 
       // 1) 맵 4 (40,18) 공간 이동 (원작 x := 46; y := 41)
-      final jump = engine.startStep(4, 40, 18, noCtx)!;
+      final jump = LoreSpecProcedures.map4(40, 18, noCtx, engine)!;
       expect(jump.outcome.teleportX, 46);
       expect(jump.outcome.teleportY, 41);
       expect(jump.outcome.messages.single, contains('공간 이동'));
 
       // 2) 맵 4 (26,16) Draconian: 피라밋 설명 + 강의 → 독심술(etc5) 사용 후
       //    영입 제안 (원작도 `party.etc[5] > 0` 일 때만 영입을 제안한다)
-      final lecture = engine.startStep(4, 26, 16, noCtx)!;
+      final lecture = LoreSpecProcedures.map4(26, 16, noCtx, engine)!;
       expect(lecture.outcome.messages.first, contains('드래곤의 중간 종족'));
       expect(lecture.outcome.recruits, isEmpty);
-      final join = engine.startStep(
-        4,
+      final join = LoreSpecProcedures.map4(
         26,
         16,
         const ScriptContext(flags: {'etc5'}),
+        engine,
       )!;
       expect(join.pendingChoice, isNotNull);
       final joinOutcome = join.choose(0).outcome;
@@ -710,11 +716,11 @@ void main() {
       // 원작 join(62,6)은 레벨 17로 편입시킨다.
       expect(LoreJoin.byKey('draconian')!.battleLevel, 17);
       // 이미 합류했다면 피라밋은 비어 있다(원작 `etc[16] and bit2 > 0`).
-      final after = engine.startStep(
-        4,
+      final after = LoreSpecProcedures.map4(
         26,
         16,
         const ScriptContext(flags: {'draconianMet'}),
+        engine,
       )!;
       expect(after.outcome.messages.join(''), contains('아무도 살고 있지 않았다'));
 
@@ -866,7 +872,7 @@ void main() {
       final engine = LoreScriptEngine.instance;
 
       // 1) Ancient Evil 안내는 원작처럼 대사 → 시야 이동 → 대사 순서로 진행된다.
-      final ancient = engine.startStep(4, 20, 39, noCtx)!;
+      final ancient = LoreSpecProcedures.map4(20, 39, noCtx, engine)!;
       final kinds = ancient.outcome.events.map((e) => e.kind).toList();
       expect(kinds.where((k) => k == 'peek').length, 3);
       expect(kinds.first, 'message');

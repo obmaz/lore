@@ -25893,6 +25893,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/lore_spec_map4_test.dart",
+      "kind": "test",
+      "sha256": "80b04e857da0ce87740216ce09cb1324efbcddb98fc0e2036617566823ea9592",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/loreent_entry_effects_test.dart",
       "kind": "test",
       "sha256": "13e79482c50afd7223803f3127e7181db0b0e8ecff3c57402718b95575f390cd",
@@ -26031,7 +26038,7 @@
     {
       "path": "test/script_engine_test.dart",
       "kind": "test",
-      "sha256": "8caebd6fc58886436f7e2a2209a7ea03b2de298bf277ef10dafbf52c1bcf8d9e",
+      "sha256": "560b8e30a597f091ec4f82901165c40ae9350f737b8f60ad34e0154557227e2d",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS",
@@ -26194,7 +26201,7 @@
     {
       "path": "test/step3_town_and_dungeon_test.dart",
       "kind": "test",
-      "sha256": "7014f8867d5e89fd0edcfa09a32a450347185207b92c4893d43fc3ee1d9c6398",
+      "sha256": "3ee7617680f322796f9b2289c5601229b9c37f478b1499e67faae486534ea4fd",
       "cited_source_files": [
         "LORESPEC.PAS",
         "LORESUB.PAS",
@@ -26508,7 +26515,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "c66a296c71c11d739e0670197b52b76064f61e531d26faf21e1943b487e47f27",
+      "sha256": "1767cf31df405314aef8a8533106757b73bb98498c7d829ba32e1aa6f1366c38",
       "top_level_counts": {
         "scripts": 598
       }
@@ -26562,7 +26569,7 @@
     },
     {
       "path": "lib/logic/lore_special_event_dispatcher.dart",
-      "sha256": "415cb1618e9042f7a88103eaa7b5979f6f346e96a63731ef9ed1161562f6c07e"
+      "sha256": "9806c348a46a7d187554f7bb09ab61e55dd11d9649cf68d412f757ab52325c64"
     },
     {
       "path": "lib/logic/lore_lava_logic.dart",

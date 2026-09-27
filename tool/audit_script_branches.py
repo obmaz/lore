@@ -251,6 +251,11 @@ def audit(scripts, portals, source_events, dimensions):
         covered = any(
             s.get("trigger", "step") == "step" and covers(s, map_id, x, y)
             for s in active
+        ) or any(
+            s.get("portedBy")
+            and s.get("trigger", "step") == "step"
+            and covers(s, map_id, x, y)
+            for s in disabled
         ) or any(covers(p, map_id, x, y) for p in portals)
         if not covered:
             findings["missing_source_coordinates"].append(

@@ -2214,6 +2214,8 @@
       "id": "ancient-evil-first",
       "trigger": "step",
       "map": 4,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map4",
       "x": 20,
       "y": 39,
       "once": true,
@@ -2253,6 +2255,12 @@
           }
         },
         {
+          "teleport": {
+            "x": 16,
+            "y": 15
+          }
+        },
+        {
           "say": "여기는 이 대륙의 외진곳이오. 여기서는 어떤 만남이 기다리고 있을 것이오."
         },
         {
@@ -2264,6 +2272,8 @@
       "id": "ancient-evil-later",
       "trigger": "step",
       "map": 4,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map4",
       "x": 20,
       "y": 39,
       "once": false,
@@ -2286,6 +2296,8 @@
       "id": "spec-4-L37",
       "trigger": "step",
       "map": 4,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map4",
       "once": false,
       "steps": [
         {
@@ -2305,6 +2317,7 @@
       "id": "map4-spacejump-40-18",
       "trigger": "step",
       "map": 4,
+      "portedBy": "LoreSpecProcedures.map4",
       "x": 40,
       "y": 18,
       "once": false,
@@ -2325,6 +2338,8 @@
       "id": "spec-4-L37-1",
       "trigger": "step",
       "map": 4,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map4",
       "once": false,
       "steps": [
         {
@@ -2548,6 +2563,8 @@
       "id": "spec-4-L37-2",
       "trigger": "step",
       "map": 4,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map4",
       "once": false,
       "steps": [
         {
@@ -2624,6 +2641,8 @@
       "id": "spec-4-L37-3",
       "trigger": "step",
       "map": 4,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map4",
       "once": false,
       "steps": [
         {
@@ -2654,6 +2673,7 @@
       "id": "draconian-lecture",
       "trigger": "step",
       "map": 4,
+      "portedBy": "LoreSpecProcedures.map4",
       "x": 26,
       "y": 16,
       "once": true,
@@ -2879,6 +2899,7 @@
       "id": "draconian-join",
       "trigger": "step",
       "map": 4,
+      "portedBy": "LoreSpecProcedures.map4",
       "x": 26,
       "y": 16,
       "once": true,
@@ -18271,6 +18292,7 @@
       "id": "spec-4-L37-1x",
       "trigger": "step",
       "map": 4,
+      "portedBy": "LoreSpecProcedures.map4",
       "once": false,
       "steps": [
         {
@@ -18369,6 +18391,7 @@
       "id": "spec-4-L37-2x",
       "trigger": "step",
       "map": 4,
+      "portedBy": "LoreSpecProcedures.map4",
       "once": false,
       "steps": [
         {

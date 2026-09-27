@@ -5,7 +5,7 @@
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.
 
-전체 598개 / 활성 286개 / 비활성 312개 / 원본 추출 좌표 46개.
+전체 598개 / 활성 280개 / 비활성 318개 / 원본 추출 좌표 46개.
 
 ## 맵별 현황
 
@@ -14,7 +14,7 @@
 | 1 | 100×100 | 0 | 3 | 0 | 0 | 0 | 0 |
 | 2 | 100×100 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 3 | 100×100 | 0 | 0 | 0 | 0 | 0 | 0 |
-| 4 | 100×100 | 6 | 5 | 6 | 0 | 0 | 0 |
+| 4 | 100×100 | 0 | 11 | 0 | 0 | 0 | 0 |
 | 5 | 50×50 | 1 | 0 | 0 | 0 | 1 | 0 |
 | 6 | 100×100 | 58 | 31 | 4 | 52 | 1 | 1 |
 | 7 | 75×75 | 29 | 4 | 2 | 26 | 0 | 1 |
@@ -49,11 +49,22 @@
 
 - 맵 22 `keep2-ambush-zone-b` step (*, 47..99) — LORESPEC.PAS (파일 추정)
 
-### 원본형 프로시저로 전환한 비활성 JSON 항목: 3개
+### 원본형 프로시저로 전환한 비활성 JSON 항목: 14개
 
+- 맵 4 `ancient-evil-first` step (20, 39) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
+- 맵 4 `ancient-evil-later` step (20, 39) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
+- 맵 4 `spec-4-L37` step (40, 18) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
+- 맵 4 `map4-spacejump-40-18` step (40, 18) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
+- 맵 4 `spec-4-L37-1` step (26, 16) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
+- 맵 4 `spec-4-L37-2` step (26, 16) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
+- 맵 4 `spec-4-L37-3` step (26, 16) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
+- 맵 4 `draconian-lecture` step (26, 16) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
+- 맵 4 `draconian-join` step (26, 16) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
 - 맵 1 `spec-1-L25-seq` step (*, *) — LORESPEC.PAS:25 → LoreSpecProcedures.map1Food
 - 맵 1 `spec-1-L25-seq2` step (*, *) — LORESPEC.PAS:25 → LoreSpecProcedures.map1Food
 - 맵 1 `spec-1-L25-seq3` step (*, *) — LORESPEC.PAS:25 → LoreSpecProcedures.map1Food
+- 맵 4 `spec-4-L37-1x` step (20, 39) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
+- 맵 4 `spec-4-L37-2x` step (20, 39) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
 
 ### 포털과 좌표가 겹치고 이동 목적지가 일치하는 비활성 항목: 56개
 
@@ -196,7 +207,13 @@
 - 맵 14 `gold-14-31-8` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 14 `gold-14-14-28` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 6 `castle-chest-62-82` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 4 `ancient-evil-first` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 4 `ancient-evil-later` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 4 `spec-4-L37` LORESPEC.PAS:37 — 조건/효과 미기록
 - 맵 4 `map4-spacejump-40-18` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 4 `spec-4-L37-1` LORESPEC.PAS:37 — 조건/효과 미기록
+- 맵 4 `spec-4-L37-2` LORESPEC.PAS:37 — 조건/효과 미기록
+- 맵 4 `spec-4-L37-3` LORESPEC.PAS:37 — 조건/효과 미기록
 - 맵 4 `draconian-lecture` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 4 `draconian-join` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 6 `spec-6-L190-1-1` LORESPEC.PAS:190 — 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';
@@ -494,17 +511,6 @@
 
 참 조건은 `require` 그대로이며, 거짓 탐침은 해당 조건을 뒤집는 대표 입력이다.
 거짓 탐침의 실제 후속 규칙은 실행 엔진의 우선순위 및 다른 조건에 따라 달라진다.
-
-### 맵 4
-
-| 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
-| :--- | :--- | :--- | :--- | :--- |
-| `ancient-evil-first`<br>LORESPEC.PAS (파일 추정) | step (20, 39) | {"flagNot":"ancientEvilMet"} | flagNot ancientEvilMet → 추가 | flag:ancientEvilMet |
-| `ancient-evil-later`<br>LORESPEC.PAS (파일 추정) | step (20, 39) | {"flag":"ancientEvilMet"} | flag ancientEvilMet → 제거 | teleport |
-| `spec-4-L37`<br>LORESPEC.PAS:37 | step (40, 18) | 조건 없음 | 조건 없음 | teleport |
-| `spec-4-L37-1`<br>LORESPEC.PAS:37 | step (26, 16) | {"notAllFlags":["draconianMet","etc5"]} | notAllFlags → draconianMet 추가 | 대사/연출 |
-| `spec-4-L37-2`<br>LORESPEC.PAS:37 | step (26, 16) | {"allFlags":["etc5"],"notAllFlags":["draconianMet"]} | allFlags → etc5 제거; notAllFlags → draconianMet 추가 | join:draconian, flag:draconianMet, block |
-| `spec-4-L37-3`<br>LORESPEC.PAS:37 | step (26, 16) | {"allFlags":["draconianMet"]} | allFlags → draconianMet 제거 | block |
 
 ### 맵 5
 
