@@ -26091,6 +26091,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/talk_rule_selection_test.dart",
+      "kind": "test",
+      "sha256": "455669bf31866d2e2d203f4fec0b73681219fa1612f7b579ad164e2beba4f3a0",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/widget_test.dart",
       "kind": "test",
       "sha256": "aa7688b60494a45467a594939595a624cf2111797226f5acb6530e26ff5c8247",
