@@ -6112,6 +6112,19 @@
       "disabled": true
     },
     {
+      "id": "map17-row80-shortcut-safe",
+      "trigger": "step",
+      "map": 17,
+      "x": 72,
+      "y": 80,
+      "once": false,
+      "steps": [
+        {"setTileArea": {"xMin": 72, "xMax": 72, "yMin": 19, "yMax": 21, "tile": 44}},
+        {"teleport": {"x": 72, "y": 6}}
+      ],
+      "note": "LORESPEC.PAS:1022,1106-1109 computes y=-1; stay at last valid y=6"
+    },
+    {
       "id": "map17-passage-44-shortcut",
       "trigger": "step",
       "map": 17,

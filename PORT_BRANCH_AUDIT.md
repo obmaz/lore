@@ -5,7 +5,7 @@
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.
 
-전체 594개 / 활성 300개 / 비활성 294개 / 원본 추출 좌표 46개.
+전체 595개 / 활성 301개 / 비활성 294개 / 원본 추출 좌표 46개.
 
 ## 맵별 현황
 
@@ -27,7 +27,7 @@
 | 14 | 50×50 | 9 | 13 | 9 | 0 | 0 | 0 |
 | 15 | 50×75 | 13 | 11 | 13 | 0 | 0 | 0 |
 | 16 | 40×40 | 4 | 12 | 4 | 0 | 0 | 0 |
-| 17 | 100×100 | 14 | 11 | 14 | 0 | 0 | 0 |
+| 17 | 100×100 | 15 | 11 | 15 | 0 | 0 | 0 |
 | 18 | 50×100 | 13 | 16 | 13 | 0 | 0 | 0 |
 | 19 | 50×50 | 19 | 14 | 19 | 0 | 0 | 0 |
 | 20 | 50×100 | 14 | 48 | 14 | 0 | 0 | 0 |
@@ -742,6 +742,7 @@
 | `spec-17-L1010-4`<br>LORESPEC.PAS:1010 | step (22, *) | {"allFlags":["etc1","etc6"],"notAllFlags":["bossHidraDefeated"],"quest":[{"name":"water","lt":2}]} | allFlags → etc1 제거; notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | battle(적 3), nudge |
 | `spec-17-L1010-5`<br>LORESPEC.PAS:1010 | step (22, *) | {"allFlags":["etc6"],"notAllFlags":["bossHidraDefeated","etc1"],"quest":[{"name":"water","lt":2}]} | allFlags → etc6 제거; notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | torch, flag:etc1, battle(적 3), block |
 | `spec-17-L1010-6`<br>LORESPEC.PAS:1010 | step (22, *) | {"allFlags":["etc1","etc6"],"notAllFlags":["bossHidraDefeated"],"quest":[{"name":"water","lt":2}]} | allFlags → etc1 제거; notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | battle(적 3), block |
+| `map17-row80-shortcut-safe`<br>LORESPEC.PAS (파일 추정) | step (72, 80) | 조건 없음 | 조건 없음 | setTileArea, teleport |
 | `map17-passage-44-shortcut`<br>LORESPEC.PAS (파일 추정) | step (72, 44) | 조건 없음 | 조건 없음 | setTileArea, nudge |
 | `map17-passage-44`<br>LORESPEC.PAS (파일 추정) | step (*, 44) | 조건 없음 | 조건 없음 | setTileArea |
 | `spec-17-L1010xxxxx`<br>LORESPEC.PAS:1010 | step (72, *) | 조건 없음 | 조건 없음 | setTileArea, nudge |
