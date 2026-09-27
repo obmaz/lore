@@ -95,6 +95,11 @@
 제외해 원본의 최종 배치를 복원했다.
 커밋: `Match both hidden door walls in map twenty five`.
 
+맵 25 금속 수문장 원본 분기의 승리와 도주 후속 효과까지 실행 명세를
+확장했다. 승리 시 y=43의 네 칸을 41로 바꾸고 행동 가능한 일행의 직업을
+10으로 변경하며, 도주 시 한 칸 후퇴하고 후속 효과를 적용하지 않는다.
+커밋: `Verify map twenty five guardian victory and retreat effects`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로

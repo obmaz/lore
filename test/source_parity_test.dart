@@ -99,6 +99,7 @@ void main() {
           'enemyFirst': false,
           'flags': <String>[],
           'torch': false,
+          'partyClass': null,
           'nudges': <List<int>>[],
           'teleport': null,
           'tiles': <List<int?>>[],
@@ -123,6 +124,7 @@ Map<String, Object?> _effects(ScriptRun run, ScriptOutcome delta) => {
   'enemyFirst': delta.battleEnemyFirst,
   'flags': delta.setFlags,
   'torch': delta.torchLit,
+  'partyClass': delta.partyClassId,
   'nudges': [
     for (final nudge in delta.nudges) [nudge.dx, nudge.dy],
   ],

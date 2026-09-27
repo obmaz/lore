@@ -23,8 +23,8 @@
     },
     "metal-guardian-battle": {
       "file": "LORESPEC.PAS",
-      "lines": [1995, 2044],
-      "evidence": ["joinenemy(5,71);", "battlemode(FALSE);"]
+      "lines": [1995, 2064],
+      "evidence": ["joinenemy(5,71);", "battlemode(FALSE);", "inc(y);", "for i := 24 to 27 do map[i,y] := 41;", "player[i].class := 10;"]
     },
     "necromancer-final-battle": {
       "file": "LORESPEC.PAS",
@@ -191,7 +191,18 @@
       "input": {"map": 25, "x": 25, "y": 43, "tileAtPlayer": 0},
       "selected": "keep3-metal-guardian-y43",
       "trace": [
-        {"action": "start", "expect": {"battle": [66, 66, 66, 66, 71], "enemyFirst": true, "torch": true, "awaitingBattle": true}}
+        {"action": "start", "expect": {"battle": [66, 66, 66, 66, 71], "enemyFirst": true, "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"areas": [[null, 24, 27, 43, 43, 41, false, false]], "partyClass": 10}}
+      ]
+    },
+    {
+      "id": "metal-guardian-retreat-one-step",
+      "source": "metal-guardian-battle",
+      "input": {"map": 25, "x": 25, "y": 43, "tileAtPlayer": 0},
+      "selected": "keep3-metal-guardian-y43",
+      "trace": [
+        {"action": "start", "expect": {"battle": [66, 66, 66, 66, 71], "enemyFirst": true, "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
       ]
     },
     {
