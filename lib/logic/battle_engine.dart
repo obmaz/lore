@@ -1068,13 +1068,14 @@ class BattleEngine {
       }
     }
 
-    // 4. 마법 vs 물리 공격 판정 (LOREBATT.PAS:968)
-    final useMagic =
-        monster.castLevel > 0 &&
-        (_rand(monster.accArms * 1000 + 1) <=
-            _rand(monster.accMagic * 1000 + 1));
+    // 4. LOREBATT.PAS:968 — 두 명중치 난수를 비교하고 공격력이 0이면 마법.
+    final useWeapon =
+        _rand(monster.accArms * 1000) > _rand(monster.accMagic * 1000) &&
+        monster.strength > 0;
 
-    if (useMagic) {
+    if (!useWeapon) {
+      // castattack의 case 0에는 행동이 없다. 낮은 확률로 공격을 쉬는 원본 분기.
+      if (monster.castLevel == 0) return results;
       // LOREBATT.PAS:724-748,769-773 — 레벨 4는 1/2, 5·6은 1/3.
       if (monster.castLevel >= 4 &&
           monster.castLevel <= 6 &&

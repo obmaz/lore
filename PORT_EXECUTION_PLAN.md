@@ -152,5 +152,10 @@
    발동한다. 명중 실패나 행운 회피도 해당 적의 행동을 소모한다. 살아 있는
    적 수·의식불명 제외·실패 후 추가 공격 금지와 상태별 대상 선정을 검증했다.
    커밋: `Gate enemy special attacks by active monster count`.
+   `EnemyAttack`의 무기·마법 선택은 양쪽 명중치에 1000을 곱한 난수를
+   비교하고, 공격력이 0이면 마법을 쓴다. 시전 등급 0에서 마법 쪽이 선택되면
+   원본처럼 행동하지 않는다. 오크의 휴식·무기 공격과 Sprite의 강제 마법,
+   기존 고정 난수 시나리오를 검증했다.
+   커밋: `Match original enemy weapon and magic choice`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

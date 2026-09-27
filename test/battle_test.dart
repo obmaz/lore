@@ -509,7 +509,7 @@ void main() {
       expect(fourth.hp, 35);
 
       final fifth = healer(5);
-      final uncured = BattleEngine(random: DeterministicRandom([0, 0, 2, 0]))
+      final uncured = BattleEngine(random: DeterministicRandom([0, 2, 0]))
           .executeMonsterTurn(fifth, [target], [fifth]);
       expect(
         uncured.any((result) => result.outcome == AttackOutcome.cured),
@@ -554,7 +554,7 @@ void main() {
         PartyMember.createPreset(4)..hp = 100,
       ];
 
-      final results = BattleEngine(random: DeterministicRandom([0, 0, 2]))
+      final results = BattleEngine(random: DeterministicRandom([0, 2]))
           .executeMonsterTurn(caster, party, enemies);
 
       expect(
@@ -600,7 +600,7 @@ void main() {
       final enemies = [caster, fallen, _supportCaster(0)..hp = 1];
       final party = [PartyMember.createPreset(1)..ac = 0];
 
-      final results = BattleEngine(random: DeterministicRandom([0, 0, 1]))
+      final results = BattleEngine(random: DeterministicRandom([0, 1]))
           .executeMonsterTurn(caster, party, enemies);
 
       expect(results.length, 3);
@@ -661,7 +661,7 @@ void main() {
       final enemies = [caster];
       final party = [PartyMember.createPreset(1)..hp = 1000];
 
-      final results = BattleEngine(random: DeterministicRandom([0]))
+      final results = BattleEngine(random: DeterministicRandom([0, 0, 0, 1, 0]))
           .executeMonsterTurn(caster, party, enemies);
 
       expect(results.first.outcome, AttackOutcome.summoned);
@@ -711,7 +711,7 @@ void main() {
     });
 
     test('정신 지배는 6번 동료의 능력을 적으로 복사하고 원래 슬롯을 비운다', () {
-      final caster = Monster.create(67).withOverrides(special: 0, castLevel: 0);
+      final caster = Monster.create(67).withOverrides(special: 0);
       final formerAlly = PartyMember.createPreset(7)
         ..name = 'Rigel'
         ..playerClass = PlayerClass.hunter
@@ -818,7 +818,7 @@ void main() {
       final enemies = [caster, for (var i = 0; i < 3; i++) Monster.create(1)];
 
       final results = BattleEngine(
-        random: DeterministicRandom([0, 0, 0, 0, 0, 0, 59, 49, 0]),
+        random: DeterministicRandom([0, 0, 0, 0, 0, 0, 59, 49, 1, 0]),
       ).executeMonsterTurn(caster, [doomed, lucky, missed], enemies);
 
       expect(results.take(3).map((result) => result.outcome), [
@@ -859,7 +859,7 @@ void main() {
 
       final alone = engine.executeMonsterTurn(caster, [target], [caster]);
       expect(target.poison, 0);
-      expect(alone.single.outcome, isNot(AttackOutcome.debuffed));
+      expect(alone, isEmpty); // 무기 비교가 동점이고 시전 등급 0이면 쉰다.
 
       final group = [caster, for (var i = 0; i < 3; i++) Monster.create(1)];
       final special = engine.executeMonsterTurn(caster, [target], group);
@@ -921,6 +921,76 @@ void main() {
       expect(stunResult.single.outcome, AttackOutcome.unconscious);
       expect(conscious.unconscious, 1);
       expect(unconscious.unconscious, 1);
+    });
+
+    test('무기·마법 선택은 원본 명중치 난수를 비교하고 시전 등급 0은 쉴 수 있다', () {
+      final orc = Monster.create(1);
+      final idleTarget = PartyMember.createPreset(1)..hp = 1000;
+      final idle = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(orc, [idleTarget], [orc]);
+      expect(idle, isEmpty);
+      expect(idleTarget.hp, 1000);
+
+      final armedTarget = PartyMember.createPreset(1)
+        ..hp = 1000
+        ..resistance = 0
+        ..ac = 0;
+      final armed = BattleEngine(
+        random: DeterministicRandom([1, 0, 0, 9, 0, 0]),
+      ).executeMonsterTurn(orc, [armedTarget], [orc]);
+      expect(armed, hasLength(1));
+      expect(armedTarget.hp, lessThan(1000));
+    });
+
+    test('공격력이 0인 적은 무기 난수가 높아도 마법을 시전한다', () {
+      final sprite = Monster.create(35);
+      final target = PartyMember.createPreset(1)
+        ..hp = 1000
+        ..resistance = 0
+        ..ac = 0;
+
+      final results = BattleEngine(random: DeterministicRandom([0, 1, 0]))
+          .executeMonsterTurn(sprite, [target], [sprite]);
+
+      expect(results.first.message, contains('마법'));
+      expect(target.hp, lessThan(1000));
+    });
+
+    test('무기·마법 명중치가 모두 있으면 두 난수의 대소관계로 행동을 정한다', () {
+      Monster hybrid() => Monster(
+        eNumber: 1,
+        name: '혼합 공격자',
+        strength: 10,
+        mentality: 5,
+        endurance: 10,
+        resistance: 0,
+        agility: 0,
+        accArms: 10,
+        accMagic: 10,
+        ac: 0,
+        special: 0,
+        castLevel: 1,
+        specialCastLevel: 0,
+        level: 2,
+      );
+      final weaponCaster = hybrid();
+      final weaponTarget = PartyMember.createPreset(1)
+        ..hp = 1000
+        ..resistance = 0
+        ..ac = 0;
+      final weapon = BattleEngine(random: DeterministicRandom([1, 0]))
+          .executeMonsterTurn(weaponCaster, [weaponTarget], [weaponCaster]);
+      expect(weapon, hasLength(1));
+
+      final magicCaster = hybrid();
+      final magicTarget = PartyMember.createPreset(1)
+        ..hp = 1000
+        ..resistance = 0
+        ..ac = 0;
+      final magic = BattleEngine(random: DeterministicRandom([0, 1]))
+          .executeMonsterTurn(magicCaster, [magicTarget], [magicCaster]);
+      expect(magic, hasLength(2));
+      expect(magic.first.message, contains('마법'));
     });
 
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
