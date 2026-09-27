@@ -101,6 +101,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -138,6 +139,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               56,
               35,
@@ -173,6 +175,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               35,
@@ -8382,6 +8385,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               58
             ]
@@ -8406,6 +8410,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               58
             ]
@@ -10531,6 +10536,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               53
             ],
@@ -10562,6 +10568,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               53
             ],
@@ -10601,6 +10608,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "미궁의 수문장",
             "monsters": [
               53
@@ -10630,6 +10638,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Dragon",
             "monsters": [
               54,
@@ -10671,6 +10680,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Mud-Man",
             "monsters": [
               31,
@@ -10734,6 +10744,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Astral Mud",
             "monsters": [
               31,
@@ -10815,6 +10826,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -10827,6 +10839,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -10873,6 +10886,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -10885,6 +10899,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -10937,6 +10952,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -10983,6 +10999,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11035,6 +11052,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11077,6 +11095,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11187,6 +11206,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11220,6 +11240,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11259,6 +11280,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11297,6 +11319,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11341,6 +11364,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11353,6 +11377,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11391,6 +11416,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11403,6 +11429,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11447,6 +11474,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11485,6 +11513,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11529,6 +11558,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11541,6 +11571,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11584,6 +11615,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11596,6 +11628,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11645,6 +11678,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11688,6 +11722,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11737,6 +11772,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11749,6 +11785,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11783,6 +11820,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11839,6 +11877,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -11851,6 +11890,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11885,6 +11925,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11949,6 +11990,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -11983,6 +12025,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12041,6 +12084,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12075,6 +12119,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12139,6 +12184,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -12169,6 +12215,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12227,6 +12274,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -12257,6 +12305,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12339,6 +12388,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12414,6 +12464,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12477,6 +12528,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -12489,6 +12541,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12523,6 +12576,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12565,6 +12619,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -12577,6 +12632,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12611,6 +12667,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12661,6 +12718,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12695,6 +12753,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12739,6 +12798,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12773,6 +12833,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12823,6 +12884,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -12853,6 +12915,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12897,6 +12960,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               54,
@@ -12927,6 +12991,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -12995,6 +13060,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -13056,6 +13122,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               31,
               31,
@@ -22163,6 +22230,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22207,6 +22275,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22253,6 +22322,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22299,6 +22369,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22345,6 +22416,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22386,6 +22458,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22429,6 +22502,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22472,6 +22546,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22515,6 +22590,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22556,6 +22632,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22599,6 +22676,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22642,6 +22720,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22685,6 +22764,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22723,6 +22803,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22763,6 +22844,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22803,6 +22885,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22843,6 +22926,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22884,6 +22968,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22927,6 +23012,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -22970,6 +23056,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23013,6 +23100,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23051,6 +23139,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23091,6 +23180,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23131,6 +23221,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23171,6 +23262,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23209,6 +23301,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23249,6 +23342,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23289,6 +23383,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23329,6 +23424,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23364,6 +23460,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23401,6 +23498,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -23438,6 +23536,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               55,
               56,
@@ -25081,6 +25180,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "random": {
               "pool": [
                 58

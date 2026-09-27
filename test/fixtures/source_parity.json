@@ -73,6 +73,7 @@
         "if y = 46 then begin",
         "joinenemy(j,55);",
         "joinenemy(j,56);",
+        "BattleMode(FALSE);",
         "if enemy[1].dead and enemy[2].dead then",
         "party.etc[42] := party.etc[42] or bit1;"
       ]
@@ -94,6 +95,7 @@
       "evidence": [
         "if (y = 48) and (party.etc[41] and bit4 = 0)",
         "joinenemy(1,53);",
+        "BattleMode(FALSE);",
         "party.etc[41] := party.etc[41] or bit4;"
       ]
     },
@@ -102,6 +104,7 @@
       "lines": [1621, 1750],
       "evidence": [
         "for i := 1 to enemynumber do joinenemy(i,54);",
+        "BattleMode(FALSE);",
         "if party.etc[6] = 0 then party.etc[41] := party.etc[41] or bit2",
         "for i := 1 to enemynumber do joinenemy(i,31);",
         "joinenemy(7,57);",
@@ -198,7 +201,7 @@
       "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21},
       "selected": "keep1-exit-guard",
       "trace": [
-        {"action": "start", "expect": {"battle": [55, 56, 35, 35, 35, 35, 35], "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [55, 56, 35, 35, 35, 35, 35], "awaitingBattle": true}},
         {"action": "retreat", "defeated": [1, 2], "expect": {"flags": ["keep1LeftGuardianDefeated", "keep1RightGuardianDefeated", "swampKeepBossDefeated"]}}
       ]
     },
@@ -208,7 +211,7 @@
       "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21},
       "selected": "keep1-exit-guard",
       "trace": [
-        {"action": "start", "expect": {"battle": [55, 56, 35, 35, 35, 35, 35], "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [55, 56, 35, 35, 35, 35, 35], "awaitingBattle": true}},
         {"action": "retreat", "defeated": [1], "expect": {"flags": ["keep1LeftGuardianDefeated"]}}
       ]
     },
@@ -278,7 +281,7 @@
       "input": {"map": 20, "x": 25, "y": 48},
       "selected": "spec-20-L1475-1xxx",
       "trace": [
-        {"action": "start", "expect": {"battle": [53], "flags": ["etc1"], "torch": true, "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [53], "flags": ["etc1"], "torch": true, "awaitingBattle": true}},
         {"action": "retreat", "expect": {"flags": ["den7MinotaurCleared"]}}
       ]
     },
@@ -288,7 +291,7 @@
       "input": {"map": 20, "x": 25, "y": 48, "flags": ["etc1"]},
       "selected": "spec-20-L1475-2xxx",
       "trace": [
-        {"action": "start", "expect": {"battle": [53], "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [53], "awaitingBattle": true}},
         {"action": "retreat", "expect": {"flags": ["den7MinotaurCleared"]}}
       ]
     },
@@ -305,9 +308,9 @@
       "input": {"map": 20, "x": 25, "y": 13},
       "selected": "den7-dragons-y13",
       "trace": [
-        {"action": "start", "expect": {"battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
-        {"action": "victory", "expect": {"battle": [31, 31, 31, 31, 31, 31, 31], "flags": ["den7DragonsCleared"], "torch": true, "awaitingBattle": true}},
-        {"action": "victory", "expect": {"battle": [31, 31, 31, 31, 31, 31, 57], "flags": ["den7MudmenCleared"], "torch": true, "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 31], "flags": ["den7DragonsCleared"], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "flags": ["den7MudmenCleared"], "torch": true, "awaitingBattle": true}},
         {"action": "victory", "expect": {"flags": ["den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
       ]
     },
@@ -317,7 +320,7 @@
       "input": {"map": 20, "x": 25, "y": 13},
       "selected": "den7-dragons-y13",
       "trace": [
-        {"action": "start", "expect": {"battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
         {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
       ]
     },
@@ -327,7 +330,7 @@
       "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared"]},
       "selected": "den7-mudmen-y13",
       "trace": [
-        {"action": "start", "expect": {"battle": [31, 31, 31, 31, 31, 31, 31], "torch": true, "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 31], "torch": true, "awaitingBattle": true}},
         {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
       ]
     },
@@ -337,7 +340,7 @@
       "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared", "den7MudmenCleared"]},
       "selected": "den7-master-y13",
       "trace": [
-        {"action": "start", "expect": {"battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
         {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
       ]
     },
@@ -347,7 +350,7 @@
       "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared", "den7MudmenCleared"]},
       "selected": "den7-master-y13",
       "trace": [
-        {"action": "start", "expect": {"battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
         {"action": "retreat", "defeated": [7], "expect": {"flags": ["den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
       ]
     }

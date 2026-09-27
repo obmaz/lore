@@ -197,5 +197,9 @@
     복원했다. 맵 17 Hidra와 맵 19 복도 Crab God의 파티 선공은 원본대로
     유지했다. 활성·비활성 전투 규칙의 선공 분포와 대표 실행 분기를 검토했다.
     커밋: `Restore mixed initiative in midgame scripted battles`.
+    맵 20 DEN7의 수문장·연속 전투와 맵 21 SWAMP KEEP의 출구·일반 습격은
+    모두 원본 `BattleMode(FALSE)`로 적 선공이다. 전투 연쇄의 각 단계와
+    도주 후속 분기를 실행 명세로 재검증했다.
+    커밋: `Restore enemy initiative across DEN7 and SWAMP KEEP`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
