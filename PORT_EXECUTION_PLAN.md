@@ -261,5 +261,8 @@
     맵 17의 x=72 지름길은 (72,19..21)을 44로 열고 현재 y를 7 줄인다.
     누락된 이동을 활성 규칙에 추가했다.
     커밋: `Restore seven tile movement in lava shortcut`.
+    맵 17의 y=44 통로는 (67..69,44)를 44로, (67..69,38)을 52로
+    바꾼다. x=72와 겹치는 좌표에서는 두 효과와 이동을 함께 처리한다.
+    커밋: `Restore lava passage terrain at row forty four`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

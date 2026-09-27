@@ -385,7 +385,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 592);
+      expect(LoreScriptEngine.instance.scripts.length, 594);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -550,6 +550,19 @@ void main() {
       expect(run.outcome.tileAreas.single.yMin, 19);
       expect(run.outcome.tileAreas.single.yMax, 21);
       expect(run.outcome.nudges.single.dy, -7);
+    });
+
+    test('맵 17 y=44는 출구 지형을 바꾸고 x=72에서는 지름길도 처리한다', () async {
+      await LoreScriptEngine.instance.load();
+      final normal = LoreScriptEngine.instance.startStep(17, 68, 44, noCtx)!;
+      expect(normal.script.id, 'map17-passage-44');
+      expect(normal.outcome.tileAreas.map((a) => a.tile), [44, 52]);
+      expect(normal.outcome.nudges, isEmpty);
+
+      final crossing = LoreScriptEngine.instance.startStep(17, 72, 44, noCtx)!;
+      expect(crossing.script.id, 'map17-passage-44-shortcut');
+      expect(crossing.outcome.tileAreas.map((a) => a.tile), [44, 52, 44]);
+      expect(crossing.outcome.nudges.single.dy, -7);
     });
 
     test('5. Spica는 특수 타일 첫 만남 뒤에만 독심술로 영입한다', () async {

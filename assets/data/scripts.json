@@ -6112,6 +6112,32 @@
       "disabled": true
     },
     {
+      "id": "map17-passage-44-shortcut",
+      "trigger": "step",
+      "map": 17,
+      "x": 72,
+      "y": 44,
+      "once": false,
+      "steps": [
+        {"setTileArea": {"xMin": 67, "xMax": 69, "yMin": 44, "yMax": 44, "tile": 44}},
+        {"setTileArea": {"xMin": 67, "xMax": 69, "yMin": 38, "yMax": 38, "tile": 52}},
+        {"setTileArea": {"xMin": 72, "xMax": 72, "yMin": 19, "yMax": 21, "tile": 44}},
+        {"nudge": {"dy": -7}}
+      ]
+    },
+    {
+      "id": "map17-passage-44",
+      "trigger": "step",
+      "map": 17,
+      "y": 44,
+      "once": false,
+      "excludeCoords": [{"x": 72, "y": 44}],
+      "steps": [
+        {"setTileArea": {"xMin": 67, "xMax": 69, "yMin": 44, "yMax": 44, "tile": 44}},
+        {"setTileArea": {"xMin": 67, "xMax": 69, "yMin": 38, "yMax": 38, "tile": 52}}
+      ]
+    },
+    {
       "id": "spec-17-L1010xxxxx",
       "trigger": "step",
       "map": 17,
