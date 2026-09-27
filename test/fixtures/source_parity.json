@@ -1,6 +1,26 @@
 {
   "version": 1,
   "sources": {
+    "prison-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [190, 231],
+      "evidence": ["enemynumber := 2;", "BattleMode(FALSE);"]
+    },
+    "mummy-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [543, 550],
+      "evidence": ["joinenemy(3,26);", "BattleMode(FALSE);"]
+    },
+    "gorgon-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [790, 801],
+      "evidence": ["joinenemy(i,i+49);", "BattleMode(FALSE);"]
+    },
+    "gargoyle-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [948, 957],
+      "evidence": ["joinenemy(3,42);", "BattleMode(FALSE);"]
+    },
     "evil-seal-lever": {
       "file": "LORESPEC.PAS",
       "lines": [1378, 1393],
@@ -65,6 +85,42 @@
     }
   },
   "scenarios": [
+    {
+      "id": "prison-soldiers-attack-first",
+      "source": "prison-battle-initiative",
+      "input": {"trigger": "id", "script": "prison-battle-first", "map": 6, "flags": ["madJoeJoined"], "tileAtPlayer": 0},
+      "selected": "prison-battle-first",
+      "trace": [
+        {"action": "start", "expect": {"battle": [26, 26], "enemyFirst": true, "flags": ["prisonBattleStarted"], "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "major-mummy-attacks-first",
+      "source": "mummy-battle-initiative",
+      "input": {"trigger": "id", "script": "spec-11-L465-1x", "map": 11, "questSteps": {"lastditch": 1}},
+      "selected": "spec-11-L465-1x",
+      "trace": [
+        {"action": "start", "expect": {"battle": [35, 35, 26], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "gorgon-attacks-first",
+      "source": "gorgon-battle-initiative",
+      "input": {"map": 13, "x": 81, "y": 68, "tileAtPlayer": 52},
+      "selected": "den4-gorgon",
+      "trace": [
+        {"action": "start", "expect": {"battle": [50, 51, 52], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "archigagoyle-attacks-first",
+      "source": "gargoyle-battle-initiative",
+      "input": {"trigger": "id", "script": "spec-15-L879-1xxxx", "map": 15, "questSteps": {"gaia": 4}},
+      "selected": "spec-15-L879-1xxxx",
+      "trace": [
+        {"action": "start", "expect": {"battle": [36, 36, 42], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
     {
       "id": "imperium-minor-ordinary-wraith-ambush",
       "source": "imperium-minor-events",

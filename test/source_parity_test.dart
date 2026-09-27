@@ -49,6 +49,8 @@ void main() {
             .cast<String>()
             .toSet(),
         tileAtPlayer: input['tileAtPlayer'] as int?,
+        questSteps: (input['questSteps'] as Map<String, dynamic>? ?? const {})
+            .map((key, value) => MapEntry(key, value as int)),
       );
       final firstRun = switch (input['trigger'] as String? ?? 'step') {
         'step' => engine.startStep(
