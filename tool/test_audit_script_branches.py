@@ -22,6 +22,16 @@ class ScriptBranchAuditTest(unittest.TestCase):
         _, _, findings = audit(scripts, [], [], {1: (10, 10)})
         self.assertIn("unported-candidate", findings["disabled_without_cover"][0])
 
+    def test_labels_disabled_comparison_data_with_live_procedure(self):
+        scripts = [
+            {"id": "source-copy", "map": 1, "trigger": "step", "disabled": True,
+             "portedBy": "LoreSpecProcedures.map1Food", "steps": [{"food": 100}]},
+        ]
+        _, _, findings = audit(scripts, [], [], {1: (10, 10)})
+        self.assertIn("LoreSpecProcedures.map1Food", findings["ported_procedure"][0])
+        self.assertEqual(findings["disabled_without_cover"], [])
+        self.assertEqual(findings["portal_unverified"], [])
+
     def test_reconciles_portal_target_but_keeps_guard_and_refusal_separate(self):
         scripts = [
             {"id": "target", "map": 1, "trigger": "step", "x": 5, "y": 6, "disabled": True, "steps": [{"teleport": {"map": 2, "x": 3, "y": 4}}]},

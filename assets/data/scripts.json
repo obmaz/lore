@@ -18201,6 +18201,8 @@
       "trigger": "step",
       "map": 1,
       "once": false,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map1Food",
       "require": {
         "tileAtPlayerZero": true,
         "flagNot": "etc32_bit8"
@@ -18219,13 +18221,14 @@
           "stepBack": true
         }
       ],
-      "note": "조건 미지원: party.food > 155; 미지원: party.food := 255; 미지원: x := x - x1; y := y - y1;"
+      "note": "LORESPEC 맵 1은 LoreSpecProcedures.map1Food가 직접 실행한다. 원본 대조용 JSON."
     },
     {
       "id": "spec-1-L25-seq2",
       "trigger": "step",
       "map": 1,
       "once": false,
+      "portedBy": "LoreSpecProcedures.map1Food",
       "require": {
         "tileAtPlayerZero": true
       },
@@ -18240,7 +18243,7 @@
           "flag": "etc32_bit8"
         }
       ],
-      "note": "조건 미지원: party.food > 155; 미지원: party.food := 255; 미지원: x := x - x1; y := y - y1;",
+      "note": "LORESPEC 맵 1은 LoreSpecProcedures.map1Food가 직접 실행한다. 원본 대조용 JSON.",
       "disabled": true
     },
     {
@@ -18248,6 +18251,8 @@
       "trigger": "step",
       "map": 1,
       "once": false,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map1Food",
       "require": {
         "tileAtPlayerZero": true,
         "flag": "etc32_bit8"
@@ -18260,7 +18265,7 @@
           "stepBack": true
         }
       ],
-      "note": "조건 미지원: party.food > 155; 미지원: party.food := 255; 미지원: x := x - x1; y := y - y1;"
+      "note": "LORESPEC 맵 1은 LoreSpecProcedures.map1Food가 직접 실행한다. 원본 대조용 JSON."
     },
     {
       "id": "spec-4-L37-1x",

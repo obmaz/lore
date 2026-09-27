@@ -259,6 +259,11 @@ def audit(scripts, portals, source_events, dimensions):
     for script in disabled:
         if not any(overlaps(script, candidate) for candidate in active):
             label = f"맵 {script['map']} `{script['id']}` {script.get('trigger', 'step')} {location(script)} — {source_ref(script)}"
+            if script.get("portedBy"):
+                findings["ported_procedure"].append(
+                    f"{label} → {script['portedBy']}"
+                )
+                continue
             related = [portal for portal in portals if spatial_overlap(script, portal)]
             if not related:
                 findings["disabled_without_cover"].append(label)
@@ -324,6 +329,7 @@ def report():
     categories = (
         ("missing_source_coordinates", "원본 추출 좌표 중 활성 규칙/포털에 없는 곳"),
         ("disabled_without_cover", "활성 규칙·포털이 모두 겹치지 않는 비활성 항목"),
+        ("ported_procedure", "원본형 프로시저로 전환한 비활성 JSON 항목"),
         ("portal_target_match", "포털과 좌표가 겹치고 이동 목적지가 일치하는 비활성 항목"),
         ("portal_refusal", "포털과 겹치는 진입 거절 이동 분기"),
         ("portal_guard", "포털과 겹치는 차단·플래그 분기"),

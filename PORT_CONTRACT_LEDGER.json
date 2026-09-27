@@ -26031,7 +26031,7 @@
     {
       "path": "test/script_engine_test.dart",
       "kind": "test",
-      "sha256": "4da24bc46b67c3e2034934c2b1b7337a31ee2d0ecf7d44c8a8c0c4a0d6d561bb",
+      "sha256": "8caebd6fc58886436f7e2a2209a7ea03b2de298bf277ef10dafbf52c1bcf8d9e",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS",
@@ -26059,7 +26059,7 @@
     {
       "path": "test/script_map_reachability_test.dart",
       "kind": "test",
-      "sha256": "534c310689cffd72ea7a3050b27748854e79a56b287b2fac6945df95b8f23789",
+      "sha256": "085af0e36b5fff715dd9447607cc18a77e5f030c05810db2ece08936c424af01",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26508,7 +26508,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "553bbb288191864dabffeab626930a0a8e0453ca0eba548770f6ad463c69c482",
+      "sha256": "c66a296c71c11d739e0670197b52b76064f61e531d26faf21e1943b487e47f27",
       "top_level_counts": {
         "scripts": 598
       }

@@ -5,6 +5,7 @@ import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/lore_join.dart';
 import 'package:lore/logic/lore_tile_protocol.dart';
+import 'package:lore/logic/lore_spec_procedures.dart';
 
 /// 게임 본편과 같이 **현재 플래그**로 스크립트 컨텍스트를 만든다.
 /// 원작 좌표 이벤트의 1회성은 `party.etc` 비트로 관리되므로, 고정 컨텍스트로는
@@ -109,21 +110,21 @@ void main() {
     test('GROUND 1 식량은 한 번만 지급하고 특수 칸에서 되돌린다', () async {
       await LoreScriptEngine.instance.load();
       final engine = LoreScriptEngine.instance;
-      final first = engine.startStep(
-        1,
-        42,
-        84,
+      expect(
+        engine.startStep(1, 42, 84, const ScriptContext(tileAtPlayer: 0)),
+        isNull,
+      ); // 비교용 JSON 규칙은 실행하지 않는다.
+      final first = LoreSpecProcedures.map1Food(
         const ScriptContext(tileAtPlayer: 0),
+        engine,
       )!;
       expect(first.outcome.foodDelta, 100);
       expect(first.outcome.setFlags, contains('etc32_bit8'));
       expect(first.outcome.stepBack, isTrue);
 
-      final later = engine.startStep(
-        1,
-        42,
-        84,
+      final later = LoreSpecProcedures.map1Food(
         const ScriptContext(flags: {'etc32_bit8'}, tileAtPlayer: 0),
+        engine,
       )!;
       expect(later.outcome.foodDelta, 0);
       expect(later.outcome.messages.single, contains('아무것도'));

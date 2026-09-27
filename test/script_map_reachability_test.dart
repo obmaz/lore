@@ -147,8 +147,9 @@ void main() {
             script.yMax == null)
           script.map,
     };
-    // 맵 27의 전체 맵 자동 변환본은 출구 판정을 잘못 일반화해 비활성화했다.
-    expect(unboundedMaps, {1, 26});
+    // 맵 1은 LORESPEC 원본형 절차로 전환했고, 맵 27의 자동 변환본은
+    // 출구 판정을 잘못 일반화해 비활성화했다.
+    expect(unboundedMaps, {26});
     engine.resetForTest();
   });
 
