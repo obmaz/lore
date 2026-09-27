@@ -62,6 +62,10 @@ void main() {
         FieldHotkeys.resolve(LogicalKeyboardKey.keyG),
         FieldAction.gameOption,
       );
+      expect(
+        FieldHotkeys.resolve(LogicalKeyboardKey.backspace),
+        FieldAction.toggleSound,
+      );
     });
 
     test('이식편 추가 키(F1/H)와 이동 키는 구분된다', () {

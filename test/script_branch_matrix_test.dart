@@ -92,6 +92,22 @@ void main() {
     expect(guarded.awaitingBattle, isTrue);
     expect(guarded.outcome.battleMonsters, [65, 64]);
 
+    final onlyRight = engine.startById(
+      'portal-21-22-lavagate',
+      const ScriptContext(
+        flags: {...keys, 'lavaGateLeftGuardianDefeated'},
+      ),
+    )!;
+    expect(onlyRight.outcome.battleMonsters, [64]);
+
+    final onlyLeft = engine.startById(
+      'portal-21-22-lavagate',
+      const ScriptContext(
+        flags: {...keys, 'lavaGateRightGuardianDefeated'},
+      ),
+    )!;
+    expect(onlyLeft.outcome.battleMonsters, [65]);
+
     final cleared = engine.startById(
       'portal-21-22-lavagate',
       const ScriptContext(

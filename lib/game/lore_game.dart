@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import '../logic/lore_encounter_logic.dart';
+import '../logic/lore_ent_procedures.dart';
 import '../logic/lore_field_session.dart';
 import '../logic/lore_main_procedures.dart';
 import '../logic/lore_talk_dispatcher.dart';
@@ -49,6 +50,24 @@ class LoreGame extends FlameGame {
   /// 원작은 Ancient Evil 안내처럼 다른 장소를 잠시 보여준 뒤 파티로 돌아온다.
   int? peekX;
   int? peekY;
+  (int x, int y)? chamberEntryFrame;
+  int? chamberDescentRow;
+
+  void showChamberEntryFrame(int x, int y) {
+    chamberEntryFrame = (x, y);
+  }
+
+  void clearChamberEntryFrame() {
+    chamberEntryFrame = null;
+  }
+
+  void showChamberDescentRow(int row) {
+    chamberDescentRow = row;
+  }
+
+  void clearChamberDescentRow() {
+    chamberDescentRow = null;
+  }
 
   /// 현재 뷰포트가 바라보는 좌표(연출 중이면 연출 대상).
   int get viewCenterX => peekX ?? playerX;
@@ -239,21 +258,28 @@ class LoreGame extends FlameGame {
     for (final effect in transition.effects) {
       switch (effect.kind) {
         case LoreFieldEffectKind.boundary:
+          clearPeek();
           onLog?.call('더 이상 나아갈 수 없는 경계 지역입니다.');
         case LoreFieldEffectKind.wall:
+          clearPeek();
           onLog?.call('단단한 성벽과 바위가 가로막아 지나갈 수 없습니다.');
         case LoreFieldEffectKind.waterBlocked:
           _enterWater();
           onLog?.call('깊은 물속은 배나 [물위를 걸음] 마법 없이는 건널 수 없습니다!');
         case LoreFieldEffectKind.talk:
+          clearPeek();
           _handleNpcInteraction(targetX, targetY);
         case LoreFieldEffectKind.portalRequest:
+          clearPeek();
           if (onPortalRequested != null) {
             onPortalRequested!(transition.portal!, targetX, targetY);
           } else {
             unawaited(enterPortal(transition.portal!, targetX, targetY));
           }
+        case LoreFieldEffectKind.entranceNoMatch:
+          clearPeek();
         case LoreFieldEffectKind.sign:
+          clearPeek();
           _handleSign(targetX, targetY);
         case LoreFieldEffectKind.positionChanged:
           playerX = transition.x;
@@ -336,19 +362,18 @@ class LoreGame extends FlameGame {
   }
 
   void _handleSign(int tx, int ty) {
-    final msg = LoreWorldManager.instance.getSignMessage(currentMapId, tx, ty);
-    if (msg != null) {
-      onLog?.call(msg);
-      // LOREENT.PAS `sign`: KEEP3 푯말을 읽으면 레버(25,27)가 활성화된다.
-      if (currentMapId == 23) {
+    LoreEntProcedures.sign(
+      mapId: currentMapId,
+      x: tx,
+      y: ty,
+      messageFor: LoreWorldManager.instance.getSignMessage,
+      display: (message) => onLog?.call(message),
+      setTile: (x, y, tile) {
         final map = currentMap;
-        if (map != null && map.xmax >= 25 && map.ymax >= 27) {
-          map.grid[26][24] = 52;
-        }
-      }
-    } else {
-      onLog?.call('푯말에 흐릿한 글씨가 적혀 있습니다.');
-    }
+        if (map == null || x > map.xmax || y > map.ymax) return;
+        map.grid[y - 1][x - 1] = tile;
+      },
+    );
   }
 
   void _handleNpcInteraction(int tx, int ty) {
@@ -394,13 +419,29 @@ class LoreGame extends FlameGame {
 
   /// 성문/동굴 입구 진입 처리.
   /// 원작 `LORESUB.PAS:986 wantenter` / `:999 wantexit` 확인을 통과한 뒤 호출된다.
-  Future<void> enterPortal(PortalInfo portal, int tx, int ty) async {
+  Future<void> enterPortal(
+    PortalInfo portal,
+    int tx,
+    int ty, {
+    bool deferPostLoadEffects = false,
+  }) async {
+    final fromMap = currentMapId;
     await loadMapById(
       portal.targetMapId,
       startX: portal.targetX,
       startY: portal.targetY,
     );
+    LoreEntProcedures.afterMapLoadBeforeScripts(
+      fromMap: fromMap,
+      toMap: currentMapId,
+      setDirection: (direction) => playerDirection = direction,
+    );
+    if (!deferPostLoadEffects) finishEntrance();
     onLog?.call('${portal.name}에 진입했습니다.');
+  }
+
+  void finishEntrance() {
+    LoreEntProcedures.finishEntrance(clearPeek);
   }
 
   @override
@@ -520,6 +561,50 @@ class LoreGame extends FlameGame {
           }
         }
       }
+    }
+
+    if (chamberEntryFrame case final frame?) {
+      final rect = Rect.fromLTWH(
+        offsetX + (halfX + frame.$1) * tileSize + 2,
+        offsetY + (halfY + frame.$2) * tileSize + 2,
+        tileSize - 4,
+        tileSize - 4,
+      );
+      final sheet = SpriteLibrary.instance.get('CHARA');
+      if (sheet != null && sheet.count > 22) {
+        sheet.draw(canvas, 22, rect);
+      } else if (charaFont != null) {
+        charaFont!.renderSprite(canvas, 22, rect);
+      } else {
+        canvas.drawCircle(
+          rect.center,
+          tileSize * 0.3,
+          Paint()..color = RetroTheme.lightRed,
+        );
+      }
+      return;
+    }
+
+    if (chamberDescentRow case final row?) {
+      final rect = Rect.fromLTWH(
+        offsetX + halfX * tileSize + 2,
+        offsetY + (halfY + 1 + row) * tileSize + 2,
+        tileSize - 4,
+        tileSize - 4,
+      );
+      final sheet = SpriteLibrary.instance.get('CHARA');
+      if (sheet != null && sheet.count > 5) {
+        sheet.draw(canvas, 5, rect);
+      } else if (charaFont != null) {
+        charaFont!.renderSprite(canvas, 5, rect);
+      } else {
+        canvas.drawCircle(
+          rect.center,
+          tileSize * 0.3,
+          Paint()..color = RetroTheme.yellow,
+        );
+      }
+      return;
     }
 
     // 2. 뷰포트 정중앙에 위치한 플레이어 캐릭터 렌더링 (원작 CHARA.FNT 20x20 픽셀 아트)

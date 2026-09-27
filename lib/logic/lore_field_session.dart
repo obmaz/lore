@@ -9,6 +9,7 @@ enum LoreFieldEffectKind {
   waterBlocked,
   talk,
   portalRequest,
+  entranceNoMatch,
   sign,
   positionChanged,
   poisonTick,
@@ -88,7 +89,7 @@ class LoreFieldSession {
         effects = const [LoreFieldEffect(LoreFieldEffectKind.talk)];
       case LoreMoveKind.portal:
         effects = portal == null
-            ? const []
+            ? const [LoreFieldEffect(LoreFieldEffectKind.entranceNoMatch)]
             : const [LoreFieldEffect(LoreFieldEffectKind.portalRequest)];
       case LoreMoveKind.sign:
         effects = const [LoreFieldEffect(LoreFieldEffectKind.sign)];

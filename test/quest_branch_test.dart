@@ -237,10 +237,16 @@ void main() {
       final map = await LoreMapData.loadFromAsset('TOWN2', category: 'town');
       expect(map.getTile(37, 41), 53);
 
-      const formerMember = ScriptContext(flags: {'polarisJoined'});
+      const formerMember = ScriptContext(
+        enteredFromMap: 1,
+        flags: {'polarisJoined'},
+      );
       expect(engine.startEnter(7, formerMember), isNull);
 
-      const currentMember = ScriptContext(partyNames: {'Polaris'});
+      const currentMember = ScriptContext(
+        enteredFromMap: 1,
+        partyNames: {'Polaris'},
+      );
       final entry = engine.startEnter(7, currentMember)!;
       expect(entry.outcome.tileChanges.single.tile, 44);
       final after = ScriptWorldReducer.applyMap(

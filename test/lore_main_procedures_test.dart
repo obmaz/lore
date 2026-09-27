@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/logic/field_hotkeys.dart';
 import 'package:lore/logic/lore_main_procedures.dart';
 import 'package:lore/models/party_member.dart';
 
@@ -25,6 +26,36 @@ class _SequenceRandom implements Random {
 }
 
 void main() {
+  test(
+    'Main redispatches the current tile after every original field menu',
+    () {
+      for (final action in [
+        FieldAction.openMenu,
+        FieldAction.viewParty,
+        FieldAction.viewCharacter,
+        FieldAction.quickView,
+        FieldAction.castSpell,
+        FieldAction.extrasense,
+        FieldAction.rest,
+        FieldAction.gameOption,
+      ]) {
+        expect(LoreMainProcedures.mainRedispatchesCurrentTile(action), isTrue);
+      }
+      expect(
+        LoreMainProcedures.mainRedispatchesCurrentTile(FieldAction.guide),
+        isFalse,
+      );
+      expect(
+        LoreMainProcedures.mainRedispatchesCurrentTile(FieldAction.toggleSound),
+        isFalse,
+      );
+      expect(
+        LoreMainProcedures.mainRedispatchesCurrentTile(FieldAction.none),
+        isFalse,
+      );
+    },
+  );
+
   test('enter_lava rolls every slot before displaying and applying damage', () {
     final party = [for (var i = 1; i <= 6; i++) PartyMember.createPreset(i)];
     party[2].name = '';

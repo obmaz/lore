@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import '../models/party_member.dart';
+import 'field_hotkeys.dart';
 import 'lore_lava_logic.dart';
 import 'lore_swamp_logic.dart';
 
@@ -10,6 +11,23 @@ import 'lore_swamp_logic.dart';
 /// random, and encounter order without depending on Flutter or Flame.
 class LoreMainProcedures {
   LoreMainProcedures._();
+
+  /// `LOREMAIN.Main`: these keys set `ok := true` with `x1 = y1 = 0`, so the
+  /// current tile is dispatched after the menu or view procedure returns.
+  static bool mainRedispatchesCurrentTile(FieldAction action) =>
+      switch (action) {
+        FieldAction.openMenu ||
+        FieldAction.viewParty ||
+        FieldAction.viewCharacter ||
+        FieldAction.quickView ||
+        FieldAction.castSpell ||
+        FieldAction.extrasense ||
+        FieldAction.rest ||
+        FieldAction.gameOption => true,
+        FieldAction.toggleSound ||
+        FieldAction.guide ||
+        FieldAction.none => false,
+      };
 
   /// Shared body of the poison loop in `Move_Mode` and `enter_swamp`.
   /// Returns Pascal's `j`: the number of members whose poison reached 11.

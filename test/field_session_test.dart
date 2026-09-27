@@ -57,7 +57,7 @@ void main() {
     expect((found.x, found.y), (10, 10));
     expect(kinds(found), [LoreFieldEffectKind.portalRequest]);
     expect(found.portal, same(portal));
-    expect(kinds(move(mapData)), isEmpty);
+    expect(kinds(move(mapData)), [LoreFieldEffectKind.entranceNoMatch]);
   });
 
   test('특수 타일에 포털이 겹치면 포털을 우선하고 없으면 사건을 밟는다', () {
@@ -72,6 +72,33 @@ void main() {
       LoreFieldEffectKind.portalRequest,
     ]);
     expect(kinds(move(mapData)), [
+      LoreFieldEffectKind.positionChanged,
+      LoreFieldEffectKind.step,
+    ]);
+  });
+
+  test('Main hotkey return dispatches the current tile with zero movement', () {
+    final grid = List.generate(20, (_) => List.filled(20, 42));
+    grid[9][9] = 0;
+    final mapData = LoreMapData(
+      name: 'TEST',
+      category: 'town',
+      xmax: 20,
+      ymax: 20,
+      grid: grid,
+    );
+    final transition = LoreFieldSession.move(
+      map: mapData,
+      x: 10,
+      y: 10,
+      direction: 2,
+      dx: 0,
+      dy: 0,
+      canWalkOnWater: false,
+      portal: null,
+    );
+    expect((transition.x, transition.y, transition.direction), (10, 10, 2));
+    expect(kinds(transition), [
       LoreFieldEffectKind.positionChanged,
       LoreFieldEffectKind.step,
     ]);

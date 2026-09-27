@@ -10,6 +10,23 @@ import 'package:lore/logic/script_world_reducer.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('LOREMAIN sign 호출 전에 originposition으로 시야를 되돌린다', () async {
+    final map = await LoreMapData.loadFromAsset(
+      'GROUND2',
+      category: 'ground',
+    );
+    final game = LoreGame(
+      initialMapId: 2,
+      initialPlayerX: 30,
+      initialPlayerY: 44,
+    )..currentMap = map;
+    game.peekAt(40, 44);
+    expect(map.getTile(31, 44), 22);
+    game.tryMove(1, 0);
+    expect(game.isPeeking, isFalse);
+    expect((game.playerX, game.playerY), (30, 44));
+  });
+
   test('맵 8 포털 확인 전에는 위치가 그대로이고 목적지는 원본과 같다', () async {
     LoreWorldManager.instance.resetRulesForTest();
     final map = await LoreMapData.loadFromAsset('TOWN3', category: 'town');
@@ -53,6 +70,7 @@ void main() {
         initialPlayerY: site.y,
         onPortalRequested: (_, _, _) => requests++,
       )..currentMap = map;
+      game.peekAt(site.x, site.y);
 
       expect(
         game.tryMove(1, 0),
@@ -61,6 +79,7 @@ void main() {
       );
       expect((game.playerX, game.playerY), (site.x - 1, site.y));
       expect(game.currentMapId, site.mapId);
+      expect(game.isPeeking, isFalse);
       expect(requests, 0);
     }
   });

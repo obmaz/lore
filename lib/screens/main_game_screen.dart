@@ -27,6 +27,7 @@ import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
 import '../logic/lore_main_procedures.dart';
+import '../logic/lore_ent_procedures.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
 import '../data/lore_data.dart';
@@ -103,6 +104,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   int? _pendingScriptTargetX;
   int? _pendingScriptTargetY;
   ({PortalInfo portal, int tx, int ty})? _pendingPortalTransition;
+  bool _entryAnimationActive = false;
 
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
@@ -324,11 +326,19 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
     if (plan.action == LorePortalAction.cancelled) {
       if (confirmed == false) _addLog(LoreFieldLogic.asYouWish);
+      _game.clearPeek();
       return;
     }
     // 원작 LOREENT.PAS - 진입 전 연출(수문장 전투/대사/라바 게이트 판정).
     if (plan.preScript case final pre?) {
       if (pre.awaitingBattle) {
+        if (portal.scriptId == 'portal-25-26-chamber') {
+          // LOREENT.entermode turns on the torch, then consumes ten pairs of
+          // animation rolls before the Necromancer battle begins.
+          setState(() => _torchSteps = 1);
+          await _playChamberEntryAnimation();
+          if (!mounted) return;
+        }
         var alreadyApplied = const ScriptOutcome();
         if (portal.scriptId == 'portal-23-25-dungeon') {
           for (final message in pre.outcome.messages) {
@@ -344,10 +354,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
             ]) {
               _addLog(message);
             }
-            _party[5]
-              ..hp = 0
-              ..unconscious = 1
-              ..dead = 30000;
+            LoreEntProcedures.strikeDraconianBeforeDungeon(_party);
             setState(() {});
           }
           alreadyApplied = ScriptOutcome(
@@ -385,14 +392,56 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   Future<void> _finishPortalEntry(PortalInfo portal, int tx, int ty) async {
     final enteredFromMap = _game.currentMapId;
-    await _game.enterPortal(portal, tx, ty);
+    await _game.enterPortal(portal, tx, ty, deferPostLoadEffects: true);
     if (!mounted) return;
+    if (enteredFromMap == 25 && _game.currentMapId == 26) {
+      // `scroll(FALSE)` draws the new map without the party until the descent.
+      _game.peekAt(_game.playerX, _game.playerY);
+    }
     setState(() {});
+    if (enteredFromMap == 25 && _game.currentMapId == 26) {
+      await _playChamberDescent();
+      if (!mounted) return;
+    }
     final enter = _scripts.startEnter(
       _game.currentMapId,
       _scriptContext(enteredFromMap: enteredFromMap),
     );
     if (enter != null) await _driveScript(enter);
+    if (!mounted) return;
+    _game.finishEntrance();
+    setState(() {});
+  }
+
+  Future<void> _playChamberEntryAnimation() async {
+    final frames = LoreEntProcedures.chamberEntryFrames(_sessionRandom);
+    _entryAnimationActive = true;
+    try {
+      for (final frame in frames) {
+        if (!mounted) return;
+        setState(() => _game.showChamberEntryFrame(frame.$1, frame.$2));
+        await Future<void>.delayed(const Duration(seconds: 1));
+      }
+    } finally {
+      _game.clearChamberEntryFrame();
+      _entryAnimationActive = false;
+      if (mounted) setState(() {});
+    }
+  }
+
+  Future<void> _playChamberDescent() async {
+    _entryAnimationActive = true;
+    try {
+      for (final row in LoreEntProcedures.chamberDescentRows) {
+        if (!mounted) return;
+        setState(() => _game.showChamberDescentRow(row));
+        await Future<void>.delayed(const Duration(seconds: 1));
+      }
+    } finally {
+      _game.clearChamberDescentRow();
+      _entryAnimationActive = false;
+      if (mounted) setState(() {});
+    }
   }
 
   // =========================================================================
@@ -1108,16 +1157,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (poisonProgressed) _addLog('☠ 독이 온몸에 퍼져나갑니다.');
   }
 
-  void _openQuickViewDialog() {
-    showDialog(
+  Future<void> _openQuickViewDialog() async {
+    await showDialog<void>(
       context: context,
       barrierDismissible: true,
       builder: (ctx) => QuickViewDialog(party: _party),
     );
   }
 
-  void _openEspDialog() {
-    showDialog(
+  Future<void> _openEspDialog() async {
+    await showDialog<void>(
       context: context,
       barrierDismissible: true,
       builder: (ctx) => EspDialog(
@@ -1146,8 +1195,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
   }
 
-  void _openFieldMenuDialog({FieldMenuTab initialTab = FieldMenuTab.main}) {
-    showDialog(
+  Future<void> _openFieldMenuDialog({
+    FieldMenuTab initialTab = FieldMenuTab.main,
+  }) async {
+    await showDialog<void>(
       context: context,
       barrierDismissible: true,
       builder: (ctx) => FieldMenuDialog(
@@ -1235,6 +1286,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
         onLog: (msg) => _addLog(msg),
       ),
     );
+  }
+
+  void _redispatchCurrentTileAfter(FieldAction action) {
+    if (!mounted ||
+        _currentMode != GameScreenMode.field ||
+        !LoreMainProcedures.mainRedispatchesCurrentTile(action)) {
+      return;
+    }
+    _game.tryMove(0, 0);
+    setState(() {});
   }
 
   void _openTownDialog() {
@@ -1603,7 +1664,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   GestureDetector(
-                    onTap: _openFieldMenuDialog,
+                    onTap: () async {
+                      if (_entryAnimationActive) return;
+                      LoreDialogueManager.instance.setBattleResult(0);
+                      await _openFieldMenuDialog();
+                      _redispatchCurrentTileAfter(FieldAction.openMenu);
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
@@ -1636,7 +1702,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   ),
                   const SizedBox(width: 4),
                   GestureDetector(
-                    onTap: _openQuickViewDialog,
+                    onTap: () async {
+                      if (_entryAnimationActive) return;
+                      await _openQuickViewDialog();
+                      _redispatchCurrentTileAfter(FieldAction.quickView);
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 6,
@@ -1661,7 +1731,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   ),
                   const SizedBox(width: 4),
                   GestureDetector(
-                    onTap: _openEspDialog,
+                    onTap: () async {
+                      if (_entryAnimationActive) return;
+                      await _openEspDialog();
+                      _redispatchCurrentTileAfter(FieldAction.extrasense);
+                    },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 6,
@@ -1693,6 +1767,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
               right: 6,
               child: DPadWidget(
                 onDirectionPressed: (dx, dy) {
+                  if (_entryAnimationActive) return;
                   _game.tryMove(dx, dy);
                   setState(() {});
                   _reclaimFocus();
@@ -1825,7 +1900,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     return KeyboardListener(
       focusNode: _focusNode,
       autofocus: true,
-      onKeyEvent: (event) {
+      onKeyEvent: (event) async {
+        if (_entryAnimationActive) return;
         if (_currentMode == GameScreenMode.encounter && event is KeyDownEvent) {
           if (event.logicalKey == LogicalKeyboardKey.digit1 ||
               event.logicalKey == LogicalKeyboardKey.numpad1) {
@@ -1839,39 +1915,41 @@ class _MainGameScreenState extends State<MainGameScreen> {
         if (_currentMode == GameScreenMode.field) {
           if (event is KeyDownEvent) {
             // 원작 LOREMAIN.PAS 핫키: P/V/Q/C/E/R/G + Space
-            switch (FieldHotkeys.resolve(event.logicalKey)) {
+            final action = FieldHotkeys.resolve(event.logicalKey);
+            switch (action) {
               case FieldAction.openMenu:
-                _openFieldMenuDialog();
-                return;
+                // LOREMAIN.Main clears party.etc[6] before SelectMode.
+                LoreDialogueManager.instance.setBattleResult(0);
+                await _openFieldMenuDialog();
               case FieldAction.viewParty:
-                _openFieldMenuDialog(initialTab: FieldMenuTab.partyView);
-                return;
+                await _openFieldMenuDialog(initialTab: FieldMenuTab.partyView);
               case FieldAction.viewCharacter:
-                _openFieldMenuDialog(initialTab: FieldMenuTab.characterView);
-                return;
+                await _openFieldMenuDialog(
+                  initialTab: FieldMenuTab.characterView,
+                );
               case FieldAction.castSpell:
-                _openFieldMenuDialog(initialTab: FieldMenuTab.castSpell);
-                return;
+                await _openFieldMenuDialog(initialTab: FieldMenuTab.castSpell);
               case FieldAction.rest:
-                _openFieldMenuDialog(initialTab: FieldMenuTab.rest);
-                return;
+                await _openFieldMenuDialog(initialTab: FieldMenuTab.rest);
               case FieldAction.gameOption:
-                _openFieldMenuDialog(initialTab: FieldMenuTab.gameOption);
-                return;
+                await _openFieldMenuDialog(initialTab: FieldMenuTab.gameOption);
+              case FieldAction.toggleSound:
+                setState(() => AudioManager.instance.toggleMute());
               case FieldAction.quickView:
-                _openQuickViewDialog();
-                return;
+                await _openQuickViewDialog();
               case FieldAction.extrasense:
-                _openEspDialog();
-                return;
+                await _openEspDialog();
               case FieldAction.guide:
-                showDialog(
+                await showDialog<void>(
                   context: context,
                   builder: (ctx) => const LoreGuideDialog(),
                 );
-                return;
               case FieldAction.none:
                 break;
+            }
+            if (action != FieldAction.none) {
+              _redispatchCurrentTileAfter(action);
+              return;
             }
           }
           _game.handleKeyEvent(event);
