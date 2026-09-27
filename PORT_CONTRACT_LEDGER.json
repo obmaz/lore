@@ -26098,6 +26098,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/swamp_source_parity_test.dart",
+      "kind": "test",
+      "sha256": "e1e6585ba6ded95e5bb57519100fdc57db07b61ea676de536748e1d7203cc8f8",
+      "cited_source_files": [
+        "LOREMAIN.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/talk_content_reachability_test.dart",
       "kind": "test",
       "sha256": "261bfddcd26b619ab374fe246a332a5f7b48e32fef129198563dac3507a535fa",
@@ -26396,7 +26405,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "6752b8d1fc3db18eb6cf81c9028739770a4c82ee39f8821084327ce59a43c024"
+      "sha256": "a6a9a417d4dac4ba577515812a5a02854b647d507d49f4035b9b206c0dc03a1b"
     }
   ],
   "baseline_gaps": {

@@ -26,6 +26,7 @@ import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
 import '../logic/lore_lava_logic.dart';
+import '../logic/lore_swamp_logic.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
 import '../data/lore_data.dart';
@@ -978,14 +979,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
       } else {
         // 원작 LOREMAIN.PAS:60 `일행은 독이 있는 늪에 들어갔다 !!!`
         _addLog('☣ 일행은 독이 있는 늪에 들어갔다 !!!');
-        final rnd = Random();
-        for (final p in _party) {
-          if (p.name.isEmpty) continue;
-          if (rnd.nextInt(20) + 1 >= p.luck) {
-            // 원작 LOREMAIN.PAS:64 `{name}는 중독 되었다.`
-            _addLog('☠ ${p.name}는 중독 되었다.');
-            if (p.poison == 0) setState(() => p.poison = 1);
-          }
+        for (final slot in LoreSwampLogic.rollPoisonedSlots(_party, Random())) {
+          final member = _party[slot];
+          // 원작은 이미 중독된 대원에게도 메시지를 보여준다.
+          _addLog('☠ ${member.name}는 중독 되었다.');
+          setState(() => LoreSwampLogic.applyPoison(member));
         }
       }
     } else if (cat == TileCategory.lava) {
