@@ -235,5 +235,8 @@
     적용한 뒤 행동 가능 여부를 판단한다. 전투 화면이 기절 적을 미리 건너뛰던
     경로를 고치고 실제 위젯 턴에서 사망·승리를 검증했다.
     커밋: `Apply poison before skipping unconscious enemies`.
+    `EndBattle`은 파티 전멸을 적 전멸보다 먼저 검사한다. 양쪽이 동시에
+    행동 불능이면 금화가 지급되는 승리가 아닌 패배가 되도록 전투 화면의
+    종료 순서를 고쳤다. 커밋: `Resolve simultaneous battle wipe as defeat`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

@@ -130,7 +130,18 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   void _checkBattleEnd() {
     if (_battleEnded) return;
 
-    // 1. 모든 적 퇴치 확인
+    // LOREBATT.PAS EndBattle은 동시 전멸 시 패배를 먼저 판정한다.
+    final allPartyDefeated = widget.partyMembers.every(
+      (p) => !p.isBattleActive,
+    );
+    if (allPartyDefeated) {
+      _battleEnded = true;
+      _isAutoBattle = false;
+      widget.onLog('† 일행은 모험중에 모두 목숨을 잃었다... GAME OVER †');
+      widget.onDefeat();
+      return;
+    }
+
     final allEnemiesDefeated = widget.enemies.every(
       (e) => e.isDead || e.isUnconscious,
     );
@@ -141,18 +152,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       widget.onLog('★ 전투에서 승리했습니다! ★');
       widget.onLog('일행은 금화 $gold 개를 획득했습니다.');
       widget.onVictory(gold);
-      return;
-    }
-
-    // 2. 파티원 전멸 확인
-    final allPartyDefeated = widget.partyMembers.every(
-      (p) => !p.isBattleActive,
-    );
-    if (allPartyDefeated) {
-      _battleEnded = true;
-      _isAutoBattle = false;
-      widget.onLog('† 일행은 모험중에 모두 목숨을 잃었다... GAME OVER †');
-      widget.onDefeat();
       return;
     }
   }
