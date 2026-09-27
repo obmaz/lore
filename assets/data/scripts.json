@@ -7729,7 +7729,7 @@
             "yMin": 7,
             "yMax": 34,
             "tile": 39,
-            "ifZero": 39
+            "onlyIf": 0
           }
         },
         {

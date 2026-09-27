@@ -238,5 +238,9 @@
     `EndBattle`은 파티 전멸을 적 전멸보다 먼저 검사한다. 양쪽이 동시에
     행동 불능이면 금화가 지급되는 승리가 아닌 패배가 되도록 전투 화면의
     종료 순서를 고쳤다. 커밋: `Resolve simultaneous battle wipe as defeat`.
+13. **원본 지도 효과 재검토 · 진행 중** — 맵 23 레버는 (12..39, 7..34)의
+    타일 값이 0인 곳만 39로 바꾼다. 기존 `ifZero` 값은 조건이 아니라 대체
+    출력이어서 기존 길까지 덮어썼다. `onlyIf: 0`으로 고치고 실제 지도 전이를
+    검증했다. 커밋: `Preserve nonzero tiles when raising the hidden castle`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

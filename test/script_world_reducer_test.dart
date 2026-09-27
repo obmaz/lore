@@ -1,8 +1,40 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/logic/script_world_reducer.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
+  test('맵 23 레버는 원본처럼 0인 칸만 성벽으로 바꾼다', () async {
+    final source = File('repo_source/LORE_1993_src/LORESPEC.PAS')
+        .readAsStringSync(encoding: latin1);
+    expect(source, contains('if map[i,j] = 0 then map[i,j] := 39;'));
+    final engine = LoreScriptEngine();
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
+    final run = engine.startStep(
+      23,
+      25,
+      27,
+      const ScriptContext(tileAtPlayer: 52),
+    )!;
+    expect(run.script.id, 'keep3-trap-25-27');
+    final grid = List.generate(50, (_) => List.filled(50, 0));
+    grid[8 - 1][13 - 1] = 44;
+    final result = ScriptWorldReducer.applyMap(
+      ScriptMapState(mapId: 23, x: 25, y: 27, direction: 0, grid: grid),
+      run.outcome,
+    );
+    expect(result.grid[7 - 1][12 - 1], 39);
+    expect(result.grid[8 - 1][13 - 1], 44);
+    expect(result.grid[12 - 1][25 - 1], 54);
+  });
+
   test('식량은 원작 상한 255를 적용하고 입력 상태를 바꾸지 않는다', () {
     const before = ScriptResources(gold: 2000, food: 200);
     final after = ScriptWorldReducer.applyResources(
