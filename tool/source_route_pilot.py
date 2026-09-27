@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'repo_source/LORE_1993_src/LORESPEC.PAS'
-MAP_FILES = {17: 'DEN4', 20: 'DEN7'}
+MAP_FILES = {17: 'DEN4', 19: 'DEN6', 20: 'DEN7'}
 
 PATTERNS_17 = {
     'set_y': r'if y = (\d+) then y := (\d+);',
@@ -46,6 +46,8 @@ def extract_rules(source: str, map_id: int = 17):
     map_end = source.index(f'{map_id + 1} : begin', map_start)
     scope = source[map_start:map_end]
     rules = []
+    if map_id == 19:
+        return extract_lever_b(scope, source, map_start)
     patterns = PATTERNS_17 if map_id == 17 else PATTERNS_20
     for kind, pattern in patterns.items():
         matches = list(re.finditer(pattern, scope))
@@ -61,6 +63,48 @@ def extract_rules(source: str, map_id: int = 17):
             })
     rules.sort(key=lambda rule: rule.pop('_offset'))
     return rules
+
+
+def extract_lever_b(scope: str, source: str, map_start: int):
+    begin = scope.index('if on(41,39) then begin')
+    end = scope.index('if (y in [8..12])', begin)
+    body = scope[begin:end]
+    patterns = [
+        r'if on\((\d+),(\d+)\) then begin\s+if party\.etc\[(\d+)\] > 0',
+        r'map\[(\d+),(\d+)\] := (\d+);\s+if not odd\(party\.etc\[(\d+)\]\)',
+        r'for j := (\d+) to (\d+) do begin\s+map\[(\d+),j\] := (\d+);\s+map\[(\d+),j\] := (\d+);',
+        r'map\[(\d+),(\d+)\] := (\d+); map\[(\d+),(\d+)\] := (\d+);',
+        r'for j := (\d+) to (\d+) do\s+for i := (\d+) to (\d+) do map\[i,j\] := (\d+);',
+        r'party\.etc\[40\] := \(random\((\d+)\)\+1\) shl 1;',
+    ]
+    values = []
+    for pattern in patterns:
+        matches = list(re.finditer(pattern, body))
+        if len(matches) != 1:
+            raise ValueError(f'map 19 lever pattern {pattern}: found {len(matches)}')
+        values.append([int(value) for value in matches[0].groups()])
+    line = source.count('\n', 0, map_start + begin) + 1
+    return [{'kind': 'lever_b', 'line': line, 'args': values}]
+
+
+def execute_lever_b(rule, *, swamp_walk: bool, puzzle_cleared: bool):
+    trigger, primary, columns, ends, center, random = rule['args']
+    x, y, _swamp_bit = trigger
+    writes = []
+    if not swamp_walk:
+        writes.append([primary[0], primary[0], primary[1], primary[1], primary[2]])
+        if not puzzle_cleared:
+            low, high, left, left_tile, right, right_tile = columns
+            writes += [[left, left, low, high, left_tile],
+                       [right, right, low, high, right_tile]]
+            writes += [[ends[0], ends[0], ends[1], ends[1], ends[2]],
+                       [ends[3], ends[3], ends[4], ends[4], ends[5]]]
+            low, high, left, right, tile = center
+            writes.append([left, right, low, high, tile])
+    return {'start': [x, y], 'sourceMap': 19, 'sourceEnd': [x, y],
+            'safeEnd': [x, y], 'writes': writes,
+            'swampWalkActive': swamp_walk, 'puzzleCleared': puzzle_cleared,
+            'randomRoomCount': random[0] if writes and not puzzle_cleared else 0}
 
 
 def execute(rules, x: int, y: int, height: int, *, map_id=17, tile=None):
@@ -105,6 +149,13 @@ def execute(rules, x: int, y: int, height: int, *, map_id=17, tile=None):
 def fixture(map_id=17):
     source = SOURCE.read_bytes().decode('latin-1')
     rules = extract_rules(source, map_id)
+    if map_id == 19:
+        cases = [
+            execute_lever_b(rules[0], swamp_walk=walk, puzzle_cleared=cleared)
+            for walk in (False, True) for cleared in (False, True)
+        ]
+        return {'map': map_id, 'source': 'LORESPEC.PAS',
+                'rules': rules, 'cases': cases}
     raw_map = (ROOT / f'assets/maps/{MAP_FILES[map_id]}.MAP').read_bytes()
     width, height = raw_map[:2]
     cases = []

@@ -5,7 +5,7 @@
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.
 
-전체 595개 / 활성 301개 / 비활성 294개 / 원본 추출 좌표 46개.
+전체 596개 / 활성 302개 / 비활성 294개 / 원본 추출 좌표 46개.
 
 ## 맵별 현황
 
@@ -29,7 +29,7 @@
 | 16 | 40×40 | 4 | 12 | 4 | 0 | 0 | 0 |
 | 17 | 100×100 | 15 | 11 | 15 | 0 | 0 | 0 |
 | 18 | 50×100 | 13 | 16 | 13 | 0 | 0 | 0 |
-| 19 | 50×50 | 19 | 14 | 19 | 0 | 0 | 0 |
+| 19 | 50×50 | 20 | 14 | 20 | 0 | 0 | 0 |
 | 20 | 50×100 | 14 | 48 | 14 | 0 | 0 | 0 |
 | 21 | 50×50 | 12 | 41 | 3 | 0 | 9 | 0 |
 | 22 | 50×50 | 6 | 15 | 4 | 0 | 1 | 1 |
@@ -774,7 +774,8 @@
 | `evil-seal-lever-a-blocked`<br>LORESPEC.PAS (파일 추정) | step (11, 40) | {"flag":"swampWalkActive","tileAtPlayerZero":true} | flag swampWalkActive → 제거; tileAtPlayerZero True → 타일을 0 이외로 | 대사/연출 |
 | `evil-seal-lever-a`<br>LORESPEC.PAS (파일 추정) | step (11, 40) | {"flagNot":"swampWalkActive","tileAtPlayerZero":true} | flagNot swampWalkActive → 추가; tileAtPlayerZero True → 타일을 0 이외로 | setTile, flag:evilSealLeverA |
 | `evil-seal-lever-b-blocked`<br>LORESPEC.PAS (파일 추정) | step (41, 39) | {"flag":"swampWalkActive","tileAtPlayerZero":true} | flag swampWalkActive → 제거; tileAtPlayerZero True → 타일을 0 이외로 | 대사/연출 |
-| `evil-seal-lever-b`<br>LORESPEC.PAS (파일 추정) | step (41, 39) | {"flagNot":"swampWalkActive","tileAtPlayerZero":true} | flagNot swampWalkActive → 추가; tileAtPlayerZero True → 타일을 0 이외로 | setTile, setTileArea, randomFlag, flag:evilSealLeverB |
+| `evil-seal-lever-b`<br>LORESPEC.PAS (파일 추정) | step (41, 39) | {"flagNot":"swampWalkActive","notAllFlags":["evilSealRoomCleared"],"tileAtPlayerZero":true} | flagNot swampWalkActive → 추가; tileAtPlayerZero True → 타일을 0 이외로; notAllFlags → evilSealRoomCleared 추가 | setTile, setTileArea, randomFlag, flag:evilSealLeverB |
+| `evil-seal-lever-b-cleared`<br>LORESPEC.PAS (파일 추정) | step (41, 39) | {"flag":"evilSealRoomCleared","flagNot":"swampWalkActive","tileAtPlayerZero":true} | flag evilSealRoomCleared → 제거; flagNot swampWalkActive → 추가; tileAtPlayerZero True → 타일을 0 이외로 | setTile |
 | `evil-seal-room-1`<br>LORESPEC.PAS (파일 추정) | step (14, 6) | {"flag":"evilSealRoom1","flagNot":"evilSealRoomCleared"} | flag evilSealRoom1 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
 | `evil-seal-room-2`<br>LORESPEC.PAS (파일 추정) | step (18, 6) | {"flag":"evilSealRoom2","flagNot":"evilSealRoomCleared"} | flag evilSealRoom2 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
 | `evil-seal-room-3`<br>LORESPEC.PAS (파일 추정) | step (22, 6) | {"flag":"evilSealRoom3","flagNot":"evilSealRoomCleared"} | flag evilSealRoom3 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |

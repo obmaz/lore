@@ -6348,6 +6348,7 @@
       "once": true,
       "require": {
         "flagNot": "swampWalkActive",
+        "notAllFlags": ["evilSealRoomCleared"],
         "tileAtPlayerZero": true
       },
       "steps": [
@@ -6415,6 +6416,27 @@
         },
         {
           "flag": "evilSealLeverB"
+        }
+      ]
+    },
+    {
+      "id": "evil-seal-lever-b-cleared",
+      "trigger": "step",
+      "map": 19,
+      "x": 41,
+      "y": 39,
+      "once": false,
+      "require": {
+        "flag": "evilSealRoomCleared",
+        "flagNot": "swampWalkActive",
+        "tileAtPlayerZero": true
+      },
+      "steps": [
+        {
+          "say": "일행은 독을 무릅쓰고 늪속에 빠져있는 레버를 당겼다. 순간 동굴 중심부에서 굉음이 들렸다."
+        },
+        {
+          "setTile": {"x": 41, "y": 39, "tile": 49}
         }
       ]
     },

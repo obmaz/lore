@@ -38,6 +38,19 @@ class SourceRoutePilotTest(unittest.TestCase):
                 self.assertEqual((case['sourceMap'], case['sourceEnd']),
                                  (4, [82, 17]))
 
+    def test_map19_lever_keeps_completed_puzzle_terrain(self):
+        path = pilot.ROOT / 'test/fixtures/map19_route_parity.json'
+        recorded = json.loads(path.read_text(encoding='utf-8'))
+        self.assertEqual(recorded, pilot.fixture(19))
+        self.assertEqual(len(recorded['cases']), 4)
+        active, completed, blocked, blocked_completed = recorded['cases']
+        self.assertEqual(len(active['writes']), 6)
+        self.assertEqual(active['randomRoomCount'], 7)
+        self.assertEqual(completed['writes'], [[41, 41, 39, 39, 49]])
+        self.assertEqual(completed['randomRoomCount'], 0)
+        self.assertEqual(blocked['writes'], [])
+        self.assertEqual(blocked_completed['writes'], [])
+
 
 if __name__ == '__main__':
     unittest.main()

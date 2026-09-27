@@ -95,4 +95,50 @@ void main() {
       expect(actual.grid, grid, reason: '맵 20 ($x,$y) 타일 보존');
     }
   });
+
+  test('맵 19 두 번째 레버는 걷기 마법과 완료 비트에 따라 지형을 바꾼다', () async {
+    final fixture = jsonDecode(
+      File('test/fixtures/map19_route_parity.json').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    final map = await LoreMapData.loadFromAsset('DEN6', category: 'den');
+    for (final raw in fixture['cases'] as List<dynamic>) {
+      final item = raw as Map<String, dynamic>;
+      final walk = item['swampWalkActive'] as bool;
+      final cleared = item['puzzleCleared'] as bool;
+      final flags = <String>{
+        if (walk) 'swampWalkActive',
+        if (cleared) 'evilSealRoomCleared',
+      };
+      final engine = LoreScriptEngine();
+      engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+      final run = engine.startStep(
+        19,
+        41,
+        39,
+        ScriptContext(flags: flags, tileAtPlayer: 0),
+      );
+      expect(run, isNotNull, reason: '걷기 $walk, 완료 $cleared');
+      final grid = [for (final row in map.grid) List<int>.from(row)];
+      grid[38][40] = 0; // 첫 번째 레버가 두 번째 레버 칸을 연 상태
+      final expectedGrid = [for (final row in grid) List<int>.from(row)];
+      for (final rawWrite in item['writes'] as List<dynamic>) {
+        final write = (rawWrite as List<dynamic>).cast<int>();
+        for (var y = write[2]; y <= write[3]; y++) {
+          for (var x = write[0]; x <= write[1]; x++) {
+            expectedGrid[y - 1][x - 1] = write[4];
+          }
+        }
+      }
+      final actual = ScriptWorldReducer.applyMap(
+        ScriptMapState(mapId: 19, x: 41, y: 39, direction: 0, grid: grid),
+        run!.outcome,
+      );
+      expect(actual.grid, expectedGrid, reason: '걷기 $walk, 완료 $cleared');
+      expect(
+        run.outcome.setFlags.where((flag) => flag.startsWith('evilSealRoom')),
+        hasLength(item['randomRoomCount'] == 0 ? 0 : 1),
+        reason: '걷기 $walk, 완료 $cleared',
+      );
+    }
+  });
 }
