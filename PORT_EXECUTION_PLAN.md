@@ -78,6 +78,11 @@
 타일 복원을 검증한다. 일반 NPC 대사 내용과 시설 상호작용은 아직 별도 대상이다.
 커밋: `Preserve map twenty four programmer conversation state`.
 
+맵 1의 실제 특수 타일 (42,84)에서 원본 식량 상자의 방문 비트,
+`food > 155` 상한 분기와 방향별 한 칸 후퇴를 추출했다. 식량 네 수치,
+방향 네 가지, 방문 전후를 조합한 32개 상태를 실행 비교한다.
+커밋: `Replay original ground food cache and retreat`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로

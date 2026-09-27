@@ -41,6 +41,9 @@ def collect():
     map24_talk = json.loads(
         (ROOT / 'test/fixtures/map24_talk_parity.json').read_text(),
     )
+    map1_food = json.loads(
+        (ROOT / 'test/fixtures/map1_food_parity.json').read_text(),
+    )['cases']
     spec_count = Counter(entry[0] for entry in spec_events)
     talk_count = Counter(entry[0] for entry in talk_events)
     active_count = Counter(s['map'] for s in scripts if not s.get('disabled'))
@@ -48,7 +51,7 @@ def collect():
     scenario_count = Counter(s['input']['map'] for s in source_scenarios)
     entrance_count = Counter(case['map'] for case in entrances)
     exit_count = Counter(case['map'] for case in exits)
-    state_replay_count = Counter(case['map'] for case in [*gold_cases, *map12_cases])
+    state_replay_count = Counter(case['map'] for case in [*gold_cases, *map12_cases, *map1_food])
     state_replay_count[map24_talk['map']] += 2  # 대화 실행과 재진입 영속성
     replay_count = {}
     for path in (ROOT / 'test/fixtures').glob('map*_route_parity.json'):
