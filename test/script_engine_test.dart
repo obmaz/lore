@@ -501,6 +501,36 @@ void main() {
       expect(red.resistance, 15);
     });
 
+    test('Red Antares 거절은 재시도 가능하고 합류 성공만 완료 비트를 남긴다', () async {
+      await LoreScriptEngine.instance.load();
+      const ready = ScriptContext(
+        flags: {'specialMagicLearned'},
+        mindReadActive: true,
+      );
+      final engine = LoreScriptEngine.instance;
+      final decline = engine.startStep(17, 75, 52, ready)!.choose(1);
+      expect(decline.outcome.recruits, isEmpty);
+      expect(decline.outcome.setFlags, isNot(contains('etc38_bit2')));
+      final retry = engine.startStep(17, 75, 52, ready)!;
+      expect(retry.script.id, 'redantares-join');
+      final accept = retry.choose(0);
+      expect(accept.outcome.recruits.single.key, 'red_antares');
+      expect(accept.outcome.setFlags, contains('etc38_bit2'));
+      expect(accept.outcome.setFlags, contains('redAntaresJoined'));
+      expect(
+        engine.startStep(
+          17,
+          75,
+          52,
+          const ScriptContext(
+            flags: {'specialMagicLearned', 'etc38_bit2'},
+            mindReadActive: true,
+          ),
+        ),
+        isNull,
+      );
+    });
+
     test('5. Spica는 특수 타일 첫 만남 뒤에만 독심술로 영입한다', () async {
       await LoreScriptEngine.instance.load();
 

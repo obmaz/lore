@@ -249,5 +249,8 @@
     Red Antares 합류 제안은 특수 마법을 배운 뒤 독심술을 쓰는 경우에만
     표시한다. 독심술이 없으면 대기 대화로 분기하고 재진입을 허용한다.
     커밋: `Gate Red Antares recruitment on mind reading`.
+    합류 거절과 슬롯 선택 취소는 완료 비트를 남기지 않고 재시도할 수 있다.
+    실제 합류가 끝난 뒤에만 `etc38_bit2`를 기록하도록 지연 적용한다.
+    커밋: `Commit Red Antares completion only after recruitment`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

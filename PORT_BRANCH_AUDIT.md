@@ -734,7 +734,7 @@
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
 | `redantares-teach`<br>LORESPEC.PAS (파일 추정) | step (75, 52) | {"flagNot":"specialMagicLearned"} | flagNot specialMagicLearned → 추가 | setTileArea, flag:specialMagicLearned |
-| `redantares-join`<br>LORESPEC.PAS (파일 추정) | step (75, 52) | {"flag":"specialMagicLearned","flagNot":"etc38_bit2","mindRead":true} | flag specialMagicLearned → 제거; flagNot etc38_bit2 → 추가; mindRead True → 독심술 끄기 | flag:redAntaresJoined, join:red_antares |
+| `redantares-join`<br>LORESPEC.PAS (파일 추정) | step (75, 52) | {"flag":"specialMagicLearned","flagNot":"etc38_bit2","mindRead":true} | flag specialMagicLearned → 제거; flagNot etc38_bit2 → 추가; mindRead True → 독심술 끄기 | flag:redAntaresJoined, join:red_antares, flag:etc38_bit2 |
 | `redantares-wait-for-mindread`<br>LORESPEC.PAS (파일 추정) | step (75, 52) | {"flag":"specialMagicLearned","flagNot":"etc38_bit2","mindReadInactive":true} | flag specialMagicLearned → 제거; flagNot etc38_bit2 → 추가; mindReadInactive True → 독심술 켜기 | 대사/연출 |
 | `spec-17-L1010-1xx`<br>LORESPEC.PAS:1010 | step (22, *) | {"notAllFlags":["bossHidraDefeated","etc1","etc6"],"quest":[{"name":"water","lt":2}]} | notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | torch, flag:etc1, battle(적 3, 도주 분기), nudge, questStep:water, flag:bossHidraDefeated, teleport |
 | `spec-17-L1010-2xx`<br>LORESPEC.PAS:1010 | step (22, *) | {"allFlags":["etc1"],"notAllFlags":["bossHidraDefeated","etc6"],"quest":[{"name":"water","lt":2}]} | allFlags → etc1 제거; notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | battle(적 3, 도주 분기), nudge, questStep:water, flag:bossHidraDefeated, teleport |

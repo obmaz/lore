@@ -1924,7 +1924,7 @@
       "map": 17,
       "x": 75,
       "y": 52,
-      "once": true,
+      "once": false,
       "require": {
         "flag": "specialMagicLearned",
         "flagNot": "etc38_bit2",
@@ -1953,6 +1953,9 @@
                   {
                     "join": "red_antares",
                     "flag": "redAntaresJoined"
+                  },
+                  {
+                    "flag": "etc38_bit2"
                   }
                 ]
               },

@@ -553,6 +553,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       for (final recruit in outcome.recruits)
         if (recruitFlagByKey[recruit.key] case final String flag)
           if (outcome.setFlags.contains(flag)) flag,
+      // LORESPEC.PAS: Red Antares의 완료 비트는 슬롯 선택에 성공한 뒤에만 기록한다.
+      if (outcome.recruits.any((recruit) => recruit.key == 'red_antares') &&
+          outcome.setFlags.contains('etc38_bit2'))
+        'etc38_bit2',
     };
     final dialogue = LoreDialogueManager.instance;
     final progressBefore = ScriptProgressState(
@@ -599,6 +603,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final flag = recruitFlagByKey[recruit.key];
       if (flag != null && deferredRecruitFlags.contains(flag)) {
         LoreDialogueManager.instance.setFlag(flag);
+      }
+      if (recruit.key == 'red_antares' &&
+          deferredRecruitFlags.contains('etc38_bit2')) {
+        LoreDialogueManager.instance.setFlag('etc38_bit2');
       }
       if (joined && recruit.key == 'mad_joe' && _game.currentMapId == 6) {
         final map = _game.currentMap;
