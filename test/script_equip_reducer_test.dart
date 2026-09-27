@@ -25,6 +25,30 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   final engine = LoreScriptEngine.instance;
 
+  test('황금 방패와 갑옷은 LORESPEC의 장착 문구를 쓴다', () {
+    final hero = member('Hero', PlayerClass.knight);
+    expect(
+      ScriptEquipReducer.completionMessage(hero, (
+        kind: 'shield',
+        index: 5,
+        power: 5,
+        prompt: true,
+        onlyUnarmed: false,
+      )),
+      'Hero가 황금의 방패를 장착했다.',
+    );
+    expect(
+      ScriptEquipReducer.completionMessage(hero, (
+        kind: 'armor',
+        index: 5,
+        power: 6,
+        prompt: true,
+        onlyUnarmed: false,
+      )),
+      'Hero가 황금의 갑옷을 장착했다.',
+    );
+  });
+
   setUp(engine.resetForTest);
   tearDown(engine.resetForTest);
 

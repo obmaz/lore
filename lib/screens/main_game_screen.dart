@@ -963,12 +963,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
     for (final index in result.equippedIndexes) {
       final member = _party[index];
-      final itemName = switch (equip.kind) {
-        'weapon' => member.weaponName,
-        'shield' => member.shieldName,
-        _ => member.armorName,
-      };
-      _addLog('${member.name} 이(가) $itemName 을(를) 장착했다.');
+      _addLog(ScriptEquipReducer.completionMessage(member, equip));
     }
     return true;
   }

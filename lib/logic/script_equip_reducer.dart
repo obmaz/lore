@@ -26,6 +26,21 @@ class ScriptEquipResult {
 class ScriptEquipReducer {
   ScriptEquipReducer._();
 
+  static String completionMessage(PartyMember member, ScriptEquip equip) {
+    if (equip.kind == 'shield' && equip.index == 5) {
+      return '${member.name}가 황금의 방패를 장착했다.';
+    }
+    if (equip.kind == 'armor' && equip.index == 5) {
+      return '${member.name}가 황금의 갑옷을 장착했다.';
+    }
+    final itemName = switch (equip.kind) {
+      'weapon' => member.weaponName,
+      'shield' => member.shieldName,
+      _ => member.armorName,
+    };
+    return '${member.name} 이(가) $itemName 을(를) 장착했다.';
+  }
+
   static ScriptEquipResult apply(
     List<PartyMember> party,
     ScriptEquip equip, {

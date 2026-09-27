@@ -68,6 +68,19 @@ void main() {
     expect(dialogues.takePendingRecruits(), isEmpty);
   });
 
+  test('LORETALK.PAS:406 퀘스트 완료 뒤 Polaris 대화는 합류를 발생시키지 않는다', () {
+    dialogues.applyQuestStep('lastditch', set: 2);
+    final result = resolve(
+      7,
+      37,
+      41,
+      const ScriptContext(questSteps: {'lastditch': 2}),
+    );
+    expect(result.source, LoreTalkSource.none);
+    expect(dialogues.polarisJoined, isFalse);
+    expect(dialogues.takePendingRecruits(), isEmpty);
+  });
+
   test('등록되지 않은 좌표는 명시적으로 빈 선택 결과를 돌려준다', () {
     expect(
       resolve(2, 11, 11, const ScriptContext()).source,

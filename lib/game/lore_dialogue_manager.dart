@@ -869,6 +869,8 @@ class LoreDialogueManager {
       return '노병: "Major Mummy와 두 마리의 Sphinx의 공격은 가히 치명적입니다. 단단히 대비하시오."';
     }
     if (tx == 37 && ty == 41) {
+      // LORETALK.PAS:406: the entire Polaris branch is guarded by etc[13]<2.
+      if (lastditchQuestStep >= 2) return null;
       if (!polarisJoined) {
         polarisJoined = true;
         // 원작 LORETALK.PAS:413 - join(9, k) + Polaris 능력치 보정
