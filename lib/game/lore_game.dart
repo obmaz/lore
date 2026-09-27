@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import '../logic/lore_encounter_logic.dart';
-import '../logic/lore_movement_logic.dart';
+import '../logic/lore_field_session.dart';
 
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
@@ -199,14 +199,8 @@ class LoreGame extends FlameGame {
 
   /// 플레이어 이동 처리
   bool tryMove(int dx, int dy) {
-    if (dx == 0 && dy == 1) playerDirection = 0; // 남
-    if (dx == 0 && dy == -1) playerDirection = 1; // 북
-    if (dx == 1 && dy == 0) playerDirection = 2; // 동
-    if (dx == -1 && dy == 0) playerDirection = 3; // 서
-
     final targetX = playerX + dx;
     final targetY = playerY + dy;
-
     final map = currentMap;
     if (map == null) return false;
     final portal = LoreWorldManager.instance.findPortal(
@@ -214,68 +208,67 @@ class LoreGame extends FlameGame {
       targetX,
       targetY,
     );
-    final decision = LoreMovementLogic.decide(
+    final transition = LoreFieldSession.move(
       map: map,
-      targetX: targetX,
-      targetY: targetY,
+      x: playerX,
+      y: playerY,
+      direction: playerDirection,
+      dx: dx,
+      dy: dy,
       canWalkOnWater: canWalkOnWater?.call() == true,
-      hasPortal: portal != null,
+      portal: portal,
     );
-    switch (decision.kind) {
-      case LoreMoveKind.boundary:
-        onLog?.call('더 이상 나아갈 수 없는 경계 지역입니다.');
-        return false;
-      case LoreMoveKind.wall:
-        onLog?.call('단단한 성벽과 바위가 가로막아 지나갈 수 없습니다.');
-        return false;
-      case LoreMoveKind.waterBlocked:
-        onLog?.call('깊은 물속은 배나 [물위를 걸음] 마법 없이는 건널 수 없습니다!');
-        return false;
-      case LoreMoveKind.npc:
-        _handleNpcInteraction(map.getTile(targetX, targetY), targetX, targetY);
-        return false;
-      case LoreMoveKind.portal:
-        // 원작 entermode는 해당 좌표의 규칙이 없으면 아무 지도도 열지 않는다.
-        if (portal == null) return false;
-        if (onPortalRequested != null) {
-          // 원작 wantenter/wantexit: 화면단에서 확인을 받은 뒤 enterPortal 호출
-          onPortalRequested!(portal, targetX, targetY);
-          return false;
-        }
-        unawaited(enterPortal(portal, targetX, targetY));
-        return true;
-      case LoreMoveKind.sign:
-        _handleSign(targetX, targetY);
-        return false;
-      case LoreMoveKind.walk:
-        break;
+    playerDirection = transition.direction;
+    var specialEventHandled = false;
+    for (final effect in transition.effects) {
+      switch (effect.kind) {
+        case LoreFieldEffectKind.boundary:
+          onLog?.call('더 이상 나아갈 수 없는 경계 지역입니다.');
+        case LoreFieldEffectKind.wall:
+          onLog?.call('단단한 성벽과 바위가 가로막아 지나갈 수 없습니다.');
+        case LoreFieldEffectKind.waterBlocked:
+          onLog?.call('깊은 물속은 배나 [물위를 걸음] 마법 없이는 건널 수 없습니다!');
+        case LoreFieldEffectKind.talk:
+          _handleNpcInteraction(
+            map.getTile(targetX, targetY),
+            targetX,
+            targetY,
+          );
+        case LoreFieldEffectKind.portalRequest:
+          if (onPortalRequested != null) {
+            onPortalRequested!(transition.portal!, targetX, targetY);
+          } else {
+            unawaited(enterPortal(transition.portal!, targetX, targetY));
+          }
+        case LoreFieldEffectKind.sign:
+          _handleSign(targetX, targetY);
+        case LoreFieldEffectKind.positionChanged:
+          playerX = transition.x;
+          playerY = transition.y;
+          onPositionChanged?.call(playerX, playerY);
+        case LoreFieldEffectKind.hazard:
+          onHazardTile?.call(effect.category!);
+        case LoreFieldEffectKind.step:
+          specialEventHandled = onStepTaken?.call() ?? false;
+        case LoreFieldEffectKind.encounterCheck:
+          // 원작 Move_Mode(1/(encounter*20)) / enter_water(1/(encounter*30)).
+          if (!specialEventHandled &&
+              LoreEncounterLogic.shouldEncounter(
+                currentMapId,
+                effect.category!,
+                _random,
+                frequency: encounterFrequencyProvider?.call() ?? 2,
+              )) {
+            onEncounter?.call();
+          }
+      }
     }
-    final cat = decision.category!;
-    // 이동 성공
-    playerX = targetX;
-    playerY = targetY;
-    onPositionChanged?.call(playerX, playerY);
-
-    // 위험 지형 콜백 호출 (독 늪, 용암 등)
-    if (cat == TileCategory.swamp ||
-        cat == TileCategory.lava ||
-        cat == TileCategory.water) {
-      onHazardTile?.call(cat);
-    }
-    final specialEventHandled = onStepTaken?.call() ?? false;
-
-    // 원작 Move_Mode(1/(encounter*20)) / enter_water(1/(encounter*30)).
-    if (!specialEventHandled &&
-        LoreEncounterLogic.shouldEncounter(
-          currentMapId,
-          cat,
-          _random,
-          frequency: encounterFrequencyProvider?.call() ?? 2,
-        )) {
-      onEncounter?.call();
-    }
-
-    return true;
+    return transition.moved ||
+        (transition.portal != null &&
+            onPortalRequested == null &&
+            transition.effects.any(
+              (e) => e.kind == LoreFieldEffectKind.portalRequest,
+            ));
   }
 
   void _handleSign(int tx, int ty) {
