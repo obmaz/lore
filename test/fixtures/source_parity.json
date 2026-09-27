@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "sources": {
+    "evil-seal-lever": {
+      "file": "LORESPEC.PAS",
+      "lines": [1378, 1393],
+      "evidence": [
+        "if on(11,40) then begin",
+        "if party.etc[3] > 0 then begin",
+        "map[11,40] := 49;",
+        "map[41,39] := 0;"
+      ]
+    },
+    "evil-seal-room": {
+      "file": "LORESPEC.PAS",
+      "lines": [1433, 1473],
+      "evidence": [
+        "if (y = 6) and not odd(party.etc[40]) then begin",
+        "map[x,y-1] := 49;",
+        "if j <> (x-10) div 4 then begin",
+        "party.etc[40] := party.etc[40] or bit1;"
+      ]
+    },
+    "den7-minotaur": {
+      "file": "LORESPEC.PAS",
+      "lines": [1602, 1620],
+      "evidence": [
+        "if (y = 48) and (party.etc[41] and bit4 = 0)",
+        "joinenemy(1,53);",
+        "party.etc[41] := party.etc[41] or bit4;"
+      ]
+    },
+    "den7-guardians": {
+      "file": "LORESPEC.PAS",
+      "lines": [1621, 1750],
+      "evidence": [
+        "for i := 1 to enemynumber do joinenemy(i,54);",
+        "if party.etc[6] = 0 then party.etc[41] := party.etc[41] or bit2",
+        "for i := 1 to enemynumber do joinenemy(i,31);",
+        "joinenemy(7,57);",
+        "if enemy[7].dead then begin"
+      ]
+    }
+  },
+  "scenarios": [
+    {
+      "id": "evil-seal-lever-pulled",
+      "source": "evil-seal-lever",
+      "input": {"map": 19, "x": 11, "y": 40, "tileAtPlayer": 0},
+      "selected": "evil-seal-lever-a",
+      "trace": [
+        {"action": "start", "expect": {"flags": ["evilSealLeverA"], "tiles": [[null, 11, 40, 49, null], [null, 41, 39, 0, null]]}}
+      ]
+    },
+    {
+      "id": "evil-seal-lever-blocked-by-swamp-walk",
+      "source": "evil-seal-lever",
+      "input": {"map": 19, "x": 11, "y": 40, "tileAtPlayer": 0, "flags": ["swampWalkActive"]},
+      "selected": "evil-seal-lever-a-blocked",
+      "trace": [
+        {"action": "start", "expect": {}}
+      ]
+    },
+    {
+      "id": "evil-seal-correct-room",
+      "source": "evil-seal-room",
+      "input": {"map": 19, "x": 22, "y": 6, "flags": ["evilSealRoom3"]},
+      "selected": "evil-seal-room-3",
+      "trace": [
+        {"action": "start", "expect": {"battle": [59, 59, 59, 59, 59, 59, 59], "areas": [[null, 1, 1, 5, 5, 49, true, false]], "awaitingBattle": true}},
+        {"action": "victory", "expect": {"flags": ["evilSealRoomCleared", "lavaGateKeyLeft", "sealPuzzleA"]}}
+      ]
+    },
+    {
+      "id": "evil-seal-wrong-room",
+      "source": "evil-seal-room",
+      "input": {"map": 19, "x": 22, "y": 6, "flags": ["evilSealRoom4"]},
+      "selected": "evil-seal-room-wrong-3",
+      "trace": [
+        {"action": "start", "expect": {"areas": [[null, 1, 1, 5, 5, 49, true, false]], "playerTiles": [[49, null]]}}
+      ]
+    },
+    {
+      "id": "evil-seal-room-after-clear",
+      "source": "evil-seal-room",
+      "input": {"map": 19, "x": 22, "y": 6, "flags": ["evilSealRoom4", "evilSealRoomCleared"]},
+      "selected": null,
+      "trace": []
+    },
+    {
+      "id": "den7-minotaur-dark-retreat",
+      "source": "den7-minotaur",
+      "input": {"map": 20, "x": 25, "y": 48},
+      "selected": "spec-20-L1475-1xxx",
+      "trace": [
+        {"action": "start", "expect": {"battle": [53], "flags": ["etc1"], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"flags": ["den7MinotaurCleared"]}}
+      ]
+    },
+    {
+      "id": "den7-minotaur-lit-retreat",
+      "source": "den7-minotaur",
+      "input": {"map": 20, "x": 25, "y": 48, "flags": ["etc1"]},
+      "selected": "spec-20-L1475-2xxx",
+      "trace": [
+        {"action": "start", "expect": {"battle": [53], "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"flags": ["den7MinotaurCleared"]}}
+      ]
+    },
+    {
+      "id": "den7-minotaur-cleared",
+      "source": "den7-minotaur",
+      "input": {"map": 20, "x": 25, "y": 48, "flags": ["den7MinotaurCleared"]},
+      "selected": null,
+      "trace": []
+    },
+    {
+      "id": "den7-three-victories",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13},
+      "selected": "den7-dragons-y13",
+      "trace": [
+        {"action": "start", "expect": {"battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"battle": [31, 31, 31, 31, 31, 31, 31], "flags": ["den7DragonsCleared"], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"battle": [31, 31, 31, 31, 31, 31, 57], "flags": ["den7MudmenCleared"], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"flags": ["den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
+      ]
+    },
+    {
+      "id": "den7-dragon-retreat",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13},
+      "selected": "den7-dragons-y13",
+      "trace": [
+        {"action": "start", "expect": {"battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
+      ]
+    },
+    {
+      "id": "den7-mudmen-retreat",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared"]},
+      "selected": "den7-mudmen-y13",
+      "trace": [
+        {"action": "start", "expect": {"battle": [31, 31, 31, 31, 31, 31, 31], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
+      ]
+    },
+    {
+      "id": "den7-master-retreat",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared", "den7MudmenCleared"]},
+      "selected": "den7-master-y13",
+      "trace": [
+        {"action": "start", "expect": {"battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
+      ]
+    },
+    {
+      "id": "den7-master-dead-on-retreat",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared", "den7MudmenCleared"]},
+      "selected": "den7-master-y13",
+      "trace": [
+        {"action": "start", "expect": {"battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "defeated": [7], "expect": {"flags": ["den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
+      ]
+    }
+  ]
+}
