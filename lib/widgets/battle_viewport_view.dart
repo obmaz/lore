@@ -182,7 +182,11 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     setState(() => _isTurnProcessing = true);
     await Future.delayed(const Duration(milliseconds: 300));
 
-    for (final enemy in widget.enemies) {
+    // 원본의 `for person := 1 to enemynumber`는 턴 시작 시의 상한을 쓴다.
+    // 행동 중 소환된 적은 다음 턴부터 행동하며 리스트 변경도 안전하게 처리한다.
+    final enemyTurnCount = widget.enemies.length;
+    for (var index = 0; index < enemyTurnCount; index++) {
+      final enemy = widget.enemies[index];
       if (enemy.isDead || enemy.isUnconscious) continue;
       if (widget.partyMembers.every((p) => !p.canAct)) break;
 

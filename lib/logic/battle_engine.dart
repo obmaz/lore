@@ -17,6 +17,7 @@ enum AttackOutcome {
   cured,
   debuffed,
   joined,
+  summoned,
   failed,
 }
 
@@ -903,7 +904,28 @@ class BattleEngine {
         .toList();
     if (activeParty.isEmpty) return results;
 
-    // 2. 특수 소환/세뇌 공격 (SpecialCastAttack - LOREBATT.PAS:896)
+    // 2. SpecialCastAttack: 소환은 일반 공격보다 먼저 일어나며 턴을 끝내지 않는다.
+    if (monster.specialCastLevel > 0 && monster.eNumber != 1) {
+      final presentEnemies = allEnemies.where((enemy) => !enemy.isDead).length;
+      if (presentEnemies < _rand(3) + 2 && _rand(3) == 0) {
+        final summoned = Monster.create(monster.eNumber + _rand(4) - 20);
+        if (allEnemies.length < 7) {
+          allEnemies.add(summoned);
+        } else {
+          // 원본의 7칸 상한: 사망 슬롯을 뒤에서 훑어 가장 앞의 슬롯을 교체.
+          final deadSlot = allEnemies.indexWhere((enemy) => enemy.isDead);
+          if (deadSlot >= 0) allEnemies[deadSlot] = summoned;
+        }
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.summoned,
+            message: '${monster.name}은(는) ${summoned.name}을(를) 소환했다!',
+          ),
+        );
+      }
+    }
+
+    // 특수 즉사 공격 (SpecialCastAttack - LOREBATT.PAS:896)
     if (monster.specialCastLevel > 2 && _rand(5) == 0 && monster.special > 0) {
       // 전체 즉사 공격 시도
       for (final p in livingParty) {
@@ -918,7 +940,9 @@ class BattleEngine {
           );
         }
       }
-      if (results.isNotEmpty) return results;
+      if (results.any((result) => result.outcome == AttackOutcome.killed)) {
+        return results;
+      }
     }
 
     // 3. 특수 공격 (SpecialAttack - LOREBATT.PAS:814)

@@ -656,6 +656,60 @@ void main() {
       expect(party.map((member) => member.hp), [0, 1, 50]);
     });
 
+    test('특수 시전 적은 원본 번호에서 소환수를 만들고 같은 턴에 공격한다', () {
+      final caster = Monster.create(62).withOverrides(special: 0, castLevel: 0);
+      final enemies = [caster];
+      final party = [PartyMember.createPreset(1)..hp = 1000];
+
+      final results = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, enemies);
+
+      expect(results.first.outcome, AttackOutcome.summoned);
+      expect(enemies, hasLength(2));
+      expect(enemies.last.eNumber, 42); // 62 + random(4) - 20
+      expect(enemies.last.hp, enemies.last.endurance * enemies.last.level);
+      expect(results.length, greaterThan(1)); // 소환 뒤에도 기본 공격을 수행한다.
+    });
+
+    test('소환 시 7칸이 가득 차면 가장 앞의 사망 슬롯을 다시 사용한다', () {
+      final caster = Monster.create(62).withOverrides(special: 0, castLevel: 0);
+      final dead = Monster.create(1)..isDead = true;
+      final enemies = [
+        caster,
+        Monster.create(1),
+        dead,
+        Monster.create(1),
+        Monster.create(1)..isDead = true,
+        Monster.create(1)..isDead = true,
+        Monster.create(1)..isDead = true,
+      ];
+
+      BattleEngine(random: DeterministicRandom([2, 0, 0])).executeMonsterTurn(
+        caster,
+        [PartyMember.createPreset(1)..hp = 1000],
+        enemies,
+      );
+
+      expect(enemies, hasLength(7));
+      expect(enemies[2].eNumber, 42);
+      expect(enemies[2].isDead, isFalse);
+      expect(enemies[4].isDead, isTrue);
+    });
+
+    test('원본 1번 적은 특수 시전 단계가 있어도 소환하지 않는다', () {
+      final caster = Monster.create(1)..specialCastLevel = 1;
+      final enemies = [caster];
+
+      final results = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, [PartyMember.createPreset(1)], enemies);
+
+      expect(enemies, hasLength(1));
+      expect(
+        results.any((result) => result.outcome == AttackOutcome.summoned),
+        isFalse,
+      );
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
       final caster = PartyMember.createPreset(3)
         ..espLevel = 13
