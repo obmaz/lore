@@ -220,6 +220,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       },
       canWalkOnWater: () => _waterWalkSteps > 0,
       onHazardTile: (cat) => _handleHazardTile(cat),
+      onPoisonTick: _advancePoison,
+      onMindReadTick: () {
+        if (_mindReadCount > 0) setState(() => _mindReadCount--);
+      },
       onStepTaken: () => _handleStepTaken(),
       partyProvider: () => _party,
       mindReadCountProvider: () => _mindReadCount,
@@ -1032,33 +1036,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         )) {
       _torchSteps--;
     }
-    // 원작 LOREMAIN.PAS:31 `Move_Mode` - 독은 걸을 때마다 진행되고 10 을 넘으면
-    // 발병하여 상태(dead/unconscious/hp)에 따라 피해를 준다.
-    var poisonProgressed = false;
-    for (final p in _party) {
-      if (p.name.isEmpty || p.poison <= 0) continue;
-      poisonProgressed = true;
-      setState(() {
-        p.poison++;
-        if (p.poison > 10) {
-          p.poison = 1;
-          if (p.dead > 0 && p.dead < 100) {
-            p.dead++;
-          } else if (p.unconscious > 0) {
-            p.unconscious++;
-            if (p.unconscious > p.endurance * p.battleLevel) p.dead = 1;
-          } else {
-            p.hp--;
-            if (p.hp <= 0) p.unconscious = 1;
-          }
-        }
-      });
-    }
-    if (poisonProgressed) _addLog('☠ 독이 온몸에 퍼져나갑니다.');
-
-    // LOREMAIN.PAS는 0(마을/필드) 또는 0·52(동굴/성채)에서만
-    // specialevent를 호출한다. 일반 바닥과 늪에서는 같은 좌표라도
-    // 이미 해제한 상자·레버·수문장 이벤트를 다시 실행하지 않는다.
+    // 원본의 특수 타일 사건은 일반 이동 상태 효과와 별도로 실행한다.
     final map = _game.currentMap;
     if (map == null ||
         map.getCategory(map.getTile(_game.playerX, _game.playerY)) !=
@@ -1096,6 +1074,32 @@ class _MainGameScreenState extends State<MainGameScreen> {
       return true;
     }
     return false;
+  }
+
+  void _advancePoison() {
+    // 원작 LOREMAIN.PAS:31 `Move_Mode` - 독은 걸을 때마다 진행되고 10 을 넘으면
+    // 발병하여 상태(dead/unconscious/hp)에 따라 피해를 준다.
+    var poisonProgressed = false;
+    for (final p in _party) {
+      if (p.name.isEmpty || p.poison <= 0) continue;
+      poisonProgressed = true;
+      setState(() {
+        p.poison++;
+        if (p.poison > 10) {
+          p.poison = 1;
+          if (p.dead > 0 && p.dead < 100) {
+            p.dead++;
+          } else if (p.unconscious > 0) {
+            p.unconscious++;
+            if (p.unconscious > p.endurance * p.battleLevel) p.dead = 1;
+          } else {
+            p.hp--;
+            if (p.hp <= 0) p.unconscious = 1;
+          }
+        }
+      });
+    }
+    if (poisonProgressed) _addLog('☠ 독이 온몸에 퍼져나갑니다.');
   }
 
   void _openQuickViewDialog() {

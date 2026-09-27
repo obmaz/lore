@@ -11,6 +11,8 @@ enum LoreFieldEffectKind {
   portalRequest,
   sign,
   positionChanged,
+  poisonTick,
+  mindReadTick,
   hazard,
   step,
   encounterCheck,
@@ -94,14 +96,19 @@ class LoreFieldSession {
         final category = decision.category!;
         effects = [
           const LoreFieldEffect(LoreFieldEffectKind.positionChanged),
+          if (decision.sourceAction == LoreTileAction.walk ||
+              decision.sourceAction == LoreTileAction.swamp)
+            const LoreFieldEffect(LoreFieldEffectKind.poisonTick),
+          if (decision.sourceAction == LoreTileAction.walk)
+            const LoreFieldEffect(LoreFieldEffectKind.mindReadTick),
           if (category == TileCategory.swamp ||
               category == TileCategory.lava ||
               category == TileCategory.water)
             LoreFieldEffect(LoreFieldEffectKind.hazard, category),
           const LoreFieldEffect(LoreFieldEffectKind.step),
-          // LOREMAIN dispatches specialevent directly on tile 0/52.
-          // A random encounter belongs to move_mode or terrain handlers.
-          if (decision.sourceAction != LoreTileAction.special)
+          // LOREMAIN rolls encounters in Move_Mode and enter_water only.
+          if (decision.sourceAction == LoreTileAction.walk ||
+              decision.sourceAction == LoreTileAction.water)
             LoreFieldEffect(LoreFieldEffectKind.encounterCheck, category),
         ];
     }

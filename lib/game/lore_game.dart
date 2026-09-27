@@ -76,6 +76,8 @@ class LoreGame extends FlameGame {
   final void Function(int facilityType)? onFacilityEntered;
   final void Function(int x, int y)? onPositionChanged;
   final void Function(TileCategory category)? onHazardTile;
+  final void Function()? onPoisonTick;
+  final void Function()? onMindReadTick;
 
   /// true이면 좌표 이벤트가 걸음을 처리했으므로 일반 무작위 전투를 건너뛴다.
   final bool Function()? onStepTaken;
@@ -119,6 +121,8 @@ class LoreGame extends FlameGame {
     this.onFacilityEntered,
     this.onPositionChanged,
     this.onHazardTile,
+    this.onPoisonTick,
+    this.onMindReadTick,
     this.onStepTaken,
     this.onRecruitRequested,
     this.partyProvider,
@@ -243,6 +247,10 @@ class LoreGame extends FlameGame {
           playerX = transition.x;
           playerY = transition.y;
           onPositionChanged?.call(playerX, playerY);
+        case LoreFieldEffectKind.poisonTick:
+          onPoisonTick?.call();
+        case LoreFieldEffectKind.mindReadTick:
+          onMindReadTick?.call();
         case LoreFieldEffectKind.hazard:
           onHazardTile?.call(effect.category!);
         case LoreFieldEffectKind.step:

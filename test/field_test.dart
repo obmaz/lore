@@ -123,6 +123,7 @@ void main() {
 
     test('좌표 이벤트가 처리한 걸음에는 일반 무작위 전투가 겹치지 않는다', () {
       final grid = List.generate(20, (_) => List.filled(20, 42));
+      grid[5][6] = 0;
       final mapData = LoreMapData(name: 'TEST', xmax: 20, ymax: 20, grid: grid);
       var encounters = 0;
       final eventGame = LoreGame(
@@ -136,6 +137,7 @@ void main() {
       expect(eventGame.tryMove(1, 0), isTrue);
       expect(encounters, 0);
 
+      grid[5][6] = 42;
       final ordinaryGame = LoreGame(
         initialMapId: 1,
         initialPlayerX: 6,
@@ -146,6 +148,40 @@ void main() {
       )..currentMap = mapData;
       expect(ordinaryGame.tryMove(1, 0), isTrue);
       expect(encounters, 1);
+    });
+
+    test('원본 이동 핸들러 순서로 독·독심술·늪 효과를 호출한다', () {
+      final grid = List.generate(20, (_) => List.filled(20, 42));
+      final mapData = LoreMapData(
+        name: 'TEST',
+        xmax: 20,
+        ymax: 20,
+        grid: grid,
+        category: 'town',
+      );
+      final effects = <String>[];
+      final game = LoreGame(
+        initialMapId: 6,
+        initialPlayerX: 6,
+        initialPlayerY: 6,
+        onPoisonTick: () => effects.add('poison'),
+        onMindReadTick: () => effects.add('mind-read'),
+        onHazardTile: (_) => effects.add('hazard'),
+        onStepTaken: () {
+          effects.add('step');
+          return false;
+        },
+      )..currentMap = mapData;
+      expect(game.tryMove(1, 0), isTrue);
+      expect(effects, ['poison', 'mind-read', 'step']);
+      effects.clear();
+      mapData.grid[5][7] = 25;
+      expect(game.tryMove(1, 0), isTrue);
+      expect(effects, ['poison', 'hazard', 'step']);
+      effects.clear();
+      mapData.grid[5][8] = 0;
+      expect(game.tryMove(1, 0), isTrue);
+      expect(effects, ['step']);
     });
 
     test('1. LoreMapData 타일 카테고리 판정 검증', () {
