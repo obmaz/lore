@@ -970,18 +970,13 @@ class BattleEngine {
             _rand(monster.accMagic * 1000 + 1));
 
     if (useMagic) {
-      // 아군 회복 마법 (castlevel 4..5 & 체력 저하 시)
+      // LOREBATT.PAS:724-748,769-773 — 레벨 4는 1/2, 5·6은 1/3.
       if (monster.castLevel >= 4 &&
+          monster.castLevel <= 6 &&
           (monster.hp < monster.maxHp ~/ 3) &&
-          _rand(2) == 0) {
-        final heal = monster.level * monster.mentality ~/ 6 + 5;
-        monster.hp = min(monster.maxHp, monster.hp + heal);
-        results.add(
-          AttackResult(
-            outcome: AttackOutcome.cured,
-            message: '${monster.name}은(는) 치유 마법으로 자신의 체력을 $heal 회복했다!',
-          ),
-        );
+          _rand(monster.castLevel == 4 ? 2 : 3) == 0) {
+        final heal = monster.level * monster.mentality ~/ 4;
+        results.add(executeEnemyCure(monster, monster, heal));
         return results;
       }
 
@@ -1047,6 +1042,22 @@ class BattleEngine {
     if (mentality <= 16) return (name: '초음파', multiplier: 3);
     if (mentality <= 20) return (name: '혹한기', multiplier: 5);
     return (name: '화염폭풍', multiplier: 8);
+  }
+
+  /// LOREBATT.PAS:666-680 `enemycure`: 사망·기절·HP 회복의 순서와 효과.
+  AttackResult executeEnemyCure(Monster caster, Monster target, int amount) {
+    if (target.isDead) {
+      target.isDead = false;
+    } else if (target.isUnconscious) {
+      target.isUnconscious = false;
+      if (target.hp <= 0) target.hp = 1;
+    } else {
+      target.hp = min(target.endurance * target.level, target.hp + amount);
+    }
+    return AttackResult(
+      outcome: AttackOutcome.cured,
+      message: '${caster.name}은(는) ${target.name}을(를) 치료했다.',
+    );
   }
 
   AttackResult _applyEnemyMagicDamage(

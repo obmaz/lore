@@ -440,6 +440,66 @@ void main() {
       // mentality 21: 8 * level 2, 대상마다 16
     });
 
+    test('적 치료는 사망·기절·일반 HP를 원본 순서대로 처리한다', () {
+      final engine = BattleEngine();
+      final healer = Monster.create(1);
+      final dead = Monster.create(2)
+        ..hp = 0
+        ..isDead = true
+        ..isUnconscious = true;
+      engine.executeEnemyCure(healer, dead, 50);
+      expect(dead.isDead, isFalse);
+      expect(dead.isUnconscious, isTrue); // 사망 해제만 수행한다.
+      expect(dead.hp, 0);
+
+      final unconscious = Monster.create(2)
+        ..hp = 0
+        ..isUnconscious = true;
+      engine.executeEnemyCure(healer, unconscious, 50);
+      expect(unconscious.isUnconscious, isFalse);
+      expect(unconscious.hp, 1);
+
+      final healthy = Monster.create(2)..hp = Monster.create(2).maxHp - 1;
+      engine.executeEnemyCure(healer, healthy, 50);
+      expect(healthy.hp, healthy.endurance * healthy.level);
+    });
+
+    test('적 자기 치료는 시전 등급별 확률과 level * mentality / 4 회복량을 따른다', () {
+      Monster healer(int castLevel) => Monster(
+        eNumber: 1,
+        name: '치료사',
+        strength: 0,
+        mentality: 20,
+        endurance: 20,
+        resistance: 0,
+        agility: 0,
+        accArms: 0,
+        accMagic: 20,
+        ac: 0,
+        special: 0,
+        castLevel: castLevel,
+        specialCastLevel: 0,
+        level: 5,
+        hp: 10,
+      );
+
+      final fourth = healer(4);
+      final target = PartyMember.createPreset(1);
+      final cured = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(fourth, [target], [fourth]);
+      expect(cured.single.outcome, AttackOutcome.cured);
+      expect(fourth.hp, 35);
+
+      final fifth = healer(5);
+      final uncured = BattleEngine(random: DeterministicRandom([0, 0, 2, 0]))
+          .executeMonsterTurn(fifth, [target], [fifth]);
+      expect(
+        uncured.any((result) => result.outcome == AttackOutcome.cured),
+        isFalse,
+      );
+      expect(fifth.hp, 10);
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
       final caster = PartyMember.createPreset(3)
         ..espLevel = 13

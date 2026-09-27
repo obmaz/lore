@@ -123,5 +123,9 @@
    단순 나눗셈과 달라 단일 1/2/4/6/7/10, 전체 1/2/3/5/8로 복원했다.
    정신력 20·21 적의 실제 전투 피해를 고정 난수로 검증했다.
    커밋: `Match enemy spell power to original mentality tiers`.
+   `enemycure`는 사망 플래그 해제, 의식불명 해제와 HP 1 복구,
+   일반 HP 상한 회복을 순서대로 처리한다. 적 자기 치료는 등급 4의 1/2,
+   등급 5~6의 1/3 확률과 `level * mentality div 4` 회복량을 따른다.
+   커밋: `Restore enemy cure states and self-heal formula`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
