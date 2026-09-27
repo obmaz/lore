@@ -897,6 +897,11 @@ class BattleEngine {
 
     final livingParty = party.where((p) => p.isAlive).toList();
     if (livingParty.isEmpty) return results;
+    // LORESUB.PAS `exist`: 이름·상태·HP가 모두 유효한 대원만 공격 대상 선택에 포함.
+    final activeParty = party
+        .where((p) => p.name.isNotEmpty && p.canAct && p.hp > 0)
+        .toList();
+    if (activeParty.isEmpty) return results;
 
     // 2. 특수 소환/세뇌 공격 (SpecialCastAttack - LOREBATT.PAS:896)
     if (monster.specialCastLevel > 2 && _rand(5) == 0 && monster.special > 0) {
@@ -980,8 +985,74 @@ class BattleEngine {
         return results;
       }
 
-      // 전체 마법 공격 (castlevel >= 3 이고 50% 확률)
-      if (monster.castLevel >= 3 && _rand(2) == 0) {
+      // 5단계는 대상 선택이 먼저다. 전체 공격을 고르면 전체 치료를 시도하지 않는다.
+      final castAllAtLevelFive = monster.castLevel == 5
+          ? _rand(activeParty.length) >= 2
+          : null;
+
+      // LOREBATT.PAS:774-791 — 6단계 시전자는 방어도 높은 파티를 먼저 약화.
+      if (monster.castLevel == 6) {
+        final namedParty = party
+            .where((member) => member.name.isNotEmpty)
+            .toList();
+        if (namedParty.isNotEmpty) {
+          final totalAc = namedParty.fold<int>(
+            0,
+            (sum, member) => sum + member.ac,
+          );
+          if (totalAc ~/ namedParty.length > 4 && _rand(5) == 0) {
+            for (final member in namedParty) {
+              if (member.luck > _rand(21)) {
+                results.add(
+                  AttackResult(
+                    outcome: AttackOutcome.resisted,
+                    message:
+                        '${member.name}은(는) ${monster.name}의 방어 약화 마법을 피했다.',
+                  ),
+                );
+              } else {
+                if (member.ac > 0) member.ac--;
+                results.add(
+                  AttackResult(
+                    outcome: AttackOutcome.debuffed,
+                    message: '${member.name}의 방어도가 낮아졌다.',
+                  ),
+                );
+              }
+            }
+            return results;
+          }
+        }
+      }
+
+      // LOREBATT.PAS:751-759,792-798 — 적이 셋 이상이고 합산 HP가 낮으면 전체 치료.
+      if ((monster.castLevel == 5 && !castAllAtLevelFive!) ||
+          monster.castLevel == 6) {
+        final totalHp = allEnemies.fold<int>(0, (sum, enemy) => sum + enemy.hp);
+        final maxHp = allEnemies.fold<int>(
+          0,
+          (sum, enemy) => sum + enemy.endurance * enemy.level,
+        );
+        if (allEnemies.length > 2 && totalHp < maxHp ~/ 3) {
+          final roll = _rand(monster.castLevel == 5 ? 2 : 3);
+          if ((monster.castLevel == 5 && roll == 0) ||
+              (monster.castLevel == 6 && roll != 0)) {
+            final heal = monster.level * monster.mentality ~/ 6;
+            for (final enemy in allEnemies) {
+              results.add(executeEnemyCure(monster, enemy, heal));
+            }
+            return results;
+          }
+        }
+      }
+
+      // 5·6단계는 행동 가능한 파티원 수를 기준으로 공격 범위를 정한다.
+      final castAll = switch (monster.castLevel) {
+        5 => castAllAtLevelFive!,
+        6 => _rand(activeParty.length) >= 2,
+        _ => monster.castLevel >= 3 && _rand(2) == 0,
+      };
+      if (castAll) {
         final spell = _enemyAllMagic(monster.mentality);
         final spellName = spell.name;
         final pwr = spell.multiplier * monster.level;
@@ -1004,7 +1075,11 @@ class BattleEngine {
       final spell = _enemySingleMagic(monster.mentality);
       final spellName = spell.name;
       final pwr = spell.multiplier * monster.level;
-      final target = livingParty[_rand(livingParty.length)];
+      final target = monster.castLevel >= 5
+          ? activeParty.reduce(
+              (lowest, member) => member.hp < lowest.hp ? member : lowest,
+            )
+          : livingParty[_rand(livingParty.length)];
 
       results.add(
         AttackResult(

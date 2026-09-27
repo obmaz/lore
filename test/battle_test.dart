@@ -29,6 +29,24 @@ class DeterministicRandom implements Random {
   double nextDouble() => nextInt(100) / 100.0;
 }
 
+Monster _supportCaster(int castLevel) => Monster(
+  eNumber: 1,
+  name: '지원 마법사',
+  strength: 0,
+  mentality: 20,
+  endurance: 20,
+  resistance: 0,
+  agility: 0,
+  accArms: 0,
+  accMagic: 20,
+  ac: 0,
+  special: 0,
+  castLevel: castLevel,
+  specialCastLevel: 0,
+  level: 5,
+  hp: 50,
+);
+
 void main() {
   group('LORE 1993 전투 공식 및 엔진 검증 (BattleEngine Tests)', () {
     test('1. 경험치 및 골드 보상 공식 검증', () {
@@ -498,6 +516,144 @@ void main() {
         isFalse,
       );
       expect(fifth.hp, 10);
+    });
+
+    test('5단계 적은 단일 공격을 고른 뒤 빈사 적 무리를 전체 치료한다', () {
+      final caster = _supportCaster(5);
+      final fallen = _supportCaster(0)
+        ..hp = 0
+        ..isUnconscious = true;
+      final wounded = _supportCaster(0)..hp = 1;
+      final enemies = [caster, fallen, wounded];
+      final party = [PartyMember.createPreset(1)];
+
+      final results = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, enemies);
+
+      expect(
+        results.map((result) => result.outcome),
+        everyElement(AttackOutcome.cured),
+      );
+      expect(results.length, 3);
+      expect(caster.hp, 66); // level 5 * mentality 20 div 6
+      expect(fallen.isUnconscious, isFalse);
+      expect(fallen.hp, 1);
+      expect(wounded.hp, 17);
+    });
+
+    test('5단계 적이 전체 공격을 고르면 빈사 무리를 치료하지 않는다', () {
+      final caster = _supportCaster(5);
+      final enemies = [
+        caster,
+        _supportCaster(0)..hp = 1,
+        _supportCaster(0)..hp = 1,
+      ];
+      final party = [
+        PartyMember.createPreset(1)..hp = 100,
+        PartyMember.createPreset(3)..hp = 100,
+        PartyMember.createPreset(4)..hp = 100,
+      ];
+
+      final results = BattleEngine(random: DeterministicRandom([0, 0, 2]))
+          .executeMonsterTurn(caster, party, enemies);
+
+      expect(
+        results.any((result) => result.outcome == AttackOutcome.cured),
+        isFalse,
+      );
+      expect(enemies.map((enemy) => enemy.hp), [50, 1, 1]);
+      expect(results.first.message, contains('일행 모두'));
+    });
+
+    test('6단계 적은 방어도 약화를 빈사 무리 치료보다 먼저 시도한다', () {
+      final caster = _supportCaster(6);
+      final enemies = [
+        caster,
+        _supportCaster(0)..hp = 1,
+        _supportCaster(0)..hp = 1,
+      ];
+      final party = [
+        PartyMember.createPreset(1)
+          ..ac = 6
+          ..luck = 0,
+        PartyMember.createPreset(3)
+          ..ac = 6
+          ..luck = 0,
+      ];
+
+      final results = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, enemies);
+
+      expect(
+        results.map((result) => result.outcome),
+        everyElement(AttackOutcome.debuffed),
+      );
+      expect(party.map((member) => member.ac), [5, 5]);
+      expect(enemies.map((enemy) => enemy.hp), [50, 1, 1]);
+    });
+
+    test('6단계 적은 방어 약화 조건이 없으면 빈사 적 무리를 치료한다', () {
+      final caster = _supportCaster(6);
+      final fallen = _supportCaster(0)
+        ..hp = 0
+        ..isUnconscious = true;
+      final enemies = [caster, fallen, _supportCaster(0)..hp = 1];
+      final party = [PartyMember.createPreset(1)..ac = 0];
+
+      final results = BattleEngine(random: DeterministicRandom([0, 0, 1]))
+          .executeMonsterTurn(caster, party, enemies);
+
+      expect(results.length, 3);
+      expect(
+        results.map((result) => result.outcome),
+        everyElement(AttackOutcome.cured),
+      );
+      expect(caster.hp, 66);
+      expect(fallen.hp, 1);
+    });
+
+    test('5단계 적의 단일 마법은 HP가 가장 낮은 행동 가능 대상을 고른다', () {
+      final caster = _supportCaster(5);
+      final party = [
+        PartyMember.createPreset(1)
+          ..hp = 100
+          ..resistance = 0
+          ..ac = 0,
+        PartyMember.createPreset(3)
+          ..hp = 60
+          ..resistance = 0
+          ..ac = 0,
+        PartyMember.createPreset(4)
+          ..hp = 80
+          ..resistance = 0
+          ..ac = 0,
+      ];
+
+      BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, [caster]);
+
+      expect(party.map((member) => member.hp), [100, 10, 80]);
+    });
+
+    test('5단계 마법의 대상 수와 최저 HP 판정에서 빈자리·기절 대원을 제외한다', () {
+      final caster = _supportCaster(5);
+      final party = [
+        PartyMember.createPreset(1)
+          ..hp = 0
+          ..unconscious = 1,
+        PartyMember.createPreset(3)
+          ..name = ''
+          ..hp = 1,
+        PartyMember.createPreset(4)
+          ..hp = 100
+          ..resistance = 0
+          ..ac = 0,
+      ];
+
+      BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, [caster]);
+
+      expect(party.map((member) => member.hp), [0, 1, 50]);
     });
 
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
