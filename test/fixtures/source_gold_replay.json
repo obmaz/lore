@@ -1,0 +1,28 @@
+{
+  "source": "LORESPEC.PAS",
+  "caches": 11,
+  "cases": [
+    {"line": 356, "map": 9, "x": 10, "y": 24, "flag": "etc35_bit1", "collected": false, "gold": 5000},
+    {"line": 356, "map": 9, "x": 10, "y": 24, "flag": "etc35_bit1", "collected": true, "gold": 0},
+    {"line": 360, "map": 9, "x": 12, "y": 26, "flag": "etc35_bit2", "collected": false, "gold": 5000},
+    {"line": 360, "map": 9, "x": 12, "y": 26, "flag": "etc35_bit2", "collected": true, "gold": 0},
+    {"line": 364, "map": 9, "x": 15, "y": 25, "flag": "etc35_bit3", "collected": false, "gold": 5000},
+    {"line": 364, "map": 9, "x": 15, "y": 25, "flag": "etc35_bit3", "collected": true, "gold": 0},
+    {"line": 368, "map": 9, "x": 16, "y": 23, "flag": "etc35_bit4", "collected": false, "gold": 5000},
+    {"line": 368, "map": 9, "x": 16, "y": 23, "flag": "etc35_bit4", "collected": true, "gold": 0},
+    {"line": 372, "map": 9, "x": 18, "y": 27, "flag": "etc35_bit5", "collected": false, "gold": 5000},
+    {"line": 372, "map": 9, "x": 18, "y": 27, "flag": "etc35_bit5", "collected": true, "gold": 0},
+    {"line": 834, "map": 14, "x": 6, "y": 6, "flag": "etc32_bit1", "collected": false, "gold": 1000},
+    {"line": 834, "map": 14, "x": 6, "y": 6, "flag": "etc32_bit1", "collected": true, "gold": 0},
+    {"line": 838, "map": 14, "x": 18, "y": 10, "flag": "etc32_bit2", "collected": false, "gold": 2500},
+    {"line": 838, "map": 14, "x": 18, "y": 10, "flag": "etc32_bit2", "collected": true, "gold": 0},
+    {"line": 842, "map": 14, "x": 6, "y": 44, "flag": "etc32_bit3", "collected": false, "gold": 400},
+    {"line": 842, "map": 14, "x": 6, "y": 44, "flag": "etc32_bit3", "collected": true, "gold": 0},
+    {"line": 846, "map": 14, "x": 31, "y": 30, "flag": "etc32_bit4", "collected": false, "gold": 600},
+    {"line": 846, "map": 14, "x": 31, "y": 30, "flag": "etc32_bit4", "collected": true, "gold": 0},
+    {"line": 850, "map": 14, "x": 31, "y": 8, "flag": "etc32_bit5", "collected": false, "gold": 1500},
+    {"line": 850, "map": 14, "x": 31, "y": 8, "flag": "etc32_bit5", "collected": true, "gold": 0},
+    {"line": 854, "map": 14, "x": 14, "y": 28, "flag": "etc32_bit6", "collected": false, "gold": 1000},
+    {"line": 854, "map": 14, "x": 14, "y": 28, "flag": "etc32_bit6", "collected": true, "gold": 0}
+  ]
+}

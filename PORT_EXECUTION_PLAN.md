@@ -63,6 +63,11 @@
 거절, 출구 직전 상태 변경은 아직 이 명세의 검증 범위 밖이다.
 커밋: `Replay original map exits through portal runtime`.
 
+맵 9와 14에서 원본 `findgold` 분기 11개를 추출했다. 미획득·획득 상태를
+각각 재생해 22건의 지급액과 획득 플래그를 실제 스크립트 엔진에서 비교한다.
+맵별 자동 상태 재생 건수를 전체 현황표에 추가했다.
+커밋: `Replay one-time gold caches in maps nine and fourteen`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로
