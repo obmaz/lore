@@ -26,8 +26,7 @@ import '../logic/script_equip_reducer.dart';
 import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
-import '../logic/lore_lava_logic.dart';
-import '../logic/lore_swamp_logic.dart';
+import '../logic/lore_main_procedures.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
 import '../data/lore_data.dart';
@@ -233,6 +232,27 @@ class _MainGameScreenState extends State<MainGameScreen> {
       },
       onHazardTile: (cat) => _handleHazardTile(cat),
       onPoisonTick: _advancePoison,
+      onMoveMode: () {
+        LoreMainProcedures.moveMode(
+          party: _party,
+          scrollToParty: _game.clearPeek,
+          displayHealthAndCondition: () {
+            setState(() {});
+            _addLog('☠ 독이 온몸에 퍼져나갑니다.');
+          },
+          gameOver: () =>
+              setState(() => _currentMode = GameScreenMode.gameOver),
+          mindReadSteps: () => _mindReadCount,
+          setMindReadSteps: (steps) => setState(() => _mindReadCount = steps),
+          encounterFrequency: _encounterFrequency,
+          random: _sessionRandom.nextInt,
+          encounterEnemy: () {
+            if (LoreEncounterLogic.pools.containsKey(_game.currentMapId)) {
+              _startBattle();
+            }
+          },
+        );
+      },
       onMindReadTick: () {
         if (_mindReadCount > 0) setState(() => _mindReadCount--);
       },
@@ -979,36 +999,37 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _handleHazardTile(TileCategory cat) {
     if (cat == TileCategory.swamp) {
-      if (_swampWalkSteps > 0) {
-        setState(() => _swampWalkSteps--);
-        _addLog('🌿 [늪위를 걸음] 독성 늪지를 안전하게 통과했습니다. (남은 걸음: $_swampWalkSteps)');
-      } else {
-        // 원작 LOREMAIN.PAS:60 `일행은 독이 있는 늪에 들어갔다 !!!`
-        _addLog('☣ 일행은 독이 있는 늪에 들어갔다 !!!');
-        for (final slot in LoreSwampLogic.rollPoisonedSlots(
-          _party,
-          _sessionRandom,
-        )) {
-          final member = _party[slot];
-          // 원작은 이미 중독된 대원에게도 메시지를 보여준다.
+      LoreMainProcedures.enterSwamp(
+        party: _party,
+        scrollToParty: _game.clearPeek,
+        swampWalkSteps: () => _swampWalkSteps,
+        setSwampWalkSteps: (steps) {
+          setState(() => _swampWalkSteps = steps);
+          _addLog('🌿 [늪위를 걸음] 독성 늪지를 안전하게 통과했습니다. (남은 걸음: $steps)');
+        },
+        random: _sessionRandom,
+        showSwampWarning: () => _addLog('☣ 일행은 독이 있는 늪에 들어갔다 !!!'),
+        showPoisonMessage: (member) {
           _addLog('☠ ${member.name}는 중독 되었다.');
-          setState(() => LoreSwampLogic.applyPoison(member));
-        }
-      }
+        },
+        displayCondition: () => setState(() {}),
+        displayHealthAndCondition: () {
+          setState(() {});
+          _addLog('☠ 독이 온몸에 퍼져나갑니다.');
+        },
+        gameOver: () => setState(() => _currentMode = GameScreenMode.gameOver),
+      );
     } else if (cat == TileCategory.lava) {
-      // LOREMAIN.enter_lava는 etc[4](공중 부상)을 검사하지 않는다.
-      _addLog('🔥 일행은 용암지대로 들어섰다 !!!');
-      // 원작은 피해량을 한 번 굴려 `{name}는 {n}의 피해를 입었다 !` 로 출력하고
-      // 같은 값으로 HP/상태를 갱신한다.
-      final damages = LoreLavaLogic.rollDamages(_party, _sessionRandom);
-      for (var i = 0; i < _party.length; i++) {
-        if (_party[i].name.isNotEmpty) {
-          _addLog('💥 ${_party[i].name}는 ${damages[i]}의 피해를 입었다 !');
-        }
-      }
-      for (var i = 0; i < _party.length; i++) {
-        setState(() => LoreLavaLogic.applyDamage(_party[i], damages[i]));
-      }
+      LoreMainProcedures.enterLava(
+        party: _party,
+        random: _sessionRandom,
+        scrollToParty: _game.clearPeek,
+        showLavaWarning: () => _addLog('🔥 일행은 용암지대로 들어섰다 !!!'),
+        showDamage: (member, damage) =>
+            _addLog('💥 ${member.name}는 $damage의 피해를 입었다 !'),
+        displayCondition: () => setState(() {}),
+        gameOver: () => setState(() => _currentMode = GameScreenMode.gameOver),
+      );
     }
   }
 

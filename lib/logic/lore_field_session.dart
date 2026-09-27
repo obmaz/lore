@@ -13,6 +13,7 @@ enum LoreFieldEffectKind {
   positionChanged,
   poisonTick,
   mindReadTick,
+  moveMode,
   hazard,
   step,
   encounterCheck,
@@ -94,23 +95,23 @@ class LoreFieldSession {
       case LoreMoveKind.walk:
         moved = true;
         final category = decision.category!;
+        if (decision.sourceAction == LoreTileAction.walk) {
+          effects = const [
+            LoreFieldEffect(LoreFieldEffectKind.positionChanged),
+            LoreFieldEffect(LoreFieldEffectKind.moveMode),
+          ];
+          break;
+        }
         effects = [
           const LoreFieldEffect(LoreFieldEffectKind.positionChanged),
-          if (decision.sourceAction == LoreTileAction.walk ||
-              decision.sourceAction == LoreTileAction.swamp)
-            const LoreFieldEffect(LoreFieldEffectKind.poisonTick),
-          if (decision.sourceAction == LoreTileAction.walk)
-            const LoreFieldEffect(LoreFieldEffectKind.mindReadTick),
           if (category == TileCategory.swamp ||
               category == TileCategory.lava ||
               category == TileCategory.water)
             LoreFieldEffect(LoreFieldEffectKind.hazard, category),
-          if (decision.sourceAction != LoreTileAction.water)
+          if (decision.sourceAction == LoreTileAction.special)
             const LoreFieldEffect(LoreFieldEffectKind.step),
           // Water's roll belongs to LOREMAIN.enter_water and runs in its
           // source order, immediately after the water-walk decrement.
-          if (decision.sourceAction == LoreTileAction.walk)
-            LoreFieldEffect(LoreFieldEffectKind.encounterCheck, category),
         ];
     }
     return LoreFieldTransition(

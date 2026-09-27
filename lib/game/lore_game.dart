@@ -79,6 +79,7 @@ class LoreGame extends FlameGame {
   final void Function(TileCategory category)? onHazardTile;
   final void Function()? onPoisonTick;
   final void Function()? onMindReadTick;
+  final void Function()? onMoveMode;
 
   /// true이면 좌표 이벤트가 걸음을 처리했으므로 일반 무작위 전투를 건너뛴다.
   final bool Function()? onStepTaken;
@@ -127,6 +128,7 @@ class LoreGame extends FlameGame {
     this.onHazardTile,
     this.onPoisonTick,
     this.onMindReadTick,
+    this.onMoveMode,
     this.onStepTaken,
     this.onRecruitRequested,
     this.partyProvider,
@@ -261,6 +263,24 @@ class LoreGame extends FlameGame {
           onPoisonTick?.call();
         case LoreFieldEffectKind.mindReadTick:
           onMindReadTick?.call();
+        case LoreFieldEffectKind.moveMode:
+          if (onMoveMode != null) {
+            onMoveMode!();
+          } else {
+            // Compatibility adapter for callers not yet using the procedure.
+            onPoisonTick?.call();
+            onMindReadTick?.call();
+            specialEventHandled = onStepTaken?.call() ?? false;
+            if (!specialEventHandled &&
+                LoreEncounterLogic.shouldEncounter(
+                  currentMapId,
+                  TileCategory.walkable,
+                  _random,
+                  frequency: encounterFrequencyProvider?.call() ?? 2,
+                )) {
+              onEncounter?.call();
+            }
+          }
         case LoreFieldEffectKind.hazard:
           if (effect.category == TileCategory.water) {
             _enterWater();
@@ -270,7 +290,7 @@ class LoreGame extends FlameGame {
         case LoreFieldEffectKind.step:
           specialEventHandled = onStepTaken?.call() ?? false;
         case LoreFieldEffectKind.encounterCheck:
-          // Move_Mode rolls here; enter_water rolls inside its procedure.
+          // Transitional path for field effects not yet moved into a procedure.
           if (!specialEventHandled &&
               LoreEncounterLogic.shouldEncounter(
                 currentMapId,

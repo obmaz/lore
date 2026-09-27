@@ -187,7 +187,7 @@ void main() {
       expect(encounters, 1);
     });
 
-    test('원본 이동 핸들러 순서로 독·독심술·늪 효과를 호출한다', () {
+    test('일반 이동과 늪 프로시저의 호출 경계를 분리한다', () {
       final grid = List.generate(20, (_) => List.filled(20, 42));
       final mapData = LoreMapData(
         name: 'TEST',
@@ -214,7 +214,7 @@ void main() {
       effects.clear();
       mapData.grid[5][7] = 25;
       expect(game.tryMove(1, 0), isTrue);
-      expect(effects, ['poison', 'hazard', 'step']);
+      expect(effects, ['hazard']);
       effects.clear();
       mapData.grid[5][8] = 0;
       expect(game.tryMove(1, 0), isTrue);

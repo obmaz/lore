@@ -34,17 +34,15 @@ void main() {
   List<LoreFieldEffectKind> kinds(LoreFieldTransition result) =>
       result.effects.map((effect) => effect.kind).toList();
 
-  test('늪은 기존 독을 진행한 뒤 늪 피해를 판정한다', () {
+  test('늪 프로시저는 목표 좌표에 들어간 뒤 한 번 실행된다', () {
     final result = move(map('town', 25));
     expect((result.x, result.y, result.direction), (11, 10, 2));
     expect(result.moved, isTrue);
     expect(kinds(result), [
       LoreFieldEffectKind.positionChanged,
-      LoreFieldEffectKind.poisonTick,
       LoreFieldEffectKind.hazard,
-      LoreFieldEffectKind.step,
     ]);
-    expect(result.effects[2].category, TileCategory.swamp);
+    expect(result.effects[1].category, TileCategory.swamp);
   });
 
   test('진입 타일은 목적지가 있을 때만 확인을 요청하고 제자리에 남는다', () {
@@ -94,10 +92,7 @@ void main() {
     }
     expect(kinds(move(map('den', 41))), [
       LoreFieldEffectKind.positionChanged,
-      LoreFieldEffectKind.poisonTick,
-      LoreFieldEffectKind.mindReadTick,
-      LoreFieldEffectKind.step,
-      LoreFieldEffectKind.encounterCheck,
+      LoreFieldEffectKind.moveMode,
     ]);
     expect(kinds(move(map('ground', 48), canWalkOnWater: true)), [
       LoreFieldEffectKind.positionChanged,
@@ -106,7 +101,6 @@ void main() {
     expect(kinds(move(map('town', 26))), [
       LoreFieldEffectKind.positionChanged,
       LoreFieldEffectKind.hazard,
-      LoreFieldEffectKind.step,
     ]);
   });
 
