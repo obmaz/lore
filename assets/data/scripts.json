@@ -25283,6 +25283,7 @@
       "id": "spec-27-L2202-seq",
       "trigger": "step",
       "map": 27,
+      "disabled": true,
       "once": false,
       "require": {
         "tileAtPlayerZero": true
@@ -25297,6 +25298,24 @@
         }
       ],
       "note": "조건 미지원: wantexit; 조건 미지원: y < 25; 미지원: inc(y) else dec(y);"
+    },
+    {
+      "id": "map27-special-upper",
+      "trigger": "step",
+      "map": 27,
+      "yMax": 24,
+      "once": false,
+      "require": {"tileAtPlayerZero": true},
+      "steps": [{"nudge": {"dy": 1}}]
+    },
+    {
+      "id": "map27-special-lower",
+      "trigger": "step",
+      "map": 27,
+      "yMin": 25,
+      "once": false,
+      "require": {"tileAtPlayerZero": true},
+      "steps": [{"nudge": {"dy": -1}}]
     },
     {
       "id": "keep1-special-ambush",

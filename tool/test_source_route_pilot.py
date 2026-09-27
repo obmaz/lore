@@ -55,6 +55,28 @@ class SourceRoutePilotTest(unittest.TestCase):
         self.assertEqual(blocked['writes'], [])
         self.assertEqual(blocked_completed['writes'], [])
 
+    def test_map27_special_tiles_bounce_and_exit_stays_at_border(self):
+        path = pilot.ROOT / 'test/fixtures/map27_route_parity.json'
+        recorded = json.loads(path.read_text(encoding='utf-8'))
+        self.assertEqual(recorded, pilot.fixture(27))
+        self.assertEqual(len(recorded['cases']), 8)
+        for case in recorded['cases']:
+            start_y = case['start'][1]
+            self.assertEqual(
+                case['sourceEnd'][1], start_y + (1 if start_y < 25 else -1),
+            )
+        exit_x, exit_y, exit_map = recorded['rules'][0]['args']
+        portals = json.loads(
+            (pilot.ROOT / 'assets/data/portals.json').read_text(encoding='utf-8'),
+        )['portals']
+        self.assertTrue(any(
+            portal['map'] == 27
+            and portal.get('yMin') == 50
+            and (portal['targetMap'], portal['targetX'], portal['targetY'])
+            == (exit_map, exit_x, exit_y)
+            for portal in portals
+        ))
+
 
 if __name__ == '__main__':
     unittest.main()

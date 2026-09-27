@@ -190,4 +190,39 @@ void main() {
     expect(afterSecond.grid[36][26], 44);
     expect(second.outcome.setFlags, contains('evilSealLeverB'));
   });
+
+  test('맵 27 특수 칸은 출구 이동 대신 중앙 쪽으로 한 칸 이동한다', () async {
+    final fixture = jsonDecode(
+      File('test/fixtures/map27_route_parity.json').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    final map = await LoreMapData.loadFromAsset('PYRAMID1', category: 'town');
+    final engine = LoreScriptEngine();
+    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    for (final raw in fixture['cases'] as List<dynamic>) {
+      final item = raw as Map<String, dynamic>;
+      final start = (item['start'] as List<dynamic>).cast<int>();
+      final expected = (item['sourceEnd'] as List<dynamic>).cast<int>();
+      final run = engine.startStep(
+        27,
+        start[0],
+        start[1],
+        const ScriptContext(tileAtPlayer: 0),
+      )!;
+      final actual = ScriptWorldReducer.applyMap(
+        ScriptMapState(
+          mapId: 27,
+          x: start[0],
+          y: start[1],
+          direction: 0,
+          grid: map.grid,
+        ),
+        run.outcome,
+      );
+      expect(
+        [actual.mapId, actual.x, actual.y],
+        [27, ...expected],
+        reason: '특수 칸 ${item['start']}',
+      );
+    }
+  });
 }

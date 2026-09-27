@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'repo_source/LORE_1993_src/LORESPEC.PAS'
-MAP_FILES = {17: 'DEN4', 19: 'DEN6', 20: 'DEN7'}
+MAP_FILES = {17: 'DEN4', 19: 'DEN6', 20: 'DEN7', 27: 'PYRAMID1'}
 
 PATTERNS_17 = {
     'set_y': r'if y = (\d+) then y := (\d+);',
@@ -42,10 +42,16 @@ PATTERNS_20 = {
 
 def extract_rules(source: str, map_id: int = 17):
     start = source.index('Procedure specialevent_part2;')
-    map_start = source.index(f'{map_id} : begin', start)
-    map_end = source.index(f'{map_id + 1} : begin', map_start)
+    map_start = source.index(
+        '27 : if wantexit' if map_id == 27 else f'{map_id} : begin', start,
+    )
+    map_end = (source.index('Procedure specialevent;', map_start)
+               if map_id == 27 else
+               source.index(f'{map_id + 1} : begin', map_start))
     scope = source[map_start:map_end]
     rules = []
+    if map_id == 27:
+        return extract_pyramid_exit(scope, source, map_start)
     if map_id == 19:
         return [extract_lever_a(scope, source, map_start),
                 *extract_lever_b(scope, source, map_start)]
@@ -63,6 +69,26 @@ def extract_rules(source: str, map_id: int = 17):
                 '_offset': match.start(),
             })
     rules.sort(key=lambda rule: rule.pop('_offset'))
+    return rules
+
+
+def extract_pyramid_exit(scope: str, source: str, map_start: int):
+    exit_pattern = (
+        r'27 : if wantexit then begin\s+with party do begin\s+'
+        r'xaxis := (\d+); yaxis := (\d+); map := (\d+);'
+    )
+    bounce_pattern = r'if y < (\d+) then inc\(y\) else dec\(y\);'
+    rules = []
+    for kind, pattern in [('exit', exit_pattern), ('bounce', bounce_pattern)]:
+        matches = list(re.finditer(pattern, scope))
+        if len(matches) != 1:
+            raise ValueError(f'map 27 {kind}: expected one Pascal form, found {len(matches)}')
+        match = matches[0]
+        rules.append({
+            'kind': kind,
+            'line': source.count('\n', 0, map_start + match.start()) + 1,
+            'args': [int(value) for value in match.groups()],
+        })
     return rules
 
 
@@ -185,6 +211,21 @@ def fixture(map_id=17):
         cases += [
             execute_lever_b(rules[1], swamp_walk=walk, puzzle_cleared=cleared)
             for walk in (False, True) for cleared in (False, True)]
+        return {'map': map_id, 'source': 'LORESPEC.PAS',
+                'rules': rules, 'cases': cases}
+    if map_id == 27:
+        raw_map = (ROOT / f'assets/maps/{MAP_FILES[map_id]}.MAP').read_bytes()
+        width, height = raw_map[:2]
+        threshold = rules[1]['args'][0]
+        cases = []
+        for y in range(1, height + 1):
+            for x in range(1, width + 1):
+                if raw_map[2 + (y - 1) * width + x - 1] != 0:
+                    continue
+                next_y = y + 1 if y < threshold else y - 1
+                cases.append({'start': [x, y], 'sourceMap': map_id,
+                              'sourceEnd': [x, next_y], 'safeEnd': [x, next_y],
+                              'writes': []})
         return {'map': map_id, 'source': 'LORESPEC.PAS',
                 'rules': rules, 'cases': cases}
     raw_map = (ROOT / f'assets/maps/{MAP_FILES[map_id]}.MAP').read_bytes()

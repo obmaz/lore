@@ -38,6 +38,12 @@
 레버까지 실제 지도 상태를 이어서 검증한다.
 커밋: `Replay both EVIL SEAL levers from Pascal state changes`.
 
+맵 27의 출구·특수 칸 이동을 원본에서 추출해 PYRAMID1의 특수 타일 8곳을
+재생했다. 자동 변환본은 모든 특수 칸을 출구로 보내고 있었으므로 비활성화하고,
+원본 `y < 25` 조건에 따라 중앙 쪽으로 한 칸 밀어내는 두 활성 규칙으로
+교체했다. 실제 출구는 기존 y=50 포털 목적지를 별도 대조한다.
+커밋: `Keep pyramid special tiles inside map twenty seven`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로

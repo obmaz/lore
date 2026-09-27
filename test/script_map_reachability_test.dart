@@ -147,7 +147,8 @@ void main() {
             script.yMax == null)
           script.map,
     };
-    expect(unboundedMaps, {1, 26, 27});
+    // 맵 27의 전체 맵 자동 변환본은 출구 판정을 잘못 일반화해 비활성화했다.
+    expect(unboundedMaps, {1, 26});
     engine.resetForTest();
   });
 

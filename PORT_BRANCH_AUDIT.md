@@ -5,7 +5,7 @@
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.
 
-전체 596개 / 활성 302개 / 비활성 294개 / 원본 추출 좌표 46개.
+전체 598개 / 활성 303개 / 비활성 295개 / 원본 추출 좌표 46개.
 
 ## 맵별 현황
 
@@ -37,7 +37,7 @@
 | 24 | 50×50 | 7 | 2 | 0 | 6 | 0 | 1 |
 | 25 | 50×50 | 8 | 14 | 7 | 0 | 1 | 0 |
 | 26 | 50×50 | 2 | 0 | 1 | 0 | 0 | 1 |
-| 27 | 30×50 | 9 | 0 | 1 | 8 | 0 | 0 |
+| 27 | 30×50 | 10 | 1 | 2 | 8 | 0 | 0 |
 
 ## 검토 필요 항목
 
@@ -465,6 +465,7 @@
 - 맵 25 `spec-25-L1995-4` LORESPEC.PAS:1995 — 미지원: if (i = 0) and (j > 1) then; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;
 - 맵 25 `spec-25-L1995-5` LORESPEC.PAS:1995 — 미지원: if (i = 0) and (j > 1) then; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;
 - 맵 25 `spec-25-L1995-6` LORESPEC.PAS:1995 — 미지원: if (i = 0) and (j > 1) then; 미지원: for i := 1 to 6 do; 조건 미지원: player[i].name <> ''; 미지원: player[i].class := 10;
+- 맵 27 `spec-27-L2202-seq` LORESPEC.PAS:2202 — 조건 미지원: wantexit; 조건 미지원: y < 25; 미지원: inc(y) else dec(y);
 
 ## 활성 분기 시나리오 목록
 
@@ -891,4 +892,5 @@
 | `talk-27-21-22`<br>LORETALK.PAS (파일 추정) | talk (21, 22) | 조건 없음 | 조건 없음 | 대사/연출 |
 | `talk-27-21-12`<br>LORETALK.PAS (파일 추정) | talk (21, 12) | 조건 없음 | 조건 없음 | setTileAtTarget |
 | `talk-27-any`<br>LORETALK.PAS (파일 추정) | talk (*, *) | 조건 없음 | 조건 없음 | setTileAtTarget |
-| `spec-27-L2202-seq`<br>LORESPEC.PAS:2202 | step (*, *) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | teleport |
+| `map27-special-upper`<br>LORESPEC.PAS (파일 추정) | step (*, 1..24) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | nudge |
+| `map27-special-lower`<br>LORESPEC.PAS (파일 추정) | step (*, 25..1000000000) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | nudge |
