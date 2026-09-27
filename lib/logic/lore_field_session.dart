@@ -105,10 +105,11 @@ class LoreFieldSession {
               category == TileCategory.lava ||
               category == TileCategory.water)
             LoreFieldEffect(LoreFieldEffectKind.hazard, category),
-          const LoreFieldEffect(LoreFieldEffectKind.step),
-          // LOREMAIN rolls encounters in Move_Mode and enter_water only.
-          if (decision.sourceAction == LoreTileAction.walk ||
-              decision.sourceAction == LoreTileAction.water)
+          if (decision.sourceAction != LoreTileAction.water)
+            const LoreFieldEffect(LoreFieldEffectKind.step),
+          // Water's roll belongs to LOREMAIN.enter_water and runs in its
+          // source order, immediately after the water-walk decrement.
+          if (decision.sourceAction == LoreTileAction.walk)
             LoreFieldEffect(LoreFieldEffectKind.encounterCheck, category),
         ];
     }

@@ -102,8 +102,6 @@ void main() {
     expect(kinds(move(map('ground', 48), canWalkOnWater: true)), [
       LoreFieldEffectKind.positionChanged,
       LoreFieldEffectKind.hazard,
-      LoreFieldEffectKind.step,
-      LoreFieldEffectKind.encounterCheck,
     ]);
     expect(kinds(move(map('town', 26))), [
       LoreFieldEffectKind.positionChanged,

@@ -20,6 +20,43 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('바이너리 타일맵 및 이동 충돌 테스트 (Map & Field Tests)', () {
+    test('enter_water를 실제 이동 경로에서 한 번 실행하고 주문 횟수 뒤 조우한다', () {
+      final grid = List.generate(20, (_) => List.filled(20, 24));
+      grid[9][10] = 48;
+      final map = LoreMapData(
+        name: 'WATER_TEST',
+        xmax: 20,
+        ymax: 20,
+        grid: grid,
+        category: 'ground',
+      );
+      var steps = 2;
+      final trace = <String>[];
+      final game = LoreGame(
+        initialMapId: 1,
+        initialPlayerX: 10,
+        initialPlayerY: 10,
+        waterWalkStepsProvider: () => steps,
+        onWaterWalkStepsChanged: (value) {
+          steps = value;
+          trace.add('steps:$value');
+        },
+        onEncounter: () => trace.add('encounter'),
+        random: _AlwaysEncounterRandom(),
+      )..currentMap = map;
+
+      expect(game.tryMove(1, 0), isTrue);
+      expect((game.playerX, game.playerY), (11, 10));
+      expect(trace, ['steps:1', 'encounter']);
+
+      game.playerX = 10;
+      steps = 0;
+      trace.clear();
+      expect(game.tryMove(1, 0), isFalse);
+      expect((game.playerX, game.playerY), (10, 10));
+      expect(trace, isEmpty);
+    });
+
     test('원본 특수 타일에 진입하면 좌표 스크립트 콜백이 실행된다', () async {
       for (final (mapId, file, category, x, y) in [
         (4, 'SWAMP', 'ground', 20, 39),

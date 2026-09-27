@@ -226,6 +226,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
       },
       canWalkOnWater: () => _waterWalkSteps > 0,
+      waterWalkStepsProvider: () => _waterWalkSteps,
+      onWaterWalkStepsChanged: (steps) {
+        setState(() => _waterWalkSteps = steps);
+        _addLog('🌊 [물위를 걸음] 깊은 물 위를 걸어갑니다. (남은 걸음: $steps)');
+      },
       onHazardTile: (cat) => _handleHazardTile(cat),
       onPoisonTick: _advancePoison,
       onMindReadTick: () {
@@ -973,12 +978,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   void _handleHazardTile(TileCategory cat) {
-    if (cat == TileCategory.water) {
-      if (_waterWalkSteps > 0) {
-        setState(() => _waterWalkSteps--);
-        _addLog('🌊 [물위를 걸음] 깊은 물 위를 걸어갑니다. (남은 걸음: $_waterWalkSteps)');
-      }
-    } else if (cat == TileCategory.swamp) {
+    if (cat == TileCategory.swamp) {
       if (_swampWalkSteps > 0) {
         setState(() => _swampWalkSteps--);
         _addLog('🌿 [늪위를 걸음] 독성 늪지를 안전하게 통과했습니다. (남은 걸음: $_swampWalkSteps)');

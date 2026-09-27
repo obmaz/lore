@@ -3,6 +3,7 @@ import 'dart:math';
 
 import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_field_session.dart';
+import '../logic/lore_main_procedures.dart';
 import '../logic/lore_talk_dispatcher.dart';
 
 import 'package:flame/game.dart';
@@ -107,6 +108,8 @@ class LoreGame extends FlameGame {
   final void Function(PortalInfo portal, int tx, int ty)? onPortalRequested;
 
   final bool Function()? canWalkOnWater;
+  final int Function()? waterWalkStepsProvider;
+  final void Function(int steps)? onWaterWalkStepsChanged;
   final Random _random;
   final List<int>? initialMapTiles;
 
@@ -133,6 +136,8 @@ class LoreGame extends FlameGame {
     this.onScriptTalk,
     this.onPortalRequested,
     this.canWalkOnWater,
+    this.waterWalkStepsProvider,
+    this.onWaterWalkStepsChanged,
     this.initialMapTiles,
     Random? random,
   }) : currentMapId = initialMapId,
@@ -222,7 +227,9 @@ class LoreGame extends FlameGame {
       direction: playerDirection,
       dx: dx,
       dy: dy,
-      canWalkOnWater: canWalkOnWater?.call() == true,
+      canWalkOnWater: waterWalkStepsProvider != null
+          ? waterWalkStepsProvider!() > 0
+          : canWalkOnWater?.call() == true,
       portal: portal,
     );
     playerDirection = transition.direction;
@@ -234,6 +241,7 @@ class LoreGame extends FlameGame {
         case LoreFieldEffectKind.wall:
           onLog?.call('단단한 성벽과 바위가 가로막아 지나갈 수 없습니다.');
         case LoreFieldEffectKind.waterBlocked:
+          _enterWater();
           onLog?.call('깊은 물속은 배나 [물위를 걸음] 마법 없이는 건널 수 없습니다!');
         case LoreFieldEffectKind.talk:
           _handleNpcInteraction(targetX, targetY);
@@ -254,11 +262,15 @@ class LoreGame extends FlameGame {
         case LoreFieldEffectKind.mindReadTick:
           onMindReadTick?.call();
         case LoreFieldEffectKind.hazard:
-          onHazardTile?.call(effect.category!);
+          if (effect.category == TileCategory.water) {
+            _enterWater();
+          } else {
+            onHazardTile?.call(effect.category!);
+          }
         case LoreFieldEffectKind.step:
           specialEventHandled = onStepTaken?.call() ?? false;
         case LoreFieldEffectKind.encounterCheck:
-          // 원작 Move_Mode(1/(encounter*20)) / enter_water(1/(encounter*30)).
+          // Move_Mode rolls here; enter_water rolls inside its procedure.
           if (!specialEventHandled &&
               LoreEncounterLogic.shouldEncounter(
                 currentMapId,
@@ -276,6 +288,31 @@ class LoreGame extends FlameGame {
             transition.effects.any(
               (e) => e.kind == LoreFieldEffectKind.portalRequest,
             ));
+  }
+
+  void _enterWater() {
+    LoreMainProcedures.enterWater(
+      waterWalkSteps: () =>
+          waterWalkStepsProvider?.call() ??
+          (canWalkOnWater?.call() == true ? 1 : 0),
+      setWaterWalkSteps: (steps) {
+        if (onWaterWalkStepsChanged != null) {
+          onWaterWalkStepsChanged!(steps);
+        } else {
+          onHazardTile?.call(TileCategory.water);
+        }
+      },
+      scrollToParty: clearPeek,
+      encounterFrequency: encounterFrequencyProvider?.call() ?? 2,
+      random: _random.nextInt,
+      encounterEnemy: () {
+        if (LoreEncounterLogic.pools.containsKey(currentMapId)) {
+          onEncounter?.call();
+        }
+      },
+      // LoreFieldSession has not committed movement on a blocked water tile.
+      restorePosition: () {},
+    );
   }
 
   void _handleSign(int tx, int ty) {
