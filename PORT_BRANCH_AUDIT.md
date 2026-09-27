@@ -864,10 +864,10 @@
 
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
-| `keep3-key-a-second`<br>LORESPEC.PAS (파일 추정) | step (5, 34) | {"flag":"keep3KeyB","flagNot":"keep3KeyA"} | flag keep3KeyB → 제거; flagNot keep3KeyA → 추가 | setTile, flag:keep3KeyA, flag:sealPuzzleB |
-| `keep3-key-a-first`<br>LORESPEC.PAS (파일 추정) | step (5, 34) | {"flagNot":"keep3KeyA"} | flagNot keep3KeyA → 추가 | flag:keep3KeyA |
-| `keep3-key-b-second`<br>LORESPEC.PAS (파일 추정) | step (46, 34) | {"flag":"keep3KeyA","flagNot":"keep3KeyB"} | flag keep3KeyA → 제거; flagNot keep3KeyB → 추가 | setTile, flag:keep3KeyB, flag:sealPuzzleB |
-| `keep3-key-b-first`<br>LORESPEC.PAS (파일 추정) | step (46, 34) | {"flagNot":"keep3KeyB"} | flagNot keep3KeyB → 추가 | flag:keep3KeyB |
+| `keep3-key-a-second`<br>LORESPEC.PAS (파일 추정) | step (5, 34) | {"flag":"keep3KeyB"} | flag keep3KeyB → 제거 | setTile, flag:keep3KeyA, flag:sealPuzzleB |
+| `keep3-key-a-first`<br>LORESPEC.PAS (파일 추정) | step (5, 34) | 조건 없음 | 조건 없음 | flag:keep3KeyA |
+| `keep3-key-b-second`<br>LORESPEC.PAS (파일 추정) | step (46, 34) | {"flag":"keep3KeyA"} | flag keep3KeyA → 제거 | setTile, flag:keep3KeyB, flag:sealPuzzleB |
+| `keep3-key-b-first`<br>LORESPEC.PAS (파일 추정) | step (46, 34) | 조건 없음 | 조건 없음 | flag:keep3KeyB |
 | `spec-25-L1995`<br>LORESPEC.PAS:1995 | step (15, 34) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | setTile, setTileArea |
 | `spec-25-L1995x`<br>LORESPEC.PAS:1995 | step (36, 34) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | setTile, setTileArea |
 | `keep3-metal-guardian-y43`<br>LORESPEC.PAS (파일 추정) | step (*, 43) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | torch, battle(적 5, 적 선공, 도주 분기), nudge, setTileArea, partyClass |
