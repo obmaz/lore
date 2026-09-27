@@ -15,6 +15,7 @@ import '../logic/field_hotkeys.dart';
 import '../logic/lore_sub_text.dart';
 import '../logic/lore_field_logic.dart';
 import '../logic/lore_encounter_logic.dart';
+import '../logic/lore_special_event_dispatcher.dart';
 import '../logic/lore_battle_progress.dart';
 import '../logic/lore_mirror_enemy.dart';
 import '../logic/lore_rigel_blessing.dart';
@@ -1042,26 +1043,22 @@ class _MainGameScreenState extends State<MainGameScreen> {
       return false;
     }
 
-    // JSON 스크립트(step 트리거)를 우선 실행하고, 없으면 기존 이벤트 로직을 쓴다.
-    final scriptRun = LoreScriptEngine.instance.startStep(
-      _game.currentMapId,
-      _game.playerX,
-      _game.playerY,
-      _scriptContext(),
+    final selected = LoreSpecialEventDispatcher.resolve(
+      action: map.actionForTile(map.getTile(_game.playerX, _game.playerY)),
+      mapId: _game.currentMapId,
+      x: _game.playerX,
+      y: _game.playerY,
+      context: _scriptContext(),
+      party: _party,
+      scripts: LoreScriptEngine.instance,
+      legacy: LoreDungeonEventManager.instance,
     );
-    if (scriptRun != null) {
+    if (selected.script case final scriptRun?) {
       unawaited(_driveScript(scriptRun));
       return true;
     }
 
-    // 던전 및 필드 특수 이벤트 감지 (LORESPEC.PAS)
-    final dEvent = LoreDungeonEventManager.instance.checkEvent(
-      _game.currentMapId,
-      _game.playerX,
-      _game.playerY,
-      _party,
-    );
-    if (dEvent != null) {
+    if (selected.legacy case final dEvent?) {
       _addLog('★ [이벤트: ${dEvent.title}] ★');
       _addLog(dEvent.message);
       if (dEvent.foodGained > 0) {

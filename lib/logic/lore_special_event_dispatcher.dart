@@ -1,0 +1,43 @@
+import '../data/lore_script.dart';
+import '../game/lore_dungeon_event_manager.dart';
+import '../models/party_member.dart';
+import 'lore_tile_protocol.dart';
+
+class LoreSpecialEventDispatch {
+  final ScriptRun? script;
+  final DungeonEventResult? legacy;
+
+  const LoreSpecialEventDispatch({this.script, this.legacy});
+}
+
+/// 원본 `specialevent` 호출의 단일 진입점.
+///
+/// JSON이 정상 로드되면 JSON 규칙이 사건의 기준이다. 조건이 거짓이어서 규칙이
+/// 발동하지 않는 경우에도 옛 처리기로 재시도하지 않는다. JSON을 로드할 수 없을
+/// 때에만 기존 Dart 사건 처리기를 사용한다.
+class LoreSpecialEventDispatcher {
+  LoreSpecialEventDispatcher._();
+
+  static LoreSpecialEventDispatch resolve({
+    required LoreTileAction action,
+    required int mapId,
+    required int x,
+    required int y,
+    required ScriptContext context,
+    required List<PartyMember> party,
+    required LoreScriptEngine scripts,
+    required LoreDungeonEventManager legacy,
+  }) {
+    if (action != LoreTileAction.special) {
+      return const LoreSpecialEventDispatch();
+    }
+    if (scripts.usingJson) {
+      return LoreSpecialEventDispatch(
+        script: scripts.startStep(mapId, x, y, context),
+      );
+    }
+    return LoreSpecialEventDispatch(
+      legacy: legacy.checkEvent(mapId, x, y, party),
+    );
+  }
+}

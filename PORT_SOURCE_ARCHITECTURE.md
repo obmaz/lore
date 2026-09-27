@@ -63,7 +63,7 @@ den, 맵 26은 town으로 해석된다.
 | 원본 책임 | 이식본의 현재 위치 | 구조상 검토 지점 |
 | --- | --- | --- |
 | 타일 행동 분류·이동 | `LoreMapData.getCategory`, `LoreMovementLogic`, `LoreGame.tryMove` | 원본의 호출 순서와 타일별 우선순위를 한 계약으로 고정 |
-| 특수 사건 | `LoreScriptEngine`의 JSON 규칙과 `LoreDungeonEventManager`의 후속 처리 | 두 경로의 조건·효과·우선순위를 하나의 사건 경계에서 관리 |
+| 특수 사건 | `LoreSpecialEventDispatcher`가 JSON 규칙 또는 `LoreDungeonEventManager`를 선택 | JSON이 로드되면 단일 기준으로 실행하고, 로드 실패 때만 기존 처리기를 사용 |
 | 진입·표지판 | `LoreWorldManager`의 JSON/내장 규칙, `LoreGame`의 진입 처리 | 이동 요청·거절·진입 직전 효과·지도 로드 순서를 명시 |
 | 대화·시설 | `LoreScriptEngine`, `LoreDialogueManager`, 시설 규칙 | 같은 좌표의 우선순위와 상태 변경을 단일 대화 경계에서 관리 |
 | 전투·상태 | `BattleEngine`, `ScriptBattleSession`, 여러 reducer와 화면 상태 | 선택·난수·승리·도주·패배의 순서 있는 효과를 한 상태에 반영 |
@@ -82,7 +82,8 @@ den, 맵 26은 town으로 해석된다.
    특수 타일에 포털 규칙이 겹칠 때의 기존 처리 경로는 별도 표식으로 남긴다.
    다음에는 사건·전투까지의 호출 순서를 한 실행 경계에서 비교한다.
 2. 상태 변경을 단일 게임 상태와 효과 적용기에 모으고, 화면은 결과를 표시한다.
-   JSON 사건·포털·대화와 기존 fallback은 같은 사건 등록 경계를 거치게 한다.
+   특수 사건은 `LoreSpecialEventDispatcher`에서 JSON과 기존 처리기의 우선순위를
+   고정했다. 이어서 포털·대화와 상태 효과도 같은 원칙으로 정리한다.
 3. 원본의 반복 패턴은 공통 규칙으로, 지도별 값과 대사는 데이터로, 고유한
    사건만 별도 처리기로 옮긴다. 지도 하나씩 임시 분기를 늘리지 않는다.
 4. 분기 목록은 독립 구현 작업 목록이 아니라, 위 계약에 연결되지 않은 원본
