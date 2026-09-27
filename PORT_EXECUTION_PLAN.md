@@ -116,5 +116,8 @@
    전투 화면에서 스크립트 플래그를 엔진에 전달하고 거부 시 ESP가 소모되지
    않도록 했다. 기존 염력 테스트의 잘못된 기사 시전자를 마법사로 교체했다.
    커밋: `Gate battle ESP by class or granted access`.
+   실제 전투 화면에서 초능력 메뉴의 독심을 선택해 적이 6번 슬롯에 합류하고,
+   ESP 소모와 승리 콜백까지 이어지는 위젯 시나리오를 검증했다.
+   커밋: `Verify telepathy recruitment through battle viewport`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
