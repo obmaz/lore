@@ -68,6 +68,11 @@
 맵별 자동 상태 재생 건수를 전체 현황표에 추가했다.
 커밋: `Replay one-time gold caches in maps nine and fourteen`.
 
+맵 12의 `y1 <> 1` 문 판정과 GAIA 단계별 봉인·함정 분기를 원본에서 추출해
+8개 상태로 실행 비교했다. 정답 문은 지형을 열고, 오답 문은 (25,70)으로
+돌아가며, 봉인 칸은 GAIA 2단계와 지형 변경을 함께 적용한다.
+커밋: `Replay map twelve doors and seal branches from Pascal`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로

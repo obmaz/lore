@@ -35,6 +35,9 @@ def collect():
     gold_cases = json.loads(
         (ROOT / 'test/fixtures/source_gold_replay.json').read_text(),
     )['cases']
+    map12_cases = json.loads(
+        (ROOT / 'test/fixtures/map12_state_parity.json').read_text(),
+    )['cases']
     spec_count = Counter(entry[0] for entry in spec_events)
     talk_count = Counter(entry[0] for entry in talk_events)
     active_count = Counter(s['map'] for s in scripts if not s.get('disabled'))
@@ -42,7 +45,7 @@ def collect():
     scenario_count = Counter(s['input']['map'] for s in source_scenarios)
     entrance_count = Counter(case['map'] for case in entrances)
     exit_count = Counter(case['map'] for case in exits)
-    state_replay_count = Counter(case['map'] for case in gold_cases)
+    state_replay_count = Counter(case['map'] for case in [*gold_cases, *map12_cases])
     replay_count = {}
     for path in (ROOT / 'test/fixtures').glob('map*_route_parity.json'):
         data = json.loads(path.read_text())
