@@ -98,7 +98,37 @@ def declarations(filename):
                 "kind": match.group(1).lower(),
                 "line": line_number,
                 "external": "external" in line[match.end():].lower(),
+                "indent": len(line) - len(line.lstrip()),
             })
+    # A nested routine ends before its enclosing routine body resumes. In
+    # LORESPEC, `sgn` is nested inside `specialevent_part1`; otherwise every
+    # following map branch is incorrectly owned by `sgn`.
+    for index, routine in enumerate(result[1:], 1):
+        parent = result[index - 1]
+        parent_body_started = any(
+            re.search(r"\bbegin\b", lines[line_number - 1], re.I)
+            for line_number in range(parent["line"] + 1, routine["line"])
+        )
+        if routine["indent"] <= parent["indent"] or parent_body_started:
+            continue
+        depth = 0
+        entered = False
+        for line_number in range(routine["line"] + 1, len(lines) + 1):
+            for token in re.finditer(r"\b(begin|end)\b", lines[line_number - 1], re.I):
+                if token.group(1).lower() == "begin":
+                    depth += 1
+                    entered = True
+                elif entered:
+                    depth -= 1
+                    if depth == 0:
+                        routine["end_line"] = line_number
+                        break
+            if "end_line" in routine:
+                break
+        if "end_line" not in routine:
+            raise ValueError(f"Nested routine has no matching end: {routine['id']}")
+    for routine in result:
+        routine.pop("indent")
     if filename == "LORE.PAS":
         main_line = next(i for i, line in enumerate(lines, 1) if line.strip().lower() == "begin")
         result.append({
@@ -120,6 +150,8 @@ def owner(routines, line):
     for routine in routines:
         if routine["line"] > line:
             break
+        if routine.get("end_line", line) < line:
+            continue
         current = routine["id"]
     return current or "<program-or-unit-init>"
 
