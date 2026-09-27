@@ -10466,7 +10466,8 @@
           "battle": {
             "monsters": [
               53
-            ]
+            ],
+            "continueOnRunAway": true
           }
         },
         {
@@ -10496,7 +10497,8 @@
           "battle": {
             "monsters": [
               53
-            ]
+            ],
+            "continueOnRunAway": true
           }
         },
         {

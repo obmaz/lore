@@ -65,6 +65,10 @@ void main() {
     final dark = engine.startStep(20, 25, 48, const ScriptContext())!;
     expect(dark.outcome.torchLit, isTrue);
     expect(dark.outcome.battleMonsters, [53]);
+    expect(
+      dark.continueAfterRunAway().outcome.setFlags,
+      contains('den7MinotaurCleared'),
+    );
 
     final lit = engine.startStep(
       20,
@@ -74,5 +78,18 @@ void main() {
     )!;
     expect(lit.outcome.torchLit, isFalse);
     expect(lit.outcome.battleMonsters, [53]);
+    expect(
+      lit.continueAfterRunAway().outcome.setFlags,
+      contains('den7MinotaurCleared'),
+    );
+    expect(
+      engine.startStep(
+        20,
+        25,
+        48,
+        const ScriptContext(flags: {'den7MinotaurCleared'}),
+      ),
+      isNull,
+    );
   });
 }
