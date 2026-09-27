@@ -57,6 +57,12 @@
 표시한다. 이 비교는 진입 후 대사·전투·타일 효과를 검증하지 않는다.
 커밋: `Replay all original LOREENT map loads through portal runtime`.
 
+`LORESPEC.PAS`의 `wantexit` 분기 21곳에서도 원본 목적지 좌표를 추출했다.
+각 출구의 포털 좌표로 실제 `findPortal`을 실행해 목적지와 비교한다. 이로써
+맵 9·12·14·24에도 출구 목적지 실행 비교가 생겼다. 전투 수문장, 출구
+거절, 출구 직전 상태 변경은 아직 이 명세의 검증 범위 밖이다.
+커밋: `Replay original map exits through portal runtime`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로
