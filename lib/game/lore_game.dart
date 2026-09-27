@@ -93,6 +93,7 @@ class LoreGame extends FlameGame {
 
   /// JSON 스크립트 실행에 필요한 상황(파티/플래그/독심술) 제공자.
   final ScriptContext Function()? scriptContextProvider;
+  final LoreScriptEngine? scriptEngine;
 
   /// JSON 스크립트(talk 트리거)가 매칭되었을 때 호출된다.
   /// NPC 대화 스크립트 결과 + 대화 상대(앞 칸) 좌표.
@@ -128,6 +129,7 @@ class LoreGame extends FlameGame {
     this.partyProvider,
     this.mindReadCountProvider,
     this.scriptContextProvider,
+    this.scriptEngine,
     this.onScriptTalk,
     this.onPortalRequested,
     this.canWalkOnWater,
@@ -302,7 +304,7 @@ class LoreGame extends FlameGame {
       party: partyProvider?.call(),
       mindReadCount: mindReadCountProvider?.call() ?? 0,
       world: LoreWorldManager.instance,
-      scripts: LoreScriptEngine.instance,
+      scripts: scriptEngine ?? LoreScriptEngine.instance,
       dialogues: LoreDialogueManager.instance,
     );
     switch (selected.source) {

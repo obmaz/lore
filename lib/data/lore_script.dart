@@ -808,6 +808,16 @@ class LoreScriptEngine {
   /// 별도 실행 세션을 만들 수 있다. 같은 시드와 입력이면 난수 분기를 재현한다.
   LoreScriptEngine({Random? random}) : _random = random ?? Random();
 
+  /// Share parsed rules while keeping progress and randomness local to a game.
+  LoreScriptEngine fork({Random? random}) {
+    final session = LoreScriptEngine(random: random);
+    session._scripts = List<LoreScript>.unmodifiable(_scripts);
+    session._loaded = _loaded;
+    session.usingJson = usingJson;
+    session.loadError = loadError;
+    return session;
+  }
+
   List<LoreScript> _scripts = [];
   bool _loaded = false;
   bool usingJson = false;

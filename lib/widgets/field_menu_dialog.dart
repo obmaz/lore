@@ -38,6 +38,7 @@ class FieldMenuDialog extends StatefulWidget {
   final void Function(int frequency, int maxEnemies)?
   onEncounterSettingsChanged;
   final List<int> Function()? mapTilesProvider;
+  final List<String> Function()? consumedScriptsProvider;
   final Map<String, int>? etc;
   final void Function(String message) onLog;
 
@@ -62,6 +63,7 @@ class FieldMenuDialog extends StatefulWidget {
     this.onMindReadActivated,
     this.onEncounterSettingsChanged,
     this.mapTilesProvider,
+    this.consumedScriptsProvider,
     this.etc,
     this.initialTab = FieldMenuTab.main,
     required this.onLog,
@@ -1730,10 +1732,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                           flags: LoreDialogueManager.instance.getSaveFlags(),
                           etc: widget.etc ?? {},
                           mapTiles: widget.mapTilesProvider?.call() ?? const [],
-                          consumedScripts: LoreScriptEngine
-                              .instance
-                              .consumedScripts
-                              .toList(),
+                          consumedScripts:
+                              widget.consumedScriptsProvider?.call() ??
+                              LoreScriptEngine.instance.consumedScripts
+                                  .toList(),
                         );
                         await SaveManager.instance.saveGame(newSave);
                         widget.onLog(

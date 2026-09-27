@@ -3,6 +3,8 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
+import 'package:lore/game/lore_game.dart';
+import 'package:lore/game/lore_map_manager.dart';
 
 void main() {
   final rules = jsonEncode({
@@ -95,5 +97,61 @@ void main() {
       expect(a.setFlags, b.setFlags);
       expect(a.battleMonsters, b.battleMonsters);
     }
+  });
+
+  test('한 번 파싱한 규칙에서 만든 세션은 난수와 1회성 이력을 격리한다', () {
+    final catalog = LoreScriptEngine()..loadFromJson(rules);
+    final first = catalog.fork(random: Random(1993));
+    final second = catalog.fork(random: Random(1993));
+    first.startStep(1, 2, 3, const ScriptContext())!.choose(0);
+    expect(first.consumedScripts, contains('choice'));
+    expect(second.consumedScripts, isEmpty);
+    expect(catalog.consumedScripts, isEmpty);
+    for (var i = 0; i < 5; i++) {
+      final a = first.startStep(1, 6, 7, const ScriptContext())!.outcome;
+      final b = second.startStep(1, 6, 7, const ScriptContext())!.outcome;
+      expect(a.setFlags, b.setFlags);
+      expect(a.battleMonsters, b.battleMonsters);
+    }
+  });
+
+  test('지도 대화는 주입한 게임 세션의 스크립트 엔진에서 선택한다', () {
+    final scripts = LoreScriptEngine()
+      ..loadFromJson(
+        jsonEncode({
+          'scripts': [
+            {
+              'id': 'session-talk',
+              'trigger': 'talk',
+              'map': 6,
+              'x': 7,
+              'y': 6,
+              'steps': [
+                {'say': 'session'},
+              ],
+            },
+          ],
+        }),
+      );
+    final grid = List.generate(20, (_) => List.filled(20, 42));
+    grid[5][6] = 48;
+    final map = LoreMapData(
+      name: 'TEST',
+      category: 'town',
+      xmax: 20,
+      ymax: 20,
+      grid: grid,
+    );
+    String? selected;
+    final game = LoreGame(
+      initialMapId: 6,
+      initialPlayerX: 6,
+      initialPlayerY: 6,
+      scriptEngine: scripts,
+      scriptContextProvider: () => const ScriptContext(),
+      onScriptTalk: (run, _, _) => selected = run.script.id,
+    )..currentMap = map;
+    expect(game.tryMove(1, 0), isFalse);
+    expect(selected, 'session-talk');
   });
 }

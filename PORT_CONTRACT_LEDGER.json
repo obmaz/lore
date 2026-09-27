@@ -25727,6 +25727,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/field_menu_script_save_test.dart",
+      "kind": "test",
+      "sha256": "6d8f4206f43d73ad74112dbaa7ff827a4043e7ec3f2ca43eb5c0a472bc62148d",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/field_random_sequence_test.dart",
       "kind": "test",
       "sha256": "58e0a0fd93d24f025cd752417bf79d67a6b17b2120f822a3fe3fb4edd9721db2",
@@ -25897,7 +25904,7 @@
     {
       "path": "test/script_engine_isolation_test.dart",
       "kind": "test",
-      "sha256": "52cc368f152db7cbfa9d1fcc4107a97764357cc9339c0d31e53adbccbebd21e6",
+      "sha256": "90b73e701fde79a09d69e80ceb3bba159be4001625f2e8efb1cacab02cf43adc",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26368,11 +26375,11 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "eee9141c45cb15e578841536803d42955c9dde9de5338787ba8680c4484762b3"
+      "sha256": "4e83420d3185f336b1dc0b3c8987ef099a973ab3b1a74e1e993d76d0a1edab37"
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "c1e5e1591790f1f8dd1a40321f6581ca976761d44456da91e2be4433c1916672"
+      "sha256": "3c0201bda042e9804a516f55df07ffa87fd24282ebd4e5ccc3bcdddc246fc619"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -26412,7 +26419,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "bd36555c39d58d9c02e8015d50d1c845ac1208ec68d161c4ed8e04a990669923"
+      "sha256": "2e129ce9fef99dafd0cffba8a2e543baa04676c2ab8cf5163c039e1c67771301"
     }
   ],
   "baseline_gaps": {

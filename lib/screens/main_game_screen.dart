@@ -73,6 +73,7 @@ class MainGameScreen extends StatefulWidget {
 
 class _MainGameScreenState extends State<MainGameScreen> {
   late final Random _sessionRandom;
+  late final LoreScriptEngine _scripts;
   GameScreenMode _currentMode = GameScreenMode.field;
   late List<PartyMember> _party;
   late LoreGame _game;
@@ -113,6 +114,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   void initState() {
     super.initState();
     _sessionRandom = widget.encounterRandom ?? Random();
+    _scripts = LoreScriptEngine.instance.fork(random: _sessionRandom);
     _initParty();
     _initGame();
     // 화면 진입 직후 키보드 포커스를 게임으로 가져온다.
@@ -130,7 +132,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _partyGold = widget.initialSaveData!.gold;
       _partyFood = widget.initialSaveData!.food;
       LoreDialogueManager.instance.loadFlags(widget.initialSaveData!.flags);
-      LoreScriptEngine.instance.consumedScripts
+      _scripts.consumedScripts
         ..clear()
         ..addAll(widget.initialSaveData!.consumedScripts);
       final etc = widget.initialSaveData!.etc;
@@ -143,7 +145,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _maxEnemies = etc['maxEnemies'] ?? 5;
     } else {
       LoreDialogueManager.instance.loadFlags({});
-      LoreScriptEngine.instance.consumedScripts.clear();
+      _scripts.consumedScripts.clear();
       _party =
           widget.initialParty ??
           [
@@ -233,6 +235,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       partyProvider: () => _party,
       mindReadCountProvider: () => _mindReadCount,
       scriptContextProvider: _scriptContext,
+      scriptEngine: _scripts,
       onScriptTalk: (run, tx, ty) =>
           _driveScript(run, talkTargetX: tx, talkTargetY: ty),
       onPortalRequested: (portal, tx, ty) =>
@@ -292,7 +295,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       confirmed: confirmed == true,
       portal: portal,
       context: _scriptContext(),
-      scripts: LoreScriptEngine.instance,
+      scripts: _scripts,
     );
     if (plan.action == LorePortalAction.cancelled) {
       if (confirmed == false) _addLog(LoreFieldLogic.asYouWish);
@@ -360,7 +363,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     await _game.enterPortal(portal, tx, ty);
     if (!mounted) return;
     setState(() {});
-    final enter = LoreScriptEngine.instance.startEnter(
+    final enter = _scripts.startEnter(
       _game.currentMapId,
       _scriptContext(enteredFromMap: enteredFromMap),
     );
@@ -1033,7 +1036,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       y: _game.playerY,
       context: _scriptContext(),
       party: _party,
-      scripts: LoreScriptEngine.instance,
+      scripts: _scripts,
       legacy: LoreDungeonEventManager.instance,
     );
     if (selected.script case final scriptRun?) {
@@ -1181,9 +1184,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
         mapTilesProvider: () => [
           for (final row in _game.currentMap?.grid ?? <List<int>>[]) ...row,
         ],
+        consumedScriptsProvider: () => _scripts.consumedScripts.toList(),
         onSaveDataLoaded: (save) async {
           setState(() {
-            LoreScriptEngine.instance.consumedScripts
+            _scripts.consumedScripts
               ..clear()
               ..addAll(save.consumedScripts);
             _party = List.from(save.party);
