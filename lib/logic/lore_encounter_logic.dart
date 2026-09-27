@@ -4,8 +4,26 @@ import '../game/lore_map_manager.dart';
 import '../models/monster.dart';
 import '../models/party_member.dart';
 
+enum EncounterChoice { engage, flee }
+
+typedef EncounterDecision = ({bool escaped, bool enemyFirst});
+
 /// LOREBATT.PAS `randomenemy` / `EncounterEnemy`와 LOREMAIN.PAS의 이동 조우율.
 class LoreEncounterLogic {
+  /// 교전과 도주의 공통 결과. 도주 실패는 민첩성에 관계없이 적 선공이다.
+  static EncounterDecision decide(
+    EncounterChoice choice,
+    List<PartyMember> party,
+    List<Monster> enemies,
+  ) {
+    if (choice == EncounterChoice.flee) {
+      return canEvadeBeforeBattle(party, enemies)
+          ? (escaped: true, enemyFirst: false)
+          : (escaped: false, enemyFirst: true);
+    }
+    return (escaped: false, enemyFirst: enemyActsFirst(party, enemies));
+  }
+
   /// LOREBATT.PAS `EncounterEnemy`: 이름 있는 파티원과 모든 적의 민첩성
   /// 정수 평균을 비교한다. 동률이면 적이 먼저 행동한다.
   static bool enemyActsFirst(List<PartyMember> party, List<Monster> enemies) {

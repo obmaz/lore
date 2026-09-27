@@ -223,5 +223,9 @@
     실패하면 원본처럼 적 선공 전투가 시작된다. 키보드 1·2와 화면 버튼을
     같은 선택 함수에 연결하고 조우 중 필드 이동을 막는다.
     커밋: `Connect encounter choices to field and battle flow`.
+    교전·도주의 결과를 순수 `EncounterDecision`으로 묶었다. 빠른 파티가
+    교전하면 파티 선공, 행운 높은 파티가 도주하면 즉시 탈출, 도주 실패는
+    민첩성과 관계없이 적 선공이라는 세 경로를 독립 실행 검증한다.
+    커밋: `Resolve encounter choices as pure decisions`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

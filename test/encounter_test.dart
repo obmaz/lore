@@ -76,6 +76,28 @@ void main() {
     expect(LoreEncounterLogic.canEvadeBeforeBattle([], enemies), isFalse);
   });
 
+  test('조우 선택은 교전 선공, 도주 성공, 도주 실패 적 선공을 구분한다', () {
+    final party = [
+      PartyMember.createPreset(1)
+        ..agility = 20
+        ..luck = 20,
+    ];
+    final enemies = [Monster.create(1)..agility = 10];
+    expect(LoreEncounterLogic.decide(EncounterChoice.engage, party, enemies), (
+      escaped: false,
+      enemyFirst: false,
+    ));
+    expect(LoreEncounterLogic.decide(EncounterChoice.flee, party, enemies), (
+      escaped: true,
+      enemyFirst: false,
+    ));
+    party.first.luck = 10;
+    expect(LoreEncounterLogic.decide(EncounterChoice.flee, party, enemies), (
+      escaped: false,
+      enemyFirst: true,
+    ));
+  });
+
   test('일반 조우 몬스터 표가 LOREBATT.PAS와 일치한다', () {
     final source = File('repo_source/LORE_1993_src/LOREBATT.PAS')
         .readAsStringSync(encoding: latin1);

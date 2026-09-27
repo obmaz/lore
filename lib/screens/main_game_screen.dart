@@ -1246,15 +1246,23 @@ class _MainGameScreenState extends State<MainGameScreen> {
   void _engageEncounter() {
     if (_currentMode != GameScreenMode.encounter) return;
     _addLog(LoreBattText.engage);
-    _beginEncounterBattle(
-      enemyFirst: LoreEncounterLogic.enemyActsFirst(_party, _battleEnemies),
+    final decision = LoreEncounterLogic.decide(
+      EncounterChoice.engage,
+      _party,
+      _battleEnemies,
     );
+    _beginEncounterBattle(enemyFirst: decision.enemyFirst);
   }
 
   void _fleeEncounter() {
     if (_currentMode != GameScreenMode.encounter) return;
     _addLog(LoreBattText.flee);
-    if (LoreEncounterLogic.canEvadeBeforeBattle(_party, _battleEnemies)) {
+    final decision = LoreEncounterLogic.decide(
+      EncounterChoice.flee,
+      _party,
+      _battleEnemies,
+    );
+    if (decision.escaped) {
       setState(() {
         _battleEnemies = [];
         _currentMode = GameScreenMode.field;
@@ -1263,7 +1271,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       return;
     }
     _addLog(LoreBattText.runFailed);
-    _beginEncounterBattle(enemyFirst: true);
+    _beginEncounterBattle(enemyFirst: decision.enemyFirst);
   }
 
   void _beginEncounterBattle({required bool enemyFirst}) {
