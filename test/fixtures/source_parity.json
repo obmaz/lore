@@ -1,6 +1,41 @@
 {
   "version": 1,
   "sources": {
+    "frost-dragon-entrance": {
+      "file": "LOREENT.PAS",
+      "lines": [129, 153],
+      "evidence": ["joinenemy(random(5)+2,69);", "battlemode(FALSE);"]
+    },
+    "lava-gate-entrance": {
+      "file": "LOREENT.PAS",
+      "lines": [194, 229],
+      "evidence": ["joinenemy(j,64);", "BattleMode(FALSE);"]
+    },
+    "evil-dungeon-entrance": {
+      "file": "LOREENT.PAS",
+      "lines": [283, 317],
+      "evidence": ["battlemode(FALSE);", "if not enemy[3].dead then begin"]
+    },
+    "necromancer-castle-battles": {
+      "file": "LORESPEC.PAS",
+      "lines": [1880, 1951],
+      "evidence": ["battlemode(FALSE);", "joinenemy(1,70);"]
+    },
+    "metal-guardian-battle": {
+      "file": "LORESPEC.PAS",
+      "lines": [1995, 2044],
+      "evidence": ["joinenemy(5,71);", "battlemode(FALSE);"]
+    },
+    "necromancer-final-battle": {
+      "file": "LORESPEC.PAS",
+      "lines": [2165, 2173],
+      "evidence": ["for i := 1 to enemynumber do joinenemy(i,68+i);", "battlemode(FALSE);"]
+    },
+    "necromancer-chamber-entrance": {
+      "file": "LOREENT.PAS",
+      "lines": [323, 349],
+      "evidence": ["joinenemy(6,72);", "battlemode(TRUE);"]
+    },
     "wivern-battle-initiative": {
       "file": "LORESPEC.PAS",
       "lines": [980, 992],
@@ -113,6 +148,61 @@
     }
   },
   "scenarios": [
+    {
+      "id": "necromancer-chamber-entrance-party-first",
+      "source": "necromancer-chamber-entrance",
+      "input": {"trigger": "id", "script": "portal-25-26-chamber", "map": 25},
+      "selected": "portal-25-26-chamber",
+      "trace": [
+        {"action": "start", "expect": {"battle": [63, 63, 63, 63, 63, 72], "torch": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "lava-gate-guardians-enemy-first",
+      "source": "lava-gate-entrance",
+      "input": {"trigger": "id", "script": "portal-21-22-lavagate", "map": 21, "flags": ["lavaGateKeyLeft", "lavaGateKeyRight"]},
+      "selected": "portal-21-22-lavagate",
+      "trace": [
+        {"action": "start", "expect": {"battle": [65, 64], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "necromancer-castle-two-enemy-first-battles",
+      "source": "necromancer-castle-battles",
+      "input": {"map": 23, "x": 25, "y": 26, "tileAtPlayer": 52},
+      "selected": "keep3-necromancer-y26",
+      "trace": [
+        {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"battle": [70], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "dungeon-of-evil-entrance-enemy-first",
+      "source": "evil-dungeon-entrance",
+      "input": {"trigger": "id", "script": "portal-23-25-dungeon", "map": 23},
+      "selected": "portal-23-25-dungeon",
+      "trace": [
+        {"action": "start", "expect": {"battle": [62, 62, 70, 62, 62, 62, 62], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "metal-guardian-enemy-first",
+      "source": "metal-guardian-battle",
+      "input": {"map": 25, "x": 25, "y": 43, "tileAtPlayer": 0},
+      "selected": "keep3-metal-guardian-y43",
+      "trace": [
+        {"action": "start", "expect": {"battle": [66, 66, 66, 66, 71], "enemyFirst": true, "torch": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "necromancer-final-enemy-first",
+      "source": "necromancer-final-battle",
+      "input": {"map": 26, "x": 25, "y": 16, "tileAtPlayer": 0},
+      "selected": "spec-26-L2104-seq",
+      "trace": [
+        {"action": "start", "expect": {"battle": [69, 70, 71, 72, 73, 74, 75], "enemyFirst": true, "nudges": [[0, -1], [1, 0]], "awaitingBattle": true}}
+      ]
+    },
     {
       "id": "wivern-ambush-enemy-first",
       "source": "wivern-battle-initiative",

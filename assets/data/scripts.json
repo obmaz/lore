@@ -240,6 +240,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "ArchiDraconian",
             "monsters": [
               62,
@@ -564,6 +565,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -589,6 +591,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               70
             ],
@@ -7534,6 +7537,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -7574,6 +7578,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -7626,6 +7631,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "암흑의 성채",
             "monsters": [
               60,
@@ -16948,6 +16954,7 @@
             [
               {
                 "battle": {
+                  "enemyFirst": true,
                   "monsters": [
                     54,
                     69,
@@ -16970,6 +16977,7 @@
             [
               {
                 "battle": {
+                  "enemyFirst": true,
                   "monsters": [
                     54,
                     54,
@@ -16992,6 +17000,7 @@
             [
               {
                 "battle": {
+                  "enemyFirst": true,
                   "monsters": [
                     54,
                     54,
@@ -17014,6 +17023,7 @@
             [
               {
                 "battle": {
+                  "enemyFirst": true,
                   "monsters": [
                     54,
                     54,
@@ -17036,6 +17046,7 @@
             [
               {
                 "battle": {
+                  "enemyFirst": true,
                   "monsters": [
                     54,
                     54,
@@ -17095,6 +17106,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               65,
               64
@@ -17125,6 +17137,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               64
             ],
@@ -17153,6 +17166,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               65
             ],
@@ -17282,6 +17296,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66,
               66,
@@ -23721,6 +23736,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66
             ]
@@ -23758,6 +23774,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66
             ]
@@ -23927,6 +23944,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -24053,6 +24071,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -24183,6 +24202,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -24224,6 +24244,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               70
             ],
@@ -24336,6 +24357,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -24377,6 +24399,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               70
             ],
@@ -24464,6 +24487,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -24505,6 +24529,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               70
             ],
@@ -24640,6 +24665,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66,
               66,
@@ -24734,6 +24760,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66,
               66,
@@ -24836,6 +24863,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66,
               66,
@@ -24882,6 +24910,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66,
               66,
@@ -24932,6 +24961,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66,
               66,
@@ -24983,6 +25013,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               66,
               66,
@@ -25067,6 +25098,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Neo-Necromancer",
             "monsters": [
               69,

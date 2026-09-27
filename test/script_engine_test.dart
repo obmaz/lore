@@ -976,6 +976,7 @@ void main() {
         const ScriptContext(),
       )!;
       expect(dungeon.outcome.battleMonsters, [62, 62, 70, 62, 62, 62, 62]);
+      expect(dungeon.outcome.battleEnemyFirst, isTrue);
       expect(dungeon.continueAfterRunAway().outcome.blockMove, isTrue);
       expect(
         dungeon.continueAfterRunAway(defeatedEnemySlots: {3}).outcome.setFlags,
@@ -987,11 +988,26 @@ void main() {
         const ScriptContext(),
       )!;
       expect(chamber.outcome.battleMonsters, [63, 63, 63, 63, 63, 72]);
+      expect(chamber.outcome.battleEnemyFirst, isFalse);
       expect(chamber.outcome.torchLit, isTrue);
       final escaped = chamber.continueAfterRunAway();
       expect(escaped.outcome.blockMove, isTrue);
       expect((escaped.outcome.teleportX, escaped.outcome.teleportY), (25, 45));
       expect(chamber.outcome.battleVictoryFlags, isEmpty);
+    });
+
+    test('Frost Dragon 입구의 모든 난수 배치에서 적이 먼저 행동한다', () async {
+      await LoreScriptEngine.instance.load();
+      final engine = LoreScriptEngine.instance;
+      for (var i = 0; i < 20; i++) {
+        final run = engine.startById(
+          'portal-5-23-frostdragon',
+          const ScriptContext(),
+        )!;
+        expect(run.outcome.battleMonsters, hasLength(7));
+        expect(run.outcome.battleMonsters, contains(69));
+        expect(run.outcome.battleEnemyFirst, isTrue);
+      }
     });
 
     test('14. 영역 지형 변형(setTileArea)과 난수 소환/난수 플래그', () async {
