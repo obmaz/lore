@@ -333,7 +333,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
         if (action != LorePortalAction.loadMap) return;
       } else {
-        final completed = await _applyScriptOutcome(pre);
+        final completed = await _driveScript(pre);
         if (!mounted) return;
         final action = LorePortalSession.afterPreScript(
           completed: completed,
@@ -496,8 +496,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
           ],
         ),
       );
-      if (chosen == null || chosen < 0) return false;
-      current = current.choose(chosen);
+      final selected = chosen == null || chosen < 0
+          ? current.cancelOptionIndex
+          : chosen;
+      if (selected == null) return false;
+      current = current.choose(selected);
     }
   }
 

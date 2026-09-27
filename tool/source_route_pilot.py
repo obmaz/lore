@@ -338,23 +338,45 @@ def fixture(map_id=17):
     raw_map = (ROOT / f'assets/maps/{MAP_FILES[map_id]}.MAP').read_bytes()
     width, height = raw_map[:2]
     cases = []
+    # LOREMAIN calls specialevent only on tile 0 or 52. These extra cells
+    # become special after earlier events mutate the loaded map.
+    dynamic_tiles = {}
+    if map_id == 17:
+        row_rule = next(rule for rule in rules if rule['kind'] == 'row_tiles')
+        _, first_x, last_x, _, _, target_y, target_tile = row_rule['args']
+        for x in range(first_x, last_x + 1):
+            dynamic_tiles[(x, target_y)] = {target_tile}
+    if map_id == 20:
+        for x1, y1, tile1, x2, y2, tile2 in re.findall(
+            r'map\[(\d+),(88|71)\] := (0|52);\s*'
+            r'map\[(\d+),(88|71)\] := (0|52);', source,
+        ):
+            if y1 != y2:
+                raise ValueError('DEN7 quiz changes cells on different rows')
+            dynamic_tiles.setdefault((int(x1), int(y1)), set()).add(int(tile1))
+            dynamic_tiles.setdefault((int(x2), int(y2)), set()).add(int(tile2))
+        if dynamic_tiles != {
+            (x, y): {0, 52} for x in (8, 43) for y in (71, 88)
+        }:
+            raise ValueError('DEN7 quiz tile mutations changed')
     for y in range(1, height + 1):
         for x in range(1, width + 1):
             tile = raw_map[2 + (y - 1) * width + x - 1]
-            passable = tile in (0, 52, 53, 54) or 41 <= tile <= 50
             # Exit and boss branches are outside this route-only interpreter.
-            if not passable or y in (95, 96) or (map_id == 17 and x == 22):
+            if y in (95, 96) or (map_id == 17 and x == 22):
                 continue
             if map_id == 17 and not (x == 72 or y in (38, 44, 80)):
                 continue
             if map_id == 20 and y not in (88, 71):
                 continue
-            for tile_value in ((0, tile) if map_id == 20 else (tile,)):
+            tile_values = ({tile} if tile in (0, 52) else set())
+            tile_values.update(dynamic_tiles.get((x, y), set()))
+            for tile_value in sorted(tile_values):
                 result = execute(
                     rules, x, y, height, map_id=map_id, tile=tile_value,
                 )
                 case = {'start': [x, y], **result}
-                if map_id == 20:
+                if tile_value != tile or map_id == 20:
                     case['tileAtPlayer'] = tile_value
                 cases.append(case)
     return {'map': map_id, 'source': 'LORESPEC.PAS', 'rules': rules,

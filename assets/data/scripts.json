@@ -5051,13 +5051,11 @@
     },
     {
       "id": "castle-exit-skeleton",
-      "trigger": "step",
+      "trigger": "portal",
       "map": 6,
-      "yMin": 95,
-      "yMax": 95,
-      "once": true,
+      "once": false,
       "require": {
-        "flagNot": "skeletonJoined"
+        "flagNot": "etc31_bit1"
       },
       "title": "성문에서의 만남",
       "steps": [
@@ -5070,6 +5068,7 @@
         {
           "choice": {
             "prompt": "어떻게 하시겠소 ?",
+            "cancelOption": 1,
             "options": [
               {
                 "text": "당신을 환영하오.",
@@ -5093,6 +5092,9 @@
               }
             ]
           }
+        },
+        {
+          "flag": "etc31_bit1"
         }
       ]
     },
@@ -6127,6 +6129,7 @@
       "id": "map17-row80-shortcut-safe",
       "trigger": "step",
       "map": 17,
+      "disabled": true,
       "x": 72,
       "y": 80,
       "once": false,

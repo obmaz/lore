@@ -13,20 +13,22 @@ class SourceRoutePilotTest(unittest.TestCase):
             'set_y', 'row_tiles', 'column_and_nudge', 'row_and_teleport',
         ])
 
-    def test_source_out_of_bounds_is_reported_separately(self):
+    def test_map17_only_replays_specialevent_tiles(self):
         cases = pilot.fixture(17)['cases']
-        exceptions = [case for case in cases if 'safetyNote' in case]
-        self.assertEqual(len(exceptions), 1)
-        self.assertEqual(exceptions[0]['start'], [72, 80])
-        self.assertEqual(exceptions[0]['sourceEnd'], [72, -1])
-        self.assertEqual(exceptions[0]['safeEnd'], [72, 6])
+        self.assertEqual(len(cases), 16)
+        self.assertFalse(any('safetyNote' in case for case in cases))
+        self.assertFalse(any(case['start'] == [72, 80] for case in cases))
+        self.assertEqual(
+            {tuple(case['start']) for case in cases if case.get('tileAtPlayer') == 52},
+            {(67, 38), (68, 38), (69, 38)},
+        )
 
     def test_map20_extracts_both_tile_dependent_passages(self):
         path = pilot.ROOT / 'test/fixtures/map20_route_parity.json'
         recorded = json.loads(path.read_text(encoding='utf-8'))
         self.assertEqual(recorded, pilot.fixture(20))
         self.assertEqual(len(recorded['rules']), 2)
-        self.assertEqual(len(recorded['cases']), 160)
+        self.assertEqual(len(recorded['cases']), 8)
         for case in recorded['cases']:
             if case['tileAtPlayer'] == 0:
                 self.assertEqual(case['sourceMap'], 20)

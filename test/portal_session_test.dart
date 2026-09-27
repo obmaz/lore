@@ -6,6 +6,7 @@ import 'package:lore/game/lore_world_manager.dart';
 import 'package:lore/logic/lore_portal_session.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   final scripts = LoreScriptEngine()
     ..loadFromJson(File('assets/data/scripts.json').readAsStringSync());
 
@@ -88,5 +89,37 @@ void main() {
       ),
       LorePortalAction.blocked,
     );
+  });
+
+  test('성 출구 Skeleton 선택은 첫 출구에서만 실행하고 거절해도 방문을 기록한다', () async {
+    final world = LoreWorldManager.instance;
+    world.resetRulesForTest();
+    await world.loadData();
+    final exit = world.findPortal(6, 51, 96)!;
+    expect(exit.scriptId, 'castle-exit-skeleton');
+    final plan = LorePortalSession.begin(
+      confirmed: true,
+      portal: exit,
+      context: const ScriptContext(),
+      scripts: scripts,
+    );
+    final first = plan.preScript!;
+    expect(plan.action, LorePortalAction.runPreScript);
+    expect(first.hasPendingChoice, isTrue);
+    expect(first.cancelOptionIndex, 1);
+    final accepted = first.choose(0).outcome;
+    expect(accepted.recruits.single.key, 'skeleton');
+    expect(accepted.setFlags, containsAll(['skeletonJoined', 'etc31_bit1']));
+    final declined = first.choose(first.cancelOptionIndex!).outcome;
+    expect(declined.recruits, isEmpty);
+    expect(declined.setFlags, ['etc31_bit1']);
+    final revisit = LorePortalSession.begin(
+      confirmed: true,
+      portal: exit,
+      context: const ScriptContext(flags: {'etc31_bit1'}),
+      scripts: scripts,
+    );
+    expect(revisit.action, LorePortalAction.loadMap);
+    world.resetRulesForTest();
   });
 }

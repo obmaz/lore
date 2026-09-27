@@ -8,7 +8,8 @@
       "targetMap": 1,
       "targetX": 20,
       "targetY": 12,
-      "name": "GROUND FIELD"
+      "name": "GROUND FIELD",
+      "script": "castle-exit-skeleton"
     },
     {
       "map": 7,

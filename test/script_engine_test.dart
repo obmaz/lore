@@ -877,8 +877,8 @@ void main() {
       expect(firstPeek.y, 57);
       expect(ancient.outcome.messages.length, 5); // messages에는 대사만 남는다
 
-      // 2) LORE 성 출구(맵 6 y=95) Skeleton 영입 - 원작 join(19,6) = 6번 슬롯
-      final skeleton = engine.startStep(6, 40, 95, noCtx)!;
+      // 2) LORE 성 출구(맵 6 y=96) Skeleton 영입 - 원작 join(19,6) = 6번 슬롯
+      final skeleton = engine.startById('castle-exit-skeleton', noCtx)!;
       expect(skeleton.outcome.messages.first, contains('누군가가 당신을 불렀다'));
       final joined = skeleton.choose(0).outcome.recruits.single;
       expect(joined.key, 'skeleton');

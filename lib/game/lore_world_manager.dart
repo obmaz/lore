@@ -673,6 +673,7 @@ const List<_BuiltInPortal> _builtInPortals = [
     targetX: 20,
     targetY: 12,
     name: 'GROUND FIELD',
+    script: 'castle-exit-skeleton',
   ),
   _BuiltInPortal(
     7,

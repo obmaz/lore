@@ -191,6 +191,9 @@ class ScriptStep {
   final int? slot;
   final String? prompt;
   final List<ScriptOption>? options;
+
+  /// The option selected by Escape when the original menu treats it as a reply.
+  final int? cancelOptionIndex;
   final List<int>? monsters;
   final String? battleTitle;
 
@@ -303,6 +306,7 @@ class ScriptStep {
     this.slot,
     this.prompt,
     this.options,
+    this.cancelOptionIndex,
     this.monsters,
     this.battleTitle,
     this.battleEnemyFirst = false,
@@ -689,6 +693,8 @@ class ScriptRun {
   ScriptOutcome get outcome => _acc;
 
   bool get hasPendingChoice => choiceTexts != null;
+
+  int? get cancelOptionIndex => _choiceStep?.cancelOptionIndex;
 
   /// 선택형 장비는 UI에서 장착이 확정된 뒤에만 1회 스크립트를 소모한다.
   bool get requiresEquipmentCommit => _acc.equips.any((equip) => equip.prompt);
@@ -1590,11 +1596,17 @@ class LoreScriptEngine {
             _parseSteps(om['steps'] as List<dynamic>? ?? const []),
           );
         }).toList();
+        final cancelOption = c['cancelOption'] as int?;
+        if (cancelOption != null &&
+            (cancelOption < 0 || cancelOption >= options.length)) {
+          throw FormatException('취소 선택지 범위 오류: $cancelOption');
+        }
         steps.add(
           ScriptStep(
             kind: 'choice',
             prompt: c['prompt'] as String?,
             options: options,
+            cancelOptionIndex: cancelOption,
           ),
         );
         matched = true;
