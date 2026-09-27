@@ -1,5 +1,7 @@
 import 'package:flutter/services.dart';
 
+import '../logic/lore_tile_protocol.dart';
+
 enum TileCategory {
   special, // 0: 특수 이벤트
   wall, // 1..21: 성벽/바위/건물 (통과 불가)
@@ -51,61 +53,23 @@ class LoreMapData {
   /// keep: den과 같으나 40..47 이동, 1..39/51 벽
   /// ```
   TileCategory getCategory(int tileValue) {
-    if (tileValue == 0) return TileCategory.special;
-    if (tileValue >= 1 && tileValue <= 21) return TileCategory.wall;
-
-    switch (category) {
-      case 'town':
-        if (tileValue == 22) return TileCategory.portal;
-        if (tileValue == 23) return TileCategory.sign;
-        if (tileValue == 24) return TileCategory.water;
-        if (tileValue == 25) return TileCategory.swamp;
-        if (tileValue == 26) return TileCategory.lava;
-        if (tileValue >= 27 && tileValue <= 47) return TileCategory.walkable;
-        return TileCategory.npc;
-      case 'ground':
-        if (tileValue == 22) return TileCategory.sign;
-        if (tileValue == 48) return TileCategory.water;
-        if (tileValue == 23 || tileValue == 49) return TileCategory.swamp;
-        if (tileValue == 50) return TileCategory.lava;
-        if (tileValue >= 24 && tileValue <= 47) return TileCategory.walkable;
-        return TileCategory.portal;
-      case 'den':
-      case 'keep':
-        if (tileValue == 52) return TileCategory.special;
-        if (tileValue >= (category == 'keep' ? 40 : 41) && tileValue <= 47) {
-          return TileCategory.walkable;
-        }
-        if (tileValue == 48) return TileCategory.water;
-        if (tileValue == 49) return TileCategory.swamp;
-        if (tileValue == 50) return TileCategory.lava;
-        if (tileValue == 51) return TileCategory.wall;
-        if (tileValue == 53) return TileCategory.sign;
-        if (tileValue == 54) return TileCategory.portal;
-        if (tileValue <= (category == 'keep' ? 39 : 40)) {
-          return TileCategory.wall;
-        }
-        return TileCategory.npc;
-    }
-
-    // 카테고리를 모를 때(테스트 등)의 기존 추정 로직.
-    if (isTown) {
-      if (tileValue == 22) return TileCategory.portal;
-      if (tileValue == 23) return TileCategory.sign;
-      if (tileValue == 24) return TileCategory.water;
-      if (tileValue == 25) return TileCategory.swamp;
-      if (tileValue == 26) return TileCategory.lava;
-      if (tileValue >= 27 && tileValue <= 47) return TileCategory.walkable;
-      return TileCategory.npc; // 48+ 마을 주민/NPC
-    } else {
-      if (tileValue == 48) return TileCategory.water;
-      if (tileValue == 23 || tileValue == 49) return TileCategory.swamp;
-      if (tileValue == 50) return TileCategory.lava;
-      if (tileValue >= 24 && tileValue <= 47) return TileCategory.walkable;
-      if (tileValue == 22) return TileCategory.sign;
-      return TileCategory.portal; // 진입 게이트
-    }
+    return switch (actionForTile(tileValue)) {
+      LoreTileAction.special => TileCategory.special,
+      LoreTileAction.wall => TileCategory.wall,
+      LoreTileAction.enter => TileCategory.portal,
+      LoreTileAction.sign => TileCategory.sign,
+      LoreTileAction.water => TileCategory.water,
+      LoreTileAction.swamp => TileCategory.swamp,
+      LoreTileAction.lava => TileCategory.lava,
+      LoreTileAction.walk => TileCategory.walkable,
+      LoreTileAction.talk => TileCategory.npc,
+    };
   }
+
+  LoreTileAction actionForTile(int tileValue) => LoreTileProtocol.classify(
+    category.isEmpty ? (isTown ? 'town' : 'ground') : category,
+    tileValue,
+  );
 
   bool isPassable(int x, int y) {
     final tile = getTile(x, y);

@@ -1,12 +1,14 @@
 import '../game/lore_map_manager.dart';
+import 'lore_tile_protocol.dart';
 
 enum LoreMoveKind { boundary, wall, waterBlocked, npc, portal, sign, walk }
 
 class LoreMoveDecision {
   final LoreMoveKind kind;
   final TileCategory? category;
+  final LoreTileAction? sourceAction;
 
-  const LoreMoveDecision(this.kind, this.category);
+  const LoreMoveDecision(this.kind, this.category, [this.sourceAction]);
 }
 
 /// `LOREMAIN.PAS`의 맵 종류별 이동 분기를 화면과 분리한다.
@@ -29,23 +31,25 @@ class LoreMovementLogic {
       return const LoreMoveDecision(LoreMoveKind.boundary, null);
     }
 
-    final category = map.getCategory(map.getTile(targetX, targetY));
-    if (category == TileCategory.wall) {
-      return LoreMoveDecision(LoreMoveKind.wall, category);
+    final tile = map.getTile(targetX, targetY);
+    final action = map.actionForTile(tile);
+    final category = map.getCategory(tile);
+    if (action == LoreTileAction.wall) {
+      return LoreMoveDecision(LoreMoveKind.wall, category, action);
     }
-    if (category == TileCategory.water && !canWalkOnWater) {
-      return LoreMoveDecision(LoreMoveKind.waterBlocked, category);
+    if (action == LoreTileAction.water && !canWalkOnWater) {
+      return LoreMoveDecision(LoreMoveKind.waterBlocked, category, action);
     }
-    if (category == TileCategory.npc) {
-      return LoreMoveDecision(LoreMoveKind.npc, category);
+    if (action == LoreTileAction.talk) {
+      return LoreMoveDecision(LoreMoveKind.npc, category, action);
     }
-    if (category == TileCategory.portal ||
-        (category == TileCategory.special && hasPortal)) {
-      return LoreMoveDecision(LoreMoveKind.portal, category);
+    if (action == LoreTileAction.enter ||
+        (action == LoreTileAction.special && hasPortal)) {
+      return LoreMoveDecision(LoreMoveKind.portal, category, action);
     }
-    if (category == TileCategory.sign) {
-      return LoreMoveDecision(LoreMoveKind.sign, category);
+    if (action == LoreTileAction.sign) {
+      return LoreMoveDecision(LoreMoveKind.sign, category, action);
     }
-    return LoreMoveDecision(LoreMoveKind.walk, category);
+    return LoreMoveDecision(LoreMoveKind.walk, category, action);
   }
 }
