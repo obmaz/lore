@@ -18,8 +18,8 @@
     },
     "necromancer-castle-battles": {
       "file": "LORESPEC.PAS",
-      "lines": [1880, 1951],
-      "evidence": ["battlemode(FALSE);", "joinenemy(1,70);"]
+      "lines": [1880, 1963],
+      "evidence": ["battlemode(FALSE);", "joinenemy(1,70);", "inc(y);", "map[29,43] := 53;", "for i := 24 to 27 do map[i,j] := 46;"]
     },
     "metal-guardian-battle": {
       "file": "LORESPEC.PAS",
@@ -173,7 +173,29 @@
       "selected": "keep3-necromancer-y26",
       "trace": [
         {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
-        {"action": "victory", "expect": {"battle": [70], "enemyFirst": true, "awaitingBattle": true}}
+        {"action": "victory", "expect": {"battle": [70], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"tiles": [[null, 29, 43, 53, null]], "areas": [[null, 24, 27, 25, 27, 46, false, false]]}}
+      ]
+    },
+    {
+      "id": "necromancer-castle-mirror-retreat-retries",
+      "source": "necromancer-castle-battles",
+      "input": {"map": 23, "x": 25, "y": 26, "tileAtPlayer": 52},
+      "selected": "keep3-necromancer-y26",
+      "trace": [
+        {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "necromancer-castle-fake-retreat-steps-back",
+      "source": "necromancer-castle-battles",
+      "input": {"map": 23, "x": 25, "y": 26, "tileAtPlayer": 52},
+      "selected": "keep3-necromancer-y26",
+      "trace": [
+        {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"battle": [70], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
       ]
     },
     {
