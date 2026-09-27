@@ -33,6 +33,11 @@
 완료 상태에서는 원본처럼 레버 칸만 바꾸도록 분기를 나눴다.
 커밋: `Preserve completed seal puzzle when replaying its lever`.
 
+첫 번째 레버도 원본의 두 타일 변경과 걷기 마법 차단 분기를 추출했다.
+두 레버의 여섯 상태를 원본에서 생성하고, 첫 레버가 연 칸에서 두 번째
+레버까지 실제 지도 상태를 이어서 검증한다.
+커밋: `Replay both EVIL SEAL levers from Pascal state changes`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로

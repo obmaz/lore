@@ -47,7 +47,8 @@ def extract_rules(source: str, map_id: int = 17):
     scope = source[map_start:map_end]
     rules = []
     if map_id == 19:
-        return extract_lever_b(scope, source, map_start)
+        return [extract_lever_a(scope, source, map_start),
+                *extract_lever_b(scope, source, map_start)]
     patterns = PATTERNS_17 if map_id == 17 else PATTERNS_20
     for kind, pattern in patterns.items():
         matches = list(re.finditer(pattern, scope))
@@ -63,6 +64,35 @@ def extract_rules(source: str, map_id: int = 17):
             })
     rules.sort(key=lambda rule: rule.pop('_offset'))
     return rules
+
+
+def extract_lever_a(scope: str, source: str, map_start: int):
+    begin = scope.index('if on(11,40) then begin')
+    end = scope.index('if on(41,39) then begin', begin)
+    body = scope[begin:end]
+    pattern = (
+        r'if on\((\d+),(\d+)\) then begin\s+if party\.etc\[(\d+)\] > 0'
+        r'[\s\S]*?map\[(\d+),(\d+)\] := (\d+);\s+'
+        r'map\[(\d+),(\d+)\] := (\d+);'
+    )
+    match = re.search(pattern, body)
+    if match is None:
+        raise ValueError('map 19 first lever changed its Pascal form')
+    line = source.count('\n', 0, map_start + begin) + 1
+    return {'kind': 'lever_a', 'line': line,
+            'args': [int(value) for value in match.groups()]}
+
+
+def execute_lever_a(rule, *, swamp_walk: bool):
+    x, y, _swamp_bit, tx1, ty1, tile1, tx2, ty2, tile2 = rule['args']
+    writes = [] if swamp_walk else [
+        [tx1, tx1, ty1, ty1, tile1],
+        [tx2, tx2, ty2, ty2, tile2],
+    ]
+    return {'start': [x, y], 'sourceMap': 19, 'sourceEnd': [x, y],
+            'safeEnd': [x, y], 'writes': writes,
+            'swampWalkActive': swamp_walk, 'puzzleCleared': False,
+            'randomRoomCount': 0}
 
 
 def extract_lever_b(scope: str, source: str, map_start: int):
@@ -150,10 +180,11 @@ def fixture(map_id=17):
     source = SOURCE.read_bytes().decode('latin-1')
     rules = extract_rules(source, map_id)
     if map_id == 19:
-        cases = [
-            execute_lever_b(rules[0], swamp_walk=walk, puzzle_cleared=cleared)
-            for walk in (False, True) for cleared in (False, True)
-        ]
+        cases = [execute_lever_a(rules[0], swamp_walk=walk)
+                 for walk in (False, True)]
+        cases += [
+            execute_lever_b(rules[1], swamp_walk=walk, puzzle_cleared=cleared)
+            for walk in (False, True) for cleared in (False, True)]
         return {'map': map_id, 'source': 'LORESPEC.PAS',
                 'rules': rules, 'cases': cases}
     raw_map = (ROOT / f'assets/maps/{MAP_FILES[map_id]}.MAP').read_bytes()

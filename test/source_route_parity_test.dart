@@ -96,13 +96,16 @@ void main() {
     }
   });
 
-  test('맵 19 두 번째 레버는 걷기 마법과 완료 비트에 따라 지형을 바꾼다', () async {
+  test('맵 19 두 레버는 걷기 마법과 완료 비트에 따라 지형을 바꾼다', () async {
     final fixture = jsonDecode(
       File('test/fixtures/map19_route_parity.json').readAsStringSync(),
     ) as Map<String, dynamic>;
     final map = await LoreMapData.loadFromAsset('DEN6', category: 'den');
     for (final raw in fixture['cases'] as List<dynamic>) {
       final item = raw as Map<String, dynamic>;
+      final start = (item['start'] as List<dynamic>).cast<int>();
+      final x = start[0];
+      final y = start[1];
       final walk = item['swampWalkActive'] as bool;
       final cleared = item['puzzleCleared'] as bool;
       final flags = <String>{
@@ -113,13 +116,13 @@ void main() {
       engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
       final run = engine.startStep(
         19,
-        41,
-        39,
+        x,
+        y,
         ScriptContext(flags: flags, tileAtPlayer: 0),
       );
-      expect(run, isNotNull, reason: '걷기 $walk, 완료 $cleared');
+      expect(run, isNotNull, reason: '($x,$y), 걷기 $walk, 완료 $cleared');
       final grid = [for (final row in map.grid) List<int>.from(row)];
-      grid[38][40] = 0; // 첫 번째 레버가 두 번째 레버 칸을 연 상태
+      grid[y - 1][x - 1] = 0;
       final expectedGrid = [for (final row in grid) List<int>.from(row)];
       for (final rawWrite in item['writes'] as List<dynamic>) {
         final write = (rawWrite as List<dynamic>).cast<int>();
@@ -130,15 +133,61 @@ void main() {
         }
       }
       final actual = ScriptWorldReducer.applyMap(
-        ScriptMapState(mapId: 19, x: 41, y: 39, direction: 0, grid: grid),
+        ScriptMapState(mapId: 19, x: x, y: y, direction: 0, grid: grid),
         run!.outcome,
       );
-      expect(actual.grid, expectedGrid, reason: '걷기 $walk, 완료 $cleared');
+      expect(actual.grid, expectedGrid, reason: '($x,$y), 걷기 $walk, 완료 $cleared');
       expect(
         run.outcome.setFlags.where((flag) => flag.startsWith('evilSealRoom')),
         hasLength(item['randomRoomCount'] == 0 ? 0 : 1),
         reason: '걷기 $walk, 완료 $cleared',
       );
     }
+  });
+
+  test('맵 19 첫 레버가 연 칸에서 두 번째 레버를 연속 실행한다', () async {
+    final map = await LoreMapData.loadFromAsset('DEN6', category: 'den');
+    final engine = LoreScriptEngine();
+    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    final first = engine.startStep(
+      19,
+      11,
+      40,
+      const ScriptContext(tileAtPlayer: 0),
+    )!;
+    final afterFirst = ScriptWorldReducer.applyMap(
+      ScriptMapState(
+        mapId: 19,
+        x: 11,
+        y: 40,
+        direction: 0,
+        grid: map.grid,
+      ),
+      first.outcome,
+    );
+    expect(afterFirst.grid[38][40], 0);
+    final second = engine.startStep(
+      19,
+      41,
+      39,
+      ScriptContext(
+        flags: first.outcome.setFlags.toSet(),
+        tileAtPlayer: afterFirst.grid[38][40],
+      ),
+    )!;
+    final afterSecond = ScriptWorldReducer.applyMap(
+      ScriptMapState(
+        mapId: 19,
+        x: 41,
+        y: 39,
+        direction: 0,
+        grid: afterFirst.grid,
+      ),
+      second.outcome,
+    );
+    expect(afterSecond.grid[38][40], 49);
+    expect(afterSecond.grid[26][23], 25);
+    expect(afterSecond.grid[36][26], 44);
+    expect(second.outcome.setFlags, contains('evilSealLeverB'));
   });
 }

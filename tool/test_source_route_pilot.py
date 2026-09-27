@@ -42,8 +42,12 @@ class SourceRoutePilotTest(unittest.TestCase):
         path = pilot.ROOT / 'test/fixtures/map19_route_parity.json'
         recorded = json.loads(path.read_text(encoding='utf-8'))
         self.assertEqual(recorded, pilot.fixture(19))
-        self.assertEqual(len(recorded['cases']), 4)
-        active, completed, blocked, blocked_completed = recorded['cases']
+        self.assertEqual(len(recorded['cases']), 6)
+        first_active, first_blocked, active, completed, blocked, blocked_completed = recorded['cases']
+        self.assertEqual(first_active['writes'], [
+            [11, 11, 40, 40, 49], [41, 41, 39, 39, 0],
+        ])
+        self.assertEqual(first_blocked['writes'], [])
         self.assertEqual(len(active['writes']), 6)
         self.assertEqual(active['randomRoomCount'], 7)
         self.assertEqual(completed['writes'], [[41, 41, 39, 39, 49]])
