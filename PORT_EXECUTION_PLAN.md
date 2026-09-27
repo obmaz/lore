@@ -144,5 +144,9 @@
    따라 안전하게 구현했다. 신규·사망 적 슬롯, 빈자리 턴 제외와 실제 전투
    화면의 소환 중 목록 확장을 검증했다.
    커밋: `Restore sixth-party mind conversion in battle`.
+   `SpecialCastAttack`의 전체 즉사 저주는 이름 있고 생존한 대원 각각에게
+   명중·행운 판정을 수행한다. 죽음·회피·빗나감 결과를 기록하고 살아남은
+   대상이 있으면 원본처럼 기본 공격을 이어간다. 전멸 시에는 안전하게 턴을
+   끝낸다. 커밋: `Continue enemy turn after group death curse`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

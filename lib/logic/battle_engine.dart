@@ -946,22 +946,31 @@ class BattleEngine {
       );
     }
 
-    // 변환으로 빈자리가 생겼다면 이후 공격 대상에서 즉시 제외한다.
-    final livingParty = party
-        .where((member) => member.name.isNotEmpty && member.isAlive)
-        .toList();
-    final activeParty = party.where((member) => member.isBattleActive).toList();
-    if (activeParty.isEmpty) return results;
-
-    // 특수 즉사 공격 (SpecialCastAttack - LOREBATT.PAS:896)
-    if (monster.specialCastLevel > 2 && _rand(5) == 0 && monster.special > 0) {
-      // 전체 즉사 공격 시도
+    // LOREBATT.PAS:931-949 — 전체 즉사 저주 뒤에도 기본 행동을 계속한다.
+    if (monster.eNumber != 1 &&
+        monster.specialCastLevel > 2 &&
+        monster.special > 0 &&
+        _rand(5) == 0) {
       for (final p in party.where(
         (member) => member.name.isNotEmpty && !member.isDead,
       )) {
-        if (_rand(60) <= monster.agility && _rand(20) >= p.luck) {
+        if (_rand(60) > monster.agility) {
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.miss,
+              message: '${p.name}에게 향한 ${monster.name}의 죽음의 저주가 빗나갔다.',
+            ),
+          );
+        } else if (_rand(20) < p.luck) {
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.resisted,
+              message: '${p.name}은(는) ${monster.name}의 죽음의 저주를 피했다.',
+            ),
+          );
+        } else {
           p.dead = 1;
-          p.hp = 0;
+          if (p.hp > 0) p.hp = 0;
           results.add(
             AttackResult(
               outcome: AttackOutcome.killed,
@@ -970,10 +979,14 @@ class BattleEngine {
           );
         }
       }
-      if (results.any((result) => result.outcome == AttackOutcome.killed)) {
-        return results;
-      }
     }
+
+    // 변환·저주 이후의 상태로 기본 공격 대상을 다시 고른다.
+    final livingParty = party
+        .where((member) => member.name.isNotEmpty && member.isAlive)
+        .toList();
+    final activeParty = party.where((member) => member.isBattleActive).toList();
+    if (activeParty.isEmpty) return results;
 
     // 3. 특수 공격 (SpecialAttack - LOREBATT.PAS:814)
     final agiCap = min(20, monster.agility);

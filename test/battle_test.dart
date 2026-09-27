@@ -802,6 +802,52 @@ void main() {
       );
     });
 
+    test('전체 즉사 저주는 사망·회피·빗나감을 판정한 뒤 일반 공격을 계속한다', () {
+      final caster = Monster.create(68).withOverrides(castLevel: 0);
+      final doomed = PartyMember.createPreset(1)
+        ..hp = 10000
+        ..luck = 0;
+      final lucky = PartyMember.createPreset(3)
+        ..hp = 10000
+        ..luck = 20
+        ..resistance = 0
+        ..ac = 0;
+      final missed = PartyMember.createPreset(4)
+        ..hp = 10000
+        ..luck = 0;
+      final enemies = [caster, for (var i = 0; i < 3; i++) Monster.create(1)];
+
+      final results = BattleEngine(
+        random: DeterministicRandom([0, 0, 0, 0, 0, 0, 59, 49, 0]),
+      ).executeMonsterTurn(caster, [doomed, lucky, missed], enemies);
+
+      expect(results.take(3).map((result) => result.outcome), [
+        AttackOutcome.killed,
+        AttackOutcome.resisted,
+        AttackOutcome.miss,
+      ]);
+      expect(doomed.dead, 1);
+      expect(doomed.hp, 0);
+      expect(lucky.dead, 0);
+      expect(missed.dead, 0);
+      expect(results.length, greaterThan(3));
+      expect(lucky.hp, lessThan(10000)); // 살아남은 대상에게 후속 일반 공격
+    });
+
+    test('전체 즉사 저주로 파티가 전멸하면 후속 대상 공격을 중단한다', () {
+      final caster = Monster.create(68).withOverrides(castLevel: 0);
+      final doomed = PartyMember.createPreset(1)
+        ..hp = 100
+        ..luck = 0;
+      final enemies = [caster, for (var i = 0; i < 3; i++) Monster.create(1)];
+
+      final results = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, [doomed], enemies);
+
+      expect(results.map((result) => result.outcome), [AttackOutcome.killed]);
+      expect(doomed.isBattleActive, isFalse);
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
       final caster = PartyMember.createPreset(3)
         ..espLevel = 13
