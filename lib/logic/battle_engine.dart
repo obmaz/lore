@@ -1166,7 +1166,8 @@ class BattleEngine {
           ),
         );
 
-        for (final p in livingParty) {
+        // 원본 castattackall은 행동 불능 대원도 공격해 상태 누적 피해를 준다.
+        for (final p in party.where((member) => member.name.isNotEmpty)) {
           final res = _applyEnemyMagicDamage(monster, p, spellName, pwr);
           results.add(res);
         }
@@ -1268,15 +1269,17 @@ class BattleEngine {
         message: '${target.name}에게 마법이 빗나갔다.',
       );
     }
-    if (_rand(50) < target.resistance) {
+    final canDefend = target.isBattleActive;
+    if (canDefend && _rand(50) < target.resistance) {
       return AttackResult(
         outcome: AttackOutcome.resisted,
         message: '${target.name}은(는) 마법을 저지했다!',
       );
     }
-    int power = basePower - _rand(max(1, basePower ~/ 2));
-    final defReduce = (target.ac * target.battleLevel * (_rand(10) + 1)) ~/ 10;
-    power -= defReduce;
+    int power = basePower - _rand(basePower ~/ 2);
+    if (canDefend) {
+      power -= (target.ac * target.battleLevel * (_rand(10) + 1)) ~/ 10;
+    }
 
     if (power <= 0) {
       return AttackResult(
@@ -1285,7 +1288,35 @@ class BattleEngine {
       );
     }
 
-    target.hp -= power;
+    // LOREBATT.PAS castattacksub: 사망·의식불명은 수치로 누적된다.
+    if (target.isDead) {
+      target.dead += power;
+      if (target.hp > 0) target.hp -= power;
+      return AttackResult(
+        outcome: AttackOutcome.hit,
+        damage: power,
+        message: '${target.name}은(는) 쓰러진 뒤에도 $power의 마법 피해를 입었다.',
+      );
+    }
+    if (target.isUnconscious) {
+      target.unconscious += power;
+      if (target.hp > 0) target.hp -= power;
+      if (target.unconscious > target.endurance * target.battleLevel) {
+        target.dead = 1;
+        return AttackResult(
+          outcome: AttackOutcome.killed,
+          damage: power,
+          message: '의식불명인 ${target.name}은(는) 추가 마법 피해를 버티지 못했다.',
+        );
+      }
+      return AttackResult(
+        outcome: AttackOutcome.unconscious,
+        damage: power,
+        message: '의식불명인 ${target.name}은(는) $power의 추가 마법 피해를 입었다.',
+      );
+    }
+
+    if (target.hp > 0) target.hp -= power;
     if (target.hp <= 0) {
       target.hp = 0;
       target.unconscious = 1;

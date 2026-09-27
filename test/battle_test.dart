@@ -499,6 +499,85 @@ void main() {
       }
     });
 
+    test('적 전체 마법은 의식불명·사망 대원의 피해 수치를 누적하고 빈자리는 건너뛴다', () {
+      final caster = _supportCaster(3);
+      final active = [
+        for (var i = 1; i <= 3; i++)
+          PartyMember.createPreset(i)
+            ..hp = 100
+            ..resistance = 0
+            ..ac = 0,
+      ];
+      final unconscious = PartyMember.createPreset(4)
+        ..hp = 0
+        ..unconscious = 1
+        ..endurance = 100
+        ..resistance = 50
+        ..ac = 50;
+      final dead = PartyMember.createPreset(5)
+        ..hp = 0
+        ..dead = 4
+        ..resistance = 50
+        ..ac = 50;
+      final empty = PartyMember.createPreset(6)
+        ..name = ''
+        ..hp = 100;
+      final party = [...active, unconscious, dead, empty];
+
+      final results = BattleEngine(
+        random: DeterministicRandom([0, 2, ...List.filled(40, 0)]),
+      ).executeMonsterTurn(caster, party, [caster]);
+
+      expect(results.first.message, contains('일행 모두'));
+      expect(results.length, 6); // 시전 메시지 + 이름 있는 슬롯 다섯 명
+      expect(active.map((member) => member.hp), [75, 75, 75]);
+      expect(unconscious.unconscious, 26);
+      expect(unconscious.dead, 0);
+      expect(dead.dead, 29);
+      expect(empty.hp, 100);
+    });
+
+    test('의식불명 대원의 누적 마법 피해가 최대 HP를 넘으면 사망한다', () {
+      final caster = _supportCaster(3);
+      final party = [
+        for (var i = 1; i <= 3; i++)
+          PartyMember.createPreset(i)
+            ..hp = 100
+            ..resistance = 0
+            ..ac = 0,
+        PartyMember.createPreset(4)
+          ..hp = 0
+          ..endurance = 100
+          ..unconscious = 80,
+      ];
+
+      final results = BattleEngine(
+        random: DeterministicRandom([0, 2, ...List.filled(40, 0)]),
+      ).executeMonsterTurn(caster, party, [caster]);
+
+      expect(party.last.dead, 1);
+      expect(results.last.outcome, AttackOutcome.killed);
+    });
+
+    test('적 단일 마법도 의식불명 대원에게 추가 피해를 누적한다', () {
+      final caster = _supportCaster(1);
+      final healthy = PartyMember.createPreset(1)..hp = 100;
+      final unconscious = PartyMember.createPreset(3)
+        ..hp = 0
+        ..unconscious = 1
+        ..endurance = 100
+        ..resistance = 50
+        ..ac = 50;
+
+      final results = BattleEngine(random: DeterministicRandom([0, 1, 0, 0]))
+          .executeMonsterTurn(caster, [healthy, unconscious], [caster]);
+
+      expect(results.first.message, contains(unconscious.name));
+      expect(results.last.outcome, AttackOutcome.unconscious);
+      expect(unconscious.unconscious, 51);
+      expect(healthy.hp, 100);
+    });
+
     test('적 치료는 사망·기절·일반 HP를 원본 순서대로 처리한다', () {
       final engine = BattleEngine();
       final healer = Monster.create(1);
