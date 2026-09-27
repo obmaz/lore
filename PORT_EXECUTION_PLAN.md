@@ -242,5 +242,9 @@
     타일 값이 0인 곳만 39로 바꾼다. 기존 `ifZero` 값은 조건이 아니라 대체
     출력이어서 기존 길까지 덮어썼다. `onlyIf: 0`으로 고치고 실제 지도 전이를
     검증했다. 커밋: `Preserve nonzero tiles when raising the hidden castle`.
+    맵 17 Red Antares의 첫 만남은 (71..82, 47..57)에서 타일 40만 50으로
+    바꾸는 원본 효과가 빠져 있었다. 대사 전에 조건부 영역 변경을 추가하고
+    다른 타일은 보존되는지 검증했다.
+    커밋: `Restore Red Antares lava tile conversion`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

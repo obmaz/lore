@@ -9,6 +9,27 @@ import 'package:lore/logic/script_world_reducer.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('Red Antares 첫 만남은 용암 구역의 타일 40만 50으로 바꾼다', () async {
+    final source = File('repo_source/LORE_1993_src/LORESPEC.PAS')
+        .readAsStringSync(encoding: latin1);
+    expect(source, contains('if map[i,j] = 40 then map[i,j] := 50;'));
+    final engine = LoreScriptEngine();
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
+    final run = engine.startStep(17, 75, 52, const ScriptContext())!;
+    expect(run.script.id, 'redantares-teach');
+    final grid = List.generate(100, (_) => List.filled(100, 44));
+    grid[47 - 1][71 - 1] = 40;
+    grid[47 - 1][72 - 1] = 51;
+    final result = ScriptWorldReducer.applyMap(
+      ScriptMapState(mapId: 17, x: 75, y: 52, direction: 0, grid: grid),
+      run.outcome,
+    );
+    expect(result.grid[47 - 1][71 - 1], 50);
+    expect(result.grid[47 - 1][72 - 1], 51);
+  });
+
   test('맵 23 레버는 원본처럼 0인 칸만 성벽으로 바꾼다', () async {
     final source = File('repo_source/LORE_1993_src/LORESPEC.PAS')
         .readAsStringSync(encoding: latin1);
