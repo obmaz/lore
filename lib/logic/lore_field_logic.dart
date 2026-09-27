@@ -15,7 +15,7 @@ class LoreFieldLogic {
   /// 원작 `party.etc[3] > 0` - 늪위를 걷는 마법.
   static const String scriptFlagSwampWalk = 'swampWalkActive';
 
-  /// 원작 `party.etc[4] > 0` - 공중 부상(용암 통과).
+  /// 원작 `party.etc[4] > 0` - 공중 부상(맵 12 사건 조건).
   static const String scriptFlagLevitate = 'levitateActive';
 
   /// 원작 `party.etc[1] > 0` - 마법의 횃불.

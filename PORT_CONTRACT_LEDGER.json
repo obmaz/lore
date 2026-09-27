@@ -25757,6 +25757,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/lava_source_parity_test.dart",
+      "kind": "test",
+      "sha256": "8a62c8e142c00478a424445a5e058776f01513768a5a1279f00c1d59a806e136",
+      "cited_source_files": [
+        "LOREMAIN.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/lore_battle_progress_test.dart",
       "kind": "test",
       "sha256": "a8f8c5cd0b325cfb2cb25af3a9d2b556c9cea043a4b7330007d08458c0d8bff3",
@@ -26387,7 +26396,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "9638fb2a15cbe69325b88d620627800cccfcd94d46da9e89b891740614e2370b"
+      "sha256": "6752b8d1fc3db18eb6cf81c9028739770a4c82ee39f8821084327ce59a43c024"
     }
   ],
   "baseline_gaps": {

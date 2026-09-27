@@ -25,6 +25,7 @@ import '../logic/script_equip_reducer.dart';
 import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
+import '../logic/lore_lava_logic.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
 import '../data/lore_data.dart';
@@ -988,41 +989,18 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
       }
     } else if (cat == TileCategory.lava) {
-      if (_levitateSteps > 0) {
-        setState(() => _levitateSteps--);
-        _addLog('✨ [공중 부상] 용암 위를 안전하게 비행 중입니다. (남은 걸음: $_levitateSteps)');
-      } else {
-        // 원작 LOREMAIN.PAS:90 `일행은 용암지대로 들어섰다 !!!`
-        _addLog('🔥 일행은 용암지대로 들어섰다 !!!');
-        final rnd = Random();
-        // 원작은 피해량을 한 번 굴려 `{name}는 {n}의 피해를 입었다 !` 로 출력하고
-        // 같은 값으로 HP/상태를 갱신한다.
-        final damages = <({PartyMember member, int dmg})>[];
-        for (final p in _party) {
-          if (p.name.isEmpty) continue;
-          final luckRoll = p.luck > 0 ? rnd.nextInt(p.luck) : 0;
-          damages.add((member: p, dmg: rnd.nextInt(40) + 40 - 2 * luckRoll));
+      // LOREMAIN.enter_lava는 etc[4](공중 부상)을 검사하지 않는다.
+      _addLog('🔥 일행은 용암지대로 들어섰다 !!!');
+      // 원작은 피해량을 한 번 굴려 `{name}는 {n}의 피해를 입었다 !` 로 출력하고
+      // 같은 값으로 HP/상태를 갱신한다.
+      final damages = LoreLavaLogic.rollDamages(_party, Random());
+      for (var i = 0; i < _party.length; i++) {
+        if (_party[i].name.isNotEmpty) {
+          _addLog('💥 ${_party[i].name}는 ${damages[i]}의 피해를 입었다 !');
         }
-        for (final d in damages) {
-          _addLog('💥 ${d.member.name}는 ${d.dmg}의 피해를 입었다 !');
-        }
-        for (final d in damages) {
-          final p = d.member;
-          final dmg = d.dmg;
-          setState(() {
-            if (p.hp > 0 && p.unconscious == 0) {
-              p.hp -= dmg;
-              if (p.hp <= 0) p.unconscious = 1;
-            } else if (p.hp > 0 && p.unconscious > 0) {
-              p.hp -= dmg;
-            } else if (p.unconscious > 0 && p.dead == 0) {
-              p.unconscious += dmg;
-              if (p.unconscious > p.endurance * p.battleLevel) p.dead = 1;
-            } else if (p.dead > 0) {
-              p.dead = (p.dead + dmg > 30000) ? 30000 : p.dead + dmg;
-            }
-          });
-        }
+      }
+      for (var i = 0; i < _party.length; i++) {
+        setState(() => LoreLavaLogic.applyDamage(_party[i], damages[i]));
       }
     }
   }
