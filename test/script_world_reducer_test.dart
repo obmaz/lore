@@ -72,7 +72,7 @@ void main() {
       quests: {'water': 1},
     );
     const outcome = ScriptOutcome(
-      setFlags: ['met', 'rigelJoined', 'gateOpen'],
+      setFlags: ['met', 'rigelJoined', 'etc31_bit2', 'gateOpen'],
       questChanges: [
         (name: 'water', set: null, inc: 1),
         (name: 'water', set: null, inc: 2),
@@ -82,10 +82,11 @@ void main() {
     final after = ScriptWorldReducer.applyProgress(
       before,
       outcome,
-      deferredFlags: {'rigelJoined'},
+      deferredFlags: {'rigelJoined', 'etc31_bit2'},
     );
     expect(after.flags['gateOpen'], isTrue);
     expect(after.flags['rigelJoined'], isNull);
+    expect(after.flags['etc31_bit2'], isNull);
     expect(after.quests, {'water': 4, 'gaia': 3});
     expect(before.quests, {'water': 1});
     expect(before.flags, {'met': true});

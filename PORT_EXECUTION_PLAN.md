@@ -255,5 +255,8 @@
     Rigel의 합류 슬롯 취소는 `etc31_bit2`를 기록하지 않으므로 재진입 때
     다시 제안한다. 일회성 소모 대신 원본의 완료 비트로 진입을 제어한다.
     커밋: `Allow Rigel recruitment retry after cancellation`.
+    Rigel 선택지가 합류를 요청했을 때 `etc31_bit2`는 슬롯 확정 뒤에만
+    기록한다. 식량 지원·거절 선택지는 즉시 완료 비트를 기록한다.
+    커밋: `Defer Rigel completion until join slot is confirmed`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

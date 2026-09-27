@@ -557,6 +557,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (outcome.recruits.any((recruit) => recruit.key == 'red_antares') &&
           outcome.setFlags.contains('etc38_bit2'))
         'etc38_bit2',
+      // Rigel도 ReturnJoinMember 취소 시 완료 비트를 세우지 않는다.
+      if (outcome.recruits.any((recruit) => recruit.key == 'rigel') &&
+          outcome.setFlags.contains('etc31_bit2'))
+        'etc31_bit2',
     };
     final dialogue = LoreDialogueManager.instance;
     final progressBefore = ScriptProgressState(
@@ -607,6 +611,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (recruit.key == 'red_antares' &&
           deferredRecruitFlags.contains('etc38_bit2')) {
         LoreDialogueManager.instance.setFlag('etc38_bit2');
+      }
+      if (recruit.key == 'rigel' &&
+          deferredRecruitFlags.contains('etc31_bit2')) {
+        LoreDialogueManager.instance.setFlag('etc31_bit2');
       }
       if (joined && recruit.key == 'mad_joe' && _game.currentMapId == 6) {
         final map = _game.currentMap;
