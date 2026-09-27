@@ -73,6 +73,11 @@
 돌아가며, 봉인 칸은 GAIA 2단계와 지형 변경을 함께 적용한다.
 커밋: `Replay map twelve doors and seal branches from Pascal`.
 
+맵 24 `LORETALK.PAS`의 제작자 대화에서 원본 `etc[43] bit4`와 NPC
+(33,10) 타일 47 변경을 추출했다. 대화 실행과 다시 맵에 들어올 때의 영속
+타일 복원을 검증한다. 일반 NPC 대사 내용과 시설 상호작용은 아직 별도 대상이다.
+커밋: `Preserve map twenty four programmer conversation state`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로
