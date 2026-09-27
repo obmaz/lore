@@ -267,6 +267,7 @@ def port_rule_sources():
         "lib/logic/lore_tile_protocol.dart",
         "lib/logic/lore_movement_logic.dart",
         "lib/logic/lore_field_session.dart",
+        "lib/logic/lore_talk_dispatcher.dart",
         "lib/logic/lore_special_event_dispatcher.dart",
         "lib/screens/main_game_screen.dart",
     )]

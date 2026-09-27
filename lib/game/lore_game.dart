@@ -3,6 +3,7 @@ import 'dart:math';
 
 import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_field_session.dart';
+import '../logic/lore_talk_dispatcher.dart';
 
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
@@ -229,11 +230,7 @@ class LoreGame extends FlameGame {
         case LoreFieldEffectKind.waterBlocked:
           onLog?.call('깊은 물속은 배나 [물위를 걸음] 마법 없이는 건널 수 없습니다!');
         case LoreFieldEffectKind.talk:
-          _handleNpcInteraction(
-            map.getTile(targetX, targetY),
-            targetX,
-            targetY,
-          );
+          _handleNpcInteraction(targetX, targetY);
         case LoreFieldEffectKind.portalRequest:
           if (onPortalRequested != null) {
             onPortalRequested!(transition.portal!, targetX, targetY);
@@ -287,56 +284,38 @@ class LoreGame extends FlameGame {
     }
   }
 
-  void _handleNpcInteraction(int tileVal, int tx, int ty) {
-    // 1. 원작 LORETALK.PAS 마을 시설(무기점/병원/훈련소/식료품점) 판정.
-    //    좌표는 assets/data/facilities.json(폴백: 내장 표)에서 온다.
-    final facility = LoreWorldManager.instance.findFacility(
-      currentMapId,
-      tx,
-      ty,
-    );
-    if (facility != null) {
-      onFacilityEntered?.call(facility);
-      return;
-    }
-
-    // 2. JSON 스크립트(assets/data/scripts.json)로 정의된 좌표 대화를 우선 실행한다.
-    final scriptCtx = scriptContextProvider?.call();
-    if (scriptCtx != null) {
-      final run = LoreScriptEngine.instance.startTalk(
-        currentMapId,
-        tx,
-        ty,
-        scriptCtx,
-      );
-      if (run != null) {
-        onScriptTalk?.call(run, tx, ty);
-        return;
-      }
-    }
-
-    // 3. 원작 LORETALK.PAS / LORESPEC.PAS 실제 주민, 영주, 동료 대화 연동
-    //    (마을뿐 아니라 모든 맵에서 좌표 기반 대화가 동작한다)
-    final dlg = LoreDialogueManager.instance.getDialogue(
-      currentMapId,
-      tx,
-      ty,
-      'Hero',
+  void _handleNpcInteraction(int tx, int ty) {
+    final selected = LoreTalkDispatcher.resolve(
+      mapId: currentMapId,
+      x: tx,
+      y: ty,
+      heroName: 'Hero',
+      context: scriptContextProvider?.call(),
       party: partyProvider?.call(),
       mindReadCount: mindReadCountProvider?.call() ?? 0,
+      world: LoreWorldManager.instance,
+      scripts: LoreScriptEngine.instance,
+      dialogues: LoreDialogueManager.instance,
     );
-    if (dlg != null) {
-      onLog?.call(dlg);
-      _flushPendingRecruits();
-      return;
+    switch (selected.source) {
+      case LoreTalkSource.facility:
+        onFacilityEntered?.call(selected.facility!);
+      case LoreTalkSource.script:
+        onScriptTalk?.call(selected.script!, tx, ty);
+      case LoreTalkSource.dialogue:
+        onLog?.call(selected.dialogue!);
+        _flushPendingRecruits();
+      case LoreTalkSource.none:
+        if (currentMapName == 'TOWN1') {
+          onNpcTalk?.call(
+            '마을 주민',
+            '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.',
+          );
+          onTownEntered?.call();
+        } else {
+          onLog?.call('주민은 더 이상 할 말이 없는 듯합니다.');
+        }
     }
-
-    if (currentMapName == 'TOWN1') {
-      onNpcTalk?.call('마을 주민', '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.');
-      onTownEntered?.call();
-      return;
-    }
-    onLog?.call('주민은 더 이상 할 말이 없는 듯합니다.');
   }
 
   /// 원작 `join(num, partynum)` 대기열을 실제 일행 합류로 전환한다.

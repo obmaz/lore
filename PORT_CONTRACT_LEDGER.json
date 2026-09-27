@@ -26068,6 +26068,20 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/talk_content_reachability_test.dart",
+      "kind": "test",
+      "sha256": "261bfddcd26b619ab374fe246a332a5f7b48e32fef129198563dac3507a535fa",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/talk_dispatcher_test.dart",
+      "kind": "test",
+      "sha256": "9852e009207d7bf7198a216d211526bd5fb8e3073d96fe9d45e57e15f4cbbecd",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/talk_map27_test.dart",
       "kind": "test",
       "sha256": "9e220ca19da11a5897c8f0555c35cf039d2a9fe12cd9237f9575390a0b8c2a26",
@@ -26305,7 +26319,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "7dc67fd4572ee89b6be15b8e9d58501fb853c1ee05fffcd31094124c6a553764"
+      "sha256": "c4264b8144e5c1c6b8039a123459c58bb1e7b9de041deee37f906462a4e067ee"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -26330,6 +26344,10 @@
     {
       "path": "lib/logic/lore_field_session.dart",
       "sha256": "40f4d037032311e7bbeb236e8a836d9c70f366ee5791a0ff1cd37d02e76b4415"
+    },
+    {
+      "path": "lib/logic/lore_talk_dispatcher.dart",
+      "sha256": "e957dd67e9824f6e2203a0f7912874c4c5d54d183438c1a4f016720eb86b9ba5"
     },
     {
       "path": "lib/logic/lore_special_event_dispatcher.dart",
