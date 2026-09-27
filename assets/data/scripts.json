@@ -398,6 +398,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43,
               43,
@@ -437,6 +438,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43,
               43
@@ -475,6 +477,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43
             ],
@@ -5583,6 +5586,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               39
@@ -5669,6 +5673,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               39
@@ -5763,6 +5768,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               39
@@ -5831,6 +5837,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               39
@@ -5905,6 +5912,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               39
@@ -5970,6 +5978,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               54,
               39
@@ -6039,6 +6048,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Huge Dragon",
             "monsters": [
               54,
@@ -6473,6 +6483,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Crab God",
             "monsters": [
               59,
@@ -6559,6 +6570,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Crab God",
             "monsters": [
               59,
@@ -6645,6 +6657,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Crab God",
             "monsters": [
               59,
@@ -6731,6 +6744,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Crab God",
             "monsters": [
               59,
@@ -6817,6 +6831,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Crab God",
             "monsters": [
               59,
@@ -6903,6 +6918,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Crab God",
             "monsters": [
               59,
@@ -6989,6 +7005,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "Crab God",
             "monsters": [
               59,
@@ -8469,6 +8486,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               53
             ]
@@ -8500,6 +8518,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               53
             ]
@@ -8539,6 +8558,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "title": "감옥의 수문장",
             "monsters": [
               53
@@ -20642,6 +20662,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43
             ]
@@ -20672,6 +20693,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43
             ]
@@ -20704,6 +20726,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43
             ]
@@ -20758,6 +20781,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43
             ]
@@ -20789,6 +20813,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43
             ]
@@ -20842,6 +20867,7 @@
         },
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               43
             ]
@@ -21859,6 +21885,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               59,
               59,
@@ -21932,6 +21959,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               59,
               59,
@@ -21998,6 +22026,7 @@
       "steps": [
         {
           "battle": {
+            "enemyFirst": true,
             "monsters": [
               59,
               59,

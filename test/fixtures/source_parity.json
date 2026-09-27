@@ -1,6 +1,31 @@
 {
   "version": 1,
   "sources": {
+    "wivern-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [980, 992],
+      "evidence": ["for i := 1 to enemynumber do joinenemy(i,43);", "BattleMode(FALSE);"]
+    },
+    "hidra-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [1145, 1158],
+      "evidence": ["BattleMode(TRUE);"]
+    },
+    "lockup-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [1200, 1207],
+      "evidence": ["joinenemy(1,53);", "BattleMode(FALSE);"]
+    },
+    "dragon-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [1339, 1350],
+      "evidence": ["joinenemy(1,54);", "BattleMode(FALSE);"]
+    },
+    "crab-guard-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [1418, 1432],
+      "evidence": ["joinenemy(i,59);", "BattleMode(TRUE);"]
+    },
     "prison-battle-initiative": {
       "file": "LORESPEC.PAS",
       "lines": [190, 231],
@@ -85,6 +110,33 @@
     }
   },
   "scenarios": [
+    {
+      "id": "wivern-ambush-enemy-first",
+      "source": "wivern-battle-initiative",
+      "input": {"map": 16, "x": 25, "y": 10, "tileAtPlayer": 0, "questSteps": {"wivern": 0}},
+      "selected": "wivern-3-remaining",
+      "trace": [
+        {"action": "start", "expect": {"battle": [43, 43, 43], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "hidra-defenders-party-first",
+      "source": "hidra-battle-initiative",
+      "input": {"trigger": "id", "script": "spec-17-L1010-1xx", "map": 17, "questSteps": {"water": 0}},
+      "selected": "spec-17-L1010-1xx",
+      "trace": [
+        {"action": "start", "expect": {"battle": [49, 49, 49], "flags": ["etc1"], "torch": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "lockup-guardian-enemy-first",
+      "source": "lockup-battle-initiative",
+      "input": {"map": 18, "x": 21, "y": 41, "tileAtPlayer": 52},
+      "selected": "spec-18-L1174-1xx",
+      "trace": [
+        {"action": "start", "expect": {"battle": [53], "enemyFirst": true, "flags": ["etc1"], "torch": true, "awaitingBattle": true}}
+      ]
+    },
     {
       "id": "prison-soldiers-attack-first",
       "source": "prison-battle-initiative",
@@ -200,7 +252,7 @@
       "input": {"map": 19, "x": 22, "y": 6, "flags": ["evilSealRoom3"]},
       "selected": "evil-seal-room-3",
       "trace": [
-        {"action": "start", "expect": {"battle": [59, 59, 59, 59, 59, 59, 59], "areas": [[null, 1, 1, 5, 5, 49, true, false]], "awaitingBattle": true}},
+        {"action": "start", "expect": {"battle": [59, 59, 59, 59, 59, 59, 59], "enemyFirst": true, "areas": [[null, 1, 1, 5, 5, 49, true, false]], "awaitingBattle": true}},
         {"action": "victory", "expect": {"flags": ["evilSealRoomCleared", "lavaGateKeyLeft", "sealPuzzleA"]}}
       ]
     },

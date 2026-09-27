@@ -176,8 +176,9 @@
 10. **원본 근거 실행 명세 · 시작** — `test/fixtures/source_parity.json`에
     Pascal 파일·줄 범위·근거 문장과 같은 입력의 예상 효과를 기록한다.
     공통 실행기는 선택된 규칙, 승리·도주 후 전투, 플래그, 횃불, 이동, 타일
-    변형을 단계별로 비교한다. 현재 맵 6·11·13·15·19·20·21·22에서 23개 시나리오와 효과 검사
-    33지점, 미발동 3건을 검증한다. `tool/report_source_parity.py`가 맵별
+    변형을 단계별로 비교한다. 현재 맵 6·11·13·15·16·17·18·19·20·21·22에서
+    26개 시나리오와 효과 검사 36지점, 미발동 3건을 검증한다.
+    `tool/report_source_parity.py`가 맵별
     규모를 집계한다. 이는 원본 전체 분기의 완료율이 아니며, 예상 효과는
     사람이 원본에서 옮긴다. 커밋: `Add source-backed script parity scenarios`.
     맵 21 출구는 두 수문장을 격퇴한 뒤 일반 적을 피해 도주해도 원본에서
@@ -192,5 +193,9 @@
     `BattleMode(FALSE)`를 활성·비활성 규칙 모두에 반영했다. 대표 분기의
     원본 근거와 엔진 실행 결과를 검증한다.
     커밋: `Restore enemy initiative in early scripted battles`.
+    맵 16 Wivern, 18 감옥 수문장·Huge Dragon, 19 봉인 방은 적 선공으로
+    복원했다. 맵 17 Hidra와 맵 19 복도 Crab God의 파티 선공은 원본대로
+    유지했다. 활성·비활성 전투 규칙의 선공 분포와 대표 실행 분기를 검토했다.
+    커밋: `Restore mixed initiative in midgame scripted battles`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
