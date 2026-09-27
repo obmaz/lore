@@ -123,6 +123,9 @@ class PartyMember {
   bool get isAlive => !isDead;
   bool get canAct => !isDead && !isUnconscious;
 
+  /// LORESUB.PAS `exist`: 전투에서 실제로 행동할 수 있는 파티 슬롯.
+  bool get isBattleActive => name.isNotEmpty && canAct && hp > 0;
+
   String get condition {
     if (dead > 0) return 'dead';
     if (unconscious > 0) return 'unconscious';

@@ -18,6 +18,7 @@ enum AttackOutcome {
   debuffed,
   joined,
   summoned,
+  converted,
   failed,
 }
 
@@ -896,13 +897,7 @@ class BattleEngine {
 
     if (monster.isDead || monster.isUnconscious) return results;
 
-    final livingParty = party.where((p) => p.isAlive).toList();
-    if (livingParty.isEmpty) return results;
-    // LORESUB.PAS `exist`: 이름·상태·HP가 모두 유효한 대원만 공격 대상 선택에 포함.
-    final activeParty = party
-        .where((p) => p.name.isNotEmpty && p.canAct && p.hp > 0)
-        .toList();
-    if (activeParty.isEmpty) return results;
+    if (!party.any((member) => member.isBattleActive)) return results;
 
     // 2. SpecialCastAttack: 소환은 일반 공격보다 먼저 일어나며 턴을 끝내지 않는다.
     if (monster.specialCastLevel > 0 && monster.eNumber != 1) {
@@ -925,10 +920,45 @@ class BattleEngine {
       }
     }
 
+    // 원본의 turn_mind(k,6)은 선언된 인자 순서와 반대다. 의도한 6번 동료를
+    // 선택된 적 슬롯으로 변환한다. 원본 호출을 그대로 실행하면 7번 파티원 참조 가능.
+    if (monster.specialCastLevel > 1 &&
+        monster.eNumber != 1 &&
+        party.length >= 6 &&
+        party[5].name.isNotEmpty &&
+        allEnemies.where((enemy) => !enemy.isDead).length < 7 &&
+        _rand(5) == 0) {
+      final formerAlly = party[5];
+      final convertedEnemy = _turnedMind(formerAlly);
+      if (allEnemies.length < 7) {
+        allEnemies.add(convertedEnemy);
+      } else {
+        final deadSlot = allEnemies.indexWhere((enemy) => enemy.isDead);
+        if (deadSlot >= 0) allEnemies[deadSlot] = convertedEnemy;
+      }
+      formerAlly.name = '';
+      results.add(
+        AttackResult(
+          outcome: AttackOutcome.converted,
+          message:
+              '${monster.name}은(는) ${convertedEnemy.name}의 마음을 돌려 적으로 만들었다!',
+        ),
+      );
+    }
+
+    // 변환으로 빈자리가 생겼다면 이후 공격 대상에서 즉시 제외한다.
+    final livingParty = party
+        .where((member) => member.name.isNotEmpty && member.isAlive)
+        .toList();
+    final activeParty = party.where((member) => member.isBattleActive).toList();
+    if (activeParty.isEmpty) return results;
+
     // 특수 즉사 공격 (SpecialCastAttack - LOREBATT.PAS:896)
     if (monster.specialCastLevel > 2 && _rand(5) == 0 && monster.special > 0) {
       // 전체 즉사 공격 시도
-      for (final p in livingParty) {
+      for (final p in party.where(
+        (member) => member.name.isNotEmpty && !member.isDead,
+      )) {
         if (_rand(60) <= monster.agility && _rand(20) >= p.luck) {
           p.dead = 1;
           p.hp = 0;
@@ -1121,6 +1151,23 @@ class BattleEngine {
     results.add(executeEnemyWeaponAttack(monster, target));
     return results;
   }
+
+  Monster _turnedMind(PartyMember member) => Monster(
+    eNumber: 1,
+    name: member.name,
+    strength: member.strength,
+    mentality: member.mentality,
+    endurance: member.endurance,
+    resistance: member.resistance,
+    agility: member.agility,
+    accArms: member.accArms,
+    accMagic: member.accMagic,
+    ac: member.ac,
+    special: member.playerClass == PlayerClass.hunter ? 2 : 0,
+    castLevel: member.magicLevel ~/ 4,
+    specialCastLevel: 0,
+    level: member.battleLevel,
+  );
 
   /// LOREBATT.PAS:602-628 `castattackone`의 정신력별 기본 위력.
   ({String name, int multiplier}) _enemySingleMagic(int mentality) {

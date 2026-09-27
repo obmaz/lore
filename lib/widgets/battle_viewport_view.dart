@@ -22,6 +22,7 @@ import '../game/lore_dialogue_manager.dart';
 class BattleViewportView extends StatefulWidget {
   final List<PartyMember> partyMembers;
   final List<Monster> enemies;
+  final BattleEngine? battleEngine;
   final bool espAccessGranted;
   final void Function(String message) onLog;
   final void Function(int goldEarned) onVictory;
@@ -33,6 +34,7 @@ class BattleViewportView extends StatefulWidget {
     super.key,
     required this.partyMembers,
     required this.enemies,
+    this.battleEngine,
     required this.espAccessGranted,
     required this.onLog,
     required this.onVictory,
@@ -46,7 +48,7 @@ class BattleViewportView extends StatefulWidget {
 }
 
 class _BattleViewportViewState extends State<BattleViewportView> {
-  final BattleEngine _engine = BattleEngine();
+  late final BattleEngine _engine;
   int _selectedEnemyIndex = 0;
   int _activePlayerIndex = 0;
   bool _isTurnProcessing = false;
@@ -64,13 +66,13 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
   PartyMember? get activePlayer {
     for (int i = _activePlayerIndex; i < widget.partyMembers.length; i++) {
-      if (widget.partyMembers[i].canAct) {
+      if (widget.partyMembers[i].isBattleActive) {
         _activePlayerIndex = i;
         return widget.partyMembers[i];
       }
     }
     for (int i = 0; i < widget.partyMembers.length; i++) {
-      if (widget.partyMembers[i].canAct) {
+      if (widget.partyMembers[i].isBattleActive) {
         _activePlayerIndex = i;
         return widget.partyMembers[i];
       }
@@ -83,6 +85,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   @override
   void initState() {
     super.initState();
+    _engine = widget.battleEngine ?? BattleEngine();
     _selectFirstAliveTarget();
   }
 
@@ -119,7 +122,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     }
 
     // 2. 파티원 전멸 확인
-    final allPartyDefeated = widget.partyMembers.every((p) => !p.canAct);
+    final allPartyDefeated = widget.partyMembers.every(
+      (p) => !p.isBattleActive,
+    );
     if (allPartyDefeated) {
       _battleEnded = true;
       _isAutoBattle = false;
@@ -139,7 +144,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
     int nextIdx = _activePlayerIndex + 1;
     while (nextIdx < widget.partyMembers.length &&
-        !widget.partyMembers[nextIdx].canAct) {
+        !widget.partyMembers[nextIdx].isBattleActive) {
       nextIdx++;
     }
 
@@ -161,7 +166,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       if (!_battleEnded) {
         // 첫 번째 행동 가능 파티원 찾기
         for (int i = 0; i < widget.partyMembers.length; i++) {
-          if (widget.partyMembers[i].canAct) {
+          if (widget.partyMembers[i].isBattleActive) {
             _activePlayerIndex = i;
             break;
           }
@@ -188,7 +193,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     for (var index = 0; index < enemyTurnCount; index++) {
       final enemy = widget.enemies[index];
       if (enemy.isDead || enemy.isUnconscious) continue;
-      if (widget.partyMembers.every((p) => !p.canAct)) break;
+      if (widget.partyMembers.every((p) => !p.isBattleActive)) break;
 
       final results = _engine.executeMonsterTurn(
         enemy,

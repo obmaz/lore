@@ -1,11 +1,86 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/logic/battle_engine.dart';
 import 'package:lore/logic/lore_join.dart';
 import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
 
+class _ZeroRandom implements Random {
+  @override
+  int nextInt(int max) => 0;
+
+  @override
+  bool nextBool() => false;
+
+  @override
+  double nextDouble() => 0;
+}
+
 void main() {
+  testWidgets('전투 턴 중 소환된 적은 다음 턴으로 미루고 화면 목록에 추가한다', (tester) async {
+    final hero = PartyMember.createPreset(1)..hp = 10000;
+    final caster = Monster.create(62).withOverrides(special: 0, castLevel: 0);
+    final enemies = [caster];
+    final logs = <String>[];
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: BattleViewportView(
+            partyMembers: [hero],
+            enemies: enemies,
+            battleEngine: BattleEngine(random: _ZeroRandom()),
+            espAccessGranted: false,
+            onLog: logs.add,
+            onVictory: (_) {},
+            onTelepathyJoin: (_) {},
+            onDefeat: () {},
+            onRunAway: () {},
+          ),
+        ),
+      ),
+    );
+
+    await tester.tap(find.text('1.무기공격'));
+    await tester.pumpAndSettle();
+
+    expect(tester.takeException(), isNull);
+    expect(enemies, hasLength(2));
+    expect(enemies.last.eNumber, 42);
+    expect(logs.where((message) => message.contains('소환했다')), hasLength(1));
+    expect(find.textContaining(enemies.last.name), findsWidgets);
+  });
+
+  testWidgets('전투 화면은 비워진 동료 슬롯과 HP 0 대원을 턴에서 제외한다', (tester) async {
+    final party = [
+      PartyMember.createPreset(1)..name = '',
+      PartyMember.createPreset(3)..hp = 0,
+      PartyMember.createPreset(4),
+    ];
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: BattleViewportView(
+            partyMembers: party,
+            enemies: [Monster.create(1)],
+            espAccessGranted: false,
+            onLog: (_) {},
+            onVictory: (_) {},
+            onTelepathyJoin: (_) {},
+            onDefeat: () {},
+            onRunAway: () {},
+          ),
+        ),
+      ),
+    );
+
+    expect(find.text('▶ [${party[2].name}] 의 전투 턴'), findsOneWidget);
+  });
+
   testWidgets('전투 화면의 독심 성공은 적을 6번 슬롯에 즉시 합류시킨다', (tester) async {
     final caster = PartyMember.createPreset(3)
       ..espLevel = 20

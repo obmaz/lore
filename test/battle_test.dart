@@ -710,6 +710,98 @@ void main() {
       );
     });
 
+    test('정신 지배는 6번 동료의 능력을 적으로 복사하고 원래 슬롯을 비운다', () {
+      final caster = Monster.create(67).withOverrides(special: 0, castLevel: 0);
+      final formerAlly = PartyMember.createPreset(7)
+        ..name = 'Rigel'
+        ..playerClass = PlayerClass.hunter
+        ..battleLevel = 3
+        ..magicLevel = 8
+        ..endurance = 12
+        ..hp = 1
+        ..ac = 7;
+      final party = [
+        for (var i = 1; i <= 5; i++) PartyMember.createPreset(i),
+        formerAlly,
+      ];
+      final enemies = [
+        caster,
+        Monster.create(1),
+        Monster.create(1),
+        Monster.create(1),
+      ];
+
+      final results = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, enemies);
+
+      expect(results.first.outcome, AttackOutcome.converted);
+      expect(enemies, hasLength(5));
+      final converted = enemies.last;
+      expect(converted.eNumber, 1);
+      expect(converted.name, 'Rigel');
+      expect(converted.endurance, 12);
+      expect(converted.hp, 36); // 현재 HP 1 대신 원본 turn_mind의 최대 HP
+      expect(converted.ac, 7);
+      expect(converted.special, 2); // 사냥꾼의 기절 특수 공격
+      expect(converted.castLevel, 2);
+      expect(converted.specialCastLevel, 0);
+      expect(formerAlly.name, isEmpty);
+      expect(formerAlly.isBattleActive, isFalse);
+      expect(results.length, greaterThan(1)); // 변환 뒤에도 기본 공격을 수행한다.
+    });
+
+    test('정신 지배는 적이 7명일 때 사망 슬롯을 교체한다', () {
+      final caster = Monster.create(67).withOverrides(special: 0, castLevel: 0);
+      final formerAlly = PartyMember.createPreset(7)..name = '동료';
+      final party = [
+        for (var i = 1; i <= 5; i++) PartyMember.createPreset(i),
+        formerAlly,
+      ];
+      final enemies = [
+        caster,
+        Monster.create(1),
+        Monster.create(1)..isDead = true,
+        Monster.create(1),
+        Monster.create(1),
+        Monster.create(1),
+        Monster.create(1),
+      ];
+
+      BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, enemies);
+
+      expect(enemies, hasLength(7));
+      expect(enemies[2].name, '동료');
+      expect(enemies[2].isDead, isFalse);
+      expect(formerAlly.name, isEmpty);
+    });
+
+    test('6번 동료가 없거나 적 7명이 모두 살아 있으면 정신 지배를 건너뛴다', () {
+      final caster = Monster.create(67).withOverrides(special: 0, castLevel: 0);
+      final party = [
+        for (var i = 1; i <= 5; i++) PartyMember.createPreset(i),
+        PartyMember.createPreset(7)..name = '',
+      ];
+      final enemies = [caster];
+      BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, enemies);
+      expect(enemies, hasLength(2)); // 소환만 가능하다.
+
+      party[5].name = '동료';
+      final fullEnemies = [
+        caster,
+        for (var i = 0; i < 6; i++) Monster.create(1),
+      ];
+      final results = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, party, fullEnemies);
+      expect(fullEnemies, hasLength(7));
+      expect(party[5].name, '동료');
+      expect(
+        results.any((result) => result.outcome == AttackOutcome.converted),
+        isFalse,
+      );
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
       final caster = PartyMember.createPreset(3)
         ..espLevel = 13
