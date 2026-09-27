@@ -16,6 +16,7 @@ import '../logic/lore_sub_text.dart';
 import '../logic/lore_field_logic.dart';
 import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_special_event_dispatcher.dart';
+import '../logic/lore_portal_session.dart';
 import '../logic/lore_battle_progress.dart';
 import '../logic/lore_mirror_enemy.dart';
 import '../logic/lore_rigel_blessing.dart';
@@ -278,64 +279,83 @@ class _MainGameScreenState extends State<MainGameScreen> {
       ),
     );
 
-    if (confirmed == true) {
-      // 원작 LOREENT.PAS - 진입 전 연출(수문장 전투/대사/라바 게이트 판정).
-      final enterScriptId = portal.scriptId;
-      if (enterScriptId != null) {
-        final pre = LoreScriptEngine.instance.startById(
-          enterScriptId,
-          _scriptContext(),
-        );
-        if (pre != null && pre.awaitingBattle) {
-          var alreadyApplied = const ScriptOutcome();
-          if (enterScriptId == 'portal-23-25-dungeon') {
-            for (final message in pre.outcome.messages) {
+    final plan = LorePortalSession.begin(
+      confirmed: confirmed == true,
+      portal: portal,
+      context: _scriptContext(),
+      scripts: LoreScriptEngine.instance,
+    );
+    if (plan.action == LorePortalAction.cancelled) {
+      if (confirmed == false) _addLog(LoreFieldLogic.asYouWish);
+      return;
+    }
+    // 원작 LOREENT.PAS - 진입 전 연출(수문장 전투/대사/라바 게이트 판정).
+    if (plan.preScript case final pre?) {
+      if (pre.awaitingBattle) {
+        var alreadyApplied = const ScriptOutcome();
+        if (portal.scriptId == 'portal-23-25-dungeon') {
+          for (final message in pre.outcome.messages) {
+            _addLog(message);
+          }
+          if (_party.length >= 6 && _party[5].name == 'Draconian') {
+            for (final message in const [
+              ' ArchiDraconian은 마지막에 있는 Draconian',
+              '을 발견했다.',
+              ' 아니 너는 누구냐! 감히 Draconian 족이면',
+              '서 Necromancer님에게 반기를 들다니... 그',
+              '것은 바로 죽음이다. 받아랏!!',
+            ]) {
               _addLog(message);
             }
-            if (_party.length >= 6 && _party[5].name == 'Draconian') {
-              for (final message in const [
-                ' ArchiDraconian은 마지막에 있는 Draconian',
-                '을 발견했다.',
-                ' 아니 너는 누구냐! 감히 Draconian 족이면',
-                '서 Necromancer님에게 반기를 들다니... 그',
-                '것은 바로 죽음이다. 받아랏!!',
-              ]) {
-                _addLog(message);
-              }
-              _party[5]
-                ..hp = 0
-                ..unconscious = 1
-                ..dead = 30000;
-              setState(() {});
-            }
-            alreadyApplied = ScriptOutcome(
-              messages: pre.outcome.messages,
-              events: pre.outcome.events,
-            );
+            _party[5]
+              ..hp = 0
+              ..unconscious = 1
+              ..dead = 30000;
+            setState(() {});
           }
-          _pendingPortalTransition = (portal: portal, tx: tx, ty: ty);
-          await _driveScript(pre, alreadyApplied: alreadyApplied);
-          if (_pendingScriptBattle == null) _pendingPortalTransition = null;
-          return;
+          alreadyApplied = ScriptOutcome(
+            messages: pre.outcome.messages,
+            events: pre.outcome.events,
+          );
         }
-        if (pre != null && !await _applyScriptOutcome(pre)) return;
+        _pendingPortalTransition = (portal: portal, tx: tx, ty: ty);
+        final completed = await _driveScript(
+          pre,
+          alreadyApplied: alreadyApplied,
+        );
+        final action = LorePortalSession.afterPreScript(
+          completed: completed,
+          waitingForBattle: _pendingScriptBattle != null,
+          blockMove: pre.outcome.blockMove,
+        );
+        if (action != LorePortalAction.waitForBattle) {
+          _pendingPortalTransition = null;
+        }
+        if (action != LorePortalAction.loadMap) return;
+      } else {
+        final completed = await _applyScriptOutcome(pre);
         if (!mounted) return;
-        // 원작 `exit` - 진행을 취소하는 판정(라바 게이트 등).
-        if (pre != null && pre.outcome.blockMove) return;
+        final action = LorePortalSession.afterPreScript(
+          completed: completed,
+          waitingForBattle: false,
+          blockMove: pre.outcome.blockMove,
+        );
+        if (action != LorePortalAction.loadMap) return;
       }
-      final enteredFromMap = _game.currentMapId;
-      await _game.enterPortal(portal, tx, ty);
-      if (!mounted) return;
-      setState(() {});
-      // 원작 entermode - 맵 진입 후 타일/연출 처리.
-      final enter = LoreScriptEngine.instance.startEnter(
-        _game.currentMapId,
-        _scriptContext(enteredFromMap: enteredFromMap),
-      );
-      if (enter != null) await _applyScriptOutcome(enter);
-    } else if (confirmed == false) {
-      _addLog(LoreFieldLogic.asYouWish);
     }
+    await _finishPortalEntry(portal, tx, ty);
+  }
+
+  Future<void> _finishPortalEntry(PortalInfo portal, int tx, int ty) async {
+    final enteredFromMap = _game.currentMapId;
+    await _game.enterPortal(portal, tx, ty);
+    if (!mounted) return;
+    setState(() {});
+    final enter = LoreScriptEngine.instance.startEnter(
+      _game.currentMapId,
+      _scriptContext(enteredFromMap: enteredFromMap),
+    );
+    if (enter != null) await _driveScript(enter);
   }
 
   // =========================================================================
@@ -1416,24 +1436,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
     final portal = _pendingPortalTransition;
     if (!mounted) return;
-    if (!completed && _pendingScriptBattle == null) {
-      _pendingPortalTransition = null;
-      return;
-    }
-    if (_pendingScriptBattle != null || portal == null) {
-      return;
-    }
-    _pendingPortalTransition = null;
-    if (blocked) return;
-    final enteredFromMap = _game.currentMapId;
-    await _game.enterPortal(portal.portal, portal.tx, portal.ty);
-    if (!mounted) return;
-    setState(() {});
-    final enter = LoreScriptEngine.instance.startEnter(
-      _game.currentMapId,
-      _scriptContext(enteredFromMap: enteredFromMap),
+    if (portal == null) return;
+    final action = LorePortalSession.afterPreScript(
+      completed: completed,
+      waitingForBattle: _pendingScriptBattle != null,
+      blockMove: blocked,
     );
-    if (enter != null) await _driveScript(enter);
+    if (action == LorePortalAction.waitForBattle) return;
+    _pendingPortalTransition = null;
+    if (action != LorePortalAction.loadMap) return;
+    await _finishPortalEntry(portal.portal, portal.tx, portal.ty);
   }
 
   LoreBattleProgressState _battleProgressState() {

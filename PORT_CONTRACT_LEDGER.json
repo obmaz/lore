@@ -25821,6 +25821,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/portal_session_test.dart",
+      "kind": "test",
+      "sha256": "e2abc3051ce25747b78705c1e8c653326c4d86c20633e30719cd196604832d8a",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/quest_branch_test.dart",
       "kind": "test",
       "sha256": "6fc277e2fc6683812555979d64f48bd94edb31d6b33d7a784ec34ecd14ba6a6e",
@@ -26360,6 +26367,10 @@
       "sha256": "40f4d037032311e7bbeb236e8a836d9c70f366ee5791a0ff1cd37d02e76b4415"
     },
     {
+      "path": "lib/logic/lore_portal_session.dart",
+      "sha256": "48b73ace6c0667c18132abb37e12f6916ae2139f95031f7a5631c1f4e5cd6909"
+    },
+    {
       "path": "lib/logic/lore_talk_dispatcher.dart",
       "sha256": "e957dd67e9824f6e2203a0f7912874c4c5d54d183438c1a4f016720eb86b9ba5"
     },
@@ -26369,7 +26380,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "6a31beb42840808d1ce91499b63de6bd78d1c37533c714989e243e214e8b66be"
+      "sha256": "df81cce431a309c937aef57db027ef97d5c5050e5896ae2e26999d119ad1a3ca"
     }
   ],
   "baseline_gaps": {
