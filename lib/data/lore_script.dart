@@ -185,6 +185,9 @@ class ScriptStep {
   final String? text;
   final int? amount;
   final String? key;
+
+  /// Reuse another script's steps in the current battle sequence.
+  final String? includeScriptId;
   final int? slot;
   final String? prompt;
   final List<ScriptOption>? options;
@@ -290,6 +293,7 @@ class ScriptStep {
     this.text,
     this.amount,
     this.key,
+    this.includeScriptId,
     this.slot,
     this.prompt,
     this.options,
@@ -809,6 +813,7 @@ class LoreScriptEngine {
     final scripts = (decoded['scripts'] as List<dynamic>)
         .map((e) => _parseScript(e as Map<String, dynamic>))
         .toList();
+    _validateIncludes(scripts);
     _scripts = scripts;
     consumedScripts.clear();
     usingJson = true;
@@ -822,6 +827,48 @@ class LoreScriptEngine {
     loadError = null;
     _scripts = [];
     consumedScripts.clear();
+  }
+
+  void _validateIncludes(List<LoreScript> scripts) {
+    final byId = <String, List<LoreScript>>{};
+    for (final script in scripts) {
+      byId.putIfAbsent(script.id, () => []).add(script);
+    }
+    Iterable<String> references(List<ScriptStep> steps) sync* {
+      for (final step in steps) {
+        if (step.includeScriptId case final id?) yield id;
+        for (final option in step.options ?? const <ScriptOption>[]) {
+          yield* references(option.steps);
+        }
+        for (final branch
+            in step.randomBranches ?? const <List<ScriptStep>>[]) {
+          yield* references(branch);
+        }
+        yield* references(step.battleRunAwaySteps);
+      }
+    }
+
+    final visited = <LoreScript>{};
+    final visiting = <LoreScript>{};
+    void visit(LoreScript script) {
+      if (visiting.contains(script)) {
+        throw FormatException('순환 스크립트 참조: ${script.id}');
+      }
+      if (!visited.add(script)) return;
+      visiting.add(script);
+      for (final reference in references(script.steps)) {
+        final matches = byId[reference] ?? const <LoreScript>[];
+        if (matches.length != 1) {
+          throw FormatException('스크립트 참조가 없거나 중복됨: $reference');
+        }
+        visit(matches.single);
+      }
+      visiting.remove(script);
+    }
+
+    for (final script in scripts) {
+      visit(script);
+    }
   }
 
   /// 좌표에 해당하는 스크립트를 찾는다(조건 검사 포함).
@@ -1003,6 +1050,14 @@ class LoreScriptEngine {
     final queue = List<ScriptStep>.from(steps);
     for (var i = 0; i < queue.length; i++) {
       final step = queue[i];
+      if (step.kind == 'includeScript') {
+        final included = _scripts.where((s) => s.id == step.includeScriptId);
+        if (included.isEmpty) {
+          throw FormatException('스크립트 참조를 찾을 수 없음: ${step.includeScriptId}');
+        }
+        queue.insertAll(i + 1, included.single.steps);
+        continue;
+      }
       if (step.kind == 'randomSteps') {
         final branches = step.randomBranches ?? const [];
         if (branches.isNotEmpty) {
@@ -1270,6 +1325,15 @@ class LoreScriptEngine {
       }
       if (m.containsKey('flag')) {
         steps.add(ScriptStep(kind: 'flag', key: m['flag'] as String));
+        matched = true;
+      }
+      if (m.containsKey('includeScript')) {
+        steps.add(
+          ScriptStep(
+            kind: 'includeScript',
+            includeScriptId: m['includeScript'] as String,
+          ),
+        );
         matched = true;
       }
       if (m.containsKey('teleport')) {

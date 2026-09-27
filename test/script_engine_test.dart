@@ -1357,6 +1357,22 @@ void main() {
         54,
         54,
       ]);
+      // 원작은 수호룡 승리 직후 같은 좌표에서 진흙 인간과 주인을 연달아 만난다.
+      final dragons = engine.startStep(20, 30, 13, noCtx)!;
+      final afterDragons = dragons.continueAfterBattle();
+      expect(afterDragons.awaitingBattle, isTrue);
+      expect(afterDragons.outcome.battleMonsters, List.filled(7, 31));
+      expect(afterDragons.outcome.setFlags, contains('den7DragonsCleared'));
+      final afterMudmen = afterDragons.continueAfterBattle();
+      expect(afterMudmen.awaitingBattle, isTrue);
+      expect(afterMudmen.outcome.battleMonsters.last, 57);
+      expect(afterMudmen.outcome.setFlags, contains('den7MudmenCleared'));
+      final afterMaster = afterMudmen.continueAfterBattle();
+      expect(afterMaster.awaitingBattle, isFalse);
+      expect(afterMaster.outcome.setFlags, contains('den7MazeCleared'));
+      expect(afterMaster.outcome.teleportMap, 4);
+      expect(dragons.continueAfterRunAway().outcome.nudges.single.dy, 1);
+      expect(afterDragons.continueAfterRunAway().outcome.nudges.single.dy, 1);
       final mudmen = engine.startStep(
         20,
         30,

@@ -10566,11 +10566,21 @@
               54,
               54,
               54
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
             ]
           }
         },
         {
           "flag": "den7DragonsCleared"
+        },
+        {
+          "includeScript": "den7-mudmen-y13"
         }
       ]
     },
@@ -10601,11 +10611,21 @@
               31,
               31,
               31
+            ],
+            "onRunAway": [
+              {
+                "nudge": {
+                  "dy": 1
+                }
+              }
             ]
           }
         },
         {
           "flag": "den7MudmenCleared"
+        },
+        {
+          "includeScript": "den7-master-y13"
         }
       ]
     },

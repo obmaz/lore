@@ -47,6 +47,10 @@
    커밋: `Restore GAIA progress when finding the golden seal`.
    맵 20 DEN7의 y=13 전투·복귀 네 단계에서 빠졌던 횃불 효과도 복원했다.
    커밋: `Restore DEN7 torch effect across final maze branches`.
+   같은 좌표에서 수호룡 승리 후 진흙 인간, 미궁의 주인 전투가 즉시 이어지는
+   원본 흐름을 스크립트 참조로 연결했다. 앞 두 전투의 도주 시 한 칸 후퇴도
+   복원하고, 세 번의 승리와 도주 분기를 실행 검증했다.
+   커밋: `Chain DEN7 guardian battles after each victory`.
    맵 11 출구와 맵 1 입구에서 LASTDITCH로 돌아올 때 원본은 현재 파티의
    Polaris를 확인해 NPC 타일을 길로 바꾼다. 기존 재진입 규칙의 과거 영입
    플래그 판정을 현재 파티 이름 판정으로 고치고, 영입 슬롯 취소 시 후속 타일

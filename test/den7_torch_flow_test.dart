@@ -43,7 +43,7 @@ void main() {
         expect(run.outcome.battleMonsters, scenario.monsters);
         expect(
           run.continueAfterBattle().outcome.since(run.outcome).torchLit,
-          isFalse,
+          scenario.id == 'den7-master-y13' ? isFalse : isTrue,
         );
       }
       if (scenario.id == 'den7-return-y13') {
