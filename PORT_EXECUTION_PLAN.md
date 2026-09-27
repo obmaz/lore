@@ -119,5 +119,9 @@
    실제 전투 화면에서 초능력 메뉴의 독심을 선택해 적이 6번 슬롯에 합류하고,
    ESP 소모와 승리 콜백까지 이어지는 위젯 시나리오를 검증했다.
    커밋: `Verify telepathy recruitment through battle viewport`.
+   적 `castattackone`·`castattackall`의 정신력 구간별 위력 배수가 기존의
+   단순 나눗셈과 달라 단일 1/2/4/6/7/10, 전체 1/2/3/5/8로 복원했다.
+   정신력 20·21 적의 실제 전투 피해를 고정 난수로 검증했다.
+   커밋: `Match enemy spell power to original mentality tiers`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

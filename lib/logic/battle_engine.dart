@@ -987,10 +987,9 @@ class BattleEngine {
 
       // 전체 마법 공격 (castlevel >= 3 이고 50% 확률)
       if (monster.castLevel >= 3 && _rand(2) == 0) {
-        const magicNames = ['열파', '에너지', '초음파', '혹한기', '화염폭풍'];
-        final mIdx = min(magicNames.length - 1, monster.mentality ~/ 4);
-        final spellName = magicNames[mIdx];
-        final pwr = (mIdx + 1) * monster.level;
+        final spell = _enemyAllMagic(monster.mentality);
+        final spellName = spell.name;
+        final pwr = spell.multiplier * monster.level;
 
         results.add(
           AttackResult(
@@ -1007,10 +1006,9 @@ class BattleEngine {
       }
 
       // 단일 마법 공격 (castattackone)
-      const singleNames = ['충격', '냉기', '고통', '혹한', '화염', '번개'];
-      final mIdx = min(singleNames.length - 1, monster.mentality ~/ 3);
-      final spellName = singleNames[mIdx];
-      final pwr = (mIdx + 1) * monster.level;
+      final spell = _enemySingleMagic(monster.mentality);
+      final spellName = spell.name;
+      final pwr = spell.multiplier * monster.level;
       final target = livingParty[_rand(livingParty.length)];
 
       results.add(
@@ -1028,6 +1026,27 @@ class BattleEngine {
     final target = livingParty[_rand(livingParty.length)];
     results.add(executeEnemyWeaponAttack(monster, target));
     return results;
+  }
+
+  /// LOREBATT.PAS:602-628 `castattackone`의 정신력별 기본 위력.
+  ({String name, int multiplier}) _enemySingleMagic(int mentality) {
+    if (mentality <= 0) return (name: '번개', multiplier: 10);
+    if (mentality >= 1 && mentality <= 3) return (name: '충격', multiplier: 1);
+    if (mentality <= 8) return (name: '냉기', multiplier: 2);
+    if (mentality <= 10) return (name: '고통', multiplier: 4);
+    if (mentality <= 14) return (name: '혹한', multiplier: 6);
+    if (mentality <= 18) return (name: '화염', multiplier: 7);
+    return (name: '번개', multiplier: 10);
+  }
+
+  /// LOREBATT.PAS:639-663 `castattackall`의 정신력별 기본 위력.
+  ({String name, int multiplier}) _enemyAllMagic(int mentality) {
+    if (mentality <= 0) return (name: '화염폭풍', multiplier: 8);
+    if (mentality >= 1 && mentality <= 6) return (name: '열파', multiplier: 1);
+    if (mentality <= 12) return (name: '에너지', multiplier: 2);
+    if (mentality <= 16) return (name: '초음파', multiplier: 3);
+    if (mentality <= 20) return (name: '혹한기', multiplier: 5);
+    return (name: '화염폭풍', multiplier: 8);
   }
 
   AttackResult _applyEnemyMagicDamage(

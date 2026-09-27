@@ -384,6 +384,62 @@ void main() {
       expect(ninja.esp, 0);
     });
 
+    test('적 단일·전체 마법은 원본 정신력 구간의 위력을 사용한다', () {
+      final engine = BattleEngine(random: DeterministicRandom([0]));
+      final singleTarget = PartyMember.createPreset(1)
+        ..hp = 100
+        ..resistance = 0
+        ..ac = 0;
+      final singleCaster = Monster(
+        eNumber: 1,
+        name: '단일 시전자',
+        strength: 0,
+        mentality: 20,
+        endurance: 10,
+        resistance: 0,
+        agility: 0,
+        accArms: 0,
+        accMagic: 20,
+        ac: 0,
+        special: 0,
+        castLevel: 1,
+        specialCastLevel: 0,
+        level: 2,
+      );
+      engine.executeMonsterTurn(singleCaster, [singleTarget], [singleCaster]);
+      expect(singleTarget.hp, 80); // mentality 20: 10 * level 2
+
+      final groupTargets = [
+        PartyMember.createPreset(1)
+          ..hp = 100
+          ..resistance = 0
+          ..ac = 0,
+        PartyMember.createPreset(3)
+          ..hp = 100
+          ..resistance = 0
+          ..ac = 0,
+      ];
+      final groupCaster = Monster(
+        eNumber: 1,
+        name: '전체 시전자',
+        strength: 0,
+        mentality: 21,
+        endurance: 10,
+        resistance: 0,
+        agility: 0,
+        accArms: 0,
+        accMagic: 20,
+        ac: 0,
+        special: 0,
+        castLevel: 3,
+        specialCastLevel: 0,
+        level: 2,
+      );
+      engine.executeMonsterTurn(groupCaster, groupTargets, [groupCaster]);
+      expect([for (final target in groupTargets) target.hp], [84, 84]);
+      // mentality 21: 8 * level 2, 대상마다 16
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
       final caster = PartyMember.createPreset(3)
         ..espLevel = 13
