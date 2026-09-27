@@ -801,8 +801,8 @@
 | `spec-20-L1475xxxx`<br>LORESPEC.PAS:1475 | step (*, 18) | 조건 없음 | 조건 없음 | torch, flag:etc1 |
 | `spec-20-L1475-1xxx`<br>LORESPEC.PAS:1475 | step (*, 48) | {"notAllFlags":["den7MinotaurCleared","etc1"]} | notAllFlags → den7MinotaurCleared 추가 | torch, flag:etc1, battle(적 1), flag:den7MinotaurCleared |
 | `spec-20-L1475-2xxx`<br>LORESPEC.PAS:1475 | step (*, 48) | {"allFlags":["etc1"],"notAllFlags":["den7MinotaurCleared"]} | allFlags → etc1 제거; notAllFlags → den7MinotaurCleared 추가 | battle(적 1), flag:den7MinotaurCleared |
-| `den7-dragons-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flagNot":"den7DragonsCleared"} | flagNot den7DragonsCleared → 추가 | torch, battle(적 3), flag:den7DragonsCleared |
-| `den7-mudmen-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7DragonsCleared","flagNot":"den7MudmenCleared"} | flag den7DragonsCleared → 제거; flagNot den7MudmenCleared → 추가 | torch, battle(적 7), flag:den7MudmenCleared |
+| `den7-dragons-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flagNot":"den7DragonsCleared"} | flagNot den7DragonsCleared → 추가 | torch, battle(적 3, 도주 분기), nudge, flag:den7DragonsCleared |
+| `den7-mudmen-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7DragonsCleared","flagNot":"den7MudmenCleared"} | flag den7DragonsCleared → 제거; flagNot den7MudmenCleared → 추가 | torch, battle(적 7, 도주 분기), nudge, flag:den7MudmenCleared |
 | `den7-master-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MudmenCleared","flagNot":"den7MazeCleared"} | flag den7MudmenCleared → 제거; flagNot den7MazeCleared → 추가 | torch, battle(적 7, 도주 분기, 격퇴 슬롯 7), nudge, flag:den7MazeCleared, flag:lavaGateKeyRight, teleport |
 | `den7-return-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MazeCleared"} | flag den7MazeCleared → 제거 | torch, teleport |
 
@@ -810,9 +810,9 @@
 
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
-| `keep1-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"notAllFlags":["keep1LeftGuardianDefeated","keep1RightGuardianDefeated"],"flagNot":"swampKeepBossDefeated"} | flagNot swampKeepBossDefeated → 추가; notAllFlags → keep1LeftGuardianDefeated 추가 | battle(적 7, 승리 플래그, 적별 격퇴 플래그) |
-| `keep1-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flag":"keep1LeftGuardianDefeated","flagNot":"keep1RightGuardianDefeated"} | flag keep1LeftGuardianDefeated → 제거; flagNot keep1RightGuardianDefeated → 추가 | battle(적 6, 승리 플래그, 적별 격퇴 플래그) |
-| `keep1-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flag":"keep1RightGuardianDefeated","flagNot":"keep1LeftGuardianDefeated"} | flag keep1RightGuardianDefeated → 제거; flagNot keep1LeftGuardianDefeated → 추가 | battle(적 6, 승리 플래그, 적별 격퇴 플래그) |
+| `keep1-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"notAllFlags":["keep1LeftGuardianDefeated","keep1RightGuardianDefeated"],"flagNot":"swampKeepBossDefeated"} | flagNot swampKeepBossDefeated → 추가; notAllFlags → keep1LeftGuardianDefeated 추가 | battle(적 7, 승리 플래그, 도주 중 지정 슬롯 격퇴, 적별 격퇴 플래그) |
+| `keep1-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flag":"keep1LeftGuardianDefeated","flagNot":"keep1RightGuardianDefeated"} | flag keep1LeftGuardianDefeated → 제거; flagNot keep1RightGuardianDefeated → 추가 | battle(적 6, 승리 플래그, 도주 중 지정 슬롯 격퇴, 적별 격퇴 플래그) |
+| `keep1-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flag":"keep1RightGuardianDefeated","flagNot":"keep1LeftGuardianDefeated"} | flag keep1RightGuardianDefeated → 제거; flagNot keep1LeftGuardianDefeated → 추가 | battle(적 6, 승리 플래그, 도주 중 지정 슬롯 격퇴, 적별 격퇴 플래그) |
 | `keep1-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"allFlags":["keep1LeftGuardianDefeated","keep1RightGuardianDefeated"],"flagNot":"swampKeepBossDefeated"} | flagNot swampKeepBossDefeated → 추가; allFlags → keep1LeftGuardianDefeated 제거 | flag:swampKeepBossDefeated, block |
 | `keep1-seal-gate-a`<br>LORESPEC.PAS (파일 추정) | step (25, 20) | {"flagNot":"sealPuzzleA"} | flagNot sealPuzzleA → 추가 | nudge |
 | `keep1-seal-gate-b`<br>LORESPEC.PAS (파일 추정) | step (25, 20) | {"flagNot":"sealPuzzleB"} | flagNot sealPuzzleB → 추가 | nudge |
@@ -827,11 +827,11 @@
 
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
-| `keep2-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flagNot":"etc43_bit3"} | flagNot etc43_bit3 → 추가 | battle(적 7, 격퇴 슬롯 7), flag:etc43_bit3 |
-| `spec-22-L1816-1x`<br>LORESPEC.PAS:1816 | step (25, 18) | {"notAllFlags":["etc6","keep2AmbushCleared"]} | notAllFlags → etc6 추가 | battle(적 5), flag:keep2AmbushCleared |
+| `keep2-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flagNot":"etc43_bit3"} | flagNot etc43_bit3 → 추가 | battle(적 7, 적 선공, 격퇴 슬롯 7), flag:etc43_bit3 |
+| `spec-22-L1816-1x`<br>LORESPEC.PAS:1816 | step (25, 18) | {"notAllFlags":["etc6","keep2AmbushCleared"]} | notAllFlags → etc6 추가 | battle(적 5, 적 선공), flag:keep2AmbushCleared |
 | `keep2-guards-y25`<br>LORESPEC.PAS (파일 추정) | step (24..26, 25) | {"flagNot":"keep2GuardsCleared"} | flagNot keep2GuardsCleared → 추가 | battle(적 5), flag:keep2GuardsCleared |
-| `keep2-ambush-zone-a`<br>LORESPEC.PAS (파일 추정) | step (*, 1..45) | {"flagNot":"keep2AmbushCleared"} | flagNot keep2AmbushCleared → 추가 | battle(적 5, 도주 분기), setTileAtPlayer |
-| `keep2-ambush-zone-b`<br>LORESPEC.PAS (파일 추정) | step (*, 47..99) | {"flagNot":"keep2AmbushCleared"} | flagNot keep2AmbushCleared → 추가 | battle(적 5, 도주 분기), setTileAtPlayer |
+| `keep2-ambush-zone-a`<br>LORESPEC.PAS (파일 추정) | step (*, 1..45) | {"flagNot":"keep2AmbushCleared"} | flagNot keep2AmbushCleared → 추가 | battle(적 5, 적 선공, 도주 분기), setTileAtPlayer |
+| `keep2-ambush-zone-b`<br>LORESPEC.PAS (파일 추정) | step (*, 47..99) | {"flagNot":"keep2AmbushCleared"} | flagNot keep2AmbushCleared → 추가 | battle(적 5, 적 선공, 도주 분기), setTileAtPlayer |
 | `enter-22-ancient-evil`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"flagNot":"ancientEvilSpeechGiven","enteredFromMap":21} | flagNot ancientEvilSpeechGiven → 추가; enteredFromMap 21 → 다른 맵에서 진입 | flag:ancientEvilSpeechGiven |
 
 ### 맵 23

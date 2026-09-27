@@ -176,13 +176,17 @@
 10. **원본 근거 실행 명세 · 시작** — `test/fixtures/source_parity.json`에
     Pascal 파일·줄 범위·근거 문장과 같은 입력의 예상 효과를 기록한다.
     공통 실행기는 선택된 규칙, 승리·도주 후 전투, 플래그, 횃불, 이동, 타일
-    변형을 단계별로 비교한다. 현재 맵 19·20·21에서 17개 시나리오와 효과 검사
-    26지점, 미발동 3건을 검증한다. `tool/report_source_parity.py`가 맵별
+    변형을 단계별로 비교한다. 현재 맵 19·20·21·22에서 19개 시나리오와 효과 검사
+    29지점, 미발동 3건을 검증한다. `tool/report_source_parity.py`가 맵별
     규모를 집계한다. 이는 원본 전체 분기의 완료율이 아니며, 예상 효과는
     사람이 원본에서 옮긴다. 커밋: `Add source-backed script parity scenarios`.
     맵 21 출구는 두 수문장을 격퇴한 뒤 일반 적을 피해 도주해도 원본에서
     완료 비트를 기록한다. 적 슬롯 집합의 격퇴를 도주 후속 조건으로 추가하고
     실제 전투 세션과 원본 근거 시나리오에서 검증했다.
     커밋: `Record SWAMP KEEP completion when guardians fall before retreat`.
+    `BattleMode(FALSE)`의 적 선공을 전투 데이터 → 화면으로 전달한다. 맵 22의
+    일반 습격·Death Knight·출구 전투에 적용하고, `BattleMode(TRUE)`인
+    수문장 좌표는 파티 선공으로 남긴다. 연속 전투마다 화면 상태를 새로 시작한다.
+    커밋: `Honor scripted enemy initiative in IMPERIUM MINOR`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

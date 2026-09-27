@@ -94,6 +94,7 @@ void main() {
         }
         final expected = <String, Object?>{
           'battle': <int>[],
+          'enemyFirst': false,
           'flags': <String>[],
           'torch': false,
           'nudges': <List<int>>[],
@@ -117,6 +118,7 @@ void main() {
 
 Map<String, Object?> _effects(ScriptRun run, ScriptOutcome delta) => {
   'battle': delta.battleMonsters,
+  'enemyFirst': delta.battleEnemyFirst,
   'flags': delta.setFlags,
   'torch': delta.torchLit,
   'nudges': [

@@ -59,11 +59,13 @@ class ScriptBranchAuditTest(unittest.TestCase):
     def test_links_battle_victory_escape_and_tile_effects(self):
         summary = effect_summary([
             {"setTile": {"x": 1, "y": 2, "tile": 44}},
-            {"battle": {"monsters": [1, 2, 3], "victoryFlag": "won", "onRunAway": [{"nudge": {"dx": 1}}], "victoryIfEnemyDead": 3}},
+            {"battle": {"monsters": [1, 2, 3], "victoryFlag": "won", "enemyFirst": True, "onRunAway": [{"nudge": {"dx": 1}}], "onRunAwayIfDead": [{"slots": [1, 2], "flag": "won"}], "victoryIfEnemyDead": 3}},
         ])
         self.assertIn("setTile", summary)
         self.assertIn("승리 플래그", summary)
         self.assertIn("도주 분기", summary)
+        self.assertIn("적 선공", summary)
+        self.assertIn("도주 중 지정 슬롯 격퇴", summary)
         self.assertIn("격퇴 슬롯 3", summary)
         self.assertIn("nudge", summary)
 

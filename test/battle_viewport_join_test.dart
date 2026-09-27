@@ -19,7 +19,53 @@ class _ZeroRandom implements Random {
   double nextDouble() => 0;
 }
 
+class _OpeningTurnEngine extends BattleEngine {
+  int monsterTurns = 0;
+
+  @override
+  List<AttackResult> executeMonsterTurn(
+    Monster monster,
+    List<PartyMember> party,
+    List<Monster> allEnemies,
+  ) {
+    monsterTurns++;
+    return const [AttackResult(outcome: AttackOutcome.miss, message: '적의 선공')];
+  }
+}
+
 void main() {
+  testWidgets('적 선공 전투는 파티 입력 전에 적 턴을 실행한다', (tester) async {
+    final engine = _OpeningTurnEngine();
+    final logs = <String>[];
+    Widget battle(int serial) => MaterialApp(
+      home: Scaffold(
+        body: BattleViewportView(
+          key: ValueKey(serial),
+          partyMembers: [PartyMember.createPreset(1)],
+          enemies: [Monster.create(1)],
+          battleEngine: engine,
+          enemyFirst: true,
+          espAccessGranted: false,
+          onLog: logs.add,
+          onVictory: (_) {},
+          onTelepathyJoin: (_) {},
+          onDefeat: () {},
+          onRunAway: () {},
+        ),
+      ),
+    );
+    await tester.pumpWidget(battle(1));
+    await tester.pump(const Duration(milliseconds: 300));
+    await tester.pump(const Duration(milliseconds: 200));
+    expect(engine.monsterTurns, 1);
+    expect(logs.first, '적의 선공');
+    await tester.pumpWidget(battle(2));
+    await tester.pump(const Duration(milliseconds: 300));
+    await tester.pump(const Duration(milliseconds: 200));
+    expect(engine.monsterTurns, 2); // 연속 전투도 첫 턴을 다시 실행한다.
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('전투 턴 중 소환된 적은 다음 턴으로 미루고 화면 목록에 추가한다', (tester) async {
     final hero = PartyMember.createPreset(1)..hp = 10000;
     final caster = Monster.create(62).withOverrides(special: 0, castLevel: 0);

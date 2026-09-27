@@ -194,6 +194,9 @@ class ScriptStep {
   final List<int>? monsters;
   final String? battleTitle;
 
+  /// 원본 BattleMode(FALSE): 첫 라운드에 적이 먼저 행동한다.
+  final bool battleEnemyFirst;
+
   /// 전투 **승리 시** 설정할 플래그 (원작 `if party.etc[6] = 0 then party.etc[..] or bit`).
   final List<String> battleVictoryFlags;
   final Map<int, String> battleEnemyDefeatFlags;
@@ -302,6 +305,7 @@ class ScriptStep {
     this.options,
     this.monsters,
     this.battleTitle,
+    this.battleEnemyFirst = false,
     this.battleVictoryFlags = const [],
     this.battleEnemyDefeatFlags = const {},
     this.battleRunAwayFlagsWhenDead = const [],
@@ -427,6 +431,7 @@ class ScriptOutcome {
   final bool battleMirrorParty;
   final bool battleReuseExisting;
   final String? battleTitle;
+  final bool battleEnemyFirst;
 
   /// 전투 적별 덮어쓰기 (원작 `with enemy[i] do begin name := ..; ac := ..; end`).
   final List<Map<String, Object?>> battleOverrides;
@@ -522,6 +527,7 @@ class ScriptOutcome {
     this.battleMirrorParty = false,
     this.battleReuseExisting = false,
     this.battleTitle,
+    this.battleEnemyFirst = false,
     this.battleOverrides = const [],
     this.battleVictoryFlags = const [],
     this.blockMove = false,
@@ -580,6 +586,7 @@ class ScriptOutcome {
       battleMirrorParty: newBattle && battleMirrorParty,
       battleReuseExisting: newBattle && battleReuseExisting,
       battleTitle: newBattle ? battleTitle : null,
+      battleEnemyFirst: newBattle && battleEnemyFirst,
       battleOverrides: newBattle ? battleOverrides : const [],
       battleVictoryFlags: added(
         battleVictoryFlags,
@@ -961,6 +968,7 @@ class LoreScriptEngine {
     var battleMirrorParty = acc.battleMirrorParty;
     var battleReuseExisting = acc.battleReuseExisting;
     var battleTitle = acc.battleTitle;
+    var battleEnemyFirst = acc.battleEnemyFirst;
     var battleOverrides = List<Map<String, Object?>>.from(acc.battleOverrides);
     var teleportMap = acc.teleportMap;
     var teleportX = acc.teleportX;
@@ -1024,6 +1032,7 @@ class LoreScriptEngine {
       battleReuseExisting: battleReuseExisting,
       battleOverrides: battleOverrides,
       battleTitle: battleTitle,
+      battleEnemyFirst: battleEnemyFirst,
       battleVictoryFlags: battleVictory,
       blockMove: blockMove,
       teleportMap: teleportMap,
@@ -1110,6 +1119,7 @@ class LoreScriptEngine {
             }
           }
           battleTitle = step.battleTitle;
+          battleEnemyFirst = step.battleEnemyFirst;
           battleOverrides = List<Map<String, Object?>>.from(
             step.battleOverrides ?? const [],
           );
@@ -1511,6 +1521,7 @@ class LoreScriptEngine {
             kind: 'battle',
             monsters: (b['monsters'] as List<dynamic>? ?? const []).cast<int>(),
             battleTitle: b['title'] as String?,
+            battleEnemyFirst: b['enemyFirst'] == true,
             battleOverrides: (b['overrides'] as List<dynamic>?)
                 ?.map(
                   (o) => (o as Map<String, dynamic>).cast<String, Object?>(),

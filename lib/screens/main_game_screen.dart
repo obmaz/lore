@@ -80,6 +80,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   /// 스크립트 전투 승리 시 설정할 플래그 (원작 `party.etc[6] = 0` 처리).
   final List<String> _pendingVictoryFlags = [];
+  bool _battleEnemyFirst = false;
+
+  /// 연속 전투도 서로 다른 전투 화면 상태로 시작한다.
+  int _battleSerial = 0;
   ScriptRun? _pendingScriptBattle;
   int? _pendingScriptTargetX;
   int? _pendingScriptTargetY;
@@ -706,7 +710,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (!outcome.battleReuseExisting) {
         _applyBattleOverrides(enemies, outcome.battleOverrides);
       }
-      _startBossBattle(enemies, title: outcome.battleTitle);
+      _startBossBattle(
+        enemies,
+        title: outcome.battleTitle,
+        enemyFirst: outcome.battleEnemyFirst,
+      );
     }
     return true;
   }
@@ -1221,6 +1229,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     setState(() {
       _currentMode = GameScreenMode.battle;
       _battleEnemies = monsterIds.map(LoreData.instance.monster).toList();
+      _battleEnemyFirst = false;
+      _battleSerial++;
 
       // 원작 LOREBATT.PAS:1228-1240 - 조우 화면: `적이 출현했다 !!!` /
       // `적의 평균 민첩성 : n` / `적과 교전한다` / `도망간다`
@@ -1237,10 +1247,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   /// 보스전 시작
-  void _startBossBattle(List<Monster> bossEnemies, {String? title}) {
+  void _startBossBattle(
+    List<Monster> bossEnemies, {
+    String? title,
+    bool enemyFirst = false,
+  }) {
     setState(() {
       _currentMode = GameScreenMode.battle;
       _battleEnemies = bossEnemies;
+      _battleEnemyFirst = enemyFirst;
+      _battleSerial++;
 
       // 원작은 전투 직전 안내 문구를 보여준다. 스크립트에 제목이 있으면 쓴다.
       _addLog(
@@ -1604,8 +1620,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
       case GameScreenMode.battle:
         return BattleViewportView(
+          key: ValueKey(_battleSerial),
           partyMembers: _party,
           enemies: _battleEnemies,
+          enemyFirst: _battleEnemyFirst,
           espAccessGranted:
               LoreDialogueManager.instance.getFlagsCopy()['etc39_bit1'] == true,
           onLog: (msg) => _addLog(msg),

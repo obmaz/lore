@@ -952,6 +952,7 @@ void main() {
       final engine = LoreScriptEngine.instance;
       final run = engine.startById('keep2-exit-guard', const ScriptContext())!;
       expect(run.awaitingBattle, isTrue);
+      expect(run.outcome.battleEnemyFirst, isTrue);
       expect(run.outcome.battleMonsters, hasLength(7));
       expect(run.outcome.battleMonsters.last, 66);
       expect(run.outcome.battleMonsters.take(6).toSet(), hasLength(1));
@@ -1151,6 +1152,7 @@ void main() {
 
       // 2) 맵 22 (25,18): Wraith 5자리 중 하나가 Death Knight로 교체된다.
       final ambush = engine.startStep(22, 25, 18, noCtx)!;
+      expect(ambush.outcome.battleEnemyFirst, isTrue);
       expect(ambush.outcome.battleMonsters.where((m) => m == 60).length, 4);
       expect(ambush.outcome.battleMonsters.where((m) => m == 63).length, 1);
       expect(ambush.outcome.setFlags, isNot(contains('keep2AmbushCleared')));
@@ -1161,6 +1163,7 @@ void main() {
 
       // 3) 맵 22 (y=25, x=24~26) 수문장 5명
       final guards = engine.startStep(22, 25, 25, noCtx)!;
+      expect(guards.outcome.battleEnemyFirst, isFalse);
       expect(guards.outcome.battleMonsters, [61, 58, 56, 55, 60]);
 
       // 4) 맵 23 (25,27): 함정 해제 + 영역 타일 변형(ifZero)

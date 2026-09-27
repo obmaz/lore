@@ -163,8 +163,12 @@ def effect_summary(steps):
                     detail = [f"적 {len(value.get('monsters', []))}"]
                     if value.get("victoryFlag"):
                         detail.append("승리 플래그")
+                    if value.get("enemyFirst"):
+                        detail.append("적 선공")
                     if value.get("onRunAway") or value.get("retryOnRunAway"):
                         detail.append("도주 분기")
+                    if value.get("onRunAwayIfDead"):
+                        detail.append("도주 중 지정 슬롯 격퇴")
                     if value.get("victoryIfEnemyDead"):
                         detail.append(f"격퇴 슬롯 {value['victoryIfEnemyDead']}")
                     if value.get("onEnemyDeadFlags"):

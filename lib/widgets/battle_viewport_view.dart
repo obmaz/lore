@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import '../logic/lore_batt_text.dart';
@@ -23,6 +24,7 @@ class BattleViewportView extends StatefulWidget {
   final List<PartyMember> partyMembers;
   final List<Monster> enemies;
   final BattleEngine? battleEngine;
+  final bool enemyFirst;
   final bool espAccessGranted;
   final void Function(String message) onLog;
   final void Function(int goldEarned) onVictory;
@@ -35,6 +37,7 @@ class BattleViewportView extends StatefulWidget {
     required this.partyMembers,
     required this.enemies,
     this.battleEngine,
+    this.enemyFirst = false,
     required this.espAccessGranted,
     required this.onLog,
     required this.onVictory,
@@ -87,6 +90,26 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     super.initState();
     _engine = widget.battleEngine ?? BattleEngine();
     _selectFirstAliveTarget();
+    if (widget.enemyFirst) {
+      _isTurnProcessing = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) unawaited(_runOpeningEnemyTurn());
+      });
+    }
+  }
+
+  Future<void> _runOpeningEnemyTurn() async {
+    await _enemyTurn();
+    if (!mounted || _battleEnded) return;
+    setState(() {
+      for (var i = 0; i < widget.partyMembers.length; i++) {
+        if (widget.partyMembers[i].isBattleActive) {
+          _activePlayerIndex = i;
+          break;
+        }
+      }
+      _isTurnProcessing = false;
+    });
   }
 
   @override
@@ -186,6 +209,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   Future<void> _enemyTurn() async {
     setState(() => _isTurnProcessing = true);
     await Future.delayed(const Duration(milliseconds: 300));
+    if (!mounted || _battleEnded) return;
 
     // 원본의 `for person := 1 to enemynumber`는 턴 시작 시의 상한을 쓴다.
     // 행동 중 소환된 적은 다음 턴부터 행동하며 리스트 변경도 안전하게 처리한다.
@@ -210,6 +234,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           AudioManager.instance.playScream1();
         }
         await Future.delayed(const Duration(milliseconds: 200));
+        if (!mounted || _battleEnded) return;
       }
     }
 

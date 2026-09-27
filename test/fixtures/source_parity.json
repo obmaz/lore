@@ -32,6 +32,17 @@
         "party.etc[42] := party.etc[42] or bit1;"
       ]
     },
+    "imperium-minor-events": {
+      "file": "LORESPEC.PAS",
+      "lines": [1841, 1879],
+      "evidence": [
+        "else if on(25,18) then begin",
+        "battlemode(FALSE);",
+        "else if (y=25) and (x in [24..26]) then begin",
+        "battlemode(TRUE);",
+        "map[x,y] := 40;"
+      ]
+    },
     "den7-minotaur": {
       "file": "LORESPEC.PAS",
       "lines": [1602, 1620],
@@ -54,6 +65,25 @@
     }
   },
   "scenarios": [
+    {
+      "id": "imperium-minor-ordinary-wraith-ambush",
+      "source": "imperium-minor-events",
+      "input": {"map": 22, "x": 43, "y": 25},
+      "selected": "keep2-ambush-zone-a",
+      "trace": [
+        {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"playerTiles": [[40, null]]}}
+      ]
+    },
+    {
+      "id": "imperium-minor-guardians-party-first",
+      "source": "imperium-minor-events",
+      "input": {"map": 22, "x": 25, "y": 25},
+      "selected": "keep2-guards-y25",
+      "trace": [
+        {"action": "start", "expect": {"battle": [61, 58, 56, 55, 60], "awaitingBattle": true}}
+      ]
+    },
     {
       "id": "swamp-keep-guardians-dead-before-retreat",
       "source": "swamp-keep-exit",
