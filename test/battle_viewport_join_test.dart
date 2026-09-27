@@ -34,6 +34,35 @@ class _OpeningTurnEngine extends BattleEngine {
 }
 
 void main() {
+  testWidgets('기절한 중독 적도 적 턴에서 독으로 사망한다', (tester) async {
+    final enemy = Monster.create(1)
+      ..hp = 0
+      ..isUnconscious = true
+      ..isPoisoned = true;
+    var victories = 0;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: BattleViewportView(
+            partyMembers: [PartyMember.createPreset(1)],
+            enemies: [enemy],
+            enemyFirst: true,
+            espAccessGranted: false,
+            onLog: (_) {},
+            onVictory: (_) => victories++,
+            onTelepathyJoin: (_) {},
+            onDefeat: () {},
+            onRunAway: () {},
+          ),
+        ),
+      ),
+    );
+    await tester.pump(const Duration(milliseconds: 300));
+    await tester.pump(const Duration(milliseconds: 200));
+    expect(enemy.isDead, isTrue);
+    expect(victories, 1);
+  });
+
   testWidgets('적 선공 전투는 파티 입력 전에 적 턴을 실행한다', (tester) async {
     final engine = _OpeningTurnEngine();
     final logs = <String>[];

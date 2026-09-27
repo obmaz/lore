@@ -216,8 +216,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final enemyTurnCount = widget.enemies.length;
     for (var index = 0; index < enemyTurnCount; index++) {
       final enemy = widget.enemies[index];
-      if (enemy.isDead || enemy.isUnconscious) continue;
-      if (widget.partyMembers.every((p) => !p.isBattleActive)) break;
+      // 원본은 기절한 적에게도 독 피해를 먼저 적용한 뒤 행동 가능 여부를 본다.
+      if (enemy.isDead) continue;
 
       final results = _engine.executeMonsterTurn(
         enemy,
