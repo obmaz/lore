@@ -252,5 +252,8 @@
     합류 거절과 슬롯 선택 취소는 완료 비트를 남기지 않고 재시도할 수 있다.
     실제 합류가 끝난 뒤에만 `etc38_bit2`를 기록하도록 지연 적용한다.
     커밋: `Commit Red Antares completion only after recruitment`.
+    Rigel의 합류 슬롯 취소는 `etc31_bit2`를 기록하지 않으므로 재진입 때
+    다시 제안한다. 일회성 소모 대신 원본의 완료 비트로 진입을 제어한다.
+    커밋: `Allow Rigel recruitment retry after cancellation`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

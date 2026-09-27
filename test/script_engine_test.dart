@@ -360,7 +360,7 @@ void main() {
       }
     });
 
-    test('1회성 선택지는 취소 전에는 재시도할 수 있다', () async {
+    test('Rigel 선택지는 완료 비트를 적용하기 전까지 재시도할 수 있다', () async {
       await LoreScriptEngine.instance.load();
       final first = LoreScriptEngine.instance.startStep(12, 12, 48, noCtx)!;
       expect(first.hasPendingChoice, isTrue);
@@ -370,12 +370,12 @@ void main() {
       );
       expect(LoreScriptEngine.instance.startStep(12, 12, 48, noCtx), isNotNull);
 
-      first.choose(2); // 거절도 원작의 1회성 선택 완료로 본다.
+      final declined = first.choose(2);
       expect(
-        LoreScriptEngine.instance.consumedScripts,
-        contains(first.script.id),
+        declined.outcome.setFlags,
+        contains('etc31_bit2'),
       );
-      expect(LoreScriptEngine.instance.startStep(12, 12, 48, noCtx), isNull);
+      expect(LoreScriptEngine.instance.startStep(12, 12, 48, noCtx), isNotNull);
     });
 
     test('1. 스크립트를 로드한다', () async {
@@ -470,6 +470,17 @@ void main() {
       expect(decline.outcome.setFlags, contains('etc31_bit2'));
       // 거절은 안내 문구를 더하지 않는다(원작에 문구가 없다)
       expect(decline.outcome.messages.length, base.outcome.messages.length);
+      // 선택 창/합류 슬롯을 취소하면 bit2가 없으므로 다음 진입에 재제안한다.
+      expect(LoreScriptEngine.instance.startStep(12, 12, 48, noCtx), isNotNull);
+      expect(
+        LoreScriptEngine.instance.startStep(
+          12,
+          12,
+          48,
+          const ScriptContext(flags: {'etc31_bit2'}),
+        ),
+        isNull,
+      );
     });
 
     test('4. require 조건에 따라 다른 스크립트가 선택된다 (Red Antares)', () async {

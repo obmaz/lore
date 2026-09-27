@@ -1723,7 +1723,10 @@
       "map": 12,
       "x": 12,
       "y": 48,
-      "once": true,
+      "once": false,
+      "require": {
+        "flagNot": "etc31_bit2"
+      },
       "steps": [
         {
           "say": " 일행들은 심한 부상 때문에 거의 몸을 가누지"
