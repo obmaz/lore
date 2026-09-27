@@ -742,7 +742,7 @@
 | `spec-17-L1010-4`<br>LORESPEC.PAS:1010 | step (22, *) | {"allFlags":["etc1","etc6"],"notAllFlags":["bossHidraDefeated"],"quest":[{"name":"water","lt":2}]} | allFlags → etc1 제거; notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | battle(적 3), nudge |
 | `spec-17-L1010-5`<br>LORESPEC.PAS:1010 | step (22, *) | {"allFlags":["etc6"],"notAllFlags":["bossHidraDefeated","etc1"],"quest":[{"name":"water","lt":2}]} | allFlags → etc6 제거; notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | torch, flag:etc1, battle(적 3), block |
 | `spec-17-L1010-6`<br>LORESPEC.PAS:1010 | step (22, *) | {"allFlags":["etc1","etc6"],"notAllFlags":["bossHidraDefeated"],"quest":[{"name":"water","lt":2}]} | allFlags → etc1 제거; notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | battle(적 3), block |
-| `spec-17-L1010xxxxx`<br>LORESPEC.PAS:1010 | step (72, *) | 조건 없음 | 조건 없음 | setTileArea |
+| `spec-17-L1010xxxxx`<br>LORESPEC.PAS:1010 | step (72, *) | 조건 없음 | 조건 없음 | setTileArea, nudge |
 | `spec-17-L1010xxxxxx`<br>LORESPEC.PAS:1010 | step (*, 38) | 조건 없음 | 조건 없음 | setTileArea, teleport |
 | `spec-17-L1010`<br>LORESPEC.PAS:1010 | step (*, 80) | 조건 없음 | 조건 없음 | teleport |
 

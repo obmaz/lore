@@ -542,6 +542,16 @@ void main() {
       );
     });
 
+    test('맵 17 x=72 통로는 세 타일을 열고 7칸 북쪽으로 이동한다', () async {
+      await LoreScriptEngine.instance.load();
+      final run = LoreScriptEngine.instance.startStep(17, 72, 26, noCtx)!;
+      expect(run.script.id, 'spec-17-L1010xxxxx');
+      expect(run.outcome.tileAreas.single.tile, 44);
+      expect(run.outcome.tileAreas.single.yMin, 19);
+      expect(run.outcome.tileAreas.single.yMax, 21);
+      expect(run.outcome.nudges.single.dy, -7);
+    });
+
     test('5. Spica는 특수 타일 첫 만남 뒤에만 독심술로 영입한다', () async {
       await LoreScriptEngine.instance.load();
 

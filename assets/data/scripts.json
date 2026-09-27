@@ -6125,11 +6125,16 @@
             "yMax": 21,
             "tile": 44
           }
+        },
+        {
+          "nudge": {
+            "dy": -7
+          }
         }
       ],
       "xMin": 72,
       "xMax": 72,
-      "note": "미지원: y := y - 7;"
+      "note": "LORESPEC.PAS:1107-1109"
     },
     {
       "id": "map17-shortcut-72",

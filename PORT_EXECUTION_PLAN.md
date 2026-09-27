@@ -258,5 +258,8 @@
     Rigel 선택지가 합류를 요청했을 때 `etc31_bit2`는 슬롯 확정 뒤에만
     기록한다. 식량 지원·거절 선택지는 즉시 완료 비트를 기록한다.
     커밋: `Defer Rigel completion until join slot is confirmed`.
+    맵 17의 x=72 지름길은 (72,19..21)을 44로 열고 현재 y를 7 줄인다.
+    누락된 이동을 활성 규칙에 추가했다.
+    커밋: `Restore seven tile movement in lava shortcut`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
