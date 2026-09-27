@@ -4,7 +4,10 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
+import 'package:lore/game/lore_dungeon_event_manager.dart';
 import 'package:lore/game/lore_map_manager.dart';
+import 'package:lore/logic/lore_special_event_dispatcher.dart';
+import 'package:lore/logic/lore_tile_protocol.dart';
 import 'package:lore/logic/script_world_reducer.dart';
 
 /// LORESPEC.PAS GROUND1의 식량 상자 계산과 후퇴 방향을 재생한다.
@@ -24,13 +27,23 @@ void main() {
       final y = item['y'] as int;
       final visited = item['visited'] as bool;
       final flag = item['flag'] as String;
-      final run = engine.startStep(
-        1,
-        x,
-        y,
-        ScriptContext(tileAtPlayer: 0, flags: {if (visited) flag}),
+      final selected = LoreSpecialEventDispatcher.resolve(
+        action: LoreTileAction.special,
+        mapId: 1,
+        x: x,
+        y: y,
+        context: ScriptContext(
+          tileAtPlayer: 0,
+          flags: {if (visited) flag},
+        ),
+        party: const [],
+        scripts: engine,
+        legacy: LoreDungeonEventManager.instance,
       );
+      final run = selected.script;
       expect(run, isNotNull, reason: 'LORESPEC.PAS:${fixture['line']}');
+      expect(run!.script.id, 'lorespec-map1-food');
+      expect(selected.legacy, isNull);
       final result = ScriptWorldReducer.applyMap(
         ScriptMapState(
           mapId: 1,
@@ -39,7 +52,7 @@ void main() {
           direction: item['direction'] as int,
           grid: map.grid,
         ),
-        run!.outcome,
+        run.outcome,
       );
       expect([result.x, result.y], item['end']);
       final resources = ScriptWorldReducer.applyResources(

@@ -25918,7 +25918,7 @@
     {
       "path": "test/map1_food_parity_test.dart",
       "kind": "test",
-      "sha256": "bc42796f322a25fb3bf6512007009ec68126b81a96b7f6ade913b894376382a0",
+      "sha256": "a9882cfd7e9a84922a094b243e59a3f6be36542a82ec02ec3c10ea373988416b",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26166,7 +26166,7 @@
     {
       "path": "test/special_event_dispatcher_test.dart",
       "kind": "test",
-      "sha256": "ecb61a14939849d55a36a64da109994c6717bb971642ae5df77cba9c5c4a6bca",
+      "sha256": "d70ad3fe380357e6a44f773ed813e26bae8628b091816fa707704ae38336a7aa",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26562,7 +26562,7 @@
     },
     {
       "path": "lib/logic/lore_special_event_dispatcher.dart",
-      "sha256": "af02d9f75b68db19b31b5bcab33e13788fd652aded9d7e6bfbe56308bccae2d0"
+      "sha256": "415cb1618e9042f7a88103eaa7b5979f6f346e96a63731ef9ed1161562f6c07e"
     },
     {
       "path": "lib/logic/lore_lava_logic.dart",

@@ -2,6 +2,7 @@ import '../data/lore_script.dart';
 import '../game/lore_dungeon_event_manager.dart';
 import '../models/party_member.dart';
 import 'lore_tile_protocol.dart';
+import 'lore_spec_procedures.dart';
 
 class LoreSpecialEventDispatch {
   final ScriptRun? script;
@@ -30,6 +31,11 @@ class LoreSpecialEventDispatcher {
   }) {
     if (action != LoreTileAction.special) {
       return const LoreSpecialEventDispatch();
+    }
+    if (mapId == 1) {
+      return LoreSpecialEventDispatch(
+        script: LoreSpecProcedures.map1Food(context, scripts),
+      );
     }
     if (scripts.usingJson) {
       return LoreSpecialEventDispatch(

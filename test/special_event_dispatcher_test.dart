@@ -100,4 +100,22 @@ void main() {
     expect(nonSpecial.script, isNull);
     expect(nonSpecial.legacy, isNull);
   });
+
+  test('LORESPEC 맵 1은 JSON 가용성과 무관하게 원본형 절차 한쪽만 실행한다', () {
+    for (final engine in [scripts, LoreScriptEngine()]) {
+      final result = LoreSpecialEventDispatcher.resolve(
+        action: LoreTileAction.special,
+        mapId: 1,
+        x: 42,
+        y: 84,
+        context: const ScriptContext(tileAtPlayer: 0),
+        party: const [],
+        scripts: engine,
+        legacy: legacy,
+      );
+      expect(result.script?.script.id, 'lorespec-map1-food');
+      expect(result.script?.outcome.foodDelta, 100);
+      expect(result.legacy, isNull);
+    }
+  });
 }
