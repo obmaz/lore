@@ -106,6 +106,11 @@
 원본 루프와 동일하게 되돌렸다. 앞뒤 순서가 반대인 겹침 두 경우를 테스트한다.
 커밋: `Preserve script tile mutation order in world reducer`.
 
+맵 23 KEEP3 레버의 원본 `if map[i,j] = 0` 영역 변경과 마지막 입구
+타일 덮어쓰기를 실제 50×50 지도 위에서 실행했다. 원본 계산의 변경 구간을
+맵 전체 결과와 대조해 지형 순서 엔진의 다른 맵 회귀도 검증한다.
+커밋: `Replay map twenty three castle rise on original terrain`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로

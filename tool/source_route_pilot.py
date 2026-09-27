@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'repo_source/LORE_1993_src/LORESPEC.PAS'
-MAP_FILES = {17: 'DEN4', 19: 'DEN6', 20: 'DEN7', 25: 'K_DEN2', 27: 'PYRAMID1'}
+MAP_FILES = {17: 'DEN4', 19: 'DEN6', 20: 'DEN7', 23: 'KEEP3', 25: 'K_DEN2', 27: 'PYRAMID1'}
 
 PATTERNS_17 = {
     'set_y': r'if y = (\d+) then y := (\d+);',
@@ -54,6 +54,8 @@ def extract_rules(source: str, map_id: int = 17):
         return extract_pyramid_exit(scope, source, map_start)
     if map_id == 25:
         return extract_map25_side_doors(scope, source, map_start)
+    if map_id == 23:
+        return extract_map23_castle(scope, source, map_start)
     if map_id == 19:
         return [extract_lever_a(scope, source, map_start),
                 *extract_lever_b(scope, source, map_start)]
@@ -111,6 +113,64 @@ def extract_map25_side_doors(scope: str, source: str, map_start: int):
         'line': source.count('\n', 0, map_start + match.start()) + 1,
         'args': [int(value) for value in match.groups()],
     } for match in matches]
+
+
+def extract_map23_castle(scope: str, source: str, map_start: int):
+    pattern = (
+        r'if on\((\d+),(\d+)\) then begin\s+'
+        r'map\[(\d+),(\d+)\] := (\d+);\s+'
+        r'map\[(\d+),(\d+)\] := (\d+);\s+'
+        r'for j := (\d+) to (\d+) do\s+'
+        r'for i := (\d+) to (\d+) do\s+'
+        r'if map\[i,j\] = (\d+) then map\[i,j\] := (\d+);\s+'
+        r'for i := (\d+) to (\d+) do map\[i,(\d+)\] := (\d+);'
+    )
+    matches = list(re.finditer(pattern, scope))
+    if len(matches) != 1:
+        raise ValueError(f'map 23: expected one castle lever, found {len(matches)}')
+    match = matches[0]
+    return [{
+        'kind': 'castle_lever',
+        'line': source.count('\n', 0, map_start + match.start()) + 1,
+        'args': [int(value) for value in match.groups()],
+    }]
+
+
+def execute_map23_castle(rule):
+    (x, y, point_x1, point_y1, point_tile1,
+     point_x2, point_y2, point_tile2,
+     y_min, y_max, x_min, x_max, only_if, area_tile,
+     final_x_min, final_x_max, final_y, final_tile) = rule['args']
+    raw = (ROOT / f'assets/maps/{MAP_FILES[23]}.MAP').read_bytes()
+    width, height = raw[:2]
+    before = [list(raw[2 + row * width:2 + (row + 1) * width])
+              for row in range(height)]
+    before[y - 1][x - 1] = 52  # KEEP3 표지판을 읽은 뒤 활성화된 레버
+    after = [row.copy() for row in before]
+    after[point_y1 - 1][point_x1 - 1] = point_tile1
+    after[point_y2 - 1][point_x2 - 1] = point_tile2
+    for ty in range(y_min, y_max + 1):
+        for tx in range(x_min, x_max + 1):
+            if after[ty - 1][tx - 1] == only_if:
+                after[ty - 1][tx - 1] = area_tile
+    for tx in range(final_x_min, final_x_max + 1):
+        after[final_y - 1][tx - 1] = final_tile
+    writes = []
+    for ty in range(1, height + 1):
+        tx = 1
+        while tx <= width:
+            if before[ty - 1][tx - 1] == after[ty - 1][tx - 1]:
+                tx += 1
+                continue
+            first = tx
+            tile = after[ty - 1][tx - 1]
+            while (tx <= width and before[ty - 1][tx - 1] != after[ty - 1][tx - 1]
+                   and after[ty - 1][tx - 1] == tile):
+                tx += 1
+            writes.append([first, tx - 1, ty, ty, tile])
+    return {'start': [x, y], 'tileAtPlayer': 52,
+            'sourceMap': 23, 'sourceEnd': [x, y], 'safeEnd': [x, y],
+            'writes': writes}
 
 
 def execute_map25_side_door(rule):
@@ -256,6 +316,10 @@ def fixture(map_id=17):
         return {'map': map_id, 'source': 'LORESPEC.PAS',
                 'rules': rules,
                 'cases': [execute_map25_side_door(rule) for rule in rules]}
+    if map_id == 23:
+        return {'map': map_id, 'source': 'LORESPEC.PAS',
+                'rules': rules,
+                'cases': [execute_map23_castle(rule) for rule in rules]}
     if map_id == 27:
         raw_map = (ROOT / f'assets/maps/{MAP_FILES[map_id]}.MAP').read_bytes()
         width, height = raw_map[:2]
@@ -307,7 +371,15 @@ def render(data):
     lines += ['  ],', '  "cases": [']
     for index, case in enumerate(data['cases']):
         comma = ',' if index + 1 < len(data['cases']) else ''
-        lines.append('    ' + json.dumps(case, ensure_ascii=False) + comma)
+        if len(case.get('writes', [])) > 30:
+            header = {key: value for key, value in case.items() if key != 'writes'}
+            lines.append('    ' + json.dumps(header, ensure_ascii=False)[:-1] + ', "writes": [')
+            for write_index, write in enumerate(case['writes']):
+                write_comma = ',' if write_index + 1 < len(case['writes']) else ''
+                lines.append('      ' + json.dumps(write) + write_comma)
+            lines.append('    ]}' + comma)
+        else:
+            lines.append('    ' + json.dumps(case, ensure_ascii=False) + comma)
     lines += ['  ]', '}', '']
     return '\n'.join(lines)
 

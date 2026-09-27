@@ -268,4 +268,39 @@ void main() {
       expect([actual.x, actual.y], item['sourceEnd']);
     }
   });
+
+  test('맵 23 성 부상 레버는 0인 칸만 바꾸고 마지막 입구를 연다', () async {
+    final fixture = jsonDecode(
+      File('test/fixtures/map23_route_parity.json').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    final item = (fixture['cases'] as List<dynamic>).single as Map<String, dynamic>;
+    final start = (item['start'] as List<dynamic>).cast<int>();
+    final map = await LoreMapData.loadFromAsset('KEEP3', category: 'keep');
+    final grid = [for (final row in map.grid) List<int>.from(row)];
+    grid[start[1] - 1][start[0] - 1] = item['tileAtPlayer'] as int;
+    final engine = LoreScriptEngine();
+    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    final run = engine.startStep(
+      23, start[0], start[1],
+      ScriptContext(tileAtPlayer: item['tileAtPlayer'] as int),
+    );
+    expect(run?.script.id, 'keep3-trap-25-27');
+    final actual = ScriptWorldReducer.applyMap(
+      ScriptMapState(
+        mapId: 23, x: start[0], y: start[1], direction: 0, grid: grid,
+      ),
+      run!.outcome,
+    );
+    final expected = [for (final row in grid) List<int>.from(row)];
+    for (final rawWrite in item['writes'] as List<dynamic>) {
+      final write = (rawWrite as List<dynamic>).cast<int>();
+      for (var y = write[2]; y <= write[3]; y++) {
+        for (var x = write[0]; x <= write[1]; x++) {
+          expected[y - 1][x - 1] = write[4];
+        }
+      }
+    }
+    expect(actual.grid, expected);
+    expect([actual.x, actual.y], item['sourceEnd']);
+  });
 }

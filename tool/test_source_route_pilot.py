@@ -87,6 +87,17 @@ class SourceRoutePilotTest(unittest.TestCase):
                          [[15, 34], [36, 34]])
         self.assertTrue(all(len(case['writes']) == 6 for case in recorded['cases']))
 
+    def test_map23_castle_only_replaces_zero_tiles(self):
+        path = pilot.ROOT / 'test/fixtures/map23_route_parity.json'
+        recorded = json.loads(path.read_text(encoding='utf-8'))
+        self.assertEqual(recorded, pilot.fixture(23))
+        self.assertEqual(recorded['rules'][0]['kind'], 'castle_lever')
+        case = recorded['cases'][0]
+        self.assertEqual(case['start'], [25, 27])
+        self.assertEqual(case['tileAtPlayer'], 52)
+        self.assertGreater(len(case['writes']), 80)
+        self.assertIn([25, 26, 12, 12, 54], case['writes'])
+
 
 if __name__ == '__main__':
     unittest.main()
