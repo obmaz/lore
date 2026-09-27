@@ -74,6 +74,25 @@ void main() {
     expect(kinds(move(mapData)), [
       LoreFieldEffectKind.positionChanged,
       LoreFieldEffectKind.step,
+    ]);
+  });
+
+  test('사건이 없는 특수 타일에서도 일반 무작위 조우를 검사하지 않는다', () {
+    for (final (category, tile) in [
+      ('town', 0),
+      ('ground', 0),
+      ('den', 52),
+      ('keep', 52),
+    ]) {
+      final result = move(map(category, tile));
+      expect(kinds(result), [
+        LoreFieldEffectKind.positionChanged,
+        LoreFieldEffectKind.step,
+      ], reason: '$category/$tile');
+    }
+    expect(kinds(move(map('den', 41))), [
+      LoreFieldEffectKind.positionChanged,
+      LoreFieldEffectKind.step,
       LoreFieldEffectKind.encounterCheck,
     ]);
   });

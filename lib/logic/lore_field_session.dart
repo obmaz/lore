@@ -1,6 +1,7 @@
 import '../game/lore_map_manager.dart';
 import '../game/lore_world_manager.dart';
 import 'lore_movement_logic.dart';
+import 'lore_tile_protocol.dart';
 
 enum LoreFieldEffectKind {
   boundary,
@@ -98,7 +99,10 @@ class LoreFieldSession {
               category == TileCategory.water)
             LoreFieldEffect(LoreFieldEffectKind.hazard, category),
           const LoreFieldEffect(LoreFieldEffectKind.step),
-          LoreFieldEffect(LoreFieldEffectKind.encounterCheck, category),
+          // LOREMAIN dispatches specialevent directly on tile 0/52.
+          // A random encounter belongs to move_mode or terrain handlers.
+          if (decision.sourceAction != LoreTileAction.special)
+            LoreFieldEffect(LoreFieldEffectKind.encounterCheck, category),
         ];
     }
     return LoreFieldTransition(

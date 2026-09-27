@@ -25729,7 +25729,7 @@
     {
       "path": "test/field_session_test.dart",
       "kind": "test",
-      "sha256": "5d692b0457fbd6555c1a3209f9cd844af25de9e89ea7717382fee325c3275c19",
+      "sha256": "6a5cbe6c33e091a59891fd90cc2fd630a290424e735a7880c72b766f5466f455",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26371,7 +26371,7 @@
     },
     {
       "path": "lib/logic/lore_field_session.dart",
-      "sha256": "40f4d037032311e7bbeb236e8a836d9c70f366ee5791a0ff1cd37d02e76b4415"
+      "sha256": "de5e29872a8f1da8de3a6fda89ba4f6f1c087d8d9520c44f5037d02a39d8dd71"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
