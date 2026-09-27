@@ -6,6 +6,9 @@
 //   좌표별 스크립트를 가리지 않는다(원작은 첫 일치 분기만 실행).
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
+import 'package:lore/game/lore_map_manager.dart';
+import 'package:lore/logic/lore_tile_protocol.dart';
+import 'package:lore/logic/script_world_reducer.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -62,6 +65,34 @@ void main() {
         .toList();
     expect(tile.length, 1);
     expect(tile.first.tileValue, 35);
+  });
+
+  test('원본 map[x+x1,y+y1] := 35인 다섯 대화는 재방문 타일을 없앤다', () async {
+    final map = await LoreMapData.loadFromAsset('PYRAMID1', category: 'town');
+    for (final (x, y) in const [
+      (10, 14),
+      (10, 18),
+      (10, 30),
+      (21, 32),
+      (21, 22),
+    ]) {
+      expect(map.actionForTile(map.getTile(x, y)), LoreTileAction.talk);
+      final run = LoreScriptEngine.instance.startTalk(
+        27,
+        x,
+        y,
+        const ScriptContext(),
+      )!;
+      expect(run.outcome.tileAtTarget, 35, reason: '($x,$y)');
+      final after = ScriptWorldReducer.applyMap(
+        ScriptMapState(mapId: 27, x: 15, y: 20, direction: 0, grid: map.grid),
+        run.outcome,
+        talkTargetX: x,
+        talkTargetY: y,
+      );
+      expect(after.grid[y - 1][x - 1], 35);
+      expect(map.actionForTile(35), LoreTileAction.walk);
+    }
   });
 
   test('좌표 없는 기본 else는 좌표별 스크립트를 가리지 않는다', () {

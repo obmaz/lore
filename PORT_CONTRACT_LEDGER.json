@@ -26275,7 +26275,7 @@
     {
       "path": "test/talk_map27_test.dart",
       "kind": "test",
-      "sha256": "9e220ca19da11a5897c8f0555c35cf039d2a9fe12cd9237f9575390a0b8c2a26",
+      "sha256": "748064ba06ec1056a3043aa9b2cb421019fcc64dffa96e5b4c1f1913b089e972",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
@@ -26508,7 +26508,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "6d9939dbef3bfaaa1d459a7f1aeefff366af2f0e16db5ca692e674ac7ef2bff5",
+      "sha256": "553bbb288191864dabffeab626930a0a8e0453ca0eba548770f6ad463c69c482",
       "top_level_counts": {
         "scripts": 598
       }
