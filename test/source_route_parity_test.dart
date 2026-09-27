@@ -225,4 +225,47 @@ void main() {
       );
     }
   });
+
+  test('맵 25 양쪽 숨겨진 문은 원본 루프대로 지형을 바꾼다', () async {
+    final fixture = jsonDecode(
+      File('test/fixtures/map25_route_parity.json').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    final map = await LoreMapData.loadFromAsset('K_DEN2', category: 'den');
+    final engine = LoreScriptEngine();
+    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    for (final raw in fixture['cases'] as List<dynamic>) {
+      final item = raw as Map<String, dynamic>;
+      final start = (item['start'] as List<dynamic>).cast<int>();
+      final grid = [for (final row in map.grid) List<int>.from(row)];
+      grid[start[1] - 1][start[0] - 1] = 0;
+      final run = engine.startStep(
+        25,
+        start[0],
+        start[1],
+        const ScriptContext(tileAtPlayer: 0),
+      );
+      expect(run, isNotNull, reason: 'LORESPEC.PAS:${item['start']}');
+      final actual = ScriptWorldReducer.applyMap(
+        ScriptMapState(
+          mapId: 25,
+          x: start[0],
+          y: start[1],
+          direction: 0,
+          grid: grid,
+        ),
+        run!.outcome,
+      );
+      final expected = [for (final row in grid) List<int>.from(row)];
+      for (final rawWrite in item['writes'] as List<dynamic>) {
+        final write = (rawWrite as List<dynamic>).cast<int>();
+        for (var y = write[2]; y <= write[3]; y++) {
+          for (var x = write[0]; x <= write[1]; x++) {
+            expected[y - 1][x - 1] = write[4];
+          }
+        }
+      }
+      expect(actual.grid, expected, reason: 'LORESPEC.PAS:${item['start']}');
+      expect([actual.x, actual.y], item['sourceEnd']);
+    }
+  });
 }

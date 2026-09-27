@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'repo_source/LORE_1993_src/LORESPEC.PAS'
-MAP_FILES = {17: 'DEN4', 19: 'DEN6', 20: 'DEN7', 27: 'PYRAMID1'}
+MAP_FILES = {17: 'DEN4', 19: 'DEN6', 20: 'DEN7', 25: 'K_DEN2', 27: 'PYRAMID1'}
 
 PATTERNS_17 = {
     'set_y': r'if y = (\d+) then y := (\d+);',
@@ -52,6 +52,8 @@ def extract_rules(source: str, map_id: int = 17):
     rules = []
     if map_id == 27:
         return extract_pyramid_exit(scope, source, map_start)
+    if map_id == 25:
+        return extract_map25_side_doors(scope, source, map_start)
     if map_id == 19:
         return [extract_lever_a(scope, source, map_start),
                 *extract_lever_b(scope, source, map_start)]
@@ -90,6 +92,43 @@ def extract_pyramid_exit(scope: str, source: str, map_start: int):
             'args': [int(value) for value in match.groups()],
         })
     return rules
+
+
+def extract_map25_side_doors(scope: str, source: str, map_start: int):
+    pattern = (
+        r'if on\((\d+),(\d+)\) then begin\s+'
+        r'map\[(\d+),(\d+)\] := (\d+);\s+'
+        r'for i := (\d+) to (\d+) do begin\s+'
+        r'map\[i,(\d+)\] := (\d+); map\[i,(\d+)\] := (\d+); '
+        r'map\[i,(\d+)\] := (\d+);\s+end;\s+'
+        r'map\[(\d+),(\d+)\] := (\d+); map\[(\d+),(\d+)\] := (\d+);'
+    )
+    matches = list(re.finditer(pattern, scope))
+    if len(matches) != 2:
+        raise ValueError(f'map 25: expected two Pascal side doors, found {len(matches)}')
+    return [{
+        'kind': 'side_door',
+        'line': source.count('\n', 0, map_start + match.start()) + 1,
+        'args': [int(value) for value in match.groups()],
+    } for match in matches]
+
+
+def execute_map25_side_door(rule):
+    (x, y, fixed_x, fixed_y, fixed_tile, low, high,
+     row1, tile1, row2, tile2, row3, tile3,
+     end_x1, end_y1, end_tile1, end_x2, end_y2, end_tile2) = rule['args']
+    return {
+        'start': [x, y], 'sourceMap': 25,
+        'sourceEnd': [x, y], 'safeEnd': [x, y],
+        'writes': [
+            [fixed_x, fixed_x, fixed_y, fixed_y, fixed_tile],
+            [low, high, row1, row1, tile1],
+            [low, high, row2, row2, tile2],
+            [low, high, row3, row3, tile3],
+            [end_x1, end_x1, end_y1, end_y1, end_tile1],
+            [end_x2, end_x2, end_y2, end_y2, end_tile2],
+        ],
+    }
 
 
 def extract_lever_a(scope: str, source: str, map_start: int):
@@ -213,6 +252,10 @@ def fixture(map_id=17):
             for walk in (False, True) for cleared in (False, True)]
         return {'map': map_id, 'source': 'LORESPEC.PAS',
                 'rules': rules, 'cases': cases}
+    if map_id == 25:
+        return {'map': map_id, 'source': 'LORESPEC.PAS',
+                'rules': rules,
+                'cases': [execute_map25_side_door(rule) for rule in rules]}
     if map_id == 27:
         raw_map = (ROOT / f'assets/maps/{MAP_FILES[map_id]}.MAP').read_bytes()
         width, height = raw_map[:2]

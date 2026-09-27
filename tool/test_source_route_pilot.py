@@ -77,6 +77,16 @@ class SourceRoutePilotTest(unittest.TestCase):
             for portal in portals
         ))
 
+    def test_map25_side_door_tile_loops_match_pascal(self):
+        path = pilot.ROOT / 'test/fixtures/map25_route_parity.json'
+        recorded = json.loads(path.read_text(encoding='utf-8'))
+        self.assertEqual(recorded, pilot.fixture(25))
+        self.assertEqual([r['kind'] for r in recorded['rules']],
+                         ['side_door', 'side_door'])
+        self.assertEqual([case['start'] for case in recorded['cases']],
+                         [[15, 34], [36, 34]])
+        self.assertTrue(all(len(case['writes']) == 6 for case in recorded['cases']))
+
 
 if __name__ == '__main__':
     unittest.main()
