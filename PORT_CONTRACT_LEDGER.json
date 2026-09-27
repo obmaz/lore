@@ -10535,8 +10535,13 @@
       "routine": "LOREMAIN.PAS:enter_swamp:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/swamp_source_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_swamp_logic.dart",
+      "reviewed_scope": "Roll random(20) for all six party slots before applying poison."
     },
     {
       "id": "LOREMAIN.PAS:enter_swamp:1:if:9",
@@ -10623,8 +10628,13 @@
       "routine": "LOREMAIN.PAS:enter_lava:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/lava_source_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_lava_logic.dart",
+      "reviewed_scope": "Roll random(40) then random(luck) for all six party slots."
     },
     {
       "id": "LOREMAIN.PAS:enter_lava:1:for:3",
@@ -11085,8 +11095,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "case",
       "outcomes": 9,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_tile_protocol_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_tile_protocol.dart",
+      "reviewed_scope": "Town tile dispatch, all 256 tile values."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:17",
@@ -11107,8 +11122,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "case",
       "outcomes": 8,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_tile_protocol_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_tile_protocol.dart",
+      "reviewed_scope": "Ground tile dispatch, all 256 tile values."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:18",
@@ -11129,8 +11149,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "case",
       "outcomes": 9,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_tile_protocol_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_tile_protocol.dart",
+      "reviewed_scope": "Den tile dispatch, all 256 tile values."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:19",
@@ -11151,8 +11176,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "case",
       "outcomes": 9,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_tile_protocol_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_tile_protocol.dart",
+      "reviewed_scope": "Keep tile dispatch, all 256 tile values."
     },
     {
       "id": "LOREMENU.PAS:healone:1:if:1",
@@ -23992,6 +24022,68 @@
       "behavioral_evidence": []
     }
   ],
+  "linked_contracts": [
+    {
+      "id": "LOREMAIN.PAS:main:1:case:3",
+      "line": 208,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_tile_protocol.dart",
+      "test": "test/source_tile_protocol_test.dart",
+      "note": "Town tile dispatch, all 256 tile values.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:4",
+      "line": 230,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_tile_protocol.dart",
+      "test": "test/source_tile_protocol_test.dart",
+      "note": "Ground tile dispatch, all 256 tile values.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:5",
+      "line": 248,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_tile_protocol.dart",
+      "test": "test/source_tile_protocol_test.dart",
+      "note": "Den tile dispatch, all 256 tile values.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:6",
+      "line": 270,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_tile_protocol.dart",
+      "test": "test/source_tile_protocol_test.dart",
+      "note": "Keep tile dispatch, all 256 tile values.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_swamp:1:for:3",
+      "line": 54,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_swamp_logic.dart",
+      "test": "test/swamp_source_parity_test.dart",
+      "note": "Roll random(20) for all six party slots before applying poison.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_lava:1:for:2",
+      "line": 82,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_lava_logic.dart",
+      "test": "test/lava_source_parity_test.dart",
+      "note": "Roll random(40) then random(luck) for all six party slots.",
+      "verification": "partial"
+    }
+  ],
   "map_writes": [
     {
       "id": "LOREENT.PAS:24:map-write:16",
@@ -26418,15 +26510,32 @@
       "sha256": "af02d9f75b68db19b31b5bcab33e13788fd652aded9d7e6bfbe56308bccae2d0"
     },
     {
+      "path": "lib/logic/lore_lava_logic.dart",
+      "sha256": "178232c73cb1b6da41e5ac178cdd0dd51ae6add665c011770a6c3ac2a527bcf6"
+    },
+    {
+      "path": "lib/logic/lore_swamp_logic.dart",
+      "sha256": "9da3cffe4b902b55386282ac3ed05abae05b5169afea2e8da0abb4f777185680"
+    },
+    {
       "path": "lib/screens/main_game_screen.dart",
       "sha256": "2e129ce9fef99dafd0cffba8a2e543baa04676c2ab8cf5163c039e1c67771301"
+    },
+    {
+      "path": "PORT_CONTRACT_EVIDENCE.json",
+      "sha256": "06cc5668ce99db4447df96fc4badb16e4b59274f449a9a411ebc4afcdf3c7084",
+      "top_level_counts": {
+        "contracts": 6
+      }
     }
   ],
   "baseline_gaps": {
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 1848,
+    "unmapped_behavior_sites": 1842,
+    "unverified_behavior_sites": 1848,
+    "partially_verified_behavior_sites": 6,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

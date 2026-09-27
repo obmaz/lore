@@ -1,6 +1,10 @@
 """Guard the baseline's scope without treating registration as parity proof."""
 
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 import build_port_contract_ledger as ledger
 
@@ -33,8 +37,32 @@ class ContractLedgerTest(unittest.TestCase):
                             for e in evidence))
         self.assertTrue(any(e["path"] == "test/fixtures/source_entrance_replay.json"
                             and e["test_users"] for e in evidence))
-        self.assertTrue(all(not site["behavioral_evidence"]
-                            for site in data["control_sites"]))
+        linked = [site for site in data["control_sites"]
+                  if site["behavioral_evidence"]]
+        self.assertEqual(len(linked), 6)
+        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 1842)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 1848)
+        self.assertTrue(all(site["verification_status"] == "partial"
+                            for site in linked))
+        self.assertEqual(
+            {site["id"] for site in linked if site["kind"] == "case"},
+            {f"LOREMAIN.PAS:main:1:case:{number}" for number in range(3, 7)},
+        )
+        self.assertTrue(all(
+            site["port_handler"] and site["reviewed_scope"]
+            for site in linked
+        ))
+
+    def test_evidence_link_rejects_source_line_drift(self):
+        rows = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))
+        rows["contracts"][0]["line"] += 1
+        _, sites, _ = ledger.source_contracts(ledger.inventory())
+        with tempfile.TemporaryDirectory() as directory:
+            candidate = Path(directory) / "evidence.json"
+            candidate.write_text(json.dumps(rows), encoding="utf-8")
+            with patch.object(ledger, "EVIDENCE", candidate):
+                with self.assertRaisesRegex(ValueError, "source moved"):
+                    ledger.link_contract_evidence(sites)
 
 
 if __name__ == "__main__":

@@ -19,6 +19,7 @@ SOURCE = ROOT / "repo_source/LORE_1993_src"
 RUNTIME = ROOT / "repo_source/LORE_1993_runtime"
 OUTPUT = ROOT / "PORT_CONTRACT_LEDGER.json"
 REPORT = ROOT / "PORT_CONTRACT_LEDGER.md"
+EVIDENCE = ROOT / "PORT_CONTRACT_EVIDENCE.json"
 ROUTINE = re.compile(r"\b(procedure|function)\s+([A-Za-z_][A-Za-z_0-9]*)\b", re.I)
 MAP_WRITE = re.compile(r"map\s*\[([^\]]+)\]\s*:=\s*([^;]+);", re.I)
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
@@ -161,6 +162,41 @@ def source_contracts(inv):
     return routines_by_file, sites, writes
 
 
+def link_contract_evidence(sites):
+    """Apply only reviewed, source-located behavioral evidence."""
+    rows = json.loads(EVIDENCE.read_text(encoding="utf-8"))["contracts"]
+    by_id = {site["id"]: site for site in sites}
+    seen = set()
+    for row in rows:
+        site_id = row["id"]
+        if site_id in seen or site_id not in by_id:
+            raise ValueError(f"Duplicate or unknown linked contract: {site_id}")
+        seen.add(site_id)
+        site = by_id[site_id]
+        if (site["line"], site["kind"], site["classification"]) != (
+            row["line"], row["kind"], "unclassified",
+        ):
+            raise ValueError(f"Linked contract source moved: {site_id}")
+        if row["classification"] not in {"common-rule", "content-rule"}:
+            raise ValueError(f"Unsupported contract class: {site_id}")
+        if row["verification"] not in {"partial", "verified"}:
+            raise ValueError(f"Unsupported verification status: {site_id}")
+        if not row["note"].strip():
+            raise ValueError(f"Linked contract has no reviewed scope: {site_id}")
+        implementation = ROOT / row["implementation"]
+        test = ROOT / row["test"]
+        if not implementation.is_file() or not test.is_file():
+            raise ValueError(f"Linked contract evidence is missing: {site_id}")
+        if site["file"] not in test.read_text(encoding="utf-8"):
+            raise ValueError(f"Test does not cite original source: {site_id}")
+        site["classification"] = row["classification"]
+        site["verification_status"] = row["verification"]
+        site["port_handler"] = row["implementation"]
+        site["behavioral_evidence"] = [row["test"]]
+        site["reviewed_scope"] = row["note"]
+    return rows
+
+
 def runtime_assets():
     copies = {".MAP": "maps", ".FNT": "fonts", ".DAT": "data"}
     audio = {
@@ -270,7 +306,10 @@ def port_rule_sources():
         "lib/logic/lore_portal_session.dart",
         "lib/logic/lore_talk_dispatcher.dart",
         "lib/logic/lore_special_event_dispatcher.dart",
+        "lib/logic/lore_lava_logic.dart",
+        "lib/logic/lore_swamp_logic.dart",
         "lib/screens/main_game_screen.dart",
+        "PORT_CONTRACT_EVIDENCE.json",
     )]
     rows = []
     for path in files:
@@ -291,6 +330,7 @@ def build():
     if inv != checked:
         raise ValueError("Source branch inventory has drifted; regenerate it first")
     routines, sites, writes = source_contracts(inv)
+    linked = link_contract_evidence(sites)
     assets = runtime_assets()
     source_files = source_catalog(inv)
     maps = map_registry()
@@ -317,6 +357,7 @@ def build():
         "source_catalog": source_files,
         "routines": routines,
         "control_sites": sites,
+        "linked_contracts": linked,
         "map_writes": writes,
         "runtime_assets": assets,
         "map_registry": maps,
@@ -327,6 +368,13 @@ def build():
             "missing_registered_maps": 0,
             "orphan_fixtures": 0,
             "unmapped_behavior_sites": sum(s["classification"] == "unclassified" for s in sites),
+            "unverified_behavior_sites": sum(
+                s["classification"] != "platform" and
+                s.get("verification_status") != "verified" for s in sites
+            ),
+            "partially_verified_behavior_sites": sum(
+                s.get("verification_status") == "partial" for s in sites
+            ),
             "unmapped_map_writes": len(writes),
             "pascal_constructs_awaiting_semantic_review": dict(sorted(special_tokens.items())),
         },
@@ -350,19 +398,20 @@ def report(data):
     fixture_count = sum(row["kind"] == "fixture" for row in data["existing_evidence"])
     test_count = sum(row["kind"] == "test" for row in data["existing_evidence"])
     game_sites = [site for site in sites if site["classification"] == "unclassified"]
+    linked = data["linked_contracts"]
     game_branches = sum(site["outcomes"] is not None for site in game_sites)
     lines = [
         "# LORE 원본 계약 기준선",
         "",
         "`python3 tool/build_port_contract_ledger.py --check`로 원본·이식 자산·기존 근거의 드리프트를 확인한다.",
-        "이 장부는 등록 현황이며 이식 완료율이 아니다. 행동 검증을 끝낸 원본 계약은 아직 연결되지 않았다.",
+        "이 장부는 등록·증거 연결 현황이며 이식 완료율이 아니다. 부분 근거와 검증 완료를 구분한다.",
         "",
         "| 등록 항목 | 수 | 현재 판정 |",
         "| --- | ---: | --- |",
         f"| 원본 의존 Pascal 파일 | {len(data['source_files'])} | 해시 고정 |",
         f"| 원본 폴더 전체 파일 | {len(data['source_catalog'])} | 독립 도구·연결 객체도 분류 |",
         f"| 루틴 선언·프로그램 본문 | {sum(map(len, data['routines'].values()))} | 외부 선언 1건 포함, 소유 루틴 추정 |",
-        f"| 제어 지점 | {len(sites)} | 게임 분기 미분류, 플랫폼 분기 별도 |",
+        f"| 제어 지점 | {len(sites)} | 게임 분기별 근거 연결 현황은 아래에 분리 |",
         f"| 그중 if/case/while/repeat/for | {sum(counts[k] for k in ('if','case','while','repeat','for'))} | 구문 인벤토리 |",
         f"| 그중 goto/exit | {counts['goto'] + counts['exit']} | 이동 대상·호출 효과 검토 대기 |",
         f"| 지도 쓰기 문장 | {len(data['map_writes'])} | 좌표·조건·결과 검토 대기 |",
@@ -371,11 +420,14 @@ def report(data):
         f"| 이식 규칙·데이터 출처 | {len(data['port_rule_sources'])} | JSON/기존 처리 경로 등록 |",
         f"| 기존 테스트 / JSON 근거 파일 | {test_count} / {fixture_count} | 후보로 등록, 의미 검증 별도 |",
         f"| 미분류 게임 제어 지점 | {data['baseline_gaps']['unmapped_behavior_sites']} | 분기 {game_branches}, goto/exit {len(game_sites) - game_branches} |",
+        f"| 원본 행동 근거 연결 지점 | {len(linked)} | `PORT_CONTRACT_EVIDENCE.json`의 원본 줄·이식 코드·테스트에 연결 |",
+        f"| 부분 근거 / 검증 완료 | {data['baseline_gaps']['partially_verified_behavior_sites']} / {len(linked) - data['baseline_gaps']['partially_verified_behavior_sites']} | 부분 근거는 완료로 계산하지 않음 |",
+        f"| 미검증 게임 제어 지점 | {data['baseline_gaps']['unverified_behavior_sites']} | 최종 게이트에서 0 필요 |",
         f"| 의미 분석 대기 Pascal 구문 | asm {data['baseline_gaps']['pascal_constructs_awaiting_semantic_review'].get('asm', 0)}, with {data['baseline_gaps']['pascal_constructs_awaiting_semantic_review'].get('with', 0)} | 원본 조건·효과 검토 대상 |",
         "",
         "## 현재의 빈칸",
         "",
-        "- 게임 분기와 지도 쓰기는 아직 실행 규칙·이식 코드·행동 테스트에 연결하지 않았다.",
+        "- 검증 목록에 없는 게임 분기와 모든 지도 쓰기는 아직 실행 규칙·이식 코드·행동 테스트에 연결하지 않았다.",
         "- 기존 테스트/fixture는 보존하며 근거 후보로 등록했다. 파일 이름만으로 검증 완료로 승격하지 않는다.",
         "- Pascal 전체 문법 트리가 아니므로 루틴 소유와 동적 표현식은 후속 의미 검토가 필요하다.",
         "- JSON 규칙과 기존 Dart fallback의 우선순위·도달성은 단계 1–3에서 연결한다.",
