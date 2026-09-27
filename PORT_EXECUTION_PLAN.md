@@ -215,5 +215,8 @@
     이름 있는 대원의 평균 행운과 적 평균 민첩성을 정수로 비교한다. 동률은
     도주 실패이며 빈 파티·적 목록은 안전하게 거절한다.
     커밋: `Calculate prebattle evasion from party luck`.
+    적 명단·평균 민첩성과 교전·도주 두 선택을 표시하는 재사용 가능한 조우
+    화면을 분리했다. 두 입력 콜백을 위젯에서 확인했다.
+    커밋: `Add the prebattle encounter choice view`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
