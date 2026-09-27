@@ -92,6 +92,27 @@ void main() {
     expect(defeated.delta.questChanges, isNotEmpty);
   });
 
+  test('SWAMP KEEP 수문장 둘을 격퇴하고 도주하면 관문 완료를 기록한다', () {
+    final run = engine.startById('keep1-exit-guard', const ScriptContext())!;
+    final result = ScriptBattleSession.resolve(
+      before: before,
+      end: LoreBattleEnd.runAway,
+      enemies: [
+        enemy('Guardian 1', hp: 0),
+        enemy('Guardian 2', hp: 0),
+        for (var i = 0; i < 5; i++) enemy('Minion $i'),
+      ],
+      pendingScript: run,
+    );
+    expect(result.defeatedEnemySlots, {1, 2});
+    expect(result.delta.setFlags, [
+      'keep1LeftGuardianDefeated',
+      'keep1RightGuardianDefeated',
+      'swampKeepBossDefeated',
+    ]);
+    expect(result.continuation?.awaitingBattle, isFalse);
+  });
+
   test('최후 전투는 도주 재전투를 만들고 보스 격퇴 시에만 끝낸다', () {
     final run = engine.startStep(
       26,

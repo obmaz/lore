@@ -21,6 +21,17 @@
         "party.etc[40] := party.etc[40] or bit1;"
       ]
     },
+    "swamp-keep-exit": {
+      "file": "LORESPEC.PAS",
+      "lines": [1762, 1790],
+      "evidence": [
+        "if y = 46 then begin",
+        "joinenemy(j,55);",
+        "joinenemy(j,56);",
+        "if enemy[1].dead and enemy[2].dead then",
+        "party.etc[42] := party.etc[42] or bit1;"
+      ]
+    },
     "den7-minotaur": {
       "file": "LORESPEC.PAS",
       "lines": [1602, 1620],
@@ -43,6 +54,42 @@
     }
   },
   "scenarios": [
+    {
+      "id": "swamp-keep-guardians-dead-before-retreat",
+      "source": "swamp-keep-exit",
+      "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21},
+      "selected": "keep1-exit-guard",
+      "trace": [
+        {"action": "start", "expect": {"battle": [55, 56, 35, 35, 35, 35, 35], "awaitingBattle": true}},
+        {"action": "retreat", "defeated": [1, 2], "expect": {"flags": ["keep1LeftGuardianDefeated", "keep1RightGuardianDefeated", "swampKeepBossDefeated"]}}
+      ]
+    },
+    {
+      "id": "swamp-keep-one-guardian-dead-before-retreat",
+      "source": "swamp-keep-exit",
+      "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21},
+      "selected": "keep1-exit-guard",
+      "trace": [
+        {"action": "start", "expect": {"battle": [55, 56, 35, 35, 35, 35, 35], "awaitingBattle": true}},
+        {"action": "retreat", "defeated": [1], "expect": {"flags": ["keep1LeftGuardianDefeated"]}}
+      ]
+    },
+    {
+      "id": "swamp-keep-guardians-already-dead",
+      "source": "swamp-keep-exit",
+      "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21, "flags": ["keep1LeftGuardianDefeated", "keep1RightGuardianDefeated"]},
+      "selected": "keep1-exit-guard",
+      "trace": [
+        {"action": "start", "expect": {"flags": ["swampKeepBossDefeated"], "blocked": true}}
+      ]
+    },
+    {
+      "id": "swamp-keep-exit-cleared",
+      "source": "swamp-keep-exit",
+      "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21, "flags": ["swampKeepBossDefeated"]},
+      "selected": null,
+      "trace": []
+    },
     {
       "id": "evil-seal-lever-pulled",
       "source": "evil-seal-lever",

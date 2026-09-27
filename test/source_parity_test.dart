@@ -50,13 +50,20 @@ void main() {
             .toSet(),
         tileAtPlayer: input['tileAtPlayer'] as int?,
       );
-      final firstRun = engine.startStep(
-        input['map'] as int,
-        input['x'] as int,
-        input['y'] as int,
-        context,
-      );
+      final firstRun = switch (input['trigger'] as String? ?? 'step') {
+        'step' => engine.startStep(
+          input['map'] as int,
+          input['x'] as int,
+          input['y'] as int,
+          context,
+        ),
+        'id' => engine.startById(input['script'] as String, context),
+        final trigger => throw FormatException('지원하지 않는 트리거: $trigger'),
+      };
       expect(firstRun?.script.id, scenario['selected'], reason: scenario['id']);
+      if (firstRun != null) {
+        expect(firstRun.script.map, input['map'], reason: scenario['id']);
+      }
 
       final trace = scenario['trace'] as List<dynamic>;
       if (firstRun == null) {

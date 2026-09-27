@@ -197,6 +197,9 @@ class ScriptStep {
   /// 전투 **승리 시** 설정할 플래그 (원작 `if party.etc[6] = 0 then party.etc[..] or bit`).
   final List<String> battleVictoryFlags;
   final Map<int, String> battleEnemyDefeatFlags;
+
+  /// 도주 시 지정된 적 슬롯이 모두 쓰러졌으면 설정하는 플래그.
+  final List<({List<int> slots, String flag})> battleRunAwayFlagsWhenDead;
   final List<ScriptStep> battleRunAwaySteps;
   final bool battleContinueOnRunAway;
   final bool battleRetryOnRunAway;
@@ -301,6 +304,7 @@ class ScriptStep {
     this.battleTitle,
     this.battleVictoryFlags = const [],
     this.battleEnemyDefeatFlags = const {},
+    this.battleRunAwayFlagsWhenDead = const [],
     this.battleRunAwaySteps = const [],
     this.battleContinueOnRunAway = false,
     this.battleRetryOnRunAway = false,
@@ -744,6 +748,9 @@ class ScriptRun {
       for (final slot in defeatedEnemySlots.toList()..sort())
         if (battle.battleEnemyDefeatFlags.containsKey(slot))
           ScriptStep(kind: 'flag', key: battle.battleEnemyDefeatFlags[slot]),
+      for (final condition in battle.battleRunAwayFlagsWhenDead)
+        if (condition.slots.every(defeatedEnemySlots.contains))
+          ScriptStep(kind: 'flag', key: condition.flag),
       if (battle.battleRunAwayProgressQuest != null &&
           battle.battleRunAwayProgressTotal != null)
         ScriptStep(
@@ -1519,6 +1526,18 @@ class LoreScriptEngine {
                     .map(
                       (slot, flag) => MapEntry(int.parse(slot), flag as String),
                     ),
+            battleRunAwayFlagsWhenDead:
+                (b['onRunAwayIfDead'] as List<dynamic>? ?? const []).map((
+                  entry,
+                ) {
+                  final condition = entry as Map<String, dynamic>;
+                  final slots = (condition['slots'] as List<dynamic>)
+                      .cast<int>();
+                  if (slots.isEmpty) {
+                    throw const FormatException('빈 도주 격퇴 슬롯 조건');
+                  }
+                  return (slots: slots, flag: condition['flag'] as String);
+                }).toList(),
             battleRunAwaySteps: _parseSteps(
               b['onRunAway'] as List<dynamic>? ?? const [],
             ),
