@@ -385,7 +385,7 @@ void main() {
         isTrue,
         reason: 'JSON 로드 실패: ${LoreScriptEngine.instance.loadError}',
       );
-      expect(LoreScriptEngine.instance.scripts.length, 591);
+      expect(LoreScriptEngine.instance.scripts.length, 592);
       expect(LoreScriptEngine.instance.scripts.map((s) => s.trigger).toSet(), {
         'step',
         'talk',
@@ -481,8 +481,18 @@ void main() {
       expect(teach.outcome.setFlags, contains('specialMagicLearned'));
       expect(teach.outcome.recruits, isEmpty);
 
-      // 배운 뒤 → 합류 스크립트
-      final join = LoreScriptEngine.instance.startStep(17, 75, 52, learned)!;
+      // 원작 party.etc[5]가 0이면 합류 선택지가 나타나지 않는다.
+      final waiting = LoreScriptEngine.instance.startStep(17, 75, 52, learned)!;
+      expect(waiting.script.id, 'redantares-wait-for-mindread');
+      expect(waiting.hasPendingChoice, isFalse);
+      expect(waiting.outcome.recruits, isEmpty);
+
+      // 독심술을 쓰며 재진입하면 합류를 제안한다.
+      const mindRead = ScriptContext(
+        flags: {'specialMagicLearned'},
+        mindReadActive: true,
+      );
+      final join = LoreScriptEngine.instance.startStep(17, 75, 52, mindRead)!;
       expect(join.hasPendingChoice, isTrue);
       final chosen = join.choose(0);
       expect(chosen.outcome.recruits.single.key, 'red_antares');
@@ -1182,14 +1192,16 @@ void main() {
       expect(guards.outcome.battleEnemyFirst, isFalse);
       expect(guards.outcome.battleMonsters, [61, 58, 56, 55, 60]);
 
-      // 4) 맵 23 (25,27): 함정 해제 + 영역 타일 변형(ifZero)
+      // 4) 맵 23 (25,27): 함정 해제 + 0인 타일만 영역 변형
       final trap = engine.startStep(
         23,
         25,
         27,
         const ScriptContext(tileAtPlayer: 52),
       )!;
-      final zeroArea = trap.outcome.tileAreas.firstWhere((a) => a.ifZero == 39);
+      final zeroArea = trap.outcome.tileAreas.firstWhere(
+        (a) => a.tile == 39 && a.onlyIf == 0,
+      );
       expect(zeroArea.xMin, 12);
       expect(zeroArea.xMax, 39);
       expect(zeroArea.yMin, 7);

@@ -1926,7 +1926,9 @@
       "y": 52,
       "once": true,
       "require": {
-        "flag": "specialMagicLearned"
+        "flag": "specialMagicLearned",
+        "flagNot": "etc38_bit2",
+        "mindRead": true
       },
       "steps": [
         {
@@ -1964,6 +1966,23 @@
               }
             ]
           }
+        }
+      ]
+    },
+    {
+      "id": "redantares-wait-for-mindread",
+      "trigger": "step",
+      "map": 17,
+      "x": 75,
+      "y": 52,
+      "require": {
+        "flag": "specialMagicLearned",
+        "flagNot": "etc38_bit2",
+        "mindReadInactive": true
+      },
+      "steps": [
+        {
+          "say": "Red Antares의 영혼은 독심술로 마음을 열 때 다시 말을 건넨다."
         }
       ]
     },

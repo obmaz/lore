@@ -246,5 +246,8 @@
     바꾸는 원본 효과가 빠져 있었다. 대사 전에 조건부 영역 변경을 추가하고
     다른 타일은 보존되는지 검증했다.
     커밋: `Restore Red Antares lava tile conversion`.
+    Red Antares 합류 제안은 특수 마법을 배운 뒤 독심술을 쓰는 경우에만
+    표시한다. 독심술이 없으면 대기 대화로 분기하고 재진입을 허용한다.
+    커밋: `Gate Red Antares recruitment on mind reading`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
