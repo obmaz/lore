@@ -2164,6 +2164,8 @@
       "id": "spec-6-L190",
       "trigger": "step",
       "map": 6,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map6Chest",
       "once": false,
       "steps": [
         {
@@ -2190,6 +2192,7 @@
       "id": "castle-chest-62-82",
       "trigger": "step",
       "map": 6,
+      "portedBy": "LoreSpecProcedures.map6Chest",
       "x": 62,
       "y": 82,
       "once": true,

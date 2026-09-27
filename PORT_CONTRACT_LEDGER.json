@@ -25895,7 +25895,7 @@
     {
       "path": "test/lore_spec_map4_test.dart",
       "kind": "test",
-      "sha256": "80b04e857da0ce87740216ce09cb1324efbcddb98fc0e2036617566823ea9592",
+      "sha256": "e7713c3eb1ba19d1391b3d58d414bcb5bd723e0aaed7cd3690e7ac5b0a1bbab1",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26038,7 +26038,7 @@
     {
       "path": "test/script_engine_test.dart",
       "kind": "test",
-      "sha256": "560b8e30a597f091ec4f82901165c40ae9350f737b8f60ad34e0154557227e2d",
+      "sha256": "4f3b9afda04983611633ce2047481043369924c9453e3150f7bf488766c9d090",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS",
@@ -26515,7 +26515,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "1767cf31df405314aef8a8533106757b73bb98498c7d829ba32e1aa6f1366c38",
+      "sha256": "d52879a804219df70337b64369275e90d21ec81f4348c5cb8abec9703b9e2001",
       "top_level_counts": {
         "scripts": 598
       }
@@ -26569,7 +26569,7 @@
     },
     {
       "path": "lib/logic/lore_special_event_dispatcher.dart",
-      "sha256": "9806c348a46a7d187554f7bb09ab61e55dd11d9649cf68d412f757ab52325c64"
+      "sha256": "a7d9b3bbc103c1c986b4bc4799320e29ca9c73726ee866fa2cd3c924d7cbd272"
     },
     {
       "path": "lib/logic/lore_lava_logic.dart",

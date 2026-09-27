@@ -5,7 +5,7 @@
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.
 
-전체 598개 / 활성 280개 / 비활성 318개 / 원본 추출 좌표 46개.
+전체 598개 / 활성 279개 / 비활성 319개 / 원본 추출 좌표 46개.
 
 ## 맵별 현황
 
@@ -16,7 +16,7 @@
 | 3 | 100×100 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 4 | 100×100 | 0 | 11 | 0 | 0 | 0 | 0 |
 | 5 | 50×50 | 1 | 0 | 0 | 0 | 1 | 0 |
-| 6 | 100×100 | 58 | 31 | 4 | 52 | 1 | 1 |
+| 6 | 100×100 | 57 | 32 | 3 | 52 | 1 | 1 |
 | 7 | 75×75 | 29 | 4 | 2 | 26 | 0 | 1 |
 | 8 | 75×75 | 0 | 4 | 0 | 0 | 0 | 0 |
 | 9 | 50×50 | 34 | 13 | 6 | 27 | 1 | 0 |
@@ -49,8 +49,10 @@
 
 - 맵 22 `keep2-ambush-zone-b` step (*, 47..99) — LORESPEC.PAS (파일 추정)
 
-### 원본형 프로시저로 전환한 비활성 JSON 항목: 14개
+### 원본형 프로시저로 전환한 비활성 JSON 항목: 16개
 
+- 맵 6 `spec-6-L190` step (62, 82) — LORESPEC.PAS:190 → LoreSpecProcedures.map6Chest
+- 맵 6 `castle-chest-62-82` step (62, 82) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map6Chest
 - 맵 4 `ancient-evil-first` step (20, 39) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
 - 맵 4 `ancient-evil-later` step (20, 39) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
 - 맵 4 `spec-4-L37` step (40, 18) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
@@ -206,6 +208,7 @@
 - 맵 14 `gold-14-31-30` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 14 `gold-14-31-8` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 14 `gold-14-14-28` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 6 `spec-6-L190` LORESPEC.PAS:190 — 조건/효과 미기록
 - 맵 6 `castle-chest-62-82` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 4 `ancient-evil-first` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 4 `ancient-evil-later` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
@@ -523,7 +526,6 @@
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
 | `madjoe-join`<br>LORETALK.PAS (파일 추정) | talk (40, 15) | {"flagNot":"madJoeJoined"} | flagNot madJoeJoined → 추가 | flag:madJoeJoined, join:mad_joe, setTile |
-| `spec-6-L190`<br>LORESPEC.PAS:190 | step (62, 82) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | gold, setTile |
 | `prison-battle-first`<br>LORESPEC.PAS (파일 추정) | step (51..52, 12) | {"flag":"madJoeJoined","flagNot":"prisonBattleStarted","tileAtPlayerZero":true} | flag madJoeJoined → 제거; flagNot prisonBattleStarted → 추가; tileAtPlayerZero True → 타일을 0 이외로 | flag:prisonBattleStarted, battle(적 2, 적 선공), setTile, flag:prisonBattleDone |
 | `prison-battle-return`<br>LORESPEC.PAS (파일 추정) | step (51..52, 12) | {"allFlags":["madJoeJoined","prisonBattleStarted"],"flagNot":"prisonBattleDone","tileAtPlayerZero":true} | flagNot prisonBattleDone → 추가; tileAtPlayerZero True → 타일을 0 이외로; allFlags → madJoeJoined 제거 | battle(적 7, 적 선공), setTile, flag:prisonBattleDone |
 | `castle-exit-skeleton`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flagNot":"etc31_bit1"} | flagNot etc31_bit1 → 추가 | join:skeleton, flag:skeletonJoined, flag:etc31_bit1 |

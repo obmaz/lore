@@ -638,11 +638,11 @@ void main() {
       await LoreScriptEngine.instance.load();
 
       // 맵 6 (62,82) 상자: 메시지 + 금 1000 + 타일 44로 변경(원작 map[62,82] := 44)
-      final chest = LoreScriptEngine.instance.startStep(
-        6,
+      final chest = LoreSpecProcedures.map6Chest(
         62,
         82,
         const ScriptContext(tileAtPlayer: 0),
+        LoreScriptEngine.instance,
       )!;
       expect(chest.outcome.messages.first, contains('상자 속에서'));
       expect(chest.outcome.goldDelta, 1000);

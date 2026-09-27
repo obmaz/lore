@@ -7,6 +7,23 @@ import '../data/lore_script.dart';
 class LoreSpecProcedures {
   LoreSpecProcedures._();
 
+  /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
+  /// replaced with floor. Keep the reward and tile effect in JSON data.
+  static ScriptRun? map6Chest(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson || x != 62 || y != 82 || context.tileAtPlayer != 0) {
+      return null;
+    }
+    final content = scripts.scripts.singleWhere(
+      (script) => script.id == 'spec-6-L190',
+    );
+    return scripts.startProcedure(content, context);
+  }
+
   /// `LORESPEC.PAS:37-189`, map 4. The ordered Pascal guards select one
   /// event; the existing JSON records provide its dialogue and effects.
   static ScriptRun? map4(

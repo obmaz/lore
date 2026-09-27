@@ -87,4 +87,31 @@ void main() {
     expect((revisit.outcome.teleportX, revisit.outcome.teleportY), (46, 41));
     expect(selected(40, 18, {}).outcome.teleportX, 46);
   });
+
+  test('LORESPEC 맵 6 상자는 한 번만 보상하고 타일을 일반 바닥으로 바꾼다', () {
+    LoreSpecialEventDispatch chest(int tile) =>
+        LoreSpecialEventDispatcher.resolve(
+          action: LoreTileAction.special,
+          mapId: 6,
+          x: 62,
+          y: 82,
+          context: ScriptContext(tileAtPlayer: tile),
+          party: const [],
+          scripts: scripts,
+          legacy: LoreDungeonEventManager.instance,
+        );
+
+    expect(
+      scripts.startStep(6, 62, 82, const ScriptContext(tileAtPlayer: 0)),
+      isNull,
+    );
+    final first = chest(0);
+    expect(first.legacy, isNull);
+    expect(first.script!.script.id, 'spec-6-L190');
+    expect(first.script!.outcome.goldDelta, 1000);
+    expect(first.script!.outcome.tileChanges.single,
+        (map: null, x: 62, y: 82, tile: 44, ifZero: null));
+    expect(chest(44).script, isNull);
+    expect(chest(44).legacy, isNull);
+  });
 }
