@@ -1151,7 +1151,8 @@ class BattleEngine {
       final castAll = switch (monster.castLevel) {
         5 => castAllAtLevelFive!,
         6 => _rand(activeParty.length) >= 2,
-        _ => monster.castLevel >= 3 && _rand(2) == 0,
+        3 || 4 => _rand(activeParty.length) >= 2,
+        _ => false,
       };
       if (castAll) {
         final spell = _enemyAllMagic(monster.mentality);
@@ -1180,6 +1181,8 @@ class BattleEngine {
           ? activeParty.reduce(
               (lowest, member) => member.hp < lowest.hp ? member : lowest,
             )
+          : monster.castLevel >= 2
+          ? activeParty[_rand(activeParty.length)]
           : livingParty[_rand(livingParty.length)];
 
       results.add(

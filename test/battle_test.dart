@@ -436,6 +436,10 @@ void main() {
           ..hp = 100
           ..resistance = 0
           ..ac = 0,
+        PartyMember.createPreset(4)
+          ..hp = 100
+          ..resistance = 0
+          ..ac = 0,
       ];
       final groupCaster = Monster(
         eNumber: 1,
@@ -453,9 +457,46 @@ void main() {
         specialCastLevel: 0,
         level: 2,
       );
-      engine.executeMonsterTurn(groupCaster, groupTargets, [groupCaster]);
-      expect([for (final target in groupTargets) target.hp], [84, 84]);
+      BattleEngine(random: DeterministicRandom([0, 2, ...List.filled(20, 0)]))
+          .executeMonsterTurn(groupCaster, groupTargets, [groupCaster]);
+      expect([for (final target in groupTargets) target.hp], [84, 84, 84]);
       // mentality 21: 8 * level 2, 대상마다 16
+    });
+
+    test('3·4단계 적은 행동 가능 대원이 둘 이하면 단일 마법을 고른다', () {
+      for (final castLevel in [3, 4]) {
+        final caster = _supportCaster(castLevel);
+        final party = [
+          PartyMember.createPreset(1)
+            ..hp = 100
+            ..resistance = 0
+            ..ac = 0,
+          PartyMember.createPreset(3)
+            ..hp = 100
+            ..resistance = 0
+            ..ac = 0,
+        ];
+
+        final results = BattleEngine(random: DeterministicRandom([0]))
+            .executeMonsterTurn(caster, party, [caster]);
+
+        expect(results.first.message, contains('에게'));
+        expect(party.where((member) => member.hp < 100), hasLength(1));
+
+        final groupCaster = _supportCaster(castLevel);
+        final groupParty = [
+          for (var i = 1; i <= 3; i++)
+            PartyMember.createPreset(i)
+              ..hp = 100
+              ..resistance = 0
+              ..ac = 0,
+        ];
+        final groupResults = BattleEngine(
+          random: DeterministicRandom([0, 2, ...List.filled(20, 0)]),
+        ).executeMonsterTurn(groupCaster, groupParty, [groupCaster]);
+        expect(groupResults.first.message, contains('일행 모두'));
+        expect(groupParty.every((member) => member.hp < 100), isTrue);
+      }
     });
 
     test('적 치료는 사망·기절·일반 HP를 원본 순서대로 처리한다', () {

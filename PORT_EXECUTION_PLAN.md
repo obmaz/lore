@@ -157,5 +157,9 @@
    원본처럼 행동하지 않는다. 오크의 휴식·무기 공격과 Sprite의 강제 마법,
    기존 고정 난수 시나리오를 검증했다.
    커밋: `Match original enemy weapon and magic choice`.
+   3·4단계 적 마법은 `random(행동 가능 대원 수) < 2`이면 단일 공격,
+   그렇지 않으면 전체 공격을 한다. 행동 가능한 대원 둘·셋인 경우와
+   단일 공격 대상 선택을 원본 분기대로 검증했다.
+   커밋: `Scale enemy spell area choice with party size`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.
