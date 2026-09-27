@@ -45,6 +45,12 @@ class LoreGame extends FlameGame {
   int playerX = 51;
   int playerY = 31;
   int playerDirection = 0; // 0: 남, 1: 북, 2: 동, 3: 서
+  bool _map26ArrowFacing = false;
+
+  /// `LOREMAIN.Main`: map 26 adds a second field-face offset after arrows.
+  int get playerSpriteIndex => currentMapName.startsWith('TOWN')
+      ? playerDirection
+      : playerDirection + (currentMapId == 26 && _map26ArrowFacing ? 8 : 4);
 
   /// 원작 `scroll(FALSE)` 연출용 임시 시야 중심 (null이면 파티 위치).
   ///
@@ -200,6 +206,7 @@ class LoreGame extends FlameGame {
     if (info == null) return;
     currentMapId = mapId;
     currentMapName = info.fileName;
+    _map26ArrowFacing = false;
     try {
       currentMap = await LoreMapData.loadFromAsset(
         info.fileName,
@@ -233,6 +240,9 @@ class LoreGame extends FlameGame {
 
   /// 플레이어 이동 처리
   bool tryMove(int dx, int dy) {
+    if (currentMapId == 26 && (dx != 0 || dy != 0)) {
+      _map26ArrowFacing = true;
+    }
     final targetX = playerX + dx;
     final targetY = playerY + dy;
     final map = currentMap;
@@ -640,10 +650,7 @@ class LoreGame extends FlameGame {
     );
 
     // 원작 LORESUB.PAS 기준 방향 인덱스: 남: 0, 북: 1, 동: 2, 서: 3 (필드 시 +4)
-    int face = playerDirection;
-    if (!currentMapName.startsWith('TOWN')) {
-      face += 4;
-    }
+    final face = playerSpriteIndex;
 
     final charaSheet = SpriteLibrary.instance.get('CHARA');
     if (charaSheet != null && face < charaSheet.count) {

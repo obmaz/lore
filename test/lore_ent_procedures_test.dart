@@ -1,8 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_game.dart';
+import 'package:lore/game/lore_world_manager.dart';
 import 'package:lore/logic/lore_ent_procedures.dart';
+import 'package:lore/logic/lore_portal_session.dart';
 import 'package:lore/models/party_member.dart';
 
 class _SequenceRandom implements Random {
@@ -30,6 +33,163 @@ void main() {
     expect(LoreEntProcedures.chamberDescentRows, [4, 3, 2, 1, 0]);
   });
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  test(
+    'Frost Dragon direct procedure rolls source slots and blocks retreat',
+    () {
+      const portal = PortalInfo(
+        targetMapId: 23,
+        targetX: 25,
+        targetY: 45,
+        name: 'EVIL CONCENTRATION',
+        scriptId: 'portal-5-23-frostdragon',
+      );
+      final first = LoreEntProcedures.beforeLoad(
+        portal,
+        const ScriptContext(),
+        (_) => 0,
+      )!;
+      final last = LoreEntProcedures.beforeLoad(
+        portal,
+        const ScriptContext(),
+        (_) => 4,
+      )!;
+      expect(first.steps.last.monsters, [54, 69, 54, 54, 54, 54, 54]);
+      expect(last.steps.last.monsters, [54, 54, 54, 54, 54, 69, 54]);
+      expect(first.steps.last.battleEnemyFirst, isTrue);
+      expect(first.steps.last.battleRunAwaySteps.single.block, isTrue);
+      expect(
+        LoreEntProcedures.beforeLoad(
+          portal,
+          const ScriptContext(flags: {'frostDragonDefeated'}),
+          (_) => fail('defeated guardian must not roll'),
+        ),
+        isNull,
+      );
+    },
+  );
+
+  test('lava gate direct procedure selects only surviving guardians', () {
+    const portal = PortalInfo(
+      targetMapId: 22,
+      targetX: 25,
+      targetY: 6,
+      name: 'IMPERIUM MINOR',
+      scriptId: 'portal-21-22-lavagate',
+    );
+    final engine = LoreScriptEngine();
+    const keys = {'lavaGateKeyLeft', 'lavaGateKeyRight'};
+    LorePortalPlan begin(Set<String> flags) => LorePortalSession.begin(
+      confirmed: true,
+      portal: portal,
+      context: ScriptContext(flags: flags),
+      scripts: engine,
+    );
+    expect(begin({}).preScript?.outcome.blockMove, isTrue);
+    expect(begin(keys).preScript?.outcome.battleMonsters, [65, 64]);
+    expect(
+      begin({...keys, 'lavaGateLeftGuardianDefeated'})
+          .preScript
+          ?.outcome
+          .battleMonsters,
+      [64],
+    );
+    expect(
+      begin({...keys, 'lavaGateRightGuardianDefeated'})
+          .preScript
+          ?.outcome
+          .battleMonsters,
+      [65],
+    );
+    expect(
+      begin({
+        ...keys,
+        'lavaGateLeftGuardianDefeated',
+        'lavaGateRightGuardianDefeated',
+      }).preScript?.outcome.setFlags,
+      ['lavaGateGuardiansCleared'],
+    );
+    expect(
+      begin({
+        ...keys,
+        'lavaGateLeftGuardianDefeated',
+        'lavaGateRightGuardianDefeated',
+        'lavaGateGuardiansCleared',
+      }).action,
+      LorePortalAction.loadMap,
+    );
+  });
+
+  test(
+    'dungeon and chamber direct procedures preserve battle continuations',
+    () {
+      final engine = LoreScriptEngine();
+      const dungeon = PortalInfo(
+        targetMapId: 25,
+        targetX: 25,
+        targetY: 45,
+        name: 'DUNGEON OF EVIL',
+        scriptId: 'portal-23-25-dungeon',
+      );
+      final guard = LorePortalSession.begin(
+        confirmed: true,
+        portal: dungeon,
+        context: const ScriptContext(),
+        scripts: engine,
+      ).preScript!;
+      expect(guard.outcome.battleMonsters, [62, 62, 70, 62, 62, 62, 62]);
+      expect(guard.continueAfterRunAway().outcome.blockMove, isTrue);
+      expect(
+        guard.continueAfterRunAway(defeatedEnemySlots: {3}).outcome.setFlags,
+        contains('dungeonOfEvilCleared'),
+      );
+
+      const chamber = PortalInfo(
+        targetMapId: 26,
+        targetX: 25,
+        targetY: 15,
+        name: 'CHAMBER OF NECROMANCER',
+        scriptId: 'portal-25-26-chamber',
+      );
+      final boss = LorePortalSession.begin(
+        confirmed: true,
+        portal: chamber,
+        context: const ScriptContext(),
+        scripts: engine,
+      ).preScript!;
+      expect(boss.outcome.battleMonsters, [63, 63, 63, 63, 63, 72]);
+      expect(boss.outcome.battleEnemyFirst, isFalse);
+      expect(boss.outcome.torchLit, isTrue);
+      expect(boss.continueAfterRunAway().outcome.blockMove, isTrue);
+      expect(boss.continueAfterRunAway().outcome.teleportY, 45);
+    },
+  );
+
+  test('Ancient Evil speaks once before the 21 to 22 load', () {
+    final speech = LoreEntProcedures.ancientEvilBeforeLoad(
+      fromMap: 21,
+      toMap: 22,
+      flags: {},
+    )!;
+    final run = LoreScriptEngine().startProcedure(
+      speech,
+      const ScriptContext(),
+    );
+    expect(run.outcome.messages, hasLength(19));
+    expect(run.outcome.setFlags, ['ancientEvilSpeechGiven']);
+    expect(
+      LoreEntProcedures.ancientEvilBeforeLoad(
+        fromMap: 21,
+        toMap: 22,
+        flags: {'ancientEvilSpeechGiven'},
+      ),
+      isNull,
+    );
+    expect(
+      LoreEntProcedures.ancientEvilBeforeLoad(fromMap: 5, toMap: 22, flags: {}),
+      isNull,
+    );
+  });
 
   test('sixth-slot Draconian is struck before the dungeon guard battle', () {
     final party = [for (var i = 1; i <= 6; i++) PartyMember.createPreset(i)];

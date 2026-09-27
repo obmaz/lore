@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import '../data/lore_script.dart';
 import '../game/lore_world_manager.dart';
 import '../models/party_member.dart';
 
@@ -8,6 +9,12 @@ import '../models/party_member.dart';
 /// remain here until they can be compared against the source at runtime.
 class LoreEntProcedures {
   LoreEntProcedures._();
+
+  static bool isSourceGuardedEntrance(String id) =>
+      id == 'portal-5-23-frostdragon' ||
+      id == 'portal-21-22-lavagate' ||
+      id == 'portal-23-25-dungeon' ||
+      id == 'portal-25-26-chamber';
 
   /// `LOREENT.PAS:16-367` destination clauses. Call only for a tile that
   /// `LOREMAIN.Main` classified as `entermode`. The map 1-5 `at` checks use
@@ -206,6 +213,164 @@ class LoreEntProcedures {
       ),
       _ => null,
     };
+  }
+
+  /// The four guarded `entermode` branches, stopped at the existing generic
+  /// battle effect boundary. Flags and random choice are read in Pascal order.
+  static LoreScript? beforeLoad(
+    PortalInfo portal,
+    ScriptContext context,
+    int Function(int upperBound) roll,
+  ) {
+    final id = portal.scriptId;
+    List<ScriptStep>? steps;
+    switch (id) {
+      case 'portal-5-23-frostdragon':
+        if (context.flags.contains('frostDragonDefeated')) return null;
+        final monsters = List<int>.filled(7, 54);
+        monsters[roll(5) + 1] = 69;
+        steps = [
+          for (final line in const [
+            ' 나는 EVIL CONCENTRATION 성의 입구를 지키는',
+            '임무를 맡고 있는 Frost Dragon이다. 내가 지',
+            '키고 있는한 너희들은 한 발자국도 들여놓지',
+            '않을것이다.',
+          ])
+            ScriptStep(kind: 'say', text: line),
+          ScriptStep(
+            kind: 'battle',
+            monsters: monsters,
+            battleTitle: 'Frost Dragon',
+            battleEnemyFirst: true,
+            battleVictoryFlags: const ['frostDragonDefeated'],
+            battleRunAwaySteps: const [ScriptStep(kind: 'block', block: true)],
+          ),
+        ];
+      case 'portal-21-22-lavagate':
+        const leftKey = 'lavaGateKeyLeft';
+        const rightKey = 'lavaGateKeyRight';
+        const leftDead = 'lavaGateLeftGuardianDefeated';
+        const rightDead = 'lavaGateRightGuardianDefeated';
+        if (!context.flags.contains(leftKey) ||
+            !context.flags.contains(rightKey)) {
+          steps = const [
+            ScriptStep(kind: 'say', text: ' 라바 게이트는 작동되지 않았다.'),
+            ScriptStep(kind: 'block', block: true),
+          ];
+          break;
+        }
+        final monsters = <int>[];
+        final defeatedFlags = <int, String>{};
+        if (!context.flags.contains(leftDead)) {
+          monsters.add(65);
+          defeatedFlags[monsters.length] = leftDead;
+        }
+        if (!context.flags.contains(rightDead)) {
+          monsters.add(64);
+          defeatedFlags[monsters.length] = rightDead;
+        }
+        if (monsters.isEmpty) {
+          if (context.flags.contains('lavaGateGuardiansCleared')) return null;
+          steps = const [
+            ScriptStep(kind: 'flag', key: 'lavaGateGuardiansCleared'),
+          ];
+        } else {
+          steps = [
+            ScriptStep(
+              kind: 'battle',
+              monsters: monsters,
+              battleTitle: 'IMPERIUM MINOR 수문장',
+              battleEnemyFirst: true,
+              battleEnemyDefeatFlags: defeatedFlags,
+              battleVictoryFlags: const ['lavaGateGuardiansCleared'],
+              battleContinueOnRunAway: true,
+            ),
+          ];
+        }
+      case 'portal-23-25-dungeon':
+        if (context.flags.contains('dungeonOfEvilCleared')) return null;
+        steps = const [
+          ScriptStep(kind: 'say', text: ' 이 동굴에 들어 가겠다고?'),
+          ScriptStep(kind: 'say', text: ' 하!, 우습군. 너희들에게는 여기의 Draconian'),
+          ScriptStep(kind: 'say', text: '족들의 모습이 보이지 않는 모양이군.'),
+          ScriptStep(
+            kind: 'battle',
+            monsters: [62, 62, 70, 62, 62, 62, 62],
+            battleTitle: 'ArchiDraconian',
+            battleEnemyFirst: true,
+            battleVictoryIfEnemyDead: 3,
+            battleRunAwaySteps: [ScriptStep(kind: 'block', block: true)],
+          ),
+          ScriptStep(kind: 'flag', key: 'dungeonOfEvilCleared'),
+        ];
+      case 'portal-25-26-chamber':
+        steps = const [
+          ScriptStep(kind: 'torch', torchLit: true),
+          ScriptStep(kind: 'say', text: ' 두말이 필요없다. 덤벼라 !!'),
+          ScriptStep(
+            kind: 'battle',
+            monsters: [63, 63, 63, 63, 63, 72],
+            battleTitle: 'Necromancer',
+            battleRunAwaySteps: [
+              ScriptStep(kind: 'teleport', tileX: 25, tileY: 45),
+              ScriptStep(kind: 'block', block: true),
+            ],
+          ),
+        ];
+      default:
+        return null;
+    }
+    return LoreScript(
+      id: id!,
+      trigger: 'portal',
+      map: portal.targetMapId,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
+  }
+
+  /// `LOREENT.PAS:233-259`: Ancient Evil speaks before `load` on the first
+  /// crossing from SWAMP KEEP to IMPERIUM MINOR.
+  static LoreScript? ancientEvilBeforeLoad({
+    required int fromMap,
+    required int toMap,
+    required Set<String> flags,
+  }) {
+    if (fromMap != 21 ||
+        toMap != 22 ||
+        flags.contains('ancientEvilSpeechGiven')) {
+      return null;
+    }
+    return const LoreScript(
+      id: 'loreent-ancient-evil',
+      trigger: 'enter',
+      map: 22,
+      once: false,
+      require: ScriptRequire(),
+      steps: [
+        ScriptStep(kind: 'say', text: ' 역시 당신들은 나의 예상대로 마지막  대륙까'),
+        ScriptStep(kind: 'say', text: '지 무난하게 왔군요. 이번에 가게될 LAVA 대륙'),
+        ScriptStep(kind: 'say', text: '은 이 세계에 있는 모든 대륙중에서 가장 작은'),
+        ScriptStep(kind: 'say', text: '대륙이오. 적의 요새도 또한 2개 밖에 없는 곳'),
+        ScriptStep(kind: 'say', text: '이오. 하지만 이번에 도착할 IMPERIUM MINOR나'),
+        ScriptStep(kind: 'say', text: '마지막으로 거칠 EVIL CONCENTRATION 은 말 그'),
+        ScriptStep(kind: 'say', text: '대로 악의 집결지인 것이오. 거기에는 최강의'),
+        ScriptStep(kind: 'say', text: '괴물들과 Necromancer 의 심복들로 가득차있는'),
+        ScriptStep(kind: 'say', text: '곳이지만 IMPERIUM MINOR의 지하에는 마지막으'),
+        ScriptStep(kind: 'say', text: '로 살아남은 사람들의 도시가 있소. 원래 거기'),
+        ScriptStep(kind: 'say', text: '는 Ancient Evil이 전에 세운 악의 동굴이었지'),
+        ScriptStep(kind: 'say', text: '만 Necromancer의 침략으로 지상의 도시가 함'),
+        ScriptStep(kind: 'say', text: '락되자 그 곳의 사람들은 모두 거기로 피난 했'),
+        ScriptStep(kind: 'say', text: '던 것이고 거기는 Ancient Evil의 영적인 힘으'),
+        ScriptStep(kind: 'say', text: '로 보호되고 있어서 적들이 침략을하지 못하는'),
+        ScriptStep(kind: 'say', text: '이유가 되지요. 그러므로 모든 도움과 물자는'),
+        ScriptStep(kind: 'say', text: '거기서 받도록하시오.'),
+        ScriptStep(kind: 'say', text: ' 그러면, 나는 당신이 Necromancer와 상대하게'),
+        ScriptStep(kind: 'say', text: '될 때 다시 Ancient Evil과 같이 나타나겠소.'),
+        ScriptStep(kind: 'flag', key: 'ancientEvilSpeechGiven'),
+      ],
+    );
   }
 
   /// `LOREENT.PAS:293-309`: the sixth-slot Draconian is struck before the

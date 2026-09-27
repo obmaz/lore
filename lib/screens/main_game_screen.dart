@@ -393,12 +393,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
   Future<void> _finishPortalEntry(PortalInfo portal, int tx, int ty) async {
     final enteredFromMap = _game.currentMapId;
     // LOREENT map 21 shows Ancient Evil before the destination `load`.
-    if (enteredFromMap == 21 && portal.targetMapId == 22) {
-      final speech = _scripts.startEnter(
-        22,
-        _scriptContext(enteredFromMap: enteredFromMap),
-      );
-      if (speech != null) await _driveScript(speech);
+    final speech = LoreEntProcedures.ancientEvilBeforeLoad(
+      fromMap: enteredFromMap,
+      toMap: portal.targetMapId,
+      flags: _scriptContext().flags,
+    );
+    if (speech != null) {
+      await _driveScript(_scripts.startProcedure(speech, _scriptContext()));
       if (!mounted) return;
     }
     await _game.enterPortal(portal, tx, ty, deferPostLoadEffects: true);

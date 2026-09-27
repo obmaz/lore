@@ -953,6 +953,13 @@ class LoreScriptEngine {
     return null;
   }
 
+  /// Run a source-ported procedure through the existing ordered effect and
+  /// battle continuation interpreter without registering a JSON rule.
+  ScriptRun startProcedure(LoreScript procedure, ScriptContext ctx) =>
+      _start(procedure, ctx);
+
+  int roll(int exclusiveUpperBound) => _random.nextInt(exclusiveUpperBound);
+
   /// `enter` 트리거 (원작 LOREENT.PAS `entermode` - 맵 진입 연출).
   ///
   /// 좌표 대신 맵 단위로 발동하며, 조건을 만족하는 첫 스크립트 하나만 실행한다.

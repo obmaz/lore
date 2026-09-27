@@ -1,5 +1,6 @@
 import '../data/lore_script.dart';
 import '../game/lore_world_manager.dart';
+import 'lore_ent_procedures.dart';
 
 enum LorePortalAction {
   cancelled,
@@ -30,6 +31,20 @@ class LorePortalSession {
     if (!confirmed) return const LorePortalPlan(LorePortalAction.cancelled);
     final id = portal.scriptId;
     if (id != null) {
+      final source = LoreEntProcedures.beforeLoad(
+        portal,
+        context,
+        scripts.roll,
+      );
+      if (source != null) {
+        return LorePortalPlan(
+          LorePortalAction.runPreScript,
+          scripts.startProcedure(source, context),
+        );
+      }
+      if (LoreEntProcedures.isSourceGuardedEntrance(id)) {
+        return const LorePortalPlan(LorePortalAction.loadMap);
+      }
       final pre = scripts.startById(id, context);
       if (pre != null) {
         return LorePortalPlan(LorePortalAction.runPreScript, pre);

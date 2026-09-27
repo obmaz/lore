@@ -87,19 +87,21 @@
 
 이 표는 **실행 중인 원본형 프로시저**만 완료로 센다. JSON에 일부 대사나
 좌표가 있다는 이유로 프로시저를 완료로 표시하지 않는다. 첫 네 유닛의
-12개 루틴 중 현재 4개가 직접 실행된다. `Main`과 `LOREENT`의 실행
-경로는 이번 검토에서 원본과 대조했지만, 지도·전투 분기는 여전히 JSON과
-화면 콜백에 분산되어 있어 **직접 이식 완료 수에는 넣지 않는다**.
+12개 루틴 중 현재 6개의 게임 규칙이 원본 순서로 실행된다. `Main`은
+`FieldHotkeys`·`LoreFieldSession`·`LoreMainProcedures`로 입력/타일/지형
+단계를 나눴고, `LOREENT`는 목적지·전투 전후·지도 변경·표지판을
+`LoreEntProcedures`가 결정한다. 선택·전투 중단과 재개는 범용
+`LoreScriptEngine` 효과 실행기를 사용한다. 원본의 DOS 팔레트 BIOS 호출과
+폰트 버퍼 지우기는 Flutter에 대응하는 게임 규칙이 아니므로 제외했다.
 
 | 원본 유닛 | 직접 실행 완료 | 남은 루틴·경계 |
 | --- | --- | --- |
-| `LOREMAIN` | `enter_water`, `enter_swamp`, `enter_lava`, `Move_Mode` | `Main`의 단일 프로시저 코어. 입력 후 현재 타일 재판정·소리 전환·Space의 전투 결과 초기화는 앱에 연결했다. |
-| `LOREENT` | 없음 | `entermode`, `sign`의 단일 중단/재개 코어. 27개 목적지와 `load` 뒤 지도 변경은 원본형 Dart 코드에서 실행한다. 수문장 전투·선택 후속은 아직 JSON 스크립트 세션을 사용한다. |
+| `LOREMAIN` | `enter_water`, `enter_swamp`, `enter_lava`, `Move_Mode`, `Main` | 입력 후 현재 타일 재판정, 맵 26 방향 그림 예외, 소리 전환, Space의 전투 결과 초기화까지 앱에 연결했다. |
+| `LOREENT` | `entermode`, `sign` | 27개 목적지·4개 수문장 입구·7곳의 지도 변경·표지판을 원본형 Dart 코드로 실행한다. 대사 텍스트와 범용 효과 실행기는 데이터/엔진 경계다. |
 | `LORETALK` | 없음 | `talkmode` 전체 |
 | `LORESPEC` | 없음 | `sgn`, `specialevent_part1`, `specialevent_part2`, `specialevent` 및 모든 지도별 본문 |
 
-다음 전환은 `Main`과 `LOREENT`의 분산된 실행 경로를 하나의 중단/재개
-프로시저 코어로 모으는 것이다. 특히 선택·전투 뒤의 같은 프로시저 후속을
-화면 콜백 없이 재생하고, 해당 경로의 JSON 실행 권한을 제거해야 한다.
-전투·메뉴·
+`LOREMAIN`과 `LOREENT`의 입구 JSON은 원본과 대조하는 자료로 남지만
+앱의 해당 진입 타일은 원본형 Dart 절차만 사용한다. `LORETALK`·`LORESPEC`의
+전환과 전투·메뉴·
 생성·저장·종료 유닛은 이 표 밖의 후속 범위이며 최종 완료 게이트에 포함된다.
