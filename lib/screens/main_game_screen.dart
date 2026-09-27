@@ -97,7 +97,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   ScriptRun? _pendingScriptBattle;
   int? _pendingScriptTargetX;
   int? _pendingScriptTargetY;
-  ({PortalInfo? portal, int tx, int ty})? _pendingPortalTransition;
+  ({PortalInfo portal, int tx, int ty})? _pendingPortalTransition;
 
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
@@ -233,14 +233,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   /// 원작 `LORESUB.PAS:986 wantenter` / `:999 wantexit`
   /// 성문·동굴 입구 진입 여부를 확인한 뒤 이동한다.
-  Future<void> _confirmPortalEntry(PortalInfo? portal, int tx, int ty) async {
+  Future<void> _confirmPortalEntry(PortalInfo portal, int tx, int ty) async {
     final leavingTown =
-        portal == null && _game.currentMapName.startsWith('TOWN');
-    final prompt = portal != null
-        ? LoreFieldLogic.enterPrompt(portal.name)
-        : (leavingTown
-              ? LoreFieldLogic.exitPrompt
-              : LoreFieldLogic.enterPrompt('이 곳'));
+        _game.currentMapName.startsWith('TOWN') &&
+        LoreWorldManager.mapRegistry[portal.targetMapId]?.category ==
+            MapCategory.ground;
+    final prompt = leavingTown
+        ? LoreFieldLogic.exitPrompt
+        : LoreFieldLogic.enterPrompt(portal.name);
 
     final confirmed = await showDialog<bool>(
       context: context,
@@ -280,7 +280,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
     if (confirmed == true) {
       // 원작 LOREENT.PAS - 진입 전 연출(수문장 전투/대사/라바 게이트 판정).
-      final enterScriptId = portal?.scriptId;
+      final enterScriptId = portal.scriptId;
       if (enterScriptId != null) {
         final pre = LoreScriptEngine.instance.startById(
           enterScriptId,

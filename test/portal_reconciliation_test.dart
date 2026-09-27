@@ -24,6 +24,44 @@ void main() {
     expect((requested?.targetX, requested?.targetY), (50, 10));
   });
 
+  test('원본 entermode에 좌표 규칙이 없는 진입 타일은 지도를 바꾸지 않는다', () async {
+    LoreWorldManager.instance.resetRulesForTest();
+    for (final site in [
+      (mapId: 2, name: 'GROUND2', category: 'ground', x: 80, y: 47),
+      (mapId: 2, name: 'GROUND2', category: 'ground', x: 84, y: 47),
+      (mapId: 2, name: 'GROUND2', category: 'ground', x: 81, y: 49),
+      (mapId: 2, name: 'GROUND2', category: 'ground', x: 83, y: 49),
+      (mapId: 4, name: 'SWAMP', category: 'ground', x: 26, y: 15),
+      (mapId: 4, name: 'SWAMP', category: 'ground', x: 25, y: 16),
+      (mapId: 4, name: 'SWAMP', category: 'ground', x: 27, y: 16),
+      (mapId: 17, name: 'DEN4', category: 'den', x: 80, y: 67),
+      (mapId: 17, name: 'DEN4', category: 'den', x: 81, y: 67),
+      (mapId: 17, name: 'DEN4', category: 'den', x: 82, y: 67),
+      (mapId: 26, name: 'K_DEN2', category: 'town', x: 28, y: 43),
+    ]) {
+      final map = await LoreMapData.loadFromAsset(
+        site.name,
+        category: site.category,
+      );
+      var requests = 0;
+      final game = LoreGame(
+        initialMapId: site.mapId,
+        initialPlayerX: site.x - 1,
+        initialPlayerY: site.y,
+        onPortalRequested: (_, _, _) => requests++,
+      )..currentMap = map;
+
+      expect(
+        game.tryMove(1, 0),
+        isFalse,
+        reason: '${site.mapId} (${site.x},${site.y})',
+      );
+      expect((game.playerX, game.playerY), (site.x - 1, site.y));
+      expect(game.currentMapId, site.mapId);
+      expect(requests, 0);
+    }
+  });
+
   test('맵 21 출구의 수문장 분기는 남은 적과 완료 상태에 따라 바뀐다', () async {
     final engine = LoreScriptEngine();
     await engine.load();

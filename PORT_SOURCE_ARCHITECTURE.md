@@ -64,7 +64,7 @@ den, 맵 26은 town으로 해석된다.
 | --- | --- | --- |
 | 타일 행동 분류·이동 | `LoreMapData.getCategory`, `LoreMovementLogic`, `LoreGame.tryMove` | 원본의 호출 순서와 타일별 우선순위를 한 계약으로 고정 |
 | 특수 사건 | `LoreSpecialEventDispatcher`가 JSON 규칙 또는 `LoreDungeonEventManager`를 선택 | JSON이 로드되면 단일 기준으로 실행하고, 로드 실패 때만 기존 처리기를 사용 |
-| 진입·표지판 | `LoreWorldManager`의 JSON/내장 규칙, `LoreGame`의 진입 처리 | 이동 요청·거절·진입 직전 효과·지도 로드 순서를 명시 |
+| 진입·표지판 | `LoreWorldManager`의 JSON/내장 규칙, `LoreGame`의 진입 처리 | 규칙 없는 진입 타일은 이동하지 않도록 고정; 진입 직전 효과·지도 로드 순서를 계속 검토 |
 | 대화·시설 | `LoreScriptEngine`, `LoreDialogueManager`, 시설 규칙 | 같은 좌표의 우선순위와 상태 변경을 단일 대화 경계에서 관리 |
 | 전투·상태 | `BattleEngine`, `ScriptBattleSession`, 여러 reducer와 화면 상태 | 선택·난수·승리·도주·패배의 순서 있는 효과를 한 상태에 반영 |
 
@@ -83,7 +83,8 @@ den, 맵 26은 town으로 해석된다.
    다음에는 사건·전투까지의 호출 순서를 한 실행 경계에서 비교한다.
 2. 상태 변경을 단일 게임 상태와 효과 적용기에 모으고, 화면은 결과를 표시한다.
    특수 사건은 `LoreSpecialEventDispatcher`에서 JSON과 기존 처리기의 우선순위를
-   고정했다. 이어서 포털·대화와 상태 효과도 같은 원칙으로 정리한다.
+   고정했다. 포털은 등록된 목적지가 있을 때만 요청하도록 고정했다. 이어서
+   진입 효과·대화·상태 효과도 같은 원칙으로 정리한다.
 3. 원본의 반복 패턴은 공통 규칙으로, 지도별 값과 대사는 데이터로, 고유한
    사건만 별도 처리기로 옮긴다. 지도 하나씩 임시 분기를 늘리지 않는다.
 4. 분기 목록은 독립 구현 작업 목록이 아니라, 위 계약에 연결되지 않은 원본

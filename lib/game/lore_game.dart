@@ -100,7 +100,7 @@ class LoreGame extends FlameGame {
 
   /// 성문/동굴 입구 앞에 섰을 때 호출된다 (원작 `wantenter`/`wantexit`).
   /// 확인 대화상자에서 승인하면 화면단이 [enterPortal]을 호출한다.
-  final void Function(PortalInfo? portal, int tx, int ty)? onPortalRequested;
+  final void Function(PortalInfo portal, int tx, int ty)? onPortalRequested;
 
   final bool Function()? canWalkOnWater;
   final Random _random;
@@ -235,6 +235,8 @@ class LoreGame extends FlameGame {
         _handleNpcInteraction(map.getTile(targetX, targetY), targetX, targetY);
         return false;
       case LoreMoveKind.portal:
+        // 원작 entermode는 해당 좌표의 규칙이 없으면 아무 지도도 열지 않는다.
+        if (portal == null) return false;
         if (onPortalRequested != null) {
           // 원작 wantenter/wantexit: 화면단에서 확인을 받은 뒤 enterPortal 호출
           onPortalRequested!(portal, targetX, targetY);
@@ -353,23 +355,13 @@ class LoreGame extends FlameGame {
 
   /// 성문/동굴 입구 진입 처리.
   /// 원작 `LORESUB.PAS:986 wantenter` / `:999 wantexit` 확인을 통과한 뒤 호출된다.
-  Future<void> enterPortal(PortalInfo? portal, int tx, int ty) async {
-    if (portal != null) {
-      await loadMapById(
-        portal.targetMapId,
-        startX: portal.targetX,
-        startY: portal.targetY,
-      );
-      onLog?.call('${portal.name}에 진입했습니다.');
-    } else {
-      if (currentMapName.startsWith('TOWN')) {
-        await loadMapById(1, startX: 20, startY: 12);
-        onLog?.call('성문을 나와 광활한 LORE 대륙 필드(GROUND1)로 나섰습니다.');
-      } else {
-        await loadMapById(6, startX: 51, startY: 95);
-        onLog?.call('성문 안으로 들어서 CASTLE LORE 성내 마을로 진입했습니다.');
-      }
-    }
+  Future<void> enterPortal(PortalInfo portal, int tx, int ty) async {
+    await loadMapById(
+      portal.targetMapId,
+      startX: portal.targetX,
+      startY: portal.targetY,
+    );
+    onLog?.call('${portal.name}에 진입했습니다.');
   }
 
   @override
