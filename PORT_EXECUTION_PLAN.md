@@ -44,6 +44,12 @@
 교체했다. 실제 출구는 기존 y=50 포털 목적지를 별도 대조한다.
 커밋: `Keep pyramid special tiles inside map twenty seven`.
 
+27개 맵 전체를 `PORT_MAP_PARITY.md`에 목록화했다. 원본 특수·대화 좌표,
+활성 규칙·포털, 원본 근거 실행 명세, 자동 경로 재생 건수를 분리한다.
+실행 비교가 일부 있는 맵도 완료로 표시하지 않고, 새 비교를 추가할 때
+`tool/report_map_parity.py --check`로 현황 드리프트를 잡는다.
+커밋: `Track source execution evidence across all twenty seven maps`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로
