@@ -25727,6 +25727,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/field_random_sequence_test.dart",
+      "kind": "test",
+      "sha256": "58e0a0fd93d24f025cd752417bf79d67a6b17b2120f822a3fe3fb4edd9721db2",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/field_session_test.dart",
       "kind": "test",
       "sha256": "8a94c9b75d12dc786417894adc5a0ebd936e4ea097dcff8c53c082fa02c371fb",
@@ -26405,7 +26412,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "a6a9a417d4dac4ba577515812a5a02854b647d507d49f4035b9b206c0dc03a1b"
+      "sha256": "bd36555c39d58d9c02e8015d50d1c845ac1208ec68d161c4ed8e04a990669923"
     }
   ],
   "baseline_gaps": {

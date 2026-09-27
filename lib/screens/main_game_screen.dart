@@ -18,6 +18,7 @@ import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_special_event_dispatcher.dart';
 import '../logic/lore_portal_session.dart';
 import '../logic/lore_battle_progress.dart';
+import '../logic/battle_engine.dart';
 import '../logic/lore_mirror_enemy.dart';
 import '../logic/lore_rigel_blessing.dart';
 import '../logic/script_battle_session.dart';
@@ -56,7 +57,7 @@ class MainGameScreen extends StatefulWidget {
   final List<PartyMember>? initialParty;
   final SaveData? initialSaveData;
 
-  /// 필드 조우와 몬스터 추첨에 쓰는 난수원. 시나리오 재현에 사용할 수 있다.
+  /// 필드·위험 지형·몬스터 편성·전투가 공유하는 난수원.
   final Random? encounterRandom;
 
   const MainGameScreen({
@@ -71,6 +72,7 @@ class MainGameScreen extends StatefulWidget {
 }
 
 class _MainGameScreenState extends State<MainGameScreen> {
+  late final Random _sessionRandom;
   GameScreenMode _currentMode = GameScreenMode.field;
   late List<PartyMember> _party;
   late LoreGame _game;
@@ -110,6 +112,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   @override
   void initState() {
     super.initState();
+    _sessionRandom = widget.encounterRandom ?? Random();
     _initParty();
     _initGame();
     // 화면 진입 직후 키보드 포커스를 게임으로 가져온다.
@@ -185,7 +188,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       initialPlayerX: startX,
       initialPlayerY: startY,
       initialMapTiles: widget.initialSaveData?.mapTiles,
-      random: widget.encounterRandom,
+      random: _sessionRandom,
       onLog: (msg) => _addLog(msg),
       onEncounter: () => _startBattle(),
       encounterFrequencyProvider: () => _encounterFrequency,
@@ -614,7 +617,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
 
     if (outcome.rigelBlessing) {
-      applyRigelBlessing(_party, Random());
+      applyRigelBlessing(_party, _sessionRandom);
       setState(() {});
     }
 
@@ -979,7 +982,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       } else {
         // 원작 LOREMAIN.PAS:60 `일행은 독이 있는 늪에 들어갔다 !!!`
         _addLog('☣ 일행은 독이 있는 늪에 들어갔다 !!!');
-        for (final slot in LoreSwampLogic.rollPoisonedSlots(_party, Random())) {
+        for (final slot in LoreSwampLogic.rollPoisonedSlots(
+          _party,
+          _sessionRandom,
+        )) {
           final member = _party[slot];
           // 원작은 이미 중독된 대원에게도 메시지를 보여준다.
           _addLog('☠ ${member.name}는 중독 되었다.');
@@ -991,7 +997,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _addLog('🔥 일행은 용암지대로 들어섰다 !!!');
       // 원작은 피해량을 한 번 굴려 `{name}는 {n}의 피해를 입었다 !` 로 출력하고
       // 같은 값으로 HP/상태를 갱신한다.
-      final damages = LoreLavaLogic.rollDamages(_party, Random());
+      final damages = LoreLavaLogic.rollDamages(_party, _sessionRandom);
       for (var i = 0; i < _party.length; i++) {
         if (_party[i].name.isNotEmpty) {
           _addLog('💥 ${_party[i].name}는 ${damages[i]}의 피해를 입었다 !');
@@ -1248,7 +1254,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   void _startBattle() {
     final monsterIds = LoreEncounterLogic.rollMonsters(
       _game.currentMapId,
-      widget.encounterRandom ?? Random(),
+      _sessionRandom,
       maxEnemies: _maxEnemies,
     );
     if (monsterIds.isEmpty) return;
@@ -1674,6 +1680,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       case GameScreenMode.battle:
         return BattleViewportView(
           key: ValueKey(_battleSerial),
+          battleEngine: BattleEngine(random: _sessionRandom),
           partyMembers: _party,
           enemies: _battleEnemies,
           enemyFirst: _battleEnemyFirst,
