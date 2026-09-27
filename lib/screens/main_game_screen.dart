@@ -52,7 +52,15 @@ class MainGameScreen extends StatefulWidget {
   final List<PartyMember>? initialParty;
   final SaveData? initialSaveData;
 
-  const MainGameScreen({super.key, this.initialParty, this.initialSaveData});
+  /// 필드 조우와 몬스터 추첨에 쓰는 난수원. 시나리오 재현에 사용할 수 있다.
+  final Random? encounterRandom;
+
+  const MainGameScreen({
+    super.key,
+    this.initialParty,
+    this.initialSaveData,
+    this.encounterRandom,
+  });
 
   @override
   State<MainGameScreen> createState() => _MainGameScreenState();
@@ -173,6 +181,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       initialPlayerX: startX,
       initialPlayerY: startY,
       initialMapTiles: widget.initialSaveData?.mapTiles,
+      random: widget.encounterRandom,
       onLog: (msg) => _addLog(msg),
       onEncounter: () => _startBattle(),
       encounterFrequencyProvider: () => _encounterFrequency,
@@ -1223,7 +1232,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   void _startBattle() {
     final monsterIds = LoreEncounterLogic.rollMonsters(
       _game.currentMapId,
-      Random(),
+      widget.encounterRandom ?? Random(),
       maxEnemies: _maxEnemies,
     );
     if (monsterIds.isEmpty) return;

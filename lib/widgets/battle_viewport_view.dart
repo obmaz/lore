@@ -955,8 +955,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             color: RetroTheme.panelBg,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
+              spacing: 8,
+              runSpacing: 2,
               children: [
                 Text(
                   player != null ? '▶ [${player.name}] 의 전투 턴' : '행동 대기 중...',
