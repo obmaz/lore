@@ -26,11 +26,15 @@ def collect():
     source_scenarios = json.loads(
         (ROOT / 'test/fixtures/source_parity.json').read_text(),
     )['scenarios']
+    entrances = json.loads(
+        (ROOT / 'test/fixtures/source_entrance_replay.json').read_text(),
+    )['cases']
     spec_count = Counter(entry[0] for entry in spec_events)
     talk_count = Counter(entry[0] for entry in talk_events)
     active_count = Counter(s['map'] for s in scripts if not s.get('disabled'))
     portal_count = Counter(p['map'] for p in portals)
     scenario_count = Counter(s['input']['map'] for s in source_scenarios)
+    entrance_count = Counter(case['map'] for case in entrances)
     replay_count = {}
     for path in (ROOT / 'test/fixtures').glob('map*_route_parity.json'):
         data = json.loads(path.read_text())
@@ -43,6 +47,7 @@ def collect():
         'active': active_count[item['mapId']],
         'portals': portal_count[item['mapId']],
         'scenarios': scenario_count[item['mapId']],
+        'entrances': entrance_count[item['mapId']],
         'replays': replay_count.get(item['mapId'], 0),
     } for item in maps]
 
@@ -54,23 +59,25 @@ def render(rows):
         '# 27개 맵 원본 실행 비교 현황',
         '',
         '`python3 tool/report_map_parity.py --check`로 최신 상태를 확인한다.',
-        '좌표와 활성 스크립트 수는 목록 검사다. 원본 실행 시나리오와 경로 재생도',
+        '좌표와 활성 스크립트 수는 목록 검사다. 원본 진입 재생은 목적지만 확인한다.',
+        '원본 실행 시나리오와 경로 재생도',
         '전체 분기를 증명하지 않는다. 따라서 모든 맵의 완료 판정은 아직 보류한다.',
         '',
-        '| 맵 | 파일 | 원본 특수 좌표 | 원본 대화 좌표 | 활성 스크립트 | 포털 | 원본 근거 시나리오 | 자동 경로 재생 | 판정 |',
-        '| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |',
+        '| 맵 | 파일 | 원본 특수 좌표 | 원본 대화 좌표 | 활성 스크립트 | 포털 | 원본 진입 재생 | 원본 근거 시나리오 | 자동 경로 재생 | 판정 |',
+        '| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |',
     ]
     for row in rows:
-        evidence = '부분 실행 비교' if row['scenarios'] or row['replays'] else '실행 비교 없음'
+        evidence = '부분 실행 비교' if row['entrances'] or row['scenarios'] or row['replays'] else '실행 비교 없음'
         lines.append(
             f"| {row['map']} | {row['name']} | {row['spec']} | {row['talk']} | "
-            f"{row['active']} | {row['portals']} | {row['scenarios']} | "
+            f"{row['active']} | {row['portals']} | {row['entrances']} | {row['scenarios']} | "
             f"{row['replays']} | {evidence} |"
         )
     lines += [
         '',
         f"합계: 원본 특수 좌표 {sum(r['spec'] for r in rows)}, "
         f"대화 좌표 {sum(r['talk'] for r in rows)}, "
+        f"원본 진입 재생 {sum(r['entrances'] for r in rows)}, "
         f"원본 근거 시나리오 {sum(r['scenarios'] for r in rows)}, "
         f"자동 경로 재생 {sum(r['replays'] for r in rows)}.",
         '',

@@ -50,6 +50,13 @@
 `tool/report_map_parity.py --check`로 현황 드리프트를 잡는다.
 커밋: `Track source execution evidence across all twenty seven maps`.
 
+`LOREENT.PAS`의 지도 로드 27건에서 출발 좌표 또는 포털 범위의 좌표를
+41건 추출했다. 이 좌표로 실제 `LoreWorldManager.findPortal`을 호출해
+원본 목적지와 비교한다. `tool/export_entrance_replay.py --check`가 원본·포털
+데이터·명세의 드리프트를 검사하며 `PORT_MAP_PARITY.md`에 맵별 건수를
+표시한다. 이 비교는 진입 후 대사·전투·타일 효과를 검증하지 않는다.
+커밋: `Replay all original LOREENT map loads through portal runtime`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로
