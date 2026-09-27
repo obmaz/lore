@@ -4141,6 +4141,7 @@
       "id": "spec-11-L465-2x",
       "trigger": "step",
       "map": 11,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -4196,6 +4197,7 @@
       "id": "spec-11-L465-3x",
       "trigger": "step",
       "map": 11,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -4647,6 +4649,7 @@
       "id": "spec-15-L879-2xxxx",
       "trigger": "step",
       "map": 15,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -4695,6 +4698,7 @@
       "id": "spec-15-L879-3",
       "trigger": "step",
       "map": 15,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -5316,6 +5320,7 @@
       "id": "spec-17-L1010-3",
       "trigger": "step",
       "map": 17,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -5384,6 +5389,7 @@
       "id": "spec-17-L1010-4",
       "trigger": "step",
       "map": 17,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -5446,6 +5452,7 @@
       "id": "spec-17-L1010-5",
       "trigger": "step",
       "map": 17,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -5512,6 +5519,7 @@
       "id": "spec-17-L1010-6",
       "trigger": "step",
       "map": 17,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -5791,6 +5799,7 @@
       "id": "spec-18-L1174-3x",
       "trigger": "step",
       "map": 18,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -5866,6 +5875,7 @@
       "id": "spec-18-L1174-4x",
       "trigger": "step",
       "map": 18,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -5935,6 +5945,7 @@
       "id": "spec-18-L1174-5x",
       "trigger": "step",
       "map": 18,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -6007,6 +6018,7 @@
       "id": "spec-18-L1174-6x",
       "trigger": "step",
       "map": 18,
+      "disabled": true,
       "once": false,
       "steps": [
         {
@@ -13317,6 +13329,7 @@
       "id": "keep2-ambush-zone-b",
       "trigger": "step",
       "map": 22,
+      "disabled": true,
       "yMin": 47,
       "yMax": 99,
       "once": false,

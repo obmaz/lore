@@ -24,10 +24,6 @@ void main() {
     const partyFirst = {
       'spec-17-L1010-1xx',
       'spec-17-L1010-2xx',
-      'spec-17-L1010-3',
-      'spec-17-L1010-4',
-      'spec-17-L1010-5',
-      'spec-17-L1010-6',
       'evil-seal-guardians',
       'keep2-guards-y25',
       'portal-25-26-chamber',
