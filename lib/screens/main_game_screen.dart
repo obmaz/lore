@@ -738,13 +738,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
           deferredRecruitFlags.contains('etc31_bit2')) {
         LoreDialogueManager.instance.setFlag('etc31_bit2');
       }
-      if (joined && recruit.key == 'mad_joe' && _game.currentMapId == 6) {
-        final map = _game.currentMap;
-        if (map != null) {
-          map.grid[14][39] = 47; // LORETALK.PAS: map[40,15] := 47
-          setState(() {});
-        }
-      }
     }
 
     // 지도와 좌표 변화는 화면 밖의 순수 상태 전이 함수에서 계산한다.

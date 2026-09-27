@@ -1701,6 +1701,14 @@
                     "join": "mad_joe",
                     "flag": "madJoeJoined",
                     "slot": 4
+                  },
+                  {
+                    "setTile": {
+                      "x": 40,
+                      "y": 15,
+                      "tile": 47,
+                      "map": 6
+                    }
                   }
                 ]
               },

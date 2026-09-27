@@ -26130,6 +26130,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/source_talk_choices_test.dart",
+      "kind": "test",
+      "sha256": "d64e637d0a795efa1377436670ccb10c60265cd8f0432d64748a9e102b0f66d2",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/source_talk_replay_test.dart",
       "kind": "test",
       "sha256": "dd835b34ed90917ab72ba43c7475046f98206c97f085780323e895a021ca6fc5",
@@ -26501,7 +26508,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "ac2a4df785bcd8180bd5e444b145ba608d8ed1a985a291340ca76c3e09a8333b",
+      "sha256": "6d9939dbef3bfaaa1d459a7f1aeefff366af2f0e16db5ca692e674ac7ef2bff5",
       "top_level_counts": {
         "scripts": 598
       }
@@ -26567,7 +26574,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "6c9c4b7ab1f94e67d3b65375ad17f1295207c81b83a2a633dad011cfc94eb932"
+      "sha256": "14d08c171154bdda5b0d838905b3d4ae95363bc2e69e9e093dc30eb261418d17"
     },
     {
       "path": "PORT_CONTRACT_EVIDENCE.json",
