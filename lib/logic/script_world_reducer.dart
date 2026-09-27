@@ -105,21 +105,68 @@ class ScriptWorldReducer {
       }
     }
 
-    for (final change in outcome.tileChanges) {
-      if (change.map != null && change.map != state.mapId) continue;
-      put(change.x, change.y, change.tile, ifZero: change.ifZero);
-    }
-
-    for (final area in outcome.tileAreas) {
-      if (area.map != null && area.map != state.mapId) continue;
-      final xMin = area.atPlayerX ? x : area.xMin;
-      final xMax = area.atPlayerX ? x : area.xMax;
-      final yMin = area.atPlayerY ? y : area.yMin;
-      final yMax = area.atPlayerY ? y : area.yMax;
+    void putArea({
+      required int xMin,
+      required int xMax,
+      required int yMin,
+      required int yMax,
+      required int tile,
+      int? ifZero,
+      int? onlyIf,
+    }) {
       for (var ty = yMin; ty <= yMax; ty++) {
         for (var tx = xMin; tx <= xMax; tx++) {
-          put(tx, ty, area.tile, ifZero: area.ifZero, onlyIf: area.onlyIf);
+          put(tx, ty, tile, ifZero: ifZero, onlyIf: onlyIf);
         }
+      }
+    }
+
+    if (outcome.tileOperations.isNotEmpty) {
+      for (final operation in outcome.tileOperations) {
+        if (operation.teleportMap != null &&
+            operation.teleportMap != state.mapId) {
+          continue;
+        }
+        if (operation.kind == 'setTile') {
+          put(
+            operation.tileX!,
+            operation.tileY!,
+            operation.tileValue!,
+            ifZero: operation.tileIfZero,
+          );
+        } else if (operation.kind == 'setTileArea') {
+          putArea(
+            xMin: operation.tileAtPlayerX ? x : operation.tileX!,
+            xMax: operation.tileAtPlayerX
+                ? x
+                : (operation.tileXMax ?? operation.tileX!),
+            yMin: operation.tileAtPlayerY ? y : operation.tileY!,
+            yMax: operation.tileAtPlayerY
+                ? y
+                : (operation.tileYMax ?? operation.tileY!),
+            tile: operation.tileValue!,
+            ifZero: operation.tileIfZero,
+            onlyIf: operation.tileOnlyIf,
+          );
+        }
+      }
+    } else {
+      // 직접 생성한 레거시 ScriptOutcome은 기존 두 목록을 사용한다.
+      for (final change in outcome.tileChanges) {
+        if (change.map != null && change.map != state.mapId) continue;
+        put(change.x, change.y, change.tile, ifZero: change.ifZero);
+      }
+      for (final area in outcome.tileAreas) {
+        if (area.map != null && area.map != state.mapId) continue;
+        putArea(
+          xMin: area.atPlayerX ? x : area.xMin,
+          xMax: area.atPlayerX ? x : area.xMax,
+          yMin: area.atPlayerY ? y : area.yMin,
+          yMax: area.atPlayerY ? y : area.yMax,
+          tile: area.tile,
+          ifZero: area.ifZero,
+          onlyIf: area.onlyIf,
+        );
       }
     }
 

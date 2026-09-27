@@ -139,6 +139,73 @@ void main() {
     expect(grid.expand((row) => row), everyElement(0));
   });
 
+  test('점과 영역 지형 변경은 스크립트에 적힌 순서대로 적용한다', () {
+    final engine = LoreScriptEngine();
+    engine.loadFromJson(
+      jsonEncode({
+        'scripts': [
+          {
+            'id': 'ordered-map-writes',
+            'trigger': 'step',
+            'map': 1,
+            'x': 1,
+            'y': 1,
+            'steps': [
+              {
+                'setTileArea': {
+                  'xMin': 1,
+                  'xMax': 2,
+                  'yMin': 1,
+                  'yMax': 1,
+                  'tile': 24,
+                },
+              },
+              {
+                'setTile': {'x': 2, 'y': 1, 'tile': 17},
+              },
+              {
+                'setTile': {'x': 2, 'y': 2, 'tile': 17},
+              },
+              {
+                'setTileArea': {
+                  'xMin': 1,
+                  'xMax': 2,
+                  'yMin': 2,
+                  'yMax': 2,
+                  'tile': 24,
+                },
+              },
+            ],
+          },
+        ],
+      }),
+    );
+    final outcome = engine.startStep(1, 1, 1, const ScriptContext())!.outcome;
+    expect(outcome.tileOperations.map((step) => step.kind), [
+      'setTileArea',
+      'setTile',
+      'setTile',
+      'setTileArea',
+    ]);
+    final result = ScriptWorldReducer.applyMap(
+      ScriptMapState(
+        mapId: 1,
+        x: 1,
+        y: 1,
+        direction: 0,
+        grid: [
+          [0, 0],
+          [0, 0],
+        ],
+      ),
+      outcome,
+    );
+    expect(result.grid, [
+      [24, 17],
+      [24, 24],
+    ]);
+  });
+
   test('다른 맵 지정 변경은 건너뛰고 이동 축 유지와 되돌리기를 적용한다', () {
     final state = ScriptMapState(
       mapId: 20,

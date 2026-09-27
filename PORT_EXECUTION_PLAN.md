@@ -100,6 +100,12 @@
 10으로 변경하며, 도주 시 한 칸 후퇴하고 후속 효과를 적용하지 않는다.
 커밋: `Verify map twenty five guardian victory and retreat effects`.
 
+맵 25 숨겨진 문에서 드러난 점·영역 지형 변경 순서 문제를 엔진에서 해결했다.
+`ScriptOutcome`에 원본 스크립트의 지형 연산 순서를 보존하고 리듀서가 그 순서로
+적용한다. 기존 직접 생성 결과의 호환 동작은 유지하며, 맵 25의 영역 범위는
+원본 루프와 동일하게 되돌렸다. 앞뒤 순서가 반대인 겹침 두 경우를 테스트한다.
+커밋: `Preserve script tile mutation order in world reducer`.
+
 ## 현재 순서
 
 1. **파티 수치 효과 · 완료** — 스크립트 경험치와 직업 변경을 순수 상태 전이로

@@ -487,6 +487,10 @@ class ScriptOutcome {
   >
   tileAreas;
 
+  /// 점·영역 지형 변경을 스크립트 실행 순서대로 보존한다.
+  /// 기존 효과 목록은 저장/검사 계약을 위해 함께 유지한다.
+  final List<ScriptStep> tileOperations;
+
   /// 플레이어가 밟고 있는 칸의 지형 변형 (원작 `map[x,y] := 값`).
   final List<({int tile, int? ifZero})> playerTiles;
 
@@ -544,6 +548,7 @@ class ScriptOutcome {
     this.expDelta = 0,
     this.tileChanges = const [],
     this.tileAreas = const [],
+    this.tileOperations = const [],
     this.playerTiles = const [],
     this.tileAtTarget,
     this.nudges = const [],
@@ -629,6 +634,7 @@ class ScriptOutcome {
       expDelta: expDelta - previous.expDelta,
       tileChanges: added(tileChanges, previous.tileChanges),
       tileAreas: added(tileAreas, previous.tileAreas),
+      tileOperations: added(tileOperations, previous.tileOperations),
       playerTiles: added(playerTiles, previous.playerTiles),
       tileAtTarget:
           emitted(
@@ -1001,6 +1007,7 @@ class LoreScriptEngine {
             int? onlyIf,
           })
         >.from(acc.tileAreas);
+    var tileOperations = List<ScriptStep>.from(acc.tileOperations);
     var playerTiles = List<({int tile, int? ifZero})>.from(acc.playerTiles);
     var tileAtTarget = acc.tileAtTarget;
     var nudges = List<({int dx, int dy})>.from(acc.nudges);
@@ -1048,6 +1055,7 @@ class LoreScriptEngine {
       expDelta: expDelta,
       tileChanges: tileChanges,
       tileAreas: tileAreas,
+      tileOperations: tileOperations,
       playerTiles: playerTiles,
       tileAtTarget: tileAtTarget,
       nudges: nudges,
@@ -1167,6 +1175,7 @@ class LoreScriptEngine {
           expDelta += step.expDelta ?? 0;
           break;
         case 'setTile':
+          tileOperations.add(step);
           tileChanges.add((
             map: step.teleportMap,
             x: step.tileX!,
@@ -1176,6 +1185,7 @@ class LoreScriptEngine {
           ));
           break;
         case 'setTileArea':
+          tileOperations.add(step);
           tileAreas.add((
             map: step.teleportMap,
             xMin: step.tileX!,
