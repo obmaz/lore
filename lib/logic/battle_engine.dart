@@ -990,11 +990,52 @@ class BattleEngine {
 
     // 3. 특수 공격 (SpecialAttack - LOREBATT.PAS:814)
     final agiCap = min(20, monster.agility);
-    if (monster.special > 0 && _rand(50) < agiCap) {
-      final target = livingParty[_rand(livingParty.length)];
-      if (monster.special == 1) {
-        // 독 공격
-        if (_rand(40) <= monster.agility && _rand(20) >= target.luck) {
+    if (monster.special > 0 &&
+        _rand(50) < agiCap &&
+        allEnemies
+                .where((enemy) => !enemy.isDead && !enemy.isUnconscious)
+                .length >
+            3) {
+      final eligibleTargets = livingParty.where((member) {
+        return switch (monster.special) {
+          1 => member.poison == 0,
+          2 => member.unconscious == 0,
+          3 => member.dead == 0,
+          _ => false,
+        };
+      }).toList();
+      if (eligibleTargets.isEmpty) {
+        results.add(
+          AttackResult(
+            outcome: AttackOutcome.failed,
+            message: '${monster.name}의 특수 공격 대상이 없다.',
+          ),
+        );
+        return results;
+      }
+      final target = eligibleTargets[_rand(eligibleTargets.length)];
+      final accuracyRoll = switch (monster.special) {
+        1 => 40,
+        2 => 50,
+        3 => 60,
+        _ => 0,
+      };
+      if (accuracyRoll > 0) {
+        if (_rand(accuracyRoll) > monster.agility) {
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.miss,
+              message: '${monster.name}의 특수 공격은 빗나갔다.',
+            ),
+          );
+        } else if (_rand(20) < target.luck) {
+          results.add(
+            AttackResult(
+              outcome: AttackOutcome.resisted,
+              message: '${target.name}은(는) ${monster.name}의 특수 공격을 피했다.',
+            ),
+          );
+        } else if (monster.special == 1) {
           target.poison = 1;
           results.add(
             AttackResult(
@@ -1002,13 +1043,9 @@ class BattleEngine {
               message: '☠ ${monster.name}의 독 공격! ${target.name}은(는) 중독되었다!!',
             ),
           );
-          return results;
-        }
-      } else if (monster.special == 2) {
-        // 치명타 기절 공격
-        if (_rand(50) <= monster.agility && _rand(20) >= target.luck) {
+        } else if (monster.special == 2) {
           target.unconscious = 1;
-          target.hp = 0;
+          if (target.hp > 0) target.hp = 0;
           results.add(
             AttackResult(
               outcome: AttackOutcome.unconscious,
@@ -1016,13 +1053,9 @@ class BattleEngine {
                   '💥 ${monster.name}의 치명타! ${target.name}은(는) 쓰러져 의식불명이 되었다!!',
             ),
           );
-          return results;
-        }
-      } else if (monster.special == 3) {
-        // 즉사 공격
-        if (_rand(60) <= monster.agility && _rand(20) >= target.luck) {
+        } else {
           target.dead = 1;
-          target.hp = 0;
+          if (target.hp > 0) target.hp = 0;
           results.add(
             AttackResult(
               outcome: AttackOutcome.killed,
@@ -1030,8 +1063,8 @@ class BattleEngine {
                   '☠ ${monster.name}의 죽음의 일격! ${target.name}은(는) 숨을 거두었다!!',
             ),
           );
-          return results;
         }
+        return results;
       }
     }
 

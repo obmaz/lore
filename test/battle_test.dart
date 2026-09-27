@@ -848,6 +848,81 @@ void main() {
       expect(doomed.isBattleActive, isFalse);
     });
 
+    test('독 특수 공격은 행동 가능한 적이 네 명 이상일 때만 발동한다', () {
+      final caster = Monster.create(1)
+        ..special = 1
+        ..agility = 30;
+      final target = PartyMember.createPreset(1)
+        ..hp = 1000
+        ..luck = 0;
+      final engine = BattleEngine(random: DeterministicRandom([0]));
+
+      final alone = engine.executeMonsterTurn(caster, [target], [caster]);
+      expect(target.poison, 0);
+      expect(alone.single.outcome, isNot(AttackOutcome.debuffed));
+
+      final group = [caster, for (var i = 0; i < 3; i++) Monster.create(1)];
+      final special = engine.executeMonsterTurn(caster, [target], group);
+      expect(special.single.outcome, AttackOutcome.debuffed);
+      expect(target.poison, 1);
+
+      target.poison = 0;
+      group.last.isUnconscious = true;
+      engine.executeMonsterTurn(caster, [target], group);
+      expect(target.poison, 0); // 의식불명 적은 네 명 조건에서 제외한다.
+    });
+
+    test('특수 공격이 빗나가거나 회피되면 일반 공격을 추가하지 않는다', () {
+      final caster = Monster.create(1)
+        ..special = 1
+        ..agility = 30;
+      final group = [caster, for (var i = 0; i < 3; i++) Monster.create(1)];
+      final missedTarget = PartyMember.createPreset(1)
+        ..hp = 1000
+        ..luck = 0;
+      final missed = BattleEngine(random: DeterministicRandom([0, 0, 39]))
+          .executeMonsterTurn(caster, [missedTarget], group);
+      expect(missed.map((result) => result.outcome), [AttackOutcome.miss]);
+      expect(missedTarget.hp, 1000);
+      expect(missedTarget.poison, 0);
+
+      final luckyTarget = PartyMember.createPreset(1)
+        ..hp = 1000
+        ..luck = 20;
+      final resisted = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, [luckyTarget], group);
+      expect(resisted.map((result) => result.outcome), [
+        AttackOutcome.resisted,
+      ]);
+      expect(luckyTarget.hp, 1000);
+      expect(luckyTarget.poison, 0);
+    });
+
+    test('독·기절 특수 공격은 이미 같은 상태인 대원을 대상으로 고르지 않는다', () {
+      final caster = Monster.create(1)
+        ..special = 1
+        ..agility = 30;
+      final enemies = [caster, for (var i = 0; i < 3; i++) Monster.create(1)];
+      final poisoned = PartyMember.createPreset(1)..poison = 1;
+      final clean = PartyMember.createPreset(3)..luck = 0;
+
+      final poisonResult = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, [poisoned, clean], enemies);
+      expect(poisonResult.single.outcome, AttackOutcome.debuffed);
+      expect(clean.poison, 1);
+
+      caster.special = 2;
+      final unconscious = PartyMember.createPreset(1)
+        ..hp = 0
+        ..unconscious = 1;
+      final conscious = PartyMember.createPreset(3)..luck = 0;
+      final stunResult = BattleEngine(random: DeterministicRandom([0]))
+          .executeMonsterTurn(caster, [unconscious, conscious], enemies);
+      expect(stunResult.single.outcome, AttackOutcome.unconscious);
+      expect(conscious.unconscious, 1);
+      expect(unconscious.unconscious, 1);
+    });
+
     test('염력 13~14단계 중독은 저항과 ESP 명중 판정을 모두 통과해야 한다', () {
       final caster = PartyMember.createPreset(3)
         ..espLevel = 13
