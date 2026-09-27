@@ -5,6 +5,8 @@ import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/lore_encounter_logic.dart';
+import 'package:lore/models/monster.dart';
+import 'package:lore/models/party_member.dart';
 
 class _FixedRandom implements Random {
   final int value;
@@ -25,6 +27,31 @@ class _FixedRandom implements Random {
 }
 
 void main() {
+  test('일반 조우의 선공은 이름 있는 대원과 적의 정수 평균 민첩성으로 정한다', () {
+    final source = File('repo_source/LORE_1993_src/LOREBATT.PAS')
+        .readAsStringSync(encoding: latin1);
+    final encounter = source.split('Procedure EncounterEnemy;').last;
+    expect(
+      encounter,
+      contains('if k > i then assualt := TRUE else assualt := FALSE;'),
+    );
+
+    final party = [
+      PartyMember.createPreset(1)..agility = 10,
+      PartyMember.createPreset(2)..agility = 11,
+      PartyMember.createPreset(3)
+        ..name = ''
+        ..agility = 99,
+    ];
+    final enemies = [Monster.create(1)..agility = 10];
+    expect(LoreEncounterLogic.enemyActsFirst(party, enemies), isTrue);
+    party[1].agility = 13;
+    expect(LoreEncounterLogic.enemyActsFirst(party, enemies), isFalse);
+    enemies.first.agility = 12;
+    expect(LoreEncounterLogic.enemyActsFirst(party, enemies), isTrue);
+    expect(LoreEncounterLogic.enemyActsFirst([], enemies), isFalse);
+  });
+
   test('일반 조우 몬스터 표가 LOREBATT.PAS와 일치한다', () {
     final source = File('repo_source/LORE_1993_src/LOREBATT.PAS')
         .readAsStringSync(encoding: latin1);

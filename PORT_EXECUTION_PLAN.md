@@ -207,5 +207,9 @@
     `DisplayEnemies`만 있던 자리가 전투로 오인된 흔적이 있어 해당 항목은
     선공 이식 대상에서 제외했다.
     커밋: `Restore initiative through late-game gates and bosses`.
+    일반 필드 조우는 원본처럼 이름이 있는 파티원과 적 전체의 민첩성 정수 평균을
+    비교해 선공을 정한다. 동률이면 적 선공이다. 활성 스크립트 전체를 재귀적으로
+    검사해 원본 파티 선공 네 지점 외의 전투가 적 선공을 명시하도록 회귀 검사를
+    추가했다. 커밋: `Match field encounter initiative and audit active battles`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

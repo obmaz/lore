@@ -1,9 +1,25 @@
 import 'dart:math';
 
 import '../game/lore_map_manager.dart';
+import '../models/monster.dart';
+import '../models/party_member.dart';
 
 /// LOREBATT.PAS `randomenemy` / `EncounterEnemy`와 LOREMAIN.PAS의 이동 조우율.
 class LoreEncounterLogic {
+  /// LOREBATT.PAS `EncounterEnemy`: 이름 있는 파티원과 모든 적의 민첩성
+  /// 정수 평균을 비교한다. 동률이면 적이 먼저 행동한다.
+  static bool enemyActsFirst(List<PartyMember> party, List<Monster> enemies) {
+    final present = party.where((member) => member.name.isNotEmpty).toList();
+    if (present.isEmpty || enemies.isEmpty) return false;
+    final partyAverage =
+        present.fold<int>(0, (sum, member) => sum + member.agility) ~/
+        present.length;
+    final enemyAverage =
+        enemies.fold<int>(0, (sum, enemy) => sum + enemy.agility) ~/
+        enemies.length;
+    return partyAverage <= enemyAverage;
+  }
+
   /// 원작 `random(range) + plus`: 두 값 모두 포함하는 몬스터 도감 번호 범위.
   static const Map<int, (int min, int max)> pools = {
     1: (1, 10),

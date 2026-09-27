@@ -1229,7 +1229,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
     setState(() {
       _currentMode = GameScreenMode.battle;
       _battleEnemies = monsterIds.map(LoreData.instance.monster).toList();
-      _battleEnemyFirst = false;
+      _battleEnemyFirst = LoreEncounterLogic.enemyActsFirst(
+        _party,
+        _battleEnemies,
+      );
       _battleSerial++;
 
       // 원작 LOREBATT.PAS:1228-1240 - 조우 화면: `적이 출현했다 !!!` /
