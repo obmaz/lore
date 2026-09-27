@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_game.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/game/lore_world_manager.dart';
+import 'package:lore/logic/script_world_reducer.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -60,6 +63,81 @@ void main() {
       expect(game.currentMapId, site.mapId);
       expect(requests, 0);
     }
+  });
+
+  test('원본 사건이 동적으로 연 입구는 등록된 목적지로 연결된다', () async {
+    final manager = LoreWorldManager.instance;
+    manager.resetRulesForTest();
+    await manager.loadData();
+    final scripts = LoreScriptEngine()
+      ..loadFromJson(File('assets/data/scripts.json').readAsStringSync());
+    for (final site in [
+      (
+        mapId: 23,
+        name: 'KEEP3',
+        category: 'keep',
+        eventX: 25,
+        eventY: 27,
+        portalX: 25,
+        portalY: 12,
+        fromY: 13,
+        context: const ScriptContext(tileAtPlayer: 52),
+        targetMapId: 25,
+      ),
+      (
+        mapId: 25,
+        name: 'K_DEN2',
+        category: 'den',
+        eventX: 5,
+        eventY: 34,
+        portalX: 25,
+        portalY: 27,
+        fromY: 28,
+        context: const ScriptContext(flags: {'keep3KeyA', 'keep3KeyB'}),
+        targetMapId: 26,
+      ),
+    ]) {
+      final sourceMap = await LoreMapData.loadFromAsset(
+        site.name,
+        category: site.category,
+      );
+      final run = scripts.startStep(
+        site.mapId,
+        site.eventX,
+        site.eventY,
+        site.context,
+      );
+      expect(run, isNotNull, reason: 'map ${site.mapId}');
+      final changed = ScriptWorldReducer.applyMap(
+        ScriptMapState(
+          mapId: site.mapId,
+          x: site.eventX,
+          y: site.eventY,
+          direction: 0,
+          grid: sourceMap.grid,
+        ),
+        run!.outcome,
+      );
+      final map = LoreMapData(
+        name: site.name,
+        category: site.category,
+        xmax: sourceMap.xmax,
+        ymax: sourceMap.ymax,
+        grid: changed.grid,
+      );
+      expect(map.getTile(site.portalX, site.portalY), 54);
+      PortalInfo? requested;
+      final game = LoreGame(
+        initialMapId: site.mapId,
+        initialPlayerX: site.portalX,
+        initialPlayerY: site.fromY,
+        onPortalRequested: (portal, _, _) => requested = portal,
+      )..currentMap = map;
+      expect(game.tryMove(0, -1), isFalse);
+      expect(requested?.targetMapId, site.targetMapId);
+      expect((game.playerX, game.playerY), (site.portalX, site.fromY));
+    }
+    manager.resetRulesForTest();
   });
 
   test('맵 21 출구의 수문장 분기는 남은 적과 완료 상태에 따라 바뀐다', () async {
