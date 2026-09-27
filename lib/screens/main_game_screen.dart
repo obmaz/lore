@@ -32,6 +32,7 @@ import '../widgets/party_status_view.dart';
 import '../widgets/message_log_view.dart';
 import '../widgets/dpad_widget.dart';
 import '../widgets/battle_viewport_view.dart';
+import '../widgets/encounter_viewport_view.dart';
 import '../widgets/town_dialog.dart';
 import '../widgets/town_facilities_dialog.dart';
 import '../widgets/field_menu_dialog.dart';
@@ -44,7 +45,7 @@ import '../game/lore_dungeon_event_manager.dart';
 import '../widgets/lore_guide_dialog.dart';
 import '../widgets/ending_view.dart';
 
-enum GameScreenMode { field, battle, gameOver, ending }
+enum GameScreenMode { field, encounter, battle, gameOver, ending }
 
 /// 4:3 레트로 콘솔 레이아웃 통합 메인 게임 화면
 class MainGameScreen extends StatefulWidget {
@@ -1218,7 +1219,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (replaced.isNotEmpty) _addLog('$replaced은(는) 전장에서 물러났습니다.');
   }
 
-  /// 필드 인카운터 -> 전투 모드로 전환
+  /// 필드 인카운터 -> 전투 전 교전·도주 선택.
   void _startBattle() {
     final monsterIds = LoreEncounterLogic.rollMonsters(
       _game.currentMapId,
@@ -1227,13 +1228,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
     if (monsterIds.isEmpty) return;
     setState(() {
-      _currentMode = GameScreenMode.battle;
+      _currentMode = GameScreenMode.encounter;
       _battleEnemies = monsterIds.map(LoreData.instance.monster).toList();
-      _battleEnemyFirst = LoreEncounterLogic.enemyActsFirst(
-        _party,
-        _battleEnemies,
-      );
-      _battleSerial++;
 
       // 원작 LOREBATT.PAS:1228-1240 - 조우 화면: `적이 출현했다 !!!` /
       // `적의 평균 민첩성 : n` / `적과 교전한다` / `도망간다`
@@ -1241,11 +1237,40 @@ class _MainGameScreenState extends State<MainGameScreen> {
       for (final e in _battleEnemies) {
         _addLog('${e.name} (Lv.${e.level}, HP:${e.hp})');
       }
-      final avgAgility =
-          _battleEnemies.fold<int>(0, (a, e) => a + e.agility) ~/
-          _battleEnemies.length;
-      _addLog('${LoreBattText.enemyAgility} : $avgAgility');
-      _addLog(LoreBattText.engage);
+      _addLog(
+        '${LoreBattText.enemyAgility} : ${LoreEncounterLogic.averageEnemyAgility(_battleEnemies)}',
+      );
+    });
+  }
+
+  void _engageEncounter() {
+    if (_currentMode != GameScreenMode.encounter) return;
+    _addLog(LoreBattText.engage);
+    _beginEncounterBattle(
+      enemyFirst: LoreEncounterLogic.enemyActsFirst(_party, _battleEnemies),
+    );
+  }
+
+  void _fleeEncounter() {
+    if (_currentMode != GameScreenMode.encounter) return;
+    _addLog(LoreBattText.flee);
+    if (LoreEncounterLogic.canEvadeBeforeBattle(_party, _battleEnemies)) {
+      setState(() {
+        _battleEnemies = [];
+        _currentMode = GameScreenMode.field;
+      });
+      _reclaimFocus();
+      return;
+    }
+    _addLog(LoreBattText.runFailed);
+    _beginEncounterBattle(enemyFirst: true);
+  }
+
+  void _beginEncounterBattle({required bool enemyFirst}) {
+    setState(() {
+      _battleEnemyFirst = enemyFirst;
+      _battleSerial++;
+      _currentMode = GameScreenMode.battle;
     });
   }
 
@@ -1636,6 +1661,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
           onRunAway: _onBattleRunAway,
         );
 
+      case GameScreenMode.encounter:
+        return EncounterViewportView(
+          enemies: _battleEnemies,
+          onEngage: _engageEncounter,
+          onFlee: _fleeEncounter,
+        );
+
       case GameScreenMode.gameOver:
         return Center(
           child: Column(
@@ -1710,6 +1742,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
         return '◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆';
       case GameScreenMode.battle:
         return '⚔ 턴제 전투 모드 (BATTLE ARENA) ⚔';
+      case GameScreenMode.encounter:
+        return '⚔ 적 조우 (ENCOUNTER) ⚔';
       case GameScreenMode.gameOver:
         return '† 게임 오버 (GAME OVER) †';
       case GameScreenMode.ending:
@@ -1735,6 +1769,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
       focusNode: _focusNode,
       autofocus: true,
       onKeyEvent: (event) {
+        if (_currentMode == GameScreenMode.encounter && event is KeyDownEvent) {
+          if (event.logicalKey == LogicalKeyboardKey.digit1 ||
+              event.logicalKey == LogicalKeyboardKey.numpad1) {
+            _engageEncounter();
+          } else if (event.logicalKey == LogicalKeyboardKey.digit2 ||
+              event.logicalKey == LogicalKeyboardKey.numpad2) {
+            _fleeEncounter();
+          }
+          return;
+        }
         if (_currentMode == GameScreenMode.field) {
           if (event is KeyDownEvent) {
             // 원작 LOREMAIN.PAS 핫키: P/V/Q/C/E/R/G + Space
