@@ -14,10 +14,27 @@ class LoreEncounterLogic {
     final partyAverage =
         present.fold<int>(0, (sum, member) => sum + member.agility) ~/
         present.length;
-    final enemyAverage =
-        enemies.fold<int>(0, (sum, enemy) => sum + enemy.agility) ~/
+    return partyAverage <= averageEnemyAgility(enemies);
+  }
+
+  /// 전투 진입 전 도주 선택. 이름 있는 대원의 평균 행운이 적 평균
+  /// 민첩성보다 높을 때만 즉시 빠져나간다 (LOREBATT.PAS:1241-1257).
+  static bool canEvadeBeforeBattle(
+    List<PartyMember> party,
+    List<Monster> enemies,
+  ) {
+    final present = party.where((member) => member.name.isNotEmpty).toList();
+    if (present.isEmpty || enemies.isEmpty) return false;
+    final averageLuck =
+        present.fold<int>(0, (sum, member) => sum + member.luck) ~/
+        present.length;
+    return averageLuck > averageEnemyAgility(enemies);
+  }
+
+  static int averageEnemyAgility(List<Monster> enemies) {
+    if (enemies.isEmpty) return 0;
+    return enemies.fold<int>(0, (sum, enemy) => sum + enemy.agility) ~/
         enemies.length;
-    return partyAverage <= enemyAverage;
   }
 
   /// 원작 `random(range) + plus`: 두 값 모두 포함하는 몬스터 도감 번호 범위.

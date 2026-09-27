@@ -211,5 +211,9 @@
     비교해 선공을 정한다. 동률이면 적 선공이다. 활성 스크립트 전체를 재귀적으로
     검사해 원본 파티 선공 네 지점 외의 전투가 적 선공을 명시하도록 회귀 검사를
     추가했다. 커밋: `Match field encounter initiative and audit active battles`.
+11. **일반 조우 선택 복원 · 진행 중** — `EncounterEnemy`의 전투 전 도주는
+    이름 있는 대원의 평균 행운과 적 평균 민첩성을 정수로 비교한다. 동률은
+    도주 실패이며 빈 파티·적 목록은 안전하게 거절한다.
+    커밋: `Calculate prebattle evasion from party luck`.
 
 각 기능이 끝날 때 이 문서에 결과와 커밋을 갱신한다.

@@ -52,6 +52,30 @@ void main() {
     expect(LoreEncounterLogic.enemyActsFirst([], enemies), isFalse);
   });
 
+  test('전투 전 도주는 대원의 평균 행운이 적 민첩성보다 높을 때 성공한다', () {
+    final source = File('repo_source/LORE_1993_src/LOREBATT.PAS')
+        .readAsStringSync(encoding: latin1)
+        .split('Procedure EncounterEnemy;')
+        .last;
+    expect(source, contains('j := j + 1; h := h + luck;'));
+    expect(source, contains('if k > i then begin'));
+
+    final party = [
+      PartyMember.createPreset(1)..luck = 10,
+      PartyMember.createPreset(2)..luck = 11,
+      PartyMember.createPreset(3)
+        ..name = ''
+        ..luck = 99,
+    ];
+    final enemies = [Monster.create(1)..agility = 10];
+    expect(LoreEncounterLogic.canEvadeBeforeBattle(party, enemies), isFalse);
+    party[1].luck = 13;
+    expect(LoreEncounterLogic.canEvadeBeforeBattle(party, enemies), isTrue);
+    enemies.first.agility = 11;
+    expect(LoreEncounterLogic.canEvadeBeforeBattle(party, enemies), isFalse);
+    expect(LoreEncounterLogic.canEvadeBeforeBattle([], enemies), isFalse);
+  });
+
   test('일반 조우 몬스터 표가 LOREBATT.PAS와 일치한다', () {
     final source = File('repo_source/LORE_1993_src/LOREBATT.PAS')
         .readAsStringSync(encoding: latin1);
