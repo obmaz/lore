@@ -584,6 +584,106 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1006-1173`, map 17 (DEN3 / DRAGON DEN).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 95` handled via portal session.
+  /// 2. Vertical wrap at `y == 80`:
+  ///    - `y := 6` (`spec-17-L1010`).
+  /// 3. Passage toggle at `y == 44`:
+  ///    - `map[67..69, 44] := 44`, `map[67..69, 38] := 52` (`map17-passage-44`).
+  /// 4. Red Antares meeting at `(75, 52)`:
+  ///    - `party.etc[38] and bit2 == 1` -> null (이미 합류/결정 완료).
+  ///    - `party.etc[38] and bit1 == 1` and `mindRead`:
+  ///      - `redantares-join` (합류 선택지).
+  ///    - `party.etc[38] and bit1 == 1` and not `mindRead`:
+  ///      - `redantares-wait-for-mindread`.
+  ///    - `party.etc[38] and bit1 == 0`:
+  ///      - `redantares-teach` (용암 변형 및 간접 마법 전수).
+  /// 5. Secret shortcut at `x == 72`:
+  ///    - `map[72, 19..21] := 44`, `y := y - 7` (`map17-shortcut-72`).
+  /// 6. Passage return at `y == 38`:
+  ///    - `map[67..69, 38] := 44`, `map[67..69, 44] := 52`, teleport `(56, 93)` (`map17-passage-38`).
+  /// 7. Hidra boss battle at `x == 22`:
+  ///    - `party.etc[15] < 2`:
+  ///      - `map17-hidra` (보스 전투, 승리 시 `swamp` 퀘스트 2, 워프 `(56, 93)`).
+  static ScriptRun? map17(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (y == 80) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'spec-17-L1010',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 44) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'map17-passage-44',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (x == 75 && y == 52) {
+      final hasJoinedOrRefused = context.flags.contains('etc38_bit2');
+      if (hasJoinedOrRefused) return null;
+
+      final hasLearned =
+          context.flags.contains('etc38_bit1') ||
+          context.flags.contains('specialMagicLearned');
+      if (hasLearned) {
+        final hasMindRead = context.mindReadActive;
+        final scriptId =
+            hasMindRead ? 'redantares-join' : 'redantares-wait-for-mindread';
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == scriptId,
+        );
+        return scripts.startProcedure(content, context);
+      } else {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'redantares-teach',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (x == 72) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'map17-shortcut-72',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 38) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'map17-passage-38',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (x == 22) {
+      final swampQuest = context.questSteps['swamp'] ?? 0;
+      if (swampQuest < 2) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'map17-hidra',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

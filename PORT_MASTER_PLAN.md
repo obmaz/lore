@@ -133,6 +133,7 @@
 - 맵 14 `DEN1 / SWAMP DEN (MENACE)`의 `(25,8)/(26,8)` MENACE 중심 분기(`lordahn` 퀘스트 3->4 진행), 금화 6곳(`party.etc[32]` bit1~6), `(16,20)` 황금의 방패 획득(`party.etc[32]` bit7) 분기는 `LoreSpecProcedures.map14`를 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 15 `T_DEN3 / QUAKE DEN`의 `y=48` 상자(첫 방문 6000골드/`etc36_bit1`, 둘째 방문 4000골드/`etc36_bit2`, 타일 44 개방), `(14,7)` 황금의 방패(`party.etc[36]` bit3), `(45,19)` 황금의 갑옷(`party.etc[36]` bit4), `y=27` ArchiGagoyle 보스 전투(`gaia` 퀘스트 4->5 진행) 분기는 `LoreSpecProcedures.map15`를 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 16 `DEN2 / TYPHOON DEN`의 `y=10` Wivern 조우 분기(`wivern` 퀘스트 단계에 따른 3/2/1마리 조우 및 전멸 후 시체 대사)는 `LoreSpecProcedures.map16`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
+- 맵 17 `DEN3 / DRAGON DEN`의 `(75,52)` Red Antares 만남(간접 마법 6종 전수/`etc38_bit1`, 독심술 영입 선택지/`etc38_bit2`), `x=22` Hidra 보스 전투(`swamp` 퀘스트 2 설정, 워프 `56,93`), `y=80`/`y=44`/`x=72`/`y=38` 지형 변형 및 워프 분기는 `LoreSpecProcedures.map17`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 발걸음 규칙의 조건별 선택 검사를 추가해 전투 후속을 복제한 활성 규칙
   12건과 KEEP2 이동 경계 밖 규칙 1건을 보관용으로 전환했다. 남은 활성
   발걸음 규칙은 각자 선택 가능한 조건을 갖지만, 원본 결과 비교는 부분적이다.
