@@ -9496,7 +9496,8 @@
           ]
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "spec-20-L1475xxx",
@@ -9987,7 +9988,8 @@
           ]
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-quiz-y54",
@@ -10569,7 +10571,8 @@
             ]
           ]
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "spec-20-L1475-1xx",
@@ -10710,7 +10713,8 @@
             "keepX": true
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-exit-y88",
@@ -10727,7 +10731,8 @@
             "y": 17
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "spec-20-L1475",
@@ -10768,7 +10773,8 @@
             "keepX": true
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-exit-y71",
@@ -10785,7 +10791,8 @@
             "y": 17
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "spec-20-L1475x",
@@ -10924,22 +10931,29 @@
       "title": "미궁의 수문장",
       "steps": [
         {
+          "torch": true
+        },
+        {
           "say": "미로속에서 소를 닮은 괴물이 나타났다"
         },
         {
           "battle": {
             "enemyFirst": true,
-            "title": "미궁의 수문장",
+            "title": "미궁의 괴물",
             "monsters": [
               53
             ]
           }
         },
         {
+          "flag": "etc41_bit4"
+        },
+        {
           "flag": "den7MinotaurCleared"
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-dragons-y13",
@@ -10975,12 +10989,16 @@
           }
         },
         {
+          "flag": "etc41_bit2"
+        },
+        {
           "flag": "den7DragonsCleared"
         },
         {
           "includeScript": "den7-mudmen-y13"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-mudmen-y13",
@@ -11021,12 +11039,16 @@
           }
         },
         {
+          "flag": "etc41_bit3"
+        },
+        {
           "flag": "den7MudmenCleared"
         },
         {
           "includeScript": "den7-master-y13"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-master-y13",
@@ -11045,22 +11067,7 @@
           "torch": true
         },
         {
-          "say": " 나는 Necromacer 와 함께 다른 차원에서 내려"
-        },
-        {
-          "say": "온 Astral Mud 이다. 여기는 그가 세운 최고의"
-        },
-        {
-          "say": "동굴이자 너가 마지막으로 거칠 동굴이다.  나"
-        },
-        {
-          "say": "를 만만하게 보지마라.  다른 차원의 능력들을"
-        },
-        {
-          "say": "너가 맛볼 기회를 가진다는 것에 대해  고맙게"
-        },
-        {
-          "say": "생각하기 바란다. 하하하 ..."
+          "say": " 나는 Necromacer 와 함께 다른 차원에서 내려온 Astral Mud 이다. 여기는 그가 세운 최고의 동굴이자 너가 마지막으로 거칠 동굴이다.  나를 만만하게 보지마라.  다른 차원의 능력들을 너가 맛볼 기회를 가진다는 것에 대해  고맙게 생각하기 바란다. 하하하 ..."
         },
         {
           "battle": {
@@ -11086,19 +11093,16 @@
           }
         },
         {
+          "flag": "etc41_bit1"
+        },
+        {
           "flag": "den7MazeCleared"
         },
         {
           "flag": "lavaGateKeyRight"
         },
         {
-          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견"
-        },
-        {
-          "say": "했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸"
-        },
-        {
-          "say": "다."
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸다."
         },
         {
           "teleport": {
@@ -11107,7 +11111,8 @@
             "y": 17
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-return-y13",

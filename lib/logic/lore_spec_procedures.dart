@@ -856,6 +856,123 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1475-1759`, map 20 (DEN5 / MUD DEN / ASTRAL DEN).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 96` handled via portal session.
+  /// 2. Quiz 1 door check at `y == 88`:
+  ///    - If tile at player == 0: `y := 80` (`den7-passage-y88`).
+  ///    - Else: eject to map 4 `(82, 17)` (`den7-exit-y88`).
+  /// 3. Quiz 2 door check at `y == 71`:
+  ///    - If tile at player == 0: `y := 63` (`den7-passage-y71`).
+  ///    - Else: eject to map 4 `(82, 17)` (`den7-exit-y71`).
+  /// 4. Quiz 1 at `y == 91`: `den7-quiz-y91`.
+  /// 5. Quiz 2 at `y == 75`: `den7-quiz-y75`.
+  /// 6. Quiz 3 at `y == 54`: `den7-quiz-y54`.
+  /// 7. Guardian Minotaur at `y == 48`:
+  ///    - If `party.etc[41] and bit4 == 0`: `den7-minotaur-y48`.
+  /// 8. Final boss sequence at `y == 13`:
+  ///    - If `party.etc[41] and bit2 == 0`: `den7-dragons-y13`.
+  ///    - Else if `party.etc[41] and bit3 == 0`: `den7-mudmen-y13`.
+  ///    - Else if `party.etc[41] and bit1 == 0`: `den7-master-y13`.
+  static ScriptRun? map20(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (y == 88) {
+      final scriptId =
+          context.tileAtPlayer == 0 ? 'den7-passage-y88' : 'den7-exit-y88';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 71) {
+      final scriptId =
+          context.tileAtPlayer == 0 ? 'den7-passage-y71' : 'den7-exit-y71';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 91) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'den7-quiz-y91',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 75) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'den7-quiz-y75',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 54) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'den7-quiz-y54',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 48) {
+      final hasDefeated =
+          context.flags.contains('etc41_bit4') ||
+          context.flags.contains('den7MinotaurCleared');
+      if (!hasDefeated) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'den7-minotaur-y48',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (y == 13) {
+      final hasDefeatedDragons =
+          context.flags.contains('etc41_bit2') ||
+          context.flags.contains('den7DragonsCleared');
+      final hasDefeatedMudmen =
+          context.flags.contains('etc41_bit3') ||
+          context.flags.contains('den7MudmenCleared');
+      final hasDefeatedMaster =
+          context.flags.contains('etc41_bit1') ||
+          context.flags.contains('den7MazeCleared');
+
+      if (!hasDefeatedDragons) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'den7-dragons-y13',
+        );
+        return scripts.startProcedure(content, context);
+      }
+      if (!hasDefeatedMudmen) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'den7-mudmen-y13',
+        );
+        return scripts.startProcedure(content, context);
+      }
+      if (!hasDefeatedMaster) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'den7-master-y13',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
