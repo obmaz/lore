@@ -8157,12 +8157,16 @@
           }
         },
         {
+          "flag": "etc45_bit7"
+        },
+        {
           "flag": "keep3KeyA"
         },
         {
           "flag": "sealPuzzleB"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map25"
     },
     {
       "id": "keep3-key-a-first",
@@ -8179,9 +8183,13 @@
           "say": "에 울려 퍼졌다."
         },
         {
+          "flag": "etc45_bit7"
+        },
+        {
           "flag": "keep3KeyA"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map25"
     },
     {
       "id": "spec-25-L1995-1xx",
@@ -8287,12 +8295,16 @@
           }
         },
         {
+          "flag": "etc45_bit8"
+        },
+        {
           "flag": "keep3KeyB"
         },
         {
           "flag": "sealPuzzleB"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map25"
     },
     {
       "id": "keep3-key-b-first",
@@ -8309,9 +8321,13 @@
           "say": "에 울려 퍼졌다."
         },
         {
+          "flag": "etc45_bit8"
+        },
+        {
           "flag": "keep3KeyB"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map25"
     },
     {
       "id": "spec-25-L1995-1xxx",
@@ -8500,7 +8516,8 @@
           }
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map25"
     },
     {
       "id": "spec-25-L1995x",
@@ -8620,7 +8637,8 @@
           }
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map25"
     },
     {
       "id": "keep1-seal-gate-a",
@@ -17641,6 +17659,7 @@
         },
         {
           "battle": {
+            "title": "금속 수호자",
             "enemyFirst": true,
             "monsters": [
               66,
@@ -17649,6 +17668,7 @@
               66,
               71
             ],
+            "victoryFlag": "keep3MetalGuardianCleared",
             "onRunAway": [
               {
                 "nudge": {
@@ -17657,6 +17677,9 @@
               }
             ]
           }
+        },
+        {
+          "flag": "keep3MetalGuardianCleared"
         },
         {
           "setTileArea": {
@@ -17686,10 +17709,10 @@
           "say": " 이곳에는 비밀스런 문이 두군데 있소. 지금은"
         },
         {
-          "say": "보이지가 않지만 양쪽의 벽을 살피다 보면 숨"
+          "say": "보이지가 않지만 양쪽의 벽을 살피다 보면  숨"
         },
         {
-          "say": "겨진 문 안에 레버가 각각 하나씩 있소. 그걸"
+          "say": "겨진 문 안에 레버가 각각 하나씩 있소.  그걸"
         },
         {
           "say": "모두 작동시키면 용암의 중앙에서 Necromancer"
@@ -17706,7 +17729,8 @@
         {
           "partyClass": 10
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map25"
     },
     {
       "id": "portal-25-26-chamber",

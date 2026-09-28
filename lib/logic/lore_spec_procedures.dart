@@ -1125,6 +1125,86 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1995-2103`, map 25 (K_DEN2 / DUNGEON OF EVIL DEEP / CASTLE KEEP).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 46` handled via portal session.
+  /// 2. Metal Guardian encounter at `y == 43`:
+  ///    - Torch ignition (`party.etc[1] := 1`), battle with metal enemy + 4 soldiers,
+  ///    - set corridor tile `(24..27, 43) := 41`, dialogue and class promotion (`class := 10`).
+  /// 3. Hidden passage at `(15, 34)`:
+  ///    - `keep25-corridor-15-34`.
+  /// 4. Hidden passage at `(36, 34)`:
+  ///    - `keep25-corridor-36-34`.
+  /// 5. Lever A at `(5, 34)`:
+  ///    - Sets `etc45_bit7`. If both bit7 & bit8 set -> opens portal doors `map[25..26, 27] := 54`.
+  /// 6. Lever B at `(46, 34)`:
+  ///    - Sets `etc45_bit8`. If both bit7 & bit8 set -> opens portal doors `map[25..26, 27] := 54`.
+  static ScriptRun? map25(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (y == 43) {
+      final hasDefeatedMetalGuardian =
+          context.flags.contains('keep3MetalGuardianCleared');
+      if (!hasDefeatedMetalGuardian) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'keep3-metal-guardian-y43',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (x == 15 && y == 34) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'keep25-corridor-15-34',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (x == 36 && y == 34) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'keep25-corridor-36-34',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (x == 5 && y == 34) {
+      final otherLeverSet =
+          context.flags.contains('etc45_bit8') ||
+          context.flags.contains('keep3KeyB');
+      final scriptId =
+          otherLeverSet ? 'keep3-key-a-second' : 'keep3-key-a-first';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (x == 46 && y == 34) {
+      final otherLeverSet =
+          context.flags.contains('etc45_bit7') ||
+          context.flags.contains('keep3KeyA');
+      final scriptId =
+          otherLeverSet ? 'keep3-key-b-second' : 'keep3-key-b-first';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
