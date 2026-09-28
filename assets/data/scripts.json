@@ -7938,39 +7938,41 @@
       "require": {
         "flagNot": "keep2AmbushCleared"
       },
-      "title": "암흑의 성채",
+      "title": "Death Knight",
       "steps": [
         {
-          "say": "Wraith 떼가 사방에서 몰려온다. 그 뒤로 Death Knight가 다가선다 !"
+          "say": " 나는 이 요새의 Wraith를 조종하는 죽음의 기"
+        },
+        {
+          "say": "사 Death Knight이다. 나에게 도전하다니 가소"
+        },
+        {
+          "say": "로운 것들. 으하하...."
         },
         {
           "battle": {
-            "enemyFirst": true,
-            "title": "암흑의 성채",
+            "title": "Death Knight",
+            "enemyFirst": false,
             "monsters": [
               60,
               60,
               60,
               60,
-              60
+              63
             ],
-            "random": {
-              "pool": [
-                63
-              ],
-              "min": 1,
-              "max": 1
-            }
+            "shuffle": true,
+            "victoryFlag": "etc43_bit2"
           }
         },
         {
-          "say": "당신들은 성채의 문지기들을 물리쳤다."
+          "flag": "etc43_bit2"
         },
         {
           "flag": "keep2AmbushCleared"
         }
       ],
-      "disabled": true
+      "disabled": false,
+      "portedBy": "LoreSpecProcedures.map22"
     },
     {
       "id": "keep2-guards-y25",
@@ -7984,23 +7986,30 @@
       "require": {
         "flagNot": "keep2GuardsCleared"
       },
-      "title": "성채의 수문장",
+      "title": "요새 수비대",
       "steps": [
         {
           "battle": {
+            "title": "요새 수비대",
+            "enemyFirst": true,
             "monsters": [
               61,
               58,
               56,
               55,
               60
-            ]
+            ],
+            "victoryFlag": "etc43_bit1"
           }
+        },
+        {
+          "flag": "etc43_bit1"
         },
         {
           "flag": "keep2GuardsCleared"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map22"
     },
     {
       "id": "keep3-trap-25-27",

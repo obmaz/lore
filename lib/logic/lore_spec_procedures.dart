@@ -1016,6 +1016,56 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1816-1879`, map 22 (KEEP2 / IMPERIUM MINOR).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 46` handled via portal session (`keep2-exit-guard`).
+  /// 2. Death Knight ambush at `(25, 18)`:
+  ///    - `party.etc[43] and bit2 == 0` -> `keep2-ambush-25-18`.
+  /// 3. Fortress guards ambush at `y == 25` and `x in [24..26]`:
+  ///    - `party.etc[43] and bit1 == 0` -> `keep2-guards-y25`.
+  /// 4. Other tiles (Wraith ambush if `party.etc[43] and bit2 == 0`):
+  ///    - Handled via `keep2-ambush-zone-a` / `keep2-ambush-zone-b`.
+  static ScriptRun? map22(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (x == 25 && y == 18) {
+      final hasDefeatedKnight =
+          context.flags.contains('etc43_bit2') ||
+          context.flags.contains('keep2AmbushCleared');
+      if (!hasDefeatedKnight) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'keep2-ambush-25-18',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (y == 25 && (x >= 24 && x <= 26)) {
+      final hasDefeatedGuards =
+          context.flags.contains('etc43_bit1') ||
+          context.flags.contains('keep2GuardsCleared');
+      if (!hasDefeatedGuards) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'keep2-guards-y25',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
