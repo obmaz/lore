@@ -3,6 +3,7 @@ import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/script_world_reducer.dart';
+import 'package:lore/logic/lore_spec_procedures.dart';
 
 /// 원작 `LORETALK.PAS` 의 상태 분기(party.etc 비트/퀘스트 단계) 대사를
 /// 검증한다. (아이템 1: 남은 수동 이관 분기)
@@ -261,7 +262,16 @@ void main() {
       await LoreScriptEngine.instance.load();
       final engine = LoreScriptEngine.instance;
 
-      final run = engine.startStep(6, 41, 79, const ScriptContext())!;
+      expect(
+        engine.startStep(6, 41, 79, const ScriptContext(tileAtPlayer: 0)),
+        isNull,
+      );
+      final run = LoreSpecProcedures.map6(
+        41,
+        79,
+        const ScriptContext(tileAtPlayer: 0),
+        engine,
+      )!;
       expect(run.outcome.setFlags, contains('weaponRoomVisited'));
       expect(run.outcome.messages.join('\n'), contains('기본적인 무기'));
       expect(run.outcome.equips.single.kind, 'weapon');

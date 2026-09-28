@@ -30,6 +30,7 @@ void main() {
   test('늪은 빈 슬롯까지 여섯 번 굴리고 이름 있는 대원만 중독시킨다', () {
     final source = File('repo_source/LORE_1993_src/LOREMAIN.PAS')
         .readAsStringSync(encoding: latin1)
+        .replaceAll('\r\n', '\n')
         .split('Procedure enter_swamp;\nbegin')[1]
         .split('Procedure enter_lava;')[0];
     expect(

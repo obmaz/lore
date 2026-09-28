@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/logic/script_equip_reducer.dart';
+import 'package:lore/logic/lore_spec_procedures.dart';
 import 'package:lore/models/party_member.dart';
 
 PartyMember member(String name, PlayerClass playerClass, {int weapon = 0}) =>
@@ -54,8 +55,16 @@ void main() {
 
   test('맵 6 기본 무장은 빈 슬롯·무장 대원·전투승을 건너뛰고 보정 없이 지급한다', () async {
     await engine.load();
-    final equip = engine
-        .startStep(6, 41, 79, const ScriptContext())!
+    expect(
+      engine.startStep(6, 41, 79, const ScriptContext(tileAtPlayer: 0)),
+      isNull,
+    );
+    final equip = LoreSpecProcedures.map6(
+      41,
+      79,
+      const ScriptContext(tileAtPlayer: 0),
+      engine,
+    )!
         .outcome
         .equips
         .single;

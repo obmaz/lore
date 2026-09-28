@@ -29,6 +29,7 @@ class _QueuedRandom implements Random {
 void main() {
   final source = File('repo_source/LORE_1993_src/LOREMAIN.PAS')
       .readAsStringSync(encoding: latin1)
+      .replaceAll('\r\n', '\n')
       .split('Procedure enter_lava;\nbegin')[1]
       .split('Procedure Move_Mode;')[0];
 

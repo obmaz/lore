@@ -942,10 +942,14 @@ class LoreScriptEngine {
   }
 
   /// id 로 지정한 스크립트를 실행한다(포털의 `script` 필드 등).
-  ScriptRun? startById(String id, ScriptContext ctx) {
+  ScriptRun? startById(
+    String id,
+    ScriptContext ctx, {
+    bool allowDisabled = true,
+  }) {
     for (final s in _scripts) {
       if (s.id != id) continue;
-      if (s.disabled) continue;
+      if (s.disabled && !allowDisabled) continue;
       if (!_meets(s.require, ctx)) continue;
       if (s.once && consumedScripts.contains(s.id)) continue;
       return _start(s, ctx);

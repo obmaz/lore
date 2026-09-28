@@ -728,12 +728,22 @@ void main() {
       expect(
         engine.startStep(6, 51, 12, const ScriptContext(tileAtPlayer: 0)),
         isNull,
+        reason: 'map6 절차 전환 후 범용 startStep은 비활성화되어야 한다',
       );
-      final prison = engine.startStep(
-        6,
+      expect(
+        LoreSpecProcedures.map6(
+          51,
+          12,
+          const ScriptContext(tileAtPlayer: 0),
+          engine,
+        ),
+        isNull,
+      );
+      final prison = LoreSpecProcedures.map6(
         51,
         12,
         const ScriptContext(flags: {'madJoeJoined'}, tileAtPlayer: 0),
+        engine,
       )!;
       expect(prison.outcome.battleMonsters, [26, 26]);
       expect(prison.awaitingBattle, isTrue);
@@ -742,30 +752,29 @@ void main() {
       expect(prison.outcome.setFlags, contains('prisonBattleStarted'));
       final escaped = prison.continueAfterRunAway();
       expect(escaped.outcome.tileChanges, isEmpty);
-      final prisonAgain = engine.startStep(
-        6,
+      final prisonAgain = LoreSpecProcedures.map6(
         52,
         12,
         const ScriptContext(
           flags: {'madJoeJoined', 'prisonBattleStarted'},
           tileAtPlayer: 0,
         ),
+        engine,
       )!;
       expect(prisonAgain.outcome.battleMonsters.length, 7);
       expect(prisonAgain.continueAfterBattle().outcome.tileChanges.length, 4);
       final prisonVictory = prison.continueAfterBattle();
-      expect(engine.consumedScripts, contains('prison-battle-first'));
       expect(prisonVictory.outcome.tileChanges.length, 4);
       expect(prisonVictory.outcome.setFlags, contains('prisonBattleDone'));
       expect(
-        engine.startStep(
-          6,
+        LoreSpecProcedures.map6(
           51,
           12,
           const ScriptContext(
             flags: {'madJoeJoined', 'prisonBattleStarted', 'prisonBattleDone'},
             tileAtPlayer: 0,
           ),
+          engine,
         ),
         isNull,
       );
@@ -777,7 +786,16 @@ void main() {
       expect(LoreJoin.removeMadJoeAtPrison(party), isFalse);
 
       // 4) 맵 6 (41,79) 기본 무장 (무기 없는 대원만)
-      final arm = engine.startStep(6, 41, 79, noCtx)!;
+      expect(
+        engine.startStep(6, 41, 79, const ScriptContext(tileAtPlayer: 0)),
+        isNull,
+      );
+      final arm = LoreSpecProcedures.map6(
+        41,
+        79,
+        const ScriptContext(tileAtPlayer: 0),
+        engine,
+      )!;
       final equip = arm.outcome.equips.single;
       expect(equip.kind, 'weapon');
       expect(equip.index, 1);

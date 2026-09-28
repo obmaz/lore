@@ -7,6 +7,66 @@ import '../data/lore_script.dart';
 class LoreSpecProcedures {
   LoreSpecProcedures._();
 
+  /// `LORESPEC.PAS:190-305`, map 6 (Castle LORE).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. `(62, 82)`: treasure chest (gold 1000, tile 44).
+  /// 2. `(51, 12)` or `(52, 12)`: prison guard battle.
+  ///    - Guarded by `etc50_bit2` / `madJoeJoined`.
+  ///    - Return encounter: `prison-battle-return` (7 soldiers).
+  ///    - First encounter: `prison-battle-first` (2 soldiers).
+  /// 3. `(41, 79)`: weapon room.
+  ///    - Guarded by not `etc50_bit4` / `weaponRoomVisited`.
+  ///    - Nudges player west 3 times, sets tile 44, gives basic weapons.
+  /// 4. Exit branch:
+  ///    - Evaluated at castle exit portal (`castle-exit-skeleton`) via
+  ///      [LorePortalSession].
+  static ScriptRun? map6(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson || context.tileAtPlayer != 0) return null;
+
+    // 1. on(62,82) - 상자
+    if (x == 62 && y == 82) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'spec-6-L190',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    // 2. on(51,12) or on(52,12) - 감옥 전투
+    if ((x == 51 || x == 52) && y == 12) {
+      final hasMadJoe = context.flags.contains('madJoeJoined') ||
+          context.flags.contains('etc50_bit2');
+      if (!hasMadJoe || context.flags.contains('prisonBattleDone')) {
+        return null;
+      }
+      final isReturn = context.flags.contains('prisonBattleStarted') ||
+          context.flags.contains('etc50_bit3');
+      final scriptId = isReturn ? 'prison-battle-return' : 'prison-battle-first';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    // 3. on(41,79) - 무기실
+    if (x == 41 && y == 79) {
+      final visited = context.flags.contains('weaponRoomVisited') ||
+          context.flags.contains('etc50_bit4');
+      if (visited) return null;
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'lore-weapon-room',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
@@ -15,13 +75,8 @@ class LoreSpecProcedures {
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson || x != 62 || y != 82 || context.tileAtPlayer != 0) {
-      return null;
-    }
-    final content = scripts.scripts.singleWhere(
-      (script) => script.id == 'spec-6-L190',
-    );
-    return scripts.startProcedure(content, context);
+    if (x != 62 || y != 82) return null;
+    return map6(x, y, context, scripts);
   }
 
   /// `LORESPEC.PAS:37-189`, map 4. The ordered Pascal guards select one
