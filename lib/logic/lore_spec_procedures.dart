@@ -777,6 +777,85 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1366-1474`, map 19 (DEN4 / EVIL DEN).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 46` handled via portal session.
+  /// 2. Lever A at `(11, 40)`:
+  ///    - If `party.etc[3] > 0`: `evil-seal-lever-a-blocked`.
+  ///    - Else: `evil-seal-lever-a` (opens tile at `(41, 39)`).
+  /// 3. Lever B at `(41, 39)`:
+  ///    - If `party.etc[3] > 0`: `evil-seal-lever-b-blocked`.
+  ///    - Else: `evil-seal-lever-b` (opens central corridor, picks seal room).
+  /// 4. Crab God guardians in corridors at `y in 8..12`:
+  ///    - If not `etc40_bit1`: `evil-seal-guardians`.
+  /// 5. Seal room check at `y == 6`:
+  ///    - If not `etc40_bit1`:
+  ///      - Room index: `(x - 10) ~/ 4` (1..7).
+  ///      - Correct room matched via `evilSealRoomX` flag: boss battle (`evil-seal-room-X`).
+  ///      - Wrong room: `evil-seal-room-wrong-X`.
+  static ScriptRun? map19(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (x == 11 && y == 40) {
+      final levitating = context.flags.contains('levitationActive');
+      final scriptId =
+          levitating ? 'evil-seal-lever-a-blocked' : 'evil-seal-lever-a';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (x == 41 && y == 39) {
+      final levitating = context.flags.contains('levitationActive');
+      final scriptId =
+          levitating ? 'evil-seal-lever-b-blocked' : 'evil-seal-lever-b';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    final sealCleared =
+        context.flags.contains('etc40_bit1') ||
+        context.flags.contains('evilSealRoomCleared');
+
+    if (!sealCleared && y >= 8 && y <= 12) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'evil-seal-guardians',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (!sealCleared && y == 6) {
+      final roomIndex = (x - 10) ~/ 4;
+      if (roomIndex >= 1 && roomIndex <= 7) {
+        final isCorrectRoom = context.flags.contains('evilSealRoom$roomIndex');
+        final scriptId =
+            isCorrectRoom
+                ? 'evil-seal-room-$roomIndex'
+                : 'evil-seal-room-wrong-$roomIndex';
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == scriptId,
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

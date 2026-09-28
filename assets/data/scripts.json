@@ -6386,9 +6386,10 @@
       },
       "steps": [
         {
-          "say": "늪 아래를 보니 무언가 반짝이는 물체가 있었다. 하지만 늪위를 걷는 마법 때문에 늪속으로 들어갈수가 없다."
+          "say": " 늪 아래를 보니 무언가 반짝이는 물체가 있었다. 하지만 늪위를 걷는 마법 때문에 늪속으로 들어갈수가 없다."
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-lever-a",
@@ -6403,7 +6404,7 @@
       },
       "steps": [
         {
-          "say": "일행은 독을 무릅쓰고 늪속에 빠져있는 레버를 당겼다. 순간 동굴 중심부에서 굉음이 들렸다."
+          "say": " 일행은 독을 무릅쓰고  늪속에 빠져있는 레버를 당겼다. 순간 동굴 중심부에서 굉음이 들렸다."
         },
         {
           "setTile": {
@@ -6422,7 +6423,8 @@
         {
           "flag": "evilSealLeverA"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "spec-19-L1366-1xx",
@@ -6501,9 +6503,10 @@
       },
       "steps": [
         {
-          "say": "늪 아래를 보니 무언가 반짝이는 물체가 있었다. 하지만 늪위를 걷는 마법 때문에 늪속으로 들어갈수가 없다."
+          "say": " 늪 아래를 보니 무언가 반짝이는 물체가 있었다. 하지만 늪위를 걷는 마법 때문에 늪속으로 들어갈수가 없다."
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-lever-b",
@@ -6521,7 +6524,7 @@
       },
       "steps": [
         {
-          "say": "일행은 독을 무릅쓰고 늪속에 빠져있는 레버를 당겼다. 순간 동굴 중심부에서 굉음이 들렸다."
+          "say": " 일행은 독을 무릅쓰고  늪속에 빠져있는 레버를 당겼다. 순간 동굴 중심부에서 조금전 보다 더 큰 굉음이 들렸다."
         },
         {
           "setTile": {
@@ -6585,7 +6588,8 @@
         {
           "flag": "evilSealLeverB"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-lever-b-cleared",
@@ -6809,10 +6813,13 @@
           }
         },
         {
-          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸다."
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "etc40_bit1"
         },
         {
           "flag": "lavaGateKeyLeft"
@@ -6821,7 +6828,8 @@
           "flag": "sealPuzzleA"
         }
       ],
-      "x": 14
+      "x": 14,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-2",
@@ -6896,10 +6904,13 @@
           }
         },
         {
-          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸다."
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "etc40_bit1"
         },
         {
           "flag": "lavaGateKeyLeft"
@@ -6908,7 +6919,8 @@
           "flag": "sealPuzzleA"
         }
       ],
-      "x": 18
+      "x": 18,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-3",
@@ -6983,10 +6995,13 @@
           }
         },
         {
-          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸다."
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "etc40_bit1"
         },
         {
           "flag": "lavaGateKeyLeft"
@@ -6995,7 +7010,8 @@
           "flag": "sealPuzzleA"
         }
       ],
-      "x": 22
+      "x": 22,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-4",
@@ -7070,10 +7086,13 @@
           }
         },
         {
-          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸다."
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "etc40_bit1"
         },
         {
           "flag": "lavaGateKeyLeft"
@@ -7082,7 +7101,8 @@
           "flag": "sealPuzzleA"
         }
       ],
-      "x": 26
+      "x": 26,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-5",
@@ -7157,10 +7177,13 @@
           }
         },
         {
-          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸다."
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "etc40_bit1"
         },
         {
           "flag": "lavaGateKeyLeft"
@@ -7169,7 +7192,8 @@
           "flag": "sealPuzzleA"
         }
       ],
-      "x": 30
+      "x": 30,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-6",
@@ -7244,10 +7268,13 @@
           }
         },
         {
-          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸다."
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "etc40_bit1"
         },
         {
           "flag": "lavaGateKeyLeft"
@@ -7256,7 +7283,8 @@
           "flag": "sealPuzzleA"
         }
       ],
-      "x": 34
+      "x": 34,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-7",
@@ -7331,10 +7359,13 @@
           }
         },
         {
-          "say": "당신은 이 동굴에 보관되어 있는 봉인을 발견했다. 그리고는 봉쇄 되었던 봉인을 풀어버렸다."
+          "say": " 당신은 이 동굴에 보관되어 있는 봉인을 발견했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸다."
         },
         {
           "flag": "evilSealRoomCleared"
+        },
+        {
+          "flag": "etc40_bit1"
         },
         {
           "flag": "lavaGateKeyLeft"
@@ -7343,7 +7374,8 @@
           "flag": "sealPuzzleA"
         }
       ],
-      "x": 38
+      "x": 38,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-wrong-1",
@@ -7368,7 +7400,7 @@
           }
         },
         {
-          "say": "여기에는 봉인이 발견되지 않았다"
+          "say": " 여기에는 봉인이 발견되지 않았다"
         },
         {
           "setTileAtPlayer": {
@@ -7376,7 +7408,8 @@
           }
         }
       ],
-      "x": 14
+      "x": 14,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-wrong-2",
@@ -7401,7 +7434,7 @@
           }
         },
         {
-          "say": "여기에는 봉인이 발견되지 않았다"
+          "say": " 여기에는 봉인이 발견되지 않았다"
         },
         {
           "setTileAtPlayer": {
@@ -7409,7 +7442,8 @@
           }
         }
       ],
-      "x": 18
+      "x": 18,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-wrong-3",
@@ -7434,7 +7468,7 @@
           }
         },
         {
-          "say": "여기에는 봉인이 발견되지 않았다"
+          "say": " 여기에는 봉인이 발견되지 않았다"
         },
         {
           "setTileAtPlayer": {
@@ -7442,7 +7476,8 @@
           }
         }
       ],
-      "x": 22
+      "x": 22,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-wrong-4",
@@ -7467,7 +7502,7 @@
           }
         },
         {
-          "say": "여기에는 봉인이 발견되지 않았다"
+          "say": " 여기에는 봉인이 발견되지 않았다"
         },
         {
           "setTileAtPlayer": {
@@ -7475,7 +7510,8 @@
           }
         }
       ],
-      "x": 26
+      "x": 26,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-wrong-5",
@@ -7500,7 +7536,7 @@
           }
         },
         {
-          "say": "여기에는 봉인이 발견되지 않았다"
+          "say": " 여기에는 봉인이 발견되지 않았다"
         },
         {
           "setTileAtPlayer": {
@@ -7508,7 +7544,8 @@
           }
         }
       ],
-      "x": 30
+      "x": 30,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-wrong-6",
@@ -7533,7 +7570,7 @@
           }
         },
         {
-          "say": "여기에는 봉인이 발견되지 않았다"
+          "say": " 여기에는 봉인이 발견되지 않았다"
         },
         {
           "setTileAtPlayer": {
@@ -7541,7 +7578,8 @@
           }
         }
       ],
-      "x": 34
+      "x": 34,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-room-wrong-7",
@@ -7566,7 +7604,7 @@
           }
         },
         {
-          "say": "여기에는 봉인이 발견되지 않았다"
+          "say": " 여기에는 봉인이 발견되지 않았다"
         },
         {
           "setTileAtPlayer": {
@@ -7574,7 +7612,8 @@
           }
         }
       ],
-      "x": 38
+      "x": 38,
+      "portedBy": "LoreSpecProcedures.map19"
     },
     {
       "id": "evil-seal-guardians",
