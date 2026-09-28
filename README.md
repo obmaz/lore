@@ -28,3 +28,21 @@ python3 tool/audit_messages.py
 ```
 
 원본에서 추출한 지도·폰트·대사·전투 데이터를 `assets/`에 포함했습니다. 추출 및 병합 도구는 `tool/`에 있으며, 게임 실행과 테스트에는 별도의 DOS 런타임이 필요하지 않습니다.
+
+## 정적 웹 페이지 배포
+
+GitHub Actions 빌드는 사용하지 않습니다. 로컬에서 다음 명령으로 WASM과
+JavaScript 대체 버전을 함께 빌드합니다.
+
+```sh
+flutter build web --release --wasm --base-href /lore/ --no-web-resources-cdn
+```
+
+`build/web/` 전체를 `gh-pages` 브랜치의 루트에 게시합니다. 이 브랜치에는
+`.nojekyll` 파일도 둡니다. GitHub Pages의 배포 소스는 `gh-pages` 브랜치의
+`/(root)`입니다. Flutter 진입 파일 `main.dart.wasm`과 렌더러의 `.wasm`
+파일을 브라우저가 정상 로드하려면 정적 서버가 `.wasm`을
+`application/wasm`으로 제공해야 합니다. WASM GC 미지원 브라우저에는
+같은 빌드의 `main.dart.js`가 사용됩니다.
+
+GitHub Pages는 저장소가 비공개여도 게시된 사이트 자체는 공개됩니다.
