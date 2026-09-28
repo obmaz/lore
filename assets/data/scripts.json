@@ -4580,6 +4580,9 @@
           }
         },
         {
+          "flag": "etc36_bit3"
+        },
+        {
           "flag": "goldenShieldQuakeTaken"
         }
       ],
@@ -4587,9 +4590,11 @@
       "y": 7,
       "require": {
         "notAllFlags": [
+          "etc36_bit3",
           "goldenShieldQuakeTaken"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map15"
     },
     {
       "id": "golden-shield-quake",
@@ -4641,6 +4646,9 @@
           }
         },
         {
+          "flag": "etc36_bit4"
+        },
+        {
           "flag": "goldenArmorQuakeTaken"
         }
       ],
@@ -4648,9 +4656,11 @@
       "y": 19,
       "require": {
         "notAllFlags": [
+          "etc36_bit4",
           "goldenArmorQuakeTaken"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map15"
     },
     {
       "id": "golden-armor-quake",
@@ -4737,7 +4747,8 @@
             "eq": 4
           }
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map15"
     },
     {
       "id": "spec-15-L879-2xxxx",
@@ -20942,13 +20953,13 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc36_bit1"
-        },
-        {
           "gold": 6000
         },
         {
           "say": "당신은 금화 6000개를 발견했다."
+        },
+        {
+          "flag": "etc36_bit1"
         }
       ],
       "disabled": true,
@@ -20960,7 +20971,8 @@
           "etc36_bit2"
         ]
       },
-      "note": "미지원: map[x,48] := 44;; 미지원: map[x,47] := 44;"
+      "note": "미지원: map[x,48] := 44;; 미지원: map[x,47] := 44;",
+      "portedBy": "LoreSpecProcedures.map15"
     },
     {
       "id": "spec-15-L879-2xx",
@@ -20969,13 +20981,13 @@
       "once": false,
       "steps": [
         {
-          "flag": "etc36_bit2"
-        },
-        {
           "gold": 4000
         },
         {
           "say": "당신은 금화 4000개를 발견했다."
+        },
+        {
+          "flag": "etc36_bit2"
         }
       ],
       "disabled": true,
@@ -20989,7 +21001,8 @@
           "etc36_bit2"
         ]
       },
-      "note": "미지원: map[x,48] := 44;; 미지원: map[x,47] := 44;"
+      "note": "미지원: map[x,48] := 44;; 미지원: map[x,47] := 44;",
+      "portedBy": "LoreSpecProcedures.map15"
     },
     {
       "id": "spec-16-L966-1",

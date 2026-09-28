@@ -456,6 +456,93 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:879-965`, map 15 (T_DEN3 / QUAKE DEN).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 71` handled via portal session.
+  /// 2. Gold chests at `y == 48` and `x in [10, 11, 40, 41]`:
+  ///    - First chest gives 6000 gold and sets `etc36_bit1`.
+  ///    - Second chest gives 4000 gold and sets `etc36_bit2`.
+  ///    - Sets tiles `(x, 48)` and `(x, 47)` to 44.
+  /// 3. Golden Shield at `(14, 7)`:
+  ///    - `party.etc[36] and bit3 == 0` (`etc36_bit3` / `goldenShieldQuakeTaken`).
+  /// 4. Golden Armor at `(45, 19)`:
+  ///    - `party.etc[36] and bit4 == 0` (`etc36_bit4` / `goldenArmorQuakeTaken`).
+  /// 5. ArchiGagoyle boss battle at `y == 27`:
+  ///    - `party.etc[14] == 4` (`gaia` quest step 4 -> 5).
+  static ScriptRun? map15(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (y == 48 && (x == 10 || x == 11 || x == 40 || x == 41)) {
+      if (!context.flags.contains('etc36_bit2')) {
+        final isFirst = !context.flags.contains('etc36_bit1');
+        final scriptId = isFirst ? 'spec-15-L879-1xx' : 'spec-15-L879-2xx';
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == scriptId,
+        );
+        final procedure = LoreScript(
+          id: 'lorespec-map15-gold-$x-$y',
+          trigger: 'step',
+          map: 15,
+          once: false,
+          require: const ScriptRequire(),
+          steps: [
+            ...content.steps,
+            ScriptStep(kind: 'setTile', tileX: x, tileY: 48, tileValue: 44),
+            ScriptStep(kind: 'setTile', tileX: x, tileY: 47, tileValue: 44),
+          ],
+        );
+        return scripts.startProcedure(procedure, context);
+      }
+    }
+
+    if (x == 14 && y == 7) {
+      final hasTaken =
+          context.flags.contains('etc36_bit3') ||
+          context.flags.contains('goldenShieldQuakeTaken');
+      if (!hasTaken) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'spec-15-L879',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (x == 45 && y == 19) {
+      final hasTaken =
+          context.flags.contains('etc36_bit4') ||
+          context.flags.contains('goldenArmorQuakeTaken');
+      if (!hasTaken) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'spec-15-L879x',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (y == 27) {
+      final quest = context.questSteps['gaia'] ?? 0;
+      if (quest == 4) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'spec-15-L879-1xxxx',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
