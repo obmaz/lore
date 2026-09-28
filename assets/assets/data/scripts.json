@@ -10874,7 +10874,9 @@
         }
       ],
       "yMin": 18,
-      "yMax": 18
+      "yMax": 18,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-torch-y18",
@@ -10888,7 +10890,8 @@
           "torch": true
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "spec-20-L1475-1xxx",
@@ -25691,6 +25694,23 @@
             "tile": 46,
             "ifZero": 40
           }
+        }
+      ]
+    },
+    {
+      "id": "gaia-den-cliff-no-levitation",
+      "trigger": "step",
+      "map": 12,
+      "once": false,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map12",
+      "note": "LORESPEC.PAS:663-667; 공중 부상 없이 Rigel 칸 이외의 특수 타일에서 이전 위치로 되돌린다.",
+      "steps": [
+        {
+          "say": "일행들은 절벽으로 떨어질뻔 했다."
+        },
+        {
+          "stepBack": true
         }
       ]
     }
