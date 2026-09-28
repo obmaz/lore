@@ -283,6 +283,63 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:560-668`, map 12 (T_DEN2 / GAIA DEN).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 71` handled via portal session.
+  /// 2. Riddle doors at `y == 50` (when not moving south, `moveDy != 1`):
+  ///    - `x == 33`: correct door (`puzzle-door-right`).
+  ///    - `x != 33`: wrong door (`puzzle-door-wrong`).
+  /// 3. Golden seal / trap at `y == 10` (when `party.etc[14] < 2` / `gaia < 2`):
+  ///    - `x == 18`: golden seal (`golden-seal-12-18-10`).
+  ///    - `x != 18`: mud trap (`t_den2-trap-y10`).
+  /// 4. Rigel encounter at `(12, 48)`:
+  ///    - `party.etc[31] and bit2 == 0` (`rigel-join`).
+  static ScriptRun? map12(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson ||
+        (context.tileAtPlayer != null && context.tileAtPlayer != 0)) {
+      return null;
+    }
+
+    if (y == 50 && context.moveDy != 1) {
+      final scriptId = x == 33 ? 'puzzle-door-right' : 'puzzle-door-wrong';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 10) {
+      final gaiaQuest = context.questSteps['gaia'] ?? 0;
+      if (gaiaQuest < 2) {
+        final scriptId = x == 18 ? 'golden-seal-12-18-10' : 't_den2-trap-y10';
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == scriptId,
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (x == 12 && y == 48) {
+      final hasMet =
+          context.flags.contains('rigelMet') ||
+          context.flags.contains('etc31_bit2');
+      if (!hasMet) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'rigel-join',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

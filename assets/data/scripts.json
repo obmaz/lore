@@ -1841,7 +1841,8 @@
             ]
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "redantares-teach",
@@ -5214,7 +5215,8 @@
         {
           "flag": "goldenSealFound"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-17-L1010-1xx",
@@ -7657,7 +7659,8 @@
             "tile": 0
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "puzzle-door-wrong",
@@ -7680,7 +7683,8 @@
             "y": 70
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-17-L1010xxxxxx",
@@ -8865,7 +8869,8 @@
             "atPlayerX": true
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-12-L560-1xx",
@@ -8913,7 +8918,8 @@
           }
         ]
       },
-      "note": "조건 미지원: x = 18"
+      "note": "조건 미지원: x = 18",
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-12-L560-2xx",
@@ -8946,7 +8952,8 @@
           }
         ]
       },
-      "note": "조건 미지원: x = 18"
+      "note": "조건 미지원: x = 18",
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-20-L1475xx",
@@ -20150,7 +20157,8 @@
       "disabled": true,
       "yMin": 71,
       "yMax": 71,
-      "note": "조건 미지원: wantexit"
+      "note": "조건 미지원: wantexit",
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-12-L560-2",
@@ -20167,7 +20175,8 @@
       "disabled": true,
       "yMin": 71,
       "yMax": 71,
-      "note": "조건 미지원: wantexit"
+      "note": "조건 미지원: wantexit",
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-12-L560-1x",
@@ -20189,7 +20198,8 @@
       "disabled": true,
       "yMin": 50,
       "yMax": 50,
-      "note": "조건 미지원: x = 33"
+      "note": "조건 미지원: x = 33",
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-12-L560-2x",
@@ -20210,7 +20220,8 @@
       "disabled": true,
       "yMin": 50,
       "yMax": 50,
-      "note": "조건 미지원: x = 33"
+      "note": "조건 미지원: x = 33",
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-12-L560",
@@ -20306,7 +20317,8 @@
         ]
       },
       "note": "미지원: hany := 20;; 미지원: case k of; 미지원: 0 : begin; 미지원: 1 : begin; 미지원: k := ReturnJoinMember;; 미지원: if k = 1 then begin; 미지원: with player[k] do begin; 미지원: name := 'Rigel';; 미지원: class := 7;; 미지원: weapon := 4;; 미지원: shield := 1;; 미지원: armor := 1;; 미지원: wea_power := 10;; 미지원: shi_power := 1;; 미지원: ar",
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-12-L560x",
@@ -20326,7 +20338,8 @@
         ]
       },
       "note": "미지원: x := x - x1; y := y - y1;",
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map12"
     },
     {
       "id": "spec-13-L669-1",

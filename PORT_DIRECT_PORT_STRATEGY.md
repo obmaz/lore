@@ -99,7 +99,7 @@
 | `LOREMAIN` | `enter_water`, `enter_swamp`, `enter_lava`, `Move_Mode`, `Main` | 입력 후 현재 타일 재판정, 맵 26 방향 그림 예외, 소리 전환, Space의 전투 결과 초기화까지 앱에 연결했다. |
 | `LOREENT` | `entermode`, `sign` | 27개 목적지·4개 수문장 입구·7곳의 지도 변경·표지판을 원본형 Dart 코드로 실행한다. 대사 텍스트와 범용 효과 실행기는 데이터/엔진 경계다. |
 | `LORETALK` | 없음 | `talkmode` 전체. 원본 `at` 좌표 148건은 실제 대화 타일과 실행 선택기까지 재생했다. 원본 `select` 네 곳의 수락·거절 효과를 대조했고 Mad Joe 타일 변경을 JSON 결과로 옮겼다. 맵 27의 유골 대화 다섯 곳은 원본의 타일 35 변경·재방문 차단을 확인했다. 나머지 조건·보상·재방문 결과 대조는 남았다. |
-| `LORESPEC` | 없음 | `sgn`, `specialevent_part1`, `specialevent_part2`, `specialevent` 및 모든 지도별 본문. 맵 1 식량 분기, 맵 4의 이동·Draconian·Ancient Evil 분기, 맵 6 `(62,82)` 상자 및 감옥 전투·무기실·출구 분기, 맵 7 비밀벽과 맵 8 특수 타일 분기, 맵 9 금화 5곳 및 y=10 관문 배척·SWAMP GATE 조언 분기, 맵 10 층간 수직 이동(y=46/49) 분기, 맵 11 금화 7곳 및 y=44 오이디푸스의 창·y=24 미이라의 방 전투 분기는 `LoreSpecProcedures`가 실제 특수 타일 진입점에서 원본 순서로 선택한다. 대응 JSON은 절차가 사용하는 효과 자료 또는 비교 자료로 남기고 포털 및 단일 진입점에서 관리한다. 맵 12 이후 분기는 아직 이 방식으로 전환하지 않았다. |
+| `LORESPEC` | 없음 | `sgn`, `specialevent_part1`, `specialevent_part2`, `specialevent` 및 모든 지도별 본문. 맵 1 식량 분기, 맵 4의 이동·Draconian·Ancient Evil 분기, 맵 6 `(62,82)` 상자 및 감옥 전투·무기실·출구 분기, 맵 7 비밀벽과 맵 8 특수 타일 분기, 맵 9 금화 5곳 및 y=10 관문 배척·SWAMP GATE 조언 분기, 맵 10 층간 수직 이동(y=46/49) 분기, 맵 11 금화 7곳 및 y=44 오이디푸스의 창·y=24 미이라의 방 전투 분기, 맵 12 y=50 수수께끼 문·y=10 황금의 봉인과 함정·(12,48) Rigel 만남 분기는 `LoreSpecProcedures`가 실제 특수 타일 진입점에서 원본 순서로 선택한다. 대응 JSON은 절차가 사용하는 효과 자료 또는 비교 자료로 남기고 포털 및 단일 진입점에서 관리한다. 맵 13 이후 분기는 아직 이 방식으로 전환하지 않았다. |
 
 `LOREMAIN`과 `LOREENT`의 입구 JSON은 원본과 대조하는 자료로 남지만
 앱의 해당 진입 타일은 원본형 Dart 절차만 사용한다. `LORETALK`·`LORESPEC`의
