@@ -3,6 +3,8 @@ import '../game/lore_dialogue_manager.dart';
 import '../game/lore_world_manager.dart';
 import '../models/party_member.dart';
 
+import 'lore_talk_procedures.dart';
+
 enum LoreTalkSource { facility, script, dialogue, none }
 
 class LoreTalkDispatch {
@@ -49,6 +51,10 @@ class LoreTalkDispatcher {
   }) {
     final facility = world.findFacility(mapId, x, y);
     if (facility != null) return LoreTalkDispatch.facility(facility);
+    if (mapId == 6 && context != null && scripts.usingJson) {
+      final script = LoreTalkProcedures.map6(x, y, context, scripts);
+      if (script != null) return LoreTalkDispatch.script(script);
+    }
     if (context != null) {
       final script = scripts.startTalk(mapId, x, y, context);
       if (script != null) return LoreTalkDispatch.script(script);
