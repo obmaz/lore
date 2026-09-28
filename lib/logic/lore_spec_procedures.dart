@@ -1066,6 +1066,52 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1880-1979`, map 23 (KEEP3 / DUNGEON OF EVIL).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 46` handled via portal session.
+  /// 2. Fake Necromancer and doppelganger battle at `y == 26`:
+  ///    - `keep3-necromancer-y26` (Doppelganger -> Necromancer 2-stage battle, tile changes).
+  /// 3. Lever at `(25, 27)`:
+  ///    - `keep3-trap-25-27` (castle floating effect, tile transformations).
+  static ScriptRun? map23(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (y == 26) {
+      final hasCleared =
+          context.flags.contains('keep3NecromancerCleared');
+      if (!hasCleared) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'keep3-necromancer-y26',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (x == 25 && y == 27) {
+      final hasTriggeredTrap =
+          context.flags.contains('keep3TrapCleared');
+      if (!hasTriggeredTrap) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'keep3-trap-25-27',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

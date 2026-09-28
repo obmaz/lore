@@ -544,10 +544,7 @@
       },
       "steps": [
         {
-          "say": " 잘도 여기까지 찾아왔구나 "
-        },
-        {
-          "say": "."
+          "say": " 잘도 여기까지 찾아왔구나."
         },
         {
           "say": " 네가 찾던 그 Necromancer가 바로 나다. 드디"
@@ -578,6 +575,7 @@
         },
         {
           "battle": {
+            "title": "환상의 도플갱어",
             "enemyFirst": true,
             "monsters": [
               60,
@@ -604,6 +602,7 @@
         },
         {
           "battle": {
+            "title": "Necromancer",
             "enemyFirst": true,
             "monsters": [
               70
@@ -660,8 +659,12 @@
             "yMax": 27,
             "tile": 46
           }
+        },
+        {
+          "flag": "keep3NecromancerCleared"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map23"
     },
     {
       "id": "den4-pyramid-chapters",
@@ -8072,7 +8075,8 @@
         {
           "flag": "keep3TrapCleared"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map23"
     },
     {
       "id": "spec-23-L1880x",

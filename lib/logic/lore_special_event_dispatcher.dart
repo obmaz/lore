@@ -127,6 +127,11 @@ class LoreSpecialEventDispatcher {
         script: LoreSpecProcedures.map22(x, y, context, scripts),
       );
     }
+    if (mapId == 23 && scripts.usingJson) {
+      return LoreSpecialEventDispatch(
+        script: LoreSpecProcedures.map23(x, y, context, scripts),
+      );
+    }
     if (scripts.usingJson) {
       return LoreSpecialEventDispatch(
         script: scripts.startStep(mapId, x, y, context),
