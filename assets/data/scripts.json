@@ -8624,6 +8624,9 @@
           "say": " 당신은 아직 라바 게이트를 열수가 없다"
         },
         {
+          "say": ""
+        },
+        {
           "say": " 아직 당신은 이 대륙의 동굴속에  존재하"
         },
         {
@@ -8634,7 +8637,8 @@
             "dy": 1
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map21"
     },
     {
       "id": "keep1-seal-gate-b",
@@ -8651,6 +8655,9 @@
           "say": " 당신은 아직 라바 게이트를 열수가 없다"
         },
         {
+          "say": ""
+        },
+        {
           "say": " 아직 당신은 이 대륙의 동굴속에  존재하"
         },
         {
@@ -8661,7 +8668,8 @@
             "dy": 1
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map21"
     },
     {
       "id": "spec-21-L1760-1x",
@@ -8671,6 +8679,9 @@
       "steps": [
         {
           "say": " 당신은 아직 라바 게이트를 열수가 없다"
+        },
+        {
+          "say": ""
         },
         {
           "say": " 아직 당신은 이 대륙의 동굴속에  존재하"
@@ -8687,7 +8698,8 @@
       "disabled": true,
       "x": 25,
       "y": 20,
-      "note": "조건 미지원: not (odd(party.etc[40]) and odd(party.etc[41])); 미지원: enemynumber := random(4)+3;; 미지원: j := map[x,y];; 조건 미지원: j = 0"
+      "note": "조건 미지원: not (odd(party.etc[40]) and odd(party.etc[41])); 미지원: enemynumber := random(4)+3;; 미지원: j := map[x,y];; 조건 미지원: j = 0",
+      "portedBy": "LoreSpecProcedures.map21"
     },
     {
       "id": "spec-21-L1760-2x",

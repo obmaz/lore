@@ -973,6 +973,49 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1760-1815`, map 21 (KEEP1 / SWAMP KEEP).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Exit at `y == 46` handled via portal session (`keep1-exit-guard`).
+  /// 2. Gate check at `(25, 20)`:
+  ///    - If not (odd(party.etc[40]) and odd(party.etc[41])):
+  ///      - Gate closed message, nudge dy: 1 (`keep1-seal-gate-a`).
+  /// 3. Other tiles (ambush in Keep 1):
+  ///    - Handled via `keep1-special-ambush`.
+  static ScriptRun? map21(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (x == 25 && y == 20) {
+      final seal1Unlocked =
+          context.flags.contains('etc40_bit1') ||
+          context.flags.contains('evilSealRoomCleared') ||
+          context.flags.contains('sealPuzzleA');
+      final seal2Unlocked =
+          context.flags.contains('etc41_bit1') ||
+          context.flags.contains('den7MazeCleared') ||
+          context.flags.contains('sealPuzzleB');
+
+      if (!seal1Unlocked || !seal2Unlocked) {
+        final content = scripts.scripts.firstWhere(
+          (script) => script.id == 'keep1-seal-gate-a',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

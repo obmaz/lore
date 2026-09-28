@@ -137,6 +137,7 @@
 - 맵 18 `T_DEN4 / LOCKUP`의 `(37,31)` Spica 만남(초자연력 5종 강의/`etc39_bit1`, 독심술 및 초능력 레벨별 영입 제의/`etc39_bit2`), `(22,41)` 통로 개방, `(21,41)` Minotaur 전투(`etc39_bit3`), `x=31` Huge Dragon 보스 전투(`swamp` 퀘스트 4 설정) 분기는 `LoreSpecProcedures.map18`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 19 `DEN4 / EVIL DEN`의 `(11,40)/(41,39)` 늪속 레버 조작(공중부상 차단/통로 개방 및 봉인 방 추첨), `y in 8..12` 복도 Crab God 수호자, `y=6` 7개 방 탐색 및 Crab God 보스 전투(EVIL GOD 봉인 해제/`etc40_bit1`) 분기는 `LoreSpecProcedures.map19`를 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 20 `T_DEN5 / LOST DEN`의 `y=88/71` 퀴즈 문 통과 워프 및 오답 퇴장, `y=91/75/54` 퀴즈 분기(`etc41_bit1~3`), `y=48` Minotaur 전투(`etc41_bit4`), `y=13` 3연전(Dragons -> Mudmen -> Astral Mud 보스전 및 봉인 해제/`etc41_bit5`) 분기는 `LoreSpecProcedures.map20`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
+- 맵 21 `KEEP1 / SWAMP KEEP`의 `y=46` 출구 수문장 분기, `(25,20)` 2대 봉인(etc40_bit1, etc41_bit1) 해제 여부 검사 및 라바 게이트 관문 분기는 `LoreSpecProcedures.map21`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 발걸음 규칙의 조건별 선택 검사를 추가해 전투 후속을 복제한 활성 규칙
   12건과 KEEP2 이동 경계 밖 규칙 1건을 보관용으로 전환했다. 남은 활성
   발걸음 규칙은 각자 선택 가능한 조건을 갖지만, 원본 결과 비교는 부분적이다.
