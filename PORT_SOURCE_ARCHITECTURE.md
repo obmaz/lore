@@ -1,5 +1,9 @@
 # 원본 LORE의 게임 구조
 
+원본 소스의 전역 상태, 같은 입력에서의 지도 종류 재판정, 전투·저장·자료
+계약은 [`ORIGINAL_LORE_EXECUTION_MODEL.md`](ORIGINAL_LORE_EXECUTION_MODEL.md)에
+근거와 함께 정리했다. 아래 도식은 유닛 간 호출 관계의 요약이다.
+
 ## 확인한 실행 경로
 
 `LORE.PAS`는 `Set_All`로 일행·지도·몬스터 자료를 읽고 `Main`을 반복한다.
@@ -8,6 +12,12 @@
 원본 `readme.txt`도 `LOREMAIN`을 메인 루프, `LOREBATT`를 전투,
 `LORESPEC`을 특별 이벤트, `LORETALK`를 대화, `LORESUB`를 기본 구조체와
 공통 함수로 구분한다.
+
+주의할 실행 순서: `LOREMAIN.Main`의 `town → ground → den → keep` 판정은
+독립 `if` 네 개다. 입장 중 `Load`가 지도 종류를 뒤쪽으로 바꾸면 같은
+키 입력에서 도착 타일을 다시 처리한다. 기본 맵 1→14의 도착 타일 44는
+그 결과 `Move_Mode`까지 실행된다. 따라서 아래 화살표 하나가 반드시
+원본의 행동 하나와 대응하지는 않는다.
 
 ```mermaid
 flowchart TD
@@ -29,7 +39,7 @@ flowchart TD
 원본의 기본 상태는 `LORESUB.PAS`의 `party`(지도·좌표·식량·금화·`etc[1..100]`),
 `player[1..7]`, `map[1..100,1..100]`, `enemydata[1..75]`, 현재 `enemy[1..7]`
 등이다. `Load`는 지도 파일과 저장 상태를 읽고 지도 종류를 결정하며,
-`Save`는 일행·인물·변경된 지도를 기록한다. `FOEDATA.DAT`는 몬스터 원형 자료다.
+`Save`는 일행·인물·현재 지도 한 장의 타일을 기록한다. `FOEDATA.DAT`는 몬스터 원형 자료다.
 
 ## 실제 행동 분류 규칙
 
@@ -75,7 +85,7 @@ den, 맵 26은 town으로 해석된다.
 
 ## 이후의 작업 단위
 
-실제 구현 순서와 완료 판정은 `PORT_DIRECT_PORT_STRATEGY.md`를 따른다.
+실제 구현 순서와 완료 판정은 `PORT_MASTER_PLAN.md`를 따른다.
 아래 구조 분류는 원본 프로시저를 직접 옮길 때 재사용 경계를 찾는 자료다.
 
 1. `입력 → 목표 타일 판정 → 사건/이동 → 전투·선택 → 순서 있는 효과 → 저장`

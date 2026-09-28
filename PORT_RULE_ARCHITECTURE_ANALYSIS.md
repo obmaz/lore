@@ -18,9 +18,10 @@
 
 1. `LORESUB.PAS:1636-1750`의 `Load`는 `party.map`으로 `.MAP` 파일을
    선택한다. 첫 두 바이트가 가로·세로 크기이고 뒤에 타일 바이트가 이어진다.
-   저장된 `saveN.map`이 있으면 변형된 지도 스냅샷을 읽는다. 같은
-   `K_DEN2.MAP`을 지도 25와 26에서 재사용하지만 `position`은 각각 `den`,
-   `town`이다.
+   `saveN.map`이 존재하고 `LoadFont=false`일 때만 저장된 지도
+   스냅샷을 읽는다. 지도 전환 중 `LoadFont=true`이면 기본 `.MAP`을
+   다시 읽는다. `K_DEN2.MAP`을 지도 25와 26에서 재사용하지만
+   `position`은 각각 `den`, `town`이다.
 2. `LOREMAIN.PAS:143-290`의 `Main`은 이동 목표 좌표를 먼저 계산하고
    `(x > 4) and (x < xmax-3) and (y > 4) and (y < ymax-3)` 경계를 검사한다.
    이후 `position`별 `case map[x,y]`가 행동을 결정한다. 메뉴·보기 등의
@@ -33,6 +34,13 @@
 4. `LORESUB.PAS:970-983`의 `at(xx,yy)`는 `x+x1, y+y1`을, `on(xx,yy)`는
    현재 `x,y`를 비교한다. `LORETALK`와 `LOREENT`의 `at`은 되돌린 뒤에도
    접근한 목표 칸을 식별하고, `LORESPEC`의 `on`은 들어선 칸을 식별한다.
+
+`LOREMAIN.PAS:207-289`의 지도 종류 판정은 `town → ground → den → keep`
+순서의 독립 `if` 네 개다. `entermode`가 중간에 지도를 바꾸면 같은 입력에서
+뒤쪽 종류의 도착 타일이 다시 처리될 수 있다. 기본 지도에서 맵 1→14의
+도착 칸 `(25,45)`는 타일 44라서 `Move_Mode`가 추가 실행된다.
+이 순서의 상세 계약과 포트 차이는 `ORIGINAL_LORE_EXECUTION_MODEL.md`에
+기록한다.
 
 ### 타일 행동 표
 
@@ -83,6 +91,10 @@
 | 특수 사건 | `lib/logic/lore_special_event_dispatcher.dart` → `lore_spec_procedures.dart` → JSON 스크립트 | 절차별 조건과 `else`의 선택, 실제 타일에서의 발동, 전투/선택 후속 |
 | 대화 | `lib/logic/lore_talk_dispatcher.dart` → 원본형 절차·JSON·시설·대화 | 같은 좌표의 상태별 대사·선택·변형 및 우선순위 |
 | 입장·포털 | `lib/game/lore_game.dart`가 입장 타일에서는 `LoreEntProcedures.entranceAt`을 선택하고, 다른 타일에서는 포털 데이터를 조회 | 하드코딩된 입장 좌표와 JSON 규칙의 중복·우선순위, 확인/취소, 입장 전 전투, `load` 후 변형, 왕복 재방문 |
+
+입장 뒤 같은 입력의 도착 타일 재판정은 미검증 수준을 넘어 현재 포트에서
+누락된 것으로 확인했다. 원본 맵 1→14의 타일 44와 실행 순서는
+`ORIGINAL_LORE_EXECUTION_MODEL.md`에 기록했다.
 
 현재 `test/source_talk_replay_test.dart`는 원본의 리터럴 대화 좌표
 148개가 실제 지도에서 대화 타일이고 **어떤 후보 상태에서든** 대화

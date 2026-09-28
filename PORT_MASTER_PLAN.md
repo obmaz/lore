@@ -87,6 +87,11 @@
 
 ## 현재 위치와 바로 다음 작업
 
+- 원본 실행 구조의 근거와 불확실성은 `ORIGINAL_LORE_EXECUTION_MODEL.md`를
+  기준으로 읽는다. `LOREMAIN.Main`의 네 지도 종류 판정은 독립 `if`라서
+  입장으로 종류가 뒤쪽으로 바뀌면 같은 입력에서 도착 타일도 처리한다.
+  기본 맵 1→14 등에서 도착 뒤 `Move_Mode`가 실행되지만 현재 포털 경로는
+  이를 재실행하지 않는다. 이 소스 계약을 실제 이동 재생으로 먼저 고정한다.
 - 완료된 구조 조각: `LoreTileProtocol`의 타일 분류, 특수 사건의 JSON 우선순위,
   등록된 목적지만 허용하는 포털 요청, 동적 입구 두 구간의 통합 검사.
 - **0단계 등록 기준 완료:** 기준선 장부는 `PORT_CONTRACT_LEDGER.md`와
@@ -117,6 +122,11 @@
   `select` 네 곳의 수락·거절 결과를 재생했다. 맵 27 유골 대화 다섯 곳의
   타일 변경·재방문 차단도 확인했다. 나머지 원본 분기별 조건·보상·
   재방문 효과 비교는 남았다.
+
+아래 지도·유닛 항목은 **기존 이식 코드의 연결 기록**이다. 각 항목의 표현은
+원본과 모든 상태·선택·난수에서 일치한다는 판정이 아니다. 최종 검증 상태는
+`PORT_CONTRACT_LEDGER.md`와 `PORT_VERIFICATION_2026-09-28.md`를 따른다.
+
 - 맵 6 성 출구 Skeleton 제안은 포털 진입 전 선택지로 옮겨 수락·거절·
   ESC·재방문의 원본 플래그를 검증했다.
 - `LORESPEC` 맵 1 식량 사건은 원본형 `LoreSpecProcedures`로 전환했다.
@@ -144,15 +154,13 @@
 - 맵 25 `K_DEN2 / DUNGEON OF EVIL DEEP / CASTLE KEEP`의 `y=43` 금속 수호자 조우 및 횃불·전투·전직(`keep3MetalGuardianCleared`), `(15/36,34)` 비밀 통로, `(5/46,34)` 레버 조작 및 최종 방 문 개방(`etc45_bit7/8`) 분기는 `LoreSpecProcedures.map25`를 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 26 `CHAMBER OF NECROMANCER / 결전의 방`의 최종 결전 연출 및 Neo-Necromancer·ArchiMonk·ArchiMage 전투 분기(`bossNecromancerDefeated`)는 `LoreSpecProcedures.map26`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 27 `PYRAMID1 / ANOTHER LORE / 운명의 피라미드`의 경계 밀어내기(`y<25 -> inc y`, `y>=25 -> dec y`) 및 출구 분기는 `LoreSpecProcedures.map27` 및 포털 세션을 통해 원본 순서로 실행한다.
-- `LORETALK` 맵 6(성도 CASTLE LORE), 맵 7(LASTDITCH), 맵 9(GAIA TERRA), 맵 10(WATER FIELD), 맵 24(LAST SHELTER), 맵 27(PYRAMID1) 전체 대화 분기가 `LoreTalkProcedures`와 `LoreTalkDispatcher`를 통해 시설 우선권 및 퀘스트 단계별 조건에 맞춰 원본 순서로 완결되었다.
-- `LOREBATT` 20개 루틴 전체(`BattleEngine`, `LoreEncounterLogic`, `LoreBattleProgress`, `ScriptBattleSession`, `BattleViewportView`)가 무기/마법/ESP/적AI/독/소환/도주/경험치/골드/보스격퇴 플래그까지 완전 연동되었다.
-- `LOREMENU` 21개 루틴 전체(`FieldMagicLogic`, `TownLogic`, `FieldHotkeys`, `FieldMenuDialog`, `EspDialog`, `QuickViewDialog`)가 비전투 마법/치료/휴식/옵션/초감각까지 완전 연동되었다.
-- `LORECRET` 캐릭터 생성 4대 문답 및 `LOREEND` 엔딩/스탭롤 시퀀스까지 완결되었다.
-- 발걸음 규칙 및 대화 규칙의 중복/구형 규칙 정리 및 이니셔티브(선공) 정합성 복원 완료.
-- 전체 477개 단위 테스트 및 `flutter analyze` 통과 (경고 및 에러 0건).
-- **다음 구현 순서:** 지원 플랫폼(Web/Windows/Linux/macOS) 빌드 및 패키징 검증, 종합 플레이스루 테스트 및 최종 릴리스 검증.
+- `LORETALK`의 주요 지도 대화는 `LoreTalkProcedures`와 `LoreTalkDispatcher`에 대응 구현이 있다. 대사·시설·선택 후속의 전체 원본 동등성 검증은 남아 있다.
+- `LOREBATT`의 전투·조우·보상 기능은 `BattleEngine`, `LoreEncounterLogic`, `LoreBattleProgress`, `ScriptBattleSession`, `BattleViewportView`에 대응 구현이 있다. 루틴별 호출 순서와 난수·경계 상태의 원본 대조는 남아 있다.
+- `LOREMENU`의 주문·치료·휴식·옵션 기능은 `FieldMagicLogic`, `TownLogic`, `FieldHotkeys`, `FieldMenuDialog`, `EspDialog`, `QuickViewDialog`에 대응 구현이 있다. 메뉴 중 상태·지도 변경 뒤 같은 입력의 타일 재판정도 검증 대상이다.
+- `LORECRET` 생성과 `LOREEND` 엔딩의 대응 화면이 있다. 시작 상태부터 엔딩까지의 원본 경로 검증은 남아 있다.
+- 최신 검사 건수와 결과는 `PORT_VERIFICATION_2026-09-28.md`에 기록한다.
+- **다음 구현 순서:** 원본형 한 입력 재판정의 확정 편차를 수정하고, 절차 계약·실제 경로를 재생한 뒤 빌드·플레이스루·릴리스 게이트를 확인한다.
 
 관련 근거: `PORT_SOURCE_ARCHITECTURE.md`, `PORT_SOURCE_BRANCH_INVENTORY.md`,
 `PORT_WORKLOAD_AUDIT.md`, `PORT_MAP_PARITY.md`, `PORT_BRANCH_AUDIT.md`,
 `ENGINE_ARCHITECTURE.md`.
-
