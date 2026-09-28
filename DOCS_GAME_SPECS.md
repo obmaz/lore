@@ -426,9 +426,16 @@ $$\text{Gold} = \sum_{\text{enemy slot}} \left( \text{enemydata}[E\_number].\tex
 
 ### 5.2 타일 속성 및 특수 효과
 - 일반 바닥: 1걸음마다 독 진행 (10스텝마다 HP 감소), 1걸음마다 인카운터 확률 검사.
-- 인카운터 확률: $\text{random}(\text{encounterRate} \times 20) == 0$ (기본 약 $5\% \sim 10\%$)
-- 늪지(`swamp`): 진입 시 행운 판정 실패 시 중독(`poison = 1`).
-- 용암(`lava`): 진입 시 파티원 전원에게 $40 \sim 79 - 2 \times \text{random}(\text{luck})$ 피해.
+- 일반 이동 조우 확률: $\text{random}(\text{encounterRate} \times 20) == 0$.
+  설정값 1·2·3에서 각각 5%, 2.5%(기본), 약 1.67%다
+  (`LOREMAIN.PAS:140`, `LORESUB.PAS:1760`). 물 진입은 분모가
+  `encounterRate*30`이다 (`LOREMAIN.PAS:24`).
+- 늪지(`swamp`): 독을 먼저 진행한다. `etc[3]>0`이면 이를 감소시키고,
+  아니면 이름 없는 슬롯까지 1~6번의 행운 난수 6회를 소비해 중독을
+  판정한다 (`LOREMAIN.PAS:29-75`).
+- 용암(`lava`): 슬롯 1~6 각각 `random(40)+40-2*random(player[i].luck)`
+  피해값을 계산한다. 이름 없는 슬롯도 포함해 난수 총 12회를 소비한
+  뒤 피해를 적용한다 (`LOREMAIN.PAS:77-111`).
 - 벽/장애물: 충돌 처리(`originposition`), 원래 위치 유지.
 
 ---
@@ -708,6 +715,8 @@ EVIL SEAL 봉인 동굴의 일곱 방은 실제 특수 타일 x=14,18,22,26,30,3
   --write`로 생성**한다(원문 대사·비트·타일 변경·경험치까지 그대로 옮김).
   - 퀘스트 단계 4종: `lordahn`(etc[10]), `lastditch`(etc[13]), `gaia`(etc[14]),
     `water`(etc[15]) → `LoreDialogueManager.questStepValue/applyQuestStep`.
+    원본의 대화·던전 사건·예지 메뉴를 잇는 단계 전이는
+    [원본 상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 기록했다.
   - 비트 5종: `menaceInfoGiven`(etc[50]b5), `weaponRoomVisited`(etc[50]b4),
     `loreChallengeAccepted`(etc[30]b1), `loreChallengeBlessed`(etc[30]b2),
     `programmerMet`(etc[43]b4), `jrAntaresSecretFound`(etc[50]b1).

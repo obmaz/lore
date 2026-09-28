@@ -6,7 +6,8 @@
 `PORT_MASTER_PLAN.md`를 따른다. 이 문서의 소스 설명을 포트 구현 완료
 증거로 해석하지 않는다. 절차를 넘나드는 실제 호출 사례는
 [`ORIGINAL_LORE_PROCEDURE_TRACES.md`](ORIGINAL_LORE_PROCEDURE_TRACES.md)에
-기록한다.
+기록한다. 이야기 단계와 저장·복원 뒤 실행 재개는
+[원본 상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 기록한다.
 
 ## 한 문장 모델
 
@@ -150,7 +151,10 @@
 `Random(encounter^*20)=0`의 조우를 처리한다. 물은 `[2]`를 감소시키며
 `*30` 확률로 조우하고, 늪은 독과 `[3]`을, 용암은 자체 난수 피해를
 처리한다 (`LOREMAIN.PAS:19-141`). 이 순서와 난수 소비량은 같은
-상태에서 다음 행동의 결과에도 영향을 준다.
+상태에서 다음 행동의 결과에도 영향을 준다. 공통 시간 틱보다
+행동별 절차 비용에 가깝다. 독 전멸 뒤 저장 불러오기가 같은 입력의
+나머지 필드 실행으로 이어지는 사례는
+[원본 상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 기록한다.
 
 ## 장소별 내용은 Pascal 코드다
 

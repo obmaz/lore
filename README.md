@@ -4,6 +4,7 @@
 
 원본의 입력·전역 상태·지도 전환·전투·저장 실행 순서는 [원본 실행 모델](ORIGINAL_LORE_EXECUTION_MODEL.md)에 소스 근거와 함께 정리했습니다.
 대화가 타일을 만들고 전투가 후속 사건을 여는 경로는 [원본 절차 추적](ORIGINAL_LORE_PROCEDURE_TRACES.md)에 기록했습니다.
+이야기 단계, 지도 재입장, 저장 복원과 행동별 시간 비용은 [원본 상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 정리했습니다.
 완전 이식의 검증 기준과 게임 엔진으로 확장하기 위한 경계는 [엔진 구조](ENGINE_ARCHITECTURE.md)에 정리했습니다.
 단계별 작업과 최종 완료 판정은 [완전 이식 마스터 플랜](PORT_MASTER_PLAN.md)을 따릅니다.
 원본 범위와 남은 검증 항목은 [원본 계약 기준선](PORT_CONTRACT_LEDGER.md)에서 확인할 수 있습니다.
