@@ -140,6 +140,7 @@
 - 맵 21 `KEEP1 / SWAMP KEEP`의 `y=46` 출구 수문장 분기, `(25,20)` 2대 봉인(etc40_bit1, etc41_bit1) 해제 여부 검사 및 라바 게이트 관문 분기는 `LoreSpecProcedures.map21`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 22 `KEEP2 / IMPERIUM MINOR`의 `(25,18)` Death Knight 기습(`etc43_bit2`), `y=25` and `x in 24..26` 요새 수비대 기습(`etc43_bit1`), `y=46` 출구 보스 분기는 `LoreSpecProcedures.map22` 및 포털 세션을 통해 원본 순서로 실행한다.
 - 맵 23 `KEEP3 / DUNGEON OF EVIL`의 `y=26` 가짜 Necromancer 및 도플갱어 2단계 전투 시퀀스(`keep3NecromancerCleared`), `(25,27)` 레버 조작 및 감추어진 성 부상 지형 변형(`keep3TrapCleared`) 분기는 `LoreSpecProcedures.map23`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
+- 맵 24 `K_DEN1 / LAST SHELTER`의 `y=46` 출구 분기(내부 LORESPEC 특수 타일 없음)는 `LoreSpecProcedures.map24` 및 포털 세션을 통해 처리한다.
 - 발걸음 규칙의 조건별 선택 검사를 추가해 전투 후속을 복제한 활성 규칙
   12건과 KEEP2 이동 경계 밖 규칙 1건을 보관용으로 전환했다. 남은 활성
   발걸음 규칙은 각자 선택 가능한 조건을 갖지만, 원본 결과 비교는 부분적이다.

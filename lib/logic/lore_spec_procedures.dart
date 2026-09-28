@@ -1112,6 +1112,19 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1980-1994`, map 24 (K_DEN1 / LAST SHELTER).
+  ///
+  /// The single exit at `y == 46` is handled via portal session.
+  /// No other internal special tiles exist on map 24.
+  static ScriptRun? map24(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
