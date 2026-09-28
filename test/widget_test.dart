@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/main.dart';
 import 'package:lore/widgets/dpad_widget.dart';
+import 'package:lore/widgets/message_log_view.dart';
 
 void main() {
   testWidgets('Opening title screen and game start flow', (
@@ -21,9 +22,13 @@ void main() {
     // 3. 메인 게임 화면 (성내 마을 51, 31) 진입 확인
     expect(find.text('◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆'), findsOneWidget);
     expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);
-    expect(find.text('▶ 콘솔 메시지 (최신 메시지 상단 표시) ◀'), findsOneWidget);
+    expect(find.text('▶ 콘솔 메시지 ◀'), findsOneWidget);
 
     // 4. D-Pad 렌더링 확인
     expect(find.byType(DPadWidget), findsOneWidget);
+    expect(
+      tester.getTopLeft(find.byType(DPadWidget)).dx,
+      greaterThan(tester.getTopRight(find.byType(MessageLogView)).dx),
+    );
   });
 }

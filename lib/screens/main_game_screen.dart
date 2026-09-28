@@ -78,6 +78,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   late List<PartyMember> _party;
   late LoreGame _game;
   final List<String> _logs = [];
+  int _logRevision = 0;
   int _partyGold = 2000;
   int _partyFood = 20; // 원작 LORECRET.PAS `Last`: food := 20;
 
@@ -179,7 +180,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     } else {
       _addLog('성전 마을 CASTLE LORE 성내 광장 (51, 31)에 도착했습니다.');
     }
-    _addLog('키보드 방향키 또는 화면 우측 하단의 D-Pad로 이동하십시오.');
+    _addLog('키보드 방향키 또는 콘솔 오른쪽의 D-Pad로 이동하십시오.');
     _addLog('단단한 성벽은 통과할 수 없으며, 주민(NPC)과 대화하거나 상점을 이용할 수 있습니다.');
 
     final initialMapId = widget.initialSaveData?.mapId ?? 6;
@@ -1318,6 +1319,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (!mounted) return;
     setState(() {
       _logs.add(msg);
+      _logRevision++;
       if (_logs.length > 80) {
         _logs.removeAt(0);
       }
@@ -1761,19 +1763,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 ],
               ),
             ),
-            // 우측 하단 D-Pad 컨트롤러
-            Positioned(
-              bottom: 6,
-              right: 6,
-              child: DPadWidget(
-                onDirectionPressed: (dx, dy) {
-                  if (_entryAnimationActive) return;
-                  _game.tryMove(dx, dy);
-                  setState(() {});
-                  _reclaimFocus();
-                },
-              ),
-            ),
           ],
         );
 
@@ -1996,8 +1985,40 @@ class _MainGameScreenState extends State<MainGameScreen> {
                       ),
                     ),
                     const SizedBox(height: 6),
-                    // 하단 영역: 3~4줄 분량 메시지 로그 스크롤 영역
-                    Expanded(flex: 32, child: MessageLogView(logs: _logs)),
+                    // 하단 영역: 메시지 콘솔과 그 오른쪽 가상 방향키
+                    Expanded(
+                      flex: 32,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: MessageLogView(
+                              logs: _logs,
+                              revision: _logRevision,
+                            ),
+                          ),
+                          if (_currentMode == GameScreenMode.field) ...[
+                            const SizedBox(width: 6),
+                            SizedBox(
+                              width: 142,
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: DPadWidget(
+                                  onDirectionPressed: (dx, dy) {
+                                    if (_entryAnimationActive ||
+                                        _currentMode != GameScreenMode.field) {
+                                      return;
+                                    }
+                                    _game.tryMove(dx, dy);
+                                    setState(() {});
+                                    _reclaimFocus();
+                                  },
+                                ),
+                              ),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
