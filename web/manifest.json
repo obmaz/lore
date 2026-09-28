@@ -1,12 +1,12 @@
 {
-    "name": "lore",
-    "short_name": "lore",
+    "name": "또 다른 지식의 성전 (1993)",
+    "short_name": "LORE 1993",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "description": "또 다른 지식의 성전 제 1 부 (1993)",
+    "orientation": "landscape",
     "prefer_related_applications": false,
     "icons": [
         {
