@@ -1205,6 +1205,30 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:2104-2201`, map 26 (CHAMBER OF NECROMANCER / 결전의 방).
+  ///
+  /// Final showdown cutscene and battle sequence with Neo-Necromancer, ArchiMonk, and ArchiMage:
+  ///    - Triggered on empty floor (tile == 0).
+  ///    - `spec-26-L2104-seq`.
+  static ScriptRun? map26(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != 0) return null;
+
+    final hasDefeatedBoss =
+        context.flags.contains('bossNecromancerDefeated');
+    if (hasDefeatedBoss) return null;
+
+    final content = scripts.scripts.singleWhere(
+      (script) => script.id == 'spec-26-L2104-seq',
+    );
+    return scripts.startProcedure(content, context);
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

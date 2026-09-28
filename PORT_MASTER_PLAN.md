@@ -142,6 +142,7 @@
 - 맵 23 `KEEP3 / DUNGEON OF EVIL`의 `y=26` 가짜 Necromancer 및 도플갱어 2단계 전투 시퀀스(`keep3NecromancerCleared`), `(25,27)` 레버 조작 및 감추어진 성 부상 지형 변형(`keep3TrapCleared`) 분기는 `LoreSpecProcedures.map23`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 24 `K_DEN1 / LAST SHELTER`의 `y=46` 출구 분기(내부 LORESPEC 특수 타일 없음)는 `LoreSpecProcedures.map24` 및 포털 세션을 통해 처리한다.
 - 맵 25 `K_DEN2 / DUNGEON OF EVIL DEEP / CASTLE KEEP`의 `y=43` 금속 수호자 조우 및 횃불·전투·전직(`keep3MetalGuardianCleared`), `(15/36,34)` 비밀 통로, `(5/46,34)` 레버 조작 및 최종 방 문 개방(`etc45_bit7/8`) 분기는 `LoreSpecProcedures.map25`를 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
+- 맵 26 `CHAMBER OF NECROMANCER / 결전의 방`의 최종 결전 연출 및 Neo-Necromancer·ArchiMonk·ArchiMage 전투 분기(`bossNecromancerDefeated`)는 `LoreSpecProcedures.map26`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 발걸음 규칙의 조건별 선택 검사를 추가해 전투 후속을 복제한 활성 규칙
   12건과 KEEP2 이동 경계 밖 규칙 1건을 보관용으로 전환했다. 남은 활성
   발걸음 규칙은 각자 선택 가능한 조건을 갖지만, 원본 결과 비교는 부분적이다.

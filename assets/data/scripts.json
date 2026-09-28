@@ -25524,8 +25524,8 @@
         },
         {
           "battle": {
-            "enemyFirst": true,
             "title": "Neo-Necromancer",
+            "enemyFirst": true,
             "monsters": [
               69,
               70,
@@ -25602,7 +25602,8 @@
           "flag": "bossNecromancerDefeated"
         }
       ],
-      "note": "미지원: face := 5;; 미지원: face := 6;; 미지원: while x < 26 do begin; 미지원: for j := 4 downto 2 do begin; 미지원: if j < 4 then; 미지원: if j > 1 then begin; 적 배치(계산식): joinenemy(i, 68+i); 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if (party.etc[6] > 0) and (not enemy[7].dead) then begin; 미지원:"
+      "note": "미지원: face := 5;; 미지원: face := 6;; 미지원: while x < 26 do begin; 미지원: for j := 4 downto 2 do begin; 미지원: if j < 4 then; 미지원: if j > 1 then begin; 적 배치(계산식): joinenemy(i, 68+i); 미지원: aux := FALSE;; 미지원: if party.etc[6] = 255 then exit;; 미지원: if (party.etc[6] > 0) and (not enemy[7].dead) then begin; 미지원:",
+      "portedBy": "LoreSpecProcedures.map26"
     },
     {
       "id": "spec-27-L2202-seq",
