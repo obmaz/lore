@@ -207,6 +207,82 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:465-559`, map 11 (TOWN5 / LORE KEEP).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Gold finds (5000 gold each):
+  ///    - `(20, 30)`: `etc33_bit1`
+  ///    - `(18, 36)`: `etc33_bit2`
+  ///    - `(35, 32)`: `etc33_bit3`
+  ///    - `(33, 36)`: `etc33_bit4`
+  ///    - `(35, 14)`: `etc33_bit5`
+  ///    - `(14, 16)`: `etc33_bit6`
+  ///    - `(37, 12)`: `etc33_bit7`
+  /// 2. Oedipus Spear at `y == 44`:
+  ///    - `party.etc[33] and bit8 == 0` (`etc33_bit8` / `oedipusSpearTaken`).
+  /// 3. Mummy Room at `y == 24`:
+  ///    - `party.etc[13] == 1` (`lastditch` quest == 1).
+  /// 4. Southern exit at `y == 46`:
+  ///    - Handled via portal session.
+  static ScriptRun? map11(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson ||
+        (context.tileAtPlayer != null && context.tileAtPlayer != 0)) {
+      return null;
+    }
+
+    final goldId = switch ((x, y)) {
+      (20, 30) => !context.flags.contains('etc33_bit1') ? 'spec-11-L465' : null,
+      (18, 36) =>
+        !context.flags.contains('etc33_bit2') ? 'spec-11-L465x' : null,
+      (35, 32) =>
+        !context.flags.contains('etc33_bit3') ? 'spec-11-L465xx' : null,
+      (33, 36) =>
+        !context.flags.contains('etc33_bit4') ? 'spec-11-L465xxx' : null,
+      (35, 14) =>
+        !context.flags.contains('etc33_bit5') ? 'spec-11-L465xxxx' : null,
+      (14, 16) =>
+        !context.flags.contains('etc33_bit6') ? 'spec-11-L465xxxxx' : null,
+      (37, 12) =>
+        !context.flags.contains('etc33_bit7') ? 'spec-11-L465xxxxxx' : null,
+      _ => null,
+    };
+    if (goldId != null) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == goldId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 44) {
+      final hasSpear =
+          context.flags.contains('oedipusSpearTaken') ||
+          context.flags.contains('etc33_bit8');
+      if (!hasSpear) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'oedipus-spear',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (y == 24) {
+      final questState = context.questSteps['lastditch'] ?? 0;
+      if (questState == 1) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'spec-11-L465-1x',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
