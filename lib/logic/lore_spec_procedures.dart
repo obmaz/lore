@@ -684,6 +684,99 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:1174-1365`, map 18 (T_DEN4 / LOCKUP).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 95` handled via portal session.
+  /// 2. Passage at `(22, 41)`:
+  ///    - `map[22, 41] := 44; map[21, 41] := 52;` (`lockup-passage-22-41`).
+  /// 3. Guardian battle at `(21, 41)`:
+  ///    - `party.etc[39] and bit3 == 0`: Minotaur battle (`lockup-guardian-21-41`).
+  /// 4. Spica at `(37, 31)`:
+  ///    - `party.etc[39] and bit2 > 0`: null (이미 합류/결정 완료).
+  ///    - `party.etc[39] and bit1 > 0`:
+  ///      - if not `context.mindReadActive`: `spica-mind-read-inactive`.
+  ///      - if `context.maxEspLevel < 5`: `spica-cannot-read`.
+  ///      - if `context.maxEspLevel >= 5`: `spica-join` (합류 제의).
+  ///    - `party.etc[39] and bit1 == 0`:
+  ///      - `spica-first-meeting` (초자연력 설명, `etc39_bit1` 설정).
+  /// 5. Huge Dragon boss battle at `x == 31`:
+  ///    - `party.etc[15] < 4`: Huge Dragon battle (`map18-huge-dragon`).
+  static ScriptRun? map18(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (x == 22 && y == 41) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'lockup-passage-22-41',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (x == 21 && y == 41) {
+      final hasDefeated =
+          context.flags.contains('etc39_bit3') ||
+          context.flags.contains('lockupGuardianDefeated');
+      if (!hasDefeated) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'lockup-guardian-21-41',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (x == 37 && y == 31) {
+      final hasDecided = context.flags.contains('etc39_bit2');
+      if (hasDecided) return null;
+
+      final hasMet = context.flags.contains('etc39_bit1');
+      if (hasMet) {
+        if (!context.mindReadActive) {
+          final content = scripts.scripts.singleWhere(
+            (script) => script.id == 'spica-mind-read-inactive',
+          );
+          return scripts.startProcedure(content, context);
+        }
+        if (context.maxEspLevel < 5) {
+          final content = scripts.scripts.singleWhere(
+            (script) => script.id == 'spica-cannot-read',
+          );
+          return scripts.startProcedure(content, context);
+        }
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'spica-join',
+        );
+        return scripts.startProcedure(content, context);
+      } else {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'spica-first-meeting',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    if (x == 31) {
+      final swampQuest = context.questSteps['swamp'] ?? 0;
+      if (swampQuest < 4) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'map18-huge-dragon',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

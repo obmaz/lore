@@ -1999,19 +1999,7 @@
           "say": "여기에는 어떤 여자가 수도하고 있었다"
         },
         {
-          "say": " 나는 이곳 LOCKUP이 적들에게 점령되기전  부"
-        },
-        {
-          "say": "터 여기서 수도하고 있는 Spica란 사람입니다"
-        },
-        {
-          "say": " 오랜 수도 끝에 나는 초자연력의 존재와 사용"
-        },
-        {
-          "say": "법을 알게 되었습니다.  대충 요약하면 이렇습"
-        },
-        {
-          "say": "니다."
+          "say": " 나는 이곳 LOCKUP이 적들에게 점령되기전  부터 여기서 수도하고 있는 Spica란 사람입니다. 오랜 수도 끝에 나는 초자연력의 존재와 사용법을 알게 되었습니다.  대충 요약하면 이렇습니다."
         },
         {
           "say": "투  시 : 변화의 여지가 있는 지역을 탐지"
@@ -2029,18 +2017,13 @@
           "say": "염  력 : 주위 환경 조절에 의한 공격"
         },
         {
-          "say": " 이것으로 Necromancer에게 도전 하십시오. 또"
-        },
-        {
-          "say": "한,  그도 초자연력의 존재를 알고있고 사용할"
-        },
-        {
-          "say": "줄 안다는걸 염두에 두고 사용하십시오."
+          "say": " 이것으로 Necromancer에게 도전 하십시오. 또한,  그도 초자연력의 존재를 알고있고 사용할줄 안다는걸 염두에 두고 사용하십시오."
         },
         {
           "flag": "etc39_bit1"
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map18"
     },
     {
       "id": "spica-join",
@@ -2057,17 +2040,11 @@
       },
       "steps": [
         {
-          "say": " 갑자기 Necromancer에게 대항 하고픈  결의가"
-        },
-        {
-          "say": "생기는 군요. 나도 당신들을 도와 그를 무찌르"
-        },
-        {
-          "say": "겠습니다."
+          "say": " 갑자기 Necromancer에게 대항 하고픈  결의가 생기는 군요. 나도 당신들을 도와 그를 무찌르겠습니다."
         },
         {
           "choice": {
-            "prompt": "Spica를 일행으로 받아들이시겠습니까 ?",
+            "prompt": "Spica를 동료로 받아들이시겠습니까 ?",
             "options": [
               {
                 "text": "저도 원했던 바입니다",
@@ -2088,15 +2065,12 @@
                     "flag": "etc39_bit2"
                   }
                 ]
-              },
-              {
-                "text": "취소",
-                "steps": []
               }
             ]
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map18"
     },
     {
       "id": "spica-cannot-read",
@@ -2113,15 +2087,10 @@
       },
       "steps": [
         {
-          "say": " 당신이 나의 마음을 읽으려 하지만 아직 당신"
-        },
-        {
-          "say": "의 능력으로는 나의 마음을 끌어낼수는 없습니"
-        },
-        {
-          "say": "다."
+          "say": " 당신이 나의 마음을 읽으려 하지만 아직 당신의 능력으로는 나의 마음을 끌어낼수는 없습니다."
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map18"
     },
     {
       "id": "spica-mind-read-inactive",
@@ -2137,12 +2106,10 @@
       },
       "steps": [
         {
-          "say": " 지체할 시간이 없습니다. 신속히 행동을 취하"
-        },
-        {
-          "say": "십시오."
+          "say": " 지체할 시간이 없습니다. 신속히 행동을 취하십시오."
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map18"
     },
     {
       "id": "spec-6-L190",
@@ -6193,10 +6160,10 @@
       "title": "용의 거처",
       "steps": [
         {
-          "say": "당신은 여기가 Huge Dragon의 거처임을 느꼈다."
+          "torch": true
         },
         {
-          "say": "거룡과 그 꼬리가 대지를 뒤흔들며 모습을 드러냈다 !"
+          "say": "당신은 여기가 Huge Dragon의 거처임을 느꼈다"
         },
         {
           "battle": {
@@ -6210,17 +6177,41 @@
               32,
               30,
               31
+            ],
+            "overrides": [
+              {
+                "index": 1,
+                "name": "Huge Dragon"
+              },
+              {
+                "index": 2,
+                "name": "Dragon's tail",
+                "ac": 8
+              }
             ]
           }
         },
         {
-          "say": "당신들은 거룡을 쓰러뜨렸다."
+          "say": "당신들은 Huge Dragon을 물리쳤다."
+        },
+        {
+          "say": "그리고 당신은 이 임무에 성공했다."
+        },
+        {
+          "say": "다시 WATER FIELD 의 군주에게로 돌아가라."
+        },
+        {
+          "questStep": {
+            "name": "swamp",
+            "set": 4
+          }
         },
         {
           "flag": "bossHugeDragonDefeated"
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map18"
     },
     {
       "id": "map17-row80-shortcut-safe",
@@ -8754,7 +8745,8 @@
           }
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map18"
     },
     {
       "id": "spec-18-L1174-1xx",
@@ -8841,25 +8833,29 @@
       "title": "감옥의 수문장",
       "steps": [
         {
-          "say": "거대한 형체가 감옥 통로를 막아선다 !"
+          "torch": true
+        },
+        {
+          "say": "미로속에서 소를 닮은 괴물이 나타났다"
         },
         {
           "battle": {
             "enemyFirst": true,
-            "title": "감옥의 수문장",
+            "title": "Minotaur",
             "monsters": [
               53
             ]
           }
         },
         {
-          "say": "당신들은 수문장을 물리치고 통로를 지나갔다."
+          "flag": "etc39_bit3"
         },
         {
           "flag": "lockupGuardianDefeated"
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map18"
     },
     {
       "id": "t_den2-trap-y10",
