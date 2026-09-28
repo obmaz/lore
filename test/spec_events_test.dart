@@ -7,6 +7,7 @@
 //   옮기되 원작과 같이 `map[x,y] = 0` 인 칸에서만 발동한다.
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
+import 'package:lore/logic/lore_spec_procedures.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -192,6 +193,24 @@ void main() {
     // 비트가 켜진 상태에서는 같은 보상이 다시 나오지 않는다.
     expect(
       engine.startStep(9, 10, 24, const ScriptContext(flags: {'etc35_bit1'})),
+      isNull,
+    );
+
+    final proc = LoreSpecProcedures.map9(
+      10,
+      24,
+      const ScriptContext(),
+      engine,
+    )!;
+    expect(proc.outcome.goldDelta, 5000);
+    expect(proc.outcome.setFlags, contains('etc35_bit1'));
+    expect(
+      LoreSpecProcedures.map9(
+        10,
+        24,
+        const ScriptContext(flags: {'etc35_bit1'}),
+        engine,
+      ),
       isNull,
     );
   });

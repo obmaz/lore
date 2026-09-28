@@ -39,14 +39,18 @@ class LoreSpecProcedures {
 
     // 2. on(51,12) or on(52,12) - 감옥 전투
     if ((x == 51 || x == 52) && y == 12) {
-      final hasMadJoe = context.flags.contains('madJoeJoined') ||
+      final hasMadJoe =
+          context.flags.contains('madJoeJoined') ||
           context.flags.contains('etc50_bit2');
       if (!hasMadJoe || context.flags.contains('prisonBattleDone')) {
         return null;
       }
-      final isReturn = context.flags.contains('prisonBattleStarted') ||
+      final isReturn =
+          context.flags.contains('prisonBattleStarted') ||
           context.flags.contains('etc50_bit3');
-      final scriptId = isReturn ? 'prison-battle-return' : 'prison-battle-first';
+      final scriptId = isReturn
+          ? 'prison-battle-return'
+          : 'prison-battle-first';
       final content = scripts.scripts.singleWhere(
         (script) => script.id == scriptId,
       );
@@ -55,7 +59,8 @@ class LoreSpecProcedures {
 
     // 3. on(41,79) - 무기실
     if (x == 41 && y == 79) {
-      final visited = context.flags.contains('weaponRoomVisited') ||
+      final visited =
+          context.flags.contains('weaponRoomVisited') ||
           context.flags.contains('etc50_bit4');
       if (visited) return null;
       final content = scripts.scripts.singleWhere(
@@ -106,6 +111,99 @@ class LoreSpecProcedures {
     LoreScriptEngine scripts,
   ) {
     if (!scripts.usingJson || context.tileAtPlayer != 0) return null;
+    return null;
+  }
+
+  /// `LORESPEC.PAS:354-443`, map 9 (TOWN4 / GAIA TERRA).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Gold finds (5000 gold each):
+  ///    - `(10, 24)`: `etc35_bit1`
+  ///    - `(12, 26)`: `etc35_bit2`
+  ///    - `(15, 25)`: `etc35_bit3`
+  ///    - `(16, 23)`: `etc35_bit4`
+  ///    - `(18, 27)`: `etc35_bit5`
+  /// 2. Barrier at `y == 10`:
+  ///    - `party.etc[15] < 5` (water quest): message "알수없는 힘이 당신을 배척합니다." and nudge dy = 1.
+  /// 3. Northern SWAMP GATE (`y == 5`):
+  ///    - Enter portal to map 13 `(81, 95)` handled via portal session.
+  /// 4. Southern exit (`y == 46`):
+  ///    - Exit to map 2 `(32, 82)` handled via portal session.
+  static ScriptRun? map9(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson ||
+        (context.tileAtPlayer != null && context.tileAtPlayer != 0)) {
+      return null;
+    }
+
+    final goldId = switch ((x, y)) {
+      (10, 24) => !context.flags.contains('etc35_bit1') ? 'spec-9-L354' : null,
+      (12, 26) => !context.flags.contains('etc35_bit2') ? 'spec-9-L354x' : null,
+      (15, 25) =>
+        !context.flags.contains('etc35_bit3') ? 'spec-9-L354xx' : null,
+      (16, 23) =>
+        !context.flags.contains('etc35_bit4') ? 'spec-9-L354xxx' : null,
+      (18, 27) =>
+        !context.flags.contains('etc35_bit5') ? 'spec-9-L354xxxx' : null,
+      _ => null,
+    };
+    if (goldId != null) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == goldId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 10) {
+      final waterQuest = context.questSteps['water'] ?? 0;
+      final blocked = waterQuest < 5 && !context.flags.contains('etc15_gte5');
+      if (blocked) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'spec-9-L354xxxxx',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
+  /// `LORESPEC.PAS:444-464`, map 10 (WATER DEN).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. `y == 46`: jump to `y = 50` (`spec-10-L444`).
+  /// 2. `y == 49`: jump to `y = 45` (`spec-10-L444x`).
+  /// 3. Southern exit (`y == 71`):
+  ///    - Exit to map 3 `(74, 20)` handled via portal session.
+  static ScriptRun? map10(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson ||
+        (context.tileAtPlayer != null && context.tileAtPlayer != 0)) {
+      return null;
+    }
+
+    if (y == 46) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'spec-10-L444',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 49) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'spec-10-L444x',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
     return null;
   }
 

@@ -1023,7 +1023,8 @@
         "notAllFlags": [
           "etc35_bit1"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "gold-9-10-24",
@@ -1061,7 +1062,8 @@
         "notAllFlags": [
           "etc35_bit2"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "gold-9-12-26",
@@ -1099,7 +1101,8 @@
         "notAllFlags": [
           "etc35_bit3"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "gold-9-15-25",
@@ -1137,7 +1140,8 @@
         "notAllFlags": [
           "etc35_bit4"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "gold-9-16-23",
@@ -1175,7 +1179,8 @@
         "notAllFlags": [
           "etc35_bit5"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "gold-9-18-27",
@@ -19649,7 +19654,9 @@
             "lt": 5
           }
         ]
-      }
+      },
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-9-L354-1",
@@ -19748,7 +19755,8 @@
           "etc35_bit6"
         ]
       },
-      "note": "조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin"
+      "note": "조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin",
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-9-L354-2",
@@ -19772,7 +19780,8 @@
           "etc35_bit6"
         ]
       },
-      "note": "조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin"
+      "note": "조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin",
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-9-L354-3",
@@ -19789,7 +19798,8 @@
       "disabled": true,
       "yMin": 5,
       "yMax": 5,
-      "note": "조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin"
+      "note": "조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin",
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-9-L354-1x",
@@ -19887,7 +19897,8 @@
         ],
         "tileAtPlayerZero": true
       },
-      "note": "미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin"
+      "note": "미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin",
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-9-L354-2x",
@@ -19910,7 +19921,8 @@
         ],
         "tileAtPlayerZero": true
       },
-      "note": "미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin"
+      "note": "미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin",
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-9-L354-3x",
@@ -19928,7 +19940,8 @@
       "require": {
         "tileAtPlayerZero": true
       },
-      "note": "미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin"
+      "note": "미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin",
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-9-L354-1xx",
@@ -19947,7 +19960,8 @@
       "disabled": true,
       "yMin": 46,
       "yMax": 46,
-      "note": "조건 미지원: wantexit"
+      "note": "조건 미지원: wantexit",
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-9-L354-2xx",
@@ -19964,7 +19978,8 @@
       "disabled": true,
       "yMin": 46,
       "yMax": 46,
-      "note": "조건 미지원: wantexit"
+      "note": "조건 미지원: wantexit",
+      "portedBy": "LoreSpecProcedures.map9"
     },
     {
       "id": "spec-10-L444",
@@ -19980,7 +19995,9 @@
         }
       ],
       "yMin": 46,
-      "yMax": 46
+      "yMax": 46,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map10"
     },
     {
       "id": "spec-10-L444x",
@@ -19996,7 +20013,9 @@
         }
       ],
       "yMin": 49,
-      "yMax": 49
+      "yMax": 49,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map10"
     },
     {
       "id": "spec-10-L444-1",
@@ -20015,7 +20034,8 @@
       "disabled": true,
       "yMin": 71,
       "yMax": 71,
-      "note": "조건 미지원: wantexit"
+      "note": "조건 미지원: wantexit",
+      "portedBy": "LoreSpecProcedures.map10"
     },
     {
       "id": "spec-10-L444-2",
@@ -20032,7 +20052,8 @@
       "disabled": true,
       "yMin": 71,
       "yMax": 71,
-      "note": "조건 미지원: wantexit"
+      "note": "조건 미지원: wantexit",
+      "portedBy": "LoreSpecProcedures.map10"
     },
     {
       "id": "spec-11-L465xxxxxxx",
