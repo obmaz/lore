@@ -3,6 +3,7 @@
 1993년 DOS 게임 **또 다른 지식의 성전**을 Flutter로 이식한 프로젝트입니다. 원본 Pascal 소스와 실행 데이터는 `repo_source/LORE_1993_src/`, `repo_source/LORE_1993_runtime/`에 있습니다. 게임 동작의 대조 내용과 알려진 편차는 [게임 명세서](DOCS_GAME_SPECS.md)에 기록했습니다.
 
 원본의 입력·전역 상태·지도 전환·전투·저장 실행 순서는 [원본 실행 모델](ORIGINAL_LORE_EXECUTION_MODEL.md)에 소스 근거와 함께 정리했습니다.
+대화가 타일을 만들고 전투가 후속 사건을 여는 경로는 [원본 절차 추적](ORIGINAL_LORE_PROCEDURE_TRACES.md)에 기록했습니다.
 완전 이식의 검증 기준과 게임 엔진으로 확장하기 위한 경계는 [엔진 구조](ENGINE_ARCHITECTURE.md)에 정리했습니다.
 단계별 작업과 최종 완료 판정은 [완전 이식 마스터 플랜](PORT_MASTER_PLAN.md)을 따릅니다.
 원본 범위와 남은 검증 항목은 [원본 계약 기준선](PORT_CONTRACT_LEDGER.md)에서 확인할 수 있습니다.
