@@ -543,6 +543,47 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:966-1004`, map 16 (DEN2 / TYPHOON DEN).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 36` handled via portal session.
+  /// 2. Wivern encounter at `y == 10`:
+  ///    - If `party.etc[37] < 3`:
+  ///      - 0 defeated: 3 Wiverns (`wivern-3-remaining`)
+  ///      - 1 defeated: 2 Wiverns (`wivern-2-remaining`)
+  ///      - 2 defeated: 1 Wivern (`wivern-1-remaining`)
+  ///    - If `party.etc[37] >= 3`:
+  ///      - Corpse message (`wivern-cleared`).
+  static ScriptRun? map16(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (y == 10) {
+      final wivernQuest = context.questSteps['wivern'] ?? 0;
+      final scriptId = switch (wivernQuest) {
+        0 => 'wivern-3-remaining',
+        1 => 'wivern-2-remaining',
+        2 => 'wivern-1-remaining',
+        _ => 'wivern-cleared',
+      };
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

@@ -132,6 +132,7 @@
 - 맵 13 `SWAMP FIELD`의 `(76..86, 71..81)` 피라미드 시퀀스(CHAPTER 1~4 예언서, 지형 변형, 강제 이동 `81,77`), `(81,68)` Gorgon 전투(`party.etc[38]` bit5 플래그 제어), `y=96` 남쪽 출구 포털 분기는 `LoreSpecProcedures.map13`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 14 `DEN1 / SWAMP DEN (MENACE)`의 `(25,8)/(26,8)` MENACE 중심 분기(`lordahn` 퀘스트 3->4 진행), 금화 6곳(`party.etc[32]` bit1~6), `(16,20)` 황금의 방패 획득(`party.etc[32]` bit7) 분기는 `LoreSpecProcedures.map14`를 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 15 `T_DEN3 / QUAKE DEN`의 `y=48` 상자(첫 방문 6000골드/`etc36_bit1`, 둘째 방문 4000골드/`etc36_bit2`, 타일 44 개방), `(14,7)` 황금의 방패(`party.etc[36]` bit3), `(45,19)` 황금의 갑옷(`party.etc[36]` bit4), `y=27` ArchiGagoyle 보스 전투(`gaia` 퀘스트 4->5 진행) 분기는 `LoreSpecProcedures.map15`를 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
+- 맵 16 `DEN2 / TYPHOON DEN`의 `y=10` Wivern 조우 분기(`wivern` 퀘스트 단계에 따른 3/2/1마리 조우 및 전멸 후 시체 대사)는 `LoreSpecProcedures.map16`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 발걸음 규칙의 조건별 선택 검사를 추가해 전투 후속을 복제한 활성 규칙
   12건과 KEEP2 이동 경계 밖 규칙 1건을 보관용으로 전환했다. 남은 활성
   발걸음 규칙은 각자 선택 가능한 조건을 갖지만, 원본 결과 비교는 부분적이다.

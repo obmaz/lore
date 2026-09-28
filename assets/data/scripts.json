@@ -429,7 +429,8 @@
             "set": 3
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map16"
     },
     {
       "id": "wivern-2-remaining",
@@ -468,7 +469,8 @@
             "set": 3
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map16"
     },
     {
       "id": "wivern-1-remaining",
@@ -506,7 +508,8 @@
             "set": 3
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map16"
     },
     {
       "id": "wivern-cleared",
@@ -526,7 +529,8 @@
         {
           "say": "여기에는 Wivern의 시체만이 있다."
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map16"
     },
     {
       "id": "keep3-necromancer-y26",
