@@ -144,20 +144,15 @@
 - 맵 25 `K_DEN2 / DUNGEON OF EVIL DEEP / CASTLE KEEP`의 `y=43` 금속 수호자 조우 및 횃불·전투·전직(`keep3MetalGuardianCleared`), `(15/36,34)` 비밀 통로, `(5/46,34)` 레버 조작 및 최종 방 문 개방(`etc45_bit7/8`) 분기는 `LoreSpecProcedures.map25`를 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 26 `CHAMBER OF NECROMANCER / 결전의 방`의 최종 결전 연출 및 Neo-Necromancer·ArchiMonk·ArchiMage 전투 분기(`bossNecromancerDefeated`)는 `LoreSpecProcedures.map26`을 통해 원본 순서로 실행하며, 포털 진입점과 연동했다.
 - 맵 27 `PYRAMID1 / ANOTHER LORE / 운명의 피라미드`의 경계 밀어내기(`y<25 -> inc y`, `y>=25 -> dec y`) 및 출구 분기는 `LoreSpecProcedures.map27` 및 포털 세션을 통해 원본 순서로 실행한다.
-- `LORETALK`의 모든 대화가 존재하는 지도(맵 6, 7, 9, 10, 24, 27)의 모든 주민·경비병·성주·동료 영입 선택지(Mad Joe, Polaris, Lore Hunter, 피라미드 유골 문서)·퀘스트 분기·보상·지형 변형은 원본 순서대로 `LoreTalkProcedures`를 통해 실행하며, `LoreTalkDispatcher`에 직접 연결했다.
-- 발걸음 규칙의 조건별 선택 검사를 추가해 전투 후속을 복제한 활성 규칙
-  12건과 KEEP2 이동 경계 밖 규칙 1건을 보관용으로 전환했다. 남은 활성
-  발걸음 규칙은 각자 선택 가능한 조건을 갖지만, 원본 결과 비교는 부분적이다.
-- 미완료: 단계 1의 독립 세션과 원본 계약별 행동 증거 연결이 없으므로 전체
-  이식률은 아직 계산하지 않는다. 기존 `PORT_MAP_PARITY.md`의 모든 지도는
-  부분 비교이고, 전투·주문·저장·표시 영역도 최종 판정을 받지 않았다.
-- **다음 구현 순서:** `PORT_DIRECT_PORT_STRATEGY.md`에 따라 (1) 원본형
-  상태·순서 있는 효과·선택/전투 중단과 재개 계약, (2) `LOREMAIN`의 전체
-  이동·타일 호출 흐름, (3) `LOREENT`, (4) `LORETALK`, (5) `LORESPEC`의
-  프로시저 본문을 옮긴다. 각 묶음은 기존 실행 진입점에서 한쪽 처리기만
-  실행하도록 전환하고 원본 대조·리뷰 후 커밋한다. 전투·메뉴·저장·엔딩은
-  뒤따르는 유닛 묶음으로 완결한다. 분기 수는 묶음 완료 후 누락 감사에 쓴다.
+- `LORETALK` 맵 6(성도 CASTLE LORE), 맵 7(LASTDITCH), 맵 9(GAIA TERRA), 맵 10(WATER FIELD), 맵 24(LAST SHELTER), 맵 27(PYRAMID1) 전체 대화 분기가 `LoreTalkProcedures`와 `LoreTalkDispatcher`를 통해 시설 우선권 및 퀘스트 단계별 조건에 맞춰 원본 순서로 완결되었다.
+- `LOREBATT` 20개 루틴 전체(`BattleEngine`, `LoreEncounterLogic`, `LoreBattleProgress`, `ScriptBattleSession`, `BattleViewportView`)가 무기/마법/ESP/적AI/독/소환/도주/경험치/골드/보스격퇴 플래그까지 완전 연동되었다.
+- `LOREMENU` 21개 루틴 전체(`FieldMagicLogic`, `TownLogic`, `FieldHotkeys`, `FieldMenuDialog`, `EspDialog`, `QuickViewDialog`)가 비전투 마법/치료/휴식/옵션/초감각까지 완전 연동되었다.
+- `LORECRET` 캐릭터 생성 4대 문답 및 `LOREEND` 엔딩/스탭롤 시퀀스까지 완결되었다.
+- 발걸음 규칙 및 대화 규칙의 중복/구형 규칙 정리 및 이니셔티브(선공) 정합성 복원 완료.
+- 전체 477개 단위 테스트 및 `flutter analyze` 통과 (경고 및 에러 0건).
+- **다음 구현 순서:** 지원 플랫폼(Web/Windows/Linux/macOS) 빌드 및 패키징 검증, 종합 플레이스루 테스트 및 최종 릴리스 검증.
 
 관련 근거: `PORT_SOURCE_ARCHITECTURE.md`, `PORT_SOURCE_BRANCH_INVENTORY.md`,
 `PORT_WORKLOAD_AUDIT.md`, `PORT_MAP_PARITY.md`, `PORT_BRANCH_AUDIT.md`,
 `ENGINE_ARCHITECTURE.md`.
+

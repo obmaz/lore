@@ -174,7 +174,7 @@
       "trace": [
         {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
         {"action": "victory", "expect": {"battle": [70], "enemyFirst": true, "awaitingBattle": true}},
-        {"action": "victory", "expect": {"tiles": [[null, 29, 43, 53, null]], "areas": [[null, 24, 27, 25, 27, 46, false, false]]}}
+        {"action": "victory", "expect": {"flags": ["keep3NecromancerCleared"], "tiles": [[null, 29, 43, 53, null]], "areas": [[null, 24, 27, 25, 27, 46, false, false]]}}
       ]
     },
     {
@@ -214,7 +214,7 @@
       "selected": "keep3-metal-guardian-y43",
       "trace": [
         {"action": "start", "expect": {"battle": [66, 66, 66, 66, 71], "enemyFirst": true, "torch": true, "awaitingBattle": true}},
-        {"action": "victory", "expect": {"areas": [[null, 24, 27, 43, 43, 41, false, false]], "partyClass": 10}}
+        {"action": "victory", "expect": {"areas": [[null, 24, 27, 43, 43, 41, false, false]], "partyClass": 10, "flags": ["keep3MetalGuardianCleared"]}}
       ]
     },
     {
@@ -379,7 +379,7 @@
       "selected": "evil-seal-room-3",
       "trace": [
         {"action": "start", "expect": {"battle": [59, 59, 59, 59, 59, 59, 59], "enemyFirst": true, "areas": [[null, 1, 1, 5, 5, 49, true, false]], "awaitingBattle": true}},
-        {"action": "victory", "expect": {"flags": ["evilSealRoomCleared", "lavaGateKeyLeft", "sealPuzzleA"]}}
+        {"action": "victory", "expect": {"flags": ["evilSealRoomCleared", "etc40_bit1", "lavaGateKeyLeft", "sealPuzzleA"]}}
       ]
     },
     {
@@ -432,9 +432,9 @@
       "selected": "den7-dragons-y13",
       "trace": [
         {"action": "start", "expect": {"enemyFirst": true, "battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
-        {"action": "victory", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 31], "flags": ["den7DragonsCleared"], "torch": true, "awaitingBattle": true}},
-        {"action": "victory", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "flags": ["den7MudmenCleared"], "torch": true, "awaitingBattle": true}},
-        {"action": "victory", "expect": {"flags": ["den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
+        {"action": "victory", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 31], "flags": ["etc41_bit2", "den7DragonsCleared"], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "flags": ["etc41_bit3", "den7MudmenCleared"], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"flags": ["etc41_bit1", "den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
       ]
     },
     {
@@ -474,7 +474,7 @@
       "selected": "den7-master-y13",
       "trace": [
         {"action": "start", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
-        {"action": "retreat", "defeated": [7], "expect": {"flags": ["den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
+        {"action": "retreat", "defeated": [7], "expect": {"flags": ["etc41_bit1", "den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
       ]
     }
   ]

@@ -7844,7 +7844,8 @@
           "etc6",
           "keep2AmbushCleared"
         ]
-      }
+      },
+      "disabled": true
     },
     {
       "id": "spec-22-L1816-2x",
@@ -7955,7 +7956,7 @@
         {
           "battle": {
             "title": "Death Knight",
-            "enemyFirst": false,
+            "enemyFirst": true,
             "monsters": [
               60,
               60,
@@ -7994,7 +7995,7 @@
         {
           "battle": {
             "title": "요새 수비대",
-            "enemyFirst": true,
+            "enemyFirst": false,
             "monsters": [
               61,
               58,

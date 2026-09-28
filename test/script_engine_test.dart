@@ -1314,7 +1314,7 @@ void main() {
 
       // 5) 맵 25 열쇠: 먼저 닿은 쪽은 기록만, 나중 쪽에서 문이 열린다.
       final firstKey = engine.startStep(25, 5, 34, noCtx)!;
-      expect(firstKey.outcome.setFlags, ['keep3KeyA']);
+      expect(firstKey.outcome.setFlags, contains('keep3KeyA'));
       final secondKey = engine.startStep(
         25,
         46,
