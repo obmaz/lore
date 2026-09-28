@@ -1480,7 +1480,16 @@ void main() {
       expect(exit.outcome.teleportX, 82);
 
       // 3) y=18 에서 마법의 횃불을 얻는다 (원작 etc[1] := 1).
-      expect(engine.startStep(20, 30, 18, noCtx)!.outcome.torchLit, isTrue);
+      expect(engine.startStep(20, 24, 18, noCtx), isNull);
+      expect(
+        LoreSpecProcedures.map20(
+          24,
+          18,
+          const ScriptContext(tileAtPlayer: 0),
+          engine,
+        )!.outcome.torchLit,
+        isTrue,
+      );
 
       // 4) y=48 Minotaur, y=13 거룡 → 진흙 인간 → 미궁의 주인 순서
       expect(engine.startStep(20, 30, 48, noCtx)!.outcome.battleMonsters, [53]);

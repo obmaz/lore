@@ -25993,7 +25993,7 @@
     {
       "path": "test/lore_spec_map20_test.dart",
       "kind": "test",
-      "sha256": "153b2df085b3832e0e4f5bee28d22f5a022af1d1b51aa881a5f4e8c491b5a0c0",
+      "sha256": "86067ffd61bf2be9a261a5c4c701c6e8e9a03b1b42ce2ede58e04fbc6357186b",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26258,7 +26258,7 @@
     {
       "path": "test/script_engine_test.dart",
       "kind": "test",
-      "sha256": "7addd5318afe0e4e6053e125460cddf8579781ee07ebb9c11943c075cd9b987d",
+      "sha256": "5bd5827ef9345cd4904f6d91adcc10c631ad8219de90e96c1483cfd53f0c4311",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS",
@@ -26735,7 +26735,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "1d23a090f05e046eccfe7635283a1ca641cce11deef912d53027114d9703fae0",
+      "sha256": "1b6bdeb1c515af1e310d568de7a2907f5825ab56e44ba05b3f88cac030c2a9c2",
       "top_level_counts": {
         "scripts": 599
       }

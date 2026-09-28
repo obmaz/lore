@@ -920,6 +920,13 @@ class LoreSpecProcedures {
       return scripts.startProcedure(content, context);
     }
 
+    if (y == 18) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'den7-torch-y18',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
     if (y == 91) {
       final content = scripts.scripts.singleWhere(
         (script) => script.id == 'den7-quiz-y91',

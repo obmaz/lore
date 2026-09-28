@@ -5,7 +5,7 @@
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.
 
-전체 599개 / 활성 271개 / 비활성 328개 / 원본 추출 좌표 46개.
+전체 599개 / 활성 270개 / 비활성 329개 / 원본 추출 좌표 46개.
 
 ## 맵별 현황
 
@@ -30,7 +30,7 @@
 | 17 | 100×100 | 9 | 17 | 9 | 0 | 0 | 0 |
 | 18 | 50×100 | 9 | 20 | 9 | 0 | 0 | 0 |
 | 19 | 50×50 | 20 | 14 | 20 | 0 | 0 | 0 |
-| 20 | 50×100 | 14 | 48 | 14 | 0 | 0 | 0 |
+| 20 | 50×100 | 13 | 49 | 13 | 0 | 0 | 0 |
 | 21 | 50×50 | 12 | 41 | 3 | 0 | 9 | 0 |
 | 22 | 50×50 | 5 | 16 | 3 | 0 | 1 | 1 |
 | 23 | 50×50 | 3 | 7 | 2 | 0 | 1 | 0 |
@@ -76,7 +76,7 @@
 - 맵 6 `spec-6-L190-2-11` step (52, 12) — LORESPEC.PAS:190
 - 맵 6 `spec-6-L190-2-12` step (52, 12) — LORESPEC.PAS:190
 
-### 원본형 프로시저로 전환한 비활성 JSON 항목: 36개
+### 원본형 프로시저로 전환한 비활성 JSON 항목: 38개
 
 - 맵 7 `lastditch-passwall-left` step (30, 8..11) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map7
 - 맵 7 `lastditch-passwall-right` step (32, 8..11) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map7
@@ -93,6 +93,8 @@
 - 맵 4 `draconian-join` step (26, 16) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
 - 맵 6 `prison-battle-first` step (51..52, 12) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map6
 - 맵 6 `prison-battle-return` step (51..52, 12) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map6
+- 맵 20 `spec-20-L1475xxxx` step (*, 18) — LORESPEC.PAS:1475 → LoreSpecProcedures.map20
+- 맵 20 `den7-torch-y18` step (*, 18) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map20
 - 맵 6 `lore-weapon-room` step (41, 79) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map6
 - 맵 1 `spec-1-L25-seq` step (*, *) — LORESPEC.PAS:25 → LoreSpecProcedures.map1Food
 - 맵 1 `spec-1-L25-seq2` step (*, *) — LORESPEC.PAS:25 → LoreSpecProcedures.map1Food
@@ -330,6 +332,7 @@
 - 맵 20 `spec-20-L1475-2xx` LORESPEC.PAS:1475 — 미지원: i := random(8);; 미지원: case i of; 미지원: 0 : Print(7,'문> 이 게임의 배경은 4개의 대륙이다');; 미지원: 1 : Print(7,'문> Ancient Evil은 응징되어야 한다');; 미지원: 2 : Print(7,'문> Lord Ahn만이 유일한 Semi-God이다');; 미지원: 3 : Print(7,'문> 이 세계의 모든 악은 응징되어야 한다');; 미지원: 4 : Print(7,'문> 이 게임의 제작자는 안 영기이다');; 미지원: 5 : Print(7,'문> 게임속의 인물은
 - 맵 20 `spec-20-L1475` LORESPEC.PAS:1475 — 조건 미지원: map[x,y] = 0; 미지원: y := 80
 - 맵 20 `spec-20-L1475x` LORESPEC.PAS:1475 — 조건 미지원: map[x,y] = 0; 미지원: y := 63
+- 맵 20 `spec-20-L1475xxxx` LORESPEC.PAS:1475 — 조건/효과 미기록
 - 맵 20 `den7-torch-y18` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 20 `den7-minotaur-y48` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 20 `spec-20-L1475-1xxxx` LORESPEC.PAS:1475 — 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead
@@ -854,7 +857,6 @@
 | `den7-exit-y88`<br>LORESPEC.PAS (파일 추정) | step (*, 88) | 조건 없음 | 조건 없음 | teleport |
 | `den7-passage-y71`<br>LORESPEC.PAS (파일 추정) | step (*, 71) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | teleport |
 | `den7-exit-y71`<br>LORESPEC.PAS (파일 추정) | step (*, 71) | 조건 없음 | 조건 없음 | teleport |
-| `spec-20-L1475xxxx`<br>LORESPEC.PAS:1475 | step (*, 18) | 조건 없음 | 조건 없음 | torch, flag:etc1 |
 | `spec-20-L1475-1xxx`<br>LORESPEC.PAS:1475 | step (*, 48) | {"notAllFlags":["den7MinotaurCleared","etc1"]} | notAllFlags → den7MinotaurCleared 추가 | torch, flag:etc1, battle(적 1, 적 선공), flag:den7MinotaurCleared |
 | `spec-20-L1475-2xxx`<br>LORESPEC.PAS:1475 | step (*, 48) | {"allFlags":["etc1"],"notAllFlags":["den7MinotaurCleared"]} | allFlags → etc1 제거; notAllFlags → den7MinotaurCleared 추가 | battle(적 1, 적 선공), flag:den7MinotaurCleared |
 | `den7-dragons-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flagNot":"den7DragonsCleared"} | flagNot den7DragonsCleared → 추가 | torch, battle(적 3, 적 선공, 도주 분기), nudge, flag:etc41_bit2, flag:den7DragonsCleared |

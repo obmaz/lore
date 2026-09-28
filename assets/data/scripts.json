@@ -10874,7 +10874,9 @@
         }
       ],
       "yMin": 18,
-      "yMax": 18
+      "yMax": 18,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "den7-torch-y18",
@@ -10888,7 +10890,8 @@
           "torch": true
         }
       ],
-      "disabled": true
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map20"
     },
     {
       "id": "spec-20-L1475-1xxx",
