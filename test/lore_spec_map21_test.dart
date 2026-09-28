@@ -107,5 +107,18 @@ void main() {
       );
       expect(openedAliased, isNull);
     });
+
+    test('그 밖의 특수 타일에서 몬스터 58번 3~6마리와 타일 변형이 실행된다', () {
+      final run = dispatchSpecial(mapId: 21, x: 20, y: 20, tile: 52)!;
+      expect(run.script.id, 'keep1-special-ambush');
+      expect(run.awaitingBattle, isTrue);
+      expect(run.outcome.battleMonsters.length, inInclusiveRange(3, 6));
+      expect(run.outcome.battleMonsters.every((id) => id == 58), isTrue);
+      expect(run.continueAfterBattle().outcome.playerTiles,
+          contains((tile: 46, ifZero: 40)));
+      expect(dispatchSpecial(mapId: 21, x: 20, y: 46, tile: 52), isNull);
+      expect(dispatchSpecial(mapId: 21, x: 25, y: 20, tile: 52,
+          flags: {'etc40_bit1', 'etc41_bit1'}), isNull);
+    });
   });
 }

@@ -26002,7 +26002,7 @@
     {
       "path": "test/lore_spec_map21_test.dart",
       "kind": "test",
-      "sha256": "e47c22af16a71981fa9ea09a3b09a8f07bdc9307de616ff1f85d3cd3215e5de7",
+      "sha256": "64b332f5ff66ad7d7f0823bde290f5a0a774a2f1d6489d36c35562a3164204ab",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26011,7 +26011,7 @@
     {
       "path": "test/lore_spec_map22_test.dart",
       "kind": "test",
-      "sha256": "db060683656d8d77c3cc9fc30a82c50fa952663ca015def575dabc33182b936b",
+      "sha256": "375777723b03379f73497cdbc095d3f64152535a23f5691e3649c0f5310bb4d2",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],

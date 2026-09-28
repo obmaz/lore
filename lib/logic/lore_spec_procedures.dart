@@ -1011,6 +1011,16 @@ class LoreSpecProcedures {
         );
         return scripts.startProcedure(content, context);
       }
+      return null;
+    }
+
+    // LORESPEC map 21's final `else`: a random group of Swamp Keep enemies
+    // attacks before the stepped-on tile changes.
+    if (y >= 1 && y <= 45) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'keep1-special-ambush',
+      );
+      return scripts.startProcedure(content, context);
     }
 
     return null;
