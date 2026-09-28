@@ -55,6 +55,26 @@ class LoreTalkDispatcher {
       final script = LoreTalkProcedures.map6(x, y, context, scripts);
       if (script != null) return LoreTalkDispatch.script(script);
     }
+    if (mapId == 7 && context != null && scripts.usingJson) {
+      final script = LoreTalkProcedures.map7(x, y, context, scripts);
+      if (script != null) return LoreTalkDispatch.script(script);
+    }
+    if (mapId == 9 && context != null && scripts.usingJson) {
+      final script = LoreTalkProcedures.map9(x, y, context, scripts);
+      if (script != null) return LoreTalkDispatch.script(script);
+    }
+    if (mapId == 10 && context != null && scripts.usingJson) {
+      final script = LoreTalkProcedures.map10(x, y, context, scripts);
+      if (script != null) return LoreTalkDispatch.script(script);
+    }
+    if (mapId == 24 && context != null && scripts.usingJson) {
+      final script = LoreTalkProcedures.map24(x, y, context, scripts);
+      if (script != null) return LoreTalkDispatch.script(script);
+    }
+    if (mapId == 27 && context != null && scripts.usingJson) {
+      final script = LoreTalkProcedures.map27(x, y, context, scripts);
+      if (script != null) return LoreTalkDispatch.script(script);
+    }
     if (context != null) {
       final script = scripts.startTalk(mapId, x, y, context);
       if (script != null) return LoreTalkDispatch.script(script);
