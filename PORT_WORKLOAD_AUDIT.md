@@ -105,7 +105,7 @@
 
 ## 현재 전투 사건 검증 증거
 
-활성 스크립트에는 전투 호출이 포함된 규칙 44개, 고유 ID 40개가 있다. `source_parity.json`의 원본 근거 시나리오에서 선택된 ID는 22개다. 해당 시나리오 중 승리 후속을 재생한 것은 5건, 도주 후속을 재생한 것은 12건이다.
+활성 스크립트에는 전투 호출이 포함된 규칙 42개, 고유 ID 38개가 있다. `source_parity.json`의 원본 근거 시나리오에서 선택된 ID는 21개다. 해당 시나리오 중 승리 후속을 재생한 것은 5건, 도주 후속을 재생한 것은 12건이다.
 이는 **해당 원본 근거 명세의 연결 현황**이며, 나머지 ID가 미구현이거나
 다른 테스트에서 검증되지 않았다는 뜻은 아니다. 동일 ID의 조건별 규칙과
 한 규칙의 연속 전투도 있으므로 ID 수를 독립 사건 수로 보지 않는다.
@@ -120,14 +120,13 @@
 - `evil-seal-room-6`
 - `evil-seal-room-7`
 - `keep1-special-ambush`
+- `keep2-ambush-25-18`
 - `keep2-exit-guard`
 - `portal-5-23-frostdragon`
-- `prison-battle-return`
 - `spec-17-L1010-2xx`
 - `spec-18-L1174-1xxxx`
 - `spec-18-L1174-2xx`
 - `spec-18-L1174-2xxxx`
-- `spec-22-L1816-1x`
 - `wivern-1-remaining`
 - `wivern-2-remaining`
 

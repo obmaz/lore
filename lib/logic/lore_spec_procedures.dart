@@ -1049,6 +1049,7 @@ class LoreSpecProcedures {
         );
         return scripts.startProcedure(content, context);
       }
+      return null;
     }
 
     if (y == 25 && (x >= 24 && x <= 26)) {
@@ -1058,6 +1059,21 @@ class LoreSpecProcedures {
       if (!hasDefeatedGuards) {
         final content = scripts.scripts.singleWhere(
           (script) => script.id == 'keep2-guards-y25',
+        );
+        return scripts.startProcedure(content, context);
+      }
+      return null;
+    }
+
+    // The final `else` in the Pascal map arm covers the remaining reachable
+    // special tiles. The southern exit is handled by LorePortalSession.
+    if (y >= 1 && y <= 45) {
+      final hasDefeatedKnight =
+          context.flags.contains('etc43_bit2') ||
+          context.flags.contains('keep2AmbushCleared');
+      if (!hasDefeatedKnight) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'keep2-ambush-zone-a',
         );
         return scripts.startProcedure(content, context);
       }

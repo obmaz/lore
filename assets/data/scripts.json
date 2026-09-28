@@ -13540,7 +13540,7 @@
       "steps": [
         {
           "battle": {
-            "title": "Death Knight",
+            "title": "Wraith",
             "enemyFirst": true,
             "monsters": [
               60,
@@ -13597,7 +13597,7 @@
       "steps": [
         {
           "battle": {
-            "title": "Death Knight",
+            "title": "Wraith",
             "enemyFirst": true,
             "monsters": [
               60,

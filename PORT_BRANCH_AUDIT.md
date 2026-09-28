@@ -5,7 +5,7 @@
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.
 
-전체 598개 / 활성 279개 / 비활성 319개 / 원본 추출 좌표 46개.
+전체 598개 / 활성 271개 / 비활성 327개 / 원본 추출 좌표 46개.
 
 ## 맵별 현황
 
@@ -16,11 +16,11 @@
 | 3 | 100×100 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 4 | 100×100 | 0 | 11 | 0 | 0 | 0 | 0 |
 | 5 | 50×50 | 1 | 0 | 0 | 0 | 1 | 0 |
-| 6 | 100×100 | 57 | 32 | 3 | 52 | 1 | 1 |
-| 7 | 75×75 | 29 | 4 | 2 | 26 | 0 | 1 |
+| 6 | 100×100 | 54 | 35 | 0 | 52 | 1 | 1 |
+| 7 | 75×75 | 27 | 6 | 0 | 26 | 0 | 1 |
 | 8 | 75×75 | 0 | 4 | 0 | 0 | 0 | 0 |
-| 9 | 50×50 | 34 | 13 | 6 | 27 | 1 | 0 |
-| 10 | 50×75 | 17 | 2 | 2 | 14 | 0 | 1 |
+| 9 | 50×50 | 33 | 14 | 5 | 27 | 1 | 0 |
+| 10 | 50×75 | 15 | 4 | 0 | 14 | 0 | 1 |
 | 11 | 50×50 | 10 | 15 | 9 | 0 | 0 | 1 |
 | 12 | 50×75 | 6 | 8 | 5 | 0 | 0 | 1 |
 | 13 | 100×100 | 2 | 9 | 2 | 0 | 0 | 0 |
@@ -45,12 +45,41 @@
 
 - 없음
 
-### 활성 규칙·포털이 모두 겹치지 않는 비활성 항목: 1개
+### 활성 규칙·포털이 모두 겹치지 않는 비활성 항목: 28개
 
+- 맵 6 `spec-6-L190-1-1` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-2` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-3` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-4` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-5` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-6` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-7` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-8` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-9` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-10` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-11` step (51, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-1-12` step (51, 12) — LORESPEC.PAS:190
 - 맵 22 `keep2-ambush-zone-b` step (*, 47..99) — LORESPEC.PAS (파일 추정)
+- 맵 6 `spec-6-L190-1` step (41, 79) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2` step (41, 79) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-3` step (41, 79) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-1` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-2` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-3` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-4` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-5` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-6` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-7` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-8` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-9` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-10` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-11` step (52, 12) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2-12` step (52, 12) — LORESPEC.PAS:190
 
-### 원본형 프로시저로 전환한 비활성 JSON 항목: 16개
+### 원본형 프로시저로 전환한 비활성 JSON 항목: 36개
 
+- 맵 7 `lastditch-passwall-left` step (30, 8..11) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map7
+- 맵 7 `lastditch-passwall-right` step (32, 8..11) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map7
 - 맵 6 `spec-6-L190` step (62, 82) — LORESPEC.PAS:190 → LoreSpecProcedures.map6Chest
 - 맵 6 `castle-chest-62-82` step (62, 82) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map6Chest
 - 맵 4 `ancient-evil-first` step (20, 39) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
@@ -62,26 +91,40 @@
 - 맵 4 `spec-4-L37-3` step (26, 16) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
 - 맵 4 `draconian-lecture` step (26, 16) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
 - 맵 4 `draconian-join` step (26, 16) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map4
+- 맵 6 `prison-battle-first` step (51..52, 12) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map6
+- 맵 6 `prison-battle-return` step (51..52, 12) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map6
+- 맵 6 `lore-weapon-room` step (41, 79) — LORESPEC.PAS (파일 추정) → LoreSpecProcedures.map6
 - 맵 1 `spec-1-L25-seq` step (*, *) — LORESPEC.PAS:25 → LoreSpecProcedures.map1Food
 - 맵 1 `spec-1-L25-seq2` step (*, *) — LORESPEC.PAS:25 → LoreSpecProcedures.map1Food
 - 맵 1 `spec-1-L25-seq3` step (*, *) — LORESPEC.PAS:25 → LoreSpecProcedures.map1Food
 - 맵 4 `spec-4-L37-1x` step (20, 39) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
 - 맵 4 `spec-4-L37-2x` step (20, 39) — LORESPEC.PAS:37 → LoreSpecProcedures.map4
+- 맵 9 `spec-9-L354xxxxx` step (*, 10) — LORESPEC.PAS:354 → LoreSpecProcedures.map9
+- 맵 9 `spec-9-L354-1` step (*, 5) — LORESPEC.PAS:354 → LoreSpecProcedures.map9
+- 맵 9 `spec-9-L354-2` step (*, 5) — LORESPEC.PAS:354 → LoreSpecProcedures.map9
+- 맵 9 `spec-9-L354-3` step (*, 5) — LORESPEC.PAS:354 → LoreSpecProcedures.map9
+- 맵 9 `spec-9-L354-1xx` step (*, 46) — LORESPEC.PAS:354 → LoreSpecProcedures.map9
+- 맵 9 `spec-9-L354-2xx` step (*, 46) — LORESPEC.PAS:354 → LoreSpecProcedures.map9
+- 맵 10 `spec-10-L444` step (*, 46) — LORESPEC.PAS:444 → LoreSpecProcedures.map10
+- 맵 10 `spec-10-L444x` step (*, 49) — LORESPEC.PAS:444 → LoreSpecProcedures.map10
+- 맵 10 `spec-10-L444-1` step (*, 71) — LORESPEC.PAS:444 → LoreSpecProcedures.map10
+- 맵 10 `spec-10-L444-2` step (*, 71) — LORESPEC.PAS:444 → LoreSpecProcedures.map10
+- 맵 11 `spec-11-L465xxxxxxx` step (*, 46) — LORESPEC.PAS:465 → LoreSpecProcedures.map11
+- 맵 12 `spec-12-L560-1` step (*, 71) — LORESPEC.PAS:560 → LoreSpecProcedures.map12
+- 맵 12 `spec-12-L560-2` step (*, 71) — LORESPEC.PAS:560 → LoreSpecProcedures.map12
+- 맵 13 `spec-13-L669-1` step (*, 96) — LORESPEC.PAS:669 → LoreSpecProcedures.map13
+- 맵 13 `spec-13-L669-2` step (*, 96) — LORESPEC.PAS:669 → LoreSpecProcedures.map13
 
-### 포털과 좌표가 겹치고 이동 목적지가 일치하는 비활성 항목: 56개
+### 포털과 좌표가 겹치고 이동 목적지가 일치하는 비활성 항목: 52개
 
+- 맵 6 `spec-6-L190-1x` step (*, *) — LORESPEC.PAS:190
+- 맵 6 `spec-6-L190-2x` step (*, *) — LORESPEC.PAS:190
 - 맵 7 `spec-7-L306` step (50, *) — LORESPEC.PAS:306
+- 맵 7 `spec-7-L306x` step (*, *) — LORESPEC.PAS:306
 - 맵 7 `spec-7-L306-1` step (*, 71) — LORESPEC.PAS:306
 - 맵 8 `spec-8-L332` step (50, *) — LORESPEC.PAS:332
 - 맵 8 `spec-8-L332x` step (*, *) — LORESPEC.PAS:332
 - 맵 8 `spec-8-L332-1` step (*, 71) — LORESPEC.PAS:332
-- 맵 9 `spec-9-L354-1` step (*, 5) — LORESPEC.PAS:354
-- 맵 9 `spec-9-L354-2` step (*, 5) — LORESPEC.PAS:354
-- 맵 9 `spec-9-L354-1xx` step (*, 46) — LORESPEC.PAS:354
-- 맵 10 `spec-10-L444-1` step (*, 71) — LORESPEC.PAS:444
-- 맵 11 `spec-11-L465xxxxxxx` step (*, 46) — LORESPEC.PAS:465
-- 맵 12 `spec-12-L560-1` step (*, 71) — LORESPEC.PAS:560
-- 맵 13 `spec-13-L669-1` step (*, 96) — LORESPEC.PAS:669
 - 맵 14 `spec-14-L814-1` step (*, 46) — LORESPEC.PAS:814
 - 맵 15 `spec-15-L879-1` step (*, 71) — LORESPEC.PAS:879
 - 맵 16 `spec-16-L966-1` step (*, 36) — LORESPEC.PAS:966
@@ -127,15 +170,11 @@
 - 맵 24 `spec-24-L1980-1` step (*, 46) — LORESPEC.PAS:1980
 - 맵 25 `spec-25-L1995-1` step (*, 46) — LORESPEC.PAS:1995
 
-### 포털과 겹치는 진입 거절 이동 분기: 17개
+### 포털과 겹치는 진입 거절 이동 분기: 13개
 
+- 맵 6 `spec-6-L190-3x` step (*, *) — LORESPEC.PAS:190
 - 맵 7 `spec-7-L306-2` step (*, 71) — LORESPEC.PAS:306
 - 맵 8 `spec-8-L332-2` step (*, 71) — LORESPEC.PAS:332
-- 맵 9 `spec-9-L354-3` step (*, 5) — LORESPEC.PAS:354
-- 맵 9 `spec-9-L354-2xx` step (*, 46) — LORESPEC.PAS:354
-- 맵 10 `spec-10-L444-2` step (*, 71) — LORESPEC.PAS:444
-- 맵 12 `spec-12-L560-2` step (*, 71) — LORESPEC.PAS:560
-- 맵 13 `spec-13-L669-2` step (*, 96) — LORESPEC.PAS:669
 - 맵 14 `spec-14-L814-2` step (*, 46) — LORESPEC.PAS:814
 - 맵 15 `spec-15-L879-2` step (*, 71) — LORESPEC.PAS:879
 - 맵 16 `spec-16-L966-2` step (*, 36) — LORESPEC.PAS:966
@@ -190,6 +229,8 @@
 
 실행되지 않는 원본 보관 항목이다. 아래 목록은 이식 완료 증거가 아니다.
 
+- 맵 7 `lastditch-passwall-left` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 7 `lastditch-passwall-right` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 9 `gold-9-10-24` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 9 `gold-9-12-26` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 9 `gold-9-15-25` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
@@ -219,6 +260,8 @@
 - 맵 4 `spec-4-L37-3` LORESPEC.PAS:37 — 조건/효과 미기록
 - 맵 4 `draconian-lecture` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 4 `draconian-join` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 6 `prison-battle-first` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 6 `prison-battle-return` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 6 `spec-6-L190-1-1` LORESPEC.PAS:190 — 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';
 - 맵 6 `spec-6-L190-1-2` LORESPEC.PAS:190 — 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';
 - 맵 6 `spec-6-L190-1-3` LORESPEC.PAS:190 — 조건 미지원: player[6].name = 'Mad Joe'; 미지원: player[6].name := '';
@@ -264,9 +307,9 @@
 - 맵 19 `spec-19-L1366-2xxx` LORESPEC.PAS:1366 — 조건 미지원: not odd(party.etc[40]); 미지원: for j := 27 to 37 do; 영역 변형(좌표 변수): for i := 25 to 27 do map[i,j] := 44;; 미지원: party.etc[40] := (random(7)+1) shl 1;
 - 맵 19 `spec-19-L1366-3` LORESPEC.PAS:1366 — 조건 미지원: not odd(party.etc[40]); 미지원: for j := 27 to 37 do; 영역 변형(좌표 변수): for i := 25 to 27 do map[i,j] := 44;; 미지원: party.etc[40] := (random(7)+1) shl 1;
 - 맵 17 `map17-passage-38` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 22 `spec-22-L1816-1x` LORESPEC.PAS:1816 — 조건/효과 미기록
 - 맵 22 `spec-22-L1816-2x` LORESPEC.PAS:1816 — 조건/효과 미기록
 - 맵 22 `spec-22-L1816-3x` LORESPEC.PAS:1816 — 조건/효과 미기록
-- 맵 22 `keep2-ambush-25-18` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 23 `spec-23-L1880x` LORESPEC.PAS:1880 — 미지원: for j := 7 to 34 do; 미지원: for i := 12 to 39 do; 조건 미지원: map[i,j] = 0; 미지원: map[i,j] := 39;
 - 맵 25 `spec-25-L1995-1xx` LORESPEC.PAS:1995 — 조건/효과 미기록
 - 맵 25 `spec-25-L1995-2xx` LORESPEC.PAS:1995 — 조건/효과 미기록
@@ -326,6 +369,7 @@
 - 맵 20 `spec-20-L1475-35` LORESPEC.PAS:1475 — 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead
 - 맵 20 `spec-20-L1475-36` LORESPEC.PAS:1475 — 미지원: for i := 4 to 6 do; 미지원: if j > 1 then; 미지원: for k := 0 to 1 do; 미지원: if j < 3 then delay(2000);; 미지원: if i > 1 then begin; 미지원: if i < 4 then delay(1500);; 조건 미지원: enemy[7].dead
 - 맵 22 `keep2-ambush-zone-b` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
+- 맵 6 `lore-weapon-room` LORESPEC.PAS (파일 추정) — 조건/효과 미기록
 - 맵 6 `spec-6-L190-1` LORESPEC.PAS:190 — 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: for i := y - 4 to y - 1 do begin; 미지원: map[x,pred(i)] := 44;; 미지원: map[x,i] := 48;; 미지원: else asyouwish;
 - 맵 6 `spec-6-L190-2` LORESPEC.PAS:190 — 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: for i := y - 4 to y - 1 do begin; 미지원: map[x,pred(i)] := 44;; 미지원: map[x,i] := 48;; 미지원: else asyouwish;
 - 맵 6 `spec-6-L190-3` LORESPEC.PAS:190 — 미지원: for i := 1 to 6 do; 미지원: with player[i] do; 조건 미지원: (name <> '') and (weapon = 0) and (class <> 5); 미지원: weapon := 1;; 미지원: wea_power := 5;; 조건 미지원: wantexit; 미지원: aux := soundon;; 미지원: for i := y - 4 to y - 1 do begin; 미지원: map[x,pred(i)] := 44;; 미지원: map[x,i] := 48;; 미지원: else asyouwish;
@@ -357,6 +401,7 @@
 - 맵 8 `spec-8-L332x` LORESPEC.PAS:332 — 조건/효과 미기록
 - 맵 8 `spec-8-L332-1` LORESPEC.PAS:332 — 조건 미지원: wantexit
 - 맵 8 `spec-8-L332-2` LORESPEC.PAS:332 — 조건 미지원: wantexit
+- 맵 9 `spec-9-L354xxxxx` LORESPEC.PAS:354 — 조건/효과 미기록
 - 맵 9 `spec-9-L354-1` LORESPEC.PAS:354 — 조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin
 - 맵 9 `spec-9-L354-2` LORESPEC.PAS:354 — 조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin
 - 맵 9 `spec-9-L354-3` LORESPEC.PAS:354 — 조건 미지원: wantenter('SWAMP GATE'); 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin
@@ -365,6 +410,8 @@
 - 맵 9 `spec-9-L354-3x` LORESPEC.PAS:354 — 미지원: face := 1;; 미지원: for i := 4 downto 0 do begin; 미지원: if i > 0 then begin
 - 맵 9 `spec-9-L354-1xx` LORESPEC.PAS:354 — 조건 미지원: wantexit
 - 맵 9 `spec-9-L354-2xx` LORESPEC.PAS:354 — 조건 미지원: wantexit
+- 맵 10 `spec-10-L444` LORESPEC.PAS:444 — 조건/효과 미기록
+- 맵 10 `spec-10-L444x` LORESPEC.PAS:444 — 조건/효과 미기록
 - 맵 10 `spec-10-L444-1` LORESPEC.PAS:444 — 조건 미지원: wantexit
 - 맵 10 `spec-10-L444-2` LORESPEC.PAS:444 — 조건 미지원: wantexit
 - 맵 11 `spec-11-L465xxxxxxx` LORESPEC.PAS:465 — 조건 미지원: wantexit
@@ -526,8 +573,6 @@
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
 | `madjoe-join`<br>LORETALK.PAS (파일 추정) | talk (40, 15) | {"flagNot":"madJoeJoined"} | flagNot madJoeJoined → 추가 | flag:madJoeJoined, join:mad_joe, setTile |
-| `prison-battle-first`<br>LORESPEC.PAS (파일 추정) | step (51..52, 12) | {"flag":"madJoeJoined","flagNot":"prisonBattleStarted","tileAtPlayerZero":true} | flag madJoeJoined → 제거; flagNot prisonBattleStarted → 추가; tileAtPlayerZero True → 타일을 0 이외로 | flag:prisonBattleStarted, battle(적 2, 적 선공), setTile, flag:prisonBattleDone |
-| `prison-battle-return`<br>LORESPEC.PAS (파일 추정) | step (51..52, 12) | {"allFlags":["madJoeJoined","prisonBattleStarted"],"flagNot":"prisonBattleDone","tileAtPlayerZero":true} | flagNot prisonBattleDone → 추가; tileAtPlayerZero True → 타일을 0 이외로; allFlags → madJoeJoined 제거 | battle(적 7, 적 선공), setTile, flag:prisonBattleDone |
 | `castle-exit-skeleton`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flagNot":"etc31_bit1"} | flagNot etc31_bit1 → 추가 | join:skeleton, flag:skeletonJoined, flag:etc31_bit1 |
 | `talk-6-9-64`<br>LORETALK.PAS (파일 추정) | talk (9, 64) | 조건 없음 | 조건 없음 | 대사/연출 |
 | `talk-6-72-73`<br>LORETALK.PAS (파일 추정) | talk (72, 73) | 조건 없음 | 조건 없음 | 대사/연출 |
@@ -580,15 +625,12 @@
 | `talk-6-51-28-q4`<br>LORETALK.PAS (파일 추정) | talk (51, 28) | {"quest":{"name":"lordahn","eq":4}} | lordahn 단계 → 조건 밖 값 | exp, questStep:lordahn |
 | `talk-6-51-28-q5`<br>LORETALK.PAS (파일 추정) | talk (51, 28) | {"quest":{"name":"lordahn","eq":5}} | lordahn 단계 → 조건 밖 값 | questStep:lordahn |
 | `talk-6-51-28-q6`<br>LORETALK.PAS (파일 추정) | talk (51, 28) | {"quest":{"name":"lordahn","eq":6}} | lordahn 단계 → 조건 밖 값 | 대사/연출 |
-| `lore-weapon-room`<br>LORESPEC.PAS (파일 추정) | step (41, 79) | {"flagNot":"weaponRoomVisited"} | flagNot weaponRoomVisited → 추가 | flag:weaponRoomVisited, setTile, nudge, equip |
 | `enter-6-castle-gate`<br>LOREENT.PAS (파일 추정) | enter (*, *) | 조건 없음 | 조건 없음 | setTile, setTileArea |
 
 ### 맵 7
 
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
-| `lastditch-passwall-left`<br>LORESPEC.PAS (파일 추정) | step (30, 8..11) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | setTileArea |
-| `lastditch-passwall-right`<br>LORESPEC.PAS (파일 추정) | step (32, 8..11) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | setTileArea |
 | `talk-7-51-55`<br>LORETALK.PAS (파일 추정) | talk (51, 55) | 조건 없음 | 조건 없음 | 대사/연출 |
 | `talk-7-8-44`<br>LORETALK.PAS (파일 추정) | talk (8, 44) | 조건 없음 | 조건 없음 | 대사/연출 |
 | `talk-7-68-35`<br>LORETALK.PAS (파일 추정) | talk (68, 35) | 조건 없음 | 조건 없음 | 대사/연출 |
@@ -654,7 +696,6 @@
 | `talk-9-42-25-q4`<br>LORETALK.PAS (파일 추정) | talk (42, 25) | {"quest":{"name":"gaia","eq":4}} | gaia 단계 → 조건 밖 값 | 대사/연출 |
 | `talk-9-42-25-q5`<br>LORETALK.PAS (파일 추정) | talk (42, 25) | {"quest":{"name":"gaia","eq":5}} | gaia 단계 → 조건 밖 값 | exp, questStep:gaia |
 | `talk-9-42-25-q6`<br>LORETALK.PAS (파일 추정) | talk (42, 25) | {"quest":{"name":"gaia","eq":6}} | gaia 단계 → 조건 밖 값 | 대사/연출 |
-| `spec-9-L354xxxxx`<br>LORESPEC.PAS:354 | step (*, 10) | {"quest":[{"name":"water","lt":5}]} | water 단계 → 조건 밖 값 | nudge |
 
 ### 맵 10
 
@@ -675,8 +716,6 @@
 | `talk-10-25-18-q4`<br>LORETALK.PAS (파일 추정) | talk (25, 18) | {"quest":{"name":"water","eq":4}} | water 단계 → 조건 밖 값 | exp, questStep:water |
 | `talk-10-25-18-q5`<br>LORETALK.PAS (파일 추정) | talk (25, 18) | {"quest":{"name":"water","eq":5}} | water 단계 → 조건 밖 값 | 대사/연출 |
 | `enter-10-hunter-tile`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"flag":"loreHunterJoined"} | flag loreHunterJoined → 제거 | setTile |
-| `spec-10-L444`<br>LORESPEC.PAS:444 | step (*, 46) | 조건 없음 | 조건 없음 | teleport |
-| `spec-10-L444x`<br>LORESPEC.PAS:444 | step (*, 49) | 조건 없음 | 조건 없음 | teleport |
 
 ### 맵 11
 
@@ -721,7 +760,7 @@
 | `spec-14-L814xxx`<br>LORESPEC.PAS:814 | step (31, 30) | {"notAllFlags":["etc32_bit4"]} | notAllFlags → etc32_bit4 추가 | gold, flag:etc32_bit4 |
 | `spec-14-L814xxxx`<br>LORESPEC.PAS:814 | step (31, 8) | {"notAllFlags":["etc32_bit5"]} | notAllFlags → etc32_bit5 추가 | gold, flag:etc32_bit5 |
 | `spec-14-L814xxxxx`<br>LORESPEC.PAS:814 | step (14, 28) | {"notAllFlags":["etc32_bit6"]} | notAllFlags → etc32_bit6 추가 | gold, flag:etc32_bit6 |
-| `spec-14-L814xxxxxx`<br>LORESPEC.PAS:814 | step (16, 20) | {"notAllFlags":["goldenShieldMenaceTaken"]} | notAllFlags → goldenShieldMenaceTaken 추가 | equip, flag:goldenShieldMenaceTaken |
+| `spec-14-L814xxxxxx`<br>LORESPEC.PAS:814 | step (16, 20) | {"notAllFlags":["etc32_bit7","goldenShieldMenaceTaken"]} | notAllFlags → etc32_bit7 추가 | equip, flag:etc32_bit7, flag:goldenShieldMenaceTaken |
 | `spec-14-L814-1-1`<br>LORESPEC.PAS:814 | step (25, 8) | {"quest":[{"name":"lordahn","eq":3}]} | lordahn 단계 → 조건 밖 값 | questStep:lordahn |
 | `spec-14-L814-2-1`<br>LORESPEC.PAS:814 | step (26, 8) | {"quest":[{"name":"lordahn","eq":3}]} | lordahn 단계 → 조건 밖 값 | questStep:lordahn |
 
@@ -729,8 +768,8 @@
 
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
-| `spec-15-L879`<br>LORESPEC.PAS:879 | step (14, 7) | {"notAllFlags":["goldenShieldQuakeTaken"]} | notAllFlags → goldenShieldQuakeTaken 추가 | equip, flag:goldenShieldQuakeTaken |
-| `spec-15-L879x`<br>LORESPEC.PAS:879 | step (45, 19) | {"notAllFlags":["goldenArmorQuakeTaken"]} | notAllFlags → goldenArmorQuakeTaken 추가 | equip, flag:goldenArmorQuakeTaken |
+| `spec-15-L879`<br>LORESPEC.PAS:879 | step (14, 7) | {"notAllFlags":["etc36_bit3","goldenShieldQuakeTaken"]} | notAllFlags → etc36_bit3 추가 | equip, flag:etc36_bit3, flag:goldenShieldQuakeTaken |
+| `spec-15-L879x`<br>LORESPEC.PAS:879 | step (45, 19) | {"notAllFlags":["etc36_bit4","goldenArmorQuakeTaken"]} | notAllFlags → etc36_bit4 추가 | equip, flag:etc36_bit4, flag:goldenArmorQuakeTaken |
 | `spec-15-L879-1xxxx`<br>LORESPEC.PAS:879 | step (*, 27) | {"notAllFlags":["etc6"],"quest":[{"name":"gaia","eq":4}]} | notAllFlags → etc6 추가; gaia 단계 → 조건 밖 값 | battle(적 3, 적 선공, 격퇴 슬롯 3), questStep:gaia |
 | `quake-gold-a-10`<br>LORESPEC.PAS (파일 추정) | step (10, 48) | {"flagNot":"quakeGoldA"} | flagNot quakeGoldA → 추가 | gold, setTile, flag:quakeGoldA |
 | `quake-gold-a-11`<br>LORESPEC.PAS (파일 추정) | step (11, 48) | {"flagNot":"quakeGoldA"} | flagNot quakeGoldA → 추가 | gold, setTile, flag:quakeGoldA |
@@ -754,7 +793,7 @@
 
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
-| `redantares-teach`<br>LORESPEC.PAS (파일 추정) | step (75, 52) | {"flagNot":"specialMagicLearned"} | flagNot specialMagicLearned → 추가 | setTileArea, flag:specialMagicLearned |
+| `redantares-teach`<br>LORESPEC.PAS (파일 추정) | step (75, 52) | {"flagNot":"specialMagicLearned"} | flagNot specialMagicLearned → 추가 | setTileArea, flag:etc38_bit1, flag:specialMagicLearned |
 | `redantares-join`<br>LORESPEC.PAS (파일 추정) | step (75, 52) | {"flag":"specialMagicLearned","flagNot":"etc38_bit2","mindRead":true} | flag specialMagicLearned → 제거; flagNot etc38_bit2 → 추가; mindRead True → 독심술 끄기 | flag:redAntaresJoined, join:red_antares, flag:etc38_bit2 |
 | `redantares-wait-for-mindread`<br>LORESPEC.PAS (파일 추정) | step (75, 52) | {"flag":"specialMagicLearned","flagNot":"etc38_bit2","mindReadInactive":true} | flag specialMagicLearned → 제거; flagNot etc38_bit2 → 추가; mindReadInactive True → 독심술 켜기 | 대사/연출 |
 | `spec-17-L1010-1xx`<br>LORESPEC.PAS:1010 | step (22, *) | {"notAllFlags":["bossHidraDefeated","etc1","etc6"],"quest":[{"name":"water","lt":2}]} | notAllFlags → bossHidraDefeated 추가; water 단계 → 조건 밖 값 | torch, flag:etc1, battle(적 3, 도주 분기), nudge, questStep:water, flag:bossHidraDefeated, teleport |
@@ -787,13 +826,13 @@
 | `evil-seal-lever-b-blocked`<br>LORESPEC.PAS (파일 추정) | step (41, 39) | {"flag":"swampWalkActive","tileAtPlayerZero":true} | flag swampWalkActive → 제거; tileAtPlayerZero True → 타일을 0 이외로 | 대사/연출 |
 | `evil-seal-lever-b`<br>LORESPEC.PAS (파일 추정) | step (41, 39) | {"flagNot":"swampWalkActive","notAllFlags":["evilSealRoomCleared"],"tileAtPlayerZero":true} | flagNot swampWalkActive → 추가; tileAtPlayerZero True → 타일을 0 이외로; notAllFlags → evilSealRoomCleared 추가 | setTile, setTileArea, randomFlag, flag:evilSealLeverB |
 | `evil-seal-lever-b-cleared`<br>LORESPEC.PAS (파일 추정) | step (41, 39) | {"flag":"evilSealRoomCleared","flagNot":"swampWalkActive","tileAtPlayerZero":true} | flag evilSealRoomCleared → 제거; flagNot swampWalkActive → 추가; tileAtPlayerZero True → 타일을 0 이외로 | setTile |
-| `evil-seal-room-1`<br>LORESPEC.PAS (파일 추정) | step (14, 6) | {"flag":"evilSealRoom1","flagNot":"evilSealRoomCleared"} | flag evilSealRoom1 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
-| `evil-seal-room-2`<br>LORESPEC.PAS (파일 추정) | step (18, 6) | {"flag":"evilSealRoom2","flagNot":"evilSealRoomCleared"} | flag evilSealRoom2 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
-| `evil-seal-room-3`<br>LORESPEC.PAS (파일 추정) | step (22, 6) | {"flag":"evilSealRoom3","flagNot":"evilSealRoomCleared"} | flag evilSealRoom3 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
-| `evil-seal-room-4`<br>LORESPEC.PAS (파일 추정) | step (26, 6) | {"flag":"evilSealRoom4","flagNot":"evilSealRoomCleared"} | flag evilSealRoom4 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
-| `evil-seal-room-5`<br>LORESPEC.PAS (파일 추정) | step (30, 6) | {"flag":"evilSealRoom5","flagNot":"evilSealRoomCleared"} | flag evilSealRoom5 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
-| `evil-seal-room-6`<br>LORESPEC.PAS (파일 추정) | step (34, 6) | {"flag":"evilSealRoom6","flagNot":"evilSealRoomCleared"} | flag evilSealRoom6 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
-| `evil-seal-room-7`<br>LORESPEC.PAS (파일 추정) | step (38, 6) | {"flag":"evilSealRoom7","flagNot":"evilSealRoomCleared"} | flag evilSealRoom7 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:lavaGateKeyLeft, flag:sealPuzzleA |
+| `evil-seal-room-1`<br>LORESPEC.PAS (파일 추정) | step (14, 6) | {"flag":"evilSealRoom1","flagNot":"evilSealRoomCleared"} | flag evilSealRoom1 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:etc40_bit1, flag:lavaGateKeyLeft, flag:sealPuzzleA |
+| `evil-seal-room-2`<br>LORESPEC.PAS (파일 추정) | step (18, 6) | {"flag":"evilSealRoom2","flagNot":"evilSealRoomCleared"} | flag evilSealRoom2 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:etc40_bit1, flag:lavaGateKeyLeft, flag:sealPuzzleA |
+| `evil-seal-room-3`<br>LORESPEC.PAS (파일 추정) | step (22, 6) | {"flag":"evilSealRoom3","flagNot":"evilSealRoomCleared"} | flag evilSealRoom3 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:etc40_bit1, flag:lavaGateKeyLeft, flag:sealPuzzleA |
+| `evil-seal-room-4`<br>LORESPEC.PAS (파일 추정) | step (26, 6) | {"flag":"evilSealRoom4","flagNot":"evilSealRoomCleared"} | flag evilSealRoom4 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:etc40_bit1, flag:lavaGateKeyLeft, flag:sealPuzzleA |
+| `evil-seal-room-5`<br>LORESPEC.PAS (파일 추정) | step (30, 6) | {"flag":"evilSealRoom5","flagNot":"evilSealRoomCleared"} | flag evilSealRoom5 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:etc40_bit1, flag:lavaGateKeyLeft, flag:sealPuzzleA |
+| `evil-seal-room-6`<br>LORESPEC.PAS (파일 추정) | step (34, 6) | {"flag":"evilSealRoom6","flagNot":"evilSealRoomCleared"} | flag evilSealRoom6 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:etc40_bit1, flag:lavaGateKeyLeft, flag:sealPuzzleA |
+| `evil-seal-room-7`<br>LORESPEC.PAS (파일 추정) | step (38, 6) | {"flag":"evilSealRoom7","flagNot":"evilSealRoomCleared"} | flag evilSealRoom7 → 제거; flagNot evilSealRoomCleared → 추가 | setTileArea, battle(적 7, 적 선공, 도주 분기), nudge, flag:evilSealRoomCleared, flag:etc40_bit1, flag:lavaGateKeyLeft, flag:sealPuzzleA |
 | `evil-seal-room-wrong-1`<br>LORESPEC.PAS (파일 추정) | step (14, 6) | {"notAllFlags":["evilSealRoom1","evilSealRoomCleared"]} | notAllFlags → evilSealRoom1 추가 | setTileArea, setTileAtPlayer |
 | `evil-seal-room-wrong-2`<br>LORESPEC.PAS (파일 추정) | step (18, 6) | {"notAllFlags":["evilSealRoom2","evilSealRoomCleared"]} | notAllFlags → evilSealRoom2 추가 | setTileArea, setTileAtPlayer |
 | `evil-seal-room-wrong-3`<br>LORESPEC.PAS (파일 추정) | step (22, 6) | {"notAllFlags":["evilSealRoom3","evilSealRoomCleared"]} | notAllFlags → evilSealRoom3 추가 | setTileArea, setTileAtPlayer |
@@ -817,9 +856,9 @@
 | `spec-20-L1475xxxx`<br>LORESPEC.PAS:1475 | step (*, 18) | 조건 없음 | 조건 없음 | torch, flag:etc1 |
 | `spec-20-L1475-1xxx`<br>LORESPEC.PAS:1475 | step (*, 48) | {"notAllFlags":["den7MinotaurCleared","etc1"]} | notAllFlags → den7MinotaurCleared 추가 | torch, flag:etc1, battle(적 1, 적 선공), flag:den7MinotaurCleared |
 | `spec-20-L1475-2xxx`<br>LORESPEC.PAS:1475 | step (*, 48) | {"allFlags":["etc1"],"notAllFlags":["den7MinotaurCleared"]} | allFlags → etc1 제거; notAllFlags → den7MinotaurCleared 추가 | battle(적 1, 적 선공), flag:den7MinotaurCleared |
-| `den7-dragons-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flagNot":"den7DragonsCleared"} | flagNot den7DragonsCleared → 추가 | torch, battle(적 3, 적 선공, 도주 분기), nudge, flag:den7DragonsCleared |
-| `den7-mudmen-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7DragonsCleared","flagNot":"den7MudmenCleared"} | flag den7DragonsCleared → 제거; flagNot den7MudmenCleared → 추가 | torch, battle(적 7, 적 선공, 도주 분기), nudge, flag:den7MudmenCleared |
-| `den7-master-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MudmenCleared","flagNot":"den7MazeCleared"} | flag den7MudmenCleared → 제거; flagNot den7MazeCleared → 추가 | torch, battle(적 7, 적 선공, 도주 분기, 격퇴 슬롯 7), nudge, flag:den7MazeCleared, flag:lavaGateKeyRight, teleport |
+| `den7-dragons-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flagNot":"den7DragonsCleared"} | flagNot den7DragonsCleared → 추가 | torch, battle(적 3, 적 선공, 도주 분기), nudge, flag:etc41_bit2, flag:den7DragonsCleared |
+| `den7-mudmen-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7DragonsCleared","flagNot":"den7MudmenCleared"} | flag den7DragonsCleared → 제거; flagNot den7MudmenCleared → 추가 | torch, battle(적 7, 적 선공, 도주 분기), nudge, flag:etc41_bit3, flag:den7MudmenCleared |
+| `den7-master-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MudmenCleared","flagNot":"den7MazeCleared"} | flag den7MudmenCleared → 제거; flagNot den7MazeCleared → 추가 | torch, battle(적 7, 적 선공, 도주 분기, 격퇴 슬롯 7), nudge, flag:etc41_bit1, flag:den7MazeCleared, flag:lavaGateKeyRight, teleport |
 | `den7-return-y13`<br>LORESPEC.PAS (파일 추정) | step (*, 13) | {"flag":"den7MazeCleared"} | flag den7MazeCleared → 제거 | torch, teleport |
 
 ### 맵 21
@@ -844,8 +883,8 @@
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
 | `keep2-exit-guard`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flagNot":"etc43_bit3"} | flagNot etc43_bit3 → 추가 | battle(적 7, 적 선공, 격퇴 슬롯 7), flag:etc43_bit3 |
-| `spec-22-L1816-1x`<br>LORESPEC.PAS:1816 | step (25, 18) | {"notAllFlags":["etc6","keep2AmbushCleared"]} | notAllFlags → etc6 추가 | battle(적 5, 적 선공), flag:keep2AmbushCleared |
-| `keep2-guards-y25`<br>LORESPEC.PAS (파일 추정) | step (24..26, 25) | {"flagNot":"keep2GuardsCleared"} | flagNot keep2GuardsCleared → 추가 | battle(적 5), flag:keep2GuardsCleared |
+| `keep2-ambush-25-18`<br>LORESPEC.PAS (파일 추정) | step (25, 18) | {"flagNot":"keep2AmbushCleared"} | flagNot keep2AmbushCleared → 추가 | battle(적 5, 승리 플래그, 적 선공), flag:etc43_bit2, flag:keep2AmbushCleared |
+| `keep2-guards-y25`<br>LORESPEC.PAS (파일 추정) | step (24..26, 25) | {"flagNot":"keep2GuardsCleared"} | flagNot keep2GuardsCleared → 추가 | battle(적 5, 승리 플래그), flag:etc43_bit1, flag:keep2GuardsCleared |
 | `keep2-ambush-zone-a`<br>LORESPEC.PAS (파일 추정) | step (*, 1..45) | {"flagNot":"keep2AmbushCleared"} | flagNot keep2AmbushCleared → 추가 | battle(적 5, 적 선공, 도주 분기), setTileAtPlayer |
 | `enter-22-ancient-evil`<br>LOREENT.PAS (파일 추정) | enter (*, *) | {"flagNot":"ancientEvilSpeechGiven","enteredFromMap":21} | flagNot ancientEvilSpeechGiven → 추가; enteredFromMap 21 → 다른 맵에서 진입 | flag:ancientEvilSpeechGiven |
 
@@ -854,7 +893,7 @@
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
 | `portal-23-25-dungeon`<br>LOREENT.PAS (파일 추정) | portal (*, *) | {"flagNot":"dungeonOfEvilCleared"} | flagNot dungeonOfEvilCleared → 추가 | battle(적 7, 적 선공, 도주 분기, 격퇴 슬롯 3), block, flag:dungeonOfEvilCleared |
-| `keep3-necromancer-y26`<br>LORESPEC.PAS (파일 추정) | step (*, 26) | {"tileAtPlayerValue":52} | tileAtPlayerValue 52 → 타일을 다른 값으로 | battle(적 6, 적 선공, 도주 분기), battle(적 1, 적 선공, 도주 분기), nudge, setTile, setTileArea |
+| `keep3-necromancer-y26`<br>LORESPEC.PAS (파일 추정) | step (*, 26) | {"tileAtPlayerValue":52} | tileAtPlayerValue 52 → 타일을 다른 값으로 | battle(적 6, 적 선공, 도주 분기), battle(적 1, 적 선공, 도주 분기), nudge, setTile, setTileArea, flag:keep3NecromancerCleared |
 | `keep3-trap-25-27`<br>LORESPEC.PAS (파일 추정) | step (25, 27) | {"tileAtPlayerValue":52} | tileAtPlayerValue 52 → 타일을 다른 값으로 | setTile, setTileArea, flag:keep3TrapCleared |
 
 ### 맵 24
@@ -873,13 +912,13 @@
 
 | 규칙 / 원본 | 트리거 좌표 | 참 조건 | 거짓 탐침 | 타일·전투·상태 효과 |
 | :--- | :--- | :--- | :--- | :--- |
-| `keep3-key-a-second`<br>LORESPEC.PAS (파일 추정) | step (5, 34) | {"flag":"keep3KeyB"} | flag keep3KeyB → 제거 | setTile, flag:keep3KeyA, flag:sealPuzzleB |
-| `keep3-key-a-first`<br>LORESPEC.PAS (파일 추정) | step (5, 34) | 조건 없음 | 조건 없음 | flag:keep3KeyA |
-| `keep3-key-b-second`<br>LORESPEC.PAS (파일 추정) | step (46, 34) | {"flag":"keep3KeyA"} | flag keep3KeyA → 제거 | setTile, flag:keep3KeyB, flag:sealPuzzleB |
-| `keep3-key-b-first`<br>LORESPEC.PAS (파일 추정) | step (46, 34) | 조건 없음 | 조건 없음 | flag:keep3KeyB |
+| `keep3-key-a-second`<br>LORESPEC.PAS (파일 추정) | step (5, 34) | {"flag":"keep3KeyB"} | flag keep3KeyB → 제거 | setTile, flag:etc45_bit7, flag:keep3KeyA, flag:sealPuzzleB |
+| `keep3-key-a-first`<br>LORESPEC.PAS (파일 추정) | step (5, 34) | 조건 없음 | 조건 없음 | flag:etc45_bit7, flag:keep3KeyA |
+| `keep3-key-b-second`<br>LORESPEC.PAS (파일 추정) | step (46, 34) | {"flag":"keep3KeyA"} | flag keep3KeyA → 제거 | setTile, flag:etc45_bit8, flag:keep3KeyB, flag:sealPuzzleB |
+| `keep3-key-b-first`<br>LORESPEC.PAS (파일 추정) | step (46, 34) | 조건 없음 | 조건 없음 | flag:etc45_bit8, flag:keep3KeyB |
 | `spec-25-L1995`<br>LORESPEC.PAS:1995 | step (15, 34) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | setTile, setTileArea |
 | `spec-25-L1995x`<br>LORESPEC.PAS:1995 | step (36, 34) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | setTile, setTileArea |
-| `keep3-metal-guardian-y43`<br>LORESPEC.PAS (파일 추정) | step (*, 43) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | torch, battle(적 5, 적 선공, 도주 분기), nudge, setTileArea, partyClass |
+| `keep3-metal-guardian-y43`<br>LORESPEC.PAS (파일 추정) | step (*, 43) | {"tileAtPlayerZero":true} | tileAtPlayerZero True → 타일을 0 이외로 | torch, battle(적 5, 승리 플래그, 적 선공, 도주 분기), nudge, flag:keep3MetalGuardianCleared, setTileArea, partyClass |
 | `portal-25-26-chamber`<br>LOREENT.PAS (파일 추정) | portal (*, *) | 조건 없음 | 조건 없음 | torch, battle(적 6, 도주 분기), teleport, block |
 
 ### 맵 26

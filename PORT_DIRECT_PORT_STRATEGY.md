@@ -85,24 +85,21 @@
 
 ## 프로시저 직접 이식 현황
 
-이 표는 **실행 중인 원본형 프로시저**만 완료로 센다. JSON에 일부 대사나
-좌표가 있다는 이유로 프로시저를 완료로 표시하지 않는다. 첫 네 유닛의
-12개 루틴 중 현재 6개의 게임 규칙이 원본 순서로 실행된다. `Main`은
-`FieldHotkeys`·`LoreFieldSession`·`LoreMainProcedures`로 입력/타일/지형
-단계를 나눴고, `LOREENT`는 목적지·전투 전후·지도 변경·표지판을
-`LoreEntProcedures`가 결정한다. 선택·전투 중단과 재개는 범용
-`LoreScriptEngine` 효과 실행기를 사용한다. 원본의 DOS 팔레트 BIOS 호출과
-폰트 버퍼 지우기는 Flutter에 대응하는 게임 규칙이 아니므로 제외했다.
+여러 유닛에 대응하는 Dart 실행 경로와 회귀 테스트가 있다. 이는 구현 범위의
+표시이며 **원본과의 동등성 검증 완료 표시가 아니다.** JSON 사건의 일부는
+`LoreSpecProcedures`와 `LoreTalkProcedures`에서 선택해 실행하고, 포털과
+전투·화면 후속은 별도 처리기가 담당한다. 한 프로시저 전체가 단일 코어에서
+원본 순서대로 재생된다고 가정하지 않는다.
 
-| 원본 유닛 | 직접 실행 완료 | 남은 루틴·경계 |
+| 원본 영역 | 현재 대응 구현 | 남은 검증 |
 | --- | --- | --- |
-| `LOREMAIN` | `enter_water`, `enter_swamp`, `enter_lava`, `Move_Mode`, `Main` | 입력 후 현재 타일 재판정, 맵 26 방향 그림 예외, 소리 전환, Space의 전투 결과 초기화까지 앱에 연결했다. |
-| `LOREENT` | `entermode`, `sign` | 27개 목적지·4개 수문장 입구·7곳의 지도 변경·표지판을 원본형 Dart 코드로 실행한다. 대사 텍스트와 범용 효과 실행기는 데이터/엔진 경계다. |
-| `LORETALK` | `map6`, `map7`, `map9`, `map10`, `map24`, `map27` 전체 이식 완료 | `talkmode` 전체. 원본 대화가 존재하는 맵 6(성도 CASTLE LORE), 맵 7(LASTDITCH), 맵 9(GAIA TERRA), 맵 10(WATER FIELD), 맵 24(LAST SHELTER), 맵 27(PYRAMID1) 전체 대화 프로시저가 `LoreTalkProcedures`와 `LoreTalkDispatcher`로 원본 순서 및 조건에 맞춰 이식되었다. 시설(`findFacility`) 우선권 및 퀘스트 단계별 조건 분기 완결. |
-| `LORESPEC` | `map1`~`map27` 전체 이식 완료 | `sgn`, `specialevent_part1`, `specialevent_part2`, `specialevent` 및 모든 지도별 본문. 맵 1 식량 분기, 맵 4 이동·Draconian·Ancient Evil 분기, 맵 6 상자·감옥전투·무기실·출구 분기, 맵 7 비밀벽과 맵 8 특수 타일 분기, 맵 9 금화 5곳 및 y=10 관문 배척·SWAMP GATE 조언 분기, 맵 10 층간 수직 이동 분기, 맵 11 금화 7곳·오이디푸스의 창·미이라의 방 분기, 맵 12 수수께끼 문·황금의 봉인·Rigel 만남 분기, 맵 13 피라미드 시퀀스 및 Gorgon 전투 분기, 맵 14 MENACE 중심 분기·금화 6곳·황금의 방패 분기, 맵 15 상자 2회·황금의 방패·황금의 갑옷·ArchiGagoyle 보스전 분기, 맵 16 Wivern 단계별 분기, 맵 17 Red Antares 만남·Hidra 보스전·지형 변형 분기, 맵 18 Spica 만남·통로 개방·Minotaur 전투·Huge Dragon 보스전 분기, 맵 19 늪속 레버·복도 수호자·7개 방 추첨 및 Crab God 보스전 분기, 맵 20 퀴즈 문 통과/오답 퇴장·퀴즈 3종·Minotaur·Astral Mud 3연전 분기, 맵 21 라바 게이트 관문 분기, 맵 22 Death Knight 기습 및 수비대 기습 분기, 맵 23 가짜 Necromancer 2단계전 및 부상 성 레버 분기, 맵 24 출구 분기, 맵 25 금속 수호자·비밀 통로 2곳·레버 2곳 분기, 맵 26 최종 보스전 Neo-Necromancer 연출 분기, 맵 27 경계 밀어내기 분기까지 1~27 전 맵의 원본 분기가 `LoreSpecProcedures`에 의해 단일 진입점에서 원본 순서로 완전히 실행된다. 대응 JSON은 절차가 사용하는 데이터로 단일화되었고 보관/비교 자료로 유지된다. |
-| `LOREBATT` | 20개 루틴 전체 이식 완료 | `PlusExperience`, `PlusGold`, `DisplayEnemies`, `ExistEnemies`, `AttackOne`, `CastOne`, `CastAll`, `CastSpecial`, `BattleESP`, `RunAway`, `WeaponAttack`, `castattacksub`, `castattackone`, `castattackall`, `enemycure`, `castattack`, `specialattack`, `SpecialCastAttack`, `EnemyAttack`, `EndBattle`, `BattleMode`, `randomenemy`, `EncounterEnemy`가 `BattleEngine`, `LoreEncounterLogic`, `LoreBattleProgress`, `ScriptBattleSession`, `BattleViewportView`에 완전 이식 및 검증 완료. |
-| `LOREMENU` | 21개 루틴 전체 이식 완료 | `AttackSpell`, `SPnotEnough`, `HealOne`, `CureOne`, `ConsciousOne`, `RevitalizeOne`, `HealAll`, `CureAll`, `ConscoisAll`, `RevitalizeAll`, `CureSpell`, `PhenominaSpell`, `ViewParty`, `ViewCharacter`, `QuickView`, `CastSpell`, `ReturnPredict`, `Extrasense`, `Rest`, `GameOption`, `SelectMode`가 `FieldMagicLogic`, `TownLogic`, `FieldHotkeys`, `FieldMenuDialog`, `EspDialog`, `QuickViewDialog`에 완전 이식 및 검증 완료. |
-| `LORECRET` | 캐릭터 생성 전체 이식 완료 | `CreateCharacter`, `WhatClass`, `Display`, `Name`, `Profile`, `First`~`Fourth`, `Last`의 4대 문답, 스탯/장비/성별/나이/외모 설정 및 초기 자금/식량(2000골드, 20식량) 규칙이 `CharacterCreationScreen`, `LoreCreationData`, `PartyMember.createDefault`로 완전 이식 및 검증 완료. |
-| `LOREEND` | 엔딩 연출 전체 이식 완료 | `End_Demo`, `FadeIn/Out`, `EndMessage`, `ThunderEffect`, `StaffMessage`, `The End` 스탭롤 및 에필로그가 `EndingView`로 완전 이식 및 검증 완료. |
+| `LOREMAIN`·`LOREENT` | `LoreFieldSession`, `LoreMainProcedures`, `LoreEntProcedures`, `LorePortalSession` | 호출 순서, 저장·재방문과 원본 상태 비교 |
+| `LORETALK`·`LORESPEC` | `LoreTalkProcedures`, `LoreSpecProcedures`, JSON 콘텐츠와 스크립트 실행기 | 모든 조건·선택·전투 후속·동적 지도 쓰기 및 비활성 규칙 분류 |
+| `LOREBATT`·`LOREMENU`·`LORECRET`·`LOREEND` | 전투·메뉴·생성·엔딩 처리기와 관련 테스트 | 루틴별 원본 효과·경계값·실제 화면 경로 비교 |
+| `LORESUB`·`LOREHELP` 및 플랫폼 유닛 | 여러 상태·입출력 어댑터 | 전역 상태 의미, 미지원 구문, 표시·오디오 대응 감사 |
 
-`LOREMAIN`, `LOREENT`, `LORETALK`, `LORESPEC`, `LOREBATT`, `LOREMENU`, `LORECRET`, `LOREEND`의 전 유닛 게임 핵심 프로시저가 모두 Dart 코어로 완전 직접 이식되었으며, 477개 전체 단위 테스트가 무결하게 통과한다.
+현재 판정과 숫자는 `PORT_CONTRACT_LEDGER.md`, `PORT_MAP_PARITY.md`,
+`PORT_BRANCH_AUDIT.md`를 따른다. 특히 원본 제어 지점의 부분 근거 6건,
+검증 완료 0건, 게임 제어 지점 미검증 1,848건이라는 장부 상태에서 전체
+이식 완료를 선언할 수 없다. 테스트 통과는 이식 코드의 회귀 검증이며,
+원본 실행 결과와의 비교 증거를 별도로 연결해야 한다.
