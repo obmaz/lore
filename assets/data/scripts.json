@@ -892,7 +892,8 @@
             "y": 77
           }
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "den4-gorgon",
@@ -947,7 +948,8 @@
         {
           "say": "당신들은 Gorgon을 물리쳤다."
         }
-      ]
+      ],
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "lastditch-passwall-left",
@@ -20358,7 +20360,8 @@
       "disabled": true,
       "yMin": 96,
       "yMax": 96,
-      "note": "조건 미지원: wantexit"
+      "note": "조건 미지원: wantexit",
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-13-L669-2",
@@ -20375,7 +20378,8 @@
       "disabled": true,
       "yMin": 96,
       "yMax": 96,
-      "note": "조건 미지원: wantexit"
+      "note": "조건 미지원: wantexit",
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-13-L669-1x",
@@ -20394,7 +20398,8 @@
       "disabled": true,
       "require": {
         "tileAtPlayerZero": true
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-13-L669-2x",
@@ -20411,7 +20416,8 @@
       "disabled": true,
       "require": {
         "tileAtPlayerZero": true
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-13-L669",
@@ -20607,7 +20613,8 @@
       "disabled": true,
       "xMin": 76,
       "xMax": 86,
-      "note": "미지원: for j := 71 to 81 do; 미지원: if map[i,j] = 52 then map[i,j] := 44;; 미지원: if map[i,j] in [40,51] then map[i,j] := 42;; 미지원: allright := FALSE;; 미지원: x1 := sgn(81-x);; 미지원: if x1 = 0 then allright := TRUE; 미지원: else begin; 미지원: if x1 = 1 then face := 6 else face := 7;; 미지원: x := x + x1;; 미지원: y1 :="
+      "note": "미지원: for j := 71 to 81 do; 미지원: if map[i,j] = 52 then map[i,j] := 44;; 미지원: if map[i,j] in [40,51] then map[i,j] := 42;; 미지원: allright := FALSE;; 미지원: x1 := sgn(81-x);; 미지원: if x1 = 0 then allright := TRUE; 미지원: else begin; 미지원: if x1 = 1 then face := 6 else face := 7;; 미지원: x := x + x1;; 미지원: y1 :=",
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-13-L669-1xx",
@@ -20634,7 +20641,8 @@
           "etc6"
         ]
       },
-      "note": "적 배치(계산식): joinenemy(i, i+49); 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 조건 미지원: not enemy[3].dead",
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-13-L669-2xx",
@@ -20662,7 +20670,8 @@
           "etc38_bit5"
         ]
       },
-      "note": "적 배치(계산식): joinenemy(i, i+49); 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 조건 미지원: not enemy[3].dead",
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-13-L669-3",
@@ -20685,7 +20694,8 @@
           "etc38_bit5"
         ]
       },
-      "note": "적 배치(계산식): joinenemy(i, i+49); 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 조건 미지원: not enemy[3].dead",
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-13-L669-4",
@@ -20711,7 +20721,8 @@
           "etc38_bit5"
         ]
       },
-      "note": "적 배치(계산식): joinenemy(i, i+49); 조건 미지원: not enemy[3].dead"
+      "note": "적 배치(계산식): joinenemy(i, i+49); 조건 미지원: not enemy[3].dead",
+      "portedBy": "LoreSpecProcedures.map13"
     },
     {
       "id": "spec-14-L814-1",

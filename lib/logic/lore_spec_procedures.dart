@@ -340,6 +340,47 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:669-813`, map 13 (SWAMP FIELD).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 96` handled via portal session.
+  /// 2. Pyramid sequence at `(76..86, 71..81)`:
+  ///    - `den4-pyramid-chapters` (requires special tile 52).
+  /// 3. Gorgon battle at `y == 68`:
+  ///    - `party.etc[38] and bit5 == 0` (`den4-gorgon`).
+  static ScriptRun? map13(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if (x >= 76 && x <= 86 && y >= 71 && y <= 81) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'den4-pyramid-chapters',
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (y == 68 && x >= 80 && x <= 82) {
+      final defeated = context.flags.contains('etc38_bit5');
+      if (!defeated) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'den4-gorgon',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
