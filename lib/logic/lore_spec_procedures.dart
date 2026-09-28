@@ -295,6 +295,7 @@ class LoreSpecProcedures {
   ///    - `x != 18`: mud trap (`t_den2-trap-y10`).
   /// 4. Rigel encounter at `(12, 48)`:
   ///    - `party.etc[31] and bit2 == 0` (`rigel-join`).
+  /// 5. Other special tiles without levitation: step back from the cliff.
   static ScriptRun? map12(
     int x,
     int y,
@@ -302,7 +303,9 @@ class LoreSpecProcedures {
     LoreScriptEngine scripts,
   ) {
     if (!scripts.usingJson ||
-        (context.tileAtPlayer != null && context.tileAtPlayer != 0)) {
+        (context.tileAtPlayer != null &&
+            context.tileAtPlayer != 0 &&
+            context.tileAtPlayer != 52)) {
       return null;
     }
 
@@ -335,6 +338,17 @@ class LoreSpecProcedures {
         );
         return scripts.startProcedure(content, context);
       }
+    }
+
+    // The y=71 exit is handled by the portal session. Rigel's tile is exempt
+    // even after the encounter flag has been set.
+    if (y != 71 && !(x == 12 && y == 48) &&
+        !context.flags.contains('etc4') &&
+        !context.flags.contains('levitateActive')) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == 'gaia-den-cliff-no-levitation',
+      );
+      return scripts.startProcedure(content, context);
     }
 
     return null;

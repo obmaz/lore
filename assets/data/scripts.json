@@ -25693,6 +25693,23 @@
           }
         }
       ]
+    },
+    {
+      "id": "gaia-den-cliff-no-levitation",
+      "trigger": "step",
+      "map": 12,
+      "once": false,
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map12",
+      "note": "LORESPEC.PAS:663-667; 공중 부상 없이 Rigel 칸 이외의 특수 타일에서 이전 위치로 되돌린다.",
+      "steps": [
+        {
+          "say": "일행들은 절벽으로 떨어질뻔 했다."
+        },
+        {
+          "stepBack": true
+        }
+      ]
     }
   ]
 }
