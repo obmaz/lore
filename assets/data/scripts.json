@@ -1493,7 +1493,8 @@
         "notAllFlags": [
           "etc32_bit1"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "gold-14-6-6",
@@ -1531,7 +1532,8 @@
         "notAllFlags": [
           "etc32_bit2"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "gold-14-18-10",
@@ -1569,7 +1571,8 @@
         "notAllFlags": [
           "etc32_bit3"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "gold-14-6-44",
@@ -1607,7 +1610,8 @@
         "notAllFlags": [
           "etc32_bit4"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "gold-14-31-30",
@@ -1645,7 +1649,8 @@
         "notAllFlags": [
           "etc32_bit5"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "gold-14-31-8",
@@ -1683,7 +1688,8 @@
         "notAllFlags": [
           "etc32_bit6"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "gold-14-14-28",
@@ -4392,6 +4398,9 @@
           }
         },
         {
+          "flag": "etc32_bit7"
+        },
+        {
           "flag": "goldenShieldMenaceTaken"
         }
       ],
@@ -4399,9 +4408,11 @@
       "y": 20,
       "require": {
         "notAllFlags": [
+          "etc32_bit7",
           "goldenShieldMenaceTaken"
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "golden-shield-menace",
@@ -4463,7 +4474,8 @@
             "eq": 3
           }
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "menace-center-25-8",
@@ -4520,7 +4532,8 @@
             "eq": 3
           }
         ]
-      }
+      },
+      "portedBy": "LoreSpecProcedures.map14"
     },
     {
       "id": "menace-center-26-8",

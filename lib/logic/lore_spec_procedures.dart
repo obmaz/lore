@@ -381,6 +381,81 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:814-878`, map 14 (DEN1 / SWAMP DEN / MENACE).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 46` handled via portal session.
+  /// 2. MENACE center at `(25, 8)` or `(26, 8)` when `party.etc[10] == 3`:
+  ///    - `spec-14-L814-1-1` / `spec-14-L814-2-1` increments `lordahn` quest step to 4.
+  /// 3. Gold finds:
+  ///    - `(6, 6)`: 1000 gold, `etc32_bit1`
+  ///    - `(18, 10)`: 2500 gold, `etc32_bit2`
+  ///    - `(6, 44)`: 400 gold, `etc32_bit3`
+  ///    - `(31, 30)`: 600 gold, `etc32_bit4`
+  ///    - `(31, 8)`: 1500 gold, `etc32_bit5`
+  ///    - `(14, 28)`: 1000 gold, `etc32_bit6`
+  /// 4. Golden Shield at `(16, 20)`:
+  ///    - `party.etc[32] and bit7 == 0` (`etc32_bit7` / `goldenShieldMenaceTaken`).
+  static ScriptRun? map14(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson) return null;
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    if ((x == 25 || x == 26) && y == 8) {
+      final quest = context.questSteps['lordahn'] ?? 0;
+      if (quest == 3) {
+        final scriptId = x == 25 ? 'spec-14-L814-1-1' : 'spec-14-L814-2-1';
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == scriptId,
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    final goldId = switch ((x, y)) {
+      (6, 6) => !context.flags.contains('etc32_bit1') ? 'spec-14-L814' : null,
+      (18, 10) =>
+        !context.flags.contains('etc32_bit2') ? 'spec-14-L814x' : null,
+      (6, 44) =>
+        !context.flags.contains('etc32_bit3') ? 'spec-14-L814xx' : null,
+      (31, 30) =>
+        !context.flags.contains('etc32_bit4') ? 'spec-14-L814xxx' : null,
+      (31, 8) =>
+        !context.flags.contains('etc32_bit5') ? 'spec-14-L814xxxx' : null,
+      (14, 28) =>
+        !context.flags.contains('etc32_bit6') ? 'spec-14-L814xxxxx' : null,
+      _ => null,
+    };
+    if (goldId != null) {
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == goldId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    if (x == 16 && y == 20) {
+      final hasTaken =
+          context.flags.contains('etc32_bit7') ||
+          context.flags.contains('goldenShieldMenaceTaken');
+      if (!hasTaken) {
+        final content = scripts.scripts.singleWhere(
+          (script) => script.id == 'spec-14-L814xxxxxx',
+        );
+        return scripts.startProcedure(content, context);
+      }
+    }
+
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(
