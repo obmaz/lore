@@ -341,22 +341,32 @@ void main() {
     test('LASTDITCH 비밀벽은 양쪽에서 접근하면 선 행의 타일이 열린다', () async {
       await LoreScriptEngine.instance.load();
       for (final x in [30, 32]) {
-        final run = LoreScriptEngine.instance.startStep(
-          7,
+        expect(
+          LoreScriptEngine.instance.startStep(
+            7,
+            x,
+            9,
+            const ScriptContext(tileAtPlayer: 0),
+          ),
+          isNull,
+          reason: 'map7 절차 전환 후 범용 startStep은 비활성화되어야 한다',
+        );
+        final run = LoreSpecProcedures.map7(
           x,
           9,
           const ScriptContext(tileAtPlayer: 0),
+          LoreScriptEngine.instance,
         );
         expect(run, isNotNull);
         final area = run!.outcome.tileAreas.single;
         expect((area.xMin, area.xMax, area.tile), (31, 31, 45));
         expect(area.atPlayerY, isTrue);
         expect(
-          LoreScriptEngine.instance.startStep(
-            7,
+          LoreSpecProcedures.map7(
             x,
             9,
             const ScriptContext(tileAtPlayer: 44),
+            LoreScriptEngine.instance,
           ),
           isNull,
         );

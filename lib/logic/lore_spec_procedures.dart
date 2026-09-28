@@ -67,6 +67,48 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `LORESPEC.PAS:306-331`, map 7 (LASTDITCH).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. `x == 50`: GROUND GATE portal to map 8 (handled via portal session).
+  /// 2. `x == 30` or `x == 32`: secret passage wall at `(31, y)` opens (tile 45).
+  /// 3. `y == 71`: exit to map 1 (handled via portal session).
+  static ScriptRun? map7(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson || context.tileAtPlayer != 0) return null;
+
+    if (x == 30 || x == 32) {
+      final scriptId = x == 30
+          ? 'lastditch-passwall-left'
+          : 'lastditch-passwall-right';
+      final content = scripts.scripts.singleWhere(
+        (script) => script.id == scriptId,
+      );
+      return scripts.startProcedure(content, context);
+    }
+
+    return null;
+  }
+
+  /// `LORESPEC.PAS:332-353`, map 8 (WATER FIELD).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. `x == 50`: GROUND GATE portal to map 7 (handled via portal session).
+  /// 2. `y == 71`: exit to map 2 (handled via portal session).
+  static ScriptRun? map8(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (!scripts.usingJson || context.tileAtPlayer != 0) return null;
+    return null;
+  }
+
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.
   static ScriptRun? map6Chest(

@@ -971,7 +971,9 @@
             "tile": 45
           }
         }
-      ]
+      ],
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map7"
     },
     {
       "id": "lastditch-passwall-right",
@@ -995,7 +997,9 @@
             "tile": 45
           }
         }
-      ]
+      ],
+      "disabled": true,
+      "portedBy": "LoreSpecProcedures.map7"
     },
     {
       "id": "spec-9-L354",
