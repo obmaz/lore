@@ -17,25 +17,25 @@
     "VOICE.PAS"
   ],
   "source_sha256": {
-    "ADLIB.PAS": "8c4f0885cced23ae1fe99da0f5065d7fc786c5b6448887e931e95c076c182a76",
-    "LORE.PAS": "b74b530fe29d83b662c84f0867da3d4a2efd0fcc4e634c9192916ceb3f9c1bea",
-    "LOREBATT.PAS": "d29b0b4d553afa45410234055521aaaa3dce7ec52135cbaa53963399aeb503f1",
-    "LORECRET.PAS": "c52e77486b2fa235b48b663adad6e99c06ec202154d3f072f68a949f42cfcb18",
-    "LOREEND.PAS": "d491454ef84aa0bf9515b7ef040dc2e8b930b2cbdd43b6f0bd9f4a4c7b51f268",
-    "LOREENT.PAS": "63ba4096d8e68b62a288d12240da100aacfb206fe2fcba3a004f0a506b1eef7a",
-    "LOREHELP.PAS": "9126140354f357dad8b36325b39fd514f8ebbff6cd760b10a3e3926c754d9b67",
-    "LOREMAIN.PAS": "0a093fc5d163bbf130c40821b01ef4402553c23d759a819756052d21a52d1254",
-    "LOREMENU.PAS": "16979701d9c96288e888f3b2ef376b4d3387c5b2246ac8477e9e9e9877b83bf8",
-    "LORESPEC.PAS": "1ef3833f32e16c39fca0004ea954090bf2f47843cf99f5b8d6e0aadb30945522",
-    "LORESUB.PAS": "b4d8b1f0442cf9628d6d0cd69bc24e825db0e602a8284156c4ad66929b5c00f3",
-    "LORETALK.PAS": "d56b7309f6c20212f8821a2a0bd8f2d4a5889e2fd510559c6b67e83807088b3e",
-    "UHANX.PAS": "eabaf20eaeb5c724ef877f02395bd90f6dd771627497f70f28d5a7265d8118d1",
-    "VOICE.PAS": "272c7d4b5dfd3650f3d322515c166db1e300e718eb4f0fda7a0981228cc321c6"
+    "ADLIB.PAS": "fe6217fe6d19111dbb5a58430a9bb17441d8698b09cf800fb2547d70a95d5e82",
+    "LORE.PAS": "4a1ec9a08af8592a76853f2833272bd198c0f00ee0e9fa425df684d00940fc77",
+    "LOREBATT.PAS": "38ae2df873335a641b79321972c7123411a4e3a530fcd221d42e471da88fdaab",
+    "LORECRET.PAS": "76b8bc8f76465f5cc115453ac85c44fe198ef432d1852f6ed6034457fdf7a1e5",
+    "LOREEND.PAS": "c976d68c090f3d48791b029b587c9e7db9d2e9be75c0153a617850ab8a6bdb10",
+    "LOREENT.PAS": "53237ff251b0780a2c51dfdef59218f0a05c9f38bf077887069bfd1443cfe841",
+    "LOREHELP.PAS": "c3414945e11b023e3f169c7ba294609f8768e53d0ff85add1169728aa53f8346",
+    "LOREMAIN.PAS": "6f4b6a9e0ea2de8e6ebe3e69b7f743994b33b4d2ea0a50694bddeced0afd982e",
+    "LOREMENU.PAS": "a8681529649c4fac737dd3ff49041c27e3efe69d3353ac8463f75fe1fe1b004e",
+    "LORESPEC.PAS": "87ff0b99c581fba18840032b148c223433f6bbff618ec6d16dee4cb4e48b3d28",
+    "LORESUB.PAS": "f42cea9a4fd3957e85207f01684ec1bcc971a6df099aa0946d14fb81838faf01",
+    "LORETALK.PAS": "838cdc4b45b9b6aaafee74dab1d700590714b67f3b24143bfb45223a451414e0",
+    "UHANX.PAS": "95a9b7e6caf995d98746fd472328c2f847cb0800cc995d8b97a455c8e11ee48b",
+    "VOICE.PAS": "c5d72477af63d5a8d5344393df3fd7620b568ff5ae5dd6cad22840e3718e4704"
   },
   "source_catalog": [
     {
       "file": "ADLIB.PAS",
-      "sha256": "8c4f0885cced23ae1fe99da0f5065d7fc786c5b6448887e931e95c076c182a76",
+      "sha256": "fe6217fe6d19111dbb5a58430a9bb17441d8698b09cf800fb2547d70a95d5e82",
       "role": "reachable-program-or-unit"
     },
     {
@@ -45,118 +45,118 @@
     },
     {
       "file": "FOEDITOR.PAS",
-      "sha256": "0b28c50bf8b90511173cb614eb6054b6f04d971d0975281f646443ba65b8fa2e",
+      "sha256": "5b6197fa0edbde3782fae7ed2f2c93906a66e789a1f24300f44ed172598cb94c",
       "role": "independent-utility"
     },
     {
       "file": "GFE.PAS",
-      "sha256": "d7cf8fd160dc903e0f85843ee644fa00c10a8d2754fe6fe64258b0c161485911",
+      "sha256": "ce6d25c828d52db247d45ac9945412ad936fa2af94525566e674e6d49a16cd4c",
       "role": "independent-utility"
     },
     {
       "file": "LOOKFOE.PAS",
-      "sha256": "2a82e9a5f59b1b7376db32787919ff117f6a24cc6fc95d0cc2706c1651e50489",
+      "sha256": "4a05c0af39e4b14e60f57c4ea6ce3f0ed6c8aba225f1bee2a79b719b540d5865",
       "role": "independent-utility"
     },
     {
       "file": "LORE.PAS",
-      "sha256": "b74b530fe29d83b662c84f0867da3d4a2efd0fcc4e634c9192916ceb3f9c1bea",
+      "sha256": "4a1ec9a08af8592a76853f2833272bd198c0f00ee0e9fa425df684d00940fc77",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LOREBATT.PAS",
-      "sha256": "d29b0b4d553afa45410234055521aaaa3dce7ec52135cbaa53963399aeb503f1",
+      "sha256": "38ae2df873335a641b79321972c7123411a4e3a530fcd221d42e471da88fdaab",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LORECHT.PAS",
-      "sha256": "995cbf177ca42addda37f50399976d6a196f351b8869ba446f115dd25682b6e1",
+      "sha256": "e86991cbdb637946fe8fe8d30aefdf65b24bb2c1fbb96704ca233df1135ee8c6",
       "role": "independent-utility"
     },
     {
       "file": "LORECHT2.PAS",
-      "sha256": "8d993e8d47d9c0447e59f56a7ae776f3fdac964af6cb55b8e153cb78312ab487",
+      "sha256": "75b462ddbe1ea8160f41e2575265f4931e77781622b727219e748c3ac790d348",
       "role": "independent-utility"
     },
     {
       "file": "LORECRET.PAS",
-      "sha256": "c52e77486b2fa235b48b663adad6e99c06ec202154d3f072f68a949f42cfcb18",
+      "sha256": "76b8bc8f76465f5cc115453ac85c44fe198ef432d1852f6ed6034457fdf7a1e5",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LOREEND.PAS",
-      "sha256": "d491454ef84aa0bf9515b7ef040dc2e8b930b2cbdd43b6f0bd9f4a4c7b51f268",
+      "sha256": "c976d68c090f3d48791b029b587c9e7db9d2e9be75c0153a617850ab8a6bdb10",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LOREENT.PAS",
-      "sha256": "63ba4096d8e68b62a288d12240da100aacfb206fe2fcba3a004f0a506b1eef7a",
+      "sha256": "53237ff251b0780a2c51dfdef59218f0a05c9f38bf077887069bfd1443cfe841",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LOREHELP.PAS",
-      "sha256": "9126140354f357dad8b36325b39fd514f8ebbff6cd760b10a3e3926c754d9b67",
+      "sha256": "c3414945e11b023e3f169c7ba294609f8768e53d0ff85add1169728aa53f8346",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LOREMAIN.PAS",
-      "sha256": "0a093fc5d163bbf130c40821b01ef4402553c23d759a819756052d21a52d1254",
+      "sha256": "6f4b6a9e0ea2de8e6ebe3e69b7f743994b33b4d2ea0a50694bddeced0afd982e",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LOREMENU.PAS",
-      "sha256": "16979701d9c96288e888f3b2ef376b4d3387c5b2246ac8477e9e9e9877b83bf8",
+      "sha256": "a8681529649c4fac737dd3ff49041c27e3efe69d3353ac8463f75fe1fe1b004e",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LORESPEC.PAS",
-      "sha256": "1ef3833f32e16c39fca0004ea954090bf2f47843cf99f5b8d6e0aadb30945522",
+      "sha256": "87ff0b99c581fba18840032b148c223433f6bbff618ec6d16dee4cb4e48b3d28",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LORESUB.PAS",
-      "sha256": "b4d8b1f0442cf9628d6d0cd69bc24e825db0e602a8284156c4ad66929b5c00f3",
+      "sha256": "f42cea9a4fd3957e85207f01684ec1bcc971a6df099aa0946d14fb81838faf01",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "LORETALK.PAS",
-      "sha256": "d56b7309f6c20212f8821a2a0bd8f2d4a5889e2fd510559c6b67e83807088b3e",
+      "sha256": "838cdc4b45b9b6aaafee74dab1d700590714b67f3b24143bfb45223a451414e0",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "ME.PAS",
-      "sha256": "d072330673b79da475275142b8fcb05554d1e19d514e382797ea6b7e6b1c3cf4",
+      "sha256": "03995d3a73e85142de9358454f2d77afb372c078c94210ffda65675decd44385",
       "role": "independent-utility"
     },
     {
       "file": "MOUSE.PAS",
-      "sha256": "f1e3bf5345b90ace9f34701d7310c46909d94aa9e6a854c1b075dfd0058aa872",
+      "sha256": "fe6a9646aed2fdd484e0fd8aa80084095aa3433aa94138b4381a05f7f59a83af",
       "role": "unit-outside-main-Uses-graph"
     },
     {
       "file": "MOVEFONT.PAS",
-      "sha256": "7f056f9b54067400e6642fd7c2d356f16beba0e4d579486113e844e792fbea33",
+      "sha256": "7a3c6be461dc6db9f104b56ba9186d0cdb55ef6711539bd333ee36a48e34f4c2",
       "role": "independent-utility"
     },
     {
+      "file": "readme.txt",
+      "sha256": "b808bd493c49e0630bdf697bae7685343d83b34da731af38a951b81e0a5a3863",
+      "role": "source-support-file"
+    },
+    {
       "file": "SOUNDRV.PAS",
-      "sha256": "83ef5ea7bcaa1fff1b64bdea883891976155f7e8025f78a950e12a5df0cc78fb",
+      "sha256": "07a688510c1017c49d997da6718282f96cc60e65e1d1345d49016bbaf3272fdf",
       "role": "pascal-source-fragment"
     },
     {
       "file": "UHANX.PAS",
-      "sha256": "eabaf20eaeb5c724ef877f02395bd90f6dd771627497f70f28d5a7265d8118d1",
+      "sha256": "95a9b7e6caf995d98746fd472328c2f847cb0800cc995d8b97a455c8e11ee48b",
       "role": "reachable-program-or-unit"
     },
     {
       "file": "VOICE.PAS",
-      "sha256": "272c7d4b5dfd3650f3d322515c166db1e300e718eb4f0fda7a0981228cc321c6",
+      "sha256": "c5d72477af63d5a8d5344393df3fd7620b568ff5ae5dd6cad22840e3718e4704",
       "role": "reachable-program-or-unit"
-    },
-    {
-      "file": "readme.txt",
-      "sha256": "32161d06545a08268ed40824aaabd6eeb16965cdf24f4c5b9c54af3e0fef2777",
-      "role": "source-support-file"
     }
   ],
   "routines": {
@@ -25203,87 +25203,87 @@
   ],
   "runtime_assets": [
     {
-      "source": "repo_source/LORE_1993_runtime/ASCII.FNT",
+      "source": "repo_source\\LORE_1993_runtime\\ASCII.FNT",
       "kind": "fnt",
       "sha256": "6b7ffd8dc99d6035cc3e3ead9b99d33c6373be952effbe908aa20ee54307e117",
-      "port_copy": "assets/fonts/ASCII.FNT",
+      "port_copy": "assets\\fonts\\ASCII.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/CHARA.FNT",
+      "source": "repo_source\\LORE_1993_runtime\\CHARA.FNT",
       "kind": "fnt",
       "sha256": "4e0eaf6dc3a16773fccef1da26568e390b63531933e763a769f813ab304776b0",
-      "port_copy": "assets/fonts/CHARA.FNT",
+      "port_copy": "assets\\fonts\\CHARA.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/DEN.FNT",
+      "source": "repo_source\\LORE_1993_runtime\\DEN.FNT",
       "kind": "fnt",
       "sha256": "e5a482a330df45e379f63c82e06a1514e1f0194fe24c32c0c758f325eaf2eb71",
-      "port_copy": "assets/fonts/DEN.FNT",
+      "port_copy": "assets\\fonts\\DEN.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/DEN1.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\DEN1.MAP",
       "kind": "map",
       "sha256": "a0e2f454256435b50a908c9cae94d44ba5ad675a9a5a9a9ea55edc84a250e0ea",
-      "port_copy": "assets/maps/DEN1.MAP",
+      "port_copy": "assets\\maps\\DEN1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/DEN2.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\DEN2.MAP",
       "kind": "map",
       "sha256": "df65ca3cc90227293c89bc0ca0296f975b62dffe7a9eb9437a0c6c51ad5c34ff",
-      "port_copy": "assets/maps/DEN2.MAP",
+      "port_copy": "assets\\maps\\DEN2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/DEN3.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\DEN3.MAP",
       "kind": "map",
       "sha256": "bb4b6f6e174098fab370edd95c6f25000d1644313ee4984797c9e1b3d190dc4c",
-      "port_copy": "assets/maps/DEN3.MAP",
+      "port_copy": "assets\\maps\\DEN3.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/DEN4.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\DEN4.MAP",
       "kind": "map",
       "sha256": "02cda41f7901331a72145c55f49683e60e21fe4aa328a6411c78edfdcf3c4d0d",
-      "port_copy": "assets/maps/DEN4.MAP",
+      "port_copy": "assets\\maps\\DEN4.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/DEN5.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\DEN5.MAP",
       "kind": "map",
       "sha256": "f3a82cdd3c42cb97086e23ae8ddfbffbabcdfe9970735ed15d84e443514c1c61",
-      "port_copy": "assets/maps/DEN5.MAP",
+      "port_copy": "assets\\maps\\DEN5.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/DEN6.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\DEN6.MAP",
       "kind": "map",
       "sha256": "0cf9c22f7327d141f153678d8fb68e115f091f0a67e916cced646a1903c739db",
-      "port_copy": "assets/maps/DEN6.MAP",
+      "port_copy": "assets\\maps\\DEN6.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/DEN7.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\DEN7.MAP",
       "kind": "map",
       "sha256": "37a2d83198a1f89aa8c576bb8522fa11f75d7625e900c388957029ca33ed94ee",
-      "port_copy": "assets/maps/DEN7.MAP",
+      "port_copy": "assets\\maps\\DEN7.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/END.CMD",
+      "source": "repo_source\\LORE_1993_runtime\\END.CMD",
       "kind": "cmd",
       "sha256": "0c62260186d87c9b8bcafeec97dc77be5516e8ea807c500fc95f540b6eb2f281",
       "port_copy": null,
@@ -25291,47 +25291,47 @@
       "status": "unmapped-runtime-file"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/FOEDATA.DAT",
+      "source": "repo_source\\LORE_1993_runtime\\FOEDATA.DAT",
       "kind": "dat",
       "sha256": "dc30cb5170a293e34a88d4018bdc67d3411b24b4c3bc31bb800f6970d80e9480",
-      "port_copy": "assets/data/FOEDATA.DAT",
+      "port_copy": "assets\\data\\FOEDATA.DAT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/GROUND.FNT",
+      "source": "repo_source\\LORE_1993_runtime\\GROUND.FNT",
       "kind": "fnt",
       "sha256": "00e06e563289d3c647583355681ddefe0098ec1146228f5fd1bec6e4f5902eb7",
-      "port_copy": "assets/fonts/GROUND.FNT",
+      "port_copy": "assets\\fonts\\GROUND.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/GROUND1.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\GROUND1.MAP",
       "kind": "map",
       "sha256": "be28e140bb5603854cc3b417dddfb047ef014da49d7f053266070d8e643f6441",
-      "port_copy": "assets/maps/GROUND1.MAP",
+      "port_copy": "assets\\maps\\GROUND1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/GROUND2.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\GROUND2.MAP",
       "kind": "map",
       "sha256": "5b710bc291c20e0ac2950ca24bfa35dce2beb714ed1369f9dc22642b3413aa57",
-      "port_copy": "assets/maps/GROUND2.MAP",
+      "port_copy": "assets\\maps\\GROUND2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/HIT.VOC",
+      "source": "repo_source\\LORE_1993_runtime\\HIT.VOC",
       "kind": "voc",
       "sha256": "c0cb9d3d9db3a56704f48779e17fe871f76fd56d033932eb532c691b3eb65a64",
-      "port_copy": "assets/audio/hit.wav",
+      "port_copy": "assets\\audio\\hit.wav",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/INIT.CMD",
+      "source": "repo_source\\LORE_1993_runtime\\INIT.CMD",
       "kind": "cmd",
       "sha256": "e0beb194edf4530473e4f6ae9d4ed32012ff90f97d64f0a64a6503eee5a9084d",
       "port_copy": null,
@@ -25339,63 +25339,63 @@
       "status": "unmapped-runtime-file"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/KEEP.FNT",
-      "kind": "fnt",
-      "sha256": "cc5f03f89e972a7846e5829f748fa41752d02b2736266d82e235499ebee9cc8b",
-      "port_copy": "assets/fonts/KEEP.FNT",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/KEEP1.MAP",
-      "kind": "map",
-      "sha256": "60f08449d182d7c4167a5c44c79cf5f550777afdc3d150616ac32e9911914c81",
-      "port_copy": "assets/maps/KEEP1.MAP",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/KEEP2.MAP",
-      "kind": "map",
-      "sha256": "3ad76fc298c714a317829c2acfa7d4bcb857b67d4c09b4ffb68af210604b670e",
-      "port_copy": "assets/maps/KEEP2.MAP",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/KEEP3.MAP",
-      "kind": "map",
-      "sha256": "a114241aba01f09823f109a7ac27bbaf713dd00df19c08e09ee1cde87e2ea37b",
-      "port_copy": "assets/maps/KEEP3.MAP",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/K_DEN1.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\K_DEN1.MAP",
       "kind": "map",
       "sha256": "67c3853fe13785e63169a710e66574dbfd856b48f17fb861523f45612808e006",
-      "port_copy": "assets/maps/K_DEN1.MAP",
+      "port_copy": "assets\\maps\\K_DEN1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/K_DEN2.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\K_DEN2.MAP",
       "kind": "map",
       "sha256": "6a620ba4f5d667922e9d6a2750564dcaa6be75cbf7da34f25b883dac9f6c3139",
-      "port_copy": "assets/maps/K_DEN2.MAP",
+      "port_copy": "assets\\maps\\K_DEN2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/LAVA.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\KEEP.FNT",
+      "kind": "fnt",
+      "sha256": "cc5f03f89e972a7846e5829f748fa41752d02b2736266d82e235499ebee9cc8b",
+      "port_copy": "assets\\fonts\\KEEP.FNT",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\KEEP1.MAP",
+      "kind": "map",
+      "sha256": "60f08449d182d7c4167a5c44c79cf5f550777afdc3d150616ac32e9911914c81",
+      "port_copy": "assets\\maps\\KEEP1.MAP",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\KEEP2.MAP",
+      "kind": "map",
+      "sha256": "3ad76fc298c714a317829c2acfa7d4bcb857b67d4c09b4ffb68af210604b670e",
+      "port_copy": "assets\\maps\\KEEP2.MAP",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\KEEP3.MAP",
+      "kind": "map",
+      "sha256": "a114241aba01f09823f109a7ac27bbaf713dd00df19c08e09ee1cde87e2ea37b",
+      "port_copy": "assets\\maps\\KEEP3.MAP",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\LAVA.MAP",
       "kind": "map",
       "sha256": "93b073ed9882274b4caa6f1972625c6f10fd6859d606ea6cbd520aad7de8d989",
-      "port_copy": "assets/maps/LAVA.MAP",
+      "port_copy": "assets\\maps\\LAVA.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/LORE.CMD",
+      "source": "repo_source\\LORE_1993_runtime\\LORE.CMD",
       "kind": "cmd",
       "sha256": "9b0eea71a42bb193c634375447cd88df117e4500d92036a3f3d48388d91b7e05",
       "port_copy": null,
@@ -25403,7 +25403,7 @@
       "status": "unmapped-runtime-file"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/LORE.EXE",
+      "source": "repo_source\\LORE_1993_runtime\\LORE.EXE",
       "kind": "exe",
       "sha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
       "port_copy": null,
@@ -25411,194 +25411,194 @@
       "status": "engine-replaced"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/LORE0.FNT",
+      "source": "repo_source\\LORE_1993_runtime\\LORE0.FNT",
       "kind": "fnt",
       "sha256": "8f75ffc387f33a616e7a4c68ff8bd14bd3f1c86b93d90ae104da480f73611e6d",
-      "port_copy": "assets/fonts/LORE0.FNT",
+      "port_copy": "assets\\fonts\\LORE0.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/LORE1.FNT",
+      "source": "repo_source\\LORE_1993_runtime\\LORE1.FNT",
       "kind": "fnt",
       "sha256": "965ba18c196d990cc91c6fb6e93d93c0ea758a3e1d731d919eb76fd5be063972",
-      "port_copy": "assets/fonts/LORE1.FNT",
+      "port_copy": "assets\\fonts\\LORE1.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/LORE2.FNT",
+      "source": "repo_source\\LORE_1993_runtime\\LORE2.FNT",
       "kind": "fnt",
       "sha256": "75ecfa67bdf7b84ca11629c581991b8cd588641f7b5068c68a1c2b471b5fefc2",
-      "port_copy": "assets/fonts/LORE2.FNT",
+      "port_copy": "assets\\fonts\\LORE2.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/LORE3.FNT",
+      "source": "repo_source\\LORE_1993_runtime\\LORE3.FNT",
       "kind": "fnt",
       "sha256": "51f41cd7e7a43b144cf09314e66ffea3ac0283050b6daf006b699a9ee9dcbfd6",
-      "port_copy": "assets/fonts/LORE3.FNT",
+      "port_copy": "assets\\fonts\\LORE3.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/MUSIC1.BGM",
+      "source": "repo_source\\LORE_1993_runtime\\MUSIC1.BGM",
       "kind": "bgm",
       "sha256": "d7cb817e9e39a952de48d196ae7e7a738d60a132db71c7e62e808602ccb5294c",
-      "port_copy": "assets/audio/music1_title.mp3",
+      "port_copy": "assets\\audio\\music1_title.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/MUSIC2.BGM",
+      "source": "repo_source\\LORE_1993_runtime\\MUSIC2.BGM",
       "kind": "bgm",
       "sha256": "6a9eacdbaabcc262c5de2f4948e6d7b7116716abaaaa86d270c22bfe66bbebce",
-      "port_copy": "assets/audio/music2_town.mp3",
+      "port_copy": "assets\\audio\\music2_town.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/MUSIC3.BGM",
+      "source": "repo_source\\LORE_1993_runtime\\MUSIC3.BGM",
       "kind": "bgm",
       "sha256": "61dc2f9bc9eabf566bb3598c07467fdd87a757f81ec43a9672bc8be0d935124e",
-      "port_copy": "assets/audio/music3_ground.mp3",
+      "port_copy": "assets\\audio\\music3_ground.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/MUSIC4.BGM",
+      "source": "repo_source\\LORE_1993_runtime\\MUSIC4.BGM",
       "kind": "bgm",
       "sha256": "3b067bba584cdca10eaee5e2845764678da5031ec2fd2fdea3e25772535b0895",
-      "port_copy": "assets/audio/music4_den.mp3",
+      "port_copy": "assets\\audio\\music4_den.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/MUSIC5.BGM",
+      "source": "repo_source\\LORE_1993_runtime\\MUSIC5.BGM",
       "kind": "bgm",
       "sha256": "41874a69c340ef5c2ab50591fc69a0a0647b825826cc53121e27cef556026116",
-      "port_copy": "assets/audio/music5_keep.mp3",
+      "port_copy": "assets\\audio\\music5_keep.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/PYRAMID1.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\PYRAMID1.MAP",
       "kind": "map",
       "sha256": "c0f3d6c13c8286e2356afd56eecd3196be70780d57ba9ba879c2188d21cd9428",
-      "port_copy": "assets/maps/PYRAMID1.MAP",
+      "port_copy": "assets\\maps\\PYRAMID1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/README.DOC",
+      "source": "repo_source\\LORE_1993_runtime\\README.DOC",
       "kind": "doc",
-      "sha256": "370e552e2c086ec2ba6cbc3586cf68ed7209df1635f01d912c3f5b622a7d4704",
+      "sha256": "89f57376ef52031c69d6f4cc32a4b054be2897772638ec25a02fbadaaf127602",
       "port_copy": null,
       "copy_equal": null,
       "status": "documentation-only"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/README.txt",
+      "source": "repo_source\\LORE_1993_runtime\\README.txt",
       "kind": "txt",
-      "sha256": "5b966c6d6676ecf2a003f3d8ba82dfedb31760ff2521b6b61d20ae7494989bf5",
+      "sha256": "1cb2d730f9ba7efbd0cf12a355a2936fb33e7bf2aedd7bc5306a663a5870da26",
       "port_copy": null,
       "copy_equal": null,
       "status": "documentation-only"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/SCREAM1.VOC",
+      "source": "repo_source\\LORE_1993_runtime\\SCREAM1.VOC",
       "kind": "voc",
       "sha256": "74ab0633cb7bc48b9b57aea1b835fc1e8049ed4ead40a12d0a27d89067fe4d84",
-      "port_copy": "assets/audio/scream1.wav",
+      "port_copy": "assets\\audio\\scream1.wav",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/SCREAM2.VOC",
+      "source": "repo_source\\LORE_1993_runtime\\SCREAM2.VOC",
       "kind": "voc",
       "sha256": "b33d4fc9f0399f78df8797e39f541838113c77f9948a472e8da426489564b9c4",
-      "port_copy": "assets/audio/scream2.wav",
+      "port_copy": "assets\\audio\\scream2.wav",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/SWAMP.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\SWAMP.MAP",
       "kind": "map",
       "sha256": "f93e130a7e57aa9b02262dd8f3adce5a5c5faa613d036620ab6a26793b691bda",
-      "port_copy": "assets/maps/SWAMP.MAP",
+      "port_copy": "assets\\maps\\SWAMP.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/TOWN.FNT",
-      "kind": "fnt",
-      "sha256": "8a0f10e5d070e1933b34d7bfc06847197a66bd35cd05f0a02d86372fe5ae8cf9",
-      "port_copy": "assets/fonts/TOWN.FNT",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/TOWN1.MAP",
-      "kind": "map",
-      "sha256": "ebde6ebeb3771891baf9e59dc4761d04ffe26ed7a03a56e4dad93b4fba07d244",
-      "port_copy": "assets/maps/TOWN1.MAP",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/TOWN2.MAP",
-      "kind": "map",
-      "sha256": "74b1d5ab561e8bec6266b1ac110f7c50e4d5ce4a6ed299a3abbdc73cc4dd2ef9",
-      "port_copy": "assets/maps/TOWN2.MAP",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/TOWN3.MAP",
-      "kind": "map",
-      "sha256": "ec2e303a34ff50134224202784f8c5a2bb93011379072f26166446a501daa20b",
-      "port_copy": "assets/maps/TOWN3.MAP",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/TOWN4.MAP",
-      "kind": "map",
-      "sha256": "a69274c819bffa0b04cbd34f9add8e99a5b5300ac6bcf0a43a823f8450487d6b",
-      "port_copy": "assets/maps/TOWN4.MAP",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/TOWN5.MAP",
-      "kind": "map",
-      "sha256": "c5ae33472824e51ae1bcca4f5638afc7116211b925e85eac9f3b9df4a96111e9",
-      "port_copy": "assets/maps/TOWN5.MAP",
-      "copy_equal": true,
-      "status": "exact-copy"
-    },
-    {
-      "source": "repo_source/LORE_1993_runtime/T_DEN1.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\T_DEN1.MAP",
       "kind": "map",
       "sha256": "d4c58dfed7a6615dfd7f91566e14e81db660d26cc8ddbbcd85cabff7cd534fe5",
-      "port_copy": "assets/maps/T_DEN1.MAP",
+      "port_copy": "assets\\maps\\T_DEN1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/T_DEN2.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\T_DEN2.MAP",
       "kind": "map",
       "sha256": "cd0c2a8d074a4ec72f36c386345ed6de11fb980cc7b3482725e41f368a7420a7",
-      "port_copy": "assets/maps/T_DEN2.MAP",
+      "port_copy": "assets\\maps\\T_DEN2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source/LORE_1993_runtime/WATER.MAP",
+      "source": "repo_source\\LORE_1993_runtime\\TOWN.FNT",
+      "kind": "fnt",
+      "sha256": "8a0f10e5d070e1933b34d7bfc06847197a66bd35cd05f0a02d86372fe5ae8cf9",
+      "port_copy": "assets\\fonts\\TOWN.FNT",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\TOWN1.MAP",
+      "kind": "map",
+      "sha256": "ebde6ebeb3771891baf9e59dc4761d04ffe26ed7a03a56e4dad93b4fba07d244",
+      "port_copy": "assets\\maps\\TOWN1.MAP",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\TOWN2.MAP",
+      "kind": "map",
+      "sha256": "74b1d5ab561e8bec6266b1ac110f7c50e4d5ce4a6ed299a3abbdc73cc4dd2ef9",
+      "port_copy": "assets\\maps\\TOWN2.MAP",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\TOWN3.MAP",
+      "kind": "map",
+      "sha256": "ec2e303a34ff50134224202784f8c5a2bb93011379072f26166446a501daa20b",
+      "port_copy": "assets\\maps\\TOWN3.MAP",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\TOWN4.MAP",
+      "kind": "map",
+      "sha256": "a69274c819bffa0b04cbd34f9add8e99a5b5300ac6bcf0a43a823f8450487d6b",
+      "port_copy": "assets\\maps\\TOWN4.MAP",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\TOWN5.MAP",
+      "kind": "map",
+      "sha256": "c5ae33472824e51ae1bcca4f5638afc7116211b925e85eac9f3b9df4a96111e9",
+      "port_copy": "assets\\maps\\TOWN5.MAP",
+      "copy_equal": true,
+      "status": "exact-copy"
+    },
+    {
+      "source": "repo_source\\LORE_1993_runtime\\WATER.MAP",
       "kind": "map",
       "sha256": "1aed6fa5cc6773a4ce69f42d4337ec3669f1dd465111956097ccae39307383de",
-      "port_copy": "assets/maps/WATER.MAP",
+      "port_copy": "assets\\maps\\WATER.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     }
@@ -25742,311 +25742,516 @@
   ],
   "existing_evidence": [
     {
-      "path": "test/battle_test.dart",
+      "path": "test\\audio_manager_mapping_test.dart",
       "kind": "test",
-      "sha256": "e221098de16ee752bf011b0ca92ee0ca2b654e90b662d6634184959e121d3454",
+      "sha256": "9a23b8928cebc0235c5f50225d775efb3e01c57ec5255e226e6591a89ddbcc26",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\battle_test.dart",
+      "kind": "test",
+      "sha256": "57fcfd6cc419a99457e8fff4069c9ac1e8f4ad91ffe57a5c28ada961e3b123ab",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/battle_viewport_join_test.dart",
+      "path": "test\\battle_viewport_join_test.dart",
       "kind": "test",
-      "sha256": "43b2a3770c60a7bcf2738321ec000b23057c0e94e19b019a38b127004c5763e8",
+      "sha256": "8608cfbdc313e2c0b24fc2db1afa5dbf880cf0364980d274c7d6b1089bab1bd1",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/bootstrap_test.dart",
+      "path": "test\\bootstrap_test.dart",
       "kind": "test",
-      "sha256": "91d45738f24bbc9c99ba3f83739d9f58eff141f1430fe02d74fbdb01063983c5",
+      "sha256": "52201b6134bf86a0278fd7a10f4f21fd002a0aca36d23e443ad828f7d16904f7",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/creation_test.dart",
+      "path": "test\\creation_test.dart",
       "kind": "test",
-      "sha256": "f515e945c9094fdaf2eacf24da49dc5986a6ac49273d52c1fab096c7d309f194",
+      "sha256": "271cd1d1f6023de3ec4e212cdde5fe24b7f275917a198ad3f7fac5883a96f05a",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/data_json_test.dart",
+      "path": "test\\data_json_test.dart",
       "kind": "test",
-      "sha256": "b83d01429dc98c555feac2bfc2fcddfa517c67d8098dfa292dc1be953ba53425",
+      "sha256": "5e274ff5cb75c3f5fe560923da7cd958fa9ba28adab94a92d9f2286d3fe8bc9c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/den7_torch_flow_test.dart",
+      "path": "test\\den7_torch_flow_test.dart",
       "kind": "test",
-      "sha256": "06051b51050c43a6d62d39f4db72cf4240d402952ef8e3a3774dd95885a316f5",
+      "sha256": "1153f5b8a82662bb86b7b3a31f20035cbe869abcb31d8e2d57d904aeae7bc5c5",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/dialogue_json_test.dart",
+      "path": "test\\dialogue_json_test.dart",
       "kind": "test",
-      "sha256": "48ce24a35374d610ee93a13b549815a2d22dbcd2347ab703b79e15bb6aff8eb4",
+      "sha256": "d230e20b0e5fa6a61f7ccb43154e61c7c614d9a5ca4ece6159649ee64027e802",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/encounter_screen_flow_test.dart",
+      "path": "test\\encounter_screen_flow_test.dart",
       "kind": "test",
-      "sha256": "3cd5a9794e4da39ce8be5904329b41388bef23e23e82bff2c802acd928eb27aa",
+      "sha256": "b2173eb44b3b1027059d1f846066ace3295b4223d5ab2537050813205fb6567d",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/encounter_test.dart",
+      "path": "test\\encounter_test.dart",
       "kind": "test",
-      "sha256": "c86a1d9881d2c45635f52f5a00da3f926221942d6530ef69b14556a3aec70299",
+      "sha256": "f93f8e207e00a3f92292155953a344dfd85739ace06c4c38bad0680143d5bd01",
       "cited_source_files": [
         "LOREBATT.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/encounter_viewport_test.dart",
+      "path": "test\\encounter_viewport_test.dart",
       "kind": "test",
-      "sha256": "377df049078b864c56b6d7f138494a1462494b31f934cf21c41c64e86aac2162",
+      "sha256": "da0b901f55151572eded6e22b23450439993b6729887ef47f37d3bce9b3c5326",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/field_magic_test.dart",
+      "path": "test\\field_magic_test.dart",
       "kind": "test",
-      "sha256": "b4a6c632704cc9873e0f216b194ceab7a584f695c4a17fcf1289666e2b9a48af",
+      "sha256": "4f73250e5c62dd25d26d811b9b36831f54870df277c68b1bc443a921b6479774",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/field_menu_script_save_test.dart",
+      "path": "test\\field_menu_script_save_test.dart",
       "kind": "test",
-      "sha256": "6d8f4206f43d73ad74112dbaa7ff827a4043e7ec3f2ca43eb5c0a472bc62148d",
+      "sha256": "e293b9b02ca37486fe8aa9148ccfdc6a14ac9ada75b78f83fc3461e68effa6ee",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/field_random_sequence_test.dart",
+      "path": "test\\field_random_sequence_test.dart",
       "kind": "test",
-      "sha256": "58e0a0fd93d24f025cd752417bf79d67a6b17b2120f822a3fe3fb4edd9721db2",
+      "sha256": "e1776cbb45c1f494db49280eae23c83a386d854c2563119ba9851cb08250a9bc",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/field_session_test.dart",
+      "path": "test\\field_session_test.dart",
       "kind": "test",
-      "sha256": "f71e55f90889efd3b307e7e88cf52de9fbad91e3895cf598e788818510d060f1",
+      "sha256": "835297bdde361dcaad2229e543b480bd65b7395901927ab9835f1e2122b236b6",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/field_test.dart",
+      "path": "test\\field_test.dart",
       "kind": "test",
-      "sha256": "0e6cdc58d9bf62aced5afee881eb02fa12dd90a243bf97b51674ead49158c342",
+      "sha256": "0f7020dfcc7e412bf6718e38c77de431cda459dee680b3effe4c9ad4bcff1336",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/golden_seal_progress_test.dart",
+      "path": "test\\golden_seal_progress_test.dart",
       "kind": "test",
-      "sha256": "eca22ac46da2c2fbd6e285fc66f02174a6d7229a5d507df5eb6120051f30beee",
+      "sha256": "80e8e7009058dce9a1abc7690ff46be305ea7b22f30e4b60bc26e8ff23f681a0",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/keyboard_input_test.dart",
+      "path": "test\\keyboard_input_test.dart",
       "kind": "test",
-      "sha256": "3c603f924fac4c5861189d3ae8e1d2df31dca7c39e7d197dfca04a9fb9a05747",
+      "sha256": "0009266ea6dcf324b25ec97cc0c2e88acad623404aa54f5ff74992dfb410fb06",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/lava_source_parity_test.dart",
+      "path": "test\\lava_source_parity_test.dart",
       "kind": "test",
-      "sha256": "8a62c8e142c00478a424445a5e058776f01513768a5a1279f00c1d59a806e136",
+      "sha256": "bfcb203e756df69a093d7cf4b2900aa140456b0df99eacdfb03ae2bf62410cd7",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/lore_battle_progress_test.dart",
+      "path": "test\\lore_battle_progress_test.dart",
       "kind": "test",
-      "sha256": "a8f8c5cd0b325cfb2cb25af3a9d2b556c9cea043a4b7330007d08458c0d8bff3",
+      "sha256": "dbc9c7f460cc847de12872e035ceebfacabc2b04ee8edacd3a335a444ac3f81f",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/lore_ent_procedures_test.dart",
+      "path": "test\\lore_ent_procedures_test.dart",
       "kind": "test",
-      "sha256": "38a20e5fb6ca2bed7794c775ead9e720a23feb35f7931c31b945f7bb1b648306",
+      "sha256": "c0392305e2616eed18dab5eba8b6635fedbea6c098e8077f1a2263fdf7e74366",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/lore_main_procedures_test.dart",
+      "path": "test\\lore_main_procedures_test.dart",
       "kind": "test",
-      "sha256": "baa0520d7b364137a94bff585493201297aff849138047e42f1bb68f7aaa8b19",
+      "sha256": "3783c4b66b6335ea5863abfa59180aa0d1978358cb606898f58c75d3452e768b",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/lore_spec_map4_test.dart",
+      "path": "test\\lore_spec_map11_test.dart",
       "kind": "test",
-      "sha256": "e7713c3eb1ba19d1391b3d58d414bcb5bd723e0aaed7cd3690e7ac5b0a1bbab1",
-      "cited_source_files": [],
-      "scope": "candidate-evidence; behavioral contract linkage pending"
-    },
-    {
-      "path": "test/loreent_entry_effects_test.dart",
-      "kind": "test",
-      "sha256": "13e79482c50afd7223803f3127e7181db0b0e8ecff3c57402718b95575f390cd",
-      "cited_source_files": [],
-      "scope": "candidate-evidence; behavioral contract linkage pending"
-    },
-    {
-      "path": "test/loreent_sign_replay_test.dart",
-      "kind": "test",
-      "sha256": "2b3b235aaac3d422101da1d8ca42b5158514a2db7c703a6ce4864fccd4e1c8f0",
-      "cited_source_files": [],
-      "scope": "candidate-evidence; behavioral contract linkage pending"
-    },
-    {
-      "path": "test/map12_state_parity_test.dart",
-      "kind": "test",
-      "sha256": "d72a163c7c57483747b0cc71d4de8e37eb348e0b9930af5090f8e5817c91e80c",
+      "sha256": "6cb931451f667420b230b56ddbd06751ad035b39f84196b36a751a9cada046e6",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/map1_food_parity_test.dart",
+      "path": "test\\lore_spec_map12_test.dart",
       "kind": "test",
-      "sha256": "a9882cfd7e9a84922a094b243e59a3f6be36542a82ec02ec3c10ea373988416b",
+      "sha256": "6a2fa1c93ec8bca4ef96f934925de8ae94d4d54b20b97f1947124ec4d0511406",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/map24_talk_parity_test.dart",
+      "path": "test\\lore_spec_map13_test.dart",
       "kind": "test",
-      "sha256": "f01caa34b4993629ab4257eb77639d6072a75fe455cbc5dbed831451233e66dd",
+      "sha256": "36765c6acdb11da2de5383e20ae3ea6939a435bedd7f18c03312ea6abe24626f",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map14_test.dart",
+      "kind": "test",
+      "sha256": "90f4159c34990fcce328c1418cbaa80f00dc8131e2fc94f23fa48731d5afdf37",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map15_test.dart",
+      "kind": "test",
+      "sha256": "482360b7c2bce2c87440ad06007c43d2df7173beb38efb4d5d6bc47a23f8063f",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map16_test.dart",
+      "kind": "test",
+      "sha256": "f78271111d12cc4581dd2296344cd8b582464d2bf5c134d597c9d5153d7f6d54",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map17_test.dart",
+      "kind": "test",
+      "sha256": "d7f2c04b8db8de64d43c38b345c737abcbb71da828b3cd434298e702d38cf5c2",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map18_test.dart",
+      "kind": "test",
+      "sha256": "0ff0159d6da42d082bf4f651c716c8c6aafda67677caefa4ab7cd6b9972929c8",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map19_test.dart",
+      "kind": "test",
+      "sha256": "7a37a47871e2c0a1bf58500ab2b0fee932e83e1129178ab988cd5202cb9a12ef",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map20_test.dart",
+      "kind": "test",
+      "sha256": "99c2cdb43c4e648aed839baa55255f2ca91db02dedd432f998b2571a782622d4",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map21_test.dart",
+      "kind": "test",
+      "sha256": "4186039092f4a60adf5feab5e12f21ed489183ba2dd8a2e68b167ac03b557248",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map22_test.dart",
+      "kind": "test",
+      "sha256": "f433e99a018500f4e3886ab6dedab383fd9349c73f1d6f93b78592db096f97c2",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map23_test.dart",
+      "kind": "test",
+      "sha256": "022e25d7e4c2ca5c081d870ea9b29120ee2d7026fc8ba10edf12c8fba5018673",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map24_test.dart",
+      "kind": "test",
+      "sha256": "07db4400b8ae976bf1a61a4515250f3b79c5f88c16f6f8e6c85c05d5a9da9e6e",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map25_test.dart",
+      "kind": "test",
+      "sha256": "ef3d1ffe920be8513d3aad9f927db4ef4598201f50511100e5e4fdf8eba853c9",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map26_test.dart",
+      "kind": "test",
+      "sha256": "aa8ee524e649dbc1b35df708ffd30f86e3125ed2c207d84a8a90124588dd5617",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map27_test.dart",
+      "kind": "test",
+      "sha256": "78e98a9da2dff65d447b38a1d9180b7a4fc6c04be3d31761deadd5355390577f",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map4_test.dart",
+      "kind": "test",
+      "sha256": "c899ae047d1d7ba54b0ac0e38f419921abbf5a4a529174777388f6328f6f4c47",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map6_test.dart",
+      "kind": "test",
+      "sha256": "55094b27ba7a28e8c0395cc4b17f61a4fa29158ca67525bc952105874b1edbac",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map7_8_test.dart",
+      "kind": "test",
+      "sha256": "7d530de873edb720c17549175102b5763e671df2a88724ceb63d16fa74d6a5c1",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_spec_map9_10_test.dart",
+      "kind": "test",
+      "sha256": "1eeff0f29530927f40b9b0811e03db968a58fcd0799e973332db6ef48184425c",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_talk_all_maps_test.dart",
+      "kind": "test",
+      "sha256": "c3c9070037c8bb23baf147495e9e140eca7488177ee400e8d451eb379c7993c8",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\lore_talk_map6_test.dart",
+      "kind": "test",
+      "sha256": "3bd9e690e39c2d7ca4b5e8d5d245b7b0f2cb2166ccf12eca12aad8bea68ce4ea",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/map25_lever_parity_test.dart",
+      "path": "test\\loreent_entry_effects_test.dart",
       "kind": "test",
-      "sha256": "ba238de4fa051c8e48abb3987174f34b4bdca89377f0a5a69c9758757001aa78",
+      "sha256": "ee7d9636af3f19c00045bbf8baf31faaccb7ae3206ecba2c66607d2e4cfd39ff",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\loreent_sign_replay_test.dart",
+      "kind": "test",
+      "sha256": "4662a47f7811c4161c902987cf95e107efbf1330a42931856873857b0aae9d99",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\map12_state_parity_test.dart",
+      "kind": "test",
+      "sha256": "c7889fe7e0bd93d3312aca88dc40226cb3bf8a9fbaac7bf80c5e5ceb0521a675",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/mirror_enemy_test.dart",
+      "path": "test\\map1_food_parity_test.dart",
       "kind": "test",
-      "sha256": "de4f64d2fe04b07db862aa9ec11ee52488322c33fccadfa3f47e3dcbd786d7c7",
-      "cited_source_files": [],
+      "sha256": "74b3dd791407bee9092fa20b0040851b6c54aa8c32a8cf41444fabdfee0cb79f",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/movement_logic_test.dart",
+      "path": "test\\map24_talk_parity_test.dart",
       "kind": "test",
-      "sha256": "a070e78357c5523907a236a4a696f4195cefe5bfbe821e16affec1d482852936",
-      "cited_source_files": [],
-      "scope": "candidate-evidence; behavioral contract linkage pending"
-    },
-    {
-      "path": "test/portal_reconciliation_test.dart",
-      "kind": "test",
-      "sha256": "f52a2706c4ba020ac837696f34632c19a491da9954a5ce7be231b45f3781496f",
-      "cited_source_files": [],
-      "scope": "candidate-evidence; behavioral contract linkage pending"
-    },
-    {
-      "path": "test/portal_session_test.dart",
-      "kind": "test",
-      "sha256": "b0e3ee9890d4357dfa5b59ad69c03eb7a47ffa03cbeb78e15b35f0ad34cd29ae",
-      "cited_source_files": [],
-      "scope": "candidate-evidence; behavioral contract linkage pending"
-    },
-    {
-      "path": "test/quest_branch_test.dart",
-      "kind": "test",
-      "sha256": "037951165ebc8991c6426b560002b0e05421810d1e5510dfa659221bc7645cdd",
+      "sha256": "bd33adb3890f0e6db4aac29da6d9d9cd4780ee21d2f8634a379f794bb8a87ffb",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/rigel_blessing_test.dart",
+      "path": "test\\map25_lever_parity_test.dart",
       "kind": "test",
-      "sha256": "1016afb262f2bea589fc00848d253ba0eee58866aa07c1a8d8c163308d016e53",
+      "sha256": "3fc5b26652e96fd7d873b6bbd4846043c5448947db15ae20fa14ec48982a51d6",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\mirror_enemy_test.dart",
+      "kind": "test",
+      "sha256": "a80ecf1c2386b340be6cfe5614309638703418d73dabfc00079f8f687ae7ed6c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/save_contract_test.dart",
+      "path": "test\\movement_logic_test.dart",
       "kind": "test",
-      "sha256": "52fea2ea0d6fef37374bf6ac3d75ba3e7cfe856c4cb7a6b620b2064bed5dc514",
+      "sha256": "fc814fb3e893d6c107a4b03bf59d39ce25d6191629a387565c9e5c3bd1bc18f4",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/save_test.dart",
+      "path": "test\\portal_reconciliation_test.dart",
       "kind": "test",
-      "sha256": "109294492e9259f157d55b97892c0d5667155874fb3350b7c2a6bf3a549ad547",
+      "sha256": "1903901710c56a880338bb15b2322cfbe5d6f31a749a7c3e2b2656dda23f26d1",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_battle_session_test.dart",
+      "path": "test\\portal_session_test.dart",
       "kind": "test",
-      "sha256": "c11c370a0063c23e0211fef9b0081cc82031b11ab796c38c01419aff6fde2add",
+      "sha256": "0adeb05e44dcd275e975a9eea6f79cab5954a6067a4819c4b75d4ef140d31d93",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_branch_matrix_test.dart",
+      "path": "test\\quest_branch_test.dart",
       "kind": "test",
-      "sha256": "3144934a6becdadff12d3311dcdf2c30ca6c714b9a83c3c9a1900ada72eae051",
+      "sha256": "5b76d1d332a9333633fea281e16c908fad4323ca6c16c770090cc0d9e9b36a09",
+      "cited_source_files": [
+        "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\rigel_blessing_test.dart",
+      "kind": "test",
+      "sha256": "994d76a70f9952f0de13042ffcb21aa02b0bdc5709408e6ccc21c567fca9f9a7",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_effect_delta_test.dart",
+      "path": "test\\save_contract_test.dart",
       "kind": "test",
-      "sha256": "ef42b4bd62118006388a58f856c6ea652a7356be62ca4b6a75f6db1285a41cdf",
+      "sha256": "6d6d20d260e39fd7f261ee6725fb3e684db0b70f3ac35a342a208b7e271d7a1e",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_engine_isolation_test.dart",
+      "path": "test\\save_test.dart",
       "kind": "test",
-      "sha256": "90b73e701fde79a09d69e80ceb3bba159be4001625f2e8efb1cacab02cf43adc",
+      "sha256": "42149da59b72989539ac2322b4ef7a045a85204338e6c7013a38792c9bb24b91",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_engine_test.dart",
+      "path": "test\\script_battle_session_test.dart",
       "kind": "test",
-      "sha256": "4f3b9afda04983611633ce2047481043369924c9453e3150f7bf488766c9d090",
+      "sha256": "5c56bb06741e9865139484d9055cd92279eab52540247c8bfdf1cc39b9c9b28e",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\script_branch_matrix_test.dart",
+      "kind": "test",
+      "sha256": "105969b85a47127f709282c86fa9a454071d69beac7411c6cccbf793f90de648",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\script_effect_delta_test.dart",
+      "kind": "test",
+      "sha256": "de1c3f18143da12b1f9fd4b7c773172f80606784cd2aff8b352c051334956748",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\script_engine_isolation_test.dart",
+      "kind": "test",
+      "sha256": "b0881f21826149a9c61efa6dcc6af74ac59cf9e462228ba81bc03145c6464ec9",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test\\script_engine_test.dart",
+      "kind": "test",
+      "sha256": "fd3e8ae4265d9905f67a7ef97ddeaa19ae52d558f5d009d24b8bb1c8b97f297f",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS",
@@ -26055,16 +26260,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_equip_reducer_test.dart",
+      "path": "test\\script_equip_reducer_test.dart",
       "kind": "test",
-      "sha256": "6a4fb92e0f3c26b00e197f81f39cc8c49412264b3ae956340f6ac1a637d83129",
+      "sha256": "b822e75aeb9658d16030845993cb1e5009cfa05c31bae8ac99f4b4feea6f113c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_initiative_coverage_test.dart",
+      "path": "test\\script_initiative_coverage_test.dart",
       "kind": "test",
-      "sha256": "ad3c5f19940cd2e62690e3bfd3cb9058e26b0d757d4398641c6d88ec32bbb8b2",
+      "sha256": "921fb3eda95d7b03fd738c2698345511c22ce62a59f53b9bd893c5fb2a1fa8ed",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS"
@@ -26072,144 +26277,144 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_map_reachability_test.dart",
+      "path": "test\\script_map_reachability_test.dart",
       "kind": "test",
-      "sha256": "085af0e36b5fff715dd9447607cc18a77e5f030c05810db2ece08936c424af01",
+      "sha256": "613b6712097795df4f25e28fe658a947372f1d7a3d804a7aec20dcfb91fafc25",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_party_reducer_test.dart",
+      "path": "test\\script_party_reducer_test.dart",
       "kind": "test",
-      "sha256": "01ac47a421b5aae5182149947457f4dddf2d184323e4c0ae1334b20cb4598a4b",
+      "sha256": "7f9c100c5c4c7195775280087666a88b1803ca10b0e1577d7e1d167fa50ed647",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_session_scenario_test.dart",
+      "path": "test\\script_session_scenario_test.dart",
       "kind": "test",
-      "sha256": "5f9e5232eb398cd18900b1fba460c4369cebd8d017c4cf5c21842746e3fbe2b5",
+      "sha256": "ca2640657db5335182a93420741c447e44a6f568778f0d349bd88e447aabc646",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/script_world_reducer_test.dart",
+      "path": "test\\script_world_reducer_test.dart",
       "kind": "test",
-      "sha256": "616b57766681ad1b2d8dafc65a2f156d2a2ea1b3c757b02fa61c5b3b2ba967a8",
+      "sha256": "0f4f97fa06c0656b46bf54dfb1afd1bb6de35ead39fdb1e36478eefcc1900953",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/source_entrance_replay_test.dart",
+      "path": "test\\source_entrance_replay_test.dart",
       "kind": "test",
-      "sha256": "769838bb8cb79bcfa2a6b734abaecf403a1e32dc65b600b707902fa4c2d69275",
+      "sha256": "8c2c91bfe185b267a6df4bc2ad1ff0c67cc4eaa7e1ad3404d625356fb21b17a7",
       "cited_source_files": [
         "LOREENT.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/source_exit_replay_test.dart",
+      "path": "test\\source_exit_replay_test.dart",
       "kind": "test",
-      "sha256": "8bfda9680876d7be4ffc50b0e8ad9c0e976a684c0bbd7ae175d6583d4f32a646",
+      "sha256": "27bb80e2856ac6c748160b2e02148c8ab0d0594d72ab194401f3bb4144e4bbc0",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/source_gold_replay_test.dart",
+      "path": "test\\source_gold_replay_test.dart",
       "kind": "test",
-      "sha256": "fa0960c9738d6b88f19ff48a7fb8fd1446e2f1b2067d6eb89151959e40268386",
+      "sha256": "14ccd4628e2e0f60593a34407ddf64155df0365572e753cd4864eae0b1f60314",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/source_parity_test.dart",
+      "path": "test\\source_parity_test.dart",
       "kind": "test",
-      "sha256": "96fabe526f1efc6226287ed9937a9977067747c2e43079477c9342205114384c",
+      "sha256": "ef4f5d0a673606997259b6a0216e658c805a6ecd7f57c1ca6bb6d2892d896a8c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/source_route_parity_test.dart",
+      "path": "test\\source_route_parity_test.dart",
       "kind": "test",
-      "sha256": "4fc05724710637ddfd9bdf8cb4993d3af25136c574695c3503c72c4f0e3a74e7",
+      "sha256": "5c4d41a840a90d4a14e028a6a09aad0a767bca04989096f21c92d5ef1154420d",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/source_talk_choices_test.dart",
+      "path": "test\\source_talk_choices_test.dart",
       "kind": "test",
-      "sha256": "d64e637d0a795efa1377436670ccb10c60265cd8f0432d64748a9e102b0f66d2",
+      "sha256": "93d8305e16530bd593139e2948a83ed3223ac90252af727605a9cf846c44f07f",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/source_talk_replay_test.dart",
+      "path": "test\\source_talk_replay_test.dart",
       "kind": "test",
-      "sha256": "dd835b34ed90917ab72ba43c7475046f98206c97f085780323e895a021ca6fc5",
+      "sha256": "02fe2bd3bbc28c429cf2138519a639883c890b42f274ea0124b0dbda0d5e4ad3",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/source_tile_protocol_test.dart",
+      "path": "test\\source_tile_protocol_test.dart",
       "kind": "test",
-      "sha256": "ea10aba7032d6c59db3672b68e7053b6538c418bb4269f4ac20901ec243ade1d",
+      "sha256": "3cd56bc5768e7a2a5f13b882d6e8c1449e09bb3ba15bbbeddb75fb3120919e84",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/spec_events_test.dart",
+      "path": "test\\spec_events_test.dart",
       "kind": "test",
-      "sha256": "1accf1e151be87919f62a7b237add979f90a7da97e85af2523baecf15bd16dd8",
+      "sha256": "7d09d96a76452e3794de87b52e280ec561964521e58b775525f37114bee761ea",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/special_event_dispatcher_test.dart",
+      "path": "test\\special_event_dispatcher_test.dart",
       "kind": "test",
-      "sha256": "d70ad3fe380357e6a44f773ed813e26bae8628b091816fa707704ae38336a7aa",
+      "sha256": "8047b761f5a4d735d13a904ea06b0b932173a3fe4687c7d84c8d701de20e5827",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/sprite_sheet_test.dart",
+      "path": "test\\sprite_sheet_test.dart",
       "kind": "test",
-      "sha256": "fa5ceade5c75d56c3b1920d32caed25038db413e48d3be5caf09ec353f7241eb",
+      "sha256": "4c63712803037dbf47af4dee58c34a5da672ac5201cad10c76a2a380bf582f26",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/step1_hazards_and_esp_test.dart",
+      "path": "test\\step1_hazards_and_esp_test.dart",
       "kind": "test",
-      "sha256": "328364cb6699473be913759d0f4b27a7e96fc172dd041c296eb72c33e8a1d9fc",
+      "sha256": "53bdfe054358fadbe12351addbecda8b9d6c15f9f9f59e86ced0a349b9f97e83",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/step2_battle_test.dart",
+      "path": "test\\step2_battle_test.dart",
       "kind": "test",
-      "sha256": "55fe7278cec6b03be1b9f1521980ab117166b27e36436ebeeea2d2136cfa3b55",
+      "sha256": "bd22b52714ac3b0405a0232a4c8d2f34826d28eee1282c94dae0536fd2e69e85",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/step3_town_and_dungeon_test.dart",
+      "path": "test\\step3_town_and_dungeon_test.dart",
       "kind": "test",
-      "sha256": "3ee7617680f322796f9b2289c5601229b9c37f478b1499e67faae486534ea4fd",
+      "sha256": "7d20861092abaf2c4053cf529db4d337cbd8209e35f29bb2bd0de41dc43672e5",
       "cited_source_files": [
         "LORESPEC.PAS",
         "LORESUB.PAS",
@@ -26218,18 +26423,18 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/step4_ending_and_bestiary_test.dart",
+      "path": "test\\step4_ending_and_bestiary_test.dart",
       "kind": "test",
-      "sha256": "26cb5122a5972d9038de1133a6891a9bfc20768d3fd5cd2a3c9b0e12d688b45c",
+      "sha256": "acab2a6541351561029d76733da286799e58e0e41665c3254c1ea490060963e2",
       "cited_source_files": [
         "LOREEND.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/step5_train_rest_guide_test.dart",
+      "path": "test\\step5_train_rest_guide_test.dart",
       "kind": "test",
-      "sha256": "06eaa7a3113b143d0198e2ef8324e166433fd80b1dd1c460e17de625fe9c5b2a",
+      "sha256": "2f0ed774e6c8729ed2d7528cfc8a29c5fef82423421181fef99b2c4816c34e82",
       "cited_source_files": [
         "LOREHELP.PAS",
         "LOREMENU.PAS",
@@ -26238,9 +26443,9 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/step6_field_prompts_test.dart",
+      "path": "test\\step6_field_prompts_test.dart",
       "kind": "test",
-      "sha256": "252eef529e3ab4e50451d80f1734c51d80ac59056128955223b6256935edbc93",
+      "sha256": "1c47e1e5ad03ddd7668a53703858f2b92e36d8575a1b1f2e176707deb13e284d",
       "cited_source_files": [
         "LORESPEC.PAS",
         "LORESUB.PAS",
@@ -26249,223 +26454,223 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/step_rule_selection_test.dart",
+      "path": "test\\step_rule_selection_test.dart",
       "kind": "test",
-      "sha256": "e2c06d83c50ac69446f37cd4f411515598a604a3744f72248ab06eab3e2af18e",
+      "sha256": "c6bab83a542ab2abd9759a9ac6a4b9e09aefa690d67235957495b45fa4cef379",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/step_tile_reachability_test.dart",
+      "path": "test\\step_tile_reachability_test.dart",
       "kind": "test",
-      "sha256": "8f338c8fc902964bd3abff8702dd40b00c91ad5dbb3ebcc553243f9e77e1bc1b",
+      "sha256": "cc69e9ca77ef84f65c3f6873d3634a0b099c27b97c4405dc69055819d2378159",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/swamp_source_parity_test.dart",
+      "path": "test\\swamp_source_parity_test.dart",
       "kind": "test",
-      "sha256": "e1e6585ba6ded95e5bb57519100fdc57db07b61ea676de536748e1d7203cc8f8",
+      "sha256": "00a5c9c9b662f16efb4e4210cda09010f37511af90aca2e8f39d092af2cab5cc",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/talk_content_reachability_test.dart",
+      "path": "test\\talk_content_reachability_test.dart",
       "kind": "test",
-      "sha256": "261bfddcd26b619ab374fe246a332a5f7b48e32fef129198563dac3507a535fa",
+      "sha256": "86ced013269cb7c47c8ccdbf0119ad4a7b85c3d67a3a33aaf410eaea9e7653b0",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/talk_dispatcher_test.dart",
+      "path": "test\\talk_dispatcher_test.dart",
       "kind": "test",
-      "sha256": "4fe6965281a6e4b372cfe1058d9f5d8568f5b54f44d6b9193adf46f468038068",
+      "sha256": "7ff476751de462f00ee0b121e063bce70ef91c012302ca985008364ddfaab02b",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/talk_map27_test.dart",
+      "path": "test\\talk_map27_test.dart",
       "kind": "test",
-      "sha256": "748064ba06ec1056a3043aa9b2cb421019fcc64dffa96e5b4c1f1913b089e972",
+      "sha256": "826b38041a2751ffb1afda8569a2e6263a600766f55f538bcf9f2ea233ec60a5",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/talk_rule_selection_test.dart",
+      "path": "test\\talk_rule_selection_test.dart",
       "kind": "test",
-      "sha256": "455669bf31866d2e2d203f4fec0b73681219fa1612f7b579ad164e2beba4f3a0",
+      "sha256": "5efb87ca5a27e767bac4936cedd997ae46fb04094fe25e67208e5105efd45b87",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/widget_test.dart",
+      "path": "test\\widget_test.dart",
       "kind": "test",
-      "sha256": "aa7688b60494a45467a594939595a624cf2111797226f5acb6530e26ff5c8247",
+      "sha256": "0107f2fc4de403bcffe6b5d6fcf320a35ede40bdc41555e4187f8e48b368984b",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/world_map_contract_test.dart",
+      "path": "test\\world_map_contract_test.dart",
       "kind": "test",
-      "sha256": "446b082e45e51ddd65b8954ae4ae72eb602be05b98e43186793dc267a82649ef",
+      "sha256": "21bac82dc04ddd23d5f5510722dfa6847b814438d4a1c468fc5711974af5a692",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/world_rules_test.dart",
+      "path": "test\\world_rules_test.dart",
       "kind": "test",
-      "sha256": "198dfec65b7ed802aaa93a261b89f4fba7d80030a686dfd704d704cbf9e3d741",
+      "sha256": "284fe942a3bef0501631292f2b9cf8e6207930ea1991a5e6910935b59872e13f",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test/fixtures/map12_state_parity.json",
+      "path": "test\\fixtures\\map12_state_parity.json",
       "kind": "fixture",
-      "sha256": "29bacd7e7fb609e5106541c03a585e8e4301857328a04a3db1efb80c86d76a75",
+      "sha256": "8ce7fd6feec7a51e335f751608e5fc0ab6946493ce9722d4445eaf9e9a43f64d",
       "test_users": [
-        "test/map12_state_parity_test.dart"
+        "test\\map12_state_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map17_route_parity.json",
+      "path": "test\\fixtures\\map17_route_parity.json",
       "kind": "fixture",
-      "sha256": "8faa2cef3cdf2f411ae035d1c7ba91aa3bb82ec99835abcd0fa00dda4f0d704f",
+      "sha256": "ff3a6dda61f18b1cf28ba8acb8f788e48e7f5310dd9d6fdc65f49ada54305f8c",
       "test_users": [
-        "test/source_route_parity_test.dart"
+        "test\\source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map19_route_parity.json",
+      "path": "test\\fixtures\\map19_route_parity.json",
       "kind": "fixture",
-      "sha256": "4dc34106a19d7e9857eae1c3e16c0bf94c6a53de5e5e99f3bb0102b6286cf453",
+      "sha256": "1a81b71505f3328cea12998bec6989bd945111f64f9b39ea5ee88c9566be0631",
       "test_users": [
-        "test/source_route_parity_test.dart"
+        "test\\source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map1_food_parity.json",
+      "path": "test\\fixtures\\map1_food_parity.json",
       "kind": "fixture",
-      "sha256": "44aed44bd1ffe2b3396618779ad5a192f09d7f5a09596611105be3c68c8d6922",
+      "sha256": "b0c2f146fc70e61ddb207b20268c1d75fb43af60e35ac0bfcbe888cda8b7d6d3",
       "test_users": [
-        "test/map1_food_parity_test.dart"
+        "test\\map1_food_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map20_route_parity.json",
+      "path": "test\\fixtures\\map20_route_parity.json",
       "kind": "fixture",
-      "sha256": "1c7ca94670f10d95a084fd4f1d47ec96f59bbe1b51d96c2d4621a6a62fe63c78",
+      "sha256": "5e734c6cc2fd7b912eae95fa9f29939834397aac8c7120cef65096045f6a0630",
       "test_users": [
-        "test/source_route_parity_test.dart"
+        "test\\source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map23_route_parity.json",
+      "path": "test\\fixtures\\map23_route_parity.json",
       "kind": "fixture",
-      "sha256": "3810a877baf3829caba8bf6739c78b1584117600a0a0779abc8f20698967cb3d",
+      "sha256": "d6d616717ba5c89e0fb73c199a07562888aaccd880707ec64841baa1223a7b76",
       "test_users": [
-        "test/source_route_parity_test.dart"
+        "test\\source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map24_talk_parity.json",
+      "path": "test\\fixtures\\map24_talk_parity.json",
       "kind": "fixture",
-      "sha256": "e9e424933153624eefa5520fd5cabbb9f174866318ef601b21cb012bedafa151",
+      "sha256": "cca824b4f55f3641eaabf6938de8e3f383a0aa9ab7df27662b1e36cbad3f4af8",
       "test_users": [
-        "test/map24_talk_parity_test.dart"
+        "test\\map24_talk_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map25_lever_parity.json",
+      "path": "test\\fixtures\\map25_lever_parity.json",
       "kind": "fixture",
-      "sha256": "a061e6c09df31eb9b44d6887ac40d504aeff2360550b027971bbc8de60f3c28f",
+      "sha256": "cf160701acf48740fd9e5250f4cddad8de0b14475876223001dc3d8981f07186",
       "test_users": [
-        "test/map25_lever_parity_test.dart"
+        "test\\map25_lever_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map25_route_parity.json",
+      "path": "test\\fixtures\\map25_route_parity.json",
       "kind": "fixture",
-      "sha256": "e542856469510f417a09d2c615ab2f1ca7476b9bca94bc68b7399a0c0a0509ba",
+      "sha256": "7b494ecec87c1352430ec29f74de850b49a65447c74f2873d365133c2c2c765d",
       "test_users": [
-        "test/source_route_parity_test.dart"
+        "test\\source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/map27_route_parity.json",
+      "path": "test\\fixtures\\map27_route_parity.json",
       "kind": "fixture",
-      "sha256": "979cdd31bad3d1eee4038cd859ea6de693ca4d7fc5c092d3e01a6b6ebe88b933",
+      "sha256": "b50b00a79c0c729defad57a8b1702414c78f0bf80869d4084ea767cbceed633d",
       "test_users": [
-        "test/source_route_parity_test.dart"
+        "test\\source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/source_entrance_replay.json",
+      "path": "test\\fixtures\\source_entrance_replay.json",
       "kind": "fixture",
-      "sha256": "6e8fa32f82732757ff77577450b2bf1ba4e04ecfc3b31cebc4cfcb103a93b487",
+      "sha256": "8e36fc0c4cc982bd1df6fca5ccbe3f633ef9e25efd6a4f9f8d32b6c42939bd1e",
       "test_users": [
-        "test/source_entrance_replay_test.dart"
+        "test\\source_entrance_replay_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/source_exit_replay.json",
+      "path": "test\\fixtures\\source_exit_replay.json",
       "kind": "fixture",
-      "sha256": "667ca53b262a9176775a01697b50b40b0a92e54f84b2b48b64edf656421d6a2f",
+      "sha256": "f01076f27f1aeaf45d8f600f7fa097edccc895c45a30c7415a00e22bdcbc5abc",
       "test_users": [
-        "test/source_exit_replay_test.dart"
+        "test\\source_exit_replay_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/source_gold_replay.json",
+      "path": "test\\fixtures\\source_gold_replay.json",
       "kind": "fixture",
-      "sha256": "97c2b348827c207b4e147e760474583c94949378315ad19dc9e8e2e30ac12180",
+      "sha256": "266b2013740ab67fb21bce35a82b4cb4acee6302db01453335666bf49411a2c9",
       "test_users": [
-        "test/source_gold_replay_test.dart"
+        "test\\source_gold_replay_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/source_parity.json",
+      "path": "test\\fixtures\\source_parity.json",
       "kind": "fixture",
-      "sha256": "5dd1973d5e27f9f8123ad335efbad3950fa5bf7f7c278ad155c75e2e4045669f",
+      "sha256": "98d7ad1c3d20f09d62444409b3b39b06cda7d076c102785490baf6c45ebb80dc",
       "test_users": [
-        "test/source_parity_test.dart"
+        "test\\source_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test/fixtures/source_talk_replay.json",
+      "path": "test\\fixtures\\source_talk_replay.json",
       "kind": "fixture",
-      "sha256": "70f84661b28576007e35b3d5d7c498f87daad2194fee92544aa8a4ee2a83085b",
+      "sha256": "635aacd67190c48c8efdfc8be1c88742575da21f6aff6a35d04272031373ee74",
       "test_users": [
-        "test/source_talk_replay_test.dart"
+        "test\\source_talk_replay_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     }
   ],
   "port_rule_sources": [
     {
-      "path": "assets/data/creation.json",
-      "sha256": "606a958aaf1b3c96a3e07dfa35431dcdb382c459a98a0bffec9a3d2de102f7ca",
+      "path": "assets\\data\\creation.json",
+      "sha256": "df42bc827cb057a44790958261565b30add37619442387b08cf5414425b79e51",
       "top_level_counts": {
         "characters": 10,
         "quizIntro": 2,
@@ -26477,22 +26682,22 @@
       }
     },
     {
-      "path": "assets/data/dialogues.json",
-      "sha256": "10b1e5581f3556dcc3fae1abe406194086918c0508584259f2e4e5ec3371626b",
+      "path": "assets\\data\\dialogues.json",
+      "sha256": "26bc4860ccce520a3c2bfd1a416cbf06de5607832c25e59c860694b7427417a1",
       "top_level_counts": {
         "dialogues": 30
       }
     },
     {
-      "path": "assets/data/facilities.json",
-      "sha256": "bcf7127ea7d7136ba5a384d5ce1124166afb9ebef1262c4eae6d1d38e092793c",
+      "path": "assets\\data\\facilities.json",
+      "sha256": "d80038d5a34466e7d4d525c97c27c1175216a12514f85cd61ea8751036e074c1",
       "top_level_counts": {
         "facilities": 58
       }
     },
     {
-      "path": "assets/data/items.json",
-      "sha256": "47ead2220fb302f301b9972de7943f54222bed4e08e680d9a92e69f83088e63a",
+      "path": "assets\\data\\items.json",
+      "sha256": "b2a655562e0c2fcc7aa15921a993ba5944a2a1610f43be8cd22b059cdc06e737",
       "top_level_counts": {
         "weapons": 10,
         "shields": 6,
@@ -26500,100 +26705,100 @@
       }
     },
     {
-      "path": "assets/data/maps.json",
-      "sha256": "2dc2ce4e6814f24dc8442135d1c6391e68ea601688b35aaaf3871eab953902f6",
+      "path": "assets\\data\\maps.json",
+      "sha256": "9521de5149f000174ee4d11ab52741dd77e81d891d5f10eb09d350ba92b2dea1",
       "top_level_counts": {
         "maps": 27
       }
     },
     {
-      "path": "assets/data/monsters.json",
-      "sha256": "e3f85345634f4353fdea05d1d5fd4d198457a332bfd6b6fdc3ab4d5970d5620e",
+      "path": "assets\\data\\monsters.json",
+      "sha256": "dc650301c817e2122ba29115bb2eeed200ebc42a12fdd81011ef695f07a4ca7b",
       "top_level_counts": {
         "monsters": 75
       }
     },
     {
-      "path": "assets/data/portals.json",
-      "sha256": "ecac5d5136c0310f37bce69380b8f30b72b61a8617c8267feb8df0a7e6959e67",
+      "path": "assets\\data\\portals.json",
+      "sha256": "8440647b2edecdb018f3240f2b6b35e508f6158292c81ef4f73938b20a6842d7",
       "top_level_counts": {
         "portals": 65,
         "signs": 33
       }
     },
     {
-      "path": "assets/data/scripts.json",
-      "sha256": "d52879a804219df70337b64369275e90d21ec81f4348c5cb8abec9703b9e2001",
+      "path": "assets\\data\\scripts.json",
+      "sha256": "3d9a53b950decd4713ef7e197e52b01f7d2c9cd2c4beeafec244a4e867a93da3",
       "top_level_counts": {
         "scripts": 598
       }
     },
     {
-      "path": "assets/data/spells.json",
-      "sha256": "b0d895a09cb61358dfcc265b020e0576cd00e071a784ea579bfb31cc140ac430",
+      "path": "assets\\data\\spells.json",
+      "sha256": "6a0d98fea48ff921404ab2c7b2d194ae857719eb82924e46643d8e6c9e3b6d61",
       "top_level_counts": {
         "spells": 45
       }
     },
     {
-      "path": "lib/data/lore_script.dart",
-      "sha256": "1806f86bf6bdaf7d567ceb7cce49da397b59acd63be9e11f3311a1bf044a5bcf"
+      "path": "lib\\data\\lore_script.dart",
+      "sha256": "ae24e070526e36c0e951b75a2f013e0d5a188c87ccb0049e61686eabde264f0a"
     },
     {
-      "path": "lib/game/lore_game.dart",
-      "sha256": "2a1ed07052e11430fff4c8a990b570935aa181e295a6b9f1623694b84e47796e"
+      "path": "lib\\game\\lore_game.dart",
+      "sha256": "6b8059426968d7c9c2a7ff780a4c1b439e84a4c6cd70b035b0d56f8d3c4e65d4"
     },
     {
-      "path": "lib/game/lore_world_manager.dart",
-      "sha256": "e8e32986d4a615dff526a25587b0ebca25a2cf0d04bc3651f5f9003e5e6e636e"
+      "path": "lib\\game\\lore_world_manager.dart",
+      "sha256": "e8b7c79a3bcb2debfb59ed04b494a92637e2f8e8025233f11b1a995f62cc4d01"
     },
     {
-      "path": "lib/game/lore_dialogue_manager.dart",
-      "sha256": "995a87ffc43d8ee533d2cf3717d5c8a90df1ec1845a9e53d8b4279f63f817fec"
+      "path": "lib\\game\\lore_dialogue_manager.dart",
+      "sha256": "0355dc98aae2c65c33df1a6e3524bab9b42f30a4ba857697ccfe7cfb3f6120f1"
     },
     {
-      "path": "lib/game/lore_dungeon_event_manager.dart",
-      "sha256": "dbc508e5afaf8c694e1b65e7ef8d659297ac3a553608957f4c3140141801f01f"
+      "path": "lib\\game\\lore_dungeon_event_manager.dart",
+      "sha256": "e48ff1562d605801a7bb73a9faf00df66bc469cd2d739b2e973fb3f6441a92c9"
     },
     {
-      "path": "lib/logic/lore_tile_protocol.dart",
-      "sha256": "c88d2cd3ab520baf84652531c5278920e021c7abddf8e024e456e1564b02bb7e"
+      "path": "lib\\logic\\lore_tile_protocol.dart",
+      "sha256": "7cc66f62218a6137fb375ffb35bebdde2ce088de9bd01b7bec5d1ee5720c2e95"
     },
     {
-      "path": "lib/logic/lore_movement_logic.dart",
-      "sha256": "d5b0d97e827104defff17fc4f91e7dc7cee94f6bf5625244955ffae6e10fa1d0"
+      "path": "lib\\logic\\lore_movement_logic.dart",
+      "sha256": "05ba4dfcaece3a94d79ea0d9cbbee59f1c0767bf244bff89fdaafce3d19f4407"
     },
     {
-      "path": "lib/logic/lore_field_session.dart",
-      "sha256": "f72c8e87b8ab8ed49c7a29b83916757ca6c728ab7053480c783cbfa91d709be6"
+      "path": "lib\\logic\\lore_field_session.dart",
+      "sha256": "54efb1f0a3adcaa4d287f6bd966b3bfb720bcb6165aa10cc5d8bcd7ae20d84f0"
     },
     {
-      "path": "lib/logic/lore_portal_session.dart",
-      "sha256": "b2ed444d2dda0a33aaae9c334c1ab1430ed7e132253810843b5d36f9434014fe"
+      "path": "lib\\logic\\lore_portal_session.dart",
+      "sha256": "768d48e9090fb3fb5c9924aaeece1110baafd1b01109c163275b63e80b38cb55"
     },
     {
-      "path": "lib/logic/lore_talk_dispatcher.dart",
-      "sha256": "e957dd67e9824f6e2203a0f7912874c4c5d54d183438c1a4f016720eb86b9ba5"
+      "path": "lib\\logic\\lore_talk_dispatcher.dart",
+      "sha256": "38048082800a8cc1ba8aee0a2900a65e7ad505629873e8ef9ada433817fc1ab5"
     },
     {
-      "path": "lib/logic/lore_special_event_dispatcher.dart",
-      "sha256": "a7d9b3bbc103c1c986b4bc4799320e29ca9c73726ee866fa2cd3c924d7cbd272"
+      "path": "lib\\logic\\lore_special_event_dispatcher.dart",
+      "sha256": "f2fa7c2d1405066ea001f0e9351cdbfc95729581daece509ca6a8cb37a08dd31"
     },
     {
-      "path": "lib/logic/lore_lava_logic.dart",
-      "sha256": "178232c73cb1b6da41e5ac178cdd0dd51ae6add665c011770a6c3ac2a527bcf6"
+      "path": "lib\\logic\\lore_lava_logic.dart",
+      "sha256": "fdbcf743297a0bbb94d41fa1caa5729d4eacb31e62343ccc03345b9fce62069e"
     },
     {
-      "path": "lib/logic/lore_swamp_logic.dart",
-      "sha256": "9da3cffe4b902b55386282ac3ed05abae05b5169afea2e8da0abb4f777185680"
+      "path": "lib\\logic\\lore_swamp_logic.dart",
+      "sha256": "8368709831e6380523ae30803ec5cb3db8b5a3f5acca08f17cc718272ae0a4a4"
     },
     {
-      "path": "lib/screens/main_game_screen.dart",
-      "sha256": "14d08c171154bdda5b0d838905b3d4ae95363bc2e69e9e093dc30eb261418d17"
+      "path": "lib\\screens\\main_game_screen.dart",
+      "sha256": "8f6c4d86fb678958fe2574b221bed82a3f230c507d3e9eeae462d153e871fe4f"
     },
     {
       "path": "PORT_CONTRACT_EVIDENCE.json",
-      "sha256": "06cc5668ce99db4447df96fc4badb16e4b59274f449a9a411ebc4afcdf3c7084",
+      "sha256": "7bcab4aafc5166ee31db57164f92527a5ee9992349ce143688e0ca8b6fcf1d0f",
       "top_level_counts": {
         "contracts": 6
       }

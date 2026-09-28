@@ -292,7 +292,7 @@ def source_catalog(inv):
 
 
 def map_registry():
-    text = (ROOT / "lib/game/lore_world_manager.dart").read_text()
+    text = (ROOT / "lib/game/lore_world_manager.dart").read_text(encoding="utf-8")
     body = text.split("static final Map<int, MapInfo> mapRegistry = {", 1)[1].split("};", 1)[0]
     rows = []
     for map_id, entry in REGISTRY.findall(body):
@@ -305,7 +305,7 @@ def map_registry():
 def evidence_catalog():
     rows = []
     tests = sorted((ROOT / "test").glob("*_test.dart"))
-    bodies = {test: test.read_text() for test in tests}
+    bodies = {test: test.read_text(encoding="utf-8") for test in tests}
     for test in tests:
         cited = sorted(set(re.findall(r"(?:repo_source/LORE_1993_src/)?(LORE[A-Z0-9_]*\.PAS)", bodies[test])))
         rows.append({
@@ -347,7 +347,7 @@ def port_rule_sources():
     for path in files:
         item = {"path": str(path.relative_to(ROOT)), "sha256": digest(path)}
         if path.suffix == ".json":
-            data = json.loads(path.read_text())
+            data = json.loads(path.read_text(encoding="utf-8"))
             item["top_level_counts"] = {
                 key: len(value) for key, value in data.items()
                 if isinstance(value, (list, dict))
@@ -358,7 +358,7 @@ def port_rule_sources():
 
 def build():
     inv = inventory()
-    checked = json.loads((ROOT / "PORT_SOURCE_BRANCH_INVENTORY.json").read_text())
+    checked = json.loads((ROOT / "PORT_SOURCE_BRANCH_INVENTORY.json").read_text(encoding="utf-8"))
     if inv != checked:
         raise ValueError("Source branch inventory has drifted; regenerate it first")
     routines, sites, writes = source_contracts(inv)
@@ -481,12 +481,12 @@ def main():
     serialized = json.dumps(data, ensure_ascii=False, indent=2) + "\n"
     markdown = report(data)
     if args.check:
-        if OUTPUT.read_text() != serialized or REPORT.read_text() != markdown:
+        if OUTPUT.read_text(encoding="utf-8") != serialized or REPORT.read_text(encoding="utf-8") != markdown:
             raise SystemExit("Port contract ledger drifted; run tool/build_port_contract_ledger.py")
         print("Port contract ledger is current")
     else:
-        OUTPUT.write_text(serialized)
-        REPORT.write_text(markdown)
+        OUTPUT.write_text(serialized, encoding="utf-8")
+        REPORT.write_text(markdown, encoding="utf-8")
         print(f"Registered {len(data['control_sites'])} control sites and {len(data['runtime_assets'])} runtime files")
 
 
