@@ -26339,7 +26339,7 @@
     {
       "path": "test/bootstrap_test.dart",
       "kind": "test",
-      "sha256": "52201b6134bf86a0278fd7a10f4f21fd002a0aca36d23e443ad828f7d16904f7",
+      "sha256": "8b86d690844abd32a3176b124f4f5d27d25cb3668f0149459cc50d02a3de68a9",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26500,7 +26500,7 @@
     {
       "path": "test/lore_spec_map12_test.dart",
       "kind": "test",
-      "sha256": "6a2fa1c93ec8bca4ef96f934925de8ae94d4d54b20b97f1947124ec4d0511406",
+      "sha256": "1518856f3f474f0ad0b2ec91191cc091c7f56c961d5bc0f260885c620c5d241c",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26581,7 +26581,7 @@
     {
       "path": "test/lore_spec_map20_test.dart",
       "kind": "test",
-      "sha256": "99c2cdb43c4e648aed839baa55255f2ca91db02dedd432f998b2571a782622d4",
+      "sha256": "37012ba6c3c9be5def47798758e9f85c077fab6537502394c8481f787a5745bd",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26590,7 +26590,7 @@
     {
       "path": "test/lore_spec_map21_test.dart",
       "kind": "test",
-      "sha256": "4186039092f4a60adf5feab5e12f21ed489183ba2dd8a2e68b167ac03b557248",
+      "sha256": "2758ef450155e7dc7bcaf142ce0a26190576c31bf7030b2c45c2985f16f221fc",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26599,7 +26599,7 @@
     {
       "path": "test/lore_spec_map22_test.dart",
       "kind": "test",
-      "sha256": "f433e99a018500f4e3886ab6dedab383fd9349c73f1d6f93b78592db096f97c2",
+      "sha256": "b5ee0b77372c823e40e862aaf4dd0a2b03dae4d3654672549d3ec9fd2d4e97bf",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26769,6 +26769,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/message_log_view_test.dart",
+      "kind": "test",
+      "sha256": "4ee5a1c4094c422cda58b0491a3b7c76c1d4b421d70a0b9f475b8ab56b9591cf",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/mirror_enemy_test.dart",
       "kind": "test",
       "sha256": "a80ecf1c2386b340be6cfe5614309638703418d73dabfc00079f8f687ae7ed6c",
@@ -26857,7 +26864,7 @@
     {
       "path": "test/script_engine_test.dart",
       "kind": "test",
-      "sha256": "fd3e8ae4265d9905f67a7ef97ddeaa19ae52d558f5d009d24b8bb1c8b97f297f",
+      "sha256": "c2ce97c4352c5652e6ababa623a3e1dd2e177190fb66fa93b8ba11865c9d5acc",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS",
@@ -27131,7 +27138,7 @@
     {
       "path": "test/widget_test.dart",
       "kind": "test",
-      "sha256": "0107f2fc4de403bcffe6b5d6fcf320a35ede40bdc41555e4187f8e48b368984b",
+      "sha256": "eb56b9812ce807591d1cefc9b08a4559e4524d35e4e0e3aea4812da41f0edf26",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -27357,9 +27364,9 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "3d9a53b950decd4713ef7e197e52b01f7d2c9cd2c4beeafec244a4e867a93da3",
+      "sha256": "24e4435639ff5a402213e8017a6224a2f880891bd306c2598e045f90e2750caa",
       "top_level_counts": {
-        "scripts": 598
+        "scripts": 599
       }
     },
     {
@@ -27411,7 +27418,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "53c9a11ea85ebf20dc5bec9577064c999578ac6f7bd18cc59e7a5272a796ad62"
+      "sha256": "0b09bb74d45258a56161f9f1e658c4e62d4418ecd5a3a947b76f2b8405411579"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -27447,7 +27454,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "6dbb1abb6b4fb16d80432bf1568161f2fd4619861f93b9cfc179f995bd0f3756"
+      "sha256": "0efc63a9ae5f773fcc0abb257964859d6e68266a46fabcbb2790d5629ad2eab9"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",

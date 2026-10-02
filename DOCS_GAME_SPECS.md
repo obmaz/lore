@@ -132,10 +132,11 @@ end;
 
 ### 3.1 전투 흐름 및 턴 결정 구조 (Turn Flow)
 1. **인카운터 및 기습(`assault`) 판정**:
-   - `assault == false` (적에게 기습당함): 적들이 1턴 먼저 전체 공격을 실행한 후 2단계로 진행.
-   - `assault == true` (정상 인카운터): 플레이어 파티가 먼저 행동을 선택.
+   - `assault == false` (적 선공): 적들이 1턴 먼저 행동한 후 2단계로 진행.
+   - `assault == true` (아군 선공): 플레이어 파티가 먼저 행동을 선택.
+   - 일반 조우에서 교전을 고르면 이름 있는 아군의 평균 민첩성이 적 평균 민첩성보다 **클 때만** 아군 선공이다. 동률은 적 선공이다 (`LOREBATT.PAS:1263-1279`).
 2. **명령 입력 단계 (Player Phase)**:
-   - 생존한 파티원(1..6)이 순차적으로 명령 선택:
+   - 행동 가능한 파티원(1..6)이 순차적으로 명령을 골라 `battle[person,*]`에 예약한다. **일행 치료 `CureSpell`만 선택 중 즉시 실행**된다 (`LOREBATT.PAS:1011-1134`).
      1. 무기 공격 (단일 적 대상 지정)
      2. 단일 마법 공격 (마법 종류 및 대상 적 지정)
      3. 전체 마법 공격 (마법 종류 지정)
@@ -144,7 +145,7 @@ end;
      6. 초능력 (ESP) 사용
      7. 도망 시도 (1번 리더의 경우 '일행 전체 자동 공격(AutoBattle)' 선택 가능)
 3. **플레이어 행동 실행 단계**:
-   - 파티원 1번부터 6번까지 순서대로 입력된 행동을 즉시 실행.
+   - 파티원 1번부터 6번까지 실행 시점의 행동 가능 상태를 다시 확인하며 예약된 행동을 순서대로 실행한다. 마지막 적이 쓰러져도 나머지 예약 행동과 적 단계를 거친 뒤 종료를 판정한다 (`LOREBATT.PAS:1135-1175`).
    - 도망 성공 시 즉시 전투 종료(`party.etc[6] = 2`).
 4. **적 행동 단계 (Enemy Phase)**:
    - 적 1번부터 `enemynumber`까지 순차적으로 행동:
@@ -153,7 +154,7 @@ end;
        - 기절 상태가 아니면 `hp = hp - 1`, `hp <= 0`이면 기절
      - 사망하지 않고 기절하지 않은 적은 `EnemyAttack` AI 루틴 실행.
 5. **전투 종료 판정 (`EndBattle`)**:
-   - 모든 파티원이 사망/기절 시: 패배 -> 게임 오버 (`GameOver`)
+   - 이름 있는 파티원 모두 `exist(i)`가 거짓이면 패배 -> 게임 오버 (`GameOver`). `exist`는 이름, HP 양수, `unconscious=0`, `dead=0`을 함께 검사한다 (`LORESUB.PAS:321-326`, `LOREBATT.PAS:972-987`).
    - 모든 적이 사망/기절 시: 승리 -> 골드 정산 (`PlusGold`), 필드 복귀
 
 ---
@@ -231,16 +232,14 @@ end;
 5. **플레이어 방어력(AC) 감쇄**:
    $$\text{EnemyDmg} = \text{EnemyDmg} - \left\lfloor \frac{\text{player}[j].\text{ac} \times \text{player}[j].\text{level}[1] \times (\text{random}(10) + 1)}{10} \right\rfloor$$
    $\text{EnemyDmg} \le 0$ 이면 방어 성공 (피해 0).
-6. **플레이어 피해 누적 및 기절/사망 판정**:
+6. **플레이어 피해 누적 및 상태 표시 시점**:
    - `player[j].hp > 0`인 경우:
      $$\text{player}[j].\text{hp} = \text{player}[j].\text{hp} - \text{EnemyDmg}$$
-     체력이 0 이하가 되면:
-     $$\text{player}[j].\text{unconscious} = 1$$
+     여기서 HP를 0으로 고정하거나 `unconscious`를 바로 설정하지 않는다. HP가 음수가 될 수 있다 (`LOREBATT.PAS:560-563`). 마법 피해 `castattacksub`도 같은 순서다 (`:590-593`).
    - 이미 기절(`unconscious > 0 && dead == 0`)인 상태에서 추가 피격 시:
      $$\text{player}[j].\text{unconscious} = \text{player}[j].\text{unconscious} + \text{EnemyDmg}$$
-     만약 $\text{unconscious} > \text{endurance} \times \text{level}[1]$ 이 되면:
-     $$\text{player}[j].\text{dead} = 1 \quad (\text{최종 사망})$$
    - 이미 사망(`dead > 0`)한 상태에서 피격 시: `player[j].dead = player[j].dead + EnemyDmg`
+   - `ReturnCondition`은 표시 문자열을 반환하기 전에 `(hp<=0 && unconscious=0)`이면 `unconscious:=1`, 그 뒤 `unconscious>endurance*level[1]`이면 `dead:=1`로 **상태를 변경**한다 (`LORESUB.PAS:706-725`). 전투는 적 단계 뒤 `SimpleDisCond`에서 이를 전원에게 호출하고 `EndBattle`로 간다 (`LOREBATT.PAS:1160-1172`). 다른 중간 표시 호출이 있다면 전환 시점은 앞당겨질 수 있다.
 
 #### 적 AI 행동 분기 (`EnemyAttack`)
 1. 특수 마법 조건(`specialcastlevel > 0`): `specialcastattack` 실행.
@@ -264,11 +263,11 @@ end;
 적 처치 또는 기절 시 대상 적의 도감 번호(`E_number`)를 기반으로 산출:
 $$\text{EXP} = \max\left(1, \left\lfloor \frac{\text{E\_number}^3}{8} \right\rfloor\right)$$
 - 살아있는 적을 기절시켰을 때: **막타를 친 플레이어 캐릭터 1명**에게만 해당 EXP 지급.
-- 기절한 적을 완전히 사망시켰을 때: **생존한 파티원 전원**에게 각자 해당 EXP 지급.
+- 기절한 적을 완전히 사망시켰을 때: `exist(i)`가 참인 **행동 가능한 파티원 전원**에게 각자 해당 EXP 지급.
 
 #### 골드 보상 (`PlusGold`)
-전투 승리 시 살아남아 쓰러뜨린 모든 적의 총합:
-$$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{ac}) \right)$$
+전투 승리 시 현재 적 슬롯 각각의 `E_number`로 `enemydata` 원형을 찾아 합산한다. 사건에서 덮어쓴 현재 적의 레벨·AC는 계산에 쓰지 않는다 (`LOREBATT.PAS:54-75`).
+$$\text{Gold} = \sum_{\text{enemy slot}} \left( \text{enemydata}[E\_number].\text{level}^3 \times \max(1, \text{enemydata}[E\_number].\text{ac}) \right)$$
 
 ---
 
@@ -427,9 +426,16 @@ $$\text{Gold} = \sum_{\text{enemy}} \left( \text{level}^3 \times \max(1, \text{a
 
 ### 5.2 타일 속성 및 특수 효과
 - 일반 바닥: 1걸음마다 독 진행 (10스텝마다 HP 감소), 1걸음마다 인카운터 확률 검사.
-- 인카운터 확률: $\text{random}(\text{encounterRate} \times 20) == 0$ (기본 약 $5\% \sim 10\%$)
-- 늪지(`swamp`): 진입 시 행운 판정 실패 시 중독(`poison = 1`).
-- 용암(`lava`): 진입 시 파티원 전원에게 $40 \sim 79 - 2 \times \text{random}(\text{luck})$ 피해.
+- 일반 이동 조우 확률: $\text{random}(\text{encounterRate} \times 20) == 0$.
+  설정값 1·2·3에서 각각 5%, 2.5%(기본), 약 1.67%다
+  (`LOREMAIN.PAS:140`, `LORESUB.PAS:1760`). 물 진입은 분모가
+  `encounterRate*30`이다 (`LOREMAIN.PAS:24`).
+- 늪지(`swamp`): 독을 먼저 진행한다. `etc[3]>0`이면 이를 감소시키고,
+  아니면 이름 없는 슬롯까지 1~6번의 행운 난수 6회를 소비해 중독을
+  판정한다 (`LOREMAIN.PAS:29-75`).
+- 용암(`lava`): 슬롯 1~6 각각 `random(40)+40-2*random(player[i].luck)`
+  피해값을 계산한다. 이름 없는 슬롯도 포함해 난수 총 12회를 소비한
+  뒤 피해를 적용한다 (`LOREMAIN.PAS:77-111`).
 - 벽/장애물: 충돌 처리(`originposition`), 원래 위치 유지.
 
 ---
@@ -709,6 +715,8 @@ EVIL SEAL 봉인 동굴의 일곱 방은 실제 특수 타일 x=14,18,22,26,30,3
   --write`로 생성**한다(원문 대사·비트·타일 변경·경험치까지 그대로 옮김).
   - 퀘스트 단계 4종: `lordahn`(etc[10]), `lastditch`(etc[13]), `gaia`(etc[14]),
     `water`(etc[15]) → `LoreDialogueManager.questStepValue/applyQuestStep`.
+    원본의 대화·던전 사건·예지 메뉴를 잇는 단계 전이는
+    [원본 상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 기록했다.
   - 비트 5종: `menaceInfoGiven`(etc[50]b5), `weaponRoomVisited`(etc[50]b4),
     `loreChallengeAccepted`(etc[30]b1), `loreChallengeBlessed`(etc[30]b2),
     `programmerMet`(etc[43]b4), `jrAntaresSecretFound`(etc[50]b1).

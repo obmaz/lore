@@ -44,6 +44,16 @@ void main() {
   }
 
   group('LORESPEC 맵 20 DEN5 / ASTRAL DEN 분기 검증 (LORESPEC.PAS:1475-1759)', () {
+    test('원본 DEN7 y=18 특수 타일은 횃불을 켠다', () {
+      final bytes = File('assets/maps/DEN7.MAP').readAsBytesSync();
+      final width = bytes[0];
+      expect(bytes[2 + (18 - 1) * width + 24 - 1], 0);
+      final run = dispatchSpecial(mapId: 20, x: 24, y: 18, tile: 0)!;
+      expect(run.script.id, 'den7-torch-y18');
+      expect(run.outcome.torchLit, isTrue);
+      expect(run.outcome.setFlags, isNot(contains('etc1')));
+    });
+
     test('y=88 및 y=71 퀴즈 문은 타일 0이면 통과 워프, 아니면 동굴 밖으로 퇴장시킨다', () {
       // LoreSpecProcedures.map20 직접 호출 검증 (타일 0 통과)
       final directPass = LoreSpecProcedures.map20(

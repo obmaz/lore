@@ -107,5 +107,23 @@ void main() {
       );
       expect(defeated, isNull);
     });
+
+    test('나머지 특수 타일은 Wraith 전투 후 현재 타일을 40으로 바꾼다', () {
+      final run = dispatchSpecial(mapId: 22, x: 20, y: 20, tile: 52)!;
+      expect(run.script.id, 'keep2-ambush-zone-a');
+      expect(run.awaitingBattle, isTrue);
+      expect(run.outcome.battleTitle, 'Wraith');
+      expect(run.outcome.battleMonsters, [60, 60, 60, 60, 60]);
+      expect(run.continueAfterBattle().outcome.playerTiles,
+          contains((tile: 40, ifZero: null)));
+
+      expect(dispatchSpecial(mapId: 22, x: 20, y: 20, tile: 52,
+          flags: {'etc43_bit2'}), isNull);
+      expect(dispatchSpecial(mapId: 22, x: 20, y: 46, tile: 52), isNull);
+      expect(dispatchSpecial(mapId: 22, x: 25, y: 18, tile: 52,
+          flags: {'etc43_bit2'}), isNull);
+      expect(dispatchSpecial(mapId: 22, x: 25, y: 25, tile: 52,
+          flags: {'etc43_bit1'}), isNull);
+    });
   });
 }

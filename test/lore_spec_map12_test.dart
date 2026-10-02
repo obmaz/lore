@@ -63,14 +63,16 @@ void main() {
       expect(right.outcome.tileChanges.single.y, 49);
       expect(right.outcome.tileChanges.single.tile, 0);
 
-      // 오답 문 (x=20)
-      final wrong = dispatchSpecial(mapId: 12, x: 20, y: 50)!;
+      // 오답 문 (원본 지도의 x=19는 특수 타일 0)
+      final wrong = dispatchSpecial(mapId: 12, x: 19, y: 50)!;
       expect(wrong.outcome.messages.single, '당신은 바보군요, 다시 생각하십시오.');
       expect((wrong.outcome.teleportX, wrong.outcome.teleportY), (25, 70));
 
-      // 남쪽으로 이동 중(moveDy == 1)에는 문이 발동하지 않는다
-      expect(dispatchSpecial(mapId: 12, x: 33, y: 50, moveDy: 1), isNull);
-      expect(dispatchSpecial(mapId: 12, x: 20, y: 50, moveDy: 1), isNull);
+      // 남쪽 이동에서는 문 대신 마지막 절벽 분기가 적용된다.
+      expect(dispatchSpecial(mapId: 12, x: 33, y: 50, moveDy: 1)!
+          .outcome.stepBack, isTrue);
+      expect(dispatchSpecial(mapId: 12, x: 19, y: 50, moveDy: 1)!
+          .outcome.stepBack, isTrue);
     });
 
     test('y=10에서 x=18은 황금의 봉인을 획득하고 다른 x는 늪 함정을 발동한다', () {
@@ -85,10 +87,10 @@ void main() {
       expect(seal.outcome.questChanges.single.set, 2);
       expect(seal.outcome.tileChanges.single.tile, 0);
 
-      // 늪 함정 (x=15, gaia 퀘스트 < 2)
+      // 늪 함정 (원본 지도의 x=13은 특수 타일 0)
       final trap = dispatchSpecial(
         mapId: 12,
-        x: 15,
+        x: 13,
         y: 10,
         questSteps: {'gaia': 1},
       )!;
@@ -96,19 +98,24 @@ void main() {
       expect(area.tile, 49);
       expect((area.yMin, area.yMax), (10, 23));
 
-      // 퀘스트 완료 후(gaia >= 2)에는 y=10 사건이 발동하지 않는다
+      // 퀘스트 완료 후(gaia >= 2)에는 봉인/함정 대신 절벽 분기가 적용된다.
       expect(
-        dispatchSpecial(mapId: 12, x: 18, y: 10, questSteps: {'gaia': 2}),
-        isNull,
+        dispatchSpecial(mapId: 12, x: 18, y: 10, questSteps: {'gaia': 2})!
+            .outcome.stepBack,
+        isTrue,
       );
       expect(
-        dispatchSpecial(mapId: 12, x: 15, y: 10, questSteps: {'gaia': 2}),
-        isNull,
+        dispatchSpecial(mapId: 12, x: 13, y: 10, questSteps: {'gaia': 2})!
+            .outcome.stepBack,
+        isTrue,
       );
     });
 
     test('(12,48) Rigel 만남은 3가지 선택지를 제공하고 완료 후에는 재발동하지 않는다', () {
-      final rigel = dispatchSpecial(mapId: 12, x: 12, y: 48)!;
+      final mapBytes = File('assets/maps/T_DEN2.MAP').readAsBytesSync();
+      final mapWidth = mapBytes[0];
+      expect(mapBytes[2 + (48 - 1) * mapWidth + 12 - 1], 52);
+      final rigel = dispatchSpecial(mapId: 12, x: 12, y: 48, tile: 52)!;
       expect(rigel.hasPendingChoice, isTrue);
       expect(rigel.outcome.messages.join(), contains('Rigel'));
       expect(rigel.choiceTexts!.length, 3);
@@ -118,16 +125,31 @@ void main() {
 
       // 이미 만난 뒤에는 재발동하지 않는다
       expect(
-        dispatchSpecial(mapId: 12, x: 12, y: 48, flags: {'rigelMet'}),
+        dispatchSpecial(mapId: 12, x: 12, y: 48, tile: 52, flags: {'rigelMet'}),
         isNull,
       );
       expect(
-        dispatchSpecial(mapId: 12, x: 12, y: 48, flags: {'etc31_bit2'}),
+        dispatchSpecial(mapId: 12, x: 12, y: 48, tile: 52, flags: {'etc31_bit2'}),
         isNull,
       );
     });
 
-    test('타일이 0이 아니면 특수 사건이 발동하지 않는다', () {
+    test('공중 부상 없이 다른 특수 칸에 들어서면 뒤로 물리고 출구는 제외한다', () {
+      final mapBytes = File('assets/maps/T_DEN2.MAP').readAsBytesSync();
+      final mapWidth = mapBytes[0];
+      expect(mapBytes[2 + (60 - 1) * mapWidth + 25 - 1], 0);
+      final cliff = dispatchSpecial(mapId: 12, x: 25, y: 60, tile: 0)!;
+      expect(cliff.script.id, 'gaia-den-cliff-no-levitation');
+      expect(cliff.outcome.stepBack, isTrue);
+      expect(cliff.outcome.messages.single, '일행들은 절벽으로 떨어질뻔 했다.');
+      expect(dispatchSpecial(mapId: 12, x: 25, y: 60, tile: 0,
+          flags: {'etc4'}), isNull);
+      expect(dispatchSpecial(mapId: 12, x: 25, y: 60, tile: 0,
+          flags: {'levitateActive'}), isNull);
+      expect(dispatchSpecial(mapId: 12, x: 25, y: 71, tile: 52), isNull);
+    });
+
+    test('특수 타일 0·52 이외에서는 특수 사건이 발동하지 않는다', () {
       expect(dispatchSpecial(mapId: 12, x: 33, y: 50, tile: 1), isNull);
       expect(dispatchSpecial(mapId: 12, x: 18, y: 10, tile: 44), isNull);
     });

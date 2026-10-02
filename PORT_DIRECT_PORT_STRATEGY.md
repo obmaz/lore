@@ -169,7 +169,7 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
 
 ## 최근 검증 (2026-10-02)
 
-- 전체 Flutter 테스트 516개 통과; 자료를 다시 쓰는 EXPORT_DATA / EXPORT_IMAGES
+- 전체 Flutter 테스트 521개 통과; 자료를 다시 쓰는 EXPORT_DATA / EXPORT_IMAGES
   도구 테스트 2개는 기본 설정에 따라 제외했다.
 - `flutter analyze` 문제 없음; Python 도구 회귀 45개 통과.
 - 맵 25 레버·금속 수호자 원본 fixture, 메모리 감사 색인, 지도 비교 보고서와
@@ -182,3 +182,6 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
   승리 대사 → 안내 → 전직 순서를 확인했다. 전투 종료 결과를 주입한 UI
   검증이며 전투 전체 수치나 DOS 연출의 동등성을 입증하는 검사는 아니다.
   새 게임 → 엔딩 실제 플레이와 원본 DOS 실행 대조는 최종 게이트에 남아 있다.
+
+원격 병합: 복구된 맵 12/20/21/22 분기와 콘솔·방향키 변경을 보존했다.
+원본 분석 문서는 근거 자료로 유지하며 삭제한 구형 계획을 다시 사용하지 않는다.
