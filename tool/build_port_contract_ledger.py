@@ -343,10 +343,12 @@ def port_rule_sources():
         "lib/logic/lore_special_event_dispatcher.dart",
         "lib/logic/script_world_reducer.dart",
         "lib/logic/script_battle_session.dart",
+        "lib/logic/script_party_reducer.dart",
         "lib/logic/lore_lava_logic.dart",
         "lib/logic/lore_swamp_logic.dart",
         "lib/screens/main_game_screen.dart",
         "lib/widgets/field_menu_dialog.dart",
+        "lib/widgets/script_scene_dialog.dart",
         "PORT_CONTRACT_EVIDENCE.json",
     )]
     rows = []

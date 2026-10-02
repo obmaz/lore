@@ -1226,16 +1226,85 @@ class LoreSpecProcedures {
       return null;
     }
 
-    if (y == 43 && scripts.usingJson) {
-      final hasDefeatedMetalGuardian = context.flags.contains(
-        'keep3MetalGuardianCleared',
+    // LORESPEC.PAS:2009-2065. No clear flag or random draw in this branch.
+    // Revisits stop because tiles 24..27 become ordinary floor after victory.
+    if (y == 43) {
+      final torch = context.etcValue(1);
+      final alreadyLit =
+          torch != 0 ||
+          (!context.sourceEtc.containsKey(1) &&
+              context.flags.contains('torchActive'));
+      return scripts.startProcedure(
+        LoreScript(
+          id: 'keep3-metal-guardian-y43',
+          trigger: 'step',
+          map: 25,
+          once: false,
+          require: const ScriptRequire(),
+          steps: [
+            if (!alreadyLit) ...const [
+              ScriptStep(
+                kind: 'sourceEtc',
+                sourceEtcIndex: 1,
+                sourceEtcValue: 1,
+              ),
+              ScriptStep(kind: 'torch', torchLit: true),
+            ],
+            const ScriptStep(
+              kind: 'scene',
+              scene: ScriptScene(
+                title: '금속 수호자',
+                actors: [71],
+                lines: [
+                  ' 금속으로된 어떤 적이 나타났다.',
+                  ' 여기까지 잘도왔구나. 나의 임무는 너희 같은',
+                  '쓰레기들 때문에 Necromancer 님이 수고하시지',
+                  '않도록 미리 처단해 버리는 것이다.',
+                ],
+              ),
+            ),
+            const ScriptStep(
+              kind: 'battle',
+              battleTitle: '금속 수호자',
+              battleEnemyFirst: true,
+              monsters: [66, 66, 66, 66, 71],
+              battleRunAwaySteps: [ScriptStep(kind: 'nudge', nudgeDy: 1)],
+            ),
+            for (var i = 24; i <= 27; i++)
+              ScriptStep(kind: 'setTile', tileX: i, tileY: y, tileValue: 41),
+            const ScriptStep(
+              kind: 'scene',
+              scene: ScriptScene(
+                title: '금속 수호자 격파',
+                lines: [' 당신이 적을 물리치자 조금후에 이상하리만큼', '편안한 기운이 일행을 감쌌다.'],
+              ),
+            ),
+            const ScriptStep(
+              kind: 'scene',
+              scene: ScriptScene(
+                title: '안내',
+                actors: [68, 67],
+                appendPartyNameSlot: 1,
+                appendPartyNameLine: 0,
+                lines: [
+                  ' 매우 수고하시는군요. ',
+                  ' 당신이 Necromancer에게 가기전에 한 가지 일',
+                  '러 두고자 하오.',
+                  ' 이곳에는 비밀스런 문이 두군데 있소. 지금은',
+                  '보이지가 않지만 양쪽의 벽을 살피다 보면  숨',
+                  '겨진 문 안에 레버가 각각 하나씩 있소.  그걸',
+                  '모두 작동시키면 용암의 중앙에서 Necromancer',
+                  '의 방으로 통하는 입구가 보일 것이오. 여기까',
+                  '지만 내가 알려줄 수가 있는 부분이오. 마지막',
+                  '으로 당신의 건투를 빌겠소.',
+                ],
+              ),
+            ),
+            const ScriptStep(kind: 'partyClass', partyClassId: 10),
+          ],
+        ),
+        context,
       );
-      if (!hasDefeatedMetalGuardian) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'keep3-metal-guardian-y43',
-        );
-        return scripts.startProcedure(content, context);
-      }
     }
 
     // LORESPEC.PAS:2067-2079. Preserve the loop order and its final overwrites.

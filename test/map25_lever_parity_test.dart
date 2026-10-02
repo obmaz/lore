@@ -15,6 +15,56 @@ import 'package:lore/logic/script_world_reducer.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
+  test('stale saved lever aliases cannot suppress the UI raw bit write', () {
+    final manager = LoreDialogueManager.instance;
+    addTearDown(() => manager.loadSaveFlags({}));
+    for (var byte = 0; byte < 256; byte++) {
+      manager.loadSaveFlags({
+        'etc45': byte,
+        'scriptFlags': {
+          'etc45': true,
+          'etc45_bit7': true,
+          'etc45_bit8': true,
+          'keep3KeyA': true,
+          'keep3KeyB': true,
+        },
+      });
+      final before = manager.getFlagsCopy();
+      expect(before['etc45'], byte != 0);
+      expect(before['keep3KeyA'], byte & 64 != 0);
+      expect(before['keep3KeyB'], byte & 128 != 0);
+      final run = LoreSpecialEventDispatcher.resolve(
+        action: LoreTileAction.special,
+        mapId: 25,
+        x: 5,
+        y: 34,
+        context: ScriptContext(
+          tileAtPlayer: 0,
+          sourceEtc: manager.partyEtc.snapshot(),
+          flags: before.entries.where((e) => e.value).map((e) => e.key).toSet(),
+        ),
+        party: const [],
+        scripts: LoreScriptEngine(),
+        legacy: LoreDungeonEventManager.instance,
+      ).script!;
+      final after = ScriptWorldReducer.applyProgress(
+        ScriptProgressState(flags: before, quests: const {}),
+        run.outcome,
+      );
+      // MainGameScreen applies only flags that change from false to true.
+      for (final entry in after.flags.entries) {
+        if (entry.value && before[entry.key] != true) {
+          manager.setFlag(entry.key);
+        }
+      }
+      expect(manager.partyEtc.read(45), byte | 64);
+      manager.loadSaveFlags(
+        jsonDecode(jsonEncode(manager.getSaveFlags())) as Map<String, dynamic>,
+      );
+      expect(manager.partyEtc.read(45), byte | 64);
+    }
+  });
+
   ScriptRun? sourceLever(
     LoreScriptEngine engine,
     int x,

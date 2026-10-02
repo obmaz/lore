@@ -28,6 +28,7 @@ flutter build web --release
 python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS --coverage
 python3 tool/audit_messages.py
 python3 tool/audit_source_memory.py --check
+python3 tool/source_map25_guardian.py --check
 python3 tool/build_port_contract_ledger.py --check
 ```
 

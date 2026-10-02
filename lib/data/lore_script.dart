@@ -183,6 +183,43 @@ class ScriptOption {
   const ScriptOption(this.text, this.steps);
 }
 
+/// Original DisplayEnemies/Print/PressAnyKey or talk('') scene, without combat.
+/// Acknowledgement resumes the procedure; it is not a game choice.
+class ScriptScene {
+  final String title;
+  final List<int> actors;
+  final List<String> lines;
+  final int? appendPartyNameSlot;
+  final int? appendPartyNameLine;
+
+  const ScriptScene({
+    required this.title,
+    this.actors = const [],
+    required this.lines,
+    this.appendPartyNameSlot,
+    this.appendPartyNameLine,
+  });
+
+  /// Resolve text when presented, after battle/recruits; player[1] stays slot 1.
+  ScriptScene withPartyNames(List<String> slots) {
+    final slot = appendPartyNameSlot;
+    if (slot == null) return this;
+    RangeError.checkValueInInterval(slot, 1, 7, 'player slot');
+    final line = appendPartyNameLine!;
+    RangeError.checkValidIndex(line, lines, 'scene line');
+    return ScriptScene(
+      title: title,
+      actors: actors,
+      lines: [
+        for (var i = 0; i < lines.length; i++)
+          i == line
+              ? '${lines[i]}${slot <= slots.length ? slots[slot - 1] : ''}'
+              : lines[i],
+      ],
+    );
+  }
+}
+
 /// 스크립트 실행 중 일어난 일 1건(순서 보존).
 class ScriptEvent {
   /// 'message' = 대사 출력, 'peek' = 카메라 연출(원작 `scroll(FALSE)`).
@@ -209,6 +246,7 @@ class ScriptStep {
   /// Direct Pascal procedure assignment, independent of JSON flag names.
   final int? sourceEtcIndex;
   final int? sourceEtcValue;
+  final ScriptScene? scene;
 
   /// Reuse another script's steps in the current battle sequence.
   final String? includeScriptId;
@@ -329,6 +367,7 @@ class ScriptStep {
     this.key,
     this.sourceEtcIndex,
     this.sourceEtcValue,
+    this.scene,
     this.includeScriptId,
     this.slot,
     this.prompt,
@@ -704,6 +743,7 @@ class ScriptRun {
   final ScriptStep? _choiceStep;
   final ScriptStep? _battleStep;
   final bool awaitingBattle;
+  final ScriptScene? pendingScene;
 
   ScriptRun._(
     this._engine,
@@ -715,6 +755,7 @@ class ScriptRun {
     this._choiceStep,
     this._battleStep,
     this.awaitingBattle = false,
+    this.pendingScene,
   });
 
   /// UI가 사용자에게 물어봐야 하는 선택지 (없으면 null).
@@ -724,6 +765,7 @@ class ScriptRun {
   ScriptOutcome get outcome => _acc;
 
   bool get hasPendingChoice => choiceTexts != null;
+  bool get hasPendingScene => pendingScene != null;
 
   int? get cancelOptionIndex => _choiceStep?.cancelOptionIndex;
 
@@ -733,6 +775,7 @@ class ScriptRun {
   void completeEquipment() {
     if (script.once &&
         !hasPendingChoice &&
+        !hasPendingScene &&
         !awaitingBattle &&
         requiresEquipmentCommit) {
       _engine.consumedScripts.add(script.id);
@@ -757,6 +800,7 @@ class ScriptRun {
     final run = _engine._execute(script, queue, _acc);
     if (script.once &&
         !run.hasPendingChoice &&
+        !run.hasPendingScene &&
         !run.awaitingBattle &&
         !run.requiresEquipmentCommit) {
       _engine.consumedScripts.add(script.id);
@@ -775,6 +819,7 @@ class ScriptRun {
     ], _acc);
     if (script.once &&
         !run.hasPendingChoice &&
+        !run.hasPendingScene &&
         !run.awaitingBattle &&
         !run.requiresEquipmentCommit) {
       _engine.consumedScripts.add(script.id);
@@ -835,6 +880,19 @@ class ScriptRun {
     final steps = _battleStep?.battleDefeatSteps;
     if (!awaitingBattle || steps == null || steps.isEmpty) return null;
     return _engine._execute(script, steps, _acc);
+  }
+
+  ScriptRun acknowledgeScene() {
+    if (!hasPendingScene) return this;
+    final run = _engine._execute(script, _remaining, _acc);
+    if (script.once &&
+        !run.hasPendingChoice &&
+        !run.hasPendingScene &&
+        !run.awaitingBattle &&
+        !run.requiresEquipmentCommit) {
+      _engine.consumedScripts.add(script.id);
+    }
+    return run;
   }
 }
 
@@ -1015,6 +1073,7 @@ class LoreScriptEngine {
     final run = _execute(s, s.steps, const ScriptOutcome());
     if (s.once &&
         !run.hasPendingChoice &&
+        !run.hasPendingScene &&
         !run.awaitingBattle &&
         !run.requiresEquipmentCommit) {
       consumedScripts.add(s.id);
@@ -1160,6 +1219,19 @@ class LoreScriptEngine {
         continue;
       }
       switch (step.kind) {
+        case 'scene':
+          final scene = step.scene!;
+          for (final line in scene.lines) {
+            messages.add(line);
+            events.add(ScriptEvent.message(line));
+          }
+          return ScriptRun._(
+            this,
+            script,
+            queue.sublist(i + 1),
+            snapshot(),
+            pendingScene: scene,
+          );
         case 'say':
           messages.add(step.text!);
           events.add(ScriptEvent.message(step.text!));

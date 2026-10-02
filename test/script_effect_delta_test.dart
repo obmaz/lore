@@ -4,6 +4,41 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 
 void main() {
+  test('scene pauses preserve once ownership and resume only the new reward segment', () {
+    final engine = LoreScriptEngine();
+    final run = engine.startProcedure(
+      LoreScript(
+        id: 'scene-once',
+        trigger: 'step',
+        map: 25,
+        once: true,
+        require: const ScriptRequire(),
+        steps: const [
+          ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(title: '등장', lines: ['첫 대사']),
+          ),
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(title: '안내', lines: ['둘째 대사']),
+          ),
+          ScriptStep(kind: 'gold', amount: 100),
+        ],
+      ),
+      const ScriptContext(),
+    );
+    expect(engine.consumedScripts, isEmpty);
+    final second = run.acknowledgeScene();
+    expect(second.outcome.since(run.outcome).messages, ['둘째 대사']);
+    expect(second.outcome.since(run.outcome).sourceEtcWrites, isEmpty);
+    expect(engine.consumedScripts, isEmpty);
+    final finish = second.acknowledgeScene();
+    expect(finish.hasPendingScene, isFalse);
+    expect(finish.outcome.since(second.outcome).goldDelta, 100);
+    expect(engine.consumedScripts, {'scene-once'});
+    expect(finish.acknowledgeScene(), same(finish));
+  });
   test('선택 이후 같은 값의 일회성 효과도 새 구간에서 다시 전달한다', () {
     final effects = [
       {

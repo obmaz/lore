@@ -329,17 +329,20 @@ class LoreDialogueManager {
     'lavaLeverRightPulled': lavaLeverRightPulled,
     ..._scriptFlags,
     for (final key in collectedTreasures) key: true,
-    // 원작 `party.etc[N]` 비트도 켜진 것만 노출한다.
+    // Raw bytes, including zero/unset bits, override stale legacy aliases.
     for (final entry in partyEtc.entries)
       for (var m = 1; m <= 8; m++)
-        if (((entry.value >> (m - 1)) & 1) == 1) 'etc${entry.key}_bit$m': true,
-    for (final entry in partyEtc.entries)
-      if (entry.value != 0) 'etc${entry.key}': true,
+        'etc${entry.key}_bit$m': ((entry.value >> (m - 1)) & 1) == 1,
+    for (final entry in partyEtc.entries) 'etc${entry.key}': entry.value != 0,
     if (partyEtc.containsKey(40)) ...{
       'evilSealRoomCleared': partyEtc.hasBit(40, 1),
       'etc40_bit1': partyEtc.hasBit(40, 1),
       for (var room = 1; room <= 7; room++)
         'evilSealRoom$room': (partyEtc.read(40) >> 1) == room,
+    },
+    if (partyEtc.containsKey(45)) ...{
+      'keep3KeyA': partyEtc.hasBit(45, 7),
+      'keep3KeyB': partyEtc.hasBit(45, 8),
     },
   };
 

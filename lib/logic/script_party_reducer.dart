@@ -9,15 +9,22 @@ class ScriptPartyReducer {
     List<PartyMember> party,
     ScriptOutcome outcome,
   ) {
-    return [for (final member in party) _applyToMember(member, outcome)];
+    return [
+      for (var slot = 0; slot < party.length; slot++)
+        _applyToMember(party[slot], outcome, slot + 1),
+    ];
   }
 
-  static PartyMember _applyToMember(PartyMember member, ScriptOutcome outcome) {
+  static PartyMember _applyToMember(
+    PartyMember member,
+    ScriptOutcome outcome,
+    int slot,
+  ) {
     final next = PartyMember.fromJson(member.toJson());
     // LORETALK.PAS:360-367 / LORESPEC.PAS:2061-2064.
     if (next.name.isNotEmpty) {
-      if (outcome.partyClassId case final classId?) {
-        next.playerClass = PlayerClass.fromId(classId);
+      if (slot <= 6 && outcome.partyClassId != null) {
+        next.playerClass = PlayerClass.fromId(outcome.partyClassId!);
       }
       next.experience += outcome.expDelta;
     }

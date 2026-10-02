@@ -52,28 +52,35 @@ void main() {
         scripts,
       )!;
       expect(runDirect.outcome.torchLit, isTrue);
-      expect(
-        runDirect.outcome.messages,
-        contains(' 금속으로된 어떤 적이 나타났다.'),
-      );
-      expect(runDirect.awaitingBattle, isTrue);
-      expect(runDirect.outcome.battleMonsters, [66, 66, 66, 66, 71]);
+      expect(runDirect.outcome.messages, contains(' 금속으로된 어떤 적이 나타났다.'));
+      expect(runDirect.hasPendingScene, isTrue);
+      final battle = runDirect.acknowledgeScene();
+      expect(battle.awaitingBattle, isTrue);
+      expect(battle.outcome.battleMonsters, [66, 66, 66, 66, 71]);
 
-      final runDispatcher = dispatchSpecial(
-        mapId: 25,
-        x: 25,
-        y: 43,
-        tile: 0,
-      )!;
-      expect(runDispatcher.awaitingBattle, isTrue);
+      final runDispatcher = dispatchSpecial(mapId: 25, x: 25, y: 43, tile: 0)!;
+      expect(runDispatcher.acknowledgeScene().awaitingBattle, isTrue);
 
       final defeated = LoreSpecProcedures.map25(
         25,
         43,
-        const ScriptContext(tileAtPlayer: 0, flags: {'keep3MetalGuardianCleared'}),
+        const ScriptContext(
+          tileAtPlayer: 0,
+          flags: {'keep3MetalGuardianCleared'},
+        ),
         scripts,
       );
-      expect(defeated, isNull);
+      // LORESPEC has no clear flag. Only the changed floor tile prevents entry.
+      expect(defeated!.hasPendingScene, isTrue);
+      expect(
+        LoreSpecProcedures.map25(
+          25,
+          43,
+          const ScriptContext(tileAtPlayer: 41),
+          scripts,
+        ),
+        isNull,
+      );
     });
 
     test('(15, 34) 및 (36, 34) 비밀 통로 개방 분기 검증', () {
@@ -83,7 +90,12 @@ void main() {
         const ScriptContext(tileAtPlayer: 0),
         scripts,
       )!;
-      expect(run15.outcome.tileChanges.any((t) => t.x == 15 && t.y == 34 && t.tile == 41), isTrue);
+      expect(
+        run15.outcome.tileChanges.any(
+          (t) => t.x == 15 && t.y == 34 && t.tile == 41,
+        ),
+        isTrue,
+      );
 
       final run36 = LoreSpecProcedures.map25(
         36,
@@ -91,7 +103,12 @@ void main() {
         const ScriptContext(tileAtPlayer: 0),
         scripts,
       )!;
-      expect(run36.outcome.tileChanges.any((t) => t.x == 36 && t.y == 34 && t.tile == 41), isTrue);
+      expect(
+        run36.outcome.tileChanges.any(
+          (t) => t.x == 36 && t.y == 34 && t.tile == 41,
+        ),
+        isTrue,
+      );
     });
 
     test('(5, 34) 및 (46, 34) 레버 조작 및 최종 방 입구 개방 분기 검증', () {
@@ -113,8 +130,18 @@ void main() {
         scripts,
       )!;
       expect(runBSecond.outcome.setFlags, contains('etc45_bit8'));
-      expect(runBSecond.outcome.tileChanges.any((t) => t.x == 25 && t.y == 27 && t.tile == 54), isTrue);
-      expect(runBSecond.outcome.tileChanges.any((t) => t.x == 26 && t.y == 27 && t.tile == 54), isTrue);
+      expect(
+        runBSecond.outcome.tileChanges.any(
+          (t) => t.x == 25 && t.y == 27 && t.tile == 54,
+        ),
+        isTrue,
+      );
+      expect(
+        runBSecond.outcome.tileChanges.any(
+          (t) => t.x == 26 && t.y == 27 && t.tile == 54,
+        ),
+        isTrue,
+      );
 
       // 3. 디스패처로도 정상 실행
       final runBDispatcher = dispatchSpecial(
@@ -124,7 +151,12 @@ void main() {
         tile: 0,
         flags: {'etc45_bit7'},
       )!;
-      expect(runBDispatcher.outcome.tileChanges.any((t) => t.x == 25 && t.y == 27 && t.tile == 54), isTrue);
+      expect(
+        runBDispatcher.outcome.tileChanges.any(
+          (t) => t.x == 25 && t.y == 27 && t.tile == 54,
+        ),
+        isTrue,
+      );
     });
   });
 }

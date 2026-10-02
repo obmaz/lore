@@ -42,6 +42,7 @@ import '../widgets/encounter_viewport_view.dart';
 import '../widgets/town_dialog.dart';
 import '../widgets/town_facilities_dialog.dart';
 import '../widgets/field_menu_dialog.dart';
+import '../widgets/script_scene_dialog.dart';
 import '../widgets/quick_view_dialog.dart';
 import '../widgets/esp_dialog.dart';
 import '../game/lore_map_manager.dart';
@@ -551,6 +552,22 @@ class _MainGameScreenState extends State<MainGameScreen> {
         _pendingScriptTargetY = talkTargetY;
         return false;
       }
+      if (current.pendingScene case final scene?) {
+        if (!mounted) return false;
+        await showDialog<void>(
+          context: context,
+          barrierDismissible: false,
+          builder: (_) => ScriptSceneDialog(
+            scene: scene.withPartyNames([
+              for (final member in _party) member.name,
+            ]),
+            actors: [for (final id in scene.actors) Monster.create(id)],
+          ),
+        );
+        if (!mounted) return false;
+        current = current.acknowledgeScene();
+        continue;
+      }
       final options = current.pendingChoice;
       if (options == null) return true;
       if (!mounted) return false;
@@ -615,10 +632,19 @@ class _MainGameScreenState extends State<MainGameScreen> {
     int? talkTargetY,
   }) async {
     final outcome = since == null ? run.outcome : run.outcome.since(since);
-    String presented(String message) =>
-        run.script.id == 'keep2-exit-guard' && message.startsWith(', ')
-        ? '${_party.first.name}$message'
-        : message;
+    final sourceScene = run.pendingScene;
+    final renderedScene = sourceScene?.withPartyNames([
+      for (final member in _party) member.name,
+    ]);
+    String presented(String message) {
+      final line = sourceScene?.appendPartyNameLine;
+      if (line != null && message == sourceScene!.lines[line]) {
+        return renderedScene!.lines[line];
+      }
+      return run.script.id == 'keep2-exit-guard' && message.startsWith(', ')
+          ? '${_party.first.name}$message'
+          : message;
+    }
 
     if (outcome.events.isEmpty) {
       for (final m in outcome.messages) {

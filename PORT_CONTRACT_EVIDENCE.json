@@ -339,6 +339,106 @@
       "test": "test/lore_source_memory_test.dart",
       "note": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:131",
+      "line": 2009,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:132",
+      "line": 2010,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:62",
+      "line": 2034,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:134",
+      "line": 2038,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:30",
+      "line": 2038,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:135",
+      "line": 2039,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:31",
+      "line": 2042,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:63",
+      "line": 2044,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:64",
+      "line": 2063,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:136",
+      "line": 2064,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_guardian_source_test.dart",
+      "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
+      "verification": "partial"
     }
   ]
 }
