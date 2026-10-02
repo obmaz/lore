@@ -2429,6 +2429,226 @@
       "test": "test/lore_spec_map12_test.dart",
       "note": "Map12 else-if chain owned directly: y=71 wantexit boundary; y=50 doors unless moving south (y1=1), right door opens map[33,49], wrong door x:=25 y:=70; y=10 while raw etc[14]<2, seal at x=18 (map[18,9]:=0, etc[14]:=2 before the text), else column 10..23 := 49; Rigel at (12,48) while raw etc[31] bit2 clear with Escape y-1, join/food+blessing (short-circuit random(20)<luck pairs)/decline setting bit2; otherwise without raw etc[4] levitation and off (12,48) the party steps back. Declining the join slot keeps the existing dialog behaviour (source y-1 not applied, recorded). DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:79",
+      "line": 671,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:80",
+      "line": 672,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:81",
+      "line": 681,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:10",
+      "line": 683,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:11",
+      "line": 684,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:82",
+      "line": 685,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:83",
+      "line": 686,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:repeat:1",
+      "line": 689,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:84",
+      "line": 691,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:85",
+      "line": 694,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:repeat:2",
+      "line": 700,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:86",
+      "line": 702,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:87",
+      "line": 705,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:12",
+      "line": 710,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:13",
+      "line": 711,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:88",
+      "line": 712,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:89",
+      "line": 791,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:14",
+      "line": 793,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:90",
+      "line": 801,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:9",
+      "line": 801,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:91",
+      "line": 802,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:92",
+      "line": 809,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map13_test.dart",
+      "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

@@ -541,44 +541,181 @@ class LoreSpecProcedures {
     ]);
   }
 
-  /// `LORESPEC.PAS:669-813`, map 13 (SWAMP FIELD).
+  static const _den4PyramidScenes = <List<String>>[
+    [],
+    [' 여기에는 기묘한 피라밋이 있었다', ' 갑자기 피라밋이 아래로 가라앉기 시작했다'],
+    [
+      ' 그 물속에서 당신은 한 시대의 운명을 바라다',
+      '보고있었다',
+      ' 당신은 왜 하필이면 당신이 이 세계에 뛰어들',
+      '어 단신으로 악과 싸워야하는 이유를 아는가 ?',
+      ' 여기서 당신은 Lord Ahn, Ancient Evil, Nec-',
+      'romancer 의 관계를 기술한 예언서를 발견하여',
+      '읽기 시작했다.',
+    ],
+    [
+      'CHAPTER 1',
+      '',
+      ' 이 세상에는 두개의 개념이 필요하다.',
+      ' 그것은 바로 선과 악이다.',
+      ' 전자의 상징은 Lord Ahn 이고, 후자의 상징은',
+      'Ancient Evil 이다.',
+    ],
+    [
+      'CHAPTER 2',
+      '',
+      ' 만약 당신이 황야에서 Ancient Evil을 만나더',
+      '라도 두려워하지 말라. 그는 비록 악의 표상이',
+      '지만 Necromancer 가 행하는 악과는 다른 표현',
+      '임을 명심하라. 만약 세상이 "선"만이 있고 이',
+      '런 "악"은 존재하지 않는다면  누구도 선의 중',
+      '요성을 인식하지 못한채 보편적인 진리로만 인',
+      '식되어가는 시대가 올것이며 선으로 둘러 쌓여',
+      '진 생활에 대한 고마움을 망각하는 시대가  우',
+      '리 앞에 도래하는 때가 결국 올것이다. 그런때',
+      '가 오기전에 사람들이  이런 선의 소중함을 느',
+      '끼고 스스로 지키려고 노력하게  만들  하나의',
+      '개념이 필요하게 되었는데 이것이 바로 태초에',
+      '생겨난 악의 개념이었다. 하지만 일부러 뭇 사',
+      '람들에게 비난을 사면서 까지 악을 대표해줄만',
+      '한 자는 나타나지 않았다. 이에 스스로를 악의',
+      '집대성으로 불러주기를 요구하는 한 현자가 있',
+      '었으니 본명은 알수 없지만 그가 바로 Ancient',
+      'Evil이라고 칭하는 자였다.  선에 의해 보호되',
+      '어 너무나도 평화로운 생활을 해왔던 사람들은',
+      '이제 새로운 마음을 갖고 그에게 대항하는  자',
+      '세를 취하게 되었다. 하지만 그는 실지로 사람',
+      '들에게 해를 입히지 않았으며  그의 본심은 선',
+      '에 있다는걸 알아두기 바란다.',
+    ],
+    [
+      'CHAPTER 3',
+      '',
+      ' 위에서 기술한 Ancient Evil이 의미하는 악과',
+      '는 달리 Neromancer 는 진정한 악의 의미를 알',
+      '지 못한다. 그것으로 인해 Ancient Evil 은 그',
+      '를 벌하려 하는 것이다. 하지만 육체가 없어진',
+      'Ancient Evil의 능력으로는 그에게 대항하기가',
+      '어렵다고 단정하고는 그의 강력한 마력으로 미',
+      '래의 역사를 뒤틀어 운명적으로 Necromancer에',
+      '대항하여야 하는 한 희생물을 창조해 냈으니..',
+      '..그는 바로 당신인것이다.',
+    ],
+    [
+      'CHAPTER 4',
+      '',
+      ' Necromancer 에게 대항 할 수 있는 단 두명의',
+      '존재는 바로 Lord Ahn과 그의 대립자이며 깊은',
+      '관계를 가진 Ancient Evil이다.',
+      ' 그들은 모두 Semi-God라는 계급의 인물들이며',
+      '보통의 사람들은  상대하기조차 어려운 인물들',
+      '이며 능력또한 인간을 초월하는 것뿐이다.  그',
+      '러므로 만약 당신이 Necromancer를 응징하려고',
+      '한다면 먼저 당신 자신이 Semi-God가 되어야만',
+      '될것이다.',
+    ],
+  ];
+
+  /// `LORESPEC.PAS:669-813`, `case 13` (DEN4).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 96` handled via portal session.
-  /// 2. Pyramid sequence at `(76..86, 71..81)`:
-  ///    - `den4-pyramid-chapters` (requires special tile 52).
-  /// 3. Gorgon battle at `y == 68`:
-  ///    - `party.etc[38] and bit5 == 0` (`den4-gorgon`).
+  /// y = 96 is the `wantexit` boundary. Any special tile in x 76..86,
+  /// y 71..81 runs the pyramid: per cell 52 -> 44 and 40/51 -> 42, the party
+  /// walks one cell at a time to x = 81 then y = 77 (faces 6/7, 4/5), every 42
+  /// becomes 51, face 5, map[81,76] := 48 between the two lines, then the
+  /// prophecy pages. No flag is set: the 52 cells are gone afterwards.
+  /// y = 68 fights the Gorgons while etc[38] bit5 is clear; only victory
+  /// sets bit5, and an escape moves y + 1 only while enemy 3 is alive.
   static ScriptRun? map13(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
-    }
-
-    if (x >= 76 && x <= 86 && y >= 71 && y <= 81) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'den4-pyramid-chapters',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 68 && x >= 80 && x <= 82) {
-      final defeated = context.flags.contains('etc38_bit5');
-      if (!defeated) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'den4-gorgon',
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 96) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 13,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
         );
-        return scripts.startProcedure(content, context);
-      }
+    ScriptStep area(int value, int onlyIf) => ScriptStep(
+      kind: 'setTileArea',
+      tileX: 76,
+      tileXMax: 86,
+      tileY: 71,
+      tileYMax: 81,
+      tileValue: value,
+      tileOnlyIf: onlyIf,
+    );
+    if (x >= 76 && x <= 86 && y >= 71 && y <= 81) {
+      final dx = (81 - x).sign;
+      final dy = (77 - y).sign;
+      ScriptScene page(int i, String title) =>
+          ScriptScene(title: title, lines: _den4PyramidScenes[i]);
+      return start('den4-pyramid-chapters', [
+        area(44, 52),
+        area(42, 40),
+        area(42, 51),
+        for (var cx = x; cx != 81; cx += dx) ...[
+          ScriptStep(kind: 'sourceFace', sourceFace: dx == 1 ? 6 : 7),
+          ScriptStep(kind: 'nudge', nudgeDx: dx),
+        ],
+        for (var cy = y; cy != 77; cy += dy) ...[
+          ScriptStep(kind: 'sourceFace', sourceFace: dy == 1 ? 4 : 5),
+          ScriptStep(kind: 'nudge', nudgeDy: dy),
+        ],
+        area(51, 42),
+        const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '피라밋', lines: ['알수없는 힘이 당신을 당기는걸 느꼈다']),
+        ),
+        const ScriptStep(kind: 'setTile', tileX: 81, tileY: 76, tileValue: 48),
+        ScriptStep(kind: 'scene', scene: page(1, '피라밋')),
+        ScriptStep(kind: 'scene', scene: page(2, '예언서')),
+        for (var i = 3; i <= 6; i++)
+          ScriptStep(kind: 'scene', scene: page(i, 'CHAPTER ${i - 2}')),
+      ]);
     }
-
+    if (y == 68) {
+      if ((context.etcValue(38) & LorePascal.bit(5)) != 0) return null;
+      return start('den4-gorgon', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Gorgon',
+            actors: [50, 51, 52],
+            lines: ['우리들의 영역을 침범하는 자는 가만두지 않겠다 !!!'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Gorgon',
+          battleEnemyFirst: true,
+          monsters: [50, 51, 52],
+          battleOverrides: [
+            {'index': 1, 'eNumber': 1},
+            {'index': 2, 'eNumber': 1},
+            {'index': 3, 'eNumber': 1},
+          ],
+          battleRunAwayIfEnemyAlive: 3,
+          battleRunAwaySteps: [ScriptStep(kind: 'nudge', nudgeDy: 1)],
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: 'Gorgon', lines: ['당신들은 Gorgon을 물리쳤다.']),
+        ),
+        ScriptStep(kind: 'flag', key: 'etc38_bit5'),
+      ]);
+    }
     return null;
   }
 
