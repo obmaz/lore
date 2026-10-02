@@ -32644,7 +32644,7 @@
     {
       "path": "test/map20_den7_ui_test.dart",
       "kind": "test",
-      "sha256": "bbc93674603b85733194ccebdb9918384baaf5df391a0cbab41eca7a76bc6b29",
+      "sha256": "818cf4ce585b964108c21865fbe50804e182666ad93209b0303e8abe54925c34",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -33116,6 +33116,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/town_facility_text_test.dart",
+      "kind": "test",
+      "sha256": "e948566c3d23d0a3baf4cdfdcebf6ffe4aec1c280bd6a5178e619b6e0475f75e",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/widget_test.dart",
       "kind": "test",
       "sha256": "a308364aeac5445780f1ceed4f0129fb3b2647fc928a7da2a7d028fbd2b45a3d",
@@ -33390,7 +33399,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "f08bdf71d43d8d09ab22533eecfda07df74a715a91909690e596e4ed6c45b94b"
+      "sha256": "a11da1e22692de7e1aa2244eae1dfbadac84f1989c8d79a121b003e189bc74f2"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -33462,7 +33471,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "c0783dc5605a6a91212f9bd879d5ce868a1f25e76410c22adba185af81adf73b"
+      "sha256": "a19a87be48e78af610a1ccffa571c4662af48432a0a0fd0a31d4de1dda1bd0d8"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
