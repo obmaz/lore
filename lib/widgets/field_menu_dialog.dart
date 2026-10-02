@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../logic/lore_menu_text.dart';
+import 'esp_panel.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
 import '../services/save_manager.dart';
@@ -149,22 +150,22 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   }
 
   Widget _buildHeader() {
-    String title = '◆ LORE 시스템 커맨드 메뉴 (SELECT MODE) ◆';
+    String title = '';
     if (_currentTab == FieldMenuTab.partyView) {
-      title = '1. 일행의 상황 (VIEW PARTY)';
+      title = LoreMenuText.selectModeParty;
     } else if (_currentTab == FieldMenuTab.characterView) {
       // 원작 LOREMENU.PAS:528 - `능력을 보고싶은 인물을 선택하시오`
-      title = '2. ${LoreMenuText.viewCharWho}';
+      title = LoreMenuText.viewCharWho;
     } else if (_currentTab == FieldMenuTab.quickView) {
-      title = '3. 간이 일행 상황 (QUICK VIEW)';
+      title = LoreMenuText.selectModeQuick;
     } else if (_currentTab == FieldMenuTab.castSpell) {
-      title = '4. 비전투 마법 시전 (CAST SPELL)';
+      title = LoreMenuText.selectModeCast;
     } else if (_currentTab == FieldMenuTab.esp) {
-      title = '5. 초감각 기술 (EXTRASENSE / ESP)';
+      title = LoreMenuText.selectModeEsp;
     } else if (_currentTab == FieldMenuTab.rest) {
-      title = '6. 야외 캠프 휴식 (REST)';
+      title = LoreMenuText.selectModeRest;
     } else if (_currentTab == FieldMenuTab.gameOption) {
-      title = '7. 게임 저장 및 불러오기 (GAME OPTION)';
+      title = LoreMenuText.selectModeOption;
     }
 
     return Row(
@@ -182,7 +183,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         ),
         const SizedBox(width: 8),
         Text(
-          '식량: $_currentFood | 금화: ${widget.gold}',
+          '${LoreMenuText.viewPartyFood}$_currentFood  ${LoreMenuText.viewPartyGold}${widget.gold}',
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 11,
@@ -218,29 +219,25 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (_currentTab != FieldMenuTab.main)
-          TextButton(
-            style: TextButton.styleFrom(
+          IconButton(
+            key: const ValueKey('field-menu-back'),
+            style: IconButton.styleFrom(
               backgroundColor: RetroTheme.blue,
               foregroundColor: RetroTheme.white,
             ),
             onPressed: () => setState(() => _currentTab = FieldMenuTab.main),
-            child: Text(
-              '◀ 메뉴 목록',
-              style: RetroTheme.dosFont.copyWith(fontSize: 11),
-            ),
+            icon: const Icon(Icons.arrow_back, size: 16),
           )
         else
           const SizedBox.shrink(),
-        TextButton(
-          style: TextButton.styleFrom(
+        IconButton(
+          key: const ValueKey('field-menu-close'),
+          style: IconButton.styleFrom(
             backgroundColor: RetroTheme.darkGray,
             foregroundColor: RetroTheme.white,
           ),
           onPressed: () => Navigator.of(context).pop(),
-          child: Text(
-            '닫기 (ESC)',
-            style: RetroTheme.dosFont.copyWith(fontSize: 11),
-          ),
+          icon: const Icon(Icons.close, size: 16),
         ),
       ],
     );
@@ -404,7 +401,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                         Expanded(
                           flex: 3,
                           child: Text(
-                            '무기: ${p.weaponName}\n방어: ${p.armorName}/${p.shieldName}',
+                            '${LoreMenuText.viewCharWeapon}${p.weaponName}\n${LoreMenuText.viewCharShield}${p.shieldName}\n${LoreMenuText.viewCharArmor}${p.armorName}',
                             style: RetroTheme.dosFont.copyWith(
                               color: RetroTheme.lightCyan,
                               fontSize: 10,
@@ -471,13 +468,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '【 기본 능력치 】',
-                        style: RetroTheme.dosFont.copyWith(
-                          color: RetroTheme.yellow,
-                          fontSize: 11,
-                        ),
-                      ),
                       const SizedBox(height: 4),
                       // 원작 LOREMENU.PAS:526 `ViewCharacter` 표기
                       Text(
@@ -516,13 +506,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '【 전투 장비 】',
-                        style: RetroTheme.dosFont.copyWith(
-                          color: RetroTheme.yellow,
-                          fontSize: 11,
-                        ),
-                      ),
                       const SizedBox(height: 4),
                       Text(
                         '${LoreMenuText.viewCharWeapon}${p.weaponName}',
@@ -563,20 +546,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                       Text(
                         '${LoreMenuText.viewCharExp}${p.experience}',
                         style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                      ),
-                      Text(
-                        '방어 등급(AC): ${p.ac}',
-                        style: RetroTheme.dosFont.copyWith(
-                          color: RetroTheme.lightGreen,
-                          fontSize: 10,
-                        ),
-                      ),
-                      Text(
-                        '경험치: ${p.experience}',
-                        style: RetroTheme.dosFont.copyWith(
-                          color: RetroTheme.lightCyan,
-                          fontSize: 10,
-                        ),
                       ),
                     ],
                   ),
@@ -797,7 +766,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     if (mages.isEmpty) {
       return Center(
         child: Text(
-          '일행 중에 마법을 다룰 수 있는 동료가 없습니다.',
+          LoreMenuText.espNoAbility,
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.lightRed,
             fontSize: 12,
@@ -812,7 +781,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         shrinkWrap: true,
         children: [
           Text(
-            '【 사용할 마법의 종류 ===> 】 (LOREMENU.PAS: CastSpell)',
+            LoreMenuText.castSpellKind,
             style: RetroTheme.dosFont.copyWith(
               color: RetroTheme.yellow,
               fontSize: 11,
@@ -829,7 +798,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${caster.name} (${caster.playerClass.koreanName} · SP: ${caster.sp}/${caster.maxSp} · 마법 Lv.${caster.magicLevel})',
+                      caster.name,
                       style: RetroTheme.dosFont.copyWith(
                         color: RetroTheme.white,
                         fontSize: 11,
@@ -841,18 +810,18 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                       runSpacing: 4,
                       children: [
                         _spellBtn(
-                          '1. 공격 마법',
+                          LoreMenuText.castSpellAttack,
                           RetroTheme.darkGray,
                           () =>
                               widget.onLog(FieldMagicLogic.attackSpellMessage),
                         ),
                         _spellBtn(
-                          '2. 치료 마법',
+                          LoreMenuText.castSpellCure,
                           RetroTheme.green,
                           () => _castCureSpell(caster),
                         ),
                         _spellBtn(
-                          '3. 변화 마법',
+                          LoreMenuText.castSpellPhenomina,
                           RetroTheme.blue,
                           () => _castPhenominaSpell(caster),
                         ),
@@ -1130,7 +1099,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         if (result.success) widget.onSpellEffect?.call(swamp: 255);
         break;
       case 5:
-        _chooseDirection('기화 이동', (dx, dy, label) {
+        _chooseDirection(LoreMenuText.phenominaVaporize, (dx, dy, label) {
           final moved = _applyVaporize(caster, dx, dy);
           if (moved == null) {
             widget.onLog(FieldMagicLogic.vaporizeNotAllowedMessage);
@@ -1138,12 +1107,12 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         });
         return;
       case 6:
-        _chooseDirection('지형 변화', (dx, dy, label) {
+        _chooseDirection(LoreMenuText.phenominaTerrain, (dx, dy, label) {
           _applyTerrainChange(caster, dx, dy);
         });
         return;
       case 7:
-        _chooseDirection('공간 이동', (dx, dy, label) {
+        _chooseDirection(LoreMenuText.phenominaSpaceMove, (dx, dy, label) {
           _chooseDistance(caster, dx, dy);
         });
         return;
@@ -1176,7 +1145,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         backgroundColor: RetroTheme.black,
         shape: Border.all(color: RetroTheme.lightCyan, width: 2),
         title: Text(
-          '<<<  $label 방향을 선택하시오  >>>',
+          LoreMenuText.espDirection,
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 12,
@@ -1189,7 +1158,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
               ListTile(
                 dense: true,
                 title: Text(
-                  name,
+                  '$name$label',
                   style: RetroTheme.dosFont.copyWith(
                     color: RetroTheme.white,
                     fontSize: 12,
@@ -1214,7 +1183,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         backgroundColor: RetroTheme.black,
         shape: Border.all(color: RetroTheme.lightCyan, width: 2),
         title: Text(
-          '공간 이동력 (1~9)',
+          LoreMenuText.phenominaPowerPrompt,
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 12,
@@ -1227,7 +1196,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
               ListTile(
                 dense: true,
                 title: Text(
-                  '$k 칸',
+                  '$k',
                   style: RetroTheme.dosFont.copyWith(
                     color: RetroTheme.white,
                     fontSize: 12,
@@ -1339,130 +1308,14 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
 
   // 5. 초감각 기술 (LOREMENU.PAS: Extrasense / ESP)
   // =========================================================================
-  int _espMemberIdx = 0;
-  String? _espResultText;
-
   Widget _buildEspView() {
-    final member = widget.party[_espMemberIdx];
-    final hasEsp =
-        member.esp > 0 ||
-        member.playerClass == PlayerClass.mage ||
-        member.playerClass == PlayerClass.monk ||
-        member.playerClass == PlayerClass.esper ||
-        member.playerClass == PlayerClass.vagrant;
-
     return Container(
       constraints: const BoxConstraints(maxHeight: 280),
-      child: ListView(
-        shrinkWrap: true,
-        children: [
-          Row(
-            children: widget.party.asMap().entries.map((e) {
-              final isSel = e.key == _espMemberIdx;
-              return Padding(
-                padding: const EdgeInsets.only(right: 4),
-                child: ChoiceChip(
-                  label: Text(
-                    '${e.value.name} (ESP:${e.value.esp})',
-                    style: RetroTheme.dosFont.copyWith(
-                      fontSize: 10,
-                      color: isSel ? RetroTheme.black : RetroTheme.white,
-                    ),
-                  ),
-                  selected: isSel,
-                  selectedColor: RetroTheme.yellow,
-                  backgroundColor: RetroTheme.darkBlue,
-                  onSelected: (val) {
-                    if (val) {
-                      setState(() {
-                        _espMemberIdx = e.key;
-                        _espResultText = null;
-                      });
-                    }
-                  },
-                ),
-              );
-            }).toList(),
-          ),
-          const SizedBox(height: 8),
-          if (!hasEsp)
-            Text(
-              '${member.name}에게는 아직 초감각 능력이 없습니다.',
-              style: RetroTheme.dosFont.copyWith(
-                color: RetroTheme.lightRed,
-                fontSize: 11,
-              ),
-            )
-          else ...[
-            _espActionBtn(
-              '[1] 투시 (Clairvoyance) - 10 ESP',
-              member.esp >= 10,
-              () {
-                setState(() {
-                  member.esp -= 10;
-                  _espResultText = '✨ 일행은 마법의 혜안으로 주변 지형과 숨겨진 통로를 꿰뚫어 보고 있습니다.';
-                });
-                widget.onLog('👁 [투시] ${member.name}이(가) 초감각으로 주변 지형을 투시했습니다.');
-              },
-            ),
-            _espActionBtn('[2] 미래 예언 (Prophecy) - 5 ESP', member.esp >= 5, () {
-              final prop = LoreDialogueManager.instance.getProphecy();
-              setState(() {
-                member.esp -= 5;
-                _espResultText = '🔮 당신은 당신의 미래를 예언한다 ...\n\n"$prop"';
-              });
-              widget.onLog('🔮 [예언] $prop');
-            }),
-            _espActionBtn('[3] 독심술 (Telepathy) - 20 ESP', member.esp >= 20, () {
-              setState(() {
-                member.esp -= 20;
-                _espResultText = '🧠 다른 사람의 숨겨진 마음을 읽을 수 있는 영적 능력이 3회 부여되었습니다.';
-              });
-              widget.onMindReadActivated?.call(3);
-              widget.onLog(
-                '🧠 [독심술] ${member.name}이(가) 타인의 마음을 읽는 능력을 활성화했습니다.',
-              );
-            }),
-            _espActionBtn('[4] 천리안 (Scrying) - 10 ESP', member.esp >= 10, () {
-              setState(() {
-                member.esp -= 10;
-                _espResultText = '🔭 천리안의 눈으로 전방 원거리 지형을 정찰했습니다.';
-              });
-              widget.onLog('🔭 [천리안] ${member.name}이(가) 전방 지형을 정찰했습니다.');
-            }),
-          ],
-          if (_espResultText != null) ...[
-            const SizedBox(height: 8),
-            Container(
-              padding: const EdgeInsets.all(8),
-              color: RetroTheme.darkBlue,
-              child: Text(
-                _espResultText!,
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.yellow,
-                  fontSize: 11,
-                ),
-              ),
-            ),
-          ],
-        ],
-      ),
-    );
-  }
-
-  Widget _espActionBtn(String title, bool enabled, VoidCallback onTap) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: enabled ? RetroTheme.blue : RetroTheme.darkGray,
-          foregroundColor: RetroTheme.white,
-          minimumSize: const Size.fromHeight(30),
-        ),
-        onPressed: enabled ? onTap : null,
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(title, style: RetroTheme.dosFont.copyWith(fontSize: 10)),
+      child: SingleChildScrollView(
+        child: EspPanel(
+          party: widget.party,
+          onLog: widget.onLog,
+          onMindReadActivated: widget.onMindReadActivated,
         ),
       ),
     );
@@ -1472,36 +1325,13 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   // 4. 여기서 쉰다 (원작 LOREMENU.PAS:869 Rest)
   // =========================================================================
   Widget _buildRest() {
-    final aliveMembers = widget.party.where((p) => !p.isDead).toList();
     final torchSteps = widget.etc?['torchSteps'] ?? 0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '모닥불을 피우고 야외 캠프에서 휴식을 취합니다.',
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 12,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          '• 체력이 (전투Lv + 마법Lv + 초능력Lv) × 2 만큼 회복됩니다.\n'
-          '• 마력(SP)과 초능력(ESP)은 전원 100% 완전 회복됩니다.\n'
-          '• 중독(독)에 걸린 파티원은 독 때문에 건강이 회복되지 않습니다.\n'
-          '• 의식불명 파티원은 전투/마법/초능력 레벨 합만큼 의식불명 수치가 감소합니다.\n'
-          '• 실제로 상처를 치료한 파티원 1인당 식량 1인분이 소모됩니다.\n'
-          '• 물위걸음/늪위걸음/공중부상 마법은 해제되고 횃불 지속시간이 1 감소합니다.',
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.lightGray,
-            fontSize: 10,
-            height: 1.4,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          '생존 인원: ${aliveMembers.length}명 | 현재 보유 식량: $_currentFood 인분',
+          '${LoreMenuText.viewPartyFood}$_currentFood',
           style: RetroTheme.dosFont.copyWith(
             color: _currentFood > 0
                 ? RetroTheme.lightGreen
@@ -1511,7 +1341,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         ),
         if (_currentFood <= 0)
           Text(
-            '⚠ 식량이 없어 체력은 회복되지 않지만, 마력과 초능력은 회복됩니다.',
+            LoreMenuText.restNoFood,
             style: RetroTheme.dosFont.copyWith(
               color: RetroTheme.lightRed,
               fontSize: 10,
@@ -1540,14 +1370,13 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
               levitate: 0,
             );
 
-            widget.onLog('⛺ 일행은 야외 캠프에서 휴식을 마쳤습니다. (남은 식량: ${outcome.food}인분)');
             for (final l in outcome.logs) {
               widget.onLog(l);
             }
             Navigator.of(context).pop();
           },
           child: Text(
-            '지금 휴식하기 (Rest)',
+            LoreMenuText.selectModeRest,
             style: RetroTheme.dosFont.copyWith(fontSize: 12),
           ),
         ),
@@ -1564,7 +1393,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         height: 240,
         alignment: Alignment.center,
         child: Text(
-          '슬롯 정보를 확인하는 중입니다...',
+          LoreMenuText.optionSaving,
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 12,
@@ -1587,7 +1416,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                 crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Text(
-                    '조우 간격',
+                    LoreMenuText.optionEncounterPrompt,
                     style: RetroTheme.dosFont.copyWith(fontSize: 11),
                   ),
                   DropdownButton<int>(
@@ -1608,7 +1437,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                     },
                   ),
                   Text(
-                    '최대 적 수',
+                    '${LoreMenuText.optionMaxEnemy1} ${LoreMenuText.optionMaxEnemy2}',
                     style: RetroTheme.dosFont.copyWith(fontSize: 11),
                   ),
                   DropdownButton<int>(
@@ -1655,7 +1484,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '슬롯 $slotNum. $slotTitle',
+                        '$slotNum. $slotTitle',
                         style: RetroTheme.headerFont.copyWith(
                           color: slotData != null
                               ? RetroTheme.yellow
@@ -1666,7 +1495,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                       const SizedBox(height: 4),
                       if (slotData == null)
                         Text(
-                          '-- [ 비어 있는 슬롯 (EMPTY) ] --',
+                          '-',
                           style: RetroTheme.dosFont.copyWith(
                             color: RetroTheme.darkGray,
                             fontSize: 10,
@@ -1674,21 +1503,21 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                         )
                       else ...[
                         Text(
-                          '위치: ${slotData.mapTitle} (${slotData.playerX}, ${slotData.playerY})',
+                          '${slotData.mapTitle} ${LoreMenuText.viewPartyXAxis}${slotData.playerX} ${LoreMenuText.viewPartyYAxis}${slotData.playerY}',
                           style: RetroTheme.dosFont.copyWith(
                             color: RetroTheme.lightGreen,
                             fontSize: 10,
                           ),
                         ),
                         Text(
-                          '일시: ${slotData.timestamp.toLocal().toString().substring(0, 16)} | 금화: ${slotData.gold} | 식량: ${slotData.food}',
+                          '${slotData.timestamp.toLocal().toString().substring(0, 16)}  ${LoreMenuText.viewPartyGold}${slotData.gold}  ${LoreMenuText.viewPartyFood}${slotData.food}',
                           style: RetroTheme.dosFont.copyWith(
                             color: RetroTheme.lightCyan,
                             fontSize: 9,
                           ),
                         ),
                         Text(
-                          '일행: ${slotData.party.map((p) => p.name).join(', ')}',
+                          slotData.party.map((p) => p.name).join(', '),
                           style: RetroTheme.dosFont.copyWith(
                             color: RetroTheme.white,
                             fontSize: 9,
@@ -1719,7 +1548,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                             LoreWorldManager
                                 .mapRegistry[widget.currentMapId]
                                 ?.title ??
-                            '지도 ${widget.currentMapId}';
+                            '${widget.currentMapId}';
                         final newSave = SaveData(
                           slot: slotNum,
                           slotName: slotTitle,
@@ -1741,12 +1570,12 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                         );
                         await SaveManager.instance.saveGame(newSave);
                         widget.onLog(
-                          '💾 [슬롯 $slotNum: $slotTitle] 에 현재 모험 데이터를 저장했습니다.',
+                          '${LoreMenuText.optionSave}: $slotTitle ${LoreMenuText.optionSaveDone}',
                         );
                         await _loadSlots();
                       },
                       child: Text(
-                        '저장',
+                        LoreMenuText.optionSave,
                         style: RetroTheme.dosFont.copyWith(fontSize: 10),
                       ),
                     ),
@@ -1775,7 +1604,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                               Navigator.of(context).pop();
                             },
                       child: Text(
-                        '불러오기',
+                        LoreMenuText.optionResume,
                         style: RetroTheme.dosFont.copyWith(fontSize: 10),
                       ),
                     ),

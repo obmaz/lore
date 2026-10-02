@@ -1749,7 +1749,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                           ),
                           const SizedBox(width: 3),
                           Text(
-                            '메뉴(Space)',
+                            '명령(Space)',
                             style: RetroTheme.dosFont.copyWith(
                               fontSize: 10,
                               color: RetroTheme.white,
@@ -1780,7 +1780,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        '[Q] 상태',
+                        '[Q] 건강 상태',
                         style: RetroTheme.dosFont.copyWith(
                           fontSize: 10,
                           color: RetroTheme.lightGreen,
@@ -1809,7 +1809,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        '[E] 초감각',
+                        '[E] 초능력',
                         style: RetroTheme.dosFont.copyWith(
                           fontSize: 10,
                           color: RetroTheme.lightMagenta,

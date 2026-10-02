@@ -31274,7 +31274,7 @@
     {
       "path": "test/bootstrap_test.dart",
       "kind": "test",
-      "sha256": "9e3f95414206fdc123759da5da8992fd6387f5af24936fe6fbc2e9af3deb8c96",
+      "sha256": "61967b7731b60581ac0fcf30e9ff55bc07f06f89f1c6576a48a6f0826692025b",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -31332,6 +31332,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/esp_panel_test.dart",
+      "kind": "test",
+      "sha256": "78d680d46519fc283405ed4f751ded971010ff61a06b443b6e5e04934adf7263",
+      "cited_source_files": [
+        "LOREMENU.PAS",
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/field_magic_test.dart",
       "kind": "test",
       "sha256": "4f73250e5c62dd25d26d811b9b36831f54870df277c68b1bc443a921b6479774",
@@ -31343,7 +31353,7 @@
     {
       "path": "test/field_menu_script_save_test.dart",
       "kind": "test",
-      "sha256": "f7056e056b3b5f841cff9f07d9f5468390499c8ad8fbbbb7bd805225b9971e29",
+      "sha256": "ed6c25ad33eba5cf4245aac8952b71be32213a08ae398e6415efb426fd0fd9ec",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -31378,7 +31388,7 @@
     {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
-      "sha256": "0009266ea6dcf324b25ec97cc0c2e88acad623404aa54f5ff74992dfb410fb06",
+      "sha256": "3ac57e75ac0d7bab5a4f82e0f881f5910d2b07b7498515d3bcad70d4cc8dfb67",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
@@ -32148,7 +32158,7 @@
     {
       "path": "test/widget_test.dart",
       "kind": "test",
-      "sha256": "43d8b1b3eea866b1853e79107812d6cfdeeb622a20f7091a5b5a891cacd09c2c",
+      "sha256": "61293386db09cd3a1081e2cd42c1e603f1bde01ba166c6e99d58273e0bdc491a",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -32483,11 +32493,11 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "b98eef9cc209059868cbbadd718e20b13c9ceaca07e2d3b95ea01a068a2afa83"
+      "sha256": "c69d34974dd21294ff4b81d68d7d040a16504cc0dba6ffbb56e76e4547f90cd9"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
-      "sha256": "f35b1c2b38edf88f5c6bf2fbefa183b2946586d57560c1673feab754c80f1cad"
+      "sha256": "8096802f6054b17b822434e6fedb9340b2023bc3b16765fd119d1f2edad9a6de"
     },
     {
       "path": "lib/widgets/script_scene_dialog.dart",

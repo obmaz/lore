@@ -14,6 +14,7 @@ from export_lore_quest_talk import decode  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, 'repo_source', 'LORE_1993_src', 'LOREMENU.PAS')
+SUB = os.path.join(ROOT, 'repo_source', 'LORE_1993_src', 'LORESUB.PAS')
 OUT = os.path.join(ROOT, 'lib', 'logic', 'lore_menu_text.dart')
 
 STR = re.compile(r"'((?:[^']|'')*)'")
@@ -163,10 +164,12 @@ def main() -> int:
     for name, text in NAMES.items():
         lines.append(f'  static const String {name} = {dart_str(text)};')
     lines.append('')
-    lines.append('  /// 원작 `ReturnMagic` 이름(41..45 = 초감각 5종).')
+    lines.append('  /// 원작 `ReturnMagic`(LORESUB.PAS) 이름(41..45 = 초감각 5종).')
     lines.append('  static const List<String> espNames = [')
     by_id = {}
-    for m in re.finditer(r"(\d+)\s*:\s*ReturnMagic\s*:=\s*'([^']*)'", source):
+    with open(SUB, 'rb') as fh:
+        sub_source = decode(fh.read())
+    for m in re.finditer(r"(\d+)\s*:\s*ReturnMagic\s*:=\s*'([^']*)'", sub_source):
         by_id[int(m.group(1))] = m.group(2).replace("''", "'")
     for i in range(41, 46):
         lines.append(f'    {dart_str(by_id.get(i, ""))},')

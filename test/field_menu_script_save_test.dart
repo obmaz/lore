@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/logic/lore_menu_text.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/models/party_member.dart';
@@ -45,7 +46,7 @@ void main() {
     sourceEtc[3] = 29;
     sourceEtc[7] = 3;
     sourceEtc[8] = 7;
-    final save = find.text('저장').first;
+    final save = find.text(LoreMenuText.optionSave).first;
     await tester.ensureVisible(save);
     await tester.tap(save);
     await tester.pumpAndSettle();

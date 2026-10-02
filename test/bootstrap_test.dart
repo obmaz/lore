@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/logic/lore_sub_text.dart';
 import 'package:lore/data/lore_data.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
@@ -151,7 +152,7 @@ void main() {
       await tester.tap(find.byKey(const ValueKey('panel-tab-party')));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 350));
-      expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);
+      expect(find.text(LoreSubText.statusHeader), findsOneWidget);
 
       // 부팅 후에도 JSON 데이터가 계속 사용되고 있다
       expect(LoreData.instance.usingJson, isTrue);

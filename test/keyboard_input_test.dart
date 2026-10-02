@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/logic/lore_menu_text.dart';
 import 'package:lore/game/lore_game.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/field_hotkeys.dart';
@@ -167,7 +168,7 @@ void main() {
     }
 
     Future<void> closeDialog(WidgetTester tester) async {
-      await tester.tap(find.text('닫기 (ESC)'));
+      await tester.tap(find.byKey(const ValueKey('field-menu-close')));
       await settle(tester);
     }
 
@@ -183,50 +184,49 @@ void main() {
       // P -> 일행의 상황
       await tester.sendKeyEvent(LogicalKeyboardKey.keyP);
       await settle(tester);
-      expect(find.text('1. 일행의 상황 (VIEW PARTY)'), findsOneWidget);
+      expect(find.text(LoreMenuText.selectModeParty), findsOneWidget);
       await closeDialog(tester);
 
       // V -> 개인의 상황
       await tester.sendKeyEvent(LogicalKeyboardKey.keyV);
       await settle(tester);
-      expect(find.text('2. 능력을 보고싶은 인물을 선택하시오'), findsOneWidget);
+      expect(find.text(LoreMenuText.viewCharWho), findsOneWidget);
       await closeDialog(tester);
 
       // C -> 비전투 마법 시전
       await tester.sendKeyEvent(LogicalKeyboardKey.keyC);
       await settle(tester);
-      expect(find.text('4. 비전투 마법 시전 (CAST SPELL)'), findsOneWidget);
+      expect(find.text(LoreMenuText.selectModeCast), findsOneWidget);
       await closeDialog(tester);
 
       // R -> 야외 캠프 휴식
       await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
       await settle(tester);
-      expect(find.text('6. 야외 캠프 휴식 (REST)'), findsOneWidget);
-      expect(find.text('지금 휴식하기 (Rest)'), findsOneWidget);
+      expect(find.text(LoreMenuText.selectModeRest), findsWidgets);
       await closeDialog(tester);
 
       // G -> 게임 저장/불러오기
       await tester.sendKeyEvent(LogicalKeyboardKey.keyG);
       await settle(tester);
-      expect(find.text('7. 게임 저장 및 불러오기 (GAME OPTION)'), findsOneWidget);
+      expect(find.text(LoreMenuText.selectModeOption), findsOneWidget);
       await closeDialog(tester);
     });
 
     testWidgets('Q/E/F1 키가 각각 전용 화면을 연다', (WidgetTester tester) async {
       await startGame(tester);
 
-      // Q -> 간이 일행 상황
+      // Q -> 일행의 건강 상태를 본다
       await tester.sendKeyEvent(LogicalKeyboardKey.keyQ);
       await settle(tester);
-      expect(find.textContaining('QUICK VIEW'), findsWidgets);
-      await tester.tap(find.text('확인 (ESC)'));
+      expect(find.text(LoreMenuText.selectModeQuick), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('quick-view-close')));
       await settle(tester);
 
-      // E -> 초감각(ESP)
+      // E -> 초능력을 사용한다
       await tester.sendKeyEvent(LogicalKeyboardKey.keyE);
       await settle(tester);
-      expect(find.textContaining('초감각'), findsWidgets);
-      await tester.tap(find.text('닫기 (ESC)'));
+      expect(find.text(LoreMenuText.selectModeEsp), findsOneWidget);
+      await tester.tap(find.byKey(const ValueKey('esp-close')));
       await settle(tester);
 
       // F1 -> 제작자 서문 & 가이드

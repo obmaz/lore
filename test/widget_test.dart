@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/logic/lore_sub_text.dart';
 import 'package:lore/main.dart';
 import 'package:lore/widgets/dpad_widget.dart';
 import 'package:lore/widgets/message_log_view.dart';
@@ -35,6 +36,6 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('panel-tab-party')));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 350));
-    expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);
+    expect(find.text(LoreSubText.statusHeader), findsOneWidget);
   });
 }
