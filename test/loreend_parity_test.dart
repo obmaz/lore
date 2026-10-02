@@ -116,24 +116,50 @@ void main() {
   test(
     'ThunderEffect draws random(1000) then random(100) then random(100)+20',
     () {
-      final a = Random(11);
-      final b = Random(11);
-      var flashes = 0;
-      for (var n = 0; n < 2000000 && flashes < 3; n++) {
-        final got = LoreEndThunder.iterate(a);
-        var want = -1;
-        if (b.nextInt(1000) == 0 && b.nextInt(100) == 0) {
-          want = b.nextInt(100) + 20;
-        }
-        expect(got ?? -1, want);
-        if (got != null) {
-          flashes++;
-          expect(got, inInclusiveRange(20, 119));
-        }
-      }
-      expect(flashes, 3);
+      final thunder = fixture['thunder'] as Map<String, dynamic>;
+      expect(
+        [
+          thunder['firstRandom'],
+          thunder['secondRandom'],
+          thunder['delayRandom'],
+          thunder['delayBase'],
+        ],
+        [1000, 100, 100, 20],
+      );
+      expect(thunder['restore'], thunder['base']);
+      expect(thunder['escape'], 27);
+      final bounds = <int>[];
+      final flash = LoreEndThunder.iterate(_Recording(bounds, zeros: 3));
+      expect(bounds, [
+        thunder['firstRandom'],
+        thunder['secondRandom'],
+        thunder['delayRandom'],
+      ]);
+      expect(flash, thunder['delayBase']);
+      bounds.clear();
+      expect(LoreEndThunder.iterate(_Recording(bounds, zeros: 0)), isNull);
+      expect(bounds, [thunder['firstRandom']]);
+      bounds.clear();
+      // random(1000) = 0 but random(100) <> 0: no flash and no third draw.
+      expect(LoreEndThunder.iterate(_Recording(bounds, zeros: 1)), isNull);
+      expect(bounds, [thunder['firstRandom'], thunder['secondRandom']]);
     },
   );
+
+  test('walking sprite transition tables equal the source case blocks', () {
+    final walker = fixture['walker'] as Map<String, dynamic>;
+    for (final (table, startI) in [('whenI1', 1), ('whenI0', 0)]) {
+      for (final entry in (walker[table] as Map<String, dynamic>).entries) {
+        final w = LoreEndWalker()
+          ..j = int.parse(entry.key)
+          ..i = startI;
+        w.frame();
+        final want = entry.value as List;
+        expect(w.j, want[0]);
+        expect(w.i, want[1] ?? startI);
+      }
+    }
+  });
 
   test('closing text screen and its palette ramps', () {
     final outro = fixture['outro'] as Map<String, dynamic>;
@@ -149,4 +175,26 @@ void main() {
       [outro['dimFrom'], outro['dimTo'], outro['dimDelayMs']],
     );
   });
+}
+
+/// Returns 0 for the first [zeros] draws, then 1 (so `random(n) = 0` fails).
+class _Recording implements Random {
+  final List<int> bounds;
+  int zeros;
+  _Recording(this.bounds, {required this.zeros});
+
+  @override
+  int nextInt(int max) {
+    bounds.add(max);
+    if (zeros > 0) {
+      zeros--;
+      return 0;
+    }
+    return 1;
+  }
+
+  @override
+  bool nextBool() => false;
+  @override
+  double nextDouble() => 0;
 }

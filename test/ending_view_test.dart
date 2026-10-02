@@ -38,22 +38,18 @@ void main() {
     var finished = 0;
     final state = await open(tester, () => finished++);
     expect(state.phase, EndPhase.fadeIn);
-    // Keys are ignored while the screen fades.
-    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
-    await run(tester, 200);
-    expect(state.phase, EndPhase.fadeIn);
-    await run(tester, 1000);
+    await run(tester, 1100);
     expect(state.phase, EndPhase.fadeOut);
-    await run(tester, 1200);
+    await run(tester, 1000);
     expect(state.phase, EndPhase.message);
     expect(EndingView.epilogueTexts.length, 11);
 
-    // Only Esc leaves the thunder screen.
+    // Only Esc leaves the thunder screen; other keys are read and dropped.
     await tester.sendKeyEvent(LogicalKeyboardKey.space);
-    await run(tester, 100);
+    await run(tester, 600);
     expect(state.phase, EndPhase.message);
     await tester.sendKeyEvent(LogicalKeyboardKey.escape);
-    await tester.pump(const Duration(milliseconds: 16));
+    await run(tester, 100);
     expect(state.phase, EndPhase.staff);
     await run(tester, 700);
     // 200 ms per frame: sprites 24, 21, 24, 20 and y += 2 each.
@@ -71,6 +67,39 @@ void main() {
     await tester.sendKeyEvent(LogicalKeyboardKey.keyA);
     expect(finished, 1);
   });
+
+  testWidgets('an Esc typed during the fade stays in the key buffer', (
+    tester,
+  ) async {
+    final state = await open(tester, () {});
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    await run(tester, 1400);
+    expect(state.phase, EndPhase.fadeOut);
+    while (state.phase != EndPhase.message) {
+      await tester.pump(const Duration(milliseconds: 16));
+    }
+    // The four RGB flashes (40 + 100 + 100 ms) always run to the end ...
+    await run(tester, 160);
+    expect(state.phase, EndPhase.message);
+    // ... then the first ThunderEffect iteration reads the buffered Esc.
+    await run(tester, 200);
+    expect(state.phase, EndPhase.staff);
+  });
+
+  testWidgets(
+    'the message page stays visible during thunder; staff only after Esc',
+    (tester) async {
+      final state = await open(tester, () {});
+      while (state.phase != EndPhase.message) {
+        await tester.pump(const Duration(milliseconds: 16));
+      }
+      await run(tester, 2000);
+      expect(state.phase, EndPhase.message);
+      expect(state.walkerFrame, isNull);
+      expect(state.erasedRows, isEmpty);
+      await tester.pumpWidget(const SizedBox.shrink());
+    },
+  );
 
   testWidgets('thunder opening flashes the shadow colour then restores it', (
     tester,

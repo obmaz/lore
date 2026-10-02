@@ -1925,7 +1925,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       case GameScreenMode.gameOver:
         return '† 게임 오버 (GAME OVER) †';
       case GameScreenMode.ending:
-        return '◆ 에필로그 ◆';
+        return '';
     }
   }
 

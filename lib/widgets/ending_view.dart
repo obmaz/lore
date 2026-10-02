@@ -79,6 +79,10 @@ class EndingViewState extends State<EndingView>
   bool _openingDone = false;
   double _iterationCarry = 0;
 
+  /// 키 버퍼: `ThunderEffect`는 첫 반복에서 `keypressed` 로 이미 눌린 키를 읽는다.
+  /// 페이드·첫 번쩍임 동안 누른 Esc도 버퍼에 남아 천둥 반복문이 시작되자마자 끝난다.
+  final List<bool> _keyBuffer = [];
+
   // 걷는 스프라이트
   final LoreEndWalker walker = LoreEndWalker();
   final Set<int> erasedRows = {};
@@ -194,6 +198,12 @@ class EndingViewState extends State<EndingView>
       return;
     }
     shadowFlash = LoreEnd.thunderBase;
+    if (_keyBuffer.contains(true)) {
+      _keyBuffer.clear();
+      _escape(force: true);
+      return;
+    }
+    _keyBuffer.clear();
     _iterationCarry +=
         dt.inMicroseconds *
         EndingView.thunderIterationsPerSecond /
@@ -211,10 +221,15 @@ class EndingViewState extends State<EndingView>
   }
 
   /// 원본 `c = #27`: 천둥 화면과 스태프 화면에서만 Esc가 다음으로 넘긴다.
-  void _escape() {
+  void _escape({bool force = false}) {
     final now = _last;
     switch (phase) {
       case EndPhase.message:
+        if (!force) {
+          // 열린 번쩍임은 끝까지 돌고, 키는 버퍼에 남는다.
+          _keyBuffer.add(true);
+          return;
+        }
         shadowFlash = LoreEnd.thunderBase;
         _enter(EndPhase.staff, now);
         walkerFrame = null;
@@ -226,7 +241,9 @@ class EndingViewState extends State<EndingView>
       case EndPhase.halted:
         widget.onFinish();
       default:
-        break;
+        // 페이드 중의 키는 읽히지 않고 키보드 버퍼에 쌓인다.
+        _keyBuffer.add(true);
+        return;
     }
     setState(() {});
   }
@@ -242,6 +259,10 @@ class EndingViewState extends State<EndingView>
         if (phase == EndPhase.halted ||
             event.logicalKey == LogicalKeyboardKey.escape) {
           _escape();
+        } else if (phase == EndPhase.fadeIn ||
+            phase == EndPhase.fadeOut ||
+            phase == EndPhase.message) {
+          _keyBuffer.add(false);
         }
         return KeyEventResult.handled;
       },
