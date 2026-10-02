@@ -283,6 +283,12 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     추가했다. 무기실은 bit4를 먼저 켜고 서쪽으로 세 칸 뒤 장비를 준다. 나머지
     모든 특수 칸이 `wantexit`이며 첫 출구(etc[31] bit1)는 Skeleton이 걸어오는
     맵 쓰기와 합류 제안 뒤 bit1을 켠다.
+27. 맵 4(SWAMP, LORESPEC:37-189)의 Draconian은 소개 뒤 raw etc[16] bit2면
+    빈 피라밋, raw etc[5] = 0이면 강의 두 장면, 아니면 합류 제안이다. 이전
+    JSON의 원본에 없는 세 번째 "취소" 선택지는 원본 Escape(종료)로 바꿨다.
+    Ancient Evil은 bit1로 판정하며 첫 만남의 시야 이동은 (48,57)/(82,16)
+    두 번이고 (16,15)는 마지막 위치다(이전 JSON은 세 번째 시야 이동으로
+    표현했다).
 
 다음 묶음은 LORESPEC 1부의 큰 분기(맵 17·18)를 원본 분기 단위로 직접
 이식한다. 맵 4·6·9·11~16의 JSON 소유 분기와 LOREEND 내부 대조도 남아 있다. LOREEND 내부의 입력·크레딧·종료 동작 대조도 남아 있다. 현재

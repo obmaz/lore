@@ -3279,6 +3279,126 @@
       "test": "test/lore_spec_map6_test.dart",
       "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:3",
+      "line": 39,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:4",
+      "line": 44,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:5",
+      "line": 49,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:1",
+      "line": 51,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:6",
+      "line": 53,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:7",
+      "line": 132,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:2",
+      "line": 132,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:8",
+      "line": 133,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:9",
+      "line": 140,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:10",
+      "line": 147,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:11",
+      "line": 148,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:3",
+      "line": 153,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map4_test.dart",
+      "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

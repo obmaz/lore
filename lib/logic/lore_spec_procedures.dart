@@ -2440,33 +2440,221 @@ class LoreSpecProcedures {
     return map6(x, y, context, scripts);
   }
 
-  /// `LORESPEC.PAS:37-189`, map 4. The ordered Pascal guards select one
-  /// event; the existing JSON records provide its dialogue and effects.
+  static const _map4DraconianIntro = <String>[
+    ' 여기는 인간과 드래곤의 중간 종족이며  혼란',
+    '스런 세상을 피해 은둔하고있는 Draconian이란',
+    '자가 살고있는 피라밋이었다.',
+  ];
+  static const _map4DraconianLecture = <List<String>>[
+    [
+      ' 나는 Draconian이라고 하오. 이런곳까지 사람',
+      '이 찾아오리라고는 생각하지 못했는데 참 의외',
+      '로군요. 나는 숨어 지내는 오랜 세월동안에 여',
+      '러가지 학문을 연구하고 있었소.  특히 천문학',
+      '에 대해서는 특별히 전염하여 다루었소.  내가',
+      '그동안 알아낸 지식들은 다음과 같은 것이오.',
+      ' 지금 우리가 살고있는 지구는 태양계에서  세',
+      '번째로 위치한 행성인데 이상하게도 위성인 달',
+      '이 지구보다도 더 오래되었다는 사실이 연구되',
+      '었소. 또한 이 지구가 세차운동에 의해 2 등성',
+      '이었던 북극성이 다른 별로 바뀐다는걸 알았소',
+      ' 물리학에서 알아낸것은, 중수반응에서 매질의',
+      '차이로 빛이 속도가 느려진 틈을 이용해 빛 보',
+      '다 빠른 입자가 생겨났소. 하지만 절대적인 빛',
+      '의 속도에는 미치지 못했지만 말이오.  이것을',
+      '잘만 이용하면 미래로의 타임머신이  가능하다',
+      '는 걸 입증할 수가 있소.',
+      ' 사실 이런것은 당신에게는 별 의미가 없는 것',
+      '일지도 모르오. 하지만 마지막으로 알아낸것은',
+      '바로 당신이 응징하고자 하는  Necromancer 의',
+      '출처에 관한 것이오. 당신은 시그너스 X1과 같',
+      '은 블랙홀에 대해서 알고있을 것이오. 이런 물',
+      '리학적인 파라독스에 의해 그는 생겨났던것이오.',
+    ],
+    [
+      ' 지금 우리가 있는 3차원 위에 또 다른 차원이',
+      '있다고 생각하오?  생각은 하더라도 눈으로 확',
+      '인은 못해봤을것이오. 우리는 2차원을 인식 할',
+      '수가 있소.  하지만 실제로 2차원에  살고있는',
+      '생물은 자신의 차원은 인식해도 우리가 살고있',
+      '는 3차원은 인식할 수가 없는 것이오. 그의 차',
+      '원에는 우리의 차원이  존재하지 않기  때문에',
+      '개념을 잡을수가 없는 것이오.  마찬가지로 우',
+      '리 또한 지금의 차원보다 한 차원 높은 4 차원',
+      '을 개념을 잡기가 어려운 것이오.',
+      ' 어떤이는 4차원은 시간의 축이 보태어 진다고',
+      '하는 이론을 세우더군요.  하지만 나의 이론은',
+      '시간은 모든 차원의 기준이며 4차원에 국한 되',
+      '지는 않는다는 생각이오. 3차원에서는 동 시간',
+      '대에 무한한 2차원을 포함 하듯이 4차원에서는',
+      '동 시간대에  무한한 3차원을 포함하고 있다는',
+      '이론이 성립되오. 말이 조금은 빗나갔지만  이',
+      '이론으로 Necromancer의 출처를 해명해 보겠소',
+      ' 방금 말했듯이 3차원은 이 공간만이 존재하는',
+      '것은 아니오. 동 시대를 살아가는 다른 공간도',
+      '인정해야 한다는 말이오.  그 공간들을 이어주',
+      '는 것이 바로 블랙 홀이란 것이지요.  그는 원',
+      '래 그가 있던 공간에서 블랙 홀을 통해서 다른',
+      '공간으로 가려고 시도를 했고 웜 홀을 통해 시',
+      '공간을 가로질러 오래전 우리의 공간에 화이트',
+      '홀이 생기는 틈을 이용하여 내려왔던 것이오.',
+      ' 하지만 3차원에 사는 나로서는 그가 전에  있',
+      '던 공간에서 왜 이쪽으로 왔는지  알수가 없었',
+      '지요. 그래서 그와 같이 이 공간으로 들어왔던',
+      '심복들을 통해 그 사정을 알게 되었소.',
+      ' Necromacer는 저쪽의 공간에서도 지금과 마찬',
+      '가지로 차원을 통해 그 공간에 도달했소. 역시',
+      '거기서도 악을 뿌리며 거기의 생명체들을 위협',
+      '했소. 하지만 어떤 선택되어진 6인의 용사들에',
+      '의해 쫒겨나서 여기로 온것이오.  지금의 당신',
+      '들과 비슷하다고 생각되지 않소? 그렇소. 다른',
+      '공간의 당신들에게 쫒겨난후 다시 여기서 당신',
+      '들을 또 만나게 된것이오. Necromancer와 당신',
+      '들의 운명은 언제까지나 쫒고 쫒기며 대립하여',
+      '야하는 운명으로 탄생되었던 것이오. 이런  이',
+      '유에서 당신은 그를 반드시 무찌를 수가  있다',
+      '는 근거가 되는 것이오.',
+      ' 당신들의 건투를 빌어주겠소.',
+    ],
+  ];
+  static const _map4DraconianOffer = <String>[
+    ' 나의 운명을 생각해 보니  나 역시  당신들을',
+    '필연적으로 만나 Necromancer를 물리쳐야 한다',
+    '는걸 깨닭았소. 당신들 일행의 제일 뒤에서 도',
+    '와주고 싶소. 어떻소.',
+  ];
+  static const _map4DraconianDecline = <String>[
+    ' 다시 생각해보니 나는 당신들과 같이 싸울 운',
+    '명이 아닌것 같소.',
+  ];
+  static const _map4AncientEvilLater = <String>[' 이제는 더 이상 할말이 없소.'];
+  static const _map4AncientEvilPages = <List<String>>[
+    [
+      ' 나는 Ancient Evil 이란 존재이오. 이제 나는',
+      '육신은 없는 영이오. 당신은 Lord Ahn 을 만나',
+      '보았겠군요. 그리고 우리들의 운명적인 만남도',
+      '역시 예시 받았겠군요.',
+      ' 사실이야 어떻든 당신에게 이 대륙에서의  할',
+      '일을 말해 주겠소.',
+    ],
+    [
+      ' 여기는 EVIL GOD 라는 동굴이오. 여기의 보스',
+      '는 Crab God인데 적 자체는 별거 아니지만  떼',
+      '를 지어서 다니기 때문에 약간의 애를 먹을 것',
+      '이오. 7갈래의 길중에서 한곳에 봉인이 숨겨져',
+      '있을 것이오.',
+    ],
+    [
+      ' 여기는 Muddy 라는 동굴이오.  여기의 보스는',
+      'Astral Mud라는 자인데  그리 실력이 있다고는',
+      '볼수가 없소. 다만 동굴 자체가 어려운 미로라',
+      '는 것과 시야가 좁아지는 불편등은 감수해야만',
+      '할 것이오. 그리고 마지막에 3마리의 Dragon과',
+      '7마리의 Mud-Man을 거쳐야만 그가 나타나기 때',
+      '문에 약간 까다로울 것이오.',
+    ],
+    [' 여기는 이 대륙의 외진곳이오. 여기서는 어떤', '만남이 기다리고 있을 것이오.'],
+  ];
+
+  /// `LORESPEC.PAS:37-189`, `case 4` (SWAMP).
+  ///
+  /// (40,18) moves the party to (46,41). (26,16) is the Draconian pyramid:
+  /// after the introduction, raw etc[16] bit2 means nobody is there; with
+  /// raw etc[5] = 0 he lectures, otherwise he offers to join (Escape exits,
+  /// joining sets bit2, declining prints and waits). (20,39) is Ancient Evil:
+  /// once etc[16] bit1 is set the party is sent to (46,41); the first meeting
+  /// shows the camera tour and leaves the party at (16,15), then sets bit1.
   static ScriptRun? map4(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    final flags = context.flags;
-    final id = switch ((x, y)) {
-      (40, 18) => 'spec-4-L37',
-      (26, 16) =>
-        flags.contains('draconianMet')
-            ? 'spec-4-L37-3'
-            : flags.contains('etc5')
-            ? 'spec-4-L37-2'
-            : 'spec-4-L37-1',
-      (20, 39) =>
-        flags.contains('ancientEvilMet')
-            ? 'ancient-evil-later'
-            : 'ancient-evil-first',
-      _ => null,
-    };
-    if (id == null) return null;
-    final content = scripts.scripts.where((script) => script.id == id).single;
-    return scripts.startProcedure(content, context);
+    if ((context.tileAtPlayer ?? 0) != 0) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 4,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    ScriptStep scene(String title, List<String> lines) => ScriptStep(
+      kind: 'scene',
+      scene: ScriptScene(title: title, lines: lines),
+    );
+    final etc16 = context.etcValue(
+      16,
+      bitAliases: const {1: 'ancientEvilMet', 2: 'draconianMet'},
+    );
+    if (x == 40 && y == 18) {
+      return start('spec-4-L37', const [
+        ScriptStep(kind: 'say', text: ' 일행은 공간 이동이 되었다'),
+        ScriptStep(kind: 'teleport', tileX: 46, tileY: 41),
+      ]);
+    }
+    if (x == 26 && y == 16) {
+      final intro = scene('Draconian', _map4DraconianIntro);
+      if ((etc16 & LorePascal.bit(2)) != 0) {
+        return start('spec-4-L37-3', [
+          intro,
+          const ScriptStep(kind: 'say', text: ' 그러나, 아무도 살고 있지 않았다.'),
+        ]);
+      }
+      final mindRead = context.sourceEtc.containsKey(5)
+          ? context.etcValue(5) != 0
+          : context.flags.contains('etc5');
+      if (!mindRead) {
+        return start('spec-4-L37-1', [
+          intro,
+          for (final page in _map4DraconianLecture) scene('Draconian', page),
+        ]);
+      }
+      return start('spec-4-L37-2', [
+        intro,
+        for (final line in _map4DraconianOffer)
+          ScriptStep(kind: 'say', text: line),
+        ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          options: [
+            const ScriptOption('저도 바라던 차입니다', [
+              ScriptStep(kind: 'join', key: 'draconian', slot: 4),
+              ScriptStep(kind: 'flag', key: 'draconianMet'),
+              ScriptStep(kind: 'flag', key: 'etc16_bit2'),
+            ]),
+            ScriptOption('별로 좋지는 않군요', [
+              scene('Draconian', _map4DraconianDecline),
+            ]),
+          ],
+        ),
+      ]);
+    }
+    if (x == 20 && y == 39) {
+      if ((etc16 & LorePascal.bit(1)) != 0) {
+        return start('ancient-evil-later', [
+          const ScriptStep(kind: 'teleport', tileX: 46, tileY: 41),
+          scene('Ancient Evil', _map4AncientEvilLater),
+        ]);
+      }
+      final pages = _map4AncientEvilPages;
+      return start('ancient-evil-first', [
+        scene('Ancient Evil', pages[0]),
+        const ScriptStep(kind: 'peek', peekX: 48, peekY: 57),
+        scene('Ancient Evil', pages[1]),
+        const ScriptStep(kind: 'peek', peekX: 82, peekY: 16),
+        scene('Ancient Evil', pages[2]),
+        const ScriptStep(kind: 'teleport', tileX: 16, tileY: 15),
+        scene('Ancient Evil', pages[3]),
+        const ScriptStep(kind: 'flag', key: 'ancientEvilMet'),
+        const ScriptStep(kind: 'flag', key: 'etc16_bit1'),
+      ]);
+    }
+    return null;
   }
 
   /// `LORESPEC.PAS:23-34`, map 1: every special tile gives food once, then

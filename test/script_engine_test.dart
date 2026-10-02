@@ -32,6 +32,13 @@ class _MissingBundle extends CachingAssetBundle {
 ///
 /// 원작 LORESPEC.PAS / LORETALK.PAS의 좌표 이벤트를 `assets/data/scripts.json`으로
 /// 옮기고, 엔진이 보상/조건/선택지/1회성을 정확히 처리하는지 확인한다.
+ScriptRun _drain(ScriptRun run) {
+  while (run.hasPendingScene) {
+    run = run.acknowledgeScene();
+  }
+  return run;
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -663,16 +670,13 @@ void main() {
       expect(change.map, isNull); // 현재 맵에 적용
 
       // 맵 4 (20,39) Ancient Evil: 첫 방문은 대륙 안내 + 플래그 (원작 LORESPEC 맵 4)
-      final first = LoreSpecProcedures.map4(
-        20,
-        39,
-        noCtx,
-        LoreScriptEngine.instance,
-      )!;
+      final first = _drain(
+        LoreSpecProcedures.map4(20, 39, noCtx, LoreScriptEngine.instance)!,
+      );
       expect(first.outcome.setFlags, contains('ancientEvilMet'));
       expect(first.outcome.teleportX, 16);
       expect(first.outcome.teleportY, 15);
-      expect(first.outcome.messages.length, 5);
+      expect(first.outcome.messages.length, 20);
 
       // 재방문은 비밀 통로로 강제 이동 (원작 x := 46; y := 41)
       final later = LoreSpecProcedures.map4(
@@ -711,12 +715,14 @@ void main() {
       final lecture = LoreSpecProcedures.map4(26, 16, noCtx, engine)!;
       expect(lecture.outcome.messages.first, contains('드래곤의 중간 종족'));
       expect(lecture.outcome.recruits, isEmpty);
-      final join = LoreSpecProcedures.map4(
-        26,
-        16,
-        const ScriptContext(flags: {'etc5'}),
-        engine,
-      )!;
+      final join = _drain(
+        LoreSpecProcedures.map4(
+          26,
+          16,
+          const ScriptContext(flags: {'etc5'}),
+          engine,
+        )!,
+      );
       expect(join.pendingChoice, isNotNull);
       final joinOutcome = join.choose(0).outcome;
       final joined = joinOutcome.recruits.single;
@@ -726,12 +732,14 @@ void main() {
       // 원작 join(62,6)은 레벨 17로 편입시킨다.
       expect(LoreJoin.byKey('draconian')!.battleLevel, 17);
       // 이미 합류했다면 피라밋은 비어 있다(원작 `etc[16] and bit2 > 0`).
-      final after = LoreSpecProcedures.map4(
-        26,
-        16,
-        const ScriptContext(flags: {'draconianMet'}),
-        engine,
-      )!;
+      final after = _drain(
+        LoreSpecProcedures.map4(
+          26,
+          16,
+          const ScriptContext(flags: {'draconianMet'}),
+          engine,
+        )!,
+      );
       expect(after.outcome.messages.join(''), contains('아무도 살고 있지 않았다'));
 
       // 3) 맵 6 (51/52,12): Mad Joe를 풀어준 경우에만 병사와 싸운다.
@@ -900,17 +908,17 @@ void main() {
       final engine = LoreScriptEngine.instance;
 
       // 1) Ancient Evil 안내는 원작처럼 대사 → 시야 이동 → 대사 순서로 진행된다.
-      final ancient = LoreSpecProcedures.map4(20, 39, noCtx, engine)!;
+      final ancient = _drain(LoreSpecProcedures.map4(20, 39, noCtx, engine)!);
       final kinds = ancient.outcome.events.map((e) => e.kind).toList();
-      expect(kinds.where((k) => k == 'peek').length, 3);
+      expect(kinds.where((k) => k == 'peek').length, 2);
       expect(kinds.first, 'message');
-      expect(kinds[2], 'peek');
+      expect(kinds[6], 'peek');
       final firstPeek = ancient.outcome.events.firstWhere(
         (e) => e.kind == 'peek',
       );
       expect(firstPeek.x, 48); // 원작 x := 48; y := 57;
       expect(firstPeek.y, 57);
-      expect(ancient.outcome.messages.length, 5); // messages에는 대사만 남는다
+      expect(ancient.outcome.messages.length, 20); // messages에는 대사만 남는다
 
       // 2) LORE 성 출구(맵 6 y=96) Skeleton 영입 - 원작 join(19,6) = 6번 슬롯
       final skeleton = engine.startById('castle-exit-skeleton', noCtx)!;
