@@ -192,12 +192,16 @@ class ScriptScene {
   final int? appendPartyNameSlot;
   final int? appendPartyNameLine;
 
+  /// Text after the name, for `Print(c,'..'+player[n].name+'.')`.
+  final String appendPartyNameSuffix;
+
   const ScriptScene({
     required this.title,
     this.actors = const [],
     required this.lines,
     this.appendPartyNameSlot,
     this.appendPartyNameLine,
+    this.appendPartyNameSuffix = '',
   });
 
   /// Resolve text when presented, after battle/recruits; player[1] stays slot 1.
@@ -214,6 +218,7 @@ class ScriptScene {
         for (var i = 0; i < lines.length; i++)
           i == line
               ? '${lines[i]}${slot <= slots.length ? slots[slot - 1] : ''}'
+                    '$appendPartyNameSuffix'
               : lines[i],
       ],
     );

@@ -529,6 +529,226 @@
       "test": "test/map26_final_source_test.dart",
       "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:116",
+      "line": 1881,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 tile guard: tile 0 exits before Clear/any effect, so the 274 hidden KEEP3 cells (including row 26 x=12,13,38,39) never start the fight; only tile 52 does. One runtime owner, no JSON/legacy fallback. Presentation adapted; DOS execution comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:26",
+      "line": 1881,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 tile guard: tile 0 exits before Clear/any effect, so the 274 hidden KEEP3 cells (including row 26 x=12,13,38,39) never start the fight; only tile 52 does. One runtime owner, no JSON/legacy fallback. Presentation adapted; DOS execution comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:117",
+      "line": 1883,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/map23_keep3_ui_test.dart",
+      "note": "Exact map23 y=46 boundary in LoreWorldManager.findPortal: accept -> map 5 (34,15), reject -> y-1 (y=45); y>46 never exits. The wantexit prompt is the native dialog; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:118",
+      "line": 1884,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/map23_keep3_ui_test.dart",
+      "note": "Exact map23 y=46 boundary in LoreWorldManager.findPortal: accept -> map 5 (34,15), reject -> y-1 (y=45); y>46 never exits. The wantexit prompt is the native dialog; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:119",
+      "line": 1895,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:54",
+      "line": 1915,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_mirror_enemy.dart",
+      "test": "test/map23_keep3_ui_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:120",
+      "line": 1916,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_mirror_enemy.dart",
+      "test": "test/map23_keep3_ui_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:repeat:1",
+      "line": 1923,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:121",
+      "line": 1926,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:27",
+      "line": 1926,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:122",
+      "line": 1927,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:123",
+      "line": 1946,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:28",
+      "line": 1946,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:124",
+      "line": 1947,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:29",
+      "line": 1950,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:55",
+      "line": 1962,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:56",
+      "line": 1963,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:125",
+      "line": 1967,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 (25,27) lever: reachable after the LOREENT sign sets map[25,27]:=52; writes map[25,27]:=46, map[29,43]:=44, zero cells of 12..39 x 7..34 -> 39 and map[25..26,12]:=54 before the closing PressAnyKey; no completion flag. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:57",
+      "line": 1970,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 (25,27) lever: reachable after the LOREENT sign sets map[25,27]:=52; writes map[25,27]:=46, map[29,43]:=44, zero cells of 12..39 x 7..34 -> 39 and map[25..26,12]:=54 before the closing PressAnyKey; no completion flag. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:58",
+      "line": 1971,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 (25,27) lever: reachable after the LOREENT sign sets map[25,27]:=52; writes map[25,27]:=46, map[29,43]:=44, zero cells of 12..39 x 7..34 -> 39 and map[25..26,12]:=54 before the closing PressAnyKey; no completion flag. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:126",
+      "line": 1972,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 (25,27) lever: reachable after the LOREENT sign sets map[25,27]:=52; writes map[25,27]:=46, map[29,43]:=44, zero cells of 12..39 x 7..34 -> 39 and map[25..26,12]:=54 before the closing PressAnyKey; no completion flag. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:59",
+      "line": 1973,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map23_keep3_source_test.dart",
+      "note": "Source-extracted map23 (25,27) lever: reachable after the LOREENT sign sets map[25,27]:=52; writes map[25,27]:=46, map[29,43]:=44, zero cells of 12..39 x 7..34 -> 39 and map[25..26,12]:=54 before the closing PressAnyKey; no completion flag. DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

@@ -281,7 +281,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 원작 `LORESUB.PAS:986 wantenter` / `:999 wantexit`
   /// 성문·동굴 입구 진입 여부를 확인한 뒤 이동한다.
   Future<void> _confirmPortalEntry(PortalInfo portal, int tx, int ty) async {
-    final sourceDungeonExit = _game.currentMapId == 25 && ty == 46;
+    final sourceDungeonExit =
+        (_game.currentMapId == 23 || _game.currentMapId == 25) && ty == 46;
     final leavingTown =
         sourceDungeonExit ||
         _game.currentMapName.startsWith('TOWN') &&

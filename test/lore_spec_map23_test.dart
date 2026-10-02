@@ -43,73 +43,87 @@ void main() {
     return result.script;
   }
 
-  group('LORESPEC 맵 23 KEEP3 / DUNGEON OF EVIL 분기 검증 (LORESPEC.PAS:1880-1979)', () {
-    test('y=26 가짜 네크로맨서 및 도플갱어 2단계 전투 시퀀스 검증', () {
-      final runDirect = LoreSpecProcedures.map23(
-        25,
-        26,
-        const ScriptContext(tileAtPlayer: 52),
-        scripts,
-      )!;
-      expect(
-        runDirect.outcome.messages,
-        contains(' 잘도 여기까지 찾아왔구나.'),
-      );
-      expect(runDirect.awaitingBattle, isTrue);
-      expect(runDirect.outcome.battleMirrorParty, isTrue);
+  group(
+    'LORESPEC 맵 23 KEEP3 / DUNGEON OF EVIL 분기 검증 (LORESPEC.PAS:1880-1979)',
+    () {
+      test('y=26 가짜 네크로맨서: 장면 두 개 뒤 환상(미러) 전투로 이어지고 정리 플래그는 무시한다', () {
+        final run = LoreSpecProcedures.map23(
+          25,
+          26,
+          const ScriptContext(tileAtPlayer: 52),
+          scripts,
+        )!;
+        expect(run.pendingScene!.lines.first, ' 잘도 여기까지 찾아왔구나 ');
+        expect(run.pendingScene!.appendPartyNameSuffix, '.');
+        expect(run.awaitingBattle, isFalse);
+        final battle = run.acknowledgeScene().acknowledgeScene();
+        expect(battle.awaitingBattle, isTrue);
+        expect(battle.outcome.battleMirrorParty, isTrue);
+        expect(battle.outcome.battleEnemyFirst, isTrue);
 
-      final runDispatcher = dispatchSpecial(
-        mapId: 23,
-        x: 25,
-        y: 26,
-        tile: 52,
-      )!;
-      expect(runDispatcher.awaitingBattle, isTrue);
+        final viaDispatcher = dispatchSpecial(
+          mapId: 23,
+          x: 25,
+          y: 26,
+          tile: 52,
+        )!;
+        expect(viaDispatcher.hasPendingScene, isTrue);
 
-      final defeated = LoreSpecProcedures.map23(
-        25,
-        26,
-        const ScriptContext(tileAtPlayer: 52, flags: {'keep3NecromancerCleared'}),
-        scripts,
-      );
-      expect(defeated, isNull);
-    });
+        // 원본에는 격파 플래그가 없다. 재방문은 맵 타일이 판정한다.
+        final stale = LoreSpecProcedures.map23(
+          25,
+          26,
+          const ScriptContext(
+            tileAtPlayer: 52,
+            flags: {'keep3NecromancerCleared'},
+          ),
+          scripts,
+        );
+        expect(stale, isNotNull);
+        // LORESPEC.PAS:1881 `if map[x,y] = 0 then exit`.
+        expect(
+          LoreSpecProcedures.map23(
+            12,
+            26,
+            const ScriptContext(tileAtPlayer: 0),
+            scripts,
+          ),
+          isNull,
+        );
+      });
 
-    test('(25, 27) 레버 조작 및 감추어진 성 부상 지형 변형 분기 검증', () {
-      final runTrap = LoreSpecProcedures.map23(
-        25,
-        27,
-        const ScriptContext(tileAtPlayer: 52),
-        scripts,
-      )!;
-      expect(
-        runTrap.outcome.messages,
-        contains(' 푯말에 쓰여 있는 대로 이 곳의 레버를 당겼 '),
-      );
-      expect(
-        runTrap.outcome.setFlags,
-        contains('keep3TrapCleared'),
-      );
-      expect(
-        runTrap.outcome.tileChanges.any((t) => t.x == 25 && t.y == 27 && t.tile == 46),
-        isTrue,
-      );
+      test('(25, 27) 레버: 맵을 먼저 쓰고 대사를 출력하며 별도 완료 플래그를 만들지 않는다', () {
+        final run = LoreSpecProcedures.map23(
+          25,
+          27,
+          const ScriptContext(tileAtPlayer: 52),
+          scripts,
+        )!;
+        expect(run.pendingScene!.lines, contains(' 푯말에 쓰여 있는 대로 이 곳의 레버를 당겼 '));
+        expect(run.outcome.setFlags, isEmpty);
+        expect(
+          run.outcome.tileChanges.any(
+            (t) => t.x == 25 && t.y == 27 && t.tile == 46,
+          ),
+          isTrue,
+        );
 
-      final runDispatcher = dispatchSpecial(
-        mapId: 23,
-        x: 25,
-        y: 27,
-        tile: 52,
-      )!;
-      expect(runDispatcher.outcome.messages, contains(' 푯말에 쓰여 있는 대로 이 곳의 레버를 당겼 '));
+        final viaDispatcher = dispatchSpecial(
+          mapId: 23,
+          x: 25,
+          y: 27,
+          tile: 52,
+        )!;
+        expect(viaDispatcher.pendingScene!.lines, run.pendingScene!.lines);
 
-      final completed = LoreSpecProcedures.map23(
-        25,
-        27,
-        const ScriptContext(tileAtPlayer: 52, flags: {'keep3TrapCleared'}),
-        scripts,
-      );
-      expect(completed, isNull);
-    });
-  });
+        final stale = LoreSpecProcedures.map23(
+          25,
+          27,
+          const ScriptContext(tileAtPlayer: 52, flags: {'keep3TrapCleared'}),
+          scripts,
+        );
+        expect(stale, isNotNull);
+      });
+    },
+  );
 }

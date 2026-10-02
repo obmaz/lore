@@ -44,6 +44,7 @@ python3 tool/audit_messages.py
 python3 tool/audit_source_memory.py --check
 python3 tool/source_map25_guardian.py --check
 python3 tool/source_map26_final.py --check
+python3 tool/source_map23_keep3.py --check
 python3 tool/build_port_contract_ledger.py --check
 ```
 

@@ -1190,49 +1190,172 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:1880-1979`, map 23 (KEEP3 / DUNGEON OF EVIL).
+  /// `LORESPEC.PAS:1880-1979`, `case 23` (KEEP3 / DUNGEON OF EVIL).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 46` handled via portal session.
-  /// 2. Fake Necromancer and doppelganger battle at `y == 26`:
-  ///    - `keep3-necromancer-y26` (Doppelganger -> Necromancer 2-stage battle, tile changes).
-  /// 3. Lever at `(25, 27)`:
-  ///    - `keep3-trap-25-27` (castle floating effect, tile transformations).
+  /// Source order: `if map[x,y] = 0 then exit` (1881), `Clear`, the `y = 46` exit
+  /// (the `wantexit` boundary is owned by `LoreWorldManager.findPortal`), the
+  /// `y = 26` impostor battle, then the `on(25,27)` lever. There is no random
+  /// call and no cleared flag: revisits stop because the source overwrites the
+  /// special tiles (`map[24..27,25..27] := 46`, `map[25,27] := 46`).
   static ScriptRun? map23(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
-    }
-
+    // LOREMAIN calls specialevent for den/keep tiles 0 and 52; tile 0 exits.
+    final tile = context.tileAtPlayer;
+    if (tile == 0 || (tile != null && tile != 52)) return null;
+    if (y == 46) return null;
     if (y == 26) {
-      final hasCleared = context.flags.contains('keep3NecromancerCleared');
-      if (!hasCleared) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'keep3-necromancer-y26',
-        );
-        return scripts.startProcedure(content, context);
-      }
+      return scripts.startProcedure(_keep3Impostor(), context);
     }
-
     if (x == 25 && y == 27) {
-      final hasTriggeredTrap = context.flags.contains('keep3TrapCleared');
-      if (!hasTriggeredTrap) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'keep3-trap-25-27',
-        );
-        return scripts.startProcedure(content, context);
-      }
+      return scripts.startProcedure(_keep3Lever(), context);
     }
-
     return null;
   }
+
+  /// `LORESPEC.PAS:1895-1966`. Both fights use `BattleMode(FALSE)` and the
+  /// battle result in etc[6]: 255 exits, any other non-zero value is an escape.
+  /// The mirror fight repeats on escape with the same enemy objects; the real
+  /// Necromancer fight moves the party to y + 1 on escape. Presentation
+  /// (DisplayEnemies, Clear, PressAnyKey) is adapted to native scenes.
+  static LoreScript _keep3Impostor() => LoreScript(
+    id: 'keep3-necromancer-y26',
+    trigger: 'step',
+    map: 23,
+    once: false,
+    require: const ScriptRequire(),
+    steps: [
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: 'Necromancer',
+          appendPartyNameSlot: 1,
+          appendPartyNameLine: 0,
+          appendPartyNameSuffix: '.',
+          lines: [
+            ' 잘도 여기까지 찾아왔구나 ',
+            ' 네가 찾던 그 Necromancer가 바로 나다. 드디',
+            '어 너의 실력을 보게 되겠구나. 하지만 분명히',
+            '나보다는 떨어지겠지만. 으하하하.',
+          ],
+        ),
+      ),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: '환상',
+          lines: [
+            ' 너희들은 곧 환상에 빠져들게 될 것이다.',
+            ' 나는 벌써 너희들의 약점을 파악 했지.  너희',
+            '일행들은 항상 자신을  너무 신뢰하고 믿고 있',
+            '더군. 그러나 그 착각은 곧 깨어질 것이다.',
+            ' 어둠의 신이여, 당신의 힘으로 이들을 환상에',
+            '빠져 들게 하소서. 인 쿠아스 젠 ~~',
+          ],
+        ),
+      ),
+      const ScriptStep(
+        kind: 'battle',
+        battleTitle: '환상의 도플갱어',
+        battleEnemyFirst: true,
+        monsters: [60, 60, 60, 60, 60, 60],
+        battleMirrorParty: true,
+        battleRetryOnRunAway: true,
+        battleRunAwaySteps: [
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(title: '환상', lines: [' 하지만 당신은 환상에서 벗어나지 못했다.']),
+          ),
+        ],
+      ),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: 'Necromancer',
+          lines: [' 환상에서 벗어나다니 대단한 의지력이군.', ' 하지만 진짜 적은 바로 나다. 받아라 !!'],
+        ),
+      ),
+      const ScriptStep(
+        kind: 'battle',
+        battleTitle: 'Necromancer',
+        battleEnemyFirst: true,
+        monsters: [70],
+        battleOverrides: [
+          {'index': 1, 'name': 'Necromancer', 'eNumber': 1},
+        ],
+        battleRunAwaySteps: [ScriptStep(kind: 'nudge', nudgeDy: 1)],
+      ),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: 'Necromancer',
+          lines: [
+            ' 욱! 너의 힘은 대단하구나. 나는 너에게 졌다',
+            '고 인정하겠다.  흐흐, 그러나 사실 나는 너희',
+            '찾던 Necromancer님이 아니다.  만약 그분이라',
+            '이렇게 쉽게 당하지는 않았을게니까.  내 생명',
+            '이 얼마 안남았구나. Necromancer님 만세 !!',
+          ],
+        ),
+      ),
+      // The map writes precede the final PressAnyKey in the source.
+      const ScriptStep(kind: 'setTile', tileX: 29, tileY: 43, tileValue: 53),
+      const ScriptStep(
+        kind: 'setTileArea',
+        tileX: 24,
+        tileXMax: 27,
+        tileY: 25,
+        tileYMax: 27,
+        tileValue: 46,
+      ),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: '기둥 소멸',
+          lines: [' 그는 숨이 끊어졌고 주위의 기둥도 그와 함께', '사라져 버렸다.'],
+        ),
+      ),
+    ],
+  );
+
+  /// `LORESPEC.PAS:1967-1978`: the lever writes the map first, then prints
+  /// and waits. Only tile 0 cells of the 12..39 x 7..34 area become 39.
+  static LoreScript _keep3Lever() => LoreScript(
+    id: 'keep3-trap-25-27',
+    trigger: 'step',
+    map: 23,
+    once: false,
+    require: const ScriptRequire(),
+    steps: [
+      const ScriptStep(kind: 'setTile', tileX: 25, tileY: 27, tileValue: 46),
+      const ScriptStep(kind: 'setTile', tileX: 29, tileY: 43, tileValue: 44),
+      const ScriptStep(
+        kind: 'setTileArea',
+        tileX: 12,
+        tileXMax: 39,
+        tileY: 7,
+        tileYMax: 34,
+        tileValue: 39,
+        tileOnlyIf: 0,
+      ),
+      const ScriptStep(kind: 'setTile', tileX: 25, tileY: 12, tileValue: 54),
+      const ScriptStep(kind: 'setTile', tileX: 26, tileY: 12, tileValue: 54),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: '레버',
+          lines: [
+            ' 푯말에 쓰여 있는 대로 이 곳의 레버를 당겼 ',
+            '더니 굉음과 함께 감추어져 있었던 성이 지하 ',
+            '로부터 떠 올랐다.',
+          ],
+        ),
+      ),
+    ],
+  );
 
   /// `LORESPEC.PAS:1980-1994`, map 24 (K_DEN1 / LAST SHELTER).
   ///

@@ -349,7 +349,15 @@ class LoreWorldManager {
 
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
   PortalInfo? findPortal(int currentMapId, int x, int y) {
-    // LORESPEC.PAS:1997-2006 owns the exact map 25 exit boundary.
+    // LORESPEC.PAS:1883-1894 and 1997-2006 own the exact map 23/25 exits.
+    if (currentMapId == 23 && y == 46) {
+      return const PortalInfo(
+        targetMapId: 5,
+        targetX: 34,
+        targetY: 15,
+        name: 'KEEP3 출구',
+      );
+    }
     if (currentMapId == 25 && y == 46) {
       return const PortalInfo(
         targetMapId: 23,
@@ -358,7 +366,7 @@ class LoreWorldManager {
         name: 'K_DEN2 출구',
       );
     }
-    if (currentMapId == 25 && y > 46) return null;
+    if ((currentMapId == 23 || currentMapId == 25) && y > 46) return null;
     // 1순위: JSON 규칙 (assets/data/portals.json)
     for (final rule in _portalRules) {
       final portal = rule.match(currentMapId, x, y);
