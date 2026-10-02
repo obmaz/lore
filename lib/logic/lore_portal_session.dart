@@ -42,6 +42,15 @@ class LorePortalSession {
               scripts.startProcedure(guard, context),
             );
     }
+    if (id == 'portal-9-13-swamp-gate') {
+      final speech = LoreSpecProcedures.swampGateSpeech(context);
+      return speech == null
+          ? const LorePortalPlan(LorePortalAction.loadMap)
+          : LorePortalPlan(
+              LorePortalAction.runPreScript,
+              scripts.startProcedure(speech, context),
+            );
+    }
     if (id == 'keep2-exit-guard') {
       final guard = LoreSpecProcedures.keep2ExitGuard(context, scripts.roll);
       return guard == null

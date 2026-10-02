@@ -1919,6 +1919,136 @@
       "test": "test/source_exit_boundary_ui_test.dart",
       "note": "Map10 arm: y=46 -> y:=50 and y=49 -> y:=45 with x unchanged (direct procedure, no JSON), y=71 wantexit boundary -> map 3 (74,20), refusal y-1. Town specialevent reaches only tile 0. Native prompt; DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:34",
+      "line": 356,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:35",
+      "line": 360,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:36",
+      "line": 364,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:37",
+      "line": 368,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:38",
+      "line": 372,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:39",
+      "line": 376,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:40",
+      "line": 381,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:41",
+      "line": 382,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:5",
+      "line": 384,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:42",
+      "line": 387,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:43",
+      "line": 392,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:44",
+      "line": 432,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:45",
+      "line": 433,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map9_10_test.dart",
+      "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

@@ -72,7 +72,7 @@ void main() {
     expect(flags.collectedTreasures, isEmpty);
   });
 
-  test('JSON을 로드하지 못한 경우에만 기존 사건을 사용한다', () {
+  test('직접 이식한 지도는 JSON이 없어도 레거시 사건을 쓰지 않는다', () {
     final unavailable = LoreScriptEngine();
     final result = LoreSpecialEventDispatcher.resolve(
       action: LoreTileAction.special,
@@ -84,8 +84,8 @@ void main() {
       scripts: unavailable,
       legacy: legacy,
     );
-    expect(result.script, isNull);
-    expect(result.legacy?.goldGained, 5000);
+    expect(result.legacy, isNull);
+    expect(result.script!.outcome.goldDelta, 5000);
 
     final nonSpecial = LoreSpecialEventDispatcher.resolve(
       action: LoreTileProtocol.classify('ground', 48),

@@ -356,14 +356,17 @@ class LoreWorldManager {
   }) => switch (mapId) {
     // LORESPEC.PAS:334-340: a refused wantenter leaves the party on the gate.
     8 when x == 50 => y,
+    9 when y == 5 => y + 1,
+    9 when y == 46 => y - 1,
     8 || 10 when y == 71 => y - 1,
     21 || 22 || 23 || 24 || 25 when y == 46 => y - 1,
     27 => y < 25 ? y + 1 : y - 1,
     _ => null,
   };
 
-  /// LORESPEC.PAS:334: map 8's x = 50 boundary asks `wantenter`, not `wantexit`.
-  static bool sourceAsksEnter(int mapId, int x) => mapId == 8 && x == 50;
+  /// LORESPEC.PAS:334/383: map 8 x = 50 and map 9 y = 5 ask `wantenter`.
+  static bool sourceAsksEnter(int mapId, int x, int y) =>
+      (mapId == 8 && x == 50) || (mapId == 9 && y == 5);
 
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
   PortalInfo? findPortal(int currentMapId, int x, int y) {
@@ -407,6 +410,24 @@ class LoreWorldManager {
         };
       }
       if (y > 46) return null;
+    }
+    // LORESPEC.PAS:383-439: map 9 SWAMP GATE (y = 5) and exit (y = 46).
+    if (currentMapId == 9 && (y == 5 || y >= 46)) {
+      if (y > 46) return null;
+      return y == 5
+          ? const PortalInfo(
+              targetMapId: 13,
+              targetX: 81,
+              targetY: 95,
+              name: 'SWAMP GATE',
+              scriptId: 'portal-9-13-swamp-gate',
+            )
+          : const PortalInfo(
+              targetMapId: 2,
+              targetX: 32,
+              targetY: 82,
+              name: 'GROUND 2',
+            );
     }
     // LORESPEC.PAS:332-353 and 444-464: map 8/10 gate and y = 71 exits.
     if (currentMapId == 8 && x == 50) {

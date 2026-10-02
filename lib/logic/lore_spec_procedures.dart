@@ -124,62 +124,131 @@ class LoreSpecProcedures {
     LoreScriptEngine scripts,
   ) => null;
 
-  /// `LORESPEC.PAS:354-443`, map 9 (TOWN4 / GAIA TERRA).
+  /// Raw `party.etc[index]`, falling back to the named quest step for
+  /// contexts built without a raw snapshot.
+  static int _questByte(ScriptContext context, int index, String quest) =>
+      context.sourceEtc.containsKey(index)
+      ? context.etcValue(index)
+      : LorePascal.byte(context.questSteps[quest] ?? 0);
+
+  /// `LORESPEC.PAS:354-443`, `case 9` (TOWN4 / GAIA TERRA).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Gold finds (5000 gold each):
-  ///    - `(10, 24)`: `etc35_bit1`
-  ///    - `(12, 26)`: `etc35_bit2`
-  ///    - `(15, 25)`: `etc35_bit3`
-  ///    - `(16, 23)`: `etc35_bit4`
-  ///    - `(18, 27)`: `etc35_bit5`
-  /// 2. Barrier at `y == 10`:
-  ///    - `party.etc[15] < 5` (water quest): message "알수없는 힘이 당신을 배척합니다." and nudge dy = 1.
-  /// 3. Northern SWAMP GATE (`y == 5`):
-  ///    - Enter portal to map 13 `(81, 95)` handled via portal session.
-  /// 4. Southern exit (`y == 46`):
-  ///    - Exit to map 2 `(32, 82)` handled via portal session.
+  /// Five `findgold(5000)` cells guarded by raw etc[35] bits 1..5, the y = 10
+  /// barrier while etc[15] < 5 (`Message` has no key wait, then y + 1). The
+  /// y = 5 `wantenter('SWAMP GATE')` and y = 46 `wantexit` are portal
+  /// boundaries; [swampGateSpeech] runs after the gate is accepted.
   static ScriptRun? map9(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson ||
-        (context.tileAtPlayer != null && context.tileAtPlayer != 0)) {
-      return null;
-    }
-
-    final goldId = switch ((x, y)) {
-      (10, 24) => !context.flags.contains('etc35_bit1') ? 'spec-9-L354' : null,
-      (12, 26) => !context.flags.contains('etc35_bit2') ? 'spec-9-L354x' : null,
-      (15, 25) =>
-        !context.flags.contains('etc35_bit3') ? 'spec-9-L354xx' : null,
-      (16, 23) =>
-        !context.flags.contains('etc35_bit4') ? 'spec-9-L354xxx' : null,
-      (18, 27) =>
-        !context.flags.contains('etc35_bit5') ? 'spec-9-L354xxxx' : null,
-      _ => null,
+    if ((context.tileAtPlayer ?? 0) != 0) return null;
+    const gold = {
+      (10, 24): 1,
+      (12, 26): 2,
+      (15, 25): 3,
+      (16, 23): 4,
+      (18, 27): 5,
     };
-    if (goldId != null) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == goldId,
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 10) {
-      final waterQuest = context.questSteps['water'] ?? 0;
-      final blocked = waterQuest < 5 && !context.flags.contains('etc15_gte5');
-      if (blocked) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'spec-9-L354xxxxx',
+    final bit = gold[(x, y)];
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 9,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
         );
-        return scripts.startProcedure(content, context);
-      }
+    if (bit != null) {
+      if ((context.etcValue(35) & LorePascal.bit(bit)) != 0) return null;
+      return start('spec-9-gold-$bit', [
+        const ScriptStep(kind: 'say', text: '당신은 금화 5000개를 발견했다.'),
+        const ScriptStep(kind: 'gold', amount: 5000),
+        ScriptStep(kind: 'flag', key: 'etc35_bit$bit'),
+      ]);
     }
-
+    if (y == 10 && _questByte(context, 15, 'water') < 5) {
+      return start('spec-9-barrier-y10', const [
+        ScriptStep(kind: 'say', text: '알수없는 힘이 당신을 배척합니다.'),
+        ScriptStep(kind: 'nudge', nudgeDy: 1),
+      ]);
+    }
     return null;
+  }
+
+  /// `LORESPEC.PAS:383-428`: after `wantenter('SWAMP GATE')`, Lord Ahn speaks
+  /// once (etc[35] bit6), then map 13 (81,95) loads. The gate animation is
+  /// presentation only.
+  static LoreScript? swampGateSpeech(ScriptContext context) {
+    if ((context.etcValue(35) & LorePascal.bit(6)) != 0) return null;
+    return const LoreScript(
+      id: 'portal-9-13-swamp-gate',
+      trigger: 'portal',
+      map: 9,
+      once: false,
+      require: ScriptRequire(),
+      steps: [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'SWAMP GATE',
+            lines: [' SWAMP GATE 로 들어가고 있는 당신에게  허공', '에서 갑자가 누군가가 말을 꺼낸다'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Lord Ahn',
+            lines: [
+              ' 나는 LORE 성의 성주 Lord Ahn 이오.',
+              ' 역시 내가 예상한 대로 당신들은 훌륭한 용사',
+              '로 성장해 나가고 있소. 여태까지는 모험이 순',
+              '조롭게 진행 되었지만 이제부터는 완전한 적들',
+              '의 소굴이오. 그래서 나도 직접적인 도움은 못',
+              '주더라도 여러가지 조언을 해주겠소.',
+            ],
+          ),
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Lord Ahn',
+            lines: [
+              ' 당신들은 식량을 많이 가지고 있소?  이 식량',
+              '은 당신들을 회복시키기  위해  필요한 것이니',
+              '절대 바닥나게 해서는 안되오. 왜냐하면 이 이',
+              '후에 전개되는 모험에서는 식량을 파는곳이 거',
+              '의 없다고 생각해도 될만큼 식량이 귀중하므로',
+              '낭패를 보는일이 없도록 하시오.',
+            ],
+          ),
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Lord Ahn',
+            lines: [
+              ' SWAMP의 대륙에서의 할일을 요약하면 이렇소.',
+              ' 스왐프 게이트와 통하는 SWAMP KEEP에는 많은',
+              '강한 괴물들이 버티고 있소. 하지만 이전에 그',
+              '대륙에 있는 2 개의 동굴 요새를 점령한뒤에야',
+              'SWAMP KEEP의 중앙에 있는 라바 게이트를 작동',
+              '시킬수 있을 것이오. 그곳의 괴물들은 매우 힘',
+              '든 상대일 것이오. 하지만  당신들의 능력이라',
+              '면 충분히 가능할 것이오. 나는 당신들이 라바',
+              '게이트를 통과하려 할때 다시 조언을 해주겠소.',
+              ' 그때까지 건투를 비는 바이오.',
+            ],
+          ),
+        ),
+        ScriptStep(kind: 'flag', key: 'etc35_bit6'),
+      ],
+    );
   }
 
   /// `LORESPEC.PAS:444-464`, `case 10` (TOWN5).

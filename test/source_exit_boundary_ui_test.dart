@@ -14,7 +14,7 @@ import 'package:lore/services/save_manager.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
 import 'package:lore/widgets/script_scene_dialog.dart';
 
-/// LORESPEC.PAS map 8 (332-353), map 10 (444-464), map 21 (1762-1795), map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
+/// LORESPEC.PAS map 8 (332-353), map 9 (354-443), map 10 (444-464), map 21 (1762-1795), map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
 /// through the real screen: refusal position and accepted destination.
 void main() {
   Future<LoreGame> open(
@@ -348,4 +348,44 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   }
+
+  testWidgets('map 9 SWAMP GATE: refusal y=6, first entry speech then map 13', (
+    tester,
+  ) async {
+    final game = await open(
+      tester,
+      9,
+      'TOWN4',
+      'town',
+      26,
+      6,
+      flags: {'etc35': 0},
+    );
+    game.tryMove(0, -1);
+    await tick(tester);
+    expect(find.text(LoreFieldLogic.enterPrompt('SWAMP GATE')), findsOneWidget);
+    await tester.tap(find.text(LoreFieldLogic.confirmNo));
+    await tick(tester);
+    expect([game.currentMapId, game.playerX, game.playerY], [9, 26, 6]);
+    game.tryMove(0, -1);
+    await tick(tester);
+    await tester.tap(find.text(LoreFieldLogic.confirmYes));
+    await tick(tester);
+    for (var i = 0; i < 4; i++) {
+      expect(find.byType(ScriptSceneDialog), findsWidgets);
+      await tester.tap(
+        find.byKey(const ValueKey('script-scene-continue')).last,
+      );
+      await tick(tester);
+    }
+    await tester.runAsync(() async {
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+    });
+    await tick(tester);
+    expect([game.currentMapId, game.playerX, game.playerY], [13, 81, 95]);
+    expect(LoreDialogueManager.instance.partyEtc.read(35) & 32, 32);
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump(const Duration(seconds: 1));
+    expect(tester.takeException(), isNull);
+  });
 }

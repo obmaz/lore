@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dungeon_event_manager.dart';
+import 'package:lore/game/lore_world_manager.dart';
+import 'package:lore/logic/lore_portal_session.dart';
 import 'package:lore/logic/lore_spec_procedures.dart';
 import 'package:lore/logic/lore_special_event_dispatcher.dart';
 import 'package:lore/logic/lore_tile_protocol.dart';
@@ -118,14 +120,20 @@ void main() {
       );
       expect(passRun, isNull);
 
-      // 대체 플래그(etc15_gte5)가 켜진 경우에도 관문 통과 허용
-      final passWithFlag = dispatchSpecial(
-        mapId: 9,
-        x: 26,
-        y: 10,
-        flags: {'etc15_gte5'},
-      );
-      expect(passWithFlag, isNull);
+      // raw etc[15]가 있으면 그것이 우선한다 (모든 바이트).
+      for (var b = 0; b < 256; b++) {
+        final run = LoreSpecProcedures.map9(
+          26,
+          10,
+          ScriptContext(
+            tileAtPlayer: 0,
+            sourceEtc: {15: b},
+            questSteps: const {'water': 9},
+          ),
+          scripts,
+        );
+        expect(run == null, b >= 5);
+      }
     });
 
     test('SWAMP GATE 포털 대사는 원본 Lord Ahn 조언과 etc35_bit6 플래그를 유지한다', () {
@@ -172,6 +180,56 @@ void main() {
       expect(dispatchSpecial(mapId: 10, x: 25, y: 55), isNull);
       expect(dispatchSpecial(mapId: 10, x: 25, y: 46, tile: 1), isNull);
       expect(dispatchSpecial(mapId: 10, x: 25, y: 49, tile: 22), isNull);
+    });
+  });
+
+  group('LORESPEC 맵 9 원본 경계 (LORESPEC.PAS:354-443)', () {
+    test('gold cells follow raw etc[35] bits 1..5 for all 256 bytes', () {
+      const cells = [(10, 24), (12, 26), (15, 25), (16, 23), (18, 27)];
+      for (var b = 0; b < 256; b++) {
+        for (var i = 0; i < 5; i++) {
+          final run = LoreSpecProcedures.map9(
+            cells[i].$1,
+            cells[i].$2,
+            ScriptContext(tileAtPlayer: 0, sourceEtc: {35: b}),
+            LoreScriptEngine(),
+          );
+          expect(run == null, b & (1 << i) != 0);
+          if (run != null) {
+            expect(run.outcome.goldDelta, 5000);
+            expect(run.outcome.setFlags, ['etc35_bit${i + 1}']);
+            expect(run.outcome.messages, ['당신은 금화 5000개를 발견했다.']);
+          }
+        }
+      }
+    });
+
+    test('SWAMP GATE asks wantenter at y=5; first entry speaks, later entries load; refusal y+1', () {
+      final world = LoreWorldManager.instance;
+      final gate = world.findPortal(9, 26, 5)!;
+      expect([gate.targetMapId, gate.targetX, gate.targetY], [13, 81, 95]);
+      expect(LoreWorldManager.sourceAsksEnter(9, 26, 5), isTrue);
+      expect(LoreWorldManager.sourceExitRejectY(9, 5, x: 26), 6);
+      LorePortalPlan begin(int b) => LorePortalSession.begin(
+        confirmed: true,
+        portal: gate,
+        context: ScriptContext(sourceEtc: {35: b}),
+        scripts: LoreScriptEngine(),
+      );
+      var run = begin(0).preScript!;
+      var scenes = 0;
+      while (run.hasPendingScene) {
+        scenes++;
+        run = run.acknowledgeScene();
+      }
+      expect(scenes, 4);
+      expect(run.outcome.setFlags, ['etc35_bit6']);
+      expect(begin(32).action, LorePortalAction.loadMap);
+      final exit = world.findPortal(9, 26, 46)!;
+      expect([exit.targetMapId, exit.targetX, exit.targetY], [2, 32, 82]);
+      expect(world.findPortal(9, 26, 47), isNull);
+      expect(LoreWorldManager.sourceExitRejectY(9, 46, x: 26), 45);
+      expect(LoreWorldManager.sourceAsksEnter(9, 26, 46), isFalse);
     });
   });
 }
