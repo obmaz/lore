@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:math';
 
 import '../logic/lore_batt_text.dart';
-import '../logic/lore_menu_text.dart';
 import '../logic/lore_sub_text.dart';
 
 import 'package:flutter/material.dart';
@@ -14,7 +13,8 @@ import '../models/monster.dart';
 import '../models/party_member.dart';
 import '../models/spell.dart';
 import '../data/lore_data.dart';
-import '../logic/battle_engine.dart';
+import '../logic/field_magic_logic.dart';
+import '../logic/lore_battle.dart';
 import '../game/lore_dialogue_manager.dart';
 
 /// 1993년 원작 LOREBATT.PAS 기반 턴제 전투 뷰포트 위젯
@@ -25,7 +25,7 @@ import '../game/lore_dialogue_manager.dart';
 class BattleViewportView extends StatefulWidget {
   final List<PartyMember> partyMembers;
   final List<Monster> enemies;
-  final BattleEngine? battleEngine;
+  final Random? random;
   final bool enemyFirst;
   final bool espAccessGranted;
   final void Function(String message) onLog;
@@ -38,7 +38,7 @@ class BattleViewportView extends StatefulWidget {
     super.key,
     required this.partyMembers,
     required this.enemies,
-    this.battleEngine,
+    this.random,
     this.enemyFirst = false,
     required this.espAccessGranted,
     required this.onLog,
@@ -53,12 +53,16 @@ class BattleViewportView extends StatefulWidget {
 }
 
 class _BattleViewportViewState extends State<BattleViewportView> {
-  late final BattleEngine _engine;
+  late final LoreBattle _battle;
   int _selectedEnemyIndex = 0;
+
+  /// 지금 명령을 고르는 파티원(0부터).
   int _activePlayerIndex = 0;
   bool _isTurnProcessing = false;
   bool _battleEnded = false;
-  bool _isAutoBattle = false;
+
+  /// `autobattle`: 리더가 `일행에게 무조건 공격 할 것을 지시`를 고른 라운드.
+  bool _autoRound = false;
 
   final FocusNode _focusNode = FocusNode();
 
@@ -90,7 +94,16 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   @override
   void initState() {
     super.initState();
-    _engine = widget.battleEngine ?? BattleEngine();
+    _battle = LoreBattle(
+      party: widget.partyMembers,
+      enemy: widget.enemies,
+      random: widget.random ?? Random(),
+      print: (color, text) => widget.onLog(text),
+      sound: _playSound,
+      onTelepathyJoin: widget.onTelepathyJoin,
+      specialMagicLearned: LoreDialogueManager.instance.specialMagicLearned,
+      espBit: widget.espAccessGranted,
+    );
     _selectFirstAliveTarget();
     if (widget.enemyFirst) {
       _isTurnProcessing = true;
@@ -100,18 +113,11 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     }
   }
 
+  /// `BattleMode(FALSE)`: 첫 선택 전에 적 단계(`loop:`)부터 돈다.
   Future<void> _runOpeningEnemyTurn() async {
     await _enemyTurn();
     if (!mounted || _battleEnded) return;
-    setState(() {
-      for (var i = 0; i < widget.partyMembers.length; i++) {
-        if (widget.partyMembers[i].isBattleActive) {
-          _activePlayerIndex = i;
-          break;
-        }
-      }
-      _isTurnProcessing = false;
-    });
+    _startSelection();
   }
 
   @override
@@ -129,279 +135,192 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     }
   }
 
+  void _playSound(String name) {
+    switch (name) {
+      case 'hit':
+        AudioManager.instance.playHit();
+      case 'scream1':
+        AudioManager.instance.playScream1();
+      case 'scream2':
+        AudioManager.instance.playScream2();
+    }
+  }
+
+  /// `EndBattle` (적 단계 끝에서만 판정한다).
   void _checkBattleEnd() {
     if (_battleEnded) return;
-
-    // LOREBATT.PAS EndBattle은 동시 전멸 시 패배를 먼저 판정한다.
-    final allPartyDefeated = widget.partyMembers.every(
-      (p) => !p.isBattleActive,
-    );
-    if (allPartyDefeated) {
-      _battleEnded = true;
-      _isAutoBattle = false;
+    final code = _battle.endBattle();
+    if (code == null) return;
+    _battleEnded = true;
+    _autoRound = false;
+    if (code == 1) {
       widget.onLog(LoreSubText.battleLost);
       widget.onDefeat();
-      return;
-    }
-
-    final allEnemiesDefeated = widget.enemies.every(
-      (e) => e.isDead || e.isUnconscious,
-    );
-    if (allEnemiesDefeated) {
-      _battleEnded = true;
-      _isAutoBattle = false;
-      final gold = _engine.calculateGold(widget.enemies);
-      widget.onLog(LoreBattText.goldFound('$gold'));
-      widget.onVictory(gold);
-      return;
-    }
-  }
-
-  /// 다음 행동 가능한 파티원으로 순환하거나 몬스터 턴 진행
-  Future<void> _advanceTurn() async {
-    _checkBattleEnd();
-    if (_battleEnded) {
-      setState(() => _isTurnProcessing = false);
-      return;
-    }
-
-    int nextIdx = _activePlayerIndex + 1;
-    while (nextIdx < widget.partyMembers.length &&
-        !widget.partyMembers[nextIdx].isBattleActive) {
-      nextIdx++;
-    }
-
-    if (nextIdx < widget.partyMembers.length) {
-      // 다음 파티원 행동
-      setState(() {
-        _activePlayerIndex = nextIdx;
-        _isTurnProcessing = false;
-      });
-      if (_isAutoBattle) {
-        await Future.delayed(const Duration(milliseconds: 200));
-        _executeAutoAction();
-      }
     } else {
-      // 파티원 턴 종료 -> 몬스터 반격 턴 시작
-      _activePlayerIndex = 0;
-      await _enemyTurn();
-
-      if (!_battleEnded) {
-        // 첫 번째 행동 가능 파티원 찾기
-        for (int i = 0; i < widget.partyMembers.length; i++) {
-          if (widget.partyMembers[i].isBattleActive) {
-            _activePlayerIndex = i;
-            break;
-          }
-        }
-        if (mounted) {
-          setState(() => _isTurnProcessing = false);
-          if (_isAutoBattle) {
-            await Future.delayed(const Duration(milliseconds: 200));
-            _executeAutoAction();
-          }
-        }
-      }
+      final gold = _battle.plusGold();
+      widget.onVictory(gold);
     }
   }
 
-  /// 적의 반격 턴 (Enemy Turn)
+  // ======================================================================
+  // BattleMode: 모든 파티원이 먼저 명령(`battle[person,1..3]`)을 고르고,
+  // 그다음 번호 순서대로 실행한 뒤 적 단계가 온다.
+  // ======================================================================
+
+  /// 새 라운드의 선택을 시작한다 (`for person := 1 to 6 do battle[person,1] := 0`).
+  void _startSelection() {
+    for (var i = 1; i <= 6; i++) {
+      _battle.battle[i][1] = 0;
+    }
+    _autoRound = false;
+    setState(() {
+      _activePlayerIndex = 0;
+      _isTurnProcessing = false;
+    });
+    activePlayer;
+    _reTargetIfDead();
+  }
+
+  /// 현재 파티원의 선택을 기록하고 다음 사람으로 넘어간다.
+  void _select(int how, int what, int whom) {
+    final who = _activePlayerIndex + 1;
+    _battle.battle[who][1] = how;
+    _battle.battle[who][2] = what;
+    _battle.battle[who][3] = whom;
+    unawaited(_afterSelection());
+  }
+
+  Future<void> _afterSelection() async {
+    if (_battleEnded) return;
+    var next = _activePlayerIndex + 1;
+    while (true) {
+      while (next < widget.partyMembers.length &&
+          !widget.partyMembers[next].isBattleActive) {
+        next++;
+      }
+      if (next >= widget.partyMembers.length) break;
+      setState(() => _activePlayerIndex = next);
+      if (!_autoRound) return;
+      _battle.autoSelect(next + 1); // `k := 8`
+      next++;
+    }
+    await _executeRound();
+  }
+
+  Future<void> _executeRound() async {
+    setState(() => _isTurnProcessing = true);
+    for (var who = 1; who <= widget.partyMembers.length; who++) {
+      if (!_battle.exist(who)) continue;
+      final escaped = _battle.executePerson(who);
+      if (!mounted) return;
+      setState(() {});
+      if (escaped) {
+        // `party.etc[6] := 2` 후 전투 종료.
+        _battleEnded = true;
+        _autoRound = false;
+        widget.onRunAway();
+        return;
+      }
+      await Future.delayed(const Duration(milliseconds: 150));
+      if (!mounted || _battleEnded) return;
+    }
+    await _enemyTurn();
+    if (!mounted || _battleEnded) return;
+    _startSelection();
+  }
+
+  /// 적 단계 (`loop:` 부터 `EndBattle` 까지).
   Future<void> _enemyTurn() async {
     setState(() => _isTurnProcessing = true);
     await Future.delayed(const Duration(milliseconds: 300));
     if (!mounted || _battleEnded) return;
-
-    // 원본의 `for person := 1 to enemynumber`는 턴 시작 시의 상한을 쓴다.
-    // 행동 중 소환된 적은 다음 턴부터 행동하며 리스트 변경도 안전하게 처리한다.
-    final enemyTurnCount = widget.enemies.length;
-    for (var index = 0; index < enemyTurnCount; index++) {
-      final enemy = widget.enemies[index];
-      // 원본은 기절한 적에게도 독 피해를 먼저 적용한 뒤 행동 가능 여부를 본다.
-      if (enemy.isDead) continue;
-
-      final results = _engine.executeMonsterTurn(
-        enemy,
-        widget.partyMembers,
-        widget.enemies,
-      );
-      for (final res in results) {
-        widget.onLog(res.message);
-        if (res.outcome == AttackOutcome.hit) {
-          AudioManager.instance.playHit();
-        } else if (res.outcome == AttackOutcome.killed) {
-          AudioManager.instance.playScream2();
-        } else if (res.outcome == AttackOutcome.unconscious) {
-          AudioManager.instance.playScream1();
-        }
-        await Future.delayed(const Duration(milliseconds: 200));
-        if (!mounted || _battleEnded) return;
-      }
-    }
-
+    _battle.enemyPhase();
+    setState(() {});
     _checkBattleEnd();
   }
 
   // ==========================================
-  // [1] 무기 공격
+  // [1] 한 명의 적을 무기로 공격
   // ==========================================
-  void _onWeaponAttack() async {
+  void _onWeaponAttack() {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
-
-    setState(() => _isTurnProcessing = true);
-
-    final res = _engine.executePlayerWeaponAttack(
-      player,
-      currentTarget,
-      party: widget.partyMembers,
-    );
-    widget.onLog(res.message);
-
-    _playAttackSound(res);
-    _reTargetIfDead();
-
-    await _advanceTurn();
+    _select(1, player.weapon, _selectedEnemyIndex + 1);
   }
 
   // ==========================================
-  // [2] 단일 마법 공격 (1..6)
+  // [2] 한 명의 적에게 마법 공격 (1..6)
   // ==========================================
   void _onSingleMagicMenu() {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
-
-    final singleSpells = LoreData.instance.spells
+    final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.singleAttack)
         .toList();
-    _showSpellDialog(_modeTitle(player), singleSpells, player, (spell) {
-      _executeSingleMagic(player, spell);
-    });
-  }
-
-  void _executeSingleMagic(PartyMember player, Spell spell) async {
-    setState(() => _isTurnProcessing = true);
-
-    final res = _engine.executePlayerSingleMagicAttack(
+    _showSpellDialog(
+      _modeTitle(player),
+      spells,
       player,
-      currentTarget,
-      spell.id,
-      party: widget.partyMembers,
+      (spell) => _select(2, spell.id, _selectedEnemyIndex + 1),
+      onCancel: _hesitate,
     );
-    widget.onLog(res.message);
-
-    _playAttackSound(res);
-    _reTargetIfDead();
-
-    await _advanceTurn();
   }
 
   // ==========================================
-  // [3] 모든 적 마법 공격 (7..12)
+  // [3] 모든 적에게 마법 공격 (7..12)
   // ==========================================
   void _onAllMagicMenu() {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
-
-    final allSpells = LoreData.instance.spells
+    final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.allAttack)
         .toList();
-    _showSpellDialog(_modeTitle(player), allSpells, player, (spell) {
-      _executeAllMagic(player, spell);
-    });
-  }
-
-  void _executeAllMagic(PartyMember player, Spell spell) async {
-    setState(() => _isTurnProcessing = true);
-
-    final results = _engine.executePlayerAllMagicAttack(
+    _showSpellDialog(
+      _modeTitle(player),
+      spells,
       player,
-      widget.enemies,
-      spell.id,
-      party: widget.partyMembers,
+      (spell) => _select(3, spell.id - 6, 0),
+      onCancel: _hesitate,
     );
-
-    for (final res in results) {
-      widget.onLog(res.message);
-      _playAttackSound(res);
-      await Future.delayed(const Duration(milliseconds: 150));
-    }
-    _reTargetIfDead();
-
-    await _advanceTurn();
   }
 
   // ==========================================
-  // [4] 적 특수 마법 공격 (13..18)
+  // [4] 적에게 특수 마법 공격 (13..18)
   // ==========================================
   void _onSpecialMagicMenu() {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
-
-    final specialSpells = LoreData.instance.spells
+    final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.specialDebuff)
         .toList();
-    _showSpellDialog(_modeTitle(player), specialSpells, player, (spell) {
-      _executeSpecialMagic(player, spell);
-    });
+    _showSpellDialog(
+      _modeTitle(player),
+      spells,
+      player,
+      (spell) => _select(4, spell.id - 12, _selectedEnemyIndex + 1),
+      onCancel: _hesitate,
+    );
   }
 
-  void _executeSpecialMagic(PartyMember player, Spell spell) async {
-    // 원작 LOREBATT.PAS:245 CastSpecial -
-    // Red Antares에게 "간접 공격"을 배우기 전에는 특수 마법을 쓸 수 없다.
-    setState(() => _isTurnProcessing = true);
-    if (!LoreDialogueManager.instance.specialMagicLearned) {
-      // The how = 4 ReturnMessage is printed first; CastSpecial then refuses
-      // and the turn is spent.
-      widget.onLog(
-        LoreSubText.returnMessage(
-          actor: player.name,
-          how: 4,
-          what: spell.id - 12,
-          target: currentTarget.name,
-        ),
-      );
-      widget.onLog(LoreBattText.noAbility);
-      await _advanceTurn();
-      return;
-    }
-
-    // LORESUB.PAS ReturnMessage how = 4 is printed before CastSpecial runs.
-    widget.onLog(
-      LoreSubText.returnMessage(
-        actor: player.name,
-        how: 4,
-        what: spell.id - 12,
-        target: currentTarget.name,
-      ),
-    );
-    final res = _engine.executePlayerSpecialDebuff(
-      player,
-      currentTarget,
-      spell.id,
-    );
-    widget.onLog(res.message);
-
-    if (res.outcome == AttackOutcome.debuffed) {
-      AudioManager.instance.playHit();
-    }
-
-    await _advanceTurn();
+  /// 메뉴에서 `없음`/취소: `battle[person,1] := 0` (`주저했다`).
+  void _hesitate() {
+    if (_battleEnded) return;
+    _select(0, 0, 0);
   }
 
   // ==========================================
-  // [5] 일행 치료 (19..32)
+  // [5] 일행을 치료 (19..32) — 원본은 선택하는 즉시 적용한다 (`5 : CureSpell`)
   // ==========================================
   void _onCureMenu() {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
 
-    // 아군 대상 선택 다이얼로그
-    showDialog(
+    showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: RetroTheme.black,
@@ -416,7 +335,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ...widget.partyMembers.map((m) {
+            ...widget.partyMembers.where((m) => m.name.isNotEmpty).map((m) {
               return ListTile(
                 dense: true,
                 title: Text(
@@ -432,14 +351,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                 },
               );
             }),
-            const Divider(color: RetroTheme.lightGray),
             ListTile(
               dense: true,
-              leading: const Icon(
-                Icons.group,
-                color: RetroTheme.yellow,
-                size: 20,
-              ),
               title: Text(
                 '모든 사람들에게',
                 style: RetroTheme.dosFont.copyWith(
@@ -455,161 +368,91 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           ],
         ),
       ),
-    );
+    ).then((_) {
+      // `whom = 0 → exit`: 취소해도 그 사람의 차례는 지나간다.
+      if (!_cureDecided) _commitCure();
+      _cureDecided = false;
+    });
+  }
+
+  /// 치료 흐름이 이미 결정(적용 또는 거절)되었는지.
+  bool _cureDecided = false;
+
+  void _commitCure() {
+    if (_battleEnded) return;
+    _select(5, 0, 0);
   }
 
   void _showSingleCureSpells(PartyMember caster, PartyMember target) {
-    final singleCure = LoreData.instance.spells
+    _cureDecided = true;
+    final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.singleCure)
         .toList();
-    _showSpellDialog('선택', singleCure, caster, (spell) {
-      _executeCure(caster, target, spell);
-    });
+    _showSpellDialog('선택', spells, caster, (spell) {
+      FieldMagicLogic.castPersonalCure(
+        caster,
+        target,
+        spell.id - 18,
+        inBattle: true,
+      ).messages.forEach(widget.onLog);
+      _commitCure();
+    }, onCancel: _commitCure);
   }
 
   void _showAllCureSpells(PartyMember caster) {
-    final allCure = LoreData.instance.spells
+    _cureDecided = true;
+    if (FieldMagicLogic.groupCureSlots(caster.magicLevel) < 0) {
+      widget.onLog(FieldMagicLogic.strongCureNotReady(caster.name));
+      _commitCure();
+      return;
+    }
+    final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.allCure)
         .toList();
-    _showSpellDialog('선택', allCure, caster, (spell) {
-      _executeCureAll(caster, spell);
-    });
-  }
-
-  void _executeCure(PartyMember caster, PartyMember target, Spell spell) async {
-    setState(() => _isTurnProcessing = true);
-
-    final res = _engine.executePlayerCure(caster, target, spell.id);
-    widget.onLog(res.message);
-
-    await _advanceTurn();
-  }
-
-  void _executeCureAll(PartyMember caster, Spell spell) async {
-    setState(() => _isTurnProcessing = true);
-
-    for (final member in widget.partyMembers) {
-      final res = _engine.executePlayerCure(caster, member, spell.id);
-      widget.onLog(res.message);
-    }
-
-    await _advanceTurn();
+    _showSpellDialog('선택', spells, caster, (spell) {
+      FieldMagicLogic.castGroupCure(
+        caster,
+        widget.partyMembers,
+        spell.id - 25,
+        inBattle: true,
+      ).messages.forEach(widget.onLog);
+      _commitCure();
+    }, onCancel: _commitCure);
   }
 
   // ==========================================
-  // [6] 초능력 사용 (ESP: 43 독심술, 45 염력)
+  // [6] 적에게 초능력 사용 (41..45)
   // ==========================================
   void _onEspMenu() {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
-
-    final battleEsp = LoreData.instance.spells
-        .where((s) => s.id == 43 || s.id == 45)
+    final spells = LoreData.instance.spells
+        .where((s) => s.category == SpellCategory.esp)
         .toList();
-    _showSpellDialog(_modeTitle(player), battleEsp, player, (spell) {
-      _executeEsp(player, spell);
-    });
-  }
-
-  void _executeEsp(PartyMember player, Spell spell) async {
-    setState(() => _isTurnProcessing = true);
-
-    final target = currentTarget;
-    // LORESUB.PAS ReturnMessage how = 6 is printed before BattleESP runs.
-    widget.onLog(
-      LoreSubText.returnMessage(
-        actor: player.name,
-        how: 6,
-        what: spell.id - 40,
-        target: target.name,
-      ),
-    );
-    final res = _engine.executePlayerESP(
-      player,
-      target,
-      spell.id,
-      widget.partyMembers,
-      enemies: widget.enemies,
-      espAccessGranted: widget.espAccessGranted,
-    );
-    widget.onLog(res.message);
-    if (res.outcome == AttackOutcome.joined) {
-      widget.onTelepathyJoin(target.eNumber);
-    }
-
-    _playAttackSound(res);
-    _reTargetIfDead();
-
-    await _advanceTurn();
+    _showSpellDialog(_modeTitle(player), spells, player, (spell) {
+      final target = currentTarget;
+      if (target.isUnconscious || target.isDead) {
+        // `if enemy[j].unconscious or enemy[j].dead then battle[person,1] := 0`
+        _hesitate();
+        return;
+      }
+      _select(6, spell.id - 40, _selectedEnemyIndex + 1);
+    }, onCancel: _hesitate);
   }
 
   // ==========================================
-  // [7] 자동 전투 / 도망
+  // [7] 도주를 시도 / 리더는 무조건 공격을 지시
   // ==========================================
   void _onAutoBattleOrRun() {
     if (_isTurnProcessing || _battleEnded) return;
-
     if (isLeaderActive) {
-      // 파티 리더: 자동 전투 토글
-      setState(() {
-        _isAutoBattle = !_isAutoBattle;
-      });
-      if (_isAutoBattle) {
-        // 원작 LOREBATT.PAS:1228 - `{이름}의 전투 모드 ===>` / `일행에게 무조건
-        // 공격 할 것을 지시`
-        widget.onLog(
-          '${widget.partyMembers.first.name}'
-          '${LoreBattText.battleMode}'
-          '${LoreBattText.menuCommandAll}',
-        );
-        _executeAutoAction();
-      }
+      // `k = 7, person = 1` → `k := 8; autobattle := TRUE`
+      _autoRound = true;
+      _battle.autoSelect(1);
+      unawaited(_afterSelection());
     } else {
-      // 일반 파티원: 도망 시도
-      _attemptRunAway();
-    }
-  }
-
-  void _attemptRunAway() async {
-    final player = activePlayer ?? widget.partyMembers.first;
-    setState(() => _isTurnProcessing = true);
-
-    // LORESUB.PAS ReturnMessage how = 7 is printed before RunAway.
-    widget.onLog(LoreSubText.returnMessage(actor: player.name, how: 7));
-    final success = _engine.checkRunAway(player);
-    await Future.delayed(const Duration(milliseconds: 250));
-
-    if (success) {
-      widget.onLog(LoreBattText.runSuccess);
-      widget.onRunAway();
-    } else {
-      widget.onLog(LoreBattText.runFailed);
-      await _advanceTurn();
-    }
-  }
-
-  /// 원작 LOREBATT.PAS 1037-1066행 기반 자동 전투 액션
-  void _executeAutoAction() async {
-    if (!_isAutoBattle || _battleEnded) return;
-    final player = activePlayer;
-    if (player == null) return;
-
-    _reTargetIfDead();
-
-    // 직업별 자동 행동:
-    // 전사 계열: 무기 공격
-    // 마법사 계열(SP 충분 시): 단일 마법 공격
-    // 초능력자(ESP 충분 시): 염력 공격
-    if ((player.playerClass == PlayerClass.mage ||
-            player.playerClass == PlayerClass.ghost) &&
-        player.sp >= 4) {
-      int spellId = min(6, max(1, player.magicLevel ~/ 2));
-      _executeSingleMagic(player, LoreData.instance.spell(spellId));
-    } else if (player.playerClass == PlayerClass.esper && player.esp >= 20) {
-      _executeEsp(player, LoreData.instance.spell(45)); // 염력
-    } else {
-      _onWeaponAttack();
+      _select(7, 0, 0);
     }
   }
 
@@ -624,9 +467,11 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     String title,
     List<Spell> spells,
     PartyMember player,
-    void Function(Spell spell) onSelected,
-  ) {
-    showDialog(
+    void Function(Spell spell) onSelected, {
+    VoidCallback? onCancel,
+  }) {
+    var chosen = false;
+    showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: RetroTheme.black,
@@ -643,38 +488,23 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           child: ListView(
             shrinkWrap: true,
             children: spells.map((sp) {
-              final cost = sp.calculateSpCost(
-                sp.category == SpellCategory.esp
-                    ? player.espLevel
-                    : player.magicLevel,
-              );
-              final isAvailable = sp.isAvailableForLevel(
-                player.magicLevel,
-                player.espLevel,
-              );
-              final executionIsFree = switch (sp.category) {
-                SpellCategory.singleAttack => currentTarget.isUnconscious,
-                SpellCategory.allAttack => widget.enemies.every(
-                  (enemy) => enemy.isDead || enemy.isUnconscious,
-                ),
-                _ => false,
-              };
-              final canAfford = sp.category == SpellCategory.esp
-                  ? player.esp >= cost
-                  : executionIsFree || player.sp >= cost;
-              final canCast = isAvailable && canAfford;
-
+              // `Select` 는 레벨로 정해진 개수만 보여 준다. 초능력은 다섯 개 모두
+              // 보이고 쓸 수 없는 것은 실행할 때 문구가 나온다.
+              final isAvailable = sp.category == SpellCategory.esp
+                  ? true
+                  : sp.isAvailableForLevel(player.magicLevel, player.espLevel);
               return ListTile(
                 dense: true,
                 title: Text(
                   sp.name,
                   style: RetroTheme.dosFont.copyWith(
-                    color: canCast ? RetroTheme.white : RetroTheme.darkGray,
+                    color: isAvailable ? RetroTheme.white : RetroTheme.darkGray,
                     fontSize: 11,
                   ),
                 ),
-                onTap: canCast
+                onTap: isAvailable
                     ? () {
+                        chosen = true;
                         Navigator.of(ctx).pop();
                         onSelected(sp);
                       }
@@ -684,25 +514,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           ),
         ),
       ),
-    );
-  }
-
-  void _playAttackSound(AttackResult res) {
-    if (res.outcome == AttackOutcome.hit) {
-      AudioManager.instance.playHit();
-    } else if (res.outcome == AttackOutcome.killed) {
-      AudioManager.instance.playHit();
-      Future.delayed(
-        const Duration(milliseconds: 150),
-        () => AudioManager.instance.playScream2(),
-      );
-    } else if (res.outcome == AttackOutcome.unconscious) {
-      AudioManager.instance.playHit();
-      Future.delayed(
-        const Duration(milliseconds: 150),
-        () => AudioManager.instance.playScream1(),
-      );
-    }
+    ).then((_) {
+      if (!chosen && mounted) onCancel?.call();
+    });
   }
 
   void _reTargetIfDead() {
@@ -722,13 +536,18 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     }
   }
 
+  /// `DisplayEnemies`: HP 구간별 색, 의식불명은 8, 죽으면 0(보이지 않음).
   Color _getEnemyHpColor(Monster e) {
-    if (e.isDead) return RetroTheme.darkGray;
-    if (e.isUnconscious) return RetroTheme.yellow;
-    final ratio = e.hp / (e.maxHp <= 0 ? 1 : e.maxHp);
-    if (ratio <= 0.25) return RetroTheme.lightRed;
-    if (ratio <= 0.6) return RetroTheme.yellow;
-    return RetroTheme.lightGreen;
+    if (e.isDead) return RetroTheme.viewportBg;
+    if (e.isUnconscious) return RetroTheme.darkGray;
+    final hp = e.hp;
+    if (hp <= 0) return RetroTheme.darkGray; // 8
+    if (hp <= 19) return RetroTheme.lightRed; // 12
+    if (hp <= 49) return RetroTheme.red; // 4
+    if (hp <= 99) return RetroTheme.brown; // 6
+    if (hp <= 199) return RetroTheme.yellow; // 14
+    if (hp <= 299) return RetroTheme.green; // 2
+    return RetroTheme.lightGreen; // 10
   }
 
   @override
@@ -768,9 +587,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       child: Column(
         children: [
           // 자동 전투 실행 중 안내 배너
-          if (_isAutoBattle)
+          if (_autoRound)
             InkWell(
-              onTap: () => setState(() => _isAutoBattle = false),
               child: Container(
                 width: double.infinity,
                 color: RetroTheme.lightRed,
@@ -787,192 +605,59 @@ class _BattleViewportViewState extends State<BattleViewportView> {
               ),
             ),
 
-          // 1. 전투 장면 (몬스터 목록 및 타겟 상세 박스)
+          // 1. 전투 장면: `DisplayEnemies` — 이름만, HP 구간별 색 (죽으면 지워진다)
           Expanded(
             flex: 60,
             child: Container(
               color: RetroTheme.viewportBg,
               padding: const EdgeInsets.all(6.0),
-              child: Row(
-                children: [
-                  // 왼쪽: 몬스터 목록
-                  Expanded(
-                    flex: 6,
-                    child: ListView.builder(
-                      itemCount: widget.enemies.length,
-                      itemBuilder: (context, idx) {
-                        final enemy = widget.enemies[idx];
-                        final isSelected = idx == _selectedEnemyIndex;
-                        final hpColor = _getEnemyHpColor(enemy);
-
-                        return GestureDetector(
-                          onTap: () {
-                            if (!enemy.isDead) {
-                              setState(() => _selectedEnemyIndex = idx);
-                            }
-                          },
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(vertical: 2),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 6,
-                              vertical: 3,
-                            ),
-                            decoration: BoxDecoration(
-                              color: isSelected
-                                  ? RetroTheme.blue.withValues(alpha: 0.6)
-                                  : Colors.transparent,
-                              border: Border.all(
-                                color: isSelected
-                                    ? RetroTheme.yellow
-                                    : Colors.transparent,
-                                width: 1,
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '${isSelected ? '▶ ' : '   '}${enemy.name} Lv.${enemy.level}',
-                                  style: RetroTheme.dosFont.copyWith(
-                                    color: enemy.isDead
-                                        ? RetroTheme.darkGray
-                                        : (isSelected
-                                              ? RetroTheme.yellow
-                                              : RetroTheme.white),
-                                    fontSize: 11,
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    if (enemy.isPoisoned)
-                                      Text(
-                                        '${LoreMenuText.quickViewHeader.trim().split(' ').first} ',
-                                        style: RetroTheme.dosFont.copyWith(
-                                          color: RetroTheme.green,
-                                          fontSize: 10,
-                                        ),
-                                      ),
-                                    Text(
-                                      enemy.isDead
-                                          ? LoreMenuText.quickViewHeader
-                                                .trim()
-                                                .split(' ')
-                                                .last
-                                          : (enemy.isUnconscious
-                                                ? LoreMenuText.quickViewHeader
-                                                      .trim()
-                                                      .split(' ')[1]
-                                                : '${enemy.hp}/${enemy.maxHp}'),
-                                      style: RetroTheme.dosFont.copyWith(
-                                        color: hpColor,
-                                        fontSize: 11,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-
-                  // 오른쪽: 타겟 몬스터 상세
-                  Expanded(
-                    flex: 4,
+              child: ListView.builder(
+                itemCount: widget.enemies.length,
+                itemBuilder: (context, idx) {
+                  final enemy = widget.enemies[idx];
+                  final isSelected = idx == _selectedEnemyIndex;
+                  return GestureDetector(
+                    key: ValueKey('enemy-$idx'),
+                    onTap: () {
+                      if (!enemy.isDead) {
+                        setState(() => _selectedEnemyIndex = idx);
+                      }
+                    },
                     child: Container(
-                      margin: const EdgeInsets.only(left: 4),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: RetroTheme.borderColor,
-                          width: 1,
-                        ),
-                        color: RetroTheme.black,
+                      margin: const EdgeInsets.symmetric(vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 3,
                       ),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.pest_control_outlined,
-                              size: 40,
-                              color: currentTarget.isDead
-                                  ? RetroTheme.darkGray
-                                  : (currentTarget.isUnconscious
-                                        ? RetroTheme.yellow
-                                        : RetroTheme.lightRed),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              currentTarget.name,
-                              style: RetroTheme.headerFont.copyWith(
-                                fontSize: 13,
-                              ),
-                            ),
-                            Text(
-                              currentTarget.isDead
-                                  ? LoreMenuText.quickViewHeader
-                                        .trim()
-                                        .split(' ')
-                                        .last
-                                  : (currentTarget.isUnconscious
-                                        ? LoreMenuText.quickViewHeader
-                                              .trim()
-                                              .split(' ')[1]
-                                        : '${currentTarget.hp}/${currentTarget.maxHp}'),
-                              style: RetroTheme.dosFont.copyWith(
-                                color: _getEnemyHpColor(currentTarget),
-                                fontSize: 10,
-                              ),
-                            ),
-                            if (currentTarget.isPoisoned)
-                              Text(
-                                LoreMenuText.quickViewHeader
-                                    .trim()
-                                    .split(' ')
-                                    .first,
-                                style: RetroTheme.dosFont.copyWith(
-                                  color: RetroTheme.green,
-                                  fontSize: 9,
-                                ),
-                              ),
-                          ],
+                      color: isSelected && !enemy.isDead
+                          ? RetroTheme.lightGray
+                          : Colors.transparent,
+                      child: Text(
+                        enemy.name,
+                        style: RetroTheme.dosFont.copyWith(
+                          color: _getEnemyHpColor(enemy),
+                          fontSize: 12,
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
           ),
 
-          // 2. 현재 행동 파티원 상태 배너
+          // 2. 명령을 고르는 파티원: `m[0] := name + '의 전투 모드 ===>'`
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             color: RetroTheme.panelBg,
-            child: Wrap(
-              alignment: WrapAlignment.spaceBetween,
-              spacing: 8,
-              runSpacing: 2,
-              children: [
-                Text(
-                  player != null ? _modeTitle(player) : '',
-                  style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.yellow,
-                    fontSize: 11,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                if (player != null)
-                  Text(
-                    '${player.hp}/${player.maxHp}  ${player.sp}/${player.maxSp}  ${player.esp}/${player.maxEsp}',
-                    style: RetroTheme.dosFont.copyWith(
-                      color: RetroTheme.lightCyan,
-                      fontSize: 10,
-                    ),
-                  ),
-              ],
+            width: double.infinity,
+            child: Text(
+              player != null ? _modeTitle(player) : '',
+              style: RetroTheme.dosFont.copyWith(
+                color: RetroTheme.yellow,
+                fontSize: 11,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
 
@@ -1031,7 +716,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                   isLeaderActive
                       ? LoreBattText.menuCommandAll
                       : LoreBattText.menuRun,
-                  _isAutoBattle ? RetroTheme.lightRed : RetroTheme.white,
+                  _autoRound ? RetroTheme.lightRed : RetroTheme.white,
                   _onAutoBattleOrRun,
                 ),
               ],

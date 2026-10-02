@@ -147,7 +147,7 @@ class LoreSubText {
         return '$name는 ${weaponLabel(what ?? 0)}${weaponJosa(what ?? 0)}로 $target를 공격했다';
       case 2:
       case 3:
-        return "$name는 '${magicName((what ?? 0) + (how == 3 ? 6 : 0))}'${magicJosa(what ?? 0)}로 $target에게 공격했다";
+        return "$name는 '${magicName((what ?? 0) + (how == 3 ? 6 : 0))}'${magicJosa((what ?? 0) + (how == 3 ? 6 : 0))}로 $target에게 공격했다";
       case 4:
         return '$name는 $target에게 ${magicName((what ?? 0) + 12)}${magicJosa((what ?? 0) + 12)}로 특수 공격을 했다';
       case 5:

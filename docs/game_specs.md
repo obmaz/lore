@@ -444,7 +444,7 @@ $$\text{Gold} = \sum_{\text{enemy slot}} \left( \text{enemydata}[E\_number].\tex
 
 본 명세서에 정의된 데이터 모델과 수학적 수식은 도스/Crt 종속성 없이 100% 순수 Dart 코드로 분리 구현 가능합니다:
 - `lib/models/`: `party_member.dart`, `monster.dart`, `item.dart`, `party.dart`
-- `lib/logic/`: `battle_engine.dart` (본 명세서의 수식을 단위 테스트로 100% 검증 가능)
+- `lib/logic/`: `lore_battle.dart` (LOREBATT.PAS 직접 이식)
 - `lib/screens/`: 4:3 레트로 도스 레이아웃 (뷰포트, 파티창, 3~4줄 콘솔 텍스트 로그)
 - `lib/game/`: Flame 기반 또는 그리드 타일맵 이동 컴포넌트
 
@@ -458,7 +458,7 @@ $$\text{Gold} = \sum_{\text{enemy slot}} \left( \text{enemydata}[E\_number].\tex
 | `LORESUB.PAS` 데이터 구조/무기점/식료품점/훈련소/병원/휴식 | `lib/logic/town_logic.dart`, `lib/widgets/town_*.dart` | `step5_train_rest_guide_test.dart` |
 | `LORESUB.PAS:986/999/1012` 성문 확인·금화 발견·공통 메시지 | `lib/logic/lore_field_logic.dart` | `step6_field_prompts_test.dart` |
 | `LORESUB.PAS:1042/1144` 동료 영입(join) 및 슬롯 선택 | `lib/logic/lore_join.dart` | `step3/step6` |
-| `LOREBATT.PAS` 전투 전 공식 + 특수 마법 해금 게이트 | `lib/logic/battle_engine.dart`, `battle_viewport_view.dart` | `battle_test.dart` |
+| `LOREBATT.PAS` 전투 전 공식 + 특수 마법 해금 게이트 | `lib/logic/lore_battle.dart`, `battle_viewport_view.dart` | `lore_battle_test.dart` |
 | `LOREMENU.PAS` 필드 메뉴/휴식/게임 옵션 + 핫키 | `lib/widgets/field_menu_dialog.dart`, `lib/logic/field_hotkeys.dart` | `keyboard_input_test.dart` |
 | `LOREMAIN.PAS` 이동/지형 위험(늪·용암·물) | `lib/game/lore_game.dart` | `field_test.dart`, `step1_...` |
 | `LORESPEC.PAS` 보스/봉인/식량나무/금화 좌표/동료 6명 | `lib/game/lore_dungeon_event_manager.dart`, `lore_dialogue_manager.dart` | `step3/step6` |

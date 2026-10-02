@@ -113,17 +113,25 @@ class FieldMagicLogic {
   // 개인 치료 마법 (원작 HealOne / CureOne / ConsciousOne / RevitalizeOne)
   // ------------------------------------------------------------------
 
+  /// 전투 중(`party.etc[6] <> 0`)에는 거절 문구를 출력하지 않는다.
+  static MagicCastResult _refusal(String message, bool inBattle) =>
+      MagicCastResult(messages: inBattle ? const [] : [message]);
+
   /// 원작 `HealOne(whom)`.
-  static MagicCastResult healOne(PartyMember caster, PartyMember target) {
+  static MagicCastResult healOne(
+    PartyMember caster,
+    PartyMember target, {
+    bool inBattle = false,
+  }) {
     if (target.dead > 0 || target.unconscious > 0 || target.poison > 0) {
-      return MagicCastResult(messages: ['${target.name}는 치료될 상태가 아닙니다.']);
+      return _refusal('${target.name}는 치료될 상태가 아닙니다.', inBattle);
     }
     if (target.hp >= target.endurance * target.battleLevel) {
-      return MagicCastResult(messages: ['${target.name}는 치료할 필요가 없습니다.']);
+      return _refusal('${target.name}는 치료할 필요가 없습니다.', inBattle);
     }
     final cost = healSpCost(caster.magicLevel);
     if (caster.sp < cost) {
-      return const MagicCastResult(messages: [spNotEnoughMessage]);
+      return _refusal(spNotEnoughMessage, inBattle);
     }
     caster.sp -= cost;
     target.hp += healAmount(caster.magicLevel);
@@ -137,15 +145,19 @@ class FieldMagicLogic {
   }
 
   /// 원작 `CureOne(whom)`.
-  static MagicCastResult cureOne(PartyMember caster, PartyMember target) {
+  static MagicCastResult cureOne(
+    PartyMember caster,
+    PartyMember target, {
+    bool inBattle = false,
+  }) {
     if (target.dead > 0 || target.unconscious > 0) {
-      return MagicCastResult(messages: ['${target.name}는 독이 치료될 상태가 아닙니다.']);
+      return _refusal('${target.name}는 독이 치료될 상태가 아닙니다.', inBattle);
     }
     if (target.poison == 0) {
-      return MagicCastResult(messages: ['${target.name}는 독에 걸리지 않았습니다.']);
+      return _refusal('${target.name}는 독에 걸리지 않았습니다.', inBattle);
     }
     if (caster.sp < cureSpCost) {
-      return const MagicCastResult(messages: [spNotEnoughMessage]);
+      return _refusal(spNotEnoughMessage, inBattle);
     }
     caster.sp -= cureSpCost;
     target.poison = 0;
@@ -157,16 +169,20 @@ class FieldMagicLogic {
   }
 
   /// 원작 `ConsciousOne(whom)`.
-  static MagicCastResult consciousOne(PartyMember caster, PartyMember target) {
+  static MagicCastResult consciousOne(
+    PartyMember caster,
+    PartyMember target, {
+    bool inBattle = false,
+  }) {
     if (target.dead > 0) {
-      return MagicCastResult(messages: ['${target.name}는 의식이 돌아올 상태가 아닙니다.']);
+      return _refusal('${target.name}는 의식이 돌아올 상태가 아닙니다.', inBattle);
     }
     if (target.unconscious == 0) {
-      return MagicCastResult(messages: ['${target.name}는 의식불명이 아닙니다.']);
+      return _refusal('${target.name}는 의식불명이 아닙니다.', inBattle);
     }
     final cost = consciousSpCost(target.unconscious);
     if (caster.sp < cost) {
-      return const MagicCastResult(messages: [spNotEnoughMessage]);
+      return _refusal(spNotEnoughMessage, inBattle);
     }
     caster.sp -= cost;
     target.unconscious = 0;
@@ -179,13 +195,17 @@ class FieldMagicLogic {
   }
 
   /// 원작 `RevitalizeOne(whom)`.
-  static MagicCastResult revitalizeOne(PartyMember caster, PartyMember target) {
+  static MagicCastResult revitalizeOne(
+    PartyMember caster,
+    PartyMember target, {
+    bool inBattle = false,
+  }) {
     if (target.dead == 0) {
-      return MagicCastResult(messages: ['${target.name}는 아직 살아 있습니다.']);
+      return _refusal('${target.name}는 아직 살아 있습니다.', inBattle);
     }
     final cost = revitalizeSpCost(target.dead);
     if (caster.sp < cost) {
-      return const MagicCastResult(messages: [spNotEnoughMessage]);
+      return _refusal(spNotEnoughMessage, inBattle);
     }
     caster.sp -= cost;
     target.dead = 0;
@@ -203,31 +223,35 @@ class FieldMagicLogic {
   static MagicCastResult castPersonalCure(
     PartyMember caster,
     PartyMember target,
-    int index,
-  ) {
+    int index, {
+    bool inBattle = false,
+  }) {
     switch (index) {
       case 1:
-        return healOne(caster, target);
+        return healOne(caster, target, inBattle: inBattle);
       case 2:
-        return cureOne(caster, target);
+        return cureOne(caster, target, inBattle: inBattle);
       case 3:
-        return _merge([cureOne(caster, target), healOne(caster, target)]);
+        return _merge([
+          cureOne(caster, target, inBattle: inBattle),
+          healOne(caster, target, inBattle: inBattle),
+        ]);
       case 4:
-        return consciousOne(caster, target);
+        return consciousOne(caster, target, inBattle: inBattle);
       case 5:
-        return revitalizeOne(caster, target);
+        return revitalizeOne(caster, target, inBattle: inBattle);
       case 6:
         return _merge([
-          consciousOne(caster, target),
-          cureOne(caster, target),
-          healOne(caster, target),
+          consciousOne(caster, target, inBattle: inBattle),
+          cureOne(caster, target, inBattle: inBattle),
+          healOne(caster, target, inBattle: inBattle),
         ]);
       case 7:
         return _merge([
-          revitalizeOne(caster, target),
-          consciousOne(caster, target),
-          cureOne(caster, target),
-          healOne(caster, target),
+          revitalizeOne(caster, target, inBattle: inBattle),
+          consciousOne(caster, target, inBattle: inBattle),
+          cureOne(caster, target, inBattle: inBattle),
+          healOne(caster, target, inBattle: inBattle),
         ]);
       default:
         return const MagicCastResult();
@@ -240,24 +264,30 @@ class FieldMagicLogic {
   static MagicCastResult castGroupCure(
     PartyMember caster,
     List<PartyMember> party,
-    int index,
-  ) {
+    int index, {
+    bool inBattle = false,
+  }) {
     final members = party.where((p) => p.name.isNotEmpty).toList();
     switch (index) {
       case 1:
-        return _mergeAll(caster, members, 'heal');
+        return _mergeAll(caster, members, inBattle, 'heal');
       case 2:
-        return _mergeAll(caster, members, 'cure');
+        return _mergeAll(caster, members, inBattle, 'cure');
       case 3:
-        return _mergeAll(caster, members, 'cureHeal');
+        return _mergeAll(caster, members, inBattle, 'cureHeal');
       case 4:
-        return _mergeAll(caster, members, 'conscious');
+        return _mergeAll(caster, members, inBattle, 'conscious');
       case 5:
-        return _mergeAll(caster, members, 'revitalize');
+        return _mergeAll(caster, members, inBattle, 'revitalize');
       case 6:
-        return _mergeAll(caster, members, 'consciousCureHeal');
+        return _mergeAll(caster, members, inBattle, 'consciousCureHeal');
       case 7:
-        return _mergeAll(caster, members, 'revitalizeConsciousCureHeal');
+        return _mergeAll(
+          caster,
+          members,
+          inBattle,
+          'revitalizeConsciousCureHeal',
+        );
       default:
         return const MagicCastResult();
     }
@@ -266,37 +296,38 @@ class FieldMagicLogic {
   static MagicCastResult _mergeAll(
     PartyMember caster,
     List<PartyMember> members,
+    bool inBattle,
     String kind,
   ) {
     final results = <MagicCastResult>[];
     for (final m in members) {
       switch (kind) {
         case 'heal':
-          results.add(healOne(caster, m));
+          results.add(healOne(caster, m, inBattle: inBattle));
           break;
         case 'cure':
-          results.add(cureOne(caster, m));
+          results.add(cureOne(caster, m, inBattle: inBattle));
           break;
         case 'cureHeal':
-          results.add(cureOne(caster, m));
-          results.add(healOne(caster, m));
+          results.add(cureOne(caster, m, inBattle: inBattle));
+          results.add(healOne(caster, m, inBattle: inBattle));
           break;
         case 'conscious':
-          results.add(consciousOne(caster, m));
+          results.add(consciousOne(caster, m, inBattle: inBattle));
           break;
         case 'revitalize':
-          results.add(revitalizeOne(caster, m));
+          results.add(revitalizeOne(caster, m, inBattle: inBattle));
           break;
         case 'consciousCureHeal':
-          results.add(consciousOne(caster, m));
-          results.add(cureOne(caster, m));
-          results.add(healOne(caster, m));
+          results.add(consciousOne(caster, m, inBattle: inBattle));
+          results.add(cureOne(caster, m, inBattle: inBattle));
+          results.add(healOne(caster, m, inBattle: inBattle));
           break;
         case 'revitalizeConsciousCureHeal':
-          results.add(revitalizeOne(caster, m));
-          results.add(consciousOne(caster, m));
-          results.add(cureOne(caster, m));
-          results.add(healOne(caster, m));
+          results.add(revitalizeOne(caster, m, inBattle: inBattle));
+          results.add(consciousOne(caster, m, inBattle: inBattle));
+          results.add(cureOne(caster, m, inBattle: inBattle));
+          results.add(healOne(caster, m, inBattle: inBattle));
           break;
       }
     }

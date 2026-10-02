@@ -71,6 +71,10 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.byType(ListTile).first);
       await tester.pumpAndSettle();
+      // 모두가 고른 뒤에 번호 순서로 실행된다.
+      expect(logs, isEmpty);
+      await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
+      await tester.pump(const Duration(milliseconds: 1200));
       expect(
         logs.first,
         LoreSubText.returnMessage(
@@ -81,11 +85,6 @@ void main() {
         ),
       );
       expect(logs[1], LoreBattText.noAbility);
-      // The turn was spent: the next party member is active.
-      expect(
-        find.text('${other.name}${LoreBattText.battleMode}'),
-        findsOneWidget,
-      );
     },
   );
 }

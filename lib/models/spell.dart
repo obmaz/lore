@@ -141,18 +141,20 @@ class Spell {
         return magicLevel >= req;
       case SpellCategory.allAttack:
         // 0..1: 1, 2: 2, 3..5: 3, 6..9: 4, 10..13: 5, 14..17: 6, else 7
-        final req = [0, 0, 2, 3, 6, 10, 14][id - 6];
+        // LOREBATT.PAS BattleMode `case 3`: n번째 마법은 레벨 2, 3, 6, 10, 14, 18부터.
+        final req = [0, 2, 3, 6, 10, 14, 18][id - 6];
         return magicLevel >= req;
       case SpellCategory.specialDebuff:
         // 0..4: 1, 5..9: 2, 10..11: 3, 12..13: 4, 14..15: 5, 16..17: 6, else 7
-        final req = [0, 0, 5, 10, 12, 14, 16][id - 12];
+        // BattleMode `case 4`: n번째 마법은 레벨 5, 10, 12, 14, 16, 18부터.
+        final req = [0, 5, 10, 12, 14, 16, 18][id - 12];
         return magicLevel >= req;
       case SpellCategory.singleCure:
         final req = (id - 18) * 2 - 2;
         return magicLevel >= req;
       case SpellCategory.allCure:
-        final req = (id - 25) * 2 + 4;
-        return magicLevel >= req;
+        // CureSpell: `level[2] div 2 - 3` 개 (n번째는 레벨 2n+6부터).
+        return id - 25 <= magicLevel ~/ 2 - 3;
       default:
         return true;
     }

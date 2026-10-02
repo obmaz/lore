@@ -18,7 +18,6 @@ import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_special_event_dispatcher.dart';
 import '../logic/lore_portal_session.dart';
 import '../logic/lore_battle_progress.dart';
-import '../logic/battle_engine.dart';
 import '../logic/lore_mirror_enemy.dart';
 import '../logic/lore_rigel_blessing.dart';
 import '../logic/script_battle_session.dart';
@@ -1708,7 +1707,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       case GameScreenMode.battle:
         return BattleViewportView(
           key: ValueKey(_battleSerial),
-          battleEngine: BattleEngine(random: _sessionRandom),
+          random: _sessionRandom,
           partyMembers: _party,
           enemies: _battleEnemies,
           enemyFirst: _battleEnemyFirst,

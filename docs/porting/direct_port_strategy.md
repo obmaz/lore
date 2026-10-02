@@ -391,9 +391,25 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     쓰는 형식(`Enemy data ========>>`, `Enemy Number     :  1` ...)을 그대로 보여 준다. 빠른
     시작(기본 파티)은 글자 없는 아이콘 버튼으로 남겼다(원본에 없는 개발 편의 기능).
 
-다음 묶음은 전투를 원본의 "먼저 모두 고르고 실행" 구조로 옮기는 일이다.
-이식한 사건의 DOS 실행 대조와 합류 슬롯 거절 시 위치(맵 12) 같은 남은 차이도 최종
-게이트에 남아 있다.
+35. 전투를 LOREBATT 구조로 옮겼다. 새 `lib/logic/lore_battle.dart`(`LoreBattle`)가
+    `PlusExperience`/`PlusGold`/`AttackOne`/`CastOne`/`CastAll`/`CastSpecial`/`BattleESP`/
+    `RunAway`와 적의 `WeaponAttack`/`castattack*`/`enemycure`/`specialattack`/`SpecialCastAttack`/
+    `EnemyAttack`/`EndBattle`/자동 선택(`k = 8`)을 문구·난수 호출 순서·`div`/`round` 그대로 옮긴
+    것이고, 예전 `BattleEngine`(만들어 낸 문구와 다른 판정)과 그 테스트는 삭제했다. 화면은 원본
+    `BattleMode`처럼 모든 파티원이 먼저 명령(`battle[person,1..3]`)을 고른 뒤 번호 순서로 실행하고,
+    적 단계(독 → `EnemyAttack`) 뒤에야 `EndBattle`을 판정한다(중간에 적이 모두 쓰러져도 남은
+    파티원 행동은 계속). 리더의 `일행에게 무조건 공격 할 것을 지시`는 그 라운드에만 적용되고,
+    메뉴를 취소하면 `주저했다`, 도주는 `ReturnMessage` 7번과 `RunAway` 문구이다. 치료는 선택하는
+    즉시 `FieldMagicLogic`(= `CureSpell`)로 적용하고 전투 중에는 거절 문구를 출력하지 않는다
+    (`party.etc[6] = 0` 조건). 적 목록은 이름만 HP 구간 색(`DisplayEnemies`)으로 보이고 숫자·
+    독 표시·파티원 HP 줄은 없앴다. 마법 개수 규칙도 원본(`Select` 개수)으로 고쳤다: 전체 마법은
+    레벨 2/3/6/10/14/18, 특수 마법은 5/10/12/14/16/18, 전체 치료는 `level div 2 - 3`개.
+    기록한 가정(컴파일러 동작 미확인): `random(0)`은 0이지만 호출 횟수는 유지, `round`는 .5에서
+    0에서 먼 쪽, 바이트 `dec(ac)`는 0에서 255로 돌아감, 소환 번호가 범위를 벗어나면 새 칸을
+    죽은 상태로 둠. 적 단계 메시지는 한꺼번에 나온다(원본은 키 대기 없이 이어 출력).
+
+다음 묶음은 LOREMENU 시전·초감각·옵션 화면의 선택 메뉴 흐름 정리와 이식 전체의 DOS 실행 대조이다.
+합류 슬롯 거절 시 위치(맵 12) 같은 남은 차이도 최종 게이트에 남아 있다.
 
 ## 최근 검증 (2026-10-02)
 

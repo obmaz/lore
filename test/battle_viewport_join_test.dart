@@ -3,11 +3,22 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/logic/lore_batt_text.dart';
-import 'package:lore/logic/battle_engine.dart';
 import 'package:lore/logic/lore_join.dart';
 import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
+
+/// Every `random(n)` returns n - 1 (always misses / always the last choice).
+class _MaxRandom implements Random {
+  @override
+  int nextInt(int max) => max - 1;
+
+  @override
+  bool nextBool() => true;
+
+  @override
+  double nextDouble() => 0.999;
+}
 
 class _ZeroRandom implements Random {
   @override
@@ -18,20 +29,6 @@ class _ZeroRandom implements Random {
 
   @override
   double nextDouble() => 0;
-}
-
-class _OpeningTurnEngine extends BattleEngine {
-  int monsterTurns = 0;
-
-  @override
-  List<AttackResult> executeMonsterTurn(
-    Monster monster,
-    List<PartyMember> party,
-    List<Monster> allEnemies,
-  ) {
-    monsterTurns++;
-    return const [AttackResult(outcome: AttackOutcome.miss, message: '적의 선공')];
-  }
 }
 
 void main() {
@@ -90,8 +87,9 @@ void main() {
     expect(victories, 1);
   });
 
-  testWidgets('적 선공 전투는 파티 입력 전에 적 턴을 실행한다', (tester) async {
-    final engine = _OpeningTurnEngine();
+  testWidgets('적 선공 전투는 파티 입력 전에 적 단계를 실행한다 (BattleMode(FALSE))', (
+    tester,
+  ) async {
     final logs = <String>[];
     Widget battle(int serial) => MaterialApp(
       home: Scaffold(
@@ -99,7 +97,7 @@ void main() {
           key: ValueKey(serial),
           partyMembers: [PartyMember.createPreset(1)],
           enemies: [Monster.create(1)],
-          battleEngine: engine,
+          random: _MaxRandom(),
           enemyFirst: true,
           espAccessGranted: false,
           onLog: logs.add,
@@ -113,12 +111,13 @@ void main() {
     await tester.pumpWidget(battle(1));
     await tester.pump(const Duration(milliseconds: 300));
     await tester.pump(const Duration(milliseconds: 200));
-    expect(engine.monsterTurns, 1);
-    expect(logs.first, '적의 선공');
+    // Orc 가 먼저 행동했다: `random(20) >= accuracy[1]` 이면 `빗맞추었다`.
+    expect(logs.first, endsWith(LoreBattText.partyMissed));
+    final first = logs.length;
     await tester.pumpWidget(battle(2));
     await tester.pump(const Duration(milliseconds: 300));
     await tester.pump(const Duration(milliseconds: 200));
-    expect(engine.monsterTurns, 2); // 연속 전투도 첫 턴을 다시 실행한다.
+    expect(logs.length, greaterThan(first)); // 연속 전투도 첫 단계를 다시 실행한다.
     expect(tester.takeException(), isNull);
   });
 
@@ -134,7 +133,7 @@ void main() {
           body: BattleViewportView(
             partyMembers: [hero],
             enemies: enemies,
-            battleEngine: BattleEngine(random: _ZeroRandom()),
+            random: _ZeroRandom(),
             espAccessGranted: false,
             onLog: logs.add,
             onVictory: (_) {},
@@ -152,7 +151,7 @@ void main() {
     expect(tester.takeException(), isNull);
     expect(enemies, hasLength(2));
     expect(enemies.last.eNumber, 42);
-    expect(logs.where((message) => message.contains('소환했다')), hasLength(1));
+    expect(logs.where((message) => message.endsWith('를 생성시켰다')), hasLength(1));
     expect(find.textContaining(enemies.last.name), findsWidgets);
   });
 
@@ -227,6 +226,12 @@ void main() {
     await tester.pumpAndSettle();
     await tester.tap(find.text('독심'));
     await tester.pump();
+    // 나머지 네 명도 명령을 고른 뒤에야 라운드가 실행된다.
+    for (var i = 0; i < 4; i++) {
+      await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
+      await tester.pump();
+    }
+    await tester.pump(const Duration(milliseconds: 1500));
 
     expect(joinedId, 10);
     expect(party, hasLength(6));
