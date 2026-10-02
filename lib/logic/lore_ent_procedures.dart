@@ -305,8 +305,16 @@ class LoreEntProcedures {
         ];
       case 'portal-25-26-chamber':
         steps = const [
+          ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
           ScriptStep(kind: 'torch', torchLit: true),
-          ScriptStep(kind: 'say', text: ' 두말이 필요없다. 덤벼라 !!'),
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: 'Necromancer',
+              actors: [72],
+              lines: [' 두말이 필요없다. 덤벼라 !!'],
+            ),
+          ),
           ScriptStep(
             kind: 'battle',
             monsters: [63, 63, 63, 63, 63, 72],

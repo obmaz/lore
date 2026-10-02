@@ -227,12 +227,28 @@ class ScriptEvent {
   final String? text;
   final int? x;
   final int? y;
+  final int? face;
 
   const ScriptEvent.message(String this.text)
     : kind = 'message',
       x = null,
+      y = null,
+      face = null;
+  const ScriptEvent.peek(this.x, this.y)
+    : kind = 'peek',
+      text = null,
+      face = null;
+  const ScriptEvent.sourceFace(this.face)
+    : kind = 'sourceFace',
+      text = null,
+      x = null,
       y = null;
-  const ScriptEvent.peek(this.x, this.y) : kind = 'peek', text = null;
+  const ScriptEvent.endDemo()
+    : kind = 'endDemo',
+      text = null,
+      x = null,
+      y = null,
+      face = null;
 }
 
 /// 스크립트 스텝 1개.
@@ -247,6 +263,7 @@ class ScriptStep {
   final int? sourceEtcIndex;
   final int? sourceEtcValue;
   final ScriptScene? scene;
+  final int? sourceFace;
 
   /// Reuse another script's steps in the current battle sequence.
   final String? includeScriptId;
@@ -368,6 +385,7 @@ class ScriptStep {
     this.sourceEtcIndex,
     this.sourceEtcValue,
     this.scene,
+    this.sourceFace,
     this.includeScriptId,
     this.slot,
     this.prompt,
@@ -744,6 +762,7 @@ class ScriptRun {
   final ScriptStep? _battleStep;
   final bool awaitingBattle;
   final ScriptScene? pendingScene;
+  final bool _reuseFirstBattle;
 
   ScriptRun._(
     this._engine,
@@ -756,6 +775,7 @@ class ScriptRun {
     this._battleStep,
     this.awaitingBattle = false,
     this.pendingScene,
+    this._reuseFirstBattle = false,
   });
 
   /// UI가 사용자에게 물어봐야 하는 선택지 (없으면 null).
@@ -797,7 +817,12 @@ class ScriptRun {
     if (chosen == null) return this;
     // 선택 이후 실행할 스텝 = 고른 옵션의 스텝 + 원래 스크립트의 나머지
     final queue = <ScriptStep>[...chosen.steps, ..._remaining];
-    final run = _engine._execute(script, queue, _acc);
+    final run = _engine._execute(
+      script,
+      queue,
+      _acc,
+      reuseFirstBattle: _reuseFirstBattle,
+    );
     if (script.once &&
         !run.hasPendingChoice &&
         !run.hasPendingScene &&
@@ -884,7 +909,12 @@ class ScriptRun {
 
   ScriptRun acknowledgeScene() {
     if (!hasPendingScene) return this;
-    final run = _engine._execute(script, _remaining, _acc);
+    final run = _engine._execute(
+      script,
+      _remaining,
+      _acc,
+      reuseFirstBattle: _reuseFirstBattle,
+    );
     if (script.once &&
         !run.hasPendingChoice &&
         !run.hasPendingScene &&
@@ -1231,7 +1261,14 @@ class LoreScriptEngine {
             queue.sublist(i + 1),
             snapshot(),
             pendingScene: scene,
+            reuseFirstBattle: reuseFirstBattle,
           );
+        case 'sourceFace':
+          events.add(ScriptEvent.sourceFace(step.sourceFace!));
+          break;
+        case 'endDemo':
+          events.add(const ScriptEvent.endDemo());
+          break;
         case 'say':
           messages.add(step.text!);
           events.add(ScriptEvent.message(step.text!));
@@ -1391,6 +1428,7 @@ class LoreScriptEngine {
             choicePrompt: step.prompt,
             choiceTexts: step.options!.map((o) => o.text).toList(),
             choiceStep: step,
+            reuseFirstBattle: reuseFirstBattle,
           );
           return run;
       }

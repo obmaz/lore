@@ -1440,16 +1440,92 @@ class LoreSpecProcedures {
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
     if (context.tileAtPlayer != 0) return null;
-
-    final hasDefeatedBoss = context.flags.contains('bossNecromancerDefeated');
-    if (hasDefeatedBoss) return null;
-
-    final content = scripts.scripts.singleWhere(
-      (script) => script.id == 'spec-26-L2104-seq',
+    // LORESPEC.PAS:2104-2201: no cleared flag and no random call.
+    return scripts.startProcedure(
+      LoreScript(
+        id: 'spec-26-L2104-seq',
+        trigger: 'step',
+        map: 26,
+        once: false,
+        require: const ScriptRequire(),
+        steps: [
+          const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+          for (var i = 1; i <= 3; i++)
+            const ScriptStep(kind: 'nudge', nudgeDy: -1),
+          const ScriptStep(kind: 'sourceFace', sourceFace: 6),
+          for (var sourceX = x; sourceX < 26; sourceX++)
+            const ScriptStep(kind: 'nudge', nudgeDx: 1),
+          const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+          const ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: "결전의 방",
+              actors: [73, 74, 75],
+              lines: [
+                " 당신들이 나를 없에겠다고 온자들인가?",
+                " 그럼 예의를 갖추고 소개를 하지.  당신의 오",
+                "른쪽의 사람은  ArchiMonk라고 하며 맨손을 사",
+                "용하는 무예의 일인자로 통하지.  그리고 당신",
+                "의 정면의 사람은 ArchiMage 라고 하는 마법사",
+                "중의 마법사이라네.  당신들은 우리 셋 보다도",
+                "숫자가 많군. 그렇다면 나도 그것에 대비를 해",
+                "야겠지.  내가 여기서 약간의 인원을 늘인다고",
+                "너무 섭섭하게 생각말게.  그렇다면 이제 서로",
+                "의 실력을 겨뤄볼 시간이 다 되었나보군. 당신",
+                "의 행운을 빌겠네.",
+              ],
+            ),
+          ),
+          const ScriptStep(
+            kind: 'battle',
+            battleTitle: 'Neo-Necromancer',
+            battleEnemyFirst: true,
+            monsters: [69, 70, 71, 72, 73, 74, 75],
+            battleRetryOnRunAway: true,
+            battleVictoryIfEnemyDead: 7,
+            battleRunAwaySteps: [
+              ScriptStep(
+                kind: 'scene',
+                scene: ScriptScene(
+                  title: "도주 불가",
+                  actors: [75],
+                  lines: [" 하지만 나에게 도전한 이상 도주는 허용할 수", "없다는 점이 안타깝군."],
+                ),
+              ),
+            ],
+          ),
+          const ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: "최후의 대사",
+              actors: [75],
+              lines: [
+                " 욱!!! 역시 너희들의 능력으로 여기까지 뚫고",
+                "들어왔다는게 믿어지는구나. 대단한 힘이다.",
+                " 내가 졌다는걸 인정하마. 하지만 나는 완전히",
+                "너에게 진것은 아니야.  나에게는 탈출할 수단",
+                "이 있기 때문이지. 안심해라. 그렇지만 다시는",
+                "나와 만날 인연은 없으니까.  블랙홀이 생기기",
+                "시작하는구나.  다음 공간에서 또다시 힘을 길",
+                "러야 겠군. 내가 이 블랙홀로 들어간다면 다시",
+                "이 공간으로 올 확률이 거의 제로이지. 흠, 멋",
+                "진 나의 도전자여 안녕.  나는 이런 공간의 패",
+                "러독스를 운명적으로 반복하는 생명체로  태어",
+                "난 내가 참으로 비참하지. 무한히 많은 3 차원",
+                "의 공간중에서 내가 여기로 온것도  이 공간의",
+                "생명이 끝날때까지도 한번 있을까 말까한 희귀",
+                "한 일이었다고 기억해다오.  이제 블랙홀이 완",
+                "전히 생겼군. 자! 나의 멋진 도전자 친구여 영",
+                "원히 안녕 ! !",
+              ],
+            ),
+          ),
+          const ScriptStep(kind: 'endDemo'),
+        ],
+      ),
+      context,
     );
-    return scripts.startProcedure(content, context);
   }
 
   /// `LORESPEC.PAS:2202-2213`, map 27 (PYRAMID1 / ANOTHER LORE / 또 다른 지식의 성전).

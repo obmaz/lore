@@ -439,6 +439,96 @@
       "test": "test/map25_guardian_source_test.dart",
       "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:129",
+      "line": 1997,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:130",
+      "line": 1998,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/map26_final_ui_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:67",
+      "line": 2108,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:while:1",
+      "line": 2114,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:72",
+      "line": 2167,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:repeat:2",
+      "line": 2169,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:146",
+      "line": 2172,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:32",
+      "line": 2172,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:147",
+      "line": 2173,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
     }
   ]
 }

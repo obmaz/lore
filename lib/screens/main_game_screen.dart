@@ -280,10 +280,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 원작 `LORESUB.PAS:986 wantenter` / `:999 wantexit`
   /// 성문·동굴 입구 진입 여부를 확인한 뒤 이동한다.
   Future<void> _confirmPortalEntry(PortalInfo portal, int tx, int ty) async {
+    final sourceDungeonExit = _game.currentMapId == 25 && ty == 46;
     final leavingTown =
+        sourceDungeonExit ||
         _game.currentMapName.startsWith('TOWN') &&
-        LoreWorldManager.mapRegistry[portal.targetMapId]?.category ==
-            MapCategory.ground;
+            LoreWorldManager.mapRegistry[portal.targetMapId]?.category ==
+                MapCategory.ground;
     final prompt = leavingTown
         ? LoreFieldLogic.exitPrompt
         : LoreFieldLogic.enterPrompt(portal.name);
@@ -332,19 +334,24 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
     if (plan.action == LorePortalAction.cancelled) {
       if (confirmed == false) _addLog(LoreFieldLogic.asYouWish);
+      if (sourceDungeonExit) {
+        _game.playerX = tx;
+        _game.playerY = ty - 1;
+        setState(() {});
+      }
       _game.clearPeek();
       return;
     }
     // 원작 LOREENT.PAS - 진입 전 연출(수문장 전투/대사/라바 게이트 판정).
     if (plan.preScript case final pre?) {
+      if (portal.scriptId == 'portal-25-26-chamber') {
+        // LOREENT.entermode turns on the torch, then consumes ten pairs of
+        // animation rolls before the Necromancer battle begins.
+        setState(() => _torchSteps = 1);
+        await _playChamberEntryAnimation();
+        if (!mounted) return;
+      }
       if (pre.awaitingBattle) {
-        if (portal.scriptId == 'portal-25-26-chamber') {
-          // LOREENT.entermode turns on the torch, then consumes ten pairs of
-          // animation rolls before the Necromancer battle begins.
-          setState(() => _torchSteps = 1);
-          await _playChamberEntryAnimation();
-          if (!mounted) return;
-        }
         var alreadyApplied = const ScriptOutcome();
         if (portal.scriptId == 'portal-23-25-dungeon') {
           for (final message in pre.outcome.messages) {
@@ -383,13 +390,17 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
         if (action != LorePortalAction.loadMap) return;
       } else {
+        _pendingPortalTransition = (portal: portal, tx: tx, ty: ty);
         final completed = await _driveScript(pre);
         if (!mounted) return;
         final action = LorePortalSession.afterPreScript(
           completed: completed,
-          waitingForBattle: false,
+          waitingForBattle: _pendingScriptBattle != null,
           blockMove: pre.outcome.blockMove,
         );
+        if (action != LorePortalAction.waitForBattle) {
+          _pendingPortalTransition = null;
+        }
         if (action != LorePortalAction.loadMap) return;
       }
     }
@@ -660,7 +671,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
           setState(() {});
           await Future<void>.delayed(_peekHold);
           if (!mounted) return false;
-        } else {
+        } else if (event.kind == 'sourceFace') {
+          _game.applySourceFace(event.face!);
+        } else if (event.kind == 'message') {
           _addLog(presented(event.text!));
         }
       }
@@ -839,6 +852,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (outcome.torchLit && _torchSteps <= 0) {
       setState(() => _torchSteps = 1);
       _addLog('🔥 마법의 횃불이 어둠을 밝힙니다.');
+    }
+
+    if (outcome.events.any((event) => event.kind == 'endDemo')) {
+      if (!mounted) return false;
+      setState(() => _currentMode = GameScreenMode.ending);
+      return false;
     }
 
     if (outcome.setFlags.contains('bossNecromancerDefeated')) {
@@ -1414,6 +1433,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _beginEncounterBattle({required bool enemyFirst}) {
     setState(() {
+      // LOREBATT.PAS:1005, also required when re-entering BattleMode.
+      LoreDialogueManager.instance.setBattleResult(1);
       _battleEnemyFirst = enemyFirst;
       _battleSerial++;
       _currentMode = GameScreenMode.battle;
@@ -1427,6 +1448,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     bool enemyFirst = false,
   }) {
     setState(() {
+      LoreDialogueManager.instance.setBattleResult(1); // LOREBATT.PAS:1005.
       _currentMode = GameScreenMode.battle;
       _battleEnemies = bossEnemies;
       _battleEnemyFirst = enemyFirst;

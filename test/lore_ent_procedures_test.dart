@@ -156,7 +156,7 @@ void main() {
         portal: chamber,
         context: const ScriptContext(),
         scripts: engine,
-      ).preScript!;
+      ).preScript!.acknowledgeScene();
       expect(boss.outcome.battleMonsters, [63, 63, 63, 63, 63, 72]);
       expect(boss.outcome.battleEnemyFirst, isFalse);
       expect(boss.outcome.torchLit, isTrue);

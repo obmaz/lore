@@ -47,6 +47,13 @@ class LoreGame extends FlameGame {
   int playerDirection = 0; // 0: 남, 1: 북, 2: 동, 3: 서
   bool _map26ArrowFacing = false;
 
+  /// Explicit source cutscene face assignments replace the arrow face offset.
+  void applySourceFace(int face) {
+    RangeError.checkValueInInterval(face, 4, 7, 'field face');
+    playerDirection = face - 4;
+    _map26ArrowFacing = false;
+  }
+
   /// `LOREMAIN.Main`: map 26 adds a second field-face offset after arrows.
   int get playerSpriteIndex => currentMapName.startsWith('TOWN')
       ? playerDirection

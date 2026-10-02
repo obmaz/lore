@@ -18209,8 +18209,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/game/lore_world_manager.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:130",
@@ -18220,8 +18225,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_ui_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:131",
@@ -18552,8 +18562,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:while:1",
@@ -18563,8 +18578,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "while",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:68",
@@ -18651,8 +18671,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:repeat:2",
@@ -18662,8 +18687,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "repeat",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:146",
@@ -18673,8 +18703,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:exit:32",
@@ -18684,8 +18719,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:147",
@@ -18695,8 +18735,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map26_final_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:148",
@@ -24660,6 +24705,96 @@
       "test": "test/map25_guardian_source_test.dart",
       "note": "Source-extracted guardian replay: fixed slots, 256 torch bytes, defeat/escape early exits, ordered corridor writes, post-dialogue named slots 1..6 promotion. Native UI stages tested separately; BGI frame timing and DOS playback not claimed equivalent.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:129",
+      "line": 1997,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:130",
+      "line": 1998,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/map26_final_ui_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:67",
+      "line": 2108,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:while:1",
+      "line": 2114,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:72",
+      "line": 2167,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:repeat:2",
+      "line": 2169,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:146",
+      "line": 2172,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:32",
+      "line": 2172,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:147",
+      "line": 2173,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map26_final_source_test.dart",
+      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -26468,7 +26603,7 @@
     {
       "path": "test/lore_ent_procedures_test.dart",
       "kind": "test",
-      "sha256": "c0392305e2616eed18dab5eba8b6635fedbea6c098e8077f1a2263fdf7e74366",
+      "sha256": "f06886d6be07c390843c2296bc9accf70e3cd2a03ef4efb2555184c73ed5fc3e",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26635,7 +26770,7 @@
     {
       "path": "test/lore_spec_map26_test.dart",
       "kind": "test",
-      "sha256": "aa8ee524e649dbc1b35df708ffd30f86e3125ed2c207d84a8a90124588dd5617",
+      "sha256": "d00fc3c6a124718e79b4653de456d64f3fbbbf8405ad9e2fb953cd9b6190d96e",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26764,6 +26899,26 @@
       "kind": "test",
       "sha256": "1c03a454b34e766e3aa51c30c2d4557b7e7fe7f9c12aff30f0eef2792c930a55",
       "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/map26_final_source_test.dart",
+      "kind": "test",
+      "sha256": "18ee129bff02f64faabf2116f40e8aa9a40fb6b753e7c37b79957dc32aaf317c",
+      "cited_source_files": [
+        "LOREENT.PAS",
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/map26_final_ui_test.dart",
+      "kind": "test",
+      "sha256": "2f2ded493dcf34bcdb86994c12bdd27deaaa73950a54c17cfdaa3d031211a3bc",
+      "cited_source_files": [
+        "LOREENT.PAS",
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
@@ -27249,6 +27404,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/map26_final_parity.json",
+      "kind": "fixture",
+      "sha256": "1e17cde42757bd1bdc3bdb0c54f401b5fb269c50dccd29689b0a075b083121a1",
+      "test_users": [
+        "test/map26_final_source_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/map27_route_parity.json",
       "kind": "fixture",
       "sha256": "b50b00a79c0c729defad57a8b1702414c78f0bf80869d4084ea767cbceed633d",
@@ -27378,15 +27542,15 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "a165596e3e8eca672e7a1965d7ef5c362a111d2da9c5b8f5c0bf72f058de6b5c"
+      "sha256": "781e6562e47752db86447806558f629f0f2b1e047c4fc302f60665b0ddcb3a98"
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "eb5432d94625e5ad376546f13d32ea855f5fbfb39644a9e88698718263feb6b0"
+      "sha256": "2f1f607de8200129dd9bfaef915aaaaa6b9054464aaa2975dfa167396b5bef81"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
-      "sha256": "e8b7c79a3bcb2debfb59ed04b494a92637e2f8e8025233f11b1a995f62cc4d01"
+      "sha256": "eb447e4b03653707f4e54f80a17a08a2fb71b39f5ac678a1b4148a26debf10ec"
     },
     {
       "path": "lib/game/lore_dialogue_manager.dart",
@@ -27418,7 +27582,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "0b09bb74d45258a56161f9f1e658c4e62d4418ecd5a3a947b76f2b8405411579"
+      "sha256": "0f8bcdea3bbc1488af204d6b5cfbdf4ecc7ad40d33adaccce06300d4d2f3b43c"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -27430,7 +27594,7 @@
     },
     {
       "path": "lib/logic/lore_special_event_dispatcher.dart",
-      "sha256": "a1cb3b7dcbfefa363a9cecd7c29283c47d326d42bfd7030956e97cc289eccc43"
+      "sha256": "3e53749ad94501ef8f2445a53465cab51f9a98b1a795786a8e4fce441dd46d70"
     },
     {
       "path": "lib/logic/script_world_reducer.dart",
@@ -27454,7 +27618,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "0efc63a9ae5f773fcc0abb257964859d6e68266a46fabcbb2790d5629ad2eab9"
+      "sha256": "f984ff26ba8c829ea616e3898001b302020852973e6106c535c7916c50a22446"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
@@ -27466,9 +27630,9 @@
     },
     {
       "path": "PORT_CONTRACT_EVIDENCE.json",
-      "sha256": "70ff667c6b76d808a0fc4a8d2b5d1d90b0f549a18f41fdf218fa6d095a7fc28d",
+      "sha256": "d6d8b8dd9c72736dc66d4a5c8683923e267ce920541f947b3a0f6cddeb77d0e7",
       "top_level_counts": {
-        "contracts": 44
+        "contracts": 53
       }
     }
   ],
@@ -27476,9 +27640,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 1804,
+    "unmapped_behavior_sites": 1795,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 44,
+    "partially_verified_behavior_sites": 53,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

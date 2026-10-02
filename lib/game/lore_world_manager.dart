@@ -349,6 +349,16 @@ class LoreWorldManager {
 
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
   PortalInfo? findPortal(int currentMapId, int x, int y) {
+    // LORESPEC.PAS:1997-2006 owns the exact map 25 exit boundary.
+    if (currentMapId == 25 && y == 46) {
+      return const PortalInfo(
+        targetMapId: 23,
+        targetX: 25,
+        targetY: 45,
+        name: 'K_DEN2 출구',
+      );
+    }
+    if (currentMapId == 25 && y > 46) return null;
     // 1순위: JSON 규칙 (assets/data/portals.json)
     for (final rule in _portalRules) {
       final portal = rule.match(currentMapId, x, y);
