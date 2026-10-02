@@ -5,7 +5,7 @@ import '../models/party_member.dart';
 import '../theme/retro_theme.dart';
 
 /// 1993년 원작 LORESUB.PAS 마을 시설(무기점/훈련소/병원)의 각 항목을
-/// 표현하는 공용 행 위젯. `TownDialog`와 `TownFacilitiesDialog`가
+/// 표현하는 공용 행 위젯. `TownFacilitiesDialog`가
 /// 완전히 동일한 원작 규칙/가격/문구를 보여주도록 보장한다.
 
 /// 병원 1인용 치료 UI (원작 `Hospital`의 4가지 치료: 상처/독/의식/부활).

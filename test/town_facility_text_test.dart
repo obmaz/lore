@@ -37,7 +37,7 @@ void main() {
     for (final (type, text) in [
       (TownFacilityType.weaponShop, '여기는 무기상점입니다.'),
       (TownFacilityType.hospital, '여기는 병원입니다.'),
-      (TownFacilityType.trainCenter, '여기는 군사 훈련소 입니다.'),
+      (TownFacilityType.trainCenter, ' 여기는 군사 훈련소 입니다.'),
       (TownFacilityType.grocery, '여기는 식료품점 입니다.'),
     ]) {
       await open(tester, type, party, 100);
@@ -55,7 +55,7 @@ void main() {
     final out = await open(tester, TownFacilityType.trainCenter, [hero], 1);
     await tester.tap(find.byKey(ValueKey('train-${hero.name}')));
     await tester.pump();
-    expect(out.logs.first, '당신은 아직 전투 경험이 부족합니다.');
+    expect(out.logs.first, ' 당신은 아직 전투 경험이 부족합니다.');
     expect(out.logs[1], startsWith(' 당신이 다음 레벨이 되려면 경험치가 '));
     expect(out.logs[1], endsWith(' 이상 이어야 합니다.'));
     // Enough experience but not enough gold: `str(party.gold-long)` is negative.
@@ -65,5 +65,26 @@ void main() {
     await tester.pump();
     final offer = TownLogic.evaluateTraining(hero);
     expect(out.logs.single, '당신은 금 ${1 - offer.cost}개가 더 필요합니다.');
+  });
+
+  test('ExpData prints the source strings, typos included', () {
+    expect(TownLogic.expDataFor(2), '1500');
+    expect(TownLogic.expDataFor(15), '270000');
+    expect(TownLogic.expDataFor(20), '510000');
+    expect(TownLogic.expDataText.length, 19);
+  });
+
+  test('Train_Center j = 20 only sets level[1]', () {
+    final mage = PartyMember.createPreset(3)
+      ..battleLevel = 5
+      ..magicLevel = 5
+      ..espLevel = 5
+      ..experience = 6000000;
+    final offer = TownLogic.evaluateTraining(mage);
+    expect(offer.targetLevel, 20);
+    expect(offer.cost, 0);
+    final lines = TownLogic.applyTraining(mage, offer);
+    expect(lines, [TownLogic.trainMaxLevel, TownLogic.trainNoNeedToTeach]);
+    expect([mage.battleLevel, mage.magicLevel, mage.espLevel], [20, 5, 5]);
   });
 }

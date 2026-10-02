@@ -749,7 +749,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         _party = ScriptPartyReducer.applyProgress(_party, outcome);
       });
     }
-    if (outcome.expDelta != 0) {}
 
     for (final recruit in outcome.recruits) {
       final member = LoreJoin.byKey(recruit.key);

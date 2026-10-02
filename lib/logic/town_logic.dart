@@ -104,12 +104,12 @@ class TownLogic {
   static const String shopShieldPrompt = '어떤 방패를 원하십니까 ?';
   static const String shopArmorPrompt = '어떤 갑옷을 원하십니까 ?';
   static const String shopMonkRefuse = '전투승은 이 무기가 필요없습니다.';
-  static const String trainIntro = '여기는 군사 훈련소 입니다.';
+  static const String trainIntro = ' 여기는 군사 훈련소 입니다.';
   static const String trainSubIntro =
-      '만약 당신이 충분한 전투 경험을 쌓았다면, 당신은 더욱 능숙하게 무기를 다룰것입니다.';
+      ' 만약 당신이 충분한 전투 경험을 쌓았다면, 당신은 더욱 능숙하게 무기를 다룰것입니다.';
   static const String trainMaxLevel = '당신은 최고 레벨에 도달했습니다.';
   static const String trainNoNeedToTeach = '더 이상 저희들은 가르칠 필요가 없습니다.';
-  static const String trainNotEnoughExp = '당신은 아직 전투 경험이 부족합니다.';
+  static const String trainNotEnoughExp = ' 당신은 아직 전투 경험이 부족합니다.';
   static const String hospitalIntro = '여기는 병원입니다.';
   static const String hospitalWhoPrompt = '누가 치료를 받겠습니까 ?';
   static const String hospitalWhatPrompt = '어떤 치료입니까 ?';
@@ -213,12 +213,40 @@ class TownLogic {
     );
   }
 
+  /// `Train_Center`의 `ExpData[2..20]`를 문자열 그대로(원본의 오타 `270000`(15),
+  /// `510000`(20) 포함). 거절 문구가 이 문자열을 그대로 출력한다.
+  static const List<String> expDataText = [
+    '1500',
+    '6000',
+    '20000',
+    '50000',
+    '150000',
+    '250000',
+    '500000',
+    '800000',
+    '1050000',
+    '1320000',
+    '1620000',
+    '1950000',
+    '2310000',
+    '270000',
+    '3120000',
+    '3570000',
+    '4050000',
+    '4560000',
+    '510000',
+  ];
+
+  /// `ExpData[level]` (level 2..20) 출력 문자열.
+  static String expDataFor(int level) => expDataText[level - 2];
+
   /// 승급 처리 후 원작 `Print` 메시지 목록을 돌려준다.
   /// (금화 차감은 호출측에서 `offer.cost`로 수행한다.)
   static List<String> applyTraining(PartyMember member, TrainOffer offer) {
     if (!offer.canTrain) return const [];
     if (offer.targetLevel >= 20) {
-      member.trainLevelUp(20);
+      // Train_Center sets only level[1] := 20 (no class growth, no random roll).
+      member.battleLevel = 20;
       return [trainMaxLevel, trainNoNeedToTeach];
     }
     // The stat growth is silent in Train_Center; only the level line prints.
