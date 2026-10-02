@@ -336,6 +336,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
       portal: portal,
       context: _scriptContext(),
       scripts: _scripts,
+      x: tx,
+      y: ty,
     );
     if (plan.action == LorePortalAction.cancelled) {
       if (confirmed == false) _addLog(LoreFieldLogic.asYouWish);

@@ -1071,57 +1071,121 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:1760-1815`, map 21 (KEEP1 / SWAMP KEEP).
+  /// `LORESPEC.PAS:1760-1815`, `case 21` (KEEP1 / SWAMP KEEP).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Exit at `y == 46` handled via portal session (`keep1-exit-guard`).
-  /// 2. Gate check at `(25, 20)`:
-  ///    - If not (odd(party.etc[40]) and odd(party.etc[41])):
-  ///      - Gate closed message, nudge dy: 1 (`keep1-seal-gate-a`).
-  /// 3. Other tiles (ambush in Keep 1):
-  ///    - Handled via `keep1-special-ambush`.
+  /// `y = 46` is the exit boundary ([keep1ExitGuard] after `wantexit`).
+  /// `on(25,20)` refuses the lava gate unless both `odd(etc[40])` and
+  /// `odd(etc[41])`, pushing the party to y + 1. Every other special tile
+  /// draws `random(4) + 3` enemies 58 and, after victory or escape, writes 40
+  /// over tile 0 and 46 over any other tile. Defeat runs no continuation.
   static ScriptRun? map21(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
-    }
-
+    if (y == 46) return null;
+    LoreScript procedure(String id, List<ScriptStep> steps) => LoreScript(
+      id: id,
+      trigger: 'step',
+      map: 21,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
     if (x == 25 && y == 20) {
-      final seal1Unlocked =
-          context.flags.contains('etc40_bit1') ||
-          context.flags.contains('evilSealRoomCleared') ||
-          context.flags.contains('sealPuzzleA');
-      final seal2Unlocked =
-          context.flags.contains('etc41_bit1') ||
-          context.flags.contains('den7MazeCleared') ||
-          context.flags.contains('sealPuzzleB');
-
-      if (!seal1Unlocked || !seal2Unlocked) {
-        final content = scripts.scripts.firstWhere(
-          (script) => script.id == 'keep1-seal-gate-a',
-        );
-        return scripts.startProcedure(content, context);
-      }
-      return null;
-    }
-
-    // LORESPEC map 21's final `else`: a random group of Swamp Keep enemies
-    // attacks before the stepped-on tile changes.
-    if (y >= 1 && y <= 45) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'keep1-special-ambush',
+      final seal1 = context.etcValue(
+        40,
+        bitAliases: const {1: 'evilSealRoomCleared'},
       );
-      return scripts.startProcedure(content, context);
+      final seal2 = context.etcValue(
+        41,
+        bitAliases: const {1: 'den7MazeCleared'},
+      );
+      if (seal1.isOdd && seal2.isOdd) return null;
+      return scripts.startProcedure(
+        procedure('keep1-seal-gate-a', const [
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: '라바 게이트',
+              lines: [
+                ' 당신은 아직 라바 게이트를 열수가 없다',
+                '',
+                ' 아직 당신은 이 대륙의 동굴속에  존재하',
+                ' 는 2개의 봉인을 풀지 못했기 때문이다.',
+              ],
+            ),
+          ),
+          ScriptStep(kind: 'nudge', nudgeDy: 1),
+        ]),
+        context,
+      );
     }
+    // LORESPEC.PAS:1806-1813: the tile is read after BattleMode, with no
+    // result check, so victory and escape both rewrite it.
+    final count = scripts.roll(4) + 3;
+    final after = ScriptStep(
+      kind: 'setTile',
+      tileX: x,
+      tileY: y,
+      tileValue: (context.tileAtPlayer ?? 0) == 0 ? 40 : 46,
+    );
+    return scripts.startProcedure(
+      procedure('keep1-special-ambush', [
+        ScriptStep(
+          kind: 'battle',
+          battleEnemyFirst: true,
+          monsters: List<int>.filled(count, 58),
+          battleRunAwaySteps: [after],
+        ),
+        after,
+      ]),
+      context,
+    );
+  }
 
-    return null;
+  /// `LORESPEC.PAS:1763-1789`: after `wantexit` while etc[42] bit1 is clear.
+  /// Enemy 55 joins unless bit3, then 56 unless bit4, then five 35s. With
+  /// neither boss the source sets bit1 and exits without loading, leaving the
+  /// party on the exit cell. After the fight bit3/bit4 follow the deaths of
+  /// enemy slots 1/2 (not of a particular boss), bit1 needs both, and the
+  /// party leaves for map 4 after victory or escape.
+  static LoreScript? keep1ExitGuard(ScriptContext context, int x, int y) {
+    final etc42 = context.etcValue(42);
+    if ((etc42 & LorePascal.bit(1)) != 0) return null;
+    final bosses = [
+      if ((etc42 & LorePascal.bit(3)) == 0) 55,
+      if ((etc42 & LorePascal.bit(4)) == 0) 56,
+    ];
+    LoreScript guard(List<ScriptStep> steps) => LoreScript(
+      id: 'keep1-exit-guard',
+      trigger: 'portal',
+      map: 21,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
+    if (bosses.isEmpty) {
+      return guard([
+        const ScriptStep(kind: 'flag', key: 'etc42_bit1'),
+        ScriptStep(kind: 'teleport', tileX: x, tileY: y),
+        const ScriptStep(kind: 'block', block: true),
+      ]);
+    }
+    return guard([
+      ScriptStep(
+        kind: 'battle',
+        battleEnemyFirst: true,
+        monsters: [...bosses, ...List<int>.filled(5, 35)],
+        battleEnemyDefeatFlags: const {1: 'etc42_bit3', 2: 'etc42_bit4'},
+        battleRunAwayFlagsWhenDead: const [
+          (slots: [1, 2], flag: 'etc42_bit1'),
+        ],
+        battleVictoryFlags: const ['etc42_bit1'],
+        battleContinueOnRunAway: true,
+      ),
+    ]);
   }
 
   /// `LORESPEC.PAS:1816-1879`, `case 22` (KEEP2).

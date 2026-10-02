@@ -28,9 +28,20 @@ class LorePortalSession {
     required PortalInfo portal,
     required ScriptContext context,
     required LoreScriptEngine scripts,
+    int? x,
+    int? y,
   }) {
     if (!confirmed) return const LorePortalPlan(LorePortalAction.cancelled);
     final id = portal.scriptId;
+    if (id == 'keep1-exit-guard') {
+      final guard = LoreSpecProcedures.keep1ExitGuard(context, x!, y!);
+      return guard == null
+          ? const LorePortalPlan(LorePortalAction.loadMap)
+          : LorePortalPlan(
+              LorePortalAction.runPreScript,
+              scripts.startProcedure(guard, context),
+            );
+    }
     if (id == 'keep2-exit-guard') {
       final guard = LoreSpecProcedures.keep2ExitGuard(context, scripts.roll);
       return guard == null

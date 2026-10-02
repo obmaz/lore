@@ -979,6 +979,156 @@
       "test": "test/lore_spec_map22_test.dart",
       "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:90",
+      "line": 1762,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:91",
+      "line": 1763,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:92",
+      "line": 1764,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:93",
+      "line": 1766,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:94",
+      "line": 1770,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:95",
+      "line": 1774,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:23",
+      "line": 1776,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:49",
+      "line": 1779,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:96",
+      "line": 1782,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:97",
+      "line": 1783,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:98",
+      "line": 1784,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:99",
+      "line": 1796,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:100",
+      "line": 1797,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:50",
+      "line": 1809,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:101",
+      "line": 1813,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map21_test.dart",
+      "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }
