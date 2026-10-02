@@ -32171,6 +32171,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/battle_source_text_test.dart",
+      "kind": "test",
+      "sha256": "eeb0c858eef33400f95b6b4491eac1134fc329331a461123bd012e4444dfb8f8",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/battle_test.dart",
       "kind": "test",
       "sha256": "57fcfd6cc419a99457e8fff4069c9ac1e8f4ad91ffe57a5c28ada961e3b123ab",
@@ -32182,7 +32191,7 @@
     {
       "path": "test/battle_viewport_join_test.dart",
       "kind": "test",
-      "sha256": "8608cfbdc313e2c0b24fc2db1afa5dbf880cf0364980d274c7d6b1089bab1bd1",
+      "sha256": "2ddd91f0e30f045d2564fe05f72aeef83452c70376a870cf2950b94fe75a2c0b",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -32249,7 +32258,7 @@
     {
       "path": "test/ending_view_test.dart",
       "kind": "test",
-      "sha256": "d0917a1876eff4079f24c718aa90f914d27419d3d49373bb9138683ae19e6e29",
+      "sha256": "944eaadbd208f35951258ba84313cdad1eba7a73843789030c80278df3b56a5c",
       "cited_source_files": [
         "LOREEND.PAS"
       ],
@@ -32574,7 +32583,7 @@
     {
       "path": "test/loreend_parity_test.dart",
       "kind": "test",
-      "sha256": "c678816064e1af7ebca385b904638d94a5d589d97f8b8b631d101f2a77b4c0eb",
+      "sha256": "e19b7724ae33a51126a611cad29f2a77f45d56d8e2be3d41e7dca43a00865c37",
       "cited_source_files": [
         "LOREEND.PAS"
       ],
@@ -33444,7 +33453,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "c69d34974dd21294ff4b81d68d7d040a16504cc0dba6ffbb56e76e4547f90cd9"
+      "sha256": "5901634e94df77df8e6089c9fd269a3849a9161f21c33032cb1b8eaa2521e970"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
