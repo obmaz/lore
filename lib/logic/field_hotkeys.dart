@@ -43,9 +43,6 @@ enum FieldAction {
   /// Backspace - original `soundon := not soundon`.
   toggleSound,
 
-  /// F1 / H - 제작자 서문 & 매뉴얼 (이식편에서 추가한 항목)
-  guide,
-
   /// 그 밖의 키(방향키 등은 이동 처리로 넘긴다)
   none,
 }
@@ -64,9 +61,6 @@ class FieldHotkeys {
     if (key == LogicalKeyboardKey.keyR) return FieldAction.rest;
     if (key == LogicalKeyboardKey.keyG) return FieldAction.gameOption;
     if (key == LogicalKeyboardKey.backspace) return FieldAction.toggleSound;
-    if (key == LogicalKeyboardKey.f1 || key == LogicalKeyboardKey.keyH) {
-      return FieldAction.guide;
-    }
     return FieldAction.none;
   }
 
@@ -91,8 +85,6 @@ class FieldHotkeys {
         return 'G';
       case FieldAction.toggleSound:
         return 'Backspace';
-      case FieldAction.guide:
-        return 'F1';
       case FieldAction.none:
         return '';
     }

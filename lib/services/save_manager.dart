@@ -121,7 +121,7 @@ class SaveManager {
   SaveManager._internal();
 
   static const List<String> slotNames = [
-    '본 게임 데이타 (Main)',
+    '본 게임 데이타',
     '게임 데이타 1 (부)',
     '게임 데이타 2 (부)',
     '게임 데이타 3 (부)',

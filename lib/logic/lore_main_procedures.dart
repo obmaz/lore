@@ -24,9 +24,7 @@ class LoreMainProcedures {
         FieldAction.extrasense ||
         FieldAction.rest ||
         FieldAction.gameOption => true,
-        FieldAction.toggleSound ||
-        FieldAction.guide ||
-        FieldAction.none => false,
+        FieldAction.toggleSound || FieldAction.none => false,
       };
 
   /// Shared body of the poison loop in `Move_Mode` and `enter_swamp`.

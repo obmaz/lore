@@ -2,8 +2,27 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/models/monster.dart';
 import 'package:lore/widgets/ending_view.dart';
+import 'package:lore/widgets/monster_bestiary_dialog.dart';
 
 void main() {
+  test('LOOKFOE.PAS Foe.lst 출력 형식 (폭 지정 포함)', () {
+    final lines = MonsterBestiaryDialog.listing([
+      Monster.monsterTemplates.first,
+    ]);
+    expect(lines.take(6).toList(), [
+      'Enemy data ========>>',
+      '',
+      '==================================================',
+      'Enemy Number     :  1',
+      'Enemy Name       : Orc',
+      'Level            :  1',
+    ]);
+    expect(lines[6], '--------------------------------------------------');
+    expect(lines[7], startsWith('Strength         : '));
+    expect(lines[7], contains('    Mentality          : '));
+    expect(lines.length, 13);
+  });
+
   group('LORE 1993 [4단계] 75종 몬스터 도감 & 엔딩/크레딧 스토리 시퀀스 단위 테스트', () {
     test('1. FOEDATA.DAT 75종 전체 몬스터 도감 데이터 무결성 검증 (LOOKFOE.PAS)', () {
       final templates = Monster.monsterTemplates;

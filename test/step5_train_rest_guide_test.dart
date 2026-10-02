@@ -347,29 +347,6 @@ void main() {
       expect(outcome.torchSteps, 19);
     });
 
-    test('6. 게임 시스템 가이드 (F1) 항목 완전성 검증', () {
-      expect(LoreGuideDialog.systemGuide.isNotEmpty, isTrue);
-      expect(LoreGuideDialog.systemGuide.length, greaterThanOrEqualTo(5));
-
-      // 각 가이드 항목에 title과 desc 존재
-      for (final g in LoreGuideDialog.systemGuide) {
-        expect(g.containsKey('title'), isTrue);
-        expect(g.containsKey('desc'), isTrue);
-        expect(g['title']!.isNotEmpty, isTrue);
-        expect(g['desc']!.isNotEmpty, isTrue);
-      }
-
-      // 핵심 주제 포함 검증
-      final allTitles = LoreGuideDialog.systemGuide
-          .map((g) => g['title']!)
-          .join(' ');
-      expect(allTitles, contains('필드 이동'));
-      expect(allTitles, contains('전투'));
-      expect(allTitles, contains('마을'));
-      expect(allTitles, contains('직업'));
-      expect(allTitles, contains('마법'));
-    });
-
     test('7. 병원 4종 치료 비용/조건/효과 검증 (LORESUB.PAS:1517 Hospital)', () {
       // 상처 치료: (최대HP - 현재HP) * 전투Lv div 2 + 1
       final wounded = PartyMember(

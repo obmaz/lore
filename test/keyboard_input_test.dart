@@ -69,9 +69,9 @@ void main() {
       );
     });
 
-    test('이식편 추가 키(F1/H)와 이동 키는 구분된다', () {
-      expect(FieldHotkeys.resolve(LogicalKeyboardKey.f1), FieldAction.guide);
-      expect(FieldHotkeys.resolve(LogicalKeyboardKey.keyH), FieldAction.guide);
+    test('이동 키와 F1/H는 핫키가 아니다', () {
+      expect(FieldHotkeys.resolve(LogicalKeyboardKey.f1), FieldAction.none);
+      expect(FieldHotkeys.resolve(LogicalKeyboardKey.keyH), FieldAction.none);
 
       // 방향키와 WASD는 핫키가 아니라 이동으로 처리된다.
       for (final key in [
@@ -94,7 +94,6 @@ void main() {
       expect(FieldHotkeys.keyLabel(FieldAction.openMenu), 'Space');
       expect(FieldHotkeys.keyLabel(FieldAction.rest), 'R');
       expect(FieldHotkeys.keyLabel(FieldAction.gameOption), 'G');
-      expect(FieldHotkeys.keyLabel(FieldAction.guide), 'F1');
       expect(FieldHotkeys.keyLabel(FieldAction.none), '');
     });
   });
@@ -157,7 +156,7 @@ void main() {
     Future<void> startGame(WidgetTester tester) async {
       await tester.pumpWidget(const LoreApp());
       await tester.pump(const Duration(milliseconds: 100));
-      await tester.tap(find.text('빠른 모험 시작 (기본 파티)'));
+      await tester.tap(find.byKey(const ValueKey('quick-start')));
       await tester.pump(const Duration(milliseconds: 300));
     }
 
@@ -212,7 +211,7 @@ void main() {
       await closeDialog(tester);
     });
 
-    testWidgets('Q/E/F1 키가 각각 전용 화면을 연다', (WidgetTester tester) async {
+    testWidgets('Q/E 키가 각각 전용 화면을 연다', (WidgetTester tester) async {
       await startGame(tester);
 
       // Q -> 일행의 건강 상태를 본다
@@ -227,13 +226,6 @@ void main() {
       await settle(tester);
       expect(find.text(LoreMenuText.selectModeEsp), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('esp-close')));
-      await settle(tester);
-
-      // F1 -> 제작자 서문 & 가이드
-      await tester.sendKeyEvent(LogicalKeyboardKey.f1);
-      await settle(tester);
-      expect(find.text('◆ 또 다른 지식의 성전 - 제작자 서문 ◆'), findsOneWidget);
-      await tester.tap(find.byIcon(Icons.close));
       await settle(tester);
     });
   });

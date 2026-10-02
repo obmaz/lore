@@ -42,10 +42,6 @@ void main() {
         expect(LoreMainProcedures.mainRedispatchesCurrentTile(action), isTrue);
       }
       expect(
-        LoreMainProcedures.mainRedispatchesCurrentTile(FieldAction.guide),
-        isFalse,
-      );
-      expect(
         LoreMainProcedures.mainRedispatchesCurrentTile(FieldAction.toggleSound),
         isFalse,
       );

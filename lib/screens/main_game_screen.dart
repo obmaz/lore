@@ -49,7 +49,6 @@ import '../game/lore_map_manager.dart';
 import '../services/save_manager.dart';
 import '../game/lore_dialogue_manager.dart';
 import '../game/lore_dungeon_event_manager.dart';
-import '../widgets/lore_guide_dialog.dart';
 import '../logic/lore_menu_text.dart';
 import '../widgets/ending_view.dart';
 
@@ -1867,11 +1866,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 await _openQuickViewDialog();
               case FieldAction.extrasense:
                 await _openEspDialog();
-              case FieldAction.guide:
-                await showDialog<void>(
-                  context: context,
-                  builder: (ctx) => const LoreGuideDialog(),
-                );
               case FieldAction.none:
                 break;
             }

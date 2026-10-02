@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
 
-/// 1993년 원작 LOREHELP.PAS 기반 원작자 서문 및 게임 안내 다이얼로그
-class LoreGuideDialog extends StatefulWidget {
+/// 원작 `LOREHELP.PAS`의 타이틀 편지(`Title_Str`)와 그 아래 문구.
+class LoreGuideDialog extends StatelessWidget {
   const LoreGuideDialog({super.key});
 
-  // 원작 LOREHELP.PAS Title_Str 배열 (Johab CP1361 원문 디코딩)
+  /// `Title_Str[1]`의 앞 공백을 뺀 첫 줄.
+  static const String titleLine = '오래전 부터 만날 운명이었던 당신에게 드리는 글';
+
+  /// `Title_Str[3..15]` + 서명 (원문 줄바꿈 그대로).
   static const List<String> authorPreface = [
-    '오래전 부터 만날 운명이었던 당신에게 드리는 글',
+    '         오래전 부터 만날 운명이었던 당신에게 드리는 글',
     '',
     '어서 오십시오. LORE의 세계에 당신을 초대합니다.',
     '이곳은 당신이 지금 있는 지구와는 같은 시간대를 지니고 있지만 공',
@@ -27,8 +30,9 @@ class LoreGuideDialog extends StatefulWidget {
     '                                          제작자  안 영기  드림',
   ];
 
-  // 원작 LOREHELP.PAS Title_Menu 하단 자막 텍스트
+  /// `Title_Menu`가 편지 아래에 `cHPrint`로 그리는 문구 (제목 포함).
   static const List<String> titleCaption = [
+    '또다른 지식의 성전  제 1 부',
     '거친 황야의 대륙과 높은 산으로 둘러 싸인 대륙과 물속에 잠기고',
     '늪으로 덮히고 용암이 흐르는 대륙도  당신이 어쩔수 없이 거쳐야',
     '될 운명의 길입니다. 운명을 피하려 하지 마십시오.  당신 앞에는',
@@ -36,78 +40,6 @@ class LoreGuideDialog extends StatefulWidget {
     '신의 동료들이 있습니다. 당신이 이 세계에 들어 오는 그 날이 바',
     '로 그 모든 운명을 지게 되는 시작임을 잊지 말기를 빕니다.',
   ];
-
-  // 게임 시스템 가이드
-  static const List<Map<String, String>> systemGuide = [
-    {
-      'title': '필드 이동',
-      'desc':
-          '방향키 또는 D-Pad 터치로 이동합니다.\n'
-          '맵 경계의 성문/동굴 입구를 통해 다른 맵으로 진입합니다.',
-    },
-    {
-      'title': '필드 메뉴 (Space / P / V / C / R)',
-      'desc':
-          '[P] 일행 상황 보기  [V] 개인 상세 보기\n'
-          '[Q] 간이 상태 보기  [C] 마법 시전  [E] 초감각(ESP)\n'
-          '[R] 야외 캠프 휴식  [G] 게임 저장/불러오기\n'
-          '[B] 몬스터 도감 열람',
-    },
-    {
-      'title': '전투 시스템 (턴제)',
-      'desc':
-          '[1] 무기 공격 (단일 대상)\n'
-          '[2] 단일 공격 마법  [3] 전체 공격 마법\n'
-          '[4] 특수 디버프 마법  [5] 치유 / 해독 / 부활 마법\n'
-          '[6] ESP 초능력 (독심술 / 염력)\n'
-          '[7] 자동 전투 / 도망',
-    },
-    {
-      'title': '마을 시설',
-      'desc':
-          '무기 상점: 무기, 방패, 갑옷 구입 및 장착.\n'
-          '군사 훈련소: 경험치와 금화로 레벨업 (최대 Lv.20).\n'
-          '신전/병원: 부상, 중독, 의식불명, 사망 치료.\n'
-          '식료품점: 야외 휴식에 필요한 식량 보급.',
-    },
-    {
-      'title': '직업 체계 (10종)',
-      'desc':
-          '기사(Knight): 무기 위력 1.5배, 방어도+1.\n'
-          '마법사(Mage): 마법Lv=전투Lv, 초능력Lv=전투Lv/2.\n'
-          '에스퍼(Esper): 초능력Lv=전투Lv, 마법Lv=전투Lv/2.\n'
-          '전사(Warrior): 마법Lv=min(전투Lv,15).\n'
-          '전투승(Monk): 무기 착용 불가, 맨손 위력=Lv*2+10.\n'
-          '닌자(Ninja): 저항력 특화, 마법/초능력 Lv=전투Lv/2.\n'
-          '사냥꾼/떠돌이: 체질, 완력, 민첩 성장.\n'
-          '반신(Demigod): 올스탯 성장, 마법/초능력Lv=전투Lv.',
-    },
-    {
-      'title': '마법 분류',
-      'desc':
-          '단일 공격 (#1~6): Fire Ball ~ Inferno.\n'
-          '전체 공격 (#7~12): Storm ~ Lightning.\n'
-          '디버프 (#13~18): Weaken ~ Petrify.\n'
-          '단일 치유 (#19~25): Heal ~ Revitalize.\n'
-          '전체 치유 (#26~32): Heal All ~ Revitalize All.\n'
-          '현상계 (#33~40): Torch ~ Teleport.\n'
-          'ESP (#41~45): Mindread ~ Psychokinesis.',
-    },
-    {
-      'title': '위험 지형',
-      'desc':
-          '독 늪지대: 파티원 중독 위험 (SwampWalk 마법으로 방호).\n'
-          '용암 지대: 고대미지 화염 피해 (Levitate 마법으로 회피).\n'
-          '깊은 물: 진입 시 익사 대미지 (WaterWalk 마법으로 보행).',
-    },
-  ];
-
-  @override
-  State<LoreGuideDialog> createState() => _LoreGuideDialogState();
-}
-
-class _LoreGuideDialogState extends State<LoreGuideDialog> {
-  int _page = 0; // 0: 원작자 서문, 1: 조작법/시스템 가이드
 
   @override
   Widget build(BuildContext context) {
@@ -123,190 +55,36 @@ class _LoreGuideDialogState extends State<LoreGuideDialog> {
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
-            // 헤더
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  _page == 0
-                      ? '◆ 또 다른 지식의 성전 - 제작자 서문 ◆'
-                      : '◆ 게임 시스템 가이드 (F1) ◆',
-                  style: RetroTheme.headerFont.copyWith(
-                    color: RetroTheme.lightCyan,
-                    fontSize: 13,
-                  ),
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.close,
-                    color: RetroTheme.lightRed,
-                    size: 18,
-                  ),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-              ],
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                key: const ValueKey('guide-close'),
+                icon: const Icon(Icons.close, size: 18),
+                color: RetroTheme.lightRed,
+                onPressed: () => Navigator.of(context).pop(),
+              ),
             ),
-            const Divider(color: RetroTheme.borderColor, height: 12),
-
-            // 본문
-            Expanded(child: _page == 0 ? _buildPreface() : _buildGuide()),
-
-            // 하단 페이지 전환
-            const SizedBox(height: 8),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _pageBtn(0, '제작자 서문'),
-                const SizedBox(width: 12),
-                _pageBtn(1, '시스템 가이드'),
-              ],
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    for (final line in [...authorPreface, '', ...titleCaption])
+                      Text(
+                        line.isEmpty ? ' ' : line,
+                        style: RetroTheme.dosFont.copyWith(
+                          fontSize: 12,
+                          height: 1.3,
+                          color: RetroTheme.lightCyan,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _pageBtn(int page, String label) {
-    final isActive = _page == page;
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: isActive ? RetroTheme.lightCyan : RetroTheme.darkGray,
-        foregroundColor: isActive ? RetroTheme.black : RetroTheme.white,
-        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
-      ),
-      onPressed: () => setState(() => _page = page),
-      child: Text(label, style: RetroTheme.dosFont.copyWith(fontSize: 11)),
-    );
-  }
-
-  Widget _buildPreface() {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 타이틀
-          Center(
-            child: Text(
-              '또다른 지식의 성전  제 1 부',
-              style: RetroTheme.headerFont.copyWith(
-                fontSize: 16,
-                color: RetroTheme.lightMagenta,
-              ),
-            ),
-          ),
-          Center(
-            child: Text(
-              'The Codex of Another Lore Volume #1',
-              style: RetroTheme.dosFont.copyWith(
-                fontSize: 11,
-                color: RetroTheme.lightMagenta,
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-          // 서문 본문 (원작 Title_Str 배열)
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              border: Border.all(color: RetroTheme.blue),
-              color: RetroTheme.panelBg,
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: LoreGuideDialog.authorPreface.map((line) {
-                if (line.isEmpty) return const SizedBox(height: 8);
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 1.5),
-                  child: Text(
-                    line,
-                    style: RetroTheme.dosFont.copyWith(
-                      fontSize: 11,
-                      color: RetroTheme.lightCyan,
-                      height: 1.5,
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
-          ),
-          const SizedBox(height: 12),
-          // 하단 자막
-          Container(
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              border: Border.all(color: RetroTheme.yellow),
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: LoreGuideDialog.titleCaption.map((line) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 1),
-                  child: Text(
-                    line,
-                    style: RetroTheme.dosFont.copyWith(
-                      fontSize: 10,
-                      color: RetroTheme.yellow,
-                      height: 1.4,
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
-          ),
-          const SizedBox(height: 12),
-          Center(
-            child: Text(
-              'made by Ahn Young-Kie (안영기) / Moon Dong-Wook (문동욱)  ·  1993',
-              style: RetroTheme.dosFont.copyWith(
-                fontSize: 10,
-                color: RetroTheme.darkGray,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildGuide() {
-    return ListView.builder(
-      itemCount: LoreGuideDialog.systemGuide.length,
-      itemBuilder: (ctx, idx) {
-        final g = LoreGuideDialog.systemGuide[idx];
-        return Container(
-          margin: const EdgeInsets.only(bottom: 8),
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            border: Border.all(color: RetroTheme.borderColor),
-            color: RetroTheme.panelBg,
-            borderRadius: BorderRadius.circular(4),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '▸ ${g['title']}',
-                style: RetroTheme.dosFont.copyWith(
-                  fontSize: 12,
-                  color: RetroTheme.yellow,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                g['desc']!,
-                style: RetroTheme.dosFont.copyWith(
-                  fontSize: 10,
-                  color: RetroTheme.lightGray,
-                  height: 1.4,
-                ),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

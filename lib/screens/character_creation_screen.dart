@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../logic/lore_menu_text.dart';
 import '../data/lore_creation.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
@@ -395,6 +396,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
               ),
             ),
             OutlinedButton(
+              key: const ValueKey('quick-start'),
               style: OutlinedButton.styleFrom(
                 side: const BorderSide(color: RetroTheme.lightCyan),
                 padding: const EdgeInsets.symmetric(
@@ -413,12 +415,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 ];
                 widget.onGameStart(defaultParty);
               },
-              child: Text(
-                '빠른 모험 시작 (기본 파티)',
-                style: RetroTheme.dosFont.copyWith(
-                  fontSize: 12,
-                  color: RetroTheme.lightCyan,
-                ),
+              child: const Icon(
+                Icons.fast_forward,
+                size: 18,
+                color: RetroTheme.lightCyan,
               ),
             ),
             ElevatedButton(
@@ -468,7 +468,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 );
               },
               child: Text(
-                '📖 몬스터 도감 (75종)',
+                'Enemy data',
                 style: RetroTheme.dosFont.copyWith(
                   fontSize: 12,
                   color: RetroTheme.yellow,
@@ -490,7 +490,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 );
               },
               child: Text(
-                '📜 제작자 서문 & 가이드',
+                LoreGuideDialog.titleLine,
                 style: RetroTheme.dosFont.copyWith(
                   fontSize: 12,
                   color: RetroTheme.lightCyan,
@@ -513,7 +513,6 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             return const Center(child: CircularProgressIndicator());
           }
           final slots = snapshot.data!;
-          final hasAnySave = slots.any((s) => s != null);
 
           return Dialog(
             backgroundColor: RetroTheme.black,
@@ -532,7 +531,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '◆ 저장된 모험 이어하기 (LOAD GAME) ◆',
+                        LoreMenuText.optionLoadPrompt,
                         style: RetroTheme.headerFont.copyWith(
                           color: RetroTheme.lightMagenta,
                           fontSize: 12,
@@ -549,127 +548,96 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  if (!hasAnySave)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 24),
-                      child: Center(
-                        child: Text(
-                          '저장된 게임 데이터가 없습니다.\n먼저 새 게임을 시작하여 모험을 저장하십시오.',
-                          textAlign: TextAlign.center,
-                          style: RetroTheme.dosFont.copyWith(
-                            color: RetroTheme.yellow,
-                            fontSize: 12,
-                          ),
-                        ),
-                      ),
-                    )
-                  else
-                    ...List.generate(4, (index) {
-                      final slotNum = index + 1;
-                      final slotData = slots[index];
-                      final slotTitle = SaveManager.slotNames[index];
+                  ...List.generate(4, (index) {
+                    final slotData = slots[index];
+                    final slotTitle = SaveManager.slotNames[index];
 
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 8),
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: slotData != null
-                                ? RetroTheme.lightCyan
-                                : RetroTheme.darkGray,
-                          ),
-                          color: RetroTheme.background,
+                    return Container(
+                      margin: const EdgeInsets.only(bottom: 8),
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: slotData != null
+                              ? RetroTheme.lightCyan
+                              : RetroTheme.darkGray,
                         ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                        color: RetroTheme.background,
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  slotTitle,
+                                  style: RetroTheme.headerFont.copyWith(
+                                    color: slotData != null
+                                        ? RetroTheme.yellow
+                                        : RetroTheme.lightGray,
+                                    fontSize: 11,
+                                  ),
+                                ),
+                                const SizedBox(height: 2),
+                                if (slotData == null)
                                   Text(
-                                    '슬롯 $slotNum. $slotTitle',
-                                    style: RetroTheme.headerFont.copyWith(
-                                      color: slotData != null
-                                          ? RetroTheme.yellow
-                                          : RetroTheme.lightGray,
-                                      fontSize: 11,
+                                    '-',
+                                    style: RetroTheme.dosFont.copyWith(
+                                      color: RetroTheme.darkGray,
+                                      fontSize: 10,
+                                    ),
+                                  )
+                                else ...[
+                                  Text(
+                                    '${slotData.mapTitle}  ${LoreMenuText.viewPartyXAxis}${slotData.playerX} ${LoreMenuText.viewPartyYAxis}${slotData.playerY}  ${LoreMenuText.viewPartyGold}${slotData.gold}',
+                                    style: RetroTheme.dosFont.copyWith(
+                                      color: RetroTheme.lightGreen,
+                                      fontSize: 10,
                                     ),
                                   ),
-                                  const SizedBox(height: 2),
-                                  if (slotData == null)
-                                    Text(
-                                      '-- [ 비어 있음 (EMPTY) ] --',
-                                      style: RetroTheme.dosFont.copyWith(
-                                        color: RetroTheme.darkGray,
-                                        fontSize: 10,
-                                      ),
-                                    )
-                                  else ...[
-                                    Text(
-                                      '${slotData.mapTitle} (${slotData.playerX}, ${slotData.playerY}) | 금화: ${slotData.gold}',
-                                      style: RetroTheme.dosFont.copyWith(
-                                        color: RetroTheme.lightGreen,
-                                        fontSize: 10,
-                                      ),
+                                  Text(
+                                    slotData.party
+                                        .map((p) => p.name)
+                                        .join(', '),
+                                    style: RetroTheme.dosFont.copyWith(
+                                      color: RetroTheme.white,
+                                      fontSize: 9,
                                     ),
-                                    Text(
-                                      '일행: ${slotData.party.map((p) => p.name).join(', ')}',
-                                      style: RetroTheme.dosFont.copyWith(
-                                        color: RetroTheme.white,
-                                        fontSize: 9,
-                                      ),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ],
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ],
-                              ),
+                              ],
                             ),
-                            const SizedBox(width: 8),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: slotData != null
-                                    ? RetroTheme.blue
-                                    : RetroTheme.darkGray,
-                                foregroundColor: RetroTheme.white,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 6,
-                                ),
-                                minimumSize: const Size(64, 28),
+                          ),
+                          const SizedBox(width: 8),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: slotData != null
+                                  ? RetroTheme.blue
+                                  : RetroTheme.darkGray,
+                              foregroundColor: RetroTheme.white,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 6,
                               ),
-                              onPressed: slotData == null
-                                  ? null
-                                  : () {
-                                      Navigator.of(ctx).pop();
-                                      widget.onLoadGame?.call(slotData);
-                                    },
-                              child: Text(
-                                '불러오기',
-                                style: RetroTheme.dosFont.copyWith(
-                                  fontSize: 10,
-                                ),
-                              ),
+                              minimumSize: const Size(64, 28),
                             ),
-                          ],
-                        ),
-                      );
-                    }),
-                  const SizedBox(height: 8),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      style: TextButton.styleFrom(
-                        backgroundColor: RetroTheme.darkGray,
-                        foregroundColor: RetroTheme.white,
+                            onPressed: slotData == null
+                                ? null
+                                : () {
+                                    Navigator.of(ctx).pop();
+                                    widget.onLoadGame?.call(slotData);
+                                  },
+                            child: Text(
+                              LoreMenuText.optionResume,
+                              style: RetroTheme.dosFont.copyWith(fontSize: 10),
+                            ),
+                          ),
+                        ],
                       ),
-                      onPressed: () => Navigator.of(ctx).pop(),
-                      child: Text(
-                        '닫기',
-                        style: RetroTheme.dosFont.copyWith(fontSize: 11),
-                      ),
-                    ),
-                  ),
+                    );
+                  }),
                 ],
               ),
             ),
@@ -793,7 +761,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: RetroTheme.blue),
           onPressed: () => setState(() => _step = 2),
-          child: Text('성향 테스트 진행 ▶', style: RetroTheme.dosFont),
+          child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
         ),
       ],
     );
@@ -942,7 +910,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 : RetroTheme.darkGray,
           ),
           onPressed: _pointsLeft == 0 ? () => setState(() => _step = 4) : null,
-          child: Text('계급 선택 ▶', style: RetroTheme.dosFont),
+          child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
         ),
       ],
     );
@@ -999,17 +967,6 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
               fontSize: 12,
             ),
           ),
-        if (options.length < _data.classes.length)
-          Padding(
-            padding: const EdgeInsets.only(top: 6),
-            child: Text(
-              '(능력치 조건을 만족하지 못한 계급은 고를 수 없습니다)',
-              style: RetroTheme.dosFont.copyWith(
-                color: RetroTheme.lightGray,
-                fontSize: 10,
-              ),
-            ),
-          ),
         const SizedBox(height: 14),
         ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -1020,10 +977,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
           onPressed: _selectedClass == null
               ? null
               : () => setState(() => _step = 5),
-          child: Text(
-            '${_data.text('Third', 10)} (동료 선택 ▶)',
-            style: RetroTheme.dosFont,
-          ),
+          child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
         ),
       ],
     );
@@ -1151,10 +1105,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
               onPressed: _selectedCompanions.length == 4
                   ? _finishCreation
                   : null,
-              child: Text(
-                'LORE 모험 시작하기 (${_data.initial['x'] ?? 51}, ${_data.initial['y'] ?? 31} 진입) ▶',
-                style: RetroTheme.dosFont,
-              ),
+              child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
             ),
             const SizedBox(width: 10),
             TextButton(
