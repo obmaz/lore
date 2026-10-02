@@ -1296,97 +1296,201 @@ class LoreSpecProcedures {
     return finish('spec-17-x$x-y$y');
   }
 
-  /// `LORESPEC.PAS:1174-1365`, map 18 (T_DEN4 / LOCKUP).
+  /// Spica's lecture and the original `LORESPEC.PAS:1276-1296` Print layout
+  /// (`Print` pages separated by `PressAnyKey`).
+  static const _map18SpicaPages = <List<String>>[
+    ['여기에는 어떤 여자가 수도하고 있었다'],
+    [
+      ' 나는 이곳 LOCKUP이 적들에게 점령되기전  부',
+      '터 여기서 수도하고 있는 Spica란 사람입니다',
+      ' 오랜 수도 끝에 나는 초자연력의 존재와 사용',
+      '법을 알게 되었습니다.  대충 요약하면 이렇습',
+      '니다.',
+    ],
+    [
+      '',
+      '투  시 : 변화의 여지가 있는 지역을 탐지',
+      '예  언 : 다음의 할 일을 알아냄',
+      '독  심 : 남의 마음을 자기쪽으로 끌어들임',
+      '천리안 : 능력에 따라 먼곳의 광경을 봄',
+      '염  력 : 주위 환경 조절에 의한 공격',
+    ],
+    [
+      ' 이것으로 Necromancer에게 도전 하십시오. 또',
+      '한,  그도 초자연력의 존재를 알고있고 사용할',
+      '줄 안다는걸 염두에 두고 사용하십시오.',
+    ],
+  ];
+
+  /// `LORESPEC.PAS:1174-1365`, `case 18` (LOCKUP).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 95` handled via portal session.
-  /// 2. Passage at `(22, 41)`:
-  ///    - `map[22, 41] := 44; map[21, 41] := 52;` (`lockup-passage-22-41`).
-  /// 3. Guardian battle at `(21, 41)`:
-  ///    - `party.etc[39] and bit3 == 0`: Minotaur battle (`lockup-guardian-21-41`).
-  /// 4. Spica at `(37, 31)`:
-  ///    - `party.etc[39] and bit2 > 0`: null (이미 합류/결정 완료).
-  ///    - `party.etc[39] and bit1 > 0`:
-  ///      - if not `context.mindReadActive`: `spica-mind-read-inactive`.
-  ///      - if `context.maxEspLevel < 5`: `spica-cannot-read`.
-  ///      - if `context.maxEspLevel >= 5`: `spica-join` (합류 제의).
-  ///    - `party.etc[39] and bit1 == 0`:
-  ///      - `spica-first-meeting` (초자연력 설명, `etc39_bit1` 설정).
-  /// 5. Huge Dragon boss battle at `x == 31`:
-  ///    - `party.etc[15] < 4`: Huge Dragon battle (`map18-huge-dragon`).
+  /// A run of independent `if`s on the current cell. `y = 95` is the
+  /// `wantexit` boundary (map 3 (96,43); refusal y - 1); its special cells are
+  /// x 23..26, so nothing below it can follow. (22,41) turns the cell into 44
+  /// and (21,41) into 52. (21,41) fights the Minotaur while raw etc[39] bit3
+  /// is clear and sets bit3 after victory or escape. (37,31) is Spica: bit2
+  /// ends it, bit1 + mind read (etc[5] > 0) + the best espLevel >= 5 offers the
+  /// join (bit2 is written before `ReturnJoinMember`), anything else repeats
+  /// the short refusals, and bit1 clear gives the lecture and sets bit1.
+  /// x = 31 while etc[15] < 4 walks the party to x + 6, y 13 and fights the
+  /// Huge Dragon (random(3) + 30 for slots 3..7, in slot order); victory sets
+  /// etc[15] := 4, escape moves to (25,94). Defeat runs no continuation.
   static ScriptRun? map18(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
-    }
-
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 95) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 18,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    final etc39 = context.etcValue(
+      39,
+      bitAliases: const {3: 'lockupGuardianDefeated'},
+    );
     if (x == 22 && y == 41) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'lockup-passage-22-41',
-      );
-      return scripts.startProcedure(content, context);
+      return start('lockup-passage-22-41', const [
+        ScriptStep(kind: 'setTile', tileX: 22, tileY: 41, tileValue: 44),
+        ScriptStep(kind: 'setTile', tileX: 21, tileY: 41, tileValue: 52),
+      ]);
     }
-
-    if (x == 21 && y == 41) {
-      final hasDefeated =
-          context.flags.contains('etc39_bit3') ||
-          context.flags.contains('lockupGuardianDefeated');
-      if (!hasDefeated) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'lockup-guardian-21-41',
-        );
-        return scripts.startProcedure(content, context);
-      }
+    if (x == 21 && y == 41 && (etc39 & LorePascal.bit(3)) == 0) {
+      const seen = ScriptStep(kind: 'flag', key: 'etc39_bit3');
+      return start('lockup-guardian-21-41', [
+        ..._torchSteps(context),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Minotaur',
+            lines: ['미로속에서 소를 닮은 괴물이 나타났다'],
+          ),
+        ),
+        const ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Minotaur',
+          battleEnemyFirst: true,
+          monsters: [53],
+          battleRunAwaySteps: [seen],
+        ),
+        seen,
+      ]);
     }
-
     if (x == 37 && y == 31) {
-      final hasDecided = context.flags.contains('etc39_bit2');
-      if (hasDecided) return null;
-
-      final hasMet = context.flags.contains('etc39_bit1');
-      if (hasMet) {
-        if (!context.mindReadActive) {
-          final content = scripts.scripts.singleWhere(
-            (script) => script.id == 'spica-mind-read-inactive',
-          );
-          return scripts.startProcedure(content, context);
-        }
-        if (context.maxEspLevel < 5) {
-          final content = scripts.scripts.singleWhere(
-            (script) => script.id == 'spica-cannot-read',
-          );
-          return scripts.startProcedure(content, context);
-        }
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'spica-join',
-        );
-        return scripts.startProcedure(content, context);
-      } else {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'spica-first-meeting',
-        );
-        return scripts.startProcedure(content, context);
+      if ((etc39 & LorePascal.bit(2)) != 0) return null;
+      ScriptStep scene(List<String> lines) => ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(title: 'Spica', lines: lines),
+      );
+      if ((etc39 & LorePascal.bit(1)) == 0) {
+        return start('spica-first-meeting', [
+          for (final page in _map18SpicaPages) scene(page),
+          const ScriptStep(kind: 'flag', key: 'etc39_bit1'),
+        ]);
       }
-    }
-
-    if (x == 31) {
-      final swampQuest = context.questSteps['swamp'] ?? 0;
-      if (swampQuest < 4) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'map18-huge-dragon',
-        );
-        return scripts.startProcedure(content, context);
+      final mindRead = context.sourceEtc.containsKey(5)
+          ? context.etcValue(5) > 0
+          : context.mindReadActive;
+      if (!mindRead) {
+        return start('spica-mind-read-inactive', const [
+          ScriptStep(kind: 'say', text: ' 지체할 시간이 없습니다. 신속히 행동을 취하'),
+          ScriptStep(kind: 'say', text: '십시오.'),
+        ]);
       }
+      if (context.maxEspLevel < 5) {
+        return start('spica-cannot-read', const [
+          ScriptStep(kind: 'say', text: ' 당신이 나의 마음을 읽으려 하지만 아직 당신'),
+          ScriptStep(kind: 'say', text: '의 능력으로는 나의 마음을 끌어낼수는 없습니'),
+          ScriptStep(kind: 'say', text: '다.'),
+        ]);
+      }
+      return start('spica-join', const [
+        ScriptStep(kind: 'say', text: ' 갑자기 Necromancer에게 대항 하고픈  결의가'),
+        ScriptStep(kind: 'say', text: '생기는 군요. 나도 당신들을 도와 그를 무찌르'),
+        ScriptStep(kind: 'say', text: '겠습니다.'),
+        ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          options: [
+            ScriptOption('저도 원했던 바입니다', [
+              ScriptStep(kind: 'flag', key: 'etc39_bit2'),
+              ScriptStep(kind: 'join', key: 'spica'),
+            ]),
+            ScriptOption('말씀은 고맙지만 사양하겠습니다', [
+              ScriptStep(kind: 'flag', key: 'etc39_bit2'),
+            ]),
+          ],
+        ),
+      ]);
     }
-
+    if (x == 31 && _questByte(context, 15, 'water') < 4) {
+      const message = '당신은 여기가 Huge Dragon의 거처임을 느꼈다';
+      return start('map18-huge-dragon', [
+        ..._torchSteps(context),
+        const ScriptStep(kind: 'say', text: message),
+        const ScriptStep(kind: 'sourceFace', sourceFace: 6),
+        for (var i = 0; i < 6; i++) const ScriptStep(kind: 'nudge', nudgeDx: 1),
+        const ScriptStep(kind: 'sourceFace', sourceFace: 4),
+        for (var cy = y + 1; cy <= 13; cy++)
+          const ScriptStep(kind: 'nudge', nudgeDy: 1),
+        const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: 'Huge Dragon', lines: [message]),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Huge Dragon',
+          battleEnemyFirst: true,
+          monsters: [54, 39, for (var i = 3; i <= 7; i++) scripts.roll(3) + 30],
+          battleOverrides: const [
+            {'index': 1, 'name': 'Huge Dragon'},
+            {'index': 2, 'name': "Dragon's tail", 'ac': 8},
+          ],
+          battleRunAwaySteps: const [
+            ScriptStep(kind: 'teleport', tileX: 25, tileY: 94),
+          ],
+        ),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Huge Dragon',
+            lines: [
+              '당신들은 Huge Dragon을 물리쳤다.',
+              '그리고 당신은 이 임무에 성공했다.',
+              '다시 WATER FIELD 의 군주에게로 돌아가라.',
+            ],
+          ),
+        ),
+        const ScriptStep(kind: 'questStep', questName: 'water', questSet: 4),
+      ]);
+    }
     return null;
+  }
+
+  /// `if party.etc[1] = 0 then begin party.etc[1] := 1; scroll(true); end`.
+  static List<ScriptStep> _torchSteps(ScriptContext context) {
+    final unlit =
+        context.etcValue(1) == 0 &&
+        (context.sourceEtc.containsKey(1) ||
+            !context.flags.contains('torchActive'));
+    return [
+      if (unlit) ...const [
+        ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+        ScriptStep(kind: 'torch', torchLit: true),
+      ],
+    ];
   }
 
   /// `LORESPEC.PAS:1378-1473`, map 19 (DEN6 / EVIL DEN).
