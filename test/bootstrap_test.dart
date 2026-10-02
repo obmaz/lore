@@ -9,6 +9,8 @@ import 'package:lore/game/lore_world_manager.dart';
 import 'package:lore/game/sprite_sheet.dart';
 import 'package:lore/logic/lore_join.dart';
 import 'package:lore/main.dart';
+import 'package:lore/widgets/viewport_view.dart';
+import 'package:lore/widgets/party_status_view.dart';
 import 'package:lore/widgets/dpad_widget.dart';
 
 /// `main()`과 동일한 순서로 모든 JSON/PNG 데이터를 로드한 "JSON 사용 상태"의 통합 검증.
@@ -146,12 +148,12 @@ void main() {
       await tester.tap(find.text('빠른 모험 시작 (기본 파티)'));
       await tester.pump(const Duration(milliseconds: 300));
 
-      expect(find.text('◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆'), findsOneWidget);
+      expect(find.byType(ViewportView), findsOneWidget);
       expect(find.byType(DPadWidget), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('panel-tab-party')));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 350));
-      expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);
+      expect(find.byType(PartyStatusView), findsOneWidget);
 
       // 부팅 후에도 JSON 데이터가 계속 사용되고 있다
       expect(LoreData.instance.usingJson, isTrue);

@@ -1,5 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/main.dart';
+import 'package:lore/widgets/viewport_view.dart';
+import 'package:lore/widgets/party_status_view.dart';
 import 'package:lore/widgets/dpad_widget.dart';
 import 'package:lore/widgets/message_log_view.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +23,8 @@ void main() {
     await tester.pump(const Duration(milliseconds: 200));
 
     // 3. 메인 게임 화면 (성내 마을 51, 31) 진입 확인
-    expect(find.text('◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆'), findsOneWidget);
-    expect(find.text('▶ 콘솔 메시지 ◀'), findsOneWidget);
+    expect(find.byType(ViewportView), findsOneWidget);
+    expect(find.byType(MessageLogView), findsOneWidget);
 
     // 4. D-Pad 렌더링 확인
     expect(find.byType(DPadWidget), findsOneWidget);
@@ -35,6 +37,6 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('panel-tab-party')));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 350));
-    expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);
+    expect(find.byType(PartyStatusView), findsOneWidget);
   });
 }

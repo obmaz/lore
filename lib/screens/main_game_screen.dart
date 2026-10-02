@@ -1903,21 +1903,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
   }
 
-  String _getViewportTitle() {
-    switch (_currentMode) {
-      case GameScreenMode.field:
-        return '◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆';
-      case GameScreenMode.battle:
-        return '⚔ 턴제 전투 모드 (BATTLE ARENA) ⚔';
-      case GameScreenMode.encounter:
-        return '⚔ 적 조우 (ENCOUNTER) ⚔';
-      case GameScreenMode.gameOver:
-        return '† 게임 오버 (GAME OVER) †';
-      case GameScreenMode.ending:
-        return '◆ 에필로그 ◆';
-    }
-  }
-
   @override
   void dispose() {
     _focusNode.dispose();
@@ -1995,11 +1980,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         backgroundColor: RetroTheme.black,
         body: SafeArea(
           child: GameScreenLayout(
-            viewport: ViewportView(
-              title: _getViewportTitle(),
-              overlayTitle: true,
-              content: _buildViewportContent(),
-            ),
+            viewport: ViewportView(content: _buildViewportContent()),
             party: PartyStatusView(members: _mapPartyStatus()),
             messages: MessageLogView(logs: _logs, revision: _logRevision),
             controls: _currentMode == GameScreenMode.field

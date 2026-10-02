@@ -46,7 +46,6 @@ class PartyStatusView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RetroBox(
-      title: '◆ 파티원 상태 (PARTY STATUS) ◆',
       borderColor: RetroTheme.borderColor,
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
       child: Column(

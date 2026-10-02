@@ -54,7 +54,6 @@ class _MessageLogViewState extends State<MessageLogView> {
   @override
   Widget build(BuildContext context) {
     return RetroBox(
-      title: '▶ 콘솔 메시지 ◀',
       borderColor: RetroTheme.cyan,
       backgroundColor: RetroTheme.background,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
