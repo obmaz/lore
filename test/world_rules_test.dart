@@ -199,7 +199,6 @@ void main() {
         (23, 46, 5, 34, 15),
         (24, 46, 22, 25, 24),
         (25, 46, 23, 25, 45),
-        (27, 50, 1, 20, 8),
       ];
 
       for (final (map, y, tm, tx, ty) in exits) {
@@ -213,6 +212,14 @@ void main() {
           manager.findPortal(map, 10, y - 1),
           isNull,
           reason: '맵 $map y=${y - 1} 오발동',
+        );
+      }
+      // LORESPEC.PAS:2202-2212: map 27 asks wantexit on every special tile.
+      for (final y in [5, 46]) {
+        final portal = manager.findPortal(27, 15, y)!;
+        expect(
+          [portal.targetMapId, portal.targetX, portal.targetY],
+          [1, 20, 8],
         );
       }
     });

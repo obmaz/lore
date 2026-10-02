@@ -1651,28 +1651,17 @@ class LoreSpecProcedures {
     );
   }
 
-  /// `LORESPEC.PAS:2202-2213`, map 27 (PYRAMID1 / ANOTHER LORE / 또 다른 지식의 성전).
+  /// `LORESPEC.PAS:2202-2212`, map 27 (PYRAMID1 / ANOTHER LORE).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Exit check via `wantexit`:
-  ///    - Exit is handled via portal session.
-  /// 2. If rejected exit / stepping on special boundary tiles:
-  ///    - `y < 25` -> `inc(y)` (`map27-special-upper`).
-  ///    - `y >= 25` -> `dec(y)` (`map27-special-lower`).
+  /// The whole arm is `wantexit`: acceptance loads map 1 at (20,8) and refusal
+  /// moves `y < 25 ? y + 1 : y - 1`. Both belong to the exit boundary in
+  /// `LoreWorldManager.findPortal`/`sourceExitRejectY`; no special event runs.
   static ScriptRun? map27(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
-  ) {
-    if (!scripts.usingJson) return null;
-
-    final scriptId = y < 25 ? 'map27-special-upper' : 'map27-special-lower';
-    final content = scripts.scripts.singleWhere(
-      (script) => script.id == scriptId,
-    );
-    return scripts.startProcedure(content, context);
-  }
+  ) => null;
 
   /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
   /// replaced with floor. Keep the reward and tile effect in JSON data.

@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/game/lore_world_manager.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/lore_spec_procedures.dart';
@@ -194,38 +195,25 @@ void main() {
     expect(second.outcome.sourceEtcWrites.single.index, 40);
   });
 
-  test('맵 27 특수 칸은 출구 이동 대신 중앙 쪽으로 한 칸 이동한다', () async {
+  test('맵 27 특수 칸은 wantexit이며 거절하면 중앙 쪽으로 한 칸 이동한다', () async {
     final fixture = jsonDecode(
       File('test/fixtures/map27_route_parity.json').readAsStringSync(),
     ) as Map<String, dynamic>;
     final map = await LoreMapData.loadFromAsset('PYRAMID1', category: 'town');
-    final engine = LoreScriptEngine();
-    engine.loadFromJson(
-      await rootBundle.loadString('assets/data/scripts.json'),
-    );
     for (final raw in fixture['cases'] as List<dynamic>) {
       final item = raw as Map<String, dynamic>;
       final start = (item['start'] as List<dynamic>).cast<int>();
       final expected = (item['sourceEnd'] as List<dynamic>).cast<int>();
-      final run = engine.startStep(
+      expect(map.getTile(start[0], start[1]), 0);
+      final portal = LoreWorldManager.instance.findPortal(
         27,
         start[0],
         start[1],
-        const ScriptContext(tileAtPlayer: 0),
       )!;
-      final actual = ScriptWorldReducer.applyMap(
-        ScriptMapState(
-          mapId: 27,
-          x: start[0],
-          y: start[1],
-          direction: 0,
-          grid: map.grid,
-        ),
-        run.outcome,
-      );
+      expect([portal.targetMapId, portal.targetX, portal.targetY], [1, 20, 8]);
       expect(
-        [actual.mapId, actual.x, actual.y],
-        [27, ...expected],
+        [start[0], LoreWorldManager.sourceExitRejectY(27, start[1])],
+        expected,
         reason: '특수 칸 ${item['start']}',
       );
     }

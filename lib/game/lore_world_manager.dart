@@ -347,26 +347,52 @@ class LoreWorldManager {
     return null;
   }
 
+  /// `wantexit` refusal inside LORESPEC: the y the party is left on, or null
+  /// when the exit is not a source specialevent boundary.
+  static int? sourceExitRejectY(int mapId, int y) => switch (mapId) {
+    23 || 24 || 25 when y == 46 => y - 1,
+    27 => y < 25 ? y + 1 : y - 1,
+    _ => null,
+  };
+
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
   PortalInfo? findPortal(int currentMapId, int x, int y) {
-    // LORESPEC.PAS:1883-1894 and 1997-2006 own the exact map 23/25 exits.
-    if (currentMapId == 23 && y == 46) {
+    // LORESPEC.PAS:1883-1894, 1982-1993 and 1997-2006 own the exact
+    // map 23/24/25 exits; any other row of those maps never exits.
+    if (currentMapId == 23 || currentMapId == 24 || currentMapId == 25) {
+      if (y == 46) {
+        return switch (currentMapId) {
+          23 => const PortalInfo(
+            targetMapId: 5,
+            targetX: 34,
+            targetY: 15,
+            name: 'KEEP3 출구',
+          ),
+          24 => const PortalInfo(
+            targetMapId: 22,
+            targetX: 25,
+            targetY: 24,
+            name: 'LAST SHELTER 출구',
+          ),
+          _ => const PortalInfo(
+            targetMapId: 23,
+            targetX: 25,
+            targetY: 45,
+            name: 'K_DEN2 출구',
+          ),
+        };
+      }
+      if (y > 46) return null;
+    }
+    // LORESPEC.PAS:2202-2212: every specialevent on map 27 is `wantexit`.
+    if (currentMapId == 27) {
       return const PortalInfo(
-        targetMapId: 5,
-        targetX: 34,
-        targetY: 15,
-        name: 'KEEP3 출구',
+        targetMapId: 1,
+        targetX: 20,
+        targetY: 8,
+        name: 'ANOTHER LORE 출구',
       );
     }
-    if (currentMapId == 25 && y == 46) {
-      return const PortalInfo(
-        targetMapId: 23,
-        targetX: 25,
-        targetY: 45,
-        name: 'K_DEN2 출구',
-      );
-    }
-    if ((currentMapId == 23 || currentMapId == 25) && y > 46) return null;
     // 1순위: JSON 규칙 (assets/data/portals.json)
     for (final rule in _portalRules) {
       final portal = rule.match(currentMapId, x, y);

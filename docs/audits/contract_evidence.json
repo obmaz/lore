@@ -749,6 +749,46 @@
       "test": "test/map23_keep3_source_test.dart",
       "note": "Source-extracted map23 (25,27) lever: reachable after the LOREENT sign sets map[25,27]:=52; writes map[25,27]:=46, map[29,43]:=44, zero cells of 12..39 x 7..34 -> 39 and map[25..26,12]:=54 before the closing PressAnyKey; no completion flag. DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:127",
+      "line": 1982,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Exact map24 y=46 wantexit boundary owned by LoreWorldManager.findPortal/sourceExitRejectY: accept -> map 22 (25,24), refusal -> y-1; y>46 never exits; no special event or JSON fallback. Native prompt; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:128",
+      "line": 1983,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Exact map24 y=46 wantexit boundary owned by LoreWorldManager.findPortal/sourceExitRejectY: accept -> map 22 (25,24), refusal -> y-1; y>46 never exits; no special event or JSON fallback. Native prompt; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:148",
+      "line": 2202,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map27 arm is wantexit on every specialevent (tile 0 in PYRAMID1): accept -> map 1 (20,8), refusal -> y+1 when y<25 else y-1. Former JSON nudge rules disabled; LoreSpecProcedures.map27 owns no event. Native prompt; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:149",
+      "line": 2210,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map27 arm is wantexit on every specialevent (tile 0 in PYRAMID1): accept -> map 1 (20,8), refusal -> y+1 when y<25 else y-1. Former JSON nudge rules disabled; LoreSpecProcedures.map27 owns no event. Native prompt; DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

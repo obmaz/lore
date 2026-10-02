@@ -25631,6 +25631,7 @@
     },
     {
       "id": "map27-special-upper",
+      "disabled": true,
       "trigger": "step",
       "map": 27,
       "yMax": 24,
@@ -25648,6 +25649,7 @@
     },
     {
       "id": "map27-special-lower",
+      "disabled": true,
       "trigger": "step",
       "map": 27,
       "yMin": 25,
