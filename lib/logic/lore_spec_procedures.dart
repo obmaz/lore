@@ -945,130 +945,294 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:1475-1759`, map 20 (DEN5 / MUD DEN / ASTRAL DEN).
+  static const _den7Quiz91Heading = <String>[
+    ' 다음 물음이 맞다면 왼쪽길로, 아니면 오른쪽',
+    '길로 가시오.',
+    '',
+  ];
+  static const _den7Quiz91Statements = <String>[
+    '문> CONFIG.SYS가 없으면 부팅이 안된다',
+    '문> Quick-BASIC은 인터프리터어 이다',
+    '문> Super VGA는 호환이 잘된다',
+    '문> 8-bit APPLE의 CPU는 Z - 80 이다',
+    '문> COMMAND.COM 안에 도스 명령이 들어있다',
+    '문> AdLib 카드는 9 채널이다',
+    '문> Ultima의 제작자는 리차드 게리오트이다',
+    '문> 당신의 컴퓨터는 IBM 계열이다',
+  ];
+  static const _den7Quiz75Heading = <String>[
+    ' 다음 물음이 맞다면 왼쪽길로, 아니면 오른쪽',
+    '길로 가시오.',
+    '',
+  ];
+  static const _den7Quiz75Statements = <String>[
+    '문> 태양계의 제 4 혹성은 지구이다',
+    '문> 북극성이 가장 밝은 별이다',
+    '문> 1월의 수호성좌는 1월에 볼수있다',
+    '문> 빛보다 빠른 입자는 실험상 없었다',
+    '문> 달이 지구보다 먼저 생겨났다',
+    '문> 시그너스 X1은 블랙홀이다',
+    '문> 과거로의 타임머신은 불가능하다',
+    '문> 북극성은 주기적으로 달라진다',
+  ];
+  static const _den7Quiz54Heading = <String>['<< 다음의 옳고 그름을 가리시오 >>', ''];
+  static const _den7Quiz54Statements = <String>[
+    '문> 이 게임의 배경은 4개의 대륙이다',
+    '문> Ancient Evil은 응징되어야 한다',
+    '문> Lord Ahn만이 유일한 Semi-God이다',
+    '문> 이 세계의 모든 악은 응징되어야 한다',
+    '문> 이 게임의 제작자는 안 영기이다',
+    '문> 게임속의 인물은 거의 별의 이름을 가졌다',
+    '문> Necromancer는 신의 경지에 이르렀다',
+    '문> Necromancer는 이 세계의 존재가 아니었다',
+  ];
+
+  /// `LORESPEC.PAS:1475-1759`, `case 20` (DEN7 / ASTRAL DEN).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 96` handled via portal session.
-  /// 2. Quiz 1 door check at `y == 88`:
-  ///    - If tile at player == 0: `y := 80` (`den7-passage-y88`).
-  ///    - Else: eject to map 4 `(82, 17)` (`den7-exit-y88`).
-  /// 3. Quiz 2 door check at `y == 71`:
-  ///    - If tile at player == 0: `y := 63` (`den7-passage-y71`).
-  ///    - Else: eject to map 4 `(82, 17)` (`den7-exit-y71`).
-  /// 4. Quiz 1 at `y == 91`: `den7-quiz-y91`.
-  /// 5. Quiz 2 at `y == 75`: `den7-quiz-y75`.
-  /// 6. Quiz 3 at `y == 54`: `den7-quiz-y54`.
-  /// 7. Guardian Minotaur at `y == 48`:
-  ///    - If `party.etc[41] and bit4 == 0`: `den7-minotaur-y48`.
-  /// 8. Final boss sequence at `y == 13`:
-  ///    - If `party.etc[41] and bit2 == 0`: `den7-dragons-y13`.
-  ///    - Else if `party.etc[41] and bit3 == 0`: `den7-mudmen-y13`.
-  ///    - Else if `party.etc[41] and bit1 == 0`: `den7-master-y13`.
+  /// The arm is a run of independent `if`s on the current y. `y = 96` is the
+  /// `wantexit` boundary. Doors at y = 88/71 pass on tile 0 (`y := 80/63`)
+  /// and otherwise load map 4 (82,17). The y = 91/75 quizzes draw one
+  /// `random(8)`, write the row and the two doors, then wait. The y = 54 quiz
+  /// draws one `random(8)` and asks; Escape moves y + 1, a right answer opens
+  /// rows 49..52 and a wrong one loads map 4. The torch decrement of the
+  /// x 8..42, y 19..43 maze (every cell there is tile 0 or a wall) stays in
+  /// the field step handler. y = 18 sets etc[1] := 1. The y = 48 Minotaur
+  /// sets etc[41] bit4 after victory or escape; y = 13 chains the dragon,
+  /// mud and Astral Mud fights on raw etc[41] bits 2, 3 and 1, each escape
+  /// moving y + 1. Defeat runs no continuation (GameOver reload overlay).
   static ScriptRun? map20(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
+    if (y == 96) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 20,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    const leave = ScriptStep(
+      kind: 'teleport',
+      teleportMap: 4,
+      tileX: 82,
+      tileY: 17,
+    );
+    const back = ScriptStep(kind: 'nudge', nudgeDy: 1);
+    if (y == 88 || y == 71) {
+      if ((context.tileAtPlayer ?? 0) != 0) {
+        return start('den7-exit-y$y', [leave]);
+      }
+      return start('den7-passage-y$y', [
+        ScriptStep(
+          kind: 'teleport',
+          tileY: y == 88 ? 80 : 63,
+          teleportKeepX: true,
+        ),
+      ]);
     }
-
-    if (y == 88) {
-      final scriptId = context.tileAtPlayer == 0
-          ? 'den7-passage-y88'
-          : 'den7-exit-y88';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
-      );
-      return scripts.startProcedure(content, context);
+    if (y == 91 || y == 75) {
+      final i = scripts.roll(8);
+      final door = y == 91 ? 88 : 71;
+      return start('den7-quiz-y$y', [
+        ScriptStep(
+          kind: 'setTileArea',
+          tileX: 23,
+          tileXMax: 26,
+          tileY: y,
+          tileValue: 44,
+        ),
+        ScriptStep(
+          kind: 'setTile',
+          tileX: 8,
+          tileY: door,
+          tileValue: i < 4 ? 52 : 0,
+        ),
+        ScriptStep(
+          kind: 'setTile',
+          tileX: 43,
+          tileY: door,
+          tileValue: i < 4 ? 0 : 52,
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: '퀴즈',
+            lines: [
+              ...(y == 91 ? _den7Quiz91Heading : _den7Quiz75Heading),
+              (y == 91 ? _den7Quiz91Statements : _den7Quiz75Statements)[i],
+            ],
+          ),
+        ),
+      ]);
     }
-
-    if (y == 71) {
-      final scriptId = context.tileAtPlayer == 0
-          ? 'den7-passage-y71'
-          : 'den7-exit-y71';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 18) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'den7-torch-y18',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 91) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'den7-quiz-y91',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 75) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'den7-quiz-y75',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
     if (y == 54) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'den7-quiz-y54',
-      );
-      return scripts.startProcedure(content, context);
+      final i = scripts.roll(8);
+      final open = [
+        const ScriptStep(
+          kind: 'setTileArea',
+          tileX: 23,
+          tileXMax: 25,
+          tileY: 54,
+          tileValue: 44,
+        ),
+        // LORESPEC.PAS:1580-1584: j outer, then 22, 26 and 23..25 per row.
+        for (var j = 49; j <= 52; j++) ...[
+          ScriptStep(kind: 'setTile', tileX: 22, tileY: j, tileValue: 25),
+          ScriptStep(kind: 'setTile', tileX: 26, tileY: j, tileValue: 23),
+          ScriptStep(
+            kind: 'setTileArea',
+            tileX: 23,
+            tileXMax: 25,
+            tileY: j,
+            tileValue: 44,
+          ),
+        ],
+      ];
+      final wrong = [
+        const ScriptStep(
+          kind: 'setTileArea',
+          tileX: 23,
+          tileXMax: 25,
+          tileY: 54,
+          tileValue: 44,
+        ),
+        leave,
+      ];
+      return start('den7-quiz-y54', [
+        for (final line in [..._den7Quiz54Heading, _den7Quiz54Statements[i]])
+          ScriptStep(kind: 'say', text: line),
+        ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          options: [
+            ScriptOption('위의 말은 옳다', i > 3 ? open : wrong),
+            ScriptOption('위의 말은 잘못되었다', i < 4 ? open : wrong),
+          ],
+          cancelSteps: const [back],
+        ),
+      ]);
     }
-
+    if (y == 18) {
+      return start('den7-torch-y18', const [
+        ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+        ScriptStep(kind: 'torch', torchLit: true),
+      ]);
+    }
+    if (y != 48 && y != 13) return null;
+    final etc41 = context.etcValue(
+      41,
+      bitAliases: const {
+        1: 'den7MazeCleared',
+        2: 'den7DragonsCleared',
+        3: 'den7MudmenCleared',
+        4: 'den7MinotaurCleared',
+      },
+    );
+    bool clear(int bit) => (etc41 & LorePascal.bit(bit)) == 0;
+    final torch = context.etcValue(1);
+    final unlit =
+        torch == 0 &&
+        (context.sourceEtc.containsKey(1) ||
+            !context.flags.contains('torchActive'));
+    final light = [
+      if (unlit) ...const [
+        ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+        ScriptStep(kind: 'torch', torchLit: true),
+      ],
+    ];
     if (y == 48) {
-      final hasDefeated =
-          context.flags.contains('etc41_bit4') ||
-          context.flags.contains('den7MinotaurCleared');
-      if (!hasDefeated) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'den7-minotaur-y48',
-        );
-        return scripts.startProcedure(content, context);
-      }
+      if (!clear(4)) return null;
+      const seen = ScriptStep(kind: 'flag', key: 'etc41_bit4');
+      return start('den7-minotaur-y48', [
+        ...light,
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '미궁의 괴물', lines: ['미로속에서 소를 닮은 괴물이 나타났다']),
+        ),
+        const ScriptStep(
+          kind: 'battle',
+          battleTitle: '미궁의 괴물',
+          battleEnemyFirst: true,
+          monsters: [53],
+          battleRunAwaySteps: [seen],
+        ),
+        seen,
+      ]);
     }
-
-    if (y == 13) {
-      final hasDefeatedDragons =
-          context.flags.contains('etc41_bit2') ||
-          context.flags.contains('den7DragonsCleared');
-      final hasDefeatedMudmen =
-          context.flags.contains('etc41_bit3') ||
-          context.flags.contains('den7MudmenCleared');
-      final hasDefeatedMaster =
-          context.flags.contains('etc41_bit1') ||
-          context.flags.contains('den7MazeCleared');
-
-      if (!hasDefeatedDragons) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'den7-dragons-y13',
-        );
-        return scripts.startProcedure(content, context);
-      }
-      if (!hasDefeatedMudmen) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'den7-mudmen-y13',
-        );
-        return scripts.startProcedure(content, context);
-      }
-      if (!hasDefeatedMaster) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'den7-master-y13',
-        );
-        return scripts.startProcedure(content, context);
-      }
-    }
-
-    return null;
+    return start('den7-final-y13', [
+      ...light,
+      if (clear(2)) ...const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '미궁의 수호룡', lines: []),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Dragon',
+          battleEnemyFirst: true,
+          monsters: [54, 54, 54],
+          battleRunAwaySteps: [back],
+        ),
+        ScriptStep(kind: 'flag', key: 'etc41_bit2'),
+      ],
+      if (clear(3)) ...const [
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Mud-Man',
+          battleEnemyFirst: true,
+          monsters: [31, 31, 31, 31, 31, 31, 31],
+          battleRunAwaySteps: [back],
+        ),
+        ScriptStep(kind: 'flag', key: 'etc41_bit3'),
+      ],
+      if (clear(1)) ...const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Astral Mud',
+            lines: [
+              ' 나는 Necromacer 와 함께 다른 차원에서 내려',
+              '온 Astral Mud 이다. 여기는 그가 세운 최고의',
+              '동굴이자 너가 마지막으로 거칠 동굴이다.  나',
+              '를 만만하게 보지마라.  다른 차원의 능력들을',
+              '너가 맛볼 기회를 가진다는 것에 대해  고맙게',
+              '생각하기 바란다. 하하하 ...',
+            ],
+          ),
+        ),
+        // LORESPEC.PAS:1736-1756: only enemy 7's death decides the result.
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Astral Mud',
+          battleEnemyFirst: true,
+          monsters: [31, 31, 31, 31, 31, 31, 57],
+          battleVictoryIfEnemyDead: 7,
+          battleRunAwaySteps: [back],
+        ),
+        ScriptStep(kind: 'flag', key: 'etc41_bit1'),
+        leave,
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: '봉인',
+            lines: [
+              ' 당신은 이 동굴에 보관되어 있는 봉인을 발견',
+              '했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸',
+              '다.',
+            ],
+          ),
+        ),
+      ] else
+        leave,
+    ]);
   }
 
   /// `LORESPEC.PAS:1760-1815`, `case 21` (KEEP1 / SWAMP KEEP).

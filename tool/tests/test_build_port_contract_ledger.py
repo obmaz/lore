@@ -39,14 +39,16 @@ class ContractLedgerTest(unittest.TestCase):
                             and e["test_users"] for e in evidence))
         linked = [site for site in data["control_sites"]
                   if site["behavioral_evidence"]]
-        self.assertEqual(len(linked), 113)
-        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 1735)
+        self.assertEqual(len(linked), 184)
+        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 1664)
         self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 1848)
         self.assertTrue(all(site["verification_status"] == "partial"
                             for site in linked))
         self.assertEqual(
             {site["id"] for site in linked if site["kind"] == "case"},
-            {f"LOREMAIN.PAS:main:1:case:{number}" for number in range(3, 7)},
+            {f"LOREMAIN.PAS:main:1:case:{number}" for number in range(3, 7)}
+            | {f"LORESPEC.PAS:specialevent_part2:1:case:{number}"
+               for number in range(2, 5)},
         )
         self.assertTrue(all(
             site["port_handler"] and site["reviewed_scope"]

@@ -1129,6 +1129,716 @@
       "test": "test/lore_spec_map21_test.dart",
       "note": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:56",
+      "line": 1477,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:57",
+      "line": 1478,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:58",
+      "line": 1487,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:59",
+      "line": 1488,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:13",
+      "line": 1494,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:60",
+      "line": 1497,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:61",
+      "line": 1498,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:14",
+      "line": 1504,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:62",
+      "line": 1507,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:case:2",
+      "line": 1512,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:25",
+      "line": 1522,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:63",
+      "line": 1523,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:64",
+      "line": 1532,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:case:3",
+      "line": 1537,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:26",
+      "line": 1547,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:65",
+      "line": 1548,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:66",
+      "line": 1557,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:case:4",
+      "line": 1561,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:67",
+      "line": 1575,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:15",
+      "line": 1578,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:27",
+      "line": 1580,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:68",
+      "line": 1581,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:28",
+      "line": 1582,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:29",
+      "line": 1585,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:16",
+      "line": 1593,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:69",
+      "line": 1597,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:70",
+      "line": 1598,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:71",
+      "line": 1601,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:72",
+      "line": 1602,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:73",
+      "line": 1603,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:30",
+      "line": 1608,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:74",
+      "line": 1609,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:75",
+      "line": 1612,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:76",
+      "line": 1621,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:77",
+      "line": 1622,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:78",
+      "line": 1626,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:31",
+      "line": 1627,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:32",
+      "line": 1628,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:33",
+      "line": 1634,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:34",
+      "line": 1635,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:35",
+      "line": 1636,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:36",
+      "line": 1641,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:37",
+      "line": 1642,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:79",
+      "line": 1647,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:38",
+      "line": 1648,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:39",
+      "line": 1649,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:80",
+      "line": 1651,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:40",
+      "line": 1653,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:41",
+      "line": 1658,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:42",
+      "line": 1663,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:43",
+      "line": 1669,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:44",
+      "line": 1679,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:45",
+      "line": 1686,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:81",
+      "line": 1689,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:17",
+      "line": 1689,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:82",
+      "line": 1690,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:18",
+      "line": 1693,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:83",
+      "line": 1696,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:46",
+      "line": 1699,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:84",
+      "line": 1702,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:19",
+      "line": 1702,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:85",
+      "line": 1703,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:20",
+      "line": 1706,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:86",
+      "line": 1709,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:47",
+      "line": 1712,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:87",
+      "line": 1715,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:88",
+      "line": 1719,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:48",
+      "line": 1729,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:89",
+      "line": 1733,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:21",
+      "line": 1745,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:22",
+      "line": 1749,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map20_test.dart",
+      "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

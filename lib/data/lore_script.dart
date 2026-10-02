@@ -284,6 +284,9 @@ class ScriptStep {
 
   /// The option selected by Escape when the original menu treats it as a reply.
   final int? cancelOptionIndex;
+
+  /// Steps run when Escape is not one of the options (`select` returned 0).
+  final List<ScriptStep> cancelSteps;
   final List<int>? monsters;
   final String? battleTitle;
 
@@ -402,6 +405,7 @@ class ScriptStep {
     this.prompt,
     this.options,
     this.cancelOptionIndex,
+    this.cancelSteps = const [],
     this.monsters,
     this.battleTitle,
     this.battleEnemyFirst = false,
@@ -816,6 +820,17 @@ class ScriptRun {
   bool isVictoryAfterRunAway(Set<int> defeatedEnemySlots) {
     final slot = _battleStep?.battleVictoryIfEnemyDead;
     return awaitingBattle && slot != null && defeatedEnemySlots.contains(slot);
+  }
+
+  /// Whether Escape runs its own source branch instead of abandoning.
+  bool get hasCancelSteps => _choiceStep?.cancelSteps.isNotEmpty ?? false;
+
+  /// Escape on a source `select` whose 0 result has its own branch; the
+  /// remaining steps after the choice are not run.
+  ScriptRun cancel() {
+    final steps = _choiceStep?.cancelSteps;
+    if (steps == null || steps.isEmpty) return this;
+    return _engine._execute(script, steps, _acc);
   }
 
   /// 선택지 인덱스를 골라 실행을 이어간다. 반환값은 갱신된 [ScriptRun].

@@ -638,7 +638,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final selected = chosen == null || chosen < 0
           ? current.cancelOptionIndex
           : chosen;
-      if (selected == null) return false;
+      if (selected == null) {
+        if (!current.hasCancelSteps) return false;
+        current = current.cancel();
+        continue;
+      }
       current = current.choose(selected);
     }
   }
