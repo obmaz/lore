@@ -32084,7 +32084,7 @@
     {
       "path": "test/lore_spec_map18_test.dart",
       "kind": "test",
-      "sha256": "eb127d7cbc4c1c7c1363c2728f7ef0532be5183bd09a7ef7c7e67089f5dbf79b",
+      "sha256": "628011482df6b69e62174ba780820533e742da725c221e8992fa5035b3cb7a9d",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -33051,7 +33051,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "b79b3f96f721bf45ab68af02796f24fd18015ee0dead28d1dddfb68774e2d36d"
+      "sha256": "8ad6766ed9b1d6b3f62bee9d34d985f6b0fa47208835a093e23fdab451d40001"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",

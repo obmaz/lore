@@ -1405,14 +1405,21 @@ class LoreSpecProcedures {
       if (!mindRead) {
         return start('spica-mind-read-inactive', const [
           ScriptStep(kind: 'say', text: ' 지체할 시간이 없습니다. 신속히 행동을 취하'),
-          ScriptStep(kind: 'say', text: '십시오.'),
+          // `talk(...)` = Print + PressAnyKey.
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(title: 'Spica', lines: ['십시오.']),
+          ),
         ]);
       }
       if (context.maxEspLevel < 5) {
         return start('spica-cannot-read', const [
           ScriptStep(kind: 'say', text: ' 당신이 나의 마음을 읽으려 하지만 아직 당신'),
           ScriptStep(kind: 'say', text: '의 능력으로는 나의 마음을 끌어낼수는 없습니'),
-          ScriptStep(kind: 'say', text: '다.'),
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(title: 'Spica', lines: ['다.']),
+          ),
         ]);
       }
       return start('spica-join', const [

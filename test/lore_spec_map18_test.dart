@@ -133,9 +133,10 @@ void main() {
     test('Spica after the lecture: raw etc[5], best espLevel and bit2', () {
       final noMind = at(37, 31, etc: {39: 1, 5: 0}, esp: 9)!;
       expect(noMind.outcome.messages, [' 지체할 시간이 없습니다. 신속히 행동을 취하', '십시오.']);
+      expect(noMind.pendingScene!.lines, ['십시오.']);
       final weak = at(37, 31, etc: {39: 1, 5: 2}, esp: 4)!;
-      expect(weak.outcome.messages.last, '다.');
       expect(weak.outcome.messages.length, 3);
+      expect(weak.pendingScene!.lines, ['다.']);
       final offer = at(37, 31, etc: {39: 1, 5: 2}, esp: 5)!;
       expect(offer.outcome.messages.last, '겠습니다.');
       expect(offer.choiceTexts, ['저도 원했던 바입니다', '말씀은 고맙지만 사양하겠습니다']);
@@ -191,7 +192,36 @@ void main() {
       );
     });
 
+    test('Huge Dragon lights the torch first, faces 6, 4, 5, and defeat runs nothing', () {
+      final run = at(
+        31,
+        10,
+        etc: {1: 0},
+        engine: LoreScriptEngine(random: Random(3)),
+      )!;
+      expect(run.outcome.sourceEtcWrites.single, (index: 1, value: 1));
+      expect(run.outcome.torchLit, isTrue);
+      final done = drain(run);
+      expect(done.continueAfterDefeat(), isNull);
+      expect(done.outcome.questChanges, isEmpty);
+      final minotaur = drain(at(21, 41)!);
+      expect(minotaur.continueAfterDefeat(), isNull);
+    });
+
     test('dispatcher owns map 18 without JSON fallback', () {
+      final bare = LoreScriptEngine();
+      expect(bare.usingJson, isFalse);
+      final run = LoreSpecialEventDispatcher.resolve(
+        action: LoreTileAction.special,
+        mapId: 18,
+        x: 22,
+        y: 41,
+        context: const ScriptContext(tileAtPlayer: 52),
+        party: const [],
+        scripts: bare,
+        legacy: LoreDungeonEventManager.instance,
+      );
+      expect(run.script!.outcome.tileChanges.length, 2);
       final direct = dispatchSpecial(mapId: 18, x: 22, y: 41, tile: 52)!;
       expect(direct.outcome.tileChanges.length, 2);
       expect(dispatchSpecial(mapId: 18, x: 1, y: 1), isNull);
