@@ -22,8 +22,6 @@ void main() {
     await tester.pump(const Duration(milliseconds: 200));
 
     // 3. 메인 게임 화면 (성내 마을 51, 31) 진입 확인
-    expect(find.text('◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆'), findsOneWidget);
-    expect(find.text('▶ 콘솔 메시지 ◀'), findsOneWidget);
 
     // 4. D-Pad 렌더링 확인
     expect(find.byType(DPadWidget), findsOneWidget);

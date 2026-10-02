@@ -12,7 +12,7 @@ class ViewportView extends StatelessWidget {
   const ViewportView({
     super.key,
     this.content,
-    this.title = '◆ 메인 뷰포트 (MAIN VIEW) ◆',
+    this.title = '',
     this.overlayTitle = false,
   });
 
@@ -28,32 +28,33 @@ class ViewportView extends StatelessWidget {
           fit: StackFit.expand,
           children: [
             ?content,
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: IgnorePointer(
-                child: Container(
-                  color: RetroTheme.background.withValues(alpha: .65),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 6,
-                    vertical: 2,
-                  ),
-                  child: Text(
-                    title,
-                    style: RetroTheme.headerFont.copyWith(fontSize: 12),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+            if (title.isNotEmpty)
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: IgnorePointer(
+                  child: Container(
+                    color: RetroTheme.background.withValues(alpha: .65),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 6,
+                      vertical: 2,
+                    ),
+                    child: Text(
+                      title,
+                      style: RetroTheme.headerFont.copyWith(fontSize: 12),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       );
     }
     return RetroBox(
-      title: title,
+      title: title.isEmpty ? null : title,
       borderColor: RetroTheme.lightBlue,
       backgroundColor: RetroTheme.viewportBg,
       padding: EdgeInsets.zero,
@@ -69,18 +70,7 @@ class ViewportView extends StatelessWidget {
                   color: RetroTheme.lightBlue,
                 ),
                 const SizedBox(height: 12),
-                Text(
-                  '또 다른 지식의 성전 (1993)',
-                  style: RetroTheme.headerFont.copyWith(fontSize: 16),
-                ),
-                const SizedBox(height: 6),
-                Text(
-                  '뷰포트 대기 모드 (Phase 2 초기화 완료)',
-                  style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.lightGray,
-                    fontSize: 12,
-                  ),
-                ),
+                Text('', style: RetroTheme.headerFont.copyWith(fontSize: 16)),
               ],
             ),
           ),

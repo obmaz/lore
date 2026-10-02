@@ -139,7 +139,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (allPartyDefeated) {
       _battleEnded = true;
       _isAutoBattle = false;
-      widget.onLog(LoreSubText.allDead);
+      widget.onLog(LoreSubText.battleLost);
       widget.onDefeat();
       return;
     }
@@ -352,14 +352,22 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   void _executeSpecialMagic(PartyMember player, Spell spell) async {
     // 원작 LOREBATT.PAS:245 CastSpecial -
     // Red Antares에게 "간접 공격"을 배우기 전에는 특수 마법을 쓸 수 없다.
+    setState(() => _isTurnProcessing = true);
     if (!LoreDialogueManager.instance.specialMagicLearned) {
+      // The how = 4 ReturnMessage is printed first; CastSpecial then refuses
+      // and the turn is spent.
       widget.onLog(
-        '${player.name}: ${LoreDialogueManager.specialMagicLockedMessage}',
+        LoreSubText.returnMessage(
+          actor: player.name,
+          how: 4,
+          what: spell.id - 12,
+          target: currentTarget.name,
+        ),
       );
+      widget.onLog(LoreBattText.noAbility);
+      await _advanceTurn();
       return;
     }
-
-    setState(() => _isTurnProcessing = true);
 
     // LORESUB.PAS ReturnMessage how = 4 is printed before CastSpecial runs.
     widget.onLog(
@@ -556,7 +564,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           '${LoreBattText.menuCommandAll}',
         );
         _executeAutoAction();
-      } else {}
+      }
     } else {
       // 일반 파티원: 도망 시도
       _attemptRunAway();
@@ -567,15 +575,13 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final player = activePlayer ?? widget.partyMembers.first;
     setState(() => _isTurnProcessing = true);
 
-    // 원작 LOREBATT.PAS:79-88 - `{이름}은 도망간다` / 실패 시 `그러나,
-    // 일행은 성공하지 못했다`
     // LORESUB.PAS ReturnMessage how = 7 is printed before RunAway.
     widget.onLog(LoreSubText.returnMessage(actor: player.name, how: 7));
-    widget.onLog('${player.name}${LoreBattText.flee}');
     final success = _engine.checkRunAway(player);
     await Future.delayed(const Duration(milliseconds: 250));
 
     if (success) {
+      widget.onLog(LoreBattText.runSuccess);
       widget.onRunAway();
     } else {
       widget.onLog(LoreBattText.runFailed);

@@ -99,7 +99,7 @@ void main() {
     game.tryMove(0, 1);
     await tick(tester);
     expect(find.text('위의 말은 옳다'), findsOneWidget);
-    await tester.tap(find.text('취소 (ESC)'));
+    await tester.tap(find.byKey(const ValueKey('dialog-cancel')));
     await tick(tester);
     expect([game.currentMapId, game.playerX, game.playerY], [20, 24, 55]);
     expect(game.currentMap!.getTile(23, 54), 0);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../data/lore_script.dart';
+import '../logic/lore_menu_text.dart';
 import '../models/monster.dart';
 import '../theme/retro_theme.dart';
 
@@ -52,7 +53,7 @@ class ScriptSceneDialog extends StatelessWidget {
         TextButton(
           key: const ValueKey('script-scene-continue'),
           onPressed: () => Navigator.of(context).pop(),
-          child: Text('계속', style: RetroTheme.dosFont),
+          child: Text(LoreMenuText.viewCharPressKey, style: RetroTheme.dosFont),
         ),
       ],
     ),

@@ -54,13 +54,12 @@ class _MessageLogViewState extends State<MessageLogView> {
   @override
   Widget build(BuildContext context) {
     return RetroBox(
-      title: '▶ 콘솔 메시지 ◀',
       borderColor: RetroTheme.cyan,
       backgroundColor: RetroTheme.background,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: widget.logs.isEmpty
           ? Text(
-              '명령을 기다리고 있습니다...',
+              '',
               style: RetroTheme.logFont.copyWith(color: RetroTheme.darkGray),
             )
           : ListView.builder(

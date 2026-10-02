@@ -147,7 +147,6 @@ void main() {
       await tester.tap(find.text('빠른 모험 시작 (기본 파티)'));
       await tester.pump(const Duration(milliseconds: 300));
 
-      expect(find.text('◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆'), findsOneWidget);
       expect(find.byType(DPadWidget), findsOneWidget);
       await tester.tap(find.byKey(const ValueKey('panel-tab-party')));
       await tester.pump();
