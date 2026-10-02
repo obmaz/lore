@@ -1124,70 +1124,139 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:1816-1879`, map 22 (KEEP2 / IMPERIUM MINOR).
+  /// `LORESPEC.PAS:1816-1879`, `case 22` (KEEP2).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 46` handled via portal session (`keep2-exit-guard`).
-  /// 2. Death Knight ambush at `(25, 18)`:
-  ///    - `party.etc[43] and bit2 == 0` -> `keep2-ambush-25-18`.
-  /// 3. Fortress guards ambush at `y == 25` and `x in [24..26]`:
-  ///    - `party.etc[43] and bit1 == 0` -> `keep2-guards-y25`.
-  /// 4. Other tiles (Wraith ambush if `party.etc[43] and bit2 == 0`):
-  ///    - Handled via `keep2-ambush-zone-a` / `keep2-ambush-zone-b`.
+  /// Raw `party.etc[43]` bits decide every fight; there are no clear flags.
+  /// `y = 46` is the exit boundary ([keep2ExitGuard] runs after `wantexit`),
+  /// `on(25,18)` is the Death Knight, `(y = 25, x in [24..26])` the guards and
+  /// every other special tile the Wraith ambush that turns the tile into 40.
+  /// Defeat runs no continuation: the source GameOver reloads a saved game and
+  /// would then resume this arm on the loaded state; that reload overlay is an
+  /// intentional difference.
   static ScriptRun? map22(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
-    }
-
+    if (y == 46) return null;
+    final etc43 = context.etcValue(
+      43,
+      bitAliases: const {1: 'keep2GuardsCleared', 2: 'keep2AmbushCleared'},
+    );
+    bool clear(int bit) => (etc43 & LorePascal.bit(bit)) != 0;
+    LoreScript procedure(String id, List<ScriptStep> steps) => LoreScript(
+      id: id,
+      trigger: 'step',
+      map: 22,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
     if (x == 25 && y == 18) {
-      final hasDefeatedKnight =
-          context.flags.contains('etc43_bit2') ||
-          context.flags.contains('keep2AmbushCleared');
-      if (!hasDefeatedKnight) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'keep2-ambush-25-18',
-        );
-        return scripts.startProcedure(content, context);
-      }
-      return null;
+      if (clear(2)) return null;
+      // LORESPEC.PAS:1842-1844: one random(5) picks the slot that becomes 63.
+      final monsters = List<int>.filled(5, 60);
+      monsters[scripts.roll(5)] = 63;
+      return scripts.startProcedure(
+        procedure('keep2-ambush-25-18', [
+          const ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: 'Death Knight',
+              lines: [
+                ' 나는 이 요새의 Wraith를 조종하는 죽음의 기',
+                '사 Death Knight이다. 나에게 도전하다니 가소',
+                '로운 것들. 으하하....',
+              ],
+            ),
+          ),
+          ScriptStep(
+            kind: 'battle',
+            battleTitle: 'Death Knight',
+            battleEnemyFirst: true,
+            monsters: monsters,
+          ),
+          const ScriptStep(kind: 'flag', key: 'etc43_bit2'),
+        ]),
+        context,
+      );
     }
-
-    if (y == 25 && (x >= 24 && x <= 26)) {
-      final hasDefeatedGuards =
-          context.flags.contains('etc43_bit1') ||
-          context.flags.contains('keep2GuardsCleared');
-      if (!hasDefeatedGuards) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'keep2-guards-y25',
-        );
-        return scripts.startProcedure(content, context);
-      }
-      return null;
+    if (y == 25 && x >= 24 && x <= 26) {
+      if (clear(1)) return null;
+      return scripts.startProcedure(
+        procedure('keep2-guards-y25', const [
+          ScriptStep(
+            kind: 'battle',
+            battleTitle: '요새 수비대',
+            monsters: [61, 58, 56, 55, 60],
+          ),
+          ScriptStep(kind: 'flag', key: 'etc43_bit1'),
+        ]),
+        context,
+      );
     }
+    if (clear(2)) return null;
+    // LORESPEC.PAS:1867-1875: no result check; the tile becomes 40 after
+    // victory or escape.
+    final floor = ScriptStep(
+      kind: 'setTile',
+      tileX: x,
+      tileY: y,
+      tileValue: 40,
+    );
+    return scripts.startProcedure(
+      procedure('keep2-ambush-zone-a', [
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Wraith',
+          battleEnemyFirst: true,
+          monsters: const [60, 60, 60, 60, 60],
+          battleRunAwaySteps: [floor],
+        ),
+        floor,
+      ]),
+      context,
+    );
+  }
 
-    // The final `else` in the Pascal map arm covers the remaining reachable
-    // special tiles. The southern exit is handled by LorePortalSession.
-    if (y >= 1 && y <= 45) {
-      final hasDefeatedKnight =
-          context.flags.contains('etc43_bit2') ||
-          context.flags.contains('keep2AmbushCleared');
-      if (!hasDefeatedKnight) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'keep2-ambush-zone-a',
-        );
-        return scripts.startProcedure(content, context);
-      }
-    }
-
-    return null;
+  /// `LORESPEC.PAS:1818-1834`: after `wantexit` is accepted and while
+  /// etc[43] bit3 is clear, one `random(5) + 42` (42 read as 35) picks six
+  /// guards plus enemy 66. bit3 is set when enemy 7 is dead, whatever the
+  /// result, and the party leaves for map 5 after victory or escape.
+  static LoreScript? keep2ExitGuard(
+    ScriptContext context,
+    int Function(int upperBound) roll,
+  ) {
+    if ((context.etcValue(43) & LorePascal.bit(3)) != 0) return null;
+    var j = roll(5) + 42;
+    if (j == 42) j = 35;
+    return LoreScript(
+      id: 'keep2-exit-guard',
+      trigger: 'portal',
+      map: 22,
+      once: false,
+      require: const ScriptRequire(),
+      steps: [
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'KEEP2 출구',
+            appendPartyNameSlot: 1,
+            appendPartyNameLine: 0,
+            partyNameBefore: true,
+            lines: [', 나의 힘을 보여주겠다.'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleEnemyFirst: true,
+          monsters: [...List<int>.filled(6, j), 66],
+          battleEnemyDefeatFlags: const {7: 'etc43_bit3'},
+          battleContinueOnRunAway: true,
+        ),
+      ],
+    );
   }
 
   /// `LORESPEC.PAS:1880-1979`, `case 23` (KEEP3 / DUNGEON OF EVIL).

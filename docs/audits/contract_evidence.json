@@ -789,6 +789,196 @@
       "test": "test/source_exit_boundary_ui_test.dart",
       "note": "Map27 arm is wantexit on every specialevent (tile 0 in PYRAMID1): accept -> map 1 (20,8), refusal -> y+1 when y<25 else y-1. Former JSON nudge rules disabled; LoreSpecProcedures.map27 owns no event. Native prompt; DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:102",
+      "line": 1818,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:103",
+      "line": 1819,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:104",
+      "line": 1820,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:105",
+      "line": 1823,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:51",
+      "line": 1824,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:106",
+      "line": 1830,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:107",
+      "line": 1841,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:108",
+      "line": 1842,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:52",
+      "line": 1844,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:109",
+      "line": 1852,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:24",
+      "line": 1852,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:110",
+      "line": 1853,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:111",
+      "line": 1856,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:112",
+      "line": 1857,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:113",
+      "line": 1866,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:25",
+      "line": 1866,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:114",
+      "line": 1867,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:115",
+      "line": 1871,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:53",
+      "line": 1873,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map22_test.dart",
+      "note": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

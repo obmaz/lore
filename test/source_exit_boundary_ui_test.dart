@@ -11,8 +11,10 @@ import 'package:lore/logic/lore_field_logic.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/screens/main_game_screen.dart';
 import 'package:lore/services/save_manager.dart';
+import 'package:lore/widgets/battle_viewport_view.dart';
+import 'package:lore/widgets/script_scene_dialog.dart';
 
-/// LORESPEC.PAS map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
+/// LORESPEC.PAS map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
 /// through the real screen: refusal position and accepted destination.
 void main() {
   Future<LoreGame> open(
@@ -21,8 +23,9 @@ void main() {
     String file,
     String category,
     int x,
-    int y,
-  ) async {
+    int y, {
+    Map<String, dynamic> flags = const {},
+  }) async {
     tester.view.physicalSize = const Size(1280, 900);
     tester.view.devicePixelRatio = 1;
     addTearDown(() {
@@ -70,7 +73,7 @@ void main() {
             gold: 100,
             food: 20,
             party: [PartyMember.createPreset(1)],
-            flags: const {},
+            flags: flags,
             mapTiles: map.tileSnapshot(),
           ),
         ),
@@ -150,4 +153,53 @@ void main() {
       },
     );
   }
+
+  testWidgets(
+    'map 22 exit: accepted guard fight, enemy 7 dead then escape still exits',
+    (tester) async {
+      final game = await open(
+        tester,
+        22,
+        'KEEP2',
+        'keep',
+        25,
+        45,
+        flags: {'etc43': 0},
+      );
+      expect(game.currentMap!.getTile(25, 46), anyOf(0, 52));
+      game.tryMove(0, 1);
+      await tick(tester);
+      await tester.tap(find.text(LoreFieldLogic.confirmYes));
+      await tick(tester);
+      final scene = tester.widget<ScriptSceneDialog>(
+        find.byType(ScriptSceneDialog).last,
+      );
+      expect(
+        scene.scene.lines.single,
+        '${game.partyProvider!().first.name}, 나의 힘을 보여주겠다.',
+      );
+      await tester.tap(
+        find.byKey(const ValueKey('script-scene-continue')).last,
+      );
+      await tick(tester);
+      final battle = tester.widget<BattleViewportView>(
+        find.byType(BattleViewportView),
+      );
+      expect(battle.enemies.length, 7);
+      expect(battle.enemies.last.eNumber, 66);
+      expect(battle.enemyFirst, isTrue);
+      expect(game.currentMapId, 22);
+      battle.enemies.last.isDead = true;
+      battle.onRunAway();
+      await tester.runAsync(() async {
+        await Future<void>.delayed(const Duration(milliseconds: 100));
+      });
+      await tick(tester);
+      expect([game.currentMapId, game.playerX, game.playerY], [5, 15, 32]);
+      expect(LoreDialogueManager.instance.partyEtc.read(43) & 4, 4);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump(const Duration(seconds: 1));
+      expect(tester.takeException(), isNull);
+    },
+  );
 }

@@ -350,18 +350,25 @@ class LoreWorldManager {
   /// `wantexit` refusal inside LORESPEC: the y the party is left on, or null
   /// when the exit is not a source specialevent boundary.
   static int? sourceExitRejectY(int mapId, int y) => switch (mapId) {
-    23 || 24 || 25 when y == 46 => y - 1,
+    22 || 23 || 24 || 25 when y == 46 => y - 1,
     27 => y < 25 ? y + 1 : y - 1,
     _ => null,
   };
 
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
   PortalInfo? findPortal(int currentMapId, int x, int y) {
-    // LORESPEC.PAS:1883-1894, 1982-1993 and 1997-2006 own the exact
-    // map 23/24/25 exits; any other row of those maps never exits.
-    if (currentMapId == 23 || currentMapId == 24 || currentMapId == 25) {
+    // LORESPEC.PAS:1818-1839, 1883-1894, 1982-1993 and 1997-2006 own the
+    // exact map 22..25 exits; any other row of those maps never exits.
+    if (currentMapId >= 22 && currentMapId <= 25) {
       if (y == 46) {
         return switch (currentMapId) {
+          22 => const PortalInfo(
+            targetMapId: 5,
+            targetX: 15,
+            targetY: 32,
+            name: 'KEEP2 출구',
+            scriptId: 'keep2-exit-guard',
+          ),
           23 => const PortalInfo(
             targetMapId: 5,
             targetX: 34,

@@ -658,9 +658,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (line != null && message == sourceScene!.lines[line]) {
         return renderedScene!.lines[line];
       }
-      return run.script.id == 'keep2-exit-guard' && message.startsWith(', ')
-          ? '${_party.first.name}$message'
-          : message;
+      return message;
     }
 
     if (outcome.events.isEmpty) {
