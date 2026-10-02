@@ -2,12 +2,12 @@
 
 2026-09-28 기준. 이 문서는 `repo_source/LORE_1993_src`와
 `repo_source/LORE_1993_runtime`에서 **직접 확인한 원본 동작**을 정리한다.
-포트의 목표 설계는 `PORT_DIRECT_PORT_STRATEGY.md`, 이식 완료 판정은
-`PORT_DIRECT_PORT_STRATEGY.md`를 따른다. 이 문서의 소스 설명을 포트 구현 완료
+포트의 목표 설계는 `docs/porting/direct_port_strategy.md`, 이식 완료 판정은
+`docs/porting/direct_port_strategy.md`를 따른다. 이 문서의 소스 설명을 포트 구현 완료
 증거로 해석하지 않는다. 절차를 넘나드는 실제 호출 사례는
-[`ORIGINAL_LORE_PROCEDURE_TRACES.md`](ORIGINAL_LORE_PROCEDURE_TRACES.md)에
+[`docs/source/procedure_traces.md`](procedure_traces.md)에
 기록한다. 이야기 단계와 저장·복원 뒤 실행 재개는
-[원본 상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 기록한다.
+[원본 상태 수명주기](state_lifecycle.md)에 기록한다.
 
 ## 한 문장 모델
 
@@ -21,7 +21,7 @@
 ## 출처와 범위
 
 `LORE.PAS`의 `Uses`와 유닛 의존성으로 연결된 본편 Pascal 파일은
-14개다. `PORT_CONTRACT_LEDGER.json`에는 루틴 196개와 제어 지점
+14개다. `docs/audits/contract_ledger.json`에는 루틴 196개와 제어 지점
 2,039개가 등록돼 있다. 이 숫자는 구조 인벤토리이며 기능 수나 완료율이
 아니다. 루틴 소유 추정은 완전한 Pascal 문법 트리가 아니므로 의미를
 확인할 때 원본 본문을 읽어야 한다.
@@ -31,14 +31,14 @@
 
 | 역할 | 원본 파일 | 데이터와 규칙의 경계 |
 | --- | --- | --- |
-| 시작·반복 | [LORE.PAS](repo_source/LORE_1993_src/LORE.PAS), [LOREHELP.PAS](repo_source/LORE_1993_src/LOREHELP.PAS) | 타이틀/생성 선택, 초기화, 반복 `Main` 호출 |
-| 상태·자료·저장 | [LORESUB.PAS](repo_source/LORE_1993_src/LORESUB.PAS) | 공통 레코드·배열, 지도/몬스터 로드, 시설, 저장 |
-| 필드 명령 | [LOREMAIN.PAS](repo_source/LORE_1993_src/LOREMAIN.PAS) | 키 입력, 지도 종류별 타일 처리, 지형·일반 이동 효과 |
-| 장소별 내용 | [LOREENT.PAS](repo_source/LORE_1993_src/LOREENT.PAS), [LORESPEC.PAS](repo_source/LORE_1993_src/LORESPEC.PAS), [LORETALK.PAS](repo_source/LORE_1993_src/LORETALK.PAS) | 입장, 표지판, 사건, 대화, 시설 좌표와 조건 |
-| 전투·캐릭터 | [LOREBATT.PAS](repo_source/LORE_1993_src/LOREBATT.PAS), [LOREMENU.PAS](repo_source/LORE_1993_src/LOREMENU.PAS), [LORECRET.PAS](repo_source/LORE_1993_src/LORECRET.PAS) | 전투/조우, 주문/ESP/휴식, 캐릭터 생성 |
-| 표현·종료 | [LOREEND.PAS](repo_source/LORE_1993_src/LOREEND.PAS), [ADLIB.PAS](repo_source/LORE_1993_src/ADLIB.PAS), [VOICE.PAS](repo_source/LORE_1993_src/VOICE.PAS), [UHANX.PAS](repo_source/LORE_1993_src/UHANX.PAS) | 엔딩, 음악·음성, DOS 그래픽/한글 출력 |
+| 시작·반복 | [LORE.PAS](../../repo_source/LORE_1993_src/LORE.PAS), [LOREHELP.PAS](../../repo_source/LORE_1993_src/LOREHELP.PAS) | 타이틀/생성 선택, 초기화, 반복 `Main` 호출 |
+| 상태·자료·저장 | [LORESUB.PAS](../../repo_source/LORE_1993_src/LORESUB.PAS) | 공통 레코드·배열, 지도/몬스터 로드, 시설, 저장 |
+| 필드 명령 | [LOREMAIN.PAS](../../repo_source/LORE_1993_src/LOREMAIN.PAS) | 키 입력, 지도 종류별 타일 처리, 지형·일반 이동 효과 |
+| 장소별 내용 | [LOREENT.PAS](../../repo_source/LORE_1993_src/LOREENT.PAS), [LORESPEC.PAS](../../repo_source/LORE_1993_src/LORESPEC.PAS), [LORETALK.PAS](../../repo_source/LORE_1993_src/LORETALK.PAS) | 입장, 표지판, 사건, 대화, 시설 좌표와 조건 |
+| 전투·캐릭터 | [LOREBATT.PAS](../../repo_source/LORE_1993_src/LOREBATT.PAS), [LOREMENU.PAS](../../repo_source/LORE_1993_src/LOREMENU.PAS), [LORECRET.PAS](../../repo_source/LORE_1993_src/LORECRET.PAS) | 전투/조우, 주문/ESP/휴식, 캐릭터 생성 |
+| 표현·종료 | [LOREEND.PAS](../../repo_source/LORE_1993_src/LOREEND.PAS), [ADLIB.PAS](../../repo_source/LORE_1993_src/ADLIB.PAS), [VOICE.PAS](../../repo_source/LORE_1993_src/VOICE.PAS), [UHANX.PAS](../../repo_source/LORE_1993_src/UHANX.PAS) | 엔딩, 음악·음성, DOS 그래픽/한글 출력 |
 
-[LOREHELP.PAS](repo_source/LORE_1993_src/LOREHELP.PAS)의
+[LOREHELP.PAS](../../repo_source/LORE_1993_src/LOREHELP.PAS)의
 `Title_Menu`는 새 캐릭터 생성 또는 계속하기를 선택한다.
 `LORE.PAS:11-49`는 이후 화면을 초기화하고 `LORESUB.Set_All`을
 호출한 다음 `LOREMAIN.Main`을 반복한다. 음악이 켜져 있으면
@@ -138,7 +138,7 @@
 행 우선 오프셋은 `2+(y-1)*가로크기+(x-1)`이다.
 
 타일 값의 네 종류별 행동 표와 초기 맵의 분포는
-`PORT_RULE_ARCHITECTURE_ANALYSIS.md`를 따른다. 중요한 좌표 함수는
+`docs/source/rule_architecture_analysis.md`를 따른다. 중요한 좌표 함수는
 `LORESUB.PAS:970-983`의 `at(xx,yy)`와 `on(xx,yy)`이다.
 `at`은 `x+x1,y+y1`로 **접근한 목표 칸**을 보고, `on`은 현재
 `x,y`로 **들어선 칸**을 본다. 입장·대화는 `originposition`으로
@@ -154,7 +154,7 @@
 상태에서 다음 행동의 결과에도 영향을 준다. 공통 시간 틱보다
 행동별 절차 비용에 가깝다. 독 전멸 뒤 저장 불러오기가 같은 입력의
 나머지 필드 실행으로 이어지는 사례는
-[원본 상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 기록한다.
+[원본 상태 수명주기](state_lifecycle.md)에 기록한다.
 
 ## 장소별 내용은 Pascal 코드다
 
@@ -199,7 +199,7 @@
 원본의 상태 표시 함수 `ReturnCondition`은 HP≤0을 의식불명으로,
 의식불명 수치 초과를 사망으로 **변경**한다 (`LORESUB.PAS:706-725`).
 전투에서 `SimpleDisCond`가 호출되는 시점도 상태 전이 순서에
-포함된다. 재생 사례는 [절차 추적](ORIGINAL_LORE_PROCEDURE_TRACES.md)에 있다.
+포함된다. 재생 사례는 [절차 추적](procedure_traces.md)에 있다.
 
 경험치는 최종 승리에서 한 번에 나눠 주는 방식이 아니다. 적을
 의식불명으로 만들거나 처치하는 행동 중 `PlusExperience`가 호출된다.

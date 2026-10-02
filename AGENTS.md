@@ -1,6 +1,6 @@
 # LORE port direction
 
-- Follow the sole plan, `PORT_DIRECT_PORT_STRATEGY.md`. The active goal
+- Follow the sole plan, `docs/porting/direct_port_strategy.md`. The active goal
   is a source-faithful LORE port with modern map rendering, UI, input and audio.
   New game rules are direct Dart ports of the original Pascal procedures.
 - Keep Pascal control flow, early exits, expression types, array bounds/indices,

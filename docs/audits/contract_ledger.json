@@ -27629,7 +27629,7 @@
       "sha256": "9e39a1f9182011e32e17390ff9538401509171e6c78fcb6bfb2fb82aaeba9975"
     },
     {
-      "path": "PORT_CONTRACT_EVIDENCE.json",
+      "path": "docs/audits/contract_evidence.json",
       "sha256": "d6d8b8dd9c72736dc66d4a5c8683923e267ce920541f947b3a0f6cddeb77d0e7",
       "top_level_counts": {
         "contracts": 53

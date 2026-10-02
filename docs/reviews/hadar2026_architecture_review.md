@@ -36,7 +36,7 @@ Flutter 입력·화면
 
 ## 재사용할 설계와 피할 결합
 
-1. **재사용할 설계:** `명령 → 사건`의 순수 월드 모델, UI와 분리된 전투 상태기계, 월드와 전투 사이의 명시적 변환기, 에셋·UI 포트를 통한 헤드리스 실행. 이 구조 분석은 재사용 후보의 근거이며, 현재 실행 방향과 현대화 경계는 `PORT_DIRECT_PORT_STRATEGY.md`를 따른다.
+1. **재사용할 설계:** `명령 → 사건`의 순수 월드 모델, UI와 분리된 전투 상태기계, 월드와 전투 사이의 명시적 변환기, 에셋·UI 포트를 통한 헤드리스 실행. 이 구조 분석은 재사용 후보의 근거이며, 현재 실행 방향과 현대화 경계는 `docs/porting/direct_port_strategy.md`를 따른다.
 2. **원작 이식에는 직접 채택하지 않을 것:** Hadar2026의 전투·아이템 규칙은 자체 복각 및 확장 판단을 포함한다. 1993 Pascal의 수치·분기·난수 순서와 동등하다는 증거가 아니므로, 우리 원본형 프로시저 코어의 정답으로 사용하지 않는다.
 3. **구조상 경계 문제:** `HDGameMain`, `HDGameSession`, 스크립트 엔진, 네이티브 러너 등이 싱글턴이고 플래그가 `gameOption`과 네이티브 러너에 나뉜다. 네이티브 맵 스크립트 기본 클래스의 `isFlagSet`/`setFlag`는 현재 스텁이다. 세이브도 네이티브 플래그를 기록하지 않는다. 여러 게임을 동시에 로드하거나 정확히 재생하려면 게임 세션별 단일 상태 소유권이 필요하다. [맵 스크립트 기본 클래스](https://github.com/smgal/Hadar2026/blob/9a7a88f/hadar2026_app/lib/application/scripting/map_script.dart), [저장 관리자](https://github.com/smgal/Hadar2026/blob/9a7a88f/hadar2026_app/lib/application/save_manager.dart)
 4. **남은 구현 격차:** `Map::SetEncounter`는 등록만 되고 실제 구현은 스텁이다. 전투 내부는 시드로 재현 가능하지만 개시 시드는 기본적으로 시계에서 만든다. 게임 전체의 결정적 재생 계약과는 구분해야 한다. [cm2 어댑터](https://github.com/smgal/Hadar2026/blob/9a7a88f/hadar2026_app/lib/application/scripting/script_engine_adapter.dart), [전투 연결](https://github.com/smgal/Hadar2026/blob/9a7a88f/hadar2026_app/lib/application/battle_bridge/cm2_battle_adapter.dart)

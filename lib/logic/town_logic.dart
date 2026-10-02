@@ -9,7 +9,7 @@
 /// - `LOREMENU.PAS:869  Rest`           (야외 캠프 휴식)
 ///
 /// 모든 수치와 대사는 원본 소스를 Johab(CP1361) 디코딩하여 그대로 옮긴 것이다.
-/// (도구: `tool/dec_johab.py`)
+/// (도구: `tool/decode_johab.py`)
 library;
 
 import 'dart:math';

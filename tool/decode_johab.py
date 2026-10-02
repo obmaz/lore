@@ -5,7 +5,7 @@ DOS 시절 Borland Pascal 소스는 Johab(CP1361) 인코딩으로 한글을 저�
 특정 Procedure ~ Procedure 사이 구간의 문자열 리터럴만 뽑아 디코딩한다.
 
 사용법:
-    python3 tool/dec_johab.py repo_source/LORE_1993_src/LORESUB.PAS Train_Center Hospital
+    python3 tool/decode_johab.py repo_source/LORE_1993_src/LORESUB.PAS Train_Center Hospital
 """
 import re
 import sys

@@ -1,13 +1,26 @@
 # 또 다른 지식의 성전 (LORE 1993)
 
-1993년 DOS 게임 **또 다른 지식의 성전**을 Flutter로 이식한 프로젝트입니다. 원본 Pascal 소스와 실행 데이터는 `repo_source/LORE_1993_src/`, `repo_source/LORE_1993_runtime/`에 있습니다. 게임 동작의 대조 내용과 알려진 편차는 [게임 명세서](DOCS_GAME_SPECS.md)에 기록했습니다.
+1993년 DOS 게임 **또 다른 지식의 성전**을 Flutter로 이식한 프로젝트입니다. 원본 Pascal 소스와 실행 데이터는 `repo_source/LORE_1993_src/`, `repo_source/LORE_1993_runtime/`에 있습니다. 게임 동작의 대조 내용과 알려진 편차는 [게임 명세서](docs/game_specs.md)에 기록했습니다.
 
 현재 방향은 **원본 게임 로직을 보존하고 맵 표현·UI·음악을 현대화**하는 것입니다.
 원본 분기·비트·배열 계산은 Dart로 직접 옮기며, JSON 게임 팩 전환은 목표에서 제외했습니다.
-작업 순서·표현과 로직의 경계·최종 완료 판정은 유일한 계획 문서인 [직접 이식 전략](PORT_DIRECT_PORT_STRATEGY.md)을 따릅니다.
-원본의 실행 순서·절차 간 호출·상태 수명주기는 [실행 모델](ORIGINAL_LORE_EXECUTION_MODEL.md), [절차 추적](ORIGINAL_LORE_PROCEDURE_TRACES.md), [상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 기록했습니다. 이 자료는 소스 분석 근거이며 별도 실행 계획이 아닙니다.
-원본 범위와 남은 검증 항목은 [원본 계약 기준선](PORT_CONTRACT_LEDGER.md)에서 확인할 수 있습니다.
+작업 순서·표현과 로직의 경계·최종 완료 판정은 유일한 계획 문서인 [직접 이식 전략](docs/porting/direct_port_strategy.md)을 따릅니다.
+원본의 실행 순서·절차 간 호출·상태 수명주기는 [실행 모델](docs/source/execution_model.md), [절차 추적](docs/source/procedure_traces.md), [상태 수명주기](docs/source/state_lifecycle.md)에 기록했습니다. 이 자료는 소스 분석 근거이며 별도 실행 계획이 아닙니다.
+원본 범위와 남은 검증 항목은 [원본 계약 기준선](docs/audits/contract_ledger.md)에서 확인할 수 있습니다.
 이전 방식의 기준 버전은 태그 `pre-direct-port-2026-10-02` (`7ff0e89`)로 보존했습니다.
+
+## 폴더 안내
+
+| 위치 | 내용 |
+| --- | --- |
+| `lib/` | Flutter 게임 구현 |
+| `assets/` | 실행에 사용하는 게임 자료 |
+| [docs/](docs/README.md) | 이식 전략·원본 분석·감사·검증 문서 |
+| `repo_source/` | 원본 게임 소스와 실행 자료 |
+| `test/` | Flutter 테스트와 원본 재생 fixture |
+| [tool/](tool/README.md) | 분석·추출 도구와 `tool/tests/`의 Python 테스트 |
+| `build/` | 생성물과 `build/logs/`의 검증 로그 |
+| 플랫폼 폴더 | Android·iOS·웹·데스크톱 실행 설정 |
 
 ## 실행
 

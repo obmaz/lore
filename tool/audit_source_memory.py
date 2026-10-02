@@ -11,7 +11,7 @@ from source_branch_inventory import PLATFORM_UNITS, program_files
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "repo_source/LORE_1993_src"
-OUTPUT = ROOT / "PORT_SOURCE_MEMORY_AUDIT.md"
+OUTPUT = ROOT / "docs/audits/source_memory_audit.md"
 
 
 def classify(line):

@@ -1,6 +1,6 @@
 # LORETALK 좌표 대조
 
-`python3 tool/audit_loretalk.py > PORT_TALK_AUDIT.md`로 재생성한다.
+`python3 tool/audit_loretalk.py > docs/audits/talk_audit.md`로 재생성한다.
 원본 `at(x,y)`의 모든 리터럴 좌표를 활성 talk 스크립트, 시설, 대화 데이터와 대조한다.
 조건·선택지·문구·효과의 동등성은 검사하지 않는다. 동적 좌표도 범위 밖이다.
 

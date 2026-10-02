@@ -17,7 +17,7 @@
 | 이식 규칙·데이터 출처 | 32 | JSON/기존 처리 경로 등록 |
 | 기존 테스트 / JSON 근거 파일 | 106 / 17 | 후보로 등록, 의미 검증 별도 |
 | 미분류 게임 제어 지점 | 1795 | 분기 1579, goto/exit 216 |
-| 원본 행동 근거 연결 지점 | 53 | `PORT_CONTRACT_EVIDENCE.json`의 원본 줄·이식 코드·테스트에 연결 |
+| 원본 행동 근거 연결 지점 | 53 | `docs/audits/contract_evidence.json`의 원본 줄·이식 코드·테스트에 연결 |
 | 부분 근거 / 검증 완료 | 53 / 0 | 부분 근거는 완료로 계산하지 않음 |
 | 미검증 게임 제어 지점 | 1848 | 최종 게이트에서 0 필요 |
 | 의미 분석 대기 Pascal 구문 | asm 14, with 151 | 원본 조건·효과 검토 대상 |
@@ -32,4 +32,4 @@
 - 원본 런타임 미매핑 파일: repo_source/LORE_1993_runtime/END.CMD, repo_source/LORE_1993_runtime/INIT.CMD, repo_source/LORE_1993_runtime/LORE.CMD.
 
 다음 작업은 장부 항목을 공통 규칙·콘텐츠 규칙·플랫폼 대체에 연결하고,
-효과 순서와 독립 실행 결과를 검증하는 것이다. `PORT_DIRECT_PORT_STRATEGY.md`의 실행 순서와 최종 완료 게이트를 따른다.
+효과 순서와 독립 실행 결과를 검증하는 것이다. `docs/porting/direct_port_strategy.md`의 실행 순서와 최종 완료 게이트를 따른다.

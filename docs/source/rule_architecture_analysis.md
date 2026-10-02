@@ -1,7 +1,7 @@
 # 원본 LORE의 맵·상태 규칙 분석
 
 2026-09-28 기준. 이 문서는 원본의 실행 구조를 설명한다. 이식 완료 판정은
-`PORT_DIRECT_PORT_STRATEGY.md`와 `PORT_CONTRACT_LEDGER.md`의 검증 게이트를 따른다.
+`docs/porting/direct_port_strategy.md`와 `docs/audits/contract_ledger.md`의 검증 게이트를 따른다.
 
 ## 결론
 
@@ -39,7 +39,7 @@
 순서의 독립 `if` 네 개다. `entermode`가 중간에 지도를 바꾸면 같은 입력에서
 뒤쪽 종류의 도착 타일이 다시 처리될 수 있다. 기본 지도에서 맵 1→14의
 도착 칸 `(25,45)`는 타일 44라서 `Move_Mode`가 추가 실행된다.
-이 순서의 상세 계약과 포트 차이는 `ORIGINAL_LORE_EXECUTION_MODEL.md`에
+이 순서의 상세 계약과 포트 차이는 `docs/source/execution_model.md`에
 기록한다.
 
 ### 타일 행동 표
@@ -94,7 +94,7 @@
 
 입장 뒤 같은 입력의 도착 타일 재판정은 미검증 수준을 넘어 현재 포트에서
 누락된 것으로 확인했다. 원본 맵 1→14의 타일 44와 실행 순서는
-`ORIGINAL_LORE_EXECUTION_MODEL.md`에 기록했다.
+`docs/source/execution_model.md`에 기록했다.
 
 현재 `test/source_talk_replay_test.dart`는 원본의 리터럴 대화 좌표
 148개가 실제 지도에서 대화 타일이고 **어떤 후보 상태에서든** 대화
@@ -103,8 +103,8 @@
 `LoreScriptEngine.startStep/startById`를 직접 호출하므로 이동·타일
 판정·실제 디스패처·화면 반영의 연결을 증명하지 않는다. 과거 맵 20
 횃불 사건처럼 스크립트가 있어도 실제 디스패처에서 선택되지 않는 결함이
-생길 수 있었다. 이 항목들은 `PORT_MAP_PARITY.md`와
-`PORT_VERIFICATION_2026-09-28.md`에서도 부분 검증으로 기록한다.
+생길 수 있었다. 이 항목들은 `docs/audits/map_parity.md`와
+`docs/verification/2026-09-28.md`에서도 부분 검증으로 기록한다.
 
 ## 이 구조에 맞는 검증 단위
 

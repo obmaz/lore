@@ -1,6 +1,6 @@
 # LOREENT 진입 경로 대조
 
-`python3 tool/audit_loreent.py > PORT_ENTRANCE_AUDIT.md`로 재생성한다.
+`python3 tool/audit_loreent.py > docs/audits/entrance_audit.md`로 재생성한다.
 원본의 `with party do ... load`와 출발 맵, 명시적 `at(x,y)`, 목적지 맵·좌표를 비교한다.
 전투·대사·진입 거절·로드 후 타일 효과는 이 검사 범위 밖이다.
 

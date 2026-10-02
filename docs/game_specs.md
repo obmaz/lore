@@ -1,4 +1,4 @@
-# 또 다른 지식의 성전 (LORE 1993) 게임 명세서 (DOCS_GAME_SPECS.md)
+# 또 다른 지식의 성전 (LORE 1993) 게임 명세서
 
 본 문서는 1993년 출시된 16비트 MS-DOS/Borland Pascal 6.0 기반 RPG **‘또 다른 지식의 성전’ (LORE, 1993)** 원본 소스 코드(`LORESUB.PAS`, `LOREBATT.PAS`, `LOREMAIN.PAS`, `LORECRET.PAS`, `FOEDATA.DAT` 등)를 정밀 역공학 및 분석하여, Flutter 게임 엔진(Flame 등)으로 완벽하게 이식하기 위해 작성된 공식 기술 명세서입니다.
 
@@ -708,7 +708,7 @@ EVIL SEAL 봉인 동굴의 일곱 방은 실제 특수 타일 x=14,18,22,26,30,3
   원작이 백틱(`` ` ``)을 쓴 자리의 인용부호, 원작 `m[1]`/`m[2]` 를 그대로 쓴 선택지.
 
 * 자동 추출: `python3 tool/export_lore_talk.py --report` (수동 필요 목록은
-  `tool/lore_talk_report.txt`), `--emit <파일>`로 talk 스크립트 생성.
+  `docs/audits/lore_talk_translation_report.txt`), `--emit <파일>`로 talk 스크립트 생성.
 * 마을 시설(무기점/병원/훈련소/식료품점) 좌표는 `assets/data/facilities.json`
   (5개 마을 58곳) — 이전에는 CASTLE LORE만 하드코딩되어 있었다.
 * **상태 분기(`party.etc[N]`) 대사는 `python3 tool/export_lore_quest_talk.py
@@ -716,7 +716,7 @@ EVIL SEAL 봉인 동굴의 일곱 방은 실제 특수 타일 x=14,18,22,26,30,3
   - 퀘스트 단계 4종: `lordahn`(etc[10]), `lastditch`(etc[13]), `gaia`(etc[14]),
     `water`(etc[15]) → `LoreDialogueManager.questStepValue/applyQuestStep`.
     원본의 대화·던전 사건·예지 메뉴를 잇는 단계 전이는
-    [원본 상태 수명주기](ORIGINAL_LORE_STATE_LIFECYCLE.md)에 기록했다.
+    [원본 상태 수명주기](source/state_lifecycle.md)에 기록했다.
   - 비트 5종: `menaceInfoGiven`(etc[50]b5), `weaponRoomVisited`(etc[50]b4),
     `loreChallengeAccepted`(etc[30]b1), `loreChallengeBlessed`(etc[30]b2),
     `programmerMet`(etc[43]b4), `jrAntaresSecretFound`(etc[50]b1).
@@ -821,4 +821,4 @@ flutter test test/tools/export_images_test.dart --dart-define=EXPORT_IMAGES=true
 ```
 * 좌표 대사 → JSON: `python3 tool/export_dialogues.py` (dialogues.json 재생성)
 * 원작 소스 감사: `python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS`
-* 원작 한글 문자열 디코딩: `python3 tool/dec_johab.py <PAS파일> <시작Proc> [끝Proc]`
+* 원작 한글 문자열 디코딩: `python3 tool/decode_johab.py <PAS파일> <시작Proc> [끝Proc]`

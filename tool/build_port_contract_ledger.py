@@ -17,9 +17,9 @@ from source_branch_inventory import PLATFORM_UNITS, inventory, lex
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "repo_source/LORE_1993_src"
 RUNTIME = ROOT / "repo_source/LORE_1993_runtime"
-OUTPUT = ROOT / "PORT_CONTRACT_LEDGER.json"
-REPORT = ROOT / "PORT_CONTRACT_LEDGER.md"
-EVIDENCE = ROOT / "PORT_CONTRACT_EVIDENCE.json"
+OUTPUT = ROOT / "docs/audits/contract_ledger.json"
+REPORT = ROOT / "docs/audits/contract_ledger.md"
+EVIDENCE = ROOT / "docs/audits/contract_evidence.json"
 ROUTINE = re.compile(r"\b(procedure|function)\s+([A-Za-z_][A-Za-z_0-9]*)\b", re.I)
 MAP_WRITE = re.compile(r"map\s*\[([^\]]+)\]\s*:=\s*([^;]+);", re.I)
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
@@ -349,7 +349,7 @@ def port_rule_sources():
         "lib/screens/main_game_screen.dart",
         "lib/widgets/field_menu_dialog.dart",
         "lib/widgets/script_scene_dialog.dart",
-        "PORT_CONTRACT_EVIDENCE.json",
+        "docs/audits/contract_evidence.json",
     )]
     rows = []
     for path in files:
@@ -366,7 +366,7 @@ def port_rule_sources():
 
 def build():
     inv = inventory()
-    checked = json.loads((ROOT / "PORT_SOURCE_BRANCH_INVENTORY.json").read_text(encoding="utf-8"))
+    checked = json.loads((ROOT / "docs/audits/source_branch_inventory.json").read_text(encoding="utf-8"))
     if inv != checked:
         raise ValueError("Source branch inventory has drifted; regenerate it first")
     routines, sites, writes = source_contracts(inv)
@@ -460,7 +460,7 @@ def report(data):
         f"| 이식 규칙·데이터 출처 | {len(data['port_rule_sources'])} | JSON/기존 처리 경로 등록 |",
         f"| 기존 테스트 / JSON 근거 파일 | {test_count} / {fixture_count} | 후보로 등록, 의미 검증 별도 |",
         f"| 미분류 게임 제어 지점 | {data['baseline_gaps']['unmapped_behavior_sites']} | 분기 {game_branches}, goto/exit {len(game_sites) - game_branches} |",
-        f"| 원본 행동 근거 연결 지점 | {len(linked)} | `PORT_CONTRACT_EVIDENCE.json`의 원본 줄·이식 코드·테스트에 연결 |",
+        f"| 원본 행동 근거 연결 지점 | {len(linked)} | `docs/audits/contract_evidence.json`의 원본 줄·이식 코드·테스트에 연결 |",
         f"| 부분 근거 / 검증 완료 | {data['baseline_gaps']['partially_verified_behavior_sites']} / {len(linked) - data['baseline_gaps']['partially_verified_behavior_sites']} | 부분 근거는 완료로 계산하지 않음 |",
         f"| 미검증 게임 제어 지점 | {data['baseline_gaps']['unverified_behavior_sites']} | 최종 게이트에서 0 필요 |",
         f"| 의미 분석 대기 Pascal 구문 | asm {data['baseline_gaps']['pascal_constructs_awaiting_semantic_review'].get('asm', 0)}, with {data['baseline_gaps']['pascal_constructs_awaiting_semantic_review'].get('with', 0)} | 원본 조건·효과 검토 대상 |",
@@ -475,7 +475,7 @@ def report(data):
         f"- 원본 런타임 미매핑 파일: {', '.join(unmapped) if unmapped else '없음'}.",
         "",
         "다음 작업은 장부 항목을 공통 규칙·콘텐츠 규칙·플랫폼 대체에 연결하고,",
-        "효과 순서와 독립 실행 결과를 검증하는 것이다. `PORT_DIRECT_PORT_STRATEGY.md`의 실행 순서와 최종 완료 게이트를 따른다.",
+        "효과 순서와 독립 실행 결과를 검증하는 것이다. `docs/porting/direct_port_strategy.md`의 실행 순서와 최종 완료 게이트를 따른다.",
         "",
     ]
     return "\n".join(lines)

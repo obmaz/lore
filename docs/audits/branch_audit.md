@@ -1,6 +1,6 @@
 # LORE 스크립트 분기 감사
 
-`python3 tool/audit_script_branches.py > PORT_BRANCH_AUDIT.md`로 재생성한다.
+`python3 tool/audit_script_branches.py > docs/audits/branch_audit.md`로 재생성한다.
 원본 좌표 추출은 `audit_lorespec.py`의 휴리스틱이며 46개 `on/at` 좌표만
 잡는다. 조건식, 동적 좌표, 원본의 모든 실행 경로를 증명하지 않는다.
 가림 판정은 앞선 무조건·반복 규칙이 뒤 규칙의 전 좌표를 덮는 경우만 확정한다.

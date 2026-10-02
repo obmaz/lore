@@ -11,7 +11,7 @@ from collections import Counter
 from source_branch_inventory import ROOT, SOURCE, inventory, lex
 
 
-OUTPUT = ROOT / "PORT_WORKLOAD_AUDIT.md"
+OUTPUT = ROOT / "docs/audits/workload_audit.md"
 TOP_LEVEL_ROUTINE = re.compile(
     r"^(?:\{\$[^}]*\}\s*)*(?:procedure|function)\s+([A-Za-z_][A-Za-z_0-9]*)\b",
     re.IGNORECASE,

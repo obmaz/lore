@@ -14,7 +14,7 @@ from audit_lorespec import scan
 from audit_loretalk import source_coordinates
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / 'PORT_MAP_PARITY.md'
+OUTPUT = ROOT / 'docs/audits/map_parity.md'
 
 
 def collect():
@@ -122,7 +122,7 @@ def main():
     report = render(collect())
     if args.check:
         if not OUTPUT.exists() or OUTPUT.read_text() != report:
-            raise SystemExit('PORT_MAP_PARITY.md is stale')
+            raise SystemExit('docs/audits/map_parity.md is stale')
     else:
         OUTPUT.write_text(report)
 
