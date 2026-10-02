@@ -40,7 +40,6 @@ import '../widgets/message_log_view.dart';
 import '../widgets/dpad_widget.dart';
 import '../widgets/battle_viewport_view.dart';
 import '../widgets/encounter_viewport_view.dart';
-import '../widgets/town_dialog.dart';
 import '../widgets/town_facilities_dialog.dart';
 import '../widgets/field_menu_dialog.dart';
 import '../widgets/script_scene_dialog.dart';
@@ -193,7 +192,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       onLog: (msg) => _addLog(msg),
       onEncounter: () => _startBattle(),
       encounterFrequencyProvider: () => _encounterFrequency,
-      onTownEntered: () => _openTownDialog(),
       onFacilityEntered: (type) {
         TownFacilityType fType;
         switch (type) {
@@ -583,44 +581,47 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final chosen = await showDialog<int>(
         context: context,
         barrierDismissible: false,
-        builder: (ctx) => AlertDialog(
-          backgroundColor: RetroTheme.black,
-          shape: Border.all(color: RetroTheme.lightCyan, width: 2),
-          title: Text(
-            current.choicePrompt ?? '어떻게 하시겠습니까 ?',
-            style: RetroTheme.dosFont.copyWith(
-              color: RetroTheme.yellow,
-              fontSize: 12,
-            ),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (var i = 0; i < options.length; i++)
-                ListTile(
-                  dense: true,
-                  title: Text(
-                    options[i],
-                    style: RetroTheme.dosFont.copyWith(
-                      color: RetroTheme.white,
-                      fontSize: 12,
-                    ),
-                  ),
-                  onTap: () => Navigator.of(ctx).pop(i),
-                ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              key: const ValueKey('dialog-cancel'),
-              onPressed: () => Navigator.of(ctx).pop(-1),
-              icon: const Icon(
-                Icons.close,
-                size: 16,
-                color: RetroTheme.lightRed,
+        builder: (ctx) => _EscapeCancels(
+          onEscape: () => Navigator.of(ctx).pop(-1),
+          child: AlertDialog(
+            backgroundColor: RetroTheme.black,
+            shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+            title: Text(
+              current.choicePrompt ?? '어떻게 하시겠습니까 ?',
+              style: RetroTheme.dosFont.copyWith(
+                color: RetroTheme.yellow,
+                fontSize: 12,
               ),
             ),
-          ],
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (var i = 0; i < options.length; i++)
+                  ListTile(
+                    dense: true,
+                    title: Text(
+                      options[i],
+                      style: RetroTheme.dosFont.copyWith(
+                        color: RetroTheme.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                    onTap: () => Navigator.of(ctx).pop(i),
+                  ),
+              ],
+            ),
+            actions: [
+              IconButton(
+                key: const ValueKey('dialog-cancel'),
+                onPressed: () => Navigator.of(ctx).pop(-1),
+                icon: const Icon(
+                  Icons.close,
+                  size: 16,
+                  color: RetroTheme.lightRed,
+                ),
+              ),
+            ],
+          ),
         ),
       );
       final selected = chosen == null || chosen < 0
@@ -748,9 +749,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         _party = ScriptPartyReducer.applyProgress(_party, outcome);
       });
     }
-    if (outcome.expDelta != 0) {
-      _addLog('⭐ 경험치 ${outcome.expDelta > 0 ? '+' : ''}${outcome.expDelta}');
-    }
+    if (outcome.expDelta != 0) {}
 
     for (final recruit in outcome.recruits) {
       final member = LoreJoin.byKey(recruit.key);
@@ -933,45 +932,48 @@ class _MainGameScreenState extends State<MainGameScreen> {
       chosen = await showDialog<int>(
         context: context,
         barrierDismissible: false,
-        builder: (ctx) => AlertDialog(
-          backgroundColor: RetroTheme.black,
-          shape: Border.all(color: RetroTheme.lightCyan, width: 2),
-          title: Text(
-            '',
-            style: RetroTheme.dosFont.copyWith(
-              color: RetroTheme.yellow,
-              fontSize: 12,
-            ),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (var i = 0; i < _party.length; i++)
-                if (_party[i].name.isNotEmpty)
-                  ListTile(
-                    dense: true,
-                    title: Text(
-                      '${i + 1}번 ${_party[i].name} (${_party[i].playerClass.koreanName})',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.white,
-                        fontSize: 12,
-                      ),
-                    ),
-                    onTap: () => Navigator.of(ctx).pop(i),
-                  ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              key: const ValueKey('dialog-cancel'),
-              onPressed: () => Navigator.of(ctx).pop(-1),
-              icon: const Icon(
-                Icons.close,
-                size: 16,
-                color: RetroTheme.lightRed,
+        builder: (ctx) => _EscapeCancels(
+          onEscape: () => Navigator.of(ctx).pop(-1),
+          child: AlertDialog(
+            backgroundColor: RetroTheme.black,
+            shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+            title: Text(
+              '',
+              style: RetroTheme.dosFont.copyWith(
+                color: RetroTheme.yellow,
+                fontSize: 12,
               ),
             ),
-          ],
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                for (var i = 0; i < _party.length; i++)
+                  if (_party[i].name.isNotEmpty)
+                    ListTile(
+                      dense: true,
+                      title: Text(
+                        '${i + 1}번 ${_party[i].name} (${_party[i].playerClass.koreanName})',
+                        style: RetroTheme.dosFont.copyWith(
+                          color: RetroTheme.white,
+                          fontSize: 12,
+                        ),
+                      ),
+                      onTap: () => Navigator.of(ctx).pop(i),
+                    ),
+              ],
+            ),
+            actions: [
+              IconButton(
+                key: const ValueKey('dialog-cancel'),
+                onPressed: () => Navigator.of(ctx).pop(-1),
+                icon: const Icon(
+                  Icons.close,
+                  size: 16,
+                  color: RetroTheme.lightRed,
+                ),
+              ),
+            ],
+          ),
         ),
       );
       if (!mounted) return false;
@@ -1012,40 +1014,47 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final option = await showDialog<int>(
       context: context,
       barrierDismissible: false,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: RetroTheme.black,
-        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
-        title: Text(
-          LoreJoin.joinMenuPrompt,
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 12,
+      builder: (ctx) => _EscapeCancels(
+        onEscape: () => Navigator.of(ctx).pop(-1),
+        child: AlertDialog(
+          backgroundColor: RetroTheme.black,
+          shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+          title: Text(
+            LoreJoin.joinMenuPrompt,
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.yellow,
+              fontSize: 12,
+            ),
           ),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            for (var i = 0; i < labels.length; i++)
-              ListTile(
-                dense: true,
-                title: Text(
-                  '${i + 2}번 ${labels[i]}',
-                  style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.white,
-                    fontSize: 12,
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (var i = 0; i < labels.length; i++)
+                ListTile(
+                  dense: true,
+                  title: Text(
+                    '${i + 2}번 ${labels[i]}',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.white,
+                      fontSize: 12,
+                    ),
                   ),
+                  onTap: () => Navigator.of(ctx).pop(i),
                 ),
-                onTap: () => Navigator.of(ctx).pop(i),
+            ],
+          ),
+          actions: [
+            IconButton(
+              key: const ValueKey('dialog-cancel'),
+              onPressed: () => Navigator.of(ctx).pop(-1),
+              icon: const Icon(
+                Icons.close,
+                size: 16,
+                color: RetroTheme.lightRed,
               ),
+            ),
           ],
         ),
-        actions: [
-          IconButton(
-            key: const ValueKey('dialog-cancel'),
-            onPressed: () => Navigator.of(ctx).pop(-1),
-            icon: const Icon(Icons.close, size: 16, color: RetroTheme.lightRed),
-          ),
-        ],
       ),
     );
 
@@ -1143,10 +1152,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   void _advancePoison() {
     // 원작 LOREMAIN.PAS:31 `Move_Mode` - 독은 걸을 때마다 진행되고 10 을 넘으면
     // 발병하여 상태(dead/unconscious/hp)에 따라 피해를 준다.
-    var poisonProgressed = false;
     for (final p in _party) {
       if (p.name.isEmpty || p.poison <= 0) continue;
-      poisonProgressed = true;
       setState(() {
         p.poison++;
         if (p.poison > 10) {
@@ -1163,7 +1170,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
       });
     }
-    if (poisonProgressed) _addLog('☠ 독이 온몸에 퍼져나갑니다.');
   }
 
   Future<void> _openQuickViewDialog() async {
@@ -1274,6 +1280,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           );
           if (!mounted) return;
           setState(() {});
+          _addLog(LoreSubText.loadingGame);
         },
         onLog: (msg) => _addLog(msg),
       ),
@@ -1288,22 +1295,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
     _game.tryMove(0, 0);
     setState(() {});
-  }
-
-  void _openTownDialog() {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (ctx) => TownDialog(
-        party: _party,
-        gold: _partyGold,
-        food: _partyFood,
-        mapId: _game.currentMapId,
-        onGoldChanged: (newGold) => setState(() => _partyGold = newGold),
-        onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
-        onLog: (msg) => _addLog(msg),
-      ),
-    );
   }
 
   void _addLog(String msg) {
@@ -1342,7 +1333,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       // `적의 평균 민첩성 : n` / `적과 교전한다` / `도망간다`
       _addLog(LoreBattText.encounter);
       for (final e in _battleEnemies) {
-        _addLog('${e.name} (Lv.${e.level}, HP:${e.hp})');
+        _addLog(e.name);
       }
       _addLog(
         '${LoreBattText.enemyAgility} : ${LoreEncounterLogic.averageEnemyAgility(_battleEnemies)}',
@@ -1352,7 +1343,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _engageEncounter() {
     if (_currentMode != GameScreenMode.encounter) return;
-    _addLog(LoreBattText.engage);
     final decision = LoreEncounterLogic.decide(
       EncounterChoice.engage,
       _party,
@@ -1363,7 +1353,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _fleeEncounter() {
     if (_currentMode != GameScreenMode.encounter) return;
-    _addLog(LoreBattText.flee);
     final decision = LoreEncounterLogic.decide(
       EncounterChoice.flee,
       _party,
@@ -1377,7 +1366,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _reclaimFocus();
       return;
     }
-    _addLog(LoreBattText.runFailed);
     _beginEncounterBattle(enemyFirst: decision.enemyFirst);
   }
 
@@ -1929,4 +1917,26 @@ class _MainGameScreenState extends State<MainGameScreen> {
       ),
     );
   }
+}
+
+/// Escape cancels a source `select` menu (`select` returns 0).
+class _EscapeCancels extends StatelessWidget {
+  final VoidCallback onEscape;
+  final Widget child;
+
+  const _EscapeCancels({required this.onEscape, required this.child});
+
+  @override
+  Widget build(BuildContext context) => Focus(
+    autofocus: true,
+    onKeyEvent: (_, event) {
+      if (event is KeyDownEvent &&
+          event.logicalKey == LogicalKeyboardKey.escape) {
+        onEscape();
+        return KeyEventResult.handled;
+      }
+      return KeyEventResult.ignored;
+    },
+    child: child,
+  );
 }

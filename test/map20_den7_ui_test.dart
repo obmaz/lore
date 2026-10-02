@@ -108,6 +108,23 @@ void main() {
     expect(tester.takeException(), isNull);
   });
 
+  testWidgets('the Escape key cancels the select dialog like the cancel icon', (
+    tester,
+  ) async {
+    final game = await open(tester, 20, 'DEN7', 'den', 24, 53);
+    expect(game.currentMap!.getTile(24, 54), 0);
+    game.tryMove(0, 1);
+    await tick(tester);
+    expect(find.text('위의 말은 옳다'), findsOneWidget);
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    await tick(tester);
+    expect([game.currentMapId, game.playerX, game.playerY], [20, 24, 55]);
+    expect(game.currentMap!.getTile(23, 54), 0);
+    await tester.pumpWidget(const SizedBox.shrink());
+    await tester.pump(const Duration(seconds: 1));
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets(
     'Astral Mud: enemy 7 dead on escape sets bit1, loads map 4, then the seal text',
     (tester) async {

@@ -105,7 +105,6 @@ class LoreGame extends FlameGame {
   final void Function(String message)? onLog;
   final void Function()? onEncounter;
   final int Function()? encounterFrequencyProvider;
-  final void Function()? onTownEntered;
   final void Function(String npcName, String dialogue)? onNpcTalk;
   final void Function(int facilityType)? onFacilityEntered;
   final void Function(int x, int y)? onPositionChanged;
@@ -154,7 +153,6 @@ class LoreGame extends FlameGame {
     this.onLog,
     this.onEncounter,
     this.encounterFrequencyProvider,
-    this.onTownEntered,
     this.onNpcTalk,
     this.onFacilityEntered,
     this.onPositionChanged,
@@ -415,15 +413,8 @@ class LoreGame extends FlameGame {
         onLog?.call(selected.dialogue!);
         _flushPendingRecruits();
       case LoreTalkSource.none:
-        if (currentMapName == 'TOWN1') {
-          onNpcTalk?.call(
-            '마을 주민',
-            '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.',
-          );
-          onTownEntered?.call();
-        } else {
-          onLog?.call('주민은 더 이상 할 말이 없는 듯합니다.');
-        }
+        // LORETALK.PAS talkmode prints nothing for a cell it has no case for.
+        break;
     }
   }
 

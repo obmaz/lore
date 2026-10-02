@@ -221,11 +221,9 @@ class TownLogic {
       member.trainLevelUp(20);
       return [trainMaxLevel, trainNoNeedToTeach];
     }
-    final logs = <String>[
-      ...member.trainLevelUp(offer.targetLevel),
-      '${member.name}의 레벨은 ${offer.targetLevel} 입니다.',
-    ];
-    return logs;
+    // The stat growth is silent in Train_Center; only the level line prints.
+    member.trainLevelUp(offer.targetLevel);
+    return ['${member.name}의 레벨은 ${offer.targetLevel}입니다.'];
   }
 
   // ==========================================================================

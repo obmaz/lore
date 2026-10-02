@@ -45,12 +45,11 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
     _currentFood = widget.food;
   }
 
-  void _spendGold(int amount, String successMessage) {
+  void _spendGold(int amount) {
     setState(() {
       _currentGold -= amount;
     });
     widget.onGoldChanged(_currentGold);
-    widget.onLog(successMessage);
   }
 
   @override
@@ -80,40 +79,20 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
   }
 
   Widget _buildHeader() {
-    String title = '';
-    switch (widget.facilityType) {
-      case TownFacilityType.weaponShop:
-        title = '⚔ 로어 왕국 무기 & 방어구 상점 ⚔';
-        break;
-      case TownFacilityType.hospital:
-        title = '✚ 로어 왕립 구호 병원 ✚';
-        break;
-      case TownFacilityType.trainCenter:
-        title = '★ 왕립 군사 훈련소 ★';
-        break;
-      case TownFacilityType.grocery:
-        title = '🍞 식료품점 🍞';
-        break;
-    }
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: RetroTheme.headerFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 13,
-          ),
-        ),
-        Text(
-          '금화: $_currentGold 개',
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 12,
-          ),
-        ),
-      ],
+    // The first Print line of each LORESUB.PAS procedure.
+    final title = switch (widget.facilityType) {
+      TownFacilityType.weaponShop => TownLogic.shopIntro,
+      TownFacilityType.hospital => TownLogic.hospitalIntro,
+      TownFacilityType.trainCenter => TownLogic.trainIntro,
+      TownFacilityType.grocery => TownLogic.groceryIntro,
+    };
+    return Text(
+      title,
+      style: RetroTheme.dosFont.copyWith(
+        color: RetroTheme.white,
+        fontSize: 13,
+        fontWeight: FontWeight.bold,
+      ),
     );
   }
 
@@ -133,16 +112,14 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
   Widget _buildFooter() {
     return Align(
       alignment: Alignment.centerRight,
-      child: TextButton(
-        style: TextButton.styleFrom(
+      child: IconButton(
+        key: const ValueKey('facility-close'),
+        style: IconButton.styleFrom(
           backgroundColor: RetroTheme.darkGray,
           foregroundColor: RetroTheme.white,
         ),
         onPressed: () => Navigator.of(context).pop(),
-        child: Text(
-          '나가기 (ESC)',
-          style: RetroTheme.dosFont.copyWith(fontSize: 12),
-        ),
+        icon: const Icon(Icons.close, size: 16),
       ),
     );
   }
@@ -172,16 +149,16 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '상점 주인: "어서 오십시오! 우리들은 최상의 무기, 방패, 갑옷을 다룹니다."',
+            '${TownLogic.shopSubIntro} ${TownLogic.shopCategoryPrompt}',
             style: RetroTheme.dosFont.copyWith(
               color: RetroTheme.lightCyan,
               fontSize: 12,
             ),
           ),
           const SizedBox(height: 10),
-          _buildCategoryBtn('1. 무기류 (Weapons)', 1),
-          _buildCategoryBtn('2. 방패류 (Shields)', 2),
-          _buildCategoryBtn('3. 갑옷류 (Armors)', 3),
+          _buildCategoryBtn('무기류', 1),
+          _buildCategoryBtn('방패류', 2),
+          _buildCategoryBtn('갑옷류', 3),
         ],
       );
     }
@@ -196,10 +173,10 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
           children: [
             Text(
               _weaponShopCategory == 1
-                  ? '무기 목록 (위력 / 가격)'
+                  ? TownLogic.shopWeaponPrompt
                   : _weaponShopCategory == 2
-                  ? '방패 목록 (방어 / 가격)'
-                  : '갑옷 목록 (방어 / 가격)',
+                  ? TownLogic.shopShieldPrompt
+                  : TownLogic.shopArmorPrompt,
               style: RetroTheme.dosFont.copyWith(
                 color: RetroTheme.yellow,
                 fontSize: 11,
@@ -207,12 +184,10 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
             ),
             GestureDetector(
               onTap: () => setState(() => _weaponShopCategory = 0),
-              child: Text(
-                '◀ 이전 메뉴',
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.lightMagenta,
-                  fontSize: 11,
-                ),
+              child: const Icon(
+                Icons.arrow_back,
+                size: 16,
+                color: RetroTheme.lightMagenta,
               ),
             ),
           ],
@@ -222,33 +197,28 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
           height: 190,
           decoration: BoxDecoration(
             border: Border.all(color: RetroTheme.darkGray),
-            color: RetroTheme.background,
           ),
-          child: ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (context, idx) {
-              final it = items[idx];
-              final canAfford = _currentGold >= it.price;
-              return ListTile(
-                dense: true,
-                visualDensity: VisualDensity.compact,
-                title: Text(
-                  '${it.name} (+${it.power})',
-                  style: RetroTheme.dosFont.copyWith(
-                    color: canAfford ? RetroTheme.white : RetroTheme.darkGray,
-                    fontSize: 12,
+          child: Material(
+            color: RetroTheme.background,
+            child: ListView.builder(
+              itemCount: items.length,
+              itemBuilder: (context, idx) {
+                final it = items[idx];
+                final canAfford = _currentGold >= it.price;
+                return ListTile(
+                  dense: true,
+                  visualDensity: VisualDensity.compact,
+                  title: Text(
+                    '${it.name} : 금 ${it.price} 개',
+                    style: RetroTheme.dosFont.copyWith(
+                      color: canAfford ? RetroTheme.white : RetroTheme.darkGray,
+                      fontSize: 12,
+                    ),
                   ),
-                ),
-                trailing: Text(
-                  '금 ${it.price} 개',
-                  style: RetroTheme.dosFont.copyWith(
-                    color: canAfford ? RetroTheme.yellow : RetroTheme.lightRed,
-                    fontSize: 11,
-                  ),
-                ),
-                onTap: canAfford ? () => _chooseMemberForEquipment(it) : null,
-              );
-            },
+                  onTap: canAfford ? () => _chooseMemberForEquipment(it) : null,
+                );
+              },
+            ),
           ),
         ),
       ],
@@ -287,7 +257,7 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
         backgroundColor: RetroTheme.black,
         shape: Border.all(color: RetroTheme.lightCyan, width: 2),
         title: Text(
-          '누가 이 ${item.name}를 사용하시겠습니까?',
+          '누가 이 ${item.name}를 사용하시겠습니까 ?',
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 12,
@@ -300,40 +270,18 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
             return ListTile(
               dense: true,
               title: Text(
-                '${p.name} (${p.playerClass.koreanName})',
+                p.name,
                 style: RetroTheme.dosFont.copyWith(
                   color: blocked ? RetroTheme.darkGray : RetroTheme.white,
                   fontSize: 12,
                 ),
               ),
-              subtitle: blocked
-                  ? Text(
-                      TownLogic.shopMonkRefuse,
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.lightRed,
-                        fontSize: 10,
-                      ),
-                    )
-                  : Text(
-                      '현재: ${item.type == ItemType.weapon
-                          ? p.weaponName
-                          : item.type == ItemType.shield
-                          ? p.shieldName
-                          : p.armorName}',
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.lightCyan,
-                        fontSize: 10,
-                      ),
-                    ),
               onTap: blocked
                   ? null
                   : () {
                       Navigator.of(ctx).pop();
                       TownLogic.equipPurchased(p, item);
-                      _spendGold(
-                        item.price,
-                        '${p.name}이(가) [${item.name}]을(를) 구매하여 착용했습니다! (방어도: ${p.ac})',
-                      );
+                      _spendGold(item.price);
                     },
             );
           }).toList(),
@@ -362,14 +310,16 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
           height: 190,
           decoration: BoxDecoration(
             border: Border.all(color: RetroTheme.darkGray),
-            color: RetroTheme.background,
           ),
-          child: ListView.builder(
-            itemCount: widget.party.length,
-            itemBuilder: (context, idx) => TownHospitalRow(
-              member: widget.party[idx],
-              gold: _currentGold,
-              onTreat: _treat,
+          child: Material(
+            color: RetroTheme.background,
+            child: ListView.builder(
+              itemCount: widget.party.length,
+              itemBuilder: (context, idx) => TownHospitalRow(
+                member: widget.party[idx],
+                gold: _currentGold,
+                onTreat: _treat,
+              ),
             ),
           ),
         ),
@@ -393,9 +343,7 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
       TownLogic.applyTreatment(member, treatment);
     });
     widget.onGoldChanged(_currentGold);
-    widget.onLog(
-      '${TownLogic.appliedMessage(member, treatment)} (치료비: ${cost}G)',
-    );
+    widget.onLog(TownLogic.appliedMessage(member, treatment));
   }
 
   // =========================================================================
@@ -417,14 +365,15 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
           height: 190,
           decoration: BoxDecoration(
             border: Border.all(color: RetroTheme.darkGray),
-            color: RetroTheme.background,
           ),
-          child: ListView.builder(
-            itemCount: widget.party.length,
-            itemBuilder: (context, idx) => TownTrainRow(
-              member: widget.party[idx],
-              gold: _currentGold,
-              onTrain: _trainMember,
+          child: Material(
+            color: RetroTheme.background,
+            child: ListView.builder(
+              itemCount: widget.party.length,
+              itemBuilder: (context, idx) => TownTrainRow(
+                member: widget.party[idx],
+                onTrain: _trainMember,
+              ),
             ),
           ),
         ),
@@ -432,20 +381,30 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
     );
   }
 
-  /// 원작 Train_Center 승급 처리 (도달 레벨로 즉시 점프, Lv.20은 무상)
-  void _trainMember(PartyMember member, TrainOffer offer) {
-    setState(() {
-      if (offer.cost > 0) {
-        _currentGold -= offer.cost;
-        widget.onLog('★ ${member.name}의 승급 훈련비로 금화 ${offer.cost}개를 지불했습니다.');
-      } else {
-        widget.onLog('★ ${member.name}이(가) 최고 레벨에 도달하여 무상으로 승급했습니다!');
+  /// 원작 Train_Center: 인물을 고르면 판정하고 그 결과를 출력한다.
+  void _trainMember(PartyMember member) {
+    final offer = TownLogic.evaluateTraining(member);
+    if (!offer.canTrain) {
+      widget.onLog(TownLogic.trainNotEnoughExp);
+      if (member.battleLevel >= 1 && member.battleLevel <= 19) {
+        widget.onLog(
+          ' 당신이 다음 레벨이 되려면 경험치가 '
+          '${TownLogic.expRequiredForLevel(member.battleLevel + 1)}'
+          ' 이상 이어야 합니다.',
+        );
       }
-    });
+      return;
+    }
+    if (offer.cost > _currentGold) {
+      widget.onLog('당신은 금 ${_currentGold - offer.cost}개가 더 필요합니다.');
+      return;
+    }
+    setState(() => _currentGold -= offer.cost);
     widget.onGoldChanged(_currentGold);
     for (final m in TownLogic.applyTraining(member, offer)) {
       widget.onLog(m);
     }
+    setState(() {});
   }
 
   // =========================================================================
@@ -460,14 +419,6 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.lightCyan,
             fontSize: 12,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          '현재 보유 식량: $_currentFood 인분 (최대 ${TownLogic.maxFood}인분)',
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.lightGreen,
-            fontSize: 11,
           ),
         ),
         const SizedBox(height: 8),
@@ -487,7 +438,7 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
                   ? () => _buyFood(amount)
                   : null,
               child: Text(
-                '식량 $amount 인분 : 금 ${TownLogic.foodPackagePrice(amount)} 개',
+                '$amount 인분 : 금 ${TownLogic.foodPackagePrice(amount)} 개',
                 style: RetroTheme.dosFont.copyWith(fontSize: 11),
               ),
             ),
@@ -510,12 +461,6 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
     });
     widget.onGoldChanged(_currentGold);
     widget.onFoodChanged?.call(_currentFood);
-    if (_currentFood >= TownLogic.maxFood) {
-      widget.onLog(
-        '식량이 ${TownLogic.maxFood}인분 가득 찼습니다. (현재: $_currentFood 인분)',
-      );
-    } else {
-      widget.onLog('식량 $amount 인분을 구입했습니다. (총 $_currentFood 인분)');
-    }
+    widget.onLog(TownLogic.thankYou);
   }
 }
