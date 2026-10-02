@@ -9,11 +9,14 @@ class GameScreenLayout extends StatelessWidget {
   static const double minimumPartyHeight = 160;
   static const double minimumMessagesHeight = 200;
   static const double gap = 4;
+  static const double actionsHeight = 48;
+  static const double actionsWidth = 100;
 
   final Widget viewport;
   final Widget party;
   final Widget messages;
   final Widget? controls;
+  final Widget Function(Axis axis)? actionsBuilder;
 
   const GameScreenLayout({
     super.key,
@@ -21,6 +24,7 @@ class GameScreenLayout extends StatelessWidget {
     required this.party,
     required this.messages,
     this.controls,
+    this.actionsBuilder,
   });
 
   Widget _tabButton(TabController controller, int index, String label) {
@@ -102,13 +106,18 @@ class GameScreenLayout extends StatelessWidget {
         final width = constraints.maxWidth;
         final height = constraints.maxHeight;
         if (width <= 0 || height <= 0) return const SizedBox.shrink();
-        // Reserve a readable panel before sizing the square map. Never switch
-        // to side-by-side map/panels when browser chrome reduces the height.
+        final verticalActions = actionsBuilder != null && width > height;
+        final actionStrip = actionsBuilder != null && !verticalActions
+            ? actionsHeight + gap
+            : 0.0;
+        final railWidth = verticalActions ? actionsWidth + gap : 0.0;
+        // Reserve both the commands and readable panels before sizing the map.
+        // Only the command rail goes beside the map on wide, short screens.
         final side = math.min(
-          width,
-          math.max(0.0, height - minimumMessagesHeight - gap),
+          math.max(0.0, width - railWidth),
+          math.max(0.0, height - minimumMessagesHeight - gap - actionStrip),
         );
-        final remaining = height - side - gap;
+        final remaining = height - side - gap - actionStrip;
         final tabbed =
             height / width <= 1.5 ||
             remaining < minimumPartyHeight + minimumMessagesHeight + gap;
@@ -121,10 +130,30 @@ class GameScreenLayout extends StatelessWidget {
                   width: width,
                   height: side,
                   child: Center(
-                    child: SizedBox.square(dimension: side, child: viewport),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        SizedBox.square(dimension: side, child: viewport),
+                        if (verticalActions) ...[
+                          const SizedBox(width: gap),
+                          SizedBox(
+                            width: actionsWidth,
+                            child: actionsBuilder!(Axis.vertical),
+                          ),
+                        ],
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: gap),
+                if (actionsBuilder != null && !verticalActions) ...[
+                  SizedBox(
+                    height: actionsHeight,
+                    child: actionsBuilder!(Axis.horizontal),
+                  ),
+                  const SizedBox(height: gap),
+                ],
                 Expanded(child: _panels(tabbed: tabbed)),
               ],
             ),

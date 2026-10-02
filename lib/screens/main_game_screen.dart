@@ -35,6 +35,7 @@ import '../data/lore_data.dart';
 import '../data/lore_script.dart';
 import '../widgets/viewport_view.dart';
 import '../widgets/game_screen_layout.dart';
+import '../widgets/field_action_bar.dart';
 import '../widgets/party_status_view.dart';
 import '../widgets/message_log_view.dart';
 import '../widgets/dpad_widget.dart';
@@ -1633,6 +1634,31 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }).toList();
   }
 
+  Widget _buildFieldActions(Axis axis) {
+    return FieldActionBar(
+      axis: axis,
+      onMenu: () async {
+        if (_entryAnimationActive) return;
+        LoreDialogueManager.instance.setBattleResult(0);
+        await _openFieldMenuDialog();
+        _reclaimFocus();
+        _redispatchCurrentTileAfter(FieldAction.openMenu);
+      },
+      onStatus: () async {
+        if (_entryAnimationActive) return;
+        await _openQuickViewDialog();
+        _reclaimFocus();
+        _redispatchCurrentTileAfter(FieldAction.quickView);
+      },
+      onExtrasense: () async {
+        if (_entryAnimationActive) return;
+        await _openEspDialog();
+        _reclaimFocus();
+        _redispatchCurrentTileAfter(FieldAction.extrasense);
+      },
+    );
+  }
+
   Widget _buildViewportContent() {
     switch (_currentMode) {
       case GameScreenMode.field:
@@ -1698,111 +1724,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
                         color: AudioManager.instance.isMuted
                             ? RetroTheme.lightRed
                             : RetroTheme.lightGreen,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // 좌측 하단 [메뉴(Space)], [Q] 상태, [E] 초감각 버튼들
-            Positioned(
-              bottom: 6,
-              left: 6,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  GestureDetector(
-                    onTap: () async {
-                      if (_entryAnimationActive) return;
-                      LoreDialogueManager.instance.setBattleResult(0);
-                      await _openFieldMenuDialog();
-                      _redispatchCurrentTileAfter(FieldAction.openMenu);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: RetroTheme.blue.withValues(alpha: 0.8),
-                        border: Border.all(color: RetroTheme.cyan, width: 1.5),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.menu,
-                            size: 13,
-                            color: RetroTheme.yellow,
-                          ),
-                          const SizedBox(width: 3),
-                          Text(
-                            '메뉴(Space)',
-                            style: RetroTheme.dosFont.copyWith(
-                              fontSize: 10,
-                              color: RetroTheme.white,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 4),
-                  GestureDetector(
-                    onTap: () async {
-                      if (_entryAnimationActive) return;
-                      await _openQuickViewDialog();
-                      _redispatchCurrentTileAfter(FieldAction.quickView);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: RetroTheme.darkBlue.withValues(alpha: 0.8),
-                        border: Border.all(
-                          color: RetroTheme.lightGreen,
-                          width: 1.5,
-                        ),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        '[Q] 상태',
-                        style: RetroTheme.dosFont.copyWith(
-                          fontSize: 10,
-                          color: RetroTheme.lightGreen,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 4),
-                  GestureDetector(
-                    onTap: () async {
-                      if (_entryAnimationActive) return;
-                      await _openEspDialog();
-                      _redispatchCurrentTileAfter(FieldAction.extrasense);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: RetroTheme.darkBlue.withValues(alpha: 0.8),
-                        border: Border.all(
-                          color: RetroTheme.lightMagenta,
-                          width: 1.5,
-                        ),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        '[E] 초감각',
-                        style: RetroTheme.dosFont.copyWith(
-                          fontSize: 10,
-                          color: RetroTheme.lightMagenta,
-                        ),
                       ),
                     ),
                   ),
@@ -1981,6 +1902,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
         body: SafeArea(
           child: GameScreenLayout(
             viewport: ViewportView(content: _buildViewportContent()),
+            actionsBuilder: _currentMode == GameScreenMode.field
+                ? _buildFieldActions
+                : null,
             party: PartyStatusView(members: _mapPartyStatus()),
             messages: MessageLogView(logs: _logs, revision: _logRevision),
             controls: _currentMode == GameScreenMode.field

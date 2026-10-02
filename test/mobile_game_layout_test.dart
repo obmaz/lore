@@ -5,6 +5,10 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:lore/widgets/game_screen_layout.dart';
 import 'package:flutter/services.dart';
+import 'package:lore/widgets/field_action_bar.dart';
+import 'package:lore/widgets/quick_view_dialog.dart';
+import 'package:lore/widgets/esp_dialog.dart';
+import 'package:lore/widgets/field_menu_dialog.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/game/lore_game.dart';
 import 'package:lore/game/lore_map_manager.dart';
@@ -49,7 +53,17 @@ void main() {
       expect(viewport.width, 390);
       expect(viewport.height, 390);
       expect(game.width, game.height);
-      expect(party.top, greaterThanOrEqualTo(viewport.bottom));
+      final actions = tester.getRect(find.byType(FieldActionBar));
+      expect(actions.top, greaterThanOrEqualTo(viewport.bottom));
+      expect(party.top, greaterThanOrEqualTo(actions.bottom));
+      expect(actions.height, greaterThanOrEqualTo(44));
+      expect(
+        find.descendant(
+          of: find.byType(ViewportView),
+          matching: find.byType(FieldActionBar),
+        ),
+        findsNothing,
+      );
       expect(
         party.height,
         greaterThanOrEqualTo(GameScreenLayout.minimumPartyHeight),
@@ -104,12 +118,14 @@ void main() {
     ) async {
       await openGame(tester, size);
       final viewport = tester.getRect(find.byType(ViewportView));
-      final side = math.min(size.width, size.height - 204);
+      final side = math.min(size.width, size.height - 256);
       expect(viewport.width, side);
       expect(viewport.height, side);
       expect(find.byKey(const ValueKey('panel-tab-party')), findsOneWidget);
       final messages = tester.getRect(find.byType(MessageLogView));
-      expect(messages.top, greaterThanOrEqualTo(viewport.bottom));
+      final actions = tester.getRect(find.byType(FieldActionBar));
+      expect(actions.top, greaterThanOrEqualTo(viewport.bottom));
+      expect(messages.top, greaterThanOrEqualTo(actions.bottom));
       expect(messages.height, greaterThanOrEqualTo(200));
       final tab = tester.getRect(find.byKey(const ValueKey('panel-tab-party')));
       expect(tab.right, lessThanOrEqualTo(messages.left));
@@ -175,6 +191,21 @@ void main() {
     expect(game, same(before));
     final viewport = tester.getSize(find.byType(ViewportView));
     expect(viewport.width, viewport.height);
+    final actions = tester.getRect(find.byType(FieldActionBar));
+    final map = tester.getRect(find.byType(ViewportView));
+    expect(actions.left, greaterThanOrEqualTo(map.right));
+    expect(actions.top, map.top);
+    final menu = tester.getRect(
+      find.byKey(const ValueKey('field-action-menu')),
+    );
+    final status = tester.getRect(
+      find.byKey(const ValueKey('field-action-status')),
+    );
+    final esp = tester.getRect(
+      find.byKey(const ValueKey('field-action-extrasense')),
+    );
+    expect(status.top, greaterThanOrEqualTo(menu.bottom));
+    expect(esp.top, greaterThanOrEqualTo(status.bottom));
     expect(
       tester.getRect(find.byType(MessageLogView)).top,
       greaterThanOrEqualTo(tester.getRect(find.byType(ViewportView)).bottom),
@@ -185,6 +216,35 @@ void main() {
     );
     expect(find.byKey(const ValueKey('panel-tab-party')), findsOneWidget);
     expect(find.byType(DPadWidget), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets('moved field commands open dialogs and restore keyboard input', (
+    tester,
+  ) async {
+    await openGame(tester, const Size(390, 844));
+    Future<void> settle() async {
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 400));
+    }
+
+    await tester.tap(find.byKey(const ValueKey('field-action-status')));
+    await settle();
+    expect(find.byType(QuickViewDialog), findsOneWidget);
+    await tester.tap(find.text('확인 (ESC)'));
+    await settle();
+    await tester.sendKeyEvent(LogicalKeyboardKey.space);
+    await settle();
+    expect(find.byType(FieldMenuDialog), findsOneWidget);
+    await tester.tap(find.text('닫기 (ESC)'));
+    await settle();
+    await tester.tap(find.byKey(const ValueKey('field-action-extrasense')));
+    await settle();
+    expect(find.byType(EspDialog), findsOneWidget);
+    await tester.tap(find.text('닫기 (ESC)'));
+    await settle();
+    await tester.tap(find.byKey(const ValueKey('field-action-menu')));
+    await settle();
+    expect(find.byType(FieldMenuDialog), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 }
