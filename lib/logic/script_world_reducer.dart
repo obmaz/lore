@@ -1,4 +1,5 @@
 import '../data/lore_script.dart';
+import 'lore_source_memory.dart';
 
 /// 화면과 저장소에 의존하지 않는 스크립트 자원 상태.
 class ScriptResources {
@@ -12,8 +13,13 @@ class ScriptResources {
 class ScriptProgressState {
   final Map<String, bool> flags;
   final Map<String, int> quests;
+  final Map<int, int> sourceEtc;
 
-  const ScriptProgressState({required this.flags, required this.quests});
+  const ScriptProgressState({
+    required this.flags,
+    required this.quests,
+    this.sourceEtc = const {},
+  });
 }
 
 /// 현재 지도에서 스크립트가 읽거나 바꿀 수 있는 최소 상태.
@@ -67,6 +73,7 @@ class ScriptWorldReducer {
   }) {
     final flags = Map<String, bool>.from(state.flags);
     final quests = Map<String, int>.from(state.quests);
+    final sourceEtc = LorePartyEtc(state.sourceEtc);
     for (final flag in outcome.setFlags) {
       if (!deferredFlags.contains(flag)) flags[flag] = true;
     }
@@ -74,7 +81,14 @@ class ScriptWorldReducer {
       quests[change.name] =
           change.set ?? ((quests[change.name] ?? 0) + (change.inc ?? 0));
     }
-    return ScriptProgressState(flags: flags, quests: quests);
+    for (final write in outcome.sourceEtcWrites) {
+      sourceEtc[write.index] = write.value;
+    }
+    return ScriptProgressState(
+      flags: flags,
+      quests: quests,
+      sourceEtc: sourceEtc.snapshot(),
+    );
   }
 
   static ScriptMapResult applyMap(

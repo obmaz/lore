@@ -335,9 +335,18 @@ class LoreDialogueManager {
         if (((entry.value >> (m - 1)) & 1) == 1) 'etc${entry.key}_bit$m': true,
     for (final entry in partyEtc.entries)
       if (entry.value != 0) 'etc${entry.key}': true,
+    if (partyEtc.containsKey(40)) ...{
+      'evilSealRoomCleared': partyEtc.hasBit(40, 1),
+      'etc40_bit1': partyEtc.hasBit(40, 1),
+      for (var room = 1; room <= 7; room++)
+        'evilSealRoom$room': (partyEtc.read(40) >> 1) == room,
+    },
   };
 
-  void loadSaveFlags(Map<String, dynamic> flags) {
+  void loadSaveFlags(
+    Map<String, dynamic> flags, {
+    Map<String, int>? fieldCounters,
+  }) {
     final knownSaveKeys = getSaveFlags().keys.toSet();
     partyEtc.clear();
     metLordAhn = flags['metLordAhn'] == true;
@@ -443,9 +452,42 @@ class LoreDialogueManager {
     for (final entry in etcBits.entries) {
       partyEtc.putIfAbsent(entry.key, () => entry.value);
     }
+    // Legacy JSON saves kept the shifted room number in named flags. Recover
+    // it once; numeric raw bytes, including zero, always take precedence.
+    if (flags['etc40'] is! num) {
+      final savedFlags = {..._scriptFlags, ...flags};
+      final rooms = [
+        for (var room = 1; room <= 7; room++)
+          if (savedFlags['evilSealRoom$room'] == true) room,
+      ];
+      final sealBit =
+          savedFlags['etc40_bit1'] == true ||
+              savedFlags['evilSealRoomCleared'] == true
+          ? 1
+          : 0;
+      if (rooms.isNotEmpty || sealBit != 0) {
+        partyEtc[40] =
+            (rooms.isEmpty ? (partyEtc.read(40) & 254) : rooms.last << 1) |
+            sealBit;
+      }
+    }
+    if (fieldCounters != null) {
+      for (final entry in LorePartyEtc.fieldSlots.entries) {
+        // A legacy Boolean etc3 means only "active", not a one-step timer.
+        // Its separate numeric counter is more precise; a raw number wins.
+        if (flags['etc${entry.value}'] is! num &&
+            fieldCounters.containsKey(entry.key)) {
+          partyEtc[entry.value] = fieldCounters[entry.key]!;
+        }
+      }
+      partyEtc.restoreFieldCounters(const {});
+    }
   }
 
-  void loadFlags(Map<String, dynamic> flags) => loadSaveFlags(flags);
+  void loadFlags(
+    Map<String, dynamic> flags, {
+    Map<String, int>? fieldCounters,
+  }) => loadSaveFlags(flags, fieldCounters: fieldCounters);
 
   // =========================================================================
   // JSON 대화 테이블 (assets/data/dialogues.json)

@@ -40,6 +40,7 @@ class FieldMenuDialog extends StatefulWidget {
   final List<int> Function()? mapTilesProvider;
   final List<String> Function()? consumedScriptsProvider;
   final Map<String, int>? etc;
+  final Map<String, int> Function()? etcProvider;
   final void Function(String message) onLog;
 
   /// 원작 핫키(P/V/C/R/G)로 진입할 때 바로 열 탭.
@@ -65,6 +66,7 @@ class FieldMenuDialog extends StatefulWidget {
     this.mapTilesProvider,
     this.consumedScriptsProvider,
     this.etc,
+    this.etcProvider,
     this.initialTab = FieldMenuTab.main,
     required this.onLog,
   });
@@ -1730,7 +1732,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                           food: _currentFood,
                           party: widget.party,
                           flags: LoreDialogueManager.instance.getSaveFlags(),
-                          etc: widget.etc ?? {},
+                          etc: widget.etcProvider?.call() ?? widget.etc ?? {},
                           mapTiles: widget.mapTilesProvider?.call() ?? const [],
                           consumedScripts:
                               widget.consumedScriptsProvider?.call() ??
@@ -1766,6 +1768,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
                           : () async {
                               LoreDialogueManager.instance.loadFlags(
                                 slotData.flags,
+                                fieldCounters: slotData.etc,
                               );
                               await widget.onSaveDataLoaded?.call(slotData);
                               if (!context.mounted) return;

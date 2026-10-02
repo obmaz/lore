@@ -71,6 +71,33 @@ class LorePartyEtc extends MapBase<int, int> {
 
   Map<int, int> snapshot() => Map<int, int>.unmodifiable(_values);
 
+  /// LORESUB's field counters and pointer aliases use these same bytes.
+  static const fieldSlots = {
+    'torchSteps': 1,
+    'waterWalkSteps': 2,
+    'swampWalkSteps': 3,
+    'levitateSteps': 4,
+    'mindReadCount': 5,
+    'encounterFrequency': 7,
+    'maxEnemies': 8,
+  };
+
+  /// Old Flutter saves stored counters separately. Import only missing slots;
+  /// an explicit source zero is authoritative. LORESUB.Load validates options.
+  void restoreFieldCounters(Map<String, int> legacy) {
+    for (final entry in fieldSlots.entries) {
+      if (!containsKey(entry.value)) {
+        this[entry.value] = legacy[entry.key] ?? 0;
+      }
+    }
+    if (read(7) < 1 || read(7) > 3) this[7] = 2;
+    if (read(8) < 3 || read(8) > 7) this[8] = 5;
+  }
+
+  Map<String, int> fieldCounters() => {
+    for (final entry in fieldSlots.entries) entry.key: read(entry.value),
+  };
+
   @override
   int? operator [](Object? key) => _values[key];
 

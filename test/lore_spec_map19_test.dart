@@ -24,6 +24,7 @@ void main() {
     int tile = 0,
     Set<String> flags = const {},
     Map<String, int> questSteps = const {},
+    Map<int, int> sourceEtc = const {},
   }) {
     final result = LoreSpecialEventDispatcher.resolve(
       action: LoreTileAction.special,
@@ -34,6 +35,7 @@ void main() {
         tileAtPlayer: tile,
         flags: flags,
         questSteps: questSteps,
+        sourceEtc: sourceEtc,
       ),
       party: const [],
       scripts: scripts,
@@ -43,26 +45,33 @@ void main() {
     return result.script;
   }
 
-  group('LORESPEC 맵 19 DEN4 / EVIL DEN 분기 검증 (LORESPEC.PAS:1366-1474)', () {
-    test('(11,40) 및 (41,39) 늪속 레버는 공중부상 시 차단되고, 일반 상태에서는 작동하여 통로를 연다', () {
-      // LoreSpecProcedures.map19 직접 호출 검증 (공중부상 차단)
+  group('LORESPEC 맵 19 DEN6 / EVIL DEN 분기 검증 (LORESPEC.PAS:1366-1474)', () {
+    test('(11,40) 및 (41,39) 늪속 레버는 늪 위 걷기 시 차단되고, 일반 상태에서는 통로를 연다', () {
       final directBlocked = LoreSpecProcedures.map19(
         11,
         40,
-        const ScriptContext(flags: {'levitationActive'}),
+        const ScriptContext(sourceEtc: {3: 1}),
         scripts,
       )!;
-      expect(directBlocked.outcome.messages.any((m) => m.contains('들어갈수가 없다')), isTrue);
+      expect(
+        directBlocked.outcome.messages.any((m) => m.contains('들어갈수가 없다')),
+        isTrue,
+      );
 
-      // 레버 A: 공중부상 미활성
-      final leverA = dispatchSpecial(mapId: 19, x: 11, y: 40)!;
-      expect(leverA.outcome.messages.any((m) => m.contains('굉음이 들렸다')), isTrue);
-      expect(leverA.outcome.setFlags, contains('evilSealLeverA'));
+      // 레버 A: 공중부상만 활성화해도 원본 etc[3]은 0이므로 작동한다.
+      final leverA = dispatchSpecial(
+        mapId: 19,
+        x: 11,
+        y: 40,
+        sourceEtc: {3: 0, 4: 255},
+      )!;
+      expect(leverA.outcome.messages.join().contains('굉음이 들렸다'), isTrue);
+      expect(leverA.outcome.tileChanges, hasLength(2));
 
       // 레버 B: 공중부상 미활성
       final leverB = dispatchSpecial(mapId: 19, x: 41, y: 39)!;
       expect(leverB.outcome.messages.any((m) => m.contains('더 큰 굉음이')), isTrue);
-      expect(leverB.outcome.tileAreas, isNotEmpty);
+      expect(leverB.outcome.tileOperations, hasLength(56));
     });
 
     test('y in 8..12 복도 수호자는 봉인 해제 전 출현하고 해제 후 미출현한다', () {
@@ -97,11 +106,11 @@ void main() {
         flags: {'evilSealRoom3'},
       )!;
       expect(boss.awaitingBattle, isTrue);
-      expect(boss.outcome.messages.any((m) => m.contains('CRAB GOD의 왕이다')), isTrue);
+      expect(boss.outcome.messages.join().contains('CRAB GOD의 왕이다'), isTrue);
 
       final victory = boss.continueAfterBattle();
-      expect(victory.outcome.setFlags, contains('etc40_bit1'));
-      expect(victory.outcome.messages.any((m) => m.contains('봉인을 풀어버렸다')), isTrue);
+      expect(victory.outcome.sourceEtcWrites, [(index: 40, value: 7)]);
+      expect(victory.outcome.messages.join().contains('봉인을 풀어버렸다'), isTrue);
 
       // 이미 봉인이 풀린 후
       final rerun = dispatchSpecial(

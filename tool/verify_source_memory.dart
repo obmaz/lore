@@ -44,9 +44,26 @@ void main() {
   for (var index = 1; index <= 100; index++) {
     check(restored.read(index), (index + 200) & 255, 'slot $index');
   }
+  for (var value = 0; value < 256; value++) {
+    final field = LorePartyEtc({1: 0, 7: value, 8: value});
+    field.restoreFieldCounters({'torchSteps': 255, 'swampWalkSteps': value});
+    check(field.read(1), 0, 'raw timer zero $value');
+    check(field.read(3), value, 'legacy swamp timer $value');
+    check(
+      field.read(7),
+      value >= 1 && value <= 3 ? value : 2,
+      'encounter $value',
+    );
+    check(
+      field.read(8),
+      value >= 3 && value <= 7 ? value : 5,
+      'maxenemy $value',
+    );
+    check(field.fieldCounters()['swampWalkSteps']!, value, 'timer view $value');
+  }
   // CLI output must also work in the JavaScript verification runner.
   // ignore: avoid_print
   print(
-    'LORE source memory: storage boundaries, div/mod, 256 bit states, 100 slots passed.',
+    'LORE source memory: storage boundaries, div/mod, 256 bit/field states, 100 slots passed.',
   );
 }

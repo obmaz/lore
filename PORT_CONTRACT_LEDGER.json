@@ -16518,8 +16518,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:47",
@@ -16529,8 +16534,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:48",
@@ -16540,8 +16550,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:49",
@@ -16551,8 +16566,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:50",
@@ -16562,8 +16582,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:19",
@@ -16573,8 +16598,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:20",
@@ -16584,8 +16614,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:21",
@@ -16595,8 +16630,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:51",
@@ -16606,8 +16646,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:22",
@@ -16617,8 +16662,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:52",
@@ -16628,8 +16678,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:53",
@@ -16639,8 +16694,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:23",
@@ -16650,8 +16710,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:24",
@@ -16661,8 +16726,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:54",
@@ -16672,8 +16742,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:exit:12",
@@ -16683,8 +16758,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:55",
@@ -16694,8 +16774,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map19_source_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:56",
@@ -21541,8 +21626,13 @@
       "routine": "LORESUB.PAS:load:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/lore_source_memory_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_source_memory.dart",
+      "reviewed_scope": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending."
     },
     {
       "id": "LORESUB.PAS:load:1:if:12",
@@ -21552,8 +21642,13 @@
       "routine": "LORESUB.PAS:load:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/lore_source_memory_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_source_memory.dart",
+      "reviewed_scope": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending."
     },
     {
       "id": "LORESUB.PAS:load:1:case:4",
@@ -24225,6 +24320,196 @@
       "test": "test/map25_lever_parity_test.dart",
       "note": "Right lever tests bits 7 and 8 after writing bit 8 and reapplies door state after save/revisit; full app/DOS playback pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:46",
+      "line": 1378,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:47",
+      "line": 1379,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:48",
+      "line": 1394,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:49",
+      "line": 1395,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:50",
+      "line": 1407,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:19",
+      "line": 1408,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:20",
+      "line": 1413,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:21",
+      "line": 1414,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:51",
+      "line": 1419,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:22",
+      "line": 1421,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:52",
+      "line": 1433,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:53",
+      "line": 1437,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:23",
+      "line": 1444,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:24",
+      "line": 1445,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:54",
+      "line": 1459,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:12",
+      "line": 1459,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:55",
+      "line": 1461,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map19_source_test.dart",
+      "note": "Direct raw-byte map 19 branches, exact write order, shr/div and random bounds, victory/escape/defeat replay; portal and full app/DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:11",
+      "line": 1760,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_source_memory.dart",
+      "test": "test/lore_source_memory_test.dart",
+      "note": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:12",
+      "line": 1761,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_source_memory.dart",
+      "test": "test/lore_source_memory_test.dart",
+      "note": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending.",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -25973,7 +26258,7 @@
     {
       "path": "test/field_menu_script_save_test.dart",
       "kind": "test",
-      "sha256": "e293b9b02ca37486fe8aa9148ccfdc6a14ac9ada75b78f83fc3461e68effa6ee",
+      "sha256": "f7056e056b3b5f841cff9f07d9f5468390499c8ad8fbbbb7bd805225b9971e29",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -26047,8 +26332,10 @@
     {
       "path": "test/lore_source_memory_test.dart",
       "kind": "test",
-      "sha256": "622052a041e371f9852da44c2aff160b5bd02c64cb08dff761c3f8e3eba5f930",
-      "cited_source_files": [],
+      "sha256": "d399e6f5831e11805cb65a6f1c7708fc671f8b4673bc0e4e82da6e15fdc98983",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
@@ -26124,9 +26411,18 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/lore_spec_map19_source_test.dart",
+      "kind": "test",
+      "sha256": "1eb127ab374105bdd63f104a70bc7983a0392e6c17d78bdce680189a02cf27fc",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/lore_spec_map19_test.dart",
       "kind": "test",
-      "sha256": "7a37a47871e2c0a1bf58500ab2b0fee932e83e1129178ab988cd5202cb9a12ef",
+      "sha256": "195fe899f19e1afdd16e551edba646db12982f731760e760b4c958db01e0f79d",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26492,7 +26788,7 @@
     {
       "path": "test/source_route_parity_test.dart",
       "kind": "test",
-      "sha256": "704eb7687cdc7e243cc7ed1e82af587c38484c2dd20f0d15e96ca74f7b5d9d12",
+      "sha256": "0ee0713a7f73a51d21f5688f6188e6df49a32da43d30d233150f7a53c7f8804f",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -26891,7 +27187,7 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "db7203dd04a02859e33543cc7e8c46b44659dc6fc61cd0f0ae175556dc7fc058"
+      "sha256": "5215b1e8f6c15c952e429d893104407838811180fa6ddb3529876b8e2b40f577"
     },
     {
       "path": "lib/game/lore_game.dart",
@@ -26903,7 +27199,7 @@
     },
     {
       "path": "lib/game/lore_dialogue_manager.dart",
-      "sha256": "2276ef7ea2f098cf1be6714d2ba0937636505e52194434e53986fb849943b67c"
+      "sha256": "65989676327a92d0e548d3da135b04c54f7af9444795669cd456489f1555bd0b"
     },
     {
       "path": "lib/game/lore_dungeon_event_manager.dart",
@@ -26923,7 +27219,7 @@
     },
     {
       "path": "lib/logic/lore_source_memory.dart",
-      "sha256": "d2d03d09318c33d58b60652b41dacc72e447139cdd6ffdd3c9b5970fe4a2792f"
+      "sha256": "353ee6c1afbd5a16f6a3f4a14e123e8baa85add468fd604ee26f236d521b03d5"
     },
     {
       "path": "lib/game/lore_map_manager.dart",
@@ -26931,7 +27227,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "f6da7b0abf4d2e46ce5f5b5b776f96a66785dbaedd9ace606a947052dcbe556c"
+      "sha256": "524e959d85ba96e7a055e3e8e91117127dff7a7f35844042f7ea40ebaa0a90ef"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -26943,7 +27239,15 @@
     },
     {
       "path": "lib/logic/lore_special_event_dispatcher.dart",
-      "sha256": "35b2a250930003636eea412d308f18b60ba2f7604d181409656216988d553fa8"
+      "sha256": "a1cb3b7dcbfefa363a9cecd7c29283c47d326d42bfd7030956e97cc289eccc43"
+    },
+    {
+      "path": "lib/logic/script_world_reducer.dart",
+      "sha256": "b2a19593f6d20a617094308ecae4e59ddd3006504ba0c75f74bfeb5dc6a9664e"
+    },
+    {
+      "path": "lib/logic/script_battle_session.dart",
+      "sha256": "6e01f37266a1ce3a96a6f2bab72d246d16a1c7989d030c493b3e9b05c971072b"
     },
     {
       "path": "lib/logic/lore_lava_logic.dart",
@@ -26955,13 +27259,17 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "36a5d23c62259db847774ec9f32d721c4e275fd8bd97adc223d048fdd0b2227e"
+      "sha256": "53ec18e6b38c841a0ba767a1487f2ca8e3a8c1e50781600c4eb5236e514a1455"
+    },
+    {
+      "path": "lib/widgets/field_menu_dialog.dart",
+      "sha256": "f35b1c2b38edf88f5c6bf2fbefa183b2946586d57560c1673feab754c80f1cad"
     },
     {
       "path": "PORT_CONTRACT_EVIDENCE.json",
-      "sha256": "63f169b76ce1fe3cea569bd1ed7f2844fe7b642fe03f18c63871bcd334094780",
+      "sha256": "070e2a045909e76dfe60b7564af8f9405d033acc6da3f124d32532f1e5c1a832",
       "top_level_counts": {
-        "contracts": 15
+        "contracts": 34
       }
     }
   ],
@@ -26969,9 +27277,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 1833,
+    "unmapped_behavior_sites": 1814,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 15,
+    "partially_verified_behavior_sites": 34,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

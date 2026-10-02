@@ -791,83 +791,142 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:1366-1474`, map 19 (DEN4 / EVIL DEN).
-  ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 46` handled via portal session.
-  /// 2. Lever A at `(11, 40)`:
-  ///    - If `party.etc[3] > 0`: `evil-seal-lever-a-blocked`.
-  ///    - Else: `evil-seal-lever-a` (opens tile at `(41, 39)`).
-  /// 3. Lever B at `(41, 39)`:
-  ///    - If `party.etc[3] > 0`: `evil-seal-lever-b-blocked`.
-  ///    - Else: `evil-seal-lever-b` (opens central corridor, picks seal room).
-  /// 4. Crab God guardians in corridors at `y in 8..12`:
-  ///    - If not `etc40_bit1`: `evil-seal-guardians`.
-  /// 5. Seal room check at `y == 6`:
-  ///    - If not `etc40_bit1`:
-  ///      - Room index: `(x - 10) ~/ 4` (1..7).
-  ///      - Correct room matched via `evilSealRoomX` flag: boss battle (`evil-seal-room-X`).
-  ///      - Wrong room: `evil-seal-room-wrong-X`.
+  /// `LORESPEC.PAS:1378-1473`, map 19 (DEN6 / EVIL DEN).
+  /// Direct, closed internal branches; the southern exit remains in the portal
+  /// session. Preserve etc[3], odd/shr/div, random calls and battle exits.
   static ScriptRun? map19(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
     if (context.tileAtPlayer != null &&
         context.tileAtPlayer != 52 &&
         context.tileAtPlayer != 0) {
       return null;
     }
 
-    if (x == 11 && y == 40) {
-      final levitating = context.flags.contains('levitationActive');
-      final scriptId = levitating
-          ? 'evil-seal-lever-a-blocked'
-          : 'evil-seal-lever-a';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
-      );
-      return scripts.startProcedure(content, context);
-    }
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 19,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    ScriptStep tile(int tx, int ty, int value) =>
+        ScriptStep(kind: 'setTile', tileX: tx, tileY: ty, tileValue: value);
+    Map<String, Object?> guardOverride(int slot) => {
+      'index': slot,
+      'eNumber': 25,
+      'hp': 210,
+      'level': 7,
+    };
 
-    if (x == 41 && y == 39) {
-      final levitating = context.flags.contains('levitationActive');
-      final scriptId = levitating
-          ? 'evil-seal-lever-b-blocked'
-          : 'evil-seal-lever-b';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
-      );
-      return scripts.startProcedure(content, context);
+    var sealByte = context.etcValue(40, bitAliases: {1: 'evilSealRoomCleared'});
+    // Transition adapter for old JSON snapshots. Raw byte zero wins.
+    if (!context.sourceEtc.containsKey(40)) {
+      for (var room = 1; room <= 7; room++) {
+        if (context.flags.contains('evilSealRoom$room')) {
+          sealByte = (room << 1) | (sealByte & 1);
+        }
+      }
     }
+    final sealCleared = (sealByte & 1) != 0;
 
-    final sealCleared =
-        context.flags.contains('etc40_bit1') ||
-        context.flags.contains('evilSealRoomCleared');
+    if ((x == 11 && y == 40) || (x == 41 && y == 39)) {
+      final lever = x == 11 ? 'a' : 'b';
+      final swampWalk =
+          context.etcValue(3) > 0 ||
+          (!context.sourceEtc.containsKey(3) &&
+              context.flags.contains('swampWalkActive'));
+      if (swampWalk) {
+        return start('evil-seal-lever-$lever-blocked', const [
+          ScriptStep(kind: 'say', text: ' 늪 아래를 보니 무언가 반짝이는 물체가 있었'),
+          ScriptStep(kind: 'say', text: '다. 하지만 늪위를 걷는 마법 때문에 늪속으로'),
+          ScriptStep(kind: 'say', text: '들어갈수가 없다.'),
+        ]);
+      }
+      if (x == 11) {
+        return start('evil-seal-lever-a', [
+          const ScriptStep(kind: 'say', text: ' 일행은 독을 무릅쓰고  늪속에 빠져있는 레버'),
+          const ScriptStep(kind: 'say', text: '를 당겼다. 순간 동굴 중심부에서 굉음이 들렸'),
+          const ScriptStep(kind: 'say', text: '다.'),
+          tile(11, 40, 49),
+          tile(41, 39, 0),
+        ]);
+      }
+      return start('evil-seal-lever-b', [
+        const ScriptStep(kind: 'say', text: ' 일행은 독을 무릅쓰고  늪속에 빠져있는 레버'),
+        const ScriptStep(kind: 'say', text: '를 당겼다. 순간 동굴 중심부에서 조금전 보다'),
+        const ScriptStep(kind: 'say', text: '더 큰 굉음이 들렸다.'),
+        tile(41, 39, 49),
+        if (!sealCleared) ...[
+          for (var j = 27; j <= 36; j++) ...[tile(24, j, 25), tile(28, j, 23)],
+          tile(24, 37, 17),
+          tile(28, 37, 19),
+          for (var j = 27; j <= 37; j++)
+            for (var i = 25; i <= 27; i++) tile(i, j, 44),
+          ScriptStep(
+            kind: 'sourceEtc',
+            sourceEtcIndex: 40,
+            sourceEtcValue: (scripts.roll(7) + 1) << 1,
+          ),
+        ],
+      ]);
+    }
 
     if (!sealCleared && y >= 8 && y <= 12) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'evil-seal-guardians',
-      );
-      return scripts.startProcedure(content, context);
+      final count = scripts.roll(3) + 3;
+      final closeTile = tile(x, y, 49);
+      return start('evil-seal-guardians', [
+        ScriptStep(
+          kind: 'battle',
+          monsters: List.filled(count, 59),
+          battleOverrides: [for (var i = 1; i <= count; i++) guardOverride(i)],
+          // BattleMode(TRUE); map[x,y] := 49 on every battle result.
+          battleRunAwaySteps: [closeTile],
+          battleDefeatSteps: [closeTile],
+        ),
+        closeTile,
+      ]);
     }
 
     if (!sealCleared && y == 6) {
-      final roomIndex = (x - 10) ~/ 4;
-      if (roomIndex >= 1 && roomIndex <= 7) {
-        final isCorrectRoom = context.flags.contains('evilSealRoom$roomIndex');
-        final scriptId = isCorrectRoom
-            ? 'evil-seal-room-$roomIndex'
-            : 'evil-seal-room-wrong-$roomIndex';
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == scriptId,
-        );
-        return scripts.startProcedure(content, context);
+      final room = LorePascal.div(x - 10, 4);
+      if ((sealByte >> 1) != room) {
+        return start('evil-seal-room-wrong-$room', [
+          tile(x, y - 1, 49),
+          const ScriptStep(kind: 'say', text: ' 여기에는 봉인이 발견되지 않았다'),
+          tile(x, y, 49),
+        ]);
       }
+      return start('evil-seal-room-$room', [
+        tile(x, y - 1, 49),
+        const ScriptStep(kind: 'say', text: '나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD'),
+        const ScriptStep(kind: 'say', text: '의 왕이다. CRAB GOD 족의 명예를 걸고 절대로'),
+        const ScriptStep(kind: 'say', text: '너희 같은 자들에게 봉인을 넘겨주지 않겠다!!'),
+        ScriptStep(
+          kind: 'battle',
+          monsters: List.filled(7, 59),
+          battleEnemyFirst: true,
+          battleOverrides: [for (var i = 4; i <= 7; i++) guardOverride(i)],
+          battleRunAwaySteps: const [ScriptStep(kind: 'nudge', nudgeDy: 1)],
+        ),
+        const ScriptStep(kind: 'say', text: ' 당신은 이 동굴에 보관되어 있는 봉인을 발견'),
+        const ScriptStep(kind: 'say', text: '했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸'),
+        const ScriptStep(kind: 'say', text: '다.'),
+        ScriptStep(
+          kind: 'sourceEtc',
+          sourceEtcIndex: 40,
+          sourceEtcValue: sealByte | LorePascal.bit(1),
+        ),
+      ]);
     }
-
     return null;
   }
 

@@ -22,7 +22,9 @@ void main() {
 
     final map = await LoreMapData.loadFromAsset('DEN4', category: 'den');
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
 
     for (final raw in cases) {
       final item = raw as Map<String, dynamic>;
@@ -32,19 +34,11 @@ void main() {
       final grid = [for (final row in map.grid) List<int>.from(row)];
       final tile = item['tileAtPlayer'] as int? ?? grid[y - 1][x - 1];
       grid[y - 1][x - 1] = tile;
-      final run = engine.startStep(
-        17, x, y, ScriptContext(tileAtPlayer: tile),
-      );
+      final run = engine.startStep(17, x, y, ScriptContext(tileAtPlayer: tile));
       expect(run, isNotNull, reason: '원본 좌표 ($x,$y) 규칙이 없다');
 
       final actual = ScriptWorldReducer.applyMap(
-        ScriptMapState(
-          mapId: 17,
-          x: x,
-          y: y,
-          direction: 0,
-          grid: grid,
-        ),
+        ScriptMapState(mapId: 17, x: x, y: y, direction: 0, grid: grid),
         run!.outcome,
       );
       final safeEnd = (item['safeEnd'] as List<dynamic>).cast<int>();
@@ -71,7 +65,9 @@ void main() {
     expect(cases.length, 8);
     final map = await LoreMapData.loadFromAsset('DEN7', category: 'den');
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
 
     for (final raw in cases) {
       final item = raw as Map<String, dynamic>;
@@ -81,12 +77,7 @@ void main() {
       final y = start[1];
       final grid = [for (final row in map.grid) List<int>.from(row)];
       grid[y - 1][x - 1] = tile;
-      final run = engine.startStep(
-        20,
-        x,
-        y,
-        ScriptContext(tileAtPlayer: tile),
-      );
+      final run = engine.startStep(20, x, y, ScriptContext(tileAtPlayer: tile));
       expect(run, isNotNull, reason: '맵 20 ($x,$y), 타일 $tile');
       final actual = ScriptWorldReducer.applyMap(
         ScriptMapState(mapId: 20, x: x, y: y, direction: 0, grid: grid),
@@ -119,12 +110,18 @@ void main() {
         if (cleared) 'evilSealRoomCleared',
       };
       final engine = LoreScriptEngine();
-      engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
-      final run = engine.startStep(
-        19,
+      engine.loadFromJson(
+        await rootBundle.loadString('assets/data/scripts.json'),
+      );
+      final run = LoreSpecProcedures.map19(
         x,
         y,
-        ScriptContext(flags: flags, tileAtPlayer: 0),
+        ScriptContext(
+          flags: flags,
+          sourceEtc: {3: walk ? 1 : 0, 40: cleared ? 1 : 0},
+          tileAtPlayer: 0,
+        ),
+        engine,
       );
       expect(run, isNotNull, reason: '($x,$y), 걷기 $walk, 완료 $cleared');
       final grid = [for (final row in map.grid) List<int>.from(row)];
@@ -142,9 +139,13 @@ void main() {
         ScriptMapState(mapId: 19, x: x, y: y, direction: 0, grid: grid),
         run!.outcome,
       );
-      expect(actual.grid, expectedGrid, reason: '($x,$y), 걷기 $walk, 완료 $cleared');
       expect(
-        run.outcome.setFlags.where((flag) => flag.startsWith('evilSealRoom')),
+        actual.grid,
+        expectedGrid,
+        reason: '($x,$y), 걷기 $walk, 완료 $cleared',
+      );
+      expect(
+        run.outcome.sourceEtcWrites,
         hasLength(item['randomRoomCount'] == 0 ? 0 : 1),
         reason: '걷기 $walk, 완료 $cleared',
       );
@@ -154,32 +155,28 @@ void main() {
   test('맵 19 첫 레버가 연 칸에서 두 번째 레버를 연속 실행한다', () async {
     final map = await LoreMapData.loadFromAsset('DEN6', category: 'den');
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
-    final first = engine.startStep(
-      19,
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
+    final first = LoreSpecProcedures.map19(
       11,
       40,
       const ScriptContext(tileAtPlayer: 0),
+      engine,
     )!;
     final afterFirst = ScriptWorldReducer.applyMap(
-      ScriptMapState(
-        mapId: 19,
-        x: 11,
-        y: 40,
-        direction: 0,
-        grid: map.grid,
-      ),
+      ScriptMapState(mapId: 19, x: 11, y: 40, direction: 0, grid: map.grid),
       first.outcome,
     );
     expect(afterFirst.grid[38][40], 0);
-    final second = engine.startStep(
-      19,
+    final second = LoreSpecProcedures.map19(
       41,
       39,
       ScriptContext(
         flags: first.outcome.setFlags.toSet(),
         tileAtPlayer: afterFirst.grid[38][40],
       ),
+      engine,
     )!;
     final afterSecond = ScriptWorldReducer.applyMap(
       ScriptMapState(
@@ -194,7 +191,7 @@ void main() {
     expect(afterSecond.grid[38][40], 49);
     expect(afterSecond.grid[26][23], 25);
     expect(afterSecond.grid[36][26], 44);
-    expect(second.outcome.setFlags, contains('evilSealLeverB'));
+    expect(second.outcome.sourceEtcWrites.single.index, 40);
   });
 
   test('맵 27 특수 칸은 출구 이동 대신 중앙 쪽으로 한 칸 이동한다', () async {
@@ -203,7 +200,9 @@ void main() {
     ) as Map<String, dynamic>;
     final map = await LoreMapData.loadFromAsset('PYRAMID1', category: 'town');
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
     for (final raw in fixture['cases'] as List<dynamic>) {
       final item = raw as Map<String, dynamic>;
       final start = (item['start'] as List<dynamic>).cast<int>();
@@ -278,21 +277,30 @@ void main() {
     final fixture = jsonDecode(
       File('test/fixtures/map23_route_parity.json').readAsStringSync(),
     ) as Map<String, dynamic>;
-    final item = (fixture['cases'] as List<dynamic>).single as Map<String, dynamic>;
+    final item =
+        (fixture['cases'] as List<dynamic>).single as Map<String, dynamic>;
     final start = (item['start'] as List<dynamic>).cast<int>();
     final map = await LoreMapData.loadFromAsset('KEEP3', category: 'keep');
     final grid = [for (final row in map.grid) List<int>.from(row)];
     grid[start[1] - 1][start[0] - 1] = item['tileAtPlayer'] as int;
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
     final run = engine.startStep(
-      23, start[0], start[1],
+      23,
+      start[0],
+      start[1],
       ScriptContext(tileAtPlayer: item['tileAtPlayer'] as int),
     );
     expect(run?.script.id, 'keep3-trap-25-27');
     final actual = ScriptWorldReducer.applyMap(
       ScriptMapState(
-        mapId: 23, x: start[0], y: start[1], direction: 0, grid: grid,
+        mapId: 23,
+        x: start[0],
+        y: start[1],
+        direction: 0,
+        grid: grid,
       ),
       run!.outcome,
     );

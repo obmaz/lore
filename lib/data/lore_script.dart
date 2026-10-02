@@ -206,6 +206,10 @@ class ScriptStep {
   final int? amount;
   final String? key;
 
+  /// Direct Pascal procedure assignment, independent of JSON flag names.
+  final int? sourceEtcIndex;
+  final int? sourceEtcValue;
+
   /// Reuse another script's steps in the current battle sequence.
   final String? includeScriptId;
   final int? slot;
@@ -227,6 +231,7 @@ class ScriptStep {
   /// 도주 시 지정된 적 슬롯이 모두 쓰러졌으면 설정하는 플래그.
   final List<({List<int> slots, String flag})> battleRunAwayFlagsWhenDead;
   final List<ScriptStep> battleRunAwaySteps;
+  final List<ScriptStep> battleDefeatSteps;
   final bool battleContinueOnRunAway;
   final bool battleRetryOnRunAway;
   final bool battleMirrorParty;
@@ -303,7 +308,7 @@ class ScriptStep {
   final int? randomMax;
 
   /// randomFlag 스텝: 이름 목록 중 하나를 무작위로 설정한다
-  /// (원작 `party.etc[40] := (random(7)+1) shl 1` 같은 "방 번호 뽑기").
+  /// (미이전 JSON 규칙용; 직접 이식의 방 번호는 raw sourceEtc에 대입한다).
   final List<String>? randomFlagNames;
 
   /// `ifZero`: 현재 타일이 0(빈 땅)일 때만 다른 값으로 바꾼다
@@ -322,6 +327,8 @@ class ScriptStep {
     this.text,
     this.amount,
     this.key,
+    this.sourceEtcIndex,
+    this.sourceEtcValue,
     this.includeScriptId,
     this.slot,
     this.prompt,
@@ -334,6 +341,7 @@ class ScriptStep {
     this.battleEnemyDefeatFlags = const {},
     this.battleRunAwayFlagsWhenDead = const [],
     this.battleRunAwaySteps = const [],
+    this.battleDefeatSteps = const [],
     this.battleContinueOnRunAway = false,
     this.battleRetryOnRunAway = false,
     this.battleMirrorParty = false,
@@ -449,6 +457,7 @@ class ScriptOutcome {
   final int goldDelta;
   final int foodDelta;
   final List<String> setFlags;
+  final List<({int index, int value})> sourceEtcWrites;
   final List<({String key, int? slot})> recruits;
   final List<int> battleMonsters;
   final int battleCount;
@@ -549,6 +558,7 @@ class ScriptOutcome {
     this.goldDelta = 0,
     this.foodDelta = 0,
     this.setFlags = const [],
+    this.sourceEtcWrites = const [],
     this.recruits = const [],
     this.battleMonsters = const [],
     this.battleCount = 0,
@@ -609,6 +619,7 @@ class ScriptOutcome {
       goldDelta: goldDelta - previous.goldDelta,
       foodDelta: foodDelta - previous.foodDelta,
       setFlags: added(setFlags, previous.setFlags),
+      sourceEtcWrites: added(sourceEtcWrites, previous.sourceEtcWrites),
       recruits: added(recruits, previous.recruits),
       battleMonsters: newBattle ? battleMonsters : const [],
       battleCount: battleCount - previous.battleCount,
@@ -818,6 +829,13 @@ class ScriptRun {
       reuseFirstBattle: battle.battleRetryOnRunAway,
     );
   }
+
+  /// Only explicit source defeat effects run; victory continuation is skipped.
+  ScriptRun? continueAfterDefeat() {
+    final steps = _battleStep?.battleDefeatSteps;
+    if (!awaitingBattle || steps == null || steps.isEmpty) return null;
+    return _engine._execute(script, steps, _acc);
+  }
 }
 
 // ── 엔진 ────────────────────────────────────────────────────────────
@@ -1015,6 +1033,9 @@ class LoreScriptEngine {
     var gold = acc.goldDelta;
     var food = acc.foodDelta;
     var flags = List<String>.from(acc.setFlags);
+    var sourceEtcWrites = List<({int index, int value})>.from(
+      acc.sourceEtcWrites,
+    );
     var recruits = List<({String key, int? slot})>.from(acc.recruits);
     var monsters = List<int>.from(acc.battleMonsters);
     var battleCount = acc.battleCount;
@@ -1079,6 +1100,7 @@ class LoreScriptEngine {
       goldDelta: gold,
       foodDelta: food,
       setFlags: flags,
+      sourceEtcWrites: sourceEtcWrites,
       recruits: recruits,
       battleMonsters: monsters,
       battleCount: battleCount,
@@ -1150,6 +1172,13 @@ class LoreScriptEngine {
           break;
         case 'flag':
           flags.add(step.key!);
+          break;
+        case 'sourceEtc':
+          LorePartyEtc.checkIndex(step.sourceEtcIndex!);
+          sourceEtcWrites.add((
+            index: step.sourceEtcIndex!,
+            value: LorePascal.byte(step.sourceEtcValue!),
+          ));
           break;
         case 'join':
           recruits.add((key: step.key!, slot: step.slot));

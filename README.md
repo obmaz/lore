@@ -4,8 +4,7 @@
 
 현재 방향은 **원본 게임 로직을 보존하고 맵 표현·UI·음악을 현대화**하는 것입니다.
 원본 분기·비트·배열 계산은 Dart로 직접 옮기며, JSON 게임 팩 전환은 목표에서 제외했습니다.
-전환 기준은 [직접 이식 전략](PORT_DIRECT_PORT_STRATEGY.md), 표현과 로직의 경계는 [엔진 구조](ENGINE_ARCHITECTURE.md)에 정리했습니다.
-단계별 작업과 최종 완료 판정은 [완전 이식 마스터 플랜](PORT_MASTER_PLAN.md)을 따릅니다.
+작업 순서·표현과 로직의 경계·최종 완료 판정은 유일한 계획 문서인 [직접 이식 전략](PORT_DIRECT_PORT_STRATEGY.md)을 따릅니다.
 원본 범위와 남은 검증 항목은 [원본 계약 기준선](PORT_CONTRACT_LEDGER.md)에서 확인할 수 있습니다.
 이전 방식의 기준 버전은 태그 `pre-direct-port-2026-10-02` (`7ff0e89`)로 보존했습니다.
 

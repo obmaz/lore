@@ -341,9 +341,12 @@ def port_rule_sources():
         "lib/logic/lore_portal_session.dart",
         "lib/logic/lore_talk_dispatcher.dart",
         "lib/logic/lore_special_event_dispatcher.dart",
+        "lib/logic/script_world_reducer.dart",
+        "lib/logic/script_battle_session.dart",
         "lib/logic/lore_lava_logic.dart",
         "lib/logic/lore_swamp_logic.dart",
         "lib/screens/main_game_screen.dart",
+        "lib/widgets/field_menu_dialog.dart",
         "PORT_CONTRACT_EVIDENCE.json",
     )]
     rows = []
@@ -465,12 +468,12 @@ def report(data):
         "- 검증 목록에 없는 게임 분기와 모든 지도 쓰기는 아직 실행 규칙·이식 코드·행동 테스트에 연결하지 않았다.",
         "- 기존 테스트/fixture는 보존하며 근거 후보로 등록했다. 파일 이름만으로 검증 완료로 승격하지 않는다.",
         "- Pascal 전체 문법 트리가 아니므로 루틴 소유와 동적 표현식은 후속 의미 검토가 필요하다.",
-        "- JSON 규칙과 기존 Dart fallback의 우선순위·도달성은 단계 1–3에서 연결한다.",
-        "- 오디오는 대응 파일의 존재만 확인했다. 소리·재생 시점의 동등성은 단계 7 대상이다.",
+        "- 직접 프로시저와 미이전 처리기의 우선순위·도달성은 이식 전략의 단계 2에서 연결한다.",
+        "- 오디오는 대응 파일의 존재만 확인했다. 소리·재생 시점의 동등성은 이식 전략의 단계 4 대상이다.",
         f"- 원본 런타임 미매핑 파일: {', '.join(unmapped) if unmapped else '없음'}.",
         "",
         "다음 작업은 장부 항목을 공통 규칙·콘텐츠 규칙·플랫폼 대체에 연결하고,",
-        "효과 순서와 독립 실행 결과를 검증하는 것이다. `PORT_MASTER_PLAN.md`의 단계 1–8을 따른다.",
+        "효과 순서와 독립 실행 결과를 검증하는 것이다. `PORT_DIRECT_PORT_STRATEGY.md`의 실행 순서와 최종 완료 게이트를 따른다.",
         "",
     ]
     return "\n".join(lines)

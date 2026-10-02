@@ -27,6 +27,7 @@ import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
 import '../logic/lore_main_procedures.dart';
+import '../logic/lore_source_memory.dart';
 import '../logic/lore_ent_procedures.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
@@ -82,17 +83,25 @@ class _MainGameScreenState extends State<MainGameScreen> {
   int _partyFood = 20; // 원작 LORECRET.PAS `Last`: food := 20;
 
   // 원작 LOREMAIN.PAS: 환경 효과 및 보조 마법 지속 걸음수
-  int _torchSteps = 0; // etc[1]: 마법의 횃불
-  int _waterWalkSteps = 0; // etc[2]: 물위를 걸음
-  int _swampWalkSteps = 0; // etc[3]: 늪위를 걸음
-  int _levitateSteps = 0; // etc[4]: 공중 부상
+  LorePartyEtc get _sourceEtc => LoreDialogueManager.instance.partyEtc;
+  int get _torchSteps => _sourceEtc.read(1);
+  set _torchSteps(int value) => _sourceEtc[1] = value;
+  int get _waterWalkSteps => _sourceEtc.read(2);
+  set _waterWalkSteps(int value) => _sourceEtc[2] = value;
+  int get _swampWalkSteps => _sourceEtc.read(3);
+  set _swampWalkSteps(int value) => _sourceEtc[3] = value;
+  int get _levitateSteps => _sourceEtc.read(4);
+  set _levitateSteps(int value) => _sourceEtc[4] = value;
 
   /// 카메라 연출(원작 scroll(FALSE)) 한 장면을 보여주는 시간.
   /// 원작의 `PressAnyKey` 를 현대적으로 대체한 것이다.
   static const Duration _peekHold = Duration(milliseconds: 1600);
-  int _mindReadCount = 0; // etc[5]: 독심술
-  int _encounterFrequency = 2; // etc[7]
-  int _maxEnemies = 5; // etc[8]
+  int get _mindReadCount => _sourceEtc.read(5);
+  set _mindReadCount(int value) => _sourceEtc[5] = value;
+  int get _encounterFrequency => _sourceEtc.read(7);
+  set _encounterFrequency(int value) => _sourceEtc[7] = value;
+  int get _maxEnemies => _sourceEtc.read(8);
+  set _maxEnemies(int value) => _sourceEtc[8] = value;
 
   /// 스크립트 전투 승리 시 설정할 플래그 (원작 `party.etc[6] = 0` 처리).
   final List<String> _pendingVictoryFlags = [];
@@ -132,18 +141,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _party = List.from(widget.initialSaveData!.party);
       _partyGold = widget.initialSaveData!.gold;
       _partyFood = widget.initialSaveData!.food;
-      LoreDialogueManager.instance.loadFlags(widget.initialSaveData!.flags);
+      LoreDialogueManager.instance.loadFlags(
+        widget.initialSaveData!.flags,
+        fieldCounters: widget.initialSaveData!.etc,
+      );
       _scripts.consumedScripts
         ..clear()
         ..addAll(widget.initialSaveData!.consumedScripts);
-      final etc = widget.initialSaveData!.etc;
-      _torchSteps = etc['torchSteps'] ?? 0;
-      _waterWalkSteps = etc['waterWalkSteps'] ?? 0;
-      _swampWalkSteps = etc['swampWalkSteps'] ?? 0;
-      _levitateSteps = etc['levitateSteps'] ?? 0;
-      _mindReadCount = etc['mindReadCount'] ?? 0;
-      _encounterFrequency = etc['encounterFrequency'] ?? 2;
-      _maxEnemies = etc['maxEnemies'] ?? 5;
     } else {
       LoreDialogueManager.instance.loadFlags({});
       _scripts.consumedScripts.clear();
@@ -689,6 +693,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final progressBefore = ScriptProgressState(
       flags: dialogue.getFlagsCopy(),
       quests: dialogue.questSteps,
+      sourceEtc: dialogue.partyEtc.snapshot(),
     );
     final progressAfter = ScriptWorldReducer.applyProgress(
       progressBefore,
@@ -704,6 +709,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (progressBefore.quests[quest.key] != quest.value) {
         dialogue.applyQuestStep(quest.key, set: quest.value);
       }
+    }
+    for (final write in outcome.sourceEtcWrites) {
+      dialogue.partyEtc[write.index] = progressAfter.sourceEtc[write.index]!;
     }
 
     if (outcome.rigelBlessing) {
@@ -1210,15 +1218,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
         playerX: _game.playerX,
         playerY: _game.playerY,
         initialTab: initialTab,
-        etc: {
-          'torchSteps': _torchSteps,
-          'waterWalkSteps': _waterWalkSteps,
-          'swampWalkSteps': _swampWalkSteps,
-          'levitateSteps': _levitateSteps,
-          'mindReadCount': _mindReadCount,
-          'encounterFrequency': _encounterFrequency,
-          'maxEnemies': _maxEnemies,
-        },
+        etc: _sourceEtc.fieldCounters(),
+        etcProvider: () => _sourceEtc.fieldCounters(),
         onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
         onSpellEffect: ({int? torch, int? water, int? swamp, int? levitate}) {
           setState(() {
@@ -1264,13 +1265,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
             _party = List.from(save.party);
             _partyGold = save.gold;
             _partyFood = save.food;
-            _torchSteps = save.etc['torchSteps'] ?? 0;
-            _waterWalkSteps = save.etc['waterWalkSteps'] ?? 0;
-            _swampWalkSteps = save.etc['swampWalkSteps'] ?? 0;
-            _levitateSteps = save.etc['levitateSteps'] ?? 0;
-            _mindReadCount = save.etc['mindReadCount'] ?? 0;
-            _encounterFrequency = save.etc['encounterFrequency'] ?? 2;
-            _maxEnemies = save.etc['maxEnemies'] ?? 5;
           });
           await _game.loadMapById(
             save.mapId,
@@ -1541,7 +1535,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   /// 전투 패배 -> 게임 오버
-  void _onBattleDefeat() {
+  Future<void> _onBattleDefeat() async {
     final session = ScriptBattleSession.resolve(
       before: _battleProgressState(),
       end: LoreBattleEnd.defeat,
@@ -1553,9 +1547,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
     _pendingScriptTargetY = null;
     _pendingVictoryFlags.clear();
     _pendingPortalTransition = null;
+    _applyBattleProgress(session.progress);
+    if (session.continuation case final continuation?) {
+      await _applyScriptOutcome(continuation, since: session.appliedOutcome);
+      if (!mounted) return;
+    }
     AudioManager.instance.stopBgm();
     setState(() {
-      _applyBattleProgress(session.progress);
       _currentMode = GameScreenMode.gameOver;
     });
   }

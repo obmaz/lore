@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
+import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/services/save_manager.dart';
 import 'package:lore/widgets/field_menu_dialog.dart';
@@ -11,6 +12,10 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     LoreScriptEngine.instance.consumedScripts.add('global-only');
     addTearDown(LoreScriptEngine.instance.consumedScripts.clear);
+    final sourceEtc = LoreDialogueManager.instance.partyEtc;
+    sourceEtc.clear();
+    sourceEtc.restoreFieldCounters({});
+    addTearDown(() => LoreDialogueManager.instance.loadFlags({}));
     tester.view.physicalSize = const Size(1280, 800);
     tester.view.devicePixelRatio = 1;
     addTearDown(() {
@@ -27,12 +32,19 @@ void main() {
             food: 20,
             initialTab: FieldMenuTab.gameOption,
             consumedScriptsProvider: () => ['session-only'],
+            etc: sourceEtc.fieldCounters(),
+            etcProvider: sourceEtc.fieldCounters,
             onLog: (_) {},
           ),
         ),
       ),
     );
     await tester.pumpAndSettle();
+    // The menu was opened before a spell/option callback updated these bytes.
+    // Saving must use the current values, not its initial widget snapshot.
+    sourceEtc[3] = 29;
+    sourceEtc[7] = 3;
+    sourceEtc[8] = 7;
     final save = find.text('저장').first;
     await tester.ensureVisible(save);
     await tester.tap(save);
@@ -40,5 +52,10 @@ void main() {
 
     final restored = await SaveManager.instance.loadGame(1);
     expect(restored?.consumedScripts, ['session-only']);
+    expect(restored?.etc['swampWalkSteps'], 29);
+    expect(restored?.etc['encounterFrequency'], 3);
+    expect(restored?.flags['etc3'], 29);
+    expect(restored?.flags['etc7'], 3);
+    expect(restored?.flags['etc8'], 7);
   });
 }
