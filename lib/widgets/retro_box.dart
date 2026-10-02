@@ -27,7 +27,7 @@ class RetroBox extends StatelessWidget {
         border: Border.all(color: borderColor, width: 2),
         boxShadow: const [
           BoxShadow(
-            color: Color(0x66000000),
+            color: RetroTheme.darkGray,
             offset: Offset(2, 2),
             blurRadius: 0,
           ),

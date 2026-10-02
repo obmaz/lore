@@ -13,7 +13,7 @@ class ViewportView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: RetroTheme.viewportBg,
-        border: Border.all(color: RetroTheme.lightBlue, width: 2),
+        border: Border.all(color: RetroTheme.borderColor, width: 2),
       ),
       child: content,
     );

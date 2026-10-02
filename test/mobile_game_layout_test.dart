@@ -45,6 +45,12 @@ void main() {
     'portrait fills width with a square map above party and dialogue',
     (tester) async {
       await openGame(tester, const Size(390, 844));
+      expect(
+        tester.widget<MessageLogView>(find.byType(MessageLogView)).logs,
+        isEmpty,
+      );
+      expect(find.textContaining('좌표:'), findsNothing);
+      expect(find.textContaining('Flutter Engine'), findsNothing);
       final viewport = tester.getRect(find.byType(ViewportView));
       final game = tester.getSize(find.byType(GameWidget<LoreGame>));
       final party = tester.getRect(find.byType(PartyStatusView));
@@ -230,17 +236,23 @@ void main() {
     await tester.tap(find.byKey(const ValueKey('field-action-status')));
     await settle();
     expect(find.byType(QuickViewDialog), findsOneWidget);
-    await tester.tap(find.text('확인 (ESC)'));
+    expect(find.text('중독'), findsOneWidget);
+    expect(find.text('죽음'), findsOneWidget);
+    expect(find.textContaining('QUICK VIEW'), findsNothing);
+    await tester.tap(find.text('확인'));
     await settle();
     await tester.sendKeyEvent(LogicalKeyboardKey.space);
     await settle();
     expect(find.byType(FieldMenuDialog), findsOneWidget);
-    await tester.tap(find.text('닫기 (ESC)'));
+    await tester.tap(find.text('닫기'));
     await settle();
     await tester.tap(find.byKey(const ValueKey('field-action-extrasense')));
     await settle();
     expect(find.byType(EspDialog), findsOneWidget);
-    await tester.tap(find.text('닫기 (ESC)'));
+    expect(find.textContaining('EXTRASENSE'), findsNothing);
+    expect(find.textContaining('Clairvoyance'), findsNothing);
+    expect(find.textContaining('소모 ESP'), findsNothing);
+    await tester.tap(find.text('닫기'));
     await settle();
     await tester.tap(find.byKey(const ValueKey('field-action-menu')));
     await settle();

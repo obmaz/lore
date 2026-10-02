@@ -5,7 +5,7 @@ class RetroTheme {
   // Classic 16-color VGA Palette
   static const Color black = Color(0xFF000000);
   static const Color blue = Color(0xFF0000AA);
-  static const Color darkBlue = Color(0xFF000066);
+  static const Color darkBlue = blue;
   static const Color green = Color(0xFF00AA00);
   static const Color cyan = Color(0xFF00AAAA);
   static const Color red = Color(0xFFAA0000);
@@ -21,12 +21,17 @@ class RetroTheme {
   static const Color yellow = Color(0xFFFFFF55);
   static const Color white = Color(0xFFFFFFFF);
 
-  // Backgrounds & Borders
-  static const Color background = Color(0xFF000010);
-  static const Color viewportBg = Color(0xFF050515);
-  static const Color panelBg = Color(0xFF000022);
-  static const Color borderColor = Color(0xFF5555FF);
-  static const Color borderHighlight = Color(0xFF55FFFF);
+  // LORESUB.PAS Set_All: fill 1 outside, fill 8 inside both panels.
+  // Map/dialogue outlines use 15; the party outline uses 10.
+  static const Color background = blue;
+  static const Color viewportBg = black;
+  static const Color panelBg = darkGray;
+  static const Color borderColor = white;
+  static const Color borderHighlight = white;
+  static const Color partyBorderColor = lightGreen;
+  static const Color partyHeaderColor = lightCyan; // Set_All bHPrint: 11.
+  static const Color partyTextColor = white; // Display_Condition: 15.
+  static const Color dialogueTextColor = lightGray; // talk/Print: 7.
 
   // Typography
   static const TextStyle dosFont = TextStyle(
@@ -49,7 +54,7 @@ class RetroTheme {
     fontFamily: 'monospace',
     fontSize: 13,
     height: 1.3,
-    color: lightCyan,
+    color: dialogueTextColor,
     fontWeight: FontWeight.w500,
   );
 

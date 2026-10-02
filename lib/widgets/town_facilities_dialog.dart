@@ -56,7 +56,7 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: RetroTheme.black,
+      backgroundColor: RetroTheme.panelBg,
       shape: RoundedRectangleBorder(
         side: const BorderSide(color: RetroTheme.cyan, width: 2),
         borderRadius: BorderRadius.circular(4),
@@ -284,7 +284,7 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: RetroTheme.black,
+        backgroundColor: RetroTheme.panelBg,
         shape: Border.all(color: RetroTheme.lightCyan, width: 2),
         title: Text(
           '누가 이 ${item.name}를 사용하시겠습니까?',

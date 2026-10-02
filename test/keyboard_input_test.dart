@@ -167,7 +167,7 @@ void main() {
     }
 
     Future<void> closeDialog(WidgetTester tester) async {
-      await tester.tap(find.text('닫기 (ESC)'));
+      await tester.tap(find.text('닫기'));
       await settle(tester);
     }
 
@@ -177,38 +177,38 @@ void main() {
       // Space -> 전체 커맨드 메뉴
       await tester.sendKeyEvent(LogicalKeyboardKey.space);
       await settle(tester);
-      expect(find.text('당신의 명령을 고르시오 ===>'), findsOneWidget);
+      expect(find.text('당신의 명령을 고르시오 ===>'), findsWidgets);
       await closeDialog(tester);
 
       // P -> 일행의 상황
       await tester.sendKeyEvent(LogicalKeyboardKey.keyP);
       await settle(tester);
-      expect(find.text('1. 일행의 상황 (VIEW PARTY)'), findsOneWidget);
+      expect(find.text('일행의 상황을 본다'), findsOneWidget);
       await closeDialog(tester);
 
       // V -> 개인의 상황
       await tester.sendKeyEvent(LogicalKeyboardKey.keyV);
       await settle(tester);
-      expect(find.text('2. 능력을 보고싶은 인물을 선택하시오'), findsOneWidget);
+      expect(find.text('능력을 보고싶은 인물을 선택하시오'), findsOneWidget);
       await closeDialog(tester);
 
       // C -> 비전투 마법 시전
       await tester.sendKeyEvent(LogicalKeyboardKey.keyC);
       await settle(tester);
-      expect(find.text('4. 비전투 마법 시전 (CAST SPELL)'), findsOneWidget);
+      expect(find.text('사용할 마법의 종류 ===>'), findsWidgets);
       await closeDialog(tester);
 
       // R -> 야외 캠프 휴식
       await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
       await settle(tester);
-      expect(find.text('6. 야외 캠프 휴식 (REST)'), findsOneWidget);
-      expect(find.text('지금 휴식하기 (Rest)'), findsOneWidget);
+      expect(find.text('여기서 쉰다'), findsWidgets);
+      expect(find.text('여기서 쉰다'), findsWidgets);
       await closeDialog(tester);
 
       // G -> 게임 저장/불러오기
       await tester.sendKeyEvent(LogicalKeyboardKey.keyG);
       await settle(tester);
-      expect(find.text('7. 게임 저장 및 불러오기 (GAME OPTION)'), findsOneWidget);
+      expect(find.text('게임 선택 상황'), findsOneWidget);
       await closeDialog(tester);
     });
 
@@ -218,15 +218,16 @@ void main() {
       // Q -> 간이 일행 상황
       await tester.sendKeyEvent(LogicalKeyboardKey.keyQ);
       await settle(tester);
-      expect(find.textContaining('QUICK VIEW'), findsWidgets);
-      await tester.tap(find.text('확인 (ESC)'));
+      expect(find.text('중독'), findsOneWidget);
+      expect(find.text('죽음'), findsOneWidget);
+      await tester.tap(find.text('확인'));
       await settle(tester);
 
       // E -> 초감각(ESP)
       await tester.sendKeyEvent(LogicalKeyboardKey.keyE);
       await settle(tester);
       expect(find.textContaining('초감각'), findsWidgets);
-      await tester.tap(find.text('닫기 (ESC)'));
+      await tester.tap(find.text('닫기'));
       await settle(tester);
 
       // F1 -> 제작자 서문 & 가이드

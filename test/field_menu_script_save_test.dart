@@ -45,7 +45,7 @@ void main() {
     sourceEtc[3] = 29;
     sourceEtc[7] = 3;
     sourceEtc[8] = 7;
-    final save = find.text('저장').first;
+    final save = find.text('현재의 게임을 저장').first;
     await tester.ensureVisible(save);
     await tester.tap(save);
     await tester.pumpAndSettle();

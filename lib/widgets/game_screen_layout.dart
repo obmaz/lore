@@ -41,7 +41,7 @@ class GameScreenLayout extends StatelessWidget {
           minimumSize: const Size(60, 48),
           shape: const RoundedRectangleBorder(),
           side: BorderSide(
-            color: selected ? RetroTheme.lightCyan : RetroTheme.darkGray,
+            color: selected ? RetroTheme.white : RetroTheme.lightGray,
           ),
         ),
         child: Text(label, style: const TextStyle(fontSize: 12)),

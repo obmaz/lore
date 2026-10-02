@@ -42,8 +42,8 @@ class FieldActionBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final buttons = [
       _button('menu', '메뉴', RetroTheme.white, onMenu),
-      _button('status', '상태', RetroTheme.lightGreen, onStatus),
-      _button('extrasense', '초감각', RetroTheme.lightMagenta, onExtrasense),
+      _button('status', '상태', RetroTheme.white, onStatus),
+      _button('extrasense', '초감각', RetroTheme.white, onExtrasense),
     ];
     if (axis == Axis.vertical) {
       return LayoutBuilder(

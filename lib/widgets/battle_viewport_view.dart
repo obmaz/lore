@@ -393,7 +393,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: RetroTheme.black,
+        backgroundColor: RetroTheme.panelBg,
         shape: Border.all(color: RetroTheme.lightGreen, width: 2),
         title: Text(
           '치료 대상 선택',
@@ -623,7 +623,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: RetroTheme.black,
+        backgroundColor: RetroTheme.panelBg,
         shape: Border.all(color: RetroTheme.lightMagenta, width: 2),
         title: Text(
           '$title (SP: ${player.sp} / ESP: ${player.esp})',

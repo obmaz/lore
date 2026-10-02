@@ -224,9 +224,6 @@ class LoreGame extends FlameGame {
         playerX = startX;
         playerY = startY;
       }
-      onLog?.call(
-        '지도 [${info.title}] 진입 (크기: ${currentMap!.xmax}x${currentMap!.ymax})',
-      );
       // 원작 BGM 전환
       AudioManager.instance.playBgm(info.bgmTrack);
     } catch (e) {
@@ -276,13 +273,13 @@ class LoreGame extends FlameGame {
       switch (effect.kind) {
         case LoreFieldEffectKind.boundary:
           clearPeek();
-          onLog?.call('더 이상 나아갈 수 없는 경계 지역입니다.');
+
         case LoreFieldEffectKind.wall:
           clearPeek();
-          onLog?.call('단단한 성벽과 바위가 가로막아 지나갈 수 없습니다.');
+
         case LoreFieldEffectKind.waterBlocked:
           _enterWater();
-          onLog?.call('깊은 물속은 배나 [물위를 걸음] 마법 없이는 건널 수 없습니다!');
+
         case LoreFieldEffectKind.talk:
           clearPeek();
           _handleNpcInteraction(targetX, targetY);
@@ -421,8 +418,6 @@ class LoreGame extends FlameGame {
             '어서 오십시오. 여기는 지식의 성전 성내 마을(CASTLE LORE)입니다.',
           );
           onTownEntered?.call();
-        } else {
-          onLog?.call('주민은 더 이상 할 말이 없는 듯합니다.');
         }
     }
   }
@@ -454,7 +449,6 @@ class LoreGame extends FlameGame {
       setDirection: (direction) => playerDirection = direction,
     );
     if (!deferPostLoadEffects) finishEntrance();
-    onLog?.call('${portal.name}에 진입했습니다.');
   }
 
   void finishEntrance() {

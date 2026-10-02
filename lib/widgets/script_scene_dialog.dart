@@ -27,7 +27,7 @@ class ScriptSceneDialog extends StatelessWidget {
       return KeyEventResult.ignored;
     },
     child: AlertDialog(
-      backgroundColor: RetroTheme.black,
+      backgroundColor: RetroTheme.panelBg,
       title: Text(scene.title, style: RetroTheme.headerFont),
       content: SingleChildScrollView(
         child: Column(

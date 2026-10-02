@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
+import '../logic/lore_menu_text.dart';
 import '../models/party_member.dart';
 import '../game/lore_dialogue_manager.dart';
 
@@ -36,9 +37,9 @@ class _EspDialogState extends State<EspDialog> {
         member.esp > 0;
 
     return Dialog(
-      backgroundColor: RetroTheme.black,
+      backgroundColor: RetroTheme.panelBg,
       shape: RoundedRectangleBorder(
-        side: const BorderSide(color: RetroTheme.lightMagenta, width: 2),
+        side: const BorderSide(color: RetroTheme.borderColor, width: 2),
         borderRadius: BorderRadius.circular(4),
       ),
       child: Container(
@@ -48,35 +49,9 @@ class _EspDialogState extends State<EspDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // 헤더
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    '◆ 초감각 기술 (EXTRASENSE / ESP) ◆',
-                    overflow: TextOverflow.ellipsis,
-                    style: RetroTheme.headerFont.copyWith(
-                      color: RetroTheme.lightMagenta,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Text(
-                  '[ESC / 닫기]',
-                  style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.lightGray,
-                    fontSize: 10,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 10),
-
             // 파티원 선택 탭
             Text(
-              '초감각을 사용할 인물을 선택하십시오:',
+              LoreMenuText.espKind,
               style: RetroTheme.dosFont.copyWith(
                 color: RetroTheme.yellow,
                 fontSize: 11,
@@ -92,7 +67,7 @@ class _EspDialogState extends State<EspDialog> {
 
                 return ChoiceChip(
                   label: Text(
-                    '${p.name} (ESP:${p.esp})',
+                    p.name,
                     style: RetroTheme.dosFont.copyWith(
                       fontSize: 10,
                       color: isSel ? RetroTheme.black : RetroTheme.white,
@@ -119,7 +94,7 @@ class _EspDialogState extends State<EspDialog> {
                 padding: const EdgeInsets.all(12),
                 color: RetroTheme.background,
                 child: Text(
-                  '${member.name}에게는 아직 초감각 능력이 없습니다.\n(마법사, 승려, 에스퍼, 방랑자 등이 초감각을 사용할 수 있습니다.)',
+                  LoreMenuText.espNoAbility,
                   style: RetroTheme.dosFont.copyWith(
                     color: RetroTheme.lightRed,
                     fontSize: 11,
@@ -127,73 +102,36 @@ class _EspDialogState extends State<EspDialog> {
                 ),
               ),
             ] else ...[
-              Text(
-                '사용할 초감각의 종류 ===>',
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.lightCyan,
-                  fontSize: 11,
-                ),
-              ),
-              const SizedBox(height: 8),
-
-              _espButton(
-                '[1] 투시 (Clairvoyance) - 소모 ESP 10',
-                '던전 벽과 숨겨진 비밀 통로를 투시하여 주변 지형을 파악합니다.',
-                member.esp >= 10,
-                () {
-                  setState(() {
-                    member.esp -= 10;
-                    _resultText = '✨ 일행은 마법의 혜안으로 주변 지형과 숨겨진 통로를 꿰뚫어 보고 있습니다.';
-                  });
-                  widget.onLog(
-                    '👁 [투시] ${member.name}이(가) 초감각으로 주변 지형을 투시했습니다.',
-                  );
-                },
-              ),
-              _espButton(
-                '[2] 미래 예언 (Prophecy) - 소모 ESP 5',
-                '운명의 흐름을 읽어 일행이 다음에 완수해야 할 목표를 예언합니다.',
-                member.esp >= 5,
-                () {
-                  final prophecy = LoreDialogueManager.instance.getProphecy();
-                  setState(() {
-                    member.esp -= 5;
-                    _resultText = '🔮 당신은 당신의 미래를 예언한다 ...\n\n"$prophecy"';
-                  });
-                  widget.onLog('🔮 [예언] $prophecy');
-                },
-              ),
-              _espButton(
-                '[3] 독심술 (Telepathy) - 소모 ESP 20',
-                '타인의 깊은 속마음을 읽어내는 텔레파시를 활성화합니다 (3회 지속).',
-                member.esp >= 20,
-                () {
-                  setState(() {
-                    member.esp -= 20;
-                    _resultText =
-                        '🧠 당신은 잠시동안 다른 사람의 숨겨진 마음을 읽을 수 있습니다. (3회 가능)';
-                  });
-                  widget.onMindReadActivated?.call(3);
-                  widget.onLog(
-                    '🧠 [독심술] ${member.name}이(가) 타인의 마음을 읽는 능력을 활성화했습니다.',
-                  );
-                },
-              ),
-              _espButton(
-                '[4] 천리안 (Scrying) - 소모 ESP 10',
-                '원하는 방향으로 영혼의 시야를 투사하여 전방을 정찰합니다.',
-                member.esp >= 10,
-                () {
-                  setState(() {
-                    member.esp -= 10;
-                    _resultText =
-                        '🔭 천리안의 눈으로 전방 원거리 지형을 정찰했습니다. 주변에 특이 동향이 감지되었습니다.';
-                  });
-                  widget.onLog(
-                    '🔭 [천리안] ${member.name}이(가) 전방 원거리 지형을 정찰했습니다.',
-                  );
-                },
-              ),
+              _espButton('투시', member.esp >= 10, () {
+                setState(() {
+                  member.esp -= 10;
+                  _resultText = LoreMenuText.espSeeThrough;
+                });
+                widget.onLog(LoreMenuText.espSeeThrough);
+              }),
+              _espButton('예언', member.esp >= 5, () {
+                final prophecy = LoreDialogueManager.instance.getProphecy();
+                setState(() {
+                  member.esp -= 5;
+                  _resultText = prophecy;
+                });
+                widget.onLog(prophecy);
+              }),
+              _espButton('독심', member.esp >= 20, () {
+                setState(() {
+                  member.esp -= 20;
+                  _resultText = LoreMenuText.espMindRead;
+                });
+                widget.onMindReadActivated?.call(3);
+                widget.onLog(LoreMenuText.espMindRead);
+              }),
+              _espButton('천리안', member.esp >= 10, () {
+                setState(() {
+                  member.esp -= 10;
+                  _resultText = LoreMenuText.espClairvoyanceBusy;
+                });
+                widget.onLog(LoreMenuText.espClairvoyanceBusy);
+              }),
             ],
 
             if (_resultText != null) ...[
@@ -224,7 +162,7 @@ class _EspDialogState extends State<EspDialog> {
                 ),
                 onPressed: () => Navigator.of(context).pop(),
                 child: Text(
-                  '닫기 (ESC)',
+                  '닫기',
                   style: RetroTheme.dosFont.copyWith(fontSize: 11),
                 ),
               ),
@@ -235,12 +173,7 @@ class _EspDialogState extends State<EspDialog> {
     );
   }
 
-  Widget _espButton(
-    String title,
-    String desc,
-    bool enabled,
-    VoidCallback onPressed,
-  ) {
+  Widget _espButton(String title, bool enabled, VoidCallback onPressed) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 6),
       child: ElevatedButton(
@@ -260,14 +193,6 @@ class _EspDialogState extends State<EspDialog> {
                 style: RetroTheme.dosFont.copyWith(
                   fontSize: 11,
                   color: RetroTheme.yellow,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                desc,
-                style: RetroTheme.dosFont.copyWith(
-                  fontSize: 9,
-                  color: RetroTheme.lightGray,
                 ),
               ),
             ],

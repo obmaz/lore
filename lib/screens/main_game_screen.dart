@@ -13,6 +13,7 @@ import '../game/lore_game.dart';
 import '../game/lore_world_manager.dart';
 import '../logic/field_hotkeys.dart';
 import '../logic/lore_sub_text.dart';
+import '../logic/lore_menu_text.dart';
 import '../logic/lore_field_logic.dart';
 import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_special_event_dispatcher.dart';
@@ -179,17 +180,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _initGame() {
     _logs.clear();
-    _addLog('또 다른 지식의 성전 제 1 부 (1993 - 2026 Flutter Engine)');
-    if (widget.initialSaveData != null) {
-      final save = widget.initialSaveData!;
-      _addLog('💾 저장된 모험 [${save.slotName}] 을(를) 성공적으로 이어합니다.');
-      _addLog('현재 위치: ${save.mapTitle} (${save.playerX}, ${save.playerY})');
-    } else {
-      _addLog('성전 마을 CASTLE LORE 성내 광장 (51, 31)에 도착했습니다.');
-    }
-    _addLog('키보드 방향키 또는 화면 오른쪽 아래의 방향키로 이동하십시오.');
-    _addLog('단단한 성벽은 통과할 수 없으며, 주민(NPC)과 대화하거나 상점을 이용할 수 있습니다.');
-
     final initialMapId = widget.initialSaveData?.mapId ?? 6;
     final startX = widget.initialSaveData?.playerX ?? 51;
     final startY = widget.initialSaveData?.playerY ?? 31;
@@ -224,21 +214,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
         _openTownFacilityDialog(fType);
       },
       onNpcTalk: (name, talk) {
-        if (_mindReadCount > 0) {
-          setState(() => _mindReadCount--);
-          _addLog('[$name]: "$talk"');
-          _addLog(
-            '🧠 [독심술 간파]: $name의 마음에 악의는 느껴지지 않습니다. (독심술 잔여: $_mindReadCount회)',
-          );
-        } else {
-          _addLog('[$name]: "$talk"');
-        }
+        if (_mindReadCount > 0) setState(() => _mindReadCount--);
+        _addLog(talk);
       },
       canWalkOnWater: () => _waterWalkSteps > 0,
       waterWalkStepsProvider: () => _waterWalkSteps,
       onWaterWalkStepsChanged: (steps) {
         setState(() => _waterWalkSteps = steps);
-        _addLog('🌊 [물위를 걸음] 깊은 물 위를 걸어갑니다. (남은 걸음: $steps)');
       },
       onHazardTile: (cat) => _handleHazardTile(cat),
       onPoisonTick: _advancePoison,
@@ -248,7 +230,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           scrollToParty: _game.clearPeek,
           displayHealthAndCondition: () {
             setState(() {});
-            _addLog('☠ 독이 온몸에 퍼져나갑니다.');
+            _addLog('독이 온몸에 퍼져나갑니다.');
           },
           gameOver: () =>
               setState(() => _currentMode = GameScreenMode.gameOver),
@@ -296,7 +278,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       context: context,
       barrierDismissible: false,
       builder: (ctx) => AlertDialog(
-        backgroundColor: RetroTheme.black,
+        backgroundColor: RetroTheme.panelBg,
         shape: Border.all(color: RetroTheme.lightCyan, width: 2),
         title: Text(
           prompt,
@@ -590,7 +572,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         context: context,
         barrierDismissible: false,
         builder: (ctx) => AlertDialog(
-          backgroundColor: RetroTheme.black,
+          backgroundColor: RetroTheme.panelBg,
           shape: Border.all(color: RetroTheme.lightCyan, width: 2),
           title: Text(
             current.choicePrompt ?? '어떻게 하시겠습니까 ?',
@@ -620,7 +602,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
             TextButton(
               onPressed: () => Navigator.of(ctx).pop(-1),
               child: Text(
-                '취소 (ESC)',
+                '취소',
                 style: RetroTheme.dosFont.copyWith(
                   color: RetroTheme.lightRed,
                   fontSize: 11,
@@ -669,7 +651,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       for (final event in outcome.events) {
         if (event.kind == 'peek') {
           _game.peekAt(event.x!, event.y!);
-          _addLog('▶ 시야를 (${event.x}, ${event.y}) 부근으로 옮깁니다.');
           setState(() {});
           await Future<void>.delayed(_peekHold);
           if (!mounted) return false;
@@ -697,17 +678,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         _partyGold = resources.gold;
         _partyFood = resources.food;
       });
-    }
-    if (outcome.goldDelta != 0) {
-      if (outcome.goldDelta > 0) {
-        _addLog('💰 금화 +${outcome.goldDelta} (보유: $_partyGold)');
-      }
-    }
-
-    if (outcome.foodDelta != 0) {
-      _addLog(
-        '🍞 식량 ${outcome.foodDelta > 0 ? '+' : ''}${outcome.foodDelta} (보유: $_partyFood)',
-      );
     }
 
     const recruitFlagByKey = {
@@ -765,9 +735,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       setState(() {
         _party = ScriptPartyReducer.applyProgress(_party, outcome);
       });
-    }
-    if (outcome.expDelta != 0) {
-      _addLog('⭐ 경험치 ${outcome.expDelta > 0 ? '+' : ''}${outcome.expDelta}');
     }
 
     for (final recruit in outcome.recruits) {
@@ -832,9 +799,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
           if (!mounted) return false;
           setState(() {});
         }
-        if (outcome.teleportX != null && outcome.teleportY != null) {
-          _addLog('▶ (${result.x}, ${result.y}) 위치로 이동했습니다.');
-        }
       } else if (outcome.teleportX != null && outcome.teleportY != null) {
         // 지도가 아직 준비되지 않은 진입 스크립트도 목적지 이동은 수행한다.
         final x = outcome.teleportKeepX ? _game.playerX : outcome.teleportX!;
@@ -846,14 +810,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
         );
         if (!mounted) return false;
         setState(() {});
-        _addLog('▶ ($x, $y) 위치로 이동했습니다.');
       }
     }
 
     // 마법의 횃불 (원작 `party.etc[1] := 1`)
     if (outcome.torchLit && _torchSteps <= 0) {
       setState(() => _torchSteps = 1);
-      _addLog('🔥 마법의 횃불이 어둠을 밝힙니다.');
+      _addLog(LoreMenuText.phenominaTorch);
     }
 
     if (outcome.events.any((event) => event.kind == 'endDemo')) {
@@ -869,7 +832,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         barrierDismissible: false,
         builder: (ctx) => AlertDialog(
           scrollable: true,
-          backgroundColor: RetroTheme.black,
+          backgroundColor: RetroTheme.panelBg,
           title: Text('최후의 대사', style: RetroTheme.dosFont),
           content: Text(
             outcome.messages.join('\n'),
@@ -954,7 +917,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         context: context,
         barrierDismissible: false,
         builder: (ctx) => AlertDialog(
-          backgroundColor: RetroTheme.black,
+          backgroundColor: RetroTheme.panelBg,
           shape: Border.all(color: RetroTheme.lightCyan, width: 2),
           title: Text(
             '누가 이 장비를 장착하겠습니까 ?',
@@ -985,7 +948,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
             TextButton(
               onPressed: () => Navigator.of(ctx).pop(-1),
               child: Text(
-                '취소 (ESC)',
+                '취소',
                 style: RetroTheme.dosFont.copyWith(
                   color: RetroTheme.lightRed,
                   fontSize: 11,
@@ -1043,7 +1006,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       context: context,
       barrierDismissible: false,
       builder: (ctx) => AlertDialog(
-        backgroundColor: RetroTheme.black,
+        backgroundColor: RetroTheme.panelBg,
         shape: Border.all(color: RetroTheme.lightCyan, width: 2),
         title: Text(
           LoreJoin.joinMenuPrompt,
@@ -1073,7 +1036,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(-1),
             child: Text(
-              '취소 (ESC)',
+              '취소',
               style: RetroTheme.dosFont.copyWith(
                 color: RetroTheme.lightRed,
                 fontSize: 11,
@@ -1111,17 +1074,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
         swampWalkSteps: () => _swampWalkSteps,
         setSwampWalkSteps: (steps) {
           setState(() => _swampWalkSteps = steps);
-          _addLog('🌿 [늪위를 걸음] 독성 늪지를 안전하게 통과했습니다. (남은 걸음: $steps)');
         },
         random: _sessionRandom,
-        showSwampWarning: () => _addLog('☣ 일행은 독이 있는 늪에 들어갔다 !!!'),
+        showSwampWarning: () => _addLog('일행은 독이 있는 늪에 들어갔다 !!!'),
         showPoisonMessage: (member) {
-          _addLog('☠ ${member.name}는 중독 되었다.');
+          _addLog('${member.name}는 중독 되었다.');
         },
         displayCondition: () => setState(() {}),
         displayHealthAndCondition: () {
           setState(() {});
-          _addLog('☠ 독이 온몸에 퍼져나갑니다.');
+          _addLog('독이 온몸에 퍼져나갑니다.');
         },
         gameOver: () => setState(() => _currentMode = GameScreenMode.gameOver),
       );
@@ -1130,9 +1092,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
         party: _party,
         random: _sessionRandom,
         scrollToParty: _game.clearPeek,
-        showLavaWarning: () => _addLog('🔥 일행은 용암지대로 들어섰다 !!!'),
+        showLavaWarning: () => _addLog('일행은 용암지대로 들어섰다 !!!'),
         showDamage: (member, damage) =>
-            _addLog('💥 ${member.name}는 $damage의 피해를 입었다 !'),
+            _addLog('${member.name}는 $damage의 피해를 입었다 !'),
         displayCondition: () => setState(() {}),
         gameOver: () => setState(() => _currentMode = GameScreenMode.gameOver),
       );
@@ -1172,7 +1134,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
 
     if (selected.legacy case final dEvent?) {
-      _addLog('★ [이벤트: ${dEvent.title}] ★');
       _addLog(dEvent.message);
       if (dEvent.foodGained > 0) {
         setState(() => _partyFood += dEvent.foodGained);
@@ -1211,7 +1172,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
       });
     }
-    if (poisonProgressed) _addLog('☠ 독이 온몸에 퍼져나갑니다.');
+    if (poisonProgressed) _addLog('독이 온몸에 퍼져나갑니다.');
   }
 
   Future<void> _openQuickViewDialog() async {
@@ -1322,7 +1283,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
           );
           if (!mounted) return;
           setState(() {});
-          _addLog('💾 [슬롯 ${save.slot}: ${save.slotName}] 데이터를 성공적으로 불러왔습니다.');
         },
         onLog: (msg) => _addLog(msg),
       ),
@@ -1394,7 +1354,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       // `적의 평균 민첩성 : n` / `적과 교전한다` / `도망간다`
       _addLog(LoreBattText.encounter);
       for (final e in _battleEnemies) {
-        _addLog('${e.name} (Lv.${e.level}, HP:${e.hp})');
+        _addLog(e.name);
       }
       _addLog(
         '${LoreBattText.enemyAgility} : ${LoreEncounterLogic.averageEnemyAgility(_battleEnemies)}',
@@ -1455,16 +1415,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _battleEnemies = bossEnemies;
       _battleEnemyFirst = enemyFirst;
       _battleSerial++;
-
-      // 원작은 전투 직전 안내 문구를 보여준다. 스크립트에 제목이 있으면 쓴다.
-      _addLog(
-        title == null || title.trim().isEmpty
-            ? '⚔⚔⚔ 강력한 보스 출현! ⚔⚔⚔'
-            : '⚔⚔⚔ ${title.trim()} ⚔⚔⚔',
-      );
-      for (final e in _battleEnemies) {
-        _addLog('▶ ${e.name} (Lv.${e.level}, HP:${e.hp}) 결전 시작!');
-      }
     });
   }
 
@@ -1489,7 +1439,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _applyBattleProgress(session.progress);
       _currentMode = GameScreenMode.field;
     });
-    _addLog('전투 종료. 일행은 필드로 복귀합니다. 보유 금화: $_partyGold');
     if (session.progress.bossMessage case final message?) _addLog(message);
     _focusNode.requestFocus();
     if (session.continuation case final continuation?) {
@@ -1524,7 +1473,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _applyBattleProgress(session.progress);
       _currentMode = GameScreenMode.field;
     });
-    _addLog('안전한 곳으로 도망쳐 필드로 복귀했습니다.');
     if (session.progress.bossMessage case final message?) _addLog(message);
     _focusNode.requestFocus();
     if (session.continuation case final continuation?) {
@@ -1666,22 +1614,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
           children: [
             // Flame 2D 타일맵 게임 위젯
             Positioned.fill(child: GameWidget(game: _game)),
-            // 좌측 상단 좌표 표시
-            Positioned(
-              top: 6,
-              left: 6,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                color: RetroTheme.black.withValues(alpha: 0.7),
-                child: Text(
-                  '좌표: (${_game.playerX}, ${_game.playerY})',
-                  style: RetroTheme.dosFont.copyWith(
-                    fontSize: 11,
-                    color: RetroTheme.lightCyan,
-                  ),
-                ),
-              ),
-            ),
             // 우측 상단 골드 및 오디오 토글 표시
             Positioned(
               top: 6,
@@ -1689,21 +1621,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 6,
-                      vertical: 2,
-                    ),
-                    color: RetroTheme.black.withValues(alpha: 0.7),
-                    child: Text(
-                      '금화: $_partyGold 개',
-                      style: RetroTheme.dosFont.copyWith(
-                        fontSize: 11,
-                        color: RetroTheme.yellow,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 4),
                   GestureDetector(
                     onTap: () {
                       setState(() {
@@ -1767,22 +1684,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 color: RetroTheme.lightRed,
               ),
               const SizedBox(height: 12),
-              Text(
-                'G A M E   O V E R',
-                style: RetroTheme.headerFont.copyWith(
-                  color: RetroTheme.lightRed,
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                '일행은 모험중에 모두 목숨을 잃었다.',
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.white,
-                  fontSize: 13,
-                ),
-              ),
-              const SizedBox(height: 4),
               // 원작 LORESUB.PAS:480 전투 패배 시 선택
               Text(
                 LoreSubText.battleLost,
@@ -1898,7 +1799,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: RetroTheme.black,
+        backgroundColor: RetroTheme.background,
         body: SafeArea(
           child: GameScreenLayout(
             viewport: ViewportView(content: _buildViewportContent()),

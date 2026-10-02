@@ -54,13 +54,15 @@ class _MessageLogViewState extends State<MessageLogView> {
   @override
   Widget build(BuildContext context) {
     return RetroBox(
-      borderColor: RetroTheme.cyan,
-      backgroundColor: RetroTheme.background,
+      borderColor: RetroTheme.borderColor,
+      backgroundColor: RetroTheme.panelBg,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: widget.logs.isEmpty
           ? Text(
-              '명령을 기다리고 있습니다...',
-              style: RetroTheme.logFont.copyWith(color: RetroTheme.darkGray),
+              '',
+              style: RetroTheme.logFont.copyWith(
+                color: RetroTheme.dialogueTextColor,
+              ),
             )
           : ListView.builder(
               controller: _scrollController,
@@ -77,26 +79,18 @@ class _MessageLogViewState extends State<MessageLogView> {
                       Text(
                         isLatest ? '▶ ' : '  · ',
                         style: RetroTheme.dosFont.copyWith(
-                          color: isLatest
-                              ? RetroTheme.yellow
-                              : RetroTheme.darkGray,
+                          color: RetroTheme.dialogueTextColor,
                           fontSize: 12,
-                          fontWeight: isLatest
-                              ? FontWeight.bold
-                              : FontWeight.normal,
+                          fontWeight: FontWeight.normal,
                         ),
                       ),
                       Expanded(
                         child: Text(
                           text,
                           style: RetroTheme.logFont.copyWith(
-                            color: isLatest
-                                ? RetroTheme.yellow
-                                : RetroTheme.lightCyan,
+                            color: RetroTheme.dialogueTextColor,
                             fontSize: 12,
-                            fontWeight: isLatest
-                                ? FontWeight.bold
-                                : FontWeight.normal,
+                            fontWeight: FontWeight.normal,
                           ),
                         ),
                       ),
