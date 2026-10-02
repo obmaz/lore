@@ -271,6 +271,9 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     원본에 없는 `quakeGoldA/B` 플래그를 쓰고 대사가 없었다. 황금 방패/갑옷은
     bit3/bit4, ArchiGagoyle은 raw etc[14] = 4로 판정한다. y=71 출구도 정확한
     경계다.
+25. 맵 16(DEN3, LORESPEC:966-1004)의 y=10은 raw etc[37] < 3이면 남은 Wivern과
+    싸우고 승리 시 3, 도주 시 3-생존 수를 저장한다. 3 이상이면 시체 대사만
+    보인다. y=36 출구도 정확한 경계다.
 
 다음 묶음은 LORESPEC 1부의 큰 분기(맵 17·18)를 원본 분기 단위로 직접
 이식한다. 맵 4·6·9·11~16의 JSON 소유 분기와 LOREEND 내부 대조도 남아 있다. LOREEND 내부의 입력·크레딧·종료 동작 대조도 남아 있다. 현재

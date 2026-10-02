@@ -910,45 +910,64 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:966-1004`, map 16 (DEN2 / TYPHOON DEN).
+  /// `LORESPEC.PAS:966-1004`, `case 16` (DEN3 / WIVERN).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 36` handled via portal session.
-  /// 2. Wivern encounter at `y == 10`:
-  ///    - If `party.etc[37] < 3`:
-  ///      - 0 defeated: 3 Wiverns (`wivern-3-remaining`)
-  ///      - 1 defeated: 2 Wiverns (`wivern-2-remaining`)
-  ///      - 2 defeated: 1 Wivern (`wivern-1-remaining`)
-  ///    - If `party.etc[37] >= 3`:
-  ///      - Corpse message (`wivern-cleared`).
+  /// y = 36 is the `wantexit` boundary. At y = 10, raw etc[37] < 3 meets
+  /// 3 - etc[37] Wiverns: victory stores 3, escape stores 3 minus the
+  /// survivors; otherwise only the corpse message (no key wait) appears.
   static ScriptRun? map16(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
-    }
-
-    if (y == 10) {
-      final wivernQuest = context.questSteps['wivern'] ?? 0;
-      final scriptId = switch (wivernQuest) {
-        0 => 'wivern-3-remaining',
-        1 => 'wivern-2-remaining',
-        2 => 'wivern-1-remaining',
-        _ => 'wivern-cleared',
-      };
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y != 10) return null;
+    final killed = _questByte(context, 37, 'wivern');
+    LoreScript procedure(String id, List<ScriptStep> steps) => LoreScript(
+      id: id,
+      trigger: 'step',
+      map: 16,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
+    if (killed >= 3) {
+      return scripts.startProcedure(
+        procedure('wivern-cleared', const [
+          ScriptStep(kind: 'say', text: '여기에는 Wivern의 시체만이 있다.'),
+        ]),
+        context,
       );
-      return scripts.startProcedure(content, context);
     }
-
-    return null;
+    final count = 3 - killed;
+    final word = switch (killed) {
+      2 => '한',
+      1 => '두',
+      _ => '세',
+    };
+    return scripts.startProcedure(
+      procedure('wivern-$count-remaining', [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Wivern',
+            lines: ['당신은 $word마리의 Wivern과 마주쳤다.'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Wivern',
+          battleEnemyFirst: true,
+          monsters: List<int>.filled(count, 43),
+          battleRunAwayProgressQuest: 'wivern',
+          battleRunAwayProgressTotal: 3,
+        ),
+        const ScriptStep(kind: 'questStep', questName: 'wivern', questSet: 3),
+      ]),
+      context,
+    );
   }
 
   /// `LORESPEC.PAS:1006-1173`, map 17 (DEN3 / DRAGON DEN).

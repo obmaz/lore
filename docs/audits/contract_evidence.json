@@ -2989,6 +2989,116 @@
       "test": "test/lore_spec_map15_test.dart",
       "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:122",
+      "line": 968,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:123",
+      "line": 969,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:124",
+      "line": 978,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:125",
+      "line": 979,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:case:3",
+      "line": 981,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:16",
+      "line": 989,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:126",
+      "line": 992,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:14",
+      "line": 992,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:127",
+      "line": 993,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:17",
+      "line": 996,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:128",
+      "line": 996,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map16_test.dart",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }
