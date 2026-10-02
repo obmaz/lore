@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/logic/town_logic.dart';
@@ -87,4 +89,29 @@ void main() {
     expect(lines, [TownLogic.trainMaxLevel, TownLogic.trainNoNeedToTeach]);
     expect([mage.battleLevel, mage.magicLevel, mage.espLevel], [20, 5, 5]);
   });
+
+  test(
+    'Train_Center growth draws luck > random(30) from the injected generator',
+    () {
+      PartyMember make() => PartyMember.createPreset(1)
+        ..battleLevel = 1
+        ..luck = 15
+        ..strength = 10
+        ..experience = 6000;
+      final a = make();
+      final b = make();
+      final offerA = TownLogic.evaluateTraining(a);
+      final offerB = TownLogic.evaluateTraining(b);
+      TownLogic.applyTraining(a, offerA, random: Random(4));
+      TownLogic.applyTraining(b, offerB, random: Random(4));
+      expect(
+        [a.strength, a.endurance, a.agility],
+        [b.strength, b.endurance, b.agility],
+      );
+      // The recorded draw is exactly one random(30) for the fighter.
+      final probe = Random(4);
+      final grew = 15 > probe.nextInt(30);
+      expect(a.strength, grew ? 11 : 10);
+    },
+  );
 }

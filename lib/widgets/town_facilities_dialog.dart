@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
@@ -18,6 +20,9 @@ class TownFacilitiesDialog extends StatefulWidget {
   final void Function(int newFood)? onFoodChanged;
   final void Function(String message) onLog;
 
+  /// 프로젝트 난수 원천(`luck > random(30)` 호출 순서를 재현하기 위해 필요).
+  final Random? random;
+
   const TownFacilitiesDialog({
     super.key,
     required this.facilityType,
@@ -27,6 +32,7 @@ class TownFacilitiesDialog extends StatefulWidget {
     required this.onGoldChanged,
     this.onFoodChanged,
     required this.onLog,
+    this.random,
   });
 
   @override
@@ -403,7 +409,7 @@ class _TownFacilitiesDialogState extends State<TownFacilitiesDialog> {
     }
     setState(() => _currentGold -= offer.cost);
     widget.onGoldChanged(_currentGold);
-    for (final m in TownLogic.applyTraining(member, offer)) {
+    for (final m in TownLogic.applyTraining(member, offer, random: widget.random)) {
       widget.onLog(m);
     }
     setState(() {});

@@ -242,7 +242,11 @@ class TownLogic {
 
   /// 승급 처리 후 원작 `Print` 메시지 목록을 돌려준다.
   /// (금화 차감은 호출측에서 `offer.cost`로 수행한다.)
-  static List<String> applyTraining(PartyMember member, TrainOffer offer) {
+  static List<String> applyTraining(
+    PartyMember member,
+    TrainOffer offer, {
+    Random? random,
+  }) {
     if (!offer.canTrain) return const [];
     if (offer.targetLevel >= 20) {
       // Train_Center sets only level[1] := 20 (no class growth, no random roll).
@@ -250,7 +254,7 @@ class TownLogic {
       return [trainMaxLevel, trainNoNeedToTeach];
     }
     // The stat growth is silent in Train_Center; only the level line prints.
-    member.trainLevelUp(offer.targetLevel);
+    member.trainLevelUp(offer.targetLevel, random: random);
     return ['${member.name}의 레벨은 ${offer.targetLevel}입니다.'];
   }
 

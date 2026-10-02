@@ -284,10 +284,10 @@ class PartyMember {
   ///
   /// 또한 원작은 훈련소에서 HP/SP/ESP를 회복시켜 주지 않는다.
   /// (회복은 병원 `LORESUB.PAS:1517 Hospital`에서만 가능)
-  List<String> trainLevelUp(int targetLevel) {
+  List<String> trainLevelUp(int targetLevel, {Random? random}) {
     if (targetLevel <= battleLevel || targetLevel > 20) return [];
     final growthMessages = <String>[];
-    final rng = Random();
+    final rng = random ?? Random();
 
     battleLevel = targetLevel;
     growthMessages.add('$name의 레벨이 $battleLevel(으)로 승급되었습니다!');

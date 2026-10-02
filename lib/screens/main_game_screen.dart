@@ -1204,6 +1204,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         onGoldChanged: (newGold) => setState(() => _partyGold = newGold),
         onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
         onLog: (msg) => _addLog(msg),
+        random: _sessionRandom,
       ),
     );
   }
