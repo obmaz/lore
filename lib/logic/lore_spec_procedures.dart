@@ -283,79 +283,127 @@ class LoreSpecProcedures {
     );
   }
 
-  /// `LORESPEC.PAS:465-559`, map 11 (TOWN5 / LORE KEEP).
+  /// `LORESPEC.PAS:465-559`, `case 11` (T_DEN1).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Gold finds (5000 gold each):
-  ///    - `(20, 30)`: `etc33_bit1`
-  ///    - `(18, 36)`: `etc33_bit2`
-  ///    - `(35, 32)`: `etc33_bit3`
-  ///    - `(33, 36)`: `etc33_bit4`
-  ///    - `(35, 14)`: `etc33_bit5`
-  ///    - `(14, 16)`: `etc33_bit6`
-  ///    - `(37, 12)`: `etc33_bit7`
-  /// 2. Oedipus Spear at `y == 44`:
-  ///    - `party.etc[33] and bit8 == 0` (`etc33_bit8` / `oedipusSpearTaken`).
-  /// 3. Mummy Room at `y == 24`:
-  ///    - `party.etc[13] == 1` (`lastditch` quest == 1).
-  /// 4. Southern exit at `y == 46`:
-  ///    - Handled via portal session.
+  /// Seven `findgold(5000)` cells on raw etc[33] bits 1..7. y = 44 offers the
+  /// Oedipus spear while bit8 is clear; bit8 is set only after a member
+  /// takes it (refusal and the monk rejection leave it for another visit).
+  /// y = 46 is a `wantexit` boundary with no refusal branch. y = 24 fights
+  /// the mummy room while raw etc[13] = 1; victory or a dead third enemy
+  /// increments etc[13].
   static ScriptRun? map11(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson ||
-        (context.tileAtPlayer != null && context.tileAtPlayer != 0)) {
-      return null;
-    }
-
-    final goldId = switch ((x, y)) {
-      (20, 30) => !context.flags.contains('etc33_bit1') ? 'spec-11-L465' : null,
-      (18, 36) =>
-        !context.flags.contains('etc33_bit2') ? 'spec-11-L465x' : null,
-      (35, 32) =>
-        !context.flags.contains('etc33_bit3') ? 'spec-11-L465xx' : null,
-      (33, 36) =>
-        !context.flags.contains('etc33_bit4') ? 'spec-11-L465xxx' : null,
-      (35, 14) =>
-        !context.flags.contains('etc33_bit5') ? 'spec-11-L465xxxx' : null,
-      (14, 16) =>
-        !context.flags.contains('etc33_bit6') ? 'spec-11-L465xxxxx' : null,
-      (37, 12) =>
-        !context.flags.contains('etc33_bit7') ? 'spec-11-L465xxxxxx' : null,
-      _ => null,
+    // LOREMAIN calls specialevent in a den for tiles 0 and 52.
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 11,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    const gold = {
+      (20, 30): 1,
+      (18, 36): 2,
+      (35, 32): 3,
+      (33, 36): 4,
+      (35, 14): 5,
+      (14, 16): 6,
+      (37, 12): 7,
     };
-    if (goldId != null) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == goldId,
-      );
-      return scripts.startProcedure(content, context);
+    final etc33 = context.etcValue(
+      33,
+      bitAliases: const {8: 'oedipusSpearTaken'},
+    );
+    final bit = gold[(x, y)];
+    if (bit != null) {
+      if ((etc33 & LorePascal.bit(bit)) != 0) return null;
+      return start('spec-11-gold-$bit', [
+        const ScriptStep(kind: 'say', text: '당신은 금화 5000개를 발견했다.'),
+        const ScriptStep(kind: 'gold', amount: 5000),
+        ScriptStep(kind: 'flag', key: 'etc33_bit$bit'),
+      ]);
     }
-
     if (y == 44) {
-      final hasSpear =
-          context.flags.contains('oedipusSpearTaken') ||
-          context.flags.contains('etc33_bit8');
-      if (!hasSpear) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'oedipus-spear',
-        );
-        return scripts.startProcedure(content, context);
-      }
+      if ((etc33 & LorePascal.bit(8)) != 0) return null;
+      return start('oedipus-spear', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '오이디푸스의 창', lines: ['당신은 어떤 창을 발견했다.']),
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: '오이디푸스의 창',
+            lines: [
+              '그 창의 손잡이에 쓰인 문구를 따르면..',
+              '',
+              '        이것은 오이디푸스의 창',
+              '   이것으로 전에 Sphinx 를 무찌르다',
+            ],
+          ),
+        ),
+        ScriptStep(kind: 'say', text: '누가 오이디푸스의 창을 다루겠습니까 ?'),
+        ScriptStep(
+          kind: 'equip',
+          equipKind: 'weapon',
+          equipIndex: 3,
+          equipPower: 12,
+          equipPrompt: true,
+        ),
+        ScriptStep(kind: 'flag', key: 'etc33_bit8'),
+      ]);
     }
-
-    if (y == 24) {
-      final questState = context.questSteps['lastditch'] ?? 0;
-      if (questState == 1) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'spec-11-L465-1x',
-        );
-        return scripts.startProcedure(content, context);
-      }
+    if (y == 24 && _questByte(context, 13, 'lastditch') == 1) {
+      return start('spec-11-mummy-room', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '미이라의 방', lines: ['당신은 미이라의 방을 발견했다.']),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Major Mummy',
+          battleEnemyFirst: true,
+          monsters: [35, 35, 26],
+          battleOverrides: [
+            {
+              'index': 1,
+              'name': 'Sphinx',
+              'level': 4,
+              'special': 0,
+              'eNumber': 20,
+            },
+            {
+              'index': 2,
+              'name': 'Sphinx',
+              'level': 4,
+              'special': 0,
+              'eNumber': 20,
+            },
+            {'index': 3, 'name': 'Major Mummy', 'ac': 1},
+          ],
+          battleVictoryIfEnemyDead: 3,
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Major Mummy',
+            lines: ['당신들은 Major Mummy 물리쳤다.', '그리고 당신은 이 임무에 성공했다.'],
+          ),
+        ),
+        ScriptStep(kind: 'questStep', questName: 'lastditch', questInc: 1),
+      ]);
     }
-
     return null;
   }
 

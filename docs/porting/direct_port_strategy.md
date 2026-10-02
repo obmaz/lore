@@ -245,6 +245,12 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     y=5는 `wantenter('SWAMP GATE')` 경계이며 거절 시 y+1, 수락 시 etc[35]
     bit6이 꺼져 있을 때만 Lord Ahn의 조언 네 장면 뒤 bit6을 켜고 맵 13
     (81,95)로 간다. y=46은 `wantexit`(맵 2 (32,82))다.
+20. 맵 11(T_DEN1, LORESPEC:465-559)의 금화 일곱 곳은 raw etc[33] bit1..7,
+    오이디푸스의 창은 bit8이 꺼져 있을 때만 나오고 누군가 장착한 뒤에만
+    bit8을 켠다. y=46 `wantexit`에는 거절 분기가 없어 파티가 y=46에 남고,
+    수락 뒤 맵 7에서 Polaris가 있으면 map[37,41]:=44를 쓴다(이전 Dart는
+    LOREENT 경로에서만 이 쓰기를 했다). y=24 미이라의 방은 raw etc[13]=1일 때
+    싸우며 승리나 3번 적 사망 시 etc[13]을 증가시킨다.
 
 다음 묶음은 LORESPEC 1부의 큰 분기(맵 17·18)를 원본 분기 단위로 직접
 이식한다. 맵 4·6·9·11~16의 JSON 소유 분기와 LOREEND 내부 대조도 남아 있다. LOREEND 내부의 입력·크레딧·종료 동작 대조도 남아 있다. 현재

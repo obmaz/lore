@@ -119,7 +119,9 @@ void main() {
     expect(changes(1, 6), hasLength(15));
     expect(changes(1, 7, partyNames: {'Polaris'}), [(37, 41, 44)]);
     expect(changes(8, 7, partyNames: {'Polaris'}), isEmpty);
-    expect(changes(11, 7, partyNames: {'Polaris'}), isEmpty);
+    // LORESPEC.PAS:515-521: the map 11 exit writes the same tile after load.
+    expect(changes(11, 7, partyNames: {'Polaris'}), [(37, 41, 44)]);
+    expect(changes(11, 7), isEmpty);
     expect(changes(3, 10, flags: {'loreHunterJoined'}), [(40, 56, 44)]);
     expect(changes(16, 10, flags: {'loreHunterJoined'}), [(40, 56, 44)]);
     expect(changes(7, 11, questSteps: {'lastditch': 2}), [

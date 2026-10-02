@@ -358,6 +358,8 @@ class LoreWorldManager {
     8 when x == 50 => y,
     9 when y == 5 => y + 1,
     9 when y == 46 => y - 1,
+    // LORESPEC.PAS:515-521 has no refusal branch: the party stays on y = 46.
+    11 when y == 46 => y,
     8 || 10 when y == 71 => y - 1,
     21 || 22 || 23 || 24 || 25 when y == 46 => y - 1,
     27 => y < 25 ? y + 1 : y - 1,
@@ -410,6 +412,15 @@ class LoreWorldManager {
         };
       }
       if (y > 46) return null;
+    }
+    if (currentMapId == 11 && y >= 46) {
+      if (y > 46) return null;
+      return const PortalInfo(
+        targetMapId: 7,
+        targetX: 38,
+        targetY: 7,
+        name: 'LASTDITCH',
+      );
     }
     // LORESPEC.PAS:383-439: map 9 SWAMP GATE (y = 5) and exit (y = 46).
     if (currentMapId == 9 && (y == 5 || y >= 46)) {

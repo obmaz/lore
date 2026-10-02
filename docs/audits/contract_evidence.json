@@ -2049,6 +2049,226 @@
       "test": "test/lore_spec_map9_10_test.dart",
       "note": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:50",
+      "line": 466,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:51",
+      "line": 470,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:52",
+      "line": 474,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:53",
+      "line": 478,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:54",
+      "line": 482,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:55",
+      "line": 486,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:56",
+      "line": 490,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:57",
+      "line": 494,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:58",
+      "line": 505,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:5",
+      "line": 507,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:59",
+      "line": 509,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:6",
+      "line": 511,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:60",
+      "line": 516,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:61",
+      "line": 521,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:62",
+      "line": 522,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:6",
+      "line": 527,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:63",
+      "line": 527,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:64",
+      "line": 529,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:7",
+      "line": 534,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:65",
+      "line": 550,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:7",
+      "line": 550,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:66",
+      "line": 551,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map11_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

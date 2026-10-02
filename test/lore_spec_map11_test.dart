@@ -84,13 +84,16 @@ void main() {
     });
 
     test('y=44에서 오이디푸스의 창을 획득하고 플래그 획득 후에는 재발동하지 않는다', () {
-      final spearRun = dispatchSpecial(mapId: 11, x: 25, y: 44)!;
+      final found = dispatchSpecial(mapId: 11, x: 25, y: 44)!;
+      expect(found.pendingScene!.lines, ['당신은 어떤 창을 발견했다.']);
+      expect(found.outcome.equips, isEmpty);
+      final spearRun = found.acknowledgeScene().acknowledgeScene();
       expect(spearRun.outcome.equips.single.kind, 'weapon');
       expect(spearRun.outcome.equips.single.index, 3);
       expect(spearRun.outcome.equips.single.power, 12);
       expect(spearRun.outcome.equips.single.prompt, isTrue);
-      expect(spearRun.outcome.setFlags, contains('oedipusSpearTaken'));
-      expect(spearRun.outcome.messages, contains('당신은 어떤 창을 발견했다.'));
+      expect(spearRun.outcome.setFlags, ['etc33_bit8']);
+      expect(spearRun.outcome.messages.last, '누가 오이디푸스의 창을 다루겠습니까 ?');
 
       // 이미 획득한 경우 (oedipusSpearTaken 또는 etc33_bit8)
       expect(
@@ -111,9 +114,20 @@ void main() {
         y: 24,
         questSteps: {'lastditch': 1},
       )!;
-      expect(mummyRun.outcome.battleMonsters, [35, 35, 26]);
-      expect(mummyRun.awaitingBattle, isTrue);
-      expect(mummyRun.outcome.messages.first, '당신은 미이라의 방을 발견했다.');
+      expect(mummyRun.pendingScene!.lines, ['당신은 미이라의 방을 발견했다.']);
+      final battle = mummyRun.acknowledgeScene();
+      expect(battle.outcome.battleMonsters, [35, 35, 26]);
+      expect(battle.awaitingBattle, isTrue);
+      // Escape with the Major Mummy dead counts as the source success.
+      final won = battle.continueAfterRunAway(defeatedEnemySlots: {3});
+      expect(won.pendingScene!.lines.first, '당신들은 Major Mummy 물리쳤다.');
+      final done = won.acknowledgeScene();
+      expect(done.outcome.questChanges.single.inc, 1);
+      final fled = battle.continueAfterRunAway(defeatedEnemySlots: {1, 2});
+      expect(
+        fled.hasPendingScene || fled.outcome.questChanges.isNotEmpty,
+        isFalse,
+      );
 
       // 퀘스트 단계 0 또는 2 이상: 발동하지 않음
       expect(
@@ -129,5 +143,33 @@ void main() {
     test('특수 사건이 없는 좌표는 null을 반환한다', () {
       expect(dispatchSpecial(mapId: 11, x: 10, y: 10), isNull);
     });
+  });
+
+  test('raw etc[33] bits decide gold and the spear for all 256 bytes', () {
+    const cells = [
+      (20, 30),
+      (18, 36),
+      (35, 32),
+      (33, 36),
+      (35, 14),
+      (14, 16),
+      (37, 12),
+    ];
+    for (var b = 0; b < 256; b++) {
+      ScriptRun? at(int x, int y) => LoreSpecProcedures.map11(
+        x,
+        y,
+        ScriptContext(
+          tileAtPlayer: 0,
+          sourceEtc: {33: b},
+          flags: const {'oedipusSpearTaken'},
+        ),
+        LoreScriptEngine(),
+      );
+      for (var i = 0; i < 7; i++) {
+        expect(at(cells[i].$1, cells[i].$2) == null, b & (1 << i) != 0);
+      }
+      expect(at(25, 44) == null, b & 128 != 0);
+    }
   });
 }

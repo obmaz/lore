@@ -450,7 +450,8 @@ class LoreEntProcedures {
         for (var x = 49; x <= 53; x++) {
           setTile(x, 88, 44);
         }
-      case (1, 7):
+      // LOREENT.PAS from map 1, and the LORESPEC.PAS:515-521 map 11 exit.
+      case (1, 7) || (11, 7):
         if (partyNames.contains('Polaris')) setTile(37, 41, 44);
       case (3, 10) || (16, 10):
         if (flags.contains('loreHunterJoined')) setTile(40, 56, 44);

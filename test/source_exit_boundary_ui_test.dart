@@ -14,7 +14,7 @@ import 'package:lore/services/save_manager.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
 import 'package:lore/widgets/script_scene_dialog.dart';
 
-/// LORESPEC.PAS map 8 (332-353), map 9 (354-443), map 10 (444-464), map 21 (1762-1795), map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
+/// LORESPEC.PAS map 8 (332-353), map 9 (354-443), map 11 (465-559), map 10 (444-464), map 21 (1762-1795), map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
 /// through the real screen: refusal position and accepted destination.
 void main() {
   Future<LoreGame> open(
@@ -388,4 +388,20 @@ void main() {
     await tester.pump(const Duration(seconds: 1));
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets(
+    'map 11 y=46 has no refusal branch: the party stays on the exit row',
+    (tester) async {
+      final game = await open(tester, 11, 'T_DEN1', 'den', 25, 45);
+      game.tryMove(0, 1);
+      await tick(tester);
+      expect(find.text(LoreFieldLogic.exitPrompt), findsOneWidget);
+      await tester.tap(find.text(LoreFieldLogic.confirmNo));
+      await tick(tester);
+      expect([game.currentMapId, game.playerX, game.playerY], [11, 25, 46]);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump(const Duration(seconds: 1));
+      expect(tester.takeException(), isNull);
+    },
+  );
 }
