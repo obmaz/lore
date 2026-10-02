@@ -754,12 +754,12 @@ void main() {
         12,
         const ScriptContext(flags: {'madJoeJoined'}, tileAtPlayer: 0),
         engine,
-      )!;
+      )!.acknowledgeScene();
       expect(prison.outcome.battleMonsters, [26, 26]);
       expect(prison.awaitingBattle, isTrue);
       expect(engine.consumedScripts, isNot(contains('prison-battle-first')));
       expect(prison.outcome.tileChanges, isEmpty);
-      expect(prison.outcome.setFlags, contains('prisonBattleStarted'));
+      expect(prison.outcome.setFlags, contains('etc50_bit3'));
       final escaped = prison.continueAfterRunAway();
       expect(escaped.outcome.tileChanges, isEmpty);
       final prisonAgain = LoreSpecProcedures.map6(
@@ -770,23 +770,23 @@ void main() {
           tileAtPlayer: 0,
         ),
         engine,
-      )!;
+      )!.acknowledgeScene();
       expect(prisonAgain.outcome.battleMonsters.length, 7);
-      expect(prisonAgain.continueAfterBattle().outcome.tileChanges.length, 4);
-      final prisonVictory = prison.continueAfterBattle();
-      expect(prisonVictory.outcome.tileChanges.length, 4);
-      expect(prisonVictory.outcome.setFlags, contains('prisonBattleDone'));
       expect(
-        LoreSpecProcedures.map6(
-          51,
-          12,
-          const ScriptContext(
-            flags: {'madJoeJoined', 'prisonBattleStarted', 'prisonBattleDone'},
-            tileAtPlayer: 0,
-          ),
-          engine,
-        ),
-        isNull,
+        prisonAgain
+            .continueAfterBattle()
+            .acknowledgeScene()
+            .outcome
+            .tileChanges
+            .length,
+        4,
+      );
+      final prisonVictory = prison.continueAfterBattle().acknowledgeScene();
+      expect(prisonVictory.outcome.tileChanges.length, 4);
+      // The opened cells (44) end the event; no separate done flag exists.
+      expect(
+        prisonVictory.outcome.setFlags,
+        isNot(contains('prisonBattleDone')),
       );
 
       final party = List.generate(6, (_) => LoreJoin.madJoe());
@@ -805,7 +805,7 @@ void main() {
         79,
         const ScriptContext(tileAtPlayer: 0),
         engine,
-      )!;
+      )!.acknowledgeScene();
       final equip = arm.outcome.equips.single;
       expect(equip.kind, 'weapon');
       expect(equip.index, 1);

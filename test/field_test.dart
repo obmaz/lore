@@ -197,8 +197,9 @@ void main() {
         category: 'town',
       );
       final effects = <String>[];
+      // Map 12: map 6 treats every other special tile as its exit.
       final game = LoreGame(
-        initialMapId: 6,
+        initialMapId: 12,
         initialPlayerX: 6,
         initialPlayerY: 6,
         onPoisonTick: () => effects.add('poison'),

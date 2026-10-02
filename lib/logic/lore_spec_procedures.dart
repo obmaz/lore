@@ -8,69 +8,183 @@ import 'lore_source_memory.dart';
 class LoreSpecProcedures {
   LoreSpecProcedures._();
 
-  /// `LORESPEC.PAS:190-305`, map 6 (Castle LORE).
+  /// `LORESPEC.PAS:190-305`, `case 6` (TOWN1 / CASTLE LORE).
   ///
-  /// The ordered guards evaluate:
-  /// 1. `(62, 82)`: treasure chest (gold 1000, tile 44).
-  /// 2. `(51, 12)` or `(52, 12)`: prison guard battle.
-  ///    - Guarded by `etc50_bit2` / `madJoeJoined`.
-  ///    - Return encounter: `prison-battle-return` (7 soldiers).
-  ///    - First encounter: `prison-battle-first` (2 soldiers).
-  /// 3. `(41, 79)`: weapon room.
-  ///    - Guarded by not `etc50_bit4` / `weaponRoomVisited`.
-  ///    - Nudges player west 3 times, sets tile 44, gives basic weapons.
-  /// 4. Exit branch:
-  ///    - Evaluated at castle exit portal (`castle-exit-skeleton`) via
-  ///      [LorePortalSession].
+  /// An `else if` chain: the (62,82) chest; the prison cells (51|52,12)
+  /// while etc[50] bit2 (prisoner freed) is set — the first fight sets bit3
+  /// before two soldiers, later visits face seven, victory sets bit3 and
+  /// opens four cells; the (41,79) armoury while bit4 is clear. Every other
+  /// special tile is the `wantexit` boundary ([castleExitSkeleton] after
+  /// acceptance, refusal y - 1).
   static ScriptRun? map6(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson || context.tileAtPlayer != 0) return null;
-
-    // 1. on(62,82) - 상자
+    if ((context.tileAtPlayer ?? 0) != 0) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 6,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
     if (x == 62 && y == 82) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'spec-6-L190',
-      );
-      return scripts.startProcedure(content, context);
+      return start('spec-6-L190', const [
+        ScriptStep(kind: 'say', text: '일행은 상자 속에서 약간의 금을 발견했다.'),
+        ScriptStep(kind: 'gold', amount: 1000),
+        ScriptStep(kind: 'setTile', tileX: 62, tileY: 82, tileValue: 44),
+      ]);
     }
-
-    // 2. on(51,12) or on(52,12) - 감옥 전투
+    final etc50 = context.etcValue(
+      50,
+      bitAliases: const {
+        2: 'madJoeJoined',
+        3: 'prisonBattleStarted',
+        4: 'weaponRoomVisited',
+      },
+    );
+    bool has(int bit) => (etc50 & LorePascal.bit(bit)) != 0;
     if ((x == 51 || x == 52) && y == 12) {
-      final hasMadJoe =
-          context.flags.contains('madJoeJoined') ||
-          context.flags.contains('etc50_bit2');
-      if (!hasMadJoe || context.flags.contains('prisonBattleDone')) {
-        return null;
-      }
-      final isReturn =
-          context.flags.contains('prisonBattleStarted') ||
-          context.flags.contains('etc50_bit3');
-      final scriptId = isReturn
-          ? 'prison-battle-return'
-          : 'prison-battle-first';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
-      );
-      return scripts.startProcedure(content, context);
+      if (!has(2)) return null;
+      final again = has(3);
+      final count = again ? 7 : 2;
+      return start(again ? 'prison-battle-return' : 'prison-battle-first', [
+        if (!again) const ScriptStep(kind: 'flag', key: 'etc50_bit3'),
+        ScriptStep(
+          kind: 'scene',
+          scene: again
+              ? const ScriptScene(
+                  title: 'LORE 수감소',
+                  appendPartyNameSlot: 1,
+                  appendPartyNameLine: 0,
+                  lines: [
+                    ' 다시 돌아오다니, ',
+                    ' 이번에는 기어이 네놈들을 해치우고야 말겠다',
+                    '. 나의 친구들도 이번에 거들것이다.',
+                  ],
+                )
+              : const ScriptScene(
+                  title: 'LORE 수감소',
+                  lines: [
+                    ' 아니! 당신이 우리들을 배신하고 죄수를 풀어',
+                    '주다니... 그렇다면 우리들은 결투로서 당신들',
+                    '과 승부할수 밖에 없군요.',
+                  ],
+                ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Soldier',
+          battleEnemyFirst: true,
+          monsters: List<int>.filled(count, 26),
+          battleOverrides: [
+            for (var i = 1; i <= count; i++)
+              {
+                'index': i,
+                'name': 'Soldier$i',
+                'special': 0,
+                'castLevel': 0,
+                'eNumber': 1,
+              },
+          ],
+        ),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: 'LORE 수감소', lines: ['당신들은 수감소 병사들을 물리쳤다.']),
+        ),
+        const ScriptStep(kind: 'flag', key: 'etc50_bit3'),
+        for (final (cx, cy) in const [(51, 12), (52, 12), (50, 11), (53, 11)])
+          ScriptStep(kind: 'setTile', tileX: cx, tileY: cy, tileValue: 44),
+      ]);
     }
-
-    // 3. on(41,79) - 무기실
     if (x == 41 && y == 79) {
-      final visited =
-          context.flags.contains('weaponRoomVisited') ||
-          context.flags.contains('etc50_bit4');
-      if (visited) return null;
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'lore-weapon-room',
-      );
-      return scripts.startProcedure(content, context);
+      if (has(4)) return null;
+      return start('lore-weapon-room', const [
+        ScriptStep(kind: 'flag', key: 'etc50_bit4'),
+        ScriptStep(kind: 'nudge', nudgeDx: -1),
+        ScriptStep(kind: 'nudge', nudgeDx: -1),
+        ScriptStep(kind: 'nudge', nudgeDx: -1),
+        ScriptStep(kind: 'setTile', tileX: 41, tileY: 79, tileValue: 44),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: '무기실',
+            lines: [' 일행은 가장 기본적인 무기로  모두  무장을', '하였다.'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'equip',
+          equipKind: 'weapon',
+          equipIndex: 1,
+          equipPower: 5,
+          equipOnlyUnarmed: true,
+        ),
+      ]);
     }
-
     return null;
+  }
+
+  /// `LORESPEC.PAS:262-301`: after `wantexit` on map 6 while etc[31] bit1 is
+  /// clear, the Skeleton walks up (map[x,i-1] := 44, map[x,i] := 48 for
+  /// i = y-4..y-1), speaks and offers to join as slot 6; either answer sets
+  /// bit1 after the key wait, then map 1 (20,12) loads.
+  static LoreScript? castleExitSkeleton(ScriptContext context, int x, int y) {
+    if ((context.etcValue(31) & LorePascal.bit(1)) != 0) return null;
+    return LoreScript(
+      id: 'castle-exit-skeleton',
+      trigger: 'portal',
+      map: 6,
+      once: false,
+      require: const ScriptRequire(),
+      steps: [
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'LORE 성',
+            lines: [' 당신이 LORE 성을 떠나려는 순간 누군가가 당신을 불렀다.'],
+          ),
+        ),
+        for (var i = y - 4; i <= y - 1; i++) ...[
+          ScriptStep(kind: 'setTile', tileX: x, tileY: i - 1, tileValue: 44),
+          ScriptStep(kind: 'setTile', tileX: x, tileY: i, tileValue: 48),
+        ],
+        for (final line in const [
+          ' 나는 Skeleton이라 불리는 종족의 사람이오.',
+          ' 우리 종족의 사람들은 나를 제외하고는  모두',
+          'Necromancer에게 굴복하여 그의 부하가 되었지',
+          '만 나는 그렇지 않소. 나는 Necromancer 의 영',
+          '향을 피해서 이곳 LORE 성으로 왔지만 나의 혐',
+          '오스런 생김새 때문에 이곳 사람들에게 배척되',
+          '어서 지금은 어디로도 갈 수 없는 존재가 되었',
+          '소. 이제 나에게 남은 것은 Necromancer 의 타',
+          '도 밖에 없소.  그래서  당신들의 일행에 끼고',
+          '싶소.',
+        ])
+          ScriptStep(kind: 'say', text: line),
+        const ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          cancelOptionIndex: 1,
+          options: [
+            ScriptOption('당신을 환영하오.', [
+              ScriptStep(kind: 'join', key: 'skeleton', slot: 4),
+              ScriptStep(kind: 'flag', key: 'skeletonJoined'),
+            ]),
+            ScriptOption('미안하지만 안되겠소.', [
+              ScriptStep(kind: 'say', text: '당신이 바란다면 ...'),
+            ]),
+          ],
+        ),
+        const ScriptStep(kind: 'flag', key: 'etc31_bit1'),
+      ],
+    );
   }
 
   /// `LORESPEC.PAS:306-331`, map 7 (LASTDITCH).

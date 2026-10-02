@@ -80,7 +80,7 @@ void main() {
           expect(LoreWorldManager.sourceExitRejectY(map, 45), isNull);
           expect(world.findPortal(map, 25, 47), isNull);
         }
-        expect(LoreWorldManager.sourceExitRejectY(6, 46), isNull);
+        expect(LoreWorldManager.sourceExitRejectY(2, 46), isNull);
       });
     },
   );

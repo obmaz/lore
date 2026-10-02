@@ -3099,6 +3099,186 @@
       "test": "test/lore_spec_map16_test.dart",
       "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:12",
+      "line": 190,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:13",
+      "line": 196,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:14",
+      "line": 197,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:15",
+      "line": 199,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:1",
+      "line": 212,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:16",
+      "line": 222,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:17",
+      "line": 231,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:4",
+      "line": 231,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:18",
+      "line": 232,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:19",
+      "line": 243,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:20",
+      "line": 244,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:2",
+      "line": 246,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:3",
+      "line": 254,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:21",
+      "line": 256,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:22",
+      "line": 262,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:23",
+      "line": 263,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:4",
+      "line": 269,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:24",
+      "line": 290,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map6_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

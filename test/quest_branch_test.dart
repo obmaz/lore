@@ -272,11 +272,12 @@ void main() {
         const ScriptContext(tileAtPlayer: 0),
         engine,
       )!;
-      expect(run.outcome.setFlags, contains('weaponRoomVisited'));
-      expect(run.outcome.messages.join('\n'), contains('기본적인 무기'));
-      expect(run.outcome.equips.single.kind, 'weapon');
-      expect(run.outcome.equips.single.index, 1);
-      expect(run.outcome.equips.single.onlyUnarmed, isTrue);
+      expect(run.outcome.setFlags, contains('etc50_bit4'));
+      final armed = run.acknowledgeScene();
+      expect(armed.outcome.messages.join('\n'), contains('기본적인 무기'));
+      expect(armed.outcome.equips.single.kind, 'weapon');
+      expect(armed.outcome.equips.single.index, 1);
+      expect(armed.outcome.equips.single.onlyUnarmed, isTrue);
       expect(run.outcome.nudges.length, 3);
       expect(run.outcome.nudges.first.dx, -1);
 

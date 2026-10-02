@@ -42,6 +42,15 @@ class LorePortalSession {
               scripts.startProcedure(guard, context),
             );
     }
+    if (id == 'castle-exit-skeleton') {
+      final skeleton = LoreSpecProcedures.castleExitSkeleton(context, x!, y!);
+      return skeleton == null
+          ? const LorePortalPlan(LorePortalAction.loadMap)
+          : LorePortalPlan(
+              LorePortalAction.runPreScript,
+              scripts.startProcedure(skeleton, context),
+            );
+    }
     if (id == 'portal-9-13-swamp-gate') {
       final speech = LoreSpecProcedures.swampGateSpeech(context);
       return speech == null

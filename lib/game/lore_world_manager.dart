@@ -355,6 +355,8 @@ class LoreWorldManager {
     int x = 0,
   }) => switch (mapId) {
     // LORESPEC.PAS:334-340: a refused wantenter leaves the party on the gate.
+    // LORESPEC.PAS:302-304: map 6 refusal.
+    6 => y - 1,
     8 when x == 50 => y,
     9 when y == 5 => y + 1,
     9 when y == 46 => y - 1,
@@ -464,6 +466,22 @@ class LoreWorldManager {
         targetX: 38,
         targetY: 7,
         name: 'LASTDITCH',
+      );
+    }
+    // LORESPEC.PAS:190-304: on map 6 every special tile other than the
+    // chest, prison and armoury cells is the `wantexit` arm.
+    if (currentMapId == 6) {
+      final event =
+          (x == 62 && y == 82) ||
+          ((x == 51 || x == 52) && y == 12) ||
+          (x == 41 && y == 79);
+      if (event) return null;
+      return const PortalInfo(
+        targetMapId: 1,
+        targetX: 20,
+        targetY: 12,
+        name: 'GROUND FIELD',
+        scriptId: 'castle-exit-skeleton',
       );
     }
     // LORESPEC.PAS:383-439: map 9 SWAMP GATE (y = 5) and exit (y = 46).

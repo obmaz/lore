@@ -64,10 +64,7 @@ void main() {
       79,
       const ScriptContext(tileAtPlayer: 0),
       engine,
-    )!
-        .outcome
-        .equips
-        .single;
+    )!.acknowledgeScene().outcome.equips.single;
     final party = [
       member('기사', PlayerClass.knight),
       member('전투승', PlayerClass.monk),

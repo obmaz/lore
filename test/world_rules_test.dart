@@ -179,7 +179,6 @@ void main() {
 
       // (맵, 조건 y, 목적지 맵/좌표) - 원작 `if y = N then if wantexit`
       const exits = <(int, int, int, int, int)>[
-        (6, 96, 1, 20, 12),
         (7, 71, 1, 77, 57),
         (8, 71, 2, 19, 27),
         (9, 46, 2, 32, 82),
@@ -214,6 +213,10 @@ void main() {
           reason: '맵 $map y=${y - 1} 오발동',
         );
       }
+      // LORESPEC.PAS:190-304: map 6 asks wantexit on every other special tile.
+      final castle = manager.findPortal(6, 50, 96)!;
+      expect([castle.targetMapId, castle.targetX, castle.targetY], [1, 20, 12]);
+      expect(manager.findPortal(6, 41, 79), isNull);
       // LORESPEC.PAS:2202-2212: map 27 asks wantexit on every special tile.
       for (final y in [5, 46]) {
         final portal = manager.findPortal(27, 15, y)!;

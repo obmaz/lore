@@ -102,8 +102,10 @@ void main() {
       portal: exit,
       context: const ScriptContext(),
       scripts: scripts,
+      x: 51,
+      y: 96,
     );
-    final first = plan.preScript!;
+    final first = plan.preScript!.acknowledgeScene();
     expect(plan.action, LorePortalAction.runPreScript);
     expect(first.hasPendingChoice, isTrue);
     expect(first.cancelOptionIndex, 1);
@@ -118,6 +120,8 @@ void main() {
       portal: exit,
       context: const ScriptContext(flags: {'etc31_bit1'}),
       scripts: scripts,
+      x: 51,
+      y: 96,
     );
     expect(revisit.action, LorePortalAction.loadMap);
     world.resetRulesForTest();

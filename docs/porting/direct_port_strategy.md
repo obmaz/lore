@@ -274,6 +274,15 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
 25. 맵 16(DEN3, LORESPEC:966-1004)의 y=10은 raw etc[37] < 3이면 남은 Wivern과
     싸우고 승리 시 3, 도주 시 3-생존 수를 저장한다. 3 이상이면 시체 대사만
     보인다. y=36 출구도 정확한 경계다.
+26. 맵 6(TOWN1, LORESPEC:190-305)은 `else if` 연쇄를 따른다. 감옥은 raw etc[50]
+    bit2(Mad Joe 구출) 뒤에만 열리며 첫 대결은 전투 전에 bit3을 켜고 두 명,
+    이후 일곱 명과 싸운다. 26번 적을 `SoldierN`·special/castlevel 0·E_number 1로
+    바꾸고 재대결 대사에 player[1].name을 붙인다. 원본에 없는 완료 플래그 대신
+    승리 시 열린 네 칸(44)이 재발동을 막는다. Mad Joe 합류 JSON이 원본
+    LORETALK:215의 bit2를 쓰지 않아 raw 판정이 영영 거짓이 되므로 그 쓰기를
+    추가했다. 무기실은 bit4를 먼저 켜고 서쪽으로 세 칸 뒤 장비를 준다. 나머지
+    모든 특수 칸이 `wantexit`이며 첫 출구(etc[31] bit1)는 Skeleton이 걸어오는
+    맵 쓰기와 합류 제안 뒤 bit1을 켠다.
 
 다음 묶음은 LORESPEC 1부의 큰 분기(맵 17·18)를 원본 분기 단위로 직접
 이식한다. 맵 4·6·9·11~16의 JSON 소유 분기와 LOREEND 내부 대조도 남아 있다. LOREEND 내부의 입력·크레딧·종료 동작 대조도 남아 있다. 현재
