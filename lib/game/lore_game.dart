@@ -488,11 +488,31 @@ class LoreGame extends FlameGame {
 
     if (currentMap == null) return;
 
+    // Scale the original 11x11 view uniformly; map coordinates and tile
+    // identity remain unchanged. Restore even on cutscene early returns.
+    final mapWidth = viewTilesX * tileSize;
+    final mapHeight = viewTilesY * tileSize;
+    final scale = min(size.x / mapWidth, size.y / mapHeight);
+    if (scale <= 0) return;
+    canvas.save();
+    canvas.translate(
+      (size.x - mapWidth * scale) / 2,
+      (size.y - mapHeight * scale) / 2,
+    );
+    canvas.scale(scale);
+    try {
+      _renderMap(canvas);
+    } finally {
+      canvas.restore();
+    }
+  }
+
+  void _renderMap(Canvas canvas) {
     final halfX = viewTilesX ~/ 2;
     final halfY = viewTilesY ~/ 2;
 
-    final offsetX = (size.x - (viewTilesX * tileSize)) / 2;
-    final offsetY = (size.y - (viewTilesY * tileSize)) / 2;
+    const offsetX = 0.0;
+    const offsetY = 0.0;
 
     // 현재 맵 카테고리에 맞는 타일 폰트 선택
     final mapCat = LoreWorldManager.mapRegistry[currentMapId]?.category;

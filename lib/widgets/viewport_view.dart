@@ -7,15 +7,51 @@ import 'retro_box.dart';
 class ViewportView extends StatelessWidget {
   final Widget? content;
   final String title;
+  final bool overlayTitle;
 
   const ViewportView({
     super.key,
     this.content,
     this.title = '◆ 메인 뷰포트 (MAIN VIEW) ◆',
+    this.overlayTitle = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    if (overlayTitle) {
+      return Container(
+        decoration: BoxDecoration(
+          color: RetroTheme.viewportBg,
+          border: Border.all(color: RetroTheme.lightBlue, width: 2),
+        ),
+        child: Stack(
+          fit: StackFit.expand,
+          children: [
+            ?content,
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: IgnorePointer(
+                child: Container(
+                  color: RetroTheme.background.withValues(alpha: .65),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 6,
+                    vertical: 2,
+                  ),
+                  child: Text(
+                    title,
+                    style: RetroTheme.headerFont.copyWith(fontSize: 12),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
     return RetroBox(
       title: title,
       borderColor: RetroTheme.lightBlue,

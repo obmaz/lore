@@ -15,11 +15,8 @@ import 'screens/main_game_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // 가로 모드 (Landscape) 고정 지원
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]);
+  // Follow the device orientation so the mobile layout can use portrait space.
+  await SystemChrome.setPreferredOrientations(DeviceOrientation.values);
 
   // 원작 데이터(몬스터/아이템/마법/맵)를 JSON에서 로드한다.
   // 실패하면 코드 내장 테이블로 자동 폴백하므로 게임은 항상 동작한다.

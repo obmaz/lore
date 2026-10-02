@@ -7,8 +7,14 @@ import 'retro_box.dart';
 class MessageLogView extends StatefulWidget {
   final List<String> logs;
   final int revision;
+  final double controlsInset;
 
-  const MessageLogView({super.key, required this.logs, required this.revision});
+  const MessageLogView({
+    super.key,
+    required this.logs,
+    required this.revision,
+    this.controlsInset = 0,
+  });
 
   @override
   State<MessageLogView> createState() => _MessageLogViewState();
@@ -57,7 +63,7 @@ class _MessageLogViewState extends State<MessageLogView> {
       title: '▶ 콘솔 메시지 ◀',
       borderColor: RetroTheme.cyan,
       backgroundColor: RetroTheme.background,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      padding: EdgeInsets.fromLTRB(10, 6, 10 + widget.controlsInset, 6),
       child: widget.logs.isEmpty
           ? Text(
               '명령을 기다리고 있습니다...',

@@ -34,6 +34,7 @@ import '../models/monster.dart';
 import '../data/lore_data.dart';
 import '../data/lore_script.dart';
 import '../widgets/viewport_view.dart';
+import '../widgets/game_screen_layout.dart';
 import '../widgets/party_status_view.dart';
 import '../widgets/message_log_view.dart';
 import '../widgets/dpad_widget.dart';
@@ -54,7 +55,7 @@ import '../widgets/ending_view.dart';
 
 enum GameScreenMode { field, encounter, battle, gameOver, ending }
 
-/// 4:3 레트로 콘솔 레이아웃 통합 메인 게임 화면
+/// 화면 비율에 맞춰 정사각형 맵과 상태·대화 패널을 배치한다.
 class MainGameScreen extends StatefulWidget {
   final List<PartyMember>? initialParty;
   final SaveData? initialSaveData;
@@ -1993,80 +1994,60 @@ class _MainGameScreenState extends State<MainGameScreen> {
       child: Scaffold(
         backgroundColor: RetroTheme.black,
         body: SafeArea(
-          child: Center(
-            child: AspectRatio(
-              aspectRatio: 4 / 3, // 4:3 고정 종횡비 레트로 콘솔 스타일
-              child: Container(
-                margin: const EdgeInsets.all(6.0),
-                padding: const EdgeInsets.all(6.0),
-                decoration: BoxDecoration(
-                  color: RetroTheme.background,
-                  border: Border.all(color: RetroTheme.darkGray, width: 3),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Column(
+          child: GameScreenLayout(
+            viewport: ViewportView(
+              title: _getViewportTitle(),
+              overlayTitle: true,
+              content: _buildViewportContent(),
+            ),
+            party: PartyStatusView(members: _mapPartyStatus()),
+            messages: LayoutBuilder(
+              builder: (context, constraints) {
+                final showControls = _currentMode == GameScreenMode.field;
+                // Scale only for unusually short screens; normal phone targets
+                // remain 44 logical pixels and the text stays clear of them.
+                final controlsSize = min(
+                  146.0,
+                  max(0.0, constraints.maxHeight - 16),
+                );
+                final controlsWidth = min(
+                  controlsSize,
+                  constraints.maxWidth * .45,
+                );
+                return Stack(
+                  fit: StackFit.expand,
                   children: [
-                    // 상단 영역 (메인 뷰포트 + 파티 상태창)
-                    Expanded(
-                      flex: 68,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          // 왼쪽 상단: 메인 뷰포트
-                          Expanded(
-                            flex: 62,
-                            child: ViewportView(
-                              title: _getViewportTitle(),
-                              content: _buildViewportContent(),
-                            ),
-                          ),
-                          const SizedBox(width: 6),
-                          // 오른쪽 상단: 파티원 상태창
-                          Expanded(
-                            flex: 38,
-                            child: PartyStatusView(members: _mapPartyStatus()),
-                          ),
-                        ],
-                      ),
+                    MessageLogView(
+                      logs: _logs,
+                      revision: _logRevision,
+                      controlsInset: showControls ? controlsWidth + 8 : 0,
                     ),
-                    const SizedBox(height: 6),
-                    // 하단 영역: 메시지 콘솔과 그 오른쪽 가상 방향키
-                    Expanded(
-                      flex: 32,
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: MessageLogView(
-                              logs: _logs,
-                              revision: _logRevision,
+                    if (showControls)
+                      Positioned(
+                        right: 8,
+                        bottom: 8,
+                        width: controlsWidth,
+                        height: controlsWidth,
+                        child: Opacity(
+                          opacity: .6,
+                          child: FittedBox(
+                            child: DPadWidget(
+                              onDirectionPressed: (dx, dy) {
+                                if (_entryAnimationActive ||
+                                    _currentMode != GameScreenMode.field) {
+                                  return;
+                                }
+                                _game.tryMove(dx, dy);
+                                setState(() {});
+                                _reclaimFocus();
+                              },
                             ),
                           ),
-                          if (_currentMode == GameScreenMode.field) ...[
-                            const SizedBox(width: 6),
-                            SizedBox(
-                              width: 142,
-                              child: FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: DPadWidget(
-                                  onDirectionPressed: (dx, dy) {
-                                    if (_entryAnimationActive ||
-                                        _currentMode != GameScreenMode.field) {
-                                      return;
-                                    }
-                                    _game.tryMove(dx, dy);
-                                    setState(() {});
-                                    _reclaimFocus();
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ],
+                        ),
                       ),
-                    ),
                   ],
-                ),
-              ),
+                );
+              },
             ),
           ),
         ),

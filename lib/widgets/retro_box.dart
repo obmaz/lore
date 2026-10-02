@@ -43,6 +43,8 @@ class RetroBox extends StatelessWidget {
               child: Text(
                 title!,
                 style: RetroTheme.headerFont.copyWith(fontSize: 12),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
               ),
             ),
           Expanded(

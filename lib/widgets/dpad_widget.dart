@@ -15,8 +15,8 @@ class DPadWidget extends StatelessWidget {
         onTap: () => onDirectionPressed(dx, dy),
         borderRadius: BorderRadius.circular(4),
         child: Container(
-          width: 38,
-          height: 38,
+          width: 44,
+          height: 44,
           decoration: BoxDecoration(
             color: RetroTheme.panelBg,
             border: Border.all(color: RetroTheme.borderColor, width: 1.5),
@@ -46,7 +46,7 @@ class DPadWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               _buildButton(Icons.arrow_left, 'LEFT', -1, 0),
-              const SizedBox(width: 38),
+              const SizedBox(width: 44),
               _buildButton(Icons.arrow_right, 'RIGHT', 1, 0),
             ],
           ),

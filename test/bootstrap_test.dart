@@ -147,8 +147,11 @@ void main() {
       await tester.pump(const Duration(milliseconds: 300));
 
       expect(find.text('◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆'), findsOneWidget);
-      expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);
       expect(find.byType(DPadWidget), findsOneWidget);
+      await tester.tap(find.widgetWithText(Tab, '캐릭터'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 350));
+      expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);
 
       // 부팅 후에도 JSON 데이터가 계속 사용되고 있다
       expect(LoreData.instance.usingJson, isTrue);
