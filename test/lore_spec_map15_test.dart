@@ -55,7 +55,9 @@ void main() {
       expect(directFirst.outcome.goldDelta, 6000);
       expect(directFirst.outcome.setFlags, contains('etc36_bit1'));
       expect(
-        directFirst.outcome.tileChanges.any((t) => t.x == 10 && t.y == 48 && t.tile == 44),
+        directFirst.outcome.tileChanges.any(
+          (t) => t.x == 10 && t.y == 48 && t.tile == 44,
+        ),
         isTrue,
       );
 
@@ -64,11 +66,15 @@ void main() {
       expect(first.outcome.goldDelta, 6000);
       expect(first.outcome.setFlags, contains('etc36_bit1'));
       expect(
-        first.outcome.tileChanges.any((t) => t.x == 10 && t.y == 48 && t.tile == 44),
+        first.outcome.tileChanges.any(
+          (t) => t.x == 10 && t.y == 48 && t.tile == 44,
+        ),
         isTrue,
       );
       expect(
-        first.outcome.tileChanges.any((t) => t.x == 10 && t.y == 47 && t.tile == 44),
+        first.outcome.tileChanges.any(
+          (t) => t.x == 10 && t.y == 47 && t.tile == 44,
+        ),
         isTrue,
       );
 
@@ -82,7 +88,9 @@ void main() {
       expect(second.outcome.goldDelta, 4000);
       expect(second.outcome.setFlags, contains('etc36_bit2'));
       expect(
-        second.outcome.tileChanges.any((t) => t.x == 40 && t.y == 48 && t.tile == 44),
+        second.outcome.tileChanges.any(
+          (t) => t.x == 40 && t.y == 48 && t.tile == 44,
+        ),
         isTrue,
       );
 
@@ -99,7 +107,8 @@ void main() {
     test('황금의 방패 (14,7)는 etc36_bit3에 의해 1회만 제공된다', () {
       final run = dispatchSpecial(mapId: 15, x: 14, y: 7)!;
       expect(run.outcome.messages.any((m) => m.contains('황금의 방패')), isTrue);
-      expect(run.outcome.setFlags, contains('etc36_bit3'));
+      expect(run.outcome.setFlags, isEmpty);
+      expect(run.acknowledgeScene().outcome.setFlags, contains('etc36_bit3'));
 
       final rerun = dispatchSpecial(
         mapId: 15,
@@ -113,7 +122,8 @@ void main() {
     test('황금의 갑옷 (45,19)는 etc36_bit4에 의해 1회만 제공된다', () {
       final run = dispatchSpecial(mapId: 15, x: 45, y: 19)!;
       expect(run.outcome.messages.any((m) => m.contains('황금의 갑옷')), isTrue);
-      expect(run.outcome.setFlags, contains('etc36_bit4'));
+      expect(run.outcome.setFlags, isEmpty);
+      expect(run.acknowledgeScene().outcome.setFlags, contains('etc36_bit4'));
 
       final rerun = dispatchSpecial(
         mapId: 15,
@@ -140,20 +150,20 @@ void main() {
         x: 20,
         y: 27,
         questSteps: {'gaia': 4},
-      )!;
+      )!.acknowledgeScene();
       expect(battle.awaitingBattle, isTrue);
       expect(battle.outcome.battleMonsters, [36, 36, 42]);
-      expect(battle.outcome.messages.any((m) => m.contains('ArchiGagoyle')), isTrue);
-      
-      final victory = battle.continueAfterBattle();
+      expect(
+        battle.outcome.messages.any((m) => m.contains('ArchiGagoyle')),
+        isTrue,
+      );
+
+      final victory = battle.continueAfterBattle().acknowledgeScene();
       expect(
         victory.outcome.questChanges.any((q) => q.name == 'gaia' && q.inc == 1),
         isTrue,
       );
-      expect(
-        victory.outcome.messages.any((m) => m.contains('물리쳤다')),
-        isTrue,
-      );
+      expect(victory.outcome.messages.any((m) => m.contains('물리쳤다')), isTrue);
 
       // 이미 승리하여 퀘스트 단계가 5가 된 경우
       final done = dispatchSpecial(
@@ -170,4 +180,42 @@ void main() {
       expect(normal, isNull);
     });
   });
+
+  test(
+    'raw etc[36]: gold 6000 then 4000 at any of the four cells, equipment bits',
+    () {
+      for (var b = 0; b < 256; b++) {
+        ScriptRun? at(int x, int y) => LoreSpecProcedures.map15(
+          x,
+          y,
+          ScriptContext(tileAtPlayer: 0, sourceEtc: {36: b}),
+          LoreScriptEngine(),
+        );
+        for (final x in [10, 11, 40, 41]) {
+          final run = at(x, 48);
+          if (b & 2 != 0) {
+            expect(run, isNull);
+            continue;
+          }
+          final first = b & 1 == 0;
+          expect(run!.outcome.goldDelta, first ? 6000 : 4000);
+          expect(run.outcome.setFlags, [first ? 'etc36_bit1' : 'etc36_bit2']);
+          expect(run.outcome.messages, [
+            '당신은 금화 ${first ? 6000 : 4000}개를 발견했다.',
+          ]);
+        }
+        expect(at(14, 7) == null, b & 4 != 0);
+        expect(at(45, 19) == null, b & 8 != 0);
+      }
+      expect(
+        LoreSpecProcedures.map15(
+          25,
+          71,
+          const ScriptContext(tileAtPlayer: 0),
+          LoreScriptEngine(),
+        ),
+        isNull,
+      );
+    },
+  );
 }

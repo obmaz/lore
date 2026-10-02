@@ -266,6 +266,11 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
 23. 맵 14(DEN1, LORESPEC:814-878)는 MENACE 중심에서 raw etc[10] = 3일 때 키 대기
     뒤 증가시키고, 금화 여섯 곳과 황금 방패는 raw etc[32] bit1..7로 판정한다.
     방패 비트는 누군가 장착한 뒤에만 켜진다. y=46 출구도 정확한 경계다.
+24. 맵 15(DEN2, LORESPEC:879-965)의 y=48 네 칸은 raw etc[36] bit1이 꺼져 있으면
+    6000, 아니면 4000(bit2)을 금화 대사와 함께 주고 두 칸을 연다. 이전 JSON은
+    원본에 없는 `quakeGoldA/B` 플래그를 쓰고 대사가 없었다. 황금 방패/갑옷은
+    bit3/bit4, ArchiGagoyle은 raw etc[14] = 4로 판정한다. y=71 출구도 정확한
+    경계다.
 
 다음 묶음은 LORESPEC 1부의 큰 분기(맵 17·18)를 원본 분기 단위로 직접
 이식한다. 맵 4·6·9·11~16의 JSON 소유 분기와 LOREEND 내부 대조도 남아 있다. LOREEND 내부의 입력·크레딧·종료 동작 대조도 남아 있다. 현재

@@ -2789,6 +2789,206 @@
       "test": "test/lore_spec_map14_test.dart",
       "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:106",
+      "line": 881,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:107",
+      "line": 882,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:108",
+      "line": 891,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:109",
+      "line": 892,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:110",
+      "line": 893,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:111",
+      "line": 905,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:112",
+      "line": 910,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:11",
+      "line": 912,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:113",
+      "line": 918,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:114",
+      "line": 919,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:115",
+      "line": 925,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:116",
+      "line": 930,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:12",
+      "line": 932,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:117",
+      "line": 938,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:118",
+      "line": 939,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:119",
+      "line": 945,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:for:15",
+      "line": 949,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:120",
+      "line": 957,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:13",
+      "line": 957,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:121",
+      "line": 958,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map15_test.dart",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

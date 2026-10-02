@@ -804,90 +804,109 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:879-965`, map 15 (T_DEN3 / QUAKE DEN).
+  /// `LORESPEC.PAS:879-965`, `case 15` (DEN2 / QUAKE).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 71` handled via portal session.
-  /// 2. Gold chests at `y == 48` and `x in [10, 11, 40, 41]`:
-  ///    - First chest gives 6000 gold and sets `etc36_bit1`.
-  ///    - Second chest gives 4000 gold and sets `etc36_bit2`.
-  ///    - Sets tiles `(x, 48)` and `(x, 47)` to 44.
-  /// 3. Golden Shield at `(14, 7)`:
-  ///    - `party.etc[36] and bit3 == 0` (`etc36_bit3` / `goldenShieldQuakeTaken`).
-  /// 4. Golden Armor at `(45, 19)`:
-  ///    - `party.etc[36] and bit4 == 0` (`etc36_bit4` / `goldenArmorQuakeTaken`).
-  /// 5. ArchiGagoyle boss battle at `y == 27`:
-  ///    - `party.etc[14] == 4` (`gaia` quest step 4 -> 5).
+  /// y = 71 is the `wantexit` boundary. The four y = 48 cells (x 10, 11, 40,
+  /// 41) pay 6000 while raw etc[36] bit1 is clear, then 4000 (bit2), and open
+  /// map[x,48]/map[x,47]. The golden shield/armour use bits 3/4, set only
+  /// after a member takes them. y = 27 fights the ArchiGagoyle while raw
+  /// etc[14] = 4; victory or a dead third enemy increments etc[14].
   static ScriptRun? map15(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
-    }
-
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 71) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 15,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    final etc36 = context.etcValue(
+      36,
+      bitAliases: const {
+        1: 'quakeGoldA',
+        2: 'quakeGoldB',
+        3: 'goldenShieldQuakeTaken',
+        4: 'goldenArmorQuakeTaken',
+      },
+    );
+    bool has(int bit) => (etc36 & LorePascal.bit(bit)) != 0;
     if (y == 48 && (x == 10 || x == 11 || x == 40 || x == 41)) {
-      if (!context.flags.contains('etc36_bit2')) {
-        final isFirst = !context.flags.contains('etc36_bit1');
-        final scriptId = isFirst ? 'spec-15-L879-1xx' : 'spec-15-L879-2xx';
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == scriptId,
-        );
-        final procedure = LoreScript(
-          id: 'lorespec-map15-gold-$x-$y',
-          trigger: 'step',
-          map: 15,
-          once: false,
-          require: const ScriptRequire(),
-          steps: [
-            ...content.steps,
-            ScriptStep(kind: 'setTile', tileX: x, tileY: 48, tileValue: 44),
-            ScriptStep(kind: 'setTile', tileX: x, tileY: 47, tileValue: 44),
+      if (has(2)) return null;
+      final first = !has(1);
+      final amount = first ? 6000 : 4000;
+      return start('quake-gold-$x', [
+        ScriptStep(kind: 'flag', key: first ? 'etc36_bit1' : 'etc36_bit2'),
+        ScriptStep(kind: 'say', text: '당신은 금화 $amount개를 발견했다.'),
+        ScriptStep(kind: 'gold', amount: amount),
+        ScriptStep(kind: 'setTile', tileX: x, tileY: 48, tileValue: 44),
+        ScriptStep(kind: 'setTile', tileX: x, tileY: 47, tileValue: 44),
+      ]);
+    }
+    for (final (cx, cy, bit, name, kind, index, power) in const [
+      (14, 7, 3, '황금의 방패', 'shield', 5, 5),
+      (45, 19, 4, '황금의 갑옷', 'armor', 5, 6),
+    ]) {
+      if (x != cx || y != cy) continue;
+      if (has(bit)) return null;
+      return start('spec-15-golden-$kind', [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: name, lines: ['당신은 $name을 발견했다.']),
+        ),
+        ScriptStep(kind: 'say', text: '누가 이 $name을 장착 하겠습니까 ?'),
+        ScriptStep(
+          kind: 'equip',
+          equipKind: kind,
+          equipIndex: index,
+          equipPower: power,
+          equipPrompt: true,
+        ),
+        ScriptStep(kind: 'flag', key: 'etc36_bit$bit'),
+      ]);
+    }
+    if (y == 27 && _questByte(context, 14, 'gaia') == 4) {
+      return start('spec-15-archigagoyle', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'ArchiGagoyle',
+            lines: ['당신은 ArchiGagoyle과 두마리의 Zombie를 발견했다.'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'ArchiGagoyle',
+          battleEnemyFirst: true,
+          monsters: [36, 36, 42],
+          battleOverrides: [
+            {'index': 1, 'name': 'Zombie'},
+            {'index': 2, 'name': 'Zombie'},
+            {'index': 3, 'name': 'ArchiGagoyle'},
           ],
-        );
-        return scripts.startProcedure(procedure, context);
-      }
+          battleVictoryIfEnemyDead: 3,
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'ArchiGagoyle',
+            lines: ['당신은 ArchiGagoyle을 물리쳤다.'],
+          ),
+        ),
+        ScriptStep(kind: 'questStep', questName: 'gaia', questInc: 1),
+      ]);
     }
-
-    if (x == 14 && y == 7) {
-      final hasTaken =
-          context.flags.contains('etc36_bit3') ||
-          context.flags.contains('goldenShieldQuakeTaken');
-      if (!hasTaken) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'spec-15-L879',
-        );
-        return scripts.startProcedure(content, context);
-      }
-    }
-
-    if (x == 45 && y == 19) {
-      final hasTaken =
-          context.flags.contains('etc36_bit4') ||
-          context.flags.contains('goldenArmorQuakeTaken');
-      if (!hasTaken) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'spec-15-L879x',
-        );
-        return scripts.startProcedure(content, context);
-      }
-    }
-
-    if (y == 27) {
-      final quest = context.questSteps['gaia'] ?? 0;
-      if (quest == 4) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'spec-15-L879-1xxxx',
-        );
-        return scripts.startProcedure(content, context);
-      }
-    }
-
     return null;
   }
 
