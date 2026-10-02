@@ -2649,6 +2649,146 @@
       "test": "test/lore_spec_map13_test.dart",
       "note": "Map13 arm owned directly: y=96 exact wantexit boundary (map 9 (26,6), refusal y-1); any special tile in x76..86 y71..81 runs the pyramid (52->44, 40/51->42, one-cell walk to x=81 then y=77 with source faces, 42->51, face 5, map[81,76]:=48 before the key, seven source pages; no invented once flag, the 52 cells are consumed); y=68 Gorgons (50,51,52 with E_number 1, no invented x range) while raw etc[38] bit5 clear, bit5 on victory only, escape y+1 only while enemy 3 lives. Delays/sound toggle adapted; DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:93",
+      "line": 816,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:94",
+      "line": 817,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:95",
+      "line": 826,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:96",
+      "line": 834,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:97",
+      "line": 838,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:98",
+      "line": 842,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:99",
+      "line": 846,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:100",
+      "line": 850,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:101",
+      "line": 854,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:102",
+      "line": 858,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:103",
+      "line": 863,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:exit:10",
+      "line": 865,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:104",
+      "line": 871,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:105",
+      "line": 872,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map14_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

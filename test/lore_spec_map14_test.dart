@@ -72,7 +72,9 @@ void main() {
       )!;
       expect(run25.outcome.messages.any((m) => m.contains("MENACE")), isTrue);
       expect(
-        run25.outcome.questChanges.any((q) => q.name == 'lordahn' && q.inc == 1),
+        run25.acknowledgeScene().outcome.questChanges.any(
+          (q) => q.name == 'lordahn' && q.inc == 1,
+        ),
         isTrue,
       );
 
@@ -85,7 +87,9 @@ void main() {
       )!;
       expect(run26.outcome.messages.any((m) => m.contains("MENACE")), isTrue);
       expect(
-        run26.outcome.questChanges.any((q) => q.name == 'lordahn' && q.inc == 1),
+        run26.acknowledgeScene().outcome.questChanges.any(
+          (q) => q.name == 'lordahn' && q.inc == 1,
+        ),
         isTrue,
       );
     });
@@ -108,12 +112,7 @@ void main() {
         expect(run.outcome.messages.any((m) => m.contains('$gold')), isTrue);
 
         // 이미 획득한 상태
-        final rerun = dispatchSpecial(
-          mapId: 14,
-          x: x,
-          y: y,
-          flags: {flag},
-        );
+        final rerun = dispatchSpecial(mapId: 14, x: x, y: y, flags: {flag});
         expect(rerun, isNull);
       }
     });
@@ -122,7 +121,10 @@ void main() {
       // 미획득 상태
       final run = dispatchSpecial(mapId: 14, x: 16, y: 20)!;
       expect(run.outcome.messages.any((m) => m.contains('황금의 방패')), isTrue);
-      expect(run.outcome.setFlags, contains('etc32_bit7'));
+      expect(run.outcome.equips, isEmpty);
+      final taken = run.acknowledgeScene();
+      expect(taken.outcome.equips.single.kind, 'shield');
+      expect(taken.outcome.setFlags, contains('etc32_bit7'));
 
       // 이미 획득한 상태
       final rerun = dispatchSpecial(
@@ -138,13 +140,51 @@ void main() {
       final normal = dispatchSpecial(mapId: 14, x: 10, y: 10);
       expect(normal, isNull);
 
-      final blockedTile = dispatchSpecial(
-        mapId: 14,
-        x: 6,
-        y: 6,
-        tile: 99,
-      );
+      final blockedTile = dispatchSpecial(mapId: 14, x: 6, y: 6, tile: 99);
       expect(blockedTile, isNull);
     });
+  });
+
+  test('raw etc[32] bits and etc[10] decide map 14 for all 256 bytes', () {
+    const cells = [
+      (6, 6),
+      (18, 10),
+      (6, 44),
+      (31, 30),
+      (31, 8),
+      (14, 28),
+      (16, 20),
+    ];
+    for (var b = 0; b < 256; b++) {
+      for (var i = 0; i < 7; i++) {
+        final run = LoreSpecProcedures.map14(
+          cells[i].$1,
+          cells[i].$2,
+          ScriptContext(tileAtPlayer: 0, sourceEtc: {32: b}),
+          LoreScriptEngine(),
+        );
+        expect(run == null, b & (1 << i) != 0);
+      }
+      final menace = LoreSpecProcedures.map14(
+        25,
+        8,
+        ScriptContext(
+          tileAtPlayer: 0,
+          sourceEtc: {10: b},
+          questSteps: const {'lordahn': 3},
+        ),
+        LoreScriptEngine(),
+      );
+      expect(menace == null, b != 3);
+    }
+    expect(
+      LoreSpecProcedures.map14(
+        25,
+        46,
+        const ScriptContext(tileAtPlayer: 0),
+        LoreScriptEngine(),
+      ),
+      isNull,
+    );
   });
 }

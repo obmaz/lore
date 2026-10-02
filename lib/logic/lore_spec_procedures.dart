@@ -719,78 +719,88 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:814-878`, map 14 (DEN1 / SWAMP DEN / MENACE).
+  /// `LORESPEC.PAS:814-878`, `case 14` (DEN1 / MENACE).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 46` handled via portal session.
-  /// 2. MENACE center at `(25, 8)` or `(26, 8)` when `party.etc[10] == 3`:
-  ///    - `spec-14-L814-1-1` / `spec-14-L814-2-1` increments `lordahn` quest step to 4.
-  /// 3. Gold finds:
-  ///    - `(6, 6)`: 1000 gold, `etc32_bit1`
-  ///    - `(18, 10)`: 2500 gold, `etc32_bit2`
-  ///    - `(6, 44)`: 400 gold, `etc32_bit3`
-  ///    - `(31, 30)`: 600 gold, `etc32_bit4`
-  ///    - `(31, 8)`: 1500 gold, `etc32_bit5`
-  ///    - `(14, 28)`: 1000 gold, `etc32_bit6`
-  /// 4. Golden Shield at `(16, 20)`:
-  ///    - `party.etc[32] and bit7 == 0` (`etc32_bit7` / `goldenShieldMenaceTaken`).
+  /// y = 46 is the `wantexit` boundary. The MENACE centre (25,8)/(26,8)
+  /// increments raw etc[10] after the key wait when it is 3. Six gold cells
+  /// and the golden shield use raw etc[32] bits 1..7; the shield's bit is set
+  /// only after a member takes it (choosewhom refusal leaves it).
   static ScriptRun? map14(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
-    }
-
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 46) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 14,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
     if ((x == 25 || x == 26) && y == 8) {
-      final quest = context.questSteps['lordahn'] ?? 0;
-      if (quest == 3) {
-        final scriptId = x == 25 ? 'spec-14-L814-1-1' : 'spec-14-L814-2-1';
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == scriptId,
-        );
-        return scripts.startProcedure(content, context);
-      }
+      if (_questByte(context, 10, 'lordahn') != 3) return null;
+      return start('spec-14-menace-center', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'MENACE',
+            lines: [
+              "여기가 `MENACE'의 중심이다.",
+              '당신의 탐험은 성공적이었다.',
+              '이제 Lord Ahn 에게 돌아가는 일만 남았다.',
+            ],
+          ),
+        ),
+        ScriptStep(kind: 'questStep', questName: 'lordahn', questInc: 1),
+      ]);
     }
-
-    final goldId = switch ((x, y)) {
-      (6, 6) => !context.flags.contains('etc32_bit1') ? 'spec-14-L814' : null,
-      (18, 10) =>
-        !context.flags.contains('etc32_bit2') ? 'spec-14-L814x' : null,
-      (6, 44) =>
-        !context.flags.contains('etc32_bit3') ? 'spec-14-L814xx' : null,
-      (31, 30) =>
-        !context.flags.contains('etc32_bit4') ? 'spec-14-L814xxx' : null,
-      (31, 8) =>
-        !context.flags.contains('etc32_bit5') ? 'spec-14-L814xxxx' : null,
-      (14, 28) =>
-        !context.flags.contains('etc32_bit6') ? 'spec-14-L814xxxxx' : null,
-      _ => null,
+    const gold = {
+      (6, 6): (1, 1000),
+      (18, 10): (2, 2500),
+      (6, 44): (3, 400),
+      (31, 30): (4, 600),
+      (31, 8): (5, 1500),
+      (14, 28): (6, 1000),
     };
-    if (goldId != null) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == goldId,
-      );
-      return scripts.startProcedure(content, context);
+    final etc32 = context.etcValue(
+      32,
+      bitAliases: const {7: 'goldenShieldMenaceTaken'},
+    );
+    if (gold[(x, y)] case (final bit, final amount)) {
+      if ((etc32 & LorePascal.bit(bit)) != 0) return null;
+      return start('spec-14-gold-$bit', [
+        ScriptStep(kind: 'say', text: '당신은 금화 $amount개를 발견했다.'),
+        ScriptStep(kind: 'gold', amount: amount),
+        ScriptStep(kind: 'flag', key: 'etc32_bit$bit'),
+      ]);
     }
-
     if (x == 16 && y == 20) {
-      final hasTaken =
-          context.flags.contains('etc32_bit7') ||
-          context.flags.contains('goldenShieldMenaceTaken');
-      if (!hasTaken) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'spec-14-L814xxxxxx',
-        );
-        return scripts.startProcedure(content, context);
-      }
+      if ((etc32 & LorePascal.bit(7)) != 0) return null;
+      return start('spec-14-golden-shield', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '황금의 방패', lines: ['당신은 황금의 방패를 발견했다.']),
+        ),
+        ScriptStep(kind: 'say', text: '누가 이 황금의 방패를 장착 하겠습니까 ?'),
+        ScriptStep(
+          kind: 'equip',
+          equipKind: 'shield',
+          equipIndex: 5,
+          equipPower: 5,
+          equipPrompt: true,
+        ),
+        ScriptStep(kind: 'flag', key: 'etc32_bit7'),
+      ]);
     }
-
     return null;
   }
 
