@@ -122,6 +122,10 @@ class LoreSubText {
 
   static String classLabel(int id) => classNames[id] ?? classNameDefault;
   static String weaponLabel(int id) => weaponNames[id] ?? weaponNameDefault;
+
+  /// `ReturnWeapon`의 `Josa`: 0, 2..4, 6..9 는 '으', 그 외는 ''.
+  static String weaponJosa(int id) =>
+      (id == 0 || (id >= 2 && id <= 4) || (id >= 6 && id <= 9)) ? '으' : '';
   static String defenseLabel(int id) => defenseNames[id] ?? defenseNameDefault;
 
   // ---------------------------------------------------------------------
@@ -140,7 +144,7 @@ class LoreSubText {
     final name = actor;
     switch (how) {
       case 1:
-        return '$name는 ${weaponLabel(what ?? 0)}로 $target를 공격했다';
+        return '$name는 ${weaponLabel(what ?? 0)}${weaponJosa(what ?? 0)}로 $target를 공격했다';
       case 2:
       case 3:
         return "$name는 '${magicName((what ?? 0) + (how == 3 ? 6 : 0))}'${magicJosa(what ?? 0)}로 $target에게 공격했다";

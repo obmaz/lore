@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:math';
 
 import '../logic/lore_batt_text.dart';
+import '../logic/lore_menu_text.dart';
+import '../logic/lore_sub_text.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -137,7 +139,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (allPartyDefeated) {
       _battleEnded = true;
       _isAutoBattle = false;
-      widget.onLog('† 일행은 모험중에 모두 목숨을 잃었다... GAME OVER †');
+      widget.onLog(LoreSubText.allDead);
       widget.onDefeat();
       return;
     }
@@ -149,8 +151,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       _battleEnded = true;
       _isAutoBattle = false;
       final gold = _engine.calculateGold(widget.enemies);
-      widget.onLog('★ 전투에서 승리했습니다! ★');
-      widget.onLog('일행은 금화 $gold 개를 획득했습니다.');
+      widget.onLog(LoreBattText.goldFound('$gold'));
       widget.onVictory(gold);
       return;
     }
@@ -250,7 +251,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
     setState(() => _isTurnProcessing = true);
 
-    widget.onLog('${player.name}의 무기 공격!');
     final res = _engine.executePlayerWeaponAttack(
       player,
       currentTarget,
@@ -275,7 +275,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final singleSpells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.singleAttack)
         .toList();
-    _showSpellDialog('단일 마법 공격', singleSpells, player, (spell) {
+    _showSpellDialog(_modeTitle(player), singleSpells, player, (spell) {
       _executeSingleMagic(player, spell);
     });
   }
@@ -283,7 +283,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   void _executeSingleMagic(PartyMember player, Spell spell) async {
     setState(() => _isTurnProcessing = true);
 
-    widget.onLog('${player.name}의 \'${spell.name}\' 시전!');
     final res = _engine.executePlayerSingleMagicAttack(
       player,
       currentTarget,
@@ -309,7 +308,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final allSpells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.allAttack)
         .toList();
-    _showSpellDialog('전체 마법 공격', allSpells, player, (spell) {
+    _showSpellDialog(_modeTitle(player), allSpells, player, (spell) {
       _executeAllMagic(player, spell);
     });
   }
@@ -317,7 +316,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   void _executeAllMagic(PartyMember player, Spell spell) async {
     setState(() => _isTurnProcessing = true);
 
-    widget.onLog('${player.name}의 전체 마법 \'${spell.name}\' 작열!');
     final results = _engine.executePlayerAllMagicAttack(
       player,
       widget.enemies,
@@ -346,7 +344,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final specialSpells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.specialDebuff)
         .toList();
-    _showSpellDialog('적 특수 디버프 마법', specialSpells, player, (spell) {
+    _showSpellDialog(_modeTitle(player), specialSpells, player, (spell) {
       _executeSpecialMagic(player, spell);
     });
   }
@@ -358,14 +356,19 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       widget.onLog(
         '${player.name}: ${LoreDialogueManager.specialMagicLockedMessage}',
       );
-      widget.onLog('(NOTICE 동굴 (75,52)의 Red Antares를 만나 특수 마법을 배워야 합니다)');
       return;
     }
 
     setState(() => _isTurnProcessing = true);
 
+    // LORESUB.PAS ReturnMessage how = 4 is printed before CastSpecial runs.
     widget.onLog(
-      '${player.name}이(가) ${currentTarget.name}에게 \'${spell.name}\' 시전!',
+      LoreSubText.returnMessage(
+        actor: player.name,
+        how: 4,
+        what: spell.id - 12,
+        target: currentTarget.name,
+      ),
     );
     final res = _engine.executePlayerSpecialDebuff(
       player,
@@ -396,7 +399,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         backgroundColor: RetroTheme.black,
         shape: Border.all(color: RetroTheme.lightGreen, width: 2),
         title: Text(
-          '치료 대상 선택',
+          '누구에게',
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 13,
@@ -409,23 +412,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
               return ListTile(
                 dense: true,
                 title: Text(
-                  '${m.name} (HP: ${m.hp}/${m.maxHp})',
+                  m.name,
                   style: RetroTheme.dosFont.copyWith(
                     color: RetroTheme.white,
                     fontSize: 11,
-                  ),
-                ),
-                subtitle: Text(
-                  m.isDead
-                      ? '[사망]'
-                      : (m.isUnconscious
-                            ? '[기절]'
-                            : (m.poison > 0 ? '[독]' : '[정상]')),
-                  style: RetroTheme.dosFont.copyWith(
-                    color: m.isDead
-                        ? RetroTheme.lightRed
-                        : RetroTheme.lightCyan,
-                    fontSize: 10,
                   ),
                 ),
                 onTap: () {
@@ -443,7 +433,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                 size: 20,
               ),
               title: Text(
-                '모든 사람들에게 (전체 치료)',
+                '모든 사람들에게',
                 style: RetroTheme.dosFont.copyWith(
                   color: RetroTheme.yellow,
                   fontSize: 11,
@@ -464,7 +454,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final singleCure = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.singleCure)
         .toList();
-    _showSpellDialog('${target.name}에게 치료 시전', singleCure, caster, (spell) {
+    _showSpellDialog('선택', singleCure, caster, (spell) {
       _executeCure(caster, target, spell);
     });
   }
@@ -473,7 +463,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final allCure = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.allCure)
         .toList();
-    _showSpellDialog('일행 전체 치료 시전', allCure, caster, (spell) {
+    _showSpellDialog('선택', allCure, caster, (spell) {
       _executeCureAll(caster, spell);
     });
   }
@@ -481,7 +471,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   void _executeCure(PartyMember caster, PartyMember target, Spell spell) async {
     setState(() => _isTurnProcessing = true);
 
-    widget.onLog('${caster.name}이(가) ${target.name}에게 \'${spell.name}\' 사용!');
     final res = _engine.executePlayerCure(caster, target, spell.id);
     widget.onLog(res.message);
 
@@ -491,7 +480,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   void _executeCureAll(PartyMember caster, Spell spell) async {
     setState(() => _isTurnProcessing = true);
 
-    widget.onLog('${caster.name}의 전체 치료 \'${spell.name}\' 시전!');
     for (final member in widget.partyMembers) {
       final res = _engine.executePlayerCure(caster, member, spell.id);
       widget.onLog(res.message);
@@ -511,7 +499,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     final battleEsp = LoreData.instance.spells
         .where((s) => s.id == 43 || s.id == 45)
         .toList();
-    _showSpellDialog('초능력 (ESP) 시전', battleEsp, player, (spell) {
+    _showSpellDialog(_modeTitle(player), battleEsp, player, (spell) {
       _executeEsp(player, spell);
     });
   }
@@ -519,8 +507,16 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   void _executeEsp(PartyMember player, Spell spell) async {
     setState(() => _isTurnProcessing = true);
 
-    widget.onLog('${player.name}의 초능력 \'${spell.name}\' 발동!');
     final target = currentTarget;
+    // LORESUB.PAS ReturnMessage how = 6 is printed before BattleESP runs.
+    widget.onLog(
+      LoreSubText.returnMessage(
+        actor: player.name,
+        how: 6,
+        what: spell.id - 40,
+        target: target.name,
+      ),
+    );
     final res = _engine.executePlayerESP(
       player,
       target,
@@ -560,9 +556,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           '${LoreBattText.menuCommandAll}',
         );
         _executeAutoAction();
-      } else {
-        widget.onLog('⚔ 자동 전투를 중지하고 일반 전투 모드로 전환합니다.');
-      }
+      } else {}
     } else {
       // 일반 파티원: 도망 시도
       _attemptRunAway();
@@ -575,6 +569,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
     // 원작 LOREBATT.PAS:79-88 - `{이름}은 도망간다` / 실패 시 `그러나,
     // 일행은 성공하지 못했다`
+    // LORESUB.PAS ReturnMessage how = 7 is printed before RunAway.
+    widget.onLog(LoreSubText.returnMessage(actor: player.name, how: 7));
     widget.onLog('${player.name}${LoreBattText.flee}');
     final success = _engine.checkRunAway(player);
     await Future.delayed(const Duration(milliseconds: 250));
@@ -614,6 +610,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   // ==========================================
   // 헬퍼 및 UI 다이얼로그
   // ==========================================
+  /// m[0] of the battle menus: `{name}의 전투 모드 ===>`.
+  String _modeTitle(PartyMember player) =>
+      '${player.name}${LoreBattText.battleMode}';
+
   void _showSpellDialog(
     String title,
     List<Spell> spells,
@@ -626,7 +626,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         backgroundColor: RetroTheme.black,
         shape: Border.all(color: RetroTheme.lightMagenta, width: 2),
         title: Text(
-          '$title (SP: ${player.sp} / ESP: ${player.esp})',
+          title,
           style: RetroTheme.dosFont.copyWith(
             color: RetroTheme.yellow,
             fontSize: 12,
@@ -665,28 +665,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                   style: RetroTheme.dosFont.copyWith(
                     color: canCast ? RetroTheme.white : RetroTheme.darkGray,
                     fontSize: 11,
-                  ),
-                ),
-                subtitle: Text(
-                  sp.description,
-                  style: RetroTheme.dosFont.copyWith(
-                    color: canCast ? RetroTheme.lightGray : RetroTheme.darkGray,
-                    fontSize: 9,
-                  ),
-                ),
-                trailing: Text(
-                  !isAvailable
-                      ? 'Lv부족'
-                      : (sp.category == SpellCategory.esp
-                            ? 'ESP $cost'
-                            : executionIsFree
-                            ? 'SP 0'
-                            : sp.category == SpellCategory.allAttack
-                            ? 'SP $cost/적'
-                            : 'SP $cost'),
-                  style: RetroTheme.dosFont.copyWith(
-                    color: canCast ? RetroTheme.lightCyan : RetroTheme.lightRed,
-                    fontSize: 10,
                   ),
                 ),
                 onTap: canCast
@@ -792,7 +770,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                 color: RetroTheme.lightRed,
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: Text(
-                  '⚔ 자동 전투 진행 중... [터치하여 수동 모드로 복귀]',
+                  LoreBattText.menuCommandAll,
                   textAlign: TextAlign.center,
                   style: RetroTheme.dosFont.copyWith(
                     color: RetroTheme.black,
@@ -862,7 +840,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                                   children: [
                                     if (enemy.isPoisoned)
                                       Text(
-                                        '[독] ',
+                                        '${LoreMenuText.quickViewHeader.trim().split(' ').first} ',
                                         style: RetroTheme.dosFont.copyWith(
                                           color: RetroTheme.green,
                                           fontSize: 10,
@@ -870,9 +848,14 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                                       ),
                                     Text(
                                       enemy.isDead
-                                          ? '[사망]'
+                                          ? LoreMenuText.quickViewHeader
+                                                .trim()
+                                                .split(' ')
+                                                .last
                                           : (enemy.isUnconscious
-                                                ? '[기절]'
+                                                ? LoreMenuText.quickViewHeader
+                                                      .trim()
+                                                      .split(' ')[1]
                                                 : '${enemy.hp}/${enemy.maxHp}'),
                                       style: RetroTheme.dosFont.copyWith(
                                         color: hpColor,
@@ -923,10 +906,15 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                             ),
                             Text(
                               currentTarget.isDead
-                                  ? '상태: 사망'
+                                  ? LoreMenuText.quickViewHeader
+                                        .trim()
+                                        .split(' ')
+                                        .last
                                   : (currentTarget.isUnconscious
-                                        ? '상태: 의식불명'
-                                        : 'HP: ${currentTarget.hp}/${currentTarget.maxHp}'),
+                                        ? LoreMenuText.quickViewHeader
+                                              .trim()
+                                              .split(' ')[1]
+                                        : '${currentTarget.hp}/${currentTarget.maxHp}'),
                               style: RetroTheme.dosFont.copyWith(
                                 color: _getEnemyHpColor(currentTarget),
                                 fontSize: 10,
@@ -934,7 +922,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                             ),
                             if (currentTarget.isPoisoned)
                               Text(
-                                '중독 상태',
+                                LoreMenuText.quickViewHeader
+                                    .trim()
+                                    .split(' ')
+                                    .first,
                                 style: RetroTheme.dosFont.copyWith(
                                   color: RetroTheme.green,
                                   fontSize: 9,
@@ -960,7 +951,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
               runSpacing: 2,
               children: [
                 Text(
-                  player != null ? '▶ [${player.name}] 의 전투 턴' : '행동 대기 중...',
+                  player != null ? _modeTitle(player) : '',
                   style: RetroTheme.dosFont.copyWith(
                     color: RetroTheme.yellow,
                     fontSize: 11,
@@ -969,7 +960,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                 ),
                 if (player != null)
                   Text(
-                    'HP: ${player.hp}/${player.maxHp} | SP: ${player.sp}/${player.maxSp} | ESP: ${player.esp}/${player.maxEsp}',
+                    '${player.hp}/${player.maxHp}  ${player.sp}/${player.maxSp}  ${player.esp}/${player.maxEsp}',
                     style: RetroTheme.dosFont.copyWith(
                       color: RetroTheme.lightCyan,
                       fontSize: 10,
@@ -993,28 +984,47 @@ class _BattleViewportViewState extends State<BattleViewportView> {
               spacing: 4,
               runSpacing: 4,
               children: [
-                _buildCmdButton('1.무기공격', RetroTheme.lightRed, _onWeaponAttack),
                 _buildCmdButton(
-                  '2.단일마법',
+                  1,
+                  '${LoreBattText.menuAttackOne}${LoreSubText.weaponLabel(player?.weapon ?? 0)}${LoreSubText.weaponJosa(player?.weapon ?? 0)}${LoreBattText.menuAttackOneRest}',
+                  RetroTheme.lightRed,
+                  _onWeaponAttack,
+                ),
+                _buildCmdButton(
+                  2,
+                  LoreBattText.menuMagicOne,
                   RetroTheme.lightBlue,
                   _onSingleMagicMenu,
                 ),
                 _buildCmdButton(
-                  '3.전체마법',
+                  3,
+                  LoreBattText.menuMagicAll,
                   RetroTheme.lightCyan,
                   _onAllMagicMenu,
                 ),
                 _buildCmdButton(
-                  '4.특수마법',
+                  4,
+                  LoreBattText.menuSpecial,
                   RetroTheme.lightMagenta,
                   _onSpecialMagicMenu,
                 ),
-                _buildCmdButton('5.일행치료', RetroTheme.lightGreen, _onCureMenu),
-                _buildCmdButton('6.초능력', RetroTheme.yellow, _onEspMenu),
                 _buildCmdButton(
+                  5,
+                  LoreBattText.menuHealParty,
+                  RetroTheme.lightGreen,
+                  _onCureMenu,
+                ),
+                _buildCmdButton(
+                  6,
+                  LoreBattText.menuEsp,
+                  RetroTheme.yellow,
+                  _onEspMenu,
+                ),
+                _buildCmdButton(
+                  7,
                   isLeaderActive
-                      ? (_isAutoBattle ? '7.자동중지' : '7.자동전투')
-                      : '7.도망시도',
+                      ? LoreBattText.menuCommandAll
+                      : LoreBattText.menuRun,
                   _isAutoBattle ? RetroTheme.lightRed : RetroTheme.white,
                   _onAutoBattleOrRun,
                 ),
@@ -1026,9 +1036,15 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     );
   }
 
-  Widget _buildCmdButton(String label, Color color, VoidCallback onPressed) {
+  Widget _buildCmdButton(
+    int number,
+    String label,
+    Color color,
+    VoidCallback onPressed,
+  ) {
     final disabled = _isTurnProcessing || _battleEnded;
     return ElevatedButton(
+      key: ValueKey('battle-cmd-$number'),
       style: ElevatedButton.styleFrom(
         backgroundColor: RetroTheme.panelBg,
         foregroundColor: color,

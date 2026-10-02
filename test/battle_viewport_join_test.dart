@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/logic/lore_batt_text.dart';
 import 'package:lore/logic/battle_engine.dart';
 import 'package:lore/logic/lore_join.dart';
 import 'package:lore/models/monster.dart';
@@ -145,7 +146,7 @@ void main() {
       ),
     );
 
-    await tester.tap(find.text('1.무기공격'));
+    await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
     await tester.pumpAndSettle();
 
     expect(tester.takeException(), isNull);
@@ -179,7 +180,10 @@ void main() {
       ),
     );
 
-    expect(find.text('▶ [${party[2].name}] 의 전투 턴'), findsOneWidget);
+    expect(
+      find.text('${party[2].name}${LoreBattText.battleMode}'),
+      findsOneWidget,
+    );
   });
 
   testWidgets('전투 화면의 독심 성공은 적을 6번 슬롯에 즉시 합류시킨다', (tester) async {
@@ -219,7 +223,7 @@ void main() {
       ),
     );
 
-    await tester.tap(find.text('6.초능력'));
+    await tester.tap(find.byKey(const ValueKey('battle-cmd-6')));
     await tester.pumpAndSettle();
     await tester.tap(find.text('독심'));
     await tester.pump();
