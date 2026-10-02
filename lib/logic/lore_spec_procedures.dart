@@ -1084,105 +1084,208 @@ class LoreSpecProcedures {
     );
   }
 
-  /// `LORESPEC.PAS:1006-1173`, map 17 (DEN3 / DRAGON DEN).
+  static const _map17AntaresPages = <List<String>>[
+    ['갑자기 주위가 용암으로 변하면서 한 영혼이 당신앞에 나타났다.'],
+    [
+      ' 나는 고대의 강력한 마법사 였던 Red Antares',
+      '의 영이오.',
+      ' 한때,  나는 이 세계의 모든 지역을 통괄하는',
+      '마법을 가지고 이 세계를 통치했지만  내가 죽',
+      '고난 뒤로는 여러 지역으로  나의 마법이 분산',
+      '되어 제대로 힘을 발휘하지 못하는것 같소. 당',
+      '신들이 Necromancer에 대항하려 한다는걸 알고',
+      '있소. 나는 그가 이 동굴을 요새화  시킬때 이',
+      '미 그의 마법 능력을 지켜 보았기 때문에 그의',
+      '능력을 알수 있었소. 그러나 그의 능력에 비교',
+      '해볼때 당신들의 마법 능력은 상당히 저조하오',
+      '. 그래서 당신들을 위해 나의 마법중 "간접 공',
+      '격"이란 기법을 전해 주겠소.',
+      ' 만약 당신들의 마법 능력이 도달한다면  다음',
+      '의 마법을 사용할수 있을 것이오.',
+      '',
+    ],
+    [
+      '1.     독      - 적을 중독 시킴',
+      '2. 기술 무력화 - 적의 특수 공격 능력 제거',
+      '3. 방어 무력화 - 적의 방어력 감소',
+      '4. 능력   저하 - 적의 모든 능력 감소',
+      '5. 마법   불능 - 적의 마법 능력 제거',
+      '6. 탈   초인화 - 적의 초자연력 제거',
+    ],
+    [
+      ' 이 여섯가지의 마법은 사용하기 까다롭고  직',
+      '접적인 공격은 아니지만 큰 도움을 줄것이오.',
+      '하지만, 사실  이 마법들을 모두 동원하더라도',
+      'Necromancer를 만나기 조차 어려울 것이오. 그',
+      '래서 당신들은 초자연력 또한 익혀야만 그에게',
+      '대항할수 있을 것이오.',
+    ],
+  ];
+  static const _map17HidraPages = <List<String>>[
+    ['당신은 보스인 Hidra를 만났다.'],
+    [
+      '당신들은 Hidra를 물리쳤다.',
+      '그리고 당신은 이 임무에 성공했다.',
+      '다시 WATER FIELD 의 군주에게로 돌아가라.',
+    ],
+  ];
+
+  /// `LORESPEC.PAS:1010-1173`, `case 17` (DEN4 / DRAGON DEN).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 95` handled via portal session.
-  /// 2. Vertical wrap at `y == 80`:
-  ///    - `y := 6` (`spec-17-L1010`).
-  /// 3. Passage toggle at `y == 44`:
-  ///    - `map[67..69, 44] := 44`, `map[67..69, 38] := 52` (`map17-passage-44`).
-  /// 4. Red Antares meeting at `(75, 52)`:
-  ///    - `party.etc[38] and bit2 == 1` -> null (이미 합류/결정 완료).
-  ///    - `party.etc[38] and bit1 == 1` and `mindRead`:
-  ///      - `redantares-join` (합류 선택지).
-  ///    - `party.etc[38] and bit1 == 1` and not `mindRead`:
-  ///      - `redantares-wait-for-mindread`.
-  ///    - `party.etc[38] and bit1 == 0`:
-  ///      - `redantares-teach` (용암 변형 및 간접 마법 전수).
-  /// 5. Secret shortcut at `x == 72`:
-  ///    - `map[72, 19..21] := 44`, `y := y - 7` (`map17-shortcut-72`).
-  /// 6. Passage return at `y == 38`:
-  ///    - `map[67..69, 38] := 44`, `map[67..69, 44] := 52`, teleport `(56, 93)` (`map17-passage-38`).
-  /// 7. Hidra boss battle at `x == 22`:
-  ///    - `party.etc[15] < 2`:
-  ///      - `map17-hidra` (보스 전투, 승리 시 `swamp` 퀘스트 2, 워프 `(56, 93)`).
+  /// Independent `if`s that read the x/y left by earlier statements: y = 95
+  /// is the exit boundary; y = 80 becomes 6; y = 44 opens row 44 and closes
+  /// row 38; (75,52) is Red Antares; x = 72 opens column 72 and moves y - 7;
+  /// y = 38 swaps the rows back and moves to (56,93); x = 22 is the Hidra
+  /// while raw etc[15] < 2. `party.etc[38] and bit2 = 1` parses as
+  /// `(etc[38] and 2) = 1` and is never true, so the source "already
+  /// joined" exit is dead: with bit1 and mind reading the offer repeats.
   static ScriptRun? map17(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
-    if (context.tileAtPlayer != null &&
-        context.tileAtPlayer != 52 &&
-        context.tileAtPlayer != 0) {
-      return null;
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 95) return null;
+    var cx = x;
+    var cy = y;
+    final steps = <ScriptStep>[];
+    void moveTo(int nx, int ny) {
+      cx = nx;
+      cy = ny;
+      steps.add(ScriptStep(kind: 'teleport', tileX: nx, tileY: ny));
     }
 
-    if (y == 80) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'spec-17-L1010',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 44) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'map17-passage-44',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (x == 75 && y == 52) {
-      final hasJoinedOrRefused = context.flags.contains('etc38_bit2');
-      if (hasJoinedOrRefused) return null;
-
-      final hasLearned =
-          context.flags.contains('etc38_bit1') ||
-          context.flags.contains('specialMagicLearned');
-      if (hasLearned) {
-        final hasMindRead = context.mindReadActive;
-        final scriptId = hasMindRead
-            ? 'redantares-join'
-            : 'redantares-wait-for-mindread';
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == scriptId,
-        );
-        return scripts.startProcedure(content, context);
-      } else {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'redantares-teach',
-        );
-        return scripts.startProcedure(content, context);
+    ScriptStep scene(String title, List<String> lines) => ScriptStep(
+      kind: 'scene',
+      scene: ScriptScene(title: title, lines: lines),
+    );
+    ScriptRun? finish(String id) => steps.isEmpty
+        ? null
+        : scripts.startProcedure(
+            LoreScript(
+              id: id,
+              trigger: 'step',
+              map: 17,
+              once: false,
+              require: const ScriptRequire(),
+              steps: steps,
+            ),
+            context,
+          );
+    if (cy == 80) moveTo(cx, 6);
+    if (cy == 44) {
+      for (var i = 67; i <= 69; i++) {
+        steps
+          ..add(ScriptStep(kind: 'setTile', tileX: i, tileY: 44, tileValue: 44))
+          ..add(
+            ScriptStep(kind: 'setTile', tileX: i, tileY: 38, tileValue: 52),
+          );
       }
     }
-
-    if (x == 72) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'map17-shortcut-72',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 38) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'map17-passage-38',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (x == 22) {
-      final swampQuest = context.questSteps['swamp'] ?? 0;
-      if (swampQuest < 2) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'map17-hidra',
+    final etc38 = context.etcValue(
+      38,
+      bitAliases: const {1: 'specialMagicLearned', 2: 'redAntaresJoined'},
+    );
+    final learned = (etc38 & LorePascal.bit(1)) == 1;
+    if (cx == 75 && cy == 52) {
+      // `(party.etc[38] and bit2) = 1` is never true: no early exit.
+      final mindRead = context.sourceEtc.containsKey(5)
+          ? context.etcValue(5) > 0
+          : context.mindReadActive;
+      if (learned && mindRead) {
+        steps.add(
+          const ScriptStep(
+            kind: 'choice',
+            prompt: '',
+            options: [
+              ScriptOption('당신의 제의을 받아 들이겠소', [
+                ScriptStep(kind: 'join', key: 'red_antares'),
+                ScriptStep(kind: 'flag', key: 'redAntaresJoined'),
+                ScriptStep(kind: 'flag', key: 'etc38_bit2'),
+              ]),
+              ScriptOption('당신이 전해준 마법만으로도 족하오', [
+                ScriptStep(kind: 'say', text: '당신이 바란다면 ...'),
+              ]),
+            ],
+          ),
         );
-        return scripts.startProcedure(content, context);
+        return finish('redantares-join');
+      }
+      if (learned && (etc38 & LorePascal.bit(2)) == 0) {
+        steps.add(scene('Red Antares', const ['나는 다시 영혼의 세계로 돌아가야 겠소.']));
+      }
+      if (!learned) {
+        steps
+          ..add(
+            const ScriptStep(
+              kind: 'setTileArea',
+              tileX: 71,
+              tileXMax: 82,
+              tileY: 47,
+              tileYMax: 57,
+              tileValue: 50,
+              tileOnlyIf: 40,
+            ),
+          )
+          ..addAll([
+            for (final page in _map17AntaresPages) scene('Red Antares', page),
+          ])
+          ..add(const ScriptStep(kind: 'flag', key: 'etc38_bit1'))
+          ..add(const ScriptStep(kind: 'flag', key: 'specialMagicLearned'));
       }
     }
-
-    return null;
+    if (cx == 72) {
+      for (var j = 19; j <= 21; j++) {
+        steps.add(
+          ScriptStep(kind: 'setTile', tileX: 72, tileY: j, tileValue: 44),
+        );
+      }
+      moveTo(cx, cy - 7);
+    }
+    if (cy == 38) {
+      for (var i = 67; i <= 69; i++) {
+        steps
+          ..add(ScriptStep(kind: 'setTile', tileX: i, tileY: 38, tileValue: 44))
+          ..add(
+            ScriptStep(kind: 'setTile', tileX: i, tileY: 44, tileValue: 52),
+          );
+      }
+      moveTo(56, 93);
+    }
+    if (cx == 22 && _questByte(context, 15, 'water') < 2) {
+      final torch = context.etcValue(1);
+      final unlit =
+          torch == 0 &&
+          (context.sourceEtc.containsKey(1) ||
+              !context.flags.contains('torchActive'));
+      steps.addAll([
+        if (unlit) ...const [
+          ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+          ScriptStep(kind: 'torch', torchLit: true),
+        ],
+        scene('Hidra', _map17HidraPages[0]),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Hidra',
+          monsters: const [49, 49, 49],
+          battleOverrides: const [
+            {'index': 1, 'name': "Hidra's Head 1", 'level': 8, 'eNumber': 34},
+            {'index': 2, 'name': "Hidra's Head 2", 'level': 10, 'eNumber': 39},
+            {'index': 3, 'name': "Hidra's Head 3", 'level': 8, 'eNumber': 34},
+          ],
+          battleRunAwaySteps: [
+            ScriptStep(kind: 'teleport', tileX: cx + 1, tileY: cy),
+          ],
+        ),
+        scene('Hidra', _map17HidraPages[1]),
+        const ScriptStep(kind: 'questStep', questName: 'water', questSet: 2),
+        const ScriptStep(kind: 'teleport', tileX: 56, tileY: 93),
+      ]);
+      return finish('map17-hidra');
+    }
+    return finish('spec-17-x$x-y$y');
   }
 
   /// `LORESPEC.PAS:1174-1365`, map 18 (T_DEN4 / LOCKUP).

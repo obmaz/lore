@@ -3399,6 +3399,336 @@
       "test": "test/lore_spec_map4_test.dart",
       "note": "Map4 arm owned directly: (40,18) moves to (46,41) with Message; (26,16) Draconian intro then raw etc[16] bit2 -> nobody there (source exit, no invented block), raw etc[5]=0 -> two lecture pages, otherwise offer with source Escape exit (invented third option removed), join slot 6 sets bit2, decline prints and waits; (20,39) Ancient Evil on raw etc[16] bit1: later visits move to (46,41) then speak, first meeting pages with two camera peeks (48,57)/(82,16), final position (16,15), then bit1. Sound toggle adapted; DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:1",
+      "line": 1012,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:2",
+      "line": 1013,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:3",
+      "line": 1022,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:4",
+      "line": 1023,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:1",
+      "line": 1023,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:5",
+      "line": 1026,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:1",
+      "line": 1026,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:6",
+      "line": 1027,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:7",
+      "line": 1037,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:2",
+      "line": 1037,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:8",
+      "line": 1038,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:3",
+      "line": 1039,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:9",
+      "line": 1041,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:10",
+      "line": 1043,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:4",
+      "line": 1044,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:5",
+      "line": 1064,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:11",
+      "line": 1066,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:12",
+      "line": 1069,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:2",
+      "line": 1070,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:3",
+      "line": 1071,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:13",
+      "line": 1072,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:14",
+      "line": 1106,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:4",
+      "line": 1107,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:15",
+      "line": 1110,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:5",
+      "line": 1111,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:16",
+      "line": 1116,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:17",
+      "line": 1117,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:6",
+      "line": 1122,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:7",
+      "line": 1129,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:8",
+      "line": 1146,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:18",
+      "line": 1158,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:exit:6",
+      "line": 1158,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:19",
+      "line": 1159,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map17_test.dart",
+      "note": "Map17 independent ifs owned directly and evaluated on the moved x/y: y=95 exact wantexit boundary (map 3 (23,63), refusal y-1); y=80 -> y:=6; y=44 row swap; (75,52) Red Antares on raw etc[38]/etc[5] - `etc[38] and bit2 = 1` parses as (etc38 and 2)=1 and is never true, so the offer repeats while bit1 and mind reading hold (source quirk kept), offer has no invented text, decline asyouwish, join sets bit2; farewell when bit1 and not bit2; first meeting lava 40->50 and four pages then bit1; x=72 column opens and y-7 (which can chain into y=38); y=38 swap and (56,93); x=22 Hidra while raw etc[15]<2 (torch, heads with source level/E_number overrides, party first, victory etc[15]:=2 and (56,93), escape x+1). BGI animation adapted; DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

@@ -364,6 +364,7 @@ class LoreWorldManager {
     14 when y == 46 => y - 1,
     15 when y == 71 => y - 1,
     16 when y == 36 => y - 1,
+    17 when y == 95 => y - 1,
     // LORESPEC.PAS:515-521 has no refusal branch: the party stays on y = 46.
     11 when y == 46 => y,
     8 || 10 when y == 71 => y - 1,
@@ -427,6 +428,16 @@ class LoreWorldManager {
         targetX: 26,
         targetY: 6,
         name: 'GAIA TERRA',
+      );
+    }
+    // LORESPEC.PAS:1012-1021: map 17 exits only at y = 95.
+    if (currentMapId == 17 && y >= 95) {
+      if (y > 95) return null;
+      return const PortalInfo(
+        targetMapId: 3,
+        targetX: 23,
+        targetY: 63,
+        name: 'NOTICE 출구',
       );
     }
     // LORESPEC.PAS:968-977: map 16 exits only at y = 36.
