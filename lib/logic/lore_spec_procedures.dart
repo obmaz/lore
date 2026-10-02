@@ -407,76 +407,138 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:560-668`, map 12 (T_DEN2 / GAIA DEN).
+  /// `LORESPEC.PAS:560-668`, `case 12` (T_DEN2 / GAIA DEN).
   ///
-  /// The ordered guards evaluate:
-  /// 1. Southern exit at `y == 71` handled via portal session.
-  /// 2. Riddle doors at `y == 50` (when not moving south, `moveDy != 1`):
-  ///    - `x == 33`: correct door (`puzzle-door-right`).
-  ///    - `x != 33`: wrong door (`puzzle-door-wrong`).
-  /// 3. Golden seal / trap at `y == 10` (when `party.etc[14] < 2` / `gaia < 2`):
-  ///    - `x == 18`: golden seal (`golden-seal-12-18-10`).
-  ///    - `x != 18`: mud trap (`t_den2-trap-y10`).
-  /// 4. Rigel encounter at `(12, 48)`:
-  ///    - `party.etc[31] and bit2 == 0` (`rigel-join`).
-  /// 5. Other special tiles without levitation: step back from the cliff.
+  /// An `else if` chain: y = 71 is the `wantexit` boundary; y = 50 doors
+  /// unless the step was southward (`y1 = 1`); y = 10 while raw etc[14] < 2
+  /// (seal at x = 18, else the column 10..23 becomes 49); Rigel at (12,48)
+  /// while etc[31] bit2 is clear (Escape: y - 1); otherwise, without
+  /// levitation (raw etc[4] = 0) and off (12,48), the party steps back.
+  /// Declining a join slot (`ReturnJoinMember` = 1) keeps the existing
+  /// join dialog behaviour and does not apply the source y - 1.
   static ScriptRun? map12(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson ||
-        (context.tileAtPlayer != null &&
-            context.tileAtPlayer != 0 &&
-            context.tileAtPlayer != 52)) {
-      return null;
-    }
-
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 71) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 12,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
     if (y == 50 && context.moveDy != 1) {
-      final scriptId = x == 33 ? 'puzzle-door-right' : 'puzzle-door-wrong';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 10) {
-      final gaiaQuest = context.questSteps['gaia'] ?? 0;
-      if (gaiaQuest < 2) {
-        final scriptId = x == 18 ? 'golden-seal-12-18-10' : 't_den2-trap-y10';
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == scriptId,
-        );
-        return scripts.startProcedure(content, context);
+      if (x == 33) {
+        return start('puzzle-door-right', const [
+          ScriptStep(kind: 'say', text: '여기는 옳은 문이었다.'),
+          ScriptStep(kind: 'setTile', tileX: 33, tileY: 49, tileValue: 0),
+        ]);
       }
+      return start('puzzle-door-wrong', const [
+        ScriptStep(kind: 'say', text: '당신은 바보군요, 다시 생각하십시오.'),
+        ScriptStep(kind: 'teleport', tileX: 25, tileY: 70),
+      ]);
     }
-
-    if (x == 12 && y == 48) {
-      final hasMet =
-          context.flags.contains('rigelMet') ||
-          context.flags.contains('etc31_bit2');
-      if (!hasMet) {
-        final content = scripts.scripts.singleWhere(
-          (script) => script.id == 'rigel-join',
-        );
-        return scripts.startProcedure(content, context);
+    if (y == 10 && _questByte(context, 14, 'gaia') < 2) {
+      if (x == 18) {
+        return start('golden-seal-12-18-10', const [
+          ScriptStep(kind: 'setTile', tileX: 18, tileY: 9, tileValue: 0),
+          ScriptStep(kind: 'questStep', questName: 'gaia', questSet: 2),
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: '황금의 봉인',
+              lines: [
+                '당신은 황금의 봉인을 찾았다 !!',
+                '그러므로 당신의 임무는 성공했다.',
+                '이제는 GAIA TERRA로 돌아가라.',
+              ],
+            ),
+          ),
+        ]);
       }
+      return start('t_den2-trap-y10', [
+        ScriptStep(
+          kind: 'setTileArea',
+          tileX: x,
+          tileY: 10,
+          tileYMax: 23,
+          tileValue: 49,
+        ),
+      ]);
     }
-
-    // The y=71 exit is handled by the portal session. Rigel's tile is exempt
-    // even after the encounter flag has been set.
-    if (y != 71 &&
-        !(x == 12 && y == 48) &&
-        !context.flags.contains('etc4') &&
-        !context.flags.contains('levitateActive')) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'gaia-den-cliff-no-levitation',
-      );
-      return scripts.startProcedure(content, context);
+    final rigel = x == 12 && y == 48;
+    if (rigel) {
+      final met = context.etcValue(31, bitAliases: const {2: 'rigelMet'});
+      if ((met & LorePascal.bit(2)) != 0) return null;
+      return start('rigel-join', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Rigel',
+            lines: [' 일행들은 심한 부상 때문에 거의 몸을 가누지', '못하는 한 남자와 마주쳤다.'],
+          ),
+        ),
+        ScriptStep(kind: 'say', text: ' 나는 VALIANT PEOPLES 의 용사였던  Rigel 이'),
+        ScriptStep(kind: 'say', text: '오. 내가 동굴속에서 적들을 막아내는 동안 지'),
+        ScriptStep(kind: 'say', text: '각변동으로 인해  이런 절벽이 군데 군데 생겼'),
+        ScriptStep(kind: 'say', text: '소.  나는 이제 너무 지치고 많은 상처를 입어'),
+        ScriptStep(kind: 'say', text: '서 혼자 힘으로는 이곳을 빠져 나갈수가 없소.'),
+        ScriptStep(kind: 'say', text: ' 나를 도와 주시오.'),
+        ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          options: [
+            ScriptOption('좋소, 같이 모험을 합시다', [
+              ScriptStep(kind: 'join', key: 'rigel'),
+              ScriptStep(kind: 'flag', key: 'rigelJoined'),
+              ScriptStep(kind: 'flag', key: 'etc31_bit2'),
+            ]),
+            ScriptOption('식량과 치료는 해결해 주겠소', [
+              ScriptStep(
+                kind: 'scene',
+                scene: ScriptScene(
+                  title: 'Rigel',
+                  lines: [
+                    ' 일행은 그에게 치료 마법을 사용하여  상처를',
+                    '모두 치료한후  그가 이곳을 빠져 나갈수 있을',
+                    '정도의 식량을 나누어 주었다. 그러자 Rigel이',
+                    '란 그 용사는 우리의 무기에 신의 축복을 내려',
+                    '주고는 자신의 길을 떠났다.',
+                  ],
+                ),
+              ),
+              ScriptStep(kind: 'food', amount: -5),
+              ScriptStep(kind: 'rigelBlessing', rigelBlessing: true),
+              ScriptStep(kind: 'flag', key: 'etc31_bit2'),
+            ]),
+            ScriptOption('당신을 도와줄 시간이 없소', [
+              ScriptStep(kind: 'flag', key: 'etc31_bit2'),
+            ]),
+          ],
+          cancelSteps: [ScriptStep(kind: 'nudge', nudgeDy: -1)],
+        ),
+      ]);
     }
-
-    return null;
+    final levitating = context.sourceEtc.containsKey(4)
+        ? context.etcValue(4) != 0
+        : context.flags.contains('etc4') ||
+              context.flags.contains('levitateActive');
+    if (levitating) return null;
+    return start('gaia-den-cliff-no-levitation', const [
+      ScriptStep(kind: 'say', text: '일행들은 절벽으로 떨어질뻔 했다.'),
+      ScriptStep(kind: 'stepBack'),
+    ]);
   }
 
   /// `LORESPEC.PAS:669-813`, map 13 (SWAMP FIELD).

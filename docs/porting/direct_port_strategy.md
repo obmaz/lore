@@ -251,6 +251,12 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     수락 뒤 맵 7에서 Polaris가 있으면 map[37,41]:=44를 쓴다(이전 Dart는
     LOREENT 경로에서만 이 쓰기를 했다). y=24 미이라의 방은 raw etc[13]=1일 때
     싸우며 승리나 3번 적 사망 시 etc[13]을 증가시킨다.
+21. 맵 12(T_DEN2, LORESPEC:560-668)는 `else if` 순서를 그대로 둔다. 문은 남쪽
+    이동(`y1=1`)이 아닐 때만, 봉인/함정은 raw etc[14] < 2, Rigel은 raw etc[31]
+    bit2, 절벽은 raw etc[4] = 0으로 판정한다. 봉인의 원본에 없는 once·
+    `goldenSealFound` 판정을 없앴고 Rigel 메뉴 Escape는 y-1을 적용한다.
+    합류 슬롯 선택을 거절할 때의 원본 y-1은 기존 합류 대화상자가 처리하지
+    않아 남은 차이로 기록한다.
 
 다음 묶음은 LORESPEC 1부의 큰 분기(맵 17·18)를 원본 분기 단위로 직접
 이식한다. 맵 4·6·9·11~16의 JSON 소유 분기와 LOREEND 내부 대조도 남아 있다. LOREEND 내부의 입력·크레딧·종료 동작 대조도 남아 있다. 현재

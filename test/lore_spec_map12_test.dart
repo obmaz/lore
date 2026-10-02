@@ -69,10 +69,14 @@ void main() {
       expect((wrong.outcome.teleportX, wrong.outcome.teleportY), (25, 70));
 
       // 남쪽 이동에서는 문 대신 마지막 절벽 분기가 적용된다.
-      expect(dispatchSpecial(mapId: 12, x: 33, y: 50, moveDy: 1)!
-          .outcome.stepBack, isTrue);
-      expect(dispatchSpecial(mapId: 12, x: 19, y: 50, moveDy: 1)!
-          .outcome.stepBack, isTrue);
+      expect(
+        dispatchSpecial(mapId: 12, x: 33, y: 50, moveDy: 1)!.outcome.stepBack,
+        isTrue,
+      );
+      expect(
+        dispatchSpecial(mapId: 12, x: 19, y: 50, moveDy: 1)!.outcome.stepBack,
+        isTrue,
+      );
     });
 
     test('y=10에서 x=18은 황금의 봉인을 획득하고 다른 x는 늪 함정을 발동한다', () {
@@ -100,13 +104,21 @@ void main() {
 
       // 퀘스트 완료 후(gaia >= 2)에는 봉인/함정 대신 절벽 분기가 적용된다.
       expect(
-        dispatchSpecial(mapId: 12, x: 18, y: 10, questSteps: {'gaia': 2})!
-            .outcome.stepBack,
+        dispatchSpecial(
+          mapId: 12,
+          x: 18,
+          y: 10,
+          questSteps: {'gaia': 2},
+        )!.outcome.stepBack,
         isTrue,
       );
       expect(
-        dispatchSpecial(mapId: 12, x: 13, y: 10, questSteps: {'gaia': 2})!
-            .outcome.stepBack,
+        dispatchSpecial(
+          mapId: 12,
+          x: 13,
+          y: 10,
+          questSteps: {'gaia': 2},
+        )!.outcome.stepBack,
         isTrue,
       );
     });
@@ -115,8 +127,27 @@ void main() {
       final mapBytes = File('assets/maps/T_DEN2.MAP').readAsBytesSync();
       final mapWidth = mapBytes[0];
       expect(mapBytes[2 + (48 - 1) * mapWidth + 12 - 1], 52);
-      final rigel = dispatchSpecial(mapId: 12, x: 12, y: 48, tile: 52)!;
+      final met = dispatchSpecial(mapId: 12, x: 12, y: 48, tile: 52)!;
+      expect(met.pendingScene!.lines.last, '못하는 한 남자와 마주쳤다.');
+      final rigel = met.acknowledgeScene();
       expect(rigel.hasPendingChoice, isTrue);
+      // select() = 0 (Escape): dec(y) and no etc[31] bit.
+      final fled = rigel.cancel();
+      expect(fled.outcome.nudges.single.dy, -1);
+      expect(fled.outcome.setFlags, isEmpty);
+      for (var b = 0; b < 256; b++) {
+        final run = LoreSpecProcedures.map12(
+          12,
+          48,
+          ScriptContext(
+            tileAtPlayer: 52,
+            sourceEtc: {31: b},
+            flags: const {'rigelMet'},
+          ),
+          scripts,
+        );
+        expect(run == null, b & 2 != 0);
+      }
       expect(rigel.outcome.messages.join(), contains('Rigel'));
       expect(rigel.choiceTexts!.length, 3);
       expect(rigel.choiceTexts![0], '좋소, 같이 모험을 합시다');
@@ -129,7 +160,13 @@ void main() {
         isNull,
       );
       expect(
-        dispatchSpecial(mapId: 12, x: 12, y: 48, tile: 52, flags: {'etc31_bit2'}),
+        dispatchSpecial(
+          mapId: 12,
+          x: 12,
+          y: 48,
+          tile: 52,
+          flags: {'etc31_bit2'},
+        ),
         isNull,
       );
     });
@@ -142,10 +179,20 @@ void main() {
       expect(cliff.script.id, 'gaia-den-cliff-no-levitation');
       expect(cliff.outcome.stepBack, isTrue);
       expect(cliff.outcome.messages.single, '일행들은 절벽으로 떨어질뻔 했다.');
-      expect(dispatchSpecial(mapId: 12, x: 25, y: 60, tile: 0,
-          flags: {'etc4'}), isNull);
-      expect(dispatchSpecial(mapId: 12, x: 25, y: 60, tile: 0,
-          flags: {'levitateActive'}), isNull);
+      expect(
+        dispatchSpecial(mapId: 12, x: 25, y: 60, tile: 0, flags: {'etc4'}),
+        isNull,
+      );
+      expect(
+        dispatchSpecial(
+          mapId: 12,
+          x: 25,
+          y: 60,
+          tile: 0,
+          flags: {'levitateActive'},
+        ),
+        isNull,
+      );
       expect(dispatchSpecial(mapId: 12, x: 25, y: 71, tile: 52), isNull);
     });
 
