@@ -32171,6 +32171,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/battle_menu_text_test.dart",
+      "kind": "test",
+      "sha256": "ca1a8b44433ad31492eb409613f9617d971f3c90965b81e54d379231b5787b8e",
+      "cited_source_files": [
+        "LOREBATT.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/battle_source_text_test.dart",
       "kind": "test",
       "sha256": "eeb0c858eef33400f95b6b4491eac1134fc329331a461123bd012e4444dfb8f8",
@@ -32198,7 +32207,7 @@
     {
       "path": "test/bootstrap_test.dart",
       "kind": "test",
-      "sha256": "61967b7731b60581ac0fcf30e9ff55bc07f06f89f1c6576a48a6f0826692025b",
+      "sha256": "1a6f0f1920f430fe3b9460a24ee1473ef06b82b14abf23c81af98284d1b3f99f",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -32635,7 +32644,7 @@
     {
       "path": "test/map20_den7_ui_test.dart",
       "kind": "test",
-      "sha256": "09757103df0b63824c70d816f0b1623f521f22cccb3cf5842dcc79e32c96de00",
+      "sha256": "bbc93674603b85733194ccebdb9918384baaf5df391a0cbab41eca7a76bc6b29",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -33109,7 +33118,7 @@
     {
       "path": "test/widget_test.dart",
       "kind": "test",
-      "sha256": "61293386db09cd3a1081e2cd42c1e603f1bde01ba166c6e99d58273e0bdc491a",
+      "sha256": "a308364aeac5445780f1ceed4f0129fb3b2647fc928a7da2a7d028fbd2b45a3d",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -33453,7 +33462,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "5901634e94df77df8e6089c9fd269a3849a9161f21c33032cb1b8eaa2521e970"
+      "sha256": "c0783dc5605a6a91212f9bd879d5ce868a1f25e76410c22adba185af81adf73b"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
@@ -33461,7 +33470,7 @@
     },
     {
       "path": "lib/widgets/script_scene_dialog.dart",
-      "sha256": "b3ea0f56ca51c895e02622e0f3ded5d2d7758ccb9fdc77074c9d5728bde9c878"
+      "sha256": "cfb3fa42fe8d95ac7658e0810e3b3291afd03ca2aee796e8afc203af6a3169e4"
     },
     {
       "path": "docs/audits/contract_evidence.json",
