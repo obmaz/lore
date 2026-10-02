@@ -53,7 +53,7 @@ void main() {
       expect(FieldMagicLogic.personalCureSlots(1), 1);
       expect(FieldMagicLogic.personalCureSlots(4), 3);
       expect(FieldMagicLogic.personalCureSlots(20), 7);
-      // 전체 치료: level[2] div 2 - 3 (0 이하면 사용 불가)
+      // 전체 치료: level[2] div 2 - 3 (음수면 거절, 0이면 첫 항목만 고를 수 있음)
       expect(FieldMagicLogic.groupCureSlots(6), 0);
       expect(FieldMagicLogic.groupCureSlots(8), 1);
       expect(FieldMagicLogic.groupCureSlots(20), 7);
@@ -183,6 +183,38 @@ void main() {
       expect(result.messages.length, 3);
       expect(result.spSpent, 3 * 12); // 2 * 6 = 12 씩 3명
       expect(result.messages.first, 'Hercules는 치료되어 졌습니다.');
+    });
+
+    test('6b. 전체 마법 조합은 LOREMENU CureSpell 의 단계 순서와 5·6번 배치를 따른다', () {
+      PartyMember patient(String name) => makeMember(name: name, hp: 1)
+        ..poison = 1
+        ..unconscious = 1;
+      // 5 : ConscoisAll; CureAll; HealAll (각 단계가 파티 전체를 먼저 돈다)
+      var caster = makeMember(magicLevel: 20, sp: 1000);
+      var party = [patient('A'), patient('B')];
+      var result = FieldMagicLogic.castGroupCure(caster, party, 5);
+      expect(result.messages, [
+        'A는 의식을 되찾았습니다.',
+        'B는 의식을 되찾았습니다.',
+        'A의 독은 제거 되었습니다.',
+        'B의 독은 제거 되었습니다.',
+        'A는 치료되어 졌습니다.',
+        'B는 치료되어 졌습니다.',
+      ]);
+      // 6 : RevitalizeAll 만 실행한다.
+      caster = makeMember(magicLevel: 20, sp: 1000);
+      party = [makeMember(name: 'A')..dead = 1, patient('B')];
+      result = FieldMagicLogic.castGroupCure(caster, party, 6);
+      expect(result.messages, ['A는 다시 생명을 얻었습니다.', 'B는 아직 살아 있습니다.']);
+      // 7 : RevitalizeAll; ConscoisAll; CureAll; HealAll
+      caster = makeMember(magicLevel: 20, sp: 1000);
+      party = [makeMember(name: 'A')..dead = 1, patient('B')];
+      result = FieldMagicLogic.castGroupCure(caster, party, 7);
+      expect(result.messages.take(3), [
+        'A는 다시 생명을 얻었습니다.',
+        'B는 아직 살아 있습니다.',
+        'A는 의식을 되찾았습니다.',
+      ]);
     });
 
     test('7. 현상계 8종: SP·식량 제조·금지 동굴이 원작과 같다', () {

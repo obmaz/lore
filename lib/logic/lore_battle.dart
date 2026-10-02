@@ -5,9 +5,11 @@
 /// 화면 어댑터가 맡는다. 전역 변수 `person`, `battle[1..6,1..3]`, `enemynumber`,
 /// `enemy[1..7]` 는 [LoreBattle]의 필드이다(배열 번호는 원본처럼 1부터).
 ///
-/// 컴파일러 동작 가정(원본 확인 불가, `docs/porting` 에 기록): 바이트 필드의
-/// `dec(ac)` 가 0 에서 255 로 돌아가는 것은 흉내 내고, Pascal `round` 는 .5 에서
-/// 0 에서 먼 쪽으로 올린다.
+/// 컴파일러 동작 가정(원본 확인 불가, `docs/porting` 에 기록): 바이트 필드에
+/// 저장될 때는 `dec(ac)` 가 0 에서 255 로, `resistance - 10` 이 5 에서 251 로
+/// 돌아가는 것을 흉내 내고, Pascal `round` 는 .5 에서 0 에서 먼 쪽으로 올린다.
+/// 바이트 곱셈 중간값(`ac*level*(random(10)+1)`, `strength*wea_power*level[1]`)이
+/// 16비트 정수를 넘을 때 원본이 감기는지는 확인하지 못했으므로 마스킹하지 않는다.
 library;
 
 import 'dart:math';
@@ -436,7 +438,8 @@ class LoreBattle {
         print(4, '${e.name}${LoreBattText.powerLowered}');
         if (e.level > 1) e.level = e.level - 1;
         if (e.resistance > 0) {
-          e.resistance = e.resistance - 10;
+          // byte field: 5 - 10 stores 251 in an unchecked byte.
+          e.resistance = (e.resistance - 10) & 0xFF;
         } else {
           e.resistance = 0;
         }

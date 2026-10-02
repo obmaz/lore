@@ -260,7 +260,10 @@ class FieldMagicLogic {
 
   /// 전체 마법 26~32 중 [index](1~7)를 일행 전원에게 시전한다.
   ///
-  /// 원작은 각 `xxxAll` 이 파티 1~6번을 돌며 개인 마법을 호출한다(SP도 각각 소모).
+  /// LOREMENU `CureSpell` 의 `case j of`: 각 `xxxAll` 은 파티 1~6번을 한 번씩 돌며
+  /// 개인 마법을 호출하고(SP도 각각 소모), 복합 마법은 단계별로 `xxxAll` 을 차례로
+  /// 부른다. 원작의 5·6번은 개인 마법(5=부활, 6=복합)과 달리 `5 : ConscoisAll;
+  /// CureAll;HealAll`, `6 : RevitalizeAll` 이다.
   static MagicCastResult castGroupCure(
     PartyMember caster,
     List<PartyMember> party,
@@ -268,67 +271,24 @@ class FieldMagicLogic {
     bool inBattle = false,
   }) {
     final members = party.where((p) => p.name.isNotEmpty).toList();
-    switch (index) {
-      case 1:
-        return _mergeAll(caster, members, inBattle, 'heal');
-      case 2:
-        return _mergeAll(caster, members, inBattle, 'cure');
-      case 3:
-        return _mergeAll(caster, members, inBattle, 'cureHeal');
-      case 4:
-        return _mergeAll(caster, members, inBattle, 'conscious');
-      case 5:
-        return _mergeAll(caster, members, inBattle, 'revitalize');
-      case 6:
-        return _mergeAll(caster, members, inBattle, 'consciousCureHeal');
-      case 7:
-        return _mergeAll(
-          caster,
-          members,
-          inBattle,
-          'revitalizeConsciousCureHeal',
-        );
-      default:
-        return const MagicCastResult();
-    }
-  }
-
-  static MagicCastResult _mergeAll(
-    PartyMember caster,
-    List<PartyMember> members,
-    bool inBattle,
-    String kind,
-  ) {
+    const phases = <int, List<String>>{
+      1: ['heal'],
+      2: ['cure'],
+      3: ['cure', 'heal'],
+      4: ['conscious'],
+      5: ['conscious', 'cure', 'heal'],
+      6: ['revitalize'],
+      7: ['revitalize', 'conscious', 'cure', 'heal'],
+    };
     final results = <MagicCastResult>[];
-    for (final m in members) {
-      switch (kind) {
-        case 'heal':
-          results.add(healOne(caster, m, inBattle: inBattle));
-          break;
-        case 'cure':
-          results.add(cureOne(caster, m, inBattle: inBattle));
-          break;
-        case 'cureHeal':
-          results.add(cureOne(caster, m, inBattle: inBattle));
-          results.add(healOne(caster, m, inBattle: inBattle));
-          break;
-        case 'conscious':
-          results.add(consciousOne(caster, m, inBattle: inBattle));
-          break;
-        case 'revitalize':
-          results.add(revitalizeOne(caster, m, inBattle: inBattle));
-          break;
-        case 'consciousCureHeal':
-          results.add(consciousOne(caster, m, inBattle: inBattle));
-          results.add(cureOne(caster, m, inBattle: inBattle));
-          results.add(healOne(caster, m, inBattle: inBattle));
-          break;
-        case 'revitalizeConsciousCureHeal':
-          results.add(revitalizeOne(caster, m, inBattle: inBattle));
-          results.add(consciousOne(caster, m, inBattle: inBattle));
-          results.add(cureOne(caster, m, inBattle: inBattle));
-          results.add(healOne(caster, m, inBattle: inBattle));
-          break;
+    for (final kind in phases[index] ?? const <String>[]) {
+      for (final m in members) {
+        results.add(switch (kind) {
+          'heal' => healOne(caster, m, inBattle: inBattle),
+          'cure' => cureOne(caster, m, inBattle: inBattle),
+          'conscious' => consciousOne(caster, m, inBattle: inBattle),
+          _ => revitalizeOne(caster, m, inBattle: inBattle),
+        });
       }
     }
     return _merge(results);

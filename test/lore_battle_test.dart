@@ -5,6 +5,7 @@ import 'package:lore/logic/lore_batt_text.dart';
 import 'package:lore/logic/lore_battle.dart';
 import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
+import 'package:lore/models/spell.dart';
 
 /// Scripted `random`: records every bound and answers from [values] (then 0).
 class _Script implements Random {
@@ -205,6 +206,33 @@ void main() {
     b2.person = 1;
     expect(b2.runAway(), isTrue);
     expect(lines.last, LoreBattText.runSuccess);
+  });
+
+  test('CastSpecial 4 stores resistance - 10 in a byte (5 becomes 251)', () {
+    final r = _Script([100, 0]);
+    final orc = Monster.create(1)..resistance = 5;
+    final b = make([hero()..sp = 100], [orc], r);
+    b.battle[1] = [0, 6, 4, 1];
+    b.person = 1;
+    b.castSpecial();
+    expect(orc.resistance, 251);
+    orc.resistance = 0;
+    b.castSpecial();
+    expect(orc.resistance, 0);
+  });
+
+  test('all-cure spells follow CureSpell: slot 1 from level 6, then level div 2 - 3 slots', () {
+    final cure = Spell.allSpells
+        .where((s) => s.category == SpellCategory.allCure)
+        .toList();
+    int available(int level) =>
+        cure.where((s) => s.isAvailableForLevel(level, 0)).length;
+    expect(
+      [
+        for (final level in [5, 6, 7, 8, 9, 10, 12, 20]) available(level),
+      ],
+      [0, 1, 1, 1, 1, 2, 3, 7],
+    );
   });
 
   test('PlusGold sums template level^3 * max(ac,1)', () {

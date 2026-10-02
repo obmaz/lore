@@ -979,8 +979,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   }
 
   void _chooseGroupCure(PartyMember caster) {
+    // `i := level[2] div 2 - 3; if i < 0 then refuse` — i = 0 still lists the first
+    // spell (`Select` always lets slot 1 be chosen).
     final slots = FieldMagicLogic.groupCureSlots(caster.magicLevel);
-    if (slots <= 0) {
+    if (slots < 0) {
       widget.onLog(FieldMagicLogic.strongCureNotReady(caster.name));
       return;
     }
@@ -999,7 +1001,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            for (var i = 0; i < slots; i++)
+            for (var i = 0; i < (slots < 1 ? 1 : slots); i++)
               ListTile(
                 dense: true,
                 title: Text(

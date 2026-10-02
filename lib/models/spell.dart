@@ -153,8 +153,11 @@ class Spell {
         final req = (id - 18) * 2 - 2;
         return magicLevel >= req;
       case SpellCategory.allCure:
-        // CureSpell: `level[2] div 2 - 3` 개 (n번째는 레벨 2n+6부터).
-        return id - 25 <= magicLevel ~/ 2 - 3;
+        // CureSpell: `i := level[2] div 2 - 3`, `i < 0` 이면 거절한다. `Select` 는
+        // 첫 항목을 항상 고를 수 있으므로(k := 1) 1번은 레벨 6부터, n번째(n>=2)는
+        // 레벨 2n+6부터 사용할 수 있다.
+        final n = id - 25;
+        return n == 1 ? magicLevel >= 6 : magicLevel ~/ 2 - 3 >= n;
       default:
         return true;
     }

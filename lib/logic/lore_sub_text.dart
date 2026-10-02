@@ -237,9 +237,9 @@ class LoreSubText {
     41,
   };
 
-  /// 조사 `으`/`` (원작 `if magic in [2,9,10,...]`).
-  static String magicJosa(int id) => _josaE.contains(id) ? '으' : '';
+  /// LORESUB `ReturnMagic`: `if magic in [2,9,10,...] then Josa := ''` else `'으'`.
+  static String magicJosa(int id) => _josaE.contains(id) ? '' : '으';
 
-  /// 목적격 조사 `을`/`를`.
-  static String magicMokjuk(int id) => _josaE.contains(id) ? '을' : '를';
+  /// LORESUB `ReturnMagic`: `if magic in [2,9,10,...] then Mokjuk := '를'` else `'을'`.
+  static String magicMokjuk(int id) => _josaE.contains(id) ? '를' : '을';
 }
