@@ -352,14 +352,6 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             letterSpacing: 2,
           ),
         ),
-        const SizedBox(height: 6),
-        Text(
-          '제 1 부 (1993 - 2026 Flutter Port)',
-          style: RetroTheme.dosFont.copyWith(
-            fontSize: 14,
-            color: RetroTheme.lightCyan,
-          ),
-        ),
         const SizedBox(height: 32),
         Container(
           padding: const EdgeInsets.all(12),
@@ -377,22 +369,6 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 style: RetroTheme.dosFont.copyWith(
                   fontSize: 12,
                   color: RetroTheme.white,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                '엔진: Flutter & Flame 2D 엔진',
-                style: RetroTheme.dosFont.copyWith(
-                  fontSize: 11,
-                  color: RetroTheme.lightGray,
-                ),
-              ),
-              const SizedBox(height: 4),
-              Text(
-                '지도: 원작 100x100 바이너리 TOWN1.MAP 로드',
-                style: RetroTheme.dosFont.copyWith(
-                  fontSize: 11,
-                  color: RetroTheme.lightGreen,
                 ),
               ),
             ],
