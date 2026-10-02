@@ -284,8 +284,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final sourceRejectY = LoreWorldManager.sourceExitRejectY(
       _game.currentMapId,
       ty,
+      x: tx,
     );
-    final sourceDungeonExit = sourceRejectY != null;
+    final sourceDungeonExit =
+        sourceRejectY != null &&
+        !LoreWorldManager.sourceAsksEnter(_game.currentMapId, tx);
     final leavingTown =
         sourceDungeonExit ||
         _game.currentMapName.startsWith('TOWN') &&

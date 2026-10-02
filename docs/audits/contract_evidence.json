@@ -1839,6 +1839,86 @@
       "test": "test/lore_spec_map20_test.dart",
       "note": "Map20 arm owned directly: y=96 wantexit boundary; y=88/71 doors pass on tile 0 (y:=80/63) else load map 4 (82,17); y=91/75 quizzes one random(8) with row and door writes before the key; y=54 quiz one random(8), Escape y+1, right answer opens rows 49..52 in source order, wrong answer loads map 4 (invented right/wrong lines removed); y=18 etc[1]:=1; y=48 Minotaur lights a zero torch and sets etc[41] bit4 after victory or escape; y=13 chains dragons/mud men/Astral Mud on raw etc[41] bits 2/3/1, escapes y+1, enemy 7 death decides the last fight, then map 4 and the seal text. The x8..42 y19..43 torch decrement stays in the field step handler (all cells there are tile 0 or walls). BGI animation/delay adapted; defeat runs no continuation. DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:30",
+      "line": 334,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map8 arm owned by the portal boundary: any special tile at x=50 asks wantenter('GROUND GATE') -> map 7 (50,10), refusal leaves the party on the gate; y=71 asks wantexit -> map 2 (19,27), refusal y-1, y>71 never exits; no special event or JSON fallback. Native prompts; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:31",
+      "line": 335,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map8 arm owned by the portal boundary: any special tile at x=50 asks wantenter('GROUND GATE') -> map 7 (50,10), refusal leaves the party on the gate; y=71 asks wantexit -> map 2 (19,27), refusal y-1, y>71 never exits; no special event or JSON fallback. Native prompts; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:32",
+      "line": 342,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map8 arm owned by the portal boundary: any special tile at x=50 asks wantenter('GROUND GATE') -> map 7 (50,10), refusal leaves the party on the gate; y=71 asks wantexit -> map 2 (19,27), refusal y-1, y>71 never exits; no special event or JSON fallback. Native prompts; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:33",
+      "line": 343,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map8 arm owned by the portal boundary: any special tile at x=50 asks wantenter('GROUND GATE') -> map 7 (50,10), refusal leaves the party on the gate; y=71 asks wantexit -> map 2 (19,27), refusal y-1, y>71 never exits; no special event or JSON fallback. Native prompts; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:46",
+      "line": 445,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map10 arm: y=46 -> y:=50 and y=49 -> y:=45 with x unchanged (direct procedure, no JSON), y=71 wantexit boundary -> map 3 (74,20), refusal y-1. Town specialevent reaches only tile 0. Native prompt; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:47",
+      "line": 449,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map10 arm: y=46 -> y:=50 and y=49 -> y:=45 with x unchanged (direct procedure, no JSON), y=71 wantexit boundary -> map 3 (74,20), refusal y-1. Town specialevent reaches only tile 0. Native prompt; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:48",
+      "line": 453,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map10 arm: y=46 -> y:=50 and y=49 -> y:=45 with x unchanged (direct procedure, no JSON), y=71 wantexit boundary -> map 3 (74,20), refusal y-1. Town specialevent reaches only tile 0. Native prompt; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:49",
+      "line": 454,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Map10 arm: y=46 -> y:=50 and y=49 -> y:=45 with x unchanged (direct procedure, no JSON), y=71 wantexit boundary -> map 3 (74,20), refusal y-1. Town specialevent reaches only tile 0. Native prompt; DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }

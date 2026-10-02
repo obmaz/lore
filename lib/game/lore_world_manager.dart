@@ -349,11 +349,21 @@ class LoreWorldManager {
 
   /// `wantexit` refusal inside LORESPEC: the y the party is left on, or null
   /// when the exit is not a source specialevent boundary.
-  static int? sourceExitRejectY(int mapId, int y) => switch (mapId) {
+  static int? sourceExitRejectY(
+    int mapId,
+    int y, {
+    int x = 0,
+  }) => switch (mapId) {
+    // LORESPEC.PAS:334-340: a refused wantenter leaves the party on the gate.
+    8 when x == 50 => y,
+    8 || 10 when y == 71 => y - 1,
     21 || 22 || 23 || 24 || 25 when y == 46 => y - 1,
     27 => y < 25 ? y + 1 : y - 1,
     _ => null,
   };
+
+  /// LORESPEC.PAS:334: map 8's x = 50 boundary asks `wantenter`, not `wantexit`.
+  static bool sourceAsksEnter(int mapId, int x) => mapId == 8 && x == 50;
 
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
   PortalInfo? findPortal(int currentMapId, int x, int y) {
@@ -397,6 +407,31 @@ class LoreWorldManager {
         };
       }
       if (y > 46) return null;
+    }
+    // LORESPEC.PAS:332-353 and 444-464: map 8/10 gate and y = 71 exits.
+    if (currentMapId == 8 && x == 50) {
+      return const PortalInfo(
+        targetMapId: 7,
+        targetX: 50,
+        targetY: 10,
+        name: 'GROUND GATE',
+      );
+    }
+    if ((currentMapId == 8 || currentMapId == 10) && y >= 71) {
+      if (y > 71) return null;
+      return currentMapId == 8
+          ? const PortalInfo(
+              targetMapId: 2,
+              targetX: 19,
+              targetY: 27,
+              name: 'GROUND 2',
+            )
+          : const PortalInfo(
+              targetMapId: 3,
+              targetX: 74,
+              targetY: 20,
+              name: 'WATER FIELD',
+            );
     }
     // LORESPEC.PAS:2202-2212: every specialevent on map 27 is `wantexit`.
     if (currentMapId == 27) {

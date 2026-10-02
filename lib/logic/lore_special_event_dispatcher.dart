@@ -52,7 +52,7 @@ class LoreSpecialEventDispatcher {
         script: LoreSpecProcedures.map7(x, y, context, scripts),
       );
     }
-    if (mapId == 8 && scripts.usingJson) {
+    if (mapId == 8) {
       return LoreSpecialEventDispatch(
         script: LoreSpecProcedures.map8(x, y, context, scripts),
       );
@@ -62,7 +62,7 @@ class LoreSpecialEventDispatcher {
         script: LoreSpecProcedures.map9(x, y, context, scripts),
       );
     }
-    if (mapId == 10 && scripts.usingJson) {
+    if (mapId == 10) {
       return LoreSpecialEventDispatch(
         script: LoreSpecProcedures.map10(x, y, context, scripts),
       );

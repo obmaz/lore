@@ -112,20 +112,17 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:332-353`, map 8 (WATER FIELD).
+  /// `LORESPEC.PAS:332-353`, `case 8` (TOWN3).
   ///
-  /// The ordered guards evaluate:
-  /// 1. `x == 50`: GROUND GATE portal to map 7 (handled via portal session).
-  /// 2. `y == 71`: exit to map 2 (handled via portal session).
+  /// Both arms are prompts owned by `LoreWorldManager`: any special tile at
+  /// x = 50 asks `wantenter('GROUND GATE')` (map 7 (50,10); refusal stays on
+  /// the gate), and y = 71 asks `wantexit` (map 2 (19,27); refusal y - 1).
   static ScriptRun? map8(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
-  ) {
-    if (!scripts.usingJson || context.tileAtPlayer != 0) return null;
-    return null;
-  }
+  ) => null;
 
   /// `LORESPEC.PAS:354-443`, map 9 (TOWN4 / GAIA TERRA).
   ///
@@ -185,39 +182,36 @@ class LoreSpecProcedures {
     return null;
   }
 
-  /// `LORESPEC.PAS:444-464`, map 10 (WATER DEN).
+  /// `LORESPEC.PAS:444-464`, `case 10` (TOWN5).
   ///
-  /// The ordered guards evaluate:
-  /// 1. `y == 46`: jump to `y = 50` (`spec-10-L444`).
-  /// 2. `y == 49`: jump to `y = 45` (`spec-10-L444x`).
-  /// 3. Southern exit (`y == 71`):
-  ///    - Exit to map 3 `(74, 20)` handled via portal session.
+  /// y = 46 moves to y = 50 and y = 49 to y = 45 (x unchanged); y = 71 is the
+  /// `wantexit` boundary (map 3 (74,20); refusal y - 1) owned by
+  /// `LoreWorldManager`. No other special tile has an effect.
   static ScriptRun? map10(
     int x,
     int y,
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson ||
-        (context.tileAtPlayer != null && context.tileAtPlayer != 0)) {
-      return null;
-    }
-
-    if (y == 46) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'spec-10-L444',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (y == 49) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'spec-10-L444x',
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    return null;
+    // LOREMAIN calls specialevent in a town only for tile 0.
+    if ((context.tileAtPlayer ?? 0) != 0) return null;
+    final target = switch (y) {
+      46 => 50,
+      49 => 45,
+      _ => null,
+    };
+    if (target == null) return null;
+    return scripts.startProcedure(
+      LoreScript(
+        id: y == 46 ? 'spec-10-L444' : 'spec-10-L444x',
+        trigger: 'step',
+        map: 10,
+        once: false,
+        require: const ScriptRequire(),
+        steps: [ScriptStep(kind: 'teleport', tileX: x, tileY: target)],
+      ),
+      context,
+    );
   }
 
   /// `LORESPEC.PAS:465-559`, map 11 (TOWN5 / LORE KEEP).
@@ -1031,11 +1025,7 @@ class LoreSpecProcedures {
         return start('den7-exit-y$y', [leave]);
       }
       return start('den7-passage-y$y', [
-        ScriptStep(
-          kind: 'teleport',
-          tileY: y == 88 ? 80 : 63,
-          teleportKeepX: true,
-        ),
+        ScriptStep(kind: 'teleport', tileX: x, tileY: y == 88 ? 80 : 63),
       ]);
     }
     if (y == 91 || y == 75) {

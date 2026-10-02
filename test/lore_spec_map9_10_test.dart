@@ -160,11 +160,11 @@ void main() {
 
     test('y=46에서 y=50으로, y=49에서 y=45로 수직 순간이동한다', () {
       final jump50 = dispatchSpecial(mapId: 10, x: 25, y: 46)!;
-      expect(jump50.outcome.teleportKeepX, isTrue);
+      expect(jump50.outcome.teleportX, 25);
       expect(jump50.outcome.teleportY, 50);
 
       final jump45 = dispatchSpecial(mapId: 10, x: 25, y: 49)!;
-      expect(jump45.outcome.teleportKeepX, isTrue);
+      expect(jump45.outcome.teleportX, 25);
       expect(jump45.outcome.teleportY, 45);
     });
 

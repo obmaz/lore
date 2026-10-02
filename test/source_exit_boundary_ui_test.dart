@@ -14,7 +14,7 @@ import 'package:lore/services/save_manager.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
 import 'package:lore/widgets/script_scene_dialog.dart';
 
-/// LORESPEC.PAS map 21 (1762-1795), map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
+/// LORESPEC.PAS map 8 (332-353), map 10 (444-464), map 21 (1762-1795), map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
 /// through the real screen: refusal position and accepted destination.
 void main() {
   Future<LoreGame> open(
@@ -272,4 +272,80 @@ void main() {
       expect(tester.takeException(), isNull);
     },
   );
+
+  for (final c in [
+    (
+      id: 8,
+      file: 'TOWN3',
+      x: 50,
+      from: 11,
+      to: 10,
+      prompt: LoreFieldLogic.enterPrompt('GROUND GATE'),
+      back: 10,
+      dest: [7, 50, 10],
+    ),
+    (
+      id: 8,
+      file: 'TOWN3',
+      x: 38,
+      from: 70,
+      to: 71,
+      prompt: LoreFieldLogic.exitPrompt,
+      back: 70,
+      dest: [2, 19, 27],
+    ),
+    (
+      id: 10,
+      file: 'TOWN5',
+      x: 25,
+      from: 70,
+      to: 71,
+      prompt: LoreFieldLogic.exitPrompt,
+      back: 70,
+      dest: [3, 74, 20],
+    ),
+  ]) {
+    testWidgets(
+      'map ${c.id} (${c.x},${c.to}): refusal leaves y=${c.back}, acceptance loads ${c.dest}',
+      (tester) async {
+        final game = await open(tester, c.id, c.file, 'town', c.x, c.from);
+        expect(game.currentMap!.getTile(c.x, c.to), 0);
+        game.tryMove(0, c.to - c.from);
+        await tick(tester);
+        expect(find.text(c.prompt), findsOneWidget);
+        await tester.tap(find.text(LoreFieldLogic.confirmNo));
+        await tick(tester);
+        expect(
+          [game.currentMapId, game.playerX, game.playerY],
+          [c.id, c.x, c.back],
+        );
+        game.playerY = c.from;
+        game.tryMove(0, c.to - c.from);
+        await tick(tester);
+        await tester.tap(find.text(LoreFieldLogic.confirmYes));
+        await tester.runAsync(() async {
+          await Future<void>.delayed(const Duration(milliseconds: 100));
+        });
+        await tick(tester);
+        expect([game.currentMapId, game.playerX, game.playerY], c.dest);
+        await tester.pumpWidget(const SizedBox.shrink());
+        await tester.pump(const Duration(seconds: 1));
+        expect(tester.takeException(), isNull);
+      },
+    );
+  }
+
+  for (final c in [(from: 45, to: 46, end: 50), (from: 50, to: 49, end: 45)]) {
+    testWidgets('map 10 y=${c.to} moves the party to y=${c.end}', (
+      tester,
+    ) async {
+      final game = await open(tester, 10, 'TOWN5', 'town', 25, c.from);
+      game.tryMove(0, c.to - c.from);
+      await tick(tester);
+      expect([game.currentMapId, game.playerX, game.playerY], [10, 25, c.end]);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump(const Duration(seconds: 1));
+      expect(tester.takeException(), isNull);
+    });
+  }
 }
