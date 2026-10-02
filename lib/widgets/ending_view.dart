@@ -1,354 +1,459 @@
-import 'dart:async';
+import 'dart:math';
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 
-import '../theme/retro_theme.dart';
+import '../game/sprite_sheet.dart';
+import '../logic/lore_end.dart';
 import '../services/audio_manager.dart';
 
-/// 1993년 원작 LOREEND.PAS 기반 엔딩 및 스태프 크레딧 시퀀스 위젯
+/// 원작 `LOREEND.PAS` `End_Demo` 화면.
+///
+/// 순서: `FadeIn` → 바탕 지움 → `EndMessage` → `FadeOut` → (`StaffMessage`를
+/// 숨은 쪽에 그림) 천둥 번쩍임, Esc를 누를 때까지 → 스태프 화면과 걷는 스프라이트,
+/// Esc를 누를 때까지 → 텍스트 모드의 `<< The End >>` 와 팔레트 페이드 → `Halt`.
+/// 문구·좌표·팔레트 식·스프라이트 순환·난수 호출은 [LoreEnd] 가 원본과 같다.
+///
+/// 어댑터(원본은 하드웨어 속도·BGI): 페이드 한 단계의 길이,
+/// 천둥 반복문의 초당 반복 횟수, 화면 크기 맞춤, 터치/클릭은 Esc(또는 마지막
+/// 화면에서는 아무 키)로 취급한다. 원본은 `Halt`로 끝나므로 마지막 화면에서
+/// 키를 누르면 [onFinish]로 게임을 처음으로 되돌린다.
 class EndingView extends StatefulWidget {
   final String heroName;
   final VoidCallback onFinish;
+  final Random? random;
 
-  // 원작 LOREEND.PAS:86 `EndMessage` 의 cHPrint 문구를 그대로 옮긴다.
-  static const List<String> epilogueTexts = [
-    '밖은 비바람이 치기 시작한다. 이번 계절에 들어 처음 오는 비였다.',
-    '마치 Necromancer의 기구한 운명을 애도하는 듯이 ...',
-    '하지만 그는 또다른 운명의 아이러니 때문에 새로운 길을 떠났다.',
-    '그가 이런 역사를 몇번이나 반복했는지 그 자신도 모른다.',
-    '그가 최후로 정착할 곳 마저 알수가 없었다',
-    '아니, 그가 정착할 곳이 있는지 조차도 알수가 없었다.',
-    '당신도 이제 할일을 모두 끝냈다. 이제 편안하게 쉴 기회를 가지게 된것이다.',
-    '이제는 다시 이런 일이 일어나지 않을 것이다.',
-    '후세의 사람들은 말하겠지, 수천억년에 한번 날까 말까한 일이라고.',
-    '아마 이 일도 별로 오래 기억되지 않을 것같다.',
-    '몇 천년만 지나면 전설로서, 아니 잋혀진 애기로만 남을테니까 ...',
+  /// 페이드 한 단계(`FadeSub`) 길이 — DOS에서는 하드웨어 속도에 달려 있었다.
+  static const Duration fadeStep = Duration(milliseconds: 30);
+
+  /// 천둥 반복문(`repeat ... until ok`)의 초당 반복 횟수 추정치.
+  static const int thunderIterationsPerSecond = 20000;
+
+  // 원작 LOREEND.PAS `EndMessage` 의 cHPrint 문구.
+  static List<String> get epilogueTexts => [
+    for (final line in LoreEnd.messageLines) line.$3,
   ];
 
-  const EndingView({super.key, required this.heroName, required this.onFinish});
+  const EndingView({
+    super.key,
+    required this.heroName,
+    required this.onFinish,
+    this.random,
+  });
 
   @override
-  State<EndingView> createState() => _EndingViewState();
+  State<EndingView> createState() => EndingViewState();
 }
 
-class _EndingViewState extends State<EndingView> {
-  int _currentStep = 0; // 0: 에필로그 스토리 (EndMessage), 1: 보스/영웅 크레딧 (StaffMessage), 2: 최종 크레딧 (The End)
-  bool _lightningFlash = false;
-  Timer? _lightningTimer;
+enum EndPhase {
+  fadeIn,
+  fadeOut,
+  message,
+  staff,
+  outroFadeUp,
+  outroHold,
+  outroDim,
+  halted,
+}
+
+@visibleForTesting
+class EndingViewState extends State<EndingView>
+    with SingleTickerProviderStateMixin {
+  late final Ticker _ticker;
+  late final Random _random = widget.random ?? Random();
+  final FocusNode _focus = FocusNode();
+
+  EndPhase phase = EndPhase.fadeIn;
+  Duration _phaseStart = Duration.zero;
+  Duration _last = Duration.zero;
+
+  /// `FadeSub`에 넘기는 값(0..310); 한 칸에 10.
+  int adder = 0;
+
+  // ThunderEffect
+  VgaColor shadowFlash = LoreEnd.thunderBase;
+  int _openingIndex = 0;
+  Duration _flashUntil = Duration.zero;
+  bool _openingDone = false;
+  double _iterationCarry = 0;
+
+  // 걷는 스프라이트
+  final LoreEndWalker walker = LoreEndWalker();
+  final Set<int> erasedRows = {};
+  ({int eraseRow, int y, int sprite})? walkerFrame;
+  Duration _walkerDue = Duration.zero;
+
+  // 마지막 텍스트 화면: 색 7/15의 현재 밝기(6비트).
+  int ramp15 = 0;
+  int ramp7 = 0;
 
   @override
   void initState() {
     super.initState();
-    AudioManager.instance.playBgm(BgmTrack.title);
-    _startThunderEffect();
+    _ticker = createTicker(_onTick)..start();
   }
 
   @override
   void dispose() {
-    _lightningTimer?.cancel();
+    _ticker.dispose();
+    _focus.dispose();
     super.dispose();
   }
 
-  void _startThunderEffect() {
-    _lightningTimer = Timer.periodic(const Duration(milliseconds: 2500), (t) {
-      if (!mounted) return;
-      setState(() => _lightningFlash = true);
-      Future.delayed(const Duration(milliseconds: 80), () {
-        if (!mounted) return;
-        setState(() => _lightningFlash = false);
-      });
-      Future.delayed(const Duration(milliseconds: 160), () {
-        if (!mounted) return;
-        setState(() => _lightningFlash = true);
-      });
-      Future.delayed(const Duration(milliseconds: 240), () {
-        if (!mounted) return;
-        setState(() => _lightningFlash = false);
-      });
-    });
+  void _enter(EndPhase next, Duration now) {
+    phase = next;
+    _phaseStart = now;
+  }
+
+  void _onTick(Duration now) {
+    final dt = now - _last;
+    _last = now;
+    final inPhase = now - _phaseStart;
+    switch (phase) {
+      case EndPhase.fadeIn:
+        final steps = LoreEnd.fadeInAdders;
+        final index = min(
+          inPhase.inMicroseconds ~/ EndingView.fadeStep.inMicroseconds,
+          steps.length - 1,
+        );
+        adder = steps[index];
+        if (inPhase >= EndingView.fadeStep * steps.length) {
+          _enter(EndPhase.fadeOut, now);
+        }
+      case EndPhase.fadeOut:
+        final steps = LoreEnd.fadeOutAdders;
+        final index = min(
+          inPhase.inMicroseconds ~/ EndingView.fadeStep.inMicroseconds,
+          steps.length - 1,
+        );
+        adder = steps[index];
+        if (inPhase >= EndingView.fadeStep * steps.length) {
+          adder = 0;
+          _enter(EndPhase.message, now);
+          _openingIndex = 0;
+          _openingDone = false;
+          shadowFlash = LoreEnd.openingFlashes.first.$1;
+          _flashUntil =
+              now + Duration(milliseconds: LoreEnd.openingFlashes.first.$2);
+        }
+      case EndPhase.message:
+        _thunder(now, dt);
+      case EndPhase.staff:
+        if (walkerFrame == null || now >= _walkerDue) {
+          final frame = walker.frame();
+          erasedRows
+            ..add(frame.eraseRow)
+            ..add(frame.eraseRow + 1);
+          walkerFrame = frame;
+          _walkerDue =
+              now + const Duration(milliseconds: LoreEndWalker.delayMs);
+        }
+      case EndPhase.outroFadeUp:
+        final i = min(
+          inPhase.inMilliseconds ~/ LoreEnd.outroFadeDelayMs + 1,
+          LoreEnd.outroFadeTo,
+        );
+        ramp7 = ramp15 = i;
+        if (i >= LoreEnd.outroFadeTo) _enter(EndPhase.outroHold, now);
+      case EndPhase.outroHold:
+        if (inPhase.inMilliseconds >= LoreEnd.outroHoldMs) {
+          _enter(EndPhase.outroDim, now);
+        }
+      case EndPhase.outroDim:
+        final count = LoreEnd.outroDimFrom - LoreEnd.outroDimTo + 1;
+        final i = min(
+          inPhase.inMilliseconds ~/ LoreEnd.outroDimDelayMs,
+          count - 1,
+        );
+        ramp7 = LoreEnd.outroDimFrom - i;
+        if (i >= count - 1) {
+          _enter(EndPhase.halted, now);
+          _focus.requestFocus();
+        }
+      case EndPhase.halted:
+        break;
+    }
+    if (mounted) setState(() {});
+  }
+
+  /// `StaffMessage` 뒤의 네 번 번쩍임, 이어서 `ThunderEffect`의 반복문.
+  void _thunder(Duration now, Duration dt) {
+    if (now < _flashUntil) return;
+    if (!_openingDone) {
+      _openingIndex++;
+      if (_openingIndex < LoreEnd.openingFlashes.length) {
+        final (color, delay) = LoreEnd.openingFlashes[_openingIndex];
+        shadowFlash = color;
+        _flashUntil = now + Duration(milliseconds: delay);
+        return;
+      }
+      _openingDone = true;
+      shadowFlash = LoreEnd.thunderBase;
+      return;
+    }
+    shadowFlash = LoreEnd.thunderBase;
+    _iterationCarry +=
+        dt.inMicroseconds *
+        EndingView.thunderIterationsPerSecond /
+        Duration.microsecondsPerSecond;
+    var iterations = _iterationCarry.floor();
+    _iterationCarry -= iterations;
+    while (iterations-- > 0) {
+      final flash = LoreEndThunder.iterate(_random);
+      if (flash != null) {
+        shadowFlash = LoreEnd.thunderFlash;
+        _flashUntil = now + Duration(milliseconds: flash);
+        break;
+      }
+    }
+  }
+
+  /// 원본 `c = #27`: 천둥 화면과 스태프 화면에서만 Esc가 다음으로 넘긴다.
+  void _escape() {
+    final now = _last;
+    switch (phase) {
+      case EndPhase.message:
+        shadowFlash = LoreEnd.thunderBase;
+        _enter(EndPhase.staff, now);
+        walkerFrame = null;
+      case EndPhase.staff:
+        // `if AdLibOn then PlayOff; UnSound;`
+        AudioManager.instance.stopBgm();
+        ramp15 = ramp7 = 0;
+        _enter(EndPhase.outroFadeUp, now);
+      case EndPhase.halted:
+        widget.onFinish();
+      default:
+        break;
+    }
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: _lightningFlash
-          ? RetroTheme.white.withValues(alpha: 0.3)
-          : RetroTheme.black,
-      padding: const EdgeInsets.all(24.0),
-      child: Center(
-        child: Container(
-          width: 620,
-          padding: const EdgeInsets.all(20.0),
-          decoration: BoxDecoration(
-            color: RetroTheme.panelBg.withValues(alpha: 0.9),
-            border: Border.all(color: RetroTheme.borderColor, width: 2),
-            borderRadius: BorderRadius.circular(4),
+    final sprites = SpriteLibrary.instance;
+    return Focus(
+      focusNode: _focus,
+      autofocus: true,
+      onKeyEvent: (_, event) {
+        if (event is! KeyDownEvent) return KeyEventResult.ignored;
+        if (phase == EndPhase.halted ||
+            event.logicalKey == LogicalKeyboardKey.escape) {
+          _escape();
+        }
+        return KeyEventResult.handled;
+      },
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: _escape,
+        child: ColoredBox(
+          color: Colors.black,
+          child: Center(
+            child: FittedBox(
+              fit: BoxFit.contain,
+              child: SizedBox(
+                width: 640,
+                height: 350,
+                child: CustomPaint(
+                  key: const ValueKey('ending-canvas'),
+                  painter: _EndPainter(
+                    phase: phase,
+                    adder: adder,
+                    shadowFlash: shadowFlash,
+                    heroName: widget.heroName,
+                    chara: sprites.get('CHARA'),
+                    town: sprites.get('TOWN'),
+                    walker: walkerFrame,
+                    erasedRows: Set.of(erasedRows),
+                    ramp15: ramp15,
+                    ramp7: ramp7,
+                  ),
+                ),
+              ),
+            ),
           ),
-          child: _buildStepContent(),
         ),
       ),
     );
   }
+}
 
-  Widget _buildStepContent() {
-    switch (_currentStep) {
-      case 0:
-        return _buildEpilogueStep();
-      case 1:
-        return _buildStaffStep();
-      case 2:
-      default:
-        return _buildFinalCreditStep();
+class _EndPainter extends CustomPainter {
+  final EndPhase phase;
+  final int adder;
+  final VgaColor shadowFlash;
+  final String heroName;
+  final SpriteSheet? chara;
+  final SpriteSheet? town;
+  final ({int eraseRow, int y, int sprite})? walker;
+  final Set<int> erasedRows;
+  final int ramp15;
+  final int ramp7;
+
+  _EndPainter({
+    required this.phase,
+    required this.adder,
+    required this.shadowFlash,
+    required this.heroName,
+    required this.chara,
+    required this.town,
+    required this.walker,
+    required this.erasedRows,
+    required this.ramp15,
+    required this.ramp7,
+  });
+
+  static Color _vga(VgaColor c) => Color.fromARGB(
+    255,
+    LoreEnd.channel(c.$1),
+    LoreEnd.channel(c.$2),
+    LoreEnd.channel(c.$3),
+  );
+
+  /// 현재 팔레트의 색 [index] (`FadeSub` 상태, 색 6은 천둥이 덮어쓴다).
+  Color _palette(int index, {bool staff = false}) {
+    if (index == 15) return _vga((63, 63, 63));
+    if (staff && index == 6) return _vga(LoreEnd.thunderBase);
+    if (index == 6 && phase == EndPhase.message) return _vga(shadowFlash);
+    return _vga(LoreEnd.fadeColor(index, staff ? 0 : adder));
+  }
+
+  void _text(
+    Canvas canvas,
+    String s,
+    double x,
+    double y,
+    Color color, {
+    double size = 15,
+  }) {
+    final painter = TextPainter(
+      text: TextSpan(
+        text: s,
+        style: TextStyle(
+          fontFamily: 'monospace',
+          fontSize: size,
+          height: 1.0,
+          color: color,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      textDirection: ui.TextDirection.ltr,
+    )..layout();
+    painter.paint(canvas, Offset(x, y));
+  }
+
+  /// `cHPrint`: 색이 8보다 크면 (색-8)로 (+2,+1) 그림자를 먼저 그린다.
+  void _cPrint(
+    Canvas canvas,
+    int color,
+    int x,
+    int y,
+    String s, {
+    bool staff = false,
+  }) {
+    if (color > 8) {
+      _text(canvas, s, x + 2.0, y + 1.0, _palette(color - 8, staff: staff));
+    }
+    _text(canvas, s, x.toDouble(), y.toDouble(), _palette(color, staff: staff));
+  }
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    switch (phase) {
+      case EndPhase.fadeIn:
+        canvas.drawRect(Offset.zero & size, Paint()..color = _palette(0));
+      case EndPhase.fadeOut:
+      case EndPhase.message:
+        canvas.drawRect(Offset.zero & size, Paint()..color = _palette(0));
+        for (final (x, y, s) in LoreEnd.messageLines) {
+          _cPrint(canvas, LoreEnd.messageColor, x, y, s);
+        }
+      case EndPhase.staff:
+        _paintStaff(canvas, size);
+      case EndPhase.outroFadeUp:
+      case EndPhase.outroHold:
+      case EndPhase.outroDim:
+      case EndPhase.halted:
+        _paintOutro(canvas, size);
     }
   }
 
-  // ------------------------------------------
-  // 1. 에필로그 스토리 (EndMessage - LOREEND.PAS:86)
-  // ------------------------------------------
-  Widget _buildEpilogueStep() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '◆ 에필로그 (EPILOGUE) ◆',
-          style: RetroTheme.headerFont.copyWith(
-            fontSize: 14,
-            color: RetroTheme.yellow,
-          ),
-        ),
-        const Divider(color: RetroTheme.borderColor, height: 16),
-        ...EndingView.epilogueTexts.map((line) {
-          if (line.isEmpty) return const SizedBox(height: 8);
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.5),
-            child: Text(
-              line,
-              style: RetroTheme.dosFont.copyWith(
-                fontSize: 11,
-                color: RetroTheme.white,
-                height: 1.4,
-              ),
-            ),
+  void _paintStaff(Canvas canvas, Size size) {
+    canvas.drawRect(Offset.zero & size, Paint()..color = Colors.black);
+    for (var j = 0; j <= 18; j++) {
+      for (var i = 0; i <= 32; i++) {
+        town?.draw(
+          canvas,
+          LoreEnd.backgroundTile,
+          Rect.fromLTWH(i * 20.0, j * 20.0, 20, 20),
+        );
+      }
+    }
+    var color = 0;
+    for (final op in LoreEnd.staffOps) {
+      switch (op.kind) {
+        case 'color':
+          color = op.a;
+        case 'bold':
+          _text(
+            canvas,
+            op.text,
+            op.a.toDouble(),
+            op.b.toDouble(),
+            _palette(color, staff: true),
           );
-        }),
-        const SizedBox(height: 16),
-        Align(
-          alignment: Alignment.centerRight,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: RetroTheme.blue,
-              foregroundColor: RetroTheme.white,
-            ),
-            onPressed: () => setState(() => _currentStep = 1),
-            child: Text('다음으로 [SPACE]', style: RetroTheme.dosFont),
-          ),
-        ),
-      ],
-    );
+          _text(
+            canvas,
+            op.text,
+            op.a + 1.0,
+            op.b.toDouble(),
+            _palette(color, staff: true),
+          );
+        case 'sprite':
+          chara?.draw(
+            canvas,
+            op.c,
+            Rect.fromLTWH(op.a.toDouble(), op.b.toDouble(), 20, 20),
+          );
+        case 'text':
+          _cPrint(canvas, color, op.a, op.b, op.resolve(heroName), staff: true);
+      }
+    }
+    for (final row in erasedRows) {
+      town?.draw(
+        canvas,
+        LoreEnd.backgroundTile,
+        Rect.fromLTWH(LoreEndWalker.x.toDouble(), row * 20.0, 20, 20),
+      );
+    }
+    final w = walker;
+    if (w != null) {
+      chara?.draw(
+        canvas,
+        w.sprite,
+        Rect.fromLTWH(LoreEndWalker.x.toDouble(), w.y.toDouble(), 20, 20),
+      );
+    }
   }
 
-  // ------------------------------------------
-  // 2. 보스/영웅 크레딧 (StaffMessage - LOREEND.PAS:127)
-  // ------------------------------------------
-  Widget _buildStaffStep() {
-    final staffItems = [
-      {
-        'title': '영웅',
-        'name': widget.heroName,
-        'desc': '이름은 ${widget.heroName}. 바로 당신이다.',
-      },
-      {
-        'title': 'NOTICE 보스',
-        'name': 'Hydra',
-        'desc': 'Hydra, NOTICE 동굴의 보스였다.',
-      },
-      {
-        'title': 'LOCKUP 보스',
-        'name': 'Huge Dragon',
-        'desc': 'Huge Dragon, LOCKUP 동굴의 보스였다.',
-      },
-      {
-        'title': '미로의 괴수',
-        'name': 'Minotaur',
-        'desc': 'Minotaur, 여기서 두번 등장하는 생물이다.',
-      },
-      {
-        'title': '기계 생물',
-        'name': 'Panzer Viper',
-        'desc': 'Panzer Viper, DUNGEON OF EVIL 을 지키던 기계 생물.',
-      },
-      {
-        'title': '제 2 인자',
-        'name': 'Black Knight',
-        'desc': 'Black Knight, Necromancer 쪽의 제 2 인자 이다.',
-      },
-      {
-        'title': '왼팔',
-        'name': 'ArchiMonk',
-        'desc': 'ArchiMonk, Necromancer의 왼팔 역할의 실력자.',
-      },
-      {
-        'title': '오른팔',
-        'name': 'ArchiMage',
-        'desc': 'ArchiMage, Necromancer의 오른팔인 마법사.',
-      },
-      {
-        'title': '최종 보스',
-        'name': 'Neo-Necromancer',
-        'desc': 'Neo-Necromancer, 바로 당신의 목표였던 그자.',
-      },
-    ];
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '◆ 이 게임의 끝마무리에 공헌한 인물 ◆',
-          style: RetroTheme.headerFont.copyWith(
-            fontSize: 13,
-            color: RetroTheme.lightCyan,
-          ),
-        ),
-        const Divider(color: RetroTheme.borderColor, height: 14),
-        SizedBox(
-          height: 250,
-          child: ListView.builder(
-            itemCount: staffItems.length,
-            itemBuilder: (ctx, idx) {
-              final it = staffItems[idx];
-              final isHero = idx == 0;
-              return Container(
-                margin: const EdgeInsets.symmetric(vertical: 3),
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                color: isHero
-                    ? RetroTheme.blue.withValues(alpha: 0.5)
-                    : RetroTheme.background,
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 90,
-                      child: Text(
-                        it['title']!,
-                        style: RetroTheme.dosFont.copyWith(
-                          color: isHero
-                              ? RetroTheme.yellow
-                              : RetroTheme.lightGray,
-                          fontSize: 10,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 140,
-                      child: Text(
-                        it['name']!,
-                        style: RetroTheme.dosFont.copyWith(
-                          color: isHero ? RetroTheme.yellow : RetroTheme.white,
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Text(
-                        it['desc']!,
-                        style: RetroTheme.dosFont.copyWith(
-                          color: RetroTheme.lightCyan,
-                          fontSize: 10,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        ),
-        const SizedBox(height: 12),
-        Align(
-          alignment: Alignment.centerRight,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: RetroTheme.blue,
-              foregroundColor: RetroTheme.white,
-            ),
-            onPressed: () => setState(() => _currentStep = 2),
-            child: Text('최종 크레딧 보기 [SPACE]', style: RetroTheme.dosFont),
-          ),
-        ),
-      ],
-    );
+  void _paintOutro(Canvas canvas, Size size) {
+    canvas.drawRect(Offset.zero & size, Paint()..color = Colors.black);
+    for (var n = 0; n < LoreEnd.outroLines.length; n++) {
+      final ramp = LoreEnd.outroColors[n] == 15 ? ramp15 : ramp7;
+      final color = _vga((ramp, ramp, ramp));
+      _text(
+        canvas,
+        LoreEnd.outroLines[n],
+        0,
+        (LoreEnd.outroBlankLines + n) * 14.0,
+        color,
+        size: 13,
+      );
+    }
   }
 
-  // ------------------------------------------
-  // 3. 최종 크레딧 (The End - LOREEND.PAS:236)
-  // ------------------------------------------
-  Widget _buildFinalCreditStep() {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const SizedBox(height: 20),
-        Text(
-          '<< The End >>',
-          style: RetroTheme.headerFont.copyWith(
-            fontSize: 22,
-            color: RetroTheme.yellow,
-            letterSpacing: 2.0,
-          ),
-        ),
-        const SizedBox(height: 14),
-        // 원작 LOREEND.PAS:236 이후 - `" The Codex of Another Lore  vol. #1 "
-        // is made by Ahn Young-Kie.` / `You must be a genius !!!`
-        Text(
-          '    " The Codex of Another Lore  vol. #1 " is made by Ahn Young-Kie.',
-          style: RetroTheme.dosFont.copyWith(
-            fontSize: 12,
-            color: RetroTheme.white,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          'Original 1993 · Ahn Young-Kie',
-          style: RetroTheme.dosFont.copyWith(
-            fontSize: 12,
-            color: RetroTheme.lightGray,
-          ),
-        ),
-        const SizedBox(height: 24),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          decoration: BoxDecoration(
-            color: RetroTheme.background,
-            border: Border.all(color: RetroTheme.yellow),
-          ),
-          child: Text(
-            'You must be a genius !!!',
-            style: RetroTheme.headerFont.copyWith(
-              fontSize: 14,
-              color: RetroTheme.yellow,
-            ),
-          ),
-        ),
-        const SizedBox(height: 30),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: RetroTheme.green,
-            foregroundColor: RetroTheme.white,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-          ),
-          onPressed: widget.onFinish,
-          child: Text(
-            '타이틀 화면으로 돌아가기 [ESC]',
-            style: RetroTheme.dosFont.copyWith(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        const SizedBox(height: 10),
-      ],
-    );
-  }
+  @override
+  bool shouldRepaint(_EndPainter old) => true;
 }

@@ -8541,8 +8541,13 @@
       "routine": "LOREEND.PAS:fadesub:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:fadesub:1:case:1",
@@ -8552,8 +8557,13 @@
       "routine": "LOREEND.PAS:fadesub:1",
       "kind": "case",
       "outcomes": 16,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:fadein:1:for:1",
@@ -8563,8 +8573,13 @@
       "routine": "LOREEND.PAS:fadein:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:fadeout:1:for:1",
@@ -8574,8 +8589,13 @@
       "routine": "LOREEND.PAS:fadeout:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:thundereffect:1:repeat:1",
@@ -8585,8 +8605,13 @@
       "routine": "LOREEND.PAS:thundereffect:1",
       "kind": "repeat",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:thundereffect:1:if:1",
@@ -8596,8 +8621,13 @@
       "routine": "LOREEND.PAS:thundereffect:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:thundereffect:1:if:2",
@@ -8607,8 +8637,13 @@
       "routine": "LOREEND.PAS:thundereffect:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:thundereffect:1:if:3",
@@ -8618,8 +8653,13 @@
       "routine": "LOREEND.PAS:thundereffect:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:thundereffect:1:if:4",
@@ -8629,8 +8669,13 @@
       "routine": "LOREEND.PAS:thundereffect:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:staffmessage:1:for:1",
@@ -8640,8 +8685,13 @@
       "routine": "LOREEND.PAS:staffmessage:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:staffmessage:1:for:2",
@@ -8651,8 +8701,13 @@
       "routine": "LOREEND.PAS:staffmessage:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:while:1",
@@ -8662,8 +8717,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "while",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:repeat:1",
@@ -8673,8 +8733,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "repeat",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:if:1",
@@ -8684,8 +8749,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:if:2",
@@ -8695,8 +8765,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:case:1",
@@ -8706,8 +8781,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "case",
       "outcomes": 4,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:case:2",
@@ -8717,8 +8797,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "case",
       "outcomes": 4,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:if:3",
@@ -8728,8 +8813,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:if:4",
@@ -8739,8 +8829,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:if:5",
@@ -8750,8 +8845,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:for:1",
@@ -8761,8 +8861,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREEND.PAS:end_demo:1:for:2",
@@ -8772,8 +8877,13 @@
       "routine": "LOREEND.PAS:end_demo:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/loreend_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_end.dart",
+      "reviewed_scope": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending."
     },
     {
       "id": "LOREENT.PAS:entermode:1:case:1",
@@ -30180,6 +30290,226 @@
       "test": "test/lore_spec_map18_test.dart",
       "note": "Map18 independent ifs owned directly by LoreSpecProcedures.map18 (no JSON fallback): y=95 exact wantexit boundary (map 3 (96,43), refusal y-1; its special cells x 23..26 cannot reach later ifs); (22,41) map[22,41]:=44 and map[21,41]:=52; (21,41) Minotaur (torch when raw etc[1]=0, party-side scene, enemy first, raw etc[39] bit3 set after victory or escape); (37,31) Spica on raw etc[39]: bit2 ends, bit1 clear gives the four lecture pages then sets bit1, bit1 with etc[5]=0 refuses, espLevel<5 cannot read, otherwise the offer writes bit2 BEFORE ReturnJoinMember (refusing the slot keeps bit2, per source) and joins Spica; x=31 while raw etc[15]<4 (the old port wrongly read the swamp quest) walks six cells east and down to y=13, fights Huge Dragon + Dragon's tail (ac 8) + random(3)+30 slots 3..7 drawn in slot order, enemy first; victory prints the three lines and sets etc[15]:=4, escape moves to (25,94), defeat runs nothing (GameOver overlay not reproduced). BGI animation adapted; UI replay in test/map18_lockup_ui_test.dart; DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:fadesub:1:for:1",
+      "line": 17,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:fadesub:1:case:1",
+      "line": 18,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:fadein:1:for:1",
+      "line": 76,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:fadeout:1:for:1",
+      "line": 83,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:thundereffect:1:repeat:1",
+      "line": 109,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:thundereffect:1:if:1",
+      "line": 110,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:thundereffect:1:if:2",
+      "line": 111,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:thundereffect:1:if:3",
+      "line": 116,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:thundereffect:1:if:4",
+      "line": 117,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:staffmessage:1:for:1",
+      "line": 131,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:staffmessage:1:for:2",
+      "line": 132,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:while:1",
+      "line": 181,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:repeat:1",
+      "line": 185,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:if:1",
+      "line": 188,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:if:2",
+      "line": 191,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:case:1",
+      "line": 192,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:case:2",
+      "line": 202,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:if:3",
+      "line": 211,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:if:4",
+      "line": 212,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:if:5",
+      "line": 215,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:for:1",
+      "line": 240,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREEND.PAS:end_demo:1:for:2",
+      "line": 247,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_end.dart",
+      "test": "test/loreend_parity_test.dart",
+      "note": "End_Demo data and state machines ported and replayed against tool/source_loreend.py (test/fixtures/loreend_parity.json): FadeSub's 15-colour palette with Pascal div for every FadeIn/FadeOut step, the eleven EndMessage cHPrint lines, the StaffMessage draw list (sprite/tile numbers, hero name line), ThunderEffect's random(1000)/random(100)/random(100)+20 call order with Esc-only exit, the four opening RGB flashes, the walking-sprite loop (erase rows, y wrap above 350, 24/21/24/20 cycle, 200 ms) with Esc-only exit, and the closing text screen palette ramps; widget flow in test/ending_view_test.dart. Presentation adapted: BGI drawing, hardware-bound fade step length, thunder loop iteration rate, touch as Esc, Halt returns to the title on a key; DOS comparison pending.",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -31917,6 +32247,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/ending_view_test.dart",
+      "kind": "test",
+      "sha256": "d0917a1876eff4079f24c718aa90f914d27419d3d49373bb9138683ae19e6e29",
+      "cited_source_files": [
+        "LOREEND.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/esp_panel_test.dart",
       "kind": "test",
       "sha256": "78d680d46519fc283405ed4f751ded971010ff61a06b443b6e5e04934adf7263",
@@ -32229,6 +32568,15 @@
       "sha256": "3bd9e690e39c2d7ca4b5e8d5d245b7b0f2cb2166ccf12eca12aad8bea68ce4ea",
       "cited_source_files": [
         "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/loreend_parity_test.dart",
+      "kind": "test",
+      "sha256": "c678816064e1af7ebca385b904638d94a5d589d97f8b8b631d101f2a77b4c0eb",
+      "cited_source_files": [
+        "LOREEND.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -32774,6 +33122,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/fixtures/loreend_parity.json",
+      "kind": "fixture",
+      "sha256": "40e2d711b16df3b400a69cd7d63bdf5c0f2fa957e56128b1a542d8fb07b41125",
+      "test_users": [
+        "test/loreend_parity_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/map12_state_parity.json",
       "kind": "fixture",
       "sha256": "8ce7fd6feec7a51e335f751608e5fc0ab6946493ce9722d4445eaf9e9a43f64d",
@@ -33099,9 +33456,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "b44792041d37ce06bc802f20e0f5793661c596517bcf8f0b4d627921fef6ac45",
+      "sha256": "169c5e19d66fb2bd35ac337d19bf1a548b3a3c03a85e7ce47bbf1ebd4f2b1142",
       "top_level_counts": {
-        "contracts": 412
+        "contracts": 434
       }
     }
   ],
@@ -33109,9 +33466,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 1436,
+    "unmapped_behavior_sites": 1414,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 412,
+    "partially_verified_behavior_sites": 434,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
