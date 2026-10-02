@@ -9,20 +9,24 @@ class DPadWidget extends StatelessWidget {
   const DPadWidget({super.key, required this.onDirectionPressed});
 
   Widget _buildButton(IconData icon, String label, int dx, int dy) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: () => onDirectionPressed(dx, dy),
-        borderRadius: BorderRadius.circular(4),
-        child: Container(
-          width: 44,
-          height: 44,
-          decoration: BoxDecoration(
-            color: RetroTheme.panelBg,
-            border: Border.all(color: RetroTheme.borderColor, width: 1.5),
-            borderRadius: BorderRadius.circular(4),
+    return Semantics(
+      label: label,
+      button: true,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: () => onDirectionPressed(dx, dy),
+          borderRadius: BorderRadius.circular(4),
+          child: Container(
+            width: 44,
+            height: 44,
+            decoration: BoxDecoration(
+              color: RetroTheme.panelBg,
+              border: Border.all(color: RetroTheme.borderColor, width: 1.5),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Icon(icon, color: RetroTheme.lightCyan, size: 20),
           ),
-          child: Icon(icon, color: RetroTheme.lightCyan, size: 20),
         ),
       ),
     );
@@ -40,18 +44,18 @@ class DPadWidget extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildButton(Icons.arrow_drop_up, 'UP', 0, -1),
+          _buildButton(Icons.arrow_drop_up, '위로 이동', 0, -1),
           const SizedBox(height: 2),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              _buildButton(Icons.arrow_left, 'LEFT', -1, 0),
+              _buildButton(Icons.arrow_left, '왼쪽으로 이동', -1, 0),
               const SizedBox(width: 44),
-              _buildButton(Icons.arrow_right, 'RIGHT', 1, 0),
+              _buildButton(Icons.arrow_right, '오른쪽으로 이동', 1, 0),
             ],
           ),
           const SizedBox(height: 2),
-          _buildButton(Icons.arrow_drop_down, 'DOWN', 0, 1),
+          _buildButton(Icons.arrow_drop_down, '아래로 이동', 0, 1),
         ],
       ),
     );

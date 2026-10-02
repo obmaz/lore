@@ -1,5 +1,9 @@
 import 'package:flame/game.dart';
+
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
+import 'package:lore/widgets/game_screen_layout.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/game/lore_game.dart';
@@ -46,9 +50,17 @@ void main() {
       expect(viewport.height, 390);
       expect(game.width, game.height);
       expect(party.top, greaterThanOrEqualTo(viewport.bottom));
+      expect(
+        party.height,
+        greaterThanOrEqualTo(GameScreenLayout.minimumPartyHeight),
+      );
+      expect(
+        messages.height,
+        greaterThanOrEqualTo(GameScreenLayout.minimumMessagesHeight),
+      );
       expect(messages.top, greaterThan(party.bottom));
       expect(messages.bottom, 844);
-      expect(find.byType(TabBar), findsNothing);
+      expect(find.byKey(const ValueKey('panel-tab-party')), findsNothing);
 
       final pad = tester.getRect(find.byType(DPadWidget));
       expect(messages.contains(pad.topLeft), isTrue);
@@ -61,8 +73,6 @@ void main() {
         ),
       );
       expect(opacity.opacity, .6);
-      final log = tester.widget<MessageLogView>(find.byType(MessageLogView));
-      expect(log.controlsInset, greaterThanOrEqualTo(pad.width));
 
       // The translucent overlay still receives movement taps.
       final engine = tester
@@ -83,25 +93,59 @@ void main() {
     },
   );
 
-  for (final size in [const Size(320, 480), const Size(768, 1024)]) {
+  for (final size in [
+    const Size(320, 480),
+    const Size(768, 1024),
+    const Size(390, 480),
+    const Size(980, 1100),
+  ]) {
     testWidgets('4:3 portrait $size shares character/dialogue tabs', (
       tester,
     ) async {
       await openGame(tester, size);
       final viewport = tester.getRect(find.byType(ViewportView));
-      expect(viewport.width, size.width);
-      expect(viewport.height, size.width);
-      expect(find.byType(TabBar), findsOneWidget);
+      final side = math.min(size.width, size.height - 204);
+      expect(viewport.width, side);
+      expect(viewport.height, side);
+      expect(find.byKey(const ValueKey('panel-tab-party')), findsOneWidget);
+      final messages = tester.getRect(find.byType(MessageLogView));
+      expect(messages.top, greaterThanOrEqualTo(viewport.bottom));
+      expect(messages.height, greaterThanOrEqualTo(200));
+      final tab = tester.getRect(find.byKey(const ValueKey('panel-tab-party')));
+      expect(tab.right, lessThanOrEqualTo(messages.left));
+      final pad = tester.getRect(find.byType(DPadWidget));
       expect(find.byType(MessageLogView), findsOneWidget);
-      await tester.tap(find.widgetWithText(Tab, '캐릭터'));
+      await tester.tap(find.byKey(const ValueKey('panel-tab-party')));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 350));
       expect(find.byType(PartyStatusView), findsOneWidget);
+      expect(
+        tester.getRect(find.byType(PartyStatusView)).height,
+        greaterThanOrEqualTo(200),
+      );
+      expect(find.byType(DPadWidget), findsOneWidget);
+      expect(tester.getRect(find.byType(DPadWidget)), pad);
+      final engine = tester
+          .widget<GameWidget<LoreGame>>(find.byType(GameWidget<LoreGame>))
+          .game!;
+      engine.currentMap = LoreMapData(
+        name: 'TEST',
+        xmax: 20,
+        ymax: 20,
+        grid: List.generate(20, (_) => List.filled(20, 42)),
+      );
+      engine.playerX = 6;
+      engine.playerY = 6;
+      await tester.tap(find.byIcon(Icons.arrow_right));
+      await tester.pump();
+      expect((engine.playerX, engine.playerY), (7, 6));
+      expect(tester.getRect(find.byType(DPadWidget)), pad);
       expect(tester.getRect(find.byType(ViewportView)), viewport);
-      await tester.tap(find.widgetWithText(Tab, '대화'));
+      await tester.tap(find.byKey(const ValueKey('panel-tab-dialogue')));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 350));
       expect(find.byType(DPadWidget), findsOneWidget);
+      expect(tester.getRect(find.byType(DPadWidget)), pad);
       expect(tester.takeException(), isNull);
     });
   }
@@ -110,7 +154,7 @@ void main() {
     tester,
   ) async {
     await openGame(tester, const Size(600, 600));
-    expect(find.byType(TabBar), findsOneWidget);
+    expect(find.byKey(const ValueKey('panel-tab-party')), findsOneWidget);
     final viewport = tester.getSize(find.byType(ViewportView));
     expect(viewport.width, viewport.height);
     expect(tester.takeException(), isNull);
@@ -131,7 +175,15 @@ void main() {
     expect(game, same(before));
     final viewport = tester.getSize(find.byType(ViewportView));
     expect(viewport.width, viewport.height);
-    expect(find.byType(TabBar), findsOneWidget);
+    expect(
+      tester.getRect(find.byType(MessageLogView)).top,
+      greaterThanOrEqualTo(tester.getRect(find.byType(ViewportView)).bottom),
+    );
+    expect(
+      tester.getRect(find.byType(MessageLogView)).height,
+      greaterThanOrEqualTo(200),
+    );
+    expect(find.byKey(const ValueKey('panel-tab-party')), findsOneWidget);
     expect(find.byType(DPadWidget), findsOneWidget);
     expect(tester.takeException(), isNull);
   });

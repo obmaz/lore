@@ -186,7 +186,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     } else {
       _addLog('성전 마을 CASTLE LORE 성내 광장 (51, 31)에 도착했습니다.');
     }
-    _addLog('키보드 방향키 또는 콘솔 오른쪽의 D-Pad로 이동하십시오.');
+    _addLog('키보드 방향키 또는 화면 오른쪽 아래의 방향키로 이동하십시오.');
     _addLog('단단한 성벽은 통과할 수 없으며, 주민(NPC)과 대화하거나 상점을 이용할 수 있습니다.');
 
     final initialMapId = widget.initialSaveData?.mapId ?? 6;
@@ -2001,54 +2001,23 @@ class _MainGameScreenState extends State<MainGameScreen> {
               content: _buildViewportContent(),
             ),
             party: PartyStatusView(members: _mapPartyStatus()),
-            messages: LayoutBuilder(
-              builder: (context, constraints) {
-                final showControls = _currentMode == GameScreenMode.field;
-                // Scale only for unusually short screens; normal phone targets
-                // remain 44 logical pixels and the text stays clear of them.
-                final controlsSize = min(
-                  146.0,
-                  max(0.0, constraints.maxHeight - 16),
-                );
-                final controlsWidth = min(
-                  controlsSize,
-                  constraints.maxWidth * .45,
-                );
-                return Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    MessageLogView(
-                      logs: _logs,
-                      revision: _logRevision,
-                      controlsInset: showControls ? controlsWidth + 8 : 0,
+            messages: MessageLogView(logs: _logs, revision: _logRevision),
+            controls: _currentMode == GameScreenMode.field
+                ? Opacity(
+                    opacity: .6,
+                    child: DPadWidget(
+                      onDirectionPressed: (dx, dy) {
+                        if (_entryAnimationActive ||
+                            _currentMode != GameScreenMode.field) {
+                          return;
+                        }
+                        _game.tryMove(dx, dy);
+                        setState(() {});
+                        _reclaimFocus();
+                      },
                     ),
-                    if (showControls)
-                      Positioned(
-                        right: 8,
-                        bottom: 8,
-                        width: controlsWidth,
-                        height: controlsWidth,
-                        child: Opacity(
-                          opacity: .6,
-                          child: FittedBox(
-                            child: DPadWidget(
-                              onDirectionPressed: (dx, dy) {
-                                if (_entryAnimationActive ||
-                                    _currentMode != GameScreenMode.field) {
-                                  return;
-                                }
-                                _game.tryMove(dx, dy);
-                                setState(() {});
-                                _reclaimFocus();
-                              },
-                            ),
-                          ),
-                        ),
-                      ),
-                  ],
-                );
-              },
-            ),
+                  )
+                : null,
           ),
         ),
       ),

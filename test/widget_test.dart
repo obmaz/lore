@@ -32,7 +32,7 @@ void main() {
           .contains(tester.getCenter(find.byType(DPadWidget))),
       isTrue,
     );
-    await tester.tap(find.widgetWithText(Tab, '캐릭터'));
+    await tester.tap(find.byKey(const ValueKey('panel-tab-party')));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 350));
     expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);

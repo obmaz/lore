@@ -148,7 +148,7 @@ void main() {
 
       expect(find.text('◆ 필드 탐험 모드 (FIELD VIEW 10x10) ◆'), findsOneWidget);
       expect(find.byType(DPadWidget), findsOneWidget);
-      await tester.tap(find.widgetWithText(Tab, '캐릭터'));
+      await tester.tap(find.byKey(const ValueKey('panel-tab-party')));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 350));
       expect(find.text('◆ 파티원 상태 (PARTY STATUS) ◆'), findsOneWidget);
