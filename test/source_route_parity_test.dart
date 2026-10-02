@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_map_manager.dart';
+import 'package:lore/logic/lore_spec_procedures.dart';
 import 'package:lore/logic/script_world_reducer.dart';
 
 /// Pascal 좌표 규칙을 source_route_pilot.py가 순서대로 실행한 결과와
@@ -237,17 +238,16 @@ void main() {
     ) as Map<String, dynamic>;
     final map = await LoreMapData.loadFromAsset('K_DEN2', category: 'den');
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
     for (final raw in fixture['cases'] as List<dynamic>) {
       final item = raw as Map<String, dynamic>;
       final start = (item['start'] as List<dynamic>).cast<int>();
       final grid = [for (final row in map.grid) List<int>.from(row)];
       grid[start[1] - 1][start[0] - 1] = 0;
-      final run = engine.startStep(
-        25,
+      final run = LoreSpecProcedures.map25(
         start[0],
         start[1],
         const ScriptContext(tileAtPlayer: 0),
+        engine,
       );
       expect(run, isNotNull, reason: 'LORESPEC.PAS:${item['start']}');
       final actual = ScriptWorldReducer.applyMap(

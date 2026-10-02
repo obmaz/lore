@@ -260,10 +260,10 @@ def runtime_assets():
         else:
             status = "unmapped-runtime-file"
         rows.append({
-            "source": str(path.relative_to(ROOT)),
+            "source": path.relative_to(ROOT).as_posix(),
             "kind": suffix.lstrip(".").lower() or "other",
             "sha256": digest(path),
-            "port_copy": str(target.relative_to(ROOT)) if target and target.exists() else None,
+            "port_copy": target.relative_to(ROOT).as_posix() if target and target.exists() else None,
             "copy_equal": digest(path) == digest(target) if suffix in copies and target.exists() else None,
             "status": status,
         })
@@ -309,14 +309,14 @@ def evidence_catalog():
     for test in tests:
         cited = sorted(set(re.findall(r"(?:repo_source/LORE_1993_src/)?(LORE[A-Z0-9_]*\.PAS)", bodies[test])))
         rows.append({
-            "path": str(test.relative_to(ROOT)), "kind": "test",
+            "path": test.relative_to(ROOT).as_posix(), "kind": "test",
             "sha256": digest(test), "cited_source_files": cited,
             "scope": "candidate-evidence; behavioral contract linkage pending",
         })
     for fixture in sorted((ROOT / "test/fixtures").glob("*.json")):
-        users = [str(test.relative_to(ROOT)) for test, body in bodies.items() if fixture.name in body]
+        users = [test.relative_to(ROOT).as_posix() for test, body in bodies.items() if fixture.name in body]
         rows.append({
-            "path": str(fixture.relative_to(ROOT)), "kind": "fixture",
+            "path": fixture.relative_to(ROOT).as_posix(), "kind": "fixture",
             "sha256": digest(fixture),
             "test_users": users,
             "scope": "candidate-evidence; source behavior not inferred from filename",
@@ -335,6 +335,9 @@ def port_rule_sources():
         "lib/logic/lore_tile_protocol.dart",
         "lib/logic/lore_movement_logic.dart",
         "lib/logic/lore_field_session.dart",
+        "lib/logic/lore_source_memory.dart",
+        "lib/game/lore_map_manager.dart",
+        "lib/logic/lore_spec_procedures.dart",
         "lib/logic/lore_portal_session.dart",
         "lib/logic/lore_talk_dispatcher.dart",
         "lib/logic/lore_special_event_dispatcher.dart",
@@ -345,7 +348,7 @@ def port_rule_sources():
     )]
     rows = []
     for path in files:
-        item = {"path": str(path.relative_to(ROOT)), "sha256": digest(path)}
+        item = {"path": path.relative_to(ROOT).as_posix(), "sha256": digest(path)}
         if path.suffix == ".json":
             data = json.loads(path.read_text(encoding="utf-8"))
             item["top_level_counts"] = {

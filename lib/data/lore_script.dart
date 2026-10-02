@@ -34,6 +34,8 @@ import 'dart:math';
 
 import 'package:flutter/services.dart' show AssetBundle, rootBundle;
 
+import '../logic/lore_source_memory.dart';
+
 // ── 스크립트 데이터 모델 ──────────────────────────────────────────────
 
 /// 스크립트 실행 조건.
@@ -143,6 +145,10 @@ class ScriptContext {
   /// 퀘스트 단계 값 (원작 `party.etc[10/13/14/15]` 등).
   final Map<String, int> questSteps;
 
+  /// Raw source bytes for directly ported procedures. A present zero overrides
+  /// compatibility flag names; absent entries may be recovered from old saves.
+  final Map<int, int> sourceEtc;
+
   const ScriptContext({
     this.mindReadActive = false,
     this.maxEspLevel = 0,
@@ -152,7 +158,21 @@ class ScriptContext {
     this.tileAtPlayer,
     this.moveDy = 0,
     this.questSteps = const {},
+    this.sourceEtc = const {},
   });
+
+  int etcValue(int index, {Map<int, String> bitAliases = const {}}) {
+    LorePartyEtc.checkIndex(index);
+    if (sourceEtc.containsKey(index)) return LorePascal.byte(sourceEtc[index]!);
+    var value = 0;
+    for (var bit = 1; bit <= 8; bit++) {
+      if (flags.contains('etc${index}_bit$bit') ||
+          (bitAliases[bit] != null && flags.contains(bitAliases[bit]))) {
+        value |= LorePascal.bit(bit);
+      }
+    }
+    return value;
+  }
 }
 
 /// 선택지 1개.

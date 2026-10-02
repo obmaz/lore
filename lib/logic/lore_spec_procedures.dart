@@ -1,4 +1,5 @@
 import '../data/lore_script.dart';
+import 'lore_source_memory.dart';
 
 /// Gameplay branches from `LORESPEC.specialevent_part1`.
 ///
@@ -84,16 +85,28 @@ class LoreSpecProcedures {
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson || context.tileAtPlayer != 0) return null;
+    if (context.tileAtPlayer != 0) return null;
 
     if (x == 30 || x == 32) {
-      final scriptId = x == 30
-          ? 'lastditch-passwall-left'
-          : 'lastditch-passwall-right';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
+      return scripts.startProcedure(
+        LoreScript(
+          id: x == 30 ? 'lastditch-passwall-left' : 'lastditch-passwall-right',
+          trigger: 'step',
+          map: 7,
+          once: false,
+          require: const ScriptRequire(),
+          steps: const [
+            ScriptStep(
+              kind: 'setTileArea',
+              tileX: 31,
+              tileY: 1,
+              tileAtPlayerY: true,
+              tileValue: 45,
+            ),
+          ],
+        ),
+        context,
       );
-      return scripts.startProcedure(content, context);
     }
 
     return null;
@@ -643,8 +656,9 @@ class LoreSpecProcedures {
           context.flags.contains('specialMagicLearned');
       if (hasLearned) {
         final hasMindRead = context.mindReadActive;
-        final scriptId =
-            hasMindRead ? 'redantares-join' : 'redantares-wait-for-mindread';
+        final scriptId = hasMindRead
+            ? 'redantares-join'
+            : 'redantares-wait-for-mindread';
         final content = scripts.scripts.singleWhere(
           (script) => script.id == scriptId,
         );
@@ -809,8 +823,9 @@ class LoreSpecProcedures {
 
     if (x == 11 && y == 40) {
       final levitating = context.flags.contains('levitationActive');
-      final scriptId =
-          levitating ? 'evil-seal-lever-a-blocked' : 'evil-seal-lever-a';
+      final scriptId = levitating
+          ? 'evil-seal-lever-a-blocked'
+          : 'evil-seal-lever-a';
       final content = scripts.scripts.singleWhere(
         (script) => script.id == scriptId,
       );
@@ -819,8 +834,9 @@ class LoreSpecProcedures {
 
     if (x == 41 && y == 39) {
       final levitating = context.flags.contains('levitationActive');
-      final scriptId =
-          levitating ? 'evil-seal-lever-b-blocked' : 'evil-seal-lever-b';
+      final scriptId = levitating
+          ? 'evil-seal-lever-b-blocked'
+          : 'evil-seal-lever-b';
       final content = scripts.scripts.singleWhere(
         (script) => script.id == scriptId,
       );
@@ -842,10 +858,9 @@ class LoreSpecProcedures {
       final roomIndex = (x - 10) ~/ 4;
       if (roomIndex >= 1 && roomIndex <= 7) {
         final isCorrectRoom = context.flags.contains('evilSealRoom$roomIndex');
-        final scriptId =
-            isCorrectRoom
-                ? 'evil-seal-room-$roomIndex'
-                : 'evil-seal-room-wrong-$roomIndex';
+        final scriptId = isCorrectRoom
+            ? 'evil-seal-room-$roomIndex'
+            : 'evil-seal-room-wrong-$roomIndex';
         final content = scripts.scripts.singleWhere(
           (script) => script.id == scriptId,
         );
@@ -889,8 +904,9 @@ class LoreSpecProcedures {
     }
 
     if (y == 88) {
-      final scriptId =
-          context.tileAtPlayer == 0 ? 'den7-passage-y88' : 'den7-exit-y88';
+      final scriptId = context.tileAtPlayer == 0
+          ? 'den7-passage-y88'
+          : 'den7-exit-y88';
       final content = scripts.scripts.singleWhere(
         (script) => script.id == scriptId,
       );
@@ -898,8 +914,9 @@ class LoreSpecProcedures {
     }
 
     if (y == 71) {
-      final scriptId =
-          context.tileAtPlayer == 0 ? 'den7-passage-y71' : 'den7-exit-y71';
+      final scriptId = context.tileAtPlayer == 0
+          ? 'den7-passage-y71'
+          : 'den7-exit-y71';
       final content = scripts.scripts.singleWhere(
         (script) => script.id == scriptId,
       );
@@ -1088,8 +1105,7 @@ class LoreSpecProcedures {
     }
 
     if (y == 26) {
-      final hasCleared =
-          context.flags.contains('keep3NecromancerCleared');
+      final hasCleared = context.flags.contains('keep3NecromancerCleared');
       if (!hasCleared) {
         final content = scripts.scripts.singleWhere(
           (script) => script.id == 'keep3-necromancer-y26',
@@ -1099,8 +1115,7 @@ class LoreSpecProcedures {
     }
 
     if (x == 25 && y == 27) {
-      final hasTriggeredTrap =
-          context.flags.contains('keep3TrapCleared');
+      final hasTriggeredTrap = context.flags.contains('keep3TrapCleared');
       if (!hasTriggeredTrap) {
         final content = scripts.scripts.singleWhere(
           (script) => script.id == 'keep3-trap-25-27',
@@ -1146,16 +1161,16 @@ class LoreSpecProcedures {
     ScriptContext context,
     LoreScriptEngine scripts,
   ) {
-    if (!scripts.usingJson) return null;
     if (context.tileAtPlayer != null &&
         context.tileAtPlayer != 52 &&
         context.tileAtPlayer != 0) {
       return null;
     }
 
-    if (y == 43) {
-      final hasDefeatedMetalGuardian =
-          context.flags.contains('keep3MetalGuardianCleared');
+    if (y == 43 && scripts.usingJson) {
+      final hasDefeatedMetalGuardian = context.flags.contains(
+        'keep3MetalGuardianCleared',
+      );
       if (!hasDefeatedMetalGuardian) {
         final content = scripts.scripts.singleWhere(
           (script) => script.id == 'keep3-metal-guardian-y43',
@@ -1164,42 +1179,75 @@ class LoreSpecProcedures {
       }
     }
 
-    if (x == 15 && y == 34) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'keep25-corridor-15-34',
+    // LORESPEC.PAS:2067-2079. Preserve the loop order and its final overwrites.
+    if ((x == 15 || x == 36) && y == 34) {
+      final left = x == 15;
+      final steps = <ScriptStep>[
+        ScriptStep(kind: 'setTile', tileX: x, tileY: 34, tileValue: 41),
+        for (var i = left ? 11 : 37; i <= (left ? 14 : 40); i++) ...[
+          ScriptStep(kind: 'setTile', tileX: i, tileY: 33, tileValue: 24),
+          ScriptStep(kind: 'setTile', tileX: i, tileY: 35, tileValue: 26),
+          ScriptStep(kind: 'setTile', tileX: i, tileY: 34, tileValue: 42),
+        ],
+        ScriptStep(
+          kind: 'setTile',
+          tileX: left ? 14 : 37,
+          tileY: 33,
+          tileValue: left ? 17 : 19,
+        ),
+        ScriptStep(
+          kind: 'setTile',
+          tileX: left ? 14 : 37,
+          tileY: 35,
+          tileValue: left ? 18 : 22,
+        ),
+      ];
+      return scripts.startProcedure(
+        LoreScript(
+          id: 'keep25-corridor-$x-34',
+          trigger: 'step',
+          map: 25,
+          once: false,
+          require: const ScriptRequire(),
+          steps: steps,
+        ),
+        context,
       );
-      return scripts.startProcedure(content, context);
     }
 
-    if (x == 36 && y == 34) {
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == 'keep25-corridor-36-34',
+    // LORESPEC.PAS:2081-2101: write our bit before testing BOTH lever bits.
+    // Raw etc[45], including a stored zero, takes precedence over old aliases.
+    if ((x == 5 || x == 46) && y == 34) {
+      final bit = x == 5 ? 7 : 8;
+      final after =
+          context.etcValue(
+            45,
+            bitAliases: const {7: 'keep3KeyA', 8: 'keep3KeyB'},
+          ) |
+          LorePascal.bit(bit);
+      final opened = (after & 0xc0) == 0xc0;
+      return scripts.startProcedure(
+        LoreScript(
+          id: 'keep3-key-${x == 5 ? 'a' : 'b'}-${opened ? 'second' : 'first'}',
+          trigger: 'step',
+          map: 25,
+          once: false,
+          require: const ScriptRequire(),
+          steps: [
+            ScriptStep(kind: 'flag', key: 'etc45_bit$bit'),
+            // Compatibility name for old UI/saves; not a second source state.
+            ScriptStep(kind: 'flag', key: x == 5 ? 'keep3KeyA' : 'keep3KeyB'),
+            const ScriptStep(kind: 'say', text: ' 당신이 레버를 당기자  철컥하는 소리가 동굴'),
+            const ScriptStep(kind: 'say', text: '에 울려 퍼졌다.'),
+            if (opened) ...const [
+              ScriptStep(kind: 'setTile', tileX: 25, tileY: 27, tileValue: 54),
+              ScriptStep(kind: 'setTile', tileX: 26, tileY: 27, tileValue: 54),
+              ScriptStep(kind: 'say', text: ' 곧 이어 기계 작동하는 큰 소리가 들렸다.'),
+            ],
+          ],
+        ),
+        context,
       );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (x == 5 && y == 34) {
-      final otherLeverSet =
-          context.flags.contains('etc45_bit8') ||
-          context.flags.contains('keep3KeyB');
-      final scriptId =
-          otherLeverSet ? 'keep3-key-a-second' : 'keep3-key-a-first';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
-      );
-      return scripts.startProcedure(content, context);
-    }
-
-    if (x == 46 && y == 34) {
-      final otherLeverSet =
-          context.flags.contains('etc45_bit7') ||
-          context.flags.contains('keep3KeyA');
-      final scriptId =
-          otherLeverSet ? 'keep3-key-b-second' : 'keep3-key-b-first';
-      final content = scripts.scripts.singleWhere(
-        (script) => script.id == scriptId,
-      );
-      return scripts.startProcedure(content, context);
     }
 
     return null;
@@ -1219,8 +1267,7 @@ class LoreSpecProcedures {
     if (!scripts.usingJson) return null;
     if (context.tileAtPlayer != 0) return null;
 
-    final hasDefeatedBoss =
-        context.flags.contains('bossNecromancerDefeated');
+    final hasDefeatedBoss = context.flags.contains('bossNecromancerDefeated');
     if (hasDefeatedBoss) return null;
 
     final content = scripts.scripts.singleWhere(
@@ -1245,8 +1292,7 @@ class LoreSpecProcedures {
   ) {
     if (!scripts.usingJson) return null;
 
-    final scriptId =
-        y < 25 ? 'map27-special-upper' : 'map27-special-lower';
+    final scriptId = y < 25 ? 'map27-special-upper' : 'map27-special-lower';
     final content = scripts.scripts.singleWhere(
       (script) => script.id == scriptId,
     );
@@ -1298,7 +1344,7 @@ class LoreSpecProcedures {
   /// moves the party back from the trigger tile on both first and later visits.
   static ScriptRun? map1Food(ScriptContext context, LoreScriptEngine scripts) {
     if (context.tileAtPlayer != 0) return null;
-    final visited = context.flags.contains('etc32_bit8');
+    final visited = context.etcValue(32) & LorePascal.bit(8) != 0;
     final procedure = LoreScript(
       id: 'lorespec-map1-food',
       trigger: 'step',

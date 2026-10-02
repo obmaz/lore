@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 
+import '../logic/lore_source_memory.dart';
 import '../logic/lore_tile_protocol.dart';
 
 enum TileCategory {
@@ -39,6 +40,16 @@ class LoreMapData {
     if (x < 1 || x > xmax || y < 1 || y > ymax) return 1; // 맵 밖은 벽
     return grid[y - 1][x - 1];
   }
+
+  /// Source `map[x,y] := value`; rendering keeps the same mutable tile grid.
+  void setTile(int x, int y, int value) {
+    RangeError.checkValueInInterval(x, 1, xmax, 'map x');
+    RangeError.checkValueInInterval(y, 1, ymax, 'map y');
+    grid[y - 1][x - 1] = LorePascal.byte(value);
+  }
+
+  /// LORESUB.Load/Save iterate y first, then x, although Pascal uses map[x,y].
+  List<int> tileSnapshot() => [for (final row in grid) ...row];
 
   bool get isTown =>
       name.startsWith('TOWN') || name.startsWith('KEEP') || name == 'TEST';
@@ -84,7 +95,7 @@ class LoreMapData {
     if (tiles.length != xmax * ymax) return;
     for (var y = 0; y < ymax; y++) {
       for (var x = 0; x < xmax; x++) {
-        grid[y][x] = tiles[y * xmax + x];
+        setTile(x + 1, y + 1, tiles[y * xmax + x]);
       }
     }
   }
@@ -96,15 +107,35 @@ class LoreMapData {
   }) async {
     final assetPath = 'assets/maps/$mapName.MAP';
     final byteData = await rootBundle.load(assetPath);
-    final bytes = byteData.buffer.asUint8List();
+    final bytes = byteData.buffer.asUint8List(
+      byteData.offsetInBytes,
+      byteData.lengthInBytes,
+    );
+    return fromBytes(mapName, bytes, category: category);
+  }
+
+  /// Parse the original two-byte header and row-major byte payload. Missing
+  /// bytes are an error rather than invented walls that change game behavior.
+  static LoreMapData fromBytes(
+    String mapName,
+    Uint8List bytes, {
+    String category = '',
+  }) {
+    if (bytes.length < 2) throw FormatException('$mapName: missing MAP header');
 
     final xmax = bytes[0];
     final ymax = bytes[1];
+    if (xmax < 1 || xmax > 100 || ymax < 1 || ymax > 100) {
+      throw FormatException('$mapName: dimensions exceed map[1..100,1..100]');
+    }
+    if (bytes.length < 2 + xmax * ymax) {
+      throw FormatException('$mapName: truncated MAP tiles');
+    }
 
     final grid = List.generate(ymax, (y) {
       return List.generate(xmax, (x) {
         final offset = 2 + (y * xmax) + x;
-        return offset < bytes.length ? bytes[offset] : 1;
+        return bytes[offset];
       });
     });
 

@@ -8,6 +8,7 @@ import 'dart:math';
 import 'package:flutter/services.dart' show AssetBundle, rootBundle;
 
 import '../logic/lore_join.dart';
+import '../logic/lore_source_memory.dart';
 import '../models/party_member.dart';
 
 class LoreDialogueManager {
@@ -17,23 +18,26 @@ class LoreDialogueManager {
 
   // 1. CASTLE LORE 플래그 (맵 6)
   /// 원작 `party.etc[10]` - Lord Ahn 알현 대화 단계(0~6). `LORETALK.PAS:296`.
-  int lordAhnQuestStep = 0;
+  int get lordAhnQuestStep => partyEtc.read(10);
+  set lordAhnQuestStep(int value) => partyEtc[10] = value;
   bool metLordAhn = false;
   bool castleGateOpen = false;
   bool jrAntaresSecretFound = false;
   bool metPyramidSage = false;
 
   // 2. LASTDITCH 플래그 (맵 7 - party.etc[13])
-  int lastditchQuestStep =
-      0; // 0: 미의뢰, 1: Major Mummy 의뢰중, 2: 격퇴 완료 보고대기, 3: 보상완료(Ground Gate 안내)
+  int get lastditchQuestStep => partyEtc.read(13);
+  set lastditchQuestStep(int value) => partyEtc[13] = value;
   bool polarisJoined = false;
 
   // 3. GAIA TERRA 플래그 (맵 9 - party.etc[14])
-  int gaiaQuestStep = 0; // 0: 미의뢰, 1: 황금봉인 의뢰중, 2: 봉인완료 보고대기, 3: QUAKE의뢰, 4: 격퇴완료 보고대기, 5: Water Key 획득
+  int get gaiaQuestStep => partyEtc.read(14);
+  set gaiaQuestStep(int value) => partyEtc[14] = value;
   bool hasWaterKey = false;
 
   // 4. WATER FIELD 플래그 (맵 10 - party.etc[15])
-  int waterFieldQuestStep = 0; // 0: 미의뢰, 1: Hidra 의뢰, 2: Hidra격퇴 보고대기, 3: Huge Dragon 의뢰, 4: 용격퇴 보고대기, 5: Swamp Key 획득
+  int get waterFieldQuestStep => partyEtc.read(15);
+  set waterFieldQuestStep(int value) => partyEtc[15] = value;
   bool hasSwampKey = false;
   bool loreHunterJoined = false;
 
@@ -100,12 +104,12 @@ class LoreDialogueManager {
   /// 키 형식: `gold:<mapId>:<x>:<y>`
   final Set<String> collectedTreasures = {};
 
-  /// 원작 `party.etc[N]` 비트 배열 (N : 1..51).
+  /// 원작 `party.etc[N]` 바이트 배열 (N : 1..100).
   ///
   /// 원작은 `party.etc[N] and bitM` / `party.etc[N] or bitM` 로 마을·동굴의
-  /// 진행 상황을 기록한다. 포트는 같은 정보를 `etcN_bitM` 플래그로 보관해
-  /// 스크립트 JSON의 `require`/`flag`에서 그대로 쓸 수 있게 한다.
-  final Map<int, int> partyEtc = {};
+  /// 진행 상황을 기록한다. 이름 있는 플래그는 기존 처리기를 위한 어댑터이며
+  /// 원본 바이트 값과 퀘스트 단계는 이 저장소를 공유한다.
+  final LorePartyEtc partyEtc = LorePartyEtc();
   final Map<String, bool> _scriptFlags = {};
 
   static final RegExp _etcFlagPattern = RegExp(r'^etc(\d+)_bit(\d+)$');
@@ -115,7 +119,7 @@ class LoreDialogueManager {
   /// `party.etc[N]`의 M번째 비트(1-based)가 켜져 있는지.
   bool etcBit(int n, int m) {
     if (m < 1 || m > 8) return false;
-    return ((partyEtc[n] ?? 0) >> (m - 1)) & 1 == 1;
+    return partyEtc.hasBit(n, m);
   }
 
   /// 원작 `party.etc[6]` - **마지막 전투의 결과**.
@@ -134,9 +138,7 @@ class LoreDialogueManager {
   /// `party.etc[N] := party.etc[N] or bitM` / 비트 해제.
   void setEtcBit(int n, int m, [bool value = true]) {
     if (m < 1 || m > 8) return;
-    final mask = 1 << (m - 1);
-    final cur = partyEtc[n] ?? 0;
-    partyEtc[n] = value ? (cur | mask) : (cur & ~mask);
+    partyEtc.setBit(n, m, value);
   }
 
   /// 이름 하나로 `party.etc` 비트/카운터를 읽거나 쓴다.
@@ -337,6 +339,7 @@ class LoreDialogueManager {
 
   void loadSaveFlags(Map<String, dynamic> flags) {
     final knownSaveKeys = getSaveFlags().keys.toSet();
+    partyEtc.clear();
     metLordAhn = flags['metLordAhn'] == true;
     castleGateOpen = flags['castleGateOpen'] == true;
     lordAhnQuestStep = flags['lordAhnQuestStep'] as int? ?? 0;
@@ -424,14 +427,13 @@ class LoreDialogueManager {
         etcBits[n] = (etcBits[n] ?? 0) | (1 << (m - 1));
       }
     }
-    partyEtc.clear();
     for (final entry in flags.entries) {
       final counter = _etcCounterFlagPattern.firstMatch(entry.key);
       if (counter == null) continue;
       final n = int.parse(counter.group(1)!);
       final value = entry.value;
       if (value is num) {
-        if (value.toInt() != 0) partyEtc[n] = value.toInt();
+        partyEtc[n] = value.toInt();
       } else if (value == true) {
         // 구형 불리언 etcN은 0이 아님만 뜻한다. 비트 플래그가 있으면
         // 그 비트들이 정확한 원본 값을 나타낸다.

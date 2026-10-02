@@ -59,6 +59,96 @@
       "test": "test/lava_source_parity_test.dart",
       "note": "Roll random(40) then random(luck) for all six party slots.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:27",
+      "line": 316,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map7_8_test.dart",
+      "note": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:137",
+      "line": 2067,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_route_parity_test.dart",
+      "note": "Map 25 left passage tile writes match source-generated replay without JSON; map-wide battle/exit continuation remains pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:65",
+      "line": 2069,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_route_parity_test.dart",
+      "note": "Left passage preserves loop bounds and final tile overwrites; renderer timing not compared to DOS.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:138",
+      "line": 2074,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_route_parity_test.dart",
+      "note": "Map 25 right passage tile writes match source-generated replay without JSON; map-wide continuation remains pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:66",
+      "line": 2076,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_route_parity_test.dart",
+      "note": "Right passage preserves loop bounds and final tile overwrites; renderer timing not compared to DOS.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:139",
+      "line": 2081,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_lever_parity_test.dart",
+      "note": "Left lever preserves all 256 raw byte values and unrelated bits; JSON-independent state/save replay, DOS UI timing pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:140",
+      "line": 2085,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_lever_parity_test.dart",
+      "note": "Left lever tests bits 7 and 8 after writing bit 7 and opens both source doors; full app/DOS playback pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:141",
+      "line": 2092,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_lever_parity_test.dart",
+      "note": "Right lever preserves all 256 raw byte values and unrelated bits; JSON-independent state/save replay, DOS UI timing pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:142",
+      "line": 2096,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_lever_parity_test.dart",
+      "note": "Right lever tests bits 7 and 8 after writing bit 8 and reapplies door state after save/revisit; full app/DOS playback pending.",
+      "verification": "partial"
     }
   ]
 }

@@ -1,108 +1,115 @@
-# LORE 원본 로직 직접 이식 전략
+# LORE 원본 로직 보존 이식 전략
 
-최종 목표인 다중 게임 엔진과 JSON 게임 팩의 책임·전환 기준은
-`GAME_PACK_ARCHITECTURE.md`에 정의한다. 원본형 프로시저 코어는 그 구조로
-안전하게 전환하기 위한 동작 기준선이다.
+## 현재 결정 (2026-10-02)
 
-## 결정
+최종 실행 구현은 원본 Pascal의 게임 로직을 최대한 그대로 옮긴 Dart 코어다.
+JSON 게임 팩·다중 게임 엔진 전환은 목표에서 제외한다. 맵의 표시, UI·입력,
+음악·효과음과 파일 접근은 현대 플랫폼의 어댑터로 교체한다.
+게임의 좌표·타일 코드·상태 계산·분기·전투 결과는 원본을 기준으로 한다.
 
-완전 이식의 기준 구현은 원본 게임 프로시저의 제어 흐름을 보존한 Dart
-실행 코어로 만든다. 작은 JSON 사건을 발견할 때마다 추가하는 방식은
-중단한다. 기존 JSON·Dart 구현은 전환 기간의 실행 경로와 회귀 근거로
-사용하고, 같은 사건을 두 구현이 동시에 처리하지 않게 지도·루틴 단위로
-한 번에 전환한다.
+기준 커밋은 `7ff0e89a19f677ceeda09a28c7095a8199c7ed96`이고,
+주석 태그 `pre-direct-port-2026-10-02`로 이전 상태를 보존했다.
+태그 이전 구현은 회귀 자료와 재사용 후보이며 전체 원본 동작의 정답으로
+간주하지 않는다. `GAME_PACK_ARCHITECTURE.md`는 이전 제안 보관 문서다.
 
-원본 Pascal을 Flutter 웹에서 그대로 호출할 수는 없다. `LORESUB`의 전역
-상태와 지도 배열, `LOREMAIN`의 입력 루프, `LORESPEC` 등의 게임 규칙이
-`Graph`·`Crt`·음성·DOS 파일·어셈블리 호출과 섞여 있다. 게임 규칙의
-수식·조건·분기 순서는 직접 옮길 수 있다. `Print`·`select`·`BattleMode`·
-`load`·`scroll` 등은 엔진의 명령·효과 경계로 바꾼다. 원본 DOS 실행 파일은
-가능하면 대조 기준으로 사용하지만 현대 엔진의 런타임으로 삼지 않는다.
+## 로직과 현대화의 경계
 
-## 유한한 작업 단위
+| 보존할 게임 의미 | 현대화할 구현 |
+| --- | --- |
+| `map[x,y]` 좌표, 0..255 타일 코드, 지도 종류와 ID, 동적 변경 순서 | Flame 타일·스프라이트·카메라·애니메이션 |
+| `party.etc[1..100]`, 일행·적 배열, 자료형과 수식, 조건과 조기 종료 | Dart 상태 저장소와 화면 밖 실행 |
+| 대사·선택지 순서, 선택 취소, 전투 중단·재개, 난수 호출 순서 | Flutter 대화상자·메뉴·키보드·터치 |
+| 음악·효과음의 호출 시점과 지역/전투 매핑 | 기존 AudioManager와 현대 오디오 파일 |
+| 저장할 필드와 현재 지도 한 장의 스냅샷, 불러온 뒤의 다음 행동 | 버전 있는 앱 저장 형식; JSON 직렬화 사용 가능 |
 
-첫 범위는 `LOREMAIN` 295줄·5개 루틴, `LOREENT` 494줄·2개 루틴,
-`LORETALK` 1,062줄·1개 루틴, `LORESPEC` 2,221줄·4개 루틴이다.
-이 네 유닛의 12개 루틴에 필요한 `LORESUB` 상태와 호출 함수를 함께
-옮긴다. 이후 `LOREBATT`, `LOREMENU`, `LORECRET`, `LOREEND` 순으로
-확장한다. 원본 1,848개 게임 제어 지점은 누락 감지용 감사 목록이며
-1,848개의 수작업 구현 과제가 아니다.
+지도 현대화는 논리 지도를 재설계하는 작업이 아니다. 새 타일 이미지와 원본
+코드의 대응을 별도로 두고, 통행·NPC·입구·특수 칸 판정은 원본 값을 사용한다.
+같은 `K_DEN2.MAP`도 지도 25는 den, 26은 town이라는 원본 해석을 유지한다.
 
-| 묶음 | 직접 옮길 것 | 완료 판정 |
+## 비트·정수·배열 계약
+
+- `LORESUB.PAS:11-79`: 능력치·장비·좌표·식량·etc는 byte,
+  HP/SP/ESP·의식불명·사망은 16-bit integer, 금화·경험치는 32-bit longint다.
+  계산식의 중간 결과 자료형과 대입 시 저장 폭을 구분한다. 식량에 원본이
+  명시한 255 상한이 있으면 그 조건을 보존하며 모든 계산에 clamp를 넣지 않는다.
+- `etc`는 비트 플래그만이 아니다. 타이머·설정·퀘스트 단계·방 번호와 비트가
+  함께 저장된다. 예를 들어 `LORESPEC.PAS:1415/1436`은 `etc[40]`에
+  `(random(7)+1) shl 1`로 방 번호를 넣고 `shr 1`로 되읽는다.
+  이름 있는 Boolean으로 치환하면 상위 값과 하위 비트의 관계를 잃는다.
+- `encounter := @party.etc[7]`, `maxenemy := @party.etc[8]`
+  (`LORESUB.PAS:1794-1795`)은 같은 바이트의 별칭이다. UI 설정을 따로
+  복사해 두면 다음 로직에서 값이 달라질 수 있으므로 동일 저장소 접근자로 연결한다.
+- 원본 `map[1..100,1..100]`은 `map[x,y]`, 화면 격자는
+  `grid[y-1][x-1]`이다. 파일은 `y` 바깥 루프, `x` 안쪽 루프로 읽고 쓴다.
+  `player/enemy[1..7]`, `battle[1..6,1..3]`, `accuracy/level[1..3]`도
+  배열별 범위와 사용 슬롯을 따로 보존한다. 빈 슬롯과 임시 7번 슬롯을 압축하지 않는다.
+- `div`는 0 방향 정수 나눗셈, `mod`는 피제수 부호의 나머지다. Dart
+  `%`로 음수 Pascal `mod`를 대체하지 않는다. 비트 연산과 비교·논리 연산은
+  괄호로 원본 우선순위를 명시한다.
+- 원본 소스에 범위/오버플로 지시자가 명시되지 않은 곳의 EXE 컴파일 옵션은
+  미확인이다. 이번 etc 저장은 unchecked byte의 하위 8비트를 보존한다.
+  `LorePascal`의 word/integer/longint 변환은 준비된 계약이며 다른 게임 필드에
+  일괄 적용하지 않는다. 실제 경계 동작은 DOS 실행이나 컴파일 결과와 대조한 뒤 연결한다.
+- 범위 밖 배열 접근의 DOS 메모리 손상은 에뮬레이션하지 않고 실패로 드러낸다.
+  잘린 MAP 파일에 임의 벽을 채우지 않는다. 이는 잘못된 입력의 명시적 처리 차이다.
+
+자료형과 div/mod 의미는 Borland의
+[Turbo Pascal 7 Language Guide](https://turbopascal.org/wp-content/uploads/Turbo_Pascal_Version_7.0_Language_Guide_1992.pdf)
+25-26, 69, 211-213쪽을 참고한다. 이 자료가 원본 EXE의 컴파일 옵션이나
+중간 계산 결과를 증명하지는 않는다.
+
+`tool/audit_source_memory.py`가 도달 가능한 게임 유닛의 위험 연산·배열·지도
+쓰기 위치를 `PORT_SOURCE_MEMORY_AUDIT.md`에 모은다. 문자열과 주석은
+기존 감사 도구로 제외하고 원본 파일 해시와 행을 유지한다. 이 색인은 피연산자
+자료형 추론이나 완전한 컴파일러 감사가 아니며, 암묵적 with 별칭과 중간
+오버플로 등은 프로시저 대조에서 추가 검토한다.
+
+## 재사용할 것
+
+원본 MAP·몬스터·대사·아이템·마법·폰트와 오디오 자산, Flutter/Flame 화면,
+`LoreTileProtocol`, 이동·지형 루틴, 전투와 메뉴 코드, reducer, 저장 어댑터,
+원본에서 생성한 재생 fixture와 테스트를 재사용한다.
+
+`ScriptStep`·`ScriptRun`은 직접 작성한 Dart 프로시저가 대사·선택·전투·지도
+효과를 전달하는 도구로 유지한다. 이 모델을 쓴다는 이유로 JSON 파일을 읽어야
+하는 것은 아니다. 정적 자료·대사는 JSON으로 남겨도 된다. 미이전 사건의 기존
+JSON 실행은 전환 기간에만 유지하며 새 사건 조건·계산을 JSON에 추가하지 않는다.
+
+## 실행 계획과 검증
+
+| 순서 | 작업 단위 | 종료 조건 |
 | --- | --- | --- |
-| 상태·호출 경계 | `party`, `player`, 현재 지도, 적, `etc`, 난수 및 `Print`·선택·전투·지도 로드 요청 | 원본 필드/배열 의미를 상태 모델로 왕복하고 효과 순서를 화면 없이 재생 |
-| `LOREMAIN` | 입력 후 목표 타일 판정과 5개 이동·지형 루틴 | 타일 종류·상태·난수별 원본 경로를 전체 루틴 재생으로 확인 |
-| `LOREENT` | `entermode`, `sign`의 모든 지도 분기 | 각 지도 진입·거절·표지판 결과와 재방문 상태가 일치 |
-| `LORETALK` | `talkmode`의 시설·대화·조건·합류 흐름 | 모든 대화 지도 분기를 원본 순서로 실행하며 선택 후 효과가 일치 |
-| `LORESPEC` | `specialevent_part1/2`와 호출부의 지도별 본문 | 모든 특수 타일에서 조건·선택·전투 후속·지도 변경을 재생 |
-| 전투·메뉴·생성·종료 | 나머지 게임 유닛의 규칙 프로시저 | 각 유닛의 전체 루틴 재생 및 시작→엔딩 경로 확인 |
+| 0 | 현재 버전 태그·전체 회귀 기준선, 소스 메모리 색인, 이전 목표 정리 | 원본과 자산 보존, 기준 커밋·검증 결과 기록 |
+| 1 | LORESUB 원본형 상태·자료형·배열·별칭·지도/저장 접근 | raw 바이트·좌표·일행 슬롯이 왕복하며 이름 접근자와 원본 상태가 일치 |
+| 2 | LOREMAIN → LOREENT → LORETALK → LORESPEC의 프로시저 및 하위 호출 | 조건 양쪽·조기 종료·재방문·선택 취소·도주·패배·지도 쓰기 순서 재생 |
+| 3 | LOREBATT → LOREMENU → LORECRET → LOREEND | 중간 정수형·난수·전투 후속·성장·장비·생성·엔딩을 같은 입력으로 비교 |
+| 4 | 맵 표시·UI·입력·음악 어댑터 정리 | 현대 표현을 바꿔도 같은 게임 상태와 사건 결과; 실제 앱 경로 확인 |
+| 5 | 저장·재시작 포함 새 게임 → 엔딩, 최종 누락 감사 | PORT_MASTER_PLAN.md의 모든 완료 게이트 통과 |
 
-한 묶음은 **프로시저 본문 전체와 그 호출 경계**를 검토한다. 원본의
-`if` 하나를 발견할 때마다 별도 JSON 규칙을 만드는 일을 작업 단위로
-삼지 않는다. 한 지도에 여러 고유 사건이 있으면 원본의 `case map of`
-안에서 같은 순서로 옮긴다. 데이터로 분리해도 순서를 바꾸지 않는다.
+한 번에 하나의 완전한 프로시저 또는 선택·전투 후속까지 닫힌 분기를
+전환한다. 직접 프로시저가 소유한 경로는 JSON 로드 여부에 따라 다른 사건을
+실행하지 않는다. 원본 조건이 거짓이면 그대로 무동작이며 fallback으로
+보상을 지급하지 않는다. 현재 중앙 dispatcher와 기존 효과 실행기를 활용한다.
 
-## 런타임 형태
+난수는 같은 입력 스트림에서 소비 횟수·순서·상한을 비교한다. 현재 Dart
+Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
+가정하지 않는다. 원본 난수 발생기 재현 또는 DOS 난수 스트림 확보는 별도
+검증 과제다. 원본 추출 fixture, 독립 시나리오, 가능하면 DOS 실행 추적을
+함께 사용하며 이전 JSON 결과만 맞는 것을 원본 일치로 판정하지 않는다.
 
-```text
-명령 + 원본형 세션 상태 + 주입 난수
-  → 원본 순서의 게임 프로시저
-  → 새 상태 + 순서 있는 효과(대사, 선택 요청, 전투 요청, 지도 로드 등)
-  → Flutter/Flame·저장·오디오 어댑터
-```
+## 이번 전환의 구현 범위
 
-선택과 전투 요청에서는 세션을 멈추고, 다음 입력으로 같은 프로시저의
-후속을 계속한다. 화면 콜백이 직접 게임 상태를 바꾸지 않는다. 이 경계가
-완성되기 전에는 기존 처리기를 유지하되, 새 프로시저가 담당하는 지도·
-사건에서는 옛 JSON/기존 처리기를 함께 실행하지 않는다.
+1. `LorePartyEtc`의 1..100 바이트 저장소·비트 접근·raw 스냅샷을 연결했고,
+   Lord Ahn/Lastditch/Gaia/Water 퀘스트 단계는 원본 슬롯 10/13/14/15를 공유한다.
+2. `LoreMapData`에 원본 좌표 쓰기·행 우선 스냅샷·바이너리 크기 검증과
+   ByteData 뷰 경계를 연결했다. 원본 타일·렌더러 격자를 계속 공유한다.
+3. 맵 1 식량은 raw etc[32]를 판정한다. 맵 7 숨은 벽과 맵 25 숨은 통로
+   두 곳·레버 두 곳은 JSON 사건 조회 없이 Dart 분기·루프로 실행한다.
+   레버는 etc[45]의 모든 256개 값, 두 방향, JSON 유무와 저장 후 재방문을 검사한다.
+4. 나머지 사건, 맵 25 금속 수호자·출구, 화면의 타이머/설정 별칭, 일행·적
+   슬롯 및 모든 중간 정수식은 후속 작업이다. 프로시저 이름의 wrapper가
+   있다고 전체 본문 직접 이식이 끝났다고 판단하지 않는다.
 
-## 전환과 검증
-
-1. 원본 상태·효과 API와 세션 재생기를 만든다. 현재 `LoreFieldSession`,
-   `ScriptWorldReducer`, 전투 엔진, 지도·몬스터 자료와 테스트를 재사용한다.
-2. `LOREMAIN` 전체를 첫 기준 구현으로 옮겨 기존 이동 진입점에 연결한다.
-   독·늪·용암 같은 이미 옮긴 규칙은 새 상태·효과 API에 결합한다.
-3. `LOREENT`→`LORETALK`→`LORESPEC`을 원본 본문 순서로 옮기고,
-   묶음마다 기존 JSON과 한쪽만 실행하도록 전환한다. 생성 JSON은 비교
-   자료로 보존하다가 전환 완료 후 단일 기준에서 제외한다.
-4. 원본 코드·지도·자료에서 생성한 입력 시나리오를 새 코어에 실행한다.
-   대표 사례만 통과시키지 않고 각 프로시저의 조건 양쪽, 난수 경계,
-   선택·도주·패배·재방문을 검사한다. 차이는 원본 위치와 함께 기록한다.
-5. 루틴 본문 전체의 대응을 감사하고 제어 지점 목록으로 빠진 경로를
-   찾아낸다. 목록은 구현 순서를 결정하지 않고 최종 누락 검사에 쓴다.
-
-기존 코드가 모두 폐기되는 것은 아니다. 원본 지도·자료 복사, 포털 대조,
-타일 분류, 전투 수식과 상태 reducer, 시나리오 테스트는 새 코어의 입력·
-어댑터·검증에 쓴다. 실행되지 않는 생성 규칙과 중복 권한만 정리한다.
-
-## 종료 조건
-
-원본에서 도달 가능한 게임 프로시저가 모두 새 코어 또는 근거 있는
-플랫폼 어댑터에 연결되고, 기존 병렬 처리 경로가 남지 않아야 한다.
-원본 계약 장부에서 미분류·미검증·지도 쓰기 미연결이 0이어야 하며,
-전투·메뉴·저장·엔딩까지 세션과 실제 앱으로 재생해야 한다. 이 조건을
-충족하기 전에는 전체 이식 완료라고 하지 않는다.
-
-## 프로시저 직접 이식 현황
-
-이 표는 **실행 중인 원본형 프로시저**만 완료로 센다. JSON에 일부 대사나
-좌표가 있다는 이유로 프로시저를 완료로 표시하지 않는다. 첫 네 유닛의
-12개 루틴 중 현재 6개의 게임 규칙이 원본 순서로 실행된다. `Main`은
-`FieldHotkeys`·`LoreFieldSession`·`LoreMainProcedures`로 입력/타일/지형
-단계를 나눴고, `LOREENT`는 목적지·전투 전후·지도 변경·표지판을
-`LoreEntProcedures`가 결정한다. 선택·전투 중단과 재개는 범용
-`LoreScriptEngine` 효과 실행기를 사용한다. 원본의 DOS 팔레트 BIOS 호출과
-폰트 버퍼 지우기는 Flutter에 대응하는 게임 규칙이 아니므로 제외했다.
-
-| 원본 유닛 | 직접 실행 완료 | 남은 루틴·경계 |
-| --- | --- | --- |
-| `LOREMAIN` | `enter_water`, `enter_swamp`, `enter_lava`, `Move_Mode`, `Main` | 입력 후 현재 타일 재판정, 맵 26 방향 그림 예외, 소리 전환, Space의 전투 결과 초기화까지 앱에 연결했다. |
-| `LOREENT` | `entermode`, `sign` | 27개 목적지·4개 수문장 입구·7곳의 지도 변경·표지판을 원본형 Dart 코드로 실행한다. 대사 텍스트와 범용 효과 실행기는 데이터/엔진 경계다. |
-| `LORETALK` | `map6`, `map7`, `map9`, `map10`, `map24`, `map27` 전체 이식 완료 | `talkmode` 전체. 원본 대화가 존재하는 맵 6(성도 CASTLE LORE), 맵 7(LASTDITCH), 맵 9(GAIA TERRA), 맵 10(WATER FIELD), 맵 24(LAST SHELTER), 맵 27(PYRAMID1) 전체 대화 프로시저가 `LoreTalkProcedures`와 `LoreTalkDispatcher`로 원본 순서 및 조건에 맞춰 이식되었다. 시설(`findFacility`) 우선권 및 퀘스트 단계별 조건 분기 완결. |
-| `LORESPEC` | `map1`~`map27` 전체 이식 완료 | `sgn`, `specialevent_part1`, `specialevent_part2`, `specialevent` 및 모든 지도별 본문. 맵 1 식량 분기, 맵 4 이동·Draconian·Ancient Evil 분기, 맵 6 상자·감옥전투·무기실·출구 분기, 맵 7 비밀벽과 맵 8 특수 타일 분기, 맵 9 금화 5곳 및 y=10 관문 배척·SWAMP GATE 조언 분기, 맵 10 층간 수직 이동 분기, 맵 11 금화 7곳·오이디푸스의 창·미이라의 방 분기, 맵 12 수수께끼 문·황금의 봉인·Rigel 만남 분기, 맵 13 피라미드 시퀀스 및 Gorgon 전투 분기, 맵 14 MENACE 중심 분기·금화 6곳·황금의 방패 분기, 맵 15 상자 2회·황금의 방패·황금의 갑옷·ArchiGagoyle 보스전 분기, 맵 16 Wivern 단계별 분기, 맵 17 Red Antares 만남·Hidra 보스전·지형 변형 분기, 맵 18 Spica 만남·통로 개방·Minotaur 전투·Huge Dragon 보스전 분기, 맵 19 늪속 레버·복도 수호자·7개 방 추첨 및 Crab God 보스전 분기, 맵 20 퀴즈 문 통과/오답 퇴장·퀴즈 3종·Minotaur·Astral Mud 3연전 분기, 맵 21 라바 게이트 관문 분기, 맵 22 Death Knight 기습 및 수비대 기습 분기, 맵 23 가짜 Necromancer 2단계전 및 부상 성 레버 분기, 맵 24 출구 분기, 맵 25 금속 수호자·비밀 통로 2곳·레버 2곳 분기, 맵 26 최종 보스전 Neo-Necromancer 연출 분기, 맵 27 경계 밀어내기 분기까지 1~27 전 맵의 원본 분기가 `LoreSpecProcedures`에 의해 단일 진입점에서 원본 순서로 완전히 실행된다. 대응 JSON은 절차가 사용하는 데이터로 단일화되었고 보관/비교 자료로 유지된다. |
-| `LOREBATT` | 20개 루틴 전체 이식 완료 | `PlusExperience`, `PlusGold`, `DisplayEnemies`, `ExistEnemies`, `AttackOne`, `CastOne`, `CastAll`, `CastSpecial`, `BattleESP`, `RunAway`, `WeaponAttack`, `castattacksub`, `castattackone`, `castattackall`, `enemycure`, `castattack`, `specialattack`, `SpecialCastAttack`, `EnemyAttack`, `EndBattle`, `BattleMode`, `randomenemy`, `EncounterEnemy`가 `BattleEngine`, `LoreEncounterLogic`, `LoreBattleProgress`, `ScriptBattleSession`, `BattleViewportView`에 완전 이식 및 검증 완료. |
-| `LOREMENU` | 21개 루틴 전체 이식 완료 | `AttackSpell`, `SPnotEnough`, `HealOne`, `CureOne`, `ConsciousOne`, `RevitalizeOne`, `HealAll`, `CureAll`, `ConscoisAll`, `RevitalizeAll`, `CureSpell`, `PhenominaSpell`, `ViewParty`, `ViewCharacter`, `QuickView`, `CastSpell`, `ReturnPredict`, `Extrasense`, `Rest`, `GameOption`, `SelectMode`가 `FieldMagicLogic`, `TownLogic`, `FieldHotkeys`, `FieldMenuDialog`, `EspDialog`, `QuickViewDialog`에 완전 이식 및 검증 완료. |
-| `LORECRET` | 캐릭터 생성 전체 이식 완료 | `CreateCharacter`, `WhatClass`, `Display`, `Name`, `Profile`, `First`~`Fourth`, `Last`의 4대 문답, 스탯/장비/성별/나이/외모 설정 및 초기 자금/식량(2000골드, 20식량) 규칙이 `CharacterCreationScreen`, `LoreCreationData`, `PartyMember.createDefault`로 완전 이식 및 검증 완료. |
-| `LOREEND` | 엔딩 연출 전체 이식 완료 | `End_Demo`, `FadeIn/Out`, `EndMessage`, `ThunderEffect`, `StaffMessage`, `The End` 스탭롤 및 에필로그가 `EndingView`로 완전 이식 및 검증 완료. |
-
-`LOREMAIN`, `LOREENT`, `LORETALK`, `LORESPEC`, `LOREBATT`, `LOREMENU`, `LORECRET`, `LOREEND`의 전 유닛 게임 핵심 프로시저가 모두 Dart 코어로 완전 직접 이식되었으며, 477개 전체 단위 테스트가 무결하게 통과한다.
+다음 묶음은 LORESUB의 타이머·설정(etc[1..8])과 남은 이름 플래그를 같은
+원본 상태에 연결한 뒤, etc[40]의 방 번호·봉인 비트 계산을 직접 이식한다.
+현재 테스트 통과는 이번 묶음의 회귀 검증이며 전체 이식 완료 선언은 아니다.

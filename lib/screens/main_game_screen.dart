@@ -509,6 +509,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       enteredFromMap: enteredFromMap,
       // 원작 `party.etc[10]`/`[13]`/`[14]`/`[15]` 퀘스트 단계.
       questSteps: LoreDialogueManager.instance.questSteps,
+      sourceEtc: LoreDialogueManager.instance.partyEtc.snapshot(),
       // 원작 `map[x,y]` 판정(숨은 통로 등)을 위해 밟은 타일을 넘긴다.
       tileAtPlayer: _game.currentMap?.getTile(_game.playerX, _game.playerY),
       moveDy: switch (_game.playerDirection) {
@@ -1242,7 +1243,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           final map = _game.currentMap;
           if (map == null) return;
           if (x < 1 || x > map.xmax || y < 1 || y > map.ymax) return;
-          setState(() => map.grid[y - 1][x - 1] = tile);
+          setState(() => map.setTile(x, y, tile));
         },
         onMindReadActivated: (count) {
           setState(() => _mindReadCount = count);
@@ -1253,9 +1254,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
             _maxEnemies = maxEnemies;
           });
         },
-        mapTilesProvider: () => [
-          for (final row in _game.currentMap?.grid ?? <List<int>>[]) ...row,
-        ],
+        mapTilesProvider: () => _game.currentMap?.tileSnapshot() ?? [],
         consumedScriptsProvider: () => _scripts.consumedScripts.toList(),
         onSaveDataLoaded: (save) async {
           setState(() {

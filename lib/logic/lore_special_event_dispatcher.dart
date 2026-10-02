@@ -13,9 +13,9 @@ class LoreSpecialEventDispatch {
 
 /// 원본 `specialevent` 호출의 단일 진입점.
 ///
-/// JSON이 정상 로드되면 JSON 규칙이 사건의 기준이다. 조건이 거짓이어서 규칙이
-/// 발동하지 않는 경우에도 옛 처리기로 재시도하지 않는다. JSON을 로드할 수 없을
-/// 때에만 기존 Dart 사건 처리기를 사용한다.
+/// 직접 이식한 경로는 JSON 가용성과 무관하게 해당 프로시저가 담당한다.
+/// 아직 이전하지 않은 경로는 기존 JSON/레거시 구현을 유지한다. 조건이
+/// 거짓이어도 같은 사건을 다른 처리기로 재시도하지 않는다.
 class LoreSpecialEventDispatcher {
   LoreSpecialEventDispatcher._();
 
@@ -47,7 +47,7 @@ class LoreSpecialEventDispatcher {
         script: LoreSpecProcedures.map6(x, y, context, scripts),
       );
     }
-    if (mapId == 7 && scripts.usingJson) {
+    if (mapId == 7) {
       return LoreSpecialEventDispatch(
         script: LoreSpecProcedures.map7(x, y, context, scripts),
       );
@@ -137,7 +137,7 @@ class LoreSpecialEventDispatcher {
         script: LoreSpecProcedures.map24(x, y, context, scripts),
       );
     }
-    if (mapId == 25 && scripts.usingJson) {
+    if (mapId == 25) {
       return LoreSpecialEventDispatch(
         script: LoreSpecProcedures.map25(x, y, context, scripts),
       );

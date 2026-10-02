@@ -51,6 +51,7 @@ void main() {
     });
 
     test('맵 7: x=30 또는 x=32에서 비밀벽 타일 (31, y)를 45로 연다', () {
+      scripts = LoreScriptEngine(); // This branch has no JSON dependency.
       for (final x in [30, 32]) {
         final run = dispatchSpecial(mapId: 7, x: x, y: 9, tile: 0);
         expect(run, isNotNull);

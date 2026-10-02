@@ -14269,8 +14269,13 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_spec_map7_8_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:28",
@@ -18284,8 +18289,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_route_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Map 25 left passage tile writes match source-generated replay without JSON; map-wide battle/exit continuation remains pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:65",
@@ -18295,8 +18305,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_route_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Left passage preserves loop bounds and final tile overwrites; renderer timing not compared to DOS."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:138",
@@ -18306,8 +18321,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_route_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Map 25 right passage tile writes match source-generated replay without JSON; map-wide continuation remains pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:66",
@@ -18317,8 +18337,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_route_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Right passage preserves loop bounds and final tile overwrites; renderer timing not compared to DOS."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:139",
@@ -18328,8 +18353,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map25_lever_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Left lever preserves all 256 raw byte values and unrelated bits; JSON-independent state/save replay, DOS UI timing pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:140",
@@ -18339,8 +18369,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map25_lever_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Left lever tests bits 7 and 8 after writing bit 7 and opens both source doors; full app/DOS playback pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:141",
@@ -18350,8 +18385,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map25_lever_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Right lever preserves all 256 raw byte values and unrelated bits; JSON-independent state/save replay, DOS UI timing pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:142",
@@ -18361,8 +18401,13 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/map25_lever_parity_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Right lever tests bits 7 and 8 after writing bit 8 and reapplies door state after save/revisit; full app/DOS playback pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:67",
@@ -24090,6 +24135,96 @@
       "test": "test/lava_source_parity_test.dart",
       "note": "Roll random(40) then random(luck) for all six party slots.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:27",
+      "line": 316,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/lore_spec_map7_8_test.dart",
+      "note": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:137",
+      "line": 2067,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_route_parity_test.dart",
+      "note": "Map 25 left passage tile writes match source-generated replay without JSON; map-wide battle/exit continuation remains pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:65",
+      "line": 2069,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_route_parity_test.dart",
+      "note": "Left passage preserves loop bounds and final tile overwrites; renderer timing not compared to DOS.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:138",
+      "line": 2074,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_route_parity_test.dart",
+      "note": "Map 25 right passage tile writes match source-generated replay without JSON; map-wide continuation remains pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:66",
+      "line": 2076,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_route_parity_test.dart",
+      "note": "Right passage preserves loop bounds and final tile overwrites; renderer timing not compared to DOS.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:139",
+      "line": 2081,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_lever_parity_test.dart",
+      "note": "Left lever preserves all 256 raw byte values and unrelated bits; JSON-independent state/save replay, DOS UI timing pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:140",
+      "line": 2085,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_lever_parity_test.dart",
+      "note": "Left lever tests bits 7 and 8 after writing bit 7 and opens both source doors; full app/DOS playback pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:141",
+      "line": 2092,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_lever_parity_test.dart",
+      "note": "Right lever preserves all 256 raw byte values and unrelated bits; JSON-independent state/save replay, DOS UI timing pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:142",
+      "line": 2096,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/map25_lever_parity_test.dart",
+      "note": "Right lever tests bits 7 and 8 after writing bit 8 and reapplies door state after save/revisit; full app/DOS playback pending.",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -25203,87 +25338,87 @@
   ],
   "runtime_assets": [
     {
-      "source": "repo_source\\LORE_1993_runtime\\ASCII.FNT",
+      "source": "repo_source/LORE_1993_runtime/ASCII.FNT",
       "kind": "fnt",
       "sha256": "6b7ffd8dc99d6035cc3e3ead9b99d33c6373be952effbe908aa20ee54307e117",
-      "port_copy": "assets\\fonts\\ASCII.FNT",
+      "port_copy": "assets/fonts/ASCII.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\CHARA.FNT",
+      "source": "repo_source/LORE_1993_runtime/CHARA.FNT",
       "kind": "fnt",
       "sha256": "4e0eaf6dc3a16773fccef1da26568e390b63531933e763a769f813ab304776b0",
-      "port_copy": "assets\\fonts\\CHARA.FNT",
+      "port_copy": "assets/fonts/CHARA.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\DEN.FNT",
+      "source": "repo_source/LORE_1993_runtime/DEN.FNT",
       "kind": "fnt",
       "sha256": "e5a482a330df45e379f63c82e06a1514e1f0194fe24c32c0c758f325eaf2eb71",
-      "port_copy": "assets\\fonts\\DEN.FNT",
+      "port_copy": "assets/fonts/DEN.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\DEN1.MAP",
+      "source": "repo_source/LORE_1993_runtime/DEN1.MAP",
       "kind": "map",
       "sha256": "a0e2f454256435b50a908c9cae94d44ba5ad675a9a5a9a9ea55edc84a250e0ea",
-      "port_copy": "assets\\maps\\DEN1.MAP",
+      "port_copy": "assets/maps/DEN1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\DEN2.MAP",
+      "source": "repo_source/LORE_1993_runtime/DEN2.MAP",
       "kind": "map",
       "sha256": "df65ca3cc90227293c89bc0ca0296f975b62dffe7a9eb9437a0c6c51ad5c34ff",
-      "port_copy": "assets\\maps\\DEN2.MAP",
+      "port_copy": "assets/maps/DEN2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\DEN3.MAP",
+      "source": "repo_source/LORE_1993_runtime/DEN3.MAP",
       "kind": "map",
       "sha256": "bb4b6f6e174098fab370edd95c6f25000d1644313ee4984797c9e1b3d190dc4c",
-      "port_copy": "assets\\maps\\DEN3.MAP",
+      "port_copy": "assets/maps/DEN3.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\DEN4.MAP",
+      "source": "repo_source/LORE_1993_runtime/DEN4.MAP",
       "kind": "map",
       "sha256": "02cda41f7901331a72145c55f49683e60e21fe4aa328a6411c78edfdcf3c4d0d",
-      "port_copy": "assets\\maps\\DEN4.MAP",
+      "port_copy": "assets/maps/DEN4.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\DEN5.MAP",
+      "source": "repo_source/LORE_1993_runtime/DEN5.MAP",
       "kind": "map",
       "sha256": "f3a82cdd3c42cb97086e23ae8ddfbffbabcdfe9970735ed15d84e443514c1c61",
-      "port_copy": "assets\\maps\\DEN5.MAP",
+      "port_copy": "assets/maps/DEN5.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\DEN6.MAP",
+      "source": "repo_source/LORE_1993_runtime/DEN6.MAP",
       "kind": "map",
       "sha256": "0cf9c22f7327d141f153678d8fb68e115f091f0a67e916cced646a1903c739db",
-      "port_copy": "assets\\maps\\DEN6.MAP",
+      "port_copy": "assets/maps/DEN6.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\DEN7.MAP",
+      "source": "repo_source/LORE_1993_runtime/DEN7.MAP",
       "kind": "map",
       "sha256": "37a2d83198a1f89aa8c576bb8522fa11f75d7625e900c388957029ca33ed94ee",
-      "port_copy": "assets\\maps\\DEN7.MAP",
+      "port_copy": "assets/maps/DEN7.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\END.CMD",
+      "source": "repo_source/LORE_1993_runtime/END.CMD",
       "kind": "cmd",
       "sha256": "0c62260186d87c9b8bcafeec97dc77be5516e8ea807c500fc95f540b6eb2f281",
       "port_copy": null,
@@ -25291,47 +25426,47 @@
       "status": "unmapped-runtime-file"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\FOEDATA.DAT",
+      "source": "repo_source/LORE_1993_runtime/FOEDATA.DAT",
       "kind": "dat",
       "sha256": "dc30cb5170a293e34a88d4018bdc67d3411b24b4c3bc31bb800f6970d80e9480",
-      "port_copy": "assets\\data\\FOEDATA.DAT",
+      "port_copy": "assets/data/FOEDATA.DAT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\GROUND.FNT",
+      "source": "repo_source/LORE_1993_runtime/GROUND.FNT",
       "kind": "fnt",
       "sha256": "00e06e563289d3c647583355681ddefe0098ec1146228f5fd1bec6e4f5902eb7",
-      "port_copy": "assets\\fonts\\GROUND.FNT",
+      "port_copy": "assets/fonts/GROUND.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\GROUND1.MAP",
+      "source": "repo_source/LORE_1993_runtime/GROUND1.MAP",
       "kind": "map",
       "sha256": "be28e140bb5603854cc3b417dddfb047ef014da49d7f053266070d8e643f6441",
-      "port_copy": "assets\\maps\\GROUND1.MAP",
+      "port_copy": "assets/maps/GROUND1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\GROUND2.MAP",
+      "source": "repo_source/LORE_1993_runtime/GROUND2.MAP",
       "kind": "map",
       "sha256": "5b710bc291c20e0ac2950ca24bfa35dce2beb714ed1369f9dc22642b3413aa57",
-      "port_copy": "assets\\maps\\GROUND2.MAP",
+      "port_copy": "assets/maps/GROUND2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\HIT.VOC",
+      "source": "repo_source/LORE_1993_runtime/HIT.VOC",
       "kind": "voc",
       "sha256": "c0cb9d3d9db3a56704f48779e17fe871f76fd56d033932eb532c691b3eb65a64",
-      "port_copy": "assets\\audio\\hit.wav",
+      "port_copy": "assets/audio/hit.wav",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\INIT.CMD",
+      "source": "repo_source/LORE_1993_runtime/INIT.CMD",
       "kind": "cmd",
       "sha256": "e0beb194edf4530473e4f6ae9d4ed32012ff90f97d64f0a64a6503eee5a9084d",
       "port_copy": null,
@@ -25339,63 +25474,63 @@
       "status": "unmapped-runtime-file"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\K_DEN1.MAP",
+      "source": "repo_source/LORE_1993_runtime/K_DEN1.MAP",
       "kind": "map",
       "sha256": "67c3853fe13785e63169a710e66574dbfd856b48f17fb861523f45612808e006",
-      "port_copy": "assets\\maps\\K_DEN1.MAP",
+      "port_copy": "assets/maps/K_DEN1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\K_DEN2.MAP",
+      "source": "repo_source/LORE_1993_runtime/K_DEN2.MAP",
       "kind": "map",
       "sha256": "6a620ba4f5d667922e9d6a2750564dcaa6be75cbf7da34f25b883dac9f6c3139",
-      "port_copy": "assets\\maps\\K_DEN2.MAP",
+      "port_copy": "assets/maps/K_DEN2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\KEEP.FNT",
+      "source": "repo_source/LORE_1993_runtime/KEEP.FNT",
       "kind": "fnt",
       "sha256": "cc5f03f89e972a7846e5829f748fa41752d02b2736266d82e235499ebee9cc8b",
-      "port_copy": "assets\\fonts\\KEEP.FNT",
+      "port_copy": "assets/fonts/KEEP.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\KEEP1.MAP",
+      "source": "repo_source/LORE_1993_runtime/KEEP1.MAP",
       "kind": "map",
       "sha256": "60f08449d182d7c4167a5c44c79cf5f550777afdc3d150616ac32e9911914c81",
-      "port_copy": "assets\\maps\\KEEP1.MAP",
+      "port_copy": "assets/maps/KEEP1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\KEEP2.MAP",
+      "source": "repo_source/LORE_1993_runtime/KEEP2.MAP",
       "kind": "map",
       "sha256": "3ad76fc298c714a317829c2acfa7d4bcb857b67d4c09b4ffb68af210604b670e",
-      "port_copy": "assets\\maps\\KEEP2.MAP",
+      "port_copy": "assets/maps/KEEP2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\KEEP3.MAP",
+      "source": "repo_source/LORE_1993_runtime/KEEP3.MAP",
       "kind": "map",
       "sha256": "a114241aba01f09823f109a7ac27bbaf713dd00df19c08e09ee1cde87e2ea37b",
-      "port_copy": "assets\\maps\\KEEP3.MAP",
+      "port_copy": "assets/maps/KEEP3.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\LAVA.MAP",
+      "source": "repo_source/LORE_1993_runtime/LAVA.MAP",
       "kind": "map",
       "sha256": "93b073ed9882274b4caa6f1972625c6f10fd6859d606ea6cbd520aad7de8d989",
-      "port_copy": "assets\\maps\\LAVA.MAP",
+      "port_copy": "assets/maps/LAVA.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\LORE.CMD",
+      "source": "repo_source/LORE_1993_runtime/LORE.CMD",
       "kind": "cmd",
       "sha256": "9b0eea71a42bb193c634375447cd88df117e4500d92036a3f3d48388d91b7e05",
       "port_copy": null,
@@ -25403,7 +25538,7 @@
       "status": "unmapped-runtime-file"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\LORE.EXE",
+      "source": "repo_source/LORE_1993_runtime/LORE.EXE",
       "kind": "exe",
       "sha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
       "port_copy": null,
@@ -25411,87 +25546,87 @@
       "status": "engine-replaced"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\LORE0.FNT",
+      "source": "repo_source/LORE_1993_runtime/LORE0.FNT",
       "kind": "fnt",
       "sha256": "8f75ffc387f33a616e7a4c68ff8bd14bd3f1c86b93d90ae104da480f73611e6d",
-      "port_copy": "assets\\fonts\\LORE0.FNT",
+      "port_copy": "assets/fonts/LORE0.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\LORE1.FNT",
+      "source": "repo_source/LORE_1993_runtime/LORE1.FNT",
       "kind": "fnt",
       "sha256": "965ba18c196d990cc91c6fb6e93d93c0ea758a3e1d731d919eb76fd5be063972",
-      "port_copy": "assets\\fonts\\LORE1.FNT",
+      "port_copy": "assets/fonts/LORE1.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\LORE2.FNT",
+      "source": "repo_source/LORE_1993_runtime/LORE2.FNT",
       "kind": "fnt",
       "sha256": "75ecfa67bdf7b84ca11629c581991b8cd588641f7b5068c68a1c2b471b5fefc2",
-      "port_copy": "assets\\fonts\\LORE2.FNT",
+      "port_copy": "assets/fonts/LORE2.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\LORE3.FNT",
+      "source": "repo_source/LORE_1993_runtime/LORE3.FNT",
       "kind": "fnt",
       "sha256": "51f41cd7e7a43b144cf09314e66ffea3ac0283050b6daf006b699a9ee9dcbfd6",
-      "port_copy": "assets\\fonts\\LORE3.FNT",
+      "port_copy": "assets/fonts/LORE3.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\MUSIC1.BGM",
+      "source": "repo_source/LORE_1993_runtime/MUSIC1.BGM",
       "kind": "bgm",
       "sha256": "d7cb817e9e39a952de48d196ae7e7a738d60a132db71c7e62e808602ccb5294c",
-      "port_copy": "assets\\audio\\music1_title.mp3",
+      "port_copy": "assets/audio/music1_title.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\MUSIC2.BGM",
+      "source": "repo_source/LORE_1993_runtime/MUSIC2.BGM",
       "kind": "bgm",
       "sha256": "6a9eacdbaabcc262c5de2f4948e6d7b7116716abaaaa86d270c22bfe66bbebce",
-      "port_copy": "assets\\audio\\music2_town.mp3",
+      "port_copy": "assets/audio/music2_town.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\MUSIC3.BGM",
+      "source": "repo_source/LORE_1993_runtime/MUSIC3.BGM",
       "kind": "bgm",
       "sha256": "61dc2f9bc9eabf566bb3598c07467fdd87a757f81ec43a9672bc8be0d935124e",
-      "port_copy": "assets\\audio\\music3_ground.mp3",
+      "port_copy": "assets/audio/music3_ground.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\MUSIC4.BGM",
+      "source": "repo_source/LORE_1993_runtime/MUSIC4.BGM",
       "kind": "bgm",
       "sha256": "3b067bba584cdca10eaee5e2845764678da5031ec2fd2fdea3e25772535b0895",
-      "port_copy": "assets\\audio\\music4_den.mp3",
+      "port_copy": "assets/audio/music4_den.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\MUSIC5.BGM",
+      "source": "repo_source/LORE_1993_runtime/MUSIC5.BGM",
       "kind": "bgm",
       "sha256": "41874a69c340ef5c2ab50591fc69a0a0647b825826cc53121e27cef556026116",
-      "port_copy": "assets\\audio\\music5_keep.mp3",
+      "port_copy": "assets/audio/music5_keep.mp3",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\PYRAMID1.MAP",
+      "source": "repo_source/LORE_1993_runtime/PYRAMID1.MAP",
       "kind": "map",
       "sha256": "c0f3d6c13c8286e2356afd56eecd3196be70780d57ba9ba879c2188d21cd9428",
-      "port_copy": "assets\\maps\\PYRAMID1.MAP",
+      "port_copy": "assets/maps/PYRAMID1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\README.DOC",
+      "source": "repo_source/LORE_1993_runtime/README.DOC",
       "kind": "doc",
       "sha256": "89f57376ef52031c69d6f4cc32a4b054be2897772638ec25a02fbadaaf127602",
       "port_copy": null,
@@ -25499,7 +25634,7 @@
       "status": "documentation-only"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\README.txt",
+      "source": "repo_source/LORE_1993_runtime/README.txt",
       "kind": "txt",
       "sha256": "1cb2d730f9ba7efbd0cf12a355a2936fb33e7bf2aedd7bc5306a663a5870da26",
       "port_copy": null,
@@ -25507,98 +25642,98 @@
       "status": "documentation-only"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\SCREAM1.VOC",
+      "source": "repo_source/LORE_1993_runtime/SCREAM1.VOC",
       "kind": "voc",
       "sha256": "74ab0633cb7bc48b9b57aea1b835fc1e8049ed4ead40a12d0a27d89067fe4d84",
-      "port_copy": "assets\\audio\\scream1.wav",
+      "port_copy": "assets/audio/scream1.wav",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\SCREAM2.VOC",
+      "source": "repo_source/LORE_1993_runtime/SCREAM2.VOC",
       "kind": "voc",
       "sha256": "b33d4fc9f0399f78df8797e39f541838113c77f9948a472e8da426489564b9c4",
-      "port_copy": "assets\\audio\\scream2.wav",
+      "port_copy": "assets/audio/scream2.wav",
       "copy_equal": null,
       "status": "converted-audio-present"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\SWAMP.MAP",
+      "source": "repo_source/LORE_1993_runtime/SWAMP.MAP",
       "kind": "map",
       "sha256": "f93e130a7e57aa9b02262dd8f3adce5a5c5faa613d036620ab6a26793b691bda",
-      "port_copy": "assets\\maps\\SWAMP.MAP",
+      "port_copy": "assets/maps/SWAMP.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\T_DEN1.MAP",
+      "source": "repo_source/LORE_1993_runtime/T_DEN1.MAP",
       "kind": "map",
       "sha256": "d4c58dfed7a6615dfd7f91566e14e81db660d26cc8ddbbcd85cabff7cd534fe5",
-      "port_copy": "assets\\maps\\T_DEN1.MAP",
+      "port_copy": "assets/maps/T_DEN1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\T_DEN2.MAP",
+      "source": "repo_source/LORE_1993_runtime/T_DEN2.MAP",
       "kind": "map",
       "sha256": "cd0c2a8d074a4ec72f36c386345ed6de11fb980cc7b3482725e41f368a7420a7",
-      "port_copy": "assets\\maps\\T_DEN2.MAP",
+      "port_copy": "assets/maps/T_DEN2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\TOWN.FNT",
+      "source": "repo_source/LORE_1993_runtime/TOWN.FNT",
       "kind": "fnt",
       "sha256": "8a0f10e5d070e1933b34d7bfc06847197a66bd35cd05f0a02d86372fe5ae8cf9",
-      "port_copy": "assets\\fonts\\TOWN.FNT",
+      "port_copy": "assets/fonts/TOWN.FNT",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\TOWN1.MAP",
+      "source": "repo_source/LORE_1993_runtime/TOWN1.MAP",
       "kind": "map",
       "sha256": "ebde6ebeb3771891baf9e59dc4761d04ffe26ed7a03a56e4dad93b4fba07d244",
-      "port_copy": "assets\\maps\\TOWN1.MAP",
+      "port_copy": "assets/maps/TOWN1.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\TOWN2.MAP",
+      "source": "repo_source/LORE_1993_runtime/TOWN2.MAP",
       "kind": "map",
       "sha256": "74b1d5ab561e8bec6266b1ac110f7c50e4d5ce4a6ed299a3abbdc73cc4dd2ef9",
-      "port_copy": "assets\\maps\\TOWN2.MAP",
+      "port_copy": "assets/maps/TOWN2.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\TOWN3.MAP",
+      "source": "repo_source/LORE_1993_runtime/TOWN3.MAP",
       "kind": "map",
       "sha256": "ec2e303a34ff50134224202784f8c5a2bb93011379072f26166446a501daa20b",
-      "port_copy": "assets\\maps\\TOWN3.MAP",
+      "port_copy": "assets/maps/TOWN3.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\TOWN4.MAP",
+      "source": "repo_source/LORE_1993_runtime/TOWN4.MAP",
       "kind": "map",
       "sha256": "a69274c819bffa0b04cbd34f9add8e99a5b5300ac6bcf0a43a823f8450487d6b",
-      "port_copy": "assets\\maps\\TOWN4.MAP",
+      "port_copy": "assets/maps/TOWN4.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\TOWN5.MAP",
+      "source": "repo_source/LORE_1993_runtime/TOWN5.MAP",
       "kind": "map",
       "sha256": "c5ae33472824e51ae1bcca4f5638afc7116211b925e85eac9f3b9df4a96111e9",
-      "port_copy": "assets\\maps\\TOWN5.MAP",
+      "port_copy": "assets/maps/TOWN5.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     },
     {
-      "source": "repo_source\\LORE_1993_runtime\\WATER.MAP",
+      "source": "repo_source/LORE_1993_runtime/WATER.MAP",
       "kind": "map",
       "sha256": "1aed6fa5cc6773a4ce69f42d4337ec3669f1dd465111956097ccae39307383de",
-      "port_copy": "assets\\maps\\WATER.MAP",
+      "port_copy": "assets/maps/WATER.MAP",
       "copy_equal": true,
       "status": "exact-copy"
     }
@@ -25742,16 +25877,16 @@
   ],
   "existing_evidence": [
     {
-      "path": "test\\audio_manager_mapping_test.dart",
+      "path": "test/audio_manager_mapping_test.dart",
       "kind": "test",
-      "sha256": "9a23b8928cebc0235c5f50225d775efb3e01c57ec5255e226e6591a89ddbcc26",
+      "sha256": "7142b55b93a69fc12d18749ee716222146210e8c988cb5009383735c706e319f",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\battle_test.dart",
+      "path": "test/battle_test.dart",
       "kind": "test",
       "sha256": "57fcfd6cc419a99457e8fff4069c9ac1e8f4ad91ffe57a5c28ada961e3b123ab",
       "cited_source_files": [
@@ -25760,21 +25895,21 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\battle_viewport_join_test.dart",
+      "path": "test/battle_viewport_join_test.dart",
       "kind": "test",
       "sha256": "8608cfbdc313e2c0b24fc2db1afa5dbf880cf0364980d274c7d6b1089bab1bd1",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\bootstrap_test.dart",
+      "path": "test/bootstrap_test.dart",
       "kind": "test",
       "sha256": "52201b6134bf86a0278fd7a10f4f21fd002a0aca36d23e443ad828f7d16904f7",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\creation_test.dart",
+      "path": "test/creation_test.dart",
       "kind": "test",
       "sha256": "271cd1d1f6023de3ec4e212cdde5fe24b7f275917a198ad3f7fac5883a96f05a",
       "cited_source_files": [
@@ -25783,35 +25918,35 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\data_json_test.dart",
+      "path": "test/data_json_test.dart",
       "kind": "test",
       "sha256": "5e274ff5cb75c3f5fe560923da7cd958fa9ba28adab94a92d9f2286d3fe8bc9c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\den7_torch_flow_test.dart",
+      "path": "test/den7_torch_flow_test.dart",
       "kind": "test",
       "sha256": "1153f5b8a82662bb86b7b3a31f20035cbe869abcb31d8e2d57d904aeae7bc5c5",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\dialogue_json_test.dart",
+      "path": "test/dialogue_json_test.dart",
       "kind": "test",
       "sha256": "d230e20b0e5fa6a61f7ccb43154e61c7c614d9a5ca4ece6159649ee64027e802",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\encounter_screen_flow_test.dart",
+      "path": "test/encounter_screen_flow_test.dart",
       "kind": "test",
       "sha256": "b2173eb44b3b1027059d1f846066ace3295b4223d5ab2537050813205fb6567d",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\encounter_test.dart",
+      "path": "test/encounter_test.dart",
       "kind": "test",
       "sha256": "f93f8e207e00a3f92292155953a344dfd85739ace06c4c38bad0680143d5bd01",
       "cited_source_files": [
@@ -25820,14 +25955,14 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\encounter_viewport_test.dart",
+      "path": "test/encounter_viewport_test.dart",
       "kind": "test",
       "sha256": "da0b901f55151572eded6e22b23450439993b6729887ef47f37d3bce9b3c5326",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\field_magic_test.dart",
+      "path": "test/field_magic_test.dart",
       "kind": "test",
       "sha256": "4f73250e5c62dd25d26d811b9b36831f54870df277c68b1bc443a921b6479774",
       "cited_source_files": [
@@ -25836,42 +25971,42 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\field_menu_script_save_test.dart",
+      "path": "test/field_menu_script_save_test.dart",
       "kind": "test",
       "sha256": "e293b9b02ca37486fe8aa9148ccfdc6a14ac9ada75b78f83fc3461e68effa6ee",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\field_random_sequence_test.dart",
+      "path": "test/field_random_sequence_test.dart",
       "kind": "test",
       "sha256": "e1776cbb45c1f494db49280eae23c83a386d854c2563119ba9851cb08250a9bc",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\field_session_test.dart",
+      "path": "test/field_session_test.dart",
       "kind": "test",
       "sha256": "835297bdde361dcaad2229e543b480bd65b7395901927ab9835f1e2122b236b6",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\field_test.dart",
+      "path": "test/field_test.dart",
       "kind": "test",
       "sha256": "0f7020dfcc7e412bf6718e38c77de431cda459dee680b3effe4c9ad4bcff1336",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\golden_seal_progress_test.dart",
+      "path": "test/golden_seal_progress_test.dart",
       "kind": "test",
       "sha256": "80e8e7009058dce9a1abc7690ff46be305ea7b22f30e4b60bc26e8ff23f681a0",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\keyboard_input_test.dart",
+      "path": "test/keyboard_input_test.dart",
       "kind": "test",
       "sha256": "0009266ea6dcf324b25ec97cc0c2e88acad623404aa54f5ff74992dfb410fb06",
       "cited_source_files": [
@@ -25880,7 +26015,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lava_source_parity_test.dart",
+      "path": "test/lava_source_parity_test.dart",
       "kind": "test",
       "sha256": "bfcb203e756df69a093d7cf4b2900aa140456b0df99eacdfb03ae2bf62410cd7",
       "cited_source_files": [
@@ -25889,28 +26024,35 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_battle_progress_test.dart",
+      "path": "test/lore_battle_progress_test.dart",
       "kind": "test",
       "sha256": "dbc9c7f460cc847de12872e035ceebfacabc2b04ee8edacd3a335a444ac3f81f",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_ent_procedures_test.dart",
+      "path": "test/lore_ent_procedures_test.dart",
       "kind": "test",
       "sha256": "c0392305e2616eed18dab5eba8b6635fedbea6c098e8077f1a2263fdf7e74366",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_main_procedures_test.dart",
+      "path": "test/lore_main_procedures_test.dart",
       "kind": "test",
       "sha256": "3783c4b66b6335ea5863abfa59180aa0d1978358cb606898f58c75d3452e768b",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map11_test.dart",
+      "path": "test/lore_source_memory_test.dart",
+      "kind": "test",
+      "sha256": "622052a041e371f9852da44c2aff160b5bd02c64cb08dff761c3f8e3eba5f930",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/lore_spec_map11_test.dart",
       "kind": "test",
       "sha256": "6cb931451f667420b230b56ddbd06751ad035b39f84196b36a751a9cada046e6",
       "cited_source_files": [
@@ -25919,7 +26061,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map12_test.dart",
+      "path": "test/lore_spec_map12_test.dart",
       "kind": "test",
       "sha256": "6a2fa1c93ec8bca4ef96f934925de8ae94d4d54b20b97f1947124ec4d0511406",
       "cited_source_files": [
@@ -25928,7 +26070,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map13_test.dart",
+      "path": "test/lore_spec_map13_test.dart",
       "kind": "test",
       "sha256": "36765c6acdb11da2de5383e20ae3ea6939a435bedd7f18c03312ea6abe24626f",
       "cited_source_files": [
@@ -25937,7 +26079,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map14_test.dart",
+      "path": "test/lore_spec_map14_test.dart",
       "kind": "test",
       "sha256": "90f4159c34990fcce328c1418cbaa80f00dc8131e2fc94f23fa48731d5afdf37",
       "cited_source_files": [
@@ -25946,7 +26088,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map15_test.dart",
+      "path": "test/lore_spec_map15_test.dart",
       "kind": "test",
       "sha256": "482360b7c2bce2c87440ad06007c43d2df7173beb38efb4d5d6bc47a23f8063f",
       "cited_source_files": [
@@ -25955,7 +26097,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map16_test.dart",
+      "path": "test/lore_spec_map16_test.dart",
       "kind": "test",
       "sha256": "f78271111d12cc4581dd2296344cd8b582464d2bf5c134d597c9d5153d7f6d54",
       "cited_source_files": [
@@ -25964,7 +26106,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map17_test.dart",
+      "path": "test/lore_spec_map17_test.dart",
       "kind": "test",
       "sha256": "d7f2c04b8db8de64d43c38b345c737abcbb71da828b3cd434298e702d38cf5c2",
       "cited_source_files": [
@@ -25973,7 +26115,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map18_test.dart",
+      "path": "test/lore_spec_map18_test.dart",
       "kind": "test",
       "sha256": "0ff0159d6da42d082bf4f651c716c8c6aafda67677caefa4ab7cd6b9972929c8",
       "cited_source_files": [
@@ -25982,7 +26124,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map19_test.dart",
+      "path": "test/lore_spec_map19_test.dart",
       "kind": "test",
       "sha256": "7a37a47871e2c0a1bf58500ab2b0fee932e83e1129178ab988cd5202cb9a12ef",
       "cited_source_files": [
@@ -25991,7 +26133,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map20_test.dart",
+      "path": "test/lore_spec_map20_test.dart",
       "kind": "test",
       "sha256": "99c2cdb43c4e648aed839baa55255f2ca91db02dedd432f998b2571a782622d4",
       "cited_source_files": [
@@ -26000,7 +26142,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map21_test.dart",
+      "path": "test/lore_spec_map21_test.dart",
       "kind": "test",
       "sha256": "4186039092f4a60adf5feab5e12f21ed489183ba2dd8a2e68b167ac03b557248",
       "cited_source_files": [
@@ -26009,7 +26151,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map22_test.dart",
+      "path": "test/lore_spec_map22_test.dart",
       "kind": "test",
       "sha256": "f433e99a018500f4e3886ab6dedab383fd9349c73f1d6f93b78592db096f97c2",
       "cited_source_files": [
@@ -26018,7 +26160,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map23_test.dart",
+      "path": "test/lore_spec_map23_test.dart",
       "kind": "test",
       "sha256": "022e25d7e4c2ca5c081d870ea9b29120ee2d7026fc8ba10edf12c8fba5018673",
       "cited_source_files": [
@@ -26027,7 +26169,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map24_test.dart",
+      "path": "test/lore_spec_map24_test.dart",
       "kind": "test",
       "sha256": "07db4400b8ae976bf1a61a4515250f3b79c5f88c16f6f8e6c85c05d5a9da9e6e",
       "cited_source_files": [
@@ -26036,7 +26178,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map25_test.dart",
+      "path": "test/lore_spec_map25_test.dart",
       "kind": "test",
       "sha256": "ef3d1ffe920be8513d3aad9f927db4ef4598201f50511100e5e4fdf8eba853c9",
       "cited_source_files": [
@@ -26045,7 +26187,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map26_test.dart",
+      "path": "test/lore_spec_map26_test.dart",
       "kind": "test",
       "sha256": "aa8ee524e649dbc1b35df708ffd30f86e3125ed2c207d84a8a90124588dd5617",
       "cited_source_files": [
@@ -26054,7 +26196,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map27_test.dart",
+      "path": "test/lore_spec_map27_test.dart",
       "kind": "test",
       "sha256": "78e98a9da2dff65d447b38a1d9180b7a4fc6c04be3d31761deadd5355390577f",
       "cited_source_files": [
@@ -26063,14 +26205,14 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map4_test.dart",
+      "path": "test/lore_spec_map4_test.dart",
       "kind": "test",
       "sha256": "c899ae047d1d7ba54b0ac0e38f419921abbf5a4a529174777388f6328f6f4c47",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map6_test.dart",
+      "path": "test/lore_spec_map6_test.dart",
       "kind": "test",
       "sha256": "55094b27ba7a28e8c0395cc4b17f61a4fa29158ca67525bc952105874b1edbac",
       "cited_source_files": [
@@ -26079,16 +26221,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map7_8_test.dart",
+      "path": "test/lore_spec_map7_8_test.dart",
       "kind": "test",
-      "sha256": "7d530de873edb720c17549175102b5763e671df2a88724ceb63d16fa74d6a5c1",
+      "sha256": "69f243431cb8292ebeb16d398b83c46047094ebb9038ec4ec9bcef5041236e08",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_spec_map9_10_test.dart",
+      "path": "test/lore_spec_map9_10_test.dart",
       "kind": "test",
       "sha256": "1eeff0f29530927f40b9b0811e03db968a58fcd0799e973332db6ef48184425c",
       "cited_source_files": [
@@ -26097,14 +26239,14 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_talk_all_maps_test.dart",
+      "path": "test/lore_talk_all_maps_test.dart",
       "kind": "test",
       "sha256": "c3c9070037c8bb23baf147495e9e140eca7488177ee400e8d451eb379c7993c8",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\lore_talk_map6_test.dart",
+      "path": "test/lore_talk_map6_test.dart",
       "kind": "test",
       "sha256": "3bd9e690e39c2d7ca4b5e8d5d245b7b0f2cb2166ccf12eca12aad8bea68ce4ea",
       "cited_source_files": [
@@ -26113,21 +26255,21 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\loreent_entry_effects_test.dart",
+      "path": "test/loreent_entry_effects_test.dart",
       "kind": "test",
       "sha256": "ee7d9636af3f19c00045bbf8baf31faaccb7ae3206ecba2c66607d2e4cfd39ff",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\loreent_sign_replay_test.dart",
+      "path": "test/loreent_sign_replay_test.dart",
       "kind": "test",
       "sha256": "4662a47f7811c4161c902987cf95e107efbf1330a42931856873857b0aae9d99",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\map12_state_parity_test.dart",
+      "path": "test/map12_state_parity_test.dart",
       "kind": "test",
       "sha256": "c7889fe7e0bd93d3312aca88dc40226cb3bf8a9fbaac7bf80c5e5ceb0521a675",
       "cited_source_files": [
@@ -26136,7 +26278,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\map1_food_parity_test.dart",
+      "path": "test/map1_food_parity_test.dart",
       "kind": "test",
       "sha256": "74b3dd791407bee9092fa20b0040851b6c54aa8c32a8cf41444fabdfee0cb79f",
       "cited_source_files": [
@@ -26145,7 +26287,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\map24_talk_parity_test.dart",
+      "path": "test/map24_talk_parity_test.dart",
       "kind": "test",
       "sha256": "bd33adb3890f0e6db4aac29da6d9d9cd4780ee21d2f8634a379f794bb8a87ffb",
       "cited_source_files": [
@@ -26154,44 +26296,44 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\map25_lever_parity_test.dart",
+      "path": "test/map25_lever_parity_test.dart",
       "kind": "test",
-      "sha256": "3fc5b26652e96fd7d873b6bbd4846043c5448947db15ae20fa14ec48982a51d6",
+      "sha256": "0acef08a02673e1ffffcaf55d94afc7ab7ea234ed967ee1187677a4c0a1eca4d",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\mirror_enemy_test.dart",
+      "path": "test/mirror_enemy_test.dart",
       "kind": "test",
       "sha256": "a80ecf1c2386b340be6cfe5614309638703418d73dabfc00079f8f687ae7ed6c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\movement_logic_test.dart",
+      "path": "test/movement_logic_test.dart",
       "kind": "test",
       "sha256": "fc814fb3e893d6c107a4b03bf59d39ce25d6191629a387565c9e5c3bd1bc18f4",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\portal_reconciliation_test.dart",
+      "path": "test/portal_reconciliation_test.dart",
       "kind": "test",
       "sha256": "1903901710c56a880338bb15b2322cfbe5d6f31a749a7c3e2b2656dda23f26d1",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\portal_session_test.dart",
+      "path": "test/portal_session_test.dart",
       "kind": "test",
       "sha256": "0adeb05e44dcd275e975a9eea6f79cab5954a6067a4819c4b75d4ef140d31d93",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\quest_branch_test.dart",
+      "path": "test/quest_branch_test.dart",
       "kind": "test",
       "sha256": "5b76d1d332a9333633fea281e16c908fad4323ca6c16c770090cc0d9e9b36a09",
       "cited_source_files": [
@@ -26200,56 +26342,56 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\rigel_blessing_test.dart",
+      "path": "test/rigel_blessing_test.dart",
       "kind": "test",
       "sha256": "994d76a70f9952f0de13042ffcb21aa02b0bdc5709408e6ccc21c567fca9f9a7",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\save_contract_test.dart",
+      "path": "test/save_contract_test.dart",
       "kind": "test",
       "sha256": "6d6d20d260e39fd7f261ee6725fb3e684db0b70f3ac35a342a208b7e271d7a1e",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\save_test.dart",
+      "path": "test/save_test.dart",
       "kind": "test",
       "sha256": "42149da59b72989539ac2322b4ef7a045a85204338e6c7013a38792c9bb24b91",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_battle_session_test.dart",
+      "path": "test/script_battle_session_test.dart",
       "kind": "test",
       "sha256": "5c56bb06741e9865139484d9055cd92279eab52540247c8bfdf1cc39b9c9b28e",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_branch_matrix_test.dart",
+      "path": "test/script_branch_matrix_test.dart",
       "kind": "test",
       "sha256": "105969b85a47127f709282c86fa9a454071d69beac7411c6cccbf793f90de648",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_effect_delta_test.dart",
+      "path": "test/script_effect_delta_test.dart",
       "kind": "test",
       "sha256": "de1c3f18143da12b1f9fd4b7c773172f80606784cd2aff8b352c051334956748",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_engine_isolation_test.dart",
+      "path": "test/script_engine_isolation_test.dart",
       "kind": "test",
       "sha256": "b0881f21826149a9c61efa6dcc6af74ac59cf9e462228ba81bc03145c6464ec9",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_engine_test.dart",
+      "path": "test/script_engine_test.dart",
       "kind": "test",
       "sha256": "fd3e8ae4265d9905f67a7ef97ddeaa19ae52d558f5d009d24b8bb1c8b97f297f",
       "cited_source_files": [
@@ -26260,14 +26402,14 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_equip_reducer_test.dart",
+      "path": "test/script_equip_reducer_test.dart",
       "kind": "test",
       "sha256": "b822e75aeb9658d16030845993cb1e5009cfa05c31bae8ac99f4b4feea6f113c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_initiative_coverage_test.dart",
+      "path": "test/script_initiative_coverage_test.dart",
       "kind": "test",
       "sha256": "921fb3eda95d7b03fd738c2698345511c22ce62a59f53b9bd893c5fb2a1fa8ed",
       "cited_source_files": [
@@ -26277,28 +26419,28 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_map_reachability_test.dart",
+      "path": "test/script_map_reachability_test.dart",
       "kind": "test",
       "sha256": "613b6712097795df4f25e28fe658a947372f1d7a3d804a7aec20dcfb91fafc25",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_party_reducer_test.dart",
+      "path": "test/script_party_reducer_test.dart",
       "kind": "test",
       "sha256": "7f9c100c5c4c7195775280087666a88b1803ca10b0e1577d7e1d167fa50ed647",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_session_scenario_test.dart",
+      "path": "test/script_session_scenario_test.dart",
       "kind": "test",
       "sha256": "ca2640657db5335182a93420741c447e44a6f568778f0d349bd88e447aabc646",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\script_world_reducer_test.dart",
+      "path": "test/script_world_reducer_test.dart",
       "kind": "test",
       "sha256": "0f4f97fa06c0656b46bf54dfb1afd1bb6de35ead39fdb1e36478eefcc1900953",
       "cited_source_files": [
@@ -26307,7 +26449,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\source_entrance_replay_test.dart",
+      "path": "test/source_entrance_replay_test.dart",
       "kind": "test",
       "sha256": "8c2c91bfe185b267a6df4bc2ad1ff0c67cc4eaa7e1ad3404d625356fb21b17a7",
       "cited_source_files": [
@@ -26316,7 +26458,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\source_exit_replay_test.dart",
+      "path": "test/source_exit_replay_test.dart",
       "kind": "test",
       "sha256": "27bb80e2856ac6c748160b2e02148c8ab0d0594d72ab194401f3bb4144e4bbc0",
       "cited_source_files": [
@@ -26325,7 +26467,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\source_gold_replay_test.dart",
+      "path": "test/source_gold_replay_test.dart",
       "kind": "test",
       "sha256": "14ccd4628e2e0f60593a34407ddf64155df0365572e753cd4864eae0b1f60314",
       "cited_source_files": [
@@ -26334,30 +26476,37 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\source_parity_test.dart",
+      "path": "test/source_map_memory_test.dart",
+      "kind": "test",
+      "sha256": "995953fdd9d43cb00537d67bc5e2c050260b954e026c1606335da8af947cb39a",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/source_parity_test.dart",
       "kind": "test",
       "sha256": "ef4f5d0a673606997259b6a0216e658c805a6ecd7f57c1ca6bb6d2892d896a8c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\source_route_parity_test.dart",
+      "path": "test/source_route_parity_test.dart",
       "kind": "test",
-      "sha256": "5c4d41a840a90d4a14e028a6a09aad0a767bca04989096f21c92d5ef1154420d",
+      "sha256": "704eb7687cdc7e243cc7ed1e82af587c38484c2dd20f0d15e96ca74f7b5d9d12",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\source_talk_choices_test.dart",
+      "path": "test/source_talk_choices_test.dart",
       "kind": "test",
       "sha256": "93d8305e16530bd593139e2948a83ed3223ac90252af727605a9cf846c44f07f",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\source_talk_replay_test.dart",
+      "path": "test/source_talk_replay_test.dart",
       "kind": "test",
       "sha256": "02fe2bd3bbc28c429cf2138519a639883c890b42f274ea0124b0dbda0d5e4ad3",
       "cited_source_files": [
@@ -26366,7 +26515,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\source_tile_protocol_test.dart",
+      "path": "test/source_tile_protocol_test.dart",
       "kind": "test",
       "sha256": "3cd56bc5768e7a2a5f13b882d6e8c1449e09bb3ba15bbbeddb75fb3120919e84",
       "cited_source_files": [
@@ -26375,7 +26524,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\spec_events_test.dart",
+      "path": "test/spec_events_test.dart",
       "kind": "test",
       "sha256": "7d09d96a76452e3794de87b52e280ec561964521e58b775525f37114bee761ea",
       "cited_source_files": [
@@ -26384,35 +26533,35 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\special_event_dispatcher_test.dart",
+      "path": "test/special_event_dispatcher_test.dart",
       "kind": "test",
       "sha256": "8047b761f5a4d735d13a904ea06b0b932173a3fe4687c7d84c8d701de20e5827",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\sprite_sheet_test.dart",
+      "path": "test/sprite_sheet_test.dart",
       "kind": "test",
       "sha256": "4c63712803037dbf47af4dee58c34a5da672ac5201cad10c76a2a380bf582f26",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\step1_hazards_and_esp_test.dart",
+      "path": "test/step1_hazards_and_esp_test.dart",
       "kind": "test",
       "sha256": "53bdfe054358fadbe12351addbecda8b9d6c15f9f9f59e86ced0a349b9f97e83",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\step2_battle_test.dart",
+      "path": "test/step2_battle_test.dart",
       "kind": "test",
       "sha256": "bd22b52714ac3b0405a0232a4c8d2f34826d28eee1282c94dae0536fd2e69e85",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\step3_town_and_dungeon_test.dart",
+      "path": "test/step3_town_and_dungeon_test.dart",
       "kind": "test",
       "sha256": "7d20861092abaf2c4053cf529db4d337cbd8209e35f29bb2bd0de41dc43672e5",
       "cited_source_files": [
@@ -26423,7 +26572,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\step4_ending_and_bestiary_test.dart",
+      "path": "test/step4_ending_and_bestiary_test.dart",
       "kind": "test",
       "sha256": "acab2a6541351561029d76733da286799e58e0e41665c3254c1ea490060963e2",
       "cited_source_files": [
@@ -26432,7 +26581,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\step5_train_rest_guide_test.dart",
+      "path": "test/step5_train_rest_guide_test.dart",
       "kind": "test",
       "sha256": "2f0ed774e6c8729ed2d7528cfc8a29c5fef82423421181fef99b2c4816c34e82",
       "cited_source_files": [
@@ -26443,7 +26592,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\step6_field_prompts_test.dart",
+      "path": "test/step6_field_prompts_test.dart",
       "kind": "test",
       "sha256": "1c47e1e5ad03ddd7668a53703858f2b92e36d8575a1b1f2e176707deb13e284d",
       "cited_source_files": [
@@ -26454,21 +26603,21 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\step_rule_selection_test.dart",
+      "path": "test/step_rule_selection_test.dart",
       "kind": "test",
       "sha256": "c6bab83a542ab2abd9759a9ac6a4b9e09aefa690d67235957495b45fa4cef379",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\step_tile_reachability_test.dart",
+      "path": "test/step_tile_reachability_test.dart",
       "kind": "test",
       "sha256": "cc69e9ca77ef84f65c3f6873d3634a0b099c27b97c4405dc69055819d2378159",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\swamp_source_parity_test.dart",
+      "path": "test/swamp_source_parity_test.dart",
       "kind": "test",
       "sha256": "00a5c9c9b662f16efb4e4210cda09010f37511af90aca2e8f39d092af2cab5cc",
       "cited_source_files": [
@@ -26477,14 +26626,14 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\talk_content_reachability_test.dart",
+      "path": "test/talk_content_reachability_test.dart",
       "kind": "test",
       "sha256": "86ced013269cb7c47c8ccdbf0119ad4a7b85c3d67a3a33aaf410eaea9e7653b0",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\talk_dispatcher_test.dart",
+      "path": "test/talk_dispatcher_test.dart",
       "kind": "test",
       "sha256": "7ff476751de462f00ee0b121e063bce70ef91c012302ca985008364ddfaab02b",
       "cited_source_files": [
@@ -26493,7 +26642,7 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\talk_map27_test.dart",
+      "path": "test/talk_map27_test.dart",
       "kind": "test",
       "sha256": "826b38041a2751ffb1afda8569a2e6263a600766f55f538bcf9f2ea233ec60a5",
       "cited_source_files": [
@@ -26502,28 +26651,28 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\talk_rule_selection_test.dart",
+      "path": "test/talk_rule_selection_test.dart",
       "kind": "test",
       "sha256": "5efb87ca5a27e767bac4936cedd997ae46fb04094fe25e67208e5105efd45b87",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\widget_test.dart",
+      "path": "test/widget_test.dart",
       "kind": "test",
       "sha256": "0107f2fc4de403bcffe6b5d6fcf320a35ede40bdc41555e4187f8e48b368984b",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\world_map_contract_test.dart",
+      "path": "test/world_map_contract_test.dart",
       "kind": "test",
       "sha256": "21bac82dc04ddd23d5f5510722dfa6847b814438d4a1c468fc5711974af5a692",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\world_rules_test.dart",
+      "path": "test/world_rules_test.dart",
       "kind": "test",
       "sha256": "284fe942a3bef0501631292f2b9cf8e6207930ea1991a5e6910935b59872e13f",
       "cited_source_files": [
@@ -26532,144 +26681,144 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
-      "path": "test\\fixtures\\map12_state_parity.json",
+      "path": "test/fixtures/map12_state_parity.json",
       "kind": "fixture",
       "sha256": "8ce7fd6feec7a51e335f751608e5fc0ab6946493ce9722d4445eaf9e9a43f64d",
       "test_users": [
-        "test\\map12_state_parity_test.dart"
+        "test/map12_state_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map17_route_parity.json",
+      "path": "test/fixtures/map17_route_parity.json",
       "kind": "fixture",
       "sha256": "ff3a6dda61f18b1cf28ba8acb8f788e48e7f5310dd9d6fdc65f49ada54305f8c",
       "test_users": [
-        "test\\source_route_parity_test.dart"
+        "test/source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map19_route_parity.json",
+      "path": "test/fixtures/map19_route_parity.json",
       "kind": "fixture",
       "sha256": "1a81b71505f3328cea12998bec6989bd945111f64f9b39ea5ee88c9566be0631",
       "test_users": [
-        "test\\source_route_parity_test.dart"
+        "test/source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map1_food_parity.json",
+      "path": "test/fixtures/map1_food_parity.json",
       "kind": "fixture",
       "sha256": "b0c2f146fc70e61ddb207b20268c1d75fb43af60e35ac0bfcbe888cda8b7d6d3",
       "test_users": [
-        "test\\map1_food_parity_test.dart"
+        "test/map1_food_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map20_route_parity.json",
+      "path": "test/fixtures/map20_route_parity.json",
       "kind": "fixture",
       "sha256": "5e734c6cc2fd7b912eae95fa9f29939834397aac8c7120cef65096045f6a0630",
       "test_users": [
-        "test\\source_route_parity_test.dart"
+        "test/source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map23_route_parity.json",
+      "path": "test/fixtures/map23_route_parity.json",
       "kind": "fixture",
       "sha256": "d6d616717ba5c89e0fb73c199a07562888aaccd880707ec64841baa1223a7b76",
       "test_users": [
-        "test\\source_route_parity_test.dart"
+        "test/source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map24_talk_parity.json",
+      "path": "test/fixtures/map24_talk_parity.json",
       "kind": "fixture",
       "sha256": "cca824b4f55f3641eaabf6938de8e3f383a0aa9ab7df27662b1e36cbad3f4af8",
       "test_users": [
-        "test\\map24_talk_parity_test.dart"
+        "test/map24_talk_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map25_lever_parity.json",
+      "path": "test/fixtures/map25_lever_parity.json",
       "kind": "fixture",
       "sha256": "cf160701acf48740fd9e5250f4cddad8de0b14475876223001dc3d8981f07186",
       "test_users": [
-        "test\\map25_lever_parity_test.dart"
+        "test/map25_lever_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map25_route_parity.json",
+      "path": "test/fixtures/map25_route_parity.json",
       "kind": "fixture",
       "sha256": "7b494ecec87c1352430ec29f74de850b49a65447c74f2873d365133c2c2c765d",
       "test_users": [
-        "test\\source_route_parity_test.dart"
+        "test/source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\map27_route_parity.json",
+      "path": "test/fixtures/map27_route_parity.json",
       "kind": "fixture",
       "sha256": "b50b00a79c0c729defad57a8b1702414c78f0bf80869d4084ea767cbceed633d",
       "test_users": [
-        "test\\source_route_parity_test.dart"
+        "test/source_route_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\source_entrance_replay.json",
+      "path": "test/fixtures/source_entrance_replay.json",
       "kind": "fixture",
       "sha256": "8e36fc0c4cc982bd1df6fca5ccbe3f633ef9e25efd6a4f9f8d32b6c42939bd1e",
       "test_users": [
-        "test\\source_entrance_replay_test.dart"
+        "test/source_entrance_replay_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\source_exit_replay.json",
+      "path": "test/fixtures/source_exit_replay.json",
       "kind": "fixture",
       "sha256": "f01076f27f1aeaf45d8f600f7fa097edccc895c45a30c7415a00e22bdcbc5abc",
       "test_users": [
-        "test\\source_exit_replay_test.dart"
+        "test/source_exit_replay_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\source_gold_replay.json",
+      "path": "test/fixtures/source_gold_replay.json",
       "kind": "fixture",
       "sha256": "266b2013740ab67fb21bce35a82b4cb4acee6302db01453335666bf49411a2c9",
       "test_users": [
-        "test\\source_gold_replay_test.dart"
+        "test/source_gold_replay_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\source_parity.json",
+      "path": "test/fixtures/source_parity.json",
       "kind": "fixture",
       "sha256": "98d7ad1c3d20f09d62444409b3b39b06cda7d076c102785490baf6c45ebb80dc",
       "test_users": [
-        "test\\source_parity_test.dart"
+        "test/source_parity_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
-      "path": "test\\fixtures\\source_talk_replay.json",
+      "path": "test/fixtures/source_talk_replay.json",
       "kind": "fixture",
       "sha256": "635aacd67190c48c8efdfc8be1c88742575da21f6aff6a35d04272031373ee74",
       "test_users": [
-        "test\\source_talk_replay_test.dart"
+        "test/source_talk_replay_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     }
   ],
   "port_rule_sources": [
     {
-      "path": "assets\\data\\creation.json",
+      "path": "assets/data/creation.json",
       "sha256": "df42bc827cb057a44790958261565b30add37619442387b08cf5414425b79e51",
       "top_level_counts": {
         "characters": 10,
@@ -26682,21 +26831,21 @@
       }
     },
     {
-      "path": "assets\\data\\dialogues.json",
+      "path": "assets/data/dialogues.json",
       "sha256": "26bc4860ccce520a3c2bfd1a416cbf06de5607832c25e59c860694b7427417a1",
       "top_level_counts": {
         "dialogues": 30
       }
     },
     {
-      "path": "assets\\data\\facilities.json",
+      "path": "assets/data/facilities.json",
       "sha256": "d80038d5a34466e7d4d525c97c27c1175216a12514f85cd61ea8751036e074c1",
       "top_level_counts": {
         "facilities": 58
       }
     },
     {
-      "path": "assets\\data\\items.json",
+      "path": "assets/data/items.json",
       "sha256": "b2a655562e0c2fcc7aa15921a993ba5944a2a1610f43be8cd22b059cdc06e737",
       "top_level_counts": {
         "weapons": 10,
@@ -26705,21 +26854,21 @@
       }
     },
     {
-      "path": "assets\\data\\maps.json",
+      "path": "assets/data/maps.json",
       "sha256": "9521de5149f000174ee4d11ab52741dd77e81d891d5f10eb09d350ba92b2dea1",
       "top_level_counts": {
         "maps": 27
       }
     },
     {
-      "path": "assets\\data\\monsters.json",
+      "path": "assets/data/monsters.json",
       "sha256": "dc650301c817e2122ba29115bb2eeed200ebc42a12fdd81011ef695f07a4ca7b",
       "top_level_counts": {
         "monsters": 75
       }
     },
     {
-      "path": "assets\\data\\portals.json",
+      "path": "assets/data/portals.json",
       "sha256": "8440647b2edecdb018f3240f2b6b35e508f6158292c81ef4f73938b20a6842d7",
       "top_level_counts": {
         "portals": 65,
@@ -26727,80 +26876,92 @@
       }
     },
     {
-      "path": "assets\\data\\scripts.json",
+      "path": "assets/data/scripts.json",
       "sha256": "3d9a53b950decd4713ef7e197e52b01f7d2c9cd2c4beeafec244a4e867a93da3",
       "top_level_counts": {
         "scripts": 598
       }
     },
     {
-      "path": "assets\\data\\spells.json",
+      "path": "assets/data/spells.json",
       "sha256": "6a0d98fea48ff921404ab2c7b2d194ae857719eb82924e46643d8e6c9e3b6d61",
       "top_level_counts": {
         "spells": 45
       }
     },
     {
-      "path": "lib\\data\\lore_script.dart",
-      "sha256": "ae24e070526e36c0e951b75a2f013e0d5a188c87ccb0049e61686eabde264f0a"
+      "path": "lib/data/lore_script.dart",
+      "sha256": "db7203dd04a02859e33543cc7e8c46b44659dc6fc61cd0f0ae175556dc7fc058"
     },
     {
-      "path": "lib\\game\\lore_game.dart",
-      "sha256": "6b8059426968d7c9c2a7ff780a4c1b439e84a4c6cd70b035b0d56f8d3c4e65d4"
+      "path": "lib/game/lore_game.dart",
+      "sha256": "eb5432d94625e5ad376546f13d32ea855f5fbfb39644a9e88698718263feb6b0"
     },
     {
-      "path": "lib\\game\\lore_world_manager.dart",
+      "path": "lib/game/lore_world_manager.dart",
       "sha256": "e8b7c79a3bcb2debfb59ed04b494a92637e2f8e8025233f11b1a995f62cc4d01"
     },
     {
-      "path": "lib\\game\\lore_dialogue_manager.dart",
-      "sha256": "0355dc98aae2c65c33df1a6e3524bab9b42f30a4ba857697ccfe7cfb3f6120f1"
+      "path": "lib/game/lore_dialogue_manager.dart",
+      "sha256": "2276ef7ea2f098cf1be6714d2ba0937636505e52194434e53986fb849943b67c"
     },
     {
-      "path": "lib\\game\\lore_dungeon_event_manager.dart",
+      "path": "lib/game/lore_dungeon_event_manager.dart",
       "sha256": "e48ff1562d605801a7bb73a9faf00df66bc469cd2d739b2e973fb3f6441a92c9"
     },
     {
-      "path": "lib\\logic\\lore_tile_protocol.dart",
+      "path": "lib/logic/lore_tile_protocol.dart",
       "sha256": "7cc66f62218a6137fb375ffb35bebdde2ce088de9bd01b7bec5d1ee5720c2e95"
     },
     {
-      "path": "lib\\logic\\lore_movement_logic.dart",
+      "path": "lib/logic/lore_movement_logic.dart",
       "sha256": "05ba4dfcaece3a94d79ea0d9cbbee59f1c0767bf244bff89fdaafce3d19f4407"
     },
     {
-      "path": "lib\\logic\\lore_field_session.dart",
+      "path": "lib/logic/lore_field_session.dart",
       "sha256": "54efb1f0a3adcaa4d287f6bd966b3bfb720bcb6165aa10cc5d8bcd7ae20d84f0"
     },
     {
-      "path": "lib\\logic\\lore_portal_session.dart",
+      "path": "lib/logic/lore_source_memory.dart",
+      "sha256": "d2d03d09318c33d58b60652b41dacc72e447139cdd6ffdd3c9b5970fe4a2792f"
+    },
+    {
+      "path": "lib/game/lore_map_manager.dart",
+      "sha256": "83c68338fb6c349be25626922993d0e1c58b707cd0e7e16dc6d6ddd7612da776"
+    },
+    {
+      "path": "lib/logic/lore_spec_procedures.dart",
+      "sha256": "f6da7b0abf4d2e46ce5f5b5b776f96a66785dbaedd9ace606a947052dcbe556c"
+    },
+    {
+      "path": "lib/logic/lore_portal_session.dart",
       "sha256": "768d48e9090fb3fb5c9924aaeece1110baafd1b01109c163275b63e80b38cb55"
     },
     {
-      "path": "lib\\logic\\lore_talk_dispatcher.dart",
+      "path": "lib/logic/lore_talk_dispatcher.dart",
       "sha256": "38048082800a8cc1ba8aee0a2900a65e7ad505629873e8ef9ada433817fc1ab5"
     },
     {
-      "path": "lib\\logic\\lore_special_event_dispatcher.dart",
-      "sha256": "f2fa7c2d1405066ea001f0e9351cdbfc95729581daece509ca6a8cb37a08dd31"
+      "path": "lib/logic/lore_special_event_dispatcher.dart",
+      "sha256": "35b2a250930003636eea412d308f18b60ba2f7604d181409656216988d553fa8"
     },
     {
-      "path": "lib\\logic\\lore_lava_logic.dart",
+      "path": "lib/logic/lore_lava_logic.dart",
       "sha256": "fdbcf743297a0bbb94d41fa1caa5729d4eacb31e62343ccc03345b9fce62069e"
     },
     {
-      "path": "lib\\logic\\lore_swamp_logic.dart",
+      "path": "lib/logic/lore_swamp_logic.dart",
       "sha256": "8368709831e6380523ae30803ec5cb3db8b5a3f5acca08f17cc718272ae0a4a4"
     },
     {
-      "path": "lib\\screens\\main_game_screen.dart",
-      "sha256": "8f6c4d86fb678958fe2574b221bed82a3f230c507d3e9eeae462d153e871fe4f"
+      "path": "lib/screens/main_game_screen.dart",
+      "sha256": "36a5d23c62259db847774ec9f32d721c4e275fd8bd97adc223d048fdd0b2227e"
     },
     {
       "path": "PORT_CONTRACT_EVIDENCE.json",
-      "sha256": "7bcab4aafc5166ee31db57164f92527a5ee9992349ce143688e0ca8b6fcf1d0f",
+      "sha256": "63f169b76ce1fe3cea569bd1ed7f2844fe7b642fe03f18c63871bcd334094780",
       "top_level_counts": {
-        "contracts": 6
+        "contracts": 15
       }
     }
   ],
@@ -26808,9 +26969,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 1842,
+    "unmapped_behavior_sites": 1833,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 6,
+    "partially_verified_behavior_sites": 15,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

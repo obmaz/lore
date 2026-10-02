@@ -381,7 +381,7 @@ class LoreGame extends FlameGame {
       setTile: (x, y, tile) {
         final map = currentMap;
         if (map == null || x > map.xmax || y > map.ymax) return;
-        map.grid[y - 1][x - 1] = tile;
+        map.setTile(x, y, tile);
       },
     );
   }
@@ -470,7 +470,7 @@ class LoreGame extends FlameGame {
       questSteps: questSteps,
       setTile: (x, y, tile) {
         if (x < 1 || y < 1 || x > map.xmax || y > map.ymax) return;
-        map.grid[y - 1][x - 1] = tile;
+        map.setTile(x, y, tile);
       },
     );
   }
