@@ -14,7 +14,7 @@ import 'package:lore/services/save_manager.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
 import 'package:lore/widgets/script_scene_dialog.dart';
 
-/// LORESPEC.PAS map 8 (332-353), map 9 (354-443), map 11 (465-559), map 10 (444-464), map 21 (1762-1795), map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
+/// LORESPEC.PAS map 8 (332-353), map 9 (354-443), map 11 (465-559), map 12 (560-572), map 10 (444-464), map 21 (1762-1795), map 22 (1818-1839), map 24 (1980-1994) and map 27 (2202-2212) `wantexit` arms
 /// through the real screen: refusal position and accepted destination.
 void main() {
   Future<LoreGame> open(
@@ -399,6 +399,31 @@ void main() {
       await tester.tap(find.text(LoreFieldLogic.confirmNo));
       await tick(tester);
       expect([game.currentMapId, game.playerX, game.playerY], [11, 25, 46]);
+      await tester.pumpWidget(const SizedBox.shrink());
+      await tester.pump(const Duration(seconds: 1));
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'map 12 y=71: exit question, refusal y=70, acceptance map 8 (39,7)',
+    (tester) async {
+      final game = await open(tester, 12, 'T_DEN2', 'den', 25, 70);
+      expect(game.currentMap!.getTile(25, 71), 52);
+      game.tryMove(0, 1);
+      await tick(tester);
+      expect(find.text(LoreFieldLogic.exitPrompt), findsOneWidget);
+      await tester.tap(find.text(LoreFieldLogic.confirmNo));
+      await tick(tester);
+      expect([game.currentMapId, game.playerX, game.playerY], [12, 25, 70]);
+      game.tryMove(0, 1);
+      await tick(tester);
+      await tester.tap(find.text(LoreFieldLogic.confirmYes));
+      await tester.runAsync(() async {
+        await Future<void>.delayed(const Duration(milliseconds: 100));
+      });
+      await tick(tester);
+      expect([game.currentMapId, game.playerX, game.playerY], [8, 39, 7]);
       await tester.pumpWidget(const SizedBox.shrink());
       await tester.pump(const Duration(seconds: 1));
       expect(tester.takeException(), isNull);

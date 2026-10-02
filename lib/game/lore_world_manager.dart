@@ -367,6 +367,7 @@ class LoreWorldManager {
     17 when y == 95 => y - 1,
     // LORESPEC.PAS:515-521 has no refusal branch: the party stays on y = 46.
     11 when y == 46 => y,
+    12 when y == 71 => y - 1,
     8 || 10 when y == 71 => y - 1,
     21 || 22 || 23 || 24 || 25 when y == 46 => y - 1,
     27 => y < 25 ? y + 1 : y - 1,
@@ -419,6 +420,16 @@ class LoreWorldManager {
         };
       }
       if (y > 46) return null;
+    }
+    // LORESPEC.PAS:562-572: map 12 exits only at y = 71.
+    if (currentMapId == 12 && y >= 71) {
+      if (y > 71) return null;
+      return const PortalInfo(
+        targetMapId: 8,
+        targetX: 39,
+        targetY: 7,
+        name: 'VALIANT PEOPLES',
+      );
     }
     // LORESPEC.PAS:671-680: map 13 exits only at y = 96.
     if (currentMapId == 13 && y >= 96) {

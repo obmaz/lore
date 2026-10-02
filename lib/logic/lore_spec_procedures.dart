@@ -774,7 +774,10 @@ class LoreSpecProcedures {
       final dy = (77 - y).sign;
       ScriptScene page(int i, String title) =>
           ScriptScene(title: title, lines: _den4PyramidScenes[i]);
+      const pull = '알수없는 힘이 당신을 당기는걸 느꼈다';
       return start('den4-pyramid-chapters', [
+        // `message` prints before the writes and the walk, without a key wait.
+        const ScriptStep(kind: 'say', text: pull),
         area(44, 52),
         area(42, 40),
         area(42, 51),
@@ -788,12 +791,17 @@ class LoreSpecProcedures {
         ],
         area(51, 42),
         const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+        // The PressAnyKey after the walk; the pull message is still shown.
         const ScriptStep(
           kind: 'scene',
-          scene: ScriptScene(title: '피라밋', lines: ['알수없는 힘이 당신을 당기는걸 느꼈다']),
+          scene: ScriptScene(title: '피라밋', lines: [pull]),
         ),
+        ScriptStep(kind: 'say', text: _den4PyramidScenes[1][0]),
         const ScriptStep(kind: 'setTile', tileX: 81, tileY: 76, tileValue: 48),
-        ScriptStep(kind: 'scene', scene: page(1, '피라밋')),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '피라밋', lines: [_den4PyramidScenes[1][1]]),
+        ),
         ScriptStep(kind: 'scene', scene: page(2, '예언서')),
         for (var i = 3; i <= 6; i++)
           ScriptStep(kind: 'scene', scene: page(i, 'CHAPTER ${i - 2}')),

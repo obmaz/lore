@@ -56,6 +56,15 @@ void main() {
           ScriptContext(tileAtPlayer: map.getTile(sx, sy)),
           scripts,
         )!;
+        // LORESPEC.PAS:682: the pull message precedes the writes and walk.
+        expect(run.outcome.events.first.kind, 'message');
+        expect(run.outcome.messages.first, '알수없는 힘이 당신을 당기는걸 느꼈다');
+        final sinking = run.acknowledgeScene();
+        expect(
+          sinking.outcome.since(run.outcome).messages.first,
+          ' 여기에는 기묘한 피라밋이 있었다',
+        );
+        expect(sinking.pendingScene!.lines, [' 갑자기 피라밋이 아래로 가라앉기 시작했다']);
         final moves = run.outcome.nudges;
         expect(moves.where((m) => m.dy != 0).every((m) => m.dx == 0), isTrue);
         expect(sx + moves.fold<int>(0, (a, m) => a + m.dx), 81);
