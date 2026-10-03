@@ -43674,7 +43674,7 @@
     {
       "path": "test/dialogue_window_test.dart",
       "kind": "test",
-      "sha256": "d607bacc2487c6d15d5c076419c2c0cc842cbf9c117aad3e92c39adc830ca6cd",
+      "sha256": "c6e85ded14d9eb0e09b9214af265bc4baaaf9958e90d38a0c78230e92381783d",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
@@ -43829,6 +43829,15 @@
       "sha256": "bfcb203e756df69a093d7cf4b2900aa140456b0df99eacdfb03ae2bf62410cd7",
       "cited_source_files": [
         "LOREMAIN.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/legacy_save_flags_test.dart",
+      "kind": "test",
+      "sha256": "737b870370c383ef44f00bf2abe36149178f17e161a0edf50da8e89cc5d6ab1e",
+      "cited_source_files": [
+        "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -44928,7 +44937,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "756cd85a1a12acec8b91f4769fe10d43a6551feabd8f12f93c99c5dcd2737ebf",
+      "sha256": "8fd9446e009f7e44e2a797ccbf16f09e1e3b9e69f3a78404b669cbfcebc83049",
       "top_level_counts": {
         "scripts": 599
       }
@@ -44942,11 +44951,11 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "048eee1da78a251f5c2c843c64ed9853b778fe5f86f1079c2a8d0686aab7b955"
+      "sha256": "f2975b422cf91f2ef0955aec3de09900c5e04aadeb2eececf6219dd40dde98f6"
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "19ad2e0a22a8dcb6f71cc6180059284b792922a01930968e5e59870ce4f222c6"
+      "sha256": "477c6b1c2846cd5d136247e0c56b09eaa86b9c07b58b9c2d45668cd65718a4c7"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -44954,7 +44963,7 @@
     },
     {
       "path": "lib/game/lore_dialogue_manager.dart",
-      "sha256": "08e9ba00aa31c5b96ac8bedd22769b4b4659ce00d78f09c178f58d0def215f6e"
+      "sha256": "dca7a4f5d87ec080df08a363b7cf721211e498c934db3eb3cc3b5a5286ac4adf"
     },
     {
       "path": "lib/game/lore_dungeon_event_manager.dart",
@@ -45018,7 +45027,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "f8f56688ea30f2a19c3f4aca3fce83117e8a74d2c3f2601239adffa985cf8188"
+      "sha256": "efceb53c62a9e96e073901439a8e22adf2ea279d5ba82bb60826c487b578d9d6"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
