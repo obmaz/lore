@@ -44,6 +44,8 @@ import '../widgets/viewport_view.dart';
 import '../widgets/game_screen_layout.dart';
 import '../widgets/party_status_view.dart';
 import '../widgets/message_log_view.dart';
+import '../widgets/dialogue_history_view.dart';
+import '../logic/lore_dialogue_history.dart';
 import '../widgets/dpad_widget.dart';
 import '../widgets/battle_viewport_view.dart';
 import '../widgets/encounter_viewport_view.dart';
@@ -91,6 +93,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
   late LoreGame _game;
   final List<String> _logs = [];
   int _logRevision = 0;
+
+  /// `이전 대화` 탭: 대사 창에 보였던 NPC 대사(이번 접속 동안).
+  final LoreDialogueHistory _dialogueHistory = LoreDialogueHistory();
   int _partyGold = 2000;
   int _partyFood = 20; // 원작 LORECRET.PAS `Last`: food := 20;
 
@@ -241,6 +246,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
         _openTownFacilityDialog(fType);
       },
+      onNpcDialogue: (lines) => unawaited(_showDialogue(lines)),
       onNpcTalk: (name, talk) {
         if (_mindReadCount > 0) {
           setState(() => _mindReadCount--);
@@ -684,6 +690,17 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
   }
 
+  /// NPC 대사: 원작처럼 대사 창 하나에 `Print` 줄들이 쌓이고 `PressAnyKey`로
+  /// 닫는다. 줄은 원본 그대로이며, 닫은 뒤에는 `이전 대화` 탭에서 다시 본다.
+  Future<void> _showDialogue(List<String> lines) async {
+    if (lines.isEmpty || !mounted) return;
+    _dialogueHistory.add(lines);
+    await showLoreMessageDialog(
+      context,
+      lines: [for (final line in lines) (7, line)],
+    );
+  }
+
   /// 스크립트 결과(메시지/보상/플래그/동료/장비/전투)를 게임 상태에 반영한다.
   Future<bool> _applyScriptOutcome(
     ScriptRun run, {
@@ -704,14 +721,35 @@ class _MainGameScreenState extends State<MainGameScreen> {
       return message;
     }
 
+    // NPC 대화(`talkTargetX`가 있는 실행)는 대사 창에, 그 밖의 메시지는 로그에.
+    final isTalk = talkTargetX != null;
+    final speech = <String>[];
+    Future<void> say(String text) async {
+      if (isTalk) {
+        speech.add(text);
+      } else {
+        _addLog(text);
+      }
+    }
+
+    Future<void> flushSpeech() async {
+      if (speech.isEmpty) return;
+      final lines = List<String>.of(speech);
+      speech.clear();
+      await _showDialogue(lines);
+    }
+
     if (outcome.events.isEmpty) {
       for (final m in outcome.messages) {
-        _addLog(presented(m));
+        await say(presented(m));
       }
+      await flushSpeech();
     } else {
       // 대사와 카메라 연출(원작 scroll(FALSE))을 원작 순서대로 재생한다.
       for (final event in outcome.events) {
         if (event.kind == 'peek') {
+          await flushSpeech();
+          if (!mounted) return false;
           _game.peekAt(event.x!, event.y!);
           setState(() {});
           await Future<void>.delayed(_peekHold);
@@ -719,9 +757,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
         } else if (event.kind == 'sourceFace') {
           _game.applySourceFace(event.face!);
         } else if (event.kind == 'message') {
-          _addLog(presented(event.text!));
+          await say(presented(event.text!));
         }
       }
+      await flushSpeech();
+      if (!mounted) return false;
       _game.clearPeek();
       setState(() {});
     }
@@ -1967,6 +2007,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   @override
   void dispose() {
     _focusNode.dispose();
+    _dialogueHistory.dispose();
     super.dispose();
   }
 
@@ -2047,6 +2088,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
             ),
             party: PartyStatusView(members: _mapPartyStatus()),
             messages: MessageLogView(logs: _logs, revision: _logRevision),
+            history: DialogueHistoryView(history: _dialogueHistory),
             controls: _currentMode == GameScreenMode.field
                 ? Opacity(
                     opacity: .6,

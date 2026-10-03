@@ -114,6 +114,9 @@ class LoreGame extends FlameGame {
   final void Function()? onEncounter;
   final int Function()? encounterFrequencyProvider;
   final void Function(String npcName, String dialogue)? onNpcTalk;
+
+  /// NPC speech as the lines of one dialogue window (`Print`s + `PressAnyKey`).
+  final void Function(List<String> lines)? onNpcDialogue;
   final void Function(int facilityType)? onFacilityEntered;
   final void Function(int x, int y)? onPositionChanged;
   final void Function(TileCategory category)? onHazardTile;
@@ -163,6 +166,7 @@ class LoreGame extends FlameGame {
     this.onEncounter,
     this.encounterFrequencyProvider,
     this.onNpcTalk,
+    this.onNpcDialogue,
     this.onFacilityEntered,
     this.onPositionChanged,
     this.onHazardTile,
@@ -422,7 +426,11 @@ class LoreGame extends FlameGame {
       case LoreTalkSource.script:
         onScriptTalk?.call(selected.script!, tx, ty);
       case LoreTalkSource.dialogue:
-        onLog?.call(selected.dialogue!);
+        if (onNpcDialogue case final show?) {
+          show([selected.dialogue!]);
+        } else {
+          onLog?.call(selected.dialogue!);
+        }
         _flushPendingRecruits();
       case LoreTalkSource.none:
         // LORETALK.PAS talkmode prints nothing for a cell it has no case for.

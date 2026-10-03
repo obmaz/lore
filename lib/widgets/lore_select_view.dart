@@ -133,26 +133,29 @@ class _PressAnyKeyDialogState extends State<_PressAnyKeyDialog> {
         onTap: _close,
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              for (final (color, text) in widget.lines)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 4),
-                  child: Text(
-                    text,
-                    style: RetroTheme.dosFont.copyWith(
-                      color: RetroTheme.ega(color),
+          // A long speech may be taller than a short screen: it scrolls.
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (final (color, text) in widget.lines)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 4),
+                    child: Text(
+                      text,
+                      style: RetroTheme.dosFont.copyWith(
+                        color: RetroTheme.ega(color),
+                      ),
                     ),
                   ),
+                const SizedBox(height: 12),
+                Text(
+                  LoreSubText.pressAnyKey,
+                  style: RetroTheme.dosFont.copyWith(color: RetroTheme.ega(14)),
                 ),
-              const SizedBox(height: 12),
-              Text(
-                LoreSubText.pressAnyKey,
-                style: RetroTheme.dosFont.copyWith(color: RetroTheme.ega(14)),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
