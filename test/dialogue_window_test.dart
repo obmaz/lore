@@ -189,4 +189,40 @@ void main() {
       expect(find.text(' 거기 $sex분 어서 오십시오.'), findsOneWidget);
     }
   });
+
+  testWidgets('a speech with talk/PressAnyKey inside is shown page by page', (
+    tester,
+  ) async {
+    // LORETALK.PAS:105 at(63,76): two Prints + talk, 12 Prints + talk(''),
+    // 4 Prints + PressAnyKey: three windows, each cleared by a key.
+    final game = await openTown(tester, const Size(390, 844), x: 63, y: 75);
+    game.tryMove(0, 1);
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    const page1 = ' 당신이  한 유골 앞에 섰을때  이상한 느낌과';
+    const page2 = ' 안녕하시오. 대담한 용사여.';
+    const page3 = ' 아참,  그리고 내가 죽기전에 여기에 뭔가를';
+    expect(find.text(page1), findsOneWidget);
+    expect(find.text(page2), findsNothing);
+    await tester.tap(find.byKey(const ValueKey('lore-press-any-key')));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text(page1), findsNothing);
+    expect(find.text(page2), findsOneWidget);
+    expect(find.text(page3), findsNothing);
+    await tester.tap(find.byKey(const ValueKey('lore-press-any-key')));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text(page3), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('lore-press-any-key')));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.byKey(const ValueKey('lore-press-any-key')), findsNothing);
+    // History keeps the three pages as three blocks.
+    final history = tester.widget<DialogueHistoryView>(
+      find.byType(DialogueHistoryView, skipOffstage: false),
+    );
+    expect(history.history.blocks.length, 3);
+    expect(history.history.blocks.first.first, page1);
+  });
 }

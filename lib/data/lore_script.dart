@@ -233,7 +233,8 @@ class ScriptScene {
 
 /// 스크립트 실행 중 일어난 일 1건(순서 보존).
 class ScriptEvent {
-  /// 'message' = 대사 출력, 'peek' = 카메라 연출(원작 `scroll(FALSE)`).
+  /// 'message' = 대사 출력, 'peek' = 카메라 연출(원작 `scroll(FALSE)`),
+  /// 'pause' = 원작 `talk(..)`/`PressAnyKey`: 키를 누르면 대사 창을 지운다.
   final String kind;
   final String? text;
   final int? x;
@@ -254,6 +255,12 @@ class ScriptEvent {
       text = null,
       x = null,
       y = null;
+  const ScriptEvent.pause()
+    : kind = 'pause',
+      text = null,
+      x = null,
+      y = null,
+      face = null;
   const ScriptEvent.endDemo()
     : kind = 'endDemo',
       text = null,
@@ -1344,6 +1351,9 @@ class LoreScriptEngine {
         case 'endDemo':
           events.add(const ScriptEvent.endDemo());
           break;
+        case 'pause':
+          events.add(const ScriptEvent.pause());
+          break;
         case 'say':
           messages.add(step.text!);
           events.add(ScriptEvent.message(step.text!));
@@ -1595,6 +1605,11 @@ class LoreScriptEngine {
 
       if (m.containsKey('say')) {
         steps.add(ScriptStep(kind: 'say', text: m['say'] as String));
+        matched = true;
+      }
+      // `{"pause": true}`: the source's `talk(..)`/`PressAnyKey` between pages.
+      if (m['pause'] == true) {
+        steps.add(ScriptStep(kind: 'pause'));
         matched = true;
       }
       if (m.containsKey('gold')) {

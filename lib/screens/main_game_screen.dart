@@ -755,6 +755,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
           _game.applySourceFace(event.face!);
         } else if (event.kind == 'message') {
           await say(presented(event.text!));
+        } else if (event.kind == 'pause') {
+          // `talk(..)`/`PressAnyKey` inside a speech: the window is cleared.
+          await flushSpeech();
+          if (!mounted) return false;
         }
       }
       await flushSpeech();
