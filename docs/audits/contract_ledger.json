@@ -43679,6 +43679,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/dpad_repeat_test.dart",
+      "kind": "test",
+      "sha256": "5dbc87904ec441c3862bb06c722dc05731661f6b0501f18f47016cc81bfb91a7",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/encounter_screen_flow_test.dart",
       "kind": "test",
       "sha256": "b2173eb44b3b1027059d1f846066ace3295b4223d5ab2537050813205fb6567d",
@@ -44293,7 +44300,7 @@
     {
       "path": "test/mobile_game_layout_test.dart",
       "kind": "test",
-      "sha256": "728ed41089195819b38a7f5394191dd929acbd6aaf7fb3cbc16bebd422ec5125",
+      "sha256": "276c8afb484ad4faca3b24e4df816783450df5b7f506ffaed3de136b1925dc69",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
