@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flame/game.dart';
 
 import 'dart:math' as math;
@@ -89,6 +91,51 @@ void main() {
       await tester.tap(find.byIcon(Icons.arrow_right));
       await tester.pump();
       expect((engine.playerX, engine.playerY), (7, 6));
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'holding the pad walks on, and a dialog pushed on top cancels the hold',
+    (tester) async {
+      await openGame(tester, const Size(390, 844));
+      final engine = tester
+          .widget<GameWidget<LoreGame>>(find.byType(GameWidget<LoreGame>))
+          .game!;
+      engine.currentMap = LoreMapData(
+        name: 'TEST',
+        xmax: 40,
+        ymax: 40,
+        grid: List.generate(40, (_) => List.filled(40, 42)),
+      );
+      engine.playerX = 6;
+      engine.playerY = 6;
+      final hold = await tester.startGesture(
+        tester.getCenter(find.byIcon(Icons.arrow_right)),
+      );
+      expect(engine.playerX, 7); // at once
+      await tester.pump(DPadWidget.repeatDelay);
+      expect(engine.playerX, 8);
+      await tester.pump(DPadWidget.repeatInterval * 4);
+      expect(engine.playerX, 12);
+      // Pushing a route cancels the active pointers (Navigator), which ends the
+      // repeat: nothing moves under a dialog or a source `Select` window.
+      final context = tester.element(find.byType(MainGameScreen));
+      unawaited(
+        showDialog<void>(
+          context: context,
+          builder: (_) => const AlertDialog(content: Text('window')),
+        ),
+      );
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 300));
+      final at = engine.playerX;
+      await tester.pump(DPadWidget.repeatInterval * 5);
+      expect(engine.playerX, at);
+      await hold.up();
+      Navigator.of(context).pop();
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 300));
       expect(tester.takeException(), isNull);
     },
   );
