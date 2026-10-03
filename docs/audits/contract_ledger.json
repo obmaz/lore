@@ -24629,8 +24629,13 @@
       "routine": "LORESUB.PAS:returncondition:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/return_condition_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/models/party_member.dart",
+      "reviewed_scope": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference)."
     },
     {
       "id": "LORESUB.PAS:returncondition:1:if:2",
@@ -24640,8 +24645,13 @@
       "routine": "LORESUB.PAS:returncondition:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/return_condition_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/models/party_member.dart",
+      "reviewed_scope": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference)."
     },
     {
       "id": "LORESUB.PAS:returncondition:1:if:3",
@@ -24651,8 +24661,13 @@
       "routine": "LORESUB.PAS:returncondition:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/return_condition_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/models/party_member.dart",
+      "reviewed_scope": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference)."
     },
     {
       "id": "LORESUB.PAS:returncondition:1:exit:1",
@@ -24662,8 +24677,13 @@
       "routine": "LORESUB.PAS:returncondition:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/return_condition_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/models/party_member.dart",
+      "reviewed_scope": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference)."
     },
     {
       "id": "LORESUB.PAS:returncondition:1:if:4",
@@ -24673,8 +24693,13 @@
       "routine": "LORESUB.PAS:returncondition:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/return_condition_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/models/party_member.dart",
+      "reviewed_scope": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference)."
     },
     {
       "id": "LORESUB.PAS:returncondition:1:exit:2",
@@ -24684,8 +24709,13 @@
       "routine": "LORESUB.PAS:returncondition:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/return_condition_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/models/party_member.dart",
+      "reviewed_scope": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference)."
     },
     {
       "id": "LORESUB.PAS:returncondition:1:if:5",
@@ -24695,8 +24725,13 @@
       "routine": "LORESUB.PAS:returncondition:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/return_condition_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/models/party_member.dart",
+      "reviewed_scope": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference)."
     },
     {
       "id": "LORESUB.PAS:returncondition:1:exit:3",
@@ -24706,8 +24741,13 @@
       "routine": "LORESUB.PAS:returncondition:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/return_condition_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/models/party_member.dart",
+      "reviewed_scope": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference)."
     },
     {
       "id": "LORESUB.PAS:returnmagic:1:case:1",
@@ -41760,6 +41800,86 @@
       "test": "test/lore_town_shops_test.dart",
       "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:1",
+      "line": 709,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:2",
+      "line": 710,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:3",
+      "line": 711,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:exit:1",
+      "line": 713,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:4",
+      "line": 715,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:exit:2",
+      "line": 717,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:5",
+      "line": 719,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:exit:3",
+      "line": 721,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -43544,7 +43664,7 @@
     {
       "path": "test/field_magic_test.dart",
       "kind": "test",
-      "sha256": "c7fcb2f0e1edc71e99aeb9ba3ca9895fb50e9f5d0a0cca026dfcf3dcafe691a1",
+      "sha256": "b7707d701d28c6ba51574538ee2337af3ea03d6de1db6ac7372bde0043f5fdac",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -43664,7 +43784,7 @@
     {
       "path": "test/lore_cast_spell_test.dart",
       "kind": "test",
-      "sha256": "0994adb1f32fb9d6fd89a0cf6f3932aeb281c7f47a2d4e77d998afd0d2c222b0",
+      "sha256": "54a455504362f4cb3faafbf1a328b4c15f676ef12d1da59d3abedf702491229e",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -44146,6 +44266,15 @@
       "sha256": "0c831c1cfbe5252ce4a7b47e63fad283e465ef600c1a88fcb44c92bf922ef676",
       "cited_source_files": [
         "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/return_condition_test.dart",
+      "kind": "test",
+      "sha256": "0ed632cb119ec2caef0194aec17f4fa16b3bf0fdf98fa2928b6cbc393e7b3857",
+      "cited_source_files": [
+        "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -44830,7 +44959,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "5c551038779b4e6167cac40f5c0c7851f8adb15a8b7addbfc0443db210d1f525"
+      "sha256": "2504f5789a6dbbb838de4b4fee70f3c942379f51b2b843a41f7bdee41027affe"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -44838,7 +44967,7 @@
     },
     {
       "path": "lib/logic/lore_cast_spell.dart",
-      "sha256": "31b499a0377c426e3ed989ff8966a8e25e40c7b84c5360c635ca2b9a7cd09a28"
+      "sha256": "4ddc141f296f34d15c2858b47974d4dfd74c17e71ecd3feb35da94b9aff98b8a"
     },
     {
       "path": "lib/logic/lore_view_procedures.dart",
@@ -44866,9 +44995,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "459ef9fa745f10471189b66077489617ce5d24d5b15045bb327ec40cb6710579",
+      "sha256": "3098747fe4d6a807472cdef510dde06066f808aab16bd3747b0d3a5a75d7a2ba",
       "top_level_counts": {
-        "contracts": 1184
+        "contracts": 1192
       }
     }
   ],
@@ -44876,9 +45005,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 664,
+    "unmapped_behavior_sites": 656,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 1184,
+    "partially_verified_behavior_sites": 1192,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
