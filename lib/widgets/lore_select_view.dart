@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../logic/lore_sub_text.dart';
 import '../theme/retro_theme.dart';
 
 /// [LoreSelectView] in a dialog: the `Select` result, 0 for Esc. The close
 /// icon is the touch equivalent of Esc.
+///
+/// [lines] are the `HPrintXY` texts the caller printed above the select
+/// (`Select(.., clean = FALSE, ..)` keeps them), as (color, text).
 Future<int> showLoreSelectDialog(
   BuildContext context, {
   required String title,
   required List<String> items,
   int? maxsum,
+  List<(int, String)> lines = const [],
 }) async {
   final k = await showDialog<int>(
     context: context,
@@ -32,6 +37,19 @@ Future<int> showLoreSelectDialog(
                 color: RetroTheme.lightRed,
               ),
             ),
+            for (final (color, text) in lines)
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: Text(
+                    text,
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.ega(color),
+                    ),
+                  ),
+                ),
+              ),
             Align(
               alignment: Alignment.centerLeft,
               child: LoreSelectView(
@@ -47,6 +65,95 @@ Future<int> showLoreSelectDialog(
     ),
   );
   return k ?? 0;
+}
+
+/// Texts printed in the window followed by `PressAnyKey`
+/// (`아무키나 누르십시오 ...`); any key or a tap closes it.
+Future<void> showLoreMessageDialog(
+  BuildContext context, {
+  required List<(int, String)> lines,
+}) => showDialog<void>(
+  context: context,
+  barrierDismissible: false,
+  builder: (ctx) => _PressAnyKeyDialog(lines: lines),
+);
+
+class _PressAnyKeyDialog extends StatefulWidget {
+  const _PressAnyKeyDialog({required this.lines});
+
+  final List<(int, String)> lines;
+
+  @override
+  State<_PressAnyKeyDialog> createState() => _PressAnyKeyDialogState();
+}
+
+class _PressAnyKeyDialogState extends State<_PressAnyKeyDialog> {
+  final FocusNode _focus = FocusNode(debugLabel: 'PressAnyKey');
+  bool _closed = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _focus.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focus.dispose();
+    super.dispose();
+  }
+
+  void _close() {
+    if (_closed) return;
+    _closed = true;
+    Navigator.of(context).pop();
+  }
+
+  @override
+  Widget build(BuildContext context) => Focus(
+    focusNode: _focus,
+    autofocus: true,
+    onKeyEvent: (_, event) {
+      if (event is! KeyDownEvent) return KeyEventResult.ignored;
+      _close();
+      return KeyEventResult.handled;
+    },
+    child: Dialog(
+      backgroundColor: RetroTheme.black,
+      shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+      child: GestureDetector(
+        key: const ValueKey('lore-press-any-key'),
+        behavior: HitTestBehavior.opaque,
+        onTap: _close,
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final (color, text) in widget.lines)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: Text(
+                    text,
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.ega(color),
+                    ),
+                  ),
+                ),
+              const SizedBox(height: 12),
+              Text(
+                LoreSubText.pressAnyKey,
+                style: RetroTheme.dosFont.copyWith(color: RetroTheme.ega(14)),
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 /// `LORESUB.PAS` `Select(yinit, maxsum, total, clean, lastclean)` 의 화면 어댑터.

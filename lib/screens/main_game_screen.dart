@@ -25,6 +25,7 @@ import '../logic/script_equip_reducer.dart';
 import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
+import '../logic/lore_game_option.dart';
 import '../logic/lore_game_over.dart';
 import '../logic/lore_main_procedures.dart';
 import '../logic/lore_spec_procedures.dart';
@@ -1214,7 +1215,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   Future<void> _openFieldMenuDialog({
     FieldMenuTab initialTab = FieldMenuTab.main,
   }) async {
-    await showDialog<void>(
+    final next = await showDialog<FieldMenuTab>(
       context: context,
       barrierDismissible: true,
       builder: (ctx) => FieldMenuDialog(
@@ -1226,7 +1227,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         playerY: _game.playerY,
         initialTab: initialTab,
         etc: _sourceEtc.fieldCounters(),
-        etcProvider: () => _sourceEtc.fieldCounters(),
         onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
         onSpellEffect: ({int? torch, int? water, int? swamp, int? levitate}) {
           setState(() {
@@ -1256,23 +1256,49 @@ class _MainGameScreenState extends State<MainGameScreen> {
         onMindReadActivated: (count) {
           setState(() => _mindReadCount = count);
         },
-        onEncounterSettingsChanged: (frequency, maxEnemies) {
-          setState(() {
-            _encounterFrequency = frequency;
-            _maxEnemies = maxEnemies;
-          });
-        },
-        mapTilesProvider: () => _game.currentMap?.tileSnapshot() ?? [],
-        consumedScriptsProvider: () => _scripts.consumedScripts.toList(),
-        onSaveDataLoaded: (save) async {
-          await _applyLoadedSave(save);
-          if (!mounted) return;
-          _addLog(LoreSubText.loadingGame);
-        },
         onLog: (msg) => _addLog(msg),
       ),
     );
+    // SelectMode item 7.
+    if (next == FieldMenuTab.gameOption && mounted) await _runGameOption();
   }
+
+  /// LOREMENU `GameOption` (hotkey G or SelectMode item 7).
+  Future<void> _runGameOption() =>
+      LoreGameOption.run(_ScreenGameOptionIo(this), _party, _sourceEtc);
+
+  /// `Save` for slot 1..4 (`party`/`player`/`SaveN.map`): the current game.
+  SaveData _captureSave(int slot) => SaveData(
+    slot: slot,
+    slotName: SaveManager.slotNames[slot - 1],
+    timestamp: DateTime.now(),
+    mapId: _game.currentMapId,
+    mapTitle:
+        LoreWorldManager.mapRegistry[_game.currentMapId]?.title ??
+        '${_game.currentMapId}',
+    playerX: _game.playerX,
+    playerY: _game.playerY,
+    gold: _partyGold,
+    food: _partyFood,
+    party: _party,
+    flags: LoreDialogueManager.instance.getSaveFlags(),
+    etc: _sourceEtc.fieldCounters(),
+    mapTiles: _game.currentMap?.tileSnapshot() ?? const [],
+    consumedScripts: _scripts.consumedScripts.toList(),
+  );
+
+  /// GameOption 4: `Load` (a missing save ends in `ErrorMessage`/`Halt`).
+  Future<void> _optionLoad(int slot) async {
+    _addLog(LoreSubText.loadingGame);
+    if (await _loadSaveSlot(slot) || !mounted) return;
+    AudioManager.instance.stopBgm();
+    setState(
+      () =>
+          _halt = LoreGameOverResult(LoreGameOverEnd.halted, missingSlot: slot),
+    );
+  }
+
+  void _refresh() => setState(() {});
 
   void _redispatchCurrentTileAfter(FieldAction action) {
     if (!mounted ||
@@ -1886,7 +1912,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
               case FieldAction.rest:
                 await _openFieldMenuDialog(initialTab: FieldMenuTab.rest);
               case FieldAction.gameOption:
-                await _openFieldMenuDialog(initialTab: FieldMenuTab.gameOption);
+                await _runGameOption();
               case FieldAction.toggleSound:
                 setState(() => AudioManager.instance.toggleMute());
               case FieldAction.quickView:
@@ -1959,4 +1985,50 @@ class _EscapeCancels extends StatelessWidget {
     },
     child: child,
   );
+}
+
+/// [LoreGameOption] on the game screen: source selects and messages as
+/// dialogs, `Load`/`Save` through [SaveManager], `GameOver` in the viewport.
+class _ScreenGameOptionIo implements LoreGameOptionIo {
+  _ScreenGameOptionIo(this._screen);
+
+  final _MainGameScreenState _screen;
+
+  @override
+  Future<int> select(
+    String title,
+    List<String> items, {
+    List<(int, String)> lines = const [],
+  }) async {
+    if (!_screen.mounted) return 0;
+    return showLoreSelectDialog(
+      _screen.context,
+      title: title,
+      items: items,
+      lines: lines,
+    );
+  }
+
+  @override
+  Future<void> message(List<(int, String)> lines) async {
+    if (!_screen.mounted) return;
+    await showLoreMessageDialog(_screen.context, lines: lines);
+  }
+
+  @override
+  Future<void> load(int slot) => _screen._optionLoad(slot);
+
+  @override
+  Future<void> save(int slot) =>
+      SaveManager.instance.saveGame(_screen._captureSave(slot));
+
+  @override
+  Future<void> gameOver() async {
+    await _screen._runGameOver(LoreDialogueManager.instance.lastBattleResult);
+  }
+
+  @override
+  void displayCondition() {
+    if (_screen.mounted) _screen._refresh();
+  }
 }

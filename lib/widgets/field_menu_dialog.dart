@@ -4,12 +4,9 @@ import '../logic/lore_menu_text.dart';
 import 'esp_panel.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
-import '../services/save_manager.dart';
 import '../game/lore_world_manager.dart';
-import '../game/lore_dialogue_manager.dart';
 import '../logic/field_magic_logic.dart';
 import '../logic/town_logic.dart';
-import '../data/lore_script.dart';
 
 /// 1993년 원작 LOREMENU.PAS 기반 스페이스바 필드 시스템 메뉴 (SelectMode)
 class FieldMenuDialog extends StatefulWidget {
@@ -20,7 +17,6 @@ class FieldMenuDialog extends StatefulWidget {
   final int playerX;
   final int playerY;
   final void Function(int newFood)? onFoodChanged;
-  final Future<void> Function(SaveData loadedData)? onSaveDataLoaded;
   final void Function({int? torch, int? water, int? swamp, int? levitate})?
   onSpellEffect;
 
@@ -36,12 +32,7 @@ class FieldMenuDialog extends StatefulWidget {
   /// (x, y) 타일을 바꾼다 (원작 `map[x+dx,y+dy] := k`).
   final void Function(int x, int y, int tile)? onTerrainChange;
   final void Function(int count)? onMindReadActivated;
-  final void Function(int frequency, int maxEnemies)?
-  onEncounterSettingsChanged;
-  final List<int> Function()? mapTilesProvider;
-  final List<String> Function()? consumedScriptsProvider;
   final Map<String, int>? etc;
-  final Map<String, int> Function()? etcProvider;
   final void Function(String message) onLog;
 
   /// 원작 핫키(P/V/C/R/G)로 진입할 때 바로 열 탭.
@@ -56,18 +47,13 @@ class FieldMenuDialog extends StatefulWidget {
     this.playerX = 51,
     this.playerY = 31,
     this.onFoodChanged,
-    this.onSaveDataLoaded,
     this.onSpellEffect,
     this.mapSize,
     this.tileAt,
     this.onMoveTo,
     this.onTerrainChange,
     this.onMindReadActivated,
-    this.onEncounterSettingsChanged,
-    this.mapTilesProvider,
-    this.consumedScriptsProvider,
     this.etc,
-    this.etcProvider,
     this.initialTab = FieldMenuTab.main,
     required this.onLog,
   });
@@ -91,36 +77,12 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
   FieldMenuTab _currentTab = FieldMenuTab.main;
   int _selectedMemberIndex = 0;
   late int _currentFood;
-  late int _encounterFrequency;
-  late int _maxEnemies;
-  List<SaveData?>? _slots;
-  bool _isLoadingSlots = false;
 
   @override
   void initState() {
     super.initState();
     _currentTab = widget.initialTab;
     _currentFood = widget.food;
-    _encounterFrequency = widget.etc?['encounterFrequency'] ?? 2;
-    _maxEnemies = widget.etc?['maxEnemies'] ?? 5;
-    _loadSlots();
-  }
-
-  Future<void> _loadSlots() async {
-    setState(() => _isLoadingSlots = true);
-    try {
-      final slots = await SaveManager.instance.getAllSlots();
-      if (mounted) {
-        setState(() {
-          _slots = slots;
-          _isLoadingSlots = false;
-        });
-      }
-    } catch (_) {
-      if (mounted) {
-        setState(() => _isLoadingSlots = false);
-      }
-    }
   }
 
   @override
@@ -164,8 +126,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
       title = LoreMenuText.selectModeEsp;
     } else if (_currentTab == FieldMenuTab.rest) {
       title = LoreMenuText.selectModeRest;
-    } else if (_currentTab == FieldMenuTab.gameOption) {
-      title = LoreMenuText.selectModeOption;
     }
 
     return Row(
@@ -210,7 +170,8 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
       case FieldMenuTab.rest:
         return _buildRest();
       case FieldMenuTab.gameOption:
-        return _buildGameOption();
+        // GameOption is a run of source selects owned by the game screen.
+        return const SizedBox.shrink();
     }
   }
 
@@ -286,7 +247,10 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           minimumSize: const Size.fromHeight(34),
           alignment: Alignment.centerLeft,
         ),
-        onPressed: () => setState(() => _currentTab = tab),
+        // GameOption runs on the game screen (it can load, save or quit).
+        onPressed: tab == FieldMenuTab.gameOption
+            ? () => Navigator.of(context).pop(tab)
+            : () => setState(() => _currentTab = tab),
         child: Text(
           title,
           overflow: TextOverflow.ellipsis,
@@ -1383,240 +1347,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           ),
         ),
       ],
-    );
-  }
-
-  // =========================================================================
-  // 5. 게임 저장 및 불러오기 (LOREMENU.PAS: GameOption)
-  // =========================================================================
-  Widget _buildGameOption() {
-    if (_isLoadingSlots || _slots == null) {
-      return Container(
-        height: 240,
-        alignment: Alignment.center,
-        child: Text(
-          LoreMenuText.optionSaving,
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 12,
-          ),
-        ),
-      );
-    }
-
-    return Container(
-      constraints: const BoxConstraints(maxHeight: 280),
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: 5,
-        itemBuilder: (context, index) {
-          if (index == 0) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: Wrap(
-                spacing: 18,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Text(
-                    LoreMenuText.optionEncounterPrompt,
-                    style: RetroTheme.dosFont.copyWith(fontSize: 11),
-                  ),
-                  DropdownButton<int>(
-                    value: _encounterFrequency,
-                    dropdownColor: RetroTheme.background,
-                    items: const [1, 2, 3]
-                        .map(
-                          (n) => DropdownMenuItem(value: n, child: Text('$n')),
-                        )
-                        .toList(),
-                    onChanged: (value) {
-                      if (value == null) return;
-                      setState(() => _encounterFrequency = value);
-                      widget.onEncounterSettingsChanged?.call(
-                        value,
-                        _maxEnemies,
-                      );
-                    },
-                  ),
-                  Text(
-                    '${LoreMenuText.optionMaxEnemy1} ${LoreMenuText.optionMaxEnemy2}',
-                    style: RetroTheme.dosFont.copyWith(fontSize: 11),
-                  ),
-                  DropdownButton<int>(
-                    value: _maxEnemies,
-                    dropdownColor: RetroTheme.background,
-                    items: const [3, 4, 5, 6, 7]
-                        .map(
-                          (n) => DropdownMenuItem(value: n, child: Text('$n')),
-                        )
-                        .toList(),
-                    onChanged: (value) {
-                      if (value == null) return;
-                      setState(() => _maxEnemies = value);
-                      widget.onEncounterSettingsChanged?.call(
-                        _encounterFrequency,
-                        value,
-                      );
-                    },
-                  ),
-                ],
-              ),
-            );
-          }
-          final slotNum = index;
-          final slotData = _slots![index - 1];
-          final slotTitle = SaveManager.slotNames[index - 1];
-
-          return Container(
-            margin: const EdgeInsets.only(bottom: 8),
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: slotData != null
-                    ? RetroTheme.lightCyan
-                    : RetroTheme.darkGray,
-                width: 1,
-              ),
-              color: RetroTheme.background,
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '$slotNum. $slotTitle',
-                        style: RetroTheme.headerFont.copyWith(
-                          color: slotData != null
-                              ? RetroTheme.yellow
-                              : RetroTheme.lightGray,
-                          fontSize: 11,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      if (slotData == null)
-                        Text(
-                          '-',
-                          style: RetroTheme.dosFont.copyWith(
-                            color: RetroTheme.darkGray,
-                            fontSize: 10,
-                          ),
-                        )
-                      else ...[
-                        Text(
-                          '${slotData.mapTitle} ${LoreMenuText.viewPartyXAxis}${slotData.playerX} ${LoreMenuText.viewPartyYAxis}${slotData.playerY}',
-                          style: RetroTheme.dosFont.copyWith(
-                            color: RetroTheme.lightGreen,
-                            fontSize: 10,
-                          ),
-                        ),
-                        Text(
-                          '${slotData.timestamp.toLocal().toString().substring(0, 16)}  ${LoreMenuText.viewPartyGold}${slotData.gold}  ${LoreMenuText.viewPartyFood}${slotData.food}',
-                          style: RetroTheme.dosFont.copyWith(
-                            color: RetroTheme.lightCyan,
-                            fontSize: 9,
-                          ),
-                        ),
-                        Text(
-                          slotData.party.map((p) => p.name).join(', '),
-                          style: RetroTheme.dosFont.copyWith(
-                            color: RetroTheme.white,
-                            fontSize: 9,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ],
-                  ),
-                ),
-                const SizedBox(width: 8),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: RetroTheme.blue,
-                        foregroundColor: RetroTheme.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 6,
-                        ),
-                        minimumSize: const Size(60, 26),
-                      ),
-                      onPressed: () async {
-                        final mapTitle =
-                            LoreWorldManager
-                                .mapRegistry[widget.currentMapId]
-                                ?.title ??
-                            '${widget.currentMapId}';
-                        final newSave = SaveData(
-                          slot: slotNum,
-                          slotName: slotTitle,
-                          timestamp: DateTime.now(),
-                          mapId: widget.currentMapId,
-                          mapTitle: mapTitle,
-                          playerX: widget.playerX,
-                          playerY: widget.playerY,
-                          gold: widget.gold,
-                          food: _currentFood,
-                          party: widget.party,
-                          flags: LoreDialogueManager.instance.getSaveFlags(),
-                          etc: widget.etcProvider?.call() ?? widget.etc ?? {},
-                          mapTiles: widget.mapTilesProvider?.call() ?? const [],
-                          consumedScripts:
-                              widget.consumedScriptsProvider?.call() ??
-                              LoreScriptEngine.instance.consumedScripts
-                                  .toList(),
-                        );
-                        await SaveManager.instance.saveGame(newSave);
-                        widget.onLog(
-                          '${LoreMenuText.optionSave}: $slotTitle ${LoreMenuText.optionSaveDone}',
-                        );
-                        await _loadSlots();
-                      },
-                      child: Text(
-                        LoreMenuText.optionSave,
-                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: slotData != null
-                            ? RetroTheme.green
-                            : RetroTheme.darkGray,
-                        foregroundColor: RetroTheme.white,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 6,
-                        ),
-                        minimumSize: const Size(60, 26),
-                      ),
-                      onPressed: slotData == null
-                          ? null
-                          : () async {
-                              LoreDialogueManager.instance.loadFlags(
-                                slotData.flags,
-                                fieldCounters: slotData.etc,
-                              );
-                              await widget.onSaveDataLoaded?.call(slotData);
-                              if (!context.mounted) return;
-                              Navigator.of(context).pop();
-                            },
-                      child: Text(
-                        LoreMenuText.optionResume,
-                        style: RetroTheme.dosFont.copyWith(fontSize: 10),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          );
-        },
-      ),
     );
   }
 }

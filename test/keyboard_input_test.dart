@@ -204,11 +204,13 @@ void main() {
       expect(find.text(LoreMenuText.selectModeRest), findsWidgets);
       await closeDialog(tester);
 
-      // G -> 게임 저장/불러오기
+      // G -> GameOption (원본 Select, Esc 로 닫는다)
       await tester.sendKeyEvent(LogicalKeyboardKey.keyG);
       await settle(tester);
-      expect(find.text(LoreMenuText.selectModeOption), findsOneWidget);
-      await closeDialog(tester);
+      expect(find.text(LoreMenuText.optionTitle), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await settle(tester);
+      expect(find.text(LoreMenuText.optionTitle), findsNothing);
     });
 
     testWidgets('Q/E 키가 각각 전용 화면을 연다', (WidgetTester tester) async {

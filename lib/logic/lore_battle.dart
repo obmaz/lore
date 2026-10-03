@@ -63,23 +63,7 @@ class LoreBattle {
 
   int get enemynumber => enemy.length;
 
-  static PartyMember _blank() => PartyMember(
-    name: '',
-    playerClass: PlayerClass.none,
-    strength: 0,
-    mentality: 0,
-    concentration: 0,
-    endurance: 0,
-    resistance: 0,
-    agility: 0,
-    accArms: 0,
-    accMagic: 0,
-    accEsp: 0,
-    luck: 0,
-    hp: 0,
-    sp: 0,
-    esp: 0,
-  );
+  static PartyMember _blank() => PartyMember.blank();
 
   PartyMember p(int i) => i <= party.length ? party[i - 1] : _blanks[i - 1];
 

@@ -469,6 +469,19 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     `join` 스텝의 `cancelSteps`가 거절 뒤 코드를 맡는다. 공용 `showLoreSelectDialog`는 닫기 아이콘을
     Esc와 같은 터치 입력으로 둔다.
 
+39. LOREMENU `GameOption`을 옮겼다(`lib/logic/lore_game_option.dart`). 예전 화면(조우 빈도·적 수
+    드롭다운, 슬롯마다 지도·좌표·금·일행 미리보기와 저장/불러오기 버튼)은 원본에 없어 없앴고,
+    빠져 있던 순서 정렬·제외·게임을 마침을 넣었다. `G` 키와 SelectMode 7번이 같은 절차를 부른다.
+    1 난이도: `3..7 명의 적들` 선택 + 2를 etc[8](Esc면 5), 성격 다섯 가지 중 `6 - k`를 etc[7]
+    (Esc면 3)에 쓴다. 4·5가 되는 값은 원본처럼 다음 `Load`에서 2로 보정된다. 2 순서 정렬: 2~5번
+    슬롯(빈 칸은 `Reserved`) 두 번 선택 뒤 55바이트 `lore` 레코드 전체 교환, 3 제외:
+    `player[k].name := ''`, 4 불러오기: `불러 내고 싶은 게임을 선택하십시오.`(없는 슬롯은
+    `ErrorMessage`/`Halt`), 5 저장: `게임의 저장 장소를 선택하십시오.` 뒤 `현재의 게임을
+    저장합니다`·`성공했습니다`와 키 대기, 6: 현재 `etc[6]`으로 GameOver(`G` 키는 Space와 달리
+    etc[6]을 0으로 바꾸지 않는다). 빈 슬롯은 `PartyMember.blank()`이다. 어댑터: 두 번째 순서
+    선택은 원본의 오른쪽 열(이름 앞 공백 24칸과 두 번째 `순서를 바꿀 일원`) 대신 같은 제목의
+    창이다.
+
 ## 최근 검증 (2026-10-02)
 
 - 전체 Flutter 테스트 543개 통과; 자료를 다시 쓰는 EXPORT_DATA / EXPORT_IMAGES

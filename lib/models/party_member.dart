@@ -113,6 +113,26 @@ class PartyMember {
        sp = sp ?? (mentality * magicLevel),
        esp = esp ?? (concentration * espLevel);
 
+  /// An empty `player[k]` slot (`name = ''`): what the original keeps past the
+  /// joined members and what `player[k].name := ''` leaves behind.
+  factory PartyMember.blank() => PartyMember(
+    name: '',
+    playerClass: PlayerClass.none,
+    strength: 0,
+    mentality: 0,
+    concentration: 0,
+    endurance: 0,
+    resistance: 0,
+    agility: 0,
+    accArms: 0,
+    accMagic: 0,
+    accEsp: 0,
+    luck: 0,
+    hp: 0,
+    sp: 0,
+    esp: 0,
+  );
+
   int get maxHp => endurance * battleLevel;
   int get maxSp => mentality * magicLevel;
   int get maxEsp => concentration * espLevel;
