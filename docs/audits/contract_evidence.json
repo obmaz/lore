@@ -11919,6 +11919,26 @@
       "test": "test/return_condition_test.dart",
       "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
       "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:while:1",
+      "line": 219,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/den_darkness_test.dart",
+      "note": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:1",
+      "line": 222,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/den_darkness_test.dart",
+      "note": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded).",
+      "verification": "partial"
     }
   ]
 }

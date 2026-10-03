@@ -510,6 +510,36 @@ class LoreGame extends FlameGame {
     }
   }
 
+  /// `bar(20,20,200,200)` in color 0 and `HPrintXY(94,96,'어둠')` in color 8.
+  void _renderDarkness(Canvas canvas, double offsetX, double offsetY) {
+    final width = viewTilesX * tileSize;
+    final height = viewTilesY * tileSize;
+    canvas.drawRect(
+      Rect.fromLTWH(offsetX, offsetY, width, height),
+      Paint()..color = RetroTheme.ega(0),
+    );
+    final text = TextPainter(
+      text: TextSpan(
+        text: darknessText,
+        style: RetroTheme.dosFont.copyWith(
+          color: RetroTheme.ega(8),
+          fontSize: tileSize * 0.6,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    text.paint(
+      canvas,
+      Offset(
+        offsetX + (width - text.width) / 2,
+        offsetY + (height - text.height) / 2,
+      ),
+    );
+  }
+
+  /// LORESUB `Scroll`: `HPrintXY(94,96,'어둠')`.
+  static const String darknessText = '어둠';
+
   void _renderMap(Canvas canvas) {
     final halfX = viewTilesX ~/ 2;
     final halfY = viewTilesY ~/ 2;
@@ -537,6 +567,15 @@ class LoreGame extends FlameGame {
         break;
       default:
         activeTileFont = townFont;
+    }
+
+    // LORESUB `Scroll`/`AuxScroll`: in a den without the magic torch
+    // (`party.etc[1] = 0`) the view is a black box with '어둠' and neither the
+    // map nor the party is drawn (also while peeking).
+    if (mapCat == MapCategory.den &&
+        LoreDialogueManager.instance.partyEtc.read(1) == 0) {
+      _renderDarkness(canvas, offsetX, offsetY);
+      return;
     }
 
     // 1. 플레이어 중심 11x11 뷰포트 렌더링
