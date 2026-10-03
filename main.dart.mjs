@@ -538,7 +538,7 @@ class CompiledApp {
       fG: (x0,x1) => { x0.name = x1 },
       fH: () => globalThis.Symbol,
       fI: (x0,x1) => { x0.min = x1 },
-      fJ: (x0,x1,x2) => x0.setItem(x1,x2),
+      fJ: (x0,x1) => x0.getItem(x1),
       g: (wasmFunction,f) => finalizeWrapper(f, function(x0) { return wasmFunction(f,arguments.length,x0) }),
       gB: Function.prototype.call.bind(DataView.prototype.getUint16),
       gC: () => globalThis.window.flutterConfiguration,
@@ -568,7 +568,7 @@ class CompiledApp {
       iG: (x0,x1) => { x0.name = x1 },
       iH: x0 => x0.buffer,
       iI: (x0,x1) => { x0.scrollLeft = x1 },
-      iJ: (x0,x1) => x0.getItem(x1),
+      iJ: (x0,x1) => x0.key(x1),
       j: x0 => x0.random(),
       jB: o => o instanceof Uint8ClampedArray,
       jC: x0 => x0.scale,
@@ -578,7 +578,7 @@ class CompiledApp {
       jG: (x0,x1) => { x0.placeholder = x1 },
       jH: x0 => x0.wasmMemory,
       jI: (x0,x1) => { x0.spellcheck = x1 },
-      jJ: (x0,x1) => x0.key(x1),
+      jJ: x0 => x0.length,
       k: o => o,
       kB: o => {
         if (o === null || o === undefined) return 0;
@@ -595,7 +595,7 @@ class CompiledApp {
       kG: (x0,x1) => { x0.action = x1 },
       kH: () => globalThis.window._flutter_skwasmInstance,
       kI: (x0,x1) => { x0.disabled = x1 },
-      kJ: x0 => x0.length,
+      kJ: (x0,x1,x2) => x0.setItem(x1,x2),
       l: o => {
         if (o === undefined || o === null) return 0;
         if (typeof o === 'number') return 1;
