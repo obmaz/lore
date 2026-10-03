@@ -588,11 +588,17 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
 
 48. LORESUB `ReturnCondition`은 문구만이 아니라 `hp <= 0`이고 `unconscious = 0`이면 `unconscious := 1`,
     `unconscious > endurance * level[1]`이고 `dead = 0`이면 `dead := 1`로 레코드를 바꾼다.
-    `PartyMember.returnCondition()`으로 옮겨 일행 표시 갱신(`DisplayCondition`/`SimpleDisCond`에 해당)마다
-    이름 있는 대원에게 적용한다. 원본은 이름 없는 레코드에도 적용하지만 모든 읽기가 `name <> ''`를
-    확인하므로 건너뛴다(기록된 차이). 필드 아래쪽의 터치용 Space/Q/E 버튼은 원본에 없는 글자
-    (`명령(Space)`, `[Q] 건강 상태`, `[E] 초능력`)를 없애고 아이콘만 남겼으며 접근성 이름은 SelectMode의
-    원본 항목 문구이다.
+    `PartyMember.returnCondition()`/`PartyMember.simpleDisCond()`(1..6번 전부, 이름이 없어도)로 옮겼다.
+    쓰지 않은 칸은 `Create`의 0 레코드가 첫 `SimpleDisCond`에서 `unconscious := 1`, `dead := 1`이
+    되므로 `PartyMember.blank()`가 처음부터 그 값이다(LOREBATT 특수 공격이 살아 있는 대원을 셀 때와
+    CureSpell의 빈 칸 대상 문구에 영향: `치료될 상태가 아닙니다`). 호출 지점: LOREBATT 398
+    (독심 합류), 789(갑옷 파괴), 925(`turn_mind`), 1171(적 단계 끝)은 `LoreBattle.displayCondition()`,
+    LOREMENU/LORESUB의 `Display_Condition`은 화면 어댑터의 `_displayCondition()`이다. 아직 옮기지 않은
+    사건 규칙(JSON)은 끝에 `Display_Condition`을 부르는 것을 일행 표시를 다시 그릴 때마다 정규화하는
+    것으로 근사한다(기록된 차이: 호출 시점이 다음 다시 그리기이다). 필드 아래쪽의 터치용 Space/Q/E
+    버튼은 원본에 없는 글자(`명령(Space)`, `[Q] 건강 상태`, `[E] 초능력`)를 없애고 아이콘만 남겼으며
+    접근성 이름은 SelectMode의 원본 항목 문구이다. 치료 마법의 SP 뺄셈 `sp := sp - i`도 16비트
+    `integer`로 접는다.
 
 49. LOREBATT `BattleMode`의 세 키 대기를 옮겼다(`battle_viewport_view.dart`). 파티 단계가 끝나면
     `DisplayEnemies(FALSE); print(7,''); PressAnyKey;`(문구 `아무키나 누르십시오 ...`를 보이고 키를
@@ -602,7 +608,11 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     거친다. 어댑터: 키 대기는 아무 키나 화면 터치(포인터 누름)로 풀린다. 적 단계 앞의 300ms 임의
     지연은 없앴다(원본에 없다). `ReadKey`에는 문구가 없으므로 화면에도 보이지 않고, 터치 사용자는
     화면을 눌러 계속한다. 적이 한 번씩 행동할 때마다의 효과음 대기와 적 단계 메시지의 한 줄씩 출력은
-    아직 한꺼번에 처리된다(남은 차이).
+    아직 한꺼번에 처리된다(남은 차이). 파티원 행동 사이의 150ms 지연은 화면 갱신용 어댑터로 남겼다
+    (원본에 없음). 수정키(Shift/Ctrl/Alt/Caps 등)만 누르면 `ReadKey`처럼 대기가 풀리지 않고, 대기를 푸는
+    누름이 적 줄을 눌렀어도 대상은 바뀌지 않는다. 전투의 일행 치료(`5 : CureSpell`)는 아직 CureSpell
+    본문(빈 칸 대상 항목, `level[2] div 2 + 1`개 마법, 끝의 빈 줄 두 개·`SimpleDisCond`·키 대기,
+    `강한 치료 마법` 거절의 키 대기)을 따르지 않는다(남은 차이).
 
 50. LORESUB `Scroll`의 굴 어둠을 옮겼다(`LoreGame._renderDarkness`). `position = den`이고
     `party.etc[1] = 0`(마법의 횃불이 꺼짐)이면 지도도 파티도 그리지 않고 검은 화면에 회색(8) `어둠`만

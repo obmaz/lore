@@ -20,7 +20,9 @@ void main() {
     ) as Map<String, dynamic>;
     final map = await LoreMapData.loadFromAsset('GROUND1', category: 'ground');
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
     for (final raw in fixture['cases'] as List<dynamic>) {
       final item = raw as Map<String, dynamic>;
       final x = item['x'] as int;
@@ -32,10 +34,7 @@ void main() {
         mapId: 1,
         x: x,
         y: y,
-        context: ScriptContext(
-          tileAtPlayer: 0,
-          flags: {if (visited) flag},
-        ),
+        context: ScriptContext(tileAtPlayer: 0, flags: {if (visited) flag}),
         party: const [],
         scripts: engine,
         legacy: LoreDungeonEventManager.instance,

@@ -125,7 +125,7 @@ class FieldMagicLogic {
     if (caster.sp < cost) {
       return _refusal(spNotEnoughMessage, inBattle);
     }
-    caster.sp -= cost;
+    caster.sp = LorePascal.integer(caster.sp - cost);
     target.hp += healAmount(caster.magicLevel);
     final maxHp = target.endurance * target.battleLevel;
     if (target.hp > maxHp) target.hp = maxHp;
@@ -176,7 +176,7 @@ class FieldMagicLogic {
     if (caster.sp < cost) {
       return _refusal(spNotEnoughMessage, inBattle);
     }
-    caster.sp -= cost;
+    caster.sp = LorePascal.integer(caster.sp - cost);
     target.unconscious = 0;
     if (target.hp <= 0) target.hp = 1;
     return MagicCastResult(
@@ -199,7 +199,7 @@ class FieldMagicLogic {
     if (caster.sp < cost) {
       return _refusal(spNotEnoughMessage, inBattle);
     }
-    caster.sp -= cost;
+    caster.sp = LorePascal.integer(caster.sp - cost);
     target.dead = 0;
     final limit = target.endurance * target.battleLevel;
     if (target.unconscious > limit) target.unconscious = limit;

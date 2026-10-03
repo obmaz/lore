@@ -43,23 +43,21 @@ void main() {
     return result.script;
   }
 
-  group('LORESPEC 맵 24 K_DEN1 / LAST SHELTER 분기 검증 (LORESPEC.PAS:1980-1994)', () {
-    test('맵 24 내부 좌표에서는 LORESPEC 특수 타일 이벤트가 없으며 포털로만 처리된다', () {
-      final direct = LoreSpecProcedures.map24(
-        25,
-        25,
-        const ScriptContext(tileAtPlayer: 0),
-        scripts,
-      );
-      expect(direct, isNull);
+  group(
+    'LORESPEC 맵 24 K_DEN1 / LAST SHELTER 분기 검증 (LORESPEC.PAS:1980-1994)',
+    () {
+      test('맵 24 내부 좌표에서는 LORESPEC 특수 타일 이벤트가 없으며 포털로만 처리된다', () {
+        final direct = LoreSpecProcedures.map24(
+          25,
+          25,
+          const ScriptContext(tileAtPlayer: 0),
+          scripts,
+        );
+        expect(direct, isNull);
 
-      final dispatched = dispatchSpecial(
-        mapId: 24,
-        x: 25,
-        y: 25,
-        tile: 0,
-      );
-      expect(dispatched, isNull);
-    });
-  });
+        final dispatched = dispatchSpecial(mapId: 24, x: 25, y: 25, tile: 0);
+        expect(dispatched, isNull);
+      });
+    },
+  );
 }

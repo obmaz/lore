@@ -11,30 +11,46 @@ void main() {
   setUpAll(() {
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
-      const MethodChannel('xyz.luan/audioplayers.global'),
-      (methodCall) async => 1,
-    );
+          const MethodChannel('xyz.luan/audioplayers.global'),
+          (methodCall) async => 1,
+        );
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMethodCallHandler(
-      const MethodChannel('xyz.luan/audioplayers'),
-      (methodCall) async => 1,
-    );
+          const MethodChannel('xyz.luan/audioplayers'),
+          (methodCall) async => 1,
+        );
   });
 
   group('LORE 1993 현대식 오디오 & BGM 매핑 검증', () {
     test('1. 모든 BGM 트랙 파일이 assets/audio/ 에 존재하고 0바이트가 아니다', () {
       for (final track in BgmTrack.values) {
         final file = File('assets/${track.assetPath}');
-        expect(file.existsSync(), isTrue, reason: 'BGM 파일 누락: ${track.assetPath}');
-        expect(file.lengthSync(), greaterThan(100000), reason: 'BGM 파일 크기 비정상: ${track.assetPath}');
+        expect(
+          file.existsSync(),
+          isTrue,
+          reason: 'BGM 파일 누락: ${track.assetPath}',
+        );
+        expect(
+          file.lengthSync(),
+          greaterThan(100000),
+          reason: 'BGM 파일 크기 비정상: ${track.assetPath}',
+        );
       }
     });
 
     test('2. 모든 SFX 효과음 파일이 assets/audio/ 에 존재하고 0바이트가 아니다', () {
       for (final sfx in SfxSound.values) {
         final file = File('assets/${sfx.assetPath}');
-        expect(file.existsSync(), isTrue, reason: 'SFX 파일 누락: ${sfx.assetPath}');
-        expect(file.lengthSync(), greaterThan(1000), reason: 'SFX 파일 크기 비정상: ${sfx.assetPath}');
+        expect(
+          file.existsSync(),
+          isTrue,
+          reason: 'SFX 파일 누락: ${sfx.assetPath}',
+        );
+        expect(
+          file.lengthSync(),
+          greaterThan(1000),
+          reason: 'SFX 파일 크기 비정상: ${sfx.assetPath}',
+        );
       }
     });
 
@@ -52,8 +68,17 @@ void main() {
         final expectedTrack = switch (mapId) {
           1 || 2 || 3 || 4 || 5 => BgmTrack.ground,
           6 || 7 || 8 || 9 || 10 || 24 || 26 || 27 => BgmTrack.town,
-          11 || 12 || 13 || 14 || 15 || 16 || 17 || 18 || 19 || 20 || 25 =>
-            BgmTrack.den,
+          11 ||
+          12 ||
+          13 ||
+          14 ||
+          15 ||
+          16 ||
+          17 ||
+          18 ||
+          19 ||
+          20 ||
+          25 => BgmTrack.den,
           21 || 22 || 23 => BgmTrack.keep,
           _ => throw StateError('알 수 없는 맵 ID: $mapId'),
         };

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/logic/lore_batt_text.dart';
 import 'package:lore/logic/lore_sub_text.dart';
@@ -111,5 +112,70 @@ void main() {
     expect(ran, 0);
     await pressBattleKey(tester);
     expect(ran, 1);
+  });
+
+  testWidgets('the press that ends a wait does not pick an enemy', (
+    tester,
+  ) async {
+    final logs = <String>[];
+    final first = Monster.create(1)..hp = 30000;
+    final second = Monster.create(10)..hp = 30000;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: BattleViewportView(
+            partyMembers: [PartyMember.createPreset(1)..hp = 10000],
+            enemies: [first, second],
+            random: _MaxRandom(),
+            espAccessGranted: false,
+            onLog: logs.add,
+            onVictory: (_) {},
+            onTelepathyJoin: (_) {},
+            onDefeat: () {},
+            onRunAway: () {},
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text(LoreSubText.pressAnyKey), findsOneWidget);
+    // The tap lands on the second enemy's row: it only ends the wait.
+    await tester.tap(find.byKey(const ValueKey('enemy-1')));
+    await tester.pump(const Duration(milliseconds: 200));
+    expect(find.text(LoreSubText.pressAnyKey), findsNothing);
+    await pressBattleKey(tester); // ReadKey after the enemy phase
+    logs.clear();
+    await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(logs.first, contains(first.name));
+    expect(logs.first, isNot(contains(second.name)));
+  });
+
+  testWidgets('a lone modifier key does not end a wait', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: BattleViewportView(
+            partyMembers: [PartyMember.createPreset(1)..hp = 10000],
+            enemies: [Monster.create(1)..hp = 30000],
+            random: _MaxRandom(),
+            espAccessGranted: false,
+            onLog: (_) {},
+            onVictory: (_) {},
+            onTelepathyJoin: (_) {},
+            onDefeat: () {},
+            onRunAway: () {},
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
+    await tester.pump(const Duration(milliseconds: 300));
+    await tester.sendKeyEvent(LogicalKeyboardKey.shiftLeft);
+    await tester.pump(const Duration(milliseconds: 200));
+    expect(find.text(LoreSubText.pressAnyKey), findsOneWidget);
+    await pressBattleKey(tester);
+    expect(find.text(LoreSubText.pressAnyKey), findsNothing);
   });
 }

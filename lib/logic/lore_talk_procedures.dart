@@ -521,8 +521,7 @@ class LoreTalkProcedures {
     // 11. (37, 41) - Polaris
     if (x == 37 && y == 41) {
       final step = context.questSteps['lastditch'] ?? 0;
-      final hasPolaris =
-          context.flags.contains('polarisJoined') || step >= 2;
+      final hasPolaris = context.flags.contains('polarisJoined') || step >= 2;
       if (!hasPolaris) {
         return scripts.startProcedure(
           scripts.scripts.singleWhere((s) => s.id == 'polaris-join'),
@@ -867,4 +866,3 @@ class LoreTalkProcedures {
     );
   }
 }
-

@@ -19,7 +19,9 @@ void main() {
     final tile = (fixture['tile'] as List<dynamic>).cast<int>();
     final map = await LoreMapData.loadFromAsset('K_DEN1', category: 'den');
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
 
     final talk = engine.startTalk(
       24,

@@ -131,11 +131,12 @@ void main() {
       },
     );
 
-    test('an empty slot target only prints its refusal (0 HP >= 0)', () async {
+    test('an empty slot is dead after SimpleDisCond: 치료될 상태가 아닙니다', () async {
+      // Unused records are `unconscious := 1; dead := 1` (ReturnCondition).
       final caster = mage();
       final io = _Io([3, 1]);
       await LoreCastSpell.cureSpell(io, [caster], caster);
-      expect(io.trace.last, 'talk:7:는 치료할 필요가 없습니다.|7:|7:');
+      expect(io.trace.last, 'talk:7:는 치료될 상태가 아닙니다.|7:|7:');
     });
 
     test(

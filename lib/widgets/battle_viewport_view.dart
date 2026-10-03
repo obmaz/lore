@@ -69,6 +69,20 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   /// `c := ReadKey` / `PressAnyKey` inside `BattleMode`: the round stops until
   /// any key or pointer press. [_keyWaitPrompt] is true for `PressAnyKey`,
   /// which prints its text; `ReadKey` shows nothing.
+  static final Set<LogicalKeyboardKey> _modifierKeys = {
+    LogicalKeyboardKey.shiftLeft,
+    LogicalKeyboardKey.shiftRight,
+    LogicalKeyboardKey.controlLeft,
+    LogicalKeyboardKey.controlRight,
+    LogicalKeyboardKey.altLeft,
+    LogicalKeyboardKey.altRight,
+    LogicalKeyboardKey.metaLeft,
+    LogicalKeyboardKey.metaRight,
+    LogicalKeyboardKey.capsLock,
+    LogicalKeyboardKey.numLock,
+    LogicalKeyboardKey.scrollLock,
+  };
+
   Completer<void>? _keyWait;
   bool _keyWaitPrompt = false;
 
@@ -591,6 +605,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       autofocus: true,
       onKeyEvent: (node, event) {
         if (event is KeyDownEvent && _keyWait != null) {
+          // DOS `ReadKey` does not return for a lone modifier key.
+          if (_modifierKeys.contains(event.logicalKey)) {
+            return KeyEventResult.ignored;
+          }
           _releaseKeyWait();
           return KeyEventResult.handled;
         }
@@ -635,7 +653,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                   LoreSubText.pressAnyKey,
                   textAlign: TextAlign.center,
                   style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.white,
+                    color: RetroTheme.ega(14), // setcolor(14)
                     fontSize: 11,
                   ),
                 ),
@@ -673,6 +691,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                     return GestureDetector(
                       key: ValueKey('enemy-$idx'),
                       onTap: () {
+                        // The press that ends a key wait must not pick a target.
+                        if (_keyWait != null) return;
                         if (!enemy.isDead) {
                           setState(() => _selectedEnemyIndex = idx);
                         }

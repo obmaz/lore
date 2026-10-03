@@ -277,7 +277,9 @@ void main() {
         await tester.pump();
         expect(find.text(LoreSubText.allDead), findsOneWidget);
         expect(LoreDialogueManager.instance.lastBattleResult, 255);
-        await tester.tap(find.byKey(const ValueKey('lore-window-press-any-key')));
+        await tester.tap(
+          find.byKey(const ValueKey('lore-window-press-any-key')),
+        );
         await tester.pump();
         await tester.pump();
         await choose(tester, 1); // 없습니다
@@ -344,7 +346,9 @@ void main() {
         await tester.pump();
         await tester.pump();
         await tester.pump();
-        await tester.tap(find.byKey(const ValueKey('lore-window-press-any-key')));
+        await tester.tap(
+          find.byKey(const ValueKey('lore-window-press-any-key')),
+        );
         await tester.pump();
         await tester.pump();
         await choose(tester, 2); // 본 게임 데이타

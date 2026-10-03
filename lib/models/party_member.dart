@@ -113,8 +113,10 @@ class PartyMember {
        sp = sp ?? (mentality * magicLevel),
        esp = esp ?? (concentration * espLevel);
 
-  /// An empty `player[k]` slot (`name = ''`): what the original keeps past the
-  /// joined members and what `player[k].name := ''` leaves behind.
+  /// An unused `player[k]` slot past the joined members: the zero record of
+  /// `Create` after its first `SimpleDisCond`, whose `ReturnCondition` turns
+  /// `hp = 0` into `unconscious := 1` and then `dead := 1` (LORESUB:709-710).
+  /// (`player[k].name := ''` keeps the record as it was instead.)
   factory PartyMember.blank() => PartyMember(
     name: '',
     playerClass: PlayerClass.none,
@@ -131,7 +133,17 @@ class PartyMember {
     hp: 0,
     sp: 0,
     esp: 0,
+    unconscious: 1,
+    dead: 1,
   );
+
+  /// LORESUB `SimpleDisCond`: `ReturnCondition(j)` for the slots 1..6, named
+  /// or not (only the drawing is skipped for empty names).
+  static void simpleDisCond(Iterable<PartyMember> party) {
+    for (final member in party.take(6)) {
+      member.returnCondition();
+    }
+  }
 
   int get maxHp => endurance * battleLevel;
   int get maxSp => mentality * magicLevel;

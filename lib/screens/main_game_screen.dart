@@ -1121,7 +1121,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           showPoisonMessage: (member) {
             _addLog('${member.name}는 중독 되었다.');
           },
-          displayCondition: () => setState(() {}),
+          displayCondition: _displayCondition,
           displayHealthAndCondition: () {
             setState(() {});
           },
@@ -1137,7 +1137,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           showLavaWarning: () => _addLog('일행은 용암지대로 들어섰다 !!!'),
           showDamage: (member, damage) =>
               _addLog('${member.name}는 $damage의 피해를 입었다 !'),
-          displayCondition: () => setState(() {}),
+          displayCondition: _displayCondition,
           gameOver: _detectedGameOver,
         ).then((_) => _continuePositionBlocks()),
       );
@@ -1735,6 +1735,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   List<PartyMemberStatus> _mapPartyStatus() {
+    // Approximation for the not-yet-migrated event rules: each of them ends in
+    // `Display_Condition`, whose `SimpleDisCond` runs `ReturnCondition` for all
+    // six slots. Migrated procedures call [_displayCondition] at their own
+    // points (LOREBATT, LOREMENU, LORESUB shops) so the timing there is exact.
+    PartyMember.simpleDisCond(_party);
     return _party.map((p) {
       return PartyMemberStatus(
         name: p.name,
@@ -1743,13 +1748,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
         sp: p.sp,
         maxSp: p.maxSp,
         level: p.battleLevel,
-        // `DisplayCondition`/`SimpleDisCond` call `ReturnCondition`, which
-        // normalizes hp <= 0 and over-long unconsciousness before the text.
-        // Unnamed records are skipped (the source touches them too, but every
-        // reader checks `name <> ''`).
-        condition: p.name.isEmpty ? p.condition : p.returnCondition(),
+        condition: p.condition,
       );
     }).toList();
+  }
+
+  /// `Display_Condition`/`SimpleDisCond` at a migrated call site.
+  void _displayCondition() {
+    PartyMember.simpleDisCond(_party);
+    if (mounted) setState(() {});
   }
 
   Widget _buildViewportContent() {
@@ -2126,9 +2133,7 @@ class _ScreenGameOptionIo implements LoreGameOptionIo {
   }
 
   @override
-  void displayCondition() {
-    if (_screen.mounted) _screen._refresh();
-  }
+  void displayCondition() => _screen._displayCondition();
 }
 
 /// [LoreCastSpell] on the game screen: selects and `Talk` as dialogs,
@@ -2223,7 +2228,7 @@ class _ScreenCastSpellIo implements LoreCastSpellIo {
   set food(int value) => _screen._partyFood = value;
 
   @override
-  void displayCondition() => _screen._refresh();
+  void displayCondition() => _screen._displayCondition();
 }
 
 /// [LoreExtrasense] on the game screen: selects and `Talk` as dialogs,
@@ -2360,5 +2365,5 @@ class _ScreenShopIo implements LoreShopIo {
   set food(int value) => _screen._partyFood = value;
 
   @override
-  void displayCondition() => _screen._refresh();
+  void displayCondition() => _screen._displayCondition();
 }

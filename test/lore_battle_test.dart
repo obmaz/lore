@@ -247,4 +247,14 @@ void main() {
     expect(b.plusGold(), want);
     expect(lines.single, LoreBattText.goldFound('$want'));
   });
+
+  test('the enemy phase ends with SimpleDisCond (LOREBATT:1171)', () {
+    final hurt = hero()..hp = 0;
+    final battle = make([hurt], [Monster.create(1)..isDead = true], _Script());
+    expect(hurt.unconscious, 0);
+    battle.enemyPhase();
+    expect((hurt.unconscious, hurt.dead), (1, 0));
+    // Unused slots count as already dead, so they are not picked or counted.
+    expect(battle.p(6).dead, 1);
+  });
 }

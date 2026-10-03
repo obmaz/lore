@@ -84,7 +84,11 @@ void main() {
     final defeated = ScriptBattleSession.resolve(
       before: before,
       end: LoreBattleEnd.runAway,
-      enemies: [enemy('Sphinx'), enemy('Sphinx'), enemy('Major Mummy', hp: 0, dead: true)],
+      enemies: [
+        enemy('Sphinx'),
+        enemy('Sphinx'),
+        enemy('Major Mummy', hp: 0, dead: true),
+      ],
       pendingScript: run,
     );
     expect(defeated.defeatedEnemySlots, {3});

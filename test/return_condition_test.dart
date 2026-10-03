@@ -46,4 +46,25 @@ void main() {
     p.dead = 1;
     expect(p.returnCondition(), 'dead');
   });
+
+  test('an unused slot is the zero record after SimpleDisCond: dead 1', () {
+    final blank = PartyMember.blank();
+    expect((blank.unconscious, blank.dead, blank.hp), (1, 1, 0));
+    expect(blank.returnCondition(), 'dead');
+    // The zero record of Create goes through the same two steps.
+    final zero = PartyMember.blank()
+      ..unconscious = 0
+      ..dead = 0;
+    PartyMember.simpleDisCond([zero]);
+    expect((zero.unconscious, zero.dead), (1, 1));
+  });
+
+  test('SimpleDisCond normalizes named and unnamed slots 1..6', () {
+    final named = member()..hp = 0;
+    final unnamed = member()
+      ..name = ''
+      ..hp = -4;
+    PartyMember.simpleDisCond([named, unnamed]);
+    expect((named.unconscious, unnamed.unconscious), (1, 1));
+  });
 }

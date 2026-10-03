@@ -530,6 +530,7 @@ class LoreBattle {
       e.isUnconscious = true;
       e.hp = 0;
       e.level = 0;
+      displayCondition(); // LOREBATT:398
       return;
     }
     if (me.esp < 20) {
@@ -952,6 +953,7 @@ class LoreBattle {
               }
             }
           }
+          displayCondition(); // LOREBATT:789
         } else {
           j = 0;
           k = 0;
@@ -1096,6 +1098,7 @@ class LoreBattle {
         }
         _turnMind(k, 6);
         p(6).name = '';
+        displayCondition(); // LOREBATT:925
         print(13, '${e.name}가 독심술을 사용하여 ${enemy[k - 1].name}을 자기편으로 끌어들였다');
       }
     }
@@ -1272,6 +1275,16 @@ class LoreBattle {
         }
       }
       if (!(e.isDead || e.isUnconscious)) enemyAttack();
+    }
+    displayCondition(); // LOREBATT:1171 `SimpleDisCond`
+  }
+
+  /// `Display_Condition`/`SimpleDisCond`: `ReturnCondition` of every slot, which
+  /// turns `hp <= 0` into unconscious and over-long unconsciousness into dead
+  /// at exactly these points of the enemy phase.
+  void displayCondition() {
+    for (var i = 1; i <= 6; i++) {
+      p(i).returnCondition();
     }
   }
 

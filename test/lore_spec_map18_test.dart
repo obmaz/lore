@@ -205,9 +205,7 @@ void main() {
       expect(done.continueAfterDefeat(), isNull);
       expect(done.outcome.questChanges, isEmpty);
       final minotaur = drain(at(21, 41)!);
-      expect(minotaur.continueAfterDefeat()!.outcome.setFlags, [
-        'etc39_bit3',
-      ]);
+      expect(minotaur.continueAfterDefeat()!.outcome.setFlags, ['etc39_bit3']);
       expect(minotaur.resumesAfterReload, isTrue);
     });
 

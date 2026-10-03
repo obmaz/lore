@@ -17,7 +17,9 @@ void main() {
     ) as Map<String, dynamic>;
     final map = await LoreMapData.loadFromAsset('T_DEN2', category: 'den');
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
     for (final raw in fixture['cases'] as List<dynamic>) {
       final item = raw as Map<String, dynamic>;
       final x = item['x'] as int;
@@ -27,15 +29,28 @@ void main() {
         12,
         x,
         y,
-        ScriptContext(moveDy: item['moveDy'] as int, questSteps: {'gaia': gaia}),
+        ScriptContext(
+          moveDy: item['moveDy'] as int,
+          questSteps: {'gaia': gaia},
+        ),
       );
       final ScriptMapResult actual = run == null
           ? ScriptMapResult(mapId: 12, x: x, y: y, grid: map.grid)
           : ScriptWorldReducer.applyMap(
-              ScriptMapState(mapId: 12, x: x, y: y, direction: 0, grid: map.grid),
+              ScriptMapState(
+                mapId: 12,
+                x: x,
+                y: y,
+                direction: 0,
+                grid: map.grid,
+              ),
               run.outcome,
             );
-      expect([actual.x, actual.y], item['end'], reason: '원본 ${item['line']} ($x,$y)');
+      expect(
+        [actual.x, actual.y],
+        item['end'],
+        reason: '원본 ${item['line']} ($x,$y)',
+      );
       final expectedGrid = [for (final row in map.grid) List<int>.from(row)];
       final rawTile = item['tile'];
       if (rawTile != null) {
@@ -49,10 +64,18 @@ void main() {
           expectedGrid[ty - 1][trap[0] - 1] = trap[3];
         }
       }
-      expect(actual.grid, expectedGrid, reason: '원본 ${item['line']} ($x,$y) 지형');
+      expect(
+        actual.grid,
+        expectedGrid,
+        reason: '원본 ${item['line']} ($x,$y) 지형',
+      );
       final questSet = item['questSet'];
       expect(
-        run?.outcome.questChanges.where((q) => q.name == 'gaia').map((q) => q.set).toList() ?? <int?>[],
+        run?.outcome.questChanges
+                .where((q) => q.name == 'gaia')
+                .map((q) => q.set)
+                .toList() ??
+            <int?>[],
         questSet == null ? <int?>[] : <int?>[questSet as int],
         reason: '원본 ${item['line']} ($x,$y) 퀘스트',
       );

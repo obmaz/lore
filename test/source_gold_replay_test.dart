@@ -14,7 +14,9 @@ void main() {
       File('test/fixtures/source_gold_replay.json').readAsStringSync(),
     ) as Map<String, dynamic>;
     final engine = LoreScriptEngine();
-    engine.loadFromJson(await rootBundle.loadString('assets/data/scripts.json'));
+    engine.loadFromJson(
+      await rootBundle.loadString('assets/data/scripts.json'),
+    );
     for (final raw in data['cases'] as List<dynamic>) {
       final item = raw as Map<String, dynamic>;
       final flag = item['flag'] as String;
@@ -31,7 +33,10 @@ void main() {
         expect(run, isNotNull, reason: 'LORESPEC.PAS:${item['line']}');
         expect(run!.outcome.setFlags, contains(flag));
       } else {
-        expect(run?.outcome.setFlags ?? const <String>[], isNot(contains(flag)));
+        expect(
+          run?.outcome.setFlags ?? const <String>[],
+          isNot(contains(flag)),
+        );
       }
     }
   });
