@@ -41,18 +41,8 @@ void main() {
     });
 
     test('5. 던전 및 필드 특수 이벤트 (식량 나무 / JSON 스크립트 이관분) 검증', () async {
-      // 1) 맵 1 식량 나무 (94, 68) - 원작 on-enter 이벤트라 Dart가 담당
-      final treeEvent = dungeonEvents.checkEvent(1, 94, 68, [hero]);
-      expect(treeEvent, isNotNull);
-      expect(treeEvent!.type, DungeonEventType.foodGain);
-      expect(treeEvent.foodGained, 100);
-
-      // 중복 수확 차단
-      final treeAgain = dungeonEvents.checkEvent(1, 94, 68, [hero]);
-      expect(treeAgain!.type, DungeonEventType.dialogueOnly);
-      expect(treeAgain.foodGained, 0);
-
-      // 2) 나머지 좌표 이벤트는 모두 JSON 스크립트가 담당한다.
+      // 맵 1 식량 나무는 LORESPEC `specialevent` 직접 이식(`map1Food`)이 담당한다.
+      // 나머지 좌표 이벤트는 모두 JSON 스크립트가 담당한다.
       //    (근사 좌표로 만들어 두었던 Dart 이벤트는 제거했다.)
       await LoreScriptEngine.instance.load();
       expect(

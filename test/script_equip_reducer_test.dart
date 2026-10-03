@@ -48,6 +48,28 @@ void main() {
       )),
       'Hero가 황금의 갑옷을 장착했다.',
     );
+    // LORESPEC:517 keeps the space of `name + ' 가 오이디푸스의 창을 ...'`.
+    expect(
+      ScriptEquipReducer.completionMessage(hero, (
+        kind: 'weapon',
+        index: 3,
+        power: 12,
+        prompt: true,
+        onlyUnarmed: false,
+      )),
+      'Hero 가 오이디푸스의 창을 장착했다.',
+    );
+    // The weapon room (LORESPEC:257) prints nothing.
+    expect(
+      ScriptEquipReducer.completionMessage(hero, (
+        kind: 'weapon',
+        index: 1,
+        power: 5,
+        prompt: false,
+        onlyUnarmed: true,
+      )),
+      isNull,
+    );
   });
 
   setUp(engine.resetForTest);

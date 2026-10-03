@@ -593,7 +593,7 @@ class LoreWorldManager {
     return null;
   }
 
-  /// 원작 `LOREENT.PAS:440` 맵 12 의 **동적** 퐷말 문구.
+  /// 원작 `LOREENT.PAS:440` 맵 12 의 **동적** 푯말 문구.
   ///
   /// 미로의 문 번호는 원작에서 플레이어 좌표로 계산해 출력하므로 JSON 에 담을
   /// 수 없다(`j := (x+x1-6) div 7 + 12` / `j := (x+x1-3) div 5 + 2`).
@@ -601,16 +601,16 @@ class LoreWorldManager {
     if (mapId != 12) return null;
     if (y == 56) {
       final number = (x - 6) ~/ 7 + 12;
-      return "퐷말에 쓰여있기로 ...\n           문의 번호는 '$number'";
+      return "푯말에 쓰여있기로 ...\n           문의 번호는 '$number'";
     }
     if (y == 29) {
       final number = (x - 3) ~/ 5 + 2;
-      return "퐷말에 쓰여있기로 ...\n           패스코드는 '$number'";
+      return "푯말에 쓰여있기로 ...\n           패스코드는 '$number'";
     }
     return null;
   }
 
-  /// LOREENT.PAS sign 프로시저 기반 표지판/퐷말 메시지
+  /// LOREENT.PAS sign 프로시저 기반 표지판/푯말 메시지
   String? getSignMessage(int mapId, int x, int y) {
     final dynamicText = _dynamicSignMessage(mapId, x, y);
     if (dynamicText != null) return dynamicText;

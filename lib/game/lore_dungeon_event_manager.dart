@@ -123,27 +123,6 @@ class LoreDungeonEventManager {
     if (goldSite != null) return goldSite;
 
     // ------------------------------------------
-    // 1. 맵 1 (지상 필드): 100인분 식량 발견 (LORESPEC.PAS:25~35)
-    // ------------------------------------------
-    if (mapId == 1 && tx == 94 && ty == 68) {
-      if (!_dialogue.foodTreeHarvested) {
-        _dialogue.foodTreeHarvested = true;
-        return const DungeonEventResult(
-          type: DungeonEventType.foodGain,
-          title: '열매 맺힌 고목',
-          message: '일행들은 신비로운 고목에서 100인분의 풍족한 식량을 발견했다!',
-          foodGained: 100,
-        );
-      } else {
-        return const DungeonEventResult(
-          type: DungeonEventType.dialogueOnly,
-          title: '열매 맺힌 고목',
-          message: '우리들은 아무것도 발견할 수 없었다.',
-        );
-      }
-    }
-
-    // ------------------------------------------
     // 원작 LORESPEC.PAS의 나머지 좌표 이벤트(전투/보상/연출)는
     // `assets/data/scripts.json` 으로 이관했다. JSON에 해당 좌표 스크립트가
     // 있으면 이 Dart 이벤트보다 먼저 실행된다.

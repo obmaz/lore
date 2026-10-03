@@ -29,7 +29,6 @@ class ScriptSceneDialog extends StatelessWidget {
     },
     child: AlertDialog(
       backgroundColor: RetroTheme.black,
-      title: Text(scene.title, style: RetroTheme.headerFont),
       content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,

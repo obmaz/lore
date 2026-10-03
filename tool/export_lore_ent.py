@@ -218,7 +218,7 @@ def y_filter(cond: str | None):
 
 
 def build() -> tuple[list[dict], list[dict], list[dict], set[str]]:
-    """(포털, 퐷말, 진입 스크립트, 대체할 스크립트 id)"""
+    """(포털, 푯말, 진입 스크립트, 대체할 스크립트 id)"""
     meta = map_meta()
     entermode = parse_entermode()
     signs = parse_signs()
@@ -256,7 +256,7 @@ def build() -> tuple[list[dict], list[dict], list[dict], set[str]]:
         ]
         defaults = [e for e in signs[map_id]['entries'] if e.get('default')]
         covered = {c for b in blocks for c in b['coords']}
-        # `at` 없는 맵 전체 문구(예: 맵 19/23)는 그 맵의 모든 퐷말에 적용한다.
+        # `at` 없는 맵 전체 문구(예: 맵 19/23)는 그 맵의 모든 푯말에 적용한다.
         arm_level = [e for e in signs[map_id]['entries'] if e.get('armLevel')]
         for block in arm_level:
             got = texts(block['lines'], 1, len(block['lines']))
@@ -271,7 +271,7 @@ def build() -> tuple[list[dict], list[dict], list[dict], set[str]]:
                     }
             targets = [c for c in info['signs'] if c not in covered]
             if not targets:
-                # 원작에는 있으나 해당 맵에 퐷말 타일이 없는 분기(도달 불가).
+                # 원작에는 있으나 해당 맵에 푯말 타일이 없는 분기(도달 불가).
                 rule = {'map': map_id, 'mapDefault': True, 'text': text}
                 if change:
                     rule['setTile'] = change
@@ -507,7 +507,7 @@ def write_dart_fallback(portals: list[dict], sign_rules: list[dict]) -> None:
     )
     src = src[:start] + block + src[end:]
 
-    # 퐷말 폴백: getSignMessage 의 내장 분기를 생성된 규칙으로 교체
+    # 푯말 폴백: getSignMessage 의 내장 분기를 생성된 규칙으로 교체
     sign_start = src.index('    if (mapId == 2) {', src.index('getSignMessage'))
     sign_end = src.index('    return null;\n  }', sign_start)
     lines = []
@@ -564,7 +564,7 @@ def write() -> int:
         fh.write('\n')
     write_dart_fallback(portals, sign_rules)
     print(
-        f'포털 {len(portals)}개(출구 {len(kept)}개 유지), 퐷말 {len(sign_rules)}개,'
+        f'포털 {len(portals)}개(출구 {len(kept)}개 유지), 푯말 {len(sign_rules)}개,'
         f' 진입 스크립트 {len(scripts)}개 (내장 폴백 표 재생성)'
     )
     return 0

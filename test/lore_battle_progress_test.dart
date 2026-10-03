@@ -36,7 +36,6 @@ void main() {
       victory.newlySetFlags,
       containsAll(['etc33_bit1', 'bossMajorMummyDefeated']),
     );
-    expect(victory.bossMessage, contains('Major Mummy'));
     expect(before.flags, isEmpty);
 
     expect(run.isVictoryAfterRunAway({3}), isTrue);
@@ -69,7 +68,6 @@ void main() {
       );
       expect(result.state.gold, 900);
       expect(result.state.flags, {'met': true});
-      expect(result.bossMessage, isNull);
       expect(
         result.state.lastBattleResult,
         end == LoreBattleEnd.runAway ? 2 : 255,

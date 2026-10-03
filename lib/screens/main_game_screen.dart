@@ -604,13 +604,16 @@ class _MainGameScreenState extends State<MainGameScreen> {
       }
       if (current.pendingScene case final scene?) {
         if (!mounted) return false;
+        final shown = scene.withPartyNames([
+          for (final member in _party) member.name,
+        ]);
+        // The story speech of a scene is kept in the previous-dialogue tab too.
+        _dialogueHistory.add(shown.lines);
         await showDialog<void>(
           context: context,
           barrierDismissible: false,
           builder: (_) => ScriptSceneDialog(
-            scene: scene.withPartyNames([
-              for (final member in _party) member.name,
-            ]),
+            scene: shown,
             actors: [for (final id in scene.actors) Monster.create(id)],
           ),
         );
@@ -1100,7 +1103,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
     for (final index in result.equippedIndexes) {
       final member = _party[index];
-      _addLog(ScriptEquipReducer.completionMessage(member, equip));
+      final message = ScriptEquipReducer.completionMessage(member, equip);
+      if (message != null) _addLog(message);
     }
     return true;
   }
@@ -1549,7 +1553,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _applyBattleProgress(session.progress);
       _currentMode = GameScreenMode.field;
     });
-    if (session.progress.bossMessage case final message?) _addLog(message);
     _focusNode.requestFocus();
     if (session.continuation case final continuation?) {
       unawaited(
@@ -1583,7 +1586,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _applyBattleProgress(session.progress);
       _currentMode = GameScreenMode.field;
     });
-    if (session.progress.bossMessage case final message?) _addLog(message);
     _focusNode.requestFocus();
     if (session.continuation case final continuation?) {
       unawaited(

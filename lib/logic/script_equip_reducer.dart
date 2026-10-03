@@ -26,19 +26,20 @@ class ScriptEquipResult {
 class ScriptEquipReducer {
   ScriptEquipReducer._();
 
-  static String completionMessage(PartyMember member, ScriptEquip equip) {
+  /// The source's `message(15, ..)` after an equip: LORESPEC:517 (Oedipus'
+  /// spear, `name + ' 가 ...'` with the space), 873/920 (golden shield) and
+  /// 940 (golden armor). The basic weapons of the weapon room print nothing.
+  static String? completionMessage(PartyMember member, ScriptEquip equip) {
+    if (equip.kind == 'weapon' && equip.index == 3) {
+      return '${member.name} 가 오이디푸스의 창을 장착했다.';
+    }
     if (equip.kind == 'shield' && equip.index == 5) {
       return '${member.name}가 황금의 방패를 장착했다.';
     }
     if (equip.kind == 'armor' && equip.index == 5) {
       return '${member.name}가 황금의 갑옷을 장착했다.';
     }
-    final itemName = switch (equip.kind) {
-      'weapon' => member.weaponName,
-      'shield' => member.shieldName,
-      _ => member.armorName,
-    };
-    return '${member.name} 이(가) $itemName 을(를) 장착했다.';
+    return null;
   }
 
   static ScriptEquipResult apply(
