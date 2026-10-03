@@ -40290,7 +40290,7 @@
     {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
-      "sha256": "2543a6d6c324afdae8a4bbe613ff26358450106ca07314cccc79207088798230",
+      "sha256": "7e1a17fd302449e7b1b4b5770675f588f74d0007ae745045ebc102a971d84e9c",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
@@ -41033,7 +41033,7 @@
     {
       "path": "test/step5_train_rest_guide_test.dart",
       "kind": "test",
-      "sha256": "9c75ea0ca86739914b38b31b757ba179fc310f67ad25981ab78e5093866e8261",
+      "sha256": "28420255457fa0faa2c2e5d2f3b0be321f27de6b8675799cfe0e04d56fe31b6e",
       "cited_source_files": [
         "LOREHELP.PAS",
         "LOREMENU.PAS",
@@ -41463,11 +41463,11 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "7912f2e095538fe49e98f4166753f43637fff3186ca3f3edf554481b91693c8b"
+      "sha256": "a0d622cd2e2d3d412109997b22e6864ffe56240ea951fe0fe026e9c14e4735b2"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
-      "sha256": "b58a224a3e229ac73b91fa85334dcc1563c93e588a2041a267edcf90a09e7549"
+      "sha256": "5a0f4919772a96b03d53e11ff977ce9cbe11365a006cbea43c37ec16a06fe84f"
     },
     {
       "path": "lib/widgets/script_scene_dialog.dart",
