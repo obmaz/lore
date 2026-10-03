@@ -225,4 +225,37 @@ void main() {
     expect(history.history.blocks.length, 3);
     expect(history.history.blocks.first.first, page1);
   });
+
+  testWidgets('a speech that ends in a Select keeps its lines above the menu', (
+    tester,
+  ) async {
+    // LORETALK.PAS:191-197: two Prints, `m[0] := ''`, `select(.., FALSE, TRUE)`
+    // (the lines stay), then `asyouwish` = message(7, ..) without a key wait.
+    final game = await openTown(tester, const Size(390, 844), x: 40, y: 16);
+    game.tryMove(0, -1); // Mad Joe at (40, 15)
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    const first = ' 히히히... 위대한 용사님. 낄낄낄.. 내가 당';
+    const second = '신들의 일행에 끼이면 안될까요 ? 우히히히..';
+    expect(find.byKey(const ValueKey('lore-press-any-key')), findsNothing);
+    expect(find.text(first), findsOneWidget);
+    expect(find.text(second), findsOneWidget);
+    expect(find.text('그렇다면 당신을 받아들이지요'), findsOneWidget);
+    expect(find.text('그의 제안을 받아들이시겠습니까 ?'), findsNothing);
+    expect(find.text('어떻게 하시겠습니까 ?'), findsNothing);
+    // Refuse: `asyouwish` is one log line, no PressAnyKey window.
+    await tester.tap(find.text('당신은 이곳에 그냥 있는게 낫겠소'));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.byKey(const ValueKey('lore-press-any-key')), findsNothing);
+    expect(find.text('당신이 바란다면 ...'), findsWidgets);
+    final logs = tester.widget<MessageLogView>(find.byType(MessageLogView));
+    expect(logs.logs, ['당신이 바란다면 ...']);
+    final history = tester.widget<DialogueHistoryView>(
+      find.byType(DialogueHistoryView, skipOffstage: false),
+    );
+    expect(history.history.blocks, [
+      [first, second],
+    ]);
+  });
 }

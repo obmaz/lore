@@ -234,7 +234,8 @@ class ScriptScene {
 /// 스크립트 실행 중 일어난 일 1건(순서 보존).
 class ScriptEvent {
   /// 'message' = 대사 출력, 'peek' = 카메라 연출(원작 `scroll(FALSE)`),
-  /// 'pause' = 원작 `talk(..)`/`PressAnyKey`: 키를 누르면 대사 창을 지운다.
+  /// 'pause' = 원작 `talk(..)`/`PressAnyKey`: 키를 누르면 대사 창을 지운다,
+  /// 'log' = 원작 `message(color, s)`: 키 대기 없이 한 줄만 보인다.
   final String kind;
   final String? text;
   final int? x;
@@ -255,6 +256,11 @@ class ScriptEvent {
       text = null,
       x = null,
       y = null;
+  const ScriptEvent.log(String this.text)
+    : kind = 'log',
+      x = null,
+      y = null,
+      face = null;
   const ScriptEvent.pause()
     : kind = 'pause',
       text = null,
@@ -1354,6 +1360,10 @@ class LoreScriptEngine {
         case 'pause':
           events.add(const ScriptEvent.pause());
           break;
+        case 'message':
+          messages.add(step.text!);
+          events.add(ScriptEvent.log(step.text!));
+          break;
         case 'say':
           messages.add(step.text!);
           events.add(ScriptEvent.message(step.text!));
@@ -1605,6 +1615,11 @@ class LoreScriptEngine {
 
       if (m.containsKey('say')) {
         steps.add(ScriptStep(kind: 'say', text: m['say'] as String));
+        matched = true;
+      }
+      // `{"message": "..."}`: the source's `message(color, s)` / `asyouwish`.
+      if (m.containsKey('message')) {
+        steps.add(ScriptStep(kind: 'message', text: m['message'] as String));
         matched = true;
       }
       // `{"pause": true}`: the source's `talk(..)`/`PressAnyKey` between pages.

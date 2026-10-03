@@ -436,6 +436,11 @@ class LoreDialogueManager {
     for (final entry in etcBits.entries) {
       partyEtc.putIfAbsent(entry.key, () => entry.value);
     }
+    // Legacy saves recorded the map 1 food tree as a Boolean; the source keeps
+    // it in `party.etc[32]` bit8. A numeric raw byte always takes precedence.
+    if (foodTreeHarvested && flags['etc32'] is! num) {
+      partyEtc.setBit(32, 8, true);
+    }
     // Legacy JSON saves kept the shifted room number in named flags. Recover
     // it once; numeric raw bytes, including zero, always take precedence.
     if (flags['etc40'] is! num) {

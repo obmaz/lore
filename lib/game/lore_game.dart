@@ -123,11 +123,8 @@ class LoreGame extends FlameGame {
   /// true이면 좌표 이벤트가 걸음을 처리했으므로 일반 무작위 전투를 건너뛴다.
   final bool Function()? onStepTaken;
 
-  /// 좌표 대화의 조건 분기(예: Spica 영입 조건)에 필요한 파티 상태 제공자.
+  /// The party (the source's `player[1..6]`), for the screen and the tests.
   final List<PartyMember> Function()? partyProvider;
-
-  /// 원작 `party.etc[5]`(독심술 사용 가능 횟수) 제공자.
-  final int Function()? mindReadCountProvider;
 
   /// JSON 스크립트 실행에 필요한 상황(파티/플래그/독심술) 제공자.
   final ScriptContext Function()? scriptContextProvider;
@@ -164,9 +161,8 @@ class LoreGame extends FlameGame {
     this.onPoisonTick,
     this.onMindReadTick,
     this.onMoveMode,
-    this.onStepTaken,
     this.partyProvider,
-    this.mindReadCountProvider,
+    this.onStepTaken,
     this.scriptContextProvider,
     this.scriptEngine,
     this.onScriptTalk,

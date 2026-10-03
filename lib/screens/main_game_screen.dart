@@ -96,6 +96,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   /// `이전 대화` 탭: 대사 창에 보였던 NPC 대사(이번 접속 동안).
   final LoreDialogueHistory _dialogueHistory = LoreDialogueHistory();
+
+  /// The `Print` lines that stay on screen while the `Select` of a speech is
+  /// open (`select(.., clean = FALSE, ..)`): shown above its items.
+  List<String> _choiceLines = const [];
   int _partyGold = 2000;
   int _partyFood = 20; // 원작 LORECRET.PAS `Last`: food := 20;
 
@@ -279,7 +283,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       },
       onStepTaken: () => _handleStepTaken(),
       partyProvider: () => _party,
-      mindReadCountProvider: () => _mindReadCount,
       scriptContextProvider: _scriptContext,
       scriptEngine: _scripts,
       onScriptTalk: (run, tx, ty) =>
@@ -585,6 +588,29 @@ class _MainGameScreenState extends State<MainGameScreen> {
     int? talkTargetX,
     int? talkTargetY,
   }) async {
+    // The source blocks all input while an event runs: no pad or arrow-key
+    // step may start another one meanwhile.
+    _scriptDepth++;
+    try {
+      return await _driveScriptBody(
+        run,
+        alreadyApplied: alreadyApplied,
+        talkTargetX: talkTargetX,
+        talkTargetY: talkTargetY,
+      );
+    } finally {
+      _scriptDepth--;
+    }
+  }
+
+  int _scriptDepth = 0;
+
+  Future<bool> _driveScriptBody(
+    ScriptRun run, {
+    ScriptOutcome alreadyApplied = const ScriptOutcome(),
+    int? talkTargetX,
+    int? talkTargetY,
+  }) async {
     var current = run;
     var applied = alreadyApplied;
     while (true) {
@@ -625,52 +651,19 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (options == null) return true;
       if (!mounted) return false;
 
-      final chosen = await showDialog<int>(
-        context: context,
-        barrierDismissible: false,
-        builder: (ctx) => _EscapeCancels(
-          onEscape: () => Navigator.of(ctx).pop(-1),
-          child: AlertDialog(
-            backgroundColor: RetroTheme.black,
-            shape: Border.all(color: RetroTheme.lightCyan, width: 2),
-            title: Text(
-              current.choicePrompt ?? '어떻게 하시겠습니까 ?',
-              style: RetroTheme.dosFont.copyWith(
-                color: RetroTheme.yellow,
-                fontSize: 12,
-              ),
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                for (var i = 0; i < options.length; i++)
-                  ListTile(
-                    dense: true,
-                    title: Text(
-                      options[i],
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.white,
-                        fontSize: 12,
-                      ),
-                    ),
-                    onTap: () => Navigator.of(ctx).pop(i),
-                  ),
-              ],
-            ),
-            actions: [
-              IconButton(
-                key: const ValueKey('dialog-cancel'),
-                onPressed: () => Navigator.of(ctx).pop(-1),
-                icon: const Icon(
-                  Icons.close,
-                  size: 16,
-                  color: RetroTheme.lightRed,
-                ),
-              ),
-            ],
-          ),
-        ),
+      // The speech lines stay above the menu (`select(.., clean = FALSE, ..)`);
+      // `m[0]` is the title ('' when the source leaves it empty).
+      final held = _choiceLines;
+      _choiceLines = const [];
+      if (held.isNotEmpty) _dialogueHistory.add(held);
+      final k = await showLoreSelectDialog(
+        context,
+        title: current.choicePrompt ?? '',
+        items: options,
+        lines: [for (final line in held) (7, line)],
       );
+      if (!mounted) return false;
+      final int? chosen = k == 0 ? null : k - 1;
       final selected = chosen == null || chosen < 0
           ? current.cancelOptionIndex
           : chosen;
@@ -724,7 +717,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
     // NPC 대화(`talkTargetX`가 있는 실행)는 대사 창에, 그 밖의 메시지는 로그에.
     final isTalk = talkTargetX != null;
     final speech = <String>[];
+    // The lines of a scene are shown by its own dialog.
+    final sceneLines = <String>{...?sourceScene?.lines};
     Future<void> say(String text) async {
+      if (sceneLines.contains(text)) return;
       if (isTalk) {
         speech.add(text);
       } else {
@@ -739,11 +735,23 @@ class _MainGameScreenState extends State<MainGameScreen> {
       await _showDialogue(lines);
     }
 
+    // A speech that ends in a `Select` keeps its lines on screen under the
+    // menu, with no key wait of their own.
+    final holdsChoice = isTalk && run.pendingChoice != null;
+    Future<void> endSpeech() async {
+      if (holdsChoice) {
+        _choiceLines = List<String>.of(speech);
+        speech.clear();
+      } else {
+        await flushSpeech();
+      }
+    }
+
     if (outcome.events.isEmpty) {
       for (final m in outcome.messages) {
         await say(presented(m));
       }
-      await flushSpeech();
+      await endSpeech();
     } else {
       // 대사와 카메라 연출(원작 scroll(FALSE))을 원작 순서대로 재생한다.
       for (final event in outcome.events) {
@@ -758,13 +766,18 @@ class _MainGameScreenState extends State<MainGameScreen> {
           _game.applySourceFace(event.face!);
         } else if (event.kind == 'message') {
           await say(presented(event.text!));
+        } else if (event.kind == 'log') {
+          // `message(color, s)`/`asyouwish`: one line, no key wait.
+          await flushSpeech();
+          if (!mounted) return false;
+          _addLog(presented(event.text!));
         } else if (event.kind == 'pause') {
           // `talk(..)`/`PressAnyKey` inside a speech: the window is cleared.
           await flushSpeech();
           if (!mounted) return false;
         }
       }
-      await flushSpeech();
+      await endSpeech();
       if (!mounted) return false;
       _game.clearPeek();
       setState(() {});
@@ -2076,7 +2089,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
               return;
             }
           }
-          _game.handleKeyEvent(event);
+          if (_scriptDepth == 0) _game.handleKeyEvent(event);
           setState(() {});
         }
       },
@@ -2098,6 +2111,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                     child: DPadWidget(
                       onDirectionPressed: (dx, dy) {
                         if (_entryAnimationActive ||
+                            _scriptDepth > 0 ||
                             _currentMode != GameScreenMode.field) {
                           return;
                         }

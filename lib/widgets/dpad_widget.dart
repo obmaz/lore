@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
@@ -91,6 +92,11 @@ class _DPadButtonState extends State<_DPadButton> {
 
   void _down(PointerDownEvent event) {
     if (_pointer != null) return;
+    // A mouse only presses with its primary button (touch reports it too).
+    if (event.kind == PointerDeviceKind.mouse &&
+        event.buttons != kPrimaryButton) {
+      return;
+    }
     _pointer = event.pointer;
     setState(() => _pressed = true);
     _fire();

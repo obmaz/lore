@@ -222,7 +222,7 @@ class LoreTalkProcedures {
           context,
         );
       }
-      return null; // 이미 통로를 연 후에는 재방문 대화(dialogues.json)로 위임
+      return null; // 원본 `at(63,76) and (etc[50] and bit1 = 0)`: 이미 열었으면 아무것도 찍지 않는다
     }
 
     // 19. (24, 50)
@@ -284,7 +284,7 @@ class LoreTalkProcedures {
           context,
         );
       }
-      return null; // 영입 후에는 재방문 대화(dialogues.json)로 위임
+      return null; // 원본 `at(37,41) and (etc[13] < 2)`: 영입 뒤에는 아무것도 찍지 않는다
     }
 
     // 26. (63, 10)
@@ -414,7 +414,7 @@ class LoreTalkProcedures {
   ///     - Else: allowed.
   /// 11. `(37, 41)`: Polaris recruit select (`party.etc[13] < 2`):
   ///     - If etc[13] < 2: select accept -> join(9, ReturnJoinMember), `map[37,41]:=44`.
-  ///     - Else: delegating to dialogue/done.
+  ///     - Else: prints nothing (the source has no else branch).
   /// 12. Facilities:
   ///     - Training center at `(18,19)`, `(24,19)`, `(21,21)`, `(16,24)`
   ///     - Grocery at `(57,17)`, `(54,20)`, `(58,22)`, `(59,25)`
