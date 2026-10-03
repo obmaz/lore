@@ -39,8 +39,8 @@ class ContractLedgerTest(unittest.TestCase):
                             and e["test_users"] for e in evidence))
         linked = [site for site in data["control_sites"]
                   if site["behavioral_evidence"]]
-        self.assertEqual(len(linked), 1058)
-        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 790)
+        self.assertEqual(len(linked), 1184)
+        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 664)
         self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 1848)
         self.assertTrue(all(site["verification_status"] == "partial"
                             for site in linked))

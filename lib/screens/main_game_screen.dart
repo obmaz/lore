@@ -28,6 +28,7 @@ import '../logic/lore_join.dart';
 import '../logic/town_logic.dart';
 import '../logic/lore_cast_spell.dart';
 import '../logic/lore_extrasense.dart';
+import '../logic/lore_town_shops.dart';
 import '../logic/lore_view_procedures.dart';
 import '../logic/lore_game_option.dart';
 import '../logic/lore_game_over.dart';
@@ -46,7 +47,7 @@ import '../widgets/message_log_view.dart';
 import '../widgets/dpad_widget.dart';
 import '../widgets/battle_viewport_view.dart';
 import '../widgets/encounter_viewport_view.dart';
-import '../widgets/town_facilities_dialog.dart';
+import '../widgets/lore_window.dart';
 import '../widgets/script_scene_dialog.dart';
 import '../game/lore_map_manager.dart';
 import '../services/save_manager.dart';
@@ -1266,22 +1267,27 @@ class _MainGameScreenState extends State<MainGameScreen> {
   Future<void> _openEspDialog() =>
       LoreExtrasense.run(_ScreenExtrasenseIo(this), _party, _sourceEtc);
 
-  void _openTownFacilityDialog(TownFacilityType type) {
-    showDialog(
-      context: context,
-      barrierDismissible: true,
-      builder: (ctx) => TownFacilitiesDialog(
-        facilityType: type,
-        party: _party,
-        gold: _partyGold,
-        food: _partyFood,
-        onGoldChanged: (newGold) => setState(() => _partyGold = newGold),
-        onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
-        onLog: (msg) => _addLog(msg),
-        random: _sessionRandom,
-      ),
-    );
-  }
+  /// LORESUB `Grocery` / `Weapon_Shop` / `Train_Center` / `Hospital`.
+  Future<void> _openTownFacilityDialog(TownFacilityType type) => showLoreWindow(
+    context,
+    run: (window) {
+      final io = _ScreenShopIo(this, window);
+      return switch (type) {
+        TownFacilityType.grocery => LoreTownShops.grocery(io),
+        TownFacilityType.weaponShop => LoreTownShops.weaponShop(io, _party),
+        TownFacilityType.trainCenter => LoreTownShops.trainCenter(
+          io,
+          _party,
+          _sessionRandom,
+        ),
+        TownFacilityType.hospital => LoreTownShops.hospital(io, _party),
+      };
+    },
+    onClose: (lines) {
+      _printLines(lines);
+      _refresh();
+    },
+  );
 
   /// LOREMENU `SelectMode` (Space; LOREMAIN cleared etc[6] first): one source
   /// Select, then the chosen procedure; nothing returns to the menu.
@@ -2306,4 +2312,45 @@ class _ScreenExtrasenseIo implements LoreExtrasenseIo {
 
   @override
   void displayEsp() => _screen._refresh();
+}
+
+/// [LoreTownShops] on the game screen: the shared text window, the party's
+/// gold and food, and a status refresh.
+class _ScreenShopIo implements LoreShopIo {
+  _ScreenShopIo(this._screen, this._window);
+
+  final _MainGameScreenState _screen;
+  final LoreWindowController _window;
+
+  @override
+  void clear() => _window.clear();
+
+  @override
+  void print(int color, String text) => _window.print(color, text);
+
+  @override
+  Future<void> pressAnyKey() => _window.pressAnyKey();
+
+  @override
+  Future<int> select(
+    String title,
+    List<String> items, {
+    int? maxsum,
+    required bool clean,
+  }) => _window.select(title, items, maxsum: maxsum, clean: clean);
+
+  @override
+  int get gold => _screen._partyGold;
+
+  @override
+  set gold(int value) => _screen._partyGold = value;
+
+  @override
+  int get food => _screen._partyFood;
+
+  @override
+  set food(int value) => _screen._partyFood = value;
+
+  @override
+  void displayCondition() => _screen._refresh();
 }

@@ -4,14 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../logic/lore_game_over.dart';
-import '../logic/lore_sub_text.dart';
 import '../theme/retro_theme.dart';
-import 'lore_select_view.dart';
+import 'lore_window.dart';
 
-/// `GameOver` 를 오른쪽 창(뷰포트)에 그리는 어댑터.
-///
-/// 문구는 `HPrintXY` 색 그대로 위에서부터 쌓고, `Select` 는 [LoreSelectView],
-/// `PressAnyKey` 는 원본 안내 문구와 키(또는 터치) 대기이다.
+/// `GameOver` 를 오른쪽 창(뷰포트)에 그리는 어댑터: [LoreWindowView] 에 원본
+/// 문구와 `Select`, `PressAnyKey` 를 그린다.
 class GameOverView extends StatefulWidget {
   const GameOverView({
     super.key,
@@ -32,17 +29,7 @@ class GameOverView extends StatefulWidget {
 }
 
 class _GameOverViewState extends State<GameOverView> implements LoreGameOverIo {
-  final List<(int, String)> _lines = [];
-  ({String title, List<String> items, Completer<int> done})? _select;
-  Completer<void>? _keyWait;
-  int _selectSerial = 0;
-  final FocusNode _keyFocus = FocusNode(debugLabel: 'PressAnyKey');
-
-  @override
-  void dispose() {
-    _keyFocus.dispose();
-    super.dispose();
-  }
+  final LoreWindowController _window = LoreWindowController();
 
   @override
   void initState() {
@@ -54,115 +41,33 @@ class _GameOverViewState extends State<GameOverView> implements LoreGameOverIo {
   }
 
   @override
-  void clear() {
-    if (mounted) setState(_lines.clear);
+  void dispose() {
+    _window.dispose();
+    super.dispose();
   }
 
   @override
-  void print(int color, String text) {
-    if (mounted) setState(() => _lines.add((color, text)));
-  }
+  void clear() => _window.clear();
 
   @override
-  Future<void> pressAnyKey() async {
-    final wait = Completer<void>();
-    setState(() => _keyWait = wait);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (mounted) _keyFocus.requestFocus();
-    });
-    await wait.future;
-    if (!mounted) return;
-    setState(() => _keyWait = null);
-    clear();
-  }
+  void print(int color, String text) => _window.print(color, text);
+
+  @override
+  Future<void> pressAnyKey() => _window.pressAnyKey();
 
   @override
   Future<int> select(
     String title,
     List<String> items, {
+    int? maxsum,
     required bool clean,
-  }) async {
-    if (clean) clear();
-    final done = Completer<int>();
-    setState(() {
-      _selectSerial++;
-      _select = (title: title, items: items, done: done);
-    });
-    final k = await done.future;
-    if (mounted) setState(() => _select = null);
-    clear(); // lastclean = TRUE
-    return k;
-  }
+  }) => _window.select(title, items, maxsum: maxsum, clean: clean);
 
   @override
   Future<bool> load(int slot) => widget.load(slot);
 
-  void _releaseKey() {
-    final wait = _keyWait;
-    if (wait != null && !wait.isCompleted) wait.complete();
-  }
-
   @override
-  Widget build(BuildContext context) {
-    final select = _select;
-    return Container(
-      color: RetroTheme.black,
-      padding: const EdgeInsets.all(16),
-      alignment: Alignment.topLeft,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            for (final (color, text) in _lines)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 4),
-                child: Text(
-                  text,
-                  style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.ega(color),
-                  ),
-                ),
-              ),
-            if (select != null)
-              LoreSelectView(
-                key: ValueKey('game-over-select-$_selectSerial'),
-                title: select.title,
-                items: select.items,
-                onSelected: (k) {
-                  if (!select.done.isCompleted) select.done.complete(k);
-                },
-              ),
-            if (_keyWait != null)
-              Focus(
-                focusNode: _keyFocus,
-                autofocus: true,
-                onKeyEvent: (_, event) {
-                  if (event is KeyDownEvent) {
-                    _releaseKey();
-                    return KeyEventResult.handled;
-                  }
-                  return KeyEventResult.ignored;
-                },
-                child: GestureDetector(
-                  key: const ValueKey('game-over-press-any-key'),
-                  behavior: HitTestBehavior.opaque,
-                  onTap: _releaseKey,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text(
-                      LoreSubText.pressAnyKey,
-                      style: RetroTheme.dosFont.copyWith(
-                        color: RetroTheme.ega(14),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ),
-    );
-  }
+  Widget build(BuildContext context) => LoreWindowView(controller: _window);
 }
 
 /// `Halt` 뒤 텍스트 화면. 일반 종료는 `Feel your RPG imagination !!` 을 원본

@@ -10579,6 +10579,1266 @@
       "test": "test/default_font_test.dart",
       "note": "ReturnDefaultFont ported as LoreTileProtocol.defaultFontSlot (all 27 cases compared against the Pascal source by the test); the field renderer draws special cells (tile 0) from that slot like Load's move into font^[0].",
       "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:grocery:1:for:1",
+      "line": 1160,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Grocery ported directly: six-item Select, k < 2 asyouwish, gold check, food capped at 255, thankyou as a Message.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:grocery:1:if:1",
+      "line": 1167,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Grocery ported directly: six-item Select, k < 2 asyouwish, gold check, food capped at 255, thankyou as a Message.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:grocery:1:exit:1",
+      "line": 1169,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Grocery ported directly: six-item Select, k < 2 asyouwish, gold check, food capped at 255, thankyou as a Message.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:grocery:1:if:2",
+      "line": 1172,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Grocery ported directly: six-item Select, k < 2 asyouwish, gold check, food capped at 255, thankyou as a Message.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:grocery:1:exit:2",
+      "line": 1174,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Grocery ported directly: six-item Select, k < 2 asyouwish, gold check, food capped at 255, thankyou as a Message.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:grocery:1:if:3",
+      "line": 1178,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Grocery ported directly: six-item Select, k < 2 asyouwish, gold check, food capped at 255, thankyou as a Message.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:case:1",
+      "line": 1198,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:exit:1",
+      "line": 1202,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:for:1",
+      "line": 1208,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:for:2",
+      "line": 1218,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:1",
+      "line": 1220,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:goto:1",
+      "line": 1220,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:case:2",
+      "line": 1221,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:2",
+      "line": 1232,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:goto:2",
+      "line": 1236,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:3",
+      "line": 1240,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:4",
+      "line": 1241,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:goto:3",
+      "line": 1244,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:case:3",
+      "line": 1246,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:5",
+      "line": 1260,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:goto:4",
+      "line": 1269,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:6",
+      "line": 1273,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:7",
+      "line": 1275,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:for:3",
+      "line": 1276,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:8",
+      "line": 1282,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:9",
+      "line": 1283,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:for:4",
+      "line": 1284,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:10",
+      "line": 1286,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:goto:5",
+      "line": 1286,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:case:4",
+      "line": 1288,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:11",
+      "line": 1296,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:goto:6",
+      "line": 1300,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:12",
+      "line": 1302,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:13",
+      "line": 1305,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:14",
+      "line": 1307,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:15",
+      "line": 1309,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:16",
+      "line": 1317,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:if:17",
+      "line": 1318,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:weapon_shop:1:goto:7",
+      "line": 1327,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Weapon_Shop ported with its first/second/third goto loops: price table, not-enough-gold key wait then the item menu again, ChooseWhom, monk refusal, knight weapon bonus, shield/armor power and AC, Esc handling.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:1",
+      "line": 1352,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:exit:1",
+      "line": 1355,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:2",
+      "line": 1359,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:case:1",
+      "line": 1360,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:case:2",
+      "line": 1367,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:3",
+      "line": 1387,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:case:3",
+      "line": 1388,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:4",
+      "line": 1410,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:goto:1",
+      "line": 1414,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:5",
+      "line": 1416,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:goto:2",
+      "line": 1419,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:case:4",
+      "line": 1427,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:6",
+      "line": 1428,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:7",
+      "line": 1429,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:8",
+      "line": 1430,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:9",
+      "line": 1431,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:10",
+      "line": 1437,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:11",
+      "line": 1438,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:12",
+      "line": 1439,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:13",
+      "line": 1440,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:14",
+      "line": 1446,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:15",
+      "line": 1447,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:16",
+      "line": 1448,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:17",
+      "line": 1449,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:18",
+      "line": 1453,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:19",
+      "line": 1454,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:20",
+      "line": 1455,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:21",
+      "line": 1456,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:22",
+      "line": 1457,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:23",
+      "line": 1458,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:24",
+      "line": 1463,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:25",
+      "line": 1464,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:26",
+      "line": 1465,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:27",
+      "line": 1466,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:28",
+      "line": 1472,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:29",
+      "line": 1473,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:30",
+      "line": 1474,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:31",
+      "line": 1475,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:32",
+      "line": 1480,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:33",
+      "line": 1481,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:34",
+      "line": 1482,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:35",
+      "line": 1488,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:36",
+      "line": 1489,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:37",
+      "line": 1490,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:38",
+      "line": 1491,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:39",
+      "line": 1492,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:for:1",
+      "line": 1493,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:40",
+      "line": 1494,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:goto:3",
+      "line": 1499,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:if:41",
+      "line": 1504,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:train_center:1:goto:4",
+      "line": 1511,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:1",
+      "line": 1527,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:exit:1",
+      "line": 1530,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:2",
+      "line": 1539,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:1",
+      "line": 1541,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:case:1",
+      "line": 1543,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:3",
+      "line": 1545,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:4",
+      "line": 1546,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:5",
+      "line": 1547,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:6",
+      "line": 1548,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:7",
+      "line": 1549,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:2",
+      "line": 1552,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:8",
+      "line": 1556,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:3",
+      "line": 1559,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:9",
+      "line": 1563,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:4",
+      "line": 1567,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:10",
+      "line": 1570,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:11",
+      "line": 1571,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:12",
+      "line": 1572,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:13",
+      "line": 1573,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:5",
+      "line": 1575,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:14",
+      "line": 1578,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:6",
+      "line": 1581,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:7",
+      "line": 1588,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:15",
+      "line": 1591,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:16",
+      "line": 1592,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:17",
+      "line": 1593,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:8",
+      "line": 1595,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:18",
+      "line": 1598,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:9",
+      "line": 1601,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:10",
+      "line": 1610,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:19",
+      "line": 1613,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:11",
+      "line": 1616,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:20",
+      "line": 1619,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:12",
+      "line": 1622,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:if:21",
+      "line": 1626,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:hospital:1:goto:13",
+      "line": 1631,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
+      "verification": "partial"
     }
   ]
 }

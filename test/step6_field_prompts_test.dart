@@ -3,7 +3,7 @@ import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_dungeon_event_manager.dart';
 import 'package:lore/logic/lore_field_logic.dart';
 import 'package:lore/logic/lore_join.dart';
-import 'package:lore/logic/town_logic.dart';
+import 'package:lore/logic/lore_town_shops.dart';
 import 'package:lore/models/party_member.dart';
 
 /// 5단계 보강: 원작 소스에서 아직 이식되지 않았던 필드 유틸리티를 구현하며 추가한 검증.
@@ -62,11 +62,10 @@ void main() {
       expect(LoreFieldLogic.notEnoughMoney, '당신은 충분한 돈이 없습니다.');
       expect(LoreFieldLogic.thankYou, '매우 고맙습니다.');
 
-      // 마을 시설 로직도 동일 문구를 단일 소스로 공유한다.
-      expect(TownLogic.asYouWish, LoreFieldLogic.asYouWish);
-      expect(TownLogic.notEnoughMoney, LoreFieldLogic.notEnoughMoney);
-      expect(TownLogic.thankYou, LoreFieldLogic.thankYou);
-      expect(TownLogic.groceryDecline, '필요 없습니다'); // 원작은 마침표가 없다
+      // 마을 시설 절차도 동일 문구를 단일 소스로 공유한다.
+      expect(LoreTownShops.asYouWish, LoreFieldLogic.asYouWish);
+      expect(LoreTownShops.notEnoughMoney, LoreFieldLogic.notEnoughMoney);
+      expect(LoreTownShops.thankYou, LoreFieldLogic.thankYou);
     });
 
     test('4. 동료 합류 슬롯 선택 검증 (LORESUB.PAS:1144 ReturnJoinMember)', () {

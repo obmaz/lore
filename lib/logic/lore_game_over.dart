@@ -13,20 +13,9 @@
 library;
 
 import 'lore_sub_text.dart';
+import 'lore_window_io.dart';
 
-abstract interface class LoreGameOverIo {
-  /// `Clear` (오른쪽 창 지우기).
-  void clear();
-
-  /// `SetColor(color); HPrintXY(..)`.
-  void print(int color, String text);
-
-  /// `PressAnyKey` (안내 문구, 키 대기, `Clear`).
-  Future<void> pressAnyKey();
-
-  /// `Select(.., total, total, clean, TRUE)` — 1부터의 번호, 취소(Esc)는 0.
-  Future<int> select(String title, List<String> items, {required bool clean});
-
+abstract interface class LoreGameOverIo implements LoreWindowIo {
   /// `LoadNo := chr(k+47); Load` — [slot] 1..4. 저장이 없으면 false.
   Future<bool> load(int slot);
 }
