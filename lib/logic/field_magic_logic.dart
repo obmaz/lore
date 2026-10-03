@@ -6,7 +6,7 @@
 /// - `LOREMENU.PAS  HealOne/CureOne/ConsciousOne/RevitalizeOne`
 /// - `LOREMENU.PAS  HealAll/CureAll/ConscoisAll/RevitalizeAll`
 /// - `LOREMENU.PAS  CureSpell`          개인(19~25)/전체(26~32) 치료 마법 선택
-/// - `LOREMENU.PAS  PhenominaSpell`     현상계 보조 마법 8종(33~40)
+/// - `LOREMENU.PAS  PhenominaSpell`     마법 이름(33~40); 절차는 `lore_cast_spell.dart`
 ///
 /// 원작은 SP 비용을 **시전자/대상 상태로 계산**한다(고정값 아님):
 /// - `HealOne`        : `i := 2 * level[2]` 소모, `hp += i * 3 div 2`
@@ -14,8 +14,6 @@
 /// - `ConsciousOne`   : `10 * unconscious` 소모
 /// - `RevitalizeOne`  : `30 * dead` 소모
 library;
-
-import 'dart:math';
 
 import '../models/party_member.dart';
 
@@ -76,18 +74,7 @@ class FieldMagicLogic {
     '식량 제조', // 40
   ];
 
-  /// 원작 `PhenominaSpell`의 SP 비용(스펠 33~40 순서).
-  static const List<int> phenominaSpCosts = [1, 5, 10, 20, 25, 30, 50, 30];
-
-  /// 원작 `PhenominaSpell`의 슬롯 제한: `level[2] div 2 + 1` (최소 1, 최대 8).
-  static int phenominaSlots(int magicLevel) =>
-      (magicLevel > 1 ? magicLevel ~/ 2 + 1 : 1).clamp(1, 8);
-
-  /// 원작 `CureSpell` 개인 마법 슬롯: `level[2] div 2 + 1` (최대 7).
-  static int personalCureSlots(int magicLevel) =>
-      (magicLevel ~/ 2 + 1).clamp(1, 7);
-
-  /// 원작 `CureSpell` 전체 마법 슬롯: `level[2] div 2 - 3` (0 이하면 사용 불가).
+  /// 원작 `CureSpell` 전체 마법 슬롯: `level[2] div 2 - 3` (음수면 거절).
   static int groupCureSlots(int magicLevel) => magicLevel ~/ 2 - 3;
 
   /// 전체 치료 마법을 아직 쓸 수 없을 때의 문구 (원작 `Print`).
@@ -220,42 +207,27 @@ class FieldMagicLogic {
   }
 
   /// 개인 마법 19~25 중 [index](1~7)를 대상 1명에게 시전한다(원작 `case j of`).
+  /// [each] 는 개인 마법 한 번마다 그 결과를 받는다(출력 순서·색, `SPnotEnough`).
   static MagicCastResult castPersonalCure(
     PartyMember caster,
     PartyMember target,
     int index, {
     bool inBattle = false,
+    void Function(MagicCastResult result)? each,
   }) {
-    switch (index) {
-      case 1:
-        return healOne(caster, target, inBattle: inBattle);
-      case 2:
-        return cureOne(caster, target, inBattle: inBattle);
-      case 3:
-        return _merge([
-          cureOne(caster, target, inBattle: inBattle),
-          healOne(caster, target, inBattle: inBattle),
-        ]);
-      case 4:
-        return consciousOne(caster, target, inBattle: inBattle);
-      case 5:
-        return revitalizeOne(caster, target, inBattle: inBattle);
-      case 6:
-        return _merge([
-          consciousOne(caster, target, inBattle: inBattle),
-          cureOne(caster, target, inBattle: inBattle),
-          healOne(caster, target, inBattle: inBattle),
-        ]);
-      case 7:
-        return _merge([
-          revitalizeOne(caster, target, inBattle: inBattle),
-          consciousOne(caster, target, inBattle: inBattle),
-          cureOne(caster, target, inBattle: inBattle),
-          healOne(caster, target, inBattle: inBattle),
-        ]);
-      default:
-        return const MagicCastResult();
-    }
+    const kinds = <int, List<String>>{
+      1: ['heal'],
+      2: ['cure'],
+      3: ['cure', 'heal'],
+      4: ['conscious'],
+      5: ['revitalize'],
+      6: ['conscious', 'cure', 'heal'],
+      7: ['revitalize', 'conscious', 'cure', 'heal'],
+    };
+    return _merge([
+      for (final kind in kinds[index] ?? const <String>[])
+        _cast(kind, caster, target, inBattle, each),
+    ]);
   }
 
   /// 전체 마법 26~32 중 [index](1~7)를 일행 전원에게 시전한다.
@@ -269,6 +241,7 @@ class FieldMagicLogic {
     List<PartyMember> party,
     int index, {
     bool inBattle = false,
+    void Function(MagicCastResult result)? each,
   }) {
     final members = party.where((p) => p.name.isNotEmpty).toList();
     const phases = <int, List<String>>{
@@ -280,18 +253,27 @@ class FieldMagicLogic {
       6: ['revitalize'],
       7: ['revitalize', 'conscious', 'cure', 'heal'],
     };
-    final results = <MagicCastResult>[];
-    for (final kind in phases[index] ?? const <String>[]) {
-      for (final m in members) {
-        results.add(switch (kind) {
-          'heal' => healOne(caster, m, inBattle: inBattle),
-          'cure' => cureOne(caster, m, inBattle: inBattle),
-          'conscious' => consciousOne(caster, m, inBattle: inBattle),
-          _ => revitalizeOne(caster, m, inBattle: inBattle),
-        });
-      }
-    }
-    return _merge(results);
+    return _merge([
+      for (final kind in phases[index] ?? const <String>[])
+        for (final m in members) _cast(kind, caster, m, inBattle, each),
+    ]);
+  }
+
+  static MagicCastResult _cast(
+    String kind,
+    PartyMember caster,
+    PartyMember target,
+    bool inBattle,
+    void Function(MagicCastResult result)? each,
+  ) {
+    final result = switch (kind) {
+      'heal' => healOne(caster, target, inBattle: inBattle),
+      'cure' => cureOne(caster, target, inBattle: inBattle),
+      'conscious' => consciousOne(caster, target, inBattle: inBattle),
+      _ => revitalizeOne(caster, target, inBattle: inBattle),
+    };
+    each?.call(result);
+    return result;
   }
 
   static MagicCastResult _merge(List<MagicCastResult> results) {
@@ -302,179 +284,9 @@ class FieldMagicLogic {
     );
   }
 
-  // ------------------------------------------------------------------
-  // 현상계 보조 마법 (원작 PhenominaSpell)
-  // ------------------------------------------------------------------
-
-  /// 현상계 마법이 금지된 동굴(원작 `party.map in [20,25,26]`).
-  static bool isPhenominaBlocked(int mapId) =>
-      mapId == 20 || mapId == 25 || mapId == 26;
-
-  /// 현상계 마법 금지 문구 (원작 `Message(13,...)`).
-  static const String phenominaBlockedMessage = ' 이 동굴의 악의 힘이 이 마법을 방해합니다.';
-
-  /// 원작 1번: 마법의 횃불 (SP 1, `party.etc[1]` 증가, 최대 255).
-  static MagicCastResult torch(PartyMember caster) {
-    if (caster.sp < phenominaSpCosts[0]) {
-      return const MagicCastResult(messages: [spNotEnoughMessage]);
-    }
-    caster.sp -= phenominaSpCosts[0];
-    return MagicCastResult(
-      messages: ['일행은 마법의 횃불을 밝혔습니다.'],
-      spSpent: phenominaSpCosts[0],
-      success: true,
-    );
-  }
-
-  /// 원작 2번: 공중부상 (SP 5).
-  static MagicCastResult levitate(PartyMember caster) =>
-      _phenomina(caster, 1, '일행은 공중부상중 입니다.');
-
-  /// 원작 3번: 물위를 걸음 (SP 10).
-  static MagicCastResult waterWalk(PartyMember caster) =>
-      _phenomina(caster, 2, '일행은 물위를 걸을수 있습니다.');
-
-  /// 원작 4번: 늪위를 걸음 (SP 20).
-  static MagicCastResult swampWalk(PartyMember caster) =>
-      _phenomina(caster, 3, '일행은 늪위를 걸을수 있습니다.');
-
-  /// 원작 8번: 식량 제조 (SP 30, 파티 인원수만큼 식량 증가, 255 상한).
-  static MagicCastResult createFood(
-    PartyMember caster,
-    List<PartyMember> party,
-    int currentFood,
-  ) {
-    if (caster.sp < phenominaSpCosts[7]) {
-      return const MagicCastResult(messages: [spNotEnoughMessage]);
-    }
-    final members = party.where((p) => p.name.isNotEmpty).length;
-    caster.sp -= phenominaSpCosts[7];
-    final food = currentFood + members > 255 ? 255 : currentFood + members;
-    return MagicCastResult(
-      messages: [
-        ' 식량 제조 마법은 성공적으로 수행되었습니다',
-        '            $members 개의 식량이 증가됨',
-        '      일행의 현재 식량은 $food 개 입니다',
-      ],
-      spSpent: phenominaSpCosts[7],
-      success: true,
-    );
-  }
-
-  static MagicCastResult _phenomina(
-    PartyMember caster,
-    int index,
-    String message,
-  ) {
-    final cost = phenominaSpCosts[index];
-    if (caster.sp < cost) {
-      return const MagicCastResult(messages: [spNotEnoughMessage]);
-    }
-    caster.sp -= cost;
-    return MagicCastResult(messages: [message], spSpent: cost, success: true);
-  }
-
-  /// 원작 5번: 기화 이동 (SP 25) - 2칸 이동 가능 여부 판정.
-  static const int vaporizeMoveSpCost = 25;
-
-  /// 원작 6번: 지형 변화 (SP 30).
-  static const int terrainChangeSpCost = 30;
-
-  /// 원작 7번: 공간 이동 (SP 50).
-  static const int spaceMoveSpCost = 50;
-
-  /// 지형 변화로 놓이는 타일 (원작 `case position of town:47 ground:41 den:43 keep:43`).
-  static int terrainChangeTile(String position) {
-    switch (position) {
-      case 'town':
-        return 47;
-      case 'ground':
-        return 41;
-      case 'den':
-      case 'keep':
-        return 43;
-      default:
-        return 43;
-    }
-  }
-
-  /// 기화 이동 가능 여부 (원작 타일 범위 판정).
-  static bool vaporizeTileAllowed(String position, int tile) {
-    switch (position) {
-      case 'town':
-        return tile == 0 || (tile >= 27 && tile <= 47);
-      case 'ground':
-        return tile == 0 || (tile >= 24 && tile <= 47);
-      case 'den':
-        return tile == 0 || (tile >= 41 && tile <= 47);
-      case 'keep':
-        return tile == 0 || (tile >= 40 && tile <= 47);
-      default:
-        return false;
-    }
-  }
-
-  /// 공간 이동 가능 여부 (원작 타일 범위 판정).
-  static bool spaceMoveTileAllowed(String position, int tile) {
-    switch (position) {
-      case 'town':
-        return tile >= 27 && tile <= 47;
-      case 'ground':
-        return tile >= 24 && tile <= 47;
-      case 'den':
-        return tile >= 41 && tile <= 47;
-      case 'keep':
-        return tile >= 27 && tile <= 47;
-      default:
-        return false;
-    }
-  }
-
-  /// 기화 이동은 항상 2칸, 공간 이동은 1~9칸 (원작 입력 범위).
-  static int clampSpaceMoveDistance(int distance) => distance.clamp(1, 9);
-
-  /// 원작 문구 모음.
-  static const String vaporizeNotAllowedMessage = '기화 이동이 통하지 않습니다.';
-  static const String magicRejectedMessage = '알수없는 힘이 당신의 마법을 배척합니다.';
-  static const String vaporizeDoneMessage = '기화 이동을 마쳤습니다.';
-  static const String terrainChangedMessage = '지형 변화에 성공했습니다.';
+  /// PhenominaSpell 7 (공간 이동) 문구 (`LoreCastSpell`).
   static const String spaceMoveNotAllowedMessage = '공간 이동이 통하지 않습니다.';
   static const String spaceMoveBadSpotMessage = '공간 이동 장소로 부적합 합니다.';
   static const String spaceMoveRejectedMessage = '알수없는 힘이 당신을 배척합니다.';
   static const String spaceMoveDoneMessage = '공간 이동 마법이 성공했습니다.';
-
-  /// 원작 `x := x + 2*x1` 처럼 2칸 이동할 좌표(지도 밖이면 null).
-  static (int, int)? vaporizeTarget(
-    int x,
-    int y,
-    int dx,
-    int dy,
-    int xmax,
-    int ymax,
-  ) {
-    final tx = x + 2 * dx;
-    final ty = y + 2 * dy;
-    if (tx < 5 || tx >= xmax - 3 || ty < 5 || ty >= ymax - 3) return null;
-    return (tx, ty);
-  }
-
-  /// 원작 `x := x + k*x1` 이동 좌표(지도 밖이면 null).
-  static (int, int)? spaceMoveTarget(
-    int x,
-    int y,
-    int dx,
-    int dy,
-    int distance,
-    int xmax,
-    int ymax,
-  ) {
-    final k = clampSpaceMoveDistance(distance);
-    final tx = x + k * dx;
-    final ty = y + k * dy;
-    if (tx < 5 || tx >= xmax - 3 || ty < 5 || ty >= ymax - 3) return null;
-    return (tx, ty);
-  }
-
-  /// 원작 `random` 을 쓰지 않는 결정적 보조(테스트용).
-  static int maxOf(int a, int b) => max(a, b);
 }

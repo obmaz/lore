@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/logic/lore_menu_text.dart';
+import 'package:lore/logic/lore_sub_text.dart';
 import 'package:lore/game/lore_game.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/field_hotkeys.dart';
@@ -200,8 +201,11 @@ void main() {
       // C -> 비전투 마법 시전
       await tester.sendKeyEvent(LogicalKeyboardKey.keyC);
       await settle(tester);
-      expect(find.text(LoreMenuText.selectModeCast), findsOneWidget);
-      await closeDialog(tester);
+      // CastSpell starts with ChooseWhom (`한명을 고르시오 ---`).
+      expect(find.text(LoreSubText.chooseOne), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await settle(tester);
+      expect(find.text(LoreSubText.chooseOne), findsNothing);
 
       // R -> 야외 캠프 휴식
       await tester.sendKeyEvent(LogicalKeyboardKey.keyR);

@@ -49,10 +49,6 @@ void main() {
       );
       expect(FieldMagicLogic.spNotEnoughMessage, '그러나, 마법 지수가 충분하지 않습니다.');
 
-      // 개인 치료: level[2] div 2 + 1 (최대 7)
-      expect(FieldMagicLogic.personalCureSlots(1), 1);
-      expect(FieldMagicLogic.personalCureSlots(4), 3);
-      expect(FieldMagicLogic.personalCureSlots(20), 7);
       // 전체 치료: level[2] div 2 - 3 (음수면 거절, 0이면 첫 항목만 고를 수 있음)
       expect(FieldMagicLogic.groupCureSlots(6), 0);
       expect(FieldMagicLogic.groupCureSlots(8), 1);
@@ -61,11 +57,6 @@ void main() {
         FieldMagicLogic.strongCureNotReady('Merlin'),
         'Merlin는 강한 치료 마법은 아직 불가능 합니다.',
       );
-      // 현상계: level[2] div 2 + 1 (최대 8)
-      expect(FieldMagicLogic.phenominaSlots(1), 1);
-      expect(FieldMagicLogic.phenominaSlots(20), 8);
-      // 원작 PhenominaSpell 고정 SP (33~40)
-      expect(FieldMagicLogic.phenominaSpCosts, [1, 5, 10, 20, 25, 30, 50, 30]);
     });
 
     test('2. HealOne: SP = 2×마법Lv, 회복 = SP×3÷2, 상한 = 체력×전투Lv', () {
@@ -215,63 +206,6 @@ void main() {
         'B는 아직 살아 있습니다.',
         'A는 의식을 되찾았습니다.',
       ]);
-    });
-
-    test('7. 현상계 8종: SP·식량 제조·금지 동굴이 원작과 같다', () {
-      final caster = makeMember(magicLevel: 10, sp: 200);
-
-      expect(FieldMagicLogic.torch(caster).spSpent, 1);
-      expect(FieldMagicLogic.levitate(caster).spSpent, 5);
-      expect(FieldMagicLogic.waterWalk(caster).spSpent, 10);
-      expect(FieldMagicLogic.swampWalk(caster).spSpent, 20);
-      expect(FieldMagicLogic.vaporizeMoveSpCost, 25);
-      expect(FieldMagicLogic.terrainChangeSpCost, 30);
-      expect(FieldMagicLogic.spaceMoveSpCost, 50);
-
-      // 식량 제조: 파티 인원수만큼 증가, 255 상한
-      final party = [makeMember(), makeMember(name: 'Kaiser')];
-      final food = FieldMagicLogic.createFood(caster, party, 100);
-      expect(food.spSpent, 30);
-      expect(food.messages[1], '            2 개의 식량이 증가됨');
-      expect(food.messages[2], '      일행의 현재 식량은 102 개 입니다');
-      final capped = FieldMagicLogic.createFood(caster, party, 254);
-      expect(capped.messages[2], contains('255'));
-
-      // 금지 동굴(원작 party.map in [20,25,26])
-      expect(FieldMagicLogic.isPhenominaBlocked(20), isTrue);
-      expect(FieldMagicLogic.isPhenominaBlocked(25), isTrue);
-      expect(FieldMagicLogic.isPhenominaBlocked(26), isTrue);
-      expect(FieldMagicLogic.isPhenominaBlocked(19), isFalse);
-    });
-
-    test('8. 기화/공간 이동의 지형 판정과 이동 거리', () {
-      // 기화 이동: 항상 2칸, 지도 밖이면 불가
-      expect(FieldMagicLogic.vaporizeTarget(20, 20, 0, -1, 50, 50), (20, 18));
-      expect(FieldMagicLogic.vaporizeTarget(2, 20, 0, -1, 50, 50), isNull);
-      // 공간 이동: 1~9칸 (원작 입력 범위)
-      expect(FieldMagicLogic.clampSpaceMoveDistance(0), 1);
-      expect(FieldMagicLogic.clampSpaceMoveDistance(12), 9);
-      expect(FieldMagicLogic.spaceMoveTarget(20, 20, 1, 0, 5, 50, 50), (
-        25,
-        20,
-      ));
-
-      // 지형 변화 타일 (원작 town:47 ground:41 den/keep:43)
-      expect(FieldMagicLogic.terrainChangeTile('town'), 47);
-      expect(FieldMagicLogic.terrainChangeTile('ground'), 41);
-      expect(FieldMagicLogic.terrainChangeTile('den'), 43);
-      expect(FieldMagicLogic.terrainChangeTile('keep'), 43);
-
-      // 기화 이동 허용 타일 범위
-      expect(FieldMagicLogic.vaporizeTileAllowed('den', 43), isTrue);
-      expect(FieldMagicLogic.vaporizeTileAllowed('den', 30), isFalse);
-      expect(FieldMagicLogic.vaporizeTileAllowed('ground', 24), isTrue);
-      expect(FieldMagicLogic.vaporizeTileAllowed('ground', 23), isFalse);
-      // 공간 이동 허용 타일 범위 (원작 town/keep 27~47, ground 24~47, den 41~47)
-      expect(FieldMagicLogic.spaceMoveTileAllowed('town', 27), isTrue);
-      expect(FieldMagicLogic.spaceMoveTileAllowed('town', 26), isFalse);
-      expect(FieldMagicLogic.spaceMoveTileAllowed('den', 41), isTrue);
-      expect(FieldMagicLogic.spaceMoveTileAllowed('den', 40), isFalse);
     });
   });
 }

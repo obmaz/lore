@@ -280,3 +280,136 @@ class _LoreSelectViewState extends State<LoreSelectView> {
     );
   }
 }
+
+/// PhenominaSpell 7's power input: `당신의 공간 이동력을 지정` and
+/// `## k000 공간 이동력` with k from 5; Left/Down lower and Up/Right raise it
+/// within 1..9, Enter returns k and Esc null. The +/- and ✓/✕ icons are the
+/// touch equivalents of those keys.
+Future<int?> showLoreSpacePowerDialog(BuildContext context) => showDialog<int>(
+  context: context,
+  barrierDismissible: false,
+  builder: (ctx) => const _SpacePowerDialog(),
+);
+
+class _SpacePowerDialog extends StatefulWidget {
+  const _SpacePowerDialog();
+
+  @override
+  State<_SpacePowerDialog> createState() => _SpacePowerDialogState();
+}
+
+class _SpacePowerDialogState extends State<_SpacePowerDialog> {
+  final FocusNode _focus = FocusNode(debugLabel: 'SpacePower');
+  int _k = 5;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _focus.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focus.dispose();
+    super.dispose();
+  }
+
+  void _step(int j) {
+    final k = _k + j;
+    if (k < 1 || k > 9) return;
+    setState(() => _k = k);
+  }
+
+  KeyEventResult _onKey(FocusNode node, KeyEvent event) {
+    if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+      return KeyEventResult.ignored;
+    }
+    final key = event.logicalKey;
+    if (key == LogicalKeyboardKey.arrowLeft ||
+        key == LogicalKeyboardKey.arrowDown) {
+      _step(-1);
+    } else if (key == LogicalKeyboardKey.arrowUp ||
+        key == LogicalKeyboardKey.arrowRight) {
+      _step(1);
+    } else if (key == LogicalKeyboardKey.enter ||
+        key == LogicalKeyboardKey.numpadEnter) {
+      Navigator.of(context).pop(_k);
+    } else if (key == LogicalKeyboardKey.escape) {
+      Navigator.of(context).pop();
+    } else {
+      return KeyEventResult.ignored;
+    }
+    return KeyEventResult.handled;
+  }
+
+  @override
+  Widget build(BuildContext context) => Focus(
+    focusNode: _focus,
+    autofocus: true,
+    onKeyEvent: _onKey,
+    child: Dialog(
+      backgroundColor: RetroTheme.black,
+      shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '당신의 공간 이동력을 지정',
+              style: RetroTheme.dosFont.copyWith(color: RetroTheme.ega(11)),
+            ),
+            const SizedBox(height: 8),
+            Text.rich(
+              key: const ValueKey('space-power'),
+              TextSpan(
+                style: RetroTheme.dosFont.copyWith(color: RetroTheme.ega(15)),
+                children: [
+                  const TextSpan(text: '## '),
+                  TextSpan(
+                    text: '${_k}000',
+                    style: TextStyle(color: RetroTheme.ega(10)),
+                  ),
+                  const TextSpan(text: ' 공간 이동력'),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  key: const ValueKey('space-power-down'),
+                  onPressed: () => _step(-1),
+                  icon: const Icon(Icons.remove, size: 16),
+                ),
+                IconButton(
+                  key: const ValueKey('space-power-up'),
+                  onPressed: () => _step(1),
+                  icon: const Icon(Icons.add, size: 16),
+                ),
+                IconButton(
+                  key: const ValueKey('space-power-ok'),
+                  onPressed: () => Navigator.of(context).pop(_k),
+                  icon: const Icon(Icons.check, size: 16),
+                ),
+                IconButton(
+                  key: const ValueKey('dialog-cancel'),
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: const Icon(
+                    Icons.close,
+                    size: 16,
+                    color: RetroTheme.lightRed,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}

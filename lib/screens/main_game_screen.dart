@@ -25,6 +25,7 @@ import '../logic/script_equip_reducer.dart';
 import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
+import '../logic/lore_cast_spell.dart';
 import '../logic/lore_game_option.dart';
 import '../logic/lore_game_over.dart';
 import '../logic/lore_main_procedures.dart';
@@ -1237,7 +1238,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       case 3:
         await _openQuickViewDialog();
       case 4:
-        await _openFieldMenuDialog(initialTab: FieldMenuTab.castSpell);
+        await _runCastSpell();
       case 5:
         await _openEspDialog();
       case 6:
@@ -1269,23 +1270,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
             if (levitate != null) _levitateSteps = levitate;
           });
         },
-        // 원작 PhenominaSpell의 기화 이동/지형 변화/공간 이동용 지도 접근.
-        mapSize: _game.currentMap == null
-            ? null
-            : (_game.currentMap!.xmax, _game.currentMap!.ymax),
-        tileAt: (x, y) => _game.currentMap?.getTile(x, y) ?? 0,
-        onMoveTo: (x, y) {
-          setState(() {
-            _game.playerX = x;
-            _game.playerY = y;
-          });
-        },
-        onTerrainChange: (x, y, tile) {
-          final map = _game.currentMap;
-          if (map == null) return;
-          if (x < 1 || x > map.xmax || y < 1 || y > map.ymax) return;
-          setState(() => map.setTile(x, y, tile));
-        },
         onMindReadActivated: (count) {
           setState(() => _mindReadCount = count);
         },
@@ -1293,6 +1277,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       ),
     );
   }
+
+  /// LOREMENU `CastSpell` (hotkey C or SelectMode item 4).
+  Future<void> _runCastSpell() =>
+      LoreCastSpell.run(_ScreenCastSpellIo(this), _party, _sourceEtc);
 
   /// LOREMENU `GameOption` (hotkey G or SelectMode item 7).
   Future<void> _runGameOption() =>
@@ -1939,7 +1927,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   initialTab: FieldMenuTab.characterView,
                 );
               case FieldAction.castSpell:
-                await _openFieldMenuDialog(initialTab: FieldMenuTab.castSpell);
+                await _runCastSpell();
               case FieldAction.rest:
                 await _openFieldMenuDialog(initialTab: FieldMenuTab.rest);
               case FieldAction.gameOption:
@@ -2062,4 +2050,99 @@ class _ScreenGameOptionIo implements LoreGameOptionIo {
   void displayCondition() {
     if (_screen.mounted) _screen._refresh();
   }
+}
+
+/// [LoreCastSpell] on the game screen: selects and `Talk` as dialogs,
+/// `Message`/`Print` in the message log, the map and position globals from
+/// the field.
+class _ScreenCastSpellIo implements LoreCastSpellIo {
+  _ScreenCastSpellIo(this._screen);
+
+  final _MainGameScreenState _screen;
+
+  @override
+  Future<int> select(
+    String title,
+    List<String> items, {
+    int? maxsum,
+    List<(int, String)> lines = const [],
+  }) async {
+    if (!_screen.mounted) return 0;
+    return showLoreSelectDialog(
+      _screen.context,
+      title: title,
+      items: items,
+      maxsum: maxsum,
+      lines: lines,
+    );
+  }
+
+  @override
+  Future<void> talk(List<(int, String)> lines) async {
+    if (!_screen.mounted) return;
+    await showLoreMessageDialog(_screen.context, lines: lines);
+  }
+
+  @override
+  void message(int color, String text) => _screen._addLog(text);
+
+  @override
+  void print(int color, String text) => _screen._addLog(text);
+
+  @override
+  Future<int?> spacePower() async {
+    if (!_screen.mounted) return null;
+    return showLoreSpacePowerDialog(_screen.context);
+  }
+
+  @override
+  int get x => _screen._game.playerX;
+
+  @override
+  int get y => _screen._game.playerY;
+
+  @override
+  int get xmax => _screen._game.currentMap?.xmax ?? 0;
+
+  @override
+  int get ymax => _screen._game.currentMap?.ymax ?? 0;
+
+  @override
+  int get mapId => _screen._game.currentMapId;
+
+  @override
+  String get position =>
+      switch (LoreWorldManager.mapRegistry[mapId]?.category) {
+        MapCategory.ground => 'ground',
+        MapCategory.den => 'den',
+        MapCategory.keep => 'keep',
+        _ => 'town',
+      };
+
+  @override
+  int tileAt(int x, int y) => _screen._game.currentMap?.getTile(x, y) ?? 0;
+
+  @override
+  void setTile(int x, int y, int tile) {
+    final map = _screen._game.currentMap;
+    if (map == null || x < 1 || x > map.xmax || y < 1 || y > map.ymax) return;
+    map.setTile(x, y, tile);
+    _screen._refresh();
+  }
+
+  @override
+  void moveTo(int x, int y) {
+    _screen._game.playerX = x;
+    _screen._game.playerY = y;
+    _screen._refresh();
+  }
+
+  @override
+  int get food => _screen._partyFood;
+
+  @override
+  set food(int value) => _screen._partyFood = value;
+
+  @override
+  void displayCondition() => _screen._refresh();
 }
