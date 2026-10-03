@@ -15137,8 +15137,13 @@
       "routine": "LOREMENU.PAS:viewpartysub:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:viewparty:1:for:1",
@@ -15148,8 +15153,13 @@
       "routine": "LOREMENU.PAS:viewparty:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:viewcharacter:1:if:1",
@@ -15159,8 +15169,13 @@
       "routine": "LOREMENU.PAS:viewcharacter:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:viewcharacter:1:exit:1",
@@ -15170,8 +15185,13 @@
       "routine": "LOREMENU.PAS:viewcharacter:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:viewcharacter:1:if:2",
@@ -15181,8 +15201,13 @@
       "routine": "LOREMENU.PAS:viewcharacter:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:viewcharacter:1:for:1",
@@ -15192,8 +15217,13 @@
       "routine": "LOREMENU.PAS:viewcharacter:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:viewcharacter:1:if:3",
@@ -15203,8 +15233,13 @@
       "routine": "LOREMENU.PAS:viewcharacter:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:viewcharacter:1:if:4",
@@ -15214,8 +15249,13 @@
       "routine": "LOREMENU.PAS:viewcharacter:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:quickview:1:for:1",
@@ -15225,8 +15265,13 @@
       "routine": "LOREMENU.PAS:quickview:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:quickview:1:for:2",
@@ -15236,8 +15281,13 @@
       "routine": "LOREMENU.PAS:quickview:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:quickview:1:for:3",
@@ -15247,8 +15297,13 @@
       "routine": "LOREMENU.PAS:quickview:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:quickview:1:if:1",
@@ -15258,8 +15313,13 @@
       "routine": "LOREMENU.PAS:quickview:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_view_procedures_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_view_procedures.dart",
+      "reviewed_scope": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns."
     },
     {
       "id": "LOREMENU.PAS:castspell:1:if:1",
@@ -15954,8 +16014,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:1",
@@ -15965,8 +16030,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:2",
@@ -15976,8 +16046,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:3",
@@ -15987,8 +16062,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:4",
@@ -15998,8 +16078,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:5",
@@ -16009,8 +16094,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:6",
@@ -16020,8 +16110,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:7",
@@ -16031,8 +16126,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:8",
@@ -16042,8 +16142,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:9",
@@ -16053,8 +16158,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:10",
@@ -16064,8 +16174,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:11",
@@ -16075,8 +16190,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:12",
@@ -16086,8 +16206,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:13",
@@ -16097,8 +16222,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:for:2",
@@ -16108,8 +16238,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:for:3",
@@ -16119,8 +16254,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:rest:1:if:14",
@@ -16130,8 +16270,13 @@
       "routine": "LOREMENU.PAS:rest:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/step5_train_rest_guide_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/town_logic.dart",
+      "reviewed_scope": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once."
     },
     {
       "id": "LOREMENU.PAS:gameoption:1:case:1",
@@ -16445,8 +16590,13 @@
       "routine": "LOREMENU.PAS:selectmode:1",
       "kind": "case",
       "outcomes": 9,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/keyboard_input_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu."
     },
     {
       "id": "LOREMENU.PAS:selectmode:1:exit:1",
@@ -16456,8 +16606,13 @@
       "routine": "LOREMENU.PAS:selectmode:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/keyboard_input_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu."
     },
     {
       "id": "LORESPEC.PAS:sgn:1:if:1",
@@ -38430,6 +38585,316 @@
       "test": "test/lore_cast_spell_test.dart",
       "note": "CastSpell: ChooseWhom, exist check Message, three-item kind Select.",
       "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:viewpartysub:1:if:1",
+      "line": 503,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:viewparty:1:for:1",
+      "line": 509,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:viewcharacter:1:if:1",
+      "line": 533,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:viewcharacter:1:exit:1",
+      "line": 533,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:viewcharacter:1:if:2",
+      "line": 557,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:viewcharacter:1:for:1",
+      "line": 560,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:viewcharacter:1:if:3",
+      "line": 584,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:viewcharacter:1:if:4",
+      "line": 586,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:quickview:1:for:1",
+      "line": 597,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:quickview:1:for:2",
+      "line": 605,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:quickview:1:for:3",
+      "line": 607,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:quickview:1:if:1",
+      "line": 609,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_view_procedures.dart",
+      "test": "test/lore_view_procedures_test.dart",
+      "note": "ViewParty, ViewCharacter and QuickView texts in drawing order with their colors; ViewCharacter waits after page 1, page 2 shows shield/armor only when non-zero with ReturnDefense names; QuickView rows for named members. Window prints go to the message log (no key wait); pixel columns become text columns.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:for:1",
+      "line": 872,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:1",
+      "line": 874,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:2",
+      "line": 875,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:3",
+      "line": 876,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:4",
+      "line": 877,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:5",
+      "line": 878,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:6",
+      "line": 880,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:7",
+      "line": 883,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:8",
+      "line": 888,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:9",
+      "line": 890,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:10",
+      "line": 894,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:11",
+      "line": 894,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:12",
+      "line": 896,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:13",
+      "line": 904,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:for:2",
+      "line": 905,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:for:3",
+      "line": 906,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:rest:1:if:14",
+      "line": 906,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/town_logic.dart",
+      "test": "test/step5_train_rest_guide_test.dart",
+      "note": "Rest: per-member lines with Print colors (food 4, dead/poison 7, recovery 15), food bookkeeping, etc[1] decrement, etc[2..4] := 0, SP/ESP refill, then SimpleDisCond and PressAnyKey; runs at once.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:selectmode:1:case:1",
+      "line": 1035,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/keyboard_input_test.dart",
+      "note": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:selectmode:1:exit:1",
+      "line": 1036,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/keyboard_input_test.dart",
+      "note": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu.",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -40290,9 +40755,10 @@
     {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
-      "sha256": "7e1a17fd302449e7b1b4b5770675f588f74d0007ae745045ebc102a971d84e9c",
+      "sha256": "3cf4676879915cfe816179dedc1309101d320a297f99c0d5c61936c19a6f5ba8",
       "cited_source_files": [
-        "LOREMAIN.PAS"
+        "LOREMAIN.PAS",
+        "LOREMENU.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -40585,6 +41051,15 @@
       "sha256": "3bd9e690e39c2d7ca4b5e8d5d245b7b0f2cb2166ccf12eca12aad8bea68ce4ea",
       "cited_source_files": [
         "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/lore_view_procedures_test.dart",
+      "kind": "test",
+      "sha256": "f11006597a427d70f0cebf6416deb2aa6d1dfc2ddba22a54be99177c16ec8f35",
+      "cited_source_files": [
+        "LOREMENU.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -41463,11 +41938,23 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "a0d622cd2e2d3d412109997b22e6864ffe56240ea951fe0fe026e9c14e4735b2"
+      "sha256": "7fd5ea82695c0f29d127bccfa11b0707e51d103acd65cf20c6c66d7f9c0d81b4"
     },
     {
-      "path": "lib/widgets/field_menu_dialog.dart",
-      "sha256": "5a0f4919772a96b03d53e11ff977ce9cbe11365a006cbea43c37ec16a06fe84f"
+      "path": "lib/logic/lore_game_option.dart",
+      "sha256": "706170ca4299eab6be3b9bfb08b6b15ca2f8809e586a8f5763840b98e8daad55"
+    },
+    {
+      "path": "lib/logic/lore_cast_spell.dart",
+      "sha256": "31b499a0377c426e3ed989ff8966a8e25e40c7b84c5360c635ca2b9a7cd09a28"
+    },
+    {
+      "path": "lib/logic/lore_view_procedures.dart",
+      "sha256": "1393bf176ce39d9bdd36165456e8f252c97155897aa40bcd3049fa71d3b4ce95"
+    },
+    {
+      "path": "lib/widgets/lore_select_view.dart",
+      "sha256": "835bc075bced4d3f8719b266a6f34e46be4ce092550051d44a14378ca8a3a726"
     },
     {
       "path": "lib/widgets/script_scene_dialog.dart",
@@ -41475,9 +41962,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "32b7784a26819743ab41f2195ec0c2a6ebfd2f22a68ecdd15479bc285bd10b98",
+      "sha256": "0c7849d1b39967af373a5ff2603672c118a5af2eefecefb41589e1734d40af11",
       "top_level_counts": {
-        "contracts": 962
+        "contracts": 993
       }
     }
   ],
@@ -41485,9 +41972,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 886,
+    "unmapped_behavior_sites": 855,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 962,
+    "partially_verified_behavior_sites": 993,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
