@@ -146,6 +146,16 @@ class PartyMember {
   /// LORESUB.PAS `exist`: 전투에서 실제로 행동할 수 있는 파티 슬롯.
   bool get isBattleActive => name.isNotEmpty && canAct && hp > 0;
 
+  /// LORESUB.PAS `ReturnCondition`: the text and its side effects. A member
+  /// with `hp <= 0` and no `unconscious` becomes unconscious (1), and one
+  /// whose `unconscious` exceeds `endurance * level[1]` dies (`dead := 1`).
+  /// `DisplayCondition`/`SimpleDisCond` run this for every redraw of the slot.
+  String returnCondition() {
+    if (hp <= 0 && unconscious == 0) unconscious = 1;
+    if (unconscious > endurance * battleLevel && dead == 0) dead = 1;
+    return condition;
+  }
+
   String get condition {
     if (dead > 0) return 'dead';
     if (unconscious > 0) return 'unconscious';

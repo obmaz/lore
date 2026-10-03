@@ -1743,7 +1743,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
         sp: p.sp,
         maxSp: p.maxSp,
         level: p.battleLevel,
-        condition: p.condition,
+        // `DisplayCondition`/`SimpleDisCond` call `ReturnCondition`, which
+        // normalizes hp <= 0 and over-long unconsciousness before the text.
+        // Unnamed records are skipped (the source touches them too, but every
+        // reader checks `name <> ''`).
+        condition: p.name.isEmpty ? p.condition : p.returnCondition(),
       );
     }).toList();
   }
@@ -1788,103 +1792,107 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 ],
               ),
             ),
-            // 좌측 하단 [메뉴(Space)], [Q] 상태, [E] 초감각 버튼들
+            // 좌측 하단 터치용 Space / Q / E 버튼. 원본에 없는 글자는 쓰지 않고 아이콘만
+            // 두며, 접근성 이름은 SelectMode의 원본 항목 문구이다.
             Positioned(
               bottom: 6,
               left: 6,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  GestureDetector(
-                    onTap: () async {
-                      if (_entryAnimationActive) return;
-                      LoreDialogueManager.instance.setBattleResult(0);
-                      await _runSelectMode();
-                      _redispatchCurrentTileAfter(FieldAction.openMenu);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: RetroTheme.blue.withValues(alpha: 0.8),
-                        border: Border.all(color: RetroTheme.cyan, width: 1.5),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.menu,
-                            size: 13,
-                            color: RetroTheme.yellow,
+                  Semantics(
+                    button: true,
+                    label: LoreMenuText.selectModePrompt,
+                    child: GestureDetector(
+                      onTap: () async {
+                        if (_entryAnimationActive) return;
+                        LoreDialogueManager.instance.setBattleResult(0);
+                        await _runSelectMode();
+                        _redispatchCurrentTileAfter(FieldAction.openMenu);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: RetroTheme.blue.withValues(alpha: 0.8),
+                          border: Border.all(
+                            color: RetroTheme.cyan,
+                            width: 1.5,
                           ),
-                          const SizedBox(width: 3),
-                          Text(
-                            '명령(Space)',
-                            style: RetroTheme.dosFont.copyWith(
-                              fontSize: 10,
-                              color: RetroTheme.white,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.menu,
+                              size: 13,
+                              color: RetroTheme.yellow,
                             ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Semantics(
+                    button: true,
+                    label: LoreMenuText.selectModeQuick,
+                    child: GestureDetector(
+                      onTap: () async {
+                        if (_entryAnimationActive) return;
+                        await _runQuickView();
+                        _redispatchCurrentTileAfter(FieldAction.quickView);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: RetroTheme.darkBlue.withValues(alpha: 0.8),
+                          border: Border.all(
+                            color: RetroTheme.lightGreen,
+                            width: 1.5,
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 4),
-                  GestureDetector(
-                    onTap: () async {
-                      if (_entryAnimationActive) return;
-                      await _runQuickView();
-                      _redispatchCurrentTileAfter(FieldAction.quickView);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: RetroTheme.darkBlue.withValues(alpha: 0.8),
-                        border: Border.all(
-                          color: RetroTheme.lightGreen,
-                          width: 1.5,
+                          borderRadius: BorderRadius.circular(4),
                         ),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        '[Q] 건강 상태',
-                        style: RetroTheme.dosFont.copyWith(
-                          fontSize: 10,
+                        child: const Icon(
+                          Icons.favorite,
+                          size: 13,
                           color: RetroTheme.lightGreen,
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(width: 4),
-                  GestureDetector(
-                    onTap: () async {
-                      if (_entryAnimationActive) return;
-                      await _openEspDialog();
-                      _redispatchCurrentTileAfter(FieldAction.extrasense);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: RetroTheme.darkBlue.withValues(alpha: 0.8),
-                        border: Border.all(
-                          color: RetroTheme.lightMagenta,
-                          width: 1.5,
+                  Semantics(
+                    button: true,
+                    label: LoreMenuText.selectModeEsp,
+                    child: GestureDetector(
+                      onTap: () async {
+                        if (_entryAnimationActive) return;
+                        await _openEspDialog();
+                        _redispatchCurrentTileAfter(FieldAction.extrasense);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 4,
                         ),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        '[E] 초능력',
-                        style: RetroTheme.dosFont.copyWith(
-                          fontSize: 10,
+                        decoration: BoxDecoration(
+                          color: RetroTheme.darkBlue.withValues(alpha: 0.8),
+                          border: Border.all(
+                            color: RetroTheme.lightMagenta,
+                            width: 1.5,
+                          ),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: const Icon(
+                          Icons.psychology,
+                          size: 13,
                           color: RetroTheme.lightMagenta,
                         ),
                       ),

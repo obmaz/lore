@@ -107,18 +107,21 @@ class LoreCastSpell {
       case 1:
         await io.talk(const [(7, FieldMagicLogic.attackSpellMessage)]);
       case 2:
-        await cureSpell(io, party, caster);
+        await cureSpell(io, party, caster, quiet: etc.read(6) != 0);
       case 3:
         await phenominaSpell(io, party, caster, etc);
     }
   }
 
-  /// `CureSpell` outside battle (`party.etc[6] = 0`, so refusals print).
+  /// `CureSpell`. Each `HealOne`/`CureOne`/... refusal and `SPnotEnough` is
+  /// guarded by `if party.etc[6] = 0`, so [quiet] (`etc[6] <> 0`) drops them.
+  /// Space clears `etc[6]` before `SelectMode`; the hotkey `C` does not.
   static Future<void> cureSpell(
     LoreCastSpellIo io,
     List<PartyMember> party,
-    PartyMember caster,
-  ) async {
+    PartyMember caster, {
+    bool quiet = false,
+  }) async {
     // m[1..6] := player[1..6].name; j := 6 (7 with a sixth member).
     final names = [for (var i = 1; i <= 6; i++) _slot(party, i).name];
     final j = names[5].isNotEmpty ? 7 : 6;
@@ -152,6 +155,7 @@ class LoreCastSpell {
         caster,
         _slot(party, whom),
         k,
+        inBattle: quiet,
         each: results.add,
       );
     } else {
@@ -166,7 +170,13 @@ class LoreCastSpell {
         maxsum: i,
       );
       // No `if j = 0 then exit` here: Esc still ends with the key wait.
-      FieldMagicLogic.castGroupCure(caster, party, k, each: results.add);
+      FieldMagicLogic.castGroupCure(
+        caster,
+        party,
+        k,
+        inBattle: quiet,
+        each: results.add,
+      );
     }
     for (final result in results) {
       await each(result);

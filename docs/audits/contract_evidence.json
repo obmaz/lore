@@ -11839,6 +11839,86 @@
       "test": "test/lore_town_shops_test.dart",
       "note": "Hospital ported with its first/second loops: four treatments with the source costs and refusal texts, key waits, goto first after a success and goto second after a refusal.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:1",
+      "line": 709,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:2",
+      "line": 710,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:3",
+      "line": 711,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:exit:1",
+      "line": 713,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:4",
+      "line": 715,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:exit:2",
+      "line": 717,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:if:5",
+      "line": 719,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returncondition:1:exit:3",
+      "line": 721,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/return_condition_test.dart",
+      "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
+      "verification": "partial"
     }
   ]
 }

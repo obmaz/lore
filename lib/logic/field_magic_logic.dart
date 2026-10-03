@@ -16,6 +16,7 @@
 library;
 
 import '../models/party_member.dart';
+import 'lore_source_memory.dart';
 
 /// 마법 시전 결과 1건(로그 문구 + 소모 SP + 성공 여부).
 class MagicCastResult {
@@ -90,11 +91,15 @@ class FieldMagicLogic {
   /// 원작 `CureOne`의 SP 비용.
   static const int cureSpCost = 15;
 
-  /// 원작 `ConsciousOne`의 SP 비용: `10 * unconscious`.
-  static int consciousSpCost(int unconscious) => 10 * unconscious;
+  /// 원작 `ConsciousOne`의 SP 비용: `i := 10 * unconscious`. `unconscious` 와
+  /// 전역 `i` 는 `integer`(16비트)이고 소스에 `{$R}`/`{$Q}` 지시자가 없어 곱이
+  /// 저장될 때 넘친 값은 16비트로 접힌다(DOS 실행으로 확인 전, 기록된 가정).
+  static int consciousSpCost(int unconscious) =>
+      LorePascal.integer(10 * unconscious);
 
-  /// 원작 `RevitalizeOne`의 SP 비용: `30 * dead`.
-  static int revitalizeSpCost(int dead) => 30 * dead;
+  /// 원작 `RevitalizeOne`의 SP 비용: `i := 30 * dead`(`dead` 는 30000까지 커질
+  /// 수 있는 `integer`; [consciousSpCost] 와 같은 16비트 접힘 가정).
+  static int revitalizeSpCost(int dead) => LorePascal.integer(30 * dead);
 
   // ------------------------------------------------------------------
   // 개인 치료 마법 (원작 HealOne / CureOne / ConsciousOne / RevitalizeOne)

@@ -138,6 +138,32 @@ void main() {
       expect(io.trace.last, 'talk:7:는 치료할 필요가 없습니다.|7:|7:');
     });
 
+    test(
+      'etc[6] <> 0 drops the guarded refusals and SPnotEnough (hotkey C)',
+      () async {
+        final caster = mage();
+        final quiet = _Io([3, 1]);
+        await LoreCastSpell.cureSpell(quiet, [caster], caster, quiet: true);
+        expect(quiet.trace.last, 'talk:7:|7:');
+        final broke = mage(level: 10, sp: 0);
+        final a = PartyMember.createPreset(1)..hp = 1;
+        final loud = _Io([2, 1]);
+        await LoreCastSpell.cureSpell(loud, [broke, a], broke);
+        expect(
+          loud.trace,
+          contains('talk:7:${FieldMagicLogic.spNotEnoughMessage}'),
+        );
+        final silent = _Io([2, 1]);
+        await LoreCastSpell.cureSpell(silent, [broke, a], broke, quiet: true);
+        expect(silent.trace.last, 'talk:7:|7:');
+        expect(silent.trace.where((t) => t.startsWith('talk')).length, 1);
+        // `run` hands the party's etc[6] to CureSpell.
+        final viaRun = _Io([1, 2, 3, 1]);
+        await LoreCastSpell.run(viaRun, [caster], LorePartyEtc({6: 255}));
+        expect(viaRun.trace.last, 'talk:7:|7:');
+      },
+    );
+
     test('group: level < 6 refuses with Talk; Esc still waits', () async {
       final low = _Io([6]);
       await LoreCastSpell.cureSpell(low, [mage(level: 5)], mage(level: 5));

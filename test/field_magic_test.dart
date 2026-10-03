@@ -59,6 +59,21 @@ void main() {
       );
     });
 
+    test('ConsciousOne/RevitalizeOne cost is stored in a 16-bit integer', () {
+      // `i := 10 * unconscious` / `i := 30 * dead` with `i : integer`.
+      expect(FieldMagicLogic.consciousSpCost(100), 1000);
+      expect(FieldMagicLogic.consciousSpCost(3277), -32766);
+      expect(FieldMagicLogic.revitalizeSpCost(1092), 32760);
+      expect(FieldMagicLogic.revitalizeSpCost(1093), -32746);
+      expect(FieldMagicLogic.revitalizeSpCost(30000), -17504);
+      // The wrapped negative cost passes `sp < i` and is subtracted as is.
+      final caster = makeMember(magicLevel: 5, sp: 100);
+      final target = makeMember(name: 'Kaiser')..dead = 30000;
+      final result = FieldMagicLogic.revitalizeOne(caster, target);
+      expect(result.success, isTrue);
+      expect(caster.sp, 100 + 17504);
+    });
+
     test('2. HealOne: SP = 2×마법Lv, 회복 = SP×3÷2, 상한 = 체력×전투Lv', () {
       final caster = makeMember(magicLevel: 5, sp: 100);
       final target = makeMember(

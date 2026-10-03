@@ -483,13 +483,14 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     저장합니다`·`성공했습니다`와 키 대기, 6: 현재 `etc[6]`으로 GameOver(`G` 키는 Space와 달리
     etc[6]을 0으로 바꾸지 않는다). 빈 슬롯은 `PartyMember.blank()`이다. 어댑터: 두 번째 순서
     선택은 원본의 오른쪽 열(이름 앞 공백 24칸과 두 번째 `순서를 바꿀 일원`) 대신 같은 제목의
-    창이다.
+    창이다. 5 저장은 `Save`를 먼저 끝낸 뒤 `저장합니다`와 `성공했습니다` 두 줄을 한꺼번에 보인다
+    (원본은 두 줄 사이에 `Save`를 부르며, 저장이 비동기라 순서를 바꿨다).
 
 40. LOREMENU `SelectMode`(Space)를 원본 `Select`로 바꿨다: 제목 `당신의 명령을 고르시오 ===>`와
     일곱 항목 그대로이고, 예전 버튼의 `[P]`/`[V]` 같은 핫키 접두와 메뉴로 돌아가는 뒤로 가기
     버튼은 원본에 없어 없앴다. 고른 절차가 끝나면 메뉴로 돌아가지 않고 필드로 돌아간다(원본도
-    `SelectMode`가 한 번 고르고 끝난다). 각 절차 화면(일행·개인 상황, 마법, 휴식)은 아직 기존
-    대화상자이며 다음 단계에서 원본 흐름으로 옮긴다.
+    `SelectMode`가 한 번 고르고 끝난다). 각 절차 화면은 41~44번에서 원본 흐름으로 옮겼다.
+    Space는 `SelectMode` 전에 `party.etc[6] := 0`을 하고 핫키(P/V/Q/C/E/R/G)는 하지 않는다.
 
 41. LOREMENU `CastSpell`/`AttackSpell`/`CureSpell`/`PhenominaSpell`을 옮겼다
     (`lib/logic/lore_cast_spell.dart`, `C` 키와 SelectMode 4번). 시전자는 `ChooseWhom`(이름 있는 슬롯,
@@ -506,7 +507,12 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     도착 너머 칸이 52면 배척된다(예전에는 가운데 칸의 52를 봤다). 공간 이동은 `## k000 공간 이동력`
     입력(화살표 1..9, 기본 5, Esc 취소) 뒤 도착 칸 0 또는 너머 52로 배척된다. 식량 제조 세 줄은 키 대기
     없이 출력된다. 어댑터: `Message`/`Print`는 메시지 기록에, `Talk`·`PressAnyKey`는 키 대기 창에,
-    공간 이동력 입력의 +/−/확인/닫기 아이콘은 키 입력과 같은 터치 입력이다.
+    공간 이동력 입력의 +/−/확인/닫기 아이콘은 키 입력과 같은 터치 입력이다. `HealOne`/`CureOne`/
+    `ConsciousOne`/`RevitalizeOne`의 거절 문구와 `SPnotEnough`는 `if party.etc[6] = 0`일 때만 나오므로
+    `etc[6]`이 0이 아니면(핫키 C로 연 경우 등) 출력하지 않는다(`cureSpell(quiet:)`). `i := 10 *
+    unconscious`, `i := 30 * dead`는 16비트 `integer`에 저장되며 소스에 `{$R}`/`{$Q}`가 없어 넘치면
+    접힌다고 가정했다(`dead`는 30000까지 커질 수 있어 접힌 음수 비용은 SP를 늘린다; DOS 실행으로
+    확인 전).
 
 42. LOREMENU `Rest`(`R` 키, SelectMode 6번)는 고르는 즉시 실행된다. 예전의 식량 표시·`식량이
     바닥났다` 안내·`여기서 쉰다` 확인 버튼은 원본에 없어 없앴다. 대원별 문구는 원본 색(식량 없음 4,
@@ -521,7 +527,8 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     `ReturnClass`/`ReturnWeapon`/`ReturnDefense`이다(예전 화면은 `PartyMember`의 원본에 없는 방패·
     갑옷 이름을 썼다). 예전 일행 상황 화면의 대원 표(HP/SP·장비), 개인 상황의 한 쪽 표시, 건강 상태
     표 창과 닫기 버튼, 메뉴 대화상자(`FieldMenuDialog`, `QuickViewDialog`)는 없앴다. 어댑터: 화면
-    좌표는 글자 칸(8픽셀, 한글 두 칸)으로 바꿨고 색은 기록에 나오지 않는다.
+    좌표는 글자 칸(8픽셀, 한글 두 칸)으로 바꿨고 색은 기록에 나오지 않는다. `ViewParty`의 여덟 줄과
+    `QuickView`의 열 표는 `PrintXY`의 픽셀 위치 대신 한 줄 문자열(열 간격 공백)로 모았다.
 
 44. LOREMENU `Extrasense`와 `ReturnPredict`를 옮겼다(`lib/logic/lore_extrasense.dart`, `E` 키와
     SelectMode 5번). 인물은 `ChooseWhom`이고 `exist`가 아니면 `그(녀)는 초감각을 사용할수있는 상태가
@@ -570,7 +577,18 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     어댑터: 프로시저가 끝났을 때 창에 남은 줄(`Message`로 지운 뒤 출력된 마지막 문구)은 원본이 창에
     그대로 두므로 메시지 기록에 옮긴다. `cPrint(7,11,..)`의 두 색은 한 줄(7)로 보인다.
 
-다음 묶음은 도착 칸 처리와 특수 칸 그림의 DOS 확인, 이식 전체의 DOS 실행 대조이다.
+48. LORESUB `ReturnCondition`은 문구만이 아니라 `hp <= 0`이고 `unconscious = 0`이면 `unconscious := 1`,
+    `unconscious > endurance * level[1]`이고 `dead = 0`이면 `dead := 1`로 레코드를 바꾼다.
+    `PartyMember.returnCondition()`으로 옮겨 일행 표시 갱신(`DisplayCondition`/`SimpleDisCond`에 해당)마다
+    이름 있는 대원에게 적용한다. 원본은 이름 없는 레코드에도 적용하지만 모든 읽기가 `name <> ''`를
+    확인하므로 건너뛴다(기록된 차이). 필드 아래쪽의 터치용 Space/Q/E 버튼은 원본에 없는 글자
+    (`명령(Space)`, `[Q] 건강 상태`, `[E] 초능력`)를 없애고 아이콘만 남겼으며 접근성 이름은 SelectMode의
+    원본 항목 문구이다.
+
+남은 차이(기록): 적 차례 메시지는 한꺼번에 나오고 키를 기다리지 않는다; 전투 패배 직전의 `c :=
+ReadKey`는 재현하지 않는다; `Scroll`의 den 어둠(LORESUB:222-226)은 그리지 않는다; `SoundOn`은 투시·
+천리안에서 바꾸지 않는다. 다음 묶음은 도착 칸 처리와 특수 칸 그림의 DOS 확인, 이식 전체의 DOS 실행
+대조이다.
 
 ## 최근 검증 (2026-10-02)
 
