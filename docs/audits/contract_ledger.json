@@ -38567,6 +38567,25 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/game_over_reload_continuation_test.dart",
+      "kind": "test",
+      "sha256": "bc59d8c2adef2fd65586b808cc115427fc4c892f134c513c485acb5c353146bb",
+      "cited_source_files": [
+        "LOREENT.PAS",
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/game_over_reload_ui_test.dart",
+      "kind": "test",
+      "sha256": "f6c9d4f708f0de66b3c5edcde08cd57ba4a02417ed5b92d69874598d47d11c3d",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/game_over_test.dart",
       "kind": "test",
       "sha256": "102f1451ebc957b75e6c6a9d995a61e5331fc0e025baee989d58a966d9121ce0",
@@ -38717,7 +38736,7 @@
     {
       "path": "test/lore_spec_map18_test.dart",
       "kind": "test",
-      "sha256": "628011482df6b69e62174ba780820533e742da725c221e8992fa5035b3cb7a9d",
+      "sha256": "01170c071028020b1f7550d5989b0c378758ce3bbc68d9b81bcbc9060ba44653",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -38726,7 +38745,7 @@
     {
       "path": "test/lore_spec_map19_source_test.dart",
       "kind": "test",
-      "sha256": "f033ae832455506114da54f209c2c0fce458c36e680c0b9c477bc3363c4b680f",
+      "sha256": "73181c550c07f0aee19d2a81a9a81998f74dd1f063f042cf48aa4defab65b01b",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -38744,7 +38763,7 @@
     {
       "path": "test/lore_spec_map20_test.dart",
       "kind": "test",
-      "sha256": "68bf81cdff366796fa6b32b86babbc56ad22314b4a2bf354b69a14007c9aa06f",
+      "sha256": "f7d891d5e035f72deca19af24881eb0874cbff527dd852d7dbe7318fca1d8c47",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -38753,7 +38772,7 @@
     {
       "path": "test/lore_spec_map21_test.dart",
       "kind": "test",
-      "sha256": "61476a7e93c1584a06fcf0ebce6c66fc4815b36f70b56eadd778c67627cf53a9",
+      "sha256": "32d2160d75356fd61a26036c431d7e0259a0dbe1b98c07bb4e933b60ed96f2f1",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -38762,7 +38781,7 @@
     {
       "path": "test/lore_spec_map22_test.dart",
       "kind": "test",
-      "sha256": "8b9628556c2f0d2b26958af7e4ab40fd3ed59abc8e51e42a0bb071f6909a9f20",
+      "sha256": "d8002e229f4b822cfc312821e1053d95e14c20db5ed654785705d44aad5d84d9",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -39664,7 +39683,7 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "a27af920ab10750bc4a3459efc812416c898b16b8437e6d0de157bcb7c7f5995"
+      "sha256": "6dcd7f3ec7afd1065be727f8e55c3b8c2479518729541d0728e9fb63a8d65885"
     },
     {
       "path": "lib/game/lore_game.dart",
@@ -39704,7 +39723,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "8ad6766ed9b1d6b3f62bee9d34d985f6b0fa47208835a093e23fdab451d40001"
+      "sha256": "c574d37925c94576ac22ad8ac400eb960614a309ff309b3049d22aab2c9cee81"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -39724,7 +39743,7 @@
     },
     {
       "path": "lib/logic/script_battle_session.dart",
-      "sha256": "6e01f37266a1ce3a96a6f2bab72d246d16a1c7989d030c493b3e9b05c971072b"
+      "sha256": "e353868da85d8f77cd05a7bc075e50be478e33244daa643fc41bca66f7cba806"
     },
     {
       "path": "lib/logic/script_party_reducer.dart",
@@ -39740,7 +39759,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "0e86e1d81512fda001f3cbab726f342eaae2a2e9ea02e07eddcec2b136314a09"
+      "sha256": "b1ae151fcf21f671326b04da5de362717b6b89bc5d2dc2e6d462ade27a6afbab"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
