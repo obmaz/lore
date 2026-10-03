@@ -27,6 +27,27 @@ enum LoreTileAction {
 class LoreTileProtocol {
   LoreTileProtocol._();
 
+  /// `LORESUB.PAS:802-832` `ReturnDefaultFont(party.map)`: `Load` copies this
+  /// font slot into slot 0 (`move(font^[j],font^[0],246)`), so a special cell
+  /// (tile 0) is drawn like it. The font files store slot 0 as solid black.
+  static int defaultFontSlot(int mapId) => switch (mapId) {
+    1 => 2,
+    2 || 3 || 5 || 12 => 0,
+    4 => 41,
+    6 || 9 || 11 || 14 || 20 || 26 || 27 => 44,
+    7 => 45,
+    8 || 24 => 47,
+    10 => 27,
+    13 => 42,
+    15 => 39,
+    16 || 17 || 25 => 41,
+    18 => 43,
+    19 => 49,
+    21 || 22 => 40,
+    23 => 46,
+    _ => 0,
+  };
+
   static LoreTileAction classify(String position, int tile) {
     if (tile == 0) return LoreTileAction.special;
     switch (position) {

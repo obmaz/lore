@@ -10569,6 +10569,16 @@
       "test": "test/game_over_test.dart",
       "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returndefaultfont:1:case:1",
+      "line": 804,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_tile_protocol.dart",
+      "test": "test/default_font_test.dart",
+      "note": "ReturnDefaultFont ported as LoreTileProtocol.defaultFontSlot (all 27 cases compared against the Pascal source by the test); the field renderer draws special cells (tile 0) from that slot like Load's move into font^[0].",
+      "verification": "partial"
     }
   ]
 }

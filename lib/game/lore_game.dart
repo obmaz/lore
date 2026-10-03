@@ -564,10 +564,16 @@ class LoreGame extends FlameGame {
           continue;
         }
 
-        // 1순위: 이미지 파일(PNG) 스프라이트 시트
+        // 1순위: 이미지 파일(PNG) 스프라이트 시트. 특수 칸(타일 0)은 `Load`가
+        // `font^[0]` 에 복사한 맵별 기본 글꼴 칸으로 그린다(`ReturnDefaultFont`).
         final tileSheet = SpriteLibrary.instance.get(tileFontName);
-        if (tileSheet != null && tileVal >= 0 && tileVal < tileSheet.count) {
-          tileSheet.draw(canvas, tileVal, rect, opaqueBackground: true);
+        final drawIndex = tileVal == 0
+            ? LoreTileProtocol.defaultFontSlot(currentMapId)
+            : tileVal;
+        if (tileSheet != null &&
+            drawIndex >= 0 &&
+            drawIndex < tileSheet.count) {
+          tileSheet.draw(canvas, drawIndex, rect, opaqueBackground: true);
         } else if (activeTileFont != null &&
             tileVal >= 0 &&
             tileVal < activeTileFont.totalSprites) {
