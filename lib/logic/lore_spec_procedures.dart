@@ -506,7 +506,8 @@ class LoreSpecProcedures {
             },
             {'index': 3, 'name': 'Major Mummy', 'ac': 1},
           ],
-          battleVictoryIfEnemyDead: 3,
+          // LORESPEC.PAS:551 `(party.etc[6]=0) or (enemy[3].hp<=0)`.
+          battleVictoryIfEnemyHpZero: 3,
         ),
         ScriptStep(
           kind: 'scene',
@@ -1022,7 +1023,8 @@ class LoreSpecProcedures {
             {'index': 2, 'name': 'Zombie'},
             {'index': 3, 'name': 'ArchiGagoyle'},
           ],
-          battleVictoryIfEnemyDead: 3,
+          // LORESPEC.PAS:958 `(party.etc[6]=0) or (enemy[3].hp<=0)`.
+          battleVictoryIfEnemyHpZero: 3,
         ),
         ScriptStep(
           kind: 'scene',
@@ -1208,6 +1210,13 @@ class LoreSpecProcedures {
           ? context.etcValue(5) > 0
           : context.mindReadActive;
       if (learned && mindRead) {
+        // LORESPEC.PAS:1029-1032, printed before the select.
+        steps.addAll(const [
+          ScriptStep(kind: 'say', text: ' 다시 생각해보니 나도 직접 Necromancer에 도'),
+          ScriptStep(kind: 'say', text: '전하고픈 마음이 생겼소.  비록 육체적인 힘은'),
+          ScriptStep(kind: 'say', text: '전혀없는 영이지만 당신들과 같이 모험을 하고'),
+          ScriptStep(kind: 'say', text: '싶소. 당신들의 생각은 어떻소.'),
+        ]);
         steps.add(
           const ScriptStep(
             kind: 'choice',

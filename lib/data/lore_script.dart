@@ -314,7 +314,13 @@ class ScriptStep {
   final bool battleRetryOnRunAway;
   final bool battleMirrorParty;
   final bool battleShuffle;
+
+  /// Escape counts as victory when this enemy slot is `dead`.
   final int? battleVictoryIfEnemyDead;
+
+  /// Escape counts as victory when this enemy slot has `hp <= 0`
+  /// (LORESPEC `(party.etc[6]=0) or (enemy[3].hp<=0)`, maps 11 and 15).
+  final int? battleVictoryIfEnemyHpZero;
   final int? battleRunAwayIfEnemyAlive;
   final String? battleRunAwayProgressQuest;
   final int? battleRunAwayProgressTotal;
@@ -429,6 +435,7 @@ class ScriptStep {
     this.battleMirrorParty = false,
     this.battleShuffle = false,
     this.battleVictoryIfEnemyDead,
+    this.battleVictoryIfEnemyHpZero,
     this.battleRunAwayIfEnemyAlive,
     this.battleRunAwayProgressQuest,
     this.battleRunAwayProgressTotal,
@@ -830,9 +837,19 @@ class ScriptRun {
     }
   }
 
-  bool isVictoryAfterRunAway(Set<int> defeatedEnemySlots) {
-    final slot = _battleStep?.battleVictoryIfEnemyDead;
-    return awaitingBattle && slot != null && defeatedEnemySlots.contains(slot);
+  /// [defeatedEnemySlots] are the `dead` slots; [hpZeroEnemySlots] (default
+  /// the same) those with `hp <= 0`.
+  bool isVictoryAfterRunAway(
+    Set<int> defeatedEnemySlots, {
+    Set<int>? hpZeroEnemySlots,
+  }) {
+    final battle = _battleStep;
+    if (!awaitingBattle || battle == null) return false;
+    final dead = battle.battleVictoryIfEnemyDead;
+    final down = battle.battleVictoryIfEnemyHpZero;
+    return (dead != null && defeatedEnemySlots.contains(dead)) ||
+        (down != null &&
+            (hpZeroEnemySlots ?? defeatedEnemySlots).contains(down));
   }
 
   /// Whether Escape runs its own source branch instead of abandoning.
@@ -892,11 +909,16 @@ class ScriptRun {
   }
 
   /// 도망에 지정된 후속 스텝을 실행하고, 원작의 재도전 루프를 이어간다.
-  ScriptRun continueAfterRunAway({Set<int> defeatedEnemySlots = const {}}) {
+  ScriptRun continueAfterRunAway({
+    Set<int> defeatedEnemySlots = const {},
+    Set<int>? hpZeroEnemySlots,
+  }) {
     final battle = _battleStep;
     if (!awaitingBattle || battle == null) return this;
-    if (battle.battleVictoryIfEnemyDead != null &&
-        defeatedEnemySlots.contains(battle.battleVictoryIfEnemyDead)) {
+    if (isVictoryAfterRunAway(
+      defeatedEnemySlots,
+      hpZeroEnemySlots: hpZeroEnemySlots,
+    )) {
       return continueAfterBattle();
     }
     if (battle.battleRunAwayIfEnemyAlive != null &&
@@ -941,11 +963,17 @@ class ScriptRun {
 
   /// The continuation after `GameOver` reloads a defeat: none when the source
   /// checks `party.etc[6] = 255`, else the escape path ([battleResultUnchecked]).
-  ScriptRun? continueAfterDefeat({Set<int> defeatedEnemySlots = const {}}) {
+  ScriptRun? continueAfterDefeat({
+    Set<int> defeatedEnemySlots = const {},
+    Set<int>? hpZeroEnemySlots,
+  }) {
     if (!awaitingBattle || _battleStep?.battleResultUnchecked != true) {
       return null;
     }
-    return continueAfterRunAway(defeatedEnemySlots: defeatedEnemySlots);
+    return continueAfterRunAway(
+      defeatedEnemySlots: defeatedEnemySlots,
+      hpZeroEnemySlots: hpZeroEnemySlots,
+    );
   }
 
   /// Whether the source goes on to the later checks of its `case` body.

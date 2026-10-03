@@ -128,6 +128,13 @@ void main() {
         fled.hasPendingScene || fled.outcome.questChanges.isNotEmpty,
         isFalse,
       );
+      // LORESPEC.PAS:551 tests `enemy[3].hp <= 0`, not `dead`: an
+      // unconscious Major Mummy (hp <= 0, alive) is enough.
+      final down = battle.continueAfterRunAway(
+        defeatedEnemySlots: const {},
+        hpZeroEnemySlots: {3},
+      );
+      expect(down.pendingScene!.lines.first, '당신들은 Major Mummy 물리쳤다.');
 
       // 퀘스트 단계 0 또는 2 이상: 발동하지 않음
       expect(

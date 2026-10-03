@@ -30,13 +30,23 @@ class ScriptBattleSession {
     int goldEarned = 0,
     Iterable<String> victoryFlags = const [],
   }) {
+    // Pascal `enemy[i].dead` (an hp <= 0 enemy is only unconscious) and, for
+    // the two `enemy[3].hp <= 0` tests, the hp slots.
     final defeated = {
       for (var i = 0; i < enemies.length; i++)
-        if (enemies[i].isDead || enemies[i].hp <= 0) i + 1,
+        if (enemies[i].isDead) i + 1,
+    };
+    final hpZero = {
+      for (var i = 0; i < enemies.length; i++)
+        if (enemies[i].hp <= 0) i + 1,
     };
     final keyEnemyDefeated =
         end == LoreBattleEnd.runAway &&
-        (pendingScript?.isVictoryAfterRunAway(defeated) ?? false);
+        (pendingScript?.isVictoryAfterRunAway(
+              defeated,
+              hpZeroEnemySlots: hpZero,
+            ) ??
+            false);
     final progress = LoreBattleProgress.resolve(
       before,
       end: end,
@@ -49,9 +59,11 @@ class ScriptBattleSession {
       LoreBattleEnd.victory => pendingScript?.continueAfterBattle(),
       LoreBattleEnd.runAway => pendingScript?.continueAfterRunAway(
         defeatedEnemySlots: defeated,
+        hpZeroEnemySlots: hpZero,
       ),
       LoreBattleEnd.defeat => pendingScript?.continueAfterDefeat(
         defeatedEnemySlots: defeated,
+        hpZeroEnemySlots: hpZero,
       ),
     };
     final applied = pendingScript?.outcome;

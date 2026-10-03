@@ -65,6 +65,9 @@ void main() {
       expect(won.outcome.teleportMap, 4);
       final lost = astral.continueAfterDefeat(defeatedEnemySlots: {1, 2})!;
       expect(lost.outcome.since(astral.outcome).nudges, [(dx: 0, dy: 1)]);
+      // `enemy[7].dead`: hp <= 0 alone (unconscious) is not enough.
+      final down = astral.continueAfterDefeat(hpZeroEnemySlots: {7})!;
+      expect(down.outcome.since(astral.outcome).nudges, [(dx: 0, dy: 1)]);
     });
 
     test('KEEP1 / KEEP2 exit guards: slot bits, then the exit continues', () {

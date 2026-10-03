@@ -4,7 +4,8 @@ import 'package:lore/logic/lore_battle_progress.dart';
 import 'package:lore/logic/script_battle_session.dart';
 import 'package:lore/models/monster.dart';
 
-Monster enemy(String name, {int hp = 10}) => Monster(
+/// `dead` is Pascal `enemy[i].dead`; an hp <= 0 enemy is only unconscious.
+Monster enemy(String name, {int hp = 10, bool dead = false}) => Monster(
   eNumber: 1,
   name: name,
   strength: 1,
@@ -20,7 +21,7 @@ Monster enemy(String name, {int hp = 10}) => Monster(
   specialCastLevel: 0,
   level: 1,
   hp: hp,
-);
+)..isDead = dead;
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -83,7 +84,7 @@ void main() {
     final defeated = ScriptBattleSession.resolve(
       before: before,
       end: LoreBattleEnd.runAway,
-      enemies: [enemy('Sphinx'), enemy('Sphinx'), enemy('Major Mummy', hp: 0)],
+      enemies: [enemy('Sphinx'), enemy('Sphinx'), enemy('Major Mummy', hp: 0, dead: true)],
       pendingScript: run,
     );
     expect(defeated.defeatedEnemySlots, {3});
@@ -98,8 +99,8 @@ void main() {
       before: before,
       end: LoreBattleEnd.runAway,
       enemies: [
-        enemy('Guardian 1', hp: 0),
-        enemy('Guardian 2', hp: 0),
+        enemy('Guardian 1', hp: 0, dead: true),
+        enemy('Guardian 2', hp: 0, dead: true),
         for (var i = 0; i < 5; i++) enemy('Minion $i'),
       ],
       pendingScript: run,
@@ -134,7 +135,7 @@ void main() {
     final escaped = ScriptBattleSession.resolve(
       before: before,
       end: LoreBattleEnd.runAway,
-      enemies: [...roster.take(6), enemy('Enemy 7', hp: 0)],
+      enemies: [...roster.take(6), enemy('Enemy 7', hp: 0, dead: true)],
       pendingScript: run,
     );
     expect(escaped.continuation?.awaitingBattle, isFalse);

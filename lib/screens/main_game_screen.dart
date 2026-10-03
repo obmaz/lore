@@ -123,7 +123,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
   ScriptRun? _pendingScriptBattle;
   int? _pendingScriptTargetX;
   int? _pendingScriptTargetY;
-  ({PortalInfo portal, int tx, int ty})? _pendingPortalTransition;
+
+  /// The entrance waiting on its pre-script; [fromMap] is the map whose
+  /// `entermode` arm is running (it stays that arm after a GameOver reload).
+  ({PortalInfo portal, int tx, int ty, int fromMap})? _pendingPortalTransition;
   bool _entryAnimationActive = false;
 
   // 전투 모드 상태
@@ -192,7 +195,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   /// LORESUB `Load`: `if not (encounter^ in [1..3]) then encounter^ := 2;
-  /// if not (maxenemy^ in [3..7]) then maxenemy^ := 5` (etc[7], etc[8]).
+  /// if not (maxenemy^ in [3..7]) then maxenemy^ := 5` (etc[7], etc[8]), on
+  /// every save load and map change.
   void _normalizeLoadedEtc() {
     if (_encounterFrequency < 1 || _encounterFrequency > 3) {
       _encounterFrequency = 2;
@@ -214,6 +218,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       initialMapTiles: widget.initialSaveData?.mapTiles,
       random: _sessionRandom,
       onLog: (msg) => _addLog(msg),
+      onMapLoaded: _normalizeLoadedEtc,
       onEncounter: () => _startBattle(),
       encounterFrequencyProvider: () => _encounterFrequency,
       onFacilityEntered: (type) {
@@ -394,7 +399,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
             events: pre.outcome.events,
           );
         }
-        _pendingPortalTransition = (portal: portal, tx: tx, ty: ty);
+        _pendingPortalTransition = (
+          portal: portal,
+          tx: tx,
+          ty: ty,
+          fromMap: _game.currentMapId,
+        );
         final completed = await _driveScript(
           pre,
           alreadyApplied: alreadyApplied,
@@ -409,7 +419,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
         if (action != LorePortalAction.loadMap) return;
       } else {
-        _pendingPortalTransition = (portal: portal, tx: tx, ty: ty);
+        _pendingPortalTransition = (
+          portal: portal,
+          tx: tx,
+          ty: ty,
+          fromMap: _game.currentMapId,
+        );
         final completed = await _driveScript(pre);
         if (!mounted) return;
         final action = LorePortalSession.afterPreScript(
@@ -426,8 +441,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
     await _finishPortalEntry(portal, tx, ty);
   }
 
-  Future<void> _finishPortalEntry(PortalInfo portal, int tx, int ty) async {
-    final enteredFromMap = _game.currentMapId;
+  Future<void> _finishPortalEntry(
+    PortalInfo portal,
+    int tx,
+    int ty, {
+    int? fromMap,
+  }) async {
+    final enteredFromMap = fromMap ?? _game.currentMapId;
     // LOREENT map 21 shows Ancient Evil before the destination `load`.
     final speech = LoreEntProcedures.ancientEvilBeforeLoad(
       fromMap: enteredFromMap,
@@ -1521,7 +1541,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (action == LorePortalAction.waitForBattle) return;
     _pendingPortalTransition = null;
     if (action != LorePortalAction.loadMap) return;
-    await _finishPortalEntry(portal.portal, portal.tx, portal.ty);
+    await _finishPortalEntry(
+      portal.portal,
+      portal.tx,
+      portal.ty,
+      fromMap: portal.fromMap,
+    );
   }
 
   LoreBattleProgressState _battleProgressState() {

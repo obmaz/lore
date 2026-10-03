@@ -223,6 +223,8 @@ void main() {
         isTrue,
       );
       expect(polaris.choose(1).outcome.tileChanges, isEmpty);
+      // LORETALK.PAS:413/434 `if k = 1 ... else asyouwish`: Esc answers too.
+      expect(polaris.cancelOptionIndex, 1);
 
       // 맵 10 (40,56) Lore Hunter
       final hunter = engine.startTalk(10, 40, 56, const ScriptContext())!;

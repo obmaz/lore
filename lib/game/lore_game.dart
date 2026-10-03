@@ -103,6 +103,10 @@ class LoreGame extends FlameGame {
   }
 
   final void Function(String message)? onLog;
+
+  /// Called after every map load (LORESUB `Load` ends with its bounds on
+  /// `encounter^`/`maxenemy^`, run on every map change).
+  final void Function()? onMapLoaded;
   final void Function()? onEncounter;
   final int Function()? encounterFrequencyProvider;
   final void Function(String npcName, String dialogue)? onNpcTalk;
@@ -151,6 +155,7 @@ class LoreGame extends FlameGame {
     int initialPlayerX = 51,
     int initialPlayerY = 31,
     this.onLog,
+    this.onMapLoaded,
     this.onEncounter,
     this.encounterFrequencyProvider,
     this.onNpcTalk,
@@ -222,11 +227,9 @@ class LoreGame extends FlameGame {
         playerX = startX;
         playerY = startY;
       }
-      onLog?.call(
-        '지도 [${info.title}] 진입 (크기: ${currentMap!.xmax}x${currentMap!.ymax})',
-      );
       // 원작 BGM 전환
       AudioManager.instance.playBgm(info.bgmTrack);
+      onMapLoaded?.call();
     } catch (e) {
       onLog?.call('지도 파일 로드 실패: $e');
     }

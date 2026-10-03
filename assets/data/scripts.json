@@ -16109,6 +16109,7 @@
         {
           "choice": {
             "prompt": "내가 당신의 일행에 끼여도 되겠소 ?",
+            "cancelOption": 1,
             "options": [
               {
                 "text": "나는 당신의 제안을 받아 들이겠소",

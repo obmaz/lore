@@ -1,8 +1,10 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
+import 'package:lore/game/lore_game.dart';
 import 'package:lore/logic/lore_menu_text.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/screens/main_game_screen.dart';
@@ -63,6 +65,28 @@ void main() {
     expect(find.text(LoreMenuText.optionQuit), findsOneWidget);
   });
 
+  testWidgets(
+    'difficulty can store encounter 4..5; the next map load makes it 2',
+    (tester) async {
+      await open(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyG);
+      await settle(tester);
+      await tester.tap(find.text(LoreMenuText.optionDifficulty));
+      await settle(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape); // maxenemy -> 5
+      await settle(tester);
+      await tester.tap(find.text(LoreMenuText.optionEncounter1)); // 6 - 1
+      await settle(tester);
+      final etc = LoreDialogueManager.instance.partyEtc;
+      expect([etc.read(7), etc.read(8)], [5, 5]);
+      final game = tester
+          .widget<GameWidget<LoreGame>>(find.byType(GameWidget<LoreGame>))
+          .game!;
+      await tester.runAsync(() => game.loadMapById(1));
+      expect(etc.read(7), 2);
+    },
+  );
+
   testWidgets('G -> 5 -> slot saves the session history and etc bytes', (
     tester,
   ) async {
@@ -92,10 +116,9 @@ void main() {
     expect(restored?.flags['etc3'], 29);
     expect(restored?.flags['etc7'], 3);
     expect(restored?.flags['etc8'], 7);
-    expect([restored?.mapId, restored?.playerX, restored?.playerY], [
-      1,
-      50,
-      50,
-    ]);
+    expect(
+      [restored?.mapId, restored?.playerX, restored?.playerY],
+      [1, 50, 50],
+    );
   });
 }

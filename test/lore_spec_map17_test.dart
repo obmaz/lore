@@ -82,7 +82,13 @@ void main() {
         for (final b in [1, 3]) {
           final offer = at(75, 52, etc: {38: b, 5: 4})!;
           expect(offer.choiceTexts, ['당신의 제의을 받아 들이겠소', '당신이 전해준 마법만으로도 족하오']);
-          expect(offer.outcome.messages, isEmpty);
+          // LORESPEC.PAS:1029-1032: four lines before the select.
+          expect(offer.outcome.messages, [
+            ' 다시 생각해보니 나도 직접 Necromancer에 도',
+            '전하고픈 마음이 생겼소.  비록 육체적인 힘은',
+            '전혀없는 영이지만 당신들과 같이 모험을 하고',
+            '싶소. 당신들의 생각은 어떻소.',
+          ]);
           expect(offer.choose(0).outcome.recruits.single.key, 'red_antares');
           // ReturnJoinMember = 1 (Esc): `asyouwish; exit`.
           expect(
@@ -97,7 +103,7 @@ void main() {
           );
           expect(offer.choose(0).outcome.setFlags, contains('etc38_bit2'));
           expect(offer.choose(1).outcome.setFlags, isEmpty);
-          expect(offer.choose(1).outcome.messages, ['당신이 바란다면 ...']);
+          expect(offer.choose(1).outcome.messages.last, '당신이 바란다면 ...');
         }
       },
     );
