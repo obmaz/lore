@@ -13745,8 +13745,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:if:1",
@@ -13756,8 +13761,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:if:2",
@@ -13767,8 +13777,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:exit:1",
@@ -13778,8 +13793,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:if:3",
@@ -13789,8 +13809,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:for:2",
@@ -13800,8 +13825,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:if:4",
@@ -13811,8 +13841,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:if:5",
@@ -13822,8 +13857,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:exit:2",
@@ -13833,8 +13873,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:case:1",
@@ -13844,8 +13889,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "case",
       "outcomes": 8,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:for:3",
@@ -13855,8 +13905,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:if:6",
@@ -13866,8 +13921,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:exit:3",
@@ -13877,8 +13937,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:curespell:1:case:2",
@@ -13888,8 +13953,13 @@
       "routine": "LOREMENU.PAS:curespell:1",
       "kind": "case",
       "outcomes": 8,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:for:1",
@@ -13899,8 +13969,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:1",
@@ -13910,8 +13985,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:2",
@@ -13921,8 +14001,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:3",
@@ -13932,8 +14017,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:1",
@@ -13943,8 +14033,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:case:1",
@@ -13954,8 +14049,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "case",
       "outcomes": 9,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:4",
@@ -13965,8 +14065,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:2",
@@ -13976,8 +14081,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:5",
@@ -13987,8 +14097,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:6",
@@ -13998,8 +14113,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:3",
@@ -14009,8 +14129,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:7",
@@ -14020,8 +14145,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:4",
@@ -14031,8 +14161,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:8",
@@ -14042,8 +14177,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:5",
@@ -14053,8 +14193,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:9",
@@ -14064,8 +14209,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:6",
@@ -14075,8 +14225,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:for:2",
@@ -14086,8 +14241,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:10",
@@ -14097,8 +14257,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:7",
@@ -14108,8 +14273,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:case:2",
@@ -14119,8 +14289,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "case",
       "outcomes": 5,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:11",
@@ -14130,8 +14305,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:8",
@@ -14141,8 +14321,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:case:3",
@@ -14152,8 +14337,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "case",
       "outcomes": 5,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:12",
@@ -14163,8 +14353,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:13",
@@ -14174,8 +14369,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:14",
@@ -14185,8 +14385,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:15",
@@ -14196,8 +14401,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:16",
@@ -14207,8 +14417,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:9",
@@ -14218,8 +14433,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:17",
@@ -14229,8 +14449,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:18",
@@ -14240,8 +14465,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:10",
@@ -14251,8 +14481,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:19",
@@ -14262,8 +14497,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:11",
@@ -14273,8 +14513,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:for:3",
@@ -14284,8 +14529,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:20",
@@ -14295,8 +14545,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:12",
@@ -14306,8 +14561,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:case:4",
@@ -14317,8 +14577,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "case",
       "outcomes": 5,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:case:5",
@@ -14328,8 +14593,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "case",
       "outcomes": 5,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:21",
@@ -14339,8 +14609,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:22",
@@ -14350,8 +14625,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:13",
@@ -14361,8 +14641,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:23",
@@ -14372,8 +14657,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:14",
@@ -14383,8 +14673,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:for:4",
@@ -14394,8 +14689,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:24",
@@ -14405,8 +14705,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:15",
@@ -14416,8 +14721,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:case:6",
@@ -14427,8 +14737,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "case",
       "outcomes": 5,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:repeat:1",
@@ -14438,8 +14753,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "repeat",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:25",
@@ -14449,8 +14769,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:26",
@@ -14460,8 +14785,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:case:7",
@@ -14471,8 +14801,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "case",
       "outcomes": 3,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:27",
@@ -14482,8 +14817,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:28",
@@ -14493,8 +14833,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:29",
@@ -14504,8 +14849,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:16",
@@ -14515,8 +14865,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:30",
@@ -14526,8 +14881,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:17",
@@ -14537,8 +14897,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:case:8",
@@ -14548,8 +14913,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "case",
       "outcomes": 5,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:31",
@@ -14559,8 +14929,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:32",
@@ -14570,8 +14945,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:33",
@@ -14581,8 +14961,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:34",
@@ -14592,8 +14977,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:35",
@@ -14603,8 +14993,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:18",
@@ -14614,8 +15009,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:36",
@@ -14625,8 +15025,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:37",
@@ -14636,8 +15041,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:exit:19",
@@ -14647,8 +15057,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:for:5",
@@ -14658,8 +15073,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:38",
@@ -14669,8 +15089,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:if:39",
@@ -14680,8 +15105,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:phenominaspell:1:for:6",
@@ -14691,8 +15121,13 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly."
     },
     {
       "id": "LOREMENU.PAS:viewpartysub:1:if:1",
@@ -14834,8 +15269,13 @@
       "routine": "LOREMENU.PAS:castspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CastSpell: ChooseWhom, exist check Message, three-item kind Select."
     },
     {
       "id": "LOREMENU.PAS:castspell:1:exit:1",
@@ -14845,8 +15285,13 @@
       "routine": "LOREMENU.PAS:castspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CastSpell: ChooseWhom, exist check Message, three-item kind Select."
     },
     {
       "id": "LOREMENU.PAS:castspell:1:if:2",
@@ -14856,8 +15301,13 @@
       "routine": "LOREMENU.PAS:castspell:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CastSpell: ChooseWhom, exist check Message, three-item kind Select."
     },
     {
       "id": "LOREMENU.PAS:castspell:1:exit:2",
@@ -14867,8 +15317,13 @@
       "routine": "LOREMENU.PAS:castspell:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CastSpell: ChooseWhom, exist check Message, three-item kind Select."
     },
     {
       "id": "LOREMENU.PAS:castspell:1:case:1",
@@ -14878,8 +15333,13 @@
       "routine": "LOREMENU.PAS:castspell:1",
       "kind": "case",
       "outcomes": 4,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/lore_cast_spell_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_cast_spell.dart",
+      "reviewed_scope": "CastSpell: ChooseWhom, exist check Message, three-item kind Select."
     },
     {
       "id": "LOREMENU.PAS:returnpredict:1:case:1",
@@ -37050,6 +37510,926 @@
       "test": "test/lore_game_option_test.dart",
       "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:for:1",
+      "line": 161,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:if:1",
+      "line": 163,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:if:2",
+      "line": 166,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:exit:1",
+      "line": 166,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:if:3",
+      "line": 168,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:for:2",
+      "line": 169,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:if:4",
+      "line": 171,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:if:5",
+      "line": 173,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:exit:2",
+      "line": 173,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:case:1",
+      "line": 174,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:for:3",
+      "line": 197,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:if:6",
+      "line": 199,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:exit:3",
+      "line": 202,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:curespell:1:case:2",
+      "line": 205,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:for:1",
+      "line": 243,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:1",
+      "line": 244,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:2",
+      "line": 246,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:3",
+      "line": 248,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:1",
+      "line": 248,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:case:1",
+      "line": 249,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:4",
+      "line": 251,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:2",
+      "line": 253,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:5",
+      "line": 255,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:6",
+      "line": 261,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:3",
+      "line": 263,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:7",
+      "line": 270,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:4",
+      "line": 272,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:8",
+      "line": 279,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:5",
+      "line": 281,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:9",
+      "line": 288,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:6",
+      "line": 290,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:for:2",
+      "line": 298,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:10",
+      "line": 301,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:7",
+      "line": 301,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:case:2",
+      "line": 302,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:11",
+      "line": 309,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:8",
+      "line": 311,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:case:3",
+      "line": 314,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:12",
+      "line": 315,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:13",
+      "line": 316,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:14",
+      "line": 317,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:15",
+      "line": 318,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:16",
+      "line": 320,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:9",
+      "line": 323,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:17",
+      "line": 326,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:18",
+      "line": 337,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:10",
+      "line": 339,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:19",
+      "line": 341,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:11",
+      "line": 343,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:for:3",
+      "line": 351,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:20",
+      "line": 354,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:12",
+      "line": 354,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:case:4",
+      "line": 355,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:case:5",
+      "line": 361,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:21",
+      "line": 368,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:22",
+      "line": 380,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:13",
+      "line": 382,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:23",
+      "line": 384,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:14",
+      "line": 386,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:for:4",
+      "line": 394,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:24",
+      "line": 397,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:15",
+      "line": 397,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:case:6",
+      "line": 398,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:repeat:1",
+      "line": 415,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:25",
+      "line": 418,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:26",
+      "line": 419,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:case:7",
+      "line": 421,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:27",
+      "line": 425,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:28",
+      "line": 427,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:29",
+      "line": 438,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:16",
+      "line": 440,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:30",
+      "line": 443,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:17",
+      "line": 446,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:case:8",
+      "line": 449,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:31",
+      "line": 450,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:32",
+      "line": 451,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:33",
+      "line": 452,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:34",
+      "line": 453,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:35",
+      "line": 455,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:18",
+      "line": 458,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:36",
+      "line": 461,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:37",
+      "line": 472,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:exit:19",
+      "line": 474,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:for:5",
+      "line": 477,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:38",
+      "line": 477,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:if:39",
+      "line": 478,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:phenominaspell:1:for:6",
+      "line": 482,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CureSpell (whom list player[1..6] plus '모든 사람들에게', personal level div 2 + 1, group level div 2 - 3 with refusal, results then two blank lines and a key) and PhenominaSpell (maxsum level div 2 + 1, SP before direction, torch +1, etc[2..4] := 255, vaporize/terrain/space move tile checks and blocked maps 20/25/26 for 6-7, food +members up to 255) ported directly.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:castspell:1:if:1",
+      "line": 625,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CastSpell: ChooseWhom, exist check Message, three-item kind Select.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:castspell:1:exit:1",
+      "line": 625,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CastSpell: ChooseWhom, exist check Message, three-item kind Select.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:castspell:1:if:2",
+      "line": 626,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CastSpell: ChooseWhom, exist check Message, three-item kind Select.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:castspell:1:exit:2",
+      "line": 629,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CastSpell: ChooseWhom, exist check Message, three-item kind Select.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:castspell:1:case:1",
+      "line": 636,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_cast_spell.dart",
+      "test": "test/lore_cast_spell_test.dart",
+      "note": "CastSpell: ChooseWhom, exist check Message, three-item kind Select.",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -38743,6 +40123,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/cast_spell_ui_test.dart",
+      "kind": "test",
+      "sha256": "b9a465ba655f3ecd85f6e5ac708c7c1633278f0b643c52fa69d10d8ba905b19d",
+      "cited_source_files": [
+        "LOREMENU.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/creation_test.dart",
       "kind": "test",
       "sha256": "271cd1d1f6023de3ec4e212cdde5fe24b7f275917a198ad3f7fac5883a96f05a",
@@ -38817,7 +40206,7 @@
     {
       "path": "test/field_magic_test.dart",
       "kind": "test",
-      "sha256": "49f2b0f715ceb9ff7a7180630ac0763897837a99fe96a41b00bb513ffc62f5b6",
+      "sha256": "c7fcb2f0e1edc71e99aeb9ba3ca9895fb50e9f5d0a0cca026dfcf3dcafe691a1",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -38901,7 +40290,7 @@
     {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
-      "sha256": "b123c8f02e1ee352e571bb82a240a40ca3f32c6fd61f4cf2f2c577e9c1ea8ee9",
+      "sha256": "2543a6d6c324afdae8a4bbe613ff26358450106ca07314cccc79207088798230",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
@@ -38929,6 +40318,15 @@
       "sha256": "eb7ee31f5462e25da6213cbfb9ed72820310257ac75ceace5216cde64466cb3b",
       "cited_source_files": [
         "LOREBATT.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/lore_cast_spell_test.dart",
+      "kind": "test",
+      "sha256": "0994adb1f32fb9d6fd89a0cf6f3932aeb281c7f47a2d4e77d998afd0d2c222b0",
+      "cited_source_files": [
+        "LOREMENU.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -40065,11 +41463,11 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "c8cdbed076e296e3aa54a2053ee96f4d86be283fbf530ce1082ac2e6688a9342"
+      "sha256": "6dc1701d3bbac8ee2433099512a905ea28f158269d3296425b92d9c63c85a347"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
-      "sha256": "bde908489750ff0926302b08da7582fe7e185c604bda0959b0287aa622c382cb"
+      "sha256": "b58a224a3e229ac73b91fa85334dcc1563c93e588a2041a267edcf90a09e7549"
     },
     {
       "path": "lib/widgets/script_scene_dialog.dart",
@@ -40077,9 +41475,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "388c714b07b35dad497a3ad879a7c4049dd767dafb64d7b38586367ad15a7006",
+      "sha256": "32b7784a26819743ab41f2195ec0c2a6ebfd2f22a68ecdd15479bc285bd10b98",
       "top_level_counts": {
-        "contracts": 870
+        "contracts": 962
       }
     }
   ],
@@ -40087,9 +41485,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 978,
+    "unmapped_behavior_sites": 886,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 870,
+    "partially_verified_behavior_sites": 962,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
