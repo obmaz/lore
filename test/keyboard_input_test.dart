@@ -210,8 +210,11 @@ void main() {
       // R -> 야외 캠프 휴식
       await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
       await settle(tester);
-      expect(find.text(LoreMenuText.selectModeRest), findsWidgets);
-      await closeDialog(tester);
+      // Rest runs at once and ends with PressAnyKey.
+      expect(find.text(LoreSubText.pressAnyKey), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await settle(tester);
+      expect(find.text(LoreSubText.pressAnyKey), findsNothing);
 
       // G -> GameOption (원본 Select, Esc 로 닫는다)
       await tester.sendKeyEvent(LogicalKeyboardKey.keyG);

@@ -508,6 +508,11 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     없이 출력된다. 어댑터: `Message`/`Print`는 메시지 기록에, `Talk`·`PressAnyKey`는 키 대기 창에,
     공간 이동력 입력의 +/−/확인/닫기 아이콘은 키 입력과 같은 터치 입력이다.
 
+42. LOREMENU `Rest`(`R` 키, SelectMode 6번)는 고르는 즉시 실행된다. 예전의 식량 표시·`식량이
+    바닥났다` 안내·`여기서 쉰다` 확인 버튼은 원본에 없어 없앴다. 대원별 문구는 원본 색(식량 없음 4,
+    사망·독 7, 회복 15)으로 키 대기 창에 나오고, 뒤이어 etc[1] 1 감소, etc[2..4] := 0, 이름 있는
+    대원의 SP/ESP 회복, `SimpleDisCond`, `PressAnyKey`이다.
+
 다음 묶음은 LOREMENU 개인·일행 상황·건강 상태·초감각·휴식 화면의 원본 흐름, LOREMAIN 위치 블록
 연쇄 처리와 이식 전체의 DOS 실행 대조이다.
 

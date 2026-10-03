@@ -194,6 +194,8 @@ void main() {
       expect(fighter.hp, 10 + (5 + 1 + 1) * 2); // 24
       expect(outcome.food, 9);
       expect(outcome.logs, contains('Fighter는 치료되었다'));
+      // LOREMENU.PAS Rest: Print(15, ...) for a healed member.
+      expect(outcome.lines, contains((15, 'Fighter는 치료되었다')));
       expect(fighter.sp, fighter.maxSp); // SP 완전 회복
       expect(fighter.esp, fighter.maxEsp); // ESP 완전 회복
 

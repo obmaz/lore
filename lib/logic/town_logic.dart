@@ -41,13 +41,16 @@ class RestOutcome {
   /// 휴식 후 마법의 횃불 잔여 스텝 (원작 `party.etc[1]`, 매 휴식마다 1 감소).
   final int torchSteps;
 
-  /// 원작 `Print` 순서를 그대로 보존한 메시지 목록.
-  final List<String> logs;
+  /// 원작 `Print(color, s)` 순서 그대로의 (색, 문구).
+  final List<(int, String)> lines;
+
+  /// [lines] 의 문구만.
+  List<String> get logs => [for (final (_, text) in lines) text];
 
   const RestOutcome({
     required this.food,
     required this.torchSteps,
-    required this.logs,
+    required this.lines,
   });
 
   /// 실제로 체력/의식이 회복된 파티원 수 (테스트 편의용).
@@ -371,18 +374,18 @@ class TownLogic {
     int food, {
     int torchSteps = 0,
   }) {
-    final logs = <String>[];
+    final logs = <(int, String)>[];
     var currentFood = food;
 
-    for (final p in party) {
+    for (final p in party.take(6)) {
       if (p.name.isEmpty) continue;
 
       if (currentFood <= 0) {
-        logs.add('일행은 식량이 바닥났다');
+        logs.add((4, '일행은 식량이 바닥났다'));
         continue;
       }
       if (p.dead > 0) {
-        logs.add('${p.name}는 죽었다');
+        logs.add((7, '${p.name}는 죽었다'));
         continue;
       }
       if (p.unconscious > 0 && p.poison == 0) {
@@ -391,14 +394,14 @@ class TownLogic {
           p.unconscious = 0;
           if (p.hp <= 0) p.hp = 1;
           currentFood--;
-          logs.add('${p.name}는 의식이 회복되었다');
+          logs.add((15, '${p.name}는 의식이 회복되었다'));
         } else {
-          logs.add('${p.name}는 여전히 의식 불명이다');
+          logs.add((15, '${p.name}는 여전히 의식 불명이다'));
         }
       } else if (p.unconscious > 0 && p.poison > 0) {
-        logs.add('독때문에, ${p.name} ${possessive(p.sex)} 의식은 회복되지 않았다');
+        logs.add((7, '독때문에, ${p.name} ${possessive(p.sex)} 의식은 회복되지 않았다'));
       } else if (p.poison > 0) {
-        logs.add('독때문에, ${p.name} ${possessive(p.sex)} 건강은 회복되지 않았다');
+        logs.add((7, '독때문에, ${p.name} ${possessive(p.sex)} 건강은 회복되지 않았다'));
       } else {
         final heal = (p.battleLevel + p.magicLevel + p.espLevel) * 2;
         // 원작: 이미 만복이면 식량을 1개 돌려받은 뒤 다시 1개 소모한다(순 소모 0).
@@ -406,9 +409,9 @@ class TownLogic {
         p.hp += heal;
         if (p.hp >= p.maxHp) {
           p.hp = p.maxHp;
-          logs.add('${p.name}는 모든 건강이 회복되었다');
+          logs.add((15, '${p.name}는 모든 건강이 회복되었다'));
         } else {
-          logs.add('${p.name}는 치료되었다');
+          logs.add((15, '${p.name}는 치료되었다'));
         }
         currentFood--;
       }
@@ -419,12 +422,12 @@ class TownLogic {
     if (torch > 0) torch--;
 
     // 마력/초능력 완전 회복 (원작은 사망자 포함 이름이 있는 파티원 전원에게 적용).
-    for (final p in party) {
+    for (final p in party.take(6)) {
       if (p.name.isEmpty) continue;
       p.sp = p.maxSp;
       p.esp = p.maxEsp;
     }
 
-    return RestOutcome(food: currentFood, torchSteps: torch, logs: logs);
+    return RestOutcome(food: currentFood, torchSteps: torch, lines: logs);
   }
 }

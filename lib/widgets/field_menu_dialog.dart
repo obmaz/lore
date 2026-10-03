@@ -4,7 +4,6 @@ import '../logic/lore_menu_text.dart';
 import 'esp_panel.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
-import '../logic/town_logic.dart';
 
 /// 1993년 원작 LOREMENU.PAS 기반 스페이스바 필드 시스템 메뉴 (SelectMode)
 class FieldMenuDialog extends StatefulWidget {
@@ -14,15 +13,11 @@ class FieldMenuDialog extends StatefulWidget {
   final int currentMapId;
   final int playerX;
   final int playerY;
-  final void Function(int newFood)? onFoodChanged;
-  final void Function({int? torch, int? water, int? swamp, int? levitate})?
-  onSpellEffect;
-
   final void Function(int count)? onMindReadActivated;
   final Map<String, int>? etc;
   final void Function(String message) onLog;
 
-  /// SelectMode 항목이나 원작 핫키(P/V/C/R)로 고른 절차.
+  /// SelectMode 항목이나 원작 핫키(P/V/Q/E)로 고른 절차.
   final FieldMenuTab initialTab;
 
   const FieldMenuDialog({
@@ -33,8 +28,6 @@ class FieldMenuDialog extends StatefulWidget {
     this.currentMapId = 6,
     this.playerX = 51,
     this.playerY = 31,
-    this.onFoodChanged,
-    this.onSpellEffect,
     this.onMindReadActivated,
     this.etc,
     required this.initialTab,
@@ -47,7 +40,7 @@ class FieldMenuDialog extends StatefulWidget {
 
 /// The LOREMENU procedure this dialog shows (SelectMode itself is a Select
 /// on the game screen).
-enum FieldMenuTab { partyView, characterView, quickView, esp, rest }
+enum FieldMenuTab { partyView, characterView, quickView, esp }
 
 class _FieldMenuDialogState extends State<FieldMenuDialog> {
   late final FieldMenuTab _currentTab = widget.initialTab;
@@ -97,8 +90,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
       title = LoreMenuText.selectModeQuick;
     } else if (_currentTab == FieldMenuTab.esp) {
       title = LoreMenuText.selectModeEsp;
-    } else if (_currentTab == FieldMenuTab.rest) {
-      title = LoreMenuText.selectModeRest;
     }
 
     return Row(
@@ -136,8 +127,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         return _buildQuickView();
       case FieldMenuTab.esp:
         return _buildEspView();
-      case FieldMenuTab.rest:
-        return _buildRest();
     }
   }
 
@@ -631,69 +620,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           onMindReadActivated: widget.onMindReadActivated,
         ),
       ),
-    );
-  }
-
-  // =========================================================================
-  // 4. 여기서 쉰다 (원작 LOREMENU.PAS:869 Rest)
-  // =========================================================================
-  Widget _buildRest() {
-    final torchSteps = widget.etc?['torchSteps'] ?? 0;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '${LoreMenuText.viewPartyFood}$_currentFood',
-          style: RetroTheme.dosFont.copyWith(
-            color: _currentFood > 0
-                ? RetroTheme.lightGreen
-                : RetroTheme.lightRed,
-            fontSize: 11,
-          ),
-        ),
-        if (_currentFood <= 0)
-          Text(
-            LoreMenuText.restNoFood,
-            style: RetroTheme.dosFont.copyWith(
-              color: RetroTheme.lightRed,
-              fontSize: 10,
-            ),
-          ),
-        const SizedBox(height: 12),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: RetroTheme.blue,
-            foregroundColor: RetroTheme.white,
-            minimumSize: const Size.fromHeight(36),
-          ),
-          onPressed: () {
-            final outcome = TownLogic.rest(
-              widget.party,
-              _currentFood,
-              torchSteps: torchSteps,
-            );
-            setState(() => _currentFood = outcome.food);
-            widget.onFoodChanged?.call(_currentFood);
-            // 현상계 지속 마법 해제 (원작 party.etc[1..4] 처리)
-            widget.onSpellEffect?.call(
-              torch: outcome.torchSteps,
-              water: 0,
-              swamp: 0,
-              levitate: 0,
-            );
-
-            for (final l in outcome.logs) {
-              widget.onLog(l);
-            }
-            Navigator.of(context).pop();
-          },
-          child: Text(
-            LoreMenuText.selectModeRest,
-            style: RetroTheme.dosFont.copyWith(fontSize: 12),
-          ),
-        ),
-      ],
     );
   }
 }

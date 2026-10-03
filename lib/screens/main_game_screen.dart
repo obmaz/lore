@@ -25,6 +25,7 @@ import '../logic/script_equip_reducer.dart';
 import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
+import '../logic/town_logic.dart';
 import '../logic/lore_cast_spell.dart';
 import '../logic/lore_game_option.dart';
 import '../logic/lore_game_over.dart';
@@ -1262,7 +1263,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       case 5:
         await _openEspDialog();
       case 6:
-        await _openFieldMenuDialog(initialTab: FieldMenuTab.rest);
+        await _runRest();
       case 7:
         await _runGameOption();
     }
@@ -1281,15 +1282,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         playerY: _game.playerY,
         initialTab: initialTab,
         etc: _sourceEtc.fieldCounters(),
-        onFoodChanged: (newFood) => setState(() => _partyFood = newFood),
-        onSpellEffect: ({int? torch, int? water, int? swamp, int? levitate}) {
-          setState(() {
-            if (torch != null) _torchSteps = torch;
-            if (water != null) _waterWalkSteps = water;
-            if (swamp != null) _swampWalkSteps = swamp;
-            if (levitate != null) _levitateSteps = levitate;
-          });
-        },
         onMindReadActivated: (count) {
           setState(() => _mindReadCount = count);
         },
@@ -1301,6 +1293,25 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// LOREMENU `CastSpell` (hotkey C or SelectMode item 4).
   Future<void> _runCastSpell() =>
       LoreCastSpell.run(_ScreenCastSpellIo(this), _party, _sourceEtc);
+
+  /// LOREMENU `Rest` (hotkey R or SelectMode item 6): it runs at once, then
+  /// `etc[1]` drops by one, `etc[2..4] := 0`, SP/ESP refill, `SimpleDisCond`
+  /// and `PressAnyKey`.
+  Future<void> _runRest() async {
+    final outcome = TownLogic.rest(
+      _party,
+      _partyFood,
+      torchSteps: _torchSteps,
+    );
+    setState(() {
+      _partyFood = outcome.food;
+      _torchSteps = outcome.torchSteps;
+      _waterWalkSteps = 0;
+      _swampWalkSteps = 0;
+      _levitateSteps = 0;
+    });
+    await showLoreMessageDialog(context, lines: outcome.lines);
+  }
 
   /// LOREMENU `GameOption` (hotkey G or SelectMode item 7).
   Future<void> _runGameOption() =>
@@ -1954,7 +1965,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
               case FieldAction.castSpell:
                 await _runCastSpell();
               case FieldAction.rest:
-                await _openFieldMenuDialog(initialTab: FieldMenuTab.rest);
+                await _runRest();
               case FieldAction.gameOption:
                 await _runGameOption();
               case FieldAction.toggleSound:
