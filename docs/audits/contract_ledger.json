@@ -38602,6 +38602,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/join_refusal_ui_test.dart",
+      "kind": "test",
+      "sha256": "b0f5397846ca1e78da197c5833d4120f200ba64e61c466beedaae9efc309ea7c",
+      "cited_source_files": [
+        "LORESPEC.PAS",
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
       "sha256": "aa2eed4a15fd6e81f1b503736c35113443b6926bb3a561dd8364ad3907a44fbb",
@@ -38682,7 +38692,7 @@
     {
       "path": "test/lore_spec_map12_test.dart",
       "kind": "test",
-      "sha256": "3f9e35f8dec9fa9f14d24e11623f672422a6d7ed8b34614b73bea4f79adfb970",
+      "sha256": "d30ba90176e371ad65a998b869bf4642259bb6be5e0ebc97e19aa655d2959392",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -38727,7 +38737,7 @@
     {
       "path": "test/lore_spec_map17_test.dart",
       "kind": "test",
-      "sha256": "07f8a7d1c90a39e8a41e85d87123d83e83c2c848dc5e2a2ce3c8b2ab2efabcb0",
+      "sha256": "544db4f5fa58be586d43c6be8f0940963f699fbc4273015091110f644667fc4c",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -38835,7 +38845,7 @@
     {
       "path": "test/lore_spec_map4_test.dart",
       "kind": "test",
-      "sha256": "5dc8d19d5aa75a7f46a7ea187baa17ab05a5c332c96d6dd49e7dfdb6dbc60621",
+      "sha256": "303e276067360b7693d89aeeff03b8e10f254373552603d217df9b8004821821",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -39683,7 +39693,7 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "6dcd7f3ec7afd1065be727f8e55c3b8c2479518729541d0728e9fb63a8d65885"
+      "sha256": "f40c76df37ac55cfcfbebf13ebeeb037e916f9bff55085e99644f7d9be8d6ce4"
     },
     {
       "path": "lib/game/lore_game.dart",
@@ -39723,7 +39733,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "c574d37925c94576ac22ad8ac400eb960614a309ff309b3049d22aab2c9cee81"
+      "sha256": "4a3902776644f45c6eea4036e64759982eaac607c4f4273d9a5cc32aa5623aaa"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -39759,7 +39769,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "922130fa9e66cfa1ec524cf9651d063282852584ddfdd65b2138dd0cad4260c7"
+      "sha256": "2be448af2f5b644db6ceac49c030169a8ff72b227ea17268e44c623b05d4ed40"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
