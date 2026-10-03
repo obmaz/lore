@@ -59,60 +59,69 @@ void main() {
     expect(find.text('새 대화'), findsOneWidget);
   });
 
+  Future<LoreGame> openTown(
+    WidgetTester tester,
+    Size size, {
+    required int x,
+    required int y,
+  }) async {
+    SharedPreferences.setMockInitialValues({});
+    addTearDown(() {
+      LoreDialogueManager.instance.loadFlags({});
+      LoreScriptEngine.instance.resetForTest();
+    });
+    tester.view.physicalSize = size;
+    tester.view.devicePixelRatio = 1;
+    addTearDown(() {
+      tester.view.resetPhysicalSize();
+      tester.view.resetDevicePixelRatio();
+    });
+    for (final channel in [
+      'xyz.luan/audioplayers',
+      'xyz.luan/audioplayers.global',
+    ]) {
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(MethodChannel(channel), (_) async => 1);
+    }
+    // `main()` loads the data before `runApp`.
+    await tester.runAsync(() async {
+      await LoreScriptEngine.instance.load();
+      await LoreWorldManager.instance.loadData();
+      await LoreDialogueManager.instance.loadData();
+    });
+    await tester.pumpWidget(
+      MaterialApp(
+        home: MainGameScreen(
+          initialSaveData: SaveData(
+            slot: 1,
+            slotName: SaveManager.slotNames.first,
+            timestamp: DateTime.utc(1993),
+            mapId: 6,
+            mapTitle: 'TOWN 1',
+            playerX: x,
+            playerY: y,
+            gold: 100,
+            food: 20,
+            party: [PartyMember.createPreset(1)],
+            flags: const {},
+          ),
+        ),
+      ),
+    );
+    final finder = find.byType(GameWidget<LoreGame>);
+    final game = tester.widget<GameWidget<LoreGame>>(finder).game!;
+    await tester.runAsync(
+      () => tester.state<GameWidgetState<LoreGame>>(finder).loaderFuture,
+    );
+    await tester.pump(const Duration(milliseconds: 300));
+    return game;
+  }
+
   for (final size in [const Size(1280, 720), const Size(390, 844)]) {
     testWidgets('an NPC speech is one window, then lives in 이전 대화 ($size)', (
       tester,
     ) async {
-      SharedPreferences.setMockInitialValues({});
-      addTearDown(() {
-        LoreDialogueManager.instance.loadFlags({});
-        LoreScriptEngine.instance.resetForTest();
-      });
-      tester.view.physicalSize = size;
-      tester.view.devicePixelRatio = 1;
-      addTearDown(() {
-        tester.view.resetPhysicalSize();
-        tester.view.resetDevicePixelRatio();
-      });
-      for (final channel in [
-        'xyz.luan/audioplayers',
-        'xyz.luan/audioplayers.global',
-      ]) {
-        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-            .setMockMethodCallHandler(MethodChannel(channel), (_) async => 1);
-      }
-      // `main()` loads the data before `runApp`.
-      await tester.runAsync(() async {
-        await LoreScriptEngine.instance.load();
-        await LoreWorldManager.instance.loadData();
-        await LoreDialogueManager.instance.loadData();
-      });
-      await tester.pumpWidget(
-        MaterialApp(
-          home: MainGameScreen(
-            initialSaveData: SaveData(
-              slot: 1,
-              slotName: SaveManager.slotNames.first,
-              timestamp: DateTime.utc(1993),
-              mapId: 6,
-              mapTitle: 'TOWN 1',
-              playerX: 63,
-              playerY: 9,
-              gold: 100,
-              food: 20,
-              party: [PartyMember.createPreset(1)],
-              flags: const {},
-            ),
-          ),
-        ),
-      );
-      final finder = find.byType(GameWidget<LoreGame>);
-      final game = tester.widget<GameWidget<LoreGame>>(finder).game!;
-      await tester.runAsync(
-        () => tester.state<GameWidgetState<LoreGame>>(finder).loaderFuture,
-      );
-      await tester.pump(const Duration(milliseconds: 300));
-
+      final game = await openTown(tester, size, x: 63, y: 9);
       game.tryMove(0, 1); // the NPC at (63, 10)
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 300));
@@ -144,4 +153,41 @@ void main() {
       expect(find.text(GameScreenLayout.historyLabel), findsWidgets);
     });
   }
+
+  testWidgets('the hero name of LORETALK `player[1].name` is filled in', (
+    tester,
+  ) async {
+    final game = await openTown(tester, const Size(390, 844), x: 25, y: 50);
+    final hero = PartyMember.createPreset(1).name;
+    game.tryMove(-1, 0); // the NPC at (24, 50): ' 힘내게, '+player[1].name
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(find.text(' 힘내게, $hero'), findsOneWidget);
+    expect(find.textContaining('{hero}'), findsNothing);
+  });
+
+  testWidgets('the tavern greets with the sign line and ReturnSex(1)', (
+    tester,
+  ) async {
+    final game = await openTown(tester, const Size(390, 844), x: 13, y: 28);
+    game.tryMove(0, -1); // the barkeeper at (13, 27)
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
+    // `Print(7,' 어서 오십시오. ...')` then one `talk` of `random(2)`.
+    expect(find.text(' 어서 오십시오. 여기는 LORE 주점입니다.'), findsOneWidget);
+    expect(find.textContaining('{sex}'), findsNothing);
+    final greeting = find.textContaining(' 거기 ');
+    final drinks = find.text(' 위스키에서 칵테일까지 마음껏 선택하십시오.');
+    expect(
+      greeting.evaluate().length + drinks.evaluate().length,
+      1,
+      reason: 'exactly one of the two talk lines',
+    );
+    if (greeting.evaluate().isNotEmpty) {
+      final sex = PartyMember.createPreset(1).sex == Gender.female
+          ? '여성'
+          : '남성';
+      expect(find.text(' 거기 $sex분 어서 오십시오.'), findsOneWidget);
+    }
+  });
 }

@@ -718,6 +718,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
       if (line != null && message == sourceScene!.lines[line]) {
         return renderedScene!.lines[line];
       }
+      // `{hero}` is the source's `player[1].name`, `{sex}` its `ReturnSex(1)`.
+      if (message.contains('{hero}') || message.contains('{sex}')) {
+        final first = _party.isEmpty ? null : _party.first;
+        return message
+            .replaceAll('{hero}', first?.name ?? '')
+            .replaceAll('{sex}', first?.sex == Gender.female ? '여성' : '남성');
+      }
       return message;
     }
 
