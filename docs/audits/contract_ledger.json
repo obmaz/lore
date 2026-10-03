@@ -44060,7 +44060,7 @@
     {
       "path": "test/lore_town_shops_test.dart",
       "kind": "test",
-      "sha256": "ce5f1dc280ee1483de745866d55a3f1e4dd0d3933c21b52ece1352e3c9100d38",
+      "sha256": "110a6fe1f72712fdaf97249efe4bad253d48b21092ae6b93de90d31ac5a834b0",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -44606,7 +44606,7 @@
     {
       "path": "test/town_shop_ui_test.dart",
       "kind": "test",
-      "sha256": "ba82359bccc82c5444eacc0dfa0f05999b9304c77dba37ab0bafdda200183a5c",
+      "sha256": "8fdfa04f8174a1c95e12d685d2e28f44c2714ec336cbcffcd6872bc4639a7816",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -44979,11 +44979,11 @@
     },
     {
       "path": "lib/logic/lore_town_shops.dart",
-      "sha256": "c762ee3e84bdd7036e56fd917f14b3b556b7b3863db5c1b0a8e84f3ba782773c"
+      "sha256": "6b17e65fa5d13fb6faa7b790a600e1a5d8f70ec90b4f2b777334c3f1457fb574"
     },
     {
       "path": "lib/widgets/lore_window.dart",
-      "sha256": "67d6ea3c7864828ea3ca3020fef723154e79fdb8888968a362f2bb6d60e055b7"
+      "sha256": "fc52367610ed297ccf5de0c77c014ae3891764b00bdf38e749136cc57b032166"
     },
     {
       "path": "lib/widgets/lore_select_view.dart",
