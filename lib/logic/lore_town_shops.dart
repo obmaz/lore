@@ -7,6 +7,7 @@ library;
 import 'dart:math';
 
 import '../models/party_member.dart';
+import 'lore_source_memory.dart';
 import 'lore_sub_text.dart';
 import 'lore_window_io.dart';
 
@@ -344,7 +345,11 @@ class LoreTownShops {
           await io.pressAnyKey();
           return false;
         }
-        final cost = (maxHp - p.hp) * p.battleLevel ~/ 2 + 1;
+        // `i := i * level[1] div 2 + 1`, stored in the 16-bit `integer` i
+        // (intermediate products stay unmasked, see LorePascal).
+        final cost = LorePascal.integer(
+          (maxHp - p.hp) * p.battleLevel ~/ 2 + 1,
+        );
         if (io.gold < cost) {
           _notEnoughMoney(io);
           await io.pressAnyKey();
@@ -391,7 +396,7 @@ class LoreTownShops {
           await io.pressAnyKey();
           return false;
         }
-        final cost = p.unconscious * 2;
+        final cost = LorePascal.integer(p.unconscious * 2);
         if (io.gold < cost) {
           _notEnoughMoney(io);
           await io.pressAnyKey();
@@ -410,7 +415,9 @@ class LoreTownShops {
           await io.pressAnyKey();
           return false;
         }
-        final cost = p.dead * 100 + 400;
+        // `i := dead * 100 + 400` is stored in the 16-bit `integer` i (no
+        // {$R}/{$Q}); dead 324..651 folds to a negative cost that raises gold.
+        final cost = LorePascal.integer(p.dead * 100 + 400);
         if (io.gold < cost) {
           _notEnoughMoney(io);
           await io.pressAnyKey();

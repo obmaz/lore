@@ -575,7 +575,16 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     `(최대HP-HP) * level[1] div 2 + 1`, `level[1] * 10`, `unconscious * 2`, `dead * 100 + 400`이며
     거절은 키 대기 뒤 치료 선택(`goto second`), 성공은 키 대기 뒤 대상 선택(`goto first`)으로 간다.
     어댑터: 프로시저가 끝났을 때 창에 남은 줄(`Message`로 지운 뒤 출력된 마지막 문구)은 원본이 창에
-    그대로 두므로 메시지 기록에 옮긴다. `cPrint(7,11,..)`의 두 색은 한 줄(7)로 보인다.
+    그대로 두므로 메시지 기록에 옮긴다. `cPrint(7,11,..)`의 두 색은 한 줄(7)로 보인다. 그 밖의
+    기록: `Select`의 `yinit`(세로 위치)과 `hany := 15`, `ChooseWhom`의 `HPrintXY(265,70,..)`
+    고정 좌표는 창 안에서 위에서부터 쌓이는 배치로 대신했다. 병원 비용(`i := dead * 100 + 400`,
+    `i := i * level[1] div 2 + 1`, `unconscious * 2`)은 16비트 `integer` `i`에 저장되며 소스에
+    `{$R}`/`{$Q}`가 없어 넘치면 접힌다고 가정했다(`dead` 324..651이면 음수 비용이 되어 금화가 늘어난다;
+    중간 곱은 `LorePascal`의 기존 가정대로 마스크하지 않는다; DOS 실행 확인 전). 기사의 무기 위력
+    `round(power / 2)`는 `.5`에서 0에서 먼 쪽으로 반올림한다고 가정했다(5→8, 9→14). `random(21)`
+    등은 세션 `Random`이라 Turbo Pascal 난수열과는 같지 않다(호출 순서는 같다). 터치 어댑터: 창의
+    Select에는 Esc에 해당하는 닫기 아이콘이 있고(무기점 첫 메뉴·훈련소·병원의 `ChooseWhom`은 Esc로만
+    나갈 수 있다), 시스템 뒤로 가기는 Esc로 처리해 절차가 멈추지 않는다.
 
 48. LORESUB `ReturnCondition`은 문구만이 아니라 `hp <= 0`이고 `unconscious = 0`이면 `unconscious := 1`,
     `unconscious > endurance * level[1]`이고 `dead = 0`이면 `dead := 1`로 레코드를 바꾼다.

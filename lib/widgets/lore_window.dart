@@ -73,6 +73,17 @@ class LoreWindowController extends ChangeNotifier implements LoreWindowIo {
     final wait = _keyWait;
     if (wait != null && !wait.isCompleted) wait.complete();
   }
+
+  /// Esc (the close icon, the system back button): 0 for an active `Select`,
+  /// any key for a `PressAnyKey`.
+  void escape() {
+    final select = _select;
+    if (select != null && !select.done.isCompleted) {
+      select.done.complete(0);
+    } else {
+      releaseKey();
+    }
+  }
 }
 
 class LoreWindowView extends StatefulWidget {
@@ -114,6 +125,19 @@ class _LoreWindowViewState extends State<LoreWindowView> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              if (select != null)
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    key: const ValueKey('dialog-cancel'),
+                    onPressed: c.escape,
+                    icon: const Icon(
+                      Icons.close,
+                      size: 16,
+                      color: RetroTheme.lightRed,
+                    ),
+                  ),
+                ),
               for (final (color, text) in c.lines)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 4),
@@ -182,13 +206,20 @@ Future<void> showLoreWindow(
   final route = DialogRoute<void>(
     context: context,
     barrierDismissible: false,
-    builder: (_) => Dialog(
-      backgroundColor: RetroTheme.black,
-      shape: Border.all(color: RetroTheme.lightCyan, width: 2),
-      child: SizedBox(
-        width: 520,
-        height: 360,
-        child: LoreWindowView(controller: controller),
+    // The system back button must not pop the route under `run`: it is Esc.
+    builder: (_) => PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) controller.escape();
+      },
+      child: Dialog(
+        backgroundColor: RetroTheme.black,
+        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+        child: SizedBox(
+          width: 520,
+          height: 360,
+          child: LoreWindowView(controller: controller),
+        ),
       ),
     ),
   );

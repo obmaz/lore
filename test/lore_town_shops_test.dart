@@ -99,6 +99,16 @@ void main() {
       },
     );
 
+    test(
+      'the knight bonus is round(power / 2) with .5 rounding away from zero',
+      () {
+        for (final (power, expected) in [(5, 8), (7, 11), (9, 14), (10, 15)]) {
+          final k = knight()..equipWeaponRaw(1, power);
+          expect(k.weaPower, expected, reason: 'power $power');
+        }
+      },
+    );
+
     test('weapons: price check, monk refusal, knight bonus, stays in the item menu', () async {
       final hero = knight();
       // category 1, sword (4, 5000), whom 1 (name list index 1), then Esc, Esc.
@@ -256,6 +266,23 @@ void main() {
         expect(c.dead, 0);
         expect(c.unconscious, c.endurance * c.battleLevel);
         expect(io.gold, 100000 - a.battleLevel * 10 - 14 - (2 * 100 + 400));
+      },
+    );
+
+    test(
+      'the revive cost is stored in a 16-bit integer (dead 500 pays out)',
+      () async {
+        // `i := dead * 100 + 400` = 50400 -> -15136 as an integer, so
+        // `party.gold < i` is false and `gold - i` raises the gold.
+        final hero = PartyMember.createPreset(5)..dead = 500;
+        final io = _Io([1, 4, 0], gold: 10);
+        await LoreTownShops.hospital(io, [hero]);
+        expect(hero.dead, 0);
+        expect(io.gold, 10 + 15136);
+        final huge = PartyMember.createPreset(5)..dead = 30000;
+        final again = _Io([1, 4, 0], gold: 0);
+        await LoreTownShops.hospital(again, [huge]);
+        expect(again.gold, 14256);
       },
     );
 
