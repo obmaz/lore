@@ -58,7 +58,9 @@ void main() {
     expect(offer.script.id, 'spec-4-L37-2');
     expect(offer.hasPendingChoice, isTrue);
     final accepted = offer.choose(0).outcome;
-    expect(accepted.recruits.single, (key: 'draconian', slot: 4));
+    final recruit = accepted.recruits.single;
+    expect((recruit.key, recruit.slot), ('draconian', 4));
+    expect(recruit.cancelSteps, isEmpty);
     expect(accepted.setFlags, contains('draconianMet'));
     expect(offer.choose(1).outcome.recruits, isEmpty);
     expect(offer.choose(1).outcome.setFlags, isNot(contains('draconianMet')));

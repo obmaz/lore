@@ -614,7 +614,12 @@ class LoreSpecProcedures {
           prompt: '',
           options: [
             ScriptOption('좋소, 같이 모험을 합시다', [
-              ScriptStep(kind: 'join', key: 'rigel'),
+              // `if k = 1 then begin dec(y); scroll(TRUE); exit; end`.
+              ScriptStep(
+                kind: 'join',
+                key: 'rigel',
+                cancelSteps: [ScriptStep(kind: 'nudge', nudgeDy: -1)],
+              ),
               ScriptStep(kind: 'flag', key: 'rigelJoined'),
               ScriptStep(kind: 'flag', key: 'etc31_bit2'),
             ]),
@@ -1209,7 +1214,12 @@ class LoreSpecProcedures {
             prompt: '',
             options: [
               ScriptOption('당신의 제의을 받아 들이겠소', [
-                ScriptStep(kind: 'join', key: 'red_antares'),
+                // `if k = 1 then begin asyouwish; exit; end`.
+                ScriptStep(
+                  kind: 'join',
+                  key: 'red_antares',
+                  cancelSteps: [ScriptStep(kind: 'say', text: '당신이 바란다면 ...')],
+                ),
                 ScriptStep(kind: 'flag', key: 'redAntaresJoined'),
                 ScriptStep(kind: 'flag', key: 'etc38_bit2'),
               ]),

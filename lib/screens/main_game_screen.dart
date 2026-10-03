@@ -53,6 +53,7 @@ import '../game/lore_dungeon_event_manager.dart';
 import '../logic/lore_menu_text.dart';
 import '../widgets/ending_view.dart';
 import '../widgets/game_over_view.dart';
+import '../widgets/lore_select_view.dart';
 
 enum GameScreenMode { field, encounter, battle, gameOver, ending }
 
@@ -778,7 +779,25 @@ class _MainGameScreenState extends State<MainGameScreen> {
       final joined = await _requestJoinSlot(
         PendingRecruit(member, forcedSlotOption: recruit.slot),
       );
-      if (!joined) return false;
+      if (!joined) {
+        // `if k = 1 then ... exit`: the arm's own refusal steps, then nothing.
+        if (recruit.cancelSteps.isNotEmpty && mounted) {
+          await _driveScript(
+            _scripts.startProcedure(
+              LoreScript(
+                id: 'join-refused-${recruit.key}',
+                trigger: 'step',
+                map: _game.currentMapId,
+                once: false,
+                require: const ScriptRequire(),
+                steps: recruit.cancelSteps,
+              ),
+              _scriptContext(),
+            ),
+          );
+        }
+        return false;
+      }
       final flag = recruitFlagByKey[recruit.key];
       if (flag != null && deferredRecruitFlags.contains(flag)) {
         LoreDialogueManager.instance.setFlag(flag);
@@ -1031,59 +1050,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
       return true;
     }
 
-    final labels = LoreJoin.joinMenuLabels(_party);
-    final option = await showDialog<int>(
-      context: context,
-      barrierDismissible: false,
-      builder: (ctx) => _EscapeCancels(
-        onEscape: () => Navigator.of(ctx).pop(-1),
-        child: AlertDialog(
-          backgroundColor: RetroTheme.black,
-          shape: Border.all(color: RetroTheme.lightCyan, width: 2),
-          title: Text(
-            LoreJoin.joinMenuPrompt,
-            style: RetroTheme.dosFont.copyWith(
-              color: RetroTheme.yellow,
-              fontSize: 12,
-            ),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (var i = 0; i < labels.length; i++)
-                ListTile(
-                  dense: true,
-                  title: Text(
-                    '${i + 2}번 ${labels[i]}',
-                    style: RetroTheme.dosFont.copyWith(
-                      color: RetroTheme.white,
-                      fontSize: 12,
-                    ),
-                  ),
-                  onTap: () => Navigator.of(ctx).pop(i),
-                ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              key: const ValueKey('dialog-cancel'),
-              onPressed: () => Navigator.of(ctx).pop(-1),
-              icon: const Icon(
-                Icons.close,
-                size: 16,
-                color: RetroTheme.lightRed,
-              ),
-            ),
-          ],
-        ),
-      ),
+    // LORESUB `ReturnJoinMember := select(80,5,5,FALSE,TRUE) + 1`: m[1..5] are
+    // player[2..6].name (m[5] '보조 일원으로 둠' when empty); 1 (Esc) refuses.
+    final k = await showLoreSelectDialog(
+      context,
+      title: LoreJoin.joinMenuPrompt,
+      items: LoreJoin.joinMenuLabels(_party),
     );
-
-    if (option == null || option < 0) {
-      _addLog(LoreJoin.joinCancelled);
-      return false;
-    }
-
+    if (!mounted || k == 0) return false;
+    final option = k - 1;
     setState(() => LoreJoin.applyJoin(_party, recruit, option));
     return true;
   }

@@ -135,6 +135,9 @@ void main() {
       final fled = rigel.cancel();
       expect(fled.outcome.nudges.single.dy, -1);
       expect(fled.outcome.setFlags, isEmpty);
+      // ReturnJoinMember = 1 (Esc): `dec(y); scroll(TRUE); exit`.
+      final refused = rigel.choose(0).outcome.recruits.single.cancelSteps;
+      expect(refused.map((s) => (s.kind, s.nudgeDy)), [('nudge', -1)]);
       for (var b = 0; b < 256; b++) {
         final run = LoreSpecProcedures.map12(
           12,

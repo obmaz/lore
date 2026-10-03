@@ -255,8 +255,7 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     이동(`y1=1`)이 아닐 때만, 봉인/함정은 raw etc[14] < 2, Rigel은 raw etc[31]
     bit2, 절벽은 raw etc[4] = 0으로 판정한다. 봉인의 원본에 없는 once·
     `goldenSealFound` 판정을 없앴고 Rigel 메뉴 Escape는 y-1을 적용한다.
-    합류 슬롯 선택을 거절할 때의 원본 y-1은 기존 합류 대화상자가 처리하지
-    않아 남은 차이로 기록한다.
+    합류 슬롯 선택을 거절할 때의 원본 y-1은 38번에서 옮겼다.
     y=71 출구도 정확한 경계(맵 8 (39,7), 거절 시 y 감소)다.
 22. 맵 13(DEN4, LORESPEC:669-813)의 피라미드는 영역 안의 어느 특수 칸에서든
     52→44, 40/51→42를 쓴 뒤 x=81, 이어서 y=77까지 한 칸씩 원본 방향으로
@@ -462,7 +461,13 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
 
 다음 묶음은 GameOver 불러오기 뒤 이어지는 LORESPEC 분기, LOREMENU 시전·초감각·옵션 화면의
 선택 메뉴 흐름 정리와 이식 전체의 DOS 실행 대조이다.
-합류 슬롯 거절 시 위치(맵 12) 같은 남은 차이도 최종 게이트에 남아 있다.
+38. LORESUB `ReturnJoinMember`(`select(80,5,5,FALSE,TRUE) + 1`)를 원본 `Select` 창으로 바꿨다.
+    제목 `교체 시킬 인물은 누구입니까 ?`, 항목은 player[2..6]의 이름(빈 6번은 `보조 일원으로 둠`)이며
+    예전의 `N번` 접두는 원본에 없어 없앴다. 거절(Esc, k = 1)은 호출한 곳마다 다르다: 맵 12 Rigel은
+    `dec(y); scroll(TRUE); exit`, 맵 17 Red Antares는 `asyouwish; exit`, Spica·Polaris·Lore Hunter는
+    그냥 `exit`이다. 예전에는 모든 거절에 `당신이 바란다면 ...`을 출력하고 Rigel의 y-1이 없었다.
+    `join` 스텝의 `cancelSteps`가 거절 뒤 코드를 맡는다. 공용 `showLoreSelectDialog`는 닫기 아이콘을
+    Esc와 같은 터치 입력으로 둔다.
 
 ## 최근 검증 (2026-10-02)
 

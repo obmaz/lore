@@ -84,6 +84,17 @@ void main() {
           expect(offer.choiceTexts, ['당신의 제의을 받아 들이겠소', '당신이 전해준 마법만으로도 족하오']);
           expect(offer.outcome.messages, isEmpty);
           expect(offer.choose(0).outcome.recruits.single.key, 'red_antares');
+          // ReturnJoinMember = 1 (Esc): `asyouwish; exit`.
+          expect(
+            offer
+                .choose(0)
+                .outcome
+                .recruits
+                .single
+                .cancelSteps
+                .map((s) => s.text),
+            ['당신이 바란다면 ...'],
+          );
           expect(offer.choose(0).outcome.setFlags, contains('etc38_bit2'));
           expect(offer.choose(1).outcome.setFlags, isEmpty);
           expect(offer.choose(1).outcome.messages, ['당신이 바란다면 ...']);

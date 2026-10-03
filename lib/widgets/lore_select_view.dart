@@ -3,6 +3,52 @@ import 'package:flutter/services.dart';
 
 import '../theme/retro_theme.dart';
 
+/// [LoreSelectView] in a dialog: the `Select` result, 0 for Esc. The close
+/// icon is the touch equivalent of Esc.
+Future<int> showLoreSelectDialog(
+  BuildContext context, {
+  required String title,
+  required List<String> items,
+  int? maxsum,
+}) async {
+  final k = await showDialog<int>(
+    context: context,
+    barrierDismissible: false,
+    builder: (ctx) => Dialog(
+      backgroundColor: RetroTheme.black,
+      shape: Border.all(color: RetroTheme.lightCyan, width: 2),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 8, 8, 16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            IconButton(
+              key: const ValueKey('dialog-cancel'),
+              onPressed: () => Navigator.of(ctx).pop(0),
+              icon: const Icon(
+                Icons.close,
+                size: 16,
+                color: RetroTheme.lightRed,
+              ),
+            ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: LoreSelectView(
+                title: title,
+                items: items,
+                maxsum: maxsum,
+                onSelected: (k) => Navigator.of(ctx).pop(k),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+  return k ?? 0;
+}
+
 /// `LORESUB.PAS` `Select(yinit, maxsum, total, clean, lastclean)` 의 화면 어댑터.
 ///
 /// `m[0]`([title])은 색 12, `m[1..total]`([items]) 중 처음 [maxsum]개만 고를 수

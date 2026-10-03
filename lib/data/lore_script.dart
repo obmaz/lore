@@ -540,7 +540,10 @@ class ScriptOutcome {
   final int foodDelta;
   final List<String> setFlags;
   final List<({int index, int value})> sourceEtcWrites;
-  final List<({String key, int? slot})> recruits;
+
+  /// `join` steps; [cancelSteps] run when `ReturnJoinMember` is refused
+  /// (Esc, k = 1), after which the source `exit`s.
+  final List<({String key, int? slot, List<ScriptStep> cancelSteps})> recruits;
   final List<int> battleMonsters;
   final int battleCount;
   final bool battleMirrorParty;
@@ -1166,7 +1169,10 @@ class LoreScriptEngine {
     var sourceEtcWrites = List<({int index, int value})>.from(
       acc.sourceEtcWrites,
     );
-    var recruits = List<({String key, int? slot})>.from(acc.recruits);
+    var recruits =
+        List<({String key, int? slot, List<ScriptStep> cancelSteps})>.from(
+          acc.recruits,
+        );
     var monsters = List<int>.from(acc.battleMonsters);
     var battleCount = acc.battleCount;
     var battleMirrorParty = acc.battleMirrorParty;
@@ -1331,7 +1337,11 @@ class LoreScriptEngine {
           ));
           break;
         case 'join':
-          recruits.add((key: step.key!, slot: step.slot));
+          recruits.add((
+            key: step.key!,
+            slot: step.slot,
+            cancelSteps: step.cancelSteps,
+          ));
           break;
         case 'battle':
           monsters = List<int>.from(step.monsters ?? const []);
