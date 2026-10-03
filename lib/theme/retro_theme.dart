@@ -21,6 +21,28 @@ class RetroTheme {
   static const Color yellow = Color(0xFFFFFF55);
   static const Color white = Color(0xFFFFFFFF);
 
+  /// BGI `SetColor(n)` 의 16색 순서(0 = 검정 ... 15 = 흰색).
+  static const List<Color> egaPalette = [
+    black,
+    blue,
+    green,
+    cyan,
+    red,
+    magenta,
+    brown,
+    lightGray,
+    darkGray,
+    lightBlue,
+    lightGreen,
+    lightCyan,
+    lightRed,
+    lightMagenta,
+    yellow,
+    white,
+  ];
+
+  static Color ega(int index) => egaPalette[index & 15];
+
   // Backgrounds & Borders
   static const Color background = Color(0xFF000010);
   static const Color viewportBg = Color(0xFF050515);

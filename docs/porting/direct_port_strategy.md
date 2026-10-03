@@ -417,7 +417,27 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     행동 뒤 `Print(7,'')` 빈 줄이 없고, 대상 선택은 `SelectEnemy`(1번부터, 죽은 적도 선택 가능,
     취소 불가) 대신 살아 있는 적만 누르는 화면이며 첫 대상이 죽었으면 살아 있는 첫 적을 미리 고른다.
 
-다음 묶음은 LOREMENU 시전·초감각·옵션 화면의 선택 메뉴 흐름 정리와 이식 전체의 DOS 실행 대조이다.
+36. LORESUB `GameOver`/`DetectGameOver`를 옮겼다(`lib/logic/lore_game_over.dart`, 화면은
+    `GameOverView`, 선택은 원본 `Select` 어댑터 `LoreSelectView`). 예전 화면(아이콘,
+    `G A M E   O V E R`, 전멸·패배 문구 동시 표시, `재개`가 새 게임 시작)은 원본에 없어서 없앴다.
+    `etc[6] = 255`(이동·늪·용암의 `DetectGameOver`)는 `일행은 모험중에 모두 목숨을 잃었다.` →
+    `아무키나 누르십시오 ...` → 불러올 게임 선택(`없습니다`/본 게임/게임 데이타 1~3)이고, 불러오지
+    않으면 `정말로 끝내겠습니까 ?`로 내려가 `<< 아니오 >>`면 그대로 돌아간다(다음 걸음에 다시
+    `DetectGameOver`). `etc[6] = 1`(전투 패배)은 패배 문구 → 재개/끝냄 → 불러오기이며 불러오면
+    `etc[6] := 255`, 아니면 `Halt`. 불러오기 번호는 `LoadNo := chr(k+47)`(k=2가 본 게임)이다.
+    `Move_Mode`/`enter_swamp`/`enter_lava`는 GameOver가 끝날 때까지 기다린 뒤 독심 감소와
+    적 출현 판정을 불러온 상태(`etc[5]`, `etc[7]`)로 이어 간다. 전투 패배의 이어지는 절차
+    (`battleDefeatSteps`)도 불러온 뒤에 실행한다. `Halt`는 원본 텍스트 화면 문구
+    (`Feel your RPG imagination !!`의 RGB 밝기 순서, 또는 `Load` 실패 때
+    `"partyN.dat" not found.`/`You need to CREATE CHARACTER.`)를 보인 뒤 앱을 닫는다
+    (`SystemNavigator.pop`; 웹은 탭을 닫을 수 없어 화면이 남는다). 음악은 `Halt`에서만 끈다.
+    `PressAnyKey` 문구를 원본 `아무키나 누르십시오 ...`로 고쳤다. 남은 차이: 화면 좌표·폰트·
+    지우기(`Clear`) 영역은 뷰포트 어댑터이고, 터치로 항목을 누르면 바로 고른다. LORESPEC 몇
+    분기(맵 20 미노타우로스, 맵 22 등)의 전투 뒤 `etc[6]` 확인 없는 코드는 아직 불러온 상태에
+    이어 실행하지 않는다(다음 단계).
+
+다음 묶음은 GameOver 불러오기 뒤 이어지는 LORESPEC 분기, LOREMENU 시전·초감각·옵션 화면의
+선택 메뉴 흐름 정리와 이식 전체의 DOS 실행 대조이다.
 합류 슬롯 거절 시 위치(맵 12) 같은 남은 차이도 최종 게이트에 남아 있다.
 
 ## 최근 검증 (2026-10-02)

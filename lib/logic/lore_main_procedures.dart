@@ -54,29 +54,43 @@ class LoreMainProcedures {
 
   /// `LOREMAIN.PAS:113-141`. Callbacks represent the original display,
   /// game-over, and battle boundaries; all conditions and mutations stay here.
-  static void moveMode({
+  ///
+  /// `DetectGameOver` blocks until `GameOver` returns (a reload or `<< 아니오 >>`),
+  /// so the mind-read and encounter steps read the state after it.
+  static Future<void> moveMode({
     required List<PartyMember> party,
     required void Function() scrollToParty,
     required void Function() displayHealthAndCondition,
-    required void Function() gameOver,
+    required Future<void> Function() gameOver,
     required int Function() mindReadSteps,
     required void Function(int steps) setMindReadSteps,
-    required int encounterFrequency,
+    required int Function() encounterFrequency,
     required int Function(int exclusiveUpperBound) random,
     required void Function() encounterEnemy,
-  }) {
+  }) async {
     scrollToParty();
     final affected = advancePoison(party);
     if (affected > 0) displayHealthAndCondition();
-    if (!party.take(6).any((member) => member.isBattleActive)) gameOver();
+    await detectGameOver(party, gameOver);
     final mindRead = mindReadSteps();
     if (mindRead > 0) setMindReadSteps(mindRead - 1);
-    if (random(encounterFrequency * 20) == 0) encounterEnemy();
+    if (random(encounterFrequency() * 20) == 0) encounterEnemy();
+  }
+
+  /// `LORESUB.PAS:547-556` `DetectGameOver` (the caller's [gameOver] sets
+  /// `party.etc[6] := 255` before running `GameOver`).
+  static Future<void> detectGameOver(
+    List<PartyMember> party,
+    Future<void> Function() gameOver,
+  ) async {
+    if (!party.take(6).any((member) => member.isBattleActive)) {
+      await gameOver();
+    }
   }
 
   /// `LOREMAIN.PAS:29-75`. The six-slot poison roll is performed only after
   /// poison progression and only when swamp-walk has expired.
-  static void enterSwamp({
+  static Future<void> enterSwamp({
     required List<PartyMember> party,
     required void Function() scrollToParty,
     required int Function() swampWalkSteps,
@@ -86,8 +100,8 @@ class LoreMainProcedures {
     required void Function(PartyMember member) showPoisonMessage,
     required void Function() displayCondition,
     required void Function() displayHealthAndCondition,
-    required void Function() gameOver,
-  }) {
+    required Future<void> Function() gameOver,
+  }) async {
     scrollToParty();
     final affected = advancePoison(party);
     final steps = swampWalkSteps();
@@ -107,20 +121,20 @@ class LoreMainProcedures {
       displayCondition();
     }
     if (affected > 0) displayHealthAndCondition();
-    if (!party.take(6).any((member) => member.isBattleActive)) gameOver();
+    await detectGameOver(party, gameOver);
   }
 
   /// `LOREMAIN.PAS:77-111`. Rolls damage for all six slots before showing
   /// messages and applying any damage, including damage to empty slots.
-  static void enterLava({
+  static Future<void> enterLava({
     required List<PartyMember> party,
     required Random random,
     required void Function() scrollToParty,
     required void Function() showLavaWarning,
     required void Function(PartyMember member, int damage) showDamage,
     required void Function() displayCondition,
-    required void Function() gameOver,
-  }) {
+    required Future<void> Function() gameOver,
+  }) async {
     scrollToParty();
     final slots = party.take(6).toList();
     final damages = LoreLavaLogic.rollDamages(slots, random);
@@ -132,7 +146,7 @@ class LoreMainProcedures {
       LoreLavaLogic.applyDamage(slots[i], damages[i]);
     }
     displayCondition();
-    if (!party.take(6).any((member) => member.isBattleActive)) gameOver();
+    await detectGameOver(party, gameOver);
   }
 
   /// `LOREMAIN.PAS:19-27`, including the no-spell `originposition` branch.

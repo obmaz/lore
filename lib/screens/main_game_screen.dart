@@ -25,6 +25,7 @@ import '../logic/script_equip_reducer.dart';
 import '../logic/script_party_reducer.dart';
 import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
+import '../logic/lore_game_over.dart';
 import '../logic/lore_main_procedures.dart';
 import '../logic/lore_source_memory.dart';
 import '../logic/lore_ent_procedures.dart';
@@ -50,6 +51,7 @@ import '../game/lore_dialogue_manager.dart';
 import '../game/lore_dungeon_event_manager.dart';
 import '../logic/lore_menu_text.dart';
 import '../widgets/ending_view.dart';
+import '../widgets/game_over_view.dart';
 
 enum GameScreenMode { field, encounter, battle, gameOver, ending }
 
@@ -61,11 +63,15 @@ class MainGameScreen extends StatefulWidget {
   /// 필드·위험 지형·몬스터 편성·전투가 공유하는 난수원.
   final Random? encounterRandom;
 
+  /// `Halt` 뒤 호출(기본값은 `SystemNavigator.pop`; 테스트용 주입).
+  final VoidCallback? onHalt;
+
   const MainGameScreen({
     super.key,
     this.initialParty,
     this.initialSaveData,
     this.encounterRandom,
+    this.onHalt,
   });
 
   @override
@@ -118,6 +124,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
+
+  // GameOver 상태 (`party.etc[6]` 갈래, 진행 중인 화면, `Halt`)
+  int _gameOverEtc6 = 255;
+  int _gameOverSerial = 0;
+  Completer<LoreGameOverResult>? _gameOverDone;
+  LoreGameOverResult? _halt;
 
   final FocusNode _focusNode = FocusNode();
 
@@ -225,23 +237,24 @@ class _MainGameScreenState extends State<MainGameScreen> {
       onHazardTile: (cat) => _handleHazardTile(cat),
       onPoisonTick: _advancePoison,
       onMoveMode: () {
-        LoreMainProcedures.moveMode(
-          party: _party,
-          scrollToParty: _game.clearPeek,
-          displayHealthAndCondition: () {
-            setState(() {});
-          },
-          gameOver: () =>
-              setState(() => _currentMode = GameScreenMode.gameOver),
-          mindReadSteps: () => _mindReadCount,
-          setMindReadSteps: (steps) => setState(() => _mindReadCount = steps),
-          encounterFrequency: _encounterFrequency,
-          random: _sessionRandom.nextInt,
-          encounterEnemy: () {
-            if (LoreEncounterLogic.pools.containsKey(_game.currentMapId)) {
-              _startBattle();
-            }
-          },
+        unawaited(
+          LoreMainProcedures.moveMode(
+            party: _party,
+            scrollToParty: _game.clearPeek,
+            displayHealthAndCondition: () {
+              setState(() {});
+            },
+            gameOver: _detectedGameOver,
+            mindReadSteps: () => _mindReadCount,
+            setMindReadSteps: (steps) => setState(() => _mindReadCount = steps),
+            encounterFrequency: () => _encounterFrequency,
+            random: _sessionRandom.nextInt,
+            encounterEnemy: () {
+              if (LoreEncounterLogic.pools.containsKey(_game.currentMapId)) {
+                _startBattle();
+              }
+            },
+          ),
         );
       },
       onMindReadTick: () {
@@ -1066,34 +1079,38 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _handleHazardTile(TileCategory cat) {
     if (cat == TileCategory.swamp) {
-      LoreMainProcedures.enterSwamp(
-        party: _party,
-        scrollToParty: _game.clearPeek,
-        swampWalkSteps: () => _swampWalkSteps,
-        setSwampWalkSteps: (steps) {
-          setState(() => _swampWalkSteps = steps);
-        },
-        random: _sessionRandom,
-        showSwampWarning: () => _addLog('일행은 독이 있는 늪에 들어갔다 !!!'),
-        showPoisonMessage: (member) {
-          _addLog('${member.name}는 중독 되었다.');
-        },
-        displayCondition: () => setState(() {}),
-        displayHealthAndCondition: () {
-          setState(() {});
-        },
-        gameOver: () => setState(() => _currentMode = GameScreenMode.gameOver),
+      unawaited(
+        LoreMainProcedures.enterSwamp(
+          party: _party,
+          scrollToParty: _game.clearPeek,
+          swampWalkSteps: () => _swampWalkSteps,
+          setSwampWalkSteps: (steps) {
+            setState(() => _swampWalkSteps = steps);
+          },
+          random: _sessionRandom,
+          showSwampWarning: () => _addLog('일행은 독이 있는 늪에 들어갔다 !!!'),
+          showPoisonMessage: (member) {
+            _addLog('${member.name}는 중독 되었다.');
+          },
+          displayCondition: () => setState(() {}),
+          displayHealthAndCondition: () {
+            setState(() {});
+          },
+          gameOver: _detectedGameOver,
+        ),
       );
     } else if (cat == TileCategory.lava) {
-      LoreMainProcedures.enterLava(
-        party: _party,
-        random: _sessionRandom,
-        scrollToParty: _game.clearPeek,
-        showLavaWarning: () => _addLog('일행은 용암지대로 들어섰다 !!!'),
-        showDamage: (member, damage) =>
-            _addLog('${member.name}는 $damage의 피해를 입었다 !'),
-        displayCondition: () => setState(() {}),
-        gameOver: () => setState(() => _currentMode = GameScreenMode.gameOver),
+      unawaited(
+        LoreMainProcedures.enterLava(
+          party: _party,
+          random: _sessionRandom,
+          scrollToParty: _game.clearPeek,
+          showLavaWarning: () => _addLog('일행은 용암지대로 들어섰다 !!!'),
+          showDamage: (member, damage) =>
+              _addLog('${member.name}는 $damage의 피해를 입었다 !'),
+          displayCondition: () => setState(() {}),
+          gameOver: _detectedGameOver,
+        ),
       );
     }
   }
@@ -1262,22 +1279,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
         mapTilesProvider: () => _game.currentMap?.tileSnapshot() ?? [],
         consumedScriptsProvider: () => _scripts.consumedScripts.toList(),
         onSaveDataLoaded: (save) async {
-          setState(() {
-            _scripts.consumedScripts
-              ..clear()
-              ..addAll(save.consumedScripts);
-            _party = List.from(save.party);
-            _partyGold = save.gold;
-            _partyFood = save.food;
-          });
-          await _game.loadMapById(
-            save.mapId,
-            startX: save.playerX,
-            startY: save.playerY,
-            mapTiles: save.mapTiles,
-          );
+          await _applyLoadedSave(save);
           if (!mounted) return;
-          setState(() {});
           _addLog(LoreSubText.loadingGame);
         },
         onLog: (msg) => _addLog(msg),
@@ -1508,7 +1511,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
   }
 
-  /// 전투 패배 -> 게임 오버
+  /// `BattleMode` 패배: `1 : begin GameOver; exit; end` (`party.etc[6] = 1`).
+  /// 불러오기로 돌아온 경우에만 호출한 절차의 나머지(전투 뒤 코드)가 불러온
+  /// 게임 위에서 이어진다. 그렇지 않으면 `GameOver` 가 `Halt` 로 끝난다.
   Future<void> _onBattleDefeat() async {
     final session = ScriptBattleSession.resolve(
       before: _battleProgressState(),
@@ -1522,14 +1527,70 @@ class _MainGameScreenState extends State<MainGameScreen> {
     _pendingVictoryFlags.clear();
     _pendingPortalTransition = null;
     _applyBattleProgress(session.progress);
+    final result = await _runGameOver(1);
+    if (!mounted || result.end != LoreGameOverEnd.reloaded) return;
     if (session.continuation case final continuation?) {
       await _applyScriptOutcome(continuation, since: session.appliedOutcome);
-      if (!mounted) return;
     }
-    AudioManager.instance.stopBgm();
+  }
+
+  /// `DetectGameOver`: `party.etc[6] := 255; gameover`.
+  Future<void> _detectedGameOver() async {
+    LoreDialogueManager.instance.setBattleResult(255);
+    await _runGameOver(255);
+  }
+
+  /// `LORESUB.PAS` `GameOver`. 뷰포트에서 진행하고, 불러오기나 `<< 아니오 >>` 로
+  /// 돌아오면 필드로, `Halt` 면 종료 화면으로 바꾼다.
+  Future<LoreGameOverResult> _runGameOver(int etc6) async {
+    final done = Completer<LoreGameOverResult>();
     setState(() {
+      _gameOverEtc6 = etc6;
+      _gameOverSerial++;
+      _gameOverDone = done;
       _currentMode = GameScreenMode.gameOver;
     });
+    final result = await done.future;
+    if (!mounted) return result;
+    if (result.end == LoreGameOverEnd.halted) {
+      AudioManager.instance.stopBgm(); // `if AdLibOn then PlayOff`
+      setState(() => _halt = result);
+      return result;
+    }
+    if (result.etc6 case final etc6?) {
+      LoreDialogueManager.instance.setBattleResult(etc6);
+    }
+    setState(() => _currentMode = GameScreenMode.field);
+    _reclaimFocus();
+    return result;
+  }
+
+  /// `LoadNo := chr(k+47); Load` — 저장이 없으면 false (`ErrorMessage`).
+  Future<bool> _loadSaveSlot(int slot) async {
+    final save = await SaveManager.instance.loadGame(slot);
+    if (save == null || !mounted) return false;
+    LoreDialogueManager.instance.loadFlags(save.flags, fieldCounters: save.etc);
+    await _applyLoadedSave(save);
+    return true;
+  }
+
+  /// 불러온 저장 자료를 화면 상태와 지도에 반영한다.
+  Future<void> _applyLoadedSave(SaveData save) async {
+    setState(() {
+      _scripts.consumedScripts
+        ..clear()
+        ..addAll(save.consumedScripts);
+      _party = List.from(save.party);
+      _partyGold = save.gold;
+      _partyFood = save.food;
+    });
+    await _game.loadMapById(
+      save.mapId,
+      startX: save.playerX,
+      startY: save.playerY,
+      mapTiles: save.mapTiles,
+    );
+    if (mounted) setState(() {});
   }
 
   void _restartGame() {
@@ -1728,67 +1789,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
         );
 
       case GameScreenMode.gameOver:
-        return Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.dangerous_outlined,
-                size: 54,
-                color: RetroTheme.lightRed,
-              ),
-              const SizedBox(height: 12),
-              Text(
-                'G A M E   O V E R',
-                style: RetroTheme.headerFont.copyWith(
-                  color: RetroTheme.lightRed,
-                  fontSize: 20,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                '일행은 모험중에 모두 목숨을 잃었다.',
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.white,
-                  fontSize: 13,
-                ),
-              ),
-              const SizedBox(height: 4),
-              // 원작 LORESUB.PAS:480 전투 패배 시 선택
-              Text(
-                LoreSubText.battleLost,
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.lightRed,
-                  fontSize: 13,
-                ),
-              ),
-              Text(
-                LoreSubText.battleLostAsk,
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.yellow,
-                  fontSize: 13,
-                ),
-              ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: RetroTheme.blue,
-                  foregroundColor: RetroTheme.white,
-                ),
-                onPressed: _restartGame,
-                child: Text(LoreSubText.resumeGame, style: RetroTheme.dosFont),
-              ),
-              const SizedBox(height: 8),
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  side: const BorderSide(color: RetroTheme.lightRed),
-                  foregroundColor: RetroTheme.lightRed,
-                ),
-                onPressed: () => SystemNavigator.pop(),
-                child: Text(LoreSubText.endGame, style: RetroTheme.dosFont),
-              ),
-            ],
-          ),
+        return GameOverView(
+          key: ValueKey('game-over-$_gameOverSerial'),
+          etc6: _gameOverEtc6,
+          load: _loadSaveSlot,
+          onFinished: (result) {
+            final done = _gameOverDone;
+            if (done != null && !done.isCompleted) done.complete(result);
+          },
         );
       case GameScreenMode.ending:
         return const SizedBox.shrink();
@@ -1822,6 +1830,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
       return Scaffold(
         backgroundColor: RetroTheme.black,
         body: EndingView(heroName: _party.first.name, onFinish: _restartGame),
+      );
+    }
+    if (_halt case final halt?) {
+      return Scaffold(
+        backgroundColor: RetroTheme.black,
+        body: HaltView(missingSlot: halt.missingSlot, onHalt: widget.onHalt),
       );
     }
     return KeyboardListener(

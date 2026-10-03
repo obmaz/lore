@@ -8,8 +8,8 @@ library;
 class LoreSubText {
   const LoreSubText._();
 
-  /// 원작 `PressAnyKey` 대기 안내.
-  static const String pressAnyKey = '아무 키나 누르십시오...';
+  /// 원작 `PressAnyKey` 대기 안내 (`LORESUB.PAS:209`).
+  static const String pressAnyKey = '아무키나 누르십시오 ...';
 
   /// 원작 `LORESUB.PAS:452` - 전멸(party.etc[6] = 255) 시.
   static const String allDead = '일행은 모험중에 모두 목숨을 잃었다.';
