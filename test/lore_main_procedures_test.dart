@@ -26,6 +26,8 @@ class _SequenceRandom implements Random {
   double nextDouble() => 0;
 }
 
+/// LOREMAIN.PAS field procedures (Main, Move_Mode, enter_swamp, enter_lava,
+/// enter_water) and LORESUB.PAS `DetectGameOver`.
 void main() {
   test(
     'Main redispatches the current tile after every original field menu',
