@@ -347,7 +347,10 @@ def port_rule_sources():
         "lib/logic/lore_lava_logic.dart",
         "lib/logic/lore_swamp_logic.dart",
         "lib/screens/main_game_screen.dart",
-        "lib/widgets/field_menu_dialog.dart",
+        "lib/logic/lore_game_option.dart",
+        "lib/logic/lore_cast_spell.dart",
+        "lib/logic/lore_view_procedures.dart",
+        "lib/widgets/lore_select_view.dart",
         "lib/widgets/script_scene_dialog.dart",
         "docs/audits/contract_evidence.json",
     )]

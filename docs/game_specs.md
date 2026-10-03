@@ -459,7 +459,7 @@ $$\text{Gold} = \sum_{\text{enemy slot}} \left( \text{enemydata}[E\_number].\tex
 | `LORESUB.PAS:986/999/1012` 성문 확인·금화 발견·공통 메시지 | `lib/logic/lore_field_logic.dart` | `step6_field_prompts_test.dart` |
 | `LORESUB.PAS:1042/1144` 동료 영입(join) 및 슬롯 선택 | `lib/logic/lore_join.dart` | `step3/step6` |
 | `LOREBATT.PAS` 전투 전 공식 + 특수 마법 해금 게이트 | `lib/logic/lore_battle.dart`, `battle_viewport_view.dart` | `lore_battle_test.dart` |
-| `LOREMENU.PAS` 필드 메뉴/휴식/게임 옵션 + 핫키 | `lib/widgets/field_menu_dialog.dart`, `lib/logic/field_hotkeys.dart` | `keyboard_input_test.dart` |
+| `LOREMENU.PAS` SelectMode/ViewParty/ViewCharacter/QuickView/CastSpell/Rest/GameOption + 핫키 | `lib/logic/lore_game_option.dart`, `lib/logic/lore_cast_spell.dart`, `lib/logic/lore_view_procedures.dart`, `lib/logic/town_logic.dart`, `lib/widgets/lore_select_view.dart`, `lib/logic/field_hotkeys.dart` | `keyboard_input_test.dart`, `lore_game_option_test.dart`, `lore_cast_spell_test.dart`, `lore_view_procedures_test.dart` |
 | `LOREMAIN.PAS` 이동/지형 위험(늪·용암·물) | `lib/game/lore_game.dart` | `field_test.dart`, `step1_...` |
 | `LORESPEC.PAS` 보스/봉인/식량나무/금화 좌표/동료 6명 | `lib/game/lore_dungeon_event_manager.dart`, `lore_dialogue_manager.dart` | `step3/step6` |
 | `LORETALK.PAS` 4대 마을 NPC/영주 퀘스트 | `lib/game/lore_dialogue_manager.dart`, `town_dialog.dart` | `step3` |
