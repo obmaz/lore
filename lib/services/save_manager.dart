@@ -149,6 +149,40 @@ class SaveManager {
     }
   }
 
+  /// LORECRET.PAS `Last`: the new party starts in map 6 (51,31) with food 20,
+  /// gold 2000 and `etc[1..100] := 0`, and is written to all four slots
+  /// (`party1..4.dat`, `player1..4.dat`; `Save1..4.map` are erased, so the
+  /// original maps load). The JSON is built before the first await so later
+  /// play cannot change what is written.
+  Future<void> writeNewGame(
+    List<PartyMember> party, {
+    required String mapTitle,
+  }) async {
+    final now = DateTime.now();
+    final encoded = [
+      for (var slot = 1; slot <= 4; slot++)
+        jsonEncode(
+          SaveData(
+            slot: slot,
+            slotName: slotNames[slot - 1],
+            timestamp: now,
+            mapId: 6,
+            mapTitle: mapTitle,
+            playerX: 51,
+            playerY: 31,
+            gold: 2000,
+            food: 20,
+            party: party,
+            flags: const {},
+          ).toJson(),
+        ),
+    ];
+    final prefs = await SharedPreferences.getInstance();
+    for (var slot = 1; slot <= 4; slot++) {
+      await prefs.setString(_keyForSlot(slot), encoded[slot - 1]);
+    }
+  }
+
   /// 저장 데이터 존재 여부 확인
   Future<bool> hasSave(int slot) async {
     final prefs = await SharedPreferences.getInstance();

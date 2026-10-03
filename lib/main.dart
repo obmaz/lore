@@ -55,6 +55,16 @@ class _LoreAppState extends State<LoreApp> {
       home: _party == null && _initialSaveData == null
           ? CharacterCreationScreen(
               onGameStart: (party) {
+                // LORECRET.PAS `Last` writes the new party to all four slots
+                // before the game starts; storage errors do not stop the game.
+                unawaited(
+                  SaveManager.instance
+                      .writeNewGame(
+                        party,
+                        mapTitle: LoreWorldManager.mapRegistry[6]?.title ?? '',
+                      )
+                      .then((_) {}, onError: (Object _) {}),
+                );
                 setState(() => _party = party);
               },
               onLoadGame: (saveData) {

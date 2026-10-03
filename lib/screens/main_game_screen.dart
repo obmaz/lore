@@ -162,6 +162,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _scripts.consumedScripts
         ..clear()
         ..addAll(widget.initialSaveData!.consumedScripts);
+      _normalizeLoadedEtc();
     } else {
       LoreDialogueManager.instance.loadFlags({});
       _scripts.consumedScripts.clear();
@@ -185,6 +186,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _encounterFrequency = 2;
       _maxEnemies = 5;
     }
+  }
+
+  /// LORESUB `Load`: `if not (encounter^ in [1..3]) then encounter^ := 2;
+  /// if not (maxenemy^ in [3..7]) then maxenemy^ := 5` (etc[7], etc[8]).
+  void _normalizeLoadedEtc() {
+    if (_encounterFrequency < 1 || _encounterFrequency > 3) {
+      _encounterFrequency = 2;
+    }
+    if (_maxEnemies < 3 || _maxEnemies > 7) _maxEnemies = 5;
   }
 
   void _initGame() {
@@ -1532,6 +1542,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     _pendingVictoryFlags.clear();
     _pendingPortalTransition = null;
     _applyBattleProgress(session.progress);
+    // LOREBATT.PAS:1005 left etc[6] = 1 for GameOver; a reload sets 255.
+    LoreDialogueManager.instance.setBattleResult(1);
     final result = await _runGameOver(1);
     if (!mounted || result.end != LoreGameOverEnd.reloaded) return;
     // BattleMode returns into its caller. Arms without an `etc[6] = 255` check
@@ -1579,7 +1591,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (result.end == LoreGameOverEnd.halted) {
       AudioManager.instance.stopBgm(); // `if AdLibOn then PlayOff`
       setState(() => _halt = result);
-      return result;
+      // `Halt` ends the program: nothing after the caller's GameOver runs.
+      return Completer<LoreGameOverResult>().future;
     }
     if (result.etc6 case final etc6?) {
       LoreDialogueManager.instance.setBattleResult(etc6);
@@ -1607,6 +1620,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _party = List.from(save.party);
       _partyGold = save.gold;
       _partyFood = save.food;
+      _normalizeLoadedEtc();
     });
     await _game.loadMapById(
       save.mapId,

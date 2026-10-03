@@ -346,8 +346,8 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     `모든 사람들에게` / `선택`이다. 행동 직전 메시지는 원본처럼 `ReturnMessage` 결과를
     `how in [0,4,6..8]`일 때만 출력한다(특수 마법·초능력·도망). 무기·일반 마법·치료의
     "~의 무기 공격!" 같은 안내, 승리 문구, SP/ESP 비용·설명·`Lv부족` 표기, `HP:` 접두는
-    없앴다. 승리 때는 `일행은 N개의 금을 얻었다.`, 패배 때는 `일행은 모두 전투에서 패했다 !!`
-    (BattleMode의 etc[6]:=1 뒤 GameOver)만 남긴다. 도망은 `ReturnMessage` how=7 뒤
+    없앴다. 승리 때는 `일행은 N개의 금을 얻었다.`만 남기고, 패배 문구
+    `일행은 모두 전투에서 패했다 !!`는 GameOver(36번)가 출력한다. 도망은 `ReturnMessage` how=7 뒤
     `RunAway`의 `성공적으로 도망을 갔다` / `그러나, 일행은 성공하지 못했다`이고, 잠긴
     특수 마법은 how=4 문장 뒤 `당신에게는 아직 능력이 없다.`로 차례를 쓴다. `ReturnMessage`의 무기 공격 문장은 `Josa`('으')를 빠뜨리고
     있어 `ReturnWeapon`의 규칙(0, 2..4, 6..9)으로 고쳤다. 아직 원본과 다른 구조는
@@ -424,12 +424,22 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     않으면 `정말로 끝내겠습니까 ?`로 내려가 `<< 아니오 >>`면 그대로 돌아간다(다음 걸음에 다시
     `DetectGameOver`). `etc[6] = 1`(전투 패배)은 패배 문구 → 재개/끝냄 → 불러오기이며 불러오면
     `etc[6] := 255`, 아니면 `Halt`. 불러오기 번호는 `LoadNo := chr(k+47)`(k=2가 본 게임)이다.
-    `Move_Mode`/`enter_swamp`/`enter_lava`는 GameOver가 끝날 때까지 기다린 뒤 독심 감소와
-    적 출현 판정을 불러온 상태(`etc[5]`, `etc[7]`)로 이어 간다. 전투 패배의 이어지는 절차
-    (`battleDefeatSteps`)도 불러온 뒤에 실행한다. `Halt`는 원본 텍스트 화면 문구
+    `Move_Mode`/`enter_swamp`/`enter_lava`는 GameOver가 끝날 때까지 기다리고, 그 뒤 코드가
+    있는 `Move_Mode`는 독심 감소와 적 출현 판정을 불러온 상태(`etc[5]`, `etc[7]`)로 이어 간다.
+    전투 중 GameOver 동안 `etc[6]`은 1이고 불러오면 255이다. `Halt`는 원본 텍스트 화면 문구
     (`Feel your RPG imagination !!`의 RGB 밝기 순서, 또는 `Load` 실패 때
     `"partyN.dat" not found.`/`You need to CREATE CHARACTER.`)를 보인 뒤 앱을 닫는다
-    (`SystemNavigator.pop`; 웹은 탭을 닫을 수 없어 화면이 남는다). 음악은 `Halt`에서만 끈다.
+    (`SystemNavigator.pop`; 웹은 탭을 닫을 수 없어 화면이 남는다). `Halt` 뒤에는 호출한 절차의
+    나머지가 실행되지 않는다. 음악은 `Halt`에서만 끈다. 원본은 캐릭터 생성(LORECRET `Last`)이
+    네 슬롯 모두에 새 일행(맵 6 (51,31), 식량 20, 금 2000, etc 0, `SaveN.map` 삭제)을 쓰므로
+    불러오기가 `ErrorMessage`에 닿지 않는다. 이 `Last`를 옮겨 생성 완료(그리고 원본에 없는 빠른
+    시작)에서 네 슬롯을 새 게임으로 덮어쓴다(기존 저장은 원본처럼 지워진다). 이전 버전에서 비어
+    있던 슬롯을 고르면 원본 `ErrorMessage`/`Halt`가 된다. `Load`의 `encounter^`(etc[7]) 1..3 밖이면
+    2, `maxenemy^`(etc[8]) 3..7 밖이면 5 보정도 옮겼다. 키보드 입력은 게임 화면의 키 처리기가
+    포커스를 갖고 있어 선택 창이 포커스를 직접 요청한다. 패배 직전 `EndBattle` 뒤의
+    `c := ReadKey` 키 대기는 아직 없다. LOREMAIN 이동 처리의 `if position = ...` 네 블록은 연속
+    `if`라서 블록 안에서 지도가 바뀌면(입구, GameOver 불러오기) 뒤 순서 위치의 블록이 새 x, y
+    타일을 다시 처리하는데, 이 연쇄는 아직 옮기지 않았다(다음 단계).
     `PressAnyKey` 문구를 원본 `아무키나 누르십시오 ...`로 고쳤다. 남은 차이: 화면 좌표·폰트·
     지우기(`Clear`) 영역은 뷰포트 어댑터이고, 터치로 항목을 누르면 바로 고른다. 전투 뒤
     `etc[6]` 확인 없는 LORESPEC/LOREENT 코드의 이어짐은 37번에서 옮겼다.

@@ -154,7 +154,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     _battleEnded = true;
     _autoRound = false;
     if (code == 1) {
-      widget.onLog(LoreSubText.battleLost);
+      // `1 : begin GameOver; exit; end` — GameOver prints the defeat text.
       widget.onDefeat();
     } else {
       final gold = _battle.plusGold();

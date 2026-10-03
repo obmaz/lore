@@ -13,6 +13,7 @@ import 'package:lore/screens/main_game_screen.dart';
 import 'package:lore/services/save_manager.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
 import 'package:lore/widgets/dpad_widget.dart';
+import 'package:lore/widgets/encounter_viewport_view.dart';
 import 'package:lore/widgets/game_over_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -291,6 +292,68 @@ void main() {
       expect(find.text(LoreGameOver.haltMessage), findsOneWidget);
       await tester.pump(const Duration(seconds: 3));
       expect(halted, 1);
+      // `Halt` ends the program: Move_Mode never reaches its encounter roll
+      // (random 0 would otherwise start an encounter).
+      expect(find.byType(EncounterViewportView), findsNothing);
     });
+
+    testWidgets('the keyboard alone drives PressAnyKey and both selects', (
+      tester,
+    ) async {
+      SharedPreferences.setMockInitialValues({});
+      final dead = PartyMember.createPreset(1)..dead = 1;
+      await open(tester, save([dead]));
+      tester
+          .widget<DPadWidget>(find.byType(DPadWidget))
+          .onDirectionPressed(1, 0);
+      await tester.pump();
+      await tester.pump();
+      await tester.pump();
+      expect(find.text(LoreSubText.allDead), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter); // PressAnyKey
+      await tester.pump();
+      await tester.pump();
+      await tester.pump();
+      expect(find.text(LoreSubText.selectLoadGame), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape); // k = 0
+      await tester.pump();
+      await tester.pump();
+      await tester.pump();
+      expect(find.text(LoreSubText.quitConfirm), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown); // wraps to 1
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter); // << 아니오 >>
+      await tester.pump();
+      await tester.pump();
+      expect(find.byType(GameOverView), findsNothing);
+    });
+
+    testWidgets(
+      'Load normalizes etc[7] to 1..3 (else 2) and etc[8] to 3..7 (else 5)',
+      (tester) async {
+        SharedPreferences.setMockInitialValues({});
+        await open(tester, save([PartyMember.createPreset(1)]));
+        final etc = LoreDialogueManager.instance.partyEtc;
+        expect([etc.read(7), etc.read(8)], [2, 5]);
+      },
+    );
+  });
+
+  test('LORECRET Last writes the new party to all four slots', () async {
+    SharedPreferences.setMockInitialValues({});
+    final party = [PartyMember.createPreset(1), PartyMember.createPreset(3)];
+    await SaveManager.instance.writeNewGame(party, mapTitle: 'CASTLE LORE');
+    final slots = await SaveManager.instance.getAllSlots();
+    for (var slot = 1; slot <= 4; slot++) {
+      final save = slots[slot - 1]!;
+      expect(save.slot, slot);
+      expect(save.slotName, SaveManager.slotNames[slot - 1]);
+      expect([save.mapId, save.playerX, save.playerY], [6, 51, 31]);
+      expect([save.gold, save.food], [2000, 20]);
+      expect(save.party.map((m) => m.name), party.map((m) => m.name));
+      expect(save.flags, isEmpty);
+      expect(save.etc, isEmpty);
+      expect(save.mapTiles, isEmpty);
+    }
   });
 }

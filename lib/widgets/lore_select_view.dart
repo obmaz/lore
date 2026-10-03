@@ -32,6 +32,24 @@ class _LoreSelectViewState extends State<LoreSelectView> {
   int _k = 1;
   bool _done = false;
 
+  // `autofocus` only applies when nothing in the scope has focus; the game
+  // screen's key listener always does, so the select takes focus itself.
+  final FocusNode _focus = FocusNode(debugLabel: 'LoreSelect');
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _focus.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focus.dispose();
+    super.dispose();
+  }
+
   void _choose(int k) {
     if (_done) return;
     _done = true;
@@ -70,6 +88,7 @@ class _LoreSelectViewState extends State<LoreSelectView> {
   @override
   Widget build(BuildContext context) {
     return Focus(
+      focusNode: _focus,
       autofocus: true,
       onKeyEvent: _onKey,
       child: Column(

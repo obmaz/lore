@@ -36,6 +36,13 @@ class _GameOverViewState extends State<GameOverView> implements LoreGameOverIo {
   ({String title, List<String> items, Completer<int> done})? _select;
   Completer<void>? _keyWait;
   int _selectSerial = 0;
+  final FocusNode _keyFocus = FocusNode(debugLabel: 'PressAnyKey');
+
+  @override
+  void dispose() {
+    _keyFocus.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -60,6 +67,9 @@ class _GameOverViewState extends State<GameOverView> implements LoreGameOverIo {
   Future<void> pressAnyKey() async {
     final wait = Completer<void>();
     setState(() => _keyWait = wait);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _keyFocus.requestFocus();
+    });
     await wait.future;
     if (!mounted) return;
     setState(() => _keyWait = null);
@@ -124,6 +134,7 @@ class _GameOverViewState extends State<GameOverView> implements LoreGameOverIo {
               ),
             if (_keyWait != null)
               Focus(
+                focusNode: _keyFocus,
                 autofocus: true,
                 onKeyEvent: (_, event) {
                   if (event is KeyDownEvent) {
