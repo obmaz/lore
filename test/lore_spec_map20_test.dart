@@ -121,7 +121,9 @@ void main() {
       expect(battle.outcome.battleEnemyFirst, isTrue);
       expect(battle.continueAfterBattle().outcome.setFlags, ['etc41_bit4']);
       expect(battle.continueAfterRunAway().outcome.setFlags, ['etc41_bit4']);
-      expect(battle.continueAfterDefeat(), isNull);
+      // No etc[6] check: after a GameOver reload the escape path runs.
+      expect(battle.continueAfterDefeat()!.outcome.setFlags, ['etc41_bit4']);
+      expect(battle.resumesAfterReload, isTrue);
       final lit = LoreSpecProcedures.map20(
         25,
         48,

@@ -128,13 +128,10 @@ void main() {
             enemies: const [],
             pendingScript: run,
           );
-          expect(result.delta.tileChanges.single, (
-            map: null,
-            x: 14,
-            y: 10,
-            tile: 49,
-            ifZero: null,
-          ));
+          // map[x,y] := 49 at the party's position (the reloaded one after
+          // a GameOver reload of a defeat).
+          expect(result.delta.playerTiles.single, (tile: 49, ifZero: null));
+          expect(result.delta.tileChanges, isEmpty);
           expect(result.delta.sourceEtcWrites, isEmpty);
           expect(result.delta.nudges, isEmpty);
           expect(random.bounds, [3]);

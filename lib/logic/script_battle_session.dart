@@ -50,7 +50,9 @@ class ScriptBattleSession {
       LoreBattleEnd.runAway => pendingScript?.continueAfterRunAway(
         defeatedEnemySlots: defeated,
       ),
-      LoreBattleEnd.defeat => pendingScript?.continueAfterDefeat(),
+      LoreBattleEnd.defeat => pendingScript?.continueAfterDefeat(
+        defeatedEnemySlots: defeated,
+      ),
     };
     final applied = pendingScript?.outcome;
     return ScriptBattleSessionResult(

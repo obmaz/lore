@@ -27,6 +27,7 @@ import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
 import '../logic/lore_game_over.dart';
 import '../logic/lore_main_procedures.dart';
+import '../logic/lore_spec_procedures.dart';
 import '../logic/lore_source_memory.dart';
 import '../logic/lore_ent_procedures.dart';
 import '../models/party_member.dart';
@@ -1515,11 +1516,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// 불러오기로 돌아온 경우에만 호출한 절차의 나머지(전투 뒤 코드)가 불러온
   /// 게임 위에서 이어진다. 그렇지 않으면 `GameOver` 가 `Halt` 로 끝난다.
   Future<void> _onBattleDefeat() async {
+    final pendingScript = _pendingScriptBattle;
+    final targetX = _pendingScriptTargetX;
+    final targetY = _pendingScriptTargetY;
+    final portal = _pendingPortalTransition;
     final session = ScriptBattleSession.resolve(
       before: _battleProgressState(),
       end: LoreBattleEnd.defeat,
       enemies: _battleEnemies,
-      pendingScript: _pendingScriptBattle,
+      pendingScript: pendingScript,
     );
     _pendingScriptBattle = null;
     _pendingScriptTargetX = null;
@@ -1529,9 +1534,28 @@ class _MainGameScreenState extends State<MainGameScreen> {
     _applyBattleProgress(session.progress);
     final result = await _runGameOver(1);
     if (!mounted || result.end != LoreGameOverEnd.reloaded) return;
-    if (session.continuation case final continuation?) {
-      await _applyScriptOutcome(continuation, since: session.appliedOutcome);
-    }
+    // BattleMode returns into its caller. Arms without an `etc[6] = 255` check
+    // go on with their escape path on the loaded game (`Load` set x, y), and a
+    // pending entrance still loads its destination.
+    final continuation = session.continuation;
+    if (continuation == null || pendingScript == null) return;
+    _pendingPortalTransition = portal;
+    await _resumeScriptAfterBattle(
+      continuation,
+      session.appliedOutcome!,
+      session.delta,
+      talkTargetX: targetX,
+      talkTargetY: targetY,
+    );
+    if (!mounted || !pendingScript.resumesAfterReload) return;
+    final resumed = LoreSpecProcedures.afterReload(
+      pendingScript.script.map,
+      _game.playerX,
+      _game.playerY,
+      _scriptContext(),
+      _scripts,
+    );
+    if (resumed != null) await _driveScript(resumed);
   }
 
   /// `DetectGameOver`: `party.etc[6] := 255; gameover`.

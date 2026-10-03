@@ -133,7 +133,7 @@ void main() {
       },
     );
 
-    test('other specials: one random(4)+3 group of 58, tile 0 -> 40 else 46 after victory or escape', () {
+    test('other specials: one random(4)+3 group of 58, tile 0 -> 40 else 46 after victory, escape or a GameOver reload', () {
       for (var r = 0; r < 4; r++) {
         for (final tile in [0, 52]) {
           final random = SeqRandom([r]);
@@ -141,21 +141,17 @@ void main() {
           expect(random.calls, [4]);
           expect(run.outcome.battleMonsters, List.filled(r + 3, 58));
           expect(run.outcome.battleEnemyFirst, isTrue);
+          // `j := map[x,y]` is read after BattleMode at the party's (possibly
+          // reloaded) position: 46, or 40 over tile 0.
           for (final next in [
             run.continueAfterBattle(),
             run.continueAfterRunAway(),
+            run.continueAfterDefeat()!,
           ]) {
-            expect(
-              next.outcome
-                  .since(run.outcome)
-                  .tileChanges
-                  .map((t) => [t.x, t.y, t.tile]),
-              [
-                [10, 10, tile == 0 ? 40 : 46],
-              ],
-            );
+            final delta = next.outcome.since(run.outcome);
+            expect(delta.tileChanges, isEmpty);
+            expect(delta.playerTiles, [(tile: 46, ifZero: 40)]);
           }
-          expect(run.continueAfterDefeat(), isNull);
         }
       }
       expect(at(25, 46), isNull);

@@ -211,8 +211,8 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     x 24..26 수비대는 아군 선공이며 승리에만 bit1. 나머지 특수 칸은 bit2가 꺼져
     있을 때 Wraith 5명과 싸운 뒤 승리·도주 모두 map[x,y]:=40. 원본에 없는
     `keep2*Cleared`·once 판정은 쓰지 않는다. 원본 패배는 GameOver가 저장 게임을
-    불러온 뒤 이 분기의 나머지(맵 쓰기·강제 출구)를 불러온 상태에 이어 실행하는데,
-    이 덧씌움은 재현하지 않는 의도적 차이로 둔다.
+    불러온 뒤 이 분기의 나머지(맵 쓰기·강제 출구)를 불러온 상태에 이어 실행하며,
+    37번에서 이 이어짐을 옮겼다.
 16. 맵 21(KEEP1, LORESPEC:1760-1815)의 y=46은 `wantexit` 뒤 etc[42] bit1이
     꺼져 있으면 bit3이 꺼진 경우 55번, bit4가 꺼진 경우 56번, 이어서 35번
     다섯을 세운다. 보스가 없으면 bit1만 켜고 맵을 불러오지 않은 채 출구 칸에
@@ -309,9 +309,8 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     Huge Dragon을 `swamp` 퀘스트로 판정했지만 원본은 raw etc[15] < 4이다(수정).
     용은 동쪽 6칸과 y=13까지 걸어 간 뒤 `random(3)+30` 5회를 슬롯 3..7 순서로
     뽑아 `BattleMode(FALSE)`(적 선공) 전투를 하고, 승리하면 etc[15]:=4, 도주하면 (25,94)이다.
-    패배 시 GameOver 재개 오버레이는 재현하지 않는다(기록된 차이): 미노타우로스는
-    전투 직후 `etc[6]` 확인 없이 bit3를 쓰므로 원본은 GameOver 불러오기 뒤에도 bit3를
-    쓰지만 포팅은 패배 후 아무것도 쓰지 않는다. 용 직전의 장면은 원본의 putimage
+    미노타우로스는 전투 직후 `etc[6]` 확인 없이 bit3를 쓰므로 GameOver 불러오기 뒤에도
+    bit3를 쓰고 이어지는 검사를 불러온 위치로 계속한다(37번). 용 직전의 장면은 원본의 putimage
     연출·delay 뒤 PressAnyKey 대신 같은 `message` 문장을 남기는 어댑터이다.
     Spica 거절 대사의 `talk(...)` 마지막 줄은 키 대기 장면이다.
 
@@ -432,9 +431,24 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     `"partyN.dat" not found.`/`You need to CREATE CHARACTER.`)를 보인 뒤 앱을 닫는다
     (`SystemNavigator.pop`; 웹은 탭을 닫을 수 없어 화면이 남는다). 음악은 `Halt`에서만 끈다.
     `PressAnyKey` 문구를 원본 `아무키나 누르십시오 ...`로 고쳤다. 남은 차이: 화면 좌표·폰트·
-    지우기(`Clear`) 영역은 뷰포트 어댑터이고, 터치로 항목을 누르면 바로 고른다. LORESPEC 몇
-    분기(맵 20 미노타우로스, 맵 22 등)의 전투 뒤 `etc[6]` 확인 없는 코드는 아직 불러온 상태에
-    이어 실행하지 않는다(다음 단계).
+    지우기(`Clear`) 영역은 뷰포트 어댑터이고, 터치로 항목을 누르면 바로 고른다. 전투 뒤
+    `etc[6]` 확인 없는 LORESPEC/LOREENT 코드의 이어짐은 37번에서 옮겼다.
+
+37. GameOver가 패배를 불러오기로 끝내면 `BattleMode`는 호출한 절차로 돌아가고, `Load`가
+    `x := party.xaxis; y := party.yaxis`로 바꿔 둔 위치에서 나머지 코드가 이어진다.
+    `if party.etc[6] = 255 then exit`(또는 `> 0`)가 없는 10곳을 옮겼다(`battleResultUnchecked`):
+    LOREENT 라바 게이트(224, 적 1·2번 사망 비트 뒤 맵 22 (25,6)와 Ancient Evil 대사)와
+    DUNGEON OF EVIL(311, `enemy[3].dead`만 판정), LORESPEC 맵 18 미노타우로스(1205),
+    맵 19 수호자(1430), 맵 20 미노타우로스(1618)·Astral Mud(1732), 맵 21 출구(1781)·
+    습격(1811), 맵 22 출구(1829)·Wraith(1875). 이 코드들은 승리·도주·불러온 뒤가 같은 길이므로
+    도주 이어짐을 불러온 게임에서 실행하고, 보류 중인 입구 이동도 이어서 한다. `map[x,y]`
+    쓰기는 파티가 서 있는 칸(`setTileAtPlayer`, 맵 21은 `j := map[x,y]`를 그때 읽어 0이면 40
+    아니면 46)으로 바꿔 불러온 위치에 쓰이게 했다. 맵 18·19·20의 세 곳은 같은 `case` 안의
+    다음 `if` 검사가 불러온 x, y로 이어진다(`LoreSpecProcedures.afterReload`: 맵 18 Spica
+    (37,31)·`x = 31` Huge Dragon, 맵 19 `y = 6` 봉인 방, 맵 20 `y = 13`). 기존
+    `battleDefeatSteps`는 없앴다. 남은 차이: 라바 게이트의 사망 비트는 기존 이식처럼 적
+    번호 대신 남아 있던 수호자별 이름 플래그로 기록한다(원본은 `enemy[1]`/`enemy[2]` 위치와
+    이전 전투에서 남은 `enemy[2]`까지 읽는다). 사망 판정은 기존 `isDead || hp <= 0`이다.
 
 다음 묶음은 GameOver 불러오기 뒤 이어지는 LORESPEC 분기, LOREMENU 시전·초감각·옵션 화면의
 선택 메뉴 흐름 정리와 이식 전체의 DOS 실행 대조이다.

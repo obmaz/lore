@@ -300,7 +300,16 @@ class ScriptStep {
   /// 도주 시 지정된 적 슬롯이 모두 쓰러졌으면 설정하는 플래그.
   final List<({List<int> slots, String flag})> battleRunAwayFlagsWhenDead;
   final List<ScriptStep> battleRunAwaySteps;
-  final List<ScriptStep> battleDefeatSteps;
+
+  /// The source code after this `BattleMode` never tests `party.etc[6]`: when
+  /// `GameOver` reloads a defeat, the arm keeps running on the loaded game
+  /// (`Load` set `x, y` to the loaded position), which is the escape
+  /// continuation evaluated there.
+  final bool battleResultUnchecked;
+
+  /// After that continuation the source `case` body goes on to its later `if`
+  /// checks with the loaded `x, y` (`LoreSpecProcedures.afterReload`).
+  final bool battleReloadResume;
   final bool battleContinueOnRunAway;
   final bool battleRetryOnRunAway;
   final bool battleMirrorParty;
@@ -413,7 +422,8 @@ class ScriptStep {
     this.battleEnemyDefeatFlags = const {},
     this.battleRunAwayFlagsWhenDead = const [],
     this.battleRunAwaySteps = const [],
-    this.battleDefeatSteps = const [],
+    this.battleResultUnchecked = false,
+    this.battleReloadResume = false,
     this.battleContinueOnRunAway = false,
     this.battleRetryOnRunAway = false,
     this.battleMirrorParty = false,
@@ -926,12 +936,17 @@ class ScriptRun {
     );
   }
 
-  /// Only explicit source defeat effects run; victory continuation is skipped.
-  ScriptRun? continueAfterDefeat() {
-    final steps = _battleStep?.battleDefeatSteps;
-    if (!awaitingBattle || steps == null || steps.isEmpty) return null;
-    return _engine._execute(script, steps, _acc);
+  /// The continuation after `GameOver` reloads a defeat: none when the source
+  /// checks `party.etc[6] = 255`, else the escape path ([battleResultUnchecked]).
+  ScriptRun? continueAfterDefeat({Set<int> defeatedEnemySlots = const {}}) {
+    if (!awaitingBattle || _battleStep?.battleResultUnchecked != true) {
+      return null;
+    }
+    return continueAfterRunAway(defeatedEnemySlots: defeatedEnemySlots);
   }
+
+  /// Whether the source goes on to the later checks of its `case` body.
+  bool get resumesAfterReload => _battleStep?.battleReloadResume == true;
 
   ScriptRun acknowledgeScene() {
     if (!hasPendingScene) return this;

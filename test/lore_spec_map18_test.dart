@@ -192,7 +192,7 @@ void main() {
       );
     });
 
-    test('Huge Dragon lights the torch first, faces 6, 4, 5, and defeat runs nothing', () {
+    test('Huge Dragon lights the torch first, faces 6, 4, 5, and stops on a defeat; the Minotaur escape path runs after a reload', () {
       final run = at(
         31,
         10,
@@ -205,7 +205,10 @@ void main() {
       expect(done.continueAfterDefeat(), isNull);
       expect(done.outcome.questChanges, isEmpty);
       final minotaur = drain(at(21, 41)!);
-      expect(minotaur.continueAfterDefeat(), isNull);
+      expect(minotaur.continueAfterDefeat()!.outcome.setFlags, [
+        'etc39_bit3',
+      ]);
+      expect(minotaur.resumesAfterReload, isTrue);
     });
 
     test('dispatcher owns map 18 without JSON fallback', () {

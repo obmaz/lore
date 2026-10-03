@@ -1334,16 +1334,19 @@ class LoreSpecProcedures {
   /// the short refusals, and bit1 clear gives the lecture and sets bit1.
   /// x = 31 while etc[15] < 4 walks the party to x + 6, y 13 and fights the
   /// Huge Dragon (random(3) + 30 for slots 3..7, in slot order); victory sets
-  /// etc[15] := 4, escape moves to (25,94). Defeat runs no continuation.
+  /// etc[15] := 4, escape moves to (25,94). The Minotaur has no etc[6] check:
+  /// after a GameOver reload bit3 is set and the later checks run on the loaded
+  /// x, y ([afterReload]); the Huge Dragon stops on etc[6] = 255.
   static ScriptRun? map18(
     int x,
     int y,
     ScriptContext context,
-    LoreScriptEngine scripts,
-  ) {
+    LoreScriptEngine scripts, {
+    bool afterMinotaur = false,
+  }) {
     final tile = context.tileAtPlayer ?? 0;
-    if (tile != 0 && tile != 52) return null;
-    if (y == 95) return null;
+    if (!afterMinotaur && tile != 0 && tile != 52) return null;
+    if (!afterMinotaur && y == 95) return null;
     ScriptRun start(String id, List<ScriptStep> steps) =>
         scripts.startProcedure(
           LoreScript(
@@ -1360,13 +1363,16 @@ class LoreSpecProcedures {
       39,
       bitAliases: const {3: 'lockupGuardianDefeated'},
     );
-    if (x == 22 && y == 41) {
+    if (!afterMinotaur && x == 22 && y == 41) {
       return start('lockup-passage-22-41', const [
         ScriptStep(kind: 'setTile', tileX: 22, tileY: 41, tileValue: 44),
         ScriptStep(kind: 'setTile', tileX: 21, tileY: 41, tileValue: 52),
       ]);
     }
-    if (x == 21 && y == 41 && (etc39 & LorePascal.bit(3)) == 0) {
+    if (!afterMinotaur &&
+        x == 21 &&
+        y == 41 &&
+        (etc39 & LorePascal.bit(3)) == 0) {
       const seen = ScriptStep(kind: 'flag', key: 'etc39_bit3');
       return start('lockup-guardian-21-41', [
         ..._torchSteps(context),
@@ -1383,6 +1389,8 @@ class LoreSpecProcedures {
           battleEnemyFirst: true,
           monsters: [53],
           battleRunAwaySteps: [seen],
+          battleResultUnchecked: true,
+          battleReloadResume: true,
         ),
         seen,
       ]);
@@ -1486,6 +1494,26 @@ class LoreSpecProcedures {
     return null;
   }
 
+  /// `specialevent` after `GameOver` reloaded a defeat whose battle step has
+  /// `battleReloadResume`: `BattleMode` returns into the same `case` arm, which
+  /// goes on to its later `if` checks with `x, y` from the loaded game (`Load`
+  /// sets `x := party.xaxis; y := party.yaxis`), whatever map was loaded.
+  ///  - 18: after the Minotaur, `on(37,31)` (Spica) and `x = 31` (Huge Dragon).
+  ///  - 19: after the guardians, `y = 6` (the seal rooms).
+  ///  - 20: after the Minotaur, `y = 13` (the final chain).
+  static ScriptRun? afterReload(
+    int map,
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) => switch (map) {
+    18 => map18(x, y, context, scripts, afterMinotaur: true),
+    19 => map19(x, y, context, scripts, afterGuardians: true),
+    20 => map20(x, y, context, scripts, afterMinotaur: true),
+    _ => null,
+  };
+
   /// `if party.etc[1] = 0 then begin party.etc[1] := 1; scroll(true); end`.
   static List<ScriptStep> _torchSteps(ScriptContext context) {
     final unlit =
@@ -1507,9 +1535,11 @@ class LoreSpecProcedures {
     int x,
     int y,
     ScriptContext context,
-    LoreScriptEngine scripts,
-  ) {
-    if (context.tileAtPlayer != null &&
+    LoreScriptEngine scripts, {
+    bool afterGuardians = false,
+  }) {
+    if (!afterGuardians &&
+        context.tileAtPlayer != null &&
         context.tileAtPlayer != 52 &&
         context.tileAtPlayer != 0) {
       return null;
@@ -1547,7 +1577,7 @@ class LoreSpecProcedures {
     }
     final sealCleared = (sealByte & 1) != 0;
 
-    if ((x == 11 && y == 40) || (x == 41 && y == 39)) {
+    if (!afterGuardians && ((x == 11 && y == 40) || (x == 41 && y == 39))) {
       final lever = x == 11 ? 'a' : 'b';
       final swampWalk =
           context.etcValue(3) > 0 ||
@@ -1589,17 +1619,19 @@ class LoreSpecProcedures {
       ]);
     }
 
-    if (!sealCleared && y >= 8 && y <= 12) {
+    if (!afterGuardians && !sealCleared && y >= 8 && y <= 12) {
       final count = scripts.roll(3) + 3;
-      final closeTile = tile(x, y, 49);
+      // BattleMode(TRUE); map[x,y] := 49 on every battle result (the party
+      // stands on x, y; after a GameOver reload x, y are the loaded position).
+      const closeTile = ScriptStep(kind: 'setTileAtPlayer', tileValue: 49);
       return start('evil-seal-guardians', [
         ScriptStep(
           kind: 'battle',
           monsters: List.filled(count, 59),
           battleOverrides: [for (var i = 1; i <= count; i++) guardOverride(i)],
-          // BattleMode(TRUE); map[x,y] := 49 on every battle result.
-          battleRunAwaySteps: [closeTile],
-          battleDefeatSteps: [closeTile],
+          battleRunAwaySteps: const [closeTile],
+          battleResultUnchecked: true,
+          battleReloadResume: true,
         ),
         closeTile,
       ]);
@@ -1693,13 +1725,18 @@ class LoreSpecProcedures {
   /// the field step handler. y = 18 sets etc[1] := 1. The y = 48 Minotaur
   /// sets etc[41] bit4 after victory or escape; y = 13 chains the dragon,
   /// mud and Astral Mud fights on raw etc[41] bits 2, 3 and 1, each escape
-  /// moving y + 1. Defeat runs no continuation (GameOver reload overlay).
+  /// moving y + 1. The Minotaur and Astral Mud fights have no etc[6] check, so
+  /// after a GameOver reload their escape path runs on the loaded game (the
+  /// Minotaur then reaches the `y = 13` check, [afterReload]); the dragon and
+  /// mud fights stop on etc[6] = 255.
   static ScriptRun? map20(
     int x,
     int y,
     ScriptContext context,
-    LoreScriptEngine scripts,
-  ) {
+    LoreScriptEngine scripts, {
+    bool afterMinotaur = false,
+  }) {
+    if (afterMinotaur && y != 13) return null;
     if (y == 96) return null;
     ScriptRun start(String id, List<ScriptStep> steps) =>
         scripts.startProcedure(
@@ -1838,7 +1875,7 @@ class LoreSpecProcedures {
         ScriptStep(kind: 'torch', torchLit: true),
       ],
     ];
-    if (y == 48) {
+    if (y == 48 && !afterMinotaur) {
       if (!clear(4)) return null;
       const seen = ScriptStep(kind: 'flag', key: 'etc41_bit4');
       return start('den7-minotaur-y48', [
@@ -1853,6 +1890,8 @@ class LoreSpecProcedures {
           battleEnemyFirst: true,
           monsters: [53],
           battleRunAwaySteps: [seen],
+          battleResultUnchecked: true,
+          battleReloadResume: true,
         ),
         seen,
       ]);
@@ -1906,6 +1945,7 @@ class LoreSpecProcedures {
           monsters: [31, 31, 31, 31, 31, 31, 57],
           battleVictoryIfEnemyDead: 7,
           battleRunAwaySteps: [back],
+          battleResultUnchecked: true,
         ),
         ScriptStep(kind: 'flag', key: 'etc41_bit1'),
         leave,
@@ -1931,7 +1971,8 @@ class LoreSpecProcedures {
   /// `on(25,20)` refuses the lava gate unless both `odd(etc[40])` and
   /// `odd(etc[41])`, pushing the party to y + 1. Every other special tile
   /// draws `random(4) + 3` enemies 58 and, after victory or escape, writes 40
-  /// over tile 0 and 46 over any other tile. Defeat runs no continuation.
+  /// over tile 0 and 46 over any other tile. Neither fight checks etc[6]: after a
+  /// GameOver reload the escape path runs on the loaded game.
   static ScriptRun? map21(
     int x,
     int y,
@@ -1976,14 +2017,14 @@ class LoreSpecProcedures {
         context,
       );
     }
-    // LORESPEC.PAS:1806-1813: the tile is read after BattleMode, with no
-    // result check, so victory and escape both rewrite it.
+    // LORESPEC.PAS:1806-1813: `j := map[x,y]` is read after BattleMode, with
+    // no result check, so victory, escape and a GameOver reload (on the loaded
+    // x, y) all rewrite it.
     final count = scripts.roll(4) + 3;
-    final after = ScriptStep(
-      kind: 'setTile',
-      tileX: x,
-      tileY: y,
-      tileValue: (context.tileAtPlayer ?? 0) == 0 ? 40 : 46,
+    const after = ScriptStep(
+      kind: 'setTileAtPlayer',
+      tileValue: 46,
+      tileIfZero: 40,
     );
     return scripts.startProcedure(
       procedure('keep1-special-ambush', [
@@ -1991,7 +2032,8 @@ class LoreSpecProcedures {
           kind: 'battle',
           battleEnemyFirst: true,
           monsters: List<int>.filled(count, 58),
-          battleRunAwaySteps: [after],
+          battleRunAwaySteps: const [after],
+          battleResultUnchecked: true,
         ),
         after,
       ]),
@@ -2038,6 +2080,7 @@ class LoreSpecProcedures {
         ],
         battleVictoryFlags: const ['etc42_bit1'],
         battleContinueOnRunAway: true,
+        battleResultUnchecked: true,
       ),
     ]);
   }
@@ -2048,9 +2091,9 @@ class LoreSpecProcedures {
   /// `y = 46` is the exit boundary ([keep2ExitGuard] runs after `wantexit`),
   /// `on(25,18)` is the Death Knight, `(y = 25, x in [24..26])` the guards and
   /// every other special tile the Wraith ambush that turns the tile into 40.
-  /// Defeat runs no continuation: the source GameOver reloads a saved game and
-  /// would then resume this arm on the loaded state; that reload overlay is an
-  /// intentional difference.
+  /// The exit guard and the Wraith ambush have no etc[6] check, so after a
+  /// GameOver reload their escape path runs on the loaded game (the tile write
+  /// on the loaded x, y); the Death Knight and the guards stop on etc[6] = 255.
   static ScriptRun? map22(
     int x,
     int y,
@@ -2115,22 +2158,18 @@ class LoreSpecProcedures {
       );
     }
     if (clear(2)) return null;
-    // LORESPEC.PAS:1867-1875: no result check; the tile becomes 40 after
-    // victory or escape.
-    final floor = ScriptStep(
-      kind: 'setTile',
-      tileX: x,
-      tileY: y,
-      tileValue: 40,
-    );
+    // LORESPEC.PAS:1867-1875: no result check; map[x,y] becomes 40 after
+    // victory, escape or a GameOver reload (on the loaded x, y).
+    const floor = ScriptStep(kind: 'setTileAtPlayer', tileValue: 40);
     return scripts.startProcedure(
       procedure('keep2-ambush-zone-a', [
-        ScriptStep(
+        const ScriptStep(
           kind: 'battle',
           battleTitle: 'Wraith',
           battleEnemyFirst: true,
-          monsters: const [60, 60, 60, 60, 60],
+          monsters: [60, 60, 60, 60, 60],
           battleRunAwaySteps: [floor],
+          battleResultUnchecked: true,
         ),
         floor,
       ]),
@@ -2172,6 +2211,7 @@ class LoreSpecProcedures {
           monsters: [...List<int>.filled(6, j), 66],
           battleEnemyDefeatFlags: const {7: 'etc43_bit3'},
           battleContinueOnRunAway: true,
+          battleResultUnchecked: true,
         ),
       ],
     );

@@ -284,6 +284,8 @@ class LoreEntProcedures {
               battleEnemyDefeatFlags: defeatedFlags,
               battleVictoryFlags: const ['lavaGateGuardiansCleared'],
               battleContinueOnRunAway: true,
+              // LOREENT.PAS:224-231: no etc[6] check before `map := 22; load`.
+              battleResultUnchecked: true,
             ),
           ];
         }
@@ -300,6 +302,9 @@ class LoreEntProcedures {
             battleEnemyFirst: true,
             battleVictoryIfEnemyDead: 3,
             battleRunAwaySteps: [ScriptStep(kind: 'block', block: true)],
+            // LOREENT.PAS:311-319: only `enemy[3].dead` decides, even after a
+            // GameOver reload.
+            battleResultUnchecked: true,
           ),
           ScriptStep(kind: 'flag', key: 'dungeonOfEvilCleared'),
         ];

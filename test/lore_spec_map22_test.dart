@@ -159,18 +159,17 @@ void main() {
       expect(at(23, 25)!.outcome.battleMonsters, [60, 60, 60, 60, 60]);
     });
 
-    test('other special tiles: Wraith ambush, tile 40 after victory or escape, no flag', () {
+    test('other special tiles: Wraith ambush, tile 40 after victory, escape or a GameOver reload, no flag', () {
       final run = at(10, 10)!;
       expect(run.outcome.battleMonsters, [60, 60, 60, 60, 60]);
       expect(run.outcome.battleEnemyFirst, isTrue);
       for (final next in [
         run.continueAfterBattle(),
         run.continueAfterRunAway(),
+        run.continueAfterDefeat()!,
       ]) {
         final delta = next.outcome.since(run.outcome);
-        expect(delta.tileChanges.map((t) => [t.x, t.y, t.tile]), [
-          [10, 10, 40],
-        ]);
+        expect(delta.playerTiles, [(tile: 40, ifZero: null)]);
         expect(delta.setFlags, isEmpty);
       }
       expect(at(25, 46), isNull);
