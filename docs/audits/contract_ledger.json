@@ -23692,8 +23692,13 @@
       "routine": "LORESUB.PAS:scroll:1",
       "kind": "while",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/den_darkness_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded)."
     },
     {
       "id": "LORESUB.PAS:scroll:1:if:1",
@@ -23703,8 +23708,13 @@
       "routine": "LORESUB.PAS:scroll:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/den_darkness_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded)."
     },
     {
       "id": "LORESUB.PAS:scroll:1:if:2",
@@ -41880,6 +41890,26 @@
       "test": "test/return_condition_test.dart",
       "note": "ReturnCondition normalizes hp <= 0 to unconscious 1 and over-long unconsciousness to dead 1 before choosing the text; unnamed records are skipped (recorded difference).",
       "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:while:1",
+      "line": 219,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/den_darkness_test.dart",
+      "note": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded).",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:1",
+      "line": 222,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/den_darkness_test.dart",
+      "note": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded).",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -43623,6 +43653,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/den_darkness_test.dart",
+      "kind": "test",
+      "sha256": "818fa5ecd48cbd1caf8222ab6c5abf1911add2846db08f9d2cf6c468f52d6a03",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/dialogue_json_test.dart",
       "kind": "test",
       "sha256": "d230e20b0e5fa6a61f7ccb43154e61c7c614d9a5ca4ece6159649ee64027e802",
@@ -44896,7 +44935,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "0b810c771de3394cf204b94a86162d16fbd584146e4e595b0a1995acb629dcf1"
+      "sha256": "0ca31c9ebc08b84b6bfde3bc4d5800f9745a36c05f07c05c2acdc677c66e562d"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -45004,9 +45043,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "3098747fe4d6a807472cdef510dde06066f808aab16bd3747b0d3a5a75d7a2ba",
+      "sha256": "579732ca69ffe38eac170648ec3311c107a237a1d5d4e9b1830d62849219e10f",
       "top_level_counts": {
-        "contracts": 1192
+        "contracts": 1194
       }
     }
   ],
@@ -45014,9 +45053,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 656,
+    "unmapped_behavior_sites": 654,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 1192,
+    "partially_verified_behavior_sites": 1194,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
