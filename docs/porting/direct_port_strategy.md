@@ -438,7 +438,7 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     `Load`처럼). 예전 지도 진입 때의 `지도 [...] 진입 (크기: ...)` 기록은 원본에 없어 없앴다.
     `Last`가 저장소 쓰기에 실패해도 게임은 시작한다(원본은 `Save?.map`을 지우지 못하면 `Halt`). 키보드 입력은 게임 화면의 키 처리기가
     포커스를 갖고 있어 선택 창이 포커스를 직접 요청한다. 패배 직전 `EndBattle` 뒤의
-    `c := ReadKey` 키 대기는 아직 없다. LOREMAIN 이동 처리의 `if position = ...` 네 블록은 연속
+    `c := ReadKey` 키 대기는 49번에서 옮겼다. LOREMAIN 이동 처리의 `if position = ...` 네 블록은 연속
     `if`라서 블록 안에서 지도가 바뀌면(입구, GameOver 불러오기) 뒤 순서 위치의 블록이 새 x, y
     타일을 다시 처리하는데, 이 연쇄는 아직 옮기지 않았다(다음 단계).
     `PressAnyKey` 문구를 원본 `아무키나 누르십시오 ...`로 고쳤다. 남은 차이: 화면 좌표·폰트·
@@ -594,8 +594,17 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     (`명령(Space)`, `[Q] 건강 상태`, `[E] 초능력`)를 없애고 아이콘만 남겼으며 접근성 이름은 SelectMode의
     원본 항목 문구이다.
 
-남은 차이(기록): 적 차례 메시지는 한꺼번에 나오고 키를 기다리지 않는다; 전투 패배 직전의 `c :=
-ReadKey`는 재현하지 않는다; `Scroll`의 den 어둠(LORESUB:222-226)은 그리지 않는다; `SoundOn`은 투시·
+49. LOREBATT `BattleMode`의 세 키 대기를 옮겼다(`battle_viewport_view.dart`). 파티 단계가 끝나면
+    `DisplayEnemies(FALSE); print(7,''); PressAnyKey;`(문구 `아무키나 누르십시오 ...`를 보이고 키를
+    기다린 뒤 지움), 적 단계가 끝나면 `SimpleDisCond; ok := EndBattle(i); c := ReadKey;`(문구 없이 키를
+    기다리며, 패배일 때도 이 대기 뒤에 `GameOver`로 간다), `RunAway`가 성공하면 `etc[6] := 2; c :=
+    ReadKey; Clear; Scroll(TRUE); exit;`이다. 첫 적 선공(`BattleMode(FALSE)`)도 `loop:`의 같은 `ReadKey`를
+    거친다. 어댑터: 키 대기는 아무 키나 화면 터치(포인터 누름)로 풀린다. 적 단계 앞의 300ms 임의
+    지연은 없앴다(원본에 없다). `ReadKey`에는 문구가 없으므로 화면에도 보이지 않고, 터치 사용자는
+    화면을 눌러 계속한다. 적이 한 번씩 행동할 때마다의 효과음 대기와 적 단계 메시지의 한 줄씩 출력은
+    아직 한꺼번에 처리된다(남은 차이).
+
+남은 차이(기록): 적 차례 메시지는 한꺼번에 나온다; `Scroll`의 den 어둠(LORESUB:222-226)은 그리지 않는다; `SoundOn`은 투시·
 천리안에서 바꾸지 않는다. 다음 묶음은 도착 칸 처리와 특수 칸 그림의 DOS 확인, 이식 전체의 DOS 실행
 대조이다.
 

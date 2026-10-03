@@ -8,6 +8,8 @@ import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
 
+import 'support/battle_keys.dart';
+
 /// Every `random(n)` returns n - 1 (always misses / always the last choice).
 class _MaxRandom implements Random {
   @override
@@ -55,6 +57,9 @@ void main() {
       ),
     );
     await tester.pump(const Duration(milliseconds: 300));
+    // `c := ReadKey` comes before the defeat is acted on.
+    expect((defeats, victories), (0, 0));
+    await pressBattleKey(tester);
     expect((defeats, victories), (1, 0));
   });
 
@@ -82,7 +87,7 @@ void main() {
       ),
     );
     await tester.pump(const Duration(milliseconds: 300));
-    await tester.pump(const Duration(milliseconds: 200));
+    await pressBattleKey(tester);
     expect(enemy.isDead, isTrue);
     expect(victories, 1);
   });
@@ -110,13 +115,11 @@ void main() {
     );
     await tester.pumpWidget(battle(1));
     await tester.pump(const Duration(milliseconds: 300));
-    await tester.pump(const Duration(milliseconds: 200));
     // Orc 가 먼저 행동했다: `random(20) >= accuracy[1]` 이면 `빗맞추었다`.
     expect(logs.first, endsWith(LoreBattText.partyMissed));
     final first = logs.length;
     await tester.pumpWidget(battle(2));
     await tester.pump(const Duration(milliseconds: 300));
-    await tester.pump(const Duration(milliseconds: 200));
     expect(logs.length, greaterThan(first)); // 연속 전투도 첫 단계를 다시 실행한다.
     expect(tester.takeException(), isNull);
   });
@@ -146,6 +149,8 @@ void main() {
     );
 
     await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
+    await tester.pumpAndSettle();
+    await pressBattleKey(tester); // PressAnyKey after the party phase
     await tester.pumpAndSettle();
 
     expect(tester.takeException(), isNull);
@@ -232,6 +237,8 @@ void main() {
       await tester.pump();
     }
     await tester.pump(const Duration(milliseconds: 1500));
+    await pressBattleKey(tester); // PressAnyKey after the party phase
+    await pressBattleKey(tester); // c := ReadKey after the enemy phase
 
     expect(joinedId, 10);
     expect(party, hasLength(6));

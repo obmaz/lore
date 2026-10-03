@@ -66,6 +66,30 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
   final FocusNode _focusNode = FocusNode();
 
+  /// `c := ReadKey` / `PressAnyKey` inside `BattleMode`: the round stops until
+  /// any key or pointer press. [_keyWaitPrompt] is true for `PressAnyKey`,
+  /// which prints its text; `ReadKey` shows nothing.
+  Completer<void>? _keyWait;
+  bool _keyWaitPrompt = false;
+
+  Future<void> _readKey({bool prompt = false}) {
+    if (!mounted) return Future.value();
+    _releaseKeyWait(rebuild: false);
+    final wait = Completer<void>();
+    _keyWait = wait;
+    setState(() => _keyWaitPrompt = prompt);
+    return wait.future;
+  }
+
+  void _releaseKeyWait({bool rebuild = true}) {
+    final wait = _keyWait;
+    _keyWait = null;
+    if (wait != null && !wait.isCompleted) {
+      wait.complete();
+      if (rebuild && mounted) setState(() => _keyWaitPrompt = false);
+    }
+  }
+
   Monster get currentTarget {
     if (_selectedEnemyIndex >= widget.enemies.length) {
       _selectedEnemyIndex = 0;
@@ -122,6 +146,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
   @override
   void dispose() {
+    _releaseKeyWait(rebuild: false);
     _focusNode.dispose();
     super.dispose();
   }
@@ -215,7 +240,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       if (!mounted) return;
       setState(() {});
       if (escaped) {
-        // `party.etc[6] := 2` 후 전투 종료.
+        // `party.etc[6] := 2; c := ReadKey; Clear; Scroll(TRUE); exit;`
+        await _readKey();
+        if (!mounted) return;
         _battleEnded = true;
         _autoRound = false;
         widget.onRunAway();
@@ -224,6 +251,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       await Future.delayed(const Duration(milliseconds: 150));
       if (!mounted || _battleEnded) return;
     }
+    // `DisplayEnemies(FALSE); print(7,''); PressAnyKey;` before `loop:`.
+    await _readKey(prompt: true);
+    if (!mounted || _battleEnded) return;
     await _enemyTurn();
     if (!mounted || _battleEnded) return;
     _startSelection();
@@ -232,10 +262,12 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   /// 적 단계 (`loop:` 부터 `EndBattle` 까지).
   Future<void> _enemyTurn() async {
     setState(() => _isTurnProcessing = true);
-    await Future.delayed(const Duration(milliseconds: 300));
-    if (!mounted || _battleEnded) return;
     _battle.enemyPhase();
     setState(() {});
+    // `SimpleDisCond; ok := EndBattle(i); c := ReadKey;` — the key wait comes
+    // before the result is used, also on a defeat.
+    await _readKey();
+    if (!mounted || _battleEnded) return;
     _checkBattleEnd();
   }
 
@@ -558,6 +590,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       focusNode: _focusNode,
       autofocus: true,
       onKeyEvent: (node, event) {
+        if (event is KeyDownEvent && _keyWait != null) {
+          _releaseKeyWait();
+          return KeyEventResult.handled;
+        }
         if (event is KeyDownEvent && !_isTurnProcessing && !_battleEnded) {
           if (event.logicalKey == LogicalKeyboardKey.digit1) {
             _onWeaponAttack();
@@ -584,145 +620,164 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         }
         return KeyEventResult.ignored;
       },
-      child: Column(
-        children: [
-          // 자동 전투 실행 중 안내 배너
-          if (_autoRound)
-            InkWell(
-              child: Container(
+      child: Listener(
+        behavior: HitTestBehavior.translucent,
+        onPointerDown: (_) => _releaseKeyWait(),
+        child: Column(
+          children: [
+            // `PressAnyKey`: 원본이 찍는 문구(`ReadKey`는 아무것도 찍지 않는다)
+            if (_keyWaitPrompt)
+              Container(
                 width: double.infinity,
-                color: RetroTheme.lightRed,
-                padding: const EdgeInsets.symmetric(vertical: 4),
+                color: RetroTheme.panelBg,
+                padding: const EdgeInsets.symmetric(vertical: 3),
                 child: Text(
-                  LoreBattText.menuCommandAll,
+                  LoreSubText.pressAnyKey,
                   textAlign: TextAlign.center,
                   style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.black,
+                    color: RetroTheme.white,
                     fontSize: 11,
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-            ),
+            // 자동 전투 실행 중 안내 배너
+            if (_autoRound)
+              InkWell(
+                child: Container(
+                  width: double.infinity,
+                  color: RetroTheme.lightRed,
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Text(
+                    LoreBattText.menuCommandAll,
+                    textAlign: TextAlign.center,
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.black,
+                      fontSize: 11,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
 
-          // 1. 전투 장면: `DisplayEnemies` — 이름만, HP 구간별 색 (죽으면 지워진다)
-          Expanded(
-            flex: 60,
-            child: Container(
-              color: RetroTheme.viewportBg,
-              padding: const EdgeInsets.all(6.0),
-              child: ListView.builder(
-                itemCount: widget.enemies.length,
-                itemBuilder: (context, idx) {
-                  final enemy = widget.enemies[idx];
-                  final isSelected = idx == _selectedEnemyIndex;
-                  return GestureDetector(
-                    key: ValueKey('enemy-$idx'),
-                    onTap: () {
-                      if (!enemy.isDead) {
-                        setState(() => _selectedEnemyIndex = idx);
-                      }
-                    },
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 2),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 3,
-                      ),
-                      color: isSelected && !enemy.isDead
-                          ? RetroTheme.lightGray
-                          : Colors.transparent,
-                      child: Text(
-                        enemy.name,
-                        style: RetroTheme.dosFont.copyWith(
-                          color: _getEnemyHpColor(enemy),
-                          fontSize: 12,
+            // 1. 전투 장면: `DisplayEnemies` — 이름만, HP 구간별 색 (죽으면 지워진다)
+            Expanded(
+              flex: 60,
+              child: Container(
+                color: RetroTheme.viewportBg,
+                padding: const EdgeInsets.all(6.0),
+                child: ListView.builder(
+                  itemCount: widget.enemies.length,
+                  itemBuilder: (context, idx) {
+                    final enemy = widget.enemies[idx];
+                    final isSelected = idx == _selectedEnemyIndex;
+                    return GestureDetector(
+                      key: ValueKey('enemy-$idx'),
+                      onTap: () {
+                        if (!enemy.isDead) {
+                          setState(() => _selectedEnemyIndex = idx);
+                        }
+                      },
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 6,
+                          vertical: 3,
+                        ),
+                        color: isSelected && !enemy.isDead
+                            ? RetroTheme.lightGray
+                            : Colors.transparent,
+                        child: Text(
+                          enemy.name,
+                          style: RetroTheme.dosFont.copyWith(
+                            color: _getEnemyHpColor(enemy),
+                            fontSize: 12,
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
             ),
-          ),
 
-          // 2. 명령을 고르는 파티원: `m[0] := name + '의 전투 모드 ===>'`
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            color: RetroTheme.panelBg,
-            width: double.infinity,
-            child: Text(
-              player != null ? _modeTitle(player) : '',
-              style: RetroTheme.dosFont.copyWith(
-                color: RetroTheme.yellow,
-                fontSize: 11,
-                fontWeight: FontWeight.bold,
+            // 2. 명령을 고르는 파티원: `m[0] := name + '의 전투 모드 ===>'`
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              color: RetroTheme.panelBg,
+              width: double.infinity,
+              child: Text(
+                player != null ? _modeTitle(player) : '',
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.yellow,
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ),
 
-          // 3. 원작 7대 전투 커맨드 조작 버튼부
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-            decoration: const BoxDecoration(
-              color: RetroTheme.black,
-              border: Border(
-                top: BorderSide(color: RetroTheme.borderColor, width: 1.5),
+            // 3. 원작 7대 전투 커맨드 조작 버튼부
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+              decoration: const BoxDecoration(
+                color: RetroTheme.black,
+                border: Border(
+                  top: BorderSide(color: RetroTheme.borderColor, width: 1.5),
+                ),
+              ),
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                spacing: 4,
+                runSpacing: 4,
+                children: [
+                  _buildCmdButton(
+                    1,
+                    '${LoreBattText.menuAttackOne}${LoreSubText.weaponLabel(player?.weapon ?? 0)}${LoreSubText.weaponJosa(player?.weapon ?? 0)}${LoreBattText.menuAttackOneRest}',
+                    RetroTheme.lightRed,
+                    _onWeaponAttack,
+                  ),
+                  _buildCmdButton(
+                    2,
+                    LoreBattText.menuMagicOne,
+                    RetroTheme.lightBlue,
+                    _onSingleMagicMenu,
+                  ),
+                  _buildCmdButton(
+                    3,
+                    LoreBattText.menuMagicAll,
+                    RetroTheme.lightCyan,
+                    _onAllMagicMenu,
+                  ),
+                  _buildCmdButton(
+                    4,
+                    LoreBattText.menuSpecial,
+                    RetroTheme.lightMagenta,
+                    _onSpecialMagicMenu,
+                  ),
+                  _buildCmdButton(
+                    5,
+                    LoreBattText.menuHealParty,
+                    RetroTheme.lightGreen,
+                    _onCureMenu,
+                  ),
+                  _buildCmdButton(
+                    6,
+                    LoreBattText.menuEsp,
+                    RetroTheme.yellow,
+                    _onEspMenu,
+                  ),
+                  _buildCmdButton(
+                    7,
+                    isLeaderActive
+                        ? LoreBattText.menuCommandAll
+                        : LoreBattText.menuRun,
+                    _autoRound ? RetroTheme.lightRed : RetroTheme.white,
+                    _onAutoBattleOrRun,
+                  ),
+                ],
               ),
             ),
-            child: Wrap(
-              alignment: WrapAlignment.center,
-              spacing: 4,
-              runSpacing: 4,
-              children: [
-                _buildCmdButton(
-                  1,
-                  '${LoreBattText.menuAttackOne}${LoreSubText.weaponLabel(player?.weapon ?? 0)}${LoreSubText.weaponJosa(player?.weapon ?? 0)}${LoreBattText.menuAttackOneRest}',
-                  RetroTheme.lightRed,
-                  _onWeaponAttack,
-                ),
-                _buildCmdButton(
-                  2,
-                  LoreBattText.menuMagicOne,
-                  RetroTheme.lightBlue,
-                  _onSingleMagicMenu,
-                ),
-                _buildCmdButton(
-                  3,
-                  LoreBattText.menuMagicAll,
-                  RetroTheme.lightCyan,
-                  _onAllMagicMenu,
-                ),
-                _buildCmdButton(
-                  4,
-                  LoreBattText.menuSpecial,
-                  RetroTheme.lightMagenta,
-                  _onSpecialMagicMenu,
-                ),
-                _buildCmdButton(
-                  5,
-                  LoreBattText.menuHealParty,
-                  RetroTheme.lightGreen,
-                  _onCureMenu,
-                ),
-                _buildCmdButton(
-                  6,
-                  LoreBattText.menuEsp,
-                  RetroTheme.yellow,
-                  _onEspMenu,
-                ),
-                _buildCmdButton(
-                  7,
-                  isLeaderActive
-                      ? LoreBattText.menuCommandAll
-                      : LoreBattText.menuRun,
-                  _autoRound ? RetroTheme.lightRed : RetroTheme.white,
-                  _onAutoBattleOrRun,
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
