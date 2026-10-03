@@ -13087,8 +13087,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:13",
@@ -13098,8 +13103,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:for:1",
@@ -13109,8 +13119,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:14",
@@ -13120,8 +13135,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:15",
@@ -13131,8 +13151,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:16",
@@ -13142,8 +13167,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:3",
@@ -13169,8 +13199,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:4",
@@ -13196,8 +13231,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:5",
@@ -13223,8 +13263,13 @@
       "routine": "LOREMAIN.PAS:main:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/game_over_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:6",
@@ -39720,6 +39765,96 @@
       "test": "test/lore_extrasense_test.dart",
       "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
       "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:12",
+      "line": 200,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:13",
+      "line": 201,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:for:1",
+      "line": 201,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:14",
+      "line": 202,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:15",
+      "line": 205,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:16",
+      "line": 207,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:17",
+      "line": 229,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:18",
+      "line": 247,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:19",
+      "line": 269,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/game_over_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -41553,8 +41688,9 @@
     {
       "path": "test/game_over_test.dart",
       "kind": "test",
-      "sha256": "c81a38478d2ddd9f60a6c5a07898ab26583003e4f153dcf42064df22aeae11b6",
+      "sha256": "d2891f6968fe42a74ae6b1fe1e0fa307e28d785592e025385f5cd187d9ff156c",
       "cited_source_files": [
+        "LOREMAIN.PAS",
         "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
@@ -41648,7 +41784,7 @@
     {
       "path": "test/lore_main_procedures_test.dart",
       "kind": "test",
-      "sha256": "666a9c3824e99a6241797b24f0bf44ec67d30d61d210fe51d4639b07cae1345f",
+      "sha256": "c42a376b030fe128e748b98328a749f711f1a5ad82bd314b05ffc3708a56503d",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LORESUB.PAS"
@@ -42699,7 +42835,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "720b96db9b6a76502e7793e7891082e79230ee42e603dd5f99976185b60d09d2"
+      "sha256": "6de53aa00c1b1c467aaf8765b35f1e0992a8b42d59e18649bb45b117f5d45dba"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -42771,7 +42907,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "eab094e56feb62d7a14ce704e3da4463ef9aae6711c0fe676b3acaeb819a47e2"
+      "sha256": "10aff036f8f84d1dd19bc8eadf14fbd0699bb5d4a8cfef61ee1b03d25401c8f0"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -42799,9 +42935,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "2c053195d04f33030a435403afacbf0c1a53ad5aed2b12d6b2fbb75bcdffd213",
+      "sha256": "0d0b9808d1017af951524b03c9c7be906d686f6d6e1455fd24f3af115efc5734",
       "top_level_counts": {
-        "contracts": 1048
+        "contracts": 1057
       }
     }
   ],
@@ -42809,9 +42945,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 800,
+    "unmapped_behavior_sites": 791,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 1048,
+    "partially_verified_behavior_sites": 1057,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
