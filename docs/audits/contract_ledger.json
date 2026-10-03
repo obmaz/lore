@@ -43835,7 +43835,7 @@
     {
       "path": "test/lore_battle_progress_test.dart",
       "kind": "test",
-      "sha256": "dbc9c7f460cc847de12872e035ceebfacabc2b04ee8edacd3a335a444ac3f81f",
+      "sha256": "3f917e8f8d3ba12041c71e73e8ea358d70c4588257de3fb21e8816a42d410dfb",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -44408,7 +44408,7 @@
     {
       "path": "test/script_equip_reducer_test.dart",
       "kind": "test",
-      "sha256": "51b1954c60e15e6033bb98a370c1cdd6cf1829c95b462ba6a90d42bcf3ce3762",
+      "sha256": "87aa16949b8d32577ddbc1e64d5433d5e8cf99b62ca61a4558d4db77ba3ffc87",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -44576,7 +44576,7 @@
     {
       "path": "test/step3_town_and_dungeon_test.dart",
       "kind": "test",
-      "sha256": "766d5d31795591a33482c3d407edd5b2c5ec1686dff555668810646f91f40100",
+      "sha256": "72d4efdfb3662f35cfb1b5affd9d1049850242a4578c2ad0c57def1355be6c08",
       "cited_source_files": [
         "LORESPEC.PAS",
         "LORESUB.PAS",
@@ -44946,11 +44946,11 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "0d6e24e4c87eab7146245df37b32140f807c5c90ff5f4733b796e5eb163efa4f"
+      "sha256": "19ad2e0a22a8dcb6f71cc6180059284b792922a01930968e5e59870ce4f222c6"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
-      "sha256": "2c3786319bf45b3621ba47ac1497c624d9e4055ddb291abf831dd7d313b8dd8c"
+      "sha256": "0e88c6cfa37a8e23881a04b124a934ee994a7a53e703ec4ffd4bdcefbcb0ead5"
     },
     {
       "path": "lib/game/lore_dialogue_manager.dart",
@@ -44958,7 +44958,7 @@
     },
     {
       "path": "lib/game/lore_dungeon_event_manager.dart",
-      "sha256": "e48ff1562d605801a7bb73a9faf00df66bc469cd2d739b2e973fb3f6441a92c9"
+      "sha256": "382e7f373f6d8505aaf6cf08ed8ca1d71a0d2f96504333f5023d86caad1a3862"
     },
     {
       "path": "lib/logic/lore_tile_protocol.dart",
@@ -44978,7 +44978,7 @@
     },
     {
       "path": "lib/game/lore_map_manager.dart",
-      "sha256": "83c68338fb6c349be25626922993d0e1c58b707cd0e7e16dc6d6ddd7612da776"
+      "sha256": "4f3664f40590248185cccb049467e3f5095b1f1055f4fe6f918e24ccaacbd492"
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
@@ -45018,7 +45018,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "a1265284fbb39f0bacdabf23482caf850b21bfe4e0d3f0618f3485e49f0d1012"
+      "sha256": "f8f56688ea30f2a19c3f4aca3fce83117e8a74d2c3f2601239adffa985cf8188"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -45050,7 +45050,7 @@
     },
     {
       "path": "lib/widgets/script_scene_dialog.dart",
-      "sha256": "cfb3fa42fe8d95ac7658e0810e3b3291afd03ca2aee796e8afc203af6a3169e4"
+      "sha256": "558e5f180c55a817b5fbeaef432865cd3efb9b97932c8e4468753289f1e0474b"
     },
     {
       "path": "docs/audits/contract_evidence.json",
