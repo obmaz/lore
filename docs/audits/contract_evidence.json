@@ -8509,6 +8509,196 @@
       "test": "test/lore_main_procedures_test.dart",
       "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
       "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:case:1",
+      "line": 924,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:for:1",
+      "line": 930,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:1",
+      "line": 934,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:2",
+      "line": 943,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:for:2",
+      "line": 952,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:3",
+      "line": 953,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:4",
+      "line": 956,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:exit:1",
+      "line": 957,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:for:3",
+      "line": 961,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:5",
+      "line": 963,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:exit:2",
+      "line": 964,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:for:4",
+      "line": 976,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:6",
+      "line": 977,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:7",
+      "line": 980,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:exit:3",
+      "line": 981,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:8",
+      "line": 994,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:exit:4",
+      "line": 994,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:if:9",
+      "line": 1010,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:gameoption:1:exit:5",
+      "line": 1010,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_option.dart",
+      "test": "test/lore_game_option_test.dart",
+      "note": "GameOption ported directly: six-item Select; difficulty writes etc[8] := k+2 (Esc 5) and etc[7] := 6-k (Esc 3); order swaps whole 55-byte records of slots 2..5 (Reserved for empty); removal clears the name; load/save use LoadNo = chr(k+47) with the source prompts, save prints two lines and waits; item 6 calls GameOver with the current etc[6]. Second order select shown as a separate window instead of the right column. DOS comparison pending.",
+      "verification": "partial"
     }
   ]
 }
