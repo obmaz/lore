@@ -167,11 +167,6 @@ void main() {
       await tester.pump(const Duration(milliseconds: 400));
     }
 
-    Future<void> closeDialog(WidgetTester tester) async {
-      await tester.tap(find.byKey(const ValueKey('field-menu-close')));
-      await settle(tester);
-    }
-
     testWidgets('Space/P/V/C/R/G 키가 각각 해당 탭을 연다', (WidgetTester tester) async {
       await startGame(tester);
 
@@ -186,17 +181,21 @@ void main() {
       await settle(tester);
       expect(find.text('당신의 명령을 고르시오 ===>'), findsNothing);
 
-      // P -> 일행의 상황
+      // P -> ViewParty prints into the window (the message log), no key.
       await tester.sendKeyEvent(LogicalKeyboardKey.keyP);
       await settle(tester);
-      expect(find.text(LoreMenuText.selectModeParty), findsOneWidget);
-      await closeDialog(tester);
+      expect(
+        find.text('${LoreMenuText.viewPartyFood}20', skipOffstage: false),
+        findsOneWidget,
+      );
 
-      // V -> 개인의 상황
+      // V -> ViewCharacter: the prompt above ChooseWhom; Esc ends it.
       await tester.sendKeyEvent(LogicalKeyboardKey.keyV);
       await settle(tester);
       expect(find.text(LoreMenuText.viewCharWho), findsOneWidget);
-      await closeDialog(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await settle(tester);
+      expect(find.text(LoreMenuText.viewCharWho), findsNothing);
 
       // C -> 비전투 마법 시전
       await tester.sendKeyEvent(LogicalKeyboardKey.keyC);
@@ -228,12 +227,13 @@ void main() {
     testWidgets('Q/E 키가 각각 전용 화면을 연다', (WidgetTester tester) async {
       await startGame(tester);
 
-      // Q -> 일행의 건강 상태를 본다
+      // Q -> QuickView prints its table into the window, no key.
       await tester.sendKeyEvent(LogicalKeyboardKey.keyQ);
       await settle(tester);
-      expect(find.text(LoreMenuText.selectModeQuick), findsOneWidget);
-      await tester.tap(find.byKey(const ValueKey('quick-view-close')));
-      await settle(tester);
+      expect(
+        find.textContaining(LoreMenuText.quickViewHeader, skipOffstage: false),
+        findsOneWidget,
+      );
 
       // E -> 초능력을 사용한다
       await tester.sendKeyEvent(LogicalKeyboardKey.keyE);

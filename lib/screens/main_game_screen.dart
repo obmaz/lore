@@ -27,6 +27,7 @@ import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
 import '../logic/town_logic.dart';
 import '../logic/lore_cast_spell.dart';
+import '../logic/lore_view_procedures.dart';
 import '../logic/lore_game_option.dart';
 import '../logic/lore_game_over.dart';
 import '../logic/lore_main_procedures.dart';
@@ -45,9 +46,7 @@ import '../widgets/dpad_widget.dart';
 import '../widgets/battle_viewport_view.dart';
 import '../widgets/encounter_viewport_view.dart';
 import '../widgets/town_facilities_dialog.dart';
-import '../widgets/field_menu_dialog.dart';
 import '../widgets/script_scene_dialog.dart';
-import '../widgets/quick_view_dialog.dart';
 import '../widgets/esp_dialog.dart';
 import '../game/lore_map_manager.dart';
 import '../services/save_manager.dart';
@@ -1195,12 +1194,52 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
   }
 
-  Future<void> _openQuickViewDialog() async {
-    await showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (ctx) => QuickViewDialog(party: _party),
+  /// `Print` lines the source leaves in the window (no key wait).
+  void _printLines(List<(int, String)> lines) {
+    for (final (_, text) in lines) {
+      _addLog(text);
+    }
+  }
+
+  /// LOREMENU `ViewParty` (hotkey P or SelectMode 1).
+  Future<void> _runViewParty() async => _printLines(
+    LoreViewProcedures.viewParty(
+      x: _game.playerX,
+      y: _game.playerY,
+      food: _partyFood,
+      gold: _partyGold,
+      etc: _sourceEtc,
+    ),
+  );
+
+  /// LOREMENU `QuickView` (hotkey Q or SelectMode 3).
+  Future<void> _runQuickView() async =>
+      _printLines(LoreViewProcedures.quickView(_party));
+
+  /// LOREMENU `ViewCharacter` (hotkey V or SelectMode 2): the prompt and
+  /// `ChooseWhom`, the first page with `PressAnyKey`, then the second page.
+  Future<void> _runViewCharacter() async {
+    final slots = [
+      for (var i = 0; i < _party.length && i < 6; i++)
+        if (_party[i].name.isNotEmpty) i,
+    ];
+    final k = await showLoreSelectDialog(
+      context,
+      title: '',
+      items: [for (final i in slots) _party[i].name],
+      lines: const [
+        (15, LoreMenuText.viewCharWho),
+        (10, LoreSubText.chooseOne),
+      ],
     );
+    if (k == 0 || !mounted) return;
+    final member = _party[slots[k - 1]];
+    await showLoreMessageDialog(
+      context,
+      lines: LoreViewProcedures.characterPage1(member),
+    );
+    if (!mounted) return;
+    _printLines(LoreViewProcedures.characterPage2(member));
   }
 
   Future<void> _openEspDialog() async {
@@ -1253,11 +1292,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (!mounted) return;
     switch (k) {
       case 1:
-        await _openFieldMenuDialog(initialTab: FieldMenuTab.partyView);
+        await _runViewParty();
       case 2:
-        await _openFieldMenuDialog(initialTab: FieldMenuTab.characterView);
+        await _runViewCharacter();
       case 3:
-        await _openQuickViewDialog();
+        await _runQuickView();
       case 4:
         await _runCastSpell();
       case 5:
@@ -1267,27 +1306,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       case 7:
         await _runGameOption();
     }
-  }
-
-  Future<void> _openFieldMenuDialog({required FieldMenuTab initialTab}) async {
-    await showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (ctx) => FieldMenuDialog(
-        party: _party,
-        gold: _partyGold,
-        food: _partyFood,
-        currentMapId: _game.currentMapId,
-        playerX: _game.playerX,
-        playerY: _game.playerY,
-        initialTab: initialTab,
-        etc: _sourceEtc.fieldCounters(),
-        onMindReadActivated: (count) {
-          setState(() => _mindReadCount = count);
-        },
-        onLog: (msg) => _addLog(msg),
-      ),
-    );
   }
 
   /// LOREMENU `CastSpell` (hotkey C or SelectMode item 4).
@@ -1799,7 +1817,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   GestureDetector(
                     onTap: () async {
                       if (_entryAnimationActive) return;
-                      await _openQuickViewDialog();
+                      await _runQuickView();
                       _redispatchCurrentTileAfter(FieldAction.quickView);
                     },
                     child: Container(
@@ -1957,11 +1975,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 LoreDialogueManager.instance.setBattleResult(0);
                 await _runSelectMode();
               case FieldAction.viewParty:
-                await _openFieldMenuDialog(initialTab: FieldMenuTab.partyView);
+                await _runViewParty();
               case FieldAction.viewCharacter:
-                await _openFieldMenuDialog(
-                  initialTab: FieldMenuTab.characterView,
-                );
+                await _runViewCharacter();
               case FieldAction.castSpell:
                 await _runCastSpell();
               case FieldAction.rest:
@@ -1971,7 +1987,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
               case FieldAction.toggleSound:
                 setState(() => AudioManager.instance.toggleMute());
               case FieldAction.quickView:
-                await _openQuickViewDialog();
+                await _runQuickView();
               case FieldAction.extrasense:
                 await _openEspDialog();
               case FieldAction.none:

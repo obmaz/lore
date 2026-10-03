@@ -513,6 +513,16 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     사망·독 7, 회복 15)으로 키 대기 창에 나오고, 뒤이어 etc[1] 1 감소, etc[2..4] := 0, 이름 있는
     대원의 SP/ESP 회복, `SimpleDisCond`, `PressAnyKey`이다.
 
+43. LOREMENU `ViewParty`(`P`, 1번), `ViewCharacter`(`V`, 2번), `QuickView`(`Q`, 3번)를 옮겼다
+    (`lib/logic/lore_view_procedures.dart`). 원본은 오른쪽 창에 쓰고 키를 기다리지 않으므로
+    `ViewParty`의 여덟 줄과 `QuickView`의 표는 메시지 기록(창)에 나온다. `ViewCharacter`는 안내와
+    `ChooseWhom` 뒤 첫 쪽(이름·성별·계급·능력치 일곱)을 `아무키나 누르십시오 ...`로 기다리고, 둘째 쪽
+    (정확성·레벨·경험치·무기, 0이 아닐 때만 방패/갑옷)은 창에 남는다. 계급·무기·방패·갑옷 이름은
+    `ReturnClass`/`ReturnWeapon`/`ReturnDefense`이다(예전 화면은 `PartyMember`의 원본에 없는 방패·
+    갑옷 이름을 썼다). 예전 일행 상황 화면의 대원 표(HP/SP·장비), 개인 상황의 한 쪽 표시, 건강 상태
+    표 창과 닫기 버튼, 메뉴 대화상자(`FieldMenuDialog`, `QuickViewDialog`)는 없앴다. 어댑터: 화면
+    좌표는 글자 칸(8픽셀, 한글 두 칸)으로 바꿨고 색은 기록에 나오지 않는다.
+
 다음 묶음은 LOREMENU 개인·일행 상황·건강 상태·초감각·휴식 화면의 원본 흐름, LOREMAIN 위치 블록
 연쇄 처리와 이식 전체의 DOS 실행 대조이다.
 
