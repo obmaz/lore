@@ -43564,7 +43564,7 @@
     {
       "path": "test/audio_manager_mapping_test.dart",
       "kind": "test",
-      "sha256": "7142b55b93a69fc12d18749ee716222146210e8c988cb5009383735c706e319f",
+      "sha256": "603ef9ff1e9ddd57e6a5d921b3918ca95b0b2499032558c13d9456fe4a5f315d",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -43573,7 +43573,7 @@
     {
       "path": "test/battle_key_wait_test.dart",
       "kind": "test",
-      "sha256": "b4b896769fceaa4fd8013459a58368c0c051a12065b28ea500c9eeb8f2be40f3",
+      "sha256": "97900e479796a4b35bb4b26709d270e3b0e0bd1cd4c1a5f182cfd06db49f61dd",
       "cited_source_files": [
         "LOREBATT.PAS"
       ],
@@ -43770,7 +43770,7 @@
     {
       "path": "test/game_over_test.dart",
       "kind": "test",
-      "sha256": "afabd163b37c9597ae8bf79106b4f001e0895c16fac37959ae2d5ec534b36be7",
+      "sha256": "7038c6858024979757cb857bddd39a8383f4a21c7bf66ac4ad2afb38672ce236",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LORESUB.PAS"
@@ -43823,7 +43823,7 @@
     {
       "path": "test/lore_battle_test.dart",
       "kind": "test",
-      "sha256": "eb7ee31f5462e25da6213cbfb9ed72820310257ac75ceace5216cde64466cb3b",
+      "sha256": "243a7f1aee678caad1c07670515e6172bd1c94692ac01e53b093cdd13e3f1123",
       "cited_source_files": [
         "LOREBATT.PAS"
       ],
@@ -43832,7 +43832,7 @@
     {
       "path": "test/lore_cast_spell_test.dart",
       "kind": "test",
-      "sha256": "54a455504362f4cb3faafbf1a328b4c15f676ef12d1da59d3abedf702491229e",
+      "sha256": "26f4efc2b895b4d0e9d6195a8d0ec60345aa808901bb39d60f29f68e7d02a74a",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -43957,7 +43957,7 @@
     {
       "path": "test/lore_spec_map18_test.dart",
       "kind": "test",
-      "sha256": "01170c071028020b1f7550d5989b0c378758ce3bbc68d9b81bcbc9060ba44653",
+      "sha256": "63026f0d74e87a34bf4a0acc0ec417071173acd36a75cf4f7c93e04bc0fd9680",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -44020,7 +44020,7 @@
     {
       "path": "test/lore_spec_map24_test.dart",
       "kind": "test",
-      "sha256": "07db4400b8ae976bf1a61a4515250f3b79c5f88c16f6f8e6c85c05d5a9da9e6e",
+      "sha256": "2169d3afa98c8f89ec16fa5d1359359576ef12c017308f2e4e5e9474a10afac2",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -44074,7 +44074,7 @@
     {
       "path": "test/lore_spec_map7_8_test.dart",
       "kind": "test",
-      "sha256": "69f243431cb8292ebeb16d398b83c46047094ebb9038ec4ec9bcef5041236e08",
+      "sha256": "9191fef1c0d3609645329155ebe84d5474513049148ecdbafa1cb70244fb37c2",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -44092,14 +44092,14 @@
     {
       "path": "test/lore_talk_all_maps_test.dart",
       "kind": "test",
-      "sha256": "c3c9070037c8bb23baf147495e9e140eca7488177ee400e8d451eb379c7993c8",
+      "sha256": "7f4f406681fddc88cdb986cacc4ede6ecc1249dcc1765b9cc430475852b84840",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
       "path": "test/lore_talk_map6_test.dart",
       "kind": "test",
-      "sha256": "3bd9e690e39c2d7ca4b5e8d5d245b7b0f2cb2166ccf12eca12aad8bea68ce4ea",
+      "sha256": "a19bfdba2264bd53e6cc23d58974984ca9df748909a0189c6366b52073ea1f19",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
@@ -44151,7 +44151,7 @@
     {
       "path": "test/map12_state_parity_test.dart",
       "kind": "test",
-      "sha256": "c7889fe7e0bd93d3312aca88dc40226cb3bf8a9fbaac7bf80c5e5ceb0521a675",
+      "sha256": "113b5ccaca3f1c9c83ea60b75c7d6c107406f0343bde734043ab7c2ac932dd32",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -44169,7 +44169,7 @@
     {
       "path": "test/map1_food_parity_test.dart",
       "kind": "test",
-      "sha256": "74b3dd791407bee9092fa20b0040851b6c54aa8c32a8cf41444fabdfee0cb79f",
+      "sha256": "f7f2d9ba6b478e31e81952cd856043dfd5f62c9d4c8307b7474269e58e09bbfb",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -44206,7 +44206,7 @@
     {
       "path": "test/map24_talk_parity_test.dart",
       "kind": "test",
-      "sha256": "bd33adb3890f0e6db4aac29da6d9d9cd4780ee21d2f8634a379f794bb8a87ffb",
+      "sha256": "6274c55c94170a6cb7317e7a8c8cafe37ab8c08ad17fbde7f386c2172c0ba38b",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
@@ -44320,7 +44320,7 @@
     {
       "path": "test/return_condition_test.dart",
       "kind": "test",
-      "sha256": "0ed632cb119ec2caef0194aec17f4fa16b3bf0fdf98fa2928b6cbc393e7b3857",
+      "sha256": "41a75170247f784d6e5340861e59c7a0d9fd9a0e7a6462d643dc826a649f338c",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -44350,14 +44350,14 @@
     {
       "path": "test/script_battle_session_test.dart",
       "kind": "test",
-      "sha256": "605dee44edab29343395df905de9d6fc69cf39279e84b1cd1442d66119aff690",
+      "sha256": "4b13801ec7a1bd465fbfca3c289d1465f7789ca033a79b44e942d64c6871a57a",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
       "path": "test/script_branch_matrix_test.dart",
       "kind": "test",
-      "sha256": "105969b85a47127f709282c86fa9a454071d69beac7411c6cccbf793f90de648",
+      "sha256": "f5a9ca7b568a3112da04f394d5df1189857840db948ac42d8d4cc26f96ffd1f4",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -44470,7 +44470,7 @@
     {
       "path": "test/source_gold_replay_test.dart",
       "kind": "test",
-      "sha256": "14ccd4628e2e0f60593a34407ddf64155df0365572e753cd4864eae0b1f60314",
+      "sha256": "db7839e8853938b9eb82bfca0e3200ac1a3a374e1f8e8717f29d4bad29ae0929",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -45007,7 +45007,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "2504f5789a6dbbb838de4b4fee70f3c942379f51b2b843a41f7bdee41027affe"
+      "sha256": "f747d2de1a301998b915d72d8767071622cea10349618ddb0eb0659f7d224236"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
