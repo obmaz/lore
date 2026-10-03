@@ -13,7 +13,8 @@ import '../models/monster.dart';
 import '../models/party_member.dart';
 import '../models/spell.dart';
 import '../data/lore_data.dart';
-import '../logic/field_magic_logic.dart';
+import '../logic/lore_cast_spell.dart';
+import 'lore_select_view.dart';
 import '../logic/lore_battle.dart';
 import '../game/lore_dialogue_manager.dart';
 
@@ -365,105 +366,27 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
-
-    showDialog<void>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: RetroTheme.black,
-        shape: Border.all(color: RetroTheme.lightGreen, width: 2),
-        title: Text(
-          '누구에게',
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 13,
-          ),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ...widget.partyMembers.where((m) => m.name.isNotEmpty).map((m) {
-              return ListTile(
-                dense: true,
-                title: Text(
-                  m.name,
-                  style: RetroTheme.dosFont.copyWith(
-                    color: RetroTheme.white,
-                    fontSize: 11,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pop(ctx);
-                  _showSingleCureSpells(player, m);
-                },
-              );
-            }),
-            ListTile(
-              dense: true,
-              title: Text(
-                '모든 사람들에게',
-                style: RetroTheme.dosFont.copyWith(
-                  color: RetroTheme.yellow,
-                  fontSize: 11,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(ctx);
-                _showAllCureSpells(player);
-              },
-            ),
-          ],
-        ),
-      ),
-    ).then((_) {
-      // `whom = 0 → exit`: 취소해도 그 사람의 차례는 지나간다.
-      if (!_cureDecided) _commitCure();
-      _cureDecided = false;
-    });
+    unawaited(_runCureSpell(player));
   }
 
-  /// 치료 흐름이 이미 결정(적용 또는 거절)되었는지.
-  bool _cureDecided = false;
+  void _redraw() {
+    if (mounted) setState(() {});
+  }
 
-  void _commitCure() {
-    if (_battleEnded) return;
+  /// `5 : CureSpell`: LOREMENU's procedure runs at once, while the commands
+  /// are being chosen (`party.etc[6] = 1`, so refusals and `SPnotEnough` stay
+  /// silent), and the turn of [caster] then holds `battle[person,1] = 5`.
+  Future<void> _runCureSpell(PartyMember caster) async {
+    setState(() => _isTurnProcessing = true);
+    await LoreCastSpell.cureSpell(
+      _BattleCureIo(this),
+      widget.partyMembers,
+      caster,
+      quiet: true,
+    );
+    if (!mounted || _battleEnded) return;
+    setState(() => _isTurnProcessing = false);
     _select(5, 0, 0);
-  }
-
-  void _showSingleCureSpells(PartyMember caster, PartyMember target) {
-    _cureDecided = true;
-    final spells = LoreData.instance.spells
-        .where((s) => s.category == SpellCategory.singleCure)
-        .toList();
-    _showSpellDialog('선택', spells, caster, (spell) {
-      FieldMagicLogic.castPersonalCure(
-        caster,
-        target,
-        spell.id - 18,
-        inBattle: true,
-      ).messages.forEach(widget.onLog);
-      _commitCure();
-    }, onCancel: _commitCure);
-  }
-
-  void _showAllCureSpells(PartyMember caster) {
-    _cureDecided = true;
-    if (FieldMagicLogic.groupCureSlots(caster.magicLevel) < 0) {
-      widget.onLog(FieldMagicLogic.strongCureNotReady(caster.name));
-      _commitCure();
-      return;
-    }
-    final spells = LoreData.instance.spells
-        .where((s) => s.category == SpellCategory.allCure)
-        .toList();
-    _showSpellDialog('선택', spells, caster, (spell) {
-      FieldMagicLogic.castGroupCure(
-        caster,
-        widget.partyMembers,
-        spell.id - 25,
-        inBattle: true,
-      ).messages.forEach(widget.onLog);
-      _commitCure();
-    }, onCancel: _commitCure);
   }
 
   // ==========================================
@@ -832,5 +755,45 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         ),
       ),
     );
+  }
+}
+
+/// [LoreCureSpellIo] inside the battle: selects and `Talk` as dialogs, the
+/// texts also go to the battle log, `SimpleDisCond` normalizes the party.
+class _BattleCureIo implements LoreCureSpellIo {
+  _BattleCureIo(this._view);
+
+  final _BattleViewportViewState _view;
+
+  @override
+  Future<int> select(
+    String title,
+    List<String> items, {
+    int? maxsum,
+    List<(int, String)> lines = const [],
+  }) async {
+    if (!_view.mounted) return 0;
+    return showLoreSelectDialog(
+      _view.context,
+      title: title,
+      items: items,
+      maxsum: maxsum,
+      lines: lines,
+    );
+  }
+
+  @override
+  Future<void> talk(List<(int, String)> lines) async {
+    if (!_view.mounted) return;
+    for (final (_, text) in lines) {
+      if (text.isNotEmpty) _view.widget.onLog(text);
+    }
+    await showLoreMessageDialog(_view.context, lines: lines);
+  }
+
+  @override
+  void displayCondition() {
+    PartyMember.simpleDisCond(_view.widget.partyMembers);
+    _view._redraw();
   }
 }

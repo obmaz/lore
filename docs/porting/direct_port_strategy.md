@@ -610,9 +610,7 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     화면을 눌러 계속한다. 적이 한 번씩 행동할 때마다의 효과음 대기와 적 단계 메시지의 한 줄씩 출력은
     아직 한꺼번에 처리된다(남은 차이). 파티원 행동 사이의 150ms 지연은 화면 갱신용 어댑터로 남겼다
     (원본에 없음). 수정키(Shift/Ctrl/Alt/Caps 등)만 누르면 `ReadKey`처럼 대기가 풀리지 않고, 대기를 푸는
-    누름이 적 줄을 눌렀어도 대상은 바뀌지 않는다. 전투의 일행 치료(`5 : CureSpell`)는 아직 CureSpell
-    본문(빈 칸 대상 항목, `level[2] div 2 + 1`개 마법, 끝의 빈 줄 두 개·`SimpleDisCond`·키 대기,
-    `강한 치료 마법` 거절의 키 대기)을 따르지 않는다(남은 차이).
+    누름이 적 줄을 눌렀어도 대상은 바뀌지 않는다.
 
 50. LORESUB `Scroll`의 굴 어둠을 옮겼다(`LoreGame._renderDarkness`). `position = den`이고
     `party.etc[1] = 0`(마법의 횃불이 꺼짐)이면 지도도 파티도 그리지 않고 검은 화면에 회색(8) `어둠`만
@@ -620,6 +618,15 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     밝게 그렸다. 어댑터: 원본 9×9 창(`bar(20,20,200,200)`, `HPrintXY(94,96,..)`) 대신 11×11 뷰 전체에
     가운데 글자로 그린다. `AuxScroll`(투사체 연출)은 같은 검사에서 영문 `Darkness`를 `outtextxy(78,100)`로
     쓰지만 이 앱에는 별도 경로가 없어 `어둠` 하나로 통일했다(기록된 차이).
+
+51. LOREBATT `5 : CureSpell`을 LOREMENU `CureSpell` 본문으로 바꿨다(`LoreCastSpell.cureSpell(quiet: true)`,
+    `LoreCureSpellIo`). 명령을 고르는 동안 곧바로 실행되고(`party.etc[6] = 1`이라 거절 문구와
+    `SPnotEnough`는 나오지 않는다), `누구에게`는 player[1..6]의 이름 그대로(빈 칸도 항목)와 `모든
+    사람들에게`, 마법 수는 `level[2] div 2 + 1`(전체는 `level[2] div 2 - 3`), 끝에 빈 줄 두 개와
+    `SimpleDisCond`·키 대기가 있고 `강한 치료 마법` 거절도 키를 기다린다. 끝나면 그 대원의
+    `battle[person,1]`은 5로 남아 차례가 넘어간다. 예전 전투 화면의 대상 목록(이름 있는 대원만),
+    JSON 마법 목록, 키 대기 없는 즉시 적용은 없앴다. 어댑터: 결과 문구는 선택 창 위에 보이고 전투
+    기록에도 남는다.
 
 남은 차이(기록): 적 차례 메시지는 한꺼번에 나온다; `SoundOn`은 투시·
 천리안에서 바꾸지 않는다. 다음 묶음은 도착 칸 처리와 특수 칸 그림의 DOS 확인, 이식 전체의 DOS 실행

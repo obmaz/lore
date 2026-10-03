@@ -12,7 +12,8 @@ import 'lore_menu_text.dart';
 import 'lore_source_memory.dart';
 import 'lore_sub_text.dart';
 
-abstract interface class LoreCastSpellIo {
+/// What `CureSpell` needs: it also runs inside `BattleMode` (`5 : CureSpell`).
+abstract interface class LoreCureSpellIo {
   /// `Select` with the texts printed above it; 0 = Esc.
   Future<int> select(
     String title,
@@ -24,6 +25,11 @@ abstract interface class LoreCastSpellIo {
   /// `Print` lines followed by `PressAnyKey` (`Talk` is one line).
   Future<void> talk(List<(int, String)> lines);
 
+  /// `SimpleDisCond` / `displaySP`.
+  void displayCondition();
+}
+
+abstract interface class LoreCastSpellIo implements LoreCureSpellIo {
   /// `Message(color, s)`: the window is cleared and [text] printed; no key.
   void message(int color, String text);
 
@@ -49,9 +55,6 @@ abstract interface class LoreCastSpellIo {
   void moveTo(int x, int y);
   int get food;
   set food(int value);
-
-  /// `SimpleDisCond` / `displaySP`.
-  void displayCondition();
 }
 
 class LoreCastSpell {
@@ -117,7 +120,7 @@ class LoreCastSpell {
   /// guarded by `if party.etc[6] = 0`, so [quiet] (`etc[6] <> 0`) drops them.
   /// Space clears `etc[6]` before `SelectMode`; the hotkey `C` does not.
   static Future<void> cureSpell(
-    LoreCastSpellIo io,
+    LoreCureSpellIo io,
     List<PartyMember> party,
     PartyMember caster, {
     bool quiet = false,
