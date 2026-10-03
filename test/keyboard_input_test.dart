@@ -237,12 +237,13 @@ void main() {
         findsOneWidget,
       );
 
-      // E -> 초능력을 사용한다
+      // E -> Extrasense starts with ChooseWhom; Esc ends it.
       await tester.sendKeyEvent(LogicalKeyboardKey.keyE);
       await settle(tester);
-      expect(find.text(LoreMenuText.selectModeEsp), findsOneWidget);
-      await tester.tap(find.byKey(const ValueKey('esp-close')));
+      expect(find.text(LoreSubText.chooseOne), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
       await settle(tester);
+      expect(find.text(LoreSubText.chooseOne), findsNothing);
     });
   });
 }

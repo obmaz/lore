@@ -27,6 +27,7 @@ import '../logic/script_world_reducer.dart';
 import '../logic/lore_join.dart';
 import '../logic/town_logic.dart';
 import '../logic/lore_cast_spell.dart';
+import '../logic/lore_extrasense.dart';
 import '../logic/lore_view_procedures.dart';
 import '../logic/lore_game_option.dart';
 import '../logic/lore_game_over.dart';
@@ -47,7 +48,6 @@ import '../widgets/battle_viewport_view.dart';
 import '../widgets/encounter_viewport_view.dart';
 import '../widgets/town_facilities_dialog.dart';
 import '../widgets/script_scene_dialog.dart';
-import '../widgets/esp_dialog.dart';
 import '../game/lore_map_manager.dart';
 import '../services/save_manager.dart';
 import '../game/lore_dialogue_manager.dart';
@@ -1242,19 +1242,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
     _printLines(LoreViewProcedures.characterPage2(member));
   }
 
-  Future<void> _openEspDialog() async {
-    await showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (ctx) => EspDialog(
-        party: _party,
-        onLog: (msg) => _addLog(msg),
-        onMindReadActivated: (count) {
-          setState(() => _mindReadCount = count);
-        },
-      ),
-    );
-  }
+  /// LOREMENU `Extrasense` (hotkey E or SelectMode 5).
+  Future<void> _openEspDialog() =>
+      LoreExtrasense.run(_ScreenExtrasenseIo(this), _party, _sourceEtc);
 
   void _openTownFacilityDialog(TownFacilityType type) {
     showDialog(
@@ -1316,11 +1306,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   /// `etc[1]` drops by one, `etc[2..4] := 0`, SP/ESP refill, `SimpleDisCond`
   /// and `PressAnyKey`.
   Future<void> _runRest() async {
-    final outcome = TownLogic.rest(
-      _party,
-      _partyFood,
-      torchSteps: _torchSteps,
-    );
+    final outcome = TownLogic.rest(_party, _partyFood, torchSteps: _torchSteps);
     setState(() {
       _partyFood = outcome.food;
       _torchSteps = outcome.torchSteps;
@@ -2197,4 +2183,100 @@ class _ScreenCastSpellIo implements LoreCastSpellIo {
 
   @override
   void displayCondition() => _screen._refresh();
+}
+
+/// [LoreExtrasense] on the game screen: selects and `Talk` as dialogs,
+/// `Message` in the message log, 투시 and 천리안 through the map view.
+class _ScreenExtrasenseIo implements LoreExtrasenseIo {
+  _ScreenExtrasenseIo(this._screen);
+
+  final _MainGameScreenState _screen;
+  final LoreKeyWait _wait = LoreKeyWait();
+
+  @override
+  Future<int> select(
+    String title,
+    List<String> items, {
+    List<(int, String)> lines = const [],
+  }) async {
+    if (!_screen.mounted) return 0;
+    return showLoreSelectDialog(
+      _screen.context,
+      title: title,
+      items: items,
+      lines: lines,
+    );
+  }
+
+  @override
+  Future<void> talk(List<(int, String)> lines) async {
+    if (!_screen.mounted) return;
+    await showLoreMessageDialog(_screen.context, lines: lines);
+  }
+
+  @override
+  void message(int color, String text) => _screen._addLog(text);
+
+  @override
+  Future<void> seeThrough(String text) async {
+    if (!_screen.mounted) return;
+    _screen._game.seeThroughSpecial = true;
+    _screen._refresh();
+    await showLoreMessageDialog(
+      _screen.context,
+      lines: [(15, text)],
+      transparentBarrier: true,
+    );
+    _screen._game.seeThroughSpecial = false;
+    if (_screen.mounted) _screen._refresh();
+  }
+
+  @override
+  void clairvoyanceBegin() {
+    if (!_screen.mounted) return;
+    unawaited(
+      showLoreKeyWaitOverlay(
+        _screen.context,
+        wait: _wait,
+        lines: const [
+          (15, LoreMenuText.espClairvoyanceBusy),
+          (14, LoreMenuText.espPressKey),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Future<bool> clairvoyanceStep(int x, int y) async {
+    _screen._game.peekAt(x, y);
+    _screen._refresh();
+    // `LoreKeyWait.next` is true for Esc; the procedure wants false for Esc.
+    return !await _wait.next();
+  }
+
+  @override
+  void clairvoyanceEnd() {
+    if (!_screen.mounted) return;
+    Navigator.of(_screen.context).pop();
+    _screen._game.clearPeek();
+    _screen._refresh();
+  }
+
+  @override
+  int get x => _screen._game.playerX;
+
+  @override
+  int get y => _screen._game.playerY;
+
+  @override
+  int get xmax => _screen._game.currentMap?.xmax ?? 0;
+
+  @override
+  int get ymax => _screen._game.currentMap?.ymax ?? 0;
+
+  @override
+  int get mapId => _screen._game.currentMapId;
+
+  @override
+  void displayEsp() => _screen._refresh();
 }

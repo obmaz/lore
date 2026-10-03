@@ -90,6 +90,10 @@ class LoreGame extends FlameGame {
   /// 연출 중인지(플레이어 스프라이트를 감출지) 여부.
   bool get isPeeking => peekX != null && peekY != null;
 
+  /// 투시(`Extrasense` 1): `font^[0]`(den/keep은 `font^[52]`도)을 0으로 지워 특수
+  /// 칸을 검게 보이게 한다.
+  bool seeThroughSpecial = false;
+
   /// 원작 `scroll(FALSE)`: 시야를 (x, y)로 옮긴다(파티는 이동하지 않는다).
   void peekAt(int x, int y) {
     peekX = x;
@@ -545,6 +549,14 @@ class LoreGame extends FlameGame {
 
         final tileVal = currentMap!.getTile(worldX, worldY);
         final cat = currentMap!.getCategory(tileVal);
+
+        if (seeThroughSpecial &&
+            (tileVal == 0 ||
+                (tileVal == 52 &&
+                    (mapCat == MapCategory.den || mapCat == MapCategory.keep)))) {
+          canvas.drawRect(rect, Paint()..color = const Color(0xFF000000));
+          continue;
+        }
 
         // 1순위: 이미지 파일(PNG) 스프라이트 시트
         final tileSheet = SpriteLibrary.instance.get(tileFontName);

@@ -9929,6 +9929,556 @@
       "test": "test/keyboard_input_test.dart",
       "note": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu.",
       "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:case:1",
+      "line": 649,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:1",
+      "line": 655,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:2",
+      "line": 655,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:case:2",
+      "line": 656,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:3",
+      "line": 661,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:case:3",
+      "line": 662,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:4",
+      "line": 671,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:5",
+      "line": 671,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:6",
+      "line": 672,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:7",
+      "line": 673,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:case:4",
+      "line": 674,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:8",
+      "line": 682,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:9",
+      "line": 684,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:10",
+      "line": 685,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:11",
+      "line": 686,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:12",
+      "line": 688,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:if:13",
+      "line": 689,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:returnpredict:1:case:5",
+      "line": 690,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:1",
+      "line": 742,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:1",
+      "line": 742,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:2",
+      "line": 743,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:2",
+      "line": 746,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:3",
+      "line": 748,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:3",
+      "line": 750,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:for:1",
+      "line": 753,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:4",
+      "line": 755,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:4",
+      "line": 757,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:case:1",
+      "line": 759,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:5",
+      "line": 761,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:5",
+      "line": 763,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:6",
+      "line": 765,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:6",
+      "line": 767,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:for:2",
+      "line": 772,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:7",
+      "line": 773,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:for:3",
+      "line": 775,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:8",
+      "line": 781,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:9",
+      "line": 787,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:7",
+      "line": 789,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:10",
+      "line": 794,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:11",
+      "line": 803,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:8",
+      "line": 805,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:12",
+      "line": 811,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:9",
+      "line": 813,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:13",
+      "line": 815,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:10",
+      "line": 817,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:for:4",
+      "line": 825,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:14",
+      "line": 828,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:exit:11",
+      "line": 828,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:case:2",
+      "line": 830,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:for:5",
+      "line": 839,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:for:6",
+      "line": 847,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:15",
+      "line": 849,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:16",
+      "line": 855,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:if:17",
+      "line": 856,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREMENU.PAS:extrasense:1:goto:1",
+      "line": 856,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_extrasense.dart",
+      "test": "test/lore_extrasense_test.dart",
+      "note": "Extrasense and ReturnPredict ported directly: ChooseWhom, exist and class/etc[38] gates, five-item Select, see-through (map > 24 blocked, ESP 10, special cells blanked), prophecy (ESP 5, ReturnPredict over etc[10,13,14,15,40,41] and the map), mind reading (ESP 20 required, etc[5] := 3, no cost), clairvoyance (map > 24 blocked, ESP level*5 after the direction, per-step view with key wait, Esc exit, bounds skip) and DisplayESP. cPrint's two colors become one line; SoundOn is not toggled.",
+      "verification": "partial"
     }
   ]
 }

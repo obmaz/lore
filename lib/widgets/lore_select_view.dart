@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -72,9 +74,11 @@ Future<int> showLoreSelectDialog(
 Future<void> showLoreMessageDialog(
   BuildContext context, {
   required List<(int, String)> lines,
+  bool transparentBarrier = false,
 }) => showDialog<void>(
   context: context,
   barrierDismissible: false,
+  barrierColor: transparentBarrier ? Colors.transparent : null,
   builder: (ctx) => _PressAnyKeyDialog(lines: lines),
 );
 
@@ -408,6 +412,104 @@ class _SpacePowerDialogState extends State<_SpacePowerDialog> {
               ],
             ),
           ],
+        ),
+      ),
+    ),
+  );
+}
+
+/// 천리안's `print(15,'천리안의 사용중 ...')` and `아무키나 누르시오 ...` shown
+/// over the map while the view scrolls; every key (Esc = true in [press]'s
+/// `escape`) or tap releases the wait of [LoreKeyWait.next].
+class LoreKeyWait {
+  Completer<bool>? _wait;
+
+  /// Completes with true when the key was Esc.
+  Future<bool> next() {
+    final wait = Completer<bool>();
+    _wait = wait;
+    return wait.future;
+  }
+
+  void press({bool escape = false}) {
+    final wait = _wait;
+    _wait = null;
+    if (wait != null && !wait.isCompleted) wait.complete(escape);
+  }
+}
+
+/// Opens the overlay; close it with `Navigator.pop` on the returned route's
+/// context (the caller keeps the dialog future and pops via [BuildContext]).
+Future<void> showLoreKeyWaitOverlay(
+  BuildContext context, {
+  required LoreKeyWait wait,
+  required List<(int, String)> lines,
+}) => showDialog<void>(
+  context: context,
+  barrierDismissible: false,
+  barrierColor: Colors.transparent,
+  builder: (ctx) => _KeyWaitOverlay(wait: wait, lines: lines),
+);
+
+class _KeyWaitOverlay extends StatefulWidget {
+  const _KeyWaitOverlay({required this.wait, required this.lines});
+
+  final LoreKeyWait wait;
+  final List<(int, String)> lines;
+
+  @override
+  State<_KeyWaitOverlay> createState() => _KeyWaitOverlayState();
+}
+
+class _KeyWaitOverlayState extends State<_KeyWaitOverlay> {
+  final FocusNode _focus = FocusNode(debugLabel: 'KeyWaitOverlay');
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) _focus.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    _focus.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Focus(
+    focusNode: _focus,
+    autofocus: true,
+    onKeyEvent: (_, event) {
+      if (event is! KeyDownEvent) return KeyEventResult.ignored;
+      widget.wait.press(escape: event.logicalKey == LogicalKeyboardKey.escape);
+      return KeyEventResult.handled;
+    },
+    child: GestureDetector(
+      key: const ValueKey('lore-key-wait'),
+      behavior: HitTestBehavior.opaque,
+      onTap: widget.wait.press,
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          margin: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(8),
+          color: RetroTheme.black.withValues(alpha: 0.85),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              for (final (color, text) in widget.lines)
+                Text(
+                  text,
+                  style: RetroTheme.dosFont.copyWith(
+                    color: RetroTheme.ega(color),
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     ),

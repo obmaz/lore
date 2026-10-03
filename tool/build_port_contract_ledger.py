@@ -350,6 +350,7 @@ def port_rule_sources():
         "lib/logic/lore_game_option.dart",
         "lib/logic/lore_cast_spell.dart",
         "lib/logic/lore_view_procedures.dart",
+        "lib/logic/lore_extrasense.dart",
         "lib/widgets/lore_select_view.dart",
         "lib/widgets/script_scene_dialog.dart",
         "docs/audits/contract_evidence.json",
