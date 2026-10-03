@@ -43674,7 +43674,7 @@
     {
       "path": "test/dialogue_window_test.dart",
       "kind": "test",
-      "sha256": "98452d704b46df950382b01463aea93139a51bf05b963c731ef9ad54736c78d6",
+      "sha256": "d607bacc2487c6d15d5c076419c2c0cc842cbf9c117aad3e92c39adc830ca6cd",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
@@ -44928,7 +44928,7 @@
     },
     {
       "path": "assets/data/scripts.json",
-      "sha256": "b29e322a2482bd6717076d6190e1e1ce4a29b8ed9b2b86702846a670a25cfa99",
+      "sha256": "756cd85a1a12acec8b91f4769fe10d43a6551feabd8f12f93c99c5dcd2737ebf",
       "top_level_counts": {
         "scripts": 599
       }
@@ -44942,7 +44942,7 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "ae77ec04f94dca38c94df69fc1763eb10784a5087dfca3e4c7e99a13fcacc462"
+      "sha256": "048eee1da78a251f5c2c843c64ed9853b778fe5f86f1079c2a8d0686aab7b955"
     },
     {
       "path": "lib/game/lore_game.dart",
@@ -45018,7 +45018,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "4ccbe1aec3100d5626a421b4bea13c2d5adab0d0cfdb90687d8a00a9558ba799"
+      "sha256": "a1265284fbb39f0bacdabf23482caf850b21bfe4e0d3f0618f3485e49f0d1012"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
