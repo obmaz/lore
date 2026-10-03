@@ -13,6 +13,8 @@ import 'package:lore/main.dart';
 /// 1) 원작 `LOREMAIN.PAS Main` 루프의 핫키(P/V/Q/C/E/R/G/Space) 매핑 단위 테스트
 /// 2) `LoreGame.handleKeyEvent`의 방향키/WASD 이동 경로 검증
 /// 3) 실제 위젯 트리에 키 이벤트를 보내 UI가 열리는지 확인하는 통합 테스트
+/// LOREMAIN.PAS `Main` hotkeys (P/V/Q/C/E/R/G, Space) and LOREMENU.PAS
+/// `SelectMode`.
 void main() {
   KeyDownEvent keyDown(LogicalKeyboardKey key) => KeyDownEvent(
     physicalKey: PhysicalKeyboardKey.arrowRight,
