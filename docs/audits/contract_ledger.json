@@ -43541,6 +43541,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/battle_key_wait_test.dart",
+      "kind": "test",
+      "sha256": "b4b896769fceaa4fd8013459a58368c0c051a12065b28ea500c9eeb8f2be40f3",
+      "cited_source_files": [
+        "LOREBATT.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/battle_menu_text_test.dart",
       "kind": "test",
       "sha256": "5ebb11e80d8d27b587acbb4d4f334243a485d325965682f3c7e7c0820ad9d561",
@@ -43561,7 +43570,7 @@
     {
       "path": "test/battle_viewport_join_test.dart",
       "kind": "test",
-      "sha256": "285ac21c97fdfadbb06c44e64e24ff308af2f387b1962b32abd4d7decb61fbd4",
+      "sha256": "26f875a905a55ecb97da5c91243421bb3957d71f8500f34b683d99e7e5f4bbfd",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
