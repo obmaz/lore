@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import '../game/lore_world_manager.dart';
 import '../models/party_member.dart';
 import 'field_hotkeys.dart';
 import 'lore_lava_logic.dart';
@@ -26,6 +27,21 @@ class LoreMainProcedures {
         FieldAction.gameOption => true,
         FieldAction.toggleSound || FieldAction.none => false,
       };
+
+  /// The order of LOREMAIN `Main`'s four `if position = ...` blocks:
+  /// town, ground, den, keep.
+  static int positionRank(MapCategory? category) => switch (category) {
+    MapCategory.town || null => 0,
+    MapCategory.ground => 1,
+    MapCategory.den => 2,
+    MapCategory.keep => 3,
+  };
+
+  /// After the block for [startMap] ran, a map loaded inside it makes every
+  /// later block whose position matches dispatch the arrival cell again.
+  static bool dispatchesArrivalCell(int startMap, int currentMap) =>
+      positionRank(LoreWorldManager.mapRegistry[currentMap]?.category) >
+      positionRank(LoreWorldManager.mapRegistry[startMap]?.category);
 
   /// Shared body of the poison loop in `Move_Mode` and `enter_swamp`.
   /// Returns Pascal's `j`: the number of members whose poison reached 11.

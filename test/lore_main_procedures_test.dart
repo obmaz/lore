@@ -260,6 +260,18 @@ void main() {
     },
   );
 
+  test('Main dispatches the arrival cell only for a later position block', () {
+    // town 6, ground 1, den 14, keep 21 (LOREMAIN.PAS:211-290 order).
+    expect(LoreMainProcedures.dispatchesArrivalCell(6, 1), isTrue);
+    expect(LoreMainProcedures.dispatchesArrivalCell(1, 14), isTrue);
+    expect(LoreMainProcedures.dispatchesArrivalCell(14, 21), isTrue);
+    expect(LoreMainProcedures.dispatchesArrivalCell(6, 21), isTrue);
+    expect(LoreMainProcedures.dispatchesArrivalCell(6, 7), isFalse); // same
+    expect(LoreMainProcedures.dispatchesArrivalCell(14, 1), isFalse);
+    expect(LoreMainProcedures.dispatchesArrivalCell(21, 6), isFalse);
+    expect(LoreMainProcedures.dispatchesArrivalCell(25, 26), isFalse);
+  });
+
   test('enter_water consumes spell, scrolls, then rolls and enters battle', () {
     var steps = 2;
     final trace = <String>[];

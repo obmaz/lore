@@ -273,7 +273,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                 _startBattle();
               }
             },
-          ),
+          ).then((_) => _continuePositionBlocks()),
         );
       },
       onMindReadTick: () {
@@ -479,6 +479,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (!mounted) return;
     _game.finishEntrance();
     setState(() {});
+    // The later `if position = ...` blocks of Main see the arrival cell.
+    _continuePositionBlocks();
   }
 
   Future<void> _playChamberEntryAnimation() async {
@@ -1085,6 +1087,24 @@ class _MainGameScreenState extends State<MainGameScreen> {
     return true;
   }
 
+  /// LOREMAIN `Main` runs its `if position = ...` blocks one after another
+  /// (town, ground, den, keep). A map loaded inside one block (an entrance, a
+  /// GameOver reload, a special event) makes every later block whose position
+  /// now matches dispatch the arrival cell as a step of its own.
+  void _continuePositionBlocks() {
+    if (!mounted ||
+        _currentMode != GameScreenMode.field ||
+        _halt != null ||
+        !LoreMainProcedures.dispatchesArrivalCell(
+          _game.dispatchStartMapId,
+          _game.currentMapId,
+        )) {
+      return;
+    }
+    _game.tryMove(0, 0);
+    setState(() {});
+  }
+
   void _handleHazardTile(TileCategory cat) {
     if (cat == TileCategory.swamp) {
       unawaited(
@@ -1105,7 +1125,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
             setState(() {});
           },
           gameOver: _detectedGameOver,
-        ),
+        ).then((_) => _continuePositionBlocks()),
       );
     } else if (cat == TileCategory.lava) {
       unawaited(
@@ -1118,7 +1138,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
               _addLog('${member.name}는 $damage의 피해를 입었다 !'),
           displayCondition: () => setState(() {}),
           gameOver: _detectedGameOver,
-        ),
+        ).then((_) => _continuePositionBlocks()),
       );
     }
   }
@@ -1151,7 +1171,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       legacy: LoreDungeonEventManager.instance,
     );
     if (selected.script case final scriptRun?) {
-      unawaited(_driveScript(scriptRun));
+      unawaited(_driveScript(scriptRun).then((_) => _continuePositionBlocks()));
       return true;
     }
 
@@ -1610,7 +1630,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
     // go on with their escape path on the loaded game (`Load` set x, y), and a
     // pending entrance still loads its destination.
     final continuation = session.continuation;
-    if (continuation == null || pendingScript == null) return;
+    if (continuation == null || pendingScript == null) {
+      _continuePositionBlocks();
+      return;
+    }
     _pendingPortalTransition = portal;
     await _resumeScriptAfterBattle(
       continuation,
@@ -1619,7 +1642,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
       talkTargetX: targetX,
       talkTargetY: targetY,
     );
-    if (!mounted || !pendingScript.resumesAfterReload) return;
+    if (!mounted || !pendingScript.resumesAfterReload) {
+      _continuePositionBlocks();
+      return;
+    }
     final resumed = LoreSpecProcedures.afterReload(
       pendingScript.script.map,
       _game.playerX,
@@ -1628,6 +1654,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _scripts,
     );
     if (resumed != null) await _driveScript(resumed);
+    _continuePositionBlocks();
   }
 
   /// `DetectGameOver`: `party.etc[6] := 255; gameover`.

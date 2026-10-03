@@ -50,6 +50,17 @@ class _Io implements LoreGameOverIo {
   }
 }
 
+class _MaxRandom implements Random {
+  @override
+  int nextInt(int max) => max - 1;
+
+  @override
+  bool nextBool() => true;
+
+  @override
+  double nextDouble() => 0.999;
+}
+
 class _ZeroRandom implements Random {
   @override
   int nextInt(int max) => 0;
@@ -61,7 +72,8 @@ class _ZeroRandom implements Random {
   double nextDouble() => 0;
 }
 
-/// LORESUB.PAS `GameOver` / `DetectGameOver` and the LOREBATT defeat call.
+/// LORESUB.PAS `GameOver` / `DetectGameOver`, the LOREBATT defeat call and
+/// LOREMAIN.PAS `Main`'s consecutive `if position = ...` blocks.
 void main() {
   group('GameOver procedure', () {
     test(
@@ -174,6 +186,7 @@ void main() {
       WidgetTester tester,
       SaveData start, {
       VoidCallback? onHalt,
+      Random? random,
     }) async {
       tester.view.physicalSize = const Size(1280, 900);
       tester.view.devicePixelRatio = 1;
@@ -193,7 +206,7 @@ void main() {
         MaterialApp(
           home: MainGameScreen(
             initialSaveData: start,
-            encounterRandom: _ZeroRandom(),
+            encounterRandom: random ?? _ZeroRandom(),
             onHalt: onHalt,
           ),
         ),
@@ -296,6 +309,54 @@ void main() {
       // (random 0 would otherwise start an encounter).
       expect(find.byType(EncounterViewportView), findsNothing);
     });
+
+    testWidgets(
+      'a reload onto a later position runs that block on the arrival cell',
+      (tester) async {
+        // Town (position 1 of Main) wiped out -> reload a ground save: the
+        // ground block then dispatches the loaded tile as a Move_Mode step
+        // (poison 3 -> 4), which the town block alone would not do.
+        SharedPreferences.setMockInitialValues({});
+        final poisoned = PartyMember.createPreset(1)..poison = 3;
+        await SaveManager.instance.saveGame(save([poisoned]));
+        final dead = PartyMember.createPreset(1)..dead = 1;
+        await open(
+          tester,
+          SaveData(
+            slot: 1,
+            slotName: SaveManager.slotNames.first,
+            timestamp: DateTime.utc(1993, 7, 25),
+            mapId: 6,
+            mapTitle: 'TOWN 1',
+            playerX: 51,
+            playerY: 31,
+            gold: 2000,
+            food: 20,
+            party: [dead],
+            flags: const {},
+          ),
+          random: _MaxRandom(),
+        );
+        tester
+            .widget<DPadWidget>(find.byType(DPadWidget))
+            .onDirectionPressed(1, 0);
+        await tester.pump();
+        await tester.pump();
+        await tester.pump();
+        await tester.tap(find.byKey(const ValueKey('game-over-press-any-key')));
+        await tester.pump();
+        await tester.pump();
+        await choose(tester, 2); // 본 게임 데이타
+        for (var i = 0; i < 6; i++) {
+          await tester.pump(const Duration(milliseconds: 50));
+        }
+        final game = tester
+            .widget<GameWidget<LoreGame>>(find.byType(GameWidget<LoreGame>))
+            .game!;
+        expect(game.currentMapId, 1);
+        expect(game.partyProvider!().first.poison, 4);
+      },
+    );
 
     testWidgets('the keyboard alone drives PressAnyKey and both selects', (
       tester,

@@ -538,8 +538,16 @@ Random의 동일 seed가 Turbo Pascal Randomize의 동일 결과를 준다고
     않는다. 아직 옮기지 않은 것: `Load`의 `ReturnDefaultFont`(타일 0을 맵별 기본 글꼴 칸으로 바꾸는
     치환)는 필드 그리기가 하지 않는다.
 
-다음 묶음은 LOREMENU 개인·일행 상황·건강 상태·초감각·휴식 화면의 원본 흐름, LOREMAIN 위치 블록
-연쇄 처리와 이식 전체의 DOS 실행 대조이다.
+45. LOREMAIN `Main`의 `if position = town/ground/den/keep` 네 블록은 연속 `if`라서, 한 블록 안에서
+    지도가 바뀌면(입구 `load`, GameOver 불러오기, 특수 이벤트의 `load`) 순서가 더 뒤인 위치(town <
+    ground < den < keep)의 블록이 도착 칸 `map[x,y]`를 한 걸음처럼 다시 처리한다(예: 마을에서 들어온
+    들판의 `24..47` 칸은 `Move_Mode`로 독 진행·조우 판정). 순서가 같거나 앞이면 다시 처리하지 않는다.
+    `LoreGame.dispatchStartMapId`가 걸음을 시작한 지도를 기억하고, `_continuePositionBlocks`가 이동
+    처리(`Move_Mode`·늪·용암·특수 이벤트·입구·패배 불러오기)가 끝난 뒤 위치 순서가 올랐으면
+    `tryMove(0, 0)`으로 도착 칸을 처리한다. 이전에는 도착 칸을 처리하지 않았다.
+
+다음 묶음은 `ReturnDefaultFont`(타일 0의 맵별 기본 글꼴)와 도착 칸 처리의 DOS 확인, 이식 전체의 DOS 실행
+대조이다.
 
 ## 최근 검증 (2026-10-02)
 

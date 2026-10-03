@@ -251,7 +251,12 @@ class LoreGame extends FlameGame {
   }
 
   /// 플레이어 이동 처리
+  /// The map whose `if position = ...` block LOREMAIN `Main` is running for
+  /// the latest move; later blocks see the map loaded during it.
+  int dispatchStartMapId = 0;
+
   bool tryMove(int dx, int dy) {
+    dispatchStartMapId = currentMapId;
     if (currentMapId == 26 && (dx != 0 || dy != 0)) {
       _map26ArrowFacing = true;
     }
@@ -553,7 +558,8 @@ class LoreGame extends FlameGame {
         if (seeThroughSpecial &&
             (tileVal == 0 ||
                 (tileVal == 52 &&
-                    (mapCat == MapCategory.den || mapCat == MapCategory.keep)))) {
+                    (mapCat == MapCategory.den ||
+                        mapCat == MapCategory.keep)))) {
           canvas.drawRect(rect, Paint()..color = const Color(0xFF000000));
           continue;
         }
