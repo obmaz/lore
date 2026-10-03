@@ -8219,6 +8219,296 @@
       "test": "test/lore_battle_test.dart",
       "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, left-to-right random order, Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:1",
+      "line": 401,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:for:1",
+      "line": 407,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:2",
+      "line": 408,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:repeat:1",
+      "line": 414,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:3",
+      "line": 416,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:case:1",
+      "line": 419,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:4",
+      "line": 425,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:5",
+      "line": 428,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:6",
+      "line": 429,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:7",
+      "line": 434,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:8",
+      "line": 435,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:select:1:if:9",
+      "line": 442,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/lore_select_view_test.dart",
+      "note": "Select adapter: m[0] title (color 12), m[1..total] with items past maxsum in color 0, cursor starting at 1 and wrapping inside 1..maxsum, Enter/Space return k, Esc returns 0; touch picks an item directly (input adapter). Screen coordinates and Clear areas are viewport adapters.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:if:1",
+      "line": 449,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:while:1",
+      "line": 451,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:if:2",
+      "line": 462,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:exit:1",
+      "line": 469,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:if:3",
+      "line": 472,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:if:4",
+      "line": 479,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:exit:2",
+      "line": 479,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:while:2",
+      "line": 482,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:if:5",
+      "line": 492,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:if:6",
+      "line": 500,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:exit:3",
+      "line": 507,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:if:7",
+      "line": 511,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:for:1",
+      "line": 529,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:gameover:1:for:2",
+      "line": 534,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_game_over.dart",
+      "test": "test/game_over_test.dart",
+      "note": "GameOver ported directly: etc[6]=255 wiped-out text, PressAnyKey and load list (LoadNo = chr(k+47)) then the quit question; etc[6]=1 defeat text, resume/end, reload with etc[6] := 255 or Halt; other values only ask to quit. Halt shows the text-mode farewell (RGB fade order) or Load ErrorMessage and closes the app (web keeps the screen). DOS comparison pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:detectgameover:1:for:1",
+      "line": 552,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_main_procedures.dart",
+      "test": "test/lore_main_procedures_test.dart",
+      "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:detectgameover:1:if:1",
+      "line": 552,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_main_procedures.dart",
+      "test": "test/lore_main_procedures_test.dart",
+      "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:detectgameover:1:if:2",
+      "line": 553,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_main_procedures.dart",
+      "test": "test/lore_main_procedures_test.dart",
+      "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
+      "verification": "partial"
     }
   ]
 }

@@ -38132,6 +38132,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/game_over_test.dart",
+      "kind": "test",
+      "sha256": "102f1451ebc957b75e6c6a9d995a61e5331fc0e025baee989d58a966d9121ce0",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/golden_seal_progress_test.dart",
       "kind": "test",
       "sha256": "80e8e7009058dce9a1abc7690ff46be305ea7b22f30e4b60bc26e8ff23f681a0",
@@ -38182,7 +38191,7 @@
     {
       "path": "test/lore_main_procedures_test.dart",
       "kind": "test",
-      "sha256": "974c8b6a8824b6c62a00bad5b2a5ff375378fd7ba7269012b2a9b102cc822f1a",
+      "sha256": "1df2f9c41d30d0013f6499fa7930073981391a6e60fa401c0b131c6a2f943b0c",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -39284,7 +39293,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "a5123297d196280ebce6d4bbc39b85bea839e6218c35d5afd0939e2ff0200025"
+      "sha256": "0e86e1d81512fda001f3cbab726f342eaae2a2e9ea02e07eddcec2b136314a09"
     },
     {
       "path": "lib/widgets/field_menu_dialog.dart",
