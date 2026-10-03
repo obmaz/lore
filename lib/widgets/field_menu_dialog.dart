@@ -35,7 +35,7 @@ class FieldMenuDialog extends StatefulWidget {
   final Map<String, int>? etc;
   final void Function(String message) onLog;
 
-  /// 원작 핫키(P/V/C/R/G)로 진입할 때 바로 열 탭.
+  /// SelectMode 항목이나 원작 핫키(P/V/C/R)로 고른 절차.
   final FieldMenuTab initialTab;
 
   const FieldMenuDialog({
@@ -54,7 +54,7 @@ class FieldMenuDialog extends StatefulWidget {
     this.onTerrainChange,
     this.onMindReadActivated,
     this.etc,
-    this.initialTab = FieldMenuTab.main,
+    required this.initialTab,
     required this.onLog,
   });
 
@@ -62,26 +62,18 @@ class FieldMenuDialog extends StatefulWidget {
   State<FieldMenuDialog> createState() => _FieldMenuDialogState();
 }
 
-enum FieldMenuTab {
-  main,
-  partyView,
-  characterView,
-  quickView,
-  castSpell,
-  esp,
-  rest,
-  gameOption,
-}
+/// The LOREMENU procedure this dialog shows (SelectMode itself is a Select
+/// on the game screen).
+enum FieldMenuTab { partyView, characterView, quickView, castSpell, esp, rest }
 
 class _FieldMenuDialogState extends State<FieldMenuDialog> {
-  FieldMenuTab _currentTab = FieldMenuTab.main;
+  late final FieldMenuTab _currentTab = widget.initialTab;
   int _selectedMemberIndex = 0;
   late int _currentFood;
 
   @override
   void initState() {
     super.initState();
-    _currentTab = widget.initialTab;
     _currentFood = widget.food;
   }
 
@@ -155,8 +147,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
 
   Widget _buildBody() {
     switch (_currentTab) {
-      case FieldMenuTab.main:
-        return _buildMainMenu();
       case FieldMenuTab.partyView:
         return _buildPartyView();
       case FieldMenuTab.characterView:
@@ -169,9 +159,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
         return _buildEspView();
       case FieldMenuTab.rest:
         return _buildRest();
-      case FieldMenuTab.gameOption:
-        // GameOption is a run of source selects owned by the game screen.
-        return const SizedBox.shrink();
     }
   }
 
@@ -179,18 +166,7 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        if (_currentTab != FieldMenuTab.main)
-          IconButton(
-            key: const ValueKey('field-menu-back'),
-            style: IconButton.styleFrom(
-              backgroundColor: RetroTheme.blue,
-              foregroundColor: RetroTheme.white,
-            ),
-            onPressed: () => setState(() => _currentTab = FieldMenuTab.main),
-            icon: const Icon(Icons.arrow_back, size: 16),
-          )
-        else
-          const SizedBox.shrink(),
+        const SizedBox.shrink(),
         IconButton(
           key: const ValueKey('field-menu-close'),
           style: IconButton.styleFrom(
@@ -201,62 +177,6 @@ class _FieldMenuDialogState extends State<FieldMenuDialog> {
           icon: const Icon(Icons.close, size: 16),
         ),
       ],
-    );
-  }
-
-  // =========================================================================
-  // 메인 메뉴 선택 (LOREMENU.PAS: SelectMode)
-  // =========================================================================
-  Widget _buildMainMenu() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Text(
-          LoreMenuText.selectModePrompt,
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 12,
-          ),
-        ),
-        const SizedBox(height: 8),
-        // 원작 LOREMENU.PAS:1033 SelectMode 의 7개 항목
-        _menuBtn('[P] ${LoreMenuText.selectModeParty}', FieldMenuTab.partyView),
-        _menuBtn(
-          '[V] ${LoreMenuText.selectModeCharacter}',
-          FieldMenuTab.characterView,
-        ),
-        _menuBtn('[Q] ${LoreMenuText.selectModeQuick}', FieldMenuTab.quickView),
-        _menuBtn('[C] ${LoreMenuText.selectModeCast}', FieldMenuTab.castSpell),
-        _menuBtn('[E] ${LoreMenuText.selectModeEsp}', FieldMenuTab.esp),
-        _menuBtn('[R] ${LoreMenuText.selectModeRest}', FieldMenuTab.rest),
-        _menuBtn(
-          '[G] ${LoreMenuText.selectModeOption}',
-          FieldMenuTab.gameOption,
-        ),
-      ],
-    );
-  }
-
-  Widget _menuBtn(String title, FieldMenuTab tab) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 6),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: RetroTheme.blue,
-          foregroundColor: RetroTheme.white,
-          minimumSize: const Size.fromHeight(34),
-          alignment: Alignment.centerLeft,
-        ),
-        // GameOption runs on the game screen (it can load, save or quit).
-        onPressed: tab == FieldMenuTab.gameOption
-            ? () => Navigator.of(context).pop(tab)
-            : () => setState(() => _currentTab = tab),
-        child: Text(
-          title,
-          overflow: TextOverflow.ellipsis,
-          style: RetroTheme.dosFont.copyWith(fontSize: 12),
-        ),
-      ),
     );
   }
 

@@ -1212,10 +1212,43 @@ class _MainGameScreenState extends State<MainGameScreen> {
     );
   }
 
-  Future<void> _openFieldMenuDialog({
-    FieldMenuTab initialTab = FieldMenuTab.main,
-  }) async {
-    final next = await showDialog<FieldMenuTab>(
+  /// LOREMENU `SelectMode` (Space; LOREMAIN cleared etc[6] first): one source
+  /// Select, then the chosen procedure; nothing returns to the menu.
+  Future<void> _runSelectMode() async {
+    final k = await showLoreSelectDialog(
+      context,
+      title: LoreMenuText.selectModePrompt,
+      items: const [
+        LoreMenuText.selectModeParty,
+        LoreMenuText.selectModeCharacter,
+        LoreMenuText.selectModeQuick,
+        LoreMenuText.selectModeCast,
+        LoreMenuText.selectModeEsp,
+        LoreMenuText.selectModeRest,
+        LoreMenuText.selectModeOption,
+      ],
+    );
+    if (!mounted) return;
+    switch (k) {
+      case 1:
+        await _openFieldMenuDialog(initialTab: FieldMenuTab.partyView);
+      case 2:
+        await _openFieldMenuDialog(initialTab: FieldMenuTab.characterView);
+      case 3:
+        await _openQuickViewDialog();
+      case 4:
+        await _openFieldMenuDialog(initialTab: FieldMenuTab.castSpell);
+      case 5:
+        await _openEspDialog();
+      case 6:
+        await _openFieldMenuDialog(initialTab: FieldMenuTab.rest);
+      case 7:
+        await _runGameOption();
+    }
+  }
+
+  Future<void> _openFieldMenuDialog({required FieldMenuTab initialTab}) async {
+    await showDialog<void>(
       context: context,
       barrierDismissible: true,
       builder: (ctx) => FieldMenuDialog(
@@ -1259,8 +1292,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         onLog: (msg) => _addLog(msg),
       ),
     );
-    // SelectMode item 7.
-    if (next == FieldMenuTab.gameOption && mounted) await _runGameOption();
   }
 
   /// LOREMENU `GameOption` (hotkey G or SelectMode item 7).
@@ -1707,7 +1738,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                     onTap: () async {
                       if (_entryAnimationActive) return;
                       LoreDialogueManager.instance.setBattleResult(0);
-                      await _openFieldMenuDialog();
+                      await _runSelectMode();
                       _redispatchCurrentTileAfter(FieldAction.openMenu);
                     },
                     child: Container(
@@ -1900,7 +1931,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
               case FieldAction.openMenu:
                 // LOREMAIN.Main clears party.etc[6] before SelectMode.
                 LoreDialogueManager.instance.setBattleResult(0);
-                await _openFieldMenuDialog();
+                await _runSelectMode();
               case FieldAction.viewParty:
                 await _openFieldMenuDialog(initialTab: FieldMenuTab.partyView);
               case FieldAction.viewCharacter:

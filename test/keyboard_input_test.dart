@@ -178,7 +178,12 @@ void main() {
       await tester.sendKeyEvent(LogicalKeyboardKey.space);
       await settle(tester);
       expect(find.text('당신의 명령을 고르시오 ===>'), findsOneWidget);
-      await closeDialog(tester);
+      // SelectMode is a source Select: seven plain items, Esc closes it.
+      expect(find.text(LoreMenuText.selectModeOption), findsOneWidget);
+      expect(find.textContaining('[P]'), findsNothing);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await settle(tester);
+      expect(find.text('당신의 명령을 고르시오 ===>'), findsNothing);
 
       // P -> 일행의 상황
       await tester.sendKeyEvent(LogicalKeyboardKey.keyP);
