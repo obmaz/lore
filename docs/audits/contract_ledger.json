@@ -24750,8 +24750,13 @@
       "routine": "LORESUB.PAS:returndefaultfont:1",
       "kind": "case",
       "outcomes": 28,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/default_font_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_tile_protocol.dart",
+      "reviewed_scope": "ReturnDefaultFont ported as LoreTileProtocol.defaultFontSlot (all 27 cases compared against the Pascal source by the test); the field renderer draws special cells (tile 0) from that slot like Load's move into font^[0]."
     },
     {
       "id": "LORESUB.PAS:returnsexdata:1:if:1",
@@ -39855,6 +39860,16 @@
       "test": "test/game_over_test.dart",
       "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
       "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:returndefaultfont:1:case:1",
+      "line": 804,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_tile_protocol.dart",
+      "test": "test/default_font_test.dart",
+      "note": "ReturnDefaultFont ported as LoreTileProtocol.defaultFontSlot (all 27 cases compared against the Pascal source by the test); the field renderer draws special cells (tile 0) from that slot like Load's move into font^[0].",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -41573,6 +41588,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/default_font_test.dart",
+      "kind": "test",
+      "sha256": "4bed566a576bc31886e82fa0404d4b08d43d3fcdeb0c0d09a5d26966ea7ff97a",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/den7_torch_flow_test.dart",
       "kind": "test",
       "sha256": "1153f5b8a82662bb86b7b3a31f20035cbe869abcb31d8e2d57d904aeae7bc5c5",
@@ -42835,7 +42859,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "6de53aa00c1b1c467aaf8765b35f1e0992a8b42d59e18649bb45b117f5d45dba"
+      "sha256": "0b810c771de3394cf204b94a86162d16fbd584146e4e595b0a1995acb629dcf1"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -42851,7 +42875,7 @@
     },
     {
       "path": "lib/logic/lore_tile_protocol.dart",
-      "sha256": "7cc66f62218a6137fb375ffb35bebdde2ce088de9bd01b7bec5d1ee5720c2e95"
+      "sha256": "71e91fe2a35aa84d998228bbec109e0915dbabaad04450bc10fb61856bdfecb6"
     },
     {
       "path": "lib/logic/lore_movement_logic.dart",
@@ -42935,9 +42959,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "0d0b9808d1017af951524b03c9c7be906d686f6d6e1455fd24f3af115efc5734",
+      "sha256": "6b9a5c14dec99398b73c8cfef13a532998d7c8317dd236b5ef344ad805df5506",
       "top_level_counts": {
-        "contracts": 1057
+        "contracts": 1058
       }
     }
   ],
@@ -42945,9 +42969,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 791,
+    "unmapped_behavior_sites": 790,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 1057,
+    "partially_verified_behavior_sites": 1058,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
