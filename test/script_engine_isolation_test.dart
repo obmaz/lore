@@ -123,7 +123,7 @@ void main() {
             {
               'id': 'session-talk',
               'trigger': 'talk',
-              'map': 6,
+              'map': 8,
               'x': 7,
               'y': 6,
               'steps': [
@@ -144,7 +144,7 @@ void main() {
     );
     String? selected;
     final game = LoreGame(
-      initialMapId: 6,
+      initialMapId: 8, // a map without a direct talk procedure
       initialPlayerX: 6,
       initialPlayerY: 6,
       scriptEngine: scripts,

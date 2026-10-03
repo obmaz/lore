@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
-import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/game/lore_world_manager.dart';
 import 'package:lore/logic/lore_tile_protocol.dart';
@@ -56,13 +55,9 @@ void main() {
             mapId: script.map,
             x: x,
             y: y,
-            heroName: 'Hero',
             context: context,
-            party: null,
-            mindReadCount: 0,
             world: world,
             scripts: engine,
-            dialogues: LoreDialogueManager.instance,
           );
           if (dispatch.source == LoreTalkSource.script &&
               dispatch.script?.script.id == script.id) {

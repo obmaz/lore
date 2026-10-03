@@ -47,7 +47,7 @@ void main() {
       expect(reachable, isTrue, reason: script.id);
     }
 
-    for (final source in ['facilities', 'dialogues']) {
+    for (final source in ['facilities']) {
       final json = jsonDecode(
         File('assets/data/$source.json').readAsStringSync(),
       ) as Map<String, dynamic>;

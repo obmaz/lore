@@ -109,89 +109,7 @@ void main() {
       final hero = mk('Hero');
       final party = [hero];
 
-      // 1) Mad Joe - LORETALK.PAS:191 `at(40,15)` (원작은 6번 슬롯 고정)
-      dialogue.loadFlags({});
-      final madJoe = dialogue.getDialogue(6, 40, 15, hero.name, party: party);
-      expect(madJoe, contains('Mad Joe'));
-      final joePending = dialogue.takePendingRecruits().single;
-      expect(joePending.member.name, 'Mad Joe');
-      expect(joePending.forcedSlotOption, 4); // 6번 슬롯
-
-      // 2) Rigel - LORESPEC.PAS:600 `on(12,48)`, hp 1 빈사 상태
-      dialogue.loadFlags({});
-      final rigelTalk = dialogue.getDialogue(
-        12,
-        12,
-        48,
-        hero.name,
-        party: party,
-      );
-      expect(rigelTalk, contains('Rigel'));
-      final rigel = dialogue.takePendingRecruits().single.member;
-      expect(rigel.name, 'Rigel');
-      expect(rigel.hp, 1);
-
-      // 3) Red Antares - LORESPEC.PAS:1026 `on(75,52)` 2단계
-      dialogue.loadFlags({});
-      final teach = dialogue.getDialogue(17, 75, 52, hero.name, party: party);
-      expect(teach, contains('간접 공격'));
-      expect(teach, contains('특수 마법'));
-      expect(dialogue.specialMagicLearned, isTrue);
-      expect(dialogue.takePendingRecruits(), isEmpty); // 첫 방문은 특수마법 전수
-
-      final antTimer = dialogue.getDialogue(
-        17,
-        75,
-        52,
-        hero.name,
-        party: party,
-      );
-      expect(antTimer, contains('Red Antares'));
-      final redAntares = dialogue.takePendingRecruits().single.member;
-      expect(redAntares.name, 'Red Antares');
-      expect(redAntares.hp, 0); // 원작과 동일
-      expect(redAntares.resistance, 15);
-
-      // 4) Spica - LORESPEC.PAS:1208 `on(37,31)` 조건 분기
-      dialogue.loadFlags({});
-      final cannotRead = dialogue.getDialogue(
-        18,
-        37,
-        31,
-        hero.name,
-        party: [mk('C1')], // 초능력 레벨 1
-        mindReadCount: 0,
-      );
-      expect(cannotRead, contains('나의 마음을 끌어낼수는 없습니다'));
-      expect(dialogue.takePendingRecruits(), isEmpty);
-
-      final esper = PartyMember(
-        name: 'Esper',
-        playerClass: PlayerClass.esper,
-        strength: 5,
-        mentality: 17,
-        concentration: 20,
-        endurance: 9,
-        resistance: 15,
-        agility: 7,
-        accArms: 8,
-        accMagic: 15,
-        accEsp: 20,
-        luck: 10,
-        espLevel: 5,
-      );
-      final spicaTalk = dialogue.getDialogue(
-        18,
-        37,
-        31,
-        hero.name,
-        party: [esper],
-        mindReadCount: 3,
-      );
-      expect(spicaTalk, contains('동료 Spica 합류'));
-      expect(dialogue.takePendingRecruits().single.member.name, 'Spica');
-
-      // 5) 금화 좌표 이벤트 (LORESPEC.PAS findgold) - 1회성
+      // 금화 좌표 이벤트 (LORESPEC.PAS findgold) - 1회성
       dialogue.loadFlags({});
       final gold1 = events.checkEvent(9, 10, 24, party);
       expect(gold1, isNotNull);
@@ -209,7 +127,7 @@ void main() {
       expect(events.checkEvent(9, 11, 24, party), isNull);
       expect(LoreDungeonEventManager.goldSites.length, 18);
 
-      // 6) 보물 좌표 플래그가 세이브에 직렬화/복원된다.
+      // 보물 좌표 플래그가 세이브에 직렬화/복원된다.
       final flags = dialogue.getFlagsCopy();
       expect(flags['gold:9:10:24'], isTrue);
       dialogue.loadFlags({});

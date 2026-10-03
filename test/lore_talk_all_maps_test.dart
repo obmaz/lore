@@ -36,13 +36,9 @@ void main() {
     mapId: map,
     x: x,
     y: y,
-    heroName: 'Hero',
     context: context,
-    party: const [],
-    mindReadCount: 0,
     world: world,
     scripts: scripts,
-    dialogues: dialogues,
   );
 
   group('LORETALK 맵 7, 9, 10, 24, 27 전체 대화 분기 검증', () {

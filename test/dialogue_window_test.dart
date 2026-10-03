@@ -87,7 +87,6 @@ void main() {
     await tester.runAsync(() async {
       await LoreScriptEngine.instance.load();
       await LoreWorldManager.instance.loadData();
-      await LoreDialogueManager.instance.loadData();
     });
     await tester.pumpWidget(
       MaterialApp(

@@ -32,7 +32,6 @@ void main() {
       await LoreScriptEngine.instance.load();
       await SpriteLibrary.instance.load();
       await LoreWorldManager.instance.loadData();
-      await LoreDialogueManager.instance.loadData();
     });
 
     test('1. 모든 JSON 소스가 로드되고 조회된다', () {
@@ -40,7 +39,6 @@ void main() {
       expect(LoreScriptEngine.instance.usingJson, isTrue);
       expect(SpriteLibrary.instance.usingImages, isTrue);
       expect(LoreWorldManager.instance.usingJsonRules, isTrue);
-      expect(LoreDialogueManager.instance.usingJsonDialogues, isTrue);
 
       expect(LoreData.instance.monster(1).name, 'Orc');
       expect(LoreData.instance.spell(1).id, 1);
@@ -48,10 +46,6 @@ void main() {
       expect(SpriteLibrary.instance.get('CHARA')!.count, 56);
       expect(LoreWorldManager.instance.findPortal(1, 20, 11)!.targetMapId, 6);
       expect(LoreScriptEngine.instance.scripts.length, 599);
-      expect(
-        LoreDialogueManager.instance.getDialogue(6, 9, 64, 'Hero'),
-        isNotNull,
-      );
     });
 
     test('2. JSON 대화/스크립트가 함께 동작한다 (모험 흐름 시뮬레이션)', () {
@@ -59,8 +53,9 @@ void main() {
       final scripts = LoreScriptEngine.instance;
       dialogue.loadFlags({});
 
-      // 1) 마을에서 NPC 대사 (JSON dialogues.json)
-      expect(dialogue.getDialogue(6, 9, 64, 'Hero'), contains('경비병'));
+      // 1) 마을에서 NPC 대사 (JSON scripts.json, talk 트리거: LORETALK 원문)
+      final guard = scripts.startTalk(6, 9, 64, const ScriptContext())!;
+      expect(guard.outcome.messages.join(), contains('Serpent'));
 
       // 2) 좌표 이벤트로 금화 획득 (JSON scripts.json, step 트리거)
       //    게임 화면과 같이 결과의 플래그를 대화 매니저에 반영한다.

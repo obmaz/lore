@@ -246,15 +246,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
         }
         _openTownFacilityDialog(fType);
       },
-      onNpcDialogue: (lines) => unawaited(_showDialogue(lines)),
-      onNpcTalk: (name, talk) {
-        if (_mindReadCount > 0) {
-          setState(() => _mindReadCount--);
-          _addLog('[$name]: "$talk"');
-        } else {
-          _addLog('[$name]: "$talk"');
-        }
-      },
       canWalkOnWater: () => _waterWalkSteps > 0,
       waterWalkStepsProvider: () => _waterWalkSteps,
       onWaterWalkStepsChanged: (steps) {
@@ -295,7 +286,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
           _driveScript(run, talkTargetX: tx, talkTargetY: ty),
       onPortalRequested: (portal, tx, ty) =>
           _confirmPortalEntry(portal, tx, ty),
-      onRecruitRequested: (recruit) => _requestJoinSlot(recruit),
     );
   }
 

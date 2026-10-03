@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
-import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/game/lore_world_manager.dart';
 import 'package:lore/logic/lore_talk_dispatcher.dart';
@@ -22,11 +21,8 @@ void main() {
     final baseScripts = LoreScriptEngine()
       ..loadFromJson(File('assets/data/scripts.json').readAsStringSync());
     final world = LoreWorldManager.instance;
-    final dialogues = LoreDialogueManager.instance;
     world.resetRulesForTest();
     await world.loadData();
-    dialogues.resetDataForTest();
-    await dialogues.loadData();
     final maps = <int, LoreMapData>{};
     final nonTalk = <String>[];
 
@@ -72,13 +68,9 @@ void main() {
           mapId: map,
           x: x,
           y: y,
-          heroName: 'Hero',
           context: context,
-          party: null,
-          mindReadCount: 0,
           world: world,
           scripts: baseScripts.fork(),
-          dialogues: dialogues,
         );
         if (selected.source != LoreTalkSource.none) {
           reached = true;
@@ -92,7 +84,6 @@ void main() {
       );
     }
     world.resetRulesForTest();
-    dialogues.resetDataForTest();
     expect(nonTalk, isEmpty, reason: '원본 at 좌표가 현재 지도에서 talk 타일이어야 한다');
   });
 }

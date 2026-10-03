@@ -17,7 +17,6 @@ void main() {
 
   setUp(() {
     LoreScriptEngine.instance.resetForTest();
-    LoreDialogueManager.instance.resetDataForTest();
   });
   tearDown(() => LoreScriptEngine.instance.resetForTest());
 

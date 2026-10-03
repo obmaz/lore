@@ -40,103 +40,6 @@ void main() {
       );
     });
 
-    test('1. 맵 6 (성도 CASTLE LORE) 고유 대화 및 성주/영혼/현자 인터랙션 검증', () {
-      // 1) 경비병
-      final guardTalk = dialogue.getDialogue(6, 9, 64, hero.name);
-      expect(guardTalk, contains('Serpent와 Insects와 Python은 맹독이 있으니'));
-
-      // 2) 성주 Lord Ahn
-      final lordTalk1 = dialogue.getDialogue(6, 50, 51, hero.name);
-      expect(lordTalk1, contains('Lord Ahn'));
-      expect(dialogue.metLordAhn, isTrue);
-
-      final gateTalk = dialogue.getDialogue(6, 50, 51, hero.name);
-      expect(gateTalk, contains('남쪽 성문을 개방했습니다'));
-      expect(dialogue.castleGateOpen, isTrue);
-
-      // 3) Jr. Antares의 영혼 (비밀 통로)
-      final jrTalk = dialogue.getDialogue(6, 63, 76, hero.name);
-      expect(jrTalk, contains('Jr. Antares'));
-      expect(dialogue.jrAntaresSecretFound, isTrue);
-
-      // 4) 피라밋 현자
-      final sageTalk = dialogue.getDialogue(6, 51, 72, hero.name);
-      expect(sageTalk, contains('또 다른 지식의 성전'));
-      expect(dialogue.metPyramidSage, isTrue);
-    });
-
-    test('2. 맵 7 (LASTDITCH) 성주 퀘스트 및 전사 Polaris 동료 영입 검증', () {
-      // 1) 전사 Polaris 영입
-      final polarisTalk = dialogue.getDialogue(7, 37, 41, hero.name);
-      expect(polarisTalk, contains('Polaris'));
-      expect(dialogue.polarisJoined, isTrue);
-
-      // 2) LASTDITCH 성주 첫 대면: Major Mummy 의뢰
-      final quest1 = dialogue.getDialogue(7, 38, 17, hero.name);
-      expect(quest1, contains('Major Mummy'));
-      expect(dialogue.lastditchQuestStep, 1);
-
-      // 3) 보스 처치 전 다시 말걸기
-      final questWaiting = dialogue.getDialogue(7, 38, 17, hero.name);
-      expect(questWaiting, contains('속히 처단해 주시오'));
-
-      // 4) 보스 격퇴 후 보고: EXP 보상 및 GROUND GATE 안내
-      dialogue.bossMajorMummyDefeated = true;
-      final questComplete = dialogue.getDialogue(7, 38, 17, hero.name);
-      expect(questComplete, contains('EXP +10,000'));
-      expect(questComplete, contains('GROUND GATE'));
-      expect(dialogue.lastditchQuestStep, 2);
-    });
-
-    test('3. 맵 9 (GAIA TERRA) 성주 퀘스트: 황금의 봉인 및 ArchiGagoyle 격퇴 검증', () {
-      // 1) 성주 첫 대면: 황금의 봉인 의뢰
-      final gQuest1 = dialogue.getDialogue(9, 42, 25, hero.name);
-      expect(gQuest1, contains('황금의 봉인'));
-      expect(dialogue.gaiaQuestStep, 1);
-
-      // 2) 황금의 봉인 획득 후 보고
-      dialogue.goldenSealFound = true;
-      final gQuest2 = dialogue.getDialogue(9, 42, 25, hero.name);
-      expect(gQuest2, contains('황금의 봉인을 찾아'));
-      expect(gQuest2, contains('ArchiGagoyle'));
-      expect(dialogue.gaiaQuestStep, 2);
-
-      // 3) ArchiGagoyle 격퇴 후 보고: Water Key 획득
-      dialogue.bossArchiGagoyleDefeated = true;
-      final gQuest3 = dialogue.getDialogue(9, 42, 25, hero.name);
-      expect(gQuest3, contains('Water Key'));
-      expect(dialogue.hasWaterKey, isTrue);
-      expect(dialogue.gaiaQuestStep, 3);
-    });
-
-    test(
-      '4. 맵 10 (WATER FIELD) 성주 퀘스트: Hidra & Huge Dragon 및 Lore Hunter 영입 검증',
-      () {
-        // 1) 특공대장 Lore Hunter 영입
-        final hunterTalk = dialogue.getDialogue(10, 40, 56, hero.name);
-        expect(hunterTalk, contains('Lore Hunter'));
-        expect(dialogue.loreHunterJoined, isTrue);
-
-        // 2) 성주 첫 대면: NOTICE 동굴의 Hidra 처단 의뢰
-        final wQuest1 = dialogue.getDialogue(10, 25, 18, hero.name);
-        expect(wQuest1, contains('Hidra'));
-        expect(dialogue.waterFieldQuestStep, 1);
-
-        // 3) Hidra 격퇴 후 보고: Huge Dragon 처단 의뢰
-        dialogue.bossHidraDefeated = true;
-        final wQuest2 = dialogue.getDialogue(10, 25, 18, hero.name);
-        expect(wQuest2, contains('Huge Dragon'));
-        expect(dialogue.waterFieldQuestStep, 2);
-
-        // 4) Huge Dragon 격퇴 후 보고: Swamp Key 획득
-        dialogue.bossHugeDragonDefeated = true;
-        final wQuest3 = dialogue.getDialogue(10, 25, 18, hero.name);
-        expect(wQuest3, contains('Swamp Key'));
-        expect(dialogue.hasSwampKey, isTrue);
-        expect(dialogue.waterFieldQuestStep, 3);
-      },
-    );
-
     test('5. 던전 및 필드 특수 이벤트 (식량 나무 / JSON 스크립트 이관분) 검증', () async {
       // 1) 맵 1 식량 나무 (94, 68) - 원작 on-enter 이벤트라 Dart가 담당
       final treeEvent = dungeonEvents.checkEvent(1, 94, 68, [hero]);
@@ -291,24 +194,6 @@ void main() {
       expect(full.length, LoreJoin.maxPartySize);
       expect(full[4].name, 'Lore Hunter');
       expect(full[0].name, hero.name); // 리더(1번)는 교체되지 않는다
-
-      // 대화 트리거 → 영입 대기열 적재 확인
-      dialogue.loadFlags({});
-      dialogue.takePendingRecruits(); // 잔여 큐 정리
-      final talk = dialogue.getDialogue(7, 37, 41, hero.name);
-      expect(talk, contains('동료 Polaris 합류'));
-      final pending = dialogue.takePendingRecruits();
-      expect(pending.length, 1);
-      expect(pending.first.member.name, 'Polaris');
-      expect(pending.first.forcedSlotOption, isNull); // 슬롯은 플레이어가 선택
-      // 중복 대화에서는 다시 적재되지 않는다.
-      dialogue.getDialogue(7, 37, 41, hero.name);
-      expect(dialogue.takePendingRecruits(), isEmpty);
-
-      dialogue.loadFlags({});
-      final hunterTalk = dialogue.getDialogue(10, 40, 56, hero.name);
-      expect(hunterTalk, contains('동료 Lore Hunter 합류'));
-      expect(dialogue.takePendingRecruits().single.member.name, 'Lore Hunter');
     });
   });
 }

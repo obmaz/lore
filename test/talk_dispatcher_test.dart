@@ -30,13 +30,9 @@ void main() {
         mapId: map,
         x: x,
         y: y,
-        heroName: 'Hero',
         context: context,
-        party: const [],
-        mindReadCount: 0,
         world: world,
         scripts: scripts,
-        dialogues: dialogues,
       );
 
   test('시설은 대화 스크립트보다 앞서 선택된다', () {
@@ -52,10 +48,9 @@ void main() {
     expect(result.script?.script.id, 'madjoe-join');
     expect(result.script?.hasPendingChoice, isTrue);
     expect(dialogues.madJoeJoined, isFalse);
-    expect(dialogues.takePendingRecruits(), isEmpty);
   });
 
-  test('합류 후에는 조건부 스크립트 대신 기존 재방문 대화를 사용한다', () {
+  test('합류 후 Mad Joe 칸은 원본처럼 아무것도 출력하지 않는다', () {
     dialogues.setFlag('madJoeJoined');
     final result = resolve(
       6,
@@ -63,9 +58,7 @@ void main() {
       15,
       const ScriptContext(flags: {'madJoeJoined'}),
     );
-    expect(result.source, LoreTalkSource.dialogue);
-    expect(result.dialogue, contains('이제 나도 일행'));
-    expect(dialogues.takePendingRecruits(), isEmpty);
+    expect(result.source, LoreTalkSource.none);
   });
 
   test('LORETALK.PAS:406 퀘스트 완료 뒤 Polaris 대화는 합류를 발생시키지 않는다', () {
@@ -78,7 +71,6 @@ void main() {
     );
     expect(result.source, LoreTalkSource.none);
     expect(dialogues.polarisJoined, isFalse);
-    expect(dialogues.takePendingRecruits(), isEmpty);
   });
 
   test('등록되지 않은 좌표는 명시적으로 빈 선택 결과를 돌려준다', () {

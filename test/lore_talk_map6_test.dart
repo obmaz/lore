@@ -35,13 +35,9 @@ void main() {
     mapId: 6,
     x: x,
     y: y,
-    heroName: 'Hero',
     context: context,
-    party: const [],
-    mindReadCount: 0,
     world: world,
     scripts: scripts,
-    dialogues: dialogues,
   );
 
   group('LORETALK 맵 6 CASTLE LORE 대화 분기 검증 (LORETALK.PAS:17-383)', () {
@@ -95,15 +91,14 @@ void main() {
       expect(run.script?.outcome.setFlags, contains('jrAntaresSecretFound'));
       expect(run.script?.outcome.tileAreas.any((a) => a.tile == 44), isTrue);
 
-      // 플래그 설정 후 재방문 시에는 dialogues.json 재방문 대사로 위임
+      // 플래그 설정 후 재방문: 원본 `at(63,76) and (etc[50] and bit1 = 0)`는 아무것도 찍지 않는다.
       dialogues.setFlag('jrAntaresSecretFound');
       final rerun = resolve(
         63,
         76,
         const ScriptContext(flags: {'jrAntaresSecretFound'}),
       );
-      expect(rerun.source, LoreTalkSource.dialogue);
-      expect(rerun.dialogue, contains('오랜 잠'));
+      expect(rerun.source, LoreTalkSource.none);
     });
 
     test('(40,15) Mad Joe 영혼 및 합류 분기', () {
@@ -116,15 +111,14 @@ void main() {
       expect(accepted.outcome.recruits.single.key, 'mad_joe');
       expect(accepted.outcome.setFlags, contains('madJoeJoined'));
 
-      // 2. 합류 후 재방문 대화 위임
+      // 2. 합류 후: 원본 `at(40,15)`에는 else가 없고 칸도 47로 바뀌어 아무것도 없다.
       dialogues.setFlag('madJoeJoined');
       final second = resolve(
         40,
         15,
         const ScriptContext(flags: {'madJoeJoined'}),
       );
-      expect(second.source, LoreTalkSource.dialogue);
-      expect(second.dialogue, contains('이제 나도 일행'));
+      expect(second.source, LoreTalkSource.none);
     });
 
     test('(50,51)/(52,51) 도전 관문: etc30_bit1, 퀘스트 단계별 분기', () {

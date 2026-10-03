@@ -741,9 +741,8 @@ EVIL SEAL 봉인 동굴의 일곱 방은 실제 특수 타일 x=14,18,22,26,30,3
 | `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
 | `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (106건) | `LoreScriptEngine.instance` |
 | `portals.json` | 맵 연결(포털 30) + 표지판 문구 (21) | `LoreWorldManager.instance.findPortal/getSignMessage` |
-| `dialogues.json` | 좌표 기반 NPC 대사 (30) | `LoreDialogueManager.instance.getDialogue` |
 
-`LoreData` / `LoreScriptEngine` / `LoreWorldManager` / `LoreDialogueManager`는 `main()`에서
+`LoreData` / `LoreScriptEngine` / `LoreWorldManager`는 `main()`에서
 한 번 로드한다. JSON이 없거나 파싱에 실패하면 코드 내장 데이터로 폴백한다.
 
 ### 8.2 스크립트 스키마 (`scripts.json`)
@@ -819,6 +818,5 @@ flutter test test/tools/export_data_test.dart --dart-define=EXPORT_DATA=true
 # 원작 .FNT → PNG 스프라이트 시트
 flutter test test/tools/export_images_test.dart --dart-define=EXPORT_IMAGES=true
 ```
-* 좌표 대사 → JSON: `python3 tool/export_dialogues.py` (dialogues.json 재생성)
 * 원작 소스 감사: `python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS`
 * 원작 한글 문자열 디코딩: `python3 tool/decode_johab.py <PAS파일> <시작Proc> [끝Proc]`

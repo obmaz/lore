@@ -17,7 +17,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "repo_source/LORE_1993_src/LORETALK.PAS"
 SCRIPTS = ROOT / "assets/data/scripts.json"
 FACILITIES = ROOT / "assets/data/facilities.json"
-DIALOGUES = ROOT / "assets/data/dialogues.json"
 AT = re.compile(r"\bat\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)", re.I)
 
 
@@ -45,7 +44,7 @@ def covers(rule, map_id, x, y):
     return {"x": x, "y": y} not in rule.get("excludeCoords", [])
 
 
-def providers(coordinate, scripts, facilities, dialogues):
+def providers(coordinate, scripts, facilities):
     map_id, x, y, _ = coordinate
     found = []
     if any(
@@ -57,18 +56,15 @@ def providers(coordinate, scripts, facilities, dialogues):
         found.append("script")
     if any(covers(rule, map_id, x, y) for rule in facilities):
         found.append("facility")
-    if any(covers(rule, map_id, x, y) for rule in dialogues):
-        found.append("dialogue")
     return found
 
 
-def report(source=SOURCE, script_path=SCRIPTS, facility_path=FACILITIES, dialogue_path=DIALOGUES):
+def report(source=SOURCE, script_path=SCRIPTS, facility_path=FACILITIES):
     coordinates = source_coordinates(source)
     scripts = json.loads(script_path.read_text(encoding="utf-8"))["scripts"]
     facilities = json.loads(facility_path.read_text(encoding="utf-8"))["facilities"]
-    dialogues = json.loads(dialogue_path.read_text(encoding="utf-8"))["dialogues"]
     rows = [
-        (*entry, providers(entry, scripts, facilities, dialogues))
+        (*entry, providers(entry, scripts, facilities))
         for entry in coordinates
     ]
     missing = [row for row in rows if not row[4]]
@@ -77,7 +73,7 @@ def report(source=SOURCE, script_path=SCRIPTS, facility_path=FACILITIES, dialogu
         "# LORETALK 좌표 대조",
         "",
         "`python3 tool/audit_loretalk.py > docs/audits/talk_audit.md`로 재생성한다.",
-        "원본 `at(x,y)`의 모든 리터럴 좌표를 활성 talk 스크립트, 시설, 대화 데이터와 대조한다.",
+        "원본 `at(x,y)`의 모든 리터럴 좌표를 활성 talk 스크립트와 시설 데이터와 대조한다.",
         "조건·선택지·문구·효과의 동등성은 검사하지 않는다. 동적 좌표도 범위 밖이다.",
         "",
         f"원본 좌표 {len(rows)}건 / 제공자 없는 좌표 {len(missing)}건.",

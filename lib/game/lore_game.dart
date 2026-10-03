@@ -14,7 +14,6 @@ import 'package:flutter/services.dart';
 
 import '../theme/retro_theme.dart';
 import '../data/lore_script.dart';
-import '../logic/lore_join.dart';
 import '../models/party_member.dart';
 import '../services/audio_manager.dart';
 import 'lore_map_manager.dart';
@@ -113,10 +112,7 @@ class LoreGame extends FlameGame {
   final void Function()? onMapLoaded;
   final void Function()? onEncounter;
   final int Function()? encounterFrequencyProvider;
-  final void Function(String npcName, String dialogue)? onNpcTalk;
 
-  /// NPC speech as the lines of one dialogue window (`Print`s + `PressAnyKey`).
-  final void Function(List<String> lines)? onNpcDialogue;
   final void Function(int facilityType)? onFacilityEntered;
   final void Function(int x, int y)? onPositionChanged;
   final void Function(TileCategory category)? onHazardTile;
@@ -126,9 +122,6 @@ class LoreGame extends FlameGame {
 
   /// true이면 좌표 이벤트가 걸음을 처리했으므로 일반 무작위 전투를 건너뛴다.
   final bool Function()? onStepTaken;
-
-  /// 원작 `join(num, partynum)`으로 동료가 합류할 때 호출된다.
-  final void Function(PendingRecruit recruit)? onRecruitRequested;
 
   /// 좌표 대화의 조건 분기(예: Spica 영입 조건)에 필요한 파티 상태 제공자.
   final List<PartyMember> Function()? partyProvider;
@@ -165,8 +158,6 @@ class LoreGame extends FlameGame {
     this.onMapLoaded,
     this.onEncounter,
     this.encounterFrequencyProvider,
-    this.onNpcTalk,
-    this.onNpcDialogue,
     this.onFacilityEntered,
     this.onPositionChanged,
     this.onHazardTile,
@@ -174,7 +165,6 @@ class LoreGame extends FlameGame {
     this.onMindReadTick,
     this.onMoveMode,
     this.onStepTaken,
-    this.onRecruitRequested,
     this.partyProvider,
     this.mindReadCountProvider,
     this.scriptContextProvider,
@@ -412,36 +402,18 @@ class LoreGame extends FlameGame {
       mapId: currentMapId,
       x: tx,
       y: ty,
-      heroName: 'Hero',
       context: scriptContextProvider?.call(),
-      party: partyProvider?.call(),
-      mindReadCount: mindReadCountProvider?.call() ?? 0,
       world: LoreWorldManager.instance,
       scripts: scriptEngine ?? LoreScriptEngine.instance,
-      dialogues: LoreDialogueManager.instance,
     );
     switch (selected.source) {
       case LoreTalkSource.facility:
         onFacilityEntered?.call(selected.facility!);
       case LoreTalkSource.script:
         onScriptTalk?.call(selected.script!, tx, ty);
-      case LoreTalkSource.dialogue:
-        if (onNpcDialogue case final show?) {
-          show([selected.dialogue!]);
-        } else {
-          onLog?.call(selected.dialogue!);
-        }
-        _flushPendingRecruits();
       case LoreTalkSource.none:
         // LORETALK.PAS talkmode prints nothing for a cell it has no case for.
         break;
-    }
-  }
-
-  /// 원작 `join(num, partynum)` 대기열을 실제 일행 합류로 전환한다.
-  void _flushPendingRecruits() {
-    for (final recruit in LoreDialogueManager.instance.takePendingRecruits()) {
-      onRecruitRequested?.call(recruit);
     }
   }
 
