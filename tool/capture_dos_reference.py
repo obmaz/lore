@@ -4,7 +4,9 @@
 Usage: python3 tool/capture_dos_reference.py /tmp/lore-dos-runtime
 Then: dosbox -conf /tmp/lore-dos-runtime/reference.conf
 Ctrl-F5 captures a native 640x350 frame into the runtime's captures directory.
-The seed is synthetic verification data, not a user save or new game fixture.
+Default scenarios use synthetic verification data, not a user save. Use
+--scenario new-game for an unseeded /m title/creation run. Follow the inputs in
+test/fixtures/dos_new_game.json; Enter acknowledges text, Up approaches Lord Ahn.
 """
 import argparse
 from pathlib import Path
@@ -21,6 +23,12 @@ def prepare(destination, scenario="town"):
     shutil.copytree(source, destination, dirs_exist_ok=True)
     # /g skips Title_Menu; avoid launching the optional ISA init driver.
     (destination / 'INIT.CMD').unlink(missing_ok=True)
+    if scenario == 'new-game':
+        # Preserve FOEDATA.DAT: it is an original resource, not a save file.
+        for pattern in ('PARTY?.DAT', 'PLAYER?.DAT', 'SAVE?.MAP'):
+            for saved in destination.glob(pattern):
+                saved.unlink()
+        return write_config(destination, command='lore /m', cycles=10000)
     etc = bytearray(100)
     etc[0], etc[6], etc[7] = 1, 2, 5
     if scenario == 'madjoe-reentry':
@@ -176,6 +184,9 @@ def prepare(destination, scenario="town"):
     else:
         players = player + bytes(55) * 5
     (destination / 'PLAYER1.DAT').write_bytes(players)
+    return write_config(destination)
+
+def write_config(destination, command='lore /g', cycles=3000):
     captures = destination / 'captures'
     captures.mkdir(exist_ok=True)
     config = destination / 'reference.conf'
@@ -187,7 +198,7 @@ machine=vgaonly
 captures={captures}
 [cpu]
 core=normal
-cycles=3000
+cycles={cycles}
 [midi]
 mpu401=none
 [sblaster]
@@ -198,13 +209,13 @@ pcspeaker=false
 [autoexec]
 mount c "{destination}"
 c:
-lore /g
+{command}
 """)
     return config
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('destination', type=Path)
-    parser.add_argument('--scenario', choices=['town', 'hospital-overflow', 'madjoe-reentry', 'lorehunter-reentry', 'waterlord-hidra', 'waterlord-dragon', 'cure-heal-overflow', 'cure-conscious-overflow', 'cure-revitalize-overflow', 'terrain-move', 'terrain-swamp', 'terrain-lava', 'rest-overflow', 'hospital-wound-overflow', 'training-growth', 'battle-rewards'], default='town')
+    parser.add_argument('--scenario', choices=['new-game', 'town', 'hospital-overflow', 'madjoe-reentry', 'lorehunter-reentry', 'waterlord-hidra', 'waterlord-dragon', 'cure-heal-overflow', 'cure-conscious-overflow', 'cure-revitalize-overflow', 'terrain-move', 'terrain-swamp', 'terrain-lava', 'rest-overflow', 'hospital-wound-overflow', 'training-growth', 'battle-rewards'], default='town')
     args = parser.parse_args()
     print(prepare(args.destination, args.scenario))

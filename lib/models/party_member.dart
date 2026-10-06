@@ -116,6 +116,31 @@ class PartyMember {
        sp = sp ?? (mentality * magicLevel),
        esp = esp ?? (concentration * espLevel);
 
+  /// Fresh, unwritten Pascal record, before Display_Condition is called.
+  factory PartyMember.zero() => PartyMember(
+    name: '',
+    sex: Gender.male,
+    playerClass: PlayerClass.none,
+    strength: 0,
+    mentality: 0,
+    concentration: 0,
+    endurance: 0,
+    resistance: 0,
+    agility: 0,
+    accArms: 0,
+    accMagic: 0,
+    accEsp: 0,
+    luck: 0,
+    hp: 0,
+    sp: 0,
+    esp: 0,
+    battleLevel: 0,
+    magicLevel: 0,
+    espLevel: 0,
+    weaPower: 0,
+    ac: 0,
+  );
+
   /// An unused `player[k]` slot past the joined members: the zero record of
   /// `Create` after its first `SimpleDisCond`, whose `ReturnCondition` turns
   /// `hp = 0` into `unconscious := 1` and then `dead := 1` (LORESUB:709-710).
@@ -558,7 +583,7 @@ class PartyMember {
     dead = 0;
     battleLevel = 1;
     magicLevel = 1;
-    espLevel = concentration;
+    espLevel = 1;
     ac = playerClass == PlayerClass.knight ? 1 : 0;
     experience = 0;
     weapon = 0;
@@ -573,6 +598,7 @@ class PartyMember {
     armPower = 0;
     hp = endurance;
     sp = mentality;
+    esp = concentration;
     // 원작 `accuracy[2]/[3]` 재배치 (무기/마법/초능력 명중률).
     final acc = accArms;
     switch (playerClass) {

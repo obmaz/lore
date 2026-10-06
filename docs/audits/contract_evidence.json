@@ -14359,6 +14359,56 @@
       "test": "test/terrain_dos_parity_test.dart",
       "note": "Source field poison/lava branches and ordered callbacks, exactly six native slots including zero luck and unnamed lava records. Independent DOS saved records verify poison255 wrap, unconscious32767 wrap, HP wrap from negative lava damage and dead sum wrap before its cap. Lava replay draws yield recorded DOS damage but were not traced from the original RNG seed; graphics page loops and other expression boundaries remain separate.",
       "verification": "partial"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:5",
+      "line": 636,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/new_game_dos_test.dart",
+      "note": "Actual unseeded DOSBox /m creation: Hero/male, ten first answers, agility20/accuracy20, class8, companions7/5/3/1. Captured four Last DAT pairs preserve sorted companions, three levels1, current ESP=concentration and zero sixth record. dos_new_game.json retains raw bytes/SHA and check_dos_new_game.py verifies decoding. Mobile web continuation to first Lord Ahn quest save matches six records, etc100 bytes, location/food/gold and map10000 cells; reload/resave retains state. Only this creation path and initial quest segment, not all creation branches/native RNG/ending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:6",
+      "line": 654,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/new_game_dos_test.dart",
+      "note": "Actual unseeded DOSBox /m creation: Hero/male, ten first answers, agility20/accuracy20, class8, companions7/5/3/1. Captured four Last DAT pairs preserve sorted companions, three levels1, current ESP=concentration and zero sixth record. dos_new_game.json retains raw bytes/SHA and check_dos_new_game.py verifies decoding. Mobile web continuation to first Lord Ahn quest save matches six records, etc100 bytes, location/food/gold and map10000 cells; reload/resave retains state. Only this creation path and initial quest segment, not all creation branches/native RNG/ending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:7",
+      "line": 659,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/new_game_dos_test.dart",
+      "note": "Actual unseeded DOSBox /m creation: Hero/male, ten first answers, agility20/accuracy20, class8, companions7/5/3/1. Captured four Last DAT pairs preserve sorted companions, three levels1, current ESP=concentration and zero sixth record. dos_new_game.json retains raw bytes/SHA and check_dos_new_game.py verifies decoding. Mobile web continuation to first Lord Ahn quest save matches six records, etc100 bytes, location/food/gold and map10000 cells; reload/resave retains state. Only this creation path and initial quest segment, not all creation branches/native RNG/ending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:case:2",
+      "line": 673,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/new_game_dos_test.dart",
+      "note": "Actual unseeded DOSBox /m creation: Hero/male, ten first answers, agility20/accuracy20, class8, companions7/5/3/1. Captured four Last DAT pairs preserve sorted companions, three levels1, current ESP=concentration and zero sixth record. dos_new_game.json retains raw bytes/SHA and check_dos_new_game.py verifies decoding. Mobile web continuation to first Lord Ahn quest save matches six records, etc100 bytes, location/food/gold and map10000 cells; reload/resave retains state. Only this creation path and initial quest segment, not all creation branches/native RNG/ending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORECRET.PAS:last:1:for:2",
+      "line": 725,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/services/save_manager.dart",
+      "test": "test/new_game_dos_test.dart",
+      "note": "Actual unseeded DOSBox /m creation: Hero/male, ten first answers, agility20/accuracy20, class8, companions7/5/3/1. Captured four Last DAT pairs preserve sorted companions, three levels1, current ESP=concentration and zero sixth record. dos_new_game.json retains raw bytes/SHA and check_dos_new_game.py verifies decoding. Mobile web continuation to first Lord Ahn quest save matches six records, etc100 bytes, location/food/gold and map10000 cells; reload/resave retains state. Only this creation path and initial quest segment, not all creation branches/native RNG/ending.",
+      "verification": "partial"
     }
   ]
 }

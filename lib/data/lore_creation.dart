@@ -155,7 +155,7 @@ class CreationCharacter {
 
   String get sexLabel => sex == Gender.female ? '여성' : '남성';
 
-  /// 원작 `join`과 같은 방식으로 파티원을 만든다(동료 4명).
+  /// `Fourth`의 동료 능력치와 HP/SP/ESP. 공통 초기화는 applyCreationInit.
   PartyMember toMember() => PartyMember(
     name: name,
     sex: sex,
@@ -172,7 +172,7 @@ class CreationCharacter {
     luck: luck,
     hp: endurance,
     sp: mentality,
-    espLevel: concentration,
+    esp: concentration,
   );
 }
 

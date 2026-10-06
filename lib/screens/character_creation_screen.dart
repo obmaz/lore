@@ -201,7 +201,8 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     );
 
     final party = <PartyMember>[hero];
-    for (final id in _selectedCompanions) {
+    // Fourth scans transdata[1..10], regardless of selection order.
+    for (final id in _selectedCompanions.toList()..sort()) {
       final c = _data.characters.firstWhere((e) => e.id == id);
       party.add(c.toMember());
     }
@@ -209,6 +210,9 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       m.applyCreationInit();
     }
 
+    // Fresh Create's player6 is still a zero record in Last's initial saves.
+    // Set_All calls Display_Condition only after those saves are written.
+    party.add(PartyMember.zero());
     widget.onGameStart(party);
   }
 
@@ -296,19 +300,36 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: RetroTheme.black,
-      body: Center(
-        child: AspectRatio(
-          aspectRatio: 4 / 3,
-          child: Container(
-            margin: const EdgeInsets.all(8),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: RetroTheme.panelBg,
-              border: Border.all(color: RetroTheme.borderColor, width: 3),
-              borderRadius: BorderRadius.circular(4),
-            ),
-            child: _buildCurrentStep(),
-          ),
+      body: SafeArea(
+        child: LayoutBuilder(
+          builder: (context, viewport) {
+            final panel = Container(
+              margin: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: RetroTheme.panelBg,
+                border: Border.all(color: RetroTheme.borderColor, width: 3),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: LayoutBuilder(
+                builder: (context, content) {
+                  if (content.maxHeight < 480) {
+                    return SingleChildScrollView(
+                      child: SizedBox(height: 480, child: _buildCurrentStep()),
+                    );
+                  }
+                  return _buildCurrentStep();
+                },
+              ),
+            );
+            if (viewport.maxWidth < 600 &&
+                viewport.maxHeight > viewport.maxWidth) {
+              return SizedBox.expand(child: panel);
+            }
+            return Center(
+              child: AspectRatio(aspectRatio: 4 / 3, child: panel),
+            );
+          },
         ),
       ),
     );
@@ -1033,55 +1054,85 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                               : RetroTheme.darkGray,
                         ),
                       ),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              '${c.name} [${c.playerClass.koreanName}]',
-                              style: RetroTheme.dosFont.copyWith(
-                                color: isSelected
-                                    ? RetroTheme.yellow
-                                    : RetroTheme.white,
-                                fontSize: 12,
+                      key: ValueKey('creation-companion-${c.id}'),
+                      child: LayoutBuilder(
+                        builder: (context, row) {
+                          final label = Text(
+                            '${c.name} [${c.playerClass.koreanName}]',
+                            style: RetroTheme.dosFont.copyWith(
+                              color: isSelected
+                                  ? RetroTheme.yellow
+                                  : RetroTheme.white,
+                              fontSize: 12,
+                            ),
+                          );
+                          final actions = <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (isSelected) {
+                                    _selectedCompanions.remove(c.id);
+                                  } else if (_selectedCompanions.length < 4) {
+                                    _selectedCompanions.add(c.id);
+                                  }
+                                });
+                              },
+                              child: Text(
+                                t4(2),
+                                style: RetroTheme.dosFont.copyWith(
+                                  color: RetroTheme.lightGreen,
+                                  fontSize: 10,
+                                ),
                               ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              setState(() {
-                                if (isSelected) {
-                                  _selectedCompanions.remove(c.id);
-                                } else if (_selectedCompanions.length < 4) {
-                                  _selectedCompanions.add(c.id);
+                            TextButton(
+                              onPressed: () {
+                                if (MediaQuery.sizeOf(context).width < 600) {
+                                  showDialog<void>(
+                                    context: context,
+                                    builder: (context) => Dialog(
+                                      child: SingleChildScrollView(
+                                        child: _buildProfilePanel(c),
+                                      ),
+                                    ),
+                                  );
+                                } else {
+                                  setState(() => _profileTarget = c);
                                 }
-                              });
-                            },
-                            child: Text(
-                              t4(2),
-                              style: RetroTheme.dosFont.copyWith(
-                                color: RetroTheme.lightGreen,
-                                fontSize: 10,
+                              },
+                              child: Text(
+                                t4(3),
+                                style: RetroTheme.dosFont.copyWith(
+                                  color: RetroTheme.lightCyan,
+                                  fontSize: 10,
+                                ),
                               ),
                             ),
-                          ),
-                          TextButton(
-                            onPressed: () => setState(() => _profileTarget = c),
-                            child: Text(
-                              t4(3),
-                              style: RetroTheme.dosFont.copyWith(
-                                color: RetroTheme.lightCyan,
-                                fontSize: 10,
-                              ),
-                            ),
-                          ),
-                        ],
+                          ];
+                          if (row.maxWidth < 500) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                label,
+                                Wrap(children: actions),
+                              ],
+                            );
+                          }
+                          return Row(
+                            children: [
+                              Expanded(child: label),
+                              ...actions,
+                            ],
+                          );
+                        },
                       ),
                     );
                   },
                 ),
               ),
               const SizedBox(width: 10),
-              if (names != null) _buildProfilePanel(names),
+              if (names != null && MediaQuery.sizeOf(context).width >= 600)
+                _buildProfilePanel(names),
             ],
           ),
         ),
@@ -1093,8 +1144,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             fontSize: 11,
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: 10,
+          runSpacing: 8,
           children: [
             ElevatedButton(
               style: ElevatedButton.styleFrom(
