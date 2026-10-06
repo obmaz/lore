@@ -23,6 +23,7 @@ import '../models/party_member.dart';
 import 'lore_batt_text.dart';
 import 'lore_source_memory.dart';
 import 'lore_sub_text.dart';
+import 'lore_transient_slots.dart';
 
 /// `Print(color, text)` 에 대응하는 출력.
 typedef BattlePrint = void Function(int color, String text);
@@ -41,11 +42,15 @@ class LoreBattle {
     this.onTelepathyJoin,
     this.specialMagicLearned = true,
     this.espBit = false,
-  });
+    LoreTransientSlots? slots,
+  }) : slots = slots ?? LoreTransientSlots() {
+    this.slots.retainEnemies(enemy);
+  }
 
   /// 화면과 공유하는 파티 목록(합류로 바뀔 수 있어 매번 이 목록을 읽는다).
   final List<PartyMember> party;
   final List<Monster> enemy;
+  final LoreTransientSlots slots;
   final Random random;
   final BattlePrint print;
   final BattleSound? sound;
@@ -70,7 +75,11 @@ class LoreBattle {
 
   static PartyMember _blank() => PartyMember.blank();
 
-  PartyMember p(int i) => i <= party.length ? party[i - 1] : _blanks[i - 1];
+  PartyMember p(int i) => i == 7
+      ? slots.seventhPlayer
+      : i <= party.length
+      ? party[i - 1]
+      : _blanks[i - 1];
 
   // ------------------------------------------------------------------
   // 공용 보조
@@ -1115,8 +1124,7 @@ class LoreBattle {
   }
 
   void specialCastAttack() {
-    final e = _foe;
-    if (e.eNumber == 1) return;
+    if (_foe.eNumber == 1) return;
     var j = 0;
     var k = enemynumber;
     for (var i = enemynumber; i >= 1; i--) {
@@ -1130,20 +1138,20 @@ class LoreBattle {
       var appended = false;
       if (enemynumber < 7) {
         appended = true;
-        // inc(enemynumber): 새 칸이 생긴다.
-        enemy.add(Monster.create(1));
+        // inc(enemynumber) retains the existing slot bytes.
+        _activateNextEnemySlot();
         k = enemynumber;
       }
-      final summoned = e.eNumber + rnd(4) - 20;
+      final summoned = _foe.eNumber + rnd(4) - 20;
       if (_validEnemyId(summoned)) {
         _joinEnemy(k, summoned);
-        print(13, '${e.name}는 ${enemy[k - 1].name}를 생성시켰다');
+        print(13, '${_foe.name}는 ${enemy[k - 1].name}를 생성시켰다');
       } else if (appended) {
         // 원본은 범위 밖 `enemydata` 를 읽는다(미확인). 새 칸은 죽은 상태로 둔다.
         enemy[k - 1].isDead = true;
       }
     }
-    if (e.specialCastLevel > 1) {
+    if (_foe.specialCastLevel > 1) {
       j = 0;
       k = enemynumber;
       for (var i = enemynumber; i >= 1; i--) {
@@ -1155,23 +1163,25 @@ class LoreBattle {
       }
       if (p(6).name != '' && j < 7 && rnd(5) == 0) {
         if (enemynumber < 7) {
-          enemy.add(Monster.create(1));
+          _activateNextEnemySlot();
           k = enemynumber;
         }
+        // The EXE also pushes k then 6: source player[k] -> enemy[6].
+        // Keep this original quirk, including an inactive enemy6 write.
         _turnMind(k, 6);
         p(6).name = '';
         displayCondition(); // LOREBATT:925
-        print(13, '${e.name}가 독심술을 사용하여 ${enemy[k - 1].name}을 자기편으로 끌어들였다');
+        print(13, '${_foe.name}가 독심술을 사용하여 ${enemy[k - 1].name}을 자기편으로 끌어들였다');
       }
     }
-    if (e.specialCastLevel > 2) {
-      if (e.special == 0) return;
+    if (_foe.specialCastLevel > 2) {
+      if (_foe.special == 0) return;
       if (rnd(5) == 0) {
         for (var kk = 1; kk <= 6; kk++) {
           final t = p(kk);
           if (t.dead == 0 && t.name != '') {
-            print(13, '${e.name}는 ${t.name}에게 죽음의 공격을 시도했다');
-            if (rnd(60) > e.agility) {
+            print(13, '${_foe.name}는 ${t.name}에게 죽음의 공격을 시도했다');
+            if (rnd(60) > _foe.agility) {
               print(7, '죽음의 공격은 실패했다');
             } else if (rnd(20) < t.luck) {
               print(7, '그러나, ${t.name}는 죽음의 공격을 피했다');
@@ -1193,39 +1203,51 @@ class LoreBattle {
     return id >= 1 && id <= Monster.monsterTemplates.length;
   }
 
+  void _activateNextEnemySlot() {
+    enemy.add(slots.enemyAt(enemy.length));
+  }
+
+  void _storeEnemy(int number, Monster value) {
+    slots.enemies[number - 1] = value;
+    if (number <= enemynumber) enemy[number - 1] = value;
+  }
+
   /// `joinenemy(num, j)`.
   void _joinEnemy(int num, int j) {
     if (!_validEnemyId(j)) return;
-    enemy[num - 1] = Monster.create(j & 0xFF);
+    _storeEnemy(num, Monster.create(j & 0xFF));
   }
 
   /// `turn_mind(j, enemy_num)`: 파티원 j 를 적 enemy_num 으로 바꾼다.
-  void _turnMind(int enemyNum, int j) {
+  void _turnMind(int j, int enemyNum) {
     final q = p(j);
     final level = q.battleLevel;
-    enemy[enemyNum - 1] = Monster(
-      eNumber: 1,
-      name: q.name,
-      strength: q.strength,
-      mentality: q.mentality,
-      endurance: q.endurance,
-      resistance: q.resistance,
-      agility: q.agility,
-      accArms: q.accArms,
-      accMagic: q.accMagic,
-      ac: q.ac,
-      special: q.playerClass.id == 7 ? 2 : 0,
-      castLevel: q.magicLevel ~/ 4,
-      specialCastLevel: 0,
-      level: level,
-      hp: LorePascal.integer(q.endurance * level),
+    _storeEnemy(
+      enemyNum,
+      Monster(
+        eNumber: 1,
+        name: q.name,
+        strength: q.strength,
+        mentality: q.mentality,
+        endurance: q.endurance,
+        resistance: q.resistance,
+        agility: q.agility,
+        accArms: q.accArms,
+        accMagic: q.accMagic,
+        ac: q.ac,
+        special: q.playerClass.id == 7 ? 2 : 0,
+        castLevel: q.magicLevel ~/ 4,
+        specialCastLevel: 0,
+        level: level,
+        hp: LorePascal.integer(q.endurance * level),
+      ),
     );
   }
 
   /// `EnemyAttack` (현재 `person` = 적 번호).
   void enemyAttack() {
+    if (_foe.specialCastLevel > 0) specialCastAttack();
     final e = _foe;
-    if (e.specialCastLevel > 0) specialCastAttack();
     var i = e.agility;
     if (i > 20) i = 20;
     if (e.special > 0 && rnd(50) < i) {

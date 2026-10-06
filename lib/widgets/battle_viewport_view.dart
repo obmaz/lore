@@ -18,6 +18,7 @@ import '../data/lore_data.dart';
 import '../logic/lore_cast_spell.dart';
 import 'lore_select_view.dart';
 import '../logic/lore_battle.dart';
+import '../logic/lore_transient_slots.dart';
 import '../game/lore_dialogue_manager.dart';
 
 /// 1993년 원작 LOREBATT.PAS 기반 턴제 전투 뷰포트 위젯
@@ -28,6 +29,7 @@ import '../game/lore_dialogue_manager.dart';
 class BattleViewportView extends StatefulWidget {
   final List<PartyMember> partyMembers;
   final List<Monster> enemies;
+  final LoreTransientSlots? slots;
   final Random? random;
   final bool enemyFirst;
   final bool espAccessGranted;
@@ -42,6 +44,7 @@ class BattleViewportView extends StatefulWidget {
     super.key,
     required this.partyMembers,
     required this.enemies,
+    this.slots,
     this.random,
     this.enemyFirst = false,
     required this.espAccessGranted,
@@ -145,6 +148,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     _battle = LoreBattle(
       party: widget.partyMembers,
       enemy: widget.enemies,
+      slots: widget.slots,
       random: widget.random ?? LoreRandom.fromClock(),
       print: (color, text) {
         if (widget.onPrint case final print?) {

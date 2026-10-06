@@ -15,6 +15,12 @@
       "sha256": "3d86da23b42afac155a1e637a313f8705a6ee379eb9e5294896cf2267f6679f7"
     },
     {
+      "name": "mind-call",
+      "start": 149149,
+      "end": 149160,
+      "sha256": "44b282a95a9ab800777dfcb9a2cf637366c2b0d71306cacad8615ad81a3b698a"
+    },
+    {
       "name": "mind",
       "start": 182768,
       "end": 183057,
@@ -2423,6 +2429,43 @@
       "endurance": 60,
       "level": 30,
       "hp": 1800
+    }
+  ],
+  "mindCalls": [
+    {
+      "k": 1,
+      "player": 1,
+      "enemy": 6
+    },
+    {
+      "k": 2,
+      "player": 2,
+      "enemy": 6
+    },
+    {
+      "k": 3,
+      "player": 3,
+      "enemy": 6
+    },
+    {
+      "k": 4,
+      "player": 4,
+      "enemy": 6
+    },
+    {
+      "k": 5,
+      "player": 5,
+      "enemy": 6
+    },
+    {
+      "k": 6,
+      "player": 6,
+      "enemy": 6
+    },
+    {
+      "k": 7,
+      "player": 7,
+      "enemy": 6
     }
   ],
   "minds": [

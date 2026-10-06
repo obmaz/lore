@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import '../logic/lore_transient_slots.dart';
 import '../logic/lore_random.dart';
 
 import '../logic/lore_batt_text.dart';
@@ -149,7 +150,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   // 전투 모드 상태
   List<Monster> _battleEnemies = [];
   // Pascal enemy[1..7] survives shorter encounters; saves do not store it.
-  final List<Monster?> _sourceEnemySlots = List.filled(7, null);
+  final _transientSlots = LoreTransientSlots();
+  List<Monster?> get _sourceEnemySlots => _transientSlots.enemies;
 
   void _retainEnemySlots(List<Monster> enemies) {
     for (var i = 0; i < enemies.length && i < 7; i++) {
@@ -1472,8 +1474,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }
 
   /// LOREMENU `GameOption` (hotkey G or SelectMode item 7).
-  Future<void> _runGameOption() =>
-      LoreGameOption.run(_ScreenGameOptionIo(this), _party, _sourceEtc);
+  Future<void> _runGameOption() => LoreGameOption.run(
+    _ScreenGameOptionIo(this),
+    _party,
+    _sourceEtc,
+    slots: _transientSlots,
+  );
 
   /// `Save` for slot 1..4 (`party`/`player`/`SaveN.map`): the current game.
   SaveData _captureSave(int slot) => SaveData(
@@ -1997,6 +2003,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           random: _sessionRandom,
           partyMembers: _party,
           enemies: _battleEnemies,
+          slots: _transientSlots,
           enemyFirst: _battleEnemyFirst,
           espAccessGranted:
               LoreDialogueManager.instance.getFlagsCopy()['etc39_bit1'] == true,

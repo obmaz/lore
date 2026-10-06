@@ -151,20 +151,22 @@ void main() {
   }
   for (final r in f['minds']) {
     test('original turn_mind HP ${r['endurance']} x ${r['level']}', () {
+      // Five active foes make the incremented k=6. Other k values copy a
+      // different source player into enemy6 (covered by special_cast_slots).
       final victim = _player(r);
       final party = [for (var i = 0; i < 5; i++) PartyMember.blank(), victim];
       final foe = Monster.create(20)..specialCastLevel = 2;
-      final random = _Random([0, 1, 0]);
+      final random = _Random([0, 0]);
       final battle = LoreBattle(
         party: party,
-        enemy: [foe],
+        enemy: [foe, for (var i = 0; i < 4; i++) Monster.create(1)],
         random: random,
         print: (_, s) {},
       );
       battle.specialCastAttack();
       expect(battle.enemy.last.hp, r['hp']);
       expect(victim.name, '');
-      expect(random.bounds, [3, 3, 5]);
+      expect(random.bounds, [3, 5]);
     });
   }
   for (final r in f['gold']) {

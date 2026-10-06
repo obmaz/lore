@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'test/fixtures/dos_recruit_storage.json'
 FRAGMENTS=[('join',0x2c4c4,0x2c843),('enemy-hp',0x2c972,0x2c98f),
- ('mind',0x2c9f0,0x2cb11),('gold',0x2c405,0x2c419),
+ ('mind-call',0x2469d,0x246a8),('mind',0x2c9f0,0x2cb11),('gold',0x2c405,0x2c419),
  ('heal-check',0x25abe,0x25add),('heal-cap',0x25b8a,0x25bc6),
  ('rest-refund',0x28e25,0x28e4f),('rest-heal',0x28e4f,0x28e9d),
  ('hospital-check',0x2e56c,0x2e58b),('hospital-store',0x2e5ff,0x2e61c),
@@ -37,6 +37,13 @@ def build():
  for end,level in [(8,1),(0,255),(255,0),(255,128),(255,255),(60,30)]:
   t=bytearray(29);t[19]=end;t[28]=level;u=machine();u.mem_write(0x566b8,bytes(t));u.mem_write(0x68006,b'\x01');e=bytearray(35);e[20]=end;e[29]=level;u.mem_write(0x50100,bytes(e));run(u,0x2c972,0x2c98f);result=struct.unpack('<h',u.mem_read(0x5011e,2))[0]
   enemies.append(dict(endurance=end,level=level,hp=result))
+ mind_calls=[]
+ for k in range(1,8):
+  u=machine(cs=0x1000);u.mem_write(0x53662,struct.pack('<H',k))
+  run(u,0x2469d,0x246a3)
+  sp=u.reg_read(UC_X86_REG_SP)
+  enemy_num,player_num=struct.unpack('<HH',u.mem_read(0x60000+sp,4))
+  mind_calls.append(dict(k=k,player=player_num,enemy=enemy_num))
  minds=[]
  for end,level in [(20,5),(255,0),(255,128),(255,255)]:
   u=machine();p=record(end,level);p[42]=20;u.mem_write(0x56536,bytes(p));u.mem_write(0x68008,b'\x01');run(u,0x2c9f0,0x2cb11);minds.append(dict(endurance=end,level=level,hp=struct.unpack('<h',u.mem_read(0x5011e,2))[0]))
@@ -66,7 +73,7 @@ def build():
  u=machine(0x1000);u.mem_write(0x67ffa,bytes(6));fault=False
  try:run(u,0x23ba7,0x23bb1)
  except UcError:fault=True;assert 0x10000+u.reg_read(UC_X86_REG_IP)==0x23bab-header
- return dict(scope='Unmodified DOS instruction fragments; synthetic state, no full game replay',exeSha256=hashlib.sha256(exe).hexdigest(),fragments=[dict(name=n,start=a,end=z,sha256=hashlib.sha256(exe[a:z]).hexdigest()) for n,a,z in FRAGMENTS],joins=joins,enemies=enemies,minds=minds,gold=gold,health=health,rests=rests,weapons=weapons,armors=armors,rigel=rigel,emptyAverageFault=fault)
+ return dict(scope='Unmodified DOS instruction fragments; synthetic state, no full game replay',exeSha256=hashlib.sha256(exe).hexdigest(),fragments=[dict(name=n,start=a,end=z,sha256=hashlib.sha256(exe[a:z]).hexdigest()) for n,a,z in FRAGMENTS],joins=joins,enemies=enemies,mindCalls=mind_calls,minds=minds,gold=gold,health=health,rests=rests,weapons=weapons,armors=armors,rigel=rigel,emptyAverageFault=fault)
 def check():
  data=json.loads(OUT.read_text());exe=(ROOT/'repo_source/LORE_1993_runtime/LORE.EXE').read_bytes();assert data['exeSha256']==hashlib.sha256(exe).hexdigest()
  for r,(n,a,z) in zip(data['fragments'],FRAGMENTS,strict=True):assert r==dict(name=n,start=a,end=z,sha256=hashlib.sha256(exe[a:z]).hexdigest())

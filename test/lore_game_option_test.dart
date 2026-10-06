@@ -3,6 +3,7 @@ import 'package:lore/logic/lore_game_option.dart';
 import 'package:lore/logic/lore_menu_text.dart';
 import 'package:lore/logic/lore_source_memory.dart';
 import 'package:lore/logic/lore_sub_text.dart';
+import 'package:lore/logic/lore_transient_slots.dart';
 import 'package:lore/models/party_member.dart';
 
 class _Io implements LoreGameOptionIo {
@@ -44,6 +45,33 @@ void main() {
     PartyMember.createPreset(3),
     PartyMember.createPreset(5),
   ];
+
+  test(
+    'order menu retains a detached player7 scratch for later battle',
+    () async {
+      final members = party();
+      final original = members[1].toJson();
+      final slots = LoreTransientSlots();
+      await LoreGameOption.run(
+        _Io([2, 1, 2]),
+        members,
+        LorePartyEtc(),
+        slots: slots,
+      );
+      expect(slots.seventhPlayer.toJson(), original);
+      members[2]
+        ..name = ''
+        ..hp = -1;
+      expect(slots.seventhPlayer.toJson(), original);
+      await LoreGameOption.run(
+        _Io([4, 2]),
+        members,
+        LorePartyEtc(),
+        slots: slots,
+      );
+      expect(slots.seventhPlayer.toJson(), original);
+    },
+  );
 
   test('the six source items; Esc does nothing', () async {
     final io = _Io([0]);

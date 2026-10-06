@@ -8,6 +8,7 @@ library;
 import '../models/party_member.dart';
 import 'lore_menu_text.dart';
 import 'lore_source_memory.dart';
+import 'lore_transient_slots.dart';
 import 'lore_sub_text.dart';
 
 abstract interface class LoreGameOptionIo {
@@ -47,11 +48,17 @@ class LoreGameOption {
 
   /// `move(player[j],player[7],55); move(player[k],player[j],55);
   /// move(player[7],player[k],55)` — the whole 55-byte `lore` record.
-  static void swap(List<PartyMember> party, int j, int k) {
+  static void swap(
+    List<PartyMember> party,
+    int j,
+    int k, {
+    LoreTransientSlots? slots,
+  }) {
     while (party.length < (j > k ? j : k)) {
       party.add(PartyMember.blank());
     }
     final t = party[j - 1];
+    slots?.rememberSwapPlayer(t);
     party[j - 1] = party[k - 1];
     party[k - 1] = t;
   }
@@ -59,8 +66,9 @@ class LoreGameOption {
   static Future<void> run(
     LoreGameOptionIo io,
     List<PartyMember> party,
-    LorePartyEtc etc,
-  ) async {
+    LorePartyEtc etc, {
+    LoreTransientSlots? slots,
+  }) async {
     final k = await io.select(LoreMenuText.optionTitle, const [
       LoreMenuText.optionDifficulty,
       LoreMenuText.optionOrder,
@@ -108,7 +116,7 @@ class LoreGameOption {
         if (j == 1) return;
         final k = await io.select('', names, lines: heading) + 1;
         if (k == 1) return;
-        swap(party, j, k);
+        swap(party, j, k, slots: slots);
         io.displayCondition();
       case 3:
         final k =
