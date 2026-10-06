@@ -68,7 +68,7 @@ void main() {
   );
 
   test(
-    'Main redispatches the current tile after every original field menu',
+    'Main redispatches field menus only when their final input is not Esc',
     () {
       for (final action in [
         FieldAction.openMenu,
@@ -81,6 +81,13 @@ void main() {
         FieldAction.gameOption,
       ]) {
         expect(LoreMainProcedures.mainRedispatchesCurrentTile(action), isTrue);
+        expect(
+          LoreMainProcedures.mainRedispatchesCurrentTile(
+            action,
+            lastKeyWasEscape: true,
+          ),
+          isFalse,
+        );
       }
       expect(
         LoreMainProcedures.mainRedispatchesCurrentTile(FieldAction.toggleSound),

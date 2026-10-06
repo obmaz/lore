@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../logic/lore_sub_text.dart';
+import '../logic/lore_main_input.dart';
 import '../theme/retro_theme.dart';
 import 'lore_source_text.dart';
 
@@ -67,7 +68,9 @@ Future<int> showLoreSelectDialog(
       ),
     ),
   );
-  return k ?? 0;
+  final result = k ?? 0;
+  LoreMainInput.record(escape: result == 0);
+  return result;
 }
 
 /// Texts printed in the window followed by `PressAnyKey`
@@ -76,12 +79,24 @@ Future<void> showLoreMessageDialog(
   BuildContext context, {
   required List<(int, String)> lines,
   bool transparentBarrier = false,
-}) => showDialog<void>(
-  context: context,
-  barrierDismissible: false,
-  barrierColor: transparentBarrier ? Colors.transparent : null,
-  builder: (ctx) => LoreMessageDialog(lines: lines),
-);
+}) async {
+  final input = LoreMainInput.current;
+  var acknowledged = false;
+  await showDialog<void>(
+    context: context,
+    barrierDismissible: false,
+    barrierColor: transparentBarrier ? Colors.transparent : null,
+    builder: (ctx) => LoreMessageDialog(
+      lines: lines,
+      onAcknowledged: (escape) {
+        acknowledged = true;
+        input?.read(escape: escape);
+      },
+    ),
+  );
+  // System back/route removal is the touch equivalent of Esc too.
+  if (!acknowledged) input?.read(escape: true);
+}
 
 class LoreMessageDialog extends StatefulWidget {
   const LoreMessageDialog({
@@ -89,11 +104,13 @@ class LoreMessageDialog extends StatefulWidget {
     required this.lines,
     this.leading = const [],
     this.acknowledgementKey,
+    this.onAcknowledged,
   });
 
   final List<(int, String)> lines;
   final List<Widget> leading;
   final Key? acknowledgementKey;
+  final void Function(bool escape)? onAcknowledged;
 
   @override
   State<LoreMessageDialog> createState() => LoreMessageDialogState();
@@ -117,9 +134,10 @@ class LoreMessageDialogState extends State<LoreMessageDialog> {
     super.dispose();
   }
 
-  void _close() {
+  void _close({bool escape = false}) {
     if (_closed) return;
     _closed = true;
+    widget.onAcknowledged?.call(escape);
     Navigator.of(context).pop();
   }
 
@@ -129,7 +147,7 @@ class LoreMessageDialogState extends State<LoreMessageDialog> {
     autofocus: true,
     onKeyEvent: (_, event) {
       if (event is! KeyDownEvent) return KeyEventResult.ignored;
-      _close();
+      _close(escape: event.logicalKey == LogicalKeyboardKey.escape);
       return KeyEventResult.handled;
     },
     child: Dialog(
@@ -300,11 +318,15 @@ class _LoreSelectViewState extends State<LoreSelectView> {
 /// `## k000 공간 이동력` with k from 5; Left/Down lower and Up/Right raise it
 /// within 1..9, Enter returns k and Esc null. The +/- and ✓/✕ icons are the
 /// touch equivalents of those keys.
-Future<int?> showLoreSpacePowerDialog(BuildContext context) => showDialog<int>(
-  context: context,
-  barrierDismissible: false,
-  builder: (ctx) => const _SpacePowerDialog(),
-);
+Future<int?> showLoreSpacePowerDialog(BuildContext context) async {
+  final result = await showDialog<int>(
+    context: context,
+    barrierDismissible: false,
+    builder: (ctx) => const _SpacePowerDialog(),
+  );
+  LoreMainInput.record(escape: result == null);
+  return result;
+}
 
 class _SpacePowerDialog extends StatefulWidget {
   const _SpacePowerDialog();
@@ -437,11 +459,13 @@ class LoreKeyWait {
   bool _closed = false;
 
   /// Completes with true when the key was Esc.
-  Future<bool> next() {
+  Future<bool> next() async {
     if (_closed) return Future.value(true);
     final wait = Completer<bool>();
     _wait = wait;
-    return wait.future;
+    final escape = await wait.future;
+    LoreMainInput.record(escape: escape);
+    return escape;
   }
 
   /// Route removal must release the procedure even without a final key.

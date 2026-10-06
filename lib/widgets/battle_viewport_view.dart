@@ -267,6 +267,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       setState(() {});
       if (escaped) {
         // `party.etc[6] := 2; c := ReadKey; Clear; Scroll(TRUE); exit;`
+        LoreDialogueManager.instance.setBattleResult(2);
         await _readKey();
         if (!mounted) return;
         _battleEnded = true;

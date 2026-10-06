@@ -3,6 +3,7 @@ import 'dart:math';
 
 import '../logic/lore_transient_slots.dart';
 import '../logic/lore_random.dart';
+import '../logic/lore_main_input.dart';
 
 import '../logic/lore_batt_text.dart';
 
@@ -1491,10 +1492,28 @@ class _MainGameScreenState extends State<MainGameScreen> {
     if (mounted) setState(() {});
   }
 
-  void _redispatchCurrentTileAfter(FieldAction action) {
+  Future<void> _runFieldProcedure(
+    FieldAction action,
+    Future<void> Function() procedure,
+  ) async {
+    final input = LoreMainInput();
+    await input.run(procedure);
+    _redispatchCurrentTileAfter(
+      action,
+      lastKeyWasEscape: input.lastKeyWasEscape,
+    );
+  }
+
+  void _redispatchCurrentTileAfter(
+    FieldAction action, {
+    bool lastKeyWasEscape = false,
+  }) {
     if (!mounted ||
         _currentMode != GameScreenMode.field ||
-        !LoreMainProcedures.mainRedispatchesCurrentTile(action)) {
+        !LoreMainProcedures.mainRedispatchesCurrentTile(
+          action,
+          lastKeyWasEscape: lastKeyWasEscape,
+        )) {
       return;
     }
     _game.tryMove(0, 0);
@@ -1904,18 +1923,19 @@ class _MainGameScreenState extends State<MainGameScreen> {
                               _currentMode != GameScreenMode.field) {
                             return;
                           }
-                          switch (action) {
-                            case FieldAction.openMenu:
-                              LoreDialogueManager.instance.setBattleResult(0);
-                              await _runSelectMode();
-                            case FieldAction.quickView:
-                              await _runQuickView();
-                            case FieldAction.extrasense:
-                              await _openEspDialog();
-                            default:
-                              break;
-                          }
-                          _redispatchCurrentTileAfter(action);
+                          await _runFieldProcedure(action, () async {
+                            switch (action) {
+                              case FieldAction.openMenu:
+                                LoreDialogueManager.instance.setBattleResult(0);
+                                await _runSelectMode();
+                              case FieldAction.quickView:
+                                await _runQuickView();
+                              case FieldAction.extrasense:
+                                await _openEspDialog();
+                              default:
+                                break;
+                            }
+                          });
                         },
                       ),
                     ),
@@ -2073,32 +2093,33 @@ class _MainGameScreenState extends State<MainGameScreen> {
           if (event is KeyDownEvent) {
             // 원작 LOREMAIN.PAS 핫키: P/V/Q/C/E/R/G + Space
             final action = FieldHotkeys.resolve(event.logicalKey);
-            switch (action) {
-              case FieldAction.openMenu:
-                // LOREMAIN.Main clears party.etc[6] before SelectMode.
-                LoreDialogueManager.instance.setBattleResult(0);
-                await _runSelectMode();
-              case FieldAction.viewParty:
-                await _runViewParty();
-              case FieldAction.viewCharacter:
-                await _runViewCharacter();
-              case FieldAction.castSpell:
-                await _runCastSpell();
-              case FieldAction.rest:
-                await _runRest();
-              case FieldAction.gameOption:
-                await _runGameOption();
-              case FieldAction.toggleSound:
-                setState(() => AudioManager.instance.toggleMute());
-              case FieldAction.quickView:
-                await _runQuickView();
-              case FieldAction.extrasense:
-                await _openEspDialog();
-              case FieldAction.none:
-                break;
-            }
             if (action != FieldAction.none) {
-              _redispatchCurrentTileAfter(action);
+              await _runFieldProcedure(action, () async {
+                switch (action) {
+                  case FieldAction.openMenu:
+                    // LOREMAIN.Main clears party.etc[6] before SelectMode.
+                    LoreDialogueManager.instance.setBattleResult(0);
+                    await _runSelectMode();
+                  case FieldAction.viewParty:
+                    await _runViewParty();
+                  case FieldAction.viewCharacter:
+                    await _runViewCharacter();
+                  case FieldAction.castSpell:
+                    await _runCastSpell();
+                  case FieldAction.rest:
+                    await _runRest();
+                  case FieldAction.gameOption:
+                    await _runGameOption();
+                  case FieldAction.toggleSound:
+                    setState(() => AudioManager.instance.toggleMute());
+                  case FieldAction.quickView:
+                    await _runQuickView();
+                  case FieldAction.extrasense:
+                    await _openEspDialog();
+                  case FieldAction.none:
+                    break;
+                }
+              });
               return;
             }
           }

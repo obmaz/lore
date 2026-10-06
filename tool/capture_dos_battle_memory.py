@@ -165,6 +165,7 @@ def check():
     assert observed['players'] == continued['rests'][-1]['afterKey']['players']
     check_resumed()
     check_menace_entry()
+    check_menace_center()
     print('Original live DOS battles, recovery bytes and route RNG: verified')
 
 
@@ -302,6 +303,110 @@ def check_menace_entry():
     assert f['goldRevisit']['left']['seed'] == (gold['afterKey']['seed']*0x08088405+1)&0xffffffff
     assert f['goldRevisit']['returned']['seed'] == f['goldRevisit']['left']['seed']
     assert f['goldRevisit']['returned']['partyRecord']['gold'] == gold['partyRecord']['gold']
+
+
+def check_menace_center():
+    """Validate native path/bytes and Main's shared last-key Esc boundary."""
+    f = json.loads((ROOT/'test/fixtures/dos_menace_center.json').read_text())
+    assert f['executableSha256'] == hashlib.sha256(EXE.read_bytes()).hexdigest()
+    previous = json.loads((ROOT/'test/fixtures/dos_menace_entry.json').read_text())
+    assert f['initial'] == previous['goldRevisit']['returned']
+    def states(value):
+        if isinstance(value, dict):
+            if all(k in value for k in OFFSETS):
+                assert decode({k:value[k] for k in (*OFFSETS,'commandsHex')}) == value
+            else:
+                for child in value.values(): states(child)
+        elif isinstance(value, list):
+            for child in value: states(child)
+    states(f)
+    raw = (EXE.parent/'DEN1.MAP').read_bytes()
+    width,height = raw[:2]
+    def tile(x,y):
+        assert 4<x<width-3 and 4<y<height-3
+        return raw[2+(y-1)*width+x-1]
+    def next_seed(seed): return (seed*0x08088405+1)&0xffffffff
+    x,y=6,44
+    seed=f['initial']['seed']
+    for i,step in enumerate(f['movement']):
+        dx,dy={'Up':(0,-1),'Down':(0,1),'Left':(-1,0),'Right':(1,0)}[step['key']]
+        x,y=x+dx,y+dy
+        assert 41<=tile(x,y)<=47
+        assert step['seedBefore']==seed
+        seed=next_seed(seed)
+        if i==len(f['movement'])-1:
+            assert (seed>>16)%100==0
+            seed=next_seed(seed)
+            count=(seed>>16)%3+1
+            ids=[]
+            for _ in range(count):
+                seed=next_seed(seed);ids.append((seed>>16)%8+5)
+            assert ids==[r['eNumber'] for r in f['encounter']['enemyRecords']]==[10,12,10]
+        else: assert (seed>>16)%100!=0
+        assert step['seedAfter']==seed
+    assert (x,y)==(16,39)
+    assert seed==f['encounter']['seed']
+    assert f['enemyFirst']['partyRecord']['etc'][5]==1
+    assert f['runAway']['wait']['partyRecord']['etc'][5]==2
+    assert f['runAway']['afterKey']==f['runAway']['wait']
+    seed=f['runAway']['afterKey']['seed']
+    for i,step in enumerate(f['centerMovement']):
+        dx,dy={'Up':(0,-1),'Down':(0,1),'Left':(-1,0),'Right':(1,0)}[step['key']]
+        x,y=x+dx,y+dy
+        assert step['seedBefore']==seed
+        if i==len(f['centerMovement'])-1: assert tile(x,y)==0
+        else:
+            assert 41<=tile(x,y)<=47
+            seed=next_seed(seed)
+            assert (seed>>16)%100!=0
+        assert step['seedAfter']==seed
+    assert (x,y)==tuple(f['center']['position'])==(25,8)
+    center=f['center']
+    assert center['wait']['seed']==center['afterKey']['seed']==seed
+    assert center['wait']['partyRecord']['etc'][9]==3
+    assert center['afterKey']['partyRecord']['etc'][9]==4
+    assert center['wait']['players']==center['afterKey']['players']
+    d=f['menuDetour']
+    assert d['maxEscape']['partyRecord']['etc'][6:8]==[5,5]
+    assert d['frequencySelected']['partyRecord']['etc'][6:8]==[1,5]
+    assert d['maxEscape']['seed']==d['frequencySelected']['seed']==seed
+    for key in d['keys']:
+        assert key=='Down'
+        y+=1
+        assert 41<=tile(x,y)<=47
+        seed=next_seed(seed)
+        assert (seed>>16)%20!=0
+    assert (x,y)==(25,11)
+    assert d['afterMovement']['seed']==seed
+    assert f['saveCancel']['wait']==f['saveCancel']['afterEscape']
+    assert f['saveCancel']['afterEscape']['seed']==seed
+    difficulty=f['restoreDifficulty']
+    assert difficulty['before']['seed']==seed
+    assert difficulty['maxSelected']['partyRecord']['etc'][6:8]==[1,3]
+    seed=next_seed(seed)
+    assert difficulty['after']['seed']==seed
+    assert difficulty['after']['partyRecord']['etc'][6:8]==[5,3]
+    assert f['optionCancel']['before']==f['optionCancel']['afterEscape']
+    assert f['optionCancel']['afterEscape']['seed']==seed
+    for rest in f['rests']:
+        assert rest['wait']['seed']==seed
+        assert rest['wait']['partyRecord']['food']==0
+        if not rest['escape']: seed=next_seed(seed)
+        assert rest['afterKey']['seed']==seed
+        assert rest['afterKey']['players']==rest['wait']['players']
+    for key,state in zip(f['revisit']['keys'],f['revisit']['states']):
+        assert key=='Up'
+        y-=1
+        if tile(x,y)!=0:
+            seed=next_seed(seed)
+            assert (seed>>16)%100!=0
+        assert state['seed']==seed
+        assert state['partyRecord']['etc'][9]==4
+        assert state['players']==f['runAway']['afterKey']['players']
+    assert (x,y)==(25,8)
+    # party.x/y intentionally remain stale: this run ended before an actual Save.
+    assert f['revisit']['states'][-1]['partyRecord']['x']==6
+    assert f['revisit']['states'][-1]['partyRecord']['y']==44
 
 
 if __name__ == '__main__':

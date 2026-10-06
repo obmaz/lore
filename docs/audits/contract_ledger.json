@@ -8775,11 +8775,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/menace_entry_dos_ui_test.dart"
       ],
       "verification_status": "partial",
-      "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "port_handler": "lib/widgets/battle_viewport_view.dart",
+      "reviewed_scope": "Actual original DEN1 encounter [Goblin,Insects,Goblin]: pre-battle evasion fails; enemy-first damage, one four-member manual weapon round, enemy phase and next-round member flee match all six records and RNG. Native sets etc[6]=2 before the successful-flee ReadKey; the mobile adapter now exposes2 during that wait, then returns without another enemy phase or gold. Source arrival/centre continuation is captured. Other battle exits, menu combinations and full campaign remain unverified."
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:exit:1",
@@ -8791,11 +8791,11 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/menace_entry_dos_ui_test.dart"
       ],
       "verification_status": "partial",
-      "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "port_handler": "lib/widgets/battle_viewport_view.dart",
+      "reviewed_scope": "Actual original DEN1 encounter [Goblin,Insects,Goblin]: pre-battle evasion fails; enemy-first damage, one four-member manual weapon round, enemy phase and next-round member flee match all six records and RNG. Native sets etc[6]=2 before the successful-flee ReadKey; the mobile adapter now exposes2 during that wait, then returns without another enemy phase or gold. Source arrival/centre continuation is captured. Other battle exits, menu combinations and full campaign remain unverified."
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:9",
@@ -13513,11 +13513,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_entry_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main final guard includes shared c<>#27. Scoped LoreMainInput tracks the last source Select/PressAnyKey/readkey, including keyboard and touch Esc, and a later read replaces an earlier Esc. Actual original MENACE corridor Save-slot Esc, GameOption Esc and Rest Esc consume no RNG, while Rest Enter redispatches the floor once. Full mobile victory-save -> recovery -> entry -> gold -> 131 centre moves with real encounter/manual attacks/member flee matches native records/etc/RNG and centre key-wait/revisit. Centre mobile save/reload is tested; no original centre disk save, Lord Ahn return or ending recorded. Other native menu/position paths remain unverified."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:16",
@@ -19452,11 +19452,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map14_test.dart"
+        "test/menace_entry_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
+      "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending. Actual unchanged DOS EXE centre at(25,8): etc[10] stays3 during Print7/15/15 PressAnyKey and becomes4 afterwards with no RNG; departure/revisit leave4. Mobile regression continues the real victory/entry/gold chain, preserving full native records/etc/RNG. No original centre disk save, (26,8) native alternative or Lord Ahn/ending proof."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:96",
@@ -33907,8 +33907,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map14_test.dart",
-      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending. Actual unchanged DOS EXE centre at(25,8): etc[10] stays3 during Print7/15/15 PressAnyKey and becomes4 afterwards with no RNG; departure/revisit leave4. Mobile regression continues the real victory/entry/gold chain, preserving full native records/etc/RNG. No original centre disk save, (26,8) native alternative or Lord Ahn/ending proof.",
       "verification": "partial"
     },
     {
@@ -39186,9 +39186,9 @@
       "line": 1147,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Actual original DEN1 encounter [Goblin,Insects,Goblin]: pre-battle evasion fails; enemy-first damage, one four-member manual weapon round, enemy phase and next-round member flee match all six records and RNG. Native sets etc[6]=2 before the successful-flee ReadKey; the mobile adapter now exposes2 during that wait, then returns without another enemy phase or gold. Source arrival/centre continuation is captured. Other battle exits, menu combinations and full campaign remain unverified.",
       "verification": "partial"
     },
     {
@@ -39196,9 +39196,9 @@
       "line": 1150,
       "kind": "exit",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Actual original DEN1 encounter [Goblin,Insects,Goblin]: pre-battle evasion fails; enemy-first damage, one four-member manual weapon round, enemy phase and next-round member flee match all six records and RNG. Native sets etc[6]=2 before the successful-flee ReadKey; the mobile adapter now exposes2 during that wait, then returns without another enemy phase or gold. Source arrival/centre continuation is captured. Other battle exits, menu combinations and full campaign remain unverified.",
       "verification": "partial"
     },
     {
@@ -41757,8 +41757,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Main final guard includes shared c<>#27. Scoped LoreMainInput tracks the last source Select/PressAnyKey/readkey, including keyboard and touch Esc, and a later read replaces an earlier Esc. Actual original MENACE corridor Save-slot Esc, GameOption Esc and Rest Esc consume no RNG, while Rest Enter redispatches the floor once. Full mobile victory-save -> recovery -> entry -> gold -> 131 centre moves with real encounter/manual attacks/member flee matches native records/etc/RNG and centre key-wait/revisit. Centre mobile save/reload is tested; no original centre disk save, Lord Ahn return or ending recorded. Other native menu/position paths remain unverified.",
       "verification": "partial"
     },
     {
@@ -47796,7 +47796,7 @@
     {
       "path": "test/lore_main_procedures_test.dart",
       "kind": "test",
-      "sha256": "6eaa19b2baf8af0dece14bb1e95029c76b7bb2b3e2636ccdd87c9fc59936a80a",
+      "sha256": "c52367c04baa9a16ee0246705cc920e7ee805456db0dd9ae46477c6ea0f80682",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LORESUB.PAS"
@@ -48227,6 +48227,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/menace_center_dos_test.dart",
+      "kind": "test",
+      "sha256": "63f9a1bcc2944067702127c564380e1df0ef8d9aa6fe6fb0768034d696b026d2",
+      "cited_source_files": [
+        "LOREBATT.PAS",
+        "LOREMAIN.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/menace_entry_dos_test.dart",
       "kind": "test",
       "sha256": "bcea9e5b7eeb5cce9761dc0cc261c0f9c5d22a52ed9feaf9192ba867f360dbad",
@@ -48236,10 +48246,13 @@
     {
       "path": "test/menace_entry_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "2b315021a81f3b222bd2f374a4e0fcde087130203e5b6379fbf137ea7a82358c",
+      "sha256": "19aed0e9cadded91e5ad463b2c740cad40cd5268951e3cb3329c6d9d11902067",
       "cited_source_files": [
+        "LOREBATT.PAS",
         "LOREENT.PAS",
         "LOREMAIN.PAS",
+        "LOREMENU.PAS",
+        "LORESPEC.PAS",
         "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
@@ -48906,6 +48919,16 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_menace_center.json",
+      "kind": "fixture",
+      "sha256": "c4a338fd24ad2ef0c542d9599d1bf248eb230288d156b068f9fb856c37e3b581",
+      "test_users": [
+        "test/menace_center_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_menace_entry.json",
       "kind": "fixture",
       "sha256": "0b3cd512e81212d9046c5ff2ca45a2c3a637971c95ffd82fa1718425ca2c9ad5",
@@ -49371,7 +49394,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "4bffaf2ff3ad93dfd4b3e3aff4ce0db0b12d2aa5da469db60f6472aa94d4a42c"
+      "sha256": "39bf9ac555a9885e1c5dcd9ab1cc171cb8981dc5d3abaa7524e6f5eeae879f29"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -49399,7 +49422,7 @@
     },
     {
       "path": "lib/widgets/lore_select_view.dart",
-      "sha256": "3d27c2d5b87f30501e9dea42c7f9c790afa1e027e312814e8bd62393d8dc348a"
+      "sha256": "b685d32f8c9856f5dcd20461461100d05c784fbe5dc4ab361d0cbe70f0ba9ec4"
     },
     {
       "path": "lib/widgets/lore_source_text.dart",
@@ -49455,7 +49478,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "f878dcdcffdb8e83bbbdaf1d6d6a06862edfda51ce5cac1efb4f11a9eb074383",
+      "sha256": "d9d87dfad2f1927ac5e0eca4dfa6d572c1be0b42f7009e2b0bcceaeaf3897c9a",
       "top_level_counts": {
         "contracts": 1446
       }

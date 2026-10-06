@@ -15,8 +15,13 @@ class LoreMainProcedures {
   LoreMainProcedures._();
 
   /// `LOREMAIN.Main`: these keys set `ok := true` with `x1 = y1 = 0`, so the
-  /// current tile is dispatched after the menu or view procedure returns.
-  static bool mainRedispatchesCurrentTile(FieldAction action) =>
+  /// current tile is dispatched after the menu or view procedure returns,
+  /// unless its last input left the shared `c = #27` (Main's final guard).
+  static bool mainRedispatchesCurrentTile(
+    FieldAction action, {
+    bool lastKeyWasEscape = false,
+  }) =>
+      !lastKeyWasEscape &&
       switch (action) {
         FieldAction.openMenu ||
         FieldAction.viewParty ||
