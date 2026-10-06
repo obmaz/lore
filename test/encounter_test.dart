@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/lore_encounter_logic.dart';
+import 'package:lore/logic/lore_random.dart';
 import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
 
@@ -16,7 +17,7 @@ class _FixedRandom implements Random {
   @override
   int nextInt(int max) {
     bounds.add(max);
-    return value.clamp(0, max - 1);
+    return max == 0 ? 0 : value.clamp(0, max - 1);
   }
 
   @override
@@ -147,10 +148,6 @@ void main() {
       LoreEncounterLogic.shouldEncounter(1, TileCategory.swamp, noRoll),
       isFalse,
     );
-    expect(
-      LoreEncounterLogic.shouldEncounter(13, TileCategory.walkable, noRoll),
-      isFalse,
-    );
     expect(noRoll.bounds, isEmpty);
 
     final low = _FixedRandom(0);
@@ -162,6 +159,38 @@ void main() {
       List.filled(7, 32),
     );
     expect(high.bounds.first, 7);
+  });
+
+  test('map 13 consumes count and Random(0) before its empty pool exits', () {
+    final random = _FixedRandom(0);
+    expect(
+      LoreEncounterLogic.shouldEncounter(13, TileCategory.walkable, random),
+      isTrue,
+    );
+    expect(LoreEncounterLogic.rollMonsters(13, random), isEmpty);
+    expect(random.bounds, [40, 5, 0]);
+
+    final source = File('repo_source/LORE_1993_src/LOREBATT.PAS')
+        .readAsStringSync(encoding: latin1);
+    expect(source, contains('else begin range := 0; plus := 0; end;'));
+    expect(source, contains('enemynumber := random(range) + plus;'));
+    expect(source, contains('if j = 0 then exit;'));
+    for (final seed in [0, 1, 0xdeadbeef, 0xffffffff]) {
+      final actual = LoreRandom(seed);
+      final expected = LoreRandom(seed)
+        ..nextInt(5)
+        ..nextInt(0);
+      expect(LoreEncounterLogic.rollMonsters(13, actual), isEmpty);
+      expect(actual.seed, expected.seed);
+    }
+  });
+
+  test('towns and maps after 20 exit EncounterEnemy before any draw', () {
+    for (final mapId in [6, 7, 8, 9, 10, 21, 22, 23, 24, 25, 26, 27]) {
+      final random = _FixedRandom(0);
+      expect(LoreEncounterLogic.rollMonsters(mapId, random), isEmpty);
+      expect(random.bounds, isEmpty, reason: 'map $mapId');
+    }
   });
 
   test('FOEDATA.DAT 75종이 JSON 몬스터와 바이트 필드별로 일치한다', () {

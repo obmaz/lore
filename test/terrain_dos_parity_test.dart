@@ -195,4 +195,51 @@ void main() {
       // Leave the save's final key wait pending, as in the DOS capture.
     });
   }
+  testWidgets(
+    'map 13 empty encounter retains source RNG draws and field control',
+    (tester) async {
+      SharedPreferences.setMockInitialValues({});
+      addTearDown(() {
+        LoreDialogueManager.instance.loadFlags({});
+        LoreScriptEngine.instance.resetForTest();
+      });
+      tester.view.physicalSize = const Size(390, 844);
+      tester.view.devicePixelRatio = 1;
+      addTearDown(() {
+        tester.view.resetPhysicalSize();
+        tester.view.resetDevicePixelRatio();
+      });
+      final random = _ReplayRandom([0, 4, 0, 1]);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MainGameScreen(
+            encounterRandom: random,
+            initialSaveData: SaveData(
+              slot: 1,
+              slotName: SaveManager.slotNames.first,
+              timestamp: DateTime.utc(1993),
+              mapId: 13,
+              mapTitle: 'DEN4',
+              playerX: 51,
+              playerY: 31,
+              gold: 10000,
+              food: 100,
+              party: [PartyMember.createPreset(1)],
+              flags: const {},
+              mapTiles: List.filled(10000, 44),
+            ),
+          ),
+        ),
+      );
+      await tester.pump(const Duration(milliseconds: 500));
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowRight);
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(random.bounds, [40, 5, 0]);
+      // No enemy was created: the next field step remains available.
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowRight);
+      await tester.pump(const Duration(milliseconds: 300));
+      expect(random.bounds, [40, 5, 0, 40]);
+      expect(tester.takeException(), isNull);
+    },
+  );
 }

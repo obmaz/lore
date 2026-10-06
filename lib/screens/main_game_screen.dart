@@ -293,11 +293,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
             setMindReadSteps: (steps) => setState(() => _mindReadCount = steps),
             encounterFrequency: () => _encounterFrequency,
             random: _sessionRandom.nextInt,
-            encounterEnemy: () {
-              if (LoreEncounterLogic.pools.containsKey(_game.currentMapId)) {
-                _startBattle();
-              }
-            },
+            encounterEnemy: _startBattle,
           ).then((_) => _continuePositionBlocks()),
         );
       },

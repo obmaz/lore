@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import '../game/lore_map_manager.dart';
+import '../game/lore_world_manager.dart';
 import '../models/monster.dart';
 import '../models/party_member.dart';
 
@@ -97,7 +98,6 @@ class LoreEncounterLogic {
     Random random, {
     int frequency = 2,
   }) {
-    if (!pools.containsKey(mapId)) return false;
     final steps = switch (tile) {
       TileCategory.walkable => 20,
       TileCategory.water => 30,
@@ -114,10 +114,20 @@ class LoreEncounterLogic {
     Random random, {
     int maxEnemies = 5,
   }) {
-    final pool = pools[mapId];
-    if (pool == null) return const [];
+    // EncounterEnemy exits before any draws only in towns or after map 20.
+    // Map 13 has no pool, but still draws the enemy count and Random(0)
+    // in randomenemy before j = 0 ends the encounter.
+    if (mapId > 20 ||
+        LoreWorldManager.mapRegistry[mapId]?.category == MapCategory.town) {
+      return const [];
+    }
     final limit = maxEnemies >= 3 && maxEnemies <= 7 ? maxEnemies : 5;
     final count = random.nextInt(limit) + 1;
+    final pool = pools[mapId];
+    if (pool == null) {
+      random.nextInt(0);
+      return const [];
+    }
     return List.generate(
       count,
       (_) => pool.$1 + random.nextInt(pool.$2 - pool.$1 + 1),

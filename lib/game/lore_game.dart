@@ -370,11 +370,7 @@ class LoreGame extends FlameGame {
       scrollToParty: clearPeek,
       encounterFrequency: encounterFrequencyProvider?.call() ?? 2,
       random: _random.nextInt,
-      encounterEnemy: () {
-        if (LoreEncounterLogic.pools.containsKey(currentMapId)) {
-          onEncounter?.call();
-        }
-      },
+      encounterEnemy: () => onEncounter?.call(),
       // LoreFieldSession has not committed movement on a blocked water tile.
       restorePosition: () {},
     );

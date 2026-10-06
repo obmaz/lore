@@ -8045,9 +8045,9 @@
       "line": 1194,
       "kind": "case",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8055,9 +8055,9 @@
       "line": 1219,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8065,9 +8065,9 @@
       "line": 1219,
       "kind": "exit",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8075,9 +8075,9 @@
       "line": 1221,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8085,9 +8085,9 @@
       "line": 1222,
       "kind": "for",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8095,9 +8095,9 @@
       "line": 1224,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8105,9 +8105,9 @@
       "line": 1224,
       "kind": "exit",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8115,9 +8115,9 @@
       "line": 1231,
       "kind": "for",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8125,9 +8125,9 @@
       "line": 1243,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8135,9 +8135,9 @@
       "line": 1245,
       "kind": "for",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8145,9 +8145,9 @@
       "line": 1247,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8155,9 +8155,9 @@
       "line": 1252,
       "kind": "for",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8165,9 +8165,9 @@
       "line": 1257,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8175,9 +8175,9 @@
       "line": 1259,
       "kind": "exit",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8185,9 +8185,9 @@
       "line": 1265,
       "kind": "for",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8195,9 +8195,9 @@
       "line": 1267,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8205,9 +8205,9 @@
       "line": 1272,
       "kind": "for",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
@@ -8215,9 +8215,9 @@
       "line": 1277,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
+      "implementation": "lib/logic/lore_encounter_logic.dart",
+      "test": "test/encounter_test.dart",
+      "note": "EncounterEnemy preserves the town/map>20 pre-draw exit and randomenemy ranges. Map13 has no pool but consumes Random(maxenemy^) then Random(0) before j=0 exits; movement and water callbacks do not suppress it. Regression tests cover draws, seeded continuation and the mobile field path (terrain_dos_parity_test.dart). Source-flow comparison plus the previously verified DOS RNG; not an independent full DOS map13 encounter replay.",
       "verification": "partial"
     },
     {
