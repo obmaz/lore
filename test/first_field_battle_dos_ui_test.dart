@@ -10,6 +10,7 @@ import 'package:lore/game/lore_dialogue_manager.dart';
 import 'package:lore/game/lore_game.dart';
 import 'package:lore/game/lore_world_manager.dart';
 import 'package:lore/logic/lore_random.dart';
+import 'package:lore/logic/lore_menu_text.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/screens/main_game_screen.dart';
 import 'package:lore/services/save_manager.dart';
@@ -124,7 +125,7 @@ void main() {
   }
 
   testWidgets(
-    'native seeded route, automatic victory and failed flee match on mobile',
+    'native route, two battles and four recovery rests match on mobile',
     (tester) async {
       final game = await open(tester);
       await walk(tester, game, [
@@ -181,6 +182,97 @@ void main() {
         for (var i = 0; i < 100; i++)
           i + 1: second['enemyPhaseReadKey']['partyRecord']['etc'][i],
       });
+      final continuation = jsonDecode(
+        File('test/fixtures/dos_second_field_battle.json').readAsStringSync(),
+      );
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      for (final round in continuation['rounds']) {
+        if (round['commands'] == null) {
+          await tester.tap(find.byKey(const ValueKey('battle-cmd-7')));
+        } else {
+          for (var slot = 0; slot < 6; slot++) {
+            if (!game.partyProvider!()[slot].isBattleActive) continue;
+            final command = round['commands'][slot];
+            if (command[0] == 0) {
+              await tester.tap(find.byKey(const ValueKey('battle-cmd-2')));
+              await tick(tester);
+              await tester.tap(find.text('없음').last);
+            } else {
+              await tester.tap(find.byKey(ValueKey('enemy-${command[2] - 1}')));
+              await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
+            }
+            await tick(tester);
+          }
+        }
+        for (var i = 0; i < 10; i++) {
+          await tick(tester);
+        }
+        expect(random.seed, round['partyPhase']['seed']);
+        expect(
+          game.partyProvider!().map((p) => p.toJson()).toList(),
+          round['partyPhase']['records'],
+        );
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        for (var i = 0; i < 6; i++) {
+          await tick(tester);
+        }
+        expect(random.seed, round['enemyPhase']['seed']);
+        expect(
+          game.partyProvider!().map((p) => p.toJson()).toList(),
+          round['enemyPhase']['records'],
+        );
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+      }
+      expect(find.byType(BattleViewportView), findsNothing);
+      expect(random.seed, continuation['victory']['seed']);
+      await tester.runAsync(
+        () => tester
+            .state<GameWidgetState<LoreGame>>(find.byType(GameWidget<LoreGame>))
+            .loaderFuture,
+      );
+      await tick(tester);
+
+      for (final rest in continuation['rests']) {
+        await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
+        await tick(tester);
+        expect(random.seed, rest['wait']['seed']);
+        expect(
+          game.partyProvider!().map((p) => p.toJson()).toList(),
+          rest['wait']['records'],
+        );
+        expect(LoreDialogueManager.instance.partyEtc.snapshot(), {
+          for (var i = 0; i < 100; i++)
+            i + 1: rest['wait']['partyRecord']['etc'][i],
+        });
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+        expect(random.seed, rest['afterKey']['seed']);
+      }
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyG);
+      await tick(tester);
+      await tester.tap(find.text(LoreMenuText.optionSave));
+      await tick(tester);
+      await tester.tap(find.text(SaveManager.slotNames.first));
+      await tick(tester);
+      final saved = (await SaveManager.instance.loadGame(1))!;
+      final nativeAfterRest = continuation['rests'].last['afterKey'];
+      expect(
+        saved.party.map((p) => p.toJson()).toList(),
+        nativeAfterRest['records'],
+      );
+      expect(saved.food, nativeAfterRest['partyRecord']['food']);
+      expect(saved.gold, nativeAfterRest['partyRecord']['gold']);
+      expect([saved.mapId, saved.playerX, saved.playerY], [1, 57, 40]);
+      expect(
+        saved.mapTiles,
+        _hex(native['files']['SAVE1.MAP']['hex']).skip(2).toList(),
+      );
+      expect([
+        for (var i = 0; i < 100; i++) saved.flags['etc${i + 1}'],
+      ], nativeAfterRest['partyRecord']['etc']);
       expect(tester.takeException(), isNull);
       await tester.pumpWidget(const SizedBox.shrink());
     },

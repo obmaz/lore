@@ -1960,7 +1960,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
         return Stack(
           children: [
             // Flame 2D 타일맵 게임 위젯
-            Positioned.fill(child: GameWidget(game: _game)),
+            // MainGameScreen owns field hotkeys. Flame's default focus
+            // handles keys itself and would swallow R/G after a battle.
+            Positioned.fill(child: GameWidget(game: _game, autofocus: false)),
             // 우측 상단 오디오 토글
             Positioned(
               top: 6,

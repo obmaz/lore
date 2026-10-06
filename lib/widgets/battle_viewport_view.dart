@@ -162,7 +162,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       specialMagicLearned: LoreDialogueManager.instance.specialMagicLearned,
       espBit: widget.espAccessGranted,
     );
-    _selectFirstAliveTarget();
     if (widget.enemyFirst) {
       _isTurnProcessing = true;
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -183,15 +182,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     _releaseKeyWait(rebuild: false);
     _focusNode.dispose();
     super.dispose();
-  }
-
-  void _selectFirstAliveTarget() {
-    for (int i = 0; i < widget.enemies.length; i++) {
-      if (!widget.enemies[i].isDead) {
-        _selectedEnemyIndex = i;
-        break;
-      }
-    }
   }
 
   void _playSound(String name) {
@@ -237,7 +227,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       _isTurnProcessing = false;
     });
     activePlayer;
-    _reTargetIfDead();
+    _selectedEnemyIndex = 0; // LORESUB SelectEnemy starts at number := 1.
   }
 
   /// 현재 파티원의 선택을 기록하고 다음 사람으로 넘어간다.
@@ -257,7 +247,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         next++;
       }
       if (next >= _partyCount) break;
-      setState(() => _activePlayerIndex = next);
+      setState(() {
+        _activePlayerIndex = next;
+        _selectedEnemyIndex = 0;
+      });
       if (!_autoRound) return;
       _battle.autoSelect(next + 1); // `k := 8`
       next++;
@@ -499,23 +492,6 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     );
   }
 
-  void _reTargetIfDead() {
-    if (currentTarget.isDead || currentTarget.isUnconscious) {
-      for (int i = 0; i < widget.enemies.length; i++) {
-        if (!widget.enemies[i].isDead && !widget.enemies[i].isUnconscious) {
-          _selectedEnemyIndex = i;
-          return;
-        }
-      }
-      for (int i = 0; i < widget.enemies.length; i++) {
-        if (!widget.enemies[i].isDead) {
-          _selectedEnemyIndex = i;
-          return;
-        }
-      }
-    }
-  }
-
   /// `DisplayEnemies`: HP 구간별 색, 의식불명은 8, 죽으면 0(보이지 않음).
   Color _getEnemyHpColor(Monster e) {
     if (e.isDead) return RetroTheme.viewportBg;
@@ -632,9 +608,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                             _battleEnded) {
                           return;
                         }
-                        if (!enemy.isDead) {
-                          setState(() => _selectedEnemyIndex = idx);
-                        }
+                        // SelectEnemy accepts every slot, including corpses.
+                        // AttackOne/CastOne own any subsequent retargeting.
+                        setState(() => _selectedEnemyIndex = idx);
                       },
                       child: Container(
                         margin: const EdgeInsets.symmetric(vertical: 2),
@@ -642,7 +618,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                           horizontal: 6,
                           vertical: 3,
                         ),
-                        color: isSelected && !enemy.isDead
+                        color: isSelected
                             ? RetroTheme.lightGray
                             : Colors.transparent,
                         child: Text(

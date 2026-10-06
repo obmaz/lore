@@ -46,6 +46,11 @@ def decode(state):
     result['enemyRecords'] = enemies(bytes.fromhex(state['enemies']), state['enemyCount'])
     result['sha256'] = {key: hashlib.sha256(bytes.fromhex(state[key])).hexdigest()
                         for key in ('party', 'players', 'enemies')}
+    if 'commandsHex' in state:
+        raw = bytes.fromhex(state['commandsHex'])
+        assert len(raw) == 18
+        result['commands'] = [list(raw[i:i+3]) for i in range(0,18,3)]
+        result['sha256']['commands'] = hashlib.sha256(raw).hexdigest()
     return result
 
 
@@ -92,6 +97,10 @@ def capture(locator):
         assert state == dict(seed=struct.unpack('<I', read('seed', 4))[0],
                      party=read('party', 108).hex(), players=read('players', 330).hex(),
                      enemyCount=read('enemyCount', 1)[0], enemies=read('enemies', 245).hex())
+        commands = os.pread(fd, 18, ds+0x64b8)
+        assert len(commands) == 18
+        assert commands == os.pread(fd, 18, ds+0x64b8)
+        state['commandsHex'] = commands.hex()
         return decode(state)
     finally:
         os.close(fd)
@@ -139,7 +148,22 @@ def check():
                 assert ids == [r['eNumber'] for r in route['encounter']['enemyRecords']]
             assert step['seedAfter'] == seed
         assert seed == route['encounter']['seed']
-    print('Original live DOS first field battle RAM bytes, records and route RNG: verified')
+    continued = json.loads((ROOT/'test/fixtures/dos_second_field_battle.json').read_text())
+    assert continued['executableSha256'] == f['executableSha256']
+    assert continued['initial'] == second['partyCommandWait']
+    for state in (continued['initial'], continued['victory'],
+                  *(s[k] for s in continued['rounds'] for k in ('partyPhase','enemyPhase')),
+                  *(s[k] for s in continued['rests'] for k in ('wait','afterKey'))):
+        assert decode({k:state[k] for k in OFFSETS}) == state
+    for previous, rest in zip([continued['victory'], *[r['afterKey'] for r in continued['rests']]], continued['rests']):
+        assert rest['wait']['seed'] == previous['seed']
+        assert rest['afterKey']['seed'] == (previous['seed']*0x08088405+1)&0xffffffff
+        assert rest['wait']['records'] == rest['afterKey']['records']
+    observed = continued['completedCommandRead']
+    assert observed == decode({k:observed[k] for k in (*OFFSETS,'commandsHex')})
+    assert observed['commands'] == continued['rounds'][-1]['completedCommands']
+    assert observed['players'] == continued['rests'][-1]['afterKey']['players']
+    print('Original live DOS battles, recovery bytes and route RNG: verified')
 
 
 if __name__ == '__main__':
