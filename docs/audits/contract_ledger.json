@@ -18086,11 +18086,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map7_8_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract."
+      "reviewed_scope": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:28",
@@ -18572,11 +18572,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map11_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:58",
@@ -18588,11 +18588,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map11_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:exit:5",
@@ -18604,11 +18604,11 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map11_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:59",
@@ -18620,11 +18620,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map11_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:exit:6",
@@ -18636,11 +18636,11 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map11_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:60",
@@ -18652,11 +18652,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map11_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:61",
@@ -29228,11 +29228,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/dialogue_window_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending."
+      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:62",
@@ -29244,11 +29244,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/dialogue_window_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending."
+      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:63",
@@ -29260,11 +29260,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/dialogue_window_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending."
+      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:exit:1",
@@ -29276,11 +29276,11 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/dialogue_window_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending."
+      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:64",
@@ -29372,11 +29372,11 @@
       "outcomes": 5,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_talk_mode_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_mode.dart",
-      "reviewed_scope": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending."
+      "reviewed_scope": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:for:4",
@@ -31297,8 +31297,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map7_8_test.dart",
-      "note": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -33357,8 +33357,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map11_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -33367,8 +33367,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map11_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -33377,8 +33377,8 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map11_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -33387,8 +33387,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map11_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -33397,8 +33397,8 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map11_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -33407,8 +33407,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map11_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. DOS comparison pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -43197,8 +43197,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "test/dialogue_window_test.dart",
-      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
       "verification": "partial"
     },
     {
@@ -43207,8 +43207,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "test/dialogue_window_test.dart",
-      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
       "verification": "partial"
     },
     {
@@ -43217,8 +43217,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "test/dialogue_window_test.dart",
-      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
       "verification": "partial"
     },
     {
@@ -43227,8 +43227,8 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "test/dialogue_window_test.dart",
-      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
       "verification": "partial"
     },
     {
@@ -44307,8 +44307,8 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_mode.dart",
-      "test": "test/lore_talk_mode_test.dart",
-      "note": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
       "verification": "partial"
     },
     {
@@ -48260,9 +48260,11 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "cfbe8f0497d600c8608bdf8347f0258a9ea5ec87966bbbe068ed5ac5bd7e45f3",
+      "sha256": "9667f69bce215ce39bcad8f877419047a509ce49495e6426108023e3d268a6d1",
       "cited_source_files": [
+        "LOREENT.PAS",
         "LOREMAIN.PAS",
+        "LOREMENU.PAS",
         "LORESPEC.PAS",
         "LORESUB.PAS",
         "LORETALK.PAS"
@@ -48913,6 +48915,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_lastditch_arrival.json",
+      "kind": "fixture",
+      "sha256": "ebf7c8a4658826f3509cdbad709d5482de1e38146af664b0b82f48a0ca58e72d",
+      "test_users": [
+        "test/menace_return_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_lorehunter_reentry.json",
       "kind": "fixture",
       "sha256": "f5fcdfe65a79d3c537c421a456a277f617aec60e0ddb7c19c2ea81d978314f97",
@@ -49499,7 +49510,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "96a9760aebe1d6cb5f20903bedb87b429d86c666c515b75dcf15089e0ab485fd",
+      "sha256": "f3d012adcd84f57cfbaa5a5de889ac5dce4aa2ea4a8513fc13c7ba819d85c0d6",
       "top_level_counts": {
         "contracts": 1446
       }

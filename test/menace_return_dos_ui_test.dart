@@ -23,6 +23,18 @@ void main() {
   final fixture = jsonDecode(
     File('test/fixtures/dos_menace_return.json').readAsStringSync(),
   );
+  // LORESUB.PAS Grocery/Save; LOREMENU.PAS Rest; LORETALK.PAS:406-469.
+  final lastditch = jsonDecode(
+    File('test/fixtures/dos_lastditch_arrival.json').readAsStringSync(),
+  );
+  dynamic observed(int number) => (lastditch['inputs'] as List).singleWhere(
+    (input) => input['capture'] == 'lore_$number.png',
+  )['after'];
+  // LOREENT.PAS:159-167; LORESPEC.PAS:313-319, 493-521.
+  final pyramid = lastditch['pyramid'];
+  dynamic pyramidState(int number) => (pyramid['inputs'] as List).singleWhere(
+    (input) => input['capture'] == 'lore_$number.png',
+  )['after'];
   Future<void> tick(WidgetTester tester) async {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));
@@ -191,6 +203,197 @@ void main() {
         f['save'],
         inputs[5]['after'],
         inputs[6]['after'],
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'actual DOS grocery, four rests and disk save recover the Lord Ahn party',
+    (tester) async {
+      final movement = lastditch['walks']['grocery'];
+      final random = LoreRandom(movement['initial']['seed']);
+      final game = await open(tester, fixture['lordAhn']['save'], random);
+      check(game, random, movement['initial']);
+      for (final step in movement['steps']) {
+        await walk(tester, game, [step['key']]);
+        expect(random.seed, step['after']['seed']);
+      }
+      check(game, random, movement['after']);
+      expect((game.playerX, game.playerY), (86, 73));
+      await walk(tester, game, ['Right']);
+      check(game, random, observed(109));
+      await tester.tap(find.text('50 인분 : 금 500 개'));
+      await tick(tester);
+      check(game, random, observed(110));
+      for (final number in [111, 113, 115, 117]) {
+        await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
+        await tick(tester);
+        check(game, random, observed(number));
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+        check(game, random, observed(number + 1));
+      }
+      await save(
+        tester,
+        game,
+        random,
+        lastditch['readySave'],
+        observed(121),
+        observed(122),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'actual LASTDITCH save -> Lord request -> Polaris cancel/replacement -> disk save',
+    (tester) async {
+      final movement = lastditch['walks']['lord'];
+      final random = LoreRandom(movement['initial']['seed']);
+      final game = await open(tester, lastditch['arrivalSave'], random);
+      check(game, random, movement['initial']);
+      for (final step in movement['steps']) {
+        await walk(tester, game, [step['key']]);
+        expect(random.seed, step['after']['seed']);
+      }
+      check(game, random, movement['after']);
+      expect((game.playerX, game.playerY), (38, 18));
+      await walk(tester, game, ['Up']);
+      check(game, random, observed(137));
+      expect(LoreDialogueManager.instance.partyEtc.read(13), 0);
+      expect(find.textContaining('PYRAMID'), findsWidgets);
+      // DOS Scroll pages need extra keys; compare the closed procedure's
+      // first wait and final PressAnyKey, not original text-page geometry.
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, observed(142));
+      await walk(tester, game, ['Up']);
+      check(game, random, observed(143));
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, observed(144));
+      for (final step in lastditch['walks']['polaris']['steps']) {
+        await walk(tester, game, [step['key']]);
+        expect(random.seed, step['after']['seed']);
+      }
+      check(game, random, lastditch['walks']['polaris']['after']);
+      expect((game.playerX, game.playerY), (37, 42));
+      for (final attempt in [false, true]) {
+        await walk(tester, game, ['Up']);
+        check(game, random, observed(attempt ? 149 : 146));
+        await tester.tap(find.text('나는 당신의 제안을 받아 들이겠소'));
+        await tick(tester);
+        check(game, random, observed(attempt ? 150 : 147));
+        if (attempt) {
+          // Use the captured Select keys; the character panel also shows Merlin.
+          await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+          await tick(tester);
+          await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        } else {
+          await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+        }
+        await tick(tester);
+        check(game, random, observed(attempt ? 151 : 148));
+        expect(game.currentMap!.getTile(37, 41), attempt ? 44 : 53);
+      }
+      await save(
+        tester,
+        game,
+        random,
+        lastditch['polarisSave'],
+        observed(154),
+        observed(155),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'actual LASTDITCH secret passage, PYRAMID load and save acknowledgment encounter',
+    (tester) async {
+      final movement = pyramid['entryMovement'];
+      final random = LoreRandom(movement['initial']['seed']);
+      final game = await open(tester, lastditch['polarisSave'], random);
+      check(game, random, movement['initial']);
+      for (final step in movement['steps']) {
+        await walk(tester, game, [step['key']]);
+        expect(random.seed, step['after']['seed']);
+      }
+      expect((game.playerX, game.playerY), (29, 8));
+      for (var number = 157; number <= 166; number++) {
+        final input = (pyramid['inputs'] as List).singleWhere(
+          (i) => i['capture'] == 'lore_$number.png',
+        );
+        await walk(tester, game, List<String>.from(input['keys']));
+        check(game, random, input['after']);
+        if (number < 166) expect(game.currentMap!.getTile(31, 8), 45);
+      }
+      expect((game.playerX, game.playerY), (37, 7));
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.runAsync(() async {
+        for (var i = 0; i < 20 && game.currentMapId != 11; i++) {
+          await Future<void>.delayed(const Duration(milliseconds: 10));
+        }
+      });
+      await tick(tester);
+      check(game, random, pyramidState(167));
+      expect((game.currentMapId, game.playerX, game.playerY), (11, 25, 45));
+      await save(
+        tester,
+        game,
+        random,
+        pyramid['arrivalSave'],
+        pyramidState(170),
+        pyramidState(171),
+      );
+      expect(find.textContaining('Giant'), findsWidgets);
+      // Stop at the native encounter choice; the captured Giant battle is
+      // retained as provenance, not claimed as a new full battle replay.
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'actual PYRAMID spear cancellation, fighter rejection, knight bonus and save',
+    (tester) async {
+      // After the actual Giant escape, exit and reentry, native party/player
+      // bytes equal this genuine earlier disk save (checked by Python).
+      final random = LoreRandom(pyramidState(209)['seed']);
+      final game = await open(tester, pyramid['arrivalSave'], random);
+      check(game, random, pyramidState(209));
+      for (final (start, choice) in [(210, -1), (215, 4), (220, 1)]) {
+        if (start != 210) {
+          await walk(tester, game, ['Down']);
+          check(game, random, pyramidState(start - 1));
+        }
+        await walk(tester, game, ['Up']);
+        check(game, random, pyramidState(start));
+        expect((game.playerX, game.playerY), (25, 44));
+        for (var number = start + 1; number <= start + 2; number++) {
+          await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+          await tick(tester);
+          check(game, random, pyramidState(number));
+        }
+        if (choice < 0) {
+          await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+        } else {
+          for (var i = 0; i < choice; i++) {
+            await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+            await tick(tester);
+          }
+          await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        }
+        await tick(tester);
+        check(game, random, pyramidState(start + 3));
+        expect(
+          LoreDialogueManager.instance.partyEtc.read(33),
+          choice == 1 ? 128 : 0,
+        );
+      }
+      await save(
+        tester,
+        game,
+        random,
+        pyramid['spearSave'],
+        pyramidState(226),
+        pyramidState(227),
       );
       expect(tester.takeException(), isNull);
     },

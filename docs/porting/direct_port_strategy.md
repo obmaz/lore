@@ -1870,3 +1870,57 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      로컬 Chromium390×844의 해시 대조와 기존 생성→출발 회귀를 통과했고,
      이전 커밋의 실제 bootstrap을 격리 서버에서 제공하면 새 검사가 해시
      불일치로 실패하는 것도 확인했다.
+122. 실제 Lord Ahn 저장 이후 LASTDITCH 도착·퀘스트 수락·Polaris 영입 대조
+     (`dos_lastditch_arrival.json`, `menace_return_dos_ui_test.dart`,
+     `tool/check_dos_lastditch_arrival.py`). 121의 원본 실행을 그대로 이어
+     식료품점까지79칸 이동, 금500으로 식량50개 구입, 네 번의 휴식으로
+     의식불명3명과 부상자를 회복했다. 실제 저장은 Castle(86,73),
+     식량40·금2025이며 HP는9/17/5/11/17/95다.
+     출구까지65칸, Ground104칸을 이동했고 실제 Earth Worm/Troll/Orc
+     조우에서 평균 행운 비교로 즉시 도주했다. 적 생성 난수와 도주 시
+     추가 난수가 없다는 결과도 원본 bytes로 보존했다. LASTDITCH 도착
+     저장은 map7(37,70)이며 원본 TOWN2.MAP과 모든 타일이 같다.
+     성주까지53칸 이동해 etc[13]의0→1 수락과1단계 재방문을 확인했다.
+     원본 Scroll의 중간 화면 넘김은137~140 캡처에서 단계0을 유지하고,
+     마지막 Down 입력(141)에서1로 바뀐다. 현대 팝업에서는 첫 대기와
+     마지막 확인 뒤의 상태를 비교하며 DOS의 화면 페이지 수를 같다고
+     주장하지 않는다. 이후25칸 이동해 Polaris의 슬롯 선택을 취소한 뒤
+     다시 선택하여 Merlin 슬롯에 영입했다. 다른5명은 그대로이며
+     Polaris는 class4·전투Lv3·마법Lv3·HP30·SP48·EXP6000,
+     장비4/1/1·AC3이고 영입은 난수를 소비하지 않는다. NPC(37,41)는
+     53→44로 바뀌며 최종 실제 저장은 map7(37,42), etc[13]=1이다.
+     이 원본 저장을 보존하고 PYRAMID 입구까지 진행했다. EXE·난수·RAM·맵·
+     저장 데이터를 변경하지 않았다. 현대 앱 테스트만 관찰된 난수와
+     실제 저장을 어댑터에 전달해 재현한다.
+     모바일390×844의 새 회귀4개에서 구입/휴식/수락/재방문/영입
+     취소·확정/저장의6명 전체 필드·100개 etc·난수·현재 지도 bytes가
+     일치했다. 이번 닫힌 분기에서는 게임 규칙 차이가 발견되지 않아
+     런타임 규칙은 변경하지 않고 실제 근거와 회귀를 추가했다.
+     계약은 partial을 유지한다. PYRAMID 보스와 성주 보상 복귀,
+     이후 퀘스트·엔딩 및 새 게임→엔딩 전체 연속 비교는 남아 있다.
+     [회복 화면](lastditch_recover_party.png),
+     [성주 의뢰](lastditch_lord_request.png),
+     [Polaris 영입](lastditch_polaris_join.png),
+     [최종 실제 저장](lastditch_polaris_save.png)은 동일 원본 실행 캡처다.
+     이어 LASTDITCH132칸 이동 후(29,8)에서 비밀 통로를 건넜다.
+     x30/32의 특수 칸은(31,8)을45로 열고 난수를 쓰지 않으며, 열린
+     (31,8)을 걷는 다음 입력은 난수1회를 쓴다. PYRAMID 입장 뒤에는
+     원본 LOREMAIN의 town→den 후속 분기로 Random(40)1회를 더 쓰고
+     map11(25,45)을 실제 저장했다. 저장 확인 키에서 Giant 조우가
+     발생했다. 실제 전투 입력과 RAM·도주·던전 퇴장·재입장을 보존했으나
+     이 전투 전체를 새 Flutter 전투 재생으로 검증했다고 주장하지 않는다.
+     재입장 뒤의 party/player raw bytes는 앞서 저장한 입구 파일과 같아
+     닫힌 창 획득 분기를 그 실제 저장에서 모바일로 재현한다.
+     오이디푸스의 창은 두 번의 대기 뒤 선택 취소하면 변화가 없고,
+     무도가 Regulus에게 주어도 획득 bit는 켜지지 않는다. 기사 Hercules에
+     주면 무기3·위력18과 etc[33] bit8=128을 기록하며 다른5명은 그대로다.
+     map11(25,44)의 최종 실제 디스크 저장과 확인 뒤의 무반복도 대조했다.
+     이 창 획득 저장이 다음 PYRAMID 보스 진행의 기준이다.
+     [창 발견](pyramid_spear_found.png),
+     [무도가 거부](pyramid_spear_class_rejection.png),
+     [기사 획득](pyramid_spear_knight.png),
+     [던전 실제 저장](pyramid_spear_disk_save.png)을 보존했다.
+     검증: 전체 Flutter1389개 통과(도구2개 제외), analyze 오류 없음,
+     Python63개와 계약/메모리/지도/대사 및 실제 MENACE 복귀·LASTDITCH
+     저장 bytes 검사를 통과했다. 계약 연결 수1446과 미검증1848은
+     그대로이며 JSON 근거 파일은49개다.
