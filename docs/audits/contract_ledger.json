@@ -28032,7 +28032,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_source_memory.dart",
-      "reviewed_scope": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending."
+      "reviewed_scope": "Raw field slot aliases and all 256 option bytes with source Load validation. Actual centre disk slot2 from untouched DOS /g, cold reload of identical bytes renamed slot1, completed-centre revisit and actual slot1 resave now compare in menace_return_dos_ui_test: frequency5->2, max3 preserved, full records/etc/map and RNG. Lord Ahn actual Castle save/reload also included; this does not verify all Load branches."
     },
     {
       "id": "LORESUB.PAS:load:1:if:12",
@@ -28048,7 +28048,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_source_memory.dart",
-      "reviewed_scope": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending."
+      "reviewed_scope": "Raw field slot aliases and all 256 option bytes with source Load validation. Actual centre disk slot2 from untouched DOS /g, cold reload of identical bytes renamed slot1, completed-centre revisit and actual slot1 resave now compare in menace_return_dos_ui_test: frequency5->2, max3 preserved, full records/etc/map and RNG. Lord Ahn actual Castle save/reload also included; this does not verify all Load branches."
     },
     {
       "id": "LORESUB.PAS:load:1:case:4",
@@ -29009,11 +29009,11 @@
       "outcomes": 8,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_talk_mode_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_mode.dart",
-      "reviewed_scope": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending."
+      "reviewed_scope": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:for:3",
@@ -29036,11 +29036,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_talk_mode_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_mode.dart",
-      "reviewed_scope": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending."
+      "reviewed_scope": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:50",
@@ -31558,7 +31558,7 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_source_memory.dart",
       "test": "test/lore_source_memory_test.dart",
-      "note": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending.",
+      "note": "Raw field slot aliases and all 256 option bytes with source Load validation. Actual centre disk slot2 from untouched DOS /g, cold reload of identical bytes renamed slot1, completed-centre revisit and actual slot1 resave now compare in menace_return_dos_ui_test: frequency5->2, max3 preserved, full records/etc/map and RNG. Lord Ahn actual Castle save/reload also included; this does not verify all Load branches.",
       "verification": "partial"
     },
     {
@@ -31568,7 +31568,7 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_source_memory.dart",
       "test": "test/lore_source_memory_test.dart",
-      "note": "Raw field slot aliases and all 256 option bytes with source Load validation; full DOS save layout remains pending.",
+      "note": "Raw field slot aliases and all 256 option bytes with source Load validation. Actual centre disk slot2 from untouched DOS /g, cold reload of identical bytes renamed slot1, completed-centre revisit and actual slot1 resave now compare in menace_return_dos_ui_test: frequency5->2, max3 preserved, full records/etc/map and RNG. Lord Ahn actual Castle save/reload also included; this does not verify all Load branches.",
       "verification": "partial"
     },
     {
@@ -44127,8 +44127,8 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_mode.dart",
-      "test": "test/lore_talk_mode_test.dart",
-      "note": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending.",
       "verification": "partial"
     },
     {
@@ -44137,8 +44137,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_mode.dart",
-      "test": "test/lore_talk_mode_test.dart",
-      "note": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending.",
       "verification": "partial"
     },
     {
@@ -48258,6 +48258,18 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/menace_return_dos_ui_test.dart",
+      "kind": "test",
+      "sha256": "cfbe8f0497d600c8608bdf8347f0258a9ea5ec87966bbbe068ed5ac5bd7e45f3",
+      "cited_source_files": [
+        "LOREMAIN.PAS",
+        "LORESPEC.PAS",
+        "LORESUB.PAS",
+        "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/message_log_view_test.dart",
       "kind": "test",
       "sha256": "69a71af90726867bd924f78d2a70e0fd6031bf483456baf4594af8cdad94544a",
@@ -48939,6 +48951,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_menace_return.json",
+      "kind": "fixture",
+      "sha256": "dd613b393b4d51db6294007b1421aebbfed56065858554afc33dde1f4ca2b7ae",
+      "test_users": [
+        "test/menace_return_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_new_game.json",
       "kind": "fixture",
       "sha256": "f1f2f358cb4aee96348a8043fe642f13bcd72e6d19703c2875e6b1b5cea8cc0e",
@@ -49478,7 +49499,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "d9d87dfad2f1927ac5e0eca4dfa6d572c1be0b42f7009e2b0bcceaeaf3897c9a",
+      "sha256": "96a9760aebe1d6cb5f20903bedb87b429d86c666c515b75dcf15089e0ab485fd",
       "top_level_counts": {
         "contracts": 1446
       }
