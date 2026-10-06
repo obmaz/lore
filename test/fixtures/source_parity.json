@@ -1,0 +1,481 @@
+{
+  "version": 1,
+  "sources": {
+    "frost-dragon-entrance": {
+      "file": "LOREENT.PAS",
+      "lines": [129, 153],
+      "evidence": ["joinenemy(random(5)+2,69);", "battlemode(FALSE);"]
+    },
+    "lava-gate-entrance": {
+      "file": "LOREENT.PAS",
+      "lines": [194, 229],
+      "evidence": ["joinenemy(j,64);", "BattleMode(FALSE);"]
+    },
+    "evil-dungeon-entrance": {
+      "file": "LOREENT.PAS",
+      "lines": [283, 317],
+      "evidence": ["battlemode(FALSE);", "if not enemy[3].dead then begin"]
+    },
+    "necromancer-castle-battles": {
+      "file": "LORESPEC.PAS",
+      "lines": [1880, 1963],
+      "evidence": ["battlemode(FALSE);", "joinenemy(1,70);", "inc(y);", "map[29,43] := 53;", "for i := 24 to 27 do map[i,j] := 46;"]
+    },
+    "metal-guardian-battle": {
+      "file": "LORESPEC.PAS",
+      "lines": [1995, 2064],
+      "evidence": ["joinenemy(5,71);", "battlemode(FALSE);", "inc(y);", "for i := 24 to 27 do map[i,y] := 41;", "player[i].class := 10;"]
+    },
+    "necromancer-final-battle": {
+      "file": "LORESPEC.PAS",
+      "lines": [2165, 2173],
+      "evidence": ["for i := 1 to enemynumber do joinenemy(i,68+i);", "battlemode(FALSE);"]
+    },
+    "necromancer-chamber-entrance": {
+      "file": "LOREENT.PAS",
+      "lines": [323, 349],
+      "evidence": ["joinenemy(6,72);", "battlemode(TRUE);"]
+    },
+    "wivern-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [980, 992],
+      "evidence": ["for i := 1 to enemynumber do joinenemy(i,43);", "BattleMode(FALSE);"]
+    },
+    "hidra-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [1145, 1158],
+      "evidence": ["BattleMode(TRUE);"]
+    },
+    "lockup-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [1200, 1207],
+      "evidence": ["joinenemy(1,53);", "BattleMode(FALSE);"]
+    },
+    "dragon-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [1339, 1350],
+      "evidence": ["joinenemy(1,54);", "BattleMode(FALSE);"]
+    },
+    "crab-guard-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [1418, 1432],
+      "evidence": ["joinenemy(i,59);", "BattleMode(TRUE);"]
+    },
+    "prison-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [190, 231],
+      "evidence": ["enemynumber := 2;", "BattleMode(FALSE);"]
+    },
+    "mummy-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [543, 550],
+      "evidence": ["joinenemy(3,26);", "BattleMode(FALSE);"]
+    },
+    "gorgon-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [790, 801],
+      "evidence": ["joinenemy(i,i+49);", "BattleMode(FALSE);"]
+    },
+    "gargoyle-battle-initiative": {
+      "file": "LORESPEC.PAS",
+      "lines": [948, 957],
+      "evidence": ["joinenemy(3,42);", "BattleMode(FALSE);"]
+    },
+    "evil-seal-lever": {
+      "file": "LORESPEC.PAS",
+      "lines": [1378, 1393],
+      "evidence": [
+        "if on(11,40) then begin",
+        "if party.etc[3] > 0 then begin",
+        "map[11,40] := 49;",
+        "map[41,39] := 0;"
+      ]
+    },
+    "evil-seal-room": {
+      "file": "LORESPEC.PAS",
+      "lines": [1433, 1473],
+      "evidence": [
+        "if (y = 6) and not odd(party.etc[40]) then begin",
+        "map[x,y-1] := 49;",
+        "if j <> (x-10) div 4 then begin",
+        "party.etc[40] := party.etc[40] or bit1;"
+      ]
+    },
+    "swamp-keep-exit": {
+      "file": "LORESPEC.PAS",
+      "lines": [1762, 1790],
+      "evidence": [
+        "if y = 46 then begin",
+        "joinenemy(j,55);",
+        "joinenemy(j,56);",
+        "BattleMode(FALSE);",
+        "if enemy[1].dead and enemy[2].dead then",
+        "party.etc[42] := party.etc[42] or bit1;"
+      ]
+    },
+    "imperium-minor-events": {
+      "file": "LORESPEC.PAS",
+      "lines": [1841, 1879],
+      "evidence": [
+        "else if on(25,18) then begin",
+        "battlemode(FALSE);",
+        "else if (y=25) and (x in [24..26]) then begin",
+        "battlemode(TRUE);",
+        "map[x,y] := 40;"
+      ]
+    },
+    "den7-minotaur": {
+      "file": "LORESPEC.PAS",
+      "lines": [1602, 1620],
+      "evidence": [
+        "if (y = 48) and (party.etc[41] and bit4 = 0)",
+        "joinenemy(1,53);",
+        "BattleMode(FALSE);",
+        "party.etc[41] := party.etc[41] or bit4;"
+      ]
+    },
+    "den7-guardians": {
+      "file": "LORESPEC.PAS",
+      "lines": [1621, 1750],
+      "evidence": [
+        "for i := 1 to enemynumber do joinenemy(i,54);",
+        "BattleMode(FALSE);",
+        "if party.etc[6] = 0 then party.etc[41] := party.etc[41] or bit2",
+        "for i := 1 to enemynumber do joinenemy(i,31);",
+        "joinenemy(7,57);",
+        "if enemy[7].dead then begin"
+      ]
+    }
+  },
+  "scenarios": [
+    {
+      "id": "necromancer-chamber-entrance-party-first",
+      "source": "necromancer-chamber-entrance",
+      "input": {"trigger": "id", "script": "portal-25-26-chamber", "map": 25},
+      "selected": "portal-25-26-chamber",
+      "trace": [
+        {"action": "start", "expect": {"battle": [63, 63, 63, 63, 63, 72], "torch": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "lava-gate-guardians-enemy-first",
+      "source": "lava-gate-entrance",
+      "input": {"trigger": "id", "script": "portal-21-22-lavagate", "map": 21, "flags": ["lavaGateKeyLeft", "lavaGateKeyRight"]},
+      "selected": "portal-21-22-lavagate",
+      "trace": [
+        {"action": "start", "expect": {"battle": [65, 64], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "necromancer-castle-two-enemy-first-battles",
+      "source": "necromancer-castle-battles",
+      "input": {"map": 23, "x": 25, "y": 26, "tileAtPlayer": 52},
+      "selected": "keep3-necromancer-y26",
+      "trace": [
+        {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"battle": [70], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"flags": ["keep3NecromancerCleared"], "tiles": [[null, 29, 43, 53, null]], "areas": [[null, 24, 27, 25, 27, 46, false, false]]}}
+      ]
+    },
+    {
+      "id": "necromancer-castle-mirror-retreat-retries",
+      "source": "necromancer-castle-battles",
+      "input": {"map": 23, "x": 25, "y": 26, "tileAtPlayer": 52},
+      "selected": "keep3-necromancer-y26",
+      "trace": [
+        {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "necromancer-castle-fake-retreat-steps-back",
+      "source": "necromancer-castle-battles",
+      "input": {"map": 23, "x": 25, "y": 26, "tileAtPlayer": 52},
+      "selected": "keep3-necromancer-y26",
+      "trace": [
+        {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"battle": [70], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
+      ]
+    },
+    {
+      "id": "dungeon-of-evil-entrance-enemy-first",
+      "source": "evil-dungeon-entrance",
+      "input": {"trigger": "id", "script": "portal-23-25-dungeon", "map": 23},
+      "selected": "portal-23-25-dungeon",
+      "trace": [
+        {"action": "start", "expect": {"battle": [62, 62, 70, 62, 62, 62, 62], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "metal-guardian-enemy-first",
+      "source": "metal-guardian-battle",
+      "input": {"map": 25, "x": 25, "y": 43, "tileAtPlayer": 0},
+      "selected": "keep3-metal-guardian-y43",
+      "trace": [
+        {"action": "start", "expect": {"battle": [66, 66, 66, 66, 71], "enemyFirst": true, "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"areas": [[null, 24, 27, 43, 43, 41, false, false]], "partyClass": 10, "flags": ["keep3MetalGuardianCleared"]}}
+      ]
+    },
+    {
+      "id": "metal-guardian-retreat-one-step",
+      "source": "metal-guardian-battle",
+      "input": {"map": 25, "x": 25, "y": 43, "tileAtPlayer": 0},
+      "selected": "keep3-metal-guardian-y43",
+      "trace": [
+        {"action": "start", "expect": {"battle": [66, 66, 66, 66, 71], "enemyFirst": true, "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
+      ]
+    },
+    {
+      "id": "necromancer-final-enemy-first",
+      "source": "necromancer-final-battle",
+      "input": {"map": 26, "x": 25, "y": 16, "tileAtPlayer": 0},
+      "selected": "spec-26-L2104-seq",
+      "trace": [
+        {"action": "start", "expect": {"battle": [69, 70, 71, 72, 73, 74, 75], "enemyFirst": true, "nudges": [[0, -1], [1, 0]], "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "wivern-ambush-enemy-first",
+      "source": "wivern-battle-initiative",
+      "input": {"map": 16, "x": 25, "y": 10, "tileAtPlayer": 0, "questSteps": {"wivern": 0}},
+      "selected": "wivern-3-remaining",
+      "trace": [
+        {"action": "start", "expect": {"battle": [43, 43, 43], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "hidra-defenders-party-first",
+      "source": "hidra-battle-initiative",
+      "input": {"trigger": "id", "script": "spec-17-L1010-1xx", "map": 17, "questSteps": {"water": 0}},
+      "selected": "spec-17-L1010-1xx",
+      "trace": [
+        {"action": "start", "expect": {"battle": [49, 49, 49], "flags": ["etc1"], "torch": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "lockup-guardian-enemy-first",
+      "source": "lockup-battle-initiative",
+      "input": {"map": 18, "x": 21, "y": 41, "tileAtPlayer": 52},
+      "selected": "spec-18-L1174-1xx",
+      "trace": [
+        {"action": "start", "expect": {"battle": [53], "enemyFirst": true, "flags": ["etc1"], "torch": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "prison-soldiers-attack-first",
+      "source": "prison-battle-initiative",
+      "input": {"trigger": "id", "script": "prison-battle-first", "map": 6, "flags": ["madJoeJoined"], "tileAtPlayer": 0},
+      "selected": "prison-battle-first",
+      "trace": [
+        {"action": "start", "expect": {"battle": [26, 26], "enemyFirst": true, "flags": ["prisonBattleStarted"], "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "major-mummy-attacks-first",
+      "source": "mummy-battle-initiative",
+      "input": {"trigger": "id", "script": "spec-11-L465-1x", "map": 11, "questSteps": {"lastditch": 1}},
+      "selected": "spec-11-L465-1x",
+      "trace": [
+        {"action": "start", "expect": {"battle": [35, 35, 26], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "gorgon-attacks-first",
+      "source": "gorgon-battle-initiative",
+      "input": {"map": 13, "x": 81, "y": 68, "tileAtPlayer": 52},
+      "selected": "den4-gorgon",
+      "trace": [
+        {"action": "start", "expect": {"battle": [50, 51, 52], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "archigagoyle-attacks-first",
+      "source": "gargoyle-battle-initiative",
+      "input": {"trigger": "id", "script": "spec-15-L879-1xxxx", "map": 15, "questSteps": {"gaia": 4}},
+      "selected": "spec-15-L879-1xxxx",
+      "trace": [
+        {"action": "start", "expect": {"battle": [36, 36, 42], "enemyFirst": true, "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "imperium-minor-ordinary-wraith-ambush",
+      "source": "imperium-minor-events",
+      "input": {"map": 22, "x": 43, "y": 25},
+      "selected": "keep2-ambush-zone-a",
+      "trace": [
+        {"action": "start", "expect": {"battle": [60, 60, 60, 60, 60], "enemyFirst": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"playerTiles": [[40, null]]}}
+      ]
+    },
+    {
+      "id": "imperium-minor-guardians-party-first",
+      "source": "imperium-minor-events",
+      "input": {"map": 22, "x": 25, "y": 25},
+      "selected": "keep2-guards-y25",
+      "trace": [
+        {"action": "start", "expect": {"battle": [61, 58, 56, 55, 60], "awaitingBattle": true}}
+      ]
+    },
+    {
+      "id": "swamp-keep-guardians-dead-before-retreat",
+      "source": "swamp-keep-exit",
+      "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21},
+      "selected": "keep1-exit-guard",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [55, 56, 35, 35, 35, 35, 35], "awaitingBattle": true}},
+        {"action": "retreat", "defeated": [1, 2], "expect": {"flags": ["keep1LeftGuardianDefeated", "keep1RightGuardianDefeated", "swampKeepBossDefeated"]}}
+      ]
+    },
+    {
+      "id": "swamp-keep-one-guardian-dead-before-retreat",
+      "source": "swamp-keep-exit",
+      "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21},
+      "selected": "keep1-exit-guard",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [55, 56, 35, 35, 35, 35, 35], "awaitingBattle": true}},
+        {"action": "retreat", "defeated": [1], "expect": {"flags": ["keep1LeftGuardianDefeated"]}}
+      ]
+    },
+    {
+      "id": "swamp-keep-guardians-already-dead",
+      "source": "swamp-keep-exit",
+      "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21, "flags": ["keep1LeftGuardianDefeated", "keep1RightGuardianDefeated"]},
+      "selected": "keep1-exit-guard",
+      "trace": [
+        {"action": "start", "expect": {"flags": ["swampKeepBossDefeated"], "blocked": true}}
+      ]
+    },
+    {
+      "id": "swamp-keep-exit-cleared",
+      "source": "swamp-keep-exit",
+      "input": {"trigger": "id", "script": "keep1-exit-guard", "map": 21, "flags": ["swampKeepBossDefeated"]},
+      "selected": null,
+      "trace": []
+    },
+    {
+      "id": "evil-seal-lever-pulled",
+      "source": "evil-seal-lever",
+      "input": {"map": 19, "x": 11, "y": 40, "tileAtPlayer": 0},
+      "selected": "evil-seal-lever-a",
+      "trace": [
+        {"action": "start", "expect": {"flags": ["evilSealLeverA"], "tiles": [[null, 11, 40, 49, null], [null, 41, 39, 0, null]]}}
+      ]
+    },
+    {
+      "id": "evil-seal-lever-blocked-by-swamp-walk",
+      "source": "evil-seal-lever",
+      "input": {"map": 19, "x": 11, "y": 40, "tileAtPlayer": 0, "flags": ["swampWalkActive"]},
+      "selected": "evil-seal-lever-a-blocked",
+      "trace": [
+        {"action": "start", "expect": {}}
+      ]
+    },
+    {
+      "id": "evil-seal-correct-room",
+      "source": "evil-seal-room",
+      "input": {"map": 19, "x": 22, "y": 6, "flags": ["evilSealRoom3"]},
+      "selected": "evil-seal-room-3",
+      "trace": [
+        {"action": "start", "expect": {"battle": [59, 59, 59, 59, 59, 59, 59], "enemyFirst": true, "areas": [[null, 1, 1, 5, 5, 49, true, false]], "awaitingBattle": true}},
+        {"action": "victory", "expect": {"flags": ["evilSealRoomCleared", "etc40_bit1", "lavaGateKeyLeft", "sealPuzzleA"]}}
+      ]
+    },
+    {
+      "id": "evil-seal-wrong-room",
+      "source": "evil-seal-room",
+      "input": {"map": 19, "x": 22, "y": 6, "flags": ["evilSealRoom4"]},
+      "selected": "evil-seal-room-wrong-3",
+      "trace": [
+        {"action": "start", "expect": {"areas": [[null, 1, 1, 5, 5, 49, true, false]], "playerTiles": [[49, null]]}}
+      ]
+    },
+    {
+      "id": "evil-seal-room-after-clear",
+      "source": "evil-seal-room",
+      "input": {"map": 19, "x": 22, "y": 6, "flags": ["evilSealRoom4", "evilSealRoomCleared"]},
+      "selected": null,
+      "trace": []
+    },
+    {
+      "id": "den7-minotaur-dark-retreat",
+      "source": "den7-minotaur",
+      "input": {"map": 20, "x": 25, "y": 48},
+      "selected": "spec-20-L1475-1xxx",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [53], "flags": ["etc1"], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"flags": ["den7MinotaurCleared"]}}
+      ]
+    },
+    {
+      "id": "den7-minotaur-lit-retreat",
+      "source": "den7-minotaur",
+      "input": {"map": 20, "x": 25, "y": 48, "flags": ["etc1"]},
+      "selected": "spec-20-L1475-2xxx",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [53], "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"flags": ["den7MinotaurCleared"]}}
+      ]
+    },
+    {
+      "id": "den7-minotaur-cleared",
+      "source": "den7-minotaur",
+      "input": {"map": 20, "x": 25, "y": 48, "flags": ["den7MinotaurCleared"]},
+      "selected": null,
+      "trace": []
+    },
+    {
+      "id": "den7-three-victories",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13},
+      "selected": "den7-dragons-y13",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 31], "flags": ["etc41_bit2", "den7DragonsCleared"], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "flags": ["etc41_bit3", "den7MudmenCleared"], "torch": true, "awaitingBattle": true}},
+        {"action": "victory", "expect": {"flags": ["etc41_bit1", "den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
+      ]
+    },
+    {
+      "id": "den7-dragon-retreat",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13},
+      "selected": "den7-dragons-y13",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [54, 54, 54], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
+      ]
+    },
+    {
+      "id": "den7-mudmen-retreat",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared"]},
+      "selected": "den7-mudmen-y13",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 31], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
+      ]
+    },
+    {
+      "id": "den7-master-retreat",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared", "den7MudmenCleared"]},
+      "selected": "den7-master-y13",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "expect": {"nudges": [[0, 1]]}}
+      ]
+    },
+    {
+      "id": "den7-master-dead-on-retreat",
+      "source": "den7-guardians",
+      "input": {"map": 20, "x": 25, "y": 13, "flags": ["den7DragonsCleared", "den7MudmenCleared"]},
+      "selected": "den7-master-y13",
+      "trace": [
+        {"action": "start", "expect": {"enemyFirst": true, "battle": [31, 31, 31, 31, 31, 31, 57], "torch": true, "awaitingBattle": true}},
+        {"action": "retreat", "defeated": [7], "expect": {"flags": ["etc41_bit1", "den7MazeCleared", "lavaGateKeyRight"], "teleport": [4, 82, 17]}}
+      ]
+    }
+  ]
+}

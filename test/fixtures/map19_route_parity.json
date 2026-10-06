@@ -1,0 +1,16 @@
+{
+  "map": 19,
+  "source": "LORESPEC.PAS",
+  "rules": [
+    {"kind": "lever_a", "line": 1378, "args": [11, 40, 3, 11, 40, 49, 41, 39, 0]},
+    {"kind": "lever_b", "line": 1394, "args": [[41, 39, 3], [41, 39, 49, 40], [27, 36, 24, 25, 28, 23], [24, 37, 17, 28, 37, 19], [27, 37, 25, 27, 44], [7]]}
+  ],
+  "cases": [
+    {"start": [11, 40], "sourceMap": 19, "sourceEnd": [11, 40], "safeEnd": [11, 40], "writes": [[11, 11, 40, 40, 49], [41, 41, 39, 39, 0]], "swampWalkActive": false, "puzzleCleared": false, "randomRoomCount": 0},
+    {"start": [11, 40], "sourceMap": 19, "sourceEnd": [11, 40], "safeEnd": [11, 40], "writes": [], "swampWalkActive": true, "puzzleCleared": false, "randomRoomCount": 0},
+    {"start": [41, 39], "sourceMap": 19, "sourceEnd": [41, 39], "safeEnd": [41, 39], "writes": [[41, 41, 39, 39, 49], [24, 24, 27, 36, 25], [28, 28, 27, 36, 23], [24, 24, 37, 37, 17], [28, 28, 37, 37, 19], [25, 27, 27, 37, 44]], "swampWalkActive": false, "puzzleCleared": false, "randomRoomCount": 7},
+    {"start": [41, 39], "sourceMap": 19, "sourceEnd": [41, 39], "safeEnd": [41, 39], "writes": [[41, 41, 39, 39, 49]], "swampWalkActive": false, "puzzleCleared": true, "randomRoomCount": 0},
+    {"start": [41, 39], "sourceMap": 19, "sourceEnd": [41, 39], "safeEnd": [41, 39], "writes": [], "swampWalkActive": true, "puzzleCleared": false, "randomRoomCount": 0},
+    {"start": [41, 39], "sourceMap": 19, "sourceEnd": [41, 39], "safeEnd": [41, 39], "writes": [], "swampWalkActive": true, "puzzleCleared": true, "randomRoomCount": 0}
+  ]
+}

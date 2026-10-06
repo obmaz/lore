@@ -1,0 +1,172 @@
+{
+  "source": "Unmodified original LORE.EXE /g in DOSBox 0.74-3, synthetic slot1 mage and slot2 Mate at town (51,31). C, Hero, cure, Mate, selected cure, acknowledge, G, save main data.",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "cases": [
+    {
+      "scenario": "heal",
+      "choice": 1,
+      "input": [
+        {
+          "name": "Hero",
+          "endurance": 20,
+          "battleLevel": 1,
+          "magicLevel": 255,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 0,
+          "hp": 20,
+          "sp": 1000
+        },
+        {
+          "name": "Mate",
+          "endurance": 255,
+          "battleLevel": 128,
+          "magicLevel": 1,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 0,
+          "hp": 32639,
+          "sp": 100
+        }
+      ],
+      "observed": [
+        {
+          "name": "Hero",
+          "endurance": 20,
+          "battleLevel": 1,
+          "magicLevel": 255,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 0,
+          "hp": 20,
+          "sp": 490
+        },
+        {
+          "name": "Mate",
+          "endurance": 255,
+          "battleLevel": 128,
+          "magicLevel": 1,
+          "poison": 0,
+          "unconscious": 1,
+          "dead": 0,
+          "hp": -32132,
+          "sp": 100
+        }
+      ],
+      "savedPlayersHex": "044865726f0000000000000000000000000000021414141414141414141400000000001400ea01640001ff010000000000000000010000044d617465000000000000000000000000000001141414ff14141414141400010000007c8264006400800101000000000000000001000000000000000000000000000000000000000000000000000000000000000000010001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010001000000000000000000000000000000000000000000",
+      "savedPlayerSha256": "a7aa54727708b1526eff6bdb3bf167087dbc0b156cf2d3cceadb2d3924fb47ce",
+      "savedPartySha256": "1804f085975de938b0e5cb49f7981a64386553ff0965e6e5647fa70246d5f7a4"
+    },
+    {
+      "scenario": "conscious",
+      "choice": 4,
+      "input": [
+        {
+          "name": "Hero",
+          "endurance": 20,
+          "battleLevel": 1,
+          "magicLevel": 6,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 0,
+          "hp": 20,
+          "sp": 100
+        },
+        {
+          "name": "Mate",
+          "endurance": 255,
+          "battleLevel": 128,
+          "magicLevel": 1,
+          "poison": 0,
+          "unconscious": 3277,
+          "dead": 0,
+          "hp": 0,
+          "sp": 100
+        }
+      ],
+      "observed": [
+        {
+          "name": "Hero",
+          "endurance": 20,
+          "battleLevel": 1,
+          "magicLevel": 6,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 0,
+          "hp": 20,
+          "sp": -32670
+        },
+        {
+          "name": "Mate",
+          "endurance": 255,
+          "battleLevel": 128,
+          "magicLevel": 1,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 0,
+          "hp": 1,
+          "sp": 100
+        }
+      ],
+      "savedPlayersHex": "044865726f0000000000000000000000000000021414141414141414141400000000001400628064000106010000000000000000010000044d617465000000000000000000000000000001141414ff1414141414140000000000010064006400800101000000000000000001000000000000000000000000000000000000000000000000000000000000000000010001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010001000000000000000000000000000000000000000000",
+      "savedPlayerSha256": "d189c5345fbd42c1fcde17fdc8e7add7a2abf4173ed3146b1c16b698a6d91e27",
+      "savedPartySha256": "1804f085975de938b0e5cb49f7981a64386553ff0965e6e5647fa70246d5f7a4"
+    },
+    {
+      "scenario": "revitalize",
+      "choice": 5,
+      "input": [
+        {
+          "name": "Hero",
+          "endurance": 20,
+          "battleLevel": 1,
+          "magicLevel": 8,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 0,
+          "hp": 20,
+          "sp": 100
+        },
+        {
+          "name": "Mate",
+          "endurance": 255,
+          "battleLevel": 128,
+          "magicLevel": 1,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 30000,
+          "hp": 0,
+          "sp": 100
+        }
+      ],
+      "observed": [
+        {
+          "name": "Hero",
+          "endurance": 20,
+          "battleLevel": 1,
+          "magicLevel": 8,
+          "poison": 0,
+          "unconscious": 0,
+          "dead": 0,
+          "hp": 20,
+          "sp": 17604
+        },
+        {
+          "name": "Mate",
+          "endurance": 255,
+          "battleLevel": 128,
+          "magicLevel": 1,
+          "poison": 0,
+          "unconscious": 1,
+          "dead": 0,
+          "hp": 0,
+          "sp": 100
+        }
+      ],
+      "savedPlayersHex": "044865726f0000000000000000000000000000021414141414141414141400000000001400c44464000108010000000000000000010000044d617465000000000000000000000000000001141414ff1414141414140001000000000064006400800101000000000000000001000000000000000000000000000000000000000000000000000000000000000000010001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010001000000000000000000000000000000000000000000",
+      "savedPlayerSha256": "f63b1520bef61763ee2eb30b5dfcf1dcd4c54f2fc8249b05e3e24feb82da6b9d",
+      "savedPartySha256": "1804f085975de938b0e5cb49f7981a64386553ff0965e6e5647fa70246d5f7a4"
+    }
+  ],
+  "limit": "Verifies these assignments and saved ReturnCondition effects, not every intermediate expression or compiler option."
+}

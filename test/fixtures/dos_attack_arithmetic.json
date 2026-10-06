@@ -1,0 +1,191 @@
+{
+  "source": "Unmodified LORE.EXE AttackOne byte-product/div20 and long variance fragments executed by Unicorn x86-16, including original TP long multiply/divide helpers. Synthetic player memory/registers; no EXE code changes.",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragments": [
+    {
+      "startFileOffset": 134951,
+      "endFileOffset": 134989,
+      "codeHex": "268a452930e48bc8c47efc268a453430e48bd0c47efc268a451430e4f7e2f7e199b91400f7f1"
+    },
+    {
+      "startFileOffset": 135010,
+      "endFileOffset": 135050,
+      "codeHex": "31d28bc88bdaa12e70999a120acd30b9640031db9a2d0acd308bc88bdaa12e70992bc11bd3a32e70"
+    }
+  ],
+  "cases": [
+    {
+      "strength": 20,
+      "weaponPower": 75,
+      "level": 20,
+      "baseDamage": 1500,
+      "variation": [
+        {
+          "random50": 0,
+          "damage": 1500
+        },
+        {
+          "random50": 25,
+          "damage": 1125
+        },
+        {
+          "random50": 49,
+          "damage": 765
+        }
+      ]
+    },
+    {
+      "strength": 20,
+      "weaponPower": 50,
+      "level": 20,
+      "baseDamage": 1000,
+      "variation": [
+        {
+          "random50": 0,
+          "damage": 1000
+        },
+        {
+          "random50": 25,
+          "damage": 750
+        },
+        {
+          "random50": 49,
+          "damage": 510
+        }
+      ]
+    },
+    {
+      "strength": 17,
+      "weaponPower": 3,
+      "level": 1,
+      "baseDamage": 2,
+      "variation": [
+        {
+          "random50": 0,
+          "damage": 2
+        },
+        {
+          "random50": 25,
+          "damage": 2
+        },
+        {
+          "random50": 49,
+          "damage": 2
+        }
+      ]
+    },
+    {
+      "strength": 20,
+      "weaponPower": 20,
+      "level": 20,
+      "baseDamage": 400,
+      "variation": [
+        {
+          "random50": 0,
+          "damage": 400
+        },
+        {
+          "random50": 25,
+          "damage": 300
+        },
+        {
+          "random50": 49,
+          "damage": 204
+        }
+      ]
+    },
+    {
+      "strength": 255,
+      "weaponPower": 255,
+      "level": 128,
+      "baseDamage": 6,
+      "variation": [
+        {
+          "random50": 0,
+          "damage": 6
+        },
+        {
+          "random50": 25,
+          "damage": 5
+        },
+        {
+          "random50": 49,
+          "damage": 4
+        }
+      ]
+    },
+    {
+      "strength": 255,
+      "weaponPower": 255,
+      "level": 255,
+      "baseDamage": 38,
+      "variation": [
+        {
+          "random50": 0,
+          "damage": 38
+        },
+        {
+          "random50": 25,
+          "damage": 29
+        },
+        {
+          "random50": 49,
+          "damage": 20
+        }
+      ]
+    },
+    {
+      "strength": 128,
+      "weaponPower": 128,
+      "level": 4,
+      "baseDamage": 0,
+      "variation": [
+        {
+          "random50": 0,
+          "damage": 0
+        },
+        {
+          "random50": 25,
+          "damage": 0
+        },
+        {
+          "random50": 49,
+          "damage": 0
+        }
+      ]
+    },
+    {
+      "strength": 20,
+      "weaponPower": 75,
+      "level": 22,
+      "fault": "division-overflow"
+    },
+    {
+      "strength": 255,
+      "weaponPower": 255,
+      "level": 1,
+      "fault": "division-overflow"
+    },
+    {
+      "strength": 128,
+      "weaponPower": 255,
+      "level": 1,
+      "baseDamage": 1632,
+      "variation": [
+        {
+          "random50": 0,
+          "damage": 1632
+        },
+        {
+          "random50": 25,
+          "damage": 1224
+        },
+        {
+          "random50": 49,
+          "damage": 833
+        }
+      ]
+    }
+  ],
+  "scope": "Instruction-level arithmetic evidence. Native division faults are represented by an engine StateError; DOS runtime error-screen presentation is not reproduced here. Original random seed/call stream, defence operand widths, full battle and new-game-to-ending parity are separate gates."
+}

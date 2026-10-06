@@ -1,0 +1,822 @@
+# 또 다른 지식의 성전 (LORE 1993) 게임 명세서
+
+본 문서는 1993년 출시된 16비트 MS-DOS/Borland Pascal 6.0 기반 RPG **‘또 다른 지식의 성전’ (LORE, 1993)** 원본 소스 코드(`LORESUB.PAS`, `LOREBATT.PAS`, `LOREMAIN.PAS`, `LORECRET.PAS`, `FOEDATA.DAT` 등)를 정밀 역공학 및 분석하여, Flutter 게임 엔진(Flame 등)으로 완벽하게 이식하기 위해 작성된 공식 기술 명세서입니다.
+
+---
+
+## 1. 코어 데이터 구조 (Core Data Structures)
+
+### 1.1 플레이어 캐릭터 구조체 (`lore` Record)
+파스칼 원본의 파티원 캐릭터 정보(`player: array[1..7] of lore`, 실제 파티 슬롯은 최대 6명) 정의입니다.
+
+| 필드명 | 파스칼 타입 | Dart 권장 타입 | 설명 |
+| :--- | :--- | :--- | :--- |
+| `name` | `string[17]` | `String` | 캐릭터 이름 (최대 16자 한글/영문) |
+| `sex` | `(male, female)` | `Gender (enum)` | 성별 (0: 남성, 1: 여성) |
+| `class` | `byte` | `int` / `PlayerClass (enum)` | 직업 ID (1 ~ 10) |
+| `strength` | `byte` | `int` | 힘 (물리 공격력 및 근력) |
+| `mentality` | `byte` | `int` | 정신력 / 지능 (마법 공격력 및 최대 SP) |
+| `concentration` | `byte` | `int` | 집중력 (초감각 공격력 및 최대 ESP) |
+| `endurance` | `byte` | `int` | 지구력 / 체력 (최대 HP 및 방어 기절 저항) |
+| `resistance` | `byte` | `int` | 저항력 (적의 공격/마법 저지 확률, 백분율 0~100) |
+| `agility` | `byte` | `int` | 민첩성 (도망 확률, 회피 등에 관여) |
+| `accuracy` | `array[1..3] of byte` | `List<int>` | 명중률 ([1]: 물리 무기, [2]: 마법, [3]: 초능력) |
+| `luck` | `byte` | `int` | 행운 (레벨업 시 스탯 증가 확률, 상태이상 회피) |
+| `poison` | `byte` | `int` | 독 누적 턴 카운터 (0: 정상, >0: 중독) |
+| `unconscious` | `integer` | `int` | 의식불명(기절) 누적 피해량 (0: 정상, >0: 기절) |
+| `dead` | `integer` | `int` | 사망 누적 수치 (0: 생존, >0: 사망) |
+| `hp` | `integer` | `int` | 현재 체력 (최대치: `endurance * level[1]`) |
+| `sp` | `integer` | `int` | 현재 마법 포인트 (최대치: `mentality * level[2]`) |
+| `esp` | `integer` | `int` | 현재 초감각 포인트 (최대치: `concentration * level[3]`) |
+| `level` | `array[1..3] of byte` | `List<int>` | [1]: 전투 레벨, [2]: 마법 레벨, [3]: 초감각 레벨 |
+| `ac` | `byte` | `int` | Armor Class (방어도, `shi_power + arm_power`, 최대 10) |
+| `experience` | `longint` | `int` | 누적 경험치 |
+| `weapon` | `byte` | `int` | 장착 무기 ID (0: 맨손, 1~9: 무기류) |
+| `shield` | `byte` | `int` | 장착 방패 ID (0: 없음, 1~5: 방패 등급) |
+| `armor` | `byte` | `int` | 장착 갑옷 ID (0: 없음, 1~5: 갑옷 등급) |
+| `wea_power` | `byte` | `int` | 무기 위력 수치 |
+| `shi_power` | `byte` | `int` | 방패 방어력 수치 |
+| `arm_power` | `byte` | `int` | 갑옷 방어력 수치 |
+
+### 1.2 파티 및 월드 상태 구조체 (`loreplayer` Record)
+파티 전역 데이터(`party: loreplayer`)로 월드 이동 및 퀘스트 플래그를 저장합니다.
+
+| 필드명 | 파스칼 타입 | Dart 권장 타입 | 설명 |
+| :--- | :--- | :--- | :--- |
+| `map` | `byte` | `int` | 현재 맵 ID (1~5: 필드, 6~13: 마을, 14~: 던전 등) |
+| `xaxis` | `byte` | `int` | 파티의 X 좌표 (격자 인덱스) |
+| `yaxis` | `byte` | `int` | 파티의 Y 좌표 (격자 인덱스) |
+| `food` | `byte` | `int` | 현재 보유 식량 (최대 255) |
+| `gold` | `longint` | `int` | 보유 골드 (금화) |
+| `etc` | `array[1..100] of byte` | `List<int>` | 퀘스트 및 시스템 플래그 (비트마스크 조합 사용) |
+
+### 1.3 몬스터 데이터 구조체 (`enemydata1` & `enemydata2`)
+- `enemydata1`: 원본 템플릿 레코드 (`FOEDATA.DAT`에서 75종 로드, 각 29바이트 고정)
+- `enemydata2`: 전투 중 인스턴스 레코드 (`enemy: array[1..7] of enemydata2`)
+
+```pascal
+enemydata2 = record
+   E_number : byte;                  // 몬스터 도감 ID (1 ~ 75)
+   name : string[16];                // 몬스터 이름 (예: Orc, Goblin, Dragon)
+   strength : byte;                  // 공격력
+   mentality : byte;                 // 마법 공격력 / 속성
+   endurance : byte;                 // 체력 계수 (최대 HP = endurance * level)
+   resistance : byte;                // 플레이어 공격/마법 저지율 (백분율)
+   agility : byte;                   // 민첩성 (특수기 발동 판정 및 턴)
+   accuracy : array[1..2] of byte;   // [1]: 무기 명중률, [2]: 마법 명중률
+   ac : byte;                        // 방어도
+   special : byte;                   // 특수 공격 플래그
+   castlevel : byte;                 // 마법 구사 레벨 (0~5)
+   specialcastlevel : byte;          // 특수 마법 구사 레벨
+   level : byte;                     // 몬스터 레벨
+   hp : integer;                     // 현재 HP
+   poison : boolean;                 // 독 상태
+   unconscious : boolean;            // 의식불명(기절) 상태
+   dead : boolean;                   // 사망 상태
+end;
+```
+
+---
+
+## 2. 직업, 아이템 및 장비 체계
+
+### 2.1 직업 (Classes) 목록
+| ID | 직업명 | 특성 및 기본 보너스 |
+| :---: | :--- | :--- |
+| **1** | 기사 (Knight) | 기본 AC +1 보너스, 무기 위력 +50% 보너스. 물리/방어형 |
+| **2** | 마법사 (Mage) | 마법 명중률 우수, 고레벨 공격/보조 마법 구사 |
+| **3** | 에스퍼 (Esper) | 염력/투시 등 초감각(ESP) 특화 직업 |
+| **4** | 전사 (Warrior) | 높은 체력과 물리 공격력, 균형 잡힌 명중률 |
+| **5** | 전투승 (Monk) | 무기 장착 불가, 레벨에 따라 맨손 위력 자동 상승 (`wea_power = level*2 + 10`) |
+| **6** | 닌자 (Ninja) | 높은 저항력과 민첩성, 하이브리드 성장 |
+| **7** | 사냥꾼 (Hunter) | 무기 정확도 및 민첩성 중심 |
+| **8** | 떠돌이 (Vagrant) | 올라운드형 캐릭터 |
+| **9** | 혼령 (Ghost) | 마법 중심 성장 |
+| **10** | 반신 (Demigod) | 모든 능력치가 최상급인 특수 캐릭터 |
+
+### 2.2 무기 (Weapons)
+`LORESUB.PAS`의 상점 및 초기화 정의에 따른 무기 목록:
+
+| ID | 무기명 | 기본 위력 (`wea_power`) | 구매 가격 (금화) | 비고 |
+| :---: | :--- | :---: | :---: | :--- |
+| **0** | 맨손 | 2 (기사: 3, 전투승: 12) | - | 기본 장착 |
+| **1** | 단도 | 5 | 500 | |
+| **2** | 곤봉 | 7 | 1,500 | |
+| **3** | 미늘창 | 9 | 3,000 | |
+| **4** | 장검 | 10 | 5,000 | |
+| **5** | 철퇴 | 15 | 10,000 | |
+| **6** | 기병창 | 20 | 30,000 | |
+| **7** | 도끼창 | 30 | 60,000 | |
+| **8** | 삼지창 | 40 | 80,000 | |
+| **9** | 화염검 | 50 | 100,000 | 최상급 무기 |
+
+* 기사(Class 1)가 무기 장착 시: `wea_power = wea_power + round(wea_power * 0.5)`
+* 전투승(Class 5)은 무기 상점 구매 불가(맨손 자동 레벨 스케일링)
+
+### 2.3 방어구 (Armor & Shields)
+| 등급 ID | 재질명 | 방패 위력 (`shi_power`) | 방패 가격 | 갑옷 위력 (`arm_power`) | 갑옷 가격 |
+| :---: | :--- | :---: | :---: | :---: | :---: |
+| **0** | 없음 | 0 | - | 0 | - |
+| **1** | 가죽 | 1 | 1,000 | 2 (`k + 1`) | 5,000 |
+| **2** | 청동 | 2 | 5,000 | 3 (`k + 1`) | 25,000 |
+| **3** | 강철 | 3 | 25,000 | 4 (`k + 1`) | 80,000 |
+| **4** | 은제 | 4 | 80,000 | 5 (`k + 1`) | 100,000 |
+| **5** | 금제 | 5 | 100,000 | 6 (`k + 1`) | 200,000 |
+
+* **총 방어도 공식**:
+  $$\text{AC} = \min(10, \text{shi\_power} + \text{arm\_power} + (\text{class} == 1 ? 1 : 0))$$
+
+---
+
+## 3. 전투 시스템 및 상세 공식 (Combat Mechanics - LOREBATT.PAS)
+
+### 3.1 전투 흐름 및 턴 결정 구조 (Turn Flow)
+1. **인카운터 및 기습(`assault`) 판정**:
+   - `assault == false` (적 선공): 적들이 1턴 먼저 행동한 후 2단계로 진행.
+   - `assault == true` (아군 선공): 플레이어 파티가 먼저 행동을 선택.
+   - 일반 조우에서 교전을 고르면 이름 있는 아군의 평균 민첩성이 적 평균 민첩성보다 **클 때만** 아군 선공이다. 동률은 적 선공이다 (`LOREBATT.PAS:1263-1279`).
+2. **명령 입력 단계 (Player Phase)**:
+   - 행동 가능한 파티원(1..6)이 순차적으로 명령을 골라 `battle[person,*]`에 예약한다. **일행 치료 `CureSpell`만 선택 중 즉시 실행**된다 (`LOREBATT.PAS:1011-1134`).
+     1. 무기 공격 (단일 적 대상 지정)
+     2. 단일 마법 공격 (마법 종류 및 대상 적 지정)
+     3. 전체 마법 공격 (마법 종류 지정)
+     4. 특수 마법 공격
+     5. 일행 치료
+     6. 초능력 (ESP) 사용
+     7. 도망 시도 (1번 리더의 경우 '일행 전체 자동 공격(AutoBattle)' 선택 가능)
+3. **플레이어 행동 실행 단계**:
+   - 파티원 1번부터 6번까지 실행 시점의 행동 가능 상태를 다시 확인하며 예약된 행동을 순서대로 실행한다. 마지막 적이 쓰러져도 나머지 예약 행동과 적 단계를 거친 뒤 종료를 판정한다 (`LOREBATT.PAS:1135-1175`).
+   - 도망 성공 시 즉시 전투 종료(`party.etc[6] = 2`).
+4. **적 행동 단계 (Enemy Phase)**:
+   - 적 1번부터 `enemynumber`까지 순차적으로 행동:
+     - 중독(`poison`) 상태인 경우:
+       - 기절(`unconscious`) 상태면 즉시 사망(`dead = true`)
+       - 기절 상태가 아니면 `hp = hp - 1`, `hp <= 0`이면 기절
+     - 사망하지 않고 기절하지 않은 적은 `EnemyAttack` AI 루틴 실행.
+5. **전투 종료 판정 (`EndBattle`)**:
+   - 이름 있는 파티원 모두 `exist(i)`가 거짓이면 패배 -> 게임 오버 (`GameOver`). `exist`는 이름, HP 양수, `unconscious=0`, `dead=0`을 함께 검사한다 (`LORESUB.PAS:321-326`, `LOREBATT.PAS:972-987`).
+   - 모든 적이 사망/기절 시: 승리 -> 골드 정산 (`PlusGold`), 필드 복귀
+
+---
+
+### 3.2 일반 무기 공격 공식 (`AttackOne`)
+
+#### [단계 1] 대상 상태 확인 및 자동 타겟 보정
+- 지정한 적 `k`가 이미 사망(`dead`)한 경우, 번호가 큰 다음 생존한 적(`k = k + 1`)으로 자동 타겟 변경.
+- 대상이 기절(`unconscious == true && dead == false`) 상태인 경우:
+  - 명중/대미지 계산 없이 **무조건 즉사 처형**:
+    $$\text{enemy}[k].\text{hp} = 0, \quad \text{enemy}[k].\text{dead} = \text{true}$$
+    경험치 획득(`PlusExperience(person, k)`) 후 종료.
+
+#### [단계 2] 명중 판정 (Hit Check)
+- 파스칼 난수: `random(20)`은 0부터 19까지의 정수 반환.
+- **빗나감(Miss) 조건**:
+  $$\text{random}(20) > \text{player}[\text{person}].\text{accuracy}[1]$$
+  (즉, `0 <= random(20) <= accuracy[1]` 일 때만 명중)
+
+#### [단계 3] 기초 대미지 계산 및 난수 분산 (Base Damage)
+- 순수 공격력 산출:
+  $$\text{BaseDamage} = \left\lfloor \frac{\text{strength} \times \text{wea\_power} \times \text{level}[1]}{20} \right\rfloor$$
+- 난수 분산 (최대 50% 무작위 감소):
+  $$\text{Damage}_1 = \text{BaseDamage} - \left\lfloor \frac{\text{BaseDamage} \times \text{random}(50)}{100} \right\rfloor$$
+  *(즉, 원래 기초 공격력의 50% ~ 100% 사이 값)*
+
+#### [단계 4] 적의 저항 판정 (Resistance Check)
+- 적의 저항률: `0 <= random(100) < enemy[k].resistance`
+- 조건 만족 시 적이 공격을 **저지(Resisted)**함 -> 대미지 0 (공격 실패)
+
+#### [단계 5] 적의 방어력(AC) 차감 (Defense Reduction)
+- 적의 방어 감소량 산출:
+  $$\text{DefReduce} = \text{round}\left( \text{enemy}[k].\text{ac} \times \text{enemy}[k].\text{level} \times \frac{\text{random}(10) + 1}{10} \right)$$
+- 최종 대미지:
+  $$\text{FinalDamage} = \text{Damage}_1 - \text{DefReduce}$$
+- 만약 $\text{FinalDamage} \le 0$ 이면: "적이 공격을 막았다 (Blocked)" 출력 후 종료 (피해 없음).
+
+#### [단계 6] 피해 적용 및 상태 전이
+- 적 체력 감소:
+  $$\text{enemy}[k].\text{hp} = \text{enemy}[k].\text{hp} - \text{FinalDamage}$$
+- 만약 체력이 0 이하가 된 경우:
+  $$\text{enemy}[k].\text{hp} = 0, \quad \text{enemy}[k].\text{unconscious} = \text{true}$$
+  적은 **의식불명(기절)** 상태로 전환되며, 공격자에게 경험치 지급 (`PlusExperience`).
+
+---
+
+### 3.3 단일 마법 공격 공식 (`CastOne`)
+
+1. **소모 마나 (SP Cost)**:
+   $$\text{ReqSP} = \text{round}\left( \frac{\text{level}[2] \times j^2}{2} \right) \quad (j = \text{선택한 마법 번호 } 1..6)$$
+   현재 `sp < ReqSP`이면 시전 실패 ("마법 지수가 부족했다").
+   성공 시 `sp = sp - ReqSP`.
+2. **명중 판정**:
+   - `if (random(20) >= player[person].accuracy[2])` -> 빗나감 (Miss).
+3. **마법 기본 위력**:
+   $$\text{BaseMagicPower} = j^2 \times \text{level}[2] \times 2$$
+4. **적 저항 및 방어력 차감**:
+   - 저항: `random(100) < enemy[k].resistance` -> 저지됨.
+   - 방어 차감: $\text{DefReduce} = \text{round}(\text{ac} \times \text{level} \times \frac{\text{random}(10) + 1}{10})$
+   - 최종 마법 피해: $\text{FinalMagicDamage} = \text{BaseMagicPower} - \text{DefReduce}$ ($\le 0$ 시 방어됨)
+
+---
+
+### 3.4 적의 공격 공식 (`WeaponAttack` & `EnemyAttack`)
+
+#### 적의 일반 물리 공격 (`WeaponAttack`)
+1. **명중 판정**:
+   - `if (random(20) >= enemy[person].accuracy[1])` -> 빗맞음 (Miss).
+2. **공격 대상 선정**:
+   - 생존한 파티원(`exist(i)`) 중 무작위 1명 균등 선택 ($j$).
+3. **적 기본 대미지**:
+   $$\text{EnemyDmg} = \left\lfloor \frac{\text{enemy}.\text{strength} \times \text{enemy}.\text{level} \times (\text{random}(10) + 1)}{10} \right\rfloor$$
+4. **플레이어 저항 판정**:
+   - `if (random(50) < player[j].resistance)` -> 플레이어가 적의 공격 저지 (방어 성공).
+5. **플레이어 방어력(AC) 감쇄**:
+   $$\text{EnemyDmg} = \text{EnemyDmg} - \left\lfloor \frac{\text{player}[j].\text{ac} \times \text{player}[j].\text{level}[1] \times (\text{random}(10) + 1)}{10} \right\rfloor$$
+   $\text{EnemyDmg} \le 0$ 이면 방어 성공 (피해 0).
+6. **플레이어 피해 누적 및 상태 표시 시점**:
+   - `player[j].hp > 0`인 경우:
+     $$\text{player}[j].\text{hp} = \text{player}[j].\text{hp} - \text{EnemyDmg}$$
+     여기서 HP를 0으로 고정하거나 `unconscious`를 바로 설정하지 않는다. HP가 음수가 될 수 있다 (`LOREBATT.PAS:560-563`). 마법 피해 `castattacksub`도 같은 순서다 (`:590-593`).
+   - 이미 기절(`unconscious > 0 && dead == 0`)인 상태에서 추가 피격 시:
+     $$\text{player}[j].\text{unconscious} = \text{player}[j].\text{unconscious} + \text{EnemyDmg}$$
+   - 이미 사망(`dead > 0`)한 상태에서 피격 시: `player[j].dead = player[j].dead + EnemyDmg`
+   - `ReturnCondition`은 표시 문자열을 반환하기 전에 `(hp<=0 && unconscious=0)`이면 `unconscious:=1`, 그 뒤 `unconscious>endurance*level[1]`이면 `dead:=1`로 **상태를 변경**한다 (`LORESUB.PAS:706-725`). 전투는 적 단계 뒤 `SimpleDisCond`에서 이를 전원에게 호출하고 `EndBattle`로 간다 (`LOREBATT.PAS:1160-1172`). 다른 중간 표시 호출이 있다면 전환 시점은 앞당겨질 수 있다.
+
+#### 적 AI 행동 분기 (`EnemyAttack`)
+1. 특수 마법 조건(`specialcastlevel > 0`): `specialcastattack` 실행.
+2. 특수기 조건: 생존 적 수가 3마리 초과이고, `random(50) < min(20, agility)`이며 `special > 0`일 때 -> `specialattack` 실행.
+3. 통상 공격 결정:
+   - 난수 주사위: $\text{random}(\text{accuracy}[1] \times 1000) > \text{random}(\text{accuracy}[2] \times 1000)$ 이고 $\text{strength} > 0$ 이면 $\rightarrow$ `WeaponAttack` (물리 공격)
+   - 그렇지 않으면 $\rightarrow$ `castattack` (마법 공격: 단일 마법, 전체 마법, 자가 치료 `enemycure` 등)
+
+---
+
+### 3.5 도망 공식 (`RunAway`)
+- 파티원 민첩성 기반 판정:
+  $$\text{Random}(50) \le \text{player}[\text{person}].\text{agility} \implies \textbf{도망 성공}$$
+  (즉, 주사위 $0 \sim 49$ 중 민첩성 이하이면 성공, 초과 시 실패)
+
+---
+
+### 3.6 보상 계산 공식
+
+#### 경험치 보상 (`PlusExperience`)
+적 처치 또는 기절 시 대상 적의 도감 번호(`E_number`)를 기반으로 산출:
+$$\text{EXP} = \max\left(1, \left\lfloor \frac{\text{E\_number}^3}{8} \right\rfloor\right)$$
+- 살아있는 적을 기절시켰을 때: **막타를 친 플레이어 캐릭터 1명**에게만 해당 EXP 지급.
+- 기절한 적을 완전히 사망시켰을 때: `exist(i)`가 참인 **행동 가능한 파티원 전원**에게 각자 해당 EXP 지급.
+
+#### 골드 보상 (`PlusGold`)
+전투 승리 시 현재 적 슬롯 각각의 `E_number`로 `enemydata` 원형을 찾아 합산한다. 사건에서 덮어쓴 현재 적의 레벨·AC는 계산에 쓰지 않는다 (`LOREBATT.PAS:54-75`).
+$$\text{Gold} = \sum_{\text{enemy slot}} \left( \text{enemydata}[E\_number].\text{level}^3 \times \max(1, \text{enemydata}[E\_number].\text{ac}) \right)$$
+
+---
+
+## 4. 캐릭터 성장 및 편의 시설 (Town Facilities)
+
+### 4.1 훈련소 레벨업 테이블 (`Train_Center`)
+경험치 누적 구간에 따라 전투 레벨(`level[1]`)이 상승하며, 수련 비용을 지불해야 합니다.
+
+| 도달 레벨 | 필요 누적 경험치 | 훈련 비용 (금화) |
+| :---: | :---: | :---: |
+| **1** | 0 ~ 1,499 | - |
+| **2** | 1,500 ~ 5,999 | 3 |
+| **3** | 6,000 ~ 19,999 | 5 |
+| **4** | 20,000 ~ 49,999 | 8 |
+| **5** | 50,000 ~ 149,999 | 15 |
+| **6** | 150,000 ~ 249,999 | 25 |
+| **7** | 250,000 ~ 499,999 | 40 |
+| **8** | 500,000 ~ 799,999 | 70 |
+| **9** | 800,000 ~ 1,049,999 | 120 |
+| **10** | 1,050,000 ~ 1,319,999 | 200 |
+| **11** | 1,320,000 ~ 1,619,999 | 350 |
+| **12** | 1,620,000 ~ 1,949,999 | 600 |
+| **13** | 1,950,000 ~ 2,309,999 | 1,000 |
+| **14** | 2,310,000 ~ 2,699,999 | 1,700 |
+| **15** | 2,700,000 ~ 3,119,999 | 3,000 |
+| **16** | 3,120,000 ~ 3,569,999 | 5,000 |
+| **17** | 3,570,000 ~ 4,049,999 | 8,300 |
+| **18** | 4,050,000 ~ 4,559,999 | 14,000 |
+| **19** | 4,560,000 ~ 5,099,999 | 24,000 |
+| **20** | 5,100,000 이상 (최고 레벨) | 40,000 |
+
+* **레벨업 시 스탯 성장 판정**:
+  - `if (luck > random(30))` 일 때 주 스탯 1 상승 (최대 20)
+  - 기사: 힘 $\to$ 체력 $\to$ 물리명중 $\to$ 민첩
+  - 마법사: 마법 레벨 동기화, 지능 $\to$ 집중력 $\to$ 마법명중
+  - 전투승: 맨손 공격력 자동 갱신 ($\text{level}[1] \times 2 + 10$)
+
+### 4.2 병원 치료 공식 (`Hospital`)
+1. **상처 치료 (HP 완전 회복)**:
+   - 비용: $\left\lfloor \frac{(\text{endurance} \times \text{level}[1] - \text{hp}) \times \text{level}[1]}{2} \right\rfloor + 1$
+   - 효과: $\text{hp} = \text{endurance} \times \text{level}[1]$
+2. **독 치료**:
+   - 비용: $\text{level}[1] \times 10$
+   - 효과: $\text{poison} = 0$
+3. **의식 회복 (기절 치료)**:
+   - 비용: $\text{unconscious} \times 2$
+   - 효과: $\text{unconscious} = 0, \quad \text{hp} = 1$
+4. **부활 (사망 부활)**:
+   - 비용: $\text{dead} \times 100 + 400$
+   - 효과: $\text{dead} = 0, \quad \text{unconscious} = \min(\text{unconscious}, \text{endurance} \times \text{level}[1])$
+   - 주의: 원작 부활은 HP를 회복시키지 않으며 `unconscious`를 최대 HP로 제한할 뿐이다.
+
+### 4.3 식료품점 가격표 (`Grocery`, `LORESUB.PAS:1155`)
+| 구매 단위 | 가격 (금화) |
+| :---: | :---: |
+| 10 인분 | 100 |
+| 20 인분 | 200 |
+| 30 인분 | 300 |
+| 40 인분 | 400 |
+| 50 인분 | 500 |
+
+* 환율은 10인분당 100금화 고정이며, 보유 식량 상한은 **255인분**이다.
+* 상한을 넘는 분량은 버려진다(원작은 금화만 차감하고 clamp).
+
+### 4.4 야외 캠프 휴식 (`Rest`, `LOREMENU.PAS:869`)
+파티원 1~6번 순서로 아래 분기를 적용한다.
+
+| 상태 | 처리 | 식량 |
+| :--- | :--- | :--- |
+| `food <= 0` | "일행은 식량이 바닥났다"만 출력 | - |
+| `dead > 0` | "{이름}는 죽었다" (회복 불가) | - |
+| `unconscious > 0 && poison == 0` | `unconscious -= level[1]+level[2]+level[3]`, 0 이하가 되면 `unconscious=0`, `hp<=0`이면 `hp=1` | 깨어난 경우 1 소모 |
+| `unconscious > 0 && poison > 0` | "독때문에, {이름} {그의/그녀의} 의식은 회복되지 않았다" | - |
+| `poison > 0` | "독때문에, {이름} {그의/그녀의} 건강은 회복되지 않았다" | - |
+| 정상 | `hp += (level[1]+level[2]+level[3]) * 2` (최대치 clamp) | 1 소모 (만복이면 1 회복 후 1 소모 = 순 0) |
+
+* 휴식 후 `party.etc[1]`(마법의 횃불)이 1 감소하고 `etc[2..4]`(물위걸음/늪위걸음/공중부상)는 초기화된다.
+* 이름이 있는 파티원 전원은 `sp = mentality * level[2]`, `esp = concentration * level[3]`로 **완전 회복**된다. (사망자 포함)
+
+### 4.5 동료 영입 (`join`, `LORESUB.PAS:1042`)
+* `join(몬스터번호, 파티슬롯)`으로 몬스터 템플릿을 파티원으로 편입한다.
+  - `class := 0`, `resistance := enemydata.resistance div 2`, `concentration/accuracy[3]/esp := 0`, `luck := 10`
+  - `level[1] := 몬스터 레벨`, `level[2] := castlevel * 3` (0이면 1), `level[3] := 1`
+  - `wea_power := level[1] * 2 + 10`, `arm_power := ac`, `hp := endurance * level[1]`, `sp := mentality * level[2]`
+* 영입 후 캐릭터별로 이름/직업/장비/능력치를 덮어쓴다.
+
+| 동료 | 원작 위치 | 몬스터 | 직업 | 비고 |
+| :--- | :--- | :---: | :--- | :--- |
+| Mad Joe | LORETALK:197 (지하 감옥) | #1 | 8 떠돌이 | 장비/방어도 전부 0 |
+| Polaris | LORETALK:413 (LASTDITCH) | #9 | 4 전사 | 장검(wea 10), 마법Lv 3 |
+| Rigel | LORESPEC:620 (EVIL SEAL) | #14 | 7 사냥꾼 | `hp := 1` 빈사 상태 |
+| Red Antares | LORESPEC:1040 | #55 | 9 혼령 | 장비 제거, `hp := 0`, resistance 15 |
+| Spica | LORESPEC:1230 (LOCKUP) | #43 | 3 에스퍼 | 여성, Lv 11/6/11 |
+| Lore Hunter | LORETALK:623 (WATER FIELD) | #39 | 7 사냥꾼 | 철퇴(wea 15) |
+
+* `ReturnJoinMember`는 합류시킬 슬롯(2~6번)을 골라야 하며, 파티는 최대 6인이다.
+  - 6번 슬롯이 비어 있으면 그 자리 라벨이 `'보조 일원으로 둠'`으로 바뀈다(원작과 동일).
+  - 선택한 슬롯에 이미 파티원이 있으면 **교체**되고, 리더(1번)는 교체 대상이 아니다.
+
+#### 동료 영입 좌표 (LORESPEC.PAS)
+| 동료 | 맵 | 좌표 | 원작 조건 |
+| :--- | :---: | :---: | :--- |
+| Mad Joe | 6 (CASTLE LORE 지하 감옥) | (40,15) | `at(40,15)` - 6번 슬롯 고정 (`k := 6`) |
+| Polaris | 7 (LASTDITCH) | (37,41) | `etc[13] < 2` |
+| Rigel | 12 (T_DEN2) | (12,48) | `etc[31] bit2 = 0` |
+| Lore Hunter | 10 (WATER FIELD) | (40,56) | `etc[38] bit4` |
+| Red Antares | 17 (NOTICE) | (75,52) | 1단계 특수마법 전수(`etc[38] bit1`) → 2단계 합류 |
+| Spica | 18 (LOCKUP) | (37,31) | `etc[5] > 0`(독심술) **그리고** 파티 최고 초능력 Lv.5 이상 |
+
+### 4.6 성문/동굴 입구 확인 (`wantenter` / `wantexit`)
+* 성문·동굴 입구 타일로 이동하면 확인 대화상자를 띄운다.
+  - `Print(11, name + ' 에 들어가기를 원합니까 ?')` / `'여기서 나가기를 원합니까 ?'`
+  - 선택지: `'예, 그렇습니다.'` / `'아니오, 원하지 않습니다.'`
+  - 거절하면 `asyouwish`(`'당신이 바란다면 ...'`)만 출력되고 제자리에 머무른다.
+
+### 4.7 금화 발견 (`findgold`, `LORESPEC.PAS`)
+* 문구: `'당신은 금화 N개를 발견했다.'`
+* 좌표당 1회만 획득하며(원작 `party.etc[32/33/35]` 비트), 저장 시 불리언 플래그
+  `gold:<mapId>:<x>:<y>`로 직렬화된다.
+
+| 맵 | 좌표 | 금액 |
+| :---: | :--- | :---: |
+| 9 (TOWN4) | (10,24) (12,26) (15,25) (16,23) (18,27) | 각 5,000 |
+| 10 (TOWN5) | (20,30) (18,36) (35,32) (33,36) (35,14) (14,16) (37,12) | 각 5,000 |
+| 14 (DEN1) | (6,6) 1,000 / (18,10) 2,500 / (6,44) 400 / (31,30) 600 / (31,8) 1,500 / (14,28) 1,000 | |
+
+### 4.8 특수 마법(간접 공격) 해금
+* 원작 `LOREBATT.PAS:245 CastSpecial`은 `party.etc[38] bit1 = 0`이면
+  `'당신에게는 아직 능력이 없다.'`를 출력하고 시전 자체를 막는다.
+* 해금 경로: 맵 17 NOTICE 동굴 (75,52)에서 Red Antares의 영혼을 만나
+  "간접 공격" 6종(독 / 기술 무력화 / 방어 무력화 / 능력 저하 / 마법 불능 / 탈초인화)을 전수받는다.
+
+### 4.9 원작 소스 표기 오류 (이식 시 정정)
+* `Train_Center`의 `Expdata` 문자열 상수에 오타가 있다.
+  - Lv.15 `'270000'` → 실제 값 **2,700,000**
+  - Lv.20 `'510000'` → 실제 값 **5,100,000**
+* 본 이식판은 실제 진행 값(정정값)을 사용한다 (`PartyMember.expTable`).
+* 또한 원작 훈련소는 승급 시 **HP/SP/ESP를 회복시켜 주지 않는다**. 회복은 병원의 "상처를 치료"만 가능하다.
+
+---
+
+## 5. 필드 탐험 및 타일 상호작용 (`LOREMAIN.PAS`)
+
+### 5.1 이동 조작 및 핫키
+- 이동: 방향키 (상/하/좌/우)
+- 메뉴 열기: Space Bar (`SelectMode`)
+- 단축키:
+  - `P`: 파티 정보 (`ViewParty`)
+  - `V`: 캐릭터 상세 (`ViewCharacter`)
+  - `Q`: 빠른 정보 (`QuickView`)
+  - `C`: 마법 시전 (`CastSpell`)
+  - `E`: 초능력 (`Extrasense`)
+  - `R`: 캠프 휴식 (`Rest`, `LOREMENU.PAS:869` - 4.4절 참조)
+  - `G`: 게임 저장/불러오기 (`GameOption`)
+  - `F1` / `H`: 원작자 서문 & 게임 매뉴얼 (`LOREHELP.PAS` Title_Str / Title_Menu 자막)
+
+### 5.2 타일 속성 및 특수 효과
+- 일반 바닥: 1걸음마다 독 진행 (10스텝마다 HP 감소), 1걸음마다 인카운터 확률 검사.
+- 일반 이동 조우 확률: $\text{random}(\text{encounterRate} \times 20) == 0$.
+  설정값 1·2·3에서 각각 5%, 2.5%(기본), 약 1.67%다
+  (`LOREMAIN.PAS:140`, `LORESUB.PAS:1760`). 물 진입은 분모가
+  `encounterRate*30`이다 (`LOREMAIN.PAS:24`).
+- 늪지(`swamp`): 독을 먼저 진행한다. `etc[3]>0`이면 이를 감소시키고,
+  아니면 이름 없는 슬롯까지 1~6번의 행운 난수 6회를 소비해 중독을
+  판정한다 (`LOREMAIN.PAS:29-75`).
+- 용암(`lava`): 슬롯 1~6 각각 `random(40)+40-2*random(player[i].luck)`
+  피해값을 계산한다. 이름 없는 슬롯도 포함해 난수 총 12회를 소비한
+  뒤 피해를 적용한다 (`LOREMAIN.PAS:77-111`).
+- 벽/장애물: 충돌 처리(`originposition`), 원래 위치 유지.
+
+---
+
+## 6. 결론 및 Flutter 이식 아키텍처 가이드
+
+본 명세서에 정의된 데이터 모델과 수학적 수식은 도스/Crt 종속성 없이 100% 순수 Dart 코드로 분리 구현 가능합니다:
+- `lib/models/`: `party_member.dart`, `monster.dart`, `item.dart`, `party.dart`
+- `lib/logic/`: `lore_battle.dart` (LOREBATT.PAS 직접 이식)
+- `lib/screens/`: 4:3 레트로 도스 레이아웃 (뷰포트, 파티창, 3~4줄 콘솔 텍스트 로그)
+- `lib/game/`: Flame 기반 또는 그리드 타일맵 이동 컴포넌트
+
+---
+
+## 7. 이식 현황 및 잔여 항목 (최종 리뷰)
+
+### 7.1 이식 완료
+| 원작 | 이식 위치 | 검증 테스트 |
+| :--- | :--- | :--- |
+| `LORESUB.PAS` 데이터 구조/무기점/식료품점/훈련소/병원/휴식 | `lib/logic/town_logic.dart`, `lib/widgets/town_*.dart` | `step5_train_rest_guide_test.dart` |
+| `LORESUB.PAS:986/999/1012` 성문 확인·금화 발견·공통 메시지 | `lib/logic/lore_field_logic.dart` | `step6_field_prompts_test.dart` |
+| `LORESUB.PAS:1042/1144` 동료 영입(join) 및 슬롯 선택 | `lib/logic/lore_join.dart` | `step3/step6` |
+| `LOREBATT.PAS` 전투 전 공식 + 특수 마법 해금 게이트 | `lib/logic/lore_battle.dart`, `battle_viewport_view.dart` | `lore_battle_test.dart` |
+| `LOREMENU.PAS` SelectMode/ViewParty/ViewCharacter/QuickView/CastSpell/Rest/GameOption + 핫키 | `lib/logic/lore_game_option.dart`, `lib/logic/lore_cast_spell.dart`, `lib/logic/lore_view_procedures.dart`, `lib/logic/town_logic.dart`, `lib/widgets/lore_select_view.dart`, `lib/logic/field_hotkeys.dart` | `keyboard_input_test.dart`, `lore_game_option_test.dart`, `lore_cast_spell_test.dart`, `lore_view_procedures_test.dart` |
+| `LOREMAIN.PAS` 이동/지형 위험(늪·용암·물) | `lib/game/lore_game.dart` | `field_test.dart`, `step1_...` |
+| `LORESPEC.PAS` 보스/봉인/식량나무/금화 좌표/동료 6명 | `lib/game/lore_dungeon_event_manager.dart`, `lore_dialogue_manager.dart` | `step3/step6` |
+| `LORETALK.PAS` 4대 마을 NPC/영주 퀘스트 | `lib/game/lore_dialogue_manager.dart`, `town_dialog.dart` | `step3` |
+| `LORECRET.PAS` 캐릭터 생성/성향 문답 | `character_creation_screen.dart` | `widget_test.dart` |
+| `LOREEND.PAS` 엔딩/스태프롤 | `lib/widgets/ending_view.dart` | `step4` |
+| `LOREHELP.PAS` 제작자 서문/타이틀 자막 | `lib/widgets/lore_guide_dialog.dart` (F1) | `step5` |
+
+### 7.2 남은 항목 (미이식)
+1. **선택지 분기 대화** ✅ 완료: `LoreScriptEngine`의 `choice` 스텝으로 2~3지선다를
+   JSON에서 정의·실행한다(예: Rigel 3지선다, Spica 합류 여부). 원작의 대안 경로
+   ("식량과 치료는 해결해 주겠소" = 식량 5 소모)도 그대로 구현했다.
+2. **지형 변형 / 강제 이동** ✅ 지원: 스크립트에 `setTile`(원작 `map[x,y] := 값`)과
+   `teleport`(원작 `x := ..; y := ..`) 스텝을 추가하고 게임 화면에서 적용한다.
+   (적용 위치: 맵 6 (62,82) 상자, 맵 4 (20,39) Ancient Evil 비밀 통로)
+3. **`wantexit` 게이트별 분기** ✅ 완료: 맵별 목적지를 `assets/data/portals.json`의
+   포털 표(정확 좌표 + `yMin` 범위 조건)로 옮겨 코드 수정 없이 편집할 수 있다.
+   원작 `if y = N then if wantexit` 출구 21곳을 모두 이관했다.
+4. **남은 서사형 좌표 이벤트** ✅ 완료: 원작 `LORESPEC.PAS`의
+   `if y = N then ...` 처럼 **행/구역 단위 조건**을 스크립트의 `xMin/xMax/yMin/yMax`
+   로 옮겼고, `equip`(장비 지급)과 `peek`(카메라 연출) 스텝을 추가해 다음을 이관했다.
+   - 맵 4: (40,18) 공간 이동, (26,16) Draconian 강의 + 영입(6번 슬롯 고정),
+     (20,39) Ancient Evil 안내 중 **시야 연출**(48,57 → 82,16 → 16,15)
+   - 맵 6: (51,12) 수감소 병사 전투(2명 → 재방문 7명), (41,79) 기본 무장,
+     (y=95) 성문 Skeleton 영입(원작 `join(19,6)`)
+   - 맵 11: (y=44) 오이디푸스의 창, (y=24) 미이라의 방(Sphinx ×2 + Major Mummy)
+   - 맵 12: (18,10) **황금의 봉인** (원작 `party.etc[14] := 2`)
+   - 맵 14: (16,20) 황금의 방패, (25,8)/(26,8) MENACE 중심 도달
+   - 맵 15: (14,7) 황금의 방패, (45,19) 황금의 갑옷, (y=27) Zombie ×2 +
+     ArchiGagoyle, (y=48) 보물 6000 → 4000 두 단계
+5. **이관 완료(진행형 퍼즐·보스전)**
+   - 맵 17 NOTICE: Hidra 삼두룡 (x = 22 열 진입, `bossHidraDefeated`), `y = 38` 통로
+     개방 + (56,93) 강제 이동, `x = 72` 지름길
+   - 맵 16 WIVERN: 처음 세 마리에서 시작해 도망 전 쓰러뜨린 개체 수를
+     `party.etc[37]`에 남기고, 재전투에서는 생존 개체만 소환
+   - 맵 18 LOCKUP: Huge Dragon (x = 31 열 진입, `bossHugeDragonDefeated`)
+     · 꼬리 쪽 5마리는 원작 `random(3)+30`을 배틀 스텝의 `random` 으로 그대로 구현
+   - 맵 19 EVIL GOD: 레버 2개(늪위 걷기 마법이 켜져 있으면 못 당김) → 통로 개방 +
+     **일곱 방 중 한 곳을 무작위로 뽑는 봉인 퍼즐**(`randomFlag`) → 정답 방에서
+     CRAB GOD의 왕 7마리 전투 → 봉인 해제(`evilSealRoomCleared`). 봉인이 남아 있는
+     동안 y=8~12 에서는 `random(3)+3` 마리의 수호 무리가 나온다.
+   - 맵 12 T_DEN2: 수수께끼 문(오른쪽 문 통로 개방 / 오답이면 (25,70)으로 되돌림)
+6. **원작 좌표 이벤트 전수 이관** ✅ `LORESPEC.PAS` 의 `on(x,y)` / `if y = N` 이벤트
+   **46건 모두** 커버한다. 자동 점검: `python3 tool/audit_lorespec.py
+   repo_source/LORE_1993_src/LORESPEC.PAS --coverage` (미커버가 있으면 종료코드 1).
+   - 맵 18 LOCKUP: (22,41) 통로 교체, (21,41) 수문장 Minotaur 전투
+   - 맵 19 EVIL GOD: 레버 2개 → 일곱 방 중 하나를 무작위로 뽑는 봉인 퍼즐,
+     잘못된 방/수호 무리 전투 후 밟은 칸 봉쇄(`setTileAtPlayer`)
+   - 맵 20 DEN 7 (**퀴즈 미로**): y=91/75 문항 무작위 뽑기(`randomSteps`) + 좌/우 문,
+     y=54 옳다/틀리다 선택 문제, y=88/71 숨은 통로(`tileAtPlayerZero` + `keepX` 이동),
+     y=18 횃불 지급, y=48 Minotaur, y=13 거룡 → 진흙 인간 → Astral Mud 3연전
+   - 맵 21 SWAMP KEEP: (25,20) 봉인문(두 퍼즐이 모두 풀려야 열림)
+     남쪽 (25,19) IMPERIUM MINOR 입구는 두 봉인을 요구하며, 65/64번 수문장을
+     쓰러뜨린 상태를 도망 후에도 보존한다. y=46 출구에도 55/56번 수문장과
+     일반 적 5명이 있으며 생존한 수문장만 재소환한다. 성채 지도 타일 40은
+     통행 가능하다.
+     그 밖의 특수 칸에서는 58번 적 3~6명과 전투하고 해당 칸을 일반 바닥으로
+     바꾼다. 도망 후에도 칸이 소모되는 원본 처리를 따른다.
+   - 맵 22 KEEP2: (25,18) 다섯 자리 중 하나가 Death Knight인 Wraith 무리,
+     (y=25) 수문장 5명, (y=46) 출구 확인 후 7명 수문장 전투를 마치고 이동,
+     남쪽 (25,23) 입구는 LAST SHELTER로 이동한다. 그 외 좌표는 상시 습격
+     (`else` 분기 그대로 — y=46 출구 행만 제외)
+   - 맵 23/25: 동료의 능력치를 복제한 환상 전투 → Necromancer 결전,
+     푯말을 읽으면 (25,27) 레버 활성화, 함정 해제·열쇠 두 개(순서 무관)·
+     통로 개방. 맵 23→25 관문은
+     ArchiDraconian(3번 적)을 쓰러뜨려야 통과하며, 6번 동료가 Draconian이면
+     원작처럼 전투 전에 중상을 입는다. 맵 25→26 관문은 Death Knight 5명과
+     수문장 1명을 격퇴한 뒤 통과한다.
+   - 맵 5→23 EVIL CONCENTRATION 입구는 Frost Dragon 관문 전투를 거친다.
+     7자리 중 2~6번 위치에 Frost Dragon을 배치하고, 도망치면 진입을 취소한다.
+   - 맵 26: 진입 시 (24~26,16~19) 입구를 막고 69~75번 적 7명과 최종 결전.
+     도망쳐도 7번 적이 살아 있으면
+     같은 적 상태로 재전투하며, 격퇴 후 최후의 대사와 엔딩 화면으로 진행한다.
+   - 맵 12: 수수께끼 문, `y=10` 함정(플레이어가 선 열 차단)
+   - 맵 13 DEN4: 피라미드 장면(지형 변경·강제 이동)과 Gorgon 전투·승리 대사
+   - 맵 17: `y=38` 통로 + (56,93) 이동, `x=72` 지름길
+7. **알려진 편차(원작과 다른 점)**
+   - 전투 뒤 단계는 승리 후에만 이어 실행한다. 전멸·도망 시 후속 보상과 지형
+     변경은 실행하지 않는다. 여러 전투가 이어지는 결전도 전투마다 대기한다.
+   - 전투 후 도망 분기는 맵 13·17·18·19·20·22·23의 밀기·강제 이동·지형
+     변경·재전투를 각각 처리한다. Major Mummy·ArchiGagoyle·Astral Mud는
+     도망 전에 해당 보스가 쓰러졌으면 원작처럼 승리 후 단계를 실행한다.
+   - 맵 20 퀴즈의 `delay(3000)`/`PressAnyKey` 연출은 메시지 로그로 대체했다.
+8. **`LORECHT/LORECHT2`(개발용 유틸), `FOEDITOR/LOOKFOE/GFE`(제작 도구)** 는 게임 본편이
+   아니므로 이식 대상에서 제외한다.
+9. **근사 이벤트 정리** ✅ 완료: `lib/game/lore_dungeon_event_manager.dart`에 있던
+   임의 좌표 보스전·보물상자(7의 배수 좌표) 연출을 제거하고, 그 자리는 원작 좌표를
+   쓴 `scripts.json`으로 대체했다. 현재 Dart 쪽에 남은 것은 `findgold` 표(폴백용)와
+   맵 1 식량 발견뿐이다.
+
+**최종 실행 흐름 점검:** 걸음 이벤트의 선택지를 실제로 표시하고, 선택 전후에 누적된
+스크립트 결과가 보상·대사·지형 변경을 중복 적용하지 않게 했다. 1회성 선택지는
+선택을 확정할 때 소모해 취소 후 재시도할 수 있다. 좌표 이벤트가 처리한 걸음에는
+일반 무작위 전투를 추가하지 않으며, DEN7 횃불은 원작의 지정 구역에서만 소모한다.
+그 외 걸음의 일반 조우는 `LOREMAIN.PAS`의 지형별 확률과 `LOREBATT.PAS`의
+맵별 적 번호 범위·최대 적 수 설정을 사용한다. 저장 파일에는 현재 지도 타일과
+1회성 스크립트 이력도 포함한다.
+실제 맵 타일과 활성 대화 스크립트의 발동 방식을 대조해 Rigel·Red Antares·
+Ancient Evil·Spica의 특수 타일 만남을 `step`으로 수정했다. Spica의 첫 만남과
+독심술 조건도 분리했다. 스크립트의 이름 있는 플래그를 저장·복원해 퍼즐 완료와
+관문 조건이 이어지도록 했다. Rigel의 식량 지원 선택지는 동료 합류 대신 주인공
+SP 소진과 운 판정 두 번에 따른 무기 위력 20% 강화로 처리한다.
+`LOREMAIN.PAS`의 `specialevent` 호출 조건을 적용해 좌표 스크립트는 현재 타일이
+특수 칸일 때만 실행한다. 맵 6 상자, 맵 18/19 레버, 맵 23 함정/가짜 보스,
+맵 25 통로는 타일이 바뀐 뒤 재진입해도 보상과 전투를 반복하지 않는다.
+맵 25 입구의 금속 수문장(66×4, 71) 전투 후에는 y=43 통로를 열고 생존 파티원의
+직업을 원작처럼 반신(10)으로 변경한다. 도망치면 입구 쪽으로 밀려난다.
+LORE 성 수감소에서는 Mad Joe 영입 뒤에만 병사 전투가 열리고, 첫 전투에서
+도망친 뒤 다시 진입하면 병사 수가 2명에서 7명으로 늘어난다. 전투 직전에
+6번 슬롯의 Mad Joe는 원작처럼 일행을 떠난다.
+LASTDITCH↔VALIANT PEOPLES GROUND GATE 및 GAIA TERRA→SWAMP GATE의
+특수 타일 이동을 연결했고, SWAMP GATE 첫 진입에서만 Lord Ahn의 안내가 나온다.
+EVIL SEAL의 y=50 수수께끼 문은 남쪽으로 되돌아갈 때 다시 발동하지 않는다.
+EVIL SEAL 봉인 동굴의 일곱 방은 실제 특수 타일 x=14,18,22,26,30,34,38
+(y=6)에서 판정한다. 방 입장 시 한 칸 위를 타일 49로 바꾸고,
+일반 수호자 3~5명 전원과 마지막 방의 4~7번 적에게 원본의
+`E_number=25, hp=210, level=7` 능력치를 적용한다. 잘못 고른 방은
+봉인을 풀기 전까지만 발동한다.
+
+### 7.3 전체 검토(2026-09) — 원작 대비 남은 것
+
+원작 게임 유닛 11개(약 9,700줄)를 전수 대조한 결과다.
+
+`python3 tool/audit_messages.py`가 원작 `.PAS`의 한글 문자열 리터럴을
+전수 추출해 포트(`lib/`, `test/`, `assets/data/*.json`)와 **공백 무시**로
+대조한다. 2026-09 기준 결과는 **1760/1760 (100.0%)** 이다. 이 수치는
+비활성 스크립트의 문구도 포함하므로 실행 로직의 완전성을 뜻하지 않는다.
+
+**실행 가능성 감사:** 활성 `talk` 스크립트의 명시 좌표를 실제 맵의 NPC 타일과
+대조하고, 모든 명시 포털의 타일·JSON/내장 목적지·포털 전투 스크립트 연결을
+테스트한다. `scripts.json`에는 활성 298개, 비활성 294개 스크립트가 있다.
+비활성 항목에는 손으로 다시 작성한 이벤트의 자동 생성 중복본과 미지원 분기가
+섞여 있으므로, 이 숫자만으로 남은 누락 수를 판단할 수 없다. 원본의 모든
+제어 흐름에 대한 완전한 플레이 검증은 아직 끝나지 않았다.
+
+| 원작 | 문구 이관 | 비고 |
+| :--- | :--- | :--- |
+| `LORESPEC.PAS` (좌표 이벤트) | ✅ 452/452 | `tool/export_lore_spec.py` 자동 변환 + `--coverage` 46/46 |
+| `LORETALK.PAS` (마을 NPC 대사) | ✅ 583/583 | 좌표 분기 86개 + 상태 분기 69개 |
+| `LORESUB.PAS` (시설/조인/세이브/프롬프트) | ✅ 188/188 | `lib/logic/lore_sub_text.dart` |
+| `LOREMENU.PAS` (필드 메뉴/마법) | ✅ 172/172 | `lib/logic/lore_menu_text.dart` |
+| `LOREBATT.PAS` (전투) | ✅ 125/125 | `lib/logic/lore_batt_text.dart` |
+| `LORECRET.PAS` (캐릭터 생성) | ✅ 109/109 | `assets/data/creation.json` + 폴백 |
+| `LOREENT.PAS` (맵 진입/표지판) | ✅ 79/79 | 포털 30 + 표지판 18 |
+| `LOREEND.PAS` / `LOREHELP.PAS` | ✅ 22/22 · 25/25 | 엔딩/F1 가이드 |
+| `LORE.PAS` / `LOREMAIN.PAS` / 개발 도구 | ✅ 제외/이관 | 이동·지형 진입 이관 |
+
+* `LORESPEC.PAS` 변환은 `on(x,y)` 조건을 좌표 트리거로, 분기 안의
+  `party.etc[N]` 를 `etcN_bitM` 플래그/퀘스트 게이트로 옮긴다
+  (`python3 tool/export_lore_spec.py --report` 로 변환 메모 확인).
+  옮기는 스텝: 문구/플래그/퀘스트/경험치/금화(`findgold`)/식량/지형(`map[..]`,
+  `map[x+x1,y+y1]`, 영역 `for ... do map[i,j]`)/이동(`x :=`,`with party do ... map :=`)/
+  밀기(`inc/dec`)/횃불(`etc[1] := 1`)/전투(`enemynumber := N` + `joinenemy` → `battle`)/
+  동료 영입(`join(N,k)` → 키)/장비 지급(`choosewhom` + `with player[k] do ...`)/
+  선택지(`m[N] :=` + `select`) — 번호→키 표는 `JOIN_BY_NUMBER`.
+* 병합은 `python3 tool/merge_scripts.py <gen.json> --spec [--replace-ok] --write`.
+  - 손으로 쓴 스크립트의 효과(종류·플래그 이름·전투 구성/제목·`require` 플래그)를
+    옮긴 쪽이 **모두** 포함하면 그 좌표는 옮긴 쪽으로 대체하고, 손으로 쓴 항목은
+    `"disabled": true` 로 꺼 둔다(지우지 않으므로 다시 병합해도 결과가 같다).
+  - 포함하지 못하면 손으로 쓴 쪽을 그대로 실행하고 옮긴 쪽은 문구 보관용으로만
+    넣는다(`disabled`). 현재 249개 중 **42개 좌표가 대체**(자동 이관 활성 98개),
+    나머지는 보관 상태다.
+  - 대체 판정: 효과 종류, 플래그/퀘스트 이름, 전투 구성, 지형 변경, `require`
+    플래그를 옮긴 쪽이 모두 포함해야 한다.
+    · 진행 표시 스텝(`flag`/`questStep`/`randomFlag`)은 **종류가 아니라 이름**으로
+      본다(손으로 쓴 `flag: x` ↔ 옮긴 쪽 `questStep` 은 원작에서 같은 일이다).
+    · 손으로 쓴 “완료 표시” 플래그가 **그 좌표에서만** 쓰이면 무시해도 된다
+      (옮긴 쪽이 원작 조건으로 같은 일을 하므로).
+    · 지형 변경(`setTile`/`setTileArea`/`setTileAtPlayer`)도 종류는 하나로 보고
+      **내용**(좌표·타일값)이 덮이는지 본다.
+    · **옮긴 쪽에 `disabled` 항목이 하나라도 있으면 대체하지 않는다**.
+  - 무작위 적(`for i := 3 to 7 do joinenemy(i, random(3)+30)`)는 포트의
+    `battle.random`(`pool`/`min`/`max`)으로 옮기고, 전투 구성 비교에 `pool` 도 넣는다.
+  - 실행할 수 없는 조건(`enemy[i].dead` 재소환 등)은 꺼 둔다.
+  - `--spec` 은 이전에 생성해 넣은 `spec-*` 항목을 먼저 걷어내므로 **멱등**하다.
+* 지형 변경: `for j := 19 to 21 do map[72,j] := 44` 처럼 **한 축만 범위**인
+  경우 `setTileArea`(`xMin=xMax=72`, `yMin=19`, `yMax=21`)로 옮긴다.
+  `map[x,j]`/`map[i,y]` 처럼 플레이어 위치를 쓰는 축은 `atPlayerX`/`atPlayerY`
+  로 표시하고 그 축은 1로 둔다(엔진은 플레이어가 선 열/행을 쓴다).
+  · 이전에는 리터럴 축을 1로 덮어써 지형 변경이 통째로 어긋나는 버그가 있었다
+    (`map[72,j]` → `xMin=1`) → 수정.
+* 연출/화면 갱신 호출(`Clear`/`PressAnyKey`/`Delay`/`Scroll`/`Display_Condition`
+  /`PutImage`/`Silent_Scroll`/`load`)은 포트가 자기 방식으로 처리하므로
+  “미지원”으로 세지 않는다(밑줄 붙은 이름도 받도록 `\w*` 로 맞춤).
+* 적별 덮어쓰기: 원작이 전투 직전에 적 이름·능력치를 직접 바꾸는 부분
+  (`with enemy[i] do begin name := 'Sphinx'; level := 4; ac := 1; end`,
+  `enemy[3].name := 'ArchiGagoyle'`, `name := 'Soldier'+chr(48+i)`)은
+  `battle.overrides`(`[{"index":3,"name":"Major Mummy","ac":1}]`)로 옮긴다.
+  포트는 `Monster.withOverrides()` 로 적용하고(레벨을 바꾸면 최대 HP 도
+  `endurance * level` 로 다시 잡는다), 그 결과 미이라의 방은 `Sphinx ×2 + Major Mummy`,
+  Hidra 는 `Hidra's Head 1~3`(가운데만 레벨 10), 거룡은 `Huge Dragon + Dragon's tail(ac 8)`
+  로 나온다.
+* 원작 `enemy[i].hp <= 0`(보스가 쓰러졌다)은 포트에서 **전투 승리와 같다**
+  (`party.etc[6] = 0` = `etc6` 플래그 미설정). 원작도 같은 자리에서
+  `(party.etc[6]=0) or (enemy[3].hp<=0)` 처럼 둘을 같이 본다.
+* 마법 카운터 조건(`party.etc[1..5] > 0`)은 스크립트 플래그 `etcN` 으로 넘긴다.
+  특히 `etc5`(독심술)은 ESP 메뉴 `[3] 독심술`(원작 `party.etc[5] := 3`)로 켜지고
+  걸음마다 줄어들며, **Draconian · Red Antares 영입 제안과 Spica 상담의 조건**이다.
+* 포트에 이미 이름이 붙은 상태 비트는 같은 이름으로 옮긴다
+  (`ETC_FLAG_ALIAS` 27개: `etc[16] b1`→`ancientEvilMet`, `etc[50] b5`→`menaceInfoGiven`,
+  `etc[45] b7/8`→`lavaLeverLeft/RightPulled`,
+  `etc[41] b1..b4`→`den7Maze/Dragons/Mudmen/MinotaurCleared`,
+  `etc[44] b1/b2`→`frostDragonDefeated`/`dungeonOfEvilCleared`,
+  `etc[50] b4`→`weaponRoomVisited` 등). 나머지는 `etcN_bitM`.
+  퀘스트 단계가 곧 격퇴 플래그인 자리도 있다(`QUEST_FLAG`: `gaia 2`→`goldenSealFound`,
+  `water 2/4`→`bossHidraDefeated`/`bossHugeDragonDefeated`,
+  `lastditch 2`→`bossMajorMummyDefeated`).
+* 원작 퀴즈(`i := random(8); case i of ... end; if i < 4 then ... else ...`)는
+  포트의 `randomSteps` 8분기(문항 + 정답 여부에 따른 지도 변화)로 옮긴다.
+* 원작 `GROUND 1`의 특수 칸 식량은 처음 한 번만 100 인분을 주고 최대 255로
+  제한하며, 진입한 방향의 반대로 한 칸 되돌린다. 자동 변환기가 만든 중복
+  식량 스크립트는 비활성화했다. 지진 동굴 금화는 네 좌표
+  `(10/11/40/41,48)`에서만 발동하도록 범위가 없는 자동 변환본을 비활성화했다.
+* KEEP2의 `(25,18)`과 `(24..26,25)`는 일반 습격의 `else` 분기에 속하지
+  않는다. 수문장 칸을 다시 밟을 때 일반 습격이 나오지 않도록 제외하고,
+  일반 습격이 끝난 특수 칸은 원본의 타일 `40`으로 바꾼다. 이 분기의
+  좌표 제약이 누락된 자동 변환본 8개는 비활성화했다.
+* 남은 활성화 과제: 자동 변환기가 아직 **다단계 보스**(`enemy[i].dead` 재소환)·
+  전체 파티 대상 장비 루프(`for i := 1 to 6 do with player[i] do …` → `equip`),
+  좌표 간에 얽힌 자체 퍼즐 플래그(`sealPuzzleA/B`, `keep3KeyA/B`)를 표현하지 못해
+  일부 좌표는 손으로 쓴 스크립트가 먼저 실행된다. 맵 23의 다단계 결전과
+  맵 16 Wivern 생존 수는 손으로 쓴 스크립트로 이관했다. `--spec` 로그의 `덧붙임`
+  항목이 목록이다(해당 좌표의 문구 자체는 아래 7.3.1 로 원문에 맞춰 두었다).
+
+#### 7.3.1 역방향 감사 — 포트에만 있는 문구 걷어내기(2026-09)
+
+`python3 tool/audit_messages.py` 는 **원작 → 포트**(원작 문구가 다 있는가)만 본다.
+반대 방향은 `python3 tool/audit_invented.py` 가 본다.
+
+* 원작 `.PAS` 의 문자열 리터럴을 전부 모아 두고, 포트의 `say`/`choice`/`title`
+  문구를 **원작 리터럴을 이어붙여 덮을 수 있는지** DP 로 검사한다(원작은 한 문장을
+  `Print` 여러 줄로 쪼개므로 공백을 무시하고 이어 붙인다). 덮이지 않는 조각이 남으면
+  그 문구는 원작에 없는 문구다.
+* 검사 대상은 기본이 **활성 항목**이다(`disabled` 는 원문 보관용이므로 `--all`).
+* `python3 tool/fix_invented_text.py --dry|--write` 로 바로잡는다.
+  - 원작에 같은 자리 문구가 있으면 **원작 `Print` 줄 그대로** 되돌리고,
+  - 원작에 문구가 아예 없으면 지운다(예: 함정 문구, 층 이동 문구, 보스 등장 문구).
+  - 전투 제목(`battle.title`)은 원작 `Displayenemies` 를 대신하는 한 줄이므로
+    **원작 이름**(원작이 `name :=` 로 붙인 이름 → 없으면 원작 적 데이터 이름)으로
+    맞춘다. 붙일 이름이 없으면 제목을 없앤다.
+* 이번 회차 결과(활성 문구 1194개): 원작 리터럴과 직접 맞지 않는 조각은
+  24개(2글자 이상)다. 대부분은 `den7-quiz`의 `정답이다!/오답이다!` 조작 피드백이며,
+  선택지의 `취소`와 `SWAMP KEEP 수문장`·`IMPERIUM MINOR 수문장` 전투 제목도
+  포함된다. 이 숫자는 **문구 대조 결과**이며 분기 실행의 완전성을 보증하지 않는다.
+* 함께 고친 것: **대사가 줄어들어 있던 동료 영입 대사**(Rigel · Red Antares · Spica ·
+  Draconian — 원작 대사의 문장 일부가 빠져 있었다), 원작의 오타(`전념`→원문 `전염`),
+  원작이 백틱(`` ` ``)을 쓴 자리의 인용부호, 원작 `m[1]`/`m[2]` 를 그대로 쓴 선택지.
+
+* 자동 추출: `python3 tool/export_lore_talk.py --report` (수동 필요 목록은
+  `docs/audits/lore_talk_translation_report.txt`), `--emit <파일>`로 talk 스크립트 생성.
+* 마을 시설(무기점/병원/훈련소/식료품점) 좌표는 `assets/data/facilities.json`
+  (5개 마을 58곳) — 이전에는 CASTLE LORE만 하드코딩되어 있었다.
+* **상태 분기(`party.etc[N]`) 대사는 `python3 tool/export_lore_quest_talk.py
+  --write`로 생성**한다(원문 대사·비트·타일 변경·경험치까지 그대로 옮김).
+  - 퀘스트 단계 4종: `lordahn`(etc[10]), `lastditch`(etc[13]), `gaia`(etc[14]),
+    `water`(etc[15]) → `LoreDialogueManager.questStepValue/applyQuestStep`.
+    원본의 대화·던전 사건·예지 메뉴를 잇는 단계 전이는
+    [원본 상태 수명주기](source/state_lifecycle.md)에 기록했다.
+  - 비트 5종: `menaceInfoGiven`(etc[50]b5), `weaponRoomVisited`(etc[50]b4),
+    `loreChallengeAccepted`(etc[30]b1), `loreChallengeBlessed`(etc[30]b2),
+    `programmerMet`(etc[43]b4), `jrAntaresSecretFound`(etc[50]b1).
+  - 스크립트 스텝 `{"questStep":{"name":"lordahn","inc":1}}` / `{"exp":1000}`,
+    조건 `require:{"quest":{"name":"lordahn","gte":3}}` 로 표현한다.
+  - 남은 수동 대상: `select`(선택지)·`join` 계열은 이미 스크립트 선택지로 옮겼고,
+    `LORESPEC.PAS` 좌표의 퀘스트 단계 조건(잠금/개방)이 남아 있다.
+
+---
+
+## 8. 현대적 구조: JSON 데이터 & 이미지 에셋
+
+게임 데이터를 코드에서 분리해 JSON/이미지 파일로 관리한다. **파일이 없거나 파싱에
+실패하면 코드에 내장된 원작 테이블로 자동 폴백**하므로 어떤 경우에도 게임은 동작한다.
+
+### 8.1 데이터 파일 (`assets/data/`)
+| 파일 | 내용 | 로더 |
+| :--- | :--- | :--- |
+| `monsters.json` | 원작 FOEDATA 75종 템플릿 | `LoreData.instance.monster(id)` |
+| `items.json` | 무기 10 / 방패 6 / 갑옷 6 (위력·가격) | `LoreData.instance.weapon/shield/armor(id)` |
+| `spells.json` | 45종 마법 (분류·설명·기본 SP) | `LoreData.instance.spell(id)` |
+| `maps.json` | 27개 맵 메타데이터 (파일명·분류·BGM·폰트) | `LoreData.instance.map(mapId)` |
+| `scripts.json` | 좌표 이벤트 / NPC 대화 / 선택지 분기 (106건) | `LoreScriptEngine.instance` |
+| `portals.json` | 맵 연결(포털 30) + 표지판 문구 (21) | `LoreWorldManager.instance.findPortal/getSignMessage` |
+
+`LoreData` / `LoreScriptEngine` / `LoreWorldManager`는 `main()`에서
+한 번 로드한다. JSON이 없거나 파싱에 실패하면 코드 내장 데이터로 폴백한다.
+
+### 8.2 스크립트 스키마 (`scripts.json`)
+```json
+{
+  "id": "rigel-join", "trigger": "talk", "map": 12, "x": 12, "y": 48, "once": true,
+  "require": { "flag": "metPyramidSage", "flagNot": "rigelJoined",
+               "mindRead": true, "minEspLevel": 5 },
+  "steps": [
+    { "say": "대사" },
+    { "gold": 5000 }, { "food": -5 }, { "flag": "rigelJoined" },
+    { "join": "rigel", "slot": 4 },
+    { "battle": { "title": "미이라의 방", "monsters": [26, 8, 8] } },
+    { "setTile": { "x": 62, "y": 82, "tile": 44 } },
+    { "setTileArea": { "xMin": 25, "xMax": 27, "yMin": 27, "yMax": 37, "tile": 44 } },
+    { "setTileAtPlayer": { "tile": 49 } },
+    { "nudge": { "dy": 1 } },
+    { "randomFlag": ["evilSealRoom1", "evilSealRoom2"] },
+    { "teleport": { "x": 46, "y": 41 } },
+    { "teleport": { "y": 80, "keepX": true } },
+    { "torch": true },
+    { "randomSteps": [ [ { "say": "문항 A" } ], [ { "say": "문항 B" } ] ] },
+    { "equip": { "kind": "weapon", "index": 3, "power": 12, "prompt": true } },
+    { "peek": { "x": 48, "y": 57 } },
+    { "choice": { "prompt": "?", "options": [
+        { "text": "예", "steps": [ { "join": "rigel" } ] },
+        { "text": "아니오", "steps": [ { "say": "..." } ] } ] } }
+  ]
+}
+```
+* `trigger`: `step`(좌표 진입) / `talk`(NPC 접촉)
+* `once`: 1회성. 실행 이력은 `LoreScriptEngine.consumedScripts`에 남는다.
+* 좌표는 `x`/`y`(정확) 대신 `xMin`/`xMax`/`yMin`/`yMax`로 **행/구역 전체**를 쓸 수
+  있다(원작 `if y = 44 then ...` 조건 그대로).
+* `require`: `flag` / `flagNot` / `mindRead`(독심술 사용 가능) / `minEspLevel` /
+  `notMindReadOrLowEsp`(조건 미충족 안내용) / `tileAtPlayerZero`(밟은 타일이 0)
+* `join` 키: `mad_joe`, `polaris`, `rigel`, `red_antares`, `spica`, `lore_hunter`,
+  `draconian`, `skeleton`
+* `equip` 스텝: `kind`(weapon/shield/armor), `index`, `power`, `prompt`(누가 장착할지
+  선택 - 원작 `choosewhom`), `onlyUnarmed`(무기 없는 대원만 - 원작 맵 6 기본 무장)
+* `peek` 스텝: 원작 `scroll(FALSE)` 연출. 파티는 그대로 두고 **시야만** 옮겨 다른
+  장소를 보여준 뒤 잠시 뒤 자동으로 돌아온다(원작의 `PressAnyKey` 대체).
+* `setTileArea` 스텝: `xMin`/`xMax`/`yMin`/`yMax` 영역을 한 타일로 바꾼다
+  (원작 `for j := .. do map[i,j] := v`). `atPlayerX: true`면 x를 **플레이어가 선 열**로
+  삼고, `ifZero: v`면 현재 타일이 0일 때만 바꾼다.
+* `setTileAtPlayer` 스텝: 플레이어가 밟고 있는 칸을 바꾼다(`map[x,y] := v`).
+* `nudge` 스텝: `{"dx": 0, "dy": 1}` 로 플레이어를 한 칸 민다(원작 `inc(y)`/`dec(y)`).
+* `randomSteps` 스텝: 여러 스텝 목록 중 **하나를 무작위로 골라 실행**한다
+  (원작 퀴즈 미로처럼 문항과 효과가 함께 정해져야 하는 경우).
+* `teleport` 의 `keepX`/`keepY`: 한 축만 바꾸고 나머지는 그대로 둔다(원작 `y := 80`).
+* `torch` 스텝: 마법의 횃불을 켠다(원작 `party.etc[1] := 1`).
+* `require.tileAtPlayerZero`: 플레이어가 밟은 타일이 0일 때만 발동(원작 `map[x,y] = 0`).
+* `randomFlag` 스텝: 이름 목록 중 하나를 무작위로 세운다
+  (원작 `party.etc[40] := (random(7)+1) shl 1` 같은 "방 번호 뽑기").
+* `battle` 스텝의 `random`: `{"pool": [59], "min": 3, "max": 5}` 로
+  `monsters` 뒤에 난수 마리를 추가 소환한다(원작 `enemynumber := random(3) + 3`).
+
+### 8.3 이미지 에셋 (`assets/images/`)
+| 파일 | 내용 |
+| :--- | :--- |
+| `chara.png` | CHARA.FNT 스프라이트 56개 (20×20, 배경 투명) |
+| `town.png` / `ground.png` / `den.png` / `keep.png` | 타일 스프라이트 56개 (배경 불투명) |
+| `manifest.json` | 타일 크기와 폰트별 파일/개수 |
+
+* 렌더링 우선순위: **PNG 스프라이트 시트 → FNT 디코더 → 벡터 도형**.
+* 이미지 교체만으로 그래픽을 바꿀 수 있다(도트 크기 20×20 유지 시 코드 수정 불필요).
+
+### 8.4 데이터/이미지 재생성 도구
+```sh
+# 코드에 내장된 원작 테이블 → JSON
+flutter test test/tools/export_data_test.dart --dart-define=EXPORT_DATA=true
+
+# 원작 .FNT → PNG 스프라이트 시트
+flutter test test/tools/export_images_test.dart --dart-define=EXPORT_IMAGES=true
+```
+* 원작 소스 감사: `python3 tool/audit_lorespec.py repo_source/LORE_1993_src/LORESPEC.PAS`
+* 원작 한글 문자열 디코딩: `python3 tool/decode_johab.py <PAS파일> <시작Proc> [끝Proc]`

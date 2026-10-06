@@ -1,0 +1,222 @@
+{
+  "version": 1,
+  "source": "LORESUB.PAS Load (맵/파일 대응표) + LOREENT.PAS",
+  "maps": [
+    {
+      "mapId": 1,
+      "fileName": "GROUND1",
+      "title": "GROUND 1 (아대륙 필드)",
+      "category": "ground",
+      "bgmTrack": "ground",
+      "fontName": "GROUND"
+    },
+    {
+      "mapId": 2,
+      "fileName": "GROUND2",
+      "title": "GROUND 2 (본대륙 필드)",
+      "category": "ground",
+      "bgmTrack": "ground",
+      "fontName": "GROUND"
+    },
+    {
+      "mapId": 3,
+      "fileName": "WATER",
+      "title": "WATER FIELD (해양 필드)",
+      "category": "ground",
+      "bgmTrack": "ground",
+      "fontName": "GROUND"
+    },
+    {
+      "mapId": 4,
+      "fileName": "SWAMP",
+      "title": "SWAMP FIELD (늪지 필드)",
+      "category": "ground",
+      "bgmTrack": "ground",
+      "fontName": "GROUND"
+    },
+    {
+      "mapId": 5,
+      "fileName": "LAVA",
+      "title": "LAVA FIELD (용암 필드)",
+      "category": "ground",
+      "bgmTrack": "ground",
+      "fontName": "GROUND"
+    },
+    {
+      "mapId": 6,
+      "fileName": "TOWN1",
+      "title": "CASTLE LORE (로어 성내 마을)",
+      "category": "town",
+      "bgmTrack": "town",
+      "fontName": "TOWN"
+    },
+    {
+      "mapId": 7,
+      "fileName": "TOWN2",
+      "title": "LASTDITCH (마지막 보루 마을)",
+      "category": "town",
+      "bgmTrack": "town",
+      "fontName": "TOWN"
+    },
+    {
+      "mapId": 8,
+      "fileName": "TOWN3",
+      "title": "VALIANT PEOPLES (용사의 마을)",
+      "category": "town",
+      "bgmTrack": "town",
+      "fontName": "TOWN"
+    },
+    {
+      "mapId": 9,
+      "fileName": "TOWN4",
+      "title": "GAIA TERRA (대지의 마을)",
+      "category": "town",
+      "bgmTrack": "town",
+      "fontName": "TOWN"
+    },
+    {
+      "mapId": 10,
+      "fileName": "TOWN5",
+      "title": "WATER TOWN (수중 마을)",
+      "category": "town",
+      "bgmTrack": "town",
+      "fontName": "TOWN"
+    },
+    {
+      "mapId": 11,
+      "fileName": "T_DEN1",
+      "title": "T_DEN 1 (시련의 동굴 1)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 12,
+      "fileName": "T_DEN2",
+      "title": "T_DEN 2 (수수께끼의 동굴 2)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 13,
+      "fileName": "DEN4",
+      "title": "DEN 4",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 14,
+      "fileName": "DEN1",
+      "title": "MENACE (위협의 동굴)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 15,
+      "fileName": "DEN2",
+      "title": "QUAKE (지진의 동굴)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 16,
+      "fileName": "DEN3",
+      "title": "WIVERN (와이번의 동굴)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 17,
+      "fileName": "DEN4",
+      "title": "NOTICE (경고의 동굴)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 18,
+      "fileName": "DEN5",
+      "title": "LOCKUP (감옥 동굴)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 19,
+      "fileName": "DEN6",
+      "title": "DEN 6 (심연의 동굴)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 20,
+      "fileName": "DEN7",
+      "title": "DEN 7 (봉인의 동굴)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 21,
+      "fileName": "KEEP1",
+      "title": "SWAMP KEEP (늪의 요새)",
+      "category": "keep",
+      "bgmTrack": "keep",
+      "fontName": "KEEP"
+    },
+    {
+      "mapId": 22,
+      "fileName": "KEEP2",
+      "title": "KEEP 2 (암흑의 성채)",
+      "category": "keep",
+      "bgmTrack": "keep",
+      "fontName": "KEEP"
+    },
+    {
+      "mapId": 23,
+      "fileName": "KEEP3",
+      "title": "DUNGEON OF EVIL (악의 요새)",
+      "category": "keep",
+      "bgmTrack": "keep",
+      "fontName": "KEEP"
+    },
+    {
+      "mapId": 24,
+      "fileName": "K_DEN1",
+      "title": "LAST SHELTER (최후의 피난처)",
+      "category": "town",
+      "bgmTrack": "town",
+      "fontName": "TOWN"
+    },
+    {
+      "mapId": 25,
+      "fileName": "K_DEN2",
+      "title": "K_DEN 2 (악의 심연)",
+      "category": "den",
+      "bgmTrack": "den",
+      "fontName": "DEN"
+    },
+    {
+      "mapId": 26,
+      "fileName": "K_DEN2",
+      "title": "CHAMBER OF NECROMANCER (결전의 방)",
+      "category": "town",
+      "bgmTrack": "town",
+      "fontName": "TOWN"
+    },
+    {
+      "mapId": 27,
+      "fileName": "PYRAMID1",
+      "title": "ANOTHER LORE (또 다른 지식의 성전 피라미드)",
+      "category": "town",
+      "bgmTrack": "town",
+      "fontName": "TOWN"
+    }
+  ]
+}

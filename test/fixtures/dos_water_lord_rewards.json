@@ -1,0 +1,116 @@
+{
+  "source": "Unmodified original LORE.EXE, synthetic Water Field audience at (25,18); Up, acknowledge PressAnyKey, GameOption Save slot1.",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "cases": [
+    {
+      "scenario": "hidra",
+      "initial": {
+        "etc15": 2,
+        "party": [
+          {
+            "name": "Hero",
+            "experience": 2147483548,
+            "dead": 0
+          },
+          {
+            "name": "Mate",
+            "experience": 1000,
+            "dead": 5
+          },
+          {
+            "name": "",
+            "experience": 1234,
+            "dead": 0
+          },
+          {
+            "name": "",
+            "experience": 0,
+            "dead": 0
+          },
+          {
+            "name": "",
+            "experience": 0,
+            "dead": 0
+          },
+          {
+            "name": "",
+            "experience": 0,
+            "dead": 0
+          }
+        ]
+      },
+      "observed": {
+        "etc15": 3,
+        "experience": [
+          -2147333748,
+          151000,
+          1234,
+          0,
+          0,
+          0
+        ]
+      },
+      "outputSha256": {
+        "PARTY1.DAT": "a59b03147a0410eac234de77404b66b075122053bb7705ad0f1a0a3945172a5c",
+        "PLAYER1.DAT": "dfc123988617f4e9d563bb7220d8d13593e4941e15535b76b8a1446aad1cb553",
+        "SAVE1.MAP": "c5ae33472824e51ae1bcca4f5638afc7116211b925e85eac9f3b9df4a96111e9"
+      },
+      "capture": "docs/audits/dos_reference/water_lord_hidra.png"
+    },
+    {
+      "scenario": "dragon",
+      "initial": {
+        "etc15": 4,
+        "party": [
+          {
+            "name": "Hero",
+            "experience": 2147483548,
+            "dead": 0
+          },
+          {
+            "name": "Mate",
+            "experience": 1000,
+            "dead": 5
+          },
+          {
+            "name": "",
+            "experience": 1234,
+            "dead": 0
+          },
+          {
+            "name": "",
+            "experience": 0,
+            "dead": 0
+          },
+          {
+            "name": "",
+            "experience": 0,
+            "dead": 0
+          },
+          {
+            "name": "",
+            "experience": 0,
+            "dead": 0
+          }
+        ]
+      },
+      "observed": {
+        "etc15": 5,
+        "experience": [
+          -2147183748,
+          301000,
+          1234,
+          0,
+          0,
+          0
+        ]
+      },
+      "outputSha256": {
+        "PARTY1.DAT": "5eef797b5311e688babccbe7495abb75aa22d5376e5c666651b99a976ef3b432",
+        "PLAYER1.DAT": "4216c7f72e958518c30ef3bc5d32a9777c6a827fcccc07be965d707b80ca173d",
+        "SAVE1.MAP": "c5ae33472824e51ae1bcca4f5638afc7116211b925e85eac9f3b9df4a96111e9"
+      },
+      "capture": "docs/audits/dos_reference/water_lord_dragon.png"
+    }
+  ]
+}

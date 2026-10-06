@@ -1,0 +1,18 @@
+{
+  "map": 27,
+  "source": "LORESPEC.PAS",
+  "rules": [
+    {"kind": "exit", "line": 2202, "args": [20, 8, 1]},
+    {"kind": "bounce", "line": 2210, "args": [25]}
+  ],
+  "cases": [
+    {"start": [14, 5], "sourceMap": 27, "sourceEnd": [14, 6], "safeEnd": [14, 6], "writes": []},
+    {"start": [15, 5], "sourceMap": 27, "sourceEnd": [15, 6], "safeEnd": [15, 6], "writes": []},
+    {"start": [16, 5], "sourceMap": 27, "sourceEnd": [16, 6], "safeEnd": [16, 6], "writes": []},
+    {"start": [17, 5], "sourceMap": 27, "sourceEnd": [17, 6], "safeEnd": [17, 6], "writes": []},
+    {"start": [14, 46], "sourceMap": 27, "sourceEnd": [14, 45], "safeEnd": [14, 45], "writes": []},
+    {"start": [15, 46], "sourceMap": 27, "sourceEnd": [15, 45], "safeEnd": [15, 45], "writes": []},
+    {"start": [16, 46], "sourceMap": 27, "sourceEnd": [16, 45], "safeEnd": [16, 45], "writes": []},
+    {"start": [17, 46], "sourceMap": 27, "sourceEnd": [17, 45], "safeEnd": [17, 45], "writes": []}
+  ]
+}

@@ -1,0 +1,26 @@
+// 클라우드 프록시에서 Maven Central이 429를 돌려줄 때 공식 미러를 먼저 사용한다.
+def mirror = System.getenv('COMMUNITY_MAVEN_MIRROR') ?:
+    'https://maven-central.storage-download.googleapis.com/maven2/'
+def androidRoot = System.getenv('COMMUNITY_ANDROID_ROOT')
+
+gradle.beforeSettings { settings ->
+    settings.pluginManagement.repositories.google()
+    settings.pluginManagement.repositories.maven { url = uri(mirror) }
+    settings.pluginManagement.repositories.gradlePluginPortal()
+    settings.dependencyResolutionManagement.repositories.maven { url = uri(mirror) }
+}
+
+gradle.beforeProject { project ->
+    project.buildscript.repositories.maven { url = uri(mirror) }
+    if (androidRoot && project.rootProject.projectDir.canonicalFile == new File(androidRoot).canonicalFile) {
+        project.repositories.maven { url = uri(mirror) }
+        project.afterEvaluate {
+            // 앱 프로젝트의 mavenCentral()을 남겨 두면 없는 Flutter 아티팩트를
+            // 조회하다가 429가 나고, 뒤에 등록된 Flutter 저장소까지 가지 못한다.
+            project.repositories.findAll { repository ->
+                repository.hasProperty('url') &&
+                    repository.url.toString() == 'https://repo.maven.apache.org/maven2/'
+            }.each { repository -> project.repositories.remove(repository) }
+        }
+    }
+}

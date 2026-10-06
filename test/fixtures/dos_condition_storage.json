@@ -1,0 +1,964 @@
+{
+  "scope": "Unmodified native instructions, synthetic frames; no whole-game replay",
+  "exeSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "foedataSha256": "dc30cb5170a293e34a88d4018bdc67d3411b24b4c3bc31bb800f6970d80e9480",
+  "fragments": [
+    {
+      "name": "condition",
+      "start": 175512,
+      "end": 175591,
+      "sha256": "9cbba00883f7aceaabd4e0bf818e83c37a3a1ddeee13171d9b210b1c8b9904ca"
+    },
+    {
+      "name": "swamp-poison",
+      "start": 31262,
+      "end": 31376,
+      "sha256": "90d25d92312620f00616b49ce5efbd75abb68ea077196e4b09c56270b35f393a"
+    },
+    {
+      "name": "move-poison",
+      "start": 32521,
+      "end": 32635,
+      "sha256": "90d25d92312620f00616b49ce5efbd75abb68ea077196e4b09c56270b35f393a"
+    },
+    {
+      "name": "lava-unconscious",
+      "start": 32261,
+      "end": 32396,
+      "sha256": "066307ea061ee9686c94ced19a4a7bbf85c01dc14e9726fd722f3d324d563811"
+    },
+    {
+      "name": "revival-cap",
+      "start": 155569,
+      "end": 155648,
+      "sha256": "f1141506618047f1d694dc55cf0e12791686976a6e83e4c092ece1899409c275"
+    },
+    {
+      "name": "attack-hp",
+      "start": 135275,
+      "end": 135293,
+      "sha256": "81f37711a492cc059d20a7bf2487eb7f599a597b67a7d7ccb8d4349c4c772dc3"
+    },
+    {
+      "name": "cast-hp",
+      "start": 136464,
+      "end": 136482,
+      "sha256": "81f37711a492cc059d20a7bf2487eb7f599a597b67a7d7ccb8d4349c4c772dc3"
+    },
+    {
+      "name": "enemy-poison",
+      "start": 152636,
+      "end": 152661,
+      "sha256": "4391ffbc79c8b082e832245be8ce4da96cbe40660671e485a4947c3e65714d5e"
+    },
+    {
+      "name": "xp-store",
+      "start": 133322,
+      "end": 133350,
+      "sha256": "791a755225fc4cd7117050a2561a1e8a8da22c158ec295add6f5efe080a84d1a"
+    },
+    {
+      "name": "hospital-gold",
+      "start": 189925,
+      "end": 189951,
+      "sha256": "ea39ae14f79678c9e1b386180354d46b3555efcdc300c44169c08bd5fc6e4017"
+    },
+    {
+      "name": "party-luck",
+      "start": 153517,
+      "end": 153614,
+      "sha256": "b39b872f6f53ba147902473eed54824b4c70426f8b6f32fc3fa8798acc6e2ff9"
+    },
+    {
+      "name": "party-agility",
+      "start": 153742,
+      "end": 153839,
+      "sha256": "4638627c31a313ffbbc63dae9a27a27b0d8adb1e335579a8a4656f9c6377f431"
+    },
+    {
+      "name": "enemy-average",
+      "start": 153344,
+      "end": 153365,
+      "sha256": "1b3d6b5010b9d7d431ea8966bd1f7993c2d654bf9e47f209d3fd5910f97f123e"
+    },
+    {
+      "name": "joinenemy-stats",
+      "start": 182414,
+      "end": 182695,
+      "sha256": "e5c8b76279645c57e9e80a59235d2936ccbcf50fa00d6e2a3962dc9b479da5c7"
+    },
+    {
+      "name": "sphinx-fields",
+      "start": 104065,
+      "end": 104088,
+      "sha256": "73ead6c40d88435284fbea381bf951144883c0f4419ddc39b9903d30e40fa597"
+    },
+    {
+      "name": "hidra-fields",
+      "start": 117801,
+      "end": 117826,
+      "sha256": "cde2715d0f43c9bd4b4118a73e0680b4d2f32178ceedaeda53168d3be7839751"
+    },
+    {
+      "name": "long-divisor-check",
+      "start": 223853,
+      "end": 223860,
+      "sha256": "d262518de0ef69bb63e9072ec53181536c38f17314a7053913dca46539088fea"
+    },
+    {
+      "name": "long-divide-zero",
+      "start": 223956,
+      "end": 223963,
+      "sha256": "c3e06da7942a30b2a550b6c85904f7b6e824271ae9e216dfb61421c8f26d3f77"
+    }
+  ],
+  "conditions": [
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 10,
+      "unconscious": 0,
+      "dead": 0,
+      "after": {
+        "hp": 10,
+        "unconscious": 0,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 0,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": 1,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 101,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": 101,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "hp": 10,
+      "unconscious": 0,
+      "dead": 0,
+      "after": {
+        "hp": 10,
+        "unconscious": 0,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": 1,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 200,
+      "level": 200,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": 1,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 128,
+      "hp": 0,
+      "unconscious": 32767,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": 32767,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 100,
+      "after": {
+        "hp": 0,
+        "unconscious": 1,
+        "dead": 100
+      }
+    }
+  ],
+  "poisons": [
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 10,
+      "unconscious": 0,
+      "dead": 0,
+      "after": {
+        "hp": 9,
+        "unconscious": 0,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 0,
+      "dead": 0,
+      "after": {
+        "hp": -1,
+        "unconscious": 1,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 101,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": 102,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "hp": 10,
+      "unconscious": 0,
+      "dead": 0,
+      "after": {
+        "hp": 9,
+        "unconscious": 0,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": 2,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 200,
+      "level": 200,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": 2,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 128,
+      "hp": 0,
+      "unconscious": 32767,
+      "dead": 0,
+      "after": {
+        "hp": 0,
+        "unconscious": -32768,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 100,
+      "after": {
+        "hp": 0,
+        "unconscious": 2,
+        "dead": 100
+      }
+    }
+  ],
+  "lava": [
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 101,
+      "dead": 0,
+      "damage": 1,
+      "after": {
+        "hp": 0,
+        "unconscious": 102,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 101,
+      "dead": 0,
+      "damage": 70,
+      "after": {
+        "hp": 0,
+        "unconscious": 171,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "hp": 0,
+      "unconscious": 101,
+      "dead": 0,
+      "damage": -400,
+      "after": {
+        "hp": 0,
+        "unconscious": -299,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "damage": 1,
+      "after": {
+        "hp": 0,
+        "unconscious": 2,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "damage": 70,
+      "after": {
+        "hp": 0,
+        "unconscious": 71,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "damage": -400,
+      "after": {
+        "hp": 0,
+        "unconscious": -399,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 200,
+      "level": 200,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "damage": 1,
+      "after": {
+        "hp": 0,
+        "unconscious": 2,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 200,
+      "level": 200,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "damage": 70,
+      "after": {
+        "hp": 0,
+        "unconscious": 71,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 200,
+      "level": 200,
+      "hp": 0,
+      "unconscious": 1,
+      "dead": 0,
+      "damage": -400,
+      "after": {
+        "hp": 0,
+        "unconscious": -399,
+        "dead": 1
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 128,
+      "hp": 0,
+      "unconscious": 32767,
+      "dead": 0,
+      "damage": 1,
+      "after": {
+        "hp": 0,
+        "unconscious": -32768,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 128,
+      "hp": 0,
+      "unconscious": 32767,
+      "dead": 0,
+      "damage": 70,
+      "after": {
+        "hp": 0,
+        "unconscious": -32699,
+        "dead": 0
+      }
+    },
+    {
+      "endurance": 255,
+      "level": 128,
+      "hp": 0,
+      "unconscious": 32767,
+      "dead": 0,
+      "damage": -400,
+      "after": {
+        "hp": 0,
+        "unconscious": 32367,
+        "dead": 0
+      }
+    }
+  ],
+  "revivals": [
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 0,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 1,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 30000,
+      "afterUnconscious": 100
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 0,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 1,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 30000,
+      "afterUnconscious": 100
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 0,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 1,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 30000,
+      "afterUnconscious": 100
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "unconscious": 0,
+      "afterUnconscious": -511
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "unconscious": 1,
+      "afterUnconscious": -511
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "unconscious": 30000,
+      "afterUnconscious": -511
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "unconscious": 0,
+      "afterUnconscious": -511
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "unconscious": 1,
+      "afterUnconscious": -511
+    },
+    {
+      "endurance": 255,
+      "level": 255,
+      "unconscious": 30000,
+      "afterUnconscious": -511
+    },
+    {
+      "endurance": 200,
+      "level": 200,
+      "unconscious": 0,
+      "afterUnconscious": -25536
+    },
+    {
+      "endurance": 200,
+      "level": 200,
+      "unconscious": 1,
+      "afterUnconscious": -25536
+    },
+    {
+      "endurance": 200,
+      "level": 200,
+      "unconscious": 30000,
+      "afterUnconscious": -25536
+    },
+    {
+      "endurance": 255,
+      "level": 128,
+      "unconscious": 0,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 255,
+      "level": 128,
+      "unconscious": 1,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 255,
+      "level": 128,
+      "unconscious": 30000,
+      "afterUnconscious": 30000
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 0,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 1,
+      "afterUnconscious": 1
+    },
+    {
+      "endurance": 20,
+      "level": 5,
+      "unconscious": 30000,
+      "afterUnconscious": 100
+    }
+  ],
+  "hpStores": [
+    {
+      "routine": "attack",
+      "hp": 100,
+      "damage": 30,
+      "afterHp": 70
+    },
+    {
+      "routine": "attack",
+      "hp": -32760,
+      "damage": 1000,
+      "afterHp": 31776
+    },
+    {
+      "routine": "attack",
+      "hp": -32641,
+      "damage": 360,
+      "afterHp": 32535
+    },
+    {
+      "routine": "attack",
+      "hp": 10,
+      "damage": 360,
+      "afterHp": -350
+    },
+    {
+      "routine": "cast",
+      "hp": 100,
+      "damage": 30,
+      "afterHp": 70
+    },
+    {
+      "routine": "cast",
+      "hp": -32760,
+      "damage": 1000,
+      "afterHp": 31776
+    },
+    {
+      "routine": "cast",
+      "hp": -32641,
+      "damage": 360,
+      "afterHp": 32535
+    },
+    {
+      "routine": "cast",
+      "hp": 10,
+      "damage": 360,
+      "afterHp": -350
+    }
+  ],
+  "enemyPoison": [
+    {
+      "hp": 100,
+      "afterHp": 99,
+      "afterUnconscious": false
+    },
+    {
+      "hp": 1,
+      "afterHp": 0,
+      "afterUnconscious": true
+    },
+    {
+      "hp": 0,
+      "afterHp": -1,
+      "afterUnconscious": true
+    },
+    {
+      "hp": -32768,
+      "afterHp": 32767,
+      "afterUnconscious": false
+    }
+  ],
+  "gold": [
+    {
+      "before": 1000,
+      "cost": 200,
+      "after": 800
+    },
+    {
+      "before": 2147483647,
+      "cost": -32768,
+      "after": -2147450881
+    },
+    {
+      "before": -2147483648,
+      "cost": 1,
+      "after": 2147483647
+    }
+  ],
+  "experience": [
+    {
+      "before": 1200,
+      "amount": 1000,
+      "after": 2200
+    },
+    {
+      "before": 2147483647,
+      "amount": 1000,
+      "after": -2147482649
+    },
+    {
+      "before": -2147483648,
+      "amount": -1,
+      "after": 2147483647
+    }
+  ],
+  "averages": [
+    {
+      "kind": "luck",
+      "values": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        255
+      ],
+      "average": 10
+    },
+    {
+      "kind": "luck",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        255
+      ],
+      "average": 3
+    },
+    {
+      "kind": "luck",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "average": 0
+    },
+    {
+      "kind": "agility",
+      "values": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        255
+      ],
+      "average": 10
+    },
+    {
+      "kind": "agility",
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        255
+      ],
+      "average": 3
+    },
+    {
+      "kind": "agility",
+      "values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "average": 0
+    }
+  ],
+  "divisionFaults": [
+    "party",
+    "enemy"
+  ],
+  "divisionErrorCode": 200,
+  "bosses": [
+    {
+      "name": "Sphinx",
+      "template": 35,
+      "before": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        20,
+        2,
+        80,
+        20,
+        20,
+        20,
+        0,
+        3,
+        5,
+        0,
+        9,
+        18,
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        20,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        20,
+        2,
+        80,
+        20,
+        20,
+        20,
+        0,
+        0,
+        5,
+        0,
+        4,
+        18,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Hidra",
+      "template": 49,
+      "before": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15,
+        10,
+        20,
+        40,
+        18,
+        18,
+        12,
+        8,
+        1,
+        3,
+        0,
+        13,
+        4,
+        1,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        34,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15,
+        10,
+        20,
+        40,
+        18,
+        18,
+        12,
+        8,
+        1,
+        3,
+        0,
+        8,
+        4,
+        1,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

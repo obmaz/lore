@@ -1,0 +1,307 @@
+{
+  "source": "LORESPEC.PAS",
+  "scope": "map25 y43; presentation delays adapted; portal excluded",
+  "torchSlot": 1,
+  "torchValue": 1,
+  "battleMonsters": [
+    66,
+    66,
+    66,
+    66,
+    71
+  ],
+  "enemyFirst": true,
+  "introActors": [
+    71
+  ],
+  "introLines": [
+    " 금속으로된 어떤 적이 나타났다.",
+    " 여기까지 잘도왔구나. 나의 임무는 너희 같은",
+    "쓰레기들 때문에 Necromancer 님이 수고하시지",
+    "않도록 미리 처단해 버리는 것이다."
+  ],
+  "victoryLines": [
+    " 당신이 적을 물리치자 조금후에 이상하리만큼",
+    "편안한 기운이 일행을 감쌌다."
+  ],
+  "guideActors": [
+    68,
+    67
+  ],
+  "guideLines": [
+    " 매우 수고하시는군요. ",
+    " 당신이 Necromancer에게 가기전에 한 가지 일",
+    "러 두고자 하오.",
+    " 이곳에는 비밀스런 문이 두군데 있소. 지금은",
+    "보이지가 않지만 양쪽의 벽을 살피다 보면  숨",
+    "겨진 문 안에 레버가 각각 하나씩 있소.  그걸",
+    "모두 작동시키면 용암의 중앙에서 Necromancer",
+    "의 방으로 통하는 입구가 보일 것이오. 여기까",
+    "지만 내가 알려줄 수가 있는 부분이오. 마지막",
+    "으로 당신의 건투를 빌겠소."
+  ],
+  "greetingSlot": 1,
+  "corridorWrites": [
+    [
+      24,
+      43,
+      41
+    ],
+    [
+      25,
+      43,
+      41
+    ],
+    [
+      26,
+      43,
+      41
+    ],
+    [
+      27,
+      43,
+      41
+    ]
+  ],
+  "promotionSlots": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "promotionClass": 10,
+  "randomCalls": 0,
+  "sourceSha256": "87ff0b99c581fba18840032b148c223433f6bbff618ec6d16dee4cb4e48b3d28",
+  "cases": [
+    {
+      "torch": 0,
+      "battleResult": 0,
+      "afterTorch": 1,
+      "nudge": [
+        0,
+        0
+      ],
+      "writes": [
+        [
+          24,
+          43,
+          41
+        ],
+        [
+          25,
+          43,
+          41
+        ],
+        [
+          26,
+          43,
+          41
+        ],
+        [
+          27,
+          43,
+          41
+        ]
+      ],
+      "guideActors": [
+        68,
+        67
+      ],
+      "promotionClass": 10,
+      "exit": false
+    },
+    {
+      "torch": 0,
+      "battleResult": 1,
+      "afterTorch": 1,
+      "nudge": [
+        0,
+        1
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    },
+    {
+      "torch": 0,
+      "battleResult": 254,
+      "afterTorch": 1,
+      "nudge": [
+        0,
+        1
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    },
+    {
+      "torch": 0,
+      "battleResult": 255,
+      "afterTorch": 1,
+      "nudge": [
+        0,
+        0
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    },
+    {
+      "torch": 1,
+      "battleResult": 0,
+      "afterTorch": 1,
+      "nudge": [
+        0,
+        0
+      ],
+      "writes": [
+        [
+          24,
+          43,
+          41
+        ],
+        [
+          25,
+          43,
+          41
+        ],
+        [
+          26,
+          43,
+          41
+        ],
+        [
+          27,
+          43,
+          41
+        ]
+      ],
+      "guideActors": [
+        68,
+        67
+      ],
+      "promotionClass": 10,
+      "exit": false
+    },
+    {
+      "torch": 1,
+      "battleResult": 1,
+      "afterTorch": 1,
+      "nudge": [
+        0,
+        1
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    },
+    {
+      "torch": 1,
+      "battleResult": 254,
+      "afterTorch": 1,
+      "nudge": [
+        0,
+        1
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    },
+    {
+      "torch": 1,
+      "battleResult": 255,
+      "afterTorch": 1,
+      "nudge": [
+        0,
+        0
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    },
+    {
+      "torch": 255,
+      "battleResult": 0,
+      "afterTorch": 255,
+      "nudge": [
+        0,
+        0
+      ],
+      "writes": [
+        [
+          24,
+          43,
+          41
+        ],
+        [
+          25,
+          43,
+          41
+        ],
+        [
+          26,
+          43,
+          41
+        ],
+        [
+          27,
+          43,
+          41
+        ]
+      ],
+      "guideActors": [
+        68,
+        67
+      ],
+      "promotionClass": 10,
+      "exit": false
+    },
+    {
+      "torch": 255,
+      "battleResult": 1,
+      "afterTorch": 255,
+      "nudge": [
+        0,
+        1
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    },
+    {
+      "torch": 255,
+      "battleResult": 254,
+      "afterTorch": 255,
+      "nudge": [
+        0,
+        1
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    },
+    {
+      "torch": 255,
+      "battleResult": 255,
+      "afterTorch": 255,
+      "nudge": [
+        0,
+        0
+      ],
+      "writes": [],
+      "guideActors": [],
+      "promotionClass": null,
+      "exit": true
+    }
+  ]
+}

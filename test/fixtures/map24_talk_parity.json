@@ -1,0 +1,18 @@
+{
+  "source": "LORETALK.PAS",
+  "line": 721,
+  "map": 24,
+  "talkAt": [
+    33,
+    10
+  ],
+  "sourceFlag": [
+    43,
+    4
+  ],
+  "tile": [
+    33,
+    10,
+    47
+  ]
+}

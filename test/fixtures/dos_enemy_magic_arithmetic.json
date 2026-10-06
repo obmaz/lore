@@ -1,0 +1,1501 @@
+{
+  "source": "Unmodified LORE.EXE enemy magic variance/defence/stores, complete enemycure state branches, castattack threshold/recovery arithmetic and both mode5/6 aggregate loops and eligibility branches executed by Unicorn x86-16. Synthetic records/random results; original executable unchanged.",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragments": [
+    {
+      "name": "variance",
+      "startFileOffset": 143359,
+      "endFileOffset": 143376,
+      "codeHex": "31d28bc88bda8b4608992bc11bd3894608"
+    },
+    {
+      "name": "defence",
+      "startFileOffset": 143395,
+      "endFileOffset": 143448,
+      "codeHex": "408bc86b7e06378a85286530e48bd06b7e06378a852b6530e4f7e2f7e131d2b90a00f7f131d28bc88bda8b4608992bc11bd3894608"
+    },
+    {
+      "name": "magic-stores",
+      "startFileOffset": 143505,
+      "endFileOffset": 143606,
+      "codeHex": "6b7e063783bd2065007e136b7e06378b8520650346086b7e0637898520656b7e063783bd1e65007e1e6b7e063783bd20650075136b7e06378b851e650346086b7e063789851e656b7e063783bd2265007e136b7e06378b8522652b46086b7e063789852265"
+    },
+    {
+      "name": "cure",
+      "startFileOffset": 144632,
+      "endFileOffset": 144783,
+      "codeHex": "6b7e082380bd376f00740c6b7e0823c685376f00e980006b7e082380bd366f0074206b7e0823c685366f006b7e082383bd336f007f0a6b7e0823c785336f0100eb556b7e08238b85336f0346066b7e08238985336f6b7e08238a85326f30e48bd06b7e08238a85296f30e4f7e26b7e08233b85336f7d206b7e08238a85326f30e48bd06b7e08238a85296f30e4f7e26b7e08238985336f"
+    },
+    {
+      "name": "threshold4",
+      "startFileOffset": 145380,
+      "endFileOffset": 145408,
+      "codeHex": "c47ef6268a451d30e48bd0c47ef6268a451430e4f7e299b90300f7f1"
+    },
+    {
+      "name": "threshold5",
+      "startFileOffset": 145710,
+      "endFileOffset": 145738,
+      "codeHex": "c47ef6268a451d30e48bd0c47ef6268a451430e4f7e299b90300f7f1"
+    },
+    {
+      "name": "threshold6",
+      "startFileOffset": 146202,
+      "endFileOffset": 146230,
+      "codeHex": "c47ef6268a451d30e48bd0c47ef6268a451430e4f7e299b90300f7f1"
+    },
+    {
+      "name": "self-heal",
+      "startFileOffset": 145432,
+      "endFileOffset": 145457,
+      "codeHex": "c47ef6268a451330e48bd0c47ef6268a451d30e4f7e2c1e802"
+    },
+    {
+      "name": "group-heal5",
+      "startFileOffset": 146030,
+      "endFileOffset": 146058,
+      "codeHex": "c47ef6268a451330e48bd0c47ef6268a451d30e4f7e299b90600f7f1"
+    },
+    {
+      "name": "group-heal6",
+      "startFileOffset": 146791,
+      "endFileOffset": 146819,
+      "codeHex": "c47ef6268a451330e48bd0c47ef6268a451d30e4f7e299b90600f7f1"
+    },
+    {
+      "name": "aggregate5",
+      "startFileOffset": 145847,
+      "endFileOffset": 145977,
+      "codeHex": "31c08946fc31c08946faa0376f30e48946f4b801003b46f47f1e8946feeb03ff46fe8b46fc6b7efe230385336f8946fc8b46fe3b46f475e7a0376f30e48946f4b801003b46f47f2e8946feeb03ff46fe6b7efe238a85326f30e48bd06b7efe238a85296f30e4f7e20346fa8946fa8b46fe3b46f475d78b46fa99b90300f7f98946fa"
+    },
+    {
+      "name": "decision5",
+      "startFileOffset": 145977,
+      "endFileOffset": 145992,
+      "codeHex": "803e376f0276598b46fc3b46fa7d51"
+    },
+    {
+      "name": "aggregate6",
+      "startFileOffset": 146608,
+      "endFileOffset": 146738,
+      "codeHex": "31c08946fc31c08946faa0376f30e48946f4b801003b46f47f1e8946feeb03ff46fe8b46fc6b7efe230385336f8946fc8b46fe3b46f475e7a0376f30e48946f4b801003b46f47f2e8946feeb03ff46fe6b7efe238a85326f30e48bd06b7efe238a85296f30e4f7e20346fa8946fa8b46fe3b46f475d78b46fa99b90300f7f98946fa"
+    },
+    {
+      "name": "decision6",
+      "startFileOffset": 146738,
+      "endFileOffset": 146753,
+      "codeHex": "803e376f02765a8b46fc3b46fa7d52"
+    }
+  ],
+  "magic": [
+    {
+      "scenario": "active-zero",
+      "power": 0,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 0,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-zero",
+      "power": 0,
+      "variance": 0,
+      "ac": 128,
+      "level": 128,
+      "defenceRoll": 3,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 0,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-small",
+      "power": 0,
+      "variance": 0,
+      "ac": 255,
+      "level": 26,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": -76,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-large",
+      "power": 0,
+      "variance": 0,
+      "ac": 255,
+      "level": 255,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": -6042,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "dead-store",
+      "power": 0,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 32760,
+      "unconscious": 0,
+      "active": false,
+      "netDamage": 0,
+      "afterHp": 0,
+      "afterDead": 32760,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "unconscious-store",
+      "power": 0,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 0,
+      "unconscious": 32760,
+      "active": false,
+      "netDamage": 0,
+      "afterHp": 0,
+      "afterDead": 0,
+      "afterUnconscious": 32760
+    },
+    {
+      "scenario": "active-zero",
+      "power": 40,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 40,
+      "afterHp": 29960,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-zero",
+      "power": 40,
+      "variance": 0,
+      "ac": 128,
+      "level": 128,
+      "defenceRoll": 3,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 40,
+      "afterHp": 29960,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-small",
+      "power": 40,
+      "variance": 0,
+      "ac": 255,
+      "level": 26,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": -36,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-large",
+      "power": 40,
+      "variance": 0,
+      "ac": 255,
+      "level": 255,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": -6002,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "dead-store",
+      "power": 40,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 32760,
+      "unconscious": 0,
+      "active": false,
+      "netDamage": 40,
+      "afterHp": 0,
+      "afterDead": -32736,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "unconscious-store",
+      "power": 40,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 0,
+      "unconscious": 32760,
+      "active": false,
+      "netDamage": 40,
+      "afterHp": 0,
+      "afterDead": 0,
+      "afterUnconscious": -32736
+    },
+    {
+      "scenario": "active-zero",
+      "power": 40,
+      "variance": 19,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 21,
+      "afterHp": 29979,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-zero",
+      "power": 40,
+      "variance": 19,
+      "ac": 128,
+      "level": 128,
+      "defenceRoll": 3,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 21,
+      "afterHp": 29979,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-small",
+      "power": 40,
+      "variance": 19,
+      "ac": 255,
+      "level": 26,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": -55,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-large",
+      "power": 40,
+      "variance": 19,
+      "ac": 255,
+      "level": 255,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": -6021,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "dead-store",
+      "power": 40,
+      "variance": 19,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 32760,
+      "unconscious": 0,
+      "active": false,
+      "netDamage": 21,
+      "afterHp": 0,
+      "afterDead": -32755,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "unconscious-store",
+      "power": 40,
+      "variance": 19,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 0,
+      "unconscious": 32760,
+      "active": false,
+      "netDamage": 21,
+      "afterHp": 0,
+      "afterDead": 0,
+      "afterUnconscious": -32755
+    },
+    {
+      "scenario": "active-zero",
+      "power": 2550,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 2550,
+      "afterHp": 27450,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-zero",
+      "power": 2550,
+      "variance": 0,
+      "ac": 128,
+      "level": 128,
+      "defenceRoll": 3,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 2550,
+      "afterHp": 27450,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-small",
+      "power": 2550,
+      "variance": 0,
+      "ac": 255,
+      "level": 26,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 2474,
+      "afterHp": 27526,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-large",
+      "power": 2550,
+      "variance": 0,
+      "ac": 255,
+      "level": 255,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": -3492,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "dead-store",
+      "power": 2550,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 32760,
+      "unconscious": 0,
+      "active": false,
+      "netDamage": 2550,
+      "afterHp": 0,
+      "afterDead": -30226,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "unconscious-store",
+      "power": 2550,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 0,
+      "unconscious": 32760,
+      "active": false,
+      "netDamage": 2550,
+      "afterHp": 0,
+      "afterDead": 0,
+      "afterUnconscious": -30226
+    },
+    {
+      "scenario": "active-zero",
+      "power": 2550,
+      "variance": 1274,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 1276,
+      "afterHp": 28724,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-zero",
+      "power": 2550,
+      "variance": 1274,
+      "ac": 128,
+      "level": 128,
+      "defenceRoll": 3,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 1276,
+      "afterHp": 28724,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-small",
+      "power": 2550,
+      "variance": 1274,
+      "ac": 255,
+      "level": 26,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 1200,
+      "afterHp": 28800,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-large",
+      "power": 2550,
+      "variance": 1274,
+      "ac": 255,
+      "level": 255,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": -4766,
+      "afterHp": 30000,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "dead-store",
+      "power": 2550,
+      "variance": 1274,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 32760,
+      "unconscious": 0,
+      "active": false,
+      "netDamage": 1276,
+      "afterHp": 0,
+      "afterDead": -31500,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "unconscious-store",
+      "power": 2550,
+      "variance": 1274,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 0,
+      "unconscious": 32760,
+      "active": false,
+      "netDamage": 1276,
+      "afterHp": 0,
+      "afterDead": 0,
+      "afterUnconscious": -31500
+    },
+    {
+      "scenario": "active-zero",
+      "power": 32767,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 32767,
+      "afterHp": -2767,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-zero",
+      "power": 32767,
+      "variance": 0,
+      "ac": 128,
+      "level": 128,
+      "defenceRoll": 3,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 32767,
+      "afterHp": -2767,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-small",
+      "power": 32767,
+      "variance": 0,
+      "ac": 255,
+      "level": 26,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 32691,
+      "afterHp": -2691,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-large",
+      "power": 32767,
+      "variance": 0,
+      "ac": 255,
+      "level": 255,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 26725,
+      "afterHp": 3275,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "dead-store",
+      "power": 32767,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 32760,
+      "unconscious": 0,
+      "active": false,
+      "netDamage": 32767,
+      "afterHp": 0,
+      "afterDead": -9,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "unconscious-store",
+      "power": 32767,
+      "variance": 0,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 0,
+      "unconscious": 32760,
+      "active": false,
+      "netDamage": 32767,
+      "afterHp": 0,
+      "afterDead": 0,
+      "afterUnconscious": -9
+    },
+    {
+      "scenario": "active-zero",
+      "power": 32767,
+      "variance": 16382,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 16385,
+      "afterHp": 13615,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-zero",
+      "power": 32767,
+      "variance": 16382,
+      "ac": 128,
+      "level": 128,
+      "defenceRoll": 3,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 16385,
+      "afterHp": 13615,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-wrap-small",
+      "power": 32767,
+      "variance": 16382,
+      "ac": 255,
+      "level": 26,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 16309,
+      "afterHp": 13691,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "active-large",
+      "power": 32767,
+      "variance": 16382,
+      "ac": 255,
+      "level": 255,
+      "defenceRoll": 9,
+      "hp": 30000,
+      "dead": 0,
+      "unconscious": 0,
+      "active": true,
+      "netDamage": 10343,
+      "afterHp": 19657,
+      "afterDead": 0,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "dead-store",
+      "power": 32767,
+      "variance": 16382,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 32760,
+      "unconscious": 0,
+      "active": false,
+      "netDamage": 16385,
+      "afterHp": 0,
+      "afterDead": -16391,
+      "afterUnconscious": 0
+    },
+    {
+      "scenario": "unconscious-store",
+      "power": 32767,
+      "variance": 16382,
+      "ac": 0,
+      "level": 1,
+      "defenceRoll": 0,
+      "hp": 0,
+      "dead": 0,
+      "unconscious": 32760,
+      "active": false,
+      "netDamage": 16385,
+      "afterHp": 0,
+      "afterDead": 0,
+      "afterUnconscious": -16391
+    }
+  ],
+  "cures": [
+    {
+      "hp": 100,
+      "plus": 20,
+      "endurance": 20,
+      "level": 20,
+      "dead": false,
+      "unconscious": false,
+      "afterHp": 120,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": 390,
+      "plus": 20,
+      "endurance": 20,
+      "level": 20,
+      "dead": false,
+      "unconscious": false,
+      "afterHp": 400,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": 32760,
+      "plus": 20,
+      "endurance": 255,
+      "level": 128,
+      "dead": false,
+      "unconscious": false,
+      "afterHp": -32756,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": 100,
+      "plus": 20,
+      "endurance": 255,
+      "level": 255,
+      "dead": false,
+      "unconscious": false,
+      "afterHp": -511,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": -10,
+      "plus": 5,
+      "endurance": 20,
+      "level": 20,
+      "dead": false,
+      "unconscious": false,
+      "afterHp": -5,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": 100,
+      "plus": -200,
+      "endurance": 20,
+      "level": 20,
+      "dead": false,
+      "unconscious": false,
+      "afterHp": -100,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": 0,
+      "plus": 20,
+      "endurance": 20,
+      "level": 20,
+      "dead": true,
+      "unconscious": false,
+      "afterHp": 0,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": -10,
+      "plus": 20,
+      "endurance": 20,
+      "level": 20,
+      "dead": false,
+      "unconscious": true,
+      "afterHp": 1,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": 100,
+      "plus": 20,
+      "endurance": 20,
+      "level": 20,
+      "dead": false,
+      "unconscious": true,
+      "afterHp": 100,
+      "afterUnconscious": false,
+      "afterDead": false
+    },
+    {
+      "hp": 100,
+      "plus": 20,
+      "endurance": 20,
+      "level": 20,
+      "dead": true,
+      "unconscious": true,
+      "afterHp": 100,
+      "afterUnconscious": true,
+      "afterDead": false
+    }
+  ],
+  "thresholds": [
+    {
+      "mode": 4,
+      "endurance": 20,
+      "level": 20,
+      "threshold": 133
+    },
+    {
+      "mode": 4,
+      "endurance": 128,
+      "level": 255,
+      "threshold": 10880
+    },
+    {
+      "mode": 4,
+      "endurance": 255,
+      "level": 255,
+      "fault": "division-overflow"
+    },
+    {
+      "mode": 4,
+      "endurance": 128,
+      "level": 128,
+      "threshold": 5461
+    },
+    {
+      "mode": 4,
+      "endurance": 255,
+      "level": 128,
+      "threshold": 10880
+    },
+    {
+      "mode": 4,
+      "endurance": 200,
+      "level": 200,
+      "fault": "division-overflow"
+    },
+    {
+      "mode": 4,
+      "endurance": 0,
+      "level": 255,
+      "threshold": 0
+    },
+    {
+      "mode": 5,
+      "endurance": 20,
+      "level": 20,
+      "threshold": 133
+    },
+    {
+      "mode": 5,
+      "endurance": 128,
+      "level": 255,
+      "threshold": 10880
+    },
+    {
+      "mode": 5,
+      "endurance": 255,
+      "level": 255,
+      "fault": "division-overflow"
+    },
+    {
+      "mode": 5,
+      "endurance": 128,
+      "level": 128,
+      "threshold": 5461
+    },
+    {
+      "mode": 5,
+      "endurance": 255,
+      "level": 128,
+      "threshold": 10880
+    },
+    {
+      "mode": 5,
+      "endurance": 200,
+      "level": 200,
+      "fault": "division-overflow"
+    },
+    {
+      "mode": 5,
+      "endurance": 0,
+      "level": 255,
+      "threshold": 0
+    },
+    {
+      "mode": 6,
+      "endurance": 20,
+      "level": 20,
+      "threshold": 133
+    },
+    {
+      "mode": 6,
+      "endurance": 128,
+      "level": 255,
+      "threshold": 10880
+    },
+    {
+      "mode": 6,
+      "endurance": 255,
+      "level": 255,
+      "fault": "division-overflow"
+    },
+    {
+      "mode": 6,
+      "endurance": 128,
+      "level": 128,
+      "threshold": 5461
+    },
+    {
+      "mode": 6,
+      "endurance": 255,
+      "level": 128,
+      "threshold": 10880
+    },
+    {
+      "mode": 6,
+      "endurance": 200,
+      "level": 200,
+      "fault": "division-overflow"
+    },
+    {
+      "mode": 6,
+      "endurance": 0,
+      "level": 255,
+      "threshold": 0
+    }
+  ],
+  "heals": [
+    {
+      "kind": "self",
+      "level": 20,
+      "mentality": 20,
+      "divisor": 4,
+      "amount": 100
+    },
+    {
+      "kind": "self",
+      "level": 255,
+      "mentality": 255,
+      "divisor": 4,
+      "amount": 16256
+    },
+    {
+      "kind": "self",
+      "level": 255,
+      "mentality": 128,
+      "divisor": 4,
+      "amount": 8160
+    },
+    {
+      "kind": "self",
+      "level": 200,
+      "mentality": 200,
+      "divisor": 4,
+      "amount": 10000
+    },
+    {
+      "kind": "group5",
+      "level": 20,
+      "mentality": 20,
+      "divisor": 6,
+      "amount": 66
+    },
+    {
+      "kind": "group5",
+      "level": 255,
+      "mentality": 255,
+      "divisor": 6,
+      "fault": "division-overflow"
+    },
+    {
+      "kind": "group5",
+      "level": 255,
+      "mentality": 128,
+      "divisor": 6,
+      "amount": 5440
+    },
+    {
+      "kind": "group5",
+      "level": 200,
+      "mentality": 200,
+      "divisor": 6,
+      "fault": "division-overflow"
+    },
+    {
+      "kind": "group6",
+      "level": 20,
+      "mentality": 20,
+      "divisor": 6,
+      "amount": 66
+    },
+    {
+      "kind": "group6",
+      "level": 255,
+      "mentality": 255,
+      "divisor": 6,
+      "fault": "division-overflow"
+    },
+    {
+      "kind": "group6",
+      "level": 255,
+      "mentality": 128,
+      "divisor": 6,
+      "amount": 5440
+    },
+    {
+      "kind": "group6",
+      "level": 200,
+      "mentality": 200,
+      "divisor": 6,
+      "fault": "division-overflow"
+    }
+  ],
+  "groups": [
+    {
+      "mode": 5,
+      "index": 0,
+      "enemies": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150
+        }
+      ],
+      "hpSum": -29536,
+      "threshold": -6845,
+      "healEligible": true,
+      "selfThreshold": 5000,
+      "healAmount": 500,
+      "afterHp": [
+        12500,
+        12500,
+        12500
+      ]
+    },
+    {
+      "mode": 5,
+      "index": 1,
+      "enemies": [
+        {
+          "hp": 100,
+          "endurance": 100,
+          "level": 200
+        },
+        {
+          "hp": 100,
+          "endurance": 100,
+          "level": 200
+        },
+        {
+          "hp": 100,
+          "endurance": 100,
+          "level": 200
+        }
+      ],
+      "hpSum": 300,
+      "threshold": -1845,
+      "healEligible": false,
+      "selfThreshold": 6666,
+      "healAmount": 666,
+      "afterHp": [
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "mode": 5,
+      "index": 2,
+      "enemies": [
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        }
+      ],
+      "hpSum": 300,
+      "threshold": 400,
+      "healEligible": true,
+      "selfThreshold": 133,
+      "healAmount": 66,
+      "afterHp": [
+        166,
+        166,
+        166
+      ]
+    },
+    {
+      "mode": 5,
+      "index": 3,
+      "enemies": [
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        }
+      ],
+      "hpSum": 200,
+      "threshold": 266,
+      "healEligible": false,
+      "selfThreshold": 133,
+      "healAmount": 66,
+      "afterHp": [
+        100,
+        100
+      ]
+    },
+    {
+      "mode": 5,
+      "index": 4,
+      "enemies": [
+        {
+          "hp": -1,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 30000,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        }
+      ],
+      "hpSum": 30099,
+      "threshold": 400,
+      "healEligible": false,
+      "selfThreshold": 133,
+      "healAmount": 66,
+      "afterHp": [
+        -1,
+        30000,
+        100
+      ]
+    },
+    {
+      "mode": 5,
+      "index": 5,
+      "enemies": [
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        }
+      ],
+      "hpSum": -2536,
+      "threshold": 1488,
+      "healEligible": true,
+      "selfThreshold": 3333,
+      "healAmount": 333,
+      "afterHp": [
+        9333,
+        9333,
+        9333,
+        9333,
+        9333,
+        9333,
+        9333
+      ]
+    },
+    {
+      "mode": 6,
+      "index": 0,
+      "enemies": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150
+        }
+      ],
+      "hpSum": -29536,
+      "threshold": -6845,
+      "healEligible": true,
+      "selfThreshold": 5000,
+      "healAmount": 500,
+      "afterHp": [
+        12500,
+        12500,
+        12500
+      ]
+    },
+    {
+      "mode": 6,
+      "index": 1,
+      "enemies": [
+        {
+          "hp": 100,
+          "endurance": 100,
+          "level": 200
+        },
+        {
+          "hp": 100,
+          "endurance": 100,
+          "level": 200
+        },
+        {
+          "hp": 100,
+          "endurance": 100,
+          "level": 200
+        }
+      ],
+      "hpSum": 300,
+      "threshold": -1845,
+      "healEligible": false,
+      "selfThreshold": 6666,
+      "healAmount": 666,
+      "afterHp": [
+        100,
+        100,
+        100
+      ]
+    },
+    {
+      "mode": 6,
+      "index": 2,
+      "enemies": [
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        }
+      ],
+      "hpSum": 300,
+      "threshold": 400,
+      "healEligible": true,
+      "selfThreshold": 133,
+      "healAmount": 66,
+      "afterHp": [
+        166,
+        166,
+        166
+      ]
+    },
+    {
+      "mode": 6,
+      "index": 3,
+      "enemies": [
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        }
+      ],
+      "hpSum": 200,
+      "threshold": 266,
+      "healEligible": false,
+      "selfThreshold": 133,
+      "healAmount": 66,
+      "afterHp": [
+        100,
+        100
+      ]
+    },
+    {
+      "mode": 6,
+      "index": 4,
+      "enemies": [
+        {
+          "hp": -1,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 30000,
+          "endurance": 20,
+          "level": 20
+        },
+        {
+          "hp": 100,
+          "endurance": 20,
+          "level": 20
+        }
+      ],
+      "hpSum": 30099,
+      "threshold": 400,
+      "healEligible": false,
+      "selfThreshold": 133,
+      "healAmount": 66,
+      "afterHp": [
+        -1,
+        30000,
+        100
+      ]
+    },
+    {
+      "mode": 6,
+      "index": 5,
+      "enemies": [
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        },
+        {
+          "hp": 9000,
+          "endurance": 100,
+          "level": 100
+        }
+      ],
+      "hpSum": -2536,
+      "threshold": 1488,
+      "healEligible": true,
+      "selfThreshold": 3333,
+      "healAmount": 333,
+      "afterHp": [
+        9333,
+        9333,
+        9333,
+        9333,
+        9333,
+        9333,
+        9333
+      ]
+    }
+  ],
+  "scope": "Instruction arithmetic, stores and specified branch decisions only. UI, source RNG seed/whole stream and complete battle/save/new-game-to-ending parity remain separate gates. power32767 is an integer parameter boundary, not a normal generated spell. Native division faults use engine StateError; DOS error-screen presentation is not reproduced."
+}

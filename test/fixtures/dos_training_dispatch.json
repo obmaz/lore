@@ -1,0 +1,468 @@
+{
+  "scope": "Unchanged Train_Center level CASE dispatch and shortfall subtraction.\nSynthetic XP, initialized previous j and gold; not a full DOS training replay.",
+  "exeSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragments": [
+    {
+      "name": "level-case",
+      "start": 186841,
+      "end": 187225,
+      "sha256": "a454c84e3ba55428798343db32e95ebd6d0c4d2f38fd617ea89fe871bae139e8"
+    },
+    {
+      "name": "shortfall",
+      "start": 187696,
+      "end": 187711,
+      "sha256": "7a5e3e438de0d790637ce40f1c54516eb9564e56b5714c97bd6747b169564961"
+    }
+  ],
+  "levels": [
+    {
+      "experience": -2147483648,
+      "previousLevel": 0,
+      "level": 1
+    },
+    {
+      "experience": -2147483648,
+      "previousLevel": 3,
+      "level": 1
+    },
+    {
+      "experience": -2147483648,
+      "previousLevel": 15,
+      "level": 1
+    },
+    {
+      "experience": -2147483648,
+      "previousLevel": 20,
+      "level": 1
+    },
+    {
+      "experience": -65537,
+      "previousLevel": 0,
+      "level": 0
+    },
+    {
+      "experience": -65537,
+      "previousLevel": 3,
+      "level": 3
+    },
+    {
+      "experience": -65537,
+      "previousLevel": 15,
+      "level": 15
+    },
+    {
+      "experience": -65537,
+      "previousLevel": 20,
+      "level": 20
+    },
+    {
+      "experience": -65536,
+      "previousLevel": 0,
+      "level": 1
+    },
+    {
+      "experience": -65536,
+      "previousLevel": 3,
+      "level": 1
+    },
+    {
+      "experience": -65536,
+      "previousLevel": 15,
+      "level": 1
+    },
+    {
+      "experience": -65536,
+      "previousLevel": 20,
+      "level": 1
+    },
+    {
+      "experience": -64036,
+      "previousLevel": 0,
+      "level": 2
+    },
+    {
+      "experience": -64036,
+      "previousLevel": 3,
+      "level": 2
+    },
+    {
+      "experience": -64036,
+      "previousLevel": 15,
+      "level": 2
+    },
+    {
+      "experience": -64036,
+      "previousLevel": 20,
+      "level": 2
+    },
+    {
+      "experience": -59536,
+      "previousLevel": 0,
+      "level": 3
+    },
+    {
+      "experience": -59536,
+      "previousLevel": 3,
+      "level": 3
+    },
+    {
+      "experience": -59536,
+      "previousLevel": 15,
+      "level": 3
+    },
+    {
+      "experience": -59536,
+      "previousLevel": 20,
+      "level": 3
+    },
+    {
+      "experience": -1,
+      "previousLevel": 0,
+      "level": 0
+    },
+    {
+      "experience": -1,
+      "previousLevel": 3,
+      "level": 3
+    },
+    {
+      "experience": -1,
+      "previousLevel": 15,
+      "level": 15
+    },
+    {
+      "experience": -1,
+      "previousLevel": 20,
+      "level": 20
+    },
+    {
+      "experience": 0,
+      "previousLevel": 0,
+      "level": 1
+    },
+    {
+      "experience": 0,
+      "previousLevel": 3,
+      "level": 1
+    },
+    {
+      "experience": 0,
+      "previousLevel": 15,
+      "level": 1
+    },
+    {
+      "experience": 0,
+      "previousLevel": 20,
+      "level": 1
+    },
+    {
+      "experience": 1499,
+      "previousLevel": 0,
+      "level": 1
+    },
+    {
+      "experience": 1499,
+      "previousLevel": 3,
+      "level": 1
+    },
+    {
+      "experience": 1499,
+      "previousLevel": 15,
+      "level": 1
+    },
+    {
+      "experience": 1499,
+      "previousLevel": 20,
+      "level": 1
+    },
+    {
+      "experience": 1500,
+      "previousLevel": 0,
+      "level": 2
+    },
+    {
+      "experience": 1500,
+      "previousLevel": 3,
+      "level": 2
+    },
+    {
+      "experience": 1500,
+      "previousLevel": 15,
+      "level": 2
+    },
+    {
+      "experience": 1500,
+      "previousLevel": 20,
+      "level": 2
+    },
+    {
+      "experience": 5999,
+      "previousLevel": 0,
+      "level": 2
+    },
+    {
+      "experience": 5999,
+      "previousLevel": 3,
+      "level": 2
+    },
+    {
+      "experience": 5999,
+      "previousLevel": 15,
+      "level": 2
+    },
+    {
+      "experience": 5999,
+      "previousLevel": 20,
+      "level": 2
+    },
+    {
+      "experience": 6000,
+      "previousLevel": 0,
+      "level": 3
+    },
+    {
+      "experience": 6000,
+      "previousLevel": 3,
+      "level": 3
+    },
+    {
+      "experience": 6000,
+      "previousLevel": 15,
+      "level": 3
+    },
+    {
+      "experience": 6000,
+      "previousLevel": 20,
+      "level": 3
+    },
+    {
+      "experience": 19999,
+      "previousLevel": 0,
+      "level": 3
+    },
+    {
+      "experience": 19999,
+      "previousLevel": 3,
+      "level": 3
+    },
+    {
+      "experience": 19999,
+      "previousLevel": 15,
+      "level": 3
+    },
+    {
+      "experience": 19999,
+      "previousLevel": 20,
+      "level": 3
+    },
+    {
+      "experience": 20000,
+      "previousLevel": 0,
+      "level": 4
+    },
+    {
+      "experience": 20000,
+      "previousLevel": 3,
+      "level": 4
+    },
+    {
+      "experience": 20000,
+      "previousLevel": 15,
+      "level": 4
+    },
+    {
+      "experience": 20000,
+      "previousLevel": 20,
+      "level": 4
+    },
+    {
+      "experience": 50000,
+      "previousLevel": 0,
+      "level": 5
+    },
+    {
+      "experience": 50000,
+      "previousLevel": 3,
+      "level": 5
+    },
+    {
+      "experience": 50000,
+      "previousLevel": 15,
+      "level": 5
+    },
+    {
+      "experience": 50000,
+      "previousLevel": 20,
+      "level": 5
+    },
+    {
+      "experience": 5100000,
+      "previousLevel": 0,
+      "level": 20
+    },
+    {
+      "experience": 5100000,
+      "previousLevel": 3,
+      "level": 20
+    },
+    {
+      "experience": 5100000,
+      "previousLevel": 15,
+      "level": 20
+    },
+    {
+      "experience": 5100000,
+      "previousLevel": 20,
+      "level": 20
+    },
+    {
+      "experience": 327680000,
+      "previousLevel": 0,
+      "level": 20
+    },
+    {
+      "experience": 327680000,
+      "previousLevel": 3,
+      "level": 20
+    },
+    {
+      "experience": 327680000,
+      "previousLevel": 15,
+      "level": 20
+    },
+    {
+      "experience": 327680000,
+      "previousLevel": 20,
+      "level": 20
+    },
+    {
+      "experience": 655360000,
+      "previousLevel": 0,
+      "level": 20
+    },
+    {
+      "experience": 655360000,
+      "previousLevel": 3,
+      "level": 20
+    },
+    {
+      "experience": 655360000,
+      "previousLevel": 15,
+      "level": 20
+    },
+    {
+      "experience": 655360000,
+      "previousLevel": 20,
+      "level": 20
+    },
+    {
+      "experience": 655380000,
+      "previousLevel": 0,
+      "level": 4
+    },
+    {
+      "experience": 655380000,
+      "previousLevel": 3,
+      "level": 4
+    },
+    {
+      "experience": 655380000,
+      "previousLevel": 15,
+      "level": 4
+    },
+    {
+      "experience": 655380000,
+      "previousLevel": 20,
+      "level": 4
+    },
+    {
+      "experience": 655410000,
+      "previousLevel": 0,
+      "level": 5
+    },
+    {
+      "experience": 655410000,
+      "previousLevel": 3,
+      "level": 5
+    },
+    {
+      "experience": 655410000,
+      "previousLevel": 15,
+      "level": 5
+    },
+    {
+      "experience": 655410000,
+      "previousLevel": 20,
+      "level": 5
+    },
+    {
+      "experience": 1310750000,
+      "previousLevel": 0,
+      "level": 4
+    },
+    {
+      "experience": 1310750000,
+      "previousLevel": 3,
+      "level": 4
+    },
+    {
+      "experience": 1310750000,
+      "previousLevel": 15,
+      "level": 4
+    },
+    {
+      "experience": 1310750000,
+      "previousLevel": 20,
+      "level": 4
+    },
+    {
+      "experience": 2147483647,
+      "previousLevel": 0,
+      "level": 20
+    },
+    {
+      "experience": 2147483647,
+      "previousLevel": 3,
+      "level": 20
+    },
+    {
+      "experience": 2147483647,
+      "previousLevel": 15,
+      "level": 20
+    },
+    {
+      "experience": 2147483647,
+      "previousLevel": 20,
+      "level": 20
+    }
+  ],
+  "shortfalls": [
+    {
+      "gold": 1,
+      "cost": 5,
+      "shortfall": -4
+    },
+    {
+      "gold": -2147483648,
+      "cost": 3,
+      "shortfall": 2147483645
+    },
+    {
+      "gold": -2147483647,
+      "cost": 24000,
+      "shortfall": 2147459649
+    },
+    {
+      "gold": 0,
+      "cost": 40000,
+      "shortfall": -40000
+    },
+    {
+      "gold": 40000,
+      "cost": 40000,
+      "shortfall": 0
+    }
+  ],
+  "limitation": "Previous j is supplied explicitly. Initial uninitialized stack contents are not inferred. The Dart port rejects a first unmatched CASE without a known previous j."
+}

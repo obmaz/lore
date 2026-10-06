@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "tileSize": 20,
+  "source": "원작 CHARA.FNT / TOWN.FNT / GROUND.FNT / DEN.FNT / KEEP.FNT",
+  "fonts": {
+    "CHARA": {
+      "file": "chara.png",
+      "count": 56
+    },
+    "TOWN": {
+      "file": "town.png",
+      "count": 56
+    },
+    "GROUND": {
+      "file": "ground.png",
+      "count": 56
+    },
+    "DEN": {
+      "file": "den.png",
+      "count": 56
+    },
+    "KEEP": {
+      "file": "keep.png",
+      "count": 56
+    }
+  }
+}

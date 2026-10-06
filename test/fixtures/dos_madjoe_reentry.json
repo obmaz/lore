@@ -1,0 +1,54 @@
+{
+  "source": "Original DOS LORE.EXE",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "scenario": "Fresh original map with etc[50] bit2 already set and slot 6 named SlotSix; Up, accept, GameOption Save slot 1",
+  "initial": {
+    "map": 6,
+    "x": 40,
+    "y": 16,
+    "etc50": 2,
+    "slot6Name": "SlotSix"
+  },
+  "observed": {
+    "slot6": {
+      "name": "Mad Joe",
+      "sex": 0,
+      "classId": 8,
+      "strength": 8,
+      "mentality": 0,
+      "concentration": 0,
+      "endurance": 8,
+      "resistance": 0,
+      "agility": 8,
+      "accArms": 8,
+      "accMagic": 0,
+      "accEsp": 0,
+      "luck": 10,
+      "poison": 0,
+      "unconscious": 0,
+      "dead": 0,
+      "hp": 8,
+      "sp": 0,
+      "esp": 0,
+      "battleLevel": 1,
+      "magicLevel": 1,
+      "espLevel": 1,
+      "ac": 0,
+      "experience": 0,
+      "weapon": 0,
+      "shield": 0,
+      "armor": 0,
+      "weaPower": 0,
+      "shiPower": 0,
+      "armPower": 0
+    },
+    "etc50": 2,
+    "tile40_15": 47
+  },
+  "outputSha256": {
+    "PLAYER1.DAT": "cebf19e644a6bbe740c5a3c23b457a15d6031452d8c19f0c3ada56c3241368cc",
+    "PARTY1.DAT": "e20307c8d3d1cbb2f1670cbc7ee4c86e4f0faad96559724fbc6d305248283847",
+    "SAVE1.MAP": "a03545b5b7aa292a5d6c14d3f8b86b300cb570e1d3f88a9656a2fe7da9b5c995"
+  },
+  "capture": "docs/audits/dos_reference/madjoe_reentry.png"
+}

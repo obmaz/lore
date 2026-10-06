@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "source": "LORESUB.PAS Weapon_Shop",
+  "weapons": [
+    {
+      "id": 0,
+      "name": "맨손",
+      "power": 2,
+      "price": 0
+    },
+    {
+      "id": 1,
+      "name": "단도",
+      "power": 5,
+      "price": 500
+    },
+    {
+      "id": 2,
+      "name": "곤봉",
+      "power": 7,
+      "price": 1500
+    },
+    {
+      "id": 3,
+      "name": "미늘창",
+      "power": 9,
+      "price": 3000
+    },
+    {
+      "id": 4,
+      "name": "장검",
+      "power": 10,
+      "price": 5000
+    },
+    {
+      "id": 5,
+      "name": "철퇴",
+      "power": 15,
+      "price": 10000
+    },
+    {
+      "id": 6,
+      "name": "기병창",
+      "power": 20,
+      "price": 30000
+    },
+    {
+      "id": 7,
+      "name": "도끼창",
+      "power": 30,
+      "price": 60000
+    },
+    {
+      "id": 8,
+      "name": "삼지창",
+      "power": 40,
+      "price": 80000
+    },
+    {
+      "id": 9,
+      "name": "화염검",
+      "power": 50,
+      "price": 100000
+    }
+  ],
+  "shields": [
+    {
+      "id": 0,
+      "name": "없음",
+      "power": 0,
+      "price": 0
+    },
+    {
+      "id": 1,
+      "name": "가죽 방패",
+      "power": 1,
+      "price": 1000
+    },
+    {
+      "id": 2,
+      "name": "청동 방패",
+      "power": 2,
+      "price": 5000
+    },
+    {
+      "id": 3,
+      "name": "강철 방패",
+      "power": 3,
+      "price": 25000
+    },
+    {
+      "id": 4,
+      "name": "은제 방패",
+      "power": 4,
+      "price": 80000
+    },
+    {
+      "id": 5,
+      "name": "금제 방패",
+      "power": 5,
+      "price": 100000
+    }
+  ],
+  "armors": [
+    {
+      "id": 0,
+      "name": "없음",
+      "power": 0,
+      "price": 0
+    },
+    {
+      "id": 1,
+      "name": "가죽 갑옷",
+      "power": 2,
+      "price": 5000
+    },
+    {
+      "id": 2,
+      "name": "청동 갑옷",
+      "power": 3,
+      "price": 25000
+    },
+    {
+      "id": 3,
+      "name": "강철 갑옷",
+      "power": 4,
+      "price": 80000
+    },
+    {
+      "id": 4,
+      "name": "은제 갑옷",
+      "power": 5,
+      "price": 100000
+    },
+    {
+      "id": 5,
+      "name": "금제 갑옷",
+      "power": 6,
+      "price": 200000
+    }
+  ]
+}

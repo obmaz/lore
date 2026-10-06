@@ -1,0 +1,534 @@
+{
+  "source": "Unmodified LORE.EXE integer Random routine executed by Unicorn x86-16",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "routine": {
+    "csImageFileOffset": 221248,
+    "randomFileOffset": 225719,
+    "advanceFileOffset": 225798,
+    "multiplierFileOffset": 225852,
+    "randSeedDataOffset": 13900,
+    "codeHex": "e84c0033c08bdc368b5f040bdb740492f7f392ca0200e8360093b88000b92000f6c680750ad1e3d1d2fec8e2f332c080e67fcbe81900cd3c9f06c411cd37064c36cd35e1cd35fdcd39d9cd3dcbe1ffa14c368b1e4e368bc82ef726fc11d1e1d1e1d1e102e903d103d3d1e3d1e303d302f3b105d3e302f305010083d200a34c3689164e36c3"
+  },
+  "cases": [
+    {
+      "initialSeed": 0,
+      "calls": [
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 1
+        },
+        {
+          "bound": 1,
+          "value": 0,
+          "seed": 134775814
+        },
+        {
+          "bound": 20,
+          "value": 9,
+          "seed": 3698175007
+        },
+        {
+          "bound": 40,
+          "value": 36,
+          "seed": 870078620
+        },
+        {
+          "bound": 65535,
+          "value": 17886,
+          "seed": 1172187917
+        },
+        {
+          "bound": 2,
+          "value": 1,
+          "seed": 2884733762
+        },
+        {
+          "bound": 3,
+          "value": 2,
+          "seed": 1368768587
+        },
+        {
+          "bound": 9,
+          "value": 1,
+          "seed": 694906232
+        },
+        {
+          "bound": 100,
+          "value": 95,
+          "seed": 1598751577
+        },
+        {
+          "bound": 1000,
+          "value": 896,
+          "seed": 1828254910
+        },
+        {
+          "bound": 256,
+          "value": 254,
+          "seed": 352239543
+        },
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 2039224980
+        }
+      ]
+    },
+    {
+      "initialSeed": 1,
+      "calls": [
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 134775814
+        },
+        {
+          "bound": 1,
+          "value": 0,
+          "seed": 3698175007
+        },
+        {
+          "bound": 20,
+          "value": 16,
+          "seed": 870078620
+        },
+        {
+          "bound": 40,
+          "value": 6,
+          "seed": 1172187917
+        },
+        {
+          "bound": 65535,
+          "value": 44017,
+          "seed": 2884733762
+        },
+        {
+          "bound": 2,
+          "value": 1,
+          "seed": 1368768587
+        },
+        {
+          "bound": 3,
+          "value": 1,
+          "seed": 694906232
+        },
+        {
+          "bound": 9,
+          "value": 5,
+          "seed": 1598751577
+        },
+        {
+          "bound": 100,
+          "value": 96,
+          "seed": 1828254910
+        },
+        {
+          "bound": 1000,
+          "value": 374,
+          "seed": 352239543
+        },
+        {
+          "bound": 256,
+          "value": 140,
+          "seed": 2039224980
+        },
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 303092965
+        }
+      ]
+    },
+    {
+      "initialSeed": 65535,
+      "calls": [
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 2080144380
+        },
+        {
+          "bound": 1,
+          "value": 0,
+          "seed": 1539070957
+        },
+        {
+          "bound": 20,
+          "value": 7,
+          "seed": 830209954
+        },
+        {
+          "bound": 40,
+          "value": 19,
+          "seed": 4098590251
+        },
+        {
+          "bound": 65535,
+          "value": 16383,
+          "seed": 1073728216
+        },
+        {
+          "bound": 2,
+          "value": 0,
+          "seed": 995513913
+        },
+        {
+          "bound": 3,
+          "value": 2,
+          "seed": 653071134
+        },
+        {
+          "bound": 9,
+          "value": 8,
+          "seed": 2305611671
+        },
+        {
+          "bound": 100,
+          "value": 54,
+          "seed": 1124209140
+        },
+        {
+          "bound": 1000,
+          "value": 844,
+          "seed": 2414619077
+        },
+        {
+          "bound": 256,
+          "value": 78,
+          "seed": 189687002
+        },
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 2606260291
+        }
+      ]
+    },
+    {
+      "initialSeed": 65536,
+      "calls": [
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 2214920193
+        },
+        {
+          "bound": 1,
+          "value": 0,
+          "seed": 807502854
+        },
+        {
+          "bound": 20,
+          "value": 10,
+          "seed": 2297080863
+        },
+        {
+          "bound": 40,
+          "value": 13,
+          "seed": 105732252
+        },
+        {
+          "bound": 65535,
+          "value": 42515,
+          "seed": 2786274061
+        },
+        {
+          "bound": 2,
+          "value": 0,
+          "seed": 3774516034
+        },
+        {
+          "bound": 3,
+          "value": 1,
+          "seed": 4274176075
+        },
+        {
+          "bound": 9,
+          "value": 3,
+          "seed": 3209457016
+        },
+        {
+          "bound": 100,
+          "value": 56,
+          "seed": 1353712473
+        },
+        {
+          "bound": 1000,
+          "value": 321,
+          "seed": 938603710
+        },
+        {
+          "bound": 256,
+          "value": 219,
+          "seed": 1876672439
+        },
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 870128276
+        }
+      ]
+    },
+    {
+      "initialSeed": 2147483647,
+      "calls": [
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 2012707836
+        },
+        {
+          "bound": 1,
+          "value": 0,
+          "seed": 3013827565
+        },
+        {
+          "bound": 20,
+          "value": 18,
+          "seed": 83820450
+        },
+        {
+          "bound": 40,
+          "value": 34,
+          "seed": 2715452971
+        },
+        {
+          "bound": 65535,
+          "value": 24522,
+          "seed": 1607125720
+        },
+        {
+          "bound": 2,
+          "value": 1,
+          "seed": 2253215289
+        },
+        {
+          "bound": 3,
+          "value": 0,
+          "seed": 4190114590
+        },
+        {
+          "bound": 9,
+          "value": 5,
+          "seed": 1938544535
+        },
+        {
+          "bound": 100,
+          "value": 61,
+          "seed": 3516731892
+        },
+        {
+          "bound": 1000,
+          "value": 651,
+          "seed": 1156786629
+        },
+        {
+          "bound": 256,
+          "value": 113,
+          "seed": 812737754
+        },
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 1627873347
+        }
+      ]
+    },
+    {
+      "initialSeed": 2147483648,
+      "calls": [
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 2147483649
+        },
+        {
+          "bound": 1,
+          "value": 0,
+          "seed": 2282259462
+        },
+        {
+          "bound": 20,
+          "value": 1,
+          "seed": 1550691359
+        },
+        {
+          "bound": 40,
+          "value": 4,
+          "seed": 3017562268
+        },
+        {
+          "bound": 65535,
+          "value": 50654,
+          "seed": 3319671565
+        },
+        {
+          "bound": 2,
+          "value": 1,
+          "seed": 737250114
+        },
+        {
+          "bound": 3,
+          "value": 1,
+          "seed": 3516252235
+        },
+        {
+          "bound": 9,
+          "value": 0,
+          "seed": 2842389880
+        },
+        {
+          "bound": 100,
+          "value": 63,
+          "seed": 3746235225
+        },
+        {
+          "bound": 1000,
+          "value": 664,
+          "seed": 3975738558
+        },
+        {
+          "bound": 256,
+          "value": 254,
+          "seed": 2499723191
+        },
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 4186708628
+        }
+      ]
+    },
+    {
+      "initialSeed": 4294967295,
+      "calls": [
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 4160191484
+        },
+        {
+          "bound": 1,
+          "value": 0,
+          "seed": 866343917
+        },
+        {
+          "bound": 20,
+          "value": 6,
+          "seed": 2231304098
+        },
+        {
+          "bound": 40,
+          "value": 26,
+          "seed": 567969323
+        },
+        {
+          "bound": 65535,
+          "value": 57290,
+          "seed": 3754609368
+        },
+        {
+          "bound": 2,
+          "value": 1,
+          "seed": 105731641
+        },
+        {
+          "bound": 3,
+          "value": 1,
+          "seed": 2042630942
+        },
+        {
+          "bound": 9,
+          "value": 4,
+          "seed": 4086028183
+        },
+        {
+          "bound": 100,
+          "value": 93,
+          "seed": 1369248244
+        },
+        {
+          "bound": 1000,
+          "value": 419,
+          "seed": 3304270277
+        },
+        {
+          "bound": 256,
+          "value": 113,
+          "seed": 2960221402
+        },
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 3775356995
+        }
+      ]
+    },
+    {
+      "initialSeed": 3735928559,
+      "calls": [
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 1599076012
+        },
+        {
+          "bound": 1,
+          "value": 0,
+          "seed": 757104989
+        },
+        {
+          "bound": 20,
+          "value": 18,
+          "seed": 2537454290
+        },
+        {
+          "bound": 40,
+          "value": 4,
+          "seed": 2451353115
+        },
+        {
+          "bound": 65535,
+          "value": 60717,
+          "seed": 3979170440
+        },
+        {
+          "bound": 2,
+          "value": 0,
+          "seed": 3568352425
+        },
+        {
+          "bound": 3,
+          "value": 0,
+          "seed": 1979896654
+        },
+        {
+          "bound": 9,
+          "value": 7,
+          "seed": 3446823047
+        },
+        {
+          "bound": 100,
+          "value": 45,
+          "seed": 4112078500
+        },
+        {
+          "bound": 1000,
+          "value": 875,
+          "seed": 2940944693
+        },
+        {
+          "bound": 256,
+          "value": 191,
+          "seed": 3955202570
+        },
+        {
+          "bound": 0,
+          "value": 0,
+          "seed": 2256218675
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "source": "Unmodified CastOne MUL/MUL/CWD, shipped TP real /2 and Round, SP word SUB/store, and signed low-word damage conversion/Round executed by Unicorn x86-16. Synthetic player memory; original code unchanged.",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragments": [
+    {
+      "name": "cost",
+      "startFileOffset": 135998,
+      "endFileOffset": 136041,
+      "codeHex": "c47efc268a452a30e4f7266036f7266036999a5111cd30b9820031f631ff9a4311cd309a5d11cd30a32e70"
+    },
+    {
+      "name": "sp",
+      "startFileOffset": 136069,
+      "endFileOffset": 136087,
+      "codeHex": "c47efc268b45252b062e70c47efc26894525"
+    },
+    {
+      "name": "damage",
+      "startFileOffset": 136161,
+      "endFileOffset": 136197,
+      "codeHex": "c47efc268a452a30e48bc8a16036f7266036f7e1d1e0999a5111cd309a5d11cd30a32e70"
+    }
+  ],
+  "cases": [
+    {
+      "level": 1,
+      "spell": 1,
+      "sp": 0,
+      "cost": 1,
+      "canCast": false,
+      "afterSp": 0,
+      "damage": 2,
+      "reachableCommand": true
+    },
+    {
+      "level": 1,
+      "spell": 1,
+      "sp": 30000,
+      "cost": 1,
+      "canCast": true,
+      "afterSp": 29999,
+      "damage": 2,
+      "reachableCommand": true
+    },
+    {
+      "level": 1,
+      "spell": 1,
+      "sp": -32768,
+      "cost": 1,
+      "canCast": false,
+      "afterSp": -32768,
+      "damage": 2,
+      "reachableCommand": true
+    },
+    {
+      "level": 3,
+      "spell": 1,
+      "sp": 0,
+      "cost": 2,
+      "canCast": false,
+      "afterSp": 0,
+      "damage": 6,
+      "reachableCommand": true
+    },
+    {
+      "level": 3,
+      "spell": 1,
+      "sp": 30000,
+      "cost": 2,
+      "canCast": true,
+      "afterSp": 29998,
+      "damage": 6,
+      "reachableCommand": true
+    },
+    {
+      "level": 3,
+      "spell": 1,
+      "sp": -32768,
+      "cost": 2,
+      "canCast": false,
+      "afterSp": -32768,
+      "damage": 6,
+      "reachableCommand": true
+    },
+    {
+      "level": 20,
+      "spell": 3,
+      "sp": 0,
+      "cost": 90,
+      "canCast": false,
+      "afterSp": 0,
+      "damage": 360,
+      "reachableCommand": true
+    },
+    {
+      "level": 20,
+      "spell": 3,
+      "sp": 30000,
+      "cost": 90,
+      "canCast": true,
+      "afterSp": 29910,
+      "damage": 360,
+      "reachableCommand": true
+    },
+    {
+      "level": 20,
+      "spell": 3,
+      "sp": -32768,
+      "cost": 90,
+      "canCast": false,
+      "afterSp": -32768,
+      "damage": 360,
+      "reachableCommand": true
+    },
+    {
+      "level": 255,
+      "spell": 6,
+      "sp": 0,
+      "cost": 4590,
+      "canCast": false,
+      "afterSp": 0,
+      "damage": 18360,
+      "reachableCommand": true
+    },
+    {
+      "level": 255,
+      "spell": 6,
+      "sp": 30000,
+      "cost": 4590,
+      "canCast": true,
+      "afterSp": 25410,
+      "damage": 18360,
+      "reachableCommand": true
+    },
+    {
+      "level": 255,
+      "spell": 6,
+      "sp": -32768,
+      "cost": 4590,
+      "canCast": false,
+      "afterSp": -32768,
+      "damage": 18360,
+      "reachableCommand": true
+    },
+    {
+      "level": 200,
+      "spell": 13,
+      "sp": 0,
+      "cost": -15868,
+      "canCast": true,
+      "afterSp": 15868,
+      "damage": 2064,
+      "reachableCommand": false
+    },
+    {
+      "level": 200,
+      "spell": 13,
+      "sp": 30000,
+      "cost": -15868,
+      "canCast": true,
+      "afterSp": -19668,
+      "damage": 2064,
+      "reachableCommand": false
+    },
+    {
+      "level": 200,
+      "spell": 13,
+      "sp": -32768,
+      "cost": -15868,
+      "canCast": false,
+      "afterSp": -32768,
+      "damage": 2064,
+      "reachableCommand": false
+    },
+    {
+      "level": 255,
+      "spell": 255,
+      "sp": 0,
+      "cost": 384,
+      "canCast": false,
+      "afterSp": 0,
+      "damage": 1534,
+      "reachableCommand": false
+    },
+    {
+      "level": 255,
+      "spell": 255,
+      "sp": 30000,
+      "cost": 384,
+      "canCast": true,
+      "afterSp": 29616,
+      "damage": 1534,
+      "reachableCommand": false
+    },
+    {
+      "level": 255,
+      "spell": 255,
+      "sp": -32768,
+      "cost": 384,
+      "canCast": false,
+      "afterSp": -32768,
+      "damage": 1534,
+      "reachableCommand": false
+    },
+    {
+      "level": 128,
+      "spell": 16,
+      "sp": 0,
+      "cost": -16384,
+      "canCast": true,
+      "afterSp": 16384,
+      "damage": 0,
+      "reachableCommand": false
+    },
+    {
+      "level": 128,
+      "spell": 16,
+      "sp": 30000,
+      "cost": -16384,
+      "canCast": true,
+      "afterSp": -19152,
+      "damage": 0,
+      "reachableCommand": false
+    },
+    {
+      "level": 128,
+      "spell": 16,
+      "sp": -32768,
+      "cost": -16384,
+      "canCast": false,
+      "afterSp": -32768,
+      "damage": 0,
+      "reachableCommand": false
+    },
+    {
+      "level": 1,
+      "spell": 255,
+      "sp": 0,
+      "cost": -256,
+      "canCast": true,
+      "afterSp": 256,
+      "damage": -1022,
+      "reachableCommand": false
+    },
+    {
+      "level": 1,
+      "spell": 255,
+      "sp": 30000,
+      "cost": -256,
+      "canCast": true,
+      "afterSp": 30256,
+      "damage": -1022,
+      "reachableCommand": false
+    },
+    {
+      "level": 1,
+      "spell": 255,
+      "sp": -32768,
+      "cost": -256,
+      "canCast": false,
+      "afterSp": -32768,
+      "damage": -1022,
+      "reachableCommand": false
+    }
+  ],
+  "scope": "Cost, SP and base damage instruction arithmetic only. spells1..6 are normal command range; other spell numbers are synthetic arithmetic boundaries, not valid gameplay replays. Whole RNG stream/battle/UI and enemy attacks are separate gates."
+}

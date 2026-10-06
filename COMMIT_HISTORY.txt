@@ -1,0 +1,1741 @@
+LORE development history before repository recreation
+Dates and commit messages only. Personal names, email addresses and commit identifiers omitted.
+
+2026-09-25T20:50:59+09:00
+Phase 1 완료: 원본 소스 분석 및 게임 명세서(DOCS_GAME_SPECS.md) 작성
+
+2026-09-25T20:53:00+09:00
+Phase 2 완료: Flutter 프로젝트 초기화 및 4:3 레트로 도스 화면 레이아웃 구축
+
+2026-09-25T20:54:54+09:00
+Phase 3 완료: 순수 Dart 전투 엔진 및 공식 단위 테스트 통과
+
+2026-09-25T20:57:33+09:00
+Phase 4 완료: Flame 게임엔진 기반 그리드 타일맵 렌더링, D-Pad 터치/키보드 이동 및 충돌 처리 구현
+
+2026-09-25T20:57:37+09:00
+Phase 5 완료: 턴제 전투 UI 연동(공격/마법/도구/도망), 실시간 메시지 로그, 마을 상점 및 NPC 대화 구현
+
+2026-09-25T21:33:55+09:00
+원작 완전 이식: 1993년 원작 오프닝&성향문답 캐릭터 생성, 실제 100x100 TOWN1.MAP 바이너리 로더 및 최신 메시지 상단 표시 콘솔 적용
+
+2026-09-25T21:41:14+09:00
+원작 CHARA.FNT 픽셀 아트 복원: 1993년 Borland BGI 4-plane 16-color 스프라이트 디코더 구현 및 원작 캐릭터 그래픽 적용
+
+2026-09-25T21:54:01+09:00
+feat: 원작 AdLib OPL2 BGM 및 사운드블래스터 VOC 효과음 복원 및 오디오 시스템 연동
+
+2026-09-25T22:09:00+09:00
+feat: 원작 전체 27개 맵/폰트/포털, 마을 4대 시설(무기점/병원/훈련소/식료품점), 스페이스바 필드 메뉴, 원작 NPC 대화, 75종 몬스터 및 마법 선택 완벽 이식
+
+2026-09-25T22:19:35+09:00
+feat: 원작 LORE 4-슬롯 게임 저장 및 불러오기(Save/Load) 시스템 구현 완료
+
+2026-09-25T22:42:25+09:00
+feat: [1단계] 지형 위험(독 늪, 용암, 물) 및 QuickView, ESP 예언, 보조마법 구현 완료
+
+2026-09-25T22:52:01+09:00
+feat: [Step 2] Full-spec battle engine, 45 spells, monster AI & auto-battle
+
+2026-09-25T22:58:38+09:00
+feat: [Step 3] 4-Town original dialogues, castle quests, dungeon events & boss encounters
+
+2026-09-25T23:06:41+09:00
+feat: [Step 4] 75-monsters bestiary, ending epilogue and staff credit sequence
+
+2026-09-25T23:49:25+09:00
+feat: [5단계] 군사 훈련소/식료품점/야외 휴식/F1 서문 이식 및 원작 미이식분 보강
+
+DOCS_GAME_SPECS.md 4~5장 기준으로 5단계를 완성하고, 원본 소스에서
+아직 이식되지 않은 마을 시설 규칙을 함께 구현했다.
+
+[신규] lib/logic/town_logic.dart
+- 원작 LORESUB.PAS/LOREMENU.PAS의 마을 시설·휴식 규칙을 UI와 분리한 순수 Dart 계층
+- 무기점/식료품점/훈련소/병원/휴식의 가격·공식·원작 대사(Johab 디코딩 원문) 수록
+- tool/dec_johab.py: 원작 파스칼 소스(CP1361) 한글 문자열 디코더 추가
+
+[훈련소] 원작 Train_Center 정합화
+- 경험치로 계산된 "도달 레벨"로 한 번에 승급, 비용은 도달 레벨 기준 1회 지불
+- Lv.20 도달은 원작대로 무상, 능력치 성장 판정은 점프 1회당 1회
+- 원작은 승급 시 HP/SP/ESP를 회복시키지 않음(회복은 병원 담당) → 기존 완전회복 제거
+- 경험치 표시 오프바이원(expTable[targetLevel]) 수정
+
+[식료품점] 원작 Grocery 정합화
+- 10/20/30/40/50인분 = 100/200/300/400/500금, 상한 255인분
+- town_dialog의 잘못된 가격표(10인분 50금 등) 수정, 식량 콜백 미연결 버그 수정
+
+[휴식] 원작 LOREMENU.PAS:869 Rest 1:1 재현
+- 상처를 치료한 인원만 식량 소모(만복자는 순 0), 중독/의식불명/사망 분기 및 원작 문구
+- 식량 0이어도 SP/ESP는 회복, etc[1] 횃불 1 감소 및 etc[2..4] 해제
+
+[F1 가이드] LoreGuideDialog
+- LOREHELP.PAS 제작자 서문/타이틀 자막을 공개 상수로 노출(테스트 가능), 안내 항목 보강
+
+[보강] 미이식분 구현
+- 병원: 4종 치료(상처/독/의식/부활) 개별 비용·조건·효과 이식, 기존 "일괄 50G" 및
+  town_facilities_dialog의 비용 0 계산 버그 수정
+- 무기점: 방패(위력=등급)/갑옷(위력=등급+1) 전 등급 판매 및 원작 가격 적용
+- 동료 영입: LORESUB.PAS:1042 join 및 LoreJoin(Polaris/Lore Hunter/Mad Joe/Rigel/
+  Red Antares/Spica) 구현, 대화 트리거→실제 파티 합류로 연결
+- 모든 맵에서 좌표 기반 NPC 대화가 동작하도록 LoreGame 확장
+
+[정리] 0바이트로 비워져 있던 ending_view.dart/monster_bestiary_dialog.dart/
+step4 테스트를 HEAD 상태로 복구
+
+[검증] flutter analyze 무결점, 전체 43개 단위 테스트 통과
+
+2026-09-26T00:08:49+09:00
+feat: 원작 미이식분 완결 - 성문 확인/findgold 좌표/동료 4명/특수마법 해금 + 키보드 검증
+
+[성문 진입 확인] 원작 LORESUB.PAS:986 wantenter / :999 wantexit
+- 성문/동굴 입구에서 '…에 들어가기를 원합니까 ?' / '여기서 나가기를 원합니까 ?'
+  확인 대화상자 후 이동. 거절 시 '당신이 바란다면 ...' 출력 후 제자리.
+- lib/logic/lore_field_logic.dart 신설(원작 대사 + findgold 문구 단일 소스)
+- 이전에 추측으로 넣었던 notEnoughMoney/asyouwish 문구를 Johab 원문으로 정정
+
+[findgold 좌표별 보상] 원작 LORESPEC.PAS의 findgold 호출 전량 이식
+- 맵 9(5곳)/맵 10(7곳) 각 5,000금, 맵 14(6곳) 400~2,500금 = 총 18개 좌표
+- 좌표당 1회 획득(원작 party.etc 비트) → 'gold:<map>:<x>:<y>' 플래그로 저장/복원
+- 문구도 원작 그대로 '당신은 금화 N개를 발견했다.'
+
+[LORESPEC 잔여 이벤트] 동료 영입 4명 + 특수 마법 해금
+- Mad Joe  맵 6 (40,15)  : 원작과 동일하게 6번 슬롯 고정 합류
+- Rigel     맵 12 (12,48) : hp 1 빈사 상태로 합류
+- Red Antares 맵 17 (75,52): 1단계 "간접 공격" 특수마법 6종 전수 → 2단계 합류
+- Spica     맵 18 (37,31) : 독심술 사용 가능 + 파티 최고 초능력 Lv.5 이상 조건
+- LOREBATT.PAS:245 CastSpecial 게이트: 특수 마법 미습득 시
+  '당신에게는 아직 능력이 없다.' 출력 후 시전 차단
+- 영입 대기열을 PendingRecruit(슬롯 고정 지원)로 확장
+
+[키보드 검증] test/keyboard_input_test.dart 신규 (7개 테스트)
+- 원작 핫키 매핑 단위 테스트 (P/V/Q/C/E/R/G/Space, F1/H)
+- LoreGame.handleKeyEvent 방향키/WASD 이동 경로 검증
+- 위젯 통합: 실제 키 이벤트로 각 탭/화면이 열리는지 검증
+- 핫키가 이전에는 P/V/C/R/G 모두 같은 메뉴를 열었고 G 키가 없었음 → 각 탭으로 정확히 연결
+- 필드 모드에서 키 입력 시 Dialog가 열리지 않던 포커스 유실 버그 수정(진입/조작 후 포커스 회수)
+
+[UI 버그 수정] 테스트가 잡아낸 가로 오버플로 4건
+- 필드 메뉴 헤더/버튼(Align 대신 ellipsis), 개인 상황 멤버 칩(가로 스크롤),
+  QuickView/ESP 헤더, 마을 다이얼로그 헤더
+
+[검증 도구] tool/audit_lorespec.py - LORESPEC/ LORETALK 좌표 이벤트 감사 스크립트
+tool/dec_johab.py는 Function/enum 타입 선언 형태도 탐색하도록 확장
+
+[검증] flutter analyze 무결점, 전체 55개 테스트 통과
+
+2026-09-26T00:17:12+09:00
+refactor: 현대적 구조 전환 - JSON 데이터/스크립트 엔진 + 이미지 스프라이트 파이프라인
+
+[데이터 계층] lib/data/lore_data.dart (+ assets/data/*.json)
+- 몬스터 75종 / 아이템 22종 / 마법 45종 / 맵 27종을 JSON으로 분리
+- LoreData.instance.monster()/weapon()/spell()/map() 로 조회, 게임 코드 전환
+- JSON이 없거나 파싱 실패 시 코드 내장 원작 테이블로 자동 폴백(게임은 항상 동작)
+- main()에서 1회 로드
+- 생성 도구: flutter test test/tools/export_data_test.dart --dart-define=EXPORT_DATA=true
+
+[스크립트 엔진] lib/data/lore_script.dart (+ assets/data/scripts.json)
+- 좌표 이벤트/NPC 대화/선택지 분기를 JSON으로 관리 (원작 LORESPEC/LORETALK 대응)
+- 스텝: say / gold / food / flag / join / battle / choice
+- 조건: flag, flagNot, mindRead(독심술), minEspLevel, 부정 조건(안내용)
+- once(1회성) 실행 이력 관리, step/talk 트리거 각각 우선 실행 후 Dart 로직으로 폴백
+- 25개 스크립트 이식: 금화 좌표 18곳 + 동료 6명 + 특수마법 전수
+- 선택지 분기 실현: Rigel 3지선다(식량 -5 등 원작 대안 경로 포함), Spica ESP 조건부
+- UI 연결: _driveScript가 대화상자로 선택지를 물어보고 결과(보상/플래그/영입/전투) 반영
+
+[이미지 에셋] lib/game/sprite_sheet.dart (+ assets/images/*.png)
+- 원작 .FNT 픽셀을 PNG 스프라이트 시트로 내보내는 파이프라인 구축
+  (tool/png_encoder.dart: 의존성 없는 최소 PNG 인코더 - zlib + CRC32)
+- chara/town/ground/den/keep.png (20x20 × 56타일) + manifest.json
+- 렌더링 우선순위를 PNG → FNT 디코더 → 벡터 도형으로 변경 (이미지 교체만으로 그래픽 변경 가능)
+- 생성 도구: flutter test test/tools/export_images_test.dart --dart-define=EXPORT_IMAGES=true
+
+[테스트] 신규 13개 추가 (총 68개 통과, 2개는 내보내기 도구로 기본 skip)
+- data_json_test: JSON ↔ 내장 테이블 75종 전수 교차 검증 + 폴백
+- script_engine_test: 보상/1회성/선택지/조건 분기/폴백
+- sprite_sheet_test: 매니페스트·PNG 로드 및 FNT 폴백
+- keyboard_input_test: 핫키 매핑/이동/실제 키 입력 통합 (앞선 커밋)
+
+[문서] DOCS_GAME_SPECS.md에 7장(이식 현황/잔여 항목), 8장(JSON·이미지 구조) 추가
+
+2026-09-26T00:26:00+09:00
+feat: 잔여 이식 항목 완결 - 대화/포털 JSON화 + 지형 변형·강제 이동 스텝
+
+[대화 JSON화] assets/data/dialogues.json + tool/export_dialogues.py
+- lore_dialogue_manager.dart의 "단일 좌표 → 단일 문자열" NPC 대사 30건을 JSON으로 이관
+- 추출기(tool/export_dialogues.py)가 Dart 문자열 이스케이프를 정확히 복원하고
+  $heroName 보간은 {hero} 플레이스홀더로 변환 → 런타임에 주인공 이름으로 치환
+- getDialogue가 JSON을 우선 조회하고, 플래그/퀘스트 분기 대화는 기존 Dart 로직이 담당
+- JSON 미존재 시 코드 내장 대화로 자동 폴백
+
+[포털/표지판 JSON화] assets/data/portals.json
+- 맵 연결 11건(정확 좌표 + 성문 y>=96 같은 범위 조건)과 표지판 18건(맵 기본 문구 포함)을
+  JSON으로 이관 → wantexit 목적지 하드코딩 제거
+- LoreWorldManager.loadData(): JSON 규칙 우선, 미로드 시 내장 규칙 폴백
+- 표지판은 "좌표 정확 일치 → 맵 기본 문구" 2패스로 조회
+
+[스크립트 엔진 확장] 지형 변형 / 강제 이동
+- 신규 스텝: {"setTile": {x,y,tile}} (원작 map[x,y] := 값), {"teleport": {map?,x,y}}
+- 게임 화면에서 적용: 타일 즉시 교체, 맵 이동 + 좌표 지정
+- 신규 이벤트 3건 이식:
+  - 맵 6 (62,82) 상자: '일행은 상자 속에서 약간의 금을 발견했다.' + 금 1000 + 타일 44
+  - 맵 1 (20,39) Ancient Evil 첫 방문: 대륙 안내 5개 메시지 + ancientEvilMet 플래그
+  - 재방문: '이제는 더 이상 할말이 없소.' + (46,41) 비밀 통로 강제 이동
+- ancientEvilMet 플래그 추가(원작 party.etc[16] bit1) 및 저장/복원 연동
+
+[테스트] 신규 2개 파일 추가 (총 77개 통과, 2개는 내보내기 도구로 기본 skip)
+- world_rules_test: 포털/표지판 JSON == 내장 규칙 전수 교차 검증 (경계값 포함) + 폴백
+- dialogue_json_test: 대화 JSON == 내장 대사 30건 교차 검증 + {hero} 치환 + 퀘스트 분기 보존
+- script_engine_test: setTile/teleport 스텝 검증 추가
+
+[문서] DOCS_GAME_SPECS.md 7.2(잔여 항목 → 완료/잔여 구분), 8장(신규 JSON 파일·스텝·도구) 갱신
+
+2026-09-26T00:46:19+09:00
+test: JSON 데이터 사용 상태 통합 검증 (부트스트랩 부팅 포함)
+
+2026-09-26T00:57:19+09:00
+feat: 잔여 좌표 이벤트 이관 - equip 스텝/행 트리거/출구 포털 + 맵 ID 정정
+
+2026-09-26T07:43:32+09:00
+feat: 카메라 연출(peek)/성문 Skeleton 영입/황금의 봉인 이관 + 근사 이벤트 정리
+
+2026-09-26T07:44:38+09:00
+feat: 원작 보스전(Hidra/Huge Dragon) 이관 + 지름길/문서 갱신
+
+2026-09-26T10:09:08+09:00
+feat: 맵 19 봉인 퍼즐(난수 방)/맵 12 수수께끼 문/맵 17 통로 이관 + setTileArea/난수 스텝
+
+2026-09-26T10:13:00+09:00
+feat: 원작 좌표 이벤트 46건 전수 이관 (KEEP/K_DEN/함정/열쇠) + 커버리지 감사 모드
+
+2026-09-26T10:17:27+09:00
+feat: 맵 20 퀴즈 미로/숨은 통로, 맵 22 상시 습격 이관 + randomSteps/타일 조건 스텝
+
+2026-09-26T10:17:48+09:00
+docs: 스크립트 스키마에 randomSteps/keepX/torch/tileAtPlayerZero 추가
+
+2026-09-26T10:24:17+09:00
+feat: 전수 검토 후 마을 시설(5개 마을 58곳) + LORETALK NPC 대사 79개 이관, 검토 도구 추가
+
+2026-09-26T10:33:58+09:00
+feat(2): 원작 LOREMENU 마법 시전 이식 - 개인/전체 치료 7종+현상계 8종, 원작 SP/슬롯/문구
+
+2026-09-26T10:44:30+09:00
+원작 LORETALK 상태 분기(party.etc 비트/퀘스트 단계) 대사 이관
+
+- lore_script: require.quest(eq/lt/gte) + questStep/exp 스텝, setTileArea atPlayerX
+- lore_dialogue_manager: lordahn 퀘스트 단계, etc 비트 플래그 5종(menaceInfoGiven/
+  weaponRoomVisited/loreChallengeAccepted/loreChallengeBlessed/programmerMet) 저장·로드
+- main_game_screen: questSteps 컨텍스트, questChanges/expDelta 반영
+- tool/export_lore_quest_talk.py: LORETALK 상태 분기 69개 자동 생성(원문 대사 그대로)
+  · 맵 6/7/9/10 영주 4단계·성문 안내·도전 Y/n·Jr.Antares 통로·무기고
+  · Polaris/Lore Hunter 영입(원작 문구), LORESPEC (41,79) 기본 무장 이벤트
+- scripts.json 185→230, test/quest_branch_test.dart 8개 추가 (110개 통과)
+
+2026-09-26T10:55:55+09:00
+원작 문구 전수 대조 도구 + LOREEND/LOREHELP/LOREMAIN 원문화, 타일 판정 정확화
+
+- tool/audit_messages.py: 원작 11개 게임 유닛 문구 vs 포트 문구 전수 대조(공백 무시)
+- LOREEND: 에필로그·스태프 크레딧·최종 크레딧 문구를 원문 그대로(작가명 Ahn Young-Kie)
+- LOREHELP: 타이틀 메뉴 '1] 새로운 주인공을 생성 시킴 / 2] 이전의 게임을 재개 시킴 /
+  3] 도스로 돌아감'
+- LOREMAIN: 늪/용암/중독 문구 원문 + 용암 피해식(random(40)+40-2*random(luck)),
+  독 진행(10 스텝 초과 시 상태별 피해) 원작 알고리즘으로 교체
+- LoreMapData.category: 원작 LORESUB position 규칙으로 타일 판정(town/ground/den/keep)
+  → K_DEN1/K_DEN2/PYRAMID1 등 map24/26/27 진입·표지판 타일 오판 수정
+- LoreScriptEngine.startEnter(): 맵 진입 트리거(원작 entermode) 기반 추가
+- 테스트 110개 통과
+
+2026-09-26T11:03:37+09:00
+LOREENT 이관: 진입 타일 기반 포털 39곳 + 푯말 문구 33개 + 진입 연출 스크립트
+
+- 포털/푯말 좌표를 원작 타일 규칙(town22/23, ground22/51+, den·keep53/54)으로
+  .MAP 에서 직접 도출 → 기존 근사 규칙 대체, 누락 진입(21→13/22, 22→21/24,
+  4→19/20/21, 5→22/23, 16→10, 13→21) 추가
+- 푯말 문구를 LOREENT.PAS 원문 그대로(헤더 '푯말에 쓰여있기로 ...' 포함),
+  맵 12 미로 문 번호는 원작 계산식대로 Dart 에서 처리
+- 진입 연출: 성문 개방(map6), Polaris/Hunter 타일 정리, PYRAMID/EVIL SEAL 문 개방,
+  LAST SHELTER 타일, Frost Dragon/ArchiDraconian/Ancient Evil/Necromancer 전투
+- 엔진: enter/portal 트리거, startById, require allFlags/notAllFlags, block(원작 exit),
+  battle victoryFlag(승리 시 플래그)
+- 내장 폴백 표를 JSON 에서 자동 생성(tool/export_lore_ent.py --write)
+- LOREENT 문구 79/79 (100%), 전체 1022/1760 (58.1%), 테스트 110개 통과
+
+2026-09-26T11:09:55+09:00
+LORESUB 이관: 원작 문구/표를 lib/logic/lore_sub_text.dart 로 정리 (188/188)
+
+- ReturnClass/Weapon/Defense/Magic 표를 원작 LORESUB.PAS 에서 그대로 추출(생성)
+- ReturnMessage(전투 로그 문장 생성) 이식
+- 게임오버 선택('일행은 모두 전투에서 패했다 !!'/'이전의 게임을 재개한다'/'게임을 끝낸다'),
+  상태창 머리글, 세이브/로드·종료·훈련소·대상선택 문구 상수화
+- 문구 감사: LORESUB 188/188 (100%), 전체 58.1%, 테스트 110개 통과
+
+2026-09-26T11:20:23+09:00
+LORECRET 이관: 캐릭터 만들기(성향 문답 10문항/40포인트 분배/계급/동료) 원작 재현
+
+- tool/export_lore_cret.py: LORECRET.PAS 에서 10명 캐릭터 표, 10문항+선택지 스탯,
+  8계급 조건(원문), Display/Name/Profile/Second/Third/Fourth 문구, 초기 상태 추출
+  → assets/data/creation.json + 내장 폴백(lib/data/lore_creation_data.dart) 생성
+- lib/data/lore_creation.dart: 데이터 로더(JSON+폴백), 계급 조건 원문식 평가
+- 캐릭터 생성 화면: 이름/성별 → 10문항(원문) → 40포인트 분배 → 조건부 계급 선택
+  ('1] 기  사'..'8] 떠돌이', '당신의 계급은 X 입니다.','아무키나 누르십시오 ....')
+  → 동료 4명('1] 일행에 참석 시킨다','2] 그 사람의 능력을 본다'+능력치 미리보기)
+- PartyMember.applyCreationInit(): 원작 Fourth 초기화(체력=인내력, ac/wea_power,
+  accuracy[2]/[3] 재배치)
+- 타이틀: '또다른 지식의 성전  제 1 부' / '캐릭터 만들기 프로그램   제 1.5 탄',
+  크레딧 정정(obmaz → 원작자), 초기 식량 20(원작 Last)
+- 문구 감사 LORECRET 109/109, 전체 1151/1760 (65.4%), 테스트 117개 통과
+
+2026-09-26T11:26:22+09:00
+LOREMENU 이관: 필드 메뉴 문구를 원문으로 (172/172)
+
+- tool/export_lore_menu.py: LOREMENU.PAS 에서 101개 문구 + 초감각(41..45)/변화마법(33..40)
+  이름을 추출해 lib/logic/lore_menu_text.dart 생성(오타 방지)
+- 필드 메뉴: 원작 SelectMode 7개 항목('일행의 상황을 본다'…'게임 선택 상황'),
+  일행 상황에 원작 ViewParty 요약(X 축/Y 축/남은 식량/남은 황금/마법의 횃불/
+  공중 부상/물위를 걸음/늪위를 걸음 + 가능/불가),
+  개인 상황에 원작 ViewCharacter 표기(# 이름/# 성별/# 계급/체력…행운/
+  무기의 정확성/정신력의 정확성/초감각의 정확성/전투·마법·초감각 레벨/## 경험치/
+  사용 무기-/방패-/갑옷-), QuickView 머리글 '중독 의식불명 죽음'
+- 문구 감사 LOREMENU 172/172, 전체 1206/1760 (68.5%), 테스트 117개 통과
+
+2026-09-26T11:31:35+09:00
+LOREBATT 이관: 전투 로그/조우·도주·자동전투 문구를 원작 문구로 (125/125)
+
+2026-09-26T11:39:26+09:00
+LORETALK 이관: 맵 27 운명의 피라밋 대사·선택지·기본 else 포함 (583/583)
+
+2026-09-26T11:58:16+09:00
+LORESPEC 이관: 좌표 이벤트 문구 전량 이관 (452/452, 전체 1760/1760)
+
+2026-09-26T12:30:55+09:00
+chore: dart format 반영 및 etc 플래그 조회 lint 정리
+
+2026-09-26T12:41:59+09:00
+LORESPEC 이관 확장: 전투/동료/장비/이동/횃불 스텝 생성 + 안전 대체(21좌표) 및 멱등 병합
+
+2026-09-26T12:46:10+09:00
+LORESPEC 이관 심화: 퀴즈 randomSteps·영역타일(atPlayerY)·다중 타일 문장 지원, 대체 24좌표로 확대
+
+2026-09-26T12:46:52+09:00
+LORESPEC: party.etc 비트 ↔ 포트 플래그 이름 별칭 적용
+
+2026-09-26T13:25:26+09:00
+LORESPEC: party.etc[6] 전투 결과 기록 + 전투 제목 표시 + 비트↔포트 플래그 별칭 12종 확대(대체 30좌표)
+
+2026-09-26T13:29:06+09:00
+LORESPEC 이관 심화: 퀘스트 단계↔격퇴 플래그 별칭, teleport 복구, 다중 영역타일 — 안전 대체 31좌표
+
+2026-09-26T13:43:26+09:00
+원작 문구 충실도: 역방향 감사 도구(audit_invented)·원문 복원(fix_invented_text) 추가 — 동료 영입 대사 복원, 전투 제목을 원작 이름으로, 포트 발명 문구 20여 곳 제거, random 적 배치 이관
+
+2026-09-26T13:43:55+09:00
+scripts.json 서식 복원(merge_scripts 와 동일한 indent=2)
+
+2026-09-26T13:44:26+09:00
+문구 원문 복원으로 좌표 4곳 추가 대체(대체 35·자동 이관 활성 86) + 문서 수치 갱신
+
+2026-09-26T14:43:16+09:00
+dart format 정리
+
+2026-09-26T14:53:32+09:00
+적별 덮어쓰기(battle.overrides) 이관: 원작 with enemy[i] 이름/능력치 복원, etcN 카운터 조건(독심 etc5) 노출, notAllFlags 판정 수정 — 대체 41좌표
+
+2026-09-26T14:57:58+09:00
+지형 영역 이관 버그 수정(map[72,j] 리터럴 축 보존) + 병합에 지형 내용 비교·연출 호출 무시 — 대체 42좌표
+
+2026-09-26T23:41:59+09:00
+Port LORE event rules and preserve session progress
+
+2026-09-26T23:47:29+09:00
+Resolve boss progress from the full battle roster
+
+2026-09-26T23:52:37+09:00
+Keep repeated script effects across continuations
+
+2026-09-27T00:46:04+09:00
+Apply script party rewards as pure state transitions
+
+2026-09-27T00:51:21+09:00
+Apply script equipment only after a valid party selection
+
+2026-09-27T00:56:27+09:00
+Resolve battle progress and script continuations together
+
+2026-09-27T00:59:08+09:00
+Version save data and migrate legacy game slots
+
+2026-09-27T01:07:15+09:00
+Audit script branches and record unresolved port candidates
+
+2026-09-27T01:12:15+09:00
+Reconcile disabled exit branches with portal routes
+
+2026-09-27T01:16:53+09:00
+Restore GAIA progress when finding the golden seal
+
+2026-09-27T01:20:10+09:00
+Restore DEN7 torch effect across final maze branches
+
+2026-09-27T01:25:26+09:00
+Match Polaris town tile to current party membership
+
+2026-09-27T01:29:19+09:00
+Audit original entrance routes against portal data
+
+2026-09-27T01:31:25+09:00
+Scope Ancient Evil speech to lava gate entry
+
+2026-09-27T01:34:08+09:00
+Remove unreachable Lore Hunter tile rule
+
+2026-09-27T01:36:44+09:00
+Audit original talk coordinates against active data
+
+2026-09-27T08:07:35+09:00
+Calculate battle gold from original monster templates
+
+2026-09-27T08:10:55+09:00
+Share execution experience with active party members
+
+2026-09-27T08:13:40+09:00
+Charge all-target magic per conscious enemy
+
+2026-09-27T08:15:36+09:00
+Award battle experience for telekinetic knockouts
+
+2026-09-27T08:18:12+09:00
+Apply telekinetic blast to every enemy
+
+2026-09-27T08:19:40+09:00
+Respect resistance and accuracy for telekinetic poison
+
+2026-09-27T08:21:18+09:00
+Restore telekinetic heart-stop branches
+
+2026-09-27T08:22:49+09:00
+Apply telekinetic illusion to monster combat stats
+
+2026-09-27T08:24:24+09:00
+Restore telekinetic fear and endurance effects
+
+2026-09-27T08:26:57+09:00
+Restore telepathy level resistance and Draconian exception
+
+2026-09-27T08:29:30+09:00
+Recruit telepathy targets into the sixth party slot
+
+2026-09-27T08:32:03+09:00
+Gate battle ESP by class or granted access
+
+2026-09-27T09:44:49+09:00
+Verify telepathy recruitment through battle viewport
+
+2026-09-27T09:48:39+09:00
+Match enemy spell power to original mentality tiers
+
+2026-09-27T09:50:56+09:00
+Restore enemy cure states and self-heal formula
+
+2026-09-27T09:56:17+09:00
+Restore high-tier enemy support spells
+
+2026-09-27T09:59:32+09:00
+Restore enemy special-cast summoning
+
+2026-09-27T10:04:04+09:00
+Restore sixth-party mind conversion in battle
+
+2026-09-27T10:06:06+09:00
+Continue enemy turn after group death curse
+
+2026-09-27T10:09:21+09:00
+Gate enemy special attacks by active monster count
+
+2026-09-27T10:13:09+09:00
+Match original enemy weapon and magic choice
+
+2026-09-27T10:14:54+09:00
+Scale enemy spell area choice with party size
+
+2026-09-27T11:58:31+09:00
+Apply enemy magic to downed party members
+
+2026-09-27T12:06:42+09:00
+Chain DEN7 guardian battles after each victory
+
+2026-09-27T12:08:19+09:00
+Record DEN7 Minotaur encounter after retreat
+
+2026-09-27T12:20:39+09:00
+Add source-backed script parity scenarios
+
+2026-09-27T12:51:30+09:00
+Record SWAMP KEEP completion when guardians fall before retreat
+
+2026-09-27T13:23:30+09:00
+Honor scripted enemy initiative in IMPERIUM MINOR
+
+2026-09-27T13:28:27+09:00
+Restore enemy initiative in early scripted battles
+
+2026-09-27T13:30:34+09:00
+Restore mixed initiative in midgame scripted battles
+
+2026-09-27T13:32:06+09:00
+Restore enemy initiative across DEN7 and SWAMP KEEP
+
+2026-09-27T13:37:07+09:00
+Restore initiative through late-game gates and bosses
+
+2026-09-27T13:40:24+09:00
+Match field encounter initiative and audit active battles
+
+2026-09-27T14:42:09+09:00
+Calculate prebattle evasion from party luck
+
+2026-09-27T14:43:32+09:00
+Add the prebattle encounter choice view
+
+2026-09-27T14:45:39+09:00
+Connect encounter choices to field and battle flow
+
+2026-09-27T14:47:29+09:00
+Resolve encounter choices as pure decisions
+
+2026-09-27T14:50:37+09:00
+Replay encounter choices through the game screen
+
+2026-09-27T15:24:22+09:00
+Apply poison before skipping unconscious enemies
+
+2026-09-27T15:25:28+09:00
+Resolve simultaneous battle wipe as defeat
+
+2026-09-27T15:28:46+09:00
+Preserve nonzero tiles when raising the hidden castle
+
+2026-09-27T15:29:44+09:00
+Restore Red Antares lava tile conversion
+
+2026-09-27T15:33:32+09:00
+Gate Red Antares recruitment on mind reading
+
+2026-09-27T15:34:43+09:00
+Commit Red Antares completion only after recruitment
+
+2026-09-27T15:37:01+09:00
+Allow Rigel recruitment retry after cancellation
+
+2026-09-27T15:38:02+09:00
+Defer Rigel completion until join slot is confirmed
+
+2026-09-27T15:39:28+09:00
+Restore seven tile movement in lava shortcut
+
+2026-09-27T15:41:46+09:00
+Restore lava passage terrain at row forty four
+
+2026-09-27T16:18:36+09:00
+Extract and compare map 17 Pascal route behavior
+
+2026-09-27T16:28:27+09:00
+Compare DEN7 passages against Pascal tile gates
+
+2026-09-27T16:31:57+09:00
+Preserve completed seal puzzle when replaying its lever
+
+2026-09-27T16:34:28+09:00
+Replay both EVIL SEAL levers from Pascal state changes
+
+2026-09-27T16:58:15+09:00
+Keep pyramid special tiles inside map twenty seven
+
+2026-09-27T16:59:48+09:00
+Track source execution evidence across all twenty seven maps
+
+2026-09-27T17:03:34+09:00
+Replay all original LOREENT map loads through portal runtime
+
+2026-09-27T17:06:09+09:00
+Replay original map exits through portal runtime
+
+2026-09-27T17:08:17+09:00
+Replay one-time gold caches in maps nine and fourteen
+
+2026-09-27T17:10:51+09:00
+Replay map twelve doors and seal branches from Pascal
+
+2026-09-27T17:12:56+09:00
+Preserve map twenty four programmer conversation state
+
+2026-09-27T17:15:06+09:00
+Replay original ground food cache and retreat
+
+2026-09-27T17:22:07+09:00
+Restore repeatable map twenty five lever behavior
+
+2026-09-27T17:24:53+09:00
+Match both hidden door walls in map twenty five
+
+2026-09-27T17:27:10+09:00
+Verify map twenty five guardian victory and retreat effects
+
+2026-09-27T17:30:27+09:00
+Preserve script tile mutation order in world reducer
+
+2026-09-27T17:33:51+09:00
+Replay map twenty three castle rise on original terrain
+
+2026-09-27T17:35:53+09:00
+Verify castle impostor battle outcomes against Pascal
+
+2026-09-27T17:53:54+09:00
+Define source branch closure plan for LORE port
+
+2026-09-27T18:01:45+09:00
+Inventory reachable Pascal control flow branches
+
+2026-09-27T18:04:48+09:00
+Group Pascal branch verification by behavior
+
+2026-09-27T18:52:22+09:00
+Audit port workload by source subsystem and battle evidence
+
+2026-09-27T19:13:34+09:00
+Document original LORE execution architecture
+
+2026-09-27T19:19:13+09:00
+Centralize original tile action dispatch
+
+2026-09-27T19:23:27+09:00
+Use JSON as authoritative special event source
+
+2026-09-27T19:28:10+09:00
+Require registered destination for portal entry
+
+2026-09-27T19:53:17+09:00
+Verify dynamically opened source portals
+
+2026-09-27T20:05:59+09:00
+Define full LORE port completion gates
+
+2026-09-27T20:16:08+09:00
+Establish source contract baseline for LORE port
+
+2026-09-27T20:26:07+09:00
+Plan field movement as ordered session effects
+
+2026-09-27T20:28:39+09:00
+Audit entrance tiles across all 27 maps
+
+2026-09-27T20:34:06+09:00
+Centralize talk and facility selection
+
+2026-09-27T20:38:15+09:00
+Verify every active talk rule can be selected
+
+2026-09-27T20:44:49+09:00
+Remove unreachable duplicate step branches
+
+2026-09-27T20:47:49+09:00
+Plan portal entry phases in a pure session
+
+2026-09-27T20:51:28+09:00
+Check step events against static and opened map tiles
+
+2026-09-27T21:07:37+09:00
+Align special event audits with callable tiles
+
+2026-09-27T21:11:11+09:00
+Skip random encounters on special event tiles
+
+2026-09-27T21:15:30+09:00
+Match movement status timing to Pascal handlers
+
+2026-09-27T21:19:26+09:00
+Port Pascal lava damage without levitation bypass
+
+2026-09-27T21:36:07+09:00
+Preserve Pascal swamp poison random sequence
+
+2026-09-27T21:38:28+09:00
+Share deterministic random stream across field and battle
+
+2026-09-27T21:43:34+09:00
+Isolate script progress and randomness per game session
+
+2026-09-27T21:48:52+09:00
+Track partial source contract evidence separately
+
+2026-09-27T22:08:56+09:00
+Pivot port plan to source-shaped procedure migration
+
+2026-09-27T22:47:49+09:00
+Define game pack architecture and migration contract
+
+2026-09-27T22:48:12+09:00
+Port LOREMAIN enter_water as ordered procedure
+
+2026-09-27T23:02:03+09:00
+Port LOREMAIN movement and hazard procedures
+
+2026-09-27T23:03:54+09:00
+Track source procedure cutover status
+
+2026-09-28T00:02:50+09:00
+Port LOREMAIN input flow and LOREENT entry effects
+
+2026-09-28T00:07:37+09:00
+Route LOREENT destinations and map writes through source procedures
+
+2026-09-28T00:17:02+09:00
+Execute LOREENT guarded entries from source procedures
+
+2026-09-28T00:32:21+09:00
+Verify source talk reachability and fix Polaris quest guard
+
+2026-09-28T00:35:53+09:00
+Move Mad Joe map effect into talk script and verify choices
+
+2026-09-28T00:39:59+09:00
+Restore pyramid dialogue tile consumption
+
+2026-09-28T08:18:03+09:00
+Port LORESPEC map one food procedure into live dispatcher
+
+2026-09-28T08:22:43+09:00
+Retire duplicate map one JSON rules after procedure port
+
+2026-09-28T08:37:05+09:00
+Port LORESPEC map four source guards and restore Ancient Evil move
+
+2026-09-28T08:40:35+09:00
+Port LORESPEC map six chest through source procedure
+
+2026-09-28T08:43:27+09:00
+Correct nested Pascal routine ownership in port ledger
+
+2026-09-28T09:09:30+09:00
+Refresh workload audit after script deduplication
+
+2026-09-28T11:46:24+09:00
+Port LORESPEC map six prison battle, weapon room, and exit branches
+
+2026-09-28T13:13:21+09:00
+Port LORESPEC map seven and eight secret wall and portal branches
+
+2026-09-28T13:29:33+09:00
+Port LORESPEC map nine and ten gold, barrier, and warp branches
+
+2026-09-28T13:51:20+09:00
+Port LORESPEC map eleven gold, Oedipus spear, and mummy room branches
+
+2026-09-28T13:57:26+09:00
+Port LORESPEC map twelve riddle door, golden seal, and Rigel branches
+
+2026-09-28T15:05:13+09:00
+Port LORESPEC map thirteen pyramid sequence and Gorgon battle branches
+
+2026-09-28T15:13:18+09:00
+Port LORESPEC map fourteen MENACE center, gold chests, and golden shield branches
+
+2026-09-28T15:16:05+09:00
+Port LORESPEC map fifteen chests, golden shield/armor, and ArchiGagoyle battle branches
+
+2026-09-28T15:18:14+09:00
+Port LORESPEC map sixteen Wivern encounter branch
+
+2026-09-28T15:21:26+09:00
+Port LORESPEC map seventeen Red Antares, Hidra battle, and passage branches
+
+2026-09-28T15:23:52+09:00
+Port LORESPEC map eighteen Spica, Minotaur, and Huge Dragon branches
+
+2026-09-28T15:26:41+09:00
+Port LORESPEC map nineteen levers, corridor guardians, and Crab God seal branches
+
+2026-09-28T15:30:27+09:00
+Port LORESPEC map twenty quiz gates, Minotaur, and Astral Mud battle branches
+
+2026-09-28T15:37:05+09:00
+Port LORESPEC map twenty-one Lava Gate seal requirement branch
+
+2026-09-28T15:38:49+09:00
+Port LORESPEC map twenty-two Death Knight and garrison ambush branches
+
+2026-09-28T15:40:36+09:00
+Port LORESPEC map twenty-three fake Necromancer and floating castle lever branches
+
+2026-09-28T15:42:01+09:00
+Port LORESPEC map twenty-four exit portal delegation
+
+2026-09-28T15:43:54+09:00
+Port LORESPEC map twenty-five Metal Guardian, secret passages, and final door levers
+
+2026-09-28T15:45:19+09:00
+Port LORESPEC map twenty-six final boss Neo-Necromancer sequence branch
+
+2026-09-28T15:46:44+09:00
+Port LORESPEC map twenty-seven boundary nudge branch and complete all maps
+
+2026-09-28T17:07:24+09:00
+Port LORETALK map six dialogue branches and procedures
+
+2026-09-28T17:12:25+09:00
+Port LORETALK dialogue branches and procedures for all maps
+
+2026-09-28T17:36:49+09:00
+Reconcile initiative parity and update master plan for full unit direct port
+
+2026-09-28T17:43:17+09:00
+Verify audio manager and BGM/SFX mappings against original specifications
+
+2026-09-28T17:47:44+09:00
+Regenerate contract ledger and source branch inventory with utf-8 encoding
+
+2026-09-28T18:00:43+09:00
+Configure GitHub Pages deployment workflow and mobile web settings
+
+2026-09-28T18:29:59+09:00
+Document local WASM Pages build and disable Actions deploy
+
+2026-09-28T18:39:24+09:00
+Show newest console messages at bottom and move D-pad beside console
+
+2026-09-28T18:52:25+09:00
+Restore KEEP2 Wraith branch and record source parity audit
+
+2026-09-28T18:54:33+09:00
+Restore KEEP1 random ambush branch
+
+2026-09-28T20:03:39+09:00
+Restore Gaia Den Rigel and cliff source branches
+
+2026-09-28T20:08:06+09:00
+Restore DEN7 torch special event at y18
+
+2026-09-28T21:09:10+09:00
+docs: analyze original map and state rule architecture
+
+2026-09-28T22:00:34+09:00
+docs: identify shared state and completion forecast gates
+
+2026-09-28T22:24:04+09:00
+docs: document original LORE execution model
+
+2026-09-28T22:42:23+09:00
+docs: trace original LORE procedure interactions
+
+2026-09-28T23:05:15+09:00
+docs: model original LORE state lifecycle
+
+2026-09-29T08:17:03+09:00
+docs: analyze Hadar2026 architecture against port goals
+
+2026-09-29T08:44:27+09:00
+docs: analyze LoreUWP game logic against Pascal source
+
+2026-10-02T15:19:57+09:00
+Preserve Pascal state and begin source-faithful LORE port
+
+2026-10-02T16:14:04+09:00
+Port map 19 with raw Pascal state and consolidate migration plan
+
+2026-10-02T16:57:00+09:00
+Port map 25 guardian and preserve source dialogue continuations
+
+2026-10-02T17:02:18+09:00
+Merge remote source repairs and retain the sole direct port plan
+
+2026-10-02T17:27:51+09:00
+Port final chamber control flow and source entry boundaries
+
+2026-10-02T17:29:23+09:00
+Add cloud setup scripts for Android release build tools and Maven mirror configuration
+
+2026-10-02T17:41:27+09:00
+Organize project documents and tool tests with consistent filenames
+
+2026-10-02T10:23:44Z
+Adapt game layout for mobile screens and compact panel tabs
+
+2026-10-02T10:41:38Z
+Keep mobile panels below map with fixed overlay controls and side tabs
+
+2026-10-02T12:39:56Z
+Remove added viewport, party and message panel titles
+
+2026-10-02T12:50:14Z
+Place field commands below map or in a right-side rail
+
+2026-10-02T13:07:01Z
+Match source UI palette and remove added interface prose
+
+2026-10-02T09:31:16Z
+Port map 23 KEEP3 impostor Necromancer and lever as direct procedures
+
+LORESPEC case 23 (1880-1979) now runs without JSON lookup: tile 0 exits
+(the hidden KEEP3 cells no longer start the fight), the y=26 impostor
+reads player[1].name, fights the mirror roster with retained enemies on
+escape, then the duel, and writes the source tiles before the last key.
+The (25,27) lever writes the map before it prints. Map 23 y=46 uses the
+exact wantexit boundary. Stale keep3 clear flags are ignored.
+
+Adds the source extractor and fixture, source replay and UI tests, 22 new
+contract evidence rows (75 linked), and the refreshed contract ledger
+generated from a CRLF checkout to match the recorded source hashes.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T09:52:06Z
+Own map 24 and map 27 wantexit arms as source exit boundaries
+
+LORESPEC 1980-1994 and 2202-2212: map 24 exits only at y=46 (map 22
+(25,24), refusal y-1). Every map 27 specialevent asks wantexit: accept
+loads map 1 (20,8), refusal moves y+1 when y<25 else y-1. Previously the
+map 27 exit was unreachable (JSON y>=50) and specials nudged without
+asking; those JSON nudge rules are disabled. Adds a real-screen test.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T09:59:57Z
+Port map 22 KEEP2 arm with raw etc[43] bits and the source exit guard
+
+LORESPEC 1816-1879 runs without JSON: the y=46 exit asks wantexit, then
+(bit3 clear) draws one random(5)+42 guard roster, sets bit3 iff enemy 7
+died and leaves for map 5 after victory or escape. The Death Knight uses
+one random(5) slot for 63 instead of a shuffle; guards and the Wraith
+ambush follow the source result checks and map[x,y] := 40. Stale
+keep2*Cleared aliases no longer decide fights.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:05:07Z
+Port map 21 KEEP1 arm and its slot-based exit guard
+
+LORESPEC 1760-1815 runs without JSON. After wantexit (etc[42] bit1
+clear) bosses 55/56 join unless bit3/bit4, then five 35s; with no boss
+the source sets bit1 and stays on the exit cell without loading. bit3
+and bit4 follow the deaths of enemy slots 1 and 2, bit1 needs both, and
+the party leaves for map 4 after victory or escape. The lava gate test
+uses odd(etc[40]) and odd(etc[41]); other specials fight random(4)+3
+enemies 58 and rewrite tile 0 to 40, otherwise 46.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:12:13Z
+Port map 20 DEN7 arm: quizzes, doors, Minotaur and the final chain
+
+LORESPEC 1475-1759 runs without JSON. Each quiz draws one random(8);
+the y=91/75 quizzes write the row and doors before the key, the y=54
+quiz handles Escape (y+1, via new choice cancelSteps), right and wrong
+answers as in the source and drops invented right/wrong lines. Doors at
+y=88/71 pass on tile 0 or leave for map 4. The Minotaur sets etc[41]
+bit4 after victory or escape; y=13 chains the three fights on raw
+etc[41] bits, escapes push y+1 and enemy 7 decides the last fight.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:19:39Z
+Own map 8 and map 10 arms; give direct teleports an explicit x
+
+LORESPEC 332-353: every special tile at x=50 on map 8 asks
+wantenter('GROUND GATE') and a refusal leaves the party on the gate;
+y=71 is the exact wantexit boundary (refusal y-1). LORESPEC 444-464:
+map 10 moves y=46 to 50 and y=49 to 45 without JSON, and y=71 is the
+exact wantexit boundary. Same-map teleports now carry x, because the
+screen ignored a keepX-only teleport (also fixes the map 20 doors).
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:29:58Z
+Port map 9 GAIA TERRA arm: gold bits, barrier and SWAMP GATE
+
+LORESPEC 354-443 runs without JSON or the legacy gold table: five gold
+cells on raw etc[35] bits 1..5, the y=10 barrier on raw etc[15] < 5
+(no key wait, y+1). y=5 is the exact wantenter('SWAMP GATE') boundary:
+refusal y+1, Lord Ahn speaks only while etc[35] bit6 is clear, then map
+13 (81,95). y=46 is the exact wantexit boundary.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:35:13Z
+Port map 11 T_DEN1 arm: gold, Oedipus spear, mummy room and exit
+
+LORESPEC 465-559 runs without JSON or the legacy gold table: seven gold
+cells on raw etc[33] bits, the spear sets bit8 only after it is
+equipped, the mummy room fights while raw etc[13] = 1 and succeeds on
+victory or a dead third enemy. The y=46 wantexit has no refusal branch,
+so the party stays on y=46, and accepting it applies the source
+post-load Polaris tile on map 7 (previously only after LOREENT).
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:39:22Z
+Port map 12 GAIA DEN arm with raw etc bytes and Rigel's Escape
+
+LORESPEC 560-668 runs without JSON in its else-if order: doors unless
+moving south, seal/trap on raw etc[14] < 2 (no invented once flag),
+Rigel on raw etc[31] bit2 with the source key wait and Escape moving
+y-1, and the cliff on raw etc[4] = 0. Declining the join slot keeps the
+existing dialog behaviour; the source y-1 there is recorded as open.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:45:33Z
+Port map 13 DEN4 arm: pyramid walk and prophecy, Gorgons, exit
+
+LORESPEC 669-813 runs without JSON. The pyramid fires on any special
+tile in its square, applies 52->44 and 40/51->42, walks the party one
+cell at a time to (81,77) with the source faces, restores 42->51, sinks
+the pyramid and shows the seven pages (no invented once flag). The
+Gorgons fire on all of y=68 on raw etc[38] bit5, set it only on victory
+and push y+1 only while enemy 3 lives. y=96 is the exact exit boundary.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:49:13Z
+Port map 14 MENACE arm with raw etc[10]/etc[32] and the exit
+
+LORESPEC 814-878 runs without JSON or the legacy gold table: the MENACE
+centre increments raw etc[10] after the key wait when it is 3, six gold
+cells and the golden shield use raw etc[32] bits (the shield bit only
+after a member takes it), and y=46 is the exact wantexit boundary.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:52:47Z
+Port map 15 QUAKE arm with raw etc[36]/etc[14] and the exit
+
+LORESPEC 879-965 runs without JSON: the four y=48 cells pay 6000 while
+raw etc[36] bit1 is clear, then 4000 (bit2), with the source gold text
+and tile writes (the JSON used invented quakeGoldA/B flags). The golden
+shield and armour use bits 3/4, the ArchiGagoyle fight raw etc[14] = 4,
+and y=71 is the exact wantexit boundary.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T10:57:39Z
+Port map 16 WIVERN arm on raw etc[37] and the exact exit
+
+LORESPEC 966-1004 runs without JSON: y=10 meets 3 - etc[37] Wiverns
+after the key wait while raw etc[37] < 3 (victory stores 3, escape 3
+minus survivors), otherwise the corpse message; y=36 is the exact
+wantexit boundary.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T11:06:19Z
+Port map 6 CASTLE LORE chain: prison, armoury and Skeleton exit
+
+LORESPEC 190-305 runs without JSON. The prison opens on raw etc[50] bit2
+(the Mad Joe join now writes that bit as LORETALK 215 does), the first
+fight sets bit3 before two soldiers, later visits face seven, soldiers
+get the source overrides and the return line reads player[1].name; the
+opened cells end the event instead of an invented done flag. The
+armoury sets bit4, steps west three times and arms the unarmed. Every
+other special tile is the wantexit arm; the first exit runs the
+Skeleton walk tile writes and join offer and sets etc[31] bit1.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T11:11:34Z
+Port map 4 SWAMP arm: Draconian pyramid and Ancient Evil
+
+LORESPEC 37-189 runs without JSON: the Draconian branch reads raw
+etc[16] bit2 and raw etc[5] after the introduction, the join offer uses
+the source Escape exit instead of an invented third option, and Ancient
+Evil reads raw etc[16] bit1, peeks at (48,57) and (82,16) and ends at
+(16,15) with the source key waits.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T11:17:32Z
+Port map 17 arm in source statement order, keeping the dead bit2 test
+
+LORESPEC 1010-1173 runs without JSON. The independent ifs read the x/y
+moved by earlier statements, so x=72's y-7 can chain into the y=38 swap.
+`party.etc[38] and bit2 = 1` parses as (etc[38] and 2) = 1 and is never
+true; the Red Antares offer therefore repeats while bit1 and mind
+reading hold, as in the source (recorded). The offer has no invented
+text and declines with asyouwish. Hidra reads raw etc[15] < 2, fights
+party-first, and victory/escape move as in the source. y=95 is the exact
+exit boundary.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T11:26:04Z
+Fix review findings: map 12 exit boundary and map 13 text order
+
+Map 12's y=71 wantexit now has the exact boundary (map 8 (39,7)) and the
+source refusal y-1 with the exit question, instead of the JSON portal
+that asked to enter and left the party in place. The map 13 pyramid now
+prints the pull message before the writes and the walk, and the first
+pyramid line before map[81,76] := 48, as in LORESPEC 682-726.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T14:38:03Z
+Move the map 23 tool test into tool/tests
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T14:38:13Z
+Regenerate the contract ledger after syncing with main
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T14:48:21Z
+Show only original LORE words in the menu, status and ESP screens
+
+Replace invented titles, labels, ESP names/costs/descriptions and emoji
+messages with LOREMENU.PAS / LORESUB.PAS strings (ReturnMagic names now
+generated from LORESUB.PAS). Share one EspPanel between the ESP dialog and
+the field menu tab; quick view shows the original name/poison/unconscious/
+dead columns; sidebar buttons use original command words.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:04:10Z
+Port LORESPEC map 18 (LOCKUP) as a direct procedure
+
+Own the whole case 18: exact y = 95 wantexit boundary, (22,41) passage,
+Minotaur with raw etc[39] bit3 after victory or escape, Spica on raw
+etc[39]/etc[5] with bit2 written before ReturnJoinMember, and the Huge
+Dragon on raw etc[15] < 4 (the old port read the swamp quest) with the
+source walk and random(3)+30 slot order. No JSON fallback.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:08:58Z
+Address review of map 18: key-wait on Spica refusals, doc and test gaps
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:14:17Z
+Port LOREEND End_Demo flow with source palette, thunder and staff screens
+
+Replace the invented three-button ending UI with the source sequence:
+FadeIn/EndMessage/FadeOut, Esc-gated thunder, StaffMessage with the walking
+sprite, and the closing text screen. Constants are replayed against
+tool/source_loreend.py.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:21:20Z
+Address LOREEND review: buffered Esc, stronger fixtures, documented adapters
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:23:37Z
+Use LOREBATT/LORESUB wording in the battle screen; fix ReturnMessage weapon josa
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:23:49Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:32:48Z
+Remove invented field-screen wording; fix battle review items
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:32:58Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:39:59Z
+Use LORESUB wording in town facilities; drop invented villager dialog and TownDialog; Esc cancels select menus
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:40:09Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:43:02Z
+Remove invented engine/subtitle lines from the title screen
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:46:04Z
+Address town facility review: source spacing, particles, ExpData typos, refusal prints
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T15:46:13Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T23:22:43Z
+Title/creation screens: source wording, remove invented guide and bestiary UI
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T23:23:10Z
+Train_Center growth uses the injected random source
+
+2026-10-02T23:37:42Z
+Port LOREBATT battle procedures; select-all-then-execute battle round; drop invented BattleEngine
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T23:38:03Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T23:55:20Z
+Apply LOREBATT review: ReturnMagic josa, CureSpell group order and slots, resistance byte store
+
+- LORESUB ReturnMagic: Josa/Mokjuk sets were inverted (ids in the list take no josa and reul).
+- LOREMENU CureSpell: all-cure case 5/6 mapping and phase-by-phase execution; i < 0 is the only refusal,
+  so level 6..7 still offers the first spell (field menu and battle availability).
+- LOREBATT CastSpecial 4: resistance - 10 is stored in a byte.
+- Record the unchecked 16-bit intermediate and display-only differences.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-02T23:55:41Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T03:03:50Z
+Port LORESUB GameOver and DetectGameOver with a source Select adapter
+
+- GameOver branches on party.etc[6]: 255 (wiped out) shows the text, PressAnyKey and the load list,
+  then the quit question; 1 (battle defeat) offers resume/end, reloads and sets etc[6] := 255;
+  other values only ask to quit. Halt shows the source text-mode farewell or Load's ErrorMessage.
+- Move_Mode, enter_swamp and enter_lava wait for GameOver before the mind-read and encounter steps.
+- Battle defeat runs its continuation only after a reload, on the loaded game.
+- Remove the invented game-over screen (icon, GAME OVER banner, both texts, resume = new game).
+- PressAnyKey text matches LORESUB.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T03:04:43Z
+Link GameOver, DetectGameOver and Select evidence; test the Select adapter
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T03:04:59Z
+Cite the source procedures in the field procedure tests
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T03:05:06Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T03:20:31Z
+Continue unchecked LORESPEC/LOREENT arms after a GameOver reload
+
+BattleMode returns into its caller after GameOver reloads a defeat, and Load
+sets x, y to the loaded position. The ten arms without an etc[6] = 255 check
+(LOREENT lava gate and dungeon; LORESPEC maps 18-22) now run their escape
+continuation on the loaded game and resume a pending entrance; map[x,y]
+writes go to the party's cell, and maps 18/19/20 go on to the later checks of
+the same case arm (LoreSpecProcedures.afterReload). battleDefeatSteps is gone.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T03:20:39Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T03:24:57Z
+Apply the GameOver review: keyboard focus, LORECRET Last, Load bounds, Halt
+
+- The Select and PressAnyKey widgets request focus themselves; the game
+  screen's key listener always holds focus, so autofocus never applied.
+- Port LORECRET Last: character creation writes the new party to all four
+  slots, so GameOver's load does not hit Load's ErrorMessage in normal play.
+- Port Load's encounter^ (1..3, else 2) and maxenemy^ (3..7, else 5) bounds.
+- Halt never returns to the caller (Move_Mode stops before its encounter roll).
+- etc[6] stays 1 during the battle GameOver; the defeat text is printed once,
+  by GameOver.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T03:25:04Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:35:44Z
+Port ReturnJoinMember as a source Select and each caller's refusal
+
+The slot menu is a Select with player[2..6] names ('보조 일원으로 둠' for an
+empty sixth slot) and no invented slot numbers. Refusing (Esc, k = 1) runs the
+caller's own code: map 12 Rigel dec(y), map 17 Red Antares asyouwish, the
+others a plain exit (no asyouwish).
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:35:52Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:42:51Z
+Port LOREMENU GameOption as source selects
+
+The G hotkey and SelectMode item 7 run GameOption: difficulty (etc[8] from
+'3..7 명의 적들', etc[7] := 6 - k), party order (whole-slot swap of 2..5),
+removal (name := ''), load, save with its two lines and key wait, and quit
+through GameOver with the current etc[6]. The invented option tab (dropdowns,
+slot previews, save/load buttons) is gone; empty slots are PartyMember.blank().
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:43:07Z
+Link GameOption evidence
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:43:11Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:45:20Z
+Port LOREMENU SelectMode as a source Select
+
+Space shows '당신의 명령을 고르시오 ===>' with the seven plain items and runs
+the chosen procedure once; the invented hotkey prefixes and the back-to-menu
+button are gone.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:45:24Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:55:22Z
+Port LOREMENU CastSpell, CureSpell and PhenominaSpell as source procedures
+
+C and SelectMode 4 run ChooseWhom, the exist check and the kind Select.
+CureSpell lists player[1..6] (empty slots too) and '모든 사람들에게', prints
+results in their colors with SPnotEnough key waits and ends with two blank
+lines and a key. PhenominaSpell follows the source order: blocked maps only
+stop terrain change and space move, SP is checked before the direction, the
+torch adds 1 to etc[1], vaporize/space move reject on the source cells, the
+space move takes the '## k000' power input, food prints without a key wait.
+The invented cast screen (SP-only casters, HP/SP and SP-cost labels) is gone,
+and the unused phenomena helpers in FieldMagicLogic are removed.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T05:55:26Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T06:02:02Z
+Apply the reload/join review: dead vs hp tests, Load bounds, Ancient Evil, offer texts
+
+- Battle continuations test Pascal enemy[i].dead; only the two
+  enemy[3].hp <= 0 escapes (maps 11, 15) use hp (battleVictoryIfEnemyHpZero).
+- A pending entrance keeps its source map, so the Ancient Evil speech is
+  judged for map 21 even after a GameOver reload onto another map.
+- Load's encounter^/maxenemy^ bounds run on every map load; the invented
+  map-entry log line is removed.
+- Red Antares prints its four offer lines before the select; Esc on Polaris'
+  offer answers asyouwish like the second option.
+- Strategy doc updated (entry 36-38 corrections, next steps).
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T06:02:06Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T06:04:58Z
+Run LOREMENU Rest at once with its colored lines and key wait
+
+R and SelectMode 6 rest immediately; the invented food readout, no-food notice
+and confirm button are gone. Rest lines keep their Print colors.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T06:05:02Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T06:10:31Z
+Port LOREMENU ViewParty, ViewCharacter and QuickView; drop the menu dialogs
+
+P/V/Q and SelectMode 1-3 run the source procedures: ViewParty's eight lines
+and QuickView's table print into the window (message log) without a key,
+ViewCharacter shows its first page with PressAnyKey and leaves the second.
+Names come from ReturnClass/ReturnWeapon/ReturnDefense. FieldMenuDialog and
+QuickViewDialog (invented member tables, one-page view, close buttons) are
+removed.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T06:10:48Z
+Cite LOREMAIN/LOREMENU in the hotkey test
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T06:11:19Z
+Point the ledger inventory and game spec at the new LOREMENU files
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T06:11:27Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:29:29Z
+Port LOREMENU Extrasense and ReturnPredict as source procedures
+
+E and SelectMode 5 run ChooseWhom, the exist and class gates and the five-item
+Select. See-through blanks the special cells until its key, prophecy uses
+ReturnPredict over the raw quest bytes, mind reading sets etc[5] (the source
+spends no ESP), clairvoyance scrolls the view per key with Esc exit and the
+level*5 cost after the direction. The invented ESP panel (member chips,
+result box, fixed costs, quest-step prophecy) is removed.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:29:40Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:35:21Z
+Chain LOREMAIN Main's position blocks after a map load
+
+Main runs its four 'if position = ...' blocks one after another, so a map
+loaded inside one (entrance, GameOver reload, special event) makes every later
+block whose position now matches dispatch the arrival cell as a step. The
+screen replays the cell with tryMove(0, 0) once the move handling is done and
+the position rank rose (town < ground < den < keep).
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:35:26Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:40:07Z
+Draw special cells from the map's default font slot (ReturnDefaultFont)
+
+Load copies font^[ReturnDefaultFont(map)] into font^[0]; the font files store
+slot 0 as solid black, so special cells used to be drawn as black squares.
+default_font_test compares the 27 cases with the Pascal source.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:40:17Z
+Refresh the contract ledger
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:49:33Z
+Port LORESUB Grocery, Weapon_Shop, Train_Center and Hospital as source flows
+
+The four town facilities run their goto loops in a shared text window
+(Clear/Print/PressAnyKey/Select): the grocery packages, the weapon shop's
+category/item/ChooseWhom loops with the source prices, the training center's
+level jump with ExpData typos and the hospital's four treatments with their
+refusals. The list-style facility dialog and TownLogic's facility helpers are
+removed; GameOverView now draws through the same window controller.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:51:08Z
+Refresh the contract ledger for the town facility port
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:56:58Z
+Gate CureSpell refusals on etc[6], wrap SP costs to 16 bits, run ReturnCondition
+
+CureSpell's refusal texts and SPnotEnough print only while party.etc[6] = 0, so
+the C hotkey (which does not clear it) stays silent. The 10*unconscious and
+30*dead costs are stored in the 16-bit integer i. ReturnCondition now
+normalizes hp <= 0 and over-long unconsciousness when the party status is
+redrawn. The invented touch labels are replaced by icons and the strategy
+document records the remaining differences.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T10:57:07Z
+Refresh the contract ledger for ReturnCondition
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:04:25Z
+Fold hospital costs to 16 bits, add Esc touch/back handling to shop windows
+
+Review findings on the town facility port: the hospital revive/heal/conscious
+costs are stored in the 16-bit integer i like the source variable, the window
+Select gets the close icon (Esc) and the system back button no longer pops the
+route under the running procedure. Differences and assumptions are recorded.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:06:01Z
+Refresh the contract ledger after the town shop review fixes
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:14:52Z
+Port BattleMode's PressAnyKey and ReadKey waits
+
+The party phase ends with PressAnyKey (prompt shown), the enemy phase with a
+prompt-less ReadKey before EndBattle's result is acted on (also a defeat), and
+a successful RunAway waits for ReadKey before leaving. Any key or pointer press
+continues; the invented 300ms delay before the enemy phase is removed.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:15:01Z
+Refresh the contract ledger for the battle key waits
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:19:04Z
+Draw the den darkness of Scroll when the magic torch is out
+
+In a den with party.etc[1] = 0 the original Scroll draws a black view with the
+gray text instead of the map and the party; the port always drew dens lit.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:19:10Z
+Refresh the contract ledger for the den darkness
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:35:29Z
+Normalize every slot at the source's SimpleDisCond points and tighten battle waits
+
+Unused slots start as the normalized zero record (unconscious 1, dead 1), the
+battle enemy phase runs SimpleDisCond at LOREBATT 398/789/925/1171, the screen
+adapters call it at their Display_Condition points, and the cure SP subtraction
+is stored in 16 bits. A press that ends a battle key wait no longer picks an
+enemy, lone modifier keys do not end it and the PressAnyKey text uses color 14.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:35:35Z
+Refresh the contract ledger after the second review fixes
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:41:59Z
+Run LOREMENU CureSpell for the battle command 5 instead of the old cure dialogs
+
+The battle cure now uses the same procedure as the field: whom list with empty
+slots, level div 2 + 1 spells, the closing blank lines, SimpleDisCond and key
+wait, silent refusals because party.etc[6] = 1, and the turn is spent.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:42:08Z
+Refresh the contract ledger for the battle CureSpell
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:56:42Z
+Repeat the on-screen pad's direction while it is held
+
+A press moves once at once, then repeats every 140ms after 350ms until the
+finger is lifted, the pointer is cancelled (a dialog opened on top) or the pad
+leaves the screen (battle, encounter).
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T11:56:47Z
+Refresh the contract ledger for the pad repeat note
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T12:38:35Z
+Show NPC speech as one dialogue window and keep it in a previous-dialogue tab
+
+The Print lines of a talk now stack in one PressAnyKey window instead of one
+message-log entry per line; the closed speech stays in a new 이전 대화 tab
+(session only) in both the tabbed and the stacked layout.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T12:38:41Z
+Refresh the contract ledger for the dialogue window note
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T16:06:41Z
+Fill {hero}/{sex} in NPC speech and restore the tavern's LORETALK lines
+
+{hero} (player[1].name) was shown literally in three speeches; the tavern lost
+its sign line and split ReturnSex(1) into two lines.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T16:06:53Z
+Refresh the contract ledger for the LORETALK fixes
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T16:15:03Z
+Remove the invented NPC dialogue sources
+
+assets/data/dialogues.json (speaker labels, quotes, reworded lines) and the
+LoreDialogueManager text functions with their own recruit path are gone. The
+talk dispatcher uses one source per interaction: facility, the direct per-map
+procedure (no fall-through when it prints nothing), then the script table.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T16:15:18Z
+Refresh the contract ledger after removing the dialogue sources
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T16:18:58Z
+Show multi-page LORETALK speeches page by page with a pause step
+
+A {pause: true} script step stands for the talk()/PressAnyKey that clears the
+window between pages; the 14 interior breaks of eight speeches were placed by
+aligning each at(x,y) block's line and break order with its script.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T16:19:08Z
+Refresh the contract ledger for the talk pause steps
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T16:26:02Z
+Drop more text the source never prints
+
+Blocked-move and entrance log lines, boss victory announcements, scene dialog
+titles and the generic equip message are gone; the Oedipus spear, golden
+shield and golden armor keep their LORESPEC texts, the sign header typo is fixed
+and scene speeches also go to the previous-dialogue tab.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T16:26:13Z
+Refresh the contract ledger for the text cleanup
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T17:01:48Z
+Keep a speech's lines above its Select, make asyouwish a log line, block input during events
+
+LORETALK's join speeches (Mad Joe, Polaris, Lore Hunter) keep their Print lines
+on screen under an empty-titled menu with no key wait of their own; asyouwish
+and the map 27 message are one log line; the invented menu titles are gone.
+Scene lines no longer also go to the log, pad and arrow input is ignored while
+an event runs, and an old food tree save flag moves to etc[32] bit8.
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-03T17:01:59Z
+Refresh the contract ledger for the choice and message changes
+
+Claude-Session: https://claude.ai/code/session_014eggpaU5twT6GAUZHCTUAF
+
+2026-10-04T02:08:14Z
+Unify LORESPEC and LOREENT speech windows and source page waits
+
+2026-10-04T03:05:49Z
+Restore DOS sprite colors and close remaining source behavior gaps
+
+2026-10-04T03:23:50Z
+Fix battle and clairvoyance cleanup when screens close
+
+2026-10-04T03:41:29Z
+Preserve source colors in character pages and QuickView
+
+2026-10-04T11:22:50Z
+Match Mad Joe reentry and integer randomness to original DOS executable
+
+2026-10-04T12:34:27Z
+Port Polaris recruitment and preserve selected party slots
+
+2026-10-04T13:05:04Z
+Port Lore Hunter recruitment and raw post-load completion bit
+
+2026-10-04T13:40:11Z
+Port Water Field lord directly with source reward and wait ordering
+
+2026-10-04T14:36:13Z
+Remove executable JSON rules and directly port source talkmode and signs
+
+2026-10-04T15:19:29Z
+Match source cure waits, six-slot bounds and DOS integer assignments
+
+2026-10-04T15:40:14Z
+Match DOS field poison and lava integer boundaries and six-slot rolls
+
+2026-10-05T02:17:27Z
+Match DOS Rest integer assignments and final six-slot condition updates
+
+2026-10-05T02:34:44Z
+Preserve native Hospital product-before-div costs and parity-first modernization plan
+
+2026-10-05T05:52:14Z
+Match native Train_Center byte growth and record six-class DOS parity
+
+2026-10-05T08:09:52Z
+Match DOS signed battle rewards and restore event input focus
+
+2026-10-05T12:53:46Z
+Match native DOS physical attack intermediate arithmetic
+
+2026-10-05T13:47:40Z
+Match DOS physical and magic defence arithmetic
+
+2026-10-05T13:54:58Z
+Record native CastOne cost arithmetic and signed SP storage
+
+2026-10-05T13:57:56Z
+Match native CastOne signed base damage arithmetic
+
+2026-10-05T14:03:20Z
+Match native WeaponAttack unsigned products and signed target stores
+
+2026-10-05T14:27:01Z
+Match DOS enemy magic damage and healing decisions
+
+2026-10-05T15:26:33Z
+Fix twenty original recruit, equipment and recovery storage differences
+
+2026-10-05T17:24:46Z
+Fix fifteen original boss HP, condition and reward parity differences
+
+2026-10-05T18:02:02Z
+Restore compiled RNG order and source battle selection behavior
+
+2026-10-05T18:17:30Z
+Port field condition refresh boundaries and prison desertion
+
+2026-10-05T23:10:56Z
+Match native training CASE dispatch and shortfall arithmetic
+
+2026-10-06T01:40:40Z
+Consolidate source-port work and prior main history
+
+2026-10-06T01:41:32Z
+Serve GitHub Pages from main docs and retire deployment branch
+
