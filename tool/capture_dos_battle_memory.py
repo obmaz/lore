@@ -163,7 +163,64 @@ def check():
     assert observed == decode({k:observed[k] for k in (*OFFSETS,'commandsHex')})
     assert observed['commands'] == continued['rounds'][-1]['completedCommands']
     assert observed['players'] == continued['rests'][-1]['afterKey']['players']
+    check_resumed()
     print('Original live DOS battles, recovery bytes and route RNG: verified')
+
+
+def check_resumed():
+    """Validate independent reload observations and a normal native disk save."""
+    f = json.loads((ROOT/'test/fixtures/dos_resumed_field_battle.json').read_text())
+    assert f['executableSha256'] == hashlib.sha256(EXE.read_bytes()).hexdigest()
+    assert f['offsets'] == OFFSETS
+    states = [f[k] for k in ('initial', 'encounter', 'enemyFirst', 'victory',
+                             'selectionRead', 'firstExecutionRead')]
+    states += [r[k] for r in f['rounds'] for k in ('partyPhase', 'enemyPhase')]
+    states += [f['save'][k] for k in ('wait', 'afterKey')]
+    for state in states:
+        keys = (*OFFSETS, *(['commandsHex'] if 'commandsHex' in state else []))
+        assert decode({k: state[k] for k in keys}) == state
+    departure = json.loads((ROOT/'test/fixtures/dos_new_game.json').read_text())['castleRoute']['departure']
+    assert f['initial']['players'] == departure['files']['PLAYER1.DAT']['hex']
+    assert f['initial']['party'] == departure['files']['PARTY1.DAT']['hex']
+    seed = f['initial']['seed']
+    x, y = departure['party']['x'], departure['party']['y']
+    ground = (ROOT/'repo_source/LORE_1993_runtime/GROUND1.MAP').read_bytes()
+    for i, step in enumerate(f['movement']):
+        dx, dy = {'Up': (0,-1), 'Down': (0,1), 'Left': (-1,0), 'Right': (1,0)}[step['key']]
+        x, y = x+dx, y+dy
+        assert 4 < x < 97 and 4 < y < 97
+        assert 24 <= ground[2+(y-1)*100+x-1] <= 47
+        assert step['seedBefore'] == seed
+        seed = (seed*0x08088405+1) & 0xffffffff
+        if i < len(f['movement'])-1:
+            assert (seed >> 16) % 40 != 0
+        else:
+            assert (seed >> 16) % 40 == 0
+            seed = (seed*0x08088405+1) & 0xffffffff
+            count = (seed >> 16) % 5 + 1
+            ids = []
+            for _ in range(count):
+                seed = (seed*0x08088405+1) & 0xffffffff
+                ids.append((seed >> 16) % 10 + 1)
+            assert ids == [r['eNumber'] for r in f['encounter']['enemyRecords']]
+        assert step['seedAfter'] == seed
+    assert seed == f['encounter']['seed']
+    for r in f['rounds']:
+        assert r['partyPhase']['commands'] == r['completedCommands']
+    saved = f['save']
+    for value in saved['files'].values():
+        raw = bytes.fromhex(value['hex'])
+        assert len(raw) == value['length']
+        assert hashlib.sha256(raw).hexdigest() == value['sha256']
+    assert records(bytes.fromhex(saved['files']['PLAYER1.DAT']['hex'])) == saved['records']
+    assert party(bytes.fromhex(saved['files']['PARTY1.DAT']['hex'])) == saved['partyRecord']
+    assert saved['files']['PLAYER1.DAT']['hex'] == f['victory']['players']
+    assert saved['files']['PARTY1.DAT']['hex'] == saved['wait']['party']
+    assert saved['files']['SAVE1.MAP']['hex'] == ground.hex()
+    assert saved['partyRecord'] == dict(f['victory']['partyRecord'], x=x, y=y)
+    assert saved['wait']['seed'] == f['victory']['seed']
+    assert saved['afterKey']['seed'] == (saved['wait']['seed']*0x08088405+1)&0xffffffff
+    assert saved['afterKey']['players'] == saved['wait']['players']
 
 
 if __name__ == '__main__':
