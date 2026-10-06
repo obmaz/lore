@@ -346,44 +346,20 @@ class _MainGameScreenState extends State<MainGameScreen> {
         ? LoreFieldLogic.exitPrompt
         : LoreFieldLogic.enterPrompt(portal.name);
 
-    final confirmed = await showDialog<bool>(
-      context: context,
-      barrierDismissible: false,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: RetroTheme.black,
-        shape: Border.all(color: RetroTheme.lightCyan, width: 2),
-        title: Text(
-          prompt,
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 12,
-          ),
-        ),
-        actions: [
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(backgroundColor: RetroTheme.blue),
-            onPressed: () => Navigator.of(ctx).pop(true),
-            child: Text(
-              LoreFieldLogic.confirmYes,
-              style: RetroTheme.dosFont.copyWith(fontSize: 11),
-            ),
-          ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              backgroundColor: RetroTheme.darkGray,
-            ),
-            onPressed: () => Navigator.of(ctx).pop(false),
-            child: Text(
-              LoreFieldLogic.confirmNo,
-              style: RetroTheme.dosFont.copyWith(fontSize: 11),
-            ),
-          ),
-        ],
-      ),
+    // LORESUB.wantenter/wantexit use Select(..., FALSE, TRUE): row one
+    // by default, arrows/Enter select and Esc returns zero. Keep Print(11)
+    // as a colored line rather than inventing a yellow dialog heading.
+    final choice = await showLoreSelectDialog(
+      context,
+      title: '',
+      lines: [(11, prompt)],
+      items: const [LoreFieldLogic.confirmYes, LoreFieldLogic.confirmNo],
     );
+    if (!mounted) return;
+    final confirmed = choice == 1;
 
     final plan = LorePortalSession.begin(
-      confirmed: confirmed == true,
+      confirmed: confirmed,
       portal: portal,
       context: _scriptContext(),
       scripts: _scripts,
@@ -391,7 +367,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
       y: ty,
     );
     if (plan.action == LorePortalAction.cancelled) {
-      if (confirmed == false) _addLog(LoreFieldLogic.asYouWish);
       if (sourceRejectY != null) {
         _game.playerX = tx;
         _game.playerY = sourceRejectY;

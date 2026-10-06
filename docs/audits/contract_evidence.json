@@ -2707,7 +2707,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map14_test.dart",
-      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending. Actual native MENACE(6,44) after independent entrance save: findgold400 has no key wait; raw etc32 bit3 is set immediately, no tile rewrite. Slot3 save gold2525, records and DEN1 map match mobile. Up/Down revisit keeps gold/bit. Captures and RNG in dos_menace_entry.json; mobile regression catches speech-adapter blocking. Other treasure cells remain source-replay evidence.",
       "verification": "partial"
     },
     {
@@ -14408,6 +14408,56 @@
       "implementation": "lib/services/save_manager.dart",
       "test": "test/new_game_dos_test.dart",
       "note": "Actual unseeded DOSBox /m creation: Hero/male, ten first answers, agility20/accuracy20, class8, companions7/5/3/1. Captured four Last DAT pairs preserve sorted companions, three levels1, current ESP=concentration and zero sixth record. dos_new_game.json retains raw bytes/SHA and check_dos_new_game.py verifies decoding. Mobile web continuation to first Lord Ahn quest save matches six records, etc100 bytes, location/food/gold and map10000 cells; reload/resave retains state. Only this creation path and initial quest segment, not all creation branches/native RNG/ending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:6",
+      "line": 37,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:7",
+      "line": 38,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:wantenter:1:if:1",
+      "line": 996,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Original Select row1 default, arrow/Enter and Esc->0; original Print11 prompt color, no added refusal speech. Actual native MENACE Down/Enter, Esc and Enter captured; mobile regression failed with old AlertDialog, passes source Select adapter. Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:wantexit:1:if:1",
+      "line": 1009,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Same source Select adapter as wantenter, with original Print11 exit prompt and no added refusal line. Existing mobile map exits check refusal repositioning and acceptance; native execution of all exits remains pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:findgold:1:for:1",
+      "line": 1018,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Fix source-backed map9/11/14/15 findgold calls. Native MENACE(6,44) gains400 and etc32=4 immediately, actual slot3 Save records/2500 map cells match mobile; confirmation on special tile and revisit draw no extra RNG or reward. Previous speech adapter blocked reward until popup acknowledgement. Native graphics paging and other treasure maps are not fully replayed.",
       "verification": "partial"
     }
   ]

@@ -164,6 +164,7 @@ def check():
     assert observed['commands'] == continued['rounds'][-1]['completedCommands']
     assert observed['players'] == continued['rests'][-1]['afterKey']['players']
     check_resumed()
+    check_menace_entry()
     print('Original live DOS battles, recovery bytes and route RNG: verified')
 
 
@@ -221,6 +222,86 @@ def check_resumed():
     assert saved['wait']['seed'] == f['victory']['seed']
     assert saved['afterKey']['seed'] == (saved['wait']['seed']*0x08088405+1)&0xffffffff
     assert saved['afterKey']['players'] == saved['wait']['players']
+
+
+def check_menace_entry():
+    """Connect native recovery, source menus, two map payloads and gold saves."""
+    f = json.loads((ROOT/'test/fixtures/dos_menace_entry.json').read_text())
+    assert f['executableSha256'] == hashlib.sha256(EXE.read_bytes()).hexdigest()
+    states = [f['initial'], f['goldCollected'], *f['portal'].values(),
+              f['goldRevisit']['left'], f['goldRevisit']['returned']]
+    states += [r[k] for r in f['rests'] for k in ('wait', 'afterKey')]
+    states += [f['difficulty'][k] for k in ('before', 'maxEnemySelected', 'after')]
+    states += [f['goldDifficulty'][k] for k in ('before', 'after')]
+    states += [f[k][s] for k in ('approachSave', 'insideSave', 'goldSave')
+               for s in ('wait', 'afterKey')]
+    for state in states:
+        assert decode({k: state[k] for k in (*OFFSETS, 'commandsHex')}) == state
+    previous = json.loads((ROOT/'test/fixtures/dos_resumed_field_battle.json').read_text())['save']
+    assert f['initial']['players'] == previous['files']['PLAYER1.DAT']['hex']
+    assert f['initial']['party'] == previous['files']['PARTY1.DAT']['hex']
+    seed = f['initial']['seed']
+    for rest in f['rests']:
+        assert rest['wait']['seed'] == seed
+        seed = (seed*0x08088405+1) & 0xffffffff
+        assert rest['afterKey']['seed'] == seed
+        assert rest['wait']['players'] == rest['afterKey']['players']
+    for name in ('difficulty', 'goldDifficulty'):
+        d = f[name]
+        assert d['after']['seed'] == (d['before']['seed']*0x08088405+1)&0xffffffff
+        assert d['after']['partyRecord']['etc'][6:8] == [5,3]
+        assert d['after']['players'] == d['before']['players']
+    for slot, key, mapname in ((1,'approachSave','GROUND1'), (2,'insideSave','DEN1'),
+                                (3,'goldSave','DEN1')):
+        saved = f[key]
+        files = saved['files']
+        for value in files.values():
+            raw = bytes.fromhex(value['hex'])
+            assert len(raw) == value['length']
+            assert hashlib.sha256(raw).hexdigest() == value['sha256']
+        assert party(bytes.fromhex(files[f'PARTY{slot}.DAT']['hex'])) == saved['partyRecord']
+        assert records(bytes.fromhex(files[f'PLAYER{slot}.DAT']['hex'])) == saved['records']
+        assert files[f'PARTY{slot}.DAT']['hex'] == saved['wait']['party']
+        assert files[f'PLAYER{slot}.DAT']['hex'] == saved['wait']['players']
+        assert bytes.fromhex(files[f'SAVE{slot}.MAP']['hex']) == (EXE.parent/f'{mapname}.MAP').read_bytes()
+    for moves, start, mapname, final, no_last_draw in (
+        (f['movement'], f['difficulty']['after'], 'GROUND1', f['approachSave'], False),
+        (f['goldMovement'], f['goldDifficulty']['after'], 'DEN1', f['goldSave'], True),
+    ):
+        raw = (EXE.parent/f'{mapname}.MAP').read_bytes()
+        width, height = raw[:2]
+        x, y = start['partyRecord']['x'], start['partyRecord']['y']
+        seed = start['seed']
+        for i, step in enumerate(moves):
+            dx, dy = {'Up':(0,-1),'Down':(0,1),'Left':(-1,0),'Right':(1,0)}[step['key']]
+            x, y = x+dx, y+dy
+            assert 4 < x < width-3 and 4 < y < height-3
+            tile = raw[2+(y-1)*width+x-1]
+            assert step['seedBefore'] == seed
+            if no_last_draw and i == len(moves)-1:
+                assert tile == 0
+            else:
+                assert (24 if mapname == 'GROUND1' else 41) <= tile <= 47
+                seed = (seed*0x08088405+1)&0xffffffff
+                assert (seed >> 16) % 100 != 0
+            assert step['seedAfter'] == seed
+        assert (x,y) == (final['partyRecord']['x'],final['partyRecord']['y'])
+        assert seed == final['wait']['seed']
+    portal = f['portal']
+    assert portal['request']['seed'] == portal['decline']['seed'] == portal['escape']['seed']
+    assert portal['entered']['seed'] == (portal['request']['seed']*0x08088405+1)&0xffffffff
+    assert portal['entered']['partyRecord'] == f['insideSave']['partyRecord']
+    assert portal['entered']['partyRecord']['etc'][6:8] == [2,3]
+    for key in ('approachSave', 'insideSave'):
+        saved = f[key]
+        assert saved['afterKey']['seed'] == (saved['wait']['seed']*0x08088405+1)&0xffffffff
+    gold = f['goldSave']
+    assert gold['partyRecord']['gold'] == f['insideSave']['partyRecord']['gold']+400
+    assert gold['partyRecord']['etc'][31] == 4
+    assert gold['afterKey']['seed'] == gold['wait']['seed']
+    assert f['goldRevisit']['left']['seed'] == (gold['afterKey']['seed']*0x08088405+1)&0xffffffff
+    assert f['goldRevisit']['returned']['seed'] == f['goldRevisit']['left']['seed']
+    assert f['goldRevisit']['returned']['partyRecord']['gold'] == gold['partyRecord']['gold']
 
 
 if __name__ == '__main__':

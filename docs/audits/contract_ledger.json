@@ -10946,8 +10946,13 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/menace_entry_dos_ui_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:7",
@@ -10957,8 +10962,13 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/menace_entry_dos_ui_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:8",
@@ -19494,7 +19504,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
+      "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending. Actual native MENACE(6,44) after independent entrance save: findgold400 has no key wait; raw etc32 bit3 is set immediately, no tile rewrite. Slot3 save gold2525, records and DEN1 map match mobile. Up/Down revisit keeps gold/bit. Captures and RNG in dos_menace_entry.json; mobile regression catches speech-adapter blocking. Other treasure cells remain source-replay evidence."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:99",
@@ -25699,8 +25709,13 @@
       "routine": "LORESUB.PAS:wantenter:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/menace_entry_dos_ui_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Original Select row1 default, arrow/Enter and Esc->0; original Print11 prompt color, no added refusal speech. Actual native MENACE Down/Enter, Esc and Enter captured; mobile regression failed with old AlertDialog, passes source Select adapter. Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign."
     },
     {
       "id": "LORESUB.PAS:wantexit:1:if:1",
@@ -25710,8 +25725,13 @@
       "routine": "LORESUB.PAS:wantexit:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_exit_boundary_ui_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Same source Select adapter as wantenter, with original Print11 exit prompt and no added refusal line. Existing mobile map exits check refusal repositioning and acceptance; native execution of all exits remains pending."
     },
     {
       "id": "LORESUB.PAS:findgold:1:for:1",
@@ -25721,8 +25741,13 @@
       "routine": "LORESUB.PAS:findgold:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/menace_entry_dos_ui_test.dart"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_spec_procedures.dart",
+      "reviewed_scope": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Fix source-backed map9/11/14/15 findgold calls. Native MENACE(6,44) gains400 and etc32=4 immediately, actual slot3 Save records/2500 map cells match mobile; confirmation on special tile and revisit draw no extra RNG or reward. Previous speech adapter blocked reward until popup acknowledgement. Native graphics paging and other treasure maps are not fully replayed."
     },
     {
       "id": "LORESUB.PAS:join:1:if:1",
@@ -33913,7 +33938,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map14_test.dart",
-      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending.",
+      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending. Actual native MENACE(6,44) after independent entrance save: findgold400 has no key wait; raw etc32 bit3 is set immediately, no tile rewrite. Slot3 save gold2525, records and DEN1 map match mobile. Up/Down revisit keeps gold/bit. Captures and RNG in dos_menace_entry.json; mobile regression catches speech-adapter blocking. Other treasure cells remain source-replay evidence.",
       "verification": "partial"
     },
     {
@@ -45615,6 +45640,56 @@
       "test": "test/new_game_dos_test.dart",
       "note": "Actual unseeded DOSBox /m creation: Hero/male, ten first answers, agility20/accuracy20, class8, companions7/5/3/1. Captured four Last DAT pairs preserve sorted companions, three levels1, current ESP=concentration and zero sixth record. dos_new_game.json retains raw bytes/SHA and check_dos_new_game.py verifies decoding. Mobile web continuation to first Lord Ahn quest save matches six records, etc100 bytes, location/food/gold and map10000 cells; reload/resave retains state. Only this creation path and initial quest segment, not all creation branches/native RNG/ending.",
       "verification": "partial"
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:6",
+      "line": 37,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
+      "verification": "partial"
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:7",
+      "line": 38,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:wantenter:1:if:1",
+      "line": 996,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Original Select row1 default, arrow/Enter and Esc->0; original Print11 prompt color, no added refusal speech. Actual native MENACE Down/Enter, Esc and Enter captured; mobile regression failed with old AlertDialog, passes source Select adapter. Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:wantexit:1:if:1",
+      "line": 1009,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/source_exit_boundary_ui_test.dart",
+      "note": "Same source Select adapter as wantenter, with original Print11 exit prompt and no added refusal line. Existing mobile map exits check refusal repositioning and acceptance; native execution of all exits remains pending.",
+      "verification": "partial"
+    },
+    {
+      "id": "LORESUB.PAS:findgold:1:for:1",
+      "line": 1018,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/menace_entry_dos_ui_test.dart",
+      "note": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Fix source-backed map9/11/14/15 findgold calls. Native MENACE(6,44) gains400 and etc32=4 immediately, actual slot3 Save records/2500 map cells match mobile; confirmation on special tile and revisit draw no extra RNG or reward. Previous speech adapter blocked reward until popup acknowledgement. Native graphics paging and other treasure maps are not fully replayed.",
+      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -48152,6 +48227,24 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/menace_entry_dos_test.dart",
+      "kind": "test",
+      "sha256": "bcea9e5b7eeb5cce9761dc0cc261c0f9c5d22a52ed9feaf9192ba867f360dbad",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/menace_entry_dos_ui_test.dart",
+      "kind": "test",
+      "sha256": "2b315021a81f3b222bd2f374a4e0fcde087130203e5b6379fbf137ea7a82358c",
+      "cited_source_files": [
+        "LOREENT.PAS",
+        "LOREMAIN.PAS",
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/message_log_view_test.dart",
       "kind": "test",
       "sha256": "69a71af90726867bd924f78d2a70e0fd6031bf483456baf4594af8cdad94544a",
@@ -48411,9 +48504,10 @@
     {
       "path": "test/source_exit_boundary_ui_test.dart",
       "kind": "test",
-      "sha256": "f41927c34c6e7593ef556c1ced0a30ce894272bd061879b351d9b3314ea188fc",
+      "sha256": "78fbeb6f2ab9925087cfcefbe05e773928282d530aae531d6254b1c9909ff6d9",
       "cited_source_files": [
-        "LORESPEC.PAS"
+        "LORESPEC.PAS",
+        "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -48812,6 +48906,16 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_menace_entry.json",
+      "kind": "fixture",
+      "sha256": "0b3cd512e81212d9046c5ff2ca45a2c3a637971c95ffd82fa1718425ca2c9ad5",
+      "test_users": [
+        "test/menace_entry_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_new_game.json",
       "kind": "fixture",
       "sha256": "f1f2f358cb4aee96348a8043fe642f13bcd72e6d19703c2875e6b1b5cea8cc0e",
@@ -48866,6 +48970,7 @@
       "kind": "fixture",
       "sha256": "f4d7fc311edd59f2b2357f7ef1fb6f5b81f8335f01f7c051e9ceee31d2efc82d",
       "test_users": [
+        "test/menace_entry_dos_ui_test.dart",
         "test/resumed_field_battle_dos_test.dart",
         "test/resumed_field_battle_dos_ui_test.dart"
       ],
@@ -49230,7 +49335,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "ea9b8892b70cac3ab1a99a89e3aa67837cd44f1515156caeab39f946194e7c4d"
+      "sha256": "4377466bd3d6aeb7ef9a333afa81ddbe5d9c48860e3c34c456637b01de9e09c4"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -49266,7 +49371,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "f464ff82d8a8d87594c6e15eb5cf0eaffdf96e7351613432280023c7fa9b9a44"
+      "sha256": "4bffaf2ff3ad93dfd4b3e3aff4ce0db0b12d2aa5da469db60f6472aa94d4a42c"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -49350,9 +49455,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "48fd6e6484a6925851d0aecd1129aca9b5a5239d40d76a5eedbcb6929a3d4482",
+      "sha256": "f878dcdcffdb8e83bbbdaf1d6d6a06862edfda51ce5cac1efb4f11a9eb074383",
       "top_level_counts": {
-        "contracts": 1441
+        "contracts": 1446
       }
     }
   ],
@@ -49360,9 +49465,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 407,
+    "unmapped_behavior_sites": 402,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 1441,
+    "partially_verified_behavior_sites": 1446,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

@@ -84,7 +84,16 @@ await page.keyboard.press('Enter');await page.waitForTimeout(400);
 compare(castle.armory,await save(),'Armoury');
 await page.keyboard.press('Enter');await walk(castle.inputs.blessingApproach);
 await page.keyboard.press('ArrowDown');await page.waitForTimeout(400);await page.keyboard.press('Enter');await page.waitForTimeout(300);
-await walk(castle.inputs.exitApproach);await page.waitForTimeout(400);await click('예, 그렇습니다.');await page.waitForTimeout(400);
+await walk(castle.inputs.exitApproach);await page.waitForTimeout(400);
+const exitPrompt=page.getByText('여기서 나가기를 원합니까 ?',{exact:true});
+await exitPrompt.waitFor();await page.keyboard.press('Escape');await page.waitForTimeout(400);
+if(await exitPrompt.count())throw Error('Exit confirmation must close on Esc');
+await page.keyboard.press('ArrowDown');await page.waitForTimeout(400);
+await exitPrompt.waitFor();await page.keyboard.press('ArrowDown');await page.keyboard.press('Enter');await page.waitForTimeout(400);
+if(await exitPrompt.count())throw Error('Exit refusal must close the source Select');
+await page.keyboard.press('ArrowDown');await page.waitForTimeout(400);
+await exitPrompt.waitFor();await page.keyboard.press('Enter');await page.waitForTimeout(400);
+console.log('Actual mobile web exit Select: Esc, arrow/Enter refusal, default Enter admission pass');
 await page.keyboard.press('Enter');await page.waitForTimeout(400);await click('당신을 환영하오.');await page.waitForTimeout(500);
 // Actual DOS retains this blank PressAnyKey after join, before flag/map load.
 await page.getByText('아무키나 누르십시오 ...',{exact:true}).waitFor();

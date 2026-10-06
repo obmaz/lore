@@ -1,3 +1,4 @@
+// LORESUB.PAS:999-1010 wantexit selection, used by the LORESPEC exit boundaries.
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
