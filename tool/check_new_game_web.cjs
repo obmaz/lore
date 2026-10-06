@@ -13,6 +13,18 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const data=JSON.parse(fs.readFileSync(path.join(root,'assets/data/creation.json')));
 const fixture=JSON.parse(fs.readFileSync(path.join(root,'test/fixtures/dos_new_game.json')));
 await page.goto(process.env.LORE_CHECK_URL||'http://127.0.0.1:8765/lore/');await page.waitForTimeout(1500);
+// A cached successful build can leave bootstrap pointing at a previous WASM
+// hash. Compare the deployed response itself before exercising the mobile UI.
+const wasmIntegrity=await page.evaluate(async()=>{
+ const expected=window._flutter.buildConfig.wasmHashes['main.dart.wasm'];
+ const response=await fetch(new URL('main.dart.wasm',document.baseURI),{cache:'no-store'});
+ if(!response.ok)throw Error('WASM response '+response.status);
+ const digest=await crypto.subtle.digest('SHA-256',await response.arrayBuffer());
+ const actual=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');
+ return {expected,actual};
+});
+if(wasmIntegrity.expected!==wasmIntegrity.actual)throw Error('Bootstrap/WASM SHA-256 mismatch '+JSON.stringify(wasmIntegrity));
+console.log('Deployed bootstrap hash matches the actual WASM response');
 await page.locator('flt-semantics-placeholder').evaluateAll(es=>es.forEach(e=>e.click()));
 async function click(text){await page.getByText(text,{exact:true}).click();await page.waitForTimeout(100);}
 async function next(){await click(data.texts.Third[10]);}
