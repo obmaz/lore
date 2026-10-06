@@ -1,30 +1,35 @@
 # 또 다른 지식의 성전 (LORE 1993)
 
-1993년 DOS 게임 **또 다른 지식의 성전**을 Flutter로 이식한 프로젝트입니다. 원본 Pascal 소스와 실행 데이터는 `repo_source/LORE_1993_src/`, `repo_source/LORE_1993_runtime/`에 있습니다. 게임 동작의 대조 내용과 알려진 편차는 [게임 명세서](docs/game_specs.md)에 기록했습니다.
+1993년 DOS 게임 **또 다른 지식의 성전**을 Flutter로 이식하는 프로젝트입니다. 원본 Pascal 소스와 실행 자료를 바탕으로 게임 로직을 Dart로 직접 옮기고 있습니다.
 
-현재 방향은 **원본 게임 로직을 보존하고 맵 표현·UI·음악을 현대화**하는 것입니다.
-원본 분기·비트·배열 계산은 Dart로 직접 옮기며, JSON 게임 팩 전환은 목표에서 제외했습니다.
-작업 순서·표현과 로직의 경계·최종 완료 판정은 유일한 계획 문서인 [직접 이식 전략](docs/porting/direct_port_strategy.md)을 따릅니다.
-원본의 실행 순서·절차 간 호출·상태 수명주기는 [실행 모델](docs/source/execution_model.md), [절차 추적](docs/source/procedure_traces.md), [상태 수명주기](docs/source/state_lifecycle.md)에 기록했습니다. 이 자료는 소스 분석 근거이며 별도 실행 계획이 아닙니다.
-원본 범위와 남은 검증 항목은 [원본 계약 기준선](docs/audits/contract_ledger.md)에서 확인할 수 있습니다.
-이전 방식의 기준 버전은 태그 `pre-direct-port-2026-10-02` (`7ff0e89`)로 보존했습니다.
+## 이식 방향과 문서
+
+**원본과 동일한 게임 동작을 먼저 구현한 뒤 현대화**하는 것을 목표로 합니다. 원본의 분기·비트·배열 계산과 실행 순서를 보존하며, 맵 표현·UI·입력·음악은 현재 환경에 맞게 구현합니다.
+
+- [직접 이식 전략](docs/porting/direct_port_strategy.md): 작업 순서와 최종 완료 기준
+- [게임 명세서](docs/game_specs.md): 원본과의 대조 내용 및 알려진 편차
+- [원본 계약 기준선](docs/audits/contract_ledger.md): 이식 범위와 남은 검증 항목
+- 원본 분석: [실행 모델](docs/source/execution_model.md) · [절차 추적](docs/source/procedure_traces.md) · [상태 수명주기](docs/source/state_lifecycle.md)
+- [개발 이력](COMMIT_HISTORY.txt): 저장소 재생성 전의 작업 날짜와 커밋 메시지
 
 ## 폴더 안내
 
 | 위치 | 내용 |
 | --- | --- |
-| `lib/` | Flutter 게임 구현 |
-| `assets/` | 실행에 사용하는 게임 자료 |
+| [lib/](lib/) | Flutter 게임 구현 |
+| [assets/](assets/) | 실행에 사용하는 게임 자료 |
 | [docs/](docs/README.md) | 이식 전략·원본 분석·감사·검증 문서 |
-| `repo_source/` | 원본 게임 소스와 실행 자료 |
-| `test/` | Flutter 테스트와 원본 재생 fixture |
-| [tool/](tool/README.md) | 분석·추출 도구와 `tool/tests/`의 Python 테스트 |
-| `build/` | 생성물과 `build/logs/`의 검증 로그 |
+| [repo_source/](repo_source/) | 원본 Pascal 소스와 DOS 실행 자료 |
+| [test/](test/) | Flutter 테스트와 원본 동작 재현 자료 |
+| [tool/](tool/README.md) | 분석·추출 도구와 Python 테스트 |
+| build/ | 로컬 빌드 생성물과 검증 로그 |
 | 플랫폼 폴더 | Android·iOS·웹·데스크톱 실행 설정 |
+
+원본에서 추출한 지도·폰트·대사·전투 데이터는 assets 폴더에 포함되어 있습니다. 게임 실행과 Flutter 테스트에는 별도의 DOS 런타임이 필요하지 않습니다.
 
 ## 실행
 
-Flutter SDK가 설치된 환경에서:
+Flutter SDK가 설치된 환경에서 다음 명령으로 웹 버전을 실행합니다.
 
 ```sh
 flutter pub get
@@ -59,24 +64,20 @@ dart compile js -O2 tool/verify_source_memory.dart -o build/source-memory-verifi
 node build/source-memory-verification.js
 ```
 
-원본에서 추출한 지도·폰트·대사·전투 데이터를 `assets/`에 포함했습니다. 추출 및 병합 도구는 `tool/`에 있으며, 게임 실행과 테스트에는 별도의 DOS 런타임이 필요하지 않습니다.
-
 ## 정적 웹 페이지 배포
 
-GitHub Actions 빌드는 사용하지 않습니다. 로컬에서 다음 명령으로 WASM과
-JavaScript 대체 버전을 함께 빌드합니다.
+로컬에서 WASM과 JavaScript 대체 버전을 함께 빌드한 뒤 GitHub Pages에 게시합니다.
 
 ```sh
 flutter build web --release --wasm --base-href /lore/ --no-web-resources-cdn
 ```
 
-`build/web/`의 배포 파일을 `main` 브랜치의 `docs/`에 복사합니다. 기존 문서
-디렉터리는 보존하고, 배포 파일은 같은 이름의 파일만 갱신합니다. `docs/.nojekyll`
-파일도 둡니다. GitHub Pages의 배포 소스는 `main` 브랜치의 `/docs`입니다. Flutter 진입 파일 `main.dart.wasm`과 렌더러의 `.wasm`
-파일을 브라우저가 정상 로드하려면 정적 서버가 `.wasm`을
-`application/wasm`으로 제공해야 합니다. WASM GC 미지원 브라우저에는
-같은 빌드의 `main.dart.js`가 사용됩니다.
+1. `build/web/`의 배포 파일을 `docs/`에 복사합니다. 기존 문서 디렉터리는 보존하고, 같은 이름의 배포 파일만 갱신합니다.
+2. `docs/.nojekyll` 파일을 포함해 `main`에 커밋하고 푸시합니다.
+3. GitHub의 **Settings → Pages**에서 **Deploy from a branch**, 브랜치 **main**, 폴더 **/docs**를 선택하고 저장합니다.
 
-GitHub Pages는 저장소가 비공개여도 게시된 사이트 자체는 공개됩니다.
+정적 서버는 `.wasm` 파일을 `application/wasm` 형식으로 제공해야 합니다. WASM GC를 지원하지 않는 브라우저에는 같은 빌드의 `main.dart.js`가 사용됩니다.
+
+## 원본 출처
 
 이 프로젝트는 [smgal/LoreTrilogy_1993](https://github.com/smgal/LoreTrilogy_1993)의 원본 소스를 참고하여 AI를 활용해 포팅하고 있습니다.
