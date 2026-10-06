@@ -78,3 +78,5 @@ flutter build web --release --wasm --base-href /lore/ --no-web-resources-cdn
 같은 빌드의 `main.dart.js`가 사용됩니다.
 
 GitHub Pages는 저장소가 비공개여도 게시된 사이트 자체는 공개됩니다.
+
+이 프로젝트는 [smgal/LoreTrilogy_1993](https://github.com/smgal/LoreTrilogy_1993)의 원본 소스를 참고하여 AI를 활용해 포팅하고 있습니다.
