@@ -27,4 +27,10 @@
     settleRotation();
   });
   window.addEventListener('orientationchange', settleRotation);
+  const fullscreenChanged = () => {
+    lockHeight();
+    settleRotation();
+  };
+  document.addEventListener('fullscreenchange', fullscreenChanged);
+  document.addEventListener('webkitfullscreenchange', fullscreenChanged);
 })();

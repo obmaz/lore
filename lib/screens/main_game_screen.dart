@@ -64,6 +64,7 @@ import '../logic/lore_menu_text.dart';
 import '../widgets/ending_view.dart';
 import '../widgets/game_over_view.dart';
 import '../widgets/lore_select_view.dart';
+import '../widgets/browser_fullscreen_button.dart';
 
 enum GameScreenMode { field, encounter, battle, gameOver, ending }
 
@@ -1422,6 +1423,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final k = await showLoreSelectDialog(
       context,
       title: LoreMenuText.selectModePrompt,
+      footer: const BrowserFullscreenButton(),
       items: const [
         LoreMenuText.selectModeParty,
         LoreMenuText.selectModeCharacter,

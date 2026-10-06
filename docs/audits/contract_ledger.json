@@ -49060,7 +49060,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "c2053404d292083111bf5d4c4c4a4a1b5cdd776280b4e7d80136e3fe741721e6"
+      "sha256": "103d84ca58683425ef2e091a00a559aea137764132639c1fc6d0ab01a037c6b8"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -49088,7 +49088,7 @@
     },
     {
       "path": "lib/widgets/lore_select_view.dart",
-      "sha256": "3d27c2d5b87f30501e9dea42c7f9c790afa1e027e312814e8bd62393d8dc348a"
+      "sha256": "357b47e1aec7b2090d8441f94bf4ee7c5bc469ef4b2ca16288daee5a55d4b6db"
     },
     {
       "path": "lib/widgets/lore_source_text.dart",
