@@ -1423,7 +1423,6 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final k = await showLoreSelectDialog(
       context,
       title: LoreMenuText.selectModePrompt,
-      footer: const BrowserFullscreenButton(),
       items: const [
         LoreMenuText.selectModeParty,
         LoreMenuText.selectModeCharacter,
@@ -1902,41 +1901,49 @@ class _MainGameScreenState extends State<MainGameScreen> {
         (Icons.favorite, LoreMenuText.selectModeQuick, FieldAction.quickView),
         (Icons.psychology, LoreMenuText.selectModeEsp, FieldAction.extrasense),
       ];
-      return SingleChildScrollView(
-        scrollDirection: vertical ? Axis.vertical : Axis.horizontal,
-        child: Flex(
-          direction: vertical ? Axis.vertical : Axis.horizontal,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            for (final (icon, label, action) in items)
-              Semantics(
-                button: true,
-                label: label,
-                child: IconButton(
-                  icon: Icon(icon, size: 20, color: RetroTheme.lightGray),
-                  onPressed: () async {
-                    if (_entryAnimationActive ||
-                        _scriptDepth > 0 ||
-                        _currentMode != GameScreenMode.field) {
-                      return;
-                    }
-                    switch (action) {
-                      case FieldAction.openMenu:
-                        LoreDialogueManager.instance.setBattleResult(0);
-                        await _runSelectMode();
-                      case FieldAction.quickView:
-                        await _runQuickView();
-                      case FieldAction.extrasense:
-                        await _openEspDialog();
-                      default:
-                        break;
-                    }
-                    _redispatchCurrentTileAfter(action);
-                  },
-                ),
+      return Flex(
+        direction: vertical ? Axis.vertical : Axis.horizontal,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: vertical ? Axis.vertical : Axis.horizontal,
+              child: Flex(
+                direction: vertical ? Axis.vertical : Axis.horizontal,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  for (final (icon, label, action) in items)
+                    Semantics(
+                      button: true,
+                      label: label,
+                      child: IconButton(
+                        icon: Icon(icon, size: 20, color: RetroTheme.lightGray),
+                        onPressed: () async {
+                          if (_entryAnimationActive ||
+                              _scriptDepth > 0 ||
+                              _currentMode != GameScreenMode.field) {
+                            return;
+                          }
+                          switch (action) {
+                            case FieldAction.openMenu:
+                              LoreDialogueManager.instance.setBattleResult(0);
+                              await _runSelectMode();
+                            case FieldAction.quickView:
+                              await _runQuickView();
+                            case FieldAction.extrasense:
+                              await _openEspDialog();
+                            default:
+                              break;
+                          }
+                          _redispatchCurrentTileAfter(action);
+                        },
+                      ),
+                    ),
+                ],
               ),
-          ],
-        ),
+            ),
+          ),
+          const BrowserFullscreenButton(),
+        ],
       );
     },
   );

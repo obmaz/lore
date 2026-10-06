@@ -18,7 +18,6 @@ Future<int> showLoreSelectDialog(
   required List<String> items,
   int? maxsum,
   List<(int, String)> lines = const [],
-  Widget? footer,
 }) async {
   final k = await showDialog<int>(
     context: context,
@@ -62,8 +61,6 @@ Future<int> showLoreSelectDialog(
                   onSelected: (k) => Navigator.of(ctx).pop(k),
                 ),
               ),
-              if (footer != null)
-                Align(alignment: Alignment.centerLeft, child: footer),
             ],
           ),
         ),
