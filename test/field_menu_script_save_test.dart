@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +15,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// LOREMENU.PAS `GameOption` on the game screen: SelectMode item 7 and the
 /// G hotkey, item 5 (`Save`).
+/// Returning from G runs Move_Mode; this menu regression excludes encounters.
+class _NoEncounterRandom implements Random {
+  @override
+  int nextInt(int max) => max - 1;
+  @override
+  bool nextBool() => false;
+  @override
+  double nextDouble() => 0.99;
+}
+
 void main() {
   Future<void> open(WidgetTester tester) async {
     SharedPreferences.setMockInitialValues({});
@@ -29,6 +41,7 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(
         home: MainGameScreen(
+          encounterRandom: _NoEncounterRandom(),
           initialSaveData: SaveData(
             slot: 1,
             slotName: SaveManager.slotNames.first,

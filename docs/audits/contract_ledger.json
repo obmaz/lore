@@ -13539,7 +13539,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_tile_protocol.dart",
-      "reviewed_scope": "Town tile dispatch, all 256 tile values."
+      "reviewed_scope": "Town tile dispatch, all 256 tile values. LoreFieldSession now enters special exit tiles before portal confirmation, retaining LOREENT entry originposition. Actual cold-created DOS castle exit shows party at(51,96) while Skeleton waits at(51,95); mobile screen checks current coordinate/flag/map before final key. Generic special exit transition covered in field_session_test; no native replay of all exit maps."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:17",
@@ -17978,7 +17978,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending."
+      "reviewed_scope": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending. Actual cold-created DOS armoury save: Hero/Hercules/Merlin/Genius Kie weapon1/power5, Regulus class5 remains weapon0/power12; six records, etc100 bytes and all10000 map cells match mobile web journey in dos_new_game.json castleRoute."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:22",
@@ -18038,11 +18038,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_spec_map6_test.dart"
+        "test/castle_departure_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending."
+      "reviewed_scope": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending. Actual unmodified DOS cold-created journey to castle exit: join(19,6) leaves a blank PressAnyKey before etc31 bit1 and Ground1 load; missing final wait corrected in both acceptance and refusal. Mobile screen regression checks accept/decline/Esc before and after confirmation. dos_new_game.json castleRoute retains native armoury/departure player, party and map bytes; check_dos_new_game.py checks decoding. Native accepted path only; decline/Esc source-derived, unrelated test encounters disabled, no native RNG seed/whole campaign claim."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:25",
@@ -31213,7 +31213,7 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Town tile dispatch, all 256 tile values.",
+      "note": "Town tile dispatch, all 256 tile values. LoreFieldSession now enters special exit tiles before portal confirmation, retaining LOREENT entry originposition. Actual cold-created DOS castle exit shows party at(51,96) while Skeleton waits at(51,95); mobile screen checks current coordinate/flag/map before final key. Generic special exit transition covered in field_session_test; no native replay of all exit maps.",
       "verification": "partial"
     },
     {
@@ -34443,7 +34443,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map6_test.dart",
-      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending. Actual cold-created DOS armoury save: Hero/Hercules/Merlin/Genius Kie weapon1/power5, Regulus class5 remains weapon0/power12; six records, etc100 bytes and all10000 map cells match mobile web journey in dos_new_game.json castleRoute.",
       "verification": "partial"
     },
     {
@@ -34482,8 +34482,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/lore_spec_map6_test.dart",
-      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending.",
+      "test": "test/castle_departure_dos_ui_test.dart",
+      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending. Actual unmodified DOS cold-created journey to castle exit: join(19,6) leaves a blank PressAnyKey before etc31 bit1 and Ground1 load; missing final wait corrected in both acceptance and refusal. Mobile screen regression checks accept/decline/Esc before and after confirmation. dos_new_game.json castleRoute retains native armoury/departure player, party and map bytes; check_dos_new_game.py checks decoding. Native accepted path only; decline/Esc source-derived, unrelated test encounters disabled, no native RNG seed/whole campaign claim.",
       "verification": "partial"
     },
     {
@@ -47376,6 +47376,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/castle_departure_dos_ui_test.dart",
+      "kind": "test",
+      "sha256": "90de121204e8b18c2ae1c3a60db72a11a5ca01f109f15e7dd4c78cb43be68403",
+      "cited_source_files": [
+        "LORESPEC.PAS",
+        "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/condition_storage_dos_test.dart",
       "kind": "test",
       "sha256": "bbea8ceb3b8c602b6bc49680d4a6cc1f4e50118309ac80d78380679d3de1fe79",
@@ -47525,7 +47535,7 @@
     {
       "path": "test/field_menu_script_save_test.dart",
       "kind": "test",
-      "sha256": "d9648e0d41e46d0965a5094ee769d99a3feb33bf19bccfbeb0a245c9e87da0b9",
+      "sha256": "88031ad6a6d51443dbd58381f7887e5985bcbb1f6dfd9c3b88807e57db8bddcb",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -47541,14 +47551,16 @@
     {
       "path": "test/field_session_test.dart",
       "kind": "test",
-      "sha256": "f71e55f90889efd3b307e7e88cf52de9fbad91e3895cf598e788818510d060f1",
-      "cited_source_files": [],
+      "sha256": "1a422ed659b21074281f3565a7591592d463c5e30f1cde8c4a6ea8a0882a12b9",
+      "cited_source_files": [
+        "LOREMAIN.PAS"
+      ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
       "path": "test/field_test.dart",
       "kind": "test",
-      "sha256": "165aa0356ad0d687adbc4a01e3af9c1a5dd4f02caa081e2caa00121103742a94",
+      "sha256": "ce8b50ef25318c6d06ddc8bb9d6b412be06d39ec36ba2d2c6fbbc49740c354af",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -47914,7 +47926,7 @@
     {
       "path": "test/lore_spec_map6_test.dart",
       "kind": "test",
-      "sha256": "3f9b1d2cb8d7b648b30bd9d43fb6d9ec08631b406f6a86df1ffcd96a21702a81",
+      "sha256": "a84d1d34d7ee6880514b23971ca3f906f45dddb30bcbbbd080feeb894d69696f",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -48165,14 +48177,16 @@
     {
       "path": "test/portal_reconciliation_test.dart",
       "kind": "test",
-      "sha256": "2fe878d546dff95cd0665ed3d6aebbe5b47c1e568fef5ef932f67598122b2771",
-      "cited_source_files": [],
+      "sha256": "9e847ccb9761a28f8d192e026646b57b39c2bf023aff70e1f41a86d67cb93647",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
       "path": "test/portal_session_test.dart",
       "kind": "test",
-      "sha256": "68ae006a27e5bfc86b9717ecc6b08cff6fd2efd6d01bc1c12300bfd0ae63f18f",
+      "sha256": "6412ce762779d237e8fca67dca1ee9f67b11e7fc8ce10ca65bfc368492fdf850",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -48748,8 +48762,9 @@
     {
       "path": "test/fixtures/dos_new_game.json",
       "kind": "fixture",
-      "sha256": "c7df0863286f74fd9202ed461dd9a6c9b66d10dc8b4e60e42463779e71612a77",
+      "sha256": "f1f2f358cb4aee96348a8043fe642f13bcd72e6d19703c2875e6b1b5cea8cc0e",
       "test_users": [
+        "test/castle_departure_dos_ui_test.dart",
         "test/new_game_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
@@ -49101,7 +49116,7 @@
     },
     {
       "path": "lib/logic/lore_field_session.dart",
-      "sha256": "f72c8e87b8ab8ed49c7a29b83916757ca6c728ab7053480c783cbfa91d709be6"
+      "sha256": "0b974b949968fe2d878ee9d2cf63bc0bd4f4e2a5ce3dd2ad21811b33ca4c2cc8"
     },
     {
       "path": "lib/logic/lore_source_memory.dart",
@@ -49141,7 +49156,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "9e6c46e7fb4704d503f65e831375f4b8f3c39778e9f119a95fb8872713293b60"
+      "sha256": "ea9b8892b70cac3ab1a99a89e3aa67837cd44f1515156caeab39f946194e7c4d"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -49261,7 +49276,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "61916d4736609f90e3be77caea0a9b8489088ee41d6c7c9510fe8201e0bb2254",
+      "sha256": "0e5075e4e04d503b1cf848ab364acb5e95c69078389cf4752bd3bd4f75355790",
       "top_level_counts": {
         "contracts": 1441
       }

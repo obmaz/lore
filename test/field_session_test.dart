@@ -60,7 +60,7 @@ void main() {
     expect(kinds(move(mapData)), [LoreFieldEffectKind.entranceNoMatch]);
   });
 
-  test('특수 타일에 포털이 겹치면 포털을 우선하고 없으면 사건을 밟는다', () {
+  test('LOREMAIN.PAS special exit enters target before the portal request', () {
     const portal = PortalInfo(
       targetMapId: 9,
       targetX: 10,
@@ -68,7 +68,11 @@ void main() {
       name: 'gate',
     );
     final mapData = map('keep', 52);
-    expect(kinds(move(mapData, portal: portal)), [
+    final exit = move(mapData, portal: portal);
+    expect((exit.x, exit.y), (11, 10));
+    expect(exit.moved, isTrue);
+    expect(kinds(exit), [
+      LoreFieldEffectKind.positionChanged,
       LoreFieldEffectKind.portalRequest,
     ]);
     expect(kinds(move(mapData)), [

@@ -178,9 +178,19 @@ class LoreSpecProcedures {
               ScriptStep(kind: 'join', key: 'skeleton', slot: 4),
               ScriptStep(kind: 'displayCondition'),
               ScriptStep(kind: 'flag', key: 'skeletonJoined'),
+              // LORESPEC:295 waits after join/Display_Condition, before
+              // etc[31] and the map load. Select(clean=TRUE) cleared the text.
+              ScriptStep(
+                kind: 'scene',
+                scene: ScriptScene(title: 'LORE 성', lines: []),
+              ),
             ]),
             ScriptOption('미안하지만 안되겠소.', [
-              ScriptStep(kind: 'say', text: '당신이 바란다면 ...'),
+              // asyouwish is followed by the same explicit PressAnyKey.
+              ScriptStep(
+                kind: 'scene',
+                scene: ScriptScene(title: 'LORE 성', lines: ['당신이 바란다면 ...']),
+              ),
             ]),
           ],
         ),

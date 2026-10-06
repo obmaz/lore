@@ -1,4 +1,5 @@
 import 'support/legacy_json_fixture_engine.dart';
+
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -37,22 +38,26 @@ void main() {
     expect((game.playerX, game.playerY), (30, 44));
   });
 
-  test('맵 8 포털 확인 전에는 위치가 그대로이고 목적지는 원본과 같다', () async {
-    LoreWorldManager.instance.resetRulesForTest();
-    final map = await LoreMapData.loadFromAsset('TOWN3', category: 'town');
-    PortalInfo? requested;
-    final game = LoreGame(
-      initialMapId: 8,
-      initialPlayerX: 51,
-      initialPlayerY: 10,
-      onPortalRequested: (portal, _, _) => requested = portal,
-    )..currentMap = map;
+  test(
+    'LORESPEC.PAS map 8 special gate enters (50,10) before confirmation',
+    () async {
+      LoreWorldManager.instance.resetRulesForTest();
+      final map = await LoreMapData.loadFromAsset('TOWN3', category: 'town');
+      PortalInfo? requested;
+      final game = LoreGame(
+        initialMapId: 8,
+        initialPlayerX: 51,
+        initialPlayerY: 10,
+        onPortalRequested: (portal, _, _) => requested = portal,
+      )..currentMap = map;
 
-    expect(game.tryMove(-1, 0), isFalse);
-    expect((game.playerX, game.playerY), (51, 10));
-    expect(requested?.targetMapId, 7);
-    expect((requested?.targetX, requested?.targetY), (50, 10));
-  });
+      expect(map.getTile(50, 10), 0);
+      expect(game.tryMove(-1, 0), isTrue);
+      expect((game.playerX, game.playerY), (50, 10));
+      expect(requested?.targetMapId, 7);
+      expect((requested?.targetX, requested?.targetY), (50, 10));
+    },
+  );
 
   test('원본 entermode에 좌표 규칙이 없는 진입 타일은 지도를 바꾸지 않는다', () async {
     LoreWorldManager.instance.resetRulesForTest();
@@ -99,7 +104,9 @@ void main() {
     manager.resetRulesForTest();
     await manager.loadData();
     final scripts = LegacyJsonFixtureEngine()
-      ..loadFromJson(File('test/fixtures/legacy_rules/scripts.json').readAsStringSync());
+      ..loadFromJson(
+        File('test/fixtures/legacy_rules/scripts.json').readAsStringSync(),
+      );
     for (final site in [
       (
         mapId: 23,

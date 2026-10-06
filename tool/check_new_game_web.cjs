@@ -1,4 +1,4 @@
-// Mobile creation -> Lord Ahn -> save/reload, against independently captured DOS bytes.
+// Mobile creation -> Lord Ahn -> armoury -> Skeleton departure, against DOS bytes.
 // Requires Playwright and Chromium. LORE_CHECK_URL selects the deployed/local build;
 // LORE_CHROMIUM selects a Chromium executable (default /usr/bin/chromium).
 // No synthetic save seed. Each invocation uses an empty browser context.
@@ -59,6 +59,42 @@ const reloaded=await page.evaluate(()=>JSON.parse(JSON.parse(localStorage.getIte
 for(const key of ['party','flags','etc','mapId','playerX','playerY','food','gold','mapTiles'])if(!equal(reloaded[key],saved[key]))throw Error('Reload/save changed '+key);
 console.log('First quest reload and resave retain the same state');
 await page.screenshot({path:'/tmp/lore-newgame-first-quest-web.png'});
+const castle=fixture.castleRoute;
+async function walk(route){
+ for(const key of route){await page.keyboard.press('Arrow'+key);await page.waitForTimeout(150);}
+}
+async function save(){
+ await page.keyboard.press('KeyG');await page.waitForTimeout(300);
+ await click('현재의 게임을 저장');await click('본 게임 데이타');await page.waitForTimeout(400);
+ return await page.evaluate(()=>JSON.parse(JSON.parse(localStorage.getItem('flutter.lore_save_slot_1'))));
+}
+function compare(capture,state,label){
+ if(!equal(state.party,capture.records))throw Error(label+' DOS player mismatch');
+ if(!equal(state.mapTiles,Array.from(Buffer.from(capture.files['SAVE1.MAP'].hex,'hex').subarray(2))))throw Error(label+' DOS map mismatch');
+ const raw=Array.from({length:100},(_,i)=>Number(state.flags['etc'+(i+1)]||0));
+ if(!equal(raw,capture.party.etc))throw Error(label+' DOS raw etc mismatch');
+ const party=capture.party;
+ if(state.mapId!==party.mapId||state.playerX!==party.x||state.playerY!==party.y||state.food!==party.food||state.gold!==party.gold)throw Error(label+' DOS location/food/gold mismatch');
+ console.log(label+': six records, etc100 bytes and map10000 cells match original DOS');
+}
+await page.keyboard.press('Enter');await walk(castle.inputs.gateApproach);
+await page.keyboard.press('ArrowDown');await page.waitForTimeout(400);await click('예.');await page.waitForTimeout(300);await page.keyboard.press('Enter');await page.waitForTimeout(400);
+await walk(castle.inputs.armoryApproach);await page.waitForTimeout(600);
+await page.keyboard.press('Enter');await page.waitForTimeout(400);
+compare(castle.armory,await save(),'Armoury');
+await page.keyboard.press('Enter');await walk(castle.inputs.blessingApproach);
+await page.keyboard.press('ArrowDown');await page.waitForTimeout(400);await page.keyboard.press('Enter');await page.waitForTimeout(300);
+await walk(castle.inputs.exitApproach);await page.waitForTimeout(400);await click('예, 그렇습니다.');await page.waitForTimeout(400);
+await page.keyboard.press('Enter');await page.waitForTimeout(400);await click('당신을 환영하오.');await page.waitForTimeout(500);
+// Actual DOS retains this blank PressAnyKey after join, before flag/map load.
+await page.getByText('아무키나 누르십시오 ...',{exact:true}).waitFor();
+await page.screenshot({path:'/tmp/lore-newgame-skeleton-wait-web.png'});
+await page.keyboard.press('Enter');await page.waitForTimeout(500);
+const departure=await save();compare(castle.departure,departure,'Skeleton departure');
+await page.keyboard.press('Enter');await page.reload();await page.waitForTimeout(1500);
+await page.locator('flt-semantics-placeholder').evaluateAll(es=>es.forEach(e=>e.click()));
+await click('2] 이전의 게임을 재개 시킴');await page.getByText('이전의 게임을 재개',{exact:true}).first().click();await page.waitForTimeout(1200);
+const again=await save();compare(castle.departure,again,'Departure reload/save');
 if(errors.length)throw Error(errors.join('\n'));
 await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -1,4 +1,3 @@
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_world_manager.dart';
@@ -107,10 +106,16 @@ void main() {
     expect(plan.action, LorePortalAction.runPreScript);
     expect(first.hasPendingChoice, isTrue);
     expect(first.cancelOptionIndex, 1);
-    final accepted = first.choose(0).acknowledgeConditionRefresh().outcome;
+    final accepting = first.choose(0).acknowledgeConditionRefresh();
+    expect(accepting.pendingScene!.lines, isEmpty);
+    expect(accepting.outcome.setFlags, isNot(contains('etc31_bit1')));
+    final accepted = accepting.acknowledgeScene().outcome;
     expect(accepted.recruits.single.key, 'skeleton');
     expect(accepted.setFlags, containsAll(['skeletonJoined', 'etc31_bit1']));
-    final declined = first.choose(first.cancelOptionIndex!).outcome;
+    final declining = first.choose(first.cancelOptionIndex!);
+    expect(declining.pendingScene!.lines, ['당신이 바란다면 ...']);
+    expect(declining.outcome.setFlags, isNot(contains('etc31_bit1')));
+    final declined = declining.acknowledgeScene().outcome;
     expect(declined.recruits, isEmpty);
     expect(declined.setFlags, ['etc31_bit1']);
     final revisit = LorePortalSession.begin(

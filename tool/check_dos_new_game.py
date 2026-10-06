@@ -46,7 +46,9 @@ def check():
     fixture = json.loads((ROOT / 'test/fixtures/dos_new_game.json').read_text())
     executable = (ROOT / 'repo_source/LORE_1993_runtime/LORE.EXE').read_bytes()
     assert hashlib.sha256(executable).hexdigest() == fixture['executableSha256']
-    for observation in (fixture, fixture['firstQuest']):
+    for observation in (fixture, fixture['firstQuest'],
+                        fixture['castleRoute']['armory'],
+                        fixture['castleRoute']['departure']):
         files = observation['files']
         for captured in files.values():
             assert hashlib.sha256(bytes.fromhex(captured['hex'])).hexdigest() == captured['sha256']
@@ -58,7 +60,16 @@ def check():
     saved_map = bytes.fromhex(fixture['firstQuest']['files']['SAVE1.MAP']['hex'])
     assert saved_map == (ROOT / 'repo_source/LORE_1993_runtime/TOWN1.MAP').read_bytes()
     assert saved_map[:2] == bytes([100, 100])
-    print('Cold-start four DOS saves and first Lord Ahn checkpoint bytes: verified')
+    armory = bytes.fromhex(fixture['castleRoute']['armory']['files']['SAVE1.MAP']['hex'])
+    expected = bytearray(saved_map)
+    for x, y, value in ((49,52,47), (50,52,44), (51,52,44), (52,52,44),
+                        (53,52,47), (49,53,47), (50,53,44), (51,53,44),
+                        (52,53,44), (53,53,45), (41,79,44)):
+        expected[2 + (y-1)*100 + x-1] = value
+    assert armory == expected
+    departure = bytes.fromhex(fixture['castleRoute']['departure']['files']['SAVE1.MAP']['hex'])
+    assert departure == (ROOT / 'repo_source/LORE_1993_runtime/GROUND1.MAP').read_bytes()
+    print('Cold-created DOS saves, Lord Ahn, armoury and Skeleton departure bytes: verified')
 
 
 if __name__ == '__main__':

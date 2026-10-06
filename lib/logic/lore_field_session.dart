@@ -88,9 +88,17 @@ class LoreFieldSession {
       case LoreMoveKind.npc:
         effects = const [LoreFieldEffect(LoreFieldEffectKind.talk)];
       case LoreMoveKind.portal:
+        // LOREMAIN enters a special tile before LORESPEC calls wantexit.
+        // LOREENT entry tiles instead call originposition before confirmation.
+        moved =
+            portal != null && decision.sourceAction == LoreTileAction.special;
         effects = portal == null
             ? const [LoreFieldEffect(LoreFieldEffectKind.entranceNoMatch)]
-            : const [LoreFieldEffect(LoreFieldEffectKind.portalRequest)];
+            : [
+                if (moved)
+                  const LoreFieldEffect(LoreFieldEffectKind.positionChanged),
+                const LoreFieldEffect(LoreFieldEffectKind.portalRequest),
+              ];
       case LoreMoveKind.sign:
         effects = const [LoreFieldEffect(LoreFieldEffectKind.sign)];
       case LoreMoveKind.walk:

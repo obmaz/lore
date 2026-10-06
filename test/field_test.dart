@@ -111,9 +111,9 @@ void main() {
       game.playerX = 25;
       game.playerY = 45;
       expect(map.getTile(25, 46), 52);
-      expect(game.tryMove(0, 1), isFalse);
+      expect(game.tryMove(0, 1), isTrue);
       expect(requested?.scriptId, 'keep2-exit-guard');
-      expect(game.playerY, 45);
+      expect(game.playerY, 46);
     });
 
     test('실제 맵 로더가 맵 종류를 보존해 던전·필드 타일을 구분한다', () async {

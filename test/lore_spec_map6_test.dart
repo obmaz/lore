@@ -1,4 +1,5 @@
 import 'support/legacy_json_fixture_engine.dart';
+
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -15,7 +16,9 @@ void main() {
   late LegacyJsonFixtureEngine scripts;
   setUp(() {
     scripts = LegacyJsonFixtureEngine()
-      ..loadFromJson(File('test/fixtures/legacy_rules/scripts.json').readAsStringSync());
+      ..loadFromJson(
+        File('test/fixtures/legacy_rules/scripts.json').readAsStringSync(),
+      );
   });
 
   ScriptRun? dispatchMap6(
@@ -32,7 +35,6 @@ void main() {
       context: ScriptContext(tileAtPlayer: tile, flags: flags),
       party: const [],
       scripts: scripts,
-
     );
 
     return result.script;
@@ -215,13 +217,19 @@ void main() {
         ]);
         expect(first.hasPendingChoice, isTrue);
         expect(first.cancelOptionIndex, 1);
-        final accepted = first.choose(0).acknowledgeConditionRefresh().outcome;
+        final accepting = first.choose(0).acknowledgeConditionRefresh();
+        expect(accepting.pendingScene!.lines, isEmpty);
+        expect(accepting.outcome.setFlags, isNot(contains('etc31_bit1')));
+        final accepted = accepting.acknowledgeScene().outcome;
         expect(accepted.recruits.single.key, 'skeleton');
         expect(
           accepted.setFlags,
           containsAll(['skeletonJoined', 'etc31_bit1']),
         );
-        final declined = first.choose(1).outcome;
+        final declining = first.choose(1);
+        expect(declining.pendingScene!.lines, ['당신이 바란다면 ...']);
+        expect(declining.outcome.setFlags, isNot(contains('etc31_bit1')));
+        final declined = declining.acknowledgeScene().outcome;
         expect(declined.recruits, isEmpty);
         expect(declined.setFlags, ['etc31_bit1']);
         expect(declined.messages.last, '당신이 바란다면 ...');
