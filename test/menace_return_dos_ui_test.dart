@@ -421,6 +421,45 @@ void main() {
   );
 
   testWidgets(
+    'native LAST SHELTER admission keeps cleared flags, records and actual save',
+    (tester) async {
+      // LOREENT.PAS:265-279: selected admission into map24, without source combat.
+      final f = jsonDecode(
+        File('test/fixtures/dos_keep2_continuation.json').readAsStringSync(),
+      );
+      final inputs = [
+        for (final s in f['segments'])
+          for (final b in s['trace'])
+            if (b.containsKey('input')) b['input'],
+      ];
+      dynamic row(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      final before = row(16754)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['guardsReady']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, row(16754)['after']);
+      expect(find.textContaining('LAST SHELTER'), findsWidgets);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, row(16755)['after']);
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['lastShelter'],
+        row(16758)['after'],
+        row(16759)['after'],
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
     'native Lord reward trains four members with four RNG draws and skips capped levels',
     (tester) async {
       final before = gaiaInput(423)['before'];

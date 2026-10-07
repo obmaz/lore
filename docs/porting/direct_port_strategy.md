@@ -2283,3 +2283,21 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      주장하지 않으며 EXE/RAM/RNG/저장 bytes는 수정하지 않았다.
      관련 Flutter·전체 회귀·analyze·원본 근거/계약 검사·web 빌드를
      수행한다. 라바 게이트·후반 성채·최종전·원본 엔딩은 이어서 진행한다.
+
+137. 라바 게이트·IMPERIUM MINOR·Death Knight 원본 진행 검증
+     (2026-10-07, `dos_keep2_continuation.json`,
+     `check_dos_keep2_continuation.py`, `keep2_battle_dos_test.dart`,
+     `menace_return_dos_ui_test.dart`). 두 봉인 실제 저장에서 원본 회복과
+     정상 벽 파괴 후 라바 게이트를 통과했다. 수호자 전투는 승리했지만
+     두 적은 unconscious이며 dead가 아니므로 etc42 bit2/5/6은 안 켜진다.
+     Lord Ahn 안내·최종 확인·load를 마치면 etc42=64, map22(25,6)이다.
+     Death Knight5슬롯의 적 선공 단계와 전원 레코드/RNG를 대조했고
+     원본에서 격파해 etc43 bit2를 확인했다. 수비대5슬롯의 아군 선공
+     단계는 Wave·PowerDown·단일 마법까지 닫힌 단계 전체를, 그 다음
+     적 단계도 모든 레코드/RNG를 비교했다. 첫 수비대 전투는 패배해
+     정상 GameOver에서 실제 직전 저장을 읽었고 도주로 LAST SHELTER에
+     도착했다. 모바일에서도 해당 입장 Select와 실제 저장 전체 bytes를
+     비교했다. 이 범위의 새 런타임 차이는 발견되지 않았다. 원본 관측은
+     입력790개이며 새 샘플링 간격이 없다. 전투 전체 재생/전체 BGI
+     근거로 확대하지 않는다. 관련 Flutter3개·analyze·원본 근거/계약
+     검사 후 기록을 푸시하고 원본 상점 보강 뒤 수비대 재도전을 이어간다.

@@ -47744,6 +47744,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/keep2_battle_dos_test.dart",
+      "kind": "test",
+      "sha256": "d8490f0c98d0ceb5dba8916ab82679f4878cc9b371d13ea072b8f4000cf89b09",
+      "cited_source_files": [
+        "LOREBATT.PAS",
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
       "sha256": "76d9655ba91b43bd4a6134cc734f75763b3792a8b564780e15ebbe23a41c7043",
@@ -48295,7 +48305,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "5a103fc7f43ee1db38d8c707d570e39c9bd6029a5683adda72c4b4e780cd66c1",
+      "sha256": "90afe6ceaad8ad26caf7128c67c457b3153ebb6b1e6052dfae67b3499afdc9ea",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -49022,6 +49032,16 @@
       "sha256": "db18cfc5d1482f1990cf61db6a06d4914ca0af91eea012d943bb342f06fd628b",
       "test_users": [
         "test/hospital_wound_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_keep2_continuation.json",
+      "kind": "fixture",
+      "sha256": "e55fba8ace1e314c23c4ab828f7e39afd85b4e0b9c00581f0e04e854bae9c49a",
+      "test_users": [
+        "test/keep2_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
