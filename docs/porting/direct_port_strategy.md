@@ -2346,3 +2346,18 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      Print13으로 고쳤고, 주문 마지막 두 줄의Print15를 명시했다.
      입력220개에 관측 간격은 없다. 전체 Flutter·analyze·원본 근거/계약
      검사와 web 빌드를 수행하고, 숨겨진 성채 및 최종전 검증을 계속한다.
+
+141. ArchiDraconian 사망30000·부활16비트·숨겨진 성채 실제 입장
+     (2026-10-07, `dos_archi_continuation.json`,
+     `check_dos_archi_continuation.py`, `archi_native_dos_test.dart`).
+     원본 단일 부활과Rest로 환상 전투의 사망·의식불명을 회복했다.
+     입구는6번 Draconian의HP0·UC1·dead30000을 설정하며, 실제 원본
+     WholeCure의30*30000 signed16 비용으로 GhostSP320→17782,
+     DraconianHP49가 된다. 이식판과 모든 인물 필드·무난수 동작이
+     일치했다. 이후 정상 실제 저장 GameOver 재시작들을 보존했다.
+     원본에서enemy3만사망한 상태로 일행이 패배했어도, GameOver의
+     실제 직전 저장이 복구된 뒤 enemy3.dead만 검사하는 후속 분기가
+     etc44=3/map25(25,45)로 입장시킨다. 이식판은 이미 동일한 결과
+     미검사 경로를 갖고 있으며 실제 저장·복구 인물 bytes를 검증했다.
+     입력432개에 새 관측 간격은 없다. 관련 Flutter2개·analyze·원본
+     근거/계약 검사를 수행한다. 금속 수호자·두 레버·최종전은 계속한다.

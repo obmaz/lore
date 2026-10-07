@@ -47342,6 +47342,13 @@
   ],
   "existing_evidence": [
     {
+      "path": "test/archi_native_dos_test.dart",
+      "kind": "test",
+      "sha256": "4a980e375748070d01e96fd497889daa1a82ba35a72f9191d3007205a99c7f73",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/attack_arithmetic_dos_test.dart",
       "kind": "test",
       "sha256": "e26ef5ac29b48eb34cb65be5344088b0de58349c9569b8d0ab5a0882a3e3f29e",
@@ -48907,6 +48914,15 @@
         "LORETALK.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/fixtures/dos_archi_continuation.json",
+      "kind": "fixture",
+      "sha256": "c167a06cfcaa87cc8f167df8c11bee1c5d141ee35efd9b72cf64e2243acf7770",
+      "test_users": [
+        "test/archi_native_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
       "path": "test/fixtures/dos_attack_arithmetic.json",
