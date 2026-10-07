@@ -19968,7 +19968,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:123",
@@ -19984,7 +19984,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:124",
@@ -20000,7 +20000,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:125",
@@ -20016,7 +20016,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:case:3",
@@ -20032,7 +20032,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:for:16",
@@ -20048,7 +20048,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:126",
@@ -20064,7 +20064,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:exit:14",
@@ -20080,7 +20080,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:127",
@@ -20096,7 +20096,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:for:17",
@@ -20112,7 +20112,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:128",
@@ -20128,7 +20128,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending."
+      "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:case:1",
@@ -34228,7 +34228,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34238,7 +34238,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34248,7 +34248,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34258,7 +34258,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34268,7 +34268,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34278,7 +34278,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34288,7 +34288,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34298,7 +34298,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34308,7 +34308,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34318,7 +34318,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -34328,7 +34328,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map16_test.dart",
-      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending.",
+      "note": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained.",
       "verification": "partial"
     },
     {
@@ -48260,7 +48260,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "34ad21b1ab500f966ab746a51d83066d480029ef83df515f0dc5bf91c24d2353",
+      "sha256": "a09a7e6f3ea0295ba6d504ed821bb22459dce7e2627f9de0cb879154e291b577",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -48819,6 +48819,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/wivern_battle_dos_test.dart",
+      "kind": "test",
+      "sha256": "abdd9ec99bb82b3f92753945cae7788d77cc07bd388f3981fc3f3f45a8559415",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/world_map_contract_test.dart",
       "kind": "test",
       "sha256": "c3500175d9584b8eab2d00163895d6a046a90d7498c3c93e2d2d4b10d8a84f05",
@@ -49162,6 +49169,16 @@
       "sha256": "77455c2d65513154a5571f7968b9856045dcdd2d672d90ee876498478dc53e9c",
       "test_users": [
         "test/weapon_arithmetic_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_wivern_continuation.json",
+      "kind": "fixture",
+      "sha256": "6927c3008ff8314f034aa48c0616a9df389dbae33c17b02d2ec245783f6cee22",
+      "test_users": [
+        "test/menace_return_dos_ui_test.dart",
+        "test/wivern_battle_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
@@ -49571,7 +49588,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "1b4bd8a0614a0677ab410026294975940087c15999f89fbea45e700db1a9f472",
+      "sha256": "a34b1b1885360e7403c1bd6d54be89f93b8a62d6a8fa76f09ea296f7a715228c",
       "top_level_counts": {
         "contracts": 1446
       }

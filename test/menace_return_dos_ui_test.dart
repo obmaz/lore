@@ -531,6 +531,69 @@ void main() {
     },
   );
   testWidgets(
+    'native WIVERN exit and WATER FIELD request advances after final key then saves',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_wivern_continuation.json').readAsStringSync(),
+      );
+      final inputs = [
+        for (final b in f['trace'])
+          if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => input(n)['after'];
+      final before = input(2072)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['wivernSuccess']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(2072));
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.runAsync(() async {
+        for (var i = 0; i < 20 && game.currentMapId != 10; i++) {
+          await Future<void>.delayed(const Duration(milliseconds: 10));
+        }
+      });
+      await tick(tester);
+      check(game, random, phase(2073));
+      final route = (f['trace'] as List).singleWhere(
+        (b) =>
+            b.containsKey('walk') &&
+            b['walk']['before']['partyRecord']['mapId'] == 10 &&
+            b['walk']['after']['live']['x'] == 26 &&
+            b['walk']['after']['live']['y'] == 18,
+      )['walk'];
+      await walk(tester, game, [
+        for (final step in route['steps']) step['key'],
+      ]);
+      await walk(tester, game, ['Left']);
+      check(game, random, phase(2074));
+      expect(LoreDialogueManager.instance.partyEtc.read(15), 0);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(2087));
+      await walk(tester, game, ['Left']);
+      check(game, random, phase(2088));
+      expect(find.textContaining('NOTICE'), findsWidgets);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(2089));
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['waterArrival'],
+        phase(2092),
+        phase(2093),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
     'actual DOS centre disk reload, revisit and resave preserve all records and map bytes',
     (tester) async {
       final f = fixture['centerReload'];
