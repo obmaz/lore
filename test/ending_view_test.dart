@@ -1,9 +1,12 @@
 import 'dart:math';
+import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/logic/lore_end.dart';
+import 'package:lore/logic/lore_random.dart';
 import 'package:lore/widgets/ending_view.dart';
 
 /// LOREEND.PAS `End_Demo` flow: fades ignore keys, Esc leaves the thunder and
@@ -11,8 +14,10 @@ import 'package:lore/widgets/ending_view.dart';
 void main() {
   Future<EndingViewState> open(
     WidgetTester tester,
-    VoidCallback onFinish,
-  ) async {
+    VoidCallback onFinish, {
+    Random? random,
+    bool initialKeyWasEscape = false,
+  }) async {
     for (final channel in [
       'xyz.luan/audioplayers',
       'xyz.luan/audioplayers.global',
@@ -22,7 +27,12 @@ void main() {
     }
     await tester.pumpWidget(
       MaterialApp(
-        home: EndingView(heroName: '용사', onFinish: onFinish, random: Random(5)),
+        home: EndingView(
+          heroName: '용사',
+          onFinish: onFinish,
+          random: random ?? Random(5),
+          initialKeyWasEscape: initialKeyWasEscape,
+        ),
       ),
     );
     return tester.state<EndingViewState>(find.byType(EndingView));
@@ -33,6 +43,118 @@ void main() {
       await tester.pump(const Duration(milliseconds: 16));
     }
   }
+
+  final native = jsonDecode(
+    File('test/fixtures/dos_ending_input.json').readAsStringSync(),
+  );
+  for (final row in native['cases']) {
+    if (row['closed'] != true) continue;
+    testWidgets(
+      'compiled ThunderEffect seed ${row['seed']}, inherited c ${row['initialKey']}, keys ${row['keys']}',
+      (tester) async {
+        final random = LoreRandom(row['seed']);
+        final state = await open(
+          tester,
+          () {},
+          random: random,
+          initialKeyWasEscape: row['initialKey'] == 27,
+        );
+        for (final key in row['keys']) {
+          await tester.sendKeyEvent(switch (key) {
+            27 => LogicalKeyboardKey.escape,
+            13 => LogicalKeyboardKey.enter,
+            _ => LogicalKeyboardKey.keyA,
+          });
+        }
+        await run(tester, 2800);
+        expect(state.phase, EndPhase.staff);
+        expect(random.seed, row['afterSeed']);
+        await tester.pumpWidget(const SizedBox.shrink());
+      },
+    );
+  }
+
+  testWidgets(
+    'farewell Esc survives the fades, one thunder iteration, and staff resets c',
+    (tester) async {
+      final random = _RecordedRandom();
+      final state = await open(
+        tester,
+        () {},
+        random: random,
+        initialKeyWasEscape: true,
+      );
+      await run(tester, 2800);
+      expect(state.phase, EndPhase.staff);
+      expect(random.bounds, [1000]);
+      await run(tester, 500);
+      expect(state.phase, EndPhase.staff);
+      await tester.pumpWidget(const SizedBox.shrink());
+    },
+  );
+
+  testWidgets(
+    'ThunderEffect reads queued keys in FIFO order after random, then drains staff input',
+    (tester) async {
+      final random = _RecordedRandom();
+      final state = await open(tester, () {}, random: random);
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyA);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await run(tester, 2800);
+      expect(state.phase, EndPhase.staff);
+      expect(random.bounds, [1000, 1000]);
+      await run(tester, 500);
+      expect(state.phase, EndPhase.staff);
+      await tester.pumpWidget(const SizedBox.shrink());
+    },
+  );
+
+  testWidgets(
+    'new buffered key replaces inherited Esc before the until guard',
+    (tester) async {
+      final random = _RecordedRandom();
+      final state = await open(
+        tester,
+        () {},
+        random: random,
+        initialKeyWasEscape: true,
+      );
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyA);
+      await run(tester, 2800);
+      expect(state.phase, EndPhase.message);
+      final before = random.bounds.length;
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await tester.pump(const Duration(milliseconds: 16));
+      expect(state.phase, EndPhase.staff);
+      expect(random.bounds.length, before + 1);
+      await tester.pumpWidget(const SizedBox.shrink());
+    },
+  );
+
+  testWidgets(
+    'thunder flash delay precedes the inherited Esc read and consumes no extra random',
+    (tester) async {
+      final random = _RecordedRandom([0, 0, 30]);
+      final state = await open(
+        tester,
+        () {},
+        random: random,
+        initialKeyWasEscape: true,
+      );
+      while (random.bounds.isEmpty) {
+        await tester.pump(const Duration(milliseconds: 1));
+      }
+      expect(random.bounds, [1000, 100, 100]);
+      expect(state.phase, EndPhase.message);
+      await tester.pump(const Duration(milliseconds: 49));
+      expect(state.phase, EndPhase.message);
+      await tester.pump(const Duration(milliseconds: 1));
+      expect(state.phase, EndPhase.staff);
+      expect(random.bounds, [1000, 100, 100]);
+      await tester.pumpWidget(const SizedBox.shrink());
+    },
+  );
 
   testWidgets('fade, thunder, staff, closing screen and Halt', (tester) async {
     var finished = 0;
@@ -152,4 +274,21 @@ void main() {
     expect(state.shadowFlash, LoreEnd.thunderBase);
     await tester.pumpWidget(const SizedBox.shrink());
   });
+}
+
+class _RecordedRandom implements Random {
+  _RecordedRandom([this.values = const []]);
+  final List<int> values;
+  final List<int> bounds = [];
+  @override
+  int nextInt(int max) {
+    final index = bounds.length;
+    bounds.add(max);
+    return index < values.length ? values[index] : 1;
+  }
+
+  @override
+  bool nextBool() => throw UnsupportedError('Unexpected random bool');
+  @override
+  double nextDouble() => throw UnsupportedError('Unexpected random double');
 }

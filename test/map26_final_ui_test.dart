@@ -130,8 +130,13 @@ void main() {
       );
       expect(find.byType(EndingView), findsNothing);
       expect(find.byType(BattleViewportView), findsNothing);
-      await acknowledge(tester);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await tick(tester);
       expect(find.byType(EndingView), findsOneWidget);
+      expect(
+        tester.widget<EndingView>(find.byType(EndingView)).initialKeyWasEscape,
+        isTrue,
+      );
       expect(
         LoreDialogueManager.instance.getFlagsCopy()['bossNecromancerDefeated'],
         isNot(true),

@@ -25,6 +25,9 @@ class EndingView extends StatefulWidget {
   final VoidCallback onFinish;
   final Random? random;
 
+  /// Shared source c after the final talk('')/PressAnyKey.
+  final bool initialKeyWasEscape;
+
   /// 페이드 한 단계(`FadeSub`) 길이 — DOS에서는 하드웨어 속도에 달려 있었다.
   static const Duration fadeStep = Duration(milliseconds: 30);
 
@@ -41,6 +44,7 @@ class EndingView extends StatefulWidget {
     required this.heroName,
     required this.onFinish,
     this.random,
+    this.initialKeyWasEscape = false,
   });
 
   @override
@@ -78,6 +82,8 @@ class EndingViewState extends State<EndingView>
   Duration _flashUntil = Duration.zero;
   bool _openingDone = false;
   double _iterationCarry = 0;
+  late bool _lastThunderKeyWasEscape = widget.initialKeyWasEscape;
+  bool _thunderWaitingForFlash = false;
 
   /// 키 버퍼: `ThunderEffect`는 첫 반복에서 `keypressed` 로 이미 눌린 키를 읽는다.
   /// 페이드·첫 번쩍임 동안 누른 Esc도 버퍼에 남아 천둥 반복문이 시작되자마자 끝난다.
@@ -203,12 +209,11 @@ class EndingViewState extends State<EndingView>
       return;
     }
     shadowFlash = LoreEnd.thunderBase;
-    if (_keyBuffer.contains(true)) {
-      _keyBuffer.clear();
-      _escape(force: true);
-      return;
+    // A flash delay finishes before the current iteration reads its key.
+    if (_thunderWaitingForFlash) {
+      _thunderWaitingForFlash = false;
+      if (_finishThunderIteration()) return;
     }
-    _keyBuffer.clear();
     _iterationCarry +=
         dt.inMicroseconds *
         EndingView.thunderIterationsPerSecond /
@@ -220,9 +225,25 @@ class EndingViewState extends State<EndingView>
       if (flash != null) {
         shadowFlash = LoreEnd.thunderFlash;
         _flashUntil = now + Duration(milliseconds: flash);
+        _thunderWaitingForFlash = true;
         break;
       }
+      if (_finishThunderIteration()) return;
     }
+  }
+
+  bool _finishThunderIteration() {
+    // `if KeyPressed then c := ReadKey; if c = #27 then ok := TRUE`:
+    // one queued key replaces c, after that iteration's random calls.
+    if (_keyBuffer.isNotEmpty) {
+      _lastThunderKeyWasEscape = _keyBuffer.removeAt(0);
+    }
+    if (!_lastThunderKeyWasEscape) return false;
+    // End_Demo drains the keyboard buffer and sets c := #255 before staff.
+    _keyBuffer.clear();
+    _lastThunderKeyWasEscape = false;
+    _escape(force: true);
+    return true;
   }
 
   /// 원본 `c = #27`: 천둥 화면과 스태프 화면에서만 Esc가 다음으로 넘긴다.

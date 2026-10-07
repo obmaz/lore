@@ -97,6 +97,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   late final Random _sessionRandom;
   late final LoreScriptEngine _scripts;
   GameScreenMode _currentMode = GameScreenMode.field;
+  bool _lastSceneKeyWasEscape = false;
   late List<PartyMember> _party;
   late LoreGame _game;
   final List<String> _logs = [];
@@ -701,15 +702,24 @@ class _MainGameScreenState extends State<MainGameScreen> {
               LoreSourceSpeech.lines[shown.lines.last]?.blank == true)
             (7, ''),
         ]);
+        LogicalKeyboardKey? sceneKey;
         await showDialog<void>(
           context: context,
           barrierDismissible: false,
           builder: (_) => ScriptSceneDialog(
             scene: shown,
             actors: [for (final id in scene.actors) Monster.create(id)],
+            onKeyAcknowledged: (key) {
+              // End_Demo/ThunderEffect inherit the source's shared c from
+              // the farewell PressAnyKey; it is not reset before ThunderEffect.
+              sceneKey = key;
+            },
           ),
         );
         if (!mounted) return false;
+        // System back is the scene adapter's Esc acknowledgement too.
+        _lastSceneKeyWasEscape =
+            sceneKey == null || sceneKey == LogicalKeyboardKey.escape;
         current = current.acknowledgeScene();
         continue;
       }
@@ -2086,6 +2096,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           heroName: _party.first.name,
           onFinish: _restartGame,
           random: _sessionRandom,
+          initialKeyWasEscape: _lastSceneKeyWasEscape,
         ),
       );
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../data/lore_script.dart';
 import 'lore_select_view.dart';
@@ -10,16 +11,19 @@ import '../theme/retro_theme.dart';
 class ScriptSceneDialog extends StatelessWidget {
   final ScriptScene scene;
   final List<Monster> actors;
+  final ValueChanged<LogicalKeyboardKey>? onKeyAcknowledged;
 
   const ScriptSceneDialog({
     super.key,
     required this.scene,
     required this.actors,
+    this.onKeyAcknowledged,
   });
 
   @override
   Widget build(BuildContext context) => LoreMessageDialog(
     acknowledgementKey: const ValueKey('script-scene-continue'),
+    onKeyAcknowledged: onKeyAcknowledged,
     lines: [
       for (final line in scene.lines)
         (LoreSourceSpeech.lines[line]?.color ?? 7, line),
