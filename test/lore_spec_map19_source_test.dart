@@ -1,4 +1,5 @@
 import 'support/legacy_json_fixture_engine.dart';
+
 import 'dart:io';
 import 'dart:math';
 
@@ -198,6 +199,15 @@ void main() {
       ]);
       final won = run.continueAfterBattle().outcome.since(run.outcome);
       expect(won.sourceEtcWrites, [(index: 40, value: byte | 1)]);
+      final pending = run.continueAfterBattle();
+      expect(pending.hasPendingScene, isTrue);
+      expect(pending.pendingScene!.lineColors, {0: 15, 1: 15, 2: 15});
+      expect(pending.pendingScene!.withPartyNames(const []).lineColors, {
+        0: 15,
+        1: 15,
+        2: 15,
+      });
+      // Original capture14607 writes etc40 before the completion PressAnyKey.
       expect(won.nudges, isEmpty);
       expect(won.tileOperations, isEmpty);
       final fled = run.continueAfterRunAway().outcome.since(run.outcome);
@@ -245,7 +255,6 @@ void main() {
           ),
           party: const [],
           scripts: engine,
-
         );
 
         expect(result.script == null, cleared);

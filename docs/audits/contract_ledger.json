@@ -47592,6 +47592,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/evil_god_native_completion_test.dart",
+      "kind": "test",
+      "sha256": "7413a4207c4cf62b7636d3a680e7af23d355e15912fd4da6ad812e03dfde5abc",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/extrasense_ui_test.dart",
       "kind": "test",
       "sha256": "05580ec6398d007838d1e0a0f9e552c4c24dd7eb2e8b5563a16cf96b05d7a2b8",
@@ -47951,7 +47958,7 @@
     {
       "path": "test/lore_spec_map19_source_test.dart",
       "kind": "test",
-      "sha256": "b97ec7fea045e587396959097f46fa93f822f906a6f99a0ea72e9d2a22944203",
+      "sha256": "0c14d5f63192ed85e45ed3e9eba0a7bdea3e34390a0aaee9d905ad6d18df3693",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -48973,6 +48980,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_evil_god_success.json",
+      "kind": "fixture",
+      "sha256": "598ccbaa48389de04eafcfe2abb8b4f2efd7ba260fdd8bb18cca0208ab899fa9",
+      "test_users": [
+        "test/evil_god_native_completion_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_first_field_battle.json",
       "kind": "fixture",
       "sha256": "bb4dd400266208fba5fe155c6b1024c549f4ea14b271fc6c86fc50f7ec1f4ddd",
@@ -49495,7 +49511,7 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "f0003305ecbd9db27fe3709eecd7b2db853fbd099db97c1b65354889a3620a56"
+      "sha256": "e2af4c7c273beb45262ed9d5c4f5eab313fd04bf2a8ea2b2260814d8198a86b0"
     },
     {
       "path": "lib/game/lore_game.dart",
@@ -49563,7 +49579,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "4377466bd3d6aeb7ef9a333afa81ddbe5d9c48860e3c34c456637b01de9e09c4"
+      "sha256": "30e933c0d6b15bad513d4ea41ce3807165b1b322334300df83d511b10ad60e41"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -49599,7 +49615,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "dc32edba68a4de558137d9424f8dd8fcb4473433e91557c32344a2905bbddb0f"
+      "sha256": "194015de1d5d1ffe360719be5f2116ff3b17c80befcd1dbf51aa5a9e372c8c6f"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -49671,7 +49687,7 @@
     },
     {
       "path": "lib/widgets/script_scene_dialog.dart",
-      "sha256": "0f314b4e94d97f80cc684dfc1a8e35adf7bb6d628938b2a77ac59eabf0b78d38"
+      "sha256": "92559f53fecb3d5a63c550a87af396fed779df81a9caaee6633899ad1230bd74"
     },
     {
       "path": "lib/logic/lore_source_speech.dart",

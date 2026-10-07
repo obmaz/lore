@@ -28,8 +28,13 @@ class ScriptSceneDialog extends StatelessWidget {
     onKeyAcknowledged: onKeyAcknowledged,
     lines: [
       ...prefixLines,
-      for (final line in scene.lines)
-        (LoreSourceSpeech.lines[line]?.color ?? 7, line),
+      for (var i = 0; i < scene.lines.length; i++)
+        (
+          scene.lineColors[i] ??
+              LoreSourceSpeech.lines[scene.lines[i]]?.color ??
+              7,
+          scene.lines[i],
+        ),
       if (scene.lines.isNotEmpty &&
           LoreSourceSpeech.lines[scene.lines.last]?.blank == true)
         (7, ''),

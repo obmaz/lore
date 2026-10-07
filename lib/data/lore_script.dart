@@ -118,6 +118,9 @@ class ScriptScene {
   final String title;
   final List<int> actors;
   final List<String> lines;
+
+  /// Source Print colors where identical text appears in different routines.
+  final Map<int, int> lineColors;
   final int? appendPartyNameSlot;
   final int? appendPartyNameLine;
 
@@ -131,6 +134,7 @@ class ScriptScene {
     required this.title,
     this.actors = const [],
     required this.lines,
+    this.lineColors = const {},
     this.appendPartyNameSlot,
     this.appendPartyNameLine,
     this.appendPartyNameSuffix = '',
@@ -147,6 +151,7 @@ class ScriptScene {
     return ScriptScene(
       title: title,
       actors: actors,
+      lineColors: lineColors,
       lines: [
         for (var i = 0; i < lines.length; i++)
           i == line

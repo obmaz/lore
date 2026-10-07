@@ -2248,3 +2248,18 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      전체 map/party bytes를 비교했다. 이 범위의 추가 런타임 차이는 없다.
      관련 Flutter1개 및 analyze·원본 근거/계약 검사를 수행하고 수호왕
      재도전을 계속한다. 전체 캠페인 완료라고 판정하지 않는다.
+
+135. EVIL GOD 원본 수호왕 승리·실제 저장·완료 대사 순서 수정
+     (2026-10-07, `dos_evil_god_success.json`,
+     `check_dos_evil_god_success.py`, `evil_god_native_completion_test.dart`).
+     Draconian 합류 저장 이후 두 레버·세 수호 전투·수호왕을 진행했다.
+     첫 패배 후 정상 GameOver에서 실제 수호왕 직전 저장을 불러와
+     재도전했다. 원본7번 방 etc40은14→15, 보상은105917이며 완료
+     PressAnyKey 이전에 완료 비트가 기록된다. 대사 확인 후에 비트를
+     쓰던 이식판을 고쳤고, 세 줄 모두 원본 Print15 색상으로 표시한다.
+     같은 문자열이 다른 절차에서 다른 색상으로 쓰이는 경우를 위해
+     ScriptScene에 줄별 원본 색상을 보존하며 대화 이력에도 적용한다.
+     승리 이후 잘못된 저장 키와 늪에서의 회복 실패도 관측에 남겼다.
+     EXE/RAM/RNG는 수정하지 않았으며 원본 실제 저장 bytes를 검증한다.
+     전체 Flutter·analyze·원본 근거/계약 검사와 web 빌드를 수행한다.
+     MUDDY 이후 봉인·후반 성채·전체 원본 엔딩 검증은 계속 진행한다.

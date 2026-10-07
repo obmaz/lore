@@ -697,8 +697,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
         // The story speech of a scene is kept in the previous-dialogue tab too.
         _dialogueHistory.addColored([
           ..._scenePrefix,
-          for (final line in shown.lines)
-            (LoreSourceSpeech.lines[line]?.color ?? 7, line),
+          for (var i = 0; i < shown.lines.length; i++)
+            (
+              shown.lineColors[i] ??
+                  LoreSourceSpeech.lines[shown.lines[i]]?.color ??
+                  7,
+              shown.lines[i],
+            ),
           if (shown.lines.isNotEmpty &&
               LoreSourceSpeech.lines[shown.lines.last]?.blank == true)
             (7, ''),

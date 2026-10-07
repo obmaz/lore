@@ -1696,13 +1696,24 @@ class LoreSpecProcedures {
           battleOverrides: [for (var i = 4; i <= 7; i++) guardOverride(i)],
           battleRunAwaySteps: const [ScriptStep(kind: 'nudge', nudgeDy: 1)],
         ),
-        const ScriptStep(kind: 'say', text: ' 당신은 이 동굴에 보관되어 있는 봉인을 발견'),
-        const ScriptStep(kind: 'say', text: '했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸'),
-        const ScriptStep(kind: 'say', text: '다.'),
+        // LORESPEC: the completion bit is written before PressAnyKey.
+        // All three Print calls use color15, including the shared text "다.".
         ScriptStep(
           kind: 'sourceEtc',
           sourceEtcIndex: 40,
           sourceEtcValue: sealByte | LorePascal.bit(1),
+        ),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'EVIL GOD 봉인',
+            lines: [
+              ' 당신은 이 동굴에 보관되어 있는 봉인을 발견',
+              '했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸',
+              '다.',
+            ],
+            lineColors: {0: 15, 1: 15, 2: 15},
+          ),
         ),
       ]);
     }
