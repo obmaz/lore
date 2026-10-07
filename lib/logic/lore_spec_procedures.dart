@@ -2615,13 +2615,22 @@ class LoreSpecProcedures {
             ScriptStep(kind: 'flag', key: 'etc45_bit$bit'),
             // Compatibility name for old UI/saves; not a second source state.
             ScriptStep(kind: 'flag', key: x == 5 ? 'keep3KeyA' : 'keep3KeyB'),
-            const ScriptStep(kind: 'say', text: ' 당신이 레버를 당기자  철컥하는 소리가 동굴'),
-            const ScriptStep(kind: 'say', text: '에 울려 퍼졌다.'),
             if (opened) ...const [
               ScriptStep(kind: 'setTile', tileX: 25, tileY: 27, tileValue: 54),
               ScriptStep(kind: 'setTile', tileX: 26, tileY: 27, tileValue: 54),
-              ScriptStep(kind: 'say', text: ' 곧 이어 기계 작동하는 큰 소리가 들렸다.'),
             ],
+            // The source writes flags/doors before its final PressAnyKey.
+            ScriptStep(
+              kind: 'scene',
+              scene: ScriptScene(
+                title: '',
+                lines: [
+                  ' 당신이 레버를 당기자  철컥하는 소리가 동굴',
+                  '에 울려 퍼졌다.',
+                  if (opened) ' 곧 이어 기계 작동하는 큰 소리가 들렸다.',
+                ],
+              ),
+            ),
           ],
         ),
         context,

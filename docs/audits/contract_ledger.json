@@ -47732,6 +47732,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/hidden_levers_native_dos_test.dart",
+      "kind": "test",
+      "sha256": "ec662ccecd0bbe46b18d874899cab6aaf6403854b48e9ee7bcd8db5da666709a",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/hidra_battle_dos_test.dart",
       "kind": "test",
       "sha256": "cb88ec2decf80aa482b1edca5ca7fc9bbbf04df8080713ef4411d18373303a46",
@@ -49080,6 +49087,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_hidden_levers_continuation.json",
+      "kind": "fixture",
+      "sha256": "30f6bbcbb73db7534846314338cb5fc5996147f238b3cf1b298175e115795204",
+      "test_users": [
+        "test/hidden_levers_native_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_hospital_overflow.json",
       "kind": "fixture",
       "sha256": "c6540ffdb975eec047dd84aef53f932c87dc1165a2322fcb0ad927c38fadeb58",
@@ -49706,7 +49722,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "0966249c405877d04e48eb6e05d0ee2da44b126b62bdae4e2698fec237615ac4"
+      "sha256": "c683d31d7db0c8b5a5ba9911b8611b5b3aaf7a8190776848399d6b9fc3f88109"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",

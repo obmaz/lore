@@ -2377,3 +2377,16 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      입력1269개에 새 관측 간격은 없다. 관련 Flutter2개·analyze·
      원본 근거/계약 검사를 수행하고 이 완료 구간을 푸시한다.
      전체 전투 재생·모든 BGI의 완료 증거로 확대하지 않는다.
+
+143. 숨겨진 성채 양쪽 통로·레버와 최종 입구 원본 대조
+     (2026-10-07, `dos_hidden_levers_continuation.json`,
+     `check_dos_hidden_levers_continuation.py`,
+     `hidden_levers_native_dos_test.dart`). 금속 수호자 실제 저장에서
+     원본 단일 치료 후 좌우 통로를 열고 두 레버를 당겼다. 첫 저장
+     키가 대기 중인 PressAnyKey로 소비된 입력도 숨기지 않고 남겼다.
+     정상 확인 뒤 일반 바닥에서 실제 저장했으며 etc45=64→192,
+     입구25/26,27=54와 양 통로 전체 지도 bytes가 이식판과 일치한다.
+     이식판 레버가 say만 출력하고 원본의 마지막 PressAnyKey를
+     누락하던 차이를 고쳤다. 상태/문은 확인 전에 쓰고 Print7 대사
+     확인 후 이동한다. 입력121개에 새 관측 간격은 없다. 관련6개와
+     전체 Flutter·analyze·원본 근거/계약 검사를 수행하고 푸시한다.
