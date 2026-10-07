@@ -2390,3 +2390,18 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      누락하던 차이를 고쳤다. 상태/문은 확인 전에 쓰고 Print7 대사
      확인 후 이동한다. 입력121개에 새 관측 간격은 없다. 관련6개와
      전체 Flutter·analyze·원본 근거/계약 검사를 수행하고 푸시한다.
+
+144. 결전의 방 수호자 원본 승리·실제 저장과 닫힌 전투 턴 대조
+     (2026-10-07, `dos_chamber_continuation.json`,
+     `dos_chamber_battle_phase.json`, `check_dos_chamber_continuation.py`,
+     `chamber_battle_native_dos_test.dart`). 용암5칸에서 원본 전체 치료와
+     개별 Escape 확인을 사용했다. PressAnyKey의 입력 버퍼 비우기로
+     실패한 일괄 키 시도도 그대로 보존했다. 첫 수호자 시도는 패배,
+     실제 저장 GameOver 후 두 번째는 Death Knight5/Black Knight를
+     이겨323868을 받고 map26(25,15)을 저장했다. 원본 전체공격5를
+     포함한 첫 완결 파티 선공 턴과 적 단계의 모든 인물·적·RNG가
+     이식판과 일치한다. 마지막 적 선택 전 관측과 실제 최종 선택
+     commands를 구분했다. 진입 좌표와 load 뒤12개 벽 쓰기도 비교했다.
+     입력739개이며 입장 애니메이션의8·6 LCG 호출 관측 간격 두 개를
+     명시한다. 이 간격은 RNG 외 전 필드가 동일하다. 관련 Flutter2개·
+     analyze·원본 근거/계약 검사를 수행하며 최종 보스·엔딩을 계속한다.

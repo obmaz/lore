@@ -47475,6 +47475,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/chamber_battle_native_dos_test.dart",
+      "kind": "test",
+      "sha256": "fd7c69b351273d41faf31249862b9421e61c6354d9e6016403942b72382a6724",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/condition_storage_dos_test.dart",
       "kind": "test",
       "sha256": "bbea8ceb3b8c602b6bc49680d4a6cc1f4e50118309ac80d78380679d3de1fe79",
@@ -48962,6 +48969,24 @@
       "sha256": "3552f98b33942d1e1a4a49eb8226f9346eef7a1f5bc4f2da715193af6f69ca13",
       "test_users": [
         "test/battle_rewards_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_chamber_battle_phase.json",
+      "kind": "fixture",
+      "sha256": "6bfcd2e4451db6ee57cf96f27a4b9bfb7eff0d585d96cd7437ad69b9726547e4",
+      "test_users": [
+        "test/chamber_battle_native_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_chamber_continuation.json",
+      "kind": "fixture",
+      "sha256": "d88dcd1909ace3a46f03a170c0380677e639492e50bd03601f7bd4d78c7fd5e3",
+      "test_users": [
+        "test/chamber_battle_native_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
