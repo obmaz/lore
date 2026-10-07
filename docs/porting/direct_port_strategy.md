@@ -2057,3 +2057,26 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      근거 검사 통과. 릴리스 WASM/JS와 bootstrap 무결성 검증 성공.
      실제 Chromium390×844의 기존 새 게임·저장·장비·합류·Esc·Space
      후속 메뉴10개 검사 통과. 후속 퀘스트 확인은 계속 진행한다.
+126. 실제 QUAKE 성공·GAIA 보상 및 WIVERN 안내 대조
+     (2026-10-07, `dos_quake_continuation.json`, `quake_battle_dos_test.dart`,
+     `menace_return_dos_ui_test.dart`, `tool/check_dos_quake_continuation.py`).
+     125의 실제 EVIL 반환 저장으로 원본을 재개하고 정상 훈련·보급·이동으로
+     QUAKE에 입장했다. 실패 시 GameOver의 정상 종료 뒤 DOS 명령 lore /g로
+     실제 보스 직전 저장을 불러왔다. 프로세스별 독립 난수를 기록했으며
+     EXE/RAM/지도/저장/난수 수정 없이 키 입력만 사용했다.
+     두 Zombie와 ArchiGagoyle의 원본 선공, 물리/단일 마법3의 세 라운드,
+     보스 HP220→125→53→0, 원본 내부 페이지 확인 뒤 unconscious=true와
+     Regulus 경험치+9261, 실패한 도주 및 성공 도주를6명 전체 필드·모든
+     적 필드·실제 command 배열·난수로 비교했다. HP0 출력 도중에는 아직
+     unconscious/EXP 갱신 전일 수 있어 Print 중간을 닫힌 단계로 취급하지
+     않는다. 마지막 전투 ReadKey 뒤 퀘스트4이며, 별도 퀘스트 확인 뒤5다.
+     실제 성공 저장과9번의 원본 회복, 출구·GAIA 복귀를 보존했다.
+     성주가 확인 전에6명에게 경험치40000을 더하고 확인 뒤6으로 바꾸는
+     순서와 WATER KEY/후속 WIVERN 안내, 재방문 무보상 및 실제 반환 저장,
+     저장 확인의 Random(40) 한 번을 실제 모바일 화면에서 대조했다.
+     현재까지 이 범위에서는 추가 런타임 로직 차이를 발견하지 않았다.
+     원본 관측을 추가했으며 WIVERN 이후·최종전·엔딩 및 새 게임→엔딩
+     전체 대조는 미완료다. 계약 partial1446개·미검증1848개는 유지한다.
+     검증: 전체 Flutter1406개 통과(도구2개 제외), analyze 오류 없음,
+     Python69개 및 원본/계약/메모리/지도/대사·DOS 근거 검사 통과.
+     런타임 변경이 없어 검증된 기존 WASM/JS를 유지하고 배포 해시를 확인했다.

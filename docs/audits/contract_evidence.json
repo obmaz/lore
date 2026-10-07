@@ -2947,7 +2947,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map15_test.dart",
-      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending. Milestone126 preserves actual unmodified QUAKE native boss knockout, legal escape and final quest key, exact real saves and GAIA return. quake_battle_dos_test.dart compares all six records, all three enemies and RNG through three targeted rounds and repeated failed/successful escapes. Source HP<=0 success guard remains unchanged; campaign/ending still pending.",
       "verification": "partial"
     },
     {
@@ -2957,7 +2957,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map15_test.dart",
-      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending. Milestone126 preserves actual unmodified QUAKE native boss knockout, legal escape and final quest key, exact real saves and GAIA return. quake_battle_dos_test.dart compares all six records, all three enemies and RNG through three targeted rounds and repeated failed/successful escapes. Source HP<=0 success guard remains unchanged; campaign/ending still pending.",
       "verification": "partial"
     },
     {
@@ -2967,7 +2967,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map15_test.dart",
-      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending. Milestone126 preserves actual unmodified QUAKE native boss knockout, legal escape and final quest key, exact real saves and GAIA return. quake_battle_dos_test.dart compares all six records, all three enemies and RNG through three targeted rounds and repeated failed/successful escapes. Source HP<=0 success guard remains unchanged; campaign/ending still pending.",
       "verification": "partial"
     },
     {
@@ -2977,7 +2977,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map15_test.dart",
-      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending. Milestone126 preserves actual unmodified QUAKE native boss knockout, legal escape and final quest key, exact real saves and GAIA return. quake_battle_dos_test.dart compares all six records, all three enemies and RNG through three targeted rounds and repeated failed/successful escapes. Source HP<=0 success guard remains unchanged; campaign/ending still pending.",
       "verification": "partial"
     },
     {
@@ -2987,7 +2987,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/lore_spec_map15_test.dart",
-      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending.",
+      "note": "Map15 arm owned directly: y=71 exact wantexit boundary (map 2 (82,48), refusal y-1); y=48 cells x 10/11/40/41 pay findgold 6000 while raw etc[36] bit1 clear then 4000 (bit2) and open map[x,48]/map[x,47] (former JSON used invented quakeGoldA/B flags and no text); golden shield/armour on bits 3/4 set only after a member takes them; y=27 ArchiGagoyle while raw etc[14]=4, success on victory or a dead third enemy increments etc[14]. DOS comparison pending. Milestone126 preserves actual unmodified QUAKE native boss knockout, legal escape and final quest key, exact real saves and GAIA return. quake_battle_dos_test.dart compares all six records, all three enemies and RNG through three targeted rounds and repeated failed/successful escapes. Source HP<=0 success guard remains unchanged; campaign/ending still pending.",
       "verification": "partial"
     },
     {

@@ -487,6 +487,50 @@ void main() {
     },
   );
   testWidgets(
+    'native QUAKE reward precedes key, water key advances only once and saves',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_quake_continuation.json').readAsStringSync(),
+      );
+      final inputs = [
+        for (final e in f['epochs'])
+          for (final b in e['trace'])
+            if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => input(n)['after'];
+      final before = input(1480)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['quakeReturn']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(1480));
+      expect(LoreDialogueManager.instance.partyEtc.read(14), 5);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(1481));
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['quakeReturn'],
+        phase(1484),
+        phase(1485),
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(1486));
+      expect(find.textContaining('WIVERN'), findsWidgets);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(1487));
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
     'actual DOS centre disk reload, revisit and resave preserve all records and map bytes',
     (tester) async {
       final f = fixture['centerReload'];
