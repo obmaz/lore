@@ -4,19 +4,19 @@
 실행 계획은 `docs/porting/direct_port_strategy.md` 하나이며, 이 문서는 장부에서 생성한 검토 색인이다.
 미분류·부분 근거는 미구현 개수나 완료율이 아니다. 플랫폼 분기의 제외도 어댑터 검증 완료를 뜻하지 않는다.
 
-게임 제어 지점 1848개: 미분류 402개, 부분 근거 1446개, 검증 완료 0개.
+게임 제어 지점 1848개: 미분류 356개, 부분 근거 1492개, 검증 완료 0개.
 지도 쓰기 123개는 개별 계약 연결이 없다. 테스트가 없는 것으로 해석하지 않는다.
 
 ## 미분류가 남은 루틴
 
 | 원본 루틴 | 미분류 | 부분 근거 | 검증 완료 |
 | --- | ---: | ---: | ---: |
-| `LOREENT.PAS:entermode:1` | 82 | 4 | 0 |
 | `LORECRET.PAS:erase:1` | 42 | 0 | 0 |
+| `LOREENT.PAS:entermode:1` | 40 | 46 | 0 |
 | `LORECRET.PAS:fourth:1` | 22 | 4 | 0 |
 | `LOREHELP.PAS:title_menu:1` | 21 | 0 | 0 |
-| `LORESUB.PAS:load:1` | 19 | 2 | 0 |
 | `LORECRET.PAS:third:1` | 17 | 0 | 0 |
+| `LORESUB.PAS:load:1` | 15 | 6 | 0 |
 | `LORETALK.PAS:talkmode:1` | 14 | 132 | 0 |
 | `LOREMAIN.PAS:main:1` | 13 | 13 | 0 |
 | `LORESPEC.PAS:specialevent_part2:1` | 13 | 247 | 0 |

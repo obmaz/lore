@@ -1,0 +1,1087 @@
+{
+  "source": "LORESUB.PAS:1677-1759",
+  "sha256": "f42cea9a4fd3957e85207f01684ec1bcc971a6df099aa0946d14fb81838faf01",
+  "scope": "Original Pascal expression and MAP headers; not native EXE execution.",
+  "cases": [
+    {
+      "map": 1,
+      "name": "GROUND1",
+      "category": "ground",
+      "height": 100,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 1,
+      "name": "GROUND1",
+      "category": "ground",
+      "height": 100,
+      "y": 49,
+      "face": 4
+    },
+    {
+      "map": 1,
+      "name": "GROUND1",
+      "category": "ground",
+      "height": 100,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 1,
+      "name": "GROUND1",
+      "category": "ground",
+      "height": 100,
+      "y": 99,
+      "face": 5
+    },
+    {
+      "map": 1,
+      "name": "GROUND1",
+      "category": "ground",
+      "height": 100,
+      "y": 100,
+      "face": 5
+    },
+    {
+      "map": 2,
+      "name": "GROUND2",
+      "category": "ground",
+      "height": 100,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 2,
+      "name": "GROUND2",
+      "category": "ground",
+      "height": 100,
+      "y": 49,
+      "face": 4
+    },
+    {
+      "map": 2,
+      "name": "GROUND2",
+      "category": "ground",
+      "height": 100,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 2,
+      "name": "GROUND2",
+      "category": "ground",
+      "height": 100,
+      "y": 99,
+      "face": 5
+    },
+    {
+      "map": 2,
+      "name": "GROUND2",
+      "category": "ground",
+      "height": 100,
+      "y": 100,
+      "face": 5
+    },
+    {
+      "map": 3,
+      "name": "WATER",
+      "category": "ground",
+      "height": 100,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 3,
+      "name": "WATER",
+      "category": "ground",
+      "height": 100,
+      "y": 49,
+      "face": 4
+    },
+    {
+      "map": 3,
+      "name": "WATER",
+      "category": "ground",
+      "height": 100,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 3,
+      "name": "WATER",
+      "category": "ground",
+      "height": 100,
+      "y": 99,
+      "face": 5
+    },
+    {
+      "map": 3,
+      "name": "WATER",
+      "category": "ground",
+      "height": 100,
+      "y": 100,
+      "face": 5
+    },
+    {
+      "map": 4,
+      "name": "SWAMP",
+      "category": "ground",
+      "height": 100,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 4,
+      "name": "SWAMP",
+      "category": "ground",
+      "height": 100,
+      "y": 49,
+      "face": 4
+    },
+    {
+      "map": 4,
+      "name": "SWAMP",
+      "category": "ground",
+      "height": 100,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 4,
+      "name": "SWAMP",
+      "category": "ground",
+      "height": 100,
+      "y": 99,
+      "face": 5
+    },
+    {
+      "map": 4,
+      "name": "SWAMP",
+      "category": "ground",
+      "height": 100,
+      "y": 100,
+      "face": 5
+    },
+    {
+      "map": 5,
+      "name": "LAVA",
+      "category": "ground",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 5,
+      "name": "LAVA",
+      "category": "ground",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 5,
+      "name": "LAVA",
+      "category": "ground",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 5,
+      "name": "LAVA",
+      "category": "ground",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 5,
+      "name": "LAVA",
+      "category": "ground",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 6,
+      "name": "TOWN1",
+      "category": "town",
+      "height": 100,
+      "y": 1,
+      "face": 0
+    },
+    {
+      "map": 6,
+      "name": "TOWN1",
+      "category": "town",
+      "height": 100,
+      "y": 49,
+      "face": 0
+    },
+    {
+      "map": 6,
+      "name": "TOWN1",
+      "category": "town",
+      "height": 100,
+      "y": 50,
+      "face": 1
+    },
+    {
+      "map": 6,
+      "name": "TOWN1",
+      "category": "town",
+      "height": 100,
+      "y": 99,
+      "face": 1
+    },
+    {
+      "map": 6,
+      "name": "TOWN1",
+      "category": "town",
+      "height": 100,
+      "y": 100,
+      "face": 1
+    },
+    {
+      "map": 7,
+      "name": "TOWN2",
+      "category": "town",
+      "height": 75,
+      "y": 1,
+      "face": 0
+    },
+    {
+      "map": 7,
+      "name": "TOWN2",
+      "category": "town",
+      "height": 75,
+      "y": 36,
+      "face": 0
+    },
+    {
+      "map": 7,
+      "name": "TOWN2",
+      "category": "town",
+      "height": 75,
+      "y": 37,
+      "face": 1
+    },
+    {
+      "map": 7,
+      "name": "TOWN2",
+      "category": "town",
+      "height": 75,
+      "y": 74,
+      "face": 1
+    },
+    {
+      "map": 7,
+      "name": "TOWN2",
+      "category": "town",
+      "height": 75,
+      "y": 75,
+      "face": 1
+    },
+    {
+      "map": 8,
+      "name": "TOWN3",
+      "category": "town",
+      "height": 75,
+      "y": 1,
+      "face": 0
+    },
+    {
+      "map": 8,
+      "name": "TOWN3",
+      "category": "town",
+      "height": 75,
+      "y": 36,
+      "face": 0
+    },
+    {
+      "map": 8,
+      "name": "TOWN3",
+      "category": "town",
+      "height": 75,
+      "y": 37,
+      "face": 1
+    },
+    {
+      "map": 8,
+      "name": "TOWN3",
+      "category": "town",
+      "height": 75,
+      "y": 74,
+      "face": 1
+    },
+    {
+      "map": 8,
+      "name": "TOWN3",
+      "category": "town",
+      "height": 75,
+      "y": 75,
+      "face": 1
+    },
+    {
+      "map": 9,
+      "name": "TOWN4",
+      "category": "town",
+      "height": 50,
+      "y": 1,
+      "face": 0
+    },
+    {
+      "map": 9,
+      "name": "TOWN4",
+      "category": "town",
+      "height": 50,
+      "y": 24,
+      "face": 0
+    },
+    {
+      "map": 9,
+      "name": "TOWN4",
+      "category": "town",
+      "height": 50,
+      "y": 25,
+      "face": 1
+    },
+    {
+      "map": 9,
+      "name": "TOWN4",
+      "category": "town",
+      "height": 50,
+      "y": 49,
+      "face": 1
+    },
+    {
+      "map": 9,
+      "name": "TOWN4",
+      "category": "town",
+      "height": 50,
+      "y": 50,
+      "face": 1
+    },
+    {
+      "map": 10,
+      "name": "TOWN5",
+      "category": "town",
+      "height": 75,
+      "y": 1,
+      "face": 0
+    },
+    {
+      "map": 10,
+      "name": "TOWN5",
+      "category": "town",
+      "height": 75,
+      "y": 36,
+      "face": 0
+    },
+    {
+      "map": 10,
+      "name": "TOWN5",
+      "category": "town",
+      "height": 75,
+      "y": 37,
+      "face": 1
+    },
+    {
+      "map": 10,
+      "name": "TOWN5",
+      "category": "town",
+      "height": 75,
+      "y": 74,
+      "face": 1
+    },
+    {
+      "map": 10,
+      "name": "TOWN5",
+      "category": "town",
+      "height": 75,
+      "y": 75,
+      "face": 1
+    },
+    {
+      "map": 11,
+      "name": "T_DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 11,
+      "name": "T_DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 11,
+      "name": "T_DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 11,
+      "name": "T_DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 11,
+      "name": "T_DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 12,
+      "name": "T_DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 12,
+      "name": "T_DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 36,
+      "face": 4
+    },
+    {
+      "map": 12,
+      "name": "T_DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 37,
+      "face": 5
+    },
+    {
+      "map": 12,
+      "name": "T_DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 74,
+      "face": 5
+    },
+    {
+      "map": 12,
+      "name": "T_DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 75,
+      "face": 5
+    },
+    {
+      "map": 13,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 13,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 49,
+      "face": 4
+    },
+    {
+      "map": 13,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 13,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 99,
+      "face": 5
+    },
+    {
+      "map": 13,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 100,
+      "face": 5
+    },
+    {
+      "map": 14,
+      "name": "DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 14,
+      "name": "DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 14,
+      "name": "DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 14,
+      "name": "DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 14,
+      "name": "DEN1",
+      "category": "den",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 15,
+      "name": "DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 15,
+      "name": "DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 36,
+      "face": 4
+    },
+    {
+      "map": 15,
+      "name": "DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 37,
+      "face": 5
+    },
+    {
+      "map": 15,
+      "name": "DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 74,
+      "face": 5
+    },
+    {
+      "map": 15,
+      "name": "DEN2",
+      "category": "den",
+      "height": 75,
+      "y": 75,
+      "face": 5
+    },
+    {
+      "map": 16,
+      "name": "DEN3",
+      "category": "den",
+      "height": 40,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 16,
+      "name": "DEN3",
+      "category": "den",
+      "height": 40,
+      "y": 19,
+      "face": 4
+    },
+    {
+      "map": 16,
+      "name": "DEN3",
+      "category": "den",
+      "height": 40,
+      "y": 20,
+      "face": 5
+    },
+    {
+      "map": 16,
+      "name": "DEN3",
+      "category": "den",
+      "height": 40,
+      "y": 39,
+      "face": 5
+    },
+    {
+      "map": 16,
+      "name": "DEN3",
+      "category": "den",
+      "height": 40,
+      "y": 40,
+      "face": 5
+    },
+    {
+      "map": 17,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 17,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 49,
+      "face": 4
+    },
+    {
+      "map": 17,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 17,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 99,
+      "face": 5
+    },
+    {
+      "map": 17,
+      "name": "DEN4",
+      "category": "den",
+      "height": 100,
+      "y": 100,
+      "face": 5
+    },
+    {
+      "map": 18,
+      "name": "DEN5",
+      "category": "den",
+      "height": 100,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 18,
+      "name": "DEN5",
+      "category": "den",
+      "height": 100,
+      "y": 49,
+      "face": 4
+    },
+    {
+      "map": 18,
+      "name": "DEN5",
+      "category": "den",
+      "height": 100,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 18,
+      "name": "DEN5",
+      "category": "den",
+      "height": 100,
+      "y": 99,
+      "face": 5
+    },
+    {
+      "map": 18,
+      "name": "DEN5",
+      "category": "den",
+      "height": 100,
+      "y": 100,
+      "face": 5
+    },
+    {
+      "map": 19,
+      "name": "DEN6",
+      "category": "den",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 19,
+      "name": "DEN6",
+      "category": "den",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 19,
+      "name": "DEN6",
+      "category": "den",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 19,
+      "name": "DEN6",
+      "category": "den",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 19,
+      "name": "DEN6",
+      "category": "den",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 20,
+      "name": "DEN7",
+      "category": "den",
+      "height": 100,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 20,
+      "name": "DEN7",
+      "category": "den",
+      "height": 100,
+      "y": 49,
+      "face": 4
+    },
+    {
+      "map": 20,
+      "name": "DEN7",
+      "category": "den",
+      "height": 100,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 20,
+      "name": "DEN7",
+      "category": "den",
+      "height": 100,
+      "y": 99,
+      "face": 5
+    },
+    {
+      "map": 20,
+      "name": "DEN7",
+      "category": "den",
+      "height": 100,
+      "y": 100,
+      "face": 5
+    },
+    {
+      "map": 21,
+      "name": "KEEP1",
+      "category": "keep",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 21,
+      "name": "KEEP1",
+      "category": "keep",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 21,
+      "name": "KEEP1",
+      "category": "keep",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 21,
+      "name": "KEEP1",
+      "category": "keep",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 21,
+      "name": "KEEP1",
+      "category": "keep",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 22,
+      "name": "KEEP2",
+      "category": "keep",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 22,
+      "name": "KEEP2",
+      "category": "keep",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 22,
+      "name": "KEEP2",
+      "category": "keep",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 22,
+      "name": "KEEP2",
+      "category": "keep",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 22,
+      "name": "KEEP2",
+      "category": "keep",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 23,
+      "name": "KEEP3",
+      "category": "keep",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 23,
+      "name": "KEEP3",
+      "category": "keep",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 23,
+      "name": "KEEP3",
+      "category": "keep",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 23,
+      "name": "KEEP3",
+      "category": "keep",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 23,
+      "name": "KEEP3",
+      "category": "keep",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 24,
+      "name": "K_DEN1",
+      "category": "town",
+      "height": 50,
+      "y": 1,
+      "face": 0
+    },
+    {
+      "map": 24,
+      "name": "K_DEN1",
+      "category": "town",
+      "height": 50,
+      "y": 24,
+      "face": 0
+    },
+    {
+      "map": 24,
+      "name": "K_DEN1",
+      "category": "town",
+      "height": 50,
+      "y": 25,
+      "face": 1
+    },
+    {
+      "map": 24,
+      "name": "K_DEN1",
+      "category": "town",
+      "height": 50,
+      "y": 49,
+      "face": 1
+    },
+    {
+      "map": 24,
+      "name": "K_DEN1",
+      "category": "town",
+      "height": 50,
+      "y": 50,
+      "face": 1
+    },
+    {
+      "map": 25,
+      "name": "K_DEN2",
+      "category": "den",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 25,
+      "name": "K_DEN2",
+      "category": "den",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 25,
+      "name": "K_DEN2",
+      "category": "den",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 25,
+      "name": "K_DEN2",
+      "category": "den",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 25,
+      "name": "K_DEN2",
+      "category": "den",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 26,
+      "name": "K_DEN2",
+      "category": "town",
+      "height": 50,
+      "y": 1,
+      "face": 4
+    },
+    {
+      "map": 26,
+      "name": "K_DEN2",
+      "category": "town",
+      "height": 50,
+      "y": 24,
+      "face": 4
+    },
+    {
+      "map": 26,
+      "name": "K_DEN2",
+      "category": "town",
+      "height": 50,
+      "y": 25,
+      "face": 5
+    },
+    {
+      "map": 26,
+      "name": "K_DEN2",
+      "category": "town",
+      "height": 50,
+      "y": 49,
+      "face": 5
+    },
+    {
+      "map": 26,
+      "name": "K_DEN2",
+      "category": "town",
+      "height": 50,
+      "y": 50,
+      "face": 5
+    },
+    {
+      "map": 27,
+      "name": "PYRAMID1",
+      "category": "town",
+      "height": 50,
+      "y": 1,
+      "face": 0
+    },
+    {
+      "map": 27,
+      "name": "PYRAMID1",
+      "category": "town",
+      "height": 50,
+      "y": 24,
+      "face": 0
+    },
+    {
+      "map": 27,
+      "name": "PYRAMID1",
+      "category": "town",
+      "height": 50,
+      "y": 25,
+      "face": 1
+    },
+    {
+      "map": 27,
+      "name": "PYRAMID1",
+      "category": "town",
+      "height": 50,
+      "y": 49,
+      "face": 1
+    },
+    {
+      "map": 27,
+      "name": "PYRAMID1",
+      "category": "town",
+      "height": 50,
+      "y": 50,
+      "face": 1
+    }
+  ]
+}

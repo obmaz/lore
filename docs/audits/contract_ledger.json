@@ -10938,8 +10938,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "case",
       "outcomes": 15,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:1",
@@ -10949,8 +10956,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:2",
@@ -10960,8 +10974,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:for:1",
@@ -10982,8 +11003,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:4",
@@ -10993,8 +11021,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:for:2",
@@ -11058,8 +11093,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:9",
@@ -11069,8 +11111,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:10",
@@ -11080,8 +11129,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:11",
@@ -11091,8 +11147,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:12",
@@ -11102,8 +11165,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:13",
@@ -11113,8 +11183,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:14",
@@ -11124,8 +11201,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:15",
@@ -11135,8 +11219,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:16",
@@ -11146,8 +11237,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:17",
@@ -11157,8 +11255,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:18",
@@ -11168,8 +11273,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:19",
@@ -11179,8 +11291,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:20",
@@ -11206,8 +11325,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:22",
@@ -11217,8 +11343,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:23",
@@ -11228,8 +11361,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:24",
@@ -11239,8 +11379,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:25",
@@ -11250,8 +11397,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:26",
@@ -11261,8 +11415,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:27",
@@ -11272,8 +11433,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:28",
@@ -11283,8 +11451,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:29",
@@ -11294,8 +11469,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:30",
@@ -11305,8 +11487,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:31",
@@ -11316,8 +11505,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:32",
@@ -11327,8 +11523,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:33",
@@ -11338,8 +11541,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:34",
@@ -11349,8 +11559,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:35",
@@ -11404,8 +11621,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:38",
@@ -11426,8 +11650,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:40",
@@ -11448,8 +11679,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:42",
@@ -11459,8 +11697,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:43",
@@ -11470,8 +11715,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:44",
@@ -11508,8 +11760,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:47",
@@ -11519,8 +11778,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:48",
@@ -11651,8 +11917,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:59",
@@ -11662,8 +11935,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:60",
@@ -11684,8 +11964,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:62",
@@ -11761,8 +12048,15 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "content-rule",
+      "behavioral_evidence": [
+        "test/source_entrance_replay_test.dart",
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
     },
     {
       "id": "LOREENT.PAS:entermode:1:for:5",
@@ -27993,8 +28287,15 @@
       "routine": "LORESUB.PAS:load:1",
       "kind": "case",
       "outcomes": 28,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_load_facing_test.dart",
+        "test/fixtures/source_load_facing.json",
+        "tool/export_load_facing.py"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     },
     {
       "id": "LORESUB.PAS:load:1:for:2",
@@ -28059,8 +28360,15 @@
       "routine": "LORESUB.PAS:load:1",
       "kind": "case",
       "outcomes": 4,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_load_facing_test.dart",
+        "test/fixtures/source_load_facing.json",
+        "tool/export_load_facing.py"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     },
     {
       "id": "LORESUB.PAS:load:1:case:3",
@@ -28092,8 +28400,15 @@
       "routine": "LORESUB.PAS:load:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_load_facing_test.dart",
+        "test/fixtures/source_load_facing.json",
+        "tool/export_load_facing.py"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     },
     {
       "id": "LORESUB.PAS:load:1:if:10",
@@ -28103,8 +28418,15 @@
       "routine": "LORESUB.PAS:load:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
+      "classification": "common-rule",
+      "behavioral_evidence": [
+        "test/source_load_facing_test.dart",
+        "test/fixtures/source_load_facing.json",
+        "tool/export_load_facing.py"
+      ],
+      "verification_status": "partial",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     },
     {
       "id": "LORESUB.PAS:load:1:if:11",
@@ -45902,6 +46224,650 @@
       "test": "test/menace_entry_dos_ui_test.dart",
       "note": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Fix source-backed map9/11/14/15 findgold calls. Native MENACE(6,44) gains400 and etc32=4 immediately, actual slot3 Save records/2500 map cells match mobile; confirmation on special tile and revisit draw no extra RNG or reward. Previous speech adapter blocked reward until popup acknowledgement. Native graphics paging and other treasure maps are not fully replayed.",
       "verification": "partial"
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:case:1",
+      "line": 16,
+      "kind": "case",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:1",
+      "line": 18,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:2",
+      "line": 19,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:3",
+      "line": 29,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:4",
+      "line": 30,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:8",
+      "line": 44,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:9",
+      "line": 45,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:10",
+      "line": 53,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:11",
+      "line": 54,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:12",
+      "line": 60,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:13",
+      "line": 61,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:14",
+      "line": 67,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:15",
+      "line": 68,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:16",
+      "line": 74,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:17",
+      "line": 75,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:18",
+      "line": 83,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:19",
+      "line": 84,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:21",
+      "line": 91,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:22",
+      "line": 92,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:23",
+      "line": 98,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:24",
+      "line": 99,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:25",
+      "line": 107,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:26",
+      "line": 108,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:27",
+      "line": 114,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:28",
+      "line": 115,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:29",
+      "line": 121,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:30",
+      "line": 122,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:31",
+      "line": 130,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:32",
+      "line": 131,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:33",
+      "line": 137,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:34",
+      "line": 138,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:37",
+      "line": 159,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:39",
+      "line": 168,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:41",
+      "line": 175,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:42",
+      "line": 181,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:43",
+      "line": 187,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:46",
+      "line": 196,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:47",
+      "line": 203,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:58",
+      "line": 266,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:59",
+      "line": 274,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:61",
+      "line": 283,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:66",
+      "line": 323,
+      "kind": "if",
+      "classification": "content-rule",
+      "verification": "partial",
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_entrance_replay_test.dart",
+      "supporting_evidence": [
+        "test/portal_session_test.dart",
+        "test/fixtures/source_entrance_replay.json"
+      ],
+      "note": "LOREENT.PAS source destination replay for all 27 load clauses/41 entrance coordinates; all 50,000 ground coordinates compare at-check membership. Every extracted entrance cancellation precedes scripts/RNG; ordinary accepted entries load their source destination. Partial: this contract does not prove every guarded battle, source confirmation UI or native complete campaign."
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:1",
+      "line": 1677,
+      "kind": "case",
+      "classification": "common-rule",
+      "verification": "partial",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/source_load_facing_test.dart",
+      "supporting_evidence": [
+        "test/fixtures/source_load_facing.json",
+        "tool/export_load_facing.py"
+      ],
+      "note": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:2",
+      "line": 1722,
+      "kind": "case",
+      "classification": "common-rule",
+      "verification": "partial",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/source_load_facing_test.dart",
+      "supporting_evidence": [
+        "test/fixtures/source_load_facing.json",
+        "tool/export_load_facing.py"
+      ],
+      "note": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:9",
+      "line": 1758,
+      "kind": "if",
+      "classification": "common-rule",
+      "verification": "partial",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/source_load_facing_test.dart",
+      "supporting_evidence": [
+        "test/fixtures/source_load_facing.json",
+        "tool/export_load_facing.py"
+      ],
+      "note": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:10",
+      "line": 1759,
+      "kind": "if",
+      "classification": "common-rule",
+      "verification": "partial",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/source_load_facing_test.dart",
+      "supporting_evidence": [
+        "test/fixtures/source_load_facing.json",
+        "tool/export_load_facing.py"
+      ],
+      "note": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     }
   ],
   "map_writes": [
@@ -48631,8 +49597,9 @@
     {
       "path": "test/portal_reconciliation_test.dart",
       "kind": "test",
-      "sha256": "9e847ccb9761a28f8d192e026646b57b39c2bf023aff70e1f41a86d67cb93647",
+      "sha256": "727ffa511e31046b6aba480606f5fa9ab16cc2060cfb1a603d6c7aca99118315",
       "cited_source_files": [
+        "LOREMAIN.PAS",
         "LORESPEC.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
@@ -48849,7 +49816,7 @@
     {
       "path": "test/source_entrance_replay_test.dart",
       "kind": "test",
-      "sha256": "e290804dd891cb709361934acd356065163d7c194f5a9f450e465e5065aa6415",
+      "sha256": "2b495dec6ae82b2ab739ea63dde989e2035e570f3e1066abd8962452584fab56",
       "cited_source_files": [
         "LOREENT.PAS"
       ],
@@ -48880,6 +49847,16 @@
       "sha256": "370e3de59ed41d34b1eada3aa6dfc8616580f8543be2babc8726edb9ca48530b",
       "cited_source_files": [
         "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/source_load_facing_test.dart",
+      "kind": "test",
+      "sha256": "242c7a01605551a0e3722555ce4c21ef63743a51e92431506ead52ad5045210b",
+      "cited_source_files": [
+        "LOREMAIN.PAS",
+        "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -49879,6 +50856,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/source_load_facing.json",
+      "kind": "fixture",
+      "sha256": "aaf92b31a3dfa78dba6a9445598683474f4b332d10d1bb6372bb15fd2278e271",
+      "test_users": [
+        "test/source_load_facing_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/source_parity.json",
       "kind": "fixture",
       "sha256": "26186c67ccc80c5794f495eac84a1b54e9a1f87ace50e3d7a3b9cde4d9280f3f",
@@ -49947,7 +50933,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "75af94fe44b61ebf87691b9605c8422d934cf618715cdfa6f647502a520559ae"
+      "sha256": "4a84994b18b264746b0ba6a8a22322456290579bd465c2e7c43a53cd4cff9e57"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -50131,9 +51117,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "356c082c2f657399075fc4d6d44937d98c92b2d7d5c6314fc90d2c5ef5e5cafb",
+      "sha256": "ed040ab7fec7cdadae51693f928e4d5291ba558f3892d56d2591fc09f6b6ce00",
       "top_level_counts": {
-        "contracts": 1446
+        "contracts": 1492
       }
     }
   ],
@@ -50141,9 +51127,9 @@
     "duplicate_contract_ids": 0,
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
-    "unmapped_behavior_sites": 402,
+    "unmapped_behavior_sites": 356,
     "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 1446,
+    "partially_verified_behavior_sites": 1492,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

@@ -46,19 +46,23 @@ class LoreGame extends FlameGame {
   int playerX = 51;
   int playerY = 31;
   int playerDirection = 0; // 0: 남, 1: 북, 2: 동, 3: 서
-  bool _map26ArrowFacing = false;
 
-  /// Explicit source cutscene face assignments replace the arrow face offset.
+  /// Explicit source cutscene face assignments use the field sprite bank.
   void applySourceFace(int face) {
     RangeError.checkValueInInterval(face, 4, 7, 'field face');
     playerDirection = face - 4;
-    _map26ArrowFacing = false;
   }
 
-  /// `LOREMAIN.Main`: map 26 adds a second field-face offset after arrows.
-  int get playerSpriteIndex => currentMapName.startsWith('TOWN')
-      ? playerDirection
-      : playerDirection + (currentMapId == 26 && _map26ArrowFacing ? 8 : 4);
+  /// LORESUB.PAS:1722-1726/1758-1759 and LOREMAIN.PAS:169-184:
+  /// town uses faces 0..3; map 26 adds 4 even though its position is town.
+  /// Map identity, rather than the shared asset filename, owns this choice.
+  int get playerSpriteIndex =>
+      playerDirection +
+      (LoreWorldManager.mapRegistry[currentMapId]?.category ==
+                  MapCategory.town &&
+              currentMapId != 26
+          ? 0
+          : 4);
 
   /// 원작 `scroll(FALSE)` 연출용 임시 시야 중심 (null이면 파티 위치).
   ///
@@ -215,7 +219,6 @@ class LoreGame extends FlameGame {
     if (info == null) return;
     currentMapId = mapId;
     currentMapName = info.fileName;
-    _map26ArrowFacing = false;
     try {
       currentMap = await LoreMapData.loadFromAsset(
         info.fileName,
@@ -226,6 +229,8 @@ class LoreGame extends FlameGame {
         playerX = startX;
         playerY = startY;
       }
+      // LORESUB.PAS:1758: every Load resets face from the restored/entry y.
+      playerDirection = currentMap!.ymax ~/ 2 > playerY ? 0 : 1;
       // 원작 BGM 전환
       AudioManager.instance.playBgm(info.bgmTrack);
       onMapLoaded?.call();
@@ -252,9 +257,6 @@ class LoreGame extends FlameGame {
 
   bool tryMove(int dx, int dy) {
     dispatchStartMapId = currentMapId;
-    if (currentMapId == 26 && (dx != 0 || dy != 0)) {
-      _map26ArrowFacing = true;
-    }
     final targetX = playerX + dx;
     final targetY = playerY + dy;
     final map = currentMap;

@@ -12,7 +12,7 @@ import 'package:lore/logic/script_world_reducer.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  test('맵 26은 입장 직후 face 5, 방향키 뒤에는 추가 4 오프셋을 쓴다', () async {
+  test('LOREMAIN.PAS:169-184 map26 town arrows add 4 once', () async {
     final map = await LoreMapData.loadFromAsset('K_DEN2', category: 'den');
     final game =
         LoreGame(initialMapId: 26, initialPlayerX: 25, initialPlayerY: 15)
@@ -21,7 +21,7 @@ void main() {
           ..playerDirection = 1;
     expect(game.playerSpriteIndex, 5);
     game.tryMove(1, 0);
-    expect(game.playerSpriteIndex, 10);
+    expect(game.playerSpriteIndex, 6);
   });
 
   test('LOREMAIN sign 호출 전에 originposition으로 시야를 되돌린다', () async {

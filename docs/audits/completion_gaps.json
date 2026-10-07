@@ -2,20 +2,20 @@
   "scope": "Review inventory, not missing implementations or completion percentage. Platform adapters still need functional validation.",
   "summary": {
     "game_control_sites": 1848,
-    "unclassified": 402,
-    "partial": 1446,
+    "unclassified": 356,
+    "partial": 1492,
     "verified": 0,
     "unmapped_map_writes": 123
   },
   "routines": [
     {
-      "routine": "LOREENT.PAS:entermode:1",
-      "unclassified": 82,
-      "partial": 4
-    },
-    {
       "routine": "LORECRET.PAS:erase:1",
       "unclassified": 42
+    },
+    {
+      "routine": "LOREENT.PAS:entermode:1",
+      "partial": 46,
+      "unclassified": 40
     },
     {
       "routine": "LORECRET.PAS:fourth:1",
@@ -27,13 +27,13 @@
       "unclassified": 21
     },
     {
-      "routine": "LORESUB.PAS:load:1",
-      "unclassified": 19,
-      "partial": 2
-    },
-    {
       "routine": "LORECRET.PAS:third:1",
       "unclassified": 17
+    },
+    {
+      "routine": "LORESUB.PAS:load:1",
+      "unclassified": 15,
+      "partial": 6
     },
     {
       "routine": "LORETALK.PAS:talkmode:1",
@@ -1824,67 +1824,12 @@
       "behavioral_evidence": []
     },
     {
-      "id": "LOREENT.PAS:entermode:1:case:1",
-      "inventory_id": "LOREENT.PAS:16:case:1",
-      "file": "LOREENT.PAS",
-      "line": 16,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "case",
-      "outcomes": 15,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:1",
-      "inventory_id": "LOREENT.PAS:18:if:1",
-      "file": "LOREENT.PAS",
-      "line": 18,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:2",
-      "inventory_id": "LOREENT.PAS:19:if:1",
-      "file": "LOREENT.PAS",
-      "line": 19,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
       "id": "LOREENT.PAS:entermode:1:for:1",
       "inventory_id": "LOREENT.PAS:27:for:1",
       "file": "LOREENT.PAS",
       "line": 27,
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "for",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:3",
-      "inventory_id": "LOREENT.PAS:29:if:1",
-      "file": "LOREENT.PAS",
-      "line": 29,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:4",
-      "inventory_id": "LOREENT.PAS:30:if:1",
-      "file": "LOREENT.PAS",
-      "line": 30,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
       "outcomes": 2,
       "classification": "unclassified",
       "behavioral_evidence": []
@@ -1905,292 +1850,6 @@
       "inventory_id": "LOREENT.PAS:35:if:1",
       "file": "LOREENT.PAS",
       "line": 35,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:8",
-      "inventory_id": "LOREENT.PAS:44:if:1",
-      "file": "LOREENT.PAS",
-      "line": 44,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:9",
-      "inventory_id": "LOREENT.PAS:45:if:1",
-      "file": "LOREENT.PAS",
-      "line": 45,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:10",
-      "inventory_id": "LOREENT.PAS:53:if:1",
-      "file": "LOREENT.PAS",
-      "line": 53,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:11",
-      "inventory_id": "LOREENT.PAS:54:if:1",
-      "file": "LOREENT.PAS",
-      "line": 54,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:12",
-      "inventory_id": "LOREENT.PAS:60:if:1",
-      "file": "LOREENT.PAS",
-      "line": 60,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:13",
-      "inventory_id": "LOREENT.PAS:61:if:1",
-      "file": "LOREENT.PAS",
-      "line": 61,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:14",
-      "inventory_id": "LOREENT.PAS:67:if:1",
-      "file": "LOREENT.PAS",
-      "line": 67,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:15",
-      "inventory_id": "LOREENT.PAS:68:if:1",
-      "file": "LOREENT.PAS",
-      "line": 68,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:16",
-      "inventory_id": "LOREENT.PAS:74:if:1",
-      "file": "LOREENT.PAS",
-      "line": 74,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:17",
-      "inventory_id": "LOREENT.PAS:75:if:1",
-      "file": "LOREENT.PAS",
-      "line": 75,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:18",
-      "inventory_id": "LOREENT.PAS:83:if:1",
-      "file": "LOREENT.PAS",
-      "line": 83,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:19",
-      "inventory_id": "LOREENT.PAS:84:if:1",
-      "file": "LOREENT.PAS",
-      "line": 84,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:21",
-      "inventory_id": "LOREENT.PAS:91:if:1",
-      "file": "LOREENT.PAS",
-      "line": 91,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:22",
-      "inventory_id": "LOREENT.PAS:92:if:1",
-      "file": "LOREENT.PAS",
-      "line": 92,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:23",
-      "inventory_id": "LOREENT.PAS:98:if:1",
-      "file": "LOREENT.PAS",
-      "line": 98,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:24",
-      "inventory_id": "LOREENT.PAS:99:if:1",
-      "file": "LOREENT.PAS",
-      "line": 99,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:25",
-      "inventory_id": "LOREENT.PAS:107:if:1",
-      "file": "LOREENT.PAS",
-      "line": 107,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:26",
-      "inventory_id": "LOREENT.PAS:108:if:1",
-      "file": "LOREENT.PAS",
-      "line": 108,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:27",
-      "inventory_id": "LOREENT.PAS:114:if:1",
-      "file": "LOREENT.PAS",
-      "line": 114,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:28",
-      "inventory_id": "LOREENT.PAS:115:if:1",
-      "file": "LOREENT.PAS",
-      "line": 115,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:29",
-      "inventory_id": "LOREENT.PAS:121:if:1",
-      "file": "LOREENT.PAS",
-      "line": 121,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:30",
-      "inventory_id": "LOREENT.PAS:122:if:1",
-      "file": "LOREENT.PAS",
-      "line": 122,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:31",
-      "inventory_id": "LOREENT.PAS:130:if:1",
-      "file": "LOREENT.PAS",
-      "line": 130,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:32",
-      "inventory_id": "LOREENT.PAS:131:if:1",
-      "file": "LOREENT.PAS",
-      "line": 131,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:33",
-      "inventory_id": "LOREENT.PAS:137:if:1",
-      "file": "LOREENT.PAS",
-      "line": 137,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:34",
-      "inventory_id": "LOREENT.PAS:138:if:1",
-      "file": "LOREENT.PAS",
-      "line": 138,
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
@@ -2242,32 +1901,10 @@
       "behavioral_evidence": []
     },
     {
-      "id": "LOREENT.PAS:entermode:1:if:37",
-      "inventory_id": "LOREENT.PAS:159:if:1",
-      "file": "LOREENT.PAS",
-      "line": 159,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
       "id": "LOREENT.PAS:entermode:1:if:38",
       "inventory_id": "LOREENT.PAS:164:if:1",
       "file": "LOREENT.PAS",
       "line": 164,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:39",
-      "inventory_id": "LOREENT.PAS:168:if:1",
-      "file": "LOREENT.PAS",
-      "line": 168,
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
@@ -2286,65 +1923,10 @@
       "behavioral_evidence": []
     },
     {
-      "id": "LOREENT.PAS:entermode:1:if:41",
-      "inventory_id": "LOREENT.PAS:175:if:1",
-      "file": "LOREENT.PAS",
-      "line": 175,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:42",
-      "inventory_id": "LOREENT.PAS:181:if:1",
-      "file": "LOREENT.PAS",
-      "line": 181,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:43",
-      "inventory_id": "LOREENT.PAS:187:if:1",
-      "file": "LOREENT.PAS",
-      "line": 187,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
       "id": "LOREENT.PAS:entermode:1:if:45",
       "inventory_id": "LOREENT.PAS:195:if:1",
       "file": "LOREENT.PAS",
       "line": 195,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:46",
-      "inventory_id": "LOREENT.PAS:196:if:1",
-      "file": "LOREENT.PAS",
-      "line": 196,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:47",
-      "inventory_id": "LOREENT.PAS:203:if:1",
-      "file": "LOREENT.PAS",
-      "line": 203,
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
@@ -2473,43 +2055,10 @@
       "behavioral_evidence": []
     },
     {
-      "id": "LOREENT.PAS:entermode:1:if:58",
-      "inventory_id": "LOREENT.PAS:266:if:1",
-      "file": "LOREENT.PAS",
-      "line": 266,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:59",
-      "inventory_id": "LOREENT.PAS:274:if:1",
-      "file": "LOREENT.PAS",
-      "line": 274,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
       "id": "LOREENT.PAS:entermode:1:if:60",
       "inventory_id": "LOREENT.PAS:279:if:1",
       "file": "LOREENT.PAS",
       "line": 279,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:61",
-      "inventory_id": "LOREENT.PAS:283:if:1",
-      "file": "LOREENT.PAS",
-      "line": 283,
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "if",
       "outcomes": 2,
@@ -2579,17 +2128,6 @@
       "routine": "LOREENT.PAS:entermode:1",
       "kind": "exit",
       "outcomes": null,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LOREENT.PAS:entermode:1:if:66",
-      "inventory_id": "LOREENT.PAS:323:if:1",
-      "file": "LOREENT.PAS",
-      "line": 323,
-      "routine": "LOREENT.PAS:entermode:1",
-      "kind": "if",
-      "outcomes": 2,
       "classification": "unclassified",
       "behavioral_evidence": []
     },
@@ -4519,17 +4057,6 @@
       "behavioral_evidence": []
     },
     {
-      "id": "LORESUB.PAS:load:1:case:1",
-      "inventory_id": "LORESUB.PAS:1677:case:1",
-      "file": "LORESUB.PAS",
-      "line": 1677,
-      "routine": "LORESUB.PAS:load:1",
-      "kind": "case",
-      "outcomes": 28,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
       "id": "LORESUB.PAS:load:1:for:2",
       "inventory_id": "LORESUB.PAS:1710:for:1",
       "file": "LORESUB.PAS",
@@ -4585,17 +4112,6 @@
       "behavioral_evidence": []
     },
     {
-      "id": "LORESUB.PAS:load:1:case:2",
-      "inventory_id": "LORESUB.PAS:1722:case:1",
-      "file": "LORESUB.PAS",
-      "line": 1722,
-      "routine": "LORESUB.PAS:load:1",
-      "kind": "case",
-      "outcomes": 4,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
       "id": "LORESUB.PAS:load:1:case:3",
       "inventory_id": "LORESUB.PAS:1729:case:1",
       "file": "LORESUB.PAS",
@@ -4611,28 +4127,6 @@
       "inventory_id": "LORESUB.PAS:1752:if:1",
       "file": "LORESUB.PAS",
       "line": 1752,
-      "routine": "LORESUB.PAS:load:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LORESUB.PAS:load:1:if:9",
-      "inventory_id": "LORESUB.PAS:1758:if:1",
-      "file": "LORESUB.PAS",
-      "line": 1758,
-      "routine": "LORESUB.PAS:load:1",
-      "kind": "if",
-      "outcomes": 2,
-      "classification": "unclassified",
-      "behavioral_evidence": []
-    },
-    {
-      "id": "LORESUB.PAS:load:1:if:10",
-      "inventory_id": "LORESUB.PAS:1759:if:1",
-      "file": "LORESUB.PAS",
-      "line": 1759,
       "routine": "LORESUB.PAS:load:1",
       "kind": "if",
       "outcomes": 2,
