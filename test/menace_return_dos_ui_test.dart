@@ -594,6 +594,147 @@ void main() {
     },
   );
   testWidgets(
+    'native NOTICE HIDRA return grants all six 150k before final key',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_notice_continuation.json').readAsStringSync(),
+      );
+      final inputs = [
+        for (final b in f['trace'])
+          if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => input(n)['after'];
+      final before = input(9310)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['hidraReturn']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(9310));
+      expect(LoreDialogueManager.instance.partyEtc.read(15), 2);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(9311));
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['hidraReturn'],
+        phase(9314),
+        phase(9315),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'native NOTICE teaching, MindRead and slot4 Antares preserve every record',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_notice_continuation.json').readAsStringSync(),
+      );
+      final inputs = [
+        for (final b in f['trace'])
+          if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => input(n)['after'];
+      final before = input(7193)['before'];
+      final saved = ramCheckpoint(before, {
+        'files': {
+          'SAVE1.MAP': {'hex': f['ramMaps']['beforeAntares']['hex']},
+        },
+      });
+      final random = LoreRandom(before['seed']);
+      final game = await open(tester, saved, random);
+      await walk(tester, game, ['Right']);
+      check(game, random, phase(7193));
+      // Four explicit PressAnyKey calls; implicit Print pagination is scrolling.
+      for (var i = 0; i < 4; i++) {
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+      }
+      check(game, random, phase(7206));
+      Future<void> keys(List<LogicalKeyboardKey> list) async {
+        for (final key in list) {
+          await tester.sendKeyEvent(key);
+          await tick(tester);
+        }
+      }
+
+      await keys([
+        LogicalKeyboardKey.keyE,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+      ]);
+      check(game, random, phase(7209));
+      await keys([
+        LogicalKeyboardKey.enter,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+      ]);
+      check(game, random, phase(7211));
+      await walk(tester, game, ['Left']);
+      check(game, random, phase(7212));
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['antaresJoined'],
+        phase(7215),
+        phase(7216),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'native Antares Food8 costs30, creates six rations and continues Main once',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_notice_continuation.json').readAsStringSync(),
+      );
+      final inputs = [
+        for (final b in f['trace'])
+          if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      final before = input(7633)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['antaresJoined']),
+        random,
+      );
+      for (final key in [
+        LogicalKeyboardKey.keyC,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+        ...List.filled(7, LogicalKeyboardKey.arrowDown),
+        LogicalKeyboardKey.enter,
+      ]) {
+        await tester.sendKeyEvent(key);
+        await tick(tester);
+      }
+      check(game, random, input(7636)['after']);
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
     'actual DOS centre disk reload, revisit and resave preserve all records and map bytes',
     (tester) async {
       final f = fixture['centerReload'];

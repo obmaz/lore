@@ -2144,3 +2144,31 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      검증: 전체 Flutter1432개 통과(도구2개 제외), analyze 오류 없음,
      Python69개와 원본 산술/난수/훈련/엔딩 키·걷기/계약/메모리/지도/
      대사·DOS 근거 검사 통과. WASM/JS 릴리스 무결성 확인.
+
+130. NOTICE 실제 진행·Antares 합류·HIDRA 처치·WATER FIELD 보상 대조
+     (2026-10-07, `dos_notice_continuation.json`,
+     `check_dos_notice_continuation.py`, `hidra_battle_dos_test.dart`,
+     `menace_return_dos_ui_test.dart`).
+     변경하지 않은 원본 EXE에서 NOTICE 입구 실제 저장 이후 정상 키로
+     통로·용암 변화·Antares 소개·MindRead·동료4 교체·식량/휴식·HIDRA
+     처치·귀환 보상을 진행했다. 앞선 마법사 유지 준비에는 관측한 원본
+     RAM bytes를 그대로 담은 재구성 체크포인트가 포함된다. 따라서
+     새 게임부터 연속 완료한 근거로 판정하지 않는다. 실패와 정상
+     GameOver 재시작도 보존하며, 최신 실제 보스 앞 저장만 파일 근거다.
+     MindRead는 ESP를 차감하지 않고 etc5=3이다. Antares는 HP0·기절1·
+     힘0·집중0·마법15·SP300으로 합류한다. Food8은 SP30을 쓰고 이름이
+     있는6명만큼 식량을 늘린다. 원본 Main의 이어지는 바닥 처리에서
+     MindRead 감소와 Random40이 한 번 일어나는 것까지 모바일로 대조했다.
+     원본 HIDRA의 닫힌 두 아군 단계와 적 단계에 대해6명 전체 수치,
+     모든 적 수치, 죽은 대상의 명령 재지정, 난수 seed를 대조했다.
+     승리 골드는 개별 override level이 아닌 원본 E_number 기반5916이다.
+     승리 뒤 전투 ReadKey/골드가 끝난 etc6=0 상태에서 퀘스트 키 하나로
+     etc15=2·(56,93)이 된다. 성주는 마지막 키 전에6명에게 경험치
+     150000을 주고 키 뒤3이 된다. 모바일 보상·실제 저장 전체 map/party
+     필드·저장 확인 뒤 난수도 일치했다. 이 범위의 추가 런타임 차이는 없다.
+     원본 Print의 암묵적 페이지 넘김은 스크롤 표시로 대체하며 물리적인
+     Enter 횟수가 같다고 주장하지 않는다. LOCKUP 이후 대조는 계속한다.
+     partial1446/미검증1848개 판정 유지. 전체 Flutter1437개 통과
+     (도구2개 제외) 및 analyze 오류 없음,
+     Python69개 및 원본 산술/난수/훈련/엔딩/계약/메모리/지도/대사·
+     DOS 근거 검사를 수행하고 기존 WASM/JS 릴리스 무결성을 확인했다.
