@@ -697,6 +697,111 @@ void main() {
     },
   );
   testWidgets(
+    'native SWAMP Gate speech loads DEN4 with original flag, RNG and save',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_swamp_gate_continuation.json')
+            .readAsStringSync(),
+      );
+      final inputs = [
+        for (final segment in f['segments'])
+          if (segment.containsKey('trace'))
+            for (final b in segment['trace'])
+              if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => input(n)['after'];
+      final before = input(12480)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['gateReady']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      for (var i = 0; i < 5; i++) {
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+      }
+      check(game, random, phase(12488));
+      expect((game.currentMapId, game.playerX, game.playerY), (13, 81, 95));
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['gateEntry'],
+        phase(12491),
+        phase(12492),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'native Spica MindRead and slot3 replacement preserve records, flags and save',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_swamp_gate_continuation.json')
+            .readAsStringSync(),
+      );
+      final inputs = [
+        for (final segment in f['segments'])
+          if (segment.containsKey('trace'))
+            for (final b in segment['trace'])
+              if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => input(n)['after'];
+      final before = input(11754)['before'];
+      final saved = ramCheckpoint(before, f['saves']['spicaReady']);
+      final random = LoreRandom(before['seed']);
+      final game = await open(tester, saved, random);
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(11754));
+      // One native teaching wait precedes MindRead.
+      for (var i = 0; i < 1; i++) {
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+      }
+      check(game, random, phase(11755));
+      Future<void> keys(List<LogicalKeyboardKey> list) async {
+        for (final key in list) {
+          await tester.sendKeyEvent(key);
+          await tick(tester);
+        }
+      }
+
+      await keys([
+        LogicalKeyboardKey.keyE,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+      ]);
+      check(game, random, phase(11758));
+      await keys([
+        LogicalKeyboardKey.enter,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+      ]);
+      check(game, random, phase(11760));
+      await walk(tester, game, ['Down']);
+      check(game, random, phase(11761));
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['spicaJoined'],
+        phase(11764),
+        phase(11765),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
     'native Antares Food8 costs30, creates six rations and continues Main once',
     (tester) async {
       final f = jsonDecode(

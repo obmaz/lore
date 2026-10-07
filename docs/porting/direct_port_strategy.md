@@ -2196,3 +2196,24 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      검증: 전체 Flutter1442개 통과(도구2개 제외), analyze 오류 없음,
      Python69개와 원본 산술·난수·훈련·엔딩·계약·메모리·지도·대사 및
      실제 DOS 근거 검사 통과. WASM/JS 릴리스도 새로 빌드한다.
+
+132. SWAMP Gate·피라밋·Medusa 처치 후 도주·SWAMP KEEP 입장 대조
+     (2026-10-07, `dos_swamp_gate_continuation.json`,
+     `check_dos_swamp_gate_continuation.py`, `gorgon_battle_dos_test.dart`,
+     `menace_return_dos_ui_test.dart`).
+     실제 LOCKUP 귀환 저장 뒤 원본 훈련·Spica 합류·황금 방패/갑옷을
+     정상 키와 벽 파괴 마법으로 진행했다. Spica의 슬롯3 전체 수치와
+     etc39=7, MindRead·이동 뒤 etc5 감소·실제 저장을 모바일로 비교했다.
+     Antares 황금 방패5/갑옷5/AC10도 실제 저장에 보존한다.
+     GAIA의 SWAMP Gate 대사·etc35 bit6·DEN4(81,95) 입장과 Main의
+     이어지는 난수 한 번·실제 저장 전체 map/party를 모바일로 비교했다.
+     피라밋 이동과 예언서는 원본 입력으로 진행했다. 자동 이동 및 전투
+     피해 기록이 Print 사이에서 끝나는 두 관측 간격을 명시한다.
+     Gorgon의 세 E_number=1 override와 첫 적 단계 전체 수치/RNG를
+     대조했다. Medusa만 죽이고 도주하면 승리 bit5 없이 통과할 수 있는
+     원본 분기를 진행했고 SWAMP KEEP 입장·회복 저장에 도달했다.
+     이 범위에서 추가 런타임 차이는 발견하지 않았다. 전체 새 게임 연속
+     실행/BGI/모든 캠페인 완료라고 판정하지 않으며 두 봉인 이후를 이어간다.
+     닫힌 아군 단계의 실제 명령6개·Medusa 기절 뒤 마무리·다음 적 단계도
+     전체 party/enemy/seed로 비교했다. 관련 Flutter25개 및 analyze,
+     원본 DOS 근거·계약 검사를 수행하고 기존 릴리스 무결성을 확인한다.

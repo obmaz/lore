@@ -47697,6 +47697,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/gorgon_battle_dos_test.dart",
+      "kind": "test",
+      "sha256": "562b6752b0760583ed9b4e4cf1f5af656c2cb6ab42ceea4e733df7cfaf7b9076",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/hidra_battle_dos_test.dart",
       "kind": "test",
       "sha256": "cb88ec2decf80aa482b1edca5ca7fc9bbbf04df8080713ef4411d18373303a46",
@@ -48274,7 +48281,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "cb858c6edcb6d10121d2c032792947791ec5247cdfc486576d7e9921defc6acc",
+      "sha256": "b01641f8caf68e78e3037e7f2e06cccfd57cf4afbfb0b3ad0fe5abe85d098950",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -49167,6 +49174,16 @@
       "sha256": "72b5a0a8e17ab3fa052f030f0e7843d4660741093e1f34dabdb9d2e9bd1e3465",
       "test_users": [
         "test/spell_arithmetic_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_swamp_gate_continuation.json",
+      "kind": "fixture",
+      "sha256": "71520b30e9b6ab506c4e9e71dd18e25b9f8f0a5ab3022aa015e9973deb00c160",
+      "test_users": [
+        "test/gorgon_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
