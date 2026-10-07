@@ -19,6 +19,11 @@ void main() {
         expect(await pending, false);
         expect(input.lastKeyWasSpace, true);
         pending = wait.next();
+        wait.press(backspace: true);
+        expect(await pending, false);
+        expect(input.lastKeyWasBackspace, true);
+        expect(input.lastKeyWasSpace, false);
+        pending = wait.next();
         wait.press(escape: true);
         expect(await pending, true);
         expect(input.lastKeyWasSpace, false);
@@ -53,6 +58,7 @@ void main() {
       );
       for (final key in [
         LogicalKeyboardKey.space,
+        LogicalKeyboardKey.backspace,
         LogicalKeyboardKey.arrowDown,
         null,
       ]) {
@@ -65,6 +71,7 @@ void main() {
         }
         await tester.pumpAndSettle();
         expect(input.lastKeyWasSpace, key == LogicalKeyboardKey.space);
+        expect(input.lastKeyWasBackspace, key == LogicalKeyboardKey.backspace);
         expect(input.lastKeyWasEscape, false);
       }
     },
@@ -104,6 +111,7 @@ void main() {
       }
       await tester.pumpAndSettle();
       expect(input.lastKeyWasSpace, key == LogicalKeyboardKey.space);
+      expect(input.lastKeyWasBackspace, key == LogicalKeyboardKey.backspace);
       expect(input.lastKeyWasEscape, key == LogicalKeyboardKey.escape);
     }
   });

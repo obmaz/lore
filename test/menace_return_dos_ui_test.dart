@@ -15,6 +15,7 @@ import 'package:lore/logic/lore_menu_text.dart';
 import 'package:lore/models/party_member.dart';
 import 'package:lore/screens/main_game_screen.dart';
 import 'package:lore/services/save_manager.dart';
+import 'package:lore/services/audio_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// LORESUB.PAS:1636-1790, LORESPEC.PAS:826-832, LOREMAIN.PAS:205.
@@ -274,6 +275,214 @@ void main() {
       await tick(tester);
       check(game, random, phase(418));
       await save(tester, game, random, f['lordSave'], phase(421), phase(422));
+      expect(tester.takeException(), isNull);
+    },
+  );
+  test(
+    'compiled Main SoundOn branch matches recorded key and audio toggle',
+    () {
+      final f = jsonDecode(
+        File('test/fixtures/dos_main_sound.json').readAsStringSync(),
+      );
+      final audio = AudioManager.instance;
+      final old = audio.sourceSoundEnabled;
+      final mute = audio.isMuted;
+      addTearDown(() => audio.sourceSoundEnabled = old);
+      for (final c in f['cases']) {
+        audio.sourceSoundEnabled = c['before'] == 1;
+        if (c['key'] == 8) audio.toggleSourceSound();
+        expect(audio.sourceSoundEnabled, c['after'] == 1);
+        expect(audio.isMuted, mute);
+      }
+    },
+  );
+  final gaia = jsonDecode(
+    File('test/fixtures/dos_gaia_continuation.json').readAsStringSync(),
+  );
+  dynamic gaiaInput(int n) =>
+      [
+            ...gaia['trace'] as List,
+            for (final c in gaia['continuations'] ?? []) ...c['trace'] as List,
+          ]
+          .where((s) => s.containsKey('input'))
+          .map((s) => s['input'])
+          .singleWhere(
+            (s) => s['capture'] == 'lore_${n.toString().padLeft(3, '0')}.png',
+          );
+  dynamic gaiaState(int n) => gaiaInput(n)['after'];
+  dynamic ramCheckpoint(dynamic state, dynamic mapSave) => {
+    'partyRecord': {
+      ...Map<String, dynamic>.from(state['partyRecord']),
+      'x': state['live']['x'],
+      'y': state['live']['y'],
+    },
+    'records': state['records'],
+    'files': mapSave['files'],
+  };
+  testWidgets(
+    'native Lord reward trains four members with four RNG draws and skips capped levels',
+    (tester) async {
+      final before = gaiaInput(423)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, gaia['saves']['trained']),
+        random,
+      );
+      check(game, random, before);
+      await walk(tester, game, ['Up']);
+      check(game, random, gaiaState(423));
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, gaiaState(424));
+      for (final (slot, n) in [
+        (0, 425),
+        (1, 427),
+        (2, 429),
+        (3, 431),
+        (4, 433),
+        (5, 435),
+      ]) {
+        for (var i = 0; i < slot; i++) {
+          await tester.sendKeyEvent(LogicalKeyboardKey.arrowDown);
+          await tick(tester);
+        }
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+        check(game, random, gaiaState(n));
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+        check(game, random, gaiaState(n + 1));
+      }
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await tick(tester);
+      check(game, random, gaiaState(437));
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'native Backspace affects source SoundOn and Rest keeps its final field RNG',
+    (tester) async {
+      final observations = gaia['soundChecks'] as List;
+      final before = observations.first['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, gaia['saves']['gaiaRequest']),
+        random,
+      );
+      final audio = AudioManager.instance;
+      final originalSound = audio.sourceSoundEnabled;
+      addTearDown(() => audio.sourceSoundEnabled = originalSound);
+      audio.sourceSoundEnabled = observations.first['beforeSound'] == 1;
+      final mute = audio.isMuted;
+      for (final observation in observations) {
+        final key = observation['keys'][0] == 'r'
+            ? LogicalKeyboardKey.keyR
+            : LogicalKeyboardKey.backspace;
+        await tester.sendKeyEvent(key);
+        await tick(tester);
+        check(game, random, observation['after']);
+        expect(audio.sourceSoundEnabled, observation['afterSound'] == 1);
+        expect(audio.isMuted, mute);
+      }
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'native GAIA request updates etc14 after final key and revisit has no reward',
+    (tester) async {
+      final before = gaiaInput(571)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, gaia['saves']['gaiaRequest']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, gaiaState(571));
+      expect(LoreDialogueManager.instance.partyEtc.read(14), 0);
+      expect(find.textContaining('EVIL SEAL'), findsWidgets);
+      // Native internal Print pagination is separate from the final talk key.
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, gaiaState(580));
+      expect(LoreDialogueManager.instance.partyEtc.read(14), 1);
+      await save(
+        tester,
+        game,
+        random,
+        gaia['saves']['gaiaRequest'],
+        gaiaState(583),
+        gaiaState(584),
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, gaiaState(585));
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, gaiaState(586));
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'native EVIL SEAL stage changes before key and opens original map cell',
+    (tester) async {
+      final before = gaiaInput(828)['before'];
+      final saved = ramCheckpoint(before, gaia['saves']['evilSealSuccess']);
+      saved['files'] = {'SAVE1.MAP': gaia['ramMapBeforeSeal']};
+      final random = LoreRandom(before['seed']);
+      final game = await open(tester, saved, random);
+      check(game, random, before);
+      expect(game.currentMap!.getTile(18, 9), 51);
+      await walk(tester, game, ['Up']);
+      check(game, random, gaiaState(828));
+      expect(game.currentMap!.getTile(18, 9), 0);
+      expect(LoreDialogueManager.instance.partyEtc.read(14), 2);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, gaiaState(829));
+      await save(
+        tester,
+        game,
+        random,
+        gaia['saves']['evilSealSuccess'],
+        gaiaState(832),
+        gaiaState(833),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'native EVIL SEAL reward precedes final key then QUAKE request advances and saves',
+    (tester) async {
+      final before = gaiaInput(907)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, gaia['saves']['evilReturn']),
+        random,
+      );
+      check(game, random, before);
+      await walk(tester, game, ['Up']);
+      check(game, random, gaiaState(907));
+      expect(LoreDialogueManager.instance.partyEtc.read(14), 2);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, gaiaState(908));
+      await walk(tester, game, ['Up']);
+      check(game, random, gaiaState(909));
+      expect(find.textContaining('QUAKE'), findsWidgets);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, gaiaState(910));
+      await save(
+        tester,
+        game,
+        random,
+        gaia['saves']['evilReturn'],
+        gaiaState(913),
+        gaiaState(914),
+      );
       expect(tester.takeException(), isNull);
     },
   );

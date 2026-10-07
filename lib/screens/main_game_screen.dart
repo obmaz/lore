@@ -1510,6 +1510,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
         LoreDialogueManager.instance.setBattleResult(0);
         await _runSelectMode();
       }
+      // Main checks Backspace after the Space/SelectMode branch as well.
+      if (mounted &&
+          _halt == null &&
+          _currentMode == GameScreenMode.field &&
+          LoreMainProcedures.mainRedispatchesCurrentTile(action) &&
+          input.lastKeyWasBackspace) {
+        setState(() => AudioManager.instance.toggleSourceSound());
+      }
     });
     _redispatchCurrentTileAfter(
       action,
@@ -2124,7 +2132,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
                   case FieldAction.gameOption:
                     await _runGameOption();
                   case FieldAction.toggleSound:
-                    setState(() => AudioManager.instance.toggleMute());
+                    setState(() => AudioManager.instance.toggleSourceSound());
                   case FieldAction.quickView:
                     await _runQuickView();
                   case FieldAction.extrasense:

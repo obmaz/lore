@@ -8,16 +8,25 @@ class LoreMainInput {
 
   bool lastKeyWasEscape = false;
   bool lastKeyWasSpace = false;
+  bool lastKeyWasBackspace = false;
 
   static LoreMainInput? get current => Zone.current[_key] as LoreMainInput?;
 
-  void read({required bool escape, bool space = false}) {
+  void read({
+    required bool escape,
+    bool space = false,
+    bool backspace = false,
+  }) {
     lastKeyWasEscape = escape;
     lastKeyWasSpace = space;
+    lastKeyWasBackspace = backspace;
   }
 
-  static void record({required bool escape, bool space = false}) =>
-      current?.read(escape: escape, space: space);
+  static void record({
+    required bool escape,
+    bool space = false,
+    bool backspace = false,
+  }) => current?.read(escape: escape, space: space, backspace: backspace);
 
   Future<void> run(Future<void> Function() procedure) =>
       runZoned(procedure, zoneValues: {_key: this});

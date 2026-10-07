@@ -2021,3 +2021,39 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      실제 Chromium390×844 새 컨텍스트에서도 새 게임·성주 요청·장비·
      Skeleton 합류와 저장/불러오기 bytes, 기존 Esc 경로 및 Save/Rest의
      Space 후속 메뉴·중첩 Rest가 메뉴를 다시 열지 않는10개 검사를 통과했다.
+125. 실제 GAIA/EVIL SEAL 완료 및 Main Backspace의 SoundOn 처리
+     (2026-10-07, `dos_gaia_continuation.json`, `dos_main_sound.json`,
+     `menace_return_dos_ui_test.dart`, `tool/check_dos_gaia_continuation.py`).
+     124의 실제 lordSave를 수정 없이 새 원본 DOS 프로세스로 불러왔다.
+     원본 훈련에서 네 명의 전투 레벨1→3, Random(30) 네 번 및 골드20
+     지출을 관측하고 모바일에서 전체6명 필드·100 etc·난수로 대조했다.
+     이미 해당 레벨인 Polaris/Skeleton은 난수나 골드를 소비하지 않는다.
+     GROUND GATE와 GAIA 입장, 요청의 마지막 키 뒤 etc14=1, 재방문 무보상,
+     실제 저장을 보존했다. 이동 중 실제 전투 입력도 근거에 남겼지만
+     모든 자유 전투의 이식 일치 검증을 완료한 것으로 계산하지 않는다.
+     정상 GameOption 종료 및 실행기 재시작 후에는 실제 저장 파일을
+     불러왔고 각 새 DOS 프로세스의 독립 난수를 명시한다. EXE/RAM/지도/
+     저장/난수 패치는 사용하지 않았다. 순수 이동은 전체 상태가 같은
+     구간만 키·좌표·난수와 양끝 원시 상태로 압축했다.
+     Main은 공유 c=#8을 Space/SelectMode 뒤에도 검사한다. Rest의 마지막
+     Backspace를 무시하던 이식판을 수정했다. 직접 Backspace 역시 원본
+     SoundOn만 바꾸고 사용자 BGM 음소거와 분리했다. 실제 Rest/Backspace
+     입력과 원본 컴파일 분기0x81a0..0x81b4의 열 가지 키/상태 조합을
+     대조했다. 컴파일 분기 검사는 합성 입력이며 캠페인 실행 근거와 구분한다.
+     EVIL SEAL은 보스 전투 의뢰가 아니다. 원본 Torch/Levitation과
+     정해진 통로 x33/y50 및 x18/y10을 이용해 봉인을 획득했다.
+     실제 봉인 성공 저장, 출구 및 GAIA 복귀를 보존했다. 성주는 최종
+     확인 전에 이름 있는6명에게 경험치10000을 지급하고 확인 뒤 etc14=3,
+     다음 QUAKE 요청 확인 뒤4로 넘어간다. 이 순서와 실제 반환 후 저장,
+     저장 확인 뒤 Random(40) 한 번을 모바일 회귀로 대조했다.
+     아직 QUAKE/WIVERN/NOTICE/LOCKUP 및 후반·최종전·엔딩 원본 연속
+     대조가 남아 있다. 계약1446개의 partial 및 미검증1848개는 유지한다.
+     봉인 직전 지도는 실제 성공 저장의 [18,9]만 원본 tile51로 복원한
+     RAM 지도이며, 직전 원본 RAM 전체 지도 SHA256과 일치를 요구한다.
+     봉인 전 실제 디스크 저장이라고 주장하지 않는다. 획득 즉시 단계2와
+     [18,9]=0이 되고 확인 뒤 실제 성공 저장 bytes까지 모바일에서 대조했다.
+     검증: 전체 Flutter1404개 통과(도구2개 제외), analyze 오류 없음,
+     Python69개 및 원본 산술/난수/훈련/키8·계약/메모리/지도/대사·DOS
+     근거 검사 통과. 릴리스 WASM/JS와 bootstrap 무결성 검증 성공.
+     실제 Chromium390×844의 기존 새 게임·저장·장비·합류·Esc·Space
+     후속 메뉴10개 검사 통과. 후속 퀘스트 확인은 계속 진행한다.

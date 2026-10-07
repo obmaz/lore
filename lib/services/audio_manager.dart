@@ -110,6 +110,9 @@ class AudioManager {
   /// 편의 메서드: 비명음 2 (적 또는 아군 쓰러짐)
   void playScream2() => playSfx(SfxSound.scream2);
 
+  /// LOREMAIN.Main Backspace toggles the shared SoundOn, not the user's BGM mute.
+  void toggleSourceSound() => sourceSoundEnabled = !sourceSoundEnabled;
+
   /// 사운드 음소거 토글
   Future<void> toggleMute() async {
     _isMuted = !_isMuted;
