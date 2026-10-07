@@ -70,6 +70,32 @@ class ContractLedgerTest(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "source moved"):
                     ledger.link_contract_evidence(sites)
 
+    def test_supporting_evidence_is_retained_without_promoting_verification(self):
+        rows = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))
+        row = rows["contracts"][0]
+        row["supporting_evidence"] = ["tool/check_dos_final_completion.py"]
+        _, sites, _ = ledger.source_contracts(ledger.inventory())
+        with tempfile.TemporaryDirectory() as directory:
+            candidate = Path(directory) / "evidence.json"
+            candidate.write_text(json.dumps(rows), encoding="utf-8")
+            with patch.object(ledger, "EVIDENCE", candidate):
+                ledger.link_contract_evidence(sites)
+        site = next(site for site in sites if site["id"] == row["id"])
+        self.assertEqual(site["behavioral_evidence"],
+                         [row["test"], "tool/check_dos_final_completion.py"])
+        self.assertEqual(site["verification_status"], "partial")
+
+    def test_missing_supporting_evidence_is_rejected(self):
+        rows = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))
+        rows["contracts"][0]["supporting_evidence"] = ["missing/native.json"]
+        _, sites, _ = ledger.source_contracts(ledger.inventory())
+        with tempfile.TemporaryDirectory() as directory:
+            candidate = Path(directory) / "evidence.json"
+            candidate.write_text(json.dumps(rows), encoding="utf-8")
+            with patch.object(ledger, "EVIDENCE", candidate):
+                with self.assertRaisesRegex(ValueError, "Supporting contract evidence"):
+                    ledger.link_contract_evidence(sites)
+
 
 if __name__ == "__main__":
     unittest.main()

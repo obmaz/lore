@@ -1,0 +1,6910 @@
+{
+  "scope": "Review inventory, not missing implementations or completion percentage. Platform adapters still need functional validation.",
+  "summary": {
+    "game_control_sites": 1848,
+    "unclassified": 402,
+    "partial": 1446,
+    "verified": 0,
+    "unmapped_map_writes": 123
+  },
+  "routines": [
+    {
+      "routine": "LOREENT.PAS:entermode:1",
+      "unclassified": 82,
+      "partial": 4
+    },
+    {
+      "routine": "LORECRET.PAS:erase:1",
+      "unclassified": 42
+    },
+    {
+      "routine": "LORECRET.PAS:fourth:1",
+      "unclassified": 22,
+      "partial": 4
+    },
+    {
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "unclassified": 21
+    },
+    {
+      "routine": "LORESUB.PAS:load:1",
+      "unclassified": 19,
+      "partial": 2
+    },
+    {
+      "routine": "LORECRET.PAS:third:1",
+      "unclassified": 17
+    },
+    {
+      "routine": "LORETALK.PAS:talkmode:1",
+      "partial": 132,
+      "unclassified": 14
+    },
+    {
+      "routine": "LOREMAIN.PAS:main:1",
+      "unclassified": 13,
+      "partial": 13
+    },
+    {
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "unclassified": 13,
+      "partial": 247
+    },
+    {
+      "routine": "LORECRET.PAS:second:1",
+      "unclassified": 10
+    },
+    {
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "unclassified": 10
+    },
+    {
+      "routine": "LORE.PAS:<main>",
+      "unclassified": 8
+    },
+    {
+      "routine": "LORECRET.PAS:name:1",
+      "unclassified": 8
+    },
+    {
+      "routine": "LORESUB.PAS:set_all:1",
+      "unclassified": 8
+    },
+    {
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "unclassified": 8
+    },
+    {
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "unclassified": 7,
+      "partial": 157
+    },
+    {
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "unclassified": 7
+    },
+    {
+      "routine": "LORESUB.PAS:auxscroll:1",
+      "unclassified": 6
+    },
+    {
+      "routine": "LOREHELP.PAS:scroll_sub:1",
+      "unclassified": 5
+    },
+    {
+      "routine": "LORESUB.PAS:display_condition:1",
+      "unclassified": 5
+    },
+    {
+      "routine": "LORESUB.PAS:scroll:1",
+      "partial": 2,
+      "unclassified": 5
+    },
+    {
+      "routine": "LORECRET.PAS:last:1",
+      "unclassified": 4,
+      "partial": 1
+    },
+    {
+      "routine": "LORECRET.PAS:display:1",
+      "unclassified": 3
+    },
+    {
+      "routine": "LOREHELP.PAS:box:1",
+      "unclassified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:displaycondition:1",
+      "unclassified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:displayesp:1",
+      "unclassified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:displayhp:1",
+      "unclassified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:displaysp:1",
+      "unclassified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:eprint:1",
+      "unclassified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:save:1",
+      "unclassified": 3
+    },
+    {
+      "routine": "LORECRET.PAS:profile:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LOREENT.PAS:sign:1",
+      "unclassified": 2,
+      "partial": 28
+    },
+    {
+      "routine": "LOREHELP.PAS:text_fading:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LOREMAIN.PAS:enter_lava:1",
+      "unclassified": 2,
+      "partial": 11
+    },
+    {
+      "routine": "LOREMAIN.PAS:enter_swamp:1",
+      "partial": 15,
+      "unclassified": 2
+    },
+    {
+      "routine": "LOREMAIN.PAS:enter_water:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LORESPEC.PAS:sgn:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:join:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:pressanykey:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:returnjoinmember:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:returnmagic:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:returnweapon:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:setscrolltype:1",
+      "unclassified": 2
+    },
+    {
+      "routine": "LORECRET.PAS:createcharacter:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORECRET.PAS:whatclass:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORECRET.PAS:which:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LOREHELP.PAS:messagebox:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESPEC.PAS:specialevent:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:at:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:auxprint:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:clear:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:exist:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:message:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:on:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returnclass:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returndefense:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returnmessage:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returnsex:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returnsexdata:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:turn_mind:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:unsound:1",
+      "unclassified": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:attackone:1",
+      "partial": 18
+    },
+    {
+      "routine": "LOREBATT.PAS:battleesp:1",
+      "partial": 49
+    },
+    {
+      "routine": "LOREBATT.PAS:battlemode:1",
+      "partial": 42
+    },
+    {
+      "routine": "LOREBATT.PAS:castall:1",
+      "partial": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:castattack:1",
+      "partial": 63
+    },
+    {
+      "routine": "LOREBATT.PAS:castattackall:1",
+      "partial": 2
+    },
+    {
+      "routine": "LOREBATT.PAS:castattackone:1",
+      "partial": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:castattacksub:1",
+      "partial": 11
+    },
+    {
+      "routine": "LOREBATT.PAS:castone:1",
+      "partial": 19
+    },
+    {
+      "routine": "LOREBATT.PAS:castspecial:1",
+      "partial": 47
+    },
+    {
+      "routine": "LOREBATT.PAS:displayenemies:1",
+      "partial": 5
+    },
+    {
+      "routine": "LOREBATT.PAS:encounterenemy:1",
+      "partial": 17
+    },
+    {
+      "routine": "LOREBATT.PAS:endbattle:1",
+      "partial": 9
+    },
+    {
+      "routine": "LOREBATT.PAS:enemyattack:1",
+      "partial": 8
+    },
+    {
+      "routine": "LOREBATT.PAS:enemycure:1",
+      "partial": 5
+    },
+    {
+      "routine": "LOREBATT.PAS:existenemies:1",
+      "partial": 3
+    },
+    {
+      "routine": "LOREBATT.PAS:plusexperience:1",
+      "partial": 4
+    },
+    {
+      "routine": "LOREBATT.PAS:plusgold:1",
+      "partial": 4
+    },
+    {
+      "routine": "LOREBATT.PAS:randomenemy:1",
+      "partial": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:runaway:1",
+      "partial": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:specialattack:1",
+      "partial": 39
+    },
+    {
+      "routine": "LOREBATT.PAS:specialcastattack:1",
+      "partial": 21
+    },
+    {
+      "routine": "LOREBATT.PAS:weaponattack:1",
+      "partial": 18
+    },
+    {
+      "routine": "LOREEND.PAS:end_demo:1",
+      "partial": 11
+    },
+    {
+      "routine": "LOREEND.PAS:fadein:1",
+      "partial": 1
+    },
+    {
+      "routine": "LOREEND.PAS:fadeout:1",
+      "partial": 1
+    },
+    {
+      "routine": "LOREEND.PAS:fadesub:1",
+      "partial": 2
+    },
+    {
+      "routine": "LOREEND.PAS:staffmessage:1",
+      "partial": 2
+    },
+    {
+      "routine": "LOREEND.PAS:thundereffect:1",
+      "partial": 5
+    },
+    {
+      "routine": "LOREMAIN.PAS:move_mode:1",
+      "partial": 11
+    },
+    {
+      "routine": "LOREMENU.PAS:castspell:1",
+      "partial": 5
+    },
+    {
+      "routine": "LOREMENU.PAS:consciousone:1",
+      "partial": 10
+    },
+    {
+      "routine": "LOREMENU.PAS:conscoisall:1",
+      "partial": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:cureall:1",
+      "partial": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:cureone:1",
+      "partial": 9
+    },
+    {
+      "routine": "LOREMENU.PAS:curespell:1",
+      "partial": 14
+    },
+    {
+      "routine": "LOREMENU.PAS:extrasense:1",
+      "partial": 37
+    },
+    {
+      "routine": "LOREMENU.PAS:gameoption:1",
+      "partial": 19
+    },
+    {
+      "routine": "LOREMENU.PAS:healall:1",
+      "partial": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:healone:1",
+      "partial": 10
+    },
+    {
+      "routine": "LOREMENU.PAS:phenominaspell:1",
+      "partial": 73
+    },
+    {
+      "routine": "LOREMENU.PAS:quickview:1",
+      "partial": 4
+    },
+    {
+      "routine": "LOREMENU.PAS:rest:1",
+      "partial": 17
+    },
+    {
+      "routine": "LOREMENU.PAS:returnpredict:1",
+      "partial": 18
+    },
+    {
+      "routine": "LOREMENU.PAS:revitalizeall:1",
+      "partial": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:revitalizeone:1",
+      "partial": 8
+    },
+    {
+      "routine": "LOREMENU.PAS:selectmode:1",
+      "partial": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:viewcharacter:1",
+      "partial": 6
+    },
+    {
+      "routine": "LOREMENU.PAS:viewparty:1",
+      "partial": 1
+    },
+    {
+      "routine": "LOREMENU.PAS:viewpartysub:1",
+      "partial": 1
+    },
+    {
+      "routine": "LORESUB.PAS:detectgameover:1",
+      "partial": 3
+    },
+    {
+      "routine": "LORESUB.PAS:findgold:1",
+      "partial": 1
+    },
+    {
+      "routine": "LORESUB.PAS:gameover:1",
+      "partial": 14
+    },
+    {
+      "routine": "LORESUB.PAS:grocery:1",
+      "partial": 6
+    },
+    {
+      "routine": "LORESUB.PAS:hospital:1",
+      "partial": 36
+    },
+    {
+      "routine": "LORESUB.PAS:returncondition:1",
+      "partial": 8
+    },
+    {
+      "routine": "LORESUB.PAS:returndefaultfont:1",
+      "partial": 1
+    },
+    {
+      "routine": "LORESUB.PAS:select:1",
+      "partial": 12
+    },
+    {
+      "routine": "LORESUB.PAS:train_center:1",
+      "partial": 51
+    },
+    {
+      "routine": "LORESUB.PAS:wantenter:1",
+      "partial": 1
+    },
+    {
+      "routine": "LORESUB.PAS:wantexit:1",
+      "partial": 1
+    },
+    {
+      "routine": "LORESUB.PAS:weapon_shop:1",
+      "partial": 33
+    }
+  ],
+  "unclassified_sites": [
+    {
+      "id": "LORE.PAS:<main>:if:1",
+      "inventory_id": "LORE.PAS:16:if:1",
+      "file": "LORE.PAS",
+      "line": 16,
+      "routine": "LORE.PAS:<main>",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORE.PAS:<main>:if:2",
+      "inventory_id": "LORE.PAS:18:if:1",
+      "file": "LORE.PAS",
+      "line": 18,
+      "routine": "LORE.PAS:<main>",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORE.PAS:<main>:if:3",
+      "inventory_id": "LORE.PAS:20:if:1",
+      "file": "LORE.PAS",
+      "line": 20,
+      "routine": "LORE.PAS:<main>",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORE.PAS:<main>:if:4",
+      "inventory_id": "LORE.PAS:27:if:1",
+      "file": "LORE.PAS",
+      "line": 27,
+      "routine": "LORE.PAS:<main>",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORE.PAS:<main>:if:5",
+      "inventory_id": "LORE.PAS:31:if:1",
+      "file": "LORE.PAS",
+      "line": 31,
+      "routine": "LORE.PAS:<main>",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORE.PAS:<main>:if:6",
+      "inventory_id": "LORE.PAS:41:if:1",
+      "file": "LORE.PAS",
+      "line": 41,
+      "routine": "LORE.PAS:<main>",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORE.PAS:<main>:while:1",
+      "inventory_id": "LORE.PAS:41:while:1",
+      "file": "LORE.PAS",
+      "line": 41,
+      "routine": "LORE.PAS:<main>",
+      "kind": "while",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORE.PAS:<main>:while:2",
+      "inventory_id": "LORE.PAS:43:while:1",
+      "file": "LORE.PAS",
+      "line": 43,
+      "routine": "LORE.PAS:<main>",
+      "kind": "while",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:whatclass:1:case:1",
+      "inventory_id": "LORECRET.PAS:32:case:1",
+      "file": "LORECRET.PAS",
+      "line": 32,
+      "routine": "LORECRET.PAS:whatclass:1",
+      "kind": "case",
+      "outcomes": 11,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:display:1:for:1",
+      "inventory_id": "LORECRET.PAS:61:for:1",
+      "file": "LORECRET.PAS",
+      "line": 61,
+      "routine": "LORECRET.PAS:display:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:display:1:for:2",
+      "inventory_id": "LORECRET.PAS:65:for:1",
+      "file": "LORECRET.PAS",
+      "line": 65,
+      "routine": "LORECRET.PAS:display:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:display:1:for:3",
+      "inventory_id": "LORECRET.PAS:82:for:1",
+      "file": "LORECRET.PAS",
+      "line": 82,
+      "routine": "LORECRET.PAS:display:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:name:1:repeat:1",
+      "inventory_id": "LORECRET.PAS:101:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 101,
+      "routine": "LORECRET.PAS:name:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:1",
+      "inventory_id": "LORECRET.PAS:104:if:1",
+      "file": "LORECRET.PAS",
+      "line": 104,
+      "routine": "LORECRET.PAS:name:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:2",
+      "inventory_id": "LORECRET.PAS:109:if:1",
+      "file": "LORECRET.PAS",
+      "line": 109,
+      "routine": "LORECRET.PAS:name:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:3",
+      "inventory_id": "LORECRET.PAS:113:if:1",
+      "file": "LORECRET.PAS",
+      "line": 113,
+      "routine": "LORECRET.PAS:name:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:4",
+      "inventory_id": "LORECRET.PAS:117:if:1",
+      "file": "LORECRET.PAS",
+      "line": 117,
+      "routine": "LORECRET.PAS:name:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:5",
+      "inventory_id": "LORECRET.PAS:123:if:1",
+      "file": "LORECRET.PAS",
+      "line": 123,
+      "routine": "LORECRET.PAS:name:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:name:1:repeat:2",
+      "inventory_id": "LORECRET.PAS:135:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 135,
+      "routine": "LORECRET.PAS:name:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:6",
+      "inventory_id": "LORECRET.PAS:137:if:1",
+      "file": "LORECRET.PAS",
+      "line": 137,
+      "routine": "LORECRET.PAS:name:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:profile:1:if:1",
+      "inventory_id": "LORECRET.PAS:157:if:1",
+      "file": "LORECRET.PAS",
+      "line": 157,
+      "routine": "LORECRET.PAS:profile:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:profile:1:repeat:1",
+      "inventory_id": "LORECRET.PAS:186:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 186,
+      "routine": "LORECRET.PAS:profile:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:which:1:repeat:1",
+      "inventory_id": "LORECRET.PAS:194:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 194,
+      "routine": "LORECRET.PAS:which:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:1",
+      "inventory_id": "LORECRET.PAS:206:for:1",
+      "file": "LORECRET.PAS",
+      "line": 206,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:1",
+      "inventory_id": "LORECRET.PAS:215:if:1",
+      "file": "LORECRET.PAS",
+      "line": 215,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:2",
+      "inventory_id": "LORECRET.PAS:216:if:1",
+      "file": "LORECRET.PAS",
+      "line": 216,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:3",
+      "inventory_id": "LORECRET.PAS:217:if:1",
+      "file": "LORECRET.PAS",
+      "line": 217,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:4",
+      "inventory_id": "LORECRET.PAS:225:if:1",
+      "file": "LORECRET.PAS",
+      "line": 225,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:5",
+      "inventory_id": "LORECRET.PAS:226:if:1",
+      "file": "LORECRET.PAS",
+      "line": 226,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:6",
+      "inventory_id": "LORECRET.PAS:227:if:1",
+      "file": "LORECRET.PAS",
+      "line": 227,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:7",
+      "inventory_id": "LORECRET.PAS:235:if:1",
+      "file": "LORECRET.PAS",
+      "line": 235,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:8",
+      "inventory_id": "LORECRET.PAS:236:if:1",
+      "file": "LORECRET.PAS",
+      "line": 236,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:9",
+      "inventory_id": "LORECRET.PAS:237:if:1",
+      "file": "LORECRET.PAS",
+      "line": 237,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:10",
+      "inventory_id": "LORECRET.PAS:244:if:1",
+      "file": "LORECRET.PAS",
+      "line": 244,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:11",
+      "inventory_id": "LORECRET.PAS:245:if:1",
+      "file": "LORECRET.PAS",
+      "line": 245,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:12",
+      "inventory_id": "LORECRET.PAS:246:if:1",
+      "file": "LORECRET.PAS",
+      "line": 246,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:13",
+      "inventory_id": "LORECRET.PAS:253:if:1",
+      "file": "LORECRET.PAS",
+      "line": 253,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:14",
+      "inventory_id": "LORECRET.PAS:254:if:1",
+      "file": "LORECRET.PAS",
+      "line": 254,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:15",
+      "inventory_id": "LORECRET.PAS:255:if:1",
+      "file": "LORECRET.PAS",
+      "line": 255,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:16",
+      "inventory_id": "LORECRET.PAS:264:if:1",
+      "file": "LORECRET.PAS",
+      "line": 264,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:17",
+      "inventory_id": "LORECRET.PAS:265:if:1",
+      "file": "LORECRET.PAS",
+      "line": 265,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:18",
+      "inventory_id": "LORECRET.PAS:266:if:1",
+      "file": "LORECRET.PAS",
+      "line": 266,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:19",
+      "inventory_id": "LORECRET.PAS:275:if:1",
+      "file": "LORECRET.PAS",
+      "line": 275,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:20",
+      "inventory_id": "LORECRET.PAS:276:if:1",
+      "file": "LORECRET.PAS",
+      "line": 276,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:21",
+      "inventory_id": "LORECRET.PAS:277:if:1",
+      "file": "LORECRET.PAS",
+      "line": 277,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:22",
+      "inventory_id": "LORECRET.PAS:285:if:1",
+      "file": "LORECRET.PAS",
+      "line": 285,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:23",
+      "inventory_id": "LORECRET.PAS:286:if:1",
+      "file": "LORECRET.PAS",
+      "line": 286,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:24",
+      "inventory_id": "LORECRET.PAS:287:if:1",
+      "file": "LORECRET.PAS",
+      "line": 287,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:25",
+      "inventory_id": "LORECRET.PAS:294:if:1",
+      "file": "LORECRET.PAS",
+      "line": 294,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:26",
+      "inventory_id": "LORECRET.PAS:295:if:1",
+      "file": "LORECRET.PAS",
+      "line": 295,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:27",
+      "inventory_id": "LORECRET.PAS:296:if:1",
+      "file": "LORECRET.PAS",
+      "line": 296,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:28",
+      "inventory_id": "LORECRET.PAS:303:if:1",
+      "file": "LORECRET.PAS",
+      "line": 303,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:29",
+      "inventory_id": "LORECRET.PAS:304:if:1",
+      "file": "LORECRET.PAS",
+      "line": 304,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:30",
+      "inventory_id": "LORECRET.PAS:305:if:1",
+      "file": "LORECRET.PAS",
+      "line": 305,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:2",
+      "inventory_id": "LORECRET.PAS:307:for:1",
+      "file": "LORECRET.PAS",
+      "line": 307,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:case:1",
+      "inventory_id": "LORECRET.PAS:309:case:1",
+      "file": "LORECRET.PAS",
+      "line": 309,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "case",
+      "outcomes": 8,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:31",
+      "inventory_id": "LORECRET.PAS:329:if:1",
+      "file": "LORECRET.PAS",
+      "line": 329,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:32",
+      "inventory_id": "LORECRET.PAS:331:if:1",
+      "file": "LORECRET.PAS",
+      "line": 331,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:33",
+      "inventory_id": "LORECRET.PAS:337:if:1",
+      "file": "LORECRET.PAS",
+      "line": 337,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:34",
+      "inventory_id": "LORECRET.PAS:343:if:1",
+      "file": "LORECRET.PAS",
+      "line": 343,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:35",
+      "inventory_id": "LORECRET.PAS:347:if:1",
+      "file": "LORECRET.PAS",
+      "line": 347,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:36",
+      "inventory_id": "LORECRET.PAS:353:if:1",
+      "file": "LORECRET.PAS",
+      "line": 353,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:37",
+      "inventory_id": "LORECRET.PAS:359:if:1",
+      "file": "LORECRET.PAS",
+      "line": 359,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:3",
+      "inventory_id": "LORECRET.PAS:390:for:1",
+      "file": "LORECRET.PAS",
+      "line": 390,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:4",
+      "inventory_id": "LORECRET.PAS:394:for:1",
+      "file": "LORECRET.PAS",
+      "line": 394,
+      "routine": "LORECRET.PAS:erase:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:for:1",
+      "inventory_id": "LORECRET.PAS:416:for:1",
+      "file": "LORECRET.PAS",
+      "line": 416,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:for:2",
+      "inventory_id": "LORECRET.PAS:420:for:1",
+      "file": "LORECRET.PAS",
+      "line": 420,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:repeat:1",
+      "inventory_id": "LORECRET.PAS:421:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 421,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:repeat:2",
+      "inventory_id": "LORECRET.PAS:422:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 422,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:1",
+      "inventory_id": "LORECRET.PAS:425:if:1",
+      "file": "LORECRET.PAS",
+      "line": 425,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:case:1",
+      "inventory_id": "LORECRET.PAS:427:case:1",
+      "file": "LORECRET.PAS",
+      "line": 427,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "case",
+      "outcomes": 5,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:2",
+      "inventory_id": "LORECRET.PAS:434:if:1",
+      "file": "LORECRET.PAS",
+      "line": 434,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:3",
+      "inventory_id": "LORECRET.PAS:436:if:1",
+      "file": "LORECRET.PAS",
+      "line": 436,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:4",
+      "inventory_id": "LORECRET.PAS:440:if:1",
+      "file": "LORECRET.PAS",
+      "line": 440,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:5",
+      "inventory_id": "LORECRET.PAS:443:if:1",
+      "file": "LORECRET.PAS",
+      "line": 443,
+      "routine": "LORECRET.PAS:second:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:for:1",
+      "inventory_id": "LORECRET.PAS:475:for:1",
+      "file": "LORECRET.PAS",
+      "line": 475,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:1",
+      "inventory_id": "LORECRET.PAS:478:if:1",
+      "file": "LORECRET.PAS",
+      "line": 478,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:2",
+      "inventory_id": "LORECRET.PAS:484:if:1",
+      "file": "LORECRET.PAS",
+      "line": 484,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:3",
+      "inventory_id": "LORECRET.PAS:490:if:1",
+      "file": "LORECRET.PAS",
+      "line": 490,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:4",
+      "inventory_id": "LORECRET.PAS:496:if:1",
+      "file": "LORECRET.PAS",
+      "line": 496,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:5",
+      "inventory_id": "LORECRET.PAS:503:if:1",
+      "file": "LORECRET.PAS",
+      "line": 503,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:6",
+      "inventory_id": "LORECRET.PAS:509:if:1",
+      "file": "LORECRET.PAS",
+      "line": 509,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:7",
+      "inventory_id": "LORECRET.PAS:515:if:1",
+      "file": "LORECRET.PAS",
+      "line": 515,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:repeat:1",
+      "inventory_id": "LORECRET.PAS:525:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 525,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:repeat:2",
+      "inventory_id": "LORECRET.PAS:527:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 527,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:8",
+      "inventory_id": "LORECRET.PAS:528:if:1",
+      "file": "LORECRET.PAS",
+      "line": 528,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:9",
+      "inventory_id": "LORECRET.PAS:529:if:1",
+      "file": "LORECRET.PAS",
+      "line": 529,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:while:1",
+      "inventory_id": "LORECRET.PAS:535:while:1",
+      "file": "LORECRET.PAS",
+      "line": 535,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "while",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:10",
+      "inventory_id": "LORECRET.PAS:537:if:1",
+      "file": "LORECRET.PAS",
+      "line": 537,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:11",
+      "inventory_id": "LORECRET.PAS:538:if:1",
+      "file": "LORECRET.PAS",
+      "line": 538,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:repeat:3",
+      "inventory_id": "LORECRET.PAS:556:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 556,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:12",
+      "inventory_id": "LORECRET.PAS:558:if:1",
+      "file": "LORECRET.PAS",
+      "line": 558,
+      "routine": "LORECRET.PAS:third:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:1",
+      "inventory_id": "LORECRET.PAS:575:for:1",
+      "file": "LORECRET.PAS",
+      "line": 575,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:2",
+      "inventory_id": "LORECRET.PAS:578:for:1",
+      "file": "LORECRET.PAS",
+      "line": 578,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:repeat:1",
+      "inventory_id": "LORECRET.PAS:582:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 582,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:repeat:2",
+      "inventory_id": "LORECRET.PAS:583:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 583,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:1",
+      "inventory_id": "LORECRET.PAS:586:if:1",
+      "file": "LORECRET.PAS",
+      "line": 586,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:case:1",
+      "inventory_id": "LORECRET.PAS:588:case:1",
+      "file": "LORECRET.PAS",
+      "line": 588,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "case",
+      "outcomes": 3,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:2",
+      "inventory_id": "LORECRET.PAS:593:if:1",
+      "file": "LORECRET.PAS",
+      "line": 593,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:3",
+      "inventory_id": "LORECRET.PAS:595:if:1",
+      "file": "LORECRET.PAS",
+      "line": 595,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:4",
+      "inventory_id": "LORECRET.PAS:599:if:1",
+      "file": "LORECRET.PAS",
+      "line": 599,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:repeat:3",
+      "inventory_id": "LORECRET.PAS:603:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 603,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:repeat:4",
+      "inventory_id": "LORECRET.PAS:604:repeat:1",
+      "file": "LORECRET.PAS",
+      "line": 604,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:5",
+      "inventory_id": "LORECRET.PAS:606:if:1",
+      "file": "LORECRET.PAS",
+      "line": 606,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:6",
+      "inventory_id": "LORECRET.PAS:615:if:1",
+      "file": "LORECRET.PAS",
+      "line": 615,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:3",
+      "inventory_id": "LORECRET.PAS:626:for:1",
+      "file": "LORECRET.PAS",
+      "line": 626,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:7",
+      "inventory_id": "LORECRET.PAS:627:if:1",
+      "file": "LORECRET.PAS",
+      "line": 627,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:4",
+      "inventory_id": "LORECRET.PAS:631:for:1",
+      "file": "LORECRET.PAS",
+      "line": 631,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:8",
+      "inventory_id": "LORECRET.PAS:632:if:1",
+      "file": "LORECRET.PAS",
+      "line": 632,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:9",
+      "inventory_id": "LORECRET.PAS:640:if:1",
+      "file": "LORECRET.PAS",
+      "line": 640,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:10",
+      "inventory_id": "LORECRET.PAS:661:if:1",
+      "file": "LORECRET.PAS",
+      "line": 661,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:11",
+      "inventory_id": "LORECRET.PAS:667:if:1",
+      "file": "LORECRET.PAS",
+      "line": 667,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:12",
+      "inventory_id": "LORECRET.PAS:668:if:1",
+      "file": "LORECRET.PAS",
+      "line": 668,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:8",
+      "inventory_id": "LORECRET.PAS:706:for:1",
+      "file": "LORECRET.PAS",
+      "line": 706,
+      "routine": "LORECRET.PAS:fourth:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:last:1:for:1",
+      "inventory_id": "LORECRET.PAS:723:for:1",
+      "file": "LORECRET.PAS",
+      "line": 723,
+      "routine": "LORECRET.PAS:last:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:last:1:for:3",
+      "inventory_id": "LORECRET.PAS:732:for:1",
+      "file": "LORECRET.PAS",
+      "line": 732,
+      "routine": "LORECRET.PAS:last:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:last:1:if:1",
+      "inventory_id": "LORECRET.PAS:735:if:1",
+      "file": "LORECRET.PAS",
+      "line": 735,
+      "routine": "LORECRET.PAS:last:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:last:1:if:2",
+      "inventory_id": "LORECRET.PAS:740:if:1",
+      "file": "LORECRET.PAS",
+      "line": 740,
+      "routine": "LORECRET.PAS:last:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:createcharacter:1:if:1",
+      "inventory_id": "LORECRET.PAS:763:if:1",
+      "file": "LORECRET.PAS",
+      "line": 763,
+      "routine": "LORECRET.PAS:createcharacter:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:case:1",
+      "inventory_id": "LOREENT.PAS:16:case:1",
+      "file": "LOREENT.PAS",
+      "line": 16,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "case",
+      "outcomes": 15,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:1",
+      "inventory_id": "LOREENT.PAS:18:if:1",
+      "file": "LOREENT.PAS",
+      "line": 18,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:2",
+      "inventory_id": "LOREENT.PAS:19:if:1",
+      "file": "LOREENT.PAS",
+      "line": 19,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:1",
+      "inventory_id": "LOREENT.PAS:27:for:1",
+      "file": "LOREENT.PAS",
+      "line": 27,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:3",
+      "inventory_id": "LOREENT.PAS:29:if:1",
+      "file": "LOREENT.PAS",
+      "line": 29,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:4",
+      "inventory_id": "LOREENT.PAS:30:if:1",
+      "file": "LOREENT.PAS",
+      "line": 30,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:2",
+      "inventory_id": "LOREENT.PAS:35:for:1",
+      "file": "LOREENT.PAS",
+      "line": 35,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:5",
+      "inventory_id": "LOREENT.PAS:35:if:1",
+      "file": "LOREENT.PAS",
+      "line": 35,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:8",
+      "inventory_id": "LOREENT.PAS:44:if:1",
+      "file": "LOREENT.PAS",
+      "line": 44,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:9",
+      "inventory_id": "LOREENT.PAS:45:if:1",
+      "file": "LOREENT.PAS",
+      "line": 45,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:10",
+      "inventory_id": "LOREENT.PAS:53:if:1",
+      "file": "LOREENT.PAS",
+      "line": 53,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:11",
+      "inventory_id": "LOREENT.PAS:54:if:1",
+      "file": "LOREENT.PAS",
+      "line": 54,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:12",
+      "inventory_id": "LOREENT.PAS:60:if:1",
+      "file": "LOREENT.PAS",
+      "line": 60,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:13",
+      "inventory_id": "LOREENT.PAS:61:if:1",
+      "file": "LOREENT.PAS",
+      "line": 61,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:14",
+      "inventory_id": "LOREENT.PAS:67:if:1",
+      "file": "LOREENT.PAS",
+      "line": 67,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:15",
+      "inventory_id": "LOREENT.PAS:68:if:1",
+      "file": "LOREENT.PAS",
+      "line": 68,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:16",
+      "inventory_id": "LOREENT.PAS:74:if:1",
+      "file": "LOREENT.PAS",
+      "line": 74,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:17",
+      "inventory_id": "LOREENT.PAS:75:if:1",
+      "file": "LOREENT.PAS",
+      "line": 75,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:18",
+      "inventory_id": "LOREENT.PAS:83:if:1",
+      "file": "LOREENT.PAS",
+      "line": 83,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:19",
+      "inventory_id": "LOREENT.PAS:84:if:1",
+      "file": "LOREENT.PAS",
+      "line": 84,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:21",
+      "inventory_id": "LOREENT.PAS:91:if:1",
+      "file": "LOREENT.PAS",
+      "line": 91,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:22",
+      "inventory_id": "LOREENT.PAS:92:if:1",
+      "file": "LOREENT.PAS",
+      "line": 92,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:23",
+      "inventory_id": "LOREENT.PAS:98:if:1",
+      "file": "LOREENT.PAS",
+      "line": 98,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:24",
+      "inventory_id": "LOREENT.PAS:99:if:1",
+      "file": "LOREENT.PAS",
+      "line": 99,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:25",
+      "inventory_id": "LOREENT.PAS:107:if:1",
+      "file": "LOREENT.PAS",
+      "line": 107,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:26",
+      "inventory_id": "LOREENT.PAS:108:if:1",
+      "file": "LOREENT.PAS",
+      "line": 108,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:27",
+      "inventory_id": "LOREENT.PAS:114:if:1",
+      "file": "LOREENT.PAS",
+      "line": 114,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:28",
+      "inventory_id": "LOREENT.PAS:115:if:1",
+      "file": "LOREENT.PAS",
+      "line": 115,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:29",
+      "inventory_id": "LOREENT.PAS:121:if:1",
+      "file": "LOREENT.PAS",
+      "line": 121,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:30",
+      "inventory_id": "LOREENT.PAS:122:if:1",
+      "file": "LOREENT.PAS",
+      "line": 122,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:31",
+      "inventory_id": "LOREENT.PAS:130:if:1",
+      "file": "LOREENT.PAS",
+      "line": 130,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:32",
+      "inventory_id": "LOREENT.PAS:131:if:1",
+      "file": "LOREENT.PAS",
+      "line": 131,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:33",
+      "inventory_id": "LOREENT.PAS:137:if:1",
+      "file": "LOREENT.PAS",
+      "line": 137,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:34",
+      "inventory_id": "LOREENT.PAS:138:if:1",
+      "file": "LOREENT.PAS",
+      "line": 138,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:35",
+      "inventory_id": "LOREENT.PAS:139:if:1",
+      "file": "LOREENT.PAS",
+      "line": 139,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:3",
+      "inventory_id": "LOREENT.PAS:141:for:1",
+      "file": "LOREENT.PAS",
+      "line": 141,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:36",
+      "inventory_id": "LOREENT.PAS:150:if:1",
+      "file": "LOREENT.PAS",
+      "line": 150,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:exit:1",
+      "inventory_id": "LOREENT.PAS:150:exit:1",
+      "file": "LOREENT.PAS",
+      "line": 150,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "exit",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:37",
+      "inventory_id": "LOREENT.PAS:159:if:1",
+      "file": "LOREENT.PAS",
+      "line": 159,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:38",
+      "inventory_id": "LOREENT.PAS:164:if:1",
+      "file": "LOREENT.PAS",
+      "line": 164,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:39",
+      "inventory_id": "LOREENT.PAS:168:if:1",
+      "file": "LOREENT.PAS",
+      "line": 168,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:40",
+      "inventory_id": "LOREENT.PAS:173:if:1",
+      "file": "LOREENT.PAS",
+      "line": 173,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:41",
+      "inventory_id": "LOREENT.PAS:175:if:1",
+      "file": "LOREENT.PAS",
+      "line": 175,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:42",
+      "inventory_id": "LOREENT.PAS:181:if:1",
+      "file": "LOREENT.PAS",
+      "line": 181,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:43",
+      "inventory_id": "LOREENT.PAS:187:if:1",
+      "file": "LOREENT.PAS",
+      "line": 187,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:45",
+      "inventory_id": "LOREENT.PAS:195:if:1",
+      "file": "LOREENT.PAS",
+      "line": 195,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:46",
+      "inventory_id": "LOREENT.PAS:196:if:1",
+      "file": "LOREENT.PAS",
+      "line": 196,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:47",
+      "inventory_id": "LOREENT.PAS:203:if:1",
+      "file": "LOREENT.PAS",
+      "line": 203,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:48",
+      "inventory_id": "LOREENT.PAS:204:if:1",
+      "file": "LOREENT.PAS",
+      "line": 204,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:exit:2",
+      "inventory_id": "LOREENT.PAS:206:exit:1",
+      "file": "LOREENT.PAS",
+      "line": 206,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "exit",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:49",
+      "inventory_id": "LOREENT.PAS:208:if:1",
+      "file": "LOREENT.PAS",
+      "line": 208,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:50",
+      "inventory_id": "LOREENT.PAS:210:if:1",
+      "file": "LOREENT.PAS",
+      "line": 210,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:51",
+      "inventory_id": "LOREENT.PAS:214:if:1",
+      "file": "LOREENT.PAS",
+      "line": 214,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:52",
+      "inventory_id": "LOREENT.PAS:218:if:1",
+      "file": "LOREENT.PAS",
+      "line": 218,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:53",
+      "inventory_id": "LOREENT.PAS:225:if:1",
+      "file": "LOREENT.PAS",
+      "line": 225,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:54",
+      "inventory_id": "LOREENT.PAS:226:if:1",
+      "file": "LOREENT.PAS",
+      "line": 226,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:55",
+      "inventory_id": "LOREENT.PAS:227:if:1",
+      "file": "LOREENT.PAS",
+      "line": 227,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:56",
+      "inventory_id": "LOREENT.PAS:235:if:1",
+      "file": "LOREENT.PAS",
+      "line": 235,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:57",
+      "inventory_id": "LOREENT.PAS:265:if:1",
+      "file": "LOREENT.PAS",
+      "line": 265,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:58",
+      "inventory_id": "LOREENT.PAS:266:if:1",
+      "file": "LOREENT.PAS",
+      "line": 266,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:59",
+      "inventory_id": "LOREENT.PAS:274:if:1",
+      "file": "LOREENT.PAS",
+      "line": 274,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:60",
+      "inventory_id": "LOREENT.PAS:279:if:1",
+      "file": "LOREENT.PAS",
+      "line": 279,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:61",
+      "inventory_id": "LOREENT.PAS:283:if:1",
+      "file": "LOREENT.PAS",
+      "line": 283,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:62",
+      "inventory_id": "LOREENT.PAS:284:if:1",
+      "file": "LOREENT.PAS",
+      "line": 284,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:4",
+      "inventory_id": "LOREENT.PAS:286:for:1",
+      "file": "LOREENT.PAS",
+      "line": 286,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:63",
+      "inventory_id": "LOREENT.PAS:293:if:1",
+      "file": "LOREENT.PAS",
+      "line": 293,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:64",
+      "inventory_id": "LOREENT.PAS:304:if:1",
+      "file": "LOREENT.PAS",
+      "line": 304,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:65",
+      "inventory_id": "LOREENT.PAS:312:if:1",
+      "file": "LOREENT.PAS",
+      "line": 312,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:exit:3",
+      "inventory_id": "LOREENT.PAS:314:exit:1",
+      "file": "LOREENT.PAS",
+      "line": 314,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "exit",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:66",
+      "inventory_id": "LOREENT.PAS:323:if:1",
+      "file": "LOREENT.PAS",
+      "line": 323,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:5",
+      "inventory_id": "LOREENT.PAS:327:for:1",
+      "file": "LOREENT.PAS",
+      "line": 327,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:67",
+      "inventory_id": "LOREENT.PAS:328:if:1",
+      "file": "LOREENT.PAS",
+      "line": 328,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:68",
+      "inventory_id": "LOREENT.PAS:331:if:1",
+      "file": "LOREENT.PAS",
+      "line": 331,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:6",
+      "inventory_id": "LOREENT.PAS:339:for:1",
+      "file": "LOREENT.PAS",
+      "line": 339,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:69",
+      "inventory_id": "LOREENT.PAS:343:if:1",
+      "file": "LOREENT.PAS",
+      "line": 343,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:exit:4",
+      "inventory_id": "LOREENT.PAS:343:exit:1",
+      "file": "LOREENT.PAS",
+      "line": 343,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "exit",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:70",
+      "inventory_id": "LOREENT.PAS:344:if:1",
+      "file": "LOREENT.PAS",
+      "line": 344,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:exit:5",
+      "inventory_id": "LOREENT.PAS:347:exit:1",
+      "file": "LOREENT.PAS",
+      "line": 347,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "exit",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:7",
+      "inventory_id": "LOREENT.PAS:355:for:1",
+      "file": "LOREENT.PAS",
+      "line": 355,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:if:71",
+      "inventory_id": "LOREENT.PAS:356:if:1",
+      "file": "LOREENT.PAS",
+      "line": 356,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:8",
+      "inventory_id": "LOREENT.PAS:362:for:1",
+      "file": "LOREENT.PAS",
+      "line": 362,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:entermode:1:for:9",
+      "inventory_id": "LOREENT.PAS:363:for:1",
+      "file": "LOREENT.PAS",
+      "line": 363,
+      "routine": "LOREENT.PAS:entermode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:sign:1:while:1",
+      "inventory_id": "LOREENT.PAS:372:while:1",
+      "file": "LOREENT.PAS",
+      "line": 372,
+      "routine": "LOREENT.PAS:sign:1",
+      "kind": "while",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREENT.PAS:sign:1:for:1",
+      "inventory_id": "LOREENT.PAS:374:for:1",
+      "file": "LOREENT.PAS",
+      "line": 374,
+      "routine": "LOREENT.PAS:sign:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:box:1:if:1",
+      "inventory_id": "LOREHELP.PAS:48:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 48,
+      "routine": "LOREHELP.PAS:box:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:box:1:if:2",
+      "inventory_id": "LOREHELP.PAS:56:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 56,
+      "routine": "LOREHELP.PAS:box:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:box:1:if:3",
+      "inventory_id": "LOREHELP.PAS:64:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 64,
+      "routine": "LOREHELP.PAS:box:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:messagebox:1:if:1",
+      "inventory_id": "LOREHELP.PAS:78:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 78,
+      "routine": "LOREHELP.PAS:messagebox:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:text_fading:1:for:1",
+      "inventory_id": "LOREHELP.PAS:96:for:1",
+      "file": "LOREHELP.PAS",
+      "line": 96,
+      "routine": "LOREHELP.PAS:text_fading:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:text_fading:1:if:1",
+      "inventory_id": "LOREHELP.PAS:98:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 98,
+      "routine": "LOREHELP.PAS:text_fading:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:if:1",
+      "inventory_id": "LOREHELP.PAS:110:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 110,
+      "routine": "LOREHELP.PAS:scroll_sub:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:exit:1",
+      "inventory_id": "LOREHELP.PAS:110:exit:1",
+      "file": "LOREHELP.PAS",
+      "line": 110,
+      "routine": "LOREHELP.PAS:scroll_sub:1",
+      "kind": "exit",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:case:1",
+      "inventory_id": "LOREHELP.PAS:117:case:1",
+      "file": "LOREHELP.PAS",
+      "line": 117,
+      "routine": "LOREHELP.PAS:scroll_sub:1",
+      "kind": "case",
+      "outcomes": 3,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:for:1",
+      "inventory_id": "LOREHELP.PAS:125:for:1",
+      "file": "LOREHELP.PAS",
+      "line": 125,
+      "routine": "LOREHELP.PAS:scroll_sub:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:case:2",
+      "inventory_id": "LOREHELP.PAS:126:case:1",
+      "file": "LOREHELP.PAS",
+      "line": 126,
+      "routine": "LOREHELP.PAS:scroll_sub:1",
+      "kind": "case",
+      "outcomes": 3,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:1",
+      "inventory_id": "LOREHELP.PAS:154:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 154,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:2",
+      "inventory_id": "LOREHELP.PAS:185:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 185,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:goto:1",
+      "inventory_id": "LOREHELP.PAS:187:goto:1",
+      "file": "LOREHELP.PAS",
+      "line": 187,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "goto",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:for:1",
+      "inventory_id": "LOREHELP.PAS:195:for:1",
+      "file": "LOREHELP.PAS",
+      "line": 195,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:for:2",
+      "inventory_id": "LOREHELP.PAS:211:for:1",
+      "file": "LOREHELP.PAS",
+      "line": 211,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:for:3",
+      "inventory_id": "LOREHELP.PAS:228:for:1",
+      "file": "LOREHELP.PAS",
+      "line": 228,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:repeat:1",
+      "inventory_id": "LOREHELP.PAS:231:repeat:1",
+      "file": "LOREHELP.PAS",
+      "line": 231,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:repeat:2",
+      "inventory_id": "LOREHELP.PAS:236:repeat:1",
+      "file": "LOREHELP.PAS",
+      "line": 236,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:3",
+      "inventory_id": "LOREHELP.PAS:239:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 239,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:4",
+      "inventory_id": "LOREHELP.PAS:242:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 242,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:5",
+      "inventory_id": "LOREHELP.PAS:249:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 249,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:6",
+      "inventory_id": "LOREHELP.PAS:250:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 250,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:7",
+      "inventory_id": "LOREHELP.PAS:252:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 252,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:8",
+      "inventory_id": "LOREHELP.PAS:255:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 255,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:for:4",
+      "inventory_id": "LOREHELP.PAS:259:for:1",
+      "file": "LOREHELP.PAS",
+      "line": 259,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:repeat:3",
+      "inventory_id": "LOREHELP.PAS:279:repeat:1",
+      "file": "LOREHELP.PAS",
+      "line": 279,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:9",
+      "inventory_id": "LOREHELP.PAS:281:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 281,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:10",
+      "inventory_id": "LOREHELP.PAS:290:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 290,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:11",
+      "inventory_id": "LOREHELP.PAS:298:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 298,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:12",
+      "inventory_id": "LOREHELP.PAS:300:if:1",
+      "file": "LOREHELP.PAS",
+      "line": 300,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:goto:2",
+      "inventory_id": "LOREHELP.PAS:300:goto:1",
+      "file": "LOREHELP.PAS",
+      "line": 300,
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "kind": "goto",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_water:1:if:1",
+      "inventory_id": "LOREMAIN.PAS:21:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 21,
+      "routine": "LOREMAIN.PAS:enter_water:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_water:1:if:2",
+      "inventory_id": "LOREMAIN.PAS:24:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 24,
+      "routine": "LOREMAIN.PAS:enter_water:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_swamp:1:for:2",
+      "inventory_id": "LOREMAIN.PAS:53:for:1",
+      "file": "LOREMAIN.PAS",
+      "line": 53,
+      "routine": "LOREMAIN.PAS:enter_swamp:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_swamp:1:for:4",
+      "inventory_id": "LOREMAIN.PAS:56:for:1",
+      "file": "LOREMAIN.PAS",
+      "line": 56,
+      "routine": "LOREMAIN.PAS:enter_swamp:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_lava:1:for:1",
+      "inventory_id": "LOREMAIN.PAS:81:for:1",
+      "file": "LOREMAIN.PAS",
+      "line": 81,
+      "routine": "LOREMAIN.PAS:enter_lava:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_lava:1:for:3",
+      "inventory_id": "LOREMAIN.PAS:86:for:1",
+      "file": "LOREMAIN.PAS",
+      "line": 86,
+      "routine": "LOREMAIN.PAS:enter_lava:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:1",
+      "inventory_id": "LOREMAIN.PAS:146:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 146,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:2",
+      "inventory_id": "LOREMAIN.PAS:148:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 148,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:1",
+      "inventory_id": "LOREMAIN.PAS:150:case:1",
+      "file": "LOREMAIN.PAS",
+      "line": 150,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "case",
+      "outcomes": 8,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:3",
+      "inventory_id": "LOREMAIN.PAS:162:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 162,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:4",
+      "inventory_id": "LOREMAIN.PAS:165:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 165,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:2",
+      "inventory_id": "LOREMAIN.PAS:166:case:1",
+      "file": "LOREMAIN.PAS",
+      "line": 166,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "case",
+      "outcomes": 5,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:5",
+      "inventory_id": "LOREMAIN.PAS:169:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 169,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:6",
+      "inventory_id": "LOREMAIN.PAS:173:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 173,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:7",
+      "inventory_id": "LOREMAIN.PAS:177:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 177,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:8",
+      "inventory_id": "LOREMAIN.PAS:181:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 181,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:9",
+      "inventory_id": "LOREMAIN.PAS:184:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 184,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:10",
+      "inventory_id": "LOREMAIN.PAS:186:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 186,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:11",
+      "inventory_id": "LOREMAIN.PAS:192:if:1",
+      "file": "LOREMAIN.PAS",
+      "line": 192,
+      "routine": "LOREMAIN.PAS:main:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:sgn:1:if:1",
+      "inventory_id": "LORESPEC.PAS:17:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 17,
+      "routine": "LORESPEC.PAS:sgn:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:sgn:1:if:2",
+      "inventory_id": "LORESPEC.PAS:18:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 18,
+      "routine": "LORESPEC.PAS:sgn:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:case:1",
+      "inventory_id": "LORESPEC.PAS:24:case:1",
+      "file": "LORESPEC.PAS",
+      "line": 24,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "kind": "case",
+      "outcomes": 14,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:1",
+      "inventory_id": "LORESPEC.PAS:27:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 27,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:2",
+      "inventory_id": "LORESPEC.PAS:29:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 29,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:25",
+      "inventory_id": "LORESPEC.PAS:308:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 308,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:26",
+      "inventory_id": "LORESPEC.PAS:309:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 309,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:28",
+      "inventory_id": "LORESPEC.PAS:320:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 320,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:29",
+      "inventory_id": "LORESPEC.PAS:321:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 321,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:case:1",
+      "inventory_id": "LORESPEC.PAS:1009:case:1",
+      "file": "LORESPEC.PAS",
+      "line": 1009,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "case",
+      "outcomes": 12,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:44",
+      "inventory_id": "LORESPEC.PAS:1368:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 1368,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:45",
+      "inventory_id": "LORESPEC.PAS:1369:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 1369,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:60",
+      "inventory_id": "LORESPEC.PAS:2017:for:1",
+      "file": "LORESPEC.PAS",
+      "line": 2017,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:61",
+      "inventory_id": "LORESPEC.PAS:2019:for:1",
+      "file": "LORESPEC.PAS",
+      "line": 2019,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:133",
+      "inventory_id": "LORESPEC.PAS:2020:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 2020,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:68",
+      "inventory_id": "LORESPEC.PAS:2120:for:1",
+      "file": "LORESPEC.PAS",
+      "line": 2120,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:143",
+      "inventory_id": "LORESPEC.PAS:2121:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 2121,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:69",
+      "inventory_id": "LORESPEC.PAS:2127:for:1",
+      "file": "LORESPEC.PAS",
+      "line": 2127,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:144",
+      "inventory_id": "LORESPEC.PAS:2128:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 2128,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:70",
+      "inventory_id": "LORESPEC.PAS:2134:for:1",
+      "file": "LORESPEC.PAS",
+      "line": 2134,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:145",
+      "inventory_id": "LORESPEC.PAS:2135:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 2135,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:71",
+      "inventory_id": "LORESPEC.PAS:2145:for:1",
+      "file": "LORESPEC.PAS",
+      "line": 2145,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent:1:if:1",
+      "inventory_id": "LORESPEC.PAS:2218:if:1",
+      "file": "LORESPEC.PAS",
+      "line": 2218,
+      "routine": "LORESPEC.PAS:specialevent:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:clear:1:for:1",
+      "inventory_id": "LORESUB.PAS:197:for:1",
+      "file": "LORESUB.PAS",
+      "line": 197,
+      "routine": "LORESUB.PAS:clear:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:pressanykey:1:while:1",
+      "inventory_id": "LORESUB.PAS:210:while:1",
+      "file": "LORESUB.PAS",
+      "line": 210,
+      "routine": "LORESUB.PAS:pressanykey:1",
+      "kind": "while",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:pressanykey:1:if:1",
+      "inventory_id": "LORESUB.PAS:212:if:1",
+      "file": "LORESUB.PAS",
+      "line": 212,
+      "routine": "LORESUB.PAS:pressanykey:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:2",
+      "inventory_id": "LORESUB.PAS:230:if:1",
+      "file": "LORESUB.PAS",
+      "line": 230,
+      "routine": "LORESUB.PAS:scroll:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:for:1",
+      "inventory_id": "LORESUB.PAS:234:for:1",
+      "file": "LORESUB.PAS",
+      "line": 234,
+      "routine": "LORESUB.PAS:scroll:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:for:2",
+      "inventory_id": "LORESUB.PAS:234:for:2",
+      "file": "LORESUB.PAS",
+      "line": 234,
+      "routine": "LORESUB.PAS:scroll:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:3",
+      "inventory_id": "LORESUB.PAS:235:if:1",
+      "file": "LORESUB.PAS",
+      "line": 235,
+      "routine": "LORESUB.PAS:scroll:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:4",
+      "inventory_id": "LORESUB.PAS:240:if:1",
+      "file": "LORESUB.PAS",
+      "line": 240,
+      "routine": "LORESUB.PAS:scroll:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:while:1",
+      "inventory_id": "LORESUB.PAS:258:while:1",
+      "file": "LORESUB.PAS",
+      "line": 258,
+      "routine": "LORESUB.PAS:auxscroll:1",
+      "kind": "while",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:if:1",
+      "inventory_id": "LORESUB.PAS:261:if:1",
+      "file": "LORESUB.PAS",
+      "line": 261,
+      "routine": "LORESUB.PAS:auxscroll:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:if:2",
+      "inventory_id": "LORESUB.PAS:269:if:1",
+      "file": "LORESUB.PAS",
+      "line": 269,
+      "routine": "LORESUB.PAS:auxscroll:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:for:1",
+      "inventory_id": "LORESUB.PAS:273:for:1",
+      "file": "LORESUB.PAS",
+      "line": 273,
+      "routine": "LORESUB.PAS:auxscroll:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:for:2",
+      "inventory_id": "LORESUB.PAS:273:for:2",
+      "file": "LORESUB.PAS",
+      "line": 273,
+      "routine": "LORESUB.PAS:auxscroll:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:if:3",
+      "inventory_id": "LORESUB.PAS:276:if:1",
+      "file": "LORESUB.PAS",
+      "line": 276,
+      "routine": "LORESUB.PAS:auxscroll:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:setscrolltype:1:if:1",
+      "inventory_id": "LORESUB.PAS:287:if:1",
+      "file": "LORESUB.PAS",
+      "line": 287,
+      "routine": "LORESUB.PAS:setscrolltype:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:setscrolltype:1:case:1",
+      "inventory_id": "LORESUB.PAS:292:case:1",
+      "file": "LORESUB.PAS",
+      "line": 292,
+      "routine": "LORESUB.PAS:setscrolltype:1",
+      "kind": "case",
+      "outcomes": 6,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:exist:1:if:1",
+      "inventory_id": "LORESUB.PAS:324:if:1",
+      "file": "LORESUB.PAS",
+      "line": 324,
+      "routine": "LORESUB.PAS:exist:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:eprint:1:if:1",
+      "inventory_id": "LORESUB.PAS:332:if:1",
+      "file": "LORESUB.PAS",
+      "line": 332,
+      "routine": "LORESUB.PAS:eprint:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:eprint:1:if:2",
+      "inventory_id": "LORESUB.PAS:335:if:1",
+      "file": "LORESUB.PAS",
+      "line": 335,
+      "routine": "LORESUB.PAS:eprint:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:eprint:1:if:3",
+      "inventory_id": "LORESUB.PAS:347:if:1",
+      "file": "LORESUB.PAS",
+      "line": 347,
+      "routine": "LORESUB.PAS:eprint:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:auxprint:1:if:1",
+      "inventory_id": "LORESUB.PAS:367:if:1",
+      "file": "LORESUB.PAS",
+      "line": 367,
+      "routine": "LORESUB.PAS:auxprint:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:message:1:for:1",
+      "inventory_id": "LORESUB.PAS:386:for:1",
+      "file": "LORESUB.PAS",
+      "line": 386,
+      "routine": "LORESUB.PAS:message:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:repeat:1",
+      "inventory_id": "LORESUB.PAS:566:repeat:1",
+      "file": "LORESUB.PAS",
+      "line": 566,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "repeat",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:case:1",
+      "inventory_id": "LORESUB.PAS:568:case:1",
+      "file": "LORESUB.PAS",
+      "line": 568,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "case",
+      "outcomes": 7,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:1",
+      "inventory_id": "LORESUB.PAS:577:if:1",
+      "file": "LORESUB.PAS",
+      "line": 577,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:2",
+      "inventory_id": "LORESUB.PAS:581:if:1",
+      "file": "LORESUB.PAS",
+      "line": 581,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:3",
+      "inventory_id": "LORESUB.PAS:584:if:1",
+      "file": "LORESUB.PAS",
+      "line": 584,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:case:2",
+      "inventory_id": "LORESUB.PAS:587:case:1",
+      "file": "LORESUB.PAS",
+      "line": 587,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "case",
+      "outcomes": 3,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:4",
+      "inventory_id": "LORESUB.PAS:593:if:1",
+      "file": "LORESUB.PAS",
+      "line": 593,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:5",
+      "inventory_id": "LORESUB.PAS:594:if:1",
+      "file": "LORESUB.PAS",
+      "line": 594,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:6",
+      "inventory_id": "LORESUB.PAS:600:if:1",
+      "file": "LORESUB.PAS",
+      "line": 600,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:7",
+      "inventory_id": "LORESUB.PAS:601:if:1",
+      "file": "LORESUB.PAS",
+      "line": 601,
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:for:1",
+      "inventory_id": "LORESUB.PAS:615:for:1",
+      "file": "LORESUB.PAS",
+      "line": 615,
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:1",
+      "inventory_id": "LORESUB.PAS:616:if:1",
+      "file": "LORESUB.PAS",
+      "line": 616,
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:2",
+      "inventory_id": "LORESUB.PAS:623:if:1",
+      "file": "LORESUB.PAS",
+      "line": 623,
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:exit:1",
+      "inventory_id": "LORESUB.PAS:625:exit:1",
+      "file": "LORESUB.PAS",
+      "line": 625,
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "kind": "exit",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:for:2",
+      "inventory_id": "LORESUB.PAS:628:for:1",
+      "file": "LORESUB.PAS",
+      "line": 628,
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:3",
+      "inventory_id": "LORESUB.PAS:629:if:1",
+      "file": "LORESUB.PAS",
+      "line": 629,
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:4",
+      "inventory_id": "LORESUB.PAS:631:if:1",
+      "file": "LORESUB.PAS",
+      "line": 631,
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnsex:1:if:1",
+      "inventory_id": "LORESUB.PAS:637:if:1",
+      "file": "LORESUB.PAS",
+      "line": 637,
+      "routine": "LORESUB.PAS:returnsex:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnclass:1:case:1",
+      "inventory_id": "LORESUB.PAS:643:case:1",
+      "file": "LORESUB.PAS",
+      "line": 643,
+      "routine": "LORESUB.PAS:returnclass:1",
+      "kind": "case",
+      "outcomes": 11,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnweapon:1:case:1",
+      "inventory_id": "LORESUB.PAS:660:case:1",
+      "file": "LORESUB.PAS",
+      "line": 660,
+      "routine": "LORESUB.PAS:returnweapon:1",
+      "kind": "case",
+      "outcomes": 11,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnweapon:1:if:1",
+      "inventory_id": "LORESUB.PAS:673:if:1",
+      "file": "LORESUB.PAS",
+      "line": 673,
+      "routine": "LORESUB.PAS:returnweapon:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returndefense:1:case:1",
+      "inventory_id": "LORESUB.PAS:685:case:1",
+      "file": "LORESUB.PAS",
+      "line": 685,
+      "routine": "LORESUB.PAS:returndefense:1",
+      "kind": "case",
+      "outcomes": 7,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnmagic:1:case:1",
+      "inventory_id": "LORESUB.PAS:729:case:1",
+      "file": "LORESUB.PAS",
+      "line": 729,
+      "routine": "LORESUB.PAS:returnmagic:1",
+      "kind": "case",
+      "outcomes": 46,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnmagic:1:if:1",
+      "inventory_id": "LORESUB.PAS:776:if:1",
+      "file": "LORESUB.PAS",
+      "line": 776,
+      "routine": "LORESUB.PAS:returnmagic:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnmessage:1:case:1",
+      "inventory_id": "LORESUB.PAS:789:case:1",
+      "file": "LORESUB.PAS",
+      "line": 789,
+      "routine": "LORESUB.PAS:returnmessage:1",
+      "kind": "case",
+      "outcomes": 8,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnsexdata:1:if:1",
+      "inventory_id": "LORESUB.PAS:837:if:1",
+      "file": "LORESUB.PAS",
+      "line": 837,
+      "routine": "LORESUB.PAS:returnsexdata:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displayhp:1:for:1",
+      "inventory_id": "LORESUB.PAS:844:for:1",
+      "file": "LORESUB.PAS",
+      "line": 844,
+      "routine": "LORESUB.PAS:displayhp:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displayhp:1:for:2",
+      "inventory_id": "LORESUB.PAS:847:for:1",
+      "file": "LORESUB.PAS",
+      "line": 847,
+      "routine": "LORESUB.PAS:displayhp:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displayhp:1:if:1",
+      "inventory_id": "LORESUB.PAS:849:if:1",
+      "file": "LORESUB.PAS",
+      "line": 849,
+      "routine": "LORESUB.PAS:displayhp:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displaysp:1:for:1",
+      "inventory_id": "LORESUB.PAS:860:for:1",
+      "file": "LORESUB.PAS",
+      "line": 860,
+      "routine": "LORESUB.PAS:displaysp:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displaysp:1:for:2",
+      "inventory_id": "LORESUB.PAS:863:for:1",
+      "file": "LORESUB.PAS",
+      "line": 863,
+      "routine": "LORESUB.PAS:displaysp:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displaysp:1:if:1",
+      "inventory_id": "LORESUB.PAS:865:if:1",
+      "file": "LORESUB.PAS",
+      "line": 865,
+      "routine": "LORESUB.PAS:displaysp:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displayesp:1:for:1",
+      "inventory_id": "LORESUB.PAS:876:for:1",
+      "file": "LORESUB.PAS",
+      "line": 876,
+      "routine": "LORESUB.PAS:displayesp:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displayesp:1:for:2",
+      "inventory_id": "LORESUB.PAS:879:for:1",
+      "file": "LORESUB.PAS",
+      "line": 879,
+      "routine": "LORESUB.PAS:displayesp:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displayesp:1:if:1",
+      "inventory_id": "LORESUB.PAS:881:if:1",
+      "file": "LORESUB.PAS",
+      "line": 881,
+      "routine": "LORESUB.PAS:displayesp:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displaycondition:1:for:1",
+      "inventory_id": "LORESUB.PAS:892:for:1",
+      "file": "LORESUB.PAS",
+      "line": 892,
+      "routine": "LORESUB.PAS:displaycondition:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displaycondition:1:if:1",
+      "inventory_id": "LORESUB.PAS:893:if:1",
+      "file": "LORESUB.PAS",
+      "line": 893,
+      "routine": "LORESUB.PAS:displaycondition:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:displaycondition:1:for:2",
+      "inventory_id": "LORESUB.PAS:895:for:1",
+      "file": "LORESUB.PAS",
+      "line": 895,
+      "routine": "LORESUB.PAS:displaycondition:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:simplediscond:1:for:1",
+      "inventory_id": "LORESUB.PAS:909:for:1",
+      "file": "LORESUB.PAS",
+      "line": 909,
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:simplediscond:1:for:2",
+      "inventory_id": "LORESUB.PAS:912:for:1",
+      "file": "LORESUB.PAS",
+      "line": 912,
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:simplediscond:1:if:1",
+      "inventory_id": "LORESUB.PAS:916:if:1",
+      "file": "LORESUB.PAS",
+      "line": 916,
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:simplediscond:1:if:2",
+      "inventory_id": "LORESUB.PAS:919:if:1",
+      "file": "LORESUB.PAS",
+      "line": 919,
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:simplediscond:1:if:3",
+      "inventory_id": "LORESUB.PAS:922:if:1",
+      "file": "LORESUB.PAS",
+      "line": 922,
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:simplediscond:1:for:3",
+      "inventory_id": "LORESUB.PAS:925:for:1",
+      "file": "LORESUB.PAS",
+      "line": 925,
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:simplediscond:1:for:4",
+      "inventory_id": "LORESUB.PAS:927:for:1",
+      "file": "LORESUB.PAS",
+      "line": 927,
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:simplediscond:1:if:4",
+      "inventory_id": "LORESUB.PAS:931:if:1",
+      "file": "LORESUB.PAS",
+      "line": 931,
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:display_condition:1:for:1",
+      "inventory_id": "LORESUB.PAS:941:for:1",
+      "file": "LORESUB.PAS",
+      "line": 941,
+      "routine": "LORESUB.PAS:display_condition:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:display_condition:1:for:2",
+      "inventory_id": "LORESUB.PAS:945:for:1",
+      "file": "LORESUB.PAS",
+      "line": 945,
+      "routine": "LORESUB.PAS:display_condition:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:display_condition:1:if:1",
+      "inventory_id": "LORESUB.PAS:948:if:1",
+      "file": "LORESUB.PAS",
+      "line": 948,
+      "routine": "LORESUB.PAS:display_condition:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:display_condition:1:if:2",
+      "inventory_id": "LORESUB.PAS:956:if:1",
+      "file": "LORESUB.PAS",
+      "line": 956,
+      "routine": "LORESUB.PAS:display_condition:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:display_condition:1:if:3",
+      "inventory_id": "LORESUB.PAS:959:if:1",
+      "file": "LORESUB.PAS",
+      "line": 959,
+      "routine": "LORESUB.PAS:display_condition:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:at:1:if:1",
+      "inventory_id": "LORESUB.PAS:972:if:1",
+      "file": "LORESUB.PAS",
+      "line": 972,
+      "routine": "LORESUB.PAS:at:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:on:1:if:1",
+      "inventory_id": "LORESUB.PAS:977:if:1",
+      "file": "LORESUB.PAS",
+      "line": 977,
+      "routine": "LORESUB.PAS:on:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:join:1:if:1",
+      "inventory_id": "LORESUB.PAS:1063:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1063,
+      "routine": "LORESUB.PAS:join:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:join:1:case:1",
+      "inventory_id": "LORESUB.PAS:1075:case:1",
+      "file": "LORESUB.PAS",
+      "line": 1075,
+      "routine": "LORESUB.PAS:join:1",
+      "kind": "case",
+      "outcomes": 21,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:turn_mind:1:if:1",
+      "inventory_id": "LORESUB.PAS:1135:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1135,
+      "routine": "LORESUB.PAS:turn_mind:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnjoinmember:1:for:1",
+      "inventory_id": "LORESUB.PAS:1150:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1150,
+      "routine": "LORESUB.PAS:returnjoinmember:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:returnjoinmember:1:if:1",
+      "inventory_id": "LORESUB.PAS:1151:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1151,
+      "routine": "LORESUB.PAS:returnjoinmember:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:1",
+      "inventory_id": "LORESUB.PAS:1650:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1650,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:2",
+      "inventory_id": "LORESUB.PAS:1655:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1655,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:3",
+      "inventory_id": "LORESUB.PAS:1661:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1661,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:1",
+      "inventory_id": "LORESUB.PAS:1664:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1664,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:4",
+      "inventory_id": "LORESUB.PAS:1666:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1666,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:5",
+      "inventory_id": "LORESUB.PAS:1671:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1671,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:6",
+      "inventory_id": "LORESUB.PAS:1675:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1675,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:1",
+      "inventory_id": "LORESUB.PAS:1677:case:1",
+      "file": "LORESUB.PAS",
+      "line": 1677,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "case",
+      "outcomes": 28,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:2",
+      "inventory_id": "LORESUB.PAS:1710:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1710,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:3",
+      "inventory_id": "LORESUB.PAS:1710:for:2",
+      "file": "LORESUB.PAS",
+      "line": 1710,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:7",
+      "inventory_id": "LORESUB.PAS:1712:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1712,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:4",
+      "inventory_id": "LORESUB.PAS:1719:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1719,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:5",
+      "inventory_id": "LORESUB.PAS:1719:for:2",
+      "file": "LORESUB.PAS",
+      "line": 1719,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:2",
+      "inventory_id": "LORESUB.PAS:1722:case:1",
+      "file": "LORESUB.PAS",
+      "line": 1722,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "case",
+      "outcomes": 4,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:3",
+      "inventory_id": "LORESUB.PAS:1729:case:1",
+      "file": "LORESUB.PAS",
+      "line": 1729,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "case",
+      "outcomes": 5,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:8",
+      "inventory_id": "LORESUB.PAS:1752:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1752,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:9",
+      "inventory_id": "LORESUB.PAS:1758:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1758,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:10",
+      "inventory_id": "LORESUB.PAS:1759:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1759,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:4",
+      "inventory_id": "LORESUB.PAS:1762:case:1",
+      "file": "LORESUB.PAS",
+      "line": 1762,
+      "routine": "LORESUB.PAS:load:1",
+      "kind": "case",
+      "outcomes": 6,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:save:1:for:1",
+      "inventory_id": "LORESUB.PAS:1782:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1782,
+      "routine": "LORESUB.PAS:save:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:save:1:for:2",
+      "inventory_id": "LORESUB.PAS:1787:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1787,
+      "routine": "LORESUB.PAS:save:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:save:1:for:3",
+      "inventory_id": "LORESUB.PAS:1787:for:2",
+      "file": "LORESUB.PAS",
+      "line": 1787,
+      "routine": "LORESUB.PAS:save:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:1",
+      "inventory_id": "LORESUB.PAS:1801:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1801,
+      "routine": "LORESUB.PAS:set_all:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:2",
+      "inventory_id": "LORESUB.PAS:1804:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1804,
+      "routine": "LORESUB.PAS:set_all:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:3",
+      "inventory_id": "LORESUB.PAS:1816:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1816,
+      "routine": "LORESUB.PAS:set_all:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:4",
+      "inventory_id": "LORESUB.PAS:1821:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1821,
+      "routine": "LORESUB.PAS:set_all:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:5",
+      "inventory_id": "LORESUB.PAS:1831:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1831,
+      "routine": "LORESUB.PAS:set_all:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:6",
+      "inventory_id": "LORESUB.PAS:1836:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1836,
+      "routine": "LORESUB.PAS:set_all:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:7",
+      "inventory_id": "LORESUB.PAS:1851:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1851,
+      "routine": "LORESUB.PAS:set_all:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:8",
+      "inventory_id": "LORESUB.PAS:1856:for:1",
+      "file": "LORESUB.PAS",
+      "line": 1856,
+      "routine": "LORESUB.PAS:set_all:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:unsound:1:if:1",
+      "inventory_id": "LORESUB.PAS:1877:if:1",
+      "file": "LORESUB.PAS",
+      "line": 1877,
+      "routine": "LORESUB.PAS:unsound:1",
+      "kind": "if",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:1",
+      "inventory_id": "LORETALK.PAS:126:for:1",
+      "file": "LORETALK.PAS",
+      "line": 126,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:2",
+      "inventory_id": "LORETALK.PAS:287:for:1",
+      "file": "LORETALK.PAS",
+      "line": 287,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:3",
+      "inventory_id": "LORETALK.PAS:365:for:1",
+      "file": "LORETALK.PAS",
+      "line": 365,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:4",
+      "inventory_id": "LORETALK.PAS:465:for:1",
+      "file": "LORETALK.PAS",
+      "line": 465,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:5",
+      "inventory_id": "LORETALK.PAS:543:for:1",
+      "file": "LORETALK.PAS",
+      "line": 543,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:6",
+      "inventory_id": "LORETALK.PAS:569:for:1",
+      "file": "LORETALK.PAS",
+      "line": 569,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:9",
+      "inventory_id": "LORETALK.PAS:827:for:1",
+      "file": "LORETALK.PAS",
+      "line": 827,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:10",
+      "inventory_id": "LORETALK.PAS:873:for:1",
+      "file": "LORETALK.PAS",
+      "line": 873,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:11",
+      "inventory_id": "LORETALK.PAS:909:for:1",
+      "file": "LORETALK.PAS",
+      "line": 909,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:12",
+      "inventory_id": "LORETALK.PAS:960:for:1",
+      "file": "LORETALK.PAS",
+      "line": 960,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:13",
+      "inventory_id": "LORETALK.PAS:1009:for:1",
+      "file": "LORETALK.PAS",
+      "line": 1009,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:exit:4",
+      "inventory_id": "LORETALK.PAS:1023:exit:1",
+      "file": "LORETALK.PAS",
+      "line": 1023,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "exit",
+      "outcomes": null,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:14",
+      "inventory_id": "LORETALK.PAS:1038:for:1",
+      "file": "LORETALK.PAS",
+      "line": 1038,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:15",
+      "inventory_id": "LORETALK.PAS:1050:for:1",
+      "file": "LORETALK.PAS",
+      "line": 1050,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "kind": "for",
+      "outcomes": 2,
+      "classification": "unclassified",
+      "behavioral_evidence": []
+    }
+  ],
+  "unmapped_map_writes": [
+    {
+      "id": "LOREENT.PAS:24:map-write:16",
+      "file": "LOREENT.PAS",
+      "line": 24,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "49,52",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:24:map-write:32",
+      "file": "LOREENT.PAS",
+      "line": 24,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "50,52",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:24:map-write:48",
+      "file": "LOREENT.PAS",
+      "line": 24,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "51,52",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:25:map-write:16",
+      "file": "LOREENT.PAS",
+      "line": 25,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "52,52",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:25:map-write:32",
+      "file": "LOREENT.PAS",
+      "line": 25,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "53,52",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:25:map-write:48",
+      "file": "LOREENT.PAS",
+      "line": 25,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "49,53",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:26:map-write:16",
+      "file": "LOREENT.PAS",
+      "line": 26,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "50,53",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:26:map-write:32",
+      "file": "LOREENT.PAS",
+      "line": 26,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "51,53",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:26:map-write:48",
+      "file": "LOREENT.PAS",
+      "line": 26,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "52,53",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:26:map-write:64",
+      "file": "LOREENT.PAS",
+      "line": 26,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "53,53",
+      "value": "45",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:27:map-write:37",
+      "file": "LOREENT.PAS",
+      "line": 27,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "i,88",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:35:map-write:70",
+      "file": "LOREENT.PAS",
+      "line": 35,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "37,41",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:89:map-write:51",
+      "file": "LOREENT.PAS",
+      "line": 89,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "40,56",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:165:map-write:16",
+      "file": "LOREENT.PAS",
+      "line": 165,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "25,44",
+      "value": "50",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:165:map-write:34",
+      "file": "LOREENT.PAS",
+      "line": 165,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "26,44",
+      "value": "50",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:173:map-write:39",
+      "file": "LOREENT.PAS",
+      "line": 173,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "18,9",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:192:map-write:49",
+      "file": "LOREENT.PAS",
+      "line": 192,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "40,56",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:279:map-write:55",
+      "file": "LOREENT.PAS",
+      "line": 279,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "33,10",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:363:map-write:35",
+      "file": "LOREENT.PAS",
+      "line": 363,
+      "routine": "LOREENT.PAS:entermode:1",
+      "index": "i,j",
+      "value": "16",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREENT.PAS:488:map-write:17",
+      "file": "LOREENT.PAS",
+      "line": 488,
+      "routine": "LOREENT.PAS:sign:1",
+      "index": "25,27",
+      "value": "52",
+      "status": "unmapped"
+    },
+    {
+      "id": "LOREMENU.PAS:374:map-write:16",
+      "file": "LOREMENU.PAS",
+      "line": 374,
+      "routine": "LOREMENU.PAS:phenominaspell:1",
+      "index": "x+x1,y+y1",
+      "value": "k",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:194:map-write:13",
+      "file": "LORESPEC.PAS",
+      "line": 194,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "62,82",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:237:map-write:19",
+      "file": "LORESPEC.PAS",
+      "line": 237,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "51,12",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:237:map-write:37",
+      "file": "LORESPEC.PAS",
+      "line": 237,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "52,12",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:238:map-write:19",
+      "file": "LORESPEC.PAS",
+      "line": 238,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "50,11",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:238:map-write:37",
+      "file": "LORESPEC.PAS",
+      "line": 238,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "53,11",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:251:map-write:16",
+      "file": "LORESPEC.PAS",
+      "line": 251,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "41,79",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:270:map-write:19",
+      "file": "LORESPEC.PAS",
+      "line": 270,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "x,pred(i)",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:271:map-write:19",
+      "file": "LORESPEC.PAS",
+      "line": 271,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "x,i",
+      "value": "48",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:317:map-write:16",
+      "file": "LORESPEC.PAS",
+      "line": 317,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "31,y",
+      "value": "45",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:527:map-write:71",
+      "file": "LORESPEC.PAS",
+      "line": 527,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "37,41",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:576:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 576,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "33,49",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:587:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 587,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "18,9",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:596:map-write:41",
+      "file": "LORESPEC.PAS",
+      "line": 596,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "x,i",
+      "value": "49",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:685:map-write:42",
+      "file": "LORESPEC.PAS",
+      "line": 685,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "i,j",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:686:map-write:48",
+      "file": "LORESPEC.PAS",
+      "line": 686,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "i,j",
+      "value": "42",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:712:map-write:42",
+      "file": "LORESPEC.PAS",
+      "line": 712,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "i,j",
+      "value": "51",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:721:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 721,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "81,76",
+      "value": "48",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:901:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 901,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "x,48",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:902:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 902,
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "index": "x,47",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1024:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 1024,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,44",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1024:map-write:34",
+      "file": "LORESPEC.PAS",
+      "line": 1024,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,38",
+      "value": "52",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1072:map-write:39",
+      "file": "LORESPEC.PAS",
+      "line": 1072,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,j",
+      "value": "50",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1107:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 1107,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "72,j",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1112:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1112,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,38",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1112:map-write:37",
+      "file": "LORESPEC.PAS",
+      "line": 1112,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,44",
+      "value": "52",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1187:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 1187,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "22,41",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1187:map-write:35",
+      "file": "LORESPEC.PAS",
+      "line": 1187,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "21,41",
+      "value": "52",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1390:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1390,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "11,40",
+      "value": "49",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1391:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1391,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "41,39",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1406:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1406,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "41,39",
+      "value": "49",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1409:map-write:26",
+      "file": "LORESPEC.PAS",
+      "line": 1409,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "24,j",
+      "value": "25",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1410:map-write:26",
+      "file": "LORESPEC.PAS",
+      "line": 1410,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "28,j",
+      "value": "23",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1412:map-write:23",
+      "file": "LORESPEC.PAS",
+      "line": 1412,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "24,37",
+      "value": "17",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1412:map-write:41",
+      "file": "LORESPEC.PAS",
+      "line": 1412,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "28,37",
+      "value": "19",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1414:map-write:44",
+      "file": "LORESPEC.PAS",
+      "line": 1414,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,j",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1431:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 1431,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "x,y",
+      "value": "49",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1434:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 1434,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "x,y-1",
+      "value": "49",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1439:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1439,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "x,y",
+      "value": "49",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1522:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 1522,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "j,y",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1524:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1524,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "8,88",
+      "value": "52",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1524:map-write:37",
+      "file": "LORESPEC.PAS",
+      "line": 1524,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "43,88",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1527:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1527,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "8,88",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1527:map-write:36",
+      "file": "LORESPEC.PAS",
+      "line": 1527,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "43,88",
+      "value": "52",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1547:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 1547,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "j,y",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1549:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1549,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "8,71",
+      "value": "52",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1549:map-write:37",
+      "file": "LORESPEC.PAS",
+      "line": 1549,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "43,71",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1552:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1552,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "8,71",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1552:map-write:36",
+      "file": "LORESPEC.PAS",
+      "line": 1552,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "43,71",
+      "value": "52",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1580:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 1580,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "j,y",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1583:map-write:23",
+      "file": "LORESPEC.PAS",
+      "line": 1583,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "22,j",
+      "value": "25",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1584:map-write:23",
+      "file": "LORESPEC.PAS",
+      "line": 1584,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "26,j",
+      "value": "23",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1585:map-write:44",
+      "file": "LORESPEC.PAS",
+      "line": 1585,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,j",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1813:map-write:31",
+      "file": "LORESPEC.PAS",
+      "line": 1813,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "x,y",
+      "value": "40 else map[x,y] := 46",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1876:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 1876,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "x,y",
+      "value": "40",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1961:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 1961,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "29,43",
+      "value": "53",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1963:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 1963,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,j",
+      "value": "46",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1968:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 1968,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "25,27",
+      "value": "46",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1969:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 1969,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "29,43",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1972:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 1972,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,j",
+      "value": "39",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:1973:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 1973,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,12",
+      "value": "54",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2044:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 2044,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,y",
+      "value": "41",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2068:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 2068,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "15,34",
+      "value": "41",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2070:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 2070,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,33",
+      "value": "24",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2070:map-write:37",
+      "file": "LORESPEC.PAS",
+      "line": 2070,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,35",
+      "value": "26",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2070:map-write:54",
+      "file": "LORESPEC.PAS",
+      "line": 2070,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,34",
+      "value": "42",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2072:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 2072,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "14,33",
+      "value": "17",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2072:map-write:35",
+      "file": "LORESPEC.PAS",
+      "line": 2072,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "14,35",
+      "value": "18",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2075:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 2075,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "36,34",
+      "value": "41",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2077:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 2077,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,33",
+      "value": "24",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2077:map-write:37",
+      "file": "LORESPEC.PAS",
+      "line": 2077,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,35",
+      "value": "26",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2077:map-write:54",
+      "file": "LORESPEC.PAS",
+      "line": 2077,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "i,34",
+      "value": "42",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2079:map-write:17",
+      "file": "LORESPEC.PAS",
+      "line": 2079,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "37,33",
+      "value": "19",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2079:map-write:35",
+      "file": "LORESPEC.PAS",
+      "line": 2079,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "37,35",
+      "value": "22",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2087:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 2087,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "25,27",
+      "value": "54",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2087:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 2087,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "26,27",
+      "value": "54",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2098:map-write:20",
+      "file": "LORESPEC.PAS",
+      "line": 2098,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "25,27",
+      "value": "54",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORESPEC.PAS:2098:map-write:38",
+      "file": "LORESPEC.PAS",
+      "line": 2098,
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "index": "26,27",
+      "value": "54",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:126:map-write:31",
+      "file": "LORETALK.PAS",
+      "line": 126,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "62,i",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:127:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 127,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "62,82",
+      "value": "0",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:127:map-write:24",
+      "file": "LORETALK.PAS",
+      "line": 127,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "62,83",
+      "value": "14",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:213:map-write:12",
+      "file": "LORETALK.PAS",
+      "line": 213,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "40,15",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:268:map-write:12",
+      "file": "LORETALK.PAS",
+      "line": 268,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "49,52",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:268:map-write:28",
+      "file": "LORETALK.PAS",
+      "line": 268,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "50,52",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:268:map-write:44",
+      "file": "LORETALK.PAS",
+      "line": 268,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "51,52",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:269:map-write:12",
+      "file": "LORETALK.PAS",
+      "line": 269,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "52,52",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:269:map-write:28",
+      "file": "LORETALK.PAS",
+      "line": 269,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "53,52",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:269:map-write:44",
+      "file": "LORETALK.PAS",
+      "line": 269,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "49,53",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:270:map-write:12",
+      "file": "LORETALK.PAS",
+      "line": 270,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "50,53",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:270:map-write:28",
+      "file": "LORETALK.PAS",
+      "line": 270,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "51,53",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:270:map-write:44",
+      "file": "LORETALK.PAS",
+      "line": 270,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "52,53",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:270:map-write:60",
+      "file": "LORETALK.PAS",
+      "line": 270,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "53,53",
+      "value": "45",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:287:map-write:30",
+      "file": "LORETALK.PAS",
+      "line": 287,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "i,88",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:431:map-write:12",
+      "file": "LORETALK.PAS",
+      "line": 431,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "37,41",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:636:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 636,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "40,56",
+      "value": "44",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:737:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 737,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "33,10",
+      "value": "47",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:833:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 833,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "x+x1,y+y1",
+      "value": "35",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:879:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 879,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "x+x1,y+y1",
+      "value": "35",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:915:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 915,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "x+x1,y+y1",
+      "value": "35",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:966:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 966,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "x+x1,y+y1",
+      "value": "35",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:1015:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 1015,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "x+x1,y+y1",
+      "value": "35",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:1044:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 1044,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "x+x1,y+y1",
+      "value": "35",
+      "status": "unmapped"
+    },
+    {
+      "id": "LORETALK.PAS:1056:map-write:9",
+      "file": "LORETALK.PAS",
+      "line": 1056,
+      "routine": "LORETALK.PAS:talkmode:1",
+      "index": "x+x1,y+y1",
+      "value": "35",
+      "status": "unmapped"
+    }
+  ],
+  "native_fixture_candidates": [
+    {
+      "path": "test/fixtures/dos_archi_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/archi_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_attack_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:attackone:1:if:1",
+        "LOREBATT.PAS:attackone:1:if:2",
+        "LOREBATT.PAS:attackone:1:exit:1",
+        "LOREBATT.PAS:attackone:1:if:3",
+        "LOREBATT.PAS:attackone:1:exit:2",
+        "LOREBATT.PAS:attackone:1:if:4",
+        "LOREBATT.PAS:attackone:1:case:1",
+        "LOREBATT.PAS:attackone:1:if:5",
+        "LOREBATT.PAS:attackone:1:exit:3",
+        "LOREBATT.PAS:attackone:1:if:6",
+        "LOREBATT.PAS:attackone:1:exit:4",
+        "LOREBATT.PAS:attackone:1:if:7",
+        "LOREBATT.PAS:attackone:1:exit:5",
+        "LOREBATT.PAS:attackone:1:if:8",
+        "LOREBATT.PAS:attackone:1:exit:6",
+        "LOREBATT.PAS:attackone:1:if:9",
+        "LOREBATT.PAS:attackone:1:if:10",
+        "LOREBATT.PAS:attackone:1:if:11"
+      ],
+      "test_candidates": [
+        "test/attack_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_auto_select.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/auto_select_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_rewards.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:plusexperience:1:if:1",
+        "LOREBATT.PAS:plusexperience:1:if:2",
+        "LOREBATT.PAS:plusexperience:1:for:1",
+        "LOREBATT.PAS:plusexperience:1:if:3",
+        "LOREBATT.PAS:plusgold:1:if:1",
+        "LOREBATT.PAS:plusgold:1:exit:1",
+        "LOREBATT.PAS:plusgold:1:for:1",
+        "LOREBATT.PAS:plusgold:1:if:2"
+      ],
+      "test_candidates": [
+        "test/battle_rewards_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_chamber_battle_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/chamber_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_chamber_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/chamber_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_condition_storage.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/boss_hp_override_ui_test.dart",
+        "test/condition_storage_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_cure_overflow.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/field_magic_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_defence_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:attackone:1:if:1",
+        "LOREBATT.PAS:attackone:1:if:2",
+        "LOREBATT.PAS:attackone:1:exit:1",
+        "LOREBATT.PAS:attackone:1:if:3",
+        "LOREBATT.PAS:attackone:1:exit:2",
+        "LOREBATT.PAS:attackone:1:if:4",
+        "LOREBATT.PAS:attackone:1:case:1",
+        "LOREBATT.PAS:attackone:1:if:5",
+        "LOREBATT.PAS:attackone:1:exit:3",
+        "LOREBATT.PAS:attackone:1:if:6",
+        "LOREBATT.PAS:attackone:1:exit:4",
+        "LOREBATT.PAS:attackone:1:if:7",
+        "LOREBATT.PAS:attackone:1:exit:5",
+        "LOREBATT.PAS:attackone:1:if:8",
+        "LOREBATT.PAS:attackone:1:exit:6",
+        "LOREBATT.PAS:attackone:1:if:9",
+        "LOREBATT.PAS:attackone:1:if:10",
+        "LOREBATT.PAS:attackone:1:if:11",
+        "LOREBATT.PAS:castone:1:if:1",
+        "LOREBATT.PAS:castone:1:if:2",
+        "LOREBATT.PAS:castone:1:exit:1",
+        "LOREBATT.PAS:castone:1:if:3",
+        "LOREBATT.PAS:castone:1:exit:2",
+        "LOREBATT.PAS:castone:1:if:4",
+        "LOREBATT.PAS:castone:1:if:5",
+        "LOREBATT.PAS:castone:1:exit:3",
+        "LOREBATT.PAS:castone:1:if:6",
+        "LOREBATT.PAS:castone:1:exit:4",
+        "LOREBATT.PAS:castone:1:if:7",
+        "LOREBATT.PAS:castone:1:exit:5",
+        "LOREBATT.PAS:castone:1:if:8",
+        "LOREBATT.PAS:castone:1:exit:6",
+        "LOREBATT.PAS:castone:1:if:9",
+        "LOREBATT.PAS:castone:1:exit:7",
+        "LOREBATT.PAS:castone:1:if:10",
+        "LOREBATT.PAS:castone:1:if:11",
+        "LOREBATT.PAS:castone:1:if:12"
+      ],
+      "test_candidates": [
+        "test/defence_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_draconian_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_ending_input.json",
+      "explicit_contracts": [
+        "LOREEND.PAS:thundereffect:1:repeat:1",
+        "LOREEND.PAS:thundereffect:1:if:1",
+        "LOREEND.PAS:thundereffect:1:if:2",
+        "LOREEND.PAS:thundereffect:1:if:3",
+        "LOREEND.PAS:thundereffect:1:if:4",
+        "LOREEND.PAS:end_demo:1:while:1",
+        "LOREEND.PAS:end_demo:1:repeat:1",
+        "LOREEND.PAS:end_demo:1:if:1",
+        "LOREEND.PAS:end_demo:1:if:2",
+        "LOREEND.PAS:end_demo:1:case:1",
+        "LOREEND.PAS:end_demo:1:case:2",
+        "LOREEND.PAS:end_demo:1:if:3",
+        "LOREEND.PAS:end_demo:1:if:4",
+        "LOREEND.PAS:end_demo:1:if:5",
+        "LOREEND.PAS:end_demo:1:for:1",
+        "LOREEND.PAS:end_demo:1:for:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/ending_view_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_ending_staff.json",
+      "explicit_contracts": [
+        "LOREEND.PAS:thundereffect:1:repeat:1",
+        "LOREEND.PAS:thundereffect:1:if:1",
+        "LOREEND.PAS:thundereffect:1:if:2",
+        "LOREEND.PAS:thundereffect:1:if:3",
+        "LOREEND.PAS:thundereffect:1:if:4",
+        "LOREEND.PAS:end_demo:1:while:1",
+        "LOREEND.PAS:end_demo:1:repeat:1",
+        "LOREEND.PAS:end_demo:1:if:1",
+        "LOREEND.PAS:end_demo:1:if:2",
+        "LOREEND.PAS:end_demo:1:case:1",
+        "LOREEND.PAS:end_demo:1:case:2",
+        "LOREEND.PAS:end_demo:1:if:3",
+        "LOREEND.PAS:end_demo:1:if:4",
+        "LOREEND.PAS:end_demo:1:if:5",
+        "LOREEND.PAS:end_demo:1:for:1",
+        "LOREEND.PAS:end_demo:1:for:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/ending_view_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_magic_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:enemycure:1:if:1",
+        "LOREBATT.PAS:enemycure:1:if:2",
+        "LOREBATT.PAS:enemycure:1:if:3",
+        "LOREBATT.PAS:enemycure:1:if:4",
+        "LOREBATT.PAS:enemycure:1:if:5"
+      ],
+      "test_candidates": [
+        "test/enemy_ai_arithmetic_dos_test.dart",
+        "test/enemy_magic_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_evil_god_first_attempt.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/crab_king_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_evil_god_success.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/evil_god_native_completion_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_battle_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_complete_battle.json",
+      "explicit_contracts": [
+        "LORESPEC.PAS:specialevent_part2:1:repeat:2",
+        "LORESPEC.PAS:specialevent_part2:1:if:147"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_continuation.json",
+      "explicit_contracts": [
+        "LORESPEC.PAS:specialevent_part2:1:repeat:2",
+        "LORESPEC.PAS:specialevent_part2:1:if:147"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_ending_completion.json",
+      "explicit_contracts": [
+        "LOREEND.PAS:thundereffect:1:repeat:1",
+        "LOREEND.PAS:thundereffect:1:if:1",
+        "LOREEND.PAS:thundereffect:1:if:2",
+        "LOREEND.PAS:thundereffect:1:if:3",
+        "LOREEND.PAS:thundereffect:1:if:4",
+        "LOREEND.PAS:end_demo:1:while:1",
+        "LOREEND.PAS:end_demo:1:repeat:1",
+        "LOREEND.PAS:end_demo:1:if:1",
+        "LOREEND.PAS:end_demo:1:if:2",
+        "LOREEND.PAS:end_demo:1:case:1",
+        "LOREEND.PAS:end_demo:1:case:2",
+        "LOREEND.PAS:end_demo:1:if:3",
+        "LOREEND.PAS:end_demo:1:if:4",
+        "LOREEND.PAS:end_demo:1:if:5",
+        "LOREEND.PAS:end_demo:1:for:1",
+        "LOREEND.PAS:end_demo:1:for:2"
+      ],
+      "note_mentions": [
+        "LOREEND.PAS:thundereffect:1:repeat:1",
+        "LOREEND.PAS:thundereffect:1:if:1",
+        "LOREEND.PAS:thundereffect:1:if:2",
+        "LOREEND.PAS:thundereffect:1:if:3",
+        "LOREEND.PAS:thundereffect:1:if:4",
+        "LOREEND.PAS:end_demo:1:while:1",
+        "LOREEND.PAS:end_demo:1:repeat:1",
+        "LOREEND.PAS:end_demo:1:if:1",
+        "LOREEND.PAS:end_demo:1:if:2",
+        "LOREEND.PAS:end_demo:1:case:1",
+        "LOREEND.PAS:end_demo:1:case:2",
+        "LOREEND.PAS:end_demo:1:if:3",
+        "LOREEND.PAS:end_demo:1:if:4",
+        "LOREEND.PAS:end_demo:1:if:5",
+        "LOREEND.PAS:end_demo:1:for:1",
+        "LOREEND.PAS:end_demo:1:for:2"
+      ],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_party_order.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_first_field_battle.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/first_field_battle_dos_test.dart",
+        "test/first_field_battle_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_frost_battle_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/frost_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_frost_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/frost_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_gaia_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREMAIN.PAS:main:1:if:12",
+        "LOREMAIN.PAS:main:1:if:13",
+        "LOREMAIN.PAS:main:1:for:1",
+        "LOREMAIN.PAS:main:1:if:14",
+        "LOREMAIN.PAS:main:1:if:15",
+        "LOREMAIN.PAS:main:1:if:16",
+        "LOREMAIN.PAS:main:1:if:17",
+        "LOREMAIN.PAS:main:1:if:18",
+        "LOREMAIN.PAS:main:1:if:19"
+      ],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_hidden_levers_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/hidden_levers_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_hospital_overflow.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESUB.PAS:hospital:1:if:20"
+      ],
+      "test_candidates": [
+        "test/lore_town_shops_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_hospital_wound.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/hospital_wound_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_keep2_completion.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/keep2_completion_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_keep2_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/keep2_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_keep3_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/keep3_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_lastditch_arrival.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORETALK.PAS:talkmode:1:if:61",
+        "LORETALK.PAS:talkmode:1:if:62",
+        "LORETALK.PAS:talkmode:1:if:63",
+        "LORETALK.PAS:talkmode:1:exit:1",
+        "LORETALK.PAS:talkmode:1:case:3"
+      ],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_lockup_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/lockup_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_lorehunter_reentry.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/dialogue_window_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_madjoe_reentry.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/dialogue_window_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_main_sound.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_menace_center.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_center_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_menace_entry.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESPEC.PAS:specialevent_part1:1:if:98",
+        "LOREENT.PAS:entermode:1:if:6",
+        "LOREENT.PAS:entermode:1:if:7",
+        "LORESUB.PAS:wantenter:1:if:1"
+      ],
+      "test_candidates": [
+        "test/menace_entry_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_menace_return.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_metal_battle_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/metal_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_metal_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/metal_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_muddy_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_new_game.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESPEC.PAS:specialevent_part1:1:if:21",
+        "LORESPEC.PAS:specialevent_part1:1:if:24",
+        "LORECRET.PAS:fourth:1:for:5",
+        "LORECRET.PAS:fourth:1:for:6",
+        "LORECRET.PAS:fourth:1:for:7",
+        "LORECRET.PAS:fourth:1:case:2",
+        "LORECRET.PAS:last:1:for:2"
+      ],
+      "test_candidates": [
+        "test/castle_departure_dos_ui_test.dart",
+        "test/first_field_battle_dos_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/resumed_field_battle_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_notice_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/hidra_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_pyramid_battle.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:battlemode:1:repeat:1",
+        "LOREBATT.PAS:battlemode:1:if:1",
+        "LOREBATT.PAS:battlemode:1:goto:1",
+        "LOREBATT.PAS:battlemode:1:for:1",
+        "LOREBATT.PAS:battlemode:1:for:2",
+        "LOREBATT.PAS:battlemode:1:if:2",
+        "LOREBATT.PAS:battlemode:1:if:3",
+        "LOREBATT.PAS:battlemode:1:if:4",
+        "LOREBATT.PAS:battlemode:1:if:5",
+        "LOREBATT.PAS:battlemode:1:if:6",
+        "LOREBATT.PAS:battlemode:1:case:1",
+        "LOREBATT.PAS:battlemode:1:case:2",
+        "LOREBATT.PAS:battlemode:1:case:3",
+        "LOREBATT.PAS:battlemode:1:if:7",
+        "LOREBATT.PAS:battlemode:1:for:3",
+        "LOREBATT.PAS:battlemode:1:if:8",
+        "LOREBATT.PAS:battlemode:1:if:9",
+        "LOREBATT.PAS:battlemode:1:for:4",
+        "LOREBATT.PAS:battlemode:1:case:4",
+        "LOREBATT.PAS:battlemode:1:if:10",
+        "LOREBATT.PAS:battlemode:1:for:5",
+        "LOREBATT.PAS:battlemode:1:case:5",
+        "LOREBATT.PAS:battlemode:1:if:11",
+        "LOREBATT.PAS:battlemode:1:for:6",
+        "LOREBATT.PAS:battlemode:1:case:6",
+        "LOREBATT.PAS:battlemode:1:if:12",
+        "LOREBATT.PAS:battlemode:1:for:7",
+        "LOREBATT.PAS:battlemode:1:if:13",
+        "LOREBATT.PAS:battlemode:1:if:14",
+        "LOREBATT.PAS:battlemode:1:for:8",
+        "LOREBATT.PAS:battlemode:1:if:15",
+        "LOREBATT.PAS:battlemode:1:if:16",
+        "LOREBATT.PAS:battlemode:1:case:7",
+        "LOREBATT.PAS:battlemode:1:if:17",
+        "LOREBATT.PAS:battlemode:1:exit:1",
+        "LOREBATT.PAS:battlemode:1:for:9",
+        "LOREBATT.PAS:battlemode:1:if:18",
+        "LOREBATT.PAS:battlemode:1:if:19",
+        "LOREBATT.PAS:battlemode:1:if:20",
+        "LOREBATT.PAS:battlemode:1:if:21",
+        "LOREBATT.PAS:battlemode:1:case:8",
+        "LOREBATT.PAS:battlemode:1:exit:2"
+      ],
+      "test_candidates": [
+        "test/pyramid_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_pyramid_success.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESPEC.PAS:specialevent_part1:1:if:27",
+        "LORESPEC.PAS:specialevent_part1:1:if:57",
+        "LORESPEC.PAS:specialevent_part1:1:if:58",
+        "LORESPEC.PAS:specialevent_part1:1:exit:5",
+        "LORESPEC.PAS:specialevent_part1:1:if:59",
+        "LORESPEC.PAS:specialevent_part1:1:exit:6",
+        "LORESPEC.PAS:specialevent_part1:1:if:60",
+        "LOREMAIN.PAS:main:1:if:12",
+        "LOREMAIN.PAS:main:1:if:13",
+        "LOREMAIN.PAS:main:1:for:1",
+        "LOREMAIN.PAS:main:1:if:14",
+        "LOREMAIN.PAS:main:1:if:15",
+        "LOREMAIN.PAS:main:1:if:16",
+        "LOREMAIN.PAS:main:1:if:17",
+        "LOREMAIN.PAS:main:1:if:18",
+        "LOREMAIN.PAS:main:1:if:19",
+        "LORETALK.PAS:talkmode:1:if:61",
+        "LORETALK.PAS:talkmode:1:if:62",
+        "LORETALK.PAS:talkmode:1:if:63",
+        "LORETALK.PAS:talkmode:1:exit:1",
+        "LORETALK.PAS:talkmode:1:case:2",
+        "LORETALK.PAS:talkmode:1:if:49",
+        "LORETALK.PAS:talkmode:1:case:3"
+      ],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart",
+        "test/pyramid_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_quake_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart",
+        "test/quake_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_random_order.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREMAIN.PAS:enter_lava:1:for:2"
+      ],
+      "test_candidates": [
+        "test/random_order_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_random_stream.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/lore_random_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_recruit_storage.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/condition_storage_dos_test.dart",
+        "test/recruit_storage_dos_test.dart",
+        "test/special_cast_slots_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_rest_states.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/rest_dos_parity_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_resumed_field_battle.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:runaway:1:if:1",
+        "LOREBATT.PAS:battlemode:1:if:1",
+        "LOREBATT.PAS:battlemode:1:for:2",
+        "LOREBATT.PAS:battlemode:1:case:2",
+        "LOREBATT.PAS:encounterenemy:1:if:8"
+      ],
+      "test_candidates": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/resumed_field_battle_dos_test.dart",
+        "test/resumed_field_battle_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_second_field_battle.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/first_field_battle_dos_ui_test.dart",
+        "test/second_field_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_spell_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:castone:1:if:1",
+        "LOREBATT.PAS:castone:1:if:2",
+        "LOREBATT.PAS:castone:1:exit:1",
+        "LOREBATT.PAS:castone:1:if:3",
+        "LOREBATT.PAS:castone:1:exit:2",
+        "LOREBATT.PAS:castone:1:if:4",
+        "LOREBATT.PAS:castone:1:if:5",
+        "LOREBATT.PAS:castone:1:exit:3",
+        "LOREBATT.PAS:castone:1:if:6",
+        "LOREBATT.PAS:castone:1:exit:4",
+        "LOREBATT.PAS:castone:1:if:7",
+        "LOREBATT.PAS:castone:1:exit:5",
+        "LOREBATT.PAS:castone:1:if:8",
+        "LOREBATT.PAS:castone:1:exit:6",
+        "LOREBATT.PAS:castone:1:if:9",
+        "LOREBATT.PAS:castone:1:exit:7",
+        "LOREBATT.PAS:castone:1:if:10",
+        "LOREBATT.PAS:castone:1:if:11",
+        "LOREBATT.PAS:castone:1:if:12"
+      ],
+      "test_candidates": [
+        "test/spell_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_swamp_gate_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/gorgon_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_terrain_states.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/terrain_dos_parity_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_town_tile42.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/bgi_font_decoder_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_training_dispatch.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESUB.PAS:train_center:1:if:2",
+        "LORESUB.PAS:train_center:1:case:1",
+        "LORESUB.PAS:train_center:1:case:2",
+        "LORESUB.PAS:train_center:1:if:5",
+        "LORESUB.PAS:train_center:1:if:41",
+        "LORESUB.PAS:train_center:1:goto:4"
+      ],
+      "test_candidates": [
+        "test/training_dispatch_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_training_growth.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESUB.PAS:train_center:1:if:1",
+        "LORESUB.PAS:train_center:1:exit:1",
+        "LORESUB.PAS:train_center:1:if:2",
+        "LORESUB.PAS:train_center:1:case:1",
+        "LORESUB.PAS:train_center:1:case:2",
+        "LORESUB.PAS:train_center:1:if:3",
+        "LORESUB.PAS:train_center:1:case:3",
+        "LORESUB.PAS:train_center:1:if:4",
+        "LORESUB.PAS:train_center:1:goto:1",
+        "LORESUB.PAS:train_center:1:if:5",
+        "LORESUB.PAS:train_center:1:goto:2",
+        "LORESUB.PAS:train_center:1:case:4",
+        "LORESUB.PAS:train_center:1:if:6",
+        "LORESUB.PAS:train_center:1:if:7",
+        "LORESUB.PAS:train_center:1:if:8",
+        "LORESUB.PAS:train_center:1:if:9",
+        "LORESUB.PAS:train_center:1:if:10",
+        "LORESUB.PAS:train_center:1:if:11",
+        "LORESUB.PAS:train_center:1:if:12",
+        "LORESUB.PAS:train_center:1:if:13",
+        "LORESUB.PAS:train_center:1:if:14",
+        "LORESUB.PAS:train_center:1:if:15",
+        "LORESUB.PAS:train_center:1:if:16",
+        "LORESUB.PAS:train_center:1:if:17",
+        "LORESUB.PAS:train_center:1:if:18",
+        "LORESUB.PAS:train_center:1:if:19",
+        "LORESUB.PAS:train_center:1:if:20",
+        "LORESUB.PAS:train_center:1:if:21",
+        "LORESUB.PAS:train_center:1:if:22",
+        "LORESUB.PAS:train_center:1:if:23",
+        "LORESUB.PAS:train_center:1:if:24",
+        "LORESUB.PAS:train_center:1:if:25",
+        "LORESUB.PAS:train_center:1:if:26",
+        "LORESUB.PAS:train_center:1:if:27",
+        "LORESUB.PAS:train_center:1:if:28",
+        "LORESUB.PAS:train_center:1:if:29",
+        "LORESUB.PAS:train_center:1:if:30",
+        "LORESUB.PAS:train_center:1:if:31",
+        "LORESUB.PAS:train_center:1:if:32",
+        "LORESUB.PAS:train_center:1:if:33",
+        "LORESUB.PAS:train_center:1:if:34",
+        "LORESUB.PAS:train_center:1:if:35",
+        "LORESUB.PAS:train_center:1:if:36",
+        "LORESUB.PAS:train_center:1:if:37",
+        "LORESUB.PAS:train_center:1:if:38",
+        "LORESUB.PAS:train_center:1:if:39",
+        "LORESUB.PAS:train_center:1:for:1",
+        "LORESUB.PAS:train_center:1:if:40",
+        "LORESUB.PAS:train_center:1:goto:3",
+        "LORESUB.PAS:train_center:1:if:41",
+        "LORESUB.PAS:train_center:1:goto:4"
+      ],
+      "test_candidates": [
+        "test/training_growth_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_water_lord_rewards.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/lore_water_lord_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_weapon_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:weaponattack:1:if:1",
+        "LOREBATT.PAS:weaponattack:1:exit:1",
+        "LOREBATT.PAS:weaponattack:1:for:1",
+        "LOREBATT.PAS:weaponattack:1:if:2",
+        "LOREBATT.PAS:weaponattack:1:for:2",
+        "LOREBATT.PAS:weaponattack:1:if:3",
+        "LOREBATT.PAS:weaponattack:1:if:4",
+        "LOREBATT.PAS:weaponattack:1:if:5",
+        "LOREBATT.PAS:weaponattack:1:if:6",
+        "LOREBATT.PAS:weaponattack:1:if:7",
+        "LOREBATT.PAS:weaponattack:1:if:8",
+        "LOREBATT.PAS:weaponattack:1:exit:2",
+        "LOREBATT.PAS:weaponattack:1:if:9",
+        "LOREBATT.PAS:weaponattack:1:if:10",
+        "LOREBATT.PAS:weaponattack:1:exit:3",
+        "LOREBATT.PAS:weaponattack:1:if:11",
+        "LOREBATT.PAS:weaponattack:1:if:12",
+        "LOREBATT.PAS:weaponattack:1:if:13"
+      ],
+      "test_candidates": [
+        "test/weapon_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_wivern_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart",
+        "test/wivern_battle_dos_test.dart"
+      ]
+    }
+  ]
+}

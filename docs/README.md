@@ -20,7 +20,12 @@ python -X utf8 tool/audit_source_memory.py --check
 python -X utf8 tool/build_port_contract_ledger.py --check
 python -X utf8 tool/report_map_parity.py --check
 python -X utf8 tool/report_port_workload.py --check
+python -X utf8 tool/report_completion_gaps.py --check
 ```
+
+`audits/completion_gaps.md`와 동명의 JSON은 계약 장부의 미분류 루틴,
+지도 쓰기와 장부에 연결되지 않은 DOS 근거 후보를 모은다. 검증 완료율이나
+별도 실행 계획으로 사용하지 않는다.
 
 새 문서의 파일명은 소문자 `snake_case`로 작성한다. 날짜별 기록은
 `YYYY-MM-DD.md`를 사용하고, 같은 장부의 Markdown·JSON은 동일한 이름을 쓴다.

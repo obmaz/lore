@@ -221,10 +221,16 @@ def link_contract_evidence(sites):
             raise ValueError(f"Linked contract evidence is missing: {site_id}")
         if site["file"] not in test.read_text(encoding="utf-8"):
             raise ValueError(f"Test does not cite original source: {site_id}")
+        supporting = row.get("supporting_evidence", [])
+        if not isinstance(supporting, list) or any(
+            not isinstance(path, str) or not (ROOT / path).is_file()
+            for path in supporting
+        ):
+            raise ValueError(f"Supporting contract evidence is missing: {site_id}")
         site["classification"] = row["classification"]
         site["verification_status"] = row["verification"]
         site["port_handler"] = row["implementation"]
-        site["behavioral_evidence"] = [row["test"]]
+        site["behavioral_evidence"] = list(dict.fromkeys([row["test"], *supporting]))
         site["reviewed_scope"] = row["note"]
     return rows
 
