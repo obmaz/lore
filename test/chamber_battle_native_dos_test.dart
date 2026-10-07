@@ -26,9 +26,12 @@ void main() {
       print: (_, _) {},
       espBit: true,
     );
-    for (var i = 1; i <= 6; i++)
+    for (var i = 1; i <= 6; i++) {
       b.battle[i] = [0, ...List<int>.from(f['commands'][i - 1])];
-    for (var i = 1; i <= 6; i++) b.executePerson(i);
+    }
+    for (var i = 1; i <= 6; i++) {
+      b.executePerson(i);
+    }
     b.enemyPhase();
     expect(r.seed, f['closed']['seed']);
     expect(b.party.map((p) => p.toJson()).toList(), f['closed']['records']);
@@ -60,7 +63,8 @@ void main() {
       setTile: (x, y, v) => writes.add((x, y, v)),
     );
     expect(writes.length, 12);
-    for (final (x, y, v) in writes)
+    for (final (x, y, v) in writes) {
       expect(v, raw[2 + (y - 1) * raw[0] + x - 1]);
+    }
   });
 }

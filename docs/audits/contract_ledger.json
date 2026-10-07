@@ -47477,7 +47477,7 @@
     {
       "path": "test/chamber_battle_native_dos_test.dart",
       "kind": "test",
-      "sha256": "fd7c69b351273d41faf31249862b9421e61c6354d9e6016403942b72382a6724",
+      "sha256": "769df8a59d69718ff00ba0c2c82f4e4602463d5bd9799a592e48392bc1b3cdeb",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -47671,6 +47671,13 @@
       "path": "test/field_test.dart",
       "kind": "test",
       "sha256": "ce8b50ef25318c6d06ddc8bb9d6b412be06d39ec36ba2d2c6fbbc49740c354af",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/final_battle_native_dos_test.dart",
+      "kind": "test",
+      "sha256": "ced8e28580e00d96b3fbaf0afa09e410132293cb591bcd363937c91fd6332082",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -49071,6 +49078,51 @@
       "sha256": "598ccbaa48389de04eafcfe2abb8b4f2efd7ba260fdd8bb18cca0208ab899fa9",
       "test_users": [
         "test/evil_god_native_completion_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_final_battle_phase.json",
+      "kind": "fixture",
+      "sha256": "239b570354e33874d1c3471cdca7d75064c9cad5d06f9c79020a3e52c1910a23",
+      "test_users": [
+        "test/final_battle_native_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_final_complete_battle.json",
+      "kind": "fixture",
+      "sha256": "83e49f65c8627cc6abca09200caab0805752b7775c4b6fc7ee61efc9dfc56404",
+      "test_users": [
+        "test/final_battle_native_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_final_continuation.json",
+      "kind": "fixture",
+      "sha256": "439586ab08176cd27fd45545cf9d270509aeeeefb337fb6cb4cca233d0a43876",
+      "test_users": [
+        "test/final_battle_native_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_final_ending_completion.json",
+      "kind": "fixture",
+      "sha256": "16b6dbf5639f6a938d681e1344944a79d474893ba00c57c022bf09b95d564fa3",
+      "test_users": [
+        "test/final_battle_native_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_final_party_order.json",
+      "kind": "fixture",
+      "sha256": "273c1852a477c71f27f80ed3081a04eabf4412ad8394b21d52e851f58925ef39",
+      "test_users": [
+        "test/final_battle_native_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
