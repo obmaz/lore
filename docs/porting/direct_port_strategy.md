@@ -2482,3 +2482,15 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      이 환경에는 Flutter/Dart SDK가 없어 Flutter 회귀·analyze·웹 빌드는
      실행하지 못했다. 이번 변경은 검증 도구·근거 연결·체크아웃 설정이며
      게임 런타임 규칙은 바꾸지 않았다. 전체 이식 완료 판정은 유지 보류한다.
+
+148. 장부 보완 푸시와 웹 릴리스 재빌드 (2026-10-07).
+     147번 변경을 main의642d5ca로 푸시했다. 환경에 Flutter stable3.47.6
+     (5fc346839b, Dart3.13.5)을 설치하여 이전 SDK 부재를 해소했다.
+     전체 Flutter1496개 통과·기존 skip2개, analyze 무문제를 확인했다.
+     `tool/build_web_release.py`로 WASM과 JavaScript 대체 릴리스를 빌드하고
+     bootstrap/WASM 해시 검사 후 기존 문서를 보존하여 docs에 복사했다.
+     첫 빌드 이후 캐시된 재빌드로 bootstrap 해시 일치를 확인했다.
+     main.dart.wasm의 SHA-256은 기존 릴리스와 동일한
+     c011170cd90602fdfda2ac4b7ad39ab57c771c95aebafdf498a8006d9b184076이다.
+     게임 본체의 변경 없이 부트스트랩·빌드 ID가 갱신됐다. 새 캠페인이나
+     실제 브라우저 플레이 검증을 추가했다는 의미는 아니다.
