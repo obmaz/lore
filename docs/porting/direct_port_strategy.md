@@ -2234,3 +2234,17 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      첫 실패 분기의 관측 근거이며 봉인 완료 근거가 아니다. 경험치가
      추가 훈련 조건에 못 미치므로 원본 후반 동료 영입 뒤 재도전한다.
      관련 Flutter4개와 analyze, 원본 근거·계약 검사를 수행한다.
+
+134. Draconian 원본 합류·강제6번 슬롯·MindRead·실제 저장 대조
+     (2026-10-07, `dos_draconian_continuation.json`,
+     `check_dos_draconian_continuation.py`, `menace_return_dos_ui_test.dart`).
+     정상 GameOver에서 황금 장비 실제 저장을 읽은 이후 다시 SWAMP
+     Gate·피라밋·Gorgon 도주·KEEP 남쪽 도주를 진행했다. 피라밋 자동 이동
+     중의 관측 간격에서는 원본 영역42→51 쓰기를 실제 지도 해시로 검증한다.
+     정상 벽 파괴 마법으로 지상 피라밋 통로를 열고 ESP MindRead 뒤
+     Draconian을6번 슬롯에 영입했다. 원본 기록은 class0·HP510·전투17·
+     마법15·SP300·resistance30·weapon10·weaPower44·experience3570000이다.
+     모바일에서도 다른5명 유지, etc16 bit2, MindRead와 RNG, 실제 저장
+     전체 map/party bytes를 비교했다. 이 범위의 추가 런타임 차이는 없다.
+     관련 Flutter1개 및 analyze·원본 근거/계약 검사를 수행하고 수호왕
+     재도전을 계속한다. 전체 캠페인 완료라고 판정하지 않는다.

@@ -48288,7 +48288,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "c81482beb40aac9542d490355d915e3f49a9c9e0de1b50ba5f8515c0ed70807a",
+      "sha256": "cda982b8130afacd3f5e5651acc0aa326af57c6cac0cb1d248c0bf43fdb441ad",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -48922,6 +48922,15 @@
       "sha256": "c87b54acf009c1e3adfed30d1efc7286bb1be0183ca4eee0d600b40eb88ca035",
       "test_users": [
         "test/defence_arithmetic_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_draconian_continuation.json",
+      "kind": "fixture",
+      "sha256": "2fcb449fcfee6fb27b67fef1e6f3095419e75bad6f1a22e40956ae913bf2aadf",
+      "test_users": [
+        "test/menace_return_dos_ui_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },

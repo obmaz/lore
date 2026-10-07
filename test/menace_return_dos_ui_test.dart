@@ -697,6 +697,61 @@ void main() {
     },
   );
   testWidgets(
+    'native Draconian mind reading recruits forced slot6 and preserves raw records/save',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_draconian_continuation.json')
+            .readAsStringSync(),
+      );
+      final inputs = [
+        for (final segment in f['segments'])
+          if (segment.containsKey('trace'))
+            for (final b in segment['trace'])
+              if (b.containsKey('input')) b['input'],
+      ];
+      dynamic row(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => row(n)['after'];
+      final before = row(13958)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['ready']),
+        random,
+      );
+      for (final key in [
+        LogicalKeyboardKey.keyE,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+      ]) {
+        await tester.sendKeyEvent(key);
+        await tick(tester);
+      }
+      check(game, random, phase(13960));
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(13961));
+      for (var i = 0; i < 2; i++) {
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+      }
+      check(game, random, phase(13963));
+      expect(game.partyProvider!()[5].name, 'Draconian');
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['joined'],
+        phase(13966),
+        phase(13967),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
     'native EVIL GOD first lever mutates map only after original key wait',
     (tester) async {
       final f = jsonDecode(
