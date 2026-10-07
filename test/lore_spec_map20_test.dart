@@ -36,7 +36,6 @@ void main() {
       ),
       party: const [],
       scripts: scripts,
-
     );
 
     return result.script;
@@ -169,6 +168,7 @@ void main() {
         [4, 82, 17],
       );
       expect(won.pendingScene!.lines.first, ' 당신은 이 동굴에 보관되어 있는 봉인을 발견');
+      expect(won.pendingScene!.lineColors, {0: 15, 1: 15, 2: 15});
       // Already-won bits skip their fights; all three set leaves for map 4.
       expect(at(2).outcome.battleMonsters, List.filled(7, 31));
       expect(at(6).pendingScene!.title, 'Astral Mud');

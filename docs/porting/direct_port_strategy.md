@@ -2263,3 +2263,23 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      EXE/RAM/RNG는 수정하지 않았으며 원본 실제 저장 bytes를 검증한다.
      전체 Flutter·analyze·원본 근거/계약 검사와 web 빌드를 수행한다.
      MUDDY 이후 봉인·후반 성채·전체 원본 엔딩 검증은 계속 진행한다.
+
+136. MUDDY 원본 두 봉인 완료·세 퀴즈·미로·연속 전투·실제 저장
+     (2026-10-07, `dos_muddy_continuation.json`,
+     `check_dos_muddy_continuation.py`, `menace_return_dos_ui_test.dart`).
+     EVIL GOD 실제 저장 이후 GAIA Hospital에서 여섯 명을 회복했다.
+     다시 SWAMP Gate·Gorgon을 통과했고 KEEP 출구 전투 패배 뒤 정상
+     GameOver로 실제 병원 저장을 불러왔다. 원본의 결과 미검사 출구
+     후속 분기가 재개된 일행을 Ground4로 이동시키는 동작도 기록한다.
+     MUDDY에서 세 퀴즈·Minotaur·미로·수호룡3명·Mud-Man7명·Astral Mud를
+     진행했다. enemy7 사망 뒤 도주(result2)로 etc41=14→15가 되고,
+     마지막 확인 키 이전에 Ground4(82,17)로 이동한다. 두 봉인의 실제
+     저장 바이트는 etc40=15, etc41=15이다. 봉인 대사 세 줄은 Print15이며
+     이식판의 마지막 줄 기본색7을 수정했다. 모바일에서 원본 마지막
+     퀴즈 Select·전원 레코드·RNG·실제 지도 저장을 비교하고, 미로의
+     무작위 호출 없는0 타일·출구 횃불·실제 저장을 대조한다.
+     피라밋 자동 이동2회·지도 로딩1회·전투 출력 중10개 RNG 호출의
+     관측 간격4개를 명시했다. 간격을 포함한 전체 전투 재생 근거로
+     주장하지 않으며 EXE/RAM/RNG/저장 bytes는 수정하지 않았다.
+     관련 Flutter·전체 회귀·analyze·원본 근거/계약 검사·web 빌드를
+     수행한다. 라바 게이트·후반 성채·최종전·원본 엔딩은 이어서 진행한다.

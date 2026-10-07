@@ -47976,7 +47976,7 @@
     {
       "path": "test/lore_spec_map20_test.dart",
       "kind": "test",
-      "sha256": "c5b7f918b56ca629d8bc507c0ce6edf9c3c5d7b68f4b9585dd7072541977a514",
+      "sha256": "fed40860a85ba24ed8a065df48e19ed1990b63969c036e0908fb3460ebac0f98",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -48295,7 +48295,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "cda982b8130afacd3f5e5651acc0aa326af57c6cac0cb1d248c0bf43fdb441ad",
+      "sha256": "5a103fc7f43ee1db38d8c707d570e39c9bd6029a5683adda72c4b4e780cd66c1",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -49101,6 +49101,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_muddy_continuation.json",
+      "kind": "fixture",
+      "sha256": "491bae9ab949b95f0ddb435bec8c55ff82ac233ca413e65485177dda24d6ca1d",
+      "test_users": [
+        "test/menace_return_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_new_game.json",
       "kind": "fixture",
       "sha256": "f1f2f358cb4aee96348a8043fe642f13bcd72e6d19703c2875e6b1b5cea8cc0e",
@@ -49579,7 +49588,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "30e933c0d6b15bad513d4ea41ce3807165b1b322334300df83d511b10ad60e41"
+      "sha256": "640a1d7a7dad57b1c7dffee9e45292e31f971415ed55e45bb088eb92920dd9b3"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",

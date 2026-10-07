@@ -319,6 +319,107 @@ void main() {
     'records': state['records'],
     'files': mapSave['files'],
   };
+  List<String> capturedWalk(List<dynamic> blocks, int start, int stop) {
+    final route = <String>[];
+    var recording = false;
+    for (final b in blocks) {
+      if (b.containsKey('input') && b['input']['capture'] == 'lore_$stop.png') {
+        break;
+      }
+      if (recording) {
+        if (b.containsKey('walk')) {
+          for (final s in b['walk']['steps']) {
+            route.add(s['key']);
+          }
+        } else {
+          final keys = b['input']['keys'] as List;
+          expect(keys.length, 1);
+          route.add(keys.single);
+        }
+      }
+      if (b.containsKey('input') &&
+          b['input']['capture'] == 'lore_$start.png') {
+        recording = true;
+      }
+    }
+    return route;
+  }
+
+  testWidgets(
+    'native MUDDY last quiz and real save preserve records, RNG and map',
+    (tester) async {
+      // LORESPEC.PAS:1562-1596; actual original Select, not a synthetic answer.
+      final f = jsonDecode(
+        File('test/fixtures/dos_muddy_continuation.json').readAsStringSync(),
+      );
+      final blocks = [
+        for (final s in f['segments'])
+          for (final b in s['trace'] ?? []) b,
+      ];
+      dynamic input(int n) => blocks
+          .where((b) => b.containsKey('input'))
+          .map((b) => b['input'])
+          .singleWhere((i) => i['capture'] == 'lore_$n.png');
+      final before = input(15459)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['quizzes']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, input(15459)['after']);
+      expect(find.text('위의 말은 옳다'), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, input(15460)['after']);
+      final route = capturedWalk(blocks, 15460, 15461);
+      await walk(tester, game, route);
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['minotaurReady'],
+        input(15463)['after'],
+        input(15464)['after'],
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+
+  testWidgets(
+    'native MUDDY maze keeps zero-draw cells and lights the exit before saving',
+    (tester) async {
+      // LORESPEC.PAS:1598-1602; source maze0 cells consume no random draw.
+      final f = jsonDecode(
+        File('test/fixtures/dos_muddy_continuation.json').readAsStringSync(),
+      );
+      final blocks = [
+        for (final s in f['segments'])
+          for (final b in s['trace'] ?? []) b,
+      ];
+      dynamic input(int n) => blocks
+          .where((b) => b.containsKey('input'))
+          .map((b) => b['input'])
+          .singleWhere((i) => i['capture'] == 'lore_$n.png');
+      final random = LoreRandom(input(15562)['after']['seed']);
+      final game = await open(tester, f['saves']['mazeReady'], random);
+      final route = capturedWalk(blocks, 15562, 15564);
+      await walk(tester, game, route);
+      check(game, random, input(15564)['before']);
+      expect(LoreDialogueManager.instance.partyEtc.read(1), 1);
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['dragonsReady'],
+        input(15566)['after'],
+        input(15567)['after'],
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+
   testWidgets(
     'native Lord reward trains four members with four RNG draws and skips capped levels',
     (tester) async {
