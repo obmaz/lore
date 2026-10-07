@@ -2301,3 +2301,19 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      입력790개이며 새 샘플링 간격이 없다. 전투 전체 재생/전체 BGI
      근거로 확대하지 않는다. 관련 Flutter3개·analyze·원본 근거/계약
      검사 후 기록을 푸시하고 원본 상점 보강 뒤 수비대 재도전을 이어간다.
+
+138. LAST SHELTER 장비·Ancient Evil·IMPERIUM MINOR 완료 원본 검증
+     (2026-10-07, `dos_keep2_completion.json`,
+     `check_dos_keep2_completion.py`, `keep2_completion_dos_test.dart`).
+     실제 상점에서 방패·갑옷·무기11개를440000에 구매했다. Hercules
+     weapon9/weaPower75, Hero weapon7/weaPower30, Draconian AC10을
+     포함해 각 구매 전후 여섯 명 레코드와 금을 직접 비교했다.
+     Ancient Evil 안내 후 etc43=10, 수비대 재도전 승리 후11이다.
+     원본 병원에서 사망·의식불명·HP를 치료하고 Draconian을17→18로
+     훈련했다. class0은 난수를 소비하지 않고 magic15를 유지하며,
+     금14000을 지급한다. 이식판과 전체 훈련 레코드/RNG가 일치한다.
+     출구에서 Mega-Robo7번 슬롯을 사망시킨 뒤 도주(result2)하여
+     etc43=15, Ground5(15,32)를 실제 저장했다. 다시 병원 회복 후
+     다음 수호자 진입을 준비했다. 입력947개에 새 관측 간격은 없다.
+     관련 Flutter12개·analyze·원본 근거/계약 검사를 수행한다.
+     전체 후반 전투 재생·전체 캠페인/BGI 완료라고 확대하지 않는다.
