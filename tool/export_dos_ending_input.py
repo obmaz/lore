@@ -25,7 +25,9 @@ def build():
     rows = []
     for seed in [0, 1, 26622, 0xffffffff]:
         for initial, keys, limit in [(27, [], 8), (27, [13, 27], 8),
-                                     (13, [65, 27, 13], 8), (27, [13], 2)]:
+                                     (13, [65, 27, 13], 8), (27, [13], 2),
+                                     (27, [0, 72, 27, 13], 8),
+                                     (13, [0, 59, 27], 8)]:
             u = Uc(UC_ARCH_X86, UC_MODE_16)
             u.mem_map(0, 0x80000)
             u.mem_write(0, exe[header:])
@@ -66,7 +68,7 @@ def build():
                     closed[0] = True; vm.emu_stop()
             u.hook_add(UC_HOOK_CODE, hook)
             u.emu_start(START-header, 0x7ffff, count=50000)
-            assert loops[0] == (2 if keys else 1)
+            assert loops[0] == (keys.index(27) + 1 if 27 in keys else (2 if keys else 1))
             assert closed[0] == (keys != [13])
             rows.append(dict(seed=seed, initialKey=initial, keys=keys,
                              loopLimit=limit, iterations=loops[0], closed=closed[0],

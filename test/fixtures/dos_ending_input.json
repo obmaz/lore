@@ -163,6 +163,123 @@
       ]
     },
     {
+      "seed": 0,
+      "initialKey": 27,
+      "keys": [
+        0,
+        72,
+        27,
+        13
+      ],
+      "loopLimit": 8,
+      "iterations": 3,
+      "closed": true,
+      "remainingKeys": [
+        13
+      ],
+      "lastKey": 27,
+      "afterSeed": 870078620,
+      "events": [
+        [
+          "random",
+          1000
+        ],
+        [
+          "random",
+          100
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          72
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
+        ]
+      ]
+    },
+    {
+      "seed": 0,
+      "initialKey": 13,
+      "keys": [
+        0,
+        59,
+        27
+      ],
+      "loopLimit": 8,
+      "iterations": 3,
+      "closed": true,
+      "remainingKeys": [],
+      "lastKey": 27,
+      "afterSeed": 870078620,
+      "events": [
+        [
+          "random",
+          1000
+        ],
+        [
+          "random",
+          100
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          59
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
+        ]
+      ]
+    },
+    {
       "seed": 1,
       "initialKey": 27,
       "keys": [],
@@ -298,6 +415,115 @@
         [
           "keyPressed",
           false
+        ]
+      ]
+    },
+    {
+      "seed": 1,
+      "initialKey": 27,
+      "keys": [
+        0,
+        72,
+        27,
+        13
+      ],
+      "loopLimit": 8,
+      "iterations": 3,
+      "closed": true,
+      "remainingKeys": [
+        13
+      ],
+      "lastKey": 27,
+      "afterSeed": 870078620,
+      "events": [
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          72
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
+        ]
+      ]
+    },
+    {
+      "seed": 1,
+      "initialKey": 13,
+      "keys": [
+        0,
+        59,
+        27
+      ],
+      "loopLimit": 8,
+      "iterations": 3,
+      "closed": true,
+      "remainingKeys": [],
+      "lastKey": 27,
+      "afterSeed": 870078620,
+      "events": [
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          59
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
         ]
       ]
     },
@@ -513,6 +739,151 @@
       ]
     },
     {
+      "seed": 26622,
+      "initialKey": 27,
+      "keys": [
+        0,
+        72,
+        27,
+        13
+      ],
+      "loopLimit": 8,
+      "iterations": 3,
+      "closed": true,
+      "remainingKeys": [
+        13
+      ],
+      "lastKey": 27,
+      "afterSeed": 1489826467,
+      "events": [
+        [
+          "random",
+          1000
+        ],
+        [
+          "random",
+          100
+        ],
+        [
+          "rgb"
+        ],
+        [
+          "random",
+          100
+        ],
+        [
+          "delay",
+          43
+        ],
+        [
+          "rgb"
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          72
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
+        ]
+      ]
+    },
+    {
+      "seed": 26622,
+      "initialKey": 13,
+      "keys": [
+        0,
+        59,
+        27
+      ],
+      "loopLimit": 8,
+      "iterations": 3,
+      "closed": true,
+      "remainingKeys": [],
+      "lastKey": 27,
+      "afterSeed": 1489826467,
+      "events": [
+        [
+          "random",
+          1000
+        ],
+        [
+          "random",
+          100
+        ],
+        [
+          "rgb"
+        ],
+        [
+          "random",
+          100
+        ],
+        [
+          "delay",
+          43
+        ],
+        [
+          "rgb"
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          59
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
+        ]
+      ]
+    },
+    {
       "seed": 4294967295,
       "initialKey": 27,
       "keys": [],
@@ -648,6 +1019,115 @@
         [
           "keyPressed",
           false
+        ]
+      ]
+    },
+    {
+      "seed": 4294967295,
+      "initialKey": 27,
+      "keys": [
+        0,
+        72,
+        27,
+        13
+      ],
+      "loopLimit": 8,
+      "iterations": 3,
+      "closed": true,
+      "remainingKeys": [
+        13
+      ],
+      "lastKey": 27,
+      "afterSeed": 2231304098,
+      "events": [
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          72
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
+        ]
+      ]
+    },
+    {
+      "seed": 4294967295,
+      "initialKey": 13,
+      "keys": [
+        0,
+        59,
+        27
+      ],
+      "loopLimit": 8,
+      "iterations": 3,
+      "closed": true,
+      "remainingKeys": [],
+      "lastKey": 27,
+      "afterSeed": 2231304098,
+      "events": [
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          59
+        ],
+        [
+          "random",
+          1000
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
         ]
       ]
     }

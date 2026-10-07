@@ -47585,7 +47585,7 @@
     {
       "path": "test/ending_view_test.dart",
       "kind": "test",
-      "sha256": "45b94c5c20080df91bdeac23878ee7e4b87251088766dbc2bb2f748bae9da529",
+      "sha256": "6c5a0ca7c433e44988ab13e2ea3506d493e8e9a1f077e311eb589134896c969e",
       "cited_source_files": [
         "LOREEND.PAS"
       ],
@@ -49037,7 +49037,7 @@
     {
       "path": "test/fixtures/dos_ending_input.json",
       "kind": "fixture",
-      "sha256": "d73431160484ede5445a413e3460b500ad2154d2eafe6a2eb3831c8847fe580e",
+      "sha256": "fe8fbc8a76ac767b0685191d42e1fc131c375491a9a65e675ac915930df2f9c4",
       "test_users": [
         "test/ending_view_test.dart"
       ],
@@ -49046,7 +49046,7 @@
     {
       "path": "test/fixtures/dos_ending_staff.json",
       "kind": "fixture",
-      "sha256": "854842130694341ac35768b47bd6c3a3b1b7582f76be0bd56afee19e22cabde7",
+      "sha256": "fb41b0f46e8bd44cc3362b766def5cb3ad05ce535a07e21526121037d56a16fb",
       "test_users": [
         "test/ending_view_test.dart"
       ],

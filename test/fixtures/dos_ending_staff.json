@@ -11596,6 +11596,236 @@
           200
         ]
       ]
+    },
+    {
+      "keys": [
+        0,
+        72,
+        27
+      ],
+      "inheritedKey": 27,
+      "loopLimit": 180,
+      "closed": true,
+      "remainingKeys": [],
+      "lastKey": 27,
+      "frames": [
+        {
+          "x": 600,
+          "y": 2,
+          "sprite": 24
+        },
+        {
+          "x": 600,
+          "y": 4,
+          "sprite": 21
+        },
+        {
+          "x": 600,
+          "y": 6,
+          "sprite": 24
+        }
+      ],
+      "events": [
+        [
+          "erase",
+          600,
+          0
+        ],
+        [
+          "erase",
+          600,
+          20
+        ],
+        [
+          "sprite",
+          600,
+          2,
+          24
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "delay",
+          200
+        ],
+        [
+          "erase",
+          600,
+          0
+        ],
+        [
+          "erase",
+          600,
+          20
+        ],
+        [
+          "sprite",
+          600,
+          4,
+          21
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          72
+        ],
+        [
+          "delay",
+          200
+        ],
+        [
+          "erase",
+          600,
+          0
+        ],
+        [
+          "erase",
+          600,
+          20
+        ],
+        [
+          "sprite",
+          600,
+          6,
+          24
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
+        ],
+        [
+          "delay",
+          200
+        ]
+      ]
+    },
+    {
+      "keys": [
+        0,
+        59,
+        27
+      ],
+      "inheritedKey": 27,
+      "loopLimit": 180,
+      "closed": true,
+      "remainingKeys": [],
+      "lastKey": 27,
+      "frames": [
+        {
+          "x": 600,
+          "y": 2,
+          "sprite": 24
+        },
+        {
+          "x": 600,
+          "y": 4,
+          "sprite": 21
+        },
+        {
+          "x": 600,
+          "y": 6,
+          "sprite": 24
+        }
+      ],
+      "events": [
+        [
+          "erase",
+          600,
+          0
+        ],
+        [
+          "erase",
+          600,
+          20
+        ],
+        [
+          "sprite",
+          600,
+          2,
+          24
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          0
+        ],
+        [
+          "delay",
+          200
+        ],
+        [
+          "erase",
+          600,
+          0
+        ],
+        [
+          "erase",
+          600,
+          20
+        ],
+        [
+          "sprite",
+          600,
+          4,
+          21
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          59
+        ],
+        [
+          "delay",
+          200
+        ],
+        [
+          "erase",
+          600,
+          0
+        ],
+        [
+          "erase",
+          600,
+          20
+        ],
+        [
+          "sprite",
+          600,
+          6,
+          24
+        ],
+        [
+          "keyPressed",
+          true
+        ],
+        [
+          "readKey",
+          27
+        ],
+        [
+          "delay",
+          200
+        ]
+      ]
     }
   ]
 }

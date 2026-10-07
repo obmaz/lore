@@ -44,6 +44,24 @@ void main() {
     }
   }
 
+  Future<void> sendDosKeys(WidgetTester tester, List<dynamic> keys) async {
+    for (var i = 0; i < keys.length; i++) {
+      final byte = keys[i];
+      final key = byte == 0
+          ? switch (keys[++i]) {
+              72 => LogicalKeyboardKey.arrowUp,
+              59 => LogicalKeyboardKey.f1,
+              _ => throw StateError('Unsupported native scan code'),
+            }
+          : switch (byte) {
+              27 => LogicalKeyboardKey.escape,
+              13 => LogicalKeyboardKey.enter,
+              _ => LogicalKeyboardKey.keyA,
+            };
+      await tester.sendKeyEvent(key);
+    }
+  }
+
   final native = jsonDecode(
     File('test/fixtures/dos_ending_input.json').readAsStringSync(),
   );
@@ -59,13 +77,7 @@ void main() {
           random: random,
           initialKeyWasEscape: row['initialKey'] == 27,
         );
-        for (final key in row['keys']) {
-          await tester.sendKeyEvent(switch (key) {
-            27 => LogicalKeyboardKey.escape,
-            13 => LogicalKeyboardKey.enter,
-            _ => LogicalKeyboardKey.keyA,
-          });
-        }
+        await sendDosKeys(tester, row['keys']);
         await run(tester, 2800);
         expect(state.phase, EndPhase.staff);
         expect(random.seed, row['afterSeed']);
@@ -87,13 +99,7 @@ void main() {
         while (state.phase != EndPhase.staff) {
           await tester.pump(const Duration(milliseconds: 1));
         }
-        for (final key in row['keys']) {
-          await tester.sendKeyEvent(switch (key) {
-            27 => LogicalKeyboardKey.escape,
-            13 => LogicalKeyboardKey.enter,
-            _ => LogicalKeyboardKey.keyA,
-          });
-        }
+        await sendDosKeys(tester, row['keys']);
         for (var frame = 0; frame < row['frames'].length; frame++) {
           await tester.pump(Duration(milliseconds: frame == 0 ? 1 : 200));
           expect(state.phase, EndPhase.staff);

@@ -23,7 +23,7 @@ def build():
     exe = (ROOT / 'repo_source/LORE_1993_runtime/LORE.EXE').read_bytes()
     header = struct.unpack_from('<H', exe, 8)[0] * 16
     rows = []
-    for keys in [[27], [65, 27], [65, 13, 27], [27, 27], [65] * 177 + [27], []]:
+    for keys in [[27], [65, 27], [65, 13, 27], [27, 27], [65] * 177 + [27], [], [0, 72, 27], [0, 59, 27]]:
         vm = Uc(UC_ARCH_X86, UC_MODE_16)
         vm.mem_map(0, 0x80000)
         vm.mem_write(0, exe[header:])

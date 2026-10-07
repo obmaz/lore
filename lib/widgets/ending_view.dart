@@ -89,6 +89,33 @@ class EndingViewState extends State<EndingView>
   /// 페이드·첫 번쩍임 동안 누른 Esc도 버퍼에 남아 천둥 반복문이 시작되자마자 끝난다.
   final List<bool> _keyBuffer = [];
 
+  // CRT ReadKey returns #0 then the scan code for these DOS keys. Neither
+  // byte is Esc, but each consumes its own Thunder/staff loop iteration.
+  static final _extendedKeys = {
+    LogicalKeyboardKey.arrowUp,
+    LogicalKeyboardKey.arrowDown,
+    LogicalKeyboardKey.arrowLeft,
+    LogicalKeyboardKey.arrowRight,
+    LogicalKeyboardKey.home,
+    LogicalKeyboardKey.end,
+    LogicalKeyboardKey.pageUp,
+    LogicalKeyboardKey.pageDown,
+    LogicalKeyboardKey.insert,
+    LogicalKeyboardKey.delete,
+    LogicalKeyboardKey.f1,
+    LogicalKeyboardKey.f2,
+    LogicalKeyboardKey.f3,
+    LogicalKeyboardKey.f4,
+    LogicalKeyboardKey.f5,
+    LogicalKeyboardKey.f6,
+    LogicalKeyboardKey.f7,
+    LogicalKeyboardKey.f8,
+    LogicalKeyboardKey.f9,
+    LogicalKeyboardKey.f10,
+    LogicalKeyboardKey.f11,
+    LogicalKeyboardKey.f12,
+  };
+
   // 걷는 스프라이트
   final LoreEndWalker walker = LoreEndWalker();
   final Set<int> erasedRows = {};
@@ -303,6 +330,9 @@ class EndingViewState extends State<EndingView>
             phase == EndPhase.message ||
             phase == EndPhase.staff) {
           _keyBuffer.add(false);
+          if (_extendedKeys.contains(event.logicalKey)) {
+            _keyBuffer.add(false);
+          }
         }
         return KeyEventResult.handled;
       },
