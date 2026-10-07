@@ -2172,3 +2172,27 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      (도구2개 제외) 및 analyze 오류 없음,
      Python69개 및 원본 산술/난수/훈련/엔딩/계약/메모리/지도/대사·
      DOS 근거 검사를 수행하고 기존 WASM/JS 릴리스 무결성을 확인했다.
+
+131. LOCKUP 실제 진행·Minotaur·Spica 능력 부족·Huge Dragon·귀환 보상 대조
+     (2026-10-07, `dos_lockup_continuation.json`,
+     `check_dos_lockup_continuation.py`, `lockup_battle_dos_test.dart`,
+     `menace_return_dos_ui_test.dart`).
+     실제 NOTICE 귀환 저장 이후 정상 훈련·벽 파괴 마법·장비 구입·
+     전투 실패와 GameOver 로드·Huge Dragon 승리·WATER FIELD 귀환을
+     원본 EXE 키 입력으로 진행했다. 실행 환경 종료 뒤 실제 Spica 경고
+     저장을 새 원본 프로세스에서 읽은 구간과 자동 용 이동 관측 간격을
+     분리 보존한다. 전체 새 게임 연속 실행이나 BGI 완료 근거가 아니다.
+     Minotaur 승리는 etc39 bit3과33750골드, Spica 소개는 bit1이며
+     ESP 최대4의 MindRead는 ESP를 쓰지 않고 etc5=3 뒤 합류하지 않는다.
+     Huge Dragon 지원5명의 난수 생성과 첫 적 단계 전체6명·7적·seed를
+     비교했다. 실제 승리 골드는 원본 템플릿 기반41567, 마지막 확인 키
+     뒤 etc15=4다. 성주는 확인 키 전에6명에게300000 경험치를 지급하고
+     키 뒤 Swamp Key 단계5가 된다. 실제 슬롯 저장과 확인 뒤 RNG도 대조했다.
+     모바일 재생에서 Print 앞부분과 talk 마지막 줄을 별도 창으로 띄워
+     확인 키가 하나 더 필요한 차이를 수정했다. 원본처럼 한 대사 창에
+     모으며 Spica 능력 부족 대사 한 번 확인 뒤 이동·저장까지 검증한다.
+     Print의 암묵적 페이지 넘김은 스크롤 표시로 대체한다. SWAMP 이후
+     퀘스트와 최종전·전체 엔딩 검증은 계속 진행한다.
+     검증: 전체 Flutter1442개 통과(도구2개 제외), analyze 오류 없음,
+     Python69개와 원본 산술·난수·훈련·엔딩·계약·메모리·지도·대사 및
+     실제 DOS 근거 검사 통과. WASM/JS 릴리스도 새로 빌드한다.

@@ -735,6 +735,103 @@ void main() {
     },
   );
   testWidgets(
+    'native LOCKUP Dragon return grants all six300k and Swamp Key after final key',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_lockup_continuation.json').readAsStringSync(),
+      );
+      final inputs = [
+        for (final segment in f['segments'])
+          if (segment.containsKey('trace'))
+            for (final b in segment['trace'])
+              if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => input(n)['after'];
+      final before = input(11511)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['dragonReturn']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(11511));
+      expect(LoreDialogueManager.instance.partyEtc.read(15), 4);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(11512));
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['dragonReturn'],
+        phase(11515),
+        phase(11516),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
+    'native Spica teaching and weak ESP MindRead preserve original flags, cost and save',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_lockup_continuation.json').readAsStringSync(),
+      );
+      final inputs = [
+        for (final segment in f['segments'])
+          if (segment.containsKey('trace'))
+            for (final b in segment['trace'])
+              if (b.containsKey('input')) b['input'],
+      ];
+      dynamic input(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      dynamic phase(int n) => input(n)['after'];
+      final before = input(9574)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['spicaWarning']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(9574));
+      for (var i = 0; i < 4; i++) {
+        await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+        await tick(tester);
+      }
+      check(game, random, phase(9578));
+      for (final key in [
+        LogicalKeyboardKey.keyE,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.arrowDown,
+        LogicalKeyboardKey.enter,
+      ]) {
+        await tester.sendKeyEvent(key);
+        await tick(tester);
+      }
+      check(game, random, phase(9581));
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(9582));
+      await walk(tester, game, ['Down']);
+      check(game, random, phase(9583));
+      await save(
+        tester,
+        game,
+        random,
+        f['saves']['spicaWarning'],
+        phase(9586),
+        phase(9587),
+      );
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
     'actual DOS centre disk reload, revisit and resave preserve all records and map bytes',
     (tester) async {
       final f = fixture['centerReload'];

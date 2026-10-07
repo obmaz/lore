@@ -696,6 +696,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         ]);
         // The story speech of a scene is kept in the previous-dialogue tab too.
         _dialogueHistory.addColored([
+          ..._scenePrefix,
           for (final line in shown.lines)
             (LoreSourceSpeech.lines[line]?.color ?? 7, line),
           if (shown.lines.isNotEmpty &&
@@ -708,6 +709,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
           barrierDismissible: false,
           builder: (_) => ScriptSceneDialog(
             scene: shown,
+            prefixLines: _scenePrefix,
             actors: [for (final id in scene.actors) Monster.create(id)],
             onKeyAcknowledged: (key) {
               // End_Demo/ThunderEffect inherit the source's shared c from
@@ -762,6 +764,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     await showLoreMessageDialog(context, lines: lines);
   }
 
+  List<(int, String)> _scenePrefix = const [];
+
   /// 스크립트 결과(메시지/보상/플래그/동료/장비/전투)를 게임 상태에 반영한다.
   Future<bool> _applyScriptOutcome(
     ScriptRun run, {
@@ -771,6 +775,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   }) async {
     final outcome = since == null ? run.outcome : run.outcome.since(since);
     final sourceScene = run.pendingScene;
+    _scenePrefix = const [];
     final renderedScene = sourceScene?.withPartyNames([
       for (final member in _party) member.name,
     ]);
@@ -822,6 +827,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
     Future<void> endSpeech() async {
       if (holdsChoice) {
         _choiceLines = List<(int, String)>.of(speech);
+        speech.clear();
+      } else if (sourceScene != null) {
+        // Print lines followed by talk/PressAnyKey share one source window.
+        _scenePrefix = List<(int, String)>.of(speech);
         speech.clear();
       } else if (outcome.equips.any((equip) => equip.prompt)) {
         equipmentLines = List<(int, String)>.of(speech);

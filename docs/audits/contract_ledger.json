@@ -47751,6 +47751,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/lockup_battle_dos_test.dart",
+      "kind": "test",
+      "sha256": "024046255117c821b213b1020200fcd66de3ac8abb4bf7d19f34351da595c636",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/lore_battle_progress_test.dart",
       "kind": "test",
       "sha256": "8ba4472c4edf72db79effdca1e2b0ed9cf9898622622b4280e1912190b57d6e9",
@@ -48267,7 +48274,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "95137e6ed685be224077160f7e5bba4dba8f47b7f4733120e3058fc1328517c5",
+      "sha256": "cb858c6edcb6d10121d2c032792947791ec5247cdfc486576d7e9921defc6acc",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -48979,6 +48986,16 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_lockup_continuation.json",
+      "kind": "fixture",
+      "sha256": "040c096eefac93f6beb6ce1a90ad3c49af6923ca57120c522d0b0bccc177f60a",
+      "test_users": [
+        "test/lockup_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_lorehunter_reentry.json",
       "kind": "fixture",
       "sha256": "f5fcdfe65a79d3c537c421a456a277f617aec60e0ddb7c19c2ea81d978314f97",
@@ -49539,7 +49556,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "5ab2ab27c47095abe4e7b1b5d78e438a2bebb9c2c5c1260c78c2d4e74ce6851e"
+      "sha256": "dc32edba68a4de558137d9424f8dd8fcb4473433e91557c32344a2905bbddb0f"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -49611,7 +49628,7 @@
     },
     {
       "path": "lib/widgets/script_scene_dialog.dart",
-      "sha256": "abcc40dec293abf7163a7e249a06124fe81b62b3b8b6599870899b94ffa9b765"
+      "sha256": "0f314b4e94d97f80cc684dfc1a8e35adf7bb6d628938b2a77ac59eabf0b78d38"
     },
     {
       "path": "lib/logic/lore_source_speech.dart",

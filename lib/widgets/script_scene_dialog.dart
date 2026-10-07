@@ -10,12 +10,14 @@ import '../theme/retro_theme.dart';
 /// Native display/acknowledgement adapter for source PressAnyKey and talk('').
 class ScriptSceneDialog extends StatelessWidget {
   final ScriptScene scene;
+  final List<(int, String)> prefixLines;
   final List<Monster> actors;
   final ValueChanged<LogicalKeyboardKey>? onKeyAcknowledged;
 
   const ScriptSceneDialog({
     super.key,
     required this.scene,
+    this.prefixLines = const [],
     required this.actors,
     this.onKeyAcknowledged,
   });
@@ -25,6 +27,7 @@ class ScriptSceneDialog extends StatelessWidget {
     acknowledgementKey: const ValueKey('script-scene-continue'),
     onKeyAcknowledged: onKeyAcknowledged,
     lines: [
+      ...prefixLines,
       for (final line in scene.lines)
         (LoreSourceSpeech.lines[line]?.color ?? 7, line),
       if (scene.lines.isNotEmpty &&
