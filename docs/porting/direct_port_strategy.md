@@ -2217,3 +2217,20 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      닫힌 아군 단계의 실제 명령6개·Medusa 기절 뒤 마무리·다음 적 단계도
      전체 party/enemy/seed로 비교했다. 관련 Flutter25개 및 analyze,
      원본 DOS 근거·계약 검사를 수행하고 기존 릴리스 무결성을 확인한다.
+
+133. EVIL GOD 레버·경비 도주·수호왕 첫 패배 및 실제 저장 재시작 대조
+     (2026-10-07, `dos_evil_god_first_attempt.json`,
+     `check_dos_evil_god_first_attempt.py`, `crab_king_battle_dos_test.dart`,
+     `menace_return_dos_ui_test.dart`).
+     SWAMP KEEP 남쪽 경비7명 첫 적 단계와 원본 도주를 진행했다.
+     EVIL GOD의 늪 걷기 해제·레버·경비3회 도주·실제 수호왕 앞 저장을
+     보존한다. 레버A의 지도 변화는 원본 확인 키 뒤에 일어나며 모바일도
+     같은 시점에 두 셀을 바꾼다. 레버B는 Random7로 방1(etc40=2)을 골랐다.
+     수호왕7명 중 뒤4명의 E_number25/HP210/레벨7 override, 첫 적 단계·
+     닫힌 첫 아군 단계·다음 적 단계의 전체 party/enemy/RNG를 비교했다.
+     일행은 원본 전투에서 패배했다. 정상 GameOver에서 앞서 실제 저장한
+     황금 장비 체크포인트의 bytes를 그대로 복사한 슬롯2를 불러왔다.
+     EXE/RAM/저장 내용은 수정하지 않았으며 재시작 RNG는 이어진다.
+     첫 실패 분기의 관측 근거이며 봉인 완료 근거가 아니다. 경험치가
+     추가 훈련 조건에 못 미치므로 원본 후반 동료 영입 뒤 재도전한다.
+     관련 Flutter4개와 analyze, 원본 근거·계약 검사를 수행한다.

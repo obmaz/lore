@@ -697,6 +697,40 @@ void main() {
     },
   );
   testWidgets(
+    'native EVIL GOD first lever mutates map only after original key wait',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_evil_god_first_attempt.json')
+            .readAsStringSync(),
+      );
+      final inputs = [
+        for (final segment in f['segments'])
+          if (segment.containsKey('trace'))
+            for (final b in segment['trace'])
+              if (b.containsKey('input')) b['input'],
+      ];
+      dynamic row(int n) =>
+          inputs.singleWhere((i) => i['capture'] == 'lore_$n.png');
+      final before = row(12807)['before'];
+      final random = LoreRandom(before['seed']);
+      final game = await open(
+        tester,
+        ramCheckpoint(before, f['saves']['entry']),
+        random,
+      );
+      await walk(tester, game, ['Up']);
+      check(game, random, row(12807)['after']);
+      expect(game.currentMap!.getTile(11, 40), 0);
+      expect(game.currentMap!.getTile(41, 39), 49);
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyC);
+      await tick(tester);
+      check(game, random, row(12808)['after']);
+      expect(game.currentMap!.getTile(11, 40), 49);
+      expect(game.currentMap!.getTile(41, 39), 0);
+      expect(tester.takeException(), isNull);
+    },
+  );
+  testWidgets(
     'native SWAMP Gate speech loads DEN4 with original flag, RNG and save',
     (tester) async {
       final f = jsonDecode(

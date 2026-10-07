@@ -47475,6 +47475,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/crab_king_battle_dos_test.dart",
+      "kind": "test",
+      "sha256": "863d2494347a4fe53abb3ffc6fb47e093afd25ac2380e000385e1304e0430a9e",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/creation_test.dart",
       "kind": "test",
       "sha256": "f515e945c9094fdaf2eacf24da49dc5986a6ac49273d52c1fab096c7d309f194",
@@ -48281,7 +48288,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "b01641f8caf68e78e3037e7f2e06cccfd57cf4afbfb0b3ad0fe5abe85d098950",
+      "sha256": "c81482beb40aac9542d490355d915e3f49a9c9e0de1b50ba5f8515c0ed70807a",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -48943,6 +48950,16 @@
       "test_users": [
         "test/enemy_ai_arithmetic_dos_test.dart",
         "test/enemy_magic_arithmetic_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_evil_god_first_attempt.json",
+      "kind": "fixture",
+      "sha256": "2554c47d0b775ffe1d0245d6dbf96f41d79ea9b1ac1bd6f68be287b84fee92de",
+      "test_users": [
+        "test/crab_king_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
