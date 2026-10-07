@@ -2332,3 +2332,17 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      이 간격은 인물·party bytes가 동일하고 다음 LCG값으로 검증한다.
      전체 전투 자동 재생·BGI 근거로 주장하지 않는다. 관련 Flutter·
      analyze·원본 근거/계약 검사 후 이 완료 구간을 푸시한다.
+
+140. KEEP3 환상·가짜 Necromancer·푯말과 레버 원본 완료
+     (2026-10-07, `dos_keep3_continuation.json`,
+     `check_dos_keep3_continuation.py`, `keep3_native_dos_test.dart`).
+     실제 Frost 입장 저장에서 원본 치료/Rest 후6명 복제 적과 대결했다.
+     turn_mind의6명 전체 필드, 닫힌 첫 적 선공 단계의 인물·적·RNG를
+     직접 비교했다. 원본에서 환상과 가짜 Necromancer 모두 승리했으며,
+     완료 사각형24..27×25..27과 푯말29,43=53을 실제 저장했다.
+     푯말을 읽어25,27=52가 된 뒤 레버가0→39 및 입구54를 쓰는 전체
+     저장 지도 bytes도 이식판 reducer와 일치했다. 첫 이름 삽입 대사는
+     완성 문자열이 원본 색상 인덱스에서 사라져 기본7이 되던 것을
+     Print13으로 고쳤고, 주문 마지막 두 줄의Print15를 명시했다.
+     입력220개에 관측 간격은 없다. 전체 Flutter·analyze·원본 근거/계약
+     검사와 web 빌드를 수행하고, 숨겨진 성채 및 최종전 검증을 계속한다.

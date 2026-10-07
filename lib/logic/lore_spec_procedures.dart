@@ -2312,6 +2312,7 @@ class LoreSpecProcedures {
           appendPartyNameSlot: 1,
           appendPartyNameLine: 0,
           appendPartyNameSuffix: '.',
+          lineColors: {0: 13, 1: 13, 2: 13, 3: 13},
           lines: [
             ' 잘도 여기까지 찾아왔구나 ',
             ' 네가 찾던 그 Necromancer가 바로 나다. 드디',
@@ -2324,6 +2325,7 @@ class LoreSpecProcedures {
         kind: 'scene',
         scene: ScriptScene(
           title: '환상',
+          lineColors: {0: 13, 1: 13, 2: 13, 3: 13, 4: 15, 5: 15},
           lines: [
             ' 너희들은 곧 환상에 빠져들게 될 것이다.',
             ' 나는 벌써 너희들의 약점을 파악 했지.  너희',

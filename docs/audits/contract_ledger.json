@@ -47768,6 +47768,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/keep3_native_dos_test.dart",
+      "kind": "test",
+      "sha256": "f887d5b11e9475f1556db8729af7a7547a9025d4e25f907d5124b257d1bdfaf5",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
       "sha256": "76d9655ba91b43bd4a6134cc734f75763b3792a8b564780e15ebbe23a41c7043",
@@ -49087,6 +49094,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_keep3_continuation.json",
+      "kind": "fixture",
+      "sha256": "e48e7c13030c03b0ae490ee90e3128cb3b0a4a9e94c314505b3c926b3ed073cf",
+      "test_users": [
+        "test/keep3_native_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_lastditch_arrival.json",
       "kind": "fixture",
       "sha256": "ebf7c8a4658826f3509cdbad709d5482de1e38146af664b0b82f48a0ca58e72d",
@@ -49649,7 +49665,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "640a1d7a7dad57b1c7dffee9e45292e31f971415ed55e45bb088eb92920dd9b3"
+      "sha256": "0966249c405877d04e48eb6e05d0ee2da44b126b62bdae4e2698fec237615ac4"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
