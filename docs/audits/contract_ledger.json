@@ -47675,6 +47675,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/frost_battle_dos_test.dart",
+      "kind": "test",
+      "sha256": "7e0f77968d75cf322f3d1be402d46a6ddb3b115d71a28852a4d1986af83371ce",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/game_over_reload_continuation_test.dart",
       "kind": "test",
       "sha256": "d934b02ba4ba024af5a9464506e909afdb5ed41b5a9b501e8820553f2f6e76b0",
@@ -49012,6 +49019,24 @@
       "test_users": [
         "test/first_field_battle_dos_test.dart",
         "test/first_field_battle_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_frost_battle_phase.json",
+      "kind": "fixture",
+      "sha256": "202ad7bdbd0bad501f5640f777058c65085a9bf56af8f2650e8363784b82fecd",
+      "test_users": [
+        "test/frost_battle_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_frost_continuation.json",
+      "kind": "fixture",
+      "sha256": "4a5ab77ed32c1b52c45c27ff0b1d76e89608c651dc40d3e4b20fa2f26a82ec96",
+      "test_users": [
+        "test/frost_battle_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },

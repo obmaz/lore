@@ -2317,3 +2317,18 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      다음 수호자 진입을 준비했다. 입력947개에 새 관측 간격은 없다.
      관련 Flutter12개·analyze·원본 근거/계약 검사를 수행한다.
      전체 후반 전투 재생·전체 캠페인/BGI 완료라고 확대하지 않는다.
+
+139. Frost Dragon 관문 승리·EVIL CONCENTRATION 실제 진입
+     (2026-10-07, `dos_frost_continuation.json`,
+     `dos_frost_battle_phase.json`, `check_dos_frost_continuation.py`,
+     `frost_battle_dos_test.dart`). IMPERIUM MINOR 출구 실제 저장 이후
+     용암 이동 실패·원본 병원 치료·정상 WallBreak로 용암50도41로
+     바꾸는 입력을 보존했다. Frost 관문은 두 번 패배했으며 정상
+     GameOver로 실제 직전 슬롯1을 읽었다. 세 번째 시도는7수호자
+     승리로 보상306666, etc44 bit1, map23(25,45)을 실제 저장했다.
+     두 번째 시도의 닫힌 적 선공 전체를 모든 party/enemy 필드 및
+     RNG와 직접 비교하여 일치를 확인했다. 입력800개이며 관문 승리
+     후 실제 저장 메뉴 이전1개 RNG 호출의 관측 간격을 명시한다.
+     이 간격은 인물·party bytes가 동일하고 다음 LCG값으로 검증한다.
+     전체 전투 자동 재생·BGI 근거로 주장하지 않는다. 관련 Flutter·
+     analyze·원본 근거/계약 검사 후 이 완료 구간을 푸시한다.
