@@ -160,7 +160,11 @@ class EndingViewState extends State<EndingView>
           LoreEnd.outroFadeTo,
         );
         ramp7 = ramp15 = i;
-        if (i >= LoreEnd.outroFadeTo) _enter(EndPhase.outroHold, now);
+        // LOREEND.PAS delays after every palette write, including i = 63.
+        if (inPhase.inMilliseconds >=
+            LoreEnd.outroFadeTo * LoreEnd.outroFadeDelayMs) {
+          _enter(EndPhase.outroHold, now);
+        }
       case EndPhase.outroHold:
         if (inPhase.inMilliseconds >= LoreEnd.outroHoldMs) {
           _enter(EndPhase.outroDim, now);
@@ -172,7 +176,8 @@ class EndingViewState extends State<EndingView>
           count - 1,
         );
         ramp7 = LoreEnd.outroDimFrom - i;
-        if (i >= count - 1) {
+        // Keep the final delay(15) after RGB(7,42,42,42) before Halt.
+        if (inPhase.inMilliseconds >= count * LoreEnd.outroDimDelayMs) {
           _enter(EndPhase.halted, now);
           _focus.requestFocus();
         }

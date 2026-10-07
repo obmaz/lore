@@ -86,12 +86,13 @@ node build/source-memory-verification.js
 로컬에서 WASM과 JavaScript 대체 버전을 함께 빌드한 뒤 GitHub Pages에 게시합니다.
 
 ```sh
-flutter build web --release --wasm --base-href /lore/ --no-web-resources-cdn
+python3 tool/build_web_release.py
 ```
 
-1. `build/web/`의 배포 파일을 `docs/`에 복사합니다. 기존 문서 디렉터리는 보존하고, 같은 이름의 배포 파일만 갱신합니다.
-2. `docs/.nojekyll` 파일을 포함해 `main`에 커밋하고 푸시합니다.
-3. GitHub의 **Settings → Pages**에서 **Deploy from a branch**, 브랜치 **main**, 폴더 **/docs**를 선택하고 저장합니다.
+빌드 도구는 로더에 기록된 모든 WASM 해시를 실제 파일과 대조한 뒤 기존 문서를 보존하며 `docs/`를 갱신합니다. 이전 빌드의 해시가 남아 있으면 한 번 재빌드하여 검사합니다. SDK 경로를 지정하려면 `--flutter /경로/flutter/bin/flutter`을 사용합니다.
+
+1. `docs/.nojekyll` 파일을 포함해 `main`에 커밋하고 푸시합니다.
+2. GitHub의 **Settings → Pages**에서 **Deploy from a branch**, 브랜치 **main**, 폴더 **/docs**를 선택하고 저장합니다.
 
 정적 서버는 `.wasm` 파일을 `application/wasm` 형식으로 제공해야 합니다. WASM GC를 지원하지 않는 브라우저에는 같은 빌드의 `main.dart.js`가 사용됩니다.
 

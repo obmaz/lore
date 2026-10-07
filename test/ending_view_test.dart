@@ -86,6 +86,40 @@ void main() {
     expect(state.phase, EndPhase.staff);
   });
 
+  testWidgets('closing palette waits after its final writes before Halt', (
+    tester,
+  ) async {
+    var finished = 0;
+    final state = await open(tester, () => finished++);
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    while (state.phase != EndPhase.staff) {
+      await tester.pump(const Duration(milliseconds: 1));
+    }
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    expect(state.phase, EndPhase.outroFadeUp);
+    await tester.pump(const Duration(milliseconds: 620));
+    expect(state.ramp15, 63);
+    expect(state.phase, EndPhase.outroFadeUp);
+    await tester.pump(const Duration(milliseconds: 10));
+    expect(state.phase, EndPhase.outroHold);
+    await tester.pump(const Duration(milliseconds: 499));
+    expect(state.phase, EndPhase.outroHold);
+    await tester.pump(const Duration(milliseconds: 1));
+    expect(state.phase, EndPhase.outroDim);
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(state.ramp7, 42);
+    expect(state.phase, EndPhase.outroDim);
+    await tester.sendKeyEvent(LogicalKeyboardKey.keyA);
+    expect(finished, 0);
+    await tester.pump(const Duration(milliseconds: 14));
+    expect(state.phase, EndPhase.outroDim);
+    await tester.pump(const Duration(milliseconds: 1));
+    expect(state.phase, EndPhase.halted);
+    await tester.sendKeyEvent(LogicalKeyboardKey.keyA);
+    expect(finished, 1);
+    await tester.pumpWidget(const SizedBox.shrink());
+  });
+
   testWidgets(
     'the message page stays visible during thunder; staff only after Esc',
     (tester) async {
