@@ -94,6 +94,7 @@ class EndingViewState extends State<EndingView>
   final Set<int> erasedRows = {};
   ({int eraseRow, int y, int sprite})? walkerFrame;
   Duration _walkerDue = Duration.zero;
+  bool _staffExitPending = false;
 
   // 마지막 텍스트 화면: 색 7/15의 현재 밝기(6비트).
   int ramp15 = 0;
@@ -152,11 +153,19 @@ class EndingViewState extends State<EndingView>
         _thunder(now, dt);
       case EndPhase.staff:
         if (walkerFrame == null || now >= _walkerDue) {
+          // The source checks c, then still delays 200 ms before `until ok`.
+          if (_staffExitPending) {
+            _escape(force: true);
+            break;
+          }
           final frame = walker.frame();
           erasedRows
             ..add(frame.eraseRow)
             ..add(frame.eraseRow + 1);
           walkerFrame = frame;
+          if (_keyBuffer.isNotEmpty) {
+            _staffExitPending = _keyBuffer.removeAt(0);
+          }
           _walkerDue =
               now + const Duration(milliseconds: LoreEndWalker.delayMs);
         }
@@ -260,6 +269,10 @@ class EndingViewState extends State<EndingView>
         _enter(EndPhase.staff, now);
         walkerFrame = null;
       case EndPhase.staff:
+        if (!force) {
+          _keyBuffer.add(true);
+          return;
+        }
         // `if AdLibOn then PlayOff; UnSound;`
         AudioManager.instance.stopBgm();
         ramp15 = ramp7 = 0;
@@ -287,7 +300,8 @@ class EndingViewState extends State<EndingView>
           _escape();
         } else if (phase == EndPhase.fadeIn ||
             phase == EndPhase.fadeOut ||
-            phase == EndPhase.message) {
+            phase == EndPhase.message ||
+            phase == EndPhase.staff) {
           _keyBuffer.add(false);
         }
         return KeyEventResult.handled;

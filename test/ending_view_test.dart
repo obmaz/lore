@@ -74,6 +74,42 @@ void main() {
     );
   }
 
+  final staffNative = jsonDecode(
+    File('test/fixtures/dos_ending_staff.json').readAsStringSync(),
+  );
+  for (var index = 0; index < staffNative['cases'].length; index++) {
+    final row = staffNative['cases'][index];
+    if (row['closed'] != true) continue;
+    testWidgets(
+      'compiled staff loop case $index, every sprite and final delay',
+      (tester) async {
+        final state = await open(tester, () {}, initialKeyWasEscape: true);
+        while (state.phase != EndPhase.staff) {
+          await tester.pump(const Duration(milliseconds: 1));
+        }
+        for (final key in row['keys']) {
+          await tester.sendKeyEvent(switch (key) {
+            27 => LogicalKeyboardKey.escape,
+            13 => LogicalKeyboardKey.enter,
+            _ => LogicalKeyboardKey.keyA,
+          });
+        }
+        for (var frame = 0; frame < row['frames'].length; frame++) {
+          await tester.pump(Duration(milliseconds: frame == 0 ? 1 : 200));
+          expect(state.phase, EndPhase.staff);
+          final nativeFrame = row['frames'][frame];
+          expect(state.walkerFrame!.y, nativeFrame['y']);
+          expect(state.walkerFrame!.sprite, nativeFrame['sprite']);
+        }
+        await tester.pump(const Duration(milliseconds: 199));
+        expect(state.phase, EndPhase.staff);
+        await tester.pump(const Duration(milliseconds: 1));
+        expect(state.phase, EndPhase.outroFadeUp);
+        await tester.pumpWidget(const SizedBox.shrink());
+      },
+    );
+  }
+
   testWidgets(
     'farewell Esc survives the fades, one thunder iteration, and staff resets c',
     (tester) async {
@@ -156,6 +192,34 @@ void main() {
     },
   );
 
+  testWidgets(
+    'staff reads one FIFO key per walking frame and delays after Esc',
+    (tester) async {
+      final state = await open(tester, () {}, initialKeyWasEscape: true);
+      while (state.phase != EndPhase.staff) {
+        await tester.pump(const Duration(milliseconds: 1));
+      }
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyA);
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await tester.pump(const Duration(milliseconds: 1));
+      expect(state.walkerFrame!.y, 2);
+      expect(state.phase, EndPhase.staff);
+      await tester.pump(const Duration(milliseconds: 199));
+      expect(state.walkerFrame!.y, 2);
+      expect(state.phase, EndPhase.staff);
+      await tester.pump(const Duration(milliseconds: 1));
+      expect(state.walkerFrame!.y, 4);
+      expect(state.phase, EndPhase.staff);
+      await tester.pump(const Duration(milliseconds: 199));
+      expect(state.phase, EndPhase.staff);
+      await tester.pump(const Duration(milliseconds: 1));
+      expect(state.phase, EndPhase.outroFadeUp);
+      // The Esc iteration is drawn and its mandatory delay completes before text mode.
+      expect(state.walkerFrame!.y, 4);
+      await tester.pumpWidget(const SizedBox.shrink());
+    },
+  );
+
   testWidgets('fade, thunder, staff, closing screen and Halt', (tester) async {
     var finished = 0;
     final state = await open(tester, () => finished++);
@@ -179,7 +243,7 @@ void main() {
     expect(state.walkerFrame!.sprite, 20);
 
     await tester.sendKeyEvent(LogicalKeyboardKey.escape);
-    await tester.pump(const Duration(milliseconds: 16));
+    await run(tester, 420);
     expect(state.phase, EndPhase.outroFadeUp);
     await run(tester, 2500);
     expect(state.phase, EndPhase.halted);
@@ -218,6 +282,9 @@ void main() {
       await tester.pump(const Duration(milliseconds: 1));
     }
     await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    while (state.phase == EndPhase.staff) {
+      await tester.pump(const Duration(milliseconds: 1));
+    }
     expect(state.phase, EndPhase.outroFadeUp);
     await tester.pump(const Duration(milliseconds: 620));
     expect(state.ramp15, 63);
