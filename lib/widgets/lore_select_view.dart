@@ -20,6 +20,7 @@ Future<int> showLoreSelectDialog(
   int? maxsum,
   List<(int, String)> lines = const [],
 }) async {
+  var selectedKey = LogicalKeyboardKey.enter;
   final k = await showDialog<int>(
     context: context,
     barrierDismissible: false,
@@ -59,6 +60,7 @@ Future<int> showLoreSelectDialog(
                   title: title,
                   items: items,
                   maxsum: maxsum,
+                  onKeySelected: (key) => selectedKey = key,
                   onSelected: (k) => Navigator.of(ctx).pop(k),
                 ),
               ),
@@ -69,7 +71,10 @@ Future<int> showLoreSelectDialog(
     ),
   );
   final result = k ?? 0;
-  LoreMainInput.record(escape: result == 0);
+  LoreMainInput.record(
+    escape: result == 0,
+    space: result != 0 && selectedKey == LogicalKeyboardKey.space,
+  );
   return result;
 }
 
@@ -88,9 +93,12 @@ Future<void> showLoreMessageDialog(
     barrierColor: transparentBarrier ? Colors.transparent : null,
     builder: (ctx) => LoreMessageDialog(
       lines: lines,
-      onAcknowledged: (escape) {
+      onKeyAcknowledged: (key) {
         acknowledged = true;
-        input?.read(escape: escape);
+        input?.read(
+          escape: key == LogicalKeyboardKey.escape,
+          space: key == LogicalKeyboardKey.space,
+        );
       },
     ),
   );
@@ -105,12 +113,14 @@ class LoreMessageDialog extends StatefulWidget {
     this.leading = const [],
     this.acknowledgementKey,
     this.onAcknowledged,
+    this.onKeyAcknowledged,
   });
 
   final List<(int, String)> lines;
   final List<Widget> leading;
   final Key? acknowledgementKey;
   final void Function(bool escape)? onAcknowledged;
+  final void Function(LogicalKeyboardKey key)? onKeyAcknowledged;
 
   @override
   State<LoreMessageDialog> createState() => LoreMessageDialogState();
@@ -134,10 +144,11 @@ class LoreMessageDialogState extends State<LoreMessageDialog> {
     super.dispose();
   }
 
-  void _close({bool escape = false}) {
+  void _close({LogicalKeyboardKey key = LogicalKeyboardKey.enter}) {
     if (_closed) return;
     _closed = true;
-    widget.onAcknowledged?.call(escape);
+    widget.onAcknowledged?.call(key == LogicalKeyboardKey.escape);
+    widget.onKeyAcknowledged?.call(key);
     Navigator.of(context).pop();
   }
 
@@ -147,7 +158,7 @@ class LoreMessageDialogState extends State<LoreMessageDialog> {
     autofocus: true,
     onKeyEvent: (_, event) {
       if (event is! KeyDownEvent) return KeyEventResult.ignored;
-      _close(escape: event.logicalKey == LogicalKeyboardKey.escape);
+      _close(key: event.logicalKey);
       return KeyEventResult.handled;
     },
     child: Dialog(
@@ -202,6 +213,7 @@ class LoreSelectView extends StatefulWidget {
     required this.title,
     required this.items,
     required this.onSelected,
+    this.onKeySelected,
     int? maxsum,
   }) : maxsum = maxsum ?? items.length;
 
@@ -209,6 +221,7 @@ class LoreSelectView extends StatefulWidget {
   final List<String> items;
   final int maxsum;
   final ValueChanged<int> onSelected;
+  final ValueChanged<LogicalKeyboardKey>? onKeySelected;
 
   @override
   State<LoreSelectView> createState() => _LoreSelectViewState();
@@ -236,9 +249,10 @@ class _LoreSelectViewState extends State<LoreSelectView> {
     super.dispose();
   }
 
-  void _choose(int k) {
+  void _choose(int k, {LogicalKeyboardKey key = LogicalKeyboardKey.enter}) {
     if (_done) return;
     _done = true;
+    widget.onKeySelected?.call(key);
     widget.onSelected(k);
   }
 
@@ -262,9 +276,9 @@ class _LoreSelectViewState extends State<LoreSelectView> {
     } else if (key == LogicalKeyboardKey.enter ||
         key == LogicalKeyboardKey.numpadEnter ||
         key == LogicalKeyboardKey.space) {
-      _choose(_k);
+      _choose(_k, key: key);
     } else if (key == LogicalKeyboardKey.escape) {
-      _choose(0);
+      _choose(0, key: key);
     } else {
       return KeyEventResult.ignored;
     }
@@ -455,17 +469,17 @@ class _SpacePowerDialogState extends State<_SpacePowerDialog> {
 /// over the map while the view scrolls; every key (Esc = true in [press]'s
 /// `escape`) or tap releases the wait of [LoreKeyWait.next].
 class LoreKeyWait {
-  Completer<bool>? _wait;
+  Completer<({bool escape, bool space})>? _wait;
   bool _closed = false;
 
   /// Completes with true when the key was Esc.
   Future<bool> next() async {
     if (_closed) return Future.value(true);
-    final wait = Completer<bool>();
+    final wait = Completer<({bool escape, bool space})>();
     _wait = wait;
-    final escape = await wait.future;
-    LoreMainInput.record(escape: escape);
-    return escape;
+    final key = await wait.future;
+    LoreMainInput.record(escape: key.escape, space: key.space);
+    return key.escape;
   }
 
   /// Route removal must release the procedure even without a final key.
@@ -474,10 +488,12 @@ class LoreKeyWait {
     press(escape: true);
   }
 
-  void press({bool escape = false}) {
+  void press({bool escape = false, bool space = false}) {
     final wait = _wait;
     _wait = null;
-    if (wait != null && !wait.isCompleted) wait.complete(escape);
+    if (wait != null && !wait.isCompleted) {
+      wait.complete((escape: escape, space: space));
+    }
   }
 }
 
@@ -534,7 +550,10 @@ class _KeyWaitOverlayState extends State<_KeyWaitOverlay> {
     autofocus: true,
     onKeyEvent: (_, event) {
       if (event is! KeyDownEvent) return KeyEventResult.ignored;
-      widget.wait.press(escape: event.logicalKey == LogicalKeyboardKey.escape);
+      widget.wait.press(
+        escape: event.logicalKey == LogicalKeyboardKey.escape,
+        space: event.logicalKey == LogicalKeyboardKey.space,
+      );
       return KeyEventResult.handled;
     },
     child: GestureDetector(

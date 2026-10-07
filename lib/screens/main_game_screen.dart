@@ -1497,7 +1497,20 @@ class _MainGameScreenState extends State<MainGameScreen> {
     Future<void> Function() procedure,
   ) async {
     final input = LoreMainInput();
-    await input.run(procedure);
+    await input.run(() async {
+      await procedure();
+      // LOREMAIN.Main: c is shared with PressAnyKey. Its Space branch is
+      // checked after the hotkey returns, once, before tile dispatch.
+      if (mounted &&
+          _halt == null &&
+          _currentMode == GameScreenMode.field &&
+          action != FieldAction.openMenu &&
+          LoreMainProcedures.mainRedispatchesCurrentTile(action) &&
+          input.lastKeyWasSpace) {
+        LoreDialogueManager.instance.setBattleResult(0);
+        await _runSelectMode();
+      }
+    });
     _redispatchCurrentTileAfter(
       action,
       lastKeyWasEscape: input.lastKeyWasEscape,

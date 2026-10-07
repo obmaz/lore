@@ -180,6 +180,103 @@ void main() {
     check(game, random, afterKey);
   }
 
+  testWidgets('native Save/Rest Space acknowledgements enter SelectMode once', (
+    tester,
+  ) async {
+    final f = jsonDecode(
+      File('test/fixtures/dos_pyramid_success.json').readAsStringSync(),
+    );
+    dynamic phase(int n) => (f['inputs'] as List).singleWhere(
+      (s) => s['capture'] == 'lore_${n.toString().padLeft(3, '0')}.png',
+    )['after'];
+    final random = LoreRandom(phase(388)['seed']);
+    final game = await open(tester, f['successSave'], random);
+    check(game, random, phase(388));
+    await tester.sendKeyEvent(LogicalKeyboardKey.keyG);
+    await tick(tester);
+    await tester.tap(find.text(LoreMenuText.optionSave));
+    await tick(tester);
+    await tester.tap(find.text(SaveManager.slotNames[0]));
+    await tick(tester);
+    check(game, random, phase(388));
+    await tester.sendKeyEvent(LogicalKeyboardKey.space);
+    await tick(tester);
+    check(game, random, phase(389));
+    expect(find.text(LoreMenuText.selectModeRest), findsOneWidget);
+    await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+    await tick(tester);
+    await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
+    await tick(tester);
+    check(game, random, phase(392));
+    await tester.sendKeyEvent(LogicalKeyboardKey.space);
+    await tick(tester);
+    check(game, random, phase(393));
+    expect(find.text(LoreMenuText.selectModeRest), findsOneWidget);
+    // Main checks its Space branch once: the nested Rest must not reopen it.
+    await tester.tap(find.text(LoreMenuText.selectModeRest));
+    await tick(tester);
+    check(game, random, phase(396));
+    await tester.sendKeyEvent(LogicalKeyboardKey.space);
+    await tick(tester);
+    check(game, random, phase(397));
+    expect(find.text(LoreMenuText.selectModeRest), findsNothing);
+    for (final n in [399, 401]) {
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
+      await tick(tester);
+      check(game, random, phase(n));
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(n + 1));
+      expect(find.text(LoreMenuText.selectModeRest), findsNothing);
+    }
+    expect(tester.takeException(), isNull);
+  });
+  testWidgets(
+    'native LASTDITCH reward waits for acknowledgement and cannot repeat',
+    (tester) async {
+      final f = jsonDecode(
+        File('test/fixtures/dos_pyramid_success.json').readAsStringSync(),
+      );
+      dynamic phase(int n) => (f['inputs'] as List).singleWhere(
+        (s) => s['capture'] == 'lore_${n.toString().padLeft(3, '0')}.png',
+      )['after'];
+      final approach = (f['inputs'] as List).singleWhere(
+        (s) => s['capture'] == 'lore_413.png',
+      )['before'];
+      // This is a captured RAM checkpoint, using the byte-identical actual
+      // later map file. It is not asserted to be a pre-reward native disk save.
+      final checkpoint = {
+        'partyRecord': {
+          ...Map<String, dynamic>.from(approach['partyRecord']),
+          'x': 38,
+          'y': 18,
+        },
+        'records': approach['records'],
+        'files': f['lordSave']['files'],
+      };
+      final random = LoreRandom(approach['seed']);
+      final game = await open(tester, checkpoint, random);
+      check(game, random, approach);
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(413));
+      expect(LoreDialogueManager.instance.partyEtc.read(13), 2);
+      await tester.sendKeyEvent(LogicalKeyboardKey.space);
+      await tick(tester);
+      check(game, random, phase(414));
+      expect(LoreDialogueManager.instance.partyEtc.read(13), 3);
+      // Movement dispatch occurs after Main's Space branch, so the NPC's
+      // PressAnyKey Space must not open SelectMode on this same field command.
+      expect(find.text(LoreMenuText.selectModeRest), findsNothing);
+      await walk(tester, game, ['Up']);
+      check(game, random, phase(417));
+      expect(find.textContaining('VALIANT PEOPLES'), findsWidgets);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tick(tester);
+      check(game, random, phase(418));
+      await save(tester, game, random, f['lordSave'], phase(421), phase(422));
+      expect(tester.takeException(), isNull);
+    },
+  );
   testWidgets(
     'actual DOS centre disk reload, revisit and resave preserve all records and map bytes',
     (tester) async {

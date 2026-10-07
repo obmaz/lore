@@ -1971,3 +1971,53 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      배포 명령을 이 도구로 바꿨다. 최종 검증: 전체 Flutter1392개 통과
      (도구2개 제외), analyze 오류 없음, Python66개 및 원본 근거·계약·
      메모리·지도·대사 검사 통과. 릴리스 WASM/JS 빌드와 무결성 검사 성공.
+124. 실제 PYRAMID 성공·LASTDITCH 보상 복귀 및 Main의 Space 후속 처리
+     (2026-10-07, `dos_pyramid_success.json`, `pyramid_battle_dos_test.dart`,
+     `menace_return_dos_ui_test.dart`, `tool/check_dos_pyramid_success.py`).
+     122의 실제 spearSave 파일을 수정 없이 새 원본 DOS /g 프로세스로
+     불러왔다. 정상 GameOver의 슬롯1 재시도만 사용하며 EXE·RAM·지도·
+     저장·난수는 패치하지 않았다. 새 프로세스의 관측 난수이며123의
+     사라진 DOS 프로세스와 난수 연속성을 주장하지 않는다. 성공 재시도의
+     원시 party/player/enemy/command bytes, 실제 키 입력, live 좌표와
+     지도 해시, 앞뒤 모든 상태 및 디스크 파일을 보존했다.
+     Polaris의 단일 마법2와 Skeleton의 물리 공격으로 Major Mummy의
+     HP70→19→0, unconscious(true)/dead(false)를 관측했다. 적 선공과
+     후속 적 단계, 실패한 도주, Skeleton HP43에서의 성공 도주를 원본
+     난수·6명 전체 필드·모든 적 필드와 대조했다. 도주 ReadKey 뒤에도
+     퀘스트는1이며, 이어지는 퀘스트 PressAnyKey 확인 뒤2가 된다.
+     [원본 성공 대기](pyramid_mummy_success.png)를 보존했다.
+     실제 저장을 Space로 닫으면 공유 c가32가 되어 Main이 etc[6]을0으로
+     만들고 SelectMode를 먼저 여는 차이를 발견했다. 이식판은 Esc 여부만
+     기록하여 이 분기를 빠뜨렸다. Message/Select/KeyWait에서 실제 Space,
+     Esc와 뒤이은 키 입력을 보존하고, R/G 등 단축키 프로시저 반환 뒤
+     Space 분기를 한 번만 실행하도록 수정했다. 이미 Space로 시작한
+     SelectMode 안에서 Rest를 Space로 닫아도 선택 메뉴를 다시 열지 않는다.
+     터치는 Enter로 대응한다. 이동 후 NPC 대화의 Space 확인은 Main의
+     Space 검사보다 나중이므로 같은 입력에서 메뉴를 열지 않는다.
+     [원본 저장 후 메뉴](pyramid_save_space_menu.png), 전체100 etc·6명
+     필드·난수와 실제 네 번의 회복, 후속 메뉴의 한 번 실행을 회귀로 대조했다.
+     원본 피라미드 출구 확인 뒤 성 입구에서 PYRAMID 재진입 질문이 다시
+     뜨므로 Esc로 거부했다. 원본 비밀 통로와 실제 지도 경로를 걸어 성주에게
+     복귀했다. LASTDITCH 퀘스트2에서는 마지막 확인 전 EXP를 지급하지 않고,
+     확인 뒤 이름 있는6명에게 각각10000을 더하고 단계3으로 넘어간다.
+     재방문은 GROUND GATE/VALIANT PEOPLES 안내만 출력하고 추가 보상은 없다.
+     [보상 확인 대기](lastditch_reward_wait.png),
+     [재방문 안내](lastditch_ground_gate_hint.png),
+     [실제 보상 후 저장](lastditch_reward_disk_save.png)을 보존했다.
+     모바일 회귀의 보상 전 시작점은 실제 RAM 관측과, 지도 해시가 같은
+     실제 보상 후 SAVE1.MAP을 사용한다. 보상 전 디스크 저장이라고 부르지
+     않는다. 보상 후 실제 슬롯1 파일과 Save의 최종 확인 뒤 Random(40)
+     한 번까지 비교한다. Python checker는 보존 근거의 무결성 검사이며
+     DOS 자동 재실행이나 전체 캠페인 완료 증명이 아니다.
+     DOSBox/SDL 할당 때문에 원본 RAM이 익명 매핑의 첫1MiB 바깥에 놓이는
+     경우를 확인했다. 읽기 전용 캡처 locator는 최대32MiB까지 탐색하되
+     실제 PLAYER 패턴과 원본 Random 코드의 유일 일치를 계속 요구한다.
+     이동된 패턴·중복 패턴 거부·원본 코드 없는 패턴 거부 회귀를 추가했다.
+     후속 GAIA/최종전/엔딩의 실제 연속 실행과 새 게임→엔딩 전체 대조는
+     아직 남아 있다. 계약1446개의 partial 및 미검증1848개를 유지한다.
+     검증: 전체 Flutter1398개 통과(도구2개 제외), analyze 오류 없음,
+     Python69개와 계약/메모리/지도/대사·원본 산술/난수/훈련 및 실제
+     DOS 근거 검사 통과. 릴리스 WASM/JS 빌드와 bootstrap 해시 검증 성공.
+     실제 Chromium390×844 새 컨텍스트에서도 새 게임·성주 요청·장비·
+     Skeleton 합류와 저장/불러오기 bytes, 기존 Esc 경로 및 Save/Rest의
+     Space 후속 메뉴·중첩 Rest가 메뉴를 다시 열지 않는10개 검사를 통과했다.

@@ -13449,11 +13449,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:13",
@@ -13465,11 +13465,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:for:1",
@@ -13481,11 +13481,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:14",
@@ -13497,11 +13497,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:15",
@@ -13513,11 +13513,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/menace_entry_dos_ui_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main final guard includes shared c<>#27. Scoped LoreMainInput tracks the last source Select/PressAnyKey/readkey, including keyboard and touch Esc, and a later read replaces an earlier Esc. Actual original MENACE corridor Save-slot Esc, GameOption Esc and Rest Esc consume no RNG, while Rest Enter redispatches the floor once. Full mobile victory-save -> recovery -> entry -> gold -> 131 centre moves with real encounter/manual attacks/member flee matches native records/etc/RNG and centre key-wait/revisit. Centre mobile save/reload is tested; no original centre disk save, Lord Ahn return or ending recorded. Other native menu/position paths remain unverified."
+      "reviewed_scope": "Main final guard includes shared c<>#27. Scoped LoreMainInput tracks the last source Select/PressAnyKey/readkey, including keyboard and touch Esc, and a later read replaces an earlier Esc. Actual original MENACE corridor Save-slot Esc, GameOption Esc and Rest Esc consume no RNG, while Rest Enter redispatches the floor once. Full mobile victory-save -> recovery -> entry -> gold -> 131 centre moves with real encounter/manual attacks/member flee matches native records/etc/RNG and centre key-wait/revisit. Centre mobile save/reload is tested; no original centre disk save, Lord Ahn return or ending recorded. Other native menu/position paths remain unverified. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:16",
@@ -13529,11 +13529,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:3",
@@ -13561,11 +13561,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:4",
@@ -13593,11 +13593,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:5",
@@ -13625,11 +13625,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/game_over_test.dart"
+        "test/menace_return_dos_ui_test.dart"
       ],
       "verification_status": "partial",
       "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending."
+      "reviewed_scope": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:6",
@@ -18090,7 +18090,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
+      "reviewed_scope": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:28",
@@ -18576,7 +18576,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:58",
@@ -18592,7 +18592,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:exit:5",
@@ -18608,7 +18608,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:59",
@@ -18624,7 +18624,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:exit:6",
@@ -18640,7 +18640,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:60",
@@ -18656,7 +18656,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained."
+      "reviewed_scope": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:61",
@@ -29013,7 +29013,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_mode.dart",
-      "reviewed_scope": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending."
+      "reviewed_scope": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:for:3",
@@ -29040,7 +29040,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_mode.dart",
-      "reviewed_scope": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending."
+      "reviewed_scope": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:50",
@@ -29232,7 +29232,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
+      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:62",
@@ -29248,7 +29248,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
+      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:63",
@@ -29264,7 +29264,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
+      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:exit:1",
@@ -29280,7 +29280,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
+      "reviewed_scope": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:64",
@@ -29376,7 +29376,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_talk_mode.dart",
-      "reviewed_scope": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained."
+      "reviewed_scope": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:for:4",
@@ -31298,7 +31298,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
+      "note": "Map 7 hidden wall uses source column 31 and current row without JSON; portal/UI ordering remains a separate contract. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending.",
       "verification": "partial"
     },
     {
@@ -33358,7 +33358,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending.",
       "verification": "partial"
     },
     {
@@ -33368,7 +33368,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending.",
       "verification": "partial"
     },
     {
@@ -33378,7 +33378,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending.",
       "verification": "partial"
     },
     {
@@ -33388,7 +33388,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending.",
       "verification": "partial"
     },
     {
@@ -33398,7 +33398,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending.",
       "verification": "partial"
     },
     {
@@ -33408,7 +33408,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or a dead third enemy increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss/quest reward and ending remain pending; partial retained.",
+      "note": "Map11 arm owned directly: seven findgold(5000) cells on raw etc[33] bits 1..7, y=44 Oedipus spear while bit8 clear (bit8 only after a member equips it; refusal and monk rejection keep it available; knight bonus via equipWeaponRaw), y=46 wantexit with no refusal branch (party stays on y=46) and the post-load Polaris write map[37,41]:=44 on map 7, y=24 mummy room while raw etc[13]=1 with enemy overrides, success on victory or enemy[3].hp<=0 increments etc[13]. Den specialevent tiles 0/52. Full-map DOS comparison remains pending. Actual unchanged EXE continuation now crosses LASTDITCH secret wall, enters PYRAMID with one den redispatch RNG draw, and preserves real arrival and spear disk saves. Native spear waits, cancellation, class5 rejection and class1 power18 acquisition match all six records/etc/RNG/map on mobile. Genuine Giant encounter keys/RAM are retained as provenance only, not a new full combat replay. Boss success/return now have the closed native comparison below; ending/full campaign remain pending; partial retained. Milestone124 adds native magic/physical Mummy knockout, failed/successful escape, separate exit ReadKey/quest PressAnyKey and stage1->2 timing. Full six player/enemy records and RNG are compared in pyramid_battle_dos_test.dart; raw bytes/checkpoint return retained in dos_pyramid_success.json. Full campaign/ending remain pending.",
       "verification": "partial"
     },
     {
@@ -41717,8 +41717,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -41727,8 +41727,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -41737,8 +41737,8 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -41747,8 +41747,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -41757,8 +41757,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Main final guard includes shared c<>#27. Scoped LoreMainInput tracks the last source Select/PressAnyKey/readkey, including keyboard and touch Esc, and a later read replaces an earlier Esc. Actual original MENACE corridor Save-slot Esc, GameOption Esc and Rest Esc consume no RNG, while Rest Enter redispatches the floor once. Full mobile victory-save -> recovery -> entry -> gold -> 131 centre moves with real encounter/manual attacks/member flee matches native records/etc/RNG and centre key-wait/revisit. Centre mobile save/reload is tested; no original centre disk save, Lord Ahn return or ending recorded. Other native menu/position paths remain unverified.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main final guard includes shared c<>#27. Scoped LoreMainInput tracks the last source Select/PressAnyKey/readkey, including keyboard and touch Esc, and a later read replaces an earlier Esc. Actual original MENACE corridor Save-slot Esc, GameOption Esc and Rest Esc consume no RNG, while Rest Enter redispatches the floor once. Full mobile victory-save -> recovery -> entry -> gold -> 131 centre moves with real encounter/manual attacks/member flee matches native records/etc/RNG and centre key-wait/revisit. Centre mobile save/reload is tested; no original centre disk save, Lord Ahn return or ending recorded. Other native menu/position paths remain unverified. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -41767,8 +41767,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -41777,8 +41777,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -41787,8 +41787,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -41797,8 +41797,8 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/game_over_test.dart",
-      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending.",
+      "test": "test/menace_return_dos_ui_test.dart",
+      "note": "Main's four consecutive `if position = ...` blocks: a map loaded inside one block (entrance, GameOver reload, special event load) makes later blocks whose position now matches dispatch the arrival cell; same or earlier positions do not. LoreGame.dispatchStartMapId plus _continuePositionBlocks replay the cell with tryMove(0,0) after the move handling finishes. DOS comparison of arrival cells pending. Milestone124: native Save Space and Rest Space overwrite shared c, clear etc[6] and enter SelectMode once before final tile dispatch. Message/KeyWait/Select preserve actual Space, Esc and later reads; touch remains Enter. Nested SelectMode procedures cannot reopen the same Space branch. dos_pyramid_success.json captures actual waits; regression checks full six records,100 etc and RNG. Remaining Main paths/full campaign are partial.",
       "verification": "partial"
     },
     {
@@ -43198,7 +43198,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
+      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial.",
       "verification": "partial"
     },
     {
@@ -43208,7 +43208,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
+      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial.",
       "verification": "partial"
     },
     {
@@ -43218,7 +43218,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
+      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial.",
       "verification": "partial"
     },
     {
@@ -43228,7 +43228,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_procedures.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
+      "note": "Polaris raw etc[13] guard; decline/Escape and ReturnJoinMember cancellation preserve party/map; accept replaces selected source slot before tile 44 and Silent_Scroll. Widget and dispatcher checks; independent DOS route remains pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial.",
       "verification": "partial"
     },
     {
@@ -44128,7 +44128,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_mode.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending.",
+      "note": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial.",
       "verification": "partial"
     },
     {
@@ -44138,7 +44138,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_mode.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending.",
+      "note": "Actual untouched DOS MENACE return checkpoint: Castle slot1 reload -> 68 source floor inputs -> Lord Ahn stage4 (all six named members EXP+1000 and etc10=5 before key) -> stage5 LASTDITCH hint (etc10=6 after key) -> stage6 Return/Esc repeated advice -> actual slot1 Save. Mobile390x844 compares full six records, etc100, RNG at each floor/key wait, current NPC origin coordinate and final map/save fields. General stage/overflow boundaries remain covered by lore_talk_mode_test; full new-game-to-ending and other presentation paths remain pending. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial.",
       "verification": "partial"
     },
     {
@@ -44308,7 +44308,7 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_talk_mode.dart",
       "test": "test/menace_return_dos_ui_test.dart",
-      "note": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and PYRAMID boss/return/endings remain outside this closed comparison; partial retained.",
+      "note": "Direct source-shaped branch and raw-byte/wait/reward/text sequencing regression; full DOS playthrough and presentation parity remain pending. Actual unchanged EXE continuation from Lord Ahn saved checkpoint now reaches LASTDITCH, accepts stage0 after native Scroll waits, repeats stage1 without reward, cancels ReturnJoinMember then replaces Merlin with Polaris. Native six records, no RNG draw on join, tile37,41=44 and actual disk-save bytes are compared on mobile390x844 in dos_lastditch_arrival.json/check_dos_lastditch_arrival.py. Native pagination geometry and full campaign/ending remain outside the closed comparisons; partial retained. Milestone124: original PYRAMID success, recovery and normal LASTDITCH return captured in dos_pyramid_success.json. Lord stage2 leaves EXP unchanged until final key, then adds10000 to all six and setsstage3; revisit has no repeat reward. Actual later map file matches pre-reward RAM map hash. Native disk resave and final one Random(40) are compared in menace_return_dos_ui_test.dart/check_dos_pyramid_success.py. Other paths and campaign remain partial.",
       "verification": "partial"
     },
     {
@@ -47815,7 +47815,7 @@
     {
       "path": "test/lore_select_view_test.dart",
       "kind": "test",
-      "sha256": "17d63e3a136e40414abdd8721140e1d5f3dec9425dadc58e6e252719503cb4a6",
+      "sha256": "d906f5bae34d438fa572e588b3ceccf5397bee667234c70d0041ee0316f1d095",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -48260,7 +48260,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "9667f69bce215ce39bcad8f877419047a509ce49495e6426108023e3d268a6d1",
+      "sha256": "d647aff4d9ed625f9d0447a3a0c04264eec32389dee1de0745a7c57dc60bedd6",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -48334,7 +48334,7 @@
     {
       "path": "test/pyramid_battle_dos_test.dart",
       "kind": "test",
-      "sha256": "197d7607a1aeae4617691f8767ad11fba7c08eebc7e66b641369c7834a87d2cb",
+      "sha256": "1a8b4c414983936edc5a85b2127375513ec17a1de6a0cfa8e14375718a138165",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -48999,6 +48999,16 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_pyramid_success.json",
+      "kind": "fixture",
+      "sha256": "cec035ed55ac7201397d34a7a1ab3cb8d940480f255423e0006bda819f2a363a",
+      "test_users": [
+        "test/menace_return_dos_ui_test.dart",
+        "test/pyramid_battle_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_random_order.json",
       "kind": "fixture",
       "sha256": "297dd799ebf0e1ca1f8dad71811baeafff587e5b877db1402aa33560ba0c6d48",
@@ -49442,7 +49452,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "39bf9ac555a9885e1c5dcd9ab1cc171cb8981dc5d3abaa7524e6f5eeae879f29"
+      "sha256": "d7a484414de26d0d3860c7b558f12808f45931c2de980b1d324c4faa6cc7c0c9"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -49470,7 +49480,7 @@
     },
     {
       "path": "lib/widgets/lore_select_view.dart",
-      "sha256": "b685d32f8c9856f5dcd20461461100d05c784fbe5dc4ab361d0cbe70f0ba9ec4"
+      "sha256": "06daf85aab9ea99b96640780a3515eb1917b7d11d8c21313856eab2ca1437fe6"
     },
     {
       "path": "lib/widgets/lore_source_text.dart",
@@ -49526,7 +49536,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "1f734f644d685e43f2ab5357444faecd6097de119bef96905c04eb84fb1792f2",
+      "sha256": "ffd18490e540b47be6dcd104b1a953048b50b24ad9bd3ca1878512685c536e09",
       "top_level_counts": {
         "contracts": 1446
       }

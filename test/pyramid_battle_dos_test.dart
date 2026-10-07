@@ -31,6 +31,50 @@ void main() {
     expect(b.enemy.map(_enemyRecord).toList(), s['enemyRecords']);
   }
 
+  test('DOS PYRAMID magic, Mummy knockout, failed and successful escape', () {
+    final success = jsonDecode(
+      File('test/fixtures/dos_pyramid_success.json').readAsStringSync(),
+    );
+    dynamic phase(int n) => (success['inputs'] as List).singleWhere(
+      (s) => s['capture'] == 'lore_${n.toString().padLeft(3, '0')}.png',
+    )['after'];
+    final random = LoreRandom(phase(330)['seed']);
+    final b = LoreBattle(
+      party: party(phase(330)),
+      enemy: enemies(),
+      random: random,
+      print: (_, _) {},
+    );
+    void execute(int n) {
+      final commands = phase(n)['commands'];
+      for (var i = 1; i <= 6; i++) {
+        b.battle[i] = [0, ...List<int>.from(commands[i - 1])];
+      }
+      for (var i = 1; i <= 6; i++) {
+        if (b.exist(i)) b.executePerson(i);
+      }
+      check(b, random, phase(n));
+    }
+
+    b.enemyPhase();
+    check(b, random, phase(339));
+    execute(351);
+    b.enemyPhase();
+    check(b, random, phase(357));
+    execute(367);
+    expect(b.enemy[2].hp, 0);
+    expect(b.enemy[2].isUnconscious, true);
+    expect(b.enemy[2].isDead, false);
+    b.enemyPhase();
+    check(b, random, phase(375));
+    execute(377);
+    b.enemyPhase();
+    check(b, random, phase(381));
+    final commands = phase(383)['commands'];
+    b.battle[6] = [0, ...List<int>.from(commands[5])];
+    expect(b.executePerson(6), true);
+    check(b, random, phase(383));
+  });
   test('DOS PYRAMID enemy-first opening preserves full records and RNG', () {
     final start = observed(55);
     final random = LoreRandom(start['seed']);

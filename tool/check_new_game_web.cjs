@@ -132,6 +132,21 @@ await page.keyboard.press('Enter');await page.reload();await page.waitForTimeout
 await page.locator('flt-semantics-placeholder').evaluateAll(es=>es.forEach(e=>e.click()));
 await click('2] 이전의 게임을 재개 시킴');await page.getByText('이전의 게임을 재개',{exact:true}).first().click();await page.waitForTimeout(1200);
 const again=await save();compare(castle.departure,again,'Departure reload/save');
+// LOREMAIN.Main shares c with PressAnyKey: Save Space enters SelectMode,
+// but the nested Rest Space must not re-enter that same branch.
+await page.keyboard.press('Space');await page.waitForTimeout(400);
+await page.getByText('여기서 쉰다',{exact:true}).waitFor();
+await click('여기서 쉰다');
+await page.getByText('아무키나 누르십시오 ...',{exact:true}).last().waitFor();
+await page.keyboard.press('Space');await page.waitForTimeout(400);
+if(await page.getByText('여기서 쉰다',{exact:true}).count())throw Error('Nested Rest Space reopened SelectMode');
+await page.keyboard.press('KeyR');
+await page.getByText('아무키나 누르십시오 ...',{exact:true}).last().waitFor();
+await page.keyboard.press('Space');await page.waitForTimeout(400);
+await page.getByText('여기서 쉰다',{exact:true}).waitFor();
+await page.keyboard.press('Escape');await page.waitForTimeout(400);
+if(await page.getByText('여기서 쉰다',{exact:true}).count())throw Error('Follow-up SelectMode Esc must close');
+console.log('Actual mobile web Save/Rest Space follows Main once, nested Rest does not reopen SelectMode');
 if(errors.length)throw Error(errors.join('\n'));
 await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

@@ -68,7 +68,10 @@ def locate(pid, player_file):
             lo, hi = (int(v, 16) for v in columns[0].split('-'))
             if hi - lo < 0x1000000:
                 continue
-            data = os.pread(fd, 0x100000, lo)
+            # SDL/DOSBox allocations can precede emulated RAM inside the same
+            # anonymous mapping. The original game need not be in its first
+            # MiB. Keep the scan bounded and require both unique signatures.
+            data = os.pread(fd, min(hi - lo, 0x2000000), lo)
             at, code = data.find(pattern), data.find(signature)
             if at < 0 or code < 0:
                 continue
