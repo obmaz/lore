@@ -2361,3 +2361,19 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      미검사 경로를 갖고 있으며 실제 저장·복구 인물 bytes를 검증했다.
      입력432개에 새 관측 간격은 없다. 관련 Flutter2개·analyze·원본
      근거/계약 검사를 수행한다. 금속 수호자·두 레버·최종전은 계속한다.
+
+142. 금속 수호자 원본 승리·전원 class10 검증
+     (2026-10-07, `dos_metal_continuation.json`,
+     `dos_metal_battle_phase.json`, `check_dos_metal_continuation.py`,
+     `metal_battle_dos_test.dart`). 원본 금속 전투 실패들과 정상 저장
+     재시작을 보존했다. 앞서 만든 원본 Archi 직전 저장을 bytes 그대로
+     슬롯2에 복사하고 정상 GameOver 메뉴로 읽어 준비 구간을 다시
+     진행했다. 이는 연속 단일 캠페인 관측이라고 주장하지 않는다.
+     원본 부활의 signed16 비용과 도주·단일 치료로 SP를 보존했으며
+     Archi 재통과 뒤 Mega-Robo4/Panzer Viper를 원본에서 이겼다.
+     보상528624, 통로24..27×43=41, 여섯 명 class10을 실제 저장했다.
+     전직은 class만 바꾸고 다른 인물 필드·RNG를 보존한다. 닫힌 첫
+     적 선공 단계의 전체 인물·적 필드와 RNG도 이식판과 일치했다.
+     입력1269개에 새 관측 간격은 없다. 관련 Flutter2개·analyze·
+     원본 근거/계약 검사를 수행하고 이 완료 구간을 푸시한다.
+     전체 전투 재생·모든 BGI의 완료 증거로 확대하지 않는다.

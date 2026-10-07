@@ -48352,6 +48352,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/metal_battle_dos_test.dart",
+      "kind": "test",
+      "sha256": "0fc348d22dfd97eb2ce9938e1483d153ff82df21b677034095b55c26e6498182",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/mirror_enemy_test.dart",
       "kind": "test",
       "sha256": "de4f64d2fe04b07db862aa9ec11ee52488322c33fccadfa3f47e3dcbd786d7c7",
@@ -49190,6 +49197,24 @@
       "sha256": "dd613b393b4d51db6294007b1421aebbfed56065858554afc33dde1f4ca2b7ae",
       "test_users": [
         "test/menace_return_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_metal_battle_phase.json",
+      "kind": "fixture",
+      "sha256": "5f0ba756c2da2c1258fe29bda359d597609aa6ed1eff5faa4028424a590da144",
+      "test_users": [
+        "test/metal_battle_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_metal_continuation.json",
+      "kind": "fixture",
+      "sha256": "ce878c0d930e2c0b58a9fb6b62cbc4e864821850ad6bb14f3c5e50e9eb77953a",
+      "test_users": [
+        "test/metal_battle_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
