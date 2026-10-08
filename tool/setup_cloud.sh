@@ -3,3 +3,4 @@
 set -euo pipefail
 
 git config --global user.name obmaz
+git config --global user.email zambobmaz@gmail.com
