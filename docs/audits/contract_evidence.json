@@ -18545,6 +18545,142 @@
       "supporting_evidence": [
         "lib/screens/main_game_screen.dart"
       ]
+    },
+    {
+      "id": "LORECRET.PAS:name:1:repeat:1",
+      "line": 101,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_name.dart",
+      "test": "test/creation_name_dos_test.dart",
+      "note": "Original EXE executes 8704 name transitions: every byte key and every extended scan at each reachable length0..16, preserving native short-string concat and counter stores. Separate all256 native UpCase/sex gates. ReadKey supplied, CRT/BGI spans skipped explicitly. Backspace and extended scan ignored, Esc/overflow reset, INC before Enter means 16-byte text is reset and <=15-byte nonempty names finish. Actual desktop/mobile keyboard screens replay resets, discarded input, invalid gender waits, both raw spaces/15-byte names and complete six-record creation; text case/spaces preserved. Existing touch/IME editor is retained as modern adapter and tested separately. Polling time/glyph/graphic raster not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_name_keyboard_ui_test.dart",
+        "tool/export_dos_creation_name.py",
+        "tool/tests/test_export_dos_creation_name.py",
+        "test/fixtures/dos_creation_name.json",
+        "lib/screens/character_creation_screen.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:1",
+      "line": 104,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_name.dart",
+      "test": "test/creation_name_dos_test.dart",
+      "note": "Original EXE executes 8704 name transitions: every byte key and every extended scan at each reachable length0..16, preserving native short-string concat and counter stores. Separate all256 native UpCase/sex gates. ReadKey supplied, CRT/BGI spans skipped explicitly. Backspace and extended scan ignored, Esc/overflow reset, INC before Enter means 16-byte text is reset and <=15-byte nonempty names finish. Actual desktop/mobile keyboard screens replay resets, discarded input, invalid gender waits, both raw spaces/15-byte names and complete six-record creation; text case/spaces preserved. Existing touch/IME editor is retained as modern adapter and tested separately. Polling time/glyph/graphic raster not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_name_keyboard_ui_test.dart",
+        "tool/export_dos_creation_name.py",
+        "tool/tests/test_export_dos_creation_name.py",
+        "test/fixtures/dos_creation_name.json",
+        "lib/screens/character_creation_screen.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:2",
+      "line": 109,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_name.dart",
+      "test": "test/creation_name_dos_test.dart",
+      "note": "Original EXE executes 8704 name transitions: every byte key and every extended scan at each reachable length0..16, preserving native short-string concat and counter stores. Separate all256 native UpCase/sex gates. ReadKey supplied, CRT/BGI spans skipped explicitly. Backspace and extended scan ignored, Esc/overflow reset, INC before Enter means 16-byte text is reset and <=15-byte nonempty names finish. Actual desktop/mobile keyboard screens replay resets, discarded input, invalid gender waits, both raw spaces/15-byte names and complete six-record creation; text case/spaces preserved. Existing touch/IME editor is retained as modern adapter and tested separately. Polling time/glyph/graphic raster not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_name_keyboard_ui_test.dart",
+        "tool/export_dos_creation_name.py",
+        "tool/tests/test_export_dos_creation_name.py",
+        "test/fixtures/dos_creation_name.json",
+        "lib/screens/character_creation_screen.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:3",
+      "line": 113,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_name.dart",
+      "test": "test/creation_name_dos_test.dart",
+      "note": "Original EXE executes 8704 name transitions: every byte key and every extended scan at each reachable length0..16, preserving native short-string concat and counter stores. Separate all256 native UpCase/sex gates. ReadKey supplied, CRT/BGI spans skipped explicitly. Backspace and extended scan ignored, Esc/overflow reset, INC before Enter means 16-byte text is reset and <=15-byte nonempty names finish. Actual desktop/mobile keyboard screens replay resets, discarded input, invalid gender waits, both raw spaces/15-byte names and complete six-record creation; text case/spaces preserved. Existing touch/IME editor is retained as modern adapter and tested separately. Polling time/glyph/graphic raster not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_name_keyboard_ui_test.dart",
+        "tool/export_dos_creation_name.py",
+        "tool/tests/test_export_dos_creation_name.py",
+        "test/fixtures/dos_creation_name.json",
+        "lib/screens/character_creation_screen.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:4",
+      "line": 117,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_name.dart",
+      "test": "test/creation_name_dos_test.dart",
+      "note": "Original EXE executes 8704 name transitions: every byte key and every extended scan at each reachable length0..16, preserving native short-string concat and counter stores. Separate all256 native UpCase/sex gates. ReadKey supplied, CRT/BGI spans skipped explicitly. Backspace and extended scan ignored, Esc/overflow reset, INC before Enter means 16-byte text is reset and <=15-byte nonempty names finish. Actual desktop/mobile keyboard screens replay resets, discarded input, invalid gender waits, both raw spaces/15-byte names and complete six-record creation; text case/spaces preserved. Existing touch/IME editor is retained as modern adapter and tested separately. Polling time/glyph/graphic raster not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_name_keyboard_ui_test.dart",
+        "tool/export_dos_creation_name.py",
+        "tool/tests/test_export_dos_creation_name.py",
+        "test/fixtures/dos_creation_name.json",
+        "lib/screens/character_creation_screen.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:5",
+      "line": 123,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_name.dart",
+      "test": "test/creation_name_dos_test.dart",
+      "note": "Original EXE executes 8704 name transitions: every byte key and every extended scan at each reachable length0..16, preserving native short-string concat and counter stores. Separate all256 native UpCase/sex gates. ReadKey supplied, CRT/BGI spans skipped explicitly. Backspace and extended scan ignored, Esc/overflow reset, INC before Enter means 16-byte text is reset and <=15-byte nonempty names finish. Actual desktop/mobile keyboard screens replay resets, discarded input, invalid gender waits, both raw spaces/15-byte names and complete six-record creation; text case/spaces preserved. Existing touch/IME editor is retained as modern adapter and tested separately. Polling time/glyph/graphic raster not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_name_keyboard_ui_test.dart",
+        "tool/export_dos_creation_name.py",
+        "tool/tests/test_export_dos_creation_name.py",
+        "test/fixtures/dos_creation_name.json",
+        "lib/screens/character_creation_screen.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:name:1:repeat:2",
+      "line": 135,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_name.dart",
+      "test": "test/creation_name_dos_test.dart",
+      "note": "Original EXE executes 8704 name transitions: every byte key and every extended scan at each reachable length0..16, preserving native short-string concat and counter stores. Separate all256 native UpCase/sex gates. ReadKey supplied, CRT/BGI spans skipped explicitly. Backspace and extended scan ignored, Esc/overflow reset, INC before Enter means 16-byte text is reset and <=15-byte nonempty names finish. Actual desktop/mobile keyboard screens replay resets, discarded input, invalid gender waits, both raw spaces/15-byte names and complete six-record creation; text case/spaces preserved. Existing touch/IME editor is retained as modern adapter and tested separately. Polling time/glyph/graphic raster not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_name_keyboard_ui_test.dart",
+        "tool/export_dos_creation_name.py",
+        "tool/tests/test_export_dos_creation_name.py",
+        "test/fixtures/dos_creation_name.json",
+        "lib/screens/character_creation_screen.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:name:1:if:6",
+      "line": 137,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_name.dart",
+      "test": "test/creation_name_dos_test.dart",
+      "note": "Original EXE executes 8704 name transitions: every byte key and every extended scan at each reachable length0..16, preserving native short-string concat and counter stores. Separate all256 native UpCase/sex gates. ReadKey supplied, CRT/BGI spans skipped explicitly. Backspace and extended scan ignored, Esc/overflow reset, INC before Enter means 16-byte text is reset and <=15-byte nonempty names finish. Actual desktop/mobile keyboard screens replay resets, discarded input, invalid gender waits, both raw spaces/15-byte names and complete six-record creation; text case/spaces preserved. Existing touch/IME editor is retained as modern adapter and tested separately. Polling time/glyph/graphic raster not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_name_keyboard_ui_test.dart",
+        "tool/export_dos_creation_name.py",
+        "tool/tests/test_export_dos_creation_name.py",
+        "test/fixtures/dos_creation_name.json",
+        "lib/screens/character_creation_screen.dart"
+      ]
     }
   ]
 }

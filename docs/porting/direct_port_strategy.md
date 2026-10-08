@@ -2947,3 +2947,21 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      전체 이식이 끝나기 전까지 배포하지 않는다.
      전체 Flutter 1639건(3 skip), Python 122건, analyze와 웹 release build
      통과 후 이 묶음을 main에 푸시했다. 이름 입력의 원본 명령 대조를 이어간다.
+
+192. **Name 키보드의 원본 바이트 상태와 실제 생성 연결**
+     실제 EXE의 Name 반복 본문을 8704개 입력으로 실행했다. 각 유효한
+     문자열 길이 0..16에서 모든 byte key/extended scan을 비교하며,
+     문자열 concat은 원본 Pascal runtime을 그대로 실행한다. CRT/BGI
+     출력만 건너뛰고 ReadKey를 공급한다. UpCase 및 성별 store는 256개
+     원본 입력을 별도로 대조했다. Backspace/extended key 무시, Escape와
+     overflow 초기화, Enter 이전 INC로 인해 16바이트 이름은 초기화되고
+     최대 15바이트 비어 있지 않은 이름만 확정되는 순서를 그대로 연결한다.
+     실제 desktop/mobile 화면의 입력·성별 대기·전체 여섯 record 생성과
+     대소문자 및 앞뒤 공백 보존을 확인한다. 터치/한글 IME editor는 별도의
+     현대 입력 adapter로 유지하고 편집 가능 여부를 회귀 검사한다.
+     키 polling 시간·글리프·BGI 출력은 주장하지 않는다. 8개 해소로
+     verified 1717 / partial 131 / unclassified 0. 전체 검사 후 푸시한다.
+     CapsLock/NumLock/ScrollLock은 DOS byte 입력으로 취급하지 않아 기존
+     터치 editor를 잠그지 않는다. 최신 코드 전체 Flutter 1645건(3 skip),
+     Python 123건, analyze 및 웹 release build가 통과했다. main에 푸시하며
+     남은 어댑터/미정의 source 동작은 이 결과로 완료 처리하지 않는다.

@@ -5,6 +5,7 @@ import '../logic/lore_menu_text.dart';
 import '../logic/lore_creation_rules.dart';
 import '../logic/lore_creation_allocation.dart';
 import '../logic/lore_creation_companions.dart';
+import '../logic/lore_creation_name.dart';
 import '../data/lore_creation.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
@@ -45,6 +46,53 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     text: 'Hero',
   );
   Gender _selectedGender = Gender.male;
+  LoreCreationName _sourceName = LoreCreationName();
+  bool _sourceNameActive = false;
+
+  String get _heroName => _sourceNameActive
+      ? _sourceName.text
+      : (_nameController.text.trim().isEmpty
+            ? 'Hero'
+            : _nameController.text.trim());
+
+  void _readNameEvent(KeyEvent event) {
+    final key = event.logicalKey;
+    if (key == LogicalKeyboardKey.capsLock ||
+        key == LogicalKeyboardKey.numLock ||
+        key == LogicalKeyboardKey.scrollLock) {
+      return; // These hardware toggles do not enqueue a DOS ReadKey byte.
+    }
+    final character = event.character ?? key.keyLabel;
+    final code = switch (key) {
+      LogicalKeyboardKey.enter || LogicalKeyboardKey.numpadEnter => 13,
+      LogicalKeyboardKey.escape => 27,
+      LogicalKeyboardKey.backspace => 8,
+      LogicalKeyboardKey.tab => 9,
+      _ =>
+        character.length == 1 && character.codeUnitAt(0) <= 255
+            ? character.codeUnitAt(0)
+            : 0,
+    };
+    setState(() {
+      _sourceNameActive = true;
+      _sourceName.readKey(code);
+      _nameController.text = _sourceName.text;
+      if (_sourceName.sex case final sex?) {
+        _selectedGender = sex == 0 ? Gender.male : Gender.female;
+        _step = 2;
+      }
+    });
+  }
+
+  void _selectNameGender(Gender gender) {
+    setState(() {
+      _selectedGender = gender;
+      if (_sourceNameActive && _sourceName.nameAccepted) {
+        _sourceName.readKey(gender == Gender.male ? 77 : 70);
+        _step = 2;
+      }
+    });
+  }
 
   // 질문 응답 및 성향 데이터 (transdata[1..5])
   final List<int> _transdata = List.filled(6, 0);
@@ -151,9 +199,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
 
   /// 원작 `Fourth` 끝의 파티 구성 + `Last` 초기 상태로 게임을 시작한다.
   void _finishCreation() {
-    final heroName = _nameController.text.trim().isEmpty
-        ? 'Hero'
-        : _nameController.text.trim();
+    final heroName = _heroName;
 
     final hero = PartyMember(
       name: heroName,
@@ -311,7 +357,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       case 0:
         return _keyboardStep(_buildTitleScreen(), _readTitleKey);
       case 1:
-        return _buildNameScreen();
+        return _keyboardStep(
+          _buildNameScreen(),
+          (_) {},
+          readEvent: _readNameEvent,
+        );
       case 2:
         return _keyboardStep(_buildQuestionScreen(), (key) {
           final label = key.keyLabel;
@@ -374,6 +424,8 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       _selectedClass = null;
       _profileTarget = null;
       _awaitingProfileKey = false;
+      _sourceName = LoreCreationName();
+      _sourceNameActive = false;
       _step = title ? 0 : 1;
     });
   }
@@ -427,30 +479,37 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     if (choice == 2) SystemNavigator.pop();
   }
 
-  Widget _keyboardStep(Widget child, void Function(LogicalKeyboardKey) read) =>
-      Focus(
-        autofocus: true,
-        onKeyEvent: (_, event) {
-          if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
-            return KeyEventResult.ignored;
-          }
-          if ([
-            LogicalKeyboardKey.shiftLeft,
-            LogicalKeyboardKey.shiftRight,
-            LogicalKeyboardKey.controlLeft,
-            LogicalKeyboardKey.controlRight,
-            LogicalKeyboardKey.altLeft,
-            LogicalKeyboardKey.altRight,
-            LogicalKeyboardKey.metaLeft,
-            LogicalKeyboardKey.metaRight,
-          ].contains(event.logicalKey)) {
-            return KeyEventResult.ignored;
-          }
-          read(event.logicalKey);
-          return KeyEventResult.handled;
-        },
-        child: child,
-      );
+  Widget _keyboardStep(
+    Widget child,
+    void Function(LogicalKeyboardKey) read, {
+    void Function(KeyEvent)? readEvent,
+  }) => Focus(
+    autofocus: true,
+    onKeyEvent: (_, event) {
+      if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+        return KeyEventResult.ignored;
+      }
+      if ([
+        LogicalKeyboardKey.shiftLeft,
+        LogicalKeyboardKey.shiftRight,
+        LogicalKeyboardKey.controlLeft,
+        LogicalKeyboardKey.controlRight,
+        LogicalKeyboardKey.altLeft,
+        LogicalKeyboardKey.altRight,
+        LogicalKeyboardKey.metaLeft,
+        LogicalKeyboardKey.metaRight,
+      ].contains(event.logicalKey)) {
+        return KeyEventResult.ignored;
+      }
+      if (readEvent != null) {
+        readEvent(event);
+      } else {
+        read(event.logicalKey);
+      }
+      return KeyEventResult.handled;
+    },
+    child: child,
+  );
 
   // ==========================================
   // Step 0: 원작 타이틀 화면
@@ -790,16 +849,20 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow),
               ),
               const SizedBox(height: 6),
-              TextField(
-                controller: _nameController,
-                style: RetroTheme.headerFont.copyWith(fontSize: 15),
-                decoration: const InputDecoration(
-                  filled: true,
-                  fillColor: Color(0xFF000033),
-                  border: OutlineInputBorder(),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 6,
+              ExcludeFocus(
+                excluding: _sourceNameActive,
+                child: TextField(
+                  readOnly: _sourceNameActive,
+                  controller: _nameController,
+                  style: RetroTheme.headerFont.copyWith(fontSize: 15),
+                  decoration: const InputDecoration(
+                    filled: true,
+                    fillColor: Color(0xFF000033),
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 6,
+                    ),
                   ),
                 ),
               ),
@@ -822,8 +885,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                             : RetroTheme.darkGray,
                       ),
                     ),
-                    onPressed: () =>
-                        setState(() => _selectedGender = Gender.male),
+                    onPressed: () => _selectNameGender(Gender.male),
                     child: Text(
                       '남성 [M]',
                       style: RetroTheme.dosFont.copyWith(
@@ -845,8 +907,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                             : RetroTheme.darkGray,
                       ),
                     ),
-                    onPressed: () =>
-                        setState(() => _selectedGender = Gender.female),
+                    onPressed: () => _selectNameGender(Gender.female),
                     child: Text(
                       '여성 [F]',
                       style: RetroTheme.dosFont.copyWith(
@@ -879,7 +940,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
         const SizedBox(height: 16),
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: RetroTheme.blue),
-          onPressed: () => setState(() => _step = 2),
+          onPressed: _sourceNameActive ? null : () => setState(() => _step = 2),
           child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
         ),
       ],
@@ -1264,9 +1325,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
           Wrap(
             children: [
               Text(
-                _nameController.text.trim().isEmpty
-                    ? 'Hero'
-                    : _nameController.text.trim(),
+                _heroName,
                 style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow),
               ),
               for (final id in _selectedCompanions.toList()..sort())
