@@ -298,6 +298,34 @@ void main() {
     expect(lines, isEmpty);
   });
 
+  test('CastOne keeps source SP-before-RNG ordering on an insufficient cast', () {
+    final r = _Script();
+    final mage = hero()
+      ..magicLevel = 2
+      ..sp = 1;
+    final lines = <String>[];
+    final b = make([mage], [Monster.create(1)], r, lines);
+    b.battle[1] = [0, 2, 3, 1];
+    b.castOne();
+    expect(mage.sp, 1);
+    expect(r.bounds, isEmpty);
+    expect(lines.last, LoreBattText.spNotEnough);
+  });
+
+  test('CastOne executes an unconscious foe before it reads magic or RNG', () {
+    final r = _Script();
+    final mage = hero()
+      ..magicLevel = 9
+      ..sp = 1;
+    final foe = Monster.create(1)..isUnconscious = true;
+    final b = make([mage], [foe], r);
+    b.battle[1] = [0, 2, 9, 1];
+    b.castOne();
+    expect(foe.isDead, isTrue);
+    expect(mage.sp, 1);
+    expect(r.bounds, isEmpty);
+  });
+
   test('zero-bound Pascal random consumes one normalized draw and returns zero', () {
     final r = _Script([0]);
     final b = make([hero()], [Monster.create(1)], r);
