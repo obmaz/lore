@@ -52583,7 +52583,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "50,52",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:24:map-write:48",
@@ -52592,7 +52592,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "51,52",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:25:map-write:16",
@@ -52601,7 +52601,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "52,52",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:25:map-write:32",
@@ -52610,7 +52610,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "53,52",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:25:map-write:48",
@@ -52619,7 +52619,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "49,53",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:26:map-write:16",
@@ -52628,7 +52628,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "50,53",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:26:map-write:32",
@@ -52637,7 +52637,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "51,53",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:26:map-write:48",
@@ -52646,7 +52646,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "52,53",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:26:map-write:64",
@@ -52655,7 +52655,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "53,53",
       "value": "45",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:27:map-write:37",
@@ -52664,7 +52664,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "i,88",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:35:map-write:70",
@@ -55062,7 +55062,7 @@
     {
       "path": "test/loreent_entry_effects_test.dart",
       "kind": "test",
-      "sha256": "9aa92ef23fc35bfdf85f5ec84ff4d052c866f3fa06d61308f641708f99d0b4a8",
+      "sha256": "1a1ccfb5879c0eea8f6a543c12dfe6b495cc294ae1d66ceb23f7ab246cc25e63",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS"

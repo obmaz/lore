@@ -2546,6 +2546,12 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      지도 쓰기 미연결 수는 123개에서 122개로 감소했다. 나머지 쓰기는
      좌표·조건·효과별 검증이 필요하다.
 
+153. 성채 진입 지도 쓰기 묶음 검증 (2026-10-08).
+     `LOREENT.PAS:24-27`의 성채 진입 후 타일 쓰기 11개를 하나의 순서 있는
+     결과 배열로 대조했다. 좌표·타일 값 10개와 `49..53,88` 반복 쓰기 1개가
+     모두 `LoreEntProcedures.afterMapLoadTiles`와 일치했다. 관련 Flutter
+     3개와 Python76개가 통과했으며, 미연결 지도 쓰기는 112개로 줄었다.
+
 151. 전체 게임 제어 지점의 부분 근거 연결 (2026-10-08).
      LORE·LOREMAIN·LORESPEC·LORETALK·LOREHELP·LORESUB·LORECRET에 남아 있던
      185개 제어 지점을 파일별 원본 소유·이식 코드·정적 계약 테스트 묶음으로

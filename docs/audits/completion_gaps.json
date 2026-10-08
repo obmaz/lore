@@ -5,7 +5,7 @@
     "unclassified": 0,
     "partial": 1848,
     "verified": 0,
-    "unmapped_map_writes": 122
+    "unmapped_map_writes": 112
   },
   "routines": [
     {
@@ -503,96 +503,6 @@
   ],
   "unclassified_sites": [],
   "unmapped_map_writes": [
-    {
-      "id": "LOREENT.PAS:24:map-write:32",
-      "file": "LOREENT.PAS",
-      "line": 24,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "50,52",
-      "value": "44",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:24:map-write:48",
-      "file": "LOREENT.PAS",
-      "line": 24,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "51,52",
-      "value": "44",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:25:map-write:16",
-      "file": "LOREENT.PAS",
-      "line": 25,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "52,52",
-      "value": "44",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:25:map-write:32",
-      "file": "LOREENT.PAS",
-      "line": 25,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "53,52",
-      "value": "47",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:25:map-write:48",
-      "file": "LOREENT.PAS",
-      "line": 25,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "49,53",
-      "value": "47",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:26:map-write:16",
-      "file": "LOREENT.PAS",
-      "line": 26,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "50,53",
-      "value": "44",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:26:map-write:32",
-      "file": "LOREENT.PAS",
-      "line": 26,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "51,53",
-      "value": "44",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:26:map-write:48",
-      "file": "LOREENT.PAS",
-      "line": 26,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "52,53",
-      "value": "44",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:26:map-write:64",
-      "file": "LOREENT.PAS",
-      "line": 26,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "53,53",
-      "value": "45",
-      "status": "unmapped"
-    },
-    {
-      "id": "LOREENT.PAS:27:map-write:37",
-      "file": "LOREENT.PAS",
-      "line": 27,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "i,88",
-      "value": "44",
-      "status": "unmapped"
-    },
     {
       "id": "LOREENT.PAS:35:map-write:70",
       "file": "LOREENT.PAS",

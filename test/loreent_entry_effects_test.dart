@@ -136,8 +136,13 @@ void main() {
       return writes;
     }
 
-    expect(changes(1, 6), hasLength(15));
-    expect(changes(1, 6), contains((49, 52, 47)));
+    expect(changes(1, 6), [
+      (49, 52, 47), (50, 52, 44), (51, 52, 44), (52, 52, 44),
+      (53, 52, 47), (49, 53, 47), (50, 53, 44), (51, 53, 44),
+      (52, 53, 44), (53, 53, 45),
+      (49, 88, 44), (50, 88, 44), (51, 88, 44), (52, 88, 44),
+      (53, 88, 44),
+    ]);
     expect(changes(1, 7, partyNames: {'Polaris'}), [(37, 41, 44)]);
     expect(changes(8, 7, partyNames: {'Polaris'}), isEmpty);
     // LORESPEC.PAS:515-521: the map 11 exit writes the same tile after load.

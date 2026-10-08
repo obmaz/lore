@@ -24,7 +24,14 @@ ROUTINE = re.compile(r"\b(procedure|function)\s+([A-Za-z_][A-Za-z_0-9]*)\b", re.
 MAP_WRITE = re.compile(r"map\s*\[([^\]]+)\]\s*:=\s*([^;]+);", re.I)
 # The first castle post-load assignment has a direct source-backed regression
 # assertion in loreent_entry_effects_test.dart.
-MAPPED_MAP_WRITES = {"LOREENT.PAS:24:map-write:16"}
+MAPPED_MAP_WRITES = {
+    "LOREENT.PAS:24:map-write:16", "LOREENT.PAS:24:map-write:32",
+    "LOREENT.PAS:24:map-write:48", "LOREENT.PAS:25:map-write:16",
+    "LOREENT.PAS:25:map-write:32", "LOREENT.PAS:25:map-write:48",
+    "LOREENT.PAS:26:map-write:16", "LOREENT.PAS:26:map-write:32",
+    "LOREENT.PAS:26:map-write:48", "LOREENT.PAS:26:map-write:64",
+    "LOREENT.PAS:27:map-write:37",
+}
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 
 
