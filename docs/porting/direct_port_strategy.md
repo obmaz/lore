@@ -3211,3 +3211,24 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      재실행 결과와 생성 보고서도 일치했다. 다음은 필수 FNT 파일 실패
      경로다. 현재 원본 탐색에서 없거나 잘린 party/player/CHARA/지역
      FNT는 각 파일 이름과 올바른 need 값으로 ErrorMessage에 진입한다.
+
+207. **필수 CHARA/지역 FNT 실패에서 원본처럼 종료**
+     원본 Load 전체에서 Reset·typed Read·Close·IOResult를 실행하여
+     CHARA와 GROUND/TOWN/DEN/KEEP의 missing/short 오류 및 warm CHARA·
+     사용하지 않는 지역 파일 오류 48가지를 대조한다. DOS 파일 read는
+     실제 전달한 byte 수를 반환한다. 실패는 올바른 파일 이름과
+     need=false로 원본 ErrorMessage에 들어간다. 해당 body는 기존
+     독립 실행 증거로 문자열·Halt를 대조한다. 이번 추출은 body 앞에서
+     멈추며 DOS/CRT/BGI 픽셀 전체 실행이라고 주장하지 않는다.
+     앱의 최초 CHARA read와 각 Load의 선택 지역 FNT 재읽기를 연결하고
+     56×246-byte 레코드 미만은 영구 Load 실패로 종료한다. 남는 파일
+     byte는 원본처럼 무시한다. 무시하던 필수 글꼴 오류를 제거한다.
+     성공 시 PNG/반응형 지도와 현대 오디오 표현은 유지한다.
+     데스크톱/모바일 최초 CHARA/TOWN 및 지도 전환 DEN 오류의 실제
+     Halt 화면, no CREATE 안내, no RNG/이동/후속 callback을 검사한다.
+     두 파일 오류 IF 1671/1752만 해소하여 verified 1747 / partial 101 /
+     unclassified 0. party/player 오류와 BGI 출력은 별도 미완료다.
+     전체 검사·웹 build 후 푸시하고 다음 묶음을 이어간다.
+     관련 Flutter 40건, 전체 Flutter 1735건(3 skip), Python 149건,
+     analyze와 웹 release build가 통과했다. 원본 48가지 재실행과
+     생성 보고서도 일치했다. 다음은 party/player 저장 오류의 구분이다.

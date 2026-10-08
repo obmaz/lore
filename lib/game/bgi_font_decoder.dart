@@ -112,6 +112,11 @@ class BgiFontDecoder {
   static Future<BgiFontDecoder> loadFromAsset(String fontName) async {
     final assetPath = 'assets/fonts/$fontName.FNT';
     final byteData = await rootBundle.load(assetPath);
-    return BgiFontDecoder(byteData.buffer.asUint8List());
+    return BgiFontDecoder(
+      byteData.buffer.asUint8List(
+        byteData.offsetInBytes,
+        byteData.lengthInBytes,
+      ),
+    );
   }
 }

@@ -19069,6 +19069,38 @@
         "test/map_reads_dos_test.dart",
         "tool/export_dos_load_phases.py"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:5",
+      "line": 1671,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/load_font_errors_dos_test.dart",
+      "note": "48 full native Load executions supply only DOS byte/file operations and stack guard, with original Reset/Read/Close/IOResult. Missing or short CHARA cold and selected GROUND/TOWN/DEN/KEEP files reach nested ErrorMessage with native filename and need=false; warm CHARA and unselected region errors are ignored because no open occurs. Separately native ErrorMessage replay proves strings/Halt body. Actual game reads CHARA once at cold bootstrap, rereads only selected region on each Load, validates one 13776-byte font record (ignores trailing bytes), and halts on missing/truncated data. Desktop/mobile cold CHARA/TOWN and warm DEN failures show source red error, no CREATE hint or map continuation/RNG/movement. Successful PNG/responsive rendering/audio adapters retained; no DOS BIOS/CRT/BGI pixel equivalence or party/player file IO closure.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/load_errors_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "test/load_phases_dos_test.dart",
+        "tool/export_dos_load_font_errors.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:8",
+      "line": 1752,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/load_font_errors_dos_test.dart",
+      "note": "48 full native Load executions supply only DOS byte/file operations and stack guard, with original Reset/Read/Close/IOResult. Missing or short CHARA cold and selected GROUND/TOWN/DEN/KEEP files reach nested ErrorMessage with native filename and need=false; warm CHARA and unselected region errors are ignored because no open occurs. Separately native ErrorMessage replay proves strings/Halt body. Actual game reads CHARA once at cold bootstrap, rereads only selected region on each Load, validates one 13776-byte font record (ignores trailing bytes), and halts on missing/truncated data. Desktop/mobile cold CHARA/TOWN and warm DEN failures show source red error, no CREATE hint or map continuation/RNG/movement. Successful PNG/responsive rendering/audio adapters retained; no DOS BIOS/CRT/BGI pixel equivalence or party/player file IO closure.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/load_errors_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "test/load_phases_dos_test.dart",
+        "tool/export_dos_load_font_errors.py"
+      ]
     }
   ]
 }

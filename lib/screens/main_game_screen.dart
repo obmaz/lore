@@ -86,6 +86,7 @@ class MainGameScreen extends StatefulWidget {
   /// `Halt` 뒤 호출(기본값은 `SystemNavigator.pop`; 테스트용 주입).
   final VoidCallback? onHalt;
   final LoreMapLoader? mapLoader;
+  final LoreFontLoader? fontLoader;
 
   const MainGameScreen({
     super.key,
@@ -94,6 +95,7 @@ class MainGameScreen extends StatefulWidget {
     this.encounterRandom,
     this.onHalt,
     this.mapLoader,
+    this.fontLoader,
   });
 
   @override
@@ -274,6 +276,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       initialSnapshotName: 'save${widget.initialSaveData?.slot ?? 1}.map',
       random: _sessionRandom,
       mapLoader: widget.mapLoader,
+      fontLoader: widget.fontLoader,
       onLoadFailure: (failure) {
         if (!mounted) return;
         AudioManager.instance.stopBgm();

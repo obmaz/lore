@@ -30875,11 +30875,15 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/load_font_errors_dos_test.dart",
+        "test/load_errors_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "test/load_phases_dos_test.dart",
+        "tool/export_dos_load_font_errors.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "48 full native Load executions supply only DOS byte/file operations and stack guard, with original Reset/Read/Close/IOResult. Missing or short CHARA cold and selected GROUND/TOWN/DEN/KEEP files reach nested ErrorMessage with native filename and need=false; warm CHARA and unselected region errors are ignored because no open occurs. Separately native ErrorMessage replay proves strings/Halt body. Actual game reads CHARA once at cold bootstrap, rereads only selected region on each Load, validates one 13776-byte font record (ignores trailing bytes), and halts on missing/truncated data. Desktop/mobile cold CHARA/TOWN and warm DEN failures show source red error, no CREATE hint or map continuation/RNG/movement. Successful PNG/responsive rendering/audio adapters retained; no DOS BIOS/CRT/BGI pixel equivalence or party/player file IO closure."
     },
     {
       "id": "LORESUB.PAS:load:1:if:6",
@@ -31049,11 +31053,15 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/load_font_errors_dos_test.dart",
+        "test/load_errors_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "test/load_phases_dos_test.dart",
+        "tool/export_dos_load_font_errors.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "48 full native Load executions supply only DOS byte/file operations and stack guard, with original Reset/Read/Close/IOResult. Missing or short CHARA cold and selected GROUND/TOWN/DEN/KEEP files reach nested ErrorMessage with native filename and need=false; warm CHARA and unselected region errors are ignored because no open occurs. Separately native ErrorMessage replay proves strings/Halt body. Actual game reads CHARA once at cold bootstrap, rereads only selected region on each Load, validates one 13776-byte font record (ignores trailing bytes), and halts on missing/truncated data. Desktop/mobile cold CHARA/TOWN and warm DEN failures show source red error, no CREATE hint or map continuation/RNG/movement. Successful PNG/responsive rendering/audio adapters retained; no DOS BIOS/CRT/BGI pixel equivalence or party/player file IO closure."
     },
     {
       "id": "LORESUB.PAS:load:1:if:9",
@@ -53564,6 +53572,38 @@
       ]
     },
     {
+      "id": "LORESUB.PAS:load:1:if:5",
+      "line": 1671,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/load_font_errors_dos_test.dart",
+      "note": "48 full native Load executions supply only DOS byte/file operations and stack guard, with original Reset/Read/Close/IOResult. Missing or short CHARA cold and selected GROUND/TOWN/DEN/KEEP files reach nested ErrorMessage with native filename and need=false; warm CHARA and unselected region errors are ignored because no open occurs. Separately native ErrorMessage replay proves strings/Halt body. Actual game reads CHARA once at cold bootstrap, rereads only selected region on each Load, validates one 13776-byte font record (ignores trailing bytes), and halts on missing/truncated data. Desktop/mobile cold CHARA/TOWN and warm DEN failures show source red error, no CREATE hint or map continuation/RNG/movement. Successful PNG/responsive rendering/audio adapters retained; no DOS BIOS/CRT/BGI pixel equivalence or party/player file IO closure.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/load_errors_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "test/load_phases_dos_test.dart",
+        "tool/export_dos_load_font_errors.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:8",
+      "line": 1752,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/load_font_errors_dos_test.dart",
+      "note": "48 full native Load executions supply only DOS byte/file operations and stack guard, with original Reset/Read/Close/IOResult. Missing or short CHARA cold and selected GROUND/TOWN/DEN/KEEP files reach nested ErrorMessage with native filename and need=false; warm CHARA and unselected region errors are ignored because no open occurs. Separately native ErrorMessage replay proves strings/Halt body. Actual game reads CHARA once at cold bootstrap, rereads only selected region on each Load, validates one 13776-byte font record (ignores trailing bytes), and halts on missing/truncated data. Desktop/mobile cold CHARA/TOWN and warm DEN failures show source red error, no CREATE hint or map continuation/RNG/movement. Successful PNG/responsive rendering/audio adapters retained; no DOS BIOS/CRT/BGI pixel equivalence or party/player file IO closure.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/load_errors_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "test/load_phases_dos_test.dart",
+        "tool/export_dos_load_font_errors.py"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -54721,28 +54761,6 @@
     {
       "id": "LORESUB.PAS:load:1:if:4",
       "line": 1666,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:load:1:if:5",
-      "line": 1671,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:load:1:if:8",
-      "line": 1752,
       "kind": "if",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
@@ -57759,6 +57777,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/load_font_errors_dos_test.dart",
+      "kind": "test",
+      "sha256": "df11376c00c396b578786763ab231dca581b05c11cdfd29400e38817d29f0862",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/load_phases_dos_test.dart",
       "kind": "test",
       "sha256": "4271fba447726b8888079e6460650362527131870e5b42d504d90147a4a10ea6",
@@ -59670,6 +59697,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_load_font_errors.json",
+      "kind": "fixture",
+      "sha256": "a15f932116844cefed1835fd09b07714eb4edbd5e10f88033ca15ba94bf2c1d8",
+      "test_users": [
+        "test/load_font_errors_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_load_phases.json",
       "kind": "fixture",
       "sha256": "e3b04800b3e22f8af5448dd17f602aba3d986503841aa774de8eac52a2be50b1",
@@ -60290,7 +60326,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "209c1feb92690b682b082d0f5f6b7955921ad156af4e61349726e25104ae23e2"
+      "sha256": "25ca2bb791eebdb66a129daf46d9de52cec429851bd47c53399d22655e3df620"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -60390,7 +60426,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "1ab29a3bb2f08ccfc4d0060eabcf7d1ede149a7c1facbfd47ff4a50110672739"
+      "sha256": "7fad62708265275c15ebb71791585154a2ad2bb7607d308b5e36d7c1a15cbb44"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -60426,7 +60462,7 @@
     },
     {
       "path": "lib/game/bgi_font_decoder.dart",
-      "sha256": "c39ddb697fe26eb2c8d6df14daba1950c2f1abbbbf200ab711b64b3761e72f64"
+      "sha256": "1b741592d40368c031222a170673c75eddd345ae5fcad8804b888e3c66bab12a"
     },
     {
       "path": "lib/game/sprite_sheet.dart",
@@ -60474,9 +60510,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "721722e0159792eb0d8ebbb81db6f87c91ad2f1f97305adc931c81bd1d0908aa",
+      "sha256": "5281e8440f7268bbfc5d405f1488d38da4cac92bbf99dbb184e2537aebf23354",
       "top_level_counts": {
-        "contracts": 1683
+        "contracts": 1685
       }
     }
   ],
@@ -60485,8 +60521,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 103,
-    "partially_verified_behavior_sites": 103,
+    "unverified_behavior_sites": 101,
+    "partially_verified_behavior_sites": 101,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

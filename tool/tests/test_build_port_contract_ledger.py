@@ -26,6 +26,16 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertIn('FormatException', map_note)
         self.assertIn('not invalid-memory byte equivalence', map_note)
 
+    def test_load_font_error_scope_does_not_close_party_player_or_bgi(self):
+        sites = ledger.build()['control_sites']
+        evidence = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        ids = {r['id'] for r in evidence if r.get('test') ==
+               'test/load_font_errors_dos_test.dart' and r.get('verification') == 'verified'}
+        actual = [s for s in sites if s['id'] in ids]
+        self.assertEqual(len(actual), 2)
+        self.assertEqual({(s['routine'], s['line']) for s in actual},
+                         {('LORESUB.PAS:load:1', 1671), ('LORESUB.PAS:load:1', 1752)})
+
     def test_saved_header_scope_keeps_legacy_and_invalid_memory_adapters_explicit(self):
         sites = ledger.build()['control_sites']
         evidence = json.loads(ledger.EVIDENCE.read_text())['contracts']
@@ -56,7 +66,7 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertEqual(len(actual), 1)
         self.assertEqual((actual[0]['routine'], actual[0]['line']),
                          ('LORESUB.PAS:load:1', 1650))
-        for line in [1661, 1666, 1671, 1752]:
+        for line in [1661, 1666]:
             self.assertTrue(all(s['verification_status'] == 'partial' for s in sites
                 if s['routine'] == 'LORESUB.PAS:load:1' and s['line'] == line))
 
@@ -122,8 +132,7 @@ class ContractLedgerTest(unittest.TestCase):
         actual = [s for s in sites if s['id'] in closed]
         self.assertEqual({(s['routine'], s['line']) for s in actual}, {
             ('LORESUB.PAS:load:1', 1729), ('LORESUB.PAS:load:1', 1762)})
-        for routine, line in [('LORESUB.PAS:load:1', 1752),
-                              ('LORESUB.PAS:setscrolltype:1', 287),
+        for routine, line in [('LORESUB.PAS:setscrolltype:1', 287),
                               ('LORESUB.PAS:setscrolltype:1', 292)]:
             untouched = [s for s in sites if s['routine'] == routine and s['line'] == line]
             self.assertEqual(len(untouched), 1)
@@ -271,7 +280,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 103)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 101)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

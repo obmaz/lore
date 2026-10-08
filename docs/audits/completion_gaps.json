@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 103,
-    "verified": 1745,
+    "partial": 101,
+    "verified": 1747,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -402,8 +402,8 @@
     },
     {
       "routine": "LORESUB.PAS:load:1",
-      "verified": 17,
-      "partial": 4
+      "verified": 19,
+      "partial": 2
     },
     {
       "routine": "LORESUB.PAS:message:1",
@@ -1320,6 +1320,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/load_errors_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_load_font_errors.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/load_font_errors_dos_test.dart"
       ]
     },
     {

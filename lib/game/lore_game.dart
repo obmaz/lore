@@ -34,6 +34,7 @@ typedef LoreMapLoader = Future<LoreMapData> Function(
   String name, {
   required String category,
 });
+typedef LoreFontLoader = Future<BgiFontDecoder> Function(String name);
 
 class LoreGame extends FlameGame {
   static const int viewTilesX = 11;
@@ -168,6 +169,7 @@ class LoreGame extends FlameGame {
   final void Function(int steps)? onWaterWalkStepsChanged;
   final Random _random;
   final List<int>? initialMapTiles;
+  final LoreFontLoader? fontLoader;
   final int? initialMapWidth;
   final int? initialMapHeight;
   final String initialSnapshotName;
@@ -199,6 +201,7 @@ class LoreGame extends FlameGame {
     this.waterWalkStepsProvider,
     this.onWaterWalkStepsChanged,
     this.initialMapTiles,
+    this.fontLoader,
     this.initialMapWidth,
     this.initialMapHeight,
     this.initialSnapshotName = 'save.map',
@@ -217,13 +220,10 @@ class LoreGame extends FlameGame {
   Future<void> onLoad() async {
     await super.onLoad();
     try {
-      charaFont = await BgiFontDecoder.loadFromAsset('CHARA');
-      townFont = await BgiFontDecoder.loadFromAsset('TOWN');
-      groundFont = await BgiFontDecoder.loadFromAsset('GROUND');
-      denFont = await BgiFontDecoder.loadFromAsset('DEN');
-      keepFont = await BgiFontDecoder.loadFromAsset('KEEP');
+      charaFont = await _readSourceFont('CHARA');
     } catch (e) {
-      // 폰트 에셋 로드 실패 시 무시 (fallback 벡터 드로잉)
+      await _failLoad(LoreLoadFailure('chara.fnt', cause: e));
+      return;
     }
     await loadMapById(
       currentMapId,
@@ -234,6 +234,18 @@ class LoreGame extends FlameGame {
       mapHeight: initialMapHeight,
       snapshotName: initialSnapshotName,
     );
+  }
+
+  Future<BgiFontDecoder> _readSourceFont(String name) async {
+    final font = await (fontLoader ?? BgiFontDecoder.loadFromAsset)(name);
+    const sourceBytes = 56 * BgiFontDecoder.spriteBytes;
+    if (font.data.length < sourceBytes) {
+      throw FormatException('$name: truncated source font[0..55]');
+    }
+    // Pascal Read consumes one complete record, ignoring trailing file bytes.
+    return font.data.length == sourceBytes
+        ? font
+        : BgiFontDecoder(Uint8List.sublistView(font.data, 0, sourceBytes));
   }
 
   Future<void> loadMapById(
@@ -285,6 +297,30 @@ class LoreGame extends FlameGame {
     if (_fatalLoadFailure case final failure?) {
       await _failLoad(failure);
       return;
+    }
+    late final BgiFontDecoder tileFont;
+    try {
+      // Source Load rereads only the selected region font, including warm Loads.
+      tileFont = await _readSourceFont(info.fontName);
+    } catch (e) {
+      await _failLoad(
+        LoreLoadFailure('${info.fontName.toLowerCase()}.fnt', cause: e),
+      );
+      return;
+    }
+    if (_fatalLoadFailure case final failure?) {
+      await _failLoad(failure);
+      return;
+    }
+    switch (info.fontName) {
+      case 'GROUND':
+        groundFont = tileFont;
+      case 'DEN':
+        denFont = tileFont;
+      case 'KEEP':
+        keepFont = tileFont;
+      default:
+        townFont = tileFont;
     }
     currentMap = loaded;
     if (!hasHeader && mapTiles != null) loaded.applyTileSnapshot(mapTiles);
