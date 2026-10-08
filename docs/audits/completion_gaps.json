@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 716,
-    "verified": 1132,
+    "partial": 708,
+    "verified": 1140,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -321,8 +321,8 @@
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part2:1",
-      "partial": 34,
-      "verified": 226
+      "partial": 26,
+      "verified": 234
     },
     {
       "routine": "LORESUB.PAS:at:1",

@@ -86,6 +86,9 @@ VERIFIED_CONTRACT_TESTS = {
     # The Water Field lord procedure is replayed for every etc[15] byte value
     # against native DOS reward records; unrelated campaign paths stay partial.
     "test/lore_water_lord_test.dart",
+    # Map 26's source-owned movement and final-battle continuation branches are
+    # exhaustively replayed; BGI presentation remains outside these contracts.
+    "test/map26_final_source_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

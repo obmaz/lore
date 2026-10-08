@@ -25157,7 +25157,7 @@
       "behavioral_evidence": [
         "test/map26_final_source_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/game/lore_world_manager.dart",
       "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
@@ -25525,7 +25525,7 @@
       "behavioral_evidence": [
         "test/map26_final_source_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
@@ -25541,7 +25541,7 @@
       "behavioral_evidence": [
         "test/map26_final_source_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
@@ -25669,7 +25669,7 @@
       "behavioral_evidence": [
         "test/map26_final_source_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
@@ -25689,7 +25689,7 @@
         "test/fixtures/dos_final_continuation.json",
         "tool/check_dos_final_completion.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle. Native completion supplement (2026-10-07): test/final_battle_native_dos_test.dart replays the unchanged EXE final fight from actual saved records and observed entrySeed through eight closed turns and three whole cures. Neo alone is dead, result2 escapes, and the farewell acknowledgement gates End_Demo. tool/check_dos_final_completion.py ties records to original captures and saved bytes. The surrounding campaign has 24 observation gaps; this does not verify every repeat/defeat branch or continuous new-game-to-ending execution."
     },
@@ -25705,7 +25705,7 @@
       "behavioral_evidence": [
         "test/map26_final_source_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
@@ -25721,7 +25721,7 @@
       "behavioral_evidence": [
         "test/map26_final_source_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle."
     },
@@ -25741,7 +25741,7 @@
         "test/fixtures/dos_final_continuation.json",
         "tool/check_dos_final_completion.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle. Native completion supplement (2026-10-07): test/final_battle_native_dos_test.dart replays the unchanged EXE final fight from actual saved records and observed entrySeed through eight closed turns and three whole cures. Neo alone is dead, result2 escapes, and the farewell acknowledgement gates End_Demo. tool/check_dos_final_completion.py ties records to original captures and saved bytes. The surrounding campaign has 24 observation gaps; this does not verify every repeat/defeat branch or continuous new-game-to-ending execution."
     },
@@ -56838,8 +56838,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 716,
-    "partially_verified_behavior_sites": 716,
+    "unverified_behavior_sites": 708,
+    "partially_verified_behavior_sites": 708,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
