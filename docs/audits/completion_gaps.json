@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 708,
-    "verified": 1140,
+    "partial": 700,
+    "verified": 1148,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -508,8 +508,8 @@
     },
     {
       "routine": "LORETALK.PAS:talkmode:1",
-      "verified": 124,
-      "partial": 22
+      "verified": 132,
+      "partial": 14
     }
   ],
   "unclassified_sites": [],

@@ -89,6 +89,9 @@ VERIFIED_CONTRACT_TESTS = {
     # Map 26's source-owned movement and final-battle continuation branches are
     # exhaustively replayed; BGI presentation remains outside these contracts.
     "test/map26_final_source_test.dart",
+    # Mad Joe and Lore Hunter replay both choice outcomes and slot cancellation
+    # against preserved DOS records; other talk-mode branches remain partial.
+    "test/dialogue_window_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

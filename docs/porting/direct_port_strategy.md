@@ -2630,3 +2630,10 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      fixture와 네이티브 최종전 보완 자료로 재생했다. 반복 탈출도 이동을 재실행하지
      않음을 대조했다. 계약 원장은 verified 1140개, partial 708개다. BGI 화면
      타이밍과 연속 신규 게임→엔딩 실행은 별도 partial 범위다.
+
+164. Mad Joe·Lore Hunter 대화 선택 계약 8건 검증 완료 (2026-10-08).
+     `LORETALK.PAS`의 Mad Joe 재모집과 Lore Hunter의 Escape·거절·보조 일원
+     선택·슬롯 취소를 각각 원본 상태와 비교했다. 저장 뒤 지도 타일 복원, 원시
+     `etc` bit 보존, 6번 슬롯 레코드도 DOS fixture와 대조한다. 계약 원장은
+     verified 1148개, partial 700개다. 다른 NPC 대화와 전체 대화 모드 루프는
+     partial 범위로 남는다.

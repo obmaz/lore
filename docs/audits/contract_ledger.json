@@ -30773,7 +30773,7 @@
       "behavioral_evidence": [
         "test/dialogue_window_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
       "reviewed_scope": "Original DOS repeat recruitment with etc[50] bit2 already set: full slot 6 record, tile 47, bit2; saved map retained through app restart and source asset reload restores talk tile. Synthetic DOS starting state, not a complete playthrough."
     },
@@ -30789,7 +30789,7 @@
       "behavioral_evidence": [
         "test/dialogue_window_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
       "reviewed_scope": "Original DOS repeat recruitment with etc[50] bit2 already set: full slot 6 record, tile 47, bit2; saved map retained through app restart and source asset reload restores talk tile. Synthetic DOS starting state, not a complete playthrough."
     },
@@ -32053,7 +32053,7 @@
       "behavioral_evidence": [
         "test/dialogue_window_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
       "reviewed_scope": "Lore Hunter source-owned choice with silent Escape vs reply 2 asyouwish; slot cancellation leaves state intact. DOS synthetic already-bit4 acceptance yields full slot6 record/tile44/etc38=169; UI fresh bit preserves other bits. Full DOS traversal not verified."
     },
@@ -32069,7 +32069,7 @@
       "behavioral_evidence": [
         "test/dialogue_window_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
       "reviewed_scope": "Lore Hunter source-owned choice with silent Escape vs reply 2 asyouwish; slot cancellation leaves state intact. DOS synthetic already-bit4 acceptance yields full slot6 record/tile44/etc38=169; UI fresh bit preserves other bits. Full DOS traversal not verified."
     },
@@ -32085,7 +32085,7 @@
       "behavioral_evidence": [
         "test/dialogue_window_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
       "reviewed_scope": "Lore Hunter source-owned choice with silent Escape vs reply 2 asyouwish; slot cancellation leaves state intact. DOS synthetic already-bit4 acceptance yields full slot6 record/tile44/etc38=169; UI fresh bit preserves other bits. Full DOS traversal not verified."
     },
@@ -32101,7 +32101,7 @@
       "behavioral_evidence": [
         "test/dialogue_window_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
       "reviewed_scope": "Lore Hunter source-owned choice with silent Escape vs reply 2 asyouwish; slot cancellation leaves state intact. DOS synthetic already-bit4 acceptance yields full slot6 record/tile44/etc38=169; UI fresh bit preserves other bits. Full DOS traversal not verified."
     },
@@ -32117,7 +32117,7 @@
       "behavioral_evidence": [
         "test/dialogue_window_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
       "reviewed_scope": "Lore Hunter source-owned choice with silent Escape vs reply 2 asyouwish; slot cancellation leaves state intact. DOS synthetic already-bit4 acceptance yields full slot6 record/tile44/etc38=169; UI fresh bit preserves other bits. Full DOS traversal not verified."
     },
@@ -32133,7 +32133,7 @@
       "behavioral_evidence": [
         "test/dialogue_window_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_talk_procedures.dart",
       "reviewed_scope": "Lore Hunter source-owned choice with silent Escape vs reply 2 asyouwish; slot cancellation leaves state intact. DOS synthetic already-bit4 acceptance yields full slot6 record/tile44/etc38=169; UI fresh bit preserves other bits. Full DOS traversal not verified."
     },
@@ -56838,8 +56838,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 708,
-    "partially_verified_behavior_sites": 708,
+    "unverified_behavior_sites": 700,
+    "partially_verified_behavior_sites": 700,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
