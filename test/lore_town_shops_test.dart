@@ -11,6 +11,7 @@ class _Io implements LoreShopIo {
 
   final List<int> answers;
   final List<String> trace = [];
+  final List<List<String>> menus = [];
   @override
   int gold;
   @override
@@ -33,6 +34,7 @@ class _Io implements LoreShopIo {
     required bool clean,
   }) async {
     trace.add('select:$title:${items.length}:$clean');
+    menus.add(List.of(items));
     return answers.removeAt(0);
   }
 
@@ -56,6 +58,51 @@ void main() {
   PartyMember knight() => PartyMember.createPreset(1);
   PartyMember monk() =>
       PartyMember.createPreset(1)..playerClass = PlayerClass.monk;
+
+  test(
+    'LORESUB.PAS ChooseWhom exhausts all named-slot masks and ranks',
+    () async {
+      for (var mask = 0; mask < 64; mask++) {
+        final named = [
+          for (var slot = 1; slot <= 6; slot++)
+            if ((mask & (1 << (slot - 1))) != 0) slot,
+        ];
+        final party = [
+          for (var slot = 1; slot <= 6; slot++)
+            knight()
+              ..name = named.contains(slot) ? 'Slot$slot' : ''
+              ..hp = 0
+              ..dead = 1
+              ..unconscious = 1,
+          knight()..name = 'Outside',
+        ];
+        final before = party.map((p) => p.toJson()).toList();
+        for (var rank = 0; rank <= named.length; rank++) {
+          final io = _Io([rank]);
+          expect(
+            await LoreTownShops.chooseWhom(io, party),
+            rank == 0 ? 0 : named[rank - 1],
+          );
+          expect(io.menus.single, [for (final slot in named) 'Slot$slot']);
+          expect(io.trace, [
+            '10:한명을 고르시오 ---',
+            'select::${named.length}:false',
+          ]);
+          expect(party.map((p) => p.toJson()).toList(), before);
+        }
+      }
+      for (var length = 0; length < 6; length++) {
+        final io = _Io([0]);
+        expect(
+          await LoreTownShops.chooseWhom(io, [
+            for (var slot = 0; slot < length; slot++) knight(),
+          ]),
+          0,
+        );
+        expect(io.menus.single.length, length);
+      }
+    },
+  );
 
   test(
     'Hospital matches the independent original DOS integer-overflow save',

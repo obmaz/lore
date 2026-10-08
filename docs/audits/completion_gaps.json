@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 481,
-    "verified": 1367,
+    "partial": 471,
+    "verified": 1377,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -339,7 +339,7 @@
     },
     {
       "routine": "LORESUB.PAS:choosewhom:1",
-      "partial": 7
+      "verified": 7
     },
     {
       "routine": "LORESUB.PAS:clear:1",
@@ -347,7 +347,8 @@
     },
     {
       "routine": "LORESUB.PAS:detectgameover:1",
-      "partial": 3
+      "verified": 2,
+      "partial": 1
     },
     {
       "routine": "LORESUB.PAS:display_condition:1",
@@ -375,7 +376,7 @@
     },
     {
       "routine": "LORESUB.PAS:exist:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:findgold:1",

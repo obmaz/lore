@@ -95,12 +95,14 @@ void main() {
         );
       }
 
-      for (final id in [1, 3, 5, 7]) {
-        await companion(id);
-      }
+      expect(find.text('선택: 0 / 4 명'), findsOneWidget);
       for (final id in inputs['companionsSelected'] as List) {
         await companion(id);
+        // Pascal Fourth ignores selecting an already selected companion.
+        // Exercise the same input twice without removing its selection.
+        await companion(id);
       }
+      expect(find.text('선택: 4 / 4 명'), findsOneWidget);
       await next();
       expect(created, isNotNull);
       expect(created!.map((p) => p.toJson()).toList(), fixture['records']);

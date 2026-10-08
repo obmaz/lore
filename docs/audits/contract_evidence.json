@@ -1,6 +1,86 @@
 {
   "contracts": [
     {
+      "id": "LORESUB.PAS:choosewhom:1:for:1",
+      "line": 615,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:1",
+      "line": 616,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:2",
+      "line": 623,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:exit:1",
+      "line": 625,
+      "kind": "exit",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:for:2",
+      "line": 628,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:3",
+      "line": 629,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:4",
+      "line": 631,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:exist:1:if:1",
+      "line": 324,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/lore_main_procedures_test.dart",
+      "note": "Independent source predicate: name presence, signed HP/status boundaries and all 64 six-slot masks; seventh slot excluded. The GameOver screen and etc[6] write remain separately partial.",
+      "verification": "verified"
+    },
+    {
       "id": "LOREMAIN.PAS:main:1:case:3",
       "line": 208,
       "kind": "case",
@@ -9177,7 +9257,7 @@
       "implementation": "lib/logic/lore_main_procedures.dart",
       "test": "test/lore_main_procedures_test.dart",
       "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
-      "verification": "partial"
+      "verification": "verified"
     },
     {
       "id": "LORESUB.PAS:detectgameover:1:if:1",
@@ -9187,7 +9267,7 @@
       "implementation": "lib/logic/lore_main_procedures.dart",
       "test": "test/lore_main_procedures_test.dart",
       "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
-      "verification": "partial"
+      "verification": "verified"
     },
     {
       "id": "LORESUB.PAS:detectgameover:1:if:2",

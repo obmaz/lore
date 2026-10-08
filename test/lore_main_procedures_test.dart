@@ -29,6 +29,54 @@ class _SequenceRandom implements Random {
 /// LOREMAIN.PAS field procedures (Main, Move_Mode, enter_swamp, enter_lava,
 /// enter_water) and LORESUB.PAS `DetectGameOver`.
 void main() {
+  test('LORESUB.PAS Exist and DetectGameOver exhaust six-slot masks', () async {
+    // Independent source predicate: name <> '', unconscious = 0,
+    // dead = 0, hp > 0. Signed nonzero status is inactive too.
+    for (final name in ['', 'Hero']) {
+      for (final hp in [-32768, -1, 0, 1, 32767]) {
+        for (final unconscious in [-32768, -1, 0, 1, 32767]) {
+          for (final dead in [-32768, -1, 0, 1, 32767]) {
+            final member = PartyMember.createPreset(1)
+              ..name = name
+              ..hp = hp
+              ..unconscious = unconscious
+              ..dead = dead;
+            expect(
+              member.isBattleActive,
+              name != '' && hp > 0 && unconscious == 0 && dead == 0,
+            );
+          }
+        }
+      }
+    }
+    for (var mask = 0; mask < 64; mask++) {
+      final party = [
+        for (var i = 0; i < 6; i++)
+          PartyMember.createPreset(1)
+            ..name = 'Slot${i + 1}'
+            ..hp = (mask & (1 << i)) == 0 ? 0 : 1
+            ..unconscious = 0
+            ..dead = 0,
+        PartyMember.createPreset(1)..hp = 1, // not a Pascal party slot
+      ];
+      final before = party.map((p) => p.toJson()).toList();
+      final completion = Completer<void>();
+      var calls = 0;
+      var returned = false;
+      final pending = LoreMainProcedures.detectGameOver(party, () {
+        calls++;
+        return completion.future;
+      }).then((_) => returned = true);
+      await Future<void>.delayed(Duration.zero);
+      expect(calls, mask == 0 ? 1 : 0);
+      expect(returned, mask != 0);
+      expect(party.map((p) => p.toJson()).toList(), before);
+      completion.complete();
+      await pending;
+      expect(returned, isTrue);
+    }
+  });
+
   test(
     'Move_Mode poison guards retain source slot, byte and integer order',
     () {

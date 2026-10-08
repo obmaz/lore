@@ -2767,3 +2767,16 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      전체 Flutter 1541건 통과(3건 skip), Python 87건 통과, analyze 문제 없음.
      두 신규 native 자료는 원본 EXE 재실행 결과도 동일하다. 런타임 동작
      수정·배포는 없고 검증 코드·자료·계약 연결을 추가했다.
+
+179. 생성 동료 선택 수정 및 공유 선택/생존 계약 10건 (2026-10-08).
+     Fourth의 초기 선택을 0명으로 바꾸고 중복 선택은 무시하도록 원작의
+     transdata 선택 플래그 흐름을 복원했다. 실제 DOS 새 게임 fixture의
+     역순 동료 선택·4개 저장 슬롯 대조에서 초기 0명과 중복 입력도 검사한다.
+     Exist는 이름, signed HP/상태 경계를 독립 원문 조건으로 대조했고,
+     DetectGameOver의 6개 슬롯 루프/조건은 64개 mask와 await 순서를 검사했다.
+     etc[6] 쓰기 및 GameOver 화면은 별도 partial로 유지한다.
+     ChooseWhom(FALSE)의 64개 이름 mask, 모든 순번/취소, 짧은 파티와
+     제외되는 7번째 슬롯, 상태 이상자의 이름 노출·무변경도 검사했다.
+     clean=TRUE 렌더링/DOS 그래픽은 범위에서 제외한다.
+     verified 1377개, partial 471개이며 1701개 목표는 아직 미달이다.
+     전체 Flutter 1543건(3건 skip)과 집중 생성/공유 판정 검사가 통과했다.

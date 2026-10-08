@@ -26497,11 +26497,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/lore_main_procedures_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "reviewed_scope": "Independent source predicate: name presence, signed HP/status boundaries and all 64 six-slot masks; seventh slot excluded. The GameOver screen and etc[6] write remain separately partial."
     },
     {
       "id": "LORESUB.PAS:eprint:1:if:1",
@@ -27011,7 +27011,7 @@
       "behavioral_evidence": [
         "test/lore_main_procedures_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_main_procedures.dart",
       "reviewed_scope": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state."
     },
@@ -27027,7 +27027,7 @@
       "behavioral_evidence": [
         "test/lore_main_procedures_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_main_procedures.dart",
       "reviewed_scope": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state."
     },
@@ -27217,11 +27217,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/lore_town_shops_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_town_shops.dart",
+      "reviewed_scope": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded."
     },
     {
       "id": "LORESUB.PAS:choosewhom:1:if:1",
@@ -27233,11 +27233,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/lore_town_shops_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_town_shops.dart",
+      "reviewed_scope": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded."
     },
     {
       "id": "LORESUB.PAS:choosewhom:1:if:2",
@@ -27249,11 +27249,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/lore_town_shops_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_town_shops.dart",
+      "reviewed_scope": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded."
     },
     {
       "id": "LORESUB.PAS:choosewhom:1:exit:1",
@@ -27265,11 +27265,11 @@
       "outcomes": null,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/lore_town_shops_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_town_shops.dart",
+      "reviewed_scope": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded."
     },
     {
       "id": "LORESUB.PAS:choosewhom:1:for:2",
@@ -27281,11 +27281,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/lore_town_shops_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_town_shops.dart",
+      "reviewed_scope": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded."
     },
     {
       "id": "LORESUB.PAS:choosewhom:1:if:3",
@@ -27297,11 +27297,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/lore_town_shops_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_town_shops.dart",
+      "reviewed_scope": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded."
     },
     {
       "id": "LORESUB.PAS:choosewhom:1:if:4",
@@ -27313,11 +27313,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/lore_town_shops_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_town_shops.dart",
+      "reviewed_scope": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded."
     },
     {
       "id": "LORESUB.PAS:returnsex:1:if:1",
@@ -33827,6 +33827,86 @@
     }
   ],
   "linked_contracts": [
+    {
+      "id": "LORESUB.PAS:choosewhom:1:for:1",
+      "line": 615,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:1",
+      "line": 616,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:2",
+      "line": 623,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:exit:1",
+      "line": 625,
+      "kind": "exit",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:for:2",
+      "line": 628,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:3",
+      "line": 629,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:choosewhom:1:if:4",
+      "line": 631,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_town_shops.dart",
+      "test": "test/lore_town_shops_test.dart",
+      "note": "Source ChooseWhom(FALSE): all 64 named masks, every rank/cancel, short parties, excluded seventh slot, inactive names, menu order and no mutation. DOS rendering and clean=TRUE are excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:exist:1:if:1",
+      "line": 324,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/models/party_member.dart",
+      "test": "test/lore_main_procedures_test.dart",
+      "note": "Independent source predicate: name presence, signed HP/status boundaries and all 64 six-slot masks; seventh slot excluded. The GameOver screen and etc[6] write remain separately partial.",
+      "verification": "verified"
+    },
     {
       "id": "LOREMAIN.PAS:main:1:case:3",
       "line": 208,
@@ -43099,7 +43179,7 @@
       "implementation": "lib/logic/lore_main_procedures.dart",
       "test": "test/lore_main_procedures_test.dart",
       "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
-      "verification": "partial"
+      "verification": "verified"
     },
     {
       "id": "LORESUB.PAS:detectgameover:1:if:1",
@@ -43109,7 +43189,7 @@
       "implementation": "lib/logic/lore_main_procedures.dart",
       "test": "test/lore_main_procedures_test.dart",
       "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
-      "verification": "partial"
+      "verification": "verified"
     },
     {
       "id": "LORESUB.PAS:detectgameover:1:if:2",
@@ -51850,17 +51930,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:exist:1:if:1",
-      "line": 324,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:eprint:1:if:1",
       "line": 332,
       "kind": "if",
@@ -52017,83 +52086,6 @@
     {
       "id": "LORESUB.PAS:selectenemy:1:if:7",
       "line": 601,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:choosewhom:1:for:1",
-      "line": 615,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:choosewhom:1:if:1",
-      "line": 616,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:choosewhom:1:if:2",
-      "line": 623,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:choosewhom:1:exit:1",
-      "line": 625,
-      "kind": "exit",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:choosewhom:1:for:2",
-      "line": 628,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:choosewhom:1:if:3",
-      "line": 629,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:choosewhom:1:if:4",
-      "line": 631,
       "kind": "if",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
@@ -55896,7 +55888,7 @@
     {
       "path": "test/lore_main_procedures_test.dart",
       "kind": "test",
-      "sha256": "c52367c04baa9a16ee0246705cc920e7ee805456db0dd9ae46477c6ea0f80682",
+      "sha256": "f3b188e7225d4665931df72e742f4372342b5ac03c524c1dbd23241ebdd2663b",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LORESUB.PAS"
@@ -56158,7 +56150,7 @@
     {
       "path": "test/lore_town_shops_test.dart",
       "kind": "test",
-      "sha256": "ba9715c344e2a7b9743f75a47d68e97572e55f6803d84a6f79500ff3e098d1f2",
+      "sha256": "e3c1ae588d4f33594ac620285b0fdcd6d4208a96e9f06ea445f61a58ca2fee08",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -56409,7 +56401,7 @@
     {
       "path": "test/new_game_dos_test.dart",
       "kind": "test",
-      "sha256": "ce86ec252dec5ff73b06bbfcd6ffd9b941a75987345ae2e6a222f6238c28a28c",
+      "sha256": "07dd1b98f41117af05523953e81c23733e7dd858ae4f588f1c86b595eb9e80de",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -58008,9 +58000,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "a5b1c1895244e1131336d5c33e3456630c8242d95fc6d57f6dbd1d218ec862c8",
+      "sha256": "ba2e490361cc9da9a6c654bd181553ffdcb2b11d5adc7cc6691154d01e10d097",
       "top_level_counts": {
-        "contracts": 1492
+        "contracts": 1500
       }
     }
   ],
@@ -58019,8 +58011,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 481,
-    "partially_verified_behavior_sites": 481,
+    "unverified_behavior_sites": 471,
+    "partially_verified_behavior_sites": 471,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

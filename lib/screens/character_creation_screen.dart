@@ -47,12 +47,9 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   final List<int> _transdata = List.filled(6, 0);
 
   // 선택된 동료 4명 인덱스 (1..10 중)
-  final Set<int> _selectedCompanions = {
-    1,
-    3,
-    5,
-    7,
-  }; // 기본값: Hercules, Merlin, Genius Kie, Regulus
+  // Fourth starts with all ten selection flags cleared. A selected companion
+  // cannot be deselected; only the explicit restart clears these flags.
+  final Set<int> _selectedCompanions = {};
 
   // 원작 LORECRET.PAS 데이터 (assets/data/creation.json / 내장 폴백)
   LoreCreationData get _data => LoreCreationData.instance;
@@ -1070,9 +1067,8 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                             TextButton(
                               onPressed: () {
                                 setState(() {
-                                  if (isSelected) {
-                                    _selectedCompanions.remove(c.id);
-                                  } else if (_selectedCompanions.length < 4) {
+                                  if (!isSelected &&
+                                      _selectedCompanions.length < 4) {
                                     _selectedCompanions.add(c.id);
                                   }
                                 });
