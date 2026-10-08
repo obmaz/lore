@@ -92,6 +92,10 @@ VERIFIED_CONTRACT_TESTS = {
     # Mad Joe and Lore Hunter replay both choice outcomes and slot cancellation
     # against preserved DOS records; other talk-mode branches remain partial.
     "test/dialogue_window_test.dart",
+    # These two source-local contracts exhaust their respective input domains:
+    # all map identities for ReturnDefaultFont and all six swamp party slots.
+    "test/default_font_test.dart",
+    "test/swamp_source_parity_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

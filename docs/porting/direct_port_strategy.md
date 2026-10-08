@@ -2637,3 +2637,9 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      `etc` bit 보존, 6번 슬롯 레코드도 DOS fixture와 대조한다. 계약 원장은
      verified 1148개, partial 700개다. 다른 NPC 대화와 전체 대화 모드 루프는
      partial 범위로 남는다.
+
+165. 기본 글꼴·늪 독 순서 계약 2건 검증 완료 (2026-10-08).
+     `LORESUB.PAS:ReturnDefaultFont`의 27개 지도 identity case와
+     `LOREMAIN.PAS:enter_swamp`의 여섯 일행 슬롯 `Random(20)` 소비 후 독 적용
+     순서를 원본 조건에 전수 대조했다. 계약 원장은 verified 1150개, partial
+     698개다. 필드 렌더링과 늪 진입의 나머지 이동·전투 결과는 partial이다.

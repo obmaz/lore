@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 700,
-    "verified": 1148,
+    "partial": 698,
+    "verified": 1150,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -210,8 +210,8 @@
     },
     {
       "routine": "LOREMAIN.PAS:enter_swamp:1",
-      "verified": 14,
-      "partial": 3
+      "verified": 15,
+      "partial": 2
     },
     {
       "routine": "LOREMAIN.PAS:enter_water:1",
@@ -423,7 +423,7 @@
     },
     {
       "routine": "LORESUB.PAS:returndefaultfont:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:returndefense:1",

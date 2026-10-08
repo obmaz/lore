@@ -14181,7 +14181,7 @@
       "behavioral_evidence": [
         "test/swamp_source_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_swamp_logic.dart",
       "reviewed_scope": "Roll random(20) for all six party slots before applying poison."
     },
@@ -27181,7 +27181,7 @@
       "behavioral_evidence": [
         "test/default_font_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_tile_protocol.dart",
       "reviewed_scope": "ReturnDefaultFont ported as LoreTileProtocol.defaultFontSlot (all 27 cases compared against the Pascal source by the test); the field renderer draws special cells (tile 0) from that slot like Load's move into font^[0]."
     },
@@ -56838,8 +56838,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 700,
-    "partially_verified_behavior_sites": 700,
+    "unverified_behavior_sites": 698,
+    "partially_verified_behavior_sites": 698,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
