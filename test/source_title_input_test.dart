@@ -27,10 +27,11 @@ void main() {
     messenger.setMockMethodCallHandler(
       const MethodChannel('xyz.luan/audioplayers'),
       (call) async {
-        if (call.method == 'create')
+        if (call.method == 'create') {
           silence(
             'xyz.luan/audioplayers/events/${(call.arguments as Map)['playerId']}',
           );
+        }
         return 1;
       },
     );

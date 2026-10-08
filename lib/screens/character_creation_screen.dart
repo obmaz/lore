@@ -354,8 +354,9 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
               : panel;
         },
       ).then((_) {
-        if (mounted && _awaitingProfileKey)
+        if (mounted && _awaitingProfileKey) {
           setState(() => _awaitingProfileKey = false);
+        }
       });
     } else {
       setState(() => _profileTarget = companion);
