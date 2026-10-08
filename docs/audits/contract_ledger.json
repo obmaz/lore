@@ -28084,11 +28084,15 @@
       "outcomes": 46,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/return_magic_dos_test.dart",
+        "test/fixtures/dos_return_magic.json",
+        "tool/export_dos_return_magic.py",
+        "test/source_sub_labels_test.dart",
+        "lib/logic/lore_battle.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_sub_text.dart",
+      "reviewed_scope": "Original ReturnMagic CASE and native runtime short-string/set-membership helpers execute unstubbed for all 65536 signed integer inputs: exactly 45 assigned names; all 65491 others leave the caller result buffer untouched. Three different buffers demonstrate undefined result dependence. Every defined name and low-byte grammatical outputs compare; actual battle log owner uses all defined names without state/RNG mutation. Integer parameter wrap is retained. Explicit intentional invalid-input difference: port raises StateError for an unassigned result instead of interpreting uninitialized caller memory or fabricating an empty name. This is a bounded fault policy, not identical invalid-memory output; no ReturnMessage enemy[0] or BGI glyph completion is claimed."
     },
     {
       "id": "LORESUB.PAS:returnmagic:1:if:1",
@@ -53384,6 +53388,22 @@
       ]
     },
     {
+      "id": "LORESUB.PAS:returnmagic:1:case:1",
+      "line": 729,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/return_magic_dos_test.dart",
+      "note": "Original ReturnMagic CASE and native runtime short-string/set-membership helpers execute unstubbed for all 65536 signed integer inputs: exactly 45 assigned names; all 65491 others leave the caller result buffer untouched. Three different buffers demonstrate undefined result dependence. Every defined name and low-byte grammatical outputs compare; actual battle log owner uses all defined names without state/RNG mutation. Integer parameter wrap is retained. Explicit intentional invalid-input difference: port raises StateError for an unassigned result instead of interpreting uninitialized caller memory or fabricating an empty name. This is a bounded fault policy, not identical invalid-memory output; no ReturnMessage enemy[0] or BGI glyph completion is claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_return_magic.json",
+        "tool/export_dos_return_magic.py",
+        "test/source_sub_labels_test.dart",
+        "lib/logic/lore_battle.dart"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -54520,17 +54540,6 @@
       "id": "LORESUB.PAS:message:1:for:1",
       "line": 386,
       "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:returnmagic:1:case:1",
-      "line": 729,
-      "kind": "case",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -58340,6 +58349,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/return_magic_dos_test.dart",
+      "kind": "test",
+      "sha256": "154aad622640c57abd67c28a037cc68e32d9f01aaa30e92dd858ef85c88d1bcc",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/rigel_blessing_test.dart",
       "kind": "test",
       "sha256": "1016afb262f2bea589fc00848d253ba0eee58866aa07c1a8d8c163308d016e53",
@@ -59652,6 +59670,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_return_magic.json",
+      "kind": "fixture",
+      "sha256": "03071888b51e03fffc41f9aa48d4daa750d068174bf2ca8c281e7d412cd4354d",
+      "test_users": [
+        "test/return_magic_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_save_party.json",
       "kind": "fixture",
       "sha256": "78d501f52fef43386b776ff5008ff24037d6d67453f66d5930025de429b37d73",
@@ -60179,9 +60206,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "6e8ad5c8a0ddeb765112f6366c3310ce044d6f8c1092ea5b1ddcc5194f9f85fe",
+      "sha256": "4401393292ce9b86c95bce35a06423ed2161a44ec02b758ee8756182028d55b3",
       "top_level_counts": {
-        "contracts": 1676
+        "contracts": 1677
       }
     }
   ],
@@ -60190,8 +60217,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 116,
-    "partially_verified_behavior_sites": 116,
+    "unverified_behavior_sites": 115,
+    "partially_verified_behavior_sites": 115,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

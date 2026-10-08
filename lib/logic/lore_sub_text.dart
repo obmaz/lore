@@ -4,6 +4,8 @@
 /// 포트에서도 동일하게 쓰기 위해 모아 둔다.
 library;
 
+import 'lore_source_memory.dart';
+
 /// 원작 `LORESUB.PAS:440` 이후 GameOver / 세이브·로드 선택창.
 class LoreSubText {
   const LoreSubText._();
@@ -210,11 +212,16 @@ class LoreSubText {
     45: '염력',
   };
 
-  static const String magicNamesDefault = '';
-
-  static const String magicNameDefault = '';
-
-  static String magicName(int id) => magicNames[id] ?? magicNameDefault;
+  static String magicName(int id) {
+    final magic = LorePascal.integer(id);
+    final name = magicNames[magic];
+    if (name == null) {
+      // The source CASE has no else and leaves the caller's result buffer
+      // untouched. Do not turn uninitialized memory into a fabricated label.
+      throw StateError('LORESUB ReturnMagic has no defined result for $magic');
+    }
+    return name;
+  }
 
   static const Set<int> _josaE = {
     2,
@@ -238,8 +245,10 @@ class LoreSubText {
   };
 
   /// LORESUB `ReturnMagic`: `if magic in [2,9,10,...] then Josa := ''` else `'으'`.
-  static String magicJosa(int id) => _josaE.contains(id) ? '' : '으';
+  static String magicJosa(int id) =>
+      _josaE.contains(LorePascal.byte(id)) ? '' : '으';
 
   /// LORESUB `ReturnMagic`: `if magic in [2,9,10,...] then Mokjuk := '를'` else `'을'`.
-  static String magicMokjuk(int id) => _josaE.contains(id) ? '를' : '을';
+  static String magicMokjuk(int id) =>
+      _josaE.contains(LorePascal.byte(id)) ? '를' : '을';
 }

@@ -3063,3 +3063,23 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      unclassified 0. 전체 검사 후 푸시하고 다음 미완료 묶음을 이어간다.
      최신 코드 전체 Flutter 1678건(3 skip), Python 130건, analyze 및
      웹 release build가 통과했다. 원본 추출 재생도 fixture와 일치했다.
+
+198. **ReturnMagic 전 integer 범위와 미할당 결과의 명시적 경계**
+     원본 CASE뿐 아니라 원본 short-string 복사·set membership runtime을
+     stub 없이 실행해 signed 16-bit 번호 65536개를 모두 대조한다.
+     정확히 1~45만 이름을 할당하고 나머지 65491개는 호출자가 제공한
+     결과 buffer를 바꾸지 않는다. 서로 다른 세 buffer의 결과가 각각
+     그대로 남는 것을 추가 확인해 빈 문자열 default를 원본 결과처럼
+     취급하지 않는다. 조사 선택은 EXE처럼 하위 byte를 사용하도록
+     수정하며 integer 인자 wrap도 유지한다. 모든 이름·조사와 실제
+     battle log owner의 상태/RNG 불변을 대조한다.
+     의도적 미정의 입력 처리 차이: 결과를 할당하지 않는 번호는 앱에서
+     StateError로 드러낸다. 미초기화 caller memory를 재현하거나 임의의
+     빈 이름을 만들어 게임을 계속하지 않는다. 이는 정상 45개 이름의
+     동등성과 구분되는 명시적 오류 정책이며 invalid-memory 결과 자체의
+     동일성을 주장하지 않는다. ReturnMessage enemy[0]이나 BGI glyph는
+     이번 완료에 포함하지 않는다. 1개 추가 해소로 verified 1733 /
+     partial 115 / unclassified 0. 검사 후 푸시하고 다음 묶음을 이어간다.
+     전체 Flutter 1681건(3 skip), Python 132건, analyze 및 웹 release
+     build가 통과했다. 전체 integer 원본 추출을 다시 실행해 fixture와
+     일치함을 확인했고 원장·완료 gap·source memory도 최신이다.

@@ -18931,6 +18931,22 @@
         "test/fixtures/dos_remains_blink.json",
         "tool/export_dos_remains_blink.py"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:returnmagic:1:case:1",
+      "line": 729,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/return_magic_dos_test.dart",
+      "note": "Original ReturnMagic CASE and native runtime short-string/set-membership helpers execute unstubbed for all 65536 signed integer inputs: exactly 45 assigned names; all 65491 others leave the caller result buffer untouched. Three different buffers demonstrate undefined result dependence. Every defined name and low-byte grammatical outputs compare; actual battle log owner uses all defined names without state/RNG mutation. Integer parameter wrap is retained. Explicit intentional invalid-input difference: port raises StateError for an unassigned result instead of interpreting uninitialized caller memory or fabricating an empty name. This is a bounded fault policy, not identical invalid-memory output; no ReturnMessage enemy[0] or BGI glyph completion is claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_return_magic.json",
+        "tool/export_dos_return_magic.py",
+        "test/source_sub_labels_test.dart",
+        "lib/logic/lore_battle.dart"
+      ]
     }
   ]
 }
