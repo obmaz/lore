@@ -7,7 +7,7 @@ import 'package:lore/logic/lore_random.dart';
 import 'package:lore/models/monster.dart';
 import 'package:lore/models/party_member.dart';
 
-/// Independent shipped BattleMode k=8 instructions, not a Dart-derived oracle.
+/// Independent LOREBATT.PAS BattleMode k=8 instructions, not a Dart-derived oracle.
 void main() {
   final fixture = jsonDecode(
     File('test/fixtures/dos_auto_select.json').readAsStringSync(),

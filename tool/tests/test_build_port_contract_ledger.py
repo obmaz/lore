@@ -10,6 +10,13 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_cast_special_native_scope_is_exact(self):
+        closed = [s for s in ledger.build()['control_sites']
+                  if 'test/cast_special_dos_test.dart' in s['behavioral_evidence']]
+        self.assertEqual(len(closed), 47)
+        self.assertTrue(all(s['routine'] == 'LOREBATT.PAS:castspecial:1'
+                            and s['verification_status'] == 'verified' for s in closed))
+
     def test_battle_esp_native_scope_is_49_game_state_contracts(self):
         sites = ledger.build()["control_sites"]
         closed = [s for s in sites if "test/battle_esp_dos_test.dart"
@@ -77,7 +84,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 349)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 284)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

@@ -2826,5 +2826,23 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      독립 추출한 문구/sexdata를 대조했다. DOS glyph/BGI 검증은 아니다.
      화면은 인자 push 전 bypass하되 숫자 condition 변경은 원본으로 재생한다.
      검증 완료 1499개, partial 349개이며 1701개 목표는 아직 진행 중이다.
+
+183. **CastSpecial 원본 숫자 분기 완료**
+     원본 EXE의 CastSpecial과 실제 Random을 73,460개 입력에서 실행했다.
+     모든 action/capability byte, signed SP 경계, resistance/accuracy/AC 및
+     level byte, 1..7 적 슬롯과 1/6 시전자 슬롯을 대조했다. 모든 숫자 조건의
+     양쪽 경로, short-circuit Random(2), byte wrap, 조기 종료와 EXE literal
+     메시지를 독립적으로 확인했다. 출력 glyph/BGI는 비교 범위가 아니다.
+     47개 계약만 완료로 반영하여 verified 1546 / partial 302가 된다.
+
+184. **Fourth 및 기존 독립 native 증거의 좁은 범위 해소**
+     Fourth의 실제 flag 압축/문자열 복사/동료 초기화 명령을 모든 210개
+     동료 조합과 11계급 × 256 accuracy에서 실행하고 3026개 전체 파티
+     레코드를 비교했다. 해당 숫자 분기 6개만 완료로 반영한다.
+     기존 native autoSelect의 class/level/target 5개, 원본 map class에 따른
+     실제 이동 방향 5개, native lava roll 1개와 EnemyAttack strength gate
+     1개도 각각 독립 증거 범위에 맞게 해소한다. 다른 입력/그리기 조건은
+     유지한다. verified 1564 / partial 284. 전체 Flutter 1570개(3 skip),
+     추가 Fourth 1개, 분석 통과; 1701개 목표는 진행 중이다.
      전체 Flutter 1563건(3건 skip), 최종 집중 native 5건 및 analyze 통과.
      런타임 변경·배포 없이 검증 자료와 근거 연결을 추가했다.

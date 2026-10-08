@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 349,
-    "verified": 1499,
+    "partial": 284,
+    "verified": 1564,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -22,7 +22,8 @@
     },
     {
       "routine": "LOREBATT.PAS:battlemode:1",
-      "partial": 42
+      "partial": 37,
+      "verified": 5
     },
     {
       "routine": "LOREBATT.PAS:castall:1",
@@ -50,7 +51,7 @@
     },
     {
       "routine": "LOREBATT.PAS:castspecial:1",
-      "partial": 47
+      "verified": 47
     },
     {
       "routine": "LOREBATT.PAS:displayenemies:1",
@@ -66,8 +67,7 @@
     },
     {
       "routine": "LOREBATT.PAS:enemyattack:1",
-      "verified": 7,
-      "partial": 1
+      "verified": 8
     },
     {
       "routine": "LOREBATT.PAS:enemycure:1",
@@ -121,8 +121,8 @@
     },
     {
       "routine": "LORECRET.PAS:fourth:1",
-      "partial": 22,
-      "verified": 4
+      "partial": 16,
+      "verified": 10
     },
     {
       "routine": "LORECRET.PAS:last:1",
@@ -209,8 +209,8 @@
     },
     {
       "routine": "LOREMAIN.PAS:enter_lava:1",
-      "partial": 3,
-      "verified": 10
+      "partial": 2,
+      "verified": 11
     },
     {
       "routine": "LOREMAIN.PAS:enter_swamp:1",
@@ -223,8 +223,8 @@
     },
     {
       "routine": "LOREMAIN.PAS:main:1",
-      "partial": 13,
-      "verified": 13
+      "partial": 8,
+      "verified": 18
     },
     {
       "routine": "LOREMAIN.PAS:move_mode:1",
@@ -590,6 +590,14 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_cast_special.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/cast_special_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_chamber_battle_phase.json",
       "explicit_contracts": [],
       "note_mentions": [],
@@ -612,6 +620,14 @@
       "test_candidates": [
         "test/boss_hp_override_ui_test.dart",
         "test/condition_storage_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_fourth.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_fourth_dos_test.dart"
       ]
     },
     {
@@ -1301,11 +1317,6 @@
         "LOREBATT.PAS:battlemode:1:if:5",
         "LOREBATT.PAS:battlemode:1:if:6",
         "LOREBATT.PAS:battlemode:1:case:1",
-        "LOREBATT.PAS:battlemode:1:case:2",
-        "LOREBATT.PAS:battlemode:1:case:3",
-        "LOREBATT.PAS:battlemode:1:if:7",
-        "LOREBATT.PAS:battlemode:1:for:3",
-        "LOREBATT.PAS:battlemode:1:if:8",
         "LOREBATT.PAS:battlemode:1:if:9",
         "LOREBATT.PAS:battlemode:1:for:4",
         "LOREBATT.PAS:battlemode:1:case:4",
@@ -1382,9 +1393,7 @@
     {
       "path": "test/fixtures/dos_random_order.json",
       "explicit_contracts": [],
-      "note_mentions": [
-        "LOREMAIN.PAS:enter_lava:1:for:2"
-      ],
+      "note_mentions": [],
       "test_candidates": [
         "test/random_order_dos_test.dart"
       ]
@@ -1422,7 +1431,6 @@
         "LOREBATT.PAS:runaway:1:if:1",
         "LOREBATT.PAS:battlemode:1:if:1",
         "LOREBATT.PAS:battlemode:1:for:2",
-        "LOREBATT.PAS:battlemode:1:case:2",
         "LOREBATT.PAS:encounterenemy:1:if:8"
       ],
       "test_candidates": [
