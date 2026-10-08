@@ -3190,3 +3190,24 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      Python 146건과 analyze가 통과했다. 원본 Load 108가지 전체를
      재실행해 fixture 일치를 확인했다. 런타임 변경은 없으며 직전
      웹 release build 결과를 유지한다.
+
+206. **저장 지도 자체의 크기 복원 및 기본 지도 의존 제거**
+     원본 전체 Load에서 최초 저장 지도 경로의 기본 MAP 파일을
+     가상 디렉터리에서 실제로 제거해도 108가지 실행 결과가 동일하다.
+     저장 schema v3에 원본 SaveN.map의 가로·세로 헤더를 보존한다.
+     처음 불러오기와 Resume은 헤더·타일로 복원하여 기본 MAP을 읽지
+     않는다. 지도 전환은 저장 헤더를 받지 않아 기본 MAP을 새로 읽는다.
+     27개 지도와 데스크톱/모바일 Load·Save·Resume을 검사한다.
+     이전 무버전/v1/v2 저장은 헤더가 없으므로 기존 기본 지도 크기
+     adapter를 유지하며 새 저장부터 헤더를 기록한다. 잘못된 헤더·
+     범위 밖 크기·잘린 payload는 영구 Load 실패로 중단하고 기본 지도로
+     수선하지 않는다. 배열 밖 DOS 메모리 결과나 I/O·BGI 픽셀의
+     동일성을 주장하지 않는다. 알 수 없는 지도 ID는 기존 명시적
+     실패를 유지한다(원본 ReturnDefaultFont는 해당 CASE가 미지정).
+     지도 선택 IF 1675만 해소하여 verified 1745 / partial 103 /
+     unclassified 0. 전체 검사·웹 build 후 푸시하고 다음 묶음을 진행한다.
+     관련 Flutter 33건, 전체 Flutter 1721건(3 skip), Python 147건,
+     analyze와 웹 release build가 통과했다. 기본 MAP 없는 원본 108가지
+     재실행 결과와 생성 보고서도 일치했다. 다음은 필수 FNT 파일 실패
+     경로다. 현재 원본 탐색에서 없거나 잘린 party/player/CHARA/지역
+     FNT는 각 파일 이름과 올바른 need 값으로 ErrorMessage에 진입한다.

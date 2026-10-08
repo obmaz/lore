@@ -58,6 +58,8 @@ def build():
         canonical=(root/f'{map_name}.MAP').read_bytes();snapshot=bytearray(canonical);snapshot[2]=42;snapshot[-1]=44
         files=dict(resources,**{'party1.dat':party(map_id,1000),'player1.dat':b''.join(file_players[:6]),map_name.lower()+'.map':canonical})
         if saved:files['save1.map']=bytes(snapshot)
+        # A cold valid SaveN.map must not depend on the canonical MAP file.
+        if saved and not warm:del files[map_name.lower()+'.map']
         handles={};events=[];dta=0x78000
         def read_name(v,pointer):
             return bytes(v.mem_read(pointer,256)).split(b'\0',1)[0].decode('ascii').replace('\\','/').split('/')[-1].lower()

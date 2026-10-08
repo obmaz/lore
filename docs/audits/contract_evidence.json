@@ -19047,11 +19047,26 @@
       "classification": "common-rule",
       "implementation": "lib/screens/main_game_screen.dart",
       "test": "test/load_phases_dos_test.dart",
-      "note": "Original complete Load executes 108 successful cold/warm/saved paths across 27 map IDs with original file/string/read helpers; only DOS and stack guard are supplied. Cold copies six FILE records and party, warm retains MEM records and party; supplied seventh record retained. Actual desktop/mobile cold restoration, warm map change and resave preserve six records, gold, food, all etc bytes and immutable CHARA font identity. Closes only cold/warm record/font initialization conditional, not file failures, native startup scratch bytes or BGI pixels. Map-source conditional remains partial: modern snapshot still requires canonical base dimensions.",
+      "note": "Original complete Load executes 108 successful cold/warm/saved paths across 27 map IDs with original file/string/read helpers; only DOS and stack guard are supplied. Cold copies six FILE records and party, warm retains MEM records and party; supplied seventh record retained. Actual desktop/mobile cold restoration, warm map change and resave preserve six records, gold, food, all etc bytes and immutable CHARA font identity. Closes only cold/warm record/font initialization conditional, not file failures, native startup scratch bytes or BGI pixels. Map-source choice is separately verified by saved_map_header_test. Legacy headerless saves require canonical base dimensions.",
       "verification": "verified",
       "supporting_evidence": [
         "test/save_party_dos_test.dart",
         "test/load_state_dos_test.dart",
+        "tool/export_dos_load_phases.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:6",
+      "line": 1675,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/saved_map_header_test.dart",
+      "note": "Full native Load replays 108 defined map-ID cold/warm/saved cases with canonical MAP physically absent for cold saved cases. Cold SaveN.map owns header and tiles; warm reload ignores saved map and reads canonical. Actual 27-map runtime loads make zero base reads for saved headers; desktop/mobile initial Load, Save and Resume preserve native grids, records and party bytes without canonical resource. Save schema v3 records width/height; v0/v1/v2 headerless Flutter snapshots keep explicit legacy base-dimension adapter. Malformed/missing header, unsafe geometry and truncated payload raise permanent LoreLoadFailure without repairing from base; this is not invalid-memory equivalence or DOS I/O/error/pixel parity. Unknown map IDs remain bounded faults (native ReturnDefaultFont has no assigned case); no invented map/default font behavior.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/load_phases_dos_test.dart",
+        "test/map_reads_dos_test.dart",
         "tool/export_dos_load_phases.py"
       ]
     }

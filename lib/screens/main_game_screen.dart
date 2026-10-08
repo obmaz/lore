@@ -269,6 +269,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
       initialPlayerX: startX,
       initialPlayerY: startY,
       initialMapTiles: widget.initialSaveData?.mapTiles,
+      initialMapWidth: widget.initialSaveData?.mapWidth,
+      initialMapHeight: widget.initialSaveData?.mapHeight,
+      initialSnapshotName: 'save${widget.initialSaveData?.slot ?? 1}.map',
       random: _sessionRandom,
       mapLoader: widget.mapLoader,
       onLoadFailure: (failure) {
@@ -1544,6 +1547,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     flags: LoreDialogueManager.instance.getSaveFlags(),
     etc: _sourceEtc.fieldCounters(),
     mapTiles: _game.currentMap?.tileSnapshot() ?? const [],
+    mapWidth: _game.currentMap?.xmax,
+    mapHeight: _game.currentMap?.ymax,
     consumedScripts: _scripts.consumedScripts.toList(),
   );
 
@@ -1946,6 +1951,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
       startX: save.playerX,
       startY: save.playerY,
       mapTiles: save.mapTiles,
+      mapWidth: save.mapWidth,
+      mapHeight: save.mapHeight,
+      snapshotName: 'save${save.slot}.map',
     );
     if (mounted) _displayCondition();
   }

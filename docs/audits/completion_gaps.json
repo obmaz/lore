@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 104,
-    "verified": 1744,
+    "partial": 103,
+    "verified": 1745,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -402,8 +402,8 @@
     },
     {
       "routine": "LORESUB.PAS:load:1",
-      "verified": 16,
-      "partial": 5
+      "verified": 17,
+      "partial": 4
     },
     {
       "routine": "LORESUB.PAS:message:1",
@@ -1327,7 +1327,8 @@
       "explicit_contracts": [],
       "note_mentions": [],
       "test_candidates": [
-        "test/load_phases_dos_test.dart"
+        "test/load_phases_dos_test.dart",
+        "test/saved_map_header_test.dart"
       ]
     },
     {

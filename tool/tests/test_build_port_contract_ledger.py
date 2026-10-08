@@ -26,6 +26,17 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertIn('FormatException', map_note)
         self.assertIn('not invalid-memory byte equivalence', map_note)
 
+    def test_saved_header_scope_keeps_legacy_and_invalid_memory_adapters_explicit(self):
+        sites = ledger.build()['control_sites']
+        evidence = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        closed = {r['id'] for r in evidence if r.get('test') ==
+                  'test/saved_map_header_test.dart' and r.get('verification') == 'verified'}
+        self.assertEqual([(s['routine'], s['line']) for s in sites if s['id'] in closed],
+                         [('LORESUB.PAS:load:1', 1675)])
+        note = next(r['note'] for r in evidence if r['id'] in closed)
+        self.assertIn('legacy base-dimension adapter', note)
+        self.assertIn('not invalid-memory equivalence', note)
+
     def test_load_phases_scope_is_only_successful_cold_warm_initialization(self):
         sites = ledger.build()['control_sites']
         evidence = json.loads(ledger.EVIDENCE.read_text())['contracts']
@@ -34,7 +45,7 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertEqual([(s['routine'], s['line']) for s in sites if s['id'] in closed],
                          [('LORESUB.PAS:load:1', 1655)])
         note = next(r['note'] for r in evidence if r['id'] in closed)
-        self.assertIn('requires canonical base dimensions', note)
+        self.assertIn('Legacy headerless saves require canonical base dimensions', note)
 
     def test_load_error_scope_is_only_need_message_not_file_io(self):
         sites = ledger.build()['control_sites']
@@ -45,7 +56,7 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertEqual(len(actual), 1)
         self.assertEqual((actual[0]['routine'], actual[0]['line']),
                          ('LORESUB.PAS:load:1', 1650))
-        for line in [1661, 1666, 1671, 1675, 1752]:
+        for line in [1661, 1666, 1671, 1752]:
             self.assertTrue(all(s['verification_status'] == 'partial' for s in sites
                 if s['routine'] == 'LORESUB.PAS:load:1' and s['line'] == line))
 
@@ -260,7 +271,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 104)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 103)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

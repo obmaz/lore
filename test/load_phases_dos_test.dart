@@ -59,7 +59,8 @@ PartyMember _record(List<dynamic> raw) {
 }
 
 /// LORESUB.PAS:1655,1675: successful cold/warm Load resource paths.
-/// Resource errors, cold UI record restoration and BGI output remain separate.
+/// Missing canonical maps are irrelevant when the saved map has its own header.
+/// Missing/truncated snapshots, legacy headerless saves and BGI output differ.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   final native = jsonDecode(
@@ -107,6 +108,8 @@ void main() {
         startX: 5,
         startY: 6,
         mapTiles: coldSaved ? expected : null,
+        mapWidth: coldSaved ? record['width'] : null,
+        mapHeight: coldSaved ? record['height'] : null,
       );
       expect(game.currentMap!.tileSnapshot(), expected, reason: '$row');
       expect(
@@ -157,6 +160,10 @@ void main() {
             await tester.pumpWidget(
               MaterialApp(
                 home: MainGameScreen(
+                  mapLoader: saved && !warm
+                      ? (name, {required category}) async =>
+                            throw StateError('canonical MAP must not be opened')
+                      : null,
                   initialSaveData: SaveData(
                     slot: 1,
                     slotName: SaveManager.slotNames[0],
@@ -172,6 +179,12 @@ void main() {
                     party: [for (final r in records) _record(r)],
                     flags: {for (var i = 1; i <= 100; i++) 'etc$i': raw[7 + i]},
                     mapTiles: saved && !warm ? snapshot : const [],
+                    mapWidth: saved && !warm
+                        ? native['mapRecords'][row['mapRecord']]['width']
+                        : null,
+                    mapHeight: saved && !warm
+                        ? native['mapRecords'][row['mapRecord']]['height']
+                        : null,
                   ),
                 ),
               ),
@@ -221,6 +234,8 @@ void main() {
             expect(result.gold, warm ? 777 : 1000);
             expect(result.food, after[3]);
             expect(result.mapTiles, snapshot);
+            expect(result.mapWidth, game.currentMap!.xmax);
+            expect(result.mapHeight, game.currentMap!.ymax);
             expect(
               [for (final p in result.party) p.toJson()],
               [
@@ -228,6 +243,15 @@ void main() {
                   _record(r).toJson(),
               ],
             );
+            await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+            await settle();
+            await tester.sendKeyEvent(LogicalKeyboardKey.keyG);
+            await settle();
+            await tester.tap(find.text(LoreMenuText.optionResume));
+            await settle();
+            await tester.tap(find.text(SaveManager.slotNames[0]));
+            await settle();
+            expect(game.currentMap!.tileSnapshot(), snapshot);
           },
         );
       }

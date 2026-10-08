@@ -168,6 +168,9 @@ class LoreGame extends FlameGame {
   final void Function(int steps)? onWaterWalkStepsChanged;
   final Random _random;
   final List<int>? initialMapTiles;
+  final int? initialMapWidth;
+  final int? initialMapHeight;
+  final String initialSnapshotName;
 
   LoreGame({
     int initialMapId = 6,
@@ -196,6 +199,9 @@ class LoreGame extends FlameGame {
     this.waterWalkStepsProvider,
     this.onWaterWalkStepsChanged,
     this.initialMapTiles,
+    this.initialMapWidth,
+    this.initialMapHeight,
+    this.initialSnapshotName = 'save.map',
     Random? random,
     LoreScrollState? sourceScroll,
   }) : currentMapId = LorePascal.byte(initialMapId),
@@ -224,6 +230,9 @@ class LoreGame extends FlameGame {
       startX: playerX,
       startY: playerY,
       mapTiles: initialMapTiles,
+      mapWidth: initialMapWidth,
+      mapHeight: initialMapHeight,
+      snapshotName: initialSnapshotName,
     );
   }
 
@@ -232,6 +241,9 @@ class LoreGame extends FlameGame {
     int? startX,
     int? startY,
     List<int>? mapTiles,
+    int? mapWidth,
+    int? mapHeight,
+    String snapshotName = 'save.map',
   }) async {
     if (_fatalLoadFailure case final failure?) {
       await _failLoad(failure);
@@ -247,14 +259,26 @@ class LoreGame extends FlameGame {
     }
     currentMapName = info.fileName;
     late final LoreMapData loaded;
+    final hasHeader = mapWidth != null || mapHeight != null;
     try {
-      loaded = await (mapLoader ?? LoreMapData.loadFromAsset)(
-        info.fileName,
-        category: info.category.name,
-      );
+      loaded = hasHeader
+          ? LoreMapData.fromSnapshot(
+              info.fileName,
+              width: mapWidth,
+              height: mapHeight,
+              tiles: mapTiles ?? const [],
+              category: info.category.name,
+            )
+          : await (mapLoader ?? LoreMapData.loadFromAsset)(
+              info.fileName,
+              category: info.category.name,
+            );
     } catch (e) {
       await _failLoad(
-        LoreLoadFailure('${info.fileName.toLowerCase()}.map', cause: e),
+        LoreLoadFailure(
+          hasHeader ? snapshotName : '${info.fileName.toLowerCase()}.map',
+          cause: e,
+        ),
       );
       return;
     }
@@ -263,7 +287,7 @@ class LoreGame extends FlameGame {
       return;
     }
     currentMap = loaded;
-    if (mapTiles != null) loaded.applyTileSnapshot(mapTiles);
+    if (!hasHeader && mapTiles != null) loaded.applyTileSnapshot(mapTiles);
     if (startX != null && startY != null) {
       playerX = startX;
       playerY = startY;

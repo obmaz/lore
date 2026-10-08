@@ -6,7 +6,7 @@ import '../models/party_member.dart';
 import '../logic/lore_save_party.dart';
 
 class SaveData {
-  static const int currentSchemaVersion = 2;
+  static const int currentSchemaVersion = 3;
 
   final int slot;
   final String slotName;
@@ -25,6 +25,11 @@ class SaveData {
 
   /// 원작 `saveN.map`: 저장 당시 현재 지도의 타일을 행 우선으로 보관한다.
   final List<int> mapTiles;
+
+  /// Native SaveN.map includes its own two-byte dimensions. Older Flutter
+  /// saves omitted this header and still require the canonical map adapter.
+  final int? mapWidth;
+  final int? mapHeight;
   final List<String> consumedScripts;
 
   const SaveData({
@@ -41,6 +46,8 @@ class SaveData {
     required this.flags,
     this.etc = const {},
     this.mapTiles = const [],
+    this.mapWidth,
+    this.mapHeight,
     this.consumedScripts = const [],
   });
 
@@ -59,6 +66,8 @@ class SaveData {
     'flags': flags,
     'etc': etc,
     'mapTiles': mapTiles,
+    'mapWidth': mapWidth,
+    'mapHeight': mapHeight,
     'consumedScripts': consumedScripts,
   };
 
@@ -90,6 +99,8 @@ class SaveData {
       mapTiles: (current['mapTiles'] as List<dynamic>? ?? const [])
           .map((v) => (v as num).toInt())
           .toList(),
+      mapWidth: current['mapWidth'] as int?,
+      mapHeight: current['mapHeight'] as int?,
       consumedScripts:
           (current['consumedScripts'] as List<dynamic>? ?? const [])
               .cast<String>(),
@@ -98,8 +109,8 @@ class SaveData {
 
   static Map<String, dynamic> _migrateToCurrent(Map<String, dynamic> json) {
     final version = json['schemaVersion'];
-    if (version == null || version == 1) {
-      // 기존 앱의 무버전 형식과 명시적 v1은 같은 필드를 사용한다.
+    if (version == null || version == 1 || version == 2) {
+      // Old snapshots have no dimensions; retain their base-map adapter.
       return {
         ...json,
         'schemaVersion': currentSchemaVersion,

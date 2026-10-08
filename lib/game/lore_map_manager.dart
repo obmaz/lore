@@ -147,4 +147,27 @@ class LoreMapData {
       category: category,
     );
   }
+
+  /// Restore the native SaveN.map header independently of the base MAP file.
+  static LoreMapData fromSnapshot(
+    String mapName, {
+    required int? width,
+    required int? height,
+    required List<int> tiles,
+    String category = '',
+  }) {
+    if (width == null ||
+        height == null ||
+        width < 1 ||
+        width > 100 ||
+        height < 1 ||
+        height > 100) {
+      throw FormatException('$mapName: invalid saved MAP header');
+    }
+    return fromBytes(
+      mapName,
+      Uint8List.fromList([width, height, ...tiles.map(LorePascal.byte)]),
+      category: category,
+    );
+  }
 }
