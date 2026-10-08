@@ -10,6 +10,22 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_typed_read_scope_is_only_enemy_and_default_map_loops(self):
+        sites = ledger.build()['control_sites']
+        reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        for test, expected in {
+            'test/setall_enemy_read_dos_test.dart': ('LORESUB.PAS:set_all:1', 1804),
+            'test/map_reads_dos_test.dart': ('LORESUB.PAS:load:1', 1712),
+        }.items():
+            ids = {r['id'] for r in reviewed if r.get('test') == test
+                   and r.get('verification') == 'verified'}
+            actual = [s for s in sites if s['id'] in ids]
+            self.assertEqual(len(actual), 1)
+            self.assertEqual((actual[0]['routine'], actual[0]['line']), expected)
+        map_note = next(r['note'] for r in reviewed if r.get('test') == 'test/map_reads_dos_test.dart')
+        self.assertIn('FormatException', map_note)
+        self.assertIn('not invalid-memory byte equivalence', map_note)
+
     def test_load_error_scope_is_only_need_message_not_file_io(self):
         sites = ledger.build()['control_sites']
         reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
@@ -19,7 +35,7 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertEqual(len(actual), 1)
         self.assertEqual((actual[0]['routine'], actual[0]['line']),
                          ('LORESUB.PAS:load:1', 1650))
-        for line in [1655, 1661, 1666, 1671, 1675, 1712, 1752]:
+        for line in [1655, 1661, 1666, 1671, 1675, 1752]:
             self.assertTrue(all(s['verification_status'] == 'partial' for s in sites
                 if s['routine'] == 'LORESUB.PAS:load:1' and s['line'] == line))
 
@@ -234,7 +250,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 107)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 105)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

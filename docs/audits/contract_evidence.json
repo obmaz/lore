@@ -19011,6 +19011,34 @@
         "lib/game/lore_game.dart",
         "lib/widgets/game_over_view.dart"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:2",
+      "line": 1804,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/models/monster.dart",
+      "test": "test/setall_enemy_read_dos_test.dart",
+      "note": "Original 75-iteration Set_All loop, typed Read mode/size/copy and IOCheck execute unchanged; only opened descriptor and DOS int21/AH3F file bytes are supplied. Exactly 75 reads of 29 bytes populate source slots 1..75 with guards unchanged and IOResult zero. Actual battle factory and packaged JSON resource owner match every native field and keep templates independent from battle copies. This closes the valid database ingestion loop, not Reset/Close/file failure behavior or Set_All BGI frames.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_setall_enemy_read.json",
+        "tool/export_dos_setall_enemy_read.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:7",
+      "line": 1712,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_map_manager.dart",
+      "test": "test/map_reads_dos_test.dart",
+      "note": "Original default and saved MAP header/loop, typed Read/IOCheck and fixed 100-stride Pascal map[x,y] address execute with only DOS byte-file reads supplied. All 25 source files, all 27 actual packaged map identities, rectangular/full-byte synthetic grids match runtime parser and snapshots. Zero dimensions execute empty native loops; dimensions 101 show alias/out-of-array stores. Port deliberately raises FormatException outside declared 1..100 geometry rather than inventing an empty map or reproducing adjacent memory writes. Explicit invalid-map policy, not invalid-memory byte equivalence, Reset/Close/filesystem failures or BGI frames.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_map_reads.json",
+        "tool/export_dos_map_reads.py"
+      ]
     }
   ]
 }

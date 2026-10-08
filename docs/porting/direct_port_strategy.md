@@ -3158,3 +3158,19 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      관련 28건, 전체 Flutter 1704건(3 skip), Python 141건, analyze 및
      웹 release build가 통과했다. 원본 ErrorMessage 재실행도 fixture와
      일치했다. 다음은 Set_All의 75-record typed-read 루프다.
+
+204. **원본 typed Read로 적 75개와 지도 배열 복사 대조**
+     열린 파일 descriptor와 DOS byte read만 공급하고 원본 Read의
+     파일 mode·record size·복사·IOCheck와 두 루프를 실행한다.
+     적은 29바이트씩 75회 읽어 모든 실제 battle factory/JSON 템플릿의
+     이름과 12개 필드, 순서와 독립성을 검사한다. 지도는 default/saved
+     양쪽에서 헤더부터 읽어 고정 100-stride Pascal 주소를 확인한다.
+     원본 파일 25개, 앱의 지도 ID 27개와 전체 byte/직사각형 합성 그리드를
+     대조한다. 원본 0 크기는 빈 루프, 101 크기는 alias/배열 밖 쓰기가
+     관측된다. 이식은 선언된 1..100 범위 밖에서 FormatException으로
+     중단하며 그 메모리 결과의 동일성을 주장하지 않는다. Reset/Close와
+     파일 실패 및 BGI 프레임은 이번 범위가 아니다. 두 루프 해소로
+     verified 1743 / partial 105 / unclassified 0. 검사 후 푸시하고 계속한다.
+     관련 9건, 전체 Flutter 1708건(3 skip), Python 144건과 analyze가
+     통과했다. 두 전체 원본 추출도 fixture와 다시 일치했다. 런타임은
+     변경하지 않았고 직전 웹 release build 결과를 유지한다.

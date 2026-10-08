@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 107,
-    "verified": 1741,
+    "partial": 105,
+    "verified": 1743,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -402,8 +402,8 @@
     },
     {
       "routine": "LORESUB.PAS:load:1",
-      "verified": 14,
-      "partial": 7
+      "verified": 15,
+      "partial": 6
     },
     {
       "routine": "LORESUB.PAS:message:1",
@@ -475,8 +475,8 @@
     },
     {
       "routine": "LORESUB.PAS:set_all:1",
-      "verified": 1,
-      "partial": 7
+      "verified": 2,
+      "partial": 6
     },
     {
       "routine": "LORESUB.PAS:setscrolltype:1",
@@ -1367,6 +1367,16 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_map_reads.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:load:1:if:7"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/map_reads_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_menace_center.json",
       "explicit_contracts": [],
       "note_mentions": [],
@@ -1606,6 +1616,16 @@
       "test_candidates": [
         "test/first_field_battle_dos_ui_test.dart",
         "test/second_field_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_setall_enemy_read.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:set_all:1:for:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/setall_enemy_read_dos_test.dart"
       ]
     },
     {
