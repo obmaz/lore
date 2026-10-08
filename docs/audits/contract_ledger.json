@@ -30803,11 +30803,14 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/load_phases_dos_test.dart",
+        "test/save_party_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "tool/export_dos_load_phases.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "Original complete Load executes 108 successful cold/warm/saved paths across 27 map IDs with original file/string/read helpers; only DOS and stack guard are supplied. Cold copies six FILE records and party, warm retains MEM records and party; supplied seventh record retained. Actual desktop/mobile cold restoration, warm map change and resave preserve six records, gold, food, all etc bytes and immutable CHARA font identity. Closes only cold/warm record/font initialization conditional, not file failures, native startup scratch bytes or BGI pixels. Map-source conditional remains partial: modern snapshot still requires canonical base dimensions."
     },
     {
       "id": "LORESUB.PAS:load:1:if:3",
@@ -53528,6 +53531,21 @@
       ]
     },
     {
+      "id": "LORESUB.PAS:load:1:if:2",
+      "line": 1655,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/load_phases_dos_test.dart",
+      "note": "Original complete Load executes 108 successful cold/warm/saved paths across 27 map IDs with original file/string/read helpers; only DOS and stack guard are supplied. Cold copies six FILE records and party, warm retains MEM records and party; supplied seventh record retained. Actual desktop/mobile cold restoration, warm map change and resave preserve six records, gold, food, all etc bytes and immutable CHARA font identity. Closes only cold/warm record/font initialization conditional, not file failures, native startup scratch bytes or BGI pixels. Map-source conditional remains partial: modern snapshot still requires canonical base dimensions.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/save_party_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "tool/export_dos_load_phases.py"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -54664,17 +54682,6 @@
       "id": "LORESUB.PAS:message:1:for:1",
       "line": 386,
       "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:load:1:if:2",
-      "line": 1655,
-      "kind": "if",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -57745,6 +57752,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/load_phases_dos_test.dart",
+      "kind": "test",
+      "sha256": "4c9e0bafecc73e54463f1df8af3fcbd46c851797cbc0b21ca10f20e84429b34a",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/load_state_dos_test.dart",
       "kind": "test",
       "sha256": "1d035515ff840328eec8c464a233db74b23a45e60db8de196235a95c7fcaa7c1",
@@ -59638,6 +59654,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_load_phases.json",
+      "kind": "fixture",
+      "sha256": "e3b04800b3e22f8af5448dd17f602aba3d986503841aa774de8eac52a2be50b1",
+      "test_users": [
+        "test/load_phases_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_load_state.json",
       "kind": "fixture",
       "sha256": "c2251d9de778769652301038fa03c5da401abf9878ed5f960449b4656e756ee6",
@@ -60432,9 +60457,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "ecc9c48ed784d8b221fac0025d11f9f7e7b2f878dee9ba9896e353765dc8730e",
+      "sha256": "9a028949d04ce25fd024ca0c382af09674f3a925da672e7e69f07f4b1fc1d4ac",
       "top_level_counts": {
-        "contracts": 1681
+        "contracts": 1682
       }
     }
   ],
@@ -60443,8 +60468,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 105,
-    "partially_verified_behavior_sites": 105,
+    "unverified_behavior_sites": 104,
+    "partially_verified_behavior_sites": 104,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

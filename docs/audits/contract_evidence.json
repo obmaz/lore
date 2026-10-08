@@ -19039,6 +19039,21 @@
         "test/fixtures/dos_map_reads.json",
         "tool/export_dos_map_reads.py"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:2",
+      "line": 1655,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/load_phases_dos_test.dart",
+      "note": "Original complete Load executes 108 successful cold/warm/saved paths across 27 map IDs with original file/string/read helpers; only DOS and stack guard are supplied. Cold copies six FILE records and party, warm retains MEM records and party; supplied seventh record retained. Actual desktop/mobile cold restoration, warm map change and resave preserve six records, gold, food, all etc bytes and immutable CHARA font identity. Closes only cold/warm record/font initialization conditional, not file failures, native startup scratch bytes or BGI pixels. Map-source conditional remains partial: modern snapshot still requires canonical base dimensions.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/save_party_dos_test.dart",
+        "test/load_state_dos_test.dart",
+        "tool/export_dos_load_phases.py"
+      ]
     }
   ]
 }

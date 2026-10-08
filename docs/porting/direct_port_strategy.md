@@ -3174,3 +3174,19 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      관련 9건, 전체 Flutter 1708건(3 skip), Python 144건과 analyze가
      통과했다. 두 전체 원본 추출도 fixture와 다시 일치했다. 런타임은
      변경하지 않았고 직전 웹 release build 결과를 유지한다.
+
+205. **전체 Load의 최초/지도 전환 단계 대조**
+     원본 문자열·파일 helper를 포함한 Load 전체를 실행하고 DOS와
+     stack guard만 공급한다. 지도 ID 27개 × 최초/전환 × 저장 지도
+     유무의 108가지에서 파일 열기·읽기·닫기 순서, 108-byte party,
+     player 6명 복사와 제공된 7번째 유지, CHARA 및 지도 결과를
+     대조한다. 실제 데스크톱/모바일 Load·전환·재저장에서 파티 6명,
+     금·식량·100개 etc byte, CHARA font 객체 보존을 검사한다.
+     최초 로드 조건 1655만 해소하여 verified 1744 / partial 104 /
+     unclassified 0. 지도 선택 조건 1675는 기본 지도 없는 저장 지도
+     복원 차이가 있어 유지한다. FNT/파일 실패와 BGI 출력도 별도다.
+     전체 검사 후 푸시하고 다음 묶음을 진행한다.
+     관련 Flutter 17건(새 9건 포함), 전체 Flutter 1717건(3 skip),
+     Python 146건과 analyze가 통과했다. 원본 Load 108가지 전체를
+     재실행해 fixture 일치를 확인했다. 런타임 변경은 없으며 직전
+     웹 release build 결과를 유지한다.
