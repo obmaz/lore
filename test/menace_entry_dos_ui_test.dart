@@ -433,6 +433,20 @@ void main() {
       expect((game.currentMapId, game.playerX, game.playerY), (14, 6, 44));
       expect(random.seed, fixture['goldCollected']['seed']);
       expect(LoreDialogueManager.instance.partyEtc.read(32), 4);
+      // The actual direct FindGold owner uses the same native string[9] helper;
+      // the log/reward are present without a new PressAnyKey dialog.
+      final goldNative =
+          jsonDecode(
+                File('test/fixtures/dos_findgold.json').readAsStringSync(),
+              )['cases']
+              as List;
+      final goldText = goldNative.firstWhere(
+        (r) => r['money'] == 400,
+      )['events'][2][2];
+      expect(
+        tester.widget<MessageLogView>(find.byType(MessageLogView)).logs,
+        contains(goldText),
+      );
       await save(tester, 3, fixture['goldSave']);
       for (final (i, key) in (fixture['goldRevisit']['keys'] as List).indexed) {
         await walk(tester, game, [key]);

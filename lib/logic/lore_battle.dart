@@ -1143,21 +1143,14 @@ class LoreBattle {
       }
     }
     if (j < rnd(3) + 2 && rnd(3) == 0) {
-      var appended = false;
       if (enemynumber < 7) {
-        appended = true;
         // inc(enemynumber) retains the existing slot bytes.
         _activateNextEnemySlot();
         k = enemynumber;
       }
       final summoned = _foe.eNumber + rnd(4) - 20;
-      if (_validEnemyId(summoned)) {
-        _joinEnemy(k, summoned);
-        print(13, '${_foe.name}는 ${enemy[k - 1].name}를 생성시켰다');
-      } else if (appended) {
-        // 원본은 범위 밖 `enemydata` 를 읽는다(미확인). 새 칸은 죽은 상태로 둔다.
-        enemy[k - 1].isDead = true;
-      }
+      _joinEnemy(k, summoned);
+      print(13, '${_foe.name}는 ${enemy[k - 1].name}를 생성시켰다');
     }
     if (_foe.specialCastLevel > 1) {
       j = 0;
@@ -1206,11 +1199,6 @@ class LoreBattle {
     }
   }
 
-  bool _validEnemyId(int j) {
-    final id = j & 0xFF;
-    return id >= 1 && id <= Monster.monsterTemplates.length;
-  }
-
   void _activateNextEnemySlot() {
     enemy.add(slots.enemyAt(enemy.length));
   }
@@ -1222,7 +1210,13 @@ class LoreBattle {
 
   /// `joinenemy(num, j)`.
   void _joinEnemy(int num, int j) {
-    if (!_validEnemyId(j)) return;
+    // Undefined enemydata reads are explicit faults, not invented dead slots.
+    RangeError.checkValueInInterval(
+      j & 0xFF,
+      1,
+      Monster.monsterTemplates.length,
+      'LORESUB JoinEnemy template',
+    );
     _storeEnemy(num, Monster.create(j & 0xFF));
   }
 

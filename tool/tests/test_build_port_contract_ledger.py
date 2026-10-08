@@ -142,7 +142,7 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertFalse(any("test/battle_esp_dos_test.dart" in s["behavioral_evidence"]
                              for s in sites if s["routine"] != "LOREBATT.PAS:battleesp:1"))
 
-    def test_specialcast_native_scope_leaves_unknown_summons_partial(self):
+    def test_specialcast_native_scope_keeps_explicit_unknown_summon_fault(self):
         sites = ledger.build()["control_sites"]
         closed = [s for s in sites if "test/enemy_special_cast_dos_test.dart"
                   in s["behavioral_evidence"] and s['routine'] in {
@@ -153,7 +153,16 @@ class ContractLedgerTest(unittest.TestCase):
         unknown = [s for s in sites if s["routine"] == "LOREBATT.PAS:specialcastattack:1"
                    and s["line"] in {904, 905}]
         self.assertEqual(len(unknown), 2)
-        self.assertTrue(all(s["verification_status"] == "partial" for s in unknown))
+        self.assertTrue(all(s["verification_status"] == "verified" for s in unknown))
+        reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        for site in unknown:
+            row = next(r for r in reviewed if r['id'] == site['id'])
+            self.assertEqual(row['test'], 'test/summon_bounds_dos_test.dart')
+            self.assertIn('RangeError', row['note'])
+            self.assertIn('not adjacent DOS byte equivalence', row['note'])
+        findgold = next(s for s in sites if s['routine'] == 'LORESUB.PAS:findgold:1'
+                        and s['line'] == 1018)
+        self.assertEqual(findgold['verification_status'], 'partial')
 
     def test_creation_rule_verification_excludes_input_and_palette_loops(self):
         sites = ledger.build()["control_sites"]
@@ -201,7 +210,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 111)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 109)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
@@ -306,7 +315,9 @@ class ContractLedgerTest(unittest.TestCase):
                    s["routine"] == "LOREBATT.PAS:specialcastattack:1"
                    and s["line"] in {904, 905}]
         self.assertTrue(effects)
-        self.assertTrue(all(s["verification_status"] == "partial" for s in effects))
+        reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        self.assertTrue(all(next(r for r in reviewed if r['id'] == s['id'])['test']
+                            == 'test/summon_bounds_dos_test.dart' for s in effects))
 
     def test_native_special_and_spell_scope_is_exactly_42_contracts(self):
         sites = ledger.build()["control_sites"]

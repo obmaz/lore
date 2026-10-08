@@ -1,4 +1,5 @@
 import '../data/lore_script.dart';
+import 'lore_field_logic.dart';
 import 'lore_source_memory.dart';
 import 'lore_source_coordinates.dart';
 
@@ -301,7 +302,10 @@ class LoreSpecProcedures {
     if (bit != null) {
       if ((context.etcValue(35) & LorePascal.bit(bit)) != 0) return null;
       return start('spec-9-gold-$bit', [
-        const ScriptStep(kind: 'message', text: '당신은 금화 5000개를 발견했다.'),
+        ScriptStep(
+          kind: 'message',
+          text: LoreFieldLogic.goldFoundMessage(5000),
+        ),
         const ScriptStep(kind: 'gold', amount: 5000),
         ScriptStep(kind: 'flag', key: 'etc35_bit$bit'),
       ]);
@@ -463,7 +467,10 @@ class LoreSpecProcedures {
     if (bit != null) {
       if ((etc33 & LorePascal.bit(bit)) != 0) return null;
       return start('spec-11-gold-$bit', [
-        const ScriptStep(kind: 'message', text: '당신은 금화 5000개를 발견했다.'),
+        ScriptStep(
+          kind: 'message',
+          text: LoreFieldLogic.goldFoundMessage(5000),
+        ),
         const ScriptStep(kind: 'gold', amount: 5000),
         ScriptStep(kind: 'flag', key: 'etc33_bit$bit'),
       ]);
@@ -934,7 +941,10 @@ class LoreSpecProcedures {
     if (gold[(x, y)] case (final bit, final amount)) {
       if ((etc32 & LorePascal.bit(bit)) != 0) return null;
       return start('spec-14-gold-$bit', [
-        ScriptStep(kind: 'message', text: '당신은 금화 $amount개를 발견했다.'),
+        ScriptStep(
+          kind: 'message',
+          text: LoreFieldLogic.goldFoundMessage(amount),
+        ),
         ScriptStep(kind: 'gold', amount: amount),
         ScriptStep(kind: 'flag', key: 'etc32_bit$bit'),
       ]);
@@ -1005,7 +1015,10 @@ class LoreSpecProcedures {
       final amount = first ? 6000 : 4000;
       return start('quake-gold-$x', [
         ScriptStep(kind: 'flag', key: first ? 'etc36_bit1' : 'etc36_bit2'),
-        ScriptStep(kind: 'message', text: '당신은 금화 $amount개를 발견했다.'),
+        ScriptStep(
+          kind: 'message',
+          text: LoreFieldLogic.goldFoundMessage(amount),
+        ),
         ScriptStep(kind: 'gold', amount: amount),
         ScriptStep(kind: 'setTile', tileX: x, tileY: 48, tileValue: 44),
         ScriptStep(kind: 'setTile', tileX: x, tileY: 47, tileValue: 44),

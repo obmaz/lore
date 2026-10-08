@@ -8357,11 +8357,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/summon_bounds_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "test/fixtures/dos_summon_bounds.json",
+        "tool/export_dos_summon_bounds.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
+      "reviewed_scope": "Unmodified native SpecialCastAttack RNG and JoinEnemy append/reuse execute for counts 1,2,6,7, including full-battle lowest dead slot. Defined templates retain original records. Synthetic record before enemydata[1] proves template zero depends on surrounding memory. Port raises RangeError at that read after the original count/slot activation and three RNG calls, preserving pre-read enemy and party records instead of fabricating a dead slot. Explicit invalid-memory policy, not adjacent DOS byte equivalence or BGI glyph equivalence."
     },
     {
       "id": "LOREBATT.PAS:specialcastattack:1:if:4",
@@ -8373,11 +8376,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/summon_bounds_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "test/fixtures/dos_summon_bounds.json",
+        "tool/export_dos_summon_bounds.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
+      "reviewed_scope": "Unmodified native SpecialCastAttack RNG and JoinEnemy append/reuse execute for counts 1,2,6,7, including full-battle lowest dead slot. Defined templates retain original records. Synthetic record before enemydata[1] proves template zero depends on surrounding memory. Port raises RangeError at that read after the original count/slot activation and three RNG calls, preserving pre-read enemy and party records instead of fabricating a dead slot. Explicit invalid-memory policy, not adjacent DOS byte equivalence or BGI glyph equivalence."
     },
     {
       "id": "LOREBATT.PAS:specialcastattack:1:if:5",
@@ -28650,7 +28656,7 @@
       ],
       "verification_status": "partial",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Fix source-backed map9/11/14/15 findgold calls. Native MENACE(6,44) gains400 and etc32=4 immediately, actual slot3 Save records/2500 map cells match mobile; confirmation on special tile and revisit draw no extra RNG or reward. Previous speech adapter blocked reward until popup acknowledgement. Native graphics paging and other treasure maps are not fully replayed."
+      "reviewed_scope": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Source-backed map9/11/14/15 calls share native string[9] conversion: original Str/concat/page/hany/gold stores replay 220 signed longint/page cases; wide values normalize then truncate the first nine ASCII bytes including sign. All direct treasure owners match native messages and numeric reward, and actual MENACE(6,44) logs the native text, gains400 and etc32=4 immediately; actual slot3 Save records/2500 map cells match mobile. Confirmation on special tile and revisit draw no extra RNG or reward. Native graphics paging remains partial; numeric tests do not prove BGI painting."
     },
     {
       "id": "LORESUB.PAS:join:1:if:1",
@@ -43980,9 +43986,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
+      "test": "test/summon_bounds_dos_test.dart",
+      "note": "Unmodified native SpecialCastAttack RNG and JoinEnemy append/reuse execute for counts 1,2,6,7, including full-battle lowest dead slot. Defined templates retain original records. Synthetic record before enemydata[1] proves template zero depends on surrounding memory. Port raises RangeError at that read after the original count/slot activation and three RNG calls, preserving pre-read enemy and party records instead of fabricating a dead slot. Explicit invalid-memory policy, not adjacent DOS byte equivalence or BGI glyph equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/fixtures/dos_summon_bounds.json",
+        "tool/export_dos_summon_bounds.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialcastattack:1:if:4",
@@ -43990,9 +44001,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
+      "test": "test/summon_bounds_dos_test.dart",
+      "note": "Unmodified native SpecialCastAttack RNG and JoinEnemy append/reuse execute for counts 1,2,6,7, including full-battle lowest dead slot. Defined templates retain original records. Synthetic record before enemydata[1] proves template zero depends on surrounding memory. Port raises RangeError at that read after the original count/slot activation and three RNG calls, preserving pre-read enemy and party records instead of fabricating a dead slot. Explicit invalid-memory policy, not adjacent DOS byte equivalence or BGI glyph equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/fixtures/dos_summon_bounds.json",
+        "tool/export_dos_summon_bounds.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:enemyattack:1:if:1",
@@ -51285,7 +51301,7 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Fix source-backed map9/11/14/15 findgold calls. Native MENACE(6,44) gains400 and etc32=4 immediately, actual slot3 Save records/2500 map cells match mobile; confirmation on special tile and revisit draw no extra RNG or reward. Previous speech adapter blocked reward until popup acknowledgement. Native graphics paging and other treasure maps are not fully replayed.",
+      "note": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Source-backed map9/11/14/15 calls share native string[9] conversion: original Str/concat/page/hany/gold stores replay 220 signed longint/page cases; wide values normalize then truncate the first nine ASCII bytes including sign. All direct treasure owners match native messages and numeric reward, and actual MENACE(6,44) logs the native text, gains400 and etc32=4 immediately; actual slot3 Save records/2500 map cells match mobile. Confirmation on special tile and revisit draw no extra RNG or reward. Native graphics paging remains partial; numeric tests do not prove BGI painting.",
       "verification": "partial"
     },
     {
@@ -57508,6 +57524,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/findgold_dos_test.dart",
+      "kind": "test",
+      "sha256": "990b84b017beea2a254e4aeaf9ae120a367f051e8c57190b0c9f65da68f9ed98",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/first_field_battle_dos_test.dart",
       "kind": "test",
       "sha256": "7e0d8c4d0b6e17ccb78cb15fb332de47414c93e197e8e57cabfaa17e11d03f4c",
@@ -58200,7 +58225,7 @@
     {
       "path": "test/menace_entry_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "19aed0e9cadded91e5ad463b2c740cad40cd5268951e3cb3329c6d9d11902067",
+      "sha256": "02636a818e1936f1fe823ca6991f55dd463f3cc6f07bffe81701b2ac705a64a0",
       "cited_source_files": [
         "LOREBATT.PAS",
         "LOREENT.PAS",
@@ -58904,6 +58929,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/summon_bounds_dos_test.dart",
+      "kind": "test",
+      "sha256": "8ceb2d2fc05fb4209e3e258dfb2ac20800572872f1045b509c4313dee618b131",
+      "cited_source_files": [
+        "LOREBATT.PAS",
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/swamp_source_parity_test.dart",
       "kind": "test",
       "sha256": "fc76507e91d35a9a0bae67278e10c5e83a7195057b2eb8d1650a4bea4244f414",
@@ -59400,6 +59435,16 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_findgold.json",
+      "kind": "fixture",
+      "sha256": "02efcbd7cea5132221bfd320dcc278c79df4f0684f66de07d4924a32a97e9f06",
+      "test_users": [
+        "test/findgold_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_first_field_battle.json",
       "kind": "fixture",
       "sha256": "bb4dd400266208fba5fe155c6b1024c549f4ea14b271fc6c86fc50f7ec1f4ddd",
@@ -59765,6 +59810,15 @@
       "sha256": "72b5a0a8e17ab3fa052f030f0e7843d4660741093e1f34dabdb9d2e9bd1e3465",
       "test_users": [
         "test/spell_arithmetic_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_summon_bounds.json",
+      "kind": "fixture",
+      "sha256": "1f8f15a3b9698bc9caec02c73ffb5b3c575ad6cc120ee5b8e6c2b49d2b33107b",
+      "test_users": [
+        "test/summon_bounds_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
@@ -60157,7 +60211,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "12b685efcf9e4165552f7441b07e3f6d8c914ac48b48fdfe533239d823ae6ea9"
+      "sha256": "d446a7d53963cb986a208fa4050538378364cda7bf96c34ab7d5d91515a11451"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -60277,7 +60331,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "b3f94b205fbef1d385829aceba5a893c059e2136991453299a9d14b8da447b1c",
+      "sha256": "71db3b51b4652afa90921a771b2c21ef43ccfff162188f4b8692caaa9d9b9eec",
       "top_level_counts": {
         "contracts": 1678
       }
@@ -60288,8 +60342,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 111,
-    "partially_verified_behavior_sites": 111,
+    "unverified_behavior_sites": 109,
+    "partially_verified_behavior_sites": 109,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

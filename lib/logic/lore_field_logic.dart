@@ -71,7 +71,12 @@ class LoreFieldLogic {
   // ── 금화 발견 (findgold) ──
 
   /// 원작: `Print(7, '당신은 금화 ' + account + '개를 발견했다.')`
-  static String goldFoundMessage(int amount) => '당신은 금화 $amount개를 발견했다.';
+  static String goldFoundMessage(int amount) {
+    // Str(longint, string[9]) keeps the first nine ASCII bytes, including '-'.
+    final account = LorePascal.longint(amount).toString();
+    final source = account.length > 9 ? account.substring(0, 9) : account;
+    return '당신은 금화 $source개를 발견했다.';
+  }
 
   /// 원작 `party.gold := party.gold + money`.
   static int applyGoldFound(int gold, int amount) =>

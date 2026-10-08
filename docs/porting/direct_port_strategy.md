@@ -3113,3 +3113,20 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      3개 추가 해소로 verified 1737 / partial 111 / unclassified 0.
      전체 Flutter 1687건(3 skip), Python 135건, analyze와 웹 release
      build가 통과했다. 전체 원본 선택 추출도 fixture와 다시 일치했다.
+
+201. **소환 템플릿 경계와 금화 발견의 string[9]**
+     원본 소환·JoinEnemy·난수를 그대로 실행해 적 1/2/6/7명에서 새 칸
+     활성화와 가장 낮은 사망 칸 재사용을 대조한다. 템플릿 0은 실제로
+     enemydata[1] 바로 앞 레코드를 읽으며, synthetic 주변 이름 두 개에
+     따라 결과가 달라진다. 이식은 난수 3회와 원본 칸 활성화까지 보존한
+     뒤 RangeError로 중단한다. 임의로 죽은 적을 만들어 계속하지 않는다.
+     정상 템플릿은 원본 레코드와 일치한다. 오류 정책을 포함한 두 분기를
+     해소해 verified 1739 / partial 109 / unclassified 0.
+     FindGold는 원본 Str·문자열 연결·longint 덧셈을 220개 조합으로
+     실행한다. string[9]은 부호를 포함한 앞 9바이트만 남기므로 공유
+     문자열 함수를 수정하고 맵 9/11/14/15의 실제 소유자가 사용한다.
+     실제 MENACE 화면 로그와 저장도 대조한다. BGI 두 페이지 그리기
+     계약은 여전히 partial이며 이번 숫자 검사로 완료 처리하지 않는다.
+     관련 24건, 전체 Flutter 1691건(3 skip), Python 137건, analyze 및
+     웹 release build가 통과했다. 두 원본 추출을 다시 실행해 fixture와
+     일치함을 확인했다. 푸시 후 전멸 판정 루프 검증을 이어간다.

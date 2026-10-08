@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 111,
-    "verified": 1737,
+    "partial": 109,
+    "verified": 1739,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -100,8 +100,7 @@
     },
     {
       "routine": "LOREBATT.PAS:specialcastattack:1",
-      "verified": 19,
-      "partial": 2
+      "verified": 21
     },
     {
       "routine": "LOREBATT.PAS:weaponattack:1",
@@ -1180,6 +1179,15 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_findgold.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/findgold_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_first_field_battle.json",
       "explicit_contracts": [],
       "note_mentions": [],
@@ -1607,6 +1615,17 @@
       ],
       "test_candidates": [
         "test/spell_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_summon_bounds.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:specialcastattack:1:if:3",
+        "LOREBATT.PAS:specialcastattack:1:if:4"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/summon_bounds_dos_test.dart"
       ]
     },
     {
