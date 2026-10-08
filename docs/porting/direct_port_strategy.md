@@ -2663,3 +2663,11 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      생성한 타일 재생 자료와 JSON 없이 대조했다. 계약 원장은 verified 1162개,
      partial 686개다. 통로 이후 전투·출구 연속 진행과 렌더링 타이밍은 partial로
      남는다.
+
+169. 전투 AttackOne·CastAll·RunAway 계약 20건 검증 완료 (2026-10-08).
+     `LOREBATT.PAS:AttackOne`의 사망 적 전방 재선택, 전멸 조기 종료, 의식불명
+     처형, 명중·변동·저항·방어 난수 순서와 16-bit 산술 경계를 DOS fixture로
+     대조했다. `CastAll`의 죽은 적 건너뛰기와 `RunAway`의 `Random(50)` 경계도
+     원본 제어 흐름으로 확인했다. 원장은 넓은 전투 테스트 파일 전체가 아니라
+     이 세 루틴만 승격한다. verified 1182개, partial 666개다. CastOne·적 AI와
+     나머지 전투 루틴은 partial로 유지한다.

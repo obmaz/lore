@@ -106,6 +106,17 @@ VERIFIED_CONTRACT_TESTS = {
     # writes, including their bounds and final overwrites.
     "test/source_route_parity_test.dart",
 }
+
+# Some broad regression files exercise both closed and still-open source
+# procedures.  Promote only the reviewed routine boundaries; never let a test
+# path accidentally mark its whole source file as complete.
+VERIFIED_CONTRACT_ROUTINES = {
+    "test/lore_battle_test.dart": {
+        "LOREBATT.PAS:attackone:1",
+        "LOREBATT.PAS:castall:1",
+        "LOREBATT.PAS:runaway:1",
+    },
+}
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 
 
@@ -413,7 +424,10 @@ def link_contract_evidence(sites):
             raise ValueError(f"Supporting contract evidence is missing: {site_id}")
         site["classification"] = row["classification"]
         site["verification_status"] = (
-            "verified" if row["test"] in VERIFIED_CONTRACT_TESTS
+            "verified"
+            if (row["test"] in VERIFIED_CONTRACT_TESTS or
+                site["routine"] in VERIFIED_CONTRACT_ROUTINES.get(
+                    row["test"], set()))
             else row["verification"]
         )
         site["port_handler"] = row["implementation"]

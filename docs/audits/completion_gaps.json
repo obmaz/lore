@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 686,
-    "verified": 1162,
+    "partial": 666,
+    "verified": 1182,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -14,7 +14,7 @@
     },
     {
       "routine": "LOREBATT.PAS:attackone:1",
-      "partial": 18
+      "verified": 18
     },
     {
       "routine": "LOREBATT.PAS:battleesp:1",
@@ -26,7 +26,7 @@
     },
     {
       "routine": "LOREBATT.PAS:castall:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREBATT.PAS:castattack:1",
@@ -90,7 +90,7 @@
     },
     {
       "routine": "LOREBATT.PAS:runaway:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREBATT.PAS:specialattack:1",
