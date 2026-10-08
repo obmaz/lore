@@ -272,6 +272,39 @@ void main() {
     );
   });
 
+  test('AttackOne skips a dead target only forward and keeps the RNG stream', () {
+    final r = _Script([0, 0, 99, 0]);
+    final first = Monster.create(1)..isDead = true;
+    final second = Monster.create(1)
+      ..resistance = 0
+      ..ac = 0
+      ..hp = 500;
+    final b = make([hero()], [first, second], r);
+    b.battle[1] = [0, 1, 1, 1];
+    b.attackOne();
+    expect(b.battle[1][3], 2);
+    expect(r.bounds, [20, 50, 100, 10]);
+    expect(second.hp, lessThan(500));
+  });
+
+  test('AttackOne with no living enemies exits before messages or RNG', () {
+    final r = _Script();
+    final lines = <String>[];
+    final foe = Monster.create(1)..isDead = true;
+    final b = make([hero()], [foe], r, lines);
+    b.battle[1] = [0, 1, 1, 1];
+    b.attackOne();
+    expect(r.bounds, isEmpty);
+    expect(lines, isEmpty);
+  });
+
+  test('zero-bound Pascal random consumes one normalized draw and returns zero', () {
+    final r = _Script([0]);
+    final b = make([hero()], [Monster.create(1)], r);
+    expect(b.rnd(0), 0);
+    expect(r.bounds, [1]);
+  });
+
   test('PlusGold sums template level^3 * max(ac,1)', () {
     final foes = [Monster.create(1), Monster.create(54)];
     final lines = <String>[];
