@@ -41,7 +41,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 567)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 523)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
@@ -115,12 +115,37 @@ class ContractLedgerTest(unittest.TestCase):
                             for site in targets))
         self.assertTrue(all(site["verification_status"] == "verified"
                             for site in targets))
-        other = [site for site in data["control_sites"]
-                 if site["routine"] == "LOREBATT.PAS:castattack:1"
-                 and site not in targets]
-        self.assertTrue(other)
-        self.assertTrue(all(site["verification_status"] == "partial"
-                            for site in other))
+
+    def test_seeded_enemy_ai_verification_excludes_effect_continuations(self):
+        data = ledger.build()
+        targets = [site for site in data["control_sites"]
+                   if "test/enemy_ai_dispatch_dos_test.dart" in
+                   site["behavioral_evidence"] and site["kind"] != "case"]
+        self.assertEqual(len(targets), 43)
+        closed = [site for site in targets
+                  if site["line"] not in {758, 772, 781, 783, 786, 797}]
+        self.assertEqual(len(closed), 36)
+        self.assertTrue(all(site["verification_status"] == "verified" for site in closed))
+        for site in targets:
+            if site in closed:
+                continue
+            effect_test = ("test/enemy_armor_effects_dos_test.dart"
+                           if site["line"] in {781, 783, 786}
+                           else "test/enemy_cure_continuation_dos_test.dart")
+            self.assertIn(effect_test, site["behavioral_evidence"])
+            self.assertEqual(site["verification_status"], "verified")
+        self.assertTrue(all(site["routine"] == "LOREBATT.PAS:castattack:1"
+                            and 724 <= site["line"] <= 815 for site in targets))
+
+    def test_castattack_selector_does_not_promote_called_spell_effects(self):
+        sites = ledger.build()["control_sites"]
+        selector = [s for s in sites if s["routine"] == "LOREBATT.PAS:castattack:1"]
+        self.assertEqual(len(selector), 63)
+        self.assertTrue(all(s["verification_status"] == "verified" for s in selector))
+        effects = [s for s in sites if s["routine"] in
+                   {"LOREBATT.PAS:castattackone:1", "LOREBATT.PAS:castattackall:1"}]
+        self.assertTrue(effects)
+        self.assertTrue(all(s["verification_status"] == "partial" for s in effects))
 
     def test_supporting_evidence_is_retained_without_promoting_verification(self):
         rows = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))

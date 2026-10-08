@@ -2712,3 +2712,36 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      partial로 유지한다. 원장은 verified 1281개, partial 567개다.
      전체 Flutter 1529건 통과(3건 skip), analyze 문제 없음, Python 원장·
      fixture 검사 74건 통과. native 자료 1536건은 재생성 결과도 동일하다.
+
+174. 적 마법 mode4..6 첫 효과 선택 계약 36건 검증 완료 (2026-10-08).
+     수정하지 않은 EXE의 CastAttack, Exist, Random을 10952개 합성 입력으로
+     실행해 첫 단일/전체 공격, 자기/집단 회복 또는 갑옷 파괴 선택과 난수
+     상한·순서·최종 seed를 Dart와 대조했다. 64개 생존 mask, 빈 이름 유무,
+     자기 회복 임계값 미만/동일/초과, 1/2/3 적, 집단 회복 적합/부적합 및
+     signed 누적 wrap, 최저 HP 동률, 갑옷 평균 4/5와 정수 버림 경계 및
+     빈 일행의 나눗셈 오류를 포함한다. 높은 곱의 native division 오류는
+     기존 산술 fixture를 함께 검사한다. 첫 효과 이전의 결정 분기 36개만
+     verified로 갱신한다. 집단 회복 전체 반복, 회복 뒤 exit, 갑옷 파괴의
+     luck/변경/표시 반복 및 전체 case는 partial로 유지한다.
+     원장은 verified 1317개, partial 531개다.
+
+175. 갑옷 파괴 반복·저항·저장 계약 4건 검증 완료 (2026-10-08).
+     원본 mode6 갑옷 반복을 1064개 입력으로 실행해 1..6 슬롯 순서, 빈 이름
+     제외, 이름이 있는 의식불명 일원, 실제 Random(21), luck의 엄격한 `>`와
+     난수와 같은 값/하나 작거나 큰 경계, AC0 및 byte 값의 감소를 비교했다.
+     Dart의 AC, 난수 값·순서·최종 seed, 대상별 메시지 색 순서가 일치한다.
+     native 문자열/Print 구간은 인자 push 이전에서 건너뛰었고 화면 갱신
+     직전에서 멈춘다. BGI·DOS 문자열·조건 갱신 효과 검증은 별도다.
+
+176. 회복 연속 실행·byte selector 계약 4건 검증 완료 (2026-10-08).
+     원본 EnemyCure까지 실행하는 112개 연속 자료로 정상/사망/의식불명/혼합
+     적들의 전체 집단 회복 호출 순서·양, HP·상태 쓰기와 자기 회복 후 exit를
+     대조했다. 실제 원본 return 경계까지 도달하고 추가 공격·난수는 없다.
+     회복 문자열/Print만 건너뛴다. 지원하지 않는 castlevel byte 250개도
+     원본과 Dart에서 난수·상태 변경 없는 no-op임을 확인했다. 지원 모드의
+     기존 target/effect 근거와 결합해 case selector만 닫았다. 호출되는
+     CastAttackOne/All 주문 효과와 전체 전투·화면 검증은 여전히 partial이다.
+     이번 추가 계약 44건을 합쳐 verified 1325개, partial 523개다.
+     최종 집중 테스트 54건, 전체 Flutter 1535건(3건 skip), Python 82건이
+     통과했고 analyze 문제는 없다. 세 신규 native fixture 모두 원본 EXE
+     재실행으로 동일한 자료가 재생성됨을 확인했다. 런타임 변경·배포는 없다.

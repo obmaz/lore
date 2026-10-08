@@ -1,0 +1,7908 @@
+{
+  "scope": "Execute mode4..6 complete cure continuations and original enemycure stores.\nNative RNG/decision/iteration/return. Synthetic records; cure Print span bypassed.\nStops at CastAttack return; does not cover rendered UI or spell attack effects.",
+  "exeSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragments": [
+    {
+      "name": "castattack",
+      "start": 144878,
+      "end": 146989,
+      "sha256": "5bb6e6e609b12db18bae7a59f0ba08ab35daf4f3eafaaaa4978341472a38542f"
+    },
+    {
+      "name": "enemycure",
+      "start": 144504,
+      "end": 144787,
+      "sha256": "6ec8739ddfe700aaa2ef535355b2ae396a0941358ed7715f99779a6ebacb3b7e"
+    },
+    {
+      "name": "exist",
+      "start": 171256,
+      "end": 171329,
+      "sha256": "7adb71284893fa6c12c7cfabeece34dd6e161796e87085669f4cdf0ef2d6a28e"
+    },
+    {
+      "name": "random",
+      "start": 225719,
+      "end": 225865,
+      "sha256": "8a6887790eb8bd5f71180db7c19ff37e8e0366fa32a642293a3f58e4d310d0f8"
+    }
+  ],
+  "bypassedUiSpan": {
+    "start": 144519,
+    "end": 144632
+  },
+  "partyHp": [
+    20,
+    7,
+    7,
+    99,
+    1,
+    10
+  ],
+  "cases": [
+    {
+      "mode": 4,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 232,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        2
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 4,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        2
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 4,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        2
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 4,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        2
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 4,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "self-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 232,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 4,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "self-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 4,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "self-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 4,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "self-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 232,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "self-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 232,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1599076012
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "self-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1599076012
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "self-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1599076012
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "self-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1599076012
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 5,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        0,
+        2
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 232,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 0,
+      "effect": "self-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "self-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 232,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1599076012
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "self-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1599076012
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "self-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1599076012
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "self-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 132,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 132,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          100
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 1599076012
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 0,
+      "blank": false,
+      "ac": [
+        6,
+        6,
+        6,
+        6,
+        6,
+        6
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 12000,
+          "endurance": 100,
+          "level": 150,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12000,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 12500,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          500
+        ],
+        [
+          2,
+          500
+        ],
+        [
+          3,
+          500
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 3698175007
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 1,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 134775814
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 866343917
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 1,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 4294967295,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        3
+      ],
+      "afterSeed": 4160191484
+    },
+    {
+      "mode": 6,
+      "mask": 16,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "normal",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 199,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 16,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "dead",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 16,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "unconscious",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    },
+    {
+      "mode": 6,
+      "mask": 16,
+      "blank": true,
+      "ac": [
+        0,
+        4,
+        5,
+        6,
+        10,
+        255
+      ],
+      "seed": 3735928559,
+      "effect": "group-cure",
+      "status": "mixed",
+      "before": [
+        {
+          "hp": 133,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": true,
+          "unconscious": false
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": true
+        },
+        {
+          "hp": 0,
+          "endurance": 20,
+          "level": 20,
+          "mentality": 20,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "after": [
+        {
+          "hp": 133,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 1,
+          "dead": false,
+          "unconscious": false
+        },
+        {
+          "hp": 66,
+          "dead": false,
+          "unconscious": false
+        }
+      ],
+      "cures": [
+        [
+          1,
+          66
+        ],
+        [
+          2,
+          66
+        ],
+        [
+          3,
+          66
+        ]
+      ],
+      "bounds": [
+        5,
+        3
+      ],
+      "afterSeed": 757104989
+    }
+  ]
+}

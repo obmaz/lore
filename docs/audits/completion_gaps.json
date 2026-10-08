@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 567,
-    "verified": 1281,
+    "partial": 523,
+    "verified": 1325,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -30,8 +30,7 @@
     },
     {
       "routine": "LOREBATT.PAS:castattack:1",
-      "partial": 44,
-      "verified": 19
+      "verified": 63
     },
     {
       "routine": "LOREBATT.PAS:castattackall:1",
@@ -715,8 +714,132 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_enemy_ai_dispatch.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:case:1",
+        "LOREBATT.PAS:castattack:1:if:15",
+        "LOREBATT.PAS:castattack:1:for:6",
+        "LOREBATT.PAS:castattack:1:if:16",
+        "LOREBATT.PAS:castattack:1:if:17",
+        "LOREBATT.PAS:castattack:1:for:7",
+        "LOREBATT.PAS:castattack:1:if:18",
+        "LOREBATT.PAS:castattack:1:for:8",
+        "LOREBATT.PAS:castattack:1:if:19",
+        "LOREBATT.PAS:castattack:1:if:20",
+        "LOREBATT.PAS:castattack:1:if:21",
+        "LOREBATT.PAS:castattack:1:if:22",
+        "LOREBATT.PAS:castattack:1:if:23",
+        "LOREBATT.PAS:castattack:1:for:9",
+        "LOREBATT.PAS:castattack:1:if:24",
+        "LOREBATT.PAS:castattack:1:if:25",
+        "LOREBATT.PAS:castattack:1:for:10",
+        "LOREBATT.PAS:castattack:1:for:11",
+        "LOREBATT.PAS:castattack:1:if:26",
+        "LOREBATT.PAS:castattack:1:for:12",
+        "LOREBATT.PAS:castattack:1:for:13",
+        "LOREBATT.PAS:castattack:1:if:27",
+        "LOREBATT.PAS:castattack:1:for:14",
+        "LOREBATT.PAS:castattack:1:if:28",
+        "LOREBATT.PAS:castattack:1:if:29",
+        "LOREBATT.PAS:castattack:1:exit:1",
+        "LOREBATT.PAS:castattack:1:for:15",
+        "LOREBATT.PAS:castattack:1:if:30",
+        "LOREBATT.PAS:castattack:1:if:31",
+        "LOREBATT.PAS:castattack:1:for:16",
+        "LOREBATT.PAS:castattack:1:if:32",
+        "LOREBATT.PAS:castattack:1:if:33",
+        "LOREBATT.PAS:castattack:1:if:34",
+        "LOREBATT.PAS:castattack:1:for:17",
+        "LOREBATT.PAS:castattack:1:for:18",
+        "LOREBATT.PAS:castattack:1:if:35",
+        "LOREBATT.PAS:castattack:1:for:19",
+        "LOREBATT.PAS:castattack:1:for:20",
+        "LOREBATT.PAS:castattack:1:if:36",
+        "LOREBATT.PAS:castattack:1:if:37",
+        "LOREBATT.PAS:castattack:1:for:21",
+        "LOREBATT.PAS:castattack:1:if:38",
+        "LOREBATT.PAS:castattack:1:for:22",
+        "LOREBATT.PAS:castattack:1:if:39"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_ai_dispatch_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_armor_effects.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:case:1",
+        "LOREBATT.PAS:castattack:1:for:16",
+        "LOREBATT.PAS:castattack:1:if:32",
+        "LOREBATT.PAS:castattack:1:if:33",
+        "LOREBATT.PAS:castattack:1:if:34"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_armor_effects_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_cure_continuation.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:case:1",
+        "LOREBATT.PAS:castattack:1:for:12",
+        "LOREBATT.PAS:castattack:1:exit:1",
+        "LOREBATT.PAS:castattack:1:for:19"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_cure_continuation_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_enemy_magic_arithmetic.json",
-      "explicit_contracts": [],
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:if:15",
+        "LOREBATT.PAS:castattack:1:for:6",
+        "LOREBATT.PAS:castattack:1:if:16",
+        "LOREBATT.PAS:castattack:1:if:17",
+        "LOREBATT.PAS:castattack:1:for:7",
+        "LOREBATT.PAS:castattack:1:if:18",
+        "LOREBATT.PAS:castattack:1:for:8",
+        "LOREBATT.PAS:castattack:1:if:19",
+        "LOREBATT.PAS:castattack:1:if:20",
+        "LOREBATT.PAS:castattack:1:if:21",
+        "LOREBATT.PAS:castattack:1:if:22",
+        "LOREBATT.PAS:castattack:1:if:23",
+        "LOREBATT.PAS:castattack:1:for:9",
+        "LOREBATT.PAS:castattack:1:if:24",
+        "LOREBATT.PAS:castattack:1:if:25",
+        "LOREBATT.PAS:castattack:1:for:10",
+        "LOREBATT.PAS:castattack:1:for:11",
+        "LOREBATT.PAS:castattack:1:if:26",
+        "LOREBATT.PAS:castattack:1:for:12",
+        "LOREBATT.PAS:castattack:1:for:13",
+        "LOREBATT.PAS:castattack:1:if:27",
+        "LOREBATT.PAS:castattack:1:for:14",
+        "LOREBATT.PAS:castattack:1:if:28",
+        "LOREBATT.PAS:castattack:1:if:29",
+        "LOREBATT.PAS:castattack:1:exit:1",
+        "LOREBATT.PAS:castattack:1:for:15",
+        "LOREBATT.PAS:castattack:1:if:30",
+        "LOREBATT.PAS:castattack:1:if:31",
+        "LOREBATT.PAS:castattack:1:for:16",
+        "LOREBATT.PAS:castattack:1:if:32",
+        "LOREBATT.PAS:castattack:1:if:33",
+        "LOREBATT.PAS:castattack:1:if:34",
+        "LOREBATT.PAS:castattack:1:for:17",
+        "LOREBATT.PAS:castattack:1:for:18",
+        "LOREBATT.PAS:castattack:1:if:35",
+        "LOREBATT.PAS:castattack:1:for:19",
+        "LOREBATT.PAS:castattack:1:for:20",
+        "LOREBATT.PAS:castattack:1:if:36",
+        "LOREBATT.PAS:castattack:1:if:37",
+        "LOREBATT.PAS:castattack:1:for:21",
+        "LOREBATT.PAS:castattack:1:if:38",
+        "LOREBATT.PAS:castattack:1:for:22",
+        "LOREBATT.PAS:castattack:1:if:39"
+      ],
       "note_mentions": [
         "LOREBATT.PAS:enemycure:1:if:1",
         "LOREBATT.PAS:enemycure:1:if:2",
@@ -732,6 +855,7 @@
     {
       "path": "test/fixtures/dos_enemy_magic_targets.json",
       "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:case:1",
         "LOREBATT.PAS:castattack:1:if:1",
         "LOREBATT.PAS:castattack:1:if:2",
         "LOREBATT.PAS:castattack:1:for:1",
