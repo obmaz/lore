@@ -2608,3 +2608,11 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      승격했다. Python77개와 관련 Flutter 테스트가 통과했으며, 계약 원장은
      verified 1121개, partial 727개다. 각 진입에 연결된 전투·CRT 연출은
      별도 범위로 남긴다.
+
+161. 신규 생성 초기 저장 절 계약 5건 검증 완료 (2026-10-08).
+     `LORECRET.PAS:Last`의 파티 위치(6,51,31), 식량·금화 초기값, 100개
+     `etc` 초기화, 4개 슬롯 저장 반복, 기존 지도 저장 삭제 분기를 실제 DOSBox
+     신규 생성 결과와 대조했다. `test/new_game_dos_test.dart`는 생성된 여섯
+     레코드와 네 저장 슬롯을 원본 추출 fixture에 비교한다. 계약 원장은
+     verified 1126개, partial 722개다. 이름/성별 입력, 설문·직업·동료 선택의
+     다른 분기와 CRT 표시·입력은 여전히 partial이다.

@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 727,
-    "verified": 1121,
+    "partial": 722,
+    "verified": 1126,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -118,11 +118,13 @@
     },
     {
       "routine": "LORECRET.PAS:fourth:1",
-      "partial": 26
+      "partial": 22,
+      "verified": 4
     },
     {
       "routine": "LORECRET.PAS:last:1",
-      "partial": 5
+      "partial": 4,
+      "verified": 1
     },
     {
       "routine": "LORECRET.PAS:name:1",

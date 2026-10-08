@@ -79,6 +79,10 @@ VERIFIED_CONTRACT_TESTS = {
     "test/lore_source_memory_test.dart",
     "test/return_condition_test.dart",
     "test/source_entrance_replay_test.dart",
+    # LORECRET.PAS:Last writes the same cold-start party/map state into all
+    # four slots.  The native replay covers the complete routine boundary;
+    # the other character-creation procedures intentionally remain partial.
+    "test/new_game_dos_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 
