@@ -99,6 +99,9 @@ VERIFIED_CONTRACT_TESTS = {
     # Source Load map classification and boundary handling are replayed for all
     # 27 identities in both fresh and snapshot loads.
     "test/source_load_facing_test.dart",
+    # Both map-25 levers preserve all 256 raw byte states, door writes, and
+    # save/revisit behavior independently of the retired JSON rules.
+    "test/map25_lever_parity_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

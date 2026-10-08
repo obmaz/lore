@@ -2650,3 +2650,10 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      재개 모두에서 face 초기화, map25 den/map26 town 및 map24/27 town 분류를
      검증했다. 계약 원장은 verified 1154개, partial 694개다. 로드 뒤의 입장
      사건·렌더링은 별도 partial 범위다.
+
+167. 맵 25 레버·문 상태 계약 4건 검증 완료 (2026-10-08).
+     `LORESPEC.PAS`의 좌우 레버 조건과 문 열기 조건을 `etc[45]`의 256개 raw
+     byte 값, 관련 없는 하위 bit, JSON 유무, 저장/복원·재방문으로 대조했다.
+     두 레버의 bit 7/8 기록과 두 문 타일 쓰기를 모두 확인했다. 계약 원장은
+     verified 1158개, partial 690개다. DOS UI 표시 타이밍과 던전의 다른 사건은
+     partial로 남는다.

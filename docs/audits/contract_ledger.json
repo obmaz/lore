@@ -25461,7 +25461,7 @@
       "behavioral_evidence": [
         "test/map25_lever_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Left lever preserves all 256 raw byte values and unrelated bits; JSON-independent state/save replay, DOS UI timing pending."
     },
@@ -25477,7 +25477,7 @@
       "behavioral_evidence": [
         "test/map25_lever_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Left lever tests bits 7 and 8 after writing bit 7 and opens both source doors; full app/DOS playback pending."
     },
@@ -25493,7 +25493,7 @@
       "behavioral_evidence": [
         "test/map25_lever_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Right lever preserves all 256 raw byte values and unrelated bits; JSON-independent state/save replay, DOS UI timing pending."
     },
@@ -25509,7 +25509,7 @@
       "behavioral_evidence": [
         "test/map25_lever_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Right lever tests bits 7 and 8 after writing bit 8 and reapplies door state after save/revisit; full app/DOS playback pending."
     },
@@ -56838,8 +56838,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 694,
-    "partially_verified_behavior_sites": 694,
+    "unverified_behavior_sites": 690,
+    "partially_verified_behavior_sites": 690,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
