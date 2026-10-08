@@ -32149,7 +32149,7 @@
       "behavioral_evidence": [
         "test/lore_water_lord_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_water_lord.dart",
       "reviewed_scope": "Complete Water Field lord etc15 case 0..5; bytes6..255 clear/no output. All256 stages, EXP before PressAnyKey and quest after; dead named slots included, empty and slot7 excluded. Independent original DOS synthetic saves verify both rewards and signed longint overflow. Whole playthrough pending."
     },
@@ -32165,7 +32165,7 @@
       "behavioral_evidence": [
         "test/lore_water_lord_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_water_lord.dart",
       "reviewed_scope": "Complete Water Field lord etc15 case 0..5; bytes6..255 clear/no output. All256 stages, EXP before PressAnyKey and quest after; dead named slots included, empty and slot7 excluded. Independent original DOS synthetic saves verify both rewards and signed longint overflow. Whole playthrough pending."
     },
@@ -32181,7 +32181,7 @@
       "behavioral_evidence": [
         "test/lore_water_lord_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_water_lord.dart",
       "reviewed_scope": "Complete Water Field lord etc15 case 0..5; bytes6..255 clear/no output. All256 stages, EXP before PressAnyKey and quest after; dead named slots included, empty and slot7 excluded. Independent original DOS synthetic saves verify both rewards and signed longint overflow. Whole playthrough pending."
     },
@@ -32197,7 +32197,7 @@
       "behavioral_evidence": [
         "test/lore_water_lord_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_water_lord.dart",
       "reviewed_scope": "Complete Water Field lord etc15 case 0..5; bytes6..255 clear/no output. All256 stages, EXP before PressAnyKey and quest after; dead named slots included, empty and slot7 excluded. Independent original DOS synthetic saves verify both rewards and signed longint overflow. Whole playthrough pending."
     },
@@ -32213,7 +32213,7 @@
       "behavioral_evidence": [
         "test/lore_water_lord_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_water_lord.dart",
       "reviewed_scope": "Complete Water Field lord etc15 case 0..5; bytes6..255 clear/no output. All256 stages, EXP before PressAnyKey and quest after; dead named slots included, empty and slot7 excluded. Independent original DOS synthetic saves verify both rewards and signed longint overflow. Whole playthrough pending."
     },
@@ -32229,7 +32229,7 @@
       "behavioral_evidence": [
         "test/lore_water_lord_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_water_lord.dart",
       "reviewed_scope": "Complete Water Field lord etc15 case 0..5; bytes6..255 clear/no output. All256 stages, EXP before PressAnyKey and quest after; dead named slots included, empty and slot7 excluded. Independent original DOS synthetic saves verify both rewards and signed longint overflow. Whole playthrough pending."
     },
@@ -56838,8 +56838,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 722,
-    "partially_verified_behavior_sites": 722,
+    "unverified_behavior_sites": 716,
+    "partially_verified_behavior_sites": 716,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

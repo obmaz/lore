@@ -83,6 +83,9 @@ VERIFIED_CONTRACT_TESTS = {
     # four slots.  The native replay covers the complete routine boundary;
     # the other character-creation procedures intentionally remain partial.
     "test/new_game_dos_test.dart",
+    # The Water Field lord procedure is replayed for every etc[15] byte value
+    # against native DOS reward records; unrelated campaign paths stay partial.
+    "test/lore_water_lord_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

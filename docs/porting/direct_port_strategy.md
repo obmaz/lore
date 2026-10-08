@@ -2616,3 +2616,10 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      레코드와 네 저장 슬롯을 원본 추출 fixture에 비교한다. 계약 원장은
      verified 1126개, partial 722개다. 이름/성별 입력, 설문·직업·동료 선택의
      다른 분기와 CRT 표시·입력은 여전히 partial이다.
+
+162. Water Field 군주 보상 절 계약 6건 검증 완료 (2026-10-08).
+     `LORETALK.PAS` Water Field 군주의 `etc[15]` case 0..5와 나머지
+     250개 byte 값의 무출력 경로, 경험치/퀘스트 적용 순서를 원본 DOS 저장과
+     대조했다. 빈 슬롯·7번 슬롯 제외, 사망한 이름 있는 일행의 보상 및 signed
+     longint 오버플로도 포함한다. 계약 원장은 verified 1132개, partial
+     716개다. 이 보상 절 외의 대화 진행과 전체 캠페인은 partial로 남는다.
