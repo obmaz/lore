@@ -18947,6 +18947,23 @@
         "test/source_sub_labels_test.dart",
         "lib/logic/lore_battle.dart"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:returnmessage:1:case:1",
+      "line": 789,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/return_message_dos_test.dart",
+      "note": "Original ReturnMessage executes with original short-string copy/concat and label helpers for 10010 combinations: every branch/default, seven player slots including scratch7, first/seventh enemy or player targets, all weapon bytes, all 45 defined magic labels per shifted branch, empty/Johab/17-byte names. Actual LoreBattle text owner compares every output and integer argument wrap without actor/RNG mutation. Native synthetic surrounding-memory markers demonstrate four out-of-array reads. Explicit intentional difference per source-memory policy: invalid player/target slots raise RangeError, and an unassigned magic result raises StateError; unrelated DOS memory is not read or reconstructed. Unused invalid-target precomputed text in source battle dispatch is not interpreted/displayed. No BGI glyph or invalid-memory byte-for-byte equivalence is claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_sub_text.dart",
+        "test/fixtures/dos_return_message.json",
+        "tool/export_dos_return_message.py",
+        "test/return_magic_dos_test.dart",
+        "test/source_battle_dispatch_test.dart"
+      ]
     }
   ]
 }

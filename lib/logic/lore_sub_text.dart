@@ -144,6 +144,8 @@ class LoreSubText {
     String? target,
   }) {
     final name = actor;
+    how = LorePascal.integer(how);
+    what = what == null ? null : LorePascal.integer(what);
     switch (how) {
       case 1:
         return '$name는 ${weaponLabel(what ?? 0)}${weaponJosa(what ?? 0)}로 $target를 공격했다';

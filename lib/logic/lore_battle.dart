@@ -113,6 +113,14 @@ class LoreBattle {
 
   /// `LORESUB.PAS` `ReturnMessage(who, how, what, whom)`.
   String returnMessage(int who, int how, int what, int whom) {
+    who = LorePascal.integer(who);
+    how = LorePascal.integer(how);
+    what = LorePascal.integer(what);
+    whom = LorePascal.integer(whom);
+    RangeError.checkValueInInterval(who, 1, 7, 'player slot');
+    if (how >= 1 && how <= 6) {
+      RangeError.checkValueInInterval(whom, 1, 7, 'message target slot');
+    }
     final actor = p(who).name;
     switch (how) {
       case 1:

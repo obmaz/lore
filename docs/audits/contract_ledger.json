@@ -28121,11 +28121,16 @@
       "outcomes": 8,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/return_message_dos_test.dart",
+        "lib/logic/lore_sub_text.dart",
+        "test/fixtures/dos_return_message.json",
+        "tool/export_dos_return_message.py",
+        "test/return_magic_dos_test.dart",
+        "test/source_battle_dispatch_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_battle.dart",
+      "reviewed_scope": "Original ReturnMessage executes with original short-string copy/concat and label helpers for 10010 combinations: every branch/default, seven player slots including scratch7, first/seventh enemy or player targets, all weapon bytes, all 45 defined magic labels per shifted branch, empty/Johab/17-byte names. Actual LoreBattle text owner compares every output and integer argument wrap without actor/RNG mutation. Native synthetic surrounding-memory markers demonstrate four out-of-array reads. Explicit intentional difference per source-memory policy: invalid player/target slots raise RangeError, and an unassigned magic result raises StateError; unrelated DOS memory is not read or reconstructed. Unused invalid-target precomputed text in source battle dispatch is not interpreted/displayed. No BGI glyph or invalid-memory byte-for-byte equivalence is claimed."
     },
     {
       "id": "LORESUB.PAS:returndefaultfont:1:case:1",
@@ -53404,6 +53409,23 @@
       ]
     },
     {
+      "id": "LORESUB.PAS:returnmessage:1:case:1",
+      "line": 789,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/return_message_dos_test.dart",
+      "note": "Original ReturnMessage executes with original short-string copy/concat and label helpers for 10010 combinations: every branch/default, seven player slots including scratch7, first/seventh enemy or player targets, all weapon bytes, all 45 defined magic labels per shifted branch, empty/Johab/17-byte names. Actual LoreBattle text owner compares every output and integer argument wrap without actor/RNG mutation. Native synthetic surrounding-memory markers demonstrate four out-of-array reads. Explicit intentional difference per source-memory policy: invalid player/target slots raise RangeError, and an unassigned magic result raises StateError; unrelated DOS memory is not read or reconstructed. Unused invalid-target precomputed text in source battle dispatch is not interpreted/displayed. No BGI glyph or invalid-memory byte-for-byte equivalence is claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_sub_text.dart",
+        "test/fixtures/dos_return_message.json",
+        "tool/export_dos_return_message.py",
+        "test/return_magic_dos_test.dart",
+        "test/source_battle_dispatch_test.dart"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -54540,17 +54562,6 @@
       "id": "LORESUB.PAS:message:1:for:1",
       "line": 386,
       "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:returnmessage:1:case:1",
-      "line": 789,
-      "kind": "case",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -58358,6 +58369,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/return_message_dos_test.dart",
+      "kind": "test",
+      "sha256": "21cfe52f88b7b3394be87e0a9c4b85a27759d959a4c3b60629b8b934498fd7bf",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/rigel_blessing_test.dart",
       "kind": "test",
       "sha256": "1016afb262f2bea589fc00848d253ba0eee58866aa07c1a8d8c163308d016e53",
@@ -59679,6 +59699,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_return_message.json",
+      "kind": "fixture",
+      "sha256": "ce4e36497998f62b5244c548a62bf44855390e3f262f4a0f932eaa67a98c4ecb",
+      "test_users": [
+        "test/return_message_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_save_party.json",
       "kind": "fixture",
       "sha256": "78d501f52fef43386b776ff5008ff24037d6d67453f66d5930025de429b37d73",
@@ -60206,9 +60235,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "4401393292ce9b86c95bce35a06423ed2161a44ec02b758ee8756182028d55b3",
+      "sha256": "101103fdd7d57fcd4b6975c19896435729c702e03f6260c70943df9e21ab220e",
       "top_level_counts": {
-        "contracts": 1677
+        "contracts": 1678
       }
     }
   ],
@@ -60217,8 +60246,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 115,
-    "partially_verified_behavior_sites": 115,
+    "unverified_behavior_sites": 114,
+    "partially_verified_behavior_sites": 114,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

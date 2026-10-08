@@ -10,16 +10,21 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
-    def test_return_magic_case_scope_does_not_close_return_message_memory_fault(self):
+    def test_return_magic_and_message_keep_explicit_invalid_memory_policy(self):
         sites = ledger.build()['control_sites']
         closed = [s for s in sites if s['routine'] == 'LORESUB.PAS:returnmagic:1'
                   and s['line'] == 729]
         self.assertEqual(len(closed), 1)
         self.assertEqual(closed[0]['verification_status'], 'verified')
-        untouched = [s for s in sites if s['routine'] == 'LORESUB.PAS:returnmessage:1'
+        messages = [s for s in sites if s['routine'] == 'LORESUB.PAS:returnmessage:1'
                      and s['line'] == 789]
-        self.assertEqual(len(untouched), 1)
-        self.assertEqual(untouched[0]['verification_status'], 'partial')
+        self.assertEqual(len(messages), 1)
+        self.assertEqual(messages[0]['verification_status'], 'verified')
+        reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        note = next(r['note'] for r in reviewed if r['id'] == messages[0]['id'])
+        self.assertIn('RangeError', note)
+        self.assertIn('StateError', note)
+        self.assertIn('No BGI glyph or invalid-memory byte-for-byte equivalence', note)
 
     def test_remains_blink_scope_is_seven_ordered_presentation_loops(self):
         sites = ledger.build()['control_sites']
@@ -181,7 +186,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 115)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 114)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

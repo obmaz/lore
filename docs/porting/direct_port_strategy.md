@@ -3083,3 +3083,20 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      전체 Flutter 1681건(3 skip), Python 132건, analyze 및 웹 release
      build가 통과했다. 전체 integer 원본 추출을 다시 실행해 fixture와
      일치함을 확인했고 원장·완료 gap·source memory도 최신이다.
+
+199. **ReturnMessage 원본 문자열 helper와 선언된 슬롯 경계**
+     원본 short-string 복사·연결 및 ReturnWeapon/ReturnMagic까지
+     실행한다. stack-space prologue check만 우회하며 10010개 조합에서
+     모든 how/default 분기, player1..7(임시7 포함), 첫/일곱 target,
+     무기 byte 256개 및 shifted magic 45개, 빈 이름·한글·17-byte 이름을
+     비교한다. 실제 LoreBattle owner와 integer 인자 wrap, actor/RNG
+     불변을 검사한다. 네 범위 밖 슬롯에 넣은 synthetic 주변 메모리의
+     marker가 원본 문구에 노출됨을 확인한다. 이식은 해당 포인터를
+     재현하지 않고 RangeError로 드러낸다. 미할당 magic은 앞 단계의
+     StateError 정책을 유지한다. 원본 배틀 dispatch에서 계산만 하고
+     사용하지 않는 잘못된 target의 precomputed text는 해석·표시하지
+     않는다. invalid-memory byte나 BGI glyph가 같다는 뜻은 아니다.
+     CASE 1개 추가 해소로 verified 1734 / partial 114 / unclassified 0.
+     전체 검사 후 푸시하고 훈련소 selector 대조를 이어간다.
+     전체 Flutter 1683건(3 skip), Python 133건, analyze 및 웹 release
+     build가 통과했다. 원본 helper를 다시 실행해 fixture와 일치함도 확인했다.
