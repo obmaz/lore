@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 1144,
-    "verified": 704,
+    "partial": 844,
+    "verified": 1004,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -58,7 +58,7 @@
     },
     {
       "routine": "LOREBATT.PAS:encounterenemy:1",
-      "partial": 17
+      "verified": 17
     },
     {
       "routine": "LOREBATT.PAS:endbattle:1",
@@ -86,7 +86,7 @@
     },
     {
       "routine": "LOREBATT.PAS:randomenemy:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREBATT.PAS:runaway:1",
@@ -150,27 +150,27 @@
     },
     {
       "routine": "LOREEND.PAS:end_demo:1",
-      "partial": 11
+      "verified": 11
     },
     {
       "routine": "LOREEND.PAS:fadein:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREEND.PAS:fadeout:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREEND.PAS:fadesub:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREEND.PAS:staffmessage:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREEND.PAS:thundereffect:1",
-      "partial": 5
+      "verified": 5
     },
     {
       "routine": "LOREENT.PAS:entermode:1",
@@ -217,8 +217,8 @@
     },
     {
       "routine": "LOREMAIN.PAS:main:1",
-      "partial": 22,
-      "verified": 4
+      "partial": 13,
+      "verified": 13
     },
     {
       "routine": "LOREMAIN.PAS:move_mode:1",
@@ -254,7 +254,7 @@
     },
     {
       "routine": "LOREMENU.PAS:gameoption:1",
-      "partial": 19
+      "verified": 19
     },
     {
       "routine": "LOREMENU.PAS:healall:1",
@@ -270,11 +270,11 @@
     },
     {
       "routine": "LOREMENU.PAS:quickview:1",
-      "partial": 4
+      "verified": 4
     },
     {
       "routine": "LOREMENU.PAS:rest:1",
-      "partial": 17
+      "verified": 17
     },
     {
       "routine": "LOREMENU.PAS:returnpredict:1",
@@ -294,15 +294,15 @@
     },
     {
       "routine": "LOREMENU.PAS:viewcharacter:1",
-      "partial": 6
+      "verified": 6
     },
     {
       "routine": "LOREMENU.PAS:viewparty:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREMENU.PAS:viewpartysub:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESPEC.PAS:sgn:1",
@@ -314,13 +314,13 @@
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part1:1",
-      "partial": 127,
-      "verified": 37
+      "partial": 9,
+      "verified": 155
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part2:1",
-      "partial": 83,
-      "verified": 177
+      "partial": 34,
+      "verified": 226
     },
     {
       "routine": "LORESUB.PAS:at:1",
@@ -380,7 +380,7 @@
     },
     {
       "routine": "LORESUB.PAS:gameover:1",
-      "partial": 14
+      "verified": 14
     },
     {
       "routine": "LORESUB.PAS:grocery:1",
@@ -396,7 +396,8 @@
     },
     {
       "routine": "LORESUB.PAS:load:1",
-      "partial": 21
+      "partial": 19,
+      "verified": 2
     },
     {
       "routine": "LORESUB.PAS:message:1",
@@ -460,7 +461,7 @@
     },
     {
       "routine": "LORESUB.PAS:select:1",
-      "partial": 12
+      "verified": 12
     },
     {
       "routine": "LORESUB.PAS:selectenemy:1",
@@ -497,7 +498,7 @@
     },
     {
       "routine": "LORESUB.PAS:wantexit:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:weapon_shop:1",
@@ -505,8 +506,8 @@
     },
     {
       "routine": "LORETALK.PAS:talkmode:1",
-      "verified": 111,
-      "partial": 35
+      "verified": 118,
+      "partial": 28
     }
   ],
   "unclassified_sites": [],
