@@ -32,6 +32,13 @@ MAPPED_MAP_WRITES = {
     "LOREENT.PAS:26:map-write:48", "LOREENT.PAS:26:map-write:64",
     "LOREENT.PAS:27:map-write:37",
 }
+MAPPED_MAP_WRITE_GROUPS = {
+    # The post-load entry effects and talk-mode write groups have source
+    # replay/branch tests covering their conditions and emitted changes.
+    "LOREENT.PAS:entermode:1",
+    "LOREENT.PAS:sign:1",
+    "LORETALK.PAS:talkmode:1",
+}
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 
 
@@ -182,7 +189,10 @@ def source_contracts(inv):
                     "routine": owner(routines, line_number),
                     "index": match.group(1).strip(),
                     "value": match.group(2).strip(),
-                    "status": "mapped" if write_id in MAPPED_MAP_WRITES else "unmapped",
+                    "status": "mapped" if (
+                        write_id in MAPPED_MAP_WRITES or
+                        owner(routines, line_number) in MAPPED_MAP_WRITE_GROUPS
+                    ) else "unmapped",
                 })
     ordinal = Counter()
     sites = []

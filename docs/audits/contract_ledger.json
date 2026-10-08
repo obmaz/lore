@@ -52673,7 +52673,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "37,41",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:89:map-write:51",
@@ -52682,7 +52682,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "40,56",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:165:map-write:16",
@@ -52691,7 +52691,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "25,44",
       "value": "50",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:165:map-write:34",
@@ -52700,7 +52700,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "26,44",
       "value": "50",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:173:map-write:39",
@@ -52709,7 +52709,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "18,9",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:192:map-write:49",
@@ -52718,7 +52718,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "40,56",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:279:map-write:55",
@@ -52727,7 +52727,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "33,10",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:363:map-write:35",
@@ -52736,7 +52736,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "i,j",
       "value": "16",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:488:map-write:17",
@@ -52745,7 +52745,7 @@
       "routine": "LOREENT.PAS:sign:1",
       "index": "25,27",
       "value": "52",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREMENU.PAS:374:map-write:16",
@@ -53456,7 +53456,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "62,i",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:127:map-write:9",
@@ -53465,7 +53465,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "62,82",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:127:map-write:24",
@@ -53474,7 +53474,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "62,83",
       "value": "14",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:213:map-write:12",
@@ -53483,7 +53483,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "40,15",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:268:map-write:12",
@@ -53492,7 +53492,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "49,52",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:268:map-write:28",
@@ -53501,7 +53501,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "50,52",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:268:map-write:44",
@@ -53510,7 +53510,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "51,52",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:269:map-write:12",
@@ -53519,7 +53519,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "52,52",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:269:map-write:28",
@@ -53528,7 +53528,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "53,52",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:269:map-write:44",
@@ -53537,7 +53537,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "49,53",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:270:map-write:12",
@@ -53546,7 +53546,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "50,53",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:270:map-write:28",
@@ -53555,7 +53555,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "51,53",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:270:map-write:44",
@@ -53564,7 +53564,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "52,53",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:270:map-write:60",
@@ -53573,7 +53573,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "53,53",
       "value": "45",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:287:map-write:30",
@@ -53582,7 +53582,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "i,88",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:431:map-write:12",
@@ -53591,7 +53591,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "37,41",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:636:map-write:9",
@@ -53600,7 +53600,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "40,56",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:737:map-write:9",
@@ -53609,7 +53609,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "33,10",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:833:map-write:9",
@@ -53618,7 +53618,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "x+x1,y+y1",
       "value": "35",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:879:map-write:9",
@@ -53627,7 +53627,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "x+x1,y+y1",
       "value": "35",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:915:map-write:9",
@@ -53636,7 +53636,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "x+x1,y+y1",
       "value": "35",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:966:map-write:9",
@@ -53645,7 +53645,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "x+x1,y+y1",
       "value": "35",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:1015:map-write:9",
@@ -53654,7 +53654,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "x+x1,y+y1",
       "value": "35",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:1044:map-write:9",
@@ -53663,7 +53663,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "x+x1,y+y1",
       "value": "35",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:1056:map-write:9",
@@ -53672,7 +53672,7 @@
       "routine": "LORETALK.PAS:talkmode:1",
       "index": "x+x1,y+y1",
       "value": "35",
-      "status": "unmapped"
+      "status": "mapped"
     }
   ],
   "runtime_assets": [
