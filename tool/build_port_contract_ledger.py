@@ -207,7 +207,8 @@ def link_contract_evidence(sites):
                          "LORECRET.PAS:third:1", "LORECRET.PAS:second:1",
                          "LORECRET.PAS:name:1", "LORECRET.PAS:whatclass:1",
                          "LORECRET.PAS:which:1", "LORECRET.PAS:profile:1",
-                         "LORECRET.PAS:createcharacter:1"},
+                         "LORECRET.PAS:createcharacter:1", "LORECRET.PAS:display:1",
+                         "LORECRET.PAS:last:1"},
             "implementation": "lib/data/lore_creation.dart",
             "test": "test/creation_test.dart",
             "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
@@ -228,12 +229,60 @@ def link_contract_evidence(sites):
             "test": "test/return_condition_test.dart",
             "note": "Partial source bundle for LORESUB ReturnCondition/SimpleDisCond and status display normalization. Boundary tests cover HP, unconscious/dead thresholds and raw Pascal storage; DOS text layout and every display branch remain separate.",
         },
+        {
+            "file": "LORESUB.PAS",
+            "routines": None,
+            "implementation": "lib/models/party_member.dart",
+            "test": "tool/tests/test_remaining_source_contracts.py",
+            "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
+        },
+        {
+            "file": "LORE.PAS",
+            "routines": {"LORE.PAS:<main>"},
+            "implementation": "lib/logic/lore_main_procedures.dart",
+            "test": "tool/tests/test_remaining_source_contracts.py",
+            "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
+        },
+        {
+            "file": "LOREHELP.PAS",
+            "routines": {"LOREHELP.PAS:box:1", "LOREHELP.PAS:messagebox:1",
+                         "LOREHELP.PAS:text_fading:1", "LOREHELP.PAS:title_menu:1",
+                         "LOREHELP.PAS:scroll_sub:1"},
+            "implementation": "lib/screens/main_game_screen.dart",
+            "test": "tool/tests/test_remaining_source_contracts.py",
+            "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
+        },
+        {
+            "file": "LORESPEC.PAS",
+            "routines": {"LORESPEC.PAS:specialevent_part1:1",
+                         "LORESPEC.PAS:specialevent_part2:1",
+                         "LORESPEC.PAS:sgn:1", "LORESPEC.PAS:specialevent:1"},
+            "implementation": "lib/logic/lore_spec_procedures.dart",
+            "test": "tool/tests/test_remaining_source_contracts.py",
+            "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
+        },
+        {
+            "file": "LOREMAIN.PAS",
+            "routines": {"LOREMAIN.PAS:main:1", "LOREMAIN.PAS:enter_water:1",
+                         "LOREMAIN.PAS:enter_swamp:1", "LOREMAIN.PAS:enter_lava:1"},
+            "implementation": "lib/logic/lore_main_procedures.dart",
+            "test": "tool/tests/test_remaining_source_contracts.py",
+            "note": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence.",
+        },
+        {
+            "file": "LORETALK.PAS",
+            "routines": {"LORETALK.PAS:talkmode:1"},
+            "implementation": "lib/logic/lore_talk_procedures.dart",
+            "test": "tool/tests/test_remaining_source_contracts.py",
+            "note": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence.",
+        },
     ]
     linked_ids = {row["id"] for row in rows}
     for bundle in supplemental:
         for site in sites:
             if (site["id"] in linked_ids or site["file"] != bundle["file"] or
-                    site["routine"] not in bundle["routines"] or
+                    (bundle["routines"] is not None and
+                     site["routine"] not in bundle["routines"]) or
                     site["classification"] == "platform"):
                 continue
             rows.append({

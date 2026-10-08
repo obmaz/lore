@@ -4,57 +4,13 @@
 실행 계획은 `docs/porting/direct_port_strategy.md` 하나이며, 이 문서는 장부에서 생성한 검토 색인이다.
 미분류·부분 근거는 미구현 개수나 완료율이 아니다. 플랫폼 분기의 제외도 어댑터 검증 완료를 뜻하지 않는다.
 
-게임 제어 지점 1848개: 미분류 185개, 부분 근거 1663개, 검증 완료 0개.
+게임 제어 지점 1848개: 미분류 0개, 부분 근거 1848개, 검증 완료 0개.
 지도 쓰기 123개는 개별 계약 연결이 없다. 테스트가 없는 것으로 해석하지 않는다.
 
 ## 미분류가 남은 루틴
 
 | 원본 루틴 | 미분류 | 부분 근거 | 검증 완료 |
 | --- | ---: | ---: | ---: |
-| `LOREHELP.PAS:title_menu:1` | 21 | 0 | 0 |
-| `LORESUB.PAS:load:1` | 15 | 6 | 0 |
-| `LORETALK.PAS:talkmode:1` | 14 | 132 | 0 |
-| `LOREMAIN.PAS:main:1` | 13 | 13 | 0 |
-| `LORESPEC.PAS:specialevent_part2:1` | 13 | 247 | 0 |
-| `LORESUB.PAS:selectenemy:1` | 10 | 0 | 0 |
-| `LORE.PAS:<main>` | 8 | 0 | 0 |
-| `LORESUB.PAS:set_all:1` | 8 | 0 | 0 |
-| `LORESPEC.PAS:specialevent_part1:1` | 7 | 157 | 0 |
-| `LORESUB.PAS:choosewhom:1` | 7 | 0 | 0 |
-| `LORESUB.PAS:auxscroll:1` | 6 | 0 | 0 |
-| `LOREHELP.PAS:scroll_sub:1` | 5 | 0 | 0 |
-| `LORESUB.PAS:scroll:1` | 5 | 2 | 0 |
-| `LORECRET.PAS:last:1` | 4 | 1 | 0 |
-| `LORECRET.PAS:display:1` | 3 | 0 | 0 |
-| `LOREHELP.PAS:box:1` | 3 | 0 | 0 |
-| `LORESUB.PAS:eprint:1` | 3 | 0 | 0 |
-| `LORESUB.PAS:save:1` | 3 | 0 | 0 |
-| `LOREHELP.PAS:text_fading:1` | 2 | 0 | 0 |
-| `LOREMAIN.PAS:enter_lava:1` | 2 | 11 | 0 |
-| `LOREMAIN.PAS:enter_swamp:1` | 2 | 15 | 0 |
-| `LOREMAIN.PAS:enter_water:1` | 2 | 0 | 0 |
-| `LORESPEC.PAS:sgn:1` | 2 | 0 | 0 |
-| `LORESUB.PAS:join:1` | 2 | 0 | 0 |
-| `LORESUB.PAS:pressanykey:1` | 2 | 0 | 0 |
-| `LORESUB.PAS:returnjoinmember:1` | 2 | 0 | 0 |
-| `LORESUB.PAS:returnmagic:1` | 2 | 0 | 0 |
-| `LORESUB.PAS:returnweapon:1` | 2 | 0 | 0 |
-| `LORESUB.PAS:setscrolltype:1` | 2 | 0 | 0 |
-| `LOREHELP.PAS:messagebox:1` | 1 | 0 | 0 |
-| `LORESPEC.PAS:specialevent:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:at:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:auxprint:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:clear:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:exist:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:message:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:on:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:returnclass:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:returndefense:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:returnmessage:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:returnsex:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:returnsexdata:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:turn_mind:1` | 1 | 0 | 0 |
-| `LORESUB.PAS:unsound:1` | 1 | 0 | 0 |
 
 ## 테스트에서 참조하지만 계약 연결이 없는 DOS 근거 후보
 

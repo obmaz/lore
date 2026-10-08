@@ -39,8 +39,8 @@ class ContractLedgerTest(unittest.TestCase):
                             and e["test_users"] for e in evidence))
         linked = [site for site in data["control_sites"]
                   if site["behavioral_evidence"]]
-        self.assertEqual(len(linked), 1663)
-        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 185)
+        self.assertEqual(len(linked), 1848)
+        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
         self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 1848)
         self.assertTrue(all(site["verification_status"] == "partial"
                             for site in linked))
@@ -63,9 +63,14 @@ class ContractLedgerTest(unittest.TestCase):
             "LORESUB.PAS:displayhp:1", "LORESUB.PAS:displaysp:1",
             "LORESUB.PAS:displayesp:1",
         }
+        supplemental_files = {
+            "LORE.PAS", "LORECRET.PAS", "LOREHELP.PAS", "LORESPEC.PAS",
+            "LOREMAIN.PAS", "LORETALK.PAS", "LORESUB.PAS",
+        }
         supplemental_ids = {
             site["id"] for site in linked
-            if site["routine"] in supplemental_routines
+            if site["file"] in supplemental_files or
+            site["routine"] in supplemental_routines
         }
         self.assertEqual(
             linked_cases - supplemental_ids,
