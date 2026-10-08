@@ -2780,3 +2780,18 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      clean=TRUE 렌더링/DOS 그래픽은 범위에서 제외한다.
      verified 1377개, partial 471개이며 1701개 목표는 아직 미달이다.
      전체 Flutter 1543건(3건 skip)과 집중 생성/공유 판정 검사가 통과했다.
+
+180. 생성 성향·직업 조건 및 공유 문자열 계약 51건 (2026-10-08).
+     First의 질문별 증가 대상/환산표/성별 보정과 Third의 직업 조건을
+     직접 Dart 규칙으로 분리해 실제 생성 화면에 연결했다. JSON 문구는
+     리소스로 유지하되 실행 조건/스탯 선택은 JSON에서 읽지 않는다.
+     원문에서 독립 추출한 질문/환산표로 59049개 답변 × 두 성별을 검사하고,
+     용량 배분식의 별도 oracle로 carry와 synthetic fallback 경계를 대조했다.
+     7개 직업 조건은 원문 operand/threshold의 모든 참·거짓 조합과 모든
+     byte 값/무관 필드를 대조했다. 초기화·키 입력·palette 루프는 제외한다.
+     ReturnClass/Weapon/Defense와 문법 set의 모든 byte 입력도 원문
+     Johab 문자열 추출 자료로 대조했다. 선언을 본문으로 오인하는 추출기를
+     수정하고 label 개수를 강제했다. native glyph 검증은 아니며 default가
+     없는 ReturnMagic selector는 partial로 남긴다.
+     verified 1428개, partial 420개. 전체 Flutter 1547건(3건 skip),
+     추가 문자열 집중 2건 및 release web build가 통과했다. 배포하지 않았다.

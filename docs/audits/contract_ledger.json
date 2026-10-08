@@ -9907,13 +9907,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:2",
@@ -9923,13 +9924,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:3",
@@ -9939,13 +9941,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:4",
@@ -9955,13 +9958,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:5",
@@ -9971,13 +9975,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:6",
@@ -9987,13 +9992,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:7",
@@ -10003,13 +10009,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:8",
@@ -10019,13 +10026,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:9",
@@ -10035,13 +10043,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:10",
@@ -10051,13 +10060,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:11",
@@ -10067,13 +10077,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:12",
@@ -10083,13 +10094,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:13",
@@ -10099,13 +10111,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:14",
@@ -10115,13 +10128,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:15",
@@ -10131,13 +10145,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:16",
@@ -10147,13 +10162,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:17",
@@ -10163,13 +10179,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:18",
@@ -10179,13 +10196,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:19",
@@ -10195,13 +10213,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:20",
@@ -10211,13 +10230,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:21",
@@ -10227,13 +10247,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:22",
@@ -10243,13 +10264,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:23",
@@ -10259,13 +10281,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:24",
@@ -10275,13 +10298,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:25",
@@ -10291,13 +10315,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:26",
@@ -10307,13 +10332,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:27",
@@ -10323,13 +10349,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:28",
@@ -10339,13 +10366,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:29",
@@ -10355,13 +10383,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:30",
@@ -10371,13 +10400,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:for:2",
@@ -10387,13 +10417,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:case:1",
@@ -10403,13 +10434,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "case",
       "outcomes": 8,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:31",
@@ -10419,13 +10451,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:32",
@@ -10435,13 +10468,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:33",
@@ -10451,13 +10485,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:34",
@@ -10467,13 +10502,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:35",
@@ -10483,13 +10519,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:36",
@@ -10499,13 +10536,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:if:37",
@@ -10515,13 +10553,14 @@
       "routine": "LORECRET.PAS:erase:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded."
     },
     {
       "id": "LORECRET.PAS:erase:1:for:3",
@@ -10739,13 +10778,14 @@
       "routine": "LORECRET.PAS:third:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial."
     },
     {
       "id": "LORECRET.PAS:third:1:if:2",
@@ -10755,13 +10795,14 @@
       "routine": "LORECRET.PAS:third:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial."
     },
     {
       "id": "LORECRET.PAS:third:1:if:3",
@@ -10771,13 +10812,14 @@
       "routine": "LORECRET.PAS:third:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial."
     },
     {
       "id": "LORECRET.PAS:third:1:if:4",
@@ -10787,13 +10829,14 @@
       "routine": "LORECRET.PAS:third:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial."
     },
     {
       "id": "LORECRET.PAS:third:1:if:5",
@@ -10803,13 +10846,14 @@
       "routine": "LORECRET.PAS:third:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial."
     },
     {
       "id": "LORECRET.PAS:third:1:if:6",
@@ -10819,13 +10863,14 @@
       "routine": "LORECRET.PAS:third:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial."
     },
     {
       "id": "LORECRET.PAS:third:1:if:7",
@@ -10835,13 +10880,14 @@
       "routine": "LORECRET.PAS:third:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/source_creation_rules_test.dart",
+        "test/new_game_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_creation_rules.dart",
+      "reviewed_scope": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial."
     },
     {
       "id": "LORECRET.PAS:third:1:repeat:1",
@@ -27345,11 +27391,12 @@
       "outcomes": 11,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_sub_labels_test.dart",
+        "tool/tests/test_export_source_sub_labels.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_sub_text.dart",
+      "reviewed_scope": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial."
     },
     {
       "id": "LORESUB.PAS:returnweapon:1:case:1",
@@ -27361,11 +27408,12 @@
       "outcomes": 11,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_sub_labels_test.dart",
+        "tool/tests/test_export_source_sub_labels.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_sub_text.dart",
+      "reviewed_scope": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial."
     },
     {
       "id": "LORESUB.PAS:returnweapon:1:if:1",
@@ -27377,11 +27425,12 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_sub_labels_test.dart",
+        "tool/tests/test_export_source_sub_labels.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_sub_text.dart",
+      "reviewed_scope": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial."
     },
     {
       "id": "LORESUB.PAS:returndefense:1:case:1",
@@ -27393,11 +27442,12 @@
       "outcomes": 7,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_sub_labels_test.dart",
+        "tool/tests/test_export_source_sub_labels.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_sub_text.dart",
+      "reviewed_scope": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial."
     },
     {
       "id": "LORESUB.PAS:returncondition:1:if:1",
@@ -27553,11 +27603,12 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_sub_labels_test.dart",
+        "tool/tests/test_export_source_sub_labels.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_sub_text.dart",
+      "reviewed_scope": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial."
     },
     {
       "id": "LORESUB.PAS:returnmessage:1:case:1",
@@ -33827,6 +33878,669 @@
     }
   ],
   "linked_contracts": [
+    {
+      "id": "LORESUB.PAS:returnclass:1:case:1",
+      "line": 643,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returnweapon:1:case:1",
+      "line": 660,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returnweapon:1:if:1",
+      "line": 673,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returndefense:1:case:1",
+      "line": 685,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returnmagic:1:if:1",
+      "line": 776,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:1",
+      "line": 215,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:2",
+      "line": 216,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:3",
+      "line": 217,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:4",
+      "line": 225,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:5",
+      "line": 226,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:6",
+      "line": 227,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:7",
+      "line": 235,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:8",
+      "line": 236,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:9",
+      "line": 237,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:10",
+      "line": 244,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:11",
+      "line": 245,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:12",
+      "line": 246,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:13",
+      "line": 253,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:14",
+      "line": 254,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:15",
+      "line": 255,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:16",
+      "line": 264,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:17",
+      "line": 265,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:18",
+      "line": 266,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:19",
+      "line": 275,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:20",
+      "line": 276,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:21",
+      "line": 277,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:22",
+      "line": 285,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:23",
+      "line": 286,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:24",
+      "line": 287,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:25",
+      "line": 294,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:26",
+      "line": 295,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:27",
+      "line": 296,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:28",
+      "line": 303,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:29",
+      "line": 304,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:30",
+      "line": 305,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:2",
+      "line": 307,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:case:1",
+      "line": 309,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:31",
+      "line": 329,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:32",
+      "line": 331,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:33",
+      "line": 337,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:34",
+      "line": 343,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:35",
+      "line": 347,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:36",
+      "line": 353,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:37",
+      "line": 359,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:1",
+      "line": 478,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:2",
+      "line": 484,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:3",
+      "line": 490,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:4",
+      "line": 496,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:5",
+      "line": 503,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:6",
+      "line": 509,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:7",
+      "line": 515,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
     {
       "id": "LORESUB.PAS:choosewhom:1:for:1",
       "line": 615,
@@ -49972,435 +50686,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORECRET.PAS:erase:1:if:1",
-      "line": 215,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:2",
-      "line": 216,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:3",
-      "line": 217,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:4",
-      "line": 225,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:5",
-      "line": 226,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:6",
-      "line": 227,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:7",
-      "line": 235,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:8",
-      "line": 236,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:9",
-      "line": 237,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:10",
-      "line": 244,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:11",
-      "line": 245,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:12",
-      "line": 246,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:13",
-      "line": 253,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:14",
-      "line": 254,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:15",
-      "line": 255,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:16",
-      "line": 264,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:17",
-      "line": 265,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:18",
-      "line": 266,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:19",
-      "line": 275,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:20",
-      "line": 276,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:21",
-      "line": 277,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:22",
-      "line": 285,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:23",
-      "line": 286,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:24",
-      "line": 287,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:25",
-      "line": 294,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:26",
-      "line": 295,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:27",
-      "line": 296,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:28",
-      "line": 303,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:29",
-      "line": 304,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:30",
-      "line": 305,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:for:2",
-      "line": 307,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:case:1",
-      "line": 309,
-      "kind": "case",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:31",
-      "line": 329,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:32",
-      "line": 331,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:33",
-      "line": 337,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:34",
-      "line": 343,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:35",
-      "line": 347,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:36",
-      "line": 353,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:erase:1:if:37",
-      "line": 359,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
       "id": "LORECRET.PAS:erase:1:for:3",
       "line": 390,
       "kind": "for",
@@ -50536,83 +50821,6 @@
       "id": "LORECRET.PAS:third:1:for:1",
       "line": 475,
       "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:third:1:if:1",
-      "line": 478,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:third:1:if:2",
-      "line": 484,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:third:1:if:3",
-      "line": 490,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:third:1:if:4",
-      "line": 496,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:third:1:if:5",
-      "line": 503,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:third:1:if:6",
-      "line": 509,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:third:1:if:7",
-      "line": 515,
-      "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/data/lore_creation.dart",
       "test": "test/creation_test.dart",
@@ -52106,64 +52314,9 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:returnclass:1:case:1",
-      "line": 643,
-      "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:returnweapon:1:case:1",
-      "line": 660,
-      "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:returnweapon:1:if:1",
-      "line": 673,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:returndefense:1:case:1",
-      "line": 685,
-      "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:returnmagic:1:case:1",
       "line": 729,
       "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:returnmagic:1:if:1",
-      "line": 776,
-      "kind": "if",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -56634,6 +56787,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/source_creation_rules_test.dart",
+      "kind": "test",
+      "sha256": "09d9a9a7e5ecf2e78ebf290c8d6c11c4673a307211f5acce9d4231f7ecf223ed",
+      "cited_source_files": [
+        "LORECRET.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/source_enemy_magic_target_test.dart",
       "kind": "test",
       "sha256": "bf93cd0768deb21f435791e514b72ebaab84f3a22473121ac017a5bdd230a117",
@@ -56719,6 +56881,15 @@
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/source_sub_labels_test.dart",
+      "kind": "test",
+      "sha256": "72af94bf47648111fbebfd73202853e2f53dfc25f6a7f2f6c70fdc83f40cac9c",
+      "cited_source_files": [
+        "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -57757,6 +57928,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/source_sub_labels.json",
+      "kind": "fixture",
+      "sha256": "c27fe7d4c87503ff9078c095fdb85334c0cf7470afecec8f9a5aa4119abbeeac",
+      "test_users": [
+        "test/source_sub_labels_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/source_talk_replay.json",
       "kind": "fixture",
       "sha256": "70f84661b28576007e35b3d5d7c498f87daad2194fee92544aa8a4ee2a83085b",
@@ -58000,9 +58180,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "ba2e490361cc9da9a6c654bd181553ffdcb2b11d5adc7cc6691154d01e10d097",
+      "sha256": "ea62b2e4c572344ae7dd83c19254294a36a0612a4e57908320f94f5525b7e084",
       "top_level_counts": {
-        "contracts": 1500
+        "contracts": 1551
       }
     }
   ],
@@ -58011,8 +58191,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 471,
-    "partially_verified_behavior_sites": 471,
+    "unverified_behavior_sites": 420,
+    "partially_verified_behavior_sites": 420,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

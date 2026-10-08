@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../logic/lore_menu_text.dart';
+import '../logic/lore_creation_rules.dart';
 import '../data/lore_creation.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
@@ -90,40 +91,19 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
 
   /// 원작 `First` 의 스탯 환산 + 성별 보정.
   void _applyQuizResult() {
-    _strength = _data.statValue(_transdata[1]);
-    _mentality = _data.statValue(_transdata[2]);
-    _concentration = _data.statValue(_transdata[3]);
-    _endurance = _data.statValue(_transdata[4]);
-    _resistanceStat = _data.statValue(_transdata[5]);
-
-    // 원작 `j := 4;` 성별 보정 (20 상한, 남는 값은 다음 능력치로 이월).
-    var j = 4;
-    void add(int Function() get, void Function(int) set) {
-      set(get() + j);
-      if (get() <= 20) {
-        j = 0;
-      } else {
-        j = get() - 20;
-        set(20);
-      }
-    }
-
-    if (_selectedGender == Gender.male) {
-      add(() => _strength, (v) => _strength = v);
-      add(() => _endurance, (v) => _endurance = v);
-      _resistanceStat = (_resistanceStat + j).clamp(0, 20);
-    } else {
-      add(() => _mentality, (v) => _mentality = v);
-      add(() => _concentration, (v) => _concentration = v);
-      _resistanceStat = (_resistanceStat + j).clamp(0, 20);
-    }
+    final stats = LoreCreationRules.quizResult(_transdata, _selectedGender);
+    _strength = stats[0];
+    _mentality = stats[1];
+    _concentration = stats[2];
+    _endurance = stats[3];
+    _resistanceStat = stats[4];
   }
 
   /// 원작 `First` 의 답 처리(`inc(transdata[N])`) 후 다음 단계로.
   void _answerQuestion(int choiceIndex) {
     final q = _questions[_qIndex];
     if (choiceIndex >= q.options.length) return;
-    final stat = q.options[choiceIndex].stat;
+    final stat = LoreCreationRules.questionStats[_qIndex][choiceIndex];
     if (stat >= 1 && stat <= 5) _transdata[stat]++;
 
     if (_qIndex < _questions.length - 1) {
@@ -162,16 +142,16 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   /// 원작 `Third` - 조건을 만족하는 계급만 고를 수 있다.
   List<CreationClassOption> get _availableClasses => _data.classes
       .where(
-        (c) => c.satisfied(
-          strength: _strength,
-          mentality: _mentality,
-          concentration: _concentration,
-          endurance: _endurance,
-          resistance: _resistanceStat,
-          agility: _agility,
-          accuracy: _accuracy,
-          luck: _luck,
-        ),
+        (c) => LoreCreationRules.classEligible(c.playerClass.id, [
+          _strength,
+          _mentality,
+          _concentration,
+          _endurance,
+          _resistanceStat,
+          _agility,
+          _accuracy,
+          _luck,
+        ]),
       )
       .toList();
 

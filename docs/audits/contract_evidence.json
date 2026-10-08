@@ -1,6 +1,669 @@
 {
   "contracts": [
     {
+      "id": "LORESUB.PAS:returnclass:1:case:1",
+      "line": 643,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returnweapon:1:case:1",
+      "line": 660,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returnweapon:1:if:1",
+      "line": 673,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returndefense:1:case:1",
+      "line": 685,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returnmagic:1:if:1",
+      "line": 776,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_sub_text.dart",
+      "test": "test/source_sub_labels_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_source_sub_labels.py"
+      ],
+      "note": "Independent original source labels and grammatical sets; every stored class/equipment/magic byte operand and both set outputs checked. Extractor enforces complete 10/10/6/45 label counts and source SHA. Native glyph rendering excluded; ReturnMagic case without a default remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:1",
+      "line": 215,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:2",
+      "line": 216,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:3",
+      "line": 217,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:4",
+      "line": 225,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:5",
+      "line": 226,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:6",
+      "line": 227,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:7",
+      "line": 235,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:8",
+      "line": 236,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:9",
+      "line": 237,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:10",
+      "line": 244,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:11",
+      "line": 245,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:12",
+      "line": 246,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:13",
+      "line": 253,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:14",
+      "line": 254,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:15",
+      "line": 255,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:16",
+      "line": 264,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:17",
+      "line": 265,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:18",
+      "line": 266,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:19",
+      "line": 275,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:20",
+      "line": 276,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:21",
+      "line": 277,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:22",
+      "line": 285,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:23",
+      "line": 286,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:24",
+      "line": 287,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:25",
+      "line": 294,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:26",
+      "line": 295,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:27",
+      "line": 296,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:28",
+      "line": 303,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:29",
+      "line": 304,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:30",
+      "line": 305,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:2",
+      "line": 307,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:case:1",
+      "line": 309,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:31",
+      "line": 329,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:32",
+      "line": 331,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:33",
+      "line": 337,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:34",
+      "line": 343,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:35",
+      "line": 347,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:36",
+      "line": 353,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:if:37",
+      "line": 359,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "First game-state branches: source-extracted ten answer mappings/stat table, all 59049 valid paths for both genders, independent capacity-based carry oracle and synthetic fallback/saturation boundaries. Runtime screen uses direct rules; native cold-start record/storage regression retained. Reset initialization, key loops and palette fades excluded.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:1",
+      "line": 478,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:2",
+      "line": 484,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:3",
+      "line": 490,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:4",
+      "line": 496,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:5",
+      "line": 503,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:6",
+      "line": 509,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:7",
+      "line": 515,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/source_creation_rules_test.dart",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart"
+      ],
+      "note": "Third seven gameplay class gates: independent source-extracted operands/thresholds, every Boolean conjunction mask and all 256 byte values per field including irrelevant fields. Actual creation screen uses this direct predicate. Input/palette/wait loops remain partial.",
+      "verification": "verified"
+    },
+    {
       "id": "LORESUB.PAS:choosewhom:1:for:1",
       "line": 615,
       "kind": "for",

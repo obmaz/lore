@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 471,
-    "verified": 1377,
+    "partial": 420,
+    "verified": 1428,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -115,7 +115,8 @@
     },
     {
       "routine": "LORECRET.PAS:erase:1",
-      "partial": 42
+      "partial": 3,
+      "verified": 39
     },
     {
       "routine": "LORECRET.PAS:fourth:1",
@@ -141,7 +142,8 @@
     },
     {
       "routine": "LORECRET.PAS:third:1",
-      "partial": 17
+      "partial": 10,
+      "verified": 7
     },
     {
       "routine": "LORECRET.PAS:whatclass:1",
@@ -417,7 +419,7 @@
     },
     {
       "routine": "LORESUB.PAS:returnclass:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:returncondition:1",
@@ -429,7 +431,7 @@
     },
     {
       "routine": "LORESUB.PAS:returndefense:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:returnjoinmember:1",
@@ -437,7 +439,8 @@
     },
     {
       "routine": "LORESUB.PAS:returnmagic:1",
-      "partial": 2
+      "partial": 1,
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:returnmessage:1",
@@ -453,7 +456,7 @@
     },
     {
       "routine": "LORESUB.PAS:returnweapon:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LORESUB.PAS:save:1",

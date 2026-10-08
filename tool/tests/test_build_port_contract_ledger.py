@@ -10,6 +10,21 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_creation_rule_verification_excludes_input_and_palette_loops(self):
+        sites = ledger.build()["control_sites"]
+        closed = [s for s in sites if "test/source_creation_rules_test.dart"
+                  in s["behavioral_evidence"]]
+        self.assertEqual(len(closed), 46)
+        self.assertTrue(all(s["verification_status"] == "verified" for s in closed))
+        self.assertTrue(all(
+            (s["routine"] == "LORECRET.PAS:erase:1" and 215 <= s["line"] <= 359)
+            or (s["routine"] == "LORECRET.PAS:third:1" and 478 <= s["line"] <= 515)
+            for s in closed))
+        untouched = [s for s in sites if s["routine"] == "LORECRET.PAS:erase:1"
+                     and s["line"] in {206, 390, 394}]
+        self.assertEqual(len(untouched), 3)
+        self.assertTrue(all(s["verification_status"] == "partial" for s in untouched))
+
     def test_all_original_and_port_resources_are_registered(self):
         data = ledger.build()
         self.assertEqual(len(data["source_files"]), 14)
@@ -41,7 +56,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 471)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 420)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
