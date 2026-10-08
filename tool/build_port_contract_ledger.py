@@ -96,6 +96,9 @@ VERIFIED_CONTRACT_TESTS = {
     # all map identities for ReturnDefaultFont and all six swamp party slots.
     "test/default_font_test.dart",
     "test/swamp_source_parity_test.dart",
+    # Source Load map classification and boundary handling are replayed for all
+    # 27 identities in both fresh and snapshot loads.
+    "test/source_load_facing_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

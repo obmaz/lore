@@ -2643,3 +2643,10 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      `LOREMAIN.PAS:enter_swamp`의 여섯 일행 슬롯 `Random(20)` 소비 후 독 적용
      순서를 원본 조건에 전수 대조했다. 계약 원장은 verified 1150개, partial
      698개다. 필드 렌더링과 늪 진입의 나머지 이동·전투 결과는 partial이다.
+
+166. 지도 Load 분류·경계 계약 4건 검증 완료 (2026-10-08).
+     `LORESUB.PAS:Load`의 지도 class case 두 개와 y 경계 조건 두 개를 27개
+     지도 identity 및 지도별 다섯 y 경계에서 전수 대조했다. 신규 로드와 스냅샷
+     재개 모두에서 face 초기화, map25 den/map26 town 및 map24/27 town 분류를
+     검증했다. 계약 원장은 verified 1154개, partial 694개다. 로드 뒤의 입장
+     사건·렌더링은 별도 partial 범위다.

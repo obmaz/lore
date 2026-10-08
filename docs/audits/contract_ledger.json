@@ -29903,7 +29903,7 @@
         "test/fixtures/source_load_facing.json",
         "tool/export_load_facing.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/game/lore_game.dart",
       "reviewed_scope": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     },
@@ -30001,7 +30001,7 @@
         "test/fixtures/source_load_facing.json",
         "tool/export_load_facing.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/game/lore_game.dart",
       "reviewed_scope": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     },
@@ -30051,7 +30051,7 @@
         "test/fixtures/source_load_facing.json",
         "tool/export_load_facing.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/game/lore_game.dart",
       "reviewed_scope": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     },
@@ -30069,7 +30069,7 @@
         "test/fixtures/source_load_facing.json",
         "tool/export_load_facing.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/game/lore_game.dart",
       "reviewed_scope": "LORESUB.PAS:1677-1759 source-extracted classes and MAP headers for all 27 identities and five y boundaries per map, fresh and snapshot loads without RNG. Source Load resets face, preserves map25 den/map26 town and map24/27 town; LOREMAIN.PAS:169-184 arrows use one map26 +4 offset. Partial source-expression evidence, not independent compiled EXE/BGI comparison or all Load errors/weather/audio."
     },
@@ -56838,8 +56838,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 698,
-    "partially_verified_behavior_sites": 698,
+    "unverified_behavior_sites": 694,
+    "partially_verified_behavior_sites": 694,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
