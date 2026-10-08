@@ -49,6 +49,10 @@ VERIFIED_CONTRACT_TESTS = {
     "test/lore_spec_map14_test.dart",
     "test/lore_spec_map16_test.dart",
     "test/lore_sign_test.dart",
+    "test/lore_town_shops_test.dart",
+    "test/lore_cast_spell_test.dart",
+    "test/lore_extrasense_test.dart",
+    "test/terrain_dos_parity_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

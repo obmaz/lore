@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 1745,
-    "verified": 103,
+    "partial": 1443,
+    "verified": 405,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -203,11 +203,13 @@
     },
     {
       "routine": "LOREMAIN.PAS:enter_lava:1",
-      "partial": 13
+      "partial": 3,
+      "verified": 10
     },
     {
       "routine": "LOREMAIN.PAS:enter_swamp:1",
-      "partial": 17
+      "verified": 14,
+      "partial": 3
     },
     {
       "routine": "LOREMAIN.PAS:enter_water:1",
@@ -220,11 +222,11 @@
     },
     {
       "routine": "LOREMAIN.PAS:move_mode:1",
-      "partial": 11
+      "verified": 11
     },
     {
       "routine": "LOREMENU.PAS:castspell:1",
-      "partial": 5
+      "verified": 5
     },
     {
       "routine": "LOREMENU.PAS:consciousone:1",
@@ -244,11 +246,11 @@
     },
     {
       "routine": "LOREMENU.PAS:curespell:1",
-      "partial": 14
+      "verified": 14
     },
     {
       "routine": "LOREMENU.PAS:extrasense:1",
-      "partial": 37
+      "verified": 37
     },
     {
       "routine": "LOREMENU.PAS:gameoption:1",
@@ -264,7 +266,7 @@
     },
     {
       "routine": "LOREMENU.PAS:phenominaspell:1",
-      "partial": 73
+      "verified": 73
     },
     {
       "routine": "LOREMENU.PAS:quickview:1",
@@ -276,7 +278,7 @@
     },
     {
       "routine": "LOREMENU.PAS:returnpredict:1",
-      "partial": 18
+      "verified": 18
     },
     {
       "routine": "LOREMENU.PAS:revitalizeall:1",
@@ -382,11 +384,11 @@
     },
     {
       "routine": "LORESUB.PAS:grocery:1",
-      "partial": 6
+      "verified": 6
     },
     {
       "routine": "LORESUB.PAS:hospital:1",
-      "partial": 36
+      "verified": 36
     },
     {
       "routine": "LORESUB.PAS:join:1",
@@ -478,7 +480,8 @@
     },
     {
       "routine": "LORESUB.PAS:train_center:1",
-      "partial": 51
+      "verified": 45,
+      "partial": 6
     },
     {
       "routine": "LORESUB.PAS:turn_mind:1",
@@ -498,7 +501,7 @@
     },
     {
       "routine": "LORESUB.PAS:weapon_shop:1",
-      "partial": 33
+      "verified": 33
     },
     {
       "routine": "LORETALK.PAS:talkmode:1",
