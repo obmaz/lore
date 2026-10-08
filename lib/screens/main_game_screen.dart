@@ -39,6 +39,7 @@ import '../logic/lore_game_over.dart';
 import '../logic/lore_main_procedures.dart';
 import '../logic/lore_talk_dispatcher.dart';
 import '../logic/lore_talk_mode.dart';
+import '../logic/lore_remains_blink.dart';
 import '../logic/lore_water_lord.dart';
 import '../logic/lore_spec_procedures.dart';
 import '../logic/lore_source_memory.dart';
@@ -620,6 +621,10 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _refreshTalkWindow() {
     if (mounted) setState(() {});
+  }
+
+  void _showRemainsFrame(LoreRemainsFrame frame) {
+    if (mounted) setState(() => _game.remainsBlinkFrame = frame);
   }
 
   Future<void> _runTalkProcedure(
@@ -2569,6 +2574,21 @@ class _ScreenTalkIo implements LoreTalkModeIo {
   _ScreenTalkIo(this._screen);
   final _MainGameScreenState _screen;
   final List<(int, String)> _lines = [];
+  @override
+  Future<void> blinkRemains(int dx, int dy) async {
+    try {
+      for (final frame in LoreRemainsBlink.frames(dx, dy)) {
+        await Future<void>.delayed(
+          Duration(milliseconds: frame.waitMilliseconds),
+        );
+        if (!isOpen) return;
+        _screen._showRemainsFrame(frame);
+      }
+    } finally {
+      _screen._game.remainsBlinkFrame = null;
+    }
+  }
+
   @override
   void setTile(int x, int y, int tile) =>
       _screen._game.currentMap?.setTile(x, y, tile);

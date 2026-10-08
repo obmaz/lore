@@ -18805,6 +18805,132 @@
         "test/fixtures/dos_load_state.json",
         "tool/export_dos_load_state.py"
       ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:9",
+      "line": 827,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:10",
+      "line": 873,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:11",
+      "line": 909,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:12",
+      "line": 960,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:13",
+      "line": 1009,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:14",
+      "line": 1038,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:15",
+      "line": 1050,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
     }
   ]
 }

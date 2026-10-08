@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 123,
-    "verified": 1725,
+    "partial": 116,
+    "verified": 1732,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -516,8 +516,7 @@
     },
     {
       "routine": "LORETALK.PAS:talkmode:1",
-      "verified": 139,
-      "partial": 7
+      "verified": 146
     }
   ],
   "unclassified_sites": [],
@@ -1505,6 +1504,22 @@
         "test/condition_storage_dos_test.dart",
         "test/recruit_storage_dos_test.dart",
         "test/special_cast_slots_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_remains_blink.json",
+      "explicit_contracts": [
+        "LORETALK.PAS:talkmode:1:for:9",
+        "LORETALK.PAS:talkmode:1:for:10",
+        "LORETALK.PAS:talkmode:1:for:11",
+        "LORETALK.PAS:talkmode:1:for:12",
+        "LORETALK.PAS:talkmode:1:for:13",
+        "LORETALK.PAS:talkmode:1:for:14",
+        "LORETALK.PAS:talkmode:1:for:15"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/remains_blink_dos_test.dart"
       ]
     },
     {

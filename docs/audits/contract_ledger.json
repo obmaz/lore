@@ -33423,11 +33423,17 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/remains_blink_dos_test.dart",
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_talk_mode.dart",
+      "reviewed_scope": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:117",
@@ -33455,11 +33461,17 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/remains_blink_dos_test.dart",
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_talk_mode.dart",
+      "reviewed_scope": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:118",
@@ -33487,11 +33499,17 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/remains_blink_dos_test.dart",
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_talk_mode.dart",
+      "reviewed_scope": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:119",
@@ -33519,11 +33537,17 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/remains_blink_dos_test.dart",
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_talk_mode.dart",
+      "reviewed_scope": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:120",
@@ -33551,11 +33575,17 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/remains_blink_dos_test.dart",
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_talk_mode.dart",
+      "reviewed_scope": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:121",
@@ -33615,11 +33645,17 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/remains_blink_dos_test.dart",
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_talk_mode.dart",
+      "reviewed_scope": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:for:15",
@@ -33631,11 +33667,17 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/remains_blink_dos_test.dart",
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_talk_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_talk_mode.dart",
+      "reviewed_scope": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent."
     },
     {
       "id": "UHANX.PAS:pause:1:if:1",
@@ -53216,6 +53258,132 @@
       ]
     },
     {
+      "id": "LORETALK.PAS:talkmode:1:for:9",
+      "line": 827,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:10",
+      "line": 873,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:11",
+      "line": 909,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:12",
+      "line": 960,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:13",
+      "line": 1009,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:14",
+      "line": 1038,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
+      "id": "LORETALK.PAS:talkmode:1:for:15",
+      "line": 1050,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_talk_mode.dart",
+      "test": "test/remains_blink_dos_test.dart",
+      "note": "Original EXE executes all seven 30-iteration remains blink loops for four cardinal and ten signed-boundary offsets (98 traces). Every Delay/PutImage argument, CopyPut operation and final map store compares; frame delays total 1860ms and no map write occurs during frames. Actual desktop/mobile keyboard interaction, all seven locations, 60 rendered overlays, input blocking and final sole tile write pass. Parchment cancellation/closed acknowledgement do not animate/write. Modern renderer scales source pixels using existing font/sprite adapter; DOS hardware pixels and CPU busy-delay wall clock are intentional adapter differences, not claimed equivalent.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_remains_blink.dart",
+        "lib/game/lore_game.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/remains_blink_ui_test.dart",
+        "test/fixtures/dos_remains_blink.json",
+        "tool/export_dos_remains_blink.py"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -55105,83 +55273,6 @@
       "test": "tool/tests/test_remaining_source_contracts.py",
       "supporting_evidence": [],
       "note": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORETALK.PAS:talkmode:1:for:9",
-      "line": 827,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORETALK.PAS:talkmode:1:for:10",
-      "line": 873,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORETALK.PAS:talkmode:1:for:11",
-      "line": 909,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORETALK.PAS:talkmode:1:for:12",
-      "line": 960,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORETALK.PAS:talkmode:1:for:13",
-      "line": 1009,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORETALK.PAS:talkmode:1:for:14",
-      "line": 1038,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORETALK.PAS:talkmode:1:for:15",
-      "line": 1050,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_talk_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LORETALK talk-mode loop. Source talk replay covers selected dialogue boundaries; all text branches, input timing, and NPC outcomes remain separate evidence.",
       "verification": "partial"
     }
   ],
@@ -58199,6 +58290,24 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/remains_blink_dos_test.dart",
+      "kind": "test",
+      "sha256": "10df4c98ff417aec04c5a1c9997d5439dd14ef329ace41624a738b1bca9aff0f",
+      "cited_source_files": [
+        "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/remains_blink_ui_test.dart",
+      "kind": "test",
+      "sha256": "534400a4183f369a293efc8fa1905c6c93fbefb0c092eebb2f858b177c240f21",
+      "cited_source_files": [
+        "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/rest_dos_parity_test.dart",
       "kind": "test",
       "sha256": "462eca157053e72c6df00e7180967e2a7066ca16a7dcec7abf66f3ac826e3e97",
@@ -59514,6 +59623,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_remains_blink.json",
+      "kind": "fixture",
+      "sha256": "3cd77b5e7758bd645740ce955302a912fb15b337d1d6dad54156628aba858209",
+      "test_users": [
+        "test/remains_blink_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_rest_states.json",
       "kind": "fixture",
       "sha256": "05d534b354339948096205d3a45366a473732923749821c0bf3a58bcabbd24c8",
@@ -59877,7 +59995,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "e2453848964f9b7e95811842b4be378cdd74baf2e276834eeb9cf56f39f252bd"
+      "sha256": "4e6418a9e21654c5e3602ba733d56afa61171b1416ec2998381cbe22301b6b7d"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -59917,7 +60035,7 @@
     },
     {
       "path": "lib/logic/lore_talk_mode.dart",
-      "sha256": "eddb5a914b167ec5c4eb132c4ff221efac4e0d871d75cfc5630e45ff70c5dea2"
+      "sha256": "f2f509481adda678bba13095500718b4918b6ed9fb06d14a65f9b1966e0997ac"
     },
     {
       "path": "lib/logic/lore_sign.dart",
@@ -59977,7 +60095,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "5bdee836f85fd852f29a23cba312a100f9e6bdb169141bfe687a40d67358b62d"
+      "sha256": "637f0b9bca7d68f6f91358d81b812dc9804f24ae2b2e6714ab26c340ce49f91e"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -60061,9 +60179,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "33cb757c9be644df0115035740b9bb249d1b5f0e55a07242fc2134aa8ebeda01",
+      "sha256": "6e8ad5c8a0ddeb765112f6366c3310ce044d6f8c1092ea5b1ddcc5194f9f85fe",
       "top_level_counts": {
-        "contracts": 1669
+        "contracts": 1676
       }
     }
   ],
@@ -60072,8 +60190,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 123,
-    "partially_verified_behavior_sites": 123,
+    "unverified_behavior_sites": 116,
+    "partially_verified_behavior_sites": 116,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

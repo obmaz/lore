@@ -1,5 +1,6 @@
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/logic/lore_talk_mode.dart';
+import 'package:lore/logic/lore_remains_blink.dart';
 
 class TalkModeIo implements LoreTalkModeIo {
   final lines = <(int, String)>[];
@@ -13,6 +14,14 @@ class TalkModeIo implements LoreTalkModeIo {
   void Function()? beforeWait;
   void Function()? afterWait;
   int refreshes = 0;
+  final blinks = <List<LoreRemainsFrame>>[];
+  void Function()? beforeBlink;
+  @override
+  Future<void> blinkRemains(int dx, int dy) async {
+    beforeBlink?.call();
+    blinks.add(LoreRemainsBlink.frames(dx, dy).toList());
+  }
+
   @override
   bool get isOpen => open;
   @override

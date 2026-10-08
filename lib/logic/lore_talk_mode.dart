@@ -19,6 +19,7 @@ abstract interface class LoreTalkModeIo implements LoreTalkIo {
   void message(int color, String text);
   Future<void> recruit(LoreScript procedure);
   Future<String> challengeKey();
+  Future<void> blinkRemains(int dx, int dy);
 }
 
 /// Direct port of LORETALK.PAS:talkmode. No JSON rule lookup or named flag
@@ -1088,7 +1089,8 @@ class LoreTalkMode {
             if (!io.isOpen) return;
             // Source pixel coordinates.
             // Source pixel coordinates.
-            // Source blink animation is a presentation effect.
+            await io.blinkRemains(targetX - x, targetY - y);
+            if (!io.isOpen) return;
             io.setTile(targetX, targetY, 35);
           } else if (at(10, 18)) {
             io.print(7, " 당신이 유골에 다가서자  어디선가 소리가 들");
@@ -1133,7 +1135,8 @@ class LoreTalkMode {
             if (!io.isOpen) return;
             // Source pixel coordinates.
             // Source pixel coordinates.
-            // Source blink animation is a presentation effect.
+            await io.blinkRemains(targetX - x, targetY - y);
+            if (!io.isOpen) return;
             io.setTile(targetX, targetY, 35);
           } else if (at(10, 30)) {
             io.print(7, " 당신이 유골에 다가서자  어디선가 소리가 들");
@@ -1166,7 +1169,8 @@ class LoreTalkMode {
             if (!io.isOpen) return;
             // Source pixel coordinates.
             // Source pixel coordinates.
-            // Source blink animation is a presentation effect.
+            await io.blinkRemains(targetX - x, targetY - y);
+            if (!io.isOpen) return;
             io.setTile(targetX, targetY, 35);
           } else if (at(21, 32)) {
             io.print(7, " 당신이 유골에 다가서자  어디선가 소리가 들");
@@ -1214,7 +1218,8 @@ class LoreTalkMode {
             if (!io.isOpen) return;
             // Source pixel coordinates.
             // Source pixel coordinates.
-            // Source blink animation is a presentation effect.
+            await io.blinkRemains(targetX - x, targetY - y);
+            if (!io.isOpen) return;
             io.setTile(targetX, targetY, 35);
           } else if (at(21, 22)) {
             io.print(7, " 당신이 유골에 다가서자  어디선가 소리가 들");
@@ -1260,7 +1265,8 @@ class LoreTalkMode {
             if (!io.isOpen) return;
             // Source pixel coordinates.
             // Source pixel coordinates.
-            // Source blink animation is a presentation effect.
+            await io.blinkRemains(targetX - x, targetY - y);
+            if (!io.isOpen) return;
             io.setTile(targetX, targetY, 35);
           } else if (at(21, 12)) {
             io.print(7, " 당신 앞에 있는 유골의 손에는 어떤 두루마리");
@@ -1287,13 +1293,15 @@ class LoreTalkMode {
             if (!io.isOpen) return;
             // Source pixel coordinates.
             // Source pixel coordinates.
-            // Source blink animation is a presentation effect.
+            await io.blinkRemains(targetX - x, targetY - y);
+            if (!io.isOpen) return;
             io.setTile(targetX, targetY, 35);
           } else {
             // Source pixel coordinates.
             // Source pixel coordinates.
             io.message(7, " 당신이 유골에 다가가자 재로 변하였다.");
-            // Source blink animation is a presentation effect.
+            await io.blinkRemains(targetX - x, targetY - y);
+            if (!io.isOpen) return;
             io.setTile(targetX, targetY, 35);
           }
         }

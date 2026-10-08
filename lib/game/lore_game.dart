@@ -23,6 +23,7 @@ import 'lore_world_manager.dart';
 import 'lore_dialogue_manager.dart';
 import 'bgi_font_decoder.dart';
 import '../logic/lore_load_weather.dart';
+import '../logic/lore_remains_blink.dart';
 import 'sprite_sheet.dart';
 
 /// 1993년 원작의 실제 100x100 바이너리 맵(TOWN1.MAP, GROUND1.MAP 등)과
@@ -72,6 +73,7 @@ class LoreGame extends FlameGame {
   int? peekY;
   (int x, int y)? chamberEntryFrame;
   int? chamberDescentRow;
+  LoreRemainsFrame? remainsBlinkFrame;
 
   void showChamberEntryFrame(int x, int y) {
     chamberEntryFrame = (x, y);
@@ -656,6 +658,26 @@ class LoreGame extends FlameGame {
               break;
           }
         }
+      }
+    }
+
+    if (remainsBlinkFrame case final frame?) {
+      final rect = Rect.fromLTWH(
+        offsetX + (halfX + (frame.x - 100) / 20) * tileSize,
+        offsetY + (halfY + (frame.y - 100) / 20) * tileSize,
+        tileSize,
+        tileSize,
+      );
+      final sheet = SpriteLibrary.instance.get(tileFontName);
+      if (sheet != null && frame.tile < sheet.count) {
+        sheet.draw(canvas, frame.tile, rect, opaqueBackground: true);
+      } else if (activeTileFont != null) {
+        activeTileFont.renderSprite(
+          canvas,
+          frame.tile,
+          rect,
+          opaqueBackground: true,
+        );
       }
     }
 

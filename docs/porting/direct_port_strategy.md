@@ -3044,3 +3044,22 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      전체 Flutter 1662건(3 skip), Python 128건, analyze 및 웹 release
      build가 통과했다. 원본 EXE 추출 재실행은 저장 fixture와 완전히
      일치하며 원장·완료 gap·source memory의 최신 상태도 확인했다.
+
+197. **일곱 유골 점멸 루프와 지도 변경 시점**
+     원본 EXE의 7개 FOR를 네 방향과 signed 경계 offset 10개로 실행해
+     98개 trace를 추출한다. 좌표 IMUL/ADD, loop counter/branch 및 마지막
+     map store는 원본 명령을 사용하고 플랫폼 Delay/PutImage/message만
+     공급한다. 각 trace의 60개 frame은 48/35를 번갈아 CopyPut하며
+     delay(k*2)와 delay((31-k)*2)의 순서·합계 1860ms를 대조한다.
+     기존 앱의 즉시 tile35 변경을 실제 async 점멸 이후의 write로 옮겼다.
+     desktop/mobile 모든 7개 위치에서 실제 상호작용·대화/두루마리 선택,
+     60개 frame·입력 차단·점멸 중 tile48 유지·최종 유일한 tile35 write와
+     좌표/일행/etc 불변을 재생한다. 읽기 취소와 닫힌 acknowledgement는
+     점멸·쓰기를 하지 않는다. 30×50 지도 snapshot을 사용하며 이를
+     원본의 100×100 최대 배열 크기와 혼동하지 않는다.
+     기존 현대 renderer가 source pixel 위치를 viewport에 맞게 scaling한다.
+     DOS BGI hardware pixel 및 CPU busy delay의 벽시계 시간 동등성은
+     주장하지 않는다. 7개 추가 해소로 verified 1732 / partial 116 /
+     unclassified 0. 전체 검사 후 푸시하고 다음 미완료 묶음을 이어간다.
+     최신 코드 전체 Flutter 1678건(3 skip), Python 130건, analyze 및
+     웹 release build가 통과했다. 원본 추출 재생도 fixture와 일치했다.

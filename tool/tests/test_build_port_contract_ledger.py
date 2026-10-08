@@ -10,6 +10,17 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_remains_blink_scope_is_seven_ordered_presentation_loops(self):
+        sites = ledger.build()['control_sites']
+        reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        closed = {r['id'] for r in reviewed if r.get('test') ==
+                  'test/remains_blink_dos_test.dart' and r.get('verification') == 'verified'}
+        self.assertEqual(len(closed), 7)
+        actual = [s for s in sites if s['id'] in closed]
+        self.assertEqual({s['line'] for s in actual}, {827,873,909,960,1009,1038,1050})
+        self.assertTrue(all(s['routine'] == 'LORETALK.PAS:talkmode:1'
+                            and s['verification_status'] == 'verified' for s in actual))
+
     def test_load_state_scope_leaves_file_io_and_bgi_contracts_partial(self):
         sites = ledger.build()['control_sites']
         reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
@@ -159,7 +170,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 123)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 116)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
