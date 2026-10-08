@@ -41,7 +41,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 523)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 481)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
@@ -137,15 +137,28 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertTrue(all(site["routine"] == "LOREBATT.PAS:castattack:1"
                             and 724 <= site["line"] <= 815 for site in targets))
 
-    def test_castattack_selector_does_not_promote_called_spell_effects(self):
+    def test_castattack_selector_does_not_promote_unrelated_battle_effects(self):
         sites = ledger.build()["control_sites"]
         selector = [s for s in sites if s["routine"] == "LOREBATT.PAS:castattack:1"]
         self.assertEqual(len(selector), 63)
         self.assertTrue(all(s["verification_status"] == "verified" for s in selector))
         effects = [s for s in sites if s["routine"] in
-                   {"LOREBATT.PAS:castattackone:1", "LOREBATT.PAS:castattackall:1"}]
+                   {"LOREBATT.PAS:specialcastattack:1", "LOREBATT.PAS:battleesp:1"}]
         self.assertTrue(effects)
         self.assertTrue(all(s["verification_status"] == "partial" for s in effects))
+
+    def test_native_special_and_spell_scope_is_exactly_42_contracts(self):
+        sites = ledger.build()["control_sites"]
+        special = [s for s in sites if "test/enemy_special_attack_dos_test.dart"
+                   in s["behavioral_evidence"]]
+        spells = [s for s in sites if "test/enemy_spell_dispatch_dos_test.dart"
+                  in s["behavioral_evidence"]]
+        self.assertEqual(len(special), 39)
+        self.assertEqual(len(spells), 3)
+        self.assertTrue(all(s["routine"] == "LOREBATT.PAS:specialattack:1" for s in special))
+        self.assertTrue(all(s["routine"] in {"LOREBATT.PAS:castattackone:1",
+                                             "LOREBATT.PAS:castattackall:1"} for s in spells))
+        self.assertTrue(all(s["verification_status"] == "verified" for s in special + spells))
 
     def test_supporting_evidence_is_retained_without_promoting_verification(self):
         rows = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))

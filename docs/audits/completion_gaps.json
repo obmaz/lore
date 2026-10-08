@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 523,
-    "verified": 1325,
+    "partial": 481,
+    "verified": 1367,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -34,11 +34,11 @@
     },
     {
       "routine": "LOREBATT.PAS:castattackall:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREBATT.PAS:castattackone:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREBATT.PAS:castattacksub:1",
@@ -95,7 +95,7 @@
     },
     {
       "routine": "LOREBATT.PAS:specialattack:1",
-      "partial": 39
+      "verified": 39
     },
     {
       "routine": "LOREBATT.PAS:specialcastattack:1",
@@ -796,6 +796,9 @@
     {
       "path": "test/fixtures/dos_enemy_magic_arithmetic.json",
       "explicit_contracts": [
+        "LOREBATT.PAS:castattackone:1:case:1",
+        "LOREBATT.PAS:castattackall:1:case:1",
+        "LOREBATT.PAS:castattackall:1:for:1",
         "LOREBATT.PAS:castattack:1:if:15",
         "LOREBATT.PAS:castattack:1:for:6",
         "LOREBATT.PAS:castattack:1:if:16",
@@ -879,6 +882,66 @@
       "note_mentions": [],
       "test_candidates": [
         "test/enemy_magic_targets_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_special_attack.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:specialattack:1:case:1",
+        "LOREBATT.PAS:specialattack:1:for:1",
+        "LOREBATT.PAS:specialattack:1:if:1",
+        "LOREBATT.PAS:specialattack:1:for:2",
+        "LOREBATT.PAS:specialattack:1:if:2",
+        "LOREBATT.PAS:specialattack:1:if:3",
+        "LOREBATT.PAS:specialattack:1:if:4",
+        "LOREBATT.PAS:specialattack:1:if:5",
+        "LOREBATT.PAS:specialattack:1:if:6",
+        "LOREBATT.PAS:specialattack:1:exit:1",
+        "LOREBATT.PAS:specialattack:1:if:7",
+        "LOREBATT.PAS:specialattack:1:exit:2",
+        "LOREBATT.PAS:specialattack:1:if:8",
+        "LOREBATT.PAS:specialattack:1:for:3",
+        "LOREBATT.PAS:specialattack:1:if:9",
+        "LOREBATT.PAS:specialattack:1:for:4",
+        "LOREBATT.PAS:specialattack:1:if:10",
+        "LOREBATT.PAS:specialattack:1:if:11",
+        "LOREBATT.PAS:specialattack:1:if:12",
+        "LOREBATT.PAS:specialattack:1:if:13",
+        "LOREBATT.PAS:specialattack:1:if:14",
+        "LOREBATT.PAS:specialattack:1:exit:3",
+        "LOREBATT.PAS:specialattack:1:if:15",
+        "LOREBATT.PAS:specialattack:1:exit:4",
+        "LOREBATT.PAS:specialattack:1:if:16",
+        "LOREBATT.PAS:specialattack:1:if:17",
+        "LOREBATT.PAS:specialattack:1:for:5",
+        "LOREBATT.PAS:specialattack:1:if:18",
+        "LOREBATT.PAS:specialattack:1:for:6",
+        "LOREBATT.PAS:specialattack:1:if:19",
+        "LOREBATT.PAS:specialattack:1:if:20",
+        "LOREBATT.PAS:specialattack:1:if:21",
+        "LOREBATT.PAS:specialattack:1:if:22",
+        "LOREBATT.PAS:specialattack:1:if:23",
+        "LOREBATT.PAS:specialattack:1:exit:5",
+        "LOREBATT.PAS:specialattack:1:if:24",
+        "LOREBATT.PAS:specialattack:1:exit:6",
+        "LOREBATT.PAS:specialattack:1:if:25",
+        "LOREBATT.PAS:specialattack:1:if:26"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_special_attack_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_spell_dispatch.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattackone:1:case:1",
+        "LOREBATT.PAS:castattackall:1:case:1",
+        "LOREBATT.PAS:castattackall:1:for:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_spell_dispatch_dos_test.dart"
       ]
     },
     {

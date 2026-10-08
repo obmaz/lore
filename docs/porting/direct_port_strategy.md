@@ -2745,3 +2745,25 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      최종 집중 테스트 54건, 전체 Flutter 1535건(3건 skip), Python 82건이
      통과했고 analyze 문제는 없다. 세 신규 native fixture 모두 원본 EXE
      재실행으로 동일한 자료가 재생성됨을 확인했다. 런타임 변경·배포는 없다.
+
+177. 적 특수 공격 게임 상태 계약 39건 검증 완료 (2026-10-08).
+     원본 SpecialAttack의 독/의식불명/죽음 선택·난수·상태 쓰기·return을
+     18685개 합성 입력으로 대조했다. 64개 대상 조건 mask, 이름 유무,
+     4개 seed, signed 비영 상태 카운터, 양수/0/음수 HP, 실제 관측 난수와
+     동일/하나 작은/큰 민첩·행운 경계 및 이미 상태 이상인 일원으로의
+     fallback을 포함한다. 지원하지 않는 byte 모드 253개도 no-op이다.
+     Dart의 상태·대상/메시지 색 순서·난수 상한/값/최종 seed가 일치한다.
+     문자열/Print 구간은 인자 push 이전에서 건너뛰므로 DOS 문자·렌더링은
+     검증 범위가 아니다. 다른 복합 마법과 전체 BattleMode는 partial이다.
+
+178. 적 단일/전체 주문 selector·호출 계약 3건 검증 완료 (2026-10-08).
+     원본 CastAttackOne/All의 모든 mentality byte 256개와 level0/1/128/255를
+     2048개 자료로 실행했다. 범위별 종류·곱셈 출력값, 단일 대상 및 1..6
+     모든 슬롯 호출 순서가 Dart와 일치하고 selector 난수 소비는 없다.
+     문자열 복사/Print는 건너뛰고 CastAttackSub 호출을 기록 후 복귀시킨다.
+     Dart 번역 문자열은 native 범위 ID와 연결해 검사하며 DOS glyph 독립
+     검증은 아니다. 실제 주문 효과는 기존 CastAttackSub 근거의 별도 범위다.
+     이번 42개 계약을 합쳐 verified 1367개, partial 481개다.
+     전체 Flutter 1541건 통과(3건 skip), Python 87건 통과, analyze 문제 없음.
+     두 신규 native 자료는 원본 EXE 재실행 결과도 동일하다. 런타임 동작
+     수정·배포는 없고 검증 코드·자료·계약 연결을 추가했다.

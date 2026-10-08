@@ -5919,11 +5919,15 @@
       "outcomes": 6,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/enemy_spell_dispatch_dos_test.dart",
+        "test/fixtures/dos_enemy_spell_dispatch.json",
+        "tool/export_dos_enemy_spell_dispatch.py",
+        "test/enemy_magic_arithmetic_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_arithmetic.json"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed CastAttackOne/All selector/call-loop branch only: 2048 original EXE cases cover all256 mentality bytes and level0/1/128/255. Native selected range, factor-times-level power, single chosen slot and all-six ordered CastAttackSub calls agree with Dart; selector consumes no RNG and does not mutate party. String-copy/Print spans bypassed; CastAttackSub calls captured and returned without effects. Dart translated labels checked against native range IDs, not native glyph decoding. Called attack arithmetic/state is separately covered by CastAttackSub contracts; complete UI/battle remains outside this selector evidence."
     },
     {
       "id": "LOREBATT.PAS:castattackall:1:case:1",
@@ -5935,11 +5939,15 @@
       "outcomes": 5,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/enemy_spell_dispatch_dos_test.dart",
+        "test/fixtures/dos_enemy_spell_dispatch.json",
+        "tool/export_dos_enemy_spell_dispatch.py",
+        "test/enemy_magic_arithmetic_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_arithmetic.json"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed CastAttackOne/All selector/call-loop branch only: 2048 original EXE cases cover all256 mentality bytes and level0/1/128/255. Native selected range, factor-times-level power, single chosen slot and all-six ordered CastAttackSub calls agree with Dart; selector consumes no RNG and does not mutate party. String-copy/Print spans bypassed; CastAttackSub calls captured and returned without effects. Dart translated labels checked against native range IDs, not native glyph decoding. Called attack arithmetic/state is separately covered by CastAttackSub contracts; complete UI/battle remains outside this selector evidence."
     },
     {
       "id": "LOREBATT.PAS:castattackall:1:for:1",
@@ -5951,11 +5959,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/enemy_spell_dispatch_dos_test.dart",
+        "test/fixtures/dos_enemy_spell_dispatch.json",
+        "tool/export_dos_enemy_spell_dispatch.py",
+        "test/enemy_magic_arithmetic_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_arithmetic.json"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed CastAttackOne/All selector/call-loop branch only: 2048 original EXE cases cover all256 mentality bytes and level0/1/128/255. Native selected range, factor-times-level power, single chosen slot and all-six ordered CastAttackSub calls agree with Dart; selector consumes no RNG and does not mutate party. String-copy/Print spans bypassed; CastAttackSub calls captured and returned without effects. Dart translated labels checked against native range IDs, not native glyph decoding. Called attack arithmetic/state is separately covered by CastAttackSub contracts; complete UI/battle remains outside this selector evidence."
     },
     {
       "id": "LOREBATT.PAS:enemycure:1:if:1",
@@ -7332,11 +7344,14 @@
       "outcomes": 4,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:1",
@@ -7348,11 +7363,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:1",
@@ -7364,11 +7382,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:2",
@@ -7380,11 +7401,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:2",
@@ -7396,11 +7420,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:3",
@@ -7412,11 +7439,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:4",
@@ -7428,11 +7458,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:5",
@@ -7444,11 +7477,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:6",
@@ -7460,11 +7496,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:1",
@@ -7476,11 +7515,14 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:7",
@@ -7492,11 +7534,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:2",
@@ -7508,11 +7553,14 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:8",
@@ -7524,11 +7572,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:3",
@@ -7540,11 +7591,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:9",
@@ -7556,11 +7610,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:4",
@@ -7572,11 +7629,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:10",
@@ -7588,11 +7648,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:11",
@@ -7604,11 +7667,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:12",
@@ -7620,11 +7686,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:13",
@@ -7636,11 +7705,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:14",
@@ -7652,11 +7724,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:3",
@@ -7668,11 +7743,14 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:15",
@@ -7684,11 +7762,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:4",
@@ -7700,11 +7781,14 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:16",
@@ -7716,11 +7800,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:17",
@@ -7732,11 +7819,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:5",
@@ -7748,11 +7838,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:18",
@@ -7764,11 +7857,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:6",
@@ -7780,11 +7876,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:19",
@@ -7796,11 +7895,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:20",
@@ -7812,11 +7914,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:21",
@@ -7828,11 +7933,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:22",
@@ -7844,11 +7952,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:23",
@@ -7860,11 +7971,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:5",
@@ -7876,11 +7990,14 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:24",
@@ -7892,11 +8009,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:6",
@@ -7908,11 +8028,14 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:25",
@@ -7924,11 +8047,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:26",
@@ -7940,11 +8066,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
+        "test/enemy_special_attack_dos_test.dart",
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract."
     },
     {
       "id": "LOREBATT.PAS:specialcastattack:1:if:1",
@@ -39968,9 +40097,15 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_spell_dispatch_dos_test.dart",
+      "note": "Closed CastAttackOne/All selector/call-loop branch only: 2048 original EXE cases cover all256 mentality bytes and level0/1/128/255. Native selected range, factor-times-level power, single chosen slot and all-six ordered CastAttackSub calls agree with Dart; selector consumes no RNG and does not mutate party. String-copy/Print spans bypassed; CastAttackSub calls captured and returned without effects. Dart translated labels checked against native range IDs, not native glyph decoding. Called attack arithmetic/state is separately covered by CastAttackSub contracts; complete UI/battle remains outside this selector evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_spell_dispatch.json",
+        "tool/export_dos_enemy_spell_dispatch.py",
+        "test/enemy_magic_arithmetic_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_arithmetic.json"
+      ]
     },
     {
       "id": "LOREBATT.PAS:castattackall:1:case:1",
@@ -39978,9 +40113,15 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_spell_dispatch_dos_test.dart",
+      "note": "Closed CastAttackOne/All selector/call-loop branch only: 2048 original EXE cases cover all256 mentality bytes and level0/1/128/255. Native selected range, factor-times-level power, single chosen slot and all-six ordered CastAttackSub calls agree with Dart; selector consumes no RNG and does not mutate party. String-copy/Print spans bypassed; CastAttackSub calls captured and returned without effects. Dart translated labels checked against native range IDs, not native glyph decoding. Called attack arithmetic/state is separately covered by CastAttackSub contracts; complete UI/battle remains outside this selector evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_spell_dispatch.json",
+        "tool/export_dos_enemy_spell_dispatch.py",
+        "test/enemy_magic_arithmetic_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_arithmetic.json"
+      ]
     },
     {
       "id": "LOREBATT.PAS:castattackall:1:for:1",
@@ -39988,9 +40129,15 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_spell_dispatch_dos_test.dart",
+      "note": "Closed CastAttackOne/All selector/call-loop branch only: 2048 original EXE cases cover all256 mentality bytes and level0/1/128/255. Native selected range, factor-times-level power, single chosen slot and all-six ordered CastAttackSub calls agree with Dart; selector consumes no RNG and does not mutate party. String-copy/Print spans bypassed; CastAttackSub calls captured and returned without effects. Dart translated labels checked against native range IDs, not native glyph decoding. Called attack arithmetic/state is separately covered by CastAttackSub contracts; complete UI/battle remains outside this selector evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_spell_dispatch.json",
+        "tool/export_dos_enemy_spell_dispatch.py",
+        "test/enemy_magic_arithmetic_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_arithmetic.json"
+      ]
     },
     {
       "id": "LOREBATT.PAS:enemycure:1:if:1",
@@ -41125,9 +41272,14 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:1",
@@ -41135,9 +41287,14 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:1",
@@ -41145,9 +41302,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:2",
@@ -41155,9 +41317,14 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:2",
@@ -41165,9 +41332,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:3",
@@ -41175,9 +41347,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:4",
@@ -41185,9 +41362,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:5",
@@ -41195,9 +41377,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:6",
@@ -41205,9 +41392,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:1",
@@ -41215,9 +41407,14 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:7",
@@ -41225,9 +41422,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:2",
@@ -41235,9 +41437,14 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:8",
@@ -41245,9 +41452,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:3",
@@ -41255,9 +41467,14 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:9",
@@ -41265,9 +41482,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:4",
@@ -41275,9 +41497,14 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:10",
@@ -41285,9 +41512,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:11",
@@ -41295,9 +41527,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:12",
@@ -41305,9 +41542,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:13",
@@ -41315,9 +41557,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:14",
@@ -41325,9 +41572,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:3",
@@ -41335,9 +41587,14 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:15",
@@ -41345,9 +41602,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:4",
@@ -41355,9 +41617,14 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:16",
@@ -41365,9 +41632,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:17",
@@ -41375,9 +41647,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:5",
@@ -41385,9 +41662,14 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:18",
@@ -41395,9 +41677,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:for:6",
@@ -41405,9 +41692,14 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:19",
@@ -41415,9 +41707,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:20",
@@ -41425,9 +41722,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:21",
@@ -41435,9 +41737,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:22",
@@ -41445,9 +41752,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:23",
@@ -41455,9 +41767,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:5",
@@ -41465,9 +41782,14 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:24",
@@ -41475,9 +41797,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:exit:6",
@@ -41485,9 +41812,14 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:25",
@@ -41495,9 +41827,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialattack:1:if:26",
@@ -41505,9 +41842,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/enemy_special_attack_dos_test.dart",
+      "note": "Closed SpecialAttack gameplay branch: 18685 original EXE runs execute native target selection, actual Random, agility/luck decisions, poison/unconscious/dead/HP stores and exits. All64 eligibility masks, named/blank inactive slots, four seeds, signed nonzero status counters, positive/zero/negative HP, exact native-roll equality/below/above boundaries, fallback into already affected members and all253 unsupported byte modes agree with Dart on state, ordered target/color events, RNG bounds/values/final seed. Entire string/Print spans bypassed before argument pushes; stops at original return boundary. DOS text/graphics and complete battle/campaign remain outside this contract.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_enemy_special_attack.json",
+        "tool/export_dos_enemy_special_attack.py",
+        "test/lore_battle_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:specialcastattack:1:if:1",
@@ -55245,6 +55587,24 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/enemy_special_attack_dos_test.dart",
+      "kind": "test",
+      "sha256": "f07d99eba7177be1c759af79d4eddc823657d7146195cd94cf74189962b86d70",
+      "cited_source_files": [
+        "LOREBATT.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/enemy_spell_dispatch_dos_test.dart",
+      "kind": "test",
+      "sha256": "2cea921b2a7fd702800cc607680b9ec220a84207ec59a2c24c69207dc309214a",
+      "cited_source_files": [
+        "LOREBATT.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/evil_god_native_completion_test.dart",
       "kind": "test",
       "sha256": "7413a4207c4cf62b7636d3a680e7af23d355e15912fd4da6ad812e03dfde5abc",
@@ -56765,6 +57125,24 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_enemy_special_attack.json",
+      "kind": "fixture",
+      "sha256": "db23248dd34a445f8efc18f2e653b244d1a7fccc226c67abe20a35cd277e678b",
+      "test_users": [
+        "test/enemy_special_attack_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_enemy_spell_dispatch.json",
+      "kind": "fixture",
+      "sha256": "cf81a5cacf2056e2b5765da67bda419be97ef11057b471d3be197be6dd897776",
+      "test_users": [
+        "test/enemy_spell_dispatch_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_evil_god_first_attempt.json",
       "kind": "fixture",
       "sha256": "2554c47d0b775ffe1d0245d6dbf96f41d79ea9b1ac1bd6f68be287b84fee92de",
@@ -57630,7 +58008,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "425f9e73665344ada61957efd388b83550ae831709ee66fb15ebdc351eb3188a",
+      "sha256": "a5b1c1895244e1131336d5c33e3456630c8242d95fc6d57f6dbd1d218ec862c8",
       "top_level_counts": {
         "contracts": 1492
       }
@@ -57641,8 +58019,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 523,
-    "partially_verified_behavior_sites": 523,
+    "unverified_behavior_sites": 481,
+    "partially_verified_behavior_sites": 481,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
