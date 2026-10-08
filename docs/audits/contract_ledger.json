@@ -54629,7 +54629,7 @@
     {
       "path": "test/graphics_skin_test.dart",
       "kind": "test",
-      "sha256": "e6e5fde3675a0ae2ae02bff52bbf28775374ca3f8f50c26561c2339e036ef4c5",
+      "sha256": "da30e5a9189d9636339c6c690016523db874fce82ea5a6ecc3c2f9aae66d1ff7",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -56783,7 +56783,7 @@
     },
     {
       "path": "lib/game/sprite_sheet.dart",
-      "sha256": "b9be627656f000c253b0c15600dd98ef3fd9fd42b04faa693d865dd9f4211cf8"
+      "sha256": "66016f83a503acee9b765d1562133d5d95301bacf270337432ff3ed3e2093317"
     },
     {
       "path": "lib/theme/retro_theme.dart",

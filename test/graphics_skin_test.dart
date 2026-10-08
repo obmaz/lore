@@ -101,6 +101,67 @@ void main() {
     },
   );
 
+  test('small-map walls, paths and hazards stay visually distinguishable', () async {
+    await sprites.activate(GraphicsSkin.crystal);
+    Future<List<double>> averageColor(String font, int slot) async {
+      final recorder = ui.PictureRecorder();
+      sprites
+          .get(font)!
+          .draw(
+            ui.Canvas(recorder),
+            slot,
+            const Rect.fromLTWH(0, 0, 28, 28),
+            opaqueBackground: true,
+          );
+      final picture = recorder.endRecording();
+      final image = await picture.toImage(28, 28);
+      final data = (await image.toByteData())!;
+      final mean = List<double>.filled(3, 0);
+      for (var i = 0; i < data.lengthInBytes; i += 4) {
+        for (var c = 0; c < 3; c++) {
+          mean[c] += data.getUint8(i + c) / (28 * 28);
+        }
+      }
+      image.dispose();
+      picture.dispose();
+      return mean;
+    }
+
+    double brightness(List<double> color) =>
+        color[0] * 0.2126 + color[1] * 0.7152 + color[2] * 0.0722;
+    for (final (font, wall, floor) in [
+      ('TOWN', 7, 44),
+      ('DEN', 1, 44),
+      ('KEEP', 29, 46),
+    ]) {
+      expect(
+        brightness(await averageColor(font, floor)) -
+            brightness(await averageColor(font, wall)),
+        greaterThan(25),
+        reason:
+            '$font: walking paths must be lighter than their solid walls at 28px',
+      );
+    }
+    for (final font in ['TOWN', 'GROUND', 'DEN', 'KEEP']) {
+      final hazards = font == 'TOWN' ? [24, 25, 26] : [48, 49, 50];
+      final colors = [
+        for (final slot in hazards) await averageColor(font, slot),
+      ];
+      for (var a = 0; a < colors.length; a++) {
+        for (var b = a + 1; b < colors.length; b++) {
+          final difference = [
+            for (var c = 0; c < 3; c++) (colors[a][c] - colors[b][c]).abs(),
+          ].reduce((x, y) => x + y);
+          expect(
+            difference,
+            greaterThan(100),
+            reason: '$font: water, marsh and lava need distinct color families',
+          );
+        }
+      }
+    }
+  });
+
   test(
     'all 27 maps keep tiles, classification, face, flags and RNG across skins',
     () async {

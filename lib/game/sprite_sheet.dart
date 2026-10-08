@@ -21,7 +21,7 @@ enum GraphicsSkin {
   crystal(
     'crystal',
     '크리스털 판타지',
-    '푸른 크리스털과 빛나는 성채의 새로운 모험',
+    '포근한 파스텔 지도와 한눈에 구분되는 작은 모험가들',
     'assets/images/skins/crystal/manifest.json',
     'assets/images/skins/crystal/preview.png',
   );
