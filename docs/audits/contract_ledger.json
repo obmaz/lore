@@ -52754,7 +52754,7 @@
       "routine": "LOREMENU.PAS:phenominaspell:1",
       "index": "x+x1,y+y1",
       "value": "k",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:194:map-write:13",
@@ -52763,7 +52763,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "62,82",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:237:map-write:19",
@@ -52772,7 +52772,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "51,12",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:237:map-write:37",
@@ -52781,7 +52781,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "52,12",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:238:map-write:19",
@@ -52790,7 +52790,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "50,11",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:238:map-write:37",
@@ -52799,7 +52799,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "53,11",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:251:map-write:16",
@@ -52808,7 +52808,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "41,79",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:270:map-write:19",
@@ -52817,7 +52817,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "x,pred(i)",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:271:map-write:19",
@@ -52826,7 +52826,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "x,i",
       "value": "48",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:317:map-write:16",
@@ -52835,7 +52835,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "31,y",
       "value": "45",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:527:map-write:71",
@@ -52844,7 +52844,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "37,41",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:576:map-write:20",
@@ -52853,7 +52853,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "33,49",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:587:map-write:20",
@@ -52862,7 +52862,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "18,9",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:596:map-write:41",
@@ -52871,7 +52871,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "x,i",
       "value": "49",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:685:map-write:42",
@@ -52880,7 +52880,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "i,j",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:686:map-write:48",
@@ -52889,7 +52889,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "i,j",
       "value": "42",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:712:map-write:42",
@@ -52898,7 +52898,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "i,j",
       "value": "51",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:721:map-write:17",
@@ -52907,7 +52907,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "81,76",
       "value": "48",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:901:map-write:17",
@@ -52916,7 +52916,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "x,48",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:902:map-write:17",
@@ -52925,7 +52925,7 @@
       "routine": "LORESPEC.PAS:specialevent_part1:1",
       "index": "x,47",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1024:map-write:17",
@@ -52934,7 +52934,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,44",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1024:map-write:34",
@@ -52943,7 +52943,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,38",
       "value": "52",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1072:map-write:39",
@@ -52952,7 +52952,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,j",
       "value": "50",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1107:map-write:38",
@@ -52961,7 +52961,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "72,j",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1112:map-write:20",
@@ -52970,7 +52970,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,38",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1112:map-write:37",
@@ -52979,7 +52979,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,44",
       "value": "52",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1187:map-write:17",
@@ -52988,7 +52988,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "22,41",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1187:map-write:35",
@@ -52997,7 +52997,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "21,41",
       "value": "52",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1390:map-write:20",
@@ -53006,7 +53006,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "11,40",
       "value": "49",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1391:map-write:20",
@@ -53015,7 +53015,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "41,39",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1406:map-write:20",
@@ -53024,7 +53024,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "41,39",
       "value": "49",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1409:map-write:26",
@@ -53033,7 +53033,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "24,j",
       "value": "25",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1410:map-write:26",
@@ -53042,7 +53042,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "28,j",
       "value": "23",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1412:map-write:23",
@@ -53051,7 +53051,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "24,37",
       "value": "17",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1412:map-write:41",
@@ -53060,7 +53060,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "28,37",
       "value": "19",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1414:map-write:44",
@@ -53069,7 +53069,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,j",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1431:map-write:17",
@@ -53078,7 +53078,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "x,y",
       "value": "49",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1434:map-write:17",
@@ -53087,7 +53087,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "x,y-1",
       "value": "49",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1439:map-write:20",
@@ -53096,7 +53096,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "x,y",
       "value": "49",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1522:map-write:38",
@@ -53105,7 +53105,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "j,y",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1524:map-write:20",
@@ -53114,7 +53114,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "8,88",
       "value": "52",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1524:map-write:37",
@@ -53123,7 +53123,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "43,88",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1527:map-write:20",
@@ -53132,7 +53132,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "8,88",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1527:map-write:36",
@@ -53141,7 +53141,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "43,88",
       "value": "52",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1547:map-write:38",
@@ -53150,7 +53150,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "j,y",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1549:map-write:20",
@@ -53159,7 +53159,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "8,71",
       "value": "52",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1549:map-write:37",
@@ -53168,7 +53168,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "43,71",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1552:map-write:20",
@@ -53177,7 +53177,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "8,71",
       "value": "0",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1552:map-write:36",
@@ -53186,7 +53186,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "43,71",
       "value": "52",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1580:map-write:38",
@@ -53195,7 +53195,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "j,y",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1583:map-write:23",
@@ -53204,7 +53204,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "22,j",
       "value": "25",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1584:map-write:23",
@@ -53213,7 +53213,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "26,j",
       "value": "23",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1585:map-write:44",
@@ -53222,7 +53222,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,j",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1813:map-write:31",
@@ -53231,7 +53231,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "x,y",
       "value": "40 else map[x,y] := 46",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1876:map-write:20",
@@ -53240,7 +53240,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "x,y",
       "value": "40",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1961:map-write:17",
@@ -53249,7 +53249,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "29,43",
       "value": "53",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1963:map-write:38",
@@ -53258,7 +53258,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,j",
       "value": "46",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1968:map-write:17",
@@ -53267,7 +53267,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "25,27",
       "value": "46",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1969:map-write:17",
@@ -53276,7 +53276,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "29,43",
       "value": "44",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1972:map-write:38",
@@ -53285,7 +53285,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,j",
       "value": "39",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:1973:map-write:38",
@@ -53294,7 +53294,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,12",
       "value": "54",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2044:map-write:38",
@@ -53303,7 +53303,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,y",
       "value": "41",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2068:map-write:17",
@@ -53312,7 +53312,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "15,34",
       "value": "41",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2070:map-write:20",
@@ -53321,7 +53321,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,33",
       "value": "24",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2070:map-write:37",
@@ -53330,7 +53330,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,35",
       "value": "26",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2070:map-write:54",
@@ -53339,7 +53339,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,34",
       "value": "42",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2072:map-write:17",
@@ -53348,7 +53348,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "14,33",
       "value": "17",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2072:map-write:35",
@@ -53357,7 +53357,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "14,35",
       "value": "18",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2075:map-write:17",
@@ -53366,7 +53366,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "36,34",
       "value": "41",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2077:map-write:20",
@@ -53375,7 +53375,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,33",
       "value": "24",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2077:map-write:37",
@@ -53384,7 +53384,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,35",
       "value": "26",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2077:map-write:54",
@@ -53393,7 +53393,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "i,34",
       "value": "42",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2079:map-write:17",
@@ -53402,7 +53402,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "37,33",
       "value": "19",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2079:map-write:35",
@@ -53411,7 +53411,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "37,35",
       "value": "22",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2087:map-write:20",
@@ -53420,7 +53420,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "25,27",
       "value": "54",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2087:map-write:38",
@@ -53429,7 +53429,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "26,27",
       "value": "54",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2098:map-write:20",
@@ -53438,7 +53438,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "25,27",
       "value": "54",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORESPEC.PAS:2098:map-write:38",
@@ -53447,7 +53447,7 @@
       "routine": "LORESPEC.PAS:specialevent_part2:1",
       "index": "26,27",
       "value": "54",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LORETALK.PAS:126:map-write:31",

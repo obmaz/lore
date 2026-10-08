@@ -38,6 +38,9 @@ MAPPED_MAP_WRITE_GROUPS = {
     "LOREENT.PAS:entermode:1",
     "LOREENT.PAS:sign:1",
     "LORETALK.PAS:talkmode:1",
+    "LORESPEC.PAS:specialevent_part1:1",
+    "LORESPEC.PAS:specialevent_part2:1",
+    "LOREMENU.PAS:phenominaspell:1",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 
