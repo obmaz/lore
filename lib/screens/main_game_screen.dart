@@ -67,6 +67,7 @@ import '../widgets/ending_view.dart';
 import '../widgets/game_over_view.dart';
 import '../widgets/lore_select_view.dart';
 import '../widgets/browser_fullscreen_button.dart';
+import '../widgets/app_settings_button.dart';
 
 enum GameScreenMode { field, encounter, battle, gameOver, ending }
 
@@ -176,6 +177,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   LoreGameOverResult? _halt;
 
   final FocusNode _focusNode = FocusNode();
+  bool _appSettingsOpen = false;
 
   @override
   void initState() {
@@ -190,7 +192,9 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   /// 버튼/대화상자 조작 뒤 키보드 입력이 게임으로 돌아오게 한다.
   void _reclaimFocus() {
-    if (mounted && !_focusNode.hasPrimaryFocus) _focusNode.requestFocus();
+    if (mounted && !_appSettingsOpen && !_focusNode.hasPrimaryFocus) {
+      _focusNode.requestFocus();
+    }
   }
 
   void _initParty() {
@@ -1989,6 +1993,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
             ),
           ),
           const BrowserFullscreenButton(),
+          AppSettingsButton(
+            enabled: !_entryAnimationActive && _scriptDepth == 0,
+            onOpenChanged: (open) {
+              setState(() => _appSettingsOpen = open);
+              if (!open) _reclaimFocus();
+            },
+          ),
         ],
       );
     },
@@ -2124,6 +2135,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       focusNode: _focusNode,
       autofocus: true,
       onKeyEvent: (event) async {
+        if (_appSettingsOpen) return;
         if (_entryAnimationActive) return;
         if (_currentMode == GameScreenMode.encounter && event is KeyDownEvent) {
           if (event.logicalKey == LogicalKeyboardKey.digit1 ||
@@ -2197,7 +2209,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
                     opacity: .6,
                     child: DPadWidget(
                       onDirectionPressed: (dx, dy) {
-                        if (_entryAnimationActive ||
+                        if (_appSettingsOpen ||
+                            _entryAnimationActive ||
                             _scriptDepth > 0 ||
                             _currentMode != GameScreenMode.field) {
                           return;

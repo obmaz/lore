@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'data/lore_data.dart';
 import 'models/party_member.dart';
 import 'services/save_manager.dart';
+import 'services/graphics_settings.dart';
 import 'game/lore_world_manager.dart';
 import 'game/sprite_sheet.dart';
 import 'screens/character_creation_screen.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
   await LoreData.instance.load();
   // 이미지 파일(PNG) 스프라이트 시트를 로드한다. 없으면 FNT 디코더로 폴백한다.
   await SpriteLibrary.instance.load();
+  await GraphicsSettings.instance.restore();
   // 포털·시설·표지판은 원본 Dart 절차에서 선택한다.
   await LoreWorldManager.instance.loadData();
 

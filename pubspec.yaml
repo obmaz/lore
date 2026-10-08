@@ -71,6 +71,8 @@ flutter:
     - assets/data/monsters.json
     - assets/data/spells.json
     - assets/images/
+    - assets/images/skins/
+    - assets/images/skins/crystal/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
