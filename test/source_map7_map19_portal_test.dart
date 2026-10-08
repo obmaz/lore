@@ -79,6 +79,44 @@ void main() {
     expect(den, contains('dec(y); scroll(TRUE);'));
   });
 
+  test('map23/25 exact exit guards independently parsed from source', () {
+    final source = String.fromCharCodes(
+      File('repo_source/LORE_1993_src/LORESPEC.PAS').readAsBytesSync(),
+    );
+    for (final map in [23, 25]) {
+      final body = source.substring(
+        source.indexOf('      $map : begin'),
+        source.indexOf('      ${map + 1} : begin'),
+      );
+      final exit = RegExp(
+        r'if y = (\d+) then begin\s*if wantexit then begin\s*with party do begin\s*xaxis := (\d+); yaxis := (\d+); map := (\d+);',
+      ).firstMatch(body)!;
+      final row = int.parse(exit[1]!);
+      final destination = [
+        int.parse(exit[4]!),
+        int.parse(exit[2]!),
+        int.parse(exit[3]!),
+      ];
+      expect(body, contains('dec(y); scroll(TRUE);'));
+      for (var x = 1; x <= 100; x++) {
+        for (var y = 1; y <= 100; y++) {
+          final portal = LoreWorldManager.instance.findPortal(map, x, y);
+          if (y == row) {
+            expect([
+              portal!.targetMapId,
+              portal.targetX,
+              portal.targetY,
+            ], destination);
+            expect(LoreWorldManager.sourceExitRejectY(map, y, x: x), y - 1);
+            expect(LoreWorldManager.sourceAsksEnter(map, x, y), false);
+          } else if (y > row) {
+            expect(portal, isNull);
+          }
+        }
+      }
+    }
+  });
+
   Future<LoreGame> open(
     WidgetTester tester,
     int mapId,
@@ -115,8 +153,9 @@ void main() {
         return 1;
       },
     );
-    final file = mapId == 7 ? 'TOWN2' : 'DEN6';
-    final category = mapId == 7 ? 'town' : 'den';
+    final info = LoreWorldManager.mapRegistry[mapId]!;
+    final file = info.fileName;
+    final category = info.category.name;
     final map = await LoreMapData.loadFromAsset(file, category: category);
     // Exercise synthetic guard intersections as well as shipped doorway cells.
     map.setTile(x, y, 45);
@@ -174,7 +213,7 @@ void main() {
     expect(tester.takeException(), isNull);
   }
 
-  for (final map in [7, 19]) {
+  for (final map in [7, 19, 23, 25]) {
     for (final choice in [0, 1, 2]) {
       testWidgets(
         'map $map exit choice $choice uses original destination/refusal',
@@ -193,7 +232,12 @@ void main() {
           expect(
             [game.currentMapId, game.playerX, game.playerY],
             choice == 1
-                ? (map == 7 ? [1, 77, 57] : [4, 48, 58])
+                ? switch (map) {
+                    7 => [1, 77, 57],
+                    19 => [4, 48, 58],
+                    23 => [5, 34, 15],
+                    _ => [23, 25, 45],
+                  }
                 : [map, x, y - 1],
           );
           await finish(tester);

@@ -68,7 +68,7 @@ void main() {
       expect(run25.outcome.messages.any((m) => m.contains("MENACE")), isTrue);
       expect(
         run25.acknowledgeScene().outcome.questChanges.any(
-          (q) => q.name == 'lordahn' && q.inc == 1,
+          (q) => q.name == 'lordahn' && q.set == 4,
         ),
         isTrue,
       );
@@ -83,7 +83,7 @@ void main() {
       expect(run26.outcome.messages.any((m) => m.contains("MENACE")), isTrue);
       expect(
         run26.acknowledgeScene().outcome.questChanges.any(
-          (q) => q.name == 'lordahn' && q.inc == 1,
+          (q) => q.name == 'lordahn' && q.set == 4,
         ),
         isTrue,
       );

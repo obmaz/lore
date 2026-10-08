@@ -19,7 +19,8 @@ class ContractLedgerTest(unittest.TestCase):
             'test/join_bounds_dos_test.dart': 2,
             'test/source_new_game_persistence_test.dart': 3,
             'test/source_special_event_routing_test.dart': 3,
-            'test/source_map7_map19_portal_test.dart': 6,
+            'test/source_map7_map19_portal_test.dart': 9,
+            'test/source_remaining_late_guards_test.dart': 4,
         }.items():
             ids = {r['id'] for r in reviewed if r.get('test') == test and r.get('verification') == 'verified'}
             self.assertEqual(len(ids), count)
@@ -81,7 +82,9 @@ class ContractLedgerTest(unittest.TestCase):
     def test_specialcast_native_scope_leaves_unknown_summons_partial(self):
         sites = ledger.build()["control_sites"]
         closed = [s for s in sites if "test/enemy_special_cast_dos_test.dart"
-                  in s["behavioral_evidence"]]
+                  in s["behavioral_evidence"] and s['routine'] in {
+                      'LOREBATT.PAS:specialcastattack:1',
+                      'LORESUB.PAS:turn_mind:1'}]
         self.assertEqual(len(closed), 20)
         self.assertTrue(all(s["verification_status"] == "verified" for s in closed))
         unknown = [s for s in sites if s["routine"] == "LOREBATT.PAS:specialcastattack:1"
@@ -135,7 +138,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 146)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 139)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

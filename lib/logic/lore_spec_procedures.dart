@@ -909,7 +909,10 @@ class LoreSpecProcedures {
             ],
           ),
         ),
-        ScriptStep(kind: 'questStep', questName: 'lordahn', questInc: 1),
+        // This branch is entered only for raw etc[10] = 3. Preserve the
+        // source byte store after PressAnyKey, regardless of a stale alias.
+        ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 10, sourceEtcValue: 4),
+        ScriptStep(kind: 'questStep', questName: 'lordahn', questSet: 4),
       ]);
     }
     // LORESUB.findgold prints both display pages and awards immediately;

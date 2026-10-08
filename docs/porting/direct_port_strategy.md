@@ -2929,3 +2929,21 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      최신 코드 전체 Flutter 1629건(3 skip), Python 122건, analyze 및 웹
      release build가 통과했다. 목표 1701개를 넘겼으며 main에 푸시한다.
      전체 이식 완료가 아니므로 배포는 보류한다.
+
+191. **1701개 이후: raw MENACE 진행·복제 슬롯·최종 출구**
+     MENACE 중심의 raw etc[10] = 3 guard를 모든 byte와 잘못된 퀘스트
+     별칭 및 주변 좌표로 비교했다. PressAnyKey 이후 원본 byte와 호환용
+     별칭이 모두 4가 되도록 실제 절차를 수정했다. 별칭 증가만으로 raw
+     byte를 갱신하지 않던 adapter 차이를 해소한다.
+     Skeleton은 모든 etc31 byte에서 최초 선택만 영입하며 condition refresh,
+     key wait, 출구 flag 순서를 확인한다. 실제 원본 여정 화면의 수락·거절·
+     Escape도 재실행한다. map23의 여섯 복제 슬롯은 원문 FOR와 빈 이름
+     분기를 추출해 모든 64 named mask 및 list 길이 0..7로 대조했다.
+     이는 슬롯/분기 소유권만 검증하며 turn_mind 계산과 BGI는 별도다.
+     map23/25 출구는 원문에서 정확한 y와 목적지를 추출하여 전체 1..100
+     좌표 및 실제 화면 Select0/1/2를 비교한다. 7개 추가 해소로 verified
+     1709 / partial 139 / unclassified 0. 전체 검사 후 main에 푸시하며
+     하드웨어/파일 오류/정의되지 않은 원본 동작은 근거 없이 완료 처리하지 않는다.
+     전체 이식이 끝나기 전까지 배포하지 않는다.
+     전체 Flutter 1639건(3 skip), Python 122건, analyze와 웹 release build
+     통과 후 이 묶음을 main에 푸시했다. 이름 입력의 원본 명령 대조를 이어간다.

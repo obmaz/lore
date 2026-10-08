@@ -1503,10 +1503,15 @@
       "line": 1998,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/map26_final_ui_test.dart",
-      "note": "Source-extracted map26 movement, fixed seven slots, defeat priority and retained-roster escape loop; acknowledgement gates End_Demo. Exact map25 exit/entry boundaries checked. BGI timing and End_Demo internals remain outside this bundle.",
-      "verification": "partial"
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map23/map25 exit y guards/destination literals parsed independently; all1..100 coordinates check exact row and no y>46 exit. Actual screen moves onto exits for Select0/1/2, observes source exit prompt and verifies map23 ->map5(34,15), map25 ->map23(25,45), refusals y45. Other doors and nested events retain separate owners/evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/map26_final_ui_test.dart",
+        "test/map23_keep3_ui_test.dart",
+        "test/map26_final_source_test.dart"
+      ]
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:67",
@@ -1616,9 +1621,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/game/lore_world_manager.dart",
-      "test": "test/map23_keep3_ui_test.dart",
-      "note": "Exact map23 y=46 boundary in LoreWorldManager.findPortal: accept -> map 5 (34,15), reject -> y-1 (y=45); y>46 never exits. The wantexit prompt is the native dialog; DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map23/map25 exit y guards/destination literals parsed independently; all1..100 coordinates check exact row and no y>46 exit. Actual screen moves onto exits for Select0/1/2, observes source exit prompt and verifies map23 ->map5(34,15), map25 ->map23(25,45), refusals y45. Other doors and nested events retain separate owners/evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/map23_keep3_ui_test.dart",
+        "test/map26_final_source_test.dart"
+      ]
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:118",
@@ -1626,9 +1635,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/game/lore_world_manager.dart",
-      "test": "test/map23_keep3_ui_test.dart",
-      "note": "Exact map23 y=46 boundary in LoreWorldManager.findPortal: accept -> map 5 (34,15), reject -> y-1 (y=45); y>46 never exits. The wantexit prompt is the native dialog; DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map23/map25 exit y guards/destination literals parsed independently; all1..100 coordinates check exact row and no y>46 exit. Actual screen moves onto exits for Select0/1/2, observes source exit prompt and verifies map23 ->map5(34,15), map25 ->map23(25,45), refusals y45. Other doors and nested events retain separate owners/evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/map23_keep3_ui_test.dart",
+        "test/map26_final_source_test.dart"
+      ]
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:119",
@@ -1646,9 +1659,14 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_mirror_enemy.dart",
-      "test": "test/map23_keep3_ui_test.dart",
-      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/source_remaining_late_guards_test.dart",
+      "note": "Independently parsed original six-slot FOR, empty-name fallback monster60 and marker1. All64 named masks and list lengths0..7 compare exact chosen names/markers, full fallback records, reset status and untouched input records; dead/unconscious named members must still mirror and seventh scratch is ignored. Actual UI exercises generated roster and retained-object retry. This closes only roster loop/empty-name branch; turn_mind arithmetic has separate native evidence, BGI/animation not inferred.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/map23_keep3_ui_test.dart",
+        "test/mirror_enemy_test.dart",
+        "test/enemy_special_cast_dos_test.dart"
+      ]
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:120",
@@ -1656,9 +1674,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_mirror_enemy.dart",
-      "test": "test/map23_keep3_ui_test.dart",
-      "note": "Source-extracted map23 y=26 impostor: player[1].name greeting, 70 renamed Necromancer with E_number 1, six mirror slots (empty slot -> monster 60, E_number 1) fought with BattleMode(FALSE) and repeated with the same enemy objects while etc[6] is non-zero and not 255, duel escape -> inc(y) and exit, defeat exits, victory writes map[29,43]:=53 then map[24..27,25..27]:=46 before the final key. No random call and no cleared flag; revisits are decided by the tiles. Mirror stat copy (turn_mind) is covered separately by mirror_enemy_test; BGI display adapted to native scenes; DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/source_remaining_late_guards_test.dart",
+      "note": "Independently parsed original six-slot FOR, empty-name fallback monster60 and marker1. All64 named masks and list lengths0..7 compare exact chosen names/markers, full fallback records, reset status and untouched input records; dead/unconscious named members must still mirror and seventh scratch is ignored. Actual UI exercises generated roster and retained-object retry. This closes only roster loop/empty-name branch; turn_mind arithmetic has separate native evidence, BGI/animation not inferred.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/map23_keep3_ui_test.dart",
+        "test/mirror_enemy_test.dart",
+        "test/enemy_special_cast_dos_test.dart"
+      ]
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:repeat:1",
@@ -3736,9 +3759,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending. Actual unchanged DOS EXE centre at(25,8): etc[10] stays3 during Print7/15/15 PressAnyKey and becomes4 afterwards with no RNG; departure/revisit leave4. Mobile regression continues the real victory/entry/gold chain, preserving full native records/etc/RNG. No original centre disk save, (26,8) native alternative or Lord Ahn/ending proof.",
-      "verification": "partial"
+      "test": "test/source_remaining_late_guards_test.dart",
+      "note": "Source predicates independently asserted and tested through direct procedures. Skeleton all 256 etc31 bytes and both choices preserve recruit/condition refresh/PressAnyKey/flag order; actual UI also covers Escape. MENACE all 256 raw etc10 bytes crossed with stale aliases and six coordinate boundaries, including state before/after acknowledgement: source byte and compatibility quest both become 4 only after the key. Native source journey UI replays cited. No sprite animation claim.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/castle_departure_dos_ui_test.dart",
+        "test/lore_spec_map14_test.dart"
+      ]
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:96",
@@ -4336,9 +4364,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/castle_departure_dos_ui_test.dart",
-      "note": "Map6 else-if chain owned directly: (62,82) chest (+1000, tile 44, Message without key); prison (51|52,12) while raw etc[50] bit2 (Mad Joe freed; the LORETALK join now also writes bit2) - first fight sets bit3 before two soldiers, later visits seven, monster 26 renamed SoldierN with special/castlevel 0 and E_number 1, player[1].name in the return line, victory sets bit3 and opens four cells (no invented done flag); armoury (41,79) while bit4 clear: bit4, three steps west, tile 44, arm unarmed non-monks with weapon 1/5; every other special tile is wantexit (refusal y-1) and the first exit (etc[31] bit1 clear) runs the Skeleton walk writes map[x,i-1]:=44/map[x,i]:=48 for i=y-4..y-1, speech and slot-6 join offer, setting bit1 either way. DOS comparison pending. Actual unmodified DOS cold-created journey to castle exit: join(19,6) leaves a blank PressAnyKey before etc31 bit1 and Ground1 load; missing final wait corrected in both acceptance and refusal. Mobile screen regression checks accept/decline/Esc before and after confirmation. dos_new_game.json castleRoute retains native armoury/departure player, party and map bytes; check_dos_new_game.py checks decoding. Native accepted path only; decline/Esc source-derived, unrelated test encounters disabled, no native RNG seed/whole campaign claim.",
-      "verification": "partial"
+      "test": "test/source_remaining_late_guards_test.dart",
+      "note": "Source predicates independently asserted and tested through direct procedures. Skeleton all 256 etc31 bytes and both choices preserve recruit/condition refresh/PressAnyKey/flag order; actual UI also covers Escape. MENACE all 256 raw etc10 bytes crossed with stale aliases and six coordinate boundaries, including state before/after acknowledgement: source byte and compatibility quest both become 4 only after the key. Native source journey UI replays cited. No sprite animation claim.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/castle_departure_dos_ui_test.dart",
+        "test/menace_entry_dos_ui_test.dart",
+        "test/lore_spec_map14_test.dart"
+      ]
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:3",
