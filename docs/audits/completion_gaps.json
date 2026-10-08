@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 1443,
-    "verified": 405,
+    "partial": 1144,
+    "verified": 704,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -230,19 +230,19 @@
     },
     {
       "routine": "LOREMENU.PAS:consciousone:1",
-      "partial": 10
+      "verified": 10
     },
     {
       "routine": "LOREMENU.PAS:conscoisall:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREMENU.PAS:cureall:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREMENU.PAS:cureone:1",
-      "partial": 9
+      "verified": 9
     },
     {
       "routine": "LOREMENU.PAS:curespell:1",
@@ -258,11 +258,11 @@
     },
     {
       "routine": "LOREMENU.PAS:healall:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREMENU.PAS:healone:1",
-      "partial": 10
+      "verified": 10
     },
     {
       "routine": "LOREMENU.PAS:phenominaspell:1",
@@ -282,11 +282,11 @@
     },
     {
       "routine": "LOREMENU.PAS:revitalizeall:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREMENU.PAS:revitalizeone:1",
-      "partial": 8
+      "verified": 8
     },
     {
       "routine": "LOREMENU.PAS:selectmode:1",
@@ -319,8 +319,8 @@
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part2:1",
-      "partial": 226,
-      "verified": 34
+      "partial": 83,
+      "verified": 177
     },
     {
       "routine": "LORESUB.PAS:at:1",
@@ -505,7 +505,8 @@
     },
     {
       "routine": "LORETALK.PAS:talkmode:1",
-      "partial": 146
+      "verified": 111,
+      "partial": 35
     }
   ],
   "unclassified_sites": [],
