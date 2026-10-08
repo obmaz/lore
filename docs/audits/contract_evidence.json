@@ -18681,6 +18681,62 @@
         "test/fixtures/dos_creation_name.json",
         "lib/screens/character_creation_screen.dart"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:at:1:if:1",
+      "line": 972,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_source_coordinates.dart",
+      "test": "test/source_coordinates_dos_test.dart",
+      "note": "Original EXE at ADD/CMP/boolean stores at 1764 signed-boundary inputs, all canonical map positions/facings, and actual talk owner. Signed 16-bit arguments/addition wrap; no map clamp, prologue stack check or hardware equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_coordinates.py",
+        "test/fixtures/dos_coordinates.json",
+        "tool/tests/test_export_dos_coordinates.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:on:1:if:1",
+      "line": 977,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_source_coordinates.dart",
+      "test": "test/source_coordinates_dos_test.dart",
+      "note": "Original EXE on CMP/boolean stores at 1764 signed-boundary inputs, all canonical map positions, and actual MENACE owner including signed adapter aliases. Exact signed 16-bit comparisons; no map clamp or hardware equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_coordinates.py",
+        "test/fixtures/dos_coordinates.json",
+        "tool/tests/test_export_dos_coordinates.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:1",
+      "line": 1801,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/models/monster.dart",
+      "test": "test/source_enemy_database_test.dart",
+      "note": "Source FOR bound extracted independently; all 75 original FOEDATA.DAT records compared in order, all 12 numeric fields and full short-string names, factory copies/HP and template isolation. Static resource registry replaces DOS reads; startup sequence, I/O failures and BGI loops not claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:while:1",
+      "line": 535,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_class_queue_dos_test.dart",
+      "note": "Original KeyPressed/ReadKey drain executed for all 256 final bytes and 128 eligibility masks plus 1536 mixed/extended-byte sequences. All queued bytes consumed before LAST-byte selection; actual desktop/mobile burst rejection/selection/acknowledgement replay. Modern frame groups available input; DOS polling time/palette/sound loops remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_creation_class_queue.py",
+        "test/fixtures/dos_creation_class_queue.json",
+        "tool/tests/test_export_dos_creation_class_queue.py"
+      ]
     }
   ]
 }

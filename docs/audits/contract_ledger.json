@@ -11386,11 +11386,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/creation_class_queue_dos_test.dart",
+        "tool/export_dos_creation_class_queue.py",
+        "test/fixtures/dos_creation_class_queue.json",
+        "tool/tests/test_export_dos_creation_class_queue.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "Original KeyPressed/ReadKey drain executed for all 256 final bytes and 128 eligibility masks plus 1536 mixed/extended-byte sequences. All queued bytes consumed before LAST-byte selection; actual desktop/mobile burst rejection/selection/acknowledgement replay. Modern frame groups available input; DOS polling time/palette/sound loops remain partial."
     },
     {
       "id": "LORECRET.PAS:third:1:if:10",
@@ -28562,11 +28565,14 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_coordinates_dos_test.dart",
+        "tool/export_dos_coordinates.py",
+        "test/fixtures/dos_coordinates.json",
+        "tool/tests/test_export_dos_coordinates.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_source_coordinates.dart",
+      "reviewed_scope": "Original EXE at ADD/CMP/boolean stores at 1764 signed-boundary inputs, all canonical map positions/facings, and actual talk owner. Signed 16-bit arguments/addition wrap; no map clamp, prologue stack check or hardware equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:on:1:if:1",
@@ -28578,11 +28584,14 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_coordinates_dos_test.dart",
+        "tool/export_dos_coordinates.py",
+        "test/fixtures/dos_coordinates.json",
+        "tool/tests/test_export_dos_coordinates.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_source_coordinates.dart",
+      "reviewed_scope": "Original EXE on CMP/boolean stores at 1764 signed-boundary inputs, all canonical map positions, and actual MENACE owner including signed adapter aliases. Exact signed 16-bit comparisons; no map clamp or hardware equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:wantenter:1:if:1",
@@ -31138,11 +31147,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_enemy_database_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/models/monster.dart",
+      "reviewed_scope": "Source FOR bound extracted independently; all 75 original FOEDATA.DAT records compared in order, all 12 numeric fields and full short-string names, factory copies/HP and template isolation. Static resource registry replaces DOS reads; startup sequence, I/O failures and BGI loops not claimed."
     },
     {
       "id": "LORESUB.PAS:set_all:1:for:2",
@@ -53063,6 +53072,62 @@
       ]
     },
     {
+      "id": "LORESUB.PAS:at:1:if:1",
+      "line": 972,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_source_coordinates.dart",
+      "test": "test/source_coordinates_dos_test.dart",
+      "note": "Original EXE at ADD/CMP/boolean stores at 1764 signed-boundary inputs, all canonical map positions/facings, and actual talk owner. Signed 16-bit arguments/addition wrap; no map clamp, prologue stack check or hardware equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_coordinates.py",
+        "test/fixtures/dos_coordinates.json",
+        "tool/tests/test_export_dos_coordinates.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:on:1:if:1",
+      "line": 977,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_source_coordinates.dart",
+      "test": "test/source_coordinates_dos_test.dart",
+      "note": "Original EXE on CMP/boolean stores at 1764 signed-boundary inputs, all canonical map positions, and actual MENACE owner including signed adapter aliases. Exact signed 16-bit comparisons; no map clamp or hardware equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_coordinates.py",
+        "test/fixtures/dos_coordinates.json",
+        "tool/tests/test_export_dos_coordinates.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:1",
+      "line": 1801,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/models/monster.dart",
+      "test": "test/source_enemy_database_test.dart",
+      "note": "Source FOR bound extracted independently; all 75 original FOEDATA.DAT records compared in order, all 12 numeric fields and full short-string names, factory copies/HP and template isolation. Static resource registry replaces DOS reads; startup sequence, I/O failures and BGI loops not claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:third:1:while:1",
+      "line": 535,
+      "kind": "while",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_class_queue_dos_test.dart",
+      "note": "Original KeyPressed/ReadKey drain executed for all 256 final bytes and 128 eligibility masks plus 1536 mixed/extended-byte sequences. All queued bytes consumed before LAST-byte selection; actual desktop/mobile burst rejection/selection/acknowledgement replay. Modern frame groups available input; DOS polling time/palette/sound loops remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_creation_class_queue.py",
+        "test/fixtures/dos_creation_class_queue.json",
+        "tool/tests/test_export_dos_creation_class_queue.py"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -53176,17 +53241,6 @@
       "id": "LORECRET.PAS:third:1:if:9",
       "line": 529,
       "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:third:1:while:1",
-      "line": 535,
-      "kind": "while",
       "classification": "content-rule",
       "implementation": "lib/data/lore_creation.dart",
       "test": "test/creation_test.dart",
@@ -54240,28 +54294,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:at:1:if:1",
-      "line": 972,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:on:1:if:1",
-      "line": 977,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:load:1:if:1",
       "line": 1650,
       "kind": "if",
@@ -54385,17 +54417,6 @@
     {
       "id": "LORESUB.PAS:save:1:for:1",
       "line": 1782,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:set_all:1:for:1",
-      "line": 1801,
       "kind": "for",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
@@ -56988,6 +57009,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/creation_class_queue_dos_test.dart",
+      "kind": "test",
+      "sha256": "89bbd4f8741a99ec315f1fc39d4750ff44fb517f1040c54615e49626f0212d2f",
+      "cited_source_files": [
+        "LORECRET.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/creation_fourth_dos_test.dart",
       "kind": "test",
       "sha256": "e01fef3a64c775e53e182a2d34a8c398c5af2f1e6ebafaffff77e2cbbdb1d6db",
@@ -58287,11 +58317,30 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/source_coordinates_dos_test.dart",
+      "kind": "test",
+      "sha256": "17ce22336cd28db077875794949da444a79bf92b38fd40b39e8d11d9b2856263",
+      "cited_source_files": [
+        "LORESUB.PAS",
+        "LORETALK.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/source_creation_rules_test.dart",
       "kind": "test",
       "sha256": "09d9a9a7e5ecf2e78ebf290c8d6c11c4673a307211f5acce9d4231f7ecf223ed",
       "cited_source_files": [
         "LORECRET.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/source_enemy_database_test.dart",
+      "kind": "test",
+      "sha256": "0e3b543310bf2ef329e128f9997e3c86cc9a763d5ba8b0fd44db9cd4b6e9a2f7",
+      "cited_source_files": [
+        "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -58837,11 +58886,29 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_coordinates.json",
+      "kind": "fixture",
+      "sha256": "db2c7687df0fd422d69b3597ac7fea92294c9905de27624093ae31a7a89872d4",
+      "test_users": [
+        "test/source_coordinates_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_creation_class.json",
       "kind": "fixture",
       "sha256": "11c45e118d3bd42f3910833c5601beab4eb1ec8452cf0acfdab140f3e21b4306",
       "test_users": [
         "test/creation_class_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_creation_class_queue.json",
+      "kind": "fixture",
+      "sha256": "97e9b27ea1b3cf55c98cdd88f6353cd64405d7841e7264eb67773cbca1844c5e",
+      "test_users": [
+        "test/creation_class_queue_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
@@ -59760,7 +59827,7 @@
     },
     {
       "path": "lib/logic/lore_talk_mode.dart",
-      "sha256": "5fd2888db7c21ab606b2c8ba0e5c3ee844f9edc916036c8673c6ae797e2d4ca9"
+      "sha256": "eddb5a914b167ec5c4eb132c4ff221efac4e0d871d75cfc5630e45ff70c5dea2"
     },
     {
       "path": "lib/logic/lore_sign.dart",
@@ -59784,7 +59851,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "e92a6b34c03921ce2205c5d7d13f1ba4cf753a94bbe7d88f576836b86b46c462"
+      "sha256": "12b685efcf9e4165552f7441b07e3f6d8c914ac48b48fdfe533239d823ae6ea9"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -59904,9 +59971,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "3d62063263209dd225dfa9304770233183ad9befd7c960809571c99608885593",
+      "sha256": "a32932b700fa5990212bfbf338d9db779cb00a9d6e74773f12788d7b35c07bc3",
       "top_level_counts": {
-        "contracts": 1661
+        "contracts": 1665
       }
     }
   ],
@@ -59915,8 +59982,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 131,
-    "partially_verified_behavior_sites": 131,
+    "unverified_behavior_sites": 127,
+    "partially_verified_behavior_sites": 127,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

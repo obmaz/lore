@@ -17,6 +17,11 @@ class LoreCreationRules {
     return id > 0 && id < 9 && flags[id] == 1 ? id : null;
   }
 
+  /// Third drains the available ReadKey bytes before interpreting the LAST.
+  /// An extended key contributes both its zero byte and its scan byte.
+  static int? selectClassQueue(List<int> keys, List<int> flags) =>
+      keys.isEmpty ? null : selectClass(keys.last & 255, flags);
+
   /// WhatClass differs from ReturnClass specifically at class10 ('반신').
   static String classLabel(int id) => switch (id) {
     1 => '기사',

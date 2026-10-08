@@ -197,6 +197,57 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     if (id != null) setState(() => _selectedClass = PlayerClass.fromId(id));
   }
 
+  final _classKeys = <int>[];
+  bool _classDrainScheduled = false;
+
+  void _readClassEvent(KeyEvent event) {
+    final key = event.logicalKey;
+    if (key == LogicalKeyboardKey.capsLock ||
+        key == LogicalKeyboardKey.numLock ||
+        key == LogicalKeyboardKey.scrollLock) {
+      return;
+    }
+    if (_selectedClass != null) {
+      setState(() => _step = 5);
+      return;
+    }
+    final scan = switch (key) {
+      LogicalKeyboardKey.arrowUp => 72,
+      LogicalKeyboardKey.arrowDown => 80,
+      LogicalKeyboardKey.arrowLeft => 75,
+      LogicalKeyboardKey.arrowRight => 77,
+      _ => null,
+    };
+    if (scan != null) {
+      _classKeys.addAll([0, scan]);
+    } else {
+      final text = event.character ?? key.keyLabel;
+      final code = switch (key) {
+        LogicalKeyboardKey.enter || LogicalKeyboardKey.numpadEnter => 13,
+        LogicalKeyboardKey.escape => 27,
+        LogicalKeyboardKey.backspace => 8,
+        LogicalKeyboardKey.tab => 9,
+        _ =>
+          text.length == 1 && text.codeUnitAt(0) <= 255
+              ? text.codeUnitAt(0)
+              : 0,
+      };
+      _classKeys.add(code);
+    }
+    if (_classDrainScheduled) return;
+    _classDrainScheduled = true;
+    // A presentation frame is the modern adapter's queue boundary, not a
+    // claim of equal DOS KeyPressed polling duration or palette animation.
+    WidgetsBinding.instance.scheduleFrameCallback((_) {
+      _classDrainScheduled = false;
+      final keys = List<int>.of(_classKeys);
+      _classKeys.clear();
+      if (!mounted || _step != 4 || _selectedClass != null) return;
+      final id = LoreCreationRules.selectClassQueue(keys, _classFlags);
+      if (id != null) setState(() => _selectedClass = PlayerClass.fromId(id));
+    });
+  }
+
   /// 원작 `Fourth` 끝의 파티 구성 + `Last` 초기 상태로 게임을 시작한다.
   void _finishCreation() {
     final heroName = _heroName;
@@ -373,14 +424,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       case 3:
         return _buildDistributeScreen();
       case 4:
-        return _keyboardStep(_buildClassScreen(), (key) {
-          if (_selectedClass != null) {
-            setState(() => _step = 5);
-          } else {
-            final label = key.keyLabel;
-            _selectClass(label.length == 1 ? label.codeUnitAt(0) : 0);
-          }
-        });
+        return _keyboardStep(
+          _buildClassScreen(),
+          (_) {},
+          readEvent: _readClassEvent,
+        );
       case 5:
         return _keyboardStep(_buildCompanionsScreen(), _readCompanionKey);
       default:
@@ -422,6 +470,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       }
       _allocation = LoreCreationAllocation();
       _selectedClass = null;
+      _classKeys.clear();
       _profileTarget = null;
       _awaitingProfileKey = false;
       _sourceName = LoreCreationName();

@@ -1,5 +1,6 @@
 import '../data/lore_script.dart';
 import 'lore_source_memory.dart';
+import 'lore_source_coordinates.dart';
 
 /// Gameplay branches from `LORESPEC.specialevent_part1`.
 ///
@@ -895,7 +896,8 @@ class LoreSpecProcedures {
           ),
           context,
         );
-    if ((x == 25 || x == 26) && y == 8) {
+    if (LoreSourceCoordinates.on(x, y, 25, 8) ||
+        LoreSourceCoordinates.on(x, y, 26, 8)) {
       if (_questByte(context, 10, 'lordahn') != 3) return null;
       return start('spec-14-menace-center', const [
         ScriptStep(

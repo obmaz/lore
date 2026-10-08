@@ -2965,3 +2965,23 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      터치 editor를 잠그지 않는다. 최신 코드 전체 Flutter 1645건(3 skip),
      Python 123건, analyze 및 웹 release build가 통과했다. main에 푸시하며
      남은 어댑터/미정의 source 동작은 이 결과로 완료 처리하지 않는다.
+
+193. **현재·대화 대상 좌표, 전체 적 자료, Third 입력 queue**
+     LORESUB at/on의 실제 EXE ADD/CMP/boolean store를 각각 1764개
+     signed 경계 입력으로 비교하고 전체 100×100 좌표와 네 방향 및 실제
+     talk/MENACE owner를 재생한다. 16-bit 덧셈과 인자 wrap을 연결하며
+     지도 범위 clamp를 도입하지 않는다. Set_All의 첫 FOR는 원문 bound와
+     원본 FOEDATA.DAT 75개 record를 순서대로 전부 비교한다. 이름과
+     12개 수치, 생성 사본/HP/template 격리를 확인한다. 현대 static 자료
+     registry 사용은 유지하며 DOS 파일 오류나 나머지 startup/BGI를
+     완료 처리하지 않는다.
+     Third는 원본 while KeyPressed가 대기 byte를 모두 읽은 뒤 LAST
+     byte만으로 직업을 결정한다. 최초 유효 키로 고정하던 차이를 수정하고
+     32768개 byte×eligibility 조합과 1536개 extended/mixed queue를
+     원본 실행으로 대조한다. desktop/mobile 실제 burst의 최종 무효 키,
+     마지막 유효 키, 다음 batch acknowledgement를 재생한다. 현대 frame을
+     입력 batch 경계로 사용하며 CRT polling 시간/palette/sound는 별도다.
+     4개만 추가 해소해 verified 1721 / partial 127 / unclassified 0.
+     전체 검사 후 main에 푸시하고 전체 완료 전 배포는 보류한다.
+     전체 Flutter 1653건(3 skip), Python 125건, analyze 및 웹 release
+     build가 통과했다. 검증 완료 원장·source memory 색인도 확인했다.

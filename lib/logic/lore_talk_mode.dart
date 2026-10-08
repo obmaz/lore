@@ -2,6 +2,7 @@
 import '../data/lore_script.dart';
 import '../models/party_member.dart';
 import 'lore_source_memory.dart';
+import 'lore_source_coordinates.dart';
 import 'lore_talk_procedures.dart';
 import 'lore_water_lord.dart';
 
@@ -37,7 +38,8 @@ class LoreTalkMode {
     var s = '';
     var c = '';
     final m = ['', '', ''];
-    bool at(int ax, int ay) => targetX == ax && targetY == ay;
+    bool at(int ax, int ay) =>
+        LoreSourceCoordinates.at(x, y, targetX - x, targetY - y, ax, ay);
     io.clear();
     switch (mapId) {
       case 6:
