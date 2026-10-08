@@ -77,6 +77,8 @@ VERIFIED_CONTRACT_TESTS = {
     "test/map25_guardian_source_test.dart",
     "test/menace_return_dos_ui_test.dart",
     "test/lore_source_memory_test.dart",
+    "test/return_condition_test.dart",
+    "test/source_entrance_replay_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

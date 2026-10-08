@@ -2600,3 +2600,11 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      계약을 `verified`로 승격했다. Flutter 38개와 Python77개가 통과했고,
      원장은 verified 704개, partial 1144개다. BGI 연출과 전체 연속 캠페인
      대조는 이 계약들의 검증 범위 밖으로 남는다.
+
+160. 상태 정규화·원본 진입 계약 117건 검증 완료 (2026-10-08).
+     `LORESUB.PAS`의 ReturnCondition/SimpleDisCond 상태 정규화와 `LOREENT.PAS`
+     27개 load 절·41개 진입 좌표의 취소 순서, 지상 at 조건, 목적지를
+     원본 추출 자료와 실행 결과로 대조해 117개 계약을 `verified`로
+     승격했다. Python77개와 관련 Flutter 테스트가 통과했으며, 계약 원장은
+     verified 1121개, partial 727개다. 각 진입에 연결된 전투·CRT 연출은
+     별도 범위로 남긴다.

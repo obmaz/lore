@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 844,
-    "verified": 1004,
+    "partial": 727,
+    "verified": 1121,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -174,12 +174,12 @@
     },
     {
       "routine": "LOREENT.PAS:entermode:1",
-      "partial": 86
+      "verified": 82,
+      "partial": 4
     },
     {
       "routine": "LOREENT.PAS:sign:1",
-      "partial": 2,
-      "verified": 28
+      "verified": 30
     },
     {
       "routine": "LOREHELP.PAS:box:1",
@@ -348,23 +348,23 @@
     },
     {
       "routine": "LORESUB.PAS:display_condition:1",
-      "partial": 5
+      "verified": 5
     },
     {
       "routine": "LORESUB.PAS:displaycondition:1",
-      "partial": 3
+      "verified": 3
     },
     {
       "routine": "LORESUB.PAS:displayesp:1",
-      "partial": 3
+      "verified": 3
     },
     {
       "routine": "LORESUB.PAS:displayhp:1",
-      "partial": 3
+      "verified": 3
     },
     {
       "routine": "LORESUB.PAS:displaysp:1",
-      "partial": 3
+      "verified": 3
     },
     {
       "routine": "LORESUB.PAS:eprint:1",
@@ -417,7 +417,7 @@
     },
     {
       "routine": "LORESUB.PAS:returncondition:1",
-      "partial": 8
+      "verified": 8
     },
     {
       "routine": "LORESUB.PAS:returndefaultfont:1",
@@ -477,7 +477,7 @@
     },
     {
       "routine": "LORESUB.PAS:simplediscond:1",
-      "partial": 8
+      "verified": 8
     },
     {
       "routine": "LORESUB.PAS:train_center:1",

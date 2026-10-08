@@ -41,7 +41,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 844)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 727)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
@@ -89,7 +89,7 @@ class ContractLedgerTest(unittest.TestCase):
             }
         }
         self.assertTrue(supplemental)
-        self.assertTrue(all(site["verification_status"] == "partial"
+        self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked
                             if site["id"] in supplemental))
 
