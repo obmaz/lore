@@ -362,7 +362,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       items: const [LoreFieldLogic.confirmYes, LoreFieldLogic.confirmNo],
     );
     if (!mounted) return;
-    final confirmed = choice == 1;
+    final confirmed = LorePortalSession.acceptsChoice(choice);
 
     final plan = LorePortalSession.begin(
       confirmed: confirmed,
@@ -1440,21 +1440,25 @@ class _MainGameScreenState extends State<MainGameScreen> {
       ],
     );
     if (!mounted) return;
-    switch (k) {
-      case 1:
+    switch (FieldHotkeys.fromSelect(k)) {
+      case FieldAction.viewParty:
         await _runViewParty();
-      case 2:
+      case FieldAction.viewCharacter:
         await _runViewCharacter();
-      case 3:
+      case FieldAction.quickView:
         await _runQuickView();
-      case 4:
+      case FieldAction.castSpell:
         await _runCastSpell();
-      case 5:
+      case FieldAction.extrasense:
         await _openEspDialog();
-      case 6:
+      case FieldAction.rest:
         await _runRest();
-      case 7:
+      case FieldAction.gameOption:
         await _runGameOption();
+      case FieldAction.none:
+      case FieldAction.openMenu:
+      case FieldAction.toggleSound:
+        break;
     }
   }
 

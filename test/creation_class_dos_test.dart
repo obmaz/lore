@@ -47,109 +47,122 @@ void main() {
       ]);
     }
   });
-  testWidgets('Fourth keyboard choice, duplicate guard, review and restart', (
-    tester,
-  ) async {
-    await tester.runAsync(() => LoreCreationData.instance.load(force: true));
-    final creation = LoreCreationData.instance;
-    tester.view.physicalSize = const Size(1280, 1000);
-    tester.view.devicePixelRatio = 1;
-    addTearDown(tester.view.resetPhysicalSize);
-    addTearDown(tester.view.resetDevicePixelRatio);
-    List<PartyMember>? party;
-    await tester.pumpWidget(
-      MaterialApp(home: CharacterCreationScreen(onGameStart: (p) => party = p)),
-    );
-    Future<void> key(LogicalKeyboardKey k) async {
-      await tester.sendKeyEvent(k);
-      await tester.pump();
-    }
-
-    Future<void> enterFourth() async {
-      await tester.tap(find.text('1] 새로운 주인공을 생성 시킴'));
-      await tester.pump();
-      await tester.tap(find.text(creation.text('Third', 10)));
-      await tester.pump();
-      for (var i = 0; i < 10; i++) {
-        await key(LogicalKeyboardKey.digit1);
-      }
-      for (var i = 0; i < 20; i++) {
-        await key(LogicalKeyboardKey.arrowRight);
-      }
-      await key(LogicalKeyboardKey.arrowDown);
-      for (var i = 0; i < 20; i++) {
-        await key(LogicalKeyboardKey.arrowRight);
-      }
-      await key(LogicalKeyboardKey.enter);
-      await key(LogicalKeyboardKey.digit2);
-      await key(LogicalKeyboardKey.enter);
-      expect(find.text('선택: 0 / 4 명'), findsOneWidget);
-      for (final c in creation.characters) {
-        final item = find.byKey(ValueKey('creation-companion-${c.id}'));
-        await tester.scrollUntilVisible(
-          item,
-          180,
-          scrollable: find.descendant(
-            of: find.byType(ListView),
-            matching: find.byType(Scrollable),
+  for (final size in [const Size(1280, 1000), const Size(390, 844)]) {
+    testWidgets(
+      'Fourth keyboard choice, duplicate guard, review and restart at $size',
+      (tester) async {
+        await tester.runAsync(
+          () => LoreCreationData.instance.load(force: true),
+        );
+        final creation = LoreCreationData.instance;
+        tester.view.physicalSize = size;
+        tester.view.devicePixelRatio = 1;
+        addTearDown(tester.view.resetPhysicalSize);
+        addTearDown(tester.view.resetDevicePixelRatio);
+        List<PartyMember>? party;
+        await tester.pumpWidget(
+          MaterialApp(
+            home: CharacterCreationScreen(onGameStart: (p) => party = p),
           ),
         );
-        expect(
-          find.descendant(of: item, matching: find.textContaining(c.name)),
-          findsOneWidget,
-        );
-      }
-    }
-
-    Future<void> selectFour() async {
-      for (var i = 0; i < 4; i++) {
-        await key(LogicalKeyboardKey.enter);
-        await key(LogicalKeyboardKey.digit1);
-        expect(find.text('선택: ${i + 1} / 4 명'), findsOneWidget);
-        if (i == 0) {
-          await key(LogicalKeyboardKey.enter);
-          await key(LogicalKeyboardKey.digit1);
-          expect(find.text('선택: 1 / 4 명'), findsOneWidget);
+        Future<void> key(LogicalKeyboardKey k) async {
+          await tester.sendKeyEvent(k);
+          await tester.pump();
         }
-        if (i < 3) {
+
+        Future<void> enterFourth() async {
+          await tester.tap(find.text('1] 새로운 주인공을 생성 시킴'));
+          await tester.pump();
+          await tester.tap(find.text(creation.text('Third', 10)));
+          await tester.pump();
+          for (var i = 0; i < 10; i++) {
+            await key(LogicalKeyboardKey.digit1);
+          }
+          for (var i = 0; i < 20; i++) {
+            await key(LogicalKeyboardKey.arrowRight);
+          }
           await key(LogicalKeyboardKey.arrowDown);
+          for (var i = 0; i < 20; i++) {
+            await key(LogicalKeyboardKey.arrowRight);
+          }
+          await key(LogicalKeyboardKey.enter);
+          await key(LogicalKeyboardKey.digit2);
+          await key(LogicalKeyboardKey.enter);
+          expect(find.text('선택: 0 / 4 명'), findsOneWidget);
+          for (final c in creation.characters) {
+            final item = find.byKey(ValueKey('creation-companion-${c.id}'));
+            await tester.scrollUntilVisible(
+              item,
+              180,
+              scrollable: find.descendant(
+                of: find.byType(ListView),
+                matching: find.byType(Scrollable),
+              ),
+            );
+            expect(
+              find.descendant(of: item, matching: find.textContaining(c.name)),
+              findsOneWidget,
+            );
+          }
         }
-      }
-    }
 
-    await enterFourth();
-    await key(LogicalKeyboardKey.arrowUp);
-    await key(LogicalKeyboardKey.enter);
-    final prompt =
-        '${creation.characters.first.name}: ${creation.text('Fourth', 2)} [1] / ${creation.text('Fourth', 3)} [2]';
-    expect(find.text(prompt), findsOneWidget);
-    await key(LogicalKeyboardKey.keyX);
-    expect(find.text(prompt), findsOneWidget);
-    await key(LogicalKeyboardKey.digit2);
-    expect(find.text(prompt), findsNothing);
-    expect(find.textContaining(creation.characters.first.name), findsWidgets);
-    await key(LogicalKeyboardKey.enter);
-    await key(LogicalKeyboardKey.escape);
-    expect(find.text(prompt), findsNothing);
-    expect(find.text('선택: 0 / 4 명'), findsOneWidget);
-    await selectFour();
-    expect(party, isNull);
-    expect(find.text('Hero'), findsOneWidget);
-    for (final c in creation.characters.take(4)) {
-      expect(find.text(c.name), findsOneWidget);
-    }
-    await key(LogicalKeyboardKey.escape);
-    expect(find.text('1] 새로운 주인공을 생성 시킴'), findsOneWidget);
-    await enterFourth();
-    await selectFour();
-    await key(LogicalKeyboardKey.enter);
-    expect(
-      party!.skip(1).take(4).map((p) => p.name),
-      creation.characters.take(4).map((c) => c.name),
+        Future<void> selectFour() async {
+          for (var i = 0; i < 4; i++) {
+            await key(LogicalKeyboardKey.enter);
+            await key(LogicalKeyboardKey.digit1);
+            expect(find.text('선택: ${i + 1} / 4 명'), findsOneWidget);
+            if (i == 0) {
+              await key(LogicalKeyboardKey.enter);
+              await key(LogicalKeyboardKey.digit1);
+              expect(find.text('선택: 1 / 4 명'), findsOneWidget);
+            }
+            if (i < 3) {
+              await key(LogicalKeyboardKey.arrowDown);
+            }
+          }
+        }
+
+        await enterFourth();
+        await key(LogicalKeyboardKey.arrowUp);
+        await key(LogicalKeyboardKey.enter);
+        final prompt =
+            '${creation.characters.first.name}: ${creation.text('Fourth', 2)} [1] / ${creation.text('Fourth', 3)} [2]';
+        expect(find.text(prompt), findsOneWidget);
+        await key(LogicalKeyboardKey.keyX);
+        expect(find.text(prompt), findsOneWidget);
+        await key(LogicalKeyboardKey.digit2);
+        expect(find.text(prompt), findsNothing);
+        expect(
+          find.textContaining(creation.characters.first.name),
+          findsWidgets,
+        );
+        await key(LogicalKeyboardKey.enter);
+        expect(find.text(prompt), findsNothing); // Profile consumes this key.
+        await key(LogicalKeyboardKey.enter);
+        expect(find.text(prompt), findsOneWidget);
+        await key(LogicalKeyboardKey.escape);
+        expect(find.text(prompt), findsNothing);
+        expect(find.text('선택: 0 / 4 명'), findsOneWidget);
+        await selectFour();
+        expect(party, isNull);
+        expect(find.text('Hero'), findsOneWidget);
+        for (final c in creation.characters.take(4)) {
+          expect(find.text(c.name), findsOneWidget);
+        }
+        await key(LogicalKeyboardKey.escape);
+        expect(find.text('1] 새로운 주인공을 생성 시킴'), findsOneWidget);
+        await enterFourth();
+        await selectFour();
+        await key(LogicalKeyboardKey.enter);
+        expect(
+          party!.skip(1).take(4).map((p) => p.name),
+          creation.characters.take(4).map((c) => c.name),
+        );
+        expect(party!.first.playerClass, PlayerClass.mage);
+        await tester.pumpWidget(const SizedBox.shrink());
+      },
     );
-    expect(party!.first.playerClass, PlayerClass.mage);
-    await tester.pumpWidget(const SizedBox.shrink());
-  });
+  }
   testWidgets(
     'Which ignores invalid input, Third locks first valid choice and profiles cover both sexes',
     (tester) async {

@@ -8,6 +8,13 @@ import 'lore_source_memory.dart';
 class LoreSpecProcedures {
   LoreSpecProcedures._();
 
+  /// LORESPEC.PAS specialevent_part1's signed integer sgn helper.
+  static int sourceSign(int value) => value > 0
+      ? 1
+      : value < 0
+      ? -1
+      : 0;
+
   /// `LORESPEC.PAS:190-305`, `case 6` (TOWN1 / CASTLE LORE).
   ///
   /// An `else if` chain: the (62,82) chest; the prison cells (51|52,12)
@@ -790,8 +797,8 @@ class LoreSpecProcedures {
       tileOnlyIf: onlyIf,
     );
     if (x >= 76 && x <= 86 && y >= 71 && y <= 81) {
-      final dx = (81 - x).sign;
-      final dy = (77 - y).sign;
+      final dx = sourceSign(81 - x);
+      final dy = sourceSign(77 - y);
       ScriptScene page(int i, String title) =>
           ScriptScene(title: title, lines: _den4PyramidScenes[i]);
       const pull = '알수없는 힘이 당신을 당기는걸 느꼈다';

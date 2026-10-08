@@ -23,6 +23,9 @@ class LorePortalPlan {
 class LorePortalSession {
   LorePortalSession._();
 
+  /// LORESUB.wantenter/wantexit: only the first Select result accepts.
+  static bool acceptsChoice(int result) => result == 1;
+
   static LorePortalPlan begin({
     required bool confirmed,
     required PortalInfo portal,

@@ -2890,3 +2890,16 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      11개만 해소하여 verified 1635 / partial 213. 다른 selection/UI는 별도다.
      전체 Flutter 1588건(3 skip), 추가 phase/dispatch 집중 테스트 16건 통과.
      analyze 및 웹 release build 통과. 목표 1701개까지 계속하며 배포는 보류.
+
+189. **입력 경계와 남은 작은 숫자 guard의 직접 검증**
+     SelectEnemy의 실제 명령으로 14336개 byte 입력과 모든 signed HP를
+     대조했다. 원본 cursor는 clamp가 아닌 wrap이며 실제 화면의 방향키와
+     선택 이름 preview에 연결했다. Escape는 command Select 취소이고,
+     원본 SelectEnemy 자체는 Escape를 무시한다. BGI raster는 주장하지 않는다.
+     원문 CASE에서 field/select 명령을 추출해 모든 byte 입력을 비교한다.
+     signed sgn 전체 범위와 121개 pyramid 시작점, 식량/flag의 모든 byte,
+     여섯 슬롯의 swamp roll과 raw entry flags도 독립 대조했다.
+     title keyboard와 Profile의 한 키 wait를 desktop/mobile 실제 화면에서
+     검증했다. 35개만 해소하여 verified 1670 / partial 178.
+     다른 palette/hardware/unknown 계약은 유지하며 1701개 목표를 계속한다.
+     전체 Flutter 1602건(3 skip), Python 119건, analyze 및 웹 release build 통과.

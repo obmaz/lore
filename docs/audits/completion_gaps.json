@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 213,
-    "verified": 1635,
+    "partial": 178,
+    "verified": 1670,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -109,7 +109,7 @@
     },
     {
       "routine": "LORECRET.PAS:createcharacter:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORECRET.PAS:display:1",
@@ -136,8 +136,7 @@
     },
     {
       "routine": "LORECRET.PAS:profile:1",
-      "verified": 1,
-      "partial": 1
+      "verified": 2
     },
     {
       "routine": "LORECRET.PAS:second:1",
@@ -183,8 +182,7 @@
     },
     {
       "routine": "LOREENT.PAS:entermode:1",
-      "verified": 82,
-      "partial": 4
+      "verified": 86
     },
     {
       "routine": "LOREENT.PAS:sign:1",
@@ -208,7 +206,8 @@
     },
     {
       "routine": "LOREHELP.PAS:title_menu:1",
-      "partial": 21
+      "partial": 15,
+      "verified": 6
     },
     {
       "routine": "LOREMAIN.PAS:enter_lava:1",
@@ -217,8 +216,8 @@
     },
     {
       "routine": "LOREMAIN.PAS:enter_swamp:1",
-      "verified": 15,
-      "partial": 2
+      "verified": 16,
+      "partial": 1
     },
     {
       "routine": "LOREMAIN.PAS:enter_water:1",
@@ -226,8 +225,8 @@
     },
     {
       "routine": "LOREMAIN.PAS:main:1",
-      "partial": 8,
-      "verified": 18
+      "partial": 3,
+      "verified": 23
     },
     {
       "routine": "LOREMAIN.PAS:move_mode:1",
@@ -299,7 +298,7 @@
     },
     {
       "routine": "LOREMENU.PAS:selectmode:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREMENU.PAS:viewcharacter:1",
@@ -315,7 +314,7 @@
     },
     {
       "routine": "LORESPEC.PAS:sgn:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LORESPEC.PAS:specialevent:1",
@@ -323,8 +322,8 @@
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part1:1",
-      "partial": 9,
-      "verified": 155
+      "partial": 7,
+      "verified": 157
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part2:1",
@@ -477,7 +476,7 @@
     },
     {
       "routine": "LORESUB.PAS:selectenemy:1",
-      "partial": 10
+      "verified": 10
     },
     {
       "routine": "LORESUB.PAS:set_all:1",
@@ -506,7 +505,7 @@
     },
     {
       "routine": "LORESUB.PAS:wantenter:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:wantexit:1",
@@ -966,6 +965,14 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_enemy_selection.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_selection_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_enemy_special_attack.json",
       "explicit_contracts": [
         "LOREBATT.PAS:specialattack:1:case:1",
@@ -1284,10 +1291,7 @@
       "path": "test/fixtures/dos_menace_entry.json",
       "explicit_contracts": [],
       "note_mentions": [
-        "LORESPEC.PAS:specialevent_part1:1:if:98",
-        "LOREENT.PAS:entermode:1:if:6",
-        "LOREENT.PAS:entermode:1:if:7",
-        "LORESUB.PAS:wantenter:1:if:1"
+        "LORESPEC.PAS:specialevent_part1:1:if:98"
       ],
       "test_candidates": [
         "test/menace_entry_dos_test.dart",

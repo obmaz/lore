@@ -12053,20 +12053,28 @@
       "line": 1035,
       "kind": "case",
       "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/keyboard_input_test.dart",
-      "note": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu.",
-      "verification": "partial"
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "Actual SelectMode uses direct shared CASE; all byte results compare original Pascal mapping, including 0 exit; actual menu/field integration tests verify one-shot dispatch.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart"
+      ]
     },
     {
       "id": "LOREMENU.PAS:selectmode:1:exit:1",
       "line": 1036,
       "kind": "exit",
       "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/keyboard_input_test.dart",
-      "note": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu.",
-      "verification": "partial"
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "Actual SelectMode uses direct shared CASE; all byte results compare original Pascal mapping, including 0 exit; actual menu/field integration tests verify one-shot dispatch.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart"
+      ]
     },
     {
       "id": "LOREMENU.PAS:returnpredict:1:case:1",
@@ -14213,9 +14221,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_ent_procedures.dart",
-      "test": "test/loreent_entry_effects_test.dart",
-      "note": "Water Field post-load NPC removal on both entrances: all 256 raw etc38 byte values, including raw zero overriding legacy named flag. Direct procedure owns tile; JSON disabled. DOS entrance traversal pending.",
-      "verification": "partial"
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/loreent_entry_effects_test.dart",
+        "test/source_entrance_replay_test.dart"
+      ]
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:44",
@@ -14223,9 +14235,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_ent_procedures.dart",
-      "test": "test/loreent_entry_effects_test.dart",
-      "note": "Water Field post-load NPC removal on both entrances: all 256 raw etc38 byte values, including raw zero overriding legacy named flag. Direct procedure owns tile; JSON disabled. DOS entrance traversal pending.",
-      "verification": "partial"
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/loreent_entry_effects_test.dart",
+        "test/source_entrance_replay_test.dart"
+      ]
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:102",
@@ -16563,29 +16579,43 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_ent_procedures.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
-      "verification": "partial"
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart",
+        "test/loreent_entry_effects_test.dart"
+      ]
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:7",
       "line": 38,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart",
+        "test/loreent_entry_effects_test.dart"
+      ]
     },
     {
       "id": "LORESUB.PAS:wantenter:1:if:1",
       "line": 996,
       "kind": "if",
       "classification": "common-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Original Select row1 default, arrow/Enter and Esc->0; original Print11 prompt color, no added refusal speech. Actual native MENACE Down/Enter, Esc and Enter captured; mobile regression failed with old AlertDialog, passes source Select adapter. Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_portal_session.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Actual portal confirmation uses source k=1 predicate, compared for all byte results; original entries cancel before scripts/RNG and accept source destination.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart"
+      ]
     },
     {
       "id": "LORESUB.PAS:wantexit:1:if:1",
@@ -17820,6 +17850,350 @@
       "test": "test/source_join_menu_masks_test.dart",
       "note": "Every named mask, lengths0..7 and seventh-slot exclusion compare source player[2..6] labels and empty sixth-slot fallback; actual recruitment dialog tested separately.",
       "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:repeat:1",
+      "line": 566,
+      "kind": "repeat",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:case:1",
+      "line": 568,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:1",
+      "line": 577,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:2",
+      "line": 581,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:3",
+      "line": 584,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:case:2",
+      "line": 587,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:4",
+      "line": 593,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:5",
+      "line": 594,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:6",
+      "line": 600,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:7",
+      "line": 601,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:2",
+      "line": 148,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:1",
+      "line": 150,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:4",
+      "line": 165,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:2",
+      "line": 166,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:10",
+      "line": 186,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LORESPEC.PAS:sgn:1:if:1",
+      "line": 17,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Direct signed sgn helper is used by map13 pyramid movement. Every signed integer argument and all121 start cells compare independently source direction and x-before-y move sequence.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:sgn:1:if:2",
+      "line": 18,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Direct signed sgn helper is used by map13 pyramid movement. Every signed integer argument and all121 start cells compare independently source direction and x-before-y move sequence.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:1",
+      "line": 27,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Every raw etc32 flag byte and food byte compare original bit8 gate and >155 saturation; production flag adapter preserves all other bits and raw-zero precedence.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:2",
+      "line": 29,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Every raw etc32 flag byte and food byte compare original bit8 gate and >155 saturation; production flag adapter preserves all other bits and raw-zero precedence.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_swamp:1:for:2",
+      "line": 53,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_swamp_logic.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Every luck byte and Random20 result verifies all six ordered draws, named filtering and seventh exclusion; short/long party fixtures support bounds. Dual-page presentation line56 remains partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/swamp_source_parity_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:repeat:3",
+      "line": 279,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:9",
+      "line": 281,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:10",
+      "line": 290,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:11",
+      "line": 298,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:12",
+      "line": 300,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:goto:2",
+      "line": 300,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:profile:1:repeat:1",
+      "line": 186,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Actual desktop and mobile keyboard profile waits for one nonmodifier key before Fourth resumes. Accepted key closes mobile profile and cannot also open selection; pointer profile adapter retained. CRT poll duration not claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:createcharacter:1:if:1",
+      "line": 763,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Native-backed complete-review key gate: Escape resets title without starting, accepted review starts original ordered party in both desktop/mobile actual UI. Last persistence separately verified.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/companion_selection_dos_test.dart"
+      ]
     }
   ]
 }

@@ -13,7 +13,7 @@ class ContractLedgerTest(unittest.TestCase):
     def test_creation_keyboard_scope_preserves_crt_wait_gaps(self):
         sites = ledger.build()['control_sites']
         expected = {'test/creation_second_dos_test.dart': 9,
-                    'test/creation_class_dos_test.dart': 6,
+                    'test/creation_class_dos_test.dart': 8,
                     'test/companion_selection_dos_test.dart': 14}
         for test, count in expected.items():
             # Behavioral evidence includes supporting UI tests; select contract IDs
@@ -26,9 +26,8 @@ class ContractLedgerTest(unittest.TestCase):
         waiting = [s for s in sites if (s['routine'], s['line']) in {
             ('LORECRET.PAS:second:1', 422),
             ('LORECRET.PAS:fourth:1', 583),
-            ('LORECRET.PAS:fourth:1', 604),
-            ('LORECRET.PAS:profile:1', 186)}]
-        self.assertEqual(len(waiting), 4)
+            ('LORECRET.PAS:fourth:1', 604)}]
+        self.assertEqual(len(waiting), 3)
         self.assertTrue(all(s['verification_status'] == 'partial' for s in waiting))
 
     def test_remaining_effect_scope_excludes_unobserved_ui(self):
@@ -117,7 +116,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 213)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 178)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

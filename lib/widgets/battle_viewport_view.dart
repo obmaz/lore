@@ -6,6 +6,7 @@ import '../logic/lore_random.dart';
 import '../logic/lore_batt_text.dart';
 import '../logic/lore_sub_text.dart';
 import '../logic/lore_enemy_presentation.dart';
+import '../logic/lore_enemy_selection.dart';
 import '../logic/lore_battle_menus.dart';
 
 import 'package:flutter/material.dart';
@@ -519,6 +520,26 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           return KeyEventResult.handled;
         }
         if (event is KeyDownEvent && !_isTurnProcessing && !_battleEnded) {
+          if (widget.enemies.isNotEmpty &&
+              (event.logicalKey == LogicalKeyboardKey.arrowUp ||
+                  event.logicalKey == LogicalKeyboardKey.arrowDown ||
+                  event.logicalKey == LogicalKeyboardKey.enter)) {
+            final cursor = LoreEnemySelection(
+              widget.enemies.length,
+              number: _selectedEnemyIndex + 1,
+            );
+            final accepted = cursor.readKey(
+              event.logicalKey == LogicalKeyboardKey.enter ? 13 : 0,
+              scan: event.logicalKey == LogicalKeyboardKey.arrowUp ? 72 : 80,
+            );
+            setState(() => _selectedEnemyIndex = cursor.number - 1);
+            if (accepted) _onWeaponAttack();
+            return KeyEventResult.handled;
+          }
+          if (event.logicalKey == LogicalKeyboardKey.escape) {
+            _hesitate(); // command Select(0); not SelectEnemy cancellation.
+            return KeyEventResult.handled;
+          }
           if (event.logicalKey == LogicalKeyboardKey.digit1) {
             _onWeaponAttack();
             return KeyEventResult.handled;
@@ -630,6 +651,17 @@ class _BattleViewportViewState extends State<BattleViewportView> {
               ),
             ),
 
+            if (widget.enemies.isNotEmpty)
+              Text(
+                currentTarget.name,
+                key: const ValueKey('battle-target-preview'),
+                style: RetroTheme.dosFont.copyWith(
+                  color: RetroTheme.ega(
+                    LoreEnemySelection.color(currentTarget),
+                  ),
+                  fontSize: 12,
+                ),
+              ),
             // 2. 명령을 고르는 파티원: `m[0] := name + '의 전투 모드 ===>'`
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),

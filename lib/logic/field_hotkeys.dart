@@ -50,6 +50,18 @@ enum FieldAction {
 class FieldHotkeys {
   FieldHotkeys._();
 
+  /// LOREMENU.PAS SelectMode's one-shot CASE; zero exits without dispatch.
+  static FieldAction fromSelect(int result) => switch (result) {
+    1 => FieldAction.viewParty,
+    2 => FieldAction.viewCharacter,
+    3 => FieldAction.quickView,
+    4 => FieldAction.castSpell,
+    5 => FieldAction.extrasense,
+    6 => FieldAction.rest,
+    7 => FieldAction.gameOption,
+    _ => FieldAction.none,
+  };
+
   /// 원작 키 배열대로 동작을 판정한다.
   static FieldAction resolve(LogicalKeyboardKey key) {
     if (key == LogicalKeyboardKey.space) return FieldAction.openMenu;

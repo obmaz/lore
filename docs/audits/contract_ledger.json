@@ -10146,11 +10146,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/creation_class_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "Actual desktop and mobile keyboard profile waits for one nonmodifier key before Fourth resumes. Accepted key closes mobile profile and cannot also open selection; pointer profile adapter retained. CRT poll duration not claimed."
     },
     {
       "id": "LORECRET.PAS:which:1:repeat:1",
@@ -11824,11 +11824,12 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/creation_class_dos_test.dart",
+        "test/companion_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "Native-backed complete-review key gate: Escape resets title without starting, accepted review starts original ordered party in both desktop/mobile actual UI. Last persistence separately verified."
     },
     {
       "id": "LOREEND.PAS:fadesub:1:for:1",
@@ -12410,11 +12411,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/menace_entry_dos_ui_test.dart"
+        "test/source_misc_numeric_gates_test.dart",
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart",
+        "test/loreent_entry_effects_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_ent_procedures.dart",
-      "reviewed_scope": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign."
+      "reviewed_scope": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:7",
@@ -12426,11 +12430,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/menace_entry_dos_ui_test.dart"
+        "test/source_misc_numeric_gates_test.dart",
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart",
+        "test/loreent_entry_effects_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_ent_procedures.dart",
+      "reviewed_scope": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:8",
@@ -12658,11 +12665,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/loreent_entry_effects_test.dart"
+        "test/source_misc_numeric_gates_test.dart",
+        "test/loreent_entry_effects_test.dart",
+        "test/source_entrance_replay_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_ent_procedures.dart",
-      "reviewed_scope": "Water Field post-load NPC removal on both entrances: all 256 raw etc38 byte values, including raw zero overriding legacy named flag. Direct procedure owns tile; JSON disabled. DOS entrance traversal pending."
+      "reviewed_scope": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:21",
@@ -13112,11 +13121,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/loreent_entry_effects_test.dart"
+        "test/source_misc_numeric_gates_test.dart",
+        "test/loreent_entry_effects_test.dart",
+        "test/source_entrance_replay_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_ent_procedures.dart",
-      "reviewed_scope": "Water Field post-load NPC removal on both entrances: all 256 raw etc38 byte values, including raw zero overriding legacy named flag. Direct procedure owns tile; JSON disabled. DOS entrance traversal pending."
+      "reviewed_scope": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases."
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:45",
@@ -14628,11 +14639,12 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_title_input_test.dart",
+        "test/creation_class_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:9",
@@ -14644,11 +14656,12 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_title_input_test.dart",
+        "test/creation_class_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:10",
@@ -14660,11 +14673,12 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_title_input_test.dart",
+        "test/creation_class_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:11",
@@ -14676,11 +14690,12 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_title_input_test.dart",
+        "test/creation_class_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:12",
@@ -14692,11 +14707,12 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_title_input_test.dart",
+        "test/creation_class_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:goto:2",
@@ -14708,11 +14724,12 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_title_input_test.dart",
+        "test/creation_class_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed."
     },
     {
       "id": "LOREMAIN.PAS:enter_water:1:if:1",
@@ -14900,11 +14917,12 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_misc_numeric_gates_test.dart",
+        "test/swamp_source_parity_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_swamp_logic.dart",
+      "reviewed_scope": "Every luck byte and Random20 result verifies all six ordered draws, named filtering and seventh exclusion; short/long party fixtures support bounds. Dual-page presentation line56 remains partial."
     },
     {
       "id": "LOREMAIN.PAS:enter_swamp:1:for:3",
@@ -15428,11 +15446,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_field_command_dispatch_test.dart",
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/field_hotkeys.dart",
+      "reviewed_scope": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:1",
@@ -15444,11 +15465,14 @@
       "outcomes": 8,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_field_command_dispatch_test.dart",
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/field_hotkeys.dart",
+      "reviewed_scope": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:3",
@@ -15476,11 +15500,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_field_command_dispatch_test.dart",
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/field_hotkeys.dart",
+      "reviewed_scope": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:2",
@@ -15492,11 +15519,14 @@
       "outcomes": 5,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_field_command_dispatch_test.dart",
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/field_hotkeys.dart",
+      "reviewed_scope": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:5",
@@ -15588,11 +15618,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_field_command_dispatch_test.dart",
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/field_hotkeys.dart",
+      "reviewed_scope": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:11",
@@ -19668,11 +19701,13 @@
       "outcomes": 9,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/keyboard_input_test.dart"
+        "test/source_field_command_dispatch_test.dart",
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/field_hotkeys.dart",
+      "reviewed_scope": "Actual SelectMode uses direct shared CASE; all byte results compare original Pascal mapping, including 0 exit; actual menu/field integration tests verify one-shot dispatch."
     },
     {
       "id": "LOREMENU.PAS:selectmode:1:exit:1",
@@ -19684,11 +19719,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/keyboard_input_test.dart"
+        "test/source_field_command_dispatch_test.dart",
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/field_hotkeys.dart",
+      "reviewed_scope": "Actual SelectMode uses direct shared CASE; all byte results compare original Pascal mapping, including 0 exit; actual menu/field integration tests verify one-shot dispatch."
     },
     {
       "id": "LORESPEC.PAS:sgn:1:if:1",
@@ -19700,11 +19737,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_misc_numeric_gates_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "reviewed_scope": "Direct signed sgn helper is used by map13 pyramid movement. Every signed integer argument and all121 start cells compare independently source direction and x-before-y move sequence."
     },
     {
       "id": "LORESPEC.PAS:sgn:1:if:2",
@@ -19716,11 +19753,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_misc_numeric_gates_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "reviewed_scope": "Direct signed sgn helper is used by map13 pyramid movement. Every signed integer argument and all121 start cells compare independently source direction and x-before-y move sequence."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:case:1",
@@ -19748,11 +19785,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_misc_numeric_gates_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "reviewed_scope": "Every raw etc32 flag byte and food byte compare original bit8 gate and >155 saturation; production flag adapter preserves all other bits and raw-zero precedence."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:2",
@@ -19764,11 +19801,11 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/source_misc_numeric_gates_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "reviewed_scope": "Every raw etc32 flag byte and food byte compare original bit8 gate and >155 saturation; production flag adapter preserves all other bits and raw-zero precedence."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part1:1:if:3",
@@ -27388,11 +27425,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:case:1",
@@ -27404,11 +27441,11 @@
       "outcomes": 7,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:if:1",
@@ -27420,11 +27457,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:if:2",
@@ -27436,11 +27473,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:if:3",
@@ -27452,11 +27489,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:case:2",
@@ -27468,11 +27505,11 @@
       "outcomes": 3,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:if:4",
@@ -27484,11 +27521,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:if:5",
@@ -27500,11 +27537,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:if:6",
@@ -27516,11 +27553,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:if:7",
@@ -27532,11 +27569,11 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/enemy_selection_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_enemy_selection.dart",
+      "reviewed_scope": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed."
     },
     {
       "id": "LORESUB.PAS:choosewhom:1:for:1",
@@ -28385,11 +28422,13 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "test/menace_entry_dos_ui_test.dart"
+        "test/source_misc_numeric_gates_test.dart",
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Original Select row1 default, arrow/Enter and Esc->0; original Print11 prompt color, no added refusal speech. Actual native MENACE Down/Enter, Esc and Enter captured; mobile regression failed with old AlertDialog, passes source Select adapter. Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_portal_session.dart",
+      "reviewed_scope": "Actual portal confirmation uses source k=1 predicate, compared for all byte results; original entries cancel before scripts/RNG and accept source destination."
     },
     {
       "id": "LORESUB.PAS:wantexit:1:if:1",
@@ -46218,20 +46257,28 @@
       "line": 1035,
       "kind": "case",
       "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/keyboard_input_test.dart",
-      "note": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu.",
-      "verification": "partial"
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "Actual SelectMode uses direct shared CASE; all byte results compare original Pascal mapping, including 0 exit; actual menu/field integration tests verify one-shot dispatch.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart"
+      ]
     },
     {
       "id": "LOREMENU.PAS:selectmode:1:exit:1",
       "line": 1036,
       "kind": "exit",
       "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/keyboard_input_test.dart",
-      "note": "SelectMode: one Select with the seven source items dispatching to the procedures; no return to the menu.",
-      "verification": "partial"
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "Actual SelectMode uses direct shared CASE; all byte results compare original Pascal mapping, including 0 exit; actual menu/field integration tests verify one-shot dispatch.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart"
+      ]
     },
     {
       "id": "LOREMENU.PAS:returnpredict:1:case:1",
@@ -48378,9 +48425,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_ent_procedures.dart",
-      "test": "test/loreent_entry_effects_test.dart",
-      "note": "Water Field post-load NPC removal on both entrances: all 256 raw etc38 byte values, including raw zero overriding legacy named flag. Direct procedure owns tile; JSON disabled. DOS entrance traversal pending.",
-      "verification": "partial"
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/loreent_entry_effects_test.dart",
+        "test/source_entrance_replay_test.dart"
+      ]
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:44",
@@ -48388,9 +48439,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_ent_procedures.dart",
-      "test": "test/loreent_entry_effects_test.dart",
-      "note": "Water Field post-load NPC removal on both entrances: all 256 raw etc38 byte values, including raw zero overriding legacy named flag. Direct procedure owns tile; JSON disabled. DOS entrance traversal pending.",
-      "verification": "partial"
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/loreent_entry_effects_test.dart",
+        "test/source_entrance_replay_test.dart"
+      ]
     },
     {
       "id": "LORETALK.PAS:talkmode:1:if:102",
@@ -50728,29 +50783,43 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_ent_procedures.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
-      "verification": "partial"
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart",
+        "test/loreent_entry_effects_test.dart"
+      ]
     },
     {
       "id": "LOREENT.PAS:entermode:1:if:7",
       "line": 38,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_ent_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Exact MENACE target point with neighbors and confirmation-before-effects, original 41-entry source fixture; both WATER FIELD entry origins use all raw etc38 bytes and bit4 map write despite conflicting aliases.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart",
+        "test/loreent_entry_effects_test.dart"
+      ]
     },
     {
       "id": "LORESUB.PAS:wantenter:1:if:1",
       "line": 996,
       "kind": "if",
       "classification": "common-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Original Select row1 default, arrow/Enter and Esc->0; original Print11 prompt color, no added refusal speech. Actual native MENACE Down/Enter, Esc and Enter captured; mobile regression failed with old AlertDialog, passes source Select adapter. Independent unchanged EXE /g reload from actual native victory save, four rests, original GameOption(1,1,1), 145 Ground1 walk keys and real approach Save at(18,89). MENACE refusal, Esc and admission captured in test/fixtures/dos_menace_entry.json. Mobile test/menace_entry_dos_ui_test.dart follows the same single LoreRandom through map14 arrival(25,45), Load frequency5->2 and sequential den dispatch Random(40), then exact independent native slot2 records/etc100/DEN1 map2500. Scope is this entrance and source-flow regressions, not every portal/full campaign.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_portal_session.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Actual portal confirmation uses source k=1 predicate, compared for all byte results; original entries cancel before scripts/RNG and accept source destination.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_entrance_replay_test.dart"
+      ]
     },
     {
       "id": "LORESUB.PAS:wantexit:1:if:1",
@@ -51987,6 +52056,350 @@
       "verification": "verified"
     },
     {
+      "id": "LORESUB.PAS:selectenemy:1:repeat:1",
+      "line": 566,
+      "kind": "repeat",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:case:1",
+      "line": 568,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:1",
+      "line": 577,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:2",
+      "line": 581,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:3",
+      "line": 584,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:case:2",
+      "line": 587,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:4",
+      "line": 593,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:5",
+      "line": 594,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:6",
+      "line": 600,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESUB.PAS:selectenemy:1:if:7",
+      "line": 601,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_enemy_selection.dart",
+      "test": "test/enemy_selection_dos_test.dart",
+      "note": "Original numeric cursor/colour instructions: 14336 key/scan/cursor/count cases, every signed HP word and status priorities; source dead highlight7 and actual 1..7-slot arrow wrap/preview tested. Original SelectEnemy does not accept Escape. Modern integrated target picker and separate name preview retain adapter; no BGI raster equivalence claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:2",
+      "line": 148,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:1",
+      "line": 150,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:4",
+      "line": 165,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:case:2",
+      "line": 166,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:10",
+      "line": 186,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/field_hotkeys.dart",
+      "test": "test/source_field_command_dispatch_test.dart",
+      "note": "All ASCII bytes compare independently parsed UpCase CASE; all scan-byte geometry checks with actual LoreGame and four source arrow codes. Actual field UI hotkeys/Space and source map-facing tests support integration. KeyPressed/ReadKey prefix/BIOS timing remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/keyboard_input_test.dart",
+        "test/field_menu_script_save_test.dart",
+        "test/source_load_facing_test.dart"
+      ]
+    },
+    {
+      "id": "LORESPEC.PAS:sgn:1:if:1",
+      "line": 17,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Direct signed sgn helper is used by map13 pyramid movement. Every signed integer argument and all121 start cells compare independently source direction and x-before-y move sequence.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:sgn:1:if:2",
+      "line": 18,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Direct signed sgn helper is used by map13 pyramid movement. Every signed integer argument and all121 start cells compare independently source direction and x-before-y move sequence.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:1",
+      "line": 27,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Every raw etc32 flag byte and food byte compare original bit8 gate and >155 saturation; production flag adapter preserves all other bits and raw-zero precedence.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:2",
+      "line": 29,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_spec_procedures.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Every raw etc32 flag byte and food byte compare original bit8 gate and >155 saturation; production flag adapter preserves all other bits and raw-zero precedence.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_swamp:1:for:2",
+      "line": 53,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_swamp_logic.dart",
+      "test": "test/source_misc_numeric_gates_test.dart",
+      "note": "Every luck byte and Random20 result verifies all six ordered draws, named filtering and seventh exclusion; short/long party fixtures support bounds. Dual-page presentation line56 remains partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/swamp_source_parity_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:repeat:3",
+      "line": 279,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:9",
+      "line": 281,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:10",
+      "line": 290,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:11",
+      "line": 298,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:12",
+      "line": 300,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:goto:2",
+      "line": 300,
+      "kind": "goto",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/source_title_input_test.dart",
+      "note": "All byte choices compare source1..3 gate; actual title keyboard ignores invalid keys, creates/loads/exits via OS adapter. Creation review Escape returns title and success dispatches party. Palette/animation/DOS hardware Halt are not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:profile:1:repeat:1",
+      "line": 186,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Actual desktop and mobile keyboard profile waits for one nonmodifier key before Fourth resumes. Accepted key closes mobile profile and cannot also open selection; pointer profile adapter retained. CRT poll duration not claimed.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORECRET.PAS:createcharacter:1:if:1",
+      "line": 763,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Native-backed complete-review key gate: Escape resets title without starting, accepted review starts original ordered party in both desktop/mobile actual UI. Last persistence separately verified.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/companion_selection_dos_test.dart"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -52100,17 +52513,6 @@
       "id": "LORECRET.PAS:name:1:if:6",
       "line": 137,
       "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:profile:1:repeat:1",
-      "line": 186,
-      "kind": "repeat",
       "classification": "content-rule",
       "implementation": "lib/data/lore_creation.dart",
       "test": "test/creation_test.dart",
@@ -52297,17 +52699,6 @@
     {
       "id": "LORECRET.PAS:last:1:if:2",
       "line": 740,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORECRET.PAS:createcharacter:1:if:1",
-      "line": 763,
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/data/lore_creation.dart",
@@ -53285,116 +53676,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:selectenemy:1:repeat:1",
-      "line": 566,
-      "kind": "repeat",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:case:1",
-      "line": 568,
-      "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:if:1",
-      "line": 577,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:if:2",
-      "line": 581,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:if:3",
-      "line": 584,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:case:2",
-      "line": 587,
-      "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:if:4",
-      "line": 593,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:if:5",
-      "line": 594,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:if:6",
-      "line": 600,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:selectenemy:1:if:7",
-      "line": 601,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:returnmagic:1:case:1",
       "line": 729,
       "kind": "case",
@@ -54066,119 +54347,9 @@
       "verification": "partial"
     },
     {
-      "id": "LOREHELP.PAS:title_menu:1:repeat:3",
-      "line": 279,
-      "kind": "repeat",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:9",
-      "line": 281,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:10",
-      "line": 290,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:11",
-      "line": 298,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:12",
-      "line": 300,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:goto:2",
-      "line": 300,
-      "kind": "goto",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:sgn:1:if:1",
-      "line": 17,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:sgn:1:if:2",
-      "line": 18,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESPEC.PAS:specialevent_part1:1:case:1",
       "line": 24,
       "kind": "case",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part1:1:if:1",
-      "line": 27,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part1:1:if:2",
-      "line": 29,
-      "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_spec_procedures.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -54385,17 +54556,6 @@
       "verification": "partial"
     },
     {
-      "id": "LOREMAIN.PAS:enter_swamp:1:for:2",
-      "line": 53,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LOREMAIN.PAS:enter_swamp:1:for:4",
       "line": 56,
       "kind": "for",
@@ -54440,63 +54600,8 @@
       "verification": "partial"
     },
     {
-      "id": "LOREMAIN.PAS:main:1:if:2",
-      "line": 148,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREMAIN.PAS:main:1:case:1",
-      "line": 150,
-      "kind": "case",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LOREMAIN.PAS:main:1:if:3",
       "line": 162,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREMAIN.PAS:main:1:if:4",
-      "line": 165,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREMAIN.PAS:main:1:case:2",
-      "line": 166,
-      "kind": "case",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the remaining LOREMAIN main-loop branches. Terrain, entrance, route, and map contracts cover selected boundaries; full movement timing, random encounter ordering, and every main-loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREMAIN.PAS:main:1:if:10",
-      "line": 186,
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_main_procedures.dart",
@@ -56446,7 +56551,7 @@
     {
       "path": "test/creation_class_dos_test.dart",
       "kind": "test",
-      "sha256": "8f92f1db40757e755cd11b97ccee7535948df6f78e5d290ce89a75016aff7e9c",
+      "sha256": "b6ab2c0933660eaa76a70811ca81188dd4548e22096578ed2b9b8e343c0da32e",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -56629,6 +56734,15 @@
       "sha256": "ce3fc2a270ea05dbdf4591595693509aca8020af963d01022db65ffaad2511cc",
       "cited_source_files": [
         "LOREBATT.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/enemy_selection_dos_test.dart",
+      "kind": "test",
+      "sha256": "051414c5ca6d03b744306f362d4ba1be730ed907f9ce066e03758eb04824da41",
+      "cited_source_files": [
+        "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -57753,6 +57867,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/source_field_command_dispatch_test.dart",
+      "kind": "test",
+      "sha256": "0f3e5c9a0eb936ccb307a8bba22efe2a1452ff79eb95bfbdd1de82c7d3ea36da",
+      "cited_source_files": [
+        "LOREMAIN.PAS",
+        "LOREMENU.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/source_gold_replay_test.dart",
       "kind": "test",
       "sha256": "370e3de59ed41d34b1eada3aa6dfc8616580f8543be2babc8726edb9ca48530b",
@@ -57792,6 +57916,18 @@
       "kind": "test",
       "sha256": "8d78bea0658d95d31ca5437134ab7c1ee13dfac606674cab6eca9f5437ab2783",
       "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/source_misc_numeric_gates_test.dart",
+      "kind": "test",
+      "sha256": "f1732d716f64aa7d7f2ae8b5cc8d31b7dd51c472cc491012541ef09597562752",
+      "cited_source_files": [
+        "LOREENT.PAS",
+        "LOREMAIN.PAS",
+        "LORESPEC.PAS",
         "LORESUB.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
@@ -57862,6 +57998,16 @@
       "sha256": "ea10aba7032d6c59db3672b68e7053b6538c418bb4269f4ac20901ec243ade1d",
       "cited_source_files": [
         "LOREMAIN.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/source_title_input_test.dart",
+      "kind": "test",
+      "sha256": "91185e19ff755acc016df82c2fb8e6e15a9c1bcc805000ddebd19f254ebd90f3",
+      "cited_source_files": [
+        "LORECRET.PAS",
+        "LOREHELP.PAS"
       ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -58312,6 +58458,15 @@
       "sha256": "fdf60a08c3a6441c5a031e6f5cdc6cca7d13dfe1c05b4f22cec6faedaa5783e9",
       "test_users": [
         "test/enemy_phase_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_enemy_selection.json",
+      "kind": "fixture",
+      "sha256": "c7a55fc15f2530f8a0f46f538b1325a897d54fc557b61f2c1d45be3818389e85",
+      "test_users": [
+        "test/enemy_selection_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
@@ -59099,11 +59254,11 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "c683d31d7db0c8b5a5ba9911b8611b5b3aaf7a8190776848399d6b9fc3f88109"
+      "sha256": "0429205df5e06fde9a901b3f7cded19d60673f60261dabaf2a4b64e8603902dd"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
-      "sha256": "4319b1341aca24be0aba21222088e03c00fcbc0d7b6d189a8dda19fa9d2fd64e"
+      "sha256": "354f9637324dab0f478b2272b3b770dffdae9bb6ab02db6a8d376fa7a89177dc"
     },
     {
       "path": "lib/logic/lore_talk_dispatcher.dart",
@@ -59135,7 +59290,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "eb69ef140b6bdee94d0058de86e0bb0bf89a6bad3013258e3ec72a36b5d4ab9f"
+      "sha256": "37fae7c99fbe9e8c0c03dc470e5b1997960bb27993c84cbc51ab980a78eaa063"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -59219,9 +59374,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "33fd79824a8a9beac2f5f7b30e799274412fa052c475854e9a26887e61c05d80",
+      "sha256": "4427c10e6593f0ec3e379384660c368145d643c3432d479feba5b2f332c18b16",
       "top_level_counts": {
-        "contracts": 1611
+        "contracts": 1639
       }
     }
   ],
@@ -59230,8 +59385,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 213,
-    "partially_verified_behavior_sites": 213,
+    "unverified_behavior_sites": 178,
+    "partially_verified_behavior_sites": 178,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

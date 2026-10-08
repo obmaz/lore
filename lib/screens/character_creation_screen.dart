@@ -54,6 +54,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   // cannot be deselected; only the explicit restart clears these flags.
   LoreCreationCompanions _companions = LoreCreationCompanions();
   Set<int> get _selectedCompanions => _companions.selected;
+  bool _awaitingProfileKey = false;
 
   // 원작 LORECRET.PAS 데이터 (assets/data/creation.json / 내장 폴백)
   LoreCreationData get _data => LoreCreationData.instance;
@@ -308,7 +309,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   Widget _buildCurrentStep() {
     switch (_step) {
       case 0:
-        return _buildTitleScreen();
+        return _keyboardStep(_buildTitleScreen(), _readTitleKey);
       case 1:
         return _buildNameScreen();
       case 2:
@@ -341,10 +342,21 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     if (MediaQuery.sizeOf(context).width < 600) {
       showDialog<void>(
         context: context,
-        builder: (_) => Dialog(
-          child: SingleChildScrollView(child: _buildProfilePanel(companion)),
-        ),
-      );
+        builder: (ctx) {
+          final panel = Dialog(
+            child: SingleChildScrollView(child: _buildProfilePanel(companion)),
+          );
+          return _awaitingProfileKey
+              ? _keyboardStep(panel, (_) {
+                  setState(() => _awaitingProfileKey = false);
+                  Navigator.of(ctx).pop();
+                })
+              : panel;
+        },
+      ).then((_) {
+        if (mounted && _awaitingProfileKey)
+          setState(() => _awaitingProfileKey = false);
+      });
     } else {
       setState(() => _profileTarget = companion);
     }
@@ -360,11 +372,16 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       _allocation = LoreCreationAllocation();
       _selectedClass = null;
       _profileTarget = null;
+      _awaitingProfileKey = false;
       _step = title ? 0 : 1;
     });
   }
 
   void _readCompanionKey(LogicalKeyboardKey key) {
+    if (_awaitingProfileKey) {
+      setState(() => _awaitingProfileKey = false);
+      return; // LORECRET.Profile ReadKey, consumed before Fourth resumes.
+    }
     final scan = switch (key) {
       LogicalKeyboardKey.arrowUp => 72,
       LogicalKeyboardKey.arrowDown => 80,
@@ -386,6 +403,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     setState(() => action = _companions.readKey(code, scan: scan ?? 0));
     switch (action) {
       case LoreCompanionInput.profile:
+        _awaitingProfileKey = true;
         _showCompanionProfile(
           _data.characters.firstWhere((c) => c.id == _companions.cursor),
         );
@@ -396,6 +414,16 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       case LoreCompanionInput.none:
         break;
     }
+  }
+
+  void _readTitleKey(LogicalKeyboardKey key) {
+    final label = key.keyLabel;
+    final choice = label.length == 1
+        ? LoreCreationRules.quizChoice(label.codeUnitAt(0))
+        : null;
+    if (choice == 0) setState(() => _step = 1);
+    if (choice == 1) _showLoadGameDialog();
+    if (choice == 2) SystemNavigator.pop();
   }
 
   Widget _keyboardStep(Widget child, void Function(LogicalKeyboardKey) read) =>
