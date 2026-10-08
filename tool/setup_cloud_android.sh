@@ -4,6 +4,7 @@
 set -euo pipefail
 
 repo_root=$(CDPATH= cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)
+bash "$repo_root/tool/setup_cloud.sh"
 cloud_root=${COMMUNITY_CLOUD_ROOT:-"$(dirname "$repo_root")/shared"}
 flutter_version=${COMMUNITY_FLUTTER_VERSION:-3.47.5}
 sdk_tools_url=https://dl.google.com/android/repository/commandlinetools-linux-16111833_latest.zip

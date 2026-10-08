@@ -1,5 +1,8 @@
 # LORE port direction
 
+- At the start of a fresh GPT/Codex work environment, run
+  `bash tool/setup_cloud.sh` to set the default Git author name to `obmaz`.
+  Preserve the configured Git email and any unrelated environment settings.
 - Follow the sole plan, `docs/porting/direct_port_strategy.md`. The active goal
   is a source-faithful LORE port with modern map rendering, UI, input and audio.
   New game rules are direct Dart ports of the original Pascal procedures.
