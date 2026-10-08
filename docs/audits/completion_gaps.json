@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 109,
-    "verified": 1739,
+    "partial": 108,
+    "verified": 1740,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -350,8 +350,7 @@
     },
     {
       "routine": "LORESUB.PAS:detectgameover:1",
-      "verified": 2,
-      "partial": 1
+      "verified": 3
     },
     {
       "routine": "LORESUB.PAS:display_condition:1",
@@ -758,6 +757,16 @@
       ],
       "test_candidates": [
         "test/defence_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_detect_game_over.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:detectgameover:1:if:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/detect_game_over_dos_test.dart"
       ]
     },
     {

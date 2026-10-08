@@ -27590,11 +27590,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_main_procedures_test.dart"
+        "test/detect_game_over_dos_test.dart",
+        "test/lore_main_procedures_test.dart",
+        "test/fixtures/dos_detect_game_over.json",
+        "tool/export_dos_detect_game_over.py",
+        "test/game_over_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state."
+      "reviewed_scope": "Unmodified native six-slot loop and Exist execute for all 64 masks with three initial etc[6] values and 1500 name/signed HP/unconscious/dead boundary cases distributed over every slot. Active seventh scratch never prevents wipeout. Source etc[6]=255 store precedes GameOver callback. Actual Dart owner awaits that callback and leaves records unchanged; actual main screen wipeout, PressAnyKey, reload/cancel/Halt continuations remain covered by game_over_test. Stack-space check and GameOver graphics are intercepted, so no BGI or whole-game byte equivalence is claimed."
     },
     {
       "id": "LORESUB.PAS:selectenemy:1:repeat:1",
@@ -45296,9 +45300,15 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "test/lore_main_procedures_test.dart",
-      "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
-      "verification": "partial"
+      "test": "test/detect_game_over_dos_test.dart",
+      "note": "Unmodified native six-slot loop and Exist execute for all 64 masks with three initial etc[6] values and 1500 name/signed HP/unconscious/dead boundary cases distributed over every slot. Active seventh scratch never prevents wipeout. Source etc[6]=255 store precedes GameOver callback. Actual Dart owner awaits that callback and leaves records unchanged; actual main screen wipeout, PressAnyKey, reload/cancel/Halt continuations remain covered by game_over_test. Stack-space check and GameOver graphics are intercepted, so no BGI or whole-game byte equivalence is claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_main_procedures_test.dart",
+        "test/fixtures/dos_detect_game_over.json",
+        "tool/export_dos_detect_game_over.py",
+        "test/game_over_test.dart"
+      ]
     },
     {
       "id": "LOREMENU.PAS:gameoption:1:case:1",
@@ -57297,6 +57307,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/detect_game_over_dos_test.dart",
+      "kind": "test",
+      "sha256": "2429f5ba88ff4b2022b55714ada99249d3bf5423f9a45f2ee6935973828aef48",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/dialogue_window_test.dart",
       "kind": "test",
       "sha256": "71be5b58def44795b96c5a377ec83ee15fad799c8a3f468e346134e72dc660c1",
@@ -59244,6 +59263,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_detect_game_over.json",
+      "kind": "fixture",
+      "sha256": "6190c5b017e4dbc2168ee5781b8b24465a00b9a0fa980ecc55179a9a3fbbb00e",
+      "test_users": [
+        "test/detect_game_over_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_draconian_continuation.json",
       "kind": "fixture",
       "sha256": "2fcb449fcfee6fb27b67fef1e6f3095419e75bad6f1a22e40956ae913bf2aadf",
@@ -60331,7 +60359,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "71db3b51b4652afa90921a771b2c21ef43ccfff162188f4b8692caaa9d9b9eec",
+      "sha256": "494dc603987ae4acab1e37614d50804df6077b151f4e7a3ae59edbf9d1f0b67b",
       "top_level_counts": {
         "contracts": 1678
       }
@@ -60342,8 +60370,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 109,
-    "partially_verified_behavior_sites": 109,
+    "unverified_behavior_sites": 108,
+    "partially_verified_behavior_sites": 108,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

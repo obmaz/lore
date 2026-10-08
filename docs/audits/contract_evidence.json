@@ -10821,9 +10821,15 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "test/lore_main_procedures_test.dart",
-      "note": "DetectGameOver: no existing member -> etc[6] := 255 and GameOver; Move_Mode/enter_swamp/enter_lava await it before continuing on the (possibly reloaded) state.",
-      "verification": "partial"
+      "test": "test/detect_game_over_dos_test.dart",
+      "note": "Unmodified native six-slot loop and Exist execute for all 64 masks with three initial etc[6] values and 1500 name/signed HP/unconscious/dead boundary cases distributed over every slot. Active seventh scratch never prevents wipeout. Source etc[6]=255 store precedes GameOver callback. Actual Dart owner awaits that callback and leaves records unchanged; actual main screen wipeout, PressAnyKey, reload/cancel/Halt continuations remain covered by game_over_test. Stack-space check and GameOver graphics are intercepted, so no BGI or whole-game byte equivalence is claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_main_procedures_test.dart",
+        "test/fixtures/dos_detect_game_over.json",
+        "tool/export_dos_detect_game_over.py",
+        "test/game_over_test.dart"
+      ]
     },
     {
       "id": "LOREMENU.PAS:gameoption:1:case:1",
