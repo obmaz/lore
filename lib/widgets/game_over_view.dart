@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../logic/lore_game_over.dart';
+import '../logic/lore_load_failure.dart';
 import '../theme/retro_theme.dart';
 import 'lore_window.dart';
 
@@ -75,9 +76,10 @@ class _GameOverViewState extends State<GameOverView> implements LoreGameOverIo {
 /// `Load` 실패는 `ErrorMessage` 두 줄을 쓴 뒤 앱을 닫는다(`SystemNavigator.pop`,
 /// 웹에서는 화면이 그대로 남는다).
 class HaltView extends StatefulWidget {
-  const HaltView({super.key, this.missingSlot, this.onHalt});
+  const HaltView({super.key, this.missingSlot, this.loadFailure, this.onHalt});
 
   final int? missingSlot;
+  final LoreLoadFailure? loadFailure;
 
   /// 기본값은 `SystemNavigator.pop`.
   final VoidCallback? onHalt;
@@ -93,7 +95,7 @@ class _HaltViewState extends State<HaltView> {
   @override
   void initState() {
     super.initState();
-    if (widget.missingSlot != null) {
+    if (widget.missingSlot != null || widget.loadFailure != null) {
       WidgetsBinding.instance.addPostFrameCallback((_) => _halt());
       return;
     }
@@ -132,6 +134,9 @@ class _HaltViewState extends State<HaltView> {
   @override
   Widget build(BuildContext context) {
     final slot = widget.missingSlot;
+    final errorLines =
+        widget.loadFailure?.lines ??
+        (slot != null ? LoreGameOver.missingSaveLines(slot) : null);
     final shade = (_level * 255 / 63).round();
     return Container(
       color: RetroTheme.black,
@@ -139,16 +144,15 @@ class _HaltViewState extends State<HaltView> {
       alignment: Alignment.topLeft,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: slot != null
+        children: errorLines != null
             ? [
-                Text(
-                  LoreGameOver.missingSaveLines(slot)[0],
-                  style: RetroTheme.dosFont.copyWith(color: RetroTheme.ega(12)),
-                ),
-                Text(
-                  LoreGameOver.missingSaveLines(slot)[1],
-                  style: RetroTheme.dosFont.copyWith(color: RetroTheme.ega(7)),
-                ),
+                for (var i = 0; i < errorLines.length; i++)
+                  Text(
+                    errorLines[i],
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.ega(i == 0 ? 12 : 7),
+                    ),
+                  ),
               ]
             : [
                 const SizedBox(height: 16), // Writeln(#13)

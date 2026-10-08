@@ -45,6 +45,7 @@ import '../logic/lore_spec_procedures.dart';
 import '../logic/lore_source_memory.dart';
 import '../logic/lore_save_party.dart';
 import '../logic/lore_load_weather.dart';
+import '../logic/lore_load_failure.dart';
 import '../logic/lore_ent_procedures.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
@@ -84,6 +85,7 @@ class MainGameScreen extends StatefulWidget {
 
   /// `Halt` 뒤 호출(기본값은 `SystemNavigator.pop`; 테스트용 주입).
   final VoidCallback? onHalt;
+  final LoreMapLoader? mapLoader;
 
   const MainGameScreen({
     super.key,
@@ -91,6 +93,7 @@ class MainGameScreen extends StatefulWidget {
     this.initialSaveData,
     this.encounterRandom,
     this.onHalt,
+    this.mapLoader,
   });
 
   @override
@@ -267,6 +270,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
       initialPlayerY: startY,
       initialMapTiles: widget.initialSaveData?.mapTiles,
       random: _sessionRandom,
+      mapLoader: widget.mapLoader,
+      onLoadFailure: (failure) {
+        if (!mounted) return;
+        AudioManager.instance.stopBgm();
+        setState(() => _loadFailure = failure);
+      },
       onLog: (msg) => _addLog(msg),
       onSign: _printLines,
       onMapLoaded: _normalizeLoadedEtc,
@@ -2138,6 +2147,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     }
   }
 
+  LoreLoadFailure? _loadFailure;
+
   @override
   void dispose() {
     _focusNode.dispose();
@@ -2164,10 +2175,17 @@ class _MainGameScreenState extends State<MainGameScreen> {
         body: HaltView(missingSlot: halt.missingSlot, onHalt: widget.onHalt),
       );
     }
+    if (_loadFailure case final failure?) {
+      return Scaffold(
+        backgroundColor: RetroTheme.black,
+        body: HaltView(loadFailure: failure, onHalt: widget.onHalt),
+      );
+    }
     return KeyboardListener(
       focusNode: _focusNode,
       autofocus: true,
       onKeyEvent: (event) async {
+        if (_loadFailure != null || _halt != null) return;
         if (_appSettingsOpen) return;
         if (_entryAnimationActive) return;
         if (_currentMode == GameScreenMode.encounter && event is KeyDownEvent) {

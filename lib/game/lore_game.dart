@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:math';
 
 import '../logic/lore_random.dart';
+import '../logic/lore_load_failure.dart';
+import '../logic/lore_source_memory.dart';
 
 import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_ent_procedures.dart';
@@ -28,6 +30,11 @@ import 'sprite_sheet.dart';
 
 /// 1993년 원작의 실제 100x100 바이너리 맵(TOWN1.MAP, GROUND1.MAP 등)과
 /// 원작 CHARA.FNT 스프라이트 렌더링을 지원하는 Flame 2D 엔진
+typedef LoreMapLoader = Future<LoreMapData> Function(
+  String name, {
+  required String category,
+});
+
 class LoreGame extends FlameGame {
   static const int viewTilesX = 11;
   static const int viewTilesY = 11;
@@ -120,6 +127,9 @@ class LoreGame extends FlameGame {
   /// Called after every map load (LORESUB `Load` ends with its bounds on
   /// `encounter^`/`maxenemy^`, run on every map change).
   final void Function()? onMapLoaded;
+  final void Function(LoreLoadFailure failure)? onLoadFailure;
+  final LoreMapLoader? mapLoader;
+  LoreLoadFailure? _fatalLoadFailure;
   final void Function()? onEncounter;
   final int Function()? encounterFrequencyProvider;
 
@@ -166,6 +176,8 @@ class LoreGame extends FlameGame {
     this.onLog,
     this.onSign,
     this.onMapLoaded,
+    this.onLoadFailure,
+    this.mapLoader,
     this.onEncounter,
     this.encounterFrequencyProvider,
     this.onFacilityEntered,
@@ -186,7 +198,7 @@ class LoreGame extends FlameGame {
     this.initialMapTiles,
     Random? random,
     LoreScrollState? sourceScroll,
-  }) : currentMapId = initialMapId,
+  }) : currentMapId = LorePascal.byte(initialMapId),
        playerX = initialPlayerX,
        playerY = initialPlayerY,
        _random = random ?? LoreRandom.fromClock(),
@@ -221,27 +233,56 @@ class LoreGame extends FlameGame {
     int? startY,
     List<int>? mapTiles,
   }) async {
-    final info = LoreWorldManager.mapRegistry[mapId];
-    if (info == null) return;
+    if (_fatalLoadFailure case final failure?) {
+      await _failLoad(failure);
+      return;
+    }
+    mapId = LorePascal.byte(mapId);
     currentMapId = mapId;
+    final info = LoreWorldManager.mapRegistry[mapId];
+    if (info == null) {
+      currentMapName = '';
+      await _failLoad(const LoreLoadFailure('.map'));
+      return;
+    }
     currentMapName = info.fileName;
+    late final LoreMapData loaded;
     try {
-      currentMap = await LoreMapData.loadFromAsset(
+      loaded = await (mapLoader ?? LoreMapData.loadFromAsset)(
         info.fileName,
         category: info.category.name,
       );
-      if (mapTiles != null) currentMap!.applyTileSnapshot(mapTiles);
-      if (startX != null && startY != null) {
-        playerX = startX;
-        playerY = startY;
-      }
-      // LORESUB.PAS:1758: every Load resets face from the restored/entry y.
-      playerDirection = currentMap!.ymax ~/ 2 > playerY ? 0 : 1;
-      // 원작 BGM 전환
-      AudioManager.instance.playBgm(info.bgmTrack);
-      onMapLoaded?.call();
     } catch (e) {
-      onLog?.call('지도 파일 로드 실패: $e');
+      await _failLoad(
+        LoreLoadFailure('${info.fileName.toLowerCase()}.map', cause: e),
+      );
+      return;
+    }
+    if (_fatalLoadFailure case final failure?) {
+      await _failLoad(failure);
+      return;
+    }
+    currentMap = loaded;
+    if (mapTiles != null) loaded.applyTileSnapshot(mapTiles);
+    if (startX != null && startY != null) {
+      playerX = startX;
+      playerY = startY;
+    }
+    // LORESUB.PAS:1758: every Load resets face from the restored/entry y.
+    playerDirection = loaded.ymax ~/ 2 > playerY ? 0 : 1;
+    AudioManager.instance.playBgm(info.bgmTrack);
+    onMapLoaded?.call();
+  }
+
+  Future<void> _failLoad(LoreLoadFailure failure) async {
+    final firstFailure = _fatalLoadFailure == null;
+    _fatalLoadFailure ??= failure;
+    if (onLoadFailure case final halt?) {
+      if (firstFailure) halt(_fatalLoadFailure!);
+      // Original Halt never returns to Load, a portal or battle continuation.
+      await Completer<void>().future;
+    } else {
+      throw _fatalLoadFailure!;
     }
   }
 
@@ -262,6 +303,7 @@ class LoreGame extends FlameGame {
   int dispatchStartMapId = 0;
 
   bool tryMove(int dx, int dy) {
+    if (_fatalLoadFailure != null) return false;
     dispatchStartMapId = currentMapId;
     final targetX = playerX + dx;
     final targetY = playerY + dy;

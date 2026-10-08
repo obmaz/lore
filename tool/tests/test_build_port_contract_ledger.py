@@ -10,6 +10,19 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_load_error_scope_is_only_need_message_not_file_io(self):
+        sites = ledger.build()['control_sites']
+        reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        closed = {r['id'] for r in reviewed if r.get('test') ==
+                  'test/load_errors_dos_test.dart' and r.get('verification') == 'verified'}
+        actual = [s for s in sites if s['id'] in closed]
+        self.assertEqual(len(actual), 1)
+        self.assertEqual((actual[0]['routine'], actual[0]['line']),
+                         ('LORESUB.PAS:load:1', 1650))
+        for line in [1655, 1661, 1666, 1671, 1675, 1712, 1752]:
+            self.assertTrue(all(s['verification_status'] == 'partial' for s in sites
+                if s['routine'] == 'LORESUB.PAS:load:1' and s['line'] == line))
+
     def test_detect_game_over_scope_is_only_six_slot_loop(self):
         sites = ledger.build()['control_sites']
         reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
@@ -221,7 +234,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 108)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 107)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

@@ -30783,11 +30783,15 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/load_errors_dos_test.dart",
+        "test/fixtures/dos_load_errors.json",
+        "tool/export_dos_load_errors.py",
+        "lib/game/lore_game.dart",
+        "lib/widgets/game_over_view.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_load_failure.dart",
+      "reviewed_scope": "Original ErrorMessage parameter copy, string concatenations and need boolean IF execute for 39 ASCII Load file labels and both legal boolean values. BIOS/CRT/file output/Halt are platform hooks. Shared source failure renders native lines in EGA12/7 and calls Halt once on actual desktop/mobile screens; party-save missing labels share the same helper. Missing/truncated map and invalid source-byte map stop Load, suppress post-load callback/RNG/continuation and movement rather than logging and continuing. This closes the need-message branch only, not DOS file I/O, selected-font failure policy or BGI/text-mode pixels."
     },
     {
       "id": "LORESUB.PAS:load:1:if:2",
@@ -53476,6 +53480,22 @@
       ]
     },
     {
+      "id": "LORESUB.PAS:load:1:if:1",
+      "line": 1650,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_load_failure.dart",
+      "test": "test/load_errors_dos_test.dart",
+      "note": "Original ErrorMessage parameter copy, string concatenations and need boolean IF execute for 39 ASCII Load file labels and both legal boolean values. BIOS/CRT/file output/Halt are platform hooks. Shared source failure renders native lines in EGA12/7 and calls Halt once on actual desktop/mobile screens; party-save missing labels share the same helper. Missing/truncated map and invalid source-byte map stop Load, suppress post-load callback/RNG/continuation and movement rather than logging and continuing. This closes the need-message branch only, not DOS file I/O, selected-font failure policy or BGI/text-mode pixels.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_load_errors.json",
+        "tool/export_dos_load_errors.py",
+        "lib/game/lore_game.dart",
+        "lib/widgets/game_over_view.dart"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -54612,17 +54632,6 @@
       "id": "LORESUB.PAS:message:1:for:1",
       "line": 386,
       "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:load:1:if:1",
-      "line": 1650,
-      "kind": "if",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -57717,6 +57726,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/load_errors_dos_test.dart",
+      "kind": "test",
+      "sha256": "03085ac257d55dc5fb57dbb041c079842aa353f73a61c4508fedfe3692638545",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/load_state_dos_test.dart",
       "kind": "test",
       "sha256": "1d035515ff840328eec8c464a233db74b23a45e60db8de196235a95c7fcaa7c1",
@@ -59583,6 +59601,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_load_errors.json",
+      "kind": "fixture",
+      "sha256": "4f78654ba7cd1d38dc4cf8d764694af4f4d94c5f69f72c48d81c2198f49716a8",
+      "test_users": [
+        "test/load_errors_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_load_state.json",
       "kind": "fixture",
       "sha256": "c2251d9de778769652301038fa03c5da401abf9878ed5f960449b4656e756ee6",
@@ -60175,7 +60202,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "4e6418a9e21654c5e3602ba733d56afa61171b1416ec2998381cbe22301b6b7d"
+      "sha256": "1ed90cd93aee3e3b3a9af331c10dfb869eecba53a9fc94dbad024b0316bca1dc"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -60275,7 +60302,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "637f0b9bca7d68f6f91358d81b812dc9804f24ae2b2e6714ab26c340ce49f91e"
+      "sha256": "9b397e6cd464cd090f8d48a5e7ad039aeba783ce9cbf7490483056e8494ddb1f"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -60359,9 +60386,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "494dc603987ae4acab1e37614d50804df6077b151f4e7a3ae59edbf9d1f0b67b",
+      "sha256": "ad1365dab9cf47bf95d80c6f354c56c14ee66c5b7f80c2c746278cbff3398ee4",
       "top_level_counts": {
-        "contracts": 1678
+        "contracts": 1679
       }
     }
   ],
@@ -60370,8 +60397,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 108,
-    "partially_verified_behavior_sites": 108,
+    "unverified_behavior_sites": 107,
+    "partially_verified_behavior_sites": 107,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

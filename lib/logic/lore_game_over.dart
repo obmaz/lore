@@ -13,6 +13,7 @@
 library;
 
 import 'lore_sub_text.dart';
+import 'lore_load_failure.dart';
 import 'lore_window_io.dart';
 
 abstract interface class LoreGameOverIo implements LoreWindowIo {
@@ -47,10 +48,8 @@ class LoreGameOver {
   const LoreGameOver._();
 
   /// `Load` 실패 시 `ErrorMessage` 가 텍스트 화면에 쓰는 두 줄.
-  static List<String> missingSaveLines(int slot) => [
-    '"party$slot.dat" not found.',
-    'You need to CREATE CHARACTER.',
-  ];
+  static List<String> missingSaveLines(int slot) =>
+      LoreLoadFailure('party$slot.dat', needCreate: true).lines;
 
   /// `Halt` 직전 텍스트 화면 문구.
   static const String haltMessage = 'Feel your RPG imagination !!';

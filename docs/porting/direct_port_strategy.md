@@ -3143,3 +3143,18 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      관련 29건, 전체 Flutter 1693건(3 skip), Python 139건과 analyze가
      통과했다. 원본 전체 재실행도 fixture와 일치했다. 런타임 변경은 없고
      웹 release는 직전 금화·소환 묶음에서 통과한 결과를 유지한다.
+
+203. **Load 오류 안내와 돌아오지 않는 Halt 연결**
+     원본 ErrorMessage의 인자 복사와 문자열 연결, need 분기를 39개
+     ASCII 파일명과 두 boolean 값으로 실행한다. 현대 화면에서 원본
+     문구·EGA12/7 색상과 한 번의 종료 요청을 대조한다. 저장 파일 누락
+     문구도 같은 함수를 쓴다. 지도 파일 누락·EOF·알 수 없는 byte 지도는
+     로그만 남기고 계속하던 경로를 제거하고 종료 화면으로 간다.
+     Load 후속 callback/난수/이동과 도착 절차로 돌아오지 않도록 막는다.
+     데스크톱과 모바일의 처음 로드·지도 전환 실패를 검사한다. 실제 DOS
+     파일 I/O·선택된 FNT의 실패 처리·BGI 텍스트 픽셀을 완료했다는 뜻은
+     아니다. need 안내 IF 1개 해소로 verified 1741 / partial 107 /
+     unclassified 0. 전체 검사·푸시 후 다음 묶음을 이어간다.
+     관련 28건, 전체 Flutter 1704건(3 skip), Python 141건, analyze 및
+     웹 release build가 통과했다. 원본 ErrorMessage 재실행도 fixture와
+     일치했다. 다음은 Set_All의 75-record typed-read 루프다.

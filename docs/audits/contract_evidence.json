@@ -18995,6 +18995,22 @@
         "test/return_magic_dos_test.dart",
         "test/source_battle_dispatch_test.dart"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:1",
+      "line": 1650,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_load_failure.dart",
+      "test": "test/load_errors_dos_test.dart",
+      "note": "Original ErrorMessage parameter copy, string concatenations and need boolean IF execute for 39 ASCII Load file labels and both legal boolean values. BIOS/CRT/file output/Halt are platform hooks. Shared source failure renders native lines in EGA12/7 and calls Halt once on actual desktop/mobile screens; party-save missing labels share the same helper. Missing/truncated map and invalid source-byte map stop Load, suppress post-load callback/RNG/continuation and movement rather than logging and continuing. This closes the need-message branch only, not DOS file I/O, selected-font failure policy or BGI/text-mode pixels.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/fixtures/dos_load_errors.json",
+        "tool/export_dos_load_errors.py",
+        "lib/game/lore_game.dart",
+        "lib/widgets/game_over_view.dart"
+      ]
     }
   ]
 }
