@@ -41,7 +41,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 586)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 567)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
@@ -103,6 +103,24 @@ class ContractLedgerTest(unittest.TestCase):
             with patch.object(ledger, "EVIDENCE", candidate):
                 with self.assertRaisesRegex(ValueError, "source moved"):
                     ledger.link_contract_evidence(sites)
+
+    def test_enemy_magic_target_verification_is_limited_to_closed_dispatch(self):
+        data = ledger.build()
+        targets = [site for site in data["control_sites"]
+                   if "test/source_enemy_magic_target_test.dart" in
+                   site["behavioral_evidence"]]
+        self.assertEqual(len(targets), 19)
+        self.assertTrue(all(site["routine"] == "LOREBATT.PAS:castattack:1"
+                            and 688 <= site["line"] <= 719
+                            for site in targets))
+        self.assertTrue(all(site["verification_status"] == "verified"
+                            for site in targets))
+        other = [site for site in data["control_sites"]
+                 if site["routine"] == "LOREBATT.PAS:castattack:1"
+                 and site not in targets]
+        self.assertTrue(other)
+        self.assertTrue(all(site["verification_status"] == "partial"
+                            for site in other))
 
     def test_supporting_evidence_is_retained_without_promoting_verification(self):
         rows = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))

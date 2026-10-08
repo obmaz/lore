@@ -6063,11 +6063,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:2",
@@ -6079,11 +6083,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:1",
@@ -6095,11 +6103,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:3",
@@ -6111,11 +6123,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:2",
@@ -6127,11 +6143,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:4",
@@ -6143,11 +6163,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:5",
@@ -6159,11 +6183,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:6",
@@ -6175,11 +6203,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:7",
@@ -6191,11 +6223,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:3",
@@ -6207,11 +6243,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:8",
@@ -6223,11 +6263,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:9",
@@ -6239,11 +6283,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:4",
@@ -6255,11 +6303,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:10",
@@ -6271,11 +6323,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:5",
@@ -6287,11 +6343,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:11",
@@ -6303,11 +6363,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:12",
@@ -6319,11 +6383,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:13",
@@ -6335,11 +6403,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:14",
@@ -6351,11 +6423,15 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/lore_battle_test.dart",
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained."
+      "reviewed_scope": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign."
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:15",
@@ -39782,8 +39858,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:2",
@@ -39792,8 +39874,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:1",
@@ -39802,8 +39890,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:3",
@@ -39812,8 +39906,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:2",
@@ -39822,8 +39922,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:4",
@@ -39832,8 +39938,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:5",
@@ -39842,8 +39954,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:6",
@@ -39852,8 +39970,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:7",
@@ -39862,8 +39986,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:3",
@@ -39872,8 +40002,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:8",
@@ -39882,8 +40018,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:9",
@@ -39892,8 +40034,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:4",
@@ -39902,8 +40050,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:10",
@@ -39912,8 +40066,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:for:5",
@@ -39922,8 +40082,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:11",
@@ -39932,8 +40098,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:12",
@@ -39942,8 +40114,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:13",
@@ -39952,8 +40130,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:14",
@@ -39962,8 +40146,14 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Original mode4/5/6 self-heal CWD/unsigned DIV3 threshold, unsigned SHR2 self amount, CWD/DIV6 group amount, signed integer HP/capacity accumulation and signed IDIV3 plus mode5/6 group eligibility branches verified independently (21 threshold,12 amount,12 aggregate/decision cases). enemy_ai_arithmetic_dos_test.dart checks source-directed random order and native-composed cure states. Native arithmetic faults use StateError; DOS error-screen, armor-average zero divisor and full seeded battle/ending remain separate gates; partial retained.",
-      "verification": "partial"
+      "note": "Closed target-dispatch branch in CastAttack modes 1..3 only: 889 source-derived exhaustive choice/fallback scenarios and 1536 independent unmodified EXE runs (native Exist and Random; all 64 living masks, named/blank inactive slots, four seeds) agree on target, single/all decision, random bounds/order and final seed. Stops before spell effects. Does not verify CastAttack case modes4..6, CastAttackOne/All effects, presentation or complete battle/campaign.",
+      "supporting_evidence": [
+        "test/source_enemy_magic_target_test.dart",
+        "test/enemy_magic_targets_dos_test.dart",
+        "test/fixtures/dos_enemy_magic_targets.json",
+        "tool/export_dos_enemy_magic_targets.py"
+      ],
+      "verification": "verified"
     },
     {
       "id": "LOREBATT.PAS:castattack:1:if:15",
@@ -54487,6 +54677,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/enemy_magic_targets_dos_test.dart",
+      "kind": "test",
+      "sha256": "ba10458c80ac487380a0c6c47008e5016b2fc5e811efff526709ae40837c0501",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/evil_god_native_completion_test.dart",
       "kind": "test",
       "sha256": "7413a4207c4cf62b7636d3a680e7af23d355e15912fd4da6ad812e03dfde5abc",
@@ -55524,6 +55721,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/source_enemy_magic_target_test.dart",
+      "kind": "test",
+      "sha256": "bf93cd0768deb21f435791e514b72ebaab84f3a22473121ac017a5bdd230a117",
+      "cited_source_files": [
+        "LOREBATT.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/source_entrance_replay_test.dart",
       "kind": "test",
       "sha256": "2b495dec6ae82b2ab739ea63dde989e2035e570f3e1066abd8962452584fab56",
@@ -55958,6 +56164,15 @@
       "test_users": [
         "test/enemy_ai_arithmetic_dos_test.dart",
         "test/enemy_magic_arithmetic_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_enemy_magic_targets.json",
+      "kind": "fixture",
+      "sha256": "5388888e3fef71e1076c6c8eb270a99ce794b2c9956231aa4464582a3c6a531f",
+      "test_users": [
+        "test/enemy_magic_targets_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
@@ -56827,7 +57042,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "4f5feb7b259e125454b806edf450c60a725df6df073b6655551ca60f8d6c2295",
+      "sha256": "34038342210cda8416e507a709d5d3014e94f909ba8b358e9cf34a9dd8b6bc62",
       "top_level_counts": {
         "contracts": 1492
       }
@@ -56838,8 +57053,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 586,
-    "partially_verified_behavior_sites": 586,
+    "unverified_behavior_sites": 567,
+    "partially_verified_behavior_sites": 567,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

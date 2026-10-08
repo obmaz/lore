@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 586,
-    "verified": 1262,
+    "partial": 567,
+    "verified": 1281,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -30,7 +30,8 @@
     },
     {
       "routine": "LOREBATT.PAS:castattack:1",
-      "partial": 63
+      "partial": 44,
+      "verified": 19
     },
     {
       "routine": "LOREBATT.PAS:castattackall:1",
@@ -726,6 +727,34 @@
       "test_candidates": [
         "test/enemy_ai_arithmetic_dos_test.dart",
         "test/enemy_magic_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_magic_targets.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:if:1",
+        "LOREBATT.PAS:castattack:1:if:2",
+        "LOREBATT.PAS:castattack:1:for:1",
+        "LOREBATT.PAS:castattack:1:if:3",
+        "LOREBATT.PAS:castattack:1:for:2",
+        "LOREBATT.PAS:castattack:1:if:4",
+        "LOREBATT.PAS:castattack:1:if:5",
+        "LOREBATT.PAS:castattack:1:if:6",
+        "LOREBATT.PAS:castattack:1:if:7",
+        "LOREBATT.PAS:castattack:1:for:3",
+        "LOREBATT.PAS:castattack:1:if:8",
+        "LOREBATT.PAS:castattack:1:if:9",
+        "LOREBATT.PAS:castattack:1:for:4",
+        "LOREBATT.PAS:castattack:1:if:10",
+        "LOREBATT.PAS:castattack:1:for:5",
+        "LOREBATT.PAS:castattack:1:if:11",
+        "LOREBATT.PAS:castattack:1:if:12",
+        "LOREBATT.PAS:castattack:1:if:13",
+        "LOREBATT.PAS:castattack:1:if:14"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_magic_targets_dos_test.dart"
       ]
     },
     {
