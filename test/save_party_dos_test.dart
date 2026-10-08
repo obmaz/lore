@@ -44,7 +44,7 @@ void main() {
     gold: 2000,
     food: 20,
     party: party,
-    flags: const {'etc7': 3, 'etc8': 7},
+    flags: {'etc7': 3, 'etc8': 7, 'etc12': slot == 2 ? 5 : 255},
     mapTiles: List.filled(10000, 44),
   );
   setUp(() => SharedPreferences.setMockInitialValues({}));
@@ -152,6 +152,7 @@ void main() {
 
           await saveSlot(1);
           final first = (await SaveManager.instance.loadGame(1))!;
+          expect(first.flags['etc12'] ?? 0, 0);
           expect([for (final p in first.party) p.toJson()], fieldRecords);
           expect(scratch.name, 'Unsaved scratch');
           // A legacy/application DTO may contain a seventh record. The actual
@@ -179,6 +180,7 @@ void main() {
           expect(statuses.any((p) => p.name == 'Unsaved scratch'), isFalse);
           await saveSlot(3);
           final restored = (await SaveManager.instance.loadGame(3))!;
+          expect(restored.flags['etc12'], 5);
           expect(
             [for (final p in restored.party) p.toJson()],
             [for (final p in loaded) p.toJson()],

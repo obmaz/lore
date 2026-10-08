@@ -57516,6 +57516,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/load_weather_test.dart",
+      "kind": "test",
+      "sha256": "4ac33b464ad90f5b3f1af6dea51cf2d538c4d7fced3b53cac643e8b6e7083130",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/lockup_battle_dos_test.dart",
       "kind": "test",
       "sha256": "024046255117c821b213b1020200fcd66de3ac8abb4bf7d19f34351da595c636",
@@ -58207,7 +58216,7 @@
     {
       "path": "test/save_party_dos_test.dart",
       "kind": "test",
-      "sha256": "0ac875455866e9ea32da4d88de48a17afcce722c355483dacc0918ccc4d34d1d",
+      "sha256": "53f27d18ed770fa0848e623dad36f7c4cef4686e0815e79ec3fed7a4e20f4836",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -59928,7 +59937,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "48d6ac94815c7f147aac9e5a4674b35110834f970178104920772ecd78ac20bb"
+      "sha256": "6ab30fa0822a9c97323f9d5c5a9e77c08b272900cd72979fb6f618e82cee9649"
     },
     {
       "path": "lib/logic/lore_game_option.dart",

@@ -3008,3 +3008,17 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      아니라 실제 game party를 관찰하고 입력 DTO가 그대로인 것도 확인한다.
      최신 코드 전체 Flutter 1659건(3 skip), Python 126건, analyze와
      웹 release build 및 원장/source memory 검사가 통과했다. main에 푸시한다.
+
+195. **Load의 저장 날씨 selector 정규화**
+     원문 `case party.etc[12]`는 1~5만 유지하고 나머지는
+     `setscrolltype(normal)`의 write로 0이 된다. 실제 화면의 cold Load,
+     메뉴 resume 및 지도 Load callback에 연결된 정규화 owner에서
+     잘못된 저장 byte를 유지하던 차이를 수정한다. 원문 CASE로 기대값을
+     독립 추출해 256가지 byte, 다른 etc 보존 및 반복 적용을 검사한다.
+     desktop/mobile cold start와 Save/resume/resave에서 잘못된 255의
+     정리와 정상 5의 저장 보존도 확인한다. 이 검사는 원본 EXE 실행이나
+     BGI scrollform/color/putstyle 및 날씨 합성 화면의 동등성을 입증하지
+     않는다. 따라서 추가 완료 처리 없이 verified 1723 / partial 125 /
+     unclassified 0을 유지한다. 전체 검사 후 main에 푸시하며 배포는 보류한다.
+     전체 Flutter 1660건(3 skip), Python 126건, analyze 및 웹 release
+     build가 통과했다. 원장·완료 gap·source memory 최신 상태도 확인했다.

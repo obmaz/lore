@@ -43,6 +43,7 @@ import '../logic/lore_water_lord.dart';
 import '../logic/lore_spec_procedures.dart';
 import '../logic/lore_source_memory.dart';
 import '../logic/lore_save_party.dart';
+import '../logic/lore_load_weather.dart';
 import '../logic/lore_ent_procedures.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
@@ -246,6 +247,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _encounterFrequency = 2;
     }
     if (_maxEnemies < 3 || _maxEnemies > 7) _maxEnemies = 5;
+    LoreLoadWeather.normalize(_sourceEtc);
   }
 
   void _initGame() {
