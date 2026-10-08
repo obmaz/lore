@@ -2811,3 +2811,20 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      난수 결과 0/비영에 따른 decrement/scroll/encounter/복귀 순서를 검사했다.
      검증 완료 1450개, partial 398개. 전체 Flutter 1558건(3건 skip),
      최종 native 복합 공격 집중 7건 및 analyze가 통과했다. 배포는 하지 않는다.
+
+182. 전투 초능력 game-state 계약 49건 검증 완료 (2026-10-08).
+     원본 BattleESP, Random, PlusExperience, join 및 ReturnCondition 명령을
+     90110개 합성 입력으로 실행했다. 실제 battle-unit CS를 사용해 원본 set
+     literal 주소를 유지한다. 모든 level/action/enemy-ID byte, 적 상태 조합,
+     ESP 비용 경계, 효과별 HP 경계·signed 양 끝, resistance/accuracy 경계,
+     cls/bit39 조합과 시전자 6번 영입을 대조했다. 경험치 signed longint
+     overflow·분배와 group 사망 시 loop 대상 대신 selected target을 쓰는
+     원본 quirk도 실제 호출/상태와 일치한다.
+     조건 jump edge를 수집해 fear/heart/illusion clamp의 양쪽 분기를
+     확인했다. 초기 자료에 빠진 작은 resistance 및 0 accuracy operand를
+     추가했고, 메시지만 다른 inner case는 native branch ID와 원문에서
+     독립 추출한 문구/sexdata를 대조했다. DOS glyph/BGI 검증은 아니다.
+     화면은 인자 push 전 bypass하되 숫자 condition 변경은 원본으로 재생한다.
+     검증 완료 1499개, partial 349개이며 1701개 목표는 아직 진행 중이다.
+     전체 Flutter 1563건(3건 skip), 최종 집중 native 5건 및 analyze 통과.
+     런타임 변경·배포 없이 검증 자료와 근거 연결을 추가했다.

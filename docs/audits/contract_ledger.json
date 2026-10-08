@@ -4655,11 +4655,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:1",
@@ -4671,11 +4673,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:2",
@@ -4687,11 +4691,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:2",
@@ -4703,11 +4709,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:3",
@@ -4719,11 +4727,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:4",
@@ -4735,11 +4745,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:3",
@@ -4751,11 +4763,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:5",
@@ -4767,11 +4781,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:4",
@@ -4783,11 +4799,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:6",
@@ -4799,11 +4817,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:7",
@@ -4815,11 +4835,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:5",
@@ -4831,11 +4853,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:8",
@@ -4847,11 +4871,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:6",
@@ -4863,11 +4889,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:9",
@@ -4879,11 +4907,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:7",
@@ -4895,11 +4925,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:case:1",
@@ -4911,11 +4943,13 @@
       "outcomes": 6,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:case:2",
@@ -4927,11 +4961,13 @@
       "outcomes": 4,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:10",
@@ -4943,11 +4979,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:11",
@@ -4959,11 +4997,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:12",
@@ -4975,11 +5015,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:case:3",
@@ -4991,11 +5033,13 @@
       "outcomes": 3,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:for:1",
@@ -5007,11 +5051,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:13",
@@ -5023,11 +5069,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:14",
@@ -5039,11 +5087,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:15",
@@ -5055,11 +5105,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:16",
@@ -5071,11 +5123,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:17",
@@ -5087,11 +5141,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:8",
@@ -5103,11 +5159,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:18",
@@ -5119,11 +5177,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:19",
@@ -5135,11 +5195,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:9",
@@ -5151,11 +5213,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:20",
@@ -5167,11 +5231,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:10",
@@ -5183,11 +5249,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:21",
@@ -5199,11 +5267,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:11",
@@ -5215,11 +5285,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:22",
@@ -5231,11 +5303,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:23",
@@ -5247,11 +5321,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:12",
@@ -5263,11 +5339,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:24",
@@ -5279,11 +5357,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:25",
@@ -5295,11 +5375,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:13",
@@ -5311,11 +5393,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:26",
@@ -5327,11 +5411,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:27",
@@ -5343,11 +5429,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:14",
@@ -5359,11 +5447,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:28",
@@ -5375,11 +5465,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:15",
@@ -5391,11 +5483,13 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:for:2",
@@ -5407,11 +5501,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:29",
@@ -5423,11 +5519,13 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/lore_battle_test.dart"
+        "test/battle_esp_dos_test.dart",
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
-      "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
+      "reviewed_scope": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence."
     },
     {
       "id": "LOREBATT.PAS:runaway:1:if:1",
@@ -40443,9 +40541,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:1",
@@ -40453,9 +40555,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:2",
@@ -40463,9 +40569,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:2",
@@ -40473,9 +40583,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:3",
@@ -40483,9 +40597,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:4",
@@ -40493,9 +40611,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:3",
@@ -40503,9 +40625,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:5",
@@ -40513,9 +40639,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:4",
@@ -40523,9 +40653,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:6",
@@ -40533,9 +40667,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:7",
@@ -40543,9 +40681,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:5",
@@ -40553,9 +40695,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:8",
@@ -40563,9 +40709,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:6",
@@ -40573,9 +40723,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:9",
@@ -40583,9 +40737,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:7",
@@ -40593,9 +40751,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:case:1",
@@ -40603,9 +40765,13 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:case:2",
@@ -40613,9 +40779,13 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:10",
@@ -40623,9 +40793,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:11",
@@ -40633,9 +40807,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:12",
@@ -40643,9 +40821,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:case:3",
@@ -40653,9 +40835,13 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:for:1",
@@ -40663,9 +40849,13 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:13",
@@ -40673,9 +40863,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:14",
@@ -40683,9 +40877,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:15",
@@ -40693,9 +40891,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:16",
@@ -40703,9 +40905,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:17",
@@ -40713,9 +40919,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:8",
@@ -40723,9 +40933,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:18",
@@ -40733,9 +40947,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:19",
@@ -40743,9 +40961,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:9",
@@ -40753,9 +40975,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:20",
@@ -40763,9 +40989,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:10",
@@ -40773,9 +41003,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:21",
@@ -40783,9 +41017,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:11",
@@ -40793,9 +41031,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:22",
@@ -40803,9 +41045,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:23",
@@ -40813,9 +41059,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:12",
@@ -40823,9 +41073,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:24",
@@ -40833,9 +41087,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:25",
@@ -40843,9 +41101,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:13",
@@ -40853,9 +41115,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:26",
@@ -40863,9 +41129,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:27",
@@ -40873,9 +41143,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:14",
@@ -40883,9 +41157,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:28",
@@ -40893,9 +41171,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:exit:15",
@@ -40903,9 +41185,13 @@
       "kind": "exit",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:for:2",
@@ -40913,9 +41199,13 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battleesp:1:if:29",
@@ -40923,9 +41213,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "test": "test/battle_esp_dos_test.dart",
+      "note": "Native BattleESP full numeric continuation: 90,110 cases execute original Random, PlusExperience, join and ReturnCondition. All byte levels/actions, class and capability gates, signed ESP budgets, target/status masks, resistance/accuracy boundaries, all k branches and zero/nonzero illusion accuracy clamps. Source-derived colour7 messages checked against actual native branches. DisplayEnemies rendering, glyphs and other routines remain separate evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "tool/tests/test_export_dos_battle_esp.py"
+      ]
     },
     {
       "id": "LOREBATT.PAS:runaway:1:if:1",
@@ -55602,6 +55896,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/battle_esp_dos_test.dart",
+      "kind": "test",
+      "sha256": "6a51e59615a9be7dc26fc90ca8e3fd3672948335909e0bc75f74206f0196e301",
+      "cited_source_files": [
+        "LOREBATT.PAS",
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/battle_key_wait_test.dart",
       "kind": "test",
       "sha256": "c2e8894acdd4f25b3d8982f02d8ceeb78876447101de5a0d9f5166534736a82f",
@@ -57289,6 +57593,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_battle_esp.json",
+      "kind": "fixture",
+      "sha256": "2f6990eefb76a14ff8f7a541896fed84d4ce38b54ec753d9d04e9ab824d0d9e7",
+      "test_users": [
+        "test/battle_esp_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_battle_rewards.json",
       "kind": "fixture",
       "sha256": "3552f98b33942d1e1a4a49eb8226f9346eef7a1f5bc4f2da715193af6f69ca13",
@@ -58318,7 +58631,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "33866b3156ccf4221b4f0b60ae7068a0d7c210e451ee69a95c50304cde22ae57",
+      "sha256": "3e0772e0dd1a4f47a76170d54edab3e94d91af9b29150993df415837f7034727",
       "top_level_counts": {
         "contracts": 1554
       }
@@ -58329,8 +58642,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 398,
-    "partially_verified_behavior_sites": 398,
+    "unverified_behavior_sites": 349,
+    "partially_verified_behavior_sites": 349,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

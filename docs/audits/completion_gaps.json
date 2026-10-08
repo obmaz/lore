@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 398,
-    "verified": 1450,
+    "partial": 349,
+    "verified": 1499,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -18,7 +18,7 @@
     },
     {
       "routine": "LOREBATT.PAS:battleesp:1",
-      "partial": 49
+      "verified": 49
     },
     {
       "routine": "LOREBATT.PAS:battlemode:1",
@@ -562,6 +562,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/auto_select_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_esp.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/battle_esp_dos_test.dart"
       ]
     },
     {
