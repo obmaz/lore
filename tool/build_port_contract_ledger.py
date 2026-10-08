@@ -115,6 +115,15 @@ VERIFIED_CONTRACT_ROUTINES = {
         "LOREBATT.PAS:attackone:1",
         "LOREBATT.PAS:castall:1",
         "LOREBATT.PAS:runaway:1",
+        "LOREBATT.PAS:castone:1",
+        "LOREBATT.PAS:weaponattack:1",
+        "LOREBATT.PAS:castattacksub:1",
+        "LOREBATT.PAS:enemycure:1",
+        "LOREBATT.PAS:plusexperience:1",
+        "LOREBATT.PAS:plusgold:1",
+        "LOREBATT.PAS:existenemies:1",
+        "LOREBATT.PAS:enemyattack:1",
+        "LOREBATT.PAS:endbattle:1",
     },
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)

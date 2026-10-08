@@ -2671,3 +2671,11 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      원본 제어 흐름으로 확인했다. 원장은 넓은 전투 테스트 파일 전체가 아니라
      이 세 루틴만 승격한다. verified 1182개, partial 666개다. CastOne·적 AI와
      나머지 전투 루틴은 partial로 유지한다.
+
+170. 전투 산술·보상·AI 핵심 계약 81건 검증 완료 (2026-10-08).
+     `CastOne`, `WeaponAttack`, `CastAttackSub`, `EnemyCure`, 보상·적 존재 판정,
+     `EnemyAttack`, `EndBattle`의 원시 수치·저장 폭·난수 호출과 상태 전이를
+     독립 DOS fixture로 대조했다. 모든 byte 경계, signed HP/경험치/금화 및 여섯
+     슬롯 결과를 포함하는 산술·보상·AI 재생 377건이 통과했다. 직전 20건과
+     합쳐 100건의 전투 계약을 검증했으며 원장은 verified 1262개, partial
+     586개다. 아직 복합 특수 마법·전체 BattleMode 루프는 partial이다.

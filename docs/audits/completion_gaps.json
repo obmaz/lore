@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 666,
-    "verified": 1182,
+    "partial": 586,
+    "verified": 1262,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -42,11 +42,11 @@
     },
     {
       "routine": "LOREBATT.PAS:castattacksub:1",
-      "partial": 11
+      "verified": 11
     },
     {
       "routine": "LOREBATT.PAS:castone:1",
-      "partial": 19
+      "verified": 19
     },
     {
       "routine": "LOREBATT.PAS:castspecial:1",
@@ -62,27 +62,28 @@
     },
     {
       "routine": "LOREBATT.PAS:endbattle:1",
-      "partial": 9
+      "verified": 9
     },
     {
       "routine": "LOREBATT.PAS:enemyattack:1",
-      "partial": 8
+      "verified": 7,
+      "partial": 1
     },
     {
       "routine": "LOREBATT.PAS:enemycure:1",
-      "partial": 5
+      "verified": 5
     },
     {
       "routine": "LOREBATT.PAS:existenemies:1",
-      "partial": 3
+      "verified": 3
     },
     {
       "routine": "LOREBATT.PAS:plusexperience:1",
-      "partial": 4
+      "verified": 4
     },
     {
       "routine": "LOREBATT.PAS:plusgold:1",
-      "partial": 4
+      "verified": 4
     },
     {
       "routine": "LOREBATT.PAS:randomenemy:1",
@@ -102,7 +103,7 @@
     },
     {
       "routine": "LOREBATT.PAS:weaponattack:1",
-      "partial": 18
+      "verified": 18
     },
     {
       "routine": "LORECRET.PAS:createcharacter:1",

@@ -3041,7 +3041,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent native prison battle reward scope: test/battle_rewards_dos_test.dart and test/fixtures/dos_battle_rewards.json compare all six records, signed longint EXP/gold assignments, conscious actor vs unconscious shared rewards, original E_number template gold, and real mobile battle/continuation/save including ReadKey focus. Original EXE and FOEDATA remain unchanged. Other operand widths and whole-program RNG/new-game-to-ending parity remain unverified. Milestone114 adds independent live, unchanged DOSBox RAM evidence from the cold-created party: 29 actual field moves to Earth Worm, automatic victory including six player records, enemy records and the exact RandSeed, then 36 moves to Troll/Serpent/Goblin and a failed pre-battle escape followed by the enemy phase. test/first_field_battle_dos_test.dart and test/first_field_battle_dos_ui_test.dart replay the same seeds continuously through the real mobile screen. tool/capture_dos_battle_memory.py checks preserved raw bytes, decoded records, original EXE hash and the movement/encounter draw stream. No native RAM/RNG writes, no synthetic native inputs. Scope is these observed branches; second battle completion, MENACE entry and the full campaign remain pending."
     },
@@ -3057,7 +3057,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent native prison battle reward scope: test/battle_rewards_dos_test.dart and test/fixtures/dos_battle_rewards.json compare all six records, signed longint EXP/gold assignments, conscious actor vs unconscious shared rewards, original E_number template gold, and real mobile battle/continuation/save including ReadKey focus. Original EXE and FOEDATA remain unchanged. Other operand widths and whole-program RNG/new-game-to-ending parity remain unverified."
     },
@@ -3073,7 +3073,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent native prison battle reward scope: test/battle_rewards_dos_test.dart and test/fixtures/dos_battle_rewards.json compare all six records, signed longint EXP/gold assignments, conscious actor vs unconscious shared rewards, original E_number template gold, and real mobile battle/continuation/save including ReadKey focus. Original EXE and FOEDATA remain unchanged. Other operand widths and whole-program RNG/new-game-to-ending parity remain unverified. Milestone114 adds independent live, unchanged DOSBox RAM evidence from the cold-created party: 29 actual field moves to Earth Worm, automatic victory including six player records, enemy records and the exact RandSeed, then 36 moves to Troll/Serpent/Goblin and a failed pre-battle escape followed by the enemy phase. test/first_field_battle_dos_test.dart and test/first_field_battle_dos_ui_test.dart replay the same seeds continuously through the real mobile screen. tool/capture_dos_battle_memory.py checks preserved raw bytes, decoded records, original EXE hash and the movement/encounter draw stream. No native RAM/RNG writes, no synthetic native inputs. Scope is these observed branches; second battle completion, MENACE entry and the full campaign remain pending."
     },
@@ -3089,7 +3089,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent native prison battle reward scope: test/battle_rewards_dos_test.dart and test/fixtures/dos_battle_rewards.json compare all six records, signed longint EXP/gold assignments, conscious actor vs unconscious shared rewards, original E_number template gold, and real mobile battle/continuation/save including ReadKey focus. Original EXE and FOEDATA remain unchanged. Other operand widths and whole-program RNG/new-game-to-ending parity remain unverified."
     },
@@ -3105,7 +3105,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent native prison battle reward scope: test/battle_rewards_dos_test.dart and test/fixtures/dos_battle_rewards.json compare all six records, signed longint EXP/gold assignments, conscious actor vs unconscious shared rewards, original E_number template gold, and real mobile battle/continuation/save including ReadKey focus. Original EXE and FOEDATA remain unchanged. Other operand widths and whole-program RNG/new-game-to-ending parity remain unverified."
     },
@@ -3121,7 +3121,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent native prison battle reward scope: test/battle_rewards_dos_test.dart and test/fixtures/dos_battle_rewards.json compare all six records, signed longint EXP/gold assignments, conscious actor vs unconscious shared rewards, original E_number template gold, and real mobile battle/continuation/save including ReadKey focus. Original EXE and FOEDATA remain unchanged. Other operand widths and whole-program RNG/new-game-to-ending parity remain unverified."
     },
@@ -3137,7 +3137,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent native prison battle reward scope: test/battle_rewards_dos_test.dart and test/fixtures/dos_battle_rewards.json compare all six records, signed longint EXP/gold assignments, conscious actor vs unconscious shared rewards, original E_number template gold, and real mobile battle/continuation/save including ReadKey focus. Original EXE and FOEDATA remain unchanged. Other operand widths and whole-program RNG/new-game-to-ending parity remain unverified. Milestone114 adds independent live, unchanged DOSBox RAM evidence from the cold-created party: 29 actual field moves to Earth Worm, automatic victory including six player records, enemy records and the exact RandSeed, then 36 moves to Troll/Serpent/Goblin and a failed pre-battle escape followed by the enemy phase. test/first_field_battle_dos_test.dart and test/first_field_battle_dos_ui_test.dart replay the same seeds continuously through the real mobile screen. tool/capture_dos_battle_memory.py checks preserved raw bytes, decoded records, original EXE hash and the movement/encounter draw stream. No native RAM/RNG writes, no synthetic native inputs. Scope is these observed branches; second battle completion, MENACE entry and the full campaign remain pending. Milestone115 continues the live native three-enemy battle through three party phases, enemy phases and victory (gold2084). test/second_field_battle_dos_test.dart compares six player records, every active enemy field and RandSeed at each phase. test/first_field_battle_dos_ui_test.dart replays the two fights continuously in the real mobile screen. Round2 commands are inferred replay inputs, not an independent native command-memory read; exact selection-path parity remains unverified. Source SelectEnemy accepts dead slots and starts at1 each call: BattleViewportView now permits dead-target taps and resets at each person/round, leaving forward-only retargeting to AttackOne/CastOne. test/battle_dead_target_selection_test.dart prevents an invalid attack/RNG draw at an earlier live enemy when the user selects a dead last slot. Original EXE/RAM/RNG unchanged; full campaign and other command branches remain partial."
     },
@@ -3153,7 +3153,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent native prison battle reward scope: test/battle_rewards_dos_test.dart and test/fixtures/dos_battle_rewards.json compare all six records, signed longint EXP/gold assignments, conscious actor vs unconscious shared rewards, original E_number template gold, and real mobile battle/continuation/save including ReadKey focus. Original EXE and FOEDATA remain unchanged. Other operand widths and whole-program RNG/new-game-to-ending parity remain unverified."
     },
@@ -3249,7 +3249,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -3265,7 +3265,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -3281,7 +3281,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -3585,7 +3585,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3601,7 +3601,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3617,7 +3617,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3633,7 +3633,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3649,7 +3649,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3665,7 +3665,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3681,7 +3681,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3697,7 +3697,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3713,7 +3713,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3729,7 +3729,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3745,7 +3745,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3761,7 +3761,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3777,7 +3777,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3793,7 +3793,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3809,7 +3809,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3825,7 +3825,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3841,7 +3841,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3857,7 +3857,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -3873,7 +3873,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Independent unmodified EXE defence fragments (dos_defence_arithmetic.json) execute both low-word MULs and original TP unsigned real conversion, /10 and Round in AttackOne/CastOne; native defence 255*26*10 -> 76 and 128*128*4 -> 0, plus .5 rounding. defence_arithmetic_dos_test.dart exercises damage/block, SP, random order and untouched states across 80 native cases. Magic cost/base overflow, enemy attack defence and whole-game replay remain separate gates; partial retained. CastOne cost uses native signed low-word MUL/MUL/CWD before real /2 and Round, SP uses word SUB/store (dos_spell_arithmetic.json). Normal spells1..6 already matched; out-of-range IDs are synthetic instruction-boundary evidence only. spell_arithmetic_dos_test.dart checks native cost and valid-command insufficient-SP/miss continuation; no full-game promotion. Native CastOne damage MUL/MUL/SHL/CWD plus TP conversion/Round retains signed low-word; castDamage matches eight independently executed inputs. Valid spells1..6 use complete CastOne damage/SP/random-order tests; other IDs remain synthetic arithmetic-only evidence. Normal command results unchanged."
     },
@@ -5457,7 +5457,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5473,7 +5473,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5489,7 +5489,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5505,7 +5505,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5521,7 +5521,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5537,7 +5537,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5553,7 +5553,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5569,7 +5569,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5585,7 +5585,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5601,7 +5601,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5617,7 +5617,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5633,7 +5633,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5649,7 +5649,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5665,7 +5665,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5681,7 +5681,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5697,7 +5697,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5713,7 +5713,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5729,7 +5729,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. WeaponAttack native MUL/MUL/XOR DX,DX/unsigned DIV10 verified independently for both enemy damage and player defence; conditional signed integer ADD/SUB stores verified from unmodified EXE across108 cases (dos_weapon_arithmetic.json). weapon_arithmetic_dos_test.dart checks complete procedure with source-directed RNG/selection, blocked/positive damage, fallback inactive targets, all player fields and random order. Whole original RNG/save/battle and enemy magic remain separate gates; partial retained."
     },
@@ -5745,7 +5745,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5761,7 +5761,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5777,7 +5777,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5793,7 +5793,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5809,7 +5809,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5825,7 +5825,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5841,7 +5841,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5857,7 +5857,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5873,7 +5873,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5889,7 +5889,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5905,7 +5905,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Native enemy magic variance/unsigned low-word defence DIV10 and conditional signed player word stores verified in42 original EXE fragment cases; enemy_magic_arithmetic_dos_test.dart compares all player fields/random order on complete CastAttackSub. power32767 is a synthetic parameter boundary, not a normal generated spell; RNG seed/full battle remain separate gates."
     },
@@ -5969,7 +5969,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. All original EnemyCure state branches plus signed low-word HP ADD and signed endurance*level CMP/JGE verified from unmodified EXE in10 cases (dos_enemy_magic_arithmetic.json); tests preserve dead-first/unconscious priority, untouched fields and RNG-free behavior. High cap255*255 yields -511 in original; no gameplay modernization applied."
     },
@@ -5985,7 +5985,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. All original EnemyCure state branches plus signed low-word HP ADD and signed endurance*level CMP/JGE verified from unmodified EXE in10 cases (dos_enemy_magic_arithmetic.json); tests preserve dead-first/unconscious priority, untouched fields and RNG-free behavior. High cap255*255 yields -511 in original; no gameplay modernization applied."
     },
@@ -6001,7 +6001,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. All original EnemyCure state branches plus signed low-word HP ADD and signed endurance*level CMP/JGE verified from unmodified EXE in10 cases (dos_enemy_magic_arithmetic.json); tests preserve dead-first/unconscious priority, untouched fields and RNG-free behavior. High cap255*255 yields -511 in original; no gameplay modernization applied."
     },
@@ -6017,7 +6017,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. All original EnemyCure state branches plus signed low-word HP ADD and signed endurance*level CMP/JGE verified from unmodified EXE in10 cases (dos_enemy_magic_arithmetic.json); tests preserve dead-first/unconscious priority, untouched fields and RNG-free behavior. High cap255*255 yields -511 in original; no gameplay modernization applied."
     },
@@ -6033,7 +6033,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. All original EnemyCure state branches plus signed low-word HP ADD and signed endurance*level CMP/JGE verified from unmodified EXE in10 cases (dos_enemy_magic_arithmetic.json); tests preserve dead-first/unconscious priority, untouched fields and RNG-free behavior. High cap255*255 yields -511 in original; no gameplay modernization applied."
     },
@@ -8017,7 +8017,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
     },
@@ -8033,7 +8033,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
     },
@@ -8049,7 +8049,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
     },
@@ -8065,7 +8065,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
     },
@@ -8081,7 +8081,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
     },
@@ -8097,7 +8097,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
     },
@@ -8113,7 +8113,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay."
     },
@@ -8145,7 +8145,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -8161,7 +8161,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -8177,7 +8177,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -8193,7 +8193,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -8209,7 +8209,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -8225,7 +8225,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -8241,7 +8241,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -8257,7 +8257,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -8273,7 +8273,7 @@
       "behavioral_evidence": [
         "test/lore_battle_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_battle.dart",
       "reviewed_scope": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending."
     },
@@ -56838,8 +56838,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 666,
-    "partially_verified_behavior_sites": 666,
+    "unverified_behavior_sites": 586,
+    "partially_verified_behavior_sites": 586,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
