@@ -3022,3 +3022,25 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      unclassified 0을 유지한다. 전체 검사 후 main에 푸시하며 배포는 보류한다.
      전체 Flutter 1660건(3 skip), Python 126건, analyze 및 웹 release
      build가 통과했다. 원장·완료 gap·source memory 최신 상태도 확인했다.
+
+196. **Load 지역 자원·날씨 상태의 EXE 대조 및 실제 owner 연결**
+     원본 EXE의 지역 분기·폰트/BGM literal 선택을 모든 map byte 256개로
+     실행한다. short-string 복사 helper만 공급하고 원본 분기와 상수를
+     그대로 사용한다. 지원되는 지도 27개의 정방향·역방향 Load와 저장
+     지도 snapshot 복원에서 실제 렌더러의 폰트 선택, 원본 FNT 전체 byte,
+     AudioManager의 BGM 선택을 대조한다. 지도 25/26은 같은 MAP 자원을
+     사용해도 각각 den/town의 다른 폰트·BGM을 선택한다. 원본의 지원되지
+     않는 map byte 결과를 앱에서 유효 지도처럼 허용한 것은 아니다.
+     날씨 CASE는 실제 setscrolltype까지 실행해 256 byte × 이전 패턴
+     6개, 총 1536가지의 mode/form/color/putstyle/etc12 store를 비교한다.
+     일반 날씨의 CopyPut 전환은 이전 form/color를 지우지 않는다.
+     화면 cold Load·메뉴 resume·모든 지도 Load callback은 같은 상태를
+     공유한다. desktop/mobile의 Save/resave와 정상→잘못된 값 전환까지
+     재생한다. 이식된 숫자 상태와 현대 렌더러 픽셀 합성은 별도이며,
+     DOS 파일 오류·BGM 파형/시점·short-string helper 전체 동등성·BGI
+     날씨 합성은 완료로 세지 않는다. Load의 지역 자원·날씨 dispatch
+     2개만 추가 해소해 verified 1725 / partial 123 / unclassified 0.
+     전체 검사 후 main에 푸시하며 배포는 여전히 보류한다.
+     전체 Flutter 1662건(3 skip), Python 128건, analyze 및 웹 release
+     build가 통과했다. 원본 EXE 추출 재실행은 저장 fixture와 완전히
+     일치하며 원장·완료 gap·source memory의 최신 상태도 확인했다.

@@ -22,6 +22,7 @@ import 'lore_map_manager.dart';
 import 'lore_world_manager.dart';
 import 'lore_dialogue_manager.dart';
 import 'bgi_font_decoder.dart';
+import '../logic/lore_load_weather.dart';
 import 'sprite_sheet.dart';
 
 /// 1993년 원작의 실제 100x100 바이너리 맵(TOWN1.MAP, GROUND1.MAP 등)과
@@ -132,6 +133,7 @@ class LoreGame extends FlameGame {
 
   /// The party (the source's `player[1..6]`), for the screen and the tests.
   final List<PartyMember> Function()? partyProvider;
+  final LoreScrollState sourceScroll;
 
   /// JSON 스크립트 실행에 필요한 상황(파티/플래그/독심술) 제공자.
   final ScriptContext Function()? scriptContextProvider;
@@ -181,10 +183,12 @@ class LoreGame extends FlameGame {
     this.onWaterWalkStepsChanged,
     this.initialMapTiles,
     Random? random,
+    LoreScrollState? sourceScroll,
   }) : currentMapId = initialMapId,
        playerX = initialPlayerX,
        playerY = initialPlayerY,
-       _random = random ?? LoreRandom.fromClock();
+       _random = random ?? LoreRandom.fromClock(),
+       sourceScroll = sourceScroll ?? LoreScrollState();
 
   @override
   Color backgroundColor() => RetroTheme.viewportBg;
@@ -523,6 +527,17 @@ class LoreGame extends FlameGame {
   /// LORESUB `Scroll`: `HPrintXY(94,96,'어둠')`.
   static const String darknessText = '어둠';
 
+  /// Shared by the renderer and Load resource verification, not a test-only path.
+  String get selectedTileFontName =>
+      LoreWorldManager.mapRegistry[currentMapId]?.fontName ?? 'TOWN';
+
+  BgiFontDecoder? get selectedTileFont => switch (selectedTileFontName) {
+    'GROUND' => groundFont,
+    'DEN' => denFont ?? townFont,
+    'KEEP' => keepFont ?? groundFont,
+    _ => townFont,
+  };
+
   void _renderMap(Canvas canvas) {
     final halfX = viewTilesX ~/ 2;
     final halfY = viewTilesY ~/ 2;
@@ -532,25 +547,8 @@ class LoreGame extends FlameGame {
 
     // 현재 맵 카테고리에 맞는 타일 폰트 선택
     final mapCat = LoreWorldManager.mapRegistry[currentMapId]?.category;
-    final tileFontName =
-        LoreWorldManager.mapRegistry[currentMapId]?.fontName ?? 'TOWN';
-    BgiFontDecoder? activeTileFont;
-    switch (mapCat) {
-      case MapCategory.town:
-        activeTileFont = townFont;
-        break;
-      case MapCategory.ground:
-        activeTileFont = groundFont;
-        break;
-      case MapCategory.den:
-        activeTileFont = denFont ?? townFont;
-        break;
-      case MapCategory.keep:
-        activeTileFont = keepFont ?? groundFont;
-        break;
-      default:
-        activeTileFont = townFont;
-    }
+    final tileFontName = selectedTileFontName;
+    final activeTileFont = selectedTileFont;
 
     // LORESUB `Scroll`/`AuxScroll`: in a den without the magic torch
     // (`party.etc[1] = 0`) the view is a black box with '어둠' and neither the

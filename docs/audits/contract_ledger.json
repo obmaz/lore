@@ -30988,11 +30988,16 @@
       "outcomes": 5,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/load_state_dos_test.dart",
+        "lib/logic/lore_load_weather.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/save_party_dos_test.dart",
+        "test/fixtures/dos_load_state.json",
+        "tool/export_dos_load_state.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Original EXE Load region/resource branches execute for all 256 map bytes; canonical 27 successful asset loads, reverse transitions and restored tile snapshots compare selected renderer font bytes and AudioManager BGM mapping. Native weather CASE plus original setscrolltype stores execute for 256 raw bytes x six previous pattern profiles; actual desktop/mobile cold/resume/map callback uses shared source scroll state. Normal resets mode/CopyPut/etc12 but retains prior form/color. Scope is Load resource/scroll-state dispatch only: no invalid map app behavior, DOS file failures, BGI pixel/pattern compositing, short-string runtime or audio waveform/timing equivalence."
     },
     {
       "id": "LORESUB.PAS:load:1:if:8",
@@ -31088,11 +31093,16 @@
       "outcomes": 6,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/load_state_dos_test.dart",
+        "lib/logic/lore_load_weather.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/save_party_dos_test.dart",
+        "test/fixtures/dos_load_state.json",
+        "tool/export_dos_load_state.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Original EXE Load region/resource branches execute for all 256 map bytes; canonical 27 successful asset loads, reverse transitions and restored tile snapshots compare selected renderer font bytes and AudioManager BGM mapping. Native weather CASE plus original setscrolltype stores execute for 256 raw bytes x six previous pattern profiles; actual desktop/mobile cold/resume/map callback uses shared source scroll state. Normal resets mode/CopyPut/etc12 but retains prior form/color. Scope is Load resource/scroll-state dispatch only: no invalid map app behavior, DOS file failures, BGI pixel/pattern compositing, short-string runtime or audio waveform/timing equivalence."
     },
     {
       "id": "LORESUB.PAS:save:1:for:1",
@@ -53172,6 +53182,40 @@
       ]
     },
     {
+      "id": "LORESUB.PAS:load:1:case:3",
+      "line": 1729,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/load_state_dos_test.dart",
+      "note": "Original EXE Load region/resource branches execute for all 256 map bytes; canonical 27 successful asset loads, reverse transitions and restored tile snapshots compare selected renderer font bytes and AudioManager BGM mapping. Native weather CASE plus original setscrolltype stores execute for 256 raw bytes x six previous pattern profiles; actual desktop/mobile cold/resume/map callback uses shared source scroll state. Normal resets mode/CopyPut/etc12 but retains prior form/color. Scope is Load resource/scroll-state dispatch only: no invalid map app behavior, DOS file failures, BGI pixel/pattern compositing, short-string runtime or audio waveform/timing equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_load_weather.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/save_party_dos_test.dart",
+        "test/fixtures/dos_load_state.json",
+        "tool/export_dos_load_state.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:4",
+      "line": 1762,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/load_state_dos_test.dart",
+      "note": "Original EXE Load region/resource branches execute for all 256 map bytes; canonical 27 successful asset loads, reverse transitions and restored tile snapshots compare selected renderer font bytes and AudioManager BGM mapping. Native weather CASE plus original setscrolltype stores execute for 256 raw bytes x six previous pattern profiles; actual desktop/mobile cold/resume/map callback uses shared source scroll state. Normal resets mode/CopyPut/etc12 but retains prior form/color. Scope is Load resource/scroll-state dispatch only: no invalid map app behavior, DOS file failures, BGI pixel/pattern compositing, short-string runtime or audio waveform/timing equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_load_weather.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/save_party_dos_test.dart",
+        "test/fixtures/dos_load_state.json",
+        "tool/export_dos_load_state.py"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -54415,31 +54459,9 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:load:1:case:3",
-      "line": 1729,
-      "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:load:1:if:8",
       "line": 1752,
       "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:load:1:case:4",
-      "line": 1762,
-      "kind": "case",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -57516,6 +57538,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/load_state_dos_test.dart",
+      "kind": "test",
+      "sha256": "1d035515ff840328eec8c464a233db74b23a45e60db8de196235a95c7fcaa7c1",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/load_weather_test.dart",
       "kind": "test",
       "sha256": "4ac33b464ad90f5b3f1af6dea51cf2d538c4d7fced3b53cac643e8b6e7083130",
@@ -58216,7 +58247,7 @@
     {
       "path": "test/save_party_dos_test.dart",
       "kind": "test",
-      "sha256": "53f27d18ed770fa0848e623dad36f7c4cef4686e0815e79ec3fed7a4e20f4836",
+      "sha256": "a6e78ea4c05cebfa74bbe375c32f7d1b01e3d3ba9ae96db419de0d85eacfdfd7",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -59299,6 +59330,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_load_state.json",
+      "kind": "fixture",
+      "sha256": "c2251d9de778769652301038fa03c5da401abf9878ed5f960449b4656e756ee6",
+      "test_users": [
+        "test/load_state_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_lockup_continuation.json",
       "kind": "fixture",
       "sha256": "040c096eefac93f6beb6ce1a90ad3c49af6923ca57120c522d0b0bccc177f60a",
@@ -59837,7 +59877,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "4a84994b18b264746b0ba6a8a22322456290579bd465c2e7c43a53cd4cff9e57"
+      "sha256": "e2453848964f9b7e95811842b4be378cdd74baf2e276834eeb9cf56f39f252bd"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -59937,7 +59977,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "6ab30fa0822a9c97323f9d5c5a9e77c08b272900cd72979fb6f618e82cee9649"
+      "sha256": "5bdee836f85fd852f29a23cba312a100f9e6bdb169141bfe687a40d67358b62d"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -60021,9 +60061,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "751b928e9c00e08f8515d0f7402bf2cfc500386c0fea8d494818371acbd50055",
+      "sha256": "33cb757c9be644df0115035740b9bb249d1b5f0e55a07242fc2134aa8ebeda01",
       "top_level_counts": {
-        "contracts": 1667
+        "contracts": 1669
       }
     }
   ],
@@ -60032,8 +60072,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 125,
-    "partially_verified_behavior_sites": 125,
+    "unverified_behavior_sites": 123,
+    "partially_verified_behavior_sites": 123,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

@@ -103,6 +103,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
   bool _lastSceneKeyWasEscape = false;
   late List<PartyMember> _party;
   late LoreGame _game;
+  final LoreScrollState _sourceScroll = LoreScrollState();
   final List<String> _logs = [];
   final List<int> _logColors = [];
   int _logRevision = 0;
@@ -247,7 +248,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _encounterFrequency = 2;
     }
     if (_maxEnemies < 3 || _maxEnemies > 7) _maxEnemies = 5;
-    LoreLoadWeather.normalize(_sourceEtc);
+    _sourceScroll.restore(_sourceEtc);
   }
 
   void _initGame() {
@@ -259,6 +260,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final startY = widget.initialSaveData?.playerY ?? 31;
 
     _game = LoreGame(
+      sourceScroll: _sourceScroll,
       initialMapId: initialMapId,
       initialPlayerX: startX,
       initialPlayerY: startY,

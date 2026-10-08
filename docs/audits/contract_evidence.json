@@ -18771,6 +18771,40 @@
         "test/fixtures/dos_new_game.json",
         "lib/screens/main_game_screen.dart"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:3",
+      "line": 1729,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/load_state_dos_test.dart",
+      "note": "Original EXE Load region/resource branches execute for all 256 map bytes; canonical 27 successful asset loads, reverse transitions and restored tile snapshots compare selected renderer font bytes and AudioManager BGM mapping. Native weather CASE plus original setscrolltype stores execute for 256 raw bytes x six previous pattern profiles; actual desktop/mobile cold/resume/map callback uses shared source scroll state. Normal resets mode/CopyPut/etc12 but retains prior form/color. Scope is Load resource/scroll-state dispatch only: no invalid map app behavior, DOS file failures, BGI pixel/pattern compositing, short-string runtime or audio waveform/timing equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_load_weather.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/save_party_dos_test.dart",
+        "test/fixtures/dos_load_state.json",
+        "tool/export_dos_load_state.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:case:4",
+      "line": 1762,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/load_state_dos_test.dart",
+      "note": "Original EXE Load region/resource branches execute for all 256 map bytes; canonical 27 successful asset loads, reverse transitions and restored tile snapshots compare selected renderer font bytes and AudioManager BGM mapping. Native weather CASE plus original setscrolltype stores execute for 256 raw bytes x six previous pattern profiles; actual desktop/mobile cold/resume/map callback uses shared source scroll state. Normal resets mode/CopyPut/etc12 but retains prior form/color. Scope is Load resource/scroll-state dispatch only: no invalid map app behavior, DOS file failures, BGI pixel/pattern compositing, short-string runtime or audio waveform/timing equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/logic/lore_load_weather.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/save_party_dos_test.dart",
+        "test/fixtures/dos_load_state.json",
+        "tool/export_dos_load_state.py"
+      ]
     }
   ]
 }

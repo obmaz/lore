@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 125,
-    "verified": 1723,
+    "partial": 123,
+    "verified": 1725,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -404,8 +404,8 @@
     },
     {
       "routine": "LORESUB.PAS:load:1",
-      "partial": 10,
-      "verified": 11
+      "partial": 8,
+      "verified": 13
     },
     {
       "routine": "LORESUB.PAS:message:1",
@@ -1296,6 +1296,17 @@
       ],
       "test_candidates": [
         "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_load_state.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:load:1:case:3",
+        "LORESUB.PAS:load:1:case:4"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/load_state_dos_test.dart"
       ]
     },
     {

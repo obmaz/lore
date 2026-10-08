@@ -3,10 +3,12 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flame/game.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
+import 'package:lore/game/lore_game.dart';
 import 'package:lore/logic/lore_menu_text.dart';
 import 'package:lore/logic/lore_save_party.dart';
 import 'package:lore/models/party_member.dart';
@@ -138,6 +140,10 @@ void main() {
           }
 
           await tester.pump(const Duration(milliseconds: 500));
+          final game = tester
+              .widget<GameWidget<LoreGame>>(find.byType(GameWidget<LoreGame>))
+              .game!;
+          expect(game.sourceScroll.mode.index, 0);
           Future<void> saveSlot(int slot) async {
             await tester.sendKeyEvent(LogicalKeyboardKey.keyG);
             await settle();
@@ -181,6 +187,29 @@ void main() {
           await saveSlot(3);
           final restored = (await SaveManager.instance.loadGame(3))!;
           expect(restored.flags['etc12'], 5);
+          expect(game.sourceScroll.mode.index, 5);
+          expect(
+            [
+              game.sourceScroll.form,
+              game.sourceScroll.color,
+              game.sourceScroll.putStyle,
+            ],
+            [6, 1, 2],
+          );
+          // Every map Load uses the same source state, retaining the pattern
+          // when a later invalid/normal selector clears only mode/putStyle.
+          LoreDialogueManager.instance.partyEtc[12] = 255;
+          await tester.runAsync(() => game.loadMapById(1));
+          expect(game.sourceScroll.mode.index, 0);
+          expect(
+            [
+              game.sourceScroll.form,
+              game.sourceScroll.color,
+              game.sourceScroll.putStyle,
+            ],
+            [6, 1, 0],
+          );
+          expect(LoreDialogueManager.instance.partyEtc.read(12), 0);
           expect(
             [for (final p in restored.party) p.toJson()],
             [for (final p in loaded) p.toJson()],
