@@ -2539,6 +2539,13 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      부분 근거는 남아 있으며, 사용자 요청에 따라 배포는 최종 단계까지
      보류한다.
 
+152. 지도 쓰기 계약 1건 검증 (2026-10-08).
+     `LOREENT.PAS:24`의 성채 진입 후 첫 쓰기 `map[49,52] := 47`을
+     `LoreEntProcedures.afterMapLoadTiles`와 `loreent_entry_effects_test.dart`의
+     회귀 대조에 연결했다. 원본 행·좌표·타일 값과 이식 결과가 일치하며,
+     지도 쓰기 미연결 수는 123개에서 122개로 감소했다. 나머지 쓰기는
+     좌표·조건·효과별 검증이 필요하다.
+
 151. 전체 게임 제어 지점의 부분 근거 연결 (2026-10-08).
      LORE·LOREMAIN·LORESPEC·LORETALK·LOREHELP·LORESUB·LORECRET에 남아 있던
      185개 제어 지점을 파일별 원본 소유·이식 코드·정적 계약 테스트 묶음으로

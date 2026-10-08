@@ -22,6 +22,9 @@ REPORT = ROOT / "docs/audits/contract_ledger.md"
 EVIDENCE = ROOT / "docs/audits/contract_evidence.json"
 ROUTINE = re.compile(r"\b(procedure|function)\s+([A-Za-z_][A-Za-z_0-9]*)\b", re.I)
 MAP_WRITE = re.compile(r"map\s*\[([^\]]+)\]\s*:=\s*([^;]+);", re.I)
+# The first castle post-load assignment has a direct source-backed regression
+# assertion in loreent_entry_effects_test.dart.
+MAPPED_MAP_WRITES = {"LOREENT.PAS:24:map-write:16"}
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 
 
@@ -164,14 +167,15 @@ def source_contracts(inv):
         routines_by_file[filename] = routines
         for line_number, line in enumerate(clean.splitlines(), 1):
             for match in MAP_WRITE.finditer(line):
+                write_id = f"{filename}:{line_number}:map-write:{match.start()}"
                 writes.append({
-                    "id": f"{filename}:{line_number}:map-write:{match.start()}",
+                    "id": write_id,
                     "file": filename,
                     "line": line_number,
                     "routine": owner(routines, line_number),
                     "index": match.group(1).strip(),
                     "value": match.group(2).strip(),
-                    "status": "unmapped",
+                    "status": "mapped" if write_id in MAPPED_MAP_WRITES else "unmapped",
                 })
     ordinal = Counter()
     sites = []
@@ -581,7 +585,7 @@ def report(data):
         f"| 제어 지점 | {len(sites)} | 게임 분기별 근거 연결 현황은 아래에 분리 |",
         f"| 그중 if/case/while/repeat/for | {sum(counts[k] for k in ('if','case','while','repeat','for'))} | 구문 인벤토리 |",
         f"| 그중 goto/exit | {counts['goto'] + counts['exit']} | 이동 대상·호출 효과 검토 대기 |",
-        f"| 지도 쓰기 문장 | {len(data['map_writes'])} | 좌표·조건·결과 검토 대기 |",
+        f"| 지도 쓰기 문장 | {len(data['map_writes'])} | 연결 {sum(w['status'] != 'unmapped' for w in data['map_writes'])}, 미연결 {sum(w['status'] == 'unmapped' for w in data['map_writes'])} |",
         f"| 원본 런타임 파일 | {len(assets)} | 바이트 복사 {exact}, 오디오 대응 파일 {converted}, 미매핑 {len(unmapped)} |",
         f"| 등록된 지도 ID / 고유 MAP 파일 | {len(data['map_registry'])} / {len({m['file'] for m in data['map_registry']})} | 원본 파일 존재 확인 |",
         f"| 이식 규칙·데이터 출처 | {len(data['port_rule_sources'])} | JSON/기존 처리 경로 등록 |",

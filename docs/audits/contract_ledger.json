@@ -52574,7 +52574,7 @@
       "routine": "LOREENT.PAS:entermode:1",
       "index": "49,52",
       "value": "47",
-      "status": "unmapped"
+      "status": "mapped"
     },
     {
       "id": "LOREENT.PAS:24:map-write:32",
@@ -55062,7 +55062,7 @@
     {
       "path": "test/loreent_entry_effects_test.dart",
       "kind": "test",
-      "sha256": "da91dc113993f501ffaba8b0b2538f1d23910d157b1f03793790604148b99d59",
+      "sha256": "9aa92ef23fc35bfdf85f5ec84ff4d052c866f3fa06d61308f641708f99d0b4a8",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS"

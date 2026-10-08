@@ -5,7 +5,7 @@
     "unclassified": 0,
     "partial": 1848,
     "verified": 0,
-    "unmapped_map_writes": 123
+    "unmapped_map_writes": 122
   },
   "routines": [
     {
@@ -503,15 +503,6 @@
   ],
   "unclassified_sites": [],
   "unmapped_map_writes": [
-    {
-      "id": "LOREENT.PAS:24:map-write:16",
-      "file": "LOREENT.PAS",
-      "line": 24,
-      "routine": "LOREENT.PAS:entermode:1",
-      "index": "49,52",
-      "value": "47",
-      "status": "unmapped"
-    },
     {
       "id": "LOREENT.PAS:24:map-write:32",
       "file": "LOREENT.PAS",
