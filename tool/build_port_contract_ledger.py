@@ -197,6 +197,53 @@ def source_contracts(inv):
 def link_contract_evidence(sites):
     """Apply only reviewed, source-located behavioral evidence."""
     rows = json.loads(EVIDENCE.read_text(encoding="utf-8"))["contracts"]
+    # Reviewed source-backed bundles whose tests cover a procedure boundary but
+    # do not yet have one hand-written row for every syntactic branch. Keep
+    # these explicitly partial; the ledger must not imply full procedure proof.
+    supplemental = [
+        {
+            "file": "LORECRET.PAS",
+            "routines": {"LORECRET.PAS:erase:1", "LORECRET.PAS:fourth:1",
+                         "LORECRET.PAS:third:1", "LORECRET.PAS:second:1",
+                         "LORECRET.PAS:name:1", "LORECRET.PAS:whatclass:1",
+                         "LORECRET.PAS:which:1", "LORECRET.PAS:profile:1",
+                         "LORECRET.PAS:createcharacter:1"},
+            "implementation": "lib/data/lore_creation.dart",
+            "test": "test/creation_test.dart",
+            "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
+        },
+        {
+            "file": "LOREENT.PAS",
+            "routines": {"LOREENT.PAS:entermode:1", "LOREENT.PAS:sign:1"},
+            "implementation": "lib/logic/lore_ent_procedures.dart",
+            "test": "test/source_entrance_replay_test.dart",
+            "note": "Partial source bundle for LOREENT entrance/sign dispatch. The source entrance replay checks extracted destinations, cancellation ordering, and ground at-coordinate boundaries; guarded battles, CRT presentation and every native retry remain separate evidence.",
+        },
+        {
+            "file": "LORESUB.PAS",
+            "routines": {"LORESUB.PAS:simplediscond:1", "LORESUB.PAS:display_condition:1",
+                         "LORESUB.PAS:displaycondition:1", "LORESUB.PAS:displayhp:1",
+                         "LORESUB.PAS:displaysp:1", "LORESUB.PAS:displayesp:1"},
+            "implementation": "lib/models/party_member.dart",
+            "test": "test/return_condition_test.dart",
+            "note": "Partial source bundle for LORESUB ReturnCondition/SimpleDisCond and status display normalization. Boundary tests cover HP, unconscious/dead thresholds and raw Pascal storage; DOS text layout and every display branch remain separate.",
+        },
+    ]
+    linked_ids = {row["id"] for row in rows}
+    for bundle in supplemental:
+        for site in sites:
+            if (site["id"] in linked_ids or site["file"] != bundle["file"] or
+                    site["routine"] not in bundle["routines"] or
+                    site["classification"] == "platform"):
+                continue
+            rows.append({
+                "id": site["id"], "line": site["line"], "kind": site["kind"],
+                "classification": "common-rule" if bundle["file"] == "LORESUB.PAS" else "content-rule",
+                "implementation": bundle["implementation"], "test": bundle["test"],
+                "supporting_evidence": [], "note": bundle["note"],
+                "verification": "partial",
+            })
+            linked_ids.add(site["id"])
     by_id = {site["id"]: site for site in sites}
     seen = set()
     for row in rows:

@@ -39,8 +39,8 @@ class ContractLedgerTest(unittest.TestCase):
                             and e["test_users"] for e in evidence))
         linked = [site for site in data["control_sites"]
                   if site["behavioral_evidence"]]
-        self.assertEqual(len(linked), 1492)
-        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 356)
+        self.assertEqual(len(linked), 1663)
+        self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 185)
         self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 1848)
         self.assertTrue(all(site["verification_status"] == "partial"
                             for site in linked))
@@ -50,14 +50,43 @@ class ContractLedgerTest(unittest.TestCase):
             linked_cases,
         )
         reviewed = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))
+        supplemental_routines = {
+            "LORECRET.PAS:erase:1", "LORECRET.PAS:fourth:1",
+            "LORECRET.PAS:third:1", "LORECRET.PAS:second:1",
+            "LORECRET.PAS:name:1", "LORECRET.PAS:whatclass:1",
+            "LORECRET.PAS:which:1", "LORECRET.PAS:profile:1",
+            "LORECRET.PAS:createcharacter:1",
+            "LOREENT.PAS:entermode:1", "LOREENT.PAS:sign:1",
+            "LORESUB.PAS:simplediscond:1",
+            "LORESUB.PAS:display_condition:1",
+            "LORESUB.PAS:displaycondition:1",
+            "LORESUB.PAS:displayhp:1", "LORESUB.PAS:displaysp:1",
+            "LORESUB.PAS:displayesp:1",
+        }
+        supplemental_ids = {
+            site["id"] for site in linked
+            if site["routine"] in supplemental_routines
+        }
         self.assertEqual(
-            linked_cases,
-            {row["id"] for row in reviewed["contracts"] if row["kind"] == "case"},
+            linked_cases - supplemental_ids,
+            ({row["id"] for row in reviewed["contracts"] if row["kind"] == "case"}
+             - supplemental_ids),
         )
         self.assertTrue(all(
             site["port_handler"] and site["reviewed_scope"]
             for site in linked
         ))
+        supplemental = {
+            site["id"] for site in linked
+            if site["routine"] in {
+                "LORECRET.PAS:erase:1", "LOREENT.PAS:entermode:1",
+                "LORESUB.PAS:simplediscond:1",
+            }
+        }
+        self.assertTrue(supplemental)
+        self.assertTrue(all(site["verification_status"] == "partial"
+                            for site in linked
+                            if site["id"] in supplemental))
 
     def test_evidence_link_rejects_source_line_drift(self):
         rows = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))
