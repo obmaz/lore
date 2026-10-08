@@ -10,6 +10,18 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_remaining_effect_scope_excludes_unobserved_ui(self):
+        sites = ledger.build()['control_sites']
+        for test, expected in [('test/source_talk_remaining_effects_test.dart', 7),
+                               ('test/enemy_colors_dos_test.dart', 4),
+                               ('test/battle_menus_dos_test.dart', 7)]:
+            closed = [s for s in sites if test in s['behavioral_evidence']]
+            self.assertEqual(len(closed), expected)
+            self.assertTrue(all(s['verification_status'] == 'verified' for s in closed))
+        untouched = [s for s in sites if s['routine'] == 'LOREBATT.PAS:displayenemies:1'
+                     and s['line'] == 79]
+        self.assertTrue(all(s['verification_status'] == 'partial' for s in untouched))
+
     def test_cast_special_native_scope_is_exact(self):
         closed = [s for s in ledger.build()['control_sites']
                   if 'test/cast_special_dos_test.dart' in s['behavioral_evidence']]
@@ -84,7 +96,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 284)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 264)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

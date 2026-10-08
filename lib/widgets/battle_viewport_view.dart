@@ -5,6 +5,8 @@ import '../logic/lore_random.dart';
 
 import '../logic/lore_batt_text.dart';
 import '../logic/lore_sub_text.dart';
+import '../logic/lore_enemy_presentation.dart';
+import '../logic/lore_battle_menus.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -466,14 +468,13 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     VoidCallback? onCancel,
     bool includeNone = true,
   }) {
-    final available = includeNone
-        ? spells
-              .where(
-                (s) =>
-                    s.isAvailableForLevel(player.magicLevel, player.espLevel),
-              )
-              .length
-        : spells.length;
+    final how = switch (spells.first.category) {
+      SpellCategory.singleAttack => 2,
+      SpellCategory.allAttack => 3,
+      SpellCategory.specialDebuff => 4,
+      SpellCategory.esp => 6,
+      _ => throw StateError('Not a BattleMode attack menu'),
+    };
     // BattleMode's attack menus have m[1] = '없음'; ESP has five spells
     // without that entry. Select renders all rows, black beyond maxsum.
     unawaited(
@@ -481,7 +482,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         context,
         title: title,
         items: [if (includeNone) '없음', for (final spell in spells) spell.name],
-        maxsum: available + (includeNone ? 1 : 0),
+        maxsum: LoreBattleMenus.maxsum(how, player.magicLevel),
       ).then((k) {
         if (!mounted || _battleEnded) return;
         if (k == 0 || (includeNone && k == 1)) {
@@ -495,17 +496,10 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
   /// `DisplayEnemies`: HP 구간별 색, 의식불명은 8, 죽으면 0(보이지 않음).
   Color _getEnemyHpColor(Monster e) {
-    if (e.isDead) return RetroTheme.viewportBg;
-    if (e.isUnconscious) return RetroTheme.darkGray;
-    final hp = e.hp;
-    if (hp == 0) return RetroTheme.darkGray; // 8
-    if (hp < 0) return RetroTheme.lightGreen; // source case else = 10
-    if (hp <= 19) return RetroTheme.lightRed; // 12
-    if (hp <= 49) return RetroTheme.red; // 4
-    if (hp <= 99) return RetroTheme.brown; // 6
-    if (hp <= 199) return RetroTheme.yellow; // 14
-    if (hp <= 299) return RetroTheme.green; // 2
-    return RetroTheme.lightGreen; // 10
+    final index = LoreEnemyPresentation.color(e);
+    // Source colour 0 erases the name on its black backdrop. Keep the modern
+    // viewport's existing backdrop adapter while retaining that invisibility.
+    return index == 0 ? RetroTheme.viewportBg : RetroTheme.ega(index);
   }
 
   @override

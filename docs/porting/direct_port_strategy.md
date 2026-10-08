@@ -2844,5 +2844,18 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      1개도 각각 독립 증거 범위에 맞게 해소한다. 다른 입력/그리기 조건은
      유지한다. verified 1564 / partial 284. 전체 Flutter 1570개(3 skip),
      추가 Fourth 1개, 분석 통과; 1701개 목표는 진행 중이다.
+
+185. **대화 효과·적 색상·수동 마법 메뉴의 독립 대조**
+     대화 보상은 모든 64 named-slot mask, signed XP 경계, 실제 대기 전후
+     효과 순서 및 7번 슬롯 제외를 확인했다. 원본 map strip/flag byte와
+     문서 거절 Exit를 포함한 7개만 해소하며 animation은 미완료로 유지한다.
+     DisplayEnemies의 65536 signed HP와 상태 우선순위·0..7명 native 출력
+     66016개를 대조하여 4개를 해소한다. 원본 erase 색0은 현대 viewport의
+     기존 배경색으로 표시하여 사망 이름을 숨기는 adapter를 유지한다.
+     실제 UI에서 모든 byte magic level에 대해 native maxsum/원문 전체 메뉴를
+     검증하고 숫자 CASE/label loop 7개를 해소했다. 실행 JSON 조건 대신
+     직접 Dart 메뉴 범위를 사용한다. 두 성별 helper도 모든 6슬롯에서 대조했다.
+     verified 1584 / partial 264. 웹 release build와 analyze 통과;
+     다른 입력·target·phase·BGI 계약은 별도이며 1701개 목표는 진행 중이다.
      전체 Flutter 1563건(3건 skip), 최종 집중 native 5건 및 analyze 통과.
      런타임 변경·배포 없이 검증 자료와 근거 연결을 추가했다.

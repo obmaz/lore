@@ -45,6 +45,18 @@ def build():
             result['labels'][name]['membership'] = values
             result['labels'][name]['then'] = dict(assignments[:2])
             result['labels'][name]['else'] = dict(assignments[2:])
+    result['sex'] = {}
+    for name, kind, variable, field in [
+            ('ReturnSex', 'Function', 'ReturnSex', 'number'),
+            ('ReturnSexData', 'Procedure', 'SexData', 'person')]:
+        body = re.search(r'^' + kind + ' ' + name + r'\b[^\n]*\n\s*begin\b.*?'
+                         r'(?=\nFunction |\nProcedure )', source, re.S | re.M)[0]
+        match = re.search(r'if player\[' + field + r'\]\.sex = male then '
+                          + variable + r" := '([^']*)'\s*else " + variable
+                          + r" := '([^']*)'", body)
+        if match is None:
+            raise ValueError(name + ': expected exact sex predicate')
+        result['sex'][name] = {'male': match[1], 'else': match[2]}
     return result
 
 

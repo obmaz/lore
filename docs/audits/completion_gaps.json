@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 284,
-    "verified": 1564,
+    "partial": 264,
+    "verified": 1584,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -22,8 +22,8 @@
     },
     {
       "routine": "LOREBATT.PAS:battlemode:1",
-      "partial": 37,
-      "verified": 5
+      "partial": 30,
+      "verified": 12
     },
     {
       "routine": "LOREBATT.PAS:castall:1",
@@ -55,7 +55,8 @@
     },
     {
       "routine": "LOREBATT.PAS:displayenemies:1",
-      "partial": 5
+      "partial": 1,
+      "verified": 4
     },
     {
       "routine": "LOREBATT.PAS:encounterenemy:1",
@@ -449,11 +450,11 @@
     },
     {
       "routine": "LORESUB.PAS:returnsex:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:returnsexdata:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:returnweapon:1",
@@ -514,8 +515,8 @@
     },
     {
       "routine": "LORETALK.PAS:talkmode:1",
-      "verified": 132,
-      "partial": 14
+      "verified": 139,
+      "partial": 7
     }
   ],
   "unclassified_sites": [],
@@ -570,6 +571,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/battle_esp_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_menus.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/battle_menus_dos_test.dart"
       ]
     },
     {
@@ -807,6 +816,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/enemy_armor_effects_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_colors.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_colors_dos_test.dart"
       ]
     },
     {
@@ -1318,16 +1335,9 @@
         "LOREBATT.PAS:battlemode:1:if:6",
         "LOREBATT.PAS:battlemode:1:case:1",
         "LOREBATT.PAS:battlemode:1:if:9",
-        "LOREBATT.PAS:battlemode:1:for:4",
-        "LOREBATT.PAS:battlemode:1:case:4",
         "LOREBATT.PAS:battlemode:1:if:10",
-        "LOREBATT.PAS:battlemode:1:for:5",
-        "LOREBATT.PAS:battlemode:1:case:5",
         "LOREBATT.PAS:battlemode:1:if:11",
-        "LOREBATT.PAS:battlemode:1:for:6",
-        "LOREBATT.PAS:battlemode:1:case:6",
         "LOREBATT.PAS:battlemode:1:if:12",
-        "LOREBATT.PAS:battlemode:1:for:7",
         "LOREBATT.PAS:battlemode:1:if:13",
         "LOREBATT.PAS:battlemode:1:if:14",
         "LOREBATT.PAS:battlemode:1:for:8",

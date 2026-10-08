@@ -3,9 +3,35 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/logic/lore_sub_text.dart';
+import 'package:lore/logic/lore_battle.dart';
+import 'package:lore/logic/lore_random.dart';
+import 'package:lore/logic/lore_view_procedures.dart';
+import 'package:lore/models/party_member.dart';
 
 /// LORESUB.PAS literals independently decoded from legacy source, not Dart.
 void main() {
+  test('both ReturnSex and ReturnSexData paths in all six source slots', () {
+    final sex = jsonDecode(
+      File('test/fixtures/source_sub_labels.json').readAsStringSync(),
+    )['sex'];
+    for (var person = 1; person <= 6; person++) {
+      for (final gender in Gender.values) {
+        final party = [for (var i = 0; i < 6; i++) PartyMember.createPreset(1)];
+        party[person - 1].sex = gender;
+        final branch = gender == Gender.male ? 'male' : 'else';
+        final battle = LoreBattle(
+          party: party,
+          enemy: [],
+          random: LoreRandom(1),
+          print: (_, _) {},
+        )..person = person;
+        expect(battle.sexData, sex['ReturnSexData'][branch]);
+        final header = LoreViewProcedures.characterPage1(party[person - 1])[1];
+        expect(header.$1, 11);
+        expect(header.$2.endsWith(sex['ReturnSex'][branch]), isTrue);
+      }
+    }
+  });
   final data =
       jsonDecode(
             File('test/fixtures/source_sub_labels.json').readAsStringSync(),
