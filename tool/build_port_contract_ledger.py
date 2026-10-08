@@ -102,6 +102,9 @@ VERIFIED_CONTRACT_TESTS = {
     # Both map-25 levers preserve all 256 raw byte states, door writes, and
     # save/revisit behavior independently of the retired JSON rules.
     "test/map25_lever_parity_test.dart",
+    # Map-25 left/right passage loops are replayed from source-generated tile
+    # writes, including their bounds and final overwrites.
+    "test/source_route_parity_test.dart",
 }
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 

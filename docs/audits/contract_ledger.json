@@ -25397,7 +25397,7 @@
       "behavioral_evidence": [
         "test/source_route_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map 25 left passage tile writes match source-generated replay without JSON; map-wide battle/exit continuation remains pending."
     },
@@ -25413,7 +25413,7 @@
       "behavioral_evidence": [
         "test/source_route_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Left passage preserves loop bounds and final tile overwrites; renderer timing not compared to DOS."
     },
@@ -25429,7 +25429,7 @@
       "behavioral_evidence": [
         "test/source_route_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map 25 right passage tile writes match source-generated replay without JSON; map-wide continuation remains pending."
     },
@@ -25445,7 +25445,7 @@
       "behavioral_evidence": [
         "test/source_route_parity_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Right passage preserves loop bounds and final tile overwrites; renderer timing not compared to DOS."
     },
@@ -56838,8 +56838,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 690,
-    "partially_verified_behavior_sites": 690,
+    "unverified_behavior_sites": 686,
+    "partially_verified_behavior_sites": 686,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
