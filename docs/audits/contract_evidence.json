@@ -18737,6 +18737,40 @@
         "test/fixtures/dos_creation_class_queue.json",
         "tool/tests/test_export_dos_creation_class_queue.py"
       ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:1",
+      "line": 1664,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_save_party.dart",
+      "test": "test/save_party_dos_test.dart",
+      "note": "Actual original Load FOR/pointer/index instructions read exactly six 55-byte records across 384 named-mask/boundary profiles; typed successful I/O supplied. Scratch7 remains untouched. All represented fields compared without compacting nonzero unnamed records; modern DTO snapshot clones checked. Actual desktop/mobile cold load, menu resume and resave verify six slots. Short legacy Flutter lists retain reserved-slot adapter; DOS truncated-file/errors/LoadFont branch and string padding bytes not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_save_party.py",
+        "test/fixtures/dos_save_party.json",
+        "tool/tests/test_export_dos_save_party.py",
+        "test/fixtures/dos_new_game.json",
+        "lib/screens/main_game_screen.dart"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:save:1:for:1",
+      "line": 1782,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_save_party.dart",
+      "test": "test/save_party_dos_test.dart",
+      "note": "Actual original Save FOR/pointer/index instructions write exactly six 55-byte records across 384 named-mask/boundary profiles; typed successful I/O supplied. Named scratch7 is never written, zero/unnamed slots not compressed. Current screen capture freezes six independent model records instead of serializing arbitrary party length; shared new-game snapshot adapter preserved. Actual desktop/mobile save/resume/resave compare captured native field records. DOS file failures and unused short-string padding bytes not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_save_party.py",
+        "test/fixtures/dos_save_party.json",
+        "tool/tests/test_export_dos_save_party.py",
+        "test/fixtures/dos_new_game.json",
+        "lib/screens/main_game_screen.dart"
+      ]
     }
   ]
 }

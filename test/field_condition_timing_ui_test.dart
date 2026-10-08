@@ -95,10 +95,14 @@ void main() {
       );
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 300));
+      final activeParty = tester
+          .widget<GameWidget<LoreGame>>(game)
+          .game!
+          .partyProvider!();
       // An unrelated member needs ReturnCondition only at the desertion boundary.
-      party[0].hp = -1;
-      party[0].unconscious = 0;
-      party[0].dead = 0;
+      activeParty[0].hp = -1;
+      activeParty[0].unconscious = 0;
+      activeParty[0].dead = 0;
       await tester.sendKeyEvent(LogicalKeyboardKey.arrowUp);
       for (
         var i = 0;
@@ -108,8 +112,8 @@ void main() {
         await tester.pump(const Duration(milliseconds: 300));
       }
       expect(find.textContaining('배신하고'), findsWidgets);
-      expect(party[5].name, 'Mad Joe');
-      expect(party[0].unconscious, 0);
+      expect(activeParty[5].name, 'Mad Joe');
+      expect(activeParty[0].unconscious, 0);
       await tester.sendKeyEvent(LogicalKeyboardKey.enter);
       for (
         var i = 0;
@@ -119,8 +123,9 @@ void main() {
         await tester.pump(const Duration(milliseconds: 300));
       }
       expect(find.textContaining('도망을'), findsWidgets);
-      expect(party[5].name, '');
-      expect(party[0].unconscious, 1);
+      expect(activeParty[5].name, '');
+      expect(activeParty[0].unconscious, 1);
+      expect(party[5].name, 'Mad Joe'); // Input save DTO remains independent.
       expect(find.byType(BattleViewportView), findsNothing);
       await tester.sendKeyEvent(LogicalKeyboardKey.enter);
       await tester.pump();

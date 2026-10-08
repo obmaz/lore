@@ -1,8 +1,10 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/data/lore_script.dart';
 import 'package:lore/game/lore_dialogue_manager.dart';
+import 'package:lore/game/lore_game.dart';
 import 'package:lore/logic/field_magic_logic.dart';
 import 'package:lore/logic/lore_menu_text.dart';
 import 'package:lore/logic/lore_sub_text.dart';
@@ -72,6 +74,10 @@ void main() {
     await tester.tap(find.text(FieldMagicLogic.phenominaSpellNames.first));
     await settle();
     expect(LoreDialogueManager.instance.partyEtc.read(1), 3);
-    expect(mage.sp, sp - 1);
+    final game = tester
+        .widget<GameWidget<LoreGame>>(find.byType(GameWidget<LoreGame>))
+        .game!;
+    expect(game.partyProvider!()[1].sp, sp - 1);
+    expect(mage.sp, sp);
   });
 }

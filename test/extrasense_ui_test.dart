@@ -81,7 +81,8 @@ void main() {
     await tester.sendKeyEvent(LogicalKeyboardKey.enter);
     await settle(tester);
     expect(game.seeThroughSpecial, isFalse);
-    expect(esper.esp, 20);
+    expect(game.partyProvider!().first.esp, 20);
+    expect(esper.esp, 30); // Loaded records do not alias the input save DTO.
   });
 
   testWidgets('천리안 scrolls the view per key and Esc restores it', (
@@ -104,7 +105,8 @@ void main() {
     await settle(tester);
     expect(find.text(LoreMenuText.espClairvoyanceBusy), findsNothing);
     expect([game.viewCenterX, game.viewCenterY], [50, 50]);
-    expect(esper.esp, 80);
+    expect(game.partyProvider!().first.esp, 80);
+    expect(esper.esp, 100);
   });
   testWidgets(
     'closing the clairvoyance route keeps the game route and restores sound',

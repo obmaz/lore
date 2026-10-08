@@ -260,6 +260,11 @@ void main() {
         expect(game.playerX, 40);
         expect(game.partyProvider!().map((m) => m.name), [
           PartyMember.createPreset(3).name,
+          '',
+          '',
+          '',
+          '',
+          '',
         ]);
       },
     );

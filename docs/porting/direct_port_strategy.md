@@ -2985,3 +2985,26 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      전체 검사 후 main에 푸시하고 전체 완료 전 배포는 보류한다.
      전체 Flutter 1653건(3 skip), Python 125건, analyze 및 웹 release
      build가 통과했다. 검증 완료 원장·source memory 색인도 확인했다.
+
+194. **일반 Save/Load의 player 여섯 record와 scratch 경계**
+     원본 EXE Save/Load의 FOR/index/pointer 명령을 384개 mask·경계
+     record 구성으로 실행한다. 성공한 typed I/O만 공급하며 읽기·쓰기가
+     정확히 여섯 슬롯이고 scratch7에는 영향을 주지 않는 것을 대조한다.
+     이름이 빈 record의 나머지 수치를 버리거나 슬롯을 압축하지 않는다.
+     실제 화면 capture와 cold/resume Load가 임의 길이 party list를
+     그대로 저장·복원하던 차이를 수정했다. 여섯 독립 모델 사본만
+     전달하고 기존 짧은 Flutter 저장의 reserved-slot adapter는 유지한다.
+     이는 잘린 DOS 파일, I/O 오류, LoadFont branch나 short-string의
+     사용되지 않는 padding byte를 검증했다는 뜻이 아니다.
+     실제 desktop/mobile 화면에서 새 게임/저장 cold start, Save 메뉴,
+     7개 record를 담은 legacy DTO 재개, 빈 이름의 비영 record 유지,
+     다시 저장한 여섯 record와 지도 snapshot을 확인한다. 원본 필드
+     save는 Display_Condition 이후의 캡처를 사용해 Last 직후의 여섯째
+     zero record와 구분한다. 2개 추가 해소로 verified 1723 / partial
+     125 / unclassified 0. 전체 검사 후 푸시하며 배포는 아직 보류한다.
+     기존 reload 기대값도 여섯 record로 정정한다. 수호자 승급은 원문처럼
+     named record에만 적용하며 reserved record 전체 수치를 유지한다.
+     ESP/SP 비용과 Mad Joe 탈퇴 timing 검사는 입력 저장 DTO의 alias가
+     아니라 실제 game party를 관찰하고 입력 DTO가 그대로인 것도 확인한다.
+     최신 코드 전체 Flutter 1659건(3 skip), Python 126건, analyze와
+     웹 release build 및 원장/source memory 검사가 통과했다. main에 푸시한다.

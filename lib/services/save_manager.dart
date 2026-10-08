@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/party_member.dart';
+import '../logic/lore_save_party.dart';
 
 class SaveData {
   static const int currentSchemaVersion = 2;
@@ -159,10 +160,7 @@ class SaveManager {
     required String mapTitle,
   }) async {
     final now = DateTime.now();
-    final sourceParty = [
-      for (var i = 0; i < 6; i++)
-        i < party.length ? party[i] : PartyMember.blank(),
-    ];
+    final sourceParty = LoreSaveParty.snapshot(party);
     final encoded = [
       for (var slot = 1; slot <= 4; slot++)
         jsonEncode(

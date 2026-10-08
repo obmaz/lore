@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 127,
-    "verified": 1721,
+    "partial": 125,
+    "verified": 1723,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -404,8 +404,8 @@
     },
     {
       "routine": "LORESUB.PAS:load:1",
-      "partial": 11,
-      "verified": 10
+      "partial": 10,
+      "verified": 11
     },
     {
       "routine": "LORESUB.PAS:message:1",
@@ -462,8 +462,7 @@
     },
     {
       "routine": "LORESUB.PAS:save:1",
-      "partial": 1,
-      "verified": 2
+      "verified": 3
     },
     {
       "routine": "LORESUB.PAS:scroll:1",
@@ -1389,7 +1388,9 @@
       "explicit_contracts": [
         "LORECRET.PAS:last:1:for:1",
         "LORECRET.PAS:last:1:for:3",
-        "LORECRET.PAS:last:1:if:1"
+        "LORECRET.PAS:last:1:if:1",
+        "LORESUB.PAS:load:1:for:1",
+        "LORESUB.PAS:save:1:for:1"
       ],
       "note_mentions": [
         "LORESPEC.PAS:specialevent_part1:1:if:21",
@@ -1404,6 +1405,7 @@
         "test/first_field_battle_dos_ui_test.dart",
         "test/new_game_dos_test.dart",
         "test/resumed_field_battle_dos_ui_test.dart",
+        "test/save_party_dos_test.dart",
         "test/source_new_game_persistence_test.dart"
       ]
     },
@@ -1513,6 +1515,17 @@
         "test/menace_entry_dos_ui_test.dart",
         "test/resumed_field_battle_dos_test.dart",
         "test/resumed_field_battle_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_save_party.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:load:1:for:1",
+        "LORESUB.PAS:save:1:for:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/save_party_dos_test.dart"
       ]
     },
     {

@@ -129,9 +129,19 @@ void main() {
       );
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 20));
+      final promoted = game.partyProvider!();
+      expect(promoted.length, 6);
+      final named = promoted.where((m) => m.name.isNotEmpty).toList();
+      expect(named.length, 2);
       expect(
-        game.partyProvider!().map((m) => m.playerClass),
+        named.map((m) => m.playerClass),
         everyElement(PlayerClass.demigod),
+      );
+      // LORESPEC.PAS:2063-2064 only promotes named player[1..6]. Load now
+      // retains the four reserved records instead of shortening the array.
+      expect(
+        promoted.where((m) => m.name.isEmpty).map((m) => m.toJson()),
+        everyElement(PartyMember.blank().toJson()),
       );
       expect(find.byType(BattleViewportView), findsNothing);
       await tester.pump(const Duration(milliseconds: 400));

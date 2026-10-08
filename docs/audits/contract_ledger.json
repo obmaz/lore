@@ -30803,11 +30803,16 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/save_party_dos_test.dart",
+        "tool/export_dos_save_party.py",
+        "test/fixtures/dos_save_party.json",
+        "tool/tests/test_export_dos_save_party.py",
+        "test/fixtures/dos_new_game.json",
+        "lib/screens/main_game_screen.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_save_party.dart",
+      "reviewed_scope": "Actual original Load FOR/pointer/index instructions read exactly six 55-byte records across 384 named-mask/boundary profiles; typed successful I/O supplied. Scratch7 remains untouched. All represented fields compared without compacting nonzero unnamed records; modern DTO snapshot clones checked. Actual desktop/mobile cold load, menu resume and resave verify six slots. Short legacy Flutter lists retain reserved-slot adapter; DOS truncated-file/errors/LoadFont branch and string padding bytes not claimed."
     },
     {
       "id": "LORESUB.PAS:load:1:if:4",
@@ -31099,11 +31104,16 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/save_party_dos_test.dart",
+        "tool/export_dos_save_party.py",
+        "test/fixtures/dos_save_party.json",
+        "tool/tests/test_export_dos_save_party.py",
+        "test/fixtures/dos_new_game.json",
+        "lib/screens/main_game_screen.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_save_party.dart",
+      "reviewed_scope": "Actual original Save FOR/pointer/index instructions write exactly six 55-byte records across 384 named-mask/boundary profiles; typed successful I/O supplied. Named scratch7 is never written, zero/unnamed slots not compressed. Current screen capture freezes six independent model records instead of serializing arbitrary party length; shared new-game snapshot adapter preserved. Actual desktop/mobile save/resume/resave compare captured native field records. DOS file failures and unused short-string padding bytes not claimed."
     },
     {
       "id": "LORESUB.PAS:save:1:for:2",
@@ -53128,6 +53138,40 @@
       ]
     },
     {
+      "id": "LORESUB.PAS:load:1:for:1",
+      "line": 1664,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_save_party.dart",
+      "test": "test/save_party_dos_test.dart",
+      "note": "Actual original Load FOR/pointer/index instructions read exactly six 55-byte records across 384 named-mask/boundary profiles; typed successful I/O supplied. Scratch7 remains untouched. All represented fields compared without compacting nonzero unnamed records; modern DTO snapshot clones checked. Actual desktop/mobile cold load, menu resume and resave verify six slots. Short legacy Flutter lists retain reserved-slot adapter; DOS truncated-file/errors/LoadFont branch and string padding bytes not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_save_party.py",
+        "test/fixtures/dos_save_party.json",
+        "tool/tests/test_export_dos_save_party.py",
+        "test/fixtures/dos_new_game.json",
+        "lib/screens/main_game_screen.dart"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:save:1:for:1",
+      "line": 1782,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_save_party.dart",
+      "test": "test/save_party_dos_test.dart",
+      "note": "Actual original Save FOR/pointer/index instructions write exactly six 55-byte records across 384 named-mask/boundary profiles; typed successful I/O supplied. Named scratch7 is never written, zero/unnamed slots not compressed. Current screen capture freezes six independent model records instead of serializing arbitrary party length; shared new-game snapshot adapter preserved. Actual desktop/mobile save/resume/resave compare captured native field records. DOS file failures and unused short-string padding bytes not claimed.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_save_party.py",
+        "test/fixtures/dos_save_party.json",
+        "tool/tests/test_export_dos_save_party.py",
+        "test/fixtures/dos_new_game.json",
+        "lib/screens/main_game_screen.dart"
+      ]
+    },
+    {
       "id": "LORECRET.PAS:display:1:for:1",
       "line": 61,
       "kind": "for",
@@ -54327,17 +54371,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:load:1:for:1",
-      "line": 1664,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:load:1:if:4",
       "line": 1666,
       "kind": "if",
@@ -54407,17 +54440,6 @@
       "id": "LORESUB.PAS:load:1:case:4",
       "line": 1762,
       "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:save:1:for:1",
-      "line": 1782,
-      "kind": "for",
       "classification": "common-rule",
       "implementation": "lib/models/party_member.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -56953,7 +56975,7 @@
     {
       "path": "test/cast_spell_ui_test.dart",
       "kind": "test",
-      "sha256": "6fac62580fc0a78476ac4b842fbf3a9e431ff72a9a07626c60458d00d0982b3e",
+      "sha256": "a1086914ea535259c045aafcfdd6755042533e182b4ad6c253146b5baac105f9",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -57262,7 +57284,7 @@
     {
       "path": "test/extrasense_ui_test.dart",
       "kind": "test",
-      "sha256": "05580ec6398d007838d1e0a0f9e552c4c24dd7eb2e8b5563a16cf96b05d7a2b8",
+      "sha256": "a92bb5630023a2d3450b6584d47f4128c5193eff0db84ba3336ca6600ac65766",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -57271,7 +57293,7 @@
     {
       "path": "test/field_condition_timing_ui_test.dart",
       "kind": "test",
-      "sha256": "637a702970b5e2fa5bde1608120a6ced0d5e56f9f15b0e8940c2ba9c975f59bc",
+      "sha256": "7a08b24f05ac8a8db1170afaea3171d39430f79ee795f815a26ca496ef7c390a",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LORESPEC.PAS",
@@ -57371,7 +57393,7 @@
     {
       "path": "test/game_over_test.dart",
       "kind": "test",
-      "sha256": "7ea90d631d833aa095836af599bcf6b8cd07b3e3a8fbe30f1bb02056eeff7abb",
+      "sha256": "d833b8d10fc8895907c0f63669c3bc7adb9d97c33c05a202d96cf139f39843ad",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LORESUB.PAS"
@@ -57941,7 +57963,7 @@
     {
       "path": "test/map25_guardian_ui_test.dart",
       "kind": "test",
-      "sha256": "5b2526e0f7ec02c33ea5b6c3774e731d5380dc49d1894fdfafafe6e86e1218cf",
+      "sha256": "468c45eee344cbc7743bcb45e0f68ab953a293d9d8204a8d1a0159a783e22192",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -58180,6 +58202,15 @@
       "kind": "test",
       "sha256": "f9d94028a593d5e43ab49934f931abaf8e55c5754ba86cccbfa3e17f04d5b4b3",
       "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/save_party_dos_test.dart",
+      "kind": "test",
+      "sha256": "0ac875455866e9ea32da4d88de48a17afcce722c355483dacc0918ccc4d34d1d",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
@@ -59360,6 +59391,7 @@
         "test/first_field_battle_dos_ui_test.dart",
         "test/new_game_dos_test.dart",
         "test/resumed_field_battle_dos_ui_test.dart",
+        "test/save_party_dos_test.dart",
         "test/source_new_game_persistence_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
@@ -59449,6 +59481,15 @@
         "test/menace_entry_dos_ui_test.dart",
         "test/resumed_field_battle_dos_test.dart",
         "test/resumed_field_battle_dos_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_save_party.json",
+      "kind": "fixture",
+      "sha256": "78d501f52fef43386b776ff5008ff24037d6d67453f66d5930025de429b37d73",
+      "test_users": [
+        "test/save_party_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
@@ -59887,7 +59928,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "fa3890b82613f687121e4f8158c8bab95a41882c352caa4aaba2f4895618932a"
+      "sha256": "48d6ac94815c7f147aac9e5a4674b35110834f970178104920772ecd78ac20bb"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -59971,9 +60012,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "a32932b700fa5990212bfbf338d9db779cb00a9d6e74773f12788d7b35c07bc3",
+      "sha256": "751b928e9c00e08f8515d0f7402bf2cfc500386c0fea8d494818371acbd50055",
       "top_level_counts": {
-        "contracts": 1665
+        "contracts": 1667
       }
     }
   ],
@@ -59982,8 +60023,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 127,
-    "partially_verified_behavior_sites": 127,
+    "unverified_behavior_sites": 125,
+    "partially_verified_behavior_sites": 125,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

@@ -25,6 +25,7 @@ class ContractLedgerTest(unittest.TestCase):
             'test/source_coordinates_dos_test.dart': 2,
             'test/source_enemy_database_test.dart': 1,
             'test/creation_class_queue_dos_test.dart': 1,
+            'test/save_party_dos_test.dart': 2,
         }.items():
             ids = {r['id'] for r in reviewed if r.get('test') == test and r.get('verification') == 'verified'}
             self.assertEqual(len(ids), count)
@@ -142,7 +143,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 127)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 125)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

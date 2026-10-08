@@ -42,6 +42,7 @@ import '../logic/lore_talk_mode.dart';
 import '../logic/lore_water_lord.dart';
 import '../logic/lore_spec_procedures.dart';
 import '../logic/lore_source_memory.dart';
+import '../logic/lore_save_party.dart';
 import '../logic/lore_ent_procedures.dart';
 import '../models/party_member.dart';
 import '../models/monster.dart';
@@ -199,7 +200,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _initParty() {
     if (widget.initialSaveData != null) {
-      _party = List.from(widget.initialSaveData!.party);
+      _party = LoreSaveParty.snapshot(widget.initialSaveData!.party);
       _partyGold = widget.initialSaveData!.gold;
       _partyFood = widget.initialSaveData!.food;
       LoreDialogueManager.instance.loadFlags(
@@ -1521,7 +1522,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
     playerY: _game.playerY,
     gold: _partyGold,
     food: _partyFood,
-    party: _party,
+    party: LoreSaveParty.snapshot(_party),
     flags: LoreDialogueManager.instance.getSaveFlags(),
     etc: _sourceEtc.fieldCounters(),
     mapTiles: _game.currentMap?.tileSnapshot() ?? const [],
@@ -1917,7 +1918,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       _scripts.consumedScripts
         ..clear()
         ..addAll(save.consumedScripts);
-      _party = List.from(save.party);
+      _party = LoreSaveParty.snapshot(save.party);
       _partyGold = save.gold;
       _partyFood = save.food;
       _normalizeLoadedEtc();
