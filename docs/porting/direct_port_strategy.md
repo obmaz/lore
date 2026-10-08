@@ -2672,10 +2672,20 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      이 세 루틴만 승격한다. verified 1182개, partial 666개다. CastOne·적 AI와
      나머지 전투 루틴은 partial로 유지한다.
 
-170. 전투 산술·보상·AI 핵심 계약 81건 검증 완료 (2026-10-08).
+170. 전투 산술·보상·AI 핵심 계약 80건 검증 완료 (2026-10-08).
      `CastOne`, `WeaponAttack`, `CastAttackSub`, `EnemyCure`, 보상·적 존재 판정,
      `EnemyAttack`, `EndBattle`의 원시 수치·저장 폭·난수 호출과 상태 전이를
      독립 DOS fixture로 대조했다. 모든 byte 경계, signed HP/경험치/금화 및 여섯
      슬롯 결과를 포함하는 산술·보상·AI 재생 377건이 통과했다. 직전 20건과
      합쳐 100건의 전투 계약을 검증했으며 원장은 verified 1262개, partial
      586개다. 아직 복합 특수 마법·전체 BattleMode 루프는 partial이다.
+
+171. 공격 명중·저항 경계 회귀 보강 (2026-10-08).
+     `LOREBATT.PAS:137/202`의 무기 `>`와 마법 `>=` 차이를 모든
+     `Random(20)` 결과 20개에서 대조했다. 저항 1..100과 같거나 하나 작은
+     난수도 두 공격 방식에서 비교해 총 438개 조합의 HP/SP, 경험치 및
+     조기 종료 시 난수 호출 상한·순서를 검사했다. 이 회귀는 Pascal 조건에서
+     직접 유도한 경계 테스트이며 새 DOS 관측 자료는 아니다. 기존 DOS 방어·주문
+     산술 fixture와 함께 134개 테스트가 통과했다. 전투 `rnd` 어댑터도 기존
+     원본 EXE fixture의 96개 값·갱신 seed와 비교해 zero-bound 이후 난수열까지
+     확인했다. 계약 수는 유지한다.

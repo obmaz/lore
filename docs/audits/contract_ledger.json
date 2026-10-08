@@ -54735,7 +54735,7 @@
     {
       "path": "test/lore_battle_test.dart",
       "kind": "test",
-      "sha256": "3d018133f72eba0406f9ec26b84c630ad4b4b41dd9967ff1cdb358e1b46fff29",
+      "sha256": "ff888177be4c0fcd09e1feee008b01029b4add942aec2b8fd0fd94245e7cb0e0",
       "cited_source_files": [
         "LOREBATT.PAS"
       ],
@@ -54788,7 +54788,7 @@
     {
       "path": "test/lore_random_test.dart",
       "kind": "test",
-      "sha256": "2cd10c5f698e182a344fb46271f8765be63e0da43610b30493c739a54f1b7668",
+      "sha256": "4ddb1a9e8bd9a01714e27edfe2902bee889941f35dad5570c876c64cfbae8b06",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],

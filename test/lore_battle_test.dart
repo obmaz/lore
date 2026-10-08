@@ -272,20 +272,23 @@ void main() {
     );
   });
 
-  test('AttackOne skips a dead target only forward and keeps the RNG stream', () {
-    final r = _Script([0, 0, 99, 0]);
-    final first = Monster.create(1)..isDead = true;
-    final second = Monster.create(1)
-      ..resistance = 0
-      ..ac = 0
-      ..hp = 500;
-    final b = make([hero()], [first, second], r);
-    b.battle[1] = [0, 1, 1, 1];
-    b.attackOne();
-    expect(b.battle[1][3], 2);
-    expect(r.bounds, [20, 50, 100, 10]);
-    expect(second.hp, lessThan(500));
-  });
+  test(
+    'AttackOne skips a dead target only forward and keeps the RNG stream',
+    () {
+      final r = _Script([0, 0, 99, 0]);
+      final first = Monster.create(1)..isDead = true;
+      final second = Monster.create(1)
+        ..resistance = 0
+        ..ac = 0
+        ..hp = 500;
+      final b = make([hero()], [first, second], r);
+      b.battle[1] = [0, 1, 1, 1];
+      b.attackOne();
+      expect(b.battle[1][3], 2);
+      expect(r.bounds, [20, 50, 100, 10]);
+      expect(second.hp, lessThan(500));
+    },
+  );
 
   test('AttackOne with no living enemies exits before messages or RNG', () {
     final r = _Script();
@@ -298,19 +301,22 @@ void main() {
     expect(lines, isEmpty);
   });
 
-  test('CastOne keeps source SP-before-RNG ordering on an insufficient cast', () {
-    final r = _Script();
-    final mage = hero()
-      ..magicLevel = 2
-      ..sp = 1;
-    final lines = <String>[];
-    final b = make([mage], [Monster.create(1)], r, lines);
-    b.battle[1] = [0, 2, 3, 1];
-    b.castOne();
-    expect(mage.sp, 1);
-    expect(r.bounds, isEmpty);
-    expect(lines.last, LoreBattText.spNotEnough);
-  });
+  test(
+    'CastOne keeps source SP-before-RNG ordering on an insufficient cast',
+    () {
+      final r = _Script();
+      final mage = hero()
+        ..magicLevel = 2
+        ..sp = 1;
+      final lines = <String>[];
+      final b = make([mage], [Monster.create(1)], r, lines);
+      b.battle[1] = [0, 2, 3, 1];
+      b.castOne();
+      expect(mage.sp, 1);
+      expect(r.bounds, isEmpty);
+      expect(lines.last, LoreBattText.spNotEnough);
+    },
+  );
 
   test('CastOne executes an unconscious foe before it reads magic or RNG', () {
     final r = _Script();
@@ -326,12 +332,87 @@ void main() {
     expect(r.bounds, isEmpty);
   });
 
-  test('zero-bound Pascal random consumes one normalized draw and returns zero', () {
-    final r = _Script([0]);
-    final b = make([hero()], [Monster.create(1)], r);
-    expect(b.rnd(0), 0);
-    expect(r.bounds, [1]);
-  });
+  test(
+    'zero-bound Pascal random consumes one normalized draw and returns zero',
+    () {
+      final r = _Script([0]);
+      final b = make([hero()], [Monster.create(1)], r);
+      expect(b.rnd(0), 0);
+      expect(r.bounds, [1]);
+    },
+  );
+
+  test(
+    'source accuracy equality hits for AttackOne but misses for CastOne',
+    () {
+      // LOREBATT.PAS:137 uses >, whereas :202 uses >=. Exercise every
+      // possible Random(20) result at the equality boundary.
+      for (var roll = 0; roll < 20; roll++) {
+        for (final magic in [false, true]) {
+          final me = hero()
+            ..accArms = roll
+            ..accMagic = roll
+            ..magicLevel = 2
+            ..sp = 100;
+          final foe = Monster.create(1)
+            ..hp = 1000
+            ..ac = 0
+            ..resistance = 0;
+          final r = _Script([roll, 0, 99, 0]);
+          final b = make([me], [foe], r);
+          b.battle[1] = [0, magic ? 2 : 1, 1, 1];
+          if (magic) {
+            b.castOne();
+            expect(r.bounds, [20]);
+            expect(foe.hp, 1000);
+            expect(me.sp, 99);
+          } else {
+            b.attackOne();
+            expect(r.bounds, [20, 50, 100, 10]);
+            expect(foe.hp, 600);
+          }
+        }
+      }
+    },
+  );
+
+  test(
+    'source resistance equality proceeds; smaller rolls stop before defence',
+    () {
+      // LOREBATT.PAS:143/:208 both use strict < against resistance.
+      for (var resistance = 1; resistance <= 100; resistance++) {
+        for (final magic in [false, true]) {
+          for (final resisted in [false, true]) {
+            if (!resisted && resistance == 100) continue; // Random(100) < 100.
+            final roll = resisted ? resistance - 1 : resistance;
+            final r = _Script(magic ? [0, roll, 0] : [0, 0, roll, 0]);
+            final me = hero()
+              ..magicLevel = 2
+              ..sp = 100;
+            final foe = Monster.create(1)
+              ..hp = 1000
+              ..ac = 0
+              ..resistance = resistance;
+            final b = make([me], [foe], r);
+            b.battle[1] = [0, magic ? 2 : 1, 1, 1];
+            if (magic) {
+              b.castOne();
+            } else {
+              b.attackOne();
+            }
+            expect(
+              r.bounds,
+              magic
+                  ? (resisted ? [20, 100] : [20, 100, 10])
+                  : (resisted ? [20, 50, 100] : [20, 50, 100, 10]),
+            );
+            expect(foe.hp, resisted ? 1000 : (magic ? 996 : 600));
+            expect(me.experience, 0);
+          }
+        }
+      }
+    },
+  );
 
   test('PlusGold sums template level^3 * max(ac,1)', () {
     final foes = [Monster.create(1), Monster.create(54)];

@@ -3,6 +3,8 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/logic/lore_random.dart';
+import 'package:lore/logic/lore_battle.dart';
+import 'package:lore/models/monster.dart';
 import 'package:lore/logic/lore_lava_logic.dart';
 import 'package:lore/models/party_member.dart';
 
@@ -15,6 +17,25 @@ void main() {
       final random = LoreRandom(scenario['initialSeed'] as int);
       for (final call in scenario['calls'] as List) {
         expect(random.nextInt(call['bound'] as int), call['value']);
+        expect(random.seed, call['seed']);
+      }
+    }
+  });
+
+  test('battle Random adapter preserves native zero-bound draws and seeds', () {
+    final fixture = jsonDecode(
+      File('test/fixtures/dos_random_stream.json').readAsStringSync(),
+    ) as Map<String, dynamic>;
+    for (final scenario in fixture['cases'] as List) {
+      final random = LoreRandom(scenario['initialSeed'] as int);
+      final battle = LoreBattle(
+        party: [PartyMember.createPreset(1)],
+        enemy: [Monster.create(1)],
+        random: random,
+        print: (_, _) {},
+      );
+      for (final call in scenario['calls'] as List) {
+        expect(battle.rnd(call['bound'] as int), call['value']);
         expect(random.seed, call['seed']);
       }
     }
