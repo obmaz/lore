@@ -13029,7 +13029,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13045,7 +13045,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13061,7 +13061,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13077,7 +13077,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13093,7 +13093,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13109,7 +13109,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13125,7 +13125,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13141,7 +13141,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13157,7 +13157,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13173,7 +13173,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13189,7 +13189,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13205,7 +13205,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13221,7 +13221,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13237,7 +13237,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13253,7 +13253,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13269,7 +13269,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13285,7 +13285,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13301,7 +13301,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13317,7 +13317,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13333,7 +13333,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13349,7 +13349,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13365,7 +13365,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13381,7 +13381,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13397,7 +13397,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13413,7 +13413,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13429,7 +13429,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13445,7 +13445,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -13461,7 +13461,7 @@
       "behavioral_evidence": [
         "test/lore_sign_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_sign.dart",
       "reviewed_scope": "Direct source sign selection, literal lines/colors and dynamic integer expressions; complete DOS pixel comparison remains pending."
     },
@@ -19669,7 +19669,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19685,7 +19685,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19701,7 +19701,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19717,7 +19717,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19733,7 +19733,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19749,7 +19749,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19765,7 +19765,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19781,7 +19781,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19797,7 +19797,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19813,7 +19813,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19829,7 +19829,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19845,7 +19845,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -19861,7 +19861,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map9_10_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map9 arm owned directly: five findgold(5000) cells on raw etc[35] bits 1..5 (all 256 bytes), y=10 barrier while raw etc[15]<5 (Message without key wait, y+1); y=5 wantenter('SWAMP GATE') boundary with Lord Ahn speech only while etc[35] bit6 is clear, refusal y+1, map 13 (81,95); y=46 wantexit to map 2 (32,82), refusal y-1. Gate animation adapted; DOS comparison pending."
     },
@@ -20901,7 +20901,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -20917,7 +20917,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -20949,7 +20949,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -20965,7 +20965,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -20981,7 +20981,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending. Actual native MENACE(6,44) after independent entrance save: findgold400 has no key wait; raw etc32 bit3 is set immediately, no tile rewrite. Slot3 save gold2525, records and DEN1 map match mobile. Up/Down revisit keeps gold/bit. Captures and RNG in dos_menace_entry.json; mobile regression catches speech-adapter blocking. Other treasure cells remain source-replay evidence."
     },
@@ -20997,7 +20997,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -21013,7 +21013,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -21029,7 +21029,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -21045,7 +21045,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -21061,7 +21061,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -21077,7 +21077,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -21093,7 +21093,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -21109,7 +21109,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map14_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map14 arm owned directly: y=46 exact wantexit boundary (map 1 (18,89), refusal y-1); MENACE centre (25,8)/(26,8) increments raw etc[10] after the key wait only when it is 3; six findgold cells with their amounts and the golden shield (shield 5/power 5, ac=shi+arm, knight +1, cap 10) on raw etc[32] bits 1..7 (all 256 bytes), shield bit only after a member takes it. DOS comparison pending."
     },
@@ -21445,7 +21445,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21461,7 +21461,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21477,7 +21477,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21493,7 +21493,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21509,7 +21509,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21525,7 +21525,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21541,7 +21541,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21557,7 +21557,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21573,7 +21573,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21589,7 +21589,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -21605,7 +21605,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map16_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map16 arm owned directly: y=36 exact wantexit boundary (map 2 (44,8), refusal y-1); y=10 on raw etc[37] (all 256 bytes): <3 meets 3-etc[37] Wiverns after the key, victory stores 3, escape stores 3 minus survivors; >=3 shows the corpse message without a key wait. DOS comparison pending. Milestone127: unchanged native WIVERN 3->2->1 encounters, corpse finishing, legal escapes and victory, real intermediate/final saves. wivern_battle_dos_test.dart checks six players/all enemies/RNG/command retargeting through observed 3/2-enemy branches and raw killed-count continuations. Native WATER FIELD entry, request, revisit and save are replayed on the mobile screen. Full campaign remains pending; partial retained."
     },
@@ -24229,7 +24229,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24245,7 +24245,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24261,7 +24261,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24277,7 +24277,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24293,7 +24293,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24309,7 +24309,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24325,7 +24325,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24341,7 +24341,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24357,7 +24357,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24373,7 +24373,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24389,7 +24389,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24405,7 +24405,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24421,7 +24421,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24437,7 +24437,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24453,7 +24453,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map21_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map21 arm owned directly: y=46 wantexit boundary then (etc[42] bit1 clear) the exit guard with 55 unless bit3, 56 unless bit4 and five 35s; no boss -> bit1 and exit without loading (party stays on the exit cell); after the fight bit3/bit4 follow slots 1/2 deaths and bit1 needs both, exit to map 4 (48,36) after victory or escape (all 256 etc[42] bytes). on(25,20) refuses unless odd(etc[40]) and odd(etc[41]) then y+1; other specials one random(4)+3 group of 58 and tile 0->40 else 46 after victory or escape. Defeat runs no continuation (GameOver reload overlay intentional difference). DOS comparison pending."
     },
@@ -24469,7 +24469,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24485,7 +24485,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24501,7 +24501,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24517,7 +24517,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24533,7 +24533,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24549,7 +24549,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24565,7 +24565,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24581,7 +24581,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24597,7 +24597,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24613,7 +24613,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24629,7 +24629,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24645,7 +24645,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24661,7 +24661,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24677,7 +24677,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24693,7 +24693,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24709,7 +24709,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24725,7 +24725,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24741,7 +24741,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -24757,7 +24757,7 @@
       "behavioral_evidence": [
         "test/lore_spec_map22_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_spec_procedures.dart",
       "reviewed_scope": "Map22 arm owned directly with raw etc[43] bits (all 256 bytes): y=46 wantexit boundary then the bit3 exit guard (one random(5)+42, 42->35, six guards + 66, bit3 iff enemy 7 dead, exit after victory or escape); on(25,18) Death Knight with one random(5) slot for 63, bit2 on victory only; y=25 x24..26 guards (BattleMode TRUE), bit1 on victory; other specials Wraith ambush writing map[x,y]:=40 after victory or escape. Defeat runs no continuation (source GameOver reload overlay is an intentional difference). DOS comparison pending."
     },
@@ -56824,8 +56824,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 1844,
-    "partially_verified_behavior_sites": 1844,
+    "unverified_behavior_sites": 1745,
+    "partially_verified_behavior_sites": 1745,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

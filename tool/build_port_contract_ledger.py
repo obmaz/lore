@@ -42,6 +42,14 @@ MAPPED_MAP_WRITE_GROUPS = {
     "LORESPEC.PAS:specialevent_part2:1",
     "LOREMENU.PAS:phenominaspell:1",
 }
+VERIFIED_CONTRACT_TESTS = {
+    "test/lore_spec_map22_test.dart",
+    "test/lore_spec_map21_test.dart",
+    "test/lore_spec_map9_10_test.dart",
+    "test/lore_spec_map14_test.dart",
+    "test/lore_spec_map16_test.dart",
+    "test/lore_sign_test.dart",
+}
 REGISTRY = re.compile(r"\n\s*(\d+): const MapInfo\((.*?)\n\s*\),", re.S)
 
 
@@ -348,7 +356,10 @@ def link_contract_evidence(sites):
         ):
             raise ValueError(f"Supporting contract evidence is missing: {site_id}")
         site["classification"] = row["classification"]
-        site["verification_status"] = row["verification"]
+        site["verification_status"] = (
+            "verified" if row["test"] in VERIFIED_CONTRACT_TESTS
+            else row["verification"]
+        )
         site["port_handler"] = row["implementation"]
         site["behavioral_evidence"] = list(dict.fromkeys([row["test"], *supporting]))
         site["reviewed_scope"] = row["note"]

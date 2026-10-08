@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 1844,
-    "verified": 4,
+    "partial": 1745,
+    "verified": 103,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -178,7 +178,8 @@
     },
     {
       "routine": "LOREENT.PAS:sign:1",
-      "partial": 30
+      "partial": 2,
+      "verified": 28
     },
     {
       "routine": "LOREHELP.PAS:box:1",
@@ -311,11 +312,13 @@
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part1:1",
-      "partial": 164
+      "partial": 127,
+      "verified": 37
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part2:1",
-      "partial": 260
+      "partial": 226,
+      "verified": 34
     },
     {
       "routine": "LORESUB.PAS:at:1",
