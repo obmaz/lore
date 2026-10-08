@@ -1,6 +1,308 @@
 {
   "contracts": [
     {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:1",
+      "line": 899,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:exit:1",
+      "line": 899,
+      "kind": "exit",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:for:1",
+      "line": 901,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:2",
+      "line": 902,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:5",
+      "line": 913,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:for:2",
+      "line": 915,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:6",
+      "line": 916,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:7",
+      "line": 918,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:8",
+      "line": 919,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:9",
+      "line": 931,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:10",
+      "line": 932,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:exit:2",
+      "line": 932,
+      "kind": "exit",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:11",
+      "line": 933,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:for:3",
+      "line": 934,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:12",
+      "line": 935,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:13",
+      "line": 937,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:14",
+      "line": 938,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:15",
+      "line": 942,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREBATT.PAS:specialcastattack:1:if:16",
+      "line": 944,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_water:1:if:1",
+      "line": 21,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_main_procedures.dart",
+      "test": "test/lore_main_procedures_test.dart",
+      "supporting_evidence": [],
+      "note": "Source water byte counter 0..255 with frequency 0/1/255 and zero/nonzero dispatch. Counter decrement, scroll, Random(freq*30), encounter and originposition ordering independently checked. Encounter routine effects and rendering are separate.",
+      "verification": "verified"
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_water:1:if:2",
+      "line": 24,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_main_procedures.dart",
+      "test": "test/lore_main_procedures_test.dart",
+      "supporting_evidence": [],
+      "note": "Source water byte counter 0..255 with frequency 0/1/255 and zero/nonzero dispatch. Counter decrement, scroll, Random(freq*30), encounter and originposition ordering independently checked. Encounter routine effects and rendering are separate.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:turn_mind:1:if:1",
+      "line": 1135,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/enemy_special_cast_dos_test.dart",
+      "supporting_evidence": [
+        "tool/tests/test_export_dos_enemy_special_cast.py",
+        "test/special_cast_slots_test.dart"
+      ],
+      "note": "Native SpecialCastAttack RNG/state/return, real FOEDATA templates and original joinenemy/turn_mind numeric stores; ReturnCondition native effects preserved during skipped display. All active-count/dead-slot masks, both caster ends, every mode byte, seventh-player/inactive enemy6 writes and status/name boundaries. UI/glyphs and out-of-range summons at 904/905 remain partial.",
+      "verification": "verified"
+    },
+    {
       "id": "LORESUB.PAS:returnclass:1:case:1",
       "line": 643,
       "kind": "case",
@@ -8673,46 +8975,6 @@
       ]
     },
     {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:1",
-      "line": 899,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:exit:1",
-      "line": 899,
-      "kind": "exit",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:for:1",
-      "line": 901,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:2",
-      "line": 902,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
       "id": "LOREBATT.PAS:specialcastattack:1:if:3",
       "line": 904,
       "kind": "if",
@@ -8725,156 +8987,6 @@
     {
       "id": "LOREBATT.PAS:specialcastattack:1:if:4",
       "line": 905,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:5",
-      "line": 913,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:for:2",
-      "line": 915,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:6",
-      "line": 916,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:7",
-      "line": 918,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:8",
-      "line": 919,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:9",
-      "line": 931,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:10",
-      "line": 932,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:exit:2",
-      "line": 932,
-      "kind": "exit",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:11",
-      "line": 933,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:for:3",
-      "line": 934,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:12",
-      "line": 935,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:13",
-      "line": 937,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:14",
-      "line": 938,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:15",
-      "line": 942,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone110 preserves SpecialCastAttack turn_mind(k,6) argument order (native call pushes k then 6), retained enemy[1..7] independently of active count, GameOption player[7] record scratch, and with-enemy alias reads after replacement. test/special_cast_slots_test.dart covers short/full battles, caster6, next EnemyAttack and retained slots; test/recruit_storage_dos_test.dart retains native turn_mind HP evidence. This is source control-flow plus independent EXE call-site/HP fragments, not whole-DOS battle replay. Unwritten slot zero initialization remains an adapter boundary pending startup replay.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREBATT.PAS:specialcastattack:1:if:16",
-      "line": 944,
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",

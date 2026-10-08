@@ -10,6 +10,17 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_specialcast_native_scope_leaves_unknown_summons_partial(self):
+        sites = ledger.build()["control_sites"]
+        closed = [s for s in sites if "test/enemy_special_cast_dos_test.dart"
+                  in s["behavioral_evidence"]]
+        self.assertEqual(len(closed), 20)
+        self.assertTrue(all(s["verification_status"] == "verified" for s in closed))
+        unknown = [s for s in sites if s["routine"] == "LOREBATT.PAS:specialcastattack:1"
+                   and s["line"] in {904, 905}]
+        self.assertEqual(len(unknown), 2)
+        self.assertTrue(all(s["verification_status"] == "partial" for s in unknown))
+
     def test_creation_rule_verification_excludes_input_and_palette_loops(self):
         sites = ledger.build()["control_sites"]
         closed = [s for s in sites if "test/source_creation_rules_test.dart"
@@ -56,7 +67,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 420)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 398)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
@@ -157,8 +168,9 @@ class ContractLedgerTest(unittest.TestCase):
         selector = [s for s in sites if s["routine"] == "LOREBATT.PAS:castattack:1"]
         self.assertEqual(len(selector), 63)
         self.assertTrue(all(s["verification_status"] == "verified" for s in selector))
-        effects = [s for s in sites if s["routine"] in
-                   {"LOREBATT.PAS:specialcastattack:1", "LOREBATT.PAS:battleesp:1"}]
+        effects = [s for s in sites if s["routine"] == "LOREBATT.PAS:battleesp:1"
+                   or (s["routine"] == "LOREBATT.PAS:specialcastattack:1"
+                       and s["line"] in {904, 905})]
         self.assertTrue(effects)
         self.assertTrue(all(s["verification_status"] == "partial" for s in effects))
 

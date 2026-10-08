@@ -29,6 +29,44 @@ class _SequenceRandom implements Random {
 /// LOREMAIN.PAS field procedures (Main, Move_Mode, enter_swamp, enter_lava,
 /// enter_water) and LORESUB.PAS `DetectGameOver`.
 void main() {
+  test('LOREMAIN.PAS water source byte counters and dispatch order', () {
+    for (var initial = 0; initial <= 255; initial++) {
+      for (final frequency in [0, 1, 255]) {
+        for (final roll in frequency == 0 ? [0] : [0, 1]) {
+          var steps = initial;
+          final trace = <String>[];
+          LoreMainProcedures.enterWater(
+            waterWalkSteps: () => steps,
+            setWaterWalkSteps: (value) {
+              steps = value;
+              trace.add('steps:$value');
+            },
+            scrollToParty: () => trace.add('scroll'),
+            encounterFrequency: frequency,
+            random: (bound) {
+              trace.add('random:$bound');
+              return roll;
+            },
+            encounterEnemy: () => trace.add('encounter'),
+            restorePosition: () => trace.add('restore'),
+          );
+          expect(steps, initial == 0 ? 0 : initial - 1);
+          expect(
+            trace,
+            initial == 0
+                ? ['restore']
+                : [
+                    'steps:${initial - 1}',
+                    'scroll',
+                    'random:${frequency * 30}',
+                    if (roll == 0) 'encounter',
+                  ],
+          );
+        }
+      }
+    }
+  });
+
   test('LORESUB.PAS Exist and DetectGameOver exhaust six-slot masks', () async {
     // Independent source predicate: name <> '', unconscious = 0,
     // dead = 0, hp > 0. Signed nonzero status is inactive too.

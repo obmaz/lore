@@ -4,7 +4,7 @@
 실행 계획은 `docs/porting/direct_port_strategy.md` 하나이며, 이 문서는 장부에서 생성한 검토 색인이다.
 미분류·부분 근거는 미구현 개수나 완료율이 아니다. 플랫폼 분기의 제외도 어댑터 검증 완료를 뜻하지 않는다.
 
-게임 제어 지점 1848개: 미분류 0개, 부분 근거 420개, 검증 완료 1428개.
+게임 제어 지점 1848개: 미분류 0개, 부분 근거 398개, 검증 완료 1450개.
 지도 쓰기 0개는 개별 계약 연결이 없다. 테스트가 없는 것으로 해석하지 않는다.
 
 ## 미분류가 남은 루틴
@@ -26,6 +26,7 @@
 | `test/fixtures/dos_condition_storage.json` | `test/boss_hp_override_ui_test.dart` · `test/condition_storage_dos_test.dart` |
 | `test/fixtures/dos_cure_overflow.json` | `test/field_magic_test.dart` |
 | `test/fixtures/dos_draconian_continuation.json` | `test/menace_return_dos_ui_test.dart` |
+| `test/fixtures/dos_enemy_special_cast.json` | `test/enemy_special_cast_dos_test.dart` |
 | `test/fixtures/dos_evil_god_first_attempt.json` | `test/crab_king_battle_dos_test.dart` · `test/menace_return_dos_ui_test.dart` |
 | `test/fixtures/dos_evil_god_success.json` | `test/evil_god_native_completion_test.dart` |
 | `test/fixtures/dos_final_battle_phase.json` | `test/final_battle_native_dos_test.dart` |

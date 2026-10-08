@@ -38,6 +38,35 @@ void main() {
     File('test/fixtures/dos_training_dispatch.json').readAsStringSync(),
   ) as Map<String, dynamic>;
 
+  test(
+    'source insufficient-XP byte levels keep next-message/goto order',
+    () async {
+      for (var level = 1; level <= 255; level++) {
+        final hero = PartyMember.createPreset(1)
+          ..battleLevel = level
+          ..experience = 0;
+        final before = hero.toJson();
+        final io = _Io([1, 0], 100);
+        await LoreTownShops.trainCenter(io, [hero], Random(1));
+        expect(hero.toJson(), before);
+        expect(io.gold, 100);
+        final displays = io.lines
+            .where((line) => line.$2.startsWith(' 당신이 다음 레벨이 되려면 경험치가 '))
+            .toList();
+        expect(displays.length, level <= 19 ? 1 : 0);
+        if (level <= 19) {
+          expect(
+            displays.single.$2,
+            ' 당신이 다음 레벨이 되려면 경험치가 '
+            '${LoreTownShops.expData[level - 1]}',
+          );
+        }
+        expect(io.lines.where((line) => line.$2 == '누가 훈련을 받겠습니까 ?').length, 2);
+        expect(io.answers, isEmpty);
+      }
+    },
+  );
+
   test('training level CASE matches original low-word comparisons', () {
     for (final row in fixture['levels'] as List) {
       expect(

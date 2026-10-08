@@ -2795,3 +2795,19 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      없는 ReturnMagic selector는 partial로 남긴다.
      verified 1428개, partial 420개. 전체 Flutter 1547건(3건 skip),
      추가 문자열 집중 2건 및 release web build가 통과했다. 배포하지 않았다.
+
+181. 적 복합 공격/독심 변환 20건과 물 이동 2건 (2026-10-08).
+     원본 SpecialCastAttack·Random·joinenemy·turn_mind와 FOEDATA.DAT를
+     40551개 입력으로 실행해 활성 적 수, 양 끝 caster, 죽은 적 mask,
+     모든 mode byte, 이름/죽음 mask, signed HP와 성공/실패·회피를 대조했다.
+     생성 3605회, 독심 변환 2710회, 실패·회피 출력 115회가 실제 실행됐다.
+     UI/문자열은 인자 push 전에 건너뛰고 Display_Condition의 숫자 상태
+     변경은 원본 ReturnCondition 명령으로 재생한다. 실제 7번째 player와
+     비활성 enemy6 쓰기, caster 자신 교체 후 이어지는 분기도 검사했다.
+     적 템플릿 범위 밖 읽기가 포함될 수 있는 904/905의 두 계약은 partial이다.
+     처음 seed 묶음이 성공 분기를 타지 않은 문제를 분기 실행 guard로
+     발견·보완했다. 동일 raw record의 interning은 무손실이며 fixture를 줄인다.
+     물 이동은 counter byte 0..255와 encounter frequency 0/1/255,
+     난수 결과 0/비영에 따른 decrement/scroll/encounter/복귀 순서를 검사했다.
+     검증 완료 1450개, partial 398개. 전체 Flutter 1558건(3건 skip),
+     최종 native 복합 공격 집중 7건 및 analyze가 통과했다. 배포는 하지 않는다.
