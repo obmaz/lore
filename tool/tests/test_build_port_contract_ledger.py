@@ -41,8 +41,8 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 1848)
-        self.assertTrue(all(site["verification_status"] == "partial"
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 1844)
+        self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
         self.assertLessEqual(
@@ -117,7 +117,7 @@ class ContractLedgerTest(unittest.TestCase):
         site = next(site for site in sites if site["id"] == row["id"])
         self.assertEqual(site["behavioral_evidence"],
                          [row["test"], "tool/check_dos_final_completion.py"])
-        self.assertEqual(site["verification_status"], "partial")
+        self.assertEqual(site["verification_status"], row["verification"])
 
     def test_missing_supporting_evidence_is_rejected(self):
         rows = json.loads(ledger.EVIDENCE.read_text(encoding="utf-8"))

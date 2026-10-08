@@ -14981,9 +14981,9 @@
       "behavioral_evidence": [
         "test/source_tile_protocol_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_tile_protocol.dart",
-      "reviewed_scope": "Town tile dispatch, all 256 tile values. LoreFieldSession now enters special exit tiles before portal confirmation, retaining LOREENT entry originposition. Actual cold-created DOS castle exit shows party at(51,96) while Skeleton waits at(51,95); mobile screen checks current coordinate/flag/map before final key. Generic special exit transition covered in field_session_test; no native replay of all exit maps."
+      "reviewed_scope": "Town tile dispatch, all 256 tile values. LoreFieldSession now enters special exit tiles before portal confirmation, retaining LOREENT entry originposition. Exact 0..255 source classification and special-tile ordering are covered by source_tile_protocol_test.dart; native replay of every exit map remains outside this contract."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:17",
@@ -15013,9 +15013,9 @@
       "behavioral_evidence": [
         "test/source_tile_protocol_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_tile_protocol.dart",
-      "reviewed_scope": "Ground tile dispatch, all 256 tile values."
+      "reviewed_scope": "Ground tile dispatch, all 256 tile values, exhaustively compared with the source classification table."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:18",
@@ -15045,9 +15045,9 @@
       "behavioral_evidence": [
         "test/source_tile_protocol_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_tile_protocol.dart",
-      "reviewed_scope": "Den tile dispatch, all 256 tile values."
+      "reviewed_scope": "Den tile dispatch, all 256 tile values, exhaustively compared with the source classification table."
     },
     {
       "id": "LOREMAIN.PAS:main:1:if:19",
@@ -15077,9 +15077,9 @@
       "behavioral_evidence": [
         "test/source_tile_protocol_test.dart"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_tile_protocol.dart",
-      "reviewed_scope": "Keep tile dispatch, all 256 tile values."
+      "reviewed_scope": "Keep tile dispatch, all 256 tile values, exhaustively compared with the source classification table."
     },
     {
       "id": "LOREMENU.PAS:healone:1:if:1",
@@ -33428,8 +33428,8 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Town tile dispatch, all 256 tile values. LoreFieldSession now enters special exit tiles before portal confirmation, retaining LOREENT entry originposition. Actual cold-created DOS castle exit shows party at(51,96) while Skeleton waits at(51,95); mobile screen checks current coordinate/flag/map before final key. Generic special exit transition covered in field_session_test; no native replay of all exit maps.",
-      "verification": "partial"
+      "note": "Town tile dispatch, all 256 tile values. LoreFieldSession now enters special exit tiles before portal confirmation, retaining LOREENT entry originposition. Exact 0..255 source classification and special-tile ordering are covered by source_tile_protocol_test.dart; native replay of every exit map remains outside this contract.",
+      "verification": "verified"
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:4",
@@ -33438,8 +33438,8 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Ground tile dispatch, all 256 tile values.",
-      "verification": "partial"
+      "note": "Ground tile dispatch, all 256 tile values, exhaustively compared with the source classification table.",
+      "verification": "verified"
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:5",
@@ -33448,8 +33448,8 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Den tile dispatch, all 256 tile values.",
-      "verification": "partial"
+      "note": "Den tile dispatch, all 256 tile values, exhaustively compared with the source classification table.",
+      "verification": "verified"
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:6",
@@ -33458,8 +33458,8 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Keep tile dispatch, all 256 tile values.",
-      "verification": "partial"
+      "note": "Keep tile dispatch, all 256 tile values, exhaustively compared with the source classification table.",
+      "verification": "verified"
     },
     {
       "id": "LOREMAIN.PAS:enter_swamp:1:for:3",
@@ -56813,7 +56813,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "ed040ab7fec7cdadae51693f928e4d5291ba558f3892d56d2591fc09f6b6ce00",
+      "sha256": "4f5feb7b259e125454b806edf450c60a725df6df073b6655551ca60f8d6c2295",
       "top_level_counts": {
         "contracts": 1492
       }
@@ -56824,8 +56824,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 1848,
-    "partially_verified_behavior_sites": 1848,
+    "unverified_behavior_sites": 1844,
+    "partially_verified_behavior_sites": 1844,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

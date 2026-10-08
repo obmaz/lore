@@ -7,8 +7,8 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Town tile dispatch, all 256 tile values. LoreFieldSession now enters special exit tiles before portal confirmation, retaining LOREENT entry originposition. Actual cold-created DOS castle exit shows party at(51,96) while Skeleton waits at(51,95); mobile screen checks current coordinate/flag/map before final key. Generic special exit transition covered in field_session_test; no native replay of all exit maps.",
-      "verification": "partial"
+      "note": "Town tile dispatch, all 256 tile values. LoreFieldSession now enters special exit tiles before portal confirmation, retaining LOREENT entry originposition. Exact 0..255 source classification and special-tile ordering are covered by source_tile_protocol_test.dart; native replay of every exit map remains outside this contract.",
+      "verification": "verified"
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:4",
@@ -17,8 +17,8 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Ground tile dispatch, all 256 tile values.",
-      "verification": "partial"
+      "note": "Ground tile dispatch, all 256 tile values, exhaustively compared with the source classification table.",
+      "verification": "verified"
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:5",
@@ -27,8 +27,8 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Den tile dispatch, all 256 tile values.",
-      "verification": "partial"
+      "note": "Den tile dispatch, all 256 tile values, exhaustively compared with the source classification table.",
+      "verification": "verified"
     },
     {
       "id": "LOREMAIN.PAS:main:1:case:6",
@@ -37,8 +37,8 @@
       "classification": "common-rule",
       "implementation": "lib/logic/lore_tile_protocol.dart",
       "test": "test/source_tile_protocol_test.dart",
-      "note": "Keep tile dispatch, all 256 tile values.",
-      "verification": "partial"
+      "note": "Keep tile dispatch, all 256 tile values, exhaustively compared with the source classification table.",
+      "verification": "verified"
     },
     {
       "id": "LOREMAIN.PAS:enter_swamp:1:for:3",

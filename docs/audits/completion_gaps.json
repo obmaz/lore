@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 1848,
-    "verified": 0,
+    "partial": 1844,
+    "verified": 4,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -214,7 +214,8 @@
     },
     {
       "routine": "LOREMAIN.PAS:main:1",
-      "partial": 26
+      "partial": 22,
+      "verified": 4
     },
     {
       "routine": "LOREMAIN.PAS:move_mode:1",
