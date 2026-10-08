@@ -296,6 +296,8 @@ class LoreWorldManager {
     // LORESPEC.PAS:334-340: a refused wantenter leaves the party on the gate.
     // LORESPEC.PAS:302-304: map 6 refusal.
     6 => y - 1,
+    7 when x == 50 => y,
+    7 when y == 71 => y - 1,
     8 when x == 50 => y,
     9 when y == 5 => y + 1,
     9 when y == 46 => y - 1,
@@ -305,6 +307,7 @@ class LoreWorldManager {
     16 when y == 36 => y - 1,
     17 when y == 95 => y - 1,
     18 when y == 95 => y - 1,
+    19 when y == 46 => y - 1,
     // LORESPEC.PAS:515-521 has no refusal branch: the party stays on y = 46.
     11 when y == 46 => y,
     12 when y == 71 => y - 1,
@@ -316,10 +319,40 @@ class LoreWorldManager {
 
   /// LORESPEC.PAS:334/383: map 8 x = 50 and map 9 y = 5 ask `wantenter`.
   static bool sourceAsksEnter(int mapId, int x, int y) =>
-      (mapId == 8 && x == 50) || (mapId == 9 && y == 5);
+      ((mapId == 7 || mapId == 8) && x == 50) || (mapId == 9 && y == 5);
 
   /// LOREENT.PAS의 월드맵/마을 간 포털 연결 정의 (맵ID, x, y) -> PortalInfo
   PortalInfo? findPortal(int currentMapId, int x, int y) {
+    // LORESPEC.PAS:308-326: the gate is tested before the town exit.
+    if (currentMapId == 7 && x == 50) {
+      return const PortalInfo(
+        targetMapId: 8,
+        targetX: 50,
+        targetY: 10,
+        name: 'GROUND GATE',
+      );
+    }
+    if (currentMapId == 7 && y >= 71) {
+      return y == 71
+          ? const PortalInfo(
+              targetMapId: 1,
+              targetX: 77,
+              targetY: 57,
+              name: 'TOWN2 출구',
+            )
+          : null;
+    }
+    // LORESPEC.PAS:1368-1374: not a y >= 46 exit.
+    if (currentMapId == 19 && y >= 46) {
+      return y == 46
+          ? const PortalInfo(
+              targetMapId: 4,
+              targetX: 48,
+              targetY: 58,
+              name: 'DEN6 출구',
+            )
+          : null;
+    }
     // LORESPEC.PAS:1762-1795, 1818-1839, 1883-1894, 1982-1993 and 1997-2006
     // own the exact map 21..25 exits; any other row of those maps never exits.
     if (currentMapId >= 21 && currentMapId <= 25) {

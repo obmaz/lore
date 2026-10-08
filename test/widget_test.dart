@@ -4,8 +4,10 @@ import 'package:lore/main.dart';
 import 'package:lore/widgets/dpad_widget.dart';
 import 'package:lore/widgets/message_log_view.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  setUp(() => SharedPreferences.setMockInitialValues({}));
   testWidgets('Opening title screen and game start flow', (
     WidgetTester tester,
   ) async {

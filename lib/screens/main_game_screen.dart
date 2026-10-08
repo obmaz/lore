@@ -333,16 +333,20 @@ class _MainGameScreenState extends State<MainGameScreen> {
   Future<void> _confirmPortalEntryBody(
     PortalInfo portal,
     int tx,
-    int ty,
-  ) async {
-    final sourceRejectY = LoreWorldManager.sourceExitRejectY(
-      _game.currentMapId,
-      ty,
-      x: tx,
-    );
+    int ty, {
+    bool forceSourceExit = false,
+  }) async {
+    // Map 7's secret wall write precedes its exit question in the source.
+    if (_game.currentMapId == 7 && (tx == 30 || tx == 32) && ty == 71) {
+      _game.currentMap!.setTile(31, ty, 45);
+    }
+    final sourceRejectY = forceSourceExit
+        ? ty - 1
+        : LoreWorldManager.sourceExitRejectY(_game.currentMapId, ty, x: tx);
     final sourceDungeonExit =
         sourceRejectY != null &&
-        !LoreWorldManager.sourceAsksEnter(_game.currentMapId, tx, ty);
+        (forceSourceExit ||
+            !LoreWorldManager.sourceAsksEnter(_game.currentMapId, tx, ty));
     final leavingTown =
         sourceDungeonExit ||
         _game.currentMapName.startsWith('TOWN') &&
@@ -373,6 +377,21 @@ class _MainGameScreenState extends State<MainGameScreen> {
       y: ty,
     );
     if (plan.action == LorePortalAction.cancelled) {
+      // Refusing the first IF does not skip the following IF y = 71.
+      if (_game.currentMapId == 7 && tx == 50 && ty == 71 && !forceSourceExit) {
+        await _confirmPortalEntryBody(
+          const PortalInfo(
+            targetMapId: 1,
+            targetX: 77,
+            targetY: 57,
+            name: 'TOWN2 출구',
+          ),
+          tx,
+          ty,
+          forceSourceExit: true,
+        );
+        return;
+      }
       if (sourceRejectY != null) {
         _game.playerX = tx;
         _game.playerY = sourceRejectY;

@@ -1276,6 +1276,13 @@ class LoreBattle {
   // BattleMode 의 조각
   // ------------------------------------------------------------------
 
+  /// Source selection phase clears only how, leaving what/whom unchanged.
+  void beginSelection() {
+    for (var who = 1; who <= 6; who++) {
+      battle[who][1] = 0;
+    }
+  }
+
   /// `k = 8` 의 자동 선택(직업별).
   void autoSelect(int who) {
     person = who;

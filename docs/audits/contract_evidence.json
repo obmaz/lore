@@ -9670,80 +9670,137 @@
       "line": 1006,
       "kind": "repeat",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:1",
       "line": 1007,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Separate EXE arithmetic/RNG boundary evidence is listed in the ledger; unobserved enemy/command combinations and the full campaign remain unverified. Milestone114 adds independent live, unchanged DOSBox RAM evidence from the cold-created party: 29 actual field moves to Earth Worm, automatic victory including six player records, enemy records and the exact RandSeed, then 36 moves to Troll/Serpent/Goblin and a failed pre-battle escape followed by the enemy phase. test/first_field_battle_dos_test.dart and test/first_field_battle_dos_ui_test.dart replay the same seeds continuously through the real mobile screen. tool/capture_dos_battle_memory.py checks preserved raw bytes, decoded records, original EXE hash and the movement/encounter draw stream. No native RAM/RNG writes, no synthetic native inputs. Scope is these observed branches; broader command/enemy combinations, MENACE entry and the full campaign remain pending. Additional independent departure-save reload in dos_resumed_field_battle.json: eight native moves, [Orc, Imp, Giant, Imp] enemy-first magic, member flee failure, five leader auto rounds, cure-recipient Esc, seven Skeleton-only rounds, victory gold2125 and normal native disk save at(21,19). Model and mobile UI tests match phase records/RNG and saved six records/etc100/map10000. Native command bytes captured at each party wait. Other branches/full campaign remain unverified. Replay paths: test/resumed_field_battle_dos_test.dart and test/resumed_field_battle_dos_ui_test.dart; preserved native observations: test/fixtures/dos_resumed_field_battle.json. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:goto:1",
       "line": 1009,
       "kind": "goto",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:1",
       "line": 1011,
       "kind": "for",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle_commands.dart",
+      "test": "test/battle_commands_dos_test.dart",
+      "note": "Original EXE executes 58368 manual numeric selections with explicit SelectEnemy/Clear stubs: cancellation preserves j, byte i-1 wrap and ESP target status; all 256 reset bytes affect only six how fields. Actual UI uses this resolver; source CASE action ownership, Cure immediacy and auto case have separate cited native/UI evidence. Does not close Clear/BGI hardware.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/source_battle_dispatch_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_cure_ui_test.dart",
+        "test/battle_menu_text_test.dart",
+        "test/source_battle_flow_ui_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:2",
       "line": 1014,
       "kind": "for",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Separate EXE arithmetic/RNG boundary evidence is listed in the ledger; unobserved enemy/command combinations and the full campaign remain unverified. Additional independent departure-save reload in dos_resumed_field_battle.json: eight native moves, [Orc, Imp, Giant, Imp] enemy-first magic, member flee failure, five leader auto rounds, cure-recipient Esc, seven Skeleton-only rounds, victory gold2125 and normal native disk save at(21,19). Model and mobile UI tests match phase records/RNG and saved six records/etc100/map10000. Native command bytes captured at each party wait. Other branches/full campaign remain unverified. Replay paths: test/resumed_field_battle_dos_test.dart and test/resumed_field_battle_dos_ui_test.dart; preserved native observations: test/fixtures/dos_resumed_field_battle.json. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:2",
       "line": 1015,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:3",
       "line": 1016,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:4",
       "line": 1025,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:5",
@@ -9760,20 +9817,35 @@
       "line": 1029,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:case:1",
       "line": 1036,
       "kind": "case",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone115 continues the live native three-enemy battle through three party phases, enemy phases and victory (gold2084). test/second_field_battle_dos_test.dart compares six player records, every active enemy field and RandSeed at each phase. test/first_field_battle_dos_ui_test.dart replays the two fights continuously in the real mobile screen. Round2 commands are inferred replay inputs, not an independent native command-memory read; exact selection-path parity remains unverified. Source SelectEnemy accepts dead slots and starts at1 each call: BattleViewportView now permits dead-target taps and resets at each person/round, leaving forward-only retargeting to AttackOne/CastOne. test/battle_dead_target_selection_test.dart prevents an invalid attack/RNG draw at an earlier live enemy when the user selects a dead last slot. Original EXE/RAM/RNG unchanged; full campaign and other command branches remain partial. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle_commands.dart",
+      "test": "test/battle_commands_dos_test.dart",
+      "note": "Original EXE executes 58368 manual numeric selections with explicit SelectEnemy/Clear stubs: cancellation preserves j, byte i-1 wrap and ESP target status; all 256 reset bytes affect only six how fields. Actual UI uses this resolver; source CASE action ownership, Cure immediacy and auto case have separate cited native/UI evidence. Does not close Clear/BGI hardware.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/source_battle_dispatch_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_cure_ui_test.dart",
+        "test/battle_menu_text_test.dart",
+        "test/source_battle_flow_ui_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:case:2",
@@ -9845,10 +9917,18 @@
       "line": 1070,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle_commands.dart",
+      "test": "test/battle_commands_dos_test.dart",
+      "note": "Original EXE executes 58368 manual numeric selections with explicit SelectEnemy/Clear stubs: cancellation preserves j, byte i-1 wrap and ESP target status; all 256 reset bytes affect only six how fields. Actual UI uses this resolver; source CASE action ownership, Cure immediacy and auto case have separate cited native/UI evidence. Does not close Clear/BGI hardware.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/source_battle_dispatch_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_cure_ui_test.dart",
+        "test/battle_menu_text_test.dart",
+        "test/source_battle_flow_ui_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:4",
@@ -9883,10 +9963,18 @@
       "line": 1085,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle_commands.dart",
+      "test": "test/battle_commands_dos_test.dart",
+      "note": "Original EXE executes 58368 manual numeric selections with explicit SelectEnemy/Clear stubs: cancellation preserves j, byte i-1 wrap and ESP target status; all 256 reset bytes affect only six how fields. Actual UI uses this resolver; source CASE action ownership, Cure immediacy and auto case have separate cited native/UI evidence. Does not close Clear/BGI hardware.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/source_battle_dispatch_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_cure_ui_test.dart",
+        "test/battle_menu_text_test.dart",
+        "test/source_battle_flow_ui_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:5",
@@ -9921,10 +10009,18 @@
       "line": 1102,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle_commands.dart",
+      "test": "test/battle_commands_dos_test.dart",
+      "note": "Original EXE executes 58368 manual numeric selections with explicit SelectEnemy/Clear stubs: cancellation preserves j, byte i-1 wrap and ESP target status; all 256 reset bytes affect only six how fields. Actual UI uses this resolver; source CASE action ownership, Cure immediacy and auto case have separate cited native/UI evidence. Does not close Clear/BGI hardware.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/source_battle_dispatch_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_cure_ui_test.dart",
+        "test/battle_menu_text_test.dart",
+        "test/source_battle_flow_ui_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:6",
@@ -9959,10 +10055,18 @@
       "line": 1118,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle_commands.dart",
+      "test": "test/battle_commands_dos_test.dart",
+      "note": "Original EXE executes 58368 manual numeric selections with explicit SelectEnemy/Clear stubs: cancellation preserves j, byte i-1 wrap and ESP target status; all 256 reset bytes affect only six how fields. Actual UI uses this resolver; source CASE action ownership, Cure immediacy and auto case have separate cited native/UI evidence. Does not close Clear/BGI hardware.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/source_battle_dispatch_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_cure_ui_test.dart",
+        "test/battle_menu_text_test.dart",
+        "test/source_battle_flow_ui_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:7",
@@ -9983,20 +10087,36 @@
       "line": 1127,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle_commands.dart",
+      "test": "test/battle_commands_dos_test.dart",
+      "note": "Original EXE executes 58368 manual numeric selections with explicit SelectEnemy/Clear stubs: cancellation preserves j, byte i-1 wrap and ESP target status; all 256 reset bytes affect only six how fields. Actual UI uses this resolver; source CASE action ownership, Cure immediacy and auto case have separate cited native/UI evidence. Does not close Clear/BGI hardware.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/source_battle_dispatch_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_cure_ui_test.dart",
+        "test/battle_menu_text_test.dart",
+        "test/source_battle_flow_ui_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:14",
       "line": 1131,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle_commands.dart",
+      "test": "test/battle_commands_dos_test.dart",
+      "note": "Original EXE executes 58368 manual numeric selections with explicit SelectEnemy/Clear stubs: cancellation preserves j, byte i-1 wrap and ESP target status; all 256 reset bytes affect only six how fields. Actual UI uses this resolver; source CASE action ownership, Cure immediacy and auto case have separate cited native/UI evidence. Does not close Clear/BGI hardware.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/source_battle_dispatch_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_cure_ui_test.dart",
+        "test/battle_menu_text_test.dart",
+        "test/source_battle_flow_ui_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:8",
@@ -10163,20 +10283,34 @@
       "line": 1176,
       "kind": "case",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone115 continues the live native three-enemy battle through three party phases, enemy phases and victory (gold2084). test/second_field_battle_dos_test.dart compares six player records, every active enemy field and RandSeed at each phase. test/first_field_battle_dos_ui_test.dart replays the two fights continuously in the real mobile screen. Round2 commands are inferred replay inputs, not an independent native command-memory read; exact selection-path parity remains unverified. Source SelectEnemy accepts dead slots and starts at1 each call: BattleViewportView now permits dead-target taps and resets at each person/round, leaving forward-only retargeting to AttackOne/CastOne. test/battle_dead_target_selection_test.dart prevents an invalid attack/RNG draw at an earlier live enemy when the user selects a dead last slot. Original EXE/RAM/RNG unchanged; full campaign and other command branches remain partial. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:exit:2",
       "line": 1183,
       "kind": "exit",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/source_battle_flow_ui_test.dart",
+      "note": "Real viewport covers all 64 six-slot active masks, seventh scratch exclusion, 32 leader auto-follow masks, source slot order and repeat after party/enemy waits. Four enemy-first terminal states assert ReadKey precedes result, including defeat priority when both sides inactive; separate native auto selection and successful run waits cited. Only control/terminal ownership, not BGI raster.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/auto_select_dos_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:randomenemy:1:case:1",
@@ -18193,6 +18327,190 @@
       "verification": "verified",
       "supporting_evidence": [
         "test/companion_selection_dos_test.dart"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:join:1:if:1",
+      "line": 1063,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_join.dart",
+      "test": "test/join_bounds_dos_test.dart",
+      "note": "6656 original EXE complete join records: every byte level/cast and signed previous XP boundaries. Level 0/>30 keeps destination XP; 1..19 source table, 20..30 510000; source cast threshold uses all byte values. All five actual destination options match full records and preserve other slots. Menus/graphics not inferred.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_join_bounds.py",
+        "tool/tests/test_export_dos_join_bounds.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:join:1:case:1",
+      "line": 1075,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_join.dart",
+      "test": "test/join_bounds_dos_test.dart",
+      "note": "6656 original EXE complete join records: every byte level/cast and signed previous XP boundaries. Level 0/>30 keeps destination XP; 1..19 source table, 20..30 510000; source cast threshold uses all byte values. All five actual destination options match full records and preserve other slots. Menus/graphics not inferred.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_join_bounds.py",
+        "tool/tests/test_export_dos_join_bounds.py"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:last:1:for:1",
+      "line": 723,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/services/save_manager.dart",
+      "test": "test/source_new_game_persistence_test.dart",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart",
+        "test/fixtures/dos_new_game.json",
+        "lib/main.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:last:1:for:3",
+      "line": 732,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/services/save_manager.dart",
+      "test": "test/source_new_game_persistence_test.dart",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart",
+        "test/fixtures/dos_new_game.json",
+        "lib/main.dart"
+      ]
+    },
+    {
+      "id": "LORECRET.PAS:last:1:if:1",
+      "line": 735,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/services/save_manager.dart",
+      "test": "test/source_new_game_persistence_test.dart",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/new_game_dos_test.dart",
+        "test/fixtures/dos_new_game.json",
+        "lib/main.dart"
+      ]
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:case:1",
+      "line": 24,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_event_dispatcher.dart",
+      "test": "test/source_special_event_routing_test.dart",
+      "note": "Independently parsed Pascal CASE labels select corresponding direct owner over every 1..100 coordinate in all 24 labeled maps, plus all other byte map values/default and nonspecial actions. Compare route identity/map and consumption with direct owner using identical initial RNG. This closes CASE ownership only, not nested arithmetic/hardware or whole procedure parity.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:case:1",
+      "line": 1009,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_event_dispatcher.dart",
+      "test": "test/source_special_event_routing_test.dart",
+      "note": "Independently parsed part2 CASE labels checked against actual dispatcher at all 1..100 coordinates with same-context direct owners; all remaining byte map defaults and nonspecial actions tested. Ownership only, all nested contracts retain separate status.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent:1:if:1",
+      "line": 2218,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_event_dispatcher.dart",
+      "test": "test/source_special_event_routing_test.dart",
+      "note": "Source map<17 part boundary and CASE labels independently parsed; actual dispatcher matches selected direct owner for all byte map values and each 1..100 coordinate for valid maps. No legacy fallback when owner returns null. Does not claim full nested procedure parity.",
+      "verification": "verified",
+      "supporting_evidence": []
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:25",
+      "line": 308,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map7 exact x50 gate before y71 exit guards/destinations extracted from source; all 1..100 coordinates checked, building entrances remain separate LOREENT owners. Real screen covers Select0/1/2, correct enter/exit question, refused exit y--, gate stays. Synthetic guard intersection: accepted gate changes map and skips exit, refusal continues exit; secret wall write precedes exit question.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/screens/main_game_screen.dart"
+      ]
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:26",
+      "line": 309,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map7 exact x50 gate before y71 exit guards/destinations extracted from source; all 1..100 coordinates checked, building entrances remain separate LOREENT owners. Real screen covers Select0/1/2, correct enter/exit question, refused exit y--, gate stays. Synthetic guard intersection: accepted gate changes map and skips exit, refusal continues exit; secret wall write precedes exit question.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/screens/main_game_screen.dart"
+      ]
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:28",
+      "line": 320,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map7 exact x50 gate before y71 exit guards/destinations extracted from source; all 1..100 coordinates checked, building entrances remain separate LOREENT owners. Real screen covers Select0/1/2, correct enter/exit question, refused exit y--, gate stays. Synthetic guard intersection: accepted gate changes map and skips exit, refusal continues exit; secret wall write precedes exit question.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/screens/main_game_screen.dart"
+      ]
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part1:1:if:29",
+      "line": 321,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map7 exact x50 gate before y71 exit guards/destinations extracted from source; all 1..100 coordinates checked, building entrances remain separate LOREENT owners. Real screen covers Select0/1/2, correct enter/exit question, refused exit y--, gate stays. Synthetic guard intersection: accepted gate changes map and skips exit, refusal continues exit; secret wall write precedes exit question.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/screens/main_game_screen.dart"
+      ]
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:44",
+      "line": 1368,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map19 exact y46 exit and map4(48,58) destination parsed independently; all 1..100 coordinates check y>46 never exits. Real screen Select0/1/2 proves load on first choice and refusal y45, with original exit question. Other map19 nested events retain their own evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/screens/main_game_screen.dart"
+      ]
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:45",
+      "line": 1369,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_world_manager.dart",
+      "test": "test/source_map7_map19_portal_test.dart",
+      "note": "Original map19 exact y46 exit and map4(48,58) destination parsed independently; all 1..100 coordinates check y>46 never exits. Real screen Select0/1/2 proves load on first choice and refusal y45, with original exit question. Other map19 nested events retain their own evidence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "lib/screens/main_game_screen.dart"
       ]
     }
   ]

@@ -7,6 +7,7 @@ import '../logic/lore_batt_text.dart';
 import '../logic/lore_sub_text.dart';
 import '../logic/lore_enemy_presentation.dart';
 import '../logic/lore_enemy_selection.dart';
+import '../logic/lore_battle_commands.dart';
 import '../logic/lore_battle_menus.dart';
 
 import 'package:flutter/material.dart';
@@ -170,6 +171,12 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) unawaited(_runOpeningEnemyTurn());
       });
+    } else if (!widget.partyMembers.take(6).any((p) => p.isBattleActive)) {
+      // The source FOR does not wait for a menu when every exist(person) is false.
+      _isTurnProcessing = true;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) unawaited(_executeRound());
+      });
     }
   }
 
@@ -221,16 +228,15 @@ class _BattleViewportViewState extends State<BattleViewportView> {
 
   /// 새 라운드의 선택을 시작한다 (`for person := 1 to 6 do battle[person,1] := 0`).
   void _startSelection() {
-    for (var i = 1; i <= 6; i++) {
-      _battle.battle[i][1] = 0;
-    }
+    _battle.beginSelection();
     _autoRound = false;
     setState(() {
       _activePlayerIndex = 0;
       _isTurnProcessing = false;
     });
-    activePlayer;
+    final player = activePlayer;
     _selectedEnemyIndex = 0; // LORESUB SelectEnemy starts at number := 1.
+    if (player == null) unawaited(_executeRound());
   }
 
   /// 현재 파티원의 선택을 기록하고 다음 사람으로 넘어간다.
@@ -240,6 +246,20 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     _battle.battle[who][2] = what;
     _battle.battle[who][3] = whom;
     unawaited(_afterSelection());
+  }
+
+  void _selectSourceMenu(int how, int result) {
+    final player = activePlayer;
+    if (player == null || _battleEnded) return;
+    final command = LoreBattleCommands.manual(
+      how: how,
+      result: result,
+      maxsum: how == 1 ? 0 : LoreBattleMenus.maxsum(how, player.magicLevel),
+      target: _selectedEnemyIndex + 1,
+      weapon: player.weapon,
+      targetUnavailable: currentTarget.isUnconscious || currentTarget.isDead,
+    );
+    _select(command[0], command[1], command[2]);
   }
 
   Future<void> _afterSelection() async {
@@ -315,7 +335,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
-    _select(1, player.weapon, _selectedEnemyIndex + 1);
+    _selectSourceMenu(1, 0);
   }
 
   // ==========================================
@@ -332,8 +352,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       _modeTitle(player),
       spells,
       player,
-      (spell) => _select(2, spell.id, _selectedEnemyIndex + 1),
-      onCancel: _hesitate,
+      (result) => _selectSourceMenu(2, result),
     );
   }
 
@@ -351,8 +370,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       _modeTitle(player),
       spells,
       player,
-      (spell) => _select(3, spell.id - 6, 0),
-      onCancel: _hesitate,
+      (result) => _selectSourceMenu(3, result),
     );
   }
 
@@ -370,15 +388,15 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       _modeTitle(player),
       spells,
       player,
-      (spell) => _select(4, spell.id - 12, _selectedEnemyIndex + 1),
-      onCancel: _hesitate,
+      (result) => _selectSourceMenu(4, result),
     );
   }
 
   /// 메뉴에서 `없음`/취소: `battle[person,1] := 0` (`주저했다`).
   void _hesitate() {
     if (_battleEnded) return;
-    _select(0, 0, 0);
+    final who = _activePlayerIndex + 1;
+    _select(0, _battle.battle[who][2], _battle.battle[who][3]);
   }
 
   // ==========================================
@@ -408,7 +426,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     );
     if (!mounted || _battleEnded) return;
     setState(() => _isTurnProcessing = false);
-    _select(5, 0, 0);
+    final who = _activePlayerIndex + 1;
+    _select(5, _battle.battle[who][2], _battle.battle[who][3]);
   }
 
   // ==========================================
@@ -425,16 +444,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       _modeTitle(player),
       spells,
       player,
-      (spell) {
-        final target = currentTarget;
-        if (target.isUnconscious || target.isDead) {
-          // `if enemy[j].unconscious or enemy[j].dead then battle[person,1] := 0`
-          _hesitate();
-          return;
-        }
-        _select(6, spell.id - 40, _selectedEnemyIndex + 1);
-      },
-      onCancel: _hesitate,
+      (result) => _selectSourceMenu(6, result),
       includeNone: false,
     );
   }
@@ -450,7 +460,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
       _battle.autoSelect(1);
       unawaited(_afterSelection());
     } else {
-      _select(7, 0, 0);
+      final who = _activePlayerIndex + 1;
+      _select(7, _battle.battle[who][2], _battle.battle[who][3]);
     }
   }
 
@@ -465,8 +476,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     String title,
     List<Spell> spells,
     PartyMember player,
-    void Function(Spell spell) onSelected, {
-    VoidCallback? onCancel,
+    void Function(int result) onSelected, {
     bool includeNone = true,
   }) {
     final how = switch (spells.first.category) {
@@ -486,11 +496,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
         maxsum: LoreBattleMenus.maxsum(how, player.magicLevel),
       ).then((k) {
         if (!mounted || _battleEnded) return;
-        if (k == 0 || (includeNone && k == 1)) {
-          onCancel?.call();
-        } else {
-          onSelected(spells[k - (includeNone ? 2 : 1)]);
-        }
+        onSelected(k);
       }),
     );
   }

@@ -7,6 +7,7 @@ import 'package:lore/game/lore_game.dart';
 import 'package:lore/game/lore_map_manager.dart';
 import 'package:lore/logic/field_hotkeys.dart';
 import 'package:lore/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// 키보드 입력 검증.
 ///
@@ -181,6 +182,7 @@ void main() {
 
   group('3. 위젯 통합: 실제 키 입력으로 해당 UI가 열린다', () {
     Future<void> startGame(WidgetTester tester) async {
+      SharedPreferences.setMockInitialValues({});
       await tester.pumpWidget(const LoreApp());
       await tester.pump(const Duration(milliseconds: 100));
       await tester.tap(find.byKey(const ValueKey('quick-start')));

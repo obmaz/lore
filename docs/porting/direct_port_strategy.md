@@ -2903,3 +2903,29 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      검증했다. 35개만 해소하여 verified 1670 / partial 178.
      다른 palette/hardware/unknown 계약은 유지하며 1701개 목표를 계속한다.
      전체 Flutter 1602건(3 skip), Python 119건, analyze 및 웹 release build 통과.
+
+190. **1701개 목표: 명령 기록·저장 순서·포털 경계의 최종 묶음**
+     BattleMode의 수동 명령 58368개 원본 실행으로 취소 후 남는 j,
+     i-1 byte wrap, 무기 byte 및 ESP의 대상 상태 guard를 대조했다.
+     SelectEnemy/Clear는 명시적 stub이며 BGI 동작은 주장하지 않는다.
+     여섯 슬롯의 모든 활성 mask, 리더 auto-follow 32개 mask, 두 key wait
+     이후의 다음 라운드와 적 선공의 결과 우선순위를 실제 화면에서 확인한다.
+     원본 join 전체 record 6656개로 모든 byte level/cast 및 이전 XP 경계를
+     대조하고 실제 다섯 replacement option의 다른 슬롯 보존도 확인했다.
+     Last는 여섯 record와 100개 etc의 초기화, 기존 지도/퀘스트 snapshot
+     제거, 네 슬롯 저장 완료 후 게임 시작을 실제 저장 adapter에서 검증한다.
+     저장 실패 시 후속 쓰기와 게임 시작을 막는다. DOS Erase/IOResult 계약은
+     미완료로 남긴다. 직접 CASE owner routing은 원문의 두 label 집합과
+     모든 byte 지도 번호 및 각 valid 지도 1..100 좌표로 비교한다.
+     이 routing 증거는 nested procedure 전체의 검증 완료를 뜻하지 않는다.
+     map7/19의 정확한 포털 guard, 목적지와 거절 시 y 변경을 검증하고,
+     map7 gate/exit가 겹칠 때 첫 선택 거절 후 다음 IF로 진행하며 수락은
+     새 지도에 도착해 기존 출구 IF를 건너뛰는 순서를 실제 UI에서 확인한다.
+     secret wall 쓰기도 출구 질문보다 먼저 적용한다. 32개만 추가 해소해
+     verified 1702 / partial 146 / unclassified 0. 전투 Clear와 DOS 파일
+     오류, 다른 하드웨어/unknown 계약은 유지한다. 모두 행동 불능인 파티는
+     원본처럼 선택 loop를 건너뛰게 수정했다. 기존 두 명 저장 기대값도
+     원본의 여섯 record 및 blank record 비교로 정정했다.
+     최신 코드 전체 Flutter 1629건(3 skip), Python 122건, analyze 및 웹
+     release build가 통과했다. 목표 1701개를 넘겼으며 main에 푸시한다.
+     전체 이식 완료가 아니므로 배포는 보류한다.

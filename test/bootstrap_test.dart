@@ -12,6 +12,7 @@ import 'package:lore/game/sprite_sheet.dart';
 import 'package:lore/logic/lore_join.dart';
 import 'package:lore/main.dart';
 import 'package:lore/widgets/dpad_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// `main()`과 동일한 순서로 모든 JSON/PNG 데이터를 로드한 "JSON 사용 상태"의 통합 검증.
 ///
@@ -28,6 +29,7 @@ void main() {
 
   group('부트스트랩 통합 (JSON 데이터 사용 상태)', () {
     setUp(() async {
+      SharedPreferences.setMockInitialValues({});
       // main()과 동일한 로드 순서
       await LoreData.instance.load();
       await LegacyJsonFixtureEngine.instance.load();

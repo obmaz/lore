@@ -416,7 +416,17 @@ void main() {
       expect(save.slotName, SaveManager.slotNames[slot - 1]);
       expect([save.mapId, save.playerX, save.playerY], [6, 51, 31]);
       expect([save.gold, save.food], [2000, 20]);
-      expect(save.party.map((m) => m.name), party.map((m) => m.name));
+      expect(save.party.map((m) => m.name), [
+        ...party.map((m) => m.name),
+        '',
+        '',
+        '',
+        '',
+      ]);
+      expect(save.party.length, 6); // Last always writes player[1..6].
+      for (final blank in save.party.skip(party.length)) {
+        expect(blank.toJson(), PartyMember.blank().toJson());
+      }
       expect(save.flags, isEmpty);
       expect(save.etc, isEmpty);
       expect(save.mapTiles, isEmpty);

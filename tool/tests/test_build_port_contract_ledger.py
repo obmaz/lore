@@ -10,6 +10,25 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_final_threshold_batch_has_exact_scope_and_preserves_hardware_gaps(self):
+        sites = ledger.build()['control_sites']
+        reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        for test, count in {
+            'test/battle_commands_dos_test.dart': 8,
+            'test/source_battle_flow_ui_test.dart': 10,
+            'test/join_bounds_dos_test.dart': 2,
+            'test/source_new_game_persistence_test.dart': 3,
+            'test/source_special_event_routing_test.dart': 3,
+            'test/source_map7_map19_portal_test.dart': 6,
+        }.items():
+            ids = {r['id'] for r in reviewed if r.get('test') == test and r.get('verification') == 'verified'}
+            self.assertEqual(len(ids), count)
+            self.assertTrue(all(s['verification_status'] == 'verified' for s in sites if s['id'] in ids))
+        for routine, line in [('LOREBATT.PAS:battlemode:1',1027),('LORECRET.PAS:last:1',740)]:
+            untouched = [s for s in sites if s['routine'] == routine and s['line'] == line]
+            self.assertEqual(len(untouched),1)
+            self.assertEqual(untouched[0]['verification_status'],'partial')
+
     def test_creation_keyboard_scope_preserves_crt_wait_gaps(self):
         sites = ledger.build()['control_sites']
         expected = {'test/creation_second_dos_test.dart': 9,
@@ -116,7 +135,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 178)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 146)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

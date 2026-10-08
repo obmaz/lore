@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -39,6 +37,32 @@ class LoreApp extends StatefulWidget {
 class _LoreAppState extends State<LoreApp> {
   List<PartyMember>? _party;
   SaveData? _initialSaveData;
+  bool _creating = false;
+  Object? _creationError;
+
+  Future<void> _startNewGame(List<PartyMember> party) async {
+    if (_creating || _creationError != null) return;
+    setState(() => _creating = true);
+    try {
+      // LORECRET.Last completes all four writes before Set_All/gameplay.
+      await SaveManager.instance.writeNewGame(
+        party,
+        mapTitle: LoreWorldManager.mapRegistry[6]?.title ?? '',
+      );
+      if (!mounted) return;
+      setState(() {
+        _party = party;
+        _creating = false;
+      });
+    } catch (error) {
+      if (!mounted) return;
+      // Storage is a modern adapter; failure must not silently start play.
+      setState(() {
+        _creationError = error;
+        _creating = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,26 +73,40 @@ class _LoreAppState extends State<LoreApp> {
       // 파티가 결성되지 않았고 세이브 로드가 없으면 캐릭터 생성 화면으로 시작,
       // 생성 완료 또는 세이브 로드 시 메인 게임 화면으로 진입!
       home: _party == null && _initialSaveData == null
-          ? CharacterCreationScreen(
-              onGameStart: (party) {
-                // LORECRET.PAS `Last` writes the new party to all four slots
-                // before the game starts; storage errors do not stop the game.
-                unawaited(
-                  SaveManager.instance
-                      .writeNewGame(
-                        party,
-                        mapTitle: LoreWorldManager.mapRegistry[6]?.title ?? '',
-                      )
-                      .then((_) {}, onError: (Object _) {}),
-                );
-                setState(() => _party = party);
-              },
-              onLoadGame: (saveData) {
-                setState(() {
-                  _initialSaveData = saveData;
-                  _party = saveData.party;
-                });
-              },
+          ? Stack(
+              children: [
+                ExcludeFocus(
+                  excluding: _creating || _creationError != null,
+                  child: IgnorePointer(
+                    ignoring: _creating || _creationError != null,
+                    child: CharacterCreationScreen(
+                      onGameStart: _startNewGame,
+                      onLoadGame: (saveData) {
+                        setState(() {
+                          _initialSaveData = saveData;
+                          _party = saveData.party;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                if (_creating || _creationError != null)
+                  Positioned.fill(
+                    child: ColoredBox(
+                      color: Colors.black54,
+                      child: Center(
+                        child: _creationError != null
+                            ? const Text(
+                                '새 게임 저장 실패. 앱을 다시 시작해 주세요.',
+                                key: ValueKey('creation-storage-error'),
+                              )
+                            : const CircularProgressIndicator(
+                                key: ValueKey('creation-saving'),
+                              ),
+                      ),
+                    ),
+                  ),
+              ],
             )
           : MainGameScreen(
               initialParty: _party,

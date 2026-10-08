@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 178,
-    "verified": 1670,
+    "partial": 146,
+    "verified": 1702,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -22,8 +22,8 @@
     },
     {
       "routine": "LOREBATT.PAS:battlemode:1",
-      "partial": 19,
-      "verified": 23
+      "verified": 41,
+      "partial": 1
     },
     {
       "routine": "LOREBATT.PAS:castall:1",
@@ -127,8 +127,8 @@
     },
     {
       "routine": "LORECRET.PAS:last:1",
-      "partial": 4,
-      "verified": 1
+      "verified": 4,
+      "partial": 1
     },
     {
       "routine": "LORECRET.PAS:name:1",
@@ -318,17 +318,17 @@
     },
     {
       "routine": "LORESPEC.PAS:specialevent:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part1:1",
-      "partial": 7,
-      "verified": 157
+      "verified": 162,
+      "partial": 2
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part2:1",
-      "partial": 18,
-      "verified": 242
+      "verified": 245,
+      "partial": 15
     },
     {
       "routine": "LORESUB.PAS:at:1",
@@ -401,7 +401,7 @@
     },
     {
       "routine": "LORESUB.PAS:join:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LORESUB.PAS:load:1",
@@ -565,6 +565,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/auto_select_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_commands.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/battle_commands_dos_test.dart"
       ]
     },
     {
@@ -1207,6 +1215,14 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_join_bounds.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/join_bounds_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_keep2_completion.json",
       "explicit_contracts": [],
       "note_mentions": [],
@@ -1332,7 +1348,11 @@
     },
     {
       "path": "test/fixtures/dos_new_game.json",
-      "explicit_contracts": [],
+      "explicit_contracts": [
+        "LORECRET.PAS:last:1:for:1",
+        "LORECRET.PAS:last:1:for:3",
+        "LORECRET.PAS:last:1:if:1"
+      ],
       "note_mentions": [
         "LORESPEC.PAS:specialevent_part1:1:if:21",
         "LORESPEC.PAS:specialevent_part1:1:if:24",
@@ -1346,7 +1366,8 @@
         "test/castle_departure_dos_ui_test.dart",
         "test/first_field_battle_dos_ui_test.dart",
         "test/new_game_dos_test.dart",
-        "test/resumed_field_battle_dos_ui_test.dart"
+        "test/resumed_field_battle_dos_ui_test.dart",
+        "test/source_new_game_persistence_test.dart"
       ]
     },
     {
@@ -1362,25 +1383,7 @@
       "path": "test/fixtures/dos_pyramid_battle.json",
       "explicit_contracts": [],
       "note_mentions": [
-        "LOREBATT.PAS:battlemode:1:repeat:1",
-        "LOREBATT.PAS:battlemode:1:if:1",
-        "LOREBATT.PAS:battlemode:1:goto:1",
-        "LOREBATT.PAS:battlemode:1:for:1",
-        "LOREBATT.PAS:battlemode:1:for:2",
-        "LOREBATT.PAS:battlemode:1:if:2",
-        "LOREBATT.PAS:battlemode:1:if:3",
-        "LOREBATT.PAS:battlemode:1:if:4",
-        "LOREBATT.PAS:battlemode:1:if:5",
-        "LOREBATT.PAS:battlemode:1:if:6",
-        "LOREBATT.PAS:battlemode:1:case:1",
-        "LOREBATT.PAS:battlemode:1:if:9",
-        "LOREBATT.PAS:battlemode:1:if:10",
-        "LOREBATT.PAS:battlemode:1:if:11",
-        "LOREBATT.PAS:battlemode:1:if:12",
-        "LOREBATT.PAS:battlemode:1:if:13",
-        "LOREBATT.PAS:battlemode:1:if:14",
-        "LOREBATT.PAS:battlemode:1:case:8",
-        "LOREBATT.PAS:battlemode:1:exit:2"
+        "LOREBATT.PAS:battlemode:1:if:5"
       ],
       "test_candidates": [
         "test/pyramid_battle_dos_test.dart"
@@ -1467,8 +1470,6 @@
       "explicit_contracts": [],
       "note_mentions": [
         "LOREBATT.PAS:runaway:1:if:1",
-        "LOREBATT.PAS:battlemode:1:if:1",
-        "LOREBATT.PAS:battlemode:1:for:2",
         "LOREBATT.PAS:encounterenemy:1:if:8"
       ],
       "test_candidates": [

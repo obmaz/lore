@@ -159,6 +159,10 @@ class SaveManager {
     required String mapTitle,
   }) async {
     final now = DateTime.now();
+    final sourceParty = [
+      for (var i = 0; i < 6; i++)
+        i < party.length ? party[i] : PartyMember.blank(),
+    ];
     final encoded = [
       for (var slot = 1; slot <= 4; slot++)
         jsonEncode(
@@ -172,14 +176,16 @@ class SaveManager {
             playerY: 31,
             gold: 2000,
             food: 20,
-            party: party,
+            party: sourceParty,
             flags: const {},
           ).toJson(),
         ),
     ];
     final prefs = await SharedPreferences.getInstance();
     for (var slot = 1; slot <= 4; slot++) {
-      await prefs.setString(_keyForSlot(slot), encoded[slot - 1]);
+      if (!await prefs.setString(_keyForSlot(slot), encoded[slot - 1])) {
+        throw StateError('Failed to write new-game slot $slot');
+      }
     }
   }
 
