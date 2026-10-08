@@ -2857,5 +2857,36 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      직접 Dart 메뉴 범위를 사용한다. 두 성별 helper도 모든 6슬롯에서 대조했다.
      verified 1584 / partial 264. 웹 release build와 analyze 통과;
      다른 입력·target·phase·BGI 계약은 별도이며 1701개 목표는 진행 중이다.
-     전체 Flutter 1563건(3건 skip), 최종 집중 native 5건 및 analyze 통과.
-     런타임 변경·배포 없이 검증 자료와 근거 연결을 추가했다.
+     전체 Flutter 1579건(3건 skip), analyze와 웹 release build 통과.
+     배포는 마지막에만 진행한다.
+
+186. **생성 입력의 직접 상태 전이와 native 대조**
+     Second는 모든 유효한 배분 상태를 포함한 54006개 native 입력으로
+     포인트·커서·남은 예산과 Enter 종료를 비교했다. Third는 모든 byte key와
+     128 자격 mask를 대조한다. Fourth는 원본 EXE의 열 개 flag 초기화,
+     커서 clamp, 두 선택의 inner loop와 네 명 종료를 실행하여 비교한다.
+     실제 화면에 동일한 직접 Dart 상태 전이를 연결했다. invalid quiz/class,
+     첫 유효 계급 lock, keyboard companion/profile/cancel/duplicate 및
+     review Escape 재시작·전체 생성 결과를 실제 UI에서 검증한다.
+     numeric/input/label 29개만 해소하여 verified 1613 / partial 235.
+     CRT polling, palette, Profile wait 계약은 계속 미완료로 유지한다.
+     1701개 목표를 향한 검증은 계속 진행하며 배포하지 않는다.
+
+187. **지도 전체 payload·영입 메뉴·훈련 재선택의 좁은 검증**
+     모든 27개 원본 MAP의 각 좌표를 실제 loader와 비교하고, 각 cell에
+     서로 다른 변경 byte를 넣어 snapshot 저장/복원을 대조했다. Load/Save
+     row-major 6개 loop만 완료하며 파일 오류/font/music은 주장하지 않는다.
+     영입 메뉴는 모든 named mask와 0..7 슬롯에서 2..6 이름 및 fallback을
+     대조한다. 훈련은 기존 native 금액 차감 증거와 모든 byte 레벨에서
+     부족 분기와 재선택 순서를 검증해 3개를 추가 해소한다.
+     verified 1624 / partial 224. 최초 uninitialized j 계약은 미완료 유지.
+
+188. **전투 실행 dispatch와 독 상태 phase**
+     66048개 원본 명령 실행으로 모든 signed HP word와 poison/status 조합,
+     적 0..7명 및 DEC wrap을 대조했다. EnemyAttack은 기록 stub이며 이
+     fixture는 그 내부 계산을 주장하지 않는다. 소환된 적이 다음 phase부터
+     행동하는 FOR bound도 확인했다. 모든 byte 명령과 active mask를 원문
+     CASE와 비교하고 실제 UI의 여섯 슬롯 한계·성공 도주 key wait를 대조했다.
+     11개만 해소하여 verified 1635 / partial 213. 다른 selection/UI는 별도다.
+     전체 Flutter 1588건(3 skip), 추가 phase/dispatch 집중 테스트 16건 통과.
+     analyze 및 웹 release build 통과. 목표 1701개까지 계속하며 배포는 보류.

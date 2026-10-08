@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 264,
-    "verified": 1584,
+    "partial": 213,
+    "verified": 1635,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -22,8 +22,8 @@
     },
     {
       "routine": "LOREBATT.PAS:battlemode:1",
-      "partial": 30,
-      "verified": 12
+      "partial": 19,
+      "verified": 23
     },
     {
       "routine": "LOREBATT.PAS:castall:1",
@@ -122,8 +122,8 @@
     },
     {
       "routine": "LORECRET.PAS:fourth:1",
-      "partial": 16,
-      "verified": 10
+      "verified": 24,
+      "partial": 2
     },
     {
       "routine": "LORECRET.PAS:last:1",
@@ -136,24 +136,26 @@
     },
     {
       "routine": "LORECRET.PAS:profile:1",
-      "partial": 2
+      "verified": 1,
+      "partial": 1
     },
     {
       "routine": "LORECRET.PAS:second:1",
-      "partial": 10
+      "verified": 9,
+      "partial": 1
     },
     {
       "routine": "LORECRET.PAS:third:1",
-      "partial": 10,
-      "verified": 7
+      "verified": 10,
+      "partial": 7
     },
     {
       "routine": "LORECRET.PAS:whatclass:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORECRET.PAS:which:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREEND.PAS:end_demo:1",
@@ -404,8 +406,8 @@
     },
     {
       "routine": "LORESUB.PAS:load:1",
-      "partial": 15,
-      "verified": 6
+      "partial": 11,
+      "verified": 10
     },
     {
       "routine": "LORESUB.PAS:message:1",
@@ -437,7 +439,7 @@
     },
     {
       "routine": "LORESUB.PAS:returnjoinmember:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LORESUB.PAS:returnmagic:1",
@@ -462,7 +464,8 @@
     },
     {
       "routine": "LORESUB.PAS:save:1",
-      "partial": 3
+      "partial": 1,
+      "verified": 2
     },
     {
       "routine": "LORESUB.PAS:scroll:1",
@@ -490,8 +493,8 @@
     },
     {
       "routine": "LORESUB.PAS:train_center:1",
-      "verified": 45,
-      "partial": 6
+      "verified": 48,
+      "partial": 3
     },
     {
       "routine": "LORESUB.PAS:turn_mind:1",
@@ -623,6 +626,14 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_companion_selection.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/companion_selection_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_condition_storage.json",
       "explicit_contracts": [],
       "note_mentions": [],
@@ -632,11 +643,27 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_creation_class.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_creation_fourth.json",
       "explicit_contracts": [],
       "note_mentions": [],
       "test_candidates": [
         "test/creation_fourth_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_second.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_second_dos_test.dart"
       ]
     },
     {
@@ -928,6 +955,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/enemy_magic_targets_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_phase_dos_test.dart"
       ]
     },
     {
@@ -1340,17 +1375,6 @@
         "LOREBATT.PAS:battlemode:1:if:12",
         "LOREBATT.PAS:battlemode:1:if:13",
         "LOREBATT.PAS:battlemode:1:if:14",
-        "LOREBATT.PAS:battlemode:1:for:8",
-        "LOREBATT.PAS:battlemode:1:if:15",
-        "LOREBATT.PAS:battlemode:1:if:16",
-        "LOREBATT.PAS:battlemode:1:case:7",
-        "LOREBATT.PAS:battlemode:1:if:17",
-        "LOREBATT.PAS:battlemode:1:exit:1",
-        "LOREBATT.PAS:battlemode:1:for:9",
-        "LOREBATT.PAS:battlemode:1:if:18",
-        "LOREBATT.PAS:battlemode:1:if:19",
-        "LOREBATT.PAS:battlemode:1:if:20",
-        "LOREBATT.PAS:battlemode:1:if:21",
         "LOREBATT.PAS:battlemode:1:case:8",
         "LOREBATT.PAS:battlemode:1:exit:2"
       ],
@@ -1517,10 +1541,7 @@
       "note_mentions": [
         "LORESUB.PAS:train_center:1:if:2",
         "LORESUB.PAS:train_center:1:case:1",
-        "LORESUB.PAS:train_center:1:case:2",
-        "LORESUB.PAS:train_center:1:if:5",
-        "LORESUB.PAS:train_center:1:if:41",
-        "LORESUB.PAS:train_center:1:goto:4"
+        "LORESUB.PAS:train_center:1:case:2"
       ],
       "test_candidates": [
         "test/training_dispatch_dos_test.dart"
@@ -1539,7 +1560,6 @@
         "LORESUB.PAS:train_center:1:case:3",
         "LORESUB.PAS:train_center:1:if:4",
         "LORESUB.PAS:train_center:1:goto:1",
-        "LORESUB.PAS:train_center:1:if:5",
         "LORESUB.PAS:train_center:1:goto:2",
         "LORESUB.PAS:train_center:1:case:4",
         "LORESUB.PAS:train_center:1:if:6",
@@ -1578,9 +1598,7 @@
         "LORESUB.PAS:train_center:1:if:39",
         "LORESUB.PAS:train_center:1:for:1",
         "LORESUB.PAS:train_center:1:if:40",
-        "LORESUB.PAS:train_center:1:goto:3",
-        "LORESUB.PAS:train_center:1:if:41",
-        "LORESUB.PAS:train_center:1:goto:4"
+        "LORESUB.PAS:train_center:1:goto:3"
       ],
       "test_candidates": [
         "test/training_growth_dos_test.dart"

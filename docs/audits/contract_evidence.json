@@ -10004,9 +10004,14 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/source_battle_dispatch_test.dart",
+      "note": "All byte command IDs, six slots and all sixteen active-state masks compare independently source-extracted dispatch CASE and message set. Action bodies are spies, not claimed numeric proof. Actual UI verifies six-slot bound, seventh exclusion and successful escape ReadKey before exit.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:15",
@@ -10014,9 +10019,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/source_battle_dispatch_test.dart",
+      "note": "All byte command IDs, six slots and all sixteen active-state masks compare independently source-extracted dispatch CASE and message set. Action bodies are spies, not claimed numeric proof. Actual UI verifies six-slot bound, seventh exclusion and successful escape ReadKey before exit.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:16",
@@ -10024,9 +10034,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/source_battle_dispatch_test.dart",
+      "note": "All byte command IDs, six slots and all sixteen active-state masks compare independently source-extracted dispatch CASE and message set. Action bodies are spies, not claimed numeric proof. Actual UI verifies six-slot bound, seventh exclusion and successful escape ReadKey before exit.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:case:7",
@@ -10034,29 +10049,44 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/source_battle_dispatch_test.dart",
+      "note": "All byte command IDs, six slots and all sixteen active-state masks compare independently source-extracted dispatch CASE and message set. Action bodies are spies, not claimed numeric proof. Actual UI verifies six-slot bound, seventh exclusion and successful escape ReadKey before exit.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:17",
       "line": 1147,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/widgets/battle_viewport_view.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Actual original DEN1 encounter [Goblin,Insects,Goblin]: pre-battle evasion fails; enemy-first damage, one four-member manual weapon round, enemy phase and next-round member flee match all six records and RNG. Native sets etc[6]=2 before the successful-flee ReadKey; the mobile adapter now exposes2 during that wait, then returns without another enemy phase or gold. Source arrival/centre continuation is captured. Other battle exits, menu combinations and full campaign remain unverified. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/source_battle_dispatch_test.dart",
+      "note": "All byte command IDs, six slots and all sixteen active-state masks compare independently source-extracted dispatch CASE and message set. Action bodies are spies, not claimed numeric proof. Actual UI verifies six-slot bound, seventh exclusion and successful escape ReadKey before exit.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:exit:1",
       "line": 1150,
       "kind": "exit",
       "classification": "content-rule",
-      "implementation": "lib/widgets/battle_viewport_view.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Actual original DEN1 encounter [Goblin,Insects,Goblin]: pre-battle evasion fails; enemy-first damage, one four-member manual weapon round, enemy phase and next-round member flee match all six records and RNG. Native sets etc[6]=2 before the successful-flee ReadKey; the mobile adapter now exposes2 during that wait, then returns without another enemy phase or gold. Source arrival/centre continuation is captured. Other battle exits, menu combinations and full campaign remain unverified. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/logic/lore_battle.dart",
+      "test": "test/source_battle_dispatch_test.dart",
+      "note": "All byte command IDs, six slots and all sixteen active-state masks compare independently source-extracted dispatch CASE and message set. Action bodies are spies, not claimed numeric proof. Actual UI verifies six-slot bound, seventh exclusion and successful escape ReadKey before exit.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/battle_key_wait_test.dart",
+        "test/battle_menu_text_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:for:9",
@@ -10064,9 +10094,13 @@
       "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone114 adds independent live, unchanged DOSBox RAM evidence from the cold-created party: 29 actual field moves to Earth Worm, automatic victory including six player records, enemy records and the exact RandSeed, then 36 moves to Troll/Serpent/Goblin and a failed pre-battle escape followed by the enemy phase. test/first_field_battle_dos_test.dart and test/first_field_battle_dos_ui_test.dart replay the same seeds continuously through the real mobile screen. tool/capture_dos_battle_memory.py checks preserved raw bytes, decoded records, original EXE hash and the movement/encounter draw stream. No native RAM/RNG writes, no synthetic native inputs. Scope is these observed branches; second battle completion, MENACE entry and the full campaign remain pending. Milestone115 continues the live native three-enemy battle through three party phases, enemy phases and victory (gold2084). test/second_field_battle_dos_test.dart compares six player records, every active enemy field and RandSeed at each phase. test/first_field_battle_dos_ui_test.dart replays the two fights continuously in the real mobile screen. Round2 commands are inferred replay inputs, not an independent native command-memory read; exact selection-path parity remains unverified. Source SelectEnemy accepts dead slots and starts at1 each call: BattleViewportView now permits dead-target taps and resets at each person/round, leaving forward-only retargeting to AttackOne/CastOne. test/battle_dead_target_selection_test.dart prevents an invalid attack/RNG draw at an earlier live enemy when the user selects a dead last slot. Original EXE/RAM/RNG unchanged; full campaign and other command branches remain partial. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/enemy_phase_dos_test.dart",
+      "note": "66048 original machine-code cases: all signed HP words, all poison/unconscious/dead combinations, 0..7 enemies, signed DEC wrap and action eligibility. EnemyAttack is an explicitly recorded stub; its own arithmetic has separate evidence. Cached FOR upper bound checked with summon test.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:18",
@@ -10074,9 +10108,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/enemy_phase_dos_test.dart",
+      "note": "66048 original machine-code cases: all signed HP words, all poison/unconscious/dead combinations, 0..7 enemies, signed DEC wrap and action eligibility. EnemyAttack is an explicitly recorded stub; its own arithmetic has separate evidence. Cached FOR upper bound checked with summon test.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:19",
@@ -10084,9 +10122,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/enemy_phase_dos_test.dart",
+      "note": "66048 original machine-code cases: all signed HP words, all poison/unconscious/dead combinations, 0..7 enemies, signed DEC wrap and action eligibility. EnemyAttack is an explicitly recorded stub; its own arithmetic has separate evidence. Cached FOR upper bound checked with summon test.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:20",
@@ -10094,9 +10136,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/enemy_phase_dos_test.dart",
+      "note": "66048 original machine-code cases: all signed HP words, all poison/unconscious/dead combinations, 0..7 enemies, signed DEC wrap and action eligibility. EnemyAttack is an explicitly recorded stub; its own arithmetic has separate evidence. Cached FOR upper bound checked with summon test.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:21",
@@ -10104,9 +10150,13 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "test": "test/enemy_phase_dos_test.dart",
+      "note": "66048 original machine-code cases: all signed HP words, all poison/unconscious/dead combinations, 0..7 enemies, signed DEC wrap and action eligibility. EnemyAttack is an explicitly recorded stub; its own arithmetic has separate evidence. Cached FOR upper bound checked with summon test.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/lore_battle_test.dart",
+        "test/battle_viewport_join_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:case:8",
@@ -13155,8 +13205,11 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_town_shops.dart",
       "test": "test/training_dispatch_dos_test.dart",
-      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments.",
-      "verification": "partial"
+      "note": "Original native SUB/SBB shortage fixtures and all byte battle levels verify insufficient gold/XP paths, retained j, acknowledgment and re-selection order. First uninitialized j CASE contracts1359/1360/1367 remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/training_dispatch_dos_test.dart"
+      ]
     },
     {
       "id": "LORESUB.PAS:train_center:1:goto:2",
@@ -13555,8 +13608,11 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_town_shops.dart",
       "test": "test/training_dispatch_dos_test.dart",
-      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments.",
-      "verification": "partial"
+      "note": "Original native SUB/SBB shortage fixtures and all byte battle levels verify insufficient gold/XP paths, retained j, acknowledgment and re-selection order. First uninitialized j CASE contracts1359/1360/1367 remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/training_dispatch_dos_test.dart"
+      ]
     },
     {
       "id": "LORESUB.PAS:train_center:1:goto:4",
@@ -13565,8 +13621,11 @@
       "classification": "content-rule",
       "implementation": "lib/logic/lore_town_shops.dart",
       "test": "test/training_dispatch_dos_test.dart",
-      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments.",
-      "verification": "partial"
+      "note": "Original native SUB/SBB shortage fixtures and all byte battle levels verify insufficient gold/XP paths, retained j, acknowledgment and re-selection order. First uninitialized j CASE contracts1359/1360/1367 remain partial.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/training_dispatch_dos_test.dart"
+      ]
     },
     {
       "id": "LORESUB.PAS:hospital:1:if:1",
@@ -17390,6 +17449,376 @@
       "implementation": "lib/logic/lore_battle.dart",
       "test": "test/source_sub_labels_test.dart",
       "note": "Exact Pascal male/else predicate and decoded strings independently parsed; both valid genders in all six actual LoreBattle.person slots.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:for:1",
+      "line": 416,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:for:2",
+      "line": 420,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:repeat:1",
+      "line": 421,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:1",
+      "line": 425,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:case:1",
+      "line": 427,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:2",
+      "line": 434,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:3",
+      "line": 436,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:4",
+      "line": 440,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:second:1:if:5",
+      "line": 443,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_allocation.dart",
+      "test": "test/creation_second_dos_test.dart",
+      "note": "Original Second machine-code transition: all valid allocation triples, cursor/ASCII/extended-byte boundaries and actual screen arrows/Enter. CRT polling at line422 remains partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:for:1",
+      "line": 475,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Fresh eligibility flags and original Third strict class-key/flag gate, 32768 native key/mask cases; actual screen rejects unavailable choices and locks first valid class. Palette/CRT waits remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:10",
+      "line": 537,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Fresh eligibility flags and original Third strict class-key/flag gate, 32768 native key/mask cases; actual screen rejects unavailable choices and locks first valid class. Palette/CRT waits remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:11",
+      "line": 538,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Fresh eligibility flags and original Third strict class-key/flag gate, 32768 native key/mask cases; actual screen rejects unavailable choices and locks first valid class. Palette/CRT waits remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:whatclass:1:case:1",
+      "line": 32,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Source WhatClass labels/default for all byte IDs, actual confirmation and companion profile labels.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:profile:1:if:1",
+      "line": 157,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "Actual profiles of all ten original companions compare source sex predicate and WhatClass labels; Profile wait is not claimed.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:which:1:repeat:1",
+      "line": 194,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_rules.dart",
+      "test": "test/creation_class_dos_test.dart",
+      "note": "All key bytes compare exact source 1..3 predicate; actual quiz ignores invalid keys and advances ten valid choices.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:1",
+      "line": 575,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:2",
+      "line": 578,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:repeat:1",
+      "line": 582,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:1",
+      "line": 586,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:case:1",
+      "line": 588,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:2",
+      "line": 593,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:3",
+      "line": 595,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:4",
+      "line": 599,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:repeat:3",
+      "line": 603,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:5",
+      "line": 606,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:6",
+      "line": 615,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:3",
+      "line": 626,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:if:7",
+      "line": 627,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:for:8",
+      "line": 706,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_creation_companions.dart",
+      "test": "test/companion_selection_dos_test.dart",
+      "note": "Original Fourth machine-code cursor/flag/inner-choice/count transitions across all byte keys/scans and valid masks; actual UI keyboard, ten names, duplicate guard and four-name review. CRT polling lines583/604 and Profile wait remain partial.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:2",
+      "line": 1710,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_map_manager.dart",
+      "test": "test/source_map_payload_roundtrip_test.dart",
+      "note": "All 27 original shipped MAP payloads compare every Pascal map[x,y] cell, then each cell is independently changed and restored through actual LoreGame load snapshot path. Narrow y/x loop parity only; file I/O errors/font/music remain separate.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:3",
+      "line": 1710,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_map_manager.dart",
+      "test": "test/source_map_payload_roundtrip_test.dart",
+      "note": "All 27 original shipped MAP payloads compare every Pascal map[x,y] cell, then each cell is independently changed and restored through actual LoreGame load snapshot path. Narrow y/x loop parity only; file I/O errors/font/music remain separate.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:4",
+      "line": 1719,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_map_manager.dart",
+      "test": "test/source_map_payload_roundtrip_test.dart",
+      "note": "All 27 original shipped MAP payloads compare every Pascal map[x,y] cell, then each cell is independently changed and restored through actual LoreGame load snapshot path. Narrow y/x loop parity only; file I/O errors/font/music remain separate.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:load:1:for:5",
+      "line": 1719,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_map_manager.dart",
+      "test": "test/source_map_payload_roundtrip_test.dart",
+      "note": "All 27 original shipped MAP payloads compare every Pascal map[x,y] cell, then each cell is independently changed and restored through actual LoreGame load snapshot path. Narrow y/x loop parity only; file I/O errors/font/music remain separate.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:save:1:for:2",
+      "line": 1787,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_map_manager.dart",
+      "test": "test/source_map_payload_roundtrip_test.dart",
+      "note": "Source y-outer x-inner serialization order compared with every changed cell in all original maps; tileSnapshot and actual load restore preserve byte payload. File I/O error handling not claimed.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:save:1:for:3",
+      "line": 1787,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_map_manager.dart",
+      "test": "test/source_map_payload_roundtrip_test.dart",
+      "note": "Source y-outer x-inner serialization order compared with every changed cell in all original maps; tileSnapshot and actual load restore preserve byte payload. File I/O error handling not claimed.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returnjoinmember:1:for:1",
+      "line": 1150,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_join.dart",
+      "test": "test/source_join_menu_masks_test.dart",
+      "note": "Every named mask, lengths0..7 and seventh-slot exclusion compare source player[2..6] labels and empty sixth-slot fallback; actual recruitment dialog tested separately.",
+      "verification": "verified"
+    },
+    {
+      "id": "LORESUB.PAS:returnjoinmember:1:if:1",
+      "line": 1151,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_join.dart",
+      "test": "test/source_join_menu_masks_test.dart",
+      "note": "Every named mask, lengths0..7 and seventh-slot exclusion compare source player[2..6] labels and empty sixth-slot fallback; actual recruitment dialog tested separately.",
       "verification": "verified"
     }
   ]

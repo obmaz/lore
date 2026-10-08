@@ -10,6 +10,27 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_creation_keyboard_scope_preserves_crt_wait_gaps(self):
+        sites = ledger.build()['control_sites']
+        expected = {'test/creation_second_dos_test.dart': 9,
+                    'test/creation_class_dos_test.dart': 6,
+                    'test/companion_selection_dos_test.dart': 14}
+        for test, count in expected.items():
+            # Behavioral evidence includes supporting UI tests; select contract IDs
+            # through reviewed primary evidence instead of counting incidental links.
+            reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+            ids = {r['id'] for r in reviewed if r.get('test') == test and r.get('verification') == 'verified'}
+            closed = [s for s in sites if s['id'] in ids]
+            self.assertEqual(len(closed), count)
+            self.assertTrue(all(s['verification_status'] == 'verified' for s in closed))
+        waiting = [s for s in sites if (s['routine'], s['line']) in {
+            ('LORECRET.PAS:second:1', 422),
+            ('LORECRET.PAS:fourth:1', 583),
+            ('LORECRET.PAS:fourth:1', 604),
+            ('LORECRET.PAS:profile:1', 186)}]
+        self.assertEqual(len(waiting), 4)
+        self.assertTrue(all(s['verification_status'] == 'partial' for s in waiting))
+
     def test_remaining_effect_scope_excludes_unobserved_ui(self):
         sites = ledger.build()['control_sites']
         for test, expected in [('test/source_talk_remaining_effects_test.dart', 7),
@@ -96,7 +117,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 264)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 213)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

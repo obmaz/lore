@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 
 import '../logic/lore_menu_text.dart';
 import '../logic/lore_creation_rules.dart';
+import '../logic/lore_creation_allocation.dart';
+import '../logic/lore_creation_companions.dart';
 import '../data/lore_creation.dart';
 import '../theme/retro_theme.dart';
 import '../models/party_member.dart';
@@ -50,7 +52,8 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   // 선택된 동료 4명 인덱스 (1..10 중)
   // Fourth starts with all ten selection flags cleared. A selected companion
   // cannot be deselected; only the explicit restart clears these flags.
-  final Set<int> _selectedCompanions = {};
+  LoreCreationCompanions _companions = LoreCreationCompanions();
+  Set<int> get _selectedCompanions => _companions.selected;
 
   // 원작 LORECRET.PAS 데이터 (assets/data/creation.json / 내장 폴백)
   LoreCreationData get _data => LoreCreationData.instance;
@@ -66,10 +69,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   int _resistanceStat = 0;
 
   /// `Second` 40포인트 분배 결과.
-  int _agility = 0;
-  int _accuracy = 0;
-  int _luck = 0;
-  int _pointsLeft = 40;
+  LoreCreationAllocation _allocation = LoreCreationAllocation();
+  int get _agility => _allocation.values[0];
+  int get _accuracy => _allocation.values[1];
+  int get _luck => _allocation.values[2];
+  int get _pointsLeft => _allocation.remaining;
 
   /// `Third` 에서 실제로 선택한 계급.
   PlayerClass? _selectedClass;
@@ -119,41 +123,30 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   /// 원작 `Second` - 민첩성/정확성/행운에 40포인트를 분배한다.
   void _distribute(int slot, int delta) {
     setState(() {
-      final current = switch (slot) {
-        1 => _agility,
-        2 => _accuracy,
-        _ => _luck,
-      };
-      final next = current + delta;
-      if (next < 0 || next > 20) return;
-      if (_pointsLeft - delta < 0 || _pointsLeft - delta > 40) return;
-      _pointsLeft -= delta;
-      switch (slot) {
-        case 1:
-          _agility = next;
-        case 2:
-          _accuracy = next;
-        default:
-          _luck = next;
-      }
+      _allocation.cursor = slot - 1;
+      _allocation.readKey(0, scan: delta < 0 ? 75 : 77);
     });
   }
 
   /// 원작 `Third` - 조건을 만족하는 계급만 고를 수 있다.
-  List<CreationClassOption> get _availableClasses => _data.classes
-      .where(
-        (c) => LoreCreationRules.classEligible(c.playerClass.id, [
-          _strength,
-          _mentality,
-          _concentration,
-          _endurance,
-          _resistanceStat,
-          _agility,
-          _accuracy,
-          _luck,
-        ]),
-      )
-      .toList();
+  List<int> get _classFlags => LoreCreationRules.classFlags([
+    _strength,
+    _mentality,
+    _concentration,
+    _endurance,
+    _resistanceStat,
+    _agility,
+    _accuracy,
+    _luck,
+  ]);
+  List<CreationClassOption> get _availableClasses =>
+      _data.classes.where((c) => _classFlags[c.playerClass.id] == 1).toList();
+
+  void _selectClass(int key) {
+    if (_selectedClass != null) return;
+    final id = LoreCreationRules.selectClass(key, _classFlags);
+    if (id != null) setState(() => _selectedClass = PlayerClass.fromId(id));
+  }
 
   /// 원작 `Fourth` 끝의 파티 구성 + `Last` 초기 상태로 게임을 시작한다.
   void _finishCreation() {
@@ -229,7 +222,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             ),
           ),
           Text(
-            '${t('Profile', 3)}${c.playerClass.koreanName}',
+            '${t('Profile', 3)}${LoreCreationRules.classLabel(c.playerClass.id)}',
             style: RetroTheme.dosFont.copyWith(
               color: RetroTheme.yellow,
               fontSize: 11,
@@ -319,17 +312,116 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       case 1:
         return _buildNameScreen();
       case 2:
-        return _buildQuestionScreen();
+        return _keyboardStep(_buildQuestionScreen(), (key) {
+          final label = key.keyLabel;
+          final choice = LoreCreationRules.quizChoice(
+            label.length == 1 ? label.codeUnitAt(0) : 0,
+          );
+          if (choice != null) _answerQuestion(choice);
+        });
       case 3:
         return _buildDistributeScreen();
       case 4:
-        return _buildClassScreen();
+        return _keyboardStep(_buildClassScreen(), (key) {
+          if (_selectedClass != null) {
+            setState(() => _step = 5);
+          } else {
+            final label = key.keyLabel;
+            _selectClass(label.length == 1 ? label.codeUnitAt(0) : 0);
+          }
+        });
       case 5:
-        return _buildCompanionsScreen();
+        return _keyboardStep(_buildCompanionsScreen(), _readCompanionKey);
       default:
         return _buildTitleScreen();
     }
   }
+
+  void _showCompanionProfile(CreationCharacter companion) {
+    if (MediaQuery.sizeOf(context).width < 600) {
+      showDialog<void>(
+        context: context,
+        builder: (_) => Dialog(
+          child: SingleChildScrollView(child: _buildProfilePanel(companion)),
+        ),
+      );
+    } else {
+      setState(() => _profileTarget = companion);
+    }
+  }
+
+  void _resetCreation({bool title = false}) {
+    setState(() {
+      _companions = LoreCreationCompanions();
+      _qIndex = 0;
+      for (var i = 0; i < _transdata.length; i++) {
+        _transdata[i] = 0;
+      }
+      _allocation = LoreCreationAllocation();
+      _selectedClass = null;
+      _profileTarget = null;
+      _step = title ? 0 : 1;
+    });
+  }
+
+  void _readCompanionKey(LogicalKeyboardKey key) {
+    final scan = switch (key) {
+      LogicalKeyboardKey.arrowUp => 72,
+      LogicalKeyboardKey.arrowDown => 80,
+      LogicalKeyboardKey.arrowLeft => 75,
+      LogicalKeyboardKey.arrowRight => 77,
+      _ => null,
+    };
+    final label = key.keyLabel;
+    final code = scan != null
+        ? 0
+        : key == LogicalKeyboardKey.enter
+        ? 13
+        : key == LogicalKeyboardKey.escape
+        ? 27
+        : label.length == 1
+        ? label.codeUnitAt(0)
+        : 0;
+    late LoreCompanionInput action;
+    setState(() => action = _companions.readKey(code, scan: scan ?? 0));
+    switch (action) {
+      case LoreCompanionInput.profile:
+        _showCompanionProfile(
+          _data.characters.firstWhere((c) => c.id == _companions.cursor),
+        );
+      case LoreCompanionInput.finish:
+        _finishCreation();
+      case LoreCompanionInput.restart:
+        _resetCreation(title: true);
+      case LoreCompanionInput.none:
+        break;
+    }
+  }
+
+  Widget _keyboardStep(Widget child, void Function(LogicalKeyboardKey) read) =>
+      Focus(
+        autofocus: true,
+        onKeyEvent: (_, event) {
+          if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+            return KeyEventResult.ignored;
+          }
+          if ([
+            LogicalKeyboardKey.shiftLeft,
+            LogicalKeyboardKey.shiftRight,
+            LogicalKeyboardKey.controlLeft,
+            LogicalKeyboardKey.controlRight,
+            LogicalKeyboardKey.altLeft,
+            LogicalKeyboardKey.altRight,
+            LogicalKeyboardKey.metaLeft,
+            LogicalKeyboardKey.metaRight,
+          ].contains(event.logicalKey)) {
+            return KeyEventResult.ignored;
+          }
+          read(event.logicalKey);
+          return KeyEventResult.handled;
+        },
+        child: child,
+      );
 
   // ==========================================
   // Step 0: 원작 타이틀 화면
@@ -841,76 +933,105 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   // ==========================================
   Widget _buildDistributeScreen() {
     String t(int i) => _data.text('Second', i);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          '◆ ${t(0)} ◆',
-          style: RetroTheme.headerFont.copyWith(fontSize: 15),
-        ),
-        const SizedBox(height: 10),
-        Text(
-          '${t(1)}$_pointsLeft',
-          style: RetroTheme.dosFont.copyWith(
-            color: RetroTheme.yellow,
-            fontSize: 13,
+    return Focus(
+      autofocus: true,
+      onKeyEvent: (_, event) {
+        if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+          return KeyEventResult.ignored;
+        }
+        final key = event.logicalKey;
+        final scan = switch (key) {
+          LogicalKeyboardKey.arrowUp => 72,
+          LogicalKeyboardKey.arrowDown => 80,
+          LogicalKeyboardKey.arrowLeft => 75,
+          LogicalKeyboardKey.arrowRight => 77,
+          _ => null,
+        };
+        if (scan == null && key != LogicalKeyboardKey.enter) {
+          return KeyEventResult.ignored;
+        }
+        setState(() {
+          if (_allocation.readKey(scan == null ? 13 : 0, scan: scan ?? 0)) {
+            _step = 4;
+          }
+        });
+        return KeyEventResult.handled;
+      },
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            '◆ ${t(0)} ◆',
+            style: RetroTheme.headerFont.copyWith(fontSize: 15),
           ),
-        ),
-        const SizedBox(height: 12),
-        Container(
-          width: 420,
-          padding: const EdgeInsets.all(14),
-          color: RetroTheme.background,
-          child: Column(
-            children: [
-              for (final (slot, label, value) in [
-                (1, t(2), _agility),
-                (2, t(3), _accuracy),
-                (3, t(4), _luck),
-              ])
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        '$label $value',
-                        style: RetroTheme.dosFont.copyWith(
-                          color: RetroTheme.white,
-                          fontSize: 12,
+          const SizedBox(height: 10),
+          Text(
+            '${t(1)}$_pointsLeft',
+            style: RetroTheme.dosFont.copyWith(
+              color: RetroTheme.yellow,
+              fontSize: 13,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Container(
+            width: 420,
+            padding: const EdgeInsets.all(14),
+            color: RetroTheme.background,
+            child: Column(
+              children: [
+                for (final (slot, label, value) in [
+                  (1, t(2), _agility),
+                  (2, t(3), _accuracy),
+                  (3, t(4), _luck),
+                ])
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          '$label $value',
+                          style: RetroTheme.dosFont.copyWith(
+                            color: _allocation.cursor == slot - 1
+                                ? RetroTheme.yellow
+                                : RetroTheme.white,
+                            fontSize: 12,
+                          ),
                         ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () => _distribute(slot, -1),
-                      icon: const Icon(
-                        Icons.remove_circle_outline,
-                        color: RetroTheme.lightRed,
-                        size: 18,
+                      IconButton(
+                        onPressed: () => _distribute(slot, -1),
+                        icon: const Icon(
+                          Icons.remove_circle_outline,
+                          color: RetroTheme.lightRed,
+                          size: 18,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () => _distribute(slot, 1),
-                      icon: const Icon(
-                        Icons.add_circle_outline,
-                        color: RetroTheme.lightGreen,
-                        size: 18,
+                      IconButton(
+                        onPressed: () => _distribute(slot, 1),
+                        icon: const Icon(
+                          Icons.add_circle_outline,
+                          color: RetroTheme.lightGreen,
+                          size: 18,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-            ],
+                    ],
+                  ),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(height: 16),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: _pointsLeft == 0
-                ? RetroTheme.green
-                : RetroTheme.darkGray,
+          const SizedBox(height: 16),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: _pointsLeft == 0
+                  ? RetroTheme.green
+                  : RetroTheme.darkGray,
+            ),
+            onPressed: _pointsLeft == 0
+                ? () => setState(() => _step = 4)
+                : null,
+            child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
           ),
-          onPressed: _pointsLeft == 0 ? () => setState(() => _step = 4) : null,
-          child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -941,8 +1062,9 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                         : RetroTheme.panelBg,
                     side: const BorderSide(color: RetroTheme.borderColor),
                   ),
-                  onPressed: () =>
-                      setState(() => _selectedClass = c.playerClass),
+                  onPressed: _selectedClass == null
+                      ? () => _selectClass(c.playerClass.id + 48)
+                      : null,
                   child: Text(
                     c.text,
                     style: RetroTheme.dosFont.copyWith(
@@ -959,7 +1081,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
         const SizedBox(height: 10),
         if (_selectedClass != null)
           Text(
-            '${_data.text('Third', 9)}${_selectedClass!.koreanName}',
+            '${_data.text('Third', 9)}${LoreCreationRules.classLabel(_selectedClass!.id)}',
             style: RetroTheme.dosFont.copyWith(
               color: RetroTheme.lightGreen,
               fontSize: 12,
@@ -1004,6 +1126,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             fontSize: 11,
           ),
         ),
+        if (_companions.choosing)
+          Text(
+            '${_data.characters.firstWhere((c) => c.id == _companions.cursor).name}: ${t4(2)} [1] / ${t4(3)} [2]',
+            style: RetroTheme.dosFont,
+          ),
         const SizedBox(height: 8),
         Expanded(
           child: Row(
@@ -1026,7 +1153,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                             ? RetroTheme.blue.withValues(alpha: 0.5)
                             : RetroTheme.background,
                         border: Border.all(
-                          color: isSelected
+                          color: isSelected || c.id == _companions.cursor
                               ? RetroTheme.yellow
                               : RetroTheme.darkGray,
                         ),
@@ -1047,10 +1174,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                             TextButton(
                               onPressed: () {
                                 setState(() {
-                                  if (!isSelected &&
-                                      _selectedCompanions.length < 4) {
-                                    _selectedCompanions.add(c.id);
-                                  }
+                                  _companions.join(c.id);
                                 });
                               },
                               child: Text(
@@ -1062,20 +1186,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () {
-                                if (MediaQuery.sizeOf(context).width < 600) {
-                                  showDialog<void>(
-                                    context: context,
-                                    builder: (context) => Dialog(
-                                      child: SingleChildScrollView(
-                                        child: _buildProfilePanel(c),
-                                      ),
-                                    ),
-                                  );
-                                } else {
-                                  setState(() => _profileTarget = c);
-                                }
-                              },
+                              onPressed: () => _showCompanionProfile(c),
                               child: Text(
                                 t4(3),
                                 style: RetroTheme.dosFont.copyWith(
@@ -1120,6 +1231,27 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
             fontSize: 11,
           ),
         ),
+        if (_companions.complete)
+          Wrap(
+            children: [
+              Text(
+                _nameController.text.trim().isEmpty
+                    ? 'Hero'
+                    : _nameController.text.trim(),
+                style: RetroTheme.dosFont.copyWith(color: RetroTheme.yellow),
+              ),
+              for (final id in _selectedCompanions.toList()..sort())
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                    _data.characters.firstWhere((c) => c.id == id).name,
+                    style: RetroTheme.dosFont.copyWith(
+                      color: RetroTheme.yellow,
+                    ),
+                  ),
+                ),
+            ],
+          ),
         Wrap(
           alignment: WrapAlignment.center,
           spacing: 10,
@@ -1142,20 +1274,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 backgroundColor: RetroTheme.darkGray,
                 foregroundColor: RetroTheme.white,
               ),
-              onPressed: () => setState(() {
-                _selectedCompanions.clear();
-                _qIndex = 0;
-                for (var i = 0; i < _transdata.length; i++) {
-                  _transdata[i] = 0;
-                }
-                _pointsLeft = 40;
-                _agility = 0;
-                _accuracy = 0;
-                _luck = 0;
-                _selectedClass = null;
-                _profileTarget = null;
-                _step = 1;
-              }),
+              onPressed: _resetCreation,
               child: Text(
                 t4(5),
                 style: RetroTheme.dosFont.copyWith(fontSize: 10),

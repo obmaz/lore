@@ -4,6 +4,34 @@ import '../models/party_member.dart';
 class LoreCreationRules {
   const LoreCreationRules._();
 
+  static int? quizChoice(int key) => key >= 49 && key <= 51 ? key - 49 : null;
+
+  /// Fresh Third flags; caller data cannot retain earlier quiz counters.
+  static List<int> classFlags(List<int> stats) => [
+    0,
+    for (var id = 1; id <= 8; id++) classEligible(id, stats) ? 1 : 0,
+  ];
+
+  static int? selectClass(int key, List<int> flags) {
+    final id = key - 48;
+    return id > 0 && id < 9 && flags[id] == 1 ? id : null;
+  }
+
+  /// WhatClass differs from ReturnClass specifically at class10 ('반신').
+  static String classLabel(int id) => switch (id) {
+    1 => '기사',
+    2 => '마법사',
+    3 => '에스퍼',
+    4 => '전사',
+    5 => '전투승',
+    6 => '닌자',
+    7 => '사냥꾼',
+    8 => '떠돌이',
+    9 => '혼령',
+    10 => '반신',
+    _ => '불확실함',
+  };
+
   // The ten Which calls, each followed by three inc(transdata[N]) branches.
   static const questionStats = [
     [1, 2, 3],
