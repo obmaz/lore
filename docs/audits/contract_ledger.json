@@ -29404,11 +29404,14 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/training_dispatch_dos_test.dart"
+        "test/training_words_dos_test.dart",
+        "test/training_dispatch_dos_test.dart",
+        "test/fixtures/dos_training_words.json",
+        "tool/export_dos_training_words.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_town_shops.dart",
-      "reviewed_scope": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments."
+      "reviewed_scope": "Native signed longint threshold and both complete 65536-word CASE domains are replayed with unmodified arithmetic helpers. Actual trainCenter and desktop/mobile screen retain j across selections, including insufficient experience assigning level+1, and persist the resulting level and price through save. Unmatched first CASE retains supplied previous stack-local value; absent a defined previous local the port raises StateError rather than inventing uninitialized DOS stack bytes. Explicit invalid-memory policy, not byte equivalence or CRT/BGI rendering equivalence."
     },
     {
       "id": "LORESUB.PAS:train_center:1:case:1",
@@ -29420,11 +29423,14 @@
       "outcomes": 4,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/training_dispatch_dos_test.dart"
+        "test/training_words_dos_test.dart",
+        "test/training_dispatch_dos_test.dart",
+        "test/fixtures/dos_training_words.json",
+        "tool/export_dos_training_words.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_town_shops.dart",
-      "reviewed_scope": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments."
+      "reviewed_scope": "Native signed longint threshold and both complete 65536-word CASE domains are replayed with unmodified arithmetic helpers. Actual trainCenter and desktop/mobile screen retain j across selections, including insufficient experience assigning level+1, and persist the resulting level and price through save. Unmatched first CASE retains supplied previous stack-local value; absent a defined previous local the port raises StateError rather than inventing uninitialized DOS stack bytes. Explicit invalid-memory policy, not byte equivalence or CRT/BGI rendering equivalence."
     },
     {
       "id": "LORESUB.PAS:train_center:1:case:2",
@@ -29436,11 +29442,14 @@
       "outcomes": 17,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/training_dispatch_dos_test.dart"
+        "test/training_words_dos_test.dart",
+        "test/training_dispatch_dos_test.dart",
+        "test/fixtures/dos_training_words.json",
+        "tool/export_dos_training_words.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/logic/lore_town_shops.dart",
-      "reviewed_scope": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments."
+      "reviewed_scope": "Native signed longint threshold and both complete 65536-word CASE domains are replayed with unmodified arithmetic helpers. Actual trainCenter and desktop/mobile screen retain j across selections, including insufficient experience assigning level+1, and persist the resulting level and price through save. Unmatched first CASE retains supplied previous stack-local value; absent a defined previous local the port raises StateError rather than inventing uninitialized DOS stack bytes. Explicit invalid-memory policy, not byte equivalence or CRT/BGI rendering equivalence."
     },
     {
       "id": "LORESUB.PAS:train_center:1:if:3",
@@ -47769,9 +47778,14 @@
       "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_town_shops.dart",
-      "test": "test/training_dispatch_dos_test.dart",
-      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments.",
-      "verification": "partial"
+      "test": "test/training_words_dos_test.dart",
+      "note": "Native signed longint threshold and both complete 65536-word CASE domains are replayed with unmodified arithmetic helpers. Actual trainCenter and desktop/mobile screen retain j across selections, including insufficient experience assigning level+1, and persist the resulting level and price through save. Unmatched first CASE retains supplied previous stack-local value; absent a defined previous local the port raises StateError rather than inventing uninitialized DOS stack bytes. Explicit invalid-memory policy, not byte equivalence or CRT/BGI rendering equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/training_dispatch_dos_test.dart",
+        "test/fixtures/dos_training_words.json",
+        "tool/export_dos_training_words.py"
+      ]
     },
     {
       "id": "LORESUB.PAS:train_center:1:case:1",
@@ -47779,9 +47793,14 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_town_shops.dart",
-      "test": "test/training_dispatch_dos_test.dart",
-      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments.",
-      "verification": "partial"
+      "test": "test/training_words_dos_test.dart",
+      "note": "Native signed longint threshold and both complete 65536-word CASE domains are replayed with unmodified arithmetic helpers. Actual trainCenter and desktop/mobile screen retain j across selections, including insufficient experience assigning level+1, and persist the resulting level and price through save. Unmatched first CASE retains supplied previous stack-local value; absent a defined previous local the port raises StateError rather than inventing uninitialized DOS stack bytes. Explicit invalid-memory policy, not byte equivalence or CRT/BGI rendering equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/training_dispatch_dos_test.dart",
+        "test/fixtures/dos_training_words.json",
+        "tool/export_dos_training_words.py"
+      ]
     },
     {
       "id": "LORESUB.PAS:train_center:1:case:2",
@@ -47789,9 +47808,14 @@
       "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/logic/lore_town_shops.dart",
-      "test": "test/training_dispatch_dos_test.dart",
-      "note": "Train_Center ported: level from experience by the source case, level 20 free, gold shortage printed as gold - cost, ExpData sentence with the source typos, class growth through PartyMember.trainLevelUp. Independent original DOS six-stage records and mobile save replay: test/training_growth_dos_test.dart, test/fixtures/dos_training_growth.json; Fighter/Ninja/Hunter agility byte255->0, round(5/2)=3, Monk power20 and 15-gold cost per level1->5 jump. Source random(30)/conditional random(21) and free level20 are checked without claiming identical DOS RNG seed or whole-program consumption. Milestone106: unchanged EXE CASE/long division and shortfall SUB/SBB in tool/export_dos_training_dispatch.py, test/fixtures/dos_training_dispatch.json; 84 initialized-j selectors and 5 arithmetic cases. Retained j and next-level update are replayed; initial uninitialized j is explicitly unsupported. Source CASE uses signed low16 after full-width condition/division, not Dart-wide comparisons. Whole training/campaign is not established by these instruction fragments.",
-      "verification": "partial"
+      "test": "test/training_words_dos_test.dart",
+      "note": "Native signed longint threshold and both complete 65536-word CASE domains are replayed with unmodified arithmetic helpers. Actual trainCenter and desktop/mobile screen retain j across selections, including insufficient experience assigning level+1, and persist the resulting level and price through save. Unmatched first CASE retains supplied previous stack-local value; absent a defined previous local the port raises StateError rather than inventing uninitialized DOS stack bytes. Explicit invalid-memory policy, not byte equivalence or CRT/BGI rendering equivalence.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/training_dispatch_dos_test.dart",
+        "test/fixtures/dos_training_words.json",
+        "tool/export_dos_training_words.py"
+      ]
     },
     {
       "id": "LORESUB.PAS:train_center:1:if:3",
@@ -58957,6 +58981,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/training_words_dos_test.dart",
+      "kind": "test",
+      "sha256": "28844e29fbf6963c69609b283a46a4d89b847cac881432dc030bca515de0c38d",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/weapon_arithmetic_dos_test.dart",
       "kind": "test",
       "sha256": "5142eac2ed8beff0b4c49e7cdaadda5791a714d5248af4dd8f60aec80e8286ab",
@@ -59782,6 +59815,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_training_words.json",
+      "kind": "fixture",
+      "sha256": "31ae549a2aa082483f3ac7824b7a733757b8c73da28eae82be3649267a5d8ba6",
+      "test_users": [
+        "test/training_words_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_water_lord_rewards.json",
       "kind": "fixture",
       "sha256": "0ef3f7e2105cd3291f394b8dbd36113789562ef3e5be9c4c8dc3cc8a1fd68fb5",
@@ -60235,7 +60277,7 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "101103fdd7d57fcd4b6975c19896435729c702e03f6260c70943df9e21ab220e",
+      "sha256": "b3f94b205fbef1d385829aceba5a893c059e2136991453299a9d14b8da447b1c",
       "top_level_counts": {
         "contracts": 1678
       }
@@ -60246,8 +60288,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 114,
-    "partially_verified_behavior_sites": 114,
+    "unverified_behavior_sites": 111,
+    "partially_verified_behavior_sites": 111,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 114,
-    "verified": 1734,
+    "partial": 111,
+    "verified": 1737,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -490,8 +490,7 @@
     },
     {
       "routine": "LORESUB.PAS:train_center:1",
-      "verified": 48,
-      "partial": 3
+      "verified": 51
     },
     {
       "routine": "LORESUB.PAS:turn_mind:1",
@@ -1638,11 +1637,7 @@
     {
       "path": "test/fixtures/dos_training_dispatch.json",
       "explicit_contracts": [],
-      "note_mentions": [
-        "LORESUB.PAS:train_center:1:if:2",
-        "LORESUB.PAS:train_center:1:case:1",
-        "LORESUB.PAS:train_center:1:case:2"
-      ],
+      "note_mentions": [],
       "test_candidates": [
         "test/training_dispatch_dos_test.dart"
       ]
@@ -1653,9 +1648,6 @@
       "note_mentions": [
         "LORESUB.PAS:train_center:1:if:1",
         "LORESUB.PAS:train_center:1:exit:1",
-        "LORESUB.PAS:train_center:1:if:2",
-        "LORESUB.PAS:train_center:1:case:1",
-        "LORESUB.PAS:train_center:1:case:2",
         "LORESUB.PAS:train_center:1:if:3",
         "LORESUB.PAS:train_center:1:case:3",
         "LORESUB.PAS:train_center:1:if:4",
@@ -1702,6 +1694,18 @@
       ],
       "test_candidates": [
         "test/training_growth_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_training_words.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:train_center:1:if:2",
+        "LORESUB.PAS:train_center:1:case:1",
+        "LORESUB.PAS:train_center:1:case:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/training_words_dos_test.dart"
       ]
     },
     {

@@ -4,7 +4,7 @@
 실행 계획은 `docs/porting/direct_port_strategy.md` 하나이며, 이 문서는 장부에서 생성한 검토 색인이다.
 미분류·부분 근거는 미구현 개수나 완료율이 아니다. 플랫폼 분기의 제외도 어댑터 검증 완료를 뜻하지 않는다.
 
-게임 제어 지점 1848개: 미분류 0개, 부분 근거 114개, 검증 완료 1734개.
+게임 제어 지점 1848개: 미분류 0개, 부분 근거 111개, 검증 완료 1737개.
 지도 쓰기 0개는 개별 계약 연결이 없다. 테스트가 없는 것으로 해석하지 않는다.
 
 ## 미분류가 남은 루틴
@@ -70,6 +70,7 @@
 | `test/fixtures/dos_swamp_gate_continuation.json` | `test/gorgon_battle_dos_test.dart` · `test/menace_return_dos_ui_test.dart` |
 | `test/fixtures/dos_terrain_states.json` | `test/terrain_dos_parity_test.dart` |
 | `test/fixtures/dos_town_tile42.json` | `test/bgi_font_decoder_test.dart` |
+| `test/fixtures/dos_training_dispatch.json` | `test/training_dispatch_dos_test.dart` |
 | `test/fixtures/dos_water_lord_rewards.json` | `test/lore_water_lord_test.dart` |
 | `test/fixtures/dos_wivern_continuation.json` | `test/menace_return_dos_ui_test.dart` · `test/wivern_battle_dos_test.dart` |
 

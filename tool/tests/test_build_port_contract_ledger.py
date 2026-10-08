@@ -10,6 +10,21 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_training_word_scope_preserves_uninitialized_local_policy(self):
+        sites = ledger.build()['control_sites']
+        reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        closed = {r['id'] for r in reviewed if r.get('test') ==
+                  'test/training_words_dos_test.dart' and r.get('verification') == 'verified'}
+        actual = [s for s in sites if s['id'] in closed]
+        self.assertEqual(len(actual), 3)
+        self.assertEqual({s['line'] for s in actual}, {1359, 1360, 1367})
+        self.assertTrue(all(s['routine'] == 'LORESUB.PAS:train_center:1'
+                            and s['verification_status'] == 'verified' for s in actual))
+        for row in reviewed:
+            if row['id'] in closed:
+                self.assertIn('StateError', row['note'])
+                self.assertIn('uninitialized DOS stack', row['note'])
+
     def test_return_magic_and_message_keep_explicit_invalid_memory_policy(self):
         sites = ledger.build()['control_sites']
         closed = [s for s in sites if s['routine'] == 'LORESUB.PAS:returnmagic:1'
@@ -186,7 +201,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 114)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 111)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

@@ -3100,3 +3100,16 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      전체 검사 후 푸시하고 훈련소 selector 대조를 이어간다.
      전체 Flutter 1683건(3 skip), Python 133건, analyze 및 웹 release
      build가 통과했다. 원본 helper를 다시 실행해 fixture와 일치함도 확인했다.
+
+200. **훈련소 두 CASE의 전체 word 선택 및 지역 변수 유지**
+     원본 변경 없는 helper로 두 65536-word 선택 공간과 경험치 0..19999,
+     이전 지역 변수 48개 조합을 대조한다. 경험치 부족 안내가 j를 다음
+     레벨로 바꾼 뒤 다음 인물의 미할당 CASE에서도 유지하는 순서를
+     실제 trainCenter와 데스크톱·모바일 선택 화면에서 검사한다.
+     레벨 3, 금화 5 차감, 난수 호출 및 실제 저장 결과를 확인한다.
+     첫 선택부터 j가 미할당이면 StateError로 중단한다. 공급한 이전
+     지역 변수의 유지 검증은 실제 미초기화 DOS 스택 값의 동일성을
+     주장하지 않는다. CRT/BGI 화면 전체도 이번 범위에 포함하지 않는다.
+     3개 추가 해소로 verified 1737 / partial 111 / unclassified 0.
+     전체 Flutter 1687건(3 skip), Python 135건, analyze와 웹 release
+     build가 통과했다. 전체 원본 선택 추출도 fixture와 다시 일치했다.
