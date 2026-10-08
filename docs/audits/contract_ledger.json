@@ -54216,6 +54216,13 @@
   ],
   "existing_evidence": [
     {
+      "path": "test/app_settings_test.dart",
+      "kind": "test",
+      "sha256": "8f7ab1c3f56684fe9b10520cd21beb411be5aeaa99c00661c58f3e2696b53eb3",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/archi_native_dos_test.dart",
       "kind": "test",
       "sha256": "4a980e375748070d01e96fd497889daa1a82ba35a72f9191d3007205a99c7f73",
@@ -54616,6 +54623,13 @@
       "path": "test/gorgon_battle_dos_test.dart",
       "kind": "test",
       "sha256": "562b6752b0760583ed9b4e4cf1f5af656c2cb6ab42ceea4e733df7cfaf7b9076",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/graphics_skin_test.dart",
+      "kind": "test",
+      "sha256": "e6e5fde3675a0ae2ae02bff52bbf28775374ca3f8f50c26561c2339e036ef4c5",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -56729,7 +56743,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "194015de1d5d1ffe360719be5f2116ff3b17c80befcd1dbf51aa5a9e372c8c6f"
+      "sha256": "eb69ef140b6bdee94d0058de86e0bb0bf89a6bad3013258e3ec72a36b5d4ab9f"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -56769,7 +56783,7 @@
     },
     {
       "path": "lib/game/sprite_sheet.dart",
-      "sha256": "1d01b2a70675b6569883e8a1c0890cbfb09e3563c25a55ff4e96826920198b75"
+      "sha256": "b9be627656f000c253b0c15600dd98ef3fd9fd42b04faa693d865dd9f4211cf8"
     },
     {
       "path": "lib/theme/retro_theme.dart",
