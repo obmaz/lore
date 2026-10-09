@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "meta": {
+    "id": "prologue_interactive_v1", "title": "첫 의뢰 전 — 누구의 이야기를 먼저 들을 것인가",
+    "quest_id": "prologue", "status": "outline", "purpose": "story_authoring_not_game_runtime",
+    "summary": "성 안에서 선택적으로 정보를 얻고 동료를 영입한 뒤 성주 접견으로 합류하는 집필 구조 예시. 완성 원고가 아니다.",
+    "revision": 1, "source_catalog": "story_material/scripts.json"
+  },
+  "source_refs": {
+    "party_creation": {"file": "LORECRET.PAS", "line_start": 565, "line_end": 625, "purpose": "시작 동료 선택; 별도 집필 예정"},
+    "veteran": {"file": "LORETALK.PAS", "line_start": 89, "line_end": 102, "purpose": "돌아오지 않은 특공대 친구를 기다리는 인물"},
+    "prisoner": {"file": "LORETALK.PAS", "line_start": 158, "line_end": 190, "purpose": "Ancient Evil과 Lord Ahn에 대한 반대 증언; 전체 대사 집필 예정"},
+    "joe_join": {"file": "LORETALK.PAS", "line_start": 191, "line_end": 219, "purpose": "Mad Joe 영입의 수락·거절과 여섯 번째 동료 슬롯 처리"},
+    "lord_intro": {"file": "LORETALK.PAS", "line_start": 293, "line_end": 305, "purpose": "성주를 만나라는 안내와 성주의 첫 인사"},
+    "lord_history": {"file": "LORETALK.PAS", "line_start": 306, "line_end": 338, "purpose": "세계의 재앙·특공대·Necromancer; 전체 원문 집필 예정"}
+  },
+  "state_definitions": {
+    "knowledge.missing_squad": {
+      "type": "boolean", "category": "knowledge", "scope": "story", "initial": false,
+      "description": "주점 인물에게 특공대 친구들의 사연을 들었는가. 성주의 공식 설명을 들었다는 상태와 구분한다.",
+      "provenance": {"origin": "authored", "source_refs": ["veteran"], "note": "원문 사건을 기억하기 위한 집필용 상태. 원작에 같은 이름의 플래그가 있다는 뜻은 아니다."}
+    },
+    "knowledge.alternative_testimony": {
+      "type": "boolean", "category": "knowledge", "scope": "story", "initial": false,
+      "description": "수감자의 반대 증언을 들었는가. 증언을 들음과 증언이 사실임을 확정하는 것은 다르다.",
+      "provenance": {"origin": "authored", "source_refs": ["prisoner"], "note": "집필용 지식 표식"}
+    },
+    "companions.optional_recruits": {
+      "type": "string_set", "category": "companions", "scope": "story", "initial": [],
+      "description": "이 초안에서 선택 영입한 동료 ID만 기록한다. 시작 동료 네 명의 전체 명단은 아니다.",
+      "source_mapping": "Mad Joe: LORETALK.PAS join(1,k), k=6; 실제 슬롯·교체·능력값은 원문을 따른다.",
+      "provenance": {"origin": "source_adaptation", "source_refs": ["joe_join"], "note": "원작 영입을 집필용 명단으로 추상화. 게임 데이터가 아니다."}
+    },
+    "relationship.lord_trust": {
+      "type": "integer", "category": "relationship", "scope": "story", "initial": 0,
+      "description": "성주 설명을 받아들이는 주인공의 태도. 숫자는 집필 편의용이며 선악 판정이 아니다.",
+      "provenance": {"origin": "authored", "source_refs": [], "note": "원작에는 이 신뢰도 시스템이 없다."}
+    },
+    "event.prison_visited": {
+      "type": "boolean", "category": "event", "scope": "quest", "initial": false,
+      "description": "예시에서 감옥 선택 장면을 한 번만 보여 주기 위한 방문 표식",
+      "provenance": {"origin": "authored", "source_refs": [], "note": "반복 방지는 편집 선택이지 원작의 접근 제한이 아니다."}
+    }
+  },
+  "entry_node": "arrival",
+  "nodes": [
+    {
+      "id": "arrival", "title": "아직 서로를 모르는 일행", "kind": "scene", "entry_when": true,
+      "provenance": {"origin": "source_adaptation", "source_refs": ["party_creation"], "note": "일행 구성 이후부터 시작하는 임시 도입"},
+      "blocks": [
+        {"id": "arrival_narration", "kind": "narration", "speaker": null, "when": true,
+          "text": "우리는 로어 성에서 첫걸음을 내디뎠다. 함께 길을 나서기로 했지만, 아직 서로에게 목숨을 맡겨 본 적은 없었다.", "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "장면과 심리의 연결 서사"}}
+      ],
+      "choices": [
+        {"id": "enter_courtyard", "label": "성 안을 살핀다", "when": true, "target": "courtyard", "effects": [], "branch_kind": "navigation",
+          "consequence": "탐색 경로 선택 장면으로 이동", "provenance": {"origin": "authored", "source_refs": [], "note": "한 개 선택지는 계속 읽기 버튼으로 표시 가능"}}
+      ],
+      "handoff": null,
+      "editorial": {"status": "outline", "intent": "주인공과 시작 동료의 도입", "source_refs": ["party_creation"], "notes": "캐릭터 생성과 시작 동료별 묘사는 미작성"}
+    },
+    {
+      "id": "courtyard", "title": "누구의 이야기를 먼저 들을 것인가", "kind": "hub", "entry_when": true,
+      "provenance": {"origin": "authored", "source_refs": ["lord_intro", "veteran", "prisoner"], "note": "자유 탐색을 독자의 선택 메뉴로 재배치"},
+      "blocks": [
+        {"id": "guard_invitation", "kind": "source_quote", "speaker": "성 안의 안내 인물", "when": true,
+          "text": "저희 성주님을 만나십시오.", "literal_ids": ["LORETALK.PAS:literal:11005"],
+          "provenance": {"origin": "source_exact", "source_refs": ["lord_intro"], "note": "화자 표기는 편집용. 원문에 고유 이름은 없다."}}
+      ],
+      "choices": [
+        {"id": "visit_lord", "label": "성주를 만나러 간다", "when": true, "target": "audience", "effects": [], "branch_kind": "navigation",
+          "consequence": "추가 탐색 없이도 본편 설명으로 합류", "provenance": {"origin": "authored", "source_refs": ["lord_intro"], "note": "원작의 이동을 선택지로 각색"}},
+        {"id": "visit_tavern", "label": "주점에서 사람들의 이야기를 듣는다",
+          "when": {"state": "knowledge.missing_squad", "op": "eq", "value": false}, "target": "tavern", "effects": [], "branch_kind": "navigation",
+          "consequence": "특공대원의 친구를 만나는 보조 장면", "provenance": {"origin": "authored", "source_refs": ["veteran"], "note": "원작에 이 경로 메뉴는 없다."}},
+        {"id": "visit_prison", "label": "감옥 쪽에서 들리는 이야기를 살핀다",
+          "when": {"state": "event.prison_visited", "op": "eq", "value": false}, "target": "prison", "effects": [], "branch_kind": "navigation",
+          "consequence": "반대 증언과 선택 영입 장면; 접근 과정은 추가 집필 필요",
+          "provenance": {"origin": "authored", "source_refs": ["prisoner", "joe_join"], "note": "방문 가능 시점·접근 제약은 미확정이며 이 메뉴는 새 집필 장치"}}
+      ],
+      "handoff": null,
+      "editorial": {"status": "outline", "intent": "선택 탐색 후 같은 본편에 합류", "source_refs": ["lord_intro", "veteran", "prisoner"], "notes": "방문 순서를 고정하지 않는다. 방문 표식으로 예시의 무한 반복을 막는다."}
+    },
+    {
+      "id": "tavern", "title": "돌아오지 않은 친구들", "kind": "scene", "entry_when": true,
+      "provenance": {"origin": "source_adaptation", "source_refs": ["veteran"], "note": "원문 만남을 집필 장면으로 묶음"},
+      "blocks": [
+        {"id": "veteran_opening", "kind": "source_quote", "speaker": "특공대에 친구들을 보낸 인물", "when": true,
+          "text": " 이보게 자네, 내말 좀 들어 보게나.  나의 친", "literal_ids": ["LORETALK.PAS:literal:3028"],
+          "provenance": {"origin": "source_exact", "source_refs": ["veteran"], "note": "화면 출력 조각. 뒤의 원문 조각들도 추가해야 완전한 대사가 된다."}},
+        {"id": "veteran_placeholder", "kind": "author_note", "speaker": null, "when": true,
+          "text": "TODO: veteran 범위의 나머지 대사 전부 삽입. 특공대에 지원한 친구들의 부재와 살아남은 인물의 죄책감을 연결한다.", "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["veteran"], "note": "독자에게 보여 줄 본문이 아니라 집필 메모"}}
+      ],
+      "choices": [
+        {"id": "remember_veteran", "label": "그의 이야기를 기억하고 돌아간다", "when": true, "target": "courtyard", "branch_kind": "knowledge",
+          "effects": [{"state": "knowledge.missing_squad", "op": "set", "value": true,
+            "provenance": {"origin": "authored", "source_refs": ["veteran"], "note": "원문에서 들은 경험을 집필 상태로 저장"}}],
+          "consequence": "성주 접견 때 특공대 이야기를 다르게 받아들이는 문단이 표시됨",
+          "provenance": {"origin": "authored", "source_refs": ["veteran"], "note": "귀환 선택지와 후속 반응은 창작"}}
+      ],
+      "handoff": null,
+      "editorial": {"status": "outline", "intent": "공식 설명 전에 실종의 개인적 무게를 보여 준다", "source_refs": ["veteran"], "notes": "원문 대사 미완성"}
+    },
+    {
+      "id": "prison", "title": "반대 증언과 합류 요청", "kind": "branch", "entry_when": true,
+      "provenance": {"origin": "source_adaptation", "source_refs": ["prisoner", "joe_join"], "note": "서로 다른 위치의 대화를 한 방문 장면으로 묶음"},
+      "blocks": [
+        {"id": "prison_placeholder", "kind": "author_note", "speaker": null, "when": true,
+          "text": "TODO: 수감자의 증언과 Mad Joe의 합류 요청 원문 전체 삽입. 증언은 그 인물의 주장으로 제시하고 세계의 확정된 진실로 단정하지 않는다.", "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["prisoner", "joe_join"], "note": "전 대사와 두 인물 사이 이동은 미작성"}}
+      ],
+      "choices": [
+        {"id": "accept_joe", "label": "그렇다면 당신을 받아들이지요", "label_literal_id": "LORETALK.PAS:literal:7298",
+          "when": true, "target": "courtyard", "branch_kind": "companion",
+          "effects": [
+            {"state": "companions.optional_recruits", "op": "add", "value": "mad_joe", "provenance": {"origin": "source_adaptation", "source_refs": ["joe_join"], "note": "여섯 번째 슬롯 영입을 명단으로 표현"}},
+            {"state": "knowledge.alternative_testimony", "op": "set", "value": true, "provenance": {"origin": "authored", "source_refs": ["prisoner"], "note": "같은 방문에서 증언을 들은 것으로 편집"}},
+            {"state": "event.prison_visited", "op": "set", "value": true, "provenance": {"origin": "authored", "source_refs": [], "note": "방문 기록"}}
+          ],
+          "consequence": "Mad Joe 합류. 증언을 들었다는 지식은 거절 경로와 동일하게 남음",
+          "provenance": {"origin": "source_exact", "source_refs": ["joe_join"], "note": "선택 문구만 원문 그대로; 장면 배치와 상태 표현은 별도 각색"}},
+        {"id": "decline_joe", "label": "당신은 이곳에 그냥 있는게 낫겠소", "label_literal_id": "LORETALK.PAS:literal:7335",
+          "when": true, "target": "courtyard", "branch_kind": "companion",
+          "effects": [
+            {"state": "knowledge.alternative_testimony", "op": "set", "value": true, "provenance": {"origin": "authored", "source_refs": ["prisoner"], "note": "거절해도 앞서 들은 증언은 잊지 않는다."}},
+            {"state": "event.prison_visited", "op": "set", "value": true, "provenance": {"origin": "authored", "source_refs": [], "note": "방문 기록"}}
+          ],
+          "consequence": "Mad Joe는 합류하지 않지만 증언을 들었다는 사실은 유지",
+          "provenance": {"origin": "source_exact", "source_refs": ["joe_join"], "note": "선택 문구만 원문 그대로"}}
+      ],
+      "handoff": null,
+      "editorial": {"status": "outline", "intent": "지식의 획득과 동료 영입을 서로 다른 상태로 구분", "source_refs": ["prisoner", "joe_join"], "notes": "접근 경로·Joe 경고 대사·원작 슬롯 교체 조건은 별도 확인"}
+    },
+    {
+      "id": "audience", "title": "같은 접견, 다른 마음", "kind": "merge", "entry_when": true,
+      "provenance": {"origin": "source_adaptation", "source_refs": ["lord_intro", "lord_history"], "note": "탐색 경로가 본편으로 다시 합류"},
+      "blocks": [
+        {"id": "audience_memory", "kind": "narration", "speaker": null,
+          "when": {"state": "knowledge.missing_squad", "op": "eq", "value": true},
+          "text": "성주의 말을 기다리는 동안, 나는 주점에 남겨진 그 사람의 얼굴을 떠올렸다.", "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["veteran"], "note": "방문 경험에 따른 조건부 연결 문단"}},
+        {"id": "audience_joe", "kind": "narration", "speaker": null,
+          "when": {"state": "companions.optional_recruits", "op": "contains", "value": "mad_joe"},
+          "text": "새로 합류한 Joe가 일행의 끝에 서 있었다. 나는 그에게도 이 이야기가 어떤 의미인지 궁금했다.", "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["joe_join"], "note": "동료에 따른 창작 반응. 원작의 발화가 아니다."}},
+        {"id": "audience_doubt", "kind": "narration", "speaker": null,
+          "when": {"state": "knowledge.alternative_testimony", "op": "eq", "value": true},
+          "text": "감옥에서 들은 증언은 성주의 말을 듣기도 전에 판단하지 말라고, 동시에 그대로 믿지도 말라고 나를 붙들었다.", "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["prisoner"], "note": "반대 증언을 들은 경로의 심리 묘사"}},
+        {"id": "lord_placeholder", "kind": "author_note", "speaker": null, "when": true,
+          "text": "TODO: lord_intro와 lord_history의 대사 전부 삽입. 앞선 조건부 묘사는 성주의 원문을 대체하지 않는다.", "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["lord_intro", "lord_history"], "note": "기존 프롤로그 산문을 이 장면의 블록으로 옮길 예정"}}
+      ],
+      "choices": [
+        {"id": "trust_lord", "label": "성주의 설명을 믿고 첫 부탁을 기다린다", "when": true, "target": "first_quest_boundary", "branch_kind": "relationship",
+          "effects": [{"state": "relationship.lord_trust", "op": "increment", "value": 1, "provenance": {"origin": "authored", "source_refs": [], "note": "새로 만든 태도 선택"}}],
+          "consequence": "다음 퀘스트의 수락 동기를 신뢰 중심으로 쓸 수 있다. 원작 의뢰 내용은 바꾸지 않는다.",
+          "provenance": {"origin": "authored", "source_refs": [], "note": "원작 성주 대화에 없는 선택"}},
+        {"id": "reserve_judgment", "label": "판단은 미루되, 지금 필요한 일이 무엇인지 듣는다", "when": true, "target": "first_quest_boundary", "effects": [], "branch_kind": "relationship",
+          "consequence": "신뢰는 중립으로 유지한 채 같은 의뢰로 합류",
+          "provenance": {"origin": "authored", "source_refs": [], "note": "원작 성주 대화에 없는 선택"}}
+      ],
+      "handoff": null,
+      "editorial": {"status": "outline", "intent": "동료·경험·태도는 다르지만 본편 의뢰는 공통으로 유지", "source_refs": ["lord_intro", "lord_history"], "notes": "신뢰의 구체적인 후속 영향은 다음 퀘스트 집필 때 정한다."}
+    },
+    {
+      "id": "first_quest_boundary", "title": "MENACE 의뢰 직전", "kind": "boundary", "entry_when": true,
+      "provenance": {"origin": "authored", "source_refs": [], "note": "집필 파일의 경계이며 별도 엔딩이 아니다."},
+      "blocks": [], "choices": [],
+      "handoff": {"quest_id": "lore_menace", "entry_node": null,
+        "carry_states": ["knowledge.missing_squad", "knowledge.alternative_testimony", "companions.optional_recruits", "relationship.lord_trust"]},
+      "editorial": {"status": "outline", "intent": "다음 퀘스트에 기억과 동료를 전달", "source_refs": [], "notes": "대상 퀘스트의 집필 노드가 아직 없어서 entry_node는 미정"}
+    }
+  ],
+  "coverage": {
+    "status": "partial", "required_source_refs": ["lord_intro", "joe_join"],
+    "deferred_source_refs": [
+      {"ref": "party_creation", "reason": "캐릭터 생성·시작 동료별 도입은 별도 집필"},
+      {"ref": "lord_history", "reason": "성주 설명 전문을 아직 옮기지 않음"},
+      {"ref": "veteran", "reason": "첫 출력 조각만 예시로 넣음; 나머지 원문 추가 필요"},
+      {"ref": "prisoner", "reason": "반대 증언 전체와 인물 사이 이동은 미작성"}
+    ],
+    "literal_dispositions": [
+      {"literal_id": "LORETALK.PAS:literal:11005", "handling": "verbatim", "block_ids": ["guard_invitation"], "choice_ids": [], "reason": "공통 안내 대사 그대로 사용"},
+      {"literal_id": "LORETALK.PAS:literal:3028", "handling": "verbatim", "block_ids": ["veteran_opening"], "choice_ids": [], "reason": "첫 조각을 원문 보존 예시로 삽입"},
+      {"literal_id": "LORETALK.PAS:literal:7298", "handling": "verbatim", "block_ids": [], "choice_ids": ["accept_joe"], "reason": "영입 수락 선택지 그대로 사용"},
+      {"literal_id": "LORETALK.PAS:literal:7335", "handling": "verbatim", "block_ids": [], "choice_ids": ["decline_joe"], "reason": "영입 거절 선택지 그대로 사용"}
+    ],
+    "notes": "required_source_refs는 최소 예시 근거의 연결 검사일 뿐 전문 보존 완료 판정이 아니다. 전체 원문은 추출 JSON에 보존되어 있으며, 이 초안은 선택 구조 예시다."
+  },
+  "open_questions": [
+    "감옥 접근에 필요한 경로·조건을 확인하고 첫 의뢰 전 방문이 가능한지 검토한다.",
+    "시작 동료 선택을 별도 도입 파일로 할지 이 파일 앞에 붙일지 결정한다.",
+    "원문 화면 조각을 읽기 좋게 합친 각색문은 exact 원문 블록과 별도로 보관한다.",
+    "선택한 범위의 모든 대사·거절·반복 분기를 집필 장면에 대응시켜 원문 누락 감사를 한다.",
+    "Mad Joe의 여섯 번째 슬롯 처리와 이후 다른 선택 동료의 교체를 집필 명단에 어떻게 반영할지 정한다.",
+    "lore_menace 집필 파일을 만든 뒤 handoff.entry_node와 지식·신뢰 상태의 후속 소비를 연결한다."
+  ]
+}
