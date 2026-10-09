@@ -1,6 +1,96 @@
 {
   "contracts": [
     {
+      "id": "LORESUB.PAS:eprint:1:if:3",
+      "line": 347,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
+      "id": "LORESUB.PAS:eprint:1:if:2",
+      "line": 335,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
+      "id": "LORESUB.PAS:eprint:1:if:1",
+      "line": 332,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:if:3",
+      "line": 276,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:for:2",
+      "line": 273,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:for:1",
+      "line": 273,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:if:2",
+      "line": 269,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:if:1",
+      "line": 261,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
+      "id": "LORESUB.PAS:auxscroll:1:while:1",
+      "line": 258,
+      "kind": "while",
+      "classification": "common-rule",
+      "implementation": "tool/tests/test_unused_source_ui.py",
+      "test": "tool/tests/test_unused_source_ui.py",
+      "verification": "verified",
+      "note": "LORESUB.PAS AuxScroll and EPrint are unreachable in the closed original game: across every shipped Pascal unit each symbol occurs only in its interface and implementation procedure declarations, never in a call, assembler reference or @procedure address. Inline assembler has no hidden CALL/JMP. The runtime intentionally adds neither helper. Verified scope is absence of an executable game path, not executed drawing parity of the unused body; the modern active Scroll/Print adapters retain their own separate contracts."
+    },
+    {
       "id": "LORECRET.PAS:fourth:1:repeat:4",
       "line": 604,
       "kind": "repeat",

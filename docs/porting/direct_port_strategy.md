@@ -3327,3 +3327,12 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      전체 Flutter1896건(3 skip), Python159건, analyze·웹 release build가
      통과했다. 기존 타이틀 회귀도 원본 생성 페이드 대기 후 입력창을
      검사하도록 갱신했고 원장·gap·source memory 최신 여부를 확인했다.
+
+213. **실행되지 않는 보조 화면 함수의 도달성 확인**
+     LORESUB AuxScroll·EPrint는 전체 Pascal 파일에서 interface 선언과
+     implementation 정의에만 등장한다. 호출·함수 주소 참조가 없으며
+     inline assembler에도 숨겨진 CALL/JMP가 없다. 이9개 제어항목은
+     실행 경로가 없는 것으로 검증한다. 사용하지 않는 함수의 본문을
+     Dart에 새로 추가하지 않는다. 이는 실행한 화면 동등성 근거가
+     아니며 활성 Scroll/Print의 검증과 구별한다. 회귀3건과 원장 검사로
+     근거를 고정한다. 게임 실행 코드 변경 없이 verified1793 / partial55.
