@@ -24,11 +24,13 @@ import '../logic/lore_creation_palette.dart';
 /// 1993년 원작 LORECRET.PAS 기반 캐릭터 생성 및 오프닝 화면
 class CharacterCreationScreen extends StatefulWidget {
   final void Function(List<PartyMember> party) onGameStart;
+  final bool startWithCreation;
   final void Function(SaveData loadedData)? onLoadGame;
 
   const CharacterCreationScreen({
     super.key,
     required this.onGameStart,
+    this.startWithCreation = false,
     this.onLoadGame,
   });
 
@@ -42,6 +44,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   /// 3: 40포인트 분배(Second), 4: 계급 선택(Third), 5: 동료 4명( Fourth)
   int _step = 0;
   bool _titleFinished = false;
+  bool _quitting = false;
   final _titleKeys = <KeyEvent>[];
   bool _displayFinished = false;
   bool _dividerFinished = false;
@@ -135,6 +138,10 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   @override
   void initState() {
     super.initState();
+    if (widget.startWithCreation) {
+      _step = 1;
+      _titleFinished = true;
+    }
     // 원작 오프닝/타이틀 BGM 재생
     AudioManager.instance.playBgm(BgmTrack.title);
   }
@@ -723,14 +730,22 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     }
   }
 
+  Future<void> _quitToDos() async {
+    if (_quitting) return;
+    _quitting = true;
+    await AudioManager.instance.stopSourceAudio();
+    if (mounted) await SystemNavigator.pop();
+  }
+
   void _readTitleKey(LogicalKeyboardKey key) {
+    if (_quitting) return;
     final label = key.keyLabel;
     final choice = label.length == 1
         ? LoreCreationRules.quizChoice(label.codeUnitAt(0))
         : null;
     if (choice == 0) setState(() => _step = 1);
     if (choice == 1) _showLoadGameDialog();
-    if (choice == 2) SystemNavigator.pop();
+    if (choice == 2) _quitToDos();
   }
 
   Widget _keyboardStep(
@@ -876,7 +891,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 ),
               ),
               // 원작 LOREHELP.PAS:272 `3] 도스로 돌아감`
-              onPressed: () => SystemNavigator.pop(),
+              onPressed: _quitToDos,
               child: Text(
                 '3] 도스로 돌아감',
                 style: RetroTheme.dosFont.copyWith(

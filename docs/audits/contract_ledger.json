@@ -2909,13 +2909,22 @@
       "routine": "LORE.PAS:<main>",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_startup_options.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LORE.PAS:<main>:if:2",
@@ -2925,13 +2934,22 @@
       "routine": "LORE.PAS:<main>",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/services/audio_manager.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LORE.PAS:<main>:if:3",
@@ -2941,13 +2959,22 @@
       "routine": "LORE.PAS:<main>",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/services/audio_manager.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LORE.PAS:<main>:if:4",
@@ -2957,13 +2984,22 @@
       "routine": "LORE.PAS:<main>",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/services/audio_manager.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LORE.PAS:<main>:if:5",
@@ -2973,13 +3009,22 @@
       "routine": "LORE.PAS:<main>",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/main.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LORE.PAS:<main>:if:6",
@@ -2989,13 +3034,22 @@
       "routine": "LORE.PAS:<main>",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LORE.PAS:<main>:while:1",
@@ -3005,13 +3059,22 @@
       "routine": "LORE.PAS:<main>",
       "kind": "while",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/main_game_screen.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LORE.PAS:<main>:while:2",
@@ -3021,13 +3084,22 @@
       "routine": "LORE.PAS:<main>",
       "kind": "while",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_main_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/services/audio_manager.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LOREBATT.PAS:plusexperience:1:if:1",
@@ -14615,13 +14687,22 @@
       "routine": "LOREHELP.PAS:text_fading:1",
       "kind": "for",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/lore_help_screen.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LOREHELP.PAS:text_fading:1:if:1",
@@ -14631,13 +14712,22 @@
       "routine": "LOREHELP.PAS:text_fading:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/lore_help_screen.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LOREHELP.PAS:scroll_sub:1:if:1",
@@ -14762,13 +14852,22 @@
       "routine": "LOREHELP.PAS:title_menu:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/main.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:2",
@@ -14778,13 +14877,22 @@
       "routine": "LOREHELP.PAS:title_menu:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:goto:1",
@@ -14794,13 +14902,22 @@
       "routine": "LOREHELP.PAS:title_menu:1",
       "kind": "goto",
       "outcomes": null,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/screens/character_creation_screen.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:for:1",
@@ -31870,11 +31987,20 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/startup_dos_test.dart",
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/services/audio_manager.dart",
+      "reviewed_scope": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed."
     },
     {
       "id": "LORETALK.PAS:talkmode:1:case:1",
@@ -35026,6 +35152,300 @@
     }
   ],
   "linked_contracts": [
+    {
+      "id": "LORESUB.PAS:unsound:1:if:1",
+      "line": 1877,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:goto:1",
+      "line": 187,
+      "kind": "goto",
+      "classification": "common-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:2",
+      "line": 185,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:1",
+      "line": 154,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/main.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:text_fading:1:if:1",
+      "line": 98,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/lore_help_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:text_fading:1:for:1",
+      "line": 96,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/screens/lore_help_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:while:2",
+      "line": 43,
+      "kind": "while",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:while:1",
+      "line": 41,
+      "kind": "while",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:6",
+      "line": 41,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:5",
+      "line": 31,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/main.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:4",
+      "line": 27,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:3",
+      "line": 20,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:2",
+      "line": 18,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:1",
+      "line": 16,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_startup_options.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
     {
       "id": "LORESUB.PAS:set_all:1:for:8",
       "line": 1856,
@@ -56365,160 +56785,6 @@
       "supporting_evidence": [],
       "note": "Partial source bundle for LORESUB ReturnCondition/SimpleDisCond and status display normalization. Boundary tests cover HP, unconscious/dead thresholds and raw Pascal storage; DOS text layout and every display branch remain separate.",
       "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:unsound:1:if:1",
-      "line": 1877,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORE.PAS:<main>:if:1",
-      "line": 16,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORE.PAS:<main>:if:2",
-      "line": 18,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORE.PAS:<main>:if:3",
-      "line": 20,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORE.PAS:<main>:if:4",
-      "line": 27,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORE.PAS:<main>:if:5",
-      "line": 31,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORE.PAS:<main>:if:6",
-      "line": 41,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORE.PAS:<main>:while:1",
-      "line": 41,
-      "kind": "while",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORE.PAS:<main>:while:2",
-      "line": 43,
-      "kind": "while",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_main_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for the LORE.PAS program entry and startup loop. The static contract test keeps the source and port owner present; startup sequencing, DOS prompts, and every loop outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:text_fading:1:for:1",
-      "line": 96,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:text_fading:1:if:1",
-      "line": 98,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:1",
-      "line": 154,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:2",
-      "line": 185,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:goto:1",
-      "line": 187,
-      "kind": "goto",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -58966,7 +59232,7 @@
     {
       "path": "test/load_state_dos_test.dart",
       "kind": "test",
-      "sha256": "1d035515ff840328eec8c464a233db74b23a45e60db8de196235a95c7fcaa7c1",
+      "sha256": "a7745a8ebf69fb3c4625294436d6101debb47edd03dbef2c8d31fc07040a28eb",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -60232,6 +60498,26 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/startup_audio_failure_ui_test.dart",
+      "kind": "test",
+      "sha256": "febfc729fe6047da1ba18701f98c61226115a4cdf4ccf9b8a3554db757cff009",
+      "cited_source_files": [
+        "LORE.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/startup_dos_test.dart",
+      "kind": "test",
+      "sha256": "aecf7c091e19625ffa066abe8ded932355e6fab97b4ba73548dd7502928be8d4",
+      "cited_source_files": [
+        "LORE.PAS",
+        "LOREHELP.PAS",
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/step1_hazards_and_esp_test.dart",
       "kind": "test",
       "sha256": "328364cb6699473be913759d0f4b27a7e96fc172dd041c296eb72c33e8a1d9fc",
@@ -61337,6 +61623,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_startup.json",
+      "kind": "fixture",
+      "sha256": "933379f96ba63cbb799b540df7219b237cc7d98659fc8701fb618ad36486e34a",
+      "test_users": [
+        "test/startup_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_summon_bounds.json",
       "kind": "fixture",
       "sha256": "1f8f15a3b9698bc9caec02c73ffb5b3c575ad6cc120ee5b8e6c2b49d2b33107b",
@@ -61779,7 +62074,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "2461bc8cc756b4e0d97c563961b6b58bf024f689056098f3025c3eaeea882848"
+      "sha256": "469a37d3c04c9d5a844dc50b1eb74693c8823b12c131819652894078bb4a973c"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -61843,7 +62138,7 @@
     },
     {
       "path": "lib/services/audio_manager.dart",
-      "sha256": "750e6f8ea93d4ace32992d9df72963d072903cb5f95c508b62f5554ff52d1b88"
+      "sha256": "4113487ac15ea8da7bb5bfa6a652e6e3422273d509c4208720e76ccad46e560a"
     },
     {
       "path": "tool/capture_dos_reference.py",
@@ -61863,9 +62158,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "4861f19e37ba1758501b092a04b215a60129b8404077cbd6707dbeecd394d547",
+      "sha256": "3081ef75fa7c1bc794030113edd3c11961e6d5e79593882650e6a94571346d19",
       "top_level_counts": {
-        "contracts": 1767
+        "contracts": 1781
       }
     }
   ],
@@ -61874,8 +62169,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 14,
-    "partially_verified_behavior_sites": 14,
+    "unverified_behavior_sites": 0,
+    "partially_verified_behavior_sites": 0,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

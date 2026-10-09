@@ -11,8 +11,12 @@ import 'game/lore_world_manager.dart';
 import 'game/sprite_sheet.dart';
 import 'screens/character_creation_screen.dart';
 import 'screens/main_game_screen.dart';
+import 'logic/lore_startup_options.dart';
+import 'logic/lore_load_failure.dart';
+import 'screens/lore_help_screen.dart';
+import 'widgets/game_over_view.dart';
 
-Future<void> main() async {
+Future<void> main([List<String> arguments = const []]) async {
   WidgetsFlutterBinding.ensureInitialized();
   // Follow the device orientation so the mobile layout can use portrait space.
   await SystemChrome.setPreferredOrientations(DeviceOrientation.values);
@@ -26,11 +30,12 @@ Future<void> main() async {
   // 포털·시설·표지판은 원본 Dart 절차에서 선택한다.
   await LoreWorldManager.instance.loadData();
 
-  runApp(const LoreApp());
+  runApp(LoreApp(startup: LoreStartupOptions.parse(arguments)));
 }
 
 class LoreApp extends StatefulWidget {
-  const LoreApp({super.key});
+  const LoreApp({super.key, this.startup = const LoreStartupOptions()});
+  final LoreStartupOptions startup;
 
   @override
   State<LoreApp> createState() => _LoreAppState();
@@ -41,6 +46,37 @@ class _LoreAppState extends State<LoreApp> {
   SaveData? _initialSaveData;
   bool _creating = false;
   Object? _creationError;
+  bool _bootLoading = false;
+  LoreLoadFailure? _bootFailure;
+
+  @override
+  void initState() {
+    super.initState();
+    AudioManager.instance.configureSourceMusic(widget.startup.musicEnabled);
+    if (widget.startup.mode == LoreStartupMode.game) {
+      _bootLoading = true;
+      _loadStartupGame();
+    }
+  }
+
+  Future<void> _loadStartupGame() async {
+    // Set_All always sets LoadNo='1'; /g does not search other slots.
+    final result = await SaveManager.instance.readGame(1);
+    if (!mounted) return;
+    setState(() {
+      _bootLoading = false;
+      _bootFailure = result.failure;
+      if (result.data case final save?) {
+        _initialSaveData = save;
+        _party = save.party;
+      }
+    });
+  }
+
+  Future<void> _haltHelp() async {
+    await AudioManager.instance.stopSourceAudio();
+    if (mounted) await SystemNavigator.pop();
+  }
 
   Future<void> _startNewGame(List<PartyMember> party) async {
     if (_creating || _creationError != null) return;
@@ -76,7 +112,16 @@ class _LoreAppState extends State<LoreApp> {
       builder: SourcePalette.wrap,
       // 파티가 결성되지 않았고 세이브 로드가 없으면 캐릭터 생성 화면으로 시작,
       // 생성 완료 또는 세이브 로드 시 메인 게임 화면으로 진입!
-      home: _party == null && _initialSaveData == null
+      home: widget.startup.mode == LoreStartupMode.help
+          ? LoreHelpScreen(onHalt: _haltHelp)
+          : _bootLoading
+          ? const Scaffold(
+              backgroundColor: Colors.black,
+              body: Center(child: CircularProgressIndicator()),
+            )
+          : _bootFailure != null
+          ? HaltView(loadFailure: _bootFailure)
+          : _party == null && _initialSaveData == null
           ? Stack(
               children: [
                 ExcludeFocus(
@@ -84,6 +129,8 @@ class _LoreAppState extends State<LoreApp> {
                   child: IgnorePointer(
                     ignoring: _creating || _creationError != null,
                     child: CharacterCreationScreen(
+                      startWithCreation:
+                          widget.startup.mode == LoreStartupMode.creation,
                       onGameStart: _startNewGame,
                       onLoadGame: (saveData) {
                         setState(() {

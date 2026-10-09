@@ -2005,7 +2005,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
     final result = await done.future;
     if (!mounted) return result;
     if (result.end == LoreGameOverEnd.halted) {
-      AudioManager.instance.stopBgm(); // `if AdLibOn then PlayOff`
+      // Source GameOver: PlayOff, then UnSound before the final fade/Halt.
+      unawaited(AudioManager.instance.stopSourceAudio());
       setState(() => _halt = result);
       // `Halt` ends the program: nothing after the caller's GameOver runs.
       return Completer<LoreGameOverResult>().future;

@@ -1,6 +1,300 @@
 {
   "contracts": [
     {
+      "id": "LORESUB.PAS:unsound:1:if:1",
+      "line": 1877,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:goto:1",
+      "line": 187,
+      "kind": "goto",
+      "classification": "common-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:2",
+      "line": 185,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:1",
+      "line": 154,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/main.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:text_fading:1:if:1",
+      "line": 98,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/lore_help_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LOREHELP.PAS:text_fading:1:for:1",
+      "line": 96,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/screens/lore_help_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:while:2",
+      "line": 43,
+      "kind": "while",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:while:1",
+      "line": 41,
+      "kind": "while",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:6",
+      "line": 41,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:5",
+      "line": 31,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/main.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:4",
+      "line": 27,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:3",
+      "line": 20,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:2",
+      "line": 18,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/audio_manager.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
+      "id": "LORE.PAS:<main>:if:1",
+      "line": 16,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_startup_options.dart",
+      "test": "test/startup_dos_test.dart",
+      "verification": "verified",
+      "note": "96 native startup executions and120 native Title_Menu prefixes execute original first-argument string comparisons, branches and two outer Main/music dispatch cycles; native help executes Text_Fading and UnSound through Halt. Only platform argv/search/rename/exec/device/graphics calls and Main/PlaySong bodies are supplied. Actual Flutter first-only flags /m/M, /g/G, /c/C and help aliases match: no music setup under /m, independent CRT tones, slot1 load/error without title or alternate slot fallback, direct Display/name/sex, persistent world across music track changes, and backend setup error keeps field movement/tone alive. Three43-step fades wait6450ms or skip remaining delays at later KeyPressed polls without consuming a key; all source texts and colors are retained. Help/title/GameOver queue modern player cleanup; help/title terminate once after cleanup. Init.cmd/End.cmd DOS search/rename/exec traces are independently covered but map to portable backend setup/shutdown, not host driver execution. GUI event dispatch and MP3 loop playback replace Main/PlaySong device scheduling. Physical BIOS/CPU/AdLib/DOS-driver side effects, whole-song waveforms and glyph/framebuffer pixels are not claimed.",
+      "supporting_evidence": [
+        "tool/export_dos_startup.py",
+        "tool/tests/test_export_dos_startup.py",
+        "test/fixtures/dos_startup.json",
+        "test/startup_audio_failure_ui_test.dart",
+        "test/game_over_test.dart",
+        "test/game_over_reload_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ]
+    },
+    {
       "id": "LORESUB.PAS:set_all:1:for:8",
       "line": 1856,
       "kind": "for",

@@ -79,6 +79,7 @@ void main() {
   test(
     'all 27 actual map loads select native font bytes and BGM resources',
     () async {
+      await AudioManager.instance.configureSourceMusic(true);
       var callbacks = 0;
       final game = LoreGame(
         random: _NoLoadRandom(),
@@ -103,6 +104,9 @@ void main() {
           (track) => track.assetPath.startsWith('audio/music${music}_'),
         );
         await game.loadMapById(id, startX: 1, startY: 1);
+        // Map loading queues playback; let the initialized modern audio
+        // adapter select its track before checking the native resource choice.
+        await Future<void>.delayed(Duration.zero);
         expect(game.currentMapId, id);
         expect(game.currentMap!.category, row['font']);
         expect(LoreWorldManager.mapRegistry[id]!.fontName, font);
@@ -117,6 +121,7 @@ void main() {
         final snapshot = game.currentMap!.tileSnapshot();
         snapshot[0] = 47;
         await game.loadMapById(id, startX: 1, startY: 1, mapTiles: snapshot);
+        await Future<void>.delayed(Duration.zero);
         expect(game.currentMap!.tileSnapshot(), snapshot);
         expect(game.selectedTileFontName, font);
         expect(AudioManager.instance.currentBgm, expectedTrack);

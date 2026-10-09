@@ -18,6 +18,29 @@ class SourceAudioPlatform extends AudioplayersPlatform {
   final _events = <String, StreamController<AudioEvent>>{};
   final _bytePlayers = <String>{};
   final sourceBytes = <Uint8List>[];
+  bool prepareAssets = false;
+
+  @override
+  Future<void> setSourceUrl(
+    String playerId,
+    String url, {
+    bool? isLocal,
+    String? mimeType,
+  }) async {
+    await super.setSourceUrl(
+      playerId,
+      url,
+      isLocal: isLocal,
+      mimeType: mimeType,
+    );
+    if (prepareAssets) {
+      _bytePlayers.add(playerId);
+      _events[playerId]!.add(
+        const AudioEvent(eventType: AudioEventType.prepared, isPrepared: true),
+      );
+    }
+  }
+
   @override
   Stream<AudioEvent> getEventStream(String playerId) => _events
       .putIfAbsent(playerId, () => StreamController<AudioEvent>.broadcast())

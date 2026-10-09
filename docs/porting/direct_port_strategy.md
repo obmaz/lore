@@ -3407,3 +3407,37 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      원본 옵션·fade·audio cleanup 제어 흐름을 별도로 검증한다.
      Flutter2432건(3 skip), Python167건, analyze·웹 release build가
      통과했으며 원장·gap·source memory 최신 여부도 확인했다.
+
+219. **시작 옵션·음악 분기·도움말·UnSound**
+     원본 Main96조건과 Title_Menu prefix120조건을 실행한다. 첫 인자만
+     정확한 표기로 읽고 /m/M, /g/G, /c/C, /?/-?/?를 대응한다. /m은
+     음악 backend 설정을 생략하되 CRT tone/SoundOn을 유지한다. /g는
+     slot1만 읽고 실패하면 원문 ErrorMessage/Halt로 끝낸다. /c는
+     Display/name/sex로 바로 진입하며 기존 생성 절차를 재사용한다.
+     실제 backend 초기화 실패에서도 필드 이동·tone은 유지한다.
+     native Main 두 dispatch cycle과 현재 GUI/event loop·MP3 loop를
+     대응하며, 음악 변경으로 game 객체·좌표가 초기화되지 않는다.
+     도움말은 원문 세 fade43회씩 총6450ms를 기다리고 KeyPressed가
+     있으면 다음 poll 이후 대기를 건너뛴다. modifier는 키 byte가
+     아니며 원문·색을 보존한다. 도움말/타이틀 종료는 두 player 정리 후
+     한 번만 Halt하며 GameOver도 source UnSound cleanup을 연결한다.
+     Init.cmd/End.cmd의 원본 conditional rename/exec는 native에서
+     검사하되 현대 backend setup/shutdown으로 대응하고 host에서 DOS
+     driver를 실행하지 않는다. 물리 BIOS·CPU·AdLib·driver 부작용,
+     전체 음악 파형, DOS glyph/framebuffer pixel 동일성은 주장하지
+     않는다. 이14개를 해소하여 verified1848 / partial0 / unclassified0.
+     이는 명시한 어댑터 경계 안의 원장 제어항목 완료이며 무한 상태의
+     전체 캠페인 replay나 DOS hardware 전체 복제라는 뜻은 아니다.
+
+     최종 검증: Flutter 전체2535 pass / 3 skip에서 음악 adapter 초기화
+     대기누락1건을 발견했고 load_state_dos_test의 초기화·queued playback
+     대기를 수정하여 해당2건 재검사 pass. 새 startup103건과 음악실패
+     실제UI1건을 포함한 나머지 전체검사는 pass. Python169 pass,
+     Flutter analyze 무문제, ledger/gaps/source-memory --check 통과.
+     WASM release SHA256 9cc50ab5f71b86592c7e3b865aed9adf09023b1375eb203f0d3ea3665ee57854.
+     Chromium 세 viewport의 실제WASM 저장/재개·party/map 보존,
+     스킨전환·Escape·레이아웃 검사 pass. 실제모바일 생성/슬롯4개,
+     첫퀘스트·무기고·Skeleton departure 및 reload/resave는 원본DOS의
+     record6개·etc100byte·map10000cell과 일치. Save/Rest Space 공유c와
+     성문 Select의 Esc·거절·입장도 pass. 브라우저 검사는 원본오프닝
+     키poll 전에 Flutter view에 focus를 주도록 검사도구만 조정했다.

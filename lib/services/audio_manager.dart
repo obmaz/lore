@@ -1,7 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 
-
 enum BgmTrack {
   title('audio/music1_title.mp3'),
   town('audio/music2_town.mp3'),
@@ -27,15 +26,15 @@ class AudioManager {
 
   factory AudioManager() => instance;
 
-  AudioManager._internal() {
-    _init();
-  }
+  AudioManager._internal();
 
   final AudioPlayer _bgmPlayer = AudioPlayer();
   final AudioPlayer _sfxPlayer = AudioPlayer();
 
   BgmTrack? _currentBgm;
   bool _isMuted = false;
+  bool sourceMusicEnabled = true;
+  Future<bool>? _musicReady;
 
   /// Source SoundOn: temporary voice/beep suppression, independent of BGM.
   bool sourceSoundEnabled = true;
@@ -57,12 +56,46 @@ class AudioManager {
     _sfxPlayer.setVolume(_sfxVolume);
   }
 
-  void _init() {
-    _bgmPlayer.setReleaseMode(ReleaseMode.loop);
+  Future<bool> _initMusic() async {
+    try {
+      await _bgmPlayer.setReleaseMode(ReleaseMode.loop);
+      return true;
+    } catch (error) {
+      sourceMusicEnabled = false;
+      debugPrint('[AudioManager] Music initialization failed: $error');
+      return false;
+    }
+  }
+
+  /// LORE.PAS /m bypasses the music backend; CRT/SoundOn remain independent.
+  Future<void> configureSourceMusic(bool enabled) async {
+    sourceMusicEnabled = enabled;
+    if (enabled) {
+      if (!await (_musicReady ??= _initMusic())) {
+        sourceMusicEnabled = false;
+      }
+    } else {
+      await stopBgm();
+    }
+  }
+
+  /// UnSound's legacy DOS driver shutdown maps to stopping modern players.
+  Future<void> stopSourceAudio() async {
+    await stopBgm();
+    try {
+      await _sfxPlayer.stop();
+    } catch (error) {
+      debugPrint('[AudioManager] Error stopping source audio: $error');
+    }
   }
 
   /// BGM 재생 (동일 곡이면 이어 재생)
   Future<void> playBgm(BgmTrack track) async {
+    if (!sourceMusicEnabled ||
+        !await (_musicReady ??= _initMusic()) ||
+        !sourceMusicEnabled) {
+      return;
+    }
     if (_currentBgm == track && _bgmPlayer.state == PlayerState.playing) {
       return;
     }
@@ -72,6 +105,7 @@ class AudioManager {
     try {
       await _bgmPlayer.stop();
       await _bgmPlayer.setVolume(_bgmVolume);
+      if (!sourceMusicEnabled) return;
       await _bgmPlayer.play(AssetSource(track.assetPath));
       debugPrint('[AudioManager] Playing BGM: ${track.name}');
     } catch (e) {

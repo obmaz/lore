@@ -5,6 +5,7 @@ continuous DOS campaign replay or original BGI pixel equivalence.
 """
 import argparse
 import json
+import os
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
 
@@ -18,6 +19,10 @@ def enable_semantics(page):
 
 
 def resume(page):
+    # Original title skips the letter at its next key poll; Enter is not a menu choice.
+    page.get_by_text('또다른 지식의 성전 원본 오프닝', exact=True).wait_for(timeout=60000)
+    page.locator('flutter-view').click(position={'x': 20, 'y': 20})
+    page.keyboard.press('Enter')
     page.get_by_role('button', name='2] 이전의 게임을 재개 시킴').click()
     button = page.get_by_role('button', name='이전의 게임을 재개').first
     expect(button).to_be_enabled(timeout=15000)
@@ -56,7 +61,7 @@ def verify(url, output):
     output.mkdir(parents=True, exist_ok=True)
     results = []
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=True, args=['--no-sandbox'])
+        browser = playwright.chromium.launch(executable_path=os.environ.get('LORE_CHROMIUM', '/usr/bin/chromium'), headless=True, args=['--no-sandbox'])
         try:
             for name, width, height in [('mobile_portrait', 390, 844), ('mobile_landscape', 844, 390), ('desktop', 1280, 900)]:
                 context = browser.new_context(viewport=dict(width=width, height=height))

@@ -3,14 +3,14 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 14,
-    "verified": 1834,
+    "partial": 0,
+    "verified": 1848,
     "unmapped_map_writes": 0
   },
   "routines": [
     {
       "routine": "LORE.PAS:<main>",
-      "partial": 8
+      "verified": 8
     },
     {
       "routine": "LOREBATT.PAS:attackone:1",
@@ -194,12 +194,11 @@
     },
     {
       "routine": "LOREHELP.PAS:text_fading:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LOREHELP.PAS:title_menu:1",
-      "partial": 3,
-      "verified": 18
+      "verified": 21
     },
     {
       "routine": "LOREMAIN.PAS:enter_lava:1",
@@ -483,7 +482,7 @@
     },
     {
       "routine": "LORESUB.PAS:unsound:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:wantenter:1",
@@ -1758,6 +1757,29 @@
       ],
       "test_candidates": [
         "test/spell_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_startup.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:unsound:1:if:1",
+        "LOREHELP.PAS:title_menu:1:goto:1",
+        "LOREHELP.PAS:title_menu:1:if:2",
+        "LOREHELP.PAS:title_menu:1:if:1",
+        "LOREHELP.PAS:text_fading:1:if:1",
+        "LOREHELP.PAS:text_fading:1:for:1",
+        "LORE.PAS:<main>:while:2",
+        "LORE.PAS:<main>:while:1",
+        "LORE.PAS:<main>:if:6",
+        "LORE.PAS:<main>:if:5",
+        "LORE.PAS:<main>:if:4",
+        "LORE.PAS:<main>:if:3",
+        "LORE.PAS:<main>:if:2",
+        "LORE.PAS:<main>:if:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/startup_dos_test.dart"
       ]
     },
     {

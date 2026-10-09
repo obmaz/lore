@@ -46,6 +46,9 @@ const seed = JSON.stringify({
       }
       async function resume() {
         await enableSemantics();
+        await page.getByText('또다른 지식의 성전 원본 오프닝',{exact:true}).waitFor({timeout:60000});
+        await page.locator('flutter-view').click({position:{x:20,y:20}});
+        await page.keyboard.press('Enter'); // Source title key poll skips the letter.
         await page.getByText('2] 이전의 게임을 재개 시킴', {exact: true}).click();
         await page.getByText('이전의 게임을 재개', {exact: true}).first().click();
         await page.getByRole('button', {name: '앱 설정', exact: true}).waitFor();

@@ -28,6 +28,9 @@ console.log('Deployed bootstrap hash matches the actual WASM response');
 await page.locator('flt-semantics-placeholder').evaluateAll(es=>es.forEach(e=>e.click()));
 async function click(text){await page.getByText(text,{exact:true}).click();await page.waitForTimeout(100);}
 async function next(){await click(data.texts.Third[10]);}
+await page.getByText('또다른 지식의 성전 원본 오프닝',{exact:true}).waitFor({timeout:60000});
+await page.locator('flutter-view').click({position:{x:20,y:20}});
+await page.keyboard.press('Enter'); // Skip at the source title poll, then choose creation.
 await click('1] 새로운 주인공을 생성 시킴');await page.getByRole('textbox').fill('Hero');await next();
 for(const q of data.questions)await click(q.options[0].text);
 for(const slot of [1,3])for(let i=0;i<20;i++){await page.getByRole('button').nth(slot).click();}
@@ -65,6 +68,10 @@ if(saved.mapId!==q.party.mapId||saved.playerX!==q.party.x||saved.playerY!==q.par
 console.log('First quest: all six records, 100 etc bytes, position/food/gold and 10000 saved map cells match DOS');
 await page.keyboard.press('Enter');await page.reload();await page.waitForTimeout(1500);
 await page.locator('flt-semantics-placeholder').evaluateAll(es=>es.forEach(e=>e.click()));
+await page.getByText('또다른 지식의 성전 원본 오프닝',{exact:true}).waitFor({timeout:60000});
+await page.locator('flutter-view').click({position:{x:20,y:20}});
+await page.keyboard.press('Enter'); // Same source title polling after reload.
+await page.locator('flutter-view').click({position:{x:20,y:20}});await page.keyboard.press('Enter');
 await click('2] 이전의 게임을 재개 시킴');await page.getByText('이전의 게임을 재개',{exact:true}).first().click();await page.waitForTimeout(1200);
 await page.keyboard.press('KeyG');await page.waitForTimeout(300);await click('현재의 게임을 저장');await click('본 게임 데이타');await page.waitForTimeout(400);
 const reloaded=await page.evaluate(()=>JSON.parse(JSON.parse(localStorage.getItem('flutter.lore_save_slot_1'))));
@@ -130,6 +137,7 @@ await page.keyboard.press('Enter');await page.waitForTimeout(500);
 const departure=await save();compare(castle.departure,departure,'Skeleton departure');
 await page.keyboard.press('Enter');await page.reload();await page.waitForTimeout(1500);
 await page.locator('flt-semantics-placeholder').evaluateAll(es=>es.forEach(e=>e.click()));
+await page.locator('flutter-view').click({position:{x:20,y:20}});await page.keyboard.press('Enter');
 await click('2] 이전의 게임을 재개 시킴');await page.getByText('이전의 게임을 재개',{exact:true}).first().click();await page.waitForTimeout(1200);
 const again=await save();compare(castle.departure,again,'Departure reload/save');
 // LOREMAIN.Main shares c with PressAnyKey: Save Space enters SelectMode,
