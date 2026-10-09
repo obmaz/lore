@@ -126,6 +126,7 @@ class LoreMainProcedures {
     required void Function() displayCondition,
     required void Function() displayHealthAndCondition,
     required Future<void> Function() gameOver,
+    void Function()? clearMessageWindow,
   }) async {
     scrollToParty();
     final affected = advancePoison(party);
@@ -133,6 +134,7 @@ class LoreMainProcedures {
     if (steps > 0) {
       setSwampWalkSteps(steps - 1);
     } else {
+      clearMessageWindow?.call();
       final poisoned = LoreSwampLogic.rollPoisonedSlots(party, random);
       showSwampWarning();
       for (final index in poisoned) {
@@ -156,8 +158,10 @@ class LoreMainProcedures {
     required void Function(PartyMember member, int damage) showDamage,
     required void Function() displayCondition,
     required Future<void> Function() gameOver,
+    void Function()? clearMessageWindow,
   }) async {
     scrollToParty();
+    clearMessageWindow?.call();
     final slots = [
       for (var i = 0; i < 6; i++)
         i < party.length ? party[i] : PartyMember.blank(),

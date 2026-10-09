@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/party_member.dart';
 import '../logic/lore_save_party.dart';
+import '../logic/lore_load_failure.dart';
 
 class SaveData {
   static const int currentSchemaVersion = 3;
@@ -126,6 +127,21 @@ class SaveData {
   }
 }
 
+class SaveReadResult {
+  final SaveData? data;
+  final LoreLoadFailure? failure;
+  const SaveReadResult.loaded(SaveData value) : data = value, failure = null;
+  const SaveReadResult.failed(LoreLoadFailure value)
+    : data = null,
+      failure = value;
+}
+
+class _SaveRecordError implements Exception {
+  final String kind;
+  final Object cause;
+  const _SaveRecordError(this.kind, this.cause);
+}
+
 /// 1993년 원작 LOREMENU.PAS (GameOption: 4 슬롯 세이브/로드) 대응 매니저
 class SaveManager {
   static final SaveManager instance = SaveManager._internal();
@@ -150,15 +166,95 @@ class SaveManager {
 
   /// 슬롯에서 불러오기 (1..4)
   Future<SaveData?> loadGame(int slot) async {
-    final prefs = await SharedPreferences.getInstance();
-    final jsonStr = prefs.getString(_keyForSlot(slot));
-    if (jsonStr == null) return null;
+    return (await readGame(slot)).data;
+  }
+
+  /// The modern JSON file contains three logical source records: party info,
+  /// six players and optional SaveN.map. Preserve their source failure labels.
+  /// Legacy short lists/defaults remain a separate adapter, not truncated DOS IO.
+  Future<SaveReadResult> readGame(int slot) async {
     try {
+      final prefs = await SharedPreferences.getInstance();
+      final jsonStr = prefs.getString(_keyForSlot(slot));
+      if (jsonStr == null) {
+        return SaveReadResult.failed(
+          LoreLoadFailure('party$slot.dat', needCreate: true),
+        );
+      }
       final jsonMap = jsonDecode(jsonStr) as Map<String, dynamic>;
-      return SaveData.fromJson(jsonMap);
-    } catch (_) {
-      return null;
+      return SaveReadResult.loaded(_readSourceRecords(jsonMap, slot));
+    } on _SaveRecordError catch (e) {
+      return SaveReadResult.failed(
+        LoreLoadFailure(
+          e.kind == 'save' ? 'save$slot.map' : '${e.kind}$slot.dat',
+          needCreate: e.kind != 'save',
+          cause: e.cause,
+        ),
+      );
+    } catch (e) {
+      return SaveReadResult.failed(
+        LoreLoadFailure('party$slot.dat', needCreate: true, cause: e),
+      );
     }
+  }
+
+  SaveData _readSourceRecords(Map<String, dynamic> raw, int slot) {
+    final current = raw['schemaVersion'] == SaveData.currentSchemaVersion;
+    if (current) {
+      for (final field in ['mapId', 'playerX', 'playerY', 'gold', 'food']) {
+        if (raw[field] is! int) {
+          throw FormatException('missing/invalid party field: $field');
+        }
+      }
+      if (raw['flags'] is! Map) {
+        throw const FormatException('missing/invalid party flags');
+      }
+    }
+    final members = <PartyMember>[];
+    try {
+      final rows = raw['party'];
+      if (current && rows is! List) {
+        throw const FormatException('missing player records');
+      }
+      final shape = PartyMember.zero().toJson();
+      for (final row in (rows as List<dynamic>? ?? const []).take(6)) {
+        final record = row as Map<String, dynamic>;
+        if (current) {
+          for (final field in shape.entries) {
+            if (field.value is String
+                ? record[field.key] is! String
+                : record[field.key] is! int) {
+              throw FormatException(
+                'missing/invalid player field: ${field.key}',
+              );
+            }
+          }
+        }
+        members.add(PartyMember.fromJson(record));
+      }
+    } catch (e) {
+      throw _SaveRecordError('player', e);
+    }
+    try {
+      for (final field in ['mapWidth', 'mapHeight']) {
+        if (raw[field] != null && raw[field] is! int) {
+          throw FormatException('invalid saved MAP header: $field');
+        }
+      }
+      final tiles = raw['mapTiles'];
+      if (tiles != null && (tiles is! List || tiles.any((v) => v is! num))) {
+        throw const FormatException('invalid saved MAP payload');
+      }
+    } catch (e) {
+      throw _SaveRecordError('save', e);
+    }
+    // Source reads only six player records, never trailing scratch/file data.
+    // The selected slot, not untrusted JSON metadata, owns saveN.map's name.
+    return SaveData.fromJson({
+      ...raw,
+      'slot': slot,
+      'party': [for (final p in members) p.toJson()],
+    });
   }
 
   /// LORECRET.PAS `Last`: the new party starts in map 6 (51,31) with food 20,

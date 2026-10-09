@@ -99,6 +99,7 @@ Future<void> showLoreMessageDialog(
           escape: key == LogicalKeyboardKey.escape,
           space: key == LogicalKeyboardKey.space,
           backspace: key == LogicalKeyboardKey.backspace,
+          tab: key == LogicalKeyboardKey.tab,
         );
       },
     ),
@@ -470,19 +471,21 @@ class _SpacePowerDialogState extends State<_SpacePowerDialog> {
 /// over the map while the view scrolls; every key (Esc = true in [press]'s
 /// `escape`) or tap releases the wait of [LoreKeyWait.next].
 class LoreKeyWait {
-  Completer<({bool escape, bool space, bool backspace})>? _wait;
+  Completer<({bool escape, bool space, bool backspace, bool tab})>? _wait;
   bool _closed = false;
 
   /// Completes with true when the key was Esc.
   Future<bool> next() async {
     if (_closed) return Future.value(true);
-    final wait = Completer<({bool escape, bool space, bool backspace})>();
+    final wait =
+        Completer<({bool escape, bool space, bool backspace, bool tab})>();
     _wait = wait;
     final key = await wait.future;
     LoreMainInput.record(
       escape: key.escape,
       space: key.space,
       backspace: key.backspace,
+      tab: key.tab,
     );
     return key.escape;
   }
@@ -497,11 +500,17 @@ class LoreKeyWait {
     bool escape = false,
     bool space = false,
     bool backspace = false,
+    bool tab = false,
   }) {
     final wait = _wait;
     _wait = null;
     if (wait != null && !wait.isCompleted) {
-      wait.complete((escape: escape, space: space, backspace: backspace));
+      wait.complete((
+        escape: escape,
+        space: space,
+        backspace: backspace,
+        tab: tab,
+      ));
     }
   }
 }
@@ -563,6 +572,7 @@ class _KeyWaitOverlayState extends State<_KeyWaitOverlay> {
         escape: event.logicalKey == LogicalKeyboardKey.escape,
         space: event.logicalKey == LogicalKeyboardKey.space,
         backspace: event.logicalKey == LogicalKeyboardKey.backspace,
+        tab: event.logicalKey == LogicalKeyboardKey.tab,
       );
       return KeyEventResult.handled;
     },

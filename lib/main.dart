@@ -5,6 +5,7 @@ import 'data/lore_data.dart';
 import 'models/party_member.dart';
 import 'services/save_manager.dart';
 import 'services/graphics_settings.dart';
+import 'services/source_palette.dart';
 import 'game/lore_world_manager.dart';
 import 'game/sprite_sheet.dart';
 import 'screens/character_creation_screen.dart';
@@ -70,6 +71,7 @@ class _LoreAppState extends State<LoreApp> {
       title: '또 다른 지식의 성전 (1993)',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
+      builder: SourcePalette.wrap,
       // 파티가 결성되지 않았고 세이브 로드가 없으면 캐릭터 생성 화면으로 시작,
       // 생성 완료 또는 세이브 로드 시 메인 게임 화면으로 진입!
       home: _party == null && _initialSaveData == null

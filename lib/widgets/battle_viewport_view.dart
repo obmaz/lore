@@ -39,6 +39,7 @@ class BattleViewportView extends StatefulWidget {
   final bool espAccessGranted;
   final void Function(String message) onLog;
   final void Function(int color, String text)? onPrint;
+  final VoidCallback? onClearMessageWindow;
   final void Function(int goldEarned) onVictory;
   final void Function(int eNumber) onTelepathyJoin;
   final VoidCallback onDefeat;
@@ -54,6 +55,7 @@ class BattleViewportView extends StatefulWidget {
     required this.espAccessGranted,
     required this.onLog,
     this.onPrint,
+    this.onClearMessageWindow,
     required this.onVictory,
     required this.onTelepathyJoin,
     required this.onDefeat,
@@ -345,6 +347,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
+    widget.onClearMessageWindow?.call();
     final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.singleAttack)
         .toList();
@@ -363,6 +366,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
+    widget.onClearMessageWindow?.call();
     final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.allAttack)
         .toList();
@@ -381,6 +385,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
+    widget.onClearMessageWindow?.call();
     final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.specialDebuff)
         .toList();
@@ -395,6 +400,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   /// 메뉴에서 `없음`/취소: `battle[person,1] := 0` (`주저했다`).
   void _hesitate() {
     if (_battleEnded) return;
+    widget.onClearMessageWindow?.call();
     final who = _activePlayerIndex + 1;
     _select(0, _battle.battle[who][2], _battle.battle[who][3]);
   }
@@ -406,6 +412,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
+    widget.onClearMessageWindow?.call();
     unawaited(_runCureSpell(player));
   }
 
@@ -437,6 +444,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (_isTurnProcessing || _battleEnded) return;
     final player = activePlayer;
     if (player == null) return;
+    widget.onClearMessageWindow?.call();
     final spells = LoreData.instance.spells
         .where((s) => s.category == SpellCategory.esp)
         .toList();
@@ -454,6 +462,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
   // ==========================================
   void _onAutoBattleOrRun() {
     if (_isTurnProcessing || _battleEnded) return;
+    if (activePlayer == null) return;
+    widget.onClearMessageWindow?.call();
     if (isLeaderActive) {
       // `k = 7, person = 1` → `k := 8; autobattle := TRUE`
       _autoRound = true;
@@ -646,7 +656,9 @@ class _BattleViewportViewState extends State<BattleViewportView> {
                         child: Text(
                           enemy.name,
                           style: RetroTheme.dosFont.copyWith(
-                            color: _getEnemyHpColor(enemy),
+                            color: enemy.isDead
+                                ? Colors.transparent
+                                : _getEnemyHpColor(enemy),
                             fontSize: 12,
                           ),
                         ),

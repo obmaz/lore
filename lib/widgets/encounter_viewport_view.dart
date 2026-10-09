@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../logic/lore_batt_text.dart';
 import '../logic/lore_encounter_logic.dart';
+import '../logic/lore_enemy_presentation.dart';
 import '../models/monster.dart';
 import '../theme/retro_theme.dart';
 
@@ -33,7 +34,11 @@ class EncounterViewportView extends StatelessWidget {
               for (final enemy in enemies)
                 Text(
                   '${enemy.name} (Lv.${enemy.level}, HP:${enemy.hp})',
-                  style: RetroTheme.dosFont,
+                  style: RetroTheme.dosFont.copyWith(
+                    color: enemy.isDead
+                        ? Colors.transparent
+                        : RetroTheme.ega(LoreEnemyPresentation.color(enemy)),
+                  ),
                 ),
               const SizedBox(height: 12),
               Text(

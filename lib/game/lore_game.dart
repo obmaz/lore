@@ -9,6 +9,7 @@ import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_ent_procedures.dart';
 import '../logic/lore_field_session.dart';
 import '../logic/lore_main_procedures.dart';
+import '../logic/lore_main_key.dart';
 import '../logic/lore_tile_protocol.dart';
 import '../logic/lore_talk_dispatcher.dart';
 
@@ -55,24 +56,32 @@ class LoreGame extends FlameGame {
   // 원작 LORECRET.PAS 및 LOREMAIN.PAS 기준 초기 시작 좌표: (51, 31)
   int playerX = 51;
   int playerY = 31;
-  int playerDirection = 0; // 0: 남, 1: 북, 2: 동, 3: 서
+  int _playerDirection = 0; // 0: 남, 1: 북, 2: 동, 3: 서
+  int? _sourceInputFace;
+  int get playerDirection => _playerDirection;
+  set playerDirection(int direction) {
+    _playerDirection = direction;
+    _sourceInputFace = null;
+  }
 
   /// Explicit source cutscene face assignments use the field sprite bank.
   void applySourceFace(int face) {
     RangeError.checkValueInInterval(face, 4, 7, 'field face');
     playerDirection = face - 4;
+    _sourceInputFace = null;
   }
 
   /// LORESUB.PAS:1722-1726/1758-1759 and LOREMAIN.PAS:169-184:
   /// town uses faces 0..3; map 26 adds 4 even though its position is town.
   /// Map identity, rather than the shared asset filename, owns this choice.
   int get playerSpriteIndex =>
-      playerDirection +
-      (LoreWorldManager.mapRegistry[currentMapId]?.category ==
-                  MapCategory.town &&
-              currentMapId != 26
-          ? 0
-          : 4);
+      _sourceInputFace ??
+      (playerDirection +
+          (LoreWorldManager.mapRegistry[currentMapId]?.category ==
+                      MapCategory.town &&
+                  currentMapId != 26
+              ? 0
+              : 4));
 
   /// 원작 `scroll(FALSE)` 연출용 임시 시야 중심 (null이면 파티 위치).
   ///
@@ -330,9 +339,13 @@ class LoreGame extends FlameGame {
     }
     // LORESUB.PAS:1758: every Load resets face from the restored/entry y.
     playerDirection = loaded.ymax ~/ 2 > playerY ? 0 : 1;
+    _sourceInputFace = null;
     AudioManager.instance.playBgm(info.bgmTrack);
     onMapLoaded?.call();
   }
+
+  /// A party/player logical storage failure ends the same Load as MAP/FNT IO.
+  Future<void> haltLoad(LoreLoadFailure failure) => _failLoad(failure);
 
   Future<void> _failLoad(LoreLoadFailure failure) async {
     final firstFailure = _fatalLoadFailure == null;
@@ -364,6 +377,7 @@ class LoreGame extends FlameGame {
 
   bool tryMove(int dx, int dy) {
     if (_fatalLoadFailure != null) return false;
+    if (dx != 0 || dy != 0) _sourceInputFace = null;
     dispatchStartMapId = currentMapId;
     final targetX = playerX + dx;
     final targetY = playerY + dy;
@@ -840,6 +854,7 @@ class LoreGame extends FlameGame {
 
     // 원작 LORESUB.PAS 기준 방향 인덱스: 남: 0, 북: 1, 동: 2, 서: 3 (필드 시 +4)
     final face = playerSpriteIndex;
+    RangeError.checkValueInInterval(face, 0, 55, 'source CHARA face');
 
     final charaSheet = SpriteLibrary.instance.get('CHARA');
     if (charaSheet != null && face < charaSheet.count) {
@@ -886,19 +901,52 @@ class LoreGame extends FlameGame {
 
   void handleKeyEvent(KeyEvent event) {
     if (event is! KeyDownEvent && event is! KeyRepeatEvent) return;
+    final scans = <LogicalKeyboardKey, int>{
+      LogicalKeyboardKey.arrowUp: 72,
+      LogicalKeyboardKey.keyW: 72,
+      LogicalKeyboardKey.arrowDown: 80,
+      LogicalKeyboardKey.keyS: 80,
+      LogicalKeyboardKey.arrowLeft: 75,
+      LogicalKeyboardKey.keyA: 75,
+      LogicalKeyboardKey.arrowRight: 77,
+      LogicalKeyboardKey.keyD: 77,
+      LogicalKeyboardKey.home: 71,
+      LogicalKeyboardKey.end: 79,
+      LogicalKeyboardKey.pageUp: 73,
+      LogicalKeyboardKey.pageDown: 81,
+      LogicalKeyboardKey.insert: 82,
+      LogicalKeyboardKey.delete: 83,
+      LogicalKeyboardKey.f1: 59,
+      LogicalKeyboardKey.f2: 60,
+      LogicalKeyboardKey.f3: 61,
+      LogicalKeyboardKey.f4: 62,
+      LogicalKeyboardKey.f5: 63,
+      LogicalKeyboardKey.f6: 64,
+      LogicalKeyboardKey.f7: 65,
+      LogicalKeyboardKey.f8: 66,
+      LogicalKeyboardKey.f9: 67,
+      LogicalKeyboardKey.f10: 68,
+      LogicalKeyboardKey.f11: 133,
+      LogicalKeyboardKey.f12: 134,
+    };
+    final scan = scans[event.logicalKey];
+    if (scan != null) handleSourceScanByte(scan);
+  }
 
-    if (event.logicalKey == LogicalKeyboardKey.arrowUp ||
-        event.logicalKey == LogicalKeyboardKey.keyW) {
-      tryMove(0, -1);
-    } else if (event.logicalKey == LogicalKeyboardKey.arrowDown ||
-        event.logicalKey == LogicalKeyboardKey.keyS) {
-      tryMove(0, 1);
-    } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft ||
-        event.logicalKey == LogicalKeyboardKey.keyA) {
-      tryMove(-1, 0);
-    } else if (event.logicalKey == LogicalKeyboardKey.arrowRight ||
-        event.logicalKey == LogicalKeyboardKey.keyD) {
-      tryMove(1, 0);
+  /// An atomic modern extended event replaces DOS's #0 followed by ReadKey.
+  /// Main adjusts map26's face even when an unsupported scan leaves ok=false.
+  void handleSourceScanByte(int scan) {
+    if (_fatalLoadFailure != null) return;
+    final result = LoreMainKey.extended(
+      scan,
+      face: playerSpriteIndex,
+      town: currentMap?.category == 'town',
+      mapId: currentMapId,
+    );
+    if (result.ok) {
+      tryMove(result.dx, result.dy);
+    } else {
+      _sourceInputFace = result.face;
     }
   }
 }

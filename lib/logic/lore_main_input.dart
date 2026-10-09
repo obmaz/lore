@@ -9,6 +9,7 @@ class LoreMainInput {
   bool lastKeyWasEscape = false;
   bool lastKeyWasSpace = false;
   bool lastKeyWasBackspace = false;
+  bool lastKeyWasTab = false;
 
   static LoreMainInput? get current => Zone.current[_key] as LoreMainInput?;
 
@@ -16,17 +17,25 @@ class LoreMainInput {
     required bool escape,
     bool space = false,
     bool backspace = false,
+    bool tab = false,
   }) {
     lastKeyWasEscape = escape;
     lastKeyWasSpace = space;
     lastKeyWasBackspace = backspace;
+    lastKeyWasTab = tab;
   }
 
   static void record({
     required bool escape,
     bool space = false,
     bool backspace = false,
-  }) => current?.read(escape: escape, space: space, backspace: backspace);
+    bool tab = false,
+  }) => current?.read(
+    escape: escape,
+    space: space,
+    backspace: backspace,
+    tab: tab,
+  );
 
   Future<void> run(Future<void> Function() procedure) =>
       runZoned(procedure, zoneValues: {_key: this});

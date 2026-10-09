@@ -26,6 +26,19 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertIn('FormatException', map_note)
         self.assertIn('not invalid-memory byte equivalence', map_note)
 
+    def test_load_record_error_scope_closes_only_required_record_failures(self):
+        sites = ledger.build()['control_sites']
+        evidence = json.loads(ledger.EVIDENCE.read_text())['contracts']
+        ids = {r['id'] for r in evidence if r.get('test') ==
+               'test/load_record_errors_dos_test.dart' and r.get('verification') == 'verified'}
+        actual = [s for s in sites if s['id'] in ids]
+        self.assertEqual(len(actual), 2)
+        self.assertEqual({(s['routine'], s['line']) for s in actual},
+                         {('LORESUB.PAS:load:1', 1661), ('LORESUB.PAS:load:1', 1666)})
+        note = next(r['note'] for r in evidence if r['id'] in ids)
+        self.assertIn('not partial DOS pre-Halt memory writes', note)
+        self.assertIn('not truncated DOS IO', note)
+
     def test_load_font_error_scope_does_not_close_party_player_or_bgi(self):
         sites = ledger.build()['control_sites']
         evidence = json.loads(ledger.EVIDENCE.read_text())['contracts']
@@ -66,9 +79,6 @@ class ContractLedgerTest(unittest.TestCase):
         self.assertEqual(len(actual), 1)
         self.assertEqual((actual[0]['routine'], actual[0]['line']),
                          ('LORESUB.PAS:load:1', 1650))
-        for line in [1661, 1666]:
-            self.assertTrue(all(s['verification_status'] == 'partial' for s in sites
-                if s['routine'] == 'LORESUB.PAS:load:1' and s['line'] == line))
 
     def test_detect_game_over_scope_is_only_six_slot_loop(self):
         sites = ledger.build()['control_sites']
@@ -158,10 +168,16 @@ class ContractLedgerTest(unittest.TestCase):
             ids = {r['id'] for r in reviewed if r.get('test') == test and r.get('verification') == 'verified'}
             self.assertEqual(len(ids), count)
             self.assertTrue(all(s['verification_status'] == 'verified' for s in sites if s['id'] in ids))
-        for routine, line in [('LOREBATT.PAS:battlemode:1',1027),('LORECRET.PAS:last:1',740)]:
+        for routine, line in [('LORECRET.PAS:last:1',740)]:
             untouched = [s for s in sites if s['routine'] == routine and s['line'] == line]
             self.assertEqual(len(untouched),1)
             self.assertEqual(untouched[0]['verification_status'],'partial')
+
+        clear = [s for s in sites if s['routine'] == 'LOREBATT.PAS:battlemode:1'
+                 and s['line'] == 1027]
+        self.assertEqual(len(clear), 1)
+        self.assertEqual(clear[0]['verification_status'], 'verified')
+        self.assertEqual(clear[0]['behavioral_evidence'][0], 'test/battle_clear_dos_test.dart')
 
     def test_creation_keyboard_scope_preserves_crt_wait_gaps(self):
         sites = ledger.build()['control_sites']
@@ -188,12 +204,37 @@ class ContractLedgerTest(unittest.TestCase):
         for test, expected in [('test/source_talk_remaining_effects_test.dart', 7),
                                ('test/enemy_colors_dos_test.dart', 4),
                                ('test/battle_menus_dos_test.dart', 7)]:
-            closed = [s for s in sites if test in s['behavioral_evidence']]
+            closed = [s for s in sites if s['behavioral_evidence']
+                      and test == s['behavioral_evidence'][0]]
             self.assertEqual(len(closed), expected)
             self.assertTrue(all(s['verification_status'] == 'verified' for s in closed))
         untouched = [s for s in sites if s['routine'] == 'LOREBATT.PAS:displayenemies:1'
                      and s['line'] == 79]
-        self.assertTrue(all(s['verification_status'] == 'partial' for s in untouched))
+        self.assertEqual(len(untouched), 1)
+        self.assertEqual(untouched[0]['verification_status'], 'verified')
+        self.assertEqual(untouched[0]['behavioral_evidence'][0], 'test/battle_clear_dos_test.dart')
+        hardware = [s for s in sites if s['routine'] == 'LORESUB.PAS:scroll:1'
+                    and s['line'] == 219]
+        self.assertTrue(hardware)
+        self.assertTrue(all(s['verification_status'] == 'partial' for s in hardware))
+
+    def test_field_battle_eight_sites_have_independent_primary_scope(self):
+        data = ledger.build()
+        sites = data['control_sites']
+        primary = {
+            'test/field_pages_dos_test.dart': 3,
+            'test/main_input_gates_dos_test.dart': 2,
+            'test/main_tab_palette_dos_test.dart': 1,
+            'test/battle_clear_dos_test.dart': 2,
+        }
+        for path, count in primary.items():
+            owned = [s for s in sites if s['behavioral_evidence']
+                     and s['behavioral_evidence'][0] == path]
+            self.assertEqual(len(owned), count)
+            self.assertTrue(all(s['verification_status'] == 'verified' for s in owned))
+        self.assertFalse(any(s.get('verification_status') == 'partial'
+                             for s in sites if s['file'] in {'LOREMAIN.PAS', 'LOREBATT.PAS'}))
+        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 91)
 
     def test_cast_special_native_scope_is_exact(self):
         closed = [s for s in ledger.build()['control_sites']
@@ -280,7 +321,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 101)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 91)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

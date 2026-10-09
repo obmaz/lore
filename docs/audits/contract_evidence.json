@@ -1,6 +1,94 @@
 {
   "contracts": [
     {
+      "id": "LOREMAIN.PAS:enter_swamp:1:for:4",
+      "line": 56,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_main_procedures.dart",
+      "test": "test/field_pages_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_field_pages.py",
+        "tool/tests/test_export_dos_field_pages.py",
+        "test/terrain_dos_parity_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original two-page FOR, name/mark guards, string helpers and poison stores execute for all 4096 six-slot name/mark masks. Both native pages print identical text; zero poison is written once then retained. Modern adapter emits that frame once and clears the current message window before the six draws only when swamp-walk is expired. Native saved-state/mobile tests separately cover poison progression/protected walking. Explicit modern adapter collapses identical BGI redraws and blank spacing; not equal BGI pixels or page timing."
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_lava:1:for:1",
+      "line": 81,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_lava_logic.dart",
+      "test": "test/field_pages_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_field_pages.py",
+        "tool/tests/test_export_dos_field_pages.py",
+        "test/terrain_dos_parity_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original complete six-string initialization/roll/Str loop executes unchanged with original RNG and Str for 48 seed/luck/stale-buffer profiles. All six lengths are zero before the first draw; the seventh string/padding remain intact. Actual Dart owner creates six fresh damage values each call, matching every decimal string and final seed regardless of preceding calls. No shared Pascal m buffer or unused short-string padding is serialized. Logical scratch lifecycle is verified, not DOS padding byte storage."
+    },
+    {
+      "id": "LOREMAIN.PAS:enter_lava:1:for:3",
+      "line": 86,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_main_procedures.dart",
+      "test": "test/field_pages_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_field_pages.py",
+        "tool/tests/test_export_dos_field_pages.py",
+        "test/terrain_dos_parity_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original two-page loop, strings and page flips execute for 48 complete original lava RNG/Str profiles. Both native pages print identical text before the separate damage loop. App emits one modern frame after Clear/roll and before any damage; all messages/final seed match native. Existing mobile/save fixtures cover empty-slot damage/status branches. Explicit modern adapter collapses identical BGI redraws/blank spacing; not equal BGI pixels, page timing or campaign proof."
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:1",
+      "line": 146,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/main_input_gates_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_main_input_gates.py",
+        "tool/tests/test_export_dos_main_input_gates.py",
+        "test/main_tab_palette_dos_test.dart",
+        "test/source_field_command_dispatch_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original availability predicate executes both supplied KeyPressed outcomes: idle initializes ok/deltas and exits without ReadKey; ready reads once. Modern platform invokes field dispatch only for an available event; idle/modifiers preserve coordinates/face/RNG, actual desktop/mobile idle and field commands are covered. Extended events are delivered atomically instead of exposing a transient #0 waiting for a scan. This closes Main's availability guard, not CRT polling duration, OS/DOS FIFO timing or LORESUB Scroll/PressAnyKey draining."
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:3",
+      "line": 162,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_main_key.dart",
+      "test": "test/main_input_gates_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_main_input_gates.py",
+        "tool/tests/test_export_dos_main_input_gates.py",
+        "test/main_tab_palette_dos_test.dart",
+        "test/source_field_command_dispatch_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original membership helper/deltas/ok/face execute for all 256 scans at all four positions and map1/map26 (2048 profiles), plus 18 initial-face/wrap profiles. Runtime handler matches native fields; actual arrows and Home/End map26 events preserve face+4 with no unsupported-scan movement/dispatch/RNG. Valid arrows, face writes and Load replace the retained face. Modern events deliver prefix/scan atomically, retaining existing WASD aliases. Undeclared CHARA index0..55 violations raise RangeError on rendering instead of DOS memory access; raw CRT FIFO, polling time and later Main guards are separate evidence."
+    },
+    {
+      "id": "LOREMAIN.PAS:main:1:if:11",
+      "line": 192,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/main_game_screen.dart",
+      "test": "test/main_tab_palette_dos_test.dart",
+      "supporting_evidence": ["tool/export_dos_main_input_gates.py", "tool/tests/test_export_dos_main_input_gates.py"],
+      "verification": "verified",
+      "note": "Unchanged EXE Tab gate executes for all 256 bytes; only byte9 requests BIOS INT10 AX101B BX0 CX255. Actual desktop/mobile field Tab and a final character-view acknowledgement Tab request grayscale without extra movement, party mutations or RNG; view completion retains its ordinary source tile redispatch draw. Conversion persists over future Navigator modal windows without recreating LoreGame or losing field focus. Explicit modern presentation adapter uses RGB luminance on the whole app instead of BIOS 6-bit DAC entries 0..254/quantization; this closes the request condition and supported app effect, not identical VGA pixels, raw CRT FIFO, unsupported extended-key face writes or campaign parity."
+    },
+    {
       "id": "LOREBATT.PAS:specialcastattack:1:if:1",
       "line": 899,
       "kind": "if",
@@ -5630,10 +5718,16 @@
       "line": 79,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending.",
-      "verification": "partial"
+      "implementation": "lib/widgets/encounter_viewport_view.dart",
+      "test": "test/battle_clear_dos_test.dart",
+      "note": "Original clean predicate executes both outcomes, observing SetFillStyle(1,0), Bar(20,20,199,199), SetFillStyle(1,8) only for true. Fresh encounter/background replacement removes all previous roster text; retained redraw changes HP colour without stale rows. Native signed-HP palettes/status priority reach both encounter and battle renderers; dead names remain invisible under selection. Modern viewport backdrop/layout and retained repaint replace BGI rectangle/fill state; no equal BGI pixels or raw fill-style hardware claim. Actual encounter/main field, battle and flee paths use current-window Clear while preserving separate history.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_battle_clear.py",
+        "tool/tests/test_export_dos_battle_clear.py",
+        "test/enemy_colors_dos_test.dart",
+        "test/encounter_screen_flow_test.dart"
+      ]
     },
     {
       "id": "LOREBATT.PAS:displayenemies:1:for:1",
@@ -9850,10 +9944,11 @@
       "line": 1027,
       "kind": "if",
       "classification": "content-rule",
-      "implementation": "lib/logic/lore_battle.dart",
-      "test": "test/lore_battle_test.dart",
-      "note": "LOREBATT procedures ported directly into LoreBattle (PlusExperience, PlusGold, ExistEnemies, AttackOne, CastOne, CastAll, CastSpecial, BattleESP, RunAway, enemy WeaponAttack/castattack*/enemycure/specialattack/SpecialCastAttack/EnemyAttack, EndBattle, auto-select k=8) with source texts, random order (operand evaluation checked separately against the EXE, see milestone104), Pascal div/round, byte wrap of dec(ac) and the for-bound capture of enemynumber; BattleViewportView now selects every person's command first (battle[person,1..3]), then executes in person order, runs the enemy phase and judges EndBattle only afterwards, with per-round autobattle and run-away exit. Cure runs at selection through FieldMagicLogic (messages suppressed when etc[6] <> 0). Unverified compiler behaviour: Random(0), round at .5, byte wrap, summon id out of range. DOS comparison pending. Milestone114 adds independent live, unchanged DOSBox RAM evidence from the cold-created party: 29 actual field moves to Earth Worm, automatic victory including six player records, enemy records and the exact RandSeed, then 36 moves to Troll/Serpent/Goblin and a failed pre-battle escape followed by the enemy phase. test/first_field_battle_dos_test.dart and test/first_field_battle_dos_ui_test.dart replay the same seeds continuously through the real mobile screen. tool/capture_dos_battle_memory.py checks preserved raw bytes, decoded records, original EXE hash and the movement/encounter draw stream. No native RAM/RNG writes, no synthetic native inputs. Scope is these observed branches; second battle completion, MENACE entry and the full campaign remain pending. Actual unmodified PYRAMID boss opening and two targeted rounds, Major Mummy unconscious, failed flee and party defeat replay all six records/enemy records/RNG in test/pyramid_battle_dos_test.dart, backed by test/fixtures/dos_pyramid_battle.json and tool/check_dos_pyramid_battle.py; original GameOver slot1 reload bytes retained. Not quest success or whole campaign parity.",
-      "verification": "partial"
+      "implementation": "lib/widgets/battle_viewport_view.dart",
+      "test": "test/battle_clear_dos_test.dart",
+      "supporting_evidence": ["tool/export_dos_battle_clear.py", "test/source_battle_flow_ui_test.dart"],
+      "verification": "verified",
+      "note": "Original unchanged k<>1 conditional executes for all 256 menu-byte results, observing only the Clear platform call. Actual command widgets clear the current message window before magic/cure/ESP submenus, auto/run and cancellation; weapon selection retains it. Automatically assigned follower commands do not issue another menu Clear. MainGameScreen clears current log lines/colours/revision, preserving the separate dialogue history adapter. This closes the selection Clear guard only, not DOS BGI Clear internals, DisplayEnemies backdrop pixels, or the full campaign."
     },
     {
       "id": "LOREBATT.PAS:battlemode:1:if:6",
@@ -19100,6 +19195,36 @@
         "test/load_state_dos_test.dart",
         "test/load_phases_dos_test.dart",
         "tool/export_dos_load_font_errors.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:3",
+      "line": 1661,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/save_manager.dart",
+      "test": "test/load_record_errors_dos_test.dart",
+      "note": "16 complete native Load runs execute original Reset/Read/Close/IOResult for four slots: missing/107-byte party and missing/329-byte six-player data reach nested ErrorMessage with exact partyN/playerN filename and need=true. Its separately native-replayed body supplies text/Halt. Modern JSON storage maps syntax/root party failures and absent/incomplete current player records to those logical resource labels, keeping valid legacy defaults and short-list padding as explicit adapters, not truncated DOS IO. Current player fields are all validated, trailing seventh file data is ignored and selected slot owns saveN.map regardless of metadata. Actual desktop/mobile 16-case Resume and party/player GameOver Load failures show error + CREATE hint, latch game Halt and never resume movement/RNG/caller; invalid stored data is not overwritten. This closes error conditions/continuation, not partial DOS pre-Halt memory writes, binary serialization or CRT/BGI pixels.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/load_errors_dos_test.dart",
+        "test/save_party_dos_test.dart",
+        "tool/export_dos_load_record_errors.py"
+      ]
+    },
+    {
+      "id": "LORESUB.PAS:load:1:if:4",
+      "line": 1666,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/save_manager.dart",
+      "test": "test/load_record_errors_dos_test.dart",
+      "note": "16 complete native Load runs execute original Reset/Read/Close/IOResult for four slots: missing/107-byte party and missing/329-byte six-player data reach nested ErrorMessage with exact partyN/playerN filename and need=true. Its separately native-replayed body supplies text/Halt. Modern JSON storage maps syntax/root party failures and absent/incomplete current player records to those logical resource labels, keeping valid legacy defaults and short-list padding as explicit adapters, not truncated DOS IO. Current player fields are all validated, trailing seventh file data is ignored and selected slot owns saveN.map regardless of metadata. Actual desktop/mobile 16-case Resume and party/player GameOver Load failures show error + CREATE hint, latch game Halt and never resume movement/RNG/caller; invalid stored data is not overwritten. This closes error conditions/continuation, not partial DOS pre-Halt memory writes, binary serialization or CRT/BGI pixels.",
+      "verification": "verified",
+      "supporting_evidence": [
+        "test/load_errors_dos_test.dart",
+        "test/save_party_dos_test.dart",
+        "tool/export_dos_load_record_errors.py"
       ]
     }
   ]

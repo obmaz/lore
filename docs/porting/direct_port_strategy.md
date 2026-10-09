@@ -3232,3 +3232,45 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      관련 Flutter 40건, 전체 Flutter 1735건(3 skip), Python 149건,
      analyze와 웹 release build가 통과했다. 원본 48가지 재실행과
      생성 보고서도 일치했다. 다음은 party/player 저장 오류의 구분이다.
+
+208. **party/player 저장 오류의 구분과 돌아오지 않는 Load 실패**
+     중단 전에 작성한 변경을 이번 최종 회귀에서 함께 검증한다.
+     원본 Load의 slot1..4 × party/player × missing/short 16가지에서
+     ErrorMessage 파일명과 need=true, 폰트 로드 전 중단을 대조한다.
+     현대 JSON 저장의 논리 record 오류를 같은 파일명·Halt에 연결하고,
+     실패한 저장을 덮어쓰거나 필드·전투 후속으로 돌아가지 않는다.
+     현재 schema의 인물 필드 누락, 선택 slot 소유권과 일곱째 무시,
+     desktop/mobile Resume·GameOver Load 실패를 검사한다.
+     유효한 legacy 짧은 목록은 기존 여섯 reserved-slot adapter를 유지한다.
+     DOS binary serialization과 partial pre-Halt 메모리 쓰기를 같다고
+     주장하지 않는다. 오류 조건1661/1666 두 개를 해소한다.
+
+209. **필드6개·전투2개의 현대 입력·화면 대응**
+     원본 EXE로 늪 두 페이지의 이름/중독 마스크4096개, 용암의 이전
+     문자열·seed·luck48개를 실행한다. string helper·Str·RNG를 유지해
+     동일한 두 페이지 메시지, 여섯 문자열의 추첨 전 초기화, poison
+     store와 메시지 후 피해 적용을 대조한다. 동일 BGI redraw는 단일
+     현대 로그 프레임으로 대응하며 페이지 pixel/벽시계 동등성을
+     주장하지 않는다. 실제 늪·용암 창의 Clear·색12/13과 상태를 연결한다.
+     Main의 idle/ready, scan2048개·초기 face/wrap18개, Tab256개를
+     실행한다. 확장키는 원자적 현대 이벤트로 제공하고 map26의 이동
+     없는 face+4도 유지한다. 그릴 때 CHARA0..55 밖이면 RangeError로
+     드러내며 DOS 메모리 침범을 재현하지 않는다. Tab은 전체 앱의 RGB
+     luminance filter로 대응한다. 인물 보기의 마지막 확인 키, 이후
+     modal·focus·게임 객체 보존과 원래의 tile redispatch를 검사한다.
+     엔딩의 명시적 palette 교체는 필드 filter를 해제한다. BIOS6-bit
+     DAC quantization, CRT FIFO/Scroll/PressAnyKey의 버퍼 비우기·대기
+     시간은 별도 미완료 범위로 유지한다.
+     DisplayEnemies clean 호출 양쪽과 BattleMode k<>1의256가지에서
+     원본 backdrop/Clear 경계를 관찰한다. 현대 조우의 새 명단과
+     HP/status 색, 선택된 사망 적의 이름 숨김, 현재 메시지 창과 별도
+     history의 분리를 확인한다. 원본 BGI fill-state/pixel은 동일성을
+     주장하지 않는다. 필드146/162/192/56/81/86, 전투79/1027만 해소한다.
+     자료·범위는 docs/audits/field_battle_remaining.md에 연결했다.
+     이전 저장 오류2개와 합쳐 verified1757 / partial91 / unclassified0.
+     최종 전체 회귀·analyze·원본 추출·웹 release 후 main에 푸시하며
+     배포는 전체 이식의 최종 단계로 보류한다.
+     최종 Flutter1799건(3 skip), Python155건, analyze와 웹 release가
+     통과했다. 새 원본 추출기의 전체 결과 재실행과 원장·gap·source
+     memory 최신 상태도 확인했다. pending 저장 오류와 이 묶음을 함께
+     main에 푸시한다. 사용자 지정 Git name/email을 그대로 사용한다.

@@ -76,7 +76,7 @@ void main() {
         final index = r['printed'][i][1];
         expect(
           text.style!.color,
-          index == 0 ? RetroTheme.viewportBg : RetroTheme.ega(index),
+          index == 0 ? Colors.transparent : RetroTheme.ega(index),
         );
       }
     }

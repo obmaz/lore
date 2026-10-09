@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 101,
-    "verified": 1747,
+    "partial": 91,
+    "verified": 1757,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -22,8 +22,7 @@
     },
     {
       "routine": "LOREBATT.PAS:battlemode:1",
-      "verified": 41,
-      "partial": 1
+      "verified": 42
     },
     {
       "routine": "LOREBATT.PAS:castall:1",
@@ -55,8 +54,7 @@
     },
     {
       "routine": "LOREBATT.PAS:displayenemies:1",
-      "partial": 1,
-      "verified": 4
+      "verified": 5
     },
     {
       "routine": "LOREBATT.PAS:encounterenemy:1",
@@ -210,13 +208,11 @@
     },
     {
       "routine": "LOREMAIN.PAS:enter_lava:1",
-      "partial": 2,
-      "verified": 11
+      "verified": 13
     },
     {
       "routine": "LOREMAIN.PAS:enter_swamp:1",
-      "verified": 16,
-      "partial": 1
+      "verified": 17
     },
     {
       "routine": "LOREMAIN.PAS:enter_water:1",
@@ -224,8 +220,7 @@
     },
     {
       "routine": "LOREMAIN.PAS:main:1",
-      "partial": 3,
-      "verified": 23
+      "verified": 26
     },
     {
       "routine": "LOREMAIN.PAS:move_mode:1",
@@ -402,8 +397,7 @@
     },
     {
       "routine": "LORESUB.PAS:load:1",
-      "verified": 19,
-      "partial": 2
+      "verified": 21
     },
     {
       "routine": "LORESUB.PAS:message:1",
@@ -559,6 +553,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/auto_select_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_clear.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/battle_clear_dos_test.dart"
       ]
     },
     {
@@ -1108,6 +1110,14 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_field_pages.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/field_pages_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_final_battle_phase.json",
       "explicit_contracts": [],
       "note_mentions": [],
@@ -1340,6 +1350,14 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_load_record_errors.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/load_record_errors_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_load_state.json",
       "explicit_contracts": [
         "LORESUB.PAS:load:1:case:3",
@@ -1373,6 +1391,15 @@
       "note_mentions": [],
       "test_candidates": [
         "test/dialogue_window_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_main_input_gates.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/main_input_gates_dos_test.dart",
+        "test/main_tab_palette_dos_test.dart"
       ]
     },
     {
@@ -1483,9 +1510,7 @@
     {
       "path": "test/fixtures/dos_pyramid_battle.json",
       "explicit_contracts": [],
-      "note_mentions": [
-        "LOREBATT.PAS:battlemode:1:if:5"
-      ],
+      "note_mentions": [],
       "test_candidates": [
         "test/pyramid_battle_dos_test.dart"
       ]

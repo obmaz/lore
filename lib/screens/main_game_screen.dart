@@ -13,6 +13,7 @@ import 'package:flame/game.dart';
 
 import '../theme/retro_theme.dart';
 import '../services/audio_manager.dart';
+import '../services/source_palette.dart';
 import '../game/lore_game.dart';
 import '../game/lore_world_manager.dart';
 import '../logic/field_hotkeys.dart';
@@ -1141,6 +1142,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
     if (outcome.events.any((event) => event.kind == 'endDemo')) {
       if (!mounted) return false;
+      // End_Demo starts FadeIn/FadeSub, replacing the field DAC palette.
+      SourcePalette.instance.reset();
       setState(() => _currentMode = GameScreenMode.ending);
       return false;
     }
@@ -1170,6 +1173,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
         ),
       );
       if (!mounted) return false;
+      SourcePalette.instance.reset();
       setState(() => _currentMode = GameScreenMode.ending);
       return false;
     }
@@ -1334,13 +1338,14 @@ class _MainGameScreenState extends State<MainGameScreen> {
             setState(() => _swampWalkSteps = steps);
           },
           random: _sessionRandom,
-          showSwampWarning: () => _addLog('일행은 독이 있는 늪에 들어갔다 !!!'),
+          showSwampWarning: () => _addLog('일행은 독이 있는 늪에 들어갔다 !!!', color: 12),
           showPoisonMessage: (member) {
-            _addLog('${member.name}는 중독 되었다.');
+            _addLog('${member.name}는 중독 되었다.', color: 13);
           },
           displayCondition: _displayCondition,
           displayHealthAndCondition: _displayCondition,
           gameOver: _detectedGameOver,
+          clearMessageWindow: _clearSourceMessageWindow,
         ).then((_) => _continuePositionBlocks()),
       );
     } else if (cat == TileCategory.lava) {
@@ -1349,14 +1354,23 @@ class _MainGameScreenState extends State<MainGameScreen> {
           party: _party,
           random: _sessionRandom,
           scrollToParty: _game.clearPeek,
-          showLavaWarning: () => _addLog('일행은 용암지대로 들어섰다 !!!'),
+          showLavaWarning: () => _addLog('일행은 용암지대로 들어섰다 !!!', color: 12),
           showDamage: (member, damage) =>
-              _addLog('${member.name}는 $damage의 피해를 입었다 !'),
+              _addLog('${member.name}는 $damage의 피해를 입었다 !', color: 13),
           displayCondition: _displayCondition,
           gameOver: _detectedGameOver,
+          clearMessageWindow: _clearSourceMessageWindow,
         ).then((_) => _continuePositionBlocks()),
       );
     }
+  }
+
+  void _clearSourceMessageWindow() {
+    setState(() {
+      _logs.clear();
+      _logColors.clear();
+      _logRevision++;
+    });
   }
 
   bool _handleStepTaken() {
@@ -1593,6 +1607,13 @@ class _MainGameScreenState extends State<MainGameScreen> {
           _halt == null &&
           _currentMode == GameScreenMode.field &&
           LoreMainProcedures.mainRedispatchesCurrentTile(action) &&
+          input.lastKeyWasTab) {
+        SourcePalette.instance.requestGrayscale();
+      }
+      if (mounted &&
+          _halt == null &&
+          _currentMode == GameScreenMode.field &&
+          LoreMainProcedures.mainRedispatchesCurrentTile(action) &&
           input.lastKeyWasBackspace) {
         setState(() => AudioManager.instance.toggleSourceSound());
       }
@@ -1649,6 +1670,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       maxEnemies: _maxEnemies,
     );
     if (monsterIds.isEmpty) return;
+    _clearSourceMessageWindow();
     setState(() {
       _currentMode = GameScreenMode.encounter;
       _battleEnemies = monsterIds.map(LoreData.instance.monster).toList();
@@ -1668,6 +1690,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _engageEncounter() {
     if (_currentMode != GameScreenMode.encounter) return;
+    _clearSourceMessageWindow();
     final decision = LoreEncounterLogic.decide(
       EncounterChoice.engage,
       _party,
@@ -1678,6 +1701,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   void _fleeEncounter() {
     if (_currentMode != GameScreenMode.encounter) return;
+    _clearSourceMessageWindow();
     final decision = LoreEncounterLogic.decide(
       EncounterChoice.flee,
       _party,
@@ -1929,10 +1953,15 @@ class _MainGameScreenState extends State<MainGameScreen> {
     return result;
   }
 
-  /// `LoadNo := chr(k+47); Load` — 저장이 없으면 false (`ErrorMessage`).
+  /// `LoadNo := chr(k+47); Load`: a storage fault never returns from Halt.
   Future<bool> _loadSaveSlot(int slot) async {
-    final save = await SaveManager.instance.loadGame(slot);
-    if (save == null || !mounted) return false;
+    final result = await SaveManager.instance.readGame(slot);
+    if (!mounted) return false;
+    if (result.failure case final failure?) {
+      await _game.haltLoad(failure);
+      return false;
+    }
+    final save = result.data!;
     LoreDialogueManager.instance.loadFlags(save.flags, fieldCounters: save.etc);
     await _applyLoadedSave(save);
     return true;
@@ -2115,6 +2144,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
               LoreDialogueManager.instance.getFlagsCopy()['etc39_bit1'] == true,
           onLog: (msg) => _addLog(msg),
           onPrint: (color, text) => _addLog(text, color: color),
+          onClearMessageWindow: _clearSourceMessageWindow,
           onVictory: _onBattleVictory,
           onTelepathyJoin: _onBattleTelepathyJoin,
           onDefeat: _onBattleDefeat,
@@ -2192,98 +2222,115 @@ class _MainGameScreenState extends State<MainGameScreen> {
         body: HaltView(loadFailure: failure, onHalt: widget.onHalt),
       );
     }
-    return KeyboardListener(
-      focusNode: _focusNode,
-      autofocus: true,
-      onKeyEvent: (event) async {
-        if (_loadFailure != null || _halt != null) return;
-        if (_appSettingsOpen) return;
-        if (_entryAnimationActive) return;
-        if (_currentMode == GameScreenMode.encounter && event is KeyDownEvent) {
-          if (event.logicalKey == LogicalKeyboardKey.digit1 ||
-              event.logicalKey == LogicalKeyboardKey.numpad1) {
-            _engageEncounter();
-          } else if (event.logicalKey == LogicalKeyboardKey.digit2 ||
-              event.logicalKey == LogicalKeyboardKey.numpad2) {
-            _fleeEncounter();
-          }
-          return;
+    return Focus(
+      onKeyEvent: (_, event) {
+        if (_currentMode == GameScreenMode.field &&
+            !_appSettingsOpen &&
+            !_entryAnimationActive &&
+            event.logicalKey == LogicalKeyboardKey.tab) {
+          return KeyEventResult.handled;
         }
-        if (_currentMode == GameScreenMode.field) {
-          if (event is KeyDownEvent) {
-            // 원작 LOREMAIN.PAS 핫키: P/V/Q/C/E/R/G + Space
-            final action = FieldHotkeys.resolve(event.logicalKey);
-            if (action != FieldAction.none) {
-              await _runFieldProcedure(action, () async {
-                switch (action) {
-                  case FieldAction.openMenu:
-                    // LOREMAIN.Main clears party.etc[6] before SelectMode.
-                    LoreDialogueManager.instance.setBattleResult(0);
-                    await _runSelectMode();
-                  case FieldAction.viewParty:
-                    await _runViewParty();
-                  case FieldAction.viewCharacter:
-                    await _runViewCharacter();
-                  case FieldAction.castSpell:
-                    await _runCastSpell();
-                  case FieldAction.rest:
-                    await _runRest();
-                  case FieldAction.gameOption:
-                    await _runGameOption();
-                  case FieldAction.toggleSound:
-                    setState(() => AudioManager.instance.toggleSourceSound());
-                  case FieldAction.quickView:
-                    await _runQuickView();
-                  case FieldAction.extrasense:
-                    await _openEspDialog();
-                  case FieldAction.none:
-                    break;
-                }
-              });
+        return KeyEventResult.ignored;
+      },
+      child: KeyboardListener(
+        focusNode: _focusNode,
+        autofocus: true,
+        onKeyEvent: (event) async {
+          if (_loadFailure != null || _halt != null) return;
+          if (_appSettingsOpen) return;
+          if (_entryAnimationActive) return;
+          if (_currentMode == GameScreenMode.encounter &&
+              event is KeyDownEvent) {
+            if (event.logicalKey == LogicalKeyboardKey.digit1 ||
+                event.logicalKey == LogicalKeyboardKey.numpad1) {
+              _engageEncounter();
+            } else if (event.logicalKey == LogicalKeyboardKey.digit2 ||
+                event.logicalKey == LogicalKeyboardKey.numpad2) {
+              _fleeEncounter();
+            }
+            return;
+          }
+          if (_currentMode == GameScreenMode.field) {
+            if ((event is KeyDownEvent || event is KeyRepeatEvent) &&
+                event.logicalKey == LogicalKeyboardKey.tab) {
+              SourcePalette.instance.requestGrayscale();
               return;
             }
+            if (event is KeyDownEvent) {
+              // 원작 LOREMAIN.PAS 핫키: P/V/Q/C/E/R/G + Space
+              final action = FieldHotkeys.resolve(event.logicalKey);
+              if (action != FieldAction.none) {
+                await _runFieldProcedure(action, () async {
+                  switch (action) {
+                    case FieldAction.openMenu:
+                      // LOREMAIN.Main clears party.etc[6] before SelectMode.
+                      LoreDialogueManager.instance.setBattleResult(0);
+                      await _runSelectMode();
+                    case FieldAction.viewParty:
+                      await _runViewParty();
+                    case FieldAction.viewCharacter:
+                      await _runViewCharacter();
+                    case FieldAction.castSpell:
+                      await _runCastSpell();
+                    case FieldAction.rest:
+                      await _runRest();
+                    case FieldAction.gameOption:
+                      await _runGameOption();
+                    case FieldAction.toggleSound:
+                      setState(() => AudioManager.instance.toggleSourceSound());
+                    case FieldAction.quickView:
+                      await _runQuickView();
+                    case FieldAction.extrasense:
+                      await _openEspDialog();
+                    case FieldAction.none:
+                      break;
+                  }
+                });
+                return;
+              }
+            }
+            if (_scriptDepth == 0) _game.handleKeyEvent(event);
+            setState(() {});
           }
-          if (_scriptDepth == 0) _game.handleKeyEvent(event);
-          setState(() {});
-        }
-      },
-      child: Scaffold(
-        backgroundColor: RetroTheme.black,
-        body: SafeArea(
-          child: GameScreenLayout(
-            viewport: ViewportView(
-              title: _getViewportTitle(),
-              overlayTitle: true,
-              content: _buildViewportContent(),
+        },
+        child: Scaffold(
+          backgroundColor: RetroTheme.black,
+          body: SafeArea(
+            child: GameScreenLayout(
+              viewport: ViewportView(
+                title: _getViewportTitle(),
+                overlayTitle: true,
+                content: _buildViewportContent(),
+              ),
+              commands: _currentMode == GameScreenMode.field
+                  ? _buildFieldCommands()
+                  : null,
+              party: PartyStatusView(members: _mapPartyStatus()),
+              messages: MessageLogView(
+                logs: _logs,
+                colors: _logColors,
+                revision: _logRevision,
+              ),
+              history: DialogueHistoryView(history: _dialogueHistory),
+              controls: _currentMode == GameScreenMode.field
+                  ? Opacity(
+                      opacity: .6,
+                      child: DPadWidget(
+                        onDirectionPressed: (dx, dy) {
+                          if (_appSettingsOpen ||
+                              _entryAnimationActive ||
+                              _scriptDepth > 0 ||
+                              _currentMode != GameScreenMode.field) {
+                            return;
+                          }
+                          _game.tryMove(dx, dy);
+                          setState(() {});
+                          _reclaimFocus();
+                        },
+                      ),
+                    )
+                  : null,
             ),
-            commands: _currentMode == GameScreenMode.field
-                ? _buildFieldCommands()
-                : null,
-            party: PartyStatusView(members: _mapPartyStatus()),
-            messages: MessageLogView(
-              logs: _logs,
-              colors: _logColors,
-              revision: _logRevision,
-            ),
-            history: DialogueHistoryView(history: _dialogueHistory),
-            controls: _currentMode == GameScreenMode.field
-                ? Opacity(
-                    opacity: .6,
-                    child: DPadWidget(
-                      onDirectionPressed: (dx, dy) {
-                        if (_appSettingsOpen ||
-                            _entryAnimationActive ||
-                            _scriptDepth > 0 ||
-                            _currentMode != GameScreenMode.field) {
-                          return;
-                        }
-                        _game.tryMove(dx, dy);
-                        setState(() {});
-                        _reclaimFocus();
-                      },
-                    ),
-                  )
-                : null,
           ),
         ),
       ),

@@ -27,7 +27,7 @@ def profiles():
                 yield map_id, warm, ('den.fnt' if selected == 'ground.fnt' else 'ground.fnt'), mode
 
 
-def build():
+def build(case_profiles=None, *, slot=1):
     from unicorn import Uc, UC_ARCH_X86, UC_MODE_16, UC_HOOK_CODE, UC_HOOK_INTR
     from unicorn.x86_const import (UC_X86_REG_CS, UC_X86_REG_DS, UC_X86_REG_SS,
         UC_X86_REG_BP, UC_X86_REG_SP, UC_X86_REG_IP, UC_X86_REG_AX, UC_X86_REG_BX,
@@ -37,11 +37,11 @@ def build():
     header = struct.unpack_from('<H', exe, 8)[0] * 16
     resources = {p.name.lower(): p.read_bytes() for p in root.glob('*.FNT')}
     cases = []
-    for map_id, warm, target, mode in profiles():
+    for map_id, warm, target, mode in profiles() if case_profiles is None else case_profiles:
         map_name = MAPS[map_id-1]
         canonical = (root / f'{map_name}.MAP').read_bytes()
-        files = dict(resources, **{'party1.dat': party(map_id, 1000),
-            'player1.dat': b''.join(players('FILE')[:6]), map_name.lower()+'.map': canonical})
+        files = dict(resources, **{f'party{slot}.dat': party(map_id, 1000),
+            f'player{slot}.dat': b''.join(players('FILE')[:6]), map_name.lower()+'.map': canonical})
         if mode == 'missing': del files[target]
         else: files[target] = files[target][:-1]
         vm = Uc(UC_ARCH_X86, UC_MODE_16)
@@ -51,7 +51,7 @@ def build():
             (UC_X86_REG_SS, 0x6000), (UC_X86_REG_BP, 0x8000), (UC_X86_REG_SP, 0x7d00)]:
             vm.reg_write(reg, value)
         vm.mem_write(0x539b8, bytes([warm]))
-        vm.mem_write(0x5366b, b'1')
+        vm.mem_write(0x5366b, bytes([48+slot]))
         vm.mem_write(0x53da0, struct.pack('<HHHH', 0, 0x7000, 0, 0x7400))
         vm.mem_write(0x539be, struct.pack('<HHHH', 0x64d8, 0x5000, 0x64d9, 0x5000))
         vm.mem_write(0x564ca, party(map_id, 777))

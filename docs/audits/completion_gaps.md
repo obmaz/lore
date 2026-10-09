@@ -4,7 +4,7 @@
 실행 계획은 `docs/porting/direct_port_strategy.md` 하나이며, 이 문서는 장부에서 생성한 검토 색인이다.
 미분류·부분 근거는 미구현 개수나 완료율이 아니다. 플랫폼 분기의 제외도 어댑터 검증 완료를 뜻하지 않는다.
 
-게임 제어 지점 1848개: 미분류 0개, 부분 근거 101개, 검증 완료 1747개.
+게임 제어 지점 1848개: 미분류 0개, 부분 근거 91개, 검증 완료 1757개.
 지도 쓰기 0개는 개별 계약 연결이 없다. 테스트가 없는 것으로 해석하지 않는다.
 
 ## 미분류가 남은 루틴
@@ -21,6 +21,7 @@
 | --- | --- |
 | `test/fixtures/dos_archi_continuation.json` | `test/archi_native_dos_test.dart` |
 | `test/fixtures/dos_auto_select.json` | `test/auto_select_dos_test.dart` |
+| `test/fixtures/dos_battle_clear.json` | `test/battle_clear_dos_test.dart` |
 | `test/fixtures/dos_battle_commands.json` | `test/battle_commands_dos_test.dart` |
 | `test/fixtures/dos_battle_esp.json` | `test/battle_esp_dos_test.dart` |
 | `test/fixtures/dos_battle_menus.json` | `test/battle_menus_dos_test.dart` |
@@ -40,6 +41,7 @@
 | `test/fixtures/dos_enemy_special_cast.json` | `test/enemy_special_cast_dos_test.dart` |
 | `test/fixtures/dos_evil_god_first_attempt.json` | `test/crab_king_battle_dos_test.dart` · `test/menace_return_dos_ui_test.dart` |
 | `test/fixtures/dos_evil_god_success.json` | `test/evil_god_native_completion_test.dart` |
+| `test/fixtures/dos_field_pages.json` | `test/field_pages_dos_test.dart` |
 | `test/fixtures/dos_final_battle_phase.json` | `test/final_battle_native_dos_test.dart` |
 | `test/fixtures/dos_final_party_order.json` | `test/final_battle_native_dos_test.dart` |
 | `test/fixtures/dos_findgold.json` | `test/findgold_dos_test.dart` · `test/menace_entry_dos_ui_test.dart` |
@@ -54,9 +56,11 @@
 | `test/fixtures/dos_keep3_continuation.json` | `test/keep3_native_dos_test.dart` |
 | `test/fixtures/dos_load_font_errors.json` | `test/load_font_errors_dos_test.dart` |
 | `test/fixtures/dos_load_phases.json` | `test/load_phases_dos_test.dart` · `test/saved_map_header_test.dart` |
+| `test/fixtures/dos_load_record_errors.json` | `test/load_record_errors_dos_test.dart` |
 | `test/fixtures/dos_lockup_continuation.json` | `test/lockup_battle_dos_test.dart` · `test/menace_return_dos_ui_test.dart` |
 | `test/fixtures/dos_lorehunter_reentry.json` | `test/dialogue_window_test.dart` |
 | `test/fixtures/dos_madjoe_reentry.json` | `test/dialogue_window_test.dart` |
+| `test/fixtures/dos_main_input_gates.json` | `test/main_input_gates_dos_test.dart` · `test/main_tab_palette_dos_test.dart` |
 | `test/fixtures/dos_main_sound.json` | `test/menace_return_dos_ui_test.dart` |
 | `test/fixtures/dos_menace_center.json` | `test/menace_center_dos_test.dart` · `test/menace_entry_dos_ui_test.dart` |
 | `test/fixtures/dos_menace_return.json` | `test/menace_return_dos_ui_test.dart` |
@@ -64,6 +68,7 @@
 | `test/fixtures/dos_metal_continuation.json` | `test/metal_battle_dos_test.dart` |
 | `test/fixtures/dos_muddy_continuation.json` | `test/menace_return_dos_ui_test.dart` |
 | `test/fixtures/dos_notice_continuation.json` | `test/hidra_battle_dos_test.dart` · `test/menace_return_dos_ui_test.dart` |
+| `test/fixtures/dos_pyramid_battle.json` | `test/pyramid_battle_dos_test.dart` |
 | `test/fixtures/dos_quake_continuation.json` | `test/menace_return_dos_ui_test.dart` · `test/quake_battle_dos_test.dart` |
 | `test/fixtures/dos_random_order.json` | `test/random_order_dos_test.dart` |
 | `test/fixtures/dos_random_stream.json` | `test/lore_random_test.dart` |
