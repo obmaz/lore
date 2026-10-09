@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 27,
-    "verified": 1821,
+    "partial": 20,
+    "verified": 1828,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -323,7 +323,7 @@
     },
     {
       "routine": "LORESUB.PAS:auxprint:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:auxscroll:1",
@@ -335,7 +335,7 @@
     },
     {
       "routine": "LORESUB.PAS:clear:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:detectgameover:1",
@@ -371,7 +371,7 @@
     },
     {
       "routine": "LORESUB.PAS:findgold:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:gameover:1",
@@ -395,7 +395,7 @@
     },
     {
       "routine": "LORESUB.PAS:message:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LORESUB.PAS:on:1",
@@ -403,7 +403,7 @@
     },
     {
       "routine": "LORESUB.PAS:pressanykey:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LORESUB.PAS:returnclass:1",
@@ -451,8 +451,7 @@
     },
     {
       "routine": "LORESUB.PAS:scroll:1",
-      "partial": 1,
-      "verified": 6
+      "verified": 7
     },
     {
       "routine": "LORESUB.PAS:select:1",
@@ -621,6 +620,20 @@
       "note_mentions": [],
       "test_candidates": [
         "test/chamber_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_common_screen.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:message:1:for:1",
+        "LORESUB.PAS:auxprint:1:if:1",
+        "LORESUB.PAS:pressanykey:1:if:1",
+        "LORESUB.PAS:pressanykey:1:while:1",
+        "LORESUB.PAS:clear:1:for:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/source_readkey_dos_test.dart"
       ]
     },
     {
@@ -1220,7 +1233,9 @@
     },
     {
       "path": "test/fixtures/dos_findgold.json",
-      "explicit_contracts": [],
+      "explicit_contracts": [
+        "LORESUB.PAS:findgold:1:for:1"
+      ],
       "note_mentions": [],
       "test_candidates": [
         "test/findgold_dos_test.dart",
@@ -1675,7 +1690,9 @@
     },
     {
       "path": "test/fixtures/dos_scroll.json",
-      "explicit_contracts": [],
+      "explicit_contracts": [
+        "LORESUB.PAS:scroll:1:while:1"
+      ],
       "note_mentions": [],
       "test_candidates": [
         "test/scroll_dos_test.dart",

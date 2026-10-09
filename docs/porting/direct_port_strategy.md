@@ -3381,3 +3381,17 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      주장하지 않는다. 이 한 항목만 해소하여 verified1821 / partial27.
      전체 Flutter2348건(3 skip), Python165건, analyze·웹 release build가
      통과했으며 원본 추출·원장·gap·source memory 최신 여부도 확인했다.
+
+217. **공통 입력 대기·메시지 페이지의 현대 어댑터**
+     원본 PressAnyKey60조건과 AuxPrint/message/cPrint24조건을 실행한다.
+     단독 보조키/lock key는 입력 byte가 아니므로 대기를 끝내지 않고,
+     새 typematic 입력은 받도록 기존 대화창·전투 대기를 수정한다.
+     extended key는 Flutter의 한 이벤트로 대응한다. 이전에 전달한 키는
+     다시 재생하지 않는다. cPrint 세 색상 구간은 실제 TextSpan과 대조하고
+     두 페이지의 동일 메시지는 현대 화면 하나로 표현한다. 기존 실제
+     필드 Clear·금화 획득·저장 회귀도 연결한다. Scroll384조건의 pending
+     byte flush를 검사한다. 물리 BIOS queue timing·DOS glyph pixel·현대
+     responsive 배치 동일성은 주장하지 않는다. 이7개만 해소하여
+     verified1828 / partial20. Set_All 테두리와 startup은 계속 남긴다.
+     Flutter2422건(3 skip), Python166건, analyze·웹 release build가
+     통과했으며 원장·gap·source memory 최신 여부도 확인했다.

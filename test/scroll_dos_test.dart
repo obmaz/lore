@@ -111,6 +111,14 @@ void main() {
       game.render(Canvas(recorder));
       recorder.endRecording().dispose();
       expect(game.playerSpriteIndex, row['face']);
+      expect([
+        for (final op in row['trace'])
+          if (op[0] == 'read') op[1],
+      ], row['queue']);
+      expect((row['trace'] as List).lastWhere((op) => op[0] == 'ready'), [
+        'ready',
+        false,
+      ]);
       expect(calls, [
         for (final op in row['trace'])
           if (op[0] == 'put') op,

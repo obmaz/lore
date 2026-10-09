@@ -218,7 +218,7 @@ class ContractLedgerTest(unittest.TestCase):
         hardware = [s for s in sites if s['routine'] == 'LORESUB.PAS:scroll:1'
                     and s['line'] == 219]
         self.assertTrue(hardware)
-        self.assertTrue(all(s['verification_status'] == 'partial' for s in hardware))
+        self.assertTrue(all(s['verification_status'] == 'verified' for s in hardware))
 
     def test_field_battle_eight_sites_have_independent_primary_scope(self):
         data = ledger.build()
@@ -236,7 +236,7 @@ class ContractLedgerTest(unittest.TestCase):
             self.assertTrue(all(s['verification_status'] == 'verified' for s in owned))
         self.assertFalse(any(s.get('verification_status') == 'partial'
                              for s in sites if s['file'] in {'LOREMAIN.PAS', 'LOREBATT.PAS'}))
-        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 27)
+        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 20)
 
     def test_special_arrival_scope_is_exact(self):
         sites = ledger.build()['control_sites']
@@ -285,7 +285,7 @@ class ContractLedgerTest(unittest.TestCase):
             self.assertIn('not adjacent DOS byte equivalence', row['note'])
         findgold = next(s for s in sites if s['routine'] == 'LORESUB.PAS:findgold:1'
                         and s['line'] == 1018)
-        self.assertEqual(findgold['verification_status'], 'partial')
+        self.assertEqual(findgold['verification_status'], 'verified')
 
     def test_creation_rule_verification_excludes_input_and_palette_loops(self):
         sites = ledger.build()["control_sites"]
@@ -333,7 +333,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 27)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 20)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

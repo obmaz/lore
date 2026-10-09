@@ -1,6 +1,139 @@
 {
   "contracts": [
     {
+      "id": "LORESUB.PAS:findgold:1:for:1",
+      "line": 1018,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_field_logic.dart",
+      "test": "test/findgold_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_findgold.py",
+        "test/fixtures/dos_findgold.json",
+        "test/menace_entry_dos_ui_test.dart",
+        "test/source_readkey_dos_test.dart"
+      ],
+      "note": "220 unchanged FindGold page-loop/numeric cases print identical source strings on both pages and restore the page. Existing actual MENACE traversal renders the native reward text once in MessageLogView and persists the reward. Native Clear and message two-page calls are independently replayed; identical page paints map to one modern frame rather than duplicate logs. DOS framebuffer/glyph pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:while:1",
+      "line": 219,
+      "kind": "while",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_scroll.py",
+        "test/fixtures/dos_scroll.json",
+        "test/keyboard_input_test.dart",
+        "test/source_readkey_dos_test.dart",
+        "test/scroll_feedback_ui_test.dart"
+      ],
+      "note": "384 unchanged Scroll executions flush all supplied pending ASCII/extended bytes before drawing. Flutter uses atomic delivered events with no application pending ReadKey queue; each source action is consumed once, release and redraw frames do not replay it, later typematic events are new input. Native keyboard queue ordering and modern input/redraw adapter are covered; physical BIOS queue timing is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:message:1:for:1",
+      "line": 386,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/source_readkey_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart",
+        "test/lore_source_text_test.dart",
+        "lib/widgets/lore_source_text.dart",
+        "lib/screens/main_game_screen.dart"
+      ],
+      "note": "Unchanged EXE Clear/PressAnyKey/AuxPrint/cPrint/message execute with platform input/drawing adapters. Actual Flutter dialogs discard previously delivered input, ignore modifier-only/lock events, accept later repeat events, consume extended keys atomically, retain final c flags and resume once. Native two-page clears/identical prints project to one modern message frame; native cPrint three spans match actual EGA text spans without a new line. Existing field-page and speech tests exercise clearing and continuations. Physical BIOS event timing, DOS glyph pixels and exact responsive layout are excluded."
+    },
+    {
+      "id": "LORESUB.PAS:auxprint:1:if:1",
+      "line": 367,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/source_readkey_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart",
+        "test/lore_source_text_test.dart",
+        "lib/widgets/lore_source_text.dart",
+        "lib/screens/main_game_screen.dart"
+      ],
+      "note": "Unchanged EXE Clear/PressAnyKey/AuxPrint/cPrint/message execute with platform input/drawing adapters. Actual Flutter dialogs discard previously delivered input, ignore modifier-only/lock events, accept later repeat events, consume extended keys atomically, retain final c flags and resume once. Native two-page clears/identical prints project to one modern message frame; native cPrint three spans match actual EGA text spans without a new line. Existing field-page and speech tests exercise clearing and continuations. Physical BIOS event timing, DOS glyph pixels and exact responsive layout are excluded."
+    },
+    {
+      "id": "LORESUB.PAS:pressanykey:1:if:1",
+      "line": 212,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/source_readkey_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart",
+        "test/lore_source_text_test.dart",
+        "lib/widgets/lore_source_text.dart",
+        "lib/screens/main_game_screen.dart"
+      ],
+      "note": "Unchanged EXE Clear/PressAnyKey/AuxPrint/cPrint/message execute with platform input/drawing adapters. Actual Flutter dialogs discard previously delivered input, ignore modifier-only/lock events, accept later repeat events, consume extended keys atomically, retain final c flags and resume once. Native two-page clears/identical prints project to one modern message frame; native cPrint three spans match actual EGA text spans without a new line. Existing field-page and speech tests exercise clearing and continuations. Physical BIOS event timing, DOS glyph pixels and exact responsive layout are excluded."
+    },
+    {
+      "id": "LORESUB.PAS:pressanykey:1:while:1",
+      "line": 210,
+      "kind": "while",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/source_readkey_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart",
+        "test/lore_source_text_test.dart",
+        "lib/widgets/lore_source_text.dart",
+        "lib/screens/main_game_screen.dart"
+      ],
+      "note": "Unchanged EXE Clear/PressAnyKey/AuxPrint/cPrint/message execute with platform input/drawing adapters. Actual Flutter dialogs discard previously delivered input, ignore modifier-only/lock events, accept later repeat events, consume extended keys atomically, retain final c flags and resume once. Native two-page clears/identical prints project to one modern message frame; native cPrint three spans match actual EGA text spans without a new line. Existing field-page and speech tests exercise clearing and continuations. Physical BIOS event timing, DOS glyph pixels and exact responsive layout are excluded."
+    },
+    {
+      "id": "LORESUB.PAS:clear:1:for:1",
+      "line": 197,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_select_view.dart",
+      "test": "test/source_readkey_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart",
+        "test/lore_source_text_test.dart",
+        "lib/widgets/lore_source_text.dart",
+        "lib/screens/main_game_screen.dart"
+      ],
+      "note": "Unchanged EXE Clear/PressAnyKey/AuxPrint/cPrint/message execute with platform input/drawing adapters. Actual Flutter dialogs discard previously delivered input, ignore modifier-only/lock events, accept later repeat events, consume extended keys atomically, retain final c flags and resume once. Native two-page clears/identical prints project to one modern message frame; native cPrint three spans match actual EGA text spans without a new line. Existing field-page and speech tests exercise clearing and continuations. Physical BIOS event timing, DOS glyph pixels and exact responsive layout are excluded."
+    },
+    {
       "id": "LORECRET.PAS:last:1:if:2",
       "line": 740,
       "kind": "if",
@@ -15516,16 +15649,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:scroll:1:while:1",
-      "line": 219,
-      "kind": "while",
-      "classification": "content-rule",
-      "implementation": "lib/game/lore_game.dart",
-      "test": "test/den_darkness_test.dart",
-      "note": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded).",
-      "verification": "partial"
-    },
-    {
       "id": "LORETALK.PAS:talkmode:1:if:27",
       "line": 191,
       "kind": "if",
@@ -18055,16 +18178,6 @@
       "implementation": "lib/screens/main_game_screen.dart",
       "test": "test/source_exit_boundary_ui_test.dart",
       "note": "Same source Select adapter as wantenter, with original Print11 exit prompt and no added refusal line. Existing mobile map exits check refusal repositioning and acceptance; native execution of all exits remains pending.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:findgold:1:for:1",
-      "line": 1018,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "test/menace_entry_dos_ui_test.dart",
-      "note": "Original for i=0..1 prints both graphics pages with no PressAnyKey, then adds gold. Modern renderer displays once as immediate source-color7 output, without a key wait. Source-backed map9/11/14/15 calls share native string[9] conversion: original Str/concat/page/hany/gold stores replay 220 signed longint/page cases; wide values normalize then truncate the first nine ASCII bytes including sign. All direct treasure owners match native messages and numeric reward, and actual MENACE(6,44) logs the native text, gains400 and etc32=4 immediately; actual slot3 Save records/2500 map cells match mobile. Confirmation on special tile and revisit draw no extra RNG or reward. Native graphics paging remains partial; numeric tests do not prove BGI painting.",
       "verification": "partial"
     },
     {

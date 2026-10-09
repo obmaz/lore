@@ -8,6 +8,24 @@ import '../logic/lore_main_input.dart';
 import '../theme/retro_theme.dart';
 import 'lore_source_text.dart';
 
+/// DOS ReadKey receives typematic input, but lone modifiers/lock toggles
+/// do not enqueue a byte. Extended keys arrive as one Flutter event.
+bool isLoreReadKeyEvent(KeyEvent event) =>
+    (event is KeyDownEvent || event is KeyRepeatEvent) &&
+    !const [
+      LogicalKeyboardKey.shiftLeft,
+      LogicalKeyboardKey.shiftRight,
+      LogicalKeyboardKey.controlLeft,
+      LogicalKeyboardKey.controlRight,
+      LogicalKeyboardKey.altLeft,
+      LogicalKeyboardKey.altRight,
+      LogicalKeyboardKey.metaLeft,
+      LogicalKeyboardKey.metaRight,
+      LogicalKeyboardKey.capsLock,
+      LogicalKeyboardKey.numLock,
+      LogicalKeyboardKey.scrollLock,
+    ].contains(event.logicalKey);
+
 /// [LoreSelectView] in a dialog: the `Select` result, 0 for Esc. The close
 /// icon is the touch equivalent of Esc.
 ///
@@ -159,7 +177,7 @@ class LoreMessageDialogState extends State<LoreMessageDialog> {
     focusNode: _focus,
     autofocus: true,
     onKeyEvent: (_, event) {
-      if (event is! KeyDownEvent) return KeyEventResult.ignored;
+      if (!isLoreReadKeyEvent(event)) return KeyEventResult.ignored;
       _close(key: event.logicalKey);
       return KeyEventResult.handled;
     },
@@ -567,7 +585,7 @@ class _KeyWaitOverlayState extends State<_KeyWaitOverlay> {
     focusNode: _focus,
     autofocus: true,
     onKeyEvent: (_, event) {
-      if (event is! KeyDownEvent) return KeyEventResult.ignored;
+      if (!isLoreReadKeyEvent(event)) return KeyEventResult.ignored;
       widget.wait.press(
         escape: event.logicalKey == LogicalKeyboardKey.escape,
         space: event.logicalKey == LogicalKeyboardKey.space,

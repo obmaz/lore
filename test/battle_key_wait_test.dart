@@ -200,12 +200,15 @@ void main() {
         ),
       ),
     );
+    await tester.sendKeyDownEvent(LogicalKeyboardKey.keyA);
     await tester.tap(find.byKey(const ValueKey('battle-cmd-1')));
     await tester.pump(const Duration(milliseconds: 300));
     await tester.sendKeyEvent(LogicalKeyboardKey.shiftLeft);
     await tester.pump(const Duration(milliseconds: 200));
     expect(find.text(LoreSubText.pressAnyKey), findsOneWidget);
-    await pressBattleKey(tester);
+    await tester.sendKeyRepeatEvent(LogicalKeyboardKey.keyA);
+    await tester.pump(const Duration(milliseconds: 200));
     expect(find.text(LoreSubText.pressAnyKey), findsNothing);
+    await tester.sendKeyUpEvent(LogicalKeyboardKey.keyA);
   });
 }

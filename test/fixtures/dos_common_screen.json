@@ -1,0 +1,6572 @@
+{
+  "scope": "Original LORESUB Clear/PressAnyKey, AuxPrint/message and Set_All panel calls.\n\nOnly BGI/CRT operations and input bytes are platform adapters. Original string\ncopies, keyboard-flush loops, scan consumption, cursor/page stores and border\nloops execute unchanged. Physical BIOS queue timing and glyph pixels excluded.\n",
+  "exeSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "wait": [
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        13
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 13,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        27
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          27
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 27,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        32
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 32,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        9
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          9
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 9,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        8
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          8
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 8,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        97
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 97,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        0,
+        72
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 72,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        0,
+        80
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          80
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 80,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        0,
+        75
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          75
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 75,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [],
+      "fresh": [
+        0,
+        77
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          77
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 77,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        13
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 13,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        27
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          27
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 27,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        32
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 32,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        9
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          9
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 9,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        8
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          8
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 8,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        97
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 97,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        0,
+        72
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 72,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        0,
+        80
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          80
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 80,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        0,
+        75
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          75
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 75,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        0,
+        77
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          77
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 77,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        13
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 13,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        27
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          27
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 27,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        32
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 32,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        9
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          9
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 9,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        8
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          8
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 8,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        97
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 97,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        0,
+        72
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 72,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        0,
+        80
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          80
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 80,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        0,
+        75
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          75
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 75,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 0,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        0,
+        77
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          77
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 77,
+      "afterPage": 0,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        13
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 13,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        27
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          27
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 27,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        32
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 32,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        9
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          9
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 9,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        8
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          8
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 8,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        97
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 97,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        0,
+        72
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 72,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        0,
+        80
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          80
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 80,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        0,
+        75
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          75
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 75,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [],
+      "fresh": [
+        0,
+        77
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          77
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 77,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        13
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 13,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        27
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          27
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 27,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        32
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 32,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        9
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          9
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 9,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        8
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          8
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 8,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        97
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 97,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        0,
+        72
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 72,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        0,
+        80
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          80
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 80,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        0,
+        75
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          75
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 75,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        32,
+        13
+      ],
+      "fresh": [
+        0,
+        77
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          77
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 77,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        13
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          13
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 13,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        27
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          27
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 27,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        32
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          32
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 32,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        9
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          9
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 9,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        8
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          8
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 8,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        97
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 97,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        0,
+        72
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 72,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        0,
+        80
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          80
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 80,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        0,
+        75
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          75
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 75,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    },
+    {
+      "page": 1,
+      "pending": [
+        0,
+        72,
+        97
+      ],
+      "fresh": [
+        0,
+        77
+      ],
+      "trace": [
+        [
+          "color",
+          14
+        ],
+        [
+          "prompt",
+          250,
+          180,
+          "아무키나 누르십시오 ..."
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          72
+        ],
+        [
+          "ready",
+          true
+        ],
+        [
+          "read",
+          97
+        ],
+        [
+          "ready",
+          false
+        ],
+        [
+          "read",
+          0
+        ],
+        [
+          "read",
+          77
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ]
+      ],
+      "c": 77,
+      "afterPage": 1,
+      "yline": 30,
+      "hany": 32
+    }
+  ],
+  "print": [
+    {
+      "kind": "aux",
+      "page": 0,
+      "hany": 0,
+      "newline": false,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 0
+    },
+    {
+      "kind": "aux",
+      "page": 0,
+      "hany": 0,
+      "newline": true,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          16
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 16
+    },
+    {
+      "kind": "aux",
+      "page": 0,
+      "hany": 32,
+      "newline": false,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 32
+    },
+    {
+      "kind": "aux",
+      "page": 0,
+      "hany": 32,
+      "newline": true,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 48
+    },
+    {
+      "kind": "aux",
+      "page": 0,
+      "hany": 100,
+      "newline": false,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 100
+    },
+    {
+      "kind": "aux",
+      "page": 0,
+      "hany": 100,
+      "newline": true,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          116
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 116
+    },
+    {
+      "kind": "aux",
+      "page": 1,
+      "hany": 0,
+      "newline": false,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 0
+    },
+    {
+      "kind": "aux",
+      "page": 1,
+      "hany": 0,
+      "newline": true,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          16
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 16
+    },
+    {
+      "kind": "aux",
+      "page": 1,
+      "hany": 32,
+      "newline": false,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 32
+    },
+    {
+      "kind": "aux",
+      "page": 1,
+      "hany": 32,
+      "newline": true,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 48
+    },
+    {
+      "kind": "aux",
+      "page": 1,
+      "hany": 100,
+      "newline": false,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 100
+    },
+    {
+      "kind": "aux",
+      "page": 1,
+      "hany": 100,
+      "newline": true,
+      "trace": [
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          116
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 116
+    },
+    {
+      "kind": "message",
+      "page": 0,
+      "hany": 0,
+      "newline": true,
+      "trace": [
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 48
+    },
+    {
+      "kind": "message",
+      "page": 0,
+      "hany": 32,
+      "newline": true,
+      "trace": [
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 48
+    },
+    {
+      "kind": "message",
+      "page": 0,
+      "hany": 100,
+      "newline": true,
+      "trace": [
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 0,
+      "afterHany": 48
+    },
+    {
+      "kind": "message",
+      "page": 1,
+      "hany": 0,
+      "newline": true,
+      "trace": [
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 48
+    },
+    {
+      "kind": "message",
+      "page": 1,
+      "hany": 32,
+      "newline": true,
+      "trace": [
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 48
+    },
+    {
+      "kind": "message",
+      "page": 1,
+      "hany": 100,
+      "newline": true,
+      "trace": [
+        [
+          "active",
+          0
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "bar",
+          231,
+          21,
+          616,
+          198
+        ],
+        [
+          "active",
+          0
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ],
+        [
+          "active",
+          1
+        ],
+        [
+          "color",
+          12
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          "SOURCE"
+        ]
+      ],
+      "afterPage": 1,
+      "afterHany": 48
+    },
+    {
+      "kind": "cprint",
+      "page": 0,
+      "hany": 0,
+      "parts": [
+        " 나는 LORE 성의 성주 ",
+        "Lord Ahn",
+        " 이오."
+      ],
+      "trace": [
+        [
+          "color",
+          7
+        ],
+        [
+          "goto",
+          250,
+          16
+        ],
+        [
+          "text",
+          " 나는 LORE 성의 성주 "
+        ],
+        [
+          "color",
+          11
+        ],
+        [
+          "text",
+          "Lord Ahn"
+        ],
+        [
+          "color",
+          7
+        ],
+        [
+          "text",
+          " 이오."
+        ]
+      ],
+      "afterHany": 16
+    },
+    {
+      "kind": "cprint",
+      "page": 1,
+      "hany": 0,
+      "parts": [
+        " 나는 LORE 성의 성주 ",
+        "Lord Ahn",
+        " 이오."
+      ],
+      "trace": [
+        [
+          "color",
+          7
+        ],
+        [
+          "goto",
+          250,
+          16
+        ],
+        [
+          "text",
+          " 나는 LORE 성의 성주 "
+        ],
+        [
+          "color",
+          11
+        ],
+        [
+          "text",
+          "Lord Ahn"
+        ],
+        [
+          "color",
+          7
+        ],
+        [
+          "text",
+          " 이오."
+        ]
+      ],
+      "afterHany": 16
+    },
+    {
+      "kind": "cprint",
+      "page": 0,
+      "hany": 32,
+      "parts": [
+        " 나는 LORE 성의 성주 ",
+        "Lord Ahn",
+        " 이오."
+      ],
+      "trace": [
+        [
+          "color",
+          7
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          " 나는 LORE 성의 성주 "
+        ],
+        [
+          "color",
+          11
+        ],
+        [
+          "text",
+          "Lord Ahn"
+        ],
+        [
+          "color",
+          7
+        ],
+        [
+          "text",
+          " 이오."
+        ]
+      ],
+      "afterHany": 48
+    },
+    {
+      "kind": "cprint",
+      "page": 1,
+      "hany": 32,
+      "parts": [
+        " 나는 LORE 성의 성주 ",
+        "Lord Ahn",
+        " 이오."
+      ],
+      "trace": [
+        [
+          "color",
+          7
+        ],
+        [
+          "goto",
+          250,
+          48
+        ],
+        [
+          "text",
+          " 나는 LORE 성의 성주 "
+        ],
+        [
+          "color",
+          11
+        ],
+        [
+          "text",
+          "Lord Ahn"
+        ],
+        [
+          "color",
+          7
+        ],
+        [
+          "text",
+          " 이오."
+        ]
+      ],
+      "afterHany": 48
+    },
+    {
+      "kind": "cprint",
+      "page": 0,
+      "hany": 100,
+      "parts": [
+        " 나는 LORE 성의 성주 ",
+        "Lord Ahn",
+        " 이오."
+      ],
+      "trace": [
+        [
+          "color",
+          7
+        ],
+        [
+          "goto",
+          250,
+          116
+        ],
+        [
+          "text",
+          " 나는 LORE 성의 성주 "
+        ],
+        [
+          "color",
+          11
+        ],
+        [
+          "text",
+          "Lord Ahn"
+        ],
+        [
+          "color",
+          7
+        ],
+        [
+          "text",
+          " 이오."
+        ]
+      ],
+      "afterHany": 116
+    },
+    {
+      "kind": "cprint",
+      "page": 1,
+      "hany": 100,
+      "parts": [
+        " 나는 LORE 성의 성주 ",
+        "Lord Ahn",
+        " 이오."
+      ],
+      "trace": [
+        [
+          "color",
+          7
+        ],
+        [
+          "goto",
+          250,
+          116
+        ],
+        [
+          "text",
+          " 나는 LORE 성의 성주 "
+        ],
+        [
+          "color",
+          11
+        ],
+        [
+          "text",
+          "Lord Ahn"
+        ],
+        [
+          "color",
+          7
+        ],
+        [
+          "text",
+          " 이오."
+        ]
+      ],
+      "afterHany": 116
+    }
+  ],
+  "borders": [
+    [
+      "active",
+      0
+    ],
+    [
+      "visible",
+      1
+    ],
+    [
+      "fill",
+      1,
+      1
+    ],
+    [
+      "bar",
+      0,
+      0,
+      639,
+      349
+    ],
+    [
+      "style",
+      0,
+      0,
+      3
+    ],
+    [
+      "color",
+      9
+    ],
+    [
+      "rectangle",
+      4,
+      4,
+      635,
+      346
+    ],
+    [
+      "style",
+      0,
+      0,
+      1
+    ],
+    [
+      "rectangle",
+      1,
+      1,
+      639,
+      349
+    ],
+    [
+      "rectangle",
+      7,
+      7,
+      631,
+      343
+    ],
+    [
+      "color",
+      8
+    ],
+    [
+      "line",
+      19,
+      200,
+      200,
+      200
+    ],
+    [
+      "line",
+      200,
+      19,
+      200,
+      200
+    ],
+    [
+      "line",
+      18,
+      201,
+      201,
+      201
+    ],
+    [
+      "line",
+      201,
+      18,
+      201,
+      201
+    ],
+    [
+      "line",
+      17,
+      202,
+      202,
+      202
+    ],
+    [
+      "line",
+      202,
+      17,
+      202,
+      202
+    ],
+    [
+      "line",
+      16,
+      203,
+      203,
+      203
+    ],
+    [
+      "line",
+      203,
+      16,
+      203,
+      203
+    ],
+    [
+      "line",
+      15,
+      204,
+      204,
+      204
+    ],
+    [
+      "line",
+      204,
+      15,
+      204,
+      204
+    ],
+    [
+      "line",
+      14,
+      205,
+      205,
+      205
+    ],
+    [
+      "line",
+      205,
+      14,
+      205,
+      205
+    ],
+    [
+      "color",
+      7
+    ],
+    [
+      "line",
+      14,
+      14,
+      14,
+      205
+    ],
+    [
+      "line",
+      14,
+      14,
+      205,
+      14
+    ],
+    [
+      "line",
+      15,
+      15,
+      15,
+      204
+    ],
+    [
+      "line",
+      15,
+      15,
+      204,
+      15
+    ],
+    [
+      "line",
+      16,
+      16,
+      16,
+      203
+    ],
+    [
+      "line",
+      16,
+      16,
+      203,
+      16
+    ],
+    [
+      "line",
+      17,
+      17,
+      17,
+      202
+    ],
+    [
+      "line",
+      17,
+      17,
+      202,
+      17
+    ],
+    [
+      "line",
+      18,
+      18,
+      18,
+      201
+    ],
+    [
+      "line",
+      18,
+      18,
+      201,
+      18
+    ],
+    [
+      "line",
+      19,
+      19,
+      19,
+      200
+    ],
+    [
+      "line",
+      19,
+      19,
+      200,
+      19
+    ],
+    [
+      "line",
+      200,
+      200,
+      205,
+      205
+    ],
+    [
+      "color",
+      15
+    ],
+    [
+      "line",
+      14,
+      14,
+      19,
+      19
+    ],
+    [
+      "rectangle",
+      12,
+      12,
+      207,
+      207
+    ],
+    [
+      "rectangle",
+      10,
+      10,
+      209,
+      209
+    ],
+    [
+      "color",
+      8
+    ],
+    [
+      "line",
+      19,
+      332,
+      618,
+      332
+    ],
+    [
+      "line",
+      618,
+      239,
+      618,
+      332
+    ],
+    [
+      "line",
+      18,
+      333,
+      619,
+      333
+    ],
+    [
+      "line",
+      619,
+      238,
+      619,
+      333
+    ],
+    [
+      "line",
+      17,
+      334,
+      620,
+      334
+    ],
+    [
+      "line",
+      620,
+      237,
+      620,
+      334
+    ],
+    [
+      "line",
+      16,
+      335,
+      621,
+      335
+    ],
+    [
+      "line",
+      621,
+      236,
+      621,
+      335
+    ],
+    [
+      "line",
+      15,
+      336,
+      622,
+      336
+    ],
+    [
+      "line",
+      622,
+      235,
+      622,
+      336
+    ],
+    [
+      "line",
+      14,
+      337,
+      623,
+      337
+    ],
+    [
+      "line",
+      623,
+      234,
+      623,
+      337
+    ],
+    [
+      "color",
+      7
+    ],
+    [
+      "line",
+      14,
+      234,
+      14,
+      337
+    ],
+    [
+      "line",
+      14,
+      234,
+      622,
+      234
+    ],
+    [
+      "line",
+      15,
+      235,
+      15,
+      336
+    ],
+    [
+      "line",
+      15,
+      235,
+      621,
+      235
+    ],
+    [
+      "line",
+      16,
+      236,
+      16,
+      335
+    ],
+    [
+      "line",
+      16,
+      236,
+      620,
+      236
+    ],
+    [
+      "line",
+      17,
+      237,
+      17,
+      334
+    ],
+    [
+      "line",
+      17,
+      237,
+      619,
+      237
+    ],
+    [
+      "line",
+      18,
+      238,
+      18,
+      333
+    ],
+    [
+      "line",
+      18,
+      238,
+      618,
+      238
+    ],
+    [
+      "line",
+      19,
+      239,
+      19,
+      332
+    ],
+    [
+      "line",
+      19,
+      239,
+      617,
+      239
+    ],
+    [
+      "line",
+      618,
+      332,
+      623,
+      337
+    ],
+    [
+      "color",
+      10
+    ],
+    [
+      "line",
+      14,
+      234,
+      19,
+      239
+    ],
+    [
+      "rectangle",
+      10,
+      230,
+      627,
+      341
+    ],
+    [
+      "color",
+      2
+    ],
+    [
+      "rectangle",
+      12,
+      232,
+      625,
+      339
+    ],
+    [
+      "fill",
+      1,
+      8
+    ],
+    [
+      "bar",
+      21,
+      241,
+      616,
+      330
+    ],
+    [
+      "color",
+      11
+    ],
+    [
+      "bold",
+      78,
+      213,
+      "이름          체력   마력   초능력   방어  레벨        상 태"
+    ],
+    [
+      "color",
+      8
+    ],
+    [
+      "line",
+      229,
+      200,
+      618,
+      200
+    ],
+    [
+      "line",
+      618,
+      19,
+      618,
+      200
+    ],
+    [
+      "line",
+      228,
+      201,
+      619,
+      201
+    ],
+    [
+      "line",
+      619,
+      18,
+      619,
+      201
+    ],
+    [
+      "line",
+      227,
+      202,
+      620,
+      202
+    ],
+    [
+      "line",
+      620,
+      17,
+      620,
+      202
+    ],
+    [
+      "line",
+      226,
+      203,
+      621,
+      203
+    ],
+    [
+      "line",
+      621,
+      16,
+      621,
+      203
+    ],
+    [
+      "line",
+      225,
+      204,
+      622,
+      204
+    ],
+    [
+      "line",
+      622,
+      15,
+      622,
+      204
+    ],
+    [
+      "line",
+      224,
+      205,
+      623,
+      205
+    ],
+    [
+      "line",
+      623,
+      14,
+      623,
+      205
+    ],
+    [
+      "color",
+      7
+    ],
+    [
+      "line",
+      224,
+      14,
+      224,
+      205
+    ],
+    [
+      "line",
+      224,
+      14,
+      622,
+      14
+    ],
+    [
+      "line",
+      225,
+      15,
+      225,
+      204
+    ],
+    [
+      "line",
+      225,
+      15,
+      621,
+      15
+    ],
+    [
+      "line",
+      226,
+      16,
+      226,
+      203
+    ],
+    [
+      "line",
+      226,
+      16,
+      620,
+      16
+    ],
+    [
+      "line",
+      227,
+      17,
+      227,
+      202
+    ],
+    [
+      "line",
+      227,
+      17,
+      619,
+      17
+    ],
+    [
+      "line",
+      228,
+      18,
+      228,
+      201
+    ],
+    [
+      "line",
+      228,
+      18,
+      618,
+      18
+    ],
+    [
+      "line",
+      229,
+      19,
+      229,
+      200
+    ],
+    [
+      "line",
+      229,
+      19,
+      617,
+      19
+    ],
+    [
+      "line",
+      618,
+      200,
+      623,
+      205
+    ],
+    [
+      "color",
+      15
+    ],
+    [
+      "line",
+      224,
+      14,
+      229,
+      19
+    ],
+    [
+      "rectangle",
+      220,
+      10,
+      627,
+      209
+    ],
+    [
+      "rectangle",
+      222,
+      12,
+      625,
+      207
+    ],
+    [
+      "bar",
+      231,
+      21,
+      616,
+      198
+    ],
+    [
+      "active",
+      1
+    ],
+    [
+      "visible",
+      0
+    ],
+    [
+      "fill",
+      1,
+      1
+    ],
+    [
+      "bar",
+      0,
+      0,
+      639,
+      349
+    ],
+    [
+      "style",
+      0,
+      0,
+      3
+    ],
+    [
+      "color",
+      9
+    ],
+    [
+      "rectangle",
+      4,
+      4,
+      635,
+      346
+    ],
+    [
+      "style",
+      0,
+      0,
+      1
+    ],
+    [
+      "rectangle",
+      1,
+      1,
+      639,
+      349
+    ],
+    [
+      "rectangle",
+      7,
+      7,
+      631,
+      343
+    ],
+    [
+      "color",
+      8
+    ],
+    [
+      "line",
+      19,
+      200,
+      200,
+      200
+    ],
+    [
+      "line",
+      200,
+      19,
+      200,
+      200
+    ],
+    [
+      "line",
+      18,
+      201,
+      201,
+      201
+    ],
+    [
+      "line",
+      201,
+      18,
+      201,
+      201
+    ],
+    [
+      "line",
+      17,
+      202,
+      202,
+      202
+    ],
+    [
+      "line",
+      202,
+      17,
+      202,
+      202
+    ],
+    [
+      "line",
+      16,
+      203,
+      203,
+      203
+    ],
+    [
+      "line",
+      203,
+      16,
+      203,
+      203
+    ],
+    [
+      "line",
+      15,
+      204,
+      204,
+      204
+    ],
+    [
+      "line",
+      204,
+      15,
+      204,
+      204
+    ],
+    [
+      "line",
+      14,
+      205,
+      205,
+      205
+    ],
+    [
+      "line",
+      205,
+      14,
+      205,
+      205
+    ],
+    [
+      "color",
+      7
+    ],
+    [
+      "line",
+      14,
+      14,
+      14,
+      205
+    ],
+    [
+      "line",
+      14,
+      14,
+      205,
+      14
+    ],
+    [
+      "line",
+      15,
+      15,
+      15,
+      204
+    ],
+    [
+      "line",
+      15,
+      15,
+      204,
+      15
+    ],
+    [
+      "line",
+      16,
+      16,
+      16,
+      203
+    ],
+    [
+      "line",
+      16,
+      16,
+      203,
+      16
+    ],
+    [
+      "line",
+      17,
+      17,
+      17,
+      202
+    ],
+    [
+      "line",
+      17,
+      17,
+      202,
+      17
+    ],
+    [
+      "line",
+      18,
+      18,
+      18,
+      201
+    ],
+    [
+      "line",
+      18,
+      18,
+      201,
+      18
+    ],
+    [
+      "line",
+      19,
+      19,
+      19,
+      200
+    ],
+    [
+      "line",
+      19,
+      19,
+      200,
+      19
+    ],
+    [
+      "line",
+      200,
+      200,
+      205,
+      205
+    ],
+    [
+      "color",
+      15
+    ],
+    [
+      "line",
+      14,
+      14,
+      19,
+      19
+    ],
+    [
+      "rectangle",
+      12,
+      12,
+      207,
+      207
+    ],
+    [
+      "rectangle",
+      10,
+      10,
+      209,
+      209
+    ],
+    [
+      "color",
+      8
+    ],
+    [
+      "line",
+      19,
+      332,
+      618,
+      332
+    ],
+    [
+      "line",
+      618,
+      239,
+      618,
+      332
+    ],
+    [
+      "line",
+      18,
+      333,
+      619,
+      333
+    ],
+    [
+      "line",
+      619,
+      238,
+      619,
+      333
+    ],
+    [
+      "line",
+      17,
+      334,
+      620,
+      334
+    ],
+    [
+      "line",
+      620,
+      237,
+      620,
+      334
+    ],
+    [
+      "line",
+      16,
+      335,
+      621,
+      335
+    ],
+    [
+      "line",
+      621,
+      236,
+      621,
+      335
+    ],
+    [
+      "line",
+      15,
+      336,
+      622,
+      336
+    ],
+    [
+      "line",
+      622,
+      235,
+      622,
+      336
+    ],
+    [
+      "line",
+      14,
+      337,
+      623,
+      337
+    ],
+    [
+      "line",
+      623,
+      234,
+      623,
+      337
+    ],
+    [
+      "color",
+      7
+    ],
+    [
+      "line",
+      14,
+      234,
+      14,
+      337
+    ],
+    [
+      "line",
+      14,
+      234,
+      622,
+      234
+    ],
+    [
+      "line",
+      15,
+      235,
+      15,
+      336
+    ],
+    [
+      "line",
+      15,
+      235,
+      621,
+      235
+    ],
+    [
+      "line",
+      16,
+      236,
+      16,
+      335
+    ],
+    [
+      "line",
+      16,
+      236,
+      620,
+      236
+    ],
+    [
+      "line",
+      17,
+      237,
+      17,
+      334
+    ],
+    [
+      "line",
+      17,
+      237,
+      619,
+      237
+    ],
+    [
+      "line",
+      18,
+      238,
+      18,
+      333
+    ],
+    [
+      "line",
+      18,
+      238,
+      618,
+      238
+    ],
+    [
+      "line",
+      19,
+      239,
+      19,
+      332
+    ],
+    [
+      "line",
+      19,
+      239,
+      617,
+      239
+    ],
+    [
+      "line",
+      618,
+      332,
+      623,
+      337
+    ],
+    [
+      "color",
+      10
+    ],
+    [
+      "line",
+      14,
+      234,
+      19,
+      239
+    ],
+    [
+      "rectangle",
+      10,
+      230,
+      627,
+      341
+    ],
+    [
+      "color",
+      2
+    ],
+    [
+      "rectangle",
+      12,
+      232,
+      625,
+      339
+    ],
+    [
+      "fill",
+      1,
+      8
+    ],
+    [
+      "bar",
+      21,
+      241,
+      616,
+      330
+    ],
+    [
+      "color",
+      11
+    ],
+    [
+      "bold",
+      78,
+      213,
+      "이름          체력   마력   초능력   방어  레벨        상 태"
+    ],
+    [
+      "color",
+      8
+    ],
+    [
+      "line",
+      229,
+      200,
+      618,
+      200
+    ],
+    [
+      "line",
+      618,
+      19,
+      618,
+      200
+    ],
+    [
+      "line",
+      228,
+      201,
+      619,
+      201
+    ],
+    [
+      "line",
+      619,
+      18,
+      619,
+      201
+    ],
+    [
+      "line",
+      227,
+      202,
+      620,
+      202
+    ],
+    [
+      "line",
+      620,
+      17,
+      620,
+      202
+    ],
+    [
+      "line",
+      226,
+      203,
+      621,
+      203
+    ],
+    [
+      "line",
+      621,
+      16,
+      621,
+      203
+    ],
+    [
+      "line",
+      225,
+      204,
+      622,
+      204
+    ],
+    [
+      "line",
+      622,
+      15,
+      622,
+      204
+    ],
+    [
+      "line",
+      224,
+      205,
+      623,
+      205
+    ],
+    [
+      "line",
+      623,
+      14,
+      623,
+      205
+    ],
+    [
+      "color",
+      7
+    ],
+    [
+      "line",
+      224,
+      14,
+      224,
+      205
+    ],
+    [
+      "line",
+      224,
+      14,
+      622,
+      14
+    ],
+    [
+      "line",
+      225,
+      15,
+      225,
+      204
+    ],
+    [
+      "line",
+      225,
+      15,
+      621,
+      15
+    ],
+    [
+      "line",
+      226,
+      16,
+      226,
+      203
+    ],
+    [
+      "line",
+      226,
+      16,
+      620,
+      16
+    ],
+    [
+      "line",
+      227,
+      17,
+      227,
+      202
+    ],
+    [
+      "line",
+      227,
+      17,
+      619,
+      17
+    ],
+    [
+      "line",
+      228,
+      18,
+      228,
+      201
+    ],
+    [
+      "line",
+      228,
+      18,
+      618,
+      18
+    ],
+    [
+      "line",
+      229,
+      19,
+      229,
+      200
+    ],
+    [
+      "line",
+      229,
+      19,
+      617,
+      19
+    ],
+    [
+      "line",
+      618,
+      200,
+      623,
+      205
+    ],
+    [
+      "color",
+      15
+    ],
+    [
+      "line",
+      224,
+      14,
+      229,
+      19
+    ],
+    [
+      "rectangle",
+      220,
+      10,
+      627,
+      209
+    ],
+    [
+      "rectangle",
+      222,
+      12,
+      625,
+      207
+    ],
+    [
+      "bar",
+      231,
+      21,
+      616,
+      198
+    ]
+  ]
+}
