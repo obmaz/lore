@@ -1,6 +1,132 @@
 {
   "contracts": [
     {
+      "id": "LORESUB.PAS:set_all:1:for:8",
+      "line": 1856,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:7",
+      "line": 1851,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:6",
+      "line": 1836,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:5",
+      "line": 1831,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:4",
+      "line": 1821,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:3",
+      "line": 1816,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
       "id": "LORESUB.PAS:findgold:1:for:1",
       "line": 1018,
       "kind": "for",

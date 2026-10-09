@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../logic/lore_sub_text.dart';
 import '../theme/retro_theme.dart';
 import 'retro_box.dart';
+import 'lore_panel_frame.dart';
 
 class PartyMemberStatus {
   final String name;
@@ -37,6 +38,7 @@ class PartyStatusView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RetroBox(
+      sourceFrame: LorePanelFrame.party,
       borderColor: RetroTheme.borderColor,
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
       child: Column(

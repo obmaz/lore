@@ -3395,3 +3395,15 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      verified1828 / partial20. Set_All 테두리와 startup은 계속 남긴다.
      Flutter2422건(3 skip), Python166건, analyze·웹 release build가
      통과했으며 원장·gap·source memory 최신 여부도 확인했다.
+
+218. **Set_All 세 패널의 원본 테두리**
+     source j=0..5 여섯 루프와 대각선·rectangle의 좌표, 순서, EGA 색을
+     기존 viewport/party/message 패널에 직접 연결한다. 새 게임 규칙이나
+     화면 레이아웃을 추가하지 않는다. 원본 두 페이지의218 drawing 호출
+     중 세 패널을 실제 painter 호출과 대조한다. 기존 overlay title 경로도
+     같은 프레임을 사용한다. 현대 화면 크기에 Canvas scaling을 적용하며
+     DOS 전체 glyph/framebuffer pixel 동등성은 주장하지 않는다.
+     여섯 항목만 해소하여 verified1834 / partial14. 남은 startup 처리도
+     원본 옵션·fade·audio cleanup 제어 흐름을 별도로 검증한다.
+     Flutter2432건(3 skip), Python167건, analyze·웹 release build가
+     통과했으며 원장·gap·source memory 최신 여부도 확인했다.

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
+import 'lore_panel_frame.dart';
 
 /// 90년대 도스 게임 특유의 각진 테두리와 타이틀 바를 지원하는 레트로 패널
 class RetroBox extends StatelessWidget {
   final Widget child;
+  final LorePanelFrame? sourceFrame;
   final String? title;
   final Color borderColor;
   final Color backgroundColor;
@@ -13,6 +15,7 @@ class RetroBox extends StatelessWidget {
   const RetroBox({
     super.key,
     required this.child,
+    this.sourceFrame,
     this.title,
     this.borderColor = RetroTheme.borderColor,
     this.backgroundColor = RetroTheme.panelBg,
@@ -21,7 +24,7 @@ class RetroBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    final panel = Container(
       decoration: BoxDecoration(
         color: backgroundColor,
         border: Border.all(color: borderColor, width: 2),
@@ -53,5 +56,11 @@ class RetroBox extends StatelessWidget {
         ],
       ),
     );
+    return sourceFrame == null
+        ? panel
+        : CustomPaint(
+            foregroundPainter: LorePanelFramePainter(sourceFrame!),
+            child: panel,
+          );
   }
 }

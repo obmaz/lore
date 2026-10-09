@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 20,
-    "verified": 1828,
+    "partial": 14,
+    "verified": 1834,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -463,8 +463,7 @@
     },
     {
       "routine": "LORESUB.PAS:set_all:1",
-      "verified": 2,
-      "partial": 6
+      "verified": 8
     },
     {
       "routine": "LORESUB.PAS:setscrolltype:1",
@@ -625,6 +624,12 @@
     {
       "path": "test/fixtures/dos_common_screen.json",
       "explicit_contracts": [
+        "LORESUB.PAS:set_all:1:for:8",
+        "LORESUB.PAS:set_all:1:for:7",
+        "LORESUB.PAS:set_all:1:for:6",
+        "LORESUB.PAS:set_all:1:for:5",
+        "LORESUB.PAS:set_all:1:for:4",
+        "LORESUB.PAS:set_all:1:for:3",
         "LORESUB.PAS:message:1:for:1",
         "LORESUB.PAS:auxprint:1:if:1",
         "LORESUB.PAS:pressanykey:1:if:1",
@@ -633,6 +638,7 @@
       ],
       "note_mentions": [],
       "test_candidates": [
+        "test/panel_frame_dos_test.dart",
         "test/source_readkey_dos_test.dart"
       ]
     },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/retro_theme.dart';
 import 'retro_box.dart';
+import 'lore_panel_frame.dart';
 import 'lore_source_text.dart';
 
 /// 하단 콘솔: 이전 메시지부터 최신 메시지까지 순서대로 표시한다.
@@ -61,6 +62,7 @@ class _MessageLogViewState extends State<MessageLogView> {
   @override
   Widget build(BuildContext context) {
     return RetroBox(
+      sourceFrame: LorePanelFrame.message,
       borderColor: RetroTheme.cyan,
       backgroundColor: RetroTheme.background,
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),

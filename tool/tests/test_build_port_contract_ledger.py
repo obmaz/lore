@@ -10,6 +10,15 @@ import build_port_contract_ledger as ledger
 
 
 class ContractLedgerTest(unittest.TestCase):
+    def test_panel_frame_scope_is_exactly_six_native_bevel_loops(self):
+        sites = ledger.build()['control_sites']
+        rows = [s for s in sites if s['behavioral_evidence'] and
+                s['behavioral_evidence'][0] == 'test/panel_frame_dos_test.dart']
+        self.assertEqual({s['line'] for s in rows}, {1816,1821,1831,1836,1851,1856})
+        self.assertEqual(len(rows),6)
+        self.assertTrue(all(s['verification_status']=='verified' for s in rows))
+        self.assertTrue(all(s['routine']=='LORESUB.PAS:set_all:1' for s in rows))
+
     def test_typed_read_scope_is_only_enemy_and_default_map_loops(self):
         sites = ledger.build()['control_sites']
         reviewed = json.loads(ledger.EVIDENCE.read_text())['contracts']
@@ -236,7 +245,7 @@ class ContractLedgerTest(unittest.TestCase):
             self.assertTrue(all(s['verification_status'] == 'verified' for s in owned))
         self.assertFalse(any(s.get('verification_status') == 'partial'
                              for s in sites if s['file'] in {'LOREMAIN.PAS', 'LOREBATT.PAS'}))
-        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 20)
+        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 14)
 
     def test_special_arrival_scope_is_exact(self):
         sites = ledger.build()['control_sites']
@@ -333,7 +342,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 20)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 14)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

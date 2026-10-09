@@ -31720,11 +31720,20 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/panel_frame_dos_test.dart",
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_panel_frame.dart",
+      "reviewed_scope": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
     },
     {
       "id": "LORESUB.PAS:set_all:1:for:4",
@@ -31736,11 +31745,20 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/panel_frame_dos_test.dart",
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_panel_frame.dart",
+      "reviewed_scope": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
     },
     {
       "id": "LORESUB.PAS:set_all:1:for:5",
@@ -31752,11 +31770,20 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/panel_frame_dos_test.dart",
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_panel_frame.dart",
+      "reviewed_scope": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
     },
     {
       "id": "LORESUB.PAS:set_all:1:for:6",
@@ -31768,11 +31795,20 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/panel_frame_dos_test.dart",
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_panel_frame.dart",
+      "reviewed_scope": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
     },
     {
       "id": "LORESUB.PAS:set_all:1:for:7",
@@ -31784,11 +31820,20 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/panel_frame_dos_test.dart",
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_panel_frame.dart",
+      "reviewed_scope": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
     },
     {
       "id": "LORESUB.PAS:set_all:1:for:8",
@@ -31800,11 +31845,20 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/panel_frame_dos_test.dart",
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_panel_frame.dart",
+      "reviewed_scope": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
     },
     {
       "id": "LORESUB.PAS:unsound:1:if:1",
@@ -34972,6 +35026,132 @@
     }
   ],
   "linked_contracts": [
+    {
+      "id": "LORESUB.PAS:set_all:1:for:8",
+      "line": 1856,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:7",
+      "line": 1851,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:6",
+      "line": 1836,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:5",
+      "line": 1831,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:4",
+      "line": 1821,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
+    {
+      "id": "LORESUB.PAS:set_all:1:for:3",
+      "line": 1816,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/widgets/lore_panel_frame.dart",
+      "test": "test/panel_frame_dos_test.dart",
+      "verification": "verified",
+      "supporting_evidence": [
+        "tool/export_dos_common_screen.py",
+        "tool/tests/test_export_dos_common_screen.py",
+        "test/fixtures/dos_common_screen.json",
+        "lib/widgets/retro_box.dart",
+        "lib/widgets/viewport_view.dart",
+        "lib/widgets/party_status_view.dart",
+        "lib/widgets/message_log_view.dart",
+        "test/field_pages_dos_test.dart",
+        "test/source_speech_ui_test.dart"
+      ],
+      "note": "Unchanged native Set_All emits both pages of six j=0..5 bevel loops. Actual CustomPainter calls agree with all ordered native line/rectangle coordinates and colors for all three frames on both pages. Viewport (including overlay-title path), party and message panels use that painter in existing responsive layout at portrait/desktop sizes. Source coordinates remain literal and Canvas scaling is the modern size adapter; whole DOS glyph/framebuffer pixel identity is excluded."
+    },
     {
       "id": "LORESUB.PAS:findgold:1:for:1",
       "line": 1018,
@@ -56187,72 +56367,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:set_all:1:for:3",
-      "line": 1816,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:set_all:1:for:4",
-      "line": 1821,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:set_all:1:for:5",
-      "line": 1831,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:set_all:1:for:6",
-      "line": 1836,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:set_all:1:for:7",
-      "line": 1851,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:set_all:1:for:8",
-      "line": 1856,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:unsound:1:if:1",
       "line": 1877,
       "kind": "if",
@@ -59474,6 +59588,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/panel_frame_dos_test.dart",
+      "kind": "test",
+      "sha256": "e66a29454aa150b95c452d3fcfc5b9222a53bcb01179d32941c56386a40ec157",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/party_status_source_test.dart",
       "kind": "test",
       "sha256": "7488002e78503fbb1fc7293b6fbe17dc5ec04348d719b7e92f265a92239e8689",
@@ -60417,6 +60540,7 @@
       "kind": "fixture",
       "sha256": "2bcef58954c86c4006b654acacdb95c3b83b3b9d0a4840876a993772b1165c03",
       "test_users": [
+        "test/panel_frame_dos_test.dart",
         "test/source_readkey_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
@@ -61703,7 +61827,7 @@
     },
     {
       "path": "lib/widgets/message_log_view.dart",
-      "sha256": "da803209c98171b261842cc234d431d18a511ca1df363f381586afa1995816a9"
+      "sha256": "0ecfccb0e1dea88a1e88d9774aa541def2bda21944e7eafb62185b35765670cc"
     },
     {
       "path": "lib/widgets/dialogue_history_view.dart",
@@ -61711,7 +61835,7 @@
     },
     {
       "path": "lib/widgets/party_status_view.dart",
-      "sha256": "00128aa8ab716172dcfffd5ad3a494ac82a7a99a239b1d114ce9955b4dd4c0ab"
+      "sha256": "b2d66a9a0050ee340e35b62751bedd2aaec326ab0258cc603f735b11cb677ac1"
     },
     {
       "path": "lib/widgets/game_screen_layout.dart",
@@ -61739,9 +61863,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "628066f576467bb36c35b1aba35e1a4c4d9263ffe9d629674c532cf2c1ba76c0",
+      "sha256": "4861f19e37ba1758501b092a04b215a60129b8404077cbd6707dbeecd394d547",
       "top_level_counts": {
-        "contracts": 1761
+        "contracts": 1767
       }
     }
   ],
@@ -61750,8 +61874,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 20,
-    "partially_verified_behavior_sites": 20,
+    "unverified_behavior_sites": 14,
+    "partially_verified_behavior_sites": 14,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,
