@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,7 @@ import 'package:lore/screens/main_game_screen.dart';
 // LORESUB.PAS Display_Condition and LOREMAIN.PAS Move_Mode:
 // rendering must not silently run ReturnCondition before source call sites.
 void main() {
+  setUp(installSourceAudioPlatform);
   testWidgets('field log repaint leaves condition counters untouched', (
     tester,
   ) async {

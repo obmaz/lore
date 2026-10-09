@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -56,6 +57,7 @@ Future<void> _enterEncounter(WidgetTester tester, {required int luck}) async {
 }
 
 void main() {
+  setUp(installSourceAudioPlatform);
   testWidgets('필드 조우에서 교전을 고르면 파티 선공 전투로 들어간다', (tester) async {
     await _enterEncounter(tester, luck: 20);
     await tester.tap(find.byKey(const ValueKey('encounter-engage')));

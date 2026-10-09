@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -33,6 +34,7 @@ class _NoRandom implements Random {
 /// Native file error conditions/arguments compose with ErrorMessage replay;
 /// BIOS/CRT/Halt remain adapters, not BGI pixel equivalence.
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   final native = jsonDecode(
     File('test/fixtures/dos_load_font_errors.json').readAsStringSync(),

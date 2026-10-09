@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -29,6 +30,7 @@ class _NoEncounter implements Random {
 }
 
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_new_game.json').readAsStringSync(),
   )['castleRoute'];

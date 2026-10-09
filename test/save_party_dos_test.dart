@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -27,6 +28,7 @@ class _NoEncounter implements Random {
 }
 
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   final native = jsonDecode(
     File('test/fixtures/dos_new_game.json').readAsStringSync(),

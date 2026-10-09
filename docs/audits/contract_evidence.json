@@ -1,6 +1,120 @@
 {
   "contracts": [
     {
+      "id": "LORESUB.PAS:scroll:1:if:4",
+      "line": 240,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:3",
+      "line": 235,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:for:2",
+      "line": 234,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:for:1",
+      "line": 234,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:2",
+      "line": 230,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:1",
+      "line": 222,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
       "id": "LOREHELP.PAS:title_menu:1:for:4",
       "line": 259,
       "kind": "for",
@@ -15388,16 +15502,6 @@
       "id": "LORESUB.PAS:scroll:1:while:1",
       "line": 219,
       "kind": "while",
-      "classification": "content-rule",
-      "implementation": "lib/game/lore_game.dart",
-      "test": "test/den_darkness_test.dart",
-      "note": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded).",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:scroll:1:if:1",
-      "line": 222,
-      "kind": "if",
       "classification": "content-rule",
       "implementation": "lib/game/lore_game.dart",
       "test": "test/den_darkness_test.dart",

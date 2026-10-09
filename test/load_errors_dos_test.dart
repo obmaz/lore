@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -37,6 +38,7 @@ class _NoRandom implements Random {
 /// LORESUB.PAS:1637-1652 Load.ErrorMessage and LORESUB.Load map failure.
 /// Native CRT/BIOS/file calls are adapter boundaries, not DOS pixel equivalence.
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   setUp(() {
     final messenger =

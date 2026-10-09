@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -51,6 +52,7 @@ Future<LoreGame> _openTown(WidgetTester tester) async {
 }
 
 void main() {
+  setUp(installSourceAudioPlatform);
   testWidgets('the grocery window sells food and leaves thankyou in the log', (
     tester,
   ) async {

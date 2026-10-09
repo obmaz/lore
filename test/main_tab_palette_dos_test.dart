@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -31,6 +32,7 @@ class _NoRandom implements Random {
 // LOREMAIN.PAS:192: unchanged EXE issues AX101B only for byte9.
 // The modern RGB filter is an explicit adapter, not equal BIOS DAC pixels.
 void main() {
+  setUp(installSourceAudioPlatform);
   final data = jsonDecode(
     File('test/fixtures/dos_main_input_gates.json').readAsStringSync(),
   );

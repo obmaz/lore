@@ -3352,3 +3352,21 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      이21개만 해소하여 verified1814 / partial34가 된다.
      Flutter1919건(3 skip), Python163건, analyze·웹 release build가
      통과했다. 전체 원본 추출과 원장·gap·source memory도 최신이다.
+
+215. **필드 Scroll의 원본 마스크·그리기·피드백**
+     원본 Scroll384조건의 darkness/weather/character/SoundOn 분기를
+     실행하고 source100stride map 읽기·9x9 방문 순서·CHARA AND/OR를
+     실제 renderer와 대조한다. PNG의 foreground0 투명화로 빠졌던
+     검은 마스크 픽셀을 복원한다.28 CHARA pair ×16배경을 pixel 비교하며
+     map26의 반복된 잘못된 scan으로 face13이 되어 부분 bit mask를
+     쓰는 경우도 실제 Canvas에서 검사한다. 원작 skin은 source20x20
+     전체 칸의 마스크를 쓰고 현재 지도 view/다른 skin 어댑터는 유지한다.
+     source redraw 경계에만20Hz/5ms PCM 피드백을 연결한다. 매 Flame
+     frame마다 재생하지 않으며 SoundOn을 따른다. Set_All의 SoundOn TRUE
+     초기화도 복원하고 기존 화면 내 Load는 그 설정을 유지한다.
+     native keyboard flush219는 별도 입력 검증으로 남기고 렌더·오디오
+     여섯 항목만 해소한다. VGA/PIT waveform/CPU polling 동등성은
+     주장하지 않는다. verified1820 / partial28. 바이트 음원 준비·완료
+     이벤트를 제공하는 테스트 전용 플랫폼 모형을 기존 UI 검사에 쓴다.
+     전체 Flutter2306건(3 skip), Python164건, analyze·웹 release build가
+     통과했다. 원본 추출·원장·gap·source memory 최신 여부도 확인했다.

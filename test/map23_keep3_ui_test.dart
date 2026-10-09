@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +18,7 @@ import 'package:lore/widgets/script_scene_dialog.dart';
 /// LORESPEC.PAS `case 23` through the real screen: impostor scenes, retained
 /// mirror enemies, duel escape/victory map writes and the y = 46 exit.
 void main() {
+  setUp(installSourceAudioPlatform);
   final party = [PartyMember.createPreset(1), PartyMember.createPreset(3)];
 
   Future<LoreGame> open(WidgetTester tester, int x, int y) async {

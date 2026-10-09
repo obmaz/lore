@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -17,6 +18,7 @@ import 'package:lore/widgets/script_scene_dialog.dart';
 
 /// LORESPEC.PAS final arm and map25 exit; LOREENT.PAS chamber continuation.
 void main() {
+  setUp(installSourceAudioPlatform);
   Future<LoreGame> open(WidgetTester tester, int id, int x, int y) async {
     tester.view.physicalSize = const Size(1280, 900);
     tester.view.devicePixelRatio = 1;

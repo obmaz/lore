@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'support/legacy_json_fixture_engine.dart';
 
 import 'dart:ui' as ui;
@@ -26,6 +27,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// 가짜 비동기(fake async) 영역이라 `instantiateImageCodec` 같은 실제 비동기 작업을
 /// 기다리면 테스트가 그대로 멈춘다.
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('부트스트랩 통합 (JSON 데이터 사용 상태)', () {

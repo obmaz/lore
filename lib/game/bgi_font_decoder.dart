@@ -111,6 +111,40 @@ class BgiFontDecoder {
   }
 
   /// Asset에서 폰트 파일 로드
+  /// Source CHARA AND(mask=face+28), then OR(face), including opaque black.
+  /// Partial masks/OR pixels read the underlying source palette index.
+  void renderMaskedSprite(
+    Canvas canvas,
+    int face,
+    Rect rect, {
+    int Function(int x, int y)? backgroundPixel,
+  }) {
+    RangeError.checkValueInInterval(face, 0, totalSprites - 29, 'CHARA pair');
+    final foreground = decodedSprites[face];
+    final mask = decodedSprites[face + 28];
+    final paint = Paint()..isAntiAlias = false;
+    final w = rect.width / width, h = rect.height / height;
+    for (var y = 0; y < height; y++) {
+      for (var x = 0; x < width; x++) {
+        final value = foreground[y][x], keep = mask[y][x];
+        if (keep == 15 && value == 0) continue;
+        final result = keep == 0
+            ? value
+            : ((backgroundPixel?.call(x, y) ??
+                          (throw StateError(
+                            'CHARA $face requires color-plane background',
+                          ))) &
+                      keep) |
+                  value;
+        paint.color = result == 0 ? Colors.black : vgaPalette[result];
+        canvas.drawRect(
+          Rect.fromLTWH(rect.left + x * w, rect.top + y * h, w, h),
+          paint,
+        );
+      }
+    }
+  }
+
   void renderOrSprite(
     Canvas canvas,
     int spriteIndex,

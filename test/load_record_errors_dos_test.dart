@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -34,6 +35,7 @@ class _NoRandom implements Random {
 /// JSON logical-record faults use native ErrorMessage labels, not binary partial
 /// pre-Halt memory writes. Legacy short lists are valid adapters, not DOS EOF.
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   final native = jsonDecode(
     File('test/fixtures/dos_load_record_errors.json').readAsStringSync(),

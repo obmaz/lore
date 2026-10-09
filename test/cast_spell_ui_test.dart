@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// LOREMENU.PAS `CastSpell` from the C hotkey on the game screen.
 void main() {
+  setUp(installSourceAudioPlatform);
   testWidgets('C -> ChooseWhom -> 변화 마법 -> 마법의 햇불 adds 1 to etc[1]', (
     tester,
   ) async {

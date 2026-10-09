@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,6 +18,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// LOREMAIN.PAS `Main` hotkeys (P/V/Q/C/E/R/G, Space) and LOREMENU.PAS
 /// `SelectMode`.
 void main() {
+  setUp(installSourceAudioPlatform);
   KeyDownEvent keyDown(LogicalKeyboardKey key) => KeyDownEvent(
     physicalKey: PhysicalKeyboardKey.arrowRight,
     logicalKey: key,

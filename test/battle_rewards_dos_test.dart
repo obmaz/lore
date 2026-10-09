@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -31,6 +32,7 @@ class _Zero implements Random {
 /// LOREBATT.PAS PlusExperience/PlusGold and LORESPEC.PAS prison continuation:
 /// independent original DOS saved six-member and party records, not JSON rules.
 void main() {
+  setUp(installSourceAudioPlatform);
   final f = jsonDecode(
     File('test/fixtures/dos_battle_rewards.json').readAsStringSync(),
   ) as Map<String, dynamic>;

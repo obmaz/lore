@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import 'package:lore/widgets/message_log_view.dart';
 import 'package:lore/widgets/lore_select_view.dart';
 
 void main() {
+  setUp(installSourceAudioPlatform);
   testWidgets(
     'LORESPEC.PAS guardian UI resumes through intro, battle, guide and promotion',
     (tester) async {

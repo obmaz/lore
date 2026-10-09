@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 34,
-    "verified": 1814,
+    "partial": 28,
+    "verified": 1820,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -452,7 +452,8 @@
     },
     {
       "routine": "LORESUB.PAS:scroll:1",
-      "partial": 7
+      "partial": 1,
+      "verified": 6
     },
     {
       "routine": "LORESUB.PAS:select:1",
@@ -1661,6 +1662,15 @@
       "note_mentions": [],
       "test_candidates": [
         "test/save_party_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_scroll.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/scroll_dos_test.dart",
+        "test/scroll_feedback_ui_test.dart"
       ]
     },
     {

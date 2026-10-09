@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -61,6 +62,7 @@ class _Io implements LoreShopIo {
 
 /// LORESUB.PAS Train_Center: independent DOS records and source random branches.
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_training_growth.json').readAsStringSync(),
   ) as Map<String, dynamic>;

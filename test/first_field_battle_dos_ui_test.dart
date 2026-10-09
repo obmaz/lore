@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -21,6 +22,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Actual DOS movement RNG -> encounter -> automatic round -> second encounter
 /// -> failed flee -> enemy phase through the mobile screen. No synthetic RNG.
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_first_field_battle.json').readAsStringSync(),
   );

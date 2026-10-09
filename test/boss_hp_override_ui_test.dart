@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -17,6 +18,7 @@ import 'package:lore/services/save_manager.dart';
 import 'package:lore/widgets/battle_viewport_view.dart';
 
 void main() {
+  setUp(installSourceAudioPlatform);
   final f = jsonDecode(
     File('test/fixtures/dos_condition_storage.json').readAsStringSync(),
   );

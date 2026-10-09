@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -44,6 +45,7 @@ class _Io implements LoreShopIo {
 /// LORESUB.PAS Hospital: independently saved original DOS costs at three
 /// product boundaries, including the signed product BEFORE div2.
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_hospital_wound.json').readAsStringSync(),
   ) as Map<String, dynamic>;

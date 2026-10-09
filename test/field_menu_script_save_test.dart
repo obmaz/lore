@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:math';
 
 import 'package:flame/game.dart';
@@ -26,6 +27,7 @@ class _NoEncounterRandom implements Random {
 }
 
 void main() {
+  setUp(installSourceAudioPlatform);
   Future<void> open(WidgetTester tester) async {
     SharedPreferences.setMockInitialValues({});
     addTearDown(() {

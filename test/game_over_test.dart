@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:math';
 
 import 'package:flame/game.dart';
@@ -76,6 +77,7 @@ class _ZeroRandom implements Random {
 /// LORESUB.PAS `GameOver` / `DetectGameOver`, the LOREBATT defeat call and
 /// LOREMAIN.PAS `Main`'s consecutive `if position = ...` blocks.
 void main() {
+  setUp(installSourceAudioPlatform);
   group('GameOver procedure', () {
     test(
       'etc[6] = 255: wiped-out text, key, load list; slot k-1 reloads',

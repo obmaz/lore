@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lore/logic/lore_sub_text.dart';
 import 'package:lore/main.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  setUp(installSourceAudioPlatform);
   setUp(() => SharedPreferences.setMockInitialValues({}));
   testWidgets('Opening title screen and game start flow', (
     WidgetTester tester,

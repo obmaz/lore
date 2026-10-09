@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -59,6 +60,7 @@ class _Io implements LoreShopIo {
 /// LORESUB.PAS:1359,1360,1367 Train_Center selector and persistent local j.
 /// First unassigned local is an explicit port fault, not guessed stack memory.
 void main() {
+  setUp(installSourceAudioPlatform);
   final native = jsonDecode(
     File('test/fixtures/dos_training_words.json').readAsStringSync(),
   );

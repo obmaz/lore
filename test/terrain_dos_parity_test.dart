@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -37,6 +38,7 @@ class _ReplayRandom implements Random {
 /// LOREMAIN.PAS Move_Mode/enter_swamp/enter_lava: independent original DOS
 /// saves, including byte poison, integer HP/unc/dead and empty slot mutations.
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_terrain_states.json').readAsStringSync(),
   ) as Map<String, dynamic>;

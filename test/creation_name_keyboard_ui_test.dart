@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -7,6 +8,7 @@ import 'package:lore/screens/character_creation_screen.dart';
 
 // LORECRET.PAS Name through real desktop/mobile keyboard and full creation.
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   setUp(() {
     final messenger =

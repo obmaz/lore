@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
@@ -37,6 +38,7 @@ class _Zero implements Random {
 // LOREMAIN.PAS:56/81/86: native pages and six fresh damage strings.
 // Identical BGI redraws project to one modern message frame, not duplicate logs.
 void main() {
+  setUp(installSourceAudioPlatform);
   final data = jsonDecode(
     File('test/fixtures/dos_field_pages.json').readAsStringSync(),
   );

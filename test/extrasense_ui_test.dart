@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// LOREMENU.PAS `Extrasense` on the game screen: 투시 blanks the special
 /// cells while its text waits for a key; 천리안 scrolls the view and Esc ends it.
 void main() {
+  setUp(installSourceAudioPlatform);
   Future<LoreGame> open(WidgetTester tester, PartyMember esper) async {
     SharedPreferences.setMockInitialValues({});
     addTearDown(() {
@@ -144,6 +146,7 @@ void main() {
           ..esp = 100
           ..espLevel = 4;
         final game = await open(tester, esper);
+        audio.sourceSoundEnabled = soundEnabled;
         await pickKind(tester, '천리안');
         await tester.tap(find.text('북쪽${LoreMenuText.espClairvoyanceUse}'));
         await settle(tester);

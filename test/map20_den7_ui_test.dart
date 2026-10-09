@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import 'package:lore/widgets/script_scene_dialog.dart';
 
 /// LORESPEC.PAS map 20 (1475-1759) events through the real screen.
 void main() {
+  setUp(installSourceAudioPlatform);
   Future<LoreGame> open(
     WidgetTester tester,
     int id,

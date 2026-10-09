@@ -27179,11 +27179,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "test/den_darkness_test.dart"
+        "test/scroll_dos_test.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
       ],
-      "verification_status": "partial",
+      "verification_status": "verified",
       "port_handler": "lib/game/lore_game.dart",
-      "reviewed_scope": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded)."
+      "reviewed_scope": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
     },
     {
       "id": "LORESUB.PAS:scroll:1:if:2",
@@ -27195,11 +27202,18 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/scroll_dos_test.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
     },
     {
       "id": "LORESUB.PAS:scroll:1:for:1",
@@ -27211,11 +27225,18 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/scroll_dos_test.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
     },
     {
       "id": "LORESUB.PAS:scroll:1:for:2",
@@ -27227,11 +27248,18 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/scroll_dos_test.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
     },
     {
       "id": "LORESUB.PAS:scroll:1:if:3",
@@ -27243,11 +27271,18 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/scroll_dos_test.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
     },
     {
       "id": "LORESUB.PAS:scroll:1:if:4",
@@ -27259,11 +27294,18 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/scroll_dos_test.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/game/lore_game.dart",
+      "reviewed_scope": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
     },
     {
       "id": "LORESUB.PAS:auxscroll:1:while:1",
@@ -34876,6 +34918,120 @@
     }
   ],
   "linked_contracts": [
+    {
+      "id": "LORESUB.PAS:scroll:1:if:4",
+      "line": 240,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:3",
+      "line": 235,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:for:2",
+      "line": 234,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:for:1",
+      "line": 234,
+      "kind": "for",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:2",
+      "line": 230,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
+    {
+      "id": "LORESUB.PAS:scroll:1:if:1",
+      "line": 222,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/game/lore_game.dart",
+      "test": "test/scroll_dos_test.dart",
+      "supporting_evidence": [
+        "lib/game/bgi_font_decoder.dart",
+        "lib/screens/main_game_screen.dart",
+        "test/scroll_fill_dos_test.dart",
+        "test/den_darkness_test.dart",
+        "test/scroll_feedback_ui_test.dart",
+        "tool/export_dos_scroll.py",
+        "tool/tests/test_export_dos_scroll.py"
+      ],
+      "verification": "verified",
+      "note": "Original LORESUB.PAS Scroll instructions replay384 combinations of position/torch/weather/character/sound/direction, with native fixed-stride map reads,81 tile draw visits and ordered CHARA face+28 AND / face OR calls. Actual field renderer compares the source9x9 core draw order inside modern11x11 view and source weather state. Original28 CHARA pairs are pixel-compared over all16 backgrounds; actual map26 rendering includes repeated unsupported-scan face13 and partial color-plane masks. Opaque black mask pixels are restored, rather than treating every foreground zero as transparent. Live UI emits a20Hz/5ms WAV only on source redraw boundaries, respects SoundOn, and Set_All resets SoundOn without changing in-session Load. Raw VGA scanout/PIT waveform/CPU busy-wait equivalence is not asserted. Native keyboard flush is recorded but219 retains its separate open input-adapter contract."
+    },
     {
       "id": "LOREHELP.PAS:title_menu:1:for:4",
       "line": 259,
@@ -50271,16 +50427,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:scroll:1:if:1",
-      "line": 222,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/game/lore_game.dart",
-      "test": "test/den_darkness_test.dart",
-      "note": "Scroll: position = den and etc[1] = 0 draws a black view with the gray text instead of map and party; AuxScroll English text unified (recorded).",
-      "verification": "partial"
-    },
-    {
       "id": "LORETALK.PAS:talkmode:1:if:27",
       "line": 191,
       "kind": "if",
@@ -55901,61 +56047,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:scroll:1:if:2",
-      "line": 230,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:scroll:1:for:1",
-      "line": 234,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:scroll:1:for:2",
-      "line": 234,
-      "kind": "for",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:scroll:1:if:3",
-      "line": 235,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:scroll:1:if:4",
-      "line": 240,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:auxprint:1:if:1",
       "line": 367,
       "kind": "if",
@@ -57850,7 +57941,7 @@
     {
       "path": "test/app_settings_test.dart",
       "kind": "test",
-      "sha256": "8f7ab1c3f56684fe9b10520cd21beb411be5aeaa99c00661c58f3e2696b53eb3",
+      "sha256": "05c1811a926993b01d808b1b11cb6494850414d8a483cbd9600003fcf4dc1a10",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -57963,7 +58054,7 @@
     {
       "path": "test/battle_rewards_dos_test.dart",
       "kind": "test",
-      "sha256": "ecc63f6841805d9e37a0ed03c8fac962ba77cbff744a33408534acb49e3e5a21",
+      "sha256": "7620185a4c87e5a2d001099902bcd4f30a42db188213aa0264d840f4b766b99d",
       "cited_source_files": [
         "LOREBATT.PAS",
         "LORESPEC.PAS"
@@ -57996,14 +58087,14 @@
     {
       "path": "test/bootstrap_test.dart",
       "kind": "test",
-      "sha256": "6e131e164af49dd30b15e5ed016c3d87f048f94f733dddc05fa4d591bc724295",
+      "sha256": "06ab3d4314fc1c325c7f7323d39be5e9b8cd7c2be71dd12ddbfee879b5cb1739",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
       "path": "test/boss_hp_override_ui_test.dart",
       "kind": "test",
-      "sha256": "d128b0121ae75164efa0bc2cde2ae22fe442629bae2ab0d6ff6c2bb054f97971",
+      "sha256": "11c6274d0906699a8275adfa4eba56bbf20edee5f835cb5c4adb34bc4b23e78b",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -58019,7 +58110,7 @@
     {
       "path": "test/cast_spell_ui_test.dart",
       "kind": "test",
-      "sha256": "a1086914ea535259c045aafcfdd6755042533e182b4ad6c253146b5baac105f9",
+      "sha256": "dc57a5fc341bbd7c70c2192bd37323da145ced6a931febbb3d714696f88bfa97",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -58028,7 +58119,7 @@
     {
       "path": "test/castle_departure_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "90de121204e8b18c2ae1c3a60db72a11a5ca01f109f15e7dd4c78cb43be68403",
+      "sha256": "ee02fb366d73bf0b8a8f24ddecfeb8a04f65c68459163b2ba70b2611c437eede",
       "cited_source_files": [
         "LORESPEC.PAS",
         "LORETALK.PAS"
@@ -58104,7 +58195,7 @@
     {
       "path": "test/creation_name_keyboard_ui_test.dart",
       "kind": "test",
-      "sha256": "fb007bc19639b67aa3828475cd15f2433472903e2f1eb4bf12a5d08332c79c34",
+      "sha256": "81fe231ddd4d3e6c519aad70a430f9c70c0d022f95da4c661686e101105572b3",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -58170,7 +58261,7 @@
     {
       "path": "test/den_darkness_test.dart",
       "kind": "test",
-      "sha256": "a9a8e9f50aeaa379127ef29461521f52046d264bbf600c291792f99c0e0610ae",
+      "sha256": "e3246be84994e67ca9761de615c80562c5b75aa2cd95e65293a0ab01f759094e",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -58188,7 +58279,7 @@
     {
       "path": "test/dialogue_window_test.dart",
       "kind": "test",
-      "sha256": "71be5b58def44795b96c5a377ec83ee15fad799c8a3f468e346134e72dc660c1",
+      "sha256": "63f398e393cfa0f1766ac9f60d84d3a28100aa82a5b45ba73568b30244ae86aa",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
@@ -58204,7 +58295,7 @@
     {
       "path": "test/encounter_screen_flow_test.dart",
       "kind": "test",
-      "sha256": "3cd5a9794e4da39ce8be5904329b41388bef23e23e82bff2c802acd928eb27aa",
+      "sha256": "84c31795b0967fa22e12e5b27a8af15241d10f827f4218f3eb5557e3b3cabe7a",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -58227,7 +58318,7 @@
     {
       "path": "test/ending_view_test.dart",
       "kind": "test",
-      "sha256": "6c5a0ca7c433e44988ab13e2ea3506d493e8e9a1f077e311eb589134896c969e",
+      "sha256": "58ee8ab04a9109305f8ab6d6d717df45ea574954d75f57a9f02e9bee68d8e68a",
       "cited_source_files": [
         "LOREEND.PAS"
       ],
@@ -58346,7 +58437,7 @@
     {
       "path": "test/extrasense_ui_test.dart",
       "kind": "test",
-      "sha256": "a92bb5630023a2d3450b6584d47f4128c5193eff0db84ba3336ca6600ac65766",
+      "sha256": "a9b3e785fb84ac45642f938fd8f152ea506ecbd93eb4175824ac0b283a791125",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -58355,7 +58446,7 @@
     {
       "path": "test/field_condition_timing_ui_test.dart",
       "kind": "test",
-      "sha256": "7a08b24f05ac8a8db1170afaea3171d39430f79ee795f815a26ca496ef7c390a",
+      "sha256": "4acbedd69b84fcd1a09aea7a9bf74f4db2b3fee02e3fe41546fb1531686c1161",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LORESPEC.PAS",
@@ -58376,7 +58467,7 @@
     {
       "path": "test/field_menu_script_save_test.dart",
       "kind": "test",
-      "sha256": "88031ad6a6d51443dbd58381f7887e5985bcbb1f6dfd9c3b88807e57db8bddcb",
+      "sha256": "d49d92fa465140a9fd02bfc9baf7e49a24414db5c550507da96aab7bbbf56db9",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -58385,7 +58476,7 @@
     {
       "path": "test/field_pages_dos_test.dart",
       "kind": "test",
-      "sha256": "698c63d771870c1c5700abeb98d718873d903361948fc0abc5bdb41ab249c7da",
+      "sha256": "a4461a12a07e26aa495ff98feb82e96eac6eeeadc0575f9b544c2925cdcb7565",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
@@ -58440,7 +58531,7 @@
     {
       "path": "test/first_field_battle_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "10b4b831968f6d7f718254b384fe2a2b442db49ae62ee021d78f16db7d73ef67",
+      "sha256": "e7f189eb524562e8e47620ab37d822c756d656208c128c21a872157228dc6ea3",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -58464,7 +58555,7 @@
     {
       "path": "test/game_over_reload_ui_test.dart",
       "kind": "test",
-      "sha256": "7875b0712578d9b8533ae8d9d2163de10d7de37423c5ed08779393add41a104d",
+      "sha256": "b39fb32f93fc4223f1fa86539bafd1b39660d72cc38dbefe48af4777714e1727",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -58473,7 +58564,7 @@
     {
       "path": "test/game_over_test.dart",
       "kind": "test",
-      "sha256": "d833b8d10fc8895907c0f63669c3bc7adb9d97c33c05a202d96cf139f39843ad",
+      "sha256": "c01006e3eb5079c1ab0dee36e260e4cdd6b64290a854f215adf481a31bd96903",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LORESUB.PAS"
@@ -58518,7 +58609,7 @@
     {
       "path": "test/hospital_wound_dos_test.dart",
       "kind": "test",
-      "sha256": "d9407897048f4d97baaefebaf27d69e0656303ef944e71e8182082cfab44528b",
+      "sha256": "dfe79e82f414f3d0f90d8788ff9fa6507703e5f746abbe928ae0cd8c06f90acb",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -58536,7 +58627,7 @@
     {
       "path": "test/join_refusal_ui_test.dart",
       "kind": "test",
-      "sha256": "dbc16ceb973c68d0ffc189e04f1a8c9231ba63a7f7304d96a1891b2e3119b04f",
+      "sha256": "af5d74b9f3d9aff13c52a0853a94bb06f8f362b521baa97ed74c3c565c3d56ae",
       "cited_source_files": [
         "LORESPEC.PAS",
         "LORESUB.PAS"
@@ -58570,7 +58661,7 @@
     {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
-      "sha256": "c5179288703115e538ed9884ae9fbfbe2340c19c06eaac48920960dea29dd166",
+      "sha256": "2dcc2e8ca27361c3a1cb1ff31b95d71482d22aed726f85e167c77b85036d06d0",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LOREMENU.PAS"
@@ -58598,7 +58689,7 @@
     {
       "path": "test/load_errors_dos_test.dart",
       "kind": "test",
-      "sha256": "03085ac257d55dc5fb57dbb041c079842aa353f73a61c4508fedfe3692638545",
+      "sha256": "5bc4e91f49dafba65899d2b245b67ef25cd40fa8b3be5a811cdbd3092001377a",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -58607,7 +58698,7 @@
     {
       "path": "test/load_font_errors_dos_test.dart",
       "kind": "test",
-      "sha256": "df11376c00c396b578786763ab231dca581b05c11cdfd29400e38817d29f0862",
+      "sha256": "3c9958a5f4218dead179908b10d21c1735aa1bb77ebe6211f8f71c3768d932cc",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -58616,7 +58707,7 @@
     {
       "path": "test/load_phases_dos_test.dart",
       "kind": "test",
-      "sha256": "4271fba447726b8888079e6460650362527131870e5b42d504d90147a4a10ea6",
+      "sha256": "4e389e9c43fb3692258f98ceace165d10c113ea1c6a42423e72392e9adf3aa40",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -58625,7 +58716,7 @@
     {
       "path": "test/load_record_errors_dos_test.dart",
       "kind": "test",
-      "sha256": "d6a328de92c3e44d899da68bd98d90f720c72596350eab3befa93119d32655a8",
+      "sha256": "291a2436ab159ab606b9631a0d55fbe7b3c765aabfab9aa48b7a4d7dc74e82bd",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -59033,7 +59124,7 @@
     {
       "path": "test/main_tab_palette_dos_test.dart",
       "kind": "test",
-      "sha256": "a321dcd6156acdfd46acd92365e9479d536e71b1f20553cf5ca6626a3101c71a",
+      "sha256": "964d9a7f7dc357e02c8bd61991bbb054dbb3482b7cf11986752c5b50ac0f3c76",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
@@ -59051,7 +59142,7 @@
     {
       "path": "test/map18_lockup_ui_test.dart",
       "kind": "test",
-      "sha256": "46534fca4aa89cf29e8c1c2bd645d7e3c96919b578c8a0237efc807024e87681",
+      "sha256": "3021f664671b2cd9ec0eb7456fe3a0f52f9eddd4f57a3de5581a03e1d8ac79d3",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -59069,7 +59160,7 @@
     {
       "path": "test/map20_den7_ui_test.dart",
       "kind": "test",
-      "sha256": "917ede206cb107eaec9bfc9a003409690dcd313119e797fd3b0e4f1cefed1ef7",
+      "sha256": "f7108a324f95297d47c9d83bcd871c843c0b029a2959618761cd4406e0bf7d48",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -59088,7 +59179,7 @@
     {
       "path": "test/map23_keep3_ui_test.dart",
       "kind": "test",
-      "sha256": "ad748d3a348b6b068fd24dd2b7498f669b875c9b49109b0da48eee1e76c141b6",
+      "sha256": "9922337b36dc884a581762384e1f751d8f63b2e7df029dc3b87e73dbc508018a",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -59115,7 +59206,7 @@
     {
       "path": "test/map25_guardian_ui_test.dart",
       "kind": "test",
-      "sha256": "a31a9cd59da2d5ec582c1425bdf7e43805b9a0d5ea0516ca1973448bb148df3b",
+      "sha256": "3ec6d30c22b3d496a641a0eab0d0bf45d8934e1dda11fc5aa928f72570c3f0bc",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -59143,7 +59234,7 @@
     {
       "path": "test/map26_final_ui_test.dart",
       "kind": "test",
-      "sha256": "d68a12b240d7ffb417cca9041494dc9c76fac52e9a2da9315bda8276f6946142",
+      "sha256": "2735e5c10719e790c91ee8ea883da2bd227a7bb1d63b5c363fe11fadc8bdd79b",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS"
@@ -59186,7 +59277,7 @@
     {
       "path": "test/menace_entry_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "02636a818e1936f1fe823ca6991f55dd463f3cc6f07bffe81701b2ac705a64a0",
+      "sha256": "50588bcc2d90cf83dc5198974cbcee67f07ee744a09d0b4fd8a093945576c543",
       "cited_source_files": [
         "LOREBATT.PAS",
         "LOREENT.PAS",
@@ -59200,7 +59291,7 @@
     {
       "path": "test/menace_return_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "90afe6ceaad8ad26caf7128c67c457b3153ebb6b1e6052dfae67b3499afdc9ea",
+      "sha256": "396e65a87314f9ea44f99042b95337ac6905f37963be616ab3e0f0cb5f87b91c",
       "cited_source_files": [
         "LOREENT.PAS",
         "LOREMAIN.PAS",
@@ -59235,7 +59326,7 @@
     {
       "path": "test/mobile_game_layout_test.dart",
       "kind": "test",
-      "sha256": "8d2cc5f95cec34546f4305c42b8f029a553f75807f782f0565126df07fea6a93",
+      "sha256": "6edc0382bb47313fcb07aae20bccd9a292bb55427287b8dedc5a7d921fc8a4c2",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -59331,7 +59422,7 @@
     {
       "path": "test/remains_blink_ui_test.dart",
       "kind": "test",
-      "sha256": "534400a4183f369a293efc8fa1905c6c93fbefb0c092eebb2f858b177c240f21",
+      "sha256": "b6ef5884107ceae8a6cbc41dadd353ec24cb8b4d889797ecd6000425e18c37c3",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
@@ -59340,7 +59431,7 @@
     {
       "path": "test/rest_dos_parity_test.dart",
       "kind": "test",
-      "sha256": "462eca157053e72c6df00e7180967e2a7066ca16a7dcec7abf66f3ac826e3e97",
+      "sha256": "3527ed57fc50041380b02e71f7ca343bd8b87b53bd0ac98851a7e2c650e572bc",
       "cited_source_files": [
         "LOREMENU.PAS"
       ],
@@ -59356,7 +59447,7 @@
     {
       "path": "test/resumed_field_battle_dos_ui_test.dart",
       "kind": "test",
-      "sha256": "670a2c2b509a1a8164e59cebfcb9fd3161e36b1ac0cec1321f196e0e25ce3238",
+      "sha256": "dc2b762c2b73f095d1513b345774c955484e7840c5fb87f6314f98b803ac3022",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -59404,7 +59495,7 @@
     {
       "path": "test/save_party_dos_test.dart",
       "kind": "test",
-      "sha256": "a6e78ea4c05cebfa74bbe375c32f7d1b01e3d3ba9ae96db419de0d85eacfdfd7",
+      "sha256": "accacaad706b7bf38a4256375cf7cf61e39949e27253132f7af08a3d197003ce",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -59529,6 +59620,24 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/scroll_dos_test.dart",
+      "kind": "test",
+      "sha256": "ace703e58d9730077ceb71d690239ce2dc7cab830d07df76d8f6a2b08cf1dbf3",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/scroll_feedback_ui_test.dart",
+      "kind": "test",
+      "sha256": "430233367b0e59aad6407725aa42d7f3b38aa057a84e2699489fbffeaf1e97d9",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/scroll_fill_dos_test.dart",
       "kind": "test",
       "sha256": "f841402702e6b6bb19fa9109e3626da116549e693feae0a6c506bde99d9eba16",
@@ -59620,7 +59729,7 @@
     {
       "path": "test/source_exit_boundary_ui_test.dart",
       "kind": "test",
-      "sha256": "78fbeb6f2ab9925087cfcefbe05e773928282d530aae531d6254b1c9909ff6d9",
+      "sha256": "6724653ce43f1b40a9aa6b82e5070d72b7d9c705f2bbd8a22f985e75fec7ac29",
       "cited_source_files": [
         "LORESPEC.PAS",
         "LORESUB.PAS"
@@ -59677,7 +59786,7 @@
     {
       "path": "test/source_map7_map19_portal_test.dart",
       "kind": "test",
-      "sha256": "8e4b564a2ba62ae43a249a5b95a9f4ce2074c79c5de50ec02c8947c0ad5838c6",
+      "sha256": "ec72823dff92f0735768da9524bf70fb55115478b9110b5601507ec38bdee7f6",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -59714,7 +59823,7 @@
     {
       "path": "test/source_new_game_persistence_test.dart",
       "kind": "test",
-      "sha256": "44fad3124c318fd26e4d2a385f1ca1e8626550e16998c99a3d25750e5728415b",
+      "sha256": "65f92816188516513f29b5f97b6f21f27986d8c4af91f01b643cb7b7953d2ca3",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -59757,7 +59866,7 @@
     {
       "path": "test/source_speech_ui_test.dart",
       "kind": "test",
-      "sha256": "dd1a65f9954fefdadd99cc52f608e4e9d8ca20f9a5a9c0c1f72b3fdf6da0eae9",
+      "sha256": "974fcdf31f1dd271acf69451e5b1e008327dffcefecebdd42a9417641f36b705",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS"
@@ -59810,7 +59919,7 @@
     {
       "path": "test/source_title_input_test.dart",
       "kind": "test",
-      "sha256": "019c2d2d9fd861ca120c0518270b685c5c20efefdf9a5b03f3805f7466d5ae33",
+      "sha256": "8cf9f9c0b3b08a5323d94f322c669a757164422ece563362e1a20f4d7d6c98a5",
       "cited_source_files": [
         "LORECRET.PAS",
         "LOREHELP.PAS"
@@ -59979,7 +60088,7 @@
     {
       "path": "test/terrain_dos_parity_test.dart",
       "kind": "test",
-      "sha256": "17a79614ea7014019e87a0cc5c1774cbe5f1205498e36e34299e049a83a5e0a5",
+      "sha256": "fc2483f6b997bfcca94e76226490c18103e77624a982dd9a870ed770c24b5745",
       "cited_source_files": [
         "LOREMAIN.PAS"
       ],
@@ -59997,7 +60106,7 @@
     {
       "path": "test/town_shop_ui_test.dart",
       "kind": "test",
-      "sha256": "9dc9c376ede95491d7d5e638fc02d71ba686383af736815390ae002e18937b4b",
+      "sha256": "5ceb34635a65a406f05712d2f47ba65843de9ebb9329ff415bb00a2c4d5edf43",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -60015,7 +60124,7 @@
     {
       "path": "test/training_growth_dos_test.dart",
       "kind": "test",
-      "sha256": "cf03b012eba73061c32e7ea54dab162fc44ee3f96e78039f293daa78b1cf55ed",
+      "sha256": "ad7c4b6da713fa97ff2c38df6f08d14665e9b70fa6521b6a651ce3f66446fa25",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -60024,7 +60133,7 @@
     {
       "path": "test/training_words_dos_test.dart",
       "kind": "test",
-      "sha256": "28844e29fbf6963c69609b283a46a4d89b847cac881432dc030bca515de0c38d",
+      "sha256": "86b4ce81975b7ed256c86e593a9e0af0e5dec842c35bd3503bea09d480d92cae",
       "cited_source_files": [
         "LORESUB.PAS"
       ],
@@ -60040,7 +60149,7 @@
     {
       "path": "test/widget_test.dart",
       "kind": "test",
-      "sha256": "081dc24c270ec497bf22d45d688ca6373304273514a3d7f2b53f0df8720501b2",
+      "sha256": "eb193dded3431fb60a37b892d91404643c50804663aa5ef0fe060c615bab7c91",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -60903,6 +61012,16 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_scroll.json",
+      "kind": "fixture",
+      "sha256": "82b278df1297718d9c64de0e6606479c07b2fb0efd3e43224872077ad772bfe7",
+      "test_users": [
+        "test/scroll_dos_test.dart",
+        "test/scroll_feedback_ui_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_second_field_battle.json",
       "kind": "fixture",
       "sha256": "108b61b5f56737a8d81b80cdcd4dea6c35f16b89cff6ee90bfb65267ff227aaa",
@@ -61282,7 +61401,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "11ec11bbd77ba5238ffe2b8591d7061c3e6cd7efcf0de1de7addf08f97ec87ce"
+      "sha256": "4b2a815e62cdc5e740b39a34edda50eef331769fa0de38d52ff544c6d092c862"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -61382,7 +61501,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "5a63c474230869132b43949c50929e8795a8a5039e3ea87bb39032615f30ed44"
+      "sha256": "2461bc8cc756b4e0d97c563961b6b58bf024f689056098f3025c3eaeea882848"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -61418,7 +61537,7 @@
     },
     {
       "path": "lib/game/bgi_font_decoder.dart",
-      "sha256": "c4a77aaf0efb9f69cddfe8a0050b73eb5fcdf01345a22ea2c690467b4173672e"
+      "sha256": "215c542ef6d855d90c309748ac5b5dbe7c3b7c80f9884a3616078df367ea4a21"
     },
     {
       "path": "lib/game/sprite_sheet.dart",
@@ -61466,9 +61585,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "e2844471ea4eed4b2b56869f4131da7c8df8afc30622cc3bcfa2bb5c930a8292",
+      "sha256": "e53fd0ee54f0efa0d2b5fc41fc431378b6423db0241f3a5f9af72a85b9337355",
       "top_level_counts": {
-        "contracts": 1750
+        "contracts": 1755
       }
     }
   ],
@@ -61477,8 +61596,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 34,
-    "partially_verified_behavior_sites": 34,
+    "unverified_behavior_sites": 28,
+    "partially_verified_behavior_sites": 28,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

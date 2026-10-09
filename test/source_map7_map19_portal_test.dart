@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:io';
 
 import 'package:flame/game.dart';
@@ -13,6 +14,7 @@ import 'package:lore/screens/main_game_screen.dart';
 import 'package:lore/services/save_manager.dart';
 
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   test('source exact guards, destination words and refusal decrements', () {
     final source = String.fromCharCodes(

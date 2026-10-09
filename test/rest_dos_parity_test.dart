@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -15,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// LOREMENU.PAS Rest: independent DOS save and actual mobile R/Save path.
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_rest_states.json').readAsStringSync(),
   ) as Map<String, dynamic>;

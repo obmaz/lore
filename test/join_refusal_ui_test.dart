@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import 'package:lore/services/save_manager.dart';
 /// LORESPEC.PAS:600-640 (map 12 Rigel) with LORESUB.PAS `ReturnJoinMember`:
 /// refusing the slot runs `dec(y); scroll(TRUE); exit` and nothing else.
 void main() {
+  setUp(installSourceAudioPlatform);
   Future<LoreGame> open(WidgetTester tester) async {
     tester.view.physicalSize = const Size(1280, 900);
     tester.view.devicePixelRatio = 1;

@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// LORETALK.PAS seven remains FOR loops through keyboard/touch and real renderer.
 void main() {
+  setUp(installSourceAudioPlatform);
   for (final size in [const Size(1280, 900), const Size(390, 844)]) {
     for (final (tx, ty) in [
       (10, 14),

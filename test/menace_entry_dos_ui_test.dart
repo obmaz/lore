@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -25,6 +26,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// LORESPEC.PAS:826-832, LOREMAIN.PAS:205, LOREBATT.PAS:1147-1155, LOREMENU.PAS:869-1022.
 /// Actual native victory save -> recovery -> MENACE admission, without suppressing encounters.
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_menace_entry.json').readAsStringSync(),
   );

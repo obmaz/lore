@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -21,6 +22,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// LORESUB.PAS:1636-1790, LORESPEC.PAS:826-832, LOREMAIN.PAS:205.
 /// LORETALK.PAS:360-383: actual centre disk reload and Lord Ahn continuation.
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_menace_return.json').readAsStringSync(),
   );

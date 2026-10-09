@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +13,7 @@ import 'package:lore/widgets/app_settings_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
+  setUp(installSourceAudioPlatform);
   for (final size in [
     const Size(390, 844),
     const Size(844, 390),

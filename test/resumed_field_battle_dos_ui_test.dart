@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -20,6 +21,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 /// A real departure-save reload and a different native enemy-first encounter.
 void main() {
+  setUp(installSourceAudioPlatform);
   final fixture = jsonDecode(
     File('test/fixtures/dos_resumed_field_battle.json').readAsStringSync(),
   );

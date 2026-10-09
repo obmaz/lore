@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -62,6 +63,7 @@ PartyMember _record(List<dynamic> raw) {
 /// Missing canonical maps are irrelevant when the saved map has its own header.
 /// Missing/truncated snapshots, legacy headerless saves and BGI output differ.
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   final native = jsonDecode(
     File('test/fixtures/dos_load_phases.json').readAsStringSync(),

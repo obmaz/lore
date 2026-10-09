@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:math';
 import 'dart:convert';
 import 'dart:io';
@@ -12,6 +13,7 @@ import 'package:lore/widgets/ending_view.dart';
 /// LOREEND.PAS `End_Demo` flow: fades ignore keys, Esc leaves the thunder and
 /// staff screens, and the closing text screen waits (`Halt`) for a key.
 void main() {
+  setUp(installSourceAudioPlatform);
   Future<EndingViewState> open(
     WidgetTester tester,
     VoidCallback onFinish, {

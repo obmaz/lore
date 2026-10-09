@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -31,6 +32,7 @@ class _GateStore extends InMemorySharedPreferencesStore {
 // four durable writes before play, no stale map snapshots or quest aliases.
 // Modern storage failure is observed, not claimed as native Erase/IOResult parity.
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   final native = jsonDecode(
     File('test/fixtures/dos_new_game.json').readAsStringSync(),

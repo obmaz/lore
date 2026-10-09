@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:async';
 
 import 'package:flame/game.dart';
@@ -39,6 +40,7 @@ Future<void> openGame(WidgetTester tester, Size size) async {
 }
 
 void main() {
+  setUp(installSourceAudioPlatform);
   testWidgets(
     'portrait fills width with a square map above party and dialogue',
     (tester) async {

@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,6 +19,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// LORESPEC.PAS:1870-1876 (KEEP2 Wraith ambush) through GameOver: after the
 /// defeat is reloaded, `map[x,y] := 40` runs at the loaded position.
 void main() {
+  setUp(installSourceAudioPlatform);
   testWidgets('a reloaded Wraith defeat writes tile 40 at the loaded x, y', (
     tester,
   ) async {

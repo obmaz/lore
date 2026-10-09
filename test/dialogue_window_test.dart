@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:convert';
 import 'dart:io';
 
@@ -21,6 +22,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// LORETALK.PAS `Print` lines + `PressAnyKey` as one dialogue window, and the
 /// `이전 대화` tab that keeps them afterwards.
 void main() {
+  setUp(installSourceAudioPlatform);
   test('history keeps the lines of each speech unchanged and bounded', () {
     final history = LoreDialogueHistory();
     var notified = 0;

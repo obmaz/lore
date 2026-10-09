@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:ui' as ui;
 
 import 'package:flame/game.dart';
@@ -16,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// LORESUB.PAS `Scroll`: `if (position = den) and (party.etc[1] = 0)` draws a
 /// black view with '어둠' instead of the map and the party.
 void main() {
+  setUp(installSourceAudioPlatform);
   Future<Set<int>> colors(WidgetTester tester, LoreGame game) async {
     final width = game.size.x.ceil();
     final height = game.size.y.ceil();

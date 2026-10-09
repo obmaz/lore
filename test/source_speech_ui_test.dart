@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +21,7 @@ import 'package:lore/widgets/message_log_view.dart';
 
 /// LORESPEC.PAS:496-519 and LOREENT.PAS:289-311 input boundaries.
 void main() {
+  setUp(installSourceAudioPlatform);
   Future<void> tick(WidgetTester tester) async {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 300));

@@ -4,6 +4,7 @@ import 'dart:math';
 import '../logic/lore_random.dart';
 import '../logic/lore_load_failure.dart';
 import '../logic/lore_source_memory.dart';
+import '../logic/lore_bgi_fill.dart';
 
 import '../logic/lore_encounter_logic.dart';
 import '../logic/lore_ent_procedures.dart';
@@ -144,12 +145,14 @@ class LoreGame extends FlameGame {
   void peekAt(int x, int y) {
     peekX = x;
     peekY = y;
+    onSourceScroll?.call();
   }
 
   /// 원작 `scroll(TRUE)`: 시야를 파티 위치로 되돌린다.
   void clearPeek() {
     peekX = null;
     peekY = null;
+    onSourceScroll?.call();
   }
 
   final void Function(String message)? onLog;
@@ -170,6 +173,7 @@ class LoreGame extends FlameGame {
   final void Function()? onPoisonTick;
   final void Function()? onMindReadTick;
   final void Function()? onMoveMode;
+  final void Function()? onSourceScroll;
 
   /// true이면 좌표 이벤트가 걸음을 처리했으므로 일반 무작위 전투를 건너뛴다.
   final bool Function()? onStepTaken;
@@ -221,6 +225,7 @@ class LoreGame extends FlameGame {
     this.onPoisonTick,
     this.onMindReadTick,
     this.onMoveMode,
+    this.onSourceScroll,
     this.partyProvider,
     this.onStepTaken,
     this.scriptContextProvider,
@@ -363,6 +368,7 @@ class LoreGame extends FlameGame {
     _sourceInputFace = null;
     AudioManager.instance.playBgm(info.bgmTrack);
     onMapLoaded?.call();
+    onSourceScroll?.call();
   }
 
   /// A party/player logical storage failure ends the same Load as MAP/FNT IO.
@@ -843,7 +849,11 @@ class LoreGame extends FlameGame {
           : draw.index;
       final sheet = SpriteLibrary.instance.get(isTile ? tileFontName : 'CHARA');
       final font = isTile ? activeTileFont : charaFont;
-      if (sheet != null) {
+      if (!isTile &&
+          charaFont != null &&
+          SpriteLibrary.instance.activeSkin == GraphicsSkin.original) {
+        charaFont!.renderMaskedSprite(canvas, index, rect);
+      } else if (sheet != null) {
         sheet.draw(canvas, index, rect, opaqueBackground: isTile);
       } else if (font != null) {
         font.renderSprite(canvas, index, rect, opaqueBackground: isTile);
@@ -910,11 +920,47 @@ class LoreGame extends FlameGame {
     RangeError.checkValueInInterval(face, 0, 55, 'source CHARA face');
 
     final charaSheet = SpriteLibrary.instance.get('CHARA');
-    if (charaSheet != null && face < charaSheet.count) {
+    if (charaFont != null &&
+        SpriteLibrary.instance.activeSkin == GraphicsSkin.original) {
+      final sourceRect = Rect.fromLTWH(
+        offsetX + halfX * tileSize,
+        offsetY + halfY * tileSize,
+        tileSize,
+        tileSize,
+      );
+      charaFont!.renderMaskedSprite(
+        canvas,
+        face,
+        sourceRect,
+        backgroundPixel: (x, y) {
+          final tile = currentMap!.getTile(playerX, playerY);
+          if (seeThroughSpecial &&
+              (tile == 0 ||
+                  (tile == 52 &&
+                      (mapCat == MapCategory.den ||
+                          mapCat == MapCategory.keep)))) {
+            return 0;
+          }
+          final index = tile == 0
+              ? LoreTileProtocol.defaultFontSlot(currentMapId)
+              : tile;
+          final value = activeTileFont!.decodedSprites[index][y][x];
+          return sourceScroll.putStyle == 2
+              ? LoreBgiFill.orPixel(
+                  value,
+                  sourceScroll.form,
+                  sourceScroll.color,
+                  100 + x,
+                  100 + y,
+                )
+              : value;
+        },
+      );
+    } else if (charaSheet != null && face < charaSheet.count) {
       // 1순위: 이미지 파일(PNG) 스프라이트 시트
       charaSheet.draw(canvas, face, centerRect);
     } else if (charaFont != null) {
-      charaFont!.renderSprite(canvas, face, centerRect);
+      charaFont!.renderMaskedSprite(canvas, face, centerRect);
     } else {
       // Fallback 벡터 렌더링
       final playerPaint = Paint()..color = RetroTheme.yellow;

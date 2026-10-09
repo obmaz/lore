@@ -1,3 +1,4 @@
+import 'support/source_audio_platform.dart';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -11,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // LOREHELP.PAS Title_Menu 279..300 and LORECRET.PAS Profile/CreateCharacter.
 // Modern route/OS-pop adapter is tested; BGI palette and DOS Halt are not.
 void main() {
+  setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
   setUp(() {
     final messenger =

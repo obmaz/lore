@@ -193,6 +193,8 @@ class _MainGameScreenState extends State<MainGameScreen> {
   @override
   void initState() {
     super.initState();
+    // Set_All starts SoundOn anew; an in-session Load does not reset it.
+    AudioManager.instance.sourceSoundEnabled = true;
     _sessionRandom = widget.encounterRandom ?? LoreRandom.fromClock();
     _scripts = LoreScriptEngine.instance.fork(random: _sessionRandom);
     _initParty();
@@ -287,6 +289,11 @@ class _MainGameScreenState extends State<MainGameScreen> {
       onLog: (msg) => _addLog(msg),
       onSign: _printLines,
       onMapLoaded: _normalizeLoadedEtc,
+      onSourceScroll: () {
+        if (AudioManager.instance.sourceSoundEnabled) {
+          unawaited(AudioManager.instance.playSourceTone(20, 5));
+        }
+      },
       onEncounter: () => _startBattle(),
       encounterFrequencyProvider: () => _encounterFrequency,
       onFacilityEntered: (type) {
