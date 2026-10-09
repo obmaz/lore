@@ -1,6 +1,321 @@
 {
   "contracts": [
     {
+      "id": "LORECRET.PAS:fourth:1:repeat:4",
+      "line": 604,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:fourth:1:repeat:2",
+      "line": 583,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:12",
+      "line": 558,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:third:1:repeat:3",
+      "line": 556,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:9",
+      "line": 529,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:third:1:if:8",
+      "line": 528,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:third:1:repeat:2",
+      "line": 527,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:third:1:repeat:1",
+      "line": 525,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:second:1:repeat:2",
+      "line": 422,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:4",
+      "line": 394,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:3",
+      "line": 390,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:erase:1:for:1",
+      "line": 206,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:display:1:for:3",
+      "line": 82,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:display:1:for:2",
+      "line": 65,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
+      "id": "LORECRET.PAS:display:1:for:1",
+      "line": 61,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/screens/character_creation_screen.dart",
+      "test": "test/creation_palette_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_creation_palette.dart",
+        "lib/widgets/lore_creation_animation.dart",
+        "lib/logic/lore_creation_rules.dart",
+        "lib/services/audio_manager.dart",
+        "tool/export_dos_creation_palette.py",
+        "tool/tests/test_export_dos_creation_palette.py",
+        "test/creation_name_keyboard_ui_test.dart",
+        "test/creation_class_dos_test.dart",
+        "test/creation_class_queue_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LORECRET.PAS closed instruction spans replay60 palette, delay, KeyPressed and scratch-reset cases. Dart matches complete RGB/Delay order, border/title5120ms, divider1640ms, class10ms bounce and confirmation50ms wrap. Live UI keeps keys typed during fades, preserves DOS byte queue boundaries and freezes palette during the native invalid-class100ms tone; source class confirmation text and acknowledgement timing are retained. Modern layout/audio adapters remain; VGA scanout, PIT waveform and CPU polling speed equivalence are not asserted."
+    },
+    {
       "id": "LORESUB.PAS:setscrolltype:1:case:1",
       "line": 292,
       "kind": "case",

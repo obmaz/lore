@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 79,
-    "verified": 1769,
+    "partial": 64,
+    "verified": 1784,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -110,17 +110,15 @@
     },
     {
       "routine": "LORECRET.PAS:display:1",
-      "partial": 3
+      "verified": 3
     },
     {
       "routine": "LORECRET.PAS:erase:1",
-      "partial": 3,
-      "verified": 39
+      "verified": 42
     },
     {
       "routine": "LORECRET.PAS:fourth:1",
-      "verified": 24,
-      "partial": 2
+      "verified": 26
     },
     {
       "routine": "LORECRET.PAS:last:1",
@@ -137,13 +135,11 @@
     },
     {
       "routine": "LORECRET.PAS:second:1",
-      "verified": 9,
-      "partial": 1
+      "verified": 10
     },
     {
       "routine": "LORECRET.PAS:third:1",
-      "verified": 11,
-      "partial": 6
+      "verified": 17
     },
     {
       "routine": "LORECRET.PAS:whatclass:1",
@@ -696,6 +692,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/creation_name_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_palette.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_palette_dos_test.dart"
       ]
     },
     {

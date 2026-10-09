@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'dart:async';
+
 import 'package:flutter/services.dart';
 
 import '../logic/lore_menu_text.dart';
@@ -13,6 +16,8 @@ import '../services/audio_manager.dart';
 import '../services/save_manager.dart';
 import '../widgets/monster_bestiary_dialog.dart';
 import '../widgets/lore_guide_dialog.dart';
+import '../widgets/lore_creation_animation.dart';
+import '../logic/lore_creation_palette.dart';
 
 /// 1993년 원작 LORECRET.PAS 기반 캐릭터 생성 및 오프닝 화면
 class CharacterCreationScreen extends StatefulWidget {
@@ -34,6 +39,94 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   /// 0: 타이틀, 1: 이름&성별, 2: 성향 문답(원작 First),
   /// 3: 40포인트 분배(Second), 4: 계급 선택(Third), 5: 동료 4명( Fourth)
   int _step = 0;
+  bool _displayFinished = false;
+  bool _dividerFinished = false;
+  final _bufferedCreationKeys = <KeyEvent>[];
+  bool get _creationBlocking =>
+      (_step == 1 && !_displayFinished) || (_step == 3 && !_dividerFinished);
+  Timer? _classAcknowledgementTimer;
+  Timer? _classErrorTimer;
+  bool _classAcknowledgementReady = false;
+  bool _classErrorHold = false;
+  final _classAcknowledgementKeys = <KeyEvent>[];
+  int _classPulseRevision = 0;
+
+  @override
+  void dispose() {
+    _classAcknowledgementTimer?.cancel();
+    _classErrorTimer?.cancel();
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  void _finishPalette(bool display) {
+    setState(() {
+      if (display) {
+        _displayFinished = true;
+      } else {
+        _dividerFinished = true;
+      }
+    });
+    while (_bufferedCreationKeys.isNotEmpty && !_creationBlocking) {
+      final event = _bufferedCreationKeys.removeAt(0);
+      switch (_step) {
+        case 1:
+          _readNameEvent(event);
+        case 2:
+          final label = event.character ?? event.logicalKey.keyLabel;
+          final answer = label.length == 1
+              ? LoreCreationRules.quizChoice(label.codeUnitAt(0))
+              : null;
+          if (answer != null) _answerQuestion(answer);
+        case 3:
+          _readAllocationEvent(event);
+        case 4:
+          _readClassEvent(event);
+        case 5:
+          _readCompanionKey(event.logicalKey);
+      }
+    }
+  }
+
+  void _acceptClass(int id) {
+    setState(() => _selectedClass = PlayerClass.fromId(id));
+    _classAcknowledgementReady = false;
+    _classAcknowledgementTimer?.cancel();
+    _classAcknowledgementTimer = Timer(const Duration(milliseconds: 50), () {
+      if (!mounted || _step != 4) return;
+      setState(() => _classAcknowledgementReady = true);
+      if (_classAcknowledgementKeys.isNotEmpty) {
+        final pending = List<KeyEvent>.of(_classAcknowledgementKeys);
+        _classAcknowledgementKeys.clear();
+        setState(() => _step = 5);
+        for (final event in pending.skip(1)) {
+          _readCompanionKey(event.logicalKey);
+        }
+      }
+    });
+  }
+
+  void _rejectClass(int key) {
+    final id = key - 48;
+    final audible = id >= 1 && id <= 8 && _classFlags[id] != 1;
+    setState(() {
+      if (!audible) {
+        _classPulseRevision++;
+      }
+      _classErrorHold = audible;
+    });
+    if (!audible) return;
+    unawaited(AudioManager.instance.playSourceTone(100, 100));
+    _classErrorTimer?.cancel();
+    _classErrorTimer = Timer(const Duration(milliseconds: 100), () {
+      if (!mounted || _step != 4) return;
+      setState(() {
+        _classErrorHold = false;
+        _classPulseRevision++;
+      });
+      if (_classKeys.isNotEmpty) _scheduleClassDrain();
+    });
+  }
 
   @override
   void initState() {
@@ -79,6 +172,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       _nameController.text = _sourceName.text;
       if (_sourceName.sex case final sex?) {
         _selectedGender = sex == 0 ? Gender.male : Gender.female;
+        LoreCreationRules.resetQuiz(_transdata);
         _step = 2;
       }
     });
@@ -89,6 +183,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       _selectedGender = gender;
       if (_sourceNameActive && _sourceName.nameAccepted) {
         _sourceName.readKey(gender == Gender.male ? 77 : 70);
+        LoreCreationRules.resetQuiz(_transdata);
         _step = 2;
       }
     });
@@ -192,9 +287,13 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       _data.classes.where((c) => _classFlags[c.playerClass.id] == 1).toList();
 
   void _selectClass(int key) {
-    if (_selectedClass != null) return;
+    if (_selectedClass != null || _classErrorHold) return;
     final id = LoreCreationRules.selectClass(key, _classFlags);
-    if (id != null) setState(() => _selectedClass = PlayerClass.fromId(id));
+    if (id != null) {
+      _acceptClass(id);
+    } else {
+      _rejectClass(key);
+    }
   }
 
   final _classKeys = <int>[];
@@ -208,7 +307,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       return;
     }
     if (_selectedClass != null) {
-      setState(() => _step = 5);
+      if (_classAcknowledgementReady) {
+        setState(() => _step = 5);
+      } else {
+        _classAcknowledgementKeys.add(event);
+      }
       return;
     }
     final scan = switch (key) {
@@ -234,7 +337,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       };
       _classKeys.add(code);
     }
-    if (_classDrainScheduled) return;
+    _scheduleClassDrain();
+  }
+
+  void _scheduleClassDrain() {
+    if (_classDrainScheduled || _classErrorHold) return;
     _classDrainScheduled = true;
     // A presentation frame is the modern adapter's queue boundary, not a
     // claim of equal DOS KeyPressed polling duration or palette animation.
@@ -244,7 +351,11 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       _classKeys.clear();
       if (!mounted || _step != 4 || _selectedClass != null) return;
       final id = LoreCreationRules.selectClassQueue(keys, _classFlags);
-      if (id != null) setState(() => _selectedClass = PlayerClass.fromId(id));
+      if (id != null) {
+        _acceptClass(id);
+      } else if (keys.isNotEmpty) {
+        _rejectClass(keys.last);
+      }
     });
   }
 
@@ -404,6 +515,64 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   }
 
   Widget _buildCurrentStep() {
+    if (_creationBlocking) {
+      final display = _step == 1;
+      return LoreCreationAnimation(
+        key: ValueKey(display ? 'creation-display' : 'creation-divider'),
+        frames: display
+            ? LoreCreationPalette.display
+            : LoreCreationPalette.divider,
+        onKey: _bufferedCreationKeys.add,
+        onComplete: () => _finishPalette(display),
+        builder: (colors) {
+          if (display) {
+            return Container(
+              decoration: BoxDecoration(
+                color: colors[1],
+                border: Border.all(
+                  color: colors[9] ?? loreVgaColor(0, 0, 31),
+                  width: 3,
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    _data.text('Display', 0),
+                    style: RetroTheme.headerFont.copyWith(
+                      color: colors[13] ?? loreVgaColor(0, 0, 31),
+                      fontSize: 24,
+                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Text(
+                    _data.text('Display', 1),
+                    style: RetroTheme.dosFont.copyWith(
+                      color: colors[11] ?? loreVgaColor(0, 0, 31),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              for (final item in [
+                ('체  력', _strength),
+                ('정신력', _mentality),
+                ('집중력', _concentration),
+                ('인내력', _endurance),
+                ('저항력', _resistanceStat),
+              ])
+                Text('◆ ${item.$1} : ${item.$2}', style: RetroTheme.dosFont),
+              const SizedBox(height: 12),
+              Container(height: 2, color: colors[8]),
+            ],
+          );
+        },
+      );
+    }
     switch (_step) {
       case 0:
         return _keyboardStep(_buildTitleScreen(), _readTitleKey);
@@ -425,7 +594,12 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
         return _buildDistributeScreen();
       case 4:
         return _keyboardStep(
-          _buildClassScreen(),
+          LoreCreationPulse(
+            key: ValueKey(_classPulseRevision),
+            confirmation: _selectedClass != null,
+            paused: _classErrorHold,
+            builder: (color) => _buildClassScreen(color),
+          ),
           (_) {},
           readEvent: _readClassEvent,
         );
@@ -470,6 +644,14 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       }
       _allocation = LoreCreationAllocation();
       _selectedClass = null;
+      _displayFinished = false;
+      _dividerFinished = false;
+      _bufferedCreationKeys.clear();
+      _classAcknowledgementTimer?.cancel();
+      _classErrorTimer?.cancel();
+      _classAcknowledgementKeys.clear();
+      _classAcknowledgementReady = false;
+      _classErrorHold = false;
       _classKeys.clear();
       _profileTarget = null;
       _awaitingProfileKey = false;
@@ -989,7 +1171,12 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
         const SizedBox(height: 16),
         ElevatedButton(
           style: ElevatedButton.styleFrom(backgroundColor: RetroTheme.blue),
-          onPressed: _sourceNameActive ? null : () => setState(() => _step = 2),
+          onPressed: _sourceNameActive
+              ? null
+              : () => setState(() {
+                  LoreCreationRules.resetQuiz(_transdata);
+                  _step = 2;
+                }),
           child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
         ),
       ],
@@ -1074,28 +1261,7 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
     String t(int i) => _data.text('Second', i);
     return Focus(
       autofocus: true,
-      onKeyEvent: (_, event) {
-        if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
-          return KeyEventResult.ignored;
-        }
-        final key = event.logicalKey;
-        final scan = switch (key) {
-          LogicalKeyboardKey.arrowUp => 72,
-          LogicalKeyboardKey.arrowDown => 80,
-          LogicalKeyboardKey.arrowLeft => 75,
-          LogicalKeyboardKey.arrowRight => 77,
-          _ => null,
-        };
-        if (scan == null && key != LogicalKeyboardKey.enter) {
-          return KeyEventResult.ignored;
-        }
-        setState(() {
-          if (_allocation.readKey(scan == null ? 13 : 0, scan: scan ?? 0)) {
-            _step = 4;
-          }
-        });
-        return KeyEventResult.handled;
-      },
+      onKeyEvent: (_, event) => _readAllocationEvent(event),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -1177,50 +1343,77 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   // ==========================================
   // Step 3: 직업 판정 확인 및 선택
   // ==========================================
-  Widget _buildClassScreen() {
-    final options = _availableClasses;
+  KeyEventResult _readAllocationEvent(KeyEvent event) {
+    if (event is! KeyDownEvent && event is! KeyRepeatEvent) {
+      return KeyEventResult.ignored;
+    }
+    final key = event.logicalKey;
+    final scan = switch (key) {
+      LogicalKeyboardKey.arrowUp => 72,
+      LogicalKeyboardKey.arrowDown => 80,
+      LogicalKeyboardKey.arrowLeft => 75,
+      LogicalKeyboardKey.arrowRight => 77,
+      _ => null,
+    };
+    if (scan == null && key != LogicalKeyboardKey.enter) {
+      return KeyEventResult.handled;
+    }
+    setState(() {
+      if (_allocation.readKey(scan == null ? 13 : 0, scan: scan ?? 0)) {
+        _step = 4;
+      }
+    });
+    return KeyEventResult.handled;
+  }
+
+  Widget _buildClassScreen(Color pulse) {
+    final options = _data.classes;
     final t = _data.text('Third', 0);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('◆ $t ◆', style: RetroTheme.headerFont.copyWith(fontSize: 15)),
+        if (_selectedClass == null)
+          Text('◆ $t ◆', style: RetroTheme.headerFont.copyWith(fontSize: 15)),
         const SizedBox(height: 10),
-        Container(
-          width: 460,
-          padding: const EdgeInsets.all(12),
-          color: RetroTheme.background,
-          child: Wrap(
-            spacing: 10,
-            runSpacing: 8,
-            children: [
-              for (final c in options)
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: _selectedClass == c.playerClass
-                        ? RetroTheme.blue
-                        : RetroTheme.panelBg,
-                    side: const BorderSide(color: RetroTheme.borderColor),
-                  ),
-                  onPressed: _selectedClass == null
-                      ? () => _selectClass(c.playerClass.id + 48)
-                      : null,
-                  child: Text(
-                    c.text,
-                    style: RetroTheme.dosFont.copyWith(
-                      color: _selectedClass == c.playerClass
-                          ? RetroTheme.yellow
-                          : RetroTheme.white,
-                      fontSize: 12,
+        if (_selectedClass == null)
+          Container(
+            width: 460,
+            padding: const EdgeInsets.all(12),
+            color: RetroTheme.background,
+            child: Wrap(
+              spacing: 10,
+              runSpacing: 8,
+              children: [
+                for (final c in options)
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: _selectedClass == c.playerClass
+                          ? RetroTheme.blue
+                          : RetroTheme.panelBg,
+                      side: const BorderSide(color: RetroTheme.borderColor),
+                    ),
+                    onPressed: _selectedClass == null
+                        ? () => _selectClass(c.playerClass.id + 48)
+                        : null,
+                    child: Text(
+                      c.text,
+                      style: RetroTheme.dosFont.copyWith(
+                        color: _classFlags[c.playerClass.id] != 1
+                            ? loreVgaColor(15, 15, 15)
+                            : _selectedClass == c.playerClass
+                            ? RetroTheme.yellow
+                            : pulse,
+                        fontSize: 12,
+                      ),
                     ),
                   ),
-                ),
-            ],
+              ],
+            ),
           ),
-        ),
         const SizedBox(height: 10),
         if (_selectedClass != null)
           Text(
-            '${_data.text('Third', 9)}${LoreCreationRules.classLabel(_selectedClass!.id)}',
+            LoreCreationRules.classConfirmation(_selectedClass!.id),
             style: RetroTheme.dosFont.copyWith(
               color: RetroTheme.lightGreen,
               fontSize: 12,
@@ -1233,10 +1426,15 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
                 ? RetroTheme.green
                 : RetroTheme.darkGray,
           ),
-          onPressed: _selectedClass == null
+          onPressed: _selectedClass == null || !_classAcknowledgementReady
               ? null
               : () => setState(() => _step = 5),
-          child: Text(_data.text('Third', 10), style: RetroTheme.dosFont),
+          child: Text(
+            _data.text('Third', 10),
+            style: RetroTheme.dosFont.copyWith(
+              color: _selectedClass != null ? pulse : RetroTheme.darkGray,
+            ),
+          ),
         ),
       ],
     );

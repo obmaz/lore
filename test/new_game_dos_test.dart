@@ -62,11 +62,13 @@ void main() {
 
       Future<void> next() => tap(find.text(data.text('Third', 10)));
       await tap(find.text('1] 새로운 주인공을 생성 시킴'));
+      await tester.pump(const Duration(milliseconds: 5120));
       await tester.enterText(find.byType(TextField), inputs['name']);
       await next();
       for (var i = 0; i < 10; i++) {
         await tap(find.text(data.questions[i].options[0].text));
       }
+      await tester.pump(const Duration(milliseconds: 1640));
       for (final slot in [0, 1]) {
         for (var n = 0; n < 20; n++) {
           await tap(find.byIcon(Icons.add_circle_outline).at(slot));
@@ -74,6 +76,7 @@ void main() {
       }
       await next();
       await tap(find.text('8] 떠돌이'));
+      await tester.pump(const Duration(milliseconds: 50));
       await next();
       var previous = 1;
       Future<void> companion(int id) async {

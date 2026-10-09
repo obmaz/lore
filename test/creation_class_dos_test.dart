@@ -67,17 +67,19 @@ void main() {
         );
         Future<void> key(LogicalKeyboardKey k) async {
           await tester.sendKeyEvent(k);
-          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 120));
         }
 
         Future<void> enterFourth() async {
           await tester.tap(find.text('1] 새로운 주인공을 생성 시킴'));
           await tester.pump();
+          await tester.pump(const Duration(milliseconds: 5120));
           await tester.tap(find.text(creation.text('Third', 10)));
           await tester.pump();
           for (var i = 0; i < 10; i++) {
             await key(LogicalKeyboardKey.digit1);
           }
+          await tester.pump(const Duration(milliseconds: 1640));
           for (var i = 0; i < 20; i++) {
             await key(LogicalKeyboardKey.arrowRight);
           }
@@ -186,10 +188,11 @@ void main() {
 
       Future<void> key(LogicalKeyboardKey k) async {
         await tester.sendKeyEvent(k);
-        await tester.pump();
+        await tester.pump(const Duration(milliseconds: 120));
       }
 
       await tap(find.text('1] 새로운 주인공을 생성 시킴'));
+      await tester.pump(const Duration(milliseconds: 5120));
       await tap(find.text(creation.text('Third', 10)));
       final first = creation.questions[0].options[0].text;
       for (final invalid in [
@@ -205,6 +208,7 @@ void main() {
       for (var i = 0; i < 10; i++) {
         await key(LogicalKeyboardKey.digit1);
       }
+      await tester.pump(const Duration(milliseconds: 1640));
       for (var i = 0; i < 20; i++) {
         await key(LogicalKeyboardKey.arrowRight);
       }
@@ -217,12 +221,12 @@ void main() {
         LogicalKeyboardKey.digit1,
       ); // unavailable Knight (endurance too low)
       expect(
-        find.textContaining('${creation.text('Third', 9)}기사'),
+        find.text('당신의 계급은 기사 입니다.'),
         findsNothing,
       );
       await key(LogicalKeyboardKey.digit2);
       expect(
-        find.textContaining('${creation.text('Third', 9)}마법사'),
+        find.text('당신의 계급은 마법사 입니다.'),
         findsOneWidget,
       );
       await key(

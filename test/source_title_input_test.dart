@@ -95,6 +95,7 @@ void main() {
         expect(exits, 0);
       }
       await key(LogicalKeyboardKey.digit1);
+      await tester.pump(const Duration(milliseconds: 5120));
       expect(find.byType(TextField), findsOneWidget);
       await open();
       await key(LogicalKeyboardKey.digit2);

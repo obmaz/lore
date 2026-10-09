@@ -6,6 +6,13 @@ class LoreCreationRules {
 
   static int? quizChoice(int key) => key >= 49 && key <= 51 ? key - 49 : null;
 
+  /// First owns exactly transdata[1..5], leaving the remaining scratch bytes.
+  static void resetQuiz(List<int> transdata) {
+    for (var i = 1; i <= 5; i++) {
+      transdata[i] = 0;
+    }
+  }
+
   /// Fresh Third flags; caller data cannot retain earlier quiz counters.
   static List<int> classFlags(List<int> stats) => [
     0,
@@ -36,6 +43,8 @@ class LoreCreationRules {
     10 => '반신',
     _ => '불확실함',
   };
+
+  static String classConfirmation(int id) => '당신의 계급은 ${classLabel(id)} 입니다.';
 
   // The ten Which calls, each followed by three inc(transdata[N]) branches.
   static const questionStats = [

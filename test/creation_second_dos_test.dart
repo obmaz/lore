@@ -51,10 +51,12 @@ void main() {
       }
 
       await tap(find.text('1] 새로운 주인공을 생성 시킴'));
+      await tester.pump(const Duration(milliseconds: 5120));
       await tap(find.text(data.text('Third', 10)));
       for (var i = 0; i < 10; i++) {
         await tap(find.text(data.questions[i].options[0].text));
       }
+      await tester.pump(const Duration(milliseconds: 1640));
       expect(find.text('${data.text('Second', 1)}40'), findsOneWidget);
       for (var i = 2; i <= 4; i++) {
         expect(find.text('${data.text('Second', i)} 0'), findsOneWidget);

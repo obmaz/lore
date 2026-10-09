@@ -3312,3 +3312,18 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      Flutter1832건(3 skip), Python158건, analyze·웹 release build와
      원장·gap·source memory 최신 상태가 통과했다. 이 묶음을 main에
      푸시하고 다음 원본 생성·타이틀 검증을 계속한다.
+
+212. **캐릭터 생성의 팔레트와 입력 대기**
+     LORECRET 원본 EXE의 닫힌 조각60건을 실행해 RGB·Delay·KeyPressed·
+     scratch 초기화 순서를 비교한다. 생성 시작5120ms, 능력 배분 전
+     구분선1640ms, 계급10ms 왕복과 확인50ms 순환을 현재 화면 어댑터에
+     연결한다. 페이드 도중 입력은 다음 ReadKey까지 보관한다. 사용할 수
+     없는 계급은 원본100Hz/100ms 경고음과 팔레트 대기 뒤 다시 선택한다.
+     계급 확인 문장도 원본의 이름 위치를 복원한다. 새 게임 규칙은
+     추가하지 않는다. 현대 레이아웃·오디오 어댑터를 유지하며 VGA
+     scanout·PIT 파형·CPU polling 속도 동등성은 주장하지 않는다.
+     해당15개 제어항목만 해소하여 verified1784 / partial64가 된다.
+     남은 저장 삭제 실패와 타이틀·공통 화면을 계속 검증한다.
+     전체 Flutter1896건(3 skip), Python159건, analyze·웹 release build가
+     통과했다. 기존 타이틀 회귀도 원본 생성 페이드 대기 후 입력창을
+     검사하도록 갱신했고 원장·gap·source memory 최신 여부를 확인했다.

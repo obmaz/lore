@@ -32,6 +32,32 @@ void main() {
       },
     );
   });
+  testWidgets('Display retains typed name and gender until its final Delay', (
+    tester,
+  ) async {
+    await tester.runAsync(() => LoreCreationData.instance.load(force: true));
+    await tester.pumpWidget(
+      MaterialApp(home: CharacterCreationScreen(onGameStart: (_) {})),
+    );
+    await tester.sendKeyEvent(LogicalKeyboardKey.digit1);
+    await tester.pump();
+    await tester.sendKeyEvent(LogicalKeyboardKey.keyA, character: 'a');
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.sendKeyEvent(LogicalKeyboardKey.keyF, character: 'f');
+    await tester.pump(const Duration(milliseconds: 5119));
+    expect(find.byType(TextField), findsNothing);
+    expect(
+      find.text(LoreCreationData.instance.questions.first.lines.first),
+      findsNothing,
+    );
+    await tester.pump(const Duration(milliseconds: 1));
+    expect(
+      find.text(LoreCreationData.instance.questions.first.lines.first),
+      findsOneWidget,
+    );
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(const SizedBox.shrink());
+  });
   for (final size in [const Size(1280, 1000), const Size(390, 844)]) {
     for (final expected in ['a' * 15, ' a ']) {
       testWidgets(
@@ -52,7 +78,7 @@ void main() {
           );
           Future<void> key(LogicalKeyboardKey k, {String? character}) async {
             await tester.sendKeyEvent(k, character: character);
-            await tester.pump();
+            await tester.pump(const Duration(milliseconds: 50));
           }
 
           Future<void> letters(String text) async {
@@ -67,6 +93,7 @@ void main() {
           String text() =>
               tester.widget<TextField>(find.byType(TextField)).controller!.text;
           await key(LogicalKeyboardKey.digit1);
+          await tester.pump(const Duration(milliseconds: 5120));
           await key(LogicalKeyboardKey.capsLock);
           expect(
             tester.widget<TextField>(find.byType(TextField)).readOnly,
@@ -94,6 +121,7 @@ void main() {
           for (var i = 0; i < 10; i++) {
             await key(LogicalKeyboardKey.digit1);
           }
+          await tester.pump(const Duration(milliseconds: 1640));
           for (var i = 0; i < 20; i++) {
             await key(LogicalKeyboardKey.arrowRight);
           }
@@ -129,6 +157,7 @@ void main() {
       );
       await tester.tap(find.text('1] 새로운 주인공을 생성 시킴'));
       await tester.pump();
+      await tester.pump(const Duration(milliseconds: 5120));
       await tester.enterText(find.byType(TextField), '한글 영웅');
       await tester.sendKeyEvent(LogicalKeyboardKey.capsLock);
       await tester.pump();

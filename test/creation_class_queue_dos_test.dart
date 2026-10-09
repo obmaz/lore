@@ -65,16 +65,18 @@ void main() {
         );
         Future<void> key(LogicalKeyboardKey k) async {
           await tester.sendKeyEvent(k);
-          await tester.pump();
+          await tester.pump(const Duration(milliseconds: 120));
         }
 
         await tester.tap(find.text('1] 새로운 주인공을 생성 시킴'));
         await tester.pump();
+        await tester.pump(const Duration(milliseconds: 5120));
         await tester.tap(find.text(creation.text('Third', 10)));
         await tester.pump();
         for (var i = 0; i < 10; i++) {
           await key(LogicalKeyboardKey.digit1);
         }
+        await tester.pump(const Duration(milliseconds: 1640));
         for (var i = 0; i < 20; i++) {
           await key(LogicalKeyboardKey.arrowRight);
         }
@@ -83,7 +85,7 @@ void main() {
           await key(LogicalKeyboardKey.arrowRight);
         }
         await key(LogicalKeyboardKey.enter);
-        final confirmation = creation.text('Third', 9);
+        const confirmation = '당신의 계급은 ';
         // The first valid class must not survive an invalid final byte.
         await tester.sendKeyEvent(LogicalKeyboardKey.digit2);
         await tester.sendKeyEvent(LogicalKeyboardKey.keyX);

@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/foundation.dart';
 
+
 enum BgmTrack {
   title('audio/music1_title.mp3'),
   town('audio/music2_town.mp3'),
@@ -111,6 +112,42 @@ class AudioManager {
   void playScream2() => playSfx(SfxSound.scream2);
 
   /// LOREMAIN.Main Backspace toggles the shared SoundOn, not the user's BGM mute.
+  /// CRT Sound/Delay/NoSound: one source-frequency square-wave interval.
+  /// Used by Third's rejected eligible-range choice, independently of SoundOn.
+  Future<void> playSourceTone(int frequency, int milliseconds) async {
+    if (_isMuted) return;
+    final count = milliseconds * 8;
+    final wav = Uint8List(44 + count);
+    final data = ByteData.sublistView(wav);
+    void ascii(int offset, String value) {
+      wav.setRange(offset, offset + value.length, value.codeUnits);
+    }
+
+    ascii(0, 'RIFF');
+    data.setUint32(4, 36 + count, Endian.little);
+    ascii(8, 'WAVE');
+    ascii(12, 'fmt ');
+    data.setUint32(16, 16, Endian.little);
+    data.setUint16(20, 1, Endian.little);
+    data.setUint16(22, 1, Endian.little);
+    data.setUint32(24, 8000, Endian.little);
+    data.setUint32(28, 8000, Endian.little);
+    data.setUint16(32, 1, Endian.little);
+    data.setUint16(34, 8, Endian.little);
+    ascii(36, 'data');
+    data.setUint32(40, count, Endian.little);
+    for (var i = 0; i < count; i++) {
+      wav[44 + i] = (((i * frequency * 2) ~/ 8000) & 1) == 0 ? 176 : 80;
+    }
+    try {
+      await _sfxPlayer.stop();
+      await _sfxPlayer.setVolume(_sfxVolume);
+      await _sfxPlayer.play(BytesSource(wav));
+    } catch (error) {
+      debugPrint('[AudioManager] Error playing source tone: $error');
+    }
+  }
+
   void toggleSourceSound() => sourceSoundEnabled = !sourceSoundEnabled;
 
   /// 사운드 음소거 토글

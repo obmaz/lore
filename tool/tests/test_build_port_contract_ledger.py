@@ -198,7 +198,7 @@ class ContractLedgerTest(unittest.TestCase):
             ('LORECRET.PAS:fourth:1', 583),
             ('LORECRET.PAS:fourth:1', 604)}]
         self.assertEqual(len(waiting), 3)
-        self.assertTrue(all(s['verification_status'] == 'partial' for s in waiting))
+        self.assertTrue(all(s['verification_status'] == 'verified' and s['behavioral_evidence'][0] == 'test/creation_palette_dos_test.dart' for s in waiting))
 
     def test_remaining_effect_scope_excludes_unobserved_ui(self):
         sites = ledger.build()['control_sites']
@@ -235,7 +235,7 @@ class ContractLedgerTest(unittest.TestCase):
             self.assertTrue(all(s['verification_status'] == 'verified' for s in owned))
         self.assertFalse(any(s.get('verification_status') == 'partial'
                              for s in sites if s['file'] in {'LOREMAIN.PAS', 'LOREBATT.PAS'}))
-        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 79)
+        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 64)
 
     def test_special_arrival_scope_is_exact(self):
         sites = ledger.build()['control_sites']
@@ -299,7 +299,7 @@ class ContractLedgerTest(unittest.TestCase):
         untouched = [s for s in sites if s["routine"] == "LORECRET.PAS:erase:1"
                      and s["line"] in {206, 390, 394}]
         self.assertEqual(len(untouched), 3)
-        self.assertTrue(all(s["verification_status"] == "partial" for s in untouched))
+        self.assertTrue(all(s["verification_status"] == "verified" and s["behavioral_evidence"][0] == "test/creation_palette_dos_test.dart" for s in untouched))
 
     def test_all_original_and_port_resources_are_registered(self):
         data = ledger.build()
@@ -332,7 +332,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 79)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 64)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}
