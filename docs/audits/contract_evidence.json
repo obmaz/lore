@@ -1,6 +1,23 @@
 {
   "contracts": [
     {
+      "id": "LORECRET.PAS:last:1:if:2",
+      "line": 740,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/save_manager.dart",
+      "test": "test/creation_map_erase_dos_test.dart",
+      "supporting_evidence": [
+        "lib/main.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/fixtures/dos_creation_erase.json",
+        "tool/export_dos_creation_erase.py",
+        "tool/tests/test_export_dos_creation_erase.py"
+      ],
+      "verification": "verified",
+      "note": "40 unchanged EXE Last map erase branches execute original Assign/Erase/IOResult helpers; only DOS delete results are supplied. Every nonzero result prints the original red error and halts. Actual storage commits new records before resetting the old map, preserves that map on reset failure, reloads eager preferences caches, and leaves later slots untouched. Actual UI blocks play and further input on failure. Modern JSON record/map staging and Flutter text are adapters; byte-exact DOS partial writes, corrupt combined JSON and CRT pixels are not claimed."
+    },
+    {
       "id": "LORESUB.PAS:scroll:1:if:4",
       "line": 240,
       "kind": "if",
@@ -19643,7 +19660,7 @@
       "classification": "content-rule",
       "implementation": "lib/services/save_manager.dart",
       "test": "test/source_new_game_persistence_test.dart",
-      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter.",
       "verification": "verified",
       "supporting_evidence": [
         "test/new_game_dos_test.dart",
@@ -19658,7 +19675,7 @@
       "classification": "content-rule",
       "implementation": "lib/services/save_manager.dart",
       "test": "test/source_new_game_persistence_test.dart",
-      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter.",
       "verification": "verified",
       "supporting_evidence": [
         "test/new_game_dos_test.dart",
@@ -19673,7 +19690,7 @@
       "classification": "content-rule",
       "implementation": "lib/services/save_manager.dart",
       "test": "test/source_new_game_persistence_test.dart",
-      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter.",
       "verification": "verified",
       "supporting_evidence": [
         "test/new_game_dos_test.dart",

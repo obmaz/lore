@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'data/lore_data.dart';
 import 'models/party_member.dart';
 import 'services/save_manager.dart';
+import 'services/audio_manager.dart';
 import 'services/graphics_settings.dart';
 import 'services/source_palette.dart';
 import 'game/lore_world_manager.dart';
@@ -57,6 +58,7 @@ class _LoreAppState extends State<LoreApp> {
       });
     } catch (error) {
       if (!mounted) return;
+      AudioManager.instance.stopBgm();
       // Storage is a modern adapter; failure must not silently start play.
       setState(() {
         _creationError = error;
@@ -95,12 +97,21 @@ class _LoreAppState extends State<LoreApp> {
                 if (_creating || _creationError != null)
                   Positioned.fill(
                     child: ColoredBox(
-                      color: Colors.black54,
+                      color: _creationError is LoreCreationMapEraseFailure
+                          ? Colors.black
+                          : Colors.black54,
                       child: Center(
                         child: _creationError != null
-                            ? const Text(
-                                '새 게임 저장 실패. 앱을 다시 시작해 주세요.',
-                                key: ValueKey('creation-storage-error'),
+                            ? Text(
+                                _creationError is LoreCreationMapEraseFailure
+                                    ? LoreCreationMapEraseFailure.message
+                                    : '새 게임 저장 실패. 앱을 다시 시작해 주세요.',
+                                style:
+                                    _creationError
+                                        is LoreCreationMapEraseFailure
+                                    ? const TextStyle(color: Color(0xFFFF5555))
+                                    : null,
+                                key: const ValueKey('creation-storage-error'),
                               )
                             : const CircularProgressIndicator(
                                 key: ValueKey('creation-saving'),

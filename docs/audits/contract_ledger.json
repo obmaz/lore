@@ -12039,7 +12039,7 @@
       ],
       "verification_status": "verified",
       "port_handler": "lib/services/save_manager.dart",
-      "reviewed_scope": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial."
+      "reviewed_scope": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter."
     },
     {
       "id": "LORECRET.PAS:last:1:for:2",
@@ -12074,7 +12074,7 @@
       ],
       "verification_status": "verified",
       "port_handler": "lib/services/save_manager.dart",
-      "reviewed_scope": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial."
+      "reviewed_scope": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter."
     },
     {
       "id": "LORECRET.PAS:last:1:if:1",
@@ -12093,7 +12093,7 @@
       ],
       "verification_status": "verified",
       "port_handler": "lib/services/save_manager.dart",
-      "reviewed_scope": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial."
+      "reviewed_scope": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter."
     },
     {
       "id": "LORECRET.PAS:last:1:if:2",
@@ -12103,13 +12103,18 @@
       "routine": "LORECRET.PAS:last:1",
       "kind": "if",
       "outcomes": 2,
-      "classification": "content-rule",
+      "classification": "common-rule",
       "behavioral_evidence": [
-        "test/creation_test.dart"
+        "test/creation_map_erase_dos_test.dart",
+        "lib/main.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/fixtures/dos_creation_erase.json",
+        "tool/export_dos_creation_erase.py",
+        "tool/tests/test_export_dos_creation_erase.py"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/data/lore_creation.dart",
-      "reviewed_scope": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch."
+      "verification_status": "verified",
+      "port_handler": "lib/services/save_manager.dart",
+      "reviewed_scope": "40 unchanged EXE Last map erase branches execute original Assign/Erase/IOResult helpers; only DOS delete results are supplied. Every nonzero result prints the original red error and halts. Actual storage commits new records before resetting the old map, preserves that map on reset failure, reloads eager preferences caches, and leaves later slots untouched. Actual UI blocks play and further input on failure. Modern JSON record/map staging and Flutter text are adapters; byte-exact DOS partial writes, corrupt combined JSON and CRT pixels are not claimed."
     },
     {
       "id": "LORECRET.PAS:createcharacter:1:if:1",
@@ -34919,6 +34924,23 @@
   ],
   "linked_contracts": [
     {
+      "id": "LORECRET.PAS:last:1:if:2",
+      "line": 740,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/services/save_manager.dart",
+      "test": "test/creation_map_erase_dos_test.dart",
+      "supporting_evidence": [
+        "lib/main.dart",
+        "test/source_new_game_persistence_test.dart",
+        "test/fixtures/dos_creation_erase.json",
+        "tool/export_dos_creation_erase.py",
+        "tool/tests/test_export_dos_creation_erase.py"
+      ],
+      "verification": "verified",
+      "note": "40 unchanged EXE Last map erase branches execute original Assign/Erase/IOResult helpers; only DOS delete results are supplied. Every nonzero result prints the original red error and halts. Actual storage commits new records before resetting the old map, preserves that map on reset failure, reloads eager preferences caches, and leaves later slots untouched. Actual UI blocks play and further input on failure. Modern JSON record/map staging and Flutter text are adapters; byte-exact DOS partial writes, corrupt combined JSON and CRT pixels are not claimed."
+    },
+    {
       "id": "LORESUB.PAS:scroll:1:if:4",
       "line": 240,
       "kind": "if",
@@ -54561,7 +54583,7 @@
       "classification": "content-rule",
       "implementation": "lib/services/save_manager.dart",
       "test": "test/source_new_game_persistence_test.dart",
-      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter.",
       "verification": "verified",
       "supporting_evidence": [
         "test/new_game_dos_test.dart",
@@ -54576,7 +54598,7 @@
       "classification": "content-rule",
       "implementation": "lib/services/save_manager.dart",
       "test": "test/source_new_game_persistence_test.dart",
-      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter.",
       "verification": "verified",
       "supporting_evidence": [
         "test/new_game_dos_test.dart",
@@ -54591,7 +54613,7 @@
       "classification": "content-rule",
       "implementation": "lib/services/save_manager.dart",
       "test": "test/source_new_game_persistence_test.dart",
-      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Modern adapter is not native file Erase/IOResult error parity; Last740 stays partial.",
+      "note": "Actual storage gated per slot against original cold-start party/six player records. All 100 etc bytes zero; six records pad/exclude scratch correctly; four snapshots freeze before awaits. Existing map/quest/script snapshots replaced so original maps load; all writes finish before actual app starts. False storage write stops play/later writes. Map-reset ordering and Last740 errors are independently verified by creation_map_erase_dos_test.dart; JSON storage remains a modern adapter.",
       "verification": "verified",
       "supporting_evidence": [
         "test/new_game_dos_test.dart",
@@ -55264,17 +55286,6 @@
         "test/save_party_dos_test.dart",
         "tool/export_dos_load_record_errors.py"
       ]
-    },
-    {
-      "id": "LORECRET.PAS:last:1:if:2",
-      "line": 740,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/data/lore_creation.dart",
-      "test": "test/creation_test.dart",
-      "supporting_evidence": [],
-      "note": "Partial source bundle for LORECRET character creation and display procedures. The test cites LORECRET.PAS and checks the shared source-backed data/creation boundary; it does not claim every CRT frame, key loop, or DOS rendering branch.",
-      "verification": "partial"
     },
     {
       "id": "LOREENT.PAS:entermode:1:for:1",
@@ -58184,6 +58195,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/creation_map_erase_dos_test.dart",
+      "kind": "test",
+      "sha256": "35055e4178a5370e300d9c961e34cf007ce8f17556e91eedf9012d48e360c590",
+      "cited_source_files": [
+        "LORECRET.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/creation_name_dos_test.dart",
       "kind": "test",
       "sha256": "837506c51e2583188b895b657984e7f377c8da958eccac0e49cd6a54d9c789bd",
@@ -59823,7 +59843,7 @@
     {
       "path": "test/source_new_game_persistence_test.dart",
       "kind": "test",
-      "sha256": "65f92816188516513f29b5f97b6f21f27986d8c4af91f01b643cb7b7953d2ca3",
+      "sha256": "83da3739dc1fff724c86636cc7167367fb05d40015da30f322b9cc48fc63dbd8",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -60319,6 +60339,15 @@
       "sha256": "97e9b27ea1b3cf55c98cdd88f6353cd64405d7841e7264eb67773cbca1844c5e",
       "test_users": [
         "test/creation_class_queue_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
+      "path": "test/fixtures/dos_creation_erase.json",
+      "kind": "fixture",
+      "sha256": "cce8c81149672c4803872fd463297e8cff67a355f2261324c2a658f038149285",
+      "test_users": [
+        "test/creation_map_erase_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
@@ -61585,9 +61614,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "e53fd0ee54f0efa0d2b5fc41fc431378b6423db0241f3a5f9af72a85b9337355",
+      "sha256": "dace2b1696015b6019edf3469b3b20f49f7789a3e8e53b8796ac0939d4f486e4",
       "top_level_counts": {
-        "contracts": 1755
+        "contracts": 1756
       }
     }
   ],
@@ -61596,8 +61625,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 28,
-    "partially_verified_behavior_sites": 28,
+    "unverified_behavior_sites": 27,
+    "partially_verified_behavior_sites": 27,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

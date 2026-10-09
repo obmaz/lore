@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 28,
-    "verified": 1820,
+    "partial": 27,
+    "verified": 1821,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -122,8 +122,7 @@
     },
     {
       "routine": "LORECRET.PAS:last:1",
-      "verified": 4,
-      "partial": 1
+      "verified": 5
     },
     {
       "routine": "LORECRET.PAS:name:1",
@@ -668,6 +667,16 @@
       "note_mentions": [],
       "test_candidates": [
         "test/creation_class_queue_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_erase.json",
+      "explicit_contracts": [
+        "LORECRET.PAS:last:1:if:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_map_erase_dos_test.dart"
       ]
     },
     {

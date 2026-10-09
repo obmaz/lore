@@ -6,6 +6,16 @@ import '../models/party_member.dart';
 import '../logic/lore_save_party.dart';
 import '../logic/lore_load_failure.dart';
 
+/// LORECRET.Last IOResult after Erase: the program cannot enter gameplay.
+class LoreCreationMapEraseFailure implements Exception {
+  const LoreCreationMapEraseFailure(this.slot, {this.cause});
+  final int slot;
+  final Object? cause;
+  static const message = 'Can\'t delete " Save?.map ".';
+  @override
+  String toString() => message;
+}
+
 class SaveData {
   static const int currentSchemaVersion = 3;
 
@@ -288,8 +298,54 @@ class SaveManager {
     ];
     final prefs = await SharedPreferences.getInstance();
     for (var slot = 1; slot <= 4; slot++) {
-      if (!await prefs.setString(_keyForSlot(slot), encoded[slot - 1])) {
-        throw StateError('Failed to write new-game slot $slot');
+      final finalRecord = encoded[slot - 1];
+      final previous = prefs.getString(_keyForSlot(slot));
+      Map<String, dynamic>? old;
+      if (previous != null) {
+        // Last replaces records without reading obsolete map contents.
+        // Undecodable combined JSON has no readable map attachment to retain.
+        try {
+          final value = jsonDecode(previous);
+          if (value is Map<String, dynamic>) old = value;
+        } on FormatException {
+          old = null;
+        }
+      }
+      final oldMap = old?['mapTiles'];
+      final hasOldMap = oldMap is List && oldMap.isNotEmpty;
+      final record = hasOldMap
+          ? jsonEncode({
+              ...jsonDecode(finalRecord) as Map<String, dynamic>,
+              'mapTiles': oldMap,
+              'mapWidth': old?['mapWidth'],
+              'mapHeight': old?['mapHeight'],
+            })
+          : finalRecord;
+      // Party/player are durable before the optional Erase(SaveN.map).
+      if (!await prefs.setString(_keyForSlot(slot), record)) {
+        try {
+          await prefs.reload();
+        } finally {
+          throw StateError('Failed to write new-game slot $slot');
+        }
+      }
+      if (hasOldMap) {
+        Object? cause;
+        var erased = false;
+        try {
+          erased = await prefs.setString(_keyForSlot(slot), finalRecord);
+        } catch (error) {
+          cause = error;
+        }
+        if (!erased) {
+          // SharedPreferences updates its cache before durable completion.
+          // Restore the committed record/map state before the native Halt.
+          try {
+            await prefs.reload();
+          } finally {
+            throw LoreCreationMapEraseFailure(slot, cause: cause);
+          }
+        }
       }
     }
   }

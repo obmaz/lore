@@ -1,4 +1,5 @@
 import 'support/source_audio_platform.dart';
+
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -30,7 +31,8 @@ class _GateStore extends InMemorySharedPreferencesStore {
 
 // LORECRET.PAS Last723/732/735: actual native cold-start six records/party,
 // four durable writes before play, no stale map snapshots or quest aliases.
-// Modern storage failure is observed, not claimed as native Erase/IOResult parity.
+// Storage remains JSON; record-before-map-reset order is separately replayed
+// against native Erase/IOResult in creation_map_erase_dos_test.dart.
 void main() {
   setUp(installSourceAudioPlatform);
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -110,7 +112,7 @@ void main() {
       for (var slot = 1; slot <= 4; slot++) {
         await tick();
         expect(completed, false);
-        expect(store.writes.length, slot);
+        expect(store.writes.length, slot * 2 - 1);
         final (key, encoded) = store.writes.last;
         expect(key, 'flutter.lore_save_slot_$slot');
         final json = jsonDecode(encoded);
@@ -136,8 +138,14 @@ void main() {
         }
         expect(json['flags'], isEmpty);
         expect(json['etc'], isEmpty);
-        expect(json['mapTiles'], isEmpty);
+        expect(json['mapTiles'], old.mapTiles);
         expect(json['consumedScripts'], isEmpty);
+        store.pending.last.complete(true);
+        await tick();
+        expect(store.writes.length, slot * 2);
+        final reset = jsonDecode(store.writes.last.$2);
+        expect(reset['mapTiles'], isEmpty);
+        expect(reset['party'], native['records']);
         store.pending.last.complete(true);
       }
       await saving;

@@ -3370,3 +3370,14 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      이벤트를 제공하는 테스트 전용 플랫폼 모형을 기존 UI 검사에 쓴다.
      전체 Flutter2306건(3 skip), Python164건, analyze·웹 release build가
      통과했다. 원본 추출·원장·gap·source memory 최신 여부도 확인했다.
+
+216. **생성 저장의 지도 삭제 실패 순서**
+     원본 Last의 Assign/Erase/IOResult를40조건 실행한다. 지도 삭제의
+     모든 nonzero 결과는 원문 빨간 오류를 출력하고 Halt한다. 현대 저장은
+     새 기록을 먼저 확정하고 기존 지도 제거를 별도로 수행한다. 실패하면
+     기존 지도를 보존하고 캐시를 다시 읽으며 이후 슬롯과 게임 진입을
+     중단한다. 실제 화면과 저장 backend 예외도 검사한다. JSON 저장과
+     Flutter 텍스트는 어댑터이며 DOS 부분 쓰기나 CRT pixel 동일성을
+     주장하지 않는다. 이 한 항목만 해소하여 verified1821 / partial27.
+     전체 Flutter2348건(3 skip), Python165건, analyze·웹 release build가
+     통과했으며 원본 추출·원장·gap·source memory 최신 여부도 확인했다.
