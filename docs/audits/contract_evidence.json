@@ -1,6 +1,42 @@
 {
   "contracts": [
     {
+      "id": "LORESUB.PAS:setscrolltype:1:case:1",
+      "line": 292,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_load_weather.dart",
+      "test": "test/scroll_fill_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_bgi_fill.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/game/lore_game.dart",
+        "tool/export_dos_fill_patterns.py",
+        "tool/tests/test_export_dos_fill_patterns.py",
+        "test/load_state_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original setscrolltype instructions replay six prior states for all256 selectors. Native EGAVGA selector executes all12 fill masks. Actual source-font Canvas and field renderer compare color-index OR and global pattern phase for all six weather modes; original9x9 core pixels are checked inside the modern11x11 viewport. VGA scanout and CPU timing remain outside this modern presentation adapter."
+    },
+    {
+      "id": "LORESUB.PAS:setscrolltype:1:if:1",
+      "line": 287,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_load_weather.dart",
+      "test": "test/scroll_fill_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_bgi_fill.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/game/lore_game.dart",
+        "tool/export_dos_fill_patterns.py",
+        "tool/tests/test_export_dos_fill_patterns.py",
+        "test/load_state_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original setscrolltype instructions replay six prior states for all256 selectors. Native EGAVGA selector executes all12 fill masks. Actual source-font Canvas and field renderer compare color-index OR and global pattern phase for all six weather modes; original9x9 core pixels are checked inside the modern11x11 viewport. VGA scanout and CPU timing remain outside this modern presentation adapter."
+    },
+    {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:71",
       "line": 2145,
       "kind": "for",

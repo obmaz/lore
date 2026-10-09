@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 81,
-    "verified": 1767,
+    "partial": 79,
+    "verified": 1769,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -473,7 +473,7 @@
     },
     {
       "routine": "LORESUB.PAS:setscrolltype:1",
-      "partial": 2
+      "verified": 2
     },
     {
       "routine": "LORESUB.PAS:simplediscond:1",
@@ -1117,6 +1117,14 @@
       ]
     },
     {
+      "path": "test/fixtures/dos_fill_patterns.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/scroll_fill_dos_test.dart"
+      ]
+    },
+    {
       "path": "test/fixtures/dos_final_battle_phase.json",
       "explicit_contracts": [],
       "note_mentions": [],
@@ -1364,7 +1372,8 @@
       ],
       "note_mentions": [],
       "test_candidates": [
-        "test/load_state_dos_test.dart"
+        "test/load_state_dos_test.dart",
+        "test/scroll_fill_dos_test.dart"
       ]
     },
     {

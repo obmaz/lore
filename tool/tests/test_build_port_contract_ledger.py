@@ -146,7 +146,8 @@ class ContractLedgerTest(unittest.TestCase):
                               ('LORESUB.PAS:setscrolltype:1', 292)]:
             untouched = [s for s in sites if s['routine'] == routine and s['line'] == line]
             self.assertEqual(len(untouched), 1)
-            self.assertEqual(untouched[0]['verification_status'], 'partial')
+            self.assertEqual(untouched[0]['verification_status'], 'verified')
+            self.assertEqual(untouched[0]['behavioral_evidence'][0], 'test/scroll_fill_dos_test.dart')
 
     def test_final_threshold_batch_has_exact_scope_and_preserves_hardware_gaps(self):
         sites = ledger.build()['control_sites']
@@ -234,7 +235,7 @@ class ContractLedgerTest(unittest.TestCase):
             self.assertTrue(all(s['verification_status'] == 'verified' for s in owned))
         self.assertFalse(any(s.get('verification_status') == 'partial'
                              for s in sites if s['file'] in {'LOREMAIN.PAS', 'LOREBATT.PAS'}))
-        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 81)
+        self.assertEqual(data['baseline_gaps']['unverified_behavior_sites'], 79)
 
     def test_special_arrival_scope_is_exact(self):
         sites = ledger.build()['control_sites']
@@ -331,7 +332,7 @@ class ContractLedgerTest(unittest.TestCase):
                   if site["behavioral_evidence"]]
         self.assertEqual(len(linked), 1848)
         self.assertEqual(data["baseline_gaps"]["unmapped_behavior_sites"], 0)
-        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 81)
+        self.assertEqual(data["baseline_gaps"]["unverified_behavior_sites"], 79)
         self.assertTrue(all(site["verification_status"] in {"partial", "verified"}
                             for site in linked))
         linked_cases = {site["id"] for site in linked if site["kind"] == "case"}

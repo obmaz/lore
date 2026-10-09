@@ -27089,11 +27089,17 @@
       "outcomes": 2,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/scroll_fill_dos_test.dart",
+        "lib/logic/lore_bgi_fill.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/game/lore_game.dart",
+        "tool/export_dos_fill_patterns.py",
+        "tool/tests/test_export_dos_fill_patterns.py",
+        "test/load_state_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_load_weather.dart",
+      "reviewed_scope": "Original setscrolltype instructions replay six prior states for all256 selectors. Native EGAVGA selector executes all12 fill masks. Actual source-font Canvas and field renderer compare color-index OR and global pattern phase for all six weather modes; original9x9 core pixels are checked inside the modern11x11 viewport. VGA scanout and CPU timing remain outside this modern presentation adapter."
     },
     {
       "id": "LORESUB.PAS:setscrolltype:1:case:1",
@@ -27105,11 +27111,17 @@
       "outcomes": 6,
       "classification": "common-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/scroll_fill_dos_test.dart",
+        "lib/logic/lore_bgi_fill.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/game/lore_game.dart",
+        "tool/export_dos_fill_patterns.py",
+        "tool/tests/test_export_dos_fill_patterns.py",
+        "test/load_state_dos_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/models/party_member.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_load_weather.dart",
+      "reviewed_scope": "Original setscrolltype instructions replay six prior states for all256 selectors. Native EGAVGA selector executes all12 fill masks. Actual source-font Canvas and field renderer compare color-index OR and global pattern phase for all six weather modes; original9x9 core pixels are checked inside the modern11x11 viewport. VGA scanout and CPU timing remain outside this modern presentation adapter."
     },
     {
       "id": "LORESUB.PAS:exist:1:if:1",
@@ -34582,6 +34594,42 @@
     }
   ],
   "linked_contracts": [
+    {
+      "id": "LORESUB.PAS:setscrolltype:1:case:1",
+      "line": 292,
+      "kind": "case",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_load_weather.dart",
+      "test": "test/scroll_fill_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_bgi_fill.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/game/lore_game.dart",
+        "tool/export_dos_fill_patterns.py",
+        "tool/tests/test_export_dos_fill_patterns.py",
+        "test/load_state_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original setscrolltype instructions replay six prior states for all256 selectors. Native EGAVGA selector executes all12 fill masks. Actual source-font Canvas and field renderer compare color-index OR and global pattern phase for all six weather modes; original9x9 core pixels are checked inside the modern11x11 viewport. VGA scanout and CPU timing remain outside this modern presentation adapter."
+    },
+    {
+      "id": "LORESUB.PAS:setscrolltype:1:if:1",
+      "line": 287,
+      "kind": "if",
+      "classification": "common-rule",
+      "implementation": "lib/logic/lore_load_weather.dart",
+      "test": "test/scroll_fill_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_bgi_fill.dart",
+        "lib/game/bgi_font_decoder.dart",
+        "lib/game/lore_game.dart",
+        "tool/export_dos_fill_patterns.py",
+        "tool/tests/test_export_dos_fill_patterns.py",
+        "test/load_state_dos_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original setscrolltype instructions replay six prior states for all256 selectors. Native EGAVGA selector executes all12 fill masks. Actual source-font Canvas and field renderer compare color-index OR and global pattern phase for all six weather modes; original9x9 core pixels are checked inside the modern11x11 viewport. VGA scanout and CPU timing remain outside this modern presentation adapter."
+    },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:71",
       "line": 2145,
@@ -55053,28 +55101,6 @@
       "verification": "partial"
     },
     {
-      "id": "LORESUB.PAS:setscrolltype:1:if:1",
-      "line": 287,
-      "kind": "if",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESUB.PAS:setscrolltype:1:case:1",
-      "line": 292,
-      "kind": "case",
-      "classification": "common-rule",
-      "implementation": "lib/models/party_member.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESUB shared utility, menu, save/load, and input branches. The static contract test retains source and port ownership; individual DOS prompts, key loops, storage effects, and every utility outcome remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LORESUB.PAS:eprint:1:if:1",
       "line": 332,
       "kind": "if",
@@ -58903,6 +58929,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/scroll_fill_dos_test.dart",
+      "kind": "test",
+      "sha256": "f841402702e6b6bb19fa9109e3626da116549e693feae0a6c506bde99d9eba16",
+      "cited_source_files": [
+        "LORESUB.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/second_field_battle_dos_test.dart",
       "kind": "test",
       "sha256": "789b3daa195cd1ba542b4fb78ab953ec6fb5d64827535efc6b514b878c5abeb0",
@@ -59779,6 +59814,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_fill_patterns.json",
+      "kind": "fixture",
+      "sha256": "e94bca060c0898cafa3d9ca6a65c4af23bccfbf96f4ddce9ee259ba00895e369",
+      "test_users": [
+        "test/scroll_fill_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_final_battle_phase.json",
       "kind": "fixture",
       "sha256": "239b570354e33874d1c3471cdca7d75064c9cad5d06f9c79020a3e52c1910a23",
@@ -59985,7 +60029,8 @@
       "kind": "fixture",
       "sha256": "c2251d9de778769652301038fa03c5da401abf9878ed5f960449b4656e756ee6",
       "test_users": [
-        "test/load_state_dos_test.dart"
+        "test/load_state_dos_test.dart",
+        "test/scroll_fill_dos_test.dart"
       ],
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
@@ -60610,7 +60655,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "baecbdb176d90627a4bb1dc49dad9629b246fcfca13d34a644cbf88f2f956dde"
+      "sha256": "11ec11bbd77ba5238ffe2b8591d7061c3e6cd7efcf0de1de7addf08f97ec87ce"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -60746,7 +60791,7 @@
     },
     {
       "path": "lib/game/bgi_font_decoder.dart",
-      "sha256": "1b741592d40368c031222a170673c75eddd345ae5fcad8804b888e3c66bab12a"
+      "sha256": "c4a77aaf0efb9f69cddfe8a0050b73eb5fcdf01345a22ea2c690467b4173672e"
     },
     {
       "path": "lib/game/sprite_sheet.dart",
@@ -60794,9 +60839,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "2619c66d7030b7ec2fe6d145d40fc7190fe92110e6bba98b8a3ecd1ab4389979",
+      "sha256": "9be4d48236ce0c6799eebabaedf245d3256275be0b7cbb973c98305a9129600b",
       "top_level_counts": {
-        "contracts": 1703
+        "contracts": 1705
       }
     }
   ],
@@ -60805,8 +60850,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 81,
-    "partially_verified_behavior_sites": 81,
+    "unverified_behavior_sites": 79,
+    "partially_verified_behavior_sites": 79,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

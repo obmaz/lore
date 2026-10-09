@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../logic/lore_bgi_fill.dart';
+
 /// 1993년 Borland Pascal BGI 4-plane 16-color 폰트/스프라이트(.FNT) 디코더
 class BgiFontDecoder {
   static const int spriteBytes = 246;
@@ -109,6 +111,37 @@ class BgiFontDecoder {
   }
 
   /// Asset에서 폰트 파일 로드
+  void renderOrSprite(
+    Canvas canvas,
+    int spriteIndex,
+    Rect rect, {
+    required int fillForm,
+    required int fillColor,
+    required int sourceX,
+    required int sourceY,
+  }) {
+    RangeError.checkValidIndex(spriteIndex, decodedSprites, 'font slot');
+    final pixels = decodedSprites[spriteIndex];
+    final paint = Paint();
+    final w = rect.width / width, h = rect.height / height;
+    for (var y = 0; y < height; y++) {
+      for (var x = 0; x < width; x++) {
+        final index = LoreBgiFill.orPixel(
+          pixels[y][x],
+          fillForm,
+          fillColor,
+          sourceX + x,
+          sourceY + y,
+        );
+        paint.color = index == 0 ? Colors.black : vgaPalette[index];
+        canvas.drawRect(
+          Rect.fromLTWH(rect.left + x * w, rect.top + y * h, w + 0.3, h + 0.3),
+          paint,
+        );
+      }
+    }
+  }
+
   static Future<BgiFontDecoder> loadFromAsset(String fontName) async {
     final assetPath = 'assets/fonts/$fontName.FNT';
     final byteData = await rootBundle.load(assetPath);

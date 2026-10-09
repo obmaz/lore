@@ -3295,3 +3295,20 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      build가 통과했다. 원본 fixture 전체 재실행과 원장·gap·source
      memory 최신 여부, 등장 전 횃불·입력 차단·전투 진입 후 overlay
      해제의 추가 화면 검사도 통과했다.
+
+211. **저장된 날씨의 실제 지도 합성**
+     원본 setscrolltype은 상태만 바꾸는 것이 아니라 Scroll의 전체
+     배경 fill 뒤 font의4 color planes를 OR한다. 기존 현대 renderer는
+     복원한 sourceScroll을 그리기에 쓰지 않아 눈·비·가을·황무지·강우
+     효과가 빠졌다. 원본 EXE에 들어 있는 EGAVGA driver의 실제
+     selector를 실행해12가지8-row fill mask를 얻고, source-indexed
+     font compositor를 기존 지도 renderer에 연결한다. 소스 전역 pixel
+     phase를 유지하며 RGB channel OR나 임의의 날씨 효과를 만들지 않는다.
+     selector256 × 이전 fill-state6를 기존 원본 추출과 대조한다.
+     실제 Canvas와 필드 renderer의6모드를 검사한다. 현대11x11 view의
+     중앙9x9 source area를 원본 color planes·fill mask와 pixel 비교한다.
+     원래 BGIfill 두 제어항목287/292만 해소한다. 전체 verified1769,
+     partial79. 원본 VGA scanout/CPU busy-wait 동등성은 주장하지 않는다.
+     Flutter1832건(3 skip), Python158건, analyze·웹 release build와
+     원장·gap·source memory 최신 상태가 통과했다. 이 묶음을 main에
+     푸시하고 다음 원본 생성·타이틀 검증을 계속한다.

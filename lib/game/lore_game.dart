@@ -729,7 +729,19 @@ class LoreGame extends FlameGame {
         final drawIndex = tileVal == 0
             ? LoreTileProtocol.defaultFontSlot(currentMapId)
             : tileVal;
-        if (tileSheet != null &&
+        if (sourceScroll.putStyle == 2 && activeTileFont != null) {
+          // Scroll fills the viewport once, then ORs source-indexed tiles.
+          // Pattern phase is anchored to DOS pixels rather than each tile.
+          activeTileFont.renderOrSprite(
+            canvas,
+            drawIndex,
+            rect,
+            fillForm: sourceScroll.form,
+            fillColor: sourceScroll.color,
+            sourceX: 100 + (vx - halfX) * 20,
+            sourceY: 100 + (vy - halfY) * 20,
+          );
+        } else if (tileSheet != null &&
             drawIndex >= 0 &&
             drawIndex < tileSheet.count) {
           tileSheet.draw(canvas, drawIndex, rect, opaqueBackground: true);
