@@ -64,6 +64,15 @@ void main() {
       expect(game.currentMap, isNotNull);
       expect(game.onStepTaken!(), isTrue);
       await tester.pump();
+      expect(find.byType(ScriptSceneDialog), findsNothing);
+      expect(game.specialArrivalDraws.last.index, 23);
+      expect(LoreDialogueManager.instance.partyEtc.read(1), 1);
+      final position = [game.playerX, game.playerY];
+      await tester.sendKeyEvent(LogicalKeyboardKey.arrowUp);
+      await tester.pump(const Duration(seconds: 2));
+      expect([game.playerX, game.playerY], position);
+      await tester.pump(const Duration(seconds: 2));
+      await tester.pump(const Duration(seconds: 2));
       await tester.pump(const Duration(milliseconds: 20));
       expect(find.byType(ScriptSceneDialog), findsOneWidget);
       expect(LoreDialogueManager.instance.partyEtc.read(1), 1);
@@ -76,6 +85,7 @@ void main() {
       final battle = tester.widget<BattleViewportView>(
         find.byType(BattleViewportView),
       );
+      expect(game.specialArrivalDraws, isEmpty);
       expect(battle.enemies.map((e) => e.eNumber).toList(), [
         66,
         66,

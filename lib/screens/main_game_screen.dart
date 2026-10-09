@@ -41,6 +41,7 @@ import '../logic/lore_main_procedures.dart';
 import '../logic/lore_talk_dispatcher.dart';
 import '../logic/lore_talk_mode.dart';
 import '../logic/lore_remains_blink.dart';
+import '../logic/lore_special_arrival.dart';
 import '../logic/lore_water_lord.dart';
 import '../logic/lore_spec_procedures.dart';
 import '../logic/lore_source_memory.dart';
@@ -701,6 +702,7 @@ class _MainGameScreenState extends State<MainGameScreen> {
       );
     } finally {
       _scriptDepth--;
+      _game.specialArrivalDraws.clear();
       if (_scriptDepth == 0 && _currentMode == GameScreenMode.field) {
         _reclaimFocus();
       }
@@ -820,6 +822,56 @@ class _MainGameScreenState extends State<MainGameScreen> {
 
   List<(int, String)> _scenePrefix = const [];
 
+  Future<void> _playSpecialArrival(String kind) async {
+    final startX = _game.playerX;
+    final startY = _game.playerY;
+    _entryAnimationActive = true;
+    _game.specialArrivalDraws.clear();
+    try {
+      if (kind == 'final') {
+        _clearSourceMessageWindow();
+        _game.applySourceFace(5);
+        setState(() {});
+        await Future<void>.delayed(const Duration(milliseconds: 1500));
+        for (var i = 1; i <= 3; i++) {
+          if (!mounted) return;
+          _game.playerY--;
+          setState(() {});
+          await Future<void>.delayed(const Duration(milliseconds: 1500));
+        }
+        _game.applySourceFace(6);
+        while (_game.playerX < 26) {
+          if (!mounted) return;
+          _game.playerX++;
+          setState(() {});
+          await Future<void>.delayed(const Duration(milliseconds: 1500));
+        }
+        _game.applySourceFace(5);
+      } else {
+        _addLog(' 금속으로된 어떤 적이 나타났다.', color: 15);
+      }
+      final operations = kind == 'final'
+          ? LoreSpecialArrival.finalActors(_game.playerX, _game.playerY)
+          : LoreSpecialArrival.guardian(startX, startY);
+      for (final op in operations) {
+        if (!mounted) return;
+        if (op.kind == 'delay') {
+          setState(() {});
+          await Future<void>.delayed(Duration(milliseconds: op.index));
+        } else {
+          _game.addSpecialArrivalDraw(op);
+        }
+      }
+      if (mounted) setState(() {});
+      if (kind == 'guardian' && mounted) _clearSourceMessageWindow();
+    } finally {
+      // The outcome reducer commits the original nudges once after presentation.
+      _game.playerX = startX;
+      _game.playerY = startY;
+      _entryAnimationActive = false;
+    }
+  }
+
   /// 스크립트 결과(메시지/보상/플래그/동료/장비/전투)를 게임 상태에 반영한다.
   Future<bool> _applyScriptOutcome(
     ScriptRun run, {
@@ -912,6 +964,12 @@ class _MainGameScreenState extends State<MainGameScreen> {
           if (!mounted) return false;
         } else if (event.kind == 'sourceFace') {
           _game.applySourceFace(event.face!);
+        } else if (event.kind == 'specialArrival') {
+          if (event.text == 'guardian' && outcome.torchLit) {
+            _torchSteps = 1;
+          }
+          await _playSpecialArrival(event.text!);
+          if (!mounted) return false;
         } else if (event.kind == 'message') {
           await say(presented(event.text!));
           if (!mounted) return false;

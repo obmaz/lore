@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 91,
-    "verified": 1757,
+    "partial": 81,
+    "verified": 1767,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -320,8 +320,7 @@
     },
     {
       "routine": "LORESPEC.PAS:specialevent_part2:1",
-      "verified": 250,
-      "partial": 10
+      "verified": 260
     },
     {
       "routine": "LORESUB.PAS:at:1",
@@ -1668,6 +1667,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/setall_enemy_read_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_special_arrival.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/special_arrival_dos_test.dart"
       ]
     },
     {

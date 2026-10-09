@@ -176,6 +176,12 @@ class ScriptEvent {
   final int? y;
   final int? face;
 
+  const ScriptEvent.specialArrival(String this.text)
+    : kind = 'specialArrival',
+      x = null,
+      y = null,
+      face = null;
+
   const ScriptEvent.message(String this.text)
     : kind = 'message',
       x = null,
@@ -1184,6 +1190,9 @@ class LoreScriptEngine {
           );
         case 'sourceFace':
           events.add(ScriptEvent.sourceFace(step.sourceFace!));
+          break;
+        case 'specialArrival':
+          events.add(ScriptEvent.specialArrival(step.text!));
           break;
         case 'endDemo':
           events.add(const ScriptEvent.endDemo());

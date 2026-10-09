@@ -3274,3 +3274,24 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      통과했다. 새 원본 추출기의 전체 결과 재실행과 원장·gap·source
      memory 최신 상태도 확인했다. pending 저장 오류와 이 묶음을 함께
      main에 푸시한다. 사용자 지정 Git name/email을 그대로 사용한다.
+
+210. **금속 수호자·최종 결전의 등장 연출**
+     LORESPEC의 마지막 partial10개인2017/2019/2020 및
+     2120/2121/2127/2128/2134/2135/2145를 구현한다. 원본 EXE의
+     닫힌 두 연출 조각을30가지 좌표·배경 조건으로 실행하고
+     Delay/PutImage 전 호출의 순서·좌표·font/chara index·COPY/AND/OR를
+     Dart와 대조한다. 원본 고정100stride map 읽기와 반복 제어는
+     변경하지 않는다. 현대 renderer는 font 배경 복원과 합성 CHARA를
+     source pixel 기준으로 확대한다. guardian6초, final actors16초,
+     그 전1500ms씩의 north3/east-until26 이동·face5/6/5를 표시한다.
+     연출 중 입력을 막고 기존 reducer가 좌표를 한 번만 확정한다.
+     횃불은 등장 전에 켜고, 대사·전투·retry·class10·End_Demo 후속은
+     기존 원본 분기를 유지한다. BGI pixel/CPU busy-wait 시간 동등성은
+     주장하지 않는다. 자료는 docs/audits/special_arrival_remaining.md.
+     LORESPEC partial0, 전체 verified1767 / partial81 / unclassified0.
+     전체 회귀·analyze·원본 추출·웹 build 후 main에 푸시한다.
+     배포는 최종 단계로 보류한다.
+     최종 전체 Flutter1829건(3 skip), Python157건, analyze와 웹 release
+     build가 통과했다. 원본 fixture 전체 재실행과 원장·gap·source
+     memory 최신 여부, 등장 전 횃불·입력 차단·전투 진입 후 overlay
+     해제의 추가 화면 검사도 통과했다.

@@ -27,6 +27,7 @@ import 'lore_dialogue_manager.dart';
 import 'bgi_font_decoder.dart';
 import '../logic/lore_load_weather.dart';
 import '../logic/lore_remains_blink.dart';
+import '../logic/lore_special_arrival.dart';
 import 'sprite_sheet.dart';
 
 /// 1993년 원작의 실제 100x100 바이너리 맵(TOWN1.MAP, GROUND1.MAP 등)과
@@ -91,6 +92,26 @@ class LoreGame extends FlameGame {
   (int x, int y)? chamberEntryFrame;
   int? chamberDescentRow;
   LoreRemainsFrame? remainsBlinkFrame;
+  final specialArrivalDraws = <LoreArrivalOp>[];
+
+  void addSpecialArrivalDraw(LoreArrivalOp op) {
+    if (op.kind == 'tile') {
+      final map = currentMap!;
+      RangeError.checkValueInInterval(op.index, 1, map.xmax, 'map x');
+      RangeError.checkValueInInterval(op.operation, 1, map.ymax, 'map y');
+      specialArrivalDraws.add(
+        LoreArrivalOp(
+          'font',
+          op.x,
+          op.y,
+          map.grid[op.operation - 1][op.index - 1],
+          0,
+        ),
+      );
+    } else if (op.kind == 'chara' && op.operation == 2) {
+      specialArrivalDraws.add(op);
+    }
+  }
 
   void showChamberEntryFrame(int x, int y) {
     chamberEntryFrame = (x, y);
@@ -794,6 +815,26 @@ class LoreGame extends FlameGame {
           rect,
           opaqueBackground: true,
         );
+      }
+    }
+
+    for (final draw in specialArrivalDraws) {
+      final rect = Rect.fromLTWH(
+        offsetX + (halfX + (draw.x - 100) / 20) * tileSize,
+        offsetY + (halfY + (draw.y - 100) / 20) * tileSize,
+        tileSize,
+        tileSize,
+      );
+      final isTile = draw.kind == 'font';
+      final index = isTile && draw.index == 0
+          ? LoreTileProtocol.defaultFontSlot(currentMapId)
+          : draw.index;
+      final sheet = SpriteLibrary.instance.get(isTile ? tileFontName : 'CHARA');
+      final font = isTile ? activeTileFont : charaFont;
+      if (sheet != null) {
+        sheet.draw(canvas, index, rect, opaqueBackground: isTile);
+      } else if (font != null) {
+        font.renderSprite(canvas, index, rect, opaqueBackground: isTile);
       }
     }
 

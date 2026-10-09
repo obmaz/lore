@@ -26199,11 +26199,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:61",
@@ -26215,11 +26220,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:133",
@@ -26231,11 +26241,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:62",
@@ -26535,11 +26550,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:143",
@@ -26551,11 +26571,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:69",
@@ -26567,11 +26592,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:144",
@@ -26583,11 +26613,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:70",
@@ -26599,11 +26634,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:if:145",
@@ -26615,11 +26655,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:71",
@@ -26631,11 +26676,16 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/special_arrival_dos_test.dart",
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/logic/lore_spec_procedures.dart",
-      "reviewed_scope": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/logic/lore_special_arrival.dart",
+      "reviewed_scope": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
     },
     {
       "id": "LORESPEC.PAS:specialevent_part2:1:for:72",
@@ -34532,6 +34582,176 @@
     }
   ],
   "linked_contracts": [
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:71",
+      "line": 2145,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:145",
+      "line": 2135,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:70",
+      "line": 2134,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:144",
+      "line": 2128,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:69",
+      "line": 2127,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:143",
+      "line": 2121,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:68",
+      "line": 2120,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:133",
+      "line": 2020,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:61",
+      "line": 2019,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:60",
+      "line": 2017,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
     {
       "id": "LOREMAIN.PAS:enter_swamp:1:for:4",
       "line": 56,
@@ -55359,116 +55579,6 @@
       "supporting_evidence": [],
       "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
       "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:for:60",
-      "line": 2017,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:for:61",
-      "line": 2019,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:if:133",
-      "line": 2020,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:for:68",
-      "line": 2120,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:if:143",
-      "line": 2121,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:for:69",
-      "line": 2127,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:if:144",
-      "line": 2128,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:for:70",
-      "line": 2134,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:if:145",
-      "line": 2135,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LORESPEC.PAS:specialevent_part2:1:for:71",
-      "line": 2145,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/logic/lore_spec_procedures.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for remaining LORESPEC special-event branches. Existing route and map contracts plus the static ownership test retain source boundaries; unplayed map events, CRT prompts, combat continuations, and all effects remain separate evidence.",
-      "verification": "partial"
     }
   ],
   "map_writes": [
@@ -58379,7 +58489,7 @@
     {
       "path": "test/map25_guardian_ui_test.dart",
       "kind": "test",
-      "sha256": "468c45eee344cbc7743bcb45e0f68ab953a293d9d8204a8d1a0159a783e22192",
+      "sha256": "a31a9cd59da2d5ec582c1425bdf7e43805b9a0d5ea0516ca1973448bb148df3b",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -58407,7 +58517,7 @@
     {
       "path": "test/map26_final_ui_test.dart",
       "kind": "test",
-      "sha256": "f649ffcc2d0e35dc26cd6f1688038c20296781f566bf3599d03e1789a520cda6",
+      "sha256": "d68a12b240d7ffb417cca9041494dc9c76fac52e9a2da9315bda8276f6946142",
       "cited_source_files": [
         "LOREENT.PAS",
         "LORESPEC.PAS"
@@ -59076,6 +59186,15 @@
       "path": "test/spec_events_test.dart",
       "kind": "test",
       "sha256": "c7414ba663270383f056a3a6b0dda6820783acde6033337cc6126891784d61fb",
+      "cited_source_files": [
+        "LORESPEC.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/special_arrival_dos_test.dart",
+      "kind": "test",
+      "sha256": "bc07bb23b87c4e231c1e9a7ce3cc02dc921411283a1dab8e4b3d13f34d30955b",
       "cited_source_files": [
         "LORESPEC.PAS"
       ],
@@ -60140,6 +60259,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_special_arrival.json",
+      "kind": "fixture",
+      "sha256": "a64adbba7eb2d498c014f883aaa42c6c72890315f6d938c9e0bbf1bf65aed904",
+      "test_users": [
+        "test/special_arrival_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_spell_arithmetic.json",
       "kind": "fixture",
       "sha256": "72b5a0a8e17ab3fa052f030f0e7843d4660741093e1f34dabdb9d2e9bd1e3465",
@@ -60478,11 +60606,11 @@
     },
     {
       "path": "lib/data/lore_script.dart",
-      "sha256": "e2af4c7c273beb45262ed9d5c4f5eab313fd04bf2a8ea2b2260814d8198a86b0"
+      "sha256": "bb3128c7195e95370dd633bc643fa70d871fc60413a82d60fd9d548e605ec311"
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "77026f9e7709b411de8dcb46f290294017fd67321c191f4509b0e04831fbb0be"
+      "sha256": "baecbdb176d90627a4bb1dc49dad9629b246fcfca13d34a644cbf88f2f956dde"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -60546,7 +60674,7 @@
     },
     {
       "path": "lib/logic/lore_spec_procedures.dart",
-      "sha256": "d446a7d53963cb986a208fa4050538378364cda7bf96c34ab7d5d91515a11451"
+      "sha256": "065da9305463307c4d9e5e4e9f42a2a9561cec1fb2bd660de0241db8e94279f7"
     },
     {
       "path": "lib/logic/lore_portal_session.dart",
@@ -60582,7 +60710,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "9e507afbfb48d82dc4f008974d3c7762e9e687068398bd550ecab18bee78e4b1"
+      "sha256": "5a63c474230869132b43949c50929e8795a8a5039e3ea87bb39032615f30ed44"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -60666,9 +60794,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "b98b7a1d5c60f5d5ccf8d186a57823f4af62652192f1d1829b6450b6ff611e5a",
+      "sha256": "2619c66d7030b7ec2fe6d145d40fc7190fe92110e6bba98b8a3ecd1ab4389979",
       "top_level_counts": {
-        "contracts": 1693
+        "contracts": 1703
       }
     }
   ],
@@ -60677,8 +60805,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 91,
-    "partially_verified_behavior_sites": 91,
+    "unverified_behavior_sites": 81,
+    "partially_verified_behavior_sites": 81,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

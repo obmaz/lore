@@ -84,6 +84,20 @@ void main() {
       final game = await open(tester, 26, 25, 15);
       expect(game.onStepTaken!(), isTrue);
       await tick(tester);
+      expect([game.playerX, game.playerY, game.playerSpriteIndex], [25, 15, 5]);
+      expect(find.byType(ScriptSceneDialog), findsNothing);
+      for (var i = 0; i < 5; i++) {
+        await tester.pump(const Duration(milliseconds: 1500));
+      }
+      expect([game.playerX, game.playerY, game.playerSpriteIndex], [26, 12, 5]);
+      expect(game.specialArrivalDraws.last.index, 26);
+      for (var i = 0; i < 6; i++) {
+        await tester.pump(const Duration(seconds: 1));
+      }
+      for (var i = 0; i < 5; i++) {
+        await tester.pump(const Duration(seconds: 2));
+      }
+      await tick(tester);
       expect([game.playerX, game.playerY, game.playerSpriteIndex], [26, 12, 5]);
       expect(find.byType(BattleViewportView), findsNothing);
       expect(find.byType(EndingView), findsNothing);

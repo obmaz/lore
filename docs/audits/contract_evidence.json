@@ -1,6 +1,176 @@
 {
   "contracts": [
     {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:71",
+      "line": 2145,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:145",
+      "line": 2135,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:70",
+      "line": 2134,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:144",
+      "line": 2128,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:69",
+      "line": 2127,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:143",
+      "line": 2121,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:68",
+      "line": 2120,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:if:133",
+      "line": 2020,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:61",
+      "line": 2019,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
+      "id": "LORESPEC.PAS:specialevent_part2:1:for:60",
+      "line": 2017,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/logic/lore_special_arrival.dart",
+      "test": "test/special_arrival_dos_test.dart",
+      "supporting_evidence": [
+        "tool/export_dos_special_arrival.py",
+        "tool/tests/test_export_dos_special_arrival.py",
+        "test/map25_guardian_ui_test.dart",
+        "test/map26_final_ui_test.dart",
+        "docs/audits/special_arrival_remaining.md"
+      ],
+      "verification": "verified",
+      "note": "Original EXE closed arrival loops, 30 coordinate/background cases, complete ordered Delay/PutImage trace. Modern scaled transparent sprites and async waits retain restore/actor order; BGI pixels and CPU wall-clock timing are excluded. UI blocks input and retains existing battle continuations."
+    },
+    {
       "id": "LOREMAIN.PAS:enter_swamp:1:for:4",
       "line": 56,
       "kind": "for",
@@ -84,7 +254,10 @@
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
       "test": "test/main_tab_palette_dos_test.dart",
-      "supporting_evidence": ["tool/export_dos_main_input_gates.py", "tool/tests/test_export_dos_main_input_gates.py"],
+      "supporting_evidence": [
+        "tool/export_dos_main_input_gates.py",
+        "tool/tests/test_export_dos_main_input_gates.py"
+      ],
       "verification": "verified",
       "note": "Unchanged EXE Tab gate executes for all 256 bytes; only byte9 requests BIOS INT10 AX101B BX0 CX255. Actual desktop/mobile field Tab and a final character-view acknowledgement Tab request grayscale without extra movement, party mutations or RNG; view completion retains its ordinary source tile redispatch draw. Conversion persists over future Navigator modal windows without recreating LoreGame or losing field focus. Explicit modern presentation adapter uses RGB luminance on the whole app instead of BIOS 6-bit DAC entries 0..254/quantization; this closes the request condition and supported app effect, not identical VGA pixels, raw CRT FIFO, unsupported extended-key face writes or campaign parity."
     },
@@ -9946,7 +10119,10 @@
       "classification": "content-rule",
       "implementation": "lib/widgets/battle_viewport_view.dart",
       "test": "test/battle_clear_dos_test.dart",
-      "supporting_evidence": ["tool/export_dos_battle_clear.py", "test/source_battle_flow_ui_test.dart"],
+      "supporting_evidence": [
+        "tool/export_dos_battle_clear.py",
+        "test/source_battle_flow_ui_test.dart"
+      ],
       "verification": "verified",
       "note": "Original unchanged k<>1 conditional executes for all 256 menu-byte results, observing only the Clear platform call. Actual command widgets clear the current message window before magic/cure/ESP submenus, auto/run and cancellation; weapon selection retains it. Automatically assigned follower commands do not issue another menu Clear. MainGameScreen clears current log lines/colours/revision, preserving the separate dialogue history adapter. This closes the selection Clear guard only, not DOS BGI Clear internals, DisplayEnemies backdrop pixels, or the full campaign."
     },

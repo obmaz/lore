@@ -2525,6 +2525,7 @@ class LoreSpecProcedures {
               ),
               ScriptStep(kind: 'torch', torchLit: true),
             ],
+            const ScriptStep(kind: 'specialArrival', text: 'guardian'),
             const ScriptStep(
               kind: 'scene',
               scene: ScriptScene(
@@ -2686,6 +2687,7 @@ class LoreSpecProcedures {
         once: false,
         require: const ScriptRequire(),
         steps: [
+          const ScriptStep(kind: 'specialArrival', text: 'final'),
           const ScriptStep(kind: 'sourceFace', sourceFace: 5),
           for (var i = 1; i <= 3; i++)
             const ScriptStep(kind: 'nudge', nudgeDy: -1),
