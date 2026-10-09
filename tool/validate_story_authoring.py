@@ -16,7 +16,11 @@ def validate(document, catalog=None):
     jsonschema.Draft202012Validator.check_schema(schema)
     jsonschema.Draft202012Validator(schema).validate(document)
     if catalog is None:
-        catalog = json.loads(CATALOG.read_text())
+        if CATALOG.exists():
+            catalog = json.loads(CATALOG.read_text())
+        else:
+            from export_story_material import SOURCE, extract_file, program_files
+            catalog = {"source_units": [extract_file(SOURCE / f"{name}.PAS") for name in program_files()]}
     units = {unit["file"]: unit for unit in catalog["source_units"]}
     literals = {literal["id"]: literal for unit in units.values() for literal in unit["literals"]}
     scenes = {scene["id"] for unit in units.values() for scene in unit["scenes"]}
@@ -200,7 +204,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("paths", nargs="*", type=Path)
     args = parser.parse_args()
-    paths = args.paths or sorted((ROOT / "novel/authoring/drafts").glob("*.json"))
+    paths = args.paths or sorted(path for path in (ROOT / "novel/authoring/drafts").glob("*.json")
+                                if not path.name.endswith(".continuity.json"))
     for path in paths:
         print(f"{path}: {json.dumps(validate(json.loads(path.read_text())), ensure_ascii=False)}")
 

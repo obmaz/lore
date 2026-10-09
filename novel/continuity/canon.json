@@ -1,0 +1,28 @@
+{
+  "version": 1, "revision": 1,
+  "characters": {
+    "protagonist": "이름 미정 주인공",
+    "lord_ahn": "Lord Ahn", "mad_joe": "Mad Joe",
+    "veteran": "특공대에 친구들을 보낸 주점 인물",
+    "prisoner": "Ancient Evil에 관해 증언하는 수감자"
+  },
+  "facts": [
+    {"id": "squad_whereabouts", "revision": 1,
+      "statement": "LORE 특공대의 현재 행방과 생사는 미확정이다.", "kind": "world_fact", "status": "unknown", "attributed_to": null,
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 318, "line_end": 323}], "initial_knowers": []},
+    {"id": "veteran_story", "revision": 1,
+      "statement": "주점 인물은 특공대에 지원한 친구들이 돌아오지 않았으며 자신이 죄책감을 느낀다고 말한다.",
+      "kind": "testimony", "status": "confirmed", "attributed_to": "veteran",
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 89, "line_end": 102}], "initial_knowers": ["veteran"]},
+    {"id": "prisoner_testimony", "revision": 1,
+      "statement": "수감자는 Ancient Evil에 대한 교육과 자신의 경험이 다르다고 주장한다.",
+      "kind": "testimony", "status": "confirmed", "attributed_to": "prisoner",
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 158, "line_end": 190}], "initial_knowers": ["prisoner"]},
+    {"id": "lord_moral_judgment", "revision": 1,
+      "statement": "Lord Ahn의 선악을 이 초안에서 확정하지 않는다.", "kind": "world_fact", "status": "unknown", "attributed_to": null,
+      "evidence": [], "initial_knowers": []},
+    {"id": "joe_join_option", "revision": 1,
+      "statement": "Mad Joe의 합류 요청에는 수락과 거절 선택지가 있다.", "kind": "world_fact", "status": "confirmed", "attributed_to": null,
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 191, "line_end": 219}], "initial_knowers": ["mad_joe"]}
+  ]
+}
