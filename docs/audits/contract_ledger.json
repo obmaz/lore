@@ -14520,11 +14520,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:box:1:if:2",
@@ -14536,11 +14543,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:box:1:if:3",
@@ -14552,11 +14566,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:messagebox:1:if:1",
@@ -14568,11 +14589,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:text_fading:1:for:1",
@@ -14616,11 +14644,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:scroll_sub:1:exit:1",
@@ -14632,11 +14667,18 @@
       "outcomes": null,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:scroll_sub:1:case:1",
@@ -14648,11 +14690,18 @@
       "outcomes": 3,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:scroll_sub:1:for:1",
@@ -14664,11 +14713,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:scroll_sub:1:case:2",
@@ -14680,11 +14736,18 @@
       "outcomes": 3,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:1",
@@ -14744,11 +14807,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:for:2",
@@ -14760,11 +14830,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:for:3",
@@ -14776,11 +14853,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:repeat:1",
@@ -14792,11 +14876,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:repeat:2",
@@ -14808,11 +14899,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:3",
@@ -14824,11 +14922,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:4",
@@ -14840,11 +14945,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:5",
@@ -14856,11 +14968,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:6",
@@ -14872,11 +14991,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:7",
@@ -14888,11 +15014,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:if:8",
@@ -14904,11 +15037,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:for:4",
@@ -14920,11 +15060,18 @@
       "outcomes": 2,
       "classification": "content-rule",
       "behavioral_evidence": [
-        "tool/tests/test_remaining_source_contracts.py"
+        "test/title_intro_dos_test.dart",
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
       ],
-      "verification_status": "partial",
-      "port_handler": "lib/screens/main_game_screen.dart",
-      "reviewed_scope": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence."
+      "verification_status": "verified",
+      "port_handler": "lib/widgets/lore_title_intro.dart",
+      "reviewed_scope": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
     },
     {
       "id": "LOREHELP.PAS:title_menu:1:repeat:3",
@@ -34729,6 +34876,405 @@
     }
   ],
   "linked_contracts": [
+    {
+      "id": "LOREHELP.PAS:title_menu:1:for:4",
+      "line": 259,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:8",
+      "line": 255,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:7",
+      "line": 252,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:6",
+      "line": 250,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:5",
+      "line": 249,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:4",
+      "line": 242,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:if:3",
+      "line": 239,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:repeat:2",
+      "line": 236,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:repeat:1",
+      "line": 231,
+      "kind": "repeat",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:for:3",
+      "line": 228,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:for:2",
+      "line": 211,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:title_menu:1:for:1",
+      "line": 195,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:case:2",
+      "line": 126,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:for:1",
+      "line": 125,
+      "kind": "for",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:case:1",
+      "line": 117,
+      "kind": "case",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:exit:1",
+      "line": 110,
+      "kind": "exit",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:scroll_sub:1:if:1",
+      "line": 110,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:messagebox:1:if:1",
+      "line": 78,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:box:1:if:3",
+      "line": 64,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:box:1:if:2",
+      "line": 56,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
+    {
+      "id": "LOREHELP.PAS:box:1:if:1",
+      "line": 48,
+      "kind": "if",
+      "classification": "content-rule",
+      "implementation": "lib/widgets/lore_title_intro.dart",
+      "test": "test/title_intro_dos_test.dart",
+      "supporting_evidence": [
+        "lib/logic/lore_title_flow.dart",
+        "lib/screens/character_creation_screen.dart",
+        "lib/widgets/lore_guide_dialog.dart",
+        "tool/export_dos_title_intro.py",
+        "tool/tests/test_export_dos_title_intro.py",
+        "test/source_title_input_test.dart",
+        "test/creation_name_keyboard_ui_test.dart"
+      ],
+      "verification": "verified",
+      "note": "Original LOREHELP.PAS instructions replay275 cases: all shadow/bold graphics-call sequences, nested11 boxes,61 title lift steps,25 source paragraph loops and ten persistent keyboard-ready boundaries, plus all256 Scroll_Sub byte selectors. Original REP MOVSB plane output is compared byte-for-byte to the live indexed surface for both valid scroll modes; invalid selectors leave memory unchanged. Source Delay610+52420ms and queued skip keys are checked on the actual intro widget. Original paragraph/caption resources are reused. Flutter glyph rasterization, viewport scaling, EGA latch electronics and wall-clock CPU timing remain modern presentation/device adapters; complete DOS display pixel identity is not asserted. CLI help/create bypass retain separate open contracts."
+    },
     {
       "id": "LORESUB.PAS:eprint:1:if:3",
       "line": 347,
@@ -55597,50 +56143,6 @@
       "verification": "partial"
     },
     {
-      "id": "LOREHELP.PAS:box:1:if:1",
-      "line": 48,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:box:1:if:2",
-      "line": 56,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:box:1:if:3",
-      "line": 64,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:messagebox:1:if:1",
-      "line": 78,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
       "id": "LOREHELP.PAS:text_fading:1:for:1",
       "line": 96,
       "kind": "for",
@@ -55655,61 +56157,6 @@
       "id": "LOREHELP.PAS:text_fading:1:if:1",
       "line": 98,
       "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:scroll_sub:1:if:1",
-      "line": 110,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:scroll_sub:1:exit:1",
-      "line": 110,
-      "kind": "exit",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:scroll_sub:1:case:1",
-      "line": 117,
-      "kind": "case",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:scroll_sub:1:for:1",
-      "line": 125,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:scroll_sub:1:case:2",
-      "line": 126,
-      "kind": "case",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -55743,138 +56190,6 @@
       "id": "LOREHELP.PAS:title_menu:1:goto:1",
       "line": 187,
       "kind": "goto",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:for:1",
-      "line": 195,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:for:2",
-      "line": 211,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:for:3",
-      "line": 228,
-      "kind": "for",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:repeat:1",
-      "line": 231,
-      "kind": "repeat",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:repeat:2",
-      "line": 236,
-      "kind": "repeat",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:3",
-      "line": 239,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:4",
-      "line": 242,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:5",
-      "line": 249,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:6",
-      "line": 250,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:7",
-      "line": 252,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:if:8",
-      "line": 255,
-      "kind": "if",
-      "classification": "content-rule",
-      "implementation": "lib/screens/main_game_screen.dart",
-      "test": "tool/tests/test_remaining_source_contracts.py",
-      "supporting_evidence": [],
-      "note": "Partial source ownership bundle for LOREHELP help, title, box, and fading procedures. The static contract test retains source and port ownership; DOS text timing, keyboard loops, and every help branch remain separate evidence.",
-      "verification": "partial"
-    },
-    {
-      "id": "LOREHELP.PAS:title_menu:1:for:4",
-      "line": 259,
-      "kind": "for",
       "classification": "content-rule",
       "implementation": "lib/screens/main_game_screen.dart",
       "test": "tool/tests/test_remaining_source_contracts.py",
@@ -57681,7 +57996,7 @@
     {
       "path": "test/bootstrap_test.dart",
       "kind": "test",
-      "sha256": "9fe4ad6e6ef6593ae89267e4655b06a92b91b6e9ef5cf18c2262554f95c46482",
+      "sha256": "6e131e164af49dd30b15e5ed016c3d87f048f94f733dddc05fa4d591bc724295",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -57753,7 +58068,7 @@
     {
       "path": "test/creation_class_dos_test.dart",
       "kind": "test",
-      "sha256": "b6c54b72218e0b629fec4fc10edaefff46d65b4acc6a2afa0ecb1f102a24e91e",
+      "sha256": "a8f24c4efe1c7dcaa3dfad17888e3783b6277876d7a99b7329bffa3ad487bb70",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -57762,7 +58077,7 @@
     {
       "path": "test/creation_class_queue_dos_test.dart",
       "kind": "test",
-      "sha256": "f06a2f67a2019c44a31c74c0c54bb2ca2829e54387acd39918cb31a7382da96e",
+      "sha256": "2ee430d6d9bb4754a3960c2ba08f765914d0b9c7913eb6967c4db38052d92e3c",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -57789,7 +58104,7 @@
     {
       "path": "test/creation_name_keyboard_ui_test.dart",
       "kind": "test",
-      "sha256": "cee494a4127d4de19b9cc9e1bd3c96381461a9ddbe000efb67d7a6c4d5ee5bae",
+      "sha256": "fb007bc19639b67aa3828475cd15f2433472903e2f1eb4bf12a5d08332c79c34",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -57807,7 +58122,7 @@
     {
       "path": "test/creation_second_dos_test.dart",
       "kind": "test",
-      "sha256": "a80ddfdf80fcc541cd1e82fdc90a7ac88d3dc531b7c5247457b72811654b1a0e",
+      "sha256": "e2d3879ad26c67d76dd29ba4fc15b48f7dd4874b9f4ae3acc6b10796274f6ee8",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -58255,7 +58570,7 @@
     {
       "path": "test/keyboard_input_test.dart",
       "kind": "test",
-      "sha256": "bbbbfd514a20d16f9b7ff2b6c40c6d139b466b10d3fd5c71cd387b7d6ca700e2",
+      "sha256": "c5179288703115e538ed9884ae9fbfbe2340c19c06eaac48920960dea29dd166",
       "cited_source_files": [
         "LOREMAIN.PAS",
         "LOREMENU.PAS"
@@ -58934,7 +59249,7 @@
     {
       "path": "test/new_game_dos_test.dart",
       "kind": "test",
-      "sha256": "56d5b9c6d17c8827dbea7be920af934129d70165d54ee9057b29c634cfd2ea3b",
+      "sha256": "c4b9d72afd614afb389a311785969948cd7a98dfe3bf74530f3b821130eacafb",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -59399,7 +59714,7 @@
     {
       "path": "test/source_new_game_persistence_test.dart",
       "kind": "test",
-      "sha256": "f6a677c7d4d32d45dec951c585a131db1f307ee7769ea9d255686643e3ac2f8f",
+      "sha256": "44fad3124c318fd26e4d2a385f1ca1e8626550e16998c99a3d25750e5728415b",
       "cited_source_files": [
         "LORECRET.PAS"
       ],
@@ -59495,7 +59810,7 @@
     {
       "path": "test/source_title_input_test.dart",
       "kind": "test",
-      "sha256": "9260daf20a9d4b0e3827489709247f36905a0b446211203b4a928eaabe4341d1",
+      "sha256": "019c2d2d9fd861ca120c0518270b685c5c20efefdf9a5b03f3805f7466d5ae33",
       "cited_source_files": [
         "LORECRET.PAS",
         "LOREHELP.PAS"
@@ -59671,6 +59986,15 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/title_intro_dos_test.dart",
+      "kind": "test",
+      "sha256": "f3376a241db1a1c59b8929cb09984c75ef9689f7648eb59c4f20770dd2978f8c",
+      "cited_source_files": [
+        "LOREHELP.PAS"
+      ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/town_shop_ui_test.dart",
       "kind": "test",
       "sha256": "9dc9c376ede95491d7d5e638fc02d71ba686383af736815390ae002e18937b4b",
@@ -59716,7 +60040,7 @@
     {
       "path": "test/widget_test.dart",
       "kind": "test",
-      "sha256": "0ec7fd3d016afdf41b3f9a1d0b2bc28cf88a1fe9b0e110417da0dccde482be35",
+      "sha256": "081dc24c270ec497bf22d45d688ca6373304273514a3d7f2b53f0df8720501b2",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -60644,6 +60968,15 @@
       "scope": "candidate-evidence; source behavior not inferred from filename"
     },
     {
+      "path": "test/fixtures/dos_title_intro.json",
+      "kind": "fixture",
+      "sha256": "c9f8f2e5a3cd4702adc843f0f5ceb29e3632e0d0b23b0210d8e471ca1ae786c1",
+      "test_users": [
+        "test/title_intro_dos_test.dart"
+      ],
+      "scope": "candidate-evidence; source behavior not inferred from filename"
+    },
+    {
       "path": "test/fixtures/dos_town_tile42.json",
       "kind": "fixture",
       "sha256": "3844a73baa67a67404f08609281a7144173213c163658a9804b35ac8b0b22da0",
@@ -61133,9 +61466,9 @@
     },
     {
       "path": "docs/audits/contract_evidence.json",
-      "sha256": "772b498bc5fd32f99e9203ad2628f62c761bb602320c41eb4b514a6aa21589b7",
+      "sha256": "e2844471ea4eed4b2b56869f4131da7c8df8afc30622cc3bcfa2bb5c930a8292",
       "top_level_counts": {
-        "contracts": 1729
+        "contracts": 1750
       }
     }
   ],
@@ -61144,8 +61477,8 @@
     "missing_registered_maps": 0,
     "orphan_fixtures": 0,
     "unmapped_behavior_sites": 0,
-    "unverified_behavior_sites": 55,
-    "partially_verified_behavior_sites": 55,
+    "unverified_behavior_sites": 34,
+    "partially_verified_behavior_sites": 34,
     "unmapped_map_writes": 123,
     "pascal_constructs_awaiting_semantic_review": {
       "asm": 14,

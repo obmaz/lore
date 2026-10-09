@@ -184,6 +184,8 @@ void main() {
     Future<void> startGame(WidgetTester tester) async {
       SharedPreferences.setMockInitialValues({});
       await tester.pumpWidget(const LoreApp());
+      await tester.pump(const Duration(milliseconds: 53030));
+      await tester.pump();
       await tester.pump(const Duration(milliseconds: 100));
       await tester.tap(find.byKey(const ValueKey('quick-start')));
       await tester.pump(const Duration(milliseconds: 300));

@@ -173,6 +173,8 @@ void main() {
       for (final failure in [false, true]) {
         final store = install({});
         await tester.pumpWidget(LoreApp(key: UniqueKey()));
+        await tester.pump(const Duration(milliseconds: 53030));
+        await tester.pump();
         await tester.pump(const Duration(milliseconds: 100));
         await tester.tap(find.byKey(const ValueKey('quick-start')));
         await tester.pump();

@@ -65,6 +65,8 @@ void main() {
             home: CharacterCreationScreen(onGameStart: (p) => party = p),
           ),
         );
+        await tester.pump(const Duration(milliseconds: 53030));
+        await tester.pump();
         Future<void> key(LogicalKeyboardKey k) async {
           await tester.sendKeyEvent(k);
           await tester.pump(const Duration(milliseconds: 120));
@@ -152,6 +154,8 @@ void main() {
           expect(find.text(c.name), findsOneWidget);
         }
         await key(LogicalKeyboardKey.escape);
+        await tester.pump(const Duration(milliseconds: 53030));
+        await tester.pump();
         expect(find.text('1] 새로운 주인공을 생성 시킴'), findsOneWidget);
         await enterFourth();
         await selectFour();
@@ -180,6 +184,8 @@ void main() {
           home: CharacterCreationScreen(onGameStart: (p) => party = p),
         ),
       );
+      await tester.pump(const Duration(milliseconds: 53030));
+      await tester.pump();
       Future<void> tap(Finder f) async {
         await tester.ensureVisible(f);
         await tester.tap(f);
@@ -220,15 +226,9 @@ void main() {
       await key(
         LogicalKeyboardKey.digit1,
       ); // unavailable Knight (endurance too low)
-      expect(
-        find.text('당신의 계급은 기사 입니다.'),
-        findsNothing,
-      );
+      expect(find.text('당신의 계급은 기사 입니다.'), findsNothing);
       await key(LogicalKeyboardKey.digit2);
-      expect(
-        find.text('당신의 계급은 마법사 입니다.'),
-        findsOneWidget,
-      );
+      expect(find.text('당신의 계급은 마법사 입니다.'), findsOneWidget);
       await key(
         LogicalKeyboardKey.digit5,
       ); // acknowledgement, not a second class choice

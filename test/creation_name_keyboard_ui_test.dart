@@ -39,6 +39,8 @@ void main() {
     await tester.pumpWidget(
       MaterialApp(home: CharacterCreationScreen(onGameStart: (_) {})),
     );
+    await tester.pump(const Duration(milliseconds: 53030));
+    await tester.pump();
     await tester.sendKeyEvent(LogicalKeyboardKey.digit1);
     await tester.pump();
     await tester.sendKeyEvent(LogicalKeyboardKey.keyA, character: 'a');
@@ -76,6 +78,8 @@ void main() {
               home: CharacterCreationScreen(onGameStart: (p) => party = p),
             ),
           );
+          await tester.pump(const Duration(milliseconds: 53030));
+          await tester.pump();
           Future<void> key(LogicalKeyboardKey k, {String? character}) async {
             await tester.sendKeyEvent(k, character: character);
             await tester.pump(const Duration(milliseconds: 50));
@@ -155,6 +159,8 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(home: CharacterCreationScreen(onGameStart: (_) {})),
       );
+      await tester.pump(const Duration(milliseconds: 53030));
+      await tester.pump();
       await tester.tap(find.text('1] 새로운 주인공을 생성 시킴'));
       await tester.pump();
       await tester.pump(const Duration(milliseconds: 5120));

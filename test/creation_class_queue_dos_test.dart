@@ -63,6 +63,8 @@ void main() {
         await tester.pumpWidget(
           MaterialApp(home: CharacterCreationScreen(onGameStart: (_) {})),
         );
+        await tester.pump(const Duration(milliseconds: 53030));
+        await tester.pump();
         Future<void> key(LogicalKeyboardKey k) async {
           await tester.sendKeyEvent(k);
           await tester.pump(const Duration(milliseconds: 120));

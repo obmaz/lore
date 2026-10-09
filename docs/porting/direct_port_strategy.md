@@ -3336,3 +3336,19 @@ LORE.EXE의 정수 Random 루틴과 대조한 LoreRandom이다. 같은 초기 Ra
      Dart에 새로 추가하지 않는다. 이는 실행한 화면 동등성 근거가
      아니며 활성 Scroll/Print의 검증과 구별한다. 회귀3건과 원장 검사로
      근거를 고정한다. 게임 실행 코드 변경 없이 verified1793 / partial55.
+
+214. **타이틀 테두리·팔레트·원본 편지 스크롤**
+     LOREHELP의 Box/MessageBox 네 분기, Scroll_Sub 다섯 제어항목,
+     Title_Menu 연출12개를 직접 연결한다. 원본 EXE의275건을 실행해
+     테두리·그림자·bold 호출 순서, 제목61회/610ms, 편지25줄/52420ms,
+     키 대기10조건과 scroll selector256개를 대조한다. 원본 REP MOVSB
+     결과와 현대 indexed surface의 두 유효 모드를 byte 단위로 비교한다.
+     키 입력은 원본 polling 지점에서 연출만 중단하고 이후 ReadKey에
+     남겨 둔다. Escape로 생성 취소 시 원본 Return_to_Menu처럼 다시
+     타이틀 연출을 진행한다. EXE의25개 원문을 기존 자원과 비교하고
+     재사용한다. Flutter 글꼴·화면 확대·EGA latch hardware는 현대
+     어댑터이며 원본 전체 glyph pixel/CPU 타이밍 동등성은 주장하지
+     않는다. CLI help/create bypass는 별도 미완료 계약으로 남긴다.
+     이21개만 해소하여 verified1814 / partial34가 된다.
+     Flutter1919건(3 skip), Python163건, analyze·웹 release build가
+     통과했다. 전체 원본 추출과 원장·gap·source memory도 최신이다.

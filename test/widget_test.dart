@@ -12,6 +12,8 @@ void main() {
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(const LoreApp());
+    await tester.pump(const Duration(milliseconds: 53030));
+    await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
 
     // 1. 원작 타이틀 화면 렌더링 확인

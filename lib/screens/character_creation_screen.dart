@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'dart:async';
 
+import '../widgets/lore_title_intro.dart';
+
 import 'package:flutter/services.dart';
 
 import '../logic/lore_menu_text.dart';
@@ -39,6 +41,8 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   /// 0: 타이틀, 1: 이름&성별, 2: 성향 문답(원작 First),
   /// 3: 40포인트 분배(Second), 4: 계급 선택(Third), 5: 동료 4명( Fourth)
   int _step = 0;
+  bool _titleFinished = false;
+  final _titleKeys = <KeyEvent>[];
   bool _displayFinished = false;
   bool _dividerFinished = false;
   final _bufferedCreationKeys = <KeyEvent>[];
@@ -515,6 +519,23 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
   }
 
   Widget _buildCurrentStep() {
+    if (_step == 0 && !_titleFinished) {
+      return LoreTitleIntro(
+        onKey: _titleKeys.add,
+        onComplete: () {
+          setState(() => _titleFinished = true);
+          final pending = List<KeyEvent>.of(_titleKeys);
+          _titleKeys.clear();
+          for (final event in pending) {
+            if (_step == 0) {
+              _readTitleKey(event.logicalKey);
+            } else if (_creationBlocking) {
+              _bufferedCreationKeys.add(event);
+            }
+          }
+        },
+      );
+    }
     if (_creationBlocking) {
       final display = _step == 1;
       return LoreCreationAnimation(
@@ -658,6 +679,8 @@ class _CharacterCreationScreenState extends State<CharacterCreationScreen> {
       _sourceName = LoreCreationName();
       _sourceNameActive = false;
       _step = title ? 0 : 1;
+      _titleFinished = !title;
+      _titleKeys.clear();
     });
   }
 

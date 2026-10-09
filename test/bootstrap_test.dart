@@ -1,4 +1,5 @@
 import 'support/legacy_json_fixture_engine.dart';
+
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -134,6 +135,8 @@ void main() {
       WidgetTester tester,
     ) async {
       await tester.pumpWidget(const LoreApp());
+      await tester.pump(const Duration(milliseconds: 53030));
+      await tester.pump();
       await tester.pump(const Duration(milliseconds: 100));
 
       // 타이틀 화면

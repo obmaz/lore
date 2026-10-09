@@ -53,6 +53,8 @@ void main() {
           ),
         ),
       );
+      await tester.pump(const Duration(milliseconds: 53030));
+      await tester.pump();
       Future<void> tap(Finder finder) async {
         await tester.ensureVisible(finder);
         await tester.pump();

@@ -3,8 +3,8 @@
   "summary": {
     "game_control_sites": 1848,
     "unclassified": 0,
-    "partial": 55,
-    "verified": 1793,
+    "partial": 34,
+    "verified": 1814,
     "unmapped_map_writes": 0
   },
   "routines": [
@@ -183,15 +183,15 @@
     },
     {
       "routine": "LOREHELP.PAS:box:1",
-      "partial": 3
+      "verified": 3
     },
     {
       "routine": "LOREHELP.PAS:messagebox:1",
-      "partial": 1
+      "verified": 1
     },
     {
       "routine": "LOREHELP.PAS:scroll_sub:1",
-      "partial": 5
+      "verified": 5
     },
     {
       "routine": "LOREHELP.PAS:text_fading:1",
@@ -199,8 +199,8 @@
     },
     {
       "routine": "LOREHELP.PAS:title_menu:1",
-      "partial": 15,
-      "verified": 6
+      "partial": 3,
+      "verified": 18
     },
     {
       "routine": "LOREMAIN.PAS:enter_lava:1",
@@ -1744,6 +1744,14 @@
       "note_mentions": [],
       "test_candidates": [
         "test/terrain_dos_parity_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_title_intro.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/title_intro_dos_test.dart"
       ]
     },
     {

@@ -72,6 +72,8 @@ void main() {
             ),
           ),
         );
+        await tester.pump(const Duration(milliseconds: 53030));
+        await tester.pump();
         await tester.pump();
       }
 
