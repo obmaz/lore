@@ -1,0 +1,6660 @@
+{
+  "version": 1,
+  "revision": 1,
+  "category": "bestiary",
+  "items": {
+    "enemy_01": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Orc",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 1
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "오크",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 8,
+            "mentality": 0,
+            "endurance": 8,
+            "resistance": 0,
+            "agility": 8,
+            "accuracy_arms": 8,
+            "accuracy_magic": 0,
+            "armor_class": 1,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 1
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 1
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_02": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Troll",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 2
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "트롤",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 9,
+            "mentality": 0,
+            "endurance": 6,
+            "resistance": 0,
+            "agility": 9,
+            "accuracy_arms": 9,
+            "accuracy_magic": 0,
+            "armor_class": 1,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 1
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 2
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_03": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Serpent",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 3
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "서펀트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 7,
+            "mentality": 3,
+            "endurance": 7,
+            "resistance": 0,
+            "agility": 11,
+            "accuracy_arms": 11,
+            "accuracy_magic": 6,
+            "armor_class": 1,
+            "special": 1,
+            "cast_level": 1,
+            "special_cast_level": 0,
+            "level": 1
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 3
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_04": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Earth Worm",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 4
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "어스 웜",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 3,
+            "mentality": 5,
+            "endurance": 5,
+            "resistance": 0,
+            "agility": 6,
+            "accuracy_arms": 11,
+            "accuracy_magic": 7,
+            "armor_class": 1,
+            "special": 0,
+            "cast_level": 1,
+            "special_cast_level": 0,
+            "level": 1
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 4
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_05": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Dwarf",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 5
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "드워프",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 0,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 0,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 2
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 5
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_06": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Giant",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 6
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "자이언트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 0,
+            "endurance": 13,
+            "resistance": 0,
+            "agility": 8,
+            "accuracy_arms": 8,
+            "accuracy_magic": 0,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 2
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 6
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_07": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Phantom",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 7
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "팬텀",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 12,
+            "endurance": 12,
+            "resistance": 0,
+            "agility": 0,
+            "accuracy_arms": 0,
+            "accuracy_magic": 13,
+            "armor_class": 0,
+            "special": 0,
+            "cast_level": 2,
+            "special_cast_level": 0,
+            "level": 2
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 7
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_08": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Wolf",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 8
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "울프",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 7,
+            "mentality": 0,
+            "endurance": 11,
+            "resistance": 0,
+            "agility": 15,
+            "accuracy_arms": 15,
+            "accuracy_magic": 0,
+            "armor_class": 1,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 2
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 8
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_09": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Imp",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 9
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "임프",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 8,
+            "mentality": 8,
+            "endurance": 10,
+            "resistance": 20,
+            "agility": 18,
+            "accuracy_arms": 18,
+            "accuracy_magic": 10,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 2,
+            "special_cast_level": 0,
+            "level": 3
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 9
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_10": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Goblin",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 10
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "고블린",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 11,
+            "mentality": 0,
+            "endurance": 13,
+            "resistance": 0,
+            "agility": 13,
+            "accuracy_arms": 13,
+            "accuracy_magic": 0,
+            "armor_class": 3,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 3
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 10
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_11": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Python",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 11
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "파이선",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 9,
+            "mentality": 5,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 13,
+            "accuracy_arms": 13,
+            "accuracy_magic": 6,
+            "armor_class": 1,
+            "special": 1,
+            "cast_level": 1,
+            "special_cast_level": 0,
+            "level": 3
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 11
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_12": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Insects",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 12
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "인섹츠",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 6,
+            "mentality": 4,
+            "endurance": 8,
+            "resistance": 0,
+            "agility": 14,
+            "accuracy_arms": 14,
+            "accuracy_magic": 15,
+            "armor_class": 2,
+            "special": 1,
+            "cast_level": 1,
+            "special_cast_level": 0,
+            "level": 3
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 12
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_13": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Giant Spider",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 13
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "자이언트 스파이더",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 0,
+            "endurance": 9,
+            "resistance": 0,
+            "agility": 20,
+            "accuracy_arms": 13,
+            "accuracy_magic": 0,
+            "armor_class": 2,
+            "special": 1,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 4
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 13
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_14": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Gremlin",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 14
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "그렘린",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 0,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 0,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 4
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 14
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_15": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Buzz Bug",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 15
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "버즈 버그",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 13,
+            "mentality": 0,
+            "endurance": 11,
+            "resistance": 0,
+            "agility": 15,
+            "accuracy_arms": 15,
+            "accuracy_magic": 0,
+            "armor_class": 1,
+            "special": 1,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 4
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 15
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_16": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Salamander",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 16
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "샐러맨더",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 12,
+            "mentality": 2,
+            "endurance": 13,
+            "resistance": 0,
+            "agility": 12,
+            "accuracy_arms": 12,
+            "accuracy_magic": 10,
+            "armor_class": 3,
+            "special": 1,
+            "cast_level": 1,
+            "special_cast_level": 0,
+            "level": 4
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 16
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_17": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Blood Bat",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 17
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "블러드 배트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 11,
+            "mentality": 0,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 5,
+            "accuracy_arms": 15,
+            "accuracy_magic": 0,
+            "armor_class": 1,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 5
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 17
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_18": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Giant Rat",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 18
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "자이언트 랫",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 13,
+            "mentality": 0,
+            "endurance": 18,
+            "resistance": 0,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 0,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 5
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 18
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_19": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Skeleton",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 19
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "스켈레톤",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 0,
+            "endurance": 19,
+            "resistance": 0,
+            "agility": 12,
+            "accuracy_arms": 12,
+            "accuracy_magic": 0,
+            "armor_class": 3,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 5
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 19
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "skeleton"
+      ]
+    },
+    "enemy_20": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Kelpie",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 20
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "켈피",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 8,
+            "mentality": 13,
+            "endurance": 8,
+            "resistance": 0,
+            "agility": 14,
+            "accuracy_arms": 15,
+            "accuracy_magic": 17,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 5
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 20
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_21": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Gazer",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 21
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "게이저",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 8,
+            "endurance": 11,
+            "resistance": 0,
+            "agility": 20,
+            "accuracy_arms": 15,
+            "accuracy_magic": 15,
+            "armor_class": 3,
+            "special": 0,
+            "cast_level": 2,
+            "special_cast_level": 0,
+            "level": 6
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 21
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_22": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Ghost",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 22
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "고스트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 15,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 0,
+            "accuracy_arms": 0,
+            "accuracy_magic": 15,
+            "armor_class": 0,
+            "special": 0,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 6
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 22
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_23": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Slime",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 23
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "슬라임",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 5,
+            "mentality": 13,
+            "endurance": 5,
+            "resistance": 0,
+            "agility": 19,
+            "accuracy_arms": 19,
+            "accuracy_magic": 19,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 2,
+            "special_cast_level": 0,
+            "level": 6
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 23
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_24": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Rock-Man",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 24
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "록맨",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 19,
+            "mentality": 0,
+            "endurance": 15,
+            "resistance": 0,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 0,
+            "armor_class": 5,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 6
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 24
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_25": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Kobold",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 25
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "코볼드",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 9,
+            "mentality": 9,
+            "endurance": 9,
+            "resistance": 0,
+            "agility": 9,
+            "accuracy_arms": 9,
+            "accuracy_magic": 9,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 7
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 25
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_26": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Mummy",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 26
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "머미",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 10,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 10,
+            "armor_class": 3,
+            "special": 1,
+            "cast_level": 2,
+            "special_cast_level": 0,
+            "level": 7
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 26
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "major_mummy"
+      ]
+    },
+    "enemy_27": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Devil Hunter",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 27
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "데빌 헌터",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 13,
+            "mentality": 10,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 18,
+            "armor_class": 3,
+            "special": 2,
+            "cast_level": 2,
+            "special_cast_level": 0,
+            "level": 7
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 27
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_28": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Crazy One",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 28
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "크레이지 원",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 9,
+            "mentality": 9,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 5,
+            "accuracy_arms": 5,
+            "accuracy_magic": 13,
+            "armor_class": 1,
+            "special": 0,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 7
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 28
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_29": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Ogre",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 29
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "오거",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 19,
+            "mentality": 0,
+            "endurance": 19,
+            "resistance": 0,
+            "agility": 9,
+            "accuracy_arms": 12,
+            "accuracy_magic": 0,
+            "armor_class": 4,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 8
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 29
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_30": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Headless",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 30
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "헤드리스",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 0,
+            "endurance": 15,
+            "resistance": 0,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 0,
+            "armor_class": 3,
+            "special": 2,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 8
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 30
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_31": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Mud-Man",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 31
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "머드맨",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 0,
+            "endurance": 15,
+            "resistance": 0,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 0,
+            "armor_class": 7,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 8
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 31
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_32": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Hell Cat",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 32
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "헬 캣",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 15,
+            "endurance": 11,
+            "resistance": 0,
+            "agility": 18,
+            "accuracy_arms": 18,
+            "accuracy_magic": 16,
+            "armor_class": 2,
+            "special": 2,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 8
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 32
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_33": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Wisp",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 33
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "위스프",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 5,
+            "mentality": 16,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 20,
+            "armor_class": 2,
+            "special": 0,
+            "cast_level": 4,
+            "special_cast_level": 0,
+            "level": 9
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 33
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_34": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Basilisk",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 34
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "바실리스크",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 15,
+            "endurance": 12,
+            "resistance": 0,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 10,
+            "armor_class": 2,
+            "special": 1,
+            "cast_level": 2,
+            "special_cast_level": 0,
+            "level": 9
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 34
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_35": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Sprite",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 35
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "스프라이트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 20,
+            "endurance": 2,
+            "resistance": 80,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 20,
+            "armor_class": 0,
+            "special": 3,
+            "cast_level": 5,
+            "special_cast_level": 0,
+            "level": 9
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 35
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "sphinx"
+      ]
+    },
+    "enemy_36": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Vampire",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 36
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "뱀파이어",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 13,
+            "endurance": 14,
+            "resistance": 20,
+            "agility": 17,
+            "accuracy_arms": 17,
+            "accuracy_magic": 15,
+            "armor_class": 3,
+            "special": 1,
+            "cast_level": 2,
+            "special_cast_level": 0,
+            "level": 9
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 36
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_37": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Molten Monster",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 37
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "몰튼 몬스터",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 8,
+            "mentality": 0,
+            "endurance": 20,
+            "resistance": 50,
+            "agility": 8,
+            "accuracy_arms": 16,
+            "accuracy_magic": 0,
+            "armor_class": 3,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 10
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 37
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_38": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Great Lich",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 38
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "그레이트 리치",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 10,
+            "endurance": 11,
+            "resistance": 10,
+            "agility": 18,
+            "accuracy_arms": 10,
+            "accuracy_magic": 10,
+            "armor_class": 4,
+            "special": 2,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 10
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 38
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_39": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Rampager",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 39
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "램페이저",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 20,
+            "mentality": 0,
+            "endurance": 19,
+            "resistance": 0,
+            "agility": 19,
+            "accuracy_arms": 19,
+            "accuracy_magic": 0,
+            "armor_class": 3,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 10
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 39
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_40": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Mutant",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 40
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "뮤턴트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 10,
+            "endurance": 15,
+            "resistance": 0,
+            "agility": 0,
+            "accuracy_arms": 0,
+            "accuracy_magic": 20,
+            "armor_class": 3,
+            "special": 0,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 10
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 40
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_41": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Rotten Corpse",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 41
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "로튼 코프스",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 15,
+            "endurance": 15,
+            "resistance": 60,
+            "agility": 15,
+            "accuracy_arms": 15,
+            "accuracy_magic": 15,
+            "armor_class": 2,
+            "special": 2,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 11
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 41
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_42": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Gagoyle",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 42
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "가고일",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 0,
+            "endurance": 20,
+            "resistance": 10,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 0,
+            "armor_class": 6,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 11
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 42
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "archigagoyle"
+      ]
+    },
+    "enemy_43": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Wivern",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 43
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "와이번",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 10,
+            "endurance": 9,
+            "resistance": 30,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 9,
+            "armor_class": 3,
+            "special": 2,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 11
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 43
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "wivern"
+      ]
+    },
+    "enemy_44": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Grim Death",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 44
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "그림 데스",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 16,
+            "mentality": 16,
+            "endurance": 16,
+            "resistance": 50,
+            "agility": 16,
+            "accuracy_arms": 16,
+            "accuracy_magic": 16,
+            "armor_class": 2,
+            "special": 2,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 12
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 44
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_45": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Griffin",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 45
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "그리핀",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 15,
+            "endurance": 15,
+            "resistance": 0,
+            "agility": 15,
+            "accuracy_arms": 14,
+            "accuracy_magic": 14,
+            "armor_class": 3,
+            "special": 2,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 12
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 45
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_46": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Evil Soul",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 46
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "이블 소울",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 20,
+            "endurance": 10,
+            "resistance": 0,
+            "agility": 0,
+            "accuracy_arms": 0,
+            "accuracy_magic": 15,
+            "armor_class": 0,
+            "special": 3,
+            "cast_level": 4,
+            "special_cast_level": 0,
+            "level": 12
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 46
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_47": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Cyclops",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 47
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "사이클롭스",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 20,
+            "mentality": 0,
+            "endurance": 20,
+            "resistance": 10,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 0,
+            "armor_class": 4,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 13
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 47
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_48": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Dancing-Swd",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 48
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "댄싱 소드",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 20,
+            "endurance": 6,
+            "resistance": 20,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 20,
+            "armor_class": 0,
+            "special": 2,
+            "cast_level": 4,
+            "special_cast_level": 0,
+            "level": 13
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 48
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_49": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Hydra",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 49
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "히드라",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 10,
+            "endurance": 20,
+            "resistance": 40,
+            "agility": 18,
+            "accuracy_arms": 18,
+            "accuracy_magic": 12,
+            "armor_class": 8,
+            "special": 1,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 13
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 49
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "hidra"
+      ]
+    },
+    "enemy_50": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Stheno",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 50
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "스테노",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 20,
+            "mentality": 20,
+            "endurance": 20,
+            "resistance": 255,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 10,
+            "armor_class": 255,
+            "special": 1,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 14
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 50
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "stheno"
+      ]
+    },
+    "enemy_51": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Euryale",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 51
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "에우리알레",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 20,
+            "mentality": 20,
+            "endurance": 15,
+            "resistance": 255,
+            "agility": 10,
+            "accuracy_arms": 15,
+            "accuracy_magic": 10,
+            "armor_class": 255,
+            "special": 2,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 14
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 51
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "euryale"
+      ]
+    },
+    "enemy_52": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Medusa",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 52
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "메두사",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 10,
+            "endurance": 16,
+            "resistance": 50,
+            "agility": 15,
+            "accuracy_arms": 15,
+            "accuracy_magic": 10,
+            "armor_class": 4,
+            "special": 3,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 14
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 52
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "medusa"
+      ]
+    },
+    "enemy_53": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Minotaur",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 53
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "미노타우르",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 7,
+            "endurance": 20,
+            "resistance": 40,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 15,
+            "armor_class": 10,
+            "special": 0,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 15
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 53
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "minotaur"
+      ]
+    },
+    "enemy_54": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Dragon",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 54
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "드래곤",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 7,
+            "endurance": 20,
+            "resistance": 50,
+            "agility": 18,
+            "accuracy_arms": 20,
+            "accuracy_magic": 15,
+            "armor_class": 9,
+            "special": 2,
+            "cast_level": 4,
+            "special_cast_level": 0,
+            "level": 15
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 54
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "huge_dragon"
+      ]
+    },
+    "enemy_55": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Dark Soul",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 55
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "다크 소울",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 20,
+            "endurance": 40,
+            "resistance": 60,
+            "agility": 0,
+            "accuracy_arms": 0,
+            "accuracy_magic": 20,
+            "armor_class": 0,
+            "special": 0,
+            "cast_level": 5,
+            "special_cast_level": 0,
+            "level": 15
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 55
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_56": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Hell Fire",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 56
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "헬 파이어",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 20,
+            "endurance": 30,
+            "resistance": 30,
+            "agility": 15,
+            "accuracy_arms": 15,
+            "accuracy_magic": 15,
+            "armor_class": 0,
+            "special": 3,
+            "cast_level": 5,
+            "special_cast_level": 0,
+            "level": 16
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 56
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_57": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Astral Mud",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 57
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "아스트랄 머드",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 13,
+            "mentality": 20,
+            "endurance": 25,
+            "resistance": 40,
+            "agility": 19,
+            "accuracy_arms": 19,
+            "accuracy_magic": 10,
+            "armor_class": 9,
+            "special": 3,
+            "cast_level": 4,
+            "special_cast_level": 0,
+            "level": 16
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 57
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "astral_mud"
+      ]
+    },
+    "enemy_58": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Reaper",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 58
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "리퍼",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 20,
+            "endurance": 33,
+            "resistance": 70,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 20,
+            "armor_class": 5,
+            "special": 1,
+            "cast_level": 3,
+            "special_cast_level": 0,
+            "level": 17
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 58
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_59": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Crab God",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 59
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "크랩 갓",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 20,
+            "mentality": 20,
+            "endurance": 30,
+            "resistance": 20,
+            "agility": 18,
+            "accuracy_arms": 18,
+            "accuracy_magic": 19,
+            "armor_class": 7,
+            "special": 2,
+            "cast_level": 4,
+            "special_cast_level": 0,
+            "level": 17
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 59
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "crab_god"
+      ]
+    },
+    "enemy_60": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Wraith",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 60
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "레이스",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 24,
+            "endurance": 35,
+            "resistance": 50,
+            "agility": 15,
+            "accuracy_arms": 0,
+            "accuracy_magic": 20,
+            "armor_class": 2,
+            "special": 3,
+            "cast_level": 4,
+            "special_cast_level": 0,
+            "level": 18
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 60
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_61": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Death Skull",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 61
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "데스 스컬",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 20,
+            "endurance": 40,
+            "resistance": 80,
+            "agility": 0,
+            "accuracy_arms": 0,
+            "accuracy_magic": 20,
+            "armor_class": 0,
+            "special": 2,
+            "cast_level": 5,
+            "special_cast_level": 0,
+            "level": 18
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 61
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_62": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Draconian",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 62
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "드라코니안",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 30,
+            "mentality": 20,
+            "endurance": 30,
+            "resistance": 60,
+            "agility": 18,
+            "accuracy_arms": 18,
+            "accuracy_magic": 18,
+            "armor_class": 7,
+            "special": 2,
+            "cast_level": 5,
+            "special_cast_level": 1,
+            "level": 19
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 62
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "draconian"
+      ]
+    },
+    "enemy_63": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Death Knight",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 63
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "데스 나이트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 35,
+            "mentality": 0,
+            "endurance": 35,
+            "resistance": 50,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 0,
+            "armor_class": 6,
+            "special": 3,
+            "cast_level": 0,
+            "special_cast_level": 1,
+            "level": 19
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 63
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "enemy_64": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Guardian-Lft",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 64
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "가디언 레프트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 25,
+            "mentality": 0,
+            "endurance": 40,
+            "resistance": 70,
+            "agility": 20,
+            "accuracy_arms": 18,
+            "accuracy_magic": 0,
+            "armor_class": 5,
+            "special": 2,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 20
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "guardian_left"
+      ]
+    },
+    "enemy_65": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Guardian-Rgt",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 65
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "가디언 라이트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 25,
+            "mentality": 0,
+            "endurance": 40,
+            "resistance": 40,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 0,
+            "armor_class": 7,
+            "special": 2,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 20
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 65
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "guardian_right"
+      ]
+    },
+    "enemy_66": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Mega-Robo",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 66
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "메가로보",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 40,
+            "mentality": 0,
+            "endurance": 50,
+            "resistance": 0,
+            "agility": 19,
+            "accuracy_arms": 19,
+            "accuracy_magic": 0,
+            "armor_class": 10,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 21
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 66
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "mega_robo"
+      ]
+    },
+    "enemy_67": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Ancient Evil",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 67
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "에인션트 이블",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 0,
+            "mentality": 20,
+            "endurance": 60,
+            "resistance": 100,
+            "agility": 18,
+            "accuracy_arms": 0,
+            "accuracy_magic": 20,
+            "armor_class": 5,
+            "special": 0,
+            "cast_level": 6,
+            "special_cast_level": 2,
+            "level": 22
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 67
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "ancient_evil"
+      ]
+    },
+    "enemy_68": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Lord Ahn",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 68
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "로드 안",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 40,
+            "mentality": 20,
+            "endurance": 60,
+            "resistance": 100,
+            "agility": 35,
+            "accuracy_arms": 20,
+            "accuracy_magic": 20,
+            "armor_class": 10,
+            "special": 3,
+            "cast_level": 5,
+            "special_cast_level": 3,
+            "level": 23
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 68
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "lord_ahn"
+      ]
+    },
+    "enemy_69": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Frost Dragon",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 69
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "프로스트 드래곤",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 15,
+            "mentality": 7,
+            "endurance": 20,
+            "resistance": 50,
+            "agility": 18,
+            "accuracy_arms": 20,
+            "accuracy_magic": 15,
+            "armor_class": 9,
+            "special": 2,
+            "cast_level": 4,
+            "special_cast_level": 0,
+            "level": 24
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 69
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "frost_dragon"
+      ]
+    },
+    "enemy_70": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "ArchiDraconian",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 70
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "아키드라코니안",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 30,
+            "mentality": 20,
+            "endurance": 30,
+            "resistance": 60,
+            "agility": 18,
+            "accuracy_arms": 18,
+            "accuracy_magic": 18,
+            "armor_class": 7,
+            "special": 2,
+            "cast_level": 5,
+            "special_cast_level": 1,
+            "level": 25
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 70
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "false_necromancer",
+        "archidraconian"
+      ]
+    },
+    "enemy_71": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Panzer Viper",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 71
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "팬저 바이퍼",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 35,
+            "mentality": 0,
+            "endurance": 40,
+            "resistance": 80,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 0,
+            "armor_class": 9,
+            "special": 1,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 26
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 71
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "panzer_viper"
+      ]
+    },
+    "enemy_72": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Black Knight",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 72
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "블랙 나이트",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 35,
+            "mentality": 0,
+            "endurance": 35,
+            "resistance": 50,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 0,
+            "armor_class": 6,
+            "special": 3,
+            "cast_level": 0,
+            "special_cast_level": 1,
+            "level": 27
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 72
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "black_knight"
+      ]
+    },
+    "enemy_73": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "ArchiMonk",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 73
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "아키몽크",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 20,
+            "mentality": 0,
+            "endurance": 50,
+            "resistance": 70,
+            "agility": 20,
+            "accuracy_arms": 20,
+            "accuracy_magic": 0,
+            "armor_class": 5,
+            "special": 0,
+            "cast_level": 0,
+            "special_cast_level": 0,
+            "level": 28
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 73
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "archimonk"
+      ]
+    },
+    "enemy_74": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "ArchiMage",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 74
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "아키메이지",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 10,
+            "mentality": 19,
+            "endurance": 30,
+            "resistance": 70,
+            "agility": 10,
+            "accuracy_arms": 10,
+            "accuracy_magic": 19,
+            "armor_class": 4,
+            "special": 0,
+            "cast_level": 6,
+            "special_cast_level": 0,
+            "level": 29
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 74
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "archimage"
+      ]
+    },
+    "enemy_75": {
+      "revision": 1,
+      "category": "enemy_template",
+      "original_name": {
+        "field": "original_name",
+        "value": "Neo-Necromancer",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "FOEDATA.DAT",
+            "record_index": 75
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "네오 네크로맨서",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "original_combat_parameters",
+          "value": {
+            "strength": 40,
+            "mentality": 20,
+            "endurance": 60,
+            "resistance": 100,
+            "agility": 30,
+            "accuracy_arms": 20,
+            "accuracy_magic": 20,
+            "armor_class": 10,
+            "special": 3,
+            "cast_level": 6,
+            "special_cast_level": 3,
+            "level": 30
+          },
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "FOEDATA.DAT",
+              "record_index": 75
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "mechanical_scope",
+          "value": "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 50,
+              "line_end": 64
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "necromancer"
+      ]
+    }
+  }
+}

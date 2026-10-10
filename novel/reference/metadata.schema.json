@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lore.local/novel/reference/metadata.schema.json",
+  "$defs": {
+    "metadata": {"type": "object", "additionalProperties": false,
+      "required": ["addition", "kind", "note", "knowledge_policy"],
+      "properties": {"addition": {"type": "boolean"},
+        "kind": {"enum": ["none", "transliteration", "interpretation", "new_setting", "unknown"]},
+        "note": {"type": "string"}, "knowledge_policy": {"const": "author_reference_not_character_knowledge"}}},
+    "evidence": {"type": "array", "items": {"oneOf": [
+      {"type": "object", "additionalProperties": false, "required": ["file", "line_start", "line_end"],
+        "properties": {"file": {"type": "string"}, "line_start": {"type": "integer", "minimum": 1}, "line_end": {"type": "integer", "minimum": 1}}},
+      {"type": "object", "additionalProperties": false, "required": ["file", "record_index"],
+        "properties": {"file": {"const": "FOEDATA.DAT"}, "record_index": {"type": "integer", "minimum": 1, "maximum": 75}}}
+    ]}},
+    "claim": {"type": "object", "additionalProperties": false,
+      "required": ["field", "value", "origin", "status", "evidence", "metadata"],
+      "properties": {"field": {"type": "string"}, "value": {},
+        "origin": {"enum": ["source_exact", "source_adaptation", "inferred", "authored", "unknown"]},
+        "status": {"enum": ["confirmed", "proposed", "unknown", "disputed"]},
+        "evidence": {"$ref": "#/$defs/evidence"}, "metadata": {"$ref": "#/$defs/metadata"}}}
+  }
+}

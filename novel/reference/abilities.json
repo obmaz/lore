@@ -1,0 +1,4821 @@
+{
+  "version": 1,
+  "revision": 1,
+  "category": "abilities",
+  "items": {
+    "magic_1": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "마법 화살",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 730,
+            "line_end": 730
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "마법 화살",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 730,
+            "line_end": 730
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 1,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 730,
+              "line_end": 730
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_2": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "마법 화구",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 731,
+            "line_end": 731
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "마법 화구",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 731,
+            "line_end": 731
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 2,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 731,
+              "line_end": 731
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_3": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "마법 단창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 732,
+            "line_end": 732
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "마법 단창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 732,
+            "line_end": 732
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 3,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 732,
+              "line_end": 732
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_4": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "독 바늘",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 733,
+            "line_end": 733
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "독 바늘",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 733,
+            "line_end": 733
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 4,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 733,
+              "line_end": 733
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_5": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "맥동 광선",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 734,
+            "line_end": 734
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "맥동 광선",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 734,
+            "line_end": 734
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 5,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 734,
+              "line_end": 734
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_6": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "직격 뇌전",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 735,
+            "line_end": 735
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "직격 뇌전",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 735,
+            "line_end": 735
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 6,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 735,
+              "line_end": 735
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_7": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "공기 폭풍",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 736,
+            "line_end": 736
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "공기 폭풍",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 736,
+            "line_end": 736
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 7,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 736,
+              "line_end": 736
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_8": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "열선 파동",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 737,
+            "line_end": 737
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "열선 파동",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 737,
+            "line_end": 737
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 8,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 737,
+              "line_end": 737
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_9": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "초음파",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 738,
+            "line_end": 738
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "초음파",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 738,
+            "line_end": 738
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 9,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 738,
+              "line_end": 738
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_10": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "초냉기",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 739,
+            "line_end": 739
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "초냉기",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 739,
+            "line_end": 739
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 10,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 739,
+              "line_end": 739
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_11": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "인공 지진",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 740,
+            "line_end": 740
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "인공 지진",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 740,
+            "line_end": 740
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 11,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 740,
+              "line_end": 740
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_12": {
+      "revision": 1,
+      "category": "direct_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "차원 이탈",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 741,
+            "line_end": 741
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "차원 이탈",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 741,
+            "line_end": 741
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 12,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 741,
+              "line_end": 741
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "직접 공격 피해. 이름별 자연현상/차원 서사는 별도 확정하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 172,
+              "line_end": 234
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "단일 대상 처리에서 SP=round(마법 레벨 × 주문 번호² / 2) 소모. 명중 실패, 적 저항, 방어로 피해가 막힐 수 있음. 전체 대상은 별도 반복 처리.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 195,
+              "line_end": 244
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_13": {
+      "revision": 1,
+      "category": "indirect_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "독",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 742,
+            "line_end": 742
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "독",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 742,
+            "line_end": 742
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 13,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 742,
+              "line_end": 742
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "적을 중독시킴",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1091,
+              "line_end": 1103
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "레드 안타레스의 전수 진행과 사용자의 능력이 필요. 전투의 SP 소비/명중/적 저항 검사를 따르며 자동 성공이 아님.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1086,
+              "line_end": 1104
+            },
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 246,
+              "line_end": 360
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "red_antares"
+      ]
+    },
+    "magic_14": {
+      "revision": 1,
+      "category": "indirect_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "기술 무력화",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 743,
+            "line_end": 743
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "기술 무력화",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 743,
+            "line_end": 743
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 14,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 743,
+              "line_end": 743
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "특수 공격 능력 제거",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1091,
+              "line_end": 1103
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "레드 안타레스의 전수 진행과 사용자의 능력이 필요. 전투의 SP 소비/명중/적 저항 검사를 따르며 자동 성공이 아님.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1086,
+              "line_end": 1104
+            },
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 246,
+              "line_end": 360
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "red_antares"
+      ]
+    },
+    "magic_15": {
+      "revision": 1,
+      "category": "indirect_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "방어 무력화",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 744,
+            "line_end": 744
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "방어 무력화",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 744,
+            "line_end": 744
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 15,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 744,
+              "line_end": 744
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "방어력 감소",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1091,
+              "line_end": 1103
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "레드 안타레스의 전수 진행과 사용자의 능력이 필요. 전투의 SP 소비/명중/적 저항 검사를 따르며 자동 성공이 아님.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1086,
+              "line_end": 1104
+            },
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 246,
+              "line_end": 360
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "red_antares"
+      ]
+    },
+    "magic_16": {
+      "revision": 1,
+      "category": "indirect_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "능력 저하",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 745,
+            "line_end": 745
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "능력 저하",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 745,
+            "line_end": 745
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 16,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 745,
+              "line_end": 745
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "모든 능력 감소",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1091,
+              "line_end": 1103
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "레드 안타레스의 전수 진행과 사용자의 능력이 필요. 전투의 SP 소비/명중/적 저항 검사를 따르며 자동 성공이 아님.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1086,
+              "line_end": 1104
+            },
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 246,
+              "line_end": 360
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "red_antares"
+      ]
+    },
+    "magic_17": {
+      "revision": 1,
+      "category": "indirect_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "마법 불능",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 746,
+            "line_end": 746
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "마법 불능",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 746,
+            "line_end": 746
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 17,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 746,
+              "line_end": 746
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "마법 능력 제거",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1091,
+              "line_end": 1103
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "레드 안타레스의 전수 진행과 사용자의 능력이 필요. 전투의 SP 소비/명중/적 저항 검사를 따르며 자동 성공이 아님.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1086,
+              "line_end": 1104
+            },
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 246,
+              "line_end": 360
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "red_antares"
+      ]
+    },
+    "magic_18": {
+      "revision": 1,
+      "category": "indirect_attack",
+      "original_name": {
+        "field": "original_name",
+        "value": "탈 초인화",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 747,
+            "line_end": 747
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "탈 초인화",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 747,
+            "line_end": 747
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 18,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 747,
+              "line_end": 747
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "초자연력 제거",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1091,
+              "line_end": 1103
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "레드 안타레스의 전수 진행과 사용자의 능력이 필요. 전투의 SP 소비/명중/적 저항 검사를 따르며 자동 성공이 아님.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1086,
+              "line_end": 1104
+            },
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 246,
+              "line_end": 360
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "red_antares"
+      ]
+    },
+    "magic_19": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "한명 치료",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 748,
+            "line_end": 748
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "한명 치료",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 748,
+            "line_end": 748
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 19,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 748
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "한명 치료",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_20": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "한명 독 제거",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 749,
+            "line_end": 749
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "한명 독 제거",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 749,
+            "line_end": 749
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 20,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 749,
+              "line_end": 749
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "한명 독 제거",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_21": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "한명 치료와 독제거",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 750,
+            "line_end": 750
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "한명 치료와 독제거",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 750,
+            "line_end": 750
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 21,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 750,
+              "line_end": 750
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "한명 치료와 독제거",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_22": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "한명 의식 돌림",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 751,
+            "line_end": 751
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "한명 의식 돌림",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 751,
+            "line_end": 751
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 22,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 751,
+              "line_end": 751
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "한명 의식 돌림",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_23": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "한명 부활",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 752,
+            "line_end": 752
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "한명 부활",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 752,
+            "line_end": 752
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 23,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 752,
+              "line_end": 752
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "한명 부활",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_24": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "한명 치료와 독제거와 의식돌림",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 753,
+            "line_end": 753
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "한명 치료와 독제거와 의식돌림",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 753,
+            "line_end": 753
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 24,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 753,
+              "line_end": 753
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "한명 치료와 독제거와 의식돌림",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_25": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "한명 복합 치료",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 754,
+            "line_end": 754
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "한명 복합 치료",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 754,
+            "line_end": 754
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 25,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 754,
+              "line_end": 754
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "한명 복합 치료",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_26": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "모두 치료",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 755,
+            "line_end": 755
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "모두 치료",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 755,
+            "line_end": 755
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 26,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 755,
+              "line_end": 755
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "모두 치료",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_27": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "모두 독 제거",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 756,
+            "line_end": 756
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "모두 독 제거",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 756,
+            "line_end": 756
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 27,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 756,
+              "line_end": 756
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "모두 독 제거",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_28": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "모두 치료와 독제거",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 757,
+            "line_end": 757
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "모두 치료와 독제거",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 757,
+            "line_end": 757
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 28,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 757,
+              "line_end": 757
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "모두 치료와 독제거",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_29": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "모두 의식 돌림",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 758,
+            "line_end": 758
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "모두 의식 돌림",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 758,
+            "line_end": 758
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 29,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 758,
+              "line_end": 758
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "모두 의식 돌림",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_30": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "모두 치료와 독제거와 의식돌림",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 759,
+            "line_end": 759
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "모두 치료와 독제거와 의식돌림",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 759,
+            "line_end": 759
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 30,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 759,
+              "line_end": 759
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "모두 치료와 독제거와 의식돌림",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_31": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "모두 부활",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 760,
+            "line_end": 760
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "모두 부활",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 760,
+            "line_end": 760
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 31,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 760,
+              "line_end": 760
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "모두 부활",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_32": {
+      "revision": 1,
+      "category": "healing",
+      "original_name": {
+        "field": "original_name",
+        "value": "모두 복합 치료",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 761,
+            "line_end": 761
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "모두 복합 치료",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 761,
+            "line_end": 761
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 32,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 761,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "모두 복합 치료",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 748,
+              "line_end": 761
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "회복 메뉴에서 사용자의 마법 레벨로 선택 가능한 단계가 제한된다. 대상 수, SP, 독/의식불능/사망 상태별 처리와 부활 비용 검사를 확인한다. 무제한 부활을 뜻하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 43,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_33": {
+      "revision": 1,
+      "category": "phenomena",
+      "original_name": {
+        "field": "original_name",
+        "value": "마법의 햇불",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 762,
+            "line_end": 762
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "마법의 햇불",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 762,
+            "line_end": 762
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 33,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 762,
+              "line_end": 762
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "마법의 횃불 상태를 한 단계 증가시킴",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 250,
+              "line_end": 259
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "sp_cost",
+          "value": 1,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 250,
+              "line_end": 259
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "필드 메뉴의 단계별 선택 제한과 SP 부족 검사를 따른다. 이동/지형 마법에는 위치/경계/지형 제한 및 배척이 있음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 232,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_34": {
+      "revision": 1,
+      "category": "phenomena",
+      "original_name": {
+        "field": "original_name",
+        "value": "공중 부상",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 763,
+            "line_end": 763
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "공중 부상",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 763,
+            "line_end": 763
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 34,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 763,
+              "line_end": 763
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "공중부상 상태를 설정함",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 260,
+              "line_end": 268
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "sp_cost",
+          "value": 5,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 260,
+              "line_end": 268
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "필드 메뉴의 단계별 선택 제한과 SP 부족 검사를 따른다. 이동/지형 마법에는 위치/경계/지형 제한 및 배척이 있음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 232,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_35": {
+      "revision": 1,
+      "category": "phenomena",
+      "original_name": {
+        "field": "original_name",
+        "value": "물위를 걸음",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 764,
+            "line_end": 764
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "물위를 걸음",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 764,
+            "line_end": 764
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 35,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 764,
+              "line_end": 764
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "물 위 걷기 상태를 설정함",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 269,
+              "line_end": 277
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "sp_cost",
+          "value": 10,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 269,
+              "line_end": 277
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "필드 메뉴의 단계별 선택 제한과 SP 부족 검사를 따른다. 이동/지형 마법에는 위치/경계/지형 제한 및 배척이 있음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 232,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_36": {
+      "revision": 1,
+      "category": "phenomena",
+      "original_name": {
+        "field": "original_name",
+        "value": "늪위를 걸음",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 765,
+            "line_end": 765
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "늪위를 걸음",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 765,
+            "line_end": 765
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 36,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 765,
+              "line_end": 765
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "늪 위 걷기 상태를 설정함",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 278,
+              "line_end": 286
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "sp_cost",
+          "value": 20,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 278,
+              "line_end": 286
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "필드 메뉴의 단계별 선택 제한과 SP 부족 검사를 따른다. 이동/지형 마법에는 위치/경계/지형 제한 및 배척이 있음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 232,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_37": {
+      "revision": 1,
+      "category": "phenomena",
+      "original_name": {
+        "field": "original_name",
+        "value": "기화 이동",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 766,
+            "line_end": 766
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "기화 이동",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 766,
+            "line_end": 766
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 37,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 766,
+              "line_end": 766
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "방향을 선택해 두 칸 기화 이동. 경계와 지형 검사, 마법 배척이 존재함",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 287,
+              "line_end": 335
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "sp_cost",
+          "value": 25,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 287,
+              "line_end": 335
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "필드 메뉴의 단계별 선택 제한과 SP 부족 검사를 따른다. 이동/지형 마법에는 위치/경계/지형 제한 및 배척이 있음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 232,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_38": {
+      "revision": 1,
+      "category": "phenomena",
+      "original_name": {
+        "field": "original_name",
+        "value": "지형 변화",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 767,
+            "line_end": 767
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "지형 변화",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 767,
+            "line_end": 767
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 38,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 767,
+              "line_end": 767
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "선택한 방향의 지형을 변화시킴. 변경 불가능한 지역을 검사함",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 330,
+              "line_end": 370
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "sp_cost",
+          "value": 30,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 330,
+              "line_end": 370
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "필드 메뉴의 단계별 선택 제한과 SP 부족 검사를 따른다. 이동/지형 마법에는 위치/경계/지형 제한 및 배척이 있음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 232,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_39": {
+      "revision": 1,
+      "category": "phenomena",
+      "original_name": {
+        "field": "original_name",
+        "value": "공간 이동",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 768,
+            "line_end": 768
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "공간 이동",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 768,
+            "line_end": 768
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 39,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 768,
+              "line_end": 768
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "방향과 거리를 선택해 공간 이동. 위치/지형 제한과 마법 배척이 존재함",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 371,
+              "line_end": 470
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "sp_cost",
+          "value": 50,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 371,
+              "line_end": 470
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "필드 메뉴의 단계별 선택 제한과 SP 부족 검사를 따른다. 이동/지형 마법에는 위치/경계/지형 제한 및 배척이 있음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 232,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_40": {
+      "revision": 1,
+      "category": "phenomena",
+      "original_name": {
+        "field": "original_name",
+        "value": "식량 제조",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 769,
+            "line_end": 769
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "식량 제조",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 769,
+            "line_end": 769
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 40,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 769,
+              "line_end": 769
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "현재 일행 수만큼 식량을 증가시킴. 소지 식량 상한은 255",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 471,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "sp_cost",
+          "value": 30,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 471,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "필드 메뉴의 단계별 선택 제한과 SP 부족 검사를 따른다. 이동/지형 마법에는 위치/경계/지형 제한 및 배척이 있음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 232,
+              "line_end": 498
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "magic_41": {
+      "revision": 1,
+      "category": "extrasense",
+      "original_name": {
+        "field": "original_name",
+        "value": "투시",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 770,
+            "line_end": 770
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "투시",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 770,
+            "line_end": 770
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 41,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 770,
+              "line_end": 770
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "변화의 여지가 있는 지역 탐지",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1285,
+              "line_end": 1293
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "ESP와 초자연력 레벨/상태/위치 검사에 따름. 필드와 전투 처리도 구분한다. 독심으로 모든 동료를 자동 영입하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 700,
+              "line_end": 867
+            },
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1208,
+              "line_end": 1268
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "spica"
+      ]
+    },
+    "magic_42": {
+      "revision": 1,
+      "category": "extrasense",
+      "original_name": {
+        "field": "original_name",
+        "value": "예언",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 771,
+            "line_end": 771
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "예언",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 771,
+            "line_end": 771
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 42,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 771,
+              "line_end": 771
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "다음 할 일을 알아냄",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1285,
+              "line_end": 1293
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "ESP와 초자연력 레벨/상태/위치 검사에 따름. 필드와 전투 처리도 구분한다. 독심으로 모든 동료를 자동 영입하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 700,
+              "line_end": 867
+            },
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1208,
+              "line_end": 1268
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "spica"
+      ]
+    },
+    "magic_43": {
+      "revision": 1,
+      "category": "extrasense",
+      "original_name": {
+        "field": "original_name",
+        "value": "독심",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 772,
+            "line_end": 772
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "독심",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 772,
+            "line_end": 772
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 43,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 772,
+              "line_end": 772
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "남의 마음을 자기 쪽으로 끌어들임. 모든 인물의 생각을 무제한 열람하는 것으로 확장하지 않음",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1285,
+              "line_end": 1293
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "ESP와 초자연력 레벨/상태/위치 검사에 따름. 필드와 전투 처리도 구분한다. 독심으로 모든 동료를 자동 영입하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 700,
+              "line_end": 867
+            },
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1208,
+              "line_end": 1268
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "spica"
+      ]
+    },
+    "magic_44": {
+      "revision": 1,
+      "category": "extrasense",
+      "original_name": {
+        "field": "original_name",
+        "value": "천리안",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 773,
+            "line_end": 773
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "천리안",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 773,
+            "line_end": 773
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 44,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 773,
+              "line_end": 773
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "능력에 따라 먼 곳의 광경을 봄",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1285,
+              "line_end": 1293
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "ESP와 초자연력 레벨/상태/위치 검사에 따름. 필드와 전투 처리도 구분한다. 독심으로 모든 동료를 자동 영입하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREMENU.PAS",
+              "line_start": 700,
+              "line_end": 867
+            },
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1208,
+              "line_end": 1268
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "spica"
+      ]
+    },
+    "magic_45": {
+      "revision": 1,
+      "category": "extrasense",
+      "original_name": {
+        "field": "original_name",
+        "value": "염력",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 774,
+            "line_end": 774
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "염력",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 774,
+            "line_end": 774
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 45,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 774,
+              "line_end": 774
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "effect",
+          "value": "주위 환경을 조절하여 공격",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1285,
+              "line_end": 1293
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "conditions",
+          "value": "ESP와 초자연력 레벨/상태/위치 검사에 따름. 필드와 전투 처리도 구분한다. 독심으로 모든 동료를 자동 영입하지 않음.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREBATT.PAS",
+              "line_start": 360,
+              "line_end": 526
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "spica"
+      ]
+    }
+  }
+}

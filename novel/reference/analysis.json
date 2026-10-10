@@ -1,0 +1,2386 @@
+{
+  "version": 1,
+  "revision": 1,
+  "note": "수동 검토한 분석 입력. source_role은 원작 행동/대사의 요약이고 trait은 집필 해석(미승인)이다. 미상은 창작으로 메우지 않는다. 출력 파일을 직접 고치지 말고 이 입력을 수정한다.",
+  "phonetics": {
+    "Lord Ahn": "로드 안",
+    "Mad Joe": "매드 조",
+    "Polaris": "폴라리스",
+    "Lore Hunter": "로어 헌터",
+    "Rigel": "리겔",
+    "Red Antares": "레드 안타레스",
+    "Jr. Antares": "주니어 안타레스",
+    "Draconian": "드라코니안",
+    "Necromancer": "네크로맨서",
+    "Ancient Evil": "에인션트 이블",
+    "Hercules": "헤라클레스",
+    "Titan": "타이탄",
+    "Merlin": "멀린",
+    "Betelgeuse": "베텔게우스",
+    "Genius Kie": "지니어스 키",
+    "Bellatrix": "벨라트릭스",
+    "Regulus": "레굴루스",
+    "Procyon": "프로키온",
+    "Arcturus": "아크투루스",
+    "Algol": "알골",
+    "Spica": "스피카",
+    "Sphinx": "스핑크스",
+    "Major Mummy": "메이저 머미",
+    "ArchiGagoyle": "아키가고일",
+    "Hidra": "히드라",
+    "Huge Dragon": "휴즈 드래곤"
+  },
+  "enemy_phonetics": [
+    "오크",
+    "트롤",
+    "서펀트",
+    "어스 웜",
+    "드워프",
+    "자이언트",
+    "팬텀",
+    "울프",
+    "임프",
+    "고블린",
+    "파이선",
+    "인섹츠",
+    "자이언트 스파이더",
+    "그렘린",
+    "버즈 버그",
+    "샐러맨더",
+    "블러드 배트",
+    "자이언트 랫",
+    "스켈레톤",
+    "켈피",
+    "게이저",
+    "고스트",
+    "슬라임",
+    "록맨",
+    "코볼드",
+    "머미",
+    "데빌 헌터",
+    "크레이지 원",
+    "오거",
+    "헤드리스",
+    "머드맨",
+    "헬 캣",
+    "위스프",
+    "바실리스크",
+    "스프라이트",
+    "뱀파이어",
+    "몰튼 몬스터",
+    "그레이트 리치",
+    "램페이저",
+    "뮤턴트",
+    "로튼 코프스",
+    "가고일",
+    "와이번",
+    "그림 데스",
+    "그리핀",
+    "이블 소울",
+    "사이클롭스",
+    "댄싱 소드",
+    "히드라",
+    "스테노",
+    "에우리알레",
+    "메두사",
+    "미노타우르",
+    "드래곤",
+    "다크 소울",
+    "헬 파이어",
+    "아스트랄 머드",
+    "리퍼",
+    "크랩 갓",
+    "레이스",
+    "데스 스컬",
+    "드라코니안",
+    "데스 나이트",
+    "가디언 레프트",
+    "가디언 라이트",
+    "메가로보",
+    "에인션트 이블",
+    "로드 안",
+    "프로스트 드래곤",
+    "아키드라코니안",
+    "팬저 바이퍼",
+    "블랙 나이트",
+    "아키몽크",
+    "아키메이지",
+    "네오 네크로맨서"
+  ],
+  "enrichment": {
+    "protagonist": {
+      "source_claims": [
+        {
+          "field": "prophecy_testimony",
+          "value": "예언서는 에인션트 이블이 네크로맨서에 대항할 희생물로 당신을 창조했다고 설명한다. 예언서를 읽기 전 주인공이 이미 아는 과거로 서술하지 않는다.",
+          "ranges": [
+            [
+              "LORESPEC.PAS",
+              768,
+              788
+            ]
+          ]
+        }
+      ]
+    },
+    "castle_guide": {
+      "trait": "용건을 간결하게 전달하는 안내자.",
+      "speech": "먼저 성주를 만나라고 권하는 짧은 안내형 말투."
+    },
+    "veteran": {
+      "trait": "동료를 잃었다고 믿으며 생존에 죄책감을 느끼는 회고적 인물."
+    },
+    "prisoner": {
+      "occupation": "기사였다고 증언함",
+      "trait": "통설과 자신의 경험 사이의 불일치를 지적하는 의심 많은 증언자."
+    },
+    "lord_ahn": {
+      "occupation": "성주",
+      "trait": "임무와 보상으로 일행을 시험하고 움직이는 지휘자.",
+      "speech": "하오체로 재앙의 배경을 길게 설명하며 임무를 제시함.",
+      "source_claims": [
+        {
+          "field": "prophecy_testimony",
+          "value": "발견한 예언서는 로드 안을 선의 상징으로, 에인션트 이블을 그의 대립자이자 깊은 관계를 가진 존재로 설명하며 둘을 Semi-God 계급으로 분류한다. 이는 예언서가 전달하는 설명이다.",
+          "ranges": [
+            [
+              "LORESPEC.PAS",
+              730,
+              739
+            ],
+            [
+              "LORESPEC.PAS",
+              780,
+              788
+            ]
+          ]
+        }
+      ],
+      "templates": [
+        68
+      ]
+    },
+    "mad_joe": {
+      "occupation": "떠돌이",
+      "trait": "수감된 처지에서 벗어나 동행하려는 적극성이 드러남. 다른 수감자의 광기 평가는 증언이지 객관적 진단이 아님.",
+      "speech": "합류를 요청하는 말투. 광기 표현을 대사 전부에 임의로 추가하지 않음.",
+      "equipment": [
+        "weapon_0"
+      ]
+    },
+    "polaris": {
+      "occupation": "전사",
+      "trait": "메이저 머미를 함께 물리치려는 협력적이고 목적 지향적인 태도.",
+      "equipment": [
+        "weapon_4",
+        "shield_1",
+        "armor_1"
+      ]
+    },
+    "lore_hunter": {
+      "occupation": "사냥꾼 / LORE 특공대 대장이라는 자기소개",
+      "trait": "혼자서는 적을 상대하기 어렵다고 인정하고 새로운 동료를 기다리는 현실적인 지휘자.",
+      "equipment": [
+        "weapon_5",
+        "shield_2",
+        "armor_1"
+      ]
+    },
+    "rigel": {
+      "occupation": "사냥꾼",
+      "trait": "도움을 받은 경로에서 무기에 축복을 내리는 보은의 태도. 치료/영입 선택에 따라 후속 상태가 다름.",
+      "extra_ranges": [
+        [
+          "LORESPEC.PAS",
+          601,
+          658
+        ]
+      ],
+      "equipment": [
+        "weapon_4",
+        "shield_1",
+        "armor_1"
+      ]
+    },
+    "red_antares": {
+      "occupation": "고대 마법사였다고 말하는 혼령",
+      "species": "육신 없는 영",
+      "trait": "일행의 부족한 능력을 지적하면서 자신의 기법을 전수하는 엄격한 조력자.",
+      "source_role": "고대에 세계를 통치했던 마법사라고 말하며 간접 공격 6종을 가르친다. 조건부 합류 시 class=9, hp=0이다.",
+      "extra_ranges": [
+        [
+          "LORESPEC.PAS",
+          1026,
+          1104
+        ]
+      ],
+      "abilities": [
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "equipment": [
+        "weapon_0"
+      ]
+    },
+    "jr_antares": {
+      "name_ranges": [
+        [
+          "LORETALK.PAS",
+          105,
+          129
+        ]
+      ],
+      "occupation": "생전 기사였다고 증언함",
+      "species": "영혼",
+      "trait": "자신과 아버지의 사연을 전하는 회고적 증언자.",
+      "extra_ranges": [
+        [
+          "LORETALK.PAS",
+          103,
+          129
+        ]
+      ]
+    },
+    "draconian": {
+      "occupation": "은둔 연구자 / 천문학 연구",
+      "species": "인간과 드래곤의 중간 종족",
+      "trait": "학문적 설명을 길게 이어가며 운명에 따라 합류 여부를 판단하는 사색적 태도.",
+      "speech": "하오체의 긴 학문적 설명. 차원 이론은 본인의 설명으로 서술함.",
+      "source_role": "피라미드의 은둔자로 네크로맨서의 차원 이동을 설명하고 조건에 따라 영입을 제안한다. 던전 입구에서 동료로 있으면 아키드라코니안의 습격을 받는다.",
+      "extra_ranges": [
+        [
+          "LORESPEC.PAS",
+          44,
+          146
+        ]
+      ],
+      "templates": [
+        62
+      ]
+    },
+    "necromancer": {
+      "occupation": "마법과 초자연력을 사용하는 최종 적",
+      "trait": "상대를 도전자라 부르는 자부심과 차원의 운명에 대한 비참함이 함께 드러남.",
+      "speech": "전투 전에는 소개와 도전을, 패배 후에는 탈출과 차원의 반복을 길게 이야기함.",
+      "source_role": "최종 결전에서 아키몽크와 아키메이지를 소개한다. 패배 뒤 블랙홀을 통한 탈출을 말하고 End_Demo로 이어진다. 사망으로 단정하지 않는다.",
+      "extra_ranges": [
+        [
+          "LORESPEC.PAS",
+          2154,
+          2200
+        ]
+      ],
+      "templates": [
+        75
+      ]
+    },
+    "ancient_evil": {
+      "occupation": "봉인 위치를 안내하는 존재",
+      "species": "육신 없는 영이라는 자기소개",
+      "trait": "일행에게 해야 할 일과 위험을 안내한다. 이름의 Evil만으로 모든 행동을 악행으로 단정하지 않음.",
+      "source_role": "로드 안과의 만남을 언급하고 EVIL GOD의 크랩 갓 및 MUDDY의 아스트랄 머드와 봉인 위치를 설명한다.",
+      "source_claims": [
+        {
+          "field": "prophecy_testimony",
+          "value": "예언서에 따르면 본명 미상의 현자로 스스로 악의 표상을 맡았지만 실제로 사람을 해치지 않았고 본심은 선에 있다. 육신이 없어 네크로맨서와 직접 대항하기 어렵기에 미래의 역사를 뒤틀어 그와 싸울 당신을 창조했다는 설명이 이어진다. 예언서의 정보와 이를 알게 되는 시점을 구분한다.",
+          "ranges": [
+            [
+              "LORESPEC.PAS",
+              730,
+              788
+            ]
+          ]
+        },
+        {
+          "field": "shelter_testimony",
+          "value": "로드 안은 IMPERIUM MINOR 지하의 피난 도시가 에인션트 이블의 영적인 힘으로 보호되어 적이 침략하지 못한다고 설명한다.",
+          "ranges": [
+            [
+              "LOREENT.PAS",
+              239,
+              256
+            ]
+          ]
+        }
+      ],
+      "extra_ranges": [
+        [
+          "LORESPEC.PAS",
+          155,
+          184
+        ]
+      ],
+      "templates": [
+        67
+      ]
+    }
+  },
+  "new_characters": [
+    {
+      "id": "spica",
+      "name": "Spica",
+      "kind": "optional_companion",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1208,
+          1296
+        ]
+      ],
+      "occupation": "에스퍼 / 수도자",
+      "gender": "female",
+      "source_role": "LOCKUP에서 수도하며 초자연력 다섯 가지를 설명한다. 전투 관련 진행 조건, 독심 상태와 초자연력 레벨 검사, 수락 여부에 따라 영입할 수 있다.",
+      "trait": "신속한 행동을 권하고 초자연력 사용법을 체계적으로 설명하는 수행자.",
+      "abilities": [
+        41,
+        42,
+        43,
+        44,
+        45
+      ],
+      "equipment": [
+        "weapon_1",
+        "shield_1",
+        "armor_1"
+      ]
+    },
+    {
+      "id": "major_mummy",
+      "name": "Major Mummy",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          527,
+          558
+        ]
+      ],
+      "templates": [
+        26
+      ],
+      "source_role": "PYRAMID의 임무 보스. 스핑크스 두 개체와 함께 등장하며 이름과 일부 전투 데이터가 원본 머미 템플릿에서 변경된다."
+    },
+    {
+      "id": "sphinx",
+      "name": "Sphinx",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          527,
+          545
+        ]
+      ],
+      "templates": [
+        35
+      ],
+      "source_role": "메이저 머미와 함께 등장하는 두 호위 개체. Sprite 템플릿을 사용하지만 표시 이름은 Sphinx로 변경된다."
+    },
+    {
+      "id": "archigagoyle",
+      "name": "ArchiGagoyle",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          942,
+          970
+        ]
+      ],
+      "templates": [
+        42
+      ],
+      "source_role": "QUAKE의 임무 보스. Gagoyle 템플릿에서 이름이 변경되며 Zombie로 이름을 바꾼 호위 둘과 등장한다."
+    },
+    {
+      "id": "wivern",
+      "name": "Wivern",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          980,
+          1006
+        ]
+      ],
+      "templates": [
+        43
+      ],
+      "source_role": "WIVERN 동굴에서 등장하는 와이번. 원작의 Wivern 철자를 보존한다."
+    },
+    {
+      "id": "hidra",
+      "name": "Hidra",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1116,
+          1171
+        ]
+      ],
+      "templates": [
+        49
+      ],
+      "source_role": "NOTICE의 임무 보스. 전투에서는 여러 머리의 별도 슬롯을 사용한다. 원문 Hidra와 기본 템플릿 Hydra의 철자 차이를 보존한다."
+    },
+    {
+      "id": "huge_dragon",
+      "name": "Huge Dragon",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1298,
+          1360
+        ]
+      ],
+      "templates": [
+        54
+      ],
+      "source_role": "LOCKUP의 임무 보스. Dragon 템플릿을 이름 변경하며 Dragon's tail은 별도 적 슬롯으로 처리한다. 꼬리를 독립 인물로 집필하지 않는다."
+    },
+    {
+      "id": "stheno",
+      "name": "Stheno",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          791,
+          811
+        ],
+        [
+          "LORETALK.PAS",
+          596,
+          606
+        ]
+      ],
+      "templates": [
+        50
+      ],
+      "source_role": "고르곤 3개체 중 하나. 스테노와 에우리알레가 거의 불멸이라는 설명은 마을 인물의 증언이다."
+    },
+    {
+      "id": "euryale",
+      "name": "Euryale",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          791,
+          811
+        ],
+        [
+          "LORETALK.PAS",
+          596,
+          606
+        ]
+      ],
+      "templates": [
+        51
+      ],
+      "source_role": "고르곤 3개체 중 하나. 거의 불멸이라는 증언을 모든 공격에 대한 절대 불사 설정으로 확장하지 않는다."
+    },
+    {
+      "id": "medusa",
+      "name": "Medusa",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          791,
+          811
+        ],
+        [
+          "LORETALK.PAS",
+          596,
+          606
+        ]
+      ],
+      "templates": [
+        52
+      ],
+      "source_role": "고르곤 3개체 중 하나. 이름만으로 신화의 모든 능력과 혈연을 추가하지 않는다."
+    },
+    {
+      "id": "minotaur",
+      "name": "Minotaur",
+      "kind": "creature",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1189,
+          1206
+        ],
+        [
+          "LORETALK.PAS",
+          586,
+          595
+        ]
+      ],
+      "templates": [
+        53
+      ],
+      "source_role": "LOCKUP 등 미로에서 소를 닮은 괴물로 등장한다. 네크로맨서의 부하가 아니라는 설명은 마을 대화의 증언이다."
+    },
+    {
+      "id": "crab_god",
+      "name": "Crab God",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          165,
+          169
+        ],
+        [
+          "LORESPEC.PAS",
+          1621,
+          1658
+        ]
+      ],
+      "templates": [
+        59
+      ],
+      "source_role": "EVIL GOD의 봉인에 관련된 보스. 에인션트 이블은 무리를 이뤄 다니는 점을 위험으로 설명한다."
+    },
+    {
+      "id": "astral_mud",
+      "name": "Astral Mud",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1721,
+          1745
+        ]
+      ],
+      "templates": [
+        57
+      ],
+      "source_role": "네크로맨서와 다른 차원에서 왔다고 자칭하는 MUDDY의 보스. 보스 사망 검사 뒤 봉인을 발견하고 푼다.",
+      "trait": "자신의 차원 능력을 과시하고 상대를 얕보는 위협적 태도."
+    },
+    {
+      "id": "false_necromancer",
+      "name": "Necromancer",
+      "kind": "antagonist",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1895,
+          1965
+        ]
+      ],
+      "templates": [
+        70
+      ],
+      "source_role": "네크로맨서라고 사칭하며 일행을 환상 속의 자기 일행과 싸우게 한다. 패배 후 진짜가 아니라고 밝히고 죽는다. 최종 네크로맨서와 다른 개체.",
+      "trait": "사칭과 약점 지적을 이용하는 기만적 태도. 마지막에는 네크로맨서에 대한 충성을 외침."
+    },
+    {
+      "id": "archidraconian",
+      "name": "ArchiDraconian",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          283,
+          319
+        ]
+      ],
+      "templates": [
+        70
+      ],
+      "source_role": "DUNGEON OF EVIL 입구의 전투. 동료 드라코니안이 여섯 번째 슬롯에 있으면 습격받아 hp=0, unconscious=1, dead=30000으로 설정된다. 카운터를 나이로 읽지 않는다.",
+      "trait": "네크로맨서에 반기를 든 동족을 처벌 대상으로 보는 충성심과 배타성이 드러남.",
+      "speech": "동족의 반역을 죽음으로 위협하는 직접적이고 격한 대치 장면의 말투."
+    },
+    {
+      "id": "panzer_viper",
+      "name": "Panzer Viper",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2020,
+          2065
+        ]
+      ],
+      "templates": [
+        71
+      ],
+      "source_role": "던전의 적. 메가로보 네 개체와 함께 싸운다. 승리 뒤 로드 안과 에인션트 이블이 나타나 레버 단서를 전한다.",
+      "trait": "네크로맨서가 수고하지 않도록 일행을 미리 처단하겠다는 대치 장면에서 충성심과 적대적 경멸이 드러남.",
+      "speech": "해당 전투 직전에는 일행을 쓰레기라고 부르며 처단을 선언한다. 대사의 개별 화자 지정은 원문에 없으므로 보스의 말투 해석으로만 사용한다."
+    },
+    {
+      "id": "black_knight",
+      "name": "Black Knight",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          323,
+          350
+        ]
+      ],
+      "templates": [
+        72
+      ],
+      "source_role": "최종 방 진입 전 전투에서 데스 나이트 다섯 개체와 함께 등장한다.",
+      "speech": "이 대치 장면의 도발은 두말이 필요없다며 덤비라고 하는 짧고 공격적인 표현이다. 개별 화자는 원문에서 지정되지 않아 블랙 나이트의 말투로 쓰는 것은 집필 해석이다."
+    },
+    {
+      "id": "archimonk",
+      "name": "ArchiMonk",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2154,
+          2167
+        ]
+      ],
+      "templates": [
+        73
+      ],
+      "source_role": "네크로맨서가 맨손 무예의 일인자로 소개하는 최종 결전 상대.",
+      "occupation": "맨손 무예가라는 소개",
+      "equipment": [
+        "weapon_0"
+      ]
+    },
+    {
+      "id": "archimage",
+      "name": "ArchiMage",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2154,
+          2167
+        ]
+      ],
+      "templates": [
+        74
+      ],
+      "source_role": "네크로맨서가 마법사 중의 마법사로 소개하는 최종 결전 상대. 사용 주문 전체를 임의로 확정하지 않는다.",
+      "occupation": "마법사라는 소개"
+    },
+    {
+      "id": "frost_dragon",
+      "name": "Frost Dragon",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2166,
+          2167
+        ]
+      ],
+      "templates": [
+        69
+      ],
+      "source_role": "최종 결전의 69~75번 템플릿 소환에 포함된다. 이름만으로 별도 얼음 브레스 장면을 원작 사실로 추가하지 않는다."
+    },
+    {
+      "id": "guardian_left",
+      "name": "Guardian-Lft",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          210,
+          235
+        ]
+      ],
+      "templates": [
+        64
+      ],
+      "source_role": "라바 게이트 진입 관련 수호자. 왼쪽이라는 이름 표기를 보존한다."
+    },
+    {
+      "id": "guardian_right",
+      "name": "Guardian-Rgt",
+      "kind": "boss",
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          210,
+          235
+        ]
+      ],
+      "templates": [
+        65
+      ],
+      "source_role": "라바 게이트 진입 관련 수호자. 오른쪽이라는 이름 표기를 보존한다."
+    },
+    {
+      "id": "mega_robo",
+      "name": "Mega-Robo",
+      "kind": "creature",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2020,
+          2065
+        ]
+      ],
+      "templates": [
+        66
+      ],
+      "source_role": "팬저 바이퍼와 함께 등장하는 네 호위 개체. 기본 템플릿을 보존하며 기계의 상세 구조는 미상이다."
+    },
+    {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "kind": "creature",
+      "ranges": [],
+      "templates": [
+        19
+      ],
+      "source_role": "원작 적 데이터에 있는 스켈레톤. 특정 이름을 가진 개인이나 보스라는 설정은 원작 근거 없이 추가하지 않는다."
+    }
+  ],
+  "indirect_effects": [
+    "적을 중독시킴",
+    "특수 공격 능력 제거",
+    "방어력 감소",
+    "모든 능력 감소",
+    "마법 능력 제거",
+    "초자연력 제거"
+  ],
+  "phenomena": [
+    {
+      "effect": "마법의 횃불 상태를 한 단계 증가시킴",
+      "cost": 1,
+      "range": [
+        250,
+        259
+      ]
+    },
+    {
+      "effect": "공중부상 상태를 설정함",
+      "cost": 5,
+      "range": [
+        260,
+        268
+      ]
+    },
+    {
+      "effect": "물 위 걷기 상태를 설정함",
+      "cost": 10,
+      "range": [
+        269,
+        277
+      ]
+    },
+    {
+      "effect": "늪 위 걷기 상태를 설정함",
+      "cost": 20,
+      "range": [
+        278,
+        286
+      ]
+    },
+    {
+      "effect": "방향을 선택해 두 칸 기화 이동. 경계와 지형 검사, 마법 배척이 존재함",
+      "cost": 25,
+      "range": [
+        287,
+        335
+      ]
+    },
+    {
+      "effect": "선택한 방향의 지형을 변화시킴. 변경 불가능한 지역을 검사함",
+      "cost": 30,
+      "range": [
+        330,
+        370
+      ]
+    },
+    {
+      "effect": "방향과 거리를 선택해 공간 이동. 위치/지형 제한과 마법 배척이 존재함",
+      "cost": 50,
+      "range": [
+        371,
+        470
+      ]
+    },
+    {
+      "effect": "현재 일행 수만큼 식량을 증가시킴. 소지 식량 상한은 255",
+      "cost": 30,
+      "range": [
+        471,
+        498
+      ]
+    }
+  ],
+  "extrasense_effects": [
+    "변화의 여지가 있는 지역 탐지",
+    "다음 할 일을 알아냄",
+    "남의 마음을 자기 쪽으로 끌어들임. 모든 인물의 생각을 무제한 열람하는 것으로 확장하지 않음",
+    "능력에 따라 먼 곳의 광경을 봄",
+    "주위 환경을 조절하여 공격"
+  ],
+  "preserved_profiles": {
+    "version": 1,
+    "revision": 1,
+    "characters": {
+      "protagonist": {
+        "revision": 1,
+        "kind": "protagonist",
+        "canonical_name": {
+          "value": null,
+          "origin": "authored",
+          "literal_ids": [],
+          "evidence": []
+        },
+        "display_name": "이름 미정 주인공",
+        "aliases": [],
+        "source_facts": [],
+        "writing": {
+          "status": "outline",
+          "traits": [
+            {
+              "field": "temperament",
+              "value": "타인의 사연에 관심을 갖되 권위자의 설명도 확인하려 한다.",
+              "origin": "authored",
+              "status": "proposed",
+              "evidence": []
+            }
+          ],
+          "speech": [
+            {
+              "field": "voice",
+              "value": "도입 초안은 차분한 1인칭. 이해하지 못한 것은 질문으로 남긴다.",
+              "origin": "authored",
+              "status": "proposed",
+              "evidence": []
+            }
+          ],
+          "goals": [],
+          "boundaries": [
+            "선택하지 않은 경로의 정보나 동료를 아는 것으로 쓰지 않는다."
+          ],
+          "notes": "이름·성별·직업과 최종 성향은 미정이다."
+        },
+        "relationships": []
+      },
+      "castle_guide": {
+        "revision": 1,
+        "kind": "npc",
+        "canonical_name": {
+          "value": null,
+          "origin": "authored",
+          "literal_ids": [],
+          "evidence": []
+        },
+        "display_name": "성 안의 안내 인물",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "role",
+            "value": "처음 방문한 일행에게 성주를 만나라고 안내한다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 293,
+                "line_end": 295
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "경비병 계급이나 고유 이름은 원문에서 확정되지 않았다."
+          ],
+          "notes": "display_name은 편집용 역할 표기다."
+        },
+        "relationships": []
+      },
+      "veteran": {
+        "revision": 1,
+        "kind": "npc",
+        "canonical_name": {
+          "value": null,
+          "origin": "authored",
+          "literal_ids": [],
+          "evidence": []
+        },
+        "display_name": "특공대에 친구들을 보낸 주점 인물",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "testimony",
+            "value": "다리를 다쳐 병원에 있던 사이 친구들이 특공대에 지원했으며, 돌아오지 않은 친구들에게 죄책감을 느낀다고 말한다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 89,
+                "line_end": 102
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [
+            {
+              "field": "voice",
+              "value": "친구들을 떠올리며 자신의 말을 이어간다. 회고하는 하게체를 유지한다.",
+              "origin": "source_adaptation",
+              "status": "proposed",
+              "evidence": [
+                {
+                  "file": "LORETALK.PAS",
+                  "line_start": 89,
+                  "line_end": 102
+                }
+              ]
+            }
+          ],
+          "goals": [],
+          "boundaries": [
+            "인물의 사망 단정을 세계의 확정 사실로 바꾸지 않는다."
+          ],
+          "notes": "나이·고유 이름·친구들의 최종 생사는 미정이다."
+        },
+        "relationships": []
+      },
+      "prisoner": {
+        "revision": 1,
+        "kind": "npc",
+        "canonical_name": {
+          "value": null,
+          "origin": "authored",
+          "literal_ids": [],
+          "evidence": []
+        },
+        "display_name": "Ancient Evil에 관해 증언하는 수감자",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "testimony",
+            "value": "모든 대륙을 탐험한 기사였으며 Ancient Evil에 관한 경험과 배운 내용이 다르다고 말한다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 158,
+                "line_end": 190
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "그의 주장을 전지적 서술자의 판정으로 바꾸지 않는다."
+          ],
+          "notes": "고유 이름은 미정이다."
+        },
+        "relationships": []
+      },
+      "lord_ahn": {
+        "revision": 1,
+        "kind": "npc",
+        "canonical_name": {
+          "value": "Lord Ahn",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORETALK.PAS:literal:11163"
+          ],
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 299,
+              "line_end": 338
+            }
+          ]
+        },
+        "display_name": "Lord Ahn",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "role",
+            "value": "성주로서 재앙·특공대·Necromancer의 이야기를 설명하고 일행에게 임무를 준다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 296,
+                "line_end": 358
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [
+            {
+              "field": "voice",
+              "value": "하오체로 설명하며 부탁과 판단을 구분한다.",
+              "origin": "source_adaptation",
+              "status": "proposed",
+              "evidence": [
+                {
+                  "file": "LORETALK.PAS",
+                  "line_start": 299,
+                  "line_end": 358
+                }
+              ]
+            }
+          ],
+          "goals": [],
+          "boundaries": [
+            "선악이나 숨은 의도를 현재 도입부에서 확정하지 않는다."
+          ],
+          "notes": "성주에 대한 신뢰는 주인공의 분기 상태다."
+        },
+        "relationships": [
+          {
+            "target": "necromancer",
+            "description": "그의 야심을 봉쇄할 임무를 일행에게 제시한다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 332,
+                "line_end": 338
+              }
+            ]
+          }
+        ]
+      },
+      "mad_joe": {
+        "revision": 1,
+        "kind": "optional_companion",
+        "canonical_name": {
+          "value": "Mad Joe",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORETALK.PAS:literal:7536"
+          ],
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 191,
+              "line_end": 219
+            }
+          ]
+        },
+        "display_name": "Mad Joe",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "recruitment",
+            "value": "감옥에서 합류를 요청하며 수락·거절 선택지가 있다. 수락 시 여섯 번째 동료 슬롯을 사용한다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 191,
+                "line_end": 219
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [
+            {
+              "field": "temperament",
+              "value": "함께 떠날 기회를 놓치지 않으려 한다.",
+              "origin": "authored",
+              "status": "proposed",
+              "evidence": []
+            }
+          ],
+          "speech": [
+            {
+              "field": "voice",
+              "value": "합류 요청에는 히히히·낄낄 같은 웃음 표현이 섞인다.",
+              "origin": "source_adaptation",
+              "status": "proposed",
+              "evidence": [
+                {
+                  "file": "LORETALK.PAS",
+                  "line_start": 191,
+                  "line_end": 197
+                }
+              ]
+            }
+          ],
+          "goals": [],
+          "boundaries": [
+            "영입하지 않은 경로에서는 일행으로 등장하지 않는다."
+          ],
+          "notes": "정신 상태에 관한 타인의 평가를 의학적 확정 사실로 쓰지 않는다."
+        },
+        "relationships": []
+      },
+      "polaris": {
+        "revision": 1,
+        "kind": "optional_companion",
+        "canonical_name": {
+          "value": "Polaris",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORETALK.PAS:literal:15673"
+          ],
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 406,
+              "line_end": 440
+            }
+          ]
+        },
+        "display_name": "Polaris",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "recruitment",
+            "value": "Major Mummy를 함께 물리치고 싶다며 합류를 제안한다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 406,
+                "line_end": 440
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [],
+          "notes": "원작 선택 조건에 맞춰 등장시킨다."
+        },
+        "relationships": []
+      },
+      "lore_hunter": {
+        "revision": 1,
+        "kind": "optional_companion",
+        "canonical_name": {
+          "value": "Lore Hunter",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORETALK.PAS:literal:24045"
+          ],
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 605,
+              "line_end": 640
+            }
+          ]
+        },
+        "display_name": "Lore Hunter",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "recruitment",
+            "value": "Water Town의 대화에는 합류 선택이 있다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 605,
+                "line_end": 640
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [],
+          "notes": "성향은 미작성이다."
+        },
+        "relationships": []
+      },
+      "rigel": {
+        "revision": 1,
+        "kind": "optional_companion",
+        "canonical_name": {
+          "value": "Rigel",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORESPEC.PAS:literal:24628"
+          ],
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 601,
+              "line_end": 635
+            }
+          ]
+        },
+        "display_name": "Rigel",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "encounter",
+            "value": "심한 부상으로 혼자 동굴을 빠져나오지 못한다고 설명한다. 동행·치료와 식량 제공·거절 선택지가 있다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORESPEC.PAS",
+                "line_start": 601,
+                "line_end": 635
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "첫 만남의 부상과 이후 회복은 별도 사건으로 기록한다."
+          ],
+          "notes": "상태는 동료 카드에 영구 고정하지 않는다."
+        },
+        "relationships": []
+      },
+      "red_antares": {
+        "revision": 1,
+        "kind": "optional_companion",
+        "canonical_name": {
+          "value": "Red Antares",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORESPEC.PAS:literal:43078"
+          ],
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1030,
+              "line_end": 1080
+            }
+          ]
+        },
+        "display_name": "Red Antares",
+        "aliases": [],
+        "source_facts": [],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [],
+          "notes": "능력·동기와 관계의 추가 근거를 집필 시 작성한다."
+        },
+        "relationships": []
+      },
+      "jr_antares": {
+        "revision": 1,
+        "kind": "npc",
+        "canonical_name": {
+          "value": "Jr. Antares",
+          "origin": "source_adaptation",
+          "literal_ids": [],
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 112,
+              "line_end": 139
+            }
+          ]
+        },
+        "display_name": "Jr. Antares",
+        "aliases": [],
+        "source_facts": [],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [],
+          "notes": "이름은 전체 대사에 포함된 표기를 인물명으로 분리했다."
+        },
+        "relationships": [
+          {
+            "target": "red_antares",
+            "description": "자신의 아버지가 Red Antares라고 말한다.",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORETALK.PAS",
+                "line_start": 112,
+                "line_end": 128
+              }
+            ]
+          }
+        ]
+      },
+      "draconian": {
+        "revision": 1,
+        "kind": "optional_companion",
+        "canonical_name": {
+          "value": "Draconian",
+          "origin": "source_adaptation",
+          "literal_ids": [],
+          "evidence": [
+            {
+              "file": "LOREENT.PAS",
+              "line_start": 283,
+              "line_end": 319
+            }
+          ]
+        },
+        "display_name": "Draconian",
+        "aliases": [],
+        "source_facts": [],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "동료 구성에 따른 사건을 모든 경로에 발생시키지 않는다."
+          ],
+          "notes": "종족 일반명과 해당 동료 ID를 구분한다."
+        },
+        "relationships": []
+      },
+      "necromancer": {
+        "revision": 1,
+        "kind": "antagonist",
+        "canonical_name": {
+          "value": "Necromancer",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORETALK.PAS:literal:12343"
+          ],
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 323,
+              "line_end": 338
+            }
+          ]
+        },
+        "display_name": "Necromancer",
+        "aliases": [],
+        "source_facts": [],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "성주의 설명과 본인의 동기를 구분해서 기록한다."
+          ],
+          "notes": "숨은 동기와 정체를 도입부에서 새로 확정하지 않는다."
+        },
+        "relationships": []
+      },
+      "ancient_evil": {
+        "revision": 1,
+        "kind": "npc",
+        "canonical_name": {
+          "value": "Ancient Evil",
+          "origin": "source_adaptation",
+          "literal_ids": [],
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 158,
+              "line_end": 190
+            }
+          ]
+        },
+        "display_name": "Ancient Evil",
+        "aliases": [],
+        "source_facts": [],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "이름만으로 선악을 확정하지 않는다."
+          ],
+          "notes": "인물별 증언과 세계의 확정 사실을 구분한다."
+        },
+        "relationships": []
+      },
+      "initial_hercules": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Hercules",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:137"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Hercules",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 1,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "male",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "기사",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 17,
+              "mentality": 5,
+              "concentration": 5,
+              "endurance": 17,
+              "resistance": 11,
+              "agility": 15,
+              "accuracy": 15,
+              "luck": 10
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_titan": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Titan",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:148"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Titan",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 2,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "male",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "기사",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 14,
+              "mentality": 5,
+              "concentration": 7,
+              "endurance": 14,
+              "resistance": 14,
+              "agility": 16,
+              "accuracy": 17,
+              "luck": 7
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_merlin": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Merlin",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:156"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Merlin",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 3,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "male",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "마법사",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 11,
+              "mentality": 19,
+              "concentration": 14,
+              "endurance": 5,
+              "resistance": 5,
+              "agility": 7,
+              "accuracy": 18,
+              "luck": 15
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_betelgeuse": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Betelgeuse",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:165"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Betelgeuse",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 4,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "female",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "마법사",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 14,
+              "mentality": 17,
+              "concentration": 5,
+              "endurance": 7,
+              "resistance": 7,
+              "agility": 11,
+              "accuracy": 15,
+              "luck": 14
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_genius_kie": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Genius Kie",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:189"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Genius Kie",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 5,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "male",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "전사",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 14,
+              "mentality": 11,
+              "concentration": 7,
+              "endurance": 11,
+              "resistance": 11,
+              "agility": 11,
+              "accuracy": 20,
+              "luck": 9
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_bellatrix": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Bellatrix",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:202"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Bellatrix",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 6,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "female",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "전사",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 14,
+              "mentality": 11,
+              "concentration": 5,
+              "endurance": 11,
+              "resistance": 14,
+              "agility": 14,
+              "accuracy": 15,
+              "luck": 11
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_regulus": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Regulus",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:214"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Regulus",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 7,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "male",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "전투승",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 19,
+              "mentality": 5,
+              "concentration": 5,
+              "endurance": 17,
+              "resistance": 7,
+              "agility": 15,
+              "accuracy": 13,
+              "luck": 11
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_procyon": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Procyon",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:224"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Procyon",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 8,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "male",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "전투승",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 17,
+              "mentality": 5,
+              "concentration": 5,
+              "endurance": 17,
+              "resistance": 11,
+              "agility": 17,
+              "accuracy": 14,
+              "luck": 9
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_arcturus": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Arcturus",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:234"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Arcturus",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 9,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "male",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "닌자",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 7,
+              "mentality": 5,
+              "concentration": 11,
+              "endurance": 11,
+              "resistance": 19,
+              "agility": 18,
+              "accuracy": 7,
+              "luck": 15
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      },
+      "initial_algol": {
+        "revision": 1,
+        "kind": "initial_candidate",
+        "canonical_name": {
+          "value": "Algol",
+          "origin": "source_exact",
+          "literal_ids": [
+            "LORECRET.PAS:literal:245"
+          ],
+          "evidence": [
+            {
+              "file": "LORECRET.PAS",
+              "line_start": 8,
+              "line_end": 21
+            }
+          ]
+        },
+        "display_name": "Algol",
+        "aliases": [],
+        "source_facts": [
+          {
+            "field": "candidate_index",
+            "value": 10,
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "gender",
+            "value": "female",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "class",
+            "value": "닌자",
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          },
+          {
+            "field": "initial_abilities",
+            "value": {
+              "strength": 11,
+              "mentality": 5,
+              "concentration": 7,
+              "endurance": 14,
+              "resistance": 17,
+              "agility": 17,
+              "accuracy": 9,
+              "luck": 16
+            },
+            "origin": "source_adaptation",
+            "status": "confirmed",
+            "evidence": [
+              {
+                "file": "LORECRET.PAS",
+                "line_start": 8,
+                "line_end": 21
+              }
+            ]
+          }
+        ],
+        "writing": {
+          "status": "outline",
+          "traits": [],
+          "speech": [],
+          "goals": [],
+          "boundaries": [
+            "원작 능력 수치만으로 성격을 단정하지 않는다."
+          ],
+          "notes": "시작 동료 후보. 실제 합류 여부는 경로 상태에 기록한다."
+        },
+        "relationships": []
+      }
+    }
+  }
+}

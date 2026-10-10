@@ -12,6 +12,7 @@ from referencing import Registry, Resource
 from validate_story_authoring import ROOT, SCHEMA, validate as validate_story
 from materials import load_materials, validate_evidence
 from characters import CHARACTERS, load_characters, validate_registry
+from reference import load_references
 
 CONTINUITY_SCHEMA = ROOT / "continuity/continuity.schema.json"
 CANON = ROOT / "continuity/canon.json"
@@ -32,7 +33,8 @@ def input_hashes(story, continuity, canon, profiles=None):
         profiles = load_characters()
     return {"story": fingerprint(story), "canon": fingerprint(canon),
             "continuity": fingerprint({k: v for k, v in continuity.items() if k != "review"}),
-            "characters": fingerprint(profiles), "materials": fingerprint(load_materials()[1])}
+            "characters": fingerprint(profiles), "materials": fingerprint(load_materials()[1]),
+            "references": fingerprint(load_references())}
 
 
 def check(value, message):
@@ -202,6 +204,12 @@ def context(story, continuity, canon, route, profiles=None):
                    "state": {k: copy.deepcopy(state[k]) for k in node["handoff"]["carry_states"]},
                    "knowledge": {k: sorted(v) for k, v in known.items()},
                    "events": copy.deepcopy(ledger), "provisional": not approved}
+    references = load_references()
+    resources = {category: {} for category in references}
+    for member in cast:
+        for category, ids in profiles["characters"][member]["resource_refs"].items():
+            category = "bestiary" if category == "enemy_templates" else category
+            resources[category].update({i: references[category]["items"][i] for i in ids})
     return {"mode": "approved_path" if approved else "draft_preview", "node_id": key,
             "input_fingerprints": input_hashes(story, continuity, canon, profiles),
             "needs_review": stale, "editorial_issues": continuity["review"]["issues"],
@@ -210,6 +218,8 @@ def context(story, continuity, canon, route, profiles=None):
             "knowledge": {k: sorted(v) for k, v in known.items()}, "knowledge_is_provisional": not approved,
             "relevant_facts": [facts[f] for f in sorted(dependencies)], "contract": contract,
             "character_profiles": {member: profiles["characters"][member] for member in sorted(cast)},
+            "writing_references": resources,
+            "reference_policy": "author_reference_not_character_knowledge_or_current_inventory",
             "open_threads": [t for t in continuity["threads"] if t["resolution_event"] not in {e["id"] for e in ledger}],
             "visible_blocks": visible, "available_choices": choices,
             "validation_limits": ["explicit route only", "prose meaning and character motivation require editorial review"]}

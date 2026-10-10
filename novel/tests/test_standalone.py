@@ -33,7 +33,8 @@ class IndependentNovelTest(unittest.TestCase):
     def test_validate_without_game_repository_or_root_tools(self):
         self.assertEqual([p.name for p in Path(self.temp.name).iterdir()], ["novel"])
         self.assertIn('"nodes": 6', self.run_tool("validate_story_authoring"))
-        self.assertEqual(json.loads(self.run_tool("characters"))["characters"], 24)
+        self.assertEqual(json.loads(self.run_tool("characters"))["characters"], 48)
+        self.assertEqual(json.loads(self.run_tool("reference")), {"equipment": 20, "abilities": 45, "bestiary": 75})
 
     def test_path_context_without_original_files(self):
         accepted = json.loads(self.run_tool("story_continuity", "--route", "enter_courtyard", "visit_prison", "accept_joe", "visit_lord"))

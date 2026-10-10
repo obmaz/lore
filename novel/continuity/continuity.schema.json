@@ -23,12 +23,13 @@
         "approved_story_revision": {"type": ["integer", "null"]},
         "approved_canon_revision": {"type": ["integer", "null"]},
         "approved_input_hashes": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false,
-          "required": ["story", "canon", "continuity", "characters", "materials"], "properties": {
+          "required": ["story", "canon", "continuity", "characters", "materials", "references"], "properties": {
             "story": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
             "canon": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
             "continuity": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
             "characters": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-            "materials": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}]}}
+            "materials": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "references": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}]}}
     }
   },
   "$defs": {

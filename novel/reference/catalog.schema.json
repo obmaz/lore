@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lore.local/novel/reference/catalog.schema.json",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "revision", "category", "items"],
+  "properties": {
+    "version": {"const": 1}, "revision": {"type": "integer", "minimum": 1},
+    "category": {"enum": ["equipment", "abilities", "bestiary"]},
+    "items": {"type": "object", "additionalProperties": {"type": "object", "additionalProperties": false,
+      "required": ["revision", "original_name", "korean_name", "category", "claims", "character_ids"],
+      "properties": {
+        "revision": {"type": "integer", "minimum": 1}, "category": {"type": "string"},
+        "original_name": {"$ref": "metadata.schema.json#/$defs/claim"},
+        "korean_name": {"$ref": "metadata.schema.json#/$defs/claim"},
+        "claims": {"type": "array", "items": {"$ref": "metadata.schema.json#/$defs/claim"}},
+        "character_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+      }}}
+  }
+}

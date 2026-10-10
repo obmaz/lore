@@ -38,6 +38,11 @@ def import_materials(input_dir):
                 "artifacts": artifacts,
                 "counts": {"source_files": len(catalog["source_units"]), "literal_occurrences": len(literals)},
                 "original_files": {unit["file"]: unit["sha256"] for unit in catalog["source_units"]}}
+    enemy_path = destination / "enemy_templates.json"
+    if enemy_path.exists():
+        enemy_data = json.loads(enemy_path.read_text())
+        manifest["artifacts"][enemy_path.name] = hashlib.sha256(enemy_path.read_bytes()).hexdigest()
+        manifest["binary_sources"] = {"FOEDATA.DAT": {"sha256": enemy_data["sha256"], "records": len(enemy_data["records"]), "record_size": enemy_data["record_size"]}}
     write(destination / "manifest.json", manifest)
     return catalog, manifest
 

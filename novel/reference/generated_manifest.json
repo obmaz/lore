@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "artifacts": {
+    "characters/registry.json": "37bc6efdcfe7ab95310e65cc66b6480d6e9f50b641dbff72234090ad90395763",
+    "reference/equipment.json": "baed624f2f6938c18db37c666df65ad4ac3e9c759aa26c2261db401999a86833",
+    "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
+    "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe"
+  }
+}

@@ -1,0 +1,2681 @@
+{
+  "version": 1,
+  "revision": 2,
+  "category": "equipment",
+  "items": {
+    "weapon_0": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "맨손",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 661,
+            "line_end": 661
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "맨손",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 661,
+            "line_end": 661
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 0,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 661,
+              "line_end": 661
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "mad_joe",
+        "red_antares",
+        "archimonk"
+      ]
+    },
+    "weapon_1": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "단도",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 662,
+            "line_end": 662
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "단도",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 662,
+            "line_end": 662
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 1,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 662,
+              "line_end": 662
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 500,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 5,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "spica"
+      ]
+    },
+    "weapon_2": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "곤봉",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 663,
+            "line_end": 663
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "곤봉",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 663,
+            "line_end": 663
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 2,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 663,
+              "line_end": 663
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 1500,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 7,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "weapon_3": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "미늘창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 664,
+            "line_end": 664
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "미늘창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 664,
+            "line_end": 664
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 3,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 664,
+              "line_end": 664
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 3000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 9,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "weapon_4": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "장검",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 665,
+            "line_end": 665
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "장검",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 665,
+            "line_end": 665
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 4,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 665,
+              "line_end": 665
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 5000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 10,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "polaris",
+        "rigel"
+      ]
+    },
+    "weapon_5": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "철퇴",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 666,
+            "line_end": 666
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "철퇴",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 666,
+            "line_end": 666
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 5,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 666,
+              "line_end": 666
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 10000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 15,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "lore_hunter"
+      ]
+    },
+    "weapon_6": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "기병창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 667,
+            "line_end": 667
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "기병창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 667,
+            "line_end": 667
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 6,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 667,
+              "line_end": 667
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 30000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 20,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "weapon_7": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "도끼창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 668,
+            "line_end": 668
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "도끼창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 668,
+            "line_end": 668
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 7,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 668,
+              "line_end": 668
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 60000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 30,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "weapon_8": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "삼지창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 669,
+            "line_end": 669
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "삼지창",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 669,
+            "line_end": 669
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 8,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 669,
+              "line_end": 669
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 80000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 40,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "weapon_9": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": "화염검",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 670,
+            "line_end": 670
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "화염검",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 670,
+            "line_end": 670
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 9,
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 670,
+              "line_end": 670
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 100000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1208,
+              "line_end": 1231
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": 50,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1246,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "class_rules",
+          "value": "무기상 구매 시 전투승은 사용 대상에서 제외. 기사는 기본 위력에 반올림한 50%를 가산.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1241,
+              "line_end": 1260
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "shield_1": {
+      "revision": 1,
+      "category": "shield",
+      "original_name": {
+        "field": "original_name",
+        "value": "가죽 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 687,
+            "line_end": 687
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "가죽 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 687,
+            "line_end": 687
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 1,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 687,
+              "line_end": 687
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 1000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 687,
+              "line_end": 687
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 1,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 687,
+              "line_end": 687
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "polaris",
+        "rigel",
+        "spica"
+      ]
+    },
+    "armor_1": {
+      "revision": 1,
+      "category": "armor",
+      "original_name": {
+        "field": "original_name",
+        "value": "가죽 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 687,
+            "line_end": 687
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "가죽 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 687,
+            "line_end": 687
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 1,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 687,
+              "line_end": 687
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 5000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 687,
+              "line_end": 687
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 2,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 687,
+              "line_end": 687
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "polaris",
+        "lore_hunter",
+        "rigel",
+        "spica"
+      ]
+    },
+    "shield_2": {
+      "revision": 1,
+      "category": "shield",
+      "original_name": {
+        "field": "original_name",
+        "value": "청동 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 688,
+            "line_end": 688
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "청동 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 688,
+            "line_end": 688
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 2,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 688,
+              "line_end": 688
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 5000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 688,
+              "line_end": 688
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 2,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 688,
+              "line_end": 688
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "lore_hunter"
+      ]
+    },
+    "armor_2": {
+      "revision": 1,
+      "category": "armor",
+      "original_name": {
+        "field": "original_name",
+        "value": "청동 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 688,
+            "line_end": 688
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "청동 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 688,
+            "line_end": 688
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 2,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 688,
+              "line_end": 688
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 25000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 688,
+              "line_end": 688
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 3,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 688,
+              "line_end": 688
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "shield_3": {
+      "revision": 1,
+      "category": "shield",
+      "original_name": {
+        "field": "original_name",
+        "value": "강철 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 689,
+            "line_end": 689
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "강철 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 689,
+            "line_end": 689
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 3,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 689,
+              "line_end": 689
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 25000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 689,
+              "line_end": 689
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 3,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 689,
+              "line_end": 689
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "armor_3": {
+      "revision": 1,
+      "category": "armor",
+      "original_name": {
+        "field": "original_name",
+        "value": "강철 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 689,
+            "line_end": 689
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "강철 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 689,
+            "line_end": 689
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 3,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 689,
+              "line_end": 689
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 80000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 689,
+              "line_end": 689
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 4,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 689,
+              "line_end": 689
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "shield_4": {
+      "revision": 1,
+      "category": "shield",
+      "original_name": {
+        "field": "original_name",
+        "value": "은제 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 690,
+            "line_end": 690
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "은제 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 690,
+            "line_end": 690
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 4,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 690,
+              "line_end": 690
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 80000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 690,
+              "line_end": 690
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 4,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 690,
+              "line_end": 690
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "armor_4": {
+      "revision": 1,
+      "category": "armor",
+      "original_name": {
+        "field": "original_name",
+        "value": "은제 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 690,
+            "line_end": 690
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "은제 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 690,
+            "line_end": 690
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 4,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 690,
+              "line_end": 690
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 100000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 690,
+              "line_end": 690
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 5,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 690,
+              "line_end": 690
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "shield_5": {
+      "revision": 2,
+      "category": "shield",
+      "original_name": {
+        "field": "original_name",
+        "value": "금제 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 691,
+            "line_end": 691
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "금제 방패",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 691,
+            "line_end": 691
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 5,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 691,
+              "line_end": 691
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 100000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 691,
+              "line_end": 691
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 5,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 691,
+              "line_end": 691
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "script_display_name",
+          "value": "황금의 방패",
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 858,
+              "line_end": 877
+            },
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 905,
+              "line_end": 924
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "treasure_scope",
+          "value": "발견 시 장착자를 선택하며 해당 장비 ID/기본 방어력을 설정한다. 상점의 금제 장비와 다른 마법 효과를 임의로 추가하지 않는다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 858,
+              "line_end": 877
+            },
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 905,
+              "line_end": 924
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    },
+    "armor_5": {
+      "revision": 2,
+      "category": "armor",
+      "original_name": {
+        "field": "original_name",
+        "value": "금제 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 691,
+            "line_end": 691
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "금제 갑옷",
+        "origin": "source_adaptation",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 691,
+            "line_end": 691
+          },
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 1273,
+            "line_end": 1318
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "game_index",
+          "value": 5,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 691,
+              "line_end": 691
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "shop_price_gold",
+          "value": 200000,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 691,
+              "line_end": 691
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_defense_power",
+          "value": 6,
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 691,
+              "line_end": 691
+            },
+            {
+              "file": "LORESUB.PAS",
+              "line_start": 1273,
+              "line_end": 1318
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "script_display_name",
+          "value": "황금의 갑옷",
+          "origin": "source_exact",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 925,
+              "line_end": 943
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "treasure_scope",
+          "value": "발견 시 장착자를 선택하며 해당 장비 ID/기본 방어력을 설정한다. 상점의 금제 장비와 다른 마법 효과를 임의로 추가하지 않는다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 925,
+              "line_end": 943
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": []
+    }
+  }
+}

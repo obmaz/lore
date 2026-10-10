@@ -35,6 +35,11 @@ def validate_evidence(evidence, catalog=None):
         catalog = load_materials()[0]
     units = {unit["file"]: unit for unit in catalog["source_units"]}
     for item in evidence:
+        if "record_index" in item:
+            records = read(ROOT / "materials/enemy_templates.json")["records"]
+            if item["file"] != "FOEDATA.DAT" or item["record_index"] not in {r["id"] for r in records}:
+                raise ValueError("invalid packaged enemy evidence")
+            continue
         unit = units.get(item["file"])
         if not unit:
             raise ValueError(f"unknown packaged source: {item['file']}")

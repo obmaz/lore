@@ -12,7 +12,7 @@ class CharacterReferenceTest(unittest.TestCase):
 
     def test_roster_includes_ten_initial_candidates(self):
         characters = self.profiles["characters"]
-        self.assertEqual(len(characters), 24)
+        self.assertEqual(len(characters), 48)
         self.assertEqual(sum(c["kind"] == "initial_candidate" for c in characters.values()), 10)
         self.assertEqual(characters["initial_merlin"]["canonical_name"]["value"], "Merlin")
 

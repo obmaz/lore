@@ -8,6 +8,7 @@
 novel/
 ├── materials/        원문·선택지·조건·진행 자료의 고정 JSON 스냅샷
 ├── characters/       인물별 이름·원작 정보·성향·말투·관계
+├── reference/        무기·방어구·마법·적 사전과 수동 분석 입력
 ├── authoring/        집필 스키마와 퀘스트별 원고
 ├── continuity/      공유 설정과 연속성 스키마
 ├── tools/           원문·인물·집필·경로 검증 도구
@@ -18,8 +19,10 @@ novel/
 
 - [materials/quests.json](materials/quests.json): 18개 집필 단위와 공통 부록의 목록·연결.
 - [materials/quests/lore_menace.json](materials/quests/lore_menace.json): 첫 의뢰의 실제 원문·조건.
-- [characters/registry.json](characters/registry.json): 인물 카드 24개.
+- [characters/registry.json](characters/registry.json): 동료·주요 악당·보스를 포함한 인물 카드 48개.
 - [characters/README.md](characters/README.md): 인물 이름·성향·관계를 작성하는 방법.
+- [reference/README.md](reference/README.md): 장비 20종·마법 45종·적 템플릿 75종과 창작 표시 규칙.
+- [AGENTS.md](AGENTS.md): 원작에 없는 설정의 추가 메타데이터를 강제하는 작업 지침.
 - [authoring/README.md](authoring/README.md): 선택·본문·조건·원문 대응 규칙.
 - [continuity/README.md](continuity/README.md): 이전 장면과의 일관성·설정 변경 추적.
 
@@ -40,22 +43,30 @@ novel/
 python3 -m pip install -r requirements.txt
 python3 tools/materials.py
 python3 tools/characters.py
+python3 tools/reference.py
 python3 tools/validate_story_authoring.py
 python3 tools/story_continuity.py --route enter_courtyard visit_prison accept_joe visit_lord
 PYTHONPATH=tools python3 -m unittest discover -s tests
 ```
 
-경로 자료에는 그 장면에 실제 등장하는 인물 카드도 포함한다. Joe를 영입하지 않은
+경로 자료에는 그 장면에 실제 등장하는 인물 카드와 관련 장비·마법·적 참조도 포함한다. Joe를 영입하지 않은
 성주 접견에서는 Joe 카드가 등장 인물로 전달되지 않는다. 인물의 `writing` 제안은
 승인 상태를 유지하여 원작의 확정 설정과 섞이지 않도록 한다.
 
 ## 원문 자료와 원고의 수정
 
 `materials/manifest.json`은 모든 원문 자료 파일의 SHA-256과 발생 개수를 기록한다.
-검증은 먼저 스냅샷 무결성을 확인한다. 인물과 집필 원고는 자유롭게 편집하되,
+검증은 먼저 스냅샷 무결성을 확인한다. 집필 원고는 편집하되 인물·장비·마법 사전은
+`reference/analysis.json`을 수정하고 `python3 tools/build_reference.py`로 재생성한다.
+출력의 수동 편집이 발견되면 생성 도구가 덮어쓰기를 거부한다.
 원문 스냅샷은 매 집필마다 다시 생성하지 않는다. 인물 수정 시 그 인물과 인물 목록의
 `revision`을 올리면 의존 장면이 재검토 대상으로 표시된다.
 
 원작에서 다시 수입할 필요가 있을 때만 원래 저장소의 `tool/package_novel_material.py`를
 수동 사용한다. 수입 도구는 집필 패키지의 실행 의존성이 아니다. 새 스냅샷의 내용과
 해시가 달라지면 기존 원고의 승인 상태를 다시 검토해야 한다.
+
+원작 적 데이터 `FOEDATA.DAT`도 `materials/enemy_templates.json`으로 보존했다.
+바이너리 근거는 줄 번호가 아니라 `record_index`로 표시하며, 75개 원본 레코드와
+해시를 JSON만으로 재구성할 수 있다. 보스의 이름·능력 변경은 보존된 스크립트 근거를
+함께 본다. 기본 템플릿 수치를 모든 장면의 고정 능력으로 쓰지 않는다.

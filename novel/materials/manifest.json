@@ -24,7 +24,8 @@
     "quests/swamp_keep_lava_gate.json": "13336f07ecb54b4f25b5cd4f3933f7bf54a6178cb3929a9b53f4e92e9ee8ff25",
     "quests/water_lockup.json": "081764b1d2e32cf35d280c62e4e539c898ff80f5939b3b0c915ee000a0e228eb",
     "quests/water_notice.json": "a558766b3c15672fcdbeaa8d3359d51b4c5b0d345961d9bb768094cc5b840c38",
-    "quests/wivern_passage.json": "15e70d214a9eaf30feecea4c8510bcb44c98ee8bcb0f864855925f57ee4f9b7f"
+    "quests/wivern_passage.json": "15e70d214a9eaf30feecea4c8510bcb44c98ee8bcb0f864855925f57ee4f9b7f",
+    "enemy_templates.json": "10d466bd14b7b39660856e3daec9a8469b0a988a30d58eb71e281ed89d667dfa"
   },
   "counts": {
     "source_files": 14,
@@ -45,5 +46,12 @@
     "LORETALK.PAS": "838cdc4b45b9b6aaafee74dab1d700590714b67f3b24143bfb45223a451414e0",
     "UHANX.PAS": "95a9b7e6caf995d98746fd472328c2f847cb0800cc995d8b97a455c8e11ee48b",
     "VOICE.PAS": "c5d72477af63d5a8d5344393df3fd7620b568ff5ae5dd6cad22840e3718e4704"
+  },
+  "binary_sources": {
+    "FOEDATA.DAT": {
+      "sha256": "dc30cb5170a293e34a88d4018bdc67d3411b24b4c3bc31bb800f6970d80e9480",
+      "records": 75,
+      "record_size": 29
+    }
   }
 }

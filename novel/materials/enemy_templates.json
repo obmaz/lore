@@ -1,0 +1,1444 @@
+{
+  "version": 1,
+  "original_file": "FOEDATA.DAT",
+  "sha256": "dc30cb5170a293e34a88d4018bdc67d3411b24b4c3bc31bb800f6970d80e9480",
+  "record_size": 29,
+  "records": [
+    {
+      "id": 1,
+      "name": "Orc",
+      "fields": {
+        "strength": 8,
+        "mentality": 0,
+        "endurance": 8,
+        "resistance": 0,
+        "agility": 8,
+        "accuracy_arms": 8,
+        "accuracy_magic": 0,
+        "armor_class": 1,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 1
+      },
+      "original_record_hex": "034f726300000000000000000000000000080008000808000100000001"
+    },
+    {
+      "id": 2,
+      "name": "Troll",
+      "fields": {
+        "strength": 9,
+        "mentality": 0,
+        "endurance": 6,
+        "resistance": 0,
+        "agility": 9,
+        "accuracy_arms": 9,
+        "accuracy_magic": 0,
+        "armor_class": 1,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 1
+      },
+      "original_record_hex": "0554726f6c6c0000000000000000000000090006000909000100000001"
+    },
+    {
+      "id": 3,
+      "name": "Serpent",
+      "fields": {
+        "strength": 7,
+        "mentality": 3,
+        "endurance": 7,
+        "resistance": 0,
+        "agility": 11,
+        "accuracy_arms": 11,
+        "accuracy_magic": 6,
+        "armor_class": 1,
+        "special": 1,
+        "cast_level": 1,
+        "special_cast_level": 0,
+        "level": 1
+      },
+      "original_record_hex": "0753657270656e74000000000000000000070307000b0b060101010001"
+    },
+    {
+      "id": 4,
+      "name": "Earth Worm",
+      "fields": {
+        "strength": 3,
+        "mentality": 5,
+        "endurance": 5,
+        "resistance": 0,
+        "agility": 6,
+        "accuracy_arms": 11,
+        "accuracy_magic": 7,
+        "armor_class": 1,
+        "special": 0,
+        "cast_level": 1,
+        "special_cast_level": 0,
+        "level": 1
+      },
+      "original_record_hex": "0a456172746820576f726d00000000000003050500060b070100010001"
+    },
+    {
+      "id": 5,
+      "name": "Dwarf",
+      "fields": {
+        "strength": 10,
+        "mentality": 0,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 0,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 2
+      },
+      "original_record_hex": "05447761726600000000000000000000000a000a000a0a000200000002"
+    },
+    {
+      "id": 6,
+      "name": "Giant",
+      "fields": {
+        "strength": 15,
+        "mentality": 0,
+        "endurance": 13,
+        "resistance": 0,
+        "agility": 8,
+        "accuracy_arms": 8,
+        "accuracy_magic": 0,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 2
+      },
+      "original_record_hex": "054769616e7400000000000000000000000f000d000808000200000002"
+    },
+    {
+      "id": 7,
+      "name": "Phantom",
+      "fields": {
+        "strength": 0,
+        "mentality": 12,
+        "endurance": 12,
+        "resistance": 0,
+        "agility": 0,
+        "accuracy_arms": 0,
+        "accuracy_magic": 13,
+        "armor_class": 0,
+        "special": 0,
+        "cast_level": 2,
+        "special_cast_level": 0,
+        "level": 2
+      },
+      "original_record_hex": "075068616e746f6d000000000000000000000c0c0000000d0000020002"
+    },
+    {
+      "id": 8,
+      "name": "Wolf",
+      "fields": {
+        "strength": 7,
+        "mentality": 0,
+        "endurance": 11,
+        "resistance": 0,
+        "agility": 15,
+        "accuracy_arms": 15,
+        "accuracy_magic": 0,
+        "armor_class": 1,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 2
+      },
+      "original_record_hex": "04576f6c660000000000000630d000000007000b000f0f000100000002"
+    },
+    {
+      "id": 9,
+      "name": "Imp",
+      "fields": {
+        "strength": 8,
+        "mentality": 8,
+        "endurance": 10,
+        "resistance": 20,
+        "agility": 18,
+        "accuracy_arms": 18,
+        "accuracy_magic": 10,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 2,
+        "special_cast_level": 0,
+        "level": 3
+      },
+      "original_record_hex": "03496d7032000630e40000003e000630ec08080a1412120a0200020003"
+    },
+    {
+      "id": 10,
+      "name": "Goblin",
+      "fields": {
+        "strength": 11,
+        "mentality": 0,
+        "endurance": 13,
+        "resistance": 0,
+        "agility": 13,
+        "accuracy_arms": 13,
+        "accuracy_magic": 0,
+        "armor_class": 3,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 3
+      },
+      "original_record_hex": "06476f626c696e07000630300000001f000b000d000d0d000300000003"
+    },
+    {
+      "id": 11,
+      "name": "Python",
+      "fields": {
+        "strength": 9,
+        "mentality": 5,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 13,
+        "accuracy_arms": 13,
+        "accuracy_magic": 6,
+        "armor_class": 1,
+        "special": 1,
+        "cast_level": 1,
+        "special_cast_level": 0,
+        "level": 3
+      },
+      "original_record_hex": "06507974686f6e0000003f000630ec000009050a000d0d060101010003"
+    },
+    {
+      "id": 12,
+      "name": "Insects",
+      "fields": {
+        "strength": 6,
+        "mentality": 4,
+        "endurance": 8,
+        "resistance": 0,
+        "agility": 14,
+        "accuracy_arms": 14,
+        "accuracy_magic": 15,
+        "armor_class": 2,
+        "special": 1,
+        "cast_level": 1,
+        "special_cast_level": 0,
+        "level": 3
+      },
+      "original_record_hex": "07496e7365637473301000000034000f90060408000e0e0f0201010003"
+    },
+    {
+      "id": 13,
+      "name": "Giant Spider",
+      "fields": {
+        "strength": 10,
+        "mentality": 0,
+        "endurance": 9,
+        "resistance": 0,
+        "agility": 20,
+        "accuracy_arms": 13,
+        "accuracy_magic": 0,
+        "armor_class": 2,
+        "special": 1,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 4
+      },
+      "original_record_hex": "0c4769616e74205370696465720000004e0a000900140d000201000004"
+    },
+    {
+      "id": 14,
+      "name": "Gremlin",
+      "fields": {
+        "strength": 10,
+        "mentality": 0,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 0,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 4
+      },
+      "original_record_hex": "074772656d6c696e00000075000f0008000a000a001414000200000004"
+    },
+    {
+      "id": 15,
+      "name": "Buzz Bug",
+      "fields": {
+        "strength": 13,
+        "mentality": 0,
+        "endurance": 11,
+        "resistance": 0,
+        "agility": 15,
+        "accuracy_arms": 15,
+        "accuracy_magic": 0,
+        "armor_class": 1,
+        "special": 1,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 4
+      },
+      "original_record_hex": "0842757a7a2042756750100013009f000f0d000b000f0f000101000004"
+    },
+    {
+      "id": 16,
+      "name": "Salamander",
+      "fields": {
+        "strength": 12,
+        "mentality": 2,
+        "endurance": 13,
+        "resistance": 0,
+        "agility": 12,
+        "accuracy_arms": 12,
+        "accuracy_magic": 10,
+        "armor_class": 3,
+        "special": 1,
+        "cast_level": 1,
+        "special_cast_level": 0,
+        "level": 4
+      },
+      "original_record_hex": "0a53616c616d616e6465720f00080000000c020d000c0c0a0301010004"
+    },
+    {
+      "id": 17,
+      "name": "Blood Bat",
+      "fields": {
+        "strength": 11,
+        "mentality": 0,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 5,
+        "accuracy_arms": 15,
+        "accuracy_magic": 0,
+        "armor_class": 1,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 5
+      },
+      "original_record_hex": "09426c6f6f64204261740000d9000f00040b000a00050f000100000005"
+    },
+    {
+      "id": 18,
+      "name": "Giant Rat",
+      "fields": {
+        "strength": 13,
+        "mentality": 0,
+        "endurance": 18,
+        "resistance": 0,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 0,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 5
+      },
+      "original_record_hex": "094769616e7420526174d0000000fffe000d0012000a0a000200000005"
+    },
+    {
+      "id": 19,
+      "name": "Skeleton",
+      "fields": {
+        "strength": 10,
+        "mentality": 0,
+        "endurance": 19,
+        "resistance": 0,
+        "agility": 12,
+        "accuracy_arms": 12,
+        "accuracy_magic": 0,
+        "armor_class": 3,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 5
+      },
+      "original_record_hex": "08536b656c65746f6e0011010f000800000a0013000c0c000300000005"
+    },
+    {
+      "id": 20,
+      "name": "Kelpie",
+      "fields": {
+        "strength": 8,
+        "mentality": 13,
+        "endurance": 8,
+        "resistance": 0,
+        "agility": 14,
+        "accuracy_arms": 15,
+        "accuracy_magic": 17,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 5
+      },
+      "original_record_hex": "064b656c70696500300000000006000f00080d08000e0f110200030005"
+    },
+    {
+      "id": 21,
+      "name": "Gazer",
+      "fields": {
+        "strength": 15,
+        "mentality": 8,
+        "endurance": 11,
+        "resistance": 0,
+        "agility": 20,
+        "accuracy_arms": 15,
+        "accuracy_magic": 15,
+        "armor_class": 3,
+        "special": 0,
+        "cast_level": 2,
+        "special_cast_level": 0,
+        "level": 6
+      },
+      "original_record_hex": "0547617a6572000016000630c80000001b0f080b00140f0f0300020006"
+    },
+    {
+      "id": 22,
+      "name": "Ghost",
+      "fields": {
+        "strength": 0,
+        "mentality": 15,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 0,
+        "accuracy_arms": 0,
+        "accuracy_magic": 15,
+        "armor_class": 0,
+        "special": 0,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 6
+      },
+      "original_record_hex": "0547686f73740000000000000000000000000f0a0000000f0000030006"
+    },
+    {
+      "id": 23,
+      "name": "Slime",
+      "fields": {
+        "strength": 5,
+        "mentality": 13,
+        "endurance": 5,
+        "resistance": 0,
+        "agility": 19,
+        "accuracy_arms": 19,
+        "accuracy_magic": 19,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 2,
+        "special_cast_level": 0,
+        "level": 6
+      },
+      "original_record_hex": "05536c696d650000000000000000000000050d05001313130200020006"
+    },
+    {
+      "id": 24,
+      "name": "Rock-Man",
+      "fields": {
+        "strength": 19,
+        "mentality": 0,
+        "endurance": 15,
+        "resistance": 0,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 0,
+        "armor_class": 5,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 6
+      },
+      "original_record_hex": "08526f636b2d4d616e000000000000000013000f000a0a000500000006"
+    },
+    {
+      "id": 25,
+      "name": "Kobold",
+      "fields": {
+        "strength": 9,
+        "mentality": 9,
+        "endurance": 9,
+        "resistance": 0,
+        "agility": 9,
+        "accuracy_arms": 9,
+        "accuracy_magic": 9,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 7
+      },
+      "original_record_hex": "064b6f626f6c6400000000000000000000090909000909090200030007"
+    },
+    {
+      "id": 26,
+      "name": "Mummy",
+      "fields": {
+        "strength": 10,
+        "mentality": 10,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 10,
+        "armor_class": 3,
+        "special": 1,
+        "cast_level": 2,
+        "special_cast_level": 0,
+        "level": 7
+      },
+      "original_record_hex": "054d756d6d7900070000301800000017000a0a0a000a0a0a0301020007"
+    },
+    {
+      "id": 27,
+      "name": "Devil Hunter",
+      "fields": {
+        "strength": 13,
+        "mentality": 10,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 18,
+        "armor_class": 3,
+        "special": 2,
+        "cast_level": 2,
+        "special_cast_level": 0,
+        "level": 7
+      },
+      "original_record_hex": "0c446576696c2048756e74657230c800000d0a0a000a0a120302020007"
+    },
+    {
+      "id": 28,
+      "name": "Crazy One",
+      "fields": {
+        "strength": 9,
+        "mentality": 9,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 5,
+        "accuracy_arms": 5,
+        "accuracy_magic": 13,
+        "armor_class": 1,
+        "special": 0,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 7
+      },
+      "original_record_hex": "094372617a79204f6e650000002c00069009090a0005050d0100030007"
+    },
+    {
+      "id": 29,
+      "name": "Ogre",
+      "fields": {
+        "strength": 19,
+        "mentality": 0,
+        "endurance": 19,
+        "resistance": 0,
+        "agility": 9,
+        "accuracy_arms": 12,
+        "accuracy_magic": 0,
+        "armor_class": 4,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 8
+      },
+      "original_record_hex": "044f67726500000044000630c80000004913001300090c000400000008"
+    },
+    {
+      "id": 30,
+      "name": "Headless",
+      "fields": {
+        "strength": 10,
+        "mentality": 0,
+        "endurance": 15,
+        "resistance": 0,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 0,
+        "armor_class": 3,
+        "special": 2,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 8
+      },
+      "original_record_hex": "08486561646c65737306003600003038000a000f000a0a000302000008"
+    },
+    {
+      "id": 31,
+      "name": "Mud-Man",
+      "fields": {
+        "strength": 10,
+        "mentality": 0,
+        "endurance": 15,
+        "resistance": 0,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 0,
+        "armor_class": 7,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 8
+      },
+      "original_record_hex": "074d75642d4d616e0f00040000005d00000a000f000a0a000700000008"
+    },
+    {
+      "id": 32,
+      "name": "Hell Cat",
+      "fields": {
+        "strength": 10,
+        "mentality": 15,
+        "endurance": 11,
+        "resistance": 0,
+        "agility": 18,
+        "accuracy_arms": 18,
+        "accuracy_magic": 16,
+        "armor_class": 2,
+        "special": 2,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 8
+      },
+      "original_record_hex": "0848656c6c2043617475000030340000000a0f0b001212100202030008"
+    },
+    {
+      "id": 33,
+      "name": "Wisp",
+      "fields": {
+        "strength": 5,
+        "mentality": 16,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 20,
+        "armor_class": 2,
+        "special": 0,
+        "cast_level": 4,
+        "special_cast_level": 0,
+        "level": 9
+      },
+      "original_record_hex": "0457697370000f00080000009f000f000405100a001414140200040009"
+    },
+    {
+      "id": 34,
+      "name": "Basilisk",
+      "fields": {
+        "strength": 10,
+        "mentality": 15,
+        "endurance": 12,
+        "resistance": 0,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 10,
+        "armor_class": 2,
+        "special": 1,
+        "cast_level": 2,
+        "special_cast_level": 0,
+        "level": 9
+      },
+      "original_record_hex": "08426173696c69736b0f9000000000c5000a0f0c0014140a0201020009"
+    },
+    {
+      "id": 35,
+      "name": "Sprite",
+      "fields": {
+        "strength": 0,
+        "mentality": 20,
+        "endurance": 2,
+        "resistance": 80,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 20,
+        "armor_class": 0,
+        "special": 3,
+        "cast_level": 5,
+        "special_cast_level": 0,
+        "level": 9
+      },
+      "original_record_hex": "06537072697465000000e2000f90000000001402501414140003050009"
+    },
+    {
+      "id": 36,
+      "name": "Vampire",
+      "fields": {
+        "strength": 15,
+        "mentality": 13,
+        "endurance": 14,
+        "resistance": 20,
+        "agility": 17,
+        "accuracy_arms": 17,
+        "accuracy_magic": 15,
+        "armor_class": 3,
+        "special": 1,
+        "cast_level": 2,
+        "special_cast_level": 0,
+        "level": 9
+      },
+      "original_record_hex": "0756616d706972650008000000fe000f900f0d0e1411110f0301020009"
+    },
+    {
+      "id": 37,
+      "name": "Molten Monster",
+      "fields": {
+        "strength": 8,
+        "mentality": 0,
+        "endurance": 20,
+        "resistance": 50,
+        "agility": 8,
+        "accuracy_arms": 16,
+        "accuracy_magic": 0,
+        "armor_class": 3,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 10
+      },
+      "original_record_hex": "0e4d6f6c74656e204d6f6e73746572001508001432081000030000000a"
+    },
+    {
+      "id": 38,
+      "name": "Great Lich",
+      "fields": {
+        "strength": 10,
+        "mentality": 10,
+        "endurance": 11,
+        "resistance": 10,
+        "agility": 18,
+        "accuracy_arms": 10,
+        "accuracy_magic": 10,
+        "armor_class": 4,
+        "special": 2,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 10
+      },
+      "original_record_hex": "0a4772656174204c6963682b010f0004000a0a0b0a120a0a040203000a"
+    },
+    {
+      "id": 39,
+      "name": "Rampager",
+      "fields": {
+        "strength": 20,
+        "mentality": 0,
+        "endurance": 19,
+        "resistance": 0,
+        "agility": 19,
+        "accuracy_arms": 19,
+        "accuracy_magic": 0,
+        "armor_class": 3,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 10
+      },
+      "original_record_hex": "0852616d7061676572d0000000ff50010f14001300131300030000000a"
+    },
+    {
+      "id": 40,
+      "name": "Mutant",
+      "fields": {
+        "strength": 0,
+        "mentality": 10,
+        "endurance": 15,
+        "resistance": 0,
+        "agility": 0,
+        "accuracy_arms": 0,
+        "accuracy_magic": 20,
+        "armor_class": 3,
+        "special": 0,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 10
+      },
+      "original_record_hex": "064d7574616e74230063010f0008000000000a0f00000014030003000a"
+    },
+    {
+      "id": 41,
+      "name": "Rotten Corpse",
+      "fields": {
+        "strength": 15,
+        "mentality": 15,
+        "endurance": 15,
+        "resistance": 60,
+        "agility": 15,
+        "accuracy_arms": 15,
+        "accuracy_magic": 15,
+        "armor_class": 2,
+        "special": 2,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 11
+      },
+      "original_record_hex": "0d526f7474656e20436f727073650030100f0f0f3c0f0f0f020203000b"
+    },
+    {
+      "id": 42,
+      "name": "Gagoyle",
+      "fields": {
+        "strength": 10,
+        "mentality": 0,
+        "endurance": 20,
+        "resistance": 10,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 0,
+        "armor_class": 6,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 11
+      },
+      "original_record_hex": "074761676f796c65000f900000000034000a00140a0a0a00060000000b"
+    },
+    {
+      "id": 43,
+      "name": "Wivern",
+      "fields": {
+        "strength": 10,
+        "mentality": 10,
+        "endurance": 9,
+        "resistance": 30,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 9,
+        "armor_class": 3,
+        "special": 2,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 11
+      },
+      "original_record_hex": "0657697665726e0000004b0006303000000a0a091e141409030203000b"
+    },
+    {
+      "id": 44,
+      "name": "Grim Death",
+      "fields": {
+        "strength": 16,
+        "mentality": 16,
+        "endurance": 16,
+        "resistance": 50,
+        "agility": 16,
+        "accuracy_arms": 16,
+        "accuracy_magic": 16,
+        "armor_class": 2,
+        "special": 2,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 12
+      },
+      "original_record_hex": "0a4772696d2044656174680200cd00063010101032101010020203000c"
+    },
+    {
+      "id": 45,
+      "name": "Griffin",
+      "fields": {
+        "strength": 15,
+        "mentality": 15,
+        "endurance": 15,
+        "resistance": 0,
+        "agility": 15,
+        "accuracy_arms": 14,
+        "accuracy_magic": 14,
+        "armor_class": 3,
+        "special": 2,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 12
+      },
+      "original_record_hex": "074772696666696ee0000630c8000000e50f0f0f000f0e0e030203000c"
+    },
+    {
+      "id": 46,
+      "name": "Evil Soul",
+      "fields": {
+        "strength": 0,
+        "mentality": 20,
+        "endurance": 10,
+        "resistance": 0,
+        "agility": 0,
+        "accuracy_arms": 0,
+        "accuracy_magic": 15,
+        "armor_class": 0,
+        "special": 3,
+        "cast_level": 4,
+        "special_cast_level": 0,
+        "level": 12
+      },
+      "original_record_hex": "094576696c20536f756c01f6000f90000000140a0000000f000304000c"
+    },
+    {
+      "id": 47,
+      "name": "Cyclops",
+      "fields": {
+        "strength": 20,
+        "mentality": 0,
+        "endurance": 20,
+        "resistance": 10,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 0,
+        "armor_class": 4,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 13
+      },
+      "original_record_hex": "074379636c6f70730630c800000013010f1400140a141400040000000d"
+    },
+    {
+      "id": 48,
+      "name": "Dancing-Swd",
+      "fields": {
+        "strength": 15,
+        "mentality": 20,
+        "endurance": 6,
+        "resistance": 20,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 20,
+        "armor_class": 0,
+        "special": 2,
+        "cast_level": 4,
+        "special_cast_level": 0,
+        "level": 13
+      },
+      "original_record_hex": "0b44616e63696e672d53776430c80000000f140614141414000204000d"
+    },
+    {
+      "id": 49,
+      "name": "Hydra",
+      "fields": {
+        "strength": 15,
+        "mentality": 10,
+        "endurance": 20,
+        "resistance": 40,
+        "agility": 18,
+        "accuracy_arms": 18,
+        "accuracy_magic": 12,
+        "armor_class": 8,
+        "special": 1,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 13
+      },
+      "original_record_hex": "0548796472610630c8000000380106300c0f0a142812120c080103000d"
+    },
+    {
+      "id": 50,
+      "name": "Stheno",
+      "fields": {
+        "strength": 20,
+        "mentality": 20,
+        "endurance": 20,
+        "resistance": 255,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 10,
+        "armor_class": 255,
+        "special": 1,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 14
+      },
+      "original_record_hex": "06537468656e6f040002124f0000b40002141414ff0a0a0aff0103000e"
+    },
+    {
+      "id": 51,
+      "name": "Euryale",
+      "fields": {
+        "strength": 20,
+        "mentality": 20,
+        "endurance": 15,
+        "resistance": 255,
+        "agility": 10,
+        "accuracy_arms": 15,
+        "accuracy_magic": 10,
+        "armor_class": 255,
+        "special": 2,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 14
+      },
+      "original_record_hex": "0745757279616c65500000ce000206c47e14140fff0a0f0aff0203000e"
+    },
+    {
+      "id": 52,
+      "name": "Medusa",
+      "fields": {
+        "strength": 15,
+        "mentality": 10,
+        "endurance": 16,
+        "resistance": 50,
+        "agility": 15,
+        "accuracy_arms": 15,
+        "accuracy_magic": 10,
+        "armor_class": 4,
+        "special": 3,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 14
+      },
+      "original_record_hex": "064d656475736100e8000206c47e04fc020f0a10320f0f0a040303000e"
+    },
+    {
+      "id": 53,
+      "name": "Minotaur",
+      "fields": {
+        "strength": 15,
+        "mentality": 7,
+        "endurance": 20,
+        "resistance": 40,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 15,
+        "armor_class": 10,
+        "special": 0,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 15
+      },
+      "original_record_hex": "084d696e6f74617572c47e04fc020016010f07142814140f0a0003000f"
+    },
+    {
+      "id": 54,
+      "name": "Dragon",
+      "fields": {
+        "strength": 15,
+        "mentality": 7,
+        "endurance": 20,
+        "resistance": 50,
+        "agility": 18,
+        "accuracy_arms": 20,
+        "accuracy_magic": 15,
+        "armor_class": 9,
+        "special": 2,
+        "cast_level": 4,
+        "special_cast_level": 0,
+        "level": 15
+      },
+      "original_record_hex": "06447261676f6e7e04fc020030010426060f07143212140f090204000f"
+    },
+    {
+      "id": 55,
+      "name": "Dark Soul",
+      "fields": {
+        "strength": 0,
+        "mentality": 20,
+        "endurance": 40,
+        "resistance": 60,
+        "agility": 0,
+        "accuracy_arms": 0,
+        "accuracy_magic": 20,
+        "armor_class": 0,
+        "special": 0,
+        "cast_level": 5,
+        "special_cast_level": 0,
+        "level": 15
+      },
+      "original_record_hex": "094461726b20536f756c01042606c645040014283c000014000005000f"
+    },
+    {
+      "id": 56,
+      "name": "Hell Fire",
+      "fields": {
+        "strength": 15,
+        "mentality": 20,
+        "endurance": 30,
+        "resistance": 30,
+        "agility": 15,
+        "accuracy_arms": 15,
+        "accuracy_magic": 15,
+        "armor_class": 0,
+        "special": 3,
+        "cast_level": 5,
+        "special_cast_level": 0,
+        "level": 16
+      },
+      "original_record_hex": "0948656c6c204669726506c645041904000f141e1e0f0f0f0003050010"
+    },
+    {
+      "id": 57,
+      "name": "Astral Mud",
+      "fields": {
+        "strength": 13,
+        "mentality": 20,
+        "endurance": 25,
+        "resistance": 40,
+        "agility": 19,
+        "accuracy_arms": 19,
+        "accuracy_magic": 10,
+        "armor_class": 9,
+        "special": 3,
+        "cast_level": 4,
+        "special_cast_level": 0,
+        "level": 16
+      },
+      "original_record_hex": "0a41737472616c204d75641a04000212570d14192813130a0903040010"
+    },
+    {
+      "id": 58,
+      "name": "Reaper",
+      "fields": {
+        "strength": 15,
+        "mentality": 20,
+        "endurance": 33,
+        "resistance": 70,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 20,
+        "armor_class": 5,
+        "special": 1,
+        "cast_level": 3,
+        "special_cast_level": 0,
+        "level": 17
+      },
+      "original_record_hex": "06526561706572041b040002125800009e0f1421461414140501030011"
+    },
+    {
+      "id": 59,
+      "name": "Crab God",
+      "fields": {
+        "strength": 20,
+        "mentality": 20,
+        "endurance": 30,
+        "resistance": 20,
+        "agility": 18,
+        "accuracy_arms": 18,
+        "accuracy_magic": 19,
+        "armor_class": 7,
+        "special": 2,
+        "cast_level": 4,
+        "special_cast_level": 0,
+        "level": 17
+      },
+      "original_record_hex": "084372616220476f6412590000b801020014141e141212130702040011"
+    },
+    {
+      "id": 60,
+      "name": "Wraith",
+      "fields": {
+        "strength": 0,
+        "mentality": 24,
+        "endurance": 35,
+        "resistance": 50,
+        "agility": 15,
+        "accuracy_arms": 0,
+        "accuracy_magic": 20,
+        "armor_class": 2,
+        "special": 3,
+        "cast_level": 4,
+        "special_cast_level": 0,
+        "level": 18
+      },
+      "original_record_hex": "0657726169746801004301005d01007701001823320f00140203040012"
+    },
+    {
+      "id": 61,
+      "name": "Death Skull",
+      "fields": {
+        "strength": 0,
+        "mentality": 20,
+        "endurance": 40,
+        "resistance": 80,
+        "agility": 0,
+        "accuracy_arms": 0,
+        "accuracy_magic": 20,
+        "armor_class": 0,
+        "special": 2,
+        "cast_level": 5,
+        "special_cast_level": 0,
+        "level": 18
+      },
+      "original_record_hex": "0b446561746820536b756c6c04b8060100001428500000140002050012"
+    },
+    {
+      "id": 62,
+      "name": "Draconian",
+      "fields": {
+        "strength": 30,
+        "mentality": 20,
+        "endurance": 30,
+        "resistance": 60,
+        "agility": 18,
+        "accuracy_arms": 18,
+        "accuracy_magic": 18,
+        "armor_class": 7,
+        "special": 2,
+        "cast_level": 5,
+        "special_cast_level": 1,
+        "level": 19
+      },
+      "original_record_hex": "09447261636f6e69616e0204e80e0f000c1e141e3c1212120702050113"
+    },
+    {
+      "id": 63,
+      "name": "Death Knight",
+      "fields": {
+        "strength": 35,
+        "mentality": 0,
+        "endurance": 35,
+        "resistance": 50,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 0,
+        "armor_class": 6,
+        "special": 3,
+        "cast_level": 0,
+        "special_cast_level": 1,
+        "level": 19
+      },
+      "original_record_hex": "0c4465617468204b6e6967687406f7e206230023321414000603000113"
+    },
+    {
+      "id": 64,
+      "name": "Guardian-Lft",
+      "fields": {
+        "strength": 25,
+        "mentality": 0,
+        "endurance": 40,
+        "resistance": 70,
+        "agility": 20,
+        "accuracy_arms": 18,
+        "accuracy_magic": 0,
+        "armor_class": 5,
+        "special": 2,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 20
+      },
+      "original_record_hex": "0c477561726469616e2d4c6674fe0206c4190028461412000502000014"
+    },
+    {
+      "id": 65,
+      "name": "Guardian-Rgt",
+      "fields": {
+        "strength": 25,
+        "mentality": 0,
+        "endurance": 40,
+        "resistance": 40,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 0,
+        "armor_class": 7,
+        "special": 2,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 20
+      },
+      "original_record_hex": "0c477561726469616e2d5267746200006f190028281414000702000014"
+    },
+    {
+      "id": 66,
+      "name": "Mega-Robo",
+      "fields": {
+        "strength": 40,
+        "mentality": 0,
+        "endurance": 50,
+        "resistance": 0,
+        "agility": 19,
+        "accuracy_arms": 19,
+        "accuracy_magic": 0,
+        "armor_class": 10,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 21
+      },
+      "original_record_hex": "094d6567612d526f626f76000206c47e04280032001313000a00000015"
+    },
+    {
+      "id": 67,
+      "name": "Ancient Evil",
+      "fields": {
+        "strength": 0,
+        "mentality": 20,
+        "endurance": 60,
+        "resistance": 100,
+        "agility": 18,
+        "accuracy_arms": 0,
+        "accuracy_magic": 20,
+        "armor_class": 5,
+        "special": 0,
+        "cast_level": 6,
+        "special_cast_level": 2,
+        "level": 22
+      },
+      "original_record_hex": "0c416e6369656e74204576696c73fc020000143c641200140500060216"
+    },
+    {
+      "id": 68,
+      "name": "Lord Ahn",
+      "fields": {
+        "strength": 40,
+        "mentality": 20,
+        "endurance": 60,
+        "resistance": 100,
+        "agility": 35,
+        "accuracy_arms": 20,
+        "accuracy_magic": 20,
+        "armor_class": 10,
+        "special": 3,
+        "cast_level": 5,
+        "special_cast_level": 3,
+        "level": 23
+      },
+      "original_record_hex": "084c6f72642041686e7e04fc0200c8000428143c642314140a03050317"
+    },
+    {
+      "id": 69,
+      "name": "Frost Dragon",
+      "fields": {
+        "strength": 15,
+        "mentality": 7,
+        "endurance": 20,
+        "resistance": 50,
+        "agility": 18,
+        "accuracy_arms": 20,
+        "accuracy_magic": 15,
+        "armor_class": 9,
+        "special": 2,
+        "cast_level": 4,
+        "special_cast_level": 0,
+        "level": 24
+      },
+      "original_record_hex": "0c46726f737420447261676f6e042606c60f07143212140f0902040018"
+    },
+    {
+      "id": 70,
+      "name": "ArchiDraconian",
+      "fields": {
+        "strength": 30,
+        "mentality": 20,
+        "endurance": 30,
+        "resistance": 60,
+        "agility": 18,
+        "accuracy_arms": 18,
+        "accuracy_magic": 18,
+        "armor_class": 7,
+        "special": 2,
+        "cast_level": 5,
+        "special_cast_level": 1,
+        "level": 25
+      },
+      "original_record_hex": "0e4172636869447261636f6e69616e04151e141e3c1212120702050119"
+    },
+    {
+      "id": 71,
+      "name": "Panzer Viper",
+      "fields": {
+        "strength": 35,
+        "mentality": 0,
+        "endurance": 40,
+        "resistance": 80,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 0,
+        "armor_class": 9,
+        "special": 1,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 26
+      },
+      "original_record_hex": "0c50616e7a65722056697065721604000223002850141400090100001a"
+    },
+    {
+      "id": 72,
+      "name": "Black Knight",
+      "fields": {
+        "strength": 35,
+        "mentality": 0,
+        "endurance": 35,
+        "resistance": 50,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 0,
+        "armor_class": 6,
+        "special": 3,
+        "cast_level": 0,
+        "special_cast_level": 1,
+        "level": 27
+      },
+      "original_record_hex": "0c426c61636b204b6e696768740212540023002332141400060300011b"
+    },
+    {
+      "id": 73,
+      "name": "ArchiMonk",
+      "fields": {
+        "strength": 20,
+        "mentality": 0,
+        "endurance": 50,
+        "resistance": 70,
+        "agility": 20,
+        "accuracy_arms": 20,
+        "accuracy_magic": 0,
+        "armor_class": 5,
+        "special": 0,
+        "cast_level": 0,
+        "special_cast_level": 0,
+        "level": 28
+      },
+      "original_record_hex": "0941726368694d6f6e6b0212550000500114003246141400050000001c"
+    },
+    {
+      "id": 74,
+      "name": "ArchiMage",
+      "fields": {
+        "strength": 10,
+        "mentality": 19,
+        "endurance": 30,
+        "resistance": 70,
+        "agility": 10,
+        "accuracy_arms": 10,
+        "accuracy_magic": 19,
+        "armor_class": 4,
+        "special": 0,
+        "cast_level": 6,
+        "special_cast_level": 0,
+        "level": 29
+      },
+      "original_record_hex": "0941726368694d61676500006a010206c40a131e460a0a13040006001d"
+    },
+    {
+      "id": 75,
+      "name": "Neo-Necromancer",
+      "fields": {
+        "strength": 40,
+        "mentality": 20,
+        "endurance": 60,
+        "resistance": 100,
+        "agility": 30,
+        "accuracy_arms": 20,
+        "accuracy_magic": 20,
+        "armor_class": 10,
+        "special": 3,
+        "cast_level": 6,
+        "special_cast_level": 3,
+        "level": 30
+      },
+      "original_record_hex": "0f4e656f2d4e6563726f6d616e636572fc28143c641e14140a0306031e"
+    }
+  ],
+  "layout_evidence": [
+    {
+      "file": "LORESUB.PAS",
+      "line_start": 50,
+      "line_end": 64
+    }
+  ],
+  "notes": [
+    "75 source templates, not ages, individual biographies or current battle states.",
+    "Story encounters can override names and statistics; those overrides stay in the Pascal snapshot."
+  ]
+}
