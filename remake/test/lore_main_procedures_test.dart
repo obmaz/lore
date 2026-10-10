@@ -1,0 +1,477 @@
+import 'dart:async';
+import 'dart:math';
+
+import 'package:flutter_test/flutter_test.dart';
+import 'package:lore/logic/field_hotkeys.dart';
+import 'package:lore/logic/lore_main_procedures.dart';
+import 'package:lore/models/party_member.dart';
+
+class _SequenceRandom implements Random {
+  final List<int> values;
+  final List<int> bounds = [];
+  int index = 0;
+
+  _SequenceRandom(this.values);
+
+  @override
+  int nextInt(int max) {
+    bounds.add(max);
+    return values[index++];
+  }
+
+  @override
+  bool nextBool() => false;
+
+  @override
+  double nextDouble() => 0;
+}
+
+/// LOREMAIN.PAS field procedures (Main, Move_Mode, enter_swamp, enter_lava,
+/// enter_water) and LORESUB.PAS `DetectGameOver`.
+void main() {
+  test('LOREMAIN.PAS water source byte counters and dispatch order', () {
+    for (var initial = 0; initial <= 255; initial++) {
+      for (final frequency in [0, 1, 255]) {
+        for (final roll in frequency == 0 ? [0] : [0, 1]) {
+          var steps = initial;
+          final trace = <String>[];
+          LoreMainProcedures.enterWater(
+            waterWalkSteps: () => steps,
+            setWaterWalkSteps: (value) {
+              steps = value;
+              trace.add('steps:$value');
+            },
+            scrollToParty: () => trace.add('scroll'),
+            encounterFrequency: frequency,
+            random: (bound) {
+              trace.add('random:$bound');
+              return roll;
+            },
+            encounterEnemy: () => trace.add('encounter'),
+            restorePosition: () => trace.add('restore'),
+          );
+          expect(steps, initial == 0 ? 0 : initial - 1);
+          expect(
+            trace,
+            initial == 0
+                ? ['restore']
+                : [
+                    'steps:${initial - 1}',
+                    'scroll',
+                    'random:${frequency * 30}',
+                    if (roll == 0) 'encounter',
+                  ],
+          );
+        }
+      }
+    }
+  });
+
+  test('LORESUB.PAS Exist and DetectGameOver exhaust six-slot masks', () async {
+    // Independent source predicate: name <> '', unconscious = 0,
+    // dead = 0, hp > 0. Signed nonzero status is inactive too.
+    for (final name in ['', 'Hero']) {
+      for (final hp in [-32768, -1, 0, 1, 32767]) {
+        for (final unconscious in [-32768, -1, 0, 1, 32767]) {
+          for (final dead in [-32768, -1, 0, 1, 32767]) {
+            final member = PartyMember.createPreset(1)
+              ..name = name
+              ..hp = hp
+              ..unconscious = unconscious
+              ..dead = dead;
+            expect(
+              member.isBattleActive,
+              name != '' && hp > 0 && unconscious == 0 && dead == 0,
+            );
+          }
+        }
+      }
+    }
+    for (var mask = 0; mask < 64; mask++) {
+      final party = [
+        for (var i = 0; i < 6; i++)
+          PartyMember.createPreset(1)
+            ..name = 'Slot${i + 1}'
+            ..hp = (mask & (1 << i)) == 0 ? 0 : 1
+            ..unconscious = 0
+            ..dead = 0,
+        PartyMember.createPreset(1)..hp = 1, // not a Pascal party slot
+      ];
+      final before = party.map((p) => p.toJson()).toList();
+      final completion = Completer<void>();
+      var calls = 0;
+      var returned = false;
+      final pending = LoreMainProcedures.detectGameOver(party, () {
+        calls++;
+        return completion.future;
+      }).then((_) => returned = true);
+      await Future<void>.delayed(Duration.zero);
+      expect(calls, mask == 0 ? 1 : 0);
+      expect(returned, mask != 0);
+      expect(party.map((p) => p.toJson()).toList(), before);
+      completion.complete();
+      await pending;
+      expect(returned, isTrue);
+    }
+  });
+
+  test(
+    'Move_Mode poison guards retain source slot, byte and integer order',
+    () {
+      final party = [
+        PartyMember.createPreset(1)..poison = 0,
+        PartyMember.createPreset(1)..poison = 1,
+        PartyMember.createPreset(1)
+          ..poison = 10
+          ..hp = 1,
+        PartyMember.createPreset(1)
+          ..poison = 10
+          ..hp = 0
+          ..unconscious = 20
+          ..endurance = 20
+          ..battleLevel = 1,
+        PartyMember.createPreset(1)
+          ..poison = 10
+          ..hp = 0
+          ..unconscious = 19
+          ..endurance = 20
+          ..battleLevel = 1,
+        PartyMember.createPreset(1)
+          ..poison = 254
+          ..hp = 100,
+        PartyMember.createPreset(1)
+          ..poison = 10
+          ..hp = 1, // outside native slots
+      ];
+      expect(LoreMainProcedures.advancePoison(party), 4);
+      expect(party.map((m) => m.poison), [0, 2, 1, 1, 1, 1, 10]);
+      expect((party[2].hp, party[2].unconscious), (0, 1));
+      expect((party[3].unconscious, party[3].dead), (21, 1));
+      expect((party[4].unconscious, party[4].dead), (20, 0));
+      expect(party[5].hp, 99);
+      expect(party[6].hp, 1);
+    },
+  );
+
+  test(
+    'Main redispatches field menus only when their final input is not Esc',
+    () {
+      for (final action in [
+        FieldAction.openMenu,
+        FieldAction.viewParty,
+        FieldAction.viewCharacter,
+        FieldAction.quickView,
+        FieldAction.castSpell,
+        FieldAction.extrasense,
+        FieldAction.rest,
+        FieldAction.gameOption,
+      ]) {
+        expect(LoreMainProcedures.mainRedispatchesCurrentTile(action), isTrue);
+        expect(
+          LoreMainProcedures.mainRedispatchesCurrentTile(
+            action,
+            lastKeyWasEscape: true,
+          ),
+          isFalse,
+        );
+      }
+      expect(
+        LoreMainProcedures.mainRedispatchesCurrentTile(FieldAction.toggleSound),
+        isFalse,
+      );
+      expect(
+        LoreMainProcedures.mainRedispatchesCurrentTile(FieldAction.none),
+        isFalse,
+      );
+    },
+  );
+
+  test(
+    'enter_lava rolls every slot before displaying and applying damage',
+    () async {
+      final party = [for (var i = 1; i <= 6; i++) PartyMember.createPreset(i)];
+      party[2].name = '';
+      final beforeHp = party.first.hp;
+      final random = _SequenceRandom(List.filled(12, 0));
+      final trace = <String>[];
+
+      await LoreMainProcedures.enterLava(
+        party: party,
+        random: random,
+        scrollToParty: () => trace.add('scroll'),
+        showLavaWarning: () => trace.add('warning:${random.bounds.length}'),
+        showDamage: (member, damage) =>
+            trace.add('damage:${member.name}:$damage:${random.bounds.length}'),
+        displayCondition: () => trace.add('condition'),
+        gameOver: () async => trace.add('gameOver'),
+      );
+
+      expect(random.bounds.length, 12);
+      expect(random.bounds.where((bound) => bound == 40).length, 6);
+      expect(trace.first, 'scroll');
+      expect(trace[1], 'warning:12');
+      expect(trace.where((entry) => entry.startsWith('damage:')).length, 5);
+      expect(
+        trace.where((entry) => entry.startsWith('damage:')),
+        everyElement(endsWith(':12')),
+      );
+      expect(party.first.hp, lessThan(beforeHp));
+      expect(trace, contains('condition'));
+    },
+  );
+
+  test(
+    'enter_swamp advances poison, then rolls six slots before messages',
+    () async {
+      final party = [
+        for (var i = 1; i <= 6; i++) PartyMember.createPreset(i)..luck = 20,
+      ];
+      party.first
+        ..poison = 10
+        ..hp = 2
+        ..luck = 1;
+      final random = _SequenceRandom([0, 0, 0, 0, 0, 0]);
+      final trace = <String>[];
+
+      await LoreMainProcedures.enterSwamp(
+        party: party,
+        scrollToParty: () => trace.add('scroll'),
+        swampWalkSteps: () => 0,
+        setSwampWalkSteps: (_) => trace.add('protected'),
+        random: random,
+        showSwampWarning: () => trace.add('warning:${random.bounds.length}'),
+        showPoisonMessage: (member) => trace.add('poison:${member.name}'),
+        displayCondition: () => trace.add('condition'),
+        displayHealthAndCondition: () => trace.add('health'),
+        gameOver: () async => trace.add('gameOver'),
+      );
+
+      expect(random.bounds, List.filled(6, 20));
+      expect((party.first.poison, party.first.hp), (1, 1));
+      expect(trace, [
+        'scroll',
+        'warning:6',
+        'poison:${party.first.name}',
+        'condition',
+        'health',
+      ]);
+    },
+  );
+
+  test('enter_swamp consumes protection without a poison roll', () async {
+    final party = [for (var i = 1; i <= 6; i++) PartyMember.createPreset(i)];
+    var steps = 1;
+    final random = _SequenceRandom([]);
+    final trace = <String>[];
+
+    await LoreMainProcedures.enterSwamp(
+      party: party,
+      scrollToParty: () => trace.add('scroll'),
+      swampWalkSteps: () => steps,
+      setSwampWalkSteps: (value) {
+        steps = value;
+        trace.add('steps:$value');
+      },
+      random: random,
+      showSwampWarning: () => trace.add('warning'),
+      showPoisonMessage: (_) => trace.add('poison'),
+      displayCondition: () => trace.add('condition'),
+      displayHealthAndCondition: () => trace.add('health'),
+      gameOver: () async => trace.add('gameOver'),
+    );
+
+    expect(steps, 0);
+    expect(random.bounds, isEmpty);
+    expect(trace, ['scroll', 'steps:0']);
+  });
+
+  test(
+    'Move_Mode advances poison before mind reading and encounter roll',
+    () async {
+      final party = [for (var i = 1; i <= 6; i++) PartyMember.createPreset(i)];
+      party.first
+        ..poison = 10
+        ..hp = 2;
+      var mindRead = 2;
+      final trace = <String>[];
+
+      await LoreMainProcedures.moveMode(
+        party: party,
+        scrollToParty: () => trace.add('scroll'),
+        displayHealthAndCondition: () => trace.add('display'),
+        gameOver: () async => trace.add('gameOver'),
+        mindReadSteps: () => mindRead,
+        setMindReadSteps: (value) {
+          mindRead = value;
+          trace.add('mindRead:$value');
+        },
+        encounterFrequency: () => 2,
+        random: (bound) {
+          trace.add('random:$bound');
+          return 0;
+        },
+        encounterEnemy: () => trace.add('encounter'),
+      );
+
+      expect((party.first.poison, party.first.hp, mindRead), (1, 1, 1));
+      expect(trace, [
+        'scroll',
+        'display',
+        'mindRead:1',
+        'random:40',
+        'encounter',
+      ]);
+    },
+  );
+
+  test(
+    'Move_Mode skips empty slots and detects a wiped party before rolling',
+    () async {
+      final party = [
+        for (var i = 1; i <= 6; i++) PartyMember.createPreset(i)..dead = 1,
+      ];
+      party.first
+        ..name = ''
+        ..poison = 10;
+      final trace = <String>[];
+      await LoreMainProcedures.moveMode(
+        party: party,
+        scrollToParty: () => trace.add('scroll'),
+        displayHealthAndCondition: () => trace.add('display'),
+        gameOver: () async => trace.add('gameOver'),
+        mindReadSteps: () => 0,
+        setMindReadSteps: (_) => trace.add('mindRead'),
+        encounterFrequency: () => 1,
+        random: (bound) {
+          trace.add('random:$bound');
+          return 1;
+        },
+        encounterEnemy: () => trace.add('encounter'),
+      );
+      expect(party.first.poison, 10);
+      expect(trace, ['scroll', 'gameOver', 'random:20']);
+    },
+  );
+
+  test(
+    'Move_Mode waits for GameOver, then reads etc[5]/etc[7] after a reload',
+    () async {
+      final party = [
+        for (var i = 1; i <= 6; i++) PartyMember.createPreset(i)..dead = 1,
+      ];
+      final gameOver = Completer<void>();
+      var mindRead = 0;
+      var frequency = 1;
+      final trace = <String>[];
+      final run = LoreMainProcedures.moveMode(
+        party: party,
+        scrollToParty: () {},
+        displayHealthAndCondition: () {},
+        gameOver: () {
+          trace.add('gameOver');
+          return gameOver.future;
+        },
+        mindReadSteps: () => mindRead,
+        setMindReadSteps: (value) => trace.add('mindRead:$value'),
+        encounterFrequency: () => frequency,
+        random: (bound) {
+          trace.add('random:$bound');
+          return 1;
+        },
+        encounterEnemy: () => trace.add('encounter'),
+      );
+      await Future<void>.delayed(Duration.zero);
+      expect(trace, ['gameOver']);
+      // `Load` replaced party.etc[5] and party.etc[7].
+      mindRead = 3;
+      frequency = 2;
+      gameOver.complete();
+      await run;
+      expect(trace, ['gameOver', 'mindRead:2', 'random:40']);
+    },
+  );
+
+  test('Main dispatches the arrival cell only for a later position block', () {
+    // town 6, ground 1, den 14, keep 21 (LOREMAIN.PAS:211-290 order).
+    expect(LoreMainProcedures.dispatchesArrivalCell(6, 1), isTrue);
+    expect(LoreMainProcedures.dispatchesArrivalCell(1, 14), isTrue);
+    expect(LoreMainProcedures.dispatchesArrivalCell(14, 21), isTrue);
+    expect(LoreMainProcedures.dispatchesArrivalCell(6, 21), isTrue);
+    expect(LoreMainProcedures.dispatchesArrivalCell(6, 7), isFalse); // same
+    expect(LoreMainProcedures.dispatchesArrivalCell(14, 1), isFalse);
+    expect(LoreMainProcedures.dispatchesArrivalCell(21, 6), isFalse);
+    expect(LoreMainProcedures.dispatchesArrivalCell(25, 26), isFalse);
+  });
+
+  test('enter_water consumes spell, scrolls, then rolls and enters battle', () {
+    var steps = 2;
+    final trace = <String>[];
+
+    LoreMainProcedures.enterWater(
+      waterWalkSteps: () => steps,
+      setWaterWalkSteps: (value) {
+        steps = value;
+        trace.add('steps:$value');
+      },
+      scrollToParty: () => trace.add('scroll'),
+      encounterFrequency: 2,
+      random: (bound) {
+        trace.add('random:$bound');
+        return 0;
+      },
+      encounterEnemy: () => trace.add('encounter'),
+      restorePosition: () => trace.add('restore'),
+    );
+
+    expect(steps, 1);
+    expect(trace, ['steps:1', 'scroll', 'random:60', 'encounter']);
+  });
+
+  test('enter_water restores position without consuming random when dry', () {
+    var steps = 0;
+    final trace = <String>[];
+
+    LoreMainProcedures.enterWater(
+      waterWalkSteps: () => steps,
+      setWaterWalkSteps: (value) {
+        steps = value;
+        trace.add('steps:$value');
+      },
+      scrollToParty: () => trace.add('scroll'),
+      encounterFrequency: 3,
+      random: (bound) {
+        trace.add('random:$bound');
+        return 0;
+      },
+      encounterEnemy: () => trace.add('encounter'),
+      restorePosition: () => trace.add('restore'),
+    );
+
+    expect(steps, 0);
+    expect(trace, ['restore']);
+  });
+
+  test('enter_water does not request battle on a nonzero roll', () {
+    var steps = 1;
+    final trace = <String>[];
+
+    LoreMainProcedures.enterWater(
+      waterWalkSteps: () => steps,
+      setWaterWalkSteps: (value) {
+        steps = value;
+        trace.add('steps:$value');
+      },
+      scrollToParty: () => trace.add('scroll'),
+      encounterFrequency: 1,
+      random: (bound) {
+        trace.add('random:$bound');
+        return 29;
+      },
+      encounterEnemy: () => trace.add('encounter'),
+      restorePosition: () => trace.add('restore'),
+    );
+
+    expect(steps, 0);
+    expect(trace, ['steps:0', 'scroll', 'random:30']);
+  });
+}

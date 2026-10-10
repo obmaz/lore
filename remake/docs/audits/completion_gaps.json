@@ -1,0 +1,1948 @@
+{
+  "scope": "Review inventory, not missing implementations or completion percentage. Platform adapters still need functional validation.",
+  "summary": {
+    "game_control_sites": 1848,
+    "unclassified": 0,
+    "partial": 0,
+    "verified": 1848,
+    "unmapped_map_writes": 0
+  },
+  "routines": [
+    {
+      "routine": "LORE.PAS:<main>",
+      "verified": 8
+    },
+    {
+      "routine": "LOREBATT.PAS:attackone:1",
+      "verified": 18
+    },
+    {
+      "routine": "LOREBATT.PAS:battleesp:1",
+      "verified": 49
+    },
+    {
+      "routine": "LOREBATT.PAS:battlemode:1",
+      "verified": 42
+    },
+    {
+      "routine": "LOREBATT.PAS:castall:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:castattack:1",
+      "verified": 63
+    },
+    {
+      "routine": "LOREBATT.PAS:castattackall:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREBATT.PAS:castattackone:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:castattacksub:1",
+      "verified": 11
+    },
+    {
+      "routine": "LOREBATT.PAS:castone:1",
+      "verified": 19
+    },
+    {
+      "routine": "LOREBATT.PAS:castspecial:1",
+      "verified": 47
+    },
+    {
+      "routine": "LOREBATT.PAS:displayenemies:1",
+      "verified": 5
+    },
+    {
+      "routine": "LOREBATT.PAS:encounterenemy:1",
+      "verified": 17
+    },
+    {
+      "routine": "LOREBATT.PAS:endbattle:1",
+      "verified": 9
+    },
+    {
+      "routine": "LOREBATT.PAS:enemyattack:1",
+      "verified": 8
+    },
+    {
+      "routine": "LOREBATT.PAS:enemycure:1",
+      "verified": 5
+    },
+    {
+      "routine": "LOREBATT.PAS:existenemies:1",
+      "verified": 3
+    },
+    {
+      "routine": "LOREBATT.PAS:plusexperience:1",
+      "verified": 4
+    },
+    {
+      "routine": "LOREBATT.PAS:plusgold:1",
+      "verified": 4
+    },
+    {
+      "routine": "LOREBATT.PAS:randomenemy:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:runaway:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREBATT.PAS:specialattack:1",
+      "verified": 39
+    },
+    {
+      "routine": "LOREBATT.PAS:specialcastattack:1",
+      "verified": 21
+    },
+    {
+      "routine": "LOREBATT.PAS:weaponattack:1",
+      "verified": 18
+    },
+    {
+      "routine": "LORECRET.PAS:createcharacter:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORECRET.PAS:display:1",
+      "verified": 3
+    },
+    {
+      "routine": "LORECRET.PAS:erase:1",
+      "verified": 42
+    },
+    {
+      "routine": "LORECRET.PAS:fourth:1",
+      "verified": 26
+    },
+    {
+      "routine": "LORECRET.PAS:last:1",
+      "verified": 5
+    },
+    {
+      "routine": "LORECRET.PAS:name:1",
+      "verified": 8
+    },
+    {
+      "routine": "LORECRET.PAS:profile:1",
+      "verified": 2
+    },
+    {
+      "routine": "LORECRET.PAS:second:1",
+      "verified": 10
+    },
+    {
+      "routine": "LORECRET.PAS:third:1",
+      "verified": 17
+    },
+    {
+      "routine": "LORECRET.PAS:whatclass:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORECRET.PAS:which:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREEND.PAS:end_demo:1",
+      "verified": 11
+    },
+    {
+      "routine": "LOREEND.PAS:fadein:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREEND.PAS:fadeout:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREEND.PAS:fadesub:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREEND.PAS:staffmessage:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREEND.PAS:thundereffect:1",
+      "verified": 5
+    },
+    {
+      "routine": "LOREENT.PAS:entermode:1",
+      "verified": 86
+    },
+    {
+      "routine": "LOREENT.PAS:sign:1",
+      "verified": 30
+    },
+    {
+      "routine": "LOREHELP.PAS:box:1",
+      "verified": 3
+    },
+    {
+      "routine": "LOREHELP.PAS:messagebox:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREHELP.PAS:scroll_sub:1",
+      "verified": 5
+    },
+    {
+      "routine": "LOREHELP.PAS:text_fading:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREHELP.PAS:title_menu:1",
+      "verified": 21
+    },
+    {
+      "routine": "LOREMAIN.PAS:enter_lava:1",
+      "verified": 13
+    },
+    {
+      "routine": "LOREMAIN.PAS:enter_swamp:1",
+      "verified": 17
+    },
+    {
+      "routine": "LOREMAIN.PAS:enter_water:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREMAIN.PAS:main:1",
+      "verified": 26
+    },
+    {
+      "routine": "LOREMAIN.PAS:move_mode:1",
+      "verified": 11
+    },
+    {
+      "routine": "LOREMENU.PAS:castspell:1",
+      "verified": 5
+    },
+    {
+      "routine": "LOREMENU.PAS:consciousone:1",
+      "verified": 10
+    },
+    {
+      "routine": "LOREMENU.PAS:conscoisall:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:cureall:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:cureone:1",
+      "verified": 9
+    },
+    {
+      "routine": "LOREMENU.PAS:curespell:1",
+      "verified": 14
+    },
+    {
+      "routine": "LOREMENU.PAS:extrasense:1",
+      "verified": 37
+    },
+    {
+      "routine": "LOREMENU.PAS:gameoption:1",
+      "verified": 19
+    },
+    {
+      "routine": "LOREMENU.PAS:healall:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:healone:1",
+      "verified": 10
+    },
+    {
+      "routine": "LOREMENU.PAS:phenominaspell:1",
+      "verified": 73
+    },
+    {
+      "routine": "LOREMENU.PAS:quickview:1",
+      "verified": 4
+    },
+    {
+      "routine": "LOREMENU.PAS:rest:1",
+      "verified": 17
+    },
+    {
+      "routine": "LOREMENU.PAS:returnpredict:1",
+      "verified": 18
+    },
+    {
+      "routine": "LOREMENU.PAS:revitalizeall:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:revitalizeone:1",
+      "verified": 8
+    },
+    {
+      "routine": "LOREMENU.PAS:selectmode:1",
+      "verified": 2
+    },
+    {
+      "routine": "LOREMENU.PAS:viewcharacter:1",
+      "verified": 6
+    },
+    {
+      "routine": "LOREMENU.PAS:viewparty:1",
+      "verified": 1
+    },
+    {
+      "routine": "LOREMENU.PAS:viewpartysub:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESPEC.PAS:sgn:1",
+      "verified": 2
+    },
+    {
+      "routine": "LORESPEC.PAS:specialevent:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESPEC.PAS:specialevent_part1:1",
+      "verified": 164
+    },
+    {
+      "routine": "LORESPEC.PAS:specialevent_part2:1",
+      "verified": 260
+    },
+    {
+      "routine": "LORESUB.PAS:at:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:auxprint:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:auxscroll:1",
+      "verified": 6
+    },
+    {
+      "routine": "LORESUB.PAS:choosewhom:1",
+      "verified": 7
+    },
+    {
+      "routine": "LORESUB.PAS:clear:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:detectgameover:1",
+      "verified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:display_condition:1",
+      "verified": 5
+    },
+    {
+      "routine": "LORESUB.PAS:displaycondition:1",
+      "verified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:displayesp:1",
+      "verified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:displayhp:1",
+      "verified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:displaysp:1",
+      "verified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:eprint:1",
+      "verified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:exist:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:findgold:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:gameover:1",
+      "verified": 14
+    },
+    {
+      "routine": "LORESUB.PAS:grocery:1",
+      "verified": 6
+    },
+    {
+      "routine": "LORESUB.PAS:hospital:1",
+      "verified": 36
+    },
+    {
+      "routine": "LORESUB.PAS:join:1",
+      "verified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:load:1",
+      "verified": 21
+    },
+    {
+      "routine": "LORESUB.PAS:message:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:on:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:pressanykey:1",
+      "verified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:returnclass:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returncondition:1",
+      "verified": 8
+    },
+    {
+      "routine": "LORESUB.PAS:returndefaultfont:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returndefense:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returnjoinmember:1",
+      "verified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:returnmagic:1",
+      "verified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:returnmessage:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returnsex:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returnsexdata:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:returnweapon:1",
+      "verified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:save:1",
+      "verified": 3
+    },
+    {
+      "routine": "LORESUB.PAS:scroll:1",
+      "verified": 7
+    },
+    {
+      "routine": "LORESUB.PAS:select:1",
+      "verified": 12
+    },
+    {
+      "routine": "LORESUB.PAS:selectenemy:1",
+      "verified": 10
+    },
+    {
+      "routine": "LORESUB.PAS:set_all:1",
+      "verified": 8
+    },
+    {
+      "routine": "LORESUB.PAS:setscrolltype:1",
+      "verified": 2
+    },
+    {
+      "routine": "LORESUB.PAS:simplediscond:1",
+      "verified": 8
+    },
+    {
+      "routine": "LORESUB.PAS:train_center:1",
+      "verified": 51
+    },
+    {
+      "routine": "LORESUB.PAS:turn_mind:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:unsound:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:wantenter:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:wantexit:1",
+      "verified": 1
+    },
+    {
+      "routine": "LORESUB.PAS:weapon_shop:1",
+      "verified": 33
+    },
+    {
+      "routine": "LORETALK.PAS:talkmode:1",
+      "verified": 146
+    }
+  ],
+  "unclassified_sites": [],
+  "unmapped_map_writes": [],
+  "native_fixture_candidates": [
+    {
+      "path": "test/fixtures/dos_archi_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/archi_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_attack_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:attackone:1:if:1",
+        "LOREBATT.PAS:attackone:1:if:2",
+        "LOREBATT.PAS:attackone:1:exit:1",
+        "LOREBATT.PAS:attackone:1:if:3",
+        "LOREBATT.PAS:attackone:1:exit:2",
+        "LOREBATT.PAS:attackone:1:if:4",
+        "LOREBATT.PAS:attackone:1:case:1",
+        "LOREBATT.PAS:attackone:1:if:5",
+        "LOREBATT.PAS:attackone:1:exit:3",
+        "LOREBATT.PAS:attackone:1:if:6",
+        "LOREBATT.PAS:attackone:1:exit:4",
+        "LOREBATT.PAS:attackone:1:if:7",
+        "LOREBATT.PAS:attackone:1:exit:5",
+        "LOREBATT.PAS:attackone:1:if:8",
+        "LOREBATT.PAS:attackone:1:exit:6",
+        "LOREBATT.PAS:attackone:1:if:9",
+        "LOREBATT.PAS:attackone:1:if:10",
+        "LOREBATT.PAS:attackone:1:if:11"
+      ],
+      "test_candidates": [
+        "test/attack_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_auto_select.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/auto_select_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_clear.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/battle_clear_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_commands.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/battle_commands_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_esp.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/battle_esp_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_menus.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/battle_menus_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_battle_rewards.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:plusexperience:1:if:1",
+        "LOREBATT.PAS:plusexperience:1:if:2",
+        "LOREBATT.PAS:plusexperience:1:for:1",
+        "LOREBATT.PAS:plusexperience:1:if:3",
+        "LOREBATT.PAS:plusgold:1:if:1",
+        "LOREBATT.PAS:plusgold:1:exit:1",
+        "LOREBATT.PAS:plusgold:1:for:1",
+        "LOREBATT.PAS:plusgold:1:if:2"
+      ],
+      "test_candidates": [
+        "test/battle_rewards_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_cast_special.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/cast_special_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_chamber_battle_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/chamber_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_chamber_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/chamber_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_common_screen.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:set_all:1:for:8",
+        "LORESUB.PAS:set_all:1:for:7",
+        "LORESUB.PAS:set_all:1:for:6",
+        "LORESUB.PAS:set_all:1:for:5",
+        "LORESUB.PAS:set_all:1:for:4",
+        "LORESUB.PAS:set_all:1:for:3",
+        "LORESUB.PAS:message:1:for:1",
+        "LORESUB.PAS:auxprint:1:if:1",
+        "LORESUB.PAS:pressanykey:1:if:1",
+        "LORESUB.PAS:pressanykey:1:while:1",
+        "LORESUB.PAS:clear:1:for:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/panel_frame_dos_test.dart",
+        "test/source_readkey_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_companion_selection.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/companion_selection_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_condition_storage.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/boss_hp_override_ui_test.dart",
+        "test/condition_storage_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_coordinates.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:at:1:if:1",
+        "LORESUB.PAS:on:1:if:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/source_coordinates_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_class.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_class_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_class_queue.json",
+      "explicit_contracts": [
+        "LORECRET.PAS:third:1:while:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_class_queue_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_erase.json",
+      "explicit_contracts": [
+        "LORECRET.PAS:last:1:if:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_map_erase_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_fourth.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_fourth_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_name.json",
+      "explicit_contracts": [
+        "LORECRET.PAS:name:1:repeat:1",
+        "LORECRET.PAS:name:1:if:1",
+        "LORECRET.PAS:name:1:if:2",
+        "LORECRET.PAS:name:1:if:3",
+        "LORECRET.PAS:name:1:if:4",
+        "LORECRET.PAS:name:1:if:5",
+        "LORECRET.PAS:name:1:repeat:2",
+        "LORECRET.PAS:name:1:if:6"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_name_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_palette.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_palette_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_creation_second.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/creation_second_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_cure_overflow.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/field_magic_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_defence_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:attackone:1:if:1",
+        "LOREBATT.PAS:attackone:1:if:2",
+        "LOREBATT.PAS:attackone:1:exit:1",
+        "LOREBATT.PAS:attackone:1:if:3",
+        "LOREBATT.PAS:attackone:1:exit:2",
+        "LOREBATT.PAS:attackone:1:if:4",
+        "LOREBATT.PAS:attackone:1:case:1",
+        "LOREBATT.PAS:attackone:1:if:5",
+        "LOREBATT.PAS:attackone:1:exit:3",
+        "LOREBATT.PAS:attackone:1:if:6",
+        "LOREBATT.PAS:attackone:1:exit:4",
+        "LOREBATT.PAS:attackone:1:if:7",
+        "LOREBATT.PAS:attackone:1:exit:5",
+        "LOREBATT.PAS:attackone:1:if:8",
+        "LOREBATT.PAS:attackone:1:exit:6",
+        "LOREBATT.PAS:attackone:1:if:9",
+        "LOREBATT.PAS:attackone:1:if:10",
+        "LOREBATT.PAS:attackone:1:if:11",
+        "LOREBATT.PAS:castone:1:if:1",
+        "LOREBATT.PAS:castone:1:if:2",
+        "LOREBATT.PAS:castone:1:exit:1",
+        "LOREBATT.PAS:castone:1:if:3",
+        "LOREBATT.PAS:castone:1:exit:2",
+        "LOREBATT.PAS:castone:1:if:4",
+        "LOREBATT.PAS:castone:1:if:5",
+        "LOREBATT.PAS:castone:1:exit:3",
+        "LOREBATT.PAS:castone:1:if:6",
+        "LOREBATT.PAS:castone:1:exit:4",
+        "LOREBATT.PAS:castone:1:if:7",
+        "LOREBATT.PAS:castone:1:exit:5",
+        "LOREBATT.PAS:castone:1:if:8",
+        "LOREBATT.PAS:castone:1:exit:6",
+        "LOREBATT.PAS:castone:1:if:9",
+        "LOREBATT.PAS:castone:1:exit:7",
+        "LOREBATT.PAS:castone:1:if:10",
+        "LOREBATT.PAS:castone:1:if:11",
+        "LOREBATT.PAS:castone:1:if:12"
+      ],
+      "test_candidates": [
+        "test/defence_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_detect_game_over.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:detectgameover:1:if:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/detect_game_over_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_draconian_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_ending_input.json",
+      "explicit_contracts": [
+        "LOREEND.PAS:thundereffect:1:repeat:1",
+        "LOREEND.PAS:thundereffect:1:if:1",
+        "LOREEND.PAS:thundereffect:1:if:2",
+        "LOREEND.PAS:thundereffect:1:if:3",
+        "LOREEND.PAS:thundereffect:1:if:4",
+        "LOREEND.PAS:end_demo:1:while:1",
+        "LOREEND.PAS:end_demo:1:repeat:1",
+        "LOREEND.PAS:end_demo:1:if:1",
+        "LOREEND.PAS:end_demo:1:if:2",
+        "LOREEND.PAS:end_demo:1:case:1",
+        "LOREEND.PAS:end_demo:1:case:2",
+        "LOREEND.PAS:end_demo:1:if:3",
+        "LOREEND.PAS:end_demo:1:if:4",
+        "LOREEND.PAS:end_demo:1:if:5",
+        "LOREEND.PAS:end_demo:1:for:1",
+        "LOREEND.PAS:end_demo:1:for:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/ending_view_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_ending_staff.json",
+      "explicit_contracts": [
+        "LOREEND.PAS:thundereffect:1:repeat:1",
+        "LOREEND.PAS:thundereffect:1:if:1",
+        "LOREEND.PAS:thundereffect:1:if:2",
+        "LOREEND.PAS:thundereffect:1:if:3",
+        "LOREEND.PAS:thundereffect:1:if:4",
+        "LOREEND.PAS:end_demo:1:while:1",
+        "LOREEND.PAS:end_demo:1:repeat:1",
+        "LOREEND.PAS:end_demo:1:if:1",
+        "LOREEND.PAS:end_demo:1:if:2",
+        "LOREEND.PAS:end_demo:1:case:1",
+        "LOREEND.PAS:end_demo:1:case:2",
+        "LOREEND.PAS:end_demo:1:if:3",
+        "LOREEND.PAS:end_demo:1:if:4",
+        "LOREEND.PAS:end_demo:1:if:5",
+        "LOREEND.PAS:end_demo:1:for:1",
+        "LOREEND.PAS:end_demo:1:for:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/ending_view_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_ai_dispatch.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:case:1",
+        "LOREBATT.PAS:castattack:1:if:15",
+        "LOREBATT.PAS:castattack:1:for:6",
+        "LOREBATT.PAS:castattack:1:if:16",
+        "LOREBATT.PAS:castattack:1:if:17",
+        "LOREBATT.PAS:castattack:1:for:7",
+        "LOREBATT.PAS:castattack:1:if:18",
+        "LOREBATT.PAS:castattack:1:for:8",
+        "LOREBATT.PAS:castattack:1:if:19",
+        "LOREBATT.PAS:castattack:1:if:20",
+        "LOREBATT.PAS:castattack:1:if:21",
+        "LOREBATT.PAS:castattack:1:if:22",
+        "LOREBATT.PAS:castattack:1:if:23",
+        "LOREBATT.PAS:castattack:1:for:9",
+        "LOREBATT.PAS:castattack:1:if:24",
+        "LOREBATT.PAS:castattack:1:if:25",
+        "LOREBATT.PAS:castattack:1:for:10",
+        "LOREBATT.PAS:castattack:1:for:11",
+        "LOREBATT.PAS:castattack:1:if:26",
+        "LOREBATT.PAS:castattack:1:for:12",
+        "LOREBATT.PAS:castattack:1:for:13",
+        "LOREBATT.PAS:castattack:1:if:27",
+        "LOREBATT.PAS:castattack:1:for:14",
+        "LOREBATT.PAS:castattack:1:if:28",
+        "LOREBATT.PAS:castattack:1:if:29",
+        "LOREBATT.PAS:castattack:1:exit:1",
+        "LOREBATT.PAS:castattack:1:for:15",
+        "LOREBATT.PAS:castattack:1:if:30",
+        "LOREBATT.PAS:castattack:1:if:31",
+        "LOREBATT.PAS:castattack:1:for:16",
+        "LOREBATT.PAS:castattack:1:if:32",
+        "LOREBATT.PAS:castattack:1:if:33",
+        "LOREBATT.PAS:castattack:1:if:34",
+        "LOREBATT.PAS:castattack:1:for:17",
+        "LOREBATT.PAS:castattack:1:for:18",
+        "LOREBATT.PAS:castattack:1:if:35",
+        "LOREBATT.PAS:castattack:1:for:19",
+        "LOREBATT.PAS:castattack:1:for:20",
+        "LOREBATT.PAS:castattack:1:if:36",
+        "LOREBATT.PAS:castattack:1:if:37",
+        "LOREBATT.PAS:castattack:1:for:21",
+        "LOREBATT.PAS:castattack:1:if:38",
+        "LOREBATT.PAS:castattack:1:for:22",
+        "LOREBATT.PAS:castattack:1:if:39"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_ai_dispatch_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_armor_effects.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:case:1",
+        "LOREBATT.PAS:castattack:1:for:16",
+        "LOREBATT.PAS:castattack:1:if:32",
+        "LOREBATT.PAS:castattack:1:if:33",
+        "LOREBATT.PAS:castattack:1:if:34"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_armor_effects_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_colors.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_colors_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_cure_continuation.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:case:1",
+        "LOREBATT.PAS:castattack:1:for:12",
+        "LOREBATT.PAS:castattack:1:exit:1",
+        "LOREBATT.PAS:castattack:1:for:19"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_cure_continuation_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_magic_arithmetic.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattackone:1:case:1",
+        "LOREBATT.PAS:castattackall:1:case:1",
+        "LOREBATT.PAS:castattackall:1:for:1",
+        "LOREBATT.PAS:castattack:1:if:15",
+        "LOREBATT.PAS:castattack:1:for:6",
+        "LOREBATT.PAS:castattack:1:if:16",
+        "LOREBATT.PAS:castattack:1:if:17",
+        "LOREBATT.PAS:castattack:1:for:7",
+        "LOREBATT.PAS:castattack:1:if:18",
+        "LOREBATT.PAS:castattack:1:for:8",
+        "LOREBATT.PAS:castattack:1:if:19",
+        "LOREBATT.PAS:castattack:1:if:20",
+        "LOREBATT.PAS:castattack:1:if:21",
+        "LOREBATT.PAS:castattack:1:if:22",
+        "LOREBATT.PAS:castattack:1:if:23",
+        "LOREBATT.PAS:castattack:1:for:9",
+        "LOREBATT.PAS:castattack:1:if:24",
+        "LOREBATT.PAS:castattack:1:if:25",
+        "LOREBATT.PAS:castattack:1:for:10",
+        "LOREBATT.PAS:castattack:1:for:11",
+        "LOREBATT.PAS:castattack:1:if:26",
+        "LOREBATT.PAS:castattack:1:for:12",
+        "LOREBATT.PAS:castattack:1:for:13",
+        "LOREBATT.PAS:castattack:1:if:27",
+        "LOREBATT.PAS:castattack:1:for:14",
+        "LOREBATT.PAS:castattack:1:if:28",
+        "LOREBATT.PAS:castattack:1:if:29",
+        "LOREBATT.PAS:castattack:1:exit:1",
+        "LOREBATT.PAS:castattack:1:for:15",
+        "LOREBATT.PAS:castattack:1:if:30",
+        "LOREBATT.PAS:castattack:1:if:31",
+        "LOREBATT.PAS:castattack:1:for:16",
+        "LOREBATT.PAS:castattack:1:if:32",
+        "LOREBATT.PAS:castattack:1:if:33",
+        "LOREBATT.PAS:castattack:1:if:34",
+        "LOREBATT.PAS:castattack:1:for:17",
+        "LOREBATT.PAS:castattack:1:for:18",
+        "LOREBATT.PAS:castattack:1:if:35",
+        "LOREBATT.PAS:castattack:1:for:19",
+        "LOREBATT.PAS:castattack:1:for:20",
+        "LOREBATT.PAS:castattack:1:if:36",
+        "LOREBATT.PAS:castattack:1:if:37",
+        "LOREBATT.PAS:castattack:1:for:21",
+        "LOREBATT.PAS:castattack:1:if:38",
+        "LOREBATT.PAS:castattack:1:for:22",
+        "LOREBATT.PAS:castattack:1:if:39"
+      ],
+      "note_mentions": [
+        "LOREBATT.PAS:enemycure:1:if:1",
+        "LOREBATT.PAS:enemycure:1:if:2",
+        "LOREBATT.PAS:enemycure:1:if:3",
+        "LOREBATT.PAS:enemycure:1:if:4",
+        "LOREBATT.PAS:enemycure:1:if:5"
+      ],
+      "test_candidates": [
+        "test/enemy_ai_arithmetic_dos_test.dart",
+        "test/enemy_magic_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_magic_targets.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattack:1:case:1",
+        "LOREBATT.PAS:castattack:1:if:1",
+        "LOREBATT.PAS:castattack:1:if:2",
+        "LOREBATT.PAS:castattack:1:for:1",
+        "LOREBATT.PAS:castattack:1:if:3",
+        "LOREBATT.PAS:castattack:1:for:2",
+        "LOREBATT.PAS:castattack:1:if:4",
+        "LOREBATT.PAS:castattack:1:if:5",
+        "LOREBATT.PAS:castattack:1:if:6",
+        "LOREBATT.PAS:castattack:1:if:7",
+        "LOREBATT.PAS:castattack:1:for:3",
+        "LOREBATT.PAS:castattack:1:if:8",
+        "LOREBATT.PAS:castattack:1:if:9",
+        "LOREBATT.PAS:castattack:1:for:4",
+        "LOREBATT.PAS:castattack:1:if:10",
+        "LOREBATT.PAS:castattack:1:for:5",
+        "LOREBATT.PAS:castattack:1:if:11",
+        "LOREBATT.PAS:castattack:1:if:12",
+        "LOREBATT.PAS:castattack:1:if:13",
+        "LOREBATT.PAS:castattack:1:if:14"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_magic_targets_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_phase_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_selection.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_selection_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_special_attack.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:specialattack:1:case:1",
+        "LOREBATT.PAS:specialattack:1:for:1",
+        "LOREBATT.PAS:specialattack:1:if:1",
+        "LOREBATT.PAS:specialattack:1:for:2",
+        "LOREBATT.PAS:specialattack:1:if:2",
+        "LOREBATT.PAS:specialattack:1:if:3",
+        "LOREBATT.PAS:specialattack:1:if:4",
+        "LOREBATT.PAS:specialattack:1:if:5",
+        "LOREBATT.PAS:specialattack:1:if:6",
+        "LOREBATT.PAS:specialattack:1:exit:1",
+        "LOREBATT.PAS:specialattack:1:if:7",
+        "LOREBATT.PAS:specialattack:1:exit:2",
+        "LOREBATT.PAS:specialattack:1:if:8",
+        "LOREBATT.PAS:specialattack:1:for:3",
+        "LOREBATT.PAS:specialattack:1:if:9",
+        "LOREBATT.PAS:specialattack:1:for:4",
+        "LOREBATT.PAS:specialattack:1:if:10",
+        "LOREBATT.PAS:specialattack:1:if:11",
+        "LOREBATT.PAS:specialattack:1:if:12",
+        "LOREBATT.PAS:specialattack:1:if:13",
+        "LOREBATT.PAS:specialattack:1:if:14",
+        "LOREBATT.PAS:specialattack:1:exit:3",
+        "LOREBATT.PAS:specialattack:1:if:15",
+        "LOREBATT.PAS:specialattack:1:exit:4",
+        "LOREBATT.PAS:specialattack:1:if:16",
+        "LOREBATT.PAS:specialattack:1:if:17",
+        "LOREBATT.PAS:specialattack:1:for:5",
+        "LOREBATT.PAS:specialattack:1:if:18",
+        "LOREBATT.PAS:specialattack:1:for:6",
+        "LOREBATT.PAS:specialattack:1:if:19",
+        "LOREBATT.PAS:specialattack:1:if:20",
+        "LOREBATT.PAS:specialattack:1:if:21",
+        "LOREBATT.PAS:specialattack:1:if:22",
+        "LOREBATT.PAS:specialattack:1:if:23",
+        "LOREBATT.PAS:specialattack:1:exit:5",
+        "LOREBATT.PAS:specialattack:1:if:24",
+        "LOREBATT.PAS:specialattack:1:exit:6",
+        "LOREBATT.PAS:specialattack:1:if:25",
+        "LOREBATT.PAS:specialattack:1:if:26"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_special_attack_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_special_cast.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_special_cast_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_enemy_spell_dispatch.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:castattackone:1:case:1",
+        "LOREBATT.PAS:castattackall:1:case:1",
+        "LOREBATT.PAS:castattackall:1:for:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/enemy_spell_dispatch_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_evil_god_first_attempt.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/crab_king_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_evil_god_success.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/evil_god_native_completion_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_field_pages.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/field_pages_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_fill_patterns.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/scroll_fill_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_battle_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_complete_battle.json",
+      "explicit_contracts": [
+        "LORESPEC.PAS:specialevent_part2:1:repeat:2",
+        "LORESPEC.PAS:specialevent_part2:1:if:147"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_continuation.json",
+      "explicit_contracts": [
+        "LORESPEC.PAS:specialevent_part2:1:repeat:2",
+        "LORESPEC.PAS:specialevent_part2:1:if:147"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_ending_completion.json",
+      "explicit_contracts": [
+        "LOREEND.PAS:thundereffect:1:repeat:1",
+        "LOREEND.PAS:thundereffect:1:if:1",
+        "LOREEND.PAS:thundereffect:1:if:2",
+        "LOREEND.PAS:thundereffect:1:if:3",
+        "LOREEND.PAS:thundereffect:1:if:4",
+        "LOREEND.PAS:end_demo:1:while:1",
+        "LOREEND.PAS:end_demo:1:repeat:1",
+        "LOREEND.PAS:end_demo:1:if:1",
+        "LOREEND.PAS:end_demo:1:if:2",
+        "LOREEND.PAS:end_demo:1:case:1",
+        "LOREEND.PAS:end_demo:1:case:2",
+        "LOREEND.PAS:end_demo:1:if:3",
+        "LOREEND.PAS:end_demo:1:if:4",
+        "LOREEND.PAS:end_demo:1:if:5",
+        "LOREEND.PAS:end_demo:1:for:1",
+        "LOREEND.PAS:end_demo:1:for:2"
+      ],
+      "note_mentions": [
+        "LOREEND.PAS:thundereffect:1:repeat:1",
+        "LOREEND.PAS:thundereffect:1:if:1",
+        "LOREEND.PAS:thundereffect:1:if:2",
+        "LOREEND.PAS:thundereffect:1:if:3",
+        "LOREEND.PAS:thundereffect:1:if:4",
+        "LOREEND.PAS:end_demo:1:while:1",
+        "LOREEND.PAS:end_demo:1:repeat:1",
+        "LOREEND.PAS:end_demo:1:if:1",
+        "LOREEND.PAS:end_demo:1:if:2",
+        "LOREEND.PAS:end_demo:1:case:1",
+        "LOREEND.PAS:end_demo:1:case:2",
+        "LOREEND.PAS:end_demo:1:if:3",
+        "LOREEND.PAS:end_demo:1:if:4",
+        "LOREEND.PAS:end_demo:1:if:5",
+        "LOREEND.PAS:end_demo:1:for:1",
+        "LOREEND.PAS:end_demo:1:for:2"
+      ],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_final_party_order.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/final_battle_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_findgold.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:findgold:1:for:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/findgold_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_first_field_battle.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/first_field_battle_dos_test.dart",
+        "test/first_field_battle_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_frost_battle_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/frost_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_frost_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/frost_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_gaia_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREMAIN.PAS:main:1:if:12",
+        "LOREMAIN.PAS:main:1:if:13",
+        "LOREMAIN.PAS:main:1:for:1",
+        "LOREMAIN.PAS:main:1:if:14",
+        "LOREMAIN.PAS:main:1:if:15",
+        "LOREMAIN.PAS:main:1:if:16",
+        "LOREMAIN.PAS:main:1:if:17",
+        "LOREMAIN.PAS:main:1:if:18",
+        "LOREMAIN.PAS:main:1:if:19"
+      ],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_hidden_levers_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/hidden_levers_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_hospital_overflow.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESUB.PAS:hospital:1:if:20"
+      ],
+      "test_candidates": [
+        "test/lore_town_shops_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_hospital_wound.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/hospital_wound_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_join_bounds.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/join_bounds_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_keep2_completion.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/keep2_completion_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_keep2_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/keep2_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_keep3_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/keep3_native_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_lastditch_arrival.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORETALK.PAS:talkmode:1:if:61",
+        "LORETALK.PAS:talkmode:1:if:62",
+        "LORETALK.PAS:talkmode:1:if:63",
+        "LORETALK.PAS:talkmode:1:exit:1",
+        "LORETALK.PAS:talkmode:1:case:3"
+      ],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_load_errors.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:load:1:if:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/load_errors_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_load_font_errors.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/load_font_errors_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_load_phases.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/load_phases_dos_test.dart",
+        "test/saved_map_header_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_load_record_errors.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/load_record_errors_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_load_state.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:load:1:case:3",
+        "LORESUB.PAS:load:1:case:4"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/load_state_dos_test.dart",
+        "test/scroll_fill_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_lockup_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/lockup_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_lorehunter_reentry.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/dialogue_window_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_madjoe_reentry.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/dialogue_window_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_main_input_gates.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/main_input_gates_dos_test.dart",
+        "test/main_tab_palette_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_main_sound.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_map_reads.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:load:1:if:7"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/map_reads_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_menace_center.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_center_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_menace_entry.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESPEC.PAS:specialevent_part1:1:if:98"
+      ],
+      "test_candidates": [
+        "test/menace_entry_dos_test.dart",
+        "test/menace_entry_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_menace_return.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_metal_battle_phase.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/metal_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_metal_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/metal_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_muddy_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_new_game.json",
+      "explicit_contracts": [
+        "LORECRET.PAS:last:1:for:1",
+        "LORECRET.PAS:last:1:for:3",
+        "LORECRET.PAS:last:1:if:1",
+        "LORESUB.PAS:load:1:for:1",
+        "LORESUB.PAS:save:1:for:1"
+      ],
+      "note_mentions": [
+        "LORESPEC.PAS:specialevent_part1:1:if:21",
+        "LORECRET.PAS:fourth:1:for:5",
+        "LORECRET.PAS:fourth:1:for:6",
+        "LORECRET.PAS:fourth:1:for:7",
+        "LORECRET.PAS:fourth:1:case:2",
+        "LORECRET.PAS:last:1:for:2"
+      ],
+      "test_candidates": [
+        "test/castle_departure_dos_ui_test.dart",
+        "test/first_field_battle_dos_ui_test.dart",
+        "test/new_game_dos_test.dart",
+        "test/resumed_field_battle_dos_ui_test.dart",
+        "test/save_party_dos_test.dart",
+        "test/source_new_game_persistence_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_notice_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/hidra_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_pyramid_battle.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/pyramid_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_pyramid_success.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESPEC.PAS:specialevent_part1:1:if:27",
+        "LORESPEC.PAS:specialevent_part1:1:if:57",
+        "LORESPEC.PAS:specialevent_part1:1:if:58",
+        "LORESPEC.PAS:specialevent_part1:1:exit:5",
+        "LORESPEC.PAS:specialevent_part1:1:if:59",
+        "LORESPEC.PAS:specialevent_part1:1:exit:6",
+        "LORESPEC.PAS:specialevent_part1:1:if:60",
+        "LOREMAIN.PAS:main:1:if:12",
+        "LOREMAIN.PAS:main:1:if:13",
+        "LOREMAIN.PAS:main:1:for:1",
+        "LOREMAIN.PAS:main:1:if:14",
+        "LOREMAIN.PAS:main:1:if:15",
+        "LOREMAIN.PAS:main:1:if:16",
+        "LOREMAIN.PAS:main:1:if:17",
+        "LOREMAIN.PAS:main:1:if:18",
+        "LOREMAIN.PAS:main:1:if:19",
+        "LORETALK.PAS:talkmode:1:if:61",
+        "LORETALK.PAS:talkmode:1:if:62",
+        "LORETALK.PAS:talkmode:1:if:63",
+        "LORETALK.PAS:talkmode:1:exit:1",
+        "LORETALK.PAS:talkmode:1:case:2",
+        "LORETALK.PAS:talkmode:1:if:49",
+        "LORETALK.PAS:talkmode:1:case:3"
+      ],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart",
+        "test/pyramid_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_quake_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart",
+        "test/quake_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_random_order.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/random_order_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_random_stream.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/lore_random_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_recruit_storage.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/condition_storage_dos_test.dart",
+        "test/recruit_storage_dos_test.dart",
+        "test/special_cast_slots_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_remains_blink.json",
+      "explicit_contracts": [
+        "LORETALK.PAS:talkmode:1:for:9",
+        "LORETALK.PAS:talkmode:1:for:10",
+        "LORETALK.PAS:talkmode:1:for:11",
+        "LORETALK.PAS:talkmode:1:for:12",
+        "LORETALK.PAS:talkmode:1:for:13",
+        "LORETALK.PAS:talkmode:1:for:14",
+        "LORETALK.PAS:talkmode:1:for:15"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/remains_blink_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_rest_states.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/rest_dos_parity_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_resumed_field_battle.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:runaway:1:if:1",
+        "LOREBATT.PAS:encounterenemy:1:if:8"
+      ],
+      "test_candidates": [
+        "test/menace_entry_dos_ui_test.dart",
+        "test/resumed_field_battle_dos_test.dart",
+        "test/resumed_field_battle_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_return_magic.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:returnmagic:1:case:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/return_magic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_return_message.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:returnmessage:1:case:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/return_message_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_save_party.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:load:1:for:1",
+        "LORESUB.PAS:save:1:for:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/save_party_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_scroll.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:scroll:1:while:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/scroll_dos_test.dart",
+        "test/scroll_feedback_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_second_field_battle.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/first_field_battle_dos_ui_test.dart",
+        "test/second_field_battle_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_setall_enemy_read.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:set_all:1:for:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/setall_enemy_read_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_special_arrival.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/special_arrival_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_spell_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:castone:1:if:1",
+        "LOREBATT.PAS:castone:1:if:2",
+        "LOREBATT.PAS:castone:1:exit:1",
+        "LOREBATT.PAS:castone:1:if:3",
+        "LOREBATT.PAS:castone:1:exit:2",
+        "LOREBATT.PAS:castone:1:if:4",
+        "LOREBATT.PAS:castone:1:if:5",
+        "LOREBATT.PAS:castone:1:exit:3",
+        "LOREBATT.PAS:castone:1:if:6",
+        "LOREBATT.PAS:castone:1:exit:4",
+        "LOREBATT.PAS:castone:1:if:7",
+        "LOREBATT.PAS:castone:1:exit:5",
+        "LOREBATT.PAS:castone:1:if:8",
+        "LOREBATT.PAS:castone:1:exit:6",
+        "LOREBATT.PAS:castone:1:if:9",
+        "LOREBATT.PAS:castone:1:exit:7",
+        "LOREBATT.PAS:castone:1:if:10",
+        "LOREBATT.PAS:castone:1:if:11",
+        "LOREBATT.PAS:castone:1:if:12"
+      ],
+      "test_candidates": [
+        "test/spell_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_startup.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:unsound:1:if:1",
+        "LOREHELP.PAS:title_menu:1:goto:1",
+        "LOREHELP.PAS:title_menu:1:if:2",
+        "LOREHELP.PAS:title_menu:1:if:1",
+        "LOREHELP.PAS:text_fading:1:if:1",
+        "LOREHELP.PAS:text_fading:1:for:1",
+        "LORE.PAS:<main>:while:2",
+        "LORE.PAS:<main>:while:1",
+        "LORE.PAS:<main>:if:6",
+        "LORE.PAS:<main>:if:5",
+        "LORE.PAS:<main>:if:4",
+        "LORE.PAS:<main>:if:3",
+        "LORE.PAS:<main>:if:2",
+        "LORE.PAS:<main>:if:1"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/startup_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_summon_bounds.json",
+      "explicit_contracts": [
+        "LOREBATT.PAS:specialcastattack:1:if:3",
+        "LOREBATT.PAS:specialcastattack:1:if:4"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/summon_bounds_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_swamp_gate_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/gorgon_battle_dos_test.dart",
+        "test/menace_return_dos_ui_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_terrain_states.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/terrain_dos_parity_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_title_intro.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/title_intro_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_town_tile42.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/bgi_font_decoder_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_training_dispatch.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/training_dispatch_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_training_growth.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LORESUB.PAS:train_center:1:if:1",
+        "LORESUB.PAS:train_center:1:exit:1",
+        "LORESUB.PAS:train_center:1:if:3",
+        "LORESUB.PAS:train_center:1:case:3",
+        "LORESUB.PAS:train_center:1:if:4",
+        "LORESUB.PAS:train_center:1:goto:1",
+        "LORESUB.PAS:train_center:1:goto:2",
+        "LORESUB.PAS:train_center:1:case:4",
+        "LORESUB.PAS:train_center:1:if:6",
+        "LORESUB.PAS:train_center:1:if:7",
+        "LORESUB.PAS:train_center:1:if:8",
+        "LORESUB.PAS:train_center:1:if:9",
+        "LORESUB.PAS:train_center:1:if:10",
+        "LORESUB.PAS:train_center:1:if:11",
+        "LORESUB.PAS:train_center:1:if:12",
+        "LORESUB.PAS:train_center:1:if:13",
+        "LORESUB.PAS:train_center:1:if:14",
+        "LORESUB.PAS:train_center:1:if:15",
+        "LORESUB.PAS:train_center:1:if:16",
+        "LORESUB.PAS:train_center:1:if:17",
+        "LORESUB.PAS:train_center:1:if:18",
+        "LORESUB.PAS:train_center:1:if:19",
+        "LORESUB.PAS:train_center:1:if:20",
+        "LORESUB.PAS:train_center:1:if:21",
+        "LORESUB.PAS:train_center:1:if:22",
+        "LORESUB.PAS:train_center:1:if:23",
+        "LORESUB.PAS:train_center:1:if:24",
+        "LORESUB.PAS:train_center:1:if:25",
+        "LORESUB.PAS:train_center:1:if:26",
+        "LORESUB.PAS:train_center:1:if:27",
+        "LORESUB.PAS:train_center:1:if:28",
+        "LORESUB.PAS:train_center:1:if:29",
+        "LORESUB.PAS:train_center:1:if:30",
+        "LORESUB.PAS:train_center:1:if:31",
+        "LORESUB.PAS:train_center:1:if:32",
+        "LORESUB.PAS:train_center:1:if:33",
+        "LORESUB.PAS:train_center:1:if:34",
+        "LORESUB.PAS:train_center:1:if:35",
+        "LORESUB.PAS:train_center:1:if:36",
+        "LORESUB.PAS:train_center:1:if:37",
+        "LORESUB.PAS:train_center:1:if:38",
+        "LORESUB.PAS:train_center:1:if:39",
+        "LORESUB.PAS:train_center:1:for:1",
+        "LORESUB.PAS:train_center:1:if:40",
+        "LORESUB.PAS:train_center:1:goto:3"
+      ],
+      "test_candidates": [
+        "test/training_growth_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_training_words.json",
+      "explicit_contracts": [
+        "LORESUB.PAS:train_center:1:if:2",
+        "LORESUB.PAS:train_center:1:case:1",
+        "LORESUB.PAS:train_center:1:case:2"
+      ],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/training_words_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_water_lord_rewards.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/lore_water_lord_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_weapon_arithmetic.json",
+      "explicit_contracts": [],
+      "note_mentions": [
+        "LOREBATT.PAS:weaponattack:1:if:1",
+        "LOREBATT.PAS:weaponattack:1:exit:1",
+        "LOREBATT.PAS:weaponattack:1:for:1",
+        "LOREBATT.PAS:weaponattack:1:if:2",
+        "LOREBATT.PAS:weaponattack:1:for:2",
+        "LOREBATT.PAS:weaponattack:1:if:3",
+        "LOREBATT.PAS:weaponattack:1:if:4",
+        "LOREBATT.PAS:weaponattack:1:if:5",
+        "LOREBATT.PAS:weaponattack:1:if:6",
+        "LOREBATT.PAS:weaponattack:1:if:7",
+        "LOREBATT.PAS:weaponattack:1:if:8",
+        "LOREBATT.PAS:weaponattack:1:exit:2",
+        "LOREBATT.PAS:weaponattack:1:if:9",
+        "LOREBATT.PAS:weaponattack:1:if:10",
+        "LOREBATT.PAS:weaponattack:1:exit:3",
+        "LOREBATT.PAS:weaponattack:1:if:11",
+        "LOREBATT.PAS:weaponattack:1:if:12",
+        "LOREBATT.PAS:weaponattack:1:if:13"
+      ],
+      "test_candidates": [
+        "test/weapon_arithmetic_dos_test.dart"
+      ]
+    },
+    {
+      "path": "test/fixtures/dos_wivern_continuation.json",
+      "explicit_contracts": [],
+      "note_mentions": [],
+      "test_candidates": [
+        "test/menace_return_dos_ui_test.dart",
+        "test/wivern_battle_dos_test.dart"
+      ]
+    }
+  ]
+}

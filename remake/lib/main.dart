@@ -1,0 +1,196 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'data/lore_data.dart';
+import 'models/party_member.dart';
+import 'services/save_manager.dart';
+import 'services/audio_manager.dart';
+import 'services/graphics_settings.dart';
+import 'services/source_palette.dart';
+import 'game/lore_world_manager.dart';
+import 'game/sprite_sheet.dart';
+import 'screens/character_creation_screen.dart';
+import 'screens/main_game_screen.dart';
+import 'logic/lore_startup_options.dart';
+import 'logic/lore_load_failure.dart';
+import 'screens/lore_help_screen.dart';
+import 'widgets/game_over_view.dart';
+import 'theme/mobile_theme.dart';
+import 'widgets/mobile_viewport_gate.dart';
+
+Future<void> main([List<String> arguments = const []]) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Follow the device orientation so the mobile layout can use portrait space.
+  await SystemChrome.setPreferredOrientations(DeviceOrientation.values);
+
+  // 원작 데이터(몬스터/아이템/마법/맵)를 JSON에서 로드한다.
+  // 실패하면 코드 내장 테이블로 자동 폴백하므로 게임은 항상 동작한다.
+  await LoreData.instance.load();
+  // 이미지 파일(PNG) 스프라이트 시트를 로드한다. 없으면 FNT 디코더로 폴백한다.
+  await SpriteLibrary.instance.load();
+  await GraphicsSettings.instance.restore();
+  // 포털·시설·표지판은 원본 Dart 절차에서 선택한다.
+  await LoreWorldManager.instance.loadData();
+
+  runApp(LoreApp(startup: LoreStartupOptions.parse(arguments)));
+}
+
+class LoreApp extends StatefulWidget {
+  const LoreApp({
+    super.key,
+    this.startup = const LoreStartupOptions(),
+    this.sourceReplay = false,
+  });
+  final LoreStartupOptions startup;
+  final bool sourceReplay;
+
+  @override
+  State<LoreApp> createState() => _LoreAppState();
+}
+
+class _LoreAppState extends State<LoreApp> {
+  List<PartyMember>? _party;
+  SaveData? _initialSaveData;
+  bool _creating = false;
+  Object? _creationError;
+  bool _bootLoading = false;
+  LoreLoadFailure? _bootFailure;
+
+  void _returnToTitle() => setState(() {
+    _party = null;
+    _initialSaveData = null;
+    _creating = false;
+    _creationError = null;
+    _bootFailure = null;
+  });
+
+  @override
+  void initState() {
+    super.initState();
+    AudioManager.instance.configureSourceMusic(widget.startup.musicEnabled);
+    if (widget.startup.mode == LoreStartupMode.game) {
+      _bootLoading = true;
+      _loadStartupGame();
+    }
+  }
+
+  Future<void> _loadStartupGame() async {
+    // Set_All always sets LoadNo='1'; /g does not search other slots.
+    final result = await SaveManager.instance.readGame(1);
+    if (!mounted) return;
+    setState(() {
+      _bootLoading = false;
+      _bootFailure = result.failure;
+      if (result.data case final save?) {
+        _initialSaveData = save;
+        _party = save.party;
+      }
+    });
+  }
+
+  Future<void> _haltHelp() async {
+    await AudioManager.instance.stopSourceAudio();
+    if (mounted) await SystemNavigator.pop();
+  }
+
+  Future<void> _startNewGame(List<PartyMember> party) async {
+    if (_creating || _creationError != null) return;
+    setState(() => _creating = true);
+    try {
+      // LORECRET.Last completes all four writes before Set_All/gameplay.
+      await SaveManager.instance.writeNewGame(
+        party,
+        mapTitle: LoreWorldManager.mapRegistry[6]?.title ?? '',
+      );
+      if (!mounted) return;
+      setState(() {
+        _party = party;
+        _creating = false;
+      });
+    } catch (error) {
+      if (!mounted) return;
+      AudioManager.instance.stopBgm();
+      // Storage is a modern adapter; failure must not silently start play.
+      setState(() {
+        _creationError = error;
+        _creating = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '또 다른 지식의 성전 (1993)',
+      debugShowCheckedModeBanner: false,
+      theme: MobileTheme.theme,
+      builder: (context, child) =>
+          MobileViewportGate(child: SourcePalette.wrap(context, child)),
+      // 파티가 결성되지 않았고 세이브 로드가 없으면 캐릭터 생성 화면으로 시작,
+      // 생성 완료 또는 세이브 로드 시 메인 게임 화면으로 진입!
+      home: widget.startup.mode == LoreStartupMode.help
+          ? LoreHelpScreen(onHalt: _haltHelp)
+          : _bootLoading
+          ? const Scaffold(
+              backgroundColor: Colors.black,
+              body: Center(child: CircularProgressIndicator()),
+            )
+          : _bootFailure != null
+          ? HaltView(loadFailure: _bootFailure)
+          : _party == null && _initialSaveData == null
+          ? Stack(
+              children: [
+                ExcludeFocus(
+                  excluding: _creating || _creationError != null,
+                  child: IgnorePointer(
+                    ignoring: _creating || _creationError != null,
+                    child: CharacterCreationScreen(
+                      mobilePresentation: !widget.sourceReplay,
+                      startWithCreation:
+                          widget.startup.mode == LoreStartupMode.creation,
+                      onGameStart: _startNewGame,
+                      onLoadGame: (saveData) {
+                        setState(() {
+                          _initialSaveData = saveData;
+                          _party = saveData.party;
+                        });
+                      },
+                    ),
+                  ),
+                ),
+                if (_creating || _creationError != null)
+                  Positioned.fill(
+                    child: ColoredBox(
+                      color: _creationError is LoreCreationMapEraseFailure
+                          ? Colors.black
+                          : Colors.black54,
+                      child: Center(
+                        child: _creationError != null
+                            ? Text(
+                                _creationError is LoreCreationMapEraseFailure
+                                    ? LoreCreationMapEraseFailure.message
+                                    : '새 게임 저장 실패. 앱을 다시 시작해 주세요.',
+                                style:
+                                    _creationError
+                                        is LoreCreationMapEraseFailure
+                                    ? const TextStyle(color: Color(0xFFFF5555))
+                                    : null,
+                                key: const ValueKey('creation-storage-error'),
+                              )
+                            : const CircularProgressIndicator(
+                                key: ValueKey('creation-saving'),
+                              ),
+                      ),
+                    ),
+                  ),
+              ],
+            )
+          : MainGameScreen(
+              sourceReplayBattle: widget.sourceReplay,
+              initialParty: _party,
+              initialSaveData: _initialSaveData,
+              onReturnToTitle: _returnToTitle,
+            ),
+    );
+  }
+}

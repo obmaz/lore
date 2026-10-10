@@ -1,0 +1,4634 @@
+{
+  "scope": "Original BattleMode level CASEs supplying maxsum to Select, all byte levels.",
+  "exeSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragments": [
+    {
+      "how": 2,
+      "start": 151319,
+      "end": 151414,
+      "sha256": "6259e51325895a84282c5b1a9ce6c0fc7338fcdadbcb6c17b28ef656b3eafa06"
+    },
+    {
+      "how": 3,
+      "start": 151581,
+      "end": 151688,
+      "sha256": "980579a58e9f0455228d27cc115a7386d8cbfb62998f39b1bf335d1476857e52"
+    },
+    {
+      "how": 4,
+      "start": 151838,
+      "end": 151949,
+      "sha256": "ba672a91a73a3b349d4f4fdfa5953f07c6495549890c04da56b855f50e6ad0b2"
+    }
+  ],
+  "cases": [
+    {
+      "how": 2,
+      "level": 0,
+      "person": 1,
+      "maxsum": 2
+    },
+    {
+      "how": 2,
+      "level": 1,
+      "person": 2,
+      "maxsum": 2
+    },
+    {
+      "how": 2,
+      "level": 2,
+      "person": 3,
+      "maxsum": 3
+    },
+    {
+      "how": 2,
+      "level": 3,
+      "person": 4,
+      "maxsum": 3
+    },
+    {
+      "how": 2,
+      "level": 4,
+      "person": 5,
+      "maxsum": 4
+    },
+    {
+      "how": 2,
+      "level": 5,
+      "person": 6,
+      "maxsum": 4
+    },
+    {
+      "how": 2,
+      "level": 6,
+      "person": 1,
+      "maxsum": 4
+    },
+    {
+      "how": 2,
+      "level": 7,
+      "person": 2,
+      "maxsum": 4
+    },
+    {
+      "how": 2,
+      "level": 8,
+      "person": 3,
+      "maxsum": 5
+    },
+    {
+      "how": 2,
+      "level": 9,
+      "person": 4,
+      "maxsum": 5
+    },
+    {
+      "how": 2,
+      "level": 10,
+      "person": 5,
+      "maxsum": 5
+    },
+    {
+      "how": 2,
+      "level": 11,
+      "person": 6,
+      "maxsum": 5
+    },
+    {
+      "how": 2,
+      "level": 12,
+      "person": 1,
+      "maxsum": 6
+    },
+    {
+      "how": 2,
+      "level": 13,
+      "person": 2,
+      "maxsum": 6
+    },
+    {
+      "how": 2,
+      "level": 14,
+      "person": 3,
+      "maxsum": 6
+    },
+    {
+      "how": 2,
+      "level": 15,
+      "person": 4,
+      "maxsum": 6
+    },
+    {
+      "how": 2,
+      "level": 16,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 17,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 18,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 19,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 20,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 21,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 22,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 23,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 24,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 25,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 26,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 27,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 28,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 29,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 30,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 31,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 32,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 33,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 34,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 35,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 36,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 37,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 38,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 39,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 40,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 41,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 42,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 43,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 44,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 45,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 46,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 47,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 48,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 49,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 50,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 51,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 52,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 53,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 54,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 55,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 56,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 57,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 58,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 59,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 60,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 61,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 62,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 63,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 64,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 65,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 66,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 67,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 68,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 69,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 70,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 71,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 72,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 73,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 74,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 75,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 76,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 77,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 78,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 79,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 80,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 81,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 82,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 83,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 84,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 85,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 86,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 87,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 88,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 89,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 90,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 91,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 92,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 93,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 94,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 95,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 96,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 97,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 98,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 99,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 100,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 101,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 102,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 103,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 104,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 105,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 106,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 107,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 108,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 109,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 110,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 111,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 112,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 113,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 114,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 115,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 116,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 117,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 118,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 119,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 120,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 121,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 122,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 123,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 124,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 125,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 126,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 127,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 128,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 129,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 130,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 131,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 132,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 133,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 134,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 135,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 136,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 137,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 138,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 139,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 140,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 141,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 142,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 143,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 144,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 145,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 146,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 147,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 148,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 149,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 150,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 151,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 152,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 153,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 154,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 155,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 156,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 157,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 158,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 159,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 160,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 161,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 162,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 163,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 164,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 165,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 166,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 167,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 168,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 169,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 170,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 171,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 172,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 173,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 174,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 175,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 176,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 177,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 178,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 179,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 180,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 181,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 182,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 183,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 184,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 185,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 186,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 187,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 188,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 189,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 190,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 191,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 192,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 193,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 194,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 195,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 196,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 197,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 198,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 199,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 200,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 201,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 202,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 203,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 204,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 205,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 206,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 207,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 208,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 209,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 210,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 211,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 212,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 213,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 214,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 215,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 216,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 217,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 218,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 219,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 220,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 221,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 222,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 223,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 224,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 225,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 226,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 227,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 228,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 229,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 230,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 231,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 232,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 233,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 234,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 235,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 236,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 237,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 238,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 239,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 240,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 241,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 242,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 243,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 244,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 245,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 246,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 247,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 248,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 249,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 250,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 251,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 252,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 253,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 254,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 2,
+      "level": 255,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 0,
+      "person": 1,
+      "maxsum": 1
+    },
+    {
+      "how": 3,
+      "level": 1,
+      "person": 2,
+      "maxsum": 1
+    },
+    {
+      "how": 3,
+      "level": 2,
+      "person": 3,
+      "maxsum": 2
+    },
+    {
+      "how": 3,
+      "level": 3,
+      "person": 4,
+      "maxsum": 3
+    },
+    {
+      "how": 3,
+      "level": 4,
+      "person": 5,
+      "maxsum": 3
+    },
+    {
+      "how": 3,
+      "level": 5,
+      "person": 6,
+      "maxsum": 3
+    },
+    {
+      "how": 3,
+      "level": 6,
+      "person": 1,
+      "maxsum": 4
+    },
+    {
+      "how": 3,
+      "level": 7,
+      "person": 2,
+      "maxsum": 4
+    },
+    {
+      "how": 3,
+      "level": 8,
+      "person": 3,
+      "maxsum": 4
+    },
+    {
+      "how": 3,
+      "level": 9,
+      "person": 4,
+      "maxsum": 4
+    },
+    {
+      "how": 3,
+      "level": 10,
+      "person": 5,
+      "maxsum": 5
+    },
+    {
+      "how": 3,
+      "level": 11,
+      "person": 6,
+      "maxsum": 5
+    },
+    {
+      "how": 3,
+      "level": 12,
+      "person": 1,
+      "maxsum": 5
+    },
+    {
+      "how": 3,
+      "level": 13,
+      "person": 2,
+      "maxsum": 5
+    },
+    {
+      "how": 3,
+      "level": 14,
+      "person": 3,
+      "maxsum": 6
+    },
+    {
+      "how": 3,
+      "level": 15,
+      "person": 4,
+      "maxsum": 6
+    },
+    {
+      "how": 3,
+      "level": 16,
+      "person": 5,
+      "maxsum": 6
+    },
+    {
+      "how": 3,
+      "level": 17,
+      "person": 6,
+      "maxsum": 6
+    },
+    {
+      "how": 3,
+      "level": 18,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 19,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 20,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 21,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 22,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 23,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 24,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 25,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 26,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 27,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 28,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 29,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 30,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 31,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 32,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 33,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 34,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 35,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 36,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 37,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 38,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 39,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 40,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 41,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 42,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 43,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 44,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 45,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 46,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 47,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 48,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 49,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 50,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 51,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 52,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 53,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 54,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 55,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 56,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 57,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 58,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 59,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 60,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 61,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 62,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 63,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 64,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 65,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 66,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 67,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 68,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 69,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 70,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 71,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 72,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 73,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 74,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 75,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 76,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 77,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 78,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 79,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 80,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 81,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 82,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 83,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 84,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 85,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 86,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 87,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 88,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 89,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 90,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 91,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 92,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 93,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 94,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 95,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 96,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 97,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 98,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 99,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 100,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 101,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 102,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 103,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 104,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 105,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 106,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 107,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 108,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 109,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 110,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 111,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 112,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 113,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 114,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 115,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 116,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 117,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 118,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 119,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 120,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 121,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 122,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 123,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 124,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 125,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 126,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 127,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 128,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 129,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 130,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 131,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 132,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 133,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 134,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 135,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 136,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 137,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 138,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 139,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 140,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 141,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 142,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 143,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 144,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 145,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 146,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 147,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 148,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 149,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 150,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 151,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 152,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 153,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 154,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 155,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 156,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 157,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 158,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 159,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 160,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 161,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 162,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 163,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 164,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 165,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 166,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 167,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 168,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 169,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 170,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 171,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 172,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 173,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 174,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 175,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 176,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 177,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 178,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 179,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 180,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 181,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 182,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 183,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 184,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 185,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 186,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 187,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 188,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 189,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 190,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 191,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 192,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 193,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 194,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 195,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 196,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 197,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 198,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 199,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 200,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 201,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 202,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 203,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 204,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 205,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 206,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 207,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 208,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 209,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 210,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 211,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 212,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 213,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 214,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 215,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 216,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 217,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 218,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 219,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 220,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 221,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 222,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 223,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 224,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 225,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 226,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 227,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 228,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 229,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 230,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 231,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 232,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 233,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 234,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 235,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 236,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 237,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 238,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 239,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 240,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 241,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 242,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 243,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 244,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 245,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 246,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 247,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 248,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 249,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 250,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 251,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 252,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 253,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 254,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 3,
+      "level": 255,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 0,
+      "person": 1,
+      "maxsum": 1
+    },
+    {
+      "how": 4,
+      "level": 1,
+      "person": 2,
+      "maxsum": 1
+    },
+    {
+      "how": 4,
+      "level": 2,
+      "person": 3,
+      "maxsum": 1
+    },
+    {
+      "how": 4,
+      "level": 3,
+      "person": 4,
+      "maxsum": 1
+    },
+    {
+      "how": 4,
+      "level": 4,
+      "person": 5,
+      "maxsum": 1
+    },
+    {
+      "how": 4,
+      "level": 5,
+      "person": 6,
+      "maxsum": 2
+    },
+    {
+      "how": 4,
+      "level": 6,
+      "person": 1,
+      "maxsum": 2
+    },
+    {
+      "how": 4,
+      "level": 7,
+      "person": 2,
+      "maxsum": 2
+    },
+    {
+      "how": 4,
+      "level": 8,
+      "person": 3,
+      "maxsum": 2
+    },
+    {
+      "how": 4,
+      "level": 9,
+      "person": 4,
+      "maxsum": 2
+    },
+    {
+      "how": 4,
+      "level": 10,
+      "person": 5,
+      "maxsum": 3
+    },
+    {
+      "how": 4,
+      "level": 11,
+      "person": 6,
+      "maxsum": 3
+    },
+    {
+      "how": 4,
+      "level": 12,
+      "person": 1,
+      "maxsum": 4
+    },
+    {
+      "how": 4,
+      "level": 13,
+      "person": 2,
+      "maxsum": 4
+    },
+    {
+      "how": 4,
+      "level": 14,
+      "person": 3,
+      "maxsum": 5
+    },
+    {
+      "how": 4,
+      "level": 15,
+      "person": 4,
+      "maxsum": 5
+    },
+    {
+      "how": 4,
+      "level": 16,
+      "person": 5,
+      "maxsum": 6
+    },
+    {
+      "how": 4,
+      "level": 17,
+      "person": 6,
+      "maxsum": 6
+    },
+    {
+      "how": 4,
+      "level": 18,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 19,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 20,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 21,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 22,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 23,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 24,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 25,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 26,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 27,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 28,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 29,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 30,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 31,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 32,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 33,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 34,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 35,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 36,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 37,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 38,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 39,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 40,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 41,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 42,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 43,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 44,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 45,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 46,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 47,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 48,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 49,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 50,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 51,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 52,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 53,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 54,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 55,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 56,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 57,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 58,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 59,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 60,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 61,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 62,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 63,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 64,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 65,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 66,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 67,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 68,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 69,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 70,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 71,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 72,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 73,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 74,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 75,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 76,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 77,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 78,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 79,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 80,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 81,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 82,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 83,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 84,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 85,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 86,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 87,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 88,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 89,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 90,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 91,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 92,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 93,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 94,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 95,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 96,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 97,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 98,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 99,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 100,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 101,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 102,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 103,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 104,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 105,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 106,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 107,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 108,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 109,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 110,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 111,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 112,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 113,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 114,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 115,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 116,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 117,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 118,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 119,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 120,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 121,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 122,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 123,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 124,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 125,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 126,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 127,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 128,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 129,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 130,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 131,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 132,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 133,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 134,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 135,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 136,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 137,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 138,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 139,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 140,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 141,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 142,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 143,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 144,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 145,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 146,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 147,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 148,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 149,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 150,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 151,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 152,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 153,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 154,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 155,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 156,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 157,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 158,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 159,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 160,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 161,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 162,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 163,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 164,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 165,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 166,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 167,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 168,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 169,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 170,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 171,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 172,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 173,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 174,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 175,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 176,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 177,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 178,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 179,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 180,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 181,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 182,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 183,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 184,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 185,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 186,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 187,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 188,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 189,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 190,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 191,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 192,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 193,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 194,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 195,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 196,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 197,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 198,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 199,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 200,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 201,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 202,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 203,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 204,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 205,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 206,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 207,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 208,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 209,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 210,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 211,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 212,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 213,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 214,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 215,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 216,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 217,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 218,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 219,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 220,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 221,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 222,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 223,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 224,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 225,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 226,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 227,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 228,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 229,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 230,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 231,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 232,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 233,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 234,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 235,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 236,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 237,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 238,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 239,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 240,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 241,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 242,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 243,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 244,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 245,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 246,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 247,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 248,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 249,
+      "person": 4,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 250,
+      "person": 5,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 251,
+      "person": 6,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 252,
+      "person": 1,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 253,
+      "person": 2,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 254,
+      "person": 3,
+      "maxsum": 7
+    },
+    {
+      "how": 4,
+      "level": 255,
+      "person": 4,
+      "maxsum": 7
+    }
+  ]
+}

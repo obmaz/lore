@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "story_id", "story_revision", "canon_revision", "character_registry_revision", "contracts", "event_templates", "threads", "review"],
+  "properties": {
+    "version": {"const": 2}, "story_id": {"type": "string"},
+    "story_revision": {"type": "integer", "minimum": 1},
+    "canon_revision": {"type": "integer", "minimum": 1},
+    "character_registry_revision": {"type": "integer", "minimum": 1},
+    "contracts": {"type": "object", "additionalProperties": {"$ref": "#/$defs/contract"}},
+    "event_templates": {"type": "array", "items": {"$ref": "#/$defs/event"}},
+    "threads": {"type": "array", "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "description", "status", "resolution_event"],
+      "properties": {"id": {"type": "string"}, "description": {"type": "string"},
+        "status": {"enum": ["open", "resolved"]}, "resolution_event": {"type": ["string", "null"]}}
+    }},
+    "review": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "issues", "approved_story_revision", "approved_canon_revision", "approved_input_hashes"],
+      "properties": {"status": {"enum": ["draft", "needs_review", "approved"]},
+        "issues": {"type": "array", "items": {"type": "string"}},
+        "approved_story_revision": {"type": ["integer", "null"]},
+        "approved_canon_revision": {"type": ["integer", "null"]},
+        "approved_input_hashes": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false,
+          "required": ["story", "canon", "continuity", "characters", "materials"], "properties": {
+            "story": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "canon": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "continuity": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "characters": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "materials": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}]}}
+    }
+  },
+  "$defs": {
+    "strings": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "predicate": {"$ref": "../authoring/story.schema.json#/$defs/predicate"},
+    "contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["before", "after", "allowed_state_changes", "must_include_block_ids", "must_not_assert", "dependencies", "continuity_notes", "knowledge_required", "cast", "character_dependencies"],
+      "properties": {
+        "before": {"$ref": "#/$defs/predicate"}, "after": {"$ref": "#/$defs/predicate"},
+        "allowed_state_changes": {"$ref": "#/$defs/strings"},
+        "must_include_block_ids": {"$ref": "#/$defs/strings"}, "must_not_assert": {"$ref": "#/$defs/strings"},
+        "dependencies": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["fact_id", "revision"], "properties": {"fact_id": {"type": "string"}, "revision": {"type": "integer", "minimum": 1}}}},
+        "character_dependencies": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["character_id", "revision"], "properties": {"character_id": {"type": "string"}, "revision": {"type": "integer", "minimum": 1}}}},
+        "cast": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["character_id", "when"], "properties": {"character_id": {"type": "string"}, "when": {"$ref": "#/$defs/predicate"}}}},
+        "continuity_notes": {"type": "array", "items": {"type": "string"}},
+        "knowledge_required": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["character_id", "fact_id"], "properties": {"character_id": {"type": "string"}, "fact_id": {"type": "string"}}}}
+      }
+    },
+    "event": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "trigger_choice", "description", "origin", "source_refs", "requires_events", "participants", "knowledge_gained", "approval"],
+      "properties": {
+        "id": {"type": "string"}, "trigger_choice": {"type": "string"}, "description": {"type": "string"},
+        "origin": {"enum": ["source_adaptation", "authored"]}, "source_refs": {"$ref": "#/$defs/strings"},
+        "requires_events": {"$ref": "#/$defs/strings"}, "participants": {"$ref": "#/$defs/strings"},
+        "knowledge_gained": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["character_id", "fact_id", "method", "informant_id"],
+          "properties": {"character_id": {"type": "string"}, "fact_id": {"type": "string"},
+            "method": {"enum": ["witnessed", "heard", "inferred"]}, "informant_id": {"type": ["string", "null"]}}
+        }}, "approval": {"enum": ["proposed", "approved"]}
+      }
+    },
+    "canon": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "revision", "character_registry", "facts"],
+      "properties": {
+        "version": {"const": 2}, "revision": {"type": "integer", "minimum": 1},
+        "character_registry": {"const": "characters/registry.json"},
+        "facts": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["id", "revision", "statement", "kind", "status", "attributed_to", "evidence", "initial_knowers"],
+          "properties": {"id": {"type": "string"}, "revision": {"type": "integer", "minimum": 1},
+            "statement": {"type": "string"}, "kind": {"enum": ["world_fact", "testimony", "belief"]},
+            "status": {"enum": ["confirmed", "unknown", "disputed"]}, "attributed_to": {"type": ["string", "null"]},
+            "evidence": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+              "required": ["file", "line_start", "line_end"], "properties": {"file": {"type": "string"}, "line_start": {"type": "integer", "minimum": 1}, "line_end": {"type": "integer", "minimum": 1}}}},
+            "initial_knowers": {"$ref": "#/$defs/strings"}}
+        }}
+      }
+    }
+  }
+}

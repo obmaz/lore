@@ -1,0 +1,14 @@
+{
+  "source": "LORESPEC.PAS",
+  "levers": 2,
+  "cases": [
+    {"line": 2081, "map": 25, "x": 5, "y": 34, "a": false, "b": false, "setBit": 7, "door": []},
+    {"line": 2081, "map": 25, "x": 5, "y": 34, "a": false, "b": true, "setBit": 7, "door": [[25, 27, 54], [26, 27, 54]]},
+    {"line": 2081, "map": 25, "x": 5, "y": 34, "a": true, "b": false, "setBit": 7, "door": []},
+    {"line": 2081, "map": 25, "x": 5, "y": 34, "a": true, "b": true, "setBit": 7, "door": [[25, 27, 54], [26, 27, 54]]},
+    {"line": 2092, "map": 25, "x": 46, "y": 34, "a": false, "b": false, "setBit": 8, "door": []},
+    {"line": 2092, "map": 25, "x": 46, "y": 34, "a": false, "b": true, "setBit": 8, "door": []},
+    {"line": 2092, "map": 25, "x": 46, "y": 34, "a": true, "b": false, "setBit": 8, "door": [[25, 27, 54], [26, 27, 54]]},
+    {"line": 2092, "map": 25, "x": 46, "y": 34, "a": true, "b": true, "setBit": 8, "door": [[25, 27, 54], [26, 27, 54]]}
+  ]
+}

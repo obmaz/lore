@@ -1,0 +1,14 @@
+{
+  "source": "LORESPEC.PAS",
+  "map": 12,
+  "cases": [
+    {"line": 573, "map": 12, "x": 33, "y": 50, "moveDy": 0, "gaia": 0, "end": [33, 50], "tile": [33, 49, 0], "questSet": null, "trap": null},
+    {"line": 573, "map": 12, "x": 33, "y": 50, "moveDy": 1, "gaia": 0, "end": [33, 50], "tile": null, "questSet": null, "trap": null},
+    {"line": 573, "map": 12, "x": 32, "y": 50, "moveDy": 0, "gaia": 0, "end": [25, 70], "tile": null, "questSet": null, "trap": null},
+    {"line": 573, "map": 12, "x": 32, "y": 50, "moveDy": 1, "gaia": 0, "end": [32, 50], "tile": null, "questSet": null, "trap": null},
+    {"line": 585, "map": 12, "x": 18, "y": 10, "moveDy": 0, "gaia": 0, "end": [18, 10], "tile": [18, 9, 0], "questSet": 2, "trap": null},
+    {"line": 585, "map": 12, "x": 18, "y": 10, "moveDy": 0, "gaia": 2, "end": [18, 10], "tile": null, "questSet": null, "trap": null},
+    {"line": 585, "map": 12, "x": 17, "y": 10, "moveDy": 0, "gaia": 0, "end": [17, 10], "tile": null, "questSet": null, "trap": [17, 10, 23, 49]},
+    {"line": 585, "map": 12, "x": 17, "y": 10, "moveDy": 0, "gaia": 2, "end": [17, 10], "tile": null, "questSet": null, "trap": null}
+  ]
+}

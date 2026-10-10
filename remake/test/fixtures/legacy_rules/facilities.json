@@ -1,0 +1,412 @@
+{
+  "version": 1,
+  "description": "원작 LORETALK.PAS의 마을 시설(무기점/병원/훈련소/식료품점) 좌표. facility: 1=무기점, 2=병원, 3=훈련소, 4=식료품점.",
+  "facilities": [
+    {
+      "map": 6,
+      "x": 8,
+      "y": 71,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 6,
+      "x": 14,
+      "y": 69,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 6,
+      "x": 14,
+      "y": 73,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 6,
+      "x": 86,
+      "y": 12,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 6,
+      "x": 87,
+      "y": 14,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 6,
+      "x": 21,
+      "y": 12,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 6,
+      "x": 25,
+      "y": 13,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 6,
+      "x": 87,
+      "y": 73,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 6,
+      "x": 91,
+      "y": 65,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 7,
+      "x": 59,
+      "y": 56,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 7,
+      "x": 59,
+      "y": 58,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 7,
+      "x": 59,
+      "y": 60,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 7,
+      "x": 17,
+      "y": 56,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 7,
+      "x": 17,
+      "y": 58,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 7,
+      "x": 17,
+      "y": 60,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 7,
+      "x": 16,
+      "y": 24,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 7,
+      "x": 18,
+      "y": 19,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 7,
+      "x": 21,
+      "y": 21,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 7,
+      "x": 24,
+      "y": 19,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 7,
+      "x": 54,
+      "y": 20,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 7,
+      "x": 57,
+      "y": 17,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 7,
+      "x": 58,
+      "y": 22,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 7,
+      "x": 59,
+      "y": 25,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 9,
+      "x": 37,
+      "y": 10,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 9,
+      "x": 40,
+      "y": 12,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 9,
+      "x": 41,
+      "y": 15,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 9,
+      "x": 9,
+      "y": 39,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 9,
+      "x": 12,
+      "y": 41,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 9,
+      "x": 16,
+      "y": 40,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 9,
+      "x": 12,
+      "y": 11,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 9,
+      "x": 12,
+      "y": 15,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 9,
+      "x": 15,
+      "y": 12,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 9,
+      "x": 37,
+      "y": 39,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 9,
+      "x": 40,
+      "y": 37,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 9,
+      "x": 41,
+      "y": 41,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 10,
+      "x": 11,
+      "y": 30,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 10,
+      "x": 11,
+      "y": 32,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 10,
+      "x": 13,
+      "y": 34,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 10,
+      "x": 33,
+      "y": 60,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 10,
+      "x": 35,
+      "y": 54,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 10,
+      "x": 41,
+      "y": 58,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 10,
+      "x": 36,
+      "y": 32,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 10,
+      "x": 38,
+      "y": 33,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 10,
+      "x": 39,
+      "y": 35,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 10,
+      "x": 11,
+      "y": 55,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 10,
+      "x": 12,
+      "y": 59,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 10,
+      "x": 17,
+      "y": 57,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 24,
+      "x": 33,
+      "y": 21,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 24,
+      "x": 37,
+      "y": 24,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 24,
+      "x": 40,
+      "y": 23,
+      "facility": 1,
+      "name": "weapon_shop"
+    },
+    {
+      "map": 24,
+      "x": 11,
+      "y": 38,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 24,
+      "x": 14,
+      "y": 40,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 24,
+      "x": 15,
+      "y": 36,
+      "facility": 2,
+      "name": "hospital"
+    },
+    {
+      "map": 24,
+      "x": 11,
+      "y": 22,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 24,
+      "x": 14,
+      "y": 24,
+      "facility": 3,
+      "name": "train_center"
+    },
+    {
+      "map": 24,
+      "x": 33,
+      "y": 35,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 24,
+      "x": 35,
+      "y": 37,
+      "facility": 4,
+      "name": "grocery"
+    },
+    {
+      "map": 24,
+      "x": 41,
+      "y": 38,
+      "facility": 4,
+      "name": "grocery"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Keep the archived DOS source/resource bytes identical on every platform.
+# Source audits and native fixtures pin their SHA-256 hashes.
+repo_source/** -text
+# Pascal archives were committed as LF text, but their pinned DOS hashes use
+# CRLF. Reconstruct those exact working-tree bytes on Linux and Windows.
+repo_source/LORE_1993_src/*.PAS text eol=crlf
+repo_source/LORE_1993_src/readme.txt text eol=crlf

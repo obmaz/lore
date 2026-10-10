@@ -1,0 +1,581 @@
+{
+  "source": "Unmodified LORE.EXE AttackOne and CastOne defence fragments, including original Turbo Pascal real conversion/division/Round helpers, executed by Unicorn x86-16. Synthetic enemy memory and Random(10) result; executable is unchanged.",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragments": [
+    {
+      "routine": "AttackOne",
+      "startFileOffset": 135142,
+      "endFileOffset": 135197,
+      "codeHex": "408bc8c47efc268a451d30e48bd0c47efc268a451930e4f7e2f7e131d29a5111cd30b9840031f6bf00209a4311cd309a5d11cd30a36036"
+    },
+    {
+      "routine": "CastOne",
+      "startFileOffset": 136305,
+      "endFileOffset": 136360,
+      "codeHex": "408bc8c47efc268a451d30e48bd0c47efc268a451930e4f7e2f7e131d29a5111cd30b9840031f6bf00209a4311cd309a5d11cd30a36036"
+    }
+  ],
+  "cases": [
+    {
+      "routine": "AttackOne",
+      "ac": 0,
+      "level": 255,
+      "random10": 0,
+      "defence": 0
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 0,
+      "level": 255,
+      "random10": 3,
+      "defence": 0
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 0,
+      "level": 255,
+      "random10": 4,
+      "defence": 0
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 0,
+      "level": 255,
+      "random10": 9,
+      "defence": 0
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 1,
+      "level": 1,
+      "random10": 0,
+      "defence": 0
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 1,
+      "level": 1,
+      "random10": 3,
+      "defence": 0
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 1,
+      "level": 1,
+      "random10": 4,
+      "defence": 1
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 1,
+      "level": 1,
+      "random10": 9,
+      "defence": 1
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 5,
+      "level": 1,
+      "random10": 0,
+      "defence": 1
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 5,
+      "level": 1,
+      "random10": 3,
+      "defence": 2
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 5,
+      "level": 1,
+      "random10": 4,
+      "defence": 3
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 5,
+      "level": 1,
+      "random10": 9,
+      "defence": 5
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 8,
+      "level": 4,
+      "random10": 0,
+      "defence": 3
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 8,
+      "level": 4,
+      "random10": 3,
+      "defence": 13
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 8,
+      "level": 4,
+      "random10": 4,
+      "defence": 16
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 8,
+      "level": 4,
+      "random10": 9,
+      "defence": 32
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 20,
+      "level": 20,
+      "random10": 0,
+      "defence": 40
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 20,
+      "level": 20,
+      "random10": 3,
+      "defence": 160
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 20,
+      "level": 20,
+      "random10": 4,
+      "defence": 200
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 20,
+      "level": 20,
+      "random10": 9,
+      "defence": 400
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 128,
+      "level": 128,
+      "random10": 0,
+      "defence": 1638
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 128,
+      "level": 128,
+      "random10": 3,
+      "defence": 0
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 128,
+      "level": 128,
+      "random10": 4,
+      "defence": 1638
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 128,
+      "level": 128,
+      "random10": 9,
+      "defence": 3277
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 128,
+      "level": 255,
+      "random10": 0,
+      "defence": 3264
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 128,
+      "level": 255,
+      "random10": 3,
+      "defence": 6502
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 128,
+      "level": 255,
+      "random10": 4,
+      "defence": 3213
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 128,
+      "level": 255,
+      "random10": 9,
+      "defence": 6426
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 255,
+      "random10": 0,
+      "defence": 6503
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 255,
+      "random10": 3,
+      "defence": 6349
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 255,
+      "random10": 4,
+      "defence": 6298
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 255,
+      "random10": 9,
+      "defence": 6043
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 128,
+      "random10": 0,
+      "defence": 3264
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 128,
+      "random10": 3,
+      "defence": 6502
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 128,
+      "random10": 4,
+      "defence": 3213
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 128,
+      "random10": 9,
+      "defence": 6426
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 26,
+      "random10": 0,
+      "defence": 663
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 26,
+      "random10": 3,
+      "defence": 2652
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 26,
+      "random10": 4,
+      "defence": 3315
+    },
+    {
+      "routine": "AttackOne",
+      "ac": 255,
+      "level": 26,
+      "random10": 9,
+      "defence": 76
+    },
+    {
+      "routine": "CastOne",
+      "ac": 0,
+      "level": 255,
+      "random10": 0,
+      "defence": 0
+    },
+    {
+      "routine": "CastOne",
+      "ac": 0,
+      "level": 255,
+      "random10": 3,
+      "defence": 0
+    },
+    {
+      "routine": "CastOne",
+      "ac": 0,
+      "level": 255,
+      "random10": 4,
+      "defence": 0
+    },
+    {
+      "routine": "CastOne",
+      "ac": 0,
+      "level": 255,
+      "random10": 9,
+      "defence": 0
+    },
+    {
+      "routine": "CastOne",
+      "ac": 1,
+      "level": 1,
+      "random10": 0,
+      "defence": 0
+    },
+    {
+      "routine": "CastOne",
+      "ac": 1,
+      "level": 1,
+      "random10": 3,
+      "defence": 0
+    },
+    {
+      "routine": "CastOne",
+      "ac": 1,
+      "level": 1,
+      "random10": 4,
+      "defence": 1
+    },
+    {
+      "routine": "CastOne",
+      "ac": 1,
+      "level": 1,
+      "random10": 9,
+      "defence": 1
+    },
+    {
+      "routine": "CastOne",
+      "ac": 5,
+      "level": 1,
+      "random10": 0,
+      "defence": 1
+    },
+    {
+      "routine": "CastOne",
+      "ac": 5,
+      "level": 1,
+      "random10": 3,
+      "defence": 2
+    },
+    {
+      "routine": "CastOne",
+      "ac": 5,
+      "level": 1,
+      "random10": 4,
+      "defence": 3
+    },
+    {
+      "routine": "CastOne",
+      "ac": 5,
+      "level": 1,
+      "random10": 9,
+      "defence": 5
+    },
+    {
+      "routine": "CastOne",
+      "ac": 8,
+      "level": 4,
+      "random10": 0,
+      "defence": 3
+    },
+    {
+      "routine": "CastOne",
+      "ac": 8,
+      "level": 4,
+      "random10": 3,
+      "defence": 13
+    },
+    {
+      "routine": "CastOne",
+      "ac": 8,
+      "level": 4,
+      "random10": 4,
+      "defence": 16
+    },
+    {
+      "routine": "CastOne",
+      "ac": 8,
+      "level": 4,
+      "random10": 9,
+      "defence": 32
+    },
+    {
+      "routine": "CastOne",
+      "ac": 20,
+      "level": 20,
+      "random10": 0,
+      "defence": 40
+    },
+    {
+      "routine": "CastOne",
+      "ac": 20,
+      "level": 20,
+      "random10": 3,
+      "defence": 160
+    },
+    {
+      "routine": "CastOne",
+      "ac": 20,
+      "level": 20,
+      "random10": 4,
+      "defence": 200
+    },
+    {
+      "routine": "CastOne",
+      "ac": 20,
+      "level": 20,
+      "random10": 9,
+      "defence": 400
+    },
+    {
+      "routine": "CastOne",
+      "ac": 128,
+      "level": 128,
+      "random10": 0,
+      "defence": 1638
+    },
+    {
+      "routine": "CastOne",
+      "ac": 128,
+      "level": 128,
+      "random10": 3,
+      "defence": 0
+    },
+    {
+      "routine": "CastOne",
+      "ac": 128,
+      "level": 128,
+      "random10": 4,
+      "defence": 1638
+    },
+    {
+      "routine": "CastOne",
+      "ac": 128,
+      "level": 128,
+      "random10": 9,
+      "defence": 3277
+    },
+    {
+      "routine": "CastOne",
+      "ac": 128,
+      "level": 255,
+      "random10": 0,
+      "defence": 3264
+    },
+    {
+      "routine": "CastOne",
+      "ac": 128,
+      "level": 255,
+      "random10": 3,
+      "defence": 6502
+    },
+    {
+      "routine": "CastOne",
+      "ac": 128,
+      "level": 255,
+      "random10": 4,
+      "defence": 3213
+    },
+    {
+      "routine": "CastOne",
+      "ac": 128,
+      "level": 255,
+      "random10": 9,
+      "defence": 6426
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 255,
+      "random10": 0,
+      "defence": 6503
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 255,
+      "random10": 3,
+      "defence": 6349
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 255,
+      "random10": 4,
+      "defence": 6298
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 255,
+      "random10": 9,
+      "defence": 6043
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 128,
+      "random10": 0,
+      "defence": 3264
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 128,
+      "random10": 3,
+      "defence": 6502
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 128,
+      "random10": 4,
+      "defence": 3213
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 128,
+      "random10": 9,
+      "defence": 6426
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 26,
+      "random10": 0,
+      "defence": 663
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 26,
+      "random10": 3,
+      "defence": 2652
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 26,
+      "random10": 4,
+      "defence": 3315
+    },
+    {
+      "routine": "CastOne",
+      "ac": 255,
+      "level": 26,
+      "random10": 9,
+      "defence": 76
+    }
+  ],
+  "scope": "Defence arithmetic only: low unsigned word of ac*level*(random10+1), real division by10 and Round. Original RNG stream, magic base damage/cost, enemy attacks and whole-game parity are separate gates."
+}

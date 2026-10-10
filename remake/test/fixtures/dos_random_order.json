@@ -1,0 +1,724 @@
+{
+  "scope": "Execute original lava and EnemyAttack dispatch with the original RNG.\nSynthetic records/seed; UI and full battle/campaign replay are separate gates.",
+  "exeSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragments": [
+    {
+      "name": "lava-roll",
+      "start": 31856,
+      "end": 31892,
+      "sha256": "edc63a94d48dea586a08e68f24073cbfee3b862047c43b9b4a83380b2c609d69"
+    },
+    {
+      "name": "enemy-dispatch",
+      "start": 149761,
+      "end": 149831,
+      "sha256": "98d1d46522c0b55c9521fc57342938f9077e028c81681e30a5ac4b402d83244d"
+    },
+    {
+      "name": "random",
+      "start": 225719,
+      "end": 225865,
+      "sha256": "8a6887790eb8bd5f71180db7c19ff37e8e0366fa32a642293a3f58e4d310d0f8"
+    }
+  ],
+  "lava": [
+    {
+      "seed": 0,
+      "luck": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40
+      ],
+      "damages": [
+        56,
+        76,
+        57,
+        43,
+        56,
+        76
+      ],
+      "afterSeed": 2039224980
+    },
+    {
+      "seed": 0,
+      "luck": [
+        1,
+        5,
+        10,
+        20,
+        128,
+        255
+      ],
+      "bounds": [
+        1,
+        40,
+        5,
+        40,
+        10,
+        40,
+        20,
+        40,
+        128,
+        40,
+        255,
+        40
+      ],
+      "damages": [
+        56,
+        68,
+        45,
+        33,
+        -94,
+        38
+      ],
+      "afterSeed": 2039224980
+    },
+    {
+      "seed": 0,
+      "luck": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "bounds": [
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40
+      ],
+      "damages": [
+        56,
+        58,
+        45,
+        33,
+        46,
+        68
+      ],
+      "afterSeed": 2039224980
+    },
+    {
+      "seed": 1,
+      "luck": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40
+      ],
+      "damages": [
+        69,
+        46,
+        45,
+        75,
+        54,
+        64
+      ],
+      "afterSeed": 303092965
+    },
+    {
+      "seed": 1,
+      "luck": [
+        1,
+        5,
+        10,
+        20,
+        128,
+        255
+      ],
+      "bounds": [
+        1,
+        40,
+        5,
+        40,
+        10,
+        40,
+        20,
+        40,
+        128,
+        40,
+        255,
+        40
+      ],
+      "damages": [
+        69,
+        44,
+        31,
+        69,
+        -186,
+        52
+      ],
+      "afterSeed": 303092965
+    },
+    {
+      "seed": 1,
+      "luck": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "bounds": [
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40
+      ],
+      "damages": [
+        57,
+        34,
+        31,
+        69,
+        42,
+        52
+      ],
+      "afterSeed": 303092965
+    },
+    {
+      "seed": 3735928559,
+      "luck": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40
+      ],
+      "damages": [
+        72,
+        44,
+        48,
+        74,
+        75,
+        67
+      ],
+      "afterSeed": 2256218675
+    },
+    {
+      "seed": 3735928559,
+      "luck": [
+        1,
+        5,
+        10,
+        20,
+        128,
+        255
+      ],
+      "bounds": [
+        1,
+        40,
+        5,
+        40,
+        10,
+        40,
+        20,
+        40,
+        128,
+        40,
+        255,
+        40
+      ],
+      "damages": [
+        72,
+        38,
+        34,
+        54,
+        25,
+        -275
+      ],
+      "afterSeed": 2256218675
+    },
+    {
+      "seed": 3735928559,
+      "luck": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "bounds": [
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40
+      ],
+      "damages": [
+        54,
+        28,
+        34,
+        74,
+        65,
+        65
+      ],
+      "afterSeed": 2256218675
+    },
+    {
+      "seed": 4294967295,
+      "luck": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "bounds": [
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40,
+        0,
+        40
+      ],
+      "damages": [
+        59,
+        66,
+        53,
+        67,
+        59,
+        47
+      ],
+      "afterSeed": 3775356995
+    },
+    {
+      "seed": 4294967295,
+      "luck": [
+        1,
+        5,
+        10,
+        20,
+        128,
+        255
+      ],
+      "bounds": [
+        1,
+        40,
+        5,
+        40,
+        10,
+        40,
+        20,
+        40,
+        128,
+        40,
+        255,
+        40
+      ],
+      "damages": [
+        59,
+        64,
+        53,
+        51,
+        1,
+        -21
+      ],
+      "afterSeed": 3775356995
+    },
+    {
+      "seed": 4294967295,
+      "luck": [
+        10,
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      "bounds": [
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40,
+        10,
+        40
+      ],
+      "damages": [
+        41,
+        54,
+        53,
+        51,
+        53,
+        29
+      ],
+      "afterSeed": 3775356995
+    }
+  ],
+  "dispatch": [
+    {
+      "seed": 0,
+      "arms": 10,
+      "magic": 3,
+      "strength": 20,
+      "bounds": [
+        3000,
+        10000
+      ],
+      "weapon": true,
+      "afterSeed": 134775814
+    },
+    {
+      "seed": 0,
+      "arms": 20,
+      "magic": 20,
+      "strength": 20,
+      "bounds": [
+        20000,
+        20000
+      ],
+      "weapon": true,
+      "afterSeed": 134775814
+    },
+    {
+      "seed": 0,
+      "arms": 0,
+      "magic": 0,
+      "strength": 20,
+      "bounds": [
+        0,
+        0
+      ],
+      "weapon": false,
+      "afterSeed": 134775814
+    },
+    {
+      "seed": 0,
+      "arms": 255,
+      "magic": 128,
+      "strength": 20,
+      "bounds": [
+        62464,
+        58392
+      ],
+      "weapon": true,
+      "afterSeed": 134775814
+    },
+    {
+      "seed": 0,
+      "arms": 66,
+      "magic": 65,
+      "strength": 20,
+      "bounds": [
+        65000,
+        464
+      ],
+      "weapon": true,
+      "afterSeed": 134775814
+    },
+    {
+      "seed": 0,
+      "arms": 20,
+      "magic": 1,
+      "strength": 0,
+      "bounds": [
+        1000,
+        20000
+      ],
+      "weapon": false,
+      "afterSeed": 134775814
+    },
+    {
+      "seed": 1,
+      "arms": 10,
+      "magic": 3,
+      "strength": 20,
+      "bounds": [
+        3000,
+        10000
+      ],
+      "weapon": true,
+      "afterSeed": 3698175007
+    },
+    {
+      "seed": 1,
+      "arms": 20,
+      "magic": 20,
+      "strength": 20,
+      "bounds": [
+        20000,
+        20000
+      ],
+      "weapon": true,
+      "afterSeed": 3698175007
+    },
+    {
+      "seed": 1,
+      "arms": 0,
+      "magic": 0,
+      "strength": 20,
+      "bounds": [
+        0,
+        0
+      ],
+      "weapon": false,
+      "afterSeed": 3698175007
+    },
+    {
+      "seed": 1,
+      "arms": 255,
+      "magic": 128,
+      "strength": 20,
+      "bounds": [
+        62464,
+        58392
+      ],
+      "weapon": true,
+      "afterSeed": 3698175007
+    },
+    {
+      "seed": 1,
+      "arms": 66,
+      "magic": 65,
+      "strength": 20,
+      "bounds": [
+        65000,
+        464
+      ],
+      "weapon": false,
+      "afterSeed": 3698175007
+    },
+    {
+      "seed": 1,
+      "arms": 20,
+      "magic": 1,
+      "strength": 0,
+      "bounds": [
+        1000,
+        20000
+      ],
+      "weapon": false,
+      "afterSeed": 3698175007
+    },
+    {
+      "seed": 3735928559,
+      "arms": 10,
+      "magic": 3,
+      "strength": 20,
+      "bounds": [
+        3000,
+        10000
+      ],
+      "weapon": true,
+      "afterSeed": 757104989
+    },
+    {
+      "seed": 3735928559,
+      "arms": 20,
+      "magic": 20,
+      "strength": 20,
+      "bounds": [
+        20000,
+        20000
+      ],
+      "weapon": true,
+      "afterSeed": 757104989
+    },
+    {
+      "seed": 3735928559,
+      "arms": 0,
+      "magic": 0,
+      "strength": 20,
+      "bounds": [
+        0,
+        0
+      ],
+      "weapon": false,
+      "afterSeed": 757104989
+    },
+    {
+      "seed": 3735928559,
+      "arms": 255,
+      "magic": 128,
+      "strength": 20,
+      "bounds": [
+        62464,
+        58392
+      ],
+      "weapon": false,
+      "afterSeed": 757104989
+    },
+    {
+      "seed": 3735928559,
+      "arms": 66,
+      "magic": 65,
+      "strength": 20,
+      "bounds": [
+        65000,
+        464
+      ],
+      "weapon": false,
+      "afterSeed": 757104989
+    },
+    {
+      "seed": 3735928559,
+      "arms": 20,
+      "magic": 1,
+      "strength": 0,
+      "bounds": [
+        1000,
+        20000
+      ],
+      "weapon": false,
+      "afterSeed": 757104989
+    },
+    {
+      "seed": 4294967295,
+      "arms": 10,
+      "magic": 3,
+      "strength": 20,
+      "bounds": [
+        3000,
+        10000
+      ],
+      "weapon": true,
+      "afterSeed": 866343917
+    },
+    {
+      "seed": 4294967295,
+      "arms": 20,
+      "magic": 20,
+      "strength": 20,
+      "bounds": [
+        20000,
+        20000
+      ],
+      "weapon": true,
+      "afterSeed": 866343917
+    },
+    {
+      "seed": 4294967295,
+      "arms": 0,
+      "magic": 0,
+      "strength": 20,
+      "bounds": [
+        0,
+        0
+      ],
+      "weapon": false,
+      "afterSeed": 866343917
+    },
+    {
+      "seed": 4294967295,
+      "arms": 255,
+      "magic": 128,
+      "strength": 20,
+      "bounds": [
+        62464,
+        58392
+      ],
+      "weapon": true,
+      "afterSeed": 866343917
+    },
+    {
+      "seed": 4294967295,
+      "arms": 66,
+      "magic": 65,
+      "strength": 20,
+      "bounds": [
+        65000,
+        464
+      ],
+      "weapon": false,
+      "afterSeed": 866343917
+    },
+    {
+      "seed": 4294967295,
+      "arms": 20,
+      "magic": 1,
+      "strength": 0,
+      "bounds": [
+        1000,
+        20000
+      ],
+      "weapon": false,
+      "afterSeed": 866343917
+    }
+  ]
+}

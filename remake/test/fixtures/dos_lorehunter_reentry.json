@@ -1,0 +1,57 @@
+{
+  "source": "Original DOS LORE.EXE",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "scenario": "Fresh original Water Field map with etc[38]=169 (bit4 already set). Up; Escape; Up; accept; select source slot 6; GameOption Save slot 1.",
+  "initial": {
+    "map": 10,
+    "x": 40,
+    "y": 57,
+    "etc38": 169
+  },
+  "observed": {
+    "slot6": {
+      "name": "Lore Hunter",
+      "sex": 0,
+      "classId": 7,
+      "strength": 20,
+      "mentality": 0,
+      "concentration": 0,
+      "endurance": 19,
+      "resistance": 0,
+      "agility": 19,
+      "accArms": 19,
+      "accMagic": 0,
+      "accEsp": 0,
+      "luck": 10,
+      "poison": 0,
+      "unconscious": 0,
+      "dead": 0,
+      "hp": 190,
+      "sp": 0,
+      "esp": 0,
+      "battleLevel": 10,
+      "magicLevel": 1,
+      "espLevel": 1,
+      "ac": 4,
+      "experience": 1050000,
+      "weapon": 5,
+      "shield": 2,
+      "armor": 1,
+      "weaPower": 15,
+      "shiPower": 2,
+      "armPower": 2
+    },
+    "etc38": 169,
+    "mapTile": {
+      "x": 40,
+      "y": 56,
+      "value": 44
+    }
+  },
+  "outputSha256": {
+    "PLAYER1.DAT": "5ebc7331c8dcb651cbe2ca15b5a7e3ec3d08955ae37d110dab4c244943075ac6",
+    "PARTY1.DAT": "9a0d43885a3e7a03138f977221d9dbc7fa71a041bcda1fa2c83d9df6aaaecf23",
+    "SAVE1.MAP": "e4a555af18470b6395102bab785025de51e4aaf616c5bfeff5e0fb159b61f14c"
+  },
+  "capture": "docs/audits/dos_reference/lorehunter_reentry.png"
+}

@@ -1,0 +1,3036 @@
+import '../data/lore_script.dart';
+import 'lore_field_logic.dart';
+import 'lore_source_memory.dart';
+import 'lore_source_coordinates.dart';
+
+/// Gameplay branches from `LORESPEC.specialevent_part1`.
+///
+/// Each branch returns ordered effects for the shared script interpreter. The
+/// visual `scroll`/`Clear` calls remain with the field presentation adapter.
+class LoreSpecProcedures {
+  LoreSpecProcedures._();
+
+  /// LORESPEC.PAS specialevent_part1's signed integer sgn helper.
+  static int sourceSign(int value) => value > 0
+      ? 1
+      : value < 0
+      ? -1
+      : 0;
+
+  /// `LORESPEC.PAS:190-305`, `case 6` (TOWN1 / CASTLE LORE).
+  ///
+  /// An `else if` chain: the (62,82) chest; the prison cells (51|52,12)
+  /// while etc[50] bit2 (prisoner freed) is set — the first fight sets bit3
+  /// before two soldiers, later visits face seven, victory sets bit3 and
+  /// opens four cells; the (41,79) armoury while bit4 is clear. Every other
+  /// special tile is the `wantexit` boundary ([castleExitSkeleton] after
+  /// acceptance, refusal y - 1).
+  static ScriptRun? map6(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if ((context.tileAtPlayer ?? 0) != 0) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 6,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    if (x == 62 && y == 82) {
+      return start('spec-6-L190', const [
+        ScriptStep(kind: 'say', text: '일행은 상자 속에서 약간의 금을 발견했다.'),
+        ScriptStep(kind: 'gold', amount: 1000),
+        ScriptStep(kind: 'setTile', tileX: 62, tileY: 82, tileValue: 44),
+      ]);
+    }
+    final etc50 = context.etcValue(
+      50,
+      bitAliases: const {
+        2: 'madJoeJoined',
+        3: 'prisonBattleStarted',
+        4: 'weaponRoomVisited',
+      },
+    );
+    bool has(int bit) => (etc50 & LorePascal.bit(bit)) != 0;
+    if ((x == 51 || x == 52) && y == 12) {
+      if (!has(2)) return null;
+      final again = has(3);
+      final count = again ? 7 : 2;
+      return start(again ? 'prison-battle-return' : 'prison-battle-first', [
+        ScriptStep(
+          kind: 'scene',
+          scene: again
+              ? const ScriptScene(
+                  title: 'LORE 수감소',
+                  appendPartyNameSlot: 1,
+                  appendPartyNameLine: 0,
+                  lines: [
+                    ' 다시 돌아오다니, ',
+                    ' 이번에는 기어이 네놈들을 해치우고야 말겠다',
+                    '. 나의 친구들도 이번에 거들것이다.',
+                  ],
+                )
+              : const ScriptScene(
+                  title: 'LORE 수감소',
+                  lines: [
+                    ' 아니! 당신이 우리들을 배신하고 죄수를 풀어',
+                    '주다니... 그렇다면 우리들은 결투로서 당신들',
+                    '과 승부할수 밖에 없군요.',
+                  ],
+                ),
+        ),
+        // LORESPEC.PAS:209: only after the introductory talk returns.
+        if (!again) const ScriptStep(kind: 'flag', key: 'etc50_bit3'),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Soldier',
+          battleEnemyFirst: true,
+          monsters: List<int>.filled(count, 26),
+          battleOverrides: [
+            for (var i = 1; i <= count; i++)
+              {
+                'index': i,
+                'name': 'Soldier$i',
+                'special': 0,
+                'castLevel': 0,
+                'eNumber': 1,
+              },
+          ],
+        ),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: 'LORE 수감소', lines: ['당신들은 수감소 병사들을 물리쳤다.']),
+        ),
+        const ScriptStep(kind: 'flag', key: 'etc50_bit3'),
+        for (final (cx, cy) in const [(51, 12), (52, 12), (50, 11), (53, 11)])
+          ScriptStep(kind: 'setTile', tileX: cx, tileY: cy, tileValue: 44),
+      ]);
+    }
+    if (x == 41 && y == 79) {
+      if (has(4)) return null;
+      return start('lore-weapon-room', const [
+        ScriptStep(kind: 'flag', key: 'etc50_bit4'),
+        ScriptStep(kind: 'nudge', nudgeDx: -1),
+        ScriptStep(kind: 'nudge', nudgeDx: -1),
+        ScriptStep(kind: 'nudge', nudgeDx: -1),
+        ScriptStep(kind: 'setTile', tileX: 41, tileY: 79, tileValue: 44),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: '무기실',
+            lines: [' 일행은 가장 기본적인 무기로  모두  무장을', '하였다.'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'equip',
+          equipKind: 'weapon',
+          equipIndex: 1,
+          equipPower: 5,
+          equipOnlyUnarmed: true,
+        ),
+      ]);
+    }
+    return null;
+  }
+
+  /// `LORESPEC.PAS:262-301`: after `wantexit` on map 6 while etc[31] bit1 is
+  /// clear, the Skeleton walks up (map[x,i-1] := 44, map[x,i] := 48 for
+  /// i = y-4..y-1), speaks and offers to join as slot 6; either answer sets
+  /// bit1 after the key wait, then map 1 (20,12) loads.
+  static LoreScript? castleExitSkeleton(ScriptContext context, int x, int y) {
+    if ((context.etcValue(31) & LorePascal.bit(1)) != 0) return null;
+    return LoreScript(
+      id: 'castle-exit-skeleton',
+      trigger: 'portal',
+      map: 6,
+      once: false,
+      require: const ScriptRequire(),
+      steps: [
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'LORE 성',
+            lines: [' 당신이 LORE 성을 떠나려는 순간 누군가가 당신을 불렀다.'],
+          ),
+        ),
+        for (var i = y - 4; i <= y - 1; i++) ...[
+          ScriptStep(kind: 'setTile', tileX: x, tileY: i - 1, tileValue: 44),
+          ScriptStep(kind: 'setTile', tileX: x, tileY: i, tileValue: 48),
+        ],
+        for (final line in const [
+          ' 나는 Skeleton이라 불리는 종족의 사람이오.',
+          ' 우리 종족의 사람들은 나를 제외하고는  모두',
+          'Necromancer에게 굴복하여 그의 부하가 되었지',
+          '만 나는 그렇지 않소. 나는 Necromancer 의 영',
+          '향을 피해서 이곳 LORE 성으로 왔지만 나의 혐',
+          '오스런 생김새 때문에 이곳 사람들에게 배척되',
+          '어서 지금은 어디로도 갈 수 없는 존재가 되었',
+          '소. 이제 나에게 남은 것은 Necromancer 의 타',
+          '도 밖에 없소.  그래서  당신들의 일행에 끼고',
+          '싶소.',
+        ])
+          ScriptStep(kind: 'say', text: line),
+        const ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          cancelOptionIndex: 1,
+          options: [
+            ScriptOption('당신을 환영하오.', [
+              ScriptStep(kind: 'join', key: 'skeleton', slot: 4),
+              ScriptStep(kind: 'displayCondition'),
+              ScriptStep(kind: 'flag', key: 'skeletonJoined'),
+              // LORESPEC:295 waits after join/Display_Condition, before
+              // etc[31] and the map load. Select(clean=TRUE) cleared the text.
+              ScriptStep(
+                kind: 'scene',
+                scene: ScriptScene(title: 'LORE 성', lines: []),
+              ),
+            ]),
+            ScriptOption('미안하지만 안되겠소.', [
+              // asyouwish is followed by the same explicit PressAnyKey.
+              ScriptStep(
+                kind: 'scene',
+                scene: ScriptScene(title: 'LORE 성', lines: ['당신이 바란다면 ...']),
+              ),
+            ]),
+          ],
+        ),
+        const ScriptStep(kind: 'flag', key: 'etc31_bit1'),
+      ],
+    );
+  }
+
+  /// `LORESPEC.PAS:306-331`, map 7 (LASTDITCH).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. `x == 50`: GROUND GATE portal to map 8 (handled via portal session).
+  /// 2. `x == 30` or `x == 32`: secret passage wall at `(31, y)` opens (tile 45).
+  /// 3. `y == 71`: exit to map 1 (handled via portal session).
+  static ScriptRun? map7(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (context.tileAtPlayer != 0) return null;
+
+    if (x == 30 || x == 32) {
+      return scripts.startProcedure(
+        LoreScript(
+          id: x == 30 ? 'lastditch-passwall-left' : 'lastditch-passwall-right',
+          trigger: 'step',
+          map: 7,
+          once: false,
+          require: const ScriptRequire(),
+          steps: const [
+            ScriptStep(
+              kind: 'setTileArea',
+              tileX: 31,
+              tileY: 1,
+              tileAtPlayerY: true,
+              tileValue: 45,
+            ),
+          ],
+        ),
+        context,
+      );
+    }
+
+    return null;
+  }
+
+  /// `LORESPEC.PAS:332-353`, `case 8` (TOWN3).
+  ///
+  /// Both arms are prompts owned by `LoreWorldManager`: any special tile at
+  /// x = 50 asks `wantenter('GROUND GATE')` (map 7 (50,10); refusal stays on
+  /// the gate), and y = 71 asks `wantexit` (map 2 (19,27); refusal y - 1).
+  static ScriptRun? map8(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) => null;
+
+  /// Raw `party.etc[index]`, falling back to the named quest step for
+  /// contexts built without a raw snapshot.
+  static int _questByte(ScriptContext context, int index, String quest) =>
+      context.sourceEtc.containsKey(index)
+      ? context.etcValue(index)
+      : LorePascal.byte(context.questSteps[quest] ?? 0);
+
+  /// `LORESPEC.PAS:354-443`, `case 9` (TOWN4 / GAIA TERRA).
+  ///
+  /// Five `findgold(5000)` cells guarded by raw etc[35] bits 1..5, the y = 10
+  /// barrier while etc[15] < 5 (`Message` has no key wait, then y + 1). The
+  /// y = 5 `wantenter('SWAMP GATE')` and y = 46 `wantexit` are portal
+  /// boundaries; [swampGateSpeech] runs after the gate is accepted.
+  static ScriptRun? map9(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if ((context.tileAtPlayer ?? 0) != 0) return null;
+    const gold = {
+      (10, 24): 1,
+      (12, 26): 2,
+      (15, 25): 3,
+      (16, 23): 4,
+      (18, 27): 5,
+    };
+    final bit = gold[(x, y)];
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 9,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    if (bit != null) {
+      if ((context.etcValue(35) & LorePascal.bit(bit)) != 0) return null;
+      return start('spec-9-gold-$bit', [
+        ScriptStep(
+          kind: 'message',
+          text: LoreFieldLogic.goldFoundMessage(5000),
+        ),
+        const ScriptStep(kind: 'gold', amount: 5000),
+        ScriptStep(kind: 'flag', key: 'etc35_bit$bit'),
+      ]);
+    }
+    if (y == 10 && _questByte(context, 15, 'water') < 5) {
+      return start('spec-9-barrier-y10', const [
+        ScriptStep(kind: 'say', text: '알수없는 힘이 당신을 배척합니다.'),
+        ScriptStep(kind: 'nudge', nudgeDy: 1),
+      ]);
+    }
+    return null;
+  }
+
+  /// `LORESPEC.PAS:383-428`: after `wantenter('SWAMP GATE')`, Lord Ahn speaks
+  /// once (etc[35] bit6), then map 13 (81,95) loads. The gate animation is
+  /// presentation only.
+  static LoreScript? swampGateSpeech(ScriptContext context) {
+    if ((context.etcValue(35) & LorePascal.bit(6)) != 0) return null;
+    return const LoreScript(
+      id: 'portal-9-13-swamp-gate',
+      trigger: 'portal',
+      map: 9,
+      once: false,
+      require: ScriptRequire(),
+      steps: [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'SWAMP GATE',
+            lines: [' SWAMP GATE 로 들어가고 있는 당신에게  허공', '에서 갑자가 누군가가 말을 꺼낸다'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Lord Ahn',
+            lines: [
+              ' 나는 LORE 성의 성주 Lord Ahn 이오.',
+              ' 역시 내가 예상한 대로 당신들은 훌륭한 용사',
+              '로 성장해 나가고 있소. 여태까지는 모험이 순',
+              '조롭게 진행 되었지만 이제부터는 완전한 적들',
+              '의 소굴이오. 그래서 나도 직접적인 도움은 못',
+              '주더라도 여러가지 조언을 해주겠소.',
+            ],
+          ),
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Lord Ahn',
+            lines: [
+              ' 당신들은 식량을 많이 가지고 있소?  이 식량',
+              '은 당신들을 회복시키기  위해  필요한 것이니',
+              '절대 바닥나게 해서는 안되오. 왜냐하면 이 이',
+              '후에 전개되는 모험에서는 식량을 파는곳이 거',
+              '의 없다고 생각해도 될만큼 식량이 귀중하므로',
+              '낭패를 보는일이 없도록 하시오.',
+            ],
+          ),
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Lord Ahn',
+            lines: [
+              ' SWAMP의 대륙에서의 할일을 요약하면 이렇소.',
+              ' 스왐프 게이트와 통하는 SWAMP KEEP에는 많은',
+              '강한 괴물들이 버티고 있소. 하지만 이전에 그',
+              '대륙에 있는 2 개의 동굴 요새를 점령한뒤에야',
+              'SWAMP KEEP의 중앙에 있는 라바 게이트를 작동',
+              '시킬수 있을 것이오. 그곳의 괴물들은 매우 힘',
+              '든 상대일 것이오. 하지만  당신들의 능력이라',
+              '면 충분히 가능할 것이오. 나는 당신들이 라바',
+              '게이트를 통과하려 할때 다시 조언을 해주겠소.',
+              ' 그때까지 건투를 비는 바이오.',
+            ],
+          ),
+        ),
+        ScriptStep(kind: 'flag', key: 'etc35_bit6'),
+      ],
+    );
+  }
+
+  /// `LORESPEC.PAS:444-464`, `case 10` (TOWN5).
+  ///
+  /// y = 46 moves to y = 50 and y = 49 to y = 45 (x unchanged); y = 71 is the
+  /// `wantexit` boundary (map 3 (74,20); refusal y - 1) owned by
+  /// `LoreWorldManager`. No other special tile has an effect.
+  static ScriptRun? map10(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    // LOREMAIN calls specialevent in a town only for tile 0.
+    if ((context.tileAtPlayer ?? 0) != 0) return null;
+    final target = switch (y) {
+      46 => 50,
+      49 => 45,
+      _ => null,
+    };
+    if (target == null) return null;
+    return scripts.startProcedure(
+      LoreScript(
+        id: y == 46 ? 'spec-10-L444' : 'spec-10-L444x',
+        trigger: 'step',
+        map: 10,
+        once: false,
+        require: const ScriptRequire(),
+        steps: [ScriptStep(kind: 'teleport', tileX: x, tileY: target)],
+      ),
+      context,
+    );
+  }
+
+  /// `LORESPEC.PAS:465-559`, `case 11` (T_DEN1).
+  ///
+  /// Seven `findgold(5000)` cells on raw etc[33] bits 1..7. y = 44 offers the
+  /// Oedipus spear while bit8 is clear; bit8 is set only after a member
+  /// takes it (refusal and the monk rejection leave it for another visit).
+  /// y = 46 is a `wantexit` boundary with no refusal branch. y = 24 fights
+  /// the mummy room while raw etc[13] = 1; victory or a dead third enemy
+  /// increments etc[13].
+  static ScriptRun? map11(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    // LOREMAIN calls specialevent in a den for tiles 0 and 52.
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 11,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    const gold = {
+      (20, 30): 1,
+      (18, 36): 2,
+      (35, 32): 3,
+      (33, 36): 4,
+      (35, 14): 5,
+      (14, 16): 6,
+      (37, 12): 7,
+    };
+    final etc33 = context.etcValue(
+      33,
+      bitAliases: const {8: 'oedipusSpearTaken'},
+    );
+    final bit = gold[(x, y)];
+    if (bit != null) {
+      if ((etc33 & LorePascal.bit(bit)) != 0) return null;
+      return start('spec-11-gold-$bit', [
+        ScriptStep(
+          kind: 'message',
+          text: LoreFieldLogic.goldFoundMessage(5000),
+        ),
+        const ScriptStep(kind: 'gold', amount: 5000),
+        ScriptStep(kind: 'flag', key: 'etc33_bit$bit'),
+      ]);
+    }
+    if (y == 44) {
+      if ((etc33 & LorePascal.bit(8)) != 0) return null;
+      return start('oedipus-spear', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '오이디푸스의 창', lines: ['당신은 어떤 창을 발견했다.']),
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: '오이디푸스의 창',
+            lines: [
+              '그 창의 손잡이에 쓰인 문구를 따르면..',
+              '',
+              '        이것은 오이디푸스의 창',
+              '   이것으로 전에 Sphinx 를 무찌르다',
+            ],
+          ),
+        ),
+        ScriptStep(kind: 'say', text: '누가 오이디푸스의 창을 다루겠습니까 ?'),
+        ScriptStep(
+          kind: 'equip',
+          equipKind: 'weapon',
+          equipIndex: 3,
+          equipPower: 12,
+          equipPrompt: true,
+        ),
+        ScriptStep(kind: 'flag', key: 'etc33_bit8'),
+      ]);
+    }
+    if (y == 24 && _questByte(context, 13, 'lastditch') == 1) {
+      return start('spec-11-mummy-room', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '미이라의 방', lines: ['당신은 미이라의 방을 발견했다.']),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Major Mummy',
+          battleEnemyFirst: true,
+          monsters: [35, 35, 26],
+          battleOverrides: [
+            {
+              'index': 1,
+              'name': 'Sphinx',
+              'level': 4,
+              'special': 0,
+              'eNumber': 20,
+            },
+            {
+              'index': 2,
+              'name': 'Sphinx',
+              'level': 4,
+              'special': 0,
+              'eNumber': 20,
+            },
+            {'index': 3, 'name': 'Major Mummy', 'ac': 1},
+          ],
+          // LORESPEC.PAS:551 `(party.etc[6]=0) or (enemy[3].hp<=0)`.
+          battleVictoryIfEnemyHpZero: 3,
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Major Mummy',
+            lines: ['당신들은 Major Mummy 물리쳤다.', '그리고 당신은 이 임무에 성공했다.'],
+          ),
+        ),
+        ScriptStep(kind: 'questStep', questName: 'lastditch', questInc: 1),
+      ]);
+    }
+    return null;
+  }
+
+  /// `LORESPEC.PAS:560-668`, `case 12` (T_DEN2 / GAIA DEN).
+  ///
+  /// An `else if` chain: y = 71 is the `wantexit` boundary; y = 50 doors
+  /// unless the step was southward (`y1 = 1`); y = 10 while raw etc[14] < 2
+  /// (seal at x = 18, else the column 10..23 becomes 49); Rigel at (12,48)
+  /// while etc[31] bit2 is clear (Escape: y - 1); otherwise, without
+  /// levitation (raw etc[4] = 0) and off (12,48), the party steps back.
+  /// Declining a join slot (`ReturnJoinMember` = 1) keeps the existing
+  /// join dialog behaviour and does not apply the source y - 1.
+  static ScriptRun? map12(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 71) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 12,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    if (y == 50 && context.moveDy != 1) {
+      if (x == 33) {
+        return start('puzzle-door-right', const [
+          ScriptStep(kind: 'say', text: '여기는 옳은 문이었다.'),
+          ScriptStep(kind: 'setTile', tileX: 33, tileY: 49, tileValue: 0),
+        ]);
+      }
+      return start('puzzle-door-wrong', const [
+        ScriptStep(kind: 'say', text: '당신은 바보군요, 다시 생각하십시오.'),
+        ScriptStep(kind: 'teleport', tileX: 25, tileY: 70),
+      ]);
+    }
+    if (y == 10 && _questByte(context, 14, 'gaia') < 2) {
+      if (x == 18) {
+        return start('golden-seal-12-18-10', const [
+          ScriptStep(kind: 'setTile', tileX: 18, tileY: 9, tileValue: 0),
+          ScriptStep(kind: 'questStep', questName: 'gaia', questSet: 2),
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: '황금의 봉인',
+              lines: [
+                '당신은 황금의 봉인을 찾았다 !!',
+                '그러므로 당신의 임무는 성공했다.',
+                '이제는 GAIA TERRA로 돌아가라.',
+              ],
+            ),
+          ),
+        ]);
+      }
+      return start('t_den2-trap-y10', [
+        ScriptStep(
+          kind: 'setTileArea',
+          tileX: x,
+          tileY: 10,
+          tileYMax: 23,
+          tileValue: 49,
+        ),
+      ]);
+    }
+    final rigel = x == 12 && y == 48;
+    if (rigel) {
+      final met = context.etcValue(31, bitAliases: const {2: 'rigelMet'});
+      if ((met & LorePascal.bit(2)) != 0) return null;
+      return start('rigel-join', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Rigel',
+            lines: [' 일행들은 심한 부상 때문에 거의 몸을 가누지', '못하는 한 남자와 마주쳤다.'],
+          ),
+        ),
+        ScriptStep(kind: 'say', text: ' 나는 VALIANT PEOPLES 의 용사였던  Rigel 이'),
+        ScriptStep(kind: 'say', text: '오. 내가 동굴속에서 적들을 막아내는 동안 지'),
+        ScriptStep(kind: 'say', text: '각변동으로 인해  이런 절벽이 군데 군데 생겼'),
+        ScriptStep(kind: 'say', text: '소.  나는 이제 너무 지치고 많은 상처를 입어'),
+        ScriptStep(kind: 'say', text: '서 혼자 힘으로는 이곳을 빠져 나갈수가 없소.'),
+        ScriptStep(kind: 'say', text: ' 나를 도와 주시오.'),
+        ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          options: [
+            ScriptOption('좋소, 같이 모험을 합시다', [
+              // `if k = 1 then begin dec(y); scroll(TRUE); exit; end`.
+              ScriptStep(
+                kind: 'join',
+                key: 'rigel',
+                cancelSteps: [ScriptStep(kind: 'nudge', nudgeDy: -1)],
+              ),
+              ScriptStep(kind: 'displayCondition'),
+              ScriptStep(kind: 'flag', key: 'rigelJoined'),
+              ScriptStep(kind: 'flag', key: 'etc31_bit2'),
+            ]),
+            ScriptOption('식량과 치료는 해결해 주겠소', [
+              ScriptStep(
+                kind: 'scene',
+                scene: ScriptScene(
+                  title: 'Rigel',
+                  lines: [
+                    ' 일행은 그에게 치료 마법을 사용하여  상처를',
+                    '모두 치료한후  그가 이곳을 빠져 나갈수 있을',
+                    '정도의 식량을 나누어 주었다. 그러자 Rigel이',
+                    '란 그 용사는 우리의 무기에 신의 축복을 내려',
+                    '주고는 자신의 길을 떠났다.',
+                  ],
+                ),
+              ),
+              ScriptStep(kind: 'food', amount: -5),
+              ScriptStep(kind: 'rigelBlessing', rigelBlessing: true),
+              ScriptStep(kind: 'displayCondition'),
+              ScriptStep(kind: 'flag', key: 'etc31_bit2'),
+            ]),
+            ScriptOption('당신을 도와줄 시간이 없소', [
+              ScriptStep(kind: 'flag', key: 'etc31_bit2'),
+            ]),
+          ],
+          cancelSteps: [ScriptStep(kind: 'nudge', nudgeDy: -1)],
+        ),
+      ]);
+    }
+    final levitating = context.sourceEtc.containsKey(4)
+        ? context.etcValue(4) != 0
+        : context.flags.contains('etc4') ||
+              context.flags.contains('levitateActive');
+    if (levitating) return null;
+    return start('gaia-den-cliff-no-levitation', const [
+      ScriptStep(kind: 'say', text: '일행들은 절벽으로 떨어질뻔 했다.'),
+      ScriptStep(kind: 'stepBack'),
+    ]);
+  }
+
+  static const _den4PyramidScenes = <List<String>>[
+    [],
+    [' 여기에는 기묘한 피라밋이 있었다', ' 갑자기 피라밋이 아래로 가라앉기 시작했다'],
+    [
+      ' 그 물속에서 당신은 한 시대의 운명을 바라다',
+      '보고있었다',
+      ' 당신은 왜 하필이면 당신이 이 세계에 뛰어들',
+      '어 단신으로 악과 싸워야하는 이유를 아는가 ?',
+      ' 여기서 당신은 Lord Ahn, Ancient Evil, Nec-',
+      'romancer 의 관계를 기술한 예언서를 발견하여',
+      '읽기 시작했다.',
+    ],
+    [
+      'CHAPTER 1',
+      '',
+      ' 이 세상에는 두개의 개념이 필요하다.',
+      ' 그것은 바로 선과 악이다.',
+      ' 전자의 상징은 Lord Ahn 이고, 후자의 상징은',
+      'Ancient Evil 이다.',
+    ],
+    [
+      'CHAPTER 2',
+      '',
+      ' 만약 당신이 황야에서 Ancient Evil을 만나더',
+      '라도 두려워하지 말라. 그는 비록 악의 표상이',
+      '지만 Necromancer 가 행하는 악과는 다른 표현',
+      '임을 명심하라. 만약 세상이 "선"만이 있고 이',
+      '런 "악"은 존재하지 않는다면  누구도 선의 중',
+      '요성을 인식하지 못한채 보편적인 진리로만 인',
+      '식되어가는 시대가 올것이며 선으로 둘러 쌓여',
+      '진 생활에 대한 고마움을 망각하는 시대가  우',
+      '리 앞에 도래하는 때가 결국 올것이다. 그런때',
+      '가 오기전에 사람들이  이런 선의 소중함을 느',
+      '끼고 스스로 지키려고 노력하게  만들  하나의',
+      '개념이 필요하게 되었는데 이것이 바로 태초에',
+      '생겨난 악의 개념이었다. 하지만 일부러 뭇 사',
+      '람들에게 비난을 사면서 까지 악을 대표해줄만',
+      '한 자는 나타나지 않았다. 이에 스스로를 악의',
+      '집대성으로 불러주기를 요구하는 한 현자가 있',
+      '었으니 본명은 알수 없지만 그가 바로 Ancient',
+      'Evil이라고 칭하는 자였다.  선에 의해 보호되',
+      '어 너무나도 평화로운 생활을 해왔던 사람들은',
+      '이제 새로운 마음을 갖고 그에게 대항하는  자',
+      '세를 취하게 되었다. 하지만 그는 실지로 사람',
+      '들에게 해를 입히지 않았으며  그의 본심은 선',
+      '에 있다는걸 알아두기 바란다.',
+    ],
+    [
+      'CHAPTER 3',
+      '',
+      ' 위에서 기술한 Ancient Evil이 의미하는 악과',
+      '는 달리 Neromancer 는 진정한 악의 의미를 알',
+      '지 못한다. 그것으로 인해 Ancient Evil 은 그',
+      '를 벌하려 하는 것이다. 하지만 육체가 없어진',
+      'Ancient Evil의 능력으로는 그에게 대항하기가',
+      '어렵다고 단정하고는 그의 강력한 마력으로 미',
+      '래의 역사를 뒤틀어 운명적으로 Necromancer에',
+      '대항하여야 하는 한 희생물을 창조해 냈으니..',
+      '..그는 바로 당신인것이다.',
+    ],
+    [
+      'CHAPTER 4',
+      '',
+      ' Necromancer 에게 대항 할 수 있는 단 두명의',
+      '존재는 바로 Lord Ahn과 그의 대립자이며 깊은',
+      '관계를 가진 Ancient Evil이다.',
+      ' 그들은 모두 Semi-God라는 계급의 인물들이며',
+      '보통의 사람들은  상대하기조차 어려운 인물들',
+      '이며 능력또한 인간을 초월하는 것뿐이다.  그',
+      '러므로 만약 당신이 Necromancer를 응징하려고',
+      '한다면 먼저 당신 자신이 Semi-God가 되어야만',
+      '될것이다.',
+    ],
+  ];
+
+  /// `LORESPEC.PAS:669-813`, `case 13` (DEN4).
+  ///
+  /// y = 96 is the `wantexit` boundary. Any special tile in x 76..86,
+  /// y 71..81 runs the pyramid: per cell 52 -> 44 and 40/51 -> 42, the party
+  /// walks one cell at a time to x = 81 then y = 77 (faces 6/7, 4/5), every 42
+  /// becomes 51, face 5, map[81,76] := 48 between the two lines, then the
+  /// prophecy pages. No flag is set: the 52 cells are gone afterwards.
+  /// y = 68 fights the Gorgons while etc[38] bit5 is clear; only victory
+  /// sets bit5, and an escape moves y + 1 only while enemy 3 is alive.
+  static ScriptRun? map13(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 96) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 13,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    ScriptStep area(int value, int onlyIf) => ScriptStep(
+      kind: 'setTileArea',
+      tileX: 76,
+      tileXMax: 86,
+      tileY: 71,
+      tileYMax: 81,
+      tileValue: value,
+      tileOnlyIf: onlyIf,
+    );
+    if (x >= 76 && x <= 86 && y >= 71 && y <= 81) {
+      final dx = sourceSign(81 - x);
+      final dy = sourceSign(77 - y);
+      ScriptScene page(int i, String title) =>
+          ScriptScene(title: title, lines: _den4PyramidScenes[i]);
+      const pull = '알수없는 힘이 당신을 당기는걸 느꼈다';
+      return start('den4-pyramid-chapters', [
+        // `message` prints before the writes and the walk, without a key wait.
+        const ScriptStep(kind: 'say', text: pull),
+        area(44, 52),
+        area(42, 40),
+        area(42, 51),
+        for (var cx = x; cx != 81; cx += dx) ...[
+          ScriptStep(kind: 'sourceFace', sourceFace: dx == 1 ? 6 : 7),
+          ScriptStep(kind: 'nudge', nudgeDx: dx),
+        ],
+        for (var cy = y; cy != 77; cy += dy) ...[
+          ScriptStep(kind: 'sourceFace', sourceFace: dy == 1 ? 4 : 5),
+          ScriptStep(kind: 'nudge', nudgeDy: dy),
+        ],
+        area(51, 42),
+        const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+        // The PressAnyKey after the walk; the pull message is still shown.
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '피라밋', lines: [pull]),
+        ),
+        ScriptStep(kind: 'say', text: _den4PyramidScenes[1][0]),
+        const ScriptStep(kind: 'setTile', tileX: 81, tileY: 76, tileValue: 48),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '피라밋', lines: [_den4PyramidScenes[1][1]]),
+        ),
+        ScriptStep(kind: 'scene', scene: page(2, '예언서')),
+        for (var i = 3; i <= 6; i++)
+          ScriptStep(kind: 'scene', scene: page(i, 'CHAPTER ${i - 2}')),
+      ]);
+    }
+    if (y == 68) {
+      if ((context.etcValue(38) & LorePascal.bit(5)) != 0) return null;
+      return start('den4-gorgon', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Gorgon',
+            actors: [50, 51, 52],
+            lines: ['우리들의 영역을 침범하는 자는 가만두지 않겠다 !!!'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Gorgon',
+          battleEnemyFirst: true,
+          monsters: [50, 51, 52],
+          battleOverrides: [
+            {'index': 1, 'eNumber': 1},
+            {'index': 2, 'eNumber': 1},
+            {'index': 3, 'eNumber': 1},
+          ],
+          battleRunAwayIfEnemyAlive: 3,
+          battleRunAwaySteps: [ScriptStep(kind: 'nudge', nudgeDy: 1)],
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: 'Gorgon', lines: ['당신들은 Gorgon을 물리쳤다.']),
+        ),
+        ScriptStep(kind: 'flag', key: 'etc38_bit5'),
+      ]);
+    }
+    return null;
+  }
+
+  /// `LORESPEC.PAS:814-878`, `case 14` (DEN1 / MENACE).
+  ///
+  /// y = 46 is the `wantexit` boundary. The MENACE centre (25,8)/(26,8)
+  /// increments raw etc[10] after the key wait when it is 3. Six gold cells
+  /// and the golden shield use raw etc[32] bits 1..7; the shield's bit is set
+  /// only after a member takes it (choosewhom refusal leaves it).
+  static ScriptRun? map14(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 46) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 14,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    if (LoreSourceCoordinates.on(x, y, 25, 8) ||
+        LoreSourceCoordinates.on(x, y, 26, 8)) {
+      if (_questByte(context, 10, 'lordahn') != 3) return null;
+      return start('spec-14-menace-center', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'MENACE',
+            lines: [
+              "여기가 `MENACE'의 중심이다.",
+              '당신의 탐험은 성공적이었다.',
+              '이제 Lord Ahn 에게 돌아가는 일만 남았다.',
+            ],
+          ),
+        ),
+        // This branch is entered only for raw etc[10] = 3. Preserve the
+        // source byte store after PressAnyKey, regardless of a stale alias.
+        ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 10, sourceEtcValue: 4),
+        ScriptStep(kind: 'questStep', questName: 'lordahn', questSet: 4),
+      ]);
+    }
+    // LORESUB.findgold prints both display pages and awards immediately;
+    // it has no PressAnyKey. A speech step would block the reward/bit update.
+    const gold = {
+      (6, 6): (1, 1000),
+      (18, 10): (2, 2500),
+      (6, 44): (3, 400),
+      (31, 30): (4, 600),
+      (31, 8): (5, 1500),
+      (14, 28): (6, 1000),
+    };
+    final etc32 = context.etcValue(
+      32,
+      bitAliases: const {7: 'goldenShieldMenaceTaken'},
+    );
+    if (gold[(x, y)] case (final bit, final amount)) {
+      if ((etc32 & LorePascal.bit(bit)) != 0) return null;
+      return start('spec-14-gold-$bit', [
+        ScriptStep(
+          kind: 'message',
+          text: LoreFieldLogic.goldFoundMessage(amount),
+        ),
+        ScriptStep(kind: 'gold', amount: amount),
+        ScriptStep(kind: 'flag', key: 'etc32_bit$bit'),
+      ]);
+    }
+    if (x == 16 && y == 20) {
+      if ((etc32 & LorePascal.bit(7)) != 0) return null;
+      return start('spec-14-golden-shield', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '황금의 방패', lines: ['당신은 황금의 방패를 발견했다.']),
+        ),
+        ScriptStep(kind: 'say', text: '누가 이 황금의 방패를 장착 하겠습니까 ?'),
+        ScriptStep(
+          kind: 'equip',
+          equipKind: 'shield',
+          equipIndex: 5,
+          equipPower: 5,
+          equipPrompt: true,
+        ),
+        ScriptStep(kind: 'displayCondition'),
+        ScriptStep(kind: 'flag', key: 'etc32_bit7'),
+      ]);
+    }
+    return null;
+  }
+
+  /// `LORESPEC.PAS:879-965`, `case 15` (DEN2 / QUAKE).
+  ///
+  /// y = 71 is the `wantexit` boundary. The four y = 48 cells (x 10, 11, 40,
+  /// 41) pay 6000 while raw etc[36] bit1 is clear, then 4000 (bit2), and open
+  /// map[x,48]/map[x,47]. The golden shield/armour use bits 3/4, set only
+  /// after a member takes them. y = 27 fights the ArchiGagoyle while raw
+  /// etc[14] = 4; victory or a dead third enemy increments etc[14].
+  static ScriptRun? map15(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 71) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 15,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    final etc36 = context.etcValue(
+      36,
+      bitAliases: const {
+        1: 'quakeGoldA',
+        2: 'quakeGoldB',
+        3: 'goldenShieldQuakeTaken',
+        4: 'goldenArmorQuakeTaken',
+      },
+    );
+    bool has(int bit) => (etc36 & LorePascal.bit(bit)) != 0;
+    if (y == 48 && (x == 10 || x == 11 || x == 40 || x == 41)) {
+      if (has(2)) return null;
+      final first = !has(1);
+      final amount = first ? 6000 : 4000;
+      return start('quake-gold-$x', [
+        ScriptStep(kind: 'flag', key: first ? 'etc36_bit1' : 'etc36_bit2'),
+        ScriptStep(
+          kind: 'message',
+          text: LoreFieldLogic.goldFoundMessage(amount),
+        ),
+        ScriptStep(kind: 'gold', amount: amount),
+        ScriptStep(kind: 'setTile', tileX: x, tileY: 48, tileValue: 44),
+        ScriptStep(kind: 'setTile', tileX: x, tileY: 47, tileValue: 44),
+      ]);
+    }
+    for (final (cx, cy, bit, name, kind, index, power) in const [
+      (14, 7, 3, '황금의 방패', 'shield', 5, 5),
+      (45, 19, 4, '황금의 갑옷', 'armor', 5, 6),
+    ]) {
+      if (x != cx || y != cy) continue;
+      if (has(bit)) return null;
+      return start('spec-15-golden-$kind', [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: name, lines: ['당신은 $name을 발견했다.']),
+        ),
+        ScriptStep(kind: 'say', text: '누가 이 $name을 장착 하겠습니까 ?'),
+        ScriptStep(
+          kind: 'equip',
+          equipKind: kind,
+          equipIndex: index,
+          equipPower: power,
+          equipPrompt: true,
+        ),
+        ScriptStep(kind: 'displayCondition'),
+        ScriptStep(kind: 'flag', key: 'etc36_bit$bit'),
+      ]);
+    }
+    if (y == 27 && _questByte(context, 14, 'gaia') == 4) {
+      return start('spec-15-archigagoyle', const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'ArchiGagoyle',
+            lines: ['당신은 ArchiGagoyle과 두마리의 Zombie를 발견했다.'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'ArchiGagoyle',
+          battleEnemyFirst: true,
+          monsters: [36, 36, 42],
+          battleOverrides: [
+            {'index': 1, 'name': 'Zombie'},
+            {'index': 2, 'name': 'Zombie'},
+            {'index': 3, 'name': 'ArchiGagoyle'},
+          ],
+          // LORESPEC.PAS:958 `(party.etc[6]=0) or (enemy[3].hp<=0)`.
+          battleVictoryIfEnemyHpZero: 3,
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'ArchiGagoyle',
+            lines: ['당신은 ArchiGagoyle을 물리쳤다.'],
+          ),
+        ),
+        ScriptStep(kind: 'questStep', questName: 'gaia', questInc: 1),
+      ]);
+    }
+    return null;
+  }
+
+  /// `LORESPEC.PAS:966-1004`, `case 16` (DEN3 / WIVERN).
+  ///
+  /// y = 36 is the `wantexit` boundary. At y = 10, raw etc[37] < 3 meets
+  /// 3 - etc[37] Wiverns: victory stores 3, escape stores 3 minus the
+  /// survivors; otherwise only the corpse message (no key wait) appears.
+  static ScriptRun? map16(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y != 10) return null;
+    final killed = _questByte(context, 37, 'wivern');
+    LoreScript procedure(String id, List<ScriptStep> steps) => LoreScript(
+      id: id,
+      trigger: 'step',
+      map: 16,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
+    if (killed >= 3) {
+      return scripts.startProcedure(
+        procedure('wivern-cleared', const [
+          ScriptStep(kind: 'say', text: '여기에는 Wivern의 시체만이 있다.'),
+        ]),
+        context,
+      );
+    }
+    final count = 3 - killed;
+    final word = switch (killed) {
+      2 => '한',
+      1 => '두',
+      _ => '세',
+    };
+    return scripts.startProcedure(
+      procedure('wivern-$count-remaining', [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Wivern',
+            lines: ['당신은 $word마리의 Wivern과 마주쳤다.'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Wivern',
+          battleEnemyFirst: true,
+          monsters: List<int>.filled(count, 43),
+          battleRunAwayProgressQuest: 'wivern',
+          battleRunAwayProgressTotal: 3,
+        ),
+        const ScriptStep(kind: 'questStep', questName: 'wivern', questSet: 3),
+      ]),
+      context,
+    );
+  }
+
+  static const _map17AntaresPages = <List<String>>[
+    ['갑자기 주위가 용암으로 변하면서 한 영혼이 당신앞에 나타났다.'],
+    [
+      ' 나는 고대의 강력한 마법사 였던 Red Antares',
+      '의 영이오.',
+      ' 한때,  나는 이 세계의 모든 지역을 통괄하는',
+      '마법을 가지고 이 세계를 통치했지만  내가 죽',
+      '고난 뒤로는 여러 지역으로  나의 마법이 분산',
+      '되어 제대로 힘을 발휘하지 못하는것 같소. 당',
+      '신들이 Necromancer에 대항하려 한다는걸 알고',
+      '있소. 나는 그가 이 동굴을 요새화  시킬때 이',
+      '미 그의 마법 능력을 지켜 보았기 때문에 그의',
+      '능력을 알수 있었소. 그러나 그의 능력에 비교',
+      '해볼때 당신들의 마법 능력은 상당히 저조하오',
+      '. 그래서 당신들을 위해 나의 마법중 "간접 공',
+      '격"이란 기법을 전해 주겠소.',
+      ' 만약 당신들의 마법 능력이 도달한다면  다음',
+      '의 마법을 사용할수 있을 것이오.',
+      '',
+    ],
+    [
+      '1.     독      - 적을 중독 시킴',
+      '2. 기술 무력화 - 적의 특수 공격 능력 제거',
+      '3. 방어 무력화 - 적의 방어력 감소',
+      '4. 능력   저하 - 적의 모든 능력 감소',
+      '5. 마법   불능 - 적의 마법 능력 제거',
+      '6. 탈   초인화 - 적의 초자연력 제거',
+    ],
+    [
+      ' 이 여섯가지의 마법은 사용하기 까다롭고  직',
+      '접적인 공격은 아니지만 큰 도움을 줄것이오.',
+      '하지만, 사실  이 마법들을 모두 동원하더라도',
+      'Necromancer를 만나기 조차 어려울 것이오. 그',
+      '래서 당신들은 초자연력 또한 익혀야만 그에게',
+      '대항할수 있을 것이오.',
+    ],
+  ];
+  static const _map17HidraPages = <List<String>>[
+    ['당신은 보스인 Hidra를 만났다.'],
+    [
+      '당신들은 Hidra를 물리쳤다.',
+      '그리고 당신은 이 임무에 성공했다.',
+      '다시 WATER FIELD 의 군주에게로 돌아가라.',
+    ],
+  ];
+
+  /// `LORESPEC.PAS:1010-1173`, `case 17` (DEN4 / DRAGON DEN).
+  ///
+  /// Independent `if`s that read the x/y left by earlier statements: y = 95
+  /// is the exit boundary; y = 80 becomes 6; y = 44 opens row 44 and closes
+  /// row 38; (75,52) is Red Antares; x = 72 opens column 72 and moves y - 7;
+  /// y = 38 swaps the rows back and moves to (56,93); x = 22 is the Hidra
+  /// while raw etc[15] < 2. `party.etc[38] and bit2 = 1` parses as
+  /// `(etc[38] and 2) = 1` and is never true, so the source "already
+  /// joined" exit is dead: with bit1 and mind reading the offer repeats.
+  static ScriptRun? map17(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    final tile = context.tileAtPlayer ?? 0;
+    if (tile != 0 && tile != 52) return null;
+    if (y == 95) return null;
+    var cx = x;
+    var cy = y;
+    final steps = <ScriptStep>[];
+    void moveTo(int nx, int ny) {
+      cx = nx;
+      cy = ny;
+      steps.add(ScriptStep(kind: 'teleport', tileX: nx, tileY: ny));
+    }
+
+    ScriptStep scene(String title, List<String> lines) => ScriptStep(
+      kind: 'scene',
+      scene: ScriptScene(title: title, lines: lines),
+    );
+    ScriptRun? finish(String id) => steps.isEmpty
+        ? null
+        : scripts.startProcedure(
+            LoreScript(
+              id: id,
+              trigger: 'step',
+              map: 17,
+              once: false,
+              require: const ScriptRequire(),
+              steps: steps,
+            ),
+            context,
+          );
+    if (cy == 80) moveTo(cx, 6);
+    if (cy == 44) {
+      for (var i = 67; i <= 69; i++) {
+        steps
+          ..add(ScriptStep(kind: 'setTile', tileX: i, tileY: 44, tileValue: 44))
+          ..add(
+            ScriptStep(kind: 'setTile', tileX: i, tileY: 38, tileValue: 52),
+          );
+      }
+    }
+    final etc38 = context.etcValue(
+      38,
+      bitAliases: const {1: 'specialMagicLearned', 2: 'redAntaresJoined'},
+    );
+    final learned = (etc38 & LorePascal.bit(1)) == 1;
+    if (cx == 75 && cy == 52) {
+      // `(party.etc[38] and bit2) = 1` is never true: no early exit.
+      final mindRead = context.sourceEtc.containsKey(5)
+          ? context.etcValue(5) > 0
+          : context.mindReadActive;
+      if (learned && mindRead) {
+        // LORESPEC.PAS:1029-1032, printed before the select.
+        steps.addAll(const [
+          ScriptStep(kind: 'say', text: ' 다시 생각해보니 나도 직접 Necromancer에 도'),
+          ScriptStep(kind: 'say', text: '전하고픈 마음이 생겼소.  비록 육체적인 힘은'),
+          ScriptStep(kind: 'say', text: '전혀없는 영이지만 당신들과 같이 모험을 하고'),
+          ScriptStep(kind: 'say', text: '싶소. 당신들의 생각은 어떻소.'),
+        ]);
+        steps.add(
+          const ScriptStep(
+            kind: 'choice',
+            prompt: '',
+            options: [
+              ScriptOption('당신의 제의을 받아 들이겠소', [
+                // `if k = 1 then begin asyouwish; exit; end`.
+                ScriptStep(
+                  kind: 'join',
+                  key: 'red_antares',
+                  cancelSteps: [ScriptStep(kind: 'say', text: '당신이 바란다면 ...')],
+                ),
+                ScriptStep(kind: 'displayCondition'),
+                ScriptStep(kind: 'flag', key: 'redAntaresJoined'),
+                ScriptStep(kind: 'flag', key: 'etc38_bit2'),
+              ]),
+              ScriptOption('당신이 전해준 마법만으로도 족하오', [
+                ScriptStep(kind: 'say', text: '당신이 바란다면 ...'),
+              ]),
+            ],
+          ),
+        );
+        return finish('redantares-join');
+      }
+      if (learned && (etc38 & LorePascal.bit(2)) == 0) {
+        steps.add(scene('Red Antares', const ['나는 다시 영혼의 세계로 돌아가야 겠소.']));
+      }
+      if (!learned) {
+        steps
+          ..add(
+            const ScriptStep(
+              kind: 'setTileArea',
+              tileX: 71,
+              tileXMax: 82,
+              tileY: 47,
+              tileYMax: 57,
+              tileValue: 50,
+              tileOnlyIf: 40,
+            ),
+          )
+          ..addAll([
+            for (final page in _map17AntaresPages) scene('Red Antares', page),
+          ])
+          ..add(const ScriptStep(kind: 'flag', key: 'etc38_bit1'))
+          ..add(const ScriptStep(kind: 'flag', key: 'specialMagicLearned'));
+      }
+    }
+    if (cx == 72) {
+      for (var j = 19; j <= 21; j++) {
+        steps.add(
+          ScriptStep(kind: 'setTile', tileX: 72, tileY: j, tileValue: 44),
+        );
+      }
+      moveTo(cx, cy - 7);
+    }
+    if (cy == 38) {
+      for (var i = 67; i <= 69; i++) {
+        steps
+          ..add(ScriptStep(kind: 'setTile', tileX: i, tileY: 38, tileValue: 44))
+          ..add(
+            ScriptStep(kind: 'setTile', tileX: i, tileY: 44, tileValue: 52),
+          );
+      }
+      moveTo(56, 93);
+    }
+    if (cx == 22 && _questByte(context, 15, 'water') < 2) {
+      final torch = context.etcValue(1);
+      final unlit =
+          torch == 0 &&
+          (context.sourceEtc.containsKey(1) ||
+              !context.flags.contains('torchActive'));
+      steps.addAll([
+        if (unlit) ...const [
+          ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+          ScriptStep(kind: 'torch', torchLit: true),
+        ],
+        scene('Hidra', _map17HidraPages[0]),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Hidra',
+          monsters: const [49, 49, 49],
+          battleOverrides: const [
+            {'index': 1, 'name': "Hidra's Head 1", 'level': 8, 'eNumber': 34},
+            {'index': 2, 'name': "Hidra's Head 2", 'level': 10, 'eNumber': 39},
+            {'index': 3, 'name': "Hidra's Head 3", 'level': 8, 'eNumber': 34},
+          ],
+          battleRunAwaySteps: [
+            ScriptStep(kind: 'teleport', tileX: cx + 1, tileY: cy),
+          ],
+        ),
+        scene('Hidra', _map17HidraPages[1]),
+        const ScriptStep(kind: 'questStep', questName: 'water', questSet: 2),
+        const ScriptStep(kind: 'teleport', tileX: 56, tileY: 93),
+      ]);
+      return finish('map17-hidra');
+    }
+    return finish('spec-17-x$x-y$y');
+  }
+
+  /// Spica's lecture and the original `LORESPEC.PAS:1276-1296` Print layout
+  /// (`Print` pages separated by `PressAnyKey`).
+  static const _map18SpicaPages = <List<String>>[
+    ['여기에는 어떤 여자가 수도하고 있었다'],
+    [
+      ' 나는 이곳 LOCKUP이 적들에게 점령되기전  부',
+      '터 여기서 수도하고 있는 Spica란 사람입니다',
+      ' 오랜 수도 끝에 나는 초자연력의 존재와 사용',
+      '법을 알게 되었습니다.  대충 요약하면 이렇습',
+      '니다.',
+    ],
+    [
+      '',
+      '투  시 : 변화의 여지가 있는 지역을 탐지',
+      '예  언 : 다음의 할 일을 알아냄',
+      '독  심 : 남의 마음을 자기쪽으로 끌어들임',
+      '천리안 : 능력에 따라 먼곳의 광경을 봄',
+      '염  력 : 주위 환경 조절에 의한 공격',
+    ],
+    [
+      ' 이것으로 Necromancer에게 도전 하십시오. 또',
+      '한,  그도 초자연력의 존재를 알고있고 사용할',
+      '줄 안다는걸 염두에 두고 사용하십시오.',
+    ],
+  ];
+
+  /// `LORESPEC.PAS:1174-1365`, `case 18` (LOCKUP).
+  ///
+  /// A run of independent `if`s on the current cell. `y = 95` is the
+  /// `wantexit` boundary (map 3 (96,43); refusal y - 1); its special cells are
+  /// x 23..26, so nothing below it can follow. (22,41) turns the cell into 44
+  /// and (21,41) into 52. (21,41) fights the Minotaur while raw etc[39] bit3
+  /// is clear and sets bit3 after victory or escape. (37,31) is Spica: bit2
+  /// ends it, bit1 + mind read (etc[5] > 0) + the best espLevel >= 5 offers the
+  /// join (bit2 is written before `ReturnJoinMember`), anything else repeats
+  /// the short refusals, and bit1 clear gives the lecture and sets bit1.
+  /// x = 31 while etc[15] < 4 walks the party to x + 6, y 13 and fights the
+  /// Huge Dragon (random(3) + 30 for slots 3..7, in slot order); victory sets
+  /// etc[15] := 4, escape moves to (25,94). The Minotaur has no etc[6] check:
+  /// after a GameOver reload bit3 is set and the later checks run on the loaded
+  /// x, y ([afterReload]); the Huge Dragon stops on etc[6] = 255.
+  static ScriptRun? map18(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts, {
+    bool afterMinotaur = false,
+  }) {
+    final tile = context.tileAtPlayer ?? 0;
+    if (!afterMinotaur && tile != 0 && tile != 52) return null;
+    if (!afterMinotaur && y == 95) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 18,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    final etc39 = context.etcValue(
+      39,
+      bitAliases: const {3: 'lockupGuardianDefeated'},
+    );
+    if (!afterMinotaur && x == 22 && y == 41) {
+      return start('lockup-passage-22-41', const [
+        ScriptStep(kind: 'setTile', tileX: 22, tileY: 41, tileValue: 44),
+        ScriptStep(kind: 'setTile', tileX: 21, tileY: 41, tileValue: 52),
+      ]);
+    }
+    if (!afterMinotaur &&
+        x == 21 &&
+        y == 41 &&
+        (etc39 & LorePascal.bit(3)) == 0) {
+      const seen = ScriptStep(kind: 'flag', key: 'etc39_bit3');
+      return start('lockup-guardian-21-41', [
+        ..._torchSteps(context),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Minotaur',
+            lines: ['미로속에서 소를 닮은 괴물이 나타났다'],
+          ),
+        ),
+        const ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Minotaur',
+          battleEnemyFirst: true,
+          monsters: [53],
+          battleRunAwaySteps: [seen],
+          battleResultUnchecked: true,
+          battleReloadResume: true,
+        ),
+        seen,
+      ]);
+    }
+    if (x == 37 && y == 31) {
+      if ((etc39 & LorePascal.bit(2)) != 0) return null;
+      ScriptStep scene(List<String> lines) => ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(title: 'Spica', lines: lines),
+      );
+      if ((etc39 & LorePascal.bit(1)) == 0) {
+        return start('spica-first-meeting', [
+          for (final page in _map18SpicaPages) scene(page),
+          const ScriptStep(kind: 'flag', key: 'etc39_bit1'),
+        ]);
+      }
+      final mindRead = context.sourceEtc.containsKey(5)
+          ? context.etcValue(5) > 0
+          : context.mindReadActive;
+      if (!mindRead) {
+        return start('spica-mind-read-inactive', const [
+          ScriptStep(kind: 'say', text: ' 지체할 시간이 없습니다. 신속히 행동을 취하'),
+          // `talk(...)` = Print + PressAnyKey.
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(title: 'Spica', lines: ['십시오.']),
+          ),
+        ]);
+      }
+      if (context.maxEspLevel < 5) {
+        return start('spica-cannot-read', const [
+          ScriptStep(kind: 'say', text: ' 당신이 나의 마음을 읽으려 하지만 아직 당신'),
+          ScriptStep(kind: 'say', text: '의 능력으로는 나의 마음을 끌어낼수는 없습니'),
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(title: 'Spica', lines: ['다.']),
+          ),
+        ]);
+      }
+      return start('spica-join', const [
+        ScriptStep(kind: 'say', text: ' 갑자기 Necromancer에게 대항 하고픈  결의가'),
+        ScriptStep(kind: 'say', text: '생기는 군요. 나도 당신들을 도와 그를 무찌르'),
+        ScriptStep(kind: 'say', text: '겠습니다.'),
+        ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          options: [
+            ScriptOption('저도 원했던 바입니다', [
+              ScriptStep(kind: 'flag', key: 'etc39_bit2'),
+              ScriptStep(kind: 'join', key: 'spica'),
+            ]),
+            ScriptOption('말씀은 고맙지만 사양하겠습니다', [
+              ScriptStep(kind: 'flag', key: 'etc39_bit2'),
+            ]),
+          ],
+        ),
+      ]);
+    }
+    if (x == 31 && _questByte(context, 15, 'water') < 4) {
+      const message = '당신은 여기가 Huge Dragon의 거처임을 느꼈다';
+      return start('map18-huge-dragon', [
+        ..._torchSteps(context),
+        const ScriptStep(kind: 'say', text: message),
+        const ScriptStep(kind: 'sourceFace', sourceFace: 6),
+        for (var i = 0; i < 6; i++) const ScriptStep(kind: 'nudge', nudgeDx: 1),
+        const ScriptStep(kind: 'sourceFace', sourceFace: 4),
+        for (var cy = y + 1; cy <= 13; cy++)
+          const ScriptStep(kind: 'nudge', nudgeDy: 1),
+        const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: 'Huge Dragon', lines: [message]),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Huge Dragon',
+          battleEnemyFirst: true,
+          monsters: [54, 39, for (var i = 3; i <= 7; i++) scripts.roll(3) + 30],
+          battleOverrides: const [
+            {'index': 1, 'name': 'Huge Dragon'},
+            {'index': 2, 'name': "Dragon's tail", 'ac': 8},
+          ],
+          battleRunAwaySteps: const [
+            ScriptStep(kind: 'teleport', tileX: 25, tileY: 94),
+          ],
+        ),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Huge Dragon',
+            lines: [
+              '당신들은 Huge Dragon을 물리쳤다.',
+              '그리고 당신은 이 임무에 성공했다.',
+              '다시 WATER FIELD 의 군주에게로 돌아가라.',
+            ],
+          ),
+        ),
+        const ScriptStep(kind: 'questStep', questName: 'water', questSet: 4),
+      ]);
+    }
+    return null;
+  }
+
+  /// `specialevent` after `GameOver` reloaded a defeat whose battle step has
+  /// `battleReloadResume`: `BattleMode` returns into the same `case` arm, which
+  /// goes on to its later `if` checks with `x, y` from the loaded game (`Load`
+  /// sets `x := party.xaxis; y := party.yaxis`), whatever map was loaded.
+  ///  - 18: after the Minotaur, `on(37,31)` (Spica) and `x = 31` (Huge Dragon).
+  ///  - 19: after the guardians, `y = 6` (the seal rooms).
+  ///  - 20: after the Minotaur, `y = 13` (the final chain).
+  static ScriptRun? afterReload(
+    int map,
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) => switch (map) {
+    18 => map18(x, y, context, scripts, afterMinotaur: true),
+    19 => map19(x, y, context, scripts, afterGuardians: true),
+    20 => map20(x, y, context, scripts, afterMinotaur: true),
+    _ => null,
+  };
+
+  /// `if party.etc[1] = 0 then begin party.etc[1] := 1; scroll(true); end`.
+  static List<ScriptStep> _torchSteps(ScriptContext context) {
+    final unlit =
+        context.etcValue(1) == 0 &&
+        (context.sourceEtc.containsKey(1) ||
+            !context.flags.contains('torchActive'));
+    return [
+      if (unlit) ...const [
+        ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+        ScriptStep(kind: 'torch', torchLit: true),
+      ],
+    ];
+  }
+
+  /// `LORESPEC.PAS:1378-1473`, map 19 (DEN6 / EVIL DEN).
+  /// Direct, closed internal branches; the southern exit remains in the portal
+  /// session. Preserve etc[3], odd/shr/div, random calls and battle exits.
+  static ScriptRun? map19(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts, {
+    bool afterGuardians = false,
+  }) {
+    if (!afterGuardians &&
+        context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 19,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    ScriptStep tile(int tx, int ty, int value) =>
+        ScriptStep(kind: 'setTile', tileX: tx, tileY: ty, tileValue: value);
+    Map<String, Object?> guardOverride(int slot) => {
+      'index': slot,
+      'eNumber': 25,
+      'hp': 210,
+      'level': 7,
+    };
+
+    var sealByte = context.etcValue(40, bitAliases: {1: 'evilSealRoomCleared'});
+    // Transition adapter for old JSON snapshots. Raw byte zero wins.
+    if (!context.sourceEtc.containsKey(40)) {
+      for (var room = 1; room <= 7; room++) {
+        if (context.flags.contains('evilSealRoom$room')) {
+          sealByte = (room << 1) | (sealByte & 1);
+        }
+      }
+    }
+    final sealCleared = (sealByte & 1) != 0;
+
+    if (!afterGuardians && ((x == 11 && y == 40) || (x == 41 && y == 39))) {
+      final lever = x == 11 ? 'a' : 'b';
+      final swampWalk =
+          context.etcValue(3) > 0 ||
+          (!context.sourceEtc.containsKey(3) &&
+              context.flags.contains('swampWalkActive'));
+      if (swampWalk) {
+        return start('evil-seal-lever-$lever-blocked', const [
+          ScriptStep(kind: 'say', text: ' 늪 아래를 보니 무언가 반짝이는 물체가 있었'),
+          ScriptStep(kind: 'say', text: '다. 하지만 늪위를 걷는 마법 때문에 늪속으로'),
+          ScriptStep(kind: 'say', text: '들어갈수가 없다.'),
+        ]);
+      }
+      if (x == 11) {
+        return start('evil-seal-lever-a', [
+          const ScriptStep(kind: 'say', text: ' 일행은 독을 무릅쓰고  늪속에 빠져있는 레버'),
+          const ScriptStep(kind: 'say', text: '를 당겼다. 순간 동굴 중심부에서 굉음이 들렸'),
+          const ScriptStep(kind: 'say', text: '다.'),
+          tile(11, 40, 49),
+          tile(41, 39, 0),
+        ]);
+      }
+      return start('evil-seal-lever-b', [
+        const ScriptStep(kind: 'say', text: ' 일행은 독을 무릅쓰고  늪속에 빠져있는 레버'),
+        const ScriptStep(kind: 'say', text: '를 당겼다. 순간 동굴 중심부에서 조금전 보다'),
+        const ScriptStep(kind: 'say', text: '더 큰 굉음이 들렸다.'),
+        tile(41, 39, 49),
+        if (!sealCleared) ...[
+          for (var j = 27; j <= 36; j++) ...[tile(24, j, 25), tile(28, j, 23)],
+          tile(24, 37, 17),
+          tile(28, 37, 19),
+          for (var j = 27; j <= 37; j++)
+            for (var i = 25; i <= 27; i++) tile(i, j, 44),
+          ScriptStep(
+            kind: 'sourceEtc',
+            sourceEtcIndex: 40,
+            sourceEtcValue: (scripts.roll(7) + 1) << 1,
+          ),
+        ],
+      ]);
+    }
+
+    if (!afterGuardians && !sealCleared && y >= 8 && y <= 12) {
+      final count = scripts.roll(3) + 3;
+      // BattleMode(TRUE); map[x,y] := 49 on every battle result (the party
+      // stands on x, y; after a GameOver reload x, y are the loaded position).
+      const closeTile = ScriptStep(kind: 'setTileAtPlayer', tileValue: 49);
+      return start('evil-seal-guardians', [
+        ScriptStep(
+          kind: 'battle',
+          monsters: List.filled(count, 59),
+          battleOverrides: [for (var i = 1; i <= count; i++) guardOverride(i)],
+          battleRunAwaySteps: const [closeTile],
+          battleResultUnchecked: true,
+          battleReloadResume: true,
+        ),
+        closeTile,
+      ]);
+    }
+
+    if (!sealCleared && y == 6) {
+      final room = LorePascal.div(x - 10, 4);
+      if ((sealByte >> 1) != room) {
+        return start('evil-seal-room-wrong-$room', [
+          tile(x, y - 1, 49),
+          const ScriptStep(kind: 'say', text: ' 여기에는 봉인이 발견되지 않았다'),
+          tile(x, y, 49),
+        ]);
+      }
+      return start('evil-seal-room-$room', [
+        tile(x, y - 1, 49),
+        const ScriptStep(kind: 'say', text: '나는 EVIL GOD의 봉인을 지키고 있는 CRAB GOD'),
+        const ScriptStep(kind: 'say', text: '의 왕이다. CRAB GOD 족의 명예를 걸고 절대로'),
+        const ScriptStep(kind: 'say', text: '너희 같은 자들에게 봉인을 넘겨주지 않겠다!!'),
+        ScriptStep(
+          kind: 'battle',
+          monsters: List.filled(7, 59),
+          battleEnemyFirst: true,
+          battleOverrides: [for (var i = 4; i <= 7; i++) guardOverride(i)],
+          battleRunAwaySteps: const [ScriptStep(kind: 'nudge', nudgeDy: 1)],
+        ),
+        // LORESPEC: the completion bit is written before PressAnyKey.
+        // All three Print calls use color15, including the shared text "다.".
+        ScriptStep(
+          kind: 'sourceEtc',
+          sourceEtcIndex: 40,
+          sourceEtcValue: sealByte | LorePascal.bit(1),
+        ),
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'EVIL GOD 봉인',
+            lines: [
+              ' 당신은 이 동굴에 보관되어 있는 봉인을 발견',
+              '했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸',
+              '다.',
+            ],
+            lineColors: {0: 15, 1: 15, 2: 15},
+          ),
+        ),
+      ]);
+    }
+    return null;
+  }
+
+  static const _den7Quiz91Heading = <String>[
+    ' 다음 물음이 맞다면 왼쪽길로, 아니면 오른쪽',
+    '길로 가시오.',
+    '',
+  ];
+  static const _den7Quiz91Statements = <String>[
+    '문> CONFIG.SYS가 없으면 부팅이 안된다',
+    '문> Quick-BASIC은 인터프리터어 이다',
+    '문> Super VGA는 호환이 잘된다',
+    '문> 8-bit APPLE의 CPU는 Z - 80 이다',
+    '문> COMMAND.COM 안에 도스 명령이 들어있다',
+    '문> AdLib 카드는 9 채널이다',
+    '문> Ultima의 제작자는 리차드 게리오트이다',
+    '문> 당신의 컴퓨터는 IBM 계열이다',
+  ];
+  static const _den7Quiz75Heading = <String>[
+    ' 다음 물음이 맞다면 왼쪽길로, 아니면 오른쪽',
+    '길로 가시오.',
+    '',
+  ];
+  static const _den7Quiz75Statements = <String>[
+    '문> 태양계의 제 4 혹성은 지구이다',
+    '문> 북극성이 가장 밝은 별이다',
+    '문> 1월의 수호성좌는 1월에 볼수있다',
+    '문> 빛보다 빠른 입자는 실험상 없었다',
+    '문> 달이 지구보다 먼저 생겨났다',
+    '문> 시그너스 X1은 블랙홀이다',
+    '문> 과거로의 타임머신은 불가능하다',
+    '문> 북극성은 주기적으로 달라진다',
+  ];
+  static const _den7Quiz54Heading = <String>['<< 다음의 옳고 그름을 가리시오 >>', ''];
+  static const _den7Quiz54Statements = <String>[
+    '문> 이 게임의 배경은 4개의 대륙이다',
+    '문> Ancient Evil은 응징되어야 한다',
+    '문> Lord Ahn만이 유일한 Semi-God이다',
+    '문> 이 세계의 모든 악은 응징되어야 한다',
+    '문> 이 게임의 제작자는 안 영기이다',
+    '문> 게임속의 인물은 거의 별의 이름을 가졌다',
+    '문> Necromancer는 신의 경지에 이르렀다',
+    '문> Necromancer는 이 세계의 존재가 아니었다',
+  ];
+
+  /// `LORESPEC.PAS:1475-1759`, `case 20` (DEN7 / ASTRAL DEN).
+  ///
+  /// The arm is a run of independent `if`s on the current y. `y = 96` is the
+  /// `wantexit` boundary. Doors at y = 88/71 pass on tile 0 (`y := 80/63`)
+  /// and otherwise load map 4 (82,17). The y = 91/75 quizzes draw one
+  /// `random(8)`, write the row and the two doors, then wait. The y = 54 quiz
+  /// draws one `random(8)` and asks; Escape moves y + 1, a right answer opens
+  /// rows 49..52 and a wrong one loads map 4. The torch decrement of the
+  /// x 8..42, y 19..43 maze (every cell there is tile 0 or a wall) stays in
+  /// the field step handler. y = 18 sets etc[1] := 1. The y = 48 Minotaur
+  /// sets etc[41] bit4 after victory or escape; y = 13 chains the dragon,
+  /// mud and Astral Mud fights on raw etc[41] bits 2, 3 and 1, each escape
+  /// moving y + 1. The Minotaur and Astral Mud fights have no etc[6] check, so
+  /// after a GameOver reload their escape path runs on the loaded game (the
+  /// Minotaur then reaches the `y = 13` check, [afterReload]); the dragon and
+  /// mud fights stop on etc[6] = 255.
+  static ScriptRun? map20(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts, {
+    bool afterMinotaur = false,
+  }) {
+    if (afterMinotaur && y != 13) return null;
+    if (y == 96) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 20,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    const leave = ScriptStep(
+      kind: 'teleport',
+      teleportMap: 4,
+      tileX: 82,
+      tileY: 17,
+    );
+    const back = ScriptStep(kind: 'nudge', nudgeDy: 1);
+    if (y == 88 || y == 71) {
+      if ((context.tileAtPlayer ?? 0) != 0) {
+        return start('den7-exit-y$y', [leave]);
+      }
+      return start('den7-passage-y$y', [
+        ScriptStep(kind: 'teleport', tileX: x, tileY: y == 88 ? 80 : 63),
+      ]);
+    }
+    if (y == 91 || y == 75) {
+      final i = scripts.roll(8);
+      final door = y == 91 ? 88 : 71;
+      return start('den7-quiz-y$y', [
+        ScriptStep(
+          kind: 'setTileArea',
+          tileX: 23,
+          tileXMax: 26,
+          tileY: y,
+          tileValue: 44,
+        ),
+        ScriptStep(
+          kind: 'setTile',
+          tileX: 8,
+          tileY: door,
+          tileValue: i < 4 ? 52 : 0,
+        ),
+        ScriptStep(
+          kind: 'setTile',
+          tileX: 43,
+          tileY: door,
+          tileValue: i < 4 ? 0 : 52,
+        ),
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: '퀴즈',
+            lines: [
+              ...(y == 91 ? _den7Quiz91Heading : _den7Quiz75Heading),
+              (y == 91 ? _den7Quiz91Statements : _den7Quiz75Statements)[i],
+            ],
+          ),
+        ),
+      ]);
+    }
+    if (y == 54) {
+      final i = scripts.roll(8);
+      final open = [
+        const ScriptStep(
+          kind: 'setTileArea',
+          tileX: 23,
+          tileXMax: 25,
+          tileY: 54,
+          tileValue: 44,
+        ),
+        // LORESPEC.PAS:1580-1584: j outer, then 22, 26 and 23..25 per row.
+        for (var j = 49; j <= 52; j++) ...[
+          ScriptStep(kind: 'setTile', tileX: 22, tileY: j, tileValue: 25),
+          ScriptStep(kind: 'setTile', tileX: 26, tileY: j, tileValue: 23),
+          ScriptStep(
+            kind: 'setTileArea',
+            tileX: 23,
+            tileXMax: 25,
+            tileY: j,
+            tileValue: 44,
+          ),
+        ],
+      ];
+      final wrong = [
+        const ScriptStep(
+          kind: 'setTileArea',
+          tileX: 23,
+          tileXMax: 25,
+          tileY: 54,
+          tileValue: 44,
+        ),
+        leave,
+      ];
+      return start('den7-quiz-y54', [
+        for (final line in [..._den7Quiz54Heading, _den7Quiz54Statements[i]])
+          ScriptStep(kind: 'say', text: line),
+        ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          options: [
+            ScriptOption('위의 말은 옳다', i > 3 ? open : wrong),
+            ScriptOption('위의 말은 잘못되었다', i < 4 ? open : wrong),
+          ],
+          cancelSteps: const [back],
+        ),
+      ]);
+    }
+    if (y == 18) {
+      return start('den7-torch-y18', const [
+        ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+        ScriptStep(kind: 'torch', torchLit: true),
+      ]);
+    }
+    if (y != 48 && y != 13) return null;
+    final etc41 = context.etcValue(
+      41,
+      bitAliases: const {
+        1: 'den7MazeCleared',
+        2: 'den7DragonsCleared',
+        3: 'den7MudmenCleared',
+        4: 'den7MinotaurCleared',
+      },
+    );
+    bool clear(int bit) => (etc41 & LorePascal.bit(bit)) == 0;
+    final torch = context.etcValue(1);
+    final unlit =
+        torch == 0 &&
+        (context.sourceEtc.containsKey(1) ||
+            !context.flags.contains('torchActive'));
+    final light = [
+      if (unlit) ...const [
+        ScriptStep(kind: 'sourceEtc', sourceEtcIndex: 1, sourceEtcValue: 1),
+        ScriptStep(kind: 'torch', torchLit: true),
+      ],
+    ];
+    if (y == 48 && !afterMinotaur) {
+      if (!clear(4)) return null;
+      const seen = ScriptStep(kind: 'flag', key: 'etc41_bit4');
+      return start('den7-minotaur-y48', [
+        ...light,
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '미궁의 괴물', lines: ['미로속에서 소를 닮은 괴물이 나타났다']),
+        ),
+        const ScriptStep(
+          kind: 'battle',
+          battleTitle: '미궁의 괴물',
+          battleEnemyFirst: true,
+          monsters: [53],
+          battleRunAwaySteps: [seen],
+          battleResultUnchecked: true,
+          battleReloadResume: true,
+        ),
+        seen,
+      ]);
+    }
+    return start('den7-final-y13', [
+      ...light,
+      if (clear(2)) ...const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(title: '미궁의 수호룡', lines: []),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Dragon',
+          battleEnemyFirst: true,
+          monsters: [54, 54, 54],
+          battleRunAwaySteps: [back],
+        ),
+        ScriptStep(kind: 'flag', key: 'etc41_bit2'),
+      ],
+      if (clear(3)) ...const [
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Mud-Man',
+          battleEnemyFirst: true,
+          monsters: [31, 31, 31, 31, 31, 31, 31],
+          battleRunAwaySteps: [back],
+        ),
+        ScriptStep(kind: 'flag', key: 'etc41_bit3'),
+      ],
+      if (clear(1)) ...const [
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'Astral Mud',
+            lines: [
+              ' 나는 Necromacer 와 함께 다른 차원에서 내려',
+              '온 Astral Mud 이다. 여기는 그가 세운 최고의',
+              '동굴이자 너가 마지막으로 거칠 동굴이다.  나',
+              '를 만만하게 보지마라.  다른 차원의 능력들을',
+              '너가 맛볼 기회를 가진다는 것에 대해  고맙게',
+              '생각하기 바란다. 하하하 ...',
+            ],
+          ),
+        ),
+        // LORESPEC.PAS:1736-1756: only enemy 7's death decides the result.
+        ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Astral Mud',
+          battleEnemyFirst: true,
+          monsters: [31, 31, 31, 31, 31, 31, 57],
+          battleVictoryIfEnemyDead: 7,
+          battleRunAwaySteps: [back],
+          battleResultUnchecked: true,
+        ),
+        ScriptStep(kind: 'flag', key: 'etc41_bit1'),
+        leave,
+        ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: '봉인',
+            lineColors: {0: 15, 1: 15, 2: 15},
+            lines: [
+              ' 당신은 이 동굴에 보관되어 있는 봉인을 발견',
+              '했다.  그리고는 봉쇄 되었던 봉인을 풀어버렸',
+              '다.',
+            ],
+          ),
+        ),
+      ] else
+        leave,
+    ]);
+  }
+
+  /// `LORESPEC.PAS:1760-1815`, `case 21` (KEEP1 / SWAMP KEEP).
+  ///
+  /// `y = 46` is the exit boundary ([keep1ExitGuard] after `wantexit`).
+  /// `on(25,20)` refuses the lava gate unless both `odd(etc[40])` and
+  /// `odd(etc[41])`, pushing the party to y + 1. Every other special tile
+  /// draws `random(4) + 3` enemies 58 and, after victory or escape, writes 40
+  /// over tile 0 and 46 over any other tile. Neither fight checks etc[6]: after a
+  /// GameOver reload the escape path runs on the loaded game.
+  static ScriptRun? map21(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (y == 46) return null;
+    LoreScript procedure(String id, List<ScriptStep> steps) => LoreScript(
+      id: id,
+      trigger: 'step',
+      map: 21,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
+    if (x == 25 && y == 20) {
+      final seal1 = context.etcValue(
+        40,
+        bitAliases: const {1: 'evilSealRoomCleared'},
+      );
+      final seal2 = context.etcValue(
+        41,
+        bitAliases: const {1: 'den7MazeCleared'},
+      );
+      if (seal1.isOdd && seal2.isOdd) return null;
+      return scripts.startProcedure(
+        procedure('keep1-seal-gate-a', const [
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: '라바 게이트',
+              lines: [
+                ' 당신은 아직 라바 게이트를 열수가 없다',
+                '',
+                ' 아직 당신은 이 대륙의 동굴속에  존재하',
+                ' 는 2개의 봉인을 풀지 못했기 때문이다.',
+              ],
+            ),
+          ),
+          ScriptStep(kind: 'nudge', nudgeDy: 1),
+        ]),
+        context,
+      );
+    }
+    // LORESPEC.PAS:1806-1813: `j := map[x,y]` is read after BattleMode, with
+    // no result check, so victory, escape and a GameOver reload (on the loaded
+    // x, y) all rewrite it.
+    final count = scripts.roll(4) + 3;
+    const after = ScriptStep(
+      kind: 'setTileAtPlayer',
+      tileValue: 46,
+      tileIfZero: 40,
+    );
+    return scripts.startProcedure(
+      procedure('keep1-special-ambush', [
+        ScriptStep(
+          kind: 'battle',
+          battleEnemyFirst: true,
+          monsters: List<int>.filled(count, 58),
+          battleRunAwaySteps: const [after],
+          battleResultUnchecked: true,
+        ),
+        after,
+      ]),
+      context,
+    );
+  }
+
+  /// `LORESPEC.PAS:1763-1789`: after `wantexit` while etc[42] bit1 is clear.
+  /// Enemy 55 joins unless bit3, then 56 unless bit4, then five 35s. With
+  /// neither boss the source sets bit1 and exits without loading, leaving the
+  /// party on the exit cell. After the fight bit3/bit4 follow the deaths of
+  /// enemy slots 1/2 (not of a particular boss), bit1 needs both, and the
+  /// party leaves for map 4 after victory or escape.
+  static LoreScript? keep1ExitGuard(ScriptContext context, int x, int y) {
+    final etc42 = context.etcValue(42);
+    if ((etc42 & LorePascal.bit(1)) != 0) return null;
+    final bosses = [
+      if ((etc42 & LorePascal.bit(3)) == 0) 55,
+      if ((etc42 & LorePascal.bit(4)) == 0) 56,
+    ];
+    LoreScript guard(List<ScriptStep> steps) => LoreScript(
+      id: 'keep1-exit-guard',
+      trigger: 'portal',
+      map: 21,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
+    if (bosses.isEmpty) {
+      return guard([
+        const ScriptStep(kind: 'flag', key: 'etc42_bit1'),
+        ScriptStep(kind: 'teleport', tileX: x, tileY: y),
+        const ScriptStep(kind: 'block', block: true),
+      ]);
+    }
+    return guard([
+      ScriptStep(
+        kind: 'battle',
+        battleEnemyFirst: true,
+        monsters: [...bosses, ...List<int>.filled(5, 35)],
+        battleEnemyDefeatFlags: const {1: 'etc42_bit3', 2: 'etc42_bit4'},
+        battleRunAwayFlagsWhenDead: const [
+          (slots: [1, 2], flag: 'etc42_bit1'),
+        ],
+        battleVictoryFlags: const ['etc42_bit1'],
+        battleContinueOnRunAway: true,
+        battleResultUnchecked: true,
+      ),
+    ]);
+  }
+
+  /// `LORESPEC.PAS:1816-1879`, `case 22` (KEEP2).
+  ///
+  /// Raw `party.etc[43]` bits decide every fight; there are no clear flags.
+  /// `y = 46` is the exit boundary ([keep2ExitGuard] runs after `wantexit`),
+  /// `on(25,18)` is the Death Knight, `(y = 25, x in [24..26])` the guards and
+  /// every other special tile the Wraith ambush that turns the tile into 40.
+  /// The exit guard and the Wraith ambush have no etc[6] check, so after a
+  /// GameOver reload their escape path runs on the loaded game (the tile write
+  /// on the loaded x, y); the Death Knight and the guards stop on etc[6] = 255.
+  static ScriptRun? map22(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (y == 46) return null;
+    final etc43 = context.etcValue(
+      43,
+      bitAliases: const {1: 'keep2GuardsCleared', 2: 'keep2AmbushCleared'},
+    );
+    bool clear(int bit) => (etc43 & LorePascal.bit(bit)) != 0;
+    LoreScript procedure(String id, List<ScriptStep> steps) => LoreScript(
+      id: id,
+      trigger: 'step',
+      map: 22,
+      once: false,
+      require: const ScriptRequire(),
+      steps: steps,
+    );
+    if (x == 25 && y == 18) {
+      if (clear(2)) return null;
+      // LORESPEC.PAS:1842-1844: one random(5) picks the slot that becomes 63.
+      final monsters = List<int>.filled(5, 60);
+      monsters[scripts.roll(5)] = 63;
+      return scripts.startProcedure(
+        procedure('keep2-ambush-25-18', [
+          const ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: 'Death Knight',
+              lines: [
+                ' 나는 이 요새의 Wraith를 조종하는 죽음의 기',
+                '사 Death Knight이다. 나에게 도전하다니 가소',
+                '로운 것들. 으하하....',
+              ],
+            ),
+          ),
+          ScriptStep(
+            kind: 'battle',
+            battleTitle: 'Death Knight',
+            battleEnemyFirst: true,
+            monsters: monsters,
+          ),
+          const ScriptStep(kind: 'flag', key: 'etc43_bit2'),
+        ]),
+        context,
+      );
+    }
+    if (y == 25 && x >= 24 && x <= 26) {
+      if (clear(1)) return null;
+      return scripts.startProcedure(
+        procedure('keep2-guards-y25', const [
+          ScriptStep(
+            kind: 'battle',
+            battleTitle: '요새 수비대',
+            monsters: [61, 58, 56, 55, 60],
+          ),
+          ScriptStep(kind: 'flag', key: 'etc43_bit1'),
+        ]),
+        context,
+      );
+    }
+    if (clear(2)) return null;
+    // LORESPEC.PAS:1867-1875: no result check; map[x,y] becomes 40 after
+    // victory, escape or a GameOver reload (on the loaded x, y).
+    const floor = ScriptStep(kind: 'setTileAtPlayer', tileValue: 40);
+    return scripts.startProcedure(
+      procedure('keep2-ambush-zone-a', [
+        const ScriptStep(
+          kind: 'battle',
+          battleTitle: 'Wraith',
+          battleEnemyFirst: true,
+          monsters: [60, 60, 60, 60, 60],
+          battleRunAwaySteps: [floor],
+          battleResultUnchecked: true,
+        ),
+        floor,
+      ]),
+      context,
+    );
+  }
+
+  /// `LORESPEC.PAS:1818-1834`: after `wantexit` is accepted and while
+  /// etc[43] bit3 is clear, one `random(5) + 42` (42 read as 35) picks six
+  /// guards plus enemy 66. bit3 is set when enemy 7 is dead, whatever the
+  /// result, and the party leaves for map 5 after victory or escape.
+  static LoreScript? keep2ExitGuard(
+    ScriptContext context,
+    int Function(int upperBound) roll,
+  ) {
+    if ((context.etcValue(43) & LorePascal.bit(3)) != 0) return null;
+    var j = roll(5) + 42;
+    if (j == 42) j = 35;
+    return LoreScript(
+      id: 'keep2-exit-guard',
+      trigger: 'portal',
+      map: 22,
+      once: false,
+      require: const ScriptRequire(),
+      steps: [
+        const ScriptStep(
+          kind: 'scene',
+          scene: ScriptScene(
+            title: 'KEEP2 출구',
+            appendPartyNameSlot: 1,
+            appendPartyNameLine: 0,
+            partyNameBefore: true,
+            lines: [', 나의 힘을 보여주겠다.'],
+          ),
+        ),
+        ScriptStep(
+          kind: 'battle',
+          battleEnemyFirst: true,
+          monsters: [...List<int>.filled(6, j), 66],
+          battleEnemyDefeatFlags: const {7: 'etc43_bit3'},
+          battleContinueOnRunAway: true,
+          battleResultUnchecked: true,
+        ),
+      ],
+    );
+  }
+
+  /// `LORESPEC.PAS:1880-1979`, `case 23` (KEEP3 / DUNGEON OF EVIL).
+  ///
+  /// Source order: `if map[x,y] = 0 then exit` (1881), `Clear`, the `y = 46` exit
+  /// (the `wantexit` boundary is owned by `LoreWorldManager.findPortal`), the
+  /// `y = 26` impostor battle, then the `on(25,27)` lever. There is no random
+  /// call and no cleared flag: revisits stop because the source overwrites the
+  /// special tiles (`map[24..27,25..27] := 46`, `map[25,27] := 46`).
+  static ScriptRun? map23(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    // LOREMAIN calls specialevent for den/keep tiles 0 and 52; tile 0 exits.
+    final tile = context.tileAtPlayer;
+    if (tile == 0 || (tile != null && tile != 52)) return null;
+    if (y == 46) return null;
+    if (y == 26) {
+      return scripts.startProcedure(_keep3Impostor(), context);
+    }
+    if (x == 25 && y == 27) {
+      return scripts.startProcedure(_keep3Lever(), context);
+    }
+    return null;
+  }
+
+  /// `LORESPEC.PAS:1895-1966`. Both fights use `BattleMode(FALSE)` and the
+  /// battle result in etc[6]: 255 exits, any other non-zero value is an escape.
+  /// The mirror fight repeats on escape with the same enemy objects; the real
+  /// Necromancer fight moves the party to y + 1 on escape. Presentation
+  /// (DisplayEnemies, Clear, PressAnyKey) is adapted to native scenes.
+  static LoreScript _keep3Impostor() => LoreScript(
+    id: 'keep3-necromancer-y26',
+    trigger: 'step',
+    map: 23,
+    once: false,
+    require: const ScriptRequire(),
+    steps: [
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: 'Necromancer',
+          appendPartyNameSlot: 1,
+          appendPartyNameLine: 0,
+          appendPartyNameSuffix: '.',
+          lineColors: {0: 13, 1: 13, 2: 13, 3: 13},
+          lines: [
+            ' 잘도 여기까지 찾아왔구나 ',
+            ' 네가 찾던 그 Necromancer가 바로 나다. 드디',
+            '어 너의 실력을 보게 되겠구나. 하지만 분명히',
+            '나보다는 떨어지겠지만. 으하하하.',
+          ],
+        ),
+      ),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: '환상',
+          lineColors: {0: 13, 1: 13, 2: 13, 3: 13, 4: 15, 5: 15},
+          lines: [
+            ' 너희들은 곧 환상에 빠져들게 될 것이다.',
+            ' 나는 벌써 너희들의 약점을 파악 했지.  너희',
+            '일행들은 항상 자신을  너무 신뢰하고 믿고 있',
+            '더군. 그러나 그 착각은 곧 깨어질 것이다.',
+            ' 어둠의 신이여, 당신의 힘으로 이들을 환상에',
+            '빠져 들게 하소서. 인 쿠아스 젠 ~~',
+          ],
+        ),
+      ),
+      const ScriptStep(
+        kind: 'battle',
+        battleTitle: '환상의 도플갱어',
+        battleEnemyFirst: true,
+        monsters: [60, 60, 60, 60, 60, 60],
+        battleMirrorParty: true,
+        battleRetryOnRunAway: true,
+        battleRunAwaySteps: [
+          ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(title: '환상', lines: [' 하지만 당신은 환상에서 벗어나지 못했다.']),
+          ),
+        ],
+      ),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: 'Necromancer',
+          lines: [' 환상에서 벗어나다니 대단한 의지력이군.', ' 하지만 진짜 적은 바로 나다. 받아라 !!'],
+        ),
+      ),
+      const ScriptStep(
+        kind: 'battle',
+        battleTitle: 'Necromancer',
+        battleEnemyFirst: true,
+        monsters: [70],
+        battleOverrides: [
+          {'index': 1, 'name': 'Necromancer', 'eNumber': 1},
+        ],
+        battleRunAwaySteps: [ScriptStep(kind: 'nudge', nudgeDy: 1)],
+      ),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: 'Necromancer',
+          lines: [
+            ' 욱! 너의 힘은 대단하구나. 나는 너에게 졌다',
+            '고 인정하겠다.  흐흐, 그러나 사실 나는 너희',
+            '찾던 Necromancer님이 아니다.  만약 그분이라',
+            '이렇게 쉽게 당하지는 않았을게니까.  내 생명',
+            '이 얼마 안남았구나. Necromancer님 만세 !!',
+          ],
+        ),
+      ),
+      // The map writes precede the final PressAnyKey in the source.
+      const ScriptStep(kind: 'setTile', tileX: 29, tileY: 43, tileValue: 53),
+      const ScriptStep(
+        kind: 'setTileArea',
+        tileX: 24,
+        tileXMax: 27,
+        tileY: 25,
+        tileYMax: 27,
+        tileValue: 46,
+      ),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: '기둥 소멸',
+          lines: [' 그는 숨이 끊어졌고 주위의 기둥도 그와 함께', '사라져 버렸다.'],
+        ),
+      ),
+    ],
+  );
+
+  /// `LORESPEC.PAS:1967-1978`: the lever writes the map first, then prints
+  /// and waits. Only tile 0 cells of the 12..39 x 7..34 area become 39.
+  static LoreScript _keep3Lever() => LoreScript(
+    id: 'keep3-trap-25-27',
+    trigger: 'step',
+    map: 23,
+    once: false,
+    require: const ScriptRequire(),
+    steps: [
+      const ScriptStep(kind: 'setTile', tileX: 25, tileY: 27, tileValue: 46),
+      const ScriptStep(kind: 'setTile', tileX: 29, tileY: 43, tileValue: 44),
+      const ScriptStep(
+        kind: 'setTileArea',
+        tileX: 12,
+        tileXMax: 39,
+        tileY: 7,
+        tileYMax: 34,
+        tileValue: 39,
+        tileOnlyIf: 0,
+      ),
+      const ScriptStep(kind: 'setTile', tileX: 25, tileY: 12, tileValue: 54),
+      const ScriptStep(kind: 'setTile', tileX: 26, tileY: 12, tileValue: 54),
+      const ScriptStep(
+        kind: 'scene',
+        scene: ScriptScene(
+          title: '레버',
+          lines: [
+            ' 푯말에 쓰여 있는 대로 이 곳의 레버를 당겼 ',
+            '더니 굉음과 함께 감추어져 있었던 성이 지하 ',
+            '로부터 떠 올랐다.',
+          ],
+        ),
+      ),
+    ],
+  );
+
+  /// `LORESPEC.PAS:1980-1994`, map 24 (K_DEN1 / LAST SHELTER).
+  ///
+  /// The single exit at `y == 46` is handled via portal session.
+  /// No other internal special tiles exist on map 24.
+  static ScriptRun? map24(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    return null;
+  }
+
+  /// `LORESPEC.PAS:1995-2103`, map 25 (K_DEN2 / DUNGEON OF EVIL DEEP / CASTLE KEEP).
+  ///
+  /// The ordered guards evaluate:
+  /// 1. Southern exit at `y == 46` handled via portal session.
+  /// 2. Metal Guardian encounter at `y == 43`:
+  ///    - Torch ignition (`party.etc[1] := 1`), battle with metal enemy + 4 soldiers,
+  ///    - set corridor tile `(24..27, 43) := 41`, dialogue and class promotion (`class := 10`).
+  /// 3. Hidden passage at `(15, 34)`:
+  ///    - `keep25-corridor-15-34`.
+  /// 4. Hidden passage at `(36, 34)`:
+  ///    - `keep25-corridor-36-34`.
+  /// 5. Lever A at `(5, 34)`:
+  ///    - Sets `etc45_bit7`. If both bit7 & bit8 set -> opens portal doors `map[25..26, 27] := 54`.
+  /// 6. Lever B at `(46, 34)`:
+  ///    - Sets `etc45_bit8`. If both bit7 & bit8 set -> opens portal doors `map[25..26, 27] := 54`.
+  static ScriptRun? map25(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (context.tileAtPlayer != null &&
+        context.tileAtPlayer != 52 &&
+        context.tileAtPlayer != 0) {
+      return null;
+    }
+
+    // LORESPEC.PAS:2009-2065. No clear flag or random draw in this branch.
+    // Revisits stop because tiles 24..27 become ordinary floor after victory.
+    if (y == 43) {
+      final torch = context.etcValue(1);
+      final alreadyLit =
+          torch != 0 ||
+          (!context.sourceEtc.containsKey(1) &&
+              context.flags.contains('torchActive'));
+      return scripts.startProcedure(
+        LoreScript(
+          id: 'keep3-metal-guardian-y43',
+          trigger: 'step',
+          map: 25,
+          once: false,
+          require: const ScriptRequire(),
+          steps: [
+            if (!alreadyLit) ...const [
+              ScriptStep(
+                kind: 'sourceEtc',
+                sourceEtcIndex: 1,
+                sourceEtcValue: 1,
+              ),
+              ScriptStep(kind: 'torch', torchLit: true),
+            ],
+            const ScriptStep(kind: 'specialArrival', text: 'guardian'),
+            const ScriptStep(
+              kind: 'scene',
+              scene: ScriptScene(
+                title: '금속 수호자',
+                actors: [71],
+                lines: [
+                  ' 금속으로된 어떤 적이 나타났다.',
+                  ' 여기까지 잘도왔구나. 나의 임무는 너희 같은',
+                  '쓰레기들 때문에 Necromancer 님이 수고하시지',
+                  '않도록 미리 처단해 버리는 것이다.',
+                ],
+              ),
+            ),
+            const ScriptStep(
+              kind: 'battle',
+              battleTitle: '금속 수호자',
+              battleEnemyFirst: true,
+              monsters: [66, 66, 66, 66, 71],
+              battleRunAwaySteps: [ScriptStep(kind: 'nudge', nudgeDy: 1)],
+            ),
+            for (var i = 24; i <= 27; i++)
+              ScriptStep(kind: 'setTile', tileX: i, tileY: y, tileValue: 41),
+            const ScriptStep(
+              kind: 'scene',
+              scene: ScriptScene(
+                title: '금속 수호자 격파',
+                lines: [' 당신이 적을 물리치자 조금후에 이상하리만큼', '편안한 기운이 일행을 감쌌다.'],
+              ),
+            ),
+            const ScriptStep(
+              kind: 'scene',
+              scene: ScriptScene(
+                title: '안내',
+                actors: [68, 67],
+                appendPartyNameSlot: 1,
+                appendPartyNameLine: 0,
+                lines: [
+                  ' 매우 수고하시는군요. ',
+                  ' 당신이 Necromancer에게 가기전에 한 가지 일',
+                  '러 두고자 하오.',
+                  ' 이곳에는 비밀스런 문이 두군데 있소. 지금은',
+                  '보이지가 않지만 양쪽의 벽을 살피다 보면  숨',
+                  '겨진 문 안에 레버가 각각 하나씩 있소.  그걸',
+                  '모두 작동시키면 용암의 중앙에서 Necromancer',
+                  '의 방으로 통하는 입구가 보일 것이오. 여기까',
+                  '지만 내가 알려줄 수가 있는 부분이오. 마지막',
+                  '으로 당신의 건투를 빌겠소.',
+                ],
+              ),
+            ),
+            const ScriptStep(kind: 'partyClass', partyClassId: 10),
+          ],
+        ),
+        context,
+      );
+    }
+
+    // LORESPEC.PAS:2067-2079. Preserve the loop order and its final overwrites.
+    if ((x == 15 || x == 36) && y == 34) {
+      final left = x == 15;
+      final steps = <ScriptStep>[
+        ScriptStep(kind: 'setTile', tileX: x, tileY: 34, tileValue: 41),
+        for (var i = left ? 11 : 37; i <= (left ? 14 : 40); i++) ...[
+          ScriptStep(kind: 'setTile', tileX: i, tileY: 33, tileValue: 24),
+          ScriptStep(kind: 'setTile', tileX: i, tileY: 35, tileValue: 26),
+          ScriptStep(kind: 'setTile', tileX: i, tileY: 34, tileValue: 42),
+        ],
+        ScriptStep(
+          kind: 'setTile',
+          tileX: left ? 14 : 37,
+          tileY: 33,
+          tileValue: left ? 17 : 19,
+        ),
+        ScriptStep(
+          kind: 'setTile',
+          tileX: left ? 14 : 37,
+          tileY: 35,
+          tileValue: left ? 18 : 22,
+        ),
+      ];
+      return scripts.startProcedure(
+        LoreScript(
+          id: 'keep25-corridor-$x-34',
+          trigger: 'step',
+          map: 25,
+          once: false,
+          require: const ScriptRequire(),
+          steps: steps,
+        ),
+        context,
+      );
+    }
+
+    // LORESPEC.PAS:2081-2101: write our bit before testing BOTH lever bits.
+    // Raw etc[45], including a stored zero, takes precedence over old aliases.
+    if ((x == 5 || x == 46) && y == 34) {
+      final bit = x == 5 ? 7 : 8;
+      final after =
+          context.etcValue(
+            45,
+            bitAliases: const {7: 'keep3KeyA', 8: 'keep3KeyB'},
+          ) |
+          LorePascal.bit(bit);
+      final opened = (after & 0xc0) == 0xc0;
+      return scripts.startProcedure(
+        LoreScript(
+          id: 'keep3-key-${x == 5 ? 'a' : 'b'}-${opened ? 'second' : 'first'}',
+          trigger: 'step',
+          map: 25,
+          once: false,
+          require: const ScriptRequire(),
+          steps: [
+            ScriptStep(kind: 'flag', key: 'etc45_bit$bit'),
+            // Compatibility name for old UI/saves; not a second source state.
+            ScriptStep(kind: 'flag', key: x == 5 ? 'keep3KeyA' : 'keep3KeyB'),
+            if (opened) ...const [
+              ScriptStep(kind: 'setTile', tileX: 25, tileY: 27, tileValue: 54),
+              ScriptStep(kind: 'setTile', tileX: 26, tileY: 27, tileValue: 54),
+            ],
+            // The source writes flags/doors before its final PressAnyKey.
+            ScriptStep(
+              kind: 'scene',
+              scene: ScriptScene(
+                title: '',
+                lines: [
+                  ' 당신이 레버를 당기자  철컥하는 소리가 동굴',
+                  '에 울려 퍼졌다.',
+                  if (opened) ' 곧 이어 기계 작동하는 큰 소리가 들렸다.',
+                ],
+              ),
+            ),
+          ],
+        ),
+        context,
+      );
+    }
+
+    return null;
+  }
+
+  /// `LORESPEC.PAS:2104-2201`, map 26 (CHAMBER OF NECROMANCER / 결전의 방).
+  ///
+  /// Final showdown cutscene and battle sequence with Neo-Necromancer, ArchiMonk, and ArchiMage:
+  ///    - Triggered on empty floor (tile == 0).
+  ///    - `spec-26-L2104-seq`.
+  static ScriptRun? map26(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (context.tileAtPlayer != 0) return null;
+    // LORESPEC.PAS:2104-2201: no cleared flag and no random call.
+    return scripts.startProcedure(
+      LoreScript(
+        id: 'spec-26-L2104-seq',
+        trigger: 'step',
+        map: 26,
+        once: false,
+        require: const ScriptRequire(),
+        steps: [
+          const ScriptStep(kind: 'specialArrival', text: 'final'),
+          const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+          for (var i = 1; i <= 3; i++)
+            const ScriptStep(kind: 'nudge', nudgeDy: -1),
+          const ScriptStep(kind: 'sourceFace', sourceFace: 6),
+          for (var sourceX = x; sourceX < 26; sourceX++)
+            const ScriptStep(kind: 'nudge', nudgeDx: 1),
+          const ScriptStep(kind: 'sourceFace', sourceFace: 5),
+          const ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: "결전의 방",
+              actors: [73, 74, 75],
+              lines: [
+                " 당신들이 나를 없에겠다고 온자들인가?",
+                " 그럼 예의를 갖추고 소개를 하지.  당신의 오",
+                "른쪽의 사람은  ArchiMonk라고 하며 맨손을 사",
+                "용하는 무예의 일인자로 통하지.  그리고 당신",
+                "의 정면의 사람은 ArchiMage 라고 하는 마법사",
+                "중의 마법사이라네.  당신들은 우리 셋 보다도",
+                "숫자가 많군. 그렇다면 나도 그것에 대비를 해",
+                "야겠지.  내가 여기서 약간의 인원을 늘인다고",
+                "너무 섭섭하게 생각말게.  그렇다면 이제 서로",
+                "의 실력을 겨뤄볼 시간이 다 되었나보군. 당신",
+                "의 행운을 빌겠네.",
+              ],
+            ),
+          ),
+          const ScriptStep(
+            kind: 'battle',
+            battleTitle: 'Neo-Necromancer',
+            battleEnemyFirst: true,
+            monsters: [69, 70, 71, 72, 73, 74, 75],
+            battleRetryOnRunAway: true,
+            battleVictoryIfEnemyDead: 7,
+            battleRunAwaySteps: [
+              ScriptStep(
+                kind: 'scene',
+                scene: ScriptScene(
+                  title: "도주 불가",
+                  actors: [75],
+                  lines: [" 하지만 나에게 도전한 이상 도주는 허용할 수", "없다는 점이 안타깝군."],
+                ),
+              ),
+            ],
+          ),
+          const ScriptStep(
+            kind: 'scene',
+            scene: ScriptScene(
+              title: "최후의 대사",
+              actors: [75],
+              lines: [
+                " 욱!!! 역시 너희들의 능력으로 여기까지 뚫고",
+                "들어왔다는게 믿어지는구나. 대단한 힘이다.",
+                " 내가 졌다는걸 인정하마. 하지만 나는 완전히",
+                "너에게 진것은 아니야.  나에게는 탈출할 수단",
+                "이 있기 때문이지. 안심해라. 그렇지만 다시는",
+                "나와 만날 인연은 없으니까.  블랙홀이 생기기",
+                "시작하는구나.  다음 공간에서 또다시 힘을 길",
+                "러야 겠군. 내가 이 블랙홀로 들어간다면 다시",
+                "이 공간으로 올 확률이 거의 제로이지. 흠, 멋",
+                "진 나의 도전자여 안녕.  나는 이런 공간의 패",
+                "러독스를 운명적으로 반복하는 생명체로  태어",
+                "난 내가 참으로 비참하지. 무한히 많은 3 차원",
+                "의 공간중에서 내가 여기로 온것도  이 공간의",
+                "생명이 끝날때까지도 한번 있을까 말까한 희귀",
+                "한 일이었다고 기억해다오.  이제 블랙홀이 완",
+                "전히 생겼군. 자! 나의 멋진 도전자 친구여 영",
+                "원히 안녕 ! !",
+              ],
+            ),
+          ),
+          const ScriptStep(kind: 'endDemo'),
+        ],
+      ),
+      context,
+    );
+  }
+
+  /// `LORESPEC.PAS:2202-2212`, map 27 (PYRAMID1 / ANOTHER LORE).
+  ///
+  /// The whole arm is `wantexit`: acceptance loads map 1 at (20,8) and refusal
+  /// moves `y < 25 ? y + 1 : y - 1`. Both belong to the exit boundary in
+  /// `LoreWorldManager.findPortal`/`sourceExitRejectY`; no special event runs.
+  static ScriptRun? map27(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) => null;
+
+  /// `LORESPEC.PAS:190-196`: the chest is a special tile until its tile is
+  /// replaced with floor. Keep the reward and tile effect in JSON data.
+  static ScriptRun? map6Chest(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if (x != 62 || y != 82) return null;
+    return map6(x, y, context, scripts);
+  }
+
+  static const _map4DraconianIntro = <String>[
+    ' 여기는 인간과 드래곤의 중간 종족이며  혼란',
+    '스런 세상을 피해 은둔하고있는 Draconian이란',
+    '자가 살고있는 피라밋이었다.',
+  ];
+  static const _map4DraconianLecture = <List<String>>[
+    [
+      ' 나는 Draconian이라고 하오. 이런곳까지 사람',
+      '이 찾아오리라고는 생각하지 못했는데 참 의외',
+      '로군요. 나는 숨어 지내는 오랜 세월동안에 여',
+      '러가지 학문을 연구하고 있었소.  특히 천문학',
+      '에 대해서는 특별히 전염하여 다루었소.  내가',
+      '그동안 알아낸 지식들은 다음과 같은 것이오.',
+      ' 지금 우리가 살고있는 지구는 태양계에서  세',
+      '번째로 위치한 행성인데 이상하게도 위성인 달',
+      '이 지구보다도 더 오래되었다는 사실이 연구되',
+      '었소. 또한 이 지구가 세차운동에 의해 2 등성',
+      '이었던 북극성이 다른 별로 바뀐다는걸 알았소',
+      ' 물리학에서 알아낸것은, 중수반응에서 매질의',
+      '차이로 빛이 속도가 느려진 틈을 이용해 빛 보',
+      '다 빠른 입자가 생겨났소. 하지만 절대적인 빛',
+      '의 속도에는 미치지 못했지만 말이오.  이것을',
+      '잘만 이용하면 미래로의 타임머신이  가능하다',
+      '는 걸 입증할 수가 있소.',
+      ' 사실 이런것은 당신에게는 별 의미가 없는 것',
+      '일지도 모르오. 하지만 마지막으로 알아낸것은',
+      '바로 당신이 응징하고자 하는  Necromancer 의',
+      '출처에 관한 것이오. 당신은 시그너스 X1과 같',
+      '은 블랙홀에 대해서 알고있을 것이오. 이런 물',
+      '리학적인 파라독스에 의해 그는 생겨났던것이오.',
+    ],
+    [
+      ' 지금 우리가 있는 3차원 위에 또 다른 차원이',
+      '있다고 생각하오?  생각은 하더라도 눈으로 확',
+      '인은 못해봤을것이오. 우리는 2차원을 인식 할',
+      '수가 있소.  하지만 실제로 2차원에  살고있는',
+      '생물은 자신의 차원은 인식해도 우리가 살고있',
+      '는 3차원은 인식할 수가 없는 것이오. 그의 차',
+      '원에는 우리의 차원이  존재하지 않기  때문에',
+      '개념을 잡을수가 없는 것이오.  마찬가지로 우',
+      '리 또한 지금의 차원보다 한 차원 높은 4 차원',
+      '을 개념을 잡기가 어려운 것이오.',
+      ' 어떤이는 4차원은 시간의 축이 보태어 진다고',
+      '하는 이론을 세우더군요.  하지만 나의 이론은',
+      '시간은 모든 차원의 기준이며 4차원에 국한 되',
+      '지는 않는다는 생각이오. 3차원에서는 동 시간',
+      '대에 무한한 2차원을 포함 하듯이 4차원에서는',
+      '동 시간대에  무한한 3차원을 포함하고 있다는',
+      '이론이 성립되오. 말이 조금은 빗나갔지만  이',
+      '이론으로 Necromancer의 출처를 해명해 보겠소',
+      ' 방금 말했듯이 3차원은 이 공간만이 존재하는',
+      '것은 아니오. 동 시대를 살아가는 다른 공간도',
+      '인정해야 한다는 말이오.  그 공간들을 이어주',
+      '는 것이 바로 블랙 홀이란 것이지요.  그는 원',
+      '래 그가 있던 공간에서 블랙 홀을 통해서 다른',
+      '공간으로 가려고 시도를 했고 웜 홀을 통해 시',
+      '공간을 가로질러 오래전 우리의 공간에 화이트',
+      '홀이 생기는 틈을 이용하여 내려왔던 것이오.',
+      ' 하지만 3차원에 사는 나로서는 그가 전에  있',
+      '던 공간에서 왜 이쪽으로 왔는지  알수가 없었',
+      '지요. 그래서 그와 같이 이 공간으로 들어왔던',
+      '심복들을 통해 그 사정을 알게 되었소.',
+      ' Necromacer는 저쪽의 공간에서도 지금과 마찬',
+      '가지로 차원을 통해 그 공간에 도달했소. 역시',
+      '거기서도 악을 뿌리며 거기의 생명체들을 위협',
+      '했소. 하지만 어떤 선택되어진 6인의 용사들에',
+      '의해 쫒겨나서 여기로 온것이오.  지금의 당신',
+      '들과 비슷하다고 생각되지 않소? 그렇소. 다른',
+      '공간의 당신들에게 쫒겨난후 다시 여기서 당신',
+      '들을 또 만나게 된것이오. Necromancer와 당신',
+      '들의 운명은 언제까지나 쫒고 쫒기며 대립하여',
+      '야하는 운명으로 탄생되었던 것이오. 이런  이',
+      '유에서 당신은 그를 반드시 무찌를 수가  있다',
+      '는 근거가 되는 것이오.',
+      ' 당신들의 건투를 빌어주겠소.',
+    ],
+  ];
+  static const _map4DraconianOffer = <String>[
+    ' 나의 운명을 생각해 보니  나 역시  당신들을',
+    '필연적으로 만나 Necromancer를 물리쳐야 한다',
+    '는걸 깨닭았소. 당신들 일행의 제일 뒤에서 도',
+    '와주고 싶소. 어떻소.',
+  ];
+  static const _map4DraconianDecline = <String>[
+    ' 다시 생각해보니 나는 당신들과 같이 싸울 운',
+    '명이 아닌것 같소.',
+  ];
+  static const _map4AncientEvilLater = <String>[' 이제는 더 이상 할말이 없소.'];
+  static const _map4AncientEvilPages = <List<String>>[
+    [
+      ' 나는 Ancient Evil 이란 존재이오. 이제 나는',
+      '육신은 없는 영이오. 당신은 Lord Ahn 을 만나',
+      '보았겠군요. 그리고 우리들의 운명적인 만남도',
+      '역시 예시 받았겠군요.',
+      ' 사실이야 어떻든 당신에게 이 대륙에서의  할',
+      '일을 말해 주겠소.',
+    ],
+    [
+      ' 여기는 EVIL GOD 라는 동굴이오. 여기의 보스',
+      '는 Crab God인데 적 자체는 별거 아니지만  떼',
+      '를 지어서 다니기 때문에 약간의 애를 먹을 것',
+      '이오. 7갈래의 길중에서 한곳에 봉인이 숨겨져',
+      '있을 것이오.',
+    ],
+    [
+      ' 여기는 Muddy 라는 동굴이오.  여기의 보스는',
+      'Astral Mud라는 자인데  그리 실력이 있다고는',
+      '볼수가 없소. 다만 동굴 자체가 어려운 미로라',
+      '는 것과 시야가 좁아지는 불편등은 감수해야만',
+      '할 것이오. 그리고 마지막에 3마리의 Dragon과',
+      '7마리의 Mud-Man을 거쳐야만 그가 나타나기 때',
+      '문에 약간 까다로울 것이오.',
+    ],
+    [' 여기는 이 대륙의 외진곳이오. 여기서는 어떤', '만남이 기다리고 있을 것이오.'],
+  ];
+
+  /// `LORESPEC.PAS:37-189`, `case 4` (SWAMP).
+  ///
+  /// (40,18) moves the party to (46,41). (26,16) is the Draconian pyramid:
+  /// after the introduction, raw etc[16] bit2 means nobody is there; with
+  /// raw etc[5] = 0 he lectures, otherwise he offers to join (Escape exits,
+  /// joining sets bit2, declining prints and waits). (20,39) is Ancient Evil:
+  /// once etc[16] bit1 is set the party is sent to (46,41); the first meeting
+  /// shows the camera tour and leaves the party at (16,15), then sets bit1.
+  static ScriptRun? map4(
+    int x,
+    int y,
+    ScriptContext context,
+    LoreScriptEngine scripts,
+  ) {
+    if ((context.tileAtPlayer ?? 0) != 0) return null;
+    ScriptRun start(String id, List<ScriptStep> steps) =>
+        scripts.startProcedure(
+          LoreScript(
+            id: id,
+            trigger: 'step',
+            map: 4,
+            once: false,
+            require: const ScriptRequire(),
+            steps: steps,
+          ),
+          context,
+        );
+    ScriptStep scene(String title, List<String> lines) => ScriptStep(
+      kind: 'scene',
+      scene: ScriptScene(title: title, lines: lines),
+    );
+    final etc16 = context.etcValue(
+      16,
+      bitAliases: const {1: 'ancientEvilMet', 2: 'draconianMet'},
+    );
+    if (x == 40 && y == 18) {
+      return start('spec-4-L37', const [
+        ScriptStep(kind: 'say', text: ' 일행은 공간 이동이 되었다'),
+        ScriptStep(kind: 'teleport', tileX: 46, tileY: 41),
+      ]);
+    }
+    if (x == 26 && y == 16) {
+      final intro = scene('Draconian', _map4DraconianIntro);
+      if ((etc16 & LorePascal.bit(2)) != 0) {
+        return start('spec-4-L37-3', [
+          intro,
+          const ScriptStep(kind: 'say', text: ' 그러나, 아무도 살고 있지 않았다.'),
+        ]);
+      }
+      final mindRead = context.sourceEtc.containsKey(5)
+          ? context.etcValue(5) != 0
+          : context.flags.contains('etc5');
+      if (!mindRead) {
+        return start('spec-4-L37-1', [
+          intro,
+          for (final page in _map4DraconianLecture) scene('Draconian', page),
+        ]);
+      }
+      return start('spec-4-L37-2', [
+        intro,
+        for (final line in _map4DraconianOffer)
+          ScriptStep(kind: 'say', text: line),
+        ScriptStep(
+          kind: 'choice',
+          prompt: '',
+          options: [
+            const ScriptOption('저도 바라던 차입니다', [
+              ScriptStep(kind: 'join', key: 'draconian', slot: 4),
+              ScriptStep(kind: 'displayCondition'),
+              ScriptStep(kind: 'flag', key: 'draconianMet'),
+              ScriptStep(kind: 'flag', key: 'etc16_bit2'),
+            ]),
+            ScriptOption('별로 좋지는 않군요', [
+              scene('Draconian', _map4DraconianDecline),
+            ]),
+          ],
+        ),
+      ]);
+    }
+    if (x == 20 && y == 39) {
+      if ((etc16 & LorePascal.bit(1)) != 0) {
+        return start('ancient-evil-later', [
+          const ScriptStep(kind: 'teleport', tileX: 46, tileY: 41),
+          scene('Ancient Evil', _map4AncientEvilLater),
+        ]);
+      }
+      final pages = _map4AncientEvilPages;
+      return start('ancient-evil-first', [
+        scene('Ancient Evil', pages[0]),
+        const ScriptStep(kind: 'peek', peekX: 48, peekY: 57),
+        scene('Ancient Evil', pages[1]),
+        const ScriptStep(kind: 'peek', peekX: 82, peekY: 16),
+        scene('Ancient Evil', pages[2]),
+        const ScriptStep(kind: 'teleport', tileX: 16, tileY: 15),
+        scene('Ancient Evil', pages[3]),
+        const ScriptStep(kind: 'flag', key: 'ancientEvilMet'),
+        const ScriptStep(kind: 'flag', key: 'etc16_bit1'),
+      ]);
+    }
+    return null;
+  }
+
+  /// `LORESPEC.PAS:23-34`, map 1: every special tile gives food once, then
+  /// moves the party back from the trigger tile on both first and later visits.
+  static ScriptRun? map1Food(ScriptContext context, LoreScriptEngine scripts) {
+    if (context.tileAtPlayer != 0) return null;
+    final visited = context.etcValue(32) & LorePascal.bit(8) != 0;
+    final procedure = LoreScript(
+      id: 'lorespec-map1-food',
+      trigger: 'step',
+      map: 1,
+      once: false,
+      require: const ScriptRequire(),
+      steps: [
+        ScriptStep(
+          kind: 'say',
+          text: visited ? '우리들은 아무것도 발견할수 없었다.' : '일행들은 100 인분의 식량을 발견했다.',
+        ),
+        if (!visited) ...const [
+          ScriptStep(kind: 'food', amount: 100),
+          ScriptStep(kind: 'flag', key: 'etc32_bit8'),
+        ],
+        const ScriptStep(kind: 'stepBack'),
+      ],
+    );
+    return scripts.startProcedure(procedure, context);
+  }
+}

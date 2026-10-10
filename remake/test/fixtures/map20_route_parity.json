@@ -1,0 +1,18 @@
+{
+  "map": 20,
+  "source": "LORESPEC.PAS",
+  "rules": [
+    {"kind": "tile_gate", "line": 1487, "args": [88, 80, 82, 17, 4]},
+    {"kind": "tile_gate", "line": 1497, "args": [71, 63, 82, 17, 4]}
+  ],
+  "cases": [
+    {"start": [8, 71], "sourceEnd": [8, 63], "safeEnd": [8, 63], "writes": [], "sourceMap": 20, "tileAtPlayer": 0},
+    {"start": [8, 71], "sourceEnd": [82, 17], "safeEnd": [82, 17], "writes": [], "sourceMap": 4, "tileAtPlayer": 52},
+    {"start": [43, 71], "sourceEnd": [43, 63], "safeEnd": [43, 63], "writes": [], "sourceMap": 20, "tileAtPlayer": 0},
+    {"start": [43, 71], "sourceEnd": [82, 17], "safeEnd": [82, 17], "writes": [], "sourceMap": 4, "tileAtPlayer": 52},
+    {"start": [8, 88], "sourceEnd": [8, 80], "safeEnd": [8, 80], "writes": [], "sourceMap": 20, "tileAtPlayer": 0},
+    {"start": [8, 88], "sourceEnd": [82, 17], "safeEnd": [82, 17], "writes": [], "sourceMap": 4, "tileAtPlayer": 52},
+    {"start": [43, 88], "sourceEnd": [43, 80], "safeEnd": [43, 80], "writes": [], "sourceMap": 20, "tileAtPlayer": 0},
+    {"start": [43, 88], "sourceEnd": [82, 17], "safeEnd": [82, 17], "writes": [], "sourceMap": 4, "tileAtPlayer": 52}
+  ]
+}

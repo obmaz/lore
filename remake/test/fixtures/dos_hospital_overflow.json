@@ -1,0 +1,33 @@
+{
+  "source": "DOSBox 0.74-3 original LORE.EXE /g, synthetic save, Hospital LORESUB:1612-1633",
+  "input": {
+    "map": 6,
+    "x": 87,
+    "y": 13,
+    "gold": 10000,
+    "dead": 400,
+    "hp": 100,
+    "battleLevel": 1
+  },
+  "actions": [
+    "Down (hospital at 87,14)",
+    "any key",
+    "ChooseWhom: Hero",
+    "treatment 4: 부활",
+    "any key",
+    "Esc",
+    "G",
+    "option 5: save",
+    "slot 2: main data"
+  ],
+  "observed": {
+    "gold": 35136,
+    "dead": 0,
+    "unconscious": 0,
+    "hp": 100
+  },
+  "exeSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "savedPartySha256": "60e50a8c9fa6beacbdf04438bf4dd837878ea884dfce3341298c019c85ca72cb",
+  "savedPlayerSha256": "8b4a1d9886c3651becc24aab544e2e951b9f7a81c688f04fa90bdccc596d3800",
+  "limit": "Verifies this integer assignment boundary, not every intermediate expression or EXE option."
+}

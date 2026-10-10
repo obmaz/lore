@@ -1,0 +1,61 @@
+{
+  "scope": "Original Main SoundOn byte branch, synthetic c/SoundOn inputs; not full DOS audio/campaign replay.",
+  "executableSha256": "fd9367cfe35b3bb478a7fd4c03d309286f4c4fff42be833d729d38a5966dc612",
+  "fragment": {
+    "start": 33184,
+    "end": 33204,
+    "sha256": "04ebff01dc958b03e0b6379ae82f7f3370f8e5dc4f24604fe4964f873758f466"
+  },
+  "cases": [
+    {
+      "key": 8,
+      "before": 0,
+      "after": 1
+    },
+    {
+      "key": 8,
+      "before": 1,
+      "after": 0
+    },
+    {
+      "key": 13,
+      "before": 0,
+      "after": 0
+    },
+    {
+      "key": 13,
+      "before": 1,
+      "after": 1
+    },
+    {
+      "key": 27,
+      "before": 0,
+      "after": 0
+    },
+    {
+      "key": 27,
+      "before": 1,
+      "after": 1
+    },
+    {
+      "key": 32,
+      "before": 0,
+      "after": 0
+    },
+    {
+      "key": 32,
+      "before": 1,
+      "after": 1
+    },
+    {
+      "key": 72,
+      "before": 0,
+      "after": 0
+    },
+    {
+      "key": 72,
+      "before": 1,
+      "after": 1
+    }
+  ]
+}

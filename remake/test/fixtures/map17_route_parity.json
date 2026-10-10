@@ -1,0 +1,28 @@
+{
+  "map": 17,
+  "source": "LORESPEC.PAS",
+  "rules": [
+    {"kind": "set_y", "line": 1022, "args": [80, 6]},
+    {"kind": "row_tiles", "line": 1023, "args": [44, 67, 69, 44, 44, 38, 52]},
+    {"kind": "column_and_nudge", "line": 1106, "args": [72, 19, 21, 72, 44, 7]},
+    {"kind": "row_and_teleport", "line": 1110, "args": [38, 67, 69, 38, 44, 44, 52, 56, 93]}
+  ],
+  "cases": [
+    {"start": [72, 19], "sourceEnd": [72, 12], "safeEnd": [72, 12], "writes": [[72, 72, 19, 21, 44]]},
+    {"start": [72, 20], "sourceEnd": [72, 13], "safeEnd": [72, 13], "writes": [[72, 72, 19, 21, 44]]},
+    {"start": [72, 21], "sourceEnd": [72, 14], "safeEnd": [72, 14], "writes": [[72, 72, 19, 21, 44]]},
+    {"start": [67, 38], "sourceEnd": [56, 93], "safeEnd": [56, 93], "writes": [[67, 69, 38, 38, 44], [67, 69, 44, 44, 52]], "tileAtPlayer": 52},
+    {"start": [68, 38], "sourceEnd": [56, 93], "safeEnd": [56, 93], "writes": [[67, 69, 38, 38, 44], [67, 69, 44, 44, 52]], "tileAtPlayer": 52},
+    {"start": [69, 38], "sourceEnd": [56, 93], "safeEnd": [56, 93], "writes": [[67, 69, 38, 38, 44], [67, 69, 44, 44, 52]], "tileAtPlayer": 52},
+    {"start": [67, 44], "sourceEnd": [67, 44], "safeEnd": [67, 44], "writes": [[67, 69, 44, 44, 44], [67, 69, 38, 38, 52]]},
+    {"start": [68, 44], "sourceEnd": [68, 44], "safeEnd": [68, 44], "writes": [[67, 69, 44, 44, 44], [67, 69, 38, 38, 52]]},
+    {"start": [69, 44], "sourceEnd": [69, 44], "safeEnd": [69, 44], "writes": [[67, 69, 44, 44, 44], [67, 69, 38, 38, 52]]},
+    {"start": [8, 80], "sourceEnd": [8, 6], "safeEnd": [8, 6], "writes": []},
+    {"start": [9, 80], "sourceEnd": [9, 6], "safeEnd": [9, 6], "writes": []},
+    {"start": [10, 80], "sourceEnd": [10, 6], "safeEnd": [10, 6], "writes": []},
+    {"start": [79, 80], "sourceEnd": [79, 6], "safeEnd": [79, 6], "writes": []},
+    {"start": [80, 80], "sourceEnd": [80, 6], "safeEnd": [80, 6], "writes": []},
+    {"start": [82, 80], "sourceEnd": [82, 6], "safeEnd": [82, 6], "writes": []},
+    {"start": [83, 80], "sourceEnd": [83, 6], "safeEnd": [83, 6], "writes": []}
+  ]
+}

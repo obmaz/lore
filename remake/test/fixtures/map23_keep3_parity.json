@@ -1,0 +1,254 @@
+{
+  "source": "LORESPEC.PAS",
+  "scope": "map23 y26 impostor and (25,27) lever; presentation adapted; y46 exit recorded",
+  "tileGuard": 0,
+  "exit": {
+    "targetMap": 5,
+    "targetX": 34,
+    "targetY": 15,
+    "rejectDy": -1
+  },
+  "impostorMonster": 70,
+  "impostorName": "Necromancer",
+  "impostorENumber": 1,
+  "mirrorCount": 6,
+  "mirrorEmptySlotMonster": 60,
+  "mirrorENumber": 1,
+  "mirrorEnemyFirst": true,
+  "duelEnemyFirst": true,
+  "greetingSlot": 1,
+  "greetingSuffix": ".",
+  "introLines": [
+    " 잘도 여기까지 찾아왔구나 ",
+    " 네가 찾던 그 Necromancer가 바로 나다. 드디",
+    "어 너의 실력을 보게 되겠구나. 하지만 분명히",
+    "나보다는 떨어지겠지만. 으하하하."
+  ],
+  "illusionLines": [
+    " 너희들은 곧 환상에 빠져들게 될 것이다.",
+    " 나는 벌써 너희들의 약점을 파악 했지.  너희",
+    "일행들은 항상 자신을  너무 신뢰하고 믿고 있",
+    "더군. 그러나 그 착각은 곧 깨어질 것이다.",
+    " 어둠의 신이여, 당신의 힘으로 이들을 환상에",
+    "빠져 들게 하소서. 인 쿠아스 젠 ~~"
+  ],
+  "retryLines": [
+    " 하지만 당신은 환상에서 벗어나지 못했다."
+  ],
+  "duelLines": [
+    " 환상에서 벗어나다니 대단한 의지력이군.",
+    " 하지만 진짜 적은 바로 나다. 받아라 !!"
+  ],
+  "victoryLines": [
+    " 욱! 너의 힘은 대단하구나. 나는 너에게 졌다",
+    "고 인정하겠다.  흐흐, 그러나 사실 나는 너희",
+    "찾던 Necromancer님이 아니다.  만약 그분이라",
+    "이렇게 쉽게 당하지는 않았을게니까.  내 생명",
+    "이 얼마 안남았구나. Necromancer님 만세 !!"
+  ],
+  "endLines": [
+    " 그는 숨이 끊어졌고 주위의 기둥도 그와 함께",
+    "사라져 버렸다."
+  ],
+  "escapeDy": 1,
+  "victoryWrites": {
+    "tile": [
+      29,
+      43,
+      53
+    ],
+    "area": {
+      "x": [
+        24,
+        27
+      ],
+      "y": [
+        25,
+        27
+      ],
+      "value": 46
+    }
+  },
+  "lever": {
+    "x": 25,
+    "y": 27,
+    "tiles": [
+      [
+        25,
+        27,
+        46
+      ],
+      [
+        29,
+        43,
+        44
+      ]
+    ],
+    "area": {
+      "x": [
+        12,
+        39
+      ],
+      "y": [
+        7,
+        34
+      ],
+      "onlyIf": 0,
+      "value": 39
+    },
+    "row": {
+      "x": [
+        25,
+        26
+      ],
+      "y": 12,
+      "value": 54
+    },
+    "lines": [
+      " 푯말에 쓰여 있는 대로 이 곳의 레버를 당겼 ",
+      "더니 굉음과 함께 감추어져 있었던 성이 지하 ",
+      "로부터 떠 올랐다."
+    ]
+  },
+  "clearedFlags": 0,
+  "randomCalls": 0,
+  "sourceSha256": "1ef3833f32e16c39fca0004ea954090bf2f47843cf99f5b8d6e0aadb30945522",
+  "cases": [
+    {
+      "results": [
+        255
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:255"
+      ]
+    },
+    {
+      "results": [
+        1,
+        255
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:1",
+        "scene:retry",
+        "battle:mirror:255"
+      ]
+    },
+    {
+      "results": [
+        1,
+        254,
+        255
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:1",
+        "scene:retry",
+        "battle:mirror:254",
+        "scene:retry",
+        "battle:mirror:255"
+      ]
+    },
+    {
+      "results": [
+        0,
+        255
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:0",
+        "scene:duel",
+        "battle:duel:255"
+      ]
+    },
+    {
+      "results": [
+        0,
+        1
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:0",
+        "scene:duel",
+        "battle:duel:1",
+        "nudge:0,1"
+      ]
+    },
+    {
+      "results": [
+        0,
+        254
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:0",
+        "scene:duel",
+        "battle:duel:254",
+        "nudge:0,1"
+      ]
+    },
+    {
+      "results": [
+        1,
+        0,
+        255
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:1",
+        "scene:retry",
+        "battle:mirror:0",
+        "scene:duel",
+        "battle:duel:255"
+      ]
+    },
+    {
+      "results": [
+        1,
+        0,
+        1
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:1",
+        "scene:retry",
+        "battle:mirror:0",
+        "scene:duel",
+        "battle:duel:1",
+        "nudge:0,1"
+      ]
+    },
+    {
+      "results": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "events": [
+        "scene:intro",
+        "scene:illusion",
+        "battle:mirror:1",
+        "scene:retry",
+        "battle:mirror:1",
+        "scene:retry",
+        "battle:mirror:0",
+        "scene:duel",
+        "battle:duel:0",
+        "scene:victory",
+        "write:tile:29,43=53",
+        "write:area:24-27,25-27=46",
+        "scene:end"
+      ]
+    }
+  ]
+}
