@@ -29,6 +29,8 @@
 ## 수정과 재생성
 
 `analysis.json`을 편집한 뒤 `python3 tools/build_reference.py`를 실행한다.
+인물 간 관계와 스포일러 공개 정책은
+[relationships.analysis.json](../characters/relationships.analysis.json)에서 편집한다.
 출력 4개 파일의 기준 해시는 `generated_manifest.json`에 있다. 출력 파일을 직접
 편집했으면 도구는 덮어쓰기를 거부한다. 먼저 그 수정을 분석 입력의 완전한 claim으로
 옮기고, 편집 전 출력 버전을 복원한 뒤 재생성한다. 자동 강제 덮어쓰기 옵션은 없다.
@@ -43,6 +45,7 @@
 
 참조 사전은 작가의 정보이지 등장인물의 현재 지식이나 소지품 목록이 아니다.
 경로 문맥은 해당 장면 등장인물의 관련 항목만 `writing_references`에 전달한다.
+인물 카드의 공개 조건을 통과한 참조만 전달하며, 다른 인물과의 미공개 연결은 제외한다.
 영입 장비를 항상 가지고 있거나 설명된 마법을 모두 습득했다고 서술하지 않는다.
 
 적 템플릿의 `level`, `special`, `cast_level`은 전투 수치이지 나이·성격·마법 목록의

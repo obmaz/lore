@@ -19,8 +19,9 @@ novel/
 
 - [materials/quests.json](materials/quests.json): 18개 집필 단위와 공통 부록의 목록·연결.
 - [materials/quests/lore_menace.json](materials/quests/lore_menace.json): 첫 의뢰의 실제 원문·조건.
-- [characters/registry.json](characters/registry.json): 동료·주요 악당·보스를 포함한 인물 카드 48개.
+- [characters/registry.json](characters/registry.json): 인물 카드 49개와 관계 48개 링크의 작가 전용 마스터.
 - [characters/README.md](characters/README.md): 인물 이름·성향·관계를 작성하는 방법.
+- [characters/relationships.analysis.json](characters/relationships.analysis.json): 관계 원문 근거·공개 시점·허용 복선의 편집 입력.
 - [reference/README.md](reference/README.md): 장비 20종·마법 45종·적 템플릿 75종과 창작 표시 규칙.
 - [AGENTS.md](AGENTS.md): 원작에 없는 설정의 추가 메타데이터를 강제하는 작업 지침.
 - [authoring/README.md](authoring/README.md): 선택·본문·조건·원문 대응 규칙.
@@ -49,9 +50,11 @@ python3 tools/story_continuity.py --route enter_courtyard visit_prison accept_jo
 PYTHONPATH=tools python3 -m unittest discover -s tests
 ```
 
-경로 자료에는 그 장면에 실제 등장하는 인물 카드와 관련 장비·마법·적 참조도 포함한다. Joe를 영입하지 않은
+경로 자료에는 그 장면에 실제 등장하는 **공개 필터된** 인물 카드와 관련 장비·마법·적 참조도 포함한다. Joe를 영입하지 않은
 성주 접견에서는 Joe 카드가 등장 인물로 전달되지 않는다. 인물의 `writing` 제안은
 승인 상태를 유지하여 원작의 확정 설정과 섞이지 않도록 한다.
+원본 인물 JSON을 집필 프롬프트에 통째로 넣지 않는다. 관계/정체의 공개 전에는
+진상을 숨기고 허용된 복선만 전달한다. 공개 사건과 지식 습득, 현재 영입 상태도 구분한다.
 
 ## 원문 자료와 원고의 수정
 

@@ -738,6 +738,20 @@
       "source_role": "팬저 바이퍼와 함께 등장하는 네 호위 개체. 기본 템플릿을 보존하며 기계의 상세 구조는 미상이다."
     },
     {
+      "id": "hunter_spouse",
+      "name": null,
+      "display_name": "로어 헌터의 배우자라고 말하는 주민",
+      "kind": "npc",
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          394,
+          396
+        ]
+      ],
+      "source_role": "LASTDITCH의 주민은 자신의 남편이 Lore Hunter이며 LORE 특공대 지휘관이라고 말한다. 고유 이름·나이·성별은 이 대사에서 확정되지 않았다."
+    },
+    {
       "id": "skeleton",
       "name": "Skeleton",
       "kind": "creature",

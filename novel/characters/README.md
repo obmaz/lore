@@ -1,7 +1,9 @@
 # 인물 참조 JSON
 
 [registry.json](registry.json)에 주인공·주요 인물·선택 동료·시작 동료 후보·악당·보스
-48개의 카드를 넣었다. 대사가 없는 적의 세부 성격과 원문에 없는 나이·외모는 미상이다.
+49개의 카드를 넣었다. 관계 35건을 분석했고, 역방향을 포함해 카드에는 48개의 관계
+링크가 있다. 로어 헌터의 배우자라고 말하는 익명 주민도 별도 카드로 보존했다.
+대사가 없는 적의 세부 성격과 원문에 없는 나이·외모는 미상이다.
 원작의 모든 군중 NPC에 개인 전기를 창작한 설정집은 아니다.
 
 각 인물은 이름 대신 안정된 ID로 참조한다. 예: `lord_ahn`, `mad_joe`, `initial_merlin`.
@@ -20,6 +22,7 @@
 | `writing.goals` | 동기·목표. 아직 정하지 않았다면 빈 배열 |
 | `writing.boundaries` | 서술 시 지켜야 할 제한 |
 | `relationships` | 다른 인물 ID와 관계의 근거·확정 여부 |
+| `disclosure` | 작가 전용 원본, 공개용 ID/이름, 필드 공개 조건 |
 | `source_excerpts` | 카드 근거 범위의 원문 출력 문자열. 주변 인물의 말도 포함할 수 있음 |
 | `resource_refs` | 장비·마법·적 템플릿 사전의 안정된 ID. 현재 소지/습득을 뜻하지 않음 |
 
@@ -59,8 +62,10 @@
 변경은 [분석 입력](../reference/analysis.json)의 `enrichment` 또는 `new_characters`에서
 하고 `python3 tools/build_reference.py`로 재생성한다. 문구 요약·음역·해석 입력은
 생성 시 메타데이터를 붙이며, 창작 나이는 `biography_overrides.age`에 완전한 claim을
-넣는다. 창작 성향은 `writing_additions.traits`, 관계는 `relationships_additions`에
-완전한 claim을 넣어 표시를 생략하지 않는다. 기존 v1 카드의 보존 입력인
+넣는다. 창작 성향은 `writing_additions.traits`에 완전한 claim을 넣고, 관계는
+[relationships.analysis.json](relationships.analysis.json)에서 공개 정책과 함께 작성한다.
+옛 `relationships_additions`를 사용하면 생성 도구가 중단하므로 새 형식으로 옮긴다.
+기존 v1 카드의 보존 입력인
 `preserved_profiles`는 마이그레이션 근거이며 현재 출력 카드가 아니다.
 생성 도구가 해당 인물과 목록의 `revision`을 올린다. 장면 계약의
 `character_dependencies`가 이전 버전을 가리키면 재검토가 필요하다고 보고한다.
@@ -77,3 +82,42 @@
 예언서가 설명하는 로드 안의 선의 상징, 에인션트 이블의 역할, 주인공의 탄생 관계는
 `prophecy_testimony`로 보존했다. 이 전편 정보가 카드에 있다고 도입부터 주인공이
 알고 있는 설정으로 쓰지 않는다.
+
+## 스포일러 공개와 복선
+
+이 문서와 원본 JSON은 작가 전용이다. **원본 카드를 집필 프롬프트나 독자 화면에
+그대로 전달하지 않는다.** 상세 작업 규칙은 [AGENTS.md](AGENTS.md)에 있다.
+
+관계에는 `id`, `target`, `relation_type`, `truth_type`, `claimant`, `branch_condition`과
+`disclosure`가 있다. 직접 사건·증언·문서 설명·추론·창작을 구분하며, 증언의
+`confirmed`는 그렇게 말한 사실을 확인했다는 뜻이지 세계의 진상을 확정한 것이 아니다.
+조건부 영입·이탈·공격은 고정 관계에서 현재 상태로 자동 반영하지 않는다.
+
+`disclosure.spoiler`는 `minor/major`, `after_events`는 공개 체크포인트 목록이다.
+체크포인트 ID와 시점은 편집자가 추가한 정책이며 원작의 게임 이벤트 ID가 아니다.
+퀘스트/장 번호가 커졌다는 이유로 자동 공개하지 않고 경로 사건의 `reveals`를 사용한다.
+다른 분기로 건너뛴 사건은 공개하지 않는다. 한 퀘스트 안에서도 전투 전 소개와
+정체 공개, 최종 결전 소개와 결말은 다른 체크포인트다.
+
+`foreshadowing`에는 허용 시점과 검토된 복선 claim만 둔다. 공개 전에는 진상,
+관계 대상/유형/ID, 공개 예정 시점을 출력하지 않고 허용된 복선만 전달한다.
+복선은 새 집필 해석이므로 추가 메타데이터와 `proposed` 상태를 유지한다.
+
+```bash
+python3 tools/characters.py --view writer --character lord_ahn --events castle_arrival
+python3 tools/story_continuity.py --route enter_courtyard visit_lord
+```
+
+첫 명령의 이벤트 목록은 작가가 지정한 미리보기 조건이다. 독자 공개를 인증하는
+기능이 아니다. 둘째 명령은 실제 선택 경로에서 발생한 사건의 공개만 계산한다.
+`characters.py --view writer`는 대상 인물 지정이 필수여서 미래 명단을 일괄 출력하지 않는다.
+정체를 암시하는 내부 ID/제목은 공개용 핸들/이름으로 가린다.
+
+필터된 카드의 `source_facts`는 `disclosure.fact_after`에 지정된 필드만 공개한다.
+미지정/새 필드는 계속 숨기며, 생애·성향·장비 묶음은 `after_events` 뒤에 열린다.
+비어 있는 공개 목록은 기본 비공개다. 공개 전 빠진 필드는 원작 미상이 아니라
+아직 공개되지 않은 정보일 수 있다. 원문 발췌·별칭·작가 비고는 항상 제외한다.
+상세 원문은 해당 장면의 원고/원문 대응으로 읽고 전편 발췌를 몰아서 프롬프트에 넣지 않는다.
+
+이것은 데이터 투영/집필 검증이지 원본 파일의 접근 제어나 산문 의미 검증이 아니다.
+원본 JSON을 직접 공유하면 진상도 공개된다. 복선의 강도와 최종 산문은 별도 검토한다.

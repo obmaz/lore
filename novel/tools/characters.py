@@ -1,8 +1,10 @@
 """Character references, source-backed identity and explicit writing proposals."""
+import argparse
 import json
 
 from materials import ROOT, load_materials, read, validate_evidence
 from reference import schema_validator, validate_claim, load_references
+from disclosure import validate_disclosure, project_character, public_ids
 
 CHARACTERS = ROOT / "characters/registry.json"
 SCHEMA = ROOT / "characters/character.schema.json"
@@ -14,6 +16,7 @@ def validate_registry(document, catalog=None, references=None):
         catalog = load_materials()[0]
     literals = {l["id"]: l for unit in catalog["source_units"] for l in unit["literals"]}
     profiles = document["characters"]
+    validate_disclosure(document,catalog)
     if references is None:
         references = load_references(catalog)
     for key, profile in profiles.items():
@@ -67,5 +70,17 @@ def load_characters(catalog=None):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Author-only master validation or spoiler-filtered cards")
+    parser.add_argument("--view", choices=("summary","writer"),default="summary")
+    parser.add_argument("--character")
+    parser.add_argument("--events",nargs="*",default=[])
+    args = parser.parse_args()
     profiles = load_characters()
-    print(json.dumps({"characters": len(profiles["characters"]), "revision": profiles["revision"]}))
+    if args.view=="writer":
+        if args.character is None:
+            parser.error("writer view requires --character; do not export an undisclosed future roster")
+        ids = public_ids(profiles,args.events)
+        keys = [args.character]
+        print(json.dumps({ids[k]:project_character(profiles,k,args.events) for k in keys},ensure_ascii=False,indent=2))
+    else:
+        print(json.dumps({"characters": len(profiles["characters"]), "revision": profiles["revision"]}))

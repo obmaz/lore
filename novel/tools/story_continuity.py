@@ -13,6 +13,7 @@ from validate_story_authoring import ROOT, SCHEMA, validate as validate_story
 from materials import load_materials, validate_evidence
 from characters import CHARACTERS, load_characters, validate_registry
 from reference import load_references
+from disclosure import project_character, public_ids, remap_ids, validate_reveals
 
 CONTINUITY_SCHEMA = ROOT / "continuity/continuity.schema.json"
 CANON = ROOT / "continuity/canon.json"
@@ -138,6 +139,13 @@ def validate(story, continuity, canon, profiles=None):
         check(set(event["requires_events"]) <= set(events) and event["id"] not in event["requires_events"], "unknown or self-dependent event")
         check(set(event["source_refs"]) <= set(story["source_refs"]), "unknown event evidence")
         if event["origin"] == "source_adaptation": check(bool(event["source_refs"]), "adapted event needs evidence")
+        validate_reveals(profiles,event.get("reveals",[]))
+        for reveal in event.get("reveals",[]):
+            evidence = profiles["disclosure_checkpoints"][reveal]["evidence"]
+            refs = [story["source_refs"][ref] for ref in event["source_refs"]]
+            check(all(any(ref["file"]==e["file"] and ref["line_start"]<=e["line_start"]
+                          and e["line_end"]<=ref["line_end"] for ref in refs) for e in evidence),
+                  "disclosure event lacks checkpoint source evidence")
         for gain in event["knowledge_gained"]:
             check(gain["character_id"] in event["participants"] and gain["fact_id"] in facts, "unknown knowledge recipient/fact")
             check(gain["informant_id"] is None or gain["informant_id"] in event["participants"], "informant not present")
@@ -196,33 +204,43 @@ def context(story, continuity, canon, route, profiles=None):
     choices = [c["id"] for c in node["choices"] if matches(c["when"], state)]
     check(bool(choices) or node["kind"] in ("boundary", "ending"), f"all choices hidden: {key}")
     approved = continuity["review"]["status"] == "approved" and not stale
+    disclosed = {r for e in ledger for r in e.get("reveals",[])}
+    ids = public_ids(profiles,disclosed)
+    views = {member:project_character(profiles,member,disclosed) for member in sorted(cast)}
+    experienced = cast | {p for e in ledger for p in e["participants"]}
+    visible_knowledge = {k:sorted(known[k]) for k in sorted(experienced)}
     dependencies = {d["fact_id"] for d in contract["dependencies"]} | set(contract["must_not_assert"])
-    dependencies |= {f for values in known.values() for f in values}
+    dependencies |= {f for k in experienced for f in known[k]}
     handoff = None
     if node["handoff"]:
         handoff = {**node["handoff"],
                    "state": {k: copy.deepcopy(state[k]) for k in node["handoff"]["carry_states"]},
-                   "knowledge": {k: sorted(v) for k, v in known.items()},
+                   "knowledge": visible_knowledge,
                    "events": copy.deepcopy(ledger), "provisional": not approved}
     references = load_references()
     resources = {category: {} for category in references}
     for member in cast:
-        for category, ids in profiles["characters"][member]["resource_refs"].items():
+        for category, resource_ids in views[member]["resource_refs"].items():
             category = "bestiary" if category == "enemy_templates" else category
-            resources[category].update({i: references[category]["items"][i] for i in ids})
-    return {"mode": "approved_path" if approved else "draft_preview", "node_id": key,
+            resources[category].update({i:copy.deepcopy(references[category]["items"][i]) for i in resource_ids})
+    for category in resources.values():
+        for item in category.values():
+            item["character_ids"] = [i for i in item["character_ids"] if i in cast]
+    packet = {"mode": "approved_path" if approved else "draft_preview", "node_id": key,
             "input_fingerprints": input_hashes(story, continuity, canon, profiles),
             "needs_review": stale, "editorial_issues": continuity["review"]["issues"],
             "state": state, "history": history, "handoff_packet": handoff,
             "committed_events": ledger if approved else [], "proposed_events": [] if approved else ledger,
-            "knowledge": {k: sorted(v) for k, v in known.items()}, "knowledge_is_provisional": not approved,
+            "knowledge": visible_knowledge, "knowledge_is_provisional": not approved,
             "relevant_facts": [facts[f] for f in sorted(dependencies)], "contract": contract,
-            "character_profiles": {member: profiles["characters"][member] for member in sorted(cast)},
+            "character_profiles": views,
+            "disclosed_events": sorted(disclosed), "disclosures_are_provisional": not approved,
             "writing_references": resources,
             "reference_policy": "author_reference_not_character_knowledge_or_current_inventory",
             "open_threads": [t for t in continuity["threads"] if t["resolution_event"] not in {e["id"] for e in ledger}],
             "visible_blocks": visible, "available_choices": choices,
             "validation_limits": ["explicit route only", "prose meaning and character motivation require editorial review"]}
+    return remap_ids(packet,ids)
 
 
 def main():

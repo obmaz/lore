@@ -1,9 +1,9 @@
 {
-  "version": 2,
-  "revision": 5,
+  "version": 3,
+  "revision": 7,
   "characters": {
     "protagonist": {
-      "revision": 3,
+      "revision": 4,
       "kind": "protagonist",
       "canonical_name": {
         "value": null,
@@ -80,7 +80,70 @@
         ],
         "notes": "이름·성별·직업과 최종 성향은 미정이다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 768,
+              "line_end": 788
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "protagonist_creation:reverse",
+          "target": "ancient_evil",
+          "description": "예언서는 에인션트 이블이 미래의 역사를 뒤틀어 네크로맨서와 싸울 당신을 창조했다고 설명한다.",
+          "relation_type": "created_by",
+          "truth_type": "document_claim",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "world_prophecy"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": [
+              {
+                "after_events": [
+                  "castle_arrival"
+                ],
+                "claim": {
+                  "field": "foreshadowing",
+                  "value": "왜 이 일행에게 임무가 돌아오는지 의문을 남기되 답이나 배후 인물을 특정하지 않는다.",
+                  "origin": "inferred",
+                  "status": "proposed",
+                  "evidence": [
+                    {
+                      "file": "LORETALK.PAS",
+                      "line_start": 349,
+                      "line_end": 352
+                    }
+                  ],
+                  "metadata": {
+                    "addition": true,
+                    "kind": "interpretation",
+                    "note": "대사/행동을 바탕으로 한 집필 해석. 원작의 확정 성격이나 설정이 아니며 검토 후 수정한다.",
+                    "knowledge_policy": "author_reference_not_character_knowledge"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": null,
@@ -262,10 +325,30 @@
           "literal_id": "LORESPEC.PAS:literal:32985",
           "text": "될것이다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "protagonist",
+        "public_display_name": "이름 미정 주인공",
+        "after_events": [
+          "castle_arrival"
+        ],
+        "fact_after": {
+          "prophecy_testimony": [
+            "world_prophecy"
+          ]
+        },
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "castle_guide": {
-      "revision": 2,
+      "revision": 3,
       "kind": "npc",
       "canonical_name": {
         "value": null,
@@ -468,10 +551,26 @@
           "literal_id": "LORETALK.PAS:literal:11040",
           "text": "당신이 성공하기를 빕니다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "castle_guide",
+        "public_display_name": "성 안의 안내 인물",
+        "after_events": [
+          "castle_arrival"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "veteran": {
-      "revision": 2,
+      "revision": 3,
       "kind": "npc",
       "canonical_name": {
         "value": null,
@@ -706,10 +805,28 @@
           "literal_id": "LORETALK.PAS:literal:3525",
           "text": " 물러나십시오.  여기는 용사의 유골들을 안치"
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "veteran",
+        "public_display_name": "특공대에 친구들을 보낸 주점 인물",
+        "after_events": [],
+        "fact_after": {
+          "testimony": [
+            "castle_arrival"
+          ]
+        },
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "prisoner": {
-      "revision": 2,
+      "revision": 3,
       "kind": "npc",
       "canonical_name": {
         "value": null,
@@ -792,7 +909,82 @@
         ],
         "notes": "고유 이름은 미정이다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 158,
+              "line_end": 184
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "prisoner_imprisonment",
+          "target": "lord_ahn",
+          "description": "죄수는 에인션트 이블의 사상을 알리다가 수감되었으며 로드 안이 사회 혼란 방지를 이유로 들었다고 증언한다.",
+          "relation_type": "imprisoned_under_rule",
+          "truth_type": "testimony",
+          "claimant": "prisoner",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "prisoner_account"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 158,
+              "line_end": 175
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "prisoner_reappraisal",
+          "target": "ancient_evil",
+          "description": "죄수는 여행 중 에인션트 이블을 발견하고 그의 신앙 아래 도시에서 자애를 느꼈다고 말한다.",
+          "relation_type": "reappraisal",
+          "truth_type": "testimony",
+          "claimant": "prisoner",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "prisoner_account"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": null,
@@ -1020,10 +1212,26 @@
           "literal_id": "LORETALK.PAS:literal:7082",
           "text": "있었기 때문입니다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "prisoner",
+        "public_display_name": "Ancient Evil에 관해 증언하는 수감자",
+        "after_events": [
+          "prisoner_account"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "lord_ahn": {
-      "revision": 3,
+      "revision": 4,
       "kind": "npc",
       "canonical_name": {
         "value": "Lord Ahn",
@@ -1229,22 +1437,213 @@
       },
       "relationships": [
         {
-          "target": "necromancer",
-          "description": "그의 야심을 봉쇄할 임무를 일행에게 제시한다.",
           "origin": "source_adaptation",
           "status": "confirmed",
           "evidence": [
             {
               "file": "LORETALK.PAS",
               "line_start": 332,
+              "line_end": 355
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "lord_commission",
+          "target": "protagonist",
+          "description": "성과를 확인하려 MENACE 탐사를 의뢰하고 궁극적으로 네크로맨서의 야심을 막는 임무를 제시한다.",
+          "relation_type": "commission",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "lord_assignment"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 324,
               "line_end": 338
             }
           ],
           "metadata": {
             "addition": false,
             "kind": "none",
-            "note": "기존 집필 제안/원작 요약의 출처 구분을 보존한다.",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
             "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "lord_opposes_necromancer",
+          "target": "necromancer",
+          "description": "네크로맨서의 세력 확장을 위협으로 설명하고 일행에게 저지를 요청한다.",
+          "relation_type": "opposition",
+          "truth_type": "testimony",
+          "claimant": "lord_ahn",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "lord_briefing"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 177,
+              "line_end": 188
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "reported_friendship",
+          "target": "ancient_evil",
+          "description": "죄수는 에인션트 이블의 말에서 로드 안과 그가 매우 절친한 관계임을 알았다고 증언한다. 당사자 양쪽이 독립적으로 확인한 사실로 바꾸지 않는다.",
+          "relation_type": "reported_friendship",
+          "truth_type": "testimony",
+          "claimant": "prisoner",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "prisoner_account"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": [
+              {
+                "after_events": [
+                  "castle_arrival"
+                ],
+                "claim": {
+                  "field": "foreshadowing",
+                  "value": "공식적인 평가와 타인의 경험담이 어긋날 수 있다는 질문을 남긴다.",
+                  "origin": "inferred",
+                  "status": "proposed",
+                  "evidence": [
+                    {
+                      "file": "LORETALK.PAS",
+                      "line_start": 158,
+                      "line_end": 175
+                    }
+                  ],
+                  "metadata": {
+                    "addition": true,
+                    "kind": "interpretation",
+                    "note": "대사/행동을 바탕으로 한 집필 해석. 원작의 확정 성격이나 설정이 아니며 검토 후 수정한다.",
+                    "knowledge_policy": "author_reference_not_character_knowledge"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 730,
+              "line_end": 788
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "prophecy_balance",
+          "target": "ancient_evil",
+          "description": "예언서는 로드 안을 선, 에인션트 이블을 악의 상징으로 설명하지만 후자의 본심은 선이라고 설명한다. 둘은 Semi-God 계급의 깊은 관계를 가진 대립자로 기술된다.",
+          "relation_type": "symbolic_counterpart",
+          "truth_type": "document_claim",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "world_prophecy"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2049,
+              "line_end": 2065
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "joint_guides",
+          "target": "ancient_evil",
+          "description": "팬저 바이퍼 전투 뒤 두 존재가 함께 나타난 장면에서 숨은 레버와 최종 방 진입 단서가 전해진다. 이 행동만으로 서로의 모든 동기를 확정하지 않는다.",
+          "relation_type": "joint_guidance",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "joint_guidance"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
           }
         }
       ],
@@ -1664,10 +2063,30 @@
           "literal_id": "LORETALK.PAS:literal:13651",
           "text": "약간의 무기를 가져가도록 허락하겠소."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "lord_ahn",
+        "public_display_name": "로드 안",
+        "after_events": [
+          "lord_assignment"
+        ],
+        "fact_after": {
+          "prophecy_testimony": [
+            "world_prophecy"
+          ]
+        },
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "mad_joe": {
-      "revision": 2,
+      "revision": 4,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Mad Joe",
@@ -1815,7 +2234,107 @@
         ],
         "notes": "정신 상태에 관한 타인의 평가를 의학적 확정 사실로 쓰지 않는다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 191,
+              "line_end": 219
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "joe_offer",
+          "target": "protagonist",
+          "description": "매드 조가 합류를 요청하며 수락하면 여섯 번째 동료 슬롯에 들어간다.",
+          "relation_type": "conditional_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "수락한 경로에만 동료다. 요청을 들었다는 것과 영입 성공을 구분한다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "joe_request"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 197,
+              "line_end": 230
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "joe_departure",
+          "target": "protagonist",
+          "description": "죄수 영입 플래그가 있는 경비 전투에서 여섯 번째 인물이 매드 조이면 전투 시작에 도망가며 이름 슬롯이 비워진다.",
+          "relation_type": "conditional_departure",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "영입 플래그와 player[6].name='Mad Joe' 검사에 해당하는 경로만. 미영입 경로의 이탈이 아니다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "prison_guard_confrontation"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": [
+              {
+                "after_events": [
+                  "joe_request"
+                ],
+                "claim": {
+                  "field": "foreshadowing",
+                  "value": "웃음 섞인 합류 요청의 불안정한 인상을 유지할 수 있다.",
+                  "origin": "inferred",
+                  "status": "proposed",
+                  "evidence": [
+                    {
+                      "file": "LORETALK.PAS",
+                      "line_start": 191,
+                      "line_end": 193
+                    }
+                  ],
+                  "metadata": {
+                    "addition": true,
+                    "kind": "interpretation",
+                    "note": "대사/행동을 바탕으로 한 집필 해석. 원작의 확정 성격이나 설정이 아니며 검토 후 수정한다.",
+                    "knowledge_policy": "author_reference_not_character_knowledge"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "매드 조",
@@ -1937,10 +2456,26 @@
           "literal_id": "LORETALK.PAS:literal:7228",
           "text": "신들의 일행에 끼이면 안될까요 ? 우히히히.."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "mad_joe",
+        "public_display_name": "매드 조",
+        "after_events": [
+          "joe_request"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "polaris": {
-      "revision": 2,
+      "revision": 3,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Polaris",
@@ -2049,7 +2584,82 @@
         ],
         "notes": "원작 선택 조건에 맞춰 등장시킨다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 406,
+              "line_end": 435
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "polaris_offer",
+          "target": "protagonist",
+          "description": "메이저 머미를 함께 물리치려 합류를 제안한다.",
+          "relation_type": "conditional_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "수락 및 동료 슬롯 선택이 성립하는 경로만 영입된다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "polaris_offer"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 406,
+              "line_end": 409
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "polaris_objective",
+          "target": "major_mummy",
+          "description": "폴라리스가 메이저 머미를 물리치고 싶다고 말한다.",
+          "relation_type": "opposition",
+          "truth_type": "testimony",
+          "claimant": "polaris",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "polaris_offer"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "폴라리스",
@@ -2185,10 +2795,26 @@
           "literal_id": "LORETALK.PAS:literal:15763",
           "text": "내가 당신의 일행에 끼여도 되겠소 ?"
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "polaris",
+        "public_display_name": "폴라리스",
+        "after_events": [
+          "polaris_offer"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "lore_hunter": {
-      "revision": 2,
+      "revision": 3,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Lore Hunter",
@@ -2297,7 +2923,82 @@
         ],
         "notes": "성향은 미작성이다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 393,
+              "line_end": 396
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "hunter_marriage:reverse",
+          "target": "hunter_spouse",
+          "description": "LASTDITCH 주민은 로어 헌터가 자신의 남편이자 LORE 특공대 지휘관이라고 말한다.",
+          "relation_type": "spouse",
+          "truth_type": "testimony",
+          "claimant": "hunter_spouse",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "hunter_family_testimony"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 609,
+              "line_end": 639
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "hunter_offer",
+          "target": "protagonist",
+          "description": "혼자서는 적을 상대하기 어렵다고 판단한 특공대 대장이 일행에게 합류를 제안한다.",
+          "relation_type": "conditional_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "수락·빈 슬롯 검사에 따른다. 마을에서 기다리는 상태와 영입 상태를 구분한다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "hunter_offer"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "로어 헌터",
@@ -2441,10 +3142,26 @@
           "literal_id": "LORETALK.PAS:literal:23690",
           "text": "하오 ?"
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "lore_hunter",
+        "public_display_name": "로어 헌터",
+        "after_events": [
+          "hunter_offer"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "rigel": {
-      "revision": 2,
+      "revision": 3,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Rigel",
@@ -2564,7 +3281,45 @@
         ],
         "notes": "상태는 동료 카드에 영구 고정하지 않는다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 601,
+              "line_end": 658
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "rigel_rescue",
+          "target": "protagonist",
+          "description": "부상한 리겔은 동행/치료와 식량 제공/거절 선택의 대상이다. 치료·식량 경로에서는 무기에 축복을 내리고 떠난다.",
+          "relation_type": "conditional_rescue",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "동행과 치료 후 이별은 서로 다른 선택이다. 무기 강화도 행운 검사에 따른다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "rigel_rescue"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "리겔",
@@ -2745,10 +3500,26 @@
           "literal_id": "LORESPEC.PAS:literal:26567",
           "text": "주고는 자신의 길을 떠났다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "rigel",
+        "public_display_name": "리겔",
+        "after_events": [
+          "rigel_rescue"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "red_antares": {
-      "revision": 2,
+      "revision": 3,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Red Antares",
@@ -2872,7 +3643,119 @@
         ],
         "notes": "능력·동기와 관계의 추가 근거를 집필 시 작성한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 108,
+              "line_end": 118
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "antares_parentage:reverse",
+          "target": "jr_antares",
+          "description": "주니어 안타레스는 레드 안타레스를 자신의 아버지라고 말한다.",
+          "relation_type": "parent",
+          "truth_type": "testimony",
+          "claimant": "jr_antares",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "antares_testimony"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1081,
+              "line_end": 1104
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "red_teaching",
+          "target": "protagonist",
+          "description": "레드 안타레스가 간접 공격 기법을 가르치고 초자연력의 필요성을 설명한다.",
+          "relation_type": "teacher",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "red_antares_teaching"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1026,
+              "line_end": 1064
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "red_offer",
+          "target": "protagonist",
+          "description": "레드 안타레스의 영이 함께 모험하고 싶다고 제안한다.",
+          "relation_type": "conditional_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "합류 제안 단계·수락·슬롯 선택에 따른다. 마법을 배우는 것과 동료로 영입하는 것은 다르다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "red_antares_offer"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "레드 안타레스",
@@ -3149,10 +4032,30 @@
           "literal_id": "LORESPEC.PAS:literal:45712",
           "text": "대항할수 있을 것이오."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "red_antares",
+        "public_display_name": "레드 안타레스",
+        "after_events": [
+          "red_antares_offer"
+        ],
+        "fact_after": {
+          "story_role": [
+            "red_antares_teaching"
+          ]
+        },
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "jr_antares": {
-      "revision": 3,
+      "revision": 4,
       "kind": "npc",
       "canonical_name": {
         "value": "Jr. Antares",
@@ -3227,22 +4130,40 @@
       },
       "relationships": [
         {
-          "target": "red_antares",
-          "description": "자신의 아버지가 Red Antares라고 말한다.",
           "origin": "source_adaptation",
           "status": "confirmed",
           "evidence": [
             {
               "file": "LORETALK.PAS",
-              "line_start": 112,
-              "line_end": 128
+              "line_start": 108,
+              "line_end": 118
             }
           ],
           "metadata": {
             "addition": false,
             "kind": "none",
-            "note": "기존 집필 제안/원작 요약의 출처 구분을 보존한다.",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
             "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "antares_parentage",
+          "target": "red_antares",
+          "description": "주니어 안타레스는 레드 안타레스를 자신의 아버지라고 말한다.",
+          "relation_type": "child",
+          "truth_type": "testimony",
+          "claimant": "jr_antares",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "antares_testimony"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
           }
         }
       ],
@@ -3449,10 +4370,26 @@
           "literal_id": "LORETALK.PAS:literal:4515",
           "text": "가야 겠소."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "jr_antares",
+        "public_display_name": "주니어 안타레스",
+        "after_events": [
+          "antares_testimony"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "draconian": {
-      "revision": 2,
+      "revision": 3,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Draconian",
@@ -3586,7 +4523,82 @@
         ],
         "notes": "종족 일반명과 해당 동료 ID를 구분한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 123,
+              "line_end": 144
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "draconian_offer",
+          "target": "protagonist",
+          "description": "드라코니안은 자신의 운명을 생각한 뒤 네크로맨서를 물리치기 위해 일행 뒤에서 돕겠다고 제안한다.",
+          "relation_type": "conditional_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "진행 상태와 수락 선택에 따라 여섯 번째 슬롯에 영입된다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "draconian_offer"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 71,
+              "line_end": 119
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "draconian_research",
+          "target": "necromancer",
+          "description": "드라코니안은 네크로맨서의 차원 이동과 다른 공간에서 용사들에게 쫓긴 경위를 연구해 설명한다.",
+          "relation_type": "research_and_opposition",
+          "truth_type": "testimony",
+          "claimant": "draconian",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "draconian_account"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "드라코니안",
@@ -4052,10 +5064,30 @@
           "literal_id": "LORESPEC.PAS:literal:6259",
           "text": "명이 아닌것 같소."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "draconian",
+        "public_display_name": "드라코니안",
+        "after_events": [
+          "dungeon_guard_encounter"
+        ],
+        "fact_after": {
+          "story_role": [
+            "dungeon_guard_encounter"
+          ]
+        },
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "necromancer": {
-      "revision": 2,
+      "revision": 3,
       "kind": "antagonist",
       "canonical_name": {
         "value": "Necromancer",
@@ -4191,7 +5223,82 @@
         ],
         "notes": "숨은 동기와 정체를 도입부에서 새로 확정하지 않는다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2154,
+              "line_end": 2167
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "final_monk:reverse",
+          "target": "archimonk",
+          "description": "네크로맨서가 아키몽크를 소개하고 함께 최종 전투에 등장한다. 친족이나 스승 관계는 확정되지 않았다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "final_introduction"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2154,
+              "line_end": 2167
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "final_mage:reverse",
+          "target": "archimage",
+          "description": "네크로맨서가 아키메이지를 소개하고 함께 최종 전투에 등장한다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "final_introduction"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "네크로맨서",
@@ -4498,10 +5605,26 @@
           "literal_id": "LORETALK.PAS:literal:12834",
           "text": "라는 걸 명심해 두시오."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "necromancer",
+        "public_display_name": "네크로맨서",
+        "after_events": [
+          "final_outcome"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "ancient_evil": {
-      "revision": 3,
+      "revision": 4,
       "kind": "npc",
       "canonical_name": {
         "value": "Ancient Evil",
@@ -4692,7 +5815,243 @@
         ],
         "notes": "인물별 증언과 세계의 확정 사실을 구분한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 177,
+              "line_end": 188
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "reported_friendship:reverse",
+          "target": "lord_ahn",
+          "description": "죄수는 에인션트 이블의 말에서 로드 안과 그가 매우 절친한 관계임을 알았다고 증언한다. 당사자 양쪽이 독립적으로 확인한 사실로 바꾸지 않는다.",
+          "relation_type": "reported_friendship",
+          "truth_type": "testimony",
+          "claimant": "prisoner",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "prisoner_account"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": [
+              {
+                "after_events": [
+                  "castle_arrival"
+                ],
+                "claim": {
+                  "field": "foreshadowing",
+                  "value": "공식적인 평가와 타인의 경험담이 어긋날 수 있다는 질문을 남긴다.",
+                  "origin": "inferred",
+                  "status": "proposed",
+                  "evidence": [
+                    {
+                      "file": "LORETALK.PAS",
+                      "line_start": 158,
+                      "line_end": 175
+                    }
+                  ],
+                  "metadata": {
+                    "addition": true,
+                    "kind": "interpretation",
+                    "note": "대사/행동을 바탕으로 한 집필 해석. 원작의 확정 성격이나 설정이 아니며 검토 후 수정한다.",
+                    "knowledge_policy": "author_reference_not_character_knowledge"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 730,
+              "line_end": 788
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "prophecy_balance:reverse",
+          "target": "lord_ahn",
+          "description": "예언서는 로드 안을 선, 에인션트 이블을 악의 상징으로 설명하지만 후자의 본심은 선이라고 설명한다. 둘은 Semi-God 계급의 깊은 관계를 가진 대립자로 기술된다.",
+          "relation_type": "symbolic_counterpart",
+          "truth_type": "document_claim",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "world_prophecy"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 768,
+              "line_end": 788
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "protagonist_creation",
+          "target": "protagonist",
+          "description": "예언서는 에인션트 이블이 미래의 역사를 뒤틀어 네크로맨서와 싸울 당신을 창조했다고 설명한다.",
+          "relation_type": "creator",
+          "truth_type": "document_claim",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "world_prophecy"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": [
+              {
+                "after_events": [
+                  "castle_arrival"
+                ],
+                "claim": {
+                  "field": "foreshadowing",
+                  "value": "왜 이 일행에게 임무가 돌아오는지 의문을 남기되 답이나 배후 인물을 특정하지 않는다.",
+                  "origin": "inferred",
+                  "status": "proposed",
+                  "evidence": [
+                    {
+                      "file": "LORETALK.PAS",
+                      "line_start": 349,
+                      "line_end": 352
+                    }
+                  ],
+                  "metadata": {
+                    "addition": true,
+                    "kind": "interpretation",
+                    "note": "대사/행동을 바탕으로 한 집필 해석. 원작의 확정 성격이나 설정이 아니며 검토 후 수정한다.",
+                    "knowledge_policy": "author_reference_not_character_knowledge"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 768,
+              "line_end": 776
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "ancient_evil_opposition",
+          "target": "necromancer",
+          "description": "예언서는 에인션트 이블이 네크로맨서를 벌하려 하지만 육신 없는 상태에서는 직접 대항하기 어렵다고 설명한다.",
+          "relation_type": "opposition",
+          "truth_type": "document_claim",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "world_prophecy"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2049,
+              "line_end": 2065
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "joint_guides:reverse",
+          "target": "lord_ahn",
+          "description": "팬저 바이퍼 전투 뒤 두 존재가 함께 나타난 장면에서 숨은 레버와 최종 방 진입 단서가 전해진다. 이 행동만으로 서로의 모든 동기를 확정하지 않는다.",
+          "relation_type": "joint_guidance",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "joint_guidance"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "에인션트 이블",
@@ -5314,10 +6673,36 @@
           "literal_id": "LORETALK.PAS:literal:7082",
           "text": "있었기 때문입니다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "ancient_evil",
+        "public_display_name": "에인션트 이블",
+        "after_events": [
+          "joint_guidance"
+        ],
+        "fact_after": {
+          "story_role": [
+            "ancient_evil_guidance"
+          ],
+          "prophecy_testimony": [
+            "world_prophecy"
+          ],
+          "shelter_testimony": [
+            "lava_advice"
+          ]
+        },
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_hercules": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Hercules",
@@ -5585,10 +6970,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_hercules",
+        "public_display_name": "헤라클레스",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_titan": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Titan",
@@ -5856,10 +7255,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_titan",
+        "public_display_name": "타이탄",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_merlin": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Merlin",
@@ -6127,10 +7540,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_merlin",
+        "public_display_name": "멀린",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_betelgeuse": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Betelgeuse",
@@ -6398,10 +7825,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_betelgeuse",
+        "public_display_name": "베텔게우스",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_genius_kie": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Genius Kie",
@@ -6669,10 +8110,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_genius_kie",
+        "public_display_name": "지니어스 키",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_bellatrix": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Bellatrix",
@@ -6940,10 +8395,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_bellatrix",
+        "public_display_name": "벨라트릭스",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_regulus": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Regulus",
@@ -7211,10 +8680,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_regulus",
+        "public_display_name": "레굴루스",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_procyon": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Procyon",
@@ -7482,10 +8965,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_procyon",
+        "public_display_name": "프로키온",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_arcturus": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Arcturus",
@@ -7753,10 +9250,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_arcturus",
+        "public_display_name": "아크투루스",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "initial_algol": {
-      "revision": 2,
+      "revision": 3,
       "kind": "initial_candidate",
       "canonical_name": {
         "value": "Algol",
@@ -8024,10 +9535,24 @@
         "abilities": [],
         "enemy_templates": []
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "initial_algol",
+        "public_display_name": "알골",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "spica": {
-      "revision": 1,
+      "revision": 2,
       "kind": "optional_companion",
       "canonical_name": {
         "value": "Spica",
@@ -8136,7 +9661,82 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1275,
+              "line_end": 1296
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "spica_teaching",
+          "target": "protagonist",
+          "description": "스피카가 초자연력 다섯 가지와 네크로맨서 역시 이를 사용할 수 있음을 설명한다.",
+          "relation_type": "teacher",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "spica_teaching"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1208,
+              "line_end": 1268
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "spica_offer",
+          "target": "protagonist",
+          "description": "스피카가 네크로맨서에 대항하려는 결의를 느끼고 합류를 제안한다.",
+          "relation_type": "conditional_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "사전 대화·독심 상태·진행 조건·초자연력 수준·수락·슬롯 선택을 검사한다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "spica_offer"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "스피카",
@@ -8352,10 +9952,26 @@
           "literal_id": "LORESPEC.PAS:literal:54135",
           "text": "줄 안다는걸 염두에 두고 사용하십시오."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "spica",
+        "public_display_name": "스피카",
+        "after_events": [
+          "spica_offer"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "major_mummy": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Major Mummy",
@@ -8458,7 +10074,45 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 533,
+              "line_end": 549
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "mummy_sphinx",
+          "target": "sphinx",
+          "description": "메이저 머미와 스핑크스 두 개체가 같은 전투에 등장한다. 혈연이나 창조자 관계는 원문에 없다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "mummy_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "메이저 머미",
@@ -8578,10 +10232,26 @@
           "literal_id": "LORESPEC.PAS:literal:22711",
           "text": "그리고 당신은 이 임무에 성공했다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "major_mummy",
+        "public_display_name": "메이저 머미",
+        "after_events": [
+          "mummy_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "sphinx": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Sphinx",
@@ -8684,7 +10354,45 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 533,
+              "line_end": 549
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "mummy_sphinx:reverse",
+          "target": "major_mummy",
+          "description": "메이저 머미와 스핑크스 두 개체가 같은 전투에 등장한다. 혈연이나 창조자 관계는 원문에 없다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "mummy_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "스핑크스",
@@ -8796,10 +10504,26 @@
           "literal_id": "LORESPEC.PAS:literal:21807",
           "text": "당신은 미이라의 방을 발견했다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "sphinx",
+        "public_display_name": "스핑크스",
+        "after_events": [
+          "mummy_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "archigagoyle": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "ArchiGagoyle",
@@ -9018,10 +10742,26 @@
           "literal_id": "LORESPEC.PAS:literal:39906",
           "text": "당신은 ArchiGagoyle을 물리쳤다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "archigagoyle",
+        "public_display_name": "아키가고일",
+        "after_events": [
+          "quake_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "wivern": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Wivern",
@@ -9254,10 +10994,24 @@
           "literal_id": "LORESPEC.PAS:literal:41393",
           "text": "여기에는 Wivern의 시체만이 있다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "wivern",
+        "public_display_name": "와이번",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "hidra": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Hidra",
@@ -9482,10 +11236,24 @@
           "literal_id": "LORESPEC.PAS:literal:48355",
           "text": "다시 WATER FIELD 의 군주에게로 돌아가라."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "hidra",
+        "public_display_name": "히드라",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "huge_dragon": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Huge Dragon",
@@ -9712,10 +11480,24 @@
           "literal_id": "LORESPEC.PAS:literal:56783",
           "text": "다시 WATER FIELD 의 군주에게로 돌아가라."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "huge_dragon",
+        "public_display_name": "휴즈 드래곤",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "stheno": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Stheno",
@@ -9843,7 +11625,82 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 791,
+              "line_end": 811
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "gorgon_stheno_euryale",
+          "target": "euryale",
+          "description": "고르곤 전투의 50~52번 개체로 함께 배치된다. 신화상의 자매 관계는 원작 근거 없이 추가하지 않는다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "gorgon_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 791,
+              "line_end": 811
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "gorgon_medusa_stheno:reverse",
+          "target": "medusa",
+          "description": "고르곤 전투에서 함께 등장한다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "gorgon_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "스테노",
@@ -9979,10 +11836,26 @@
           "literal_id": "LORETALK.PAS:literal:23335",
           "text": "Stheno 와 Euryale는 거의 불멸의 생명체 입니다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "stheno",
+        "public_display_name": "스테노",
+        "after_events": [
+          "gorgon_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "euryale": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Euryale",
@@ -10110,7 +11983,82 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 791,
+              "line_end": 811
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "gorgon_stheno_euryale:reverse",
+          "target": "stheno",
+          "description": "고르곤 전투의 50~52번 개체로 함께 배치된다. 신화상의 자매 관계는 원작 근거 없이 추가하지 않는다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "gorgon_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 791,
+              "line_end": 811
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "gorgon_euryale_medusa",
+          "target": "medusa",
+          "description": "고르곤 전투에서 함께 등장한다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "gorgon_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "에우리알레",
@@ -10246,10 +12194,26 @@
           "literal_id": "LORETALK.PAS:literal:23335",
           "text": "Stheno 와 Euryale는 거의 불멸의 생명체 입니다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "euryale",
+        "public_display_name": "에우리알레",
+        "after_events": [
+          "gorgon_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "medusa": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Medusa",
@@ -10377,7 +12341,82 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 791,
+              "line_end": 811
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "gorgon_euryale_medusa:reverse",
+          "target": "euryale",
+          "description": "고르곤 전투에서 함께 등장한다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "gorgon_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 791,
+              "line_end": 811
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "gorgon_medusa_stheno",
+          "target": "stheno",
+          "description": "고르곤 전투에서 함께 등장한다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "gorgon_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "메두사",
@@ -10513,10 +12552,26 @@
           "literal_id": "LORETALK.PAS:literal:23335",
           "text": "Stheno 와 Euryale는 거의 불멸의 생명체 입니다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "medusa",
+        "public_display_name": "메두사",
+        "after_events": [
+          "gorgon_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "minotaur": {
-      "revision": 1,
+      "revision": 2,
       "kind": "creature",
       "canonical_name": {
         "value": "Minotaur",
@@ -10776,10 +12831,24 @@
           "literal_id": "LORETALK.PAS:literal:22978",
           "text": " LOCKUP 의 보스인 Huge Dragon은 아주 거대한"
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "minotaur",
+        "public_display_name": "미노타우르",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "crab_god": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Crab God",
@@ -11035,10 +13104,24 @@
           "literal_id": "LORESPEC.PAS:literal:7387",
           "text": "있을 것이오."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "crab_god",
+        "public_display_name": "크랩 갓",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "astral_mud": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Astral Mud",
@@ -11161,7 +13244,45 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1721,
+              "line_end": 1726
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "astral_arrival",
+          "target": "necromancer",
+          "description": "아스트랄 머드는 네크로맨서와 함께 다른 차원에서 내려왔다고 자칭한다.",
+          "relation_type": "shared_arrival",
+          "truth_type": "testimony",
+          "claimant": "astral_mud",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "astral_mud_account"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "아스트랄 머드",
@@ -11305,10 +13426,26 @@
           "literal_id": "LORESPEC.PAS:literal:73376",
           "text": "다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "astral_mud",
+        "public_display_name": "아스트랄 머드",
+        "after_events": [
+          "astral_mud_account"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "false_necromancer": {
-      "revision": 1,
+      "revision": 2,
       "kind": "antagonist",
       "canonical_name": {
         "value": "Necromancer",
@@ -11418,7 +13555,70 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 1895,
+              "line_end": 1965
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "fortress_impersonation",
+          "target": "necromancer",
+          "description": "요새의 상대는 네크로맨서를 사칭했으며 패배 뒤 자신은 진짜가 아니라고 밝히고 그에 대한 충성을 외친다. 같은 템플릿을 쓴 아키드라코니안과 동일 인물이라고 확정하지 않는다.",
+          "relation_type": "impersonation_and_loyalty",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "fortress_identity_revealed"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": [
+              {
+                "after_events": [
+                  "illusion_encounter"
+                ],
+                "claim": {
+                  "field": "foreshadowing",
+                  "value": "상대의 자기소개를 독립된 확인 없이 믿지 않는 태도를 유지할 수 있다. 정체의 답은 말하지 않는다.",
+                  "origin": "inferred",
+                  "status": "proposed",
+                  "evidence": [
+                    {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 1903,
+                      "line_end": 1913
+                    }
+                  ],
+                  "metadata": {
+                    "addition": true,
+                    "kind": "interpretation",
+                    "note": "대사/행동을 바탕으로 한 집필 해석. 원작의 확정 성격이나 설정이 아니며 검토 후 수정한다.",
+                    "knowledge_policy": "author_reference_not_character_knowledge"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "네크로맨서",
@@ -11610,10 +13810,26 @@
           "literal_id": "LORESPEC.PAS:literal:82478",
           "text": "사라져 버렸다."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "fortress_mage",
+        "public_display_name": "네크로맨서",
+        "after_events": [
+          "fortress_identity_revealed"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "archidraconian": {
-      "revision": 2,
+      "revision": 3,
       "kind": "boss",
       "canonical_name": {
         "value": "ArchiDraconian",
@@ -11746,7 +13962,82 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREENT.PAS",
+              "line_start": 293,
+              "line_end": 310
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "dungeon_punishment",
+          "target": "draconian",
+          "description": "아키드라코니안은 네크로맨서에 반기를 든 동족이라고 비난하고 동료 드라코니안을 공격한다.",
+          "relation_type": "conditional_hostility",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "player[6].name='Draconian'일 때만 이 공격/사망 카운터 설정이 발생한다.",
+          "disclosure": {
+            "spoiler": "major",
+            "after_events": [
+              "dungeon_guard_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LOREENT.PAS",
+              "line_start": 293,
+              "line_end": 310
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "dungeon_loyalty",
+          "target": "necromancer",
+          "description": "아키드라코니안이 네크로맨서에 반기를 든 동족을 죽음으로 처벌하겠다고 말한다.",
+          "relation_type": "loyalty",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "대사가 발생하는 동료 조건도 확인한다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "dungeon_guard_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "아키드라코니안",
@@ -11886,10 +14177,26 @@
           "literal_id": "LOREENT.PAS:literal:11294",
           "text": "것은 바로 죽음이다. 받아랏!!"
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "archidraconian",
+        "public_display_name": "아키드라코니안",
+        "after_events": [
+          "dungeon_guard_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "panzer_viper": {
-      "revision": 2,
+      "revision": 3,
       "kind": "boss",
       "canonical_name": {
         "value": "Panzer Viper",
@@ -12022,7 +14329,82 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2029,
+              "line_end": 2035
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "panzer_mission",
+          "target": "necromancer",
+          "description": "팬저 바이퍼의 대치 장면에서는 네크로맨서가 수고하지 않도록 일행을 미리 처단하는 것이 임무라고 선언한다. 개별 대사 화자 지정은 없다.",
+          "relation_type": "protective_mission",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "panzer_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        },
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2033,
+              "line_end": 2037
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "panzer_robo",
+          "target": "mega_robo",
+          "description": "팬저 바이퍼와 메가로보 네 개체가 같은 전투의 적으로 배치된다. 지휘/제작 관계까지 확장하지 않는다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "panzer_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "팬저 바이퍼",
@@ -12190,10 +14572,26 @@
           "literal_id": "LORESPEC.PAS:literal:86564",
           "text": "으로 당신의 건투를 빌겠소."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "panzer_viper",
+        "public_display_name": "팬저 바이퍼",
+        "after_events": [
+          "joint_guidance"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "black_knight": {
-      "revision": 2,
+      "revision": 3,
       "kind": "boss",
       "canonical_name": {
         "value": "Black Knight",
@@ -12428,10 +14826,26 @@
           "literal_id": "LOREENT.PAS:literal:12753",
           "text": " 두말이 필요없다. 덤벼라 !!"
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "black_knight",
+        "public_display_name": "블랙 나이트",
+        "after_events": [
+          "black_knight_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "archimonk": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "ArchiMonk",
@@ -12544,7 +14958,45 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2154,
+              "line_end": 2167
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "final_monk",
+          "target": "necromancer",
+          "description": "네크로맨서가 아키몽크를 소개하고 함께 최종 전투에 등장한다. 친족이나 스승 관계는 확정되지 않았다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "final_introduction"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "아키몽크",
@@ -12708,10 +15160,26 @@
           "literal_id": "LORESPEC.PAS:literal:90985",
           "text": "의 행운을 빌겠네."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "archimonk",
+        "public_display_name": "아키몽크",
+        "after_events": [
+          "final_introduction"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "archimage": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "ArchiMage",
@@ -12824,7 +15292,45 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2154,
+              "line_end": 2167
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "final_mage",
+          "target": "necromancer",
+          "description": "네크로맨서가 아키메이지를 소개하고 함께 최종 전투에 등장한다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "final_introduction"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "아키메이지",
@@ -12986,10 +15492,26 @@
           "literal_id": "LORESPEC.PAS:literal:90985",
           "text": "의 행운을 빌겠네."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "archimage",
+        "public_display_name": "아키메이지",
+        "after_events": [
+          "final_introduction"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "frost_dragon": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Frost Dragon",
@@ -13209,10 +15731,26 @@
           "enemy_69"
         ]
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "frost_dragon",
+        "public_display_name": "프로스트 드래곤",
+        "after_events": [
+          "final_introduction"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "guardian_left": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Guardian-Lft",
@@ -13432,10 +15970,24 @@
           "enemy_64"
         ]
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "guardian_left",
+        "public_display_name": "가디언 레프트",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "guardian_right": {
-      "revision": 1,
+      "revision": 2,
       "kind": "boss",
       "canonical_name": {
         "value": "Guardian-Rgt",
@@ -13655,10 +16207,24 @@
           "enemy_65"
         ]
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "guardian_right",
+        "public_display_name": "가디언 라이트",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "mega_robo": {
-      "revision": 1,
+      "revision": 2,
       "kind": "creature",
       "canonical_name": {
         "value": "Mega-Robo",
@@ -13771,7 +16337,45 @@
         ],
         "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
       },
-      "relationships": [],
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORESPEC.PAS",
+              "line_start": 2033,
+              "line_end": 2037
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "panzer_robo:reverse",
+          "target": "panzer_viper",
+          "description": "팬저 바이퍼와 메가로보 네 개체가 같은 전투의 적으로 배치된다. 지휘/제작 관계까지 확장하지 않는다.",
+          "relation_type": "battle_companion",
+          "truth_type": "source_event",
+          "claimant": null,
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "panzer_encounter"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
       "korean_name": {
         "field": "korean_name",
         "value": "메가로보",
@@ -13939,10 +16543,279 @@
           "literal_id": "LORESPEC.PAS:literal:86564",
           "text": "으로 당신의 건투를 빌겠소."
         }
-      ]
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "mega_robo",
+        "public_display_name": "메가로보",
+        "after_events": [
+          "panzer_encounter"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "hunter_spouse": {
+      "revision": 1,
+      "kind": "npc",
+      "canonical_name": {
+        "value": null,
+        "origin": "unknown",
+        "literal_ids": [],
+        "evidence": [
+          {
+            "file": "LORETALK.PAS",
+            "line_start": 394,
+            "line_end": 396
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name": "로어 헌터의 배우자라고 말하는 주민",
+      "aliases": [],
+      "source_facts": [
+        {
+          "field": "story_role",
+          "value": "LASTDITCH의 주민은 자신의 남편이 Lore Hunter이며 LORE 특공대 지휘관이라고 말한다. 고유 이름·나이·성별은 이 대사에서 확정되지 않았다.",
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 394,
+              "line_end": 396
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "writing": {
+        "status": "outline",
+        "traits": [
+          {
+            "field": "temperament",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "speech": [
+          {
+            "field": "voice",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "goals": [],
+        "boundaries": [
+          "나이는 원작에서 확인되지 않았다. 레벨이나 사망 수치를 나이로 사용하지 않는다.",
+          "카드의 대사 근거에는 주변 인물/서술자의 말도 포함된다. 자기 대사로 바꾸거나 경로 지식에 자동 추가하지 않는다."
+        ],
+        "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
+      },
+      "relationships": [
+        {
+          "origin": "source_adaptation",
+          "status": "confirmed",
+          "evidence": [
+            {
+              "file": "LORETALK.PAS",
+              "line_start": 393,
+              "line_end": 396
+            }
+          ],
+          "metadata": {
+            "addition": false,
+            "kind": "none",
+            "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          },
+          "id": "hunter_marriage",
+          "target": "lore_hunter",
+          "description": "LASTDITCH 주민은 로어 헌터가 자신의 남편이자 LORE 특공대 지휘관이라고 말한다.",
+          "relation_type": "spouse",
+          "truth_type": "testimony",
+          "claimant": "hunter_spouse",
+          "branch_condition": "경로 참조 정보이며 현재 동료/소지품/지식을 자동 확정하지 않는다.",
+          "disclosure": {
+            "spoiler": "minor",
+            "after_events": [
+              "hunter_family_testimony"
+            ],
+            "policy_metadata": {
+              "addition": true,
+              "kind": "interpretation",
+              "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            },
+            "foreshadowing": []
+          }
+        }
+      ],
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name_metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "편집용 역할/구별 표기. 원작의 고유 이름 또는 새 인물 설정으로 쓰지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "biography": {
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "gender": {
+          "field": "gender",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "occupation": {
+          "field": "occupation",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "alignment": {
+          "field": "alignment",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "resource_refs": {
+        "equipment": [],
+        "abilities": [],
+        "enemy_templates": []
+      },
+      "source_excerpts": [
+        {
+          "literal_id": "LORETALK.PAS:literal:15033",
+          "text": "GROUND GATE 는 여기로부터 서쪽에 나타나곤 합니다."
+        },
+        {
+          "literal_id": "LORETALK.PAS:literal:15111",
+          "text": "LORE 특공대의 지휘관은 저의 남편인데 `Lore Hunter'라고 불렸습니다."
+        }
+      ],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "lastditch_resident",
+        "public_display_name": "라스트디치의 주민",
+        "after_events": [
+          "hunter_family_testimony"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     },
     "skeleton": {
-      "revision": 1,
+      "revision": 2,
       "kind": "creature",
       "canonical_name": {
         "value": "Skeleton",
@@ -14147,7 +17020,727 @@
           "enemy_19"
         ]
       },
-      "source_excerpts": []
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "skeleton",
+        "public_display_name": "스켈레톤",
+        "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    }
+  },
+  "disclosure_checkpoints": {
+    "castle_arrival": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "prologue",
+        "milestone_id": "start_lore"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 293,
+          "line_end": 295
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "lord_briefing": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "lore_menace",
+        "milestone_id": "lord_background"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 305,
+          "line_end": 338
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "lord_assignment": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "lore_menace",
+        "milestone_id": "menace_request"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 339,
+          "line_end": 358
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "prisoner_account": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 158,
+          "line_end": 190
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "joe_request": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 191,
+          "line_end": 219
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "prison_guard_confrontation": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 197,
+          "line_end": 230
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "antares_testimony": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 105,
+          "line_end": 129
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "hunter_family_testimony": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 393,
+          "line_end": 396
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "polaris_offer": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 406,
+          "line_end": 435
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "mummy_encounter": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "lastditch_pyramid",
+        "milestone_id": "mummy_battle"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 529,
+          "line_end": 555
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "rigel_rescue": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 601,
+          "line_end": 658
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "hunter_offer": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 607,
+          "line_end": 639
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "world_prophecy": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 726,
+          "line_end": 788
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "gorgon_encounter": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 791,
+          "line_end": 811
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "quake_encounter": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "gaia_quake",
+        "milestone_id": "quake_battle"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 945,
+          "line_end": 963
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "red_antares_teaching": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1074,
+          "line_end": 1104
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "red_antares_offer": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1026,
+          "line_end": 1064
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "spica_teaching": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1275,
+          "line_end": 1296
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "spica_offer": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1208,
+          "line_end": 1268
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "draconian_account": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 44,
+          "line_end": 121
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "draconian_offer": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 123,
+          "line_end": 144
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "ancient_evil_guidance": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "shared_system_and_text",
+        "milestone_id": null
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 155,
+          "line_end": 184
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "astral_mud_account": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "muddy_seal",
+        "milestone_id": "astral_mud_seal"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1721,
+          "line_end": 1745
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "lava_advice": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "swamp_keep_lava_gate",
+        "milestone_id": "lord_lava_advice"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 235,
+          "line_end": 256
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "illusion_encounter": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "evil_concentration",
+        "milestone_id": "illusion_and_impostor"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1895,
+          "line_end": 1919
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "fortress_identity_revealed": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "evil_concentration",
+        "milestone_id": "illusion_and_impostor"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1953,
+          "line_end": 1965
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "dungeon_guard_encounter": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "dungeon_of_evil",
+        "milestone_id": "archidraconian_guard"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 283,
+          "line_end": 319
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "panzer_encounter": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "dungeon_of_evil",
+        "milestone_id": "panzer_viper"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 2029,
+          "line_end": 2043
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "joint_guidance": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "dungeon_of_evil",
+        "milestone_id": "panzer_viper"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 2049,
+          "line_end": 2065
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "black_knight_encounter": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "dungeon_of_evil",
+        "milestone_id": "black_knight_guard"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 323,
+          "line_end": 350
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "final_introduction": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "necromancer_finale",
+        "milestone_id": "final_introduction"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 2154,
+          "line_end": 2167
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "final_outcome": {
+      "field": "editing_checkpoint",
+      "value": {
+        "quest_id": "necromancer_finale",
+        "milestone_id": "final_outcome"
+      },
+      "origin": "inferred",
+      "status": "proposed",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 2182,
+          "line_end": 2199
+        }
+      ],
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원문 위치에 대응시킨 집필 공개 체크포인트. ID와 공개 경계는 편집자가 추가한 해석이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
     }
   }
 }

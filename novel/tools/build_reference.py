@@ -9,6 +9,7 @@ import hashlib
 import json
 import re
 from materials import ROOT, load_materials, read
+from disclosure import RELATION_ANALYSIS, compile_disclosure
 
 ANALYSIS = ROOT / "reference/analysis.json"
 BASELINE = ROOT / "reference/generated_manifest.json"
@@ -76,7 +77,7 @@ def build(analysis, catalog, templates):
     for spec in analysis["new_characters"]:
         key = spec["id"]
         citations = ranges(spec["ranges"])
-        name_literals = [l for l in all_literals if l["text"] == spec["name"] and any(
+        name_literals = [l for l in all_literals if spec["name"] is not None and l["text"] == spec["name"] and any(
             e["file"] == l["source"]["file"] and e["line_start"] <= l["source"]["line"] <= e["line_end"] for e in citations)]
         binary = [{"file": "FOEDATA.DAT", "record_index": i} for i in spec.get("templates", [])
                   if templates["records"][i-1]["name"] == spec["name"]]
@@ -84,7 +85,7 @@ def build(analysis, catalog, templates):
             "revision": 1, "kind": spec["kind"],
             "canonical_name": {"value": spec["name"], "origin": "source_exact" if name_literals or binary else "source_adaptation",
                                "literal_ids": [l["id"] for l in name_literals], "evidence": citations + binary},
-            "display_name": phonetics[spec["name"]] + (" (사칭자)" if key == "false_necromancer" else ""),
+            "display_name": spec.get("display_name") or phonetics[spec["name"]] + (" (사칭자)" if key == "false_necromancer" else ""),
             "aliases": [], "source_facts": [],
             "writing": {"status": "outline", "traits": [], "speech": [], "goals": [],
                         "boundaries": [], "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."},
@@ -138,7 +139,8 @@ def build(analysis, catalog, templates):
             if field not in ("traits", "speech", "goals"):
                 raise ValueError("writing_additions must use claim arrays")
             profile["writing"][field].extend(copy.deepcopy(additions))
-        profile["relationships"].extend(copy.deepcopy(spec.get("relationships_additions", [])))
+        if spec.get("relationships_additions"):
+            raise ValueError("move relationships_additions to characters/relationships.analysis.json with explicit disclosure policy")
         profile["writing"]["boundaries"] += ["나이는 원작에서 확인되지 않았다. 레벨이나 사망 수치를 나이로 사용하지 않는다.",
             "카드의 대사 근거에는 주변 인물/서술자의 말도 포함된다. 자기 대사로 바꾸거나 경로 지식에 자동 추가하지 않는다."]
         profile["resource_refs"] = {"equipment": spec.get("equipment", []),
@@ -149,7 +151,9 @@ def build(analysis, catalog, templates):
         profile["source_excerpts"] = [{"literal_id": l["id"], "text": l["text"]} for l in all_literals
             if l["text"] and l["role"] == "display_text_fragment" and any("line_start" in e and e["file"] == l["source"]["file"] and
             e["line_start"] <= l["source"]["line"] <= e["line_end"] for e in citations)]
-    registry = {"version": 2, "revision": analysis["preserved_profiles"]["revision"]+1, "characters": profiles}
+    checkpoints = compile_disclosure(profiles,read(RELATION_ANALYSIS),claim,ranges,metadata)
+    registry = {"version": 3, "revision": analysis["preserved_profiles"]["revision"]+1, "characters": profiles,
+                "disclosure_checkpoints":checkpoints}
     references = {category: {"version": 1, "revision": analysis["revision"], "category": category, "items": {}}
                   for category in ("equipment", "abilities", "bestiary")}
 

@@ -33,7 +33,7 @@ class IndependentNovelTest(unittest.TestCase):
     def test_validate_without_game_repository_or_root_tools(self):
         self.assertEqual([p.name for p in Path(self.temp.name).iterdir()], ["novel"])
         self.assertIn('"nodes": 6', self.run_tool("validate_story_authoring"))
-        self.assertEqual(json.loads(self.run_tool("characters"))["characters"], 48)
+        self.assertEqual(json.loads(self.run_tool("characters"))["characters"], 49)
         self.assertEqual(json.loads(self.run_tool("reference")), {"equipment": 20, "abilities": 45, "bestiary": 75})
 
     def test_path_context_without_original_files(self):
@@ -42,6 +42,12 @@ class IndependentNovelTest(unittest.TestCase):
         self.assertIn("mad_joe", accepted["character_profiles"])
         self.assertNotIn("mad_joe", direct["character_profiles"])
         self.assertEqual(accepted["state"]["companions.optional_recruits"], ["mad_joe"])
+
+    def test_spoiler_filtered_card_without_game_sources(self):
+        card = json.loads(self.run_tool("characters","--view","writer","--character","false_necromancer","--events","illusion_encounter"))
+        self.assertEqual(list(card),["fortress_mage"])
+        self.assertEqual(card["fortress_mage"]["relationships"],[])
+        self.assertNotIn("사칭자",json.dumps(card,ensure_ascii=False))
 
     def test_all_original_text_is_reconstructable_from_snapshot(self):
         catalog, manifest = load_materials()
