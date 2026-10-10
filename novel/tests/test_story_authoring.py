@@ -10,8 +10,8 @@ from validate_story_authoring import ROOT, validate
 class StoryAuthoringTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.sample = json.loads((ROOT / "novel/authoring/drafts/prologue.json").read_text())
-        cls.catalog = json.loads((ROOT / "story_material/scripts.json").read_text())
+        cls.sample = json.loads((ROOT / "authoring/drafts/prologue.json").read_text())
+        cls.catalog = json.loads((ROOT / "materials/scripts.json").read_text())
 
     def setUp(self):
         self.doc = copy.deepcopy(self.sample)

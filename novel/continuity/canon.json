@@ -1,11 +1,6 @@
 {
-  "version": 1, "revision": 1,
-  "characters": {
-    "protagonist": "이름 미정 주인공",
-    "lord_ahn": "Lord Ahn", "mad_joe": "Mad Joe",
-    "veteran": "특공대에 친구들을 보낸 주점 인물",
-    "prisoner": "Ancient Evil에 관해 증언하는 수감자"
-  },
+  "version": 2, "revision": 2,
+  "character_registry": "characters/registry.json",
   "facts": [
     {"id": "squad_whereabouts", "revision": 1,
       "statement": "LORE 특공대의 현재 행방과 생사는 미확정이다.", "kind": "world_fact", "status": "unknown", "attributed_to": null,

@@ -1,0 +1,1752 @@
+{
+  "id": "wivern_passage",
+  "title": "WIVERN과 다음 대륙으로의 통로",
+  "kind": "main_passage",
+  "maps": [
+    16
+  ],
+  "state_slots": [
+    37
+  ],
+  "milestones": [
+    {
+      "id": "wivern_fight",
+      "summary": "Wivern 세 마리의 남은 개체 수를 상태에 보존하며 재도전할 수 있다.",
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 978,
+          "line_end": 1001
+        }
+      ],
+      "related_script_ids": [
+        "scene:LORESPEC.PAS:966:40085"
+      ],
+      "original_display_events": [
+        {
+          "statement_id": "LORESPEC.PAS:986:40731",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line_start": 986,
+            "line_end": 986,
+            "offset_start": 40731,
+            "offset_end": 40769
+          },
+          "call": "print",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            }
+          ],
+          "speaker": null,
+          "parts": [
+            {
+              "kind": "literal",
+              "text": "당신은 "
+            },
+            {
+              "kind": "expression",
+              "source_expression": "s"
+            },
+            {
+              "kind": "literal",
+              "text": "마리의 Wivern과 마주쳤다."
+            }
+          ],
+          "text_template": "당신은 {{s}}마리의 Wivern과 마주쳤다.",
+          "fully_literal": false,
+          "original_statement": "Print(11,'당신은 '+s+'마리의 Wivern과 마주쳤다.')"
+        },
+        {
+          "statement_id": "LORESPEC.PAS:1001:41382",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line_start": 1001,
+            "line_end": 1001,
+            "offset_start": 41382,
+            "offset_end": 41417
+          },
+          "call": "message",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": false
+            }
+          ],
+          "speaker": null,
+          "parts": [
+            {
+              "kind": "literal",
+              "text": "여기에는 Wivern의 시체만이 있다."
+            }
+          ],
+          "text_template": "여기에는 Wivern의 시체만이 있다.",
+          "fully_literal": true,
+          "original_statement": "message(15,'여기에는 Wivern의 시체만이 있다.')"
+        }
+      ],
+      "original_literal_occurrences": [
+        {
+          "id": "LORESPEC.PAS:literal:40541",
+          "text": "",
+          "pascal_literal": "''",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 980,
+            "offset_start": 40541,
+            "offset_end": 40543
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESPEC.PAS:980:40536",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40615",
+          "text": "한",
+          "pascal_literal": "'한'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 982,
+            "offset_start": 40615,
+            "offset_end": 40618
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESPEC.PAS:982:40610",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            },
+            {
+              "kind": "case",
+              "expression": "party.etc[37]",
+              "label": "2"
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40650",
+          "text": "두",
+          "pascal_literal": "'두'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 983,
+            "offset_start": 40650,
+            "offset_end": 40653
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESPEC.PAS:983:40645",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            },
+            {
+              "kind": "case",
+              "expression": "party.etc[37]",
+              "label": "1"
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40685",
+          "text": "세",
+          "pascal_literal": "'세'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 984,
+            "offset_start": 40685,
+            "offset_end": 40688
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESPEC.PAS:984:40680",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            },
+            {
+              "kind": "case",
+              "expression": "party.etc[37]",
+              "label": "0"
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40740",
+          "text": "당신은 ",
+          "pascal_literal": "'당신은 '",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 986,
+            "offset_start": 40740,
+            "offset_end": 40746
+          },
+          "role": "display_text_fragment",
+          "statement_id": "LORESPEC.PAS:986:40731",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40749",
+          "text": "마리의 Wivern과 마주쳤다.",
+          "pascal_literal": "'마리의 Wivern과 마주쳤다.'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 986,
+            "offset_start": 40749,
+            "offset_end": 40768
+          },
+          "role": "display_text_fragment",
+          "statement_id": "LORESPEC.PAS:986:40731",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:41393",
+          "text": "여기에는 Wivern의 시체만이 있다.",
+          "pascal_literal": "'여기에는 Wivern의 시체만이 있다.'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 1001,
+            "offset_start": 41393,
+            "offset_end": 41416
+          },
+          "role": "display_text_fragment",
+          "statement_id": "LORESPEC.PAS:1001:41382",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "water_passage",
+      "summary": "WIVERN에서 WATER FIELD로 들어가는 지도 전환이 있다.",
+      "evidence": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 187,
+          "line_end": 193
+        }
+      ],
+      "related_script_ids": [
+        "scene:LOREENT.PAS:187:6300"
+      ],
+      "original_display_events": [],
+      "original_literal_occurrences": [
+        {
+          "id": "LOREENT.PAS:literal:6313",
+          "text": "WATER FIELD",
+          "pascal_literal": "'WATER FIELD'",
+          "source": {
+            "file": "LOREENT.PAS",
+            "line": 187,
+            "offset_start": 6313,
+            "offset_end": 6326
+          },
+          "role": "declaration_or_control_expression",
+          "statement_id": null,
+          "routine_id": null,
+          "branch_context": []
+        }
+      ]
+    }
+  ],
+  "status": "source_research_not_finished_story",
+  "order_policy": "source_order_within_branches; no universal play order",
+  "scripts": [
+    {
+      "id": "scene:LOREBATT.PAS:1204:41980",
+      "routine_id": "LOREBATT.PAS::randomenemy",
+      "maps": [
+        16
+      ],
+      "source": {
+        "file": "LOREBATT.PAS",
+        "line_start": 1204,
+        "line_end": 1204,
+        "offset_start": 41980,
+        "offset_end": 42013
+      },
+      "entry_context": [
+        {
+          "kind": "case",
+          "expression": "party.map",
+          "label": "16"
+        }
+      ],
+      "coordinate_tests": [],
+      "original_source": "begin range := 5; plus := 28; end",
+      "structure": {
+        "id": "LOREBATT.PAS:1204:41980",
+        "kind": "sequence",
+        "source": {
+          "file": "LOREBATT.PAS",
+          "line_start": 1204,
+          "line_end": 1204,
+          "offset_start": 41980,
+          "offset_end": 42013
+        },
+        "children": [
+          {
+            "id": "LOREBATT.PAS:1204:41986",
+            "kind": "statement",
+            "source": {
+              "file": "LOREBATT.PAS",
+              "line_start": 1204,
+              "line_end": 1204,
+              "offset_start": 41986,
+              "offset_end": 41996
+            },
+            "code": "range := 5"
+          },
+          {
+            "id": "LOREBATT.PAS:1204:41998",
+            "kind": "statement",
+            "source": {
+              "file": "LOREBATT.PAS",
+              "line_start": 1204,
+              "line_end": 1204,
+              "offset_start": 41998,
+              "offset_end": 42008
+            },
+            "code": "plus := 28"
+          }
+        ]
+      },
+      "text_occurrences": [],
+      "state_changes": [],
+      "display_events": [],
+      "calls": [],
+      "called_routine_candidates": {}
+    },
+    {
+      "id": "scene:LOREENT.PAS:187:6300",
+      "routine_id": "LOREENT.PAS::entermode",
+      "maps": [
+        16
+      ],
+      "source": {
+        "file": "LOREENT.PAS",
+        "line_start": 187,
+        "line_end": 193,
+        "offset_start": 6300,
+        "offset_end": 6552
+      },
+      "entry_context": [
+        {
+          "kind": "case",
+          "expression": "party.map",
+          "label": "16"
+        }
+      ],
+      "coordinate_tests": [],
+      "original_source": "if wantenter('WATER FIELD') then begin\r\n              with party do begin\r\n                 map := 10; xaxis := 26; yaxis := 8;\r\n              end;\r\n              load;\r\n              if party.etc[38] and bit4 > 0 then map[40,56] := 44;\r\n           end",
+      "structure": {
+        "id": "LOREENT.PAS:187:6300",
+        "kind": "if",
+        "source": {
+          "file": "LOREENT.PAS",
+          "line_start": 187,
+          "line_end": 193,
+          "offset_start": 6300,
+          "offset_end": 6552
+        },
+        "expression": "wantenter('WATER FIELD')",
+        "then": {
+          "id": "LOREENT.PAS:187:6333",
+          "kind": "sequence",
+          "source": {
+            "file": "LOREENT.PAS",
+            "line_start": 187,
+            "line_end": 193,
+            "offset_start": 6333,
+            "offset_end": 6552
+          },
+          "children": [
+            {
+              "id": "LOREENT.PAS:188:6354",
+              "kind": "with",
+              "source": {
+                "file": "LOREENT.PAS",
+                "line_start": 188,
+                "line_end": 190,
+                "offset_start": 6354,
+                "offset_end": 6446
+              },
+              "expression": "party",
+              "body": {
+                "id": "LOREENT.PAS:188:6368",
+                "kind": "sequence",
+                "source": {
+                  "file": "LOREENT.PAS",
+                  "line_start": 188,
+                  "line_end": 190,
+                  "offset_start": 6368,
+                  "offset_end": 6446
+                },
+                "children": [
+                  {
+                    "id": "LOREENT.PAS:189:6392",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LOREENT.PAS",
+                      "line_start": 189,
+                      "line_end": 189,
+                      "offset_start": 6392,
+                      "offset_end": 6401
+                    },
+                    "code": "map := 10"
+                  },
+                  {
+                    "id": "LOREENT.PAS:189:6403",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LOREENT.PAS",
+                      "line_start": 189,
+                      "line_end": 189,
+                      "offset_start": 6403,
+                      "offset_end": 6414
+                    },
+                    "code": "xaxis := 26"
+                  },
+                  {
+                    "id": "LOREENT.PAS:189:6416",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LOREENT.PAS",
+                      "line_start": 189,
+                      "line_end": 189,
+                      "offset_start": 6416,
+                      "offset_end": 6426
+                    },
+                    "code": "yaxis := 8"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "LOREENT.PAS:191:6463",
+              "kind": "statement",
+              "source": {
+                "file": "LOREENT.PAS",
+                "line_start": 191,
+                "line_end": 191,
+                "offset_start": 6463,
+                "offset_end": 6467
+              },
+              "code": "load"
+            },
+            {
+              "id": "LOREENT.PAS:192:6484",
+              "kind": "if",
+              "source": {
+                "file": "LOREENT.PAS",
+                "line_start": 192,
+                "line_end": 192,
+                "offset_start": 6484,
+                "offset_end": 6535
+              },
+              "expression": "party.etc[38] and bit4 > 0",
+              "then": {
+                "id": "LOREENT.PAS:192:6519",
+                "kind": "statement",
+                "source": {
+                  "file": "LOREENT.PAS",
+                  "line_start": 192,
+                  "line_end": 192,
+                  "offset_start": 6519,
+                  "offset_end": 6535
+                },
+                "code": "map[40,56] := 44"
+              },
+              "else": null
+            }
+          ]
+        },
+        "else": null
+      },
+      "text_occurrences": [
+        {
+          "id": "LOREENT.PAS:literal:6313",
+          "text": "WATER FIELD",
+          "pascal_literal": "'WATER FIELD'",
+          "source": {
+            "file": "LOREENT.PAS",
+            "line": 187,
+            "offset_start": 6313,
+            "offset_end": 6326
+          },
+          "role": "declaration_or_control_expression",
+          "statement_id": null,
+          "routine_id": null,
+          "branch_context": []
+        }
+      ],
+      "state_changes": [],
+      "display_events": [],
+      "calls": [
+        "load",
+        "wantenter"
+      ],
+      "called_routine_candidates": {
+        "load": [
+          "LORESUB.PAS::load"
+        ],
+        "wantenter": [
+          "LORESUB.PAS::wantenter"
+        ]
+      }
+    },
+    {
+      "id": "scene:LORESPEC.PAS:966:40085",
+      "routine_id": "LORESPEC.PAS::specialevent_part1",
+      "maps": [
+        16
+      ],
+      "source": {
+        "file": "LORESPEC.PAS",
+        "line_start": 966,
+        "line_end": 1002,
+        "offset_start": 40085,
+        "offset_end": 41434
+      },
+      "entry_context": [
+        {
+          "kind": "case",
+          "expression": "party.map",
+          "label": "16"
+        }
+      ],
+      "coordinate_tests": [],
+      "original_source": "begin\r\n              Clear;\r\n              if y = 36 then\r\n              if wantexit then begin\r\n                 with party do begin\r\n                    xaxis := 44; yaxis := 8; map := 2;\r\n                 end;\r\n                 load; scroll(TRUE);\r\n              end\r\n              else begin\r\n                 dec(y); scroll(TRUE);\r\n              end;\r\n              if y = 10 then\r\n              if party.etc[37] < 3 then begin\r\n                 s := '';\r\n                 case party.etc[37] of\r\n                    2 : s := '한';\r\n                    1 : s := '두';\r\n                    0 : s := '세';\r\n                 end;\r\n                 Print(11,'당신은 '+s+'마리의 Wivern과 마주쳤다.');\r\n                 PressAnyKey;\r\n                 enemynumber := 3 - party.etc[37];\r\n                 for i := 1 to enemynumber do joinenemy(i,43);\r\n                 Displayenemies(TRUE);\r\n                 BattleMode(FALSE);\r\n                 if party.etc[6] = 255 then exit;\r\n                 if party.etc[6] = 0 then party.etc[37] := 3\r\n                 else begin\r\n                    j := 0;\r\n                    for i := 1 to enemynumber do if not enemy[i].dead then inc(j);\r\n                    party.etc[37] := 3 - j;\r\n                 end;\r\n                 Clear;\r\n              end\r\n              else message(15,'여기에는 Wivern의 시체만이 있다.');\r\n           end",
+      "structure": {
+        "id": "LORESPEC.PAS:966:40085",
+        "kind": "sequence",
+        "source": {
+          "file": "LORESPEC.PAS",
+          "line_start": 966,
+          "line_end": 1002,
+          "offset_start": 40085,
+          "offset_end": 41434
+        },
+        "children": [
+          {
+            "id": "LORESPEC.PAS:967:40106",
+            "kind": "statement",
+            "source": {
+              "file": "LORESPEC.PAS",
+              "line_start": 967,
+              "line_end": 967,
+              "offset_start": 40106,
+              "offset_end": 40111
+            },
+            "code": "Clear"
+          },
+          {
+            "id": "LORESPEC.PAS:968:40128",
+            "kind": "if",
+            "source": {
+              "file": "LORESPEC.PAS",
+              "line_start": 968,
+              "line_end": 977,
+              "offset_start": 40128,
+              "offset_end": 40439
+            },
+            "expression": "y = 36",
+            "then": {
+              "id": "LORESPEC.PAS:969:40158",
+              "kind": "if",
+              "source": {
+                "file": "LORESPEC.PAS",
+                "line_start": 969,
+                "line_end": 977,
+                "offset_start": 40158,
+                "offset_end": 40439
+              },
+              "expression": "wantexit",
+              "then": {
+                "id": "LORESPEC.PAS:969:40175",
+                "kind": "sequence",
+                "source": {
+                  "file": "LORESPEC.PAS",
+                  "line_start": 969,
+                  "line_end": 974,
+                  "offset_start": 40175,
+                  "offset_end": 40354
+                },
+                "children": [
+                  {
+                    "id": "LORESPEC.PAS:970:40199",
+                    "kind": "with",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 970,
+                      "line_end": 972,
+                      "offset_start": 40199,
+                      "offset_end": 40296
+                    },
+                    "expression": "party",
+                    "body": {
+                      "id": "LORESPEC.PAS:970:40213",
+                      "kind": "sequence",
+                      "source": {
+                        "file": "LORESPEC.PAS",
+                        "line_start": 970,
+                        "line_end": 972,
+                        "offset_start": 40213,
+                        "offset_end": 40296
+                      },
+                      "children": [
+                        {
+                          "id": "LORESPEC.PAS:971:40240",
+                          "kind": "statement",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 971,
+                            "line_end": 971,
+                            "offset_start": 40240,
+                            "offset_end": 40251
+                          },
+                          "code": "xaxis := 44"
+                        },
+                        {
+                          "id": "LORESPEC.PAS:971:40253",
+                          "kind": "statement",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 971,
+                            "line_end": 971,
+                            "offset_start": 40253,
+                            "offset_end": 40263
+                          },
+                          "code": "yaxis := 8"
+                        },
+                        {
+                          "id": "LORESPEC.PAS:971:40265",
+                          "kind": "statement",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 971,
+                            "line_end": 971,
+                            "offset_start": 40265,
+                            "offset_end": 40273
+                          },
+                          "code": "map := 2"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "LORESPEC.PAS:973:40316",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 973,
+                      "line_end": 973,
+                      "offset_start": 40316,
+                      "offset_end": 40320
+                    },
+                    "code": "load"
+                  },
+                  {
+                    "id": "LORESPEC.PAS:973:40322",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 973,
+                      "line_end": 973,
+                      "offset_start": 40322,
+                      "offset_end": 40334
+                    },
+                    "code": "scroll(TRUE)"
+                  }
+                ]
+              },
+              "else": {
+                "id": "LORESPEC.PAS:975:40375",
+                "kind": "sequence",
+                "source": {
+                  "file": "LORESPEC.PAS",
+                  "line_start": 975,
+                  "line_end": 977,
+                  "offset_start": 40375,
+                  "offset_end": 40439
+                },
+                "children": [
+                  {
+                    "id": "LORESPEC.PAS:976:40399",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 976,
+                      "line_end": 976,
+                      "offset_start": 40399,
+                      "offset_end": 40405
+                    },
+                    "code": "dec(y)"
+                  },
+                  {
+                    "id": "LORESPEC.PAS:976:40407",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 976,
+                      "line_end": 976,
+                      "offset_start": 40407,
+                      "offset_end": 40419
+                    },
+                    "code": "scroll(TRUE)"
+                  }
+                ]
+              }
+            },
+            "else": null
+          },
+          {
+            "id": "LORESPEC.PAS:978:40456",
+            "kind": "if",
+            "source": {
+              "file": "LORESPEC.PAS",
+              "line_start": 978,
+              "line_end": 1001,
+              "offset_start": 40456,
+              "offset_end": 41417
+            },
+            "expression": "y = 10",
+            "then": {
+              "id": "LORESPEC.PAS:979:40486",
+              "kind": "if",
+              "source": {
+                "file": "LORESPEC.PAS",
+                "line_start": 979,
+                "line_end": 1001,
+                "offset_start": 40486,
+                "offset_end": 41417
+              },
+              "expression": "party.etc[37] < 3",
+              "then": {
+                "id": "LORESPEC.PAS:979:40512",
+                "kind": "sequence",
+                "source": {
+                  "file": "LORESPEC.PAS",
+                  "line_start": 979,
+                  "line_end": 1000,
+                  "offset_start": 40512,
+                  "offset_end": 41361
+                },
+                "children": [
+                  {
+                    "id": "LORESPEC.PAS:980:40536",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 980,
+                      "line_end": 980,
+                      "offset_start": 40536,
+                      "offset_end": 40543
+                    },
+                    "code": "s := ''"
+                  },
+                  {
+                    "id": "LORESPEC.PAS:981:40563",
+                    "kind": "case",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 981,
+                      "line_end": 985,
+                      "offset_start": 40563,
+                      "offset_end": 40711
+                    },
+                    "expression": "party.etc[37]",
+                    "arms": [
+                      {
+                        "label": "2",
+                        "body": {
+                          "id": "LORESPEC.PAS:982:40610",
+                          "kind": "statement",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 982,
+                            "line_end": 982,
+                            "offset_start": 40610,
+                            "offset_end": 40618
+                          },
+                          "code": "s := '한'"
+                        },
+                        "line": 982
+                      },
+                      {
+                        "label": "1",
+                        "body": {
+                          "id": "LORESPEC.PAS:983:40645",
+                          "kind": "statement",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 983,
+                            "line_end": 983,
+                            "offset_start": 40645,
+                            "offset_end": 40653
+                          },
+                          "code": "s := '두'"
+                        },
+                        "line": 983
+                      },
+                      {
+                        "label": "0",
+                        "body": {
+                          "id": "LORESPEC.PAS:984:40680",
+                          "kind": "statement",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 984,
+                            "line_end": 984,
+                            "offset_start": 40680,
+                            "offset_end": 40688
+                          },
+                          "code": "s := '세'"
+                        },
+                        "line": 984
+                      }
+                    ]
+                  },
+                  {
+                    "id": "LORESPEC.PAS:986:40731",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 986,
+                      "line_end": 986,
+                      "offset_start": 40731,
+                      "offset_end": 40769
+                    },
+                    "code": "Print(11,'당신은 '+s+'마리의 Wivern과 마주쳤다.')"
+                  },
+                  {
+                    "id": "LORESPEC.PAS:987:40789",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 987,
+                      "line_end": 987,
+                      "offset_start": 40789,
+                      "offset_end": 40800
+                    },
+                    "code": "PressAnyKey"
+                  },
+                  {
+                    "id": "LORESPEC.PAS:988:40820",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 988,
+                      "line_end": 988,
+                      "offset_start": 40820,
+                      "offset_end": 40852
+                    },
+                    "code": "enemynumber := 3 - party.etc[37]"
+                  },
+                  {
+                    "id": "LORESPEC.PAS:989:40872",
+                    "kind": "for",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 989,
+                      "line_end": 989,
+                      "offset_start": 40872,
+                      "offset_end": 40916
+                    },
+                    "expression": "i := 1 to enemynumber",
+                    "body": {
+                      "id": "LORESPEC.PAS:989:40901",
+                      "kind": "statement",
+                      "source": {
+                        "file": "LORESPEC.PAS",
+                        "line_start": 989,
+                        "line_end": 989,
+                        "offset_start": 40901,
+                        "offset_end": 40916
+                      },
+                      "code": "joinenemy(i,43)"
+                    }
+                  },
+                  {
+                    "id": "LORESPEC.PAS:990:40936",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 990,
+                      "line_end": 990,
+                      "offset_start": 40936,
+                      "offset_end": 40956
+                    },
+                    "code": "Displayenemies(TRUE)"
+                  },
+                  {
+                    "id": "LORESPEC.PAS:991:40976",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 991,
+                      "line_end": 991,
+                      "offset_start": 40976,
+                      "offset_end": 40993
+                    },
+                    "code": "BattleMode(FALSE)"
+                  },
+                  {
+                    "id": "LORESPEC.PAS:992:41013",
+                    "kind": "if",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 992,
+                      "line_end": 992,
+                      "offset_start": 41013,
+                      "offset_end": 41044
+                    },
+                    "expression": "party.etc[6] = 255",
+                    "then": {
+                      "id": "LORESPEC.PAS:992:41040",
+                      "kind": "statement",
+                      "source": {
+                        "file": "LORESPEC.PAS",
+                        "line_start": 992,
+                        "line_end": 992,
+                        "offset_start": 41040,
+                        "offset_end": 41044
+                      },
+                      "code": "exit"
+                    },
+                    "else": null
+                  },
+                  {
+                    "id": "LORESPEC.PAS:993:41064",
+                    "kind": "if",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 993,
+                      "line_end": 998,
+                      "offset_start": 41064,
+                      "offset_end": 41316
+                    },
+                    "expression": "party.etc[6] = 0",
+                    "then": {
+                      "id": "LORESPEC.PAS:993:41089",
+                      "kind": "statement",
+                      "source": {
+                        "file": "LORESPEC.PAS",
+                        "line_start": 993,
+                        "line_end": 993,
+                        "offset_start": 41089,
+                        "offset_end": 41107
+                      },
+                      "code": "party.etc[37] := 3"
+                    },
+                    "else": {
+                      "id": "LORESPEC.PAS:994:41131",
+                      "kind": "sequence",
+                      "source": {
+                        "file": "LORESPEC.PAS",
+                        "line_start": 994,
+                        "line_end": 998,
+                        "offset_start": 41131,
+                        "offset_end": 41316
+                      },
+                      "children": [
+                        {
+                          "id": "LORESPEC.PAS:995:41158",
+                          "kind": "statement",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 995,
+                            "line_end": 995,
+                            "offset_start": 41158,
+                            "offset_end": 41164
+                          },
+                          "code": "j := 0"
+                        },
+                        {
+                          "id": "LORESPEC.PAS:996:41187",
+                          "kind": "for",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 996,
+                            "line_end": 996,
+                            "offset_start": 41187,
+                            "offset_end": 41248
+                          },
+                          "expression": "i := 1 to enemynumber",
+                          "body": {
+                            "id": "LORESPEC.PAS:996:41216",
+                            "kind": "if",
+                            "source": {
+                              "file": "LORESPEC.PAS",
+                              "line_start": 996,
+                              "line_end": 996,
+                              "offset_start": 41216,
+                              "offset_end": 41248
+                            },
+                            "expression": "not enemy[i].dead",
+                            "then": {
+                              "id": "LORESPEC.PAS:996:41242",
+                              "kind": "statement",
+                              "source": {
+                                "file": "LORESPEC.PAS",
+                                "line_start": 996,
+                                "line_end": 996,
+                                "offset_start": 41242,
+                                "offset_end": 41248
+                              },
+                              "code": "inc(j)"
+                            },
+                            "else": null
+                          }
+                        },
+                        {
+                          "id": "LORESPEC.PAS:997:41271",
+                          "kind": "statement",
+                          "source": {
+                            "file": "LORESPEC.PAS",
+                            "line_start": 997,
+                            "line_end": 997,
+                            "offset_start": 41271,
+                            "offset_end": 41293
+                          },
+                          "code": "party.etc[37] := 3 - j"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "id": "LORESPEC.PAS:999:41336",
+                    "kind": "statement",
+                    "source": {
+                      "file": "LORESPEC.PAS",
+                      "line_start": 999,
+                      "line_end": 999,
+                      "offset_start": 41336,
+                      "offset_end": 41341
+                    },
+                    "code": "Clear"
+                  }
+                ]
+              },
+              "else": {
+                "id": "LORESPEC.PAS:1001:41382",
+                "kind": "statement",
+                "source": {
+                  "file": "LORESPEC.PAS",
+                  "line_start": 1001,
+                  "line_end": 1001,
+                  "offset_start": 41382,
+                  "offset_end": 41417
+                },
+                "code": "message(15,'여기에는 Wivern의 시체만이 있다.')"
+              }
+            },
+            "else": null
+          }
+        ]
+      },
+      "text_occurrences": [
+        {
+          "id": "LORESPEC.PAS:literal:40541",
+          "text": "",
+          "pascal_literal": "''",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 980,
+            "offset_start": 40541,
+            "offset_end": 40543
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESPEC.PAS:980:40536",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40615",
+          "text": "한",
+          "pascal_literal": "'한'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 982,
+            "offset_start": 40615,
+            "offset_end": 40618
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESPEC.PAS:982:40610",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            },
+            {
+              "kind": "case",
+              "expression": "party.etc[37]",
+              "label": "2"
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40650",
+          "text": "두",
+          "pascal_literal": "'두'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 983,
+            "offset_start": 40650,
+            "offset_end": 40653
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESPEC.PAS:983:40645",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            },
+            {
+              "kind": "case",
+              "expression": "party.etc[37]",
+              "label": "1"
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40685",
+          "text": "세",
+          "pascal_literal": "'세'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 984,
+            "offset_start": 40685,
+            "offset_end": 40688
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESPEC.PAS:984:40680",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            },
+            {
+              "kind": "case",
+              "expression": "party.etc[37]",
+              "label": "0"
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40740",
+          "text": "당신은 ",
+          "pascal_literal": "'당신은 '",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 986,
+            "offset_start": 40740,
+            "offset_end": 40746
+          },
+          "role": "display_text_fragment",
+          "statement_id": "LORESPEC.PAS:986:40731",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:40749",
+          "text": "마리의 Wivern과 마주쳤다.",
+          "pascal_literal": "'마리의 Wivern과 마주쳤다.'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 986,
+            "offset_start": 40749,
+            "offset_end": 40768
+          },
+          "role": "display_text_fragment",
+          "statement_id": "LORESPEC.PAS:986:40731",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            }
+          ]
+        },
+        {
+          "id": "LORESPEC.PAS:literal:41393",
+          "text": "여기에는 Wivern의 시체만이 있다.",
+          "pascal_literal": "'여기에는 Wivern의 시체만이 있다.'",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line": 1001,
+            "offset_start": 41393,
+            "offset_end": 41416
+          },
+          "role": "display_text_fragment",
+          "statement_id": "LORESPEC.PAS:1001:41382",
+          "routine_id": "LORESPEC.PAS::specialevent_part1",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": false
+            }
+          ]
+        }
+      ],
+      "state_changes": [
+        {
+          "slot": 37,
+          "operation": "assign",
+          "value_expression": "3",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line_start": 993,
+            "line_end": 993,
+            "offset_start": 41089,
+            "offset_end": 41107
+          },
+          "statement_id": "LORESPEC.PAS:993:41089",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[6] = 0",
+              "outcome": true
+            }
+          ],
+          "assigned_state": 3
+        },
+        {
+          "slot": 37,
+          "operation": "assign",
+          "value_expression": "3 - j",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line_start": 997,
+            "line_end": 997,
+            "offset_start": 41271,
+            "offset_end": 41293
+          },
+          "statement_id": "LORESPEC.PAS:997:41271",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[6] = 0",
+              "outcome": false
+            }
+          ]
+        }
+      ],
+      "display_events": [
+        {
+          "statement_id": "LORESPEC.PAS:986:40731",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line_start": 986,
+            "line_end": 986,
+            "offset_start": 40731,
+            "offset_end": 40769
+          },
+          "call": "print",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": true
+            }
+          ],
+          "speaker": null,
+          "parts": [
+            {
+              "kind": "literal",
+              "text": "당신은 "
+            },
+            {
+              "kind": "expression",
+              "source_expression": "s"
+            },
+            {
+              "kind": "literal",
+              "text": "마리의 Wivern과 마주쳤다."
+            }
+          ],
+          "text_template": "당신은 {{s}}마리의 Wivern과 마주쳤다.",
+          "fully_literal": false,
+          "original_statement": "Print(11,'당신은 '+s+'마리의 Wivern과 마주쳤다.')"
+        },
+        {
+          "statement_id": "LORESPEC.PAS:1001:41382",
+          "source": {
+            "file": "LORESPEC.PAS",
+            "line_start": 1001,
+            "line_end": 1001,
+            "offset_start": 41382,
+            "offset_end": 41417
+          },
+          "call": "message",
+          "branch_context": [
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            },
+            {
+              "kind": "if",
+              "expression": "y = 10",
+              "outcome": true
+            },
+            {
+              "kind": "if",
+              "expression": "party.etc[37] < 3",
+              "outcome": false
+            }
+          ],
+          "speaker": null,
+          "parts": [
+            {
+              "kind": "literal",
+              "text": "여기에는 Wivern의 시체만이 있다."
+            }
+          ],
+          "text_template": "여기에는 Wivern의 시체만이 있다.",
+          "fully_literal": true,
+          "original_statement": "message(15,'여기에는 Wivern의 시체만이 있다.')"
+        }
+      ],
+      "calls": [
+        "battlemode",
+        "clear",
+        "dec",
+        "displayenemies",
+        "exit",
+        "inc",
+        "joinenemy",
+        "load",
+        "message",
+        "pressanykey",
+        "print",
+        "scroll"
+      ],
+      "called_routine_candidates": {
+        "battlemode": [
+          "LOREBATT.PAS::battlemode"
+        ],
+        "clear": [
+          "LORESUB.PAS::clear"
+        ],
+        "displayenemies": [
+          "LOREBATT.PAS::displayenemies"
+        ],
+        "joinenemy": [
+          "LORESUB.PAS::joinenemy"
+        ],
+        "load": [
+          "LORESUB.PAS::load"
+        ],
+        "message": [
+          "LORESUB.PAS::message"
+        ],
+        "pressanykey": [
+          "LORESUB.PAS::pressanykey"
+        ],
+        "print": [
+          "LORESUB.PAS::print"
+        ],
+        "scroll": [
+          "LORESUB.PAS::scroll"
+        ]
+      }
+    },
+    {
+      "id": "scene:LORESUB.PAS:1693:49598",
+      "routine_id": "LORESUB.PAS::load",
+      "maps": [
+        16
+      ],
+      "source": {
+        "file": "LORESUB.PAS",
+        "line_start": 1693,
+        "line_end": 1693,
+        "offset_start": 49598,
+        "offset_end": 49609
+      },
+      "entry_context": [
+        {
+          "kind": "if",
+          "expression": "(existfile = '') or LoadFont",
+          "outcome": true
+        },
+        {
+          "kind": "case",
+          "expression": "party.map",
+          "label": "16"
+        }
+      ],
+      "coordinate_tests": [],
+      "original_source": "s := 'den3'",
+      "structure": {
+        "id": "LORESUB.PAS:1693:49598",
+        "kind": "statement",
+        "source": {
+          "file": "LORESUB.PAS",
+          "line_start": 1693,
+          "line_end": 1693,
+          "offset_start": 49598,
+          "offset_end": 49609
+        },
+        "code": "s := 'den3'"
+      },
+      "text_occurrences": [
+        {
+          "id": "LORESUB.PAS:literal:49603",
+          "text": "den3",
+          "pascal_literal": "'den3'",
+          "source": {
+            "file": "LORESUB.PAS",
+            "line": 1693,
+            "offset_start": 49603,
+            "offset_end": 49609
+          },
+          "role": "text_variable_fragment",
+          "statement_id": "LORESUB.PAS:1693:49598",
+          "routine_id": "LORESUB.PAS::load",
+          "branch_context": [
+            {
+              "kind": "if",
+              "expression": "(existfile = '') or LoadFont",
+              "outcome": true
+            },
+            {
+              "kind": "case",
+              "expression": "party.map",
+              "label": "16"
+            }
+          ]
+        }
+      ],
+      "state_changes": [],
+      "display_events": [],
+      "calls": [],
+      "called_routine_candidates": {}
+    },
+    {
+      "id": "scene:LORESUB.PAS:1725:50597",
+      "routine_id": "LORESUB.PAS::load",
+      "maps": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        25
+      ],
+      "source": {
+        "file": "LORESUB.PAS",
+        "line_start": 1725,
+        "line_end": 1725,
+        "offset_start": 50597,
+        "offset_end": 50612
+      },
+      "entry_context": [
+        {
+          "kind": "case",
+          "expression": "party.map",
+          "label": "11..20,25"
+        }
+      ],
+      "coordinate_tests": [],
+      "original_source": "position := den",
+      "structure": {
+        "id": "LORESUB.PAS:1725:50597",
+        "kind": "statement",
+        "source": {
+          "file": "LORESUB.PAS",
+          "line_start": 1725,
+          "line_end": 1725,
+          "offset_start": 50597,
+          "offset_end": 50612
+        },
+        "code": "position := den"
+      },
+      "text_occurrences": [],
+      "state_changes": [],
+      "display_events": [],
+      "calls": [],
+      "called_routine_candidates": {}
+    }
+  ],
+  "writing_workspace": {
+    "opening": "",
+    "connecting_narrative": "",
+    "ending": ""
+  },
+  "bridge_slots": [
+    {
+      "from_milestone": "wivern_fight",
+      "to_milestone": "water_passage",
+      "purpose": "이동·시간 경과·동기를 연결하되 원문 대사와 조건을 바꾸지 않는다.",
+      "source_facts": [
+        "Wivern 세 마리의 남은 개체 수를 상태에 보존하며 재도전할 수 있다.",
+        "WIVERN에서 WATER FIELD로 들어가는 지도 전환이 있다."
+      ],
+      "draft": ""
+    }
+  ]
+}

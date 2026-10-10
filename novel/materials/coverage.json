@@ -1,0 +1,32 @@
+{
+  "source_files": 14,
+  "source_literal_occurrences": 2483,
+  "scenes": 307,
+  "quest_packages": 18,
+  "literal_roles": {
+    "declaration_or_control_expression": 249,
+    "other_literal": 185,
+    "text_variable_fragment": 103,
+    "display_text_fragment": 1765,
+    "choice_label_or_prompt": 181
+  },
+  "control_sites": {
+    "if": 1322,
+    "case": 93,
+    "while": 14,
+    "repeat": 30,
+    "for": 340,
+    "with": 151
+  },
+  "missing_literal_ids": [],
+  "unassigned_scene_ids": [],
+  "scope": "LORE.PAS에서 Uses로 도달하는 보존 소스; 치트·DARK·MYST 제외. 플랫폼 유닛도 부록에 보존.",
+  "limitations": [
+    "정적 구문 추출이다. 게임을 실행하거나 모든 가능한 경로를 플레이한 증거는 아니다.",
+    "퀘스트 묶음·제목·권장 순서는 편집 분류이며 원본의 퀘스트 ID가 아니다.",
+    "문자열 누락 0은 모든 분기의 실제 도달성·발화 순서가 검증됐다는 뜻이 아니다.",
+    "동적 이름·변수·문자 코드 연결은 Pascal 식과 원문에 보존하며 임의의 완성 대사로 만들지 않는다.",
+    "exit/goto/전투·불러오기/선택 취소가 후속 실행을 바꾼다. source_order를 플레이 순서로 읽지 않는다.",
+    "새 연결 서사는 빈 draft에 작성하며 원문 자료와 분리한다."
+  ]
+}

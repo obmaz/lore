@@ -1,4 +1,4 @@
-# 인터랙티브 스토리 집필 형식 v1
+# 인터랙티브 스토리 집필 형식 v2
 
 연속성 관리 형식·경로별 생성 자료는 [../continuity/README.md](../continuity/README.md)를
 참고한다. 확정 설정, 인물별 지식, 사건 기록과 장면 계약을 본문에 함께 연결한다.
@@ -8,7 +8,8 @@
 
 - 형식: [story.schema.json](story.schema.json), JSON Schema 2020-12.
 - 구조 예시: [drafts/prologue.json](drafts/prologue.json).
-- 원문 보관소: [../../story_material/scripts.json](../../story_material/scripts.json).
+- 원문 보관소: [../materials/scripts.json](../materials/scripts.json).
+- 인물 카드: [../characters/registry.json](../characters/registry.json).
 
 예시는 **구조 초안**이다. 기존 프롤로그 산문 전체를 옮긴 완성 원고가 아니다.
 원문 인용·영입 선택지·조건부 문단 몇 개와 미작성 표시를 넣었다. 감옥에 첫 의뢰 전에
@@ -47,8 +48,8 @@
 나중에 프리뷰에서 조절한다. 현재는 프리뷰·게임 실행기를 만들지 않았다.
 동적 이름·표현식의 완성 문구는 아직 지원하지 않으며 원문 추출 자료를 참고한다.
 
-`speaker`는 집필용 화자 ID/표기이며 확정된 원작 이름이 아닐 수 있다. 원문에서
-화자를 특정할 수 없으면 `null`을 유지하거나 표기가 편집 추정임을 `note`에 쓴다.
+`speaker`는 인물 카드의 ID다. 원문에서 화자를 특정할 수 없으면 `null`을 유지하거나
+고유 이름을 확정하지 않은 역할 카드를 만든다. 인물 카드의 이름·성향과 출처를 참조한다.
 
 ## 상태는 사건·지식·의견을 분리한다
 
@@ -147,8 +148,8 @@
 환경에 `jsonschema`가 필요하다. 설치된 환경에서는 다음으로 확인한다.
 
 ```bash
-python3 tool/validate_story_authoring.py
-PYTHONPATH=tool python3 -m unittest discover -s tool/tests -p test_story_authoring.py
+python3 tools/validate_story_authoring.py
+PYTHONPATH=tools python3 -m unittest discover -s tests -p test_story_authoring.py
 ```
 
 검사: 스키마, ID 중복·존재, 원문 줄 범위·인용 일치, 상태 자료형·조건·효과,

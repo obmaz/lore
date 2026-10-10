@@ -1,10 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "meta": {
     "id": "prologue_interactive_v1", "title": "첫 의뢰 전 — 누구의 이야기를 먼저 들을 것인가",
     "quest_id": "prologue", "status": "outline", "purpose": "story_authoring_not_game_runtime",
     "summary": "성 안에서 선택적으로 정보를 얻고 동료를 영입한 뒤 성주 접견으로 합류하는 집필 구조 예시. 완성 원고가 아니다.",
-    "revision": 1, "source_catalog": "story_material/scripts.json"
+    "revision": 2, "source_catalog": "materials/scripts.json", "character_registry": "characters/registry.json"
   },
   "source_refs": {
     "party_creation": {"file": "LORECRET.PAS", "line_start": 565, "line_end": 625, "purpose": "시작 동료 선택; 별도 집필 예정"},
@@ -63,7 +63,7 @@
       "id": "courtyard", "title": "누구의 이야기를 먼저 들을 것인가", "kind": "hub", "entry_when": true,
       "provenance": {"origin": "authored", "source_refs": ["lord_intro", "veteran", "prisoner"], "note": "자유 탐색을 독자의 선택 메뉴로 재배치"},
       "blocks": [
-        {"id": "guard_invitation", "kind": "source_quote", "speaker": "성 안의 안내 인물", "when": true,
+        {"id": "guard_invitation", "kind": "source_quote", "speaker": "castle_guide", "when": true,
           "text": "저희 성주님을 만나십시오.", "literal_ids": ["LORETALK.PAS:literal:11005"],
           "provenance": {"origin": "source_exact", "source_refs": ["lord_intro"], "note": "화자 표기는 편집용. 원문에 고유 이름은 없다."}}
       ],
@@ -85,7 +85,7 @@
       "id": "tavern", "title": "돌아오지 않은 친구들", "kind": "scene", "entry_when": true,
       "provenance": {"origin": "source_adaptation", "source_refs": ["veteran"], "note": "원문 만남을 집필 장면으로 묶음"},
       "blocks": [
-        {"id": "veteran_opening", "kind": "source_quote", "speaker": "특공대에 친구들을 보낸 인물", "when": true,
+        {"id": "veteran_opening", "kind": "source_quote", "speaker": "veteran", "when": true,
           "text": " 이보게 자네, 내말 좀 들어 보게나.  나의 친", "literal_ids": ["LORETALK.PAS:literal:3028"],
           "provenance": {"origin": "source_exact", "source_refs": ["veteran"], "note": "화면 출력 조각. 뒤의 원문 조각들도 추가해야 완전한 대사가 된다."}},
         {"id": "veteran_placeholder", "kind": "author_note", "speaker": null, "when": true,

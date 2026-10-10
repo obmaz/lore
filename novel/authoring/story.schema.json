@@ -1,15 +1,15 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/lore/story-authoring/v1",
+  "$id": "https://example.invalid/lore/story-authoring/v2",
   "title": "LORE interactive story authoring document (not game rules)",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "meta", "source_refs", "state_definitions", "entry_node", "nodes", "coverage", "open_questions"],
   "properties": {
-    "schema_version": {"const": 1},
+    "schema_version": {"const": 2},
     "meta": {
       "type": "object", "additionalProperties": false,
-      "required": ["id", "title", "quest_id", "status", "purpose", "summary", "revision", "source_catalog"],
+      "required": ["id", "title", "quest_id", "status", "purpose", "summary", "revision", "source_catalog", "character_registry"],
       "properties": {
         "id": {"type": "string", "minLength": 1},
         "title": {"type": "string"},
@@ -18,7 +18,8 @@
         "purpose": {"const": "story_authoring_not_game_runtime"},
         "summary": {"type": "string"},
         "revision": {"type": "integer", "minimum": 1},
-        "source_catalog": {"const": "story_material/scripts.json"}
+        "source_catalog": {"const": "materials/scripts.json"},
+        "character_registry": {"const": "characters/registry.json"}
       }
     },
     "source_refs": {

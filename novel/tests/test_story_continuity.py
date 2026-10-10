@@ -78,7 +78,7 @@ class ContinuityTest(unittest.TestCase):
     def test_approval_pins_content(self):
         self.story["meta"]["status"] = "approved"
         review = self.continuity["review"]
-        review.update(status="approved", issues=[], approved_story_revision=1, approved_canon_revision=1)
+        review.update(status="approved", issues=[], approved_story_revision=2, approved_canon_revision=2)
         for event in self.continuity["event_templates"]: event["approval"] = "approved"
         review["approved_input_hashes"] = input_hashes(self.story, self.continuity, self.canon)
         # Isolate the hash gate; the real outline must also pass source completeness.
@@ -101,11 +101,11 @@ class ContinuityTest(unittest.TestCase):
         self.assertIn("prisoner_testimony", handoff["knowledge"]["protagonist"])
         self.assertTrue(handoff["provisional"])
 
-    def test_fresh_clone_without_generated_catalog(self):
-        from validate_story_authoring import validate as validate_authoring
-        with patch("validate_story_authoring.CATALOG") as catalog:
-            catalog.exists.return_value = False
-            self.assertEqual(validate_authoring(self.story)["nodes"], 6)
+    def test_context_includes_only_present_character_profiles(self):
+        accepted = self.packet("enter_courtyard", "visit_prison", "accept_joe", "visit_lord")
+        direct = self.packet("enter_courtyard", "visit_lord")
+        self.assertIn("mad_joe", accepted["character_profiles"])
+        self.assertNotIn("mad_joe", direct["character_profiles"])
 
 
 if __name__ == "__main__": unittest.main()

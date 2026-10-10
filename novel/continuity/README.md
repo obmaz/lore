@@ -3,6 +3,8 @@
 공유 설정은 [canon.json](canon.json), 퀘스트별 장면 계약과 사건 후보는
 [프롤로그 연속성 자료](../authoring/drafts/prologue.continuity.json)에 보관한다.
 본문은 기존 `prologue.json`을 유지한다. 선택 경로마다 다음 장면의 집필 자료를 계산한다.
+인물의 이름·성향·관계는 [../characters/registry.json](../characters/registry.json)에서
+참조한다. `canon.json`에는 인물 이름을 중복 저장하지 않는다.
 
 ## 사실과 지식
 
@@ -56,13 +58,13 @@
 
 ```bash
 # 바로 성주를 만남
-python3 tool/story_continuity.py --route enter_courtyard visit_lord
+python3 tools/story_continuity.py --route enter_courtyard visit_lord
 
 # 수감자 증언을 듣고 Joe를 영입한 뒤 성주를 만남
-python3 tool/story_continuity.py --route enter_courtyard visit_prison accept_joe visit_lord
+python3 tools/story_continuity.py --route enter_courtyard visit_prison accept_joe visit_lord
 
 # 주점도 방문한 뒤 다음 퀘스트 경계까지 진행
-python3 tool/story_continuity.py --route enter_courtyard visit_tavern remember_veteran visit_prison accept_joe visit_lord trust_lord
+python3 tools/story_continuity.py --route enter_courtyard visit_tavern remember_veteran visit_prison accept_joe visit_lord trust_lord
 ```
 
 JSON 출력은 현재 장면, 본문·선택지, 상태, 장면 전후 기록, 사건·인물별 지식,
@@ -75,12 +77,12 @@ JSON 출력은 현재 장면, 본문·선택지, 상태, 장면 전후 기록, �
 미승인 자료는 `provisional` 표시를 유지한다. 다음 퀘스트의 입력 로더는 아직 없으므로
 자동 연결을 완료했다고 해석하면 안 된다. 집필 시 이 패킷을 초기값 대신 이어받는다.
 
-필요한 Python 패키지는 `python3 -m pip install -r novel/requirements.txt`로 설치한다.
-원문 추출 JSON이 없는 새 클론에서는 검증 도구가 보존 Pascal 소스에서 읽기 전용으로
-원문 목록을 복원한다. 전체 추출 자료는 `python3 tool/export_story_material.py`로 재생성한다.
+명령은 `novel/` 폴더 안에서 실행한다. 필요한 Python 패키지는
+`python3 -m pip install -r requirements.txt`로 설치한다.
+원문은 내부 `materials/` JSON으로 확인하며 게임 소스를 읽는 복구 경로는 없다.
 
 ```bash
-PYTHONPATH=tool python3 -m unittest discover -s tool/tests -p 'test_story_continuity.py'
+PYTHONPATH=tools python3 -m unittest discover -s tests -p 'test_story_continuity.py'
 ```
 
 프롤로그의 미작성 대사와 감옥 접근 조건은 남아 있다. 경로별 동료·지식·사건,

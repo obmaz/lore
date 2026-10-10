@@ -1,11 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "type": "object", "additionalProperties": false,
-  "required": ["version", "story_id", "story_revision", "canon_revision", "contracts", "event_templates", "threads", "review"],
+  "required": ["version", "story_id", "story_revision", "canon_revision", "character_registry_revision", "contracts", "event_templates", "threads", "review"],
   "properties": {
-    "version": {"const": 1}, "story_id": {"type": "string"},
+    "version": {"const": 2}, "story_id": {"type": "string"},
     "story_revision": {"type": "integer", "minimum": 1},
     "canon_revision": {"type": "integer", "minimum": 1},
+    "character_registry_revision": {"type": "integer", "minimum": 1},
     "contracts": {"type": "object", "additionalProperties": {"$ref": "#/$defs/contract"}},
     "event_templates": {"type": "array", "items": {"$ref": "#/$defs/event"}},
     "threads": {"type": "array", "items": {
@@ -22,10 +23,12 @@
         "approved_story_revision": {"type": ["integer", "null"]},
         "approved_canon_revision": {"type": ["integer", "null"]},
         "approved_input_hashes": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false,
-          "required": ["story", "canon", "continuity"], "properties": {
+          "required": ["story", "canon", "continuity", "characters", "materials"], "properties": {
             "story": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
             "canon": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-            "continuity": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}]}}
+            "continuity": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "characters": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            "materials": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}}]}}
     }
   },
   "$defs": {
@@ -33,13 +36,17 @@
     "predicate": {"$ref": "../authoring/story.schema.json#/$defs/predicate"},
     "contract": {
       "type": "object", "additionalProperties": false,
-      "required": ["before", "after", "allowed_state_changes", "must_include_block_ids", "must_not_assert", "dependencies", "continuity_notes", "knowledge_required"],
+      "required": ["before", "after", "allowed_state_changes", "must_include_block_ids", "must_not_assert", "dependencies", "continuity_notes", "knowledge_required", "cast", "character_dependencies"],
       "properties": {
         "before": {"$ref": "#/$defs/predicate"}, "after": {"$ref": "#/$defs/predicate"},
         "allowed_state_changes": {"$ref": "#/$defs/strings"},
         "must_include_block_ids": {"$ref": "#/$defs/strings"}, "must_not_assert": {"$ref": "#/$defs/strings"},
         "dependencies": {"type": "array", "items": {"type": "object", "additionalProperties": false,
           "required": ["fact_id", "revision"], "properties": {"fact_id": {"type": "string"}, "revision": {"type": "integer", "minimum": 1}}}},
+        "character_dependencies": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["character_id", "revision"], "properties": {"character_id": {"type": "string"}, "revision": {"type": "integer", "minimum": 1}}}},
+        "cast": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["character_id", "when"], "properties": {"character_id": {"type": "string"}, "when": {"$ref": "#/$defs/predicate"}}}},
         "continuity_notes": {"type": "array", "items": {"type": "string"}},
         "knowledge_required": {"type": "array", "items": {"type": "object", "additionalProperties": false,
           "required": ["character_id", "fact_id"], "properties": {"character_id": {"type": "string"}, "fact_id": {"type": "string"}}}}
@@ -61,10 +68,10 @@
     },
     "canon": {
       "type": "object", "additionalProperties": false,
-      "required": ["version", "revision", "characters", "facts"],
+      "required": ["version", "revision", "character_registry", "facts"],
       "properties": {
-        "version": {"const": 1}, "revision": {"type": "integer", "minimum": 1},
-        "characters": {"type": "object", "additionalProperties": {"type": "string"}},
+        "version": {"const": 2}, "revision": {"type": "integer", "minimum": 1},
+        "character_registry": {"const": "characters/registry.json"},
         "facts": {"type": "array", "items": {"type": "object", "additionalProperties": false,
           "required": ["id", "revision", "statement", "kind", "status", "attributed_to", "evidence", "initial_knowers"],
           "properties": {"id": {"type": "string"}, "revision": {"type": "integer", "minimum": 1},
