@@ -156,7 +156,8 @@ def build(analysis, catalog, templates):
                                     "abilities": [f"magic_{i}" for i in spec.get("abilities", [])],
                                     "enemy_templates": [f"enemy_{i:02d}" for i in spec.get("templates", [])]}
         if any(profile["resource_refs"].values()):
-            profile["source_facts"].append(claim("reference_usage", "장비는 해당 영입/전투 시점의 자료, 마법은 설명/전수된 기법, 적 데이터는 기반 템플릿의 참조다. 현재 소지/습득/수치 확정을 뜻하지 않는다.", citations))
+            target = profile["writing"]["goals"] if spec.get("authored") else profile["source_facts"]
+            target.append(claim("reference_usage", "장비는 해당 영입/전투 시점의 자료, 마법은 설명/전수된 기법, 적 데이터는 기반 템플릿의 참조다. 현재 소지/습득/수치 확정을 뜻하지 않는다.", citations, "authored" if spec.get("authored") else "source_adaptation"))
         profile["source_excerpts"] = [{"literal_id": l["id"], "text": l["text"]} for l in all_literals
             if l["text"] and l["role"] == "display_text_fragment" and any("line_start" in e and e["file"] == l["source"]["file"] and
             e["line_start"] <= l["source"]["line"] <= e["line_end"] for e in citations)]
@@ -181,6 +182,11 @@ def build(analysis, catalog, templates):
         item("bestiary", f"enemy_{record['id']:02d}", record["name"], phonetics[record["name"]], "enemy_template", e,
              [claim("original_combat_parameters", record["fields"], e, "source_exact"),
               claim("mechanical_scope", "기본 적 템플릿. 전투 스크립트의 이름/수치 변경이나 동료 변환을 적용하기 전 값이며 개인의 나이/성격이 아니다.", templates["layout_evidence"])])
+    for spec in analysis.get("authored_equipment", []):
+        key = spec["id"]
+        if key not in names["equipment"]:
+            raise ValueError("authored equipment needs a reference writing name")
+        item("equipment", key, None, None, "weapon", [], copy.deepcopy(spec["claims"]))
     sub = units["LORESUB.PAS"]["original_source"].splitlines()
     powers = [None,5,7,9,10,15,20,30,40,50]
     prices = [None,500,1500,3000,5000,10000,30000,60000,80000,100000]

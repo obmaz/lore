@@ -275,7 +275,9 @@ def export_documents(output,check=False):
             body += '</section>'
         body += '<h2>집필 메모</h2><ul>'+''.join(f'<li>{esc(q)}</li>' for q in preview['open_questions'])+'</ul>'
         docs[name] = html_doc(preview['title'],body)
-    inputs = [BOARD,PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
+    from interactive import documents as interactive_documents, OVERLAY, READER, SCHEMA
+    docs.update(interactive_documents())
+    inputs = [OVERLAY,READER,SCHEMA,ROOT/'tools/interactive.py',BOARD,PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
               ROOT/'reference/terms.json',ROOT/'continuity/canon.json',ROOT/'writing/project.json',Path(__file__),ROOT/'tools/text_refs.py',
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
               ROOT/'authoring/story.schema.json',WRITING/'storyboard.schema.json',
@@ -333,6 +335,9 @@ def main():
             result['quests'][path.stem] = {**validate(draft),'needs_review':validate_continuity(draft,read(path.with_name(path.stem+'.continuity.json')),read(CANON))}
         result['episodes'] = {p.stem:validate_episode_plan(read(p)) for p in sorted((WRITING/'episodes').glob('*.json'))}
         result['episode_template'] = validate_episode_plan(read(WRITING/'templates/episode.template.json'),template)
+        from interactive import compile_chapter
+        interactive_story,_,_ = compile_chapter()
+        result['interactive_chapter01'] = validate(interactive_story)
     elif args.action=='preview':
         result = preview_story(read(args.story),read(args.story.with_name(args.story.stem+'.continuity.json')),args.route)
     elif args.action=='reading':

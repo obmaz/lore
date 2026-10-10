@@ -32,8 +32,8 @@ class ReferenceExportTest(unittest.TestCase):
         self.assertNotIn('id="author-mode" checked',author)
 
     def test_full_catalog_counts_and_metadata_are_preserved(self):
-        self.assertEqual(self.manifest['counts'],{'characters':49,'relationships':35,'directed_links':48,
-                                                  'equipment':20,'abilities':45,'bestiary':75,'quests':19})
+        self.assertEqual(self.manifest['counts'],{'characters':53,'relationships':35,'directed_links':48,
+                                                  'equipment':24,'abilities':45,'bestiary':75,'quests':19})
         author = self.docs['reference.html']
         for text in ['창작 추가','추론 추가','음역 추가','인물의 증언','문서의 설명','LORETALK.PAS','퀘스트 흐름']:
             self.assertIn(text,author)

@@ -2,107 +2,1331 @@
   "version": 1,
   "note": "작가 전용 원문 관계 분석과 공개 정책. 공개 체크포인트 ID/복선은 편집자가 추가한 장치이며 원작 게임 이벤트 ID가 아니다. 지시된 사건을 실제 경로 원고에서 서술한 뒤에만 공개한다.",
   "checkpoints": {
-    "castle_arrival": {"quest":"prologue","milestone":"start_lore","ranges":[["LORETALK.PAS",293,295]]},
-    "lord_briefing": {"quest":"lore_menace","milestone":"lord_background","ranges":[["LORETALK.PAS",305,338]]},
-    "lord_assignment": {"quest":"lore_menace","milestone":"menace_request","ranges":[["LORETALK.PAS",339,358]]},
-    "prisoner_account": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORETALK.PAS",158,190]]},
-    "joe_request": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORETALK.PAS",191,219]]},
-    "prison_guard_confrontation": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",197,230]]},
-    "antares_testimony": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORETALK.PAS",105,129]]},
-    "hunter_family_testimony": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORETALK.PAS",393,396]]},
-    "polaris_offer": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORETALK.PAS",406,435]]},
-    "mummy_encounter": {"quest":"lastditch_pyramid","milestone":"mummy_battle","ranges":[["LORESPEC.PAS",529,555]]},
-    "rigel_rescue": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",601,658]]},
-    "hunter_offer": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORETALK.PAS",607,639]]},
-    "world_prophecy": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",726,788]]},
-    "gorgon_encounter": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",791,811]]},
-    "quake_encounter": {"quest":"gaia_quake","milestone":"quake_battle","ranges":[["LORESPEC.PAS",945,963]]},
-    "red_antares_teaching": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",1074,1104]]},
-    "red_antares_offer": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",1026,1064]]},
-    "spica_teaching": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",1275,1296]]},
-    "spica_offer": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",1208,1268]]},
-    "draconian_account": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",44,121]]},
-    "draconian_offer": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",123,144]]},
-    "ancient_evil_guidance": {"quest":"shared_system_and_text","milestone":null,"ranges":[["LORESPEC.PAS",155,184]]},
-    "astral_mud_account": {"quest":"muddy_seal","milestone":"astral_mud_seal","ranges":[["LORESPEC.PAS",1721,1745]]},
-    "lava_advice": {"quest":"swamp_keep_lava_gate","milestone":"lord_lava_advice","ranges":[["LOREENT.PAS",235,256]]},
-    "illusion_encounter": {"quest":"evil_concentration","milestone":"illusion_and_impostor","ranges":[["LORESPEC.PAS",1895,1919]]},
-    "fortress_identity_revealed": {"quest":"evil_concentration","milestone":"illusion_and_impostor","ranges":[["LORESPEC.PAS",1953,1965]]},
-    "dungeon_guard_encounter": {"quest":"dungeon_of_evil","milestone":"archidraconian_guard","ranges":[["LOREENT.PAS",283,319]]},
-    "panzer_encounter": {"quest":"dungeon_of_evil","milestone":"panzer_viper","ranges":[["LORESPEC.PAS",2029,2043]]},
-    "joint_guidance": {"quest":"dungeon_of_evil","milestone":"panzer_viper","ranges":[["LORESPEC.PAS",2049,2065]]},
-    "black_knight_encounter": {"quest":"dungeon_of_evil","milestone":"black_knight_guard","ranges":[["LOREENT.PAS",323,350]]},
-    "final_introduction": {"quest":"necromancer_finale","milestone":"final_introduction","ranges":[["LORESPEC.PAS",2154,2167]]},
-    "final_outcome": {"quest":"necromancer_finale","milestone":"final_outcome","ranges":[["LORESPEC.PAS",2182,2199]]}
+    "castle_arrival": {
+      "quest": "prologue",
+      "milestone": "start_lore",
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          293,
+          295
+        ]
+      ]
+    },
+    "lord_briefing": {
+      "quest": "lore_menace",
+      "milestone": "lord_background",
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          305,
+          338
+        ]
+      ]
+    },
+    "lord_assignment": {
+      "quest": "lore_menace",
+      "milestone": "menace_request",
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          339,
+          358
+        ]
+      ]
+    },
+    "prisoner_account": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          158,
+          190
+        ]
+      ]
+    },
+    "joe_request": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          191,
+          219
+        ]
+      ]
+    },
+    "prison_guard_confrontation": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          197,
+          230
+        ]
+      ]
+    },
+    "antares_testimony": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          105,
+          129
+        ]
+      ]
+    },
+    "hunter_family_testimony": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          393,
+          396
+        ]
+      ]
+    },
+    "polaris_offer": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          406,
+          435
+        ]
+      ]
+    },
+    "mummy_encounter": {
+      "quest": "lastditch_pyramid",
+      "milestone": "mummy_battle",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          529,
+          555
+        ]
+      ]
+    },
+    "rigel_rescue": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          601,
+          658
+        ]
+      ]
+    },
+    "hunter_offer": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          607,
+          639
+        ]
+      ]
+    },
+    "world_prophecy": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          726,
+          788
+        ]
+      ]
+    },
+    "gorgon_encounter": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          791,
+          811
+        ]
+      ]
+    },
+    "quake_encounter": {
+      "quest": "gaia_quake",
+      "milestone": "quake_battle",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          945,
+          963
+        ]
+      ]
+    },
+    "red_antares_teaching": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1074,
+          1104
+        ]
+      ]
+    },
+    "red_antares_offer": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1026,
+          1064
+        ]
+      ]
+    },
+    "spica_teaching": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1275,
+          1296
+        ]
+      ]
+    },
+    "spica_offer": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1208,
+          1268
+        ]
+      ]
+    },
+    "draconian_account": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          44,
+          121
+        ]
+      ]
+    },
+    "draconian_offer": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          123,
+          144
+        ]
+      ]
+    },
+    "ancient_evil_guidance": {
+      "quest": "shared_system_and_text",
+      "milestone": null,
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          155,
+          184
+        ]
+      ]
+    },
+    "astral_mud_account": {
+      "quest": "muddy_seal",
+      "milestone": "astral_mud_seal",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1721,
+          1745
+        ]
+      ]
+    },
+    "lava_advice": {
+      "quest": "swamp_keep_lava_gate",
+      "milestone": "lord_lava_advice",
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          235,
+          256
+        ]
+      ]
+    },
+    "illusion_encounter": {
+      "quest": "evil_concentration",
+      "milestone": "illusion_and_impostor",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1895,
+          1919
+        ]
+      ]
+    },
+    "fortress_identity_revealed": {
+      "quest": "evil_concentration",
+      "milestone": "illusion_and_impostor",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1953,
+          1965
+        ]
+      ]
+    },
+    "dungeon_guard_encounter": {
+      "quest": "dungeon_of_evil",
+      "milestone": "archidraconian_guard",
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          283,
+          319
+        ]
+      ]
+    },
+    "panzer_encounter": {
+      "quest": "dungeon_of_evil",
+      "milestone": "panzer_viper",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2029,
+          2043
+        ]
+      ]
+    },
+    "joint_guidance": {
+      "quest": "dungeon_of_evil",
+      "milestone": "panzer_viper",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2049,
+          2065
+        ]
+      ]
+    },
+    "black_knight_encounter": {
+      "quest": "dungeon_of_evil",
+      "milestone": "black_knight_guard",
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          323,
+          350
+        ]
+      ]
+    },
+    "final_introduction": {
+      "quest": "necromancer_finale",
+      "milestone": "final_introduction",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2154,
+          2167
+        ]
+      ]
+    },
+    "final_outcome": {
+      "quest": "necromancer_finale",
+      "milestone": "final_outcome",
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2182,
+          2199
+        ]
+      ]
+    }
   },
   "profiles": {
-    "protagonist": {"after":["castle_arrival"],"fact_after":{"prophecy_testimony":["world_prophecy"]}},
-    "castle_guide": {"after":["castle_arrival"]},
-    "veteran": {"after":[],"fact_after":{"testimony":["castle_arrival"]}},
-    "prisoner": {"after":["prisoner_account"]},
-    "lord_ahn": {"after":["lord_assignment"],"fact_after":{"prophecy_testimony":["world_prophecy"]}},
-    "mad_joe": {"after":["joe_request"]},
-    "polaris": {"after":["polaris_offer"]},
-    "lore_hunter": {"after":["hunter_offer"]},
-    "hunter_spouse": {"public_id":"lastditch_resident","public_name":"라스트디치의 주민","after":["hunter_family_testimony"]},
-    "rigel": {"after":["rigel_rescue"]},
-    "spica": {"after":["spica_offer"]},
-    "red_antares": {"after":["red_antares_offer"],"fact_after":{"story_role":["red_antares_teaching"]}},
-    "jr_antares": {"after":["antares_testimony"]},
-    "draconian": {"after":["dungeon_guard_encounter"],"fact_after":{"story_role":["dungeon_guard_encounter"]}},
-    "necromancer": {"after":["final_outcome"]},
-    "ancient_evil": {"after":["joint_guidance"],"fact_after":{"story_role":["ancient_evil_guidance"],"prophecy_testimony":["world_prophecy"],"shelter_testimony":["lava_advice"]}},
-    "major_mummy": {"after":["mummy_encounter"]},
-    "sphinx": {"after":["mummy_encounter"]},
-    "archigagoyle": {"after":["quake_encounter"]},
-    "stheno": {"after":["gorgon_encounter"]},
-    "euryale": {"after":["gorgon_encounter"]},
-    "medusa": {"after":["gorgon_encounter"]},
-    "astral_mud": {"after":["astral_mud_account"]},
-    "false_necromancer": {"public_id":"fortress_mage","public_name":"네크로맨서","after":["fortress_identity_revealed"]},
-    "archidraconian": {"after":["dungeon_guard_encounter"]},
-    "panzer_viper": {"after":["joint_guidance"]},
-    "mega_robo": {"after":["panzer_encounter"]},
-    "black_knight": {"after":["black_knight_encounter"]},
-    "archimonk": {"after":["final_introduction"]},
-    "archimage": {"after":["final_introduction"]},
-    "frost_dragon": {"after":["final_introduction"]}
+    "protagonist": {
+      "after": [
+        "castle_arrival"
+      ],
+      "fact_after": {
+        "prophecy_testimony": [
+          "world_prophecy"
+        ]
+      }
+    },
+    "castle_guide": {
+      "after": [
+        "castle_arrival"
+      ]
+    },
+    "veteran": {
+      "after": [],
+      "fact_after": {
+        "testimony": [
+          "castle_arrival"
+        ]
+      }
+    },
+    "prisoner": {
+      "after": [
+        "prisoner_account"
+      ]
+    },
+    "lord_ahn": {
+      "after": [
+        "lord_assignment"
+      ],
+      "fact_after": {
+        "prophecy_testimony": [
+          "world_prophecy"
+        ]
+      }
+    },
+    "mad_joe": {
+      "after": [
+        "joe_request"
+      ]
+    },
+    "polaris": {
+      "after": [
+        "polaris_offer"
+      ]
+    },
+    "lore_hunter": {
+      "after": [
+        "hunter_offer"
+      ]
+    },
+    "hunter_spouse": {
+      "public_id": "lastditch_resident",
+      "public_name": "라스트디치의 주민",
+      "after": [
+        "hunter_family_testimony"
+      ]
+    },
+    "rigel": {
+      "after": [
+        "rigel_rescue"
+      ]
+    },
+    "spica": {
+      "after": [
+        "spica_offer"
+      ]
+    },
+    "red_antares": {
+      "after": [
+        "red_antares_offer"
+      ],
+      "fact_after": {
+        "story_role": [
+          "red_antares_teaching"
+        ]
+      }
+    },
+    "jr_antares": {
+      "after": [
+        "antares_testimony"
+      ]
+    },
+    "draconian": {
+      "after": [
+        "dungeon_guard_encounter"
+      ],
+      "fact_after": {
+        "story_role": [
+          "dungeon_guard_encounter"
+        ]
+      }
+    },
+    "necromancer": {
+      "after": [
+        "final_outcome"
+      ]
+    },
+    "ancient_evil": {
+      "after": [
+        "joint_guidance"
+      ],
+      "fact_after": {
+        "story_role": [
+          "ancient_evil_guidance"
+        ],
+        "prophecy_testimony": [
+          "world_prophecy"
+        ],
+        "shelter_testimony": [
+          "lava_advice"
+        ]
+      }
+    },
+    "major_mummy": {
+      "after": [
+        "mummy_encounter"
+      ]
+    },
+    "sphinx": {
+      "after": [
+        "mummy_encounter"
+      ]
+    },
+    "archigagoyle": {
+      "after": [
+        "quake_encounter"
+      ]
+    },
+    "stheno": {
+      "after": [
+        "gorgon_encounter"
+      ]
+    },
+    "euryale": {
+      "after": [
+        "gorgon_encounter"
+      ]
+    },
+    "medusa": {
+      "after": [
+        "gorgon_encounter"
+      ]
+    },
+    "astral_mud": {
+      "after": [
+        "astral_mud_account"
+      ]
+    },
+    "false_necromancer": {
+      "public_id": "fortress_mage",
+      "public_name": "네크로맨서",
+      "after": [
+        "fortress_identity_revealed"
+      ]
+    },
+    "archidraconian": {
+      "after": [
+        "dungeon_guard_encounter"
+      ]
+    },
+    "panzer_viper": {
+      "after": [
+        "joint_guidance"
+      ]
+    },
+    "mega_robo": {
+      "after": [
+        "panzer_encounter"
+      ]
+    },
+    "black_knight": {
+      "after": [
+        "black_knight_encounter"
+      ]
+    },
+    "archimonk": {
+      "after": [
+        "final_introduction"
+      ]
+    },
+    "archimage": {
+      "after": [
+        "final_introduction"
+      ]
+    },
+    "frost_dragon": {
+      "after": [
+        "final_introduction"
+      ]
+    },
+    "party_woodcutter": {
+      "after": [
+        "castle_arrival"
+      ]
+    },
+    "party_hunter": {
+      "after": [
+        "castle_arrival"
+      ]
+    },
+    "party_cook": {
+      "after": [
+        "castle_arrival"
+      ]
+    },
+    "party_magician": {
+      "after": [
+        "castle_arrival"
+      ]
+    }
   },
   "relationships": [
-    {"id":"lord_commission","from":"lord_ahn","to":"protagonist","type":"commission","description":"성과를 확인하려 MENACE 탐사를 의뢰하고 궁극적으로 네크로맨서의 야심을 막는 임무를 제시한다.","truth":"source_event","after":["lord_assignment"],"ranges":[["LORETALK.PAS",332,355]],"spoiler":"minor"},
-    {"id":"lord_opposes_necromancer","from":"lord_ahn","to":"necromancer","type":"opposition","description":"네크로맨서의 세력 확장을 위협으로 설명하고 일행에게 저지를 요청한다.","truth":"testimony","claimant":"lord_ahn","after":["lord_briefing"],"ranges":[["LORETALK.PAS",324,338]],"spoiler":"minor"},
-    {"id":"antares_parentage","from":"jr_antares","to":"red_antares","reverse_type":"parent","type":"child","description":"주니어 안타레스는 레드 안타레스를 자신의 아버지라고 말한다.","truth":"testimony","claimant":"jr_antares","after":["antares_testimony"],"ranges":[["LORETALK.PAS",108,118]],"spoiler":"major"},
-    {"id":"hunter_marriage","from":"hunter_spouse","to":"lore_hunter","reverse_type":"spouse","type":"spouse","description":"LASTDITCH 주민은 로어 헌터가 자신의 남편이자 LORE 특공대 지휘관이라고 말한다.","truth":"testimony","claimant":"hunter_spouse","after":["hunter_family_testimony"],"ranges":[["LORETALK.PAS",393,396]],"spoiler":"minor"},
-    {"id":"prisoner_imprisonment","from":"prisoner","to":"lord_ahn","type":"imprisoned_under_rule","description":"죄수는 에인션트 이블의 사상을 알리다가 수감되었으며 로드 안이 사회 혼란 방지를 이유로 들었다고 증언한다.","truth":"testimony","claimant":"prisoner","after":["prisoner_account"],"ranges":[["LORETALK.PAS",158,184]],"spoiler":"major"},
-    {"id":"prisoner_reappraisal","from":"prisoner","to":"ancient_evil","type":"reappraisal","description":"죄수는 여행 중 에인션트 이블을 발견하고 그의 신앙 아래 도시에서 자애를 느꼈다고 말한다.","truth":"testimony","claimant":"prisoner","after":["prisoner_account"],"ranges":[["LORETALK.PAS",158,175]],"spoiler":"major"},
-    {"id":"reported_friendship","from":"lord_ahn","to":"ancient_evil","reverse_type":"reported_friendship","type":"reported_friendship","description":"죄수는 에인션트 이블의 말에서 로드 안과 그가 매우 절친한 관계임을 알았다고 증언한다. 당사자 양쪽이 독립적으로 확인한 사실로 바꾸지 않는다.","truth":"testimony","claimant":"prisoner","after":["prisoner_account"],"ranges":[["LORETALK.PAS",177,188]],"spoiler":"major","hints":[{"after":["castle_arrival"],"text":"공식적인 평가와 타인의 경험담이 어긋날 수 있다는 질문을 남긴다.","ranges":[["LORETALK.PAS",158,175]]}]},
-    {"id":"prophecy_balance","from":"lord_ahn","to":"ancient_evil","reverse_type":"symbolic_counterpart","type":"symbolic_counterpart","description":"예언서는 로드 안을 선, 에인션트 이블을 악의 상징으로 설명하지만 후자의 본심은 선이라고 설명한다. 둘은 Semi-God 계급의 깊은 관계를 가진 대립자로 기술된다.","truth":"document_claim","after":["world_prophecy"],"ranges":[["LORESPEC.PAS",730,788]],"spoiler":"major"},
-    {"id":"protagonist_creation","from":"ancient_evil","to":"protagonist","reverse_type":"created_by","type":"creator","description":"예언서는 에인션트 이블이 미래의 역사를 뒤틀어 네크로맨서와 싸울 당신을 창조했다고 설명한다.","truth":"document_claim","after":["world_prophecy"],"ranges":[["LORESPEC.PAS",768,788]],"spoiler":"major","hints":[{"after":["castle_arrival"],"text":"왜 이 일행에게 임무가 돌아오는지 의문을 남기되 답이나 배후 인물을 특정하지 않는다.","ranges":[["LORETALK.PAS",349,352]]}]},
-    {"id":"ancient_evil_opposition","from":"ancient_evil","to":"necromancer","type":"opposition","description":"예언서는 에인션트 이블이 네크로맨서를 벌하려 하지만 육신 없는 상태에서는 직접 대항하기 어렵다고 설명한다.","truth":"document_claim","after":["world_prophecy"],"ranges":[["LORESPEC.PAS",768,776]],"spoiler":"major"},
-    {"id":"joint_guides","from":"lord_ahn","to":"ancient_evil","reverse_type":"joint_guidance","type":"joint_guidance","description":"팬저 바이퍼 전투 뒤 두 존재가 함께 나타난 장면에서 숨은 레버와 최종 방 진입 단서가 전해진다. 이 행동만으로 서로의 모든 동기를 확정하지 않는다.","truth":"source_event","after":["joint_guidance"],"ranges":[["LORESPEC.PAS",2049,2065]],"spoiler":"major"},
-    {"id":"joe_offer","from":"mad_joe","to":"protagonist","type":"conditional_companion","description":"매드 조가 합류를 요청하며 수락하면 여섯 번째 동료 슬롯에 들어간다.","truth":"source_event","after":["joe_request"],"ranges":[["LORETALK.PAS",191,219]],"spoiler":"minor","condition":"수락한 경로에만 동료다. 요청을 들었다는 것과 영입 성공을 구분한다."},
-    {"id":"joe_departure","from":"mad_joe","to":"protagonist","type":"conditional_departure","description":"죄수 영입 플래그가 있는 경비 전투에서 여섯 번째 인물이 매드 조이면 전투 시작에 도망가며 이름 슬롯이 비워진다.","truth":"source_event","after":["prison_guard_confrontation"],"ranges":[["LORESPEC.PAS",197,230]],"spoiler":"major","condition":"영입 플래그와 player[6].name='Mad Joe' 검사에 해당하는 경로만. 미영입 경로의 이탈이 아니다.","hints":[{"after":["joe_request"],"text":"웃음 섞인 합류 요청의 불안정한 인상을 유지할 수 있다.","ranges":[["LORETALK.PAS",191,193]]}]},
-    {"id":"polaris_offer","from":"polaris","to":"protagonist","type":"conditional_companion","description":"메이저 머미를 함께 물리치려 합류를 제안한다.","truth":"source_event","after":["polaris_offer"],"ranges":[["LORETALK.PAS",406,435]],"spoiler":"minor","condition":"수락 및 동료 슬롯 선택이 성립하는 경로만 영입된다."},
-    {"id":"polaris_objective","from":"polaris","to":"major_mummy","type":"opposition","description":"폴라리스가 메이저 머미를 물리치고 싶다고 말한다.","truth":"testimony","claimant":"polaris","after":["polaris_offer"],"ranges":[["LORETALK.PAS",406,409]],"spoiler":"minor"},
-    {"id":"hunter_offer","from":"lore_hunter","to":"protagonist","type":"conditional_companion","description":"혼자서는 적을 상대하기 어렵다고 판단한 특공대 대장이 일행에게 합류를 제안한다.","truth":"source_event","after":["hunter_offer"],"ranges":[["LORETALK.PAS",609,639]],"spoiler":"minor","condition":"수락·빈 슬롯 검사에 따른다. 마을에서 기다리는 상태와 영입 상태를 구분한다."},
-    {"id":"rigel_rescue","from":"rigel","to":"protagonist","type":"conditional_rescue","description":"부상한 리겔은 동행/치료와 식량 제공/거절 선택의 대상이다. 치료·식량 경로에서는 무기에 축복을 내리고 떠난다.","truth":"source_event","after":["rigel_rescue"],"ranges":[["LORESPEC.PAS",601,658]],"spoiler":"minor","condition":"동행과 치료 후 이별은 서로 다른 선택이다. 무기 강화도 행운 검사에 따른다."},
-    {"id":"red_teaching","from":"red_antares","to":"protagonist","type":"teacher","description":"레드 안타레스가 간접 공격 기법을 가르치고 초자연력의 필요성을 설명한다.","truth":"source_event","after":["red_antares_teaching"],"ranges":[["LORESPEC.PAS",1081,1104]],"spoiler":"minor"},
-    {"id":"red_offer","from":"red_antares","to":"protagonist","type":"conditional_companion","description":"레드 안타레스의 영이 함께 모험하고 싶다고 제안한다.","truth":"source_event","after":["red_antares_offer"],"ranges":[["LORESPEC.PAS",1026,1064]],"spoiler":"minor","condition":"합류 제안 단계·수락·슬롯 선택에 따른다. 마법을 배우는 것과 동료로 영입하는 것은 다르다."},
-    {"id":"spica_teaching","from":"spica","to":"protagonist","type":"teacher","description":"스피카가 초자연력 다섯 가지와 네크로맨서 역시 이를 사용할 수 있음을 설명한다.","truth":"source_event","after":["spica_teaching"],"ranges":[["LORESPEC.PAS",1275,1296]],"spoiler":"minor"},
-    {"id":"spica_offer","from":"spica","to":"protagonist","type":"conditional_companion","description":"스피카가 네크로맨서에 대항하려는 결의를 느끼고 합류를 제안한다.","truth":"source_event","after":["spica_offer"],"ranges":[["LORESPEC.PAS",1208,1268]],"spoiler":"minor","condition":"사전 대화·독심 상태·진행 조건·초자연력 수준·수락·슬롯 선택을 검사한다."},
-    {"id":"draconian_offer","from":"draconian","to":"protagonist","type":"conditional_companion","description":"드라코니안은 자신의 운명을 생각한 뒤 네크로맨서를 물리치기 위해 일행 뒤에서 돕겠다고 제안한다.","truth":"source_event","after":["draconian_offer"],"ranges":[["LORESPEC.PAS",123,144]],"spoiler":"minor","condition":"진행 상태와 수락 선택에 따라 여섯 번째 슬롯에 영입된다."},
-    {"id":"draconian_research","from":"draconian","to":"necromancer","type":"research_and_opposition","description":"드라코니안은 네크로맨서의 차원 이동과 다른 공간에서 용사들에게 쫓긴 경위를 연구해 설명한다.","truth":"testimony","claimant":"draconian","after":["draconian_account"],"ranges":[["LORESPEC.PAS",71,119]],"spoiler":"major"},
-    {"id":"dungeon_punishment","from":"archidraconian","to":"draconian","type":"conditional_hostility","description":"아키드라코니안은 네크로맨서에 반기를 든 동족이라고 비난하고 동료 드라코니안을 공격한다.","truth":"source_event","after":["dungeon_guard_encounter"],"ranges":[["LOREENT.PAS",293,310]],"spoiler":"major","condition":"player[6].name='Draconian'일 때만 이 공격/사망 카운터 설정이 발생한다."},
-    {"id":"dungeon_loyalty","from":"archidraconian","to":"necromancer","type":"loyalty","description":"아키드라코니안이 네크로맨서에 반기를 든 동족을 죽음으로 처벌하겠다고 말한다.","truth":"source_event","after":["dungeon_guard_encounter"],"ranges":[["LOREENT.PAS",293,310]],"spoiler":"minor","condition":"대사가 발생하는 동료 조건도 확인한다."},
-    {"id":"fortress_impersonation","from":"false_necromancer","to":"necromancer","type":"impersonation_and_loyalty","description":"요새의 상대는 네크로맨서를 사칭했으며 패배 뒤 자신은 진짜가 아니라고 밝히고 그에 대한 충성을 외친다. 같은 템플릿을 쓴 아키드라코니안과 동일 인물이라고 확정하지 않는다.","truth":"source_event","after":["fortress_identity_revealed"],"ranges":[["LORESPEC.PAS",1895,1965]],"spoiler":"major","hints":[{"after":["illusion_encounter"],"text":"상대의 자기소개를 독립된 확인 없이 믿지 않는 태도를 유지할 수 있다. 정체의 답은 말하지 않는다.","ranges":[["LORESPEC.PAS",1903,1913]]}]},
-    {"id":"astral_arrival","from":"astral_mud","to":"necromancer","type":"shared_arrival","description":"아스트랄 머드는 네크로맨서와 함께 다른 차원에서 내려왔다고 자칭한다.","truth":"testimony","claimant":"astral_mud","after":["astral_mud_account"],"ranges":[["LORESPEC.PAS",1721,1726]],"spoiler":"minor"},
-    {"id":"panzer_mission","from":"panzer_viper","to":"necromancer","type":"protective_mission","description":"팬저 바이퍼의 대치 장면에서는 네크로맨서가 수고하지 않도록 일행을 미리 처단하는 것이 임무라고 선언한다. 개별 대사 화자 지정은 없다.","truth":"source_event","after":["panzer_encounter"],"ranges":[["LORESPEC.PAS",2029,2035]],"spoiler":"minor"},
-    {"id":"panzer_robo","from":"panzer_viper","to":"mega_robo","reverse_type":"battle_companion","type":"battle_companion","description":"팬저 바이퍼와 메가로보 네 개체가 같은 전투의 적으로 배치된다. 지휘/제작 관계까지 확장하지 않는다.","truth":"source_event","after":["panzer_encounter"],"ranges":[["LORESPEC.PAS",2033,2037]],"spoiler":"minor"},
-    {"id":"mummy_sphinx","from":"major_mummy","to":"sphinx","reverse_type":"battle_companion","type":"battle_companion","description":"메이저 머미와 스핑크스 두 개체가 같은 전투에 등장한다. 혈연이나 창조자 관계는 원문에 없다.","truth":"source_event","after":["mummy_encounter"],"ranges":[["LORESPEC.PAS",533,549]],"spoiler":"minor"},
-    {"id":"gorgon_stheno_euryale","from":"stheno","to":"euryale","reverse_type":"battle_companion","type":"battle_companion","description":"고르곤 전투의 50~52번 개체로 함께 배치된다. 신화상의 자매 관계는 원작 근거 없이 추가하지 않는다.","truth":"source_event","after":["gorgon_encounter"],"ranges":[["LORESPEC.PAS",791,811]],"spoiler":"minor"},
-    {"id":"gorgon_euryale_medusa","from":"euryale","to":"medusa","reverse_type":"battle_companion","type":"battle_companion","description":"고르곤 전투에서 함께 등장한다.","truth":"source_event","after":["gorgon_encounter"],"ranges":[["LORESPEC.PAS",791,811]],"spoiler":"minor"},
-    {"id":"gorgon_medusa_stheno","from":"medusa","to":"stheno","reverse_type":"battle_companion","type":"battle_companion","description":"고르곤 전투에서 함께 등장한다.","truth":"source_event","after":["gorgon_encounter"],"ranges":[["LORESPEC.PAS",791,811]],"spoiler":"minor"},
-    {"id":"final_monk","from":"archimonk","to":"necromancer","reverse_type":"battle_companion","type":"battle_companion","description":"네크로맨서가 아키몽크를 소개하고 함께 최종 전투에 등장한다. 친족이나 스승 관계는 확정되지 않았다.","truth":"source_event","after":["final_introduction"],"ranges":[["LORESPEC.PAS",2154,2167]],"spoiler":"minor"},
-    {"id":"final_mage","from":"archimage","to":"necromancer","reverse_type":"battle_companion","type":"battle_companion","description":"네크로맨서가 아키메이지를 소개하고 함께 최종 전투에 등장한다.","truth":"source_event","after":["final_introduction"],"ranges":[["LORESPEC.PAS",2154,2167]],"spoiler":"minor"}
+    {
+      "id": "lord_commission",
+      "from": "lord_ahn",
+      "to": "protagonist",
+      "type": "commission",
+      "description": "성과를 확인하려 MENACE 탐사를 의뢰하고 궁극적으로 네크로맨서의 야심을 막는 임무를 제시한다.",
+      "truth": "source_event",
+      "after": [
+        "lord_assignment"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          332,
+          355
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "lord_opposes_necromancer",
+      "from": "lord_ahn",
+      "to": "necromancer",
+      "type": "opposition",
+      "description": "네크로맨서의 세력 확장을 위협으로 설명하고 일행에게 저지를 요청한다.",
+      "truth": "testimony",
+      "claimant": "lord_ahn",
+      "after": [
+        "lord_briefing"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          324,
+          338
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "antares_parentage",
+      "from": "jr_antares",
+      "to": "red_antares",
+      "reverse_type": "parent",
+      "type": "child",
+      "description": "주니어 안타레스는 레드 안타레스를 자신의 아버지라고 말한다.",
+      "truth": "testimony",
+      "claimant": "jr_antares",
+      "after": [
+        "antares_testimony"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          108,
+          118
+        ]
+      ],
+      "spoiler": "major"
+    },
+    {
+      "id": "hunter_marriage",
+      "from": "hunter_spouse",
+      "to": "lore_hunter",
+      "reverse_type": "spouse",
+      "type": "spouse",
+      "description": "LASTDITCH 주민은 로어 헌터가 자신의 남편이자 LORE 특공대 지휘관이라고 말한다.",
+      "truth": "testimony",
+      "claimant": "hunter_spouse",
+      "after": [
+        "hunter_family_testimony"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          393,
+          396
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "prisoner_imprisonment",
+      "from": "prisoner",
+      "to": "lord_ahn",
+      "type": "imprisoned_under_rule",
+      "description": "죄수는 에인션트 이블의 사상을 알리다가 수감되었으며 로드 안이 사회 혼란 방지를 이유로 들었다고 증언한다.",
+      "truth": "testimony",
+      "claimant": "prisoner",
+      "after": [
+        "prisoner_account"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          158,
+          184
+        ]
+      ],
+      "spoiler": "major"
+    },
+    {
+      "id": "prisoner_reappraisal",
+      "from": "prisoner",
+      "to": "ancient_evil",
+      "type": "reappraisal",
+      "description": "죄수는 여행 중 에인션트 이블을 발견하고 그의 신앙 아래 도시에서 자애를 느꼈다고 말한다.",
+      "truth": "testimony",
+      "claimant": "prisoner",
+      "after": [
+        "prisoner_account"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          158,
+          175
+        ]
+      ],
+      "spoiler": "major"
+    },
+    {
+      "id": "reported_friendship",
+      "from": "lord_ahn",
+      "to": "ancient_evil",
+      "reverse_type": "reported_friendship",
+      "type": "reported_friendship",
+      "description": "죄수는 에인션트 이블의 말에서 로드 안과 그가 매우 절친한 관계임을 알았다고 증언한다. 당사자 양쪽이 독립적으로 확인한 사실로 바꾸지 않는다.",
+      "truth": "testimony",
+      "claimant": "prisoner",
+      "after": [
+        "prisoner_account"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          177,
+          188
+        ]
+      ],
+      "spoiler": "major",
+      "hints": [
+        {
+          "after": [
+            "castle_arrival"
+          ],
+          "text": "공식적인 평가와 타인의 경험담이 어긋날 수 있다는 질문을 남긴다.",
+          "ranges": [
+            [
+              "LORETALK.PAS",
+              158,
+              175
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prophecy_balance",
+      "from": "lord_ahn",
+      "to": "ancient_evil",
+      "reverse_type": "symbolic_counterpart",
+      "type": "symbolic_counterpart",
+      "description": "예언서는 로드 안을 선, 에인션트 이블을 악의 상징으로 설명하지만 후자의 본심은 선이라고 설명한다. 둘은 Semi-God 계급의 깊은 관계를 가진 대립자로 기술된다.",
+      "truth": "document_claim",
+      "after": [
+        "world_prophecy"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          730,
+          788
+        ]
+      ],
+      "spoiler": "major"
+    },
+    {
+      "id": "protagonist_creation",
+      "from": "ancient_evil",
+      "to": "protagonist",
+      "reverse_type": "created_by",
+      "type": "creator",
+      "description": "예언서는 에인션트 이블이 미래의 역사를 뒤틀어 네크로맨서와 싸울 당신을 창조했다고 설명한다.",
+      "truth": "document_claim",
+      "after": [
+        "world_prophecy"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          768,
+          788
+        ]
+      ],
+      "spoiler": "major",
+      "hints": [
+        {
+          "after": [
+            "castle_arrival"
+          ],
+          "text": "왜 이 일행에게 임무가 돌아오는지 의문을 남기되 답이나 배후 인물을 특정하지 않는다.",
+          "ranges": [
+            [
+              "LORETALK.PAS",
+              349,
+              352
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ancient_evil_opposition",
+      "from": "ancient_evil",
+      "to": "necromancer",
+      "type": "opposition",
+      "description": "예언서는 에인션트 이블이 네크로맨서를 벌하려 하지만 육신 없는 상태에서는 직접 대항하기 어렵다고 설명한다.",
+      "truth": "document_claim",
+      "after": [
+        "world_prophecy"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          768,
+          776
+        ]
+      ],
+      "spoiler": "major"
+    },
+    {
+      "id": "joint_guides",
+      "from": "lord_ahn",
+      "to": "ancient_evil",
+      "reverse_type": "joint_guidance",
+      "type": "joint_guidance",
+      "description": "팬저 바이퍼 전투 뒤 두 존재가 함께 나타난 장면에서 숨은 레버와 최종 방 진입 단서가 전해진다. 이 행동만으로 서로의 모든 동기를 확정하지 않는다.",
+      "truth": "source_event",
+      "after": [
+        "joint_guidance"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2049,
+          2065
+        ]
+      ],
+      "spoiler": "major"
+    },
+    {
+      "id": "joe_offer",
+      "from": "mad_joe",
+      "to": "protagonist",
+      "type": "conditional_companion",
+      "description": "매드 조가 합류를 요청하며 수락하면 여섯 번째 동료 슬롯에 들어간다.",
+      "truth": "source_event",
+      "after": [
+        "joe_request"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          191,
+          219
+        ]
+      ],
+      "spoiler": "minor",
+      "condition": "수락한 경로에만 동료다. 요청을 들었다는 것과 영입 성공을 구분한다."
+    },
+    {
+      "id": "joe_departure",
+      "from": "mad_joe",
+      "to": "protagonist",
+      "type": "conditional_departure",
+      "description": "죄수 영입 플래그가 있는 경비 전투에서 여섯 번째 인물이 매드 조이면 전투 시작에 도망가며 이름 슬롯이 비워진다.",
+      "truth": "source_event",
+      "after": [
+        "prison_guard_confrontation"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          197,
+          230
+        ]
+      ],
+      "spoiler": "major",
+      "condition": "영입 플래그와 player[6].name='Mad Joe' 검사에 해당하는 경로만. 미영입 경로의 이탈이 아니다.",
+      "hints": [
+        {
+          "after": [
+            "joe_request"
+          ],
+          "text": "웃음 섞인 합류 요청의 불안정한 인상을 유지할 수 있다.",
+          "ranges": [
+            [
+              "LORETALK.PAS",
+              191,
+              193
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "polaris_offer",
+      "from": "polaris",
+      "to": "protagonist",
+      "type": "conditional_companion",
+      "description": "메이저 머미를 함께 물리치려 합류를 제안한다.",
+      "truth": "source_event",
+      "after": [
+        "polaris_offer"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          406,
+          435
+        ]
+      ],
+      "spoiler": "minor",
+      "condition": "수락 및 동료 슬롯 선택이 성립하는 경로만 영입된다."
+    },
+    {
+      "id": "polaris_objective",
+      "from": "polaris",
+      "to": "major_mummy",
+      "type": "opposition",
+      "description": "폴라리스가 메이저 머미를 물리치고 싶다고 말한다.",
+      "truth": "testimony",
+      "claimant": "polaris",
+      "after": [
+        "polaris_offer"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          406,
+          409
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "hunter_offer",
+      "from": "lore_hunter",
+      "to": "protagonist",
+      "type": "conditional_companion",
+      "description": "혼자서는 적을 상대하기 어렵다고 판단한 특공대 대장이 일행에게 합류를 제안한다.",
+      "truth": "source_event",
+      "after": [
+        "hunter_offer"
+      ],
+      "ranges": [
+        [
+          "LORETALK.PAS",
+          609,
+          639
+        ]
+      ],
+      "spoiler": "minor",
+      "condition": "수락·빈 슬롯 검사에 따른다. 마을에서 기다리는 상태와 영입 상태를 구분한다."
+    },
+    {
+      "id": "rigel_rescue",
+      "from": "rigel",
+      "to": "protagonist",
+      "type": "conditional_rescue",
+      "description": "부상한 리겔은 동행/치료와 식량 제공/거절 선택의 대상이다. 치료·식량 경로에서는 무기에 축복을 내리고 떠난다.",
+      "truth": "source_event",
+      "after": [
+        "rigel_rescue"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          601,
+          658
+        ]
+      ],
+      "spoiler": "minor",
+      "condition": "동행과 치료 후 이별은 서로 다른 선택이다. 무기 강화도 행운 검사에 따른다."
+    },
+    {
+      "id": "red_teaching",
+      "from": "red_antares",
+      "to": "protagonist",
+      "type": "teacher",
+      "description": "레드 안타레스가 간접 공격 기법을 가르치고 초자연력의 필요성을 설명한다.",
+      "truth": "source_event",
+      "after": [
+        "red_antares_teaching"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1081,
+          1104
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "red_offer",
+      "from": "red_antares",
+      "to": "protagonist",
+      "type": "conditional_companion",
+      "description": "레드 안타레스의 영이 함께 모험하고 싶다고 제안한다.",
+      "truth": "source_event",
+      "after": [
+        "red_antares_offer"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1026,
+          1064
+        ]
+      ],
+      "spoiler": "minor",
+      "condition": "합류 제안 단계·수락·슬롯 선택에 따른다. 마법을 배우는 것과 동료로 영입하는 것은 다르다."
+    },
+    {
+      "id": "spica_teaching",
+      "from": "spica",
+      "to": "protagonist",
+      "type": "teacher",
+      "description": "스피카가 초자연력 다섯 가지와 네크로맨서 역시 이를 사용할 수 있음을 설명한다.",
+      "truth": "source_event",
+      "after": [
+        "spica_teaching"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1275,
+          1296
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "spica_offer",
+      "from": "spica",
+      "to": "protagonist",
+      "type": "conditional_companion",
+      "description": "스피카가 네크로맨서에 대항하려는 결의를 느끼고 합류를 제안한다.",
+      "truth": "source_event",
+      "after": [
+        "spica_offer"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1208,
+          1268
+        ]
+      ],
+      "spoiler": "minor",
+      "condition": "사전 대화·독심 상태·진행 조건·초자연력 수준·수락·슬롯 선택을 검사한다."
+    },
+    {
+      "id": "draconian_offer",
+      "from": "draconian",
+      "to": "protagonist",
+      "type": "conditional_companion",
+      "description": "드라코니안은 자신의 운명을 생각한 뒤 네크로맨서를 물리치기 위해 일행 뒤에서 돕겠다고 제안한다.",
+      "truth": "source_event",
+      "after": [
+        "draconian_offer"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          123,
+          144
+        ]
+      ],
+      "spoiler": "minor",
+      "condition": "진행 상태와 수락 선택에 따라 여섯 번째 슬롯에 영입된다."
+    },
+    {
+      "id": "draconian_research",
+      "from": "draconian",
+      "to": "necromancer",
+      "type": "research_and_opposition",
+      "description": "드라코니안은 네크로맨서의 차원 이동과 다른 공간에서 용사들에게 쫓긴 경위를 연구해 설명한다.",
+      "truth": "testimony",
+      "claimant": "draconian",
+      "after": [
+        "draconian_account"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          71,
+          119
+        ]
+      ],
+      "spoiler": "major"
+    },
+    {
+      "id": "dungeon_punishment",
+      "from": "archidraconian",
+      "to": "draconian",
+      "type": "conditional_hostility",
+      "description": "아키드라코니안은 네크로맨서에 반기를 든 동족이라고 비난하고 동료 드라코니안을 공격한다.",
+      "truth": "source_event",
+      "after": [
+        "dungeon_guard_encounter"
+      ],
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          293,
+          310
+        ]
+      ],
+      "spoiler": "major",
+      "condition": "player[6].name='Draconian'일 때만 이 공격/사망 카운터 설정이 발생한다."
+    },
+    {
+      "id": "dungeon_loyalty",
+      "from": "archidraconian",
+      "to": "necromancer",
+      "type": "loyalty",
+      "description": "아키드라코니안이 네크로맨서에 반기를 든 동족을 죽음으로 처벌하겠다고 말한다.",
+      "truth": "source_event",
+      "after": [
+        "dungeon_guard_encounter"
+      ],
+      "ranges": [
+        [
+          "LOREENT.PAS",
+          293,
+          310
+        ]
+      ],
+      "spoiler": "minor",
+      "condition": "대사가 발생하는 동료 조건도 확인한다."
+    },
+    {
+      "id": "fortress_impersonation",
+      "from": "false_necromancer",
+      "to": "necromancer",
+      "type": "impersonation_and_loyalty",
+      "description": "요새의 상대는 네크로맨서를 사칭했으며 패배 뒤 자신은 진짜가 아니라고 밝히고 그에 대한 충성을 외친다. 같은 템플릿을 쓴 아키드라코니안과 동일 인물이라고 확정하지 않는다.",
+      "truth": "source_event",
+      "after": [
+        "fortress_identity_revealed"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1895,
+          1965
+        ]
+      ],
+      "spoiler": "major",
+      "hints": [
+        {
+          "after": [
+            "illusion_encounter"
+          ],
+          "text": "상대의 자기소개를 독립된 확인 없이 믿지 않는 태도를 유지할 수 있다. 정체의 답은 말하지 않는다.",
+          "ranges": [
+            [
+              "LORESPEC.PAS",
+              1903,
+              1913
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astral_arrival",
+      "from": "astral_mud",
+      "to": "necromancer",
+      "type": "shared_arrival",
+      "description": "아스트랄 머드는 네크로맨서와 함께 다른 차원에서 내려왔다고 자칭한다.",
+      "truth": "testimony",
+      "claimant": "astral_mud",
+      "after": [
+        "astral_mud_account"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          1721,
+          1726
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "panzer_mission",
+      "from": "panzer_viper",
+      "to": "necromancer",
+      "type": "protective_mission",
+      "description": "팬저 바이퍼의 대치 장면에서는 네크로맨서가 수고하지 않도록 일행을 미리 처단하는 것이 임무라고 선언한다. 개별 대사 화자 지정은 없다.",
+      "truth": "source_event",
+      "after": [
+        "panzer_encounter"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2029,
+          2035
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "panzer_robo",
+      "from": "panzer_viper",
+      "to": "mega_robo",
+      "reverse_type": "battle_companion",
+      "type": "battle_companion",
+      "description": "팬저 바이퍼와 메가로보 네 개체가 같은 전투의 적으로 배치된다. 지휘/제작 관계까지 확장하지 않는다.",
+      "truth": "source_event",
+      "after": [
+        "panzer_encounter"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2033,
+          2037
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "mummy_sphinx",
+      "from": "major_mummy",
+      "to": "sphinx",
+      "reverse_type": "battle_companion",
+      "type": "battle_companion",
+      "description": "메이저 머미와 스핑크스 두 개체가 같은 전투에 등장한다. 혈연이나 창조자 관계는 원문에 없다.",
+      "truth": "source_event",
+      "after": [
+        "mummy_encounter"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          533,
+          549
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "gorgon_stheno_euryale",
+      "from": "stheno",
+      "to": "euryale",
+      "reverse_type": "battle_companion",
+      "type": "battle_companion",
+      "description": "고르곤 전투의 50~52번 개체로 함께 배치된다. 신화상의 자매 관계는 원작 근거 없이 추가하지 않는다.",
+      "truth": "source_event",
+      "after": [
+        "gorgon_encounter"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          791,
+          811
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "gorgon_euryale_medusa",
+      "from": "euryale",
+      "to": "medusa",
+      "reverse_type": "battle_companion",
+      "type": "battle_companion",
+      "description": "고르곤 전투에서 함께 등장한다.",
+      "truth": "source_event",
+      "after": [
+        "gorgon_encounter"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          791,
+          811
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "gorgon_medusa_stheno",
+      "from": "medusa",
+      "to": "stheno",
+      "reverse_type": "battle_companion",
+      "type": "battle_companion",
+      "description": "고르곤 전투에서 함께 등장한다.",
+      "truth": "source_event",
+      "after": [
+        "gorgon_encounter"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          791,
+          811
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "final_monk",
+      "from": "archimonk",
+      "to": "necromancer",
+      "reverse_type": "battle_companion",
+      "type": "battle_companion",
+      "description": "네크로맨서가 아키몽크를 소개하고 함께 최종 전투에 등장한다. 친족이나 스승 관계는 확정되지 않았다.",
+      "truth": "source_event",
+      "after": [
+        "final_introduction"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2154,
+          2167
+        ]
+      ],
+      "spoiler": "minor"
+    },
+    {
+      "id": "final_mage",
+      "from": "archimage",
+      "to": "necromancer",
+      "reverse_type": "battle_companion",
+      "type": "battle_companion",
+      "description": "네크로맨서가 아키메이지를 소개하고 함께 최종 전투에 등장한다.",
+      "truth": "source_event",
+      "after": [
+        "final_introduction"
+      ],
+      "ranges": [
+        [
+          "LORESPEC.PAS",
+          2154,
+          2167
+        ]
+      ],
+      "spoiler": "minor"
+    }
   ]
 }

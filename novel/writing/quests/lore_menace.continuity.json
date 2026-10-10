@@ -3,7 +3,7 @@
   "story_id": "lore_menace_draft_v1",
   "story_revision": 7,
   "canon_revision": 4,
-  "character_registry_revision": 9,
+  "character_registry_revision": 10,
   "contracts": {
     "assignment": {
       "before": {

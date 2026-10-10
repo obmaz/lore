@@ -2,9 +2,125 @@
   "version": 1,
   "characters": {
     "protagonist": {
-      "field": "writing_name", "value": "서진", "origin": "authored", "status": "proposed", "evidence": [],
-      "metadata": {"addition": true, "kind": "new_setting", "note": "사용자가 지정한 주인공 집필 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+      "field": "writing_name",
+      "value": "서진",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 주인공 집필 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "party_woodcutter": {
+      "field": "writing_name",
+      "value": "나무꾼",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "party_hunter": {
+      "field": "writing_name",
+      "value": "사냥꾼",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "party_cook": {
+      "field": "writing_name",
+      "value": "요리사",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "party_magician": {
+      "field": "writing_name",
+      "value": "마술사",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
     }
   },
-  "equipment": {}, "abilities": {}, "bestiary": {}
+  "equipment": {
+    "story_axe": {
+      "field": "writing_name",
+      "value": "벌목 도끼",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "직업에 맞는 무기를 구체화한 집필용 제안. 원작 무기 번호나 위력으로 환산하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "story_bow": {
+      "field": "writing_name",
+      "value": "사냥 활",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "직업에 맞는 무기를 구체화한 집필용 제안. 원작 무기 번호나 위력으로 환산하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "story_knife": {
+      "field": "writing_name",
+      "value": "주방 칼",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "직업에 맞는 무기를 구체화한 집필용 제안. 원작 무기 번호나 위력으로 환산하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    "story_wand": {
+      "field": "writing_name",
+      "value": "마술 지팡이",
+      "origin": "authored",
+      "status": "proposed",
+      "evidence": [],
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "직업에 맞는 무기를 구체화한 집필용 제안. 원작 무기 번호나 위력으로 환산하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  },
+  "abilities": {},
+  "bestiary": {}
 }

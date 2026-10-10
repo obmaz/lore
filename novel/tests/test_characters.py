@@ -12,8 +12,9 @@ class CharacterReferenceTest(unittest.TestCase):
 
     def test_roster_includes_ten_initial_candidates(self):
         characters = self.profiles["characters"]
-        self.assertEqual(len(characters), 49)
-        self.assertEqual(sum(c["kind"] == "initial_candidate" for c in characters.values()), 10)
+        self.assertEqual(len(characters), 53)
+        self.assertEqual(sum(c["kind"] == "initial_candidate" for c in characters.values()), 14)
+        self.assertEqual(sum(k.startswith('initial_') for k in characters), 10)
         self.assertEqual(characters["initial_merlin"]["canonical_name"]["value"], "Merlin")
 
     def test_source_name_cannot_change_silently(self):

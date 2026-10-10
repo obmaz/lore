@@ -23,6 +23,10 @@ novel/
 
 ## 먼저 읽을 자료
 
+- [첫 챕터 선택하며 읽기](writing/previews/chapter01-interactive.html): 네 시작 동료·직업 무기,
+  선택 탐방·영입 접근법·직업별 후속 장면을 적용한 새 판본. 다운로드 후 브라우저로 연다.
+  [분기 안내](writing/interactive/README.md), [작가용 분기 읽기본](writing/previews/chapter01-branches.html),
+  [원문 반영표](writing/previews/chapter01-coverage.json).
 - [첫 퀘스트 이어 읽기](writing/previews/first-journey.html): 도입부부터 1-1~1-6까지 이어지는 기본 경로 초고.
   여섯 소편은 모두 긴 본문이며, 각 소편을 따로 집필·검증·푸시했다.
   [동행 거절 경로](writing/previews/first-journey-declined.html)와
@@ -31,10 +35,10 @@ novel/
 - [exports/README.md](exports/README.md): JSON 대신 참고용 HTML/PDF로 읽는 방법. 작가용 전체 설정과 공개 범위 미리보기를 분리한다.
 - [materials/quests.json](materials/quests.json): 18개 집필 단위와 공통 부록의 목록·연결.
 - [materials/quests/lore_menace.json](materials/quests/lore_menace.json): 첫 의뢰의 실제 원문·조건.
-- [characters/registry.json](characters/registry.json): 인물 카드 49개와 관계 48개 링크의 작가 전용 마스터.
+- [characters/registry.json](characters/registry.json): 인물 카드 53개(원작 참조 49 + 새 시작 동료 4)와 관계 48개 링크의 작가 전용 마스터.
 - [characters/README.md](characters/README.md): 인물 이름·성향·관계를 작성하는 방법.
 - [characters/relationships.analysis.json](characters/relationships.analysis.json): 관계 원문 근거·공개 시점·허용 복선의 편집 입력.
-- [reference/README.md](reference/README.md): 장비 20종·마법 45종·적 템플릿 75종과 창작 표시 규칙.
+- [reference/README.md](reference/README.md): 장비 24종(원작 20 + 집필용 무기 4)·마법 45종·적 템플릿 75종과 창작 표시 규칙.
 - [AGENTS.md](AGENTS.md): 원작에 없는 설정의 추가 메타데이터를 강제하는 작업 지침.
 - [authoring/README.md](authoring/README.md): 선택·본문·조건·원문 대응 규칙.
 - [continuity/README.md](continuity/README.md): 이전 장면과의 일관성·설정 변경 추적.
@@ -49,8 +53,9 @@ novel/
 기존 `authoring/drafts/`의 프롤로그는 구조 예시다. 새 `writing/`에는 전편 보드와
 첫 의뢰 직전까지의 시범 본문이 있고, 보류 대사·접근 조건과 새 창작을 표시한다.
 이어서 첫 탐사·귀환 보고·다음 지역 의뢰와 작별까지의 1장 기본 경로 초고를 작성했다.
-무기고·수감소·선택 발견·무작위 전투는 보류한 별도 경로이며, 모든 부수 경로를
-완성했다는 뜻은 아니다. 도입부 선택과 첫 출구의 동행
+기존 기본 판본에서는 무기고·수감소·선택 발견을 보류했다. 새 첫 챕터 선택형 판본은
+그 대사와 경로를 별도 오버레이로 반영한다. 공유 상점·훈련·회복·무작위 전투 UI 및
+후속 퀘스트 전체를 완성했다는 뜻은 아니다. 도입부 선택과 첫 출구의 동행
 수락/거절을 조합한 네 가지 읽기본은 `writing/README.md`에서 볼 수 있다.
 
 ## 독립 실행

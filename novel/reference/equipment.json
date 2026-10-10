@@ -1,8 +1,408 @@
 {
   "version": 1,
-  "revision": 2,
+  "revision": 3,
   "category": "equipment",
   "items": {
+    "story_axe": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "intended_user",
+          "value": "party_woodcutter",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "usage_scope",
+          "value": "직업에 어울리는 시작 장비. 수치·마법 효과·원작 클래스 번호는 미정이며 장면에서 확인한 사용만 기록한다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "party_woodcutter"
+      ],
+      "writing_name": {
+        "field": "writing_name",
+        "value": "벌목 도끼",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "직업에 맞는 무기를 구체화한 집필용 제안. 원작 무기 번호나 위력으로 환산하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "story_bow": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "intended_user",
+          "value": "party_hunter",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "usage_scope",
+          "value": "직업에 어울리는 시작 장비. 수치·마법 효과·원작 클래스 번호는 미정이며 장면에서 확인한 사용만 기록한다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "party_hunter"
+      ],
+      "writing_name": {
+        "field": "writing_name",
+        "value": "사냥 활",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "직업에 맞는 무기를 구체화한 집필용 제안. 원작 무기 번호나 위력으로 환산하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "story_knife": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "intended_user",
+          "value": "party_cook",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "usage_scope",
+          "value": "직업에 어울리는 시작 장비. 수치·마법 효과·원작 클래스 번호는 미정이며 장면에서 확인한 사용만 기록한다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "party_cook"
+      ],
+      "writing_name": {
+        "field": "writing_name",
+        "value": "주방 칼",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "직업에 맞는 무기를 구체화한 집필용 제안. 원작 무기 번호나 위력으로 환산하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "story_wand": {
+      "revision": 1,
+      "category": "weapon",
+      "original_name": {
+        "field": "original_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "claims": [
+        {
+          "field": "intended_user",
+          "value": "party_magician",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "usage_scope",
+          "value": "직업에 어울리는 시작 장비. 수치·마법 효과·원작 클래스 번호는 미정이며 장면에서 확인한 사용만 기록한다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ],
+      "character_ids": [
+        "party_magician"
+      ],
+      "writing_name": {
+        "field": "writing_name",
+        "value": "마술 지팡이",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "직업에 맞는 무기를 구체화한 집필용 제안. 원작 무기 번호나 위력으로 환산하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
     "weapon_0": {
       "revision": 1,
       "category": "weapon",

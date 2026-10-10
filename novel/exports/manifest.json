@@ -1,28 +1,28 @@
 {
   "version": 1,
-  "character_registry_revision": 9,
+  "character_registry_revision": 10,
   "route": [
     "enter_courtyard",
     "visit_lord"
   ],
   "counts": {
-    "characters": 49,
+    "characters": 53,
     "relationships": 35,
     "directed_links": 48,
-    "equipment": 20,
+    "equipment": 24,
     "abilities": 45,
     "bestiary": 75,
     "quests": 19
   },
   "source_sha256": {
-    "characters/registry.json": "a86c112883a941392701b2de544fca7fe0f381d6240eda2444da6c5beffb20ee",
-    "reference/equipment.json": "baed624f2f6938c18db37c666df65ad4ac3e9c759aa26c2261db401999a86833",
+    "characters/registry.json": "be47827b736bdc73b8da10bc47e2e56c65628a982bcddd8727ecffb26104be70",
+    "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
     "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
     "materials/quests.json": "5a5a6878327e875420dce823059f2b944fb1f3e504468bde726b30481a24070b",
     "materials/manifest.json": "4e1f6565214b95b26d5089f24a8e40aa55f1d06d7697fac9783e671570f6131f",
     "authoring/drafts/prologue.json": "1a81d4a60bc2746ec2db5b0a8644272e57e22bef00aa63d79949fadeb54444fa",
-    "authoring/drafts/prologue.continuity.json": "b6db6df14c350078dd7399e9d4dbbddf304282ff1e01c64a7c3fe3d50c3791ba",
+    "authoring/drafts/prologue.continuity.json": "1cda3cfc8c475457911e9f3de9e0e04fd7eb73c81f3c6524499c11c5b0779810",
     "continuity/canon.json": "02392cb0559da1ed83b8deda9f33642e926d94bf9b46b54143dad227e73d5705",
     "tools/export_reference.py": "2fb37a42477fafd4e277edb2e77d7500cb9f2138b8d0e7641d32f7983b3699c0",
     "tools/reference.template.html": "009d0d5ab0b3c39ef1b30d68045fc81372f97125796bc8c490b489becc1cb82b"
@@ -31,5 +31,5 @@
     "source_files": 14,
     "literal_occurrences": 2483
   },
-  "pdf_sha256": "ddbcb134c64f11d9f3dde82aaa81a47c1e54c1cbdf667d11c83e03b975e8740f"
+  "pdf_sha256": "fcd04db616baea485109daa19d803a73dbd26aa0ea84e35267d6306ef7db4463"
 }

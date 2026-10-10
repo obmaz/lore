@@ -1,0 +1,5211 @@
+{
+  "version": 1,
+  "scope": "도입부터 첫 탐사 성공 보고·다음 부탁 경계까지. LORE 성의 정적 대사, MENACE 입구·중심·선택 보물, 호출된 금화/거절 문구. 공유 상점·훈련·회복·무작위 전투 UI와 후속 퀘스트 제외.",
+  "status": "draft",
+  "dialogue_coverage": {
+    "status": "complete",
+    "required_source_refs": [
+      "i/castle_dialogue",
+      "i/castle_optional",
+      "i/cave_optional",
+      "i/decline_helper",
+      "i/gold_helper",
+      "lore_menace/assignment",
+      "lore_menace/center",
+      "lore_menace/menace_entry",
+      "lore_menace/next_task",
+      "lore_menace/reminder",
+      "lore_menace/report",
+      "lore_menace/skeleton_exit",
+      "prologue/guide",
+      "prologue/lord_history",
+      "prologue/lord_intro",
+      "prologue/veteran"
+    ],
+    "deferred_source_refs": [],
+    "literal_dispositions": [
+      {
+        "literal_id": "LOREENT.PAS:literal:1122",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8315",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/grave_gold"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8655",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/guard_repeat_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8714",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/guard_repeat_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8768",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/guard_repeat_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8908",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/guard_first_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8966",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/guard_first_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9021",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/guard_first_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9323",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9581",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9657",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_flee"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9718",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_flee"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9774",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:10062",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/guard_victory_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:10752",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/armory_processed"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:10804",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/armory_processed"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:10913",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11230",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/exit_call_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11609",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11667",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11722",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11781",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11842",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11899",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11953",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12008",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12069",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12125",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12158",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12171",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12184",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12197",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12210",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12240",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12269",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "lore_menace/accept_skeleton"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12307",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "lore_menace/decline_skeleton"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:34455",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/center_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:34507",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/center_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:34554",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/center_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:35886",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/shield_found"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:35966",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/shield_found"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:36451",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/shield_equipped_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESUB.PAS:literal:27739",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/found_gold_1",
+          "i/found_gold_2",
+          "i/found_gold_3",
+          "i/found_gold_4",
+          "i/found_gold_5",
+          "i/found_gold_6"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESUB.PAS:literal:27757",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/found_gold_1",
+          "i/found_gold_2",
+          "i/found_gold_3",
+          "i/found_gold_4",
+          "i/found_gold_5",
+          "i/found_gold_6"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORESUB.PAS:literal:27868",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_declined_response",
+          "i/shield_cancel_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:237",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/venom"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:288",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/venom"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:345",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/venom"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:412",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/orc"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:743",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:799",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:850",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:910",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:921",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:934",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:966",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1018",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1066",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/pyramid_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1228",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/menace_monsters"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1292",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/menace_monsters"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1384",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/venom_loss"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1438",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/venom_loss"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1527",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/lord_rumor"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1596",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/lord_rumor"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1648",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/lord_rumor"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1733",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/loyalty"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1828",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/food_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:1939",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/creator_credit"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2110",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/tavern_welcome"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2190",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/welcome_personal"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2199",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/welcome_personal"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2246",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/welcome_menu"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2317",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/silence"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2355",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/ghost_rumor"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2411",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/drink_offer"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2483",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/drunk_lord"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2535",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/drunk_lord"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2587",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/drunk_lord"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2634",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/drunk_lord"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2703",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/skeleton_prejudice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2755",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/skeleton_prejudice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2802",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/skeleton_prejudice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2851",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/skeleton_prejudice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2896",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/skeleton_prejudice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:2957",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/burp"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3028",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3078",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3126",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3174",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3222",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3272",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3320",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3368",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3416",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3459",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/veteran_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3525",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/grave_warning"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3570",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/grave_warning"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3679",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3725",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3772",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3812",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3862",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3915",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:3969",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4018",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4066",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4115",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4162",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4211",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4259",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4306",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4345",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4369",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4418",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4466",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4515",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/antares_voice"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4775",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/encourage_name"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4819",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/encourage_name"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4868",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/encourage_name"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4948",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/praise"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:4996",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/praise"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5040",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/praise"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5125",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/polaris_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5173",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/polaris_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5224",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/polaris_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5274",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/polaris_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5319",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/polaris_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5387",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/no_visits"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5431",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/no_visits"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5516",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/rebels"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5567",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/rebels"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5613",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/rebels"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5657",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/rebels"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5727",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5775",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5822",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5869",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5920",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:5972",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6018",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6070",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6118",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6166",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6214",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6261",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6311",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6358",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6406",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6453",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6500",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6536",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6559",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6610",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6657",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6704",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6754",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6801",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6848",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6895",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6931",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:6982",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7035",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7082",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/prisoner_account"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7112",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7178",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_request"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7228",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_request"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7276",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7298",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "i/accept_joe"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7335",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "i/decline_joe"
+        ],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7536",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8045",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8093",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8141",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8187",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8214",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8220",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8247",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8250",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8255",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8303",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8350",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8397",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8446",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8498",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8546",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8593",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8640",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/thief_hint"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8667",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8733",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_warning"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8780",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_warning"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8829",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_warning"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:8874",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/joe_warning"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9026",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/armory_permission"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9080",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/armory_permission"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9130",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/armory_permission"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9203",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/armory_after"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9253",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/armory_after"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9365",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/gold_rumor"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9422",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/gold_rumor"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9743",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/threshold_open_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9801",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/threshold_before_assignment"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9858",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/threshold_question"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:9906",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/threshold_question"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10004",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10239",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10265",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/threshold_yes_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10293",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10316",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/threshold_yes_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10491",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10517",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/threshold_no_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10547",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10570",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/threshold_no_words"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10750",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/support_first"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10778",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/support_first"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10886",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/support_repeat"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:10910",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/support_repeat"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11005",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/guide_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11040",
+        "handling": "verbatim",
+        "block_ids": [
+          "i/guide_progress"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11156",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_intro_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11163",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_intro_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11174",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_intro_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11202",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_intro_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11251",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_intro_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11297",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_intro_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11399",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11448",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11497",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11544",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11593",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11642",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11691",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11741",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11790",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11839",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11878",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11928",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:11976",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12026",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12079",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12128",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12177",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12225",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12272",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12325",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12343",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12357",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12387",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12436",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12485",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12534",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12583",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12632",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12668",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12718",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12771",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12778",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12807",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12834",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12868",
+        "handling": "verbatim",
+        "block_ids": [
+          "prologue/lord_history_dialogue"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12962",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13018",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13067",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13121",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13171",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13219",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13270",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13319",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13368",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13403",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13457",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13506",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13555",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13603",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13651",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13692",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13790",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/reminder_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13807",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/reminder_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13816",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/reminder_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13915",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/report_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13956",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/reward_counter_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14024",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "빈 레이아웃 문자열 또는 선언·제어·표시 서식. 실제 비어 있지 않은 대사는 제외하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14212",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14261",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14315",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14365",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14385",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14397",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14431",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14444",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14456",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14493",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14611",
+        "handling": "verbatim",
+        "block_ids": [
+          "lore_menace/farewell_quote"
+        ],
+        "choice_ids": [],
+        "reason": "조건별 보존 원문. 모든 경로에서 동시에 발생하지 않는다."
+      }
+    ],
+    "notes": "첫 챕터에 명시한 원문 범위의 정적 대사·선택 라벨 반영. 공유 상점/전투 UI와 후속 퀘스트 전체의 완성을 뜻하지 않음. 산문 의미와 원작 미확정 접근 조건은 편집 검토 필요."
+  },
+  "nodes": [
+    {
+      "id": "prologue/arrival",
+      "choices": [
+        {
+          "id": "prologue/enter_courtyard",
+          "target": "prologue/courtyard",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "prologue/courtyard",
+      "choices": [
+        {
+          "id": "prologue/visit_lord",
+          "target": "prologue/audience",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "prologue/visit_tavern",
+          "target": "prologue/tavern",
+          "when": {
+            "state": "knowledge.missing_squad",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "prologue/tavern",
+      "choices": [
+        {
+          "id": "prologue/remember_veteran",
+          "target": "prologue/courtyard",
+          "when": {
+            "state": "quest.lore_stage",
+            "op": "eq",
+            "value": 2
+          },
+          "effects": [
+            {
+              "state": "knowledge.missing_squad",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [
+                  "prologue/veteran"
+                ],
+                "note": "새로 집필한 연결 서사·표현. 원작 문장이나 확정 설정이 아니다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/late_veteran_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.tavern",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "knowledge.missing_squad",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "prologue/audience",
+      "choices": [
+        {
+          "id": "prologue/hear_lord_intro",
+          "target": "prologue/briefing",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "prologue/briefing",
+      "choices": [
+        {
+          "id": "prologue/hear_lord_briefing",
+          "target": "prologue/first_quest_boundary",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "prologue/first_quest_boundary",
+      "choices": [
+        {
+          "id": "prologue/first_quest_boundary/continue",
+          "target": "lore_menace/assignment",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/assignment",
+      "choices": [
+        {
+          "id": "lore_menace/receive_assignment",
+          "target": "lore_menace/preparation",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.lore_stage",
+              "op": "set",
+              "value": 3,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lore_menace/assignment"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/preparation",
+      "choices": [
+        {
+          "id": "lore_menace/leave_castle",
+          "target": "i/threshold",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "lore_menace/ask_directions_again",
+          "target": "lore_menace/reminder",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/explore",
+          "target": "i/hub",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/armory_first",
+          "target": "i/armory",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.armory_order",
+              "op": "set",
+              "value": "first",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/reminder",
+      "choices": [
+        {
+          "id": "lore_menace/finish_reminder",
+          "target": "i/threshold",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/castle_exit",
+      "choices": [
+        {
+          "id": "lore_menace/accept_skeleton",
+          "target": "lore_menace/departure_path",
+          "when": {
+            "state": "event.slot6",
+            "op": "eq",
+            "value": ""
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "set",
+              "value": [
+                "skeleton"
+              ],
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.skeleton_offer_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "source_exact"
+        },
+        {
+          "id": "lore_menace/decline_skeleton",
+          "target": "lore_menace/departure_path",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.skeleton_offer_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "source_exact"
+        },
+        {
+          "id": "i/skeleton_ask",
+          "target": "i/skeleton_conversation",
+          "when": {
+            "state": "event.skeleton_conversation_done",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [
+            {
+              "state": "event.skeleton_conversation_done",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/skeleton_replace",
+          "target": "i/skeleton_replace",
+          "when": {
+            "all": [
+              {
+                "state": "event.slot6",
+                "op": "ne",
+                "value": ""
+              },
+              {
+                "state": "event.replacement_considered",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.replacement_considered",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 유한 탐방·대화 규칙. 원작 조건 변경으로 오인하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/departure_path",
+      "choices": [
+        {
+          "id": "lore_menace/set_out",
+          "target": "lore_menace/road",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/road",
+      "choices": [
+        {
+          "id": "lore_menace/enter_menace",
+          "target": "lore_menace/cave_entry",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/choose_role",
+          "target": "i/roles",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/cave_entry",
+      "choices": [
+        {
+          "id": "lore_menace/walk_deeper",
+          "target": "lore_menace/cave_walk",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/cave_walk",
+      "choices": [
+        {
+          "id": "lore_menace/confirm_center",
+          "target": "lore_menace/center",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/center",
+      "choices": [
+        {
+          "id": "lore_menace/return_to_lore",
+          "target": "lore_menace/return_road",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.lore_stage",
+              "op": "set",
+              "value": 4,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lore_menace/center"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/cave_treasure",
+          "target": "i/treasure_hub",
+          "when": {
+            "state": "event.cave_detour_done",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/return_road",
+      "choices": [
+        {
+          "id": "lore_menace/report_success",
+          "target": "lore_menace/report",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/report",
+      "choices": [
+        {
+          "id": "lore_menace/acknowledge_reward",
+          "target": "lore_menace/next_task",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.lore_stage",
+              "op": "set",
+              "value": 5,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lore_menace/report"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            },
+            {
+              "state": "quest.menace_reward_claimed",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lore_menace/report"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/next_task",
+      "choices": [
+        {
+          "id": "lore_menace/hear_next_task",
+          "target": "lore_menace/farewell",
+          "when": true,
+          "effects": [
+            {
+              "state": "quest.lore_stage",
+              "op": "set",
+              "value": 6,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "lore_menace/next_task"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/farewell",
+      "choices": [
+        {
+          "id": "lore_menace/leave_audience",
+          "target": "lore_menace/next_quest_boundary",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "lore_menace/next_quest_boundary",
+      "choices": []
+    },
+    {
+      "id": "i/hub",
+      "choices": [
+        {
+          "id": "i/visit_armory",
+          "target": "i/armory",
+          "when": {
+            "all": [
+              {
+                "state": "event.city_visits",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "state": "event.visited.armory",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.armory_order",
+              "op": "set",
+              "value": "later",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 원문 조건을 추적하는 선택형 소설 상태. 새 이동은 원작 접근을 확정하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/visit_streets",
+          "target": "i/streets",
+          "when": {
+            "all": [
+              {
+                "state": "event.city_visits",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "state": "event.visited.streets",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/visit_tavern",
+          "target": "i/tavern",
+          "when": {
+            "all": [
+              {
+                "state": "event.city_visits",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "state": "event.visited.tavern",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/visit_grave",
+          "target": "i/grave",
+          "when": {
+            "all": [
+              {
+                "state": "event.city_visits",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "state": "event.visited.grave",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/visit_prison",
+          "target": "i/prison",
+          "when": {
+            "all": [
+              {
+                "state": "event.city_visits",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "state": "event.visited.prison",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/visit_support",
+          "target": "i/support",
+          "when": {
+            "all": [
+              {
+                "state": "event.city_visits",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "state": "event.visited.support",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/visit_mine_lore",
+          "target": "i/mine_lore",
+          "when": {
+            "all": [
+              {
+                "state": "event.city_visits",
+                "op": "lte",
+                "value": 2
+              },
+              {
+                "state": "event.visited.mine_lore",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/depart_now",
+          "target": "i/threshold",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/armory",
+      "choices": [
+        {
+          "id": "i/armory_finish",
+          "target": "i/armory_after",
+          "when": {
+            "not": {
+              "all": [
+                {
+                  "state": "event.slot6",
+                  "op": "eq",
+                  "value": "mad_joe"
+                },
+                {
+                  "state": "event.weapon.mad_joe",
+                  "op": "eq",
+                  "value": "weapon_0"
+                },
+                {
+                  "state": "event.armory_used",
+                  "op": "eq",
+                  "value": false
+                }
+              ]
+            }
+          },
+          "effects": [
+            {
+              "state": "event.armory_used",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 유한 탐방·대화 규칙. 원작 조건 변경으로 오인하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/armory_finish_joe",
+          "target": "i/armory_after",
+          "when": {
+            "all": [
+              {
+                "state": "event.slot6",
+                "op": "eq",
+                "value": "mad_joe"
+              },
+              {
+                "state": "event.weapon.mad_joe",
+                "op": "eq",
+                "value": "weapon_0"
+              },
+              {
+                "state": "event.armory_used",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.armory_used",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 유한 탐방·대화 규칙. 원작 조건 변경으로 오인하지 않는다."
+              }
+            },
+            {
+              "state": "event.weapon.mad_joe",
+              "op": "set",
+              "value": "weapon_1",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 원문 조건을 추적하는 선택형 소설 상태. 새 이동은 원작 접근을 확정하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/streets",
+      "choices": [
+        {
+          "id": "i/streets_repeat_hint",
+          "target": "i/street_second",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/streets_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.streets",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/street_second",
+      "choices": [
+        {
+          "id": "i/street_second_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.streets",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/tavern",
+      "choices": [
+        {
+          "id": "i/tavern_personal",
+          "target": "i/tavern_personal",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/tavern_menu",
+          "target": "i/tavern_menu",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/tavern_personal",
+      "choices": [
+        {
+          "id": "i/hear_tavern_people",
+          "target": "i/tavern_people",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/tavern_menu",
+      "choices": [
+        {
+          "id": "i/hear_tavern_people_menu",
+          "target": "i/tavern_people",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/tavern_people",
+      "choices": [
+        {
+          "id": "i/late_veteran",
+          "target": "prologue/tavern",
+          "when": {
+            "state": "knowledge.missing_squad",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/tavern_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.tavern",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/grave",
+      "choices": [
+        {
+          "id": "i/grave_chest",
+          "target": "i/grave_chest",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/grave_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.grave",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/grave_chest",
+      "choices": [
+        {
+          "id": "i/grave_chest_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.grave",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 1000,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/support",
+      "choices": [
+        {
+          "id": "i/support_again",
+          "target": "i/support_again",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.support_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/support_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.support",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.support_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/support_again",
+      "choices": [
+        {
+          "id": "i/support_repeat_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.support",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/mine_lore",
+      "choices": [
+        {
+          "id": "i/mine_lore_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.mine_lore",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/prison",
+      "choices": [
+        {
+          "id": "i/prison_request",
+          "target": "i/prison_inside",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.joe_method",
+              "op": "set",
+              "value": "requested_visit",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/prison_service",
+          "target": "i/prison_service",
+          "when": {
+            "all": [
+              {
+                "state": "companions.starting",
+                "op": "contains",
+                "value": "party_woodcutter"
+              },
+              {
+                "state": "event.weapon.party_woodcutter",
+                "op": "eq",
+                "value": "story_axe"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.joe_method",
+              "op": "set",
+              "value": "service_help",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/prison_leave",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.prison",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/prison_service",
+      "choices": [
+        {
+          "id": "i/service_inside",
+          "target": "i/prison_inside",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.role.party_woodcutter",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/prison_inside",
+      "choices": [
+        {
+          "id": "i/accept_joe",
+          "target": "i/joe_joined",
+          "when": {
+            "state": "event.slot6",
+            "op": "eq",
+            "value": ""
+          },
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "set",
+              "value": [
+                "mad_joe"
+              ],
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "mad_joe",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.joe_accepted",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.weapon.mad_joe",
+              "op": "set",
+              "value": "weapon_0",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 원문 조건을 추적하는 선택형 소설 상태. 새 이동은 원작 접근을 확정하지 않는다."
+              }
+            }
+          ],
+          "origin": "source_exact"
+        },
+        {
+          "id": "i/decline_joe",
+          "target": "i/joe_declined",
+          "when": true,
+          "effects": [],
+          "origin": "source_exact"
+        }
+      ]
+    },
+    {
+      "id": "i/joe_declined",
+      "choices": [
+        {
+          "id": "i/joe_declined_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.prison",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/joe_joined",
+      "choices": [
+        {
+          "id": "i/joe_guard_exit",
+          "target": "i/guard_first",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.guard_fight_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 원문 조건을 추적하는 선택형 소설 상태. 새 이동은 원작 접근을 확정하지 않는다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "set",
+              "value": [],
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 원문 조건을 추적하는 선택형 소설 상태. 새 이동은 원작 접근을 확정하지 않는다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 원문 조건을 추적하는 선택형 소설 상태. 새 이동은 원작 접근을 확정하지 않는다."
+              }
+            },
+            {
+              "state": "event.joe_fled",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 원문 조건을 추적하는 선택형 소설 상태. 새 이동은 원작 접근을 확정하지 않는다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/joe_quiet_exit",
+          "target": "i/joe_quiet_exit",
+          "when": {
+            "state": "event.joe_method",
+            "op": "eq",
+            "value": "service_help"
+          },
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/joe_quiet_exit",
+      "choices": [
+        {
+          "id": "i/joe_quiet_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.prison",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/guard_first",
+      "choices": [
+        {
+          "id": "i/guard_win",
+          "target": "i/guard_victory",
+          "when": true,
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "set",
+              "value": [],
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/guard_escape",
+          "target": "i/guard_escape",
+          "when": true,
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "set",
+              "value": [],
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/guard_victory",
+      "choices": [
+        {
+          "id": "i/guard_victory_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.prison",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/guard_escape",
+      "choices": [
+        {
+          "id": "i/guard_try_again",
+          "target": "i/guard_repeat",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/guard_escape_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.prison",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/guard_repeat",
+      "choices": [
+        {
+          "id": "i/guard_repeat_win",
+          "target": "i/guard_victory",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/guard_repeat_leave",
+          "target": "i/guard_repeat_leave",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/guard_repeat_leave",
+      "choices": [
+        {
+          "id": "i/guard_repeat_leave_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.prison",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/threshold",
+      "choices": [
+        {
+          "id": "i/threshold_yes",
+          "target": "i/threshold_yes",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.threshold_open",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/threshold_no",
+          "target": "i/threshold_no",
+          "when": {
+            "state": "event.threshold_refused",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [
+            {
+              "state": "event.threshold_refused",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/threshold_no",
+      "choices": [
+        {
+          "id": "i/threshold_reconsider",
+          "target": "i/threshold",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/threshold_yes",
+      "choices": [
+        {
+          "id": "i/threshold_outside",
+          "target": "lore_menace/castle_exit",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/skeleton_conversation",
+      "choices": [
+        {
+          "id": "i/conversation_back",
+          "target": "lore_menace/castle_exit",
+          "when": {
+            "state": "event.slot6",
+            "op": "eq",
+            "value": ""
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/conversation_replace",
+          "target": "i/skeleton_replace",
+          "when": {
+            "state": "event.slot6",
+            "op": "ne",
+            "value": ""
+          },
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/skeleton_replace",
+      "choices": [
+        {
+          "id": "i/replace_confirm",
+          "target": "lore_menace/castle_exit",
+          "when": true,
+          "effects": [
+            {
+              "state": "companions.optional_recruits",
+              "op": "set",
+              "value": [],
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.slot6",
+              "op": "set",
+              "value": "",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/replace_cancel",
+          "target": "lore_menace/departure_path",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.skeleton_offer_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/roles",
+      "choices": [
+        {
+          "id": "i/use_party_woodcutter",
+          "target": "i/role_party_woodcutter",
+          "when": {
+            "all": [
+              {
+                "state": "companions.starting",
+                "op": "contains",
+                "value": "party_woodcutter"
+              },
+              {
+                "state": "event.weapon.party_woodcutter",
+                "op": "eq",
+                "value": "story_axe"
+              },
+              {
+                "state": "event.role.party_woodcutter",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.role.party_woodcutter",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/use_party_hunter",
+          "target": "i/role_party_hunter",
+          "when": {
+            "all": [
+              {
+                "state": "companions.starting",
+                "op": "contains",
+                "value": "party_hunter"
+              },
+              {
+                "state": "event.weapon.party_hunter",
+                "op": "eq",
+                "value": "story_bow"
+              },
+              {
+                "state": "event.role.party_hunter",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.role.party_hunter",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/use_party_cook",
+          "target": "i/role_party_cook",
+          "when": {
+            "all": [
+              {
+                "state": "companions.starting",
+                "op": "contains",
+                "value": "party_cook"
+              },
+              {
+                "state": "event.weapon.party_cook",
+                "op": "eq",
+                "value": "story_knife"
+              },
+              {
+                "state": "event.role.party_cook",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.role.party_cook",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/use_party_magician",
+          "target": "i/role_party_magician",
+          "when": {
+            "all": [
+              {
+                "state": "companions.starting",
+                "op": "contains",
+                "value": "party_magician"
+              },
+              {
+                "state": "event.weapon.party_magician",
+                "op": "eq",
+                "value": "story_wand"
+              },
+              {
+                "state": "event.role.party_magician",
+                "op": "eq",
+                "value": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "state": "event.role.party_magician",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/role_finish",
+          "target": "lore_menace/cave_entry",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/role_party_woodcutter",
+      "choices": [
+        {
+          "id": "i/role_back_party_woodcutter",
+          "target": "i/roles",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/role_enter_party_woodcutter",
+          "target": "lore_menace/cave_entry",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/role_party_hunter",
+      "choices": [
+        {
+          "id": "i/role_back_party_hunter",
+          "target": "i/roles",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/role_enter_party_hunter",
+          "target": "lore_menace/cave_entry",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/role_party_cook",
+      "choices": [
+        {
+          "id": "i/role_back_party_cook",
+          "target": "i/roles",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/role_enter_party_cook",
+          "target": "lore_menace/cave_entry",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/role_party_magician",
+      "choices": [
+        {
+          "id": "i/role_back_party_magician",
+          "target": "i/roles",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/role_enter_party_magician",
+          "target": "lore_menace/cave_entry",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/treasure_hub",
+      "choices": [
+        {
+          "id": "i/gold_1",
+          "target": "i/gold_1",
+          "when": {
+            "state": "event.gold_spot_1",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [
+            {
+              "state": "event.gold_spot_1",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 1000,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 1000,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/gold_2",
+          "target": "i/gold_2",
+          "when": {
+            "state": "event.gold_spot_2",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [
+            {
+              "state": "event.gold_spot_2",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 2500,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 2500,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/gold_3",
+          "target": "i/gold_3",
+          "when": {
+            "state": "event.gold_spot_3",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [
+            {
+              "state": "event.gold_spot_3",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 400,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 400,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/gold_4",
+          "target": "i/gold_4",
+          "when": {
+            "state": "event.gold_spot_4",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [
+            {
+              "state": "event.gold_spot_4",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 600,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 600,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/gold_5",
+          "target": "i/gold_5",
+          "when": {
+            "state": "event.gold_spot_5",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [
+            {
+              "state": "event.gold_spot_5",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 1500,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 1500,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/gold_6",
+          "target": "i/gold_6",
+          "when": {
+            "state": "event.gold_spot_6",
+            "op": "eq",
+            "value": false
+          },
+          "effects": [
+            {
+              "state": "event.gold_spot_6",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold_last",
+              "op": "set",
+              "value": 1000,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.gold",
+              "op": "increment",
+              "value": 1000,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/shield_find",
+          "target": "i/shield",
+          "when": {
+            "state": "event.shield_owner",
+            "op": "eq",
+            "value": ""
+          },
+          "effects": [],
+          "origin": "authored"
+        },
+        {
+          "id": "i/treasure_finish",
+          "target": "lore_menace/center",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.cave_detour_done",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 경로 사건의 반복/인계 관리. 실제 영입과 이탈만 상태에 남긴다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/gold_1",
+      "choices": [
+        {
+          "id": "i/gold_back_1",
+          "target": "i/treasure_hub",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/gold_2",
+      "choices": [
+        {
+          "id": "i/gold_back_2",
+          "target": "i/treasure_hub",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/gold_3",
+      "choices": [
+        {
+          "id": "i/gold_back_3",
+          "target": "i/treasure_hub",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/gold_4",
+      "choices": [
+        {
+          "id": "i/gold_back_4",
+          "target": "i/treasure_hub",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/gold_5",
+      "choices": [
+        {
+          "id": "i/gold_back_5",
+          "target": "i/treasure_hub",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/gold_6",
+      "choices": [
+        {
+          "id": "i/gold_back_6",
+          "target": "i/treasure_hub",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/shield",
+      "choices": [
+        {
+          "id": "i/shield_protagonist",
+          "target": "i/shield_equipped",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.shield_owner",
+              "op": "set",
+              "value": "protagonist",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/shield_party_woodcutter",
+          "target": "i/shield_equipped",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_woodcutter"
+          },
+          "effects": [
+            {
+              "state": "event.shield_owner",
+              "op": "set",
+              "value": "party_woodcutter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/shield_party_hunter",
+          "target": "i/shield_equipped",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_hunter"
+          },
+          "effects": [
+            {
+              "state": "event.shield_owner",
+              "op": "set",
+              "value": "party_hunter",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/shield_party_cook",
+          "target": "i/shield_equipped",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_cook"
+          },
+          "effects": [
+            {
+              "state": "event.shield_owner",
+              "op": "set",
+              "value": "party_cook",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/shield_party_magician",
+          "target": "i/shield_equipped",
+          "when": {
+            "state": "companions.starting",
+            "op": "contains",
+            "value": "party_magician"
+          },
+          "effects": [
+            {
+              "state": "event.shield_owner",
+              "op": "set",
+              "value": "party_magician",
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        },
+        {
+          "id": "i/shield_cancel",
+          "target": "i/shield_cancel",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/shield_equipped",
+      "choices": [
+        {
+          "id": "i/shield_back",
+          "target": "lore_menace/center",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.cave_detour_done",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 경로 사건의 반복/인계 관리. 실제 영입과 이탈만 상태에 남긴다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/shield_cancel",
+      "choices": [
+        {
+          "id": "i/shield_cancel_back",
+          "target": "lore_menace/center",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.cave_detour_done",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 경로 사건의 반복/인계 관리. 실제 영입과 이탈만 상태에 남긴다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    },
+    {
+      "id": "i/armory_after",
+      "choices": [
+        {
+          "id": "i/armory_back",
+          "target": "i/hub",
+          "when": true,
+          "effects": [
+            {
+              "state": "event.visited.armory",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            },
+            {
+              "state": "event.city_visits",
+              "op": "increment",
+              "value": 1,
+              "provenance": {
+                "origin": "authored",
+                "source_refs": [],
+                "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+              }
+            }
+          ],
+          "origin": "authored"
+        }
+      ]
+    }
+  ],
+  "auto_rules": [
+    {
+      "node": "i/hub",
+      "when": {
+        "state": "event.city_visits",
+        "op": "gte",
+        "value": 3
+      },
+      "choice": "i/depart_now",
+      "reason": "세 곳의 탐방을 마쳐 출발 장면으로 이어집니다. 방문하지 않은 곳의 대사·장비·지식은 얻지 않습니다."
+    }
+  ],
+  "limitations": [
+    "명시 범위 밖 공유 UI·후속 퀘스트 제외",
+    "선택형 이동/새 동료는 창작 제안",
+    "모든 산문의 의미·원작 접근 조건은 자동 검증 대상이 아님"
+  ]
+}

@@ -1,29 +1,33 @@
 {
   "version": 1,
   "source_sha256": {
+    "writing/interactive/chapter01.json": "6280ccab8afa8e86dd4108e8a721bd36c2c963afb55c8f7813ca3ac7e42de452",
+    "writing/interactive/reader.js": "097b70df2458e2cbe0b25ea7a1fe43350839f7a48e880ca47c3cfc7492e13d73",
+    "writing/interactive/overlay.schema.json": "3e100de195f94c12de8dc416e921efbf4c193c3e52f05c8626d11a03a888175f",
+    "tools/interactive.py": "994a96e05e3af702461d8996857a59f021936080ca3dc7c1cbddcee810773208",
     "writing/storyboard/series.json": "ef7efd9026b4def686f2c092ea14282c291b8b18b9e9ca2178dc2ea53b326a60",
     "writing/quests/prologue.json": "ee4394f7eb10879fe98ae6fc3aaf8e9ba37692bf207c95719015387a48467a5d",
-    "writing/quests/prologue.continuity.json": "a99382dd27cf026aa5a5c33ffc8cef4d6ce88e696c5978a0658ea1ae5823109e",
-    "characters/registry.json": "a86c112883a941392701b2de544fca7fe0f381d6240eda2444da6c5beffb20ee",
-    "reference/names.json": "cd9a1d601e9ab2cf4e06b91cff9986e44f37ade9db71e48c9697c60833583889",
+    "writing/quests/prologue.continuity.json": "0d96ea9bd20c0e90facf5120c43f0c1bf051ba38673ac205bf0700ee31772c79",
+    "characters/registry.json": "be47827b736bdc73b8da10bc47e2e56c65628a982bcddd8727ecffb26104be70",
+    "reference/names.json": "2fb45df00f9a8361eb6cdf9eea9335cb710334363e7a149cf7a8d080cd179ab6",
     "reference/terms.json": "f9d763745b945dd0578d8d664cd5eedb7b7422490cbd6f885568b081bcf4b8fb",
     "continuity/canon.json": "02392cb0559da1ed83b8deda9f33642e926d94bf9b46b54143dad227e73d5705",
     "writing/project.json": "254e3a952b738b619fd6506b3bb93f7a9b8bde855b6544b60beba94166e9eb44",
-    "tools/writing.py": "b62d9cb3a27e4d86328136c243727c57b063504786121b430f60444854c8cb69",
+    "tools/writing.py": "1f6c2f5c3e69d1eda2ea48caa0bd2c515289959887f6857dee525c3eb5976785",
     "tools/text_refs.py": "5298ed7528cc6fcfb723c6a26f792fc527fbe3fdd7c223066c1a4107529c5479",
     "tools/story_continuity.py": "e79b34b98a0726ef9d741a5bc1d47fdb6a1fb7cf9a1a013e01150d71af53c528",
     "tools/disclosure.py": "562d46cd711305fd4c0419485015fe22a0bb1eda8a515518e75ffe9c25a4711f",
     "tools/validate_story_authoring.py": "40243942f9cc0d98d29d089b730c315656c0f4d2804ea00d9e780aab8dd498de",
     "authoring/story.schema.json": "45d0aee1869770e20d39de45645e61acfb5caa2ddbe4b593afd107cd9fd9de0c",
     "writing/storyboard.schema.json": "84c0964d33bb97bbb0cc7bfdfcc48773e919273f10bce09727290c695fd5a200",
-    "reference/equipment.json": "baed624f2f6938c18db37c666df65ad4ac3e9c759aa26c2261db401999a86833",
+    "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
     "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
     "writing/reading.json": "0b17af06abd6152ad19320374d6befa5964df115e3635d772a6d9e1f4b57e8fc",
     "tools/reading.py": "bbea82a29c345d6c5373750f9d6d680246023f3db699bab09934ff73f77927d2",
     "continuity/continuity.schema.json": "4f1688785baee9fb3ed69eb7c68c9c635954cd7d43942a2ea31e76cf42bde2bb",
     "writing/quests/lore_menace.json": "00648f96e4f9306fdfcede2dd1ea2a24e1ec957b8da269366ce5491bebafaf21",
-    "writing/quests/lore_menace.continuity.json": "85b9a9be373b6260b98de89f351ff3e694e1282562c97efafa67b9275c468cb8",
+    "writing/quests/lore_menace.continuity.json": "ed8f7ff30094c8f8df84c5126723d47b1900b5fe06f9e74c873e139c74a22c64",
     "writing/episodes/lore_menace.json": "14b5b8423fcb3d76b78a2ecce01eba17d8a5e66f60925b53b8f090fe659fa6fb"
   },
   "artifacts": {
@@ -45,6 +49,9 @@
     "menace-05.html": "fbaa2efcd39e459cf1305df8f5fb1f92debbf21ade101fa5f4556d4262bd065a",
     "menace-05-declined.html": "d5b6123c7b46cb6b7bc91c0110bfda7dfb4fe0a954c5876be4fa03c63d9739b3",
     "menace-06.html": "d3c91c22f19d3aab0004ba225daa0ad6e3aedeec2672cc3e59a78c945cd3f89e",
-    "menace-06-declined.html": "02a3a6eda9b38e9ec5fc98fa1ac4a8e5ef1f97c5c2f9629c4b9562e83cb21c5c"
+    "menace-06-declined.html": "02a3a6eda9b38e9ec5fc98fa1ac4a8e5ef1f97c5c2f9629c4b9562e83cb21c5c",
+    "chapter01-interactive.html": "ffc33f84e5af11f368bf14a1492db1cbed003d9c3287c4df285b57be2113ee11",
+    "chapter01-branches.html": "3c299a7f14b2678d4e550157da587d52b1ecf268092248c81aeace5c65b16367",
+    "chapter01-coverage.json": "e276f7ecedaede698c7ab53633ac8eb509316545b0b74ab44c6ab9ca90856b0e"
   }
 }

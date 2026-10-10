@@ -5,6 +5,9 @@
 - [equipment.json](equipment.json): 무기 10종(맨손 포함), 방패 5종, 갑옷 5종.
   원작 이름·상점 가격·기본 위력·직업 제약을 보존한다. 황금의 방패/갑옷의 발견 표기와
   장착 근거도 금제 장비 항목에 넣었다. 화염검의 속성 피해는 미상이다.
+  여기에 첫 챕터용 창작 무기 4종을 별도 ID로 추가했다: `story_axe`, `story_bow`,
+  `story_knife`, `story_wand`. `analysis.json.authored_equipment`에 추가 메타데이터를 두고
+  표시명은 `names.json.equipment`에서 관리한다. 원작 번호·위력·마법 효과를 지어내지 않는다.
 - [abilities.json](abilities.json): 직접 공격 12종, 간접 공격 6종, 회복 14종,
   현상 마법 8종, 초자연력 5종. 효과·SP/ESP·실패/저항·사용 조건의 근거를 둔다.
 - [bestiary.json](bestiary.json): 적 템플릿 75종. 원어 이름·한국어 음역·원작 전투 수치와

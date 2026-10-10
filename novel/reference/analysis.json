@@ -760,6 +760,178 @@
         19
       ],
       "source_role": "원작 적 데이터에 있는 스켈레톤. 특정 이름을 가진 개인이나 보스라는 설정은 원작 근거 없이 추가하지 않는다."
+    },
+    {
+      "id": "party_woodcutter",
+      "name": null,
+      "display_name": "나무꾼",
+      "kind": "initial_candidate",
+      "ranges": [],
+      "authored": true,
+      "equipment": [
+        "story_axe"
+      ],
+      "biography_overrides": {
+        "occupation": {
+          "field": "occupation",
+          "value": "나무꾼",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "writing_additions": {
+        "goals": [
+          {
+            "field": "story_role",
+            "value": "첫 챕터의 시작 동료. 실제 동행·장비·행동은 선택 경로에서 관리한다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "party_hunter",
+      "name": null,
+      "display_name": "사냥꾼",
+      "kind": "initial_candidate",
+      "ranges": [],
+      "authored": true,
+      "equipment": [
+        "story_bow"
+      ],
+      "biography_overrides": {
+        "occupation": {
+          "field": "occupation",
+          "value": "사냥꾼",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "writing_additions": {
+        "goals": [
+          {
+            "field": "story_role",
+            "value": "첫 챕터의 시작 동료. 실제 동행·장비·행동은 선택 경로에서 관리한다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "party_cook",
+      "name": null,
+      "display_name": "요리사",
+      "kind": "initial_candidate",
+      "ranges": [],
+      "authored": true,
+      "equipment": [
+        "story_knife"
+      ],
+      "biography_overrides": {
+        "occupation": {
+          "field": "occupation",
+          "value": "요리사",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "writing_additions": {
+        "goals": [
+          {
+            "field": "story_role",
+            "value": "첫 챕터의 시작 동료. 실제 동행·장비·행동은 선택 경로에서 관리한다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "party_magician",
+      "name": null,
+      "display_name": "마술사",
+      "kind": "initial_candidate",
+      "ranges": [],
+      "authored": true,
+      "equipment": [
+        "story_wand"
+      ],
+      "biography_overrides": {
+        "occupation": {
+          "field": "occupation",
+          "value": "마술사",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "writing_additions": {
+        "goals": [
+          {
+            "field": "story_role",
+            "value": "첫 챕터의 시작 동료. 실제 동행·장비·행동은 선택 경로에서 관리한다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ]
+      }
     }
   ],
   "indirect_effects": [
@@ -2396,5 +2568,235 @@
         "relationships": []
       }
     }
-  }
+  },
+  "authored_equipment": [
+    {
+      "id": "story_axe",
+      "claims": [
+        {
+          "field": "intended_user",
+          "value": "party_woodcutter",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "usage_scope",
+          "value": "직업에 어울리는 시작 장비. 수치·마법 효과·원작 클래스 번호는 미정이며 장면에서 확인한 사용만 기록한다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "story_bow",
+      "claims": [
+        {
+          "field": "intended_user",
+          "value": "party_hunter",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "usage_scope",
+          "value": "직업에 어울리는 시작 장비. 수치·마법 효과·원작 클래스 번호는 미정이며 장면에서 확인한 사용만 기록한다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "story_knife",
+      "claims": [
+        {
+          "field": "intended_user",
+          "value": "party_cook",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "usage_scope",
+          "value": "직업에 어울리는 시작 장비. 수치·마법 효과·원작 클래스 번호는 미정이며 장면에서 확인한 사용만 기록한다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ]
+    },
+    {
+      "id": "story_wand",
+      "claims": [
+        {
+          "field": "intended_user",
+          "value": "party_magician",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "usage_scope",
+          "value": "직업에 어울리는 시작 장비. 수치·마법 효과·원작 클래스 번호는 미정이며 장면에서 확인한 사용만 기록한다.",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "base_weapon_power",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "field": "elemental_effect",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ]
+    }
+  ]
 }

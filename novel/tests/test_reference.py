@@ -95,8 +95,8 @@ class AuthorReferenceTest(unittest.TestCase):
         self.assertEqual(self.refs["bestiary"]["items"]["enemy_49"]["original_name"]["value"],"Hydra")
 
     def test_complete_catalog_counts(self):
-        self.assertEqual({k:len(v["items"]) for k,v in self.refs.items()}, {"equipment":20,"abilities":45,"bestiary":75})
-        self.assertEqual(sum(p["kind"]=="initial_candidate" for p in self.profiles["characters"].values()),10)
+        self.assertEqual({k:len(v["items"]) for k,v in self.refs.items()}, {"equipment":24,"abilities":45,"bestiary":75})
+        self.assertEqual(sum(p["kind"]=="initial_candidate" for p in self.profiles["characters"].values()),14)
 
     def test_original_enemy_bytes_can_be_reconstructed_without_game(self):
         data = read(ROOT / "materials/enemy_templates.json")

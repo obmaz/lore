@@ -1,6 +1,6 @@
 {
   "version": 3,
-  "revision": 9,
+  "revision": 10,
   "characters": {
     "protagonist": {
       "revision": 6,
@@ -17040,6 +17040,894 @@
         "public_id": "skeleton",
         "public_display_name": "스켈레톤",
         "after_events": [],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "party_woodcutter": {
+      "revision": 1,
+      "kind": "initial_candidate",
+      "canonical_name": {
+        "value": null,
+        "origin": "unknown",
+        "literal_ids": [],
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name": "나무꾼",
+      "aliases": [],
+      "source_facts": [],
+      "writing": {
+        "status": "outline",
+        "traits": [
+          {
+            "field": "temperament",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "speech": [
+          {
+            "field": "voice",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "goals": [
+          {
+            "field": "story_role",
+            "value": "첫 챕터의 시작 동료. 실제 동행·장비·행동은 선택 경로에서 관리한다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          },
+          {
+            "field": "reference_usage",
+            "value": "장비는 해당 영입/전투 시점의 자료, 마법은 설명/전수된 기법, 적 데이터는 기반 템플릿의 참조다. 현재 소지/습득/수치 확정을 뜻하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "boundaries": [
+          "나이는 원작에서 확인되지 않았다. 레벨이나 사망 수치를 나이로 사용하지 않는다.",
+          "카드의 대사 근거에는 주변 인물/서술자의 말도 포함된다. 자기 대사로 바꾸거나 경로 지식에 자동 추가하지 않는다."
+        ],
+        "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
+      },
+      "relationships": [],
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name_metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "writing_name": {
+        "field": "writing_name",
+        "value": "나무꾼",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "biography": {
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "gender": {
+          "field": "gender",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "occupation": {
+          "field": "occupation",
+          "value": "나무꾼",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "alignment": {
+          "field": "alignment",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "resource_refs": {
+        "equipment": [
+          "story_axe"
+        ],
+        "abilities": [],
+        "enemy_templates": []
+      },
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "party_woodcutter",
+        "public_display_name": "나무꾼",
+        "after_events": [
+          "castle_arrival"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "party_hunter": {
+      "revision": 1,
+      "kind": "initial_candidate",
+      "canonical_name": {
+        "value": null,
+        "origin": "unknown",
+        "literal_ids": [],
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name": "사냥꾼",
+      "aliases": [],
+      "source_facts": [],
+      "writing": {
+        "status": "outline",
+        "traits": [
+          {
+            "field": "temperament",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "speech": [
+          {
+            "field": "voice",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "goals": [
+          {
+            "field": "story_role",
+            "value": "첫 챕터의 시작 동료. 실제 동행·장비·행동은 선택 경로에서 관리한다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          },
+          {
+            "field": "reference_usage",
+            "value": "장비는 해당 영입/전투 시점의 자료, 마법은 설명/전수된 기법, 적 데이터는 기반 템플릿의 참조다. 현재 소지/습득/수치 확정을 뜻하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "boundaries": [
+          "나이는 원작에서 확인되지 않았다. 레벨이나 사망 수치를 나이로 사용하지 않는다.",
+          "카드의 대사 근거에는 주변 인물/서술자의 말도 포함된다. 자기 대사로 바꾸거나 경로 지식에 자동 추가하지 않는다."
+        ],
+        "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
+      },
+      "relationships": [],
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name_metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "writing_name": {
+        "field": "writing_name",
+        "value": "사냥꾼",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "biography": {
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "gender": {
+          "field": "gender",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "occupation": {
+          "field": "occupation",
+          "value": "사냥꾼",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "alignment": {
+          "field": "alignment",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "resource_refs": {
+        "equipment": [
+          "story_bow"
+        ],
+        "abilities": [],
+        "enemy_templates": []
+      },
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "party_hunter",
+        "public_display_name": "사냥꾼",
+        "after_events": [
+          "castle_arrival"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "party_cook": {
+      "revision": 1,
+      "kind": "initial_candidate",
+      "canonical_name": {
+        "value": null,
+        "origin": "unknown",
+        "literal_ids": [],
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name": "요리사",
+      "aliases": [],
+      "source_facts": [],
+      "writing": {
+        "status": "outline",
+        "traits": [
+          {
+            "field": "temperament",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "speech": [
+          {
+            "field": "voice",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "goals": [
+          {
+            "field": "story_role",
+            "value": "첫 챕터의 시작 동료. 실제 동행·장비·행동은 선택 경로에서 관리한다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          },
+          {
+            "field": "reference_usage",
+            "value": "장비는 해당 영입/전투 시점의 자료, 마법은 설명/전수된 기법, 적 데이터는 기반 템플릿의 참조다. 현재 소지/습득/수치 확정을 뜻하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "boundaries": [
+          "나이는 원작에서 확인되지 않았다. 레벨이나 사망 수치를 나이로 사용하지 않는다.",
+          "카드의 대사 근거에는 주변 인물/서술자의 말도 포함된다. 자기 대사로 바꾸거나 경로 지식에 자동 추가하지 않는다."
+        ],
+        "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
+      },
+      "relationships": [],
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name_metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "writing_name": {
+        "field": "writing_name",
+        "value": "요리사",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "biography": {
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "gender": {
+          "field": "gender",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "occupation": {
+          "field": "occupation",
+          "value": "요리사",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "alignment": {
+          "field": "alignment",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "resource_refs": {
+        "equipment": [
+          "story_knife"
+        ],
+        "abilities": [],
+        "enemy_templates": []
+      },
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "party_cook",
+        "public_display_name": "요리사",
+        "after_events": [
+          "castle_arrival"
+        ],
+        "fact_after": {},
+        "policy_metadata": {
+          "addition": true,
+          "kind": "interpretation",
+          "note": "새로 추가한 집필 공개 정책. 원작의 사건 ID나 새 스토리 사실이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "party_magician": {
+      "revision": 1,
+      "kind": "initial_candidate",
+      "canonical_name": {
+        "value": null,
+        "origin": "unknown",
+        "literal_ids": [],
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name": "마술사",
+      "aliases": [],
+      "source_facts": [],
+      "writing": {
+        "status": "outline",
+        "traits": [
+          {
+            "field": "temperament",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "speech": [
+          {
+            "field": "voice",
+            "value": null,
+            "origin": "unknown",
+            "status": "unknown",
+            "evidence": [],
+            "metadata": {
+              "addition": false,
+              "kind": "unknown",
+              "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "goals": [
+          {
+            "field": "story_role",
+            "value": "첫 챕터의 시작 동료. 실제 동행·장비·행동은 선택 경로에서 관리한다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          },
+          {
+            "field": "reference_usage",
+            "value": "장비는 해당 영입/전투 시점의 자료, 마법은 설명/전수된 기법, 적 데이터는 기반 템플릿의 참조다. 현재 소지/습득/수치 확정을 뜻하지 않는다.",
+            "origin": "authored",
+            "status": "proposed",
+            "evidence": [],
+            "metadata": {
+              "addition": true,
+              "kind": "new_setting",
+              "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+              "knowledge_policy": "author_reference_not_character_knowledge"
+            }
+          }
+        ],
+        "boundaries": [
+          "나이는 원작에서 확인되지 않았다. 레벨이나 사망 수치를 나이로 사용하지 않는다.",
+          "카드의 대사 근거에는 주변 인물/서술자의 말도 포함된다. 자기 대사로 바꾸거나 경로 지식에 자동 추가하지 않는다."
+        ],
+        "notes": "원작의 전편 참조 카드. 실제 합류/생사/지식은 선택 경로에서 관리한다."
+      },
+      "relationships": [],
+      "korean_name": {
+        "field": "korean_name",
+        "value": null,
+        "origin": "unknown",
+        "status": "unknown",
+        "evidence": [],
+        "metadata": {
+          "addition": false,
+          "kind": "unknown",
+          "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "display_name_metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "writing_name": {
+        "field": "writing_name",
+        "value": "마술사",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "사용자가 지정한 초기 동료의 집필 이름. 기존 원작 초기 후보와 별개의 추가 인물이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "biography": {
+        "age": {
+          "field": "age",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "gender": {
+          "field": "gender",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "species": {
+          "field": "species",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "occupation": {
+          "field": "occupation",
+          "value": "마술사",
+          "origin": "authored",
+          "status": "proposed",
+          "evidence": [],
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "집필자가 제안한 원작에 없는 설정. 확정하지 않은 후보이다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "appearance": {
+          "field": "appearance",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        "alignment": {
+          "field": "alignment",
+          "value": null,
+          "origin": "unknown",
+          "status": "unknown",
+          "evidence": [],
+          "metadata": {
+            "addition": false,
+            "kind": "unknown",
+            "note": "원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      },
+      "resource_refs": {
+        "equipment": [
+          "story_wand"
+        ],
+        "abilities": [],
+        "enemy_templates": []
+      },
+      "source_excerpts": [],
+      "disclosure": {
+        "master_visibility": "author_only",
+        "default": "sealed",
+        "public_id": "party_magician",
+        "public_display_name": "마술사",
+        "after_events": [
+          "castle_arrival"
+        ],
         "fact_after": {},
         "policy_metadata": {
           "addition": true,

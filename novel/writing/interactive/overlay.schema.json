@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "첫 챕터 선택형 집필 오버레이",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "revision", "quests", "title", "scope", "metadata", "party", "initial_equipment", "state_definitions", "source_refs", "patches", "nodes", "events", "auto_rules", "display_insertions", "branch_guide"],
+  "properties": {
+    "id": {"const": "interactive_chapter01"},
+    "revision": {"type": "integer", "minimum": 1},
+    "quests": {"const": ["prologue.json", "lore_menace.json"]},
+    "title": {"type": "array"},
+    "scope": {"type": "string", "minLength": 1},
+    "metadata": {"type": "object", "required": ["addition", "kind", "note"], "properties": {"addition": {"const": true}, "kind": {"const": "new_setting"}, "note": {"type": "string"}}},
+    "party": {"type": "array", "minItems": 4, "maxItems": 4, "uniqueItems": true, "items": {"type": "string"}},
+    "initial_equipment": {"type": "object", "additionalProperties": {"type": "string"}},
+    "state_definitions": {"type": "object"},
+    "source_refs": {"type": "object"},
+    "patches": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["node"], "properties": {"node": {"type": "string"}, "remove_blocks": {"type": "array", "items": {"type": "string"}}, "append_blocks": {"type": "array"}, "blocks": {"type": "object"}, "choices": {"type": "object"}, "append_choices": {"type": "array"}}}},
+    "nodes": {"type": "array"},
+    "conditional_required": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["node", "block", "when"], "properties": {"node": {"type": "string"}, "block": {"type": "string"}, "when": {}}}},
+    "events": {"type": "array"},
+    "auto_rules": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["node", "when", "choice", "reason"], "properties": {"node": {"type": "string"}, "when": {}, "choice": {"type": "string"}, "reason": {"type": "string"}}}},
+    "display_insertions": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["offset", "note"], "properties": {"offset": {"type": "integer", "minimum": 0}, "ref": {"type": "object"}, "state": {"type": "string"}, "state_ref_catalog": {"const": "characters"}, "replace_length": {"const": 1}, "particle": {"const": "이/가"}, "placeholder": {"const": "호칭 미정"}, "note": {"type": "string"}}, "oneOf": [{"required": ["ref"]}, {"required": ["state"]}, {"required": ["placeholder"]}]}}},
+    "branch_guide": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["title", "description"], "properties": {"title": {"type": "string"}, "description": {"type": "string"}}}}
+  }
+}

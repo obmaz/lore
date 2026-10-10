@@ -3,7 +3,7 @@
   "story_id": "prologue_pilot_v1",
   "story_revision": 2,
   "canon_revision": 4,
-  "character_registry_revision": 9,
+  "character_registry_revision": 10,
   "contracts": {
     "arrival": {
       "before": true,
