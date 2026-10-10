@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>LORE 공개 범위 미리보기</title>
+<style>
+:root{--ink:#243129;--muted:#68766d;--paper:#f5f2e9;--accent:#27634c;--line:#d7dfd5}*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans CJK KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;word-break:keep-all;overflow-wrap:anywhere}
+header,main,footer{max-width:1080px;margin:auto;padding:28px 26px}header{padding-top:45px}h1{font-size:clamp(30px,6vw,50px);letter-spacing:-.055em;margin:8px 0}h2{font-size:25px;margin-top:38px;border-bottom:2px solid var(--accent);padding-bottom:12px}h4{margin:20px 0 8px}
+.eyebrow{letter-spacing:.18em;color:var(--accent);font-size:12px;font-weight:700}.muted,small,.meta-note{color:var(--muted)}small{font-size:12px}.meta-note{font-size:11px;margin-top:5px}.notice{border-left:4px solid var(--accent);background:#e6eee4;padding:14px 18px}.danger{border-color:#b35732;background:#f8e8db}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:22px 0}.controls input[type=search]{flex:1;min-width:160px;border:1px solid var(--line);border-radius:8px;padding:12px;font:inherit;background:white}.controls button{font:inherit;border:1px solid var(--line);background:white;padding:9px 14px;border-radius:8px;cursor:pointer}.author-switch{display:block;background:#fff;border:1px solid var(--line);padding:14px;border-radius:8px}.author-switch input{width:18px;height:18px;vertical-align:middle}
+nav{display:flex;gap:12px;flex-wrap:wrap}a{color:var(--accent);text-underline-offset:4px}section{scroll-margin-top:18px}.entry{background:#fff;margin:12px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden}.entry summary{padding:16px 18px;cursor:pointer;font-weight:700}.entry summary small{font-weight:400;margin-left:8px}.entry-body{padding:0 18px 20px}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}th,td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}th{font-weight:600;width:22%}.claim small{display:block;margin-top:6px}.badge{display:inline-block;background:#edf2e9;padding:1px 7px;border-radius:5px;color:#365b43}.badge.added{background:#fff0dc;color:#956324}.values,.relation{margin:6px 0}.values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.values>div,.relation>div{display:flex;gap:10px;flex-wrap:wrap}.values dt,.relation dt{color:var(--muted);font-size:12px}.values dd,.relation dd{margin:0}.relation>div{padding:6px 0;border-bottom:1px solid var(--line)}.relation dt{min-width:110px}.relation dd{flex:1}footer{font-size:13px;border-top:1px solid var(--line)}[hidden]{display:none!important}
+@media(max-width:600px){header,main,footer{padding:22px 16px}.entry summary{padding:14px}.entry-body{padding:0 12px 16px}th{width:25%}.values{grid-template-columns:repeat(2,minmax(0,1fr))}nav{font-size:14px}}
+@page{size:A4;margin:16mm 14mm}
+@media print{body{background:white;font-size:10px;line-height:1.6}header,main,footer{max-width:none;padding:0}header{margin-bottom:18px}h1{font-size:26px}h2{font-size:18px;margin-top:24px}h4{margin:12px 0 5px}.controls,.author-switch,nav,.screen-only{display:none!important}table{font-size:9px}small{font-size:8px}.meta-note{font-size:8px}.entry{border-radius:0;margin:10px 0}.entry summary{padding:8px 10px;font-size:12px;list-style:none;break-after:avoid}.entry-body{padding:0 10px 10px}h2,h4{break-after:avoid}tr,.claim{break-inside:avoid}.notice{padding:8px 10px}a{color:inherit;text-decoration:none}}
+</style>
+</head>
+<body>
+<header>
+<div class="eyebrow">LORE / WRITER'S REFERENCE</div>
+<h1>LORE 공개 범위 미리보기</h1>
+<p class="muted">인물 목록 revision 7 · 읽기 전용 · JSON 변경은 반영 후 재생성 필요</p>
+<p id="mode-label" class="notice">현재 보기: 공개 범위 미리보기 · 초안 경로 기준</p>
+<p class="screen-only">설정 조회용 문서입니다. 게임을 실행하거나 JSON을 수정하지 않습니다. 인쇄/PDF에는 현재 보기 전체 항목이 펼쳐져 포함됩니다.</p>
+<p>이 파일에는 작가 전용 비공개 데이터가 포함되지 않습니다.</p>
+<div class="controls"><input id="search" type="search" placeholder="현재 보기에서 인물·장비·마법 검색" aria-label="현재 보기 검색"><button type="button" id="expand">모두 펼치기</button><button type="button" id="collapse">모두 접기</button><button type="button" id="print">인쇄 / PDF 저장</button></div>
+<nav aria-label="설정집 목차"><a href="#characters">인물</a><a href="#equipment">장비</a><a href="#abilities">마법·기술</a><a href="#bestiary">적 템플릿</a><a href="#flow" data-author-nav hidden>퀘스트 흐름</a><a href="#relationships" data-author-nav hidden>관계</a><a href="#checkpoints" data-author-nav hidden>공개 시점</a></nav>
+</header>
+<main id="content"><p class="notice">선택한 초안 경로의 공개 정보만 담은 잠정 미리보기입니다. 완성·승인된 소설이 아닙니다.</p><p>경로: enter_courtyard → visit_lord<br>공개 사건: castle_arrival</p><section id="characters"><h2>현재 장면의 인물</h2><details class="entry" id="character-lord_ahn"><summary>로드 안 <small>Lord Ahn</small></summary><div class="entry-body"><p class="muted">이 공개 범위에 전달할 정보 없음.</p><h4>원작 정보</h4><p class="muted">이 공개 범위에 전달할 정보 없음.</p><h4>성향</h4><p class="muted">이 공개 범위에 전달할 정보 없음.</p><h4>말투</h4><p class="muted">이 공개 범위에 전달할 정보 없음.</p><h4>목표</h4><p class="muted">이 공개 범위에 전달할 정보 없음.</p><h4>허용된 복선 · 검토 전 제안</h4><div class="claim"><div>공식적인 평가와 타인의 경험담이 어긋날 수 있다는 질문을 남긴다.</div><small><span class="badge added">추론 추가</span> 검토 전 제안 · LORETALK.PAS:158–175</small><div class="meta-note">대사/행동을 바탕으로 한 집필 해석. 원작의 확정 성격이나 설정이 아니며 검토 후 수정한다.</div></div></div></details><details class="entry" id="character-protagonist"><summary>이름 미정 주인공 <small>원어 이름 미상</small></summary><div class="entry-body"><table><tbody><tr><th scope="row">나이</th><td><div class="claim"><div><span class="muted">미상</span></div><small><span class="badge ">미상</span> 미상 · 근거 없음</small><div class="meta-note">원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.</div></div></td></tr><tr><th scope="row">성별</th><td><div class="claim"><div><span class="muted">미상</span></div><small><span class="badge ">미상</span> 미상 · 근거 없음</small><div class="meta-note">원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.</div></div></td></tr><tr><th scope="row">종족</th><td><div class="claim"><div><span class="muted">미상</span></div><small><span class="badge ">미상</span> 미상 · 근거 없음</small><div class="meta-note">원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.</div></div></td></tr><tr><th scope="row">직업</th><td><div class="claim"><div><span class="muted">미상</span></div><small><span class="badge ">미상</span> 미상 · 근거 없음</small><div class="meta-note">원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.</div></div></td></tr><tr><th scope="row">외모</th><td><div class="claim"><div><span class="muted">미상</span></div><small><span class="badge ">미상</span> 미상 · 근거 없음</small><div class="meta-note">원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.</div></div></td></tr><tr><th scope="row">윤리적 성향</th><td><div class="claim"><div><span class="muted">미상</span></div><small><span class="badge ">미상</span> 미상 · 근거 없음</small><div class="meta-note">원작에서 확인되지 않아 미상으로 남긴다. 수치로 추정하지 않는다.</div></div></td></tr></tbody></table><h4>원작 정보</h4><p class="muted">이 공개 범위에 전달할 정보 없음.</p><h4>성향</h4><table><tbody><tr><th scope="row">성향</th><td><div class="claim"><div>타인의 사연에 관심을 갖되 권위자의 설명도 확인하려 한다.</div><small><span class="badge added">창작 추가</span> 검토 전 제안 · 근거 없음</small><div class="meta-note">기존 집필 제안/원작 요약의 출처 구분을 보존한다.</div></div></td></tr></tbody></table><h4>말투</h4><table><tbody><tr><th scope="row">말투</th><td><div class="claim"><div>도입 초안은 차분한 1인칭. 이해하지 못한 것은 질문으로 남긴다.</div><small><span class="badge added">창작 추가</span> 검토 전 제안 · 근거 없음</small><div class="meta-note">기존 집필 제안/원작 요약의 출처 구분을 보존한다.</div></div></td></tr></tbody></table><h4>목표</h4><p class="muted">이 공개 범위에 전달할 정보 없음.</p><h4>허용된 복선 · 검토 전 제안</h4><div class="claim"><div>왜 이 일행에게 임무가 돌아오는지 의문을 남기되 답이나 배후 인물을 특정하지 않는다.</div><small><span class="badge added">추론 추가</span> 검토 전 제안 · LORETALK.PAS:349–352</small><div class="meta-note">대사/행동을 바탕으로 한 집필 해석. 원작의 확정 성격이나 설정이 아니며 검토 후 수정한다.</div></div></div></details></section><section id="equipment"><h2>무기·방어구</h2><p class="muted">현재 경로에서 공개된 참조 없음.</p></section><section id="abilities"><h2>마법·기술</h2><p class="muted">현재 경로에서 공개된 참조 없음.</p></section><section id="bestiary"><h2>적 템플릿</h2><p class="muted">현재 경로에서 공개된 참조 없음.</p></section></main>
+
+<footer>이 문서는 생성 시점의 스냅샷입니다. 원문 근거·창작/추론 메타데이터를 함께 확인하세요. 작가용 파일 안의 숨김은 접근 제어가 아닙니다. 공유하려면 reference-safe.html을 사용하세요.</footer>
+<script>
+'use strict';
+const content=document.getElementById('content');
+const safeContent=content.innerHTML;
+const switcher=document.getElementById('author-mode');
+const search=document.getElementById('search');
+const entries=()=>Array.from(content.querySelectorAll('details.entry'));
+function filter(){const query=search.value.trim().toLocaleLowerCase();for(const item of entries()){item.hidden=query!==''&&!item.textContent.toLocaleLowerCase().includes(query);} }
+search.addEventListener('input',filter);
+if(switcher){switcher.addEventListener('change',()=>{content.innerHTML=switcher.checked?document.getElementById('author-content').innerHTML:safeContent;search.value='';document.getElementById('mode-label').textContent=switcher.checked?'현재 보기: 작가 전용 전체 설정 · 전편 스포일러 포함':'현재 보기: 공개 범위 미리보기 · 초안 경로 기준';document.querySelectorAll('[data-author-nav]').forEach(item=>item.hidden=!switcher.checked);});}
+document.getElementById('expand').addEventListener('click',()=>entries().forEach(item=>{if(!item.hidden)item.open=true;}));
+document.getElementById('collapse').addEventListener('click',()=>entries().forEach(item=>item.open=false));
+let beforePrint=null;
+function preparePrint(){if(beforePrint)return;beforePrint=entries().map(item=>[item,item.open,item.hidden]);for(const item of entries()){item.open=true;item.hidden=false;}}
+window.addEventListener('beforeprint',preparePrint);
+window.addEventListener('afterprint',()=>{if(beforePrint){for(const [item,open,hidden] of beforePrint){item.open=open;item.hidden=hidden;}beforePrint=null;}});
+document.getElementById('print').addEventListener('click',()=>{preparePrint();window.print();});
+</script>
+</body>
+</html>

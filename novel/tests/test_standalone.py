@@ -49,6 +49,11 @@ class IndependentNovelTest(unittest.TestCase):
         self.assertEqual(card["fortress_mage"]["relationships"],[])
         self.assertNotIn("사칭자",json.dumps(card,ensure_ascii=False))
 
+    def test_reference_documents_match_without_game_sources(self):
+        report = json.loads(self.run_tool("export_reference","--check"))
+        self.assertEqual(report['characters'],49)
+        self.assertEqual(report['relationships'],35)
+
     def test_all_original_text_is_reconstructable_from_snapshot(self):
         catalog, manifest = load_materials()
         self.assertEqual(manifest["counts"], {"source_files": 14, "literal_occurrences": 2483})

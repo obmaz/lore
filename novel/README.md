@@ -11,12 +11,14 @@ novel/
 ├── reference/        무기·방어구·마법·적 사전과 수동 분석 입력
 ├── authoring/        집필 스키마와 퀘스트별 원고
 ├── continuity/      공유 설정과 연속성 스키마
+├── exports/         조회용 오프라인 HTML·작가용 PDF 스냅샷
 ├── tools/           원문·인물·집필·경로 검증 도구
 └── tests/           독립 실행과 분기·연속성 검사
 ```
 
 ## 먼저 읽을 자료
 
+- [exports/README.md](exports/README.md): JSON 대신 참고용 HTML/PDF로 읽는 방법. 작가용 전체 설정과 공개 범위 미리보기를 분리한다.
 - [materials/quests.json](materials/quests.json): 18개 집필 단위와 공통 부록의 목록·연결.
 - [materials/quests/lore_menace.json](materials/quests/lore_menace.json): 첫 의뢰의 실제 원문·조건.
 - [characters/registry.json](characters/registry.json): 인물 카드 49개와 관계 48개 링크의 작가 전용 마스터.
@@ -47,6 +49,7 @@ python3 tools/characters.py
 python3 tools/reference.py
 python3 tools/validate_story_authoring.py
 python3 tools/story_continuity.py --route enter_courtyard visit_prison accept_joe visit_lord
+python3 tools/export_reference.py --check
 PYTHONPATH=tools python3 -m unittest discover -s tests
 ```
 
