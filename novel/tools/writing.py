@@ -51,6 +51,42 @@ def reading_preview(key):
     return result
 
 
+def focus_episode(preview,unit,quest_id,packet_for,profiles=None,references=None):
+    """Reuse prefix-rendered paragraphs, but replay the unit endpoint for its memory."""
+    if len(preview['sections'])!=len(preview['route'])+1:
+        raise ValueError('episode requires an unsliced reading path')
+    focus = {quest_id+'/'+n for n in unit['node_ids']}
+    positions = [i for i,s in enumerate(preview['sections']) if s['node_id'] in focus]
+    if not positions or preview['sections'][max(positions)]['node_id']!=quest_id+'/'+unit['node_ids'][-1]:
+        raise ValueError('episode endpoint is not on selected route')
+    last = max(positions)
+    end = last+int(preview['sections'][last]['selected_choice'] is not None)
+    route = preview['route'][:end]
+    packet = packet_for(route)
+    profiles = profiles or load_characters()
+    data = indexes(profiles,references or load_references())
+    result = {**preview,'title':render(unit['title'],data,literals(),profiles,packet['disclosed_events']),
+        'route':route,'sections':copy.deepcopy([preview['sections'][i] for i in positions]),
+        'open_questions':['새 감각·동작·대화는 창작으로 표시한 미승인 초고다. 원문 부수 경로의 보류는 유지한다.'],
+        'reading_note':'이 소편의 이전 기억은 유지하고 마지막 선택에서 멈춘 읽기본. '+preview['reading_note']}
+    for key in ('knowledge','state','disclosed_events','needs_review'):
+        result[key] = packet[key]
+    return result
+
+
+def episode_preview(unit_id,reading_key='first-journey'):
+    from reading import load_reading
+    plan = read(WRITING/'episodes/lore_menace.json')
+    validate_episode_plan(plan)
+    unit = next((u for u in plan['units'] if u['id']==unit_id),None)
+    if unit is None or unit['status']!='revised_draft':
+        raise ValueError('episode has not been written: '+unit_id)
+    recipe = read(READING)['routes'][reading_key]
+    story,memory,_ = load_reading(recipe)
+    return focus_episode(reading_preview(reading_key),unit,Path(plan['quest_file']).stem,
+                         context_for_routes(story,memory,read(CANON)))
+
+
 def validate_episode_plan(plan,story=None):
     if plan['version']!=1 or plan['purpose']!='small_batch_authoring_not_game_runtime':
         raise ValueError('invalid episode plan')
@@ -212,6 +248,19 @@ def export_documents(output,check=False):
                 ('prologue-tavern.html',preview_story(story,continuity,['enter_courtyard','visit_tavern','remember_veteran',*DEFAULT_ROUTE[1:]],profiles,refs))]
     if READING.exists():
         previews += [(key+'.html',reading_preview(key)) for key in read(READING)['routes']]
+        # Full-path paragraphs were rendered with each scene's own disclosure prefix.
+        # Derive small reading units with a separate, bounded endpoint packet.
+        from reading import load_reading
+        foundation,memory,_ = load_reading(read(READING)['routes']['first-journey'])
+        packet_for = context_for_routes(foundation,memory,read(CANON),profiles)
+        plan = read(WRITING/'episodes/lore_menace.json')
+        validate_episode_plan(plan)
+        full = dict(previews)
+        for unit in plan['units'][1:]:
+            if unit['status']!='revised_draft': continue
+            for suffix,key in [('', 'first-journey'),('-declined','first-journey-declined')]:
+                previews.append((unit['id']+suffix+'.html',focus_episode(full[key+'.html'],unit,
+                    Path(plan['quest_file']).stem,packet_for,profiles,refs)))
     for name,preview in previews:
         body = '<p class="notice">시범 원고 · 미승인. 창작 연결 서사와 원문 대사를 함께 배치했습니다. 원작 고유명은 현재 참조 표시명으로 각색해 보여 주며, 원문 기록은 JSON에 보존됩니다.</p>'
         if 'reading_note' in preview:
@@ -255,12 +304,13 @@ def export_documents(output,check=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action',choices=['validate','preview','reading','export','new-quest'])
+    parser.add_argument('action',choices=['validate','preview','reading','episode','export','new-quest'])
     parser.add_argument('--story',type=Path,default=PILOT)
     parser.add_argument('--route',nargs='*',default=DEFAULT_ROUTE)
     parser.add_argument('--output',type=Path,default=WRITING/'previews')
     parser.add_argument('--quest-id')
     parser.add_argument('--reading-key',default='first-journey')
+    parser.add_argument('--episode-id')
     parser.add_argument('--check',action='store_true',help='check generated previews without writing')
     args = parser.parse_args()
     if args.action=='validate':
@@ -287,6 +337,9 @@ def main():
         result = preview_story(read(args.story),read(args.story.with_name(args.story.stem+'.continuity.json')),args.route)
     elif args.action=='reading':
         result = reading_preview(args.reading_key)
+    elif args.action=='episode':
+        if not args.episode_id: parser.error('episode needs --episode-id')
+        result = episode_preview(args.episode_id,args.reading_key)
     elif args.action=='export':
         result = export_documents(args.output.resolve(),args.check)
     else:

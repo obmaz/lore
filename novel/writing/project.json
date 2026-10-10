@@ -29,5 +29,5 @@
   },
   "reference_policy": "structured_references_only",
   "source_policy": "immutable_occurrences_with_explicit_display_bindings",
-  "style_note": "기존 구조 예시는 1인칭, 이번 시범은 제한적 3인칭이다. 처음의 긴 채팅 원고는 저장소에서 확인되지 않아 동일 문체의 복원이라고 주장하지 않는다. 우선 1-1의 감각·대화 중심 긴 장면을 문체 시범으로 검토하고 다음 소편으로 진행한다."
+  "style_note": "현재 제한적 3인칭과 감각·대화 중심 문체로 소편을 이어 쓴다. 문체는 후속 편집에서 바꿀 수 있다. 여러 소편 요청도 한 소편씩 집필·확인·푸시한 뒤 다음 소편으로 진행한다. 처음의 긴 채팅 원고와 동일한 문체를 복원했다고 주장하지 않는다."
 }

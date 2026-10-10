@@ -3,7 +3,9 @@ import unittest
 from unittest.mock import patch
 
 from materials import ROOT, read
-from writing import READING, reading_preview, validate_episode_plan
+from writing import READING, reading_preview, validate_episode_plan, focus_episode
+from reading import load_reading
+from story_continuity import CANON, context_for_routes
 
 
 class EpisodeTest(unittest.TestCase):
@@ -13,11 +15,11 @@ class EpisodeTest(unittest.TestCase):
         cls.direct = reading_preview('menace-01')
         cls.tavern = reading_preview('menace-01-tavern')
 
-    def test_six_units_only_first_is_rewritten(self):
+    def test_six_units_have_explicit_progress(self):
         self.assertEqual(validate_episode_plan(self.plan)['units'],6)
-        self.assertEqual(validate_episode_plan(self.plan)['revised_drafts'],1)
+        self.assertGreaterEqual(validate_episode_plan(self.plan)['revised_drafts'],1)
         self.assertEqual(self.plan['units'][0]['status'],'revised_draft')
-        self.assertTrue(all(u['status']=='structural_draft' for u in self.plan['units'][1:]))
+        self.assertTrue(all(u['status'] in ('structural_draft','revised_draft') for u in self.plan['units'][1:]))
         self.assertTrue(all('blocks' not in u and 'text' not in u for u in self.plan['units']))
 
     def test_reusable_template_is_empty_outline(self):
@@ -73,6 +75,26 @@ class EpisodeTest(unittest.TestCase):
         with patch('writing.read',side_effect=lambda p:catalog if p==READING else read(p)):
             with self.assertRaisesRegex(ValueError,'not on'):
                 reading_preview('menace-01')
+
+    def test_every_written_episode_is_long_on_both_companion_routes(self):
+        story,memory,_ = load_reading(read(READING)['routes']['first-journey'])
+        replay = context_for_routes(story,memory,read(CANON))
+        for key in ['first-journey','first-journey-declined']:
+            full = reading_preview(key)
+            for unit in self.plan['units']:
+                if unit['status']!='revised_draft': continue
+                p = focus_episode(full,unit,'lore_menace',replay)
+                count = sum(len(b['text']) for s in p['sections'] for b in s['blocks'])
+                self.assertTrue(unit['target_chars'][0]<=count<=unit['target_chars'][1],(unit['id'],key,count))
+                self.assertEqual(p['knowledge'],replay(p['route'])['knowledge'])
+                if unit['id']=='menace-02':
+                    self.assertEqual(p['state']['quest.lore_stage'],3)
+                    self.assertFalse(p['state']['quest.menace_reward_claimed'])
+                    self.assertNotIn('lastditch_direction_account',p['knowledge']['protagonist'])
+
+    def test_already_sliced_view_cannot_supply_episode_route_indices(self):
+        with self.assertRaisesRegex(ValueError,'unsliced'):
+            focus_episode(self.direct,self.plan['units'][0],'lore_menace',lambda r:None)
 
 
 if __name__=='__main__': unittest.main()
