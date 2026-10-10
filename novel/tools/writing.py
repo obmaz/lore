@@ -12,7 +12,7 @@ from referencing import Registry, Resource
 from materials import ROOT, load_materials, read
 from characters import load_characters
 from reference import COMMON, load_references, validate_claim
-from story_continuity import CANON, context, matches
+from story_continuity import CANON, context, context_for_routes, matches
 from disclosure import public_ids, remap_ids
 from text_refs import indexes, literals, render, validate_text, reject_fixed_names, source_ids, archival, validate_names
 
@@ -21,6 +21,19 @@ BOARD = WRITING/'storyboard/series.json'
 PILOT = WRITING/'quests/prologue.json'
 TEXT_FIELDS = ('title','opening','goal','conflict','turn','ending','emotional_arc','bridge')
 DEFAULT_ROUTE = ['enter_courtyard','visit_lord','hear_lord_intro','hear_lord_briefing']
+READING = WRITING/'reading.json'
+
+
+def reading_preview(key):
+    from reading import load_reading
+    catalog = read(READING)
+    if key not in catalog['routes']:
+        raise ValueError('unknown reading route: '+key)
+    recipe = {**catalog['routes'][key],'title':catalog['title']}
+    story,memory,route = load_reading(recipe)
+    result = preview_story(story,memory,route)
+    result['reading_note'] = recipe['note']
+    return result
 
 
 def validate_board(board,data=None,profiles=None):
@@ -88,10 +101,11 @@ def preview_story(story,continuity,route,profiles=None,references=None):
     if story['meta'].get('reference_text') is not True:
         raise ValueError('new writing drafts must enable reference_text')
     nodes = {n['id']:n for n in story['nodes']}
+    packet_for = context_for_routes(story,continuity,read(CANON),profiles)
     sections = []
     key = story['entry_node']
     for prefix_length in range(len(route)+1):
-        packet = context(story,continuity,read(CANON),route[:prefix_length],profiles)
+        packet = packet_for(route[:prefix_length])
         disclosed = packet['disclosed_events']
         ids = public_ids(profiles,disclosed)
         def display(value):
@@ -111,7 +125,7 @@ def preview_story(story,continuity,route,profiles=None,references=None):
                          'selected_choice':remap_ids(selected,ids),'choices':[{'id':remap_ids(c['id'],ids),'label':display(c['label'])} for c in nodes[key]['choices'] if matches(c['when'],packet['state'])]})
         if selected:
             key = next(c['target'] for c in nodes[key]['choices'] if c['id']==selected)
-    final = context(story,continuity,read(CANON),route,profiles)
+    final = packet_for(route)
     return {'title':render(story['meta']['title'],data,all_literals,profiles,final['disclosed_events']),
             'status':story['meta']['status'],'provisional':True,'route':route,'sections':sections,
             'knowledge':final['knowledge'],'state':final['state'],'disclosed_events':final['disclosed_events'],
@@ -151,9 +165,14 @@ def export_documents(output,check=False):
     body += '<h2>공통 사건의 배치 검토</h2><p>다음 원문 공개 장면은 누락시키지 않고 실제 접근 조건을 확인한 뒤 퀘스트 사이에 배치합니다. 아직 자동 공개하거나 강제 순서를 붙이지 않습니다.</p><ul>'+''.join(f'<li>{esc(i)}</li>' for i in profiles['disclosure_checkpoints'] if i not in represented)+'</ul>'
     body += '<h2>미해결 사항</h2><ul>'+''.join(f'<li>{esc(q)}</li>' for q in board['open_questions'])+'</ul>'
     docs = {'storyboard.html':html_doc(display(board['title']),body)}
-    for name,route in [('prologue.html',DEFAULT_ROUTE),('prologue-tavern.html',['enter_courtyard','visit_tavern','remember_veteran',*DEFAULT_ROUTE[1:]])]:
-        preview = preview_story(story,continuity,route,profiles,refs)
+    previews = [('prologue.html',preview_story(story,continuity,DEFAULT_ROUTE,profiles,refs)),
+                ('prologue-tavern.html',preview_story(story,continuity,['enter_courtyard','visit_tavern','remember_veteran',*DEFAULT_ROUTE[1:]],profiles,refs))]
+    if READING.exists():
+        previews += [(key+'.html',reading_preview(key)) for key in read(READING)['routes']]
+    for name,preview in previews:
         body = '<p class="notice">시범 원고 · 미승인. 창작 연결 서사와 원문 대사를 함께 배치했습니다. 원작 고유명은 현재 참조 표시명으로 각색해 보여 주며, 원문 기록은 JSON에 보존됩니다.</p>'
+        if 'reading_note' in preview:
+            body += '<p class="note">'+esc(preview['reading_note'])+'</p>'
         for section in preview['sections']:
             body += '<section><h2>'+esc(section['title'])+'</h2>'
             for block in section['blocks']:
@@ -169,6 +188,11 @@ def export_documents(output,check=False):
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
               ROOT/'authoring/story.schema.json',WRITING/'storyboard.schema.json',
               *(ROOT/f'reference/{c}.json' for c in refs)]
+    if READING.exists():
+        inputs += [READING,ROOT/'tools/reading.py',ROOT/'continuity/continuity.schema.json']
+        for name in sorted({p['file'] for r in read(READING)['routes'].values() for p in r['parts']}):
+            path = WRITING/'quests'/name
+            inputs += [path,path.with_name(path.stem+'.continuity.json')]
     manifest = {'version':1,'source_sha256':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
                 'artifacts':{name:hashlib.sha256(value.encode()).hexdigest() for name,value in docs.items()}}
     if check:
@@ -187,11 +211,12 @@ def export_documents(output,check=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action',choices=['validate','preview','export','new-quest'])
+    parser.add_argument('action',choices=['validate','preview','reading','export','new-quest'])
     parser.add_argument('--story',type=Path,default=PILOT)
     parser.add_argument('--route',nargs='*',default=DEFAULT_ROUTE)
     parser.add_argument('--output',type=Path,default=WRITING/'previews')
     parser.add_argument('--quest-id')
+    parser.add_argument('--reading-key',default='first-journey')
     parser.add_argument('--check',action='store_true',help='check generated previews without writing')
     args = parser.parse_args()
     if args.action=='validate':
@@ -205,8 +230,17 @@ def main():
                   'storyboard_template':validate_board(read(WRITING/'templates/storyboard.template.json')),
                   'quest_template':validate(template),
                   'continuity_template_review':validate_continuity(template,read(WRITING/'templates/continuity.template.json'),read(CANON))}
+        result['quests'] = {}
+        for path in sorted((WRITING/'quests').glob('*.json')):
+            if path.name.endswith('.continuity.json'): continue
+            draft = read(path)
+            if draft['meta'].get('reference_text') is not True:
+                raise ValueError('new writing drafts must enable reference_text')
+            result['quests'][path.stem] = {**validate(draft),'needs_review':validate_continuity(draft,read(path.with_name(path.stem+'.continuity.json')),read(CANON))}
     elif args.action=='preview':
         result = preview_story(read(args.story),read(args.story.with_name(args.story.stem+'.continuity.json')),args.route)
+    elif args.action=='reading':
+        result = reading_preview(args.reading_key)
     elif args.action=='export':
         result = export_documents(args.output.resolve(),args.check)
     else:

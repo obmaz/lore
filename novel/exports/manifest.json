@@ -22,8 +22,8 @@
     "materials/quests.json": "5a5a6878327e875420dce823059f2b944fb1f3e504468bde726b30481a24070b",
     "materials/manifest.json": "4e1f6565214b95b26d5089f24a8e40aa55f1d06d7697fac9783e671570f6131f",
     "authoring/drafts/prologue.json": "1a81d4a60bc2746ec2db5b0a8644272e57e22bef00aa63d79949fadeb54444fa",
-    "authoring/drafts/prologue.continuity.json": "eab31953153accdda1f218a2dc0daa9bc849e4fd16d889afb078e1e699b0a530",
-    "continuity/canon.json": "121cb6809f2753cc696bee2f9c76aace87bafec653c29c766879c922ed35af90",
+    "authoring/drafts/prologue.continuity.json": "779a03e65cc3b1b37562f017ecfad391b2ea817f42ae305c36c2806bfe0d9260",
+    "continuity/canon.json": "02392cb0559da1ed83b8deda9f33642e926d94bf9b46b54143dad227e73d5705",
     "tools/export_reference.py": "2fb37a42477fafd4e277edb2e77d7500cb9f2138b8d0e7641d32f7983b3699c0",
     "tools/reference.template.html": "009d0d5ab0b3c39ef1b30d68045fc81372f97125796bc8c490b489becc1cb82b"
   },
@@ -31,5 +31,5 @@
     "source_files": 14,
     "literal_occurrences": 2483
   },
-  "pdf_sha256": "5cebb870791b7b17a653ca4db06d308b3b3c78f39b2177a6240b233e42f24ac0"
+  "pdf_sha256": "a054a98b2ea0ce7112be6affd2b09f55c5993289bc1ccc7bd12ef24425a6232f"
 }

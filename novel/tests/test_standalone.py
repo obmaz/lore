@@ -61,14 +61,14 @@ class IndependentNovelTest(unittest.TestCase):
         self.assertTrue(json.loads(self.run_tool('writing','export','--check'))['checked'])
 
     def test_new_quest_uses_shared_template_without_overwrite(self):
-        result = json.loads(self.run_tool('writing','new-quest','--quest-id','lore_menace'))
+        result = json.loads(self.run_tool('writing','new-quest','--quest-id','lastditch_pyramid'))
         self.assertEqual(len(result['created']),2)
-        self.assertIn('lore_menace_draft_v1',(self.standalone/'writing/quests/lore_menace.json').read_text())
-        before = (self.standalone/'writing/quests/lore_menace.json').read_bytes()
-        result = subprocess.run([sys.executable,'tools/writing.py','new-quest','--quest-id','lore_menace'],cwd=self.standalone,text=True,capture_output=True)
+        self.assertIn('lastditch_pyramid_draft_v1',(self.standalone/'writing/quests/lastditch_pyramid.json').read_text())
+        before = (self.standalone/'writing/quests/lastditch_pyramid.json').read_bytes()
+        result = subprocess.run([sys.executable,'tools/writing.py','new-quest','--quest-id','lastditch_pyramid'],cwd=self.standalone,text=True,capture_output=True)
         self.assertNotEqual(result.returncode,0)
         self.assertIn('refusing overwrite',result.stderr)
-        self.assertEqual(before,(self.standalone/'writing/quests/lore_menace.json').read_bytes())
+        self.assertEqual(before,(self.standalone/'writing/quests/lastditch_pyramid.json').read_bytes())
 
     def test_all_original_text_is_reconstructable_from_snapshot(self):
         catalog, manifest = load_materials()

@@ -60,6 +60,7 @@
         "id": {"type": "string"}, "trigger_choice": {"type": "string"}, "description": {"type": "string"},
         "origin": {"enum": ["source_adaptation", "authored"]}, "source_refs": {"$ref": "#/$defs/strings"},
         "reveals": {"$ref": "#/$defs/strings"},
+        "when": {"$ref": "#/$defs/predicate"},
         "requires_events": {"$ref": "#/$defs/strings"}, "participants": {"$ref": "#/$defs/strings"},
         "knowledge_gained": {"type": "array", "items": {"type": "object", "additionalProperties": false,
           "required": ["character_id", "fact_id", "method", "informant_id"],

@@ -12,7 +12,7 @@ def check(output):
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
         for width,height in [(390,844),(1280,900)]:
-            for name in ['storyboard.html','prologue.html','prologue-tavern.html']:
+            for name in sorted(p.name for p in (ROOT/'writing/previews').glob('*.html')):
                 page = browser.new_page(viewport={'width':width,'height':height})
                 errors,requests = [],[]
                 page.on('pageerror',lambda error:errors.append(str(error)))

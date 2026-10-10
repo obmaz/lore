@@ -1,5 +1,5 @@
 {
-  "version": 2, "revision": 3,
+  "version": 2, "revision": 4,
   "character_registry": "characters/registry.json",
   "facts": [
     {"id": "squad_whereabouts", "revision": 1,
@@ -22,6 +22,18 @@
     {"id": "lord_briefing_account", "revision": 1,
       "statement": "성주는 대륙의 재앙, 특공대의 소식 부재와 다른 차원에서 온 적에 관해 설명한다. 증언의 내용 전체가 객관적 진상으로 확정되었다는 뜻은 아니다.",
       "kind": "testimony", "status": "confirmed", "attributed_to": "lord_ahn",
-      "evidence": [{"file": "LORETALK.PAS", "line_start": 305, "line_end": 338}], "initial_knowers": []}
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 305, "line_end": 338}], "initial_knowers": []},
+    {"id": "menace_assignment_account", "revision": 1,
+      "statement": "성주는 대륙 남서쪽 동굴의 중심부 탐사로 일행의 능력을 증명해 달라고 부탁하고, 필요하면 무기고를 이용하도록 허락한다. 허가는 실제 장비 획득이 아니다.",
+      "kind": "testimony", "status": "confirmed", "attributed_to": "lord_ahn",
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 339, "line_end": 355}], "initial_knowers": []},
+    {"id": "skeleton_departure_account", "revision": 1,
+      "statement": "성을 처음 떠날 때 동행을 청한 인물은 자기 종족의 다른 이들이 적에게 굴복했다고 말하고, 자신은 거기에 따르지 않아 이곳까지 피했으며 주민들에게 배척받았다고 증언한다. 종족 전체의 실제 처지를 객관적으로 확정하지 않는다.",
+      "kind": "testimony", "status": "confirmed", "attributed_to": "skeleton",
+      "evidence": [{"file": "LORESPEC.PAS", "line_start": 263, "line_end": 296}], "initial_knowers": []},
+    {"id": "lastditch_direction_account", "revision": 1,
+      "statement": "탐사 성공 보고 뒤 성주는 일행의 능력을 믿게 되었다고 말하며 대륙 동쪽의 성에 가서 근심에 빠진 사람들을 도와 달라고 부탁한다.",
+      "kind": "testimony", "status": "confirmed", "attributed_to": "lord_ahn",
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 370, "line_end": 378}], "initial_knowers": []}
   ]
 }

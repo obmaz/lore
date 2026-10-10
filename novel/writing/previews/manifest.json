@@ -2,27 +2,36 @@
   "version": 1,
   "source_sha256": {
     "writing/storyboard/series.json": "ef7efd9026b4def686f2c092ea14282c291b8b18b9e9ca2178dc2ea53b326a60",
-    "writing/quests/prologue.json": "dd00927ec5509174b50cf72ba5b09c9bf2bfbd6a9270341871db348bf21b0913",
-    "writing/quests/prologue.continuity.json": "b8a60c6575127192e81ee72bb0e73cd9206fb5c16da8bd00d86d2982770c35f1",
+    "writing/quests/prologue.json": "ee4394f7eb10879fe98ae6fc3aaf8e9ba37692bf207c95719015387a48467a5d",
+    "writing/quests/prologue.continuity.json": "241e07c87280ae1ce43a4830724e5c7109f787cffcd2a710851cc91558e5469d",
     "characters/registry.json": "f6d82c5f4dc839a80de1b598efcf373175dea8dafda3982d1d364c3d9b245e7d",
     "reference/names.json": "f08d6d06fff5fd28bac71f8fb52771c003adf36b208d861a477a9e537ed1734b",
     "reference/terms.json": "f9d763745b945dd0578d8d664cd5eedb7b7422490cbd6f885568b081bcf4b8fb",
-    "continuity/canon.json": "121cb6809f2753cc696bee2f9c76aace87bafec653c29c766879c922ed35af90",
+    "continuity/canon.json": "02392cb0559da1ed83b8deda9f33642e926d94bf9b46b54143dad227e73d5705",
     "writing/project.json": "955b0192b3196f45100470110547901956718db8fbe654c41c253dc9621680cf",
-    "tools/writing.py": "667e1dce6b7e90bc53f7f31815b763f394b7f2ccad6dfd9195d07bfb17f6940d",
+    "tools/writing.py": "4855cae409c5614acbf2b4a2e50ca670e226d03085cae537e48af94caa3b4ff7",
     "tools/text_refs.py": "5298ed7528cc6fcfb723c6a26f792fc527fbe3fdd7c223066c1a4107529c5479",
-    "tools/story_continuity.py": "b8222ecade8f3c927795ea888847f7ef2a5585cbe0a941657b178738c0777486",
+    "tools/story_continuity.py": "e79b34b98a0726ef9d741a5bc1d47fdb6a1fb7cf9a1a013e01150d71af53c528",
     "tools/disclosure.py": "562d46cd711305fd4c0419485015fe22a0bb1eda8a515518e75ffe9c25a4711f",
     "tools/validate_story_authoring.py": "40243942f9cc0d98d29d089b730c315656c0f4d2804ea00d9e780aab8dd498de",
     "authoring/story.schema.json": "45d0aee1869770e20d39de45645e61acfb5caa2ddbe4b593afd107cd9fd9de0c",
     "writing/storyboard.schema.json": "84c0964d33bb97bbb0cc7bfdfcc48773e919273f10bce09727290c695fd5a200",
     "reference/equipment.json": "baed624f2f6938c18db37c666df65ad4ac3e9c759aa26c2261db401999a86833",
     "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
-    "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe"
+    "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
+    "writing/reading.json": "29e23fed292a10ad0f2789a9ed126f00e4ea2b862a78bc91781c7e91cb4d6182",
+    "tools/reading.py": "bbea82a29c345d6c5373750f9d6d680246023f3db699bab09934ff73f77927d2",
+    "continuity/continuity.schema.json": "4f1688785baee9fb3ed69eb7c68c9c635954cd7d43942a2ea31e76cf42bde2bb",
+    "writing/quests/lore_menace.json": "72e9f2b04521297353a7a902be0b176c1c78472e7866bb8e252502e96a722660",
+    "writing/quests/lore_menace.continuity.json": "4fa6af0e7518c9c3f7ebe8f795d7722c0e834f083ed2e0cfd54169ad9d4d6cd4"
   },
   "artifacts": {
     "storyboard.html": "2d8f70bbdccb9f138a8c11b4fe9afb024f29b4b36fbcc1c231ccb6730fe5d98a",
-    "prologue.html": "328ffe6e10459e8f472a195c5d71ebb3f18116efc63ab5e4021c83bc6f4b40fb",
-    "prologue-tavern.html": "77a09ce79d45bcfecedce1c3f951e15883bce5ea480c45eb65b2396dc3e3d150"
+    "prologue.html": "b4c9394a6026f4e4dbd3b169500ee219fdd43808ec5544ed5302f292b230df7e",
+    "prologue-tavern.html": "c1dd6a72957a95b298c174f6e79ce165913e633ab5f8fbb92a3471ac343c7775",
+    "first-journey.html": "9c5bb119ee4b6003939936b4eadbdd5ecfae9979db4514052c4fb3ef7dd54f5a",
+    "first-journey-declined.html": "518b66b5a4d728b00c51c97471d9d7eabe347089889f26fb529811fce2b7890d",
+    "first-journey-tavern.html": "770b0f1fb839c66ab31221f7e8af42a93df3ab78c2203eb4820ab4cc090bb968",
+    "first-journey-tavern-declined.html": "7c06f8360e84817f017951d49e4a5986cac7edb41f04f60625ee7da95a4584d5"
   }
 }

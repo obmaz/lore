@@ -2,7 +2,7 @@
   "version": 2,
   "story_id": "quest_template",
   "story_revision": 1,
-  "canon_revision": 3,
+  "canon_revision": 4,
   "character_registry_revision": 8,
   "contracts": {
     "entry": {

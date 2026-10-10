@@ -15,7 +15,7 @@
         "text": "일행의 출발, 선택적인 주점 방문과 성주의 설명. 첫 탐사 의뢰 직전까지의 시범 원고."
       }
     ],
-    "revision": 1,
+    "revision": 2,
     "reference_text": true,
     "source_catalog": "materials/scripts.json",
     "character_registry": "characters/registry.json"
@@ -941,7 +941,7 @@
       "choices": [],
       "handoff": {
         "quest_id": "lore_menace",
-        "entry_node": null,
+        "entry_node": "assignment",
         "carry_states": [
           "knowledge.missing_squad"
         ]
@@ -1452,6 +1452,6 @@
     "시작 동료 네 명의 이름·직업·장비는 미정이다.",
     "감옥·영입의 실제 접근 시점을 확인한 뒤 별도 장면으로 추가한다.",
     "출발 UI와 진행 후 반복 대사는 아직 처리하지 않았다.",
-    "다음 퀘스트의 entry_node와 원고를 연결해야 한다."
+    "첫 탐사 의뢰 원고의 assignment로 연결했다. 이후 읽기 경로에서도 주점 증언을 유지한다."
   ]
 }

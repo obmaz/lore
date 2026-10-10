@@ -1,0 +1,948 @@
+{
+  "version": 2,
+  "story_id": "lore_menace_draft_v1",
+  "story_revision": 1,
+  "canon_revision": 4,
+  "character_registry_revision": 8,
+  "contracts": {
+    "assignment": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 2
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.lore_stage"
+      ],
+      "must_include_block_ids": [
+        "request_quote"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "lord_briefing_account"
+        }
+      ],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "lord_ahn",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "lord_ahn",
+          "revision": 4
+        }
+      ]
+    },
+    "preparation": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        }
+      ]
+    },
+    "reminder": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "reminder_quote"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "lord_ahn",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "lord_ahn",
+          "revision": 4
+        }
+      ]
+    },
+    "castle_exit": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.lore_stage",
+            "op": "eq",
+            "value": 3
+          },
+          {
+            "state": "event.skeleton_offer_seen",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "companions.optional_recruits",
+        "event.skeleton_offer_seen"
+      ],
+      "must_include_block_ids": [
+        "exit_call_quote",
+        "skeleton_quote"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "departure_path": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "road": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "cave_entry": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "cave_walk": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "center": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.lore_stage"
+      ],
+      "must_include_block_ids": [
+        "center_quote"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "return_road": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 4
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "report": {
+      "before": {
+        "all": [
+          {
+            "state": "quest.lore_stage",
+            "op": "eq",
+            "value": 4
+          },
+          {
+            "state": "quest.menace_reward_claimed",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.lore_stage",
+        "quest.menace_reward_claimed"
+      ],
+      "must_include_block_ids": [
+        "report_quote",
+        "reward_counter_quote"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "lord_ahn",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "lord_ahn",
+          "revision": 4
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "next_task": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 5
+      },
+      "after": true,
+      "allowed_state_changes": [
+        "quest.lore_stage"
+      ],
+      "must_include_block_ids": [
+        "next_quote"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "lord_ahn",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "lord_ahn",
+          "revision": 4
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "farewell": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 6
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "farewell_quote"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "lord_ahn",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "lord_ahn",
+          "revision": 4
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    },
+    "next_quest_boundary": {
+      "before": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 6
+      },
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [
+        {
+          "fact_id": "menace_assignment_account",
+          "revision": 1
+        }
+      ],
+      "continuity_notes": [
+        "합류 여부와 이전 주점 증언은 원고 경계를 넘어 이어받는다. 방문하지 않은 무기고/발견물의 장비·금을 지급하지 않는다. 새 심리·행동·대사는 창작 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "skeleton",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          }
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "skeleton",
+          "revision": 2
+        }
+      ]
+    }
+  },
+  "event_templates": [
+    {
+      "id": "assignment_heard",
+      "trigger_choice": "receive_assignment",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "assignment"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist",
+        "lord_ahn"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "menace_assignment_account",
+          "method": "heard",
+          "informant_id": "lord_ahn"
+        }
+      ],
+      "reveals": [
+        "lord_assignment"
+      ],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "skeleton_joined",
+      "trigger_choice": "accept_skeleton",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "skeleton_exit"
+      ],
+      "requires_events": [
+        "assignment_heard"
+      ],
+      "participants": [
+        "protagonist",
+        "skeleton"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "skeleton_departure_account",
+          "method": "heard",
+          "informant_id": "skeleton"
+        }
+      ],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "skeleton_declined",
+      "trigger_choice": "decline_skeleton",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "skeleton_exit"
+      ],
+      "requires_events": [
+        "assignment_heard"
+      ],
+      "participants": [
+        "protagonist",
+        "skeleton"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "skeleton_departure_account",
+          "method": "heard",
+          "informant_id": "skeleton"
+        }
+      ],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "mission_shared",
+      "trigger_choice": "enter_menace",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "authored",
+      "source_refs": [
+        "assignment"
+      ],
+      "requires_events": [
+        "assignment_heard"
+      ],
+      "participants": [
+        "protagonist",
+        "skeleton"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "skeleton",
+          "fact_id": "menace_assignment_account",
+          "method": "heard",
+          "informant_id": "protagonist"
+        }
+      ],
+      "reveals": [],
+      "when": {
+        "state": "companions.optional_recruits",
+        "op": "contains",
+        "value": "skeleton"
+      },
+      "approval": "proposed"
+    },
+    {
+      "id": "center_confirmed",
+      "trigger_choice": "return_to_lore",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "center"
+      ],
+      "requires_events": [
+        "assignment_heard"
+      ],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "reward_received",
+      "trigger_choice": "acknowledge_reward",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "report"
+      ],
+      "requires_events": [
+        "center_confirmed"
+      ],
+      "participants": [
+        "protagonist",
+        "lord_ahn"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "next_direction_heard",
+      "trigger_choice": "hear_next_task",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "next_task"
+      ],
+      "requires_events": [
+        "reward_received"
+      ],
+      "participants": [
+        "protagonist",
+        "lord_ahn"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "lastditch_direction_account",
+          "method": "heard",
+          "informant_id": "lord_ahn"
+        }
+      ],
+      "reveals": [],
+      "when": true,
+      "approval": "proposed"
+    },
+    {
+      "id": "companion_next_direction_heard",
+      "trigger_choice": "hear_next_task",
+      "description": "해당 경로에서 서술한 사건/증언의 경험만 기록한다. 원문 증언을 객관적 진상으로 바꾸지 않는다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "next_task"
+      ],
+      "requires_events": [
+        "next_direction_heard"
+      ],
+      "participants": [
+        "skeleton",
+        "lord_ahn"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "skeleton",
+          "fact_id": "lastditch_direction_account",
+          "method": "heard",
+          "informant_id": "lord_ahn"
+        }
+      ],
+      "reveals": [],
+      "when": {
+        "state": "companions.optional_recruits",
+        "op": "contains",
+        "value": "skeleton"
+      },
+      "approval": "proposed"
+    }
+  ],
+  "threads": [
+    {
+      "id": "missing_squad",
+      "description": "특공대의 실제 생사와 행방은 이 탐사만으로 밝혀지지 않았다.",
+      "status": "open",
+      "resolution_event": null
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "issues": [
+      "추가: 제한적 3인칭 심리·길의 감각·몸짓·새 답변·합류 뒤 상호작용은 미승인 창작이다. 원작 고정 성향/과거/외모로 승격하지 않는다.",
+      "무기고의 개인별 지급은 직업 및 기존 장비 상태를 정한 뒤 별도 경로로 집필한다. 이번 경로는 방문하지 않았다.",
+      "수감소 방문·영입 요청·병사 충돌·해당 슬롯의 이탈은 접근 조건을 검토한 뒤 별도 경로로 집필한다.",
+      "동굴의 선택 금·방패 발견과 무작위 전투는 아직 집필하지 않았다. 중심부에 고정 보스를 추가하지 않았다.",
+      "새 동행은 원작의 6번 슬롯을 사용하는 기본 경로다. 미작성 영입 인물과의 슬롯 교체를 허용했다고 주장하지 않는다.",
+      "다음 퀘스트 원고와 인계 entry_node는 후속 집필에서 연결한다. 원문 흐름 전체가 완료된 원고가 아니다."
+    ],
+    "approved_story_revision": null,
+    "approved_canon_revision": null,
+    "approved_input_hashes": null
+  }
+}

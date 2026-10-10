@@ -7,6 +7,10 @@
 
 ## 바로 읽기
 
+- [도입부터 1장까지 · 동행 수락](previews/first-journey.html): 첫 탐사·귀환 보고와 다음 부탁까지.
+- [도입부터 1장까지 · 동행 거절](previews/first-journey-declined.html): 같은 의뢰, 다른 현재 동료.
+- [주점 방문 후 1장 · 수락](previews/first-journey-tavern.html) /
+  [거절](previews/first-journey-tavern-declined.html): 앞서 들은 증언이 이동·귀환 문단에 이어진다.
 - [전편 스토리보드](previews/storyboard.html): 작가 전용, 전편 스포일러 포함.
 - [도입부 · 성주 직행](previews/prologue.html): 첫 의뢰 제시 직전까지의 시범 본문.
 - [도입부 · 주점 방문](previews/prologue-tavern.html): 선택 방문을 한 경로의 시범 본문.
@@ -26,12 +30,41 @@ writing/
 ├── storyboard/series.json          전편 큰 흐름 · 작가 전용
 ├── quests/prologue.json            도입부 시범 본문 · 6장면, 6선택
 ├── quests/prologue.continuity.json  시범 원고의 경로 기억과 계약
+├── quests/lore_menace.json          1장 「돌아오는 일」 · 첫 퀘스트 기본 경로 초고
+├── quests/lore_menace.continuity.json  영입·증언·탐사·보상·다음 부탁의 기록
+├── reading.json                    원고를 이어 읽는 네 가지 검토 경로
 └── previews/                       읽기 전용 HTML와 무결성 매니페스트
 ```
 
 기존 `authoring/drafts/prologue.json`은 보존한 구조 예시다. 새 집필 원고가 아니다.
 새 시범은 제한적 3인칭을 **미승인 문체 제안**으로 사용한다. 성별·나이·직업·초기 장비와
 동료 네 명은 임의로 확정하지 않았다. 감옥 방문은 접근 시점 미확정이라 넣지 않았다.
+
+## 현재 집필 범위
+
+1장에는 14장면·15선택·54블록을 작성했다. 성주의 의뢰 → 첫 출구의 동행 요청 →
+남서쪽 이동 → 동굴 중심부 확인 → 귀환·보상 → 다음 지역 안내까지의 기본 경로다.
+스켈레톤의 첫 합류 요청은 원작의 성 출구 사건이며 수락·거절을 따로 보존한다.
+수락을 정사로 고정하거나 미작성 동료의 슬롯을 자동 교체하지 않는다.
+무기고·수감소·선택 금/방패 발견·무작위 전투는 보류한 별도 경로다.
+원문 중심부에 없는 고정 보스를 추가하지 않았다. 원작 UI 경험 보상은 성주의 대사가
+아닌 화자 없는 원문 블록으로 보존하며 새 능력/나이/자동 레벨 상승으로 바꾸지 않는다.
+
+새 연결 서사·반응·대화·길의 감각은 블록마다 `authored`와 추가 설명을 붙였다.
+해당 퀘스트의 모든 부수 경로를 완성한 원고는 아니며 `coverage: partial`을 유지한다.
+이후 지역의 진상을 먼저 공개하지 않고 다음 원고의 인계 지점에서 멈춘다.
+
+`reading.py`는 실제 원고와 계약을 검증한 뒤 파일 경계를 연결하는 읽기용 파생본을
+만든다. 앞선 주점 방문·증언·동료 상태를 초기화하지 않는다. 임의의 저장 상태나
+지식 JSON을 입력해 과거를 만들어 내지 않고, 원고의 실제 선택 경로를 다시 계산한다.
+원본 원고를 합쳐 덮어쓰거나 미검토 장면을 승인하지 않는다.
+
+```bash
+python3 tools/writing.py reading --reading-key first-journey
+python3 tools/writing.py reading --reading-key first-journey-declined
+python3 tools/writing.py reading --reading-key first-journey-tavern
+python3 tools/writing.py reading --reading-key first-journey-tavern-declined
+```
 
 ## 이름은 한 곳에서 변경
 
@@ -96,7 +129,7 @@ JSON 원고는 바꿀 필요 없이 새 이름으로 렌더링된다. 이미 만
 6. 경로별 프리뷰를 검토하고 승인한다. 다음 원고에서도 기존 상태를 지우지 않는다.
 
 ```bash
-python3 tools/writing.py new-quest --quest-id lore_menace
+python3 tools/writing.py new-quest --quest-id lastditch_pyramid
 python3 tools/writing.py validate
 python3 tools/writing.py preview --route enter_courtyard visit_lord hear_lord_intro hear_lord_briefing
 python3 tools/writing.py preview --route enter_courtyard visit_tavern remember_veteran visit_lord hear_lord_intro hear_lord_briefing
@@ -106,4 +139,5 @@ python3 tools/writing.py export --check
 `new-quest`는 빈 원고와 검토용 계약을 만들 뿐 내용을 자동 완성/승인하지 않는다.
 추가 원고는 `validate_story_authoring.py`로 검사하고 `writing.py preview --story …`
 에 해당 파일과 경로를 지정한다. 경로 프리뷰는 현재까지 공개된 정보만 사용한다.
+1장처럼 이전 지식이 필요한 원고는 단독 초기값으로 읽지 않고 `reading` 경로로 연결한다.
 모든 가능한 경로, 산문의 의미·인물 동기의 일관성은 별도 편집 검토가 필요하다.

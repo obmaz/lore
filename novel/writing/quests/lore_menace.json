@@ -1,0 +1,3347 @@
+{
+  "schema_version": 2,
+  "meta": {
+    "id": "lore_menace_draft_v1",
+    "title": [
+      {
+        "text": "1장 · 돌아오는 일"
+      }
+    ],
+    "quest_id": "lore_menace",
+    "status": "draft",
+    "purpose": "story_authoring_not_game_runtime",
+    "summary": [
+      {
+        "text": "첫 탐사 의뢰, 성을 떠날 때의 동행 선택, 지하 동굴 중심부 확인과 귀환 보고. 다음 성의 의뢰 직전까지."
+      }
+    ],
+    "revision": 1,
+    "reference_text": true,
+    "source_catalog": "materials/scripts.json",
+    "character_registry": "characters/registry.json"
+  },
+  "source_refs": {
+    "assignment": {
+      "file": "LORETALK.PAS",
+      "line_start": 339,
+      "line_end": 358,
+      "purpose": "첫 탐사 부탁과 무기고 이용 허가"
+    },
+    "reminder": {
+      "file": "LORETALK.PAS",
+      "line_start": 358,
+      "line_end": 361,
+      "purpose": "탐사 완료 전 목적지 재안내"
+    },
+    "skeleton_exit": {
+      "file": "LORESPEC.PAS",
+      "line_start": 262,
+      "line_end": 302,
+      "purpose": "첫 성 출구의 호출·증언·수락/거절·6번 슬롯 합류"
+    },
+    "menace_entry": {
+      "file": "LOREENT.PAS",
+      "line_start": 37,
+      "line_end": 43,
+      "purpose": "남서쪽 동굴 출입 위치"
+    },
+    "center": {
+      "file": "LORESPEC.PAS",
+      "line_start": 814,
+      "line_end": 833,
+      "purpose": "동굴 중심부 확인과 탐사 성공 단계"
+    },
+    "report": {
+      "file": "LORETALK.PAS",
+      "line_start": 362,
+      "line_end": 369,
+      "purpose": "성공 보고와 경험 보상"
+    },
+    "next_task": {
+      "file": "LORETALK.PAS",
+      "line_start": 370,
+      "line_end": 380,
+      "purpose": "동쪽 성 지원 부탁과 이후 작별 대사"
+    },
+    "armory_pending": {
+      "file": "LORESPEC.PAS",
+      "line_start": 243,
+      "line_end": 260,
+      "purpose": "일회성 기본 장비 지급; 미정 직업/개별 장비 상태 확인 후 집필"
+    },
+    "joe_pending": {
+      "file": "LORETALK.PAS",
+      "line_start": 191,
+      "line_end": 218,
+      "purpose": "수감자 영입 요청; 실제 접근 시점 검토 후 별도 삽입"
+    },
+    "guard_pending": {
+      "file": "LORESPEC.PAS",
+      "line_start": 196,
+      "line_end": 242,
+      "purpose": "해당 영입 비트와 슬롯에 따른 수감소 충돌/이탈; 기본 경로에 섞지 않음"
+    },
+    "treasure_pending": {
+      "file": "LORESPEC.PAS",
+      "line_start": 834,
+      "line_end": 878,
+      "purpose": "탐사 중 선택 금·방패 발견; 선택 경로 분리 후 집필"
+    }
+  },
+  "state_definitions": {
+    "knowledge.missing_squad": {
+      "type": "boolean",
+      "category": "knowledge",
+      "scope": "story",
+      "initial": false,
+      "description": "이전 도입부에서 실제로 주점 증언을 들었는지 이어받는다. 초기값으로 되돌리지 않는다.",
+      "provenance": {
+        "origin": "authored",
+        "source_refs": [],
+        "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+      }
+    },
+    "companions.optional_recruits": {
+      "type": "string_set",
+      "category": "companions",
+      "scope": "story",
+      "initial": [],
+      "description": "기본 시작 동료 명단과 구분한 선택 동료의 현재 영입 상태. 이 초고의 시작에는 이전 도입부에서 영입한 동료가 없다.",
+      "provenance": {
+        "origin": "authored",
+        "source_refs": [],
+        "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+      }
+    },
+    "event.skeleton_offer_seen": {
+      "type": "boolean",
+      "category": "event",
+      "scope": "story",
+      "initial": false,
+      "description": "첫 성 출구에서 증언과 합류 요청을 들은 경험. 수락 여부와 구분한다.",
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "skeleton_exit"
+        ],
+        "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+      }
+    },
+    "quest.lore_stage": {
+      "type": "integer",
+      "category": "quest",
+      "scope": "story",
+      "initial": 2,
+      "description": "원작 etc[10]의 도입 설명 뒤 단계 2부터 탐사/보고 단계 6까지 집필용으로 추적한다.",
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "assignment"
+        ],
+        "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+      }
+    },
+    "quest.menace_reward_claimed": {
+      "type": "boolean",
+      "category": "quest",
+      "scope": "story",
+      "initial": false,
+      "description": "성공 보상을 한 번 받은 사건. 경험 수치를 나이/새 능력/자동 레벨 상승으로 바꾸지 않는다.",
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "report"
+        ],
+        "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+      }
+    }
+  },
+  "entry_node": "assignment",
+  "nodes": [
+    {
+      "id": "assignment",
+      "title": [
+        {
+          "text": "능력을 증명하는 일"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 2
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "assignment"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "request_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "짧은 침묵 끝에 성주는 부탁의 크기를 줄였다. 세계를 구하라는 말 대신, 갈 수 있는 곳과 해야 할 일을 하나씩 꺼내 놓았다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그제야 듣고 있던 이야기에 자신의 발걸음이 들어갈 자리가 생기는 것을 느꼈다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "request_quote",
+          "kind": "source_quote",
+          "speaker": "lord_ahn",
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORETALK.PAS:literal:12962",
+                  "LORETALK.PAS:literal:13018",
+                  "LORETALK.PAS:literal:13067",
+                  "LORETALK.PAS:literal:13121",
+                  "LORETALK.PAS:literal:13171",
+                  "LORETALK.PAS:literal:13219",
+                  "LORETALK.PAS:literal:13270",
+                  "LORETALK.PAS:literal:13319",
+                  "LORETALK.PAS:literal:13368",
+                  "LORETALK.PAS:literal:13403",
+                  "LORETALK.PAS:literal:13457",
+                  "LORETALK.PAS:literal:13506",
+                  "LORETALK.PAS:literal:13555",
+                  "LORETALK.PAS:literal:13603",
+                  "LORETALK.PAS:literal:13651",
+                  "LORETALK.PAS:literal:13692"
+                ],
+                "bindings": [
+                  {
+                    "start": 1,
+                    "end": 12,
+                    "ref": {
+                      "catalog": "characters",
+                      "id": "necromancer"
+                    }
+                  },
+                  {
+                    "start": 23,
+                    "end": 27,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "lore"
+                    }
+                  },
+                  {
+                    "start": 58,
+                    "end": 64,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "menace"
+                    }
+                  },
+                  {
+                    "start": 141,
+                    "end": 145,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "lore"
+                    }
+                  },
+                  {
+                    "start": 233,
+                    "end": 244,
+                    "ref": {
+                      "catalog": "characters",
+                      "id": "necromancer"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORETALK.PAS:literal:12962",
+            "LORETALK.PAS:literal:13018",
+            "LORETALK.PAS:literal:13067",
+            "LORETALK.PAS:literal:13121",
+            "LORETALK.PAS:literal:13171",
+            "LORETALK.PAS:literal:13219",
+            "LORETALK.PAS:literal:13270",
+            "LORETALK.PAS:literal:13319",
+            "LORETALK.PAS:literal:13368",
+            "LORETALK.PAS:literal:13403",
+            "LORETALK.PAS:literal:13457",
+            "LORETALK.PAS:literal:13506",
+            "LORETALK.PAS:literal:13555",
+            "LORETALK.PAS:literal:13603",
+            "LORETALK.PAS:literal:13651",
+            "LORETALK.PAS:literal:13692"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "assignment"
+            ],
+            "note": "보존 원문 발생을 원래 순서대로 참조. 표시명 각색은 바인딩으로 분리한다."
+          }
+        },
+        {
+          "id": "request_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "능력을 증명하라는 말이 마음에 걸렸다. 자신들을 모른다는 것은 틀린 말이 아니었다. 여기서 나눈 짧은 대화로는 서로를 믿을 이유가 없었다. 다만 돌아와야 할 곳과 확인해야 할 일이 생겼다. 아직은 그것으로 충분했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "request_veteran_memory",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "knowledge.missing_squad",
+            "op": "eq",
+            "value": true
+          },
+          "text": [
+            {
+              "text": "주점에서 들었던 사람들의 이름 없는 빈자리가 떠올랐다. 떠난 이들은 돌아오지 않았다고 했다. 그 말은 이번 부탁을 거절할 이유도, 받아들일 이유도 될 수 있었다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 자신이 들은 말과 앞으로 볼 것을 섞지 않기로 했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "request_reply",
+          "kind": "dialogue",
+          "speaker": "protagonist",
+          "when": true,
+          "text": [
+            {
+              "text": "중심부까지 확인하고 돌아오겠습니다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "request_promise",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "누구를 쓰러뜨리겠다는 말은 하지 않았다. 멀리 있는 적의 이름보다 지금 자신이 지킬 수 있는 약속을 고르고 싶었다. 성주는 대답을 듣고 고개를 끄덕였다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "receive_assignment",
+          "label": [
+            {
+              "text": "탐사 부탁을 받아들인다"
+            }
+          ],
+          "when": true,
+          "target": "preparation",
+          "effects": [
+            {
+              "state": "quest.lore_stage",
+              "op": "set",
+              "value": 3,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "assignment"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "branch_kind": "quest",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "assignment"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "preparation",
+      "title": [
+        {
+          "text": "출발 전에"
+        }
+      ],
+      "kind": "hub",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "assignment"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "preparation_pause",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "접견을 마치자 일행은 다시 움직였다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 성 안에서 들은 말을 짧게 정리했다. 남서쪽의 동굴, 그 중심, 그리고 귀환. 낯선 땅의 먼 이야기가 세 가지의 순서로 좁혀졌다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "armory_not_taken",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "무기고를 이용해도 된다는 허락은 받았지만, 그것이 이미 물건을 받았다는 뜻은 아니었다. 일행은 이 길에서는 무기고에 들르지 않고 출구로 향하기로 했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "preparation_note",
+          "kind": "author_note",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "별도 경로의 무기고 지급은 미작성이다. 방문하지 않은 현재 경로에 장비를 추가하지 않는다. 수감소 방문과 해당 동료 영입/이탈도 이 초고에 자동 삽입하지 않는다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "leave_castle",
+          "label": [
+            {
+              "text": "출구로 향한다"
+            }
+          ],
+          "when": true,
+          "target": "castle_exit",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "ask_directions_again",
+          "label": [
+            {
+              "text": "성주에게 목적지를 다시 확인한다"
+            }
+          ],
+          "when": true,
+          "target": "reminder",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "assignment"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "reminder",
+      "title": [
+        {
+          "text": "같은 부탁을 다시 듣다"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "reminder"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "reminder_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 발걸음을 돌렸다. 믿지 못해서가 아니라, 돌아와서 다른 일을 했다고 말하고 싶지 않아서였다. 성주는 목적지를 다시 알려 주었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "reminder_quote",
+          "kind": "source_quote",
+          "speaker": "lord_ahn",
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORETALK.PAS:literal:13790",
+                  "LORETALK.PAS:literal:13807",
+                  "LORETALK.PAS:literal:13816"
+                ],
+                "bindings": [
+                  {
+                    "start": 14,
+                    "end": 20,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "menace"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORETALK.PAS:literal:13790",
+            "LORETALK.PAS:literal:13807",
+            "LORETALK.PAS:literal:13816"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "reminder"
+            ],
+            "note": "보존 원문 발생을 원래 순서대로 참조. 표시명 각색은 바인딩으로 분리한다."
+          }
+        },
+        {
+          "id": "reminder_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "같은 말을 두 번째로 들으니 무엇을 해서는 안 되는지도 분명해졌다. 처음부터 동굴 전체를 정복하겠다고 약속할 필요는 없었다. 확인하고 돌아오는 것. 그는 그 범위를 다시 마음에 새겼다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "finish_reminder",
+          "label": [
+            {
+              "text": "안내를 기억하고 출구로 향한다"
+            }
+          ],
+          "when": true,
+          "target": "castle_exit",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "reminder"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "castle_exit",
+      "title": [
+        {
+          "text": "밖으로 나가지 못한 사람"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "all": [
+          {
+            "state": "quest.lore_stage",
+            "op": "eq",
+            "value": 3
+          },
+          {
+            "state": "event.skeleton_offer_seen",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "skeleton_exit"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "exit_pause",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "성 밖으로 향하는 발걸음이 잠시 늦어졌다. 뒤에서 들려온 목소리는 일행을 부르는 것인지 혼잣말인지, 처음에는 분명하지 않았다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 돌아보았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "exit_call_quote",
+          "kind": "source_quote",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORESPEC.PAS:literal:11230"
+                ],
+                "bindings": [
+                  {
+                    "start": 5,
+                    "end": 9,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "lore"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORESPEC.PAS:literal:11230"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "skeleton_exit"
+            ],
+            "note": "보존 원문 발생을 원래 순서대로 참조. 표시명 각색은 바인딩으로 분리한다."
+          }
+        },
+        {
+          "id": "exit_wait",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "다가온 사람은 먼저 자신을 소개했다. 변명할 시간을 얻으려는 듯 말을 재촉하다가도, 꼭 전해야 할 대목에서는 속도를 늦췄다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "skeleton_quote",
+          "kind": "source_quote",
+          "speaker": "skeleton",
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORESPEC.PAS:literal:11609",
+                  "LORESPEC.PAS:literal:11667",
+                  "LORESPEC.PAS:literal:11722",
+                  "LORESPEC.PAS:literal:11781",
+                  "LORESPEC.PAS:literal:11842",
+                  "LORESPEC.PAS:literal:11899",
+                  "LORESPEC.PAS:literal:11953",
+                  "LORESPEC.PAS:literal:12008",
+                  "LORESPEC.PAS:literal:12069",
+                  "LORESPEC.PAS:literal:12125",
+                  "LORESPEC.PAS:literal:12158",
+                  "LORESPEC.PAS:literal:12171",
+                  "LORESPEC.PAS:literal:12184",
+                  "LORESPEC.PAS:literal:12197",
+                  "LORESPEC.PAS:literal:12210"
+                ],
+                "bindings": [
+                  {
+                    "start": 4,
+                    "end": 12,
+                    "ref": {
+                      "catalog": "characters",
+                      "id": "skeleton"
+                    }
+                  },
+                  {
+                    "start": 53,
+                    "end": 64,
+                    "ref": {
+                      "catalog": "characters",
+                      "id": "necromancer"
+                    }
+                  },
+                  {
+                    "start": 98,
+                    "end": 109,
+                    "ref": {
+                      "catalog": "characters",
+                      "id": "necromancer"
+                    }
+                  },
+                  {
+                    "start": 123,
+                    "end": 127,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "lore"
+                    }
+                  },
+                  {
+                    "start": 205,
+                    "end": 216,
+                    "ref": {
+                      "catalog": "characters",
+                      "id": "necromancer"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORESPEC.PAS:literal:11609",
+            "LORESPEC.PAS:literal:11667",
+            "LORESPEC.PAS:literal:11722",
+            "LORESPEC.PAS:literal:11781",
+            "LORESPEC.PAS:literal:11842",
+            "LORESPEC.PAS:literal:11899",
+            "LORESPEC.PAS:literal:11953",
+            "LORESPEC.PAS:literal:12008",
+            "LORESPEC.PAS:literal:12069",
+            "LORESPEC.PAS:literal:12125",
+            "LORESPEC.PAS:literal:12158",
+            "LORESPEC.PAS:literal:12171",
+            "LORESPEC.PAS:literal:12184",
+            "LORESPEC.PAS:literal:12197",
+            "LORESPEC.PAS:literal:12210"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "skeleton_exit"
+            ],
+            "note": "보존 원문 발생을 원래 순서대로 참조. 표시명 각색은 바인딩으로 분리한다."
+          }
+        },
+        {
+          "id": "skeleton_reaction",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그 사람의 말을 확인할 수 없었다. 정말 혼자 남았는지, 어디에서 어떤 일을 겪었는지 알지 못했다. 그러나 함께 떠나고 싶다는 마지막 말까지 의심할 이유는 없었다. 그것을 믿는 일과 일행의 한자리를 내어 주는 일은 또 달랐다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "accept_skeleton",
+          "label": [
+            {
+              "text": "당신을 환영하오."
+            }
+          ],
+          "when": true,
+          "target": "departure_path",
+          "effects": [
+            {
+              "state": "event.skeleton_offer_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "skeleton_exit"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            },
+            {
+              "state": "companions.optional_recruits",
+              "op": "add",
+              "value": "skeleton",
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "skeleton_exit"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "branch_kind": "companion",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "skeleton_exit"
+            ],
+            "note": "원작 수락·거절 선택 문구 그대로."
+          },
+          "label_literal_id": "LORESPEC.PAS:literal:12269"
+        },
+        {
+          "id": "decline_skeleton",
+          "label": [
+            {
+              "text": "미안하지만 안되겠소."
+            }
+          ],
+          "when": true,
+          "target": "departure_path",
+          "effects": [
+            {
+              "state": "event.skeleton_offer_seen",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "skeleton_exit"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "branch_kind": "companion",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "skeleton_exit"
+            ],
+            "note": "원작 수락·거절 선택 문구 그대로."
+          },
+          "label_literal_id": "LORESPEC.PAS:literal:12307"
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "skeleton_exit"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "departure_path",
+      "title": [
+        {
+          "text": "함께 걷거나 남겨 두거나"
+        }
+      ],
+      "kind": "merge",
+      "entry_when": true,
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "skeleton_exit"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "join_result",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 일행의 끝에 섰다. 자리를 얻었다는 것과 그 자리에 익숙해졌다는 것은 다른 일이었다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 다가오라고 손짓한 뒤, 곧바로 대열을 맞추게 하지는 않았다. 처음부터 오래 함께한 사람처럼 행동할 필요는 없었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "join_warning",
+          "kind": "dialogue",
+          "speaker": "protagonist",
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "text": [
+            {
+              "text": "길에서 무엇을 만날지는 저희도 모릅니다. 그래도 돌아오는 일까지 함께하겠습니다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "decline_result",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "not": {
+              "state": "companions.optional_recruits",
+              "op": "contains",
+              "value": "skeleton"
+            }
+          },
+          "text": [
+            {
+              "text": "거절의 말이 끝나자 사이에 빈자리가 남았다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 위험해서라는 설명을 덧붙이려다 멈췄다. 함께 오고 싶다는 사람에게 그 말이 위로가 되지는 않을 것 같았다. 자신이 하지 않은 약속까지 한 것처럼 말하고 싶지도 않았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "departure_result",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "일행이 성을 떠났다. 돌아올 곳은 이제 뒤에 있었다. 앞으로 갈 길은 아직 직접 확인하지 않은 말 속에 놓여 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "set_out",
+          "label": [
+            {
+              "text": "남서쪽으로 길을 잡는다"
+            }
+          ],
+          "when": true,
+          "target": "road",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "skeleton_exit"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "road",
+      "title": [
+        {
+          "text": "말이 길이 될 때"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": true,
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "assignment",
+          "menace_entry"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "road_first",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 걷는 속도를 조금 늦췄다. 접견에서 들었던 설명을 되풀이하는 동안, 곁의 사람들도 같은 목적지를 생각하고 있는지 확인하고 싶었다. 그들이 서로에 대해 모르는 일은 많았지만, 어디로 가는지만큼은 다르게 이해하지 않아야 했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "road_share",
+          "kind": "dialogue",
+          "speaker": "protagonist",
+          "when": true,
+          "text": [
+            {
+              "text": "부탁받은 것은 "
+            },
+            {
+              "ref": {
+                "catalog": "terms",
+                "id": "menace"
+              }
+            },
+            {
+              "text": "의 중심부를 확인하는 일입니다. 거기까지 간 뒤 성으로 돌아가 보고합니다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "road_skeleton",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 고개를 끄덕였다. 그가 성문에서 밝힌 바람보다 작은 일일지도 몰랐다. 하지만 오늘 일행에게 필요한 것은 바람의 크기를 견주는 일보다 맡은 탐사를 끝내는 일이었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "road_veteran",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "knowledge.missing_squad",
+            "op": "eq",
+            "value": true
+          },
+          "text": [
+            {
+              "text": "주점에서 들은 이야기를 다시 꺼내지는 않았다. 돌아오지 않은 사람들의 사연이 오늘 함께 걷는 이들에게 곧바로 같은 운명이 되는 것은 아니었다. 다만 멈추어야 할 때 멈추고, 확인한 것만 확인했다고 말하자는 생각은 남았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "road_end",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "남서쪽으로 향하는 동안 성에서 들었던 말은 조금씩 풍경과 거리를 얻었다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 동굴의 이름을 속으로 되짚었다. 이름을 알고 있다는 것과 안으로 들어가는 일은 여전히 달랐다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "enter_menace",
+          "label": [
+            {
+              "text": "동굴 안으로 들어간다"
+            }
+          ],
+          "when": true,
+          "target": "cave_entry",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "assignment",
+          "menace_entry"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "cave_entry",
+      "title": [
+        {
+          "text": "빛이 짧아지는 곳"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": true,
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "menace_entry",
+          "center"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "cave_threshold",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "terms",
+                "id": "menace"
+              }
+            },
+            {
+              "text": "의 입구에서 일행은 걸음을 멈췄다. 안쪽은 밖에서 생각했던 것보다 조용했다. 그 조용함을 안전하다는 뜻으로 받아들이고 싶었지만, "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그 판단을 미뤘다. 아직 알아낸 것은 소리가 작다는 것뿐이었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [
+              "menace_entry"
+            ],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "cave_breath",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "처음에는 뒤에서 따라오는 발소리만 들렸다. 조금 더 들어가자 자신의 발소리도 어디에서 되돌아오는지 알기 어려워졌다. 그는 멈춰 뒤를 확인했다. 가까이 있는 사람들의 기척을 하나씩 살피는 일이 바깥보다 오래 걸렸다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "cave_skeleton_presence",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 돌아보는 시선을 피해 숨지 않았다. 새로운 동료가 보인다는 사실이 지금은 설명보다 도움이 되었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "cave_decision",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 다시 앞을 보았다. 중심부를 찾는다는 목적은 그대로였다. 서두른다고 길의 끝이 더 가까워지는 것은 아니었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "walk_deeper",
+          "label": [
+            {
+              "text": "일행의 거리를 맞추며 더 안으로 간다"
+            }
+          ],
+          "when": true,
+          "target": "cave_walk",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "menace_entry",
+          "center"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "cave_walk",
+      "title": [
+        {
+          "text": "확인해야 할 끝"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "center"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "walk_sense",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "움직이지 않고 듣는 시간이 길어졌다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 자신이 두려워하는 것이 무엇인지 정확히 이름 붙이지 못했다. 성주는 위협을 말했지만, 위협이 지금 어디에 있는지는 말해 주지 않았다. 아직 마주치지 않은 것을 이미 보았다고 생각하지 않으려 했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "walk_focus",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "길을 되짚을 때 알아볼 만한 지점을 기억했다. 앞으로 나아가는 데만 마음을 빼앗기면 돌아가는 길은 같은 길이 아니게 될 것 같았다. 잠깐씩 멈추며 일행이 따라오는지 살핀 뒤 다시 움직였다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "walk_companion",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 멈출 때마다 함께 멈췄다. 처음 성문에서 자신을 소개하던 말은 더 이어지지 않았다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그 침묵을 숨기는 일이 있다고 해석하지 않았다. 지금은 길을 같이 확인하고 있다는 사실만으로 충분했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "walk_arrival",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "그러다 더 깊이 들어가는 일보다 여기까지 온 것을 확인해야 할 때라는 생각이 들었다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 고개를 들었다. 부탁 속에만 있던 장소가 눈앞의 한 지점으로 좁혀져 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "confirm_center",
+          "label": [
+            {
+              "text": "동굴의 중심부를 확인한다"
+            }
+          ],
+          "when": true,
+          "target": "center",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "center"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "center",
+      "title": [
+        {
+          "text": "여기까지 왔다는 사실"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 3
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "center"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "center_quote",
+          "kind": "source_quote",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORESPEC.PAS:literal:34455",
+                  "LORESPEC.PAS:literal:34507",
+                  "LORESPEC.PAS:literal:34554"
+                ],
+                "bindings": [
+                  {
+                    "start": 5,
+                    "end": 11,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "menace"
+                    }
+                  },
+                  {
+                    "start": 37,
+                    "end": 45,
+                    "ref": {
+                      "catalog": "characters",
+                      "id": "lord_ahn"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORESPEC.PAS:literal:34455",
+            "LORESPEC.PAS:literal:34507",
+            "LORESPEC.PAS:literal:34554"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "center"
+            ],
+            "note": "보존 원문 발생을 원래 순서대로 참조. 표시명 각색은 바인딩으로 분리한다."
+          }
+        },
+        {
+          "id": "center_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 숨을 골랐다. 눈앞에 마지막 적이 기다리거나, 확인하지 않은 거대한 진실이 저절로 드러나지는 않았다. 지금 끝낸 일은 성주가 맡긴 탐사였다. 그것이 작아 보여도 다른 일로 바꾸어 말할 필요는 없었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "center_reply",
+          "kind": "dialogue",
+          "speaker": "protagonist",
+          "when": true,
+          "text": [
+            {
+              "text": "돌아갑시다. 우리가 본 것을 그대로 보고하겠습니다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "center_companion",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 돌아갈 방향을 함께 살폈다. 적을 타도하고 싶다는 말은 여전히 남아 있었지만, 이번에는 떠나온 성으로 함께 돌아가기로 했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "return_to_lore",
+          "label": [
+            {
+              "text": "탐사 성공을 기록하고 성으로 돌아간다"
+            }
+          ],
+          "when": true,
+          "target": "return_road",
+          "effects": [
+            {
+              "state": "quest.lore_stage",
+              "op": "set",
+              "value": 4,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "center"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "branch_kind": "quest",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "center"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "return_road",
+      "title": [
+        {
+          "text": "같은 길을 거꾸로"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 4
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "center",
+          "report"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "return_first",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "돌아가는 길에서는 처음 멈춰 섰던 지점이 조금씩 눈에 들어왔다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그것들이 그대로 있다는 사실에 안도했다. 찾아왔다는 것만으로는 부탁을 끝낸 것이 아니었다. 확인한 것을 전할 사람에게 가야 했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "return_veteran",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "knowledge.missing_squad",
+            "op": "eq",
+            "value": true
+          },
+          "text": [
+            {
+              "text": "주점에 남겨진 사람의 말을 떠올렸다. 돌아오지 않았다는 말은 이제 조금 다르게 들렸다. 돌아오는 일에도 의지가 필요했다. 그 생각을 남의 죽음을 이해했다는 말로 바꾸지는 않았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "return_skeleton",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "text": [
+            {
+              "text": "이번에는 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton"
+              }
+            },
+            {
+              "text": "도 함께 돌아왔다. 성문에서 자리를 청했던 사람과 밖을 돌아 성으로 향하는 사람이 같은 사람이라는 것만으로, 출발 전에는 없었던 경험이 일행 사이에 남았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "return_arrive",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "성에 도착하자 보고할 말이 길지 않다는 것을 깨달았다. 중심부까지 갔고, 확인했고, 돌아왔다. 그 짧은 문장을 말하기 위해 걸어야 했던 길이 뒤에 남아 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "report_success",
+          "label": [
+            {
+              "text": "성주에게 탐사 성공을 보고한다"
+            }
+          ],
+          "when": true,
+          "target": "report",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "center",
+          "report"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "report",
+      "title": [
+        {
+          "text": "축하의 크기"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "all": [
+          {
+            "state": "quest.lore_stage",
+            "op": "eq",
+            "value": 4
+          },
+          {
+            "state": "quest.menace_reward_claimed",
+            "op": "eq",
+            "value": false
+          }
+        ]
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "report"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "report_words",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 일행을 대표해 중심부까지 도달했다고 말했다. 알지 못하는 일까지 보태면 이야기가 더 그럴듯해질 수 있었지만, 성주에게 필요한 것은 그런 이야기가 아니었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "report_quote",
+          "kind": "source_quote",
+          "speaker": "lord_ahn",
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORETALK.PAS:literal:13915"
+                ],
+                "bindings": []
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORETALK.PAS:literal:13915"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "report"
+            ],
+            "note": "보존 원문 발생을 원래 순서대로 참조. 표시명 각색은 바인딩으로 분리한다."
+          }
+        },
+        {
+          "id": "reward_counter_quote",
+          "kind": "source_quote",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORETALK.PAS:literal:13956"
+                ],
+                "bindings": []
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORETALK.PAS:literal:13956"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "report"
+            ],
+            "note": "원작 UI 보상 표기. 성주의 발화가 아니다. 수치로 나이/자동 레벨 상승/새 능력을 확정하지 않는다."
+          }
+        },
+        {
+          "id": "report_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "짧은 축하가 돌아왔다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그것을 듣고 나서야 자신의 어깨에 들어가 있던 힘을 알아차렸다. 일행이 받은 것은 성공을 인정하는 보상이었다. 갑자기 다른 사람이 되었다는 증거는 아니었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "acknowledge_reward",
+          "label": [
+            {
+              "text": "성공 보상을 받고 다음 말을 기다린다"
+            }
+          ],
+          "when": true,
+          "target": "next_task",
+          "effects": [
+            {
+              "state": "quest.lore_stage",
+              "op": "set",
+              "value": 5,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "report"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            },
+            {
+              "state": "quest.menace_reward_claimed",
+              "op": "set",
+              "value": true,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "report"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "branch_kind": "quest",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "report"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "next_task",
+      "title": [
+        {
+          "text": "다음 사람들의 근심"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 5
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "next_task"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "next_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "성주는 곧바로 다음 목적지를 이야기했다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 이번에도 먼저 그곳에 있는 사람들의 사정을 들으려 했다. 한 번 돌아왔다는 사실이 앞으로의 모든 길을 안다는 뜻은 아니었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "next_quote",
+          "kind": "source_quote",
+          "speaker": "lord_ahn",
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORETALK.PAS:literal:14212",
+                  "LORETALK.PAS:literal:14261",
+                  "LORETALK.PAS:literal:14315",
+                  "LORETALK.PAS:literal:14365",
+                  "LORETALK.PAS:literal:14385",
+                  "LORETALK.PAS:literal:14397",
+                  "LORETALK.PAS:literal:14431",
+                  "LORETALK.PAS:literal:14444",
+                  "LORETALK.PAS:literal:14456",
+                  "LORETALK.PAS:literal:14493"
+                ],
+                "bindings": [
+                  {
+                    "start": 41,
+                    "end": 52,
+                    "ref": {
+                      "catalog": "characters",
+                      "id": "necromancer"
+                    }
+                  },
+                  {
+                    "start": 93,
+                    "end": 102,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "lastditch"
+                    }
+                  },
+                  {
+                    "start": 116,
+                    "end": 125,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "lastditch"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORETALK.PAS:literal:14212",
+            "LORETALK.PAS:literal:14261",
+            "LORETALK.PAS:literal:14315",
+            "LORETALK.PAS:literal:14365",
+            "LORETALK.PAS:literal:14385",
+            "LORETALK.PAS:literal:14397",
+            "LORETALK.PAS:literal:14431",
+            "LORETALK.PAS:literal:14444",
+            "LORETALK.PAS:literal:14456",
+            "LORETALK.PAS:literal:14493"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "next_task"
+            ],
+            "note": "보존 원문 발생을 원래 순서대로 참조. 표시명 각색은 바인딩으로 분리한다."
+          }
+        },
+        {
+          "id": "next_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "terms",
+                "id": "lastditch"
+              }
+            },
+            {
+              "text": "라는 이름이 새로운 길의 끝에 놓였다. 아직 만난 사람이 없고, 그들이 무엇 때문에 근심하는지도 듣지 못했다. 그래서 이번에는 도울 수 있다고 먼저 단언하지 않았다. 가서 들어야 할 이야기가 있다는 것만 받아들였다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "next_answer",
+          "kind": "dialogue",
+          "speaker": "protagonist",
+          "when": true,
+          "text": [
+            {
+              "text": "가서 그들의 이야기를 듣겠습니다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "hear_next_task",
+          "label": [
+            {
+              "text": "동쪽 성에 관한 부탁을 기억한다"
+            }
+          ],
+          "when": true,
+          "target": "farewell",
+          "effects": [
+            {
+              "state": "quest.lore_stage",
+              "op": "set",
+              "value": 6,
+              "provenance": {
+                "origin": "source_adaptation",
+                "source_refs": [
+                  "next_task"
+                ],
+                "note": "원작 조건/변화를 집필 상태로 추상화. 원문 코드 실행이나 고정 인물 설정 추가가 아니다."
+              }
+            }
+          ],
+          "branch_kind": "quest",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "next_task"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "farewell",
+      "title": [
+        {
+          "text": "허락 없이도 걸어야 할 길"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 6
+      },
+      "provenance": {
+        "origin": "source_adaptation",
+        "source_refs": [
+          "next_task"
+        ],
+        "note": "원문 사건을 연결한 집필 장면. 공간·심리·새 대사는 각 블록의 창작 표시를 따른다."
+      },
+      "blocks": [
+        {
+          "id": "farewell_quote",
+          "kind": "source_quote",
+          "speaker": "lord_ahn",
+          "when": true,
+          "text": [
+            {
+              "source": {
+                "literal_ids": [
+                  "LORETALK.PAS:literal:14611"
+                ],
+                "bindings": []
+              }
+            }
+          ],
+          "literal_ids": [
+            "LORETALK.PAS:literal:14611"
+          ],
+          "provenance": {
+            "origin": "source_exact",
+            "source_refs": [
+              "next_task"
+            ],
+            "note": "보존 원문 발생을 원래 순서대로 참조. 표시명 각색은 바인딩으로 분리한다."
+          }
+        },
+        {
+          "id": "farewell_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 고개를 숙였다. 스스로 행동하라는 말은 아무렇게나 해도 좋다는 뜻은 아닐 것이다. 지금까지는 무엇을 확인할지 물을 수 있었다. 다음에는 만난 사람의 이야기를 어디까지 믿고, 무엇을 해야 할지 자신들이 정해야 할지도 몰랐다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "farewell_companion",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "companions.optional_recruits",
+            "op": "contains",
+            "value": "skeleton"
+          },
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "skeleton",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 일행과 함께 접견을 마쳤다. 합류를 허락받았던 때와는 달리 이번에는 다시 자기 자리를 청하지 않았다. 함께 다녀온 길이 있었고, 아직 같이 가야 할 길이 남아 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        },
+        {
+          "id": "farewell_end",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "다시 밖으로 향할 때, "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 성을 처음 떠나던 순간의 약속을 떠올렸다. 한 번은 지켰다. 그 사실만을 가지고 다음 길로 나아가기로 했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "leave_audience",
+          "label": [
+            {
+              "text": "다음 여정을 준비한다"
+            }
+          ],
+          "when": true,
+          "target": "next_quest_boundary",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험과 현재 상태를 유지해 다음 장면에 전달한다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [
+          "next_task"
+        ],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    },
+    {
+      "id": "next_quest_boundary",
+      "title": [
+        {
+          "text": "동쪽으로 이어지는 이야기"
+        }
+      ],
+      "kind": "boundary",
+      "entry_when": {
+        "state": "quest.lore_stage",
+        "op": "eq",
+        "value": 6
+      },
+      "provenance": {
+        "origin": "authored",
+        "source_refs": [],
+        "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+      },
+      "blocks": [],
+      "choices": [],
+      "handoff": {
+        "quest_id": "lastditch_pyramid",
+        "entry_node": null,
+        "carry_states": [
+          "knowledge.missing_squad",
+          "companions.optional_recruits",
+          "event.skeleton_offer_seen",
+          "quest.lore_stage",
+          "quest.menace_reward_claimed"
+        ]
+      },
+      "editorial": {
+        "status": "draft",
+        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "source_refs": [],
+        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+      }
+    }
+  ],
+  "coverage": {
+    "status": "partial",
+    "required_source_refs": [
+      "assignment",
+      "reminder",
+      "skeleton_exit",
+      "menace_entry",
+      "center",
+      "report",
+      "next_task"
+    ],
+    "deferred_source_refs": [
+      {
+        "ref": "armory_pending",
+        "reason": "일회성 기본 장비 지급; 미정 직업/개별 장비 상태 확인 후 집필"
+      },
+      {
+        "ref": "joe_pending",
+        "reason": "수감자 영입 요청; 실제 접근 시점 검토 후 별도 삽입"
+      },
+      {
+        "ref": "guard_pending",
+        "reason": "해당 영입 비트와 슬롯에 따른 수감소 충돌/이탈; 기본 경로에 섞지 않음"
+      },
+      {
+        "ref": "treasure_pending",
+        "reason": "탐사 중 선택 금·방패 발견; 선택 경로 분리 후 집필"
+      }
+    ],
+    "literal_dispositions": [
+      {
+        "literal_id": "LOREENT.PAS:literal:1122",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8655",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8714",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8768",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8908",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:8966",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9021",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9323",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9581",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9657",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9718",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:9774",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:10062",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:10752",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:10804",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:10913",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11230",
+        "handling": "verbatim",
+        "block_ids": [
+          "exit_call_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11609",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11667",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11722",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11781",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11842",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11899",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:11953",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12008",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12069",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12125",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12158",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12171",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12184",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12197",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12210",
+        "handling": "verbatim",
+        "block_ids": [
+          "skeleton_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12240",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12269",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "accept_skeleton"
+        ],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:12307",
+        "handling": "verbatim",
+        "block_ids": [],
+        "choice_ids": [
+          "decline_skeleton"
+        ],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:34455",
+        "handling": "verbatim",
+        "block_ids": [
+          "center_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:34507",
+        "handling": "verbatim",
+        "block_ids": [
+          "center_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:34554",
+        "handling": "verbatim",
+        "block_ids": [
+          "center_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:35886",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:35966",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORESPEC.PAS:literal:36451",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7178",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7228",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "미작성 선택 경로의 출력. 삭제하지 않고 후속 집필로 보류한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7276",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7298",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "원작 영입 수락/거절 선택 문구. 코드 제어 문자열로 제외하지 않고 부수 경로 집필을 기다린다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7335",
+        "handling": "pending",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "원작 영입 수락/거절 선택 문구. 코드 제어 문자열로 제외하지 않고 부수 경로 집필을 기다린다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:7536",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:12962",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13018",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13067",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13121",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13171",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13219",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13270",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13319",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13368",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13403",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13457",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13506",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13555",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13603",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13651",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13692",
+        "handling": "verbatim",
+        "block_ids": [
+          "request_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13790",
+        "handling": "verbatim",
+        "block_ids": [
+          "reminder_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13807",
+        "handling": "verbatim",
+        "block_ids": [
+          "reminder_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13816",
+        "handling": "verbatim",
+        "block_ids": [
+          "reminder_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13915",
+        "handling": "verbatim",
+        "block_ids": [
+          "report_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:13956",
+        "handling": "verbatim",
+        "block_ids": [
+          "reward_counter_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14024",
+        "handling": "non_story",
+        "block_ids": [],
+        "choice_ids": [],
+        "reason": "코드용 인덱스·초기 이름·메뉴 빈 칸·장면 선택 제어 문자열. 대사와 구분한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14212",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14261",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14315",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14365",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14385",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14397",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14431",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14444",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14456",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14493",
+        "handling": "verbatim",
+        "block_ids": [
+          "next_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      },
+      {
+        "literal_id": "LORETALK.PAS:literal:14611",
+        "handling": "verbatim",
+        "block_ids": [
+          "farewell_quote"
+        ],
+        "choice_ids": [],
+        "reason": "원문 출력/선택 조각을 보존하며 이름 표시만 참조한다."
+      }
+    ],
+    "notes": "도입 설명은 앞 원고에서 이미 보존. 첫 의뢰·재안내·첫 출구 동행 요청·중심부 확인·성공 보상·다음 안내의 출력 조각을 보존한다. 선택 부수 경로는 보류하며 퀘스트 전체 전문 완료를 주장하지 않는다."
+  },
+  "open_questions": [
+    "추가: 제한적 3인칭 심리·길의 감각·몸짓·새 답변·합류 뒤 상호작용은 미승인 창작이다. 원작 고정 성향/과거/외모로 승격하지 않는다.",
+    "무기고의 개인별 지급은 직업 및 기존 장비 상태를 정한 뒤 별도 경로로 집필한다. 이번 경로는 방문하지 않았다.",
+    "수감소 방문·영입 요청·병사 충돌·해당 슬롯의 이탈은 접근 조건을 검토한 뒤 별도 경로로 집필한다.",
+    "동굴의 선택 금·방패 발견과 무작위 전투는 아직 집필하지 않았다. 중심부에 고정 보스를 추가하지 않았다.",
+    "새 동행은 원작의 6번 슬롯을 사용하는 기본 경로다. 미작성 영입 인물과의 슬롯 교체를 허용했다고 주장하지 않는다.",
+    "다음 퀘스트 원고와 인계 entry_node는 후속 집필에서 연결한다. 원문 흐름 전체가 완료된 원고가 아니다."
+  ]
+}

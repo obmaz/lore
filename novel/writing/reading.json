@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "status": "draft",
+  "purpose": "review_only_not_game_runtime",
+  "title": [{"ref": {"catalog": "terms", "id": "lore"}}, {"text": " · 첫 걸음"}],
+  "routes": {
+    "first-journey": {
+      "note": "성주 직행, 첫 출구의 동행 수락. 원작 선택의 예시 경로이며 정사로 확정하지 않는다.",
+      "parts": [
+        {"file": "prologue.json", "route": ["enter_courtyard", "visit_lord", "hear_lord_intro", "hear_lord_briefing"]},
+        {"file": "lore_menace.json", "route": ["receive_assignment", "leave_castle", "accept_skeleton", "set_out", "enter_menace", "walk_deeper", "confirm_center", "return_to_lore", "report_success", "acknowledge_reward", "hear_next_task", "leave_audience"]}
+      ]
+    },
+    "first-journey-declined": {
+      "note": "성주 직행, 동행 거절. 거절 뒤 합류 문단/후속 지식을 섞지 않는다.",
+      "parts": [
+        {"file": "prologue.json", "route": ["enter_courtyard", "visit_lord", "hear_lord_intro", "hear_lord_briefing"]},
+        {"file": "lore_menace.json", "route": ["receive_assignment", "leave_castle", "decline_skeleton", "set_out", "enter_menace", "walk_deeper", "confirm_center", "return_to_lore", "report_success", "acknowledge_reward", "hear_next_task", "leave_audience"]}
+      ]
+    },
+    "first-journey-tavern": {
+      "note": "주점 증언을 들은 뒤 동행 수락. 앞 원고의 기억이 의뢰·이동·귀환에 이어진다.",
+      "parts": [
+        {"file": "prologue.json", "route": ["enter_courtyard", "visit_tavern", "remember_veteran", "visit_lord", "hear_lord_intro", "hear_lord_briefing"]},
+        {"file": "lore_menace.json", "route": ["receive_assignment", "leave_castle", "accept_skeleton", "set_out", "enter_menace", "walk_deeper", "confirm_center", "return_to_lore", "report_success", "acknowledge_reward", "hear_next_task", "leave_audience"]}
+      ]
+    },
+    "first-journey-tavern-declined": {
+      "note": "주점 증언을 들은 뒤 동행 거절. 증언을 들은 경험은 같지만 현재 동료는 다르다.",
+      "parts": [
+        {"file": "prologue.json", "route": ["enter_courtyard", "visit_tavern", "remember_veteran", "visit_lord", "hear_lord_intro", "hear_lord_briefing"]},
+        {"file": "lore_menace.json", "route": ["receive_assignment", "leave_castle", "decline_skeleton", "set_out", "enter_menace", "walk_deeper", "confirm_center", "return_to_lore", "report_success", "acknowledge_reward", "hear_next_task", "leave_audience"]}
+      ]
+    }
+  }
+}

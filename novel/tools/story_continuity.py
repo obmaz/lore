@@ -135,6 +135,7 @@ def validate(story, continuity, canon, profiles=None):
     events = {event["id"]: event for event in continuity["event_templates"]}
     check(len(events) == len(continuity["event_templates"]), "duplicate event template")
     for event in events.values():
+        matches(event.get('when',True),{name:definition['initial'] for name,definition in story['state_definitions'].items()})
         check(event["trigger_choice"] in choices, "unknown event trigger")
         check(set(event["participants"]) <= set(characters), "unknown event participant")
         check(set(event["requires_events"]) <= set(events) and event["id"] not in event["requires_events"], "unknown or self-dependent event")
@@ -168,6 +169,20 @@ def context(story, continuity, canon, route, profiles=None):
     if profiles is None:
         profiles = load_characters()
     stale = validate(story, continuity, canon, profiles)
+    return _context(story,continuity,canon,route,profiles,stale)
+
+
+def context_for_routes(story,continuity,canon,profiles=None):
+    """Validate and freeze one document snapshot, then replay its route prefixes."""
+    profiles = profiles if profiles is not None else load_characters()
+    story,continuity,canon,profiles = copy.deepcopy((story,continuity,canon,profiles))
+    stale = validate(story,continuity,canon,profiles)
+    hashes = input_hashes(story,continuity,canon,profiles)
+    references = load_references()
+    return lambda route:_context(story,continuity,canon,route,profiles,stale,hashes,references)
+
+
+def _context(story,continuity,canon,route,profiles,stale,hashes=None,reference_snapshot=None):
     nodes = {node["id"]: node for node in story["nodes"]}
     facts = {fact["id"]: fact for fact in canon["facts"]}
     state = {key: copy.deepcopy(value["initial"]) for key, value in story["state_definitions"].items()}
@@ -190,6 +205,7 @@ def context(story, continuity, canon, route, profiles=None):
         history.append({"node_id": key, "choice_id": choice_id, "visible_block_ids": [b["id"] for b in visible], "before": before, "after": copy.deepcopy(state)})
         for event in continuity["event_templates"]:
             if event["trigger_choice"] != choice_id: continue
+            if not matches(event.get('when',True),state): continue
             check(set(event["requires_events"]) <= {e["id"] for e in ledger}, f"event happened before its prerequisite: {event['id']}")
             check(event["id"] not in {e["id"] for e in ledger}, f"event repeated without explicit repeat model: {event['id']}")
             ledger.append(copy.deepcopy(event))
@@ -218,7 +234,7 @@ def context(story, continuity, canon, route, profiles=None):
                    "state": {k: copy.deepcopy(state[k]) for k in node["handoff"]["carry_states"]},
                    "knowledge": visible_knowledge,
                    "events": copy.deepcopy(ledger), "provisional": not approved}
-    references = load_references()
+    references = reference_snapshot if reference_snapshot is not None else load_references()
     resources = {category: {} for category in references}
     for member in cast:
         for category, resource_ids in views[member]["resource_refs"].items():
@@ -228,7 +244,7 @@ def context(story, continuity, canon, route, profiles=None):
         for item in category.values():
             item["character_ids"] = [i for i in item["character_ids"] if i in cast]
     packet = {"mode": "approved_path" if approved else "draft_preview", "node_id": key,
-            "input_fingerprints": input_hashes(story, continuity, canon, profiles),
+            "input_fingerprints": hashes if hashes is not None else input_hashes(story, continuity, canon, profiles),
             "needs_review": stale, "editorial_issues": continuity["review"]["issues"],
             "state": state, "history": history, "handoff_packet": handoff,
             "committed_events": ledger if approved else [], "proposed_events": [] if approved else ledger,

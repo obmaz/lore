@@ -1,5 +1,5 @@
 {
-  "version": 2, "story_id": "prologue_interactive_v1", "story_revision": 2, "canon_revision": 3, "character_registry_revision": 8,
+  "version": 2, "story_id": "prologue_interactive_v1", "story_revision": 2, "canon_revision": 4, "character_registry_revision": 8,
   "contracts": {
     "arrival": {"before": true, "after": true, "allowed_state_changes": [],
       "must_include_block_ids": ["arrival_narration"], "must_not_assert": ["squad_whereabouts", "lord_moral_judgment"],
