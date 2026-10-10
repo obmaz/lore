@@ -22,3 +22,10 @@ GitHub Pages 배포 대상은 현재 모바일 리메이크인 `remake/docs`입�
 원본을 수정할 때는 `original/`, 리메이크를 수정할 때는 `remake/`에서 작업하고,
 소설 자료는 `novel/`에서 별도로 작업합니다. 세 루트는 서로의 코드·자료를
 읽거나 실행하지 않습니다.
+
+Pages는 배포 단계에서 두 결과물을 하나의 사이트에 합칩니다.
+
+- 원본: https://obmaz.github.io/lore/original/
+- 리메이크: https://obmaz.github.io/lore/remake/
+
+저장소의 GitHub Pages 설정은 `GitHub Actions`를 사용해야 합니다.
