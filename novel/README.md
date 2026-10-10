@@ -23,8 +23,10 @@ novel/
 
 ## 먼저 읽을 자료
 
-- [1-1 · 돌아오겠다는 말](writing/previews/menace-01.html): 이번에 약 4천 자로 다시 쓴 첫 소편.
-  한 번에 한 소편씩 집필하고 문체를 검토한다. [여섯 소편의 작업 목록](writing/episodes/lore_menace.json).
+- [첫 퀘스트 이어 읽기](writing/previews/first-journey.html): 도입부부터 1-1~1-6까지 이어지는 기본 경로 초고.
+  여섯 소편은 모두 긴 본문이며, 각 소편을 따로 집필·검증·푸시했다.
+  [동행 거절 경로](writing/previews/first-journey-declined.html)와
+  [소편별 읽기 목록](writing/README.md#바로-읽기), [여섯 소편의 작업 목록](writing/episodes/lore_menace.json).
 - [writing/README.md](writing/README.md): 전편 보드·도입부 시범 원고·공용 템플릿과 이름 참조.
 - [exports/README.md](exports/README.md): JSON 대신 참고용 HTML/PDF로 읽는 방법. 작가용 전체 설정과 공개 범위 미리보기를 분리한다.
 - [materials/quests.json](materials/quests.json): 18개 집필 단위와 공통 부록의 목록·연결.
@@ -46,7 +48,9 @@ novel/
 그 이름의 외부 파일을 열지 않는다. 원문 코드도 JSON 안의 보존 자료이고 실행하지 않는다.
 기존 `authoring/drafts/`의 프롤로그는 구조 예시다. 새 `writing/`에는 전편 보드와
 첫 의뢰 직전까지의 시범 본문이 있고, 보류 대사·접근 조건과 새 창작을 표시한다.
-이어서 첫 탐사·귀환 보고까지의 1장 초고를 작성했다. 도입부 선택과 첫 출구의 동행
+이어서 첫 탐사·귀환 보고·다음 지역 의뢰와 작별까지의 1장 기본 경로 초고를 작성했다.
+무기고·수감소·선택 발견·무작위 전투는 보류한 별도 경로이며, 모든 부수 경로를
+완성했다는 뜻은 아니다. 도입부 선택과 첫 출구의 동행
 수락/거절을 조합한 네 가지 읽기본은 `writing/README.md`에서 볼 수 있다.
 
 ## 독립 실행
