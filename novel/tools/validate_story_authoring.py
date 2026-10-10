@@ -18,8 +18,15 @@ def validate(document, catalog=None):
         catalog = load_materials()[0]
     from characters import load_characters
     profiles = load_characters(catalog=catalog)
+    from reference import load_references
+    from text_refs import indexes, validate_text, archival, source_ids, reject_fixed_names
+    text_data = indexes(profiles,load_references(catalog),catalog)
     units = {unit["file"]: unit for unit in catalog["source_units"]}
     literals = {literal["id"]: literal for unit in units.values() for literal in unit["literals"]}
+    for field in ('title','summary'):
+        validate_text(document['meta'][field],text_data,literals)
+        if document['meta'].get('reference_text'):
+            reject_fixed_names(document['meta'][field],text_data)
     scenes = {scene["id"] for unit in units.values() for scene in unit["scenes"]}
     refs = document["source_refs"]
     states = document["state_definitions"]
@@ -95,6 +102,9 @@ def validate(document, catalog=None):
                         for ref in source_refs), f"literal outside cited evidence: {literal_id}")
 
     for node in nodes.values():
+        validate_text(node['title'],text_data,literals)
+        if document['meta'].get('reference_text'):
+            reject_fixed_names(node['title'],text_data)
         provenance(node["provenance"])
         predicate(node["entry_when"])
         check_refs(node["editorial"]["source_refs"])
@@ -111,10 +121,20 @@ def validate(document, catalog=None):
             block_ids.add(block["id"])
             provenance(block["provenance"])
             predicate(block["when"])
+            validate_text(block['text'],text_data,literals,require_bindings=document['meta'].get('reference_text',False))
+            if document['meta'].get('reference_text') and block['kind']!='source_quote':
+                reject_fixed_names(block['text'],text_data)
+            for literal_id in source_ids(block['text']):
+                if literal_id in literals:
+                    check_literal(literal_id,literals[literal_id]['text'],block['provenance']['source_refs'])
             if block["provenance"]["origin"] == "source_exact":
-                require(block["kind"] == "source_quote" and len(block["literal_ids"]) == 1,
+                rich = not isinstance(block['text'],str)
+                require(block["kind"] == "source_quote" and bool(block["literal_ids"]) and (rich or len(block['literal_ids'])==1),
                         "exact quote must reference one occurrence; preserve fragments separately")
-                if len(block["literal_ids"]) == 1:
+                if rich:
+                    require(source_ids(block['text'])==block['literal_ids'],'source text and occurrence IDs differ')
+                    require(archival(block['text'],literals)==''.join(literals[i]['text'] for i in block['literal_ids'] if i in literals),'source quote changed')
+                elif len(block["literal_ids"]) == 1:
                     check_literal(block["literal_ids"][0], block["text"], block["provenance"]["source_refs"])
             else:
                 require(not block["literal_ids"], "adapted/authored prose must not masquerade as exact literals")
@@ -125,12 +145,16 @@ def validate(document, catalog=None):
             require(choice["target"] in nodes, f"unknown target: {choice['target']}")
             provenance(choice["provenance"])
             predicate(choice["when"])
+            for field in ('label','consequence'):
+                validate_text(choice[field],text_data,literals,require_bindings=document['meta'].get('reference_text',False))
+                if document['meta'].get('reference_text') and choice['provenance']['origin']!='source_exact':
+                    reject_fixed_names(choice[field],text_data)
             used_refs.update(choice["provenance"]["source_refs"])
             if choice["provenance"]["origin"] == "source_exact":
                 require("label_literal_id" in choice, "exact choice label needs literal id")
             if "label_literal_id" in choice:
                 require(choice["provenance"]["origin"] == "source_exact", "literal label must be source_exact")
-                check_literal(choice["label_literal_id"], choice["label"], choice["provenance"]["source_refs"])
+                check_literal(choice["label_literal_id"], archival(choice["label"],literals), choice["provenance"]["source_refs"])
             for effect in choice["effects"]:
                 provenance(effect["provenance"])
                 state_value(effect["state"], effect["op"], effect["value"])
@@ -205,8 +229,13 @@ def main():
     args = parser.parse_args()
     paths = args.paths or sorted(path for path in (ROOT / "authoring/drafts").glob("*.json")
                                 if not path.name.endswith(".continuity.json"))
+    if not args.paths:
+        paths += sorted(path for path in (ROOT/'writing/quests').glob('*.json') if not path.name.endswith('.continuity.json'))
     for path in paths:
-        print(f"{path}: {json.dumps(validate(json.loads(path.read_text())), ensure_ascii=False)}")
+        document = json.loads(path.read_text())
+        if path.resolve().is_relative_to(ROOT/'writing') and document['meta'].get('reference_text') is not True:
+            raise ValueError('new writing drafts must enable reference_text')
+        print(f"{path}: {json.dumps(validate(document), ensure_ascii=False)}")
 
 
 if __name__ == "__main__":

@@ -1,9 +1,9 @@
 {
   "version": 3,
-  "revision": 7,
+  "revision": 8,
   "characters": {
     "protagonist": {
-      "revision": 4,
+      "revision": 5,
       "kind": "protagonist",
       "canonical_name": {
         "value": null,
@@ -17,7 +17,7 @@
           "knowledge_policy": "author_reference_not_character_knowledge"
         }
       },
-      "display_name": "이름 미정 주인공",
+      "display_name": "홍길동",
       "aliases": [],
       "source_facts": [
         {
@@ -78,7 +78,7 @@
           "나이는 원작에서 확인되지 않았다. 레벨이나 사망 수치를 나이로 사용하지 않는다.",
           "카드의 대사 근거에는 주변 인물/서술자의 말도 포함된다. 자기 대사로 바꾸거나 경로 지식에 자동 추가하지 않는다."
         ],
-        "notes": "이름·성별·직업과 최종 성향은 미정이다."
+        "notes": "집필 이름은 임시 지정이다. 성별·직업·최종 성향은 미정이다."
       },
       "relationships": [
         {
@@ -159,9 +159,22 @@
       },
       "display_name_metadata": {
         "addition": true,
-        "kind": "interpretation",
-        "note": "편집용 역할/구별 표기. 원작의 고유 이름 또는 새 인물 설정으로 쓰지 않는다.",
+        "kind": "new_setting",
+        "note": "사용자가 지정한 임시 주인공 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.",
         "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "writing_name": {
+        "field": "writing_name",
+        "value": "홍길동",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "new_setting",
+          "note": "사용자가 지정한 임시 주인공 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
       },
       "biography": {
         "age": {
@@ -330,7 +343,7 @@
         "master_visibility": "author_only",
         "default": "sealed",
         "public_id": "protagonist",
-        "public_display_name": "이름 미정 주인공",
+        "public_display_name": "홍길동",
         "after_events": [
           "castle_arrival"
         ],

@@ -42,6 +42,7 @@
         "display_name_metadata": {"$ref": "#/$defs/metadata"},
         "disclosure": {"$ref": "#/$defs/disclosure"},
         "korean_name": {"$ref": "#/$defs/claim"},
+        "writing_name": {"$ref": "#/$defs/claim"},
         "biography": {"type": "object", "additionalProperties": false,
           "required": ["age", "gender", "species", "occupation", "appearance", "alignment"],
           "properties": {"age": {"$ref": "#/$defs/claim"}, "gender": {"$ref": "#/$defs/claim"},

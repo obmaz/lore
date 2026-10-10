@@ -8,10 +8,14 @@
 
 각 인물은 이름 대신 안정된 ID로 참조한다. 예: `lord_ahn`, `mad_joe`, `initial_merlin`.
 본문의 `speaker`, 등장 인물 `cast`, 사건 참여자·관계 대상도 같은 ID를 사용한다.
+새 `writing/` 원고의 본문 속 이름도 구조화된 `ref`를 쓴다. 임시 주인공 집필 이름은
+`reference/names.json`에서 변경하고 생성 도구로 반영한다. 원작 주인공 고유 이름과
+한국어 음역은 미상을 유지하며, 이름만으로 성별·나이·직업을 정하지 않는다.
 
 | 필드 | 의미 |
 | --- | --- |
 | `canonical_name` | 원어 이름. 원문 발생 ID 또는 원본 적 레코드로 확인 |
+| `writing_name` | 새 집필 이름. 선택적인 창작 claim이며 원어 이름을 덮어쓰지 않음 |
 | `korean_name` | 의미 번역이 아닌 별도 한국어 음역. 네크로맨서·스켈레톤 등 |
 | `display_name` | 편집용 이름·역할 표기. `display_name_metadata`로 추가 표기임을 구분 |
 | `aliases` | 기존 별칭. 원어 이름의 변경을 뜻하지 않음 |

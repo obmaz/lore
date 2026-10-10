@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lore.local/novel/reference/names.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "characters", "equipment", "abilities", "bestiary"],
+  "properties": {
+    "version": {"const": 1},
+    "characters": {"$ref": "#/$defs/names"},
+    "equipment": {"$ref": "#/$defs/names"},
+    "abilities": {"$ref": "#/$defs/names"},
+    "bestiary": {"$ref": "#/$defs/names"}
+  },
+  "$defs": {
+    "names": {"type": "object", "additionalProperties": {
+      "allOf": [
+        {"$ref": "metadata.schema.json#/$defs/claim"},
+        {"properties": {
+          "field": {"const": "writing_name"},
+          "value": {"type": "string", "minLength": 1},
+          "origin": {"const": "authored"},
+          "status": {"const": "proposed"},
+          "metadata": {"properties": {"addition": {"const": true}, "kind": {"const": "new_setting"}}}
+        }}
+      ]
+    }}
+  }
+}

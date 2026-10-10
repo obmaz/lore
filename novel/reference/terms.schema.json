@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://lore.local/novel/reference/terms.schema.json",
+  "type": "object", "additionalProperties": false, "required": ["version", "items"],
+  "properties": {"version": {"const": 1}, "items": {"type": "object", "additionalProperties": {
+    "type": "object", "additionalProperties": false, "required": ["original_name", "korean_name"],
+    "properties": {"original_name": {"$ref": "metadata.schema.json#/$defs/claim"},
+      "korean_name": {"$ref": "metadata.schema.json#/$defs/claim"}}
+  }}}
+}

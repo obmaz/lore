@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://lore.local/novel/writing/storyboard.schema.json",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "kind", "visibility", "status", "title", "arcs", "units", "route_index", "appendices", "open_questions"],
+  "properties": {"version": {"const": 1}, "kind": {"enum": ["series", "template"]},
+    "visibility": {"const": "author_only"}, "status": {"const": "outline"},
+    "title": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+    "arcs": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "title", "role", "origin", "metadata"], "properties": {
+        "id": {"type": "string"}, "title": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "role": {"$ref": "../authoring/story.schema.json#/$defs/richText"}, "origin": {"const": "authored"},
+        "metadata": {"$ref": "../reference/metadata.schema.json#/$defs/metadata"}}}},
+    "units": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/unit"}},
+    "route_index": {"const": "materials/quests.json#/route_edges"},
+    "appendices": {"type": "array", "items": {"type": "string"}},
+    "open_questions": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "strings": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "unit": {"type": "object", "additionalProperties": false,
+      "required": ["id", "quest_id", "arc", "status", "title", "opening", "goal", "conflict", "turn", "ending", "emotional_arc", "bridge", "source_anchors", "cast_candidates", "branches", "disclosure_candidates", "carry_threads", "origin", "metadata", "authored_fields"],
+      "properties": {
+        "id": {"type": "string"}, "quest_id": {"type": "string"}, "arc": {"type": "string"}, "status": {"const": "outline"},
+        "title": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "opening": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "goal": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "conflict": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "turn": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "ending": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "emotional_arc": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "bridge": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+        "source_anchors": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "cast_candidates": {"$ref": "#/$defs/strings"}, "disclosure_candidates": {"$ref": "#/$defs/strings"},
+        "carry_threads": {"$ref": "#/$defs/strings"},
+        "branches": {"type": "array", "items": {"type": "string"}},
+        "origin": {"const": "inferred"}, "metadata": {"$ref": "../reference/metadata.schema.json#/$defs/metadata"},
+        "authored_fields": {"type": "array", "uniqueItems": true, "items": {"enum": ["emotional_arc", "bridge"]}}
+      }}
+  }
+}

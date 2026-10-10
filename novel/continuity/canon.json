@@ -1,5 +1,5 @@
 {
-  "version": 2, "revision": 2,
+  "version": 2, "revision": 3,
   "character_registry": "characters/registry.json",
   "facts": [
     {"id": "squad_whereabouts", "revision": 1,
@@ -18,6 +18,10 @@
       "evidence": [], "initial_knowers": []},
     {"id": "joe_join_option", "revision": 1,
       "statement": "Mad Joe의 합류 요청에는 수락과 거절 선택지가 있다.", "kind": "world_fact", "status": "confirmed", "attributed_to": null,
-      "evidence": [{"file": "LORETALK.PAS", "line_start": 191, "line_end": 219}], "initial_knowers": ["mad_joe"]}
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 191, "line_end": 219}], "initial_knowers": ["mad_joe"]},
+    {"id": "lord_briefing_account", "revision": 1,
+      "statement": "성주는 대륙의 재앙, 특공대의 소식 부재와 다른 차원에서 온 적에 관해 설명한다. 증언의 내용 전체가 객관적 진상으로 확정되었다는 뜻은 아니다.",
+      "kind": "testimony", "status": "confirmed", "attributed_to": "lord_ahn",
+      "evidence": [{"file": "LORETALK.PAS", "line_start": 305, "line_end": 338}], "initial_knowers": []}
   ]
 }

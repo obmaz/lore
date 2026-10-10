@@ -14,6 +14,7 @@ from materials import load_materials, validate_evidence
 from characters import CHARACTERS, load_characters, validate_registry
 from reference import load_references
 from disclosure import project_character, public_ids, remap_ids, validate_reveals
+from text_refs import load_terms
 
 CONTINUITY_SCHEMA = ROOT / "continuity/continuity.schema.json"
 CANON = ROOT / "continuity/canon.json"
@@ -35,7 +36,7 @@ def input_hashes(story, continuity, canon, profiles=None):
     return {"story": fingerprint(story), "canon": fingerprint(canon),
             "continuity": fingerprint({k: v for k, v in continuity.items() if k != "review"}),
             "characters": fingerprint(profiles), "materials": fingerprint(load_materials()[1]),
-            "references": fingerprint(load_references())}
+            "references": fingerprint({'catalogs':load_references(),'terms':load_terms()})}
 
 
 def check(value, message):

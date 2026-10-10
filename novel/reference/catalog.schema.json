@@ -12,6 +12,7 @@
         "revision": {"type": "integer", "minimum": 1}, "category": {"type": "string"},
         "original_name": {"$ref": "metadata.schema.json#/$defs/claim"},
         "korean_name": {"$ref": "metadata.schema.json#/$defs/claim"},
+        "writing_name": {"$ref": "metadata.schema.json#/$defs/claim"},
         "claims": {"type": "array", "items": {"$ref": "metadata.schema.json#/$defs/claim"}},
         "character_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
       }}}

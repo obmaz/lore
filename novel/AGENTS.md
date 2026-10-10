@@ -5,6 +5,10 @@
   요청하지 않으면 `original/`, `remake/`, 게임 빌드·배포·환경설정 파일은 수정하지 않는다.
 - 집필 자료 변경은 이 저장소의 `origin/main`에 푸시한다. 커밋에는 해당 작업의
   `novel/` 변경만 포함하고, 다른 작업의 변경이나 보류한 stash를 함께 반영하지 않는다.
+- 새 스토리보드·본문은 `writing/` 아래에서 공용 템플릿을 이용해 작성한다.
+  `authoring/drafts/`의 기존 예시는 보존한다. 이름·장비·마법·지명은 본문에 복사하지
+  않고 `ref`의 분류와 안정된 ID로 연결한다. 집필 이름은 `reference/names.json`에서
+  변경하고 생성된 카드/읽기본을 갱신한다. 보존 원문은 치환하지 않는다.
 - `novel/`는 독립 집필 패키지다. 검증·집필 도구는 내부 JSON만 읽는다. 원작 데이터의
   신규 수입은 사용자가 별도로 요청할 때만 수행하며, 원본 게임이나 다른 프로젝트의
   도구에 대한 실행 의존성을 다시 만들지 않는다.
@@ -41,5 +45,6 @@
 - 자동 생성 자료는 수동 편집을 묵시적으로 덮어쓰지 않는다. 분석 근거·집필 해석은
   `reference/analysis.json`에서 관리하고, 생성 도구는 기준 해시가 다르면 멈춘다.
 - 변경 후 `python3 tools/characters.py`, `python3 tools/reference.py`,
-  `python3 tools/validate_story_authoring.py`와 `PYTHONPATH=tools python3 -m unittest discover -s tests`
+  `python3 tools/validate_story_authoring.py`, `python3 tools/writing.py validate`와
+  `PYTHONPATH=tools python3 -m unittest discover -s tests`
   를 `novel/` 안에서 실행한다. 게임 빌드는 필요 없다.

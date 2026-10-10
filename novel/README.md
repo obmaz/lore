@@ -13,7 +13,8 @@ novel/
 ├── materials/        원문·선택지·조건·진행 자료의 고정 JSON 스냅샷
 ├── characters/       인물별 이름·원작 정보·성향·말투·관계
 ├── reference/        무기·방어구·마법·적 사전과 수동 분석 입력
-├── authoring/        집필 스키마와 퀘스트별 원고
+├── authoring/        공용 집필 스키마와 보존한 구조 예시
+├── writing/          새 스토리보드·공용 템플릿·퀘스트 본문·읽기본
 ├── continuity/      공유 설정과 연속성 스키마
 ├── exports/         조회용 오프라인 HTML·작가용 PDF 스냅샷
 ├── tools/           원문·인물·집필·경로 검증 도구
@@ -22,6 +23,7 @@ novel/
 
 ## 먼저 읽을 자료
 
+- [writing/README.md](writing/README.md): 전편 보드·도입부 시범 원고·공용 템플릿과 이름 참조.
 - [exports/README.md](exports/README.md): JSON 대신 참고용 HTML/PDF로 읽는 방법. 작가용 전체 설정과 공개 범위 미리보기를 분리한다.
 - [materials/quests.json](materials/quests.json): 18개 집필 단위와 공통 부록의 목록·연결.
 - [materials/quests/lore_menace.json](materials/quests/lore_menace.json): 첫 의뢰의 실제 원문·조건.
@@ -40,7 +42,8 @@ novel/
 
 `LORETALK.PAS` 같은 이름과 줄 번호는 JSON 안에 보관된 원문을 가리키는 출처 표식이다.
 그 이름의 외부 파일을 열지 않는다. 원문 코드도 JSON 안의 보존 자료이고 실행하지 않는다.
-현재 프롤로그 집필 원고는 구조 초안이며 미작성 대사와 접근 조건을 표시해 두었다.
+기존 `authoring/drafts/`의 프롤로그는 구조 예시다. 새 `writing/`에는 전편 보드와
+첫 의뢰 직전까지의 시범 본문이 있고, 보류 대사·접근 조건과 새 창작을 표시한다.
 
 ## 독립 실행
 
@@ -52,6 +55,8 @@ python3 tools/materials.py
 python3 tools/characters.py
 python3 tools/reference.py
 python3 tools/validate_story_authoring.py
+python3 tools/writing.py validate
+python3 tools/writing.py export --check
 python3 tools/story_continuity.py --route enter_courtyard visit_prison accept_joe visit_lord
 python3 tools/export_reference.py --check
 PYTHONPATH=tools python3 -m unittest discover -s tests

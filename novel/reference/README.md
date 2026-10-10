@@ -10,6 +10,10 @@
 - [bestiary.json](bestiary.json): 적 템플릿 75종. 원어 이름·한국어 음역·원작 전투 수치와
   관련 인물 ID를 포함한다. 원작의 Gagoyle/Wivern 등 철자도 임의로 교정하지 않는다.
 - [analysis.json](analysis.json): 검토한 음역·원작 역할 요약·성격 해석의 편집 입력.
+- [names.json](names.json): 집필 표시명의 공용 편집 입력. 인물·장비·마법·적의 새 이름은
+  `authored/new_setting/proposed`로 구분한다. 원작 이름은 덮어쓰지 않는다.
+- [terms.json](terms.json): 지명·열쇠 23개. 원문 이름의 내부 근거와 별도 한국어 음역.
+  원어 이름을 지어내지 않으며 집필 본문의 `terms` 참조로 사용한다.
 - [metadata.schema.json](metadata.schema.json): 항목별 출처·추가·미상 메타데이터 규약.
 
 | `origin` | `metadata.kind` | 의미 |
@@ -29,6 +33,9 @@
 ## 수정과 재생성
 
 `analysis.json`을 편집한 뒤 `python3 tools/build_reference.py`를 실행한다.
+집필 이름은 `names.json`을 편집하고 같은 생성 명령을 실행한다.
+`writing_name`은 원작 이름·한국어 음역과 별개인 선택 필드다. 본문은 ID만 참조한다.
+변경 후 `writing.py export`로 읽기본을 갱신한다.
 인물 간 관계와 스포일러 공개 정책은
 [relationships.analysis.json](../characters/relationships.analysis.json)에서 편집한다.
 출력 4개 파일의 기준 해시는 `generated_manifest.json`에 있다. 출력 파일을 직접

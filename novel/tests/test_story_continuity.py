@@ -78,7 +78,7 @@ class ContinuityTest(unittest.TestCase):
     def test_approval_pins_content(self):
         self.story["meta"]["status"] = "approved"
         review = self.continuity["review"]
-        review.update(status="approved", issues=[], approved_story_revision=2, approved_canon_revision=2)
+        review.update(status="approved", issues=[], approved_story_revision=2, approved_canon_revision=self.canon['revision'])
         for event in self.continuity["event_templates"]: event["approval"] = "approved"
         review["approved_input_hashes"] = input_hashes(self.story, self.continuity, self.canon)
         # Isolate the hash gate; the real outline must also pass source completeness.

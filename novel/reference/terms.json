@@ -1,0 +1,793 @@
+{
+  "version": 1,
+  "items": {
+    "lore": {
+      "original_name": {
+        "field": "original_name",
+        "value": "LORE",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 19,
+            "line_end": 19
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "로어",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "menace": {
+      "original_name": {
+        "field": "original_name",
+        "value": "MENACE",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 38,
+            "line_end": 38
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "메너스",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "lastditch": {
+      "original_name": {
+        "field": "original_name",
+        "value": "LASTDITCH",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 30,
+            "line_end": 30
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "라스트디치",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "pyramid": {
+      "original_name": {
+        "field": "original_name",
+        "value": "PYRAMID",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 159,
+            "line_end": 159
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "피라미드",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "gaia_terra": {
+      "original_name": {
+        "field": "original_name",
+        "value": "GAIA TERRA",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 61,
+            "line_end": 61
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "가이아 테라",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "evil_seal": {
+      "original_name": {
+        "field": "original_name",
+        "value": "EVIL SEAL",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 168,
+            "line_end": 168
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "이블 실",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "quake": {
+      "original_name": {
+        "field": "original_name",
+        "value": "QUAKE",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 68,
+            "line_end": 68
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "퀘이크",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "wivern": {
+      "original_name": {
+        "field": "original_name",
+        "value": "WIVERN",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 75,
+            "line_end": 75
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "위번",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "water_field": {
+      "original_name": {
+        "field": "original_name",
+        "value": "WATER FIELD",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 84,
+            "line_end": 84
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "워터 필드",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "notice": {
+      "original_name": {
+        "field": "original_name",
+        "value": "NOTICE",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREEND.PAS",
+            "line_start": 139,
+            "line_end": 139
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "노티스",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "lockup": {
+      "original_name": {
+        "field": "original_name",
+        "value": "LOCKUP",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREEND.PAS",
+            "line_start": 142,
+            "line_end": 142
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "로크업",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "swamp": {
+      "original_name": {
+        "field": "original_name",
+        "value": "SWAMP",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 108,
+            "line_end": 108
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "스왐프",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "evil_god": {
+      "original_name": {
+        "field": "original_name",
+        "value": "EVIL GOD",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 115,
+            "line_end": 115
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "이블 갓",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "muddy": {
+      "original_name": {
+        "field": "original_name",
+        "value": "MUDDY",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 122,
+            "line_end": 122
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "머디",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "swamp_keep": {
+      "original_name": {
+        "field": "original_name",
+        "value": "SWAMP KEEP",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 108,
+            "line_end": 108
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "스왐프 킵",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "lava_gate": {
+      "original_name": {
+        "field": "original_name",
+        "value": "라바 게이트",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 205,
+            "line_end": 205
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "라바 게이트",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 205,
+            "line_end": 205
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "imperium_minor": {
+      "original_name": {
+        "field": "original_name",
+        "value": "IMPERIUM MINOR",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 131,
+            "line_end": 131
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "임페리움 마이너",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "last_shelter": {
+      "original_name": {
+        "field": "original_name",
+        "value": "LAST SHELTER",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 274,
+            "line_end": 274
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "라스트 셸터",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "evil_concentration": {
+      "original_name": {
+        "field": "original_name",
+        "value": "EVIL CONCENTRATION",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 138,
+            "line_end": 138
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "이블 컨센트레이션",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "dungeon_of_evil": {
+      "original_name": {
+        "field": "original_name",
+        "value": "DUNGEON OF EVIL",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREEND.PAS",
+            "line_start": 146,
+            "line_end": 146
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "던전 오브 이블",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "another_lore": {
+      "original_name": {
+        "field": "original_name",
+        "value": "ANOTHER LORE",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 45,
+            "line_end": 45
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "어나더 로어",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "water_key": {
+      "original_name": {
+        "field": "original_name",
+        "value": "Water Key",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORETALK.PAS",
+            "line_start": 567,
+            "line_end": 567
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "워터 키",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "swamp_key": {
+      "original_name": {
+        "field": "original_name",
+        "value": "Swamp Key",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORETALK.PAS",
+            "line_start": 693,
+            "line_end": 693
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "원작 근거의 요약/값. 등장인물의 지식과 별개이다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "스왐프 키",
+        "origin": "authored",
+        "status": "confirmed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "집필용 한국어 음역을 새로 정했다. 원작 명칭은 original/canonical_name에 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "version": 2,
+  "story_id": "prologue_pilot_v1",
+  "story_revision": 1,
+  "canon_revision": 3,
+  "character_registry_revision": 8,
+  "contracts": {
+    "arrival": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        }
+      ]
+    },
+    "courtyard": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "guide_dialogue"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "castle_guide",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "castle_guide",
+          "revision": 3
+        }
+      ]
+    },
+    "tavern": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [
+        "knowledge.missing_squad"
+      ],
+      "must_include_block_ids": [
+        "veteran_dialogue"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "veteran",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "veteran",
+          "revision": 3
+        }
+      ]
+    },
+    "audience": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "lord_intro_dialogue"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "lord_ahn",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "lord_ahn",
+          "revision": 4
+        }
+      ]
+    },
+    "briefing": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [
+        "lord_history_dialogue"
+      ],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+      ],
+      "knowledge_required": [],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        },
+        {
+          "character_id": "lord_ahn",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        },
+        {
+          "character_id": "lord_ahn",
+          "revision": 4
+        }
+      ]
+    },
+    "first_quest_boundary": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [
+        "squad_whereabouts",
+        "lord_moral_judgment"
+      ],
+      "dependencies": [],
+      "continuity_notes": [
+        "인물 이름은 참조로 해석한다. 원작에 없는 심리·장면 연결은 제안이다."
+      ],
+      "knowledge_required": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "lord_briefing_account"
+        }
+      ],
+      "cast": [
+        {
+          "character_id": "protagonist",
+          "when": true
+        }
+      ],
+      "character_dependencies": [
+        {
+          "character_id": "protagonist",
+          "revision": 5
+        }
+      ]
+    }
+  },
+  "event_templates": [
+    {
+      "id": "entered_castle",
+      "trigger_choice": "enter_courtyard",
+      "description": "선택한 장면을 읽은 경험을 기록한다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "guide"
+      ],
+      "requires_events": [],
+      "participants": [
+        "protagonist"
+      ],
+      "knowledge_gained": [],
+      "reveals": [
+        "castle_arrival"
+      ],
+      "approval": "proposed"
+    },
+    {
+      "id": "heard_veteran",
+      "trigger_choice": "remember_veteran",
+      "description": "선택한 장면을 읽은 경험을 기록한다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "veteran"
+      ],
+      "requires_events": [
+        "entered_castle"
+      ],
+      "participants": [
+        "protagonist",
+        "veteran"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "veteran_story",
+          "method": "heard",
+          "informant_id": "veteran"
+        }
+      ],
+      "reveals": [],
+      "approval": "proposed"
+    },
+    {
+      "id": "heard_lord_intro",
+      "trigger_choice": "hear_lord_intro",
+      "description": "선택한 장면을 읽은 경험을 기록한다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lord_intro"
+      ],
+      "requires_events": [
+        "entered_castle"
+      ],
+      "participants": [
+        "protagonist",
+        "lord_ahn"
+      ],
+      "knowledge_gained": [],
+      "reveals": [],
+      "approval": "proposed"
+    },
+    {
+      "id": "heard_lord_briefing",
+      "trigger_choice": "hear_lord_briefing",
+      "description": "선택한 장면을 읽은 경험을 기록한다.",
+      "origin": "source_adaptation",
+      "source_refs": [
+        "lord_history"
+      ],
+      "requires_events": [
+        "heard_lord_intro"
+      ],
+      "participants": [
+        "protagonist",
+        "lord_ahn"
+      ],
+      "knowledge_gained": [
+        {
+          "character_id": "protagonist",
+          "fact_id": "lord_briefing_account",
+          "method": "heard",
+          "informant_id": "lord_ahn"
+        }
+      ],
+      "reveals": [
+        "lord_briefing"
+      ],
+      "approval": "proposed"
+    }
+  ],
+  "threads": [
+    {
+      "id": "missing_squad",
+      "description": "특공대의 실제 생사와 행방은 여전히 미확정이다.",
+      "status": "open",
+      "resolution_event": null
+    }
+  ],
+  "review": {
+    "status": "draft",
+    "issues": [
+      "공간·심리 묘사와 제한적 3인칭 문체는 시범 제안이므로 사용자 검토가 필요하다.",
+      "시작 동료 네 명의 이름·직업·장비는 미정이다.",
+      "감옥·영입의 실제 접근 시점을 확인한 뒤 별도 장면으로 추가한다.",
+      "출발 UI와 진행 후 반복 대사는 아직 처리하지 않았다.",
+      "다음 퀘스트의 entry_node와 원고를 연결해야 한다."
+    ],
+    "approved_story_revision": null,
+    "approved_canon_revision": null,
+    "approved_input_hashes": null
+  }
+}

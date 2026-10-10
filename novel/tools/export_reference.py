@@ -13,6 +13,7 @@ from story_continuity import CANON, DEFAULT, context
 TEMPLATE = ROOT / "tools/reference.template.html"
 OUTPUT = ROOT / "exports"
 LABELS = {
+    "writing_name":"집필 이름 · 추가 설정", "korean_name":"한국어 음역",
     "age":"나이", "gender":"성별", "species":"종족", "occupation":"직업",
     "appearance":"외모", "alignment":"윤리적 성향", "temperament":"성향",
     "voice":"말투", "goal":"목표", "story_role":"원작 역할", "recruitment":"영입",
@@ -74,6 +75,8 @@ def claim_table(claims):
 
 
 def title_of(profile):
+    if profile.get('writing_name',{}).get('value'):
+        return profile['writing_name']['value']
     name = profile.get('korean_name')
     return (name.get('value') if isinstance(name,dict) else name) or profile['display_name']
 
@@ -104,7 +107,7 @@ def character_html(key, profile, names, checkpoints=None):
     header = f'{esc(title)} <small>{esc(original or "원어 이름 미상")}</small>'
     body = claim_table(list(profile['biography'].values()))
     if master:
-        body = claim_table([profile['korean_name']])+body
+        body = claim_table([*([profile['writing_name']] if 'writing_name' in profile else []),profile['korean_name']])+body
     body += '<h4>원작 정보</h4>'+claim_table(profile['source_facts'])
     for field, title in [('traits','성향'),('speech','말투'),('goals','목표')]:
         body += f'<h4>{title}</h4>'+claim_table(profile['writing'][field])
@@ -134,9 +137,9 @@ def references_html(references):
     for category, document in references.items():
         entries = ''
         for key,item in document['items'].items():
-            entries += (f'<details class="entry" id="resource-{esc(key)}"><summary>{esc(item["korean_name"]["value"])} '
+            entries += (f'<details class="entry" id="resource-{esc(key)}"><summary>{esc(item.get("writing_name",item["korean_name"])["value"])} '
                         f'<small>{esc(item["original_name"]["value"])} · {label(item["category"])}</small></summary>'
-                        f'<div class="entry-body">{claim_table([item["original_name"],item["korean_name"],*item["claims"]])}</div></details>')
+                        f'<div class="entry-body">{claim_table([*([item["writing_name"]] if "writing_name" in item else []),item["original_name"],item["korean_name"],*item["claims"]])}</div></details>')
         result += section(category,LABELS[category],entries or '<p class="muted">현재 경로에서 공개된 참조 없음.</p>')
     return result
 

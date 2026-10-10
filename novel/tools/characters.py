@@ -24,6 +24,11 @@ def validate_registry(document, catalog=None, references=None):
         validate_evidence(name["evidence"], catalog)
         validate_claim(name, catalog)
         validate_claim(profile["korean_name"], catalog)
+        if 'writing_name' in profile:
+            alias = profile['writing_name']
+            validate_claim(alias,catalog)
+            if alias['field']!='writing_name' or alias['origin']!='authored' or alias['metadata']['kind']!='new_setting' or not alias['value']:
+                raise ValueError('writing name must be a marked authored setting')
         if name["origin"].startswith("source_") and not name["evidence"]:
             raise ValueError(f"source name needs evidence: {key}")
         if name["origin"] == "source_exact":
@@ -39,6 +44,8 @@ def validate_registry(document, catalog=None, references=None):
         elif name["literal_ids"]:
             raise ValueError(f"non-exact name cannot claim exact literals: {key}")
         claims = profile["source_facts"] + list(profile["biography"].values()) + profile["writing"]["traits"] + profile["writing"]["speech"] + profile["writing"]["goals"]
+        if 'writing_name' in profile:
+            claims.append(profile['writing_name'])
         for fact in profile["source_facts"]:
             if fact["origin"] not in ("source_exact", "source_adaptation") or fact["status"] != "confirmed":
                 raise ValueError(f"source facts cannot contain writing proposals: {key}")

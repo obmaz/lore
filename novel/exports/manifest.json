@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "character_registry_revision": 7,
+  "character_registry_revision": 8,
   "route": [
     "enter_courtyard",
     "visit_lord"
@@ -15,21 +15,21 @@
     "quests": 19
   },
   "source_sha256": {
-    "characters/registry.json": "565bb9a33c9199eca1bbf41b95efa33b8036ba9573dd27ec3e5962bdad0d6383",
+    "characters/registry.json": "f6d82c5f4dc839a80de1b598efcf373175dea8dafda3982d1d364c3d9b245e7d",
     "reference/equipment.json": "baed624f2f6938c18db37c666df65ad4ac3e9c759aa26c2261db401999a86833",
     "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
     "materials/quests.json": "5a5a6878327e875420dce823059f2b944fb1f3e504468bde726b30481a24070b",
     "materials/manifest.json": "4e1f6565214b95b26d5089f24a8e40aa55f1d06d7697fac9783e671570f6131f",
     "authoring/drafts/prologue.json": "1a81d4a60bc2746ec2db5b0a8644272e57e22bef00aa63d79949fadeb54444fa",
-    "authoring/drafts/prologue.continuity.json": "7c52327effdf3208e6535f001cb250f51b03defaa1f566ad1e037b196238ea72",
-    "continuity/canon.json": "4a61b59c85d686d9f873b9d8097fb578cd27efe1228205059771c55ac145e1af",
-    "tools/export_reference.py": "a369392bc57427e992e893964684af2db8ba165efc313854d63c23ff410e13d7",
+    "authoring/drafts/prologue.continuity.json": "eab31953153accdda1f218a2dc0daa9bc849e4fd16d889afb078e1e699b0a530",
+    "continuity/canon.json": "121cb6809f2753cc696bee2f9c76aace87bafec653c29c766879c922ed35af90",
+    "tools/export_reference.py": "2fb37a42477fafd4e277edb2e77d7500cb9f2138b8d0e7641d32f7983b3699c0",
     "tools/reference.template.html": "009d0d5ab0b3c39ef1b30d68045fc81372f97125796bc8c490b489becc1cb82b"
   },
   "material_counts": {
     "source_files": 14,
     "literal_occurrences": 2483
   },
-  "pdf_sha256": "621c91364a09d2c419a244bf3aae407a859e41cce0eb678e5e36843fc79acd4b"
+  "pdf_sha256": "5cebb870791b7b17a653ca4db06d308b3b3c78f39b2177a6240b233e42f24ac0"
 }

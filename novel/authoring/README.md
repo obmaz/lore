@@ -8,6 +8,7 @@
 
 - 형식: [story.schema.json](story.schema.json), JSON Schema 2020-12.
 - 구조 예시: [drafts/prologue.json](drafts/prologue.json).
+- 새 원고·공용 템플릿: [../writing/README.md](../writing/README.md).
 - 원문 보관소: [../materials/scripts.json](../materials/scripts.json).
 - 인물 카드: [../characters/registry.json](../characters/registry.json).
 
@@ -23,8 +24,9 @@
 | 집필 장면 | `nodes`, `blocks`, `choices` | 읽는 본문, 선택지, 다음 장면, 분기·합류 |
 | 이야기의 기억 | `state_definitions`, `when`, `effects` | 지식·동료·관계·사건·퀘스트 상태 |
 
-추출 JSON은 재생성할 수 있는 원문 자료이고, `authoring/drafts/`는 사람이 집필하는
-원고다. 원문 추출 도구는 이 폴더를 덮어쓰지 않는다. 퀘스트마다 별도 JSON을 쓰고,
+추출 JSON은 보존 원문 자료이고, `authoring/drafts/`는 기존 구조 예시다.
+새 원고는 `writing/quests/`에 집필하며 원문 추출 도구는 이를 덮어쓰지 않는다.
+퀘스트마다 별도 JSON을 쓰고,
 원작의 한 지도가 아니라 하나의 집필 단위를 파일 경계로 삼는다.
 
 ## 원작과 창작의 표시
@@ -42,11 +44,19 @@
 그 문장이나 시스템이 있었다는 뜻은 아니다. `source_exact` 상태 변화는 금지한다.
 집필용 효과는 Pascal 연산 자체가 아니므로 `source_adaptation` 또는 `authored`다.
 
-원문 출력은 조각별 `source_quote`로 보관하고 `literal_ids`에 원본 발생 ID 하나를
-연결한다. 빈칸·오탈자·잘린 단어도 바꾸지 않는다. 읽기 편하게 이어 붙인 문장은 별도
-`source_adaptation` 블록으로 작성한다. 원문 대체 표시와 감사를 거쳐 이중 출력은
-나중에 프리뷰에서 조절한다. 현재는 프리뷰·게임 실행기를 만들지 않았다.
-동적 이름·표현식의 완성 문구는 아직 지원하지 않으며 원문 추출 자료를 참고한다.
+기존 예시의 원문 출력은 조각별 `source_quote`와 발생 ID 하나로 연결한다.
+새 원고는 `text`에 구조화된 span 배열을 지원한다. `{ "text": "산문" }`,
+`{ "ref": { "catalog": "characters", "id": "protagonist" } }`,
+`{ "source": { "literal_ids": ["발생 ID"], "bindings": [] } }`를 조합한다.
+여러 발생을 원래 순서대로 이어 붙인 원문도 archival 기준으로 검증한다.
+빈칸·오탈자·잘린 단어는 변경하지 않으며, 이름 구간에만 원문 기준 오프셋과 ID를
+연결해 표시명을 바꾼다. 표시명이 달라진 읽기본은 `source_adaptation`, 보존 원문은
+`source_exact`다. 임의 Pascal 표현식/게임 코드는 실행하지 않는다.
+`reference_text: true`인 새 원고는 고정 이름 복사와 빠진 원문 이름 참조를 거부한다.
+제목·본문·선택지·결과 설명에도 같은 참조 형식을 쓴다.
+
+`writing.py preview`는 실제 선택 경로의 읽기본을 생성하고 `writing.py export`는
+오프라인 HTML을 만든다. 게임 실행기나 모든 경로의 접근 조건 증명은 아니다.
 
 `speaker`는 인물 카드의 ID다. 원문에서 화자를 특정할 수 없으면 `null`을 유지하거나
 고유 이름을 확정하지 않은 역할 카드를 만든다. 인물 카드의 이름·성향과 출처를 참조한다.

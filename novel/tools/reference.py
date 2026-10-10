@@ -40,6 +40,11 @@ def validate_catalog(document, catalog=None):
     if catalog is None:
         catalog = load_materials()[0]
     for item in document["items"].values():
+        if 'writing_name' in item:
+            alias = item['writing_name']
+            validate_claim(alias,catalog)
+            if alias['field']!='writing_name' or alias['origin']!='authored' or alias['metadata']['kind']!='new_setting' or not alias['value']:
+                raise ValueError('writing name must be a marked authored setting')
         for claim in [item["original_name"], item["korean_name"], *item["claims"]]:
             validate_claim(claim, catalog)
             if claim["field"] == "original_combat_parameters":

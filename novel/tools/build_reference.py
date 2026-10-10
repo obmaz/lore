@@ -66,6 +66,9 @@ def migrate_claim(value):
 
 
 def build(analysis, catalog, templates):
+    names = read(ROOT / "reference/names.json")
+    from reference import schema_validator
+    schema_validator(ROOT/'reference/names.schema.json').validate(names)
     units = {u["file"]: u for u in catalog["source_units"]}
     all_literals = [literal for u in catalog["source_units"] for literal in u["literals"]]
     phonetics = dict(analysis["phonetics"])
@@ -103,6 +106,12 @@ def build(analysis, catalog, templates):
         name["metadata"] = metadata("unknown" if name["origin"] == "unknown" else "none")
         profile["korean_name"] = claim("korean_name", phonetics.get(name["value"]), origin="authored", kind="transliteration")
         profile["display_name_metadata"] = metadata("interpretation", "편집용 역할/구별 표기. 원작의 고유 이름 또는 새 인물 설정으로 쓰지 않는다.")
+        if key in names['characters']:
+            profile['writing_name'] = copy.deepcopy(names['characters'][key])
+            profile['display_name'] = profile['writing_name']['value']
+            profile['display_name_metadata'] = copy.deepcopy(profile['writing_name']['metadata'])
+            if key == 'protagonist':
+                profile['writing']['notes'] = '집필 이름은 임시 지정이다. 성별·직업·최종 성향은 미정이다.'
         citations = list(name["evidence"])
         for fact in profile["source_facts"]:
             citations.extend(fact["evidence"])
@@ -164,6 +173,8 @@ def build(analysis, catalog, templates):
                            else claim("korean_name", ko, origin="authored", kind="transliteration"),
             "claims": claims, "character_ids": [k for k, p in profiles.items() if key in p["resource_refs"][
                 "enemy_templates" if category == "bestiary" else category]]}
+        if key in names[category]:
+            references[category]['items'][key]['writing_name'] = copy.deepcopy(names[category][key])
 
     for record in templates["records"]:
         e = [{"file": "FOEDATA.DAT", "record_index": record["id"]}]
@@ -229,6 +240,10 @@ def build(analysis, catalog, templates):
             cs += [claim("effect",analysis["extrasense_effects"][number-41],[evidence("LORESPEC.PAS",1285,1293)]),
                    claim("conditions","ESP와 초자연력 레벨/상태/위치 검사에 따름. 필드와 전투 처리도 구분한다. 독심으로 모든 동료를 자동 영입하지 않음.",[evidence("LOREMENU.PAS",700,867),evidence("LORESPEC.PAS",1208,1268)] if number !=45 else [evidence("LOREBATT.PAS",360,526)])]
         item("abilities",f"magic_{number}",name,name,category,e,cs)
+    targets = {'characters':profiles,**{c:d['items'] for c,d in references.items()}}
+    for category in targets:
+        if not set(names[category]) <= set(targets[category]):
+            raise ValueError(f'unknown naming override: {category}')
     return {"characters/registry.json": registry, **{f"reference/{k}.json": v for k,v in references.items()}}
 
 

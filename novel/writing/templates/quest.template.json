@@ -1,0 +1,98 @@
+{
+  "schema_version": 2,
+  "meta": {
+    "id": "quest_template",
+    "title": [
+      {
+        "text": "퀘스트 제목"
+      }
+    ],
+    "quest_id": "prologue",
+    "status": "outline",
+    "purpose": "story_authoring_not_game_runtime",
+    "summary": [
+      {
+        "text": "이 파일의 시작·끝과 집필 범위를 작성한다."
+      }
+    ],
+    "revision": 1,
+    "reference_text": true,
+    "source_catalog": "materials/scripts.json",
+    "character_registry": "characters/registry.json"
+  },
+  "source_refs": {},
+  "state_definitions": {},
+  "entry_node": "entry",
+  "nodes": [
+    {
+      "id": "entry",
+      "title": [
+        {
+          "text": "장면 제목"
+        }
+      ],
+      "kind": "boundary",
+      "entry_when": true,
+      "provenance": {
+        "origin": "authored",
+        "source_refs": [],
+        "note": "새로 집필한 연결 서사·표현. 원작 문장이나 확정 설정이 아니다."
+      },
+      "blocks": [
+        {
+          "id": "template_note",
+          "kind": "author_note",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "예시 참조: "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist"
+              }
+            },
+            {
+              "text": " / "
+            },
+            {
+              "ref": {
+                "catalog": "equipment",
+                "id": "weapon_1"
+              }
+            },
+            {
+              "text": ". 형식 예시이며 소지품·장비 지급을 의미하지 않는다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "새로 집필한 연결 서사·표현. 원작 문장이나 확정 설정이 아니다."
+          }
+        }
+      ],
+      "choices": [],
+      "handoff": null,
+      "editorial": {
+        "status": "outline",
+        "intent": "원문·분기·연속성을 채운 뒤 본문 집필",
+        "source_refs": [],
+        "notes": "새 장면·선택지 ID와 근거, 사건 기록을 함께 작성한다."
+      }
+    }
+  ],
+  "coverage": {
+    "status": "partial",
+    "required_source_refs": [],
+    "deferred_source_refs": [],
+    "literal_dispositions": [],
+    "notes": "빈 양식이지 원문 보존을 완료한 원고가 아니다."
+  },
+  "open_questions": [
+    "집필 범위·화자·접근 조건·다음 퀘스트 연결을 확인한다."
+  ]
+}

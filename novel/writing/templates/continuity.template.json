@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "story_id": "quest_template",
+  "story_revision": 1,
+  "canon_revision": 3,
+  "character_registry_revision": 8,
+  "contracts": {
+    "entry": {
+      "before": true,
+      "after": true,
+      "allowed_state_changes": [],
+      "must_include_block_ids": [],
+      "must_not_assert": [],
+      "dependencies": [],
+      "continuity_notes": ["등장 인물·지식·상태·필수 원문을 채운 뒤 검토한다."],
+      "knowledge_required": [],
+      "cast": [{"character_id": "protagonist", "when": true}],
+      "character_dependencies": [{"character_id": "protagonist", "revision": 5}]
+    }
+  },
+  "event_templates": [],
+  "threads": [],
+  "review": {
+    "status": "draft",
+    "issues": ["빈 공용 양식. 퀘스트의 원문·경로·연속성 계약을 작성해야 한다."],
+    "approved_story_revision": null,
+    "approved_canon_revision": null,
+    "approved_input_hashes": null
+  }
+}

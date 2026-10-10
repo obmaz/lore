@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "source_sha256": {
+    "writing/storyboard/series.json": "ef7efd9026b4def686f2c092ea14282c291b8b18b9e9ca2178dc2ea53b326a60",
+    "writing/quests/prologue.json": "dd00927ec5509174b50cf72ba5b09c9bf2bfbd6a9270341871db348bf21b0913",
+    "writing/quests/prologue.continuity.json": "b8a60c6575127192e81ee72bb0e73cd9206fb5c16da8bd00d86d2982770c35f1",
+    "characters/registry.json": "f6d82c5f4dc839a80de1b598efcf373175dea8dafda3982d1d364c3d9b245e7d",
+    "reference/names.json": "f08d6d06fff5fd28bac71f8fb52771c003adf36b208d861a477a9e537ed1734b",
+    "reference/terms.json": "f9d763745b945dd0578d8d664cd5eedb7b7422490cbd6f885568b081bcf4b8fb",
+    "continuity/canon.json": "121cb6809f2753cc696bee2f9c76aace87bafec653c29c766879c922ed35af90",
+    "writing/project.json": "955b0192b3196f45100470110547901956718db8fbe654c41c253dc9621680cf",
+    "tools/writing.py": "667e1dce6b7e90bc53f7f31815b763f394b7f2ccad6dfd9195d07bfb17f6940d",
+    "tools/text_refs.py": "5298ed7528cc6fcfb723c6a26f792fc527fbe3fdd7c223066c1a4107529c5479",
+    "tools/story_continuity.py": "b8222ecade8f3c927795ea888847f7ef2a5585cbe0a941657b178738c0777486",
+    "tools/disclosure.py": "562d46cd711305fd4c0419485015fe22a0bb1eda8a515518e75ffe9c25a4711f",
+    "tools/validate_story_authoring.py": "40243942f9cc0d98d29d089b730c315656c0f4d2804ea00d9e780aab8dd498de",
+    "authoring/story.schema.json": "45d0aee1869770e20d39de45645e61acfb5caa2ddbe4b593afd107cd9fd9de0c",
+    "writing/storyboard.schema.json": "84c0964d33bb97bbb0cc7bfdfcc48773e919273f10bce09727290c695fd5a200",
+    "reference/equipment.json": "baed624f2f6938c18db37c666df65ad4ac3e9c759aa26c2261db401999a86833",
+    "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
+    "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe"
+  },
+  "artifacts": {
+    "storyboard.html": "2d8f70bbdccb9f138a8c11b4fe9afb024f29b4b36fbcc1c231ccb6730fe5d98a",
+    "prologue.html": "328ffe6e10459e8f472a195c5d71ebb3f18116efc63ab5e4021c83bc6f4b40fb",
+    "prologue-tavern.html": "77a09ce79d45bcfecedce1c3f951e15883bce5ea480c45eb65b2396dc3e3d150"
+  }
+}

@@ -18,7 +18,7 @@ def compile_disclosure(profiles, analysis, claim, ranges, metadata):
         config = analysis["profiles"].get(key, {})
         profile["disclosure"] = {"master_visibility":"author_only", "default":"sealed",
             "public_id":config.get("public_id",key),
-            "public_display_name":config.get("public_name",profile["korean_name"]["value"] or profile["display_name"]),
+            "public_display_name":config.get("public_name",profile.get('writing_name',{}).get('value') or profile["korean_name"]["value"] or profile["display_name"]),
             "after_events":config.get("after",[]), "fact_after":config.get("fact_after",{}),
             "policy_metadata":copy.deepcopy(policy_meta)}
         profile["relationships"] = []
@@ -134,6 +134,8 @@ def project_character(document, key, reveals=()):
               "resource_refs":copy.deepcopy(p["resource_refs"]) if open_ else {"equipment":[],"abilities":[],"enemy_templates":[]},
               "relationships":[], "foreshadowing":[],
               "source_excerpts":[], "master_visibility":"author_only", "hidden_information_policy":"do_not_assert_or_guess"}
+    if 'writing_name' in p and (open_ or d['public_display_name']==p['writing_name']['value']):
+        result['writing_name'] = copy.deepcopy(p['writing_name'])
     # Never forward whole notes, aliases, raw excerpts or the secret disclosure rules.
     for relation in p["relationships"]:
         release = relation["disclosure"]

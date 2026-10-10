@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "kind": "template",
+  "visibility": "author_only",
+  "status": "outline",
+  "title": [
+    {
+      "text": "전편 스토리보드"
+    }
+  ],
+  "arcs": [
+    {
+      "id": "departure",
+      "title": [
+        {
+          "text": "큰 흐름 제목"
+        }
+      ],
+      "role": [
+        {
+          "text": "이 구간의 서사적 역할"
+        }
+      ],
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "막 구분과 서사적 역할은 집필자가 추가한 편집 제안이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "units": [
+    {
+      "id": "prologue",
+      "quest_id": "prologue",
+      "arc": "departure",
+      "status": "outline",
+      "title": [
+        {
+          "text": "이 항목을 작성한다."
+        }
+      ],
+      "opening": [
+        {
+          "text": "이 항목을 작성한다."
+        }
+      ],
+      "goal": [
+        {
+          "text": "이 항목을 작성한다."
+        }
+      ],
+      "conflict": [
+        {
+          "text": "이 항목을 작성한다."
+        }
+      ],
+      "turn": [
+        {
+          "text": "이 항목을 작성한다."
+        }
+      ],
+      "ending": [
+        {
+          "text": "이 항목을 작성한다."
+        }
+      ],
+      "emotional_arc": [
+        {
+          "text": "이 항목을 작성한다."
+        }
+      ],
+      "bridge": [
+        {
+          "text": "이 항목을 작성한다."
+        }
+      ],
+      "source_anchors": [
+        "prologue:start_lore"
+      ],
+      "cast_candidates": [
+        "protagonist"
+      ],
+      "branches": [],
+      "disclosure_candidates": [],
+      "carry_threads": [],
+      "origin": "inferred",
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "원작 사건의 집필 배열·강조를 제안하는 편집 틀. 순서를 강제하거나 원작 설정을 추가하지 않는다. 감정선·연결 장면은 별도 창작 제안이다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "authored_fields": [
+        "emotional_arc",
+        "bridge"
+      ]
+    }
+  ],
+  "route_index": "materials/quests.json#/route_edges",
+  "appendices": [],
+  "open_questions": [
+    "전체 원문과 분기·병렬 조건을 확인한다."
+  ]
+}
