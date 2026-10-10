@@ -606,6 +606,14 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     if (_isTurnProcessing || _battleEnded) return;
     if (activePlayer == null) return;
     widget.onClearMessageWindow?.call();
+    if (!widget.sourceReplay) {
+      _autoRound = true;
+      for (final actor in _eligibleActors) {
+        if (!_commandPlan.isPrepared(actor)) _battle.autoSelect(actor + 1);
+      }
+      unawaited(_executeRound());
+      return;
+    }
     if (isLeaderActive) {
       // `k = 7, person = 1` → `k := 8; autobattle := TRUE`
       _autoRound = true;
@@ -983,16 +991,18 @@ class _BattleViewportViewState extends State<BattleViewportView> {
     ];
     Widget command(int i) => FantasyBattleButton(
       buttonKey: ValueKey('battle-cmd-${i + 1}'),
-      cell: i == 6 ? (isLeaderActive ? 6 : 7) : i,
+      cell: i,
       label: i == 6
-          ? isLeaderActive
-                ? '일행 자동 공격'
-                : '도주'
+          ? '일행 자동 공격'
+          : i == 7
+          ? '도주'
           : labels[i],
       onPressed: disabled
           ? null
           : i == 6
           ? _onAutoBattleOrRun
+          : i == 7
+          ? () => _select(7, 0, 0)
           : actions[i],
     );
     if (compact) {
@@ -1007,7 +1017,7 @@ class _BattleViewportViewState extends State<BattleViewportView> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                for (var i = 0; i < 7; i++)
+                for (var i = 0; i < 8; i++)
                   Padding(
                     padding: const EdgeInsets.only(right: 6),
                     child: SizedBox(width: 112, height: 48, child: command(i)),
@@ -1035,6 +1045,8 @@ class _BattleViewportViewState extends State<BattleViewportView> {
           ),
           const SizedBox(height: 6),
           SizedBox(width: double.infinity, height: 48, child: command(6)),
+          const SizedBox(height: 6),
+          SizedBox(width: double.infinity, height: 48, child: command(7)),
         ],
       ),
     );

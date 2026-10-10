@@ -181,6 +181,25 @@ void main() {
     await tester.pumpWidget(const SizedBox.shrink());
   });
 
+  testWidgets('leader can prepare flee while auto attack stays separate', (
+    tester,
+  ) async {
+    final party = [PartyMember.createPreset(1), PartyMember.createPreset(2)];
+    final enemy = Monster.create(1)..hp = 30000;
+    await tester.pumpWidget(screen(party, [enemy]));
+    expect(find.text('일행 자동 공격'), findsOneWidget);
+    expect(find.text('도주'), findsOneWidget);
+    await tester.tap(find.byKey(const ValueKey('battle-cmd-8')));
+    await tester.pump();
+    final stage = tester.widget<JrpgBattleStage>(find.byType(JrpgBattleStage));
+    expect(stage.preparedParty, contains(0));
+    expect(stage.activeParty, 1);
+    expect(find.text('일행 자동 공격'), findsOneWidget);
+    expect(find.text('도주'), findsOneWidget);
+    expect(stage.event, isNull);
+    await tester.pumpWidget(const SizedBox.shrink());
+  });
+
   testWidgets(
     'out of order actor selection queues everyone then executes slot one',
     (tester) async {
@@ -361,7 +380,7 @@ void main() {
         );
         expect(find.text('대상 5'), findsNothing);
         expect(find.text('대상 1'), findsNothing);
-        expect(find.byType(FantasyBattleButton), findsNWidgets(7));
+        expect(find.byType(FantasyBattleButton), findsNWidgets(8));
         expect(find.byType(LinearProgressIndicator), findsNothing);
         expect(find.text('일행'), findsNothing);
         final stageView = tester.widget<JrpgBattleStage>(
@@ -390,7 +409,7 @@ void main() {
         expect(find.byKey(const ValueKey('party-selection-0')), findsNothing);
         expect(find.byKey(const ValueKey('party-selection-1')), findsOneWidget);
         final fleeWidth = tester
-            .getSize(find.byKey(const ValueKey('battle-cmd-7')))
+            .getSize(find.byKey(const ValueKey('battle-cmd-8')))
             .width;
         final attackWidth = tester
             .getSize(find.byKey(const ValueKey('battle-cmd-1')))

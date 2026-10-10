@@ -34,6 +34,13 @@ CONVERSATIONS = {
 }
 
 
+def speech(page, text):
+    # One rich paragraph now wraps at the viewport and uses corrected spacing.
+    # Source characters and page order must still match independently of spaces.
+    chars = re.sub(r'\s+', '', text)
+    return page.get_by_text(re.compile(r'\s*'.join(map(re.escape, chars))))
+
+
 def verify(url, output, conversation):
     fixture = json.loads((ROOT / 'test/fixtures/dos_first_field_battle.json').read_text())
     map_id, x, y, byte, stage, direction, lines = CONVERSATIONS[conversation]
@@ -68,9 +75,9 @@ def verify(url, output, conversation):
                 page.touchscreen.tap(move_box['x'] + move_box['width'] / 2,
                                      move_box['y'] + move_box['height'] / 2)
                 for index, line in enumerate(lines):
-                    expect(page.get_by_text(line, exact=True)).to_be_visible(timeout=20000)
+                    expect(speech(page, line)).to_be_visible(timeout=20000)
                     if index:
-                        expect(page.get_by_text(lines[index - 1], exact=True)).to_have_count(0)
+                        expect(speech(page, lines[index - 1])).to_have_count(0)
                     expect(page.get_by_role('dialog')).to_have_count(1)
                     button = page.get_by_role('button', name='계속', exact=True)
                     expect(button).to_be_enabled()

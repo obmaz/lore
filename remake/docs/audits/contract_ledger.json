@@ -58805,9 +58805,16 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/dialogue_spacing_test.dart",
+      "kind": "test",
+      "sha256": "0a8db619fc47e8e7b4c77104d7bacebd0de62e4a1a41cbdb94993ad6bda00e9b",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/dialogue_window_test.dart",
       "kind": "test",
-      "sha256": "92467b0ef3cbad8c0878a68a8e6fbfc886489b6ad5edca902dd67f4d8bbfd647",
+      "sha256": "e8dbe30208a348506d3edc5db604067dcbfee6cc4ad2319583ea494d5ca526c4",
       "cited_source_files": [
         "LORETALK.PAS"
       ],
@@ -59165,7 +59172,7 @@
     {
       "path": "test/jrpg_battle_test.dart",
       "kind": "test",
-      "sha256": "66f15ecb198f50180de00c38127062652e6d4f219c5c85b346b1eb9cdf4ff330",
+      "sha256": "6e377632ccc24b9173fc57600456b562a1b40b81adb3926c3ccb8066a661dda0",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -62163,11 +62170,11 @@
     },
     {
       "path": "lib/widgets/lore_select_view.dart",
-      "sha256": "09c94a284605941ebe0fe4135ff57a65d7d6815b3959e943e5443d604306081f"
+      "sha256": "f1988e4d71bb946bf97662643af2cf781057b67dad49986ea2c930acb562eed4"
     },
     {
       "path": "lib/widgets/lore_source_text.dart",
-      "sha256": "9ad8283000bb50598c9c8eeaac6c63e060c619b3367c6b33e1825caa565238c6"
+      "sha256": "1fc1ac870a3ccfbd030015b23ee8e1507cac940ff0e0001bbbd3d7b78f69ede1"
     },
     {
       "path": "lib/game/bgi_font_decoder.dart",

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/dialogue_spacing.dart';
 import '../logic/lore_source_speech.dart';
 import '../logic/lore_view_procedures.dart';
 import '../theme/retro_theme.dart';
@@ -58,7 +59,11 @@ List<(int, String)>? _sourceParts(String line) {
 /// Presents adjacent source `Print` calls as one naturally wrapping mobile
 /// paragraph. Empty source lines remain paragraph breaks; ordinary source
 /// line boundaries become spaces so the viewport decides where to wrap.
-Widget loreDialogueText(List<(int, String)> lines, {TextStyle? style}) {
+Widget loreDialogueText(
+  List<(int, String)> lines, {
+  TextStyle? style,
+  bool correctSpacing = false,
+}) {
   final spans = <InlineSpan>[];
   var hasText = false;
   var paragraphBreak = false;
@@ -73,10 +78,17 @@ Widget loreDialogueText(List<(int, String)> lines, {TextStyle? style}) {
     }
     if (hasText && !paragraphBreak) spans.add(const TextSpan(text: ' '));
     final parts = _sourceParts(rawText) ?? [(baseColor, text)];
-    for (final (color, part) in parts) {
+    for (var i = 0; i < parts.length; i++) {
+      final (color, part) = parts[i];
       spans.add(
         TextSpan(
-          text: part.trim().isEmpty ? part : part.trim(),
+          text: parts.length == 1
+              ? part.trim()
+              : i == 0
+              ? part.trimLeft()
+              : i == parts.length - 1
+              ? part.trimRight()
+              : part,
           style: TextStyle(color: RetroTheme.ega(color)),
         ),
       );
@@ -86,9 +98,53 @@ Widget loreDialogueText(List<(int, String)> lines, {TextStyle? style}) {
   }
   return SourceInk(
     child: Text.rich(
-      TextSpan(children: spans),
-      style: style ?? RetroTheme.dosFont,
+      TextSpan(children: correctSpacing ? _correctSpacing(spans) : spans),
+      style:
+          style ??
+          RetroTheme.dosFont.copyWith(
+            color: RetroTheme.ega(lines.isEmpty ? 7 : lines.first.$1),
+          ),
       softWrap: true,
     ),
   );
+}
+
+List<InlineSpan> _correctSpacing(List<InlineSpan> spans) {
+  final result = <InlineSpan>[];
+  final paragraph = <TextSpan>[];
+  void flush() {
+    final raw = paragraph.map((span) => span.text ?? '').join();
+    final key = raw.replaceAll(RegExp(r'\s+'), '');
+    final corrected = dialogueSpacing[key];
+    if (corrected == null) {
+      result.addAll(paragraph);
+    } else {
+      final colored = <(String, TextStyle?)>[
+        for (final span in paragraph)
+          for (final char in (span.text ?? '').split(''))
+            if (char.trim().isNotEmpty) (char, span.style),
+      ];
+      var index = 0;
+      for (final char in corrected.split('')) {
+        result.add(
+          TextSpan(
+            text: char,
+            style: char.trim().isEmpty ? null : colored[index++].$2,
+          ),
+        );
+      }
+    }
+    paragraph.clear();
+  }
+
+  for (final span in spans.cast<TextSpan>()) {
+    if (span.text == '\n\n') {
+      flush();
+      result.add(span);
+    } else {
+      paragraph.add(span);
+    }
+  }
+  flush();
+  return result;
 }

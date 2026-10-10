@@ -50,6 +50,7 @@ class MobileDialogueSession {
             builder: (_, page, _) => LoreMessageDialog(
               key: ValueKey('dialogue-page-${page!.serial}'),
               lines: page.lines,
+              correctSpacing: true,
               closeOnAcknowledgement: false,
               onKeyAcknowledged: (key) => _acknowledge?.call(key),
             ),

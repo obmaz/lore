@@ -124,6 +124,7 @@ class LoreMessageDialog extends StatefulWidget {
     this.onAcknowledged,
     this.onKeyAcknowledged,
     this.closeOnAcknowledgement = true,
+    this.correctSpacing = false,
   });
 
   final List<(int, String)> lines;
@@ -132,6 +133,7 @@ class LoreMessageDialog extends StatefulWidget {
   final void Function(bool escape)? onAcknowledged;
   final void Function(LogicalKeyboardKey key)? onKeyAcknowledged;
   final bool closeOnAcknowledgement;
+  final bool correctSpacing;
 
   @override
   State<LoreMessageDialog> createState() => LoreMessageDialogState();
@@ -179,11 +181,23 @@ class LoreMessageDialogState extends State<LoreMessageDialog> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ...widget.leading,
-          if (widget.lines.isNotEmpty)
+          if (widget.correctSpacing && widget.lines.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(bottom: 4),
-              child: loreDialogueText(widget.lines),
+              child: loreDialogueText(
+                widget.lines,
+                correctSpacing: widget.correctSpacing,
+              ),
             ),
+          if (!widget.correctSpacing)
+            for (final (color, text) in widget.lines)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: loreSourceText(
+                  text,
+                  RetroTheme.dosFont.copyWith(color: RetroTheme.ega(color)),
+                ),
+              ),
         ],
       ),
       footer: SizedBox(

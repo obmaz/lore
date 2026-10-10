@@ -261,9 +261,9 @@ void main() {
         game.tryMove(0, 1);
         await tester.pump();
         await tester.pump(const Duration(milliseconds: 300));
-        const first = ' 당신이  한 유골 앞에 섰을때  이상한 느낌과';
+        const first = '당신이 한 유골 앞에 섰을 때 이상한 느낌과';
         const second = ' 안녕하시오. 대담한 용사여.';
-        const third = ' 아참,  그리고 내가 죽기전에 여기에 뭔가를';
+        const third = '아참, 그리고 내가 죽기 전에 여기에 뭔가를';
         final dialog = find.byType(LoreMessageDialog);
         final route = ModalRoute.of(tester.element(dialog));
         final etc = LoreDialogueManager.instance.partyEtc;
@@ -295,9 +295,9 @@ void main() {
           find.byType(DialogueHistoryView, skipOffstage: false),
         );
         expect(history.history.blocks.map((block) => block.first), [
-          first,
+          ' 당신이  한 유골 앞에 섰을때  이상한 느낌과',
           second,
-          third,
+          ' 아참,  그리고 내가 죽기전에 여기에 뭔가를',
         ]);
         expect(tester.takeException(), isNull);
         await tester.pumpWidget(const SizedBox.shrink());
