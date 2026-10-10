@@ -15,6 +15,8 @@
   [동행 거절 경로](previews/menace-03-declined.html).
 - [1-4 · 어둠의 중심](previews/menace-04.html) /
   [동행 거절 경로](previews/menace-04-declined.html).
+- [1-5 · 돌아온 사람들](previews/menace-05.html) /
+  [동행 거절 경로](previews/menace-05-declined.html).
 - [도입부터 1장까지 · 동행 수락](previews/first-journey.html): 첫 탐사·귀환 보고와 다음 부탁까지.
 - [도입부터 1장까지 · 동행 거절](previews/first-journey-declined.html): 같은 의뢰, 다른 현재 동료.
 - [주점 방문 후 1장 · 수락](previews/first-journey-tavern.html) /
@@ -77,7 +79,7 @@ writing/
 | 1-2 성문 앞의 목소리 | 출발 준비·첫 동행 요청과 수락/거절 | 긴 장면으로 집필한 미승인 초고 |
 | 1-3 빛이 남아 있는 곳 | 남서쪽 이동·동굴 문턱 | 긴 장면으로 집필한 미승인 초고 |
 | 1-4 어둠의 중심 | 동굴 안 이동·중심부 확인 | 긴 장면으로 집필한 미승인 초고 |
-| 1-5 돌아온 사람들 | 귀환·보고와 보상 | 짧은 구조 초고 |
+| 1-5 돌아온 사람들 | 귀환·보고와 보상 | 긴 장면으로 집필한 미승인 초고 |
 | 1-6 다음 부탁 | 다음 지역의 부탁·작별 | 짧은 구조 초고 |
 
 한 소편은 약 3,500~6,500자를 출발 목표로 삼는다. 분량을 채우기 위한 반복 대신,
