@@ -1,9 +1,9 @@
 {
   "version": 3,
-  "revision": 8,
+  "revision": 9,
   "characters": {
     "protagonist": {
-      "revision": 5,
+      "revision": 6,
       "kind": "protagonist",
       "canonical_name": {
         "value": null,
@@ -17,7 +17,7 @@
           "knowledge_policy": "author_reference_not_character_knowledge"
         }
       },
-      "display_name": "홍길동",
+      "display_name": "서진",
       "aliases": [],
       "source_facts": [
         {
@@ -160,19 +160,19 @@
       "display_name_metadata": {
         "addition": true,
         "kind": "new_setting",
-        "note": "사용자가 지정한 임시 주인공 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.",
+        "note": "사용자가 지정한 주인공 집필 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.",
         "knowledge_policy": "author_reference_not_character_knowledge"
       },
       "writing_name": {
         "field": "writing_name",
-        "value": "홍길동",
+        "value": "서진",
         "origin": "authored",
         "status": "proposed",
         "evidence": [],
         "metadata": {
           "addition": true,
           "kind": "new_setting",
-          "note": "사용자가 지정한 임시 주인공 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.",
+          "note": "사용자가 지정한 주인공 집필 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.",
           "knowledge_policy": "author_reference_not_character_knowledge"
         }
       },
@@ -343,7 +343,7 @@
         "master_visibility": "author_only",
         "default": "sealed",
         "public_id": "protagonist",
-        "public_display_name": "홍길동",
+        "public_display_name": "서진",
         "after_events": [
           "castle_arrival"
         ],

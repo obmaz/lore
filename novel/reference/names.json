@@ -2,8 +2,8 @@
   "version": 1,
   "characters": {
     "protagonist": {
-      "field": "writing_name", "value": "홍길동", "origin": "authored", "status": "proposed", "evidence": [],
-      "metadata": {"addition": true, "kind": "new_setting", "note": "사용자가 지정한 임시 주인공 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+      "field": "writing_name", "value": "서진", "origin": "authored", "status": "proposed", "evidence": [],
+      "metadata": {"addition": true, "kind": "new_setting", "note": "사용자가 지정한 주인공 집필 이름. 원작 고유 이름이나 음역이 아닌 추가 설정이며 나중에 변경할 수 있다.", "knowledge_policy": "author_reference_not_character_knowledge"}
     }
   },
   "equipment": {}, "abilities": {}, "bestiary": {}

@@ -21,6 +21,7 @@ class WritingTest(unittest.TestCase):
         cls.refs = load_references()
         cls.data = indexes(cls.profiles,cls.refs)
         cls.raw = literals()
+        cls.hero_name = read(ROOT/'reference/names.json')['characters']['protagonist']['value']
         cls.story = read(PILOT)
         cls.memory = read(PILOT.with_name('prologue.continuity.json'))
         cls.direct = preview_story(cls.story,cls.memory,DEFAULT_ROUTE,cls.profiles,cls.refs)
@@ -59,7 +60,8 @@ class WritingTest(unittest.TestCase):
         claim = read(ROOT/'reference/names.json')['characters']['protagonist']
         hero = self.profiles['characters']['protagonist']
         self.assertEqual(hero['writing_name'],claim)
-        self.assertEqual(claim['value'],'홍길동')
+        self.assertEqual(claim['value'],self.hero_name)
+        self.assertTrue(claim['value'])
         self.assertEqual((claim['origin'],claim['status'],claim['metadata']['kind']),('authored','proposed','new_setting'))
         self.assertIsNone(hero['canonical_name']['value'])
         self.assertIsNone(hero['korean_name']['value'])
@@ -79,19 +81,21 @@ class WritingTest(unittest.TestCase):
 
     def test_source_json_does_not_copy_mutable_hero_name(self):
         for path in [BOARD,PILOT,WRITING/'templates/quest.template.json']:
+            self.assertNotIn(self.hero_name,path.read_text())
             self.assertNotIn('홍길동',path.read_text())
-        self.assertIn('홍길동은',json.dumps(self.direct,ensure_ascii=False))
+        self.assertIn(self.hero_name+particle(self.hero_name,'은/는'),json.dumps(self.direct,ensure_ascii=False))
 
     def test_renaming_hero_updates_every_reference_and_particle(self):
         profiles = copy.deepcopy(self.profiles)
         hero = profiles['characters']['protagonist']
-        hero['writing_name']['value'] = hero['display_name'] = hero['disclosure']['public_display_name'] = '하나'
+        alternate = '하나' if self.hero_name!='하나' else '하루'
+        hero['writing_name']['value'] = hero['display_name'] = hero['disclosure']['public_display_name'] = alternate
         data = indexes(profiles,self.refs)
         before = json.dumps(self.story,ensure_ascii=False)
         values = [render(b['text'],data,self.raw,profiles,['castle_arrival','lord_briefing']) for n in self.story['nodes'] for b in n['blocks']]
-        self.assertTrue(any('하나는' in s for s in values))
-        self.assertTrue(any('하나를' in s for s in values))
-        self.assertNotIn('홍길동',''.join(values))
+        self.assertTrue(any(alternate+'는' in s for s in values))
+        self.assertTrue(any(alternate+'를' in s for s in values))
+        self.assertNotIn(self.hero_name,''.join(values))
         self.assertEqual(before,json.dumps(self.story,ensure_ascii=False))
 
     def test_weapon_and_magic_names_are_references_not_new_inventory(self):
@@ -116,13 +120,13 @@ class WritingTest(unittest.TestCase):
     def test_unknown_reference_and_fixed_names_fail(self):
         with self.assertRaisesRegex(ValueError,'unknown text reference'):
             validate_text([{'ref':{'catalog':'equipment','id':'not_a_weapon'}}],self.data,self.raw)
-        for value in ['홍길동은 걸었다.',self.refs['equipment']['items']['weapon_1']['original_name']['value']]:
+        for value in [self.hero_name+particle(self.hero_name,'은/는')+' 걸었다.',self.refs['equipment']['items']['weapon_1']['original_name']['value']]:
             with self.assertRaisesRegex(ValueError,'fixed entity name'):
                 reject_fixed_names([{'text':value}],self.data)
 
     def test_actual_draft_rejects_fixed_name(self):
         story = copy.deepcopy(self.story)
-        story['nodes'][0]['blocks'][0]['text'] = [{'text':'홍길동은 걸었다.'}]
+        story['nodes'][0]['blocks'][0]['text'] = [{'text':self.hero_name+particle(self.hero_name,'은/는')+' 걸었다.'}]
         with self.assertRaisesRegex(ValueError,'fixed entity name'):
             validate(story)
 

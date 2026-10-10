@@ -3,7 +3,7 @@
   "story_id": "lore_menace_draft_v1",
   "story_revision": 7,
   "canon_revision": 4,
-  "character_registry_revision": 8,
+  "character_registry_revision": 9,
   "contracts": {
     "assignment": {
       "before": {
@@ -46,7 +46,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "lord_ahn",
@@ -87,7 +87,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         }
       ]
     },
@@ -130,7 +130,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "lord_ahn",
@@ -190,7 +190,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "skeleton",
@@ -235,7 +235,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "skeleton",
@@ -280,7 +280,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "skeleton",
@@ -325,7 +325,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "skeleton",
@@ -374,7 +374,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "skeleton",
@@ -427,7 +427,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "skeleton",
@@ -476,7 +476,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "skeleton",
@@ -544,7 +544,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "lord_ahn",
@@ -605,7 +605,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "lord_ahn",
@@ -664,7 +664,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "lord_ahn",
@@ -717,7 +717,7 @@
       "character_dependencies": [
         {
           "character_id": "protagonist",
-          "revision": 5
+          "revision": 6
         },
         {
           "character_id": "skeleton",
@@ -954,7 +954,8 @@
       "수감소 방문·영입 요청·병사 충돌·해당 슬롯의 이탈은 접근 조건을 검토한 뒤 별도 경로로 집필한다.",
       "동굴의 선택 금·방패 발견과 무작위 전투는 아직 집필하지 않았다. 중심부에 고정 보스를 추가하지 않았다.",
       "새 동행은 원작의 6번 슬롯을 사용하는 기본 경로다. 미작성 영입 인물과의 슬롯 교체를 허용했다고 주장하지 않는다.",
-      "다음 퀘스트 원고와 인계 entry_node는 후속 집필에서 연결한다. 원문 흐름 전체가 완료된 원고가 아니다."
+      "다음 퀘스트 원고와 인계 entry_node는 후속 집필에서 연결한다. 원문 흐름 전체가 완료된 원고가 아니다.",
+      "추가: 주인공 집필 이름 변경에 따른 참조 의존 버전을 재검토했다. 본문·원문·경로·지식은 그대로이며 장면과 사건은 승인하지 않는다."
     ],
     "approved_story_revision": null,
     "approved_canon_revision": null,

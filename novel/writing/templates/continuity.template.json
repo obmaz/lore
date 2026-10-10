@@ -3,7 +3,7 @@
   "story_id": "quest_template",
   "story_revision": 1,
   "canon_revision": 4,
-  "character_registry_revision": 8,
+  "character_registry_revision": 9,
   "contracts": {
     "entry": {
       "before": true,
@@ -15,7 +15,7 @@
       "continuity_notes": ["등장 인물·지식·상태·필수 원문을 채운 뒤 검토한다."],
       "knowledge_required": [],
       "cast": [{"character_id": "protagonist", "when": true}],
-      "character_dependencies": [{"character_id": "protagonist", "revision": 5}]
+      "character_dependencies": [{"character_id": "protagonist", "revision": 6}]
     }
   },
   "event_templates": [],

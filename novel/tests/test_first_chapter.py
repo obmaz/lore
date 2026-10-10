@@ -107,6 +107,7 @@ class FirstChapterTest(unittest.TestCase):
         authored = [b for n in self.chapter['nodes'] for b in n['blocks'] if b['kind']!='source_quote']
         self.assertTrue(all(b['provenance']['origin']=='authored' and '추가' in b['provenance']['note'] for b in authored))
         self.assertNotIn('홍길동',(ROOT/'writing/quests/lore_menace.json').read_text())
+        self.assertNotIn(read(ROOT/'reference/names.json')['characters']['protagonist']['value'],(ROOT/'writing/quests/lore_menace.json').read_text())
 
     def test_standalone_chapter_cannot_invent_prior_briefing(self):
         with self.assertRaisesRegex(ValueError,'lacks knowledge'):
