@@ -849,9 +849,7 @@ class LoreGame extends FlameGame {
           : draw.index;
       final sheet = SpriteLibrary.instance.get(isTile ? tileFontName : 'CHARA');
       final font = isTile ? activeTileFont : charaFont;
-      if (!isTile &&
-          charaFont != null &&
-          SpriteLibrary.instance.activeSkin == GraphicsSkin.original) {
+      if (!isTile && charaFont != null) {
         charaFont!.renderMaskedSprite(canvas, index, rect);
       } else if (sheet != null) {
         sheet.draw(canvas, index, rect, opaqueBackground: isTile);
@@ -920,8 +918,7 @@ class LoreGame extends FlameGame {
     RangeError.checkValueInInterval(face, 0, 55, 'source CHARA face');
 
     final charaSheet = SpriteLibrary.instance.get('CHARA');
-    if (charaFont != null &&
-        SpriteLibrary.instance.activeSkin == GraphicsSkin.original) {
+    if (charaFont != null) {
       final sourceRect = Rect.fromLTWH(
         offsetX + halfX * tileSize,
         offsetY + halfY * tileSize,

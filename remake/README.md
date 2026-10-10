@@ -7,6 +7,9 @@
 
 웹 실행: https://obmaz.github.io/lore/remake/
 
+기존 음악의 원곡 확인 결과와 미확정 항목은
+[음악 출처 기록](docs/source/music_sources.md)에 정리합니다.
+
 다른 루트 프로젝트의 코드·자산·자료를 참조하지 않습니다. 폴더 하나만 복사한
 환경에서도 Flutter SDK와 패키지를 설치해 실행·검증할 수 있습니다.
 

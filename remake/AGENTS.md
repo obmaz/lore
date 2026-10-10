@@ -7,9 +7,12 @@
   is a source-faithful LORE port with modern map rendering, UI, input and audio.
   New game rules are direct Dart ports of the original Pascal procedures.
 - On 2026-10-09 the user authorized further mobile modernization, including UI
-  data structures and battle command preparation. Keep modernization in `new_ui`
+  data structures and battle command preparation. Keep modernization in `remake/`
   and preserve explicit source replay adapters. Numeric rules, saves and RNG
   remain source-owned unless a concrete gameplay change requires otherwise.
+- Unless the user explicitly names another project, game changes belong here.
+  Work on `main`; `original/` and `novel/` are independent and must not be changed
+  or used as runtime dependencies without an explicit request.
 - Keep Pascal control flow, early exits, expression types, array bounds/indices,
   byte values, random-call order and map mutation order. Port complete procedures
   or closed source branches, including choice/battle continuations.

@@ -58437,13 +58437,6 @@
   ],
   "existing_evidence": [
     {
-      "path": "test/app_settings_test.dart",
-      "kind": "test",
-      "sha256": "05c1811a926993b01d808b1b11cb6494850414d8a483cbd9600003fcf4dc1a10",
-      "cited_source_files": [],
-      "scope": "candidate-evidence; behavioral contract linkage pending"
-    },
-    {
       "path": "test/archi_native_dos_test.dart",
       "kind": "test",
       "sha256": "4a980e375748070d01e96fd497889daa1a82ba35a72f9191d3007205a99c7f73",
@@ -59089,13 +59082,6 @@
       "path": "test/gorgon_battle_dos_test.dart",
       "kind": "test",
       "sha256": "562b6752b0760583ed9b4e4cf1f5af656c2cb6ab42ceea4e733df7cfaf7b9076",
-      "cited_source_files": [],
-      "scope": "candidate-evidence; behavioral contract linkage pending"
-    },
-    {
-      "path": "test/graphics_skin_test.dart",
-      "kind": "test",
-      "sha256": "da30e5a9189d9636339c6c690016523db874fce82ea5a6ecc3c2f9aae66d1ff7",
       "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
@@ -59851,6 +59837,13 @@
       "cited_source_files": [
         "LORECRET.PAS"
       ],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
+      "path": "test/original_presentation_test.dart",
+      "kind": "test",
+      "sha256": "5e04d3eac5f36fe74ccf92b39af42b0e732d9cf874c44cff31c8a55e2e92cf31",
+      "cited_source_files": [],
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
@@ -61974,7 +61967,7 @@
     },
     {
       "path": "lib/game/lore_game.dart",
-      "sha256": "4b2a815e62cdc5e740b39a34edda50eef331769fa0de38d52ff544c6d092c862"
+      "sha256": "55724dd3b65b6891918f597eb4168a7232dad1550b6b229eb6c9cbbeed8d38d1"
     },
     {
       "path": "lib/game/lore_world_manager.dart",
@@ -62074,7 +62067,7 @@
     },
     {
       "path": "lib/screens/main_game_screen.dart",
-      "sha256": "469a37d3c04c9d5a844dc50b1eb74693c8823b12c131819652894078bb4a973c"
+      "sha256": "b0bae24a4b0ecac44dfe32646a6da093f538f6e9f04540cfcd0650a6ea3bf8b0"
     },
     {
       "path": "lib/logic/lore_game_option.dart",
@@ -62114,7 +62107,7 @@
     },
     {
       "path": "lib/game/sprite_sheet.dart",
-      "sha256": "66016f83a503acee9b765d1562133d5d95301bacf270337432ff3ed3e2093317"
+      "sha256": "a971b88e9d132cf4224291366c8868b4c72f6bde88df4f45568b4a35b80817a8"
     },
     {
       "path": "lib/theme/retro_theme.dart",
