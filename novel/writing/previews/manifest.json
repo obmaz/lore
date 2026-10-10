@@ -22,21 +22,23 @@
     "writing/reading.json": "0b17af06abd6152ad19320374d6befa5964df115e3635d772a6d9e1f4b57e8fc",
     "tools/reading.py": "bbea82a29c345d6c5373750f9d6d680246023f3db699bab09934ff73f77927d2",
     "continuity/continuity.schema.json": "4f1688785baee9fb3ed69eb7c68c9c635954cd7d43942a2ea31e76cf42bde2bb",
-    "writing/quests/lore_menace.json": "579c545efbd07cca3e05e79fb363b30e20b5d80451a412065b046ab6efd1215c",
-    "writing/quests/lore_menace.continuity.json": "c35e2e4069c6b8ea81b5bad985272aeabc5748e73d62457d7c0025a92475e000",
-    "writing/episodes/lore_menace.json": "18f9d0828b483c9e57b88329f8839a3331fb6dd0d99ebb6e6a9d398a5eef502e"
+    "writing/quests/lore_menace.json": "4f62ae28cfb08a65991b91de5421a8938d58acf5b94280a24adeed6e2a4dece7",
+    "writing/quests/lore_menace.continuity.json": "0215ea2ac785babd7f01112e9840b2ceee68ba4152c816a5777e51fa5426c2ad",
+    "writing/episodes/lore_menace.json": "78ed10ada2326ee98d7f311e8177ca23fe7ab6a55de754bd4b1a8301697001d4"
   },
   "artifacts": {
     "storyboard.html": "2d8f70bbdccb9f138a8c11b4fe9afb024f29b4b36fbcc1c231ccb6730fe5d98a",
     "prologue.html": "b4c9394a6026f4e4dbd3b169500ee219fdd43808ec5544ed5302f292b230df7e",
     "prologue-tavern.html": "c1dd6a72957a95b298c174f6e79ce165913e633ab5f8fbb92a3471ac343c7775",
-    "first-journey.html": "86f10c11c1cb72664eb12dc7f4c38dea5073d01aa210983557e85bdfb02ec86d",
-    "first-journey-declined.html": "bffecdfe33534e7cacfd8151621223a64d9ed94126228ad7dc2c4a7a5b636cee",
-    "first-journey-tavern.html": "82cf41b4d96e566b47ad20e0bc18c7f66cab65d6d2e3e662e8c7a3bf3fa2147c",
-    "first-journey-tavern-declined.html": "7060a2f59f1eed0d070c06f4f13c6707954066aca6bbb257ed0cac182ebd020b",
+    "first-journey.html": "099d95dd94b97ce51c7b6fb2eef34945fdf492edd5cc47e8e7749fd7436759b9",
+    "first-journey-declined.html": "caf7823b835a61d7707c639c885148754df06c1fde11c7afdc17d6108e6db245",
+    "first-journey-tavern.html": "a2ac6ea74a1ef086dceb62b4b4634b7beedecc67056e344757bf06fc8452f17b",
+    "first-journey-tavern-declined.html": "946c9fc40f9ae4dee61740d7a210b21c058398bc6b85f5fe4f534051f7d0a41b",
     "menace-01.html": "dd0e084098f45d40aafcbba582429f0ece41d58317ec0bc6a4a4cbe97110cb37",
     "menace-01-tavern.html": "26181919b33fcfe8a0101705b8a119fd6067b94d1737122d48560a6627f231f9",
     "menace-02.html": "486b84e50df2e7798148318ae4d8a8e50f348353e88bfa505a2ccdba9751c651",
-    "menace-02-declined.html": "5a6ced8e14703cb1aa4e81519e33e5c290edbf0e443f4672d81a02e918607750"
+    "menace-02-declined.html": "5a6ced8e14703cb1aa4e81519e33e5c290edbf0e443f4672d81a02e918607750",
+    "menace-03.html": "859a19cb64d34c09a63dc85410631c8c9aa8bf45f3f24b592488d21edc51825b",
+    "menace-03-declined.html": "0b798674510ac3ea5ddde526d5481f440a7c19287c61245333397c4115953715"
   }
 }
