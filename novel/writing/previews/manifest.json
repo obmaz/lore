@@ -8,8 +8,8 @@
     "reference/names.json": "f08d6d06fff5fd28bac71f8fb52771c003adf36b208d861a477a9e537ed1734b",
     "reference/terms.json": "f9d763745b945dd0578d8d664cd5eedb7b7422490cbd6f885568b081bcf4b8fb",
     "continuity/canon.json": "02392cb0559da1ed83b8deda9f33642e926d94bf9b46b54143dad227e73d5705",
-    "writing/project.json": "955b0192b3196f45100470110547901956718db8fbe654c41c253dc9621680cf",
-    "tools/writing.py": "4855cae409c5614acbf2b4a2e50ca670e226d03085cae537e48af94caa3b4ff7",
+    "writing/project.json": "893815b31ec340d232bfc85488eb1ae88ffcae2a72ed3beac9bc1258b5e7b18f",
+    "tools/writing.py": "a0d1917cab5ffcba24c468650b9ff1e29873759227b91b53b5bfe3f6b30ea587",
     "tools/text_refs.py": "5298ed7528cc6fcfb723c6a26f792fc527fbe3fdd7c223066c1a4107529c5479",
     "tools/story_continuity.py": "e79b34b98a0726ef9d741a5bc1d47fdb6a1fb7cf9a1a013e01150d71af53c528",
     "tools/disclosure.py": "562d46cd711305fd4c0419485015fe22a0bb1eda8a515518e75ffe9c25a4711f",
@@ -19,19 +19,22 @@
     "reference/equipment.json": "baed624f2f6938c18db37c666df65ad4ac3e9c759aa26c2261db401999a86833",
     "reference/abilities.json": "fa6f36f6a77f18a459a27f7aee9380bd5a64d0f2281d0c7639eb53bacf04052b",
     "reference/bestiary.json": "71109bf40892a83dc7094c3a830ed5f1973a7153fbc007290ec0da68aaf838fe",
-    "writing/reading.json": "29e23fed292a10ad0f2789a9ed126f00e4ea2b862a78bc91781c7e91cb4d6182",
+    "writing/reading.json": "0b17af06abd6152ad19320374d6befa5964df115e3635d772a6d9e1f4b57e8fc",
     "tools/reading.py": "bbea82a29c345d6c5373750f9d6d680246023f3db699bab09934ff73f77927d2",
     "continuity/continuity.schema.json": "4f1688785baee9fb3ed69eb7c68c9c635954cd7d43942a2ea31e76cf42bde2bb",
-    "writing/quests/lore_menace.json": "72e9f2b04521297353a7a902be0b176c1c78472e7866bb8e252502e96a722660",
-    "writing/quests/lore_menace.continuity.json": "4fa6af0e7518c9c3f7ebe8f795d7722c0e834f083ed2e0cfd54169ad9d4d6cd4"
+    "writing/quests/lore_menace.json": "cf874a21f9256e76acecfba82ba568875c70107c700cff625b4dee5578baae0e",
+    "writing/quests/lore_menace.continuity.json": "dbfbefa7dd42c401c2378af9d5386c83ab4c750a0136ec7a1a0651ce2ae89c77",
+    "writing/episodes/lore_menace.json": "3528d772e916f893255fb04ab337b74ddf1d577e0a952c29db61803edf40b63d"
   },
   "artifacts": {
     "storyboard.html": "2d8f70bbdccb9f138a8c11b4fe9afb024f29b4b36fbcc1c231ccb6730fe5d98a",
     "prologue.html": "b4c9394a6026f4e4dbd3b169500ee219fdd43808ec5544ed5302f292b230df7e",
     "prologue-tavern.html": "c1dd6a72957a95b298c174f6e79ce165913e633ab5f8fbb92a3471ac343c7775",
-    "first-journey.html": "9c5bb119ee4b6003939936b4eadbdd5ecfae9979db4514052c4fb3ef7dd54f5a",
-    "first-journey-declined.html": "518b66b5a4d728b00c51c97471d9d7eabe347089889f26fb529811fce2b7890d",
-    "first-journey-tavern.html": "770b0f1fb839c66ab31221f7e8af42a93df3ab78c2203eb4820ab4cc090bb968",
-    "first-journey-tavern-declined.html": "7c06f8360e84817f017951d49e4a5986cac7edb41f04f60625ee7da95a4584d5"
+    "first-journey.html": "808e78200d4828a74dce21bb23abcbd026b9314d2e3fcb995746168f08dbba52",
+    "first-journey-declined.html": "c179e0d15460dce904087b3063357aa34978a43f821c09a81258834aadb19366",
+    "first-journey-tavern.html": "08f703f421d071a51c14d182c480fc3e44ad9a1e6c19f0c2bfa3d56efb8aa1ce",
+    "first-journey-tavern-declined.html": "70a8d7526fa1675ff1f164f0d58abb65cafbcd1a676985fafb40bc36c8901697",
+    "menace-01.html": "dd0e084098f45d40aafcbba582429f0ece41d58317ec0bc6a4a4cbe97110cb37",
+    "menace-01-tavern.html": "26181919b33fcfe8a0101705b8a119fd6067b94d1737122d48560a6627f231f9"
   }
 }

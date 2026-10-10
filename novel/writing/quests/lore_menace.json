@@ -15,7 +15,7 @@
         "text": "첫 탐사 의뢰, 성을 떠날 때의 동행 선택, 지하 동굴 중심부 확인과 귀환 보고. 다음 성의 의뢰 직전까지."
       }
     ],
-    "revision": 1,
+    "revision": 2,
     "reference_text": true,
     "source_catalog": "materials/scripts.json",
     "character_registry": "characters/registry.json"
@@ -162,7 +162,7 @@
       "id": "assignment",
       "title": [
         {
-          "text": "능력을 증명하는 일"
+          "text": "1-1 · 돌아오겠다는 말"
         }
       ],
       "kind": "scene",
@@ -186,7 +186,7 @@
           "when": true,
           "text": [
             {
-              "text": "짧은 침묵 끝에 성주는 부탁의 크기를 줄였다. 세계를 구하라는 말 대신, 갈 수 있는 곳과 해야 할 일을 하나씩 꺼내 놓았다. "
+              "text": "성주는 대답하지 않았다. 창 쪽에서 들어온 바람이 방 안의 더운 공기를 조금 밀어냈다. "
             },
             {
               "ref": {
@@ -196,15 +196,51 @@
               }
             },
             {
-              "text": " 그제야 듣고 있던 이야기에 자신의 발걸음이 들어갈 자리가 생기는 것을 느꼈다."
+              "text": " 손바닥을 폈다가 다시 쥐었다. 아까부터 손에 땀이 나고 있었다. 묻는 말 한마디쯤은 쉽게 할 수 있을 줄 알았는데, 막상 입 밖에 내놓고 나니 누가 주워서 돌려주었으면 좋겠다는 생각이 들었다."
             }
           ],
           "literal_ids": [],
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
+            "note": "추가: 1-1 재집필. 바람·창·더위·손의 감각과 질문 뒤의 긴장은 이 장면의 창작 묘사이며 고정 건축·기후·성격 설정이 아니다."
           }
+        },
+        {
+          "id": "request_silence", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "이제 와서 질문을 거둘 수도 없었다. 지금 저희에게 필요한 일이 무엇이냐고 물었다. 정말로 아무 일도 주지 말아 달라는 뜻이었다면, 훨씬 다른 말을 했어야 했다. 옆에서 누군가 발을 고쳐 디뎠다. 돌바닥을 스치는 소리가 조용한 방 안에서는 지나치게 크게 들렸다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 대답을 기다리는 시간과 익명 일행의 작은 움직임. 동료의 신원·고정 성향은 정하지 않는다."}
+        },
+        {
+          "id": "request_floor", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"ref": {"catalog": "characters", "id": "protagonist", "particle": "은/는"}}, {"text": " 시선을 내렸다. 발끝 가까이 바닥의 금이 하나 보였다. 가늘게 갈라진 선은 두 돌 사이를 비껴가다가 신발 아래에서 사라졌다. 그는 잠시 그 끝을 찾았다. 바닥을 보고 있으면 적어도 성주와 눈을 마주치지 않아도 되었다. 그러다 자신이 무엇을 하고 있는지 깨닫고, 서둘러 고개를 들었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 접견실 바닥과 시선 회피의 순간 묘사. 신발 종류나 성의 영구 구조를 설정하지 않는다."}
+        },
+        {
+          "id": "request_lord_look", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "성주는 일행을 보고 있었다. 아까부터 같은 자리에 같은 자세로 있었을 텐데, 이번에는 그 시선이 다르게 느껴졌다. 이야기를 들려주는 사람의 눈이 아니라, 대답을 고르는 사람의 눈 같았다. 누구에게 어느 만큼을 맡길 것인지 가늠하는 동안, 맡겨질 쪽은 자신이 그 값에 못 미칠까 봐 숨을 얕게 쉬고 있었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 주인공이 느끼는 시선과 압박. 성주의 속마음을 객관적 사실로 단정하지 않는 제한적 시점이다."}
+        },
+        {
+          "id": "request_distant_name", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"ref": {"catalog": "characters", "id": "necromancer"}}, {"text": ". 그 이름을 머릿속에서 한 번 더 불러 보았다. 조금 전 성주의 설명에 나왔을 때는 너무 멀었다. 가라앉은 땅과 돌아오지 않는 사람들의 이야기 속에 있었다. 그런 이름을 상대로 자신들이 무슨 일을 할 수 있느냐고 묻고 싶기도 했다. 그러나 조금이라도 우스운 질문처럼 들릴까 봐, 이번에는 입을 다물었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 앞 장에서 들은 설명에 대한 순간적 반응. 적의 위치·정체·실제 능력은 추가로 공개하지 않는다."}
+        },
+        {
+          "id": "request_waiting_breath", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "자신도 모르게 들이마신 숨을 오래 붙들고 있었다. 천천히 내쉬려는데 목이 먼저 움직였다. 마른침이 잘 넘어가지 않았다. 성주가 그 소리를 들었을까. 괜히 입술을 다물었다가, 그렇게 한다고 소리가 없었던 일이 되는 것은 아니라는 생각에 턱의 힘을 풀었다. 방금 한 질문에 대답을 듣는 것뿐이었다. 아직 어디로 떠난 것도 아니었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 기다림을 몸의 감각으로 펼친 연결 서사. 고정 질병이나 체질 설정이 아니다."}
+        },
+        {
+          "id": "request_lord_motion", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "성주가 입을 열었다. 첫마디를 듣자 바닥의 금도, 옆에서 났던 소리도 멀어졌다. 남서쪽이라는 방향이 나왔다. 동굴이라는 장소가 뒤따랐다. 앞선 이야기에 비하면 작고 또렷한 말들이었다. 그 안으로 사람의 발이 들어갈 수 있을 것 같았다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["assignment"], "note": "추가: 이어지는 원문 의뢰를 듣는 감각. 새 원문 대사나 실제 지형·경로 정보는 추가하지 않는다."}
         },
         {
           "id": "request_quote",
@@ -310,7 +346,7 @@
           "when": true,
           "text": [
             {
-              "text": "능력을 증명하라는 말이 마음에 걸렸다. 자신들을 모른다는 것은 틀린 말이 아니었다. 여기서 나눈 짧은 대화로는 서로를 믿을 이유가 없었다. 다만 돌아와야 할 곳과 확인해야 할 일이 생겼다. 아직은 그것으로 충분했다."
+              "text": "말이 끝났는데도 동굴이라는 낱말이 귀에 남았다. 들어가는 순간 빛이 등 뒤로 밀려나고, 조금 더 걸으면 등 뒤의 빛도 없어질 것이다. 보지도 않은 입구가 먼저 떠올랐다. 중심부라는 말은 그 어둠의 한가운데를 가리키는 듯했다. 그는 손가락을 펴서 옷자락에 문질렀다. 손에 땀이 난 채로 어디를 붙들고 싶지는 않았다."
             }
           ],
           "literal_ids": [],
@@ -331,7 +367,7 @@
           },
           "text": [
             {
-              "text": "주점에서 들었던 사람들의 이름 없는 빈자리가 떠올랐다. 떠난 이들은 돌아오지 않았다고 했다. 그 말은 이번 부탁을 거절할 이유도, 받아들일 이유도 될 수 있었다. "
+              "text": "주점에서 들었던 목소리가 불쑥 끼어들었다. 친구들이 돌아오지 않았다고 말하던 사람. 그는 친구들의 이름을 하나하나 들려주지는 않았다. 그런데도 "
             },
             {
               "ref": {
@@ -341,7 +377,7 @@
               }
             },
             {
-              "text": " 자신이 들은 말과 앞으로 볼 것을 섞지 않기로 했다."
+              "text": " 그 자리에 남겨진 얼굴을 떠올렸다. 술잔보다 오래 붙들고 있는 이야기가 있다는 것은 그때 알았다. 지금 이 방에서 선뜻 가겠다고 말하고 나면, 누군가는 또 기다리는 쪽에 서게 될까. 그는 눈을 한번 감았다가 떴다."
             }
           ],
           "literal_ids": [],
@@ -350,6 +386,84 @@
             "source_refs": [],
             "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
           }
+        },
+        {
+          "id": "request_after_recoil", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "성주의 마지막 말은 무기고에 관한 것이었다. 필요한 무기를 가져가도 좋다. 그 대목에서 마음이 잠깐 가벼워졌다가, 곧 더 무거워졌다. 무기를 말한다는 것은 그만큼 다칠 수도 있다는 뜻처럼 들렸다. 동굴을 보고 오라는 부탁이 산책은 아니었다. 말로 들을 때에는 입구에서 중심까지가 한 호흡이었지만, 실제로 걸어갈 때도 그럴 리는 없었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["assignment"], "note": "추가: 무기고 허가에 대한 주인공의 긴장. 무기를 지급하거나 전투를 확정한 장면이 아니다."}
+        },
+        {
+          "id": "request_question_gather", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"ref": {"catalog": "characters", "id": "protagonist", "particle": "은/는"}}, {"text": " 옆을 돌아보았다. 자신과 함께 온 사람들은 여전히 그곳에 서 있었다. 이 부탁을 들은 것은 자기 혼자가 아니었다. 방금까지는 성주 앞에서 무슨 대답을 해야 할지가 문제였는데, 이제는 대답한 뒤 이 사람들과 어디로 가게 되는지가 문제였다. 눈길을 되돌리면서 그는 조금 천천히 말했다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 익명 시작 일행의 존재와 발화 전 동작. 신원·직업·장비·관계를 임의 확정하지 않는다."}
+        },
+        {
+          "id": "request_scope_question", "kind": "dialogue", "speaker": "protagonist", "when": true,
+          "text": [{"text": "그곳에서 싸워야 한다는 말씀입니까?"}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["assignment"], "note": "추가: 의뢰 범위를 확인하는 새 질문. 원작에 없는 대사이며 전투 조건을 새로 설정하지 않는다."}
+        },
+        {
+          "id": "request_scope_wait", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "입 밖에 나온 말은 생각했던 것보다 짧았다. 피할 수 있습니까, 라고 묻고 싶었던 것인지도 몰랐다. 꼭 해야 합니까, 라는 말을 돌려 한 것 같기도 했다. 성주가 대답하기 전에 덧붙일 말들을 골라 보았지만, 어느 것도 처음 말보다 나아 보이지 않았다. 그는 입을 다물고 기다렸다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 질문 직후의 망설임. 전편에 걸친 고정 겁쟁이 성향을 부여하지 않는다."}
+        },
+        {
+          "id": "request_scope_answer", "kind": "dialogue", "speaker": "lord_ahn", "when": true,
+          "text": [{"text": "내가 부탁한 것은 탐사요. 중심부까지 가 주시오."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["assignment"], "note": "추가: 원문 의뢰를 재확인하는 창작 답변. 적·보스 처치나 안전·귀환 보장을 덧붙이지 않는다."}
+        },
+        {
+          "id": "request_scope_face", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "성주는 곧바로 안심시키는 말을 보태지 않았다. 위험하지 않다거나, 금방 다녀올 수 있다거나. 그런 말 하나쯤을 기다리고 있었던 것 같아 그는 머쓱해졌다. 중심부까지. 같은 말인데 이번에는 조금 단단하게 들렸다. 어디를 가리키는 말인지 모르는 채로도, 거기까지 걸어야 한다는 것은 알아들을 수 있었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 답변에 기대했던 안심이 오지 않는 순간. 원작 접근 조건과 적 배치를 변화시키지 않는다."}
+        },
+        {
+          "id": "request_proof_sting", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "능력을 증명해 달라는 말도 늦게 걸렸다. 처음 들었을 때는 목적지에 정신이 팔려 흘려보냈는데, 이제는 그 말만 한 걸음 뒤에서 따라붙었다. 자신들을 믿지 못한다는 뜻일까. 성주 쪽을 보자 곧 다른 생각이 들었다. 자기 역시 이 방에 들어서기 전에는 성주가 어떤 사람인지 몰랐다. 잠깐 이야기를 나누었다고 해서 그 모르는 부분이 전부 사라진 것은 아니었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["assignment"], "note": "추가: 능력 증명의 요청에 대한 즉각적 감정. 성주의 선악이나 배후 관계를 암시·확정하지 않는다."}
+        },
+        {
+          "id": "request_proof_question", "kind": "dialogue", "speaker": "protagonist", "when": true,
+          "text": [{"text": "저희가 돌아오면, 그때는 믿으실 수 있습니까?"}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["assignment"], "note": "추가: 신뢰를 확인하고 싶은 주인공의 새 대사. 신뢰 수치나 새 보상 조건을 만들지 않는다."}
+        },
+        {
+          "id": "request_proof_blush", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "묻고 나니 재촉처럼 들렸다. 아직 한 발짝도 가지 않았으면서 돌아온 뒤의 대접부터 정해 달라는 사람 같았다. 얼굴이 조금 뜨거워졌다. 그는 아니, 그런 뜻은 아니고, 하고 말을 고칠 뻔했다. 하지만 처음 한 질문도 그렇게 주워 담고 싶었는데, 이번 것까지 주워 담으면 정작 하고 싶은 말은 하나도 남지 않을 것 같았다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 발화 뒤 당혹감과 내적 말 고르기. 나이·외모·고정 말투 설정을 추가하지 않는다."}
+        },
+        {
+          "id": "request_proof_answer", "kind": "dialogue", "speaker": "lord_ahn", "when": true,
+          "text": [{"text": "우선 돌아와서 이야기합시다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["assignment"], "note": "추가: 장면의 새 응답. 이후 보고·보상 사건을 미리 실행하거나 숨은 동기를 확정하지 않는다."}
+        },
+        {
+          "id": "request_return_weight", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "돌아와서. 그 말에 그는 처음으로 성주 뒤가 아니라 자기 뒤를 생각했다. 이 방으로 들어온 길, 복도, 성 안에서 스쳐 지나온 얼굴들. 방금까지 모두 출발 전의 풍경이었는데, 대답 하나를 사이에 두고 돌아왔을 때 다시 볼 것들이 되었다. 돌아올 수 있을까, 하는 생각은 입 밖에 내놓지 않았다. 대신 들이마신 숨을 끝까지 내쉬었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 귀환이라는 말에 연결된 감각과 생각. 미래 귀환의 성공·기다리는 인물을 사전에 확정하지 않는다."}
+        },
+        {
+          "id": "request_readiness", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"ref": {"catalog": "characters", "id": "protagonist", "particle": "은/는"}}, {"text": " 다시 곁의 사람들을 보았다. 누군가 그의 눈길을 받고 자세를 바로 했다. 누군가는 문 쪽으로 고개를 돌렸다가 되돌아왔다. 모두가 같은 생각을 하고 있는지는 알 수 없었다. 그래도 조금 전보다 가까이 서 있는 듯했다. 혼자 앞에 나서서 기다리는 기분이 덜했다. 그는 자신이 서 있던 자리를 반 발짝 고쳐 잡았다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 익명 일행의 순간적 몸짓. 전원의 동의·영입·관계 상승을 시스템 사실로 기록하지 않는다."}
+        },
+        {
+          "id": "request_dry_mouth", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "입안은 여전히 말라 있었다. 무언가 대단한 말을 해야 하는 자리 같았지만 대단한 말은 하나도 떠오르지 않았다. 성주를 보면서 준비된 문장을 기다렸다. 나라를 위해서라거나, 반드시 적을 쓰러뜨리겠다거나. 어느 말을 골라도 자신의 목소리로 들리지 않을 것 같았다. 결국 아까 들은 부탁에서 딱 한 부분만 꺼냈다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 큰 맹세 대신 현재 의뢰에 답하는 장면. 새 충성·직업·능력을 부여하지 않는다."}
         },
         {
           "id": "request_reply",
@@ -375,7 +489,7 @@
           "when": true,
           "text": [
             {
-              "text": "누구를 쓰러뜨리겠다는 말은 하지 않았다. 멀리 있는 적의 이름보다 지금 자신이 지킬 수 있는 약속을 고르고 싶었다. 성주는 대답을 듣고 고개를 끄덕였다."
+              "text": "말하고 나서 그는 잠깐 기다렸다. 자기 목소리가 방 안에서 잦아들 때까지. 대답이 너무 평범했나 싶기도 했다. 그러나 더 보태지는 않았다. 성주는 고개를 끄덕였고, 그제야 옆에 선 일행도 조금씩 움직였다. 오래 같은 자세로 서 있었던 모양이다. 그 역시 어깨를 느슨하게 했다. 목덜미가 뻐근했다."
             }
           ],
           "literal_ids": [],
@@ -384,6 +498,30 @@
             "source_refs": [],
             "note": "추가: 장면 연결·행동·심리·새 대사는 집필용 창작 제안이다. 원작 고정 설정이 아니다."
           }
+        },
+        {
+          "id": "request_unfinished_fear", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "어깨를 내린다고 겁까지 내려가지는 않았다. 동굴의 안쪽을 생각하면 아직 가슴이 답답했다. 그런데도 아까처럼 무슨 말을 해야 할지 몰라서 답답한 것은 아니었다. 남서쪽으로 가면 된다. 동굴을 찾으면 된다. 그다음 일은 그다음에 눈앞에 닥칠 것이다. 그는 목적지를 속으로 되풀이했다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": ["assignment"], "note": "추가: 수락 직전의 남은 긴장. 실제 탐사·접근·보상 상태를 미리 바꾸지 않는다."}
+        },
+        {
+          "id": "request_name_repeated", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"ref": {"catalog": "terms", "id": "menace"}}, {"text": ". 아직 입구도 본 적 없는 곳의 이름이었다. 다른 사람에게서 들었을 때는 그저 낯설었는데, 지금은 입 안에서 몇 번이고 굴리게 되었다. 중심부까지 간다는 말을 했으니 적어도 이름만은 잊어서는 안 되겠지. 그런 엉뚱한 생각에 그는 아주 잠깐 웃을 뻔했다. 웃음은 나오지 않았지만 턱의 힘이 조금 풀렸다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 이름을 되뇌는 순간과 작은 자조. 지명은 ID로 참조하고 고정 성향을 새로 확정하지 않는다."}
+        },
+        {
+          "id": "request_looking_back", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"text": "성주에게 인사를 하고 몸을 돌리자 아까 보았던 바닥의 금이 다시 나타났다. 이번에는 그 끝을 찾지 않았다. 한 걸음 내디디면 발 아래로 사라질 선이었다. 등 뒤에 남은 방은 조금 전과 같았고, 앞에 선 사람들도 달라지지 않았다. 달라진 것은 이제 그들 모두에게 갈 곳이 생겼다는 것뿐이었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 같은 감각으로 장면을 닫는 창작 동작. 성 출구 사건이나 다음 소편의 이동은 아직 집필하지 않는다."}
+        },
+        {
+          "id": "request_last_word", "kind": "narration", "speaker": null, "when": true,
+          "text": [{"ref": {"catalog": "characters", "id": "protagonist", "particle": "은/는"}}, {"text": " 문 쪽으로 걸으며 방금 한 말을 다시 생각했다. 중심부까지 확인하고 돌아오겠습니다. 앞부분을 말할 때는 성주를 보고 있었다. 끝부분을 말할 때 어디를 보고 있었는지는 기억나지 않았다. 다만 돌아오겠다는 그 짧은 말이, 문을 향하는 동안 자꾸 발걸음을 붙들었다."}],
+          "literal_ids": [],
+          "provenance": {"origin": "authored", "source_refs": [], "note": "추가: 1-1 끝의 감정과 걸음. 성공을 보장하거나 다음 사건을 발생시킨 기록이 아니다."}
         }
       ],
       "choices": [
@@ -426,11 +564,11 @@
       "handoff": null,
       "editorial": {
         "status": "draft",
-        "intent": "부탁을 듣는 사람에서 돌아와 보고하는 사람으로 넘어가는 첫 퀘스트 초고",
+        "intent": "1-1: 성주의 첫 탐사 부탁을 듣고 귀환을 약속하기까지 한 장면을 충분히 펼친 재집필 초고",
         "source_refs": [
           "assignment"
         ],
-        "notes": "추가: 내면·몸짓·길의 감각·새 대화·합류 후 상호작용. 미정 나이/직업/초기 장비/네 동료의 고유 설정을 확정하지 않는다."
+        "notes": "추가: 방의 감각·시선·침묵·신체 반응·의뢰 확인 질문과 답변은 창작. 첫 소편만 재집필했으며 나머지 장면은 짧은 구조 초고 상태다. 미정 나이/직업/초기 장비/동료 신원은 확정하지 않는다."
       }
     },
     {

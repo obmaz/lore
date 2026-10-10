@@ -31,6 +31,26 @@
         {"file": "prologue.json", "route": ["enter_courtyard", "visit_tavern", "remember_veteran", "visit_lord", "hear_lord_intro", "hear_lord_briefing"]},
         {"file": "lore_menace.json", "route": ["receive_assignment", "leave_castle", "decline_skeleton", "set_out", "enter_menace", "walk_deeper", "confirm_center", "return_to_lore", "report_success", "acknowledge_reward", "hear_next_task", "leave_audience"]}
       ]
+    },
+    "menace-01": {
+      "title": [{"text": "1-1 · 돌아오겠다는 말"}],
+      "note": "이번에 재집필한 소편만 읽는 문체 시범. 성주 직행 경로의 이전 기억은 그대로 계산하고, 첫 의뢰 수락에서 멈춘다.",
+      "focus_nodes": ["lore_menace/assignment"],
+      "review_notes": ["감각·대화·머뭇거림을 펼친 약 4천 자의 초고. 새 묘사와 질문·답변은 창작이다.", "1-2부터 1-6까지는 아직 긴 문체로 재집필하지 않았다. 이번 소편에 대한 문체 피드백 뒤 이어 쓴다."],
+      "parts": [
+        {"file": "prologue.json", "route": ["enter_courtyard", "visit_lord", "hear_lord_intro", "hear_lord_briefing"]},
+        {"file": "lore_menace.json", "route": ["receive_assignment"]}
+      ]
+    },
+    "menace-01-tavern": {
+      "title": [{"text": "1-1 · 돌아오겠다는 말"}],
+      "note": "주점에 들렀던 경로의 같은 소편. 들은 증언의 기억이 의뢰 장면에 남는다. 이후 동행 선택·탐사는 아직 재생하지 않는다.",
+      "focus_nodes": ["lore_menace/assignment"],
+      "review_notes": ["주점 경로의 기억 문단을 포함한 약 4천3백 자의 재집필 초고. 새 감각과 대화는 창작이다.", "다음 소편은 성문 앞의 첫 동행 요청이다. 전체 장의 완성으로 표시하지 않는다."],
+      "parts": [
+        {"file": "prologue.json", "route": ["enter_courtyard", "visit_tavern", "remember_veteran", "visit_lord", "hear_lord_intro", "hear_lord_briefing"]},
+        {"file": "lore_menace.json", "route": ["receive_assignment"]}
+      ]
     }
   }
 }

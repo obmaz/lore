@@ -23,6 +23,8 @@ novel/
 
 ## 먼저 읽을 자료
 
+- [1-1 · 돌아오겠다는 말](writing/previews/menace-01.html): 이번에 약 4천 자로 다시 쓴 첫 소편.
+  한 번에 한 소편씩 집필하고 문체를 검토한다. [여섯 소편의 작업 목록](writing/episodes/lore_menace.json).
 - [writing/README.md](writing/README.md): 전편 보드·도입부 시범 원고·공용 템플릿과 이름 참조.
 - [exports/README.md](exports/README.md): JSON 대신 참고용 HTML/PDF로 읽는 방법. 작가용 전체 설정과 공개 범위 미리보기를 분리한다.
 - [materials/quests.json](materials/quests.json): 18개 집필 단위와 공통 부록의 목록·연결.

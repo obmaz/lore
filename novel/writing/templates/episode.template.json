@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "quest_file": "prologue.json",
+  "purpose": "small_batch_authoring_not_game_runtime",
+  "units": [
+    {
+      "id": "episode_id",
+      "title": [{"text": "소편 번호 · 제목"}],
+      "node_ids": ["entry"],
+      "status": "outline",
+      "target_chars": [3500, 6500],
+      "focus": "한 장소·한 대화·한 발견처럼 이번에 실제로 펼칠 장면을 적는다.",
+      "stop_after": "장면의 어떤 행동이나 선택에서 멈출지 적는다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "소편 제목·분량·묶음·감정선은 집필용 창작 구성 제안이다. 원작의 강제 챕터 구분이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "notes": ["quest_file과 node_ids를 새 원고에 맞춘다. 원문·본문·사건 기록을 복제하지 않는다. 한 소편을 검토한 뒤 다음 소편을 쓴다."]
+}

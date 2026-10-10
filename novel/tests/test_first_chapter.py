@@ -25,7 +25,7 @@ class FirstChapterTest(unittest.TestCase):
         cls.tavern = cls.packet_for(cls.tavern_route)
 
     def test_four_review_routes_end_at_next_quest_boundary(self):
-        self.assertEqual(len(self.recipes),4)
+        self.assertEqual(len([k for k in self.recipes if k.startswith('first-journey')]),4)
         for route in [self.route,self.declined_route,self.tavern_route,[c.replace('accept_skeleton','decline_skeleton') for c in self.tavern_route]]:
             packet = self.packet_for(route)
             self.assertEqual(packet['handoff_packet']['quest_id'],'lastditch_pyramid')
@@ -98,7 +98,7 @@ class FirstChapterTest(unittest.TestCase):
 
     def test_partial_coverage_and_added_prose_are_not_auto_approved(self):
         result = validate_story(self.chapter)
-        self.assertEqual((result['nodes'],result['choices'],result['blocks']),(14,15,54))
+        self.assertEqual((result['nodes'],result['choices'],result['blocks']),(14,15,77))
         self.assertEqual(result['coverage'],'partial')
         self.assertEqual(result['unaccounted_scoped_literals'],0)
         self.assertEqual(self.accepted['committed_events'],[])

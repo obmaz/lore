@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "quest_file": "lore_menace.json",
+  "purpose": "small_batch_authoring_not_game_runtime",
+  "units": [
+    {
+      "id": "menace-01", "title": [{"text": "1-1 · 돌아오겠다는 말"}],
+      "node_ids": ["assignment"], "status": "revised_draft", "target_chars": [3500, 6500],
+      "focus": "성주의 부탁 앞에서의 침묵, 몸의 긴장, 의뢰 범위를 묻는 대화와 첫 약속을 장면으로 펼친다.",
+      "stop_after": "의뢰를 받아들이고 접견을 마치는 순간. 성 출구의 새로운 만남은 다음 소편이다.",
+      "origin": "authored",
+      "metadata": {"addition": true, "kind": "new_setting", "note": "제목·묶음·분량·감정선은 집필용 창작 구성. 1-1만 재집필한 미승인 시범이다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+    },
+    {
+      "id": "menace-02", "title": [{"text": "1-2 · 성문 앞의 목소리"}],
+      "node_ids": ["preparation", "reminder", "castle_exit", "departure_path"], "status": "structural_draft", "target_chars": [3500, 6500],
+      "focus": "떠나기 전 준비와 첫 동행 요청. 증언을 듣는 것과 동행을 허락하는 것을 분리해 수락·거절을 펼친다.",
+      "stop_after": "선택에 따른 현재 동료를 확정하고 성을 떠날 때. 길 위의 대화는 다음 소편이다.",
+      "origin": "authored",
+      "metadata": {"addition": true, "kind": "new_setting", "note": "원문 사건의 소편 묶음과 감정선은 창작 제안. 현재는 짧은 구조 초고이며 긴 재집필은 아직 하지 않았다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+    },
+    {
+      "id": "menace-03", "title": [{"text": "1-3 · 빛이 남아 있는 곳"}],
+      "node_ids": ["road", "cave_entry"], "status": "structural_draft", "target_chars": [3500, 6500],
+      "focus": "남서쪽 이동과 동굴 문턱. 이전에 들은 이야기와 함께 걷는 사람이 다른 경로를 섞지 않는다.",
+      "stop_after": "동굴 안으로 들어가는 결정을 한 순간. 중심부 발견은 다음 소편이다.",
+      "origin": "authored",
+      "metadata": {"addition": true, "kind": "new_setting", "note": "장면 묶음과 제목은 창작 제안. 현재는 짧은 구조 초고이며 긴 재집필은 아직 하지 않았다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+    },
+    {
+      "id": "menace-04", "title": [{"text": "1-4 · 어둠의 중심"}],
+      "node_ids": ["cave_walk", "center"], "status": "structural_draft", "target_chars": [3500, 6500],
+      "focus": "안으로 걷는 시간과 중심부 확인. 원문에 없는 고정 보스를 긴장 해결 장치로 만들지 않는다.",
+      "stop_after": "확인한 것을 가지고 돌아가기로 한 순간. 귀환 보고는 다음 소편이다.",
+      "origin": "authored",
+      "metadata": {"addition": true, "kind": "new_setting", "note": "장면 묶음과 제목은 창작 제안. 현재는 짧은 구조 초고이며 긴 재집필은 아직 하지 않았다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+    },
+    {
+      "id": "menace-05", "title": [{"text": "1-5 · 돌아온 사람들"}],
+      "node_ids": ["return_road", "report"], "status": "structural_draft", "target_chars": [3500, 6500],
+      "focus": "귀환하는 길, 보고할 말을 고르는 시간과 성공 인정. 분기별 동료와 주점의 기억을 이어 쓴다.",
+      "stop_after": "탐사 보고와 원문 경험 보상이 끝난 순간. 다음 지역 부탁은 다음 소편이다.",
+      "origin": "authored",
+      "metadata": {"addition": true, "kind": "new_setting", "note": "장면 묶음과 제목은 창작 제안. 현재는 짧은 구조 초고이며 긴 재집필은 아직 하지 않았다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+    },
+    {
+      "id": "menace-06", "title": [{"text": "1-6 · 다음 부탁"}],
+      "node_ids": ["next_task", "farewell", "next_quest_boundary"], "status": "structural_draft", "target_chars": [3500, 6500],
+      "focus": "성주의 다음 부탁과 작별. 첫 약속의 기억을 다음 길의 감정으로 잇되 후속 지역의 진상을 미리 공개하지 않는다.",
+      "stop_after": "다음 지역으로 갈 목적을 받고 퀘스트 경계에서 멈춘다.",
+      "origin": "authored",
+      "metadata": {"addition": true, "kind": "new_setting", "note": "장면 묶음과 제목은 창작 제안. 현재는 짧은 구조 초고이며 긴 재집필은 아직 하지 않았다.", "knowledge_policy": "author_reference_not_character_knowledge"}
+    }
+  ],
+  "notes": [
+    "소편 순서는 집필 계획이다. 원작의 반복 방문·선택 동료·선택 발견 경로를 강제 선형화하지 않는다.",
+    "본문의 유일한 수정 위치는 quests/lore_menace.json이고 사건 기록은 대응 continuity 파일이다. 이 목록과 읽기본에 본문을 복사해 집필하지 않는다.",
+    "무기고·수감소·선택 보물·무작위 전투의 별도 경로는 기존 보류를 유지한다.",
+    "이번 작업은 menace-01만 재집필한다. 나머지 다섯 소편의 structural_draft는 완성이나 문체 승인 상태가 아니다."
+  ]
+}

@@ -29,11 +29,54 @@ def reading_preview(key):
     catalog = read(READING)
     if key not in catalog['routes']:
         raise ValueError('unknown reading route: '+key)
-    recipe = {**catalog['routes'][key],'title':catalog['title']}
+    recipe = copy.deepcopy(catalog['routes'][key])
+    recipe.setdefault('title',catalog['title'])
     story,memory,route = load_reading(recipe)
     result = preview_story(story,memory,route)
+    if 'focus_nodes' in recipe:
+        focus = recipe['focus_nodes']
+        if not focus or len(set(focus))!=len(focus):
+            raise ValueError('focused reading needs unique scene IDs')
+        positions = [i for i,s in enumerate(result['sections']) if s['node_id'] in focus]
+        seen = {result['sections'][i]['node_id'] for i in positions}
+        if seen!=set(focus):
+            raise ValueError('focused scene is not on the selected route')
+        # Replaying a future route then hiding its paragraphs is not a unit preview.
+        # The one permitted trailing section is the target of the final choice.
+        if max(positions)<len(result['sections'])-2:
+            raise ValueError('focused reading route continues beyond selected unit')
+        result['sections'] = [result['sections'][i] for i in positions]
+        result['open_questions'] = recipe.get('review_notes',[])
     result['reading_note'] = recipe['note']
     return result
+
+
+def validate_episode_plan(plan,story=None):
+    if plan['version']!=1 or plan['purpose']!='small_batch_authoring_not_game_runtime':
+        raise ValueError('invalid episode plan')
+    path = (WRITING/'quests'/plan['quest_file']).resolve()
+    if not path.is_relative_to((WRITING/'quests').resolve()):
+        raise ValueError('episode path escapes quests')
+    story = story if story is not None else read(path)
+    profiles = load_characters()
+    data,raw = indexes(profiles,load_references()),literals()
+    ids = [u['id'] for u in plan['units']]
+    nodes = [n for u in plan['units'] for n in u['node_ids']]
+    if not ids or len(ids)!=len(set(ids)) or len(nodes)!=len(set(nodes)):
+        raise ValueError('duplicate or empty episode units/scenes')
+    if set(nodes)!={n['id'] for n in story['nodes']}:
+        raise ValueError('episode plan must assign each quest scene once')
+    for u in plan['units']:
+        if not u['node_ids'] or u['status'] not in ('outline','structural_draft','revised_draft'):
+            raise ValueError('invalid episode scenes/status')
+        low,high = u['target_chars']
+        if not 0<low<=high:
+            raise ValueError('invalid episode length target')
+        validate_text(u['title'],data,raw); reject_fixed_names(u['title'],data)
+        validate_claim({'field':'episode_plan','value':u['title'],'origin':u['origin'],
+                        'status':'proposed','evidence':[],'metadata':u['metadata']},load_materials()[0])
+    return {'units':len(ids),'revised_drafts':sum(u['status']=='revised_draft' for u in plan['units']),
+            'note':'분량 목표와 구성 검사이지 문체 승인이나 모든 분기의 완성을 뜻하지 않는다.'}
 
 
 def validate_board(board,data=None,profiles=None):
@@ -193,6 +236,7 @@ def export_documents(output,check=False):
         for name in sorted({p['file'] for r in read(READING)['routes'].values() for p in r['parts']}):
             path = WRITING/'quests'/name
             inputs += [path,path.with_name(path.stem+'.continuity.json')]
+    inputs += sorted((WRITING/'episodes').glob('*.json'))
     manifest = {'version':1,'source_sha256':{p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs},
                 'artifacts':{name:hashlib.sha256(value.encode()).hexdigest() for name,value in docs.items()}}
     if check:
@@ -237,6 +281,8 @@ def main():
             if draft['meta'].get('reference_text') is not True:
                 raise ValueError('new writing drafts must enable reference_text')
             result['quests'][path.stem] = {**validate(draft),'needs_review':validate_continuity(draft,read(path.with_name(path.stem+'.continuity.json')),read(CANON))}
+        result['episodes'] = {p.stem:validate_episode_plan(read(p)) for p in sorted((WRITING/'episodes').glob('*.json'))}
+        result['episode_template'] = validate_episode_plan(read(WRITING/'templates/episode.template.json'),template)
     elif args.action=='preview':
         result = preview_story(read(args.story),read(args.story.with_name(args.story.stem+'.continuity.json')),args.route)
     elif args.action=='reading':
