@@ -109,12 +109,20 @@
     if (className) e.className = className;
     return e;
   }
+  function readFromSection(index) {
+    const sections = document.getElementById('manuscript').children;
+    const section = index === undefined ? sections[sections.length - 1] : sections[index];
+    section.querySelector('h2').focus({preventScroll:true});
+    section.scrollIntoView({block:'start',behavior:'instant'});
+  }
   function redraw() {
     const packet = replay(route), manuscript = document.getElementById('manuscript');
     manuscript.replaceChildren();
     for (const section of packet.sections) {
       const root = document.createElement('section');
-      root.append(element('h2',text(section.node.title,section.state)));
+      const heading = element('h2',text(section.node.title,section.state));
+      heading.tabIndex = -1;
+      root.append(heading);
       for (const b of section.blocks) {
         const p = element('p',text(b.text,section.state,b.id),b.provenance.origin === 'source_exact' ? 'quote' : '');
         p.dataset.blockId = b.id;
@@ -131,10 +139,11 @@
       button.type = 'button'; button.dataset.choice = choice.id;
       button.addEventListener('click',() => {
         try {
+          const firstNewSection = route.length + 1;
           const next = [...route,choice.id]; let notice = '';
           for (let count = 0; count < 8; count++) {
             const p = replay(next), auto = automatic(p.node.id,p.state);
-            if (!auto) { route = next; redraw(); message(notice); document.getElementById('choices').scrollIntoView({block:'center'}); return; }
+            if (!auto) { route = next; redraw(); message(notice); readFromSection(firstNewSection); return; }
             next.push(auto.choice); notice = auto.reason;
           }
           throw Error('자동 진행 반복');
@@ -152,11 +161,11 @@
     if (!current.choices.length) box.append(element('p','첫 챕터 끝. 선택한 동료·장비·경험은 다음 챕터 집필용 인계 상태로 보존됩니다. 다음 챕터 본문은 아직 없습니다.'));
     document.getElementById('back').disabled = !route.length;
   }
-  document.getElementById('restart').addEventListener('click',() => { route = []; redraw(); message('처음부터 시작합니다.'); });
+  document.getElementById('restart').addEventListener('click',() => { route = []; redraw(); message('처음부터 시작합니다.'); readFromSection(0); });
   document.getElementById('back').addEventListener('click',() => {
     const next = [...route]; next.pop();
     while (next.length && automatic(replay(next).node.id,replay(next).state)) next.pop();
-    route = next; redraw(); message('직전 선택으로 돌아왔습니다. 상태도 경로에서 다시 계산했습니다.');
+    route = next; redraw(); message('직전 선택으로 돌아왔습니다. 상태도 경로에서 다시 계산했습니다.'); readFromSection();
   });
   document.getElementById('save').addEventListener('click',() => {
     const value = JSON.stringify({fingerprint:data.fingerprint,route},null,2), a = document.createElement('a');
@@ -172,7 +181,7 @@
       if (Object.keys(saved).sort().join(',') !== 'fingerprint,route' || saved.fingerprint !== data.fingerprint) throw Error('다른 판본 또는 변조된 저장 파일입니다.');
       const packet = replay(saved.route);
       if (automatic(packet.node.id,packet.state)) throw Error('자동 진행이 누락된 저장 경로입니다.');
-      route = [...saved.route]; redraw(); message('경로를 검증하고 상태를 다시 계산했습니다.');
+      route = [...saved.route]; redraw(); message('경로를 검증하고 상태를 다시 계산했습니다.'); readFromSection();
     } catch (e) { message(e.message); }
     event.target.value = '';
   });

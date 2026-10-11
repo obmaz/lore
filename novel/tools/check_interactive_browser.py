@@ -28,6 +28,20 @@ CASES={
 }
 
 
+def assert_reading_position(page, index=-1):
+    """New prose, not its trailing choices, gets scroll and keyboard focus."""
+    position=page.evaluate('''index => {
+        const sections=document.querySelectorAll('#manuscript section');
+        const section=sections[index<0 ? sections.length+index : index];
+        const top=section.getBoundingClientRect().top+scrollY;
+        const limit=document.documentElement.scrollHeight-innerHeight;
+        return {actual:scrollY,expected:Math.min(top,Math.max(0,limit)),
+                focused:document.activeElement===section.querySelector('h2')};
+    }''',index)
+    assert position['focused'],position
+    assert abs(position['actual']-position['expected'])<=2,position
+
+
 def check():
     from playwright.sync_api import sync_playwright, expect
     session=Session()
@@ -45,7 +59,9 @@ def check():
                 page.locator('details summary').click()
                 route=[]
                 for step in steps:
+                    first_new_section=page.locator('#manuscript section').count()
                     page.locator('button[data-choice="'+step+'"]').click()
+                    assert_reading_position(page,first_new_section)
                     route,packet=session.choose(route,step)
                     current=page.locator('#manuscript section').last
                     for block in packet['visible_blocks']:
@@ -68,8 +84,10 @@ def check():
                 saved=json.loads(open(download.path(),encoding='utf-8').read())
                 assert set(saved)=={'fingerprint','route'} and saved['route']==route
                 page.locator('#restart').click()
+                assert_reading_position(page,0)
                 page.locator('#file').set_input_files({'name':'route.json','mimeType':'application/json','buffer':json.dumps(saved).encode()})
                 expect(page.locator('#message')).to_have_text('경로를 검증하고 상태를 다시 계산했습니다.')
+                assert_reading_position(page)
                 assert page.locator('#state').inner_text()==text
                 forged={**saved,'state':{'event.gold':999999}}
                 page.locator('#file').set_input_files({'name':'forged.json','mimeType':'application/json','buffer':json.dumps(forged).encode()})
@@ -79,6 +97,7 @@ def check():
                 page.locator('#file').set_input_files({'name':'stale.json','mimeType':'application/json','buffer':json.dumps(stale).encode()})
                 expect(page.locator('#message')).to_contain_text('다른 판본')
                 page.locator('#back').click()
+                assert_reading_position(page)
                 assert page.locator('#choices button').count()>0
                 assert not errors and not requests,(errors,requests)
                 results.append({'case':name,'width':width,'choices_replayed':len(route),'network_requests':len(requests)})

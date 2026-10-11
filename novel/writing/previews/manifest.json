@@ -2,7 +2,7 @@
   "version": 1,
   "source_sha256": {
     "writing/interactive/chapter01.json": "6280ccab8afa8e86dd4108e8a721bd36c2c963afb55c8f7813ca3ac7e42de452",
-    "writing/interactive/reader.js": "097b70df2458e2cbe0b25ea7a1fe43350839f7a48e880ca47c3cfc7492e13d73",
+    "writing/interactive/reader.js": "91450f3025dc10570ffbb5adba8855ab75731bfee5b0202669e4048bfb95dc17",
     "writing/interactive/overlay.schema.json": "3e100de195f94c12de8dc416e921efbf4c193c3e52f05c8626d11a03a888175f",
     "tools/interactive.py": "994a96e05e3af702461d8996857a59f021936080ca3dc7c1cbddcee810773208",
     "writing/storyboard/series.json": "ef7efd9026b4def686f2c092ea14282c291b8b18b9e9ca2178dc2ea53b326a60",
@@ -50,7 +50,7 @@
     "menace-05-declined.html": "d5b6123c7b46cb6b7bc91c0110bfda7dfb4fe0a954c5876be4fa03c63d9739b3",
     "menace-06.html": "d3c91c22f19d3aab0004ba225daa0ad6e3aedeec2672cc3e59a78c945cd3f89e",
     "menace-06-declined.html": "02a3a6eda9b38e9ec5fc98fa1ac4a8e5ef1f97c5c2f9629c4b9562e83cb21c5c",
-    "chapter01-interactive.html": "ffc33f84e5af11f368bf14a1492db1cbed003d9c3287c4df285b57be2113ee11",
+    "chapter01-interactive.html": "39c9227f4561fd2c30e13e7efa8dc81e158876e260436e660d7440abc041e438",
     "chapter01-branches.html": "3c299a7f14b2678d4e550157da587d52b1ecf268092248c81aeace5c65b16367",
     "chapter01-coverage.json": "e276f7ecedaede698c7ab53633ac8eb509316545b0b74ab44c6ab9ca90856b0e"
   }
