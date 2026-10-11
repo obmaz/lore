@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "kind": "series",
   "visibility": "author_only",
   "status": "outline",
@@ -243,7 +243,10 @@
               "text": "다음 성주의 의뢰를 듣고 "
             },
             {
-              "ref": {"catalog": "terms", "id": "pyramid"}
+              "ref": {
+                "catalog": "terms",
+                "id": "pyramid"
+              }
             },
             {
               "text": "의 적을 향한다."
@@ -1449,7 +1452,7 @@
       "metadata": {
         "addition": true,
         "kind": "new_setting",
-        "note": "추가: 선택 성전 자료는 메인 장에서 분리하여 보존한다. 접근 조건과 합류 위치가 미확정이므로 임의로 본편 필수 진입이나 지식 습득을 부여하지 않는다.",
+        "note": "추가: 선택 성전 자료는 메인 장에서 분리한다. 보존된 LOREENT.PAS 지도 1 at(20,6)의 실제 입구를 확인했다. 소설 방문·합류 시점은 별도 편집 선택이며 방문하지 않은 인물에게 지식을 부여하지 않는다.",
         "knowledge_policy": "author_reference_not_character_knowledge"
       }
     }

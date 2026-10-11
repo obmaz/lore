@@ -39,6 +39,15 @@ novel/
 
 ## 먼저 읽을 자료
 
+- [원작 전체 스크립트 연결 판본](writing/previews/source-connected.html): 15장 본줄기,
+  선택 성전·공통 시설에 원문과 새 연결 산문을 함께 넣은 **작가용 원작 우선 초고**.
+  [실제 원문이 들어 있는 JSON](writing/source-connected/manuscript.json),
+  [누락 검사 결과](writing/source-connected/coverage.json),
+  [편집 배열·연결 산문 입력](writing/storyboard/source-connected.plan.json).
+  14개 보존 파일의 문구 발생 2,483개·출력 사건 1,674개·스크립트 장면 307개를 대조한다.
+  반복·빈 문구·배타 응답·무작위 시험·메타 서사도 남긴다. 기술 문자열과 공통 UI는
+  부록으로 구분하며, 모두 한 번의 플레이에서 경험한 단일 정사라고 주장하지 않는다.
+
 - [15장 큰 이야기 초고](writing/storyboard/chapter-stories.json): 시작·갈등·전환·마무리와
   인물 변화·다음 장의 이유를 연결한 작가용 줄거리.
   [읽기본](writing/previews/chapter-stories.html), [공용 양식](writing/templates/chapter-stories.template.json).
@@ -97,6 +106,8 @@ python3 tools/characters.py
 python3 tools/reference.py
 python3 tools/validate_story_authoring.py
 python3 tools/writing.py validate
+python3 tools/source_story.py validate
+python3 tools/source_story.py export --check
 python3 tools/writing.py export --check
 python3 tools/story_continuity.py --route enter_courtyard visit_prison accept_joe visit_lord
 python3 tools/export_reference.py --check

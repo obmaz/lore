@@ -58,6 +58,8 @@ class IndependentNovelTest(unittest.TestCase):
         report = json.loads(self.run_tool('writing','validate'))
         self.assertEqual(report['board']['units'],18)
         self.assertEqual(report['pilot']['coverage'],'partial')
+        self.assertEqual(report['source_connected']['literal_occurrences'],2483)
+        self.assertEqual(report['source_connected']['missing_display_event_ids'],[])
         self.assertTrue(json.loads(self.run_tool('writing','export','--check'))['checked'])
 
     def test_new_quest_uses_shared_template_without_overwrite(self):

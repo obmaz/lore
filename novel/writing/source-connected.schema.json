@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lore.local/novel/writing/source-connected.schema.json",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "revision", "visibility", "status", "purpose", "sequence_policy", "priority", "chapters", "macro_stories", "origin", "metadata", "sections", "findings", "binding_overrides", "notes"],
+  "properties": {
+    "version": {"const": 1}, "revision": {"type": "integer", "minimum": 1},
+    "visibility": {"const": "author_only"}, "status": {"const": "draft"},
+    "purpose": {"const": "source_first_connected_story_not_game_runtime"},
+    "sequence_policy": {"const": "editorial_linear_order_with_original_conditional_variants"},
+    "priority": {"const": "preserve_every_original_occurrence_and_display_event"},
+    "chapters": {"const": "storyboard/chapters.json"}, "macro_stories": {"const": "storyboard/chapter-stories.json"},
+    "origin": {"const": "authored"}, "metadata": {"$ref": "#/$defs/metadata"},
+    "sections": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "chapter_id", "title", "selectors", "before", "after", "origin", "status", "metadata"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1}, "chapter_id": {"type": "string"},
+        "title": {"$ref": "#/$defs/text"}, "before": {"$ref": "#/$defs/text"}, "after": {"$ref": "#/$defs/text"},
+        "selectors": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/range"}},
+        "show_literal_text": {"type": "boolean"},
+        "origin": {"const": "authored"}, "status": {"const": "proposed"}, "metadata": {"$ref": "#/$defs/metadata"}
+      }}},
+    "findings": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+      "required": ["id", "origin", "metadata", "evidence", "note"], "properties": {
+        "id": {"type": "string"}, "origin": {"const": "inferred"}, "metadata": {"$ref": "#/$defs/metadata"},
+        "evidence": {"$ref": "../reference/metadata.schema.json#/$defs/evidence"}, "note": {"type": "string"}
+      }}},
+    "binding_overrides": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+      "required": ["name", "ref"], "properties": {
+        "name": {"type": "string"}, "ref": {"$ref": "../authoring/story.schema.json#/$defs/reference"},
+        "file": {"type": "string"}, "line_start": {"type": "integer", "minimum": 1}, "line_end": {"type": "integer", "minimum": 1}
+      }, "dependentRequired": {"file": ["line_start", "line_end"], "line_start": ["file", "line_end"], "line_end": ["file", "line_start"]}}},
+    "notes": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "$defs": {
+    "text": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+    "metadata": {"$ref": "../reference/metadata.schema.json#/$defs/metadata"},
+    "range": {"type": "object", "additionalProperties": false, "required": ["file", "line_start", "line_end"],
+      "properties": {"file": {"type": "string"}, "line_start": {"type": "integer", "minimum": 1}, "line_end": {"type": "integer", "minimum": 1}}}
+  }
+}

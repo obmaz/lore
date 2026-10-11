@@ -15,7 +15,7 @@
 - [analysis.json](analysis.json): 검토한 음역·원작 역할 요약·성격 해석의 편집 입력.
 - [names.json](names.json): 집필 표시명의 공용 편집 입력. 인물·장비·마법·적의 새 이름은
   `authored/new_setting/proposed`로 구분한다. 원작 이름은 덮어쓰지 않는다.
-- [terms.json](terms.json): 지명·열쇠 23개. 원문 이름의 내부 근거와 별도 한국어 음역.
+- [terms.json](terms.json): 지명·열쇠·문서 26개. 원문 이름의 내부 근거와 별도 한국어 음역.
   원어 이름을 지어내지 않으며 집필 본문의 `terms` 참조로 사용한다.
 - [metadata.schema.json](metadata.schema.json): 항목별 출처·추가·미상 메타데이터 규약.
 

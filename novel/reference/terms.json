@@ -788,6 +788,114 @@
           "knowledge_policy": "author_reference_not_character_knowledge"
         }
       }
+    },
+    "ground_gate": {
+      "original_name": {
+        "field": "original_name",
+        "value": "GROUND GATE",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESPEC.PAS",
+            "line_start": 309,
+            "line_end": 309
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "보존된 원문에서 확인한 명칭. 소지품이나 등장인물의 사전 지식이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "그라운드 게이트",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "추가: 집필을 위한 한국어 음역 제안. 원문 명칭과 구별해 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "valiant_peoples": {
+      "original_name": {
+        "field": "original_name",
+        "value": "VALIANT PEOPLES",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LOREENT.PAS",
+            "line_start": 54,
+            "line_end": 54
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "보존된 원문에서 확인한 명칭. 소지품이나 등장인물의 사전 지식이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "밸리언트 피플스",
+        "origin": "authored",
+        "status": "proposed",
+        "evidence": [],
+        "metadata": {
+          "addition": true,
+          "kind": "transliteration",
+          "note": "추가: 집필을 위한 한국어 음역 제안. 원문 명칭과 구별해 보존한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
+    },
+    "prophecy_book": {
+      "original_name": {
+        "field": "original_name",
+        "value": "예언서",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESPEC.PAS",
+            "line_start": 731,
+            "line_end": 731
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "보존된 원문에서 확인한 명칭. 소지품이나 등장인물의 사전 지식이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "예언서",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESPEC.PAS",
+            "line_start": 731,
+            "line_end": 731
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "보존된 원문에서 확인한 명칭. 소지품이나 등장인물의 사전 지식이 아니다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     }
   }
 }

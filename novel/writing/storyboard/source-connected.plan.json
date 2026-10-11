@@ -1,0 +1,2511 @@
+{
+  "version": 1,
+  "revision": 1,
+  "visibility": "author_only",
+  "status": "draft",
+  "purpose": "source_first_connected_story_not_game_runtime",
+  "sequence_policy": "editorial_linear_order_with_original_conditional_variants",
+  "priority": "preserve_every_original_occurrence_and_display_event",
+  "chapters": "storyboard/chapters.json",
+  "macro_stories": "storyboard/chapter-stories.json",
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 원작 전체 문구를 빠짐없이 연결하여 검토하기 위한 선형 집필 배열. 원작 강제 순서·단일 정사·전체 분기 구현이 아니다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "sections": [
+    {
+      "id": "01-invitation",
+      "chapter_id": "chapter01",
+      "title": [
+        {
+          "text": "다른 지구에서 온 초대"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREHELP.PAS",
+          "line_start": 11,
+          "line_end": 28
+        },
+        {
+          "file": "LOREHELP.PAS",
+          "line_start": 221,
+          "line_end": 226
+        }
+      ],
+      "show_literal_text": true,
+      "before": [
+        {
+          "text": "이야기는 성주의 명령보다 앞서, 다른 세계로 부르는 글에서 시작된다. 같은 시간을 살아가지만 다른 길로 진화한 지구, 그곳에서 피할 수 없다고 일컬어지는 운명이 읽는 이를 기다린다. 초대하는 목소리는 앞으로 거칠 대륙의 풍경과 동료의 존재를 함께 내다본다."
+        }
+      ],
+      "after": [
+        {
+          "text": "초대의 글은 이 세계에 들어온 사람이 앞으로 마주할 길을 먼저 펼쳐 보인다. 다른 공간에서 온 적 때문에 고통받는 사람들이 있고, 그 운명을 벗어나려고 누군가를 불렀다는 말이 남는다. 이제 이야기는 성 안의 만남으로 들어간다. 이 초대가 말한 사정은 그곳 사람들의 목소리와, 나중에 발견하는 기록 속에서 다시 이어진다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 원작 타이틀의 초대문과 운명의 글을 앞머리에 배치하는 편집 연결. 타이틀/제작자의 목소리를 성주의 대사나 등장인물의 자동 지식으로 바꾸지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "01-audience",
+      "chapter_id": "chapter01",
+      "title": [
+        {
+          "text": "성주가 들려주는 재앙"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 299,
+          "line_end": 338
+        }
+      ],
+      "before": [
+        {
+          "text": "성에 들어온 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "protagonist",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 먼저 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "lord_ahn"
+          }
+        },
+        {
+          "text": " 앞에 선다. 사라진 사람들의 사정을 듣기 전까지는 낯선 성을 나서면 어디로 가야 할지도 알지 못한다. 성주가 말하는 재앙과 특공대의 파견을 그 자리에서 듣는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "자기에게 닥친 일만이 아닌 싸움의 크기를 알게 된다. 그러나 아직 돌아오지 않은 특공대의 생사는 성주도 답하지 못한다. 일행이 첫걸음으로 맡을 일은 그보다 가까운 곳에 있다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "01-request",
+      "chapter_id": "chapter01",
+      "title": [
+        {
+          "text": "첫 의뢰와 문 앞의 대답"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 260,
+          "line_end": 298
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 339,
+          "line_end": 358
+        }
+      ],
+      "before": [
+        {
+          "text": "성주는 일행의 힘을 직접 본 적이 없다. 멀리 있는 적을 처단하라는 명령 대신 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "menace"
+          }
+        },
+        {
+          "text": "의 중심을 확인하고 돌아오라는 부탁을 꺼낸다. 문 앞의 응답은 서로 다른 원작 조건으로 남기되, 이 초고의 앞으로 나아가는 흐름은 의뢰 수락으로 잇는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "의뢰를 맡은 일행은 바로 동굴에 던져지지 않는다. 무기를 가져가도 된다는 허락과, 준비를 살필 시간이 있다. 돌아올 길까지 생각해야 하는 첫 출발이다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "01-city",
+      "chapter_id": "chapter01",
+      "title": [
+        {
+          "text": "성 안에서 들은 서로 다른 말"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 17,
+          "line_end": 259
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 396,
+          "line_end": 412
+        }
+      ],
+      "before": [
+        {
+          "text": "준비하는 동안 성 안의 사람들을 만난다. 주점의 웃음 뒤에는 돌아오지 않은 친구들을 기다리는 말이 있고, 수감소에는 다른 믿음을 말하다 갇힌 사람도 있다. "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "jr_antares"
+          }
+        },
+        {
+          "text": "의 말은 앞으로 만날 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "red_antares"
+          }
+        },
+        {
+          "text": "에게 이어지고, 도둑의 증언은 동굴의 방패를 찾는 단서가 된다."
+        }
+      ],
+      "after": [
+        {
+          "text": "누구의 말을 들었느냐에 따라 처음 동굴에 들어갈 때 품은 생각은 달라진다. 성주의 설명만으로는 성 안의 모든 사정을 알 수 없다. 이곳에서 만난 사람의 말은 이후의 만남과 장비 발견에서 다시 뜻을 얻는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "01-depart",
+      "chapter_id": "chapter01",
+      "title": [
+        {
+          "text": "무기고와 성문, 첫 동행"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 190,
+          "line_end": 305
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 17,
+          "line_end": 51
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 25,
+          "line_end": 36
+        }
+      ],
+      "before": [
+        {
+          "text": "무기고의 도움을 받아 실제 장비를 정한 뒤 성문으로 향한다. 수감소에서 누군가를 데리고 나온 경로에는 병사들과의 충돌이 따르고, 성을 떠나는 자리에서는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "skeleton"
+          }
+        },
+        {
+          "text": "이 말을 건넨다. 사람의 생김새와 성 안에서 들은 평가가 그의 말을 대신할 수는 없다."
+        }
+      ],
+      "after": [
+        {
+          "text": "영입했다는 말만으로 끝나는 것이 아니다. 누가 지금 동행하는지, 누가 전투 때 떠났는지 구별한 채 성 밖으로 나간다. 동쪽의 나무에서 식량을 얻는 방문도 실제로 한 경우에만 준비에 남는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "01-cave",
+      "chapter_id": "chapter01",
+      "title": [
+        {
+          "text": "중심을 확인하고 되돌아오는 길"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 814,
+          "line_end": 878
+        }
+      ],
+      "before": [
+        {
+          "text": "남서쪽으로 걸어 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "menace"
+          }
+        },
+        {
+          "text": "에 들어선다. 금광이었다는 주민의 말과 수감소에서 들은 숨은 물건의 위치는, 들은 경로에서만 길을 살피는 이유가 된다. 일행이 반드시 해내야 할 것은 중심에 닿아 확인하는 일이다."
+        }
+      ],
+      "after": [
+        {
+          "text": "중심에 도착한 일행은 더 깊이 싸움을 찾아가는 대신 돌아갈 방향으로 몸을 돌린다. 원작의 금과 방패는 발견 조건과 장착 대상을 보존한다. 탐사가 성공했다는 보고는 실제 중심에 닿은 뒤에야 가능하다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "01-report",
+      "chapter_id": "chapter01",
+      "title": [
+        {
+          "text": "첫 보고와 다음 부탁"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 359,
+          "line_end": 382
+        }
+      ],
+      "before": [
+        {
+          "text": "출발했던 성으로 돌아와 본 것을 전한다. 성주는 탐사 결과를 듣고 보상을 주며, 처음에는 몰랐던 일행의 능력을 이제 믿겠다고 말한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "그 믿음은 여행의 끝이 아니라 더 큰 임무의 시작이다. "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "lastditch"
+          }
+        },
+        {
+          "text": "의 근심을 해결하라는 부탁을 받은 일행은 대륙의 동쪽으로 향한다. 특공대와 재앙에 관한 처음의 질문도 아직 함께 가져간다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "02-town",
+      "chapter_id": "chapter02",
+      "title": [
+        {
+          "text": "쌍둥이 성과 기다리는 사람"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 413,
+          "line_end": 420
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 384,
+          "line_end": 406
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "lastditch"
+          }
+        },
+        {
+          "text": "에 들어오면 쌍둥이 성과 대륙 사이의 문 이야기를 듣는다. 이곳에는 특공대 지휘관을 남편이라고 말하는 사람도 있다. 처음 성에서 들었던 파견은 이제 기다리는 한 사람의 생활과 닿는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "아직 지휘관을 만난 것도, 특공대 전체의 생사를 알아낸 것도 아니다. 일행은 이 성을 위협하는 동굴의 문제부터 듣기 위해 성주 앞으로 간다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "02-request",
+      "chapter_id": "chapter02",
+      "title": [
+        {
+          "text": "미이라를 향한 의뢰와 동행 제안"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 440,
+          "line_end": 459
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 407,
+          "line_end": 439
+        }
+      ],
+      "before": [
+        {
+          "text": "성주는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "lord_ahn"
+          }
+        },
+        {
+          "text": "에게서 들은 일행의 소식을 꺼내고, 북쪽 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "pyramid"
+          }
+        },
+        {
+          "text": "의 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "major_mummy"
+          }
+        },
+        {
+          "text": "를 처단해 달라고 부탁한다. "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "polaris"
+          }
+        },
+        {
+          "text": "도 같은 상대를 물리치고 싶다며 함께 가기를 청한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "동행 제안 자체에 원문에 없는 복수나 가족의 사연을 붙이지 않는다. 수락과 거절은 각각 보존한다. 일행이 준비를 마치면, 탐사만 하고 돌아왔던 첫 임무와 다른 전투를 향해 간다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "02-pyramid",
+      "chapter_id": "chapter02",
+      "title": [
+        {
+          "text": "창의 글귀와 미이라의 방"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 159,
+          "line_end": 167
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 465,
+          "line_end": 559
+        }
+      ],
+      "before": [
+        {
+          "text": "동굴에 들어서면 성에서 들었던 창의 소문이 실제 발견으로 이어질 수 있다. 손잡이의 글귀는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "sphinx"
+          }
+        },
+        {
+          "text": "와의 옛 싸움을 말하고, 그 무기를 쓰려는 사람의 직업에 따라 응답이 달라진다. 더 안쪽에는 미이라의 방이 있다."
+        }
+      ],
+      "after": [
+        {
+          "text": "발견한 장비를 쓰는 일과 임무를 끝내는 일은 따로다. 일행은 실제 전투를 거쳐 성주에게 보고할 수 있는 결과를 얻는다. 누가 창을 장착했는지는 이후 장비 기록에 남기고, 선택하지 않은 장비를 모두의 소지품으로 만들지 않는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "02-gate",
+      "chapter_id": "chapter02",
+      "title": [
+        {
+          "text": "보고 뒤 열리는 쌍둥이 성의 길"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 460,
+          "line_end": 479
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 306,
+          "line_end": 331
+        }
+      ],
+      "before": [
+        {
+          "text": "일행은 성으로 돌아가 보고한다. 성주는 구제된 성을 이야기하고 다른 성으로 통하는 문을 알려 준다. 주민이 말한 방향과 성주의 말에 차이가 있는 부분은 원문을 그대로 남기고, 실제 이동은 문을 사용하는 사건으로 잇는다."
+        }
+      ],
+      "after": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "ground_gate"
+          }
+        },
+        {
+          "text": "를 통과하면 먼저 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "valiant_peoples"
+          }
+        },
+        {
+          "text": " 쪽으로 연결된다. 곧바로 아무 설명 없는 새 대륙의 성으로 뛰지 않는다. 구제한 성의 쌍둥이를 보러 가는 길이 다음 장의 폐허와 연결된다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "03-ruins",
+      "chapter_id": "chapter03",
+      "title": [
+        {
+          "text": "폐허를 지나 새 성의 설명을 듣다"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 52,
+          "line_end": 81
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 421,
+          "line_end": 435
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 332,
+          "line_end": 353
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 481,
+          "line_end": 539
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "valiant_peoples"
+          }
+        },
+        {
+          "text": "의 흔적을 지나 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "gaia_terra"
+          }
+        },
+        {
+          "text": "로 향한다. 주민들은 파괴된 성과 적에게 맞서 동굴에 들어간 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "rigel"
+          }
+        },
+        {
+          "text": "을 이야기한다. 성주는 폐허 아래의 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "evil_seal"
+          }
+        },
+        {
+          "text": "과 황금의 봉인에 관한 경고를 들려준다."
+        }
+      ],
+      "after": [
+        {
+          "text": "찾아야 하는 봉인은 풀어서 힘을 얻으라는 선물이 아니다. 일행은 경고를 기억한 채 폐허의 동굴로 돌아간다. 살아남은 용사가 있다는 말도 탐색에서 사람을 놓치지 않을 이유가 된다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "03-rigel",
+      "chapter_id": "chapter03",
+      "title": [
+        {
+          "text": "문과 절벽 사이의 생존자"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 168,
+          "line_end": 174
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 436,
+          "line_end": 456
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 560,
+          "line_end": 586
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 597,
+          "line_end": 668
+        }
+      ],
+      "before": [
+        {
+          "text": "표지의 수와 문을 살피며 동굴을 나아간다. 절벽 사이에서는 혼자 빠져나갈 수 없다는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "rigel"
+          }
+        },
+        {
+          "text": "을 만날 수 있다. 파괴된 공동체의 이름은 그가 들려주는 말과 상처를 통해 한 사람의 사정이 된다."
+        }
+      ],
+      "after": [
+        {
+          "text": "동행으로 받아들이는 길, 치료와 식량으로 돕고 헤어지는 길, 다른 응답을 하는 길을 구별한다. 축복과 장비 변화는 해당 도움의 결과로만 기록한다. 봉인을 찾는 목적 때문에 눈앞의 사람을 자동으로 구출했다고 쓰지 않는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "03-seal",
+      "chapter_id": "chapter03",
+      "title": [
+        {
+          "text": "찾되 풀지 않는 봉인"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 587,
+          "line_end": 596
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 540,
+          "line_end": 545
+        }
+      ],
+      "before": [
+        {
+          "text": "일행은 황금의 봉인이 있는 곳에 도달하고 확인한다. 원문이 알려 주는 성공은 그것을 발견했다는 사실이다. 이번 임무에서는 봉인을 풀지 않은 채 성주에게 돌아간다."
+        }
+      ],
+      "after": [
+        {
+          "text": "발견을 보고하면 보상을 받지만, 이 대륙의 위험이 모두 사라지는 것은 아니다. 성주는 아직 남아 있는 다른 동굴로 이야기를 이어 간다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "04-quake",
+      "chapter_id": "chapter04",
+      "title": [
+        {
+          "text": "남은 위협과 숨겨진 장비"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 546,
+          "line_end": 563
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 457,
+          "line_end": 463
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 879,
+          "line_end": 965
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "quake"
+          }
+        },
+        {
+          "text": "로 향하라는 새 부탁을 받는다. 주민에게 들었던 비밀문과 황금 장비의 소문은 동굴을 살피는 행동에 이어진다. 방패와 갑옷의 발견은 각각의 조건으로 남기고, 중심의 적을 상대할 준비와 연결한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "일행은 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "archigagoyle"
+          }
+        },
+        {
+          "text": "과 두 적을 실제로 맞선 뒤 보고할 결과를 얻는다. 장비를 찾았다는 사실은 자동 승리가 아니고, 전투의 결과도 다음 문을 여는 물건까지 대신하지 않는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "04-key",
+      "chapter_id": "chapter04",
+      "title": [
+        {
+          "text": "보고를 통해 받은 열쇠"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 564,
+          "line_end": 579
+        }
+      ],
+      "before": [
+        {
+          "text": "성으로 돌아오면 성주는 결과에 대한 보상을 준다. 이번에는 다음 대륙의 문을 여는 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "water_key"
+          }
+        },
+        {
+          "text": "가 일행에게 주어진다."
+        }
+      ],
+      "after": [
+        {
+          "text": "열쇠를 얻고서야 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "wivern"
+          }
+        },
+        {
+          "text": "의 문으로 향하라는 안내를 받는다. 지나온 땅의 위험을 줄인 결과가 새로운 이동의 조건이 된다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "05-passage",
+      "chapter_id": "chapter05",
+      "title": [
+        {
+          "text": "남은 적을 넘어 물의 대륙으로"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 381,
+          "line_end": 395
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 966,
+          "line_end": 1002
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 187,
+          "line_end": 193
+        }
+      ],
+      "before": [
+        {
+          "text": "표지를 따라 통로로 들어가면 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "wivern"
+          }
+        },
+        {
+          "text": "들이 길을 막는다. 이미 넘긴 적과 아직 남은 적을 구별하며 나아가고, 열쇠를 가진 일행은 문 앞에 다다른다."
+        }
+      ],
+      "after": [
+        {
+          "text": "통로를 건넌 뒤에야 물로 덮인 대륙의 성에 닿는다. 다시 통로로 돌아가는 입구도 원문에 있으므로 이동을 되돌릴 수 없는 단 한 번의 순간으로 바꾸지 않는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "06-town",
+      "chapter_id": "chapter06",
+      "title": [
+        {
+          "text": "생존자들의 성과 특공대 지휘관"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 82,
+          "line_end": 105
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 175,
+          "line_end": 180
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 444,
+          "line_end": 464
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 581,
+          "line_end": 642
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "water_field"
+          }
+        },
+        {
+          "text": "에서는 남아 있는 두 동굴과 그 상대의 이야기를 듣는다. 이곳에서 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "lore_hunter"
+          }
+        },
+        {
+          "text": "를 만나는 경로는 앞서 특공대의 파견과 지휘관의 가족에게서 들은 말을 이어 준다. 그는 혼자서는 적들과 대항하기 어렵다며 새로운 영웅들을 기다렸다고 말한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "한 사람을 만났다고 특공대 전원의 생사를 회수하지 않는다. 영입 응답과 현재 동행을 구별하고, 성주에게서 이 성이 왜 마지막 희망이 되었는지 듣는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "06-request",
+      "chapter_id": "chapter06",
+      "title": [
+        {
+          "text": "가라앉은 대륙과 첫 동굴의 부탁"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 643,
+          "line_end": 670
+        }
+      ],
+      "before": [
+        {
+          "text": "성주는 차원의 틈이 열리던 날과 물로 가라앉은 대륙을 이야기한다. 살아남은 사람들이 세운 성은 다른 대륙까지 이어질 침공의 길을 막고 있다. 일행에게 첫 목표로 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "notice"
+          }
+        },
+        {
+          "text": "의 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "hidra"
+          }
+        },
+        {
+          "text": "가 주어진다."
+        }
+      ],
+      "after": [
+        {
+          "text": "주민에게서 들은 미로의 소문을 지닌 채 동굴로 향한다. 그 안에는 적만 있는 것이 아니라, 처음 성의 유골 앞에서 들었던 이름과 이어지는 만남도 기다린다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "06-antares",
+      "chapter_id": "chapter06",
+      "title": [
+        {
+          "text": "유골의 말이 이어지는 마법 전수"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 464,
+          "line_end": 478
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1010,
+          "line_end": 1020
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1070,
+          "line_end": 1119
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "jr_antares"
+          }
+        },
+        {
+          "text": "의 말을 들은 경로라면, "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "red_antares"
+          }
+        },
+        {
+          "text": "의 영 앞에서 그 부탁을 떠올릴 수 있다. 처음 듣는 경로에서도 그는 자기 이름과 적의 마법에 관한 경험을 직접 설명한다. 독과 "
+        },
+        {
+          "ref": {
+            "catalog": "abilities",
+            "id": "magic_16"
+          }
+        },
+        {
+          "text": "를 포함한 간접 공격의 방법을 전해 주고 초자연력도 필요하다고 말한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "배움을 들었다는 사실과 어떤 능력을 실제로 사용할 수 있는지는 구별한다. 지금의 만남이 바로 영입을 뜻하지도 않는다. 이후 다른 동굴에서 얻는 배움이 이곳으로 다시 돌아올 이유가 될 수 있다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "06-report",
+      "chapter_id": "chapter06",
+      "title": [
+        {
+          "text": "미로의 적과 소문이 바뀌는 보고"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1120,
+          "line_end": 1173
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 671,
+          "line_end": 680
+        }
+      ],
+      "before": [
+        {
+          "text": "일행은 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "hidra"
+          }
+        },
+        {
+          "text": "와 맞서고 결과를 얻어 성으로 돌아간다. 성주는 소문으로만 들었던 일행의 능력을 이제 믿을 수 있겠다고 말한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "인정을 받은 뒤에도 남은 동굴의 위협은 끝나지 않았다. 다음 부탁은 배운 능력을 실제로 다루어야 할 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "lockup"
+          }
+        },
+        {
+          "text": "으로 이어진다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "07-learning",
+      "chapter_id": "chapter07",
+      "title": [
+        {
+          "text": "거대한 상대보다 먼저 만나는 배움"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 681,
+          "line_end": 687
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1174,
+          "line_end": 1204
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1275,
+          "line_end": 1298
+        }
+      ],
+      "before": [
+        {
+          "text": "동쪽 동굴로 향하라는 부탁을 받고 들어서면 미로의 괴물과 수도하는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "spica"
+          }
+        },
+        {
+          "text": "를 만난다. 주민이 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "minotaur"
+          }
+        },
+        {
+          "text": "를 적의 부하가 아니라고 말했던 대목과, 이 동굴의 또 다른 목적이 함께 살아난다."
+        }
+      ],
+      "after": [
+        {
+          "text": "그녀가 설명하는 "
+        },
+        {
+          "ref": {
+            "catalog": "abilities",
+            "id": "magic_41"
+          }
+        },
+        {
+          "text": "·"
+        },
+        {
+          "ref": {
+            "catalog": "abilities",
+            "id": "magic_42"
+          }
+        },
+        {
+          "text": "·"
+        },
+        {
+          "ref": {
+            "catalog": "abilities",
+            "id": "magic_43"
+          }
+        },
+        {
+          "text": "·"
+        },
+        {
+          "ref": {
+            "catalog": "abilities",
+            "id": "magic_44"
+          }
+        },
+        {
+          "text": "·"
+        },
+        {
+          "ref": {
+            "catalog": "abilities",
+            "id": "magic_45"
+          }
+        },
+        {
+          "text": "은 앞 장에서 필요하다고 들었던 초자연력의 구체적인 내용이다. 무엇을 들었고 어떤 조건에서 사용할 수 있는지 원문을 보존한 채 다음 행동으로 이어 간다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "07-choices",
+      "chapter_id": "chapter07",
+      "title": [
+        {
+          "text": "마음을 읽는 힘과 함께 갈 사람"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1205,
+          "line_end": 1274
+        }
+      ],
+      "before": [
+        {
+          "text": "배움을 들은 뒤 같은 사람을 다시 찾는 경로에서는 새로운 응답을 들을 수 있다. "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "spica"
+          }
+        },
+        {
+          "text": "의 마음을 끌어낼 만큼 능력이 도달했는지에 따라 말이 달라지고, 동행을 제안받았어도 수락과 거절은 남는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "사람의 마음을 읽는 설명을 들었다고 누구나 자동으로 일행이 되지는 않는다. 실제로 함께 가는 사람만 다음 전투와 이동에 이어받는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "07-dragon",
+      "chapter_id": "chapter07",
+      "title": [
+        {
+          "text": "남은 싸움과 늪으로 통하는 열쇠"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1299,
+          "line_end": 1365
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 688,
+          "line_end": 705
+        }
+      ],
+      "before": [
+        {
+          "text": "동굴의 거대한 적을 넘어선 일행은 다시 성으로 돌아간다. 성주는 보상과 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "swamp_key"
+          }
+        },
+        {
+          "text": "를 주고, 앞서 지나온 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "gaia_terra"
+          }
+        },
+        {
+          "text": "의 문으로 돌아가라고 안내한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "새 대륙으로 가기 위해 이미 지나온 땅을 다시 찾는 이유가 생긴다. 바로 떠나기 전, 배움을 이어 만남을 마칠 수 있는 곳도 있다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "07-return",
+      "chapter_id": "chapter07",
+      "title": [
+        {
+          "text": "앞선 배움이 바꾸는 재방문"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1021,
+          "line_end": 1069
+        }
+      ],
+      "before": [
+        {
+          "text": "초자연력을 얻은 뒤 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "red_antares"
+          }
+        },
+        {
+          "text": "를 다시 찾는 경로에서는 그의 첫 설명과 다른 말이 나온다. 육체 없는 영도 직접 적에게 도전하고 싶다고 말하고, 함께 갈지 묻는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "이 재방문은 원문 조건이 맞을 때의 연결이며 필수 영입으로 바꾸지 않는다. 같은 장소를 다시 찾는 이야기가 단순 재인사가 아니라, 새로 배운 것 때문에 달라진 만남이 된다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "08-gate",
+      "chapter_id": "chapter08",
+      "title": [
+        {
+          "text": "지나온 성으로 돌아가 듣는 조언"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 354,
+          "line_end": 443
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 181,
+          "line_end": 186
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 37,
+          "line_end": 44
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "swamp_key"
+          }
+        },
+        {
+          "text": "를 지니고 돌아온 일행은 앞서 접근할 수 없던 문 앞에 선다. "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "lord_ahn"
+          }
+        },
+        {
+          "text": "은 이제부터 식량과 준비가 더 중요하다고 말하고, 두 동굴을 거쳐야 다음 관문이 열린다고 알려 준다."
+        }
+      ],
+      "after": [
+        {
+          "text": "지켜 두었던 황금의 봉인과 달리 이번에는 두 봉인을 풀어야 한다. 같은 이름의 물건 앞에서 과거 행동을 그대로 되풀이할 수 없음을 알고 늪으로 건너간다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "08-prophecy",
+      "chapter_id": "chapter08",
+      "title": [
+        {
+          "text": "문 앞의 적과 가라앉는 피라밋의 기록"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 669,
+          "line_end": 813
+        }
+      ],
+      "before": [
+        {
+          "text": "문 쪽을 지키는 상대와 마주하고, 끌어당기는 힘을 따라 기묘한 피라밋의 기록을 읽는 경로가 있다. "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "prophecy_book"
+          }
+        },
+        {
+          "text": "는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "lord_ahn"
+          }
+        },
+        {
+          "text": ", "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "ancient_evil"
+          }
+        },
+        {
+          "text": ", "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "necromancer"
+          }
+        },
+        {
+          "text": "의 관계와 일행이 이곳에 온 이유를 기술한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "이것은 발견해 읽은 문서의 설명이지, 처음부터 일행이 알고 있던 세계의 확정 진상이 아니다. 기록은 악의 이름을 들었다는 이유만으로 판단하던 생각을 흔들고, 다음 만남에서 직접 말을 들어 볼 이유가 된다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "08-evil",
+      "chapter_id": "chapter08",
+      "title": [
+        {
+          "text": "배척하라고 들었던 존재의 조언"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 106,
+          "line_end": 128
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 147,
+          "line_end": 189
+        }
+      ],
+      "before": [
+        {
+          "text": "외진 섬의 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "ancient_evil"
+          }
+        },
+        {
+          "text": "을 만나는 경로에서는 성에서 배척하라고 들었던 이름이 직접 말을 건넨다. 그는 두 동굴의 길과 적, 봉인의 위치와 어려움을 설명하고 또 다른 만남이 있는 곳으로 안내한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "성의 교육, 수감자의 증언, "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "prophecy_book"
+          }
+        },
+        {
+          "text": "의 설명을 들은 만큼만 비교할 수 있다. 그에게서 받은 실제 조언은 두 탐색을 준비하는 데 남고, 안내한 다음 사람을 찾아갈 수 있다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "08-draconian",
+      "chapter_id": "chapter08",
+      "title": [
+        {
+          "text": "다른 차원과 반복되는 운명의 설명"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 45,
+          "line_end": 146
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "draconian"
+          }
+        },
+        {
+          "text": "은 오래 연구한 천문학과 차원의 가설을 설명하고 적이 다른 공간에서 쫓겨 왔다고 말한다. 일행은 그 설명 안에서 자기들과 닮은 여섯 용사의 이야기와 반복되는 대립을 듣는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "그의 이론과 증언을 곧바로 화자의 세계 법칙으로 확정하지 않는다. 다시 찾아가 동행을 제안받는 경로도 따로 남긴다. 일행은 아직 이해하지 못한 말을 지닌 채 두 봉인을 향한다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "09-evilgod",
+      "chapter_id": "chapter09",
+      "title": [
+        {
+          "text": "늪 아래 레버와 일곱 갈래의 방"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 479,
+          "line_end": 482
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1366,
+          "line_end": 1474
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "evil_god"
+          }
+        },
+        {
+          "text": "에서는 표지가 양쪽 늪의 레버를 가리킨다. 늪 위를 걷는 마법을 사용 중인지에 따라 레버에 손댈 수 있는 상황이 달라지고, 일곱 갈래 가운데 봉인을 찾는 탐색이 이어진다."
+        }
+      ],
+      "after": [
+        {
+          "text": "맞는 방에서는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "crab_god"
+          }
+        },
+        {
+          "text": "의 왕이 봉인을 지키겠다고 말한다. 싸움의 실제 결과 뒤에 봉인을 풀고, 다른 동굴의 일을 아직 하지 않았다면 그곳으로 향한다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "09-muddy",
+      "chapter_id": "chapter09",
+      "title": [
+        {
+          "text": "문답의 길과 다른 공간에서 온 적"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1475,
+          "line_end": 1759
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "muddy"
+          }
+        },
+        {
+          "text": "의 문답은 앞서 들은 천문학과 차원, 선과 악의 설명에 새로운 질문을 던진다. 무작위로 나오는 문항 전체를 보존하되 한 번의 통과에서 모두 출제되었다고 쓰지 않는다. 미로와 전투를 거친 뒤 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "astral_mud"
+          }
+        },
+        {
+          "text": "가 자신과 적의 출처를 말한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "대결 뒤 두 번째 봉인의 실제 결과가 갖추어진다. 두 탐색을 나란히 읽을 수 있도록 이 초고에서는 이 순서로 배열했지만, 원작은 두 목표의 순서를 강제하지 않는다. 둘 다 풀렸다는 조건만 다음 문에 이어받는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "10-lava",
+      "chapter_id": "chapter10",
+      "title": [
+        {
+          "text": "두 결과가 모이는 문과 마지막 대륙의 조언"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1760,
+          "line_end": 1815
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 194,
+          "line_end": 263
+        }
+      ],
+      "before": [
+        {
+          "text": "두 봉인의 조건을 지니고 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "lava_gate"
+          }
+        },
+        {
+          "text": "로 향한다. 조건이 부족할 때의 원문도 보존하지만, 앞으로 가는 줄기는 조건을 갖춘 뒤 수문장들을 넘는 일로 잇는다. 그 뒤 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "lord_ahn"
+          }
+        },
+        {
+          "text": "의 다음 조언을 듣는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "작은 마지막 대륙에는 두 요새와 지하 피난처가 있다. 이미 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "prophecy_book"
+          }
+        },
+        {
+          "text": "나 섬의 조언을 들은 경로에서는 보호에 관한 설명을 앞선 말과 비교하고, 듣지 않은 경로에서는 처음 듣는 정보로 남긴다. 도움과 물자를 구할 장소가 다음 목적지를 정한다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "11-imperium",
+      "chapter_id": "chapter11",
+      "title": [
+        {
+          "text": "요새를 지나 지하로 향하는 길"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1816,
+          "line_end": 1879
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 264,
+          "line_end": 282
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "imperium_minor"
+          }
+        },
+        {
+          "text": "에서는 서로 다른 적과 "
+        },
+        {
+          "ref": {
+            "catalog": "bestiary",
+            "id": "enemy_63"
+          }
+        },
+        {
+          "text": "의 위협을 넘어야 한다. 앞서 조언받은 피난처는 이 요새의 지하로 이어진다."
+        }
+      ],
+      "after": [
+        {
+          "text": "전투를 통과한 뒤 일행은 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "last_shelter"
+          }
+        },
+        {
+          "text": "로 내려간다. 소설의 본줄기로 이 만남을 채택한 것은 편집 추가이고, 원작에서 개별 시설 이용까지 강제하는 조건은 아니다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "12-shelter",
+      "chapter_id": "chapter12",
+      "title": [
+        {
+          "text": "주민들의 말과 제작자의 등장"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 706,
+          "line_end": 740
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1980,
+          "line_end": 1994
+        }
+      ],
+      "before": [
+        {
+          "text": "지하에서 실제로 살아 있는 사람들을 만나면 앞서 들은 보호의 설명이 눈앞의 생활과 닿는다. 주민의 말에는 구세주라는 평가와 밖으로 나갈 희망이 있고, 자신이 게임의 제작자라고 밝히는 인물의 말도 있다."
+        }
+      ],
+      "after": [
+        {
+          "text": "제작자와 버그·난이도에 관한 대사는 원작의 메타 서사이므로 분위기에 맞지 않는다는 이유로 삭제하지 않는다. 각각의 말을 화자의 정체에 관한 자동 정답으로 바꾸지 않고 원문 그대로 남긴 채, 받은 도움과 들은 말만 가지고 지상으로 돌아간다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "13-guard",
+      "chapter_id": "chapter13",
+      "title": [
+        {
+          "text": "요새 입구를 지키는 상대"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 129,
+          "line_end": 158
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "evil_concentration"
+          }
+        },
+        {
+          "text": "의 입구에서 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "frost_dragon"
+          }
+        },
+        {
+          "text": "이 자기 임무를 밝힌다. 피난처에서 쉬었다고 그가 길을 열어 주지는 않는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "실제 전투를 넘어선 뒤에야 안쪽으로 들어간다. 다음 상대가 자신의 이름을 밝히는 장면을 듣기 전까지 일행은 그의 정체를 알 수 없다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "13-illusion",
+      "chapter_id": "chapter13",
+      "title": [
+        {
+          "text": "사칭자가 부른 환상과 정체의 공개"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1880,
+          "line_end": 1966
+        }
+      ],
+      "before": [
+        {
+          "text": "안쪽의 상대는 자신이 일행이 찾던 적이라고 말하고, 일행의 자신감을 약점으로 삼아 환상을 펼친다. 탈출에 실패했을 때의 원문도 따로 남기며, 앞으로 가는 줄기는 환상을 넘어 실제 상대와 맞서는 흐름이다."
+        }
+      ],
+      "after": [
+        {
+          "text": "전투 뒤에야 사칭자의 고백과 죽음이 이어진다. "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "false_necromancer"
+          }
+        },
+        {
+          "text": "의 죽음은 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "necromancer"
+          }
+        },
+        {
+          "text": "의 죽음이 아니다. 일행은 이름을 들었다는 사실과 실제로 누구를 상대했는지 구별하게 된다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "13-hidden",
+      "chapter_id": "chapter13",
+      "title": [
+        {
+          "text": "표지와 레버가 드러내는 성"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 483,
+          "line_end": 489
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1967,
+          "line_end": 1979
+        }
+      ],
+      "before": [
+        {
+          "text": "남은 표지는 레버의 위치와 감추어진 성을 알려 준다. 일행은 읽은 위치를 찾아 장치를 당긴다."
+        }
+      ],
+      "after": [
+        {
+          "text": "굉음과 함께 드러난 성을 통해 다음 공간으로 향한다. 승리했다는 말만으로 숨은 길까지 자동으로 열었다고 쓰지 않는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "14-entrance",
+      "chapter_id": "chapter14",
+      "title": [
+        {
+          "text": "지금 동행한 사람에게 향하는 공격"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 283,
+          "line_end": 322
+        }
+      ],
+      "before": [
+        {
+          "text": "동굴 입구에서는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "archidraconian"
+          }
+        },
+        {
+          "text": "이 길을 막는다. 원작의 마지막 자리인 여섯 번째에 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "draconian"
+          }
+        },
+        {
+          "text": "이 실제로 있는 경로에는 그를 발견하고 가하는 공격이 이어진다."
+        }
+      ],
+      "after": [
+        {
+          "text": "과거에 영입했다는 기록만으로 이 공격을 모든 일행에게 적용하지 않는다. 실제 동행과 자리를 조건대로 구별하며 입구 전투를 넘어 안쪽으로 들어간다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "14-panzer",
+      "chapter_id": "chapter14",
+      "title": [
+        {
+          "text": "금속의 적 뒤에 들리는 도움"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1995,
+          "line_end": 2066
+        }
+      ],
+      "before": [
+        {
+          "text": "안쪽의 금속 적은 일행이 마지막 상대에게 닿기 전에 처단하겠다고 말한다. "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "panzer_viper"
+          }
+        },
+        {
+          "text": "를 넘어선 뒤, 편안한 기운과 숨은 문에 관한 도움을 듣는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "도움을 준 말의 화자는 원문이 명시한 것 이상으로 이름 붙이지 않는다. 양쪽 벽 안의 두 레버를 모두 작동해야 한다는 실제 단서를 가지고 움직인다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "14-levers",
+      "chapter_id": "chapter14",
+      "title": [
+        {
+          "text": "두 벽의 레버와 마지막 수문장"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 2067,
+          "line_end": 2103
+        },
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 323,
+          "line_end": 365
+        }
+      ],
+      "before": [
+        {
+          "text": "양쪽의 레버를 각각 찾고 당긴다. 한쪽의 작동음은 아직 남아 있는 다른 장치를 떠올리게 하고, 둘이 작동한 뒤 마지막 방으로 이어지는 입구가 드러난다."
+        }
+      ],
+      "after": [
+        {
+          "text": "그 앞의 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "black_knight"
+          }
+        },
+        {
+          "text": "와 전투를 거쳐야 실제로 마지막 방에 들어갈 수 있다. 도주와 재시도는 원작 후속대로 남기고, 성공한 줄기만 마지막 만남으로 잇는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "15-final",
+      "chapter_id": "chapter15",
+      "title": [
+        {
+          "text": "소개와 결전, 탈출하는 적"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 2104,
+          "line_end": 2201
+        }
+      ],
+      "before": [
+        {
+          "text": "마지막 방에서 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "necromancer"
+          }
+        },
+        {
+          "text": "는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "archimonk"
+          }
+        },
+        {
+          "text": "와 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "archimage"
+          }
+        },
+        {
+          "text": "를 소개한다. 원작의 인원 변화와 도주에 대한 응답을 구별하며 최종 대결을 이어 간다."
+        }
+      ],
+      "after": [
+        {
+          "text": "패배를 인정한 상대는 죽는 대신 블랙홀을 통해 떠난다. 성전의 의지나 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "prophecy_book"
+          }
+        },
+        {
+          "text": ", "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "draconian"
+          }
+        },
+        {
+          "text": "의 설명을 들은 경로에는 그 말과 닿는 여운이 있고, 듣지 않은 경로에는 마지막에 직접 들은 말만 남는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "15-ending",
+      "chapter_id": "chapter15",
+      "title": [
+        {
+          "text": "비바람과 마지막 문구, 출연자 소개"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LOREEND.PAS",
+          "line_start": 1,
+          "line_end": 261
+        }
+      ],
+      "before": [
+        {
+          "text": "상대가 떠난 뒤 비바람과 그의 운명에 관한 원작의 마무리가 이어진다. "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "protagonist",
+            "particle": "은/는"
+          }
+        },
+        {
+          "text": " 자기 앞에 놓인 부탁을 끝까지 가져온 사람으로 그 말을 듣는다."
+        }
+      ],
+      "after": [
+        {
+          "text": "원작의 마지막 문구와 출연자 소개, 종료 화면까지 보존한다. 성공 뒤 이별과 실패 뒤 게임오버를 같은 결말로 합치지 않고, 사라진 사람들의 생사를 임의로 모두 회수하지 않는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "side-temple",
+      "chapter_id": "temple_side_story",
+      "title": [
+        {
+          "text": "의지들의 성전과 서로 다른 운명"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 741,
+          "line_end": 1063
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 2202,
+          "line_end": 2222
+        }
+      ],
+      "before": [
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "lore"
+          }
+        },
+        {
+          "text": " 외부 지역의 입구를 통해 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "another_lore"
+          }
+        },
+        {
+          "text": "에 들어갈 수 있다. 변하는 인물과 유골 앞의 목소리들은 앞으로 만날 사람, 차원과 윤회, 선과 악, 적의 운명을 각각 설명한다. 각 목소리가 말한 내용을 그대로 듣는 자료로 연결한다."
+        }
+      ],
+      "after": [
+        {
+          "text": "그 말들은 이후의 마법 전수·초자연력·"
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "prophecy_book"
+          }
+        },
+        {
+          "text": "·섬의 만남·마지막 이별과 이어진다. 성전을 언제 방문하고 어느 의지의 말을 들을지는 원작과 집필 경로를 구별한다. 방문하지 않은 일행에게 이 내용을 미리 아는 기억으로 주지 않는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    },
+    {
+      "id": "shared-facilities",
+      "chapter_id": "shared",
+      "title": [
+        {
+          "text": "길 위의 준비·보급·치료와 훈련"
+        }
+      ],
+      "selectors": [
+        {
+          "file": "LORESUB.PAS",
+          "line_start": 1015,
+          "line_end": 1040
+        },
+        {
+          "file": "LORESUB.PAS",
+          "line_start": 1156,
+          "line_end": 1634
+        }
+      ],
+      "before": [
+        {
+          "text": "성 안이나 피난처의 시설을 이용하는 경로에서는 이 공통 원문이 방문 장면에 이어진다. 식량을 구하고 장비를 고르거나 치료·훈련을 받으려는 행동은 앞선 싸움과 다음 출발 사이에 놓인다."
+        }
+      ],
+      "after": [
+        {
+          "text": "돈과 능력, 부상과 실제 선택에 따른 응답을 모두 보존한다. 읽기 자료에 나란히 있다는 이유로 모든 시설을 이용했거나 모든 물자를 받은 것으로 처리하지 않는다."
+        }
+      ],
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "id": "temple-access",
+      "origin": "inferred",
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "보존된 입장 코드에서 확인한 접근 연결. 원작 실제 입구와 소설 방문 시점을 구별한다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "evidence": [
+        {
+          "file": "LOREENT.PAS",
+          "line_start": 17,
+          "line_end": 51
+        }
+      ],
+      "note": "로어 외부 지도 1의 at(20,6)에서 ANOTHER LORE 입장을 승인하면 지도 27의 (15,45)로 이동한다. 이전 접근 미확정 메모를 정정한다. 배치 시점은 여전히 편집 선택이다."
+    },
+    {
+      "id": "ground-gate",
+      "origin": "inferred",
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "보존된 문 이동 코드의 직접 연결을 복원한다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 306,
+          "line_end": 353
+        }
+      ],
+      "note": "LASTDITCH의 GROUND GATE는 먼저 VALIANT PEOPLES의 지도 8로 이동한다. 단순히 새 성으로 도착하는 요약에서 빠진 폐허 경유를 복원한다. 주민과 성주의 방향 설명이 다르면 둘 다 그대로 보존한다."
+    },
+    {
+      "id": "learning-and-destiny",
+      "origin": "inferred",
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "서로 참조하는 원작 증언·문서의 연결을 복원하되 세계의 확정 사실로 승격하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "evidence": [
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 106,
+          "line_end": 124
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 1010,
+          "line_end": 1365
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 37,
+          "line_end": 189
+        },
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 669,
+          "line_end": 813
+        },
+        {
+          "file": "LORETALK.PAS",
+          "line_start": 741,
+          "line_end": 1058
+        }
+      ],
+      "note": "유골의 부자 관계 설명, 간접 공격 전수, 초자연력 전수, 재방문 영입, 예언서, 섬의 안내와 차원 이론, 성전의 의지들이 최종 이별에 연결된다. 전수를 듣는 것과 실제 영입/사용 조건을 구별한다."
+    }
+  ],
+  "binding_overrides": [
+    {
+      "name": "Necromancer",
+      "ref": {
+        "catalog": "characters",
+        "id": "necromancer"
+      }
+    }
+  ],
+  "notes": [
+    "원작의 모든 문자열 발생·출력 사건·스크립트 장면을 연결 판본과 반영표에서 대조한다. 반복·빈 문자열·프롬프트·조건별 응답도 발생 ID로 보존한다.",
+    "배타 결과와 무작위 시험 문항은 조건부 원문으로 분리한다. 모두 한 번에 겪는 단일 플레이나 구현된 인터랙티브 판본이라고 주장하지 않는다.",
+    "게임 UI·전투/마법 안내·자원 이름·기술용 문자열은 부록에 원문 그대로 보존한다. 기술 문구를 등장인물의 대사로 꾸미지 않는다.",
+    "원작 문구의 과학적 오류·오탈자·메타 서사도 삭제하거나 몰래 현대화하지 않는다. 새 연결 산문만 창작 표시한다.",
+    "대사에서 자신을 Necromancer라고 사칭하는 이름은 주장한 이름의 참조다. 실제 화자의 정체 공개와 구별하며, 대사 안에 가짜라는 설명을 몰래 끼워 넣지 않는다.",
+    "원작 타이틀의 Title_Str 초대문과 운명의 대륙 글을 첫 장 앞머리에 연결했다. 배열의 실제 문자열을 표시하며 Title_Str[j] 같은 UI 호출식 자체는 시스템 부록에 보존한다."
+  ]
+}
