@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lore.local/novel/writing/chapter-subsections.schema.json",
+  "type": "object", "additionalProperties": false,
+  "required": ["version", "revision", "kind", "visibility", "status", "chapter_plan", "macro_story", "macro_revision", "workflow", "origin", "metadata", "carry_policy", "notes", "chapters"],
+  "properties": {
+    "version": {"const": 1}, "revision": {"type": "integer", "minimum": 1},
+    "kind": {"enum": ["series", "template"]}, "visibility": {"const": "author_only"}, "status": {"const": "outline"},
+    "chapter_plan": {"const": "storyboard/chapters.json"}, "macro_story": {"const": "storyboard/chapter-stories.json"},
+    "macro_revision": {"type": "integer", "minimum": 1},
+    "workflow": {"type": "object", "additionalProperties": false,
+      "required": ["stage", "branch_design", "detail_design", "runtime_binding", "original_dialogue"],
+      "properties": {
+        "stage": {"const": "subsection_outline"}, "branch_design": {"const": "deferred"}, "detail_design": {"const": "deferred"},
+        "runtime_binding": {"const": "none"}, "original_dialogue": {"const": "preserved_in_source_connected_not_replaced_by_summary"}
+      }},
+    "origin": {"const": "authored"}, "metadata": {"$ref": "#/$defs/metadata"},
+    "carry_policy": {"const": "proposed_keys_not_executable_state"},
+    "notes": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "chapters": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false,
+      "required": ["chapter_id", "inherit_continuity_from", "exit_requires_beats", "parallel_groups", "units"],
+      "properties": {
+        "chapter_id": {"type": "string"}, "inherit_continuity_from": {"type": "string"},
+        "exit_requires_beats": {"$ref": "#/$defs/ids"},
+        "parallel_groups": {"type": "array", "items": {"type": "object", "additionalProperties": false,
+          "required": ["id", "entry", "blocks", "exit", "all_required", "order"], "properties": {
+            "id": {"type": "string"}, "entry": {"type": "string"}, "exit": {"type": "string"},
+            "all_required": {"const": true}, "order": {"const": "flexible"},
+            "blocks": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/ids"}}}}},
+        "units": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/unit"}}
+      }} }
+  },
+  "$defs": {
+    "text": {"$ref": "../authoring/story.schema.json#/$defs/richText"},
+    "metadata": {"$ref": "../reference/metadata.schema.json#/$defs/metadata"},
+    "ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "unit": {"type": "object", "additionalProperties": false,
+      "required": ["id", "title", "mandatory", "status", "macro_stage_refs", "source_section_refs", "completes_beats", "after", "reading_next", "entry", "main_content", "outcome", "branch", "origin", "metadata"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^chapter[0-9]{2}/p[0-9]{2}$"},
+        "title": {"$ref": "#/$defs/text"}, "mandatory": {"const": true}, "status": {"const": "outline"},
+        "macro_stage_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["opening", "escalation", "turning_point", "ending"]}},
+        "source_section_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "completes_beats": {"$ref": "#/$defs/ids"}, "after": {"$ref": "#/$defs/ids"},
+        "reading_next": {"type": ["string", "null"]},
+        "entry": {"$ref": "#/$defs/text"}, "main_content": {"$ref": "#/$defs/text"}, "outcome": {"$ref": "#/$defs/text"},
+        "branch": {"type": "object", "additionalProperties": false,
+          "required": ["status", "mode", "variation_scope", "rejoin_before", "carry_keys", "main_result_locked"],
+          "properties": {
+            "status": {"const": "deferred"}, "mode": {"enum": ["candidate", "fixed"]},
+            "variation_scope": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/text"}]},
+            "rejoin_before": {"type": ["string", "null"]}, "carry_keys": {"$ref": "#/$defs/ids"}, "main_result_locked": {"const": true}
+          }},
+        "origin": {"const": "authored"}, "metadata": {"$ref": "#/$defs/metadata"}
+      }}
+  }
+}

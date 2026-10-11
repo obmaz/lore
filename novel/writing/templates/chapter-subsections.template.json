@@ -1,0 +1,479 @@
+{
+  "version": 1,
+  "revision": 1,
+  "kind": "template",
+  "visibility": "author_only",
+  "status": "outline",
+  "chapter_plan": "storyboard/chapters.json",
+  "macro_story": "storyboard/chapter-stories.json",
+  "macro_revision": 3,
+  "workflow": {
+    "stage": "subsection_outline",
+    "branch_design": "deferred",
+    "detail_design": "deferred",
+    "runtime_binding": "none",
+    "original_dialogue": "preserved_in_source_connected_not_replaced_by_summary"
+  },
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 기존 메인 이야기를 소단락으로 나눈 편집 구성. 분기 여지는 후속 설계 후보이며 새 선택·전술·영입·상태 실행을 구현하거나 승인한 것이 아니다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "carry_policy": "proposed_keys_not_executable_state",
+  "notes": [
+    "첫 장 계약에 맞춘 공용 예시다. 다른 장에는 chapter_id·출처·필수 사건·선행·합류를 함께 바꾼다.",
+    "큰 이야기의 수정 뒤에는 macro_revision과 소단락의 내용·조건을 함께 재검토한다. 원문 요약과 창작 연결을 구별한다."
+  ],
+  "chapters": [
+    {
+      "chapter_id": "chapter01",
+      "inherit_continuity_from": "storyboard/chapter-stories.json#/chapters/0",
+      "exit_requires_beats": [
+        "chapter01/arrival",
+        "chapter01/audience",
+        "chapter01/assignment",
+        "chapter01/departure",
+        "chapter01/center",
+        "chapter01/report"
+      ],
+      "parallel_groups": [],
+      "units": [
+        {
+          "id": "chapter01/p01",
+          "title": [
+            {
+              "text": "낯선 세계에서 받은 안내"
+            }
+          ],
+          "mandatory": true,
+          "status": "outline",
+          "macro_stage_refs": [
+            "opening"
+          ],
+          "source_section_refs": [
+            "01-invitation"
+          ],
+          "completes_beats": [
+            "chapter01/arrival"
+          ],
+          "after": [],
+          "reading_next": "chapter01/p02",
+          "entry": [
+            {
+              "text": "이 소단락을 시작할 때 이미 수행하거나 들은 내용을 적는다."
+            }
+          ],
+          "main_content": [
+            {
+              "text": "이 단위의 상황과 목적, 실제로 수행하는 행동, 그 결과를 작성한다. 사건 한 줄이 아니라 다음 단위로 이동할 이유가 생기는 이야기 묶음으로 만든다."
+            }
+          ],
+          "outcome": [
+            {
+              "text": "여기서 반드시 일어나는 결과와 다음 단위의 목표를 적는다."
+            }
+          ],
+          "branch": {
+            "status": "deferred",
+            "mode": "fixed",
+            "variation_scope": null,
+            "rejoin_before": null,
+            "carry_keys": [],
+            "main_result_locked": true
+          },
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 원문과 큰 이야기의 사건을 하나의 목적·수행·결과 단위로 묶은 편집 요약. 조건·공개 시점은 부모 continuity_limits를 따른다. 필수 사실을 전달하는 구간으로, 의미 없는 응답을 분기화하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "chapter01/p02",
+          "title": [
+            {
+              "text": "세계의 위기를 듣다"
+            }
+          ],
+          "mandatory": true,
+          "status": "outline",
+          "macro_stage_refs": [
+            "opening"
+          ],
+          "source_section_refs": [
+            "01-audience"
+          ],
+          "completes_beats": [
+            "chapter01/audience"
+          ],
+          "after": [
+            "chapter01/p01"
+          ],
+          "reading_next": "chapter01/p03",
+          "entry": [
+            {
+              "text": "이 소단락을 시작할 때 이미 수행하거나 들은 내용을 적는다."
+            }
+          ],
+          "main_content": [
+            {
+              "text": "이 단위의 상황과 목적, 실제로 수행하는 행동, 그 결과를 작성한다. 사건 한 줄이 아니라 다음 단위로 이동할 이유가 생기는 이야기 묶음으로 만든다."
+            }
+          ],
+          "outcome": [
+            {
+              "text": "여기서 반드시 일어나는 결과와 다음 단위의 목표를 적는다."
+            }
+          ],
+          "branch": {
+            "status": "deferred",
+            "mode": "fixed",
+            "variation_scope": null,
+            "rejoin_before": null,
+            "carry_keys": [],
+            "main_result_locked": true
+          },
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 원문과 큰 이야기의 사건을 하나의 목적·수행·결과 단위로 묶은 편집 요약. 조건·공개 시점은 부모 continuity_limits를 따른다. 필수 사실을 전달하는 구간으로, 의미 없는 응답을 분기화하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "chapter01/p03",
+          "title": [
+            {
+              "text": "돌아와 증명해야 할 첫 임무"
+            }
+          ],
+          "mandatory": true,
+          "status": "outline",
+          "macro_stage_refs": [
+            "escalation"
+          ],
+          "source_section_refs": [
+            "01-request"
+          ],
+          "completes_beats": [
+            "chapter01/assignment"
+          ],
+          "after": [
+            "chapter01/p02"
+          ],
+          "reading_next": "chapter01/p04",
+          "entry": [
+            {
+              "text": "이 소단락을 시작할 때 이미 수행하거나 들은 내용을 적는다."
+            }
+          ],
+          "main_content": [
+            {
+              "text": "이 단위의 상황과 목적, 실제로 수행하는 행동, 그 결과를 작성한다. 사건 한 줄이 아니라 다음 단위로 이동할 이유가 생기는 이야기 묶음으로 만든다."
+            }
+          ],
+          "outcome": [
+            {
+              "text": "여기서 반드시 일어나는 결과와 다음 단위의 목표를 적는다."
+            }
+          ],
+          "branch": {
+            "status": "deferred",
+            "mode": "fixed",
+            "variation_scope": null,
+            "rejoin_before": null,
+            "carry_keys": [],
+            "main_result_locked": true
+          },
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 원문과 큰 이야기의 사건을 하나의 목적·수행·결과 단위로 묶은 편집 요약. 조건·공개 시점은 부모 continuity_limits를 따른다. 필수 사실을 전달하는 구간으로, 의미 없는 응답을 분기화하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "chapter01/p04",
+          "title": [
+            {
+              "text": "떠난 사람의 이름과 남은 목소리"
+            }
+          ],
+          "mandatory": true,
+          "status": "outline",
+          "macro_stage_refs": [
+            "escalation"
+          ],
+          "source_section_refs": [
+            "01-city"
+          ],
+          "completes_beats": [],
+          "after": [
+            "chapter01/p03"
+          ],
+          "reading_next": "chapter01/p05",
+          "entry": [
+            {
+              "text": "이 소단락을 시작할 때 이미 수행하거나 들은 내용을 적는다."
+            }
+          ],
+          "main_content": [
+            {
+              "text": "이 단위의 상황과 목적, 실제로 수행하는 행동, 그 결과를 작성한다. 사건 한 줄이 아니라 다음 단위로 이동할 이유가 생기는 이야기 묶음으로 만든다."
+            }
+          ],
+          "outcome": [
+            {
+              "text": "여기서 반드시 일어나는 결과와 다음 단위의 목표를 적는다."
+            }
+          ],
+          "branch": {
+            "status": "deferred",
+            "mode": "candidate",
+            "variation_scope": [
+              {
+                "text": "접근법·대화 경험·동료의 역할 중 무엇이 달라지고 어떤 후속 서사로 이어질지 적는다. 실제 선택지와 조건은 다음 단계에서 설계한다."
+              }
+            ],
+            "rejoin_before": "chapter01/p05",
+            "carry_keys": [
+              "experience.castle_testimony"
+            ],
+            "main_result_locked": true
+          },
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 원문과 큰 이야기의 사건을 하나의 목적·수행·결과 단위로 묶은 편집 요약. 조건·공개 시점은 부모 continuity_limits를 따른다. 분기 여지와 인계 키는 집필 제안이며 현재 실행·영입·장비·경험의 확정 사실이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "chapter01/p05",
+          "title": [
+            {
+              "text": "출발할 일행을 정비하다"
+            }
+          ],
+          "mandatory": true,
+          "status": "outline",
+          "macro_stage_refs": [
+            "turning_point"
+          ],
+          "source_section_refs": [
+            "01-depart",
+            "01-city"
+          ],
+          "completes_beats": [
+            "chapter01/departure"
+          ],
+          "after": [
+            "chapter01/p04"
+          ],
+          "reading_next": "chapter01/p06",
+          "entry": [
+            {
+              "text": "이 소단락을 시작할 때 이미 수행하거나 들은 내용을 적는다."
+            }
+          ],
+          "main_content": [
+            {
+              "text": "이 단위의 상황과 목적, 실제로 수행하는 행동, 그 결과를 작성한다. 사건 한 줄이 아니라 다음 단위로 이동할 이유가 생기는 이야기 묶음으로 만든다."
+            }
+          ],
+          "outcome": [
+            {
+              "text": "여기서 반드시 일어나는 결과와 다음 단위의 목표를 적는다."
+            }
+          ],
+          "branch": {
+            "status": "deferred",
+            "mode": "candidate",
+            "variation_scope": [
+              {
+                "text": "접근법·대화 경험·동료의 역할 중 무엇이 달라지고 어떤 후속 서사로 이어질지 적는다. 실제 선택지와 조건은 다음 단계에서 설계한다."
+              }
+            ],
+            "rejoin_before": "chapter01/p06",
+            "carry_keys": [
+              "party.members",
+              "party.equipment",
+              "experience.preparation"
+            ],
+            "main_result_locked": true
+          },
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 원문과 큰 이야기의 사건을 하나의 목적·수행·결과 단위로 묶은 편집 요약. 조건·공개 시점은 부모 continuity_limits를 따른다. 분기 여지와 인계 키는 집필 제안이며 현재 실행·영입·장비·경험의 확정 사실이 아니다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "chapter01/p06",
+          "title": [
+            {
+              "text": "남서쪽 동굴에 도달하다"
+            }
+          ],
+          "mandatory": true,
+          "status": "outline",
+          "macro_stage_refs": [
+            "turning_point"
+          ],
+          "source_section_refs": [
+            "01-cave"
+          ],
+          "completes_beats": [],
+          "after": [
+            "chapter01/p05"
+          ],
+          "reading_next": "chapter01/p07",
+          "entry": [
+            {
+              "text": "이 소단락을 시작할 때 이미 수행하거나 들은 내용을 적는다."
+            }
+          ],
+          "main_content": [
+            {
+              "text": "이 단위의 상황과 목적, 실제로 수행하는 행동, 그 결과를 작성한다. 사건 한 줄이 아니라 다음 단위로 이동할 이유가 생기는 이야기 묶음으로 만든다."
+            }
+          ],
+          "outcome": [
+            {
+              "text": "여기서 반드시 일어나는 결과와 다음 단위의 목표를 적는다."
+            }
+          ],
+          "branch": {
+            "status": "deferred",
+            "mode": "fixed",
+            "variation_scope": null,
+            "rejoin_before": null,
+            "carry_keys": [],
+            "main_result_locked": true
+          },
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 원문과 큰 이야기의 사건을 하나의 목적·수행·결과 단위로 묶은 편집 요약. 조건·공개 시점은 부모 continuity_limits를 따른다. 필수 사실을 전달하는 구간으로, 의미 없는 응답을 분기화하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "chapter01/p07",
+          "title": [
+            {
+              "text": "탐사의 중심을 확인하다"
+            }
+          ],
+          "mandatory": true,
+          "status": "outline",
+          "macro_stage_refs": [
+            "turning_point"
+          ],
+          "source_section_refs": [
+            "01-cave"
+          ],
+          "completes_beats": [
+            "chapter01/center"
+          ],
+          "after": [
+            "chapter01/p06"
+          ],
+          "reading_next": "chapter01/p08",
+          "entry": [
+            {
+              "text": "이 소단락을 시작할 때 이미 수행하거나 들은 내용을 적는다."
+            }
+          ],
+          "main_content": [
+            {
+              "text": "이 단위의 상황과 목적, 실제로 수행하는 행동, 그 결과를 작성한다. 사건 한 줄이 아니라 다음 단위로 이동할 이유가 생기는 이야기 묶음으로 만든다."
+            }
+          ],
+          "outcome": [
+            {
+              "text": "여기서 반드시 일어나는 결과와 다음 단위의 목표를 적는다."
+            }
+          ],
+          "branch": {
+            "status": "deferred",
+            "mode": "fixed",
+            "variation_scope": null,
+            "rejoin_before": null,
+            "carry_keys": [],
+            "main_result_locked": true
+          },
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 원문과 큰 이야기의 사건을 하나의 목적·수행·결과 단위로 묶은 편집 요약. 조건·공개 시점은 부모 continuity_limits를 따른다. 필수 사실을 전달하는 구간으로, 의미 없는 응답을 분기화하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        },
+        {
+          "id": "chapter01/p08",
+          "title": [
+            {
+              "text": "첫 보고가 다음 부탁이 되다"
+            }
+          ],
+          "mandatory": true,
+          "status": "outline",
+          "macro_stage_refs": [
+            "ending"
+          ],
+          "source_section_refs": [
+            "01-report"
+          ],
+          "completes_beats": [
+            "chapter01/report"
+          ],
+          "after": [
+            "chapter01/p07"
+          ],
+          "reading_next": null,
+          "entry": [
+            {
+              "text": "이 소단락을 시작할 때 이미 수행하거나 들은 내용을 적는다."
+            }
+          ],
+          "main_content": [
+            {
+              "text": "이 단위의 상황과 목적, 실제로 수행하는 행동, 그 결과를 작성한다. 사건 한 줄이 아니라 다음 단위로 이동할 이유가 생기는 이야기 묶음으로 만든다."
+            }
+          ],
+          "outcome": [
+            {
+              "text": "여기서 반드시 일어나는 결과와 다음 단위의 목표를 적는다."
+            }
+          ],
+          "branch": {
+            "status": "deferred",
+            "mode": "fixed",
+            "variation_scope": null,
+            "rejoin_before": null,
+            "carry_keys": [],
+            "main_result_locked": true
+          },
+          "origin": "authored",
+          "metadata": {
+            "addition": true,
+            "kind": "new_setting",
+            "note": "추가: 원문과 큰 이야기의 사건을 하나의 목적·수행·결과 단위로 묶은 편집 요약. 조건·공개 시점은 부모 continuity_limits를 따른다. 필수 사실을 전달하는 구간으로, 의미 없는 응답을 분기화하지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ]
+    }
+  ]
+}

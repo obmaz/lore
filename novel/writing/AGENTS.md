@@ -3,7 +3,7 @@
 상위 `novel/AGENTS.md`를 따른다. 설정과 보존 원문은 상위 사전을 참조하고,
 스토리보드·새 본문·퀘스트별 사건 기록은 이 폴더에 작성한다.
 
-- 공용 `templates/`를 이용해 챕터별 큰 이야기 → 검토·다듬기 → 의미 있는 분기점 → 장면 → 본문
+- 공용 `templates/`를 이용해 챕터별 큰 이야기 → 검토·다듬기 → 소단락 주요 내용 → 의미 있는 분기점 → 장면 → 본문
   순으로 작성한다. 전체의 세부 문장을 미리 확정하지 않는다.
 - 큰 이야기 초고는 `storyboard/chapter-stories.json`, 공용 양식은
   `templates/chapter-stories.template.json`이다. 네 줄거리 문단·장별 질문·감정 변화·
@@ -17,6 +17,18 @@
   작가 전용 전편 스포일러이며 독자용 HTML에 통째로 직렬화하지 않는다.
   분기·상세 집필은 별도 단계다. 성공하는 주 시나리오 초안은 실패·도주·배타 대사를
   삭제하거나 모든 경로를 정사로 확정할 권한이 아니다. 기존 첫 챕터 원고를 덮어쓰지 않는다.
+- 큰 이야기를 소단락으로 나눌 때는 `storyboard/chapter-subsections.json`과
+  `templates/chapter-subsections.template.json`을 사용한다. 소단락은 하나의 목적·수행·
+  결과가 있는 이야기 묶음이지 인사·대사 한 줄·이동 버튼 단위가 아니다. 주요 내용은
+  `main_content`, 시작은 `entry`, 필수 완료는 `outcome`에 쓰고 검증 설명은 메모에 둔다.
+  장 제목·큰 이야기·공개 조건을 복제하지 않고 부모 참조와 `macro_revision`으로 상속한다.
+  `completes_beats`로 필수 사건을 한 번씩 배치하고 `source_section_refs`로 원문 구간을 잇는다.
+  `reading_next`는 편집상 읽기 배열, `after`는 논리 선행이다. 병렬 봉인은 둘 다 필수이며
+  서로 선행으로 묶지 않는다. 분기 후보는 `variation_scope`에 서사 차이와 후속 영향을
+  설명하고 다음 소단락 전 `rejoin_before`로 합류한다. 필수 결과를 생략할 수 없다.
+  `carry_keys`는 향후 경로 기록의 제안이지 이미 구현한 상태 변수가 아니다. 실제 선택지,
+  원문 발생 ID 반영표, 지식 공개·동료·장비 계약을 연결하기 전에는 실행 완료로 표시하지 않는다.
+  후보를 모두 선택지로 만들지 않으며 기존 첫 장의 소편·실행 노드를 자동 교체하지 않는다.
 - 원작 우선 연결 판본은 `storyboard/source-connected.plan.json`의 구간별 원문 선택과
   전후 산문으로 편집하고 `source-connected/` 및 `previews/source-connected.html`을 생성한다.
   **기존 원문이 모두 있어야 한다.** 문구 발생 ID·출력 사건·장면을 전체 스냅샷과

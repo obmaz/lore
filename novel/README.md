@@ -55,6 +55,13 @@ novel/
   연결하고, 예언서의 조건과 마지막 도움 뒤 실제 계급 변화를 이어 썼다. 새 연결은 창작 표시이며,
   전편 스포일러가 있어 독자용 웹에 게시하지 않는다. 기존 첫 챕터는 그대로 유지한다.
 
+- [15장 소단락 주요 내용](writing/storyboard/chapter-subsections.json): 88개 소단락의
+  시작·주요 이야기·필수 결과와 후속 연결. [읽기본](writing/previews/chapter-subsections.html),
+  [공용 양식](writing/templates/chapter-subsections.template.json).
+  의미 있는 분기 여지는 29곳에만 후보로 표시했고 실제 선택지는 아직 없다.
+  원문과 필수 메인 사건을 참조하며, 두 봉인은 서로 독립이지만 모두 완료해야 한다.
+  작가 전용 전편 구성으로 독자 웹의 기존 첫 챕터를 교체하지 않는다.
+
 - [전편 15장 큰 구성](writing/storyboard/chapters.json): 미리 정한 챕터 제목·필수 메인 사건·
   원문 묶음·장면 참조. [작가용 읽기본](writing/previews/chapters.html)은 전편 스포일러를 포함한다.
   기존 18개 자료 묶음은 보존하며 도입/첫 의뢰와 두 병렬 봉인을 각각 한 장으로 묶고,

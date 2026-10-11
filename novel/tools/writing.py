@@ -387,6 +387,8 @@ def export_documents(output,check=False):
     docs['chapters.html'] = html_doc(display(plan['title']), body)
     from chapter_stories import STORIES, SCHEMA as STORY_SCHEMA, story_document
     docs['chapter-stories.html'] = story_document(chapters=plan)
+    from chapter_subsections import PLAN as SUBSECTIONS, SCHEMA as SUBSECTION_SCHEMA, TEMPLATE as SUBSECTION_TEMPLATE, subsection_document
+    docs['chapter-subsections.html'] = subsection_document(chapters=plan)
     from source_story import PLAN as SOURCE_PLAN, SCHEMA as SOURCE_SCHEMA, OUTPUT as SOURCE_OUTPUT, export as source_export, story_document as source_document
     source_export(check=check)
     docs['source-connected.html'] = source_document(read(SOURCE_OUTPUT/'manuscript.json'))
@@ -423,7 +425,7 @@ def export_documents(output,check=False):
         docs[name] = html_doc(preview['title'],body)
     from interactive import documents as interactive_documents, OVERLAY, READER, SCHEMA
     docs.update(interactive_documents())
-    inputs = [OVERLAY,READER,SCHEMA,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,STORIES,STORY_SCHEMA,ROOT/'tools/chapter_stories.py',SOURCE_PLAN,SOURCE_SCHEMA,ROOT/'tools/source_story.py',SOURCE_OUTPUT/'manuscript.json',SOURCE_OUTPUT/'coverage.json',SOURCE_OUTPUT/'generated-manifest.json',PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
+    inputs = [OVERLAY,READER,SCHEMA,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,STORIES,STORY_SCHEMA,ROOT/'tools/chapter_stories.py',SUBSECTIONS,SUBSECTION_SCHEMA,SUBSECTION_TEMPLATE,ROOT/'tools/chapter_subsections.py',SOURCE_PLAN,SOURCE_SCHEMA,ROOT/'tools/source_story.py',SOURCE_OUTPUT/'manuscript.json',SOURCE_OUTPUT/'coverage.json',SOURCE_OUTPUT/'generated-manifest.json',PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
               ROOT/'reference/terms.json',ROOT/'continuity/canon.json',ROOT/'writing/project.json',Path(__file__),ROOT/'tools/text_refs.py',
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
               ROOT/'authoring/story.schema.json',WRITING/'storyboard.schema.json',
@@ -478,6 +480,9 @@ def main():
         from chapter_stories import STORIES, TEMPLATE as STORY_TEMPLATE, validate_stories
         result['chapter_stories'] = validate_stories(read(STORIES))
         result['chapter_stories_template'] = validate_stories(read(STORY_TEMPLATE))
+        from chapter_subsections import PLAN as SUBSECTIONS, TEMPLATE as SUBSECTION_TEMPLATE, validate_subsections
+        result['chapter_subsections'] = validate_subsections(read(SUBSECTIONS))
+        result['chapter_subsections_template'] = validate_subsections(read(SUBSECTION_TEMPLATE))
         from source_story import OUTPUT as SOURCE_OUTPUT, validate_story as validate_source_story
         result['source_connected'] = validate_source_story(read(SOURCE_OUTPUT/'manuscript.json'))
         for path in sorted((WRITING/'quests').glob('*.json')):
