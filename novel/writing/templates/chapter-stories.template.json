@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "revision": 1,
+  "kind": "template",
+  "visibility": "author_only",
+  "status": "draft",
+  "chapter_plan": "storyboard/chapters.json",
+  "workflow": {
+    "stage": "macro_story_first",
+    "branch_design": "deferred",
+    "detail_design": "deferred",
+    "existing_chapter01": "preserve_existing_draft",
+    "dialogue_policy": "bind_all_applicable_original_occurrences_when_detailing",
+    "primary_scenario": "successful_main_progress_not_all_routes"
+  },
+  "origin": "authored",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 필수 사건을 소설의 원인·압박·전환·착지로 묶고 감정선과 이동 이유를 보충한 큰 줄거리 초고. 실제 원문 사실은 beat_refs가 가리키는 근거와 대조한다. 본문 완성·분기 구현·설정 승인으로 취급하지 않는다.",
+    "knowledge_policy": "author_reference_not_character_knowledge"
+  },
+  "premise": [
+    {
+      "text": "전편에서 주인공이 무엇을 맡고 어떤 경험을 거쳐 끝에 이르는지 작성한다."
+    }
+  ],
+  "acts": [
+    {
+      "id": "departure",
+      "chapter_ids": [
+        "chapter01"
+      ],
+      "summary": [
+        {
+          "text": "첫 막이 주인공의 목표와 책임을 어떻게 바꾸는지 작성한다."
+        }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "chapter_id": "chapter01",
+      "mandatory": true,
+      "beat_refs": [
+        "chapter01/arrival",
+        "chapter01/audience",
+        "chapter01/assignment",
+        "chapter01/departure",
+        "chapter01/center",
+        "chapter01/report"
+      ],
+      "story": {
+        "opening": [
+          {
+            "text": "앞 장의 결과를 이어받아 이 장에서 무엇을 필요로 하는지 쓴다."
+          }
+        ],
+        "escalation": [
+          {
+            "text": "목표를 쉽게 달성할 수 없게 만드는 위험·상대·책임을 쓴다."
+          }
+        ],
+        "turning_point": [
+          {
+            "text": "필수 사건을 겪으며 상황이나 이해가 실제로 바뀌는 순간을 쓴다."
+          }
+        ],
+        "ending": [
+          {
+            "text": "이 장에서 해낸 일과 남은 일을 구별하여 착지한다."
+          }
+        ]
+      },
+      "dramatic_question": [
+        {
+          "text": "이 장을 끝까지 읽게 만드는 질문을 쓴다."
+        }
+      ],
+      "emotional_change": [
+        {
+          "text": "어떤 경험 때문에 태도가 어떻게 바뀌는지 쓰되 고정 인물 성향으로 승격하지 않는다."
+        }
+      ],
+      "handoff": {
+        "next_chapter": null,
+        "reason": [
+          {
+            "text": "다음 장의 목표가 왜 여기서 생기는지 쓴다. 마지막 장은 남는 여운을 쓴다."
+          }
+        ]
+      },
+      "parallel_beat_groups": [],
+      "continuity_limits": [
+        [
+          {
+            "text": "미영입 동료·미획득 장비·듣지 않은 증언·공개 전 진상을 자동 부여하지 않는다."
+          }
+        ]
+      ],
+      "origin": "authored",
+      "status": "draft",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 원문 필수 사건 위에 제안한 장 단위 갈등·감정 변화·인과 연결. 미래 상세 장면과 분기는 미집필이며, 증언·조건부 동행·실제 획득 상태를 자동 확정하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      }
+    }
+  ],
+  "refinement_notes": [
+    "필수 사건 목록을 산문형 줄거리로 다듬은 뒤 의미 있는 분기와 소편을 설계한다."
+  ],
+  "open_questions": [
+    "예시의 사건 참조는 중앙 챕터 구성에 맞춰 바꾼다. 전편 양식으로 확장할 때는 모든 장을 순서대로 참조한다."
+  ]
+}

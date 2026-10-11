@@ -39,10 +39,16 @@ novel/
 
 ## 먼저 읽을 자료
 
+- [15장 큰 이야기 초고](writing/storyboard/chapter-stories.json): 시작·갈등·전환·마무리와
+  인물 변화·다음 장의 이유를 연결한 작가용 줄거리.
+  [읽기본](writing/previews/chapter-stories.html), [공용 양식](writing/templates/chapter-stories.template.json).
+  큰 이야기부터 다듬고 이후 분기와 상세 본문을 만든다. 새 연결과 감정선은 창작 표시이며,
+  전편 스포일러가 있어 독자용 웹에 게시하지 않는다. 기존 첫 챕터는 그대로 유지한다.
+
 - [전편 15장 큰 구성](writing/storyboard/chapters.json): 미리 정한 챕터 제목·필수 메인 사건·
   원문 묶음·장면 참조. [작가용 읽기본](writing/previews/chapters.html)은 전편 스포일러를 포함한다.
   기존 18개 자료 묶음은 보존하며 도입/첫 의뢰와 두 병렬 봉인을 각각 한 장으로 묶고,
-  선택 성전 이야기는 별도로 관리한다. 2~15장은 아직 본문이 없는 구성 초안이다.
+  선택 성전 이야기는 별도로 관리한다. 2~15장은 큰 줄거리가 있는 초안이며 상세 본문은 아직 없다.
 
 - [첫 챕터 선택하며 읽기](writing/previews/chapter01-interactive.html): 네 시작 동료·직업 무기,
   선택 탐방·영입 접근법·직업별 후속 장면을 적용한 새 판본.

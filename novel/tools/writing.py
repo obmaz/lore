@@ -385,6 +385,8 @@ def export_documents(output,check=False):
         body += '<p>'+esc(display(side['title']))+' · '+esc(', '.join(side['unit_ids']))+' · 합류 위치 미정</p>'
     body += '<h2>편집 유의점</h2><ul>'+''.join('<li>'+esc(note)+'</li>' for note in plan['open_questions'])+'</ul>'
     docs['chapters.html'] = html_doc(display(plan['title']), body)
+    from chapter_stories import STORIES, SCHEMA as STORY_SCHEMA, story_document
+    docs['chapter-stories.html'] = story_document(chapters=plan)
     previews = [('prologue.html',preview_story(story,continuity,DEFAULT_ROUTE,profiles,refs)),
                 ('prologue-tavern.html',preview_story(story,continuity,['enter_courtyard','visit_tavern','remember_veteran',*DEFAULT_ROUTE[1:]],profiles,refs))]
     if READING.exists():
@@ -418,7 +420,7 @@ def export_documents(output,check=False):
         docs[name] = html_doc(preview['title'],body)
     from interactive import documents as interactive_documents, OVERLAY, READER, SCHEMA
     docs.update(interactive_documents())
-    inputs = [OVERLAY,READER,SCHEMA,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
+    inputs = [OVERLAY,READER,SCHEMA,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,STORIES,STORY_SCHEMA,ROOT/'tools/chapter_stories.py',PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
               ROOT/'reference/terms.json',ROOT/'continuity/canon.json',ROOT/'writing/project.json',Path(__file__),ROOT/'tools/text_refs.py',
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
               ROOT/'authoring/story.schema.json',WRITING/'storyboard.schema.json',
@@ -470,6 +472,9 @@ def main():
         result['quests'] = {}
         result['chapter_plan'] = validate_chapters(read(CHAPTERS))
         result['chapter_template'] = validate_chapters(read(WRITING/'templates/chapters.template.json'))
+        from chapter_stories import STORIES, TEMPLATE as STORY_TEMPLATE, validate_stories
+        result['chapter_stories'] = validate_stories(read(STORIES))
+        result['chapter_stories_template'] = validate_stories(read(STORY_TEMPLATE))
         for path in sorted((WRITING/'quests').glob('*.json')):
             if path.name.endswith('.continuity.json'): continue
             draft = read(path)
