@@ -1,4 +1,5 @@
 import 'support/source_audio_platform.dart';
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -85,6 +86,8 @@ void main() {
       }
 
       await open();
+      expect(find.text('Enemy data'), findsNothing);
+      expect(find.byTooltip('Enemy data'), findsNothing);
       for (final k in [
         LogicalKeyboardKey.enter,
         LogicalKeyboardKey.escape,

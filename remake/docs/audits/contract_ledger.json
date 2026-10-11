@@ -59894,6 +59894,13 @@
       "scope": "candidate-evidence; behavioral contract linkage pending"
     },
     {
+      "path": "test/mobile_title_menu_test.dart",
+      "kind": "test",
+      "sha256": "d8d55866784fc50faffcb28e9cdbdf2808c5d99fad88523cf90058963dddea86",
+      "cited_source_files": [],
+      "scope": "candidate-evidence; behavioral contract linkage pending"
+    },
+    {
       "path": "test/movement_logic_test.dart",
       "kind": "test",
       "sha256": "a070e78357c5523907a236a4a696f4195cefe5bfbe821e16affec1d482852936",
@@ -60500,7 +60507,7 @@
     {
       "path": "test/source_title_input_test.dart",
       "kind": "test",
-      "sha256": "8cf9f9c0b3b08a5323d94f322c669a757164422ece563362e1a20f4d7d6c98a5",
+      "sha256": "6c51b08c5553846e204c1843bc6ebc2c6d5489c84515f483538f73ab3d542baa",
       "cited_source_files": [
         "LORECRET.PAS",
         "LOREHELP.PAS"
