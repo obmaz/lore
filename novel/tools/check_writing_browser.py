@@ -22,7 +22,7 @@ def check(output):
                 assert not errors and not requests,(errors,requests)
                 assert page.evaluate('document.documentElement.scrollWidth <= innerWidth'),name+' overflows'
                 assert page.locator('h1').count()==1
-                assert page.get_by_role('button',name='인쇄 / PDF 저장').count()==1
+                assert page.get_by_role('button',name='인쇄 / PDF 저장').count()==0
                 if output:
                     output.mkdir(parents=True,exist_ok=True)
                     page.screenshot(path=str(output/f'{name}-{width}.png'))

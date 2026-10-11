@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "revision": 1,
+  "kind": "template",
+  "visibility": "author_only",
+  "status": "outline",
+  "source_board": "storyboard/series.json",
+  "title": [
+    {
+      "text": "챕터 큰 구성 공용 양식"
+    }
+  ],
+  "reading_policy": {
+    "main_chapters": "mandatory",
+    "optional_branches": "rejoin_before_next_required_beat",
+    "knowledge": "actual_route_only",
+    "runtime_scope": "chapter01_only",
+    "origin": "authored",
+    "status": "proposed",
+    "metadata": {
+      "addition": true,
+      "kind": "new_setting",
+      "note": "추가: 독자용 15장 구성과 필수 사건 채택. 원작의 자유 이동·선행 발견·선택 영입을 원작 강제 조건이라고 바꾸지 않는다. 미집필 장은 실행·본문 완성을 주장하지 않는다.",
+      "knowledge_policy": "author_reference_not_character_knowledge"
+    }
+  },
+  "chapters": [
+    {
+      "id": "chapter01",
+      "number": 1,
+      "title": [
+        {
+          "text": "이 장의 제목을 작성한다."
+        }
+      ],
+      "unit_ids": [
+        "prologue"
+      ],
+      "arc": "departure",
+      "mandatory": true,
+      "implementation": "outline_only",
+      "origin": "authored",
+      "status": "proposed",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "추가: 제목·장 묶음·필수 독서 계약은 집필용 편집 제안. 사건 요약의 원문 근거와 별개이며 인물 설정이나 원작 진행 조건을 새로 확정하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "exit_requires_all": true,
+      "required_beats": [
+        {
+          "id": "chapter01/core",
+          "summary": [
+            {
+              "text": "이 장에서 반드시 등장할 핵심 사건을 작성한다."
+            }
+          ],
+          "source_anchors": [
+            "prologue:create_party",
+            "prologue:start_lore",
+            "lore_menace:lord_background"
+          ],
+          "after": [],
+          "scene_nodes": null,
+          "origin": "inferred",
+          "status": "proposed",
+          "metadata": {
+            "addition": true,
+            "kind": "interpretation",
+            "note": "원작 근거와 필수 사건을 연결하는 편집 템플릿. 실제 원고를 만들기 전에는 장면 ID를 채우지 않는다.",
+            "knowledge_policy": "author_reference_not_character_knowledge"
+          }
+        }
+      ]
+    }
+  ],
+  "side_stories": [],
+  "open_questions": [
+    "장 제목·필수 사건을 먼저 정하고 장면과 소편을 나누어 집필한다. 실제 장면을 연결하기 전에는 outline_only와 null 바인딩을 유지한다."
+  ]
+}

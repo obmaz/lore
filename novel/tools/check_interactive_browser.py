@@ -3,6 +3,9 @@ import json
 
 from interactive import Session
 from materials import ROOT
+from characters import load_characters
+from reference import load_references
+from text_refs import indexes, literals, render
 
 INTRO=['prologue/enter_courtyard','prologue/visit_lord','prologue/hear_lord_intro',
        'prologue/hear_lord_briefing','prologue/first_quest_boundary/continue','lore_menace/receive_assignment']
@@ -87,6 +90,8 @@ def assert_main_story_guards(browser, source, width, height):
 def check():
     from playwright.sync_api import sync_playwright, expect
     session=Session()
+    profiles=load_characters()
+    heading='제1장 · '+render(session.story['meta']['title'],indexes(profiles,load_references()),literals(),profiles,())
     source=(ROOT/'writing/previews/chapter01-interactive.html').read_text()
     results=[]
     with sync_playwright() as playwright:
@@ -98,6 +103,8 @@ def check():
                 page.on('pageerror',lambda e:errors.append(str(e)))
                 page.on('request',lambda r:requests.append(r.url))
                 page.set_content(source)
+                assert page.locator('h1').inner_text()==heading
+                assert page.get_by_role('button',name='인쇄 / PDF 저장').count()==0
                 page.locator('details summary').click()
                 route=[]
                 for step in steps:

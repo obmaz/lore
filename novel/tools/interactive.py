@@ -176,6 +176,11 @@ def compile_chapter(overlay=None):
     memory.update(story_id=story['meta']['id'],story_revision=story['meta']['revision'],character_registry_revision=profiles['revision'])
     memory['event_templates'].extend(overlay['events'])
     validate_main_story(story, memory, overlay['main_story'])
+    from writing import CHAPTERS, validate_chapters
+    plan = read(CHAPTERS)
+    validate_chapters(plan, story=story, main_story=overlay['main_story'], profiles=profiles)
+    chapter = next(c for c in plan['chapters'] if c['id'] == 'chapter01')
+    story['meta']['title'] = copy.deepcopy(chapter['title'])
     story['coverage'] = coverage(story)
     validate(story,memory,read(CANON),profiles)
     choices = {c['id']:c for n in story['nodes'] for c in n['choices']}
@@ -292,7 +297,7 @@ def documents():
     safe = json.dumps(payload,ensure_ascii=False,sort_keys=True).replace('<','\\u003c').replace('&','\\u0026')
     body = '<p class="notice">첫 챕터 선택형 초고 · 기존 긴 원고를 이어 읽습니다. 선택한 경로만 본문에 표시됩니다. 원작 조건을 잇는 탐방 규칙·네 시작 동료는 집필용 추가입니다.</p><p><button id="back" type="button">한 선택 뒤로</button> <button id="restart" type="button">처음부터</button> <button id="save" type="button">경로 저장</button> <button id="load" type="button">경로 불러오기</button><input id="file" type="file" accept="application/json" hidden></p><p id="message" role="status"></p><details><summary>현재 동료·장비·경험</summary><div id="state"></div></details><div id="manuscript"></div><div id="choices" aria-label="이야기 선택"></div>'
     body += '<script type="application/json" id="chapter-data">'+safe+'</script><script>'+READER.read_text()+'</script>'
-    page = html_doc('첫 챕터 · 선택하며 읽기',body).replace('</style>','button{max-width:100%;white-space:normal;overflow-wrap:anywhere;cursor:pointer;margin:4px;padding:10px}#choices{display:flex;flex-wrap:wrap}#state{overflow-wrap:anywhere}.selected{border-left:3px solid #977;padding-left:12px}@media print{#choices,button,#state{display:none}}</style>')
+    page = html_doc('제1장 · '+render(story['meta']['title'],data,ls,profiles,()),body).replace('</style>','button{max-width:100%;white-space:normal;overflow-wrap:anywhere;cursor:pointer;margin:4px;padding:10px}#choices{display:flex;flex-wrap:wrap}#state{overflow-wrap:anywhere}.selected{border-left:3px solid #977;padding-left:12px}@media print{#choices,button,#state{display:none}}</style>')
     report = {'version':1,'scope':overlay['scope'],'status':'draft','dialogue_coverage':story['coverage'],
         'nodes':[{'id':n['id'],'choices':[{'id':c['id'],'target':c['target'],'when':c['when'],'effects':c['effects'],'origin':c['provenance']['origin']} for c in n['choices']]} for n in story['nodes']],
         'auto_rules':overlay['auto_rules'],'main_story':overlay['main_story'],

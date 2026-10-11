@@ -18,6 +18,8 @@ from text_refs import indexes, literals, render, validate_text, reject_fixed_nam
 
 WRITING = ROOT/'writing'
 BOARD = WRITING/'storyboard/series.json'
+CHAPTERS = WRITING/'storyboard/chapters.json'
+CHAPTER_SCHEMA = WRITING/'chapters.schema.json'
 PILOT = WRITING/'quests/prologue.json'
 TEXT_FIELDS = ('title','opening','goal','conflict','turn','ending','emotional_arc','bridge')
 DEFAULT_ROUTE = ['enter_courtyard','visit_lord','hear_lord_intro','hear_lord_briefing']
@@ -172,6 +174,132 @@ def validate_board(board,data=None,profiles=None):
             'source_dialogue_complete':False,'condition_paths_verified':False}
 
 
+def validate_chapters(plan, board=None, story=None, main_story=None, profiles=None, data=None):
+    """Validate the mandatory macro plan; only bound chapters claim executable prose."""
+    schema = read(CHAPTER_SCHEMA)
+    story_schema, common = read(ROOT/'authoring/story.schema.json'), read(COMMON)
+    registry = Registry().with_resources([
+        (schema['$id'],Resource.from_contents(schema)), (common['$id'],Resource.from_contents(common)),
+        (story_schema['$id'],Resource.from_contents(story_schema)),
+        ('https://lore.local/novel/authoring/story.schema.json',Resource.from_contents(story_schema))])
+    jsonschema.Draft202012Validator(schema,registry=registry).validate(plan)
+    board = board if board is not None else read(BOARD)
+    units = {u['id']: u for u in board['units']}
+    arcs = {a['id'] for a in board['arcs']}
+    catalog = load_materials()[0]
+    profiles = profiles or load_characters(catalog)
+    data = data or indexes(profiles, load_references(catalog), catalog)
+    raw = literals(catalog)
+    quest_index = read(ROOT/'materials/quests.json')
+    quests = {q['id']: q for q in quest_index['quests']}
+    anchors = {q['id']+':'+m['id']: m for q in quests.values() for m in q.get('milestones', [])}
+    def text(value):
+        validate_text(value, data, raw)
+        reject_fixed_names(value, data)
+    def claim(row, value, evidence=()):
+        validate_claim({'field':'chapter_plan', 'value':value, 'origin':row['origin'],
+                        'status':row['status'], 'evidence':list(evidence), 'metadata':row['metadata']}, catalog)
+    text(plan['title'])
+    claim(plan['reading_policy'], plan['reading_policy']['main_chapters'])
+    owners, ids = [], []
+    if [c['number'] for c in plan['chapters']] != list(range(1, len(plan['chapters'])+1)):
+        raise ValueError('chapter numbers must be contiguous in reading order')
+    for chapter in plan['chapters']:
+        if chapter['id'] != 'chapter'+str(chapter['number']).zfill(2):
+            raise ValueError('chapter IDs must remain stable numbered references')
+        if chapter['implementation'] == 'runtime_bound' and chapter['id'] != 'chapter01':
+            raise ValueError('future chapter has no implemented runtime binding')
+        ids.append(chapter['id'])
+        owners.extend(chapter['unit_ids'])
+        if not set(chapter['unit_ids']) <= set(units) or chapter['arc'] not in arcs:
+            raise ValueError('unknown chapter source unit/arc')
+        if any(units[u]['arc'] != chapter['arc'] for u in chapter['unit_ids']):
+            raise ValueError('chapter crosses source arcs')
+        text(chapter['title'])
+        claim(chapter, chapter['title'])
+        beats = {b['id']: b for b in chapter['required_beats']}
+        if len(beats) != len(chapter['required_beats']):
+            raise ValueError('duplicate chapter beat')
+        allowed = {a for u in chapter['unit_ids'] for a in units[u]['source_anchors']}
+        covered, scene_ids = set(), []
+        for beat in beats.values():
+            if not beat['id'].startswith(chapter['id']+'/'):
+                raise ValueError('beat outside chapter namespace')
+            if not set(beat['source_anchors']) <= allowed or not set(beat['after']) <= set(beats):
+                raise ValueError('unknown chapter anchor/dependency')
+            covered.update(beat['source_anchors'])
+            text(beat['summary'])
+            claim(beat, beat['summary'], [e for a in beat['source_anchors'] for e in anchors[a]['evidence']])
+            if chapter['implementation'] == 'outline_only' and beat['scene_nodes'] is not None:
+                raise ValueError('unwritten chapter cannot claim scene bindings')
+            if chapter['implementation'] == 'runtime_bound' and not beat['scene_nodes']:
+                raise ValueError('bound chapter needs actual scene IDs')
+            scene_ids.extend(beat['scene_nodes'] or [])
+        if covered != allowed:
+            raise ValueError('chapter main outline omitted source milestone anchors')
+        completed = set()
+        while True:
+            ready = {key for key, beat in beats.items() if set(beat['after']) <= completed}
+            if ready <= completed:
+                break
+            completed |= ready
+        if completed != set(beats):
+            raise ValueError('cyclic chapter beat prerequisites')
+        for edge in quest_index['route_edges']:
+            if edge['kind'] != 'required_all_state_gate' or not isinstance(edge['from'], list):
+                continue
+            objectives = set(edge['from'])
+            if not objectives <= set(chapter['unit_ids']):
+                continue
+            for beat in beats.values():
+                own = {a.split(':',1)[0] for a in beat['source_anchors']} & objectives
+                pending, ancestors = list(beat['after']), set()
+                while pending:
+                    predecessor = pending.pop()
+                    if predecessor in ancestors:
+                        continue
+                    ancestors.add(predecessor)
+                    pending.extend(beats[predecessor]['after'])
+                earlier = {a.split(':',1)[0] for p in ancestors for a in beats[p]['source_anchors']} & objectives
+                if own and earlier - own:
+                    raise ValueError('parallel main objectives must not require each other')
+        if len(scene_ids) != len(set(scene_ids)):
+            raise ValueError('scene bound to multiple main beats')
+        if story is not None and chapter['id'] == 'chapter01':
+            if chapter['implementation'] != 'runtime_bound' or scene_ids != [r['node'] for r in main_story['required_scenes']]:
+                raise ValueError('chapter01 macro beats must bind the complete ordered runtime backbone')
+            positions = {key:i for i,key in enumerate(scene_ids)}
+            for beat in beats.values():
+                if any(max(positions[n] for n in beats[p]['scene_nodes']) >= min(positions[n] for n in beat['scene_nodes']) for p in beat['after']):
+                    raise ValueError('macro prerequisites disagree with runtime scene order')
+    for side in plan['side_stories']:
+        ids.append(side['id'])
+        owners.extend(side['unit_ids'])
+        if not set(side['unit_ids']) <= set(units):
+            raise ValueError('unknown side-story source unit')
+        if any(quests[units[u]['quest_id']]['kind'] != 'optional_lore' for u in side['unit_ids']):
+            raise ValueError('main source units cannot become skippable side stories')
+        text(side['title'])
+        claim(side, side['title'])
+    if len(ids) != len(set(ids)) or len(owners) != len(set(owners)):
+        raise ValueError('duplicate chapter/side story/source unit assignment')
+    if plan['kind'] == 'series' and set(owners) != set(units):
+        raise ValueError('chapter plan must preserve every source-board unit')
+    unit_positions = {u:c['number'] for c in plan['chapters'] for u in c['unit_ids']}
+    for edge in quest_index['route_edges']:
+        if edge['kind'] not in ('quest_state_sequence', 'required_state_gate', 'required_all_state_gate'):
+            continue
+        predecessors = edge['from'] if isinstance(edge['from'],list) else [edge['from']]
+        if isinstance(edge['from'],list) and all(u in unit_positions for u in predecessors) and len({unit_positions[u] for u in predecessors}) > 1:
+            raise ValueError('parallel main objectives need one flexible-order chapter')
+        if edge['to'] in unit_positions and any(u in unit_positions and unit_positions[u] > unit_positions[edge['to']] for u in predecessors):
+            raise ValueError('chapter order contradicts an original required progress gate')
+    return {'chapters':len(plan['chapters']), 'main_chapters':len(plan['chapters']),
+            'side_stories':len(plan['side_stories']), 'status':'outline', 'view':'author_only',
+            'runtime_bound':[c['id'] for c in plan['chapters'] if c['implementation']=='runtime_bound'],
+            'future_prose_complete':False}
+
+
 def preview_story(story,continuity,route,profiles=None,references=None):
     profiles = profiles or load_characters()
     references = references or load_references()
@@ -215,7 +343,7 @@ def html_doc(title,body):
     esc = html.escape
     return '<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(title)+'</title>'+'''
 <style>body{max-width:850px;margin:auto;padding:28px 20px;background:#f6f3eb;color:#25372e;font:17px/1.95 "Noto Sans CJK KR","Malgun Gothic",sans-serif;overflow-wrap:anywhere}h1{font-size:34px}h2{margin-top:48px;border-bottom:1px solid #b9c8bd}h3{font-size:18px}small,.note{font-size:13px;color:#627367}.notice{background:#e5ecdf;padding:15px}.quote{border-left:3px solid #66886e;padding:8px 18px;background:white}.metadata{font-size:12px;color:#617265}a{color:#27634c}button{font:inherit;padding:6px 12px}li{margin:5px 0}section{break-inside:auto}@page{size:A4;margin:18mm}@media print{body{padding:0;background:white;font-size:11px}button{display:none}h1{font-size:24px}h2,h3{break-after:avoid}p{orphans:3;widows:3}}</style>
-'''+f'<h1>{esc(title)}</h1><button onclick="print()">인쇄 / PDF 저장</button>'+body+'</html>'
+'''+f'<h1>{esc(title)}</h1>'+body+'</html>'
 
 
 def export_documents(output,check=False):
@@ -244,6 +372,19 @@ def export_documents(output,check=False):
     body += '<h2>공통 사건의 배치 검토</h2><p>다음 원문 공개 장면은 누락시키지 않고 실제 접근 조건을 확인한 뒤 퀘스트 사이에 배치합니다. 아직 자동 공개하거나 강제 순서를 붙이지 않습니다.</p><ul>'+''.join(f'<li>{esc(i)}</li>' for i in profiles['disclosure_checkpoints'] if i not in represented)+'</ul>'
     body += '<h2>미해결 사항</h2><ul>'+''.join(f'<li>{esc(q)}</li>' for q in board['open_questions'])+'</ul>'
     docs = {'storyboard.html':html_doc(display(board['title']),body)}
+    plan = read(CHAPTERS)
+    validate_chapters(plan, board=board, profiles=profiles, data=data)
+    body = '<p class="notice">작가 전용 · 전편 스포일러 포함. '+str(len(plan['chapters']))+'장 큰 구성 초안이며 미집필 장은 outline_only입니다. 모든 메인 장의 핵심 사건은 필수, 선택 분기는 다음 핵심 사건 전에 합류합니다.</p>'
+    for chapter in plan['chapters']:
+        body += '<section><h2>제'+str(chapter['number'])+'장 · '+esc(display(chapter['title']))+'</h2><p class="metadata">필수 메인 · '+esc(chapter['implementation'])+' · 원문 묶음: '+esc(', '.join(chapter['unit_ids']))+'</p><ol>'
+        for beat in chapter['required_beats']:
+            body += '<li>'+esc(display(beat['summary']))+'<br><small>'+esc(beat['id'])+' · 선행: '+esc(', '.join(beat['after']) or '없음')+'</small></li>'
+        body += '</ol></section>'
+    body += '<h2>별도 선택 이야기</h2>'
+    for side in plan['side_stories']:
+        body += '<p>'+esc(display(side['title']))+' · '+esc(', '.join(side['unit_ids']))+' · 합류 위치 미정</p>'
+    body += '<h2>편집 유의점</h2><ul>'+''.join('<li>'+esc(note)+'</li>' for note in plan['open_questions'])+'</ul>'
+    docs['chapters.html'] = html_doc(display(plan['title']), body)
     previews = [('prologue.html',preview_story(story,continuity,DEFAULT_ROUTE,profiles,refs)),
                 ('prologue-tavern.html',preview_story(story,continuity,['enter_courtyard','visit_tavern','remember_veteran',*DEFAULT_ROUTE[1:]],profiles,refs))]
     if READING.exists():
@@ -277,7 +418,7 @@ def export_documents(output,check=False):
         docs[name] = html_doc(preview['title'],body)
     from interactive import documents as interactive_documents, OVERLAY, READER, SCHEMA
     docs.update(interactive_documents())
-    inputs = [OVERLAY,READER,SCHEMA,ROOT/'tools/interactive.py',BOARD,PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
+    inputs = [OVERLAY,READER,SCHEMA,ROOT/'tools/interactive.py',BOARD,CHAPTERS,CHAPTER_SCHEMA,PILOT,PILOT.with_name('prologue.continuity.json'),ROOT/'characters/registry.json',ROOT/'reference/names.json',
               ROOT/'reference/terms.json',ROOT/'continuity/canon.json',ROOT/'writing/project.json',Path(__file__),ROOT/'tools/text_refs.py',
               ROOT/'tools/story_continuity.py',ROOT/'tools/disclosure.py',ROOT/'tools/validate_story_authoring.py',
               ROOT/'authoring/story.schema.json',WRITING/'storyboard.schema.json',
@@ -327,6 +468,8 @@ def main():
                   'quest_template':validate(template),
                   'continuity_template_review':validate_continuity(template,read(WRITING/'templates/continuity.template.json'),read(CANON))}
         result['quests'] = {}
+        result['chapter_plan'] = validate_chapters(read(CHAPTERS))
+        result['chapter_template'] = validate_chapters(read(WRITING/'templates/chapters.template.json'))
         for path in sorted((WRITING/'quests').glob('*.json')):
             if path.name.endswith('.continuity.json'): continue
             draft = read(path)
