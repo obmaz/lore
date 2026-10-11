@@ -17,6 +17,108 @@ READER = ROOT / 'writing/interactive/reader.js'
 SCHEMA = ROOT / 'writing/interactive/overlay.schema.json'
 
 
+def possible(predicate, guards):
+    """Three-valued condition: untracked state is unknown, never false by guess."""
+    if isinstance(predicate, bool):
+        return predicate
+    for operator in ('all', 'any'):
+        if operator in predicate:
+            values = [possible(p, guards) for p in predicate[operator]]
+            decisive = False if operator == 'all' else True
+            if decisive in values:
+                return decisive
+            return None if None in values else not decisive
+    if 'not' in predicate:
+        value = possible(predicate['not'], guards)
+        return None if value is None else not value
+    return matches(predicate, guards) if predicate['state'] in guards else None
+
+
+def validate_main_story(story, memory, spine):
+    """Conservative finite graph proof of ordered checkpoints, not prose semantics."""
+    nodes = {n['id']: n for n in story['nodes']}
+    required = spine['required_scenes']
+    positions = {r['node']: i for i, r in enumerate(required)}
+    if len(positions) != len(required):
+        raise ValueError('main story: duplicate required scene')
+    for item in required:
+        node = nodes.get(item['node'])
+        blocks = {b['id']: b for b in node['blocks']} if node else {}
+        if not node or node['kind'] in ('boundary', 'ending'):
+            raise ValueError('main story: required scene missing or terminal')
+        for key in item['required_block_ids']:
+            if key not in blocks or blocks[key]['kind'] == 'author_note' or not blocks[key]['text']:
+                raise ValueError('main story: required body missing: ' + key)
+    guards = spine['guard_states']
+    definitions = story['state_definitions']
+    if any(key not in definitions or definitions[key]['type'] not in ('integer', 'boolean', 'string') for key in guards):
+        raise ValueError('main story: guards must be declared scalar states')
+    for node in nodes.values():
+        for choice in node['choices']:
+            if choice['target'] not in nodes:
+                raise ValueError('main story: unknown choice target')
+            if any(e['state'] in guards and e['op'] != 'set' for e in choice['effects']):
+                raise ValueError('main story: guard effects must be finite set operations')
+    pending = [(story['entry_node'], tuple(definitions[k]['initial'] for k in guards), 0)]
+    visited, reached, terminals = set(), set(), set()
+    while pending:
+        key, values, progress = pending.pop()
+        snapshot = (key, values, progress)
+        if snapshot in visited:
+            continue
+        visited.add(snapshot)
+        state = dict(zip(guards, values))
+        node = nodes[key]
+        contract = memory['contracts'][key]
+        if possible(node['entry_when'], state) is False or possible(contract['before'], state) is False:
+            continue
+        position = positions.get(key)
+        if position is not None and position >= progress:
+            if position != progress:
+                raise ValueError('main story: bypass/out-of-order scene: ' + key)
+            for block_id in required[position]['required_block_ids']:
+                block = next(b for b in node['blocks'] if b['id'] == block_id)
+                if possible(block['when'], state) is False:
+                    raise ValueError('main story: required body hidden on first visit: ' + block_id)
+            reached.add(key)
+            progress += 1
+        if node['kind'] in ('boundary', 'ending'):
+            if progress != len(required):
+                raise ValueError('main story: premature boundary/ending: ' + key)
+            terminals.add(key)
+        for choice in node['choices']:
+            if possible(choice['when'], state) is False:
+                continue
+            after = dict(state)
+            for effect in choice['effects']:
+                if effect['state'] in after:
+                    after[effect['state']] = effect['value']
+            if possible(contract['after'], after) is not False:
+                pending.append((choice['target'], tuple(after[k] for k in guards), progress))
+    if reached != set(positions) or not terminals:
+        raise ValueError('main story: required scenes or completion unreachable')
+
+
+def check_main_story_route(story, spine, sections):
+    """First encounter must display the required body; later revisits may recap."""
+    nodes = {n['id']: n for n in story['nodes']}
+    required = spine['required_scenes']
+    positions = {r['node']: i for i, r in enumerate(required)}
+    seen = []
+    for section in sections:
+        key = section['node_id']
+        position = positions.get(key)
+        if position is not None and key not in seen:
+            if position != len(seen):
+                raise ValueError('main story: bypass/out-of-order scene: ' + key)
+            if not set(required[position]['required_block_ids']) <= set(section['visible_block_ids']):
+                raise ValueError('main story: required body hidden on first visit: ' + key)
+            seen.append(key)
+        if nodes[key]['kind'] in ('boundary', 'ending') and len(seen) != len(required):
+            raise ValueError('main story: premature boundary/ending: ' + key)
+    return {'seen_scenes': seen, 'complete': len(seen) == len(required)}
+
+
 def compile_chapter(overlay=None):
     overlay = copy.deepcopy(overlay if overlay is not None else read(OVERLAY))
     import jsonschema
@@ -73,6 +175,7 @@ def compile_chapter(overlay=None):
         contract['must_include_block_ids'] = [b for b in contract['must_include_block_ids'] if b not in conditional]
     memory.update(story_id=story['meta']['id'],story_revision=story['meta']['revision'],character_registry_revision=profiles['revision'])
     memory['event_templates'].extend(overlay['events'])
+    validate_main_story(story, memory, overlay['main_story'])
     story['coverage'] = coverage(story)
     validate(story,memory,read(CANON),profiles)
     choices = {c['id']:c for n in story['nodes'] for c in n['choices']}
@@ -142,7 +245,9 @@ class Session:
         if not isinstance(route,list) or len(route)>160 or not all(isinstance(c,str) for c in route):
             raise ValueError('save must contain a bounded choice-ID route only')
         packet = self.packet_for(route)
-        for section in [*packet['history'],{'node_id':packet['node_id'],'before':packet['state'],'visible_block_ids':[b['id'] for b in packet['visible_blocks']]}]:
+        sections = [*packet['history'],{'node_id':packet['node_id'],'before':packet['state'],'visible_block_ids':[b['id'] for b in packet['visible_blocks']]}]
+        packet['main_story'] = check_main_story_route(self.story, self.overlay['main_story'], sections)
+        for section in sections:
             for rule in self.overlay['conditional_required']:
                 if rule['node']==section['node_id'] and matches(rule['when'],section['before']) and rule['block'] not in section['visible_block_ids']:
                     raise ValueError('required branch dialogue hidden')
@@ -180,7 +285,8 @@ def documents():
     payload = {'version':overlay['revision'],'entry':story['entry_node'],'initial':{k:d['initial'] for k,d in story['state_definitions'].items()},
         'nodes':story['nodes'],'labels':labels,'literals':{i:ls[i]['text'] for i in used},'events':memory['event_templates'],
         'auto_rules':overlay['auto_rules'],'insertions':overlay['display_insertions'],'party':overlay['party'],'equipment':overlay['initial_equipment'],
-        'contracts':memory['contracts'],'conditional_required':overlay['conditional_required']}
+        'contracts':memory['contracts'],'conditional_required':overlay['conditional_required'],
+        'main_story':overlay['main_story']['required_scenes']}
     encoded = json.dumps(payload,ensure_ascii=False,sort_keys=True)
     payload['fingerprint'] = hashlib.sha256(encoded.encode()).hexdigest()
     safe = json.dumps(payload,ensure_ascii=False,sort_keys=True).replace('<','\\u003c').replace('&','\\u0026')
@@ -189,8 +295,16 @@ def documents():
     page = html_doc('첫 챕터 · 선택하며 읽기',body).replace('</style>','button{max-width:100%;white-space:normal;overflow-wrap:anywhere;cursor:pointer;margin:4px;padding:10px}#choices{display:flex;flex-wrap:wrap}#state{overflow-wrap:anywhere}.selected{border-left:3px solid #977;padding-left:12px}@media print{#choices,button,#state{display:none}}</style>')
     report = {'version':1,'scope':overlay['scope'],'status':'draft','dialogue_coverage':story['coverage'],
         'nodes':[{'id':n['id'],'choices':[{'id':c['id'],'target':c['target'],'when':c['when'],'effects':c['effects'],'origin':c['provenance']['origin']} for c in n['choices']]} for n in story['nodes']],
-        'auto_rules':overlay['auto_rules'],'limitations':['명시 범위 밖 공유 UI·후속 퀘스트 제외','선택형 이동/새 동료는 창작 제안','모든 산문의 의미·원작 접근 조건은 자동 검증 대상이 아님']}
+        'auto_rules':overlay['auto_rules'],'main_story':overlay['main_story'],
+        'main_story_validation':{'ordered_checkpoints':True,'first_visit_body_checked_at_runtime':True,'guard_states':overlay['main_story']['guard_states'],
+            'method':'추적 상태의 유한 그래프. 추적하지 않은 조건은 가능하다고 보수적으로 처리한다. 실제 독자의 읽음·모든 상태 조건·산문 의미를 증명하지 않는다.'},
+        'limitations':['명시 범위 밖 공유 UI·후속 퀘스트 제외','선택형 이동/새 동료는 창작 제안','모든 산문의 의미·원작 접근 조건은 자동 검증 대상이 아님']}
     guide = '<p class="notice">작가 전용 · 분기와 선택 동료의 이탈 스포일러 포함.</p>'+''.join('<h2>'+html.escape(row['title'])+'</h2><p>'+html.escape(row['description'])+'</p>' for row in overlay['branch_guide'])
+    guide += '<h2>필수 본줄기 · 첫 방문 순서</h2><p>어떤 선택 경로도 아래 장면과 필수 본문을 건너뛰어 다음 본줄기/챕터 끝으로 갈 수 없습니다. 재방문은 이미 표시한 대사를 반복하지 않아도 됩니다. 구조·본문 표시 보장이며 실제 읽었음을 측정하지 않습니다.</p><ol>'
+    for item in overlay['main_story']['required_scenes']:
+        node = next(n for n in story['nodes'] if n['id'] == item['node'])
+        guide += '<li>'+html.escape(render(node['title'],data,ls,profiles,author=True))+' <code>'+html.escape(item['node'])+'</code> · 필수 블록: '+html.escape(', '.join(item['required_block_ids']))+'</li>'
+    guide += '</ol>'
     guide += '<h2>원문 반영</h2><p>명시한 첫 챕터 범위 '+str(len(story['coverage']['literal_dispositions']))+'개 발생 기록. 상세 위치·본문/선택 ID는 chapter01-coverage.json을 참조합니다. 후속 퀘스트 전체의 완성을 주장하지 않습니다.</p>'
     return {'chapter01-interactive.html':page,'chapter01-branches.html':html_doc('첫 챕터 분기 안내 · 작가용',guide),
         'chapter01-coverage.json':json.dumps(report,ensure_ascii=False,indent=2)+'\n'}

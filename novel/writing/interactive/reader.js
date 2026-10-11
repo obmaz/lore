@@ -41,7 +41,7 @@
   function replay(saved) {
     if (!Array.isArray(saved) || saved.length > 160 || saved.some(x => typeof x !== 'string')) throw Error('잘못된 경로');
     let key = data.entry;
-    const state = clone(data.initial), events = [], knowledge = {}, sections = [];
+    const state = clone(data.initial), events = [], knowledge = {}, sections = [], mainStory = [];
     for (let index = 0; index <= saved.length; index++) {
       const node = nodes[key], contract = data.contracts[key];
       if (!node || !matches(node.entry_when, state) || !matches(contract.before, state)) throw Error('접근할 수 없는 장면');
@@ -54,11 +54,18 @@
         if (!blocks.some(b => b.id === rule.block)) throw Error('필수 원작 대사가 숨겨진 분기');
       }
       if (contract.must_include_block_ids.some(id => !blocks.some(b => b.id === id))) throw Error('필수 장면 누락');
+      const checkpoint = data.main_story.findIndex(r => r.node === key);
+      if (checkpoint >= 0 && !mainStory.includes(key)) {
+        if (checkpoint !== mainStory.length) throw Error('필수 본줄기를 건너뛴 경로');
+        if (data.main_story[checkpoint].required_block_ids.some(id => !blocks.some(b => b.id === id))) throw Error('첫 방문 필수 본문 누락');
+        mainStory.push(key);
+      }
+      if (['boundary', 'ending'].includes(node.kind) && mainStory.length !== data.main_story.length) throw Error('필수 본줄기 전에 끝나는 경로');
       if (blocks.some(b => b.speaker && !cast.includes(b.speaker))) throw Error('없는 동료가 말하는 장면');
       const choices = node.choices.filter(c => matches(c.when, state));
       if (!choices.length && !['boundary', 'ending'].includes(node.kind)) throw Error('막힌 분기');
       sections.push({node, blocks, choices, state: clone(state), selected: saved[index]});
-      if (index === saved.length) return {node, state, events, knowledge, sections};
+      if (index === saved.length) return {node, state, events, knowledge, sections, mainStory};
       const choice = choices.find(c => c.id === saved[index]);
       if (!choice) throw Error('이 경로에서는 할 수 없는 선택');
       const auto = automatic(key, state);
@@ -119,6 +126,7 @@
     for (const section of packet.sections) {
       const root = document.createElement('section');
       const heading = element('h2',text(section.node.title,section.state));
+      heading.dataset.storyRole = data.main_story.some(r => r.node === section.node.id) ? 'main' : 'optional';
       heading.tabIndex = -1;
       root.append(heading);
       for (const b of section.blocks) {

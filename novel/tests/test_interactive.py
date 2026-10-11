@@ -59,6 +59,9 @@ class InteractiveTests(unittest.TestCase):
             'lore_menace/acknowledge_reward','lore_menace/hear_next_task','lore_menace/leave_audience'],route)
         self.assertEqual(packet['state']['quest.lore_stage'],6)
         self.assertTrue(packet['state']['quest.menace_reward_claimed'])
+        self.assertTrue(packet['main_story']['complete'])
+        self.assertEqual(packet['main_story']['seen_scenes'],
+                         [r['node'] for r in self.session.overlay['main_story']['required_scenes']])
         return route,packet
 
     def test_01_four_separate_authored_cards_and_weapons(self):

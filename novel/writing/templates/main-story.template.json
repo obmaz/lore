@@ -1,0 +1,14 @@
+{
+  "origin": "authored",
+  "status": "proposed",
+  "metadata": {
+    "addition": true,
+    "kind": "new_setting",
+    "note": "추가: 소설 판본의 필수 독서 순서 템플릿. 아래 ID를 실제 합성 장면/블록 ID로 바꾸고 챕터의 main_story에 넣는다. 본문·인물 이름은 복사하지 않는다."
+  },
+  "guard_states": [],
+  "required_scenes": [
+    {"node": "quest_id/core_scene_01", "required_block_ids": ["quest_id/core_body_01"]},
+    {"node": "quest_id/core_scene_02", "required_block_ids": ["quest_id/core_body_02"]}
+  ]
+}

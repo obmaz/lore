@@ -2692,7 +2692,11 @@
         {
           "id": "i/late_veteran_back",
           "target": "i/hub",
-          "when": true,
+          "when": {
+            "state": "quest.lore_stage",
+            "op": "eq",
+            "value": 3
+          },
           "effects": [
             {
               "state": "event.visited.tavern",
@@ -5253,6 +5257,136 @@
       "reason": ""
     }
   ],
+  "main_story": {
+    "origin": "authored",
+    "status": "proposed",
+    "metadata": {
+      "addition": true,
+      "kind": "new_setting",
+      "note": "추가: 소설 판본의 필수 독서 순서와 첫 방문 필수 본문 계약. 원작 전체의 강제 조건을 새로 확정한 것이 아니다. 선택 탐방은 본줄기에 합류하며 지식·동료·보물은 실제 선택 경로만 유지한다."
+    },
+    "guard_states": [
+      "quest.lore_stage"
+    ],
+    "required_scenes": [
+      {
+        "node": "prologue/arrival",
+        "required_block_ids": [
+          "prologue/arrival_first"
+        ]
+      },
+      {
+        "node": "prologue/courtyard",
+        "required_block_ids": [
+          "prologue/guide_dialogue"
+        ]
+      },
+      {
+        "node": "prologue/audience",
+        "required_block_ids": [
+          "prologue/audience_enter",
+          "prologue/lord_intro_dialogue"
+        ]
+      },
+      {
+        "node": "prologue/briefing",
+        "required_block_ids": [
+          "prologue/lord_history_dialogue"
+        ]
+      },
+      {
+        "node": "lore_menace/assignment",
+        "required_block_ids": [
+          "lore_menace/request_quote",
+          "lore_menace/request_reply"
+        ]
+      },
+      {
+        "node": "lore_menace/preparation",
+        "required_block_ids": [
+          "lore_menace/preparation_pause"
+        ]
+      },
+      {
+        "node": "i/threshold",
+        "required_block_ids": [
+          "i/threshold_question"
+        ]
+      },
+      {
+        "node": "lore_menace/castle_exit",
+        "required_block_ids": [
+          "lore_menace/exit_call_quote",
+          "lore_menace/skeleton_quote"
+        ]
+      },
+      {
+        "node": "lore_menace/departure_path",
+        "required_block_ids": [
+          "lore_menace/departure_result"
+        ]
+      },
+      {
+        "node": "lore_menace/road",
+        "required_block_ids": [
+          "lore_menace/road_first"
+        ]
+      },
+      {
+        "node": "lore_menace/cave_entry",
+        "required_block_ids": [
+          "lore_menace/cave_threshold"
+        ]
+      },
+      {
+        "node": "lore_menace/cave_walk",
+        "required_block_ids": [
+          "lore_menace/walk_sense"
+        ]
+      },
+      {
+        "node": "lore_menace/center",
+        "required_block_ids": [
+          "lore_menace/center_quote",
+          "lore_menace/center_after"
+        ]
+      },
+      {
+        "node": "lore_menace/return_road",
+        "required_block_ids": [
+          "lore_menace/return_first"
+        ]
+      },
+      {
+        "node": "lore_menace/report",
+        "required_block_ids": [
+          "lore_menace/report_words",
+          "lore_menace/report_quote",
+          "lore_menace/reward_counter_quote"
+        ]
+      },
+      {
+        "node": "lore_menace/next_task",
+        "required_block_ids": [
+          "lore_menace/next_quote"
+        ]
+      },
+      {
+        "node": "lore_menace/farewell",
+        "required_block_ids": [
+          "lore_menace/farewell_quote"
+        ]
+      }
+    ]
+  },
+  "main_story_validation": {
+    "ordered_checkpoints": true,
+    "first_visit_body_checked_at_runtime": true,
+    "guard_states": [
+      "quest.lore_stage"
+    ],
+    "method": "추적 상태의 유한 그래프. 추적하지 않은 조건은 가능하다고 보수적으로 처리한다. 실제 독자의 읽음·모든 상태 조건·산문 의미를 증명하지 않는다."
+  },
   "limitations": [
     "명시 범위 밖 공유 UI·후속 퀘스트 제외",
     "선택형 이동/새 동료는 창작 제안",

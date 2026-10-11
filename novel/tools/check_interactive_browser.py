@@ -9,6 +9,9 @@ INTRO=['prologue/enter_courtyard','prologue/visit_lord','prologue/hear_lord_intr
 ENDING=['lore_menace/walk_deeper','lore_menace/confirm_center','lore_menace/return_to_lore',
         'lore_menace/report_success','lore_menace/acknowledge_reward','lore_menace/hear_next_task','lore_menace/leave_audience']
 CASES={
+    'early_veteran':['prologue/enter_courtyard','prologue/visit_tavern','prologue/remember_veteran',
+        'prologue/visit_lord',*INTRO[2:],'lore_menace/leave_castle','i/threshold_yes','i/threshold_outside',
+        'lore_menace/decline_skeleton','lore_menace/set_out','lore_menace/enter_menace',*ENDING],
     'tavern_menu':[*INTRO,'i/explore','i/visit_tavern','i/tavern_back','i/depart_now',
         'i/threshold_yes','i/threshold_outside','lore_menace/decline_skeleton','lore_menace/set_out',
         'lore_menace/enter_menace',*ENDING],
@@ -48,6 +51,39 @@ def assert_reading_position(page, index=-1):
     assert abs(position['actual']-position['expected'])<=2,position
 
 
+def assert_main_story_guards(browser, source, width, height):
+    """Runtime rejects unsafe inputs even if an author bypassed export validation."""
+    marker='<script type="application/json" id="chapter-data">'
+    start=source.index(marker)+len(marker)
+    end=source.index('</script>',start)
+    results=[]
+    for scenario in ('shortcut', 'hidden_body', 'early_ending'):
+        data=json.loads(source[start:end])
+        nodes={n['id']:n for n in data['nodes']}
+        if scenario=='shortcut':
+            choice=next(c for c in nodes['lore_menace/preparation']['choices'] if c['id']=='lore_menace/leave_castle')
+            choice['target']='lore_menace/cave_entry'
+            steps=[*INTRO,'lore_menace/leave_castle']
+        elif scenario=='hidden_body':
+            next(b for b in nodes['prologue/audience']['blocks'] if b['id']=='prologue/audience_enter')['when']=False
+            steps=['prologue/enter_courtyard','prologue/visit_lord']
+        else:
+            nodes['prologue/courtyard']['kind']='ending'
+            steps=['prologue/enter_courtyard']
+        safe=json.dumps(data,ensure_ascii=False).replace('<','\\u003c').replace('&','\\u0026')
+        page=browser.new_page(viewport={'width':width,'height':height})
+        page.set_content(source[:start]+safe+source[end:])
+        for step in steps:page.locator('button[data-choice="'+step+'"]').click()
+        assert '필수' in page.locator('#message').inner_text(),scenario
+        # The failed choice must not advance or replace the last valid prose.
+        with page.expect_download() as info:page.locator('#save').click()
+        saved=json.loads(open(info.value.path(),encoding='utf-8').read())
+        assert saved['route']==steps[:-1],(scenario,saved['route'])
+        page.close()
+        results.append({'case':'reject_'+scenario,'width':width})
+    return results
+
+
 def check():
     from playwright.sync_api import sync_playwright, expect
     session=Session()
@@ -69,6 +105,9 @@ def check():
                     page.locator('button[data-choice="'+step+'"]').click()
                     assert_reading_position(page,first_new_section)
                     route,packet=session.choose(route,step)
+                    if step=='prologue/visit_tavern':
+                        assert page.locator('button[data-choice="i/late_veteran_back"]').count()==0
+                        assert page.locator('#choices button').count()==1
                     if step=='i/visit_tavern':
                         assert packet['node_id']=='i/tavern_people'
                         assert page.locator('#choices button').count()==2
@@ -82,6 +121,11 @@ def check():
                     assert not errors,(name,step,errors)
                     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth'),(name,step,'overflow')
                 expected=session.replay(route)
+                assert expected['main_story']['complete'],(name,'incomplete main story')
+                for checkpoint in session.overlay['main_story']['required_scenes']:
+                    for block_id in checkpoint['required_block_ids']:
+                        assert page.locator('p[data-block-id="'+block_id+'"]').count()>=1,(name,'missing main story',block_id)
+                assert page.locator('h2[data-story-role="main"]').count()>=len(session.overlay['main_story']['required_scenes'])
                 text=page.locator('#state').inner_text()
                 assert '금화: '+str(expected['state']['event.gold']) in text,(name,text,expected['state']['event.gold'])
                 if name=='three_visits':
@@ -114,6 +158,7 @@ def check():
                 assert not errors and not requests,(errors,requests)
                 results.append({'case':name,'width':width,'choices_replayed':len(route),'network_requests':len(requests)})
                 page.close()
+            results.extend(assert_main_story_guards(browser,source,width,height))
         browser.close()
     return results
 

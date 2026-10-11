@@ -1,10 +1,10 @@
 {
   "version": 1,
   "source_sha256": {
-    "writing/interactive/chapter01.json": "cf6620a9fbf17c6f9e09e787eb6a267839e6bd6f94d45fd0731cd97e7c889bdf",
-    "writing/interactive/reader.js": "658bef7f2d8c84f111856532ca02cf09b16437d2ec020f59c96fb3ed2f29ac07",
-    "writing/interactive/overlay.schema.json": "3e100de195f94c12de8dc416e921efbf4c193c3e52f05c8626d11a03a888175f",
-    "tools/interactive.py": "994a96e05e3af702461d8996857a59f021936080ca3dc7c1cbddcee810773208",
+    "writing/interactive/chapter01.json": "00d56bbd2b5dedce47efd1dc859d6a841d6a15871b6b6346f8a2539e768229d0",
+    "writing/interactive/reader.js": "9749c3408f599baa61fe899a8b023efc80f33ba1ecf8c79621d5fc857a0976c7",
+    "writing/interactive/overlay.schema.json": "77f9d32b48639f3fdd962763a529e6f49252bf1cf2ef30dd6c8e6bdcfeb923ea",
+    "tools/interactive.py": "e9e6230cf2e5b6a1ffaec2a78c0d5485973b45cf5f6d761626fb19dda0bcbea4",
     "writing/storyboard/series.json": "ef7efd9026b4def686f2c092ea14282c291b8b18b9e9ca2178dc2ea53b326a60",
     "writing/quests/prologue.json": "ee4394f7eb10879fe98ae6fc3aaf8e9ba37692bf207c95719015387a48467a5d",
     "writing/quests/prologue.continuity.json": "0d96ea9bd20c0e90facf5120c43f0c1bf051ba38673ac205bf0700ee31772c79",
@@ -50,8 +50,8 @@
     "menace-05-declined.html": "d5b6123c7b46cb6b7bc91c0110bfda7dfb4fe0a954c5876be4fa03c63d9739b3",
     "menace-06.html": "d3c91c22f19d3aab0004ba225daa0ad6e3aedeec2672cc3e59a78c945cd3f89e",
     "menace-06-declined.html": "02a3a6eda9b38e9ec5fc98fa1ac4a8e5ef1f97c5c2f9629c4b9562e83cb21c5c",
-    "chapter01-interactive.html": "c9d8603a46b984957dbf61acd1288889f6a9535697a32b2b682ba58e9281e934",
-    "chapter01-branches.html": "9295fbaeaa1d85e01f26319a1e81e868f413263e5409efecb51ec43b4d5f9ec3",
-    "chapter01-coverage.json": "882cb55f94a0b43d7575e245d7080b2626a78c67e977dd9dd646c0f5ec2f680e"
+    "chapter01-interactive.html": "b655eb262e3a9d9844a5b198393c95b229a2d5db81bf5cf340ec9c477d050e34",
+    "chapter01-branches.html": "d649ead6434a97a2d2d343dce20e84fbe533b4ab46e4a884170cce864711e8b3",
+    "chapter01-coverage.json": "381f0b191358a8c453537bb7c79beb5671ed157ed895cc34541abbe085e3ef14"
   }
 }
