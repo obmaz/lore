@@ -21,9 +21,10 @@
       "required": ["id", "chapter_ids", "summary"], "properties": {
         "id": {"type": "string"}, "chapter_ids": {"$ref": "#/$defs/ids"}, "summary": {"$ref": "#/$defs/text"}}}},
     "chapters": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false,
-      "required": ["chapter_id", "mandatory", "beat_refs", "story", "dramatic_question", "emotional_change", "handoff", "parallel_beat_groups", "continuity_limits", "origin", "status", "metadata"],
+      "required": ["chapter_id", "mandatory", "beat_refs", "source_section_refs", "story", "dramatic_question", "emotional_change", "handoff", "parallel_beat_groups", "continuity_limits", "origin", "status", "metadata"],
       "properties": {
         "chapter_id": {"type": "string"}, "mandatory": {"const": true}, "beat_refs": {"$ref": "#/$defs/ids"},
+        "source_section_refs": {"$ref": "#/$defs/ids"},
         "story": {"type": "object", "additionalProperties": false,
           "required": ["opening", "escalation", "turning_point", "ending"], "properties": {
             "opening": {"$ref": "#/$defs/text"}, "escalation": {"$ref": "#/$defs/text"},

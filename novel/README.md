@@ -49,9 +49,10 @@ novel/
   부록으로 구분하며, 모두 한 번의 플레이에서 경험한 단일 정사라고 주장하지 않는다.
 
 - [15장 큰 이야기 초고](writing/storyboard/chapter-stories.json): 시작·갈등·전환·마무리와
-  인물 변화·다음 장의 이유를 연결한 작가용 줄거리.
+  사건 결과·배움·열쇠·다음 행동의 이유를 연결한 작가용 메인 줄거리.
   [읽기본](writing/previews/chapter-stories.html), [공용 양식](writing/templates/chapter-stories.template.json).
-  큰 이야기부터 다듬고 이후 분기와 상세 본문을 만든다. 새 연결과 감정선은 창작 표시이며,
+  현재는 선택·장식 없이 논리적 인과를 쓰는 단계다. 원문 근거는 장별 `source_section_refs`로
+  연결하고, 예언서의 조건과 마지막 도움 뒤 실제 계급 변화를 이어 썼다. 새 연결은 창작 표시이며,
   전편 스포일러가 있어 독자용 웹에 게시하지 않는다. 기존 첫 챕터는 그대로 유지한다.
 
 - [전편 15장 큰 구성](writing/storyboard/chapters.json): 미리 정한 챕터 제목·필수 메인 사건·

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "kind": "template",
   "visibility": "author_only",
   "status": "draft",
@@ -42,6 +42,7 @@
     {
       "chapter_id": "chapter01",
       "mandatory": true,
+      "source_section_refs": ["01-invitation", "01-audience", "01-request", "01-cave", "01-report"],
       "beat_refs": [
         "chapter01/arrival",
         "chapter01/audience",

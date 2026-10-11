@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "revision": 1,
+  "revision": 2,
   "visibility": "author_only",
   "status": "draft",
   "purpose": "source_first_connected_story_not_game_runtime",
@@ -62780,7 +62780,16 @@
                 "literal_ids": [
                   "LORESPEC.PAS:literal:32696"
                 ],
-                "bindings": []
+                "bindings": [
+                  {
+                    "start": 8,
+                    "end": 16,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "semi_god"
+                    }
+                  }
+                ]
               }
             }
           ],
@@ -63081,7 +63090,16 @@
                 "literal_ids": [
                   "LORESPEC.PAS:literal:32926"
                 ],
-                "bindings": []
+                "bindings": [
+                  {
+                    "start": 14,
+                    "end": 22,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "semi_god"
+                    }
+                  }
+                ]
               }
             }
           ],
@@ -75949,6 +75967,14 @@
                       "catalog": "characters",
                       "id": "lord_ahn"
                     }
+                  },
+                  {
+                    "start": 18,
+                    "end": 26,
+                    "ref": {
+                      "catalog": "terms",
+                      "id": "semi_god"
+                    }
                   }
                 ]
               }
@@ -85514,7 +85540,7 @@
       ],
       "before": [
         {
-          "text": "안쪽의 금속 적은 일행이 마지막 상대에게 닿기 전에 처단하겠다고 말한다. "
+          "text": "동굴 안의 "
         },
         {
           "ref": {
@@ -85523,12 +85549,48 @@
           }
         },
         {
-          "text": "를 넘어선 뒤, 편안한 기운과 숨은 문에 관한 도움을 듣는다."
+          "text": "를 이긴 일행을 편안한 기운이 감싼다. 이어 표시되는 두 인물의 데이터는 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "lord_ahn"
+          }
+        },
+        {
+          "text": "과 "
+        },
+        {
+          "ref": {
+            "catalog": "characters",
+            "id": "ancient_evil"
+          }
+        },
+        {
+          "text": "이다. 앞서 함께 나타나겠다고 한 약속과 이 장면을 잇고, 마지막 방으로 가는 도움의 말을 듣는다."
         }
       ],
       "after": [
         {
-          "text": "도움을 준 말의 화자는 원문이 명시한 것 이상으로 이름 붙이지 않는다. 양쪽 벽 안의 두 레버를 모두 작동해야 한다는 실제 단서를 가지고 움직인다."
+          "text": "양쪽 숨은 문의 두 레버를 모두 당기라는 안내 뒤, 현재 일행의 계급이 "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "semi_god"
+          }
+        },
+        {
+          "text": "으로 바뀐다. "
+        },
+        {
+          "ref": {
+            "catalog": "terms",
+            "id": "prophecy_book"
+          }
+        },
+        {
+          "text": "에서 필요하다고 들었던 조건이 이곳에서 갖추어진다. 두 인물 중 개별 대사의 화자가 누구인지는 특정하지 않고, 길의 단서와 실제 계급 변화를 가지고 다음 행동으로 이어 간다."
         }
       ],
       "origin": "authored",
@@ -85536,7 +85598,7 @@
       "metadata": {
         "addition": true,
         "kind": "new_setting",
-        "note": "추가: 보존 원문 사이의 이동·대기·동기를 이어 쓴 집필용 연결. 아래 원문 조건을 없애거나 모든 배타 경로를 동시에 겪었다는 뜻이 아니다.",
+        "note": "추가: 코드가 불러오는 68·67번 표시 데이터와 보존된 적 사전의 이름을 대조하여 성주와 에인션트 이블의 도움 장면으로 연결한 집필 해석. 개별 대사의 화자는 특정하지 않는다. class=10은 반신반인의 원작 상태 변화이며 새 무제한 능력이나 고정 직업 설정을 추가하지 않는다.",
         "knowledge_policy": "author_reference_not_character_knowledge"
       },
       "records": [
@@ -195019,6 +195081,37 @@
         }
       ],
       "note": "유골의 부자 관계 설명, 간접 공격 전수, 초자연력 전수, 재방문 영입, 예언서, 섬의 안내와 차원 이론, 성전의 의지들이 최종 이별에 연결된다. 전수를 듣는 것과 실제 영입/사용 조건을 구별한다."
+    },
+    {
+      "id": "final-aid-and-semi-god",
+      "origin": "inferred",
+      "metadata": {
+        "addition": true,
+        "kind": "interpretation",
+        "note": "해석 추가: 표시 호출과 내부 템플릿을 대조해 마지막 도움 약속의 연결을 정정한다. 원문 개별 대사의 화자까지 확정하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "evidence": [
+        {
+          "file": "LORESPEC.PAS",
+          "line_start": 2046,
+          "line_end": 2064
+        },
+        {
+          "file": "FOEDATA.DAT",
+          "record_index": 68
+        },
+        {
+          "file": "FOEDATA.DAT",
+          "record_index": 67
+        },
+        {
+          "file": "LORESUB.PAS",
+          "line_start": 644,
+          "line_end": 653
+        }
+      ],
+      "note": "마지막 도움 장면은 joinenemy(1,68), joinenemy(2,67), displayenemies(TRUE)를 호출한다. 내부 템플릿 68은 Lord Ahn, 67은 Ancient Evil이다. talk 뒤 이름이 있는 현재 일행을 class=10으로 바꾸고, ReturnClass(10)는 반신반인이다. 두 존재의 표시와 실제 계급 변화는 근거가 있으나, 어느 존재가 개별 대사를 말하는지는 특정하지 않는다."
     }
   ],
   "notes": [
@@ -195027,7 +195120,8 @@
     "게임 UI·전투/마법 안내·자원 이름·기술용 문자열은 부록에 원문 그대로 보존한다. 기술 문구를 등장인물의 대사로 꾸미지 않는다.",
     "원작 문구의 과학적 오류·오탈자·메타 서사도 삭제하거나 몰래 현대화하지 않는다. 새 연결 산문만 창작 표시한다.",
     "대사에서 자신을 Necromancer라고 사칭하는 이름은 주장한 이름의 참조다. 실제 화자의 정체 공개와 구별하며, 대사 안에 가짜라는 설명을 몰래 끼워 넣지 않는다.",
-    "원작 타이틀의 Title_Str 초대문과 운명의 대륙 글을 첫 장 앞머리에 연결했다. 배열의 실제 문자열을 표시하며 Title_Str[j] 같은 UI 호출식 자체는 시스템 부록에 보존한다."
+    "원작 타이틀의 Title_Str 초대문과 운명의 대륙 글을 첫 장 앞머리에 연결했다. 배열의 실제 문자열을 표시하며 Title_Str[j] 같은 UI 호출식 자체는 시스템 부록에 보존한다.",
+    "앞선 판본의 마지막 도움 화자 미상 메모는 개별 대사 화자에 한정한다. 장면에 표시되는 두 존재와 반신반인 계급 변화는 내부 표시 호출·템플릿·계급표의 교차 근거로 확인했다."
   ],
   "coverage": {
     "source_files": 14,

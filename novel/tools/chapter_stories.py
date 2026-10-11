@@ -34,6 +34,7 @@ def validate_stories(draft, chapters=None, profiles=None, references=None):
                         'status':'proposed', 'evidence':[], 'metadata':row['metadata']}, catalog)
     text(draft['premise']); authored(draft, draft['premise'])
     central = {c['id']:c for c in chapters['chapters']}
+    source_sections = {s['id']:s['chapter_id'] for s in read(ROOT/'writing/storyboard/source-connected.plan.json')['sections']}
     ids = [c['chapter_id'] for c in draft['chapters']]
     if len(ids)!=len(set(ids)) or not set(ids)<=set(central):
         raise ValueError('macro story has duplicate or unknown chapter references')
@@ -51,6 +52,8 @@ def validate_stories(draft, chapters=None, profiles=None, references=None):
                 if e['kind']=='required_all_state_gate' and isinstance(e['from'],list)]
     for index, row in enumerate(draft['chapters']):
         chapter = central[row['chapter_id']]
+        if any(source_sections.get(key) != row['chapter_id'] for key in row['source_section_refs']):
+            raise ValueError('macro story has unknown or cross-chapter source section')
         beats = {b['id']:b for b in chapter['required_beats']}
         if set(row['beat_refs'])!=set(beats):
             raise ValueError('macro story omitted or borrowed a required beat')
@@ -95,7 +98,7 @@ def story_document(draft=None, chapters=None):
         body += ''.join('<p>'+display(row['story'][stage])+'</p>' for stage in STAGES)
         body += '<h3>겪고 난 뒤의 변화</h3><p>'+display(row['emotional_change'])+'</p>'
         body += '<h3>다음 장으로 이어지는 이유</h3><p>'+display(row['handoff']['reason'])+'</p>'
-        body += '<details><summary>집필 시 지킬 조건</summary><ul>'+''.join('<li>'+display(v)+'</li>' for v in row['continuity_limits'])+'</ul><p class="metadata">필수 사건 참조: '+html.escape(', '.join(row['beat_refs']))+'</p></details></section>'
+        body += '<details><summary>집필 시 지킬 조건</summary><ul>'+''.join('<li>'+display(v)+'</li>' for v in row['continuity_limits'])+'</ul><p class="metadata">필수 사건 참조: '+html.escape(', '.join(row['beat_refs']))+'</p><p class="metadata">원문 연결 구간: '+html.escape(', '.join(row['source_section_refs']))+'</p></details></section>'
     body += '<h2>이번 구성에서 다듬은 점</h2><ul>'+''.join('<li>'+html.escape(v)+'</li>' for v in draft['refinement_notes'])+'</ul>'
     body += '<h2>다음 작업과 보류점</h2><ul>'+''.join('<li>'+html.escape(v)+'</li>' for v in draft['open_questions'])+'</ul>'
     return html_doc('15장 큰 이야기 · 집필 구성 초고', body)

@@ -896,6 +896,46 @@
           "knowledge_policy": "author_reference_not_character_knowledge"
         }
       }
+    },
+    "semi_god": {
+      "original_name": {
+        "field": "original_name",
+        "value": "Semi-God",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESPEC.PAS",
+            "line_start": 783,
+            "line_end": 787
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "보존 원문의 계급명. 영입 직업이나 인물 카드의 영구 설정이 아니라 해당 사건 뒤 현재 일행의 상태에 적용한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      },
+      "korean_name": {
+        "field": "korean_name",
+        "value": "반신반인",
+        "origin": "source_exact",
+        "status": "confirmed",
+        "evidence": [
+          {
+            "file": "LORESUB.PAS",
+            "line_start": 653,
+            "line_end": 653
+          }
+        ],
+        "metadata": {
+          "addition": false,
+          "kind": "none",
+          "note": "보존 원문의 계급명. 영입 직업이나 인물 카드의 영구 설정이 아니라 해당 사건 뒤 현재 일행의 상태에 적용한다.",
+          "knowledge_policy": "author_reference_not_character_knowledge"
+        }
+      }
     }
   }
 }

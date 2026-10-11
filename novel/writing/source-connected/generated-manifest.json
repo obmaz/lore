@@ -1,10 +1,10 @@
 {
   "version": 1,
   "source_sha256": {
-    "writing/storyboard/source-connected.plan.json": "41729930e4469cf2f381ce1d5a48e18a58d15e9ab599d52f4c0f03c58024ce3e",
+    "writing/storyboard/source-connected.plan.json": "ef82625eb4ea43bf13ad591cdf56ee76a7a868ad980aee0695ed14c4edeca5fa",
     "writing/source-connected.schema.json": "af552f27f92a3a3bbe01ad3cb2995cc7ec395883a0cd625a35ef1d2bb4f80697",
     "writing/storyboard/chapters.json": "a9429277e0fa9237fbf960ac63668b1df8dfb761ad5d7a86bdb9b05981230634",
-    "reference/terms.json": "5f9f65d9f87d15bbefee906ad4c8f93f646494c8bb1aaa688f826f302dc9f4fa",
+    "reference/terms.json": "a26cfd9104992f78b5afaa0a4ec08cea6722ab16643ad50ac414a471832db646",
     "reference/names.json": "2fb45df00f9a8361eb6cdf9eea9335cb710334363e7a149cf7a8d080cd179ab6",
     "characters/registry.json": "be47827b736bdc73b8da10bc47e2e56c65628a982bcddd8727ecffb26104be70",
     "reference/equipment.json": "8bc36e5009643d9684f7d40aa4a83ac7038dd185369ab05d45fb6400d63c46b1",
@@ -16,7 +16,7 @@
     "tools/source_story.py": "a63d0b19edb93edca3317179b36fd366d5e858ad125e0b5e4dff6f32e7966816"
   },
   "artifacts": {
-    "manuscript.json": "821206ab70f31f0832cfb882ed621f9375f726e4b75e33e0bab22a6b28948a21",
+    "manuscript.json": "781100e8be4929f1921b2f9d9c592338268c33673fb3fd4fd6356cdef1bd61d4",
     "coverage.json": "0fb63a3429d73117c4aed91fd9dcb1c96cdca483708fed8e9fdd259d7ec0e07c"
   }
 }

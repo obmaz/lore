@@ -110,5 +110,28 @@ class ChapterStoriesTests(unittest.TestCase):
         self.assertEqual(before, json.dumps(self.draft, ensure_ascii=False))
         self.assertNotIn(alternate, before)
 
+    def test_10_source_sections_must_exist_and_belong_to_the_same_chapter(self):
+        for key in ('missing-section', '02-pyramid'):
+            draft = copy.deepcopy(self.draft)
+            draft['chapters'][0]['source_section_refs'][0] = key
+            with self.assertRaisesRegex(ValueError, 'source section'):
+                self.validate(draft)
+        draft = copy.deepcopy(self.draft)
+        draft['chapters'][0]['source_section_refs'].pop()
+        self.validate(draft)  # Evidence selection is not a claim that every variant occurred.
+
+    def test_11_mainline_links_document_learning_to_late_rank_change(self):
+        refs = lambda value: [p['ref'] for p in value if 'ref' in p]
+        rank = {'catalog':'terms', 'id':'semi_god'}
+        self.assertIn(rank, refs(self.draft['chapters'][7]['story']['escalation']))
+        self.assertIn(rank, refs(self.draft['chapters'][13]['story']['turning_point']))
+        self.assertIn('14-panzer', self.draft['chapters'][13]['source_section_refs'])
+        source = read(ROOT/'materials/scripts.json')
+        script = next(u for u in source['source_units'] if u['file']=='LORESPEC.PAS')['original_source']
+        self.assertIn('joinenemy(1,68); joinenemy(2,67);', script)
+        self.assertIn("if player[i].name <> '' then player[i].class := 10;", script)
+        self.assertEqual(read(ROOT/'reference/bestiary.json')['items']['enemy_68']['original_name']['value'], 'Lord Ahn')
+        self.assertEqual(read(ROOT/'reference/bestiary.json')['items']['enemy_67']['original_name']['value'], 'Ancient Evil')
+
 
 if __name__ == '__main__': unittest.main()
