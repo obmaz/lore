@@ -9,6 +9,12 @@ INTRO=['prologue/enter_courtyard','prologue/visit_lord','prologue/hear_lord_intr
 ENDING=['lore_menace/walk_deeper','lore_menace/confirm_center','lore_menace/return_to_lore',
         'lore_menace/report_success','lore_menace/acknowledge_reward','lore_menace/hear_next_task','lore_menace/leave_audience']
 CASES={
+    'tavern_menu':[*INTRO,'i/explore','i/visit_tavern','i/tavern_back','i/depart_now',
+        'i/threshold_yes','i/threshold_outside','lore_menace/decline_skeleton','lore_menace/set_out',
+        'lore_menace/enter_menace',*ENDING],
+    'tavern_personal':[*INTRO,'i/explore','i/visit_mine_lore','i/mine_lore_back','i/visit_tavern',
+        'i/late_veteran','i/late_veteran_back','i/depart_now','i/threshold_yes','i/threshold_outside',
+        'lore_menace/decline_skeleton','lore_menace/set_out','lore_menace/enter_menace',*ENDING],
     'skip':[*INTRO,'lore_menace/leave_castle','i/threshold_yes','i/threshold_outside',
         'lore_menace/decline_skeleton','lore_menace/set_out','lore_menace/enter_menace',*ENDING],
     'three_visits':[*INTRO,'i/armory_first','i/armory_finish','i/armory_back','i/visit_streets','i/streets_repeat_hint',
@@ -63,6 +69,12 @@ def check():
                     page.locator('button[data-choice="'+step+'"]').click()
                     assert_reading_position(page,first_new_section)
                     route,packet=session.choose(route,step)
+                    if step=='i/visit_tavern':
+                        assert packet['node_id']=='i/tavern_people'
+                        assert page.locator('#choices button').count()==2
+                        for automatic_label in ['주인이 음료를 권한다','주인이 가까이 다가와 인사한다','안쪽 사람들의 이야기를 듣는다']:
+                            assert page.locator('.selected').filter(has_text=automatic_label).count()==0
+                        assert page.locator('p[data-block-id="i/tavern_story_decision"]').count()==1
                     current=page.locator('#manuscript section').last
                     for block in packet['visible_blocks']:
                         assert current.locator('p[data-block-id="'+block['id']+'"]').count()==1,(name,step,block['id'])

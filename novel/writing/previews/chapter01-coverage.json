@@ -3531,7 +3531,7 @@
         },
         {
           "id": "i/tavern_back",
-          "target": "i/hub",
+          "target": "i/tavern_departure",
           "when": true,
           "effects": [
             {
@@ -5189,6 +5189,18 @@
           "origin": "authored"
         }
       ]
+    },
+    {
+      "id": "i/tavern_departure",
+      "choices": [
+        {
+          "id": "i/tavern_depart_finish",
+          "target": "i/hub",
+          "when": true,
+          "effects": [],
+          "origin": "authored"
+        }
+      ]
     }
   ],
   "auto_rules": [
@@ -5201,6 +5213,44 @@
       },
       "choice": "i/depart_now",
       "reason": "세 곳의 탐방을 마쳐 출발 장면으로 이어집니다. 방문하지 않은 곳의 대사·장비·지식은 얻지 않습니다."
+    },
+    {
+      "node": "i/tavern",
+      "when": {
+        "state": "event.city_visits",
+        "op": "eq",
+        "value": 0
+      },
+      "choice": "i/tavern_menu",
+      "reason": ""
+    },
+    {
+      "node": "i/tavern",
+      "when": {
+        "state": "event.city_visits",
+        "op": "gte",
+        "value": 1
+      },
+      "choice": "i/tavern_personal",
+      "reason": ""
+    },
+    {
+      "node": "i/tavern_menu",
+      "when": true,
+      "choice": "i/hear_tavern_people_menu",
+      "reason": ""
+    },
+    {
+      "node": "i/tavern_personal",
+      "when": true,
+      "choice": "i/hear_tavern_people",
+      "reason": ""
+    },
+    {
+      "node": "i/tavern_departure",
+      "when": true,
+      "choice": "i/tavern_depart_finish",
+      "reason": ""
     }
   ],
   "limitations": [

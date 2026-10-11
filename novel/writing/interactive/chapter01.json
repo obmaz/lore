@@ -1,6 +1,6 @@
 {
   "id": "interactive_chapter01",
-  "revision": 1,
+  "revision": 2,
   "quests": [
     "prologue.json",
     "lore_menace.json"
@@ -3173,20 +3173,135 @@
       },
       "blocks": [
         {
-          "id": "i/tavern_entry",
+          "id": "i/tavern_story_entry_1",
           "kind": "narration",
           "speaker": null,
           "when": true,
           "text": [
             {
-              "text": "문을 여는 순간 여러 사람의 목소리가 부딪혔다. 어느 말을 먼저 들을지 정하지 않으면, 방 안의 말들이 전부 같은 이야기처럼 들릴 것 같았다."
+              "text": "문짝은 안쪽으로 조금 열리다가 바닥을 긁었다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 손에 힘을 더 주었다. 틈으로 먼저 새어 나온 것은 술 냄새가 아니라 젖은 나무 냄새였다. 뒤이어 식기가 부딪치는 소리와 여러 사람의 목소리가 한꺼번에 밀려왔다. 문밖에서는 알아듣지 못했던 웃음이, 문턱을 넘자 바로 옆에서 터졌다."
             }
           ],
           "literal_ids": [],
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_entry_2",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "그는 반사적으로 한 걸음 멈췄다. 누군가 웃는다고 해서 자기들을 보고 웃는 것은 아니었다. 그래도 낯선 방에 들어설 때는 늘 그 구별에 잠깐 시간이 걸렸다. 가장 가까운 탁자의 사람이 고개를 들었다가 다시 잔으로 눈을 내렸다. 안쪽에서는 아직도 같은 이야기가 이어지고 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_entry_3",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "문을 닫고 나니 바깥 소리가 뚝 끊겼다. 그 자리를 주점의 소음이 메웠다. 의자를 당기는 소리, 말끝을 덮어 버리는 웃음, 무엇인가 잘못 들었는지 되묻는 목소리. 하나씩 붙잡으려 할수록 다른 소리가 끼어들었다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 어깨를 조금 낮추었다. 여기서는 누가 먼저 입을 여는지부터 기다려야 할 것 같았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_entry_4",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "주인은 닦던 잔을 빛 쪽으로 기울이고 있었다. 천이 잔의 바깥을 한 바퀴 돌았다. 주인은 문가를 보고도 바로 말을 하지 않았다. 잔을 내려놓을 자리를 먼저 찾고, 천을 접어 한쪽으로 밀어 둔 다음에야 손님 쪽으로 몸을 돌렸다. 그 짧은 동안 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 벽 가까이 비어 있는 의자 하나를 눈여겨보았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_entry_5",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "앉을 곳을 찾는 일은 생각보다 마음을 쓰게 했다. 문 가까이는 들어오는 사람마다 몸을 비켜야 했고, 안쪽은 이미 다른 이들의 대화가 자리를 차지하고 있었다. 비어 있는 의자가 있다고 해서 그 탁자까지 비어 있는 것은 아니었다. 놓인 잔 하나와 바깥으로 벌어진 옷자락만으로도 누군가가 잠시 떠난 자리임을 알 수 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_entry_6",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "주인이 손을 들어 먼저 인사했다. 방 안의 다른 목소리보다 크지는 않았는데도, 문 앞에 서 있던 사람에게는 또렷하게 닿았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
           }
         },
         {
@@ -3222,6 +3337,30 @@
               "i/castle_dialogue"
             ],
             "note": "독립 스냅샷의 해당 조건·대사. 증언은 확정 진상이 아니다."
+          }
+        },
+        {
+          "id": "i/tavern_story_entry_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 고개를 숙여 답했다. 목소리를 어느 정도 높여야 할지 몰라 첫마디가 조금 작게 나왔다. 주인은 못 들었다고 되묻는 대신, 기다리던 사람처럼 손바닥으로 앞쪽 빈자리를 가리켰다. 그는 그 손짓을 따라 안으로 한 걸음 더 들어갔다. 문가에 서 있을 때보다 잔과 사람의 얼굴이 가까워졌다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
           }
         }
       ],
@@ -3274,9 +3413,9 @@
       "handoff": null,
       "editorial": {
         "status": "draft",
-        "intent": "선택한 지역·직업·장비가 작은 이야기와 후속 반응을 바꾸고 첫 임무의 큰 흐름에 합류한다.",
+        "intent": "주점 한 소편: 공간에 익숙해지는 시간, 원작 말들이 지나가는 상황, 말을 걸거나 떠나는 결정을 서사로 잇는다.",
         "source_refs": [],
-        "notes": "새 이동/대사는 창작. NPC 증언은 방문한 경로에서만 경험하며 세계 진상·후속 영입을 자동 확정하지 않는다."
+        "notes": "추가 장면은 authored/proposed. 주점 공간·주인의 손놀림·익명 손님 반응·주인공 심리/응답은 창작이며 고정 인물 설정이 아니다. 음료 구매/섭취·금화/장비/동료 변화와 새 세계 진상은 없다. 입장과 인사는 자동 진행, 마지막 행동만 선택. 원작 두 인사의 노출은 기존 방문 횟수로 구별하는 집필용 각색이며 원작의 난수 규칙이 아니다."
       }
     },
     {
@@ -3294,6 +3433,33 @@
         "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
       },
       "blocks": [
+        {
+          "id": "i/tavern_story_personal_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "문 앞에서 걸음을 멈추고 있는 사이 주인이 가까이 다가왔다. 조금 전에 닦던 잔은 내려놓은 채였다. 멀리서 손짓할 때보다 손님과 눈을 맞추기 쉬운 거리였다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 주인이 지나갈 수 있도록 몸을 비켰다가, 그 발걸음이 자기 앞에서 멎는 것을 보고 다시 고개를 들었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
         {
           "id": "i/welcome_personal",
           "kind": "source_quote",
@@ -3320,6 +3486,33 @@
               "i/castle_dialogue"
             ],
             "note": "독립 스냅샷의 해당 조건·대사. 증언은 확정 진상이 아니다."
+          }
+        },
+        {
+          "id": "i/tavern_story_personal_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "인사를 받자 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 늦게나마 허리를 조금 숙였다. 대답을 하는 동안에는 누구의 말에 끼어드는 것인지 살필 필요가 없었다. 주인은 빈 의자를 가리켰다. “앉아 계셔도 됩니다. 문가에서는 안쪽 소리가 잘 안 들릴 거예요.” 그 말에 그는 문 옆에서 떠밀리듯 서 있던 발을 떼었다. 누군가 자리를 내주는 일만으로도 낯선 방이 조금 작아졌다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
           }
         }
       ],
@@ -3350,9 +3543,9 @@
       "handoff": null,
       "editorial": {
         "status": "draft",
-        "intent": "선택한 지역·직업·장비가 작은 이야기와 후속 반응을 바꾸고 첫 임무의 큰 흐름에 합류한다.",
+        "intent": "주점 한 소편: 공간에 익숙해지는 시간, 원작 말들이 지나가는 상황, 말을 걸거나 떠나는 결정을 서사로 잇는다.",
         "source_refs": [],
-        "notes": "새 이동/대사는 창작. NPC 증언은 방문한 경로에서만 경험하며 세계 진상·후속 영입을 자동 확정하지 않는다."
+        "notes": "추가 장면은 authored/proposed. 주점 공간·주인의 손놀림·익명 손님 반응·주인공 심리/응답은 창작이며 고정 인물 설정이 아니다. 음료 구매/섭취·금화/장비/동료 변화와 새 세계 진상은 없다. 입장과 인사는 자동 진행, 마지막 행동만 선택. 원작 두 인사의 노출은 기존 방문 횟수로 구별하는 집필용 각색이며 원작의 난수 규칙이 아니다."
       }
     },
     {
@@ -3370,6 +3563,33 @@
         "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
       },
       "blocks": [
+        {
+          "id": "i/tavern_story_menu_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "주인은 늘어선 병들 쪽으로 시선을 옮겼다. 높은 병과 낮은 병이 나란히 있었고, 유리마다 들어온 빛의 모양이 달랐다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 무엇을 마실 것인지 묻는 말이 곧 나오리라 짐작했다. 주인이 준비한 말은 그보다 먼저, 고를 것이 충분하다는 쪽으로 시작되었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
         {
           "id": "i/welcome_menu",
           "kind": "source_quote",
@@ -3394,6 +3614,60 @@
               "i/castle_dialogue"
             ],
             "note": "독립 스냅샷의 해당 조건·대사. 증언은 확정 진상이 아니다."
+          }
+        },
+        {
+          "id": "i/tavern_story_menu_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "주인의 손이 병들 앞을 짧게 지나갔다. 설명을 더 붙이지 않아도, 손님이 어디를 바라봐야 하는지는 분명해졌다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 병의 이름보다 그 앞에 놓인 잔들을 보았다. 같은 모양인 줄 알았던 잔도 가까이에서 보니 높이와 입구가 조금씩 달랐다. 손을 뻗으면 하나를 고를 수 있을 만큼 가까운 거리였다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_menu_reply",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "“지금은 괜찮습니다. 잠깐 앉아 있어도 되겠습니까?” 말을 하고 나서야 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 자신이 너무 급히 거절했나 싶었다. 주인은 빈 의자 쪽으로 턱을 움직였다. “앉으세요. 문 앞에 계속 계시면 제가 손님을 못 본 척하는 것 같지 않습니까.” 농담 끝에 천을 다시 집어 들었다. 그는 그제야 웃는 얼굴로 고개를 끄덕일 수 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
           }
         }
       ],
@@ -3424,9 +3698,9 @@
       "handoff": null,
       "editorial": {
         "status": "draft",
-        "intent": "선택한 지역·직업·장비가 작은 이야기와 후속 반응을 바꾸고 첫 임무의 큰 흐름에 합류한다.",
+        "intent": "주점 한 소편: 공간에 익숙해지는 시간, 원작 말들이 지나가는 상황, 말을 걸거나 떠나는 결정을 서사로 잇는다.",
         "source_refs": [],
-        "notes": "새 이동/대사는 창작. NPC 증언은 방문한 경로에서만 경험하며 세계 진상·후속 영입을 자동 확정하지 않는다."
+        "notes": "추가 장면은 authored/proposed. 주점 공간·주인의 손놀림·익명 손님 반응·주인공 심리/응답은 창작이며 고정 인물 설정이 아니다. 음료 구매/섭취·금화/장비/동료 변화와 새 세계 진상은 없다. 입장과 인사는 자동 진행, 마지막 행동만 선택. 원작 두 인사의 노출은 기존 방문 횟수로 구별하는 집필용 각색이며 원작의 난수 규칙이 아니다."
       }
     },
     {
@@ -3445,20 +3719,71 @@
       },
       "blocks": [
         {
-          "id": "i/tavern_people_prose",
+          "id": "i/tavern_story_settle",
           "kind": "narration",
           "speaker": null,
           "when": true,
           "text": [
             {
-              "text": "탁자 사이를 지나가자 말의 결이 달라졌다. 웃음에 묻힌 말도 있었고, 웃는 척하려다 중간에서 굳어진 말도 있었다. 술 냄새가 모든 말을 가볍게 만들지는 못했다."
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 의자를 당겼다. 다리가 바닥에 걸려 짧고 높은 소리가 났다. 가까운 탁자의 대화가 한순간 멎는 듯해서 그는 손을 멈췄지만, 사람들은 곧 같은 속도로 말을 이었다. 의자를 조금 들어 옮기고 자리에 앉았다. 높이가 달라지자 방의 풍경도 달라졌다. 서 있을 때 보이지 않던 탁자 아래의 발과, 잔을 쥔 손들이 눈에 들어왔다."
             }
           ],
           "literal_ids": [],
           "provenance": {
             "origin": "authored",
             "source_refs": [],
-            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_hands",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "그는 빈손을 탁자 위에 올렸다가 무릎으로 내렸다. 이렇게 앉아서 아무것도 하지 않는 시간이 어색했다. 밖에서는 어디로 갈지 정하느라 계속 앞을 보고 있었다. 여기서는 사람들이 돌아앉은 방향마다 다른 이야기가 있었다. 먼저 질문을 던지면 편해질 것 같았지만, 무엇부터 묻고 싶은지 말로 정리되지 않았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_silence_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "맞은편 가까운 자리의 사람과 눈이 마주쳤다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 입을 열려다가 상대의 손에 든 잔을 보고 잠깐 기다렸다. 잔은 입까지 올라가지도, 탁자로 내려가지도 않았다. 무엇인가 말할 것처럼 입술이 움직였다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
           }
         },
         {
@@ -3488,6 +3813,40 @@
           }
         },
         {
+          "id": "i/tavern_story_silence_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "말 대신 짧은 침묵이 남았다. 그는 고개를 조금 숙이고 시선을 거두었다. 상대가 자기에게 할 말이 없는지, 이미 다른 생각에 잠겨 있는지 알 수 없었다. 굳이 빈틈을 메우려 하지는 않았다. 때로는 말을 기다리는 사람이 더 먼저 지치는 법이었다. 오늘은 그 기다림을 조금 더 두고 볼 수 있을 것 같았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_ghost_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "조금 떨어진 탁자에서 누군가 목소리를 낮추었다. 낮아진 목소리는 이상하게 웃음보다 귀에 잘 들어왔다. 다른 사람이 잔을 내려놓는 소리가 끝나자, 그 말의 뒤쪽이 또렷해졌다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
           "id": "i/ghost_rumor",
           "kind": "source_quote",
           "speaker": null,
@@ -3514,6 +3873,60 @@
           }
         },
         {
+          "id": "i/tavern_story_ghost_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "무덤이라는 말에 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그쪽을 돌아보았다. 이야기하던 사람은 손가락으로 탁자 한쪽을 두드리고 있었다. 곁에 앉은 사람은 믿는다는 뜻인지 웃어넘긴다는 뜻인지 모를 얼굴로 턱을 들었다. 누구도 자신이 보았다고 덧붙이지 않았다. 질문을 끼워 넣을 틈이 나기도 전에 대화는 다른 잔의 빈자리를 따라 옮겨 갔다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_offer_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "그때 옆자리에서 팔이 뻗어 왔다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 몸을 조금 뒤로 뺐다. 내밀어진 잔은 그의 손 앞에서 멎었다. 잔 속의 액체가 테두리에 닿았다가 다시 내려갔다. 잔을 든 사람은 그 움직임마저 재미있다는 듯 웃었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
           "id": "i/drink_offer",
           "kind": "source_quote",
           "speaker": null,
@@ -3537,6 +3950,60 @@
               "i/castle_dialogue"
             ],
             "note": "독립 스냅샷의 해당 조건·대사. 증언은 확정 진상이 아니다."
+          }
+        },
+        {
+          "id": "i/tavern_story_offer_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "“고맙습니다. 지금은 말씀만 듣겠습니다.” "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 손바닥을 살짝 들었다. 잔을 권하던 사람은 거절에 기분이 상한 것 같지는 않았다. 잠깐 그의 빈손을 바라보더니 제 쪽으로 잔을 가져갔다. 잔이 다시 탁자에 닿자, 두 사람 사이에 남아 있던 팔 하나의 거리가 사라졌다. 낯선 사람끼리도 이렇게 한 번씩 가까워졌다가 멀어졌다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_lord_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "안쪽에서 큰 목소리가 터졌다. 앞의 대화가 아직 끝나지 않았는데도 그 말은 다른 소리 위로 올라왔다. 누군가 의자를 뒤로 젖혔다. 말하는 사람의 손이 허공에서 크게 원을 그렸다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그 손끝을 따라갔다가, 뒤늦게 익숙한 이름을 들었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
           }
         },
         {
@@ -3589,6 +4056,60 @@
           }
         },
         {
+          "id": "i/tavern_story_lord_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "그는 방금 들은 말과 접견실의 얼굴을 겹쳐 보려 했다. 여기서 말하는 사람은 그 자리에 없었다. 그렇다고 그 목소리를 듣지 않은 척할 수도 없었다. 성주를 만나고 돌아온 길에, 다른 사람의 입으로 같은 일을 듣는 기분은 묘했다. 같은 말이라도 어디에서 꺼내느냐에 따라 모양이 달라졌다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 대답을 찾는 대신 탁자의 작은 흠집을 손가락으로 쓸었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_pause",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "잔 하나가 비었고, 누구인가 다른 이야기를 시작하려고 입을 열었다. 그러나 막 꺼내려던 말은 곁에서 끼어든 질문에 밀렸다. 목소리를 낮추지도 높이지도 않은 질문이었다. 바로 옆에 앉은 사람이 동의를 기다리며 시선을 보내고 있었다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그 눈길을 피하지는 않았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
           "id": "i/skeleton_prejudice",
           "kind": "source_quote",
           "speaker": null,
@@ -3632,6 +4153,84 @@
           }
         },
         {
+          "id": "i/tavern_story_prejudice_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "마지막 말이 끝나고도 상대는 그를 바라보고 있었다. 대답을 재촉하지 않았지만, 고개 한 번만 끄덕여도 충분하다는 눈길이었다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 먼저 웃어 주려던 입을 다물었다. 어느 쪽에 서야 대화가 편해질지는 알 것 같았다. 하지만 편해지려고 한 대답을 나중에도 그대로 자기 말이라고 할 수 있을지는 자신이 없었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_prejudice_reply",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "“저는 직접 만나 보고 싶습니다.” 상대의 눈썹이 움직였다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 말을 더 보태려다가 그만두었다. 지금의 한마디보다 더 큰 약속을 하고 싶지는 않았다. 상대는 잠시 입술을 눌렀다가 다른 사람 쪽으로 몸을 돌렸다. 그 작은 움직임이 의자에 전해졌다. 방 안의 소리는 여전히 컸지만 두 사람 사이에서는 말 하나가 빠져나간 자리가 느껴졌다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_burp_before",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 시선을 거두었다. 멀어진 대화를 다시 붙잡으려 하지 않았다. 누군가 한 마디 더 하려다가 목을 움켜쥐었고, 웃음이 먼저 나올 것 같은 얼굴을 했다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
           "id": "i/burp",
           "kind": "source_quote",
           "speaker": null,
@@ -3656,6 +4255,91 @@
             ],
             "note": "독립 스냅샷의 해당 조건·대사. 증언은 확정 진상이 아니다."
           }
+        },
+        {
+          "id": "i/tavern_story_burp_after",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "그 소리에 가까운 자리에서 웃음이 났다. 조금 전까지 굳어 있던 표정도 잠깐 풀렸다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 숨을 내쉬었다. 웃음이 앞서 나온 말들을 없애 주지는 않았다. 그래도 사람들은 말을 멈추고, 잔을 옮기고, 다음 이야기를 기다리는 동안 서로 같은 탁자에 앉아 있을 수 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_veteran_glimpse",
+          "kind": "narration",
+          "speaker": null,
+          "when": {
+            "state": "knowledge.missing_squad",
+            "op": "eq",
+            "value": false
+          },
+          "text": [
+            {
+              "text": "그가 자세를 바꾸자 사람들 어깨 사이로 안쪽의 자리가 보였다. 구석에 앉은 노인은 다른 이들이 웃을 때도 몸을 움직이지 않았다. 대화가 그 자리까지 닿았다가 돌아오는 것 같았다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 그쪽을 한 번 더 보았다. 잠깐 머무르러 들어왔는데, 이제는 방을 나서는 일보다 의자를 조금 더 당겨 놓는 일이 어렵게 느껴졌다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_decision",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "주인은 다시 잔을 닦고 있었다. 처음과 같은 손놀림이었다. 그 사이에 "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 여러 목소리를 들었지만 누구의 말에도 끝까지 답한 것은 없었다. 문은 여전히 가까웠다. 자리를 일어나면 주인은 고개를 끄덕여 줄 것이고, 밖에서는 다시 길을 골라야 할 것이다. 그는 무릎 위에 놓았던 손을 탁자 가장자리로 옮겼다. 누군가에게 말을 건다면, 지금이 그때였다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
         }
       ],
       "choices": [
@@ -3663,7 +4347,7 @@
           "id": "i/late_veteran",
           "label": [
             {
-              "text": "부상한 노인의 이야기를 듣는다"
+              "text": "구석에 앉은 노인에게 말을 건다"
             }
           ],
           "when": {
@@ -3676,7 +4360,7 @@
           "branch_kind": "navigation",
           "consequence": [
             {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
+              "text": "대화에 다가가 노인의 증언을 직접 듣는다. 듣지 않은 미래 사실은 얻지 않는다."
             }
           ],
           "provenance": {
@@ -3689,11 +4373,11 @@
           "id": "i/tavern_back",
           "label": [
             {
-              "text": "다른 곳을 살피거나 출발한다"
+              "text": "더 머물지 않고 밖으로 나간다"
             }
           ],
           "when": true,
-          "target": "i/hub",
+          "target": "i/tavern_departure",
           "effects": [
             {
               "state": "event.visited.tavern",
@@ -3719,7 +4403,7 @@
           "branch_kind": "navigation",
           "consequence": [
             {
-              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
+              "text": "질문을 남겨 둔 채 주점을 떠난다. 다른 인사나 노인의 증언을 자동으로 확인하지 않는다."
             }
           ],
           "provenance": {
@@ -3732,9 +4416,9 @@
       "handoff": null,
       "editorial": {
         "status": "draft",
-        "intent": "선택한 지역·직업·장비가 작은 이야기와 후속 반응을 바꾸고 첫 임무의 큰 흐름에 합류한다.",
+        "intent": "주점 한 소편: 공간에 익숙해지는 시간, 원작 말들이 지나가는 상황, 말을 걸거나 떠나는 결정을 서사로 잇는다.",
         "source_refs": [],
-        "notes": "새 이동/대사는 창작. NPC 증언은 방문한 경로에서만 경험하며 세계 진상·후속 영입을 자동 확정하지 않는다."
+        "notes": "추가 장면은 authored/proposed. 주점 공간·주인의 손놀림·익명 손님 반응·주인공 심리/응답은 창작이며 고정 인물 설정이 아니다. 음료 구매/섭취·금화/장비/동료 변화와 새 세계 진상은 없다. 입장과 인사는 자동 진행, 마지막 행동만 선택. 원작 두 인사의 노출은 기존 방문 횟수로 구별하는 집필용 각색이며 원작의 난수 규칙이 아니다."
       }
     },
     {
@@ -9101,6 +9785,105 @@
         "source_refs": [],
         "notes": "새 이동/대사는 창작. NPC 증언은 방문한 경로에서만 경험하며 세계 진상·후속 영입을 자동 확정하지 않는다."
       }
+    },
+    {
+      "id": "i/tavern_departure",
+      "title": [
+        {
+          "text": "문밖의 소리"
+        }
+      ],
+      "kind": "scene",
+      "entry_when": true,
+      "provenance": {
+        "origin": "authored",
+        "source_refs": [],
+        "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+      },
+      "blocks": [
+        {
+          "id": "i/tavern_story_departure",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 의자를 밀어 넣었다. 이번에는 바닥을 긁지 않도록 조금 들어 옮겼다. 주인에게 고개를 숙이자 천을 쥔 손이 잠깐 들렸다. 앉기 전에는 자리 하나를 얻는 데 신경을 썼는데, 나갈 때는 그 자리를 어떻게 남겨 놓는지가 눈에 들어왔다. 탁자에는 그가 고른 잔이 없었다. 대신 서로 다른 사람들이 건네던 목소리가 한동안 귀에 남았다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        },
+        {
+          "id": "i/tavern_story_departure_end",
+          "kind": "narration",
+          "speaker": null,
+          "when": true,
+          "text": [
+            {
+              "text": "문을 밀었을 때 바깥 소리가 먼저 들어왔다. 그는 문턱을 넘고 뒤돌아 문을 닫았다. 안쪽의 웃음은 다시 알아들을 수 없는 소리가 되었다. 조금 전에 말을 걸지 않고 지나친 자리도 그 안에 남았다. "
+            },
+            {
+              "ref": {
+                "catalog": "characters",
+                "id": "protagonist",
+                "particle": "은/는"
+              }
+            },
+            {
+              "text": " 잠깐 손잡이를 놓지 않다가, 손을 떼고 일행이 기다리는 쪽으로 몸을 돌렸다. 모든 이야기가 자기 걸음을 붙잡아야 하는 것은 아니었다. 아직 해야 할 일이 있었다."
+            }
+          ],
+          "literal_ids": [],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 주점 한 소편의 감각·동작·대화·심리·연결을 집필한 제안. 원작 대사는 별도 source_exact 블록으로 보존한다. 음료 구매/섭취·금화 지출·새 정보 획득·고정 인물 설정은 부여하지 않는다."
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "i/tavern_depart_finish",
+          "label": [
+            {
+              "text": "주점을 떠나 길을 잇는다"
+            }
+          ],
+          "when": true,
+          "target": "i/hub",
+          "effects": [],
+          "branch_kind": "navigation",
+          "consequence": [
+            {
+              "text": "선택한 경험만 상태와 다음 장면에 남긴다."
+            }
+          ],
+          "provenance": {
+            "origin": "authored",
+            "source_refs": [],
+            "note": "추가: 선택형 초고의 연결 장면·탐방·심리·행동·선택 규칙. 원작 사건과 새 설정을 구별한다."
+          }
+        }
+      ],
+      "handoff": null,
+      "editorial": {
+        "status": "draft",
+        "intent": "대화를 택하지 않은 행동도 떠나는 장면으로 보여 준 뒤 다음 지역/출발 경계에 합류한다.",
+        "source_refs": [],
+        "notes": "추가 장면은 authored/proposed. 주점 공간·주인의 손놀림·익명 손님 반응·주인공 심리/응답은 창작이며 고정 인물 설정이 아니다. 음료 구매/섭취·금화/장비/동료 변화와 새 세계 진상은 없다. 입장과 인사는 자동 진행, 마지막 행동만 선택. 원작 두 인사의 노출은 기존 방문 횟수로 구별하는 집필용 각색이며 원작의 난수 규칙이 아니다."
+      }
     }
   ],
   "events": [
@@ -9805,6 +10588,44 @@
       },
       "choice": "i/depart_now",
       "reason": "세 곳의 탐방을 마쳐 출발 장면으로 이어집니다. 방문하지 않은 곳의 대사·장비·지식은 얻지 않습니다."
+    },
+    {
+      "node": "i/tavern",
+      "when": {
+        "state": "event.city_visits",
+        "op": "eq",
+        "value": 0
+      },
+      "choice": "i/tavern_menu",
+      "reason": ""
+    },
+    {
+      "node": "i/tavern",
+      "when": {
+        "state": "event.city_visits",
+        "op": "gte",
+        "value": 1
+      },
+      "choice": "i/tavern_personal",
+      "reason": ""
+    },
+    {
+      "node": "i/tavern_menu",
+      "when": true,
+      "choice": "i/hear_tavern_people_menu",
+      "reason": ""
+    },
+    {
+      "node": "i/tavern_personal",
+      "when": true,
+      "choice": "i/hear_tavern_people",
+      "reason": ""
+    },
+    {
+      "node": "i/tavern_departure",
+      "when": true,
+      "choice": "i/tavern_depart_finish",
+      "reason": ""
     }
   ],
   "display_insertions": {
@@ -9948,6 +10769,10 @@
     {
       "title": "다음 챕터에 전달할 것",
       "description": "초기 동료와 선택 동료 자리, 현재 무기 참조, 역할 활용 경험, 방문 목록, 증언 경험, 발견 금화·방패 장착자, 본래 임무 단계·보상 여부를 인계한다. 다음 챕터의 장면은 필요한 동료/장비/사건 조건을 명시하고 이 인계값으로만 분기해야 한다. 후속 이야기는 아직 집필하지 않았다."
+    },
+    {
+      "title": "주점 한 소편 · 서사는 길게, 행동 선택은 드물게",
+      "description": "입장·인사·음료 권유·원작 주점 말들을 하나의 긴 독서 구간으로 자동 연결한다. 주점이 첫 탐방이면 음료 인사, 다른 탐방 뒤면 가까운 인사로 이어지는 창작 배치다. 독자가 인사 방식을 고르거나 한 방문에 두 인사를 모두 확인하는 메뉴는 없다. 끝에서 노인에게 말을 걸거나 떠나는 행동만 고른다. 전자는 기존 증언/지식 사건으로, 후자는 퇴장 서사로 이어진다. 원작 대사 ID는 유지하며 새 감각·행동·심리는 창작 제안이다. 다른 짧은 지역 장면까지 재집필한 것은 아니다."
     }
   ],
   "conditional_required": [

@@ -127,7 +127,7 @@
         if (b.speaker) p.prepend(element('small',data.labels.characters[b.speaker] || b.speaker),document.createElement('br'));
         root.append(p);
       }
-      if (section.selected) root.append(element('p','선택: ' + text(section.choices.find(c => c.id === section.selected).label,section.state),'selected'));
+      if (section.selected && !automatic(section.node.id,section.state)) root.append(element('p','선택: ' + text(section.choices.find(c => c.id === section.selected).label,section.state),'selected'));
       manuscript.append(root);
     }
     const current = packet.sections.at(-1), box = document.getElementById('choices');

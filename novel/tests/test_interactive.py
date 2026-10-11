@@ -32,6 +32,8 @@ class InteractiveTests(unittest.TestCase):
             packet = self.session.replay(route)
             self.witnessed.update(b['id'] for b in packet['visible_blocks'])
             route,packet = self.session.choose(route,choice)
+            for section in packet['history']:
+                self.witnessed.update(section['visible_block_ids'])
         self.witnessed.update(b['id'] for b in packet['visible_blocks'])
         return route,packet
 
@@ -113,8 +115,8 @@ class InteractiveTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.session.choose(route,'i/visit_mine_lore')
 
     def test_06_both_tavern_greetings_and_late_testimony(self):
-        for greeting,follow in [('personal','i/hear_tavern_people'),('menu','i/hear_tavern_people_menu')]:
-            route,packet = self.town(['i/visit_tavern','i/tavern_'+greeting,follow,'i/late_veteran','i/late_veteran_back'])
+        for earlier in [[],['i/visit_mine_lore','i/mine_lore_back']]:
+            route,packet = self.town([*earlier,'i/visit_tavern','i/late_veteran','i/late_veteran_back'])
             self.assertTrue(packet['state']['knowledge.missing_squad'])
             self.assertIn('veteran_story',packet['knowledge']['protagonist'])
             self.finish(route)
@@ -281,8 +283,8 @@ class InteractiveTests(unittest.TestCase):
         town_routes=[
             ['i/visit_armory','i/armory_finish','i/armory_back'],
             ['i/visit_streets','i/streets_repeat_hint','i/street_second_back'],
-            ['i/visit_tavern','i/tavern_personal','i/hear_tavern_people','i/late_veteran','i/late_veteran_back'],
-            ['i/visit_tavern','i/tavern_menu','i/hear_tavern_people_menu','i/tavern_back'],
+            ['i/visit_mine_lore','i/mine_lore_back','i/visit_tavern','i/late_veteran','i/late_veteran_back'],
+            ['i/visit_tavern','i/tavern_back'],
             ['i/visit_grave','i/grave_chest','i/grave_chest_back'],
             ['i/visit_support','i/support_again','i/support_repeat_back'],
             ['i/visit_mine_lore','i/mine_lore_back'],
@@ -309,6 +311,35 @@ class InteractiveTests(unittest.TestCase):
             output=subprocess.check_output([sys.executable,'-c',script],cwd=ROOT,env=env,text=True)
             results.append(json.loads(output))
         self.assertEqual(results[0],results[1])
+
+    def test_28_tavern_is_one_long_scene_before_an_action_choice(self):
+        unit=read(ROOT/'writing/interactive/episodes.json')['units'][0]
+        data=indexes(self.profiles,load_references())
+        ls=literals()
+        for earlier,greeting in [([], 'menu'),(['i/visit_mine_lore','i/mine_lore_back'],'personal')]:
+            route,packet=self.town([*earlier,'i/visit_tavern'])
+            self.assertEqual(packet['node_id'],'i/tavern_people')
+            self.assertEqual(packet['available_choices'],['i/late_veteran','i/tavern_back'])
+            self.assertIn('i/tavern_'+greeting,route)
+            self.assertNotIn('i/tavern_'+('personal' if greeting=='menu' else 'menu'),route)
+            sections=[h['node_id'] for h in packet['history'] if h['node_id'] in unit['node_ids']]+['i/tavern_people']
+            blocks=[b for key in sections for b in self.nodes[key]['blocks'] if matches(b['when'],packet['state'])]
+            body=''.join(render(b['text'],data,ls,self.profiles,author=True) for b in blocks)
+            self.assertGreaterEqual(len(body),unit['target_chars'][0])
+            self.assertLessEqual(len(body),unit['target_chars'][1])
+            self.assertEqual(packet['state']['event.gold'],0)
+            self.assertFalse(packet['state']['knowledge.missing_squad'])
+            state=copy.deepcopy(packet['state'])
+            _,after=self.walk(['i/tavern_back'],route)
+            self.assertTrue(after['state']['event.visited.tavern'])
+            self.assertEqual(after['state']['event.city_visits'],state['event.city_visits']+1)
+            self.assertFalse(after['state']['knowledge.missing_squad'])
+            self.assertIn('i/tavern_departure',[h['node_id'] for h in after['history']])
+            self.assertEqual(after['state']['companions.optional_recruits'],state['companions.optional_recruits'])
+        for key in unit['node_ids']:
+            for block in self.nodes[key]['blocks']:
+                if block['provenance']['origin']=='authored':
+                    self.assertIn('추가',block['provenance']['note'])
 
 
 if __name__=='__main__':unittest.main()

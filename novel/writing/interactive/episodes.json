@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "overlay_file": "chapter01.json",
+  "purpose": "small_batch_authoring_not_game_runtime",
+  "units": [
+    {
+      "id": "tavern-01",
+      "title": [{"text": "잔을 고르기 전에"}],
+      "node_ids": ["i/tavern", "i/tavern_menu", "i/tavern_personal", "i/tavern_people", "i/tavern_departure"],
+      "status": "revised_draft",
+      "target_chars": [3500, 6500],
+      "focus": "주점 입장, 인사와 음료 권유, 들려오는 원작 대화들을 한 독서 구간으로 펼치고 끝에서 말을 걸거나 떠나는 행동을 정한다.",
+      "stop_after": "노인에게 말을 거는 선택 또는 주점 퇴장. 노인 증언 본문의 추가 재집필과 다른 지역은 별도 소편이다.",
+      "origin": "authored",
+      "metadata": {
+        "addition": true,
+        "kind": "new_setting",
+        "note": "주점의 공간·동작·심리·응답·분량·인사 자동 배치는 집필용 창작 제안이다. 원작의 인물 설정이나 난수 규칙으로 확정하지 않는다.",
+        "knowledge_policy": "author_reference_not_character_knowledge"
+      },
+      "continuity": {
+        "status": "proposed",
+        "body_paths": [["i/tavern", "i/tavern_menu", "i/tavern_people"], ["i/tavern", "i/tavern_personal", "i/tavern_people"]],
+        "cast": ["protagonist"],
+        "preserve_source_block_ids": ["i/tavern_welcome", "i/welcome_menu", "i/welcome_personal", "i/silence", "i/ghost_rumor", "i/drink_offer", "i/drunk_lord", "i/skeleton_prejudice", "i/burp"],
+        "state_policy": "입장·인사·주변 대화에는 추가 상태 변경이 없다. 퇴장 선택의 기존 방문 완료/탐방 1회만 유지한다. 노인의 증언은 그 경로를 실제 선택한 경우에만 기존 사건으로 얻는다.",
+        "knowledge_policy": "주점 소문·취중 평가·혐오 발언은 듣는 장면이지 세계의 확정 사실이나 주인공의 신념이 아니다. 노인과 이미 대화한 경로에는 처음 발견하는 묘사를 노출하지 않는다.",
+        "inventory_policy": "음료 권유를 받되 구매·섭취·무료 지급·금화 지출·장비 획득을 새로 만들지 않는다.",
+        "character_policy": "익명 주인/손님의 손놀림·일시적 반응을 장면 창작으로만 둔다. 이름·나이·성별·과거·고정 성향·관계는 추가 확정하지 않는다. 원작 ReturnSex 호칭은 여전히 미정이다.",
+        "pacing_policy": "주점 첫 탐방은 음료 인사, 이전 탐방이 있으면 가까운 인사. 두 원문은 배타 경로에 남기며 자동 선택 ID는 저장하되 독자의 선택 표시에서는 숨긴다.",
+        "review_notes": ["분량은 body_paths별 표시 본문 기준이다. 퇴장 보충은 분량 산정 밖이다.", "원작 말의 배치와 새 산문의 의미는 편집 검토가 남아 있다.", "전체 첫 챕터의 모든 짧은 장면을 장편화한 것으로 표시하지 않는다."]
+      }
+    }
+  ],
+  "notes": ["본문과 원문을 복사하지 않고 overlay_file의 안정된 노드/블록 ID를 참조한다.", "공용 writing/templates/episode.template.json의 소편·분량·검토 원칙을 선택형 오버레이에 맞춰 적용한다."]
+}
